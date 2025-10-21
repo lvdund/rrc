@@ -5,5 +5,5 @@ import "rrc/utils"
 // SL-DiscSysInfoToReportFreqList-r13 ::= SEQUENCE OF ARFCN-ValueEUTRA-r9
 // SIZE (1..maxFreq)
 type SlDiscsysinfotoreportfreqlistR13 struct {
-	Value utils.Sequence[ArfcnValueeutraR9]
+	Value []ArfcnValueeutraR9
 }

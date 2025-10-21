@@ -5,5 +5,5 @@ import "rrc/utils"
 // DataBLER-MCH-ResultList-r12 ::= SEQUENCE OF DataBLER-MCH-Result-r12
 // SIZE (1.. maxPMCH-PerMBSFN)
 type DatablerMchResultlistR12 struct {
-	Value utils.Sequence[DatablerMchResultR12]
+	Value []DatablerMchResultR12
 }

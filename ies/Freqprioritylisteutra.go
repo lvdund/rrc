@@ -5,5 +5,5 @@ import "rrc/utils"
 // FreqPriorityListEUTRA ::= SEQUENCE OF FreqPriorityEUTRA
 // SIZE (1..maxFreq)
 type Freqprioritylisteutra struct {
-	Value utils.Sequence[Freqpriorityeutra]
+	Value []Freqpriorityeutra
 }

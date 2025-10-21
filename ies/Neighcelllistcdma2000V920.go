@@ -5,5 +5,5 @@ import "rrc/utils"
 // NeighCellListCDMA2000-v920 ::= SEQUENCE OF NeighCellCDMA2000-v920
 // SIZE (1..16)
 type Neighcelllistcdma2000V920 struct {
-	Value utils.Sequence[Neighcellcdma2000V920]
+	Value []Neighcellcdma2000V920
 }

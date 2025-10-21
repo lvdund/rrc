@@ -5,5 +5,5 @@ import "rrc/utils"
 // VarMeasReportList ::= SEQUENCE OF VarMeasReport
 // SIZE (1..maxMeasId)
 type Varmeasreportlist struct {
-	Value utils.Sequence[Varmeasreport]
+	Value []Varmeasreport
 }

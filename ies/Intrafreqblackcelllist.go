@@ -5,5 +5,5 @@ import "rrc/utils"
 // IntraFreqBlackCellList ::= SEQUENCE OF PhysCellIdRange
 // SIZE (1..maxCellBlack)
 type Intrafreqblackcelllist struct {
-	Value utils.Sequence[Physcellidrange]
+	Value []Physcellidrange
 }

@@ -568,7 +568,7 @@ class GoGenerator:
             f.write(f"func (*{alt_go_name}) is{go_name}() {{}}\n\n")
     
     def _generate_sequence_of(self, f, seq_of: ASN1SequenceOf):
-        """Generate Go type for SEQUENCE OF using Sequence[T] wrapper"""
+        """Generate Go slice type for SEQUENCE OF"""
         go_name = self._to_go_name(seq_of.name)
         elem_go_type = self._to_go_name(seq_of.element_type)
         
@@ -576,9 +576,9 @@ class GoGenerator:
         if seq_of.size_constraint:
             f.write(f"// SIZE ({seq_of.size_constraint})\n")
         
-        # Use Sequence[T] from CommonType.go
+        # Use simple Go slice
         f.write(f"type {go_name} struct {{\n")
-        f.write(f"\tValue utils.Sequence[{elem_go_type}]\n")
+        f.write(f"\tValue []{elem_go_type}\n")
         f.write("}\n")
     
     def _generate_enumerated(self, f, enum: ASN1Enumerated):

@@ -5,5 +5,5 @@ import "rrc/utils"
 // MeasResultListEUTRA ::= SEQUENCE OF MeasResultEUTRA
 // SIZE (1..maxCellReport)
 type Measresultlisteutra struct {
-	Value utils.Sequence[Measresulteutra]
+	Value []Measresulteutra
 }

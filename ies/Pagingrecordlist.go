@@ -5,5 +5,5 @@ import "rrc/utils"
 // PagingRecordList ::= SEQUENCE OF PagingRecord
 // SIZE (1..maxPageRec)
 type Pagingrecordlist struct {
-	Value utils.Sequence[Pagingrecord]
+	Value []Pagingrecord
 }

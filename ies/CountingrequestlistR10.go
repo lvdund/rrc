@@ -5,5 +5,5 @@ import "rrc/utils"
 // CountingRequestList-r10 ::= SEQUENCE OF CountingRequestInfo-r10
 // SIZE (1..maxServiceCount)
 type CountingrequestlistR10 struct {
-	Value utils.Sequence[CountingrequestinfoR10]
+	Value []CountingrequestinfoR10
 }

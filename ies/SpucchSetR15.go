@@ -5,5 +5,5 @@ import "rrc/utils"
 // SPUCCH-Set-r15 ::= SEQUENCE OF SPUCCH-Elements-r15
 // SIZE (1..4)
 type SpucchSetR15 struct {
-	Value utils.Sequence[SpucchElementsR15]
+	Value []SpucchElementsR15
 }

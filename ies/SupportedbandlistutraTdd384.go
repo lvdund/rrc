@@ -5,5 +5,5 @@ import "rrc/utils"
 // SupportedBandListUTRA-TDD384 ::= SEQUENCE OF SupportedBandUTRA-TDD384
 // SIZE (1..maxBands)
 type SupportedbandlistutraTdd384 struct {
-	Value utils.Sequence[SupportedbandutraTdd384]
+	Value []SupportedbandutraTdd384
 }
