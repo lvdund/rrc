@@ -1,0 +1,11 @@
+package ies
+
+import "rrc/utils"
+
+// UL-AM-RLC ::= SEQUENCE
+type UlAmRlc struct {
+	TPollretransmit  TPollretransmit
+	Pollpdu          Pollpdu
+	Pollbyte         Pollbyte
+	Maxretxthreshold utils.ENUMERATED
+}
