@@ -1,0 +1,24 @@
+package ies
+
+import "rrc/utils"
+
+// TrafficPatternInfo-r14-trafficPeriodicity-r14 ::= ENUMERATED
+type TrafficpatterninfoR14TrafficperiodicityR14 struct {
+	Value utils.ENUMERATED
+}
+
+const (
+	TrafficpatterninfoR14TrafficperiodicityR14EnumeratedNothing = iota
+	TrafficpatterninfoR14TrafficperiodicityR14EnumeratedSf20
+	TrafficpatterninfoR14TrafficperiodicityR14EnumeratedSf50
+	TrafficpatterninfoR14TrafficperiodicityR14EnumeratedSf100
+	TrafficpatterninfoR14TrafficperiodicityR14EnumeratedSf200
+	TrafficpatterninfoR14TrafficperiodicityR14EnumeratedSf300
+	TrafficpatterninfoR14TrafficperiodicityR14EnumeratedSf400
+	TrafficpatterninfoR14TrafficperiodicityR14EnumeratedSf500
+	TrafficpatterninfoR14TrafficperiodicityR14EnumeratedSf600
+	TrafficpatterninfoR14TrafficperiodicityR14EnumeratedSf700
+	TrafficpatterninfoR14TrafficperiodicityR14EnumeratedSf800
+	TrafficpatterninfoR14TrafficperiodicityR14EnumeratedSf900
+	TrafficpatterninfoR14TrafficperiodicityR14EnumeratedSf1000
+)

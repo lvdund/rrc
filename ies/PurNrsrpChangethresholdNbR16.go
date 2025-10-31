@@ -1,7 +1,5 @@
 package ies
 
-import "rrc/utils"
-
 // PUR-NRSRP-ChangeThreshold-NB-r16 ::= SEQUENCE
 type PurNrsrpChangethresholdNbR16 struct {
 	IncreasethreshR16 NrsrpChangethreshNbR16

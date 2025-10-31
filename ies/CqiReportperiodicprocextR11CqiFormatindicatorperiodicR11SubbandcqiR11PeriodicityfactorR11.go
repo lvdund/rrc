@@ -1,0 +1,14 @@
+package ies
+
+import "rrc/utils"
+
+// CQI-ReportPeriodicProcExt-r11-cqi-FormatIndicatorPeriodic-r11-subbandCQI-r11-periodicityFactor-r11 ::= ENUMERATED
+type CqiReportperiodicprocextR11CqiFormatindicatorperiodicR11SubbandcqiR11PeriodicityfactorR11 struct {
+	Value utils.ENUMERATED
+}
+
+const (
+	CqiReportperiodicprocextR11CqiFormatindicatorperiodicR11SubbandcqiR11PeriodicityfactorR11EnumeratedNothing = iota
+	CqiReportperiodicprocextR11CqiFormatindicatorperiodicR11SubbandcqiR11PeriodicityfactorR11EnumeratedN2
+	CqiReportperiodicprocextR11CqiFormatindicatorperiodicR11SubbandcqiR11PeriodicityfactorR11EnumeratedN4
+)

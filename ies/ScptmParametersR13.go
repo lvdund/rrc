@@ -1,11 +1,9 @@
 package ies
 
-import "rrc/utils"
-
 // SCPTM-Parameters-r13 ::= SEQUENCE
 type ScptmParametersR13 struct {
-	ScptmParallelreceptionR13 *utils.ENUMERATED
-	ScptmScellR13             *utils.ENUMERATED
-	ScptmNonservingcellR13    *utils.ENUMERATED
-	ScptmAsyncdcR13           *utils.ENUMERATED
+	ScptmParallelreceptionR13 *ScptmParametersR13ScptmParallelreceptionR13
+	ScptmScellR13             *ScptmParametersR13ScptmScellR13
+	ScptmNonservingcellR13    *ScptmParametersR13ScptmNonservingcellR13
+	ScptmAsyncdcR13           *ScptmParametersR13ScptmAsyncdcR13
 }

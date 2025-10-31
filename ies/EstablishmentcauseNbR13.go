@@ -8,12 +8,13 @@ type EstablishmentcauseNbR13 struct {
 }
 
 const (
-	EstablishmentcauseNbR13MtAccess                 = 0
-	EstablishmentcauseNbR13MoSignalling             = 1
-	EstablishmentcauseNbR13MoData                   = 2
-	EstablishmentcauseNbR13MoExceptiondata          = 3
-	EstablishmentcauseNbR13DelaytolerantaccessV1330 = 4
-	EstablishmentcauseNbR13MtEdtV1610               = 5
-	EstablishmentcauseNbR13Spare2                   = 6
-	EstablishmentcauseNbR13Spare1                   = 7
+	EstablishmentcauseNbR13EnumeratedNothing = iota
+	EstablishmentcauseNbR13EnumeratedMt_Access
+	EstablishmentcauseNbR13EnumeratedMo_Signalling
+	EstablishmentcauseNbR13EnumeratedMo_Data
+	EstablishmentcauseNbR13EnumeratedMo_Exceptiondata
+	EstablishmentcauseNbR13EnumeratedDelaytolerantaccess_V1330
+	EstablishmentcauseNbR13EnumeratedMt_Edt_V1610
+	EstablishmentcauseNbR13EnumeratedSpare2
+	EstablishmentcauseNbR13EnumeratedSpare1
 )

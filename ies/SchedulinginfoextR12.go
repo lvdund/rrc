@@ -1,7 +1,5 @@
 package ies
 
-import "rrc/utils"
-
 // SchedulingInfoExt-r12 ::= SEQUENCE
 type SchedulinginfoextR12 struct {
 	SiPeriodicityR12  SiPeriodicityR12

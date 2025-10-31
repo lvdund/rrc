@@ -1,9 +1,7 @@
 package ies
 
-import "rrc/utils"
-
 // MeasIdToRemoveList ::= SEQUENCE OF MeasId
 // SIZE (1..maxMeasId)
 type Measidtoremovelist struct {
-	Value []Measid
+	Value []Measid `lb:1,ub:maxMeasId`
 }

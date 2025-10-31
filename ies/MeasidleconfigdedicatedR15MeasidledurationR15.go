@@ -1,0 +1,20 @@
+package ies
+
+import "rrc/utils"
+
+// MeasIdleConfigDedicated-r15-measIdleDuration-r15 ::= ENUMERATED
+type MeasidleconfigdedicatedR15MeasidledurationR15 struct {
+	Value utils.ENUMERATED
+}
+
+const (
+	MeasidleconfigdedicatedR15MeasidledurationR15EnumeratedNothing = iota
+	MeasidleconfigdedicatedR15MeasidledurationR15EnumeratedSec10
+	MeasidleconfigdedicatedR15MeasidledurationR15EnumeratedSec30
+	MeasidleconfigdedicatedR15MeasidledurationR15EnumeratedSec60
+	MeasidleconfigdedicatedR15MeasidledurationR15EnumeratedSec120
+	MeasidleconfigdedicatedR15MeasidledurationR15EnumeratedSec180
+	MeasidleconfigdedicatedR15MeasidledurationR15EnumeratedSec240
+	MeasidleconfigdedicatedR15MeasidledurationR15EnumeratedSec300
+	MeasidleconfigdedicatedR15MeasidledurationR15EnumeratedSpare
+)

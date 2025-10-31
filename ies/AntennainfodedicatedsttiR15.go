@@ -1,20 +1,14 @@
 package ies
 
-import "rrc/utils"
-
 // AntennaInfoDedicatedSTTI-r15 ::= CHOICE
-type AntennainfodedicatedsttiR15 interface {
-	isAntennainfodedicatedsttiR15()
+const (
+	AntennainfodedicatedsttiR15ChoiceNothing = iota
+	AntennainfodedicatedsttiR15ChoiceRelease
+	AntennainfodedicatedsttiR15ChoiceSetup
+)
+
+type AntennainfodedicatedsttiR15 struct {
+	Choice  uint64
+	Release *struct{}
+	Setup   *AntennainfodedicatedsttiR15Setup
 }
-
-type AntennainfodedicatedsttiR15Release struct {
-	Value struct{}
-}
-
-func (*AntennainfodedicatedsttiR15Release) isAntennainfodedicatedsttiR15() {}
-
-type AntennainfodedicatedsttiR15Setup struct {
-	Value interface{}
-}
-
-func (*AntennainfodedicatedsttiR15Setup) isAntennainfodedicatedsttiR15() {}

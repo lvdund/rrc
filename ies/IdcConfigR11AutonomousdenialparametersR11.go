@@ -1,0 +1,7 @@
+package ies
+
+// IDC-Config-r11-autonomousDenialParameters-r11 ::= SEQUENCE
+type IdcConfigR11AutonomousdenialparametersR11 struct {
+	AutonomousdenialsubframesR11 IdcConfigR11AutonomousdenialparametersR11AutonomousdenialsubframesR11
+	AutonomousdenialvalidityR11  IdcConfigR11AutonomousdenialparametersR11AutonomousdenialvalidityR11
+}

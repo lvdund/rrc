@@ -1,20 +1,14 @@
 package ies
 
-import "rrc/utils"
-
 // SchedulingRequestConfigSCell-r13 ::= CHOICE
-type SchedulingrequestconfigscellR13 interface {
-	isSchedulingrequestconfigscellR13()
+const (
+	SchedulingrequestconfigscellR13ChoiceNothing = iota
+	SchedulingrequestconfigscellR13ChoiceRelease
+	SchedulingrequestconfigscellR13ChoiceSetup
+)
+
+type SchedulingrequestconfigscellR13 struct {
+	Choice  uint64
+	Release *struct{}
+	Setup   *SchedulingrequestconfigscellR13Setup
 }
-
-type SchedulingrequestconfigscellR13Release struct {
-	Value struct{}
-}
-
-func (*SchedulingrequestconfigscellR13Release) isSchedulingrequestconfigscellR13() {}
-
-type SchedulingrequestconfigscellR13Setup struct {
-	Value interface{}
-}
-
-func (*SchedulingrequestconfigscellR13Setup) isSchedulingrequestconfigscellR13() {}

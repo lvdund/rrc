@@ -1,20 +1,14 @@
 package ies
 
-import "rrc/utils"
-
 // PCCH-MessageType-NB ::= CHOICE
-type PcchMessagetypeNb interface {
-	isPcchMessagetypeNb()
+const (
+	PcchMessagetypeNbChoiceNothing = iota
+	PcchMessagetypeNbChoiceC1
+	PcchMessagetypeNbChoiceMessageclassextension
+)
+
+type PcchMessagetypeNb struct {
+	Choice                uint64
+	C1                    *PcchMessagetypeNbC1
+	Messageclassextension *PcchMessagetypeNbMessageclassextension
 }
-
-type PcchMessagetypeNbC1 struct {
-	Value interface{}
-}
-
-func (*PcchMessagetypeNbC1) isPcchMessagetypeNb() {}
-
-type PcchMessagetypeNbMessageclassextension struct {
-	Value interface{}
-}
-
-func (*PcchMessagetypeNbMessageclassextension) isPcchMessagetypeNb() {}

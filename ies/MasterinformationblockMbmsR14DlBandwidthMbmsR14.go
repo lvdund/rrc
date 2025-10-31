@@ -1,0 +1,18 @@
+package ies
+
+import "rrc/utils"
+
+// MasterInformationBlock-MBMS-r14-dl-Bandwidth-MBMS-r14 ::= ENUMERATED
+type MasterinformationblockMbmsR14DlBandwidthMbmsR14 struct {
+	Value utils.ENUMERATED
+}
+
+const (
+	MasterinformationblockMbmsR14DlBandwidthMbmsR14EnumeratedNothing = iota
+	MasterinformationblockMbmsR14DlBandwidthMbmsR14EnumeratedN6
+	MasterinformationblockMbmsR14DlBandwidthMbmsR14EnumeratedN15
+	MasterinformationblockMbmsR14DlBandwidthMbmsR14EnumeratedN25
+	MasterinformationblockMbmsR14DlBandwidthMbmsR14EnumeratedN50
+	MasterinformationblockMbmsR14DlBandwidthMbmsR14EnumeratedN75
+	MasterinformationblockMbmsR14DlBandwidthMbmsR14EnumeratedN100
+)

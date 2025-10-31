@@ -1,7 +1,5 @@
 package ies
 
-import "rrc/utils"
-
 // PhysicalConfigDedicated-NB-r13 ::= SEQUENCE
 // Extensible
 type PhysicalconfigdedicatedNbR13 struct {

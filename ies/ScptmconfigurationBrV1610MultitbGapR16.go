@@ -1,0 +1,20 @@
+package ies
+
+import "rrc/utils"
+
+// SCPTMConfiguration-BR-v1610-multiTB-Gap-r16 ::= ENUMERATED
+type ScptmconfigurationBrV1610MultitbGapR16 struct {
+	Value utils.ENUMERATED
+}
+
+const (
+	ScptmconfigurationBrV1610MultitbGapR16EnumeratedNothing = iota
+	ScptmconfigurationBrV1610MultitbGapR16EnumeratedSf2
+	ScptmconfigurationBrV1610MultitbGapR16EnumeratedSf4
+	ScptmconfigurationBrV1610MultitbGapR16EnumeratedSf8
+	ScptmconfigurationBrV1610MultitbGapR16EnumeratedSf16
+	ScptmconfigurationBrV1610MultitbGapR16EnumeratedSf32
+	ScptmconfigurationBrV1610MultitbGapR16EnumeratedSf64
+	ScptmconfigurationBrV1610MultitbGapR16EnumeratedSf128
+	ScptmconfigurationBrV1610MultitbGapR16EnumeratedSpare
+)

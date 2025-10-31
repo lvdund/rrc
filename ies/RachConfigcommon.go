@@ -5,8 +5,8 @@ import "rrc/utils"
 // RACH-ConfigCommon ::= SEQUENCE
 // Extensible
 type RachConfigcommon struct {
-	Preambleinfo           *interface{}
+	Preambleinfo           *RachConfigcommonPreambleinfo
 	Powerrampingparameters Powerrampingparameters
-	RaSupervisioninfo      interface{}
-	MaxharqMsg3tx          utils.INTEGER
+	RaSupervisioninfo      RachConfigcommonRaSupervisioninfo
+	MaxharqMsg3tx          utils.INTEGER `lb:0,ub:8`
 }

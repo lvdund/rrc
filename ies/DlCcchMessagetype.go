@@ -1,20 +1,14 @@
 package ies
 
-import "rrc/utils"
-
 // DL-CCCH-MessageType ::= CHOICE
-type DlCcchMessagetype interface {
-	isDlCcchMessagetype()
+const (
+	DlCcchMessagetypeChoiceNothing = iota
+	DlCcchMessagetypeChoiceC1
+	DlCcchMessagetypeChoiceMessageclassextension
+)
+
+type DlCcchMessagetype struct {
+	Choice                uint64
+	C1                    *DlCcchMessagetypeC1
+	Messageclassextension *DlCcchMessagetypeMessageclassextension
 }
-
-type DlCcchMessagetypeC1 struct {
-	Value interface{}
-}
-
-func (*DlCcchMessagetypeC1) isDlCcchMessagetype() {}
-
-type DlCcchMessagetypeMessageclassextension struct {
-	Value interface{}
-}
-
-func (*DlCcchMessagetypeMessageclassextension) isDlCcchMessagetype() {}

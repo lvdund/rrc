@@ -1,0 +1,14 @@
+package ies
+
+import "rrc/utils"
+
+// CQI-ShortConfigSCell-r15-setup-cqi-FormatIndicatorShort-r15-widebandCQI-Short-r15-csi-ReportModeShort-r15 ::= ENUMERATED
+type CqiShortconfigscellR15SetupCqiFormatindicatorshortR15WidebandcqiShortR15CsiReportmodeshortR15 struct {
+	Value utils.ENUMERATED
+}
+
+const (
+	CqiShortconfigscellR15SetupCqiFormatindicatorshortR15WidebandcqiShortR15CsiReportmodeshortR15EnumeratedNothing = iota
+	CqiShortconfigscellR15SetupCqiFormatindicatorshortR15WidebandcqiShortR15CsiReportmodeshortR15EnumeratedSubmode1
+	CqiShortconfigscellR15SetupCqiFormatindicatorshortR15WidebandcqiShortR15CsiReportmodeshortR15EnumeratedSubmode2
+)

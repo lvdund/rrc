@@ -1,7 +1,5 @@
 package ies
 
-import "rrc/utils"
-
 // SL-V2X-PacketDuplicationConfig-r15 ::= SEQUENCE
 // Extensible
 type SlV2xPacketduplicationconfigR15 struct {

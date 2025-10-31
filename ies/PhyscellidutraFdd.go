@@ -2,7 +2,7 @@ package ies
 
 import "rrc/utils"
 
-// PhysCellIdUTRA-FDD ::= INTEGER (0..511)
+// PhysCellIdUTRA-FDD ::= utils.INTEGER (0..511)
 type PhyscellidutraFdd struct {
-	Value utils.INTEGER
+	Value utils.INTEGER `lb:0,ub:511`
 }

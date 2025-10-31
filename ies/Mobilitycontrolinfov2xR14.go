@@ -1,7 +1,5 @@
 package ies
 
-import "rrc/utils"
-
 // MobilityControlInfoV2X-r14 ::= SEQUENCE
 type Mobilitycontrolinfov2xR14 struct {
 	V2xCommtxpoolexceptionalR14 *SlCommresourcepoolv2xR14

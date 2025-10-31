@@ -8,7 +8,8 @@ type SlTypetxsyncR14 struct {
 }
 
 const (
-	SlTypetxsyncR14Gnss = 0
-	SlTypetxsyncR14Enb  = 1
-	SlTypetxsyncR14Ue   = 2
+	SlTypetxsyncR14EnumeratedNothing = iota
+	SlTypetxsyncR14EnumeratedGnss
+	SlTypetxsyncR14EnumeratedEnb
+	SlTypetxsyncR14EnumeratedUe
 )

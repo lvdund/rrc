@@ -1,32 +1,18 @@
 package ies
 
-import "rrc/utils"
-
 // SL-DiscTxResourcesInterFreq-r13 ::= CHOICE
-type SlDisctxresourcesinterfreqR13 interface {
-	isSlDisctxresourcesinterfreqR13()
+const (
+	SlDisctxresourcesinterfreqR13ChoiceNothing = iota
+	SlDisctxresourcesinterfreqR13ChoiceAcquiresiFromcarrierR13
+	SlDisctxresourcesinterfreqR13ChoiceDisctxpoolcommonR13
+	SlDisctxresourcesinterfreqR13ChoiceRequestdedicatedR13
+	SlDisctxresourcesinterfreqR13ChoiceNotxoncarrierR13
+)
+
+type SlDisctxresourcesinterfreqR13 struct {
+	Choice                  uint64
+	AcquiresiFromcarrierR13 *struct{}
+	DisctxpoolcommonR13     *SlDisctxpoollistR12
+	RequestdedicatedR13     *struct{}
+	NotxoncarrierR13        *struct{}
 }
-
-type SlDisctxresourcesinterfreqR13AcquiresiFromcarrierR13 struct {
-	Value struct{}
-}
-
-func (*SlDisctxresourcesinterfreqR13AcquiresiFromcarrierR13) isSlDisctxresourcesinterfreqR13() {}
-
-type SlDisctxresourcesinterfreqR13DisctxpoolcommonR13 struct {
-	Value SlDisctxpoollistR12
-}
-
-func (*SlDisctxresourcesinterfreqR13DisctxpoolcommonR13) isSlDisctxresourcesinterfreqR13() {}
-
-type SlDisctxresourcesinterfreqR13RequestdedicatedR13 struct {
-	Value struct{}
-}
-
-func (*SlDisctxresourcesinterfreqR13RequestdedicatedR13) isSlDisctxresourcesinterfreqR13() {}
-
-type SlDisctxresourcesinterfreqR13NotxoncarrierR13 struct {
-	Value struct{}
-}
-
-func (*SlDisctxresourcesinterfreqR13NotxoncarrierR13) isSlDisctxresourcesinterfreqR13() {}

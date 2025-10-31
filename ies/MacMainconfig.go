@@ -1,12 +1,10 @@
 package ies
 
-import "rrc/utils"
-
 // MAC-MainConfig ::= SEQUENCE
 // Extensible
 type MacMainconfig struct {
-	UlSchConfig                 *interface{}
+	UlSchConfig                 *MacMainconfigUlSchConfig
 	DrxConfig                   *DrxConfig
 	Timealignmenttimerdedicated Timealignmenttimer
-	PhrConfig                   *interface{}
+	PhrConfig                   *MacMainconfigPhrConfig
 }

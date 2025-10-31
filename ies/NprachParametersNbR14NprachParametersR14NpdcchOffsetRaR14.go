@@ -1,0 +1,16 @@
+package ies
+
+import "rrc/utils"
+
+// NPRACH-Parameters-NB-r14-nprach-Parameters-r14-npdcch-Offset-RA-r14 ::= ENUMERATED
+type NprachParametersNbR14NprachParametersR14NpdcchOffsetRaR14 struct {
+	Value utils.ENUMERATED
+}
+
+const (
+	NprachParametersNbR14NprachParametersR14NpdcchOffsetRaR14EnumeratedNothing = iota
+	NprachParametersNbR14NprachParametersR14NpdcchOffsetRaR14EnumeratedZero
+	NprachParametersNbR14NprachParametersR14NpdcchOffsetRaR14EnumeratedOneeighth
+	NprachParametersNbR14NprachParametersR14NpdcchOffsetRaR14EnumeratedOnefourth
+	NprachParametersNbR14NprachParametersR14NpdcchOffsetRaR14EnumeratedThreeeighth
+)

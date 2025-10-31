@@ -1,0 +1,21 @@
+package ies
+
+import "rrc/utils"
+
+// PCCH-Config-v1310-mpdcch-NumRepetition-Paging-r13 ::= ENUMERATED
+type PcchConfigV1310MpdcchNumrepetitionPagingR13 struct {
+	Value utils.ENUMERATED
+}
+
+const (
+	PcchConfigV1310MpdcchNumrepetitionPagingR13EnumeratedNothing = iota
+	PcchConfigV1310MpdcchNumrepetitionPagingR13EnumeratedR1
+	PcchConfigV1310MpdcchNumrepetitionPagingR13EnumeratedR2
+	PcchConfigV1310MpdcchNumrepetitionPagingR13EnumeratedR4
+	PcchConfigV1310MpdcchNumrepetitionPagingR13EnumeratedR8
+	PcchConfigV1310MpdcchNumrepetitionPagingR13EnumeratedR16
+	PcchConfigV1310MpdcchNumrepetitionPagingR13EnumeratedR32
+	PcchConfigV1310MpdcchNumrepetitionPagingR13EnumeratedR64
+	PcchConfigV1310MpdcchNumrepetitionPagingR13EnumeratedR128
+	PcchConfigV1310MpdcchNumrepetitionPagingR13EnumeratedR256
+)

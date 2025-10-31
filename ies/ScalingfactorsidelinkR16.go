@@ -8,8 +8,9 @@ type ScalingfactorsidelinkR16 struct {
 }
 
 const (
-	ScalingfactorsidelinkR16F0p4  = 0
-	ScalingfactorsidelinkR16F0p75 = 1
-	ScalingfactorsidelinkR16F0p8  = 2
-	ScalingfactorsidelinkR16F1    = 3
+	ScalingfactorsidelinkR16EnumeratedNothing = iota
+	ScalingfactorsidelinkR16EnumeratedF0p4
+	ScalingfactorsidelinkR16EnumeratedF0p75
+	ScalingfactorsidelinkR16EnumeratedF0p8
+	ScalingfactorsidelinkR16EnumeratedF1
 )

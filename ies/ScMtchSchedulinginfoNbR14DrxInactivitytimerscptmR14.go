@@ -1,0 +1,20 @@
+package ies
+
+import "rrc/utils"
+
+// SC-MTCH-SchedulingInfo-NB-r14-drx-InactivityTimerSCPTM-r14 ::= ENUMERATED
+type ScMtchSchedulinginfoNbR14DrxInactivitytimerscptmR14 struct {
+	Value utils.ENUMERATED
+}
+
+const (
+	ScMtchSchedulinginfoNbR14DrxInactivitytimerscptmR14EnumeratedNothing = iota
+	ScMtchSchedulinginfoNbR14DrxInactivitytimerscptmR14EnumeratedPp0
+	ScMtchSchedulinginfoNbR14DrxInactivitytimerscptmR14EnumeratedPp1
+	ScMtchSchedulinginfoNbR14DrxInactivitytimerscptmR14EnumeratedPp2
+	ScMtchSchedulinginfoNbR14DrxInactivitytimerscptmR14EnumeratedPp3
+	ScMtchSchedulinginfoNbR14DrxInactivitytimerscptmR14EnumeratedPp4
+	ScMtchSchedulinginfoNbR14DrxInactivitytimerscptmR14EnumeratedPp8
+	ScMtchSchedulinginfoNbR14DrxInactivitytimerscptmR14EnumeratedPp16
+	ScMtchSchedulinginfoNbR14DrxInactivitytimerscptmR14EnumeratedPp32
+)

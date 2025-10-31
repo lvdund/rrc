@@ -4,7 +4,7 @@ import "rrc/utils"
 
 // AntennaInfoDedicated-r10 ::= SEQUENCE
 type AntennainfodedicatedR10 struct {
-	TransmissionmodeR10          utils.ENUMERATED
+	TransmissionmodeR10          AntennainfodedicatedR10TransmissionmodeR10
 	CodebooksubsetrestrictionR10 *utils.BITSTRING
-	UeTransmitantennaselection   utils.ENUMERATED
+	UeTransmitantennaselection   AntennainfodedicatedR10UeTransmitantennaselection
 }

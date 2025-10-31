@@ -1,20 +1,14 @@
 package ies
 
-import "rrc/utils"
-
 // NAICS-AssistanceInfo-r12 ::= CHOICE
-type NaicsAssistanceinfoR12 interface {
-	isNaicsAssistanceinfoR12()
+const (
+	NaicsAssistanceinfoR12ChoiceNothing = iota
+	NaicsAssistanceinfoR12ChoiceRelease
+	NaicsAssistanceinfoR12ChoiceSetup
+)
+
+type NaicsAssistanceinfoR12 struct {
+	Choice  uint64
+	Release *struct{}
+	Setup   *NaicsAssistanceinfoR12Setup
 }
-
-type NaicsAssistanceinfoR12Release struct {
-	Value struct{}
-}
-
-func (*NaicsAssistanceinfoR12Release) isNaicsAssistanceinfoR12() {}
-
-type NaicsAssistanceinfoR12Setup struct {
-	Value interface{}
-}
-
-func (*NaicsAssistanceinfoR12Setup) isNaicsAssistanceinfoR12() {}

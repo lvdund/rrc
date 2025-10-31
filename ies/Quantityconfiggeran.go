@@ -1,9 +1,7 @@
 package ies
 
-import "rrc/utils"
-
 // QuantityConfigGERAN ::= SEQUENCE
 type Quantityconfiggeran struct {
-	Measquantitygeran utils.ENUMERATED
+	Measquantitygeran QuantityconfiggeranMeasquantitygeran
 	Filtercoefficient Filtercoefficient
 }

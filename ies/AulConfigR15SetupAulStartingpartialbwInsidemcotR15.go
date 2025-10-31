@@ -1,0 +1,17 @@
+package ies
+
+import "rrc/utils"
+
+// AUL-Config-r15-setup-aul-StartingPartialBW-InsideMCOT-r15 ::= ENUMERATED
+type AulConfigR15SetupAulStartingpartialbwInsidemcotR15 struct {
+	Value utils.ENUMERATED
+}
+
+const (
+	AulConfigR15SetupAulStartingpartialbwInsidemcotR15EnumeratedNothing = iota
+	AulConfigR15SetupAulStartingpartialbwInsidemcotR15EnumeratedO34
+	AulConfigR15SetupAulStartingpartialbwInsidemcotR15EnumeratedO43
+	AulConfigR15SetupAulStartingpartialbwInsidemcotR15EnumeratedO52
+	AulConfigR15SetupAulStartingpartialbwInsidemcotR15EnumeratedO61
+	AulConfigR15SetupAulStartingpartialbwInsidemcotR15EnumeratedOos1
+)

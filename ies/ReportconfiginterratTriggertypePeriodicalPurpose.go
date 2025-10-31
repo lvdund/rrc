@@ -1,0 +1,15 @@
+package ies
+
+import "rrc/utils"
+
+// ReportConfigInterRAT-triggerType-periodical-purpose ::= ENUMERATED
+type ReportconfiginterratTriggertypePeriodicalPurpose struct {
+	Value utils.ENUMERATED
+}
+
+const (
+	ReportconfiginterratTriggertypePeriodicalPurposeEnumeratedNothing = iota
+	ReportconfiginterratTriggertypePeriodicalPurposeEnumeratedReportstrongestcells
+	ReportconfiginterratTriggertypePeriodicalPurposeEnumeratedReportstrongestcellsforson
+	ReportconfiginterratTriggertypePeriodicalPurposeEnumeratedReportcgi
+)

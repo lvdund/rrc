@@ -8,11 +8,12 @@ type WusMaxdurationfactorNbR15 struct {
 }
 
 const (
-	WusMaxdurationfactorNbR15One128th   = 0
-	WusMaxdurationfactorNbR15One64th    = 1
-	WusMaxdurationfactorNbR15One32th    = 2
-	WusMaxdurationfactorNbR15One16th    = 3
-	WusMaxdurationfactorNbR15Oneeighth  = 4
-	WusMaxdurationfactorNbR15Onequarter = 5
-	WusMaxdurationfactorNbR15Onehalf    = 6
+	WusMaxdurationfactorNbR15EnumeratedNothing = iota
+	WusMaxdurationfactorNbR15EnumeratedOne128th
+	WusMaxdurationfactorNbR15EnumeratedOne64th
+	WusMaxdurationfactorNbR15EnumeratedOne32th
+	WusMaxdurationfactorNbR15EnumeratedOne16th
+	WusMaxdurationfactorNbR15EnumeratedOneeighth
+	WusMaxdurationfactorNbR15EnumeratedOnequarter
+	WusMaxdurationfactorNbR15EnumeratedOnehalf
 )

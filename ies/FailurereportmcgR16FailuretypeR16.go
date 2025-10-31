@@ -1,0 +1,20 @@
+package ies
+
+import "rrc/utils"
+
+// FailureReportMCG-r16-failureType-r16 ::= ENUMERATED
+type FailurereportmcgR16FailuretypeR16 struct {
+	Value utils.ENUMERATED
+}
+
+const (
+	FailurereportmcgR16FailuretypeR16EnumeratedNothing = iota
+	FailurereportmcgR16FailuretypeR16EnumeratedT310_Expiry
+	FailurereportmcgR16FailuretypeR16EnumeratedRandomaccessproblem
+	FailurereportmcgR16FailuretypeR16EnumeratedRlc_Maxnumretx
+	FailurereportmcgR16FailuretypeR16EnumeratedT312_Expiry
+	FailurereportmcgR16FailuretypeR16EnumeratedSpare4
+	FailurereportmcgR16FailuretypeR16EnumeratedSpare3
+	FailurereportmcgR16FailuretypeR16EnumeratedSpare2
+	FailurereportmcgR16FailuretypeR16EnumeratedSpare1
+)

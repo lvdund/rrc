@@ -4,5 +4,5 @@ import "rrc/utils"
 
 // PRACH-ConfigSCell-r10 ::= SEQUENCE
 type PrachConfigscellR10 struct {
-	PrachConfigindexR10 utils.INTEGER
+	PrachConfigindexR10 utils.INTEGER `lb:0,ub:63`
 }

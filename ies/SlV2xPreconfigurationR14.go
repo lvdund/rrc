@@ -1,7 +1,5 @@
 package ies
 
-import "rrc/utils"
-
 // SL-V2X-Preconfiguration-r14 ::= SEQUENCE
 // Extensible
 type SlV2xPreconfigurationR14 struct {

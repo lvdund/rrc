@@ -1,10 +1,8 @@
 package ies
 
-import "rrc/utils"
-
 // RLF-Report-r9 ::= SEQUENCE
 // Extensible
 type RlfReportR9 struct {
-	MeasresultlastservcellR9 *interface{}
-	MeasresultneighcellsR9   *interface{}
+	MeasresultlastservcellR9 *RlfReportR9MeasresultlastservcellR9
+	MeasresultneighcellsR9   *RlfReportR9MeasresultneighcellsR9
 }

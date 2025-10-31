@@ -3,18 +3,14 @@ package ies
 import "rrc/utils"
 
 // CellGlobalIdCDMA2000 ::= CHOICE
-type Cellglobalidcdma2000 interface {
-	isCellglobalidcdma2000()
+const (
+	Cellglobalidcdma2000ChoiceNothing = iota
+	Cellglobalidcdma2000ChoiceCellglobalid1xrtt
+	Cellglobalidcdma2000ChoiceCellglobalidhrpd
+)
+
+type Cellglobalidcdma2000 struct {
+	Choice            uint64
+	Cellglobalid1xrtt *utils.BITSTRING `lb:47,ub:47`
+	Cellglobalidhrpd  *utils.BITSTRING `lb:128,ub:128`
 }
-
-type Cellglobalidcdma2000Cellglobalid1xrtt struct {
-	Value utils.BITSTRING
-}
-
-func (*Cellglobalidcdma2000Cellglobalid1xrtt) isCellglobalidcdma2000() {}
-
-type Cellglobalidcdma2000Cellglobalidhrpd struct {
-	Value utils.BITSTRING
-}
-
-func (*Cellglobalidcdma2000Cellglobalidhrpd) isCellglobalidcdma2000() {}

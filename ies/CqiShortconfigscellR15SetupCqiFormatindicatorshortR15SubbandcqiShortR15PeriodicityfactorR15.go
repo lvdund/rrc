@@ -1,0 +1,14 @@
+package ies
+
+import "rrc/utils"
+
+// CQI-ShortConfigSCell-r15-setup-cqi-FormatIndicatorShort-r15-subbandCQI-Short-r15-periodicityFactor-r15 ::= ENUMERATED
+type CqiShortconfigscellR15SetupCqiFormatindicatorshortR15SubbandcqiShortR15PeriodicityfactorR15 struct {
+	Value utils.ENUMERATED
+}
+
+const (
+	CqiShortconfigscellR15SetupCqiFormatindicatorshortR15SubbandcqiShortR15PeriodicityfactorR15EnumeratedNothing = iota
+	CqiShortconfigscellR15SetupCqiFormatindicatorshortR15SubbandcqiShortR15PeriodicityfactorR15EnumeratedN2
+	CqiShortconfigscellR15SetupCqiFormatindicatorshortR15SubbandcqiShortR15PeriodicityfactorR15EnumeratedN4
+)

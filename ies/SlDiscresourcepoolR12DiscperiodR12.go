@@ -1,0 +1,20 @@
+package ies
+
+import "rrc/utils"
+
+// SL-DiscResourcePool-r12-discPeriod-r12 ::= ENUMERATED
+type SlDiscresourcepoolR12DiscperiodR12 struct {
+	Value utils.ENUMERATED
+}
+
+const (
+	SlDiscresourcepoolR12DiscperiodR12EnumeratedNothing = iota
+	SlDiscresourcepoolR12DiscperiodR12EnumeratedRf32
+	SlDiscresourcepoolR12DiscperiodR12EnumeratedRf64
+	SlDiscresourcepoolR12DiscperiodR12EnumeratedRf128
+	SlDiscresourcepoolR12DiscperiodR12EnumeratedRf256
+	SlDiscresourcepoolR12DiscperiodR12EnumeratedRf512
+	SlDiscresourcepoolR12DiscperiodR12EnumeratedRf1024
+	SlDiscresourcepoolR12DiscperiodR12EnumeratedRf16_V1310
+	SlDiscresourcepoolR12DiscperiodR12EnumeratedSpare
+)

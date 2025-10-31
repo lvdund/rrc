@@ -1,7 +1,5 @@
 package ies
 
-import "rrc/utils"
-
 // MeasResultNR-r15 ::= SEQUENCE
 // Extensible
 type MeasresultnrR15 struct {

@@ -1,0 +1,19 @@
+package ies
+
+import "rrc/utils"
+
+// CellSelectionInfo-NB-v1430-ce-authorisationOffset-r14 ::= ENUMERATED
+type CellselectioninfoNbV1430CeAuthorisationoffsetR14 struct {
+	Value utils.ENUMERATED
+}
+
+const (
+	CellselectioninfoNbV1430CeAuthorisationoffsetR14EnumeratedNothing = iota
+	CellselectioninfoNbV1430CeAuthorisationoffsetR14EnumeratedDb5
+	CellselectioninfoNbV1430CeAuthorisationoffsetR14EnumeratedDb10
+	CellselectioninfoNbV1430CeAuthorisationoffsetR14EnumeratedDb15
+	CellselectioninfoNbV1430CeAuthorisationoffsetR14EnumeratedDb20
+	CellselectioninfoNbV1430CeAuthorisationoffsetR14EnumeratedDb25
+	CellselectioninfoNbV1430CeAuthorisationoffsetR14EnumeratedDb30
+	CellselectioninfoNbV1430CeAuthorisationoffsetR14EnumeratedDb35
+)

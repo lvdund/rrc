@@ -1,0 +1,20 @@
+package ies
+
+import "rrc/utils"
+
+// MAC-MainConfig-phr-Config-setup-prohibitPHR-Timer ::= ENUMERATED
+type MacMainconfigPhrConfigSetupProhibitphrTimer struct {
+	Value utils.ENUMERATED
+}
+
+const (
+	MacMainconfigPhrConfigSetupProhibitphrTimerEnumeratedNothing = iota
+	MacMainconfigPhrConfigSetupProhibitphrTimerEnumeratedSf0
+	MacMainconfigPhrConfigSetupProhibitphrTimerEnumeratedSf10
+	MacMainconfigPhrConfigSetupProhibitphrTimerEnumeratedSf20
+	MacMainconfigPhrConfigSetupProhibitphrTimerEnumeratedSf50
+	MacMainconfigPhrConfigSetupProhibitphrTimerEnumeratedSf100
+	MacMainconfigPhrConfigSetupProhibitphrTimerEnumeratedSf200
+	MacMainconfigPhrConfigSetupProhibitphrTimerEnumeratedSf500
+	MacMainconfigPhrConfigSetupProhibitphrTimerEnumeratedSf1000
+)

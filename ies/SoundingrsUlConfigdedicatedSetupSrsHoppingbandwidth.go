@@ -1,0 +1,16 @@
+package ies
+
+import "rrc/utils"
+
+// SoundingRS-UL-ConfigDedicated-setup-srs-HoppingBandwidth ::= ENUMERATED
+type SoundingrsUlConfigdedicatedSetupSrsHoppingbandwidth struct {
+	Value utils.ENUMERATED
+}
+
+const (
+	SoundingrsUlConfigdedicatedSetupSrsHoppingbandwidthEnumeratedNothing = iota
+	SoundingrsUlConfigdedicatedSetupSrsHoppingbandwidthEnumeratedHbw0
+	SoundingrsUlConfigdedicatedSetupSrsHoppingbandwidthEnumeratedHbw1
+	SoundingrsUlConfigdedicatedSetupSrsHoppingbandwidthEnumeratedHbw2
+	SoundingrsUlConfigdedicatedSetupSrsHoppingbandwidthEnumeratedHbw3
+)

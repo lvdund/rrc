@@ -8,12 +8,13 @@ type AckNackNumrepetitionsNbR13 struct {
 }
 
 const (
-	AckNackNumrepetitionsNbR13R1   = 0
-	AckNackNumrepetitionsNbR13R2   = 1
-	AckNackNumrepetitionsNbR13R4   = 2
-	AckNackNumrepetitionsNbR13R8   = 3
-	AckNackNumrepetitionsNbR13R16  = 4
-	AckNackNumrepetitionsNbR13R32  = 5
-	AckNackNumrepetitionsNbR13R64  = 6
-	AckNackNumrepetitionsNbR13R128 = 7
+	AckNackNumrepetitionsNbR13EnumeratedNothing = iota
+	AckNackNumrepetitionsNbR13EnumeratedR1
+	AckNackNumrepetitionsNbR13EnumeratedR2
+	AckNackNumrepetitionsNbR13EnumeratedR4
+	AckNackNumrepetitionsNbR13EnumeratedR8
+	AckNackNumrepetitionsNbR13EnumeratedR16
+	AckNackNumrepetitionsNbR13EnumeratedR32
+	AckNackNumrepetitionsNbR13EnumeratedR64
+	AckNackNumrepetitionsNbR13EnumeratedR128
 )

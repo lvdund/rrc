@@ -1,0 +1,20 @@
+package ies
+
+import "rrc/utils"
+
+// PUR-MPDCCH-Config-r16-mpdcch-Offset-PUR-SS-r16 ::= ENUMERATED
+type PurMpdcchConfigR16MpdcchOffsetPurSsR16 struct {
+	Value utils.ENUMERATED
+}
+
+const (
+	PurMpdcchConfigR16MpdcchOffsetPurSsR16EnumeratedNothing = iota
+	PurMpdcchConfigR16MpdcchOffsetPurSsR16EnumeratedZero
+	PurMpdcchConfigR16MpdcchOffsetPurSsR16EnumeratedOneeighth
+	PurMpdcchConfigR16MpdcchOffsetPurSsR16EnumeratedOnequarter
+	PurMpdcchConfigR16MpdcchOffsetPurSsR16EnumeratedThreeeighth
+	PurMpdcchConfigR16MpdcchOffsetPurSsR16EnumeratedOnehalf
+	PurMpdcchConfigR16MpdcchOffsetPurSsR16EnumeratedFiveeighth
+	PurMpdcchConfigR16MpdcchOffsetPurSsR16EnumeratedThreequarter
+	PurMpdcchConfigR16MpdcchOffsetPurSsR16EnumeratedSeveneighth
+)

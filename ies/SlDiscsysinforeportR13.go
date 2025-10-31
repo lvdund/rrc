@@ -12,10 +12,10 @@ type SlDiscsysinforeportR13 struct {
 	DisctxpoolcommonR13      *SlDisctxpoollistR12
 	DisctxpowerinfoR13       *SlDisctxpowerinfolistR12
 	DiscsyncconfigR13        *SlSyncconfignfreqR13
-	DisccellselectioninfoR13 *interface{}
-	CellreselectioninfoR13   *interface{}
+	DisccellselectioninfoR13 *SlDiscsysinforeportR13DisccellselectioninfoR13
+	CellreselectioninfoR13   *SlDiscsysinforeportR13CellreselectioninfoR13
 	TddConfigR13             *TddConfig
-	FreqinfoR13              *interface{}
+	FreqinfoR13              *SlDiscsysinforeportR13FreqinfoR13
 	PMaxR13                  *PMax
-	ReferencesignalpowerR13  *utils.INTEGER
+	ReferencesignalpowerR13  *utils.INTEGER `lb:0,ub:50`
 }

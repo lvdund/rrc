@@ -1,0 +1,16 @@
+package ies
+
+import "rrc/utils"
+
+// CellReselectionInfoCommon-NB-v1450-s-SearchDeltaP-r14 ::= ENUMERATED
+type CellreselectioninfocommonNbV1450SSearchdeltapR14 struct {
+	Value utils.ENUMERATED
+}
+
+const (
+	CellreselectioninfocommonNbV1450SSearchdeltapR14EnumeratedNothing = iota
+	CellreselectioninfocommonNbV1450SSearchdeltapR14EnumeratedDb6
+	CellreselectioninfocommonNbV1450SSearchdeltapR14EnumeratedDb9
+	CellreselectioninfocommonNbV1450SSearchdeltapR14EnumeratedDb12
+	CellreselectioninfocommonNbV1450SSearchdeltapR14EnumeratedDb15
+)

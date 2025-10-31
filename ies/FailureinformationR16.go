@@ -1,8 +1,8 @@
 package ies
 
-import "rrc/utils"
-
-// FailureInformation-r16 ::= SEQUENCE
+// FailureInformation-r16-IEs ::= SEQUENCE
 type FailureinformationR16 struct {
-	Criticalextensions interface{}
+	FailedlogicalchannelidentityR16 *FailedlogicalchannelidentityR16
+	FailuretypeR16                  *FailureinformationR16IesFailuretypeR16
+	Noncriticalextension            *FailureinformationR16IesNoncriticalextension
 }

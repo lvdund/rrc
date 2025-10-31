@@ -1,15 +1,13 @@
 package ies
 
-import "rrc/utils"
-
 // GWUS-TimeParameters-r16 ::= SEQUENCE
 // Extensible
 type GwusTimeparametersR16 struct {
-	MaxdurationfactorR16   utils.ENUMERATED
-	NumposR16              utils.ENUMERATED
-	TimeoffsetdrxR16       utils.ENUMERATED
-	TimeoffsetEdrxShortR16 utils.ENUMERATED
-	TimeoffsetEdrxLongR16  *utils.ENUMERATED
-	NumdrxCyclesrelaxedR16 *utils.ENUMERATED
-	PowerboostR16          *utils.ENUMERATED
+	MaxdurationfactorR16   GwusTimeparametersR16MaxdurationfactorR16
+	NumposR16              GwusTimeparametersR16NumposR16
+	TimeoffsetdrxR16       GwusTimeparametersR16TimeoffsetdrxR16
+	TimeoffsetEdrxShortR16 GwusTimeparametersR16TimeoffsetEdrxShortR16
+	TimeoffsetEdrxLongR16  *GwusTimeparametersR16TimeoffsetEdrxLongR16
+	NumdrxCyclesrelaxedR16 *GwusTimeparametersR16NumdrxCyclesrelaxedR16
+	PowerboostR16          *GwusTimeparametersR16PowerboostR16
 }

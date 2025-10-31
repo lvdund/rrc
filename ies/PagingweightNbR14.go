@@ -8,20 +8,21 @@ type PagingweightNbR14 struct {
 }
 
 const (
-	PagingweightNbR14W1  = 0
-	PagingweightNbR14W2  = 1
-	PagingweightNbR14W3  = 2
-	PagingweightNbR14W4  = 3
-	PagingweightNbR14W5  = 4
-	PagingweightNbR14W6  = 5
-	PagingweightNbR14W7  = 6
-	PagingweightNbR14W8  = 7
-	PagingweightNbR14W9  = 8
-	PagingweightNbR14W10 = 9
-	PagingweightNbR14W11 = 10
-	PagingweightNbR14W12 = 11
-	PagingweightNbR14W13 = 12
-	PagingweightNbR14W14 = 13
-	PagingweightNbR14W15 = 14
-	PagingweightNbR14W16 = 15
+	PagingweightNbR14EnumeratedNothing = iota
+	PagingweightNbR14EnumeratedW1
+	PagingweightNbR14EnumeratedW2
+	PagingweightNbR14EnumeratedW3
+	PagingweightNbR14EnumeratedW4
+	PagingweightNbR14EnumeratedW5
+	PagingweightNbR14EnumeratedW6
+	PagingweightNbR14EnumeratedW7
+	PagingweightNbR14EnumeratedW8
+	PagingweightNbR14EnumeratedW9
+	PagingweightNbR14EnumeratedW10
+	PagingweightNbR14EnumeratedW11
+	PagingweightNbR14EnumeratedW12
+	PagingweightNbR14EnumeratedW13
+	PagingweightNbR14EnumeratedW14
+	PagingweightNbR14EnumeratedW15
+	PagingweightNbR14EnumeratedW16
 )

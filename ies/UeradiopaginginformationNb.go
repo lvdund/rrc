@@ -2,7 +2,8 @@ package ies
 
 import "rrc/utils"
 
-// UERadioPagingInformation-NB ::= SEQUENCE
+// UERadioPagingInformation-NB-IEs ::= SEQUENCE
 type UeradiopaginginformationNb struct {
-	Criticalextensions interface{}
+	UeRadiopaginginfoR13 utils.OCTETSTRING
+	Noncriticalextension *UeradiopaginginformationNbIesNoncriticalextension
 }

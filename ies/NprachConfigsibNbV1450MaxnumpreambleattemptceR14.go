@@ -1,0 +1,20 @@
+package ies
+
+import "rrc/utils"
+
+// NPRACH-ConfigSIB-NB-v1450-maxNumPreambleAttemptCE-r14 ::= ENUMERATED
+type NprachConfigsibNbV1450MaxnumpreambleattemptceR14 struct {
+	Value utils.ENUMERATED
+}
+
+const (
+	NprachConfigsibNbV1450MaxnumpreambleattemptceR14EnumeratedNothing = iota
+	NprachConfigsibNbV1450MaxnumpreambleattemptceR14EnumeratedN3
+	NprachConfigsibNbV1450MaxnumpreambleattemptceR14EnumeratedN4
+	NprachConfigsibNbV1450MaxnumpreambleattemptceR14EnumeratedN5
+	NprachConfigsibNbV1450MaxnumpreambleattemptceR14EnumeratedN6
+	NprachConfigsibNbV1450MaxnumpreambleattemptceR14EnumeratedN7
+	NprachConfigsibNbV1450MaxnumpreambleattemptceR14EnumeratedN8
+	NprachConfigsibNbV1450MaxnumpreambleattemptceR14EnumeratedN10
+	NprachConfigsibNbV1450MaxnumpreambleattemptceR14EnumeratedSpare1
+)

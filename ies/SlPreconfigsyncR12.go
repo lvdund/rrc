@@ -1,7 +1,5 @@
 package ies
 
-import "rrc/utils"
-
 // SL-PreconfigSync-r12 ::= SEQUENCE
 // Extensible
 type SlPreconfigsyncR12 struct {
@@ -11,6 +9,6 @@ type SlPreconfigsyncR12 struct {
 	SynctxparametersR12     P0SlR12
 	SynctxthreshoocR12      RsrpRangesl3R12
 	FiltercoefficientR12    Filtercoefficient
-	SyncrefminhystR12       utils.ENUMERATED
-	SyncrefdiffhystR12      utils.ENUMERATED
+	SyncrefminhystR12       SlPreconfigsyncR12SyncrefminhystR12
+	SyncrefdiffhystR12      SlPreconfigsyncR12SyncrefdiffhystR12
 }

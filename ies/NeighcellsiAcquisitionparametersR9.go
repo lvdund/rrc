@@ -1,10 +1,8 @@
 package ies
 
-import "rrc/utils"
-
 // NeighCellSI-AcquisitionParameters-r9 ::= SEQUENCE
 type NeighcellsiAcquisitionparametersR9 struct {
-	IntrafreqsiAcquisitionforhoR9 *utils.ENUMERATED
-	InterfreqsiAcquisitionforhoR9 *utils.ENUMERATED
-	UtranSiAcquisitionforhoR9     *utils.ENUMERATED
+	IntrafreqsiAcquisitionforhoR9 *NeighcellsiAcquisitionparametersR9IntrafreqsiAcquisitionforhoR9
+	InterfreqsiAcquisitionforhoR9 *NeighcellsiAcquisitionparametersR9InterfreqsiAcquisitionforhoR9
+	UtranSiAcquisitionforhoR9     *NeighcellsiAcquisitionparametersR9UtranSiAcquisitionforhoR9
 }

@@ -1,7 +1,5 @@
 package ies
 
-import "rrc/utils"
-
 // CQI-ReportConfig-v1310 ::= SEQUENCE
 type CqiReportconfigV1310 struct {
 	CqiReportbothV1310      *CqiReportbothV1310

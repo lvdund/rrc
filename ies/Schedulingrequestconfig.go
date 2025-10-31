@@ -1,20 +1,14 @@
 package ies
 
-import "rrc/utils"
-
 // SchedulingRequestConfig ::= CHOICE
-type Schedulingrequestconfig interface {
-	isSchedulingrequestconfig()
+const (
+	SchedulingrequestconfigChoiceNothing = iota
+	SchedulingrequestconfigChoiceRelease
+	SchedulingrequestconfigChoiceSetup
+)
+
+type Schedulingrequestconfig struct {
+	Choice  uint64
+	Release *struct{}
+	Setup   *SchedulingrequestconfigSetup
 }
-
-type SchedulingrequestconfigRelease struct {
-	Value struct{}
-}
-
-func (*SchedulingrequestconfigRelease) isSchedulingrequestconfig() {}
-
-type SchedulingrequestconfigSetup struct {
-	Value interface{}
-}
-
-func (*SchedulingrequestconfigSetup) isSchedulingrequestconfig() {}

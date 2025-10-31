@@ -1,10 +1,8 @@
 package ies
 
-import "rrc/utils"
-
 // MBMS-ROM-Info-r15 ::= SEQUENCE
 type MbmsRomInfoR15 struct {
 	MbmsRomFreqR15              ArfcnValueeutraR9
-	MbmsRomSubcarrierspacingR15 utils.ENUMERATED
-	MbmsBandwidthR15            utils.ENUMERATED
+	MbmsRomSubcarrierspacingR15 MbmsRomInfoR15MbmsRomSubcarrierspacingR15
+	MbmsBandwidthR15            MbmsRomInfoR15MbmsBandwidthR15
 }

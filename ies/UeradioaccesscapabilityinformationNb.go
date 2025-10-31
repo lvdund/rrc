@@ -2,7 +2,8 @@ package ies
 
 import "rrc/utils"
 
-// UERadioAccessCapabilityInformation-NB ::= SEQUENCE
+// UERadioAccessCapabilityInformation-NB-IEs ::= SEQUENCE
 type UeradioaccesscapabilityinformationNb struct {
-	Criticalextensions interface{}
+	UeRadioaccesscapabilityinfoR13 utils.OCTETSTRING
+	Noncriticalextension           *UeradioaccesscapabilityinformationNbV1380
 }

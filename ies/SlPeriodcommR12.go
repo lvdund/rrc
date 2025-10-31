@@ -8,20 +8,21 @@ type SlPeriodcommR12 struct {
 }
 
 const (
-	SlPeriodcommR12Sf40   = 0
-	SlPeriodcommR12Sf60   = 1
-	SlPeriodcommR12Sf70   = 2
-	SlPeriodcommR12Sf80   = 3
-	SlPeriodcommR12Sf120  = 4
-	SlPeriodcommR12Sf140  = 5
-	SlPeriodcommR12Sf160  = 6
-	SlPeriodcommR12Sf240  = 7
-	SlPeriodcommR12Sf280  = 8
-	SlPeriodcommR12Sf320  = 9
-	SlPeriodcommR12Spare6 = 10
-	SlPeriodcommR12Spare5 = 11
-	SlPeriodcommR12Spare4 = 12
-	SlPeriodcommR12Spare3 = 13
-	SlPeriodcommR12Spare2 = 14
-	SlPeriodcommR12Spare  = 15
+	SlPeriodcommR12EnumeratedNothing = iota
+	SlPeriodcommR12EnumeratedSf40
+	SlPeriodcommR12EnumeratedSf60
+	SlPeriodcommR12EnumeratedSf70
+	SlPeriodcommR12EnumeratedSf80
+	SlPeriodcommR12EnumeratedSf120
+	SlPeriodcommR12EnumeratedSf140
+	SlPeriodcommR12EnumeratedSf160
+	SlPeriodcommR12EnumeratedSf240
+	SlPeriodcommR12EnumeratedSf280
+	SlPeriodcommR12EnumeratedSf320
+	SlPeriodcommR12EnumeratedSpare6
+	SlPeriodcommR12EnumeratedSpare5
+	SlPeriodcommR12EnumeratedSpare4
+	SlPeriodcommR12EnumeratedSpare3
+	SlPeriodcommR12EnumeratedSpare2
+	SlPeriodcommR12EnumeratedSpare
 )

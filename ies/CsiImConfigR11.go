@@ -6,6 +6,6 @@ import "rrc/utils"
 // Extensible
 type CsiImConfigR11 struct {
 	CsiImConfigidR11  CsiImConfigidR11
-	ResourceconfigR11 utils.INTEGER
-	SubframeconfigR11 utils.INTEGER
+	ResourceconfigR11 utils.INTEGER `lb:0,ub:31`
+	SubframeconfigR11 utils.INTEGER `lb:0,ub:154`
 }

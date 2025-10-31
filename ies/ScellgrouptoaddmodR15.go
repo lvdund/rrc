@@ -1,7 +1,5 @@
 package ies
 
-import "rrc/utils"
-
 // SCellGroupToAddMod-r15 ::= SEQUENCE
 type ScellgrouptoaddmodR15 struct {
 	ScellgroupindexR15    ScellgroupindexR15

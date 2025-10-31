@@ -1,20 +1,14 @@
 package ies
 
-import "rrc/utils"
-
 // CQI-ReportAperiodic-v1310 ::= CHOICE
-type CqiReportaperiodicV1310 interface {
-	isCqiReportaperiodicV1310()
+const (
+	CqiReportaperiodicV1310ChoiceNothing = iota
+	CqiReportaperiodicV1310ChoiceRelease
+	CqiReportaperiodicV1310ChoiceSetup
+)
+
+type CqiReportaperiodicV1310 struct {
+	Choice  uint64
+	Release *struct{}
+	Setup   *CqiReportaperiodicV1310Setup
 }
-
-type CqiReportaperiodicV1310Release struct {
-	Value struct{}
-}
-
-func (*CqiReportaperiodicV1310Release) isCqiReportaperiodicV1310() {}
-
-type CqiReportaperiodicV1310Setup struct {
-	Value interface{}
-}
-
-func (*CqiReportaperiodicV1310Setup) isCqiReportaperiodicV1310() {}

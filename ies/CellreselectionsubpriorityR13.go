@@ -8,8 +8,9 @@ type CellreselectionsubpriorityR13 struct {
 }
 
 const (
-	CellreselectionsubpriorityR13Odot2 = 0
-	CellreselectionsubpriorityR13Odot4 = 1
-	CellreselectionsubpriorityR13Odot6 = 2
-	CellreselectionsubpriorityR13Odot8 = 3
+	CellreselectionsubpriorityR13EnumeratedNothing = iota
+	CellreselectionsubpriorityR13EnumeratedOdot2
+	CellreselectionsubpriorityR13EnumeratedOdot4
+	CellreselectionsubpriorityR13EnumeratedOdot6
+	CellreselectionsubpriorityR13EnumeratedOdot8
 )

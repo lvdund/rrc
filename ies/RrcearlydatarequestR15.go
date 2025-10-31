@@ -1,8 +1,9 @@
 package ies
 
-import "rrc/utils"
-
-// RRCEarlyDataRequest-r15 ::= SEQUENCE
+// RRCEarlyDataRequest-r15-IEs ::= SEQUENCE
 type RrcearlydatarequestR15 struct {
-	Criticalextensions interface{}
+	STmsiR15              STmsi
+	EstablishmentcauseR15 RrcearlydatarequestR15IesEstablishmentcauseR15
+	DedicatedinfonasR15   Dedicatedinfonas
+	Noncriticalextension  *RrcearlydatarequestV1590
 }

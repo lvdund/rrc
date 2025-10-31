@@ -1,9 +1,7 @@
 package ies
 
-import "rrc/utils"
-
 // PhyLayerParameters-v1450 ::= SEQUENCE
 type PhylayerparametersV1450 struct {
-	CeSrsEnhancementwithoutcomb4R14 *utils.ENUMERATED
-	CrsLessdwptsR14                 *utils.ENUMERATED
+	CeSrsEnhancementwithoutcomb4R14 *PhylayerparametersV1450CeSrsEnhancementwithoutcomb4R14
+	CrsLessdwptsR14                 *PhylayerparametersV1450CrsLessdwptsR14
 }

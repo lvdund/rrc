@@ -1,20 +1,14 @@
 package ies
 
-import "rrc/utils"
-
 // Enable256QAM-r14 ::= CHOICE
-type Enable256qamR14 interface {
-	isEnable256qamR14()
+const (
+	Enable256qamR14ChoiceNothing = iota
+	Enable256qamR14ChoiceRelease
+	Enable256qamR14ChoiceSetup
+)
+
+type Enable256qamR14 struct {
+	Choice  uint64
+	Release *struct{}
+	Setup   *Enable256qamR14Setup
 }
-
-type Enable256qamR14Release struct {
-	Value struct{}
-}
-
-func (*Enable256qamR14Release) isEnable256qamR14() {}
-
-type Enable256qamR14Setup struct {
-	Value interface{}
-}
-
-func (*Enable256qamR14Setup) isEnable256qamR14() {}

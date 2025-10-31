@@ -1,0 +1,20 @@
+package ies
+
+import "rrc/utils"
+
+// ReportConfigInterRAT-reportAmount ::= ENUMERATED
+type ReportconfiginterratReportamount struct {
+	Value utils.ENUMERATED
+}
+
+const (
+	ReportconfiginterratReportamountEnumeratedNothing = iota
+	ReportconfiginterratReportamountEnumeratedR1
+	ReportconfiginterratReportamountEnumeratedR2
+	ReportconfiginterratReportamountEnumeratedR4
+	ReportconfiginterratReportamountEnumeratedR8
+	ReportconfiginterratReportamountEnumeratedR16
+	ReportconfiginterratReportamountEnumeratedR32
+	ReportconfiginterratReportamountEnumeratedR64
+	ReportconfiginterratReportamountEnumeratedInfinity
+)

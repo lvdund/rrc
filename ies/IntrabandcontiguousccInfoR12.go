@@ -1,10 +1,8 @@
 package ies
 
-import "rrc/utils"
-
 // IntraBandContiguousCC-Info-r12 ::= SEQUENCE
 type IntrabandcontiguousccInfoR12 struct {
-	Fourlayertm3Tm4PerccR12      *utils.ENUMERATED
+	Fourlayertm3Tm4PerccR12      *IntrabandcontiguousccInfoR12Fourlayertm3Tm4PerccR12
 	SupportedmimoCapabilitydlR12 *MimoCapabilitydlR10
-	SupportedcsiProcR12          *utils.ENUMERATED
+	SupportedcsiProcR12          *IntrabandcontiguousccInfoR12SupportedcsiProcR12
 }

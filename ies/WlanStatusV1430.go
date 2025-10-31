@@ -8,6 +8,7 @@ type WlanStatusV1430 struct {
 }
 
 const (
-	WlanStatusV1430Suspended = 0
-	WlanStatusV1430Resumed   = 1
+	WlanStatusV1430EnumeratedNothing = iota
+	WlanStatusV1430EnumeratedSuspended
+	WlanStatusV1430EnumeratedResumed
 )

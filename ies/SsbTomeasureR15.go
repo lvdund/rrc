@@ -3,24 +3,16 @@ package ies
 import "rrc/utils"
 
 // SSB-ToMeasure-r15 ::= CHOICE
-type SsbTomeasureR15 interface {
-	isSsbTomeasureR15()
+const (
+	SsbTomeasureR15ChoiceNothing = iota
+	SsbTomeasureR15ChoiceShortbitmapR15
+	SsbTomeasureR15ChoiceMediumbitmapR15
+	SsbTomeasureR15ChoiceLongbitmapR15
+)
+
+type SsbTomeasureR15 struct {
+	Choice          uint64
+	ShortbitmapR15  *utils.BITSTRING `lb:4,ub:4`
+	MediumbitmapR15 *utils.BITSTRING `lb:8,ub:8`
+	LongbitmapR15   *utils.BITSTRING `lb:64,ub:64`
 }
-
-type SsbTomeasureR15ShortbitmapR15 struct {
-	Value utils.BITSTRING
-}
-
-func (*SsbTomeasureR15ShortbitmapR15) isSsbTomeasureR15() {}
-
-type SsbTomeasureR15MediumbitmapR15 struct {
-	Value utils.BITSTRING
-}
-
-func (*SsbTomeasureR15MediumbitmapR15) isSsbTomeasureR15() {}
-
-type SsbTomeasureR15LongbitmapR15 struct {
-	Value utils.BITSTRING
-}
-
-func (*SsbTomeasureR15LongbitmapR15) isSsbTomeasureR15() {}

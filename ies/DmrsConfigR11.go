@@ -1,20 +1,14 @@
 package ies
 
-import "rrc/utils"
-
 // DMRS-Config-r11 ::= CHOICE
-type DmrsConfigR11 interface {
-	isDmrsConfigR11()
+const (
+	DmrsConfigR11ChoiceNothing = iota
+	DmrsConfigR11ChoiceRelease
+	DmrsConfigR11ChoiceSetup
+)
+
+type DmrsConfigR11 struct {
+	Choice  uint64
+	Release *struct{}
+	Setup   *DmrsConfigR11Setup
 }
-
-type DmrsConfigR11Release struct {
-	Value struct{}
-}
-
-func (*DmrsConfigR11Release) isDmrsConfigR11() {}
-
-type DmrsConfigR11Setup struct {
-	Value interface{}
-}
-
-func (*DmrsConfigR11Setup) isDmrsConfigR11() {}

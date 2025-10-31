@@ -1,0 +1,20 @@
+package ies
+
+import "rrc/utils"
+
+// PUR-Config-NB-r16-pur-ResponseWindowTimer-r16 ::= ENUMERATED
+type PurConfigNbR16PurResponsewindowtimerR16 struct {
+	Value utils.ENUMERATED
+}
+
+const (
+	PurConfigNbR16PurResponsewindowtimerR16EnumeratedNothing = iota
+	PurConfigNbR16PurResponsewindowtimerR16EnumeratedPp1
+	PurConfigNbR16PurResponsewindowtimerR16EnumeratedPp2
+	PurConfigNbR16PurResponsewindowtimerR16EnumeratedPp3
+	PurConfigNbR16PurResponsewindowtimerR16EnumeratedPp4
+	PurConfigNbR16PurResponsewindowtimerR16EnumeratedPp8
+	PurConfigNbR16PurResponsewindowtimerR16EnumeratedPp16
+	PurConfigNbR16PurResponsewindowtimerR16EnumeratedPp32
+	PurConfigNbR16PurResponsewindowtimerR16EnumeratedPp64
+)

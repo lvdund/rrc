@@ -1,7 +1,5 @@
 package ies
 
-import "rrc/utils"
-
 // SystemInformationBlockType1-NB-v1430 ::= SEQUENCE
 type Systeminformationblocktype1NbV1430 struct {
 	CellselectioninfoV1430 *CellselectioninfoNbV1430

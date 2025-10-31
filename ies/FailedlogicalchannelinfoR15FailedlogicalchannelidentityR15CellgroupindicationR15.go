@@ -1,0 +1,14 @@
+package ies
+
+import "rrc/utils"
+
+// FailedLogicalChannelInfo-r15-failedLogicalChannelIdentity-r15-cellGroupIndication-r15 ::= ENUMERATED
+type FailedlogicalchannelinfoR15FailedlogicalchannelidentityR15CellgroupindicationR15 struct {
+	Value utils.ENUMERATED
+}
+
+const (
+	FailedlogicalchannelinfoR15FailedlogicalchannelidentityR15CellgroupindicationR15EnumeratedNothing = iota
+	FailedlogicalchannelinfoR15FailedlogicalchannelidentityR15CellgroupindicationR15EnumeratedMn
+	FailedlogicalchannelinfoR15FailedlogicalchannelidentityR15CellgroupindicationR15EnumeratedSn
+)

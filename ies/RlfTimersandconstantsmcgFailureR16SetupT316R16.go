@@ -1,0 +1,22 @@
+package ies
+
+import "rrc/utils"
+
+// RLF-TimersAndConstantsMCG-Failure-r16-setup-t316-r16 ::= ENUMERATED
+type RlfTimersandconstantsmcgFailureR16SetupT316R16 struct {
+	Value utils.ENUMERATED
+}
+
+const (
+	RlfTimersandconstantsmcgFailureR16SetupT316R16EnumeratedNothing = iota
+	RlfTimersandconstantsmcgFailureR16SetupT316R16EnumeratedMs50
+	RlfTimersandconstantsmcgFailureR16SetupT316R16EnumeratedMs100
+	RlfTimersandconstantsmcgFailureR16SetupT316R16EnumeratedMs200
+	RlfTimersandconstantsmcgFailureR16SetupT316R16EnumeratedMs300
+	RlfTimersandconstantsmcgFailureR16SetupT316R16EnumeratedMs400
+	RlfTimersandconstantsmcgFailureR16SetupT316R16EnumeratedMs500
+	RlfTimersandconstantsmcgFailureR16SetupT316R16EnumeratedMs600
+	RlfTimersandconstantsmcgFailureR16SetupT316R16EnumeratedMs1000
+	RlfTimersandconstantsmcgFailureR16SetupT316R16EnumeratedMs1500
+	RlfTimersandconstantsmcgFailureR16SetupT316R16EnumeratedMs2000
+)

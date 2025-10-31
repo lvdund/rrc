@@ -1,10 +1,8 @@
 package ies
 
-import "rrc/utils"
-
 // IRAT-ParametersNR-r15 ::= SEQUENCE
 type IratParametersnrR15 struct {
-	EnDcR15                  *utils.ENUMERATED
-	Eventb2R15               *utils.ENUMERATED
+	EnDcR15                  *IratParametersnrR15EnDcR15
+	Eventb2R15               *IratParametersnrR15Eventb2R15
 	SupportedbandlistenDcR15 *SupportedbandlistnrR15
 }

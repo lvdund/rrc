@@ -1,0 +1,20 @@
+package ies
+
+import "rrc/utils"
+
+// MBSFN-AreaInfo-r16-subcarrierSpacingMBMS-r16 ::= ENUMERATED
+type MbsfnAreainfoR16SubcarrierspacingmbmsR16 struct {
+	Value utils.ENUMERATED
+}
+
+const (
+	MbsfnAreainfoR16SubcarrierspacingmbmsR16EnumeratedNothing = iota
+	MbsfnAreainfoR16SubcarrierspacingmbmsR16EnumeratedKhz7dot5
+	MbsfnAreainfoR16SubcarrierspacingmbmsR16EnumeratedKhz2dot5
+	MbsfnAreainfoR16SubcarrierspacingmbmsR16EnumeratedKhz1dot25
+	MbsfnAreainfoR16SubcarrierspacingmbmsR16EnumeratedKhz0dot37
+	MbsfnAreainfoR16SubcarrierspacingmbmsR16EnumeratedSpare4
+	MbsfnAreainfoR16SubcarrierspacingmbmsR16EnumeratedSpare3
+	MbsfnAreainfoR16SubcarrierspacingmbmsR16EnumeratedSpare2
+	MbsfnAreainfoR16SubcarrierspacingmbmsR16EnumeratedSpare1
+)

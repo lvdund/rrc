@@ -1,0 +1,20 @@
+package ies
+
+import "rrc/utils"
+
+// NPRACH-Parameters-NB-r13-nprach-Periodicity-r13 ::= ENUMERATED
+type NprachParametersNbR13NprachPeriodicityR13 struct {
+	Value utils.ENUMERATED
+}
+
+const (
+	NprachParametersNbR13NprachPeriodicityR13EnumeratedNothing = iota
+	NprachParametersNbR13NprachPeriodicityR13EnumeratedMs40
+	NprachParametersNbR13NprachPeriodicityR13EnumeratedMs80
+	NprachParametersNbR13NprachPeriodicityR13EnumeratedMs160
+	NprachParametersNbR13NprachPeriodicityR13EnumeratedMs240
+	NprachParametersNbR13NprachPeriodicityR13EnumeratedMs320
+	NprachParametersNbR13NprachPeriodicityR13EnumeratedMs640
+	NprachParametersNbR13NprachPeriodicityR13EnumeratedMs1280
+	NprachParametersNbR13NprachPeriodicityR13EnumeratedMs2560
+)

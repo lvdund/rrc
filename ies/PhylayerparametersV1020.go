@@ -1,14 +1,12 @@
 package ies
 
-import "rrc/utils"
-
 // PhyLayerParameters-v1020 ::= SEQUENCE
 type PhylayerparametersV1020 struct {
-	TwoantennaportsforpucchR10       *utils.ENUMERATED
-	Tm9With8txFddR10                 *utils.ENUMERATED
-	PmiDisablingR10                  *utils.ENUMERATED
-	CrosscarrierschedulingR10        *utils.ENUMERATED
-	SimultaneouspucchPuschR10        *utils.ENUMERATED
-	MulticlusterpuschWithinccR10     *utils.ENUMERATED
+	TwoantennaportsforpucchR10       *PhylayerparametersV1020TwoantennaportsforpucchR10
+	Tm9With8txFddR10                 *PhylayerparametersV1020Tm9With8txFddR10
+	PmiDisablingR10                  *PhylayerparametersV1020PmiDisablingR10
+	CrosscarrierschedulingR10        *PhylayerparametersV1020CrosscarrierschedulingR10
+	SimultaneouspucchPuschR10        *PhylayerparametersV1020SimultaneouspucchPuschR10
+	MulticlusterpuschWithinccR10     *PhylayerparametersV1020MulticlusterpuschWithinccR10
 	NoncontiguousulRaWithinccListR10 *NoncontiguousulRaWithinccListR10
 }

@@ -6,5 +6,5 @@ import "rrc/utils"
 type MbmscountingrequestR10 struct {
 	CountingrequestlistR10   CountingrequestlistR10
 	Latenoncriticalextension *utils.OCTETSTRING
-	Noncriticalextension     *interface{}
+	Noncriticalextension     *MbmscountingrequestR10Noncriticalextension
 }

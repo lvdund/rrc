@@ -8,15 +8,16 @@ type Preambletransmax struct {
 }
 
 const (
-	PreambletransmaxN3   = 0
-	PreambletransmaxN4   = 1
-	PreambletransmaxN5   = 2
-	PreambletransmaxN6   = 3
-	PreambletransmaxN7   = 4
-	PreambletransmaxN8   = 5
-	PreambletransmaxN10  = 6
-	PreambletransmaxN20  = 7
-	PreambletransmaxN50  = 8
-	PreambletransmaxN100 = 9
-	PreambletransmaxN200 = 10
+	PreambletransmaxEnumeratedNothing = iota
+	PreambletransmaxEnumeratedN3
+	PreambletransmaxEnumeratedN4
+	PreambletransmaxEnumeratedN5
+	PreambletransmaxEnumeratedN6
+	PreambletransmaxEnumeratedN7
+	PreambletransmaxEnumeratedN8
+	PreambletransmaxEnumeratedN10
+	PreambletransmaxEnumeratedN20
+	PreambletransmaxEnumeratedN50
+	PreambletransmaxEnumeratedN100
+	PreambletransmaxEnumeratedN200
 )

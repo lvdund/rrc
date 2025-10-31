@@ -1,20 +1,14 @@
 package ies
 
-import "rrc/utils"
-
 // UAC-Param-NB-r16 ::= CHOICE
-type UacParamNbR16 interface {
-	isUacParamNbR16()
+const (
+	UacParamNbR16ChoiceNothing = iota
+	UacParamNbR16ChoiceUacBarringcommon
+	UacParamNbR16ChoiceUacBarringperplmnList
+)
+
+type UacParamNbR16 struct {
+	Choice                uint64
+	UacBarringcommon      *UacBarringNbR16
+	UacBarringperplmnList *[]UacBarringNbR16 `lb:1,ub:maxPLMNR11`
 }
-
-type UacParamNbR16UacBarringcommon struct {
-	Value UacBarringNbR16
-}
-
-func (*UacParamNbR16UacBarringcommon) isUacParamNbR16() {}
-
-type UacParamNbR16UacBarringperplmnList struct {
-	Value interface{}
-}
-
-func (*UacParamNbR16UacBarringperplmnList) isUacParamNbR16() {}

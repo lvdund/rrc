@@ -1,0 +1,20 @@
+package ies
+
+import "rrc/utils"
+
+// DRX-Config-NB-r13-setup-onDurationTimer-r13 ::= ENUMERATED
+type DrxConfigNbR13SetupOndurationtimerR13 struct {
+	Value utils.ENUMERATED
+}
+
+const (
+	DrxConfigNbR13SetupOndurationtimerR13EnumeratedNothing = iota
+	DrxConfigNbR13SetupOndurationtimerR13EnumeratedPp1
+	DrxConfigNbR13SetupOndurationtimerR13EnumeratedPp2
+	DrxConfigNbR13SetupOndurationtimerR13EnumeratedPp3
+	DrxConfigNbR13SetupOndurationtimerR13EnumeratedPp4
+	DrxConfigNbR13SetupOndurationtimerR13EnumeratedPp8
+	DrxConfigNbR13SetupOndurationtimerR13EnumeratedPp16
+	DrxConfigNbR13SetupOndurationtimerR13EnumeratedPp32
+	DrxConfigNbR13SetupOndurationtimerR13EnumeratedSpare
+)

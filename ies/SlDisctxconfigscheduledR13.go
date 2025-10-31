@@ -1,7 +1,5 @@
 package ies
 
-import "rrc/utils"
-
 // SL-DiscTxConfigScheduled-r13 ::= SEQUENCE
 // Extensible
 type SlDisctxconfigscheduledR13 struct {

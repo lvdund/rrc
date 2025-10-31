@@ -15,6 +15,6 @@ type SlV2xConfigcommonR14 struct {
 	TypetxsyncR14                 *SlTypetxsyncR14
 	ThresslTxprioritizationR14    *SlPriorityR13
 	AnchorcarrierfreqlistR14      *SlAnchorcarrierfreqlistV2xR14
-	OffsetdfnR14                  *utils.INTEGER
+	OffsetdfnR14                  *utils.INTEGER `lb:0,ub:1000`
 	CbrCommontxconfiglistR14      *SlCbrCommontxconfiglistR14
 }

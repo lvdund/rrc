@@ -1,7 +1,5 @@
 package ies
 
-import "rrc/utils"
-
 // InterFreqCarrierFreqInfo-v1610 ::= SEQUENCE
 type InterfreqcarrierfreqinfoV1610 struct {
 	AltcellreselectionpriorityR16    *Cellreselectionpriority

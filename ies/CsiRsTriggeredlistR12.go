@@ -1,9 +1,7 @@
 package ies
 
-import "rrc/utils"
-
 // CSI-RS-TriggeredList-r12 ::= SEQUENCE OF MeasCSI-RS-Id-r12
 // SIZE (1..maxCSI-RS-Meas-r12)
 type CsiRsTriggeredlistR12 struct {
-	Value []MeascsiRsIdR12
+	Value []MeascsiRsIdR12 `lb:1,ub:maxCSIRsMeasR12`
 }

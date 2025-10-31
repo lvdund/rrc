@@ -1,0 +1,42 @@
+package ies
+
+// UL-DCCH-MessageType-messageClassExtension-c2 ::= CHOICE
+const (
+	UlDcchMessagetypeMessageclassextensionC2ChoiceNothing = iota
+	UlDcchMessagetypeMessageclassextensionC2ChoiceUeassistanceinformationR11
+	UlDcchMessagetypeMessageclassextensionC2ChoiceIndevicecoexindicationR11
+	UlDcchMessagetypeMessageclassextensionC2ChoiceMbmsinterestindicationR11
+	UlDcchMessagetypeMessageclassextensionC2ChoiceScgfailureinformationR12
+	UlDcchMessagetypeMessageclassextensionC2ChoiceSidelinkueinformationR12
+	UlDcchMessagetypeMessageclassextensionC2ChoiceWlanconnectionstatusreportR13
+	UlDcchMessagetypeMessageclassextensionC2ChoiceRrcconnectionresumecompleteR13
+	UlDcchMessagetypeMessageclassextensionC2ChoiceUlinformationtransfermrdcR15
+	UlDcchMessagetypeMessageclassextensionC2ChoiceScgfailureinformationnrR15
+	UlDcchMessagetypeMessageclassextensionC2ChoiceMeasreportapplayerR15
+	UlDcchMessagetypeMessageclassextensionC2ChoiceFailureinformationR15
+	UlDcchMessagetypeMessageclassextensionC2ChoiceUldedicatedmessagesegmentR16
+	UlDcchMessagetypeMessageclassextensionC2ChoicePurconfigurationrequestR16
+	UlDcchMessagetypeMessageclassextensionC2ChoiceFailureinformationR16
+	UlDcchMessagetypeMessageclassextensionC2ChoiceMcgfailureinformationR16
+	UlDcchMessagetypeMessageclassextensionC2ChoiceUlinformationtransferiratR16
+)
+
+type UlDcchMessagetypeMessageclassextensionC2 struct {
+	Choice                         uint64
+	UeassistanceinformationR11     *UeassistanceinformationR11
+	IndevicecoexindicationR11      *IndevicecoexindicationR11
+	MbmsinterestindicationR11      *MbmsinterestindicationR11
+	ScgfailureinformationR12       *ScgfailureinformationR12
+	SidelinkueinformationR12       *SidelinkueinformationR12
+	WlanconnectionstatusreportR13  *WlanconnectionstatusreportR13
+	RrcconnectionresumecompleteR13 *RrcconnectionresumecompleteR13
+	UlinformationtransfermrdcR15   *UlinformationtransfermrdcR15
+	ScgfailureinformationnrR15     *ScgfailureinformationnrR15
+	MeasreportapplayerR15          *MeasreportapplayerR15
+	FailureinformationR15          *FailureinformationR15
+	UldedicatedmessagesegmentR16   *UldedicatedmessagesegmentR16
+	PurconfigurationrequestR16     *PurconfigurationrequestR16
+	FailureinformationR16          *FailureinformationR16
+	McgfailureinformationR16       *McgfailureinformationR16
+	UlinformationtransferiratR16   *UlinformationtransferiratR16
+}

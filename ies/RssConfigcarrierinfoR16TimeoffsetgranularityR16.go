@@ -1,0 +1,20 @@
+package ies
+
+import "rrc/utils"
+
+// RSS-ConfigCarrierInfo-r16-timeOffsetGranularity-r16 ::= ENUMERATED
+type RssConfigcarrierinfoR16TimeoffsetgranularityR16 struct {
+	Value utils.ENUMERATED
+}
+
+const (
+	RssConfigcarrierinfoR16TimeoffsetgranularityR16EnumeratedNothing = iota
+	RssConfigcarrierinfoR16TimeoffsetgranularityR16EnumeratedG1
+	RssConfigcarrierinfoR16TimeoffsetgranularityR16EnumeratedG2
+	RssConfigcarrierinfoR16TimeoffsetgranularityR16EnumeratedG4
+	RssConfigcarrierinfoR16TimeoffsetgranularityR16EnumeratedG8
+	RssConfigcarrierinfoR16TimeoffsetgranularityR16EnumeratedG16
+	RssConfigcarrierinfoR16TimeoffsetgranularityR16EnumeratedG32
+	RssConfigcarrierinfoR16TimeoffsetgranularityR16EnumeratedG64
+	RssConfigcarrierinfoR16TimeoffsetgranularityR16EnumeratedG128
+)

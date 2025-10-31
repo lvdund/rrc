@@ -6,5 +6,5 @@ import "rrc/utils"
 type UacBarringNbR16 struct {
 	UacBarringpercatlistR16        *UacBarringpercatlistNbR16
 	UacAc1SelectassistinfoR16      *UacAc1SelectassistinfoR15
-	UacBarringforaccessidentityR16 utils.BITSTRING
+	UacBarringforaccessidentityR16 utils.BITSTRING `lb:7,ub:7`
 }

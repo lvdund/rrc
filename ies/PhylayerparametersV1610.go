@@ -1,14 +1,12 @@
 package ies
 
-import "rrc/utils"
-
 // PhyLayerParameters-v1610 ::= SEQUENCE
 type PhylayerparametersV1610 struct {
-	CeCapabilitiesV1610      *interface{}
-	WidebandprgSlotR16       *utils.ENUMERATED
-	WidebandprgSubslotR16    *utils.ENUMERATED
-	WidebandprgSubframeR16   *utils.ENUMERATED
-	AddsrsR16                *interface{}
-	VirtualcellidBasicsrsR16 *utils.ENUMERATED
-	VirtualcellidAddsrsR16   *utils.ENUMERATED
+	CeCapabilitiesV1610      *PhylayerparametersV1610CeCapabilitiesV1610
+	WidebandprgSlotR16       *PhylayerparametersV1610WidebandprgSlotR16
+	WidebandprgSubslotR16    *PhylayerparametersV1610WidebandprgSubslotR16
+	WidebandprgSubframeR16   *PhylayerparametersV1610WidebandprgSubframeR16
+	AddsrsR16                *PhylayerparametersV1610AddsrsR16
+	VirtualcellidBasicsrsR16 *PhylayerparametersV1610VirtualcellidBasicsrsR16
+	VirtualcellidAddsrsR16   *PhylayerparametersV1610VirtualcellidAddsrsR16
 }

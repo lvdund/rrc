@@ -8,12 +8,13 @@ type LoggingintervalR10 struct {
 }
 
 const (
-	LoggingintervalR10Ms1280  = 0
-	LoggingintervalR10Ms2560  = 1
-	LoggingintervalR10Ms5120  = 2
-	LoggingintervalR10Ms10240 = 3
-	LoggingintervalR10Ms20480 = 4
-	LoggingintervalR10Ms30720 = 5
-	LoggingintervalR10Ms40960 = 6
-	LoggingintervalR10Ms61440 = 7
+	LoggingintervalR10EnumeratedNothing = iota
+	LoggingintervalR10EnumeratedMs1280
+	LoggingintervalR10EnumeratedMs2560
+	LoggingintervalR10EnumeratedMs5120
+	LoggingintervalR10EnumeratedMs10240
+	LoggingintervalR10EnumeratedMs20480
+	LoggingintervalR10EnumeratedMs30720
+	LoggingintervalR10EnumeratedMs40960
+	LoggingintervalR10EnumeratedMs61440
 )

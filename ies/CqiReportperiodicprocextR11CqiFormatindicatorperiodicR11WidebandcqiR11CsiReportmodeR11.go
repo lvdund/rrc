@@ -1,0 +1,14 @@
+package ies
+
+import "rrc/utils"
+
+// CQI-ReportPeriodicProcExt-r11-cqi-FormatIndicatorPeriodic-r11-widebandCQI-r11-csi-ReportMode-r11 ::= ENUMERATED
+type CqiReportperiodicprocextR11CqiFormatindicatorperiodicR11WidebandcqiR11CsiReportmodeR11 struct {
+	Value utils.ENUMERATED
+}
+
+const (
+	CqiReportperiodicprocextR11CqiFormatindicatorperiodicR11WidebandcqiR11CsiReportmodeR11EnumeratedNothing = iota
+	CqiReportperiodicprocextR11CqiFormatindicatorperiodicR11WidebandcqiR11CsiReportmodeR11EnumeratedSubmode1
+	CqiReportperiodicprocextR11CqiFormatindicatorperiodicR11WidebandcqiR11CsiReportmodeR11EnumeratedSubmode2
+)

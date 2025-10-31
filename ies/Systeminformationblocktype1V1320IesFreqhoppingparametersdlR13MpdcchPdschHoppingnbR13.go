@@ -1,0 +1,14 @@
+package ies
+
+import "rrc/utils"
+
+// SystemInformationBlockType1-v1320-IEs-freqHoppingParametersDL-r13-mpdcch-pdsch-HoppingNB-r13 ::= ENUMERATED
+type Systeminformationblocktype1V1320IesFreqhoppingparametersdlR13MpdcchPdschHoppingnbR13 struct {
+	Value utils.ENUMERATED
+}
+
+const (
+	Systeminformationblocktype1V1320IesFreqhoppingparametersdlR13MpdcchPdschHoppingnbR13EnumeratedNothing = iota
+	Systeminformationblocktype1V1320IesFreqhoppingparametersdlR13MpdcchPdschHoppingnbR13EnumeratedNb2
+	Systeminformationblocktype1V1320IesFreqhoppingparametersdlR13MpdcchPdschHoppingnbR13EnumeratedNb4
+)

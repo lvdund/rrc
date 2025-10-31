@@ -1,0 +1,7 @@
+package ies
+
+// MBMS-SupportedBandInfo-r16-subcarrierSpacingMBMS-khz0dot37-r16 ::= SEQUENCE
+type MbmsSupportedbandinfoR16SubcarrierspacingmbmsKhz0dot37R16 struct {
+	Timeseparationslot2R16 *MbmsSupportedbandinfoR16SubcarrierspacingmbmsKhz0dot37R16Timeseparationslot2R16
+	Timeseparationslot4R16 *MbmsSupportedbandinfoR16SubcarrierspacingmbmsKhz0dot37R16Timeseparationslot4R16
+}

@@ -8,12 +8,13 @@ type GwusPagingprobthreshR16 struct {
 }
 
 const (
-	GwusPagingprobthreshR16P20 = 0
-	GwusPagingprobthreshR16P30 = 1
-	GwusPagingprobthreshR16P40 = 2
-	GwusPagingprobthreshR16P50 = 3
-	GwusPagingprobthreshR16P60 = 4
-	GwusPagingprobthreshR16P70 = 5
-	GwusPagingprobthreshR16P80 = 6
-	GwusPagingprobthreshR16P90 = 7
+	GwusPagingprobthreshR16EnumeratedNothing = iota
+	GwusPagingprobthreshR16EnumeratedP20
+	GwusPagingprobthreshR16EnumeratedP30
+	GwusPagingprobthreshR16EnumeratedP40
+	GwusPagingprobthreshR16EnumeratedP50
+	GwusPagingprobthreshR16EnumeratedP60
+	GwusPagingprobthreshR16EnumeratedP70
+	GwusPagingprobthreshR16EnumeratedP80
+	GwusPagingprobthreshR16EnumeratedP90
 )

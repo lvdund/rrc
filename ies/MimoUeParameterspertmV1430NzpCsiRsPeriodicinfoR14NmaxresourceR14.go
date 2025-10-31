@@ -1,0 +1,16 @@
+package ies
+
+import "rrc/utils"
+
+// MIMO-UE-ParametersPerTM-v1430-nzp-CSI-RS-PeriodicInfo-r14-nMaxResource-r14 ::= ENUMERATED
+type MimoUeParameterspertmV1430NzpCsiRsPeriodicinfoR14NmaxresourceR14 struct {
+	Value utils.ENUMERATED
+}
+
+const (
+	MimoUeParameterspertmV1430NzpCsiRsPeriodicinfoR14NmaxresourceR14EnumeratedNothing = iota
+	MimoUeParameterspertmV1430NzpCsiRsPeriodicinfoR14NmaxresourceR14EnumeratedN1
+	MimoUeParameterspertmV1430NzpCsiRsPeriodicinfoR14NmaxresourceR14EnumeratedN2
+	MimoUeParameterspertmV1430NzpCsiRsPeriodicinfoR14NmaxresourceR14EnumeratedN4
+	MimoUeParameterspertmV1430NzpCsiRsPeriodicinfoR14NmaxresourceR14EnumeratedN8
+)

@@ -1,0 +1,38 @@
+package ies
+
+import "rrc/utils"
+
+// SIB-Type ::= utils.ENUMERATED // Extensible
+type SibType struct {
+	Value utils.ENUMERATED
+}
+
+const (
+	SibTypeEnumeratedNothing = iota
+	SibTypeEnumeratedSibtype3
+	SibTypeEnumeratedSibtype4
+	SibTypeEnumeratedSibtype5
+	SibTypeEnumeratedSibtype6
+	SibTypeEnumeratedSibtype7
+	SibTypeEnumeratedSibtype8
+	SibTypeEnumeratedSibtype9
+	SibTypeEnumeratedSibtype10
+	SibTypeEnumeratedSibtype11
+	SibTypeEnumeratedSibtype12_V920
+	SibTypeEnumeratedSibtype13_V920
+	SibTypeEnumeratedSibtype14_V1130
+	SibTypeEnumeratedSibtype15_V1130
+	SibTypeEnumeratedSibtype16_V1130
+	SibTypeEnumeratedSibtype17_V1250
+	SibTypeEnumeratedSibtype18_V1250
+	SibTypeEnumeratedSibtype19_V1250
+	SibTypeEnumeratedSibtype20_V1310
+	SibTypeEnumeratedSibtype21_V1430
+	SibTypeEnumeratedSibtype24_V1530
+	SibTypeEnumeratedSibtype25_V1530
+	SibTypeEnumeratedSibtype26_V1530
+	SibTypeEnumeratedSibtype26a_V1610
+	SibTypeEnumeratedSibtype27_V1610
+	SibTypeEnumeratedSibtype28_V1610
+	SibTypeEnumeratedSibtype29_V1610
+)

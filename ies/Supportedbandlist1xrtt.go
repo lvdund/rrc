@@ -1,9 +1,7 @@
 package ies
 
-import "rrc/utils"
-
 // SupportedBandList1XRTT ::= SEQUENCE OF BandclassCDMA2000
 // SIZE (1..maxCDMA-BandClass)
 type Supportedbandlist1xrtt struct {
-	Value []Bandclasscdma2000
+	Value []Bandclasscdma2000 `lb:1,ub:maxCDMABandclass`
 }

@@ -1,0 +1,16 @@
+package ies
+
+import "rrc/utils"
+
+// RRCEarlyDataRequest-5GC-r16-IEs-establishmentCause-r16 ::= ENUMERATED
+type Rrcearlydatarequest5gcR16IesEstablishmentcauseR16 struct {
+	Value utils.ENUMERATED
+}
+
+const (
+	Rrcearlydatarequest5gcR16IesEstablishmentcauseR16EnumeratedNothing = iota
+	Rrcearlydatarequest5gcR16IesEstablishmentcauseR16EnumeratedMo_Data
+	Rrcearlydatarequest5gcR16IesEstablishmentcauseR16EnumeratedSpare3
+	Rrcearlydatarequest5gcR16IesEstablishmentcauseR16EnumeratedSpare2
+	Rrcearlydatarequest5gcR16IesEstablishmentcauseR16EnumeratedSpare1
+)

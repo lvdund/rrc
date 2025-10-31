@@ -1,21 +1,15 @@
 package ies
 
-import "rrc/utils"
-
 // RMTC-Config-r13 ::= CHOICE
 // Extensible
-type RmtcConfigR13 interface {
-	isRmtcConfigR13()
+const (
+	RmtcConfigR13ChoiceNothing = iota
+	RmtcConfigR13ChoiceRelease
+	RmtcConfigR13ChoiceSetup
+)
+
+type RmtcConfigR13 struct {
+	Choice  uint64
+	Release *struct{}
+	Setup   *RmtcConfigR13Setup
 }
-
-type RmtcConfigR13Release struct {
-	Value struct{}
-}
-
-func (*RmtcConfigR13Release) isRmtcConfigR13() {}
-
-type RmtcConfigR13Setup struct {
-	Value interface{}
-}
-
-func (*RmtcConfigR13Setup) isRmtcConfigR13() {}

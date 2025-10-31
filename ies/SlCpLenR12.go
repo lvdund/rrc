@@ -8,6 +8,7 @@ type SlCpLenR12 struct {
 }
 
 const (
-	SlCpLenR12Normal   = 0
-	SlCpLenR12Extended = 1
+	SlCpLenR12EnumeratedNothing = iota
+	SlCpLenR12EnumeratedNormal
+	SlCpLenR12EnumeratedExtended
 )

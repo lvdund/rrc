@@ -1,0 +1,14 @@
+package ies
+
+// CQI-ReportPeriodicSCell-r15-setup-cqi-FormatIndicatorDormant-r15 ::= CHOICE
+const (
+	CqiReportperiodicscellR15SetupCqiFormatindicatordormantR15ChoiceNothing = iota
+	CqiReportperiodicscellR15SetupCqiFormatindicatordormantR15ChoiceWidebandcqiR15
+	CqiReportperiodicscellR15SetupCqiFormatindicatordormantR15ChoiceSubbandcqiR15
+)
+
+type CqiReportperiodicscellR15SetupCqiFormatindicatordormantR15 struct {
+	Choice         uint64
+	WidebandcqiR15 *CqiReportperiodicscellR15SetupCqiFormatindicatordormantR15WidebandcqiR15
+	SubbandcqiR15  *CqiReportperiodicscellR15SetupCqiFormatindicatordormantR15SubbandcqiR15
+}

@@ -1,0 +1,20 @@
+package ies
+
+import "rrc/utils"
+
+// SystemInformationBlockType1-MBMS-r14-si-WindowLength-r14 ::= ENUMERATED
+type Systeminformationblocktype1MbmsR14SiWindowlengthR14 struct {
+	Value utils.ENUMERATED
+}
+
+const (
+	Systeminformationblocktype1MbmsR14SiWindowlengthR14EnumeratedNothing = iota
+	Systeminformationblocktype1MbmsR14SiWindowlengthR14EnumeratedMs1
+	Systeminformationblocktype1MbmsR14SiWindowlengthR14EnumeratedMs2
+	Systeminformationblocktype1MbmsR14SiWindowlengthR14EnumeratedMs5
+	Systeminformationblocktype1MbmsR14SiWindowlengthR14EnumeratedMs10
+	Systeminformationblocktype1MbmsR14SiWindowlengthR14EnumeratedMs15
+	Systeminformationblocktype1MbmsR14SiWindowlengthR14EnumeratedMs20
+	Systeminformationblocktype1MbmsR14SiWindowlengthR14EnumeratedMs40
+	Systeminformationblocktype1MbmsR14SiWindowlengthR14EnumeratedMs80
+)

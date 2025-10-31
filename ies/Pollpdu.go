@@ -8,12 +8,13 @@ type Pollpdu struct {
 }
 
 const (
-	PollpduP4        = 0
-	PollpduP8        = 1
-	PollpduP16       = 2
-	PollpduP32       = 3
-	PollpduP64       = 4
-	PollpduP128      = 5
-	PollpduP256      = 6
-	PollpduPinfinity = 7
+	PollpduEnumeratedNothing = iota
+	PollpduEnumeratedP4
+	PollpduEnumeratedP8
+	PollpduEnumeratedP16
+	PollpduEnumeratedP32
+	PollpduEnumeratedP64
+	PollpduEnumeratedP128
+	PollpduEnumeratedP256
+	PollpduEnumeratedPinfinity
 )

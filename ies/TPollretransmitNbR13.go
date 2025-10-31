@@ -8,20 +8,21 @@ type TPollretransmitNbR13 struct {
 }
 
 const (
-	TPollretransmitNbR13Ms250         = 0
-	TPollretransmitNbR13Ms500         = 1
-	TPollretransmitNbR13Ms1000        = 2
-	TPollretransmitNbR13Ms2000        = 3
-	TPollretransmitNbR13Ms3000        = 4
-	TPollretransmitNbR13Ms4000        = 5
-	TPollretransmitNbR13Ms6000        = 6
-	TPollretransmitNbR13Ms10000       = 7
-	TPollretransmitNbR13Ms15000       = 8
-	TPollretransmitNbR13Ms25000       = 9
-	TPollretransmitNbR13Ms40000       = 10
-	TPollretransmitNbR13Ms60000       = 11
-	TPollretransmitNbR13Ms90000       = 12
-	TPollretransmitNbR13Ms120000      = 13
-	TPollretransmitNbR13Ms180000      = 14
-	TPollretransmitNbR13Ms300000V1530 = 15
+	TPollretransmitNbR13EnumeratedNothing = iota
+	TPollretransmitNbR13EnumeratedMs250
+	TPollretransmitNbR13EnumeratedMs500
+	TPollretransmitNbR13EnumeratedMs1000
+	TPollretransmitNbR13EnumeratedMs2000
+	TPollretransmitNbR13EnumeratedMs3000
+	TPollretransmitNbR13EnumeratedMs4000
+	TPollretransmitNbR13EnumeratedMs6000
+	TPollretransmitNbR13EnumeratedMs10000
+	TPollretransmitNbR13EnumeratedMs15000
+	TPollretransmitNbR13EnumeratedMs25000
+	TPollretransmitNbR13EnumeratedMs40000
+	TPollretransmitNbR13EnumeratedMs60000
+	TPollretransmitNbR13EnumeratedMs90000
+	TPollretransmitNbR13EnumeratedMs120000
+	TPollretransmitNbR13EnumeratedMs180000
+	TPollretransmitNbR13EnumeratedMs300000_V1530
 )

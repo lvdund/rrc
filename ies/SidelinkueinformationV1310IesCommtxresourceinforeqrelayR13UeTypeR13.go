@@ -1,0 +1,14 @@
+package ies
+
+import "rrc/utils"
+
+// SidelinkUEInformation-v1310-IEs-commTxResourceInfoReqRelay-r13-ue-Type-r13 ::= ENUMERATED
+type SidelinkueinformationV1310IesCommtxresourceinforeqrelayR13UeTypeR13 struct {
+	Value utils.ENUMERATED
+}
+
+const (
+	SidelinkueinformationV1310IesCommtxresourceinforeqrelayR13UeTypeR13EnumeratedNothing = iota
+	SidelinkueinformationV1310IesCommtxresourceinforeqrelayR13UeTypeR13EnumeratedRelayue
+	SidelinkueinformationV1310IesCommtxresourceinforeqrelayR13UeTypeR13EnumeratedRemoteue
+)

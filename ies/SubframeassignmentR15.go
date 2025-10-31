@@ -8,11 +8,12 @@ type SubframeassignmentR15 struct {
 }
 
 const (
-	SubframeassignmentR15Sa0 = 0
-	SubframeassignmentR15Sa1 = 1
-	SubframeassignmentR15Sa2 = 2
-	SubframeassignmentR15Sa3 = 3
-	SubframeassignmentR15Sa4 = 4
-	SubframeassignmentR15Sa5 = 5
-	SubframeassignmentR15Sa6 = 6
+	SubframeassignmentR15EnumeratedNothing = iota
+	SubframeassignmentR15EnumeratedSa0
+	SubframeassignmentR15EnumeratedSa1
+	SubframeassignmentR15EnumeratedSa2
+	SubframeassignmentR15EnumeratedSa3
+	SubframeassignmentR15EnumeratedSa4
+	SubframeassignmentR15EnumeratedSa5
+	SubframeassignmentR15EnumeratedSa6
 )

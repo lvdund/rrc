@@ -8,12 +8,13 @@ type ResumecauseR15 struct {
 }
 
 const (
-	ResumecauseR15Emergency          = 0
-	ResumecauseR15Highpriorityaccess = 1
-	ResumecauseR15MtAccess           = 2
-	ResumecauseR15MoSignalling       = 3
-	ResumecauseR15MoData             = 4
-	ResumecauseR15RnaUpdate          = 5
-	ResumecauseR15MoVoicecall        = 6
-	ResumecauseR15Spare1             = 7
+	ResumecauseR15EnumeratedNothing = iota
+	ResumecauseR15EnumeratedEmergency
+	ResumecauseR15EnumeratedHighpriorityaccess
+	ResumecauseR15EnumeratedMt_Access
+	ResumecauseR15EnumeratedMo_Signalling
+	ResumecauseR15EnumeratedMo_Data
+	ResumecauseR15EnumeratedRna_Update
+	ResumecauseR15EnumeratedMo_Voicecall
+	ResumecauseR15EnumeratedSpare1
 )

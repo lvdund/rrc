@@ -8,36 +8,37 @@ type TReordering struct {
 }
 
 const (
-	TReorderingMs0         = 0
-	TReorderingMs5         = 1
-	TReorderingMs10        = 2
-	TReorderingMs15        = 3
-	TReorderingMs20        = 4
-	TReorderingMs25        = 5
-	TReorderingMs30        = 6
-	TReorderingMs35        = 7
-	TReorderingMs40        = 8
-	TReorderingMs45        = 9
-	TReorderingMs50        = 10
-	TReorderingMs55        = 11
-	TReorderingMs60        = 12
-	TReorderingMs65        = 13
-	TReorderingMs70        = 14
-	TReorderingMs75        = 15
-	TReorderingMs80        = 16
-	TReorderingMs85        = 17
-	TReorderingMs90        = 18
-	TReorderingMs95        = 19
-	TReorderingMs100       = 20
-	TReorderingMs110       = 21
-	TReorderingMs120       = 22
-	TReorderingMs130       = 23
-	TReorderingMs140       = 24
-	TReorderingMs150       = 25
-	TReorderingMs160       = 26
-	TReorderingMs170       = 27
-	TReorderingMs180       = 28
-	TReorderingMs190       = 29
-	TReorderingMs200       = 30
-	TReorderingMs1600V1310 = 31
+	TReorderingEnumeratedNothing = iota
+	TReorderingEnumeratedMs0
+	TReorderingEnumeratedMs5
+	TReorderingEnumeratedMs10
+	TReorderingEnumeratedMs15
+	TReorderingEnumeratedMs20
+	TReorderingEnumeratedMs25
+	TReorderingEnumeratedMs30
+	TReorderingEnumeratedMs35
+	TReorderingEnumeratedMs40
+	TReorderingEnumeratedMs45
+	TReorderingEnumeratedMs50
+	TReorderingEnumeratedMs55
+	TReorderingEnumeratedMs60
+	TReorderingEnumeratedMs65
+	TReorderingEnumeratedMs70
+	TReorderingEnumeratedMs75
+	TReorderingEnumeratedMs80
+	TReorderingEnumeratedMs85
+	TReorderingEnumeratedMs90
+	TReorderingEnumeratedMs95
+	TReorderingEnumeratedMs100
+	TReorderingEnumeratedMs110
+	TReorderingEnumeratedMs120
+	TReorderingEnumeratedMs130
+	TReorderingEnumeratedMs140
+	TReorderingEnumeratedMs150
+	TReorderingEnumeratedMs160
+	TReorderingEnumeratedMs170
+	TReorderingEnumeratedMs180
+	TReorderingEnumeratedMs190
+	TReorderingEnumeratedMs200
+	TReorderingEnumeratedMs1600_V1310
 )

@@ -1,21 +1,15 @@
 package ies
 
-import "rrc/utils"
-
 // SPS-ConfigUL ::= CHOICE
 // Extensible
-type SpsConfigul interface {
-	isSpsConfigul()
+const (
+	SpsConfigulChoiceNothing = iota
+	SpsConfigulChoiceRelease
+	SpsConfigulChoiceSetup
+)
+
+type SpsConfigul struct {
+	Choice  uint64
+	Release *struct{}
+	Setup   *SpsConfigulSetup
 }
-
-type SpsConfigulRelease struct {
-	Value struct{}
-}
-
-func (*SpsConfigulRelease) isSpsConfigul() {}
-
-type SpsConfigulSetup struct {
-	Value interface{}
-}
-
-func (*SpsConfigulSetup) isSpsConfigul() {}

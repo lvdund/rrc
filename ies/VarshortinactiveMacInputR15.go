@@ -1,7 +1,5 @@
 package ies
 
-import "rrc/utils"
-
 // VarShortINACTIVE-MAC-Input-r15 ::= SEQUENCE
 type VarshortinactiveMacInputR15 struct {
 	CellidentityR15 Cellidentity

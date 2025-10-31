@@ -8,12 +8,13 @@ type PollpduV1310 struct {
 }
 
 const (
-	PollpduV1310P512   = 0
-	PollpduV1310P1024  = 1
-	PollpduV1310P2048  = 2
-	PollpduV1310P4096  = 3
-	PollpduV1310P6144  = 4
-	PollpduV1310P8192  = 5
-	PollpduV1310P12288 = 6
-	PollpduV1310P16384 = 7
+	PollpduV1310EnumeratedNothing = iota
+	PollpduV1310EnumeratedP512
+	PollpduV1310EnumeratedP1024
+	PollpduV1310EnumeratedP2048
+	PollpduV1310EnumeratedP4096
+	PollpduV1310EnumeratedP6144
+	PollpduV1310EnumeratedP8192
+	PollpduV1310EnumeratedP12288
+	PollpduV1310EnumeratedP16384
 )

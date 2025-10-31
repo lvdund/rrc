@@ -1,0 +1,20 @@
+package ies
+
+import "rrc/utils"
+
+// RACH-Info-NB-r13-ra-ResponseWindowSize-r13 ::= ENUMERATED
+type RachInfoNbR13RaResponsewindowsizeR13 struct {
+	Value utils.ENUMERATED
+}
+
+const (
+	RachInfoNbR13RaResponsewindowsizeR13EnumeratedNothing = iota
+	RachInfoNbR13RaResponsewindowsizeR13EnumeratedPp2
+	RachInfoNbR13RaResponsewindowsizeR13EnumeratedPp3
+	RachInfoNbR13RaResponsewindowsizeR13EnumeratedPp4
+	RachInfoNbR13RaResponsewindowsizeR13EnumeratedPp5
+	RachInfoNbR13RaResponsewindowsizeR13EnumeratedPp6
+	RachInfoNbR13RaResponsewindowsizeR13EnumeratedPp7
+	RachInfoNbR13RaResponsewindowsizeR13EnumeratedPp8
+	RachInfoNbR13RaResponsewindowsizeR13EnumeratedPp10
+)

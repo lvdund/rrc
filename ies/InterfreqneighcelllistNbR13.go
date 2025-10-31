@@ -1,9 +1,7 @@
 package ies
 
-import "rrc/utils"
-
 // InterFreqNeighCellList-NB-r13 ::= SEQUENCE OF PhysCellId
 // SIZE (1..maxCellInter)
 type InterfreqneighcelllistNbR13 struct {
-	Value []Physcellid
+	Value []Physcellid `lb:1,ub:maxCellInter`
 }

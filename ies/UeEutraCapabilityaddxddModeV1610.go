@@ -1,7 +1,5 @@
 package ies
 
-import "rrc/utils"
-
 // UE-EUTRA-CapabilityAddXDD-Mode-v1610 ::= SEQUENCE
 type UeEutraCapabilityaddxddModeV1610 struct {
 	PhylayerparametersV1610               *PhylayerparametersV1610

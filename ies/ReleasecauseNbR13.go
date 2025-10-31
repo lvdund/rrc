@@ -8,8 +8,9 @@ type ReleasecauseNbR13 struct {
 }
 
 const (
-	ReleasecauseNbR13Loadbalancingtaurequired = 0
-	ReleasecauseNbR13Other                    = 1
-	ReleasecauseNbR13RrcSuspend               = 2
-	ReleasecauseNbR13Spare1                   = 3
+	ReleasecauseNbR13EnumeratedNothing = iota
+	ReleasecauseNbR13EnumeratedLoadbalancingtaurequired
+	ReleasecauseNbR13EnumeratedOther
+	ReleasecauseNbR13EnumeratedRrc_Suspend
+	ReleasecauseNbR13EnumeratedSpare1
 )

@@ -1,20 +1,14 @@
 package ies
 
-import "rrc/utils"
-
 // TDM-PatternConfig-r15 ::= CHOICE
-type TdmPatternconfigR15 interface {
-	isTdmPatternconfigR15()
+const (
+	TdmPatternconfigR15ChoiceNothing = iota
+	TdmPatternconfigR15ChoiceRelease
+	TdmPatternconfigR15ChoiceSetup
+)
+
+type TdmPatternconfigR15 struct {
+	Choice  uint64
+	Release *struct{}
+	Setup   *TdmPatternconfigR15Setup
 }
-
-type TdmPatternconfigR15Release struct {
-	Value struct{}
-}
-
-func (*TdmPatternconfigR15Release) isTdmPatternconfigR15() {}
-
-type TdmPatternconfigR15Setup struct {
-	Value interface{}
-}
-
-func (*TdmPatternconfigR15Setup) isTdmPatternconfigR15() {}

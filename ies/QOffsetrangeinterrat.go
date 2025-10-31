@@ -2,7 +2,7 @@ package ies
 
 import "rrc/utils"
 
-// Q-OffsetRangeInterRAT ::= INTEGER (-15..15)
+// Q-OffsetRangeInterRAT ::= utils.INTEGER (-15..15)
 type QOffsetrangeinterrat struct {
-	Value utils.INTEGER
+	Value utils.INTEGER `lb:0,ub:15`
 }

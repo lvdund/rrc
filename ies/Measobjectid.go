@@ -2,7 +2,7 @@ package ies
 
 import "rrc/utils"
 
-// MeasObjectId ::= INTEGER (1..maxObjectId)
+// MeasObjectId ::= utils.INTEGER (1..maxObjectId)
 type Measobjectid struct {
-	Value utils.INTEGER
+	Value utils.INTEGER `lb:0,ub:maxObjectId`
 }

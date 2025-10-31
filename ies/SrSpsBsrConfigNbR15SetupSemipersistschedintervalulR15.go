@@ -1,0 +1,20 @@
+package ies
+
+import "rrc/utils"
+
+// SR-SPS-BSR-Config-NB-r15-setup-semiPersistSchedIntervalUL-r15 ::= ENUMERATED
+type SrSpsBsrConfigNbR15SetupSemipersistschedintervalulR15 struct {
+	Value utils.ENUMERATED
+}
+
+const (
+	SrSpsBsrConfigNbR15SetupSemipersistschedintervalulR15EnumeratedNothing = iota
+	SrSpsBsrConfigNbR15SetupSemipersistschedintervalulR15EnumeratedSf128
+	SrSpsBsrConfigNbR15SetupSemipersistschedintervalulR15EnumeratedSf256
+	SrSpsBsrConfigNbR15SetupSemipersistschedintervalulR15EnumeratedSf512
+	SrSpsBsrConfigNbR15SetupSemipersistschedintervalulR15EnumeratedSf1024
+	SrSpsBsrConfigNbR15SetupSemipersistschedintervalulR15EnumeratedSf1280
+	SrSpsBsrConfigNbR15SetupSemipersistschedintervalulR15EnumeratedSf2048
+	SrSpsBsrConfigNbR15SetupSemipersistschedintervalulR15EnumeratedSf2560
+	SrSpsBsrConfigNbR15SetupSemipersistschedintervalulR15EnumeratedSf5120
+)

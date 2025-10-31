@@ -1,0 +1,14 @@
+package ies
+
+// CQI-ReportPeriodicProcExt-r11-cqi-FormatIndicatorPeriodic-r11 ::= CHOICE
+const (
+	CqiReportperiodicprocextR11CqiFormatindicatorperiodicR11ChoiceNothing = iota
+	CqiReportperiodicprocextR11CqiFormatindicatorperiodicR11ChoiceWidebandcqiR11
+	CqiReportperiodicprocextR11CqiFormatindicatorperiodicR11ChoiceSubbandcqiR11
+)
+
+type CqiReportperiodicprocextR11CqiFormatindicatorperiodicR11 struct {
+	Choice         uint64
+	WidebandcqiR11 *CqiReportperiodicprocextR11CqiFormatindicatorperiodicR11WidebandcqiR11
+	SubbandcqiR11  *CqiReportperiodicprocextR11CqiFormatindicatorperiodicR11SubbandcqiR11
+}

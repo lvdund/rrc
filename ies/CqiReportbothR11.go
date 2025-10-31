@@ -1,7 +1,5 @@
 package ies
 
-import "rrc/utils"
-
 // CQI-ReportBoth-r11 ::= SEQUENCE
 type CqiReportbothR11 struct {
 	CsiImConfigtoreleaselistR11 *CsiImConfigtoreleaselistR11

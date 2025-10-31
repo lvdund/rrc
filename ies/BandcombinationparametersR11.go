@@ -1,13 +1,11 @@
 package ies
 
-import "rrc/utils"
-
 // BandCombinationParameters-r11 ::= SEQUENCE
 // Extensible
 type BandcombinationparametersR11 struct {
-	BandparameterlistR11                interface{}
+	BandparameterlistR11                []BandparametersR11 `lb:1,ub:maxSimultaneousBandsR10`
 	SupportedbandwidthcombinationsetR11 *SupportedbandwidthcombinationsetR10
-	MultipletimingadvanceR11            *utils.ENUMERATED
-	SimultaneousrxTxR11                 *utils.ENUMERATED
+	MultipletimingadvanceR11            *BandcombinationparametersR11MultipletimingadvanceR11
+	SimultaneousrxTxR11                 *BandcombinationparametersR11SimultaneousrxTxR11
 	BandinfoeutraR11                    Bandinfoeutra
 }

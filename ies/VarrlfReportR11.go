@@ -1,7 +1,5 @@
 package ies
 
-import "rrc/utils"
-
 // VarRLF-Report-r11 ::= SEQUENCE
 type VarrlfReportR11 struct {
 	RlfReportR10        RlfReportR9

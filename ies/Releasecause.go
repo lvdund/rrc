@@ -8,8 +8,9 @@ type Releasecause struct {
 }
 
 const (
-	ReleasecauseLoadbalancingtaurequired    = 0
-	ReleasecauseOther                       = 1
-	ReleasecauseCsFallbackhighpriorityV1020 = 2
-	ReleasecauseRrcSuspendV1320             = 3
+	ReleasecauseEnumeratedNothing = iota
+	ReleasecauseEnumeratedLoadbalancingtaurequired
+	ReleasecauseEnumeratedOther
+	ReleasecauseEnumeratedCs_Fallbackhighpriority_V1020
+	ReleasecauseEnumeratedRrc_Suspend_V1320
 )

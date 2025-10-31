@@ -1,0 +1,20 @@
+package ies
+
+import "rrc/utils"
+
+// TDD-ConfigSL-r12-subframeAssignmentSL-r12 ::= ENUMERATED
+type TddConfigslR12SubframeassignmentslR12 struct {
+	Value utils.ENUMERATED
+}
+
+const (
+	TddConfigslR12SubframeassignmentslR12EnumeratedNothing = iota
+	TddConfigslR12SubframeassignmentslR12EnumeratedNone
+	TddConfigslR12SubframeassignmentslR12EnumeratedSa0
+	TddConfigslR12SubframeassignmentslR12EnumeratedSa1
+	TddConfigslR12SubframeassignmentslR12EnumeratedSa2
+	TddConfigslR12SubframeassignmentslR12EnumeratedSa3
+	TddConfigslR12SubframeassignmentslR12EnumeratedSa4
+	TddConfigslR12SubframeassignmentslR12EnumeratedSa5
+	TddConfigslR12SubframeassignmentslR12EnumeratedSa6
+)

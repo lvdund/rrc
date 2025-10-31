@@ -1,11 +1,9 @@
 package ies
 
-import "rrc/utils"
-
 // GWUS-Config-r16 ::= SEQUENCE
 type GwusConfigR16 struct {
-	GroupalternationR16        *utils.ENUMERATED
-	CommonsequenceR16          *utils.ENUMERATED
+	GroupalternationR16        *bool
+	CommonsequenceR16          *GwusConfigR16CommonsequenceR16
 	TimeparametersR16          *GwusTimeparametersR16
 	ResourceconfigdrxR16       GwusResourceconfigR16
 	ResourceconfigEdrxShortR16 *GwusResourceconfigR16

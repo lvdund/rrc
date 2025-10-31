@@ -1,7 +1,5 @@
 package ies
 
-import "rrc/utils"
-
 // ReestablishmentInfo ::= SEQUENCE
 // Extensible
 type Reestablishmentinfo struct {

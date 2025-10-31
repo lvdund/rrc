@@ -2,7 +2,9 @@ package ies
 
 import "rrc/utils"
 
-// PURConfigurationRequest-NB-r16 ::= SEQUENCE
+// PURConfigurationRequest-NB-r16-IEs ::= SEQUENCE
 type PurconfigurationrequestNbR16 struct {
-	Criticalextensions interface{}
+	PurConfigrequestR16      *PurConfigrequestNbR16
+	Latenoncriticalextension *utils.OCTETSTRING
+	Noncriticalextension     *PurconfigurationrequestNbR16IesNoncriticalextension
 }

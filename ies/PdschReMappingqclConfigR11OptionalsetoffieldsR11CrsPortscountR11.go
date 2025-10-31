@@ -1,0 +1,16 @@
+package ies
+
+import "rrc/utils"
+
+// PDSCH-RE-MappingQCL-Config-r11-optionalSetOfFields-r11-crs-PortsCount-r11 ::= ENUMERATED
+type PdschReMappingqclConfigR11OptionalsetoffieldsR11CrsPortscountR11 struct {
+	Value utils.ENUMERATED
+}
+
+const (
+	PdschReMappingqclConfigR11OptionalsetoffieldsR11CrsPortscountR11EnumeratedNothing = iota
+	PdschReMappingqclConfigR11OptionalsetoffieldsR11CrsPortscountR11EnumeratedN1
+	PdschReMappingqclConfigR11OptionalsetoffieldsR11CrsPortscountR11EnumeratedN2
+	PdschReMappingqclConfigR11OptionalsetoffieldsR11CrsPortscountR11EnumeratedN4
+	PdschReMappingqclConfigR11OptionalsetoffieldsR11CrsPortscountR11EnumeratedSpare1
+)

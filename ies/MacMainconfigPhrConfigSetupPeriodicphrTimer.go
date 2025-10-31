@@ -1,0 +1,20 @@
+package ies
+
+import "rrc/utils"
+
+// MAC-MainConfig-phr-Config-setup-periodicPHR-Timer ::= ENUMERATED
+type MacMainconfigPhrConfigSetupPeriodicphrTimer struct {
+	Value utils.ENUMERATED
+}
+
+const (
+	MacMainconfigPhrConfigSetupPeriodicphrTimerEnumeratedNothing = iota
+	MacMainconfigPhrConfigSetupPeriodicphrTimerEnumeratedSf10
+	MacMainconfigPhrConfigSetupPeriodicphrTimerEnumeratedSf20
+	MacMainconfigPhrConfigSetupPeriodicphrTimerEnumeratedSf50
+	MacMainconfigPhrConfigSetupPeriodicphrTimerEnumeratedSf100
+	MacMainconfigPhrConfigSetupPeriodicphrTimerEnumeratedSf200
+	MacMainconfigPhrConfigSetupPeriodicphrTimerEnumeratedSf500
+	MacMainconfigPhrConfigSetupPeriodicphrTimerEnumeratedSf1000
+	MacMainconfigPhrConfigSetupPeriodicphrTimerEnumeratedInfinity
+)

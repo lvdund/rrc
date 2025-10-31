@@ -1,7 +1,5 @@
 package ies
 
-import "rrc/utils"
-
 // MeasObjectEUTRA ::= SEQUENCE
 // Extensible
 type Measobjecteutra struct {

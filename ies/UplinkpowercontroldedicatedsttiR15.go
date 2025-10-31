@@ -4,7 +4,7 @@ import "rrc/utils"
 
 // UplinkPowerControlDedicatedSTTI-r15 ::= SEQUENCE
 type UplinkpowercontroldedicatedsttiR15 struct {
-	AccumulationenabledsttiR15  bool
+	AccumulationenabledsttiR15  utils.BOOLEAN
 	DeltatxdOffsetlistspucchR15 *DeltatxdOffsetlistspucchR15
-	UplinkpowerCsipayload       bool
+	UplinkpowerCsipayload       utils.BOOLEAN
 }

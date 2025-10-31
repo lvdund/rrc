@@ -8,12 +8,13 @@ type Timealignmenttimer struct {
 }
 
 const (
-	TimealignmenttimerSf500    = 0
-	TimealignmenttimerSf750    = 1
-	TimealignmenttimerSf1280   = 2
-	TimealignmenttimerSf1920   = 3
-	TimealignmenttimerSf2560   = 4
-	TimealignmenttimerSf5120   = 5
-	TimealignmenttimerSf10240  = 6
-	TimealignmenttimerInfinity = 7
+	TimealignmenttimerEnumeratedNothing = iota
+	TimealignmenttimerEnumeratedSf500
+	TimealignmenttimerEnumeratedSf750
+	TimealignmenttimerEnumeratedSf1280
+	TimealignmenttimerEnumeratedSf1920
+	TimealignmenttimerEnumeratedSf2560
+	TimealignmenttimerEnumeratedSf5120
+	TimealignmenttimerEnumeratedSf10240
+	TimealignmenttimerEnumeratedInfinity
 )

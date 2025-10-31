@@ -8,8 +8,9 @@ type SsbPositionqclRelationnrR16 struct {
 }
 
 const (
-	SsbPositionqclRelationnrR16N1 = 0
-	SsbPositionqclRelationnrR16N2 = 1
-	SsbPositionqclRelationnrR16N4 = 2
-	SsbPositionqclRelationnrR16N8 = 3
+	SsbPositionqclRelationnrR16EnumeratedNothing = iota
+	SsbPositionqclRelationnrR16EnumeratedN1
+	SsbPositionqclRelationnrR16EnumeratedN2
+	SsbPositionqclRelationnrR16EnumeratedN4
+	SsbPositionqclRelationnrR16EnumeratedN8
 )

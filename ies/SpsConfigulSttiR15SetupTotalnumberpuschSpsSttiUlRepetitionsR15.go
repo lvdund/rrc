@@ -1,0 +1,16 @@
+package ies
+
+import "rrc/utils"
+
+// SPS-ConfigUL-STTI-r15-setup-totalNumberPUSCH-SPS-STTI-UL-Repetitions-r15 ::= ENUMERATED
+type SpsConfigulSttiR15SetupTotalnumberpuschSpsSttiUlRepetitionsR15 struct {
+	Value utils.ENUMERATED
+}
+
+const (
+	SpsConfigulSttiR15SetupTotalnumberpuschSpsSttiUlRepetitionsR15EnumeratedNothing = iota
+	SpsConfigulSttiR15SetupTotalnumberpuschSpsSttiUlRepetitionsR15EnumeratedN2
+	SpsConfigulSttiR15SetupTotalnumberpuschSpsSttiUlRepetitionsR15EnumeratedN3
+	SpsConfigulSttiR15SetupTotalnumberpuschSpsSttiUlRepetitionsR15EnumeratedN4
+	SpsConfigulSttiR15SetupTotalnumberpuschSpsSttiUlRepetitionsR15EnumeratedN6
+)

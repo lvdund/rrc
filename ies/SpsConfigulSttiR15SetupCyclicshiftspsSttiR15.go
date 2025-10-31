@@ -1,0 +1,20 @@
+package ies
+
+import "rrc/utils"
+
+// SPS-ConfigUL-STTI-r15-setup-cyclicShiftSPS-sTTI-r15 ::= ENUMERATED
+type SpsConfigulSttiR15SetupCyclicshiftspsSttiR15 struct {
+	Value utils.ENUMERATED
+}
+
+const (
+	SpsConfigulSttiR15SetupCyclicshiftspsSttiR15EnumeratedNothing = iota
+	SpsConfigulSttiR15SetupCyclicshiftspsSttiR15EnumeratedCs0
+	SpsConfigulSttiR15SetupCyclicshiftspsSttiR15EnumeratedCs1
+	SpsConfigulSttiR15SetupCyclicshiftspsSttiR15EnumeratedCs2
+	SpsConfigulSttiR15SetupCyclicshiftspsSttiR15EnumeratedCs3
+	SpsConfigulSttiR15SetupCyclicshiftspsSttiR15EnumeratedCs4
+	SpsConfigulSttiR15SetupCyclicshiftspsSttiR15EnumeratedCs5
+	SpsConfigulSttiR15SetupCyclicshiftspsSttiR15EnumeratedCs6
+	SpsConfigulSttiR15SetupCyclicshiftspsSttiR15EnumeratedCs7
+)

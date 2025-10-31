@@ -1,10 +1,8 @@
 package ies
 
-import "rrc/utils"
-
 // Other-Parameters-v1530 ::= SEQUENCE
 type OtherParametersV1530 struct {
-	AssistinfobitforlcR15     *utils.ENUMERATED
-	TimereferenceprovisionR15 *utils.ENUMERATED
-	FlightpathplanR15         *utils.ENUMERATED
+	AssistinfobitforlcR15     *OtherParametersV1530AssistinfobitforlcR15
+	TimereferenceprovisionR15 *OtherParametersV1530TimereferenceprovisionR15
+	FlightpathplanR15         *OtherParametersV1530FlightpathplanR15
 }

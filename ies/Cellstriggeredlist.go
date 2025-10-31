@@ -1,9 +1,7 @@
 package ies
 
-import "rrc/utils"
-
-// CellsTriggeredList ::= SEQUENCE OF CHOICE
+// CellsTriggeredList ::= SEQUENCE OF CellsTriggeredList-Item
 // SIZE (1..maxCellMeas)
 type Cellstriggeredlist struct {
-	Value []Choice
+	Value []CellstriggeredlistItem `lb:1,ub:maxCellMeas`
 }

@@ -1,10 +1,8 @@
 package ies
 
-import "rrc/utils"
-
 // DL-GapConfig-NB-r13 ::= SEQUENCE
 type DlGapconfigNbR13 struct {
-	DlGapthresholdR13     utils.ENUMERATED
-	DlGapperiodicityR13   utils.ENUMERATED
-	DlGapdurationcoeffR13 utils.ENUMERATED
+	DlGapthresholdR13     DlGapconfigNbR13DlGapthresholdR13
+	DlGapperiodicityR13   DlGapconfigNbR13DlGapperiodicityR13
+	DlGapdurationcoeffR13 DlGapconfigNbR13DlGapdurationcoeffR13
 }

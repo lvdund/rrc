@@ -2,7 +2,7 @@ package ies
 
 import "rrc/utils"
 
-// DRB-Identity ::= INTEGER (1..32)
+// DRB-Identity ::= utils.INTEGER (1..32)
 type DrbIdentity struct {
-	Value utils.INTEGER
+	Value utils.INTEGER `lb:0,ub:32`
 }

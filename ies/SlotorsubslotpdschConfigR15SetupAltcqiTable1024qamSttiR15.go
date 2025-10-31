@@ -1,0 +1,16 @@
+package ies
+
+import "rrc/utils"
+
+// SlotOrSubslotPDSCH-Config-r15-setup-altCQI-Table1024QAM-STTI-r15 ::= ENUMERATED
+type SlotorsubslotpdschConfigR15SetupAltcqiTable1024qamSttiR15 struct {
+	Value utils.ENUMERATED
+}
+
+const (
+	SlotorsubslotpdschConfigR15SetupAltcqiTable1024qamSttiR15EnumeratedNothing = iota
+	SlotorsubslotpdschConfigR15SetupAltcqiTable1024qamSttiR15EnumeratedAllsubframes
+	SlotorsubslotpdschConfigR15SetupAltcqiTable1024qamSttiR15EnumeratedCsi_Subframeset1
+	SlotorsubslotpdschConfigR15SetupAltcqiTable1024qamSttiR15EnumeratedCsi_Subframeset2
+	SlotorsubslotpdschConfigR15SetupAltcqiTable1024qamSttiR15EnumeratedSpare1
+)

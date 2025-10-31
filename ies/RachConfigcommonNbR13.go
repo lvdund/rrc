@@ -8,5 +8,5 @@ type RachConfigcommonNbR13 struct {
 	PreambletransmaxCeR13     Preambletransmax
 	PowerrampingparametersR13 Powerrampingparameters
 	RachInfolistR13           RachInfolistNbR13
-	ConnestfailoffsetR13      *utils.INTEGER
+	ConnestfailoffsetR13      *utils.INTEGER `lb:0,ub:15`
 }

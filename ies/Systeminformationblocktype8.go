@@ -6,8 +6,8 @@ import "rrc/utils"
 // Extensible
 type Systeminformationblocktype8 struct {
 	Systemtimeinfo           *Systemtimeinfocdma2000
-	Searchwindowsize         *utils.INTEGER
-	Parametershrpd           *interface{}
-	Parameters1xrtt          *interface{}
+	Searchwindowsize         *utils.INTEGER `lb:0,ub:15`
+	Parametershrpd           *Systeminformationblocktype8Parametershrpd
+	Parameters1xrtt          *Systeminformationblocktype8Parameters1xrtt
 	Latenoncriticalextension *utils.OCTETSTRING
 }

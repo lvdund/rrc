@@ -1,9 +1,7 @@
 package ies
 
-import "rrc/utils"
-
 // MeasResultListGERAN ::= SEQUENCE OF MeasResultGERAN
 // SIZE (1..maxCellReport)
 type Measresultlistgeran struct {
-	Value []Measresultgeran
+	Value []Measresultgeran `lb:1,ub:maxCellReport`
 }

@@ -1,9 +1,7 @@
 package ies
 
-import "rrc/utils"
-
 // WLAN-IW-Parameters-r12 ::= SEQUENCE
 type WlanIwParametersR12 struct {
-	WlanIwRanRulesR12      *utils.ENUMERATED
-	WlanIwAndsfPoliciesR12 *utils.ENUMERATED
+	WlanIwRanRulesR12      *WlanIwParametersR12WlanIwRanRulesR12
+	WlanIwAndsfPoliciesR12 *WlanIwParametersR12WlanIwAndsfPoliciesR12
 }

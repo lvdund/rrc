@@ -1,11 +1,9 @@
 package ies
 
-import "rrc/utils"
-
 // EthernetHeaderCompression-r16 ::= SEQUENCE
 // Extensible
 type EthernetheadercompressionR16 struct {
-	EhcCommonR16   interface{}
-	EhcDownlinkR16 *interface{}
-	EhcUplinkR16   *interface{}
+	EhcCommonR16   EthernetheadercompressionR16EhcCommonR16
+	EhcDownlinkR16 *EthernetheadercompressionR16EhcDownlinkR16
+	EhcUplinkR16   *EthernetheadercompressionR16EhcUplinkR16
 }

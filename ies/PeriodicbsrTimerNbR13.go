@@ -8,12 +8,13 @@ type PeriodicbsrTimerNbR13 struct {
 }
 
 const (
-	PeriodicbsrTimerNbR13Pp2      = 0
-	PeriodicbsrTimerNbR13Pp4      = 1
-	PeriodicbsrTimerNbR13Pp8      = 2
-	PeriodicbsrTimerNbR13Pp16     = 3
-	PeriodicbsrTimerNbR13Pp64     = 4
-	PeriodicbsrTimerNbR13Pp128    = 5
-	PeriodicbsrTimerNbR13Infinity = 6
-	PeriodicbsrTimerNbR13Spare    = 7
+	PeriodicbsrTimerNbR13EnumeratedNothing = iota
+	PeriodicbsrTimerNbR13EnumeratedPp2
+	PeriodicbsrTimerNbR13EnumeratedPp4
+	PeriodicbsrTimerNbR13EnumeratedPp8
+	PeriodicbsrTimerNbR13EnumeratedPp16
+	PeriodicbsrTimerNbR13EnumeratedPp64
+	PeriodicbsrTimerNbR13EnumeratedPp128
+	PeriodicbsrTimerNbR13EnumeratedInfinity
+	PeriodicbsrTimerNbR13EnumeratedSpare
 )

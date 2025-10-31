@@ -8,6 +8,7 @@ type ShortttiLengthR15 struct {
 }
 
 const (
-	ShortttiLengthR15Slot    = 0
-	ShortttiLengthR15Subslot = 1
+	ShortttiLengthR15EnumeratedNothing = iota
+	ShortttiLengthR15EnumeratedSlot
+	ShortttiLengthR15EnumeratedSubslot
 )

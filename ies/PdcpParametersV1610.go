@@ -1,12 +1,10 @@
 package ies
 
-import "rrc/utils"
-
 // PDCP-Parameters-v1610 ::= SEQUENCE
 type PdcpParametersV1610 struct {
-	PdcpVersionchangewithouthoR16 *utils.ENUMERATED
-	EhcR16                        *utils.ENUMERATED
-	ContinueehcContextR16         *utils.ENUMERATED
-	MaxnumberehcContextsR16       *utils.ENUMERATED
-	JointehcRohcConfigR16         *utils.ENUMERATED
+	PdcpVersionchangewithouthoR16 *PdcpParametersV1610PdcpVersionchangewithouthoR16
+	EhcR16                        *PdcpParametersV1610EhcR16
+	ContinueehcContextR16         *PdcpParametersV1610ContinueehcContextR16
+	MaxnumberehcContextsR16       *PdcpParametersV1610MaxnumberehcContextsR16
+	JointehcRohcConfigR16         *PdcpParametersV1610JointehcRohcConfigR16
 }

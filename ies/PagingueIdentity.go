@@ -1,33 +1,19 @@
 package ies
 
-import "rrc/utils"
-
 // PagingUE-Identity ::= CHOICE
 // Extensible
-type PagingueIdentity interface {
-	isPagingueIdentity()
+const (
+	PagingueIdentityChoiceNothing = iota
+	PagingueIdentityChoiceSTmsi
+	PagingueIdentityChoiceImsi
+	PagingueIdentityChoiceNg5gSTmsiR15
+	PagingueIdentityChoiceFulliRntiR15
+)
+
+type PagingueIdentity struct {
+	Choice       uint64
+	STmsi        *STmsi
+	Imsi         *Imsi
+	Ng5gSTmsiR15 *Ng5gSTmsiR15
+	FulliRntiR15 *IRntiR15
 }
-
-type PagingueIdentitySTmsi struct {
-	Value STmsi
-}
-
-func (*PagingueIdentitySTmsi) isPagingueIdentity() {}
-
-type PagingueIdentityImsi struct {
-	Value Imsi
-}
-
-func (*PagingueIdentityImsi) isPagingueIdentity() {}
-
-type PagingueIdentityNg5gSTmsiR15 struct {
-	Value Ng5gSTmsiR15
-}
-
-func (*PagingueIdentityNg5gSTmsiR15) isPagingueIdentity() {}
-
-type PagingueIdentityFulliRntiR15 struct {
-	Value IRntiR15
-}
-
-func (*PagingueIdentityFulliRntiR15) isPagingueIdentity() {}

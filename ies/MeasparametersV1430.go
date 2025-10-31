@@ -1,12 +1,10 @@
 package ies
 
-import "rrc/utils"
-
 // MeasParameters-v1430 ::= SEQUENCE
 type MeasparametersV1430 struct {
-	CemeasurementsR14               *utils.ENUMERATED
-	NcsgR14                         *utils.ENUMERATED
-	ShortmeasurementgapR14          *utils.ENUMERATED
-	PerservingcellmeasurementgapR14 *utils.ENUMERATED
-	NonuniformgapR14                *utils.ENUMERATED
+	CemeasurementsR14               *MeasparametersV1430CemeasurementsR14
+	NcsgR14                         *MeasparametersV1430NcsgR14
+	ShortmeasurementgapR14          *MeasparametersV1430ShortmeasurementgapR14
+	PerservingcellmeasurementgapR14 *MeasparametersV1430PerservingcellmeasurementgapR14
+	NonuniformgapR14                *MeasparametersV1430NonuniformgapR14
 }

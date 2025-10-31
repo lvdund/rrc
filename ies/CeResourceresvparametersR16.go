@@ -1,17 +1,15 @@
 package ies
 
-import "rrc/utils"
-
 // CE-ResourceResvParameters-r16 ::= SEQUENCE
 type CeResourceresvparametersR16 struct {
-	SubframeresourceresvdlCeModeaR16   *utils.ENUMERATED
-	SubframeresourceresvdlCeModebR16   *utils.ENUMERATED
-	SubframeresourceresvulCeModeaR16   *utils.ENUMERATED
-	SubframeresourceresvulCeModebR16   *utils.ENUMERATED
-	SlotsymbolresourceresvdlCeModeaR16 *utils.ENUMERATED
-	SlotsymbolresourceresvdlCeModebR16 *utils.ENUMERATED
-	SlotsymbolresourceresvulCeModeaR16 *utils.ENUMERATED
-	SlotsymbolresourceresvulCeModebR16 *utils.ENUMERATED
-	SubcarrierpuncturingceModeaR16     *utils.ENUMERATED
-	SubcarrierpuncturingceModebR16     *utils.ENUMERATED
+	SubframeresourceresvdlCeModeaR16   *CeResourceresvparametersR16SubframeresourceresvdlCeModeaR16
+	SubframeresourceresvdlCeModebR16   *CeResourceresvparametersR16SubframeresourceresvdlCeModebR16
+	SubframeresourceresvulCeModeaR16   *CeResourceresvparametersR16SubframeresourceresvulCeModeaR16
+	SubframeresourceresvulCeModebR16   *CeResourceresvparametersR16SubframeresourceresvulCeModebR16
+	SlotsymbolresourceresvdlCeModeaR16 *CeResourceresvparametersR16SlotsymbolresourceresvdlCeModeaR16
+	SlotsymbolresourceresvdlCeModebR16 *CeResourceresvparametersR16SlotsymbolresourceresvdlCeModebR16
+	SlotsymbolresourceresvulCeModeaR16 *CeResourceresvparametersR16SlotsymbolresourceresvulCeModeaR16
+	SlotsymbolresourceresvulCeModebR16 *CeResourceresvparametersR16SlotsymbolresourceresvulCeModebR16
+	SubcarrierpuncturingceModeaR16     *CeResourceresvparametersR16SubcarrierpuncturingceModeaR16
+	SubcarrierpuncturingceModebR16     *CeResourceresvparametersR16SubcarrierpuncturingceModebR16
 }

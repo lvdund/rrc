@@ -1,9 +1,7 @@
 package ies
 
-import "rrc/utils"
-
 // SchedulingInfoList ::= SEQUENCE OF SchedulingInfo
 // SIZE (1..maxSI-Message)
 type Schedulinginfolist struct {
-	Value []Schedulinginfo
+	Value []Schedulinginfo `lb:1,ub:maxSIMessage`
 }

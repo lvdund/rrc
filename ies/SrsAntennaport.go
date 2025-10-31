@@ -8,8 +8,9 @@ type SrsAntennaport struct {
 }
 
 const (
-	SrsAntennaportAn1    = 0
-	SrsAntennaportAn2    = 1
-	SrsAntennaportAn4    = 2
-	SrsAntennaportSpare1 = 3
+	SrsAntennaportEnumeratedNothing = iota
+	SrsAntennaportEnumeratedAn1
+	SrsAntennaportEnumeratedAn2
+	SrsAntennaportEnumeratedAn4
+	SrsAntennaportEnumeratedSpare1
 )

@@ -1,0 +1,23 @@
+package ies
+
+import "rrc/utils"
+
+// NPRACH-ConfigSIB-NB-v1530-tdd-Parameters-r15-dummy ::= ENUMERATED
+type NprachConfigsibNbV1530TddParametersR15Dummy struct {
+	Value utils.ENUMERATED
+}
+
+const (
+	NprachConfigsibNbV1530TddParametersR15DummyEnumeratedNothing = iota
+	NprachConfigsibNbV1530TddParametersR15DummyEnumeratedN1
+	NprachConfigsibNbV1530TddParametersR15DummyEnumeratedN2
+	NprachConfigsibNbV1530TddParametersR15DummyEnumeratedN4
+	NprachConfigsibNbV1530TddParametersR15DummyEnumeratedN8
+	NprachConfigsibNbV1530TddParametersR15DummyEnumeratedN16
+	NprachConfigsibNbV1530TddParametersR15DummyEnumeratedN32
+	NprachConfigsibNbV1530TddParametersR15DummyEnumeratedN64
+	NprachConfigsibNbV1530TddParametersR15DummyEnumeratedN128
+	NprachConfigsibNbV1530TddParametersR15DummyEnumeratedN256
+	NprachConfigsibNbV1530TddParametersR15DummyEnumeratedN512
+	NprachConfigsibNbV1530TddParametersR15DummyEnumeratedN1024
+)

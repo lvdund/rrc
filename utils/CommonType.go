@@ -4,6 +4,36 @@ import (
 	"rrc/aper"
 )
 
+const (
+	ChoiceNothing = 0
+	ChoiceRelease = 1
+	ChoiceSetup   = 2
+)
+
+type BOOLEAN struct {
+	// Value aper.Boolean
+	// c     aper.Constraint
+	// ext   bool
+}
+
+func NewBOOLEAN(v bool, c aper.Constraint, ext bool) BOOLEAN {
+	return BOOLEAN{
+		// Value: aper.Boolean(v),
+		// c:     c,
+		// ext:   ext,
+	}
+}
+
+func (t *BOOLEAN) Encode(w *aper.AperWriter) (err error) {
+	// err = w.WriteBoolean(bool(t.Value), t.c, t.ext)
+	return
+}
+func (t *BOOLEAN) Decode(r *aper.AperReader) (err error) {
+	// v, err := r.ReadBoolean(t.c, t.ext)
+	// t.Value = aper.Boolean(v)
+	return
+}
+
 type ENUMERATED struct {
 	Value aper.Enumerated
 	c     aper.Constraint

@@ -1,0 +1,16 @@
+package ies
+
+import "rrc/utils"
+
+// PowerRampingParameters-NB-v1450-powerRampingParametersCE1-r14-powerRampingStepCE1-r14 ::= ENUMERATED
+type PowerrampingparametersNbV1450Powerrampingparametersce1R14Powerrampingstepce1R14 struct {
+	Value utils.ENUMERATED
+}
+
+const (
+	PowerrampingparametersNbV1450Powerrampingparametersce1R14Powerrampingstepce1R14EnumeratedNothing = iota
+	PowerrampingparametersNbV1450Powerrampingparametersce1R14Powerrampingstepce1R14EnumeratedDb0
+	PowerrampingparametersNbV1450Powerrampingparametersce1R14Powerrampingstepce1R14EnumeratedDb2
+	PowerrampingparametersNbV1450Powerrampingparametersce1R14Powerrampingstepce1R14EnumeratedDb4
+	PowerrampingparametersNbV1450Powerrampingparametersce1R14Powerrampingstepce1R14EnumeratedDb6
+)

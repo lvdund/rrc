@@ -1,7 +1,5 @@
 package ies
 
-import "rrc/utils"
-
 // AS-Config-v13c0 ::= SEQUENCE
 type AsConfigV13c0 struct {
 	RadioresourceconfigdedicatedV13c01 *RadioresourceconfigdedicatedV1370

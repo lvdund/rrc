@@ -1,0 +1,16 @@
+package ies
+
+import "rrc/utils"
+
+// RRCConnectionReject-v1130-IEs-deprioritisationReq-r11-deprioritisationTimer-r11 ::= ENUMERATED
+type RrcconnectionrejectV1130IesDeprioritisationreqR11DeprioritisationtimerR11 struct {
+	Value utils.ENUMERATED
+}
+
+const (
+	RrcconnectionrejectV1130IesDeprioritisationreqR11DeprioritisationtimerR11EnumeratedNothing = iota
+	RrcconnectionrejectV1130IesDeprioritisationreqR11DeprioritisationtimerR11EnumeratedMin5
+	RrcconnectionrejectV1130IesDeprioritisationreqR11DeprioritisationtimerR11EnumeratedMin10
+	RrcconnectionrejectV1130IesDeprioritisationreqR11DeprioritisationtimerR11EnumeratedMin15
+	RrcconnectionrejectV1130IesDeprioritisationreqR11DeprioritisationtimerR11EnumeratedMin30
+)

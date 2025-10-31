@@ -1,0 +1,14 @@
+package ies
+
+// ResourceReservationConfig-NB-r16-resourceReservation-r16-slotConfig-r16-symbolBitmap-r16 ::= CHOICE
+const (
+	ResourcereservationconfigNbR16ResourcereservationR16SlotconfigR16SymbolbitmapR16ChoiceNothing = iota
+	ResourcereservationconfigNbR16ResourcereservationR16SlotconfigR16SymbolbitmapR16ChoiceSymbolbitmapfdddl
+	ResourcereservationconfigNbR16ResourcereservationR16SlotconfigR16SymbolbitmapR16ChoiceSymbolbitmapfddulortdd
+)
+
+type ResourcereservationconfigNbR16ResourcereservationR16SlotconfigR16SymbolbitmapR16 struct {
+	Choice                 uint64
+	Symbolbitmapfdddl      *ResourcereservationconfigNbR16ResourcereservationR16SlotconfigR16SymbolbitmapR16Symbolbitmapfdddl
+	Symbolbitmapfddulortdd *ResourcereservationconfigNbR16ResourcereservationR16SlotconfigR16SymbolbitmapR16Symbolbitmapfddulortdd
+}

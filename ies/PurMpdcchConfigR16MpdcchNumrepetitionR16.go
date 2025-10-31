@@ -1,0 +1,21 @@
+package ies
+
+import "rrc/utils"
+
+// PUR-MPDCCH-Config-r16-mpdcch-NumRepetition-r16 ::= ENUMERATED
+type PurMpdcchConfigR16MpdcchNumrepetitionR16 struct {
+	Value utils.ENUMERATED
+}
+
+const (
+	PurMpdcchConfigR16MpdcchNumrepetitionR16EnumeratedNothing = iota
+	PurMpdcchConfigR16MpdcchNumrepetitionR16EnumeratedR1
+	PurMpdcchConfigR16MpdcchNumrepetitionR16EnumeratedR2
+	PurMpdcchConfigR16MpdcchNumrepetitionR16EnumeratedR4
+	PurMpdcchConfigR16MpdcchNumrepetitionR16EnumeratedR8
+	PurMpdcchConfigR16MpdcchNumrepetitionR16EnumeratedR16
+	PurMpdcchConfigR16MpdcchNumrepetitionR16EnumeratedR32
+	PurMpdcchConfigR16MpdcchNumrepetitionR16EnumeratedR64
+	PurMpdcchConfigR16MpdcchNumrepetitionR16EnumeratedR128
+	PurMpdcchConfigR16MpdcchNumrepetitionR16EnumeratedR256
+)

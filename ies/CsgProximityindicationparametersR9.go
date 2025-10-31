@@ -1,10 +1,8 @@
 package ies
 
-import "rrc/utils"
-
 // CSG-ProximityIndicationParameters-r9 ::= SEQUENCE
 type CsgProximityindicationparametersR9 struct {
-	IntrafreqproximityindicationR9 *utils.ENUMERATED
-	InterfreqproximityindicationR9 *utils.ENUMERATED
-	UtranProximityindicationR9     *utils.ENUMERATED
+	IntrafreqproximityindicationR9 *CsgProximityindicationparametersR9IntrafreqproximityindicationR9
+	InterfreqproximityindicationR9 *CsgProximityindicationparametersR9InterfreqproximityindicationR9
+	UtranProximityindicationR9     *CsgProximityindicationparametersR9UtranProximityindicationR9
 }

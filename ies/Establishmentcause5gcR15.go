@@ -8,12 +8,13 @@ type Establishmentcause5gcR15 struct {
 }
 
 const (
-	Establishmentcause5gcR15Emergency          = 0
-	Establishmentcause5gcR15Highpriorityaccess = 1
-	Establishmentcause5gcR15MtAccess           = 2
-	Establishmentcause5gcR15MoSignalling       = 3
-	Establishmentcause5gcR15MoData             = 4
-	Establishmentcause5gcR15MoVoicecall        = 5
-	Establishmentcause5gcR15Spare2             = 6
-	Establishmentcause5gcR15Spare1             = 7
+	Establishmentcause5gcR15EnumeratedNothing = iota
+	Establishmentcause5gcR15EnumeratedEmergency
+	Establishmentcause5gcR15EnumeratedHighpriorityaccess
+	Establishmentcause5gcR15EnumeratedMt_Access
+	Establishmentcause5gcR15EnumeratedMo_Signalling
+	Establishmentcause5gcR15EnumeratedMo_Data
+	Establishmentcause5gcR15EnumeratedMo_Voicecall
+	Establishmentcause5gcR15EnumeratedSpare2
+	Establishmentcause5gcR15EnumeratedSpare1
 )

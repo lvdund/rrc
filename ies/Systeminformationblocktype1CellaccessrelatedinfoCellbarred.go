@@ -1,0 +1,14 @@
+package ies
+
+import "rrc/utils"
+
+// SystemInformationBlockType1-cellAccessRelatedInfo-cellBarred ::= ENUMERATED
+type Systeminformationblocktype1CellaccessrelatedinfoCellbarred struct {
+	Value utils.ENUMERATED
+}
+
+const (
+	Systeminformationblocktype1CellaccessrelatedinfoCellbarredEnumeratedNothing = iota
+	Systeminformationblocktype1CellaccessrelatedinfoCellbarredEnumeratedBarred
+	Systeminformationblocktype1CellaccessrelatedinfoCellbarredEnumeratedNotbarred
+)

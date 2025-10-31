@@ -1,20 +1,14 @@
 package ies
 
-import "rrc/utils"
-
 // MCCH-MessageType ::= CHOICE
-type McchMessagetype interface {
-	isMcchMessagetype()
+const (
+	McchMessagetypeChoiceNothing = iota
+	McchMessagetypeChoiceC1
+	McchMessagetypeChoiceLater
+)
+
+type McchMessagetype struct {
+	Choice uint64
+	C1     *McchMessagetypeC1
+	Later  *McchMessagetypeLater
 }
-
-type McchMessagetypeC1 struct {
-	Value interface{}
-}
-
-func (*McchMessagetypeC1) isMcchMessagetype() {}
-
-type McchMessagetypeLater struct {
-	Value interface{}
-}
-
-func (*McchMessagetypeLater) isMcchMessagetype() {}

@@ -1,11 +1,9 @@
 package ies
 
-import "rrc/utils"
-
 // RLC-Config-r15 ::= SEQUENCE
 // Extensible
 type RlcConfigR15 struct {
-	ModeR15                  interface{}
-	ReestablishrlcR15        *utils.ENUMERATED
-	RlcOutoforderdeliveryR15 *utils.ENUMERATED
+	ModeR15                  RlcConfigR15ModeR15
+	ReestablishrlcR15        *bool
+	RlcOutoforderdeliveryR15 *bool
 }

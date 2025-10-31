@@ -1,0 +1,20 @@
+package ies
+
+import "rrc/utils"
+
+// DeltaFList-SPUCCH-r15-setup-deltaF-slotSPUCCH-Format3-r15 ::= ENUMERATED
+type DeltaflistSpucchR15SetupDeltafSlotspucchFormat3R15 struct {
+	Value utils.ENUMERATED
+}
+
+const (
+	DeltaflistSpucchR15SetupDeltafSlotspucchFormat3R15EnumeratedNothing = iota
+	DeltaflistSpucchR15SetupDeltafSlotspucchFormat3R15EnumeratedDeltaf4
+	DeltaflistSpucchR15SetupDeltafSlotspucchFormat3R15EnumeratedDeltaf5
+	DeltaflistSpucchR15SetupDeltafSlotspucchFormat3R15EnumeratedDeltaf6
+	DeltaflistSpucchR15SetupDeltafSlotspucchFormat3R15EnumeratedDeltaf7
+	DeltaflistSpucchR15SetupDeltafSlotspucchFormat3R15EnumeratedDeltaf8
+	DeltaflistSpucchR15SetupDeltafSlotspucchFormat3R15EnumeratedDeltaf9
+	DeltaflistSpucchR15SetupDeltafSlotspucchFormat3R15EnumeratedDeltaf10
+	DeltaflistSpucchR15SetupDeltafSlotspucchFormat3R15EnumeratedDeltaf11
+)

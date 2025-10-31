@@ -1,9 +1,7 @@
 package ies
 
-import "rrc/utils"
-
 // LWIP-Parameters-v1430 ::= SEQUENCE
 type LwipParametersV1430 struct {
-	LwipAggregationDlR14 *utils.ENUMERATED
-	LwipAggregationUlR14 *utils.ENUMERATED
+	LwipAggregationDlR14 *LwipParametersV1430LwipAggregationDlR14
+	LwipAggregationUlR14 *LwipParametersV1430LwipAggregationUlR14
 }

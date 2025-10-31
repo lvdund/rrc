@@ -1,0 +1,20 @@
+package ies
+
+import "rrc/utils"
+
+// RACH-ConfigCommon-ra-SupervisionInfo-ra-ResponseWindowSize ::= ENUMERATED
+type RachConfigcommonRaSupervisioninfoRaResponsewindowsize struct {
+	Value utils.ENUMERATED
+}
+
+const (
+	RachConfigcommonRaSupervisioninfoRaResponsewindowsizeEnumeratedNothing = iota
+	RachConfigcommonRaSupervisioninfoRaResponsewindowsizeEnumeratedSf2
+	RachConfigcommonRaSupervisioninfoRaResponsewindowsizeEnumeratedSf3
+	RachConfigcommonRaSupervisioninfoRaResponsewindowsizeEnumeratedSf4
+	RachConfigcommonRaSupervisioninfoRaResponsewindowsizeEnumeratedSf5
+	RachConfigcommonRaSupervisioninfoRaResponsewindowsizeEnumeratedSf6
+	RachConfigcommonRaSupervisioninfoRaResponsewindowsizeEnumeratedSf7
+	RachConfigcommonRaSupervisioninfoRaResponsewindowsizeEnumeratedSf8
+	RachConfigcommonRaSupervisioninfoRaResponsewindowsizeEnumeratedSf10
+)

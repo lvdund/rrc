@@ -6,9 +6,9 @@ import "rrc/utils"
 // Extensible
 type CsiRsConfignzpR11 struct {
 	CsiRsConfignzpidR11   CsiRsConfignzpidR11
-	AntennaportscountR11  utils.ENUMERATED
-	ResourceconfigR11     utils.INTEGER
-	SubframeconfigR11     utils.INTEGER
-	ScramblingidentityR11 utils.INTEGER
-	QclCrsInfoR11         *interface{}
+	AntennaportscountR11  CsiRsConfignzpR11AntennaportscountR11
+	ResourceconfigR11     utils.INTEGER `lb:0,ub:31`
+	SubframeconfigR11     utils.INTEGER `lb:0,ub:154`
+	ScramblingidentityR11 utils.INTEGER `lb:0,ub:503`
+	QclCrsInfoR11         *CsiRsConfignzpR11QclCrsInfoR11
 }

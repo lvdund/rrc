@@ -1,11 +1,9 @@
 package ies
 
-import "rrc/utils"
-
 // UE-BasedNetwPerfMeasParameters-v1530 ::= SEQUENCE
 type UeBasednetwperfmeasparametersV1530 struct {
-	LoggedmeasbtR15   *utils.ENUMERATED
-	LoggedmeaswlanR15 *utils.ENUMERATED
-	ImmmeasbtR15      *utils.ENUMERATED
-	ImmmeaswlanR15    *utils.ENUMERATED
+	LoggedmeasbtR15   *UeBasednetwperfmeasparametersV1530LoggedmeasbtR15
+	LoggedmeaswlanR15 *UeBasednetwperfmeasparametersV1530LoggedmeaswlanR15
+	ImmmeasbtR15      *UeBasednetwperfmeasparametersV1530ImmmeasbtR15
+	ImmmeaswlanR15    *UeBasednetwperfmeasparametersV1530ImmmeaswlanR15
 }

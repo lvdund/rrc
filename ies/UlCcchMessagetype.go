@@ -1,20 +1,14 @@
 package ies
 
-import "rrc/utils"
-
 // UL-CCCH-MessageType ::= CHOICE
-type UlCcchMessagetype interface {
-	isUlCcchMessagetype()
+const (
+	UlCcchMessagetypeChoiceNothing = iota
+	UlCcchMessagetypeChoiceC1
+	UlCcchMessagetypeChoiceMessageclassextension
+)
+
+type UlCcchMessagetype struct {
+	Choice                uint64
+	C1                    *UlCcchMessagetypeC1
+	Messageclassextension *UlCcchMessagetypeMessageclassextension
 }
-
-type UlCcchMessagetypeC1 struct {
-	Value interface{}
-}
-
-func (*UlCcchMessagetypeC1) isUlCcchMessagetype() {}
-
-type UlCcchMessagetypeMessageclassextension struct {
-	Value interface{}
-}
-
-func (*UlCcchMessagetypeMessageclassextension) isUlCcchMessagetype() {}

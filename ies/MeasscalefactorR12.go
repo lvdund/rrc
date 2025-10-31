@@ -8,6 +8,7 @@ type MeasscalefactorR12 struct {
 }
 
 const (
-	MeasscalefactorR12SfEutraCf1 = 0
-	MeasscalefactorR12SfEutraCf2 = 1
+	MeasscalefactorR12EnumeratedNothing = iota
+	MeasscalefactorR12EnumeratedSf_Eutra_Cf1
+	MeasscalefactorR12EnumeratedSf_Eutra_Cf2
 )

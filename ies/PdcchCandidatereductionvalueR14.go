@@ -8,8 +8,9 @@ type PdcchCandidatereductionvalueR14 struct {
 }
 
 const (
-	PdcchCandidatereductionvalueR14N0   = 0
-	PdcchCandidatereductionvalueR14N50  = 1
-	PdcchCandidatereductionvalueR14N100 = 2
-	PdcchCandidatereductionvalueR14N150 = 3
+	PdcchCandidatereductionvalueR14EnumeratedNothing = iota
+	PdcchCandidatereductionvalueR14EnumeratedN0
+	PdcchCandidatereductionvalueR14EnumeratedN50
+	PdcchCandidatereductionvalueR14EnumeratedN100
+	PdcchCandidatereductionvalueR14EnumeratedN150
 )

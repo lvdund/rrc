@@ -1,12 +1,10 @@
 package ies
 
-import "rrc/utils"
-
 // DeltaTxD-OffsetListPUCCH-r10 ::= SEQUENCE
 // Extensible
 type DeltatxdOffsetlistpucchR10 struct {
-	DeltatxdOffsetpucchFormat1R10     utils.ENUMERATED
-	DeltatxdOffsetpucchFormat1a1bR10  utils.ENUMERATED
-	DeltatxdOffsetpucchFormat22a2bR10 utils.ENUMERATED
-	DeltatxdOffsetpucchFormat3R10     utils.ENUMERATED
+	DeltatxdOffsetpucchFormat1R10     DeltatxdOffsetlistpucchR10DeltatxdOffsetpucchFormat1R10
+	DeltatxdOffsetpucchFormat1a1bR10  DeltatxdOffsetlistpucchR10DeltatxdOffsetpucchFormat1a1bR10
+	DeltatxdOffsetpucchFormat22a2bR10 DeltatxdOffsetlistpucchR10DeltatxdOffsetpucchFormat22a2bR10
+	DeltatxdOffsetpucchFormat3R10     DeltatxdOffsetlistpucchR10DeltatxdOffsetpucchFormat3R10
 }

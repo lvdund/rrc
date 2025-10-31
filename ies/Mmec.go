@@ -4,5 +4,5 @@ import "rrc/utils"
 
 // MMEC ::= BIT STRING (SIZE (8))
 type Mmec struct {
-	Value utils.BITSTRING
+	Value utils.BITSTRING `lb:8,ub:8`
 }

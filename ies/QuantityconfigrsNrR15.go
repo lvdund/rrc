@@ -1,7 +1,5 @@
 package ies
 
-import "rrc/utils"
-
 // QuantityConfigRS-NR-r15 ::= SEQUENCE
 type QuantityconfigrsNrR15 struct {
 	FiltercoeffRsrpR15       Filtercoefficient

@@ -1,0 +1,18 @@
+package ies
+
+import "rrc/utils"
+
+// MBSFN-SubframeConfig-radioframeAllocationPeriod ::= ENUMERATED
+type MbsfnSubframeconfigRadioframeallocationperiod struct {
+	Value utils.ENUMERATED
+}
+
+const (
+	MbsfnSubframeconfigRadioframeallocationperiodEnumeratedNothing = iota
+	MbsfnSubframeconfigRadioframeallocationperiodEnumeratedN1
+	MbsfnSubframeconfigRadioframeallocationperiodEnumeratedN2
+	MbsfnSubframeconfigRadioframeallocationperiodEnumeratedN4
+	MbsfnSubframeconfigRadioframeallocationperiodEnumeratedN8
+	MbsfnSubframeconfigRadioframeallocationperiodEnumeratedN16
+	MbsfnSubframeconfigRadioframeallocationperiodEnumeratedN32
+)

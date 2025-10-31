@@ -1,0 +1,44 @@
+package ies
+
+import "rrc/utils"
+
+// SupportedBandUTRA-FDD ::= utils.ENUMERATED // Extensible
+type SupportedbandutraFdd struct {
+	Value utils.ENUMERATED
+}
+
+const (
+	SupportedbandutraFddEnumeratedNothing = iota
+	SupportedbandutraFddEnumeratedBandi
+	SupportedbandutraFddEnumeratedBandii
+	SupportedbandutraFddEnumeratedBandiii
+	SupportedbandutraFddEnumeratedBandiv
+	SupportedbandutraFddEnumeratedBandv
+	SupportedbandutraFddEnumeratedBandvi
+	SupportedbandutraFddEnumeratedBandvii
+	SupportedbandutraFddEnumeratedBandviii
+	SupportedbandutraFddEnumeratedBandix
+	SupportedbandutraFddEnumeratedBandx
+	SupportedbandutraFddEnumeratedBandxi
+	SupportedbandutraFddEnumeratedBandxii
+	SupportedbandutraFddEnumeratedBandxiii
+	SupportedbandutraFddEnumeratedBandxiv
+	SupportedbandutraFddEnumeratedBandxv
+	SupportedbandutraFddEnumeratedBandxvi
+	SupportedbandutraFddEnumeratedBandxvii_8a0
+	SupportedbandutraFddEnumeratedBandxviii_8a0
+	SupportedbandutraFddEnumeratedBandxix_8a0
+	SupportedbandutraFddEnumeratedBandxx_8a0
+	SupportedbandutraFddEnumeratedBandxxi_8a0
+	SupportedbandutraFddEnumeratedBandxxii_8a0
+	SupportedbandutraFddEnumeratedBandxxiii_8a0
+	SupportedbandutraFddEnumeratedBandxxiv_8a0
+	SupportedbandutraFddEnumeratedBandxxv_8a0
+	SupportedbandutraFddEnumeratedBandxxvi_8a0
+	SupportedbandutraFddEnumeratedBandxxvii_8a0
+	SupportedbandutraFddEnumeratedBandxxviii_8a0
+	SupportedbandutraFddEnumeratedBandxxix_8a0
+	SupportedbandutraFddEnumeratedBandxxx_8a0
+	SupportedbandutraFddEnumeratedBandxxxi_8a0
+	SupportedbandutraFddEnumeratedBandxxxii_8a0
+)

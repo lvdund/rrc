@@ -1,7 +1,5 @@
 package ies
 
-import "rrc/utils"
-
 // MIMO-CA-ParametersPerBoBC-v1470 ::= SEQUENCE
 type MimoCaParametersperbobcV1470 struct {
 	Parameterstm9V1470  MimoCaParametersperbobcpertmV1470

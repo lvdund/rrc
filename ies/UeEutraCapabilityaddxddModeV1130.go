@@ -1,7 +1,5 @@
 package ies
 
-import "rrc/utils"
-
 // UE-EUTRA-CapabilityAddXDD-Mode-v1130 ::= SEQUENCE
 // Extensible
 type UeEutraCapabilityaddxddModeV1130 struct {

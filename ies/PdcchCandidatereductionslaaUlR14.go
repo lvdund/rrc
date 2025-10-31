@@ -1,20 +1,14 @@
 package ies
 
-import "rrc/utils"
-
 // PDCCH-CandidateReductionsLAA-UL-r14 ::= CHOICE
-type PdcchCandidatereductionslaaUlR14 interface {
-	isPdcchCandidatereductionslaaUlR14()
+const (
+	PdcchCandidatereductionslaaUlR14ChoiceNothing = iota
+	PdcchCandidatereductionslaaUlR14ChoiceRelease
+	PdcchCandidatereductionslaaUlR14ChoiceSetup
+)
+
+type PdcchCandidatereductionslaaUlR14 struct {
+	Choice  uint64
+	Release *struct{}
+	Setup   *PdcchCandidatereductionslaaUlR14Setup
 }
-
-type PdcchCandidatereductionslaaUlR14Release struct {
-	Value struct{}
-}
-
-func (*PdcchCandidatereductionslaaUlR14Release) isPdcchCandidatereductionslaaUlR14() {}
-
-type PdcchCandidatereductionslaaUlR14Setup struct {
-	Value interface{}
-}
-
-func (*PdcchCandidatereductionslaaUlR14Setup) isPdcchCandidatereductionslaaUlR14() {}

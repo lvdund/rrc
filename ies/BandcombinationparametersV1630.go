@@ -4,10 +4,10 @@ import "rrc/utils"
 
 // BandCombinationParameters-v1630 ::= SEQUENCE
 type BandcombinationparametersV1630 struct {
-	V2xSupportedtxbandcomblistperbcV1630 *utils.BITSTRING
-	V2xSupportedrxbandcomblistperbcV1630 *utils.BITSTRING
-	ScalingfactortxsidelinkR16           *interface{}
-	ScalingfactorrxsidelinkR16           *interface{}
-	InterbandpowersharingsyncdapsR16     *utils.ENUMERATED
-	InterbandpowersharingasyncdapsR16    *utils.ENUMERATED
+	V2xSupportedtxbandcomblistperbcV1630 *utils.BITSTRING            `lb:1,ub:maxBandCombSidelinkNRR16`
+	V2xSupportedrxbandcomblistperbcV1630 *utils.BITSTRING            `lb:1,ub:maxBandCombSidelinkNRR16`
+	ScalingfactortxsidelinkR16           *[]ScalingfactorsidelinkR16 `lb:1,ub:maxBandCombSidelinkNRR16`
+	ScalingfactorrxsidelinkR16           *[]ScalingfactorsidelinkR16 `lb:1,ub:maxBandCombSidelinkNRR16`
+	InterbandpowersharingsyncdapsR16     *BandcombinationparametersV1630InterbandpowersharingsyncdapsR16
+	InterbandpowersharingasyncdapsR16    *BandcombinationparametersV1630InterbandpowersharingasyncdapsR16
 }

@@ -1,20 +1,14 @@
 package ies
 
-import "rrc/utils"
-
 // UL-DelayValueConfig-r16 ::= CHOICE
-type UlDelayvalueconfigR16 interface {
-	isUlDelayvalueconfigR16()
+const (
+	UlDelayvalueconfigR16ChoiceNothing = iota
+	UlDelayvalueconfigR16ChoiceRelease
+	UlDelayvalueconfigR16ChoiceSetup
+)
+
+type UlDelayvalueconfigR16 struct {
+	Choice  uint64
+	Release *struct{}
+	Setup   *UlDelayvalueconfigR16Setup
 }
-
-type UlDelayvalueconfigR16Release struct {
-	Value struct{}
-}
-
-func (*UlDelayvalueconfigR16Release) isUlDelayvalueconfigR16() {}
-
-type UlDelayvalueconfigR16Setup struct {
-	Value interface{}
-}
-
-func (*UlDelayvalueconfigR16Setup) isUlDelayvalueconfigR16() {}

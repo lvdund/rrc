@@ -1,12 +1,10 @@
 package ies
 
-import "rrc/utils"
-
 // DeltaTxD-OffsetListSPUCCH-r15 ::= SEQUENCE
 // Extensible
 type DeltatxdOffsetlistspucchR15 struct {
-	DeltatxdOffsetspucchFormat1R15  utils.ENUMERATED
-	DeltatxdOffsetspucchFormat1aR15 utils.ENUMERATED
-	DeltatxdOffsetspucchFormat1bR15 utils.ENUMERATED
-	DeltatxdOffsetspucchFormat3R15  utils.ENUMERATED
+	DeltatxdOffsetspucchFormat1R15  DeltatxdOffsetlistspucchR15DeltatxdOffsetspucchFormat1R15
+	DeltatxdOffsetspucchFormat1aR15 DeltatxdOffsetlistspucchR15DeltatxdOffsetspucchFormat1aR15
+	DeltatxdOffsetspucchFormat1bR15 DeltatxdOffsetlistspucchR15DeltatxdOffsetspucchFormat1bR15
+	DeltatxdOffsetspucchFormat3R15  DeltatxdOffsetlistspucchR15DeltatxdOffsetspucchFormat3R15
 }

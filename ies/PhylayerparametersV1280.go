@@ -1,8 +1,6 @@
 package ies
 
-import "rrc/utils"
-
 // PhyLayerParameters-v1280 ::= SEQUENCE
 type PhylayerparametersV1280 struct {
-	AlternativetbsIndicesR12 *utils.ENUMERATED
+	AlternativetbsIndicesR12 *PhylayerparametersV1280AlternativetbsIndicesR12
 }

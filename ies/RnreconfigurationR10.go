@@ -2,8 +2,10 @@ package ies
 
 import "rrc/utils"
 
-// RNReconfiguration-r10 ::= SEQUENCE
+// RNReconfiguration-r10-IEs ::= SEQUENCE
 type RnreconfigurationR10 struct {
-	RrcTransactionidentifier RrcTransactionidentifier
-	Criticalextensions       interface{}
+	RnSysteminfoR10          *RnSysteminfoR10
+	RnSubframeconfigR10      *RnSubframeconfigR10
+	Latenoncriticalextension *utils.OCTETSTRING
+	Noncriticalextension     *RnreconfigurationR10IesNoncriticalextension
 }

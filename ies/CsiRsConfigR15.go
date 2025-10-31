@@ -1,20 +1,14 @@
 package ies
 
-import "rrc/utils"
-
 // CSI-RS-Config-r15 ::= CHOICE
-type CsiRsConfigR15 interface {
-	isCsiRsConfigR15()
+const (
+	CsiRsConfigR15ChoiceNothing = iota
+	CsiRsConfigR15ChoiceRelease
+	CsiRsConfigR15ChoiceSetup
+)
+
+type CsiRsConfigR15 struct {
+	Choice  uint64
+	Release *struct{}
+	Setup   *CsiRsConfigR15Setup
 }
-
-type CsiRsConfigR15Release struct {
-	Value struct{}
-}
-
-func (*CsiRsConfigR15Release) isCsiRsConfigR15() {}
-
-type CsiRsConfigR15Setup struct {
-	Value interface{}
-}
-
-func (*CsiRsConfigR15Setup) isCsiRsConfigR15() {}

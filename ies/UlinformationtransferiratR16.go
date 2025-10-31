@@ -2,7 +2,9 @@ package ies
 
 import "rrc/utils"
 
-// ULInformationTransferIRAT-r16 ::= SEQUENCE
+// ULInformationTransferIRAT-r16-IEs ::= SEQUENCE
 type UlinformationtransferiratR16 struct {
-	Criticalextensions interface{}
+	UlDcchMessagenrR16       *utils.OCTETSTRING
+	Latenoncriticalextension *utils.OCTETSTRING
+	Noncriticalextension     *UlinformationtransferiratR16IesNoncriticalextension
 }

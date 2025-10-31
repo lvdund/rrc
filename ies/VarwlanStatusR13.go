@@ -1,7 +1,5 @@
 package ies
 
-import "rrc/utils"
-
 // VarWLAN-Status-r13 ::= SEQUENCE
 type VarwlanStatusR13 struct {
 	StatusR13 WlanStatusR13

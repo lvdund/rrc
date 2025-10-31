@@ -1,0 +1,20 @@
+package ies
+
+import "rrc/utils"
+
+// RACH-Info-NB-r13-mac-ContentionResolutionTimer-r13 ::= ENUMERATED
+type RachInfoNbR13MacContentionresolutiontimerR13 struct {
+	Value utils.ENUMERATED
+}
+
+const (
+	RachInfoNbR13MacContentionresolutiontimerR13EnumeratedNothing = iota
+	RachInfoNbR13MacContentionresolutiontimerR13EnumeratedPp1
+	RachInfoNbR13MacContentionresolutiontimerR13EnumeratedPp2
+	RachInfoNbR13MacContentionresolutiontimerR13EnumeratedPp3
+	RachInfoNbR13MacContentionresolutiontimerR13EnumeratedPp4
+	RachInfoNbR13MacContentionresolutiontimerR13EnumeratedPp8
+	RachInfoNbR13MacContentionresolutiontimerR13EnumeratedPp16
+	RachInfoNbR13MacContentionresolutiontimerR13EnumeratedPp32
+	RachInfoNbR13MacContentionresolutiontimerR13EnumeratedPp64
+)

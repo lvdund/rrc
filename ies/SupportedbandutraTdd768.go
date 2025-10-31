@@ -1,0 +1,28 @@
+package ies
+
+import "rrc/utils"
+
+// SupportedBandUTRA-TDD768 ::= utils.ENUMERATED // Extensible
+type SupportedbandutraTdd768 struct {
+	Value utils.ENUMERATED
+}
+
+const (
+	SupportedbandutraTdd768EnumeratedNothing = iota
+	SupportedbandutraTdd768EnumeratedA
+	SupportedbandutraTdd768EnumeratedB
+	SupportedbandutraTdd768EnumeratedC
+	SupportedbandutraTdd768EnumeratedD
+	SupportedbandutraTdd768EnumeratedE
+	SupportedbandutraTdd768EnumeratedF
+	SupportedbandutraTdd768EnumeratedG
+	SupportedbandutraTdd768EnumeratedH
+	SupportedbandutraTdd768EnumeratedI
+	SupportedbandutraTdd768EnumeratedJ
+	SupportedbandutraTdd768EnumeratedK
+	SupportedbandutraTdd768EnumeratedL
+	SupportedbandutraTdd768EnumeratedM
+	SupportedbandutraTdd768EnumeratedN
+	SupportedbandutraTdd768EnumeratedO
+	SupportedbandutraTdd768EnumeratedP
+)

@@ -1,0 +1,16 @@
+package ies
+
+import "rrc/utils"
+
+// RRCConnectionSetupComplete-v1250-IEs-mobilityState-r12 ::= ENUMERATED
+type RrcconnectionsetupcompleteV1250IesMobilitystateR12 struct {
+	Value utils.ENUMERATED
+}
+
+const (
+	RrcconnectionsetupcompleteV1250IesMobilitystateR12EnumeratedNothing = iota
+	RrcconnectionsetupcompleteV1250IesMobilitystateR12EnumeratedNormal
+	RrcconnectionsetupcompleteV1250IesMobilitystateR12EnumeratedMedium
+	RrcconnectionsetupcompleteV1250IesMobilitystateR12EnumeratedHigh
+	RrcconnectionsetupcompleteV1250IesMobilitystateR12EnumeratedSpare
+)

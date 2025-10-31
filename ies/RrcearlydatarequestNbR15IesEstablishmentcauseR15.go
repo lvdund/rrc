@@ -1,0 +1,16 @@
+package ies
+
+import "rrc/utils"
+
+// RRCEarlyDataRequest-NB-r15-IEs-establishmentCause-r15 ::= ENUMERATED
+type RrcearlydatarequestNbR15IesEstablishmentcauseR15 struct {
+	Value utils.ENUMERATED
+}
+
+const (
+	RrcearlydatarequestNbR15IesEstablishmentcauseR15EnumeratedNothing = iota
+	RrcearlydatarequestNbR15IesEstablishmentcauseR15EnumeratedMo_Data
+	RrcearlydatarequestNbR15IesEstablishmentcauseR15EnumeratedMo_Exceptiondata
+	RrcearlydatarequestNbR15IesEstablishmentcauseR15EnumeratedDelaytolerantaccess
+	RrcearlydatarequestNbR15IesEstablishmentcauseR15EnumeratedMt_Access_V1610
+)

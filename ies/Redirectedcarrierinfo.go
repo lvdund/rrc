@@ -1,57 +1,27 @@
 package ies
 
-import "rrc/utils"
-
 // RedirectedCarrierInfo ::= CHOICE
 // Extensible
-type Redirectedcarrierinfo interface {
-	isRedirectedcarrierinfo()
+const (
+	RedirectedcarrierinfoChoiceNothing = iota
+	RedirectedcarrierinfoChoiceEutra
+	RedirectedcarrierinfoChoiceGeran
+	RedirectedcarrierinfoChoiceUtraFdd
+	RedirectedcarrierinfoChoiceUtraTdd
+	RedirectedcarrierinfoChoiceCdma2000Hrpd
+	RedirectedcarrierinfoChoiceCdma20001xrtt
+	RedirectedcarrierinfoChoiceUtraTddR10
+	RedirectedcarrierinfoChoiceNrR15
+)
+
+type Redirectedcarrierinfo struct {
+	Choice        uint64
+	Eutra         *ArfcnValueeutra
+	Geran         *Carrierfreqsgeran
+	UtraFdd       *ArfcnValueutra
+	UtraTdd       *ArfcnValueutra
+	Cdma2000Hrpd  *Carrierfreqcdma2000
+	Cdma20001xrtt *Carrierfreqcdma2000
+	UtraTddR10    *CarrierfreqlistutraTddR10
+	NrR15         *CarrierinfonrR15
 }
-
-type RedirectedcarrierinfoEutra struct {
-	Value ArfcnValueeutra
-}
-
-func (*RedirectedcarrierinfoEutra) isRedirectedcarrierinfo() {}
-
-type RedirectedcarrierinfoGeran struct {
-	Value Carrierfreqsgeran
-}
-
-func (*RedirectedcarrierinfoGeran) isRedirectedcarrierinfo() {}
-
-type RedirectedcarrierinfoUtraFdd struct {
-	Value ArfcnValueutra
-}
-
-func (*RedirectedcarrierinfoUtraFdd) isRedirectedcarrierinfo() {}
-
-type RedirectedcarrierinfoUtraTdd struct {
-	Value ArfcnValueutra
-}
-
-func (*RedirectedcarrierinfoUtraTdd) isRedirectedcarrierinfo() {}
-
-type RedirectedcarrierinfoCdma2000Hrpd struct {
-	Value Carrierfreqcdma2000
-}
-
-func (*RedirectedcarrierinfoCdma2000Hrpd) isRedirectedcarrierinfo() {}
-
-type RedirectedcarrierinfoCdma20001xrtt struct {
-	Value Carrierfreqcdma2000
-}
-
-func (*RedirectedcarrierinfoCdma20001xrtt) isRedirectedcarrierinfo() {}
-
-type RedirectedcarrierinfoUtraTddR10 struct {
-	Value CarrierfreqlistutraTddR10
-}
-
-func (*RedirectedcarrierinfoUtraTddR10) isRedirectedcarrierinfo() {}
-
-type RedirectedcarrierinfoNrR15 struct {
-	Value CarrierinfonrR15
-}
-
-func (*RedirectedcarrierinfoNrR15) isRedirectedcarrierinfo() {}

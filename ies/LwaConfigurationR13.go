@@ -1,20 +1,14 @@
 package ies
 
-import "rrc/utils"
-
 // LWA-Configuration-r13 ::= CHOICE
-type LwaConfigurationR13 interface {
-	isLwaConfigurationR13()
+const (
+	LwaConfigurationR13ChoiceNothing = iota
+	LwaConfigurationR13ChoiceRelease
+	LwaConfigurationR13ChoiceSetup
+)
+
+type LwaConfigurationR13 struct {
+	Choice  uint64
+	Release *struct{}
+	Setup   *LwaConfigurationR13Setup
 }
-
-type LwaConfigurationR13Release struct {
-	Value struct{}
-}
-
-func (*LwaConfigurationR13Release) isLwaConfigurationR13() {}
-
-type LwaConfigurationR13Setup struct {
-	Value interface{}
-}
-
-func (*LwaConfigurationR13Setup) isLwaConfigurationR13() {}

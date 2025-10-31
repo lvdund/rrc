@@ -1,0 +1,20 @@
+package ies
+
+import "rrc/utils"
+
+// UplinkPowerControlCommonPSCell-r12-deltaF-PUCCH-Format3-r12 ::= ENUMERATED
+type UplinkpowercontrolcommonpscellR12DeltafPucchFormat3R12 struct {
+	Value utils.ENUMERATED
+}
+
+const (
+	UplinkpowercontrolcommonpscellR12DeltafPucchFormat3R12EnumeratedNothing = iota
+	UplinkpowercontrolcommonpscellR12DeltafPucchFormat3R12EnumeratedDeltaf_1
+	UplinkpowercontrolcommonpscellR12DeltafPucchFormat3R12EnumeratedDeltaf0
+	UplinkpowercontrolcommonpscellR12DeltafPucchFormat3R12EnumeratedDeltaf1
+	UplinkpowercontrolcommonpscellR12DeltafPucchFormat3R12EnumeratedDeltaf2
+	UplinkpowercontrolcommonpscellR12DeltafPucchFormat3R12EnumeratedDeltaf3
+	UplinkpowercontrolcommonpscellR12DeltafPucchFormat3R12EnumeratedDeltaf4
+	UplinkpowercontrolcommonpscellR12DeltafPucchFormat3R12EnumeratedDeltaf5
+	UplinkpowercontrolcommonpscellR12DeltafPucchFormat3R12EnumeratedDeltaf6
+)

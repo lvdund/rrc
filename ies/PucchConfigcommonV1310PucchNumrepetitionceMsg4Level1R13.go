@@ -1,0 +1,16 @@
+package ies
+
+import "rrc/utils"
+
+// PUCCH-ConfigCommon-v1310-pucch-NumRepetitionCE-Msg4-Level1-r13 ::= ENUMERATED
+type PucchConfigcommonV1310PucchNumrepetitionceMsg4Level1R13 struct {
+	Value utils.ENUMERATED
+}
+
+const (
+	PucchConfigcommonV1310PucchNumrepetitionceMsg4Level1R13EnumeratedNothing = iota
+	PucchConfigcommonV1310PucchNumrepetitionceMsg4Level1R13EnumeratedN1
+	PucchConfigcommonV1310PucchNumrepetitionceMsg4Level1R13EnumeratedN2
+	PucchConfigcommonV1310PucchNumrepetitionceMsg4Level1R13EnumeratedN4
+	PucchConfigcommonV1310PucchNumrepetitionceMsg4Level1R13EnumeratedN8
+)

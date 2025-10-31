@@ -1,11 +1,9 @@
 package ies
 
-import "rrc/utils"
-
 // MAC-Parameters-v1610 ::= SEQUENCE
 type MacParametersV1610 struct {
-	DirectmcgScellactivationresumeR16 *utils.ENUMERATED
-	DirectscgScellactivationresumeR16 *utils.ENUMERATED
-	EarlydataUp5gcR16                 *utils.ENUMERATED
-	RaiSupportenhR16                  *utils.ENUMERATED
+	DirectmcgScellactivationresumeR16 *MacParametersV1610DirectmcgScellactivationresumeR16
+	DirectscgScellactivationresumeR16 *MacParametersV1610DirectscgScellactivationresumeR16
+	EarlydataUp5gcR16                 *MacParametersV1610EarlydataUp5gcR16
+	RaiSupportenhR16                  *MacParametersV1610RaiSupportenhR16
 }

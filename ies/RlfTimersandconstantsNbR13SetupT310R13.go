@@ -1,0 +1,19 @@
+package ies
+
+import "rrc/utils"
+
+// RLF-TimersAndConstants-NB-r13-setup-t310-r13 ::= ENUMERATED
+type RlfTimersandconstantsNbR13SetupT310R13 struct {
+	Value utils.ENUMERATED
+}
+
+const (
+	RlfTimersandconstantsNbR13SetupT310R13EnumeratedNothing = iota
+	RlfTimersandconstantsNbR13SetupT310R13EnumeratedMs0
+	RlfTimersandconstantsNbR13SetupT310R13EnumeratedMs200
+	RlfTimersandconstantsNbR13SetupT310R13EnumeratedMs500
+	RlfTimersandconstantsNbR13SetupT310R13EnumeratedMs1000
+	RlfTimersandconstantsNbR13SetupT310R13EnumeratedMs2000
+	RlfTimersandconstantsNbR13SetupT310R13EnumeratedMs4000
+	RlfTimersandconstantsNbR13SetupT310R13EnumeratedMs8000
+)

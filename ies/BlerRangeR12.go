@@ -2,7 +2,7 @@ package ies
 
 import "rrc/utils"
 
-// BLER-Range-r12 ::= INTEGER (0..31)
+// BLER-Range-r12 ::= utils.INTEGER (0..31)
 type BlerRangeR12 struct {
-	Value utils.INTEGER
+	Value utils.INTEGER `lb:0,ub:31`
 }

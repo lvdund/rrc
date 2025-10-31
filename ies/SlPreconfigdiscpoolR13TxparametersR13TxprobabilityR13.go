@@ -1,0 +1,16 @@
+package ies
+
+import "rrc/utils"
+
+// SL-PreconfigDiscPool-r13-txParameters-r13-txProbability-r13 ::= ENUMERATED
+type SlPreconfigdiscpoolR13TxparametersR13TxprobabilityR13 struct {
+	Value utils.ENUMERATED
+}
+
+const (
+	SlPreconfigdiscpoolR13TxparametersR13TxprobabilityR13EnumeratedNothing = iota
+	SlPreconfigdiscpoolR13TxparametersR13TxprobabilityR13EnumeratedP25
+	SlPreconfigdiscpoolR13TxparametersR13TxprobabilityR13EnumeratedP50
+	SlPreconfigdiscpoolR13TxparametersR13TxprobabilityR13EnumeratedP75
+	SlPreconfigdiscpoolR13TxparametersR13TxprobabilityR13EnumeratedP100
+)

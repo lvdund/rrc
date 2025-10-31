@@ -1,8 +1,6 @@
 package ies
 
-import "rrc/utils"
-
 // CellSelectionInfoCE-v1530 ::= SEQUENCE
 type CellselectioninfoceV1530 struct {
-	Powerclass14dbmOffsetR15 utils.ENUMERATED
+	Powerclass14dbmOffsetR15 CellselectioninfoceV1530Powerclass14dbmOffsetR15
 }

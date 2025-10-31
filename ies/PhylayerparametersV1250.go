@@ -4,15 +4,15 @@ import "rrc/utils"
 
 // PhyLayerParameters-v1250 ::= SEQUENCE
 type PhylayerparametersV1250 struct {
-	EHarqPatternFddR12                     *utils.ENUMERATED
-	Enhanced4txcodebookR12                 *utils.ENUMERATED
-	TddFddCaPcellduplexR12                 *utils.BITSTRING
-	PhyTddReconfigTddPcellR12              *utils.ENUMERATED
-	PhyTddReconfigFddPcellR12              *utils.ENUMERATED
-	PuschFeedbackmodeR12                   *utils.ENUMERATED
-	PuschSrsPowercontrolSubframesetR12     *utils.ENUMERATED
-	CsiSubframesetR12                      *utils.ENUMERATED
-	NoresourcerestrictionforttibundlingR12 *utils.ENUMERATED
-	DiscoverysignalsindeactscellR12        *utils.ENUMERATED
+	EHarqPatternFddR12                     *PhylayerparametersV1250EHarqPatternFddR12
+	Enhanced4txcodebookR12                 *PhylayerparametersV1250Enhanced4txcodebookR12
+	TddFddCaPcellduplexR12                 *utils.BITSTRING `lb:2,ub:2`
+	PhyTddReconfigTddPcellR12              *PhylayerparametersV1250PhyTddReconfigTddPcellR12
+	PhyTddReconfigFddPcellR12              *PhylayerparametersV1250PhyTddReconfigFddPcellR12
+	PuschFeedbackmodeR12                   *PhylayerparametersV1250PuschFeedbackmodeR12
+	PuschSrsPowercontrolSubframesetR12     *PhylayerparametersV1250PuschSrsPowercontrolSubframesetR12
+	CsiSubframesetR12                      *PhylayerparametersV1250CsiSubframesetR12
+	NoresourcerestrictionforttibundlingR12 *PhylayerparametersV1250NoresourcerestrictionforttibundlingR12
+	DiscoverysignalsindeactscellR12        *PhylayerparametersV1250DiscoverysignalsindeactscellR12
 	NaicsCapabilityListR12                 *NaicsCapabilityListR12
 }

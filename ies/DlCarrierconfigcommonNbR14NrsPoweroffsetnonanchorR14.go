@@ -1,0 +1,20 @@
+package ies
+
+import "rrc/utils"
+
+// DL-CarrierConfigCommon-NB-r14-nrs-PowerOffsetNonAnchor-r14 ::= ENUMERATED
+type DlCarrierconfigcommonNbR14NrsPoweroffsetnonanchorR14 struct {
+	Value utils.ENUMERATED
+}
+
+const (
+	DlCarrierconfigcommonNbR14NrsPoweroffsetnonanchorR14EnumeratedNothing = iota
+	DlCarrierconfigcommonNbR14NrsPoweroffsetnonanchorR14EnumeratedDb_12
+	DlCarrierconfigcommonNbR14NrsPoweroffsetnonanchorR14EnumeratedDb_10
+	DlCarrierconfigcommonNbR14NrsPoweroffsetnonanchorR14EnumeratedDb_8
+	DlCarrierconfigcommonNbR14NrsPoweroffsetnonanchorR14EnumeratedDb_6
+	DlCarrierconfigcommonNbR14NrsPoweroffsetnonanchorR14EnumeratedDb_4
+	DlCarrierconfigcommonNbR14NrsPoweroffsetnonanchorR14EnumeratedDb_2
+	DlCarrierconfigcommonNbR14NrsPoweroffsetnonanchorR14EnumeratedDb0
+	DlCarrierconfigcommonNbR14NrsPoweroffsetnonanchorR14EnumeratedDb3
+)

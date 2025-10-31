@@ -8,6 +8,7 @@ type Bandindicatorgeran struct {
 }
 
 const (
-	BandindicatorgeranDcs1800 = 0
-	BandindicatorgeranPcs1900 = 1
+	BandindicatorgeranEnumeratedNothing = iota
+	BandindicatorgeranEnumeratedDcs1800
+	BandindicatorgeranEnumeratedPcs1900
 )

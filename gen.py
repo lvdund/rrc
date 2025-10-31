@@ -1,8 +1,7 @@
 #!/usr/bin/env python3
 """
 ASN.1 to Go Code Generator for LTE RRC Interface
-Parses ASN.1 definitions and generates Go structs (one file per type)
-Uses common types from utils/CommonType.go
+Generates Go code with CHOICE discriminators, constraint tags, and proper type handling
 """
 
 import re
@@ -23,13 +22,12 @@ class ASN1Field:
     name: str
     type_name: str
     optional: bool = False
-    size_constraint: Optional[str] = None  # e.g., "1..10"
-    range_constraint: Optional[str] = None  # e.g., "0..255"
-    containing: Optional[str] = None  # CONTAINING clause
-    default_value: Optional[str] = None
+    size_constraint: Optional[str] = None
+    range_constraint: Optional[str] = None
+    containing: Optional[str] = None
     comment: Optional[str] = None
-    is_extension: bool = False  # Field is in extension marker
-    extensible: bool = False  # Type itself is extensible
+    is_extension: bool = False
+    extensible: bool = False
 
 
 @dataclass
@@ -54,7 +52,7 @@ class ASN1SequenceOf:
     """SEQUENCE OF type (arrays)"""
     name: str
     element_type: str
-    size_constraint: Optional[str] = None  # e.g., "1..maxDRB"
+    size_constraint: Optional[str] = None
 
 
 @dataclass
@@ -102,7 +100,7 @@ class ASN1Constant:
 
 
 # ============================================================================
-# ASN.1 Parser
+# ASN.1 Parser - (keeping existing implementation)
 # ============================================================================
 
 class ASN1Parser:
@@ -116,15 +114,9 @@ class ASN1Parser:
         
     def parse(self):
         """Main parsing entry point"""
-        # Remove comments (-- comment text)
         content = re.sub(r'--[^\n]*', '', self.content)
-        
-        # Extract constants first (maxXXX definitions)
         self._extract_constants(content)
-        
-        # Extract type definitions
         self._extract_types(content)
-        
         return self.types, self.constants
     
     def _extract_constants(self, content: str):
@@ -134,31 +126,23 @@ class ASN1Parser:
             name = match.group(1)
             value = int(match.group(2))
             self.constants[name] = ASN1Constant(name=name, value=value)
-            # Also store with underscores for lookup
             name_underscore = name.replace('-', '_')
             self.constants[name_underscore] = ASN1Constant(name=name, value=value)
     
     def _extract_types(self, content: str):
         """Extract all type definitions"""
-        # Pattern to match type definitions: TypeName ::= ...
-        # We need to handle multi-line definitions
         lines = content.split('\n')
         i = 0
         
         while i < len(lines):
             line = lines[i].strip()
-            
-            # Check if this is a type definition start
             type_match = re.match(r'^([A-Z][a-zA-Z0-9_-]*)\s*::=\s*(.*)$', line)
             if type_match:
                 type_name = type_match.group(1)
                 rest = type_match.group(2).strip()
-                
-                # Collect the full definition (may span multiple lines)
                 definition_lines = [rest]
                 i += 1
                 
-                # Continue collecting until we find the end of definition
                 brace_count = rest.count('{') - rest.count('}')
                 paren_count = rest.count('(') - rest.count(')')
                 
@@ -172,8 +156,6 @@ class ASN1Parser:
                     i += 1
                 
                 full_definition = ' '.join(definition_lines)
-                
-                # Parse based on type
                 parsed_type = self._parse_type_definition(type_name, full_definition)
                 if parsed_type:
                     self.types[type_name] = parsed_type
@@ -183,11 +165,29 @@ class ASN1Parser:
     def _is_definition_complete(self, lines: List[str]) -> bool:
         """Check if a type definition is complete"""
         text = ' '.join(lines)
-        # Simple heuristic: if it ends with } or a known keyword pattern
         if re.search(r'\}\s*$', text):
             return True
-        # Check for simple assignments that end immediately
-        if re.match(r'^(SEQUENCE|CHOICE|INTEGER|ENUMERATED|BIT\s+STRING|OCTET\s+STRING|BOOLEAN|NULL)\s*$', text):
+        # Note: ENUMERATED is excluded here because it often has { on next line
+        if re.match(r'^(SEQUENCE|CHOICE|INTEGER|BIT\s+STRING|BITSTRING|OCTET\s+STRING|OCTETSTRING|BOOLEAN|NULL)\s*$', text):
+            return True
+        # SEQUENCE OF is complete on one line (with or without constraints on element type)
+        # Pattern: SEQUENCE (SIZE (...))? OF TypeName (...)?
+        if re.match(r'^SEQUENCE\s*(\(SIZE\s*\([^)]+\)\))?\s*OF\s+', text):
+            # Check if all parens are balanced
+            if text.count('(') == text.count(')'):
+                return True
+        # BIT STRING / BITSTRING or OCTET STRING / OCTETSTRING with constraints is complete
+        if re.match(r'^(BIT\s+STRING|BITSTRING|OCTET\s+STRING|OCTETSTRING)\s*\(', text):
+            # Check if all parens are balanced
+            if text.count('(') == text.count(')'):
+                return True
+        # INTEGER with constraints is complete
+        if re.match(r'^INTEGER\s*\(', text):
+            if text.count('(') == text.count(')'):
+                return True
+        # Type alias or simple type reference is complete
+        # But not standalone ENUMERATED (which needs {})
+        if re.match(r'^[A-Z][a-zA-Z0-9_-]*(\s*\([^)]+\))?\s*$', text) and text.strip() != 'ENUMERATED':
             return True
         return False
     
@@ -195,52 +195,40 @@ class ASN1Parser:
         """Parse a type definition and return appropriate dataclass"""
         definition = definition.strip()
         
-        # SEQUENCE type
-        if definition.startswith('SEQUENCE {'):
+        # Use regex to handle variable whitespace
+        if re.match(r'^SEQUENCE\s*\{', definition):
             return self._parse_sequence(name, definition)
-        
-        # SEQUENCE OF type
-        if definition.startswith('SEQUENCE (SIZE') or definition.startswith('SEQUENCE OF'):
+        elif re.match(r'^SEQUENCE\s*\(SIZE', definition) or re.match(r'^SEQUENCE\s+OF', definition):
             return self._parse_sequence_of(name, definition)
-        
-        # CHOICE type
-        if definition.startswith('CHOICE {'):
+        elif re.match(r'^CHOICE\s*\{', definition):
             return self._parse_choice(name, definition)
-        
-        # ENUMERATED type
-        if definition.startswith('ENUMERATED {') or definition.startswith('ENUMERATED{'):
+        elif 'ENUMERATED' in definition and '{' in definition:
+            # ENUMERATED can have { on same or different line
             return self._parse_enumerated(name, definition)
-        
-        # INTEGER type
-        if definition.startswith('INTEGER'):
+        elif definition.startswith('INTEGER'):
             return self._parse_integer(name, definition)
-        
-        # BIT STRING type
-        if definition.startswith('BIT STRING'):
+        elif definition.startswith('BIT STRING') or definition.startswith('BITSTRING'):
             return self._parse_bit_string(name, definition)
-        
-        # OCTET STRING type
-        if definition.startswith('OCTET STRING'):
+        elif definition.startswith('OCTET STRING') or definition.startswith('OCTETSTRING'):
             return self._parse_octet_string(name, definition)
-        
-        # BOOLEAN type
-        if definition.startswith('BOOLEAN'):
+        elif definition.startswith('BOOLEAN'):
             return ASN1TypeAlias(name=name, target_type='BOOLEAN')
-        
-        # NULL type
-        if definition.startswith('NULL'):
+        elif definition.startswith('NULL'):
             return ASN1TypeAlias(name=name, target_type='NULL')
-        
-        # Type alias (TypeName ::= OtherType)
-        simple_type = re.match(r'^([A-Z][a-zA-Z0-9_-]*)(\s*\(.*\))?\s*$', definition)
-        if simple_type:
-            return ASN1TypeAlias(name=name, target_type=simple_type.group(1))
+        elif definition.startswith('ENUMERATED'):
+            # Standalone ENUMERATED without { - should not happen if parsed correctly
+            # But if it does, treat as incomplete and log warning
+            print(f"Warning: ENUMERATED type {name} has no values defined")
+            return None
+        else:
+            simple_type = re.match(r'^([A-Z][a-zA-Z0-9_-]*)(\s*\(.*\))?\s*$', definition)
+            if simple_type:
+                return ASN1TypeAlias(name=name, target_type=simple_type.group(1))
         
         return None
     
     def _parse_sequence(self, name: str, definition: str) -> ASN1Sequence:
         """Parse SEQUENCE definition"""
-        # Extract content between { }
         match = re.search(r'SEQUENCE\s*\{(.*)\}', definition, re.DOTALL)
         if not match:
             return ASN1Sequence(name=name, fields=[])
@@ -249,7 +237,9 @@ class ASN1Parser:
         fields = []
         extensible = '...' in content
         
-        # Split by comma, but respect nested braces
+        # Extract inline types first
+        self._extract_inline_types_from_sequence(name, definition)
+        
         field_defs = self._split_by_comma(content)
         
         for field_def in field_defs:
@@ -257,7 +247,6 @@ class ASN1Parser:
             if not field_def or field_def == '...' or field_def.startswith('--'):
                 continue
             
-            # Handle extension groups [[...]]
             if field_def.startswith('[['):
                 continue
             
@@ -277,6 +266,9 @@ class ASN1Parser:
         alternatives = []
         extensible = '...' in content
         
+        # Extract inline types first
+        self._extract_inline_types_from_choice(name, definition)
+        
         field_defs = self._split_by_comma(content)
         
         for field_def in field_defs:
@@ -292,14 +284,29 @@ class ASN1Parser:
     
     def _parse_sequence_of(self, name: str, definition: str) -> ASN1SequenceOf:
         """Parse SEQUENCE OF definition"""
-        # SEQUENCE (SIZE (1..10)) OF ElementType
+        # Check for SEQUENCE OF CHOICE (inline CHOICE)
+        choice_match = re.match(r'SEQUENCE\s*\(SIZE\s*\(([^)]+)\)\)\s*OF\s+CHOICE\s*\{', definition)
+        if choice_match:
+            size = choice_match.group(1).strip()
+            # Extract the CHOICE definition
+            choice_content_match = re.search(r'CHOICE\s*\{(.*)\}', definition, re.DOTALL)
+            if choice_content_match:
+                choice_content = choice_content_match.group(1)
+                # Create an inline CHOICE type
+                inline_choice_name = f"{name}-Item"
+                inline_choice = self._parse_choice_from_content(inline_choice_name, choice_content)
+                if inline_choice:
+                    self.types[inline_choice_name] = inline_choice
+                    # Also extract nested inline types from this CHOICE
+                    self._extract_inline_types_from_choice(inline_choice_name, f"CHOICE {{{choice_content}}}")
+                return ASN1SequenceOf(name=name, element_type=inline_choice_name, size_constraint=size)
+        
         match = re.match(r'SEQUENCE\s*\(SIZE\s*\(([^)]+)\)\)\s*OF\s+([A-Z][a-zA-Z0-9_-]+)', definition)
         if match:
             size = match.group(1).strip()
             elem_type = match.group(2).strip()
             return ASN1SequenceOf(name=name, element_type=elem_type, size_constraint=size)
         
-        # SEQUENCE OF ElementType (without size)
         match = re.match(r'SEQUENCE\s*OF\s+([A-Z][a-zA-Z0-9_-]+)', definition)
         if match:
             elem_type = match.group(1).strip()
@@ -316,13 +323,11 @@ class ASN1Parser:
         content = match.group(1)
         extensible = '...' in content
         
-        # Extract enum values
         values = []
         parts = re.split(r',\s*', content)
         for part in parts:
             part = part.strip()
             if part and part != '...' and not part.startswith('--'):
-                # Handle value assignments like "value1(0)" or just "value1"
                 value_name = re.match(r'([a-zA-Z0-9_-]+)', part)
                 if value_name:
                     values.append(value_name.group(1))
@@ -331,21 +336,22 @@ class ASN1Parser:
     
     def _parse_integer(self, name: str, definition: str) -> ASN1Integer:
         """Parse INTEGER definition"""
-        # Extract range constraint if present
         range_match = re.search(r'INTEGER\s*\(([^)]+)\)', definition)
         range_constraint = range_match.group(1).strip() if range_match else None
         return ASN1Integer(name=name, range_constraint=range_constraint)
     
     def _parse_bit_string(self, name: str, definition: str) -> ASN1BitString:
-        """Parse BIT STRING definition"""
-        size_match = re.search(r'BIT\s+STRING\s*\(SIZE\s*\(([^)]+)\)\)', definition)
-        size_constraint = size_match.group(1).strip() if size_match else None
+        """Parse BIT STRING or BITSTRING definition"""
+        # Handle both "BIT STRING" and "BITSTRING"
+        size_match = re.search(r'(BIT\s+STRING|BITSTRING)\s*\(SIZE\s*\(([^)]+)\)\)', definition)
+        size_constraint = size_match.group(2).strip() if size_match else None
         return ASN1BitString(name=name, size_constraint=size_constraint)
     
     def _parse_octet_string(self, name: str, definition: str) -> ASN1OctetString:
-        """Parse OCTET STRING definition"""
-        size_match = re.search(r'OCTET\s+STRING\s*\(SIZE\s*\(([^)]+)\)\)', definition)
-        size_constraint = size_match.group(1).strip() if size_match else None
+        """Parse OCTET STRING or OCTETSTRING definition"""
+        # Handle both "OCTET STRING" and "OCTETSTRING"
+        size_match = re.search(r'(OCTET\s+STRING|OCTETSTRING)\s*\(SIZE\s*\(([^)]+)\)\)', definition)
+        size_constraint = size_match.group(2).strip() if size_match else None
         
         containing_match = re.search(r'CONTAINING\s+([A-Z][a-zA-Z0-9_-]+)', definition)
         containing = containing_match.group(1) if containing_match else None
@@ -358,65 +364,82 @@ class ASN1Parser:
         if not field_def:
             return None
         
-        # Check for OPTIONAL
         optional = 'OPTIONAL' in field_def
         field_def = re.sub(r'\s*OPTIONAL\s*', ' ', field_def)
         
-        # Extract comment (-- Cond XXX or -- Need XX)
         comment_match = re.search(r'--\s*(.+)$', field_def)
         comment = comment_match.group(1).strip() if comment_match else None
         field_def = re.sub(r'--.*$', '', field_def).strip()
         
-        # Extract CONTAINING clause
         containing_match = re.search(r'CONTAINING\s+([A-Z][a-zA-Z0-9_-]+)', field_def)
         containing = containing_match.group(1) if containing_match else None
         
-        # Remove CONTAINING clause
         field_def = re.sub(r'\(CONTAINING[^)]+\)', '', field_def)
         
-        # Handle inline SEQUENCE/CHOICE/ENUMERATED
+        # Handle inline SEQUENCE OF (array/list)
+        # First check for SEQUENCE OF CHOICE (special case)
+        seq_of_choice_match = re.match(r'([a-zA-Z0-9_-]+)\s+SEQUENCE\s*\(SIZE\s*\(([^)]+)\)\)\s*OF\s+CHOICE\s*\{', field_def, re.DOTALL)
+        if seq_of_choice_match:
+            field_name = seq_of_choice_match.group(1)
+            size_constraint = seq_of_choice_match.group(2).strip()
+            # The element type will be ParentName-FieldName-Item (created in _extract_inline_types_from_sequence)
+            # For now, use a placeholder that will be resolved later
+            return ASN1Field(
+                name=field_name,
+                type_name='SEQUENCE_OF_INLINE_CHOICE',
+                optional=optional,
+                size_constraint=size_constraint,
+                comment=comment
+            )
+        
+        # Then check for regular SEQUENCE OF
+        seq_of_match = re.match(r'([a-zA-Z0-9_-]+)\s+SEQUENCE\s*\(SIZE\s*\(([^)]+)\)\)\s*OF\s+([A-Z][a-zA-Z0-9_-]+)', field_def)
+        if seq_of_match:
+            field_name = seq_of_match.group(1)
+            size_constraint = seq_of_match.group(2).strip()
+            element_type = seq_of_match.group(3)
+            # Return as a SEQUENCE OF field with the element type
+            return ASN1Field(
+                name=field_name,
+                type_name=f'SEQUENCE_OF_{element_type}',
+                optional=optional,
+                size_constraint=size_constraint,
+                comment=comment
+            )
+        
+        # Handle inline SEQUENCE/CHOICE/ENUMERATED definitions
         if 'SEQUENCE {' in field_def or 'CHOICE {' in field_def or 'ENUMERATED {' in field_def:
-            # Extract field name before the inline type
             name_match = re.match(r'([a-zA-Z0-9_-]+)\s+', field_def)
             if name_match:
                 field_name = name_match.group(1)
-                # Determine type
                 if 'SEQUENCE {' in field_def:
                     type_name = 'SEQUENCE'
                 elif 'CHOICE {' in field_def:
                     type_name = 'CHOICE'
                 elif 'ENUMERATED {' in field_def:
-                    # Parse inline enumerated
-                    enum_match = re.search(r'ENUMERATED\s*\{([^}]+)\}', field_def)
                     type_name = 'ENUMERATED'
                     extensible = '...' in field_def
                     return ASN1Field(name=field_name, type_name=type_name, optional=optional, 
                                    comment=comment, extensible=extensible)
                 return ASN1Field(name=field_name, type_name=type_name, optional=optional, comment=comment)
         
-        # Simple field: name type [constraints]
-        # Need to handle multi-word types like "BIT STRING", "OCTET STRING"
         match = re.match(r'([a-zA-Z0-9_-]+)\s+(BIT\s+STRING|OCTET\s+STRING|[A-Z][a-zA-Z0-9_-]*|INTEGER|BOOLEAN|NULL|ENUMERATED)', field_def)
         if match:
             field_name = match.group(1)
             type_name = match.group(2)
             
-            # Extract constraints
             size_constraint = None
             range_constraint = None
             
-            # SIZE constraint
             size_match = re.search(r'SIZE\s*\(([^)]+)\)', field_def)
             if size_match:
                 size_constraint = size_match.group(1).strip()
             
-            # Range constraint for INTEGER
             if 'INTEGER' in field_def:
                 range_match = re.search(r'INTEGER\s*\(([^)]+)\)', field_def)
                 if range_match:
                     range_constraint = range_match.group(1).strip()
             
-            # Check if type has inline ENUMERATED values
             extensible = False
             if 'ENUMERATED' in field_def and '{' in field_def:
                 extensible = '...' in field_def
@@ -433,6 +456,170 @@ class ASN1Parser:
             )
         
         return None
+    
+    def _extract_inline_types_from_choice(self, name: str, definition: str):
+        """Extract and register inline SEQUENCE/CHOICE types from CHOICE alternatives"""
+        match = re.search(r'CHOICE\s*\{(.*)\}', definition, re.DOTALL)
+        if not match:
+            return
+        
+        content = match.group(1)
+        field_defs = self._split_by_comma(content)
+        
+        for field_def in field_defs:
+            field_def = field_def.strip()
+            if not field_def or field_def == '...' or field_def.startswith('--'):
+                continue
+            
+            # Check for inline SEQUENCE
+            seq_match = re.match(r'([a-zA-Z0-9_-]+)\s+SEQUENCE\s*\{(.*)\}', field_def, re.DOTALL)
+            if seq_match:
+                alt_name = seq_match.group(1)
+                seq_content = seq_match.group(2)
+                inline_type_name = f"{name}-{alt_name}"
+                
+                # Parse the inline SEQUENCE
+                inline_seq = self._parse_sequence_from_content(inline_type_name, seq_content)
+                if inline_seq and inline_type_name not in self.types:
+                    self.types[inline_type_name] = inline_seq
+                    # Also extract nested inline types from this SEQUENCE
+                    self._extract_inline_types_from_sequence(inline_type_name, f"SEQUENCE {{{seq_content}}}")
+                continue
+            
+            # Check for inline CHOICE
+            choice_match = re.match(r'([a-zA-Z0-9_-]+)\s+CHOICE\s*\{(.*)\}', field_def, re.DOTALL)
+            if choice_match:
+                alt_name = choice_match.group(1)
+                choice_content = choice_match.group(2)
+                inline_type_name = f"{name}-{alt_name}"
+                
+                # Parse the inline CHOICE
+                inline_choice = self._parse_choice_from_content(inline_type_name, choice_content)
+                if inline_choice and inline_type_name not in self.types:
+                    self.types[inline_type_name] = inline_choice
+                    # Recursively extract nested inline types
+                    self._extract_inline_types_from_choice(inline_type_name, f"CHOICE {{{choice_content}}}")
+                continue
+    
+    def _extract_inline_types_from_sequence(self, name: str, definition: str):
+        """Extract and register inline SEQUENCE/CHOICE/ENUMERATED types from SEQUENCE fields"""
+        match = re.search(r'SEQUENCE\s*\{(.*)\}', definition, re.DOTALL)
+        if not match:
+            return
+        
+        content = match.group(1)
+        field_defs = self._split_by_comma(content)
+        
+        for field_def in field_defs:
+            field_def = field_def.strip()
+            if not field_def or field_def == '...' or field_def.startswith('--') or field_def.startswith('[['):
+                continue
+            
+            # Check for inline SEQUENCE
+            seq_match = re.match(r'([a-zA-Z0-9_-]+)\s+SEQUENCE\s*\{(.*)\}', field_def, re.DOTALL)
+            if seq_match:
+                field_name = seq_match.group(1)
+                seq_content = seq_match.group(2)
+                inline_type_name = f"{name}-{field_name}"
+                
+                inline_seq = self._parse_sequence_from_content(inline_type_name, seq_content)
+                if inline_seq and inline_type_name not in self.types:
+                    self.types[inline_type_name] = inline_seq
+                    self._extract_inline_types_from_sequence(inline_type_name, f"SEQUENCE {{{seq_content}}}")
+                continue
+            
+            # Check for inline CHOICE
+            choice_match = re.match(r'([a-zA-Z0-9_-]+)\s+CHOICE\s*\{(.*)\}', field_def, re.DOTALL)
+            if choice_match:
+                field_name = choice_match.group(1)
+                choice_content = choice_match.group(2)
+                inline_type_name = f"{name}-{field_name}"
+                
+                inline_choice = self._parse_choice_from_content(inline_type_name, choice_content)
+                if inline_choice and inline_type_name not in self.types:
+                    self.types[inline_type_name] = inline_choice
+                    self._extract_inline_types_from_choice(inline_type_name, f"CHOICE {{{choice_content}}}")
+                continue
+            
+            # Check for inline ENUMERATED
+            enum_match = re.match(r'([a-zA-Z0-9_-]+)\s+ENUMERATED\s*\{([^}]+)\}', field_def)
+            if enum_match:
+                field_name = enum_match.group(1)
+                enum_content = enum_match.group(2)
+                
+                # Parse the inline ENUMERATED
+                extensible = '...' in enum_content
+                values = []
+                parts = re.split(r',\s*', enum_content)
+                for part in parts:
+                    part = part.strip()
+                    if part and part != '...' and not part.startswith('--'):
+                        value_name = re.match(r'([a-zA-Z0-9_-]+)', part)
+                        if value_name:
+                            values.append(value_name.group(1))
+                
+                # Special case: ENUMERATED {true} or other single-value enums should not create a separate type
+                # They will be handled as bool in field generation
+                if len(values) > 1 or (len(values) == 1 and values[0].lower() != 'true'):
+                    inline_type_name = f"{name}-{field_name}"
+                    inline_enum = ASN1Enumerated(name=inline_type_name, values=values, extensible=extensible)
+                    if inline_type_name not in self.types:
+                        self.types[inline_type_name] = inline_enum
+                continue
+            
+            # Check for inline SEQUENCE OF CHOICE
+            seq_of_choice_match = re.match(r'([a-zA-Z0-9_-]+)\s+SEQUENCE\s*\(SIZE\s*\([^)]+\)\)\s*OF\s+CHOICE\s*\{', field_def, re.DOTALL)
+            if seq_of_choice_match:
+                field_name = seq_of_choice_match.group(1)
+                # Extract the CHOICE definition
+                choice_content_match = re.search(r'CHOICE\s*\{(.*)\}', field_def, re.DOTALL)
+                if choice_content_match:
+                    choice_content = choice_content_match.group(1)
+                    inline_type_name = f"{name}-{field_name}-Item"
+                    
+                    # Parse the inline CHOICE
+                    inline_choice = self._parse_choice_from_content(inline_type_name, choice_content)
+                    if inline_choice and inline_type_name not in self.types:
+                        self.types[inline_type_name] = inline_choice
+                        # Recursively extract nested inline types
+                        self._extract_inline_types_from_choice(inline_type_name, f"CHOICE {{{choice_content}}}")
+                continue
+    
+    def _parse_sequence_from_content(self, name: str, content: str) -> Optional[ASN1Sequence]:
+        """Parse SEQUENCE from its inner content"""
+        fields = []
+        extensible = '...' in content
+        
+        field_defs = self._split_by_comma(content)
+        
+        for field_def in field_defs:
+            field_def = field_def.strip()
+            if not field_def or field_def == '...' or field_def.startswith('--') or field_def.startswith('[['):
+                continue
+            
+            parsed_field = self._parse_field(field_def)
+            if parsed_field:
+                fields.append(parsed_field)
+        
+        return ASN1Sequence(name=name, fields=fields, extensible=extensible)
+    
+    def _parse_choice_from_content(self, name: str, content: str) -> Optional[ASN1Choice]:
+        """Parse CHOICE from its inner content"""
+        alternatives = []
+        extensible = '...' in content
+        
+        field_defs = self._split_by_comma(content)
+        
+        for field_def in field_defs:
+            field_def = field_def.strip()
+            if not field_def or field_def == '...' or field_def.startswith('--'):
+                continue
+            
+            parsed_field = self._parse_field(field_def)
+            if parsed_field:
+                alternatives.append(parsed_field)
+        
+        return ASN1Choice(name=name, alternatives=alternatives, extensible=extensible)
     
     def _split_by_comma(self, text: str) -> List[str]:
         """Split text by comma, respecting nested braces and parentheses"""
@@ -478,7 +665,7 @@ class ASN1Parser:
 # ============================================================================
 
 class GoGenerator:
-    """Generate Go code from ASN.1 types using CommonType.go primitives"""
+    """Generate Go code from ASN.1 types"""
     
     def __init__(self, types: Dict[str, Any], constants: Dict[str, ASN1Constant], output_dir: str = 'ies'):
         self.types = types
@@ -488,13 +675,11 @@ class GoGenerator:
         
     def generate(self):
         """Generate all Go files"""
-        # Create output directory
         self.output_dir.mkdir(exist_ok=True)
         
         print(f"Generating Go code to {self.output_dir}/")
         print(f"Found {len(self.types)} types and {len(self.constants)} constants")
         
-        # Generate one file per type
         count = 0
         for type_name, type_def in self.types.items():
             self._generate_type_file(type_name, type_def)
@@ -514,7 +699,6 @@ class GoGenerator:
             f.write(f"package {self.package_name}\n\n")
             f.write('import "rrc/utils"\n\n')
             
-            # Generate based on type
             if isinstance(type_def, ASN1Sequence):
                 self._generate_sequence(f, type_def)
             elif isinstance(type_def, ASN1Choice):
@@ -533,7 +717,7 @@ class GoGenerator:
                 self._generate_type_alias(f, type_def)
     
     def _generate_sequence(self, f, seq: ASN1Sequence):
-        """Generate Go struct for SEQUENCE using CommonType wrappers"""
+        """Generate Go struct for SEQUENCE"""
         go_name = self._to_go_name(seq.name)
         
         f.write(f"// {seq.name} ::= SEQUENCE\n")
@@ -542,95 +726,142 @@ class GoGenerator:
         f.write(f"type {go_name} struct {{\n")
         
         for field in seq.fields:
-            self._generate_field(f, field)
+            self._generate_field(f, field, seq.name)
         
         f.write("}\n")
     
     def _generate_choice(self, f, choice: ASN1Choice):
-        """Generate Go interface for CHOICE"""
+        """Generate Go struct for CHOICE with Choice discriminator and constants"""
         go_name = self._to_go_name(choice.name)
         
         f.write(f"// {choice.name} ::= CHOICE\n")
         if choice.extensible:
             f.write("// Extensible\n")
         
-        # Generate interface
-        f.write(f"type {go_name} interface {{\n")
-        f.write(f"\tis{go_name}()\n")
-        f.write("}\n\n")
-        
-        # Generate concrete types for each alternative
+        # Generate constants for alternatives
+        f.write("const (\n")
+        f.write(f"\t{go_name}ChoiceNothing = iota\n")
         for alt in choice.alternatives:
-            alt_go_name = f"{go_name}{self._to_go_name(alt.name)}"
-            f.write(f"type {alt_go_name} struct {{\n")
-            f.write(f"\tValue {self._field_type_to_go(alt)}\n")
-            f.write("}\n\n")
-            f.write(f"func (*{alt_go_name}) is{go_name}() {{}}\n\n")
+            const_name = f"{go_name}Choice{self._to_go_name(alt.name)}"
+            f.write(f"\t{const_name}\n")
+        f.write(")\n\n")
+        
+        # Generate struct with Choice discriminator and pointer fields
+        f.write(f"type {go_name} struct {{\n")
+        f.write(f"\tChoice uint64\n")
+        
+        for alt in choice.alternatives:
+            alt_field_name = self._to_go_name(alt.name)
+            alt_type = self._choice_alt_type_to_go(alt, go_name)
+            
+            # Build constraint tag for primitive types and inline SEQUENCE OF
+            tag_str = ""
+            if alt.size_constraint or alt.range_constraint:
+                constraint = alt.size_constraint or alt.range_constraint
+                lb, ub = self._resolve_constraint_bounds(constraint)
+                tag_str = f" `lb:{lb},ub:{ub}`"
+            
+            # For inline SEQUENCE OF in CHOICE, the type is already a slice
+            # so we need pointer to slice: *[]Type
+            f.write(f"\t{alt_field_name} *{alt_type}{tag_str}\n")
+        
+        f.write("}\n")
     
     def _generate_sequence_of(self, f, seq_of: ASN1SequenceOf):
         """Generate Go slice type for SEQUENCE OF"""
         go_name = self._to_go_name(seq_of.name)
-        elem_go_type = self._to_go_name(seq_of.element_type)
+        
+        # Handle primitive types specially
+        if seq_of.element_type == 'INTEGER':
+            elem_go_type = 'utils.INTEGER'
+        elif seq_of.element_type == 'BOOLEAN':
+            elem_go_type = 'utils.BOOLEAN'
+        elif seq_of.element_type == 'BIT STRING' or seq_of.element_type == 'BITSTRING':
+            elem_go_type = 'utils.BITSTRING'
+        elif seq_of.element_type == 'OCTET STRING' or seq_of.element_type == 'OCTETSTRING':
+            elem_go_type = 'utils.OCTETSTRING'
+        elif seq_of.element_type == 'ENUMERATED':
+            elem_go_type = 'utils.ENUMERATED'
+        else:
+            elem_go_type = self._to_go_name(seq_of.element_type)
         
         f.write(f"// {seq_of.name} ::= SEQUENCE OF {seq_of.element_type}\n")
         if seq_of.size_constraint:
             f.write(f"// SIZE ({seq_of.size_constraint})\n")
         
-        # Use simple Go slice
+        # Build constraint tag for the Value field
+        tag_str = ""
+        if seq_of.size_constraint:
+            lb, ub = self._resolve_constraint_bounds(seq_of.size_constraint)
+            tag_str = f" `lb:{lb},ub:{ub}`"
+        
         f.write(f"type {go_name} struct {{\n")
-        f.write(f"\tValue []{elem_go_type}\n")
+        f.write(f"\tValue []{elem_go_type}{tag_str}\n")
         f.write("}\n")
     
     def _generate_enumerated(self, f, enum: ASN1Enumerated):
-        """Generate Go type for ENUMERATED using ENUMERATED wrapper"""
+        """Generate Go type for ENUMERATED with constants"""
         go_name = self._to_go_name(enum.name)
         
         f.write(f"// {enum.name} ::= ENUMERATED\n")
         if enum.extensible:
             f.write("// Extensible\n")
         
-        # Generate type
         f.write(f"type {go_name} struct {{\n")
         f.write("\tValue utils.ENUMERATED\n")
         f.write("}\n\n")
         
-        # Generate constants for enum values
         f.write("const (\n")
-        for i, value in enumerate(enum.values):
-            const_name = f"{go_name}{self._to_go_name(value, capitalize_first=True)}"
-            f.write(f"\t{const_name} = {i}\n")
+        f.write(f"\t{go_name}EnumeratedNothing = iota\n")
+        for value in enum.values:
+            # Convert hyphens to underscores in enum values to avoid conflicts
+            # e.g., v-10 -> V_10, but keep other naming rules
+            value_go = self._enum_value_to_go_name(value)
+            const_name = f"{go_name}Enumerated{value_go}"
+            f.write(f"\t{const_name}\n")
         f.write(")\n")
     
     def _generate_integer(self, f, integer: ASN1Integer):
-        """Generate Go type for INTEGER using INTEGER wrapper"""
-        go_name = self._to_go_name(integer.name)
-        
+        """Generate Go type for INTEGER"""
         f.write(f"// {integer.name} ::= INTEGER")
         if integer.range_constraint:
             f.write(f" ({integer.range_constraint})")
         f.write("\n")
         
-        f.write(f"type {go_name} struct {{\n")
-        f.write("\tValue utils.INTEGER\n")
+        # Build constraint tag
+        tag_str = ""
+        if integer.range_constraint:
+            lb, ub = self._resolve_constraint_bounds(integer.range_constraint)
+            # For INTEGER type definitions, use lb:0 if lb is numeric
+            if isinstance(lb, int):
+                tag_str = f" `lb:0,ub:{ub}`"
+            else:
+                # Keep constant names
+                tag_str = f" `lb:{lb},ub:{ub}`"
+        
+        f.write(f"type {self._to_go_name(integer.name)} struct {{\n")
+        f.write(f"\tValue utils.INTEGER{tag_str}\n")
         f.write("}\n")
     
     def _generate_bit_string(self, f, bit_str: ASN1BitString):
-        """Generate Go type for BIT STRING using BITSTRING wrapper"""
-        go_name = self._to_go_name(bit_str.name)
-        
+        """Generate Go type for BIT STRING"""
         f.write(f"// {bit_str.name} ::= BIT STRING")
         if bit_str.size_constraint:
             f.write(f" (SIZE ({bit_str.size_constraint}))")
         f.write("\n")
         
-        f.write(f"type {go_name} struct {{\n")
-        f.write("\tValue utils.BITSTRING\n")
+        # Build constraint tag
+        tag_str = ""
+        if bit_str.size_constraint:
+            lb, ub = self._resolve_constraint_bounds(bit_str.size_constraint)
+            tag_str = f" `lb:{lb},ub:{ub}`"
+        
+        f.write(f"type {self._to_go_name(bit_str.name)} struct {{\n")
+        f.write(f"\tValue utils.BITSTRING{tag_str}\n")
         f.write("}\n")
     
     def _generate_octet_string(self, f, octet_str: ASN1OctetString):
-        """Generate Go type for OCTET STRING using OCTETSTRING wrapper"""
-        go_name = self._to_go_name(octet_str.name)
-        
+        """Generate Go type for OCTET STRING"""
         f.write(f"// {octet_str.name} ::= OCTET STRING")
         if octet_str.size_constraint:
             f.write(f" (SIZE ({octet_str.size_constraint}))")
@@ -638,60 +869,84 @@ class GoGenerator:
             f.write(f" (CONTAINING {octet_str.containing})")
         f.write("\n")
         
-        f.write(f"type {go_name} struct {{\n")
-        f.write("\tValue utils.OCTETSTRING\n")
+        # Build constraint tag
+        tag_str = ""
+        if octet_str.size_constraint:
+            lb, ub = self._resolve_constraint_bounds(octet_str.size_constraint)
+            tag_str = f" `lb:{lb},ub:{ub}`"
+        
+        f.write(f"type {self._to_go_name(octet_str.name)} struct {{\n")
+        f.write(f"\tValue utils.OCTETSTRING{tag_str}\n")
         f.write("}\n")
     
     def _generate_type_alias(self, f, alias: ASN1TypeAlias):
         """Generate Go type alias"""
-        go_name = self._to_go_name(alias.name)
-        target_go = self._to_go_name(alias.target_type)
-        
         f.write(f"// {alias.name} ::= {alias.target_type}\n")
         
-        # Special handling for built-in types
         if alias.target_type == 'BOOLEAN':
-            f.write(f"type {go_name} bool\n")
+            # BOOLEAN should be wrapped in struct like INTEGER, BITSTRING, etc.
+            f.write(f"type {self._to_go_name(alias.name)} struct {{\n")
+            f.write("\tValue utils.BOOLEAN\n")
+            f.write("}\n")
         elif alias.target_type == 'NULL':
-            f.write(f"type {go_name} struct{{}}\n")
+            f.write(f"type {self._to_go_name(alias.name)} struct{{}}\n")
         else:
-            f.write(f"type {go_name} {target_go}\n")
+            go_type = self._to_go_type(alias.target_type)
+            f.write(f"type {self._to_go_name(alias.name)} {go_type}\n")
     
-    def _generate_field(self, f, field: ASN1Field):
-        """Generate a struct field"""
+    def _generate_field(self, f, field: ASN1Field, parent_name: str = ''):
+        """Generate a struct field with constraint tags"""
         go_field_name = self._to_go_name(field.name)
+        go_type = self._field_type_to_go(field, parent_name)
         
-        # Handle inline types with constraints
-        if field.type_name in ['INTEGER', 'BIT STRING', 'OCTET STRING', 'ENUMERATED']:
-            # For inline primitive types in fields, we can either:
-            # 1. Just use the utils type directly
-            # 2. Generate a wrapper for each field (more complex)
-            # Let's use the simple approach - use utils types directly
-            go_type = self._field_type_to_go(field)
-        else:
-            go_type = self._field_type_to_go(field)
+        # For inline SEQUENCE OF, if optional, make it pointer to slice
+        is_inline_seq_of = field.type_name.startswith('SEQUENCE_OF_')
         
-        # Make pointer if optional
         if field.optional:
-            go_type = f"*{go_type}"
+            if is_inline_seq_of:
+                # For inline SEQUENCE OF, make it pointer to slice: *[]Type
+                go_type = f"*{go_type}"
+            else:
+                go_type = f"*{go_type}"
         
-        # Add comment if present
+        # Build constraint tag
+        tag_str = ""
+        if field.size_constraint or field.range_constraint:
+            constraint = field.size_constraint or field.range_constraint
+            lb, ub = self._resolve_constraint_bounds(constraint)
+            # Special case: For INTEGER range constraints, use lb:0
+            # For SIZE constraints (including inline SEQUENCE OF), use actual lower bound
+            if field.range_constraint and field.type_name == 'INTEGER':
+                tag_str = f" `lb:0,ub:{ub}`"
+            else:
+                tag_str = f" `lb:{lb},ub:{ub}`"
+        
         comment_str = ""
         if field.comment:
             comment_str = f" // {field.comment}"
         
-        f.write(f"\t{go_field_name} {go_type}{comment_str}\n")
+        f.write(f"\t{go_field_name} {go_type}{tag_str}{comment_str}\n")
     
-    def _field_type_to_go(self, field: ASN1Field) -> str:
-        """Convert field type to Go type, handling constraints"""
+    def _field_type_to_go(self, field: ASN1Field, parent_name: str = '') -> str:
+        """Convert field type to Go type"""
         type_name = field.type_name
         
-        # Handle built-in types with CommonType wrappers
         if type_name == 'INTEGER':
             return 'utils.INTEGER'
         elif type_name == 'BOOLEAN':
-            return 'bool'
+            return 'utils.BOOLEAN'
         elif type_name == 'ENUMERATED':
+            # Check if this is an inline ENUMERATED (check if the inline type was registered)
+            if parent_name:
+                inline_type_name = f"{parent_name}-{field.name}"
+                if inline_type_name in self.types:
+                    # This is an inline ENUMERATED, use the generated type
+                    return self._to_go_name(inline_type_name)
+                # If type is ENUMERATED but no type was registered, it's ENUMERATED {true}
+                # which should be represented as bool
+                elif field.type_name == 'ENUMERATED':
+                    # Only return bool if this field was explicitly marked as inline ENUMERATED
+                    return 'bool'
             return 'utils.ENUMERATED'
         elif type_name == 'BIT STRING':
             return 'utils.BITSTRING'
@@ -699,80 +954,237 @@ class GoGenerator:
             return 'utils.OCTETSTRING'
         elif type_name == 'NULL':
             return 'struct{}'
+        elif type_name.startswith('SEQUENCE_OF_'):
+            # Inline SEQUENCE OF - extract element type and return as slice
+            element_type = type_name[len('SEQUENCE_OF_'):]
+            if element_type == 'INLINE_CHOICE':
+                # Special case: inline CHOICE within SEQUENCE OF
+                # The type name will be ParentName-FieldName-Item
+                if parent_name:
+                    return f'[]{self._to_go_name(f"{parent_name}-{field.name}-Item")}'
+                return '[]Choice'  # Fallback
+            # Handle primitive types
+            elif element_type == 'INTEGER':
+                return '[]utils.INTEGER'
+            elif element_type == 'BOOLEAN':
+                return '[]utils.BOOLEAN'
+            elif element_type == 'BIT STRING':
+                return '[]utils.BITSTRING'
+            elif element_type == 'OCTET STRING':
+                return '[]utils.OCTETSTRING'
+            else:
+                return f'[]{self._to_go_name(element_type)}'
         elif type_name == 'SEQUENCE' or type_name == 'CHOICE':
-            # Inline type - would need special handling
+            # For inline types, construct the type name from parent and field name
+            if parent_name:
+                return self._to_go_name(f"{parent_name}-{field.name}")
             return 'interface{}'
         else:
-            # Custom type reference
+            return self._to_go_name(type_name)
+    
+    def _choice_alt_type_to_go(self, alt: ASN1Field, parent_name: str) -> str:
+        """Convert CHOICE alternative type to Go type"""
+        type_name = alt.type_name
+        
+        if type_name == 'NULL':
+            return 'struct{}'
+        elif type_name in ['INTEGER', 'ENUMERATED', 'BIT STRING', 'OCTET STRING', 'BOOLEAN']:
+            return self._field_type_to_go(alt)
+        elif type_name.startswith('SEQUENCE_OF_'):
+            # Inline SEQUENCE OF in CHOICE alternative
+            element_type = type_name[len('SEQUENCE_OF_'):]
+            # Handle primitive types
+            if element_type == 'INTEGER':
+                return '[]utils.INTEGER'
+            elif element_type == 'BOOLEAN':
+                return '[]utils.BOOLEAN'
+            elif element_type == 'BIT STRING':
+                return '[]utils.BITSTRING'
+            elif element_type == 'OCTET STRING':
+                return '[]utils.OCTETSTRING'
+            else:
+                return f'[]{self._to_go_name(element_type)}'
+        elif type_name == 'SEQUENCE':
+            return f"{parent_name}{self._to_go_name(alt.name)}"
+        elif type_name == 'CHOICE':
+            return f"{parent_name}{self._to_go_name(alt.name)}"
+        else:
             return self._to_go_name(type_name)
     
     def _to_go_name(self, asn1_name: str, capitalize_first: bool = True) -> str:
-        """Convert ASN.1 name to Go name (CamelCase)"""
-        # Replace hyphens with underscores, then convert to CamelCase
+        """Convert ASN.1 name to Go name - removes IEs suffix and converts to CamelCase"""
+        # Remove "IEs" suffix
+        asn1_name = re.sub(r'-IEs$', '', asn1_name)
+        
         parts = asn1_name.replace('-', '_').split('_')
         
         if capitalize_first:
             return ''.join(word.capitalize() for word in parts)
         else:
-            # For enum values, keep original casing more
             return ''.join(word.capitalize() if i > 0 else word for i, word in enumerate(parts))
     
-    def _resolve_constraint_bounds(self, constraint: Optional[str]) -> Tuple[int, int]:
-        """Resolve constraint bounds, handling constant references"""
-        if not constraint:
-            return (0, 0)  # No constraint
+    def _enum_value_to_go_name(self, value: str) -> str:
+        """Convert ENUMERATED value to Go constant name
+        Special handling: Convert '-' to '_' to avoid naming conflicts
+        e.g., v-10 -> V_10, v0 -> V0
+        """
+        # Replace hyphens with underscores first
+        value = value.replace('-', '_')
+        # Then capitalize first letter of each part, but keep underscores
+        parts = value.split('_')
+        result = []
+        for part in parts:
+            if part:
+                result.append(part.capitalize())
+        return '_'.join(result)
+    
+    def _to_go_type(self, asn1_type: str) -> str:
+        """Convert ASN.1 type to Go type"""
+        type_map = {
+            'BOOLEAN': 'bool',
+            'NULL': 'struct{}',
+            'INTEGER': 'int',
+            'BIT STRING': '[]byte',
+            'OCTET STRING': '[]byte',
+            'BITSTRING': '[]byte',  # Single-word version
+            'OCTETSTRING': '[]byte',  # Single-word version
+        }
         
-        # Clean up whitespace
+        if asn1_type in type_map:
+            return type_map[asn1_type]
+        
+        return self._to_go_name(asn1_type)
+    
+    def _resolve_constraint_bounds(self, constraint: Optional[str]) -> Tuple[any, any]:
+        """Resolve constraint bounds, handling constant references
+        Returns tuple of (lower_bound, upper_bound) which can be int or string (for constants)
+        """
+        if not constraint:
+            return (0, 0)
+        
         constraint = constraint.strip()
         
-        # Handle range: "min..max" or "min .. max" (with spaces)
-        match = re.match(r'(-?\d+)\s*\.\.\s*(-?\d+|[a-z][a-zA-Z0-9_-]*)', constraint)
+        # Match range: number..number or number..constant or constant..constant
+        match = re.match(r'(-?\d+|[a-z][a-zA-Z0-9_-]*)\s*\.\.\s*(-?\d+|[a-z][a-zA-Z0-9_-]*)', constraint)
         if match:
-            lb = int(match.group(1))
+            lb_str = match.group(1).strip()
             ub_str = match.group(2).strip()
             
-            # Check if upper bound is a number or constant reference
-            if ub_str.isdigit() or (ub_str.startswith('-') and ub_str[1:].isdigit()):
+            # Parse lower bound
+            if lb_str.lstrip('-').isdigit():
+                lb = int(lb_str)
+            else:
+                # Keep constant name for tag (convert hyphens to camelCase but preserve original case)
+                lb = self._const_to_go_name(lb_str)
+            
+            # Parse upper bound
+            if ub_str.lstrip('-').isdigit():
                 ub = int(ub_str)
             else:
-                # It's a constant reference - resolve it
-                ub = self._resolve_constant(ub_str)
+                # Keep constant name for tag
+                ub = self._const_to_go_name(ub_str)
             
             return (lb, ub)
         
-        # Handle single value or constant
-        if constraint.isdigit():
+        # Single value
+        if constraint.lstrip('-').isdigit():
             val = int(constraint)
             return (val, val)
         else:
             # Constant reference
-            val = self._resolve_constant(constraint)
-            return (val, val)
+            const_name = self._const_to_go_name(constraint)
+            return (const_name, const_name)
+    
+    def _const_to_go_name(self, const_name: str) -> str:
+        """Convert constant name to Go name, preserving lowercase prefix"""
+        # For constants like maxDRB, maxFreqANR-NB-r16, etc.
+        # Convert hyphens to camelCase but keep the original case pattern
+        parts = const_name.split('-')
+        if len(parts) == 1:
+            # No hyphens, return as-is
+            return const_name
+        
+        # First part keeps its case, rest are capitalized
+        result = parts[0]
+        for part in parts[1:]:
+            result += part.capitalize()
+        return result
     
     def _resolve_constant(self, const_name: str) -> int:
         """Resolve a constant name to its integer value"""
-        # Try with original name
         if const_name in self.constants:
             return self.constants[const_name].value
         
-        # Try with underscores
         const_name_underscore = const_name.replace('-', '_')
         if const_name_underscore in self.constants:
             return self.constants[const_name_underscore].value
         
-        # Default fallback
-        print(f"Warning: Could not resolve constant '{const_name}', using 0")
         return 0
 
 
-# ============================================================================
-# Main Entry Point
-# ============================================================================
+def validate_and_fix_generated_files(output_dir: str):
+    """Validate and fix common issues in generated Go files"""
+    print(f"\nValidating generated files in {output_dir}/...")
+    
+    issues_found = 0
+    files_fixed = 0
+    
+    # Patterns to check and fix
+    # Note: Avoid matching if already prefixed with utils.
+    incorrect_patterns = [
+        (r'(?<!utils\.)(?<!\.)Integer\b', 'utils.INTEGER', 'Integer -> utils.INTEGER'),
+        (r'(?<!utils\.)(?<!\.)Boolean\b', 'utils.BOOLEAN', 'Boolean -> utils.BOOLEAN'),
+        (r'(?<!utils\.)(?<!\.)Bitstring\b', 'utils.BITSTRING', 'Bitstring -> utils.BITSTRING'),
+        (r'(?<!utils\.)(?<!\.)Octetstring\b', 'utils.OCTETSTRING', 'Octetstring -> utils.OCTETSTRING'),
+        (r'(?<!utils\.)(?<!\.)Enumerated\b', 'utils.ENUMERATED', 'Enumerated -> utils.ENUMERATED'),
+        # Also check for bare types that should have utils. prefix (but not in type definitions)
+        (r'(?<!utils\.)\bINTEGER\s+(?!struct)(?!\w)', 'utils.INTEGER ', 'bare INTEGER -> utils.INTEGER'),
+        (r'(?<!utils\.)\bBOOLEAN\s+(?!struct)(?!\w)', 'utils.BOOLEAN ', 'bare BOOLEAN -> utils.BOOLEAN'),
+        (r'(?<!utils\.)\bBITSTRING\s+(?!struct)(?!\w)', 'utils.BITSTRING ', 'bare BITSTRING -> utils.BITSTRING'),
+        (r'(?<!utils\.)\bOCTETSTRING\s+(?!struct)(?!\w)', 'utils.OCTETSTRING ', 'bare OCTETSTRING -> utils.OCTETSTRING'),
+        (r'(?<!utils\.)\bENUMERATED\s+(?!struct)(?!\w)', 'utils.ENUMERATED ', 'bare ENUMERATED -> utils.ENUMERATED'),
+    ]
+    
+    go_files = [f for f in os.listdir(output_dir) if f.endswith('.go')]
+    
+    for filename in go_files:
+        filepath = os.path.join(output_dir, filename)
+        
+        try:
+            with open(filepath, 'r', encoding='utf-8') as f:
+                content = f.read()
+            
+            original_content = content
+            file_issues = []
+            
+            # Check and fix each pattern
+            for pattern, replacement, description in incorrect_patterns:
+                matches = re.findall(pattern, content)
+                if matches:
+                    content = re.sub(pattern, replacement, content)
+                    file_issues.append(f"{description} ({len(matches)} occurrences)")
+            
+            # If changes were made, write back
+            if content != original_content:
+                with open(filepath, 'w', encoding='utf-8') as f:
+                    f.write(content)
+                files_fixed += 1
+                issues_found += len(file_issues)
+                print(f"  Fixed {filename}: {', '.join(file_issues)}")
+        
+        except Exception as e:
+            print(f"  Error processing {filename}: {e}")
+    
+    if files_fixed > 0:
+        print(f"\n✓ Fixed {issues_found} issues in {files_fixed} files")
+    else:
+        print(f"\n✓ No issues found in {len(go_files)} files")
+    
+    return files_fixed
+
 
 def main():
     """Main function"""
-    import subprocess
-    
     asn1_file = 'lte-rrc-16.13.0.asn1'
     output_dir = 'ies'
     
@@ -798,21 +1210,16 @@ def main():
     print(f"  Output directory: {output_dir}/")
     print(f"  Files generated: {len(types)}")
     
-    # Format all Go files
+    # Validate and fix generated files
+    files_fixed = validate_and_fix_generated_files(output_dir)
+    
+    # Format all Go files (after validation/fixes)
     print(f"\nFormatting Go files in {output_dir}/...")
-    try:
-        result = subprocess.run(
-            ['gofmt', '-w', output_dir],
-            capture_output=True,
-            text=True,
-            check=True
-        )
-        print("✓ Go files formatted successfully")
-    except subprocess.CalledProcessError as e:
-        print(f"Warning: gofmt failed: {e}")
-    except FileNotFoundError:
-        print("Warning: gofmt not found, skipping formatting")
-
+    os.system("make format")
+    
+    if files_fixed > 0:
+        print("\n⚠ Warning: Some files had incorrect type names and were fixed.")
+        print("  Please review the changes and consider updating gen.py to prevent these issues.")
 
 if __name__ == '__main__':
     main()

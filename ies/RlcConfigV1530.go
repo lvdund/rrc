@@ -1,20 +1,14 @@
 package ies
 
-import "rrc/utils"
-
 // RLC-Config-v1530 ::= CHOICE
-type RlcConfigV1530 interface {
-	isRlcConfigV1530()
+const (
+	RlcConfigV1530ChoiceNothing = iota
+	RlcConfigV1530ChoiceRelease
+	RlcConfigV1530ChoiceSetup
+)
+
+type RlcConfigV1530 struct {
+	Choice  uint64
+	Release *struct{}
+	Setup   *RlcConfigV1530Setup
 }
-
-type RlcConfigV1530Release struct {
-	Value struct{}
-}
-
-func (*RlcConfigV1530Release) isRlcConfigV1530() {}
-
-type RlcConfigV1530Setup struct {
-	Value interface{}
-}
-
-func (*RlcConfigV1530Setup) isRlcConfigV1530() {}

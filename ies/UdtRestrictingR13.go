@@ -1,9 +1,7 @@
 package ies
 
-import "rrc/utils"
-
 // UDT-Restricting-r13 ::= SEQUENCE
 type UdtRestrictingR13 struct {
-	UdtRestrictingR13     *utils.ENUMERATED
-	UdtRestrictingtimeR13 *utils.ENUMERATED
+	UdtRestrictingR13     *bool
+	UdtRestrictingtimeR13 *UdtRestrictingR13UdtRestrictingtimeR13
 }

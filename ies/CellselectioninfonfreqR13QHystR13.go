@@ -1,0 +1,28 @@
+package ies
+
+import "rrc/utils"
+
+// CellSelectionInfoNFreq-r13-q-Hyst-r13 ::= ENUMERATED
+type CellselectioninfonfreqR13QHystR13 struct {
+	Value utils.ENUMERATED
+}
+
+const (
+	CellselectioninfonfreqR13QHystR13EnumeratedNothing = iota
+	CellselectioninfonfreqR13QHystR13EnumeratedDb0
+	CellselectioninfonfreqR13QHystR13EnumeratedDb1
+	CellselectioninfonfreqR13QHystR13EnumeratedDb2
+	CellselectioninfonfreqR13QHystR13EnumeratedDb3
+	CellselectioninfonfreqR13QHystR13EnumeratedDb4
+	CellselectioninfonfreqR13QHystR13EnumeratedDb5
+	CellselectioninfonfreqR13QHystR13EnumeratedDb6
+	CellselectioninfonfreqR13QHystR13EnumeratedDb8
+	CellselectioninfonfreqR13QHystR13EnumeratedDb10
+	CellselectioninfonfreqR13QHystR13EnumeratedDb12
+	CellselectioninfonfreqR13QHystR13EnumeratedDb14
+	CellselectioninfonfreqR13QHystR13EnumeratedDb16
+	CellselectioninfonfreqR13QHystR13EnumeratedDb18
+	CellselectioninfonfreqR13QHystR13EnumeratedDb20
+	CellselectioninfonfreqR13QHystR13EnumeratedDb22
+	CellselectioninfonfreqR13QHystR13EnumeratedDb24
+)

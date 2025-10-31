@@ -1,20 +1,14 @@
 package ies
 
-import "rrc/utils"
-
 // RCLWI-Configuration-r13 ::= CHOICE
-type RclwiConfigurationR13 interface {
-	isRclwiConfigurationR13()
+const (
+	RclwiConfigurationR13ChoiceNothing = iota
+	RclwiConfigurationR13ChoiceRelease
+	RclwiConfigurationR13ChoiceSetup
+)
+
+type RclwiConfigurationR13 struct {
+	Choice  uint64
+	Release *struct{}
+	Setup   *RclwiConfigurationR13Setup
 }
-
-type RclwiConfigurationR13Release struct {
-	Value struct{}
-}
-
-func (*RclwiConfigurationR13Release) isRclwiConfigurationR13() {}
-
-type RclwiConfigurationR13Setup struct {
-	Value interface{}
-}
-
-func (*RclwiConfigurationR13Setup) isRclwiConfigurationR13() {}

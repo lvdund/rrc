@@ -5,10 +5,10 @@ import "rrc/utils"
 // ReportConfigEUTRA ::= SEQUENCE
 // Extensible
 type Reportconfigeutra struct {
-	Triggertype     interface{}
-	Triggerquantity utils.ENUMERATED
-	Reportquantity  utils.ENUMERATED
-	Maxreportcells  utils.INTEGER
+	Triggertype     ReportconfigeutraTriggertype
+	Triggerquantity ReportconfigeutraTriggerquantity
+	Reportquantity  ReportconfigeutraReportquantity
+	Maxreportcells  utils.INTEGER `lb:0,ub:maxCellReport`
 	Reportinterval  Reportinterval
-	Reportamount    utils.ENUMERATED
+	Reportamount    ReportconfigeutraReportamount
 }

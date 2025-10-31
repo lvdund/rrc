@@ -1,0 +1,20 @@
+package ies
+
+import "rrc/utils"
+
+// PMCH-Config-r9-mch-SchedulingPeriod-r9 ::= ENUMERATED
+type PmchConfigR9MchSchedulingperiodR9 struct {
+	Value utils.ENUMERATED
+}
+
+const (
+	PmchConfigR9MchSchedulingperiodR9EnumeratedNothing = iota
+	PmchConfigR9MchSchedulingperiodR9EnumeratedRf8
+	PmchConfigR9MchSchedulingperiodR9EnumeratedRf16
+	PmchConfigR9MchSchedulingperiodR9EnumeratedRf32
+	PmchConfigR9MchSchedulingperiodR9EnumeratedRf64
+	PmchConfigR9MchSchedulingperiodR9EnumeratedRf128
+	PmchConfigR9MchSchedulingperiodR9EnumeratedRf256
+	PmchConfigR9MchSchedulingperiodR9EnumeratedRf512
+	PmchConfigR9MchSchedulingperiodR9EnumeratedRf1024
+)

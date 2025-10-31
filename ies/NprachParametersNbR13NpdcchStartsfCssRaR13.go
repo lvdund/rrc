@@ -1,0 +1,20 @@
+package ies
+
+import "rrc/utils"
+
+// NPRACH-Parameters-NB-r13-npdcch-StartSF-CSS-RA-r13 ::= ENUMERATED
+type NprachParametersNbR13NpdcchStartsfCssRaR13 struct {
+	Value utils.ENUMERATED
+}
+
+const (
+	NprachParametersNbR13NpdcchStartsfCssRaR13EnumeratedNothing = iota
+	NprachParametersNbR13NpdcchStartsfCssRaR13EnumeratedV1dot5
+	NprachParametersNbR13NpdcchStartsfCssRaR13EnumeratedV2
+	NprachParametersNbR13NpdcchStartsfCssRaR13EnumeratedV4
+	NprachParametersNbR13NpdcchStartsfCssRaR13EnumeratedV8
+	NprachParametersNbR13NpdcchStartsfCssRaR13EnumeratedV16
+	NprachParametersNbR13NpdcchStartsfCssRaR13EnumeratedV32
+	NprachParametersNbR13NpdcchStartsfCssRaR13EnumeratedV48
+	NprachParametersNbR13NpdcchStartsfCssRaR13EnumeratedV64
+)

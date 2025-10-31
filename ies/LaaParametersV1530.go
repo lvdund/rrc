@@ -1,11 +1,9 @@
 package ies
 
-import "rrc/utils"
-
 // LAA-Parameters-v1530 ::= SEQUENCE
 type LaaParametersV1530 struct {
-	AulR15           *utils.ENUMERATED
-	LaaPuschMode1R15 *utils.ENUMERATED
-	LaaPuschMode2R15 *utils.ENUMERATED
-	LaaPuschMode3R15 *utils.ENUMERATED
+	AulR15           *LaaParametersV1530AulR15
+	LaaPuschMode1R15 *LaaParametersV1530LaaPuschMode1R15
+	LaaPuschMode2R15 *LaaParametersV1530LaaPuschMode2R15
+	LaaPuschMode3R15 *LaaParametersV1530LaaPuschMode3R15
 }

@@ -1,10 +1,8 @@
 package ies
 
-import "rrc/utils"
-
 // RN-SubframeConfig-r10 ::= SEQUENCE
 // Extensible
 type RnSubframeconfigR10 struct {
-	SubframeconfigpatternR10 *interface{}
-	RpdcchConfigR10          *interface{}
+	SubframeconfigpatternR10 *RnSubframeconfigR10SubframeconfigpatternR10
+	RpdcchConfigR10          *RnSubframeconfigR10RpdcchConfigR10
 }

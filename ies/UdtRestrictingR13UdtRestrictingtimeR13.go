@@ -1,0 +1,20 @@
+package ies
+
+import "rrc/utils"
+
+// UDT-Restricting-r13-udt-RestrictingTime-r13 ::= ENUMERATED
+type UdtRestrictingR13UdtRestrictingtimeR13 struct {
+	Value utils.ENUMERATED
+}
+
+const (
+	UdtRestrictingR13UdtRestrictingtimeR13EnumeratedNothing = iota
+	UdtRestrictingR13UdtRestrictingtimeR13EnumeratedS4
+	UdtRestrictingR13UdtRestrictingtimeR13EnumeratedS8
+	UdtRestrictingR13UdtRestrictingtimeR13EnumeratedS16
+	UdtRestrictingR13UdtRestrictingtimeR13EnumeratedS32
+	UdtRestrictingR13UdtRestrictingtimeR13EnumeratedS64
+	UdtRestrictingR13UdtRestrictingtimeR13EnumeratedS128
+	UdtRestrictingR13UdtRestrictingtimeR13EnumeratedS256
+	UdtRestrictingR13UdtRestrictingtimeR13EnumeratedS512
+)

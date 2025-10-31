@@ -1,0 +1,20 @@
+package ies
+
+import "rrc/utils"
+
+// PRACH-ParametersCE-r13-numRepetitionPerPreambleAttempt-r13 ::= ENUMERATED
+type PrachParametersceR13NumrepetitionperpreambleattemptR13 struct {
+	Value utils.ENUMERATED
+}
+
+const (
+	PrachParametersceR13NumrepetitionperpreambleattemptR13EnumeratedNothing = iota
+	PrachParametersceR13NumrepetitionperpreambleattemptR13EnumeratedN1
+	PrachParametersceR13NumrepetitionperpreambleattemptR13EnumeratedN2
+	PrachParametersceR13NumrepetitionperpreambleattemptR13EnumeratedN4
+	PrachParametersceR13NumrepetitionperpreambleattemptR13EnumeratedN8
+	PrachParametersceR13NumrepetitionperpreambleattemptR13EnumeratedN16
+	PrachParametersceR13NumrepetitionperpreambleattemptR13EnumeratedN32
+	PrachParametersceR13NumrepetitionperpreambleattemptR13EnumeratedN64
+	PrachParametersceR13NumrepetitionperpreambleattemptR13EnumeratedN128
+)

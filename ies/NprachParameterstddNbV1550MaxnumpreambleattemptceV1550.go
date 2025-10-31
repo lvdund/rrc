@@ -1,0 +1,20 @@
+package ies
+
+import "rrc/utils"
+
+// NPRACH-ParametersTDD-NB-v1550-maxNumPreambleAttemptCE-v1550 ::= ENUMERATED
+type NprachParameterstddNbV1550MaxnumpreambleattemptceV1550 struct {
+	Value utils.ENUMERATED
+}
+
+const (
+	NprachParameterstddNbV1550MaxnumpreambleattemptceV1550EnumeratedNothing = iota
+	NprachParameterstddNbV1550MaxnumpreambleattemptceV1550EnumeratedN3
+	NprachParameterstddNbV1550MaxnumpreambleattemptceV1550EnumeratedN4
+	NprachParameterstddNbV1550MaxnumpreambleattemptceV1550EnumeratedN5
+	NprachParameterstddNbV1550MaxnumpreambleattemptceV1550EnumeratedN6
+	NprachParameterstddNbV1550MaxnumpreambleattemptceV1550EnumeratedN7
+	NprachParameterstddNbV1550MaxnumpreambleattemptceV1550EnumeratedN8
+	NprachParameterstddNbV1550MaxnumpreambleattemptceV1550EnumeratedN10
+	NprachParameterstddNbV1550MaxnumpreambleattemptceV1550EnumeratedSpare1
+)

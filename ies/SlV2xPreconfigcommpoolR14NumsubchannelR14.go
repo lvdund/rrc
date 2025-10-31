@@ -1,0 +1,20 @@
+package ies
+
+import "rrc/utils"
+
+// SL-V2X-PreconfigCommPool-r14-numSubchannel-r14 ::= ENUMERATED
+type SlV2xPreconfigcommpoolR14NumsubchannelR14 struct {
+	Value utils.ENUMERATED
+}
+
+const (
+	SlV2xPreconfigcommpoolR14NumsubchannelR14EnumeratedNothing = iota
+	SlV2xPreconfigcommpoolR14NumsubchannelR14EnumeratedN1
+	SlV2xPreconfigcommpoolR14NumsubchannelR14EnumeratedN3
+	SlV2xPreconfigcommpoolR14NumsubchannelR14EnumeratedN5
+	SlV2xPreconfigcommpoolR14NumsubchannelR14EnumeratedN8
+	SlV2xPreconfigcommpoolR14NumsubchannelR14EnumeratedN10
+	SlV2xPreconfigcommpoolR14NumsubchannelR14EnumeratedN15
+	SlV2xPreconfigcommpoolR14NumsubchannelR14EnumeratedN20
+	SlV2xPreconfigcommpoolR14NumsubchannelR14EnumeratedSpare1
+)

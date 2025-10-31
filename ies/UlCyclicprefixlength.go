@@ -8,6 +8,7 @@ type UlCyclicprefixlength struct {
 }
 
 const (
-	UlCyclicprefixlengthLen1 = 0
-	UlCyclicprefixlengthLen2 = 1
+	UlCyclicprefixlengthEnumeratedNothing = iota
+	UlCyclicprefixlengthEnumeratedLen1
+	UlCyclicprefixlengthEnumeratedLen2
 )

@@ -8,12 +8,13 @@ type CqiReportmodeaperiodic struct {
 }
 
 const (
-	CqiReportmodeaperiodicRm12      = 0
-	CqiReportmodeaperiodicRm20      = 1
-	CqiReportmodeaperiodicRm22      = 2
-	CqiReportmodeaperiodicRm30      = 3
-	CqiReportmodeaperiodicRm31      = 4
-	CqiReportmodeaperiodicRm32V1250 = 5
-	CqiReportmodeaperiodicRm10V1310 = 6
-	CqiReportmodeaperiodicRm11V1310 = 7
+	CqiReportmodeaperiodicEnumeratedNothing = iota
+	CqiReportmodeaperiodicEnumeratedRm12
+	CqiReportmodeaperiodicEnumeratedRm20
+	CqiReportmodeaperiodicEnumeratedRm22
+	CqiReportmodeaperiodicEnumeratedRm30
+	CqiReportmodeaperiodicEnumeratedRm31
+	CqiReportmodeaperiodicEnumeratedRm32_V1250
+	CqiReportmodeaperiodicEnumeratedRm10_V1310
+	CqiReportmodeaperiodicEnumeratedRm11_V1310
 )

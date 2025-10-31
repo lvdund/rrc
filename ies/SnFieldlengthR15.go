@@ -8,7 +8,8 @@ type SnFieldlengthR15 struct {
 }
 
 const (
-	SnFieldlengthR15Size5     = 0
-	SnFieldlengthR15Size10    = 1
-	SnFieldlengthR15Size16R15 = 2
+	SnFieldlengthR15EnumeratedNothing = iota
+	SnFieldlengthR15EnumeratedSize5
+	SnFieldlengthR15EnumeratedSize10
+	SnFieldlengthR15EnumeratedSize16_R15
 )

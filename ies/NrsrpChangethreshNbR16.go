@@ -8,20 +8,21 @@ type NrsrpChangethreshNbR16 struct {
 }
 
 const (
-	NrsrpChangethreshNbR16Db4    = 0
-	NrsrpChangethreshNbR16Db6    = 1
-	NrsrpChangethreshNbR16Db8    = 2
-	NrsrpChangethreshNbR16Db10   = 3
-	NrsrpChangethreshNbR16Db14   = 4
-	NrsrpChangethreshNbR16Db18   = 5
-	NrsrpChangethreshNbR16Db22   = 6
-	NrsrpChangethreshNbR16Db26   = 7
-	NrsrpChangethreshNbR16Db30   = 8
-	NrsrpChangethreshNbR16Db34   = 9
-	NrsrpChangethreshNbR16Spare6 = 10
-	NrsrpChangethreshNbR16Spare5 = 11
-	NrsrpChangethreshNbR16Spare4 = 12
-	NrsrpChangethreshNbR16Spare3 = 13
-	NrsrpChangethreshNbR16Spare2 = 14
-	NrsrpChangethreshNbR16Spare1 = 15
+	NrsrpChangethreshNbR16EnumeratedNothing = iota
+	NrsrpChangethreshNbR16EnumeratedDb4
+	NrsrpChangethreshNbR16EnumeratedDb6
+	NrsrpChangethreshNbR16EnumeratedDb8
+	NrsrpChangethreshNbR16EnumeratedDb10
+	NrsrpChangethreshNbR16EnumeratedDb14
+	NrsrpChangethreshNbR16EnumeratedDb18
+	NrsrpChangethreshNbR16EnumeratedDb22
+	NrsrpChangethreshNbR16EnumeratedDb26
+	NrsrpChangethreshNbR16EnumeratedDb30
+	NrsrpChangethreshNbR16EnumeratedDb34
+	NrsrpChangethreshNbR16EnumeratedSpare6
+	NrsrpChangethreshNbR16EnumeratedSpare5
+	NrsrpChangethreshNbR16EnumeratedSpare4
+	NrsrpChangethreshNbR16EnumeratedSpare3
+	NrsrpChangethreshNbR16EnumeratedSpare2
+	NrsrpChangethreshNbR16EnumeratedSpare1
 )

@@ -1,9 +1,7 @@
 package ies
 
-import "rrc/utils"
-
 // PUSCH-ConfigCommon ::= SEQUENCE
 type PuschConfigcommon struct {
-	PuschConfigbasic        interface{}
+	PuschConfigbasic        PuschConfigcommonPuschConfigbasic
 	UlReferencesignalspusch UlReferencesignalspusch
 }

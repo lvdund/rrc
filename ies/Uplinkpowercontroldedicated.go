@@ -4,10 +4,10 @@ import "rrc/utils"
 
 // UplinkPowerControlDedicated ::= SEQUENCE
 type Uplinkpowercontroldedicated struct {
-	P0UePusch           utils.INTEGER
-	DeltamcsEnabled     utils.ENUMERATED
-	Accumulationenabled bool
-	P0UePucch           utils.INTEGER
-	PsrsOffset          utils.INTEGER
+	P0UePusch           utils.INTEGER `lb:0,ub:7`
+	DeltamcsEnabled     UplinkpowercontroldedicatedDeltamcsEnabled
+	Accumulationenabled utils.BOOLEAN
+	P0UePucch           utils.INTEGER `lb:0,ub:7`
+	PsrsOffset          utils.INTEGER `lb:0,ub:15`
 	Filtercoefficient   Filtercoefficient
 }

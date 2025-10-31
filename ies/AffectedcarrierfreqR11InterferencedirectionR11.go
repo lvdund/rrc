@@ -1,0 +1,16 @@
+package ies
+
+import "rrc/utils"
+
+// AffectedCarrierFreq-r11-interferenceDirection-r11 ::= ENUMERATED
+type AffectedcarrierfreqR11InterferencedirectionR11 struct {
+	Value utils.ENUMERATED
+}
+
+const (
+	AffectedcarrierfreqR11InterferencedirectionR11EnumeratedNothing = iota
+	AffectedcarrierfreqR11InterferencedirectionR11EnumeratedEutra
+	AffectedcarrierfreqR11InterferencedirectionR11EnumeratedOther
+	AffectedcarrierfreqR11InterferencedirectionR11EnumeratedBoth
+	AffectedcarrierfreqR11InterferencedirectionR11EnumeratedSpare
+)

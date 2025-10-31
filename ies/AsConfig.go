@@ -1,7 +1,5 @@
 package ies
 
-import "rrc/utils"
-
 // AS-Config ::= SEQUENCE
 // Extensible
 type AsConfig struct {

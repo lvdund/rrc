@@ -1,0 +1,44 @@
+package ies
+
+import "rrc/utils"
+
+// BandclassCDMA2000 ::= utils.ENUMERATED // Extensible
+type Bandclasscdma2000 struct {
+	Value utils.ENUMERATED
+}
+
+const (
+	Bandclasscdma2000EnumeratedNothing = iota
+	Bandclasscdma2000EnumeratedBc0
+	Bandclasscdma2000EnumeratedBc1
+	Bandclasscdma2000EnumeratedBc2
+	Bandclasscdma2000EnumeratedBc3
+	Bandclasscdma2000EnumeratedBc4
+	Bandclasscdma2000EnumeratedBc5
+	Bandclasscdma2000EnumeratedBc6
+	Bandclasscdma2000EnumeratedBc7
+	Bandclasscdma2000EnumeratedBc8
+	Bandclasscdma2000EnumeratedBc9
+	Bandclasscdma2000EnumeratedBc10
+	Bandclasscdma2000EnumeratedBc11
+	Bandclasscdma2000EnumeratedBc12
+	Bandclasscdma2000EnumeratedBc13
+	Bandclasscdma2000EnumeratedBc14
+	Bandclasscdma2000EnumeratedBc15
+	Bandclasscdma2000EnumeratedBc16
+	Bandclasscdma2000EnumeratedBc17
+	Bandclasscdma2000EnumeratedBc18_V9a0
+	Bandclasscdma2000EnumeratedBc19_V9a0
+	Bandclasscdma2000EnumeratedBc20_V9a0
+	Bandclasscdma2000EnumeratedBc21_V9a0
+	Bandclasscdma2000EnumeratedSpare10
+	Bandclasscdma2000EnumeratedSpare9
+	Bandclasscdma2000EnumeratedSpare8
+	Bandclasscdma2000EnumeratedSpare7
+	Bandclasscdma2000EnumeratedSpare6
+	Bandclasscdma2000EnumeratedSpare5
+	Bandclasscdma2000EnumeratedSpare4
+	Bandclasscdma2000EnumeratedSpare3
+	Bandclasscdma2000EnumeratedSpare2
+	Bandclasscdma2000EnumeratedSpare1
+)

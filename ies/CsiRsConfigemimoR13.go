@@ -1,20 +1,14 @@
 package ies
 
-import "rrc/utils"
-
 // CSI-RS-ConfigEMIMO-r13 ::= CHOICE
-type CsiRsConfigemimoR13 interface {
-	isCsiRsConfigemimoR13()
+const (
+	CsiRsConfigemimoR13ChoiceNothing = iota
+	CsiRsConfigemimoR13ChoiceRelease
+	CsiRsConfigemimoR13ChoiceSetup
+)
+
+type CsiRsConfigemimoR13 struct {
+	Choice  uint64
+	Release *struct{}
+	Setup   *CsiRsConfigemimoR13Setup
 }
-
-type CsiRsConfigemimoR13Release struct {
-	Value struct{}
-}
-
-func (*CsiRsConfigemimoR13Release) isCsiRsConfigemimoR13() {}
-
-type CsiRsConfigemimoR13Setup struct {
-	Value interface{}
-}
-
-func (*CsiRsConfigemimoR13Setup) isCsiRsConfigemimoR13() {}

@@ -2,7 +2,7 @@ package ies
 
 import "rrc/utils"
 
-// STAG-Id-r11 ::= INTEGER (1..maxSTAG-r11)
+// STAG-Id-r11 ::= utils.INTEGER (1..maxSTAG-r11)
 type StagIdR11 struct {
-	Value utils.INTEGER
+	Value utils.INTEGER `lb:0,ub:maxSTAGR11`
 }

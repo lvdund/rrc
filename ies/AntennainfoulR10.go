@@ -1,9 +1,7 @@
 package ies
 
-import "rrc/utils"
-
 // AntennaInfoUL-r10 ::= SEQUENCE
 type AntennainfoulR10 struct {
-	TransmissionmodeulR10       *utils.ENUMERATED
-	FourantennaportactivatedR10 *utils.ENUMERATED
+	TransmissionmodeulR10       *AntennainfoulR10TransmissionmodeulR10
+	FourantennaportactivatedR10 *AntennainfoulR10FourantennaportactivatedR10
 }

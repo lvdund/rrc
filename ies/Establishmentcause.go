@@ -8,12 +8,13 @@ type Establishmentcause struct {
 }
 
 const (
-	EstablishmentcauseEmergency                = 0
-	EstablishmentcauseHighpriorityaccess       = 1
-	EstablishmentcauseMtAccess                 = 2
-	EstablishmentcauseMoSignalling             = 3
-	EstablishmentcauseMoData                   = 4
-	EstablishmentcauseDelaytolerantaccessV1020 = 5
-	EstablishmentcauseMoVoicecallV1280         = 6
-	EstablishmentcauseSpare1                   = 7
+	EstablishmentcauseEnumeratedNothing = iota
+	EstablishmentcauseEnumeratedEmergency
+	EstablishmentcauseEnumeratedHighpriorityaccess
+	EstablishmentcauseEnumeratedMt_Access
+	EstablishmentcauseEnumeratedMo_Signalling
+	EstablishmentcauseEnumeratedMo_Data
+	EstablishmentcauseEnumeratedDelaytolerantaccess_V1020
+	EstablishmentcauseEnumeratedMo_Voicecall_V1280
+	EstablishmentcauseEnumeratedSpare1
 )

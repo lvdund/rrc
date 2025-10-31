@@ -8,17 +8,18 @@ type CqiNpdcchNbR14 struct {
 }
 
 const (
-	CqiNpdcchNbR14Nomeasurements = 0
-	CqiNpdcchNbR14CandidaterepA  = 1
-	CqiNpdcchNbR14CandidaterepB  = 2
-	CqiNpdcchNbR14CandidaterepC  = 3
-	CqiNpdcchNbR14CandidaterepD  = 4
-	CqiNpdcchNbR14CandidaterepE  = 5
-	CqiNpdcchNbR14CandidaterepF  = 6
-	CqiNpdcchNbR14CandidaterepG  = 7
-	CqiNpdcchNbR14CandidaterepH  = 8
-	CqiNpdcchNbR14CandidaterepI  = 9
-	CqiNpdcchNbR14CandidaterepJ  = 10
-	CqiNpdcchNbR14CandidaterepK  = 11
-	CqiNpdcchNbR14CandidaterepL  = 12
+	CqiNpdcchNbR14EnumeratedNothing = iota
+	CqiNpdcchNbR14EnumeratedNomeasurements
+	CqiNpdcchNbR14EnumeratedCandidaterep_A
+	CqiNpdcchNbR14EnumeratedCandidaterep_B
+	CqiNpdcchNbR14EnumeratedCandidaterep_C
+	CqiNpdcchNbR14EnumeratedCandidaterep_D
+	CqiNpdcchNbR14EnumeratedCandidaterep_E
+	CqiNpdcchNbR14EnumeratedCandidaterep_F
+	CqiNpdcchNbR14EnumeratedCandidaterep_G
+	CqiNpdcchNbR14EnumeratedCandidaterep_H
+	CqiNpdcchNbR14EnumeratedCandidaterep_I
+	CqiNpdcchNbR14EnumeratedCandidaterep_J
+	CqiNpdcchNbR14EnumeratedCandidaterep_K
+	CqiNpdcchNbR14EnumeratedCandidaterep_L
 )

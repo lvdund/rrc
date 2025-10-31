@@ -1,9 +1,7 @@
 package ies
 
-import "rrc/utils"
-
 // FreqPriorityListEUTRA ::= SEQUENCE OF FreqPriorityEUTRA
 // SIZE (1..maxFreq)
 type Freqprioritylisteutra struct {
-	Value []Freqpriorityeutra
+	Value []Freqpriorityeutra `lb:1,ub:maxFreq`
 }

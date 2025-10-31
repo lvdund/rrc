@@ -1,7 +1,5 @@
 package ies
 
-import "rrc/utils"
-
 // PhysicalConfigDedicated ::= SEQUENCE
 // Extensible
 type Physicalconfigdedicated struct {
@@ -13,6 +11,6 @@ type Physicalconfigdedicated struct {
 	TpcPdcchConfigpusch         *TpcPdcchConfig
 	CqiReportconfig             *CqiReportconfig
 	SoundingrsUlConfigdedicated *SoundingrsUlConfigdedicated
-	Antennainfo                 *interface{}
+	Antennainfo                 *PhysicalconfigdedicatedAntennainfo
 	Schedulingrequestconfig     *Schedulingrequestconfig
 }

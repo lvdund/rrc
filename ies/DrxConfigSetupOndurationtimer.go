@@ -1,0 +1,28 @@
+package ies
+
+import "rrc/utils"
+
+// DRX-Config-setup-onDurationTimer ::= ENUMERATED
+type DrxConfigSetupOndurationtimer struct {
+	Value utils.ENUMERATED
+}
+
+const (
+	DrxConfigSetupOndurationtimerEnumeratedNothing = iota
+	DrxConfigSetupOndurationtimerEnumeratedPsf1
+	DrxConfigSetupOndurationtimerEnumeratedPsf2
+	DrxConfigSetupOndurationtimerEnumeratedPsf3
+	DrxConfigSetupOndurationtimerEnumeratedPsf4
+	DrxConfigSetupOndurationtimerEnumeratedPsf5
+	DrxConfigSetupOndurationtimerEnumeratedPsf6
+	DrxConfigSetupOndurationtimerEnumeratedPsf8
+	DrxConfigSetupOndurationtimerEnumeratedPsf10
+	DrxConfigSetupOndurationtimerEnumeratedPsf20
+	DrxConfigSetupOndurationtimerEnumeratedPsf30
+	DrxConfigSetupOndurationtimerEnumeratedPsf40
+	DrxConfigSetupOndurationtimerEnumeratedPsf50
+	DrxConfigSetupOndurationtimerEnumeratedPsf60
+	DrxConfigSetupOndurationtimerEnumeratedPsf80
+	DrxConfigSetupOndurationtimerEnumeratedPsf100
+	DrxConfigSetupOndurationtimerEnumeratedPsf200
+)

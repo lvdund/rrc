@@ -8,8 +8,9 @@ type ChannelrasteroffsetNbR13 struct {
 }
 
 const (
-	ChannelrasteroffsetNbR13Khz7dot5 = 0
-	ChannelrasteroffsetNbR13Khz2dot5 = 1
-	ChannelrasteroffsetNbR13Khz2dot5 = 2
-	ChannelrasteroffsetNbR13Khz7dot5 = 3
+	ChannelrasteroffsetNbR13EnumeratedNothing = iota
+	ChannelrasteroffsetNbR13EnumeratedKhz_7dot5
+	ChannelrasteroffsetNbR13EnumeratedKhz_2dot5
+	ChannelrasteroffsetNbR13EnumeratedKhz2dot5
+	ChannelrasteroffsetNbR13EnumeratedKhz7dot5
 )

@@ -1,0 +1,28 @@
+package ies
+
+import "rrc/utils"
+
+// CarrierBandwidthEUTRA-dl-Bandwidth ::= ENUMERATED
+type CarrierbandwidtheutraDlBandwidth struct {
+	Value utils.ENUMERATED
+}
+
+const (
+	CarrierbandwidtheutraDlBandwidthEnumeratedNothing = iota
+	CarrierbandwidtheutraDlBandwidthEnumeratedN6
+	CarrierbandwidtheutraDlBandwidthEnumeratedN15
+	CarrierbandwidtheutraDlBandwidthEnumeratedN25
+	CarrierbandwidtheutraDlBandwidthEnumeratedN50
+	CarrierbandwidtheutraDlBandwidthEnumeratedN75
+	CarrierbandwidtheutraDlBandwidthEnumeratedN100
+	CarrierbandwidtheutraDlBandwidthEnumeratedSpare10
+	CarrierbandwidtheutraDlBandwidthEnumeratedSpare9
+	CarrierbandwidtheutraDlBandwidthEnumeratedSpare8
+	CarrierbandwidtheutraDlBandwidthEnumeratedSpare7
+	CarrierbandwidtheutraDlBandwidthEnumeratedSpare6
+	CarrierbandwidtheutraDlBandwidthEnumeratedSpare5
+	CarrierbandwidtheutraDlBandwidthEnumeratedSpare4
+	CarrierbandwidtheutraDlBandwidthEnumeratedSpare3
+	CarrierbandwidtheutraDlBandwidthEnumeratedSpare2
+	CarrierbandwidtheutraDlBandwidthEnumeratedSpare1
+)

@@ -1,7 +1,5 @@
 package ies
 
-import "rrc/utils"
-
 // UL-ConfigCommon-NB-r14 ::= SEQUENCE
 // Extensible
 type UlConfigcommonNbR14 struct {

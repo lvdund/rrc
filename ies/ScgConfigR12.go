@@ -1,8 +1,7 @@
 package ies
 
-import "rrc/utils"
-
-// SCG-Config-r12 ::= SEQUENCE
+// SCG-Config-r12-IEs ::= SEQUENCE
 type ScgConfigR12 struct {
-	Criticalextensions interface{}
+	ScgRadioconfigR12    *ScgConfigpartscgR12
+	Noncriticalextension *ScgConfigV12i0a
 }

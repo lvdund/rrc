@@ -8,12 +8,13 @@ type PA struct {
 }
 
 const (
-	PADb6      = 0
-	PADb4dot77 = 1
-	PADb3      = 2
-	PADb1dot77 = 3
-	PADb0      = 4
-	PADb1      = 5
-	PADb2      = 6
-	PADb3      = 7
+	PAEnumeratedNothing = iota
+	PAEnumeratedDb_6
+	PAEnumeratedDb_4dot77
+	PAEnumeratedDb_3
+	PAEnumeratedDb_1dot77
+	PAEnumeratedDb0
+	PAEnumeratedDb1
+	PAEnumeratedDb2
+	PAEnumeratedDb3
 )

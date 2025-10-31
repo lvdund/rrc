@@ -1,7 +1,5 @@
 package ies
 
-import "rrc/utils"
-
 // RadioResourceConfigDedicatedSCG-r12 ::= SEQUENCE
 // Extensible
 type RadioresourceconfigdedicatedscgR12 struct {

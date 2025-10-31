@@ -4,7 +4,7 @@ import "rrc/utils"
 
 // AC-BarringConfig ::= SEQUENCE
 type AcBarringconfig struct {
-	AcBarringfactor       utils.ENUMERATED
-	AcBarringtime         utils.ENUMERATED
-	AcBarringforspecialac utils.BITSTRING
+	AcBarringfactor       AcBarringconfigAcBarringfactor
+	AcBarringtime         AcBarringconfigAcBarringtime
+	AcBarringforspecialac utils.BITSTRING `lb:5,ub:5`
 }

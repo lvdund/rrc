@@ -1,0 +1,18 @@
+package ies
+
+import "rrc/utils"
+
+// CellSelectionInfoCE-v1530-powerClass14dBm-Offset-r15 ::= ENUMERATED
+type CellselectioninfoceV1530Powerclass14dbmOffsetR15 struct {
+	Value utils.ENUMERATED
+}
+
+const (
+	CellselectioninfoceV1530Powerclass14dbmOffsetR15EnumeratedNothing = iota
+	CellselectioninfoceV1530Powerclass14dbmOffsetR15EnumeratedDb_6
+	CellselectioninfoceV1530Powerclass14dbmOffsetR15EnumeratedDb_3
+	CellselectioninfoceV1530Powerclass14dbmOffsetR15EnumeratedDb3
+	CellselectioninfoceV1530Powerclass14dbmOffsetR15EnumeratedDb6
+	CellselectioninfoceV1530Powerclass14dbmOffsetR15EnumeratedDb9
+	CellselectioninfoceV1530Powerclass14dbmOffsetR15EnumeratedDb12
+)

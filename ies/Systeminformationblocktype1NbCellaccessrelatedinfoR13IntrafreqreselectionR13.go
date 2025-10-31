@@ -1,0 +1,14 @@
+package ies
+
+import "rrc/utils"
+
+// SystemInformationBlockType1-NB-cellAccessRelatedInfo-r13-intraFreqReselection-r13 ::= ENUMERATED
+type Systeminformationblocktype1NbCellaccessrelatedinfoR13IntrafreqreselectionR13 struct {
+	Value utils.ENUMERATED
+}
+
+const (
+	Systeminformationblocktype1NbCellaccessrelatedinfoR13IntrafreqreselectionR13EnumeratedNothing = iota
+	Systeminformationblocktype1NbCellaccessrelatedinfoR13IntrafreqreselectionR13EnumeratedAllowed
+	Systeminformationblocktype1NbCellaccessrelatedinfoR13IntrafreqreselectionR13EnumeratedNotallowed
+)

@@ -1,0 +1,20 @@
+package ies
+
+import "rrc/utils"
+
+// AntennaInfoDedicated-transmissionMode ::= ENUMERATED
+type AntennainfodedicatedTransmissionmode struct {
+	Value utils.ENUMERATED
+}
+
+const (
+	AntennainfodedicatedTransmissionmodeEnumeratedNothing = iota
+	AntennainfodedicatedTransmissionmodeEnumeratedTm1
+	AntennainfodedicatedTransmissionmodeEnumeratedTm2
+	AntennainfodedicatedTransmissionmodeEnumeratedTm3
+	AntennainfodedicatedTransmissionmodeEnumeratedTm4
+	AntennainfodedicatedTransmissionmodeEnumeratedTm5
+	AntennainfodedicatedTransmissionmodeEnumeratedTm6
+	AntennainfodedicatedTransmissionmodeEnumeratedTm7
+	AntennainfodedicatedTransmissionmodeEnumeratedTm8_V920
+)

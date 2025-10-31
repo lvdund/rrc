@@ -1,21 +1,15 @@
 package ies
 
-import "rrc/utils"
-
 // RLF-TimersAndConstants-r9 ::= CHOICE
 // Extensible
-type RlfTimersandconstantsR9 interface {
-	isRlfTimersandconstantsR9()
+const (
+	RlfTimersandconstantsR9ChoiceNothing = iota
+	RlfTimersandconstantsR9ChoiceRelease
+	RlfTimersandconstantsR9ChoiceSetup
+)
+
+type RlfTimersandconstantsR9 struct {
+	Choice  uint64
+	Release *struct{}
+	Setup   *RlfTimersandconstantsR9Setup
 }
-
-type RlfTimersandconstantsR9Release struct {
-	Value struct{}
-}
-
-func (*RlfTimersandconstantsR9Release) isRlfTimersandconstantsR9() {}
-
-type RlfTimersandconstantsR9Setup struct {
-	Value interface{}
-}
-
-func (*RlfTimersandconstantsR9Setup) isRlfTimersandconstantsR9() {}

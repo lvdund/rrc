@@ -1,20 +1,14 @@
 package ies
 
-import "rrc/utils"
-
 // SC-MCCH-MessageType-NB ::= CHOICE
-type ScMcchMessagetypeNb interface {
-	isScMcchMessagetypeNb()
+const (
+	ScMcchMessagetypeNbChoiceNothing = iota
+	ScMcchMessagetypeNbChoiceC1
+	ScMcchMessagetypeNbChoiceMessageclassextension
+)
+
+type ScMcchMessagetypeNb struct {
+	Choice                uint64
+	C1                    *ScMcchMessagetypeNbC1
+	Messageclassextension *ScMcchMessagetypeNbMessageclassextension
 }
-
-type ScMcchMessagetypeNbC1 struct {
-	Value interface{}
-}
-
-func (*ScMcchMessagetypeNbC1) isScMcchMessagetypeNb() {}
-
-type ScMcchMessagetypeNbMessageclassextension struct {
-	Value interface{}
-}
-
-func (*ScMcchMessagetypeNbMessageclassextension) isScMcchMessagetypeNb() {}

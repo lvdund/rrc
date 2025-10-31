@@ -8,6 +8,7 @@ type SnFieldlength struct {
 }
 
 const (
-	SnFieldlengthSize5  = 0
-	SnFieldlengthSize10 = 1
+	SnFieldlengthEnumeratedNothing = iota
+	SnFieldlengthEnumeratedSize5
+	SnFieldlengthEnumeratedSize10
 )

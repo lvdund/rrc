@@ -1,8 +1,7 @@
 package ies
 
-import "rrc/utils"
-
-// SCGFailureInformationNR-r15 ::= SEQUENCE
+// SCGFailureInformationNR-r15-IEs ::= SEQUENCE
 type ScgfailureinformationnrR15 struct {
-	Criticalextensions interface{}
+	FailurereportscgNrR15 *FailurereportscgNrR15
+	Noncriticalextension  *ScgfailureinformationnrV1590
 }

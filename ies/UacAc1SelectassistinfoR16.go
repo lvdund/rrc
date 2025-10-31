@@ -8,8 +8,9 @@ type UacAc1SelectassistinfoR16 struct {
 }
 
 const (
-	UacAc1SelectassistinfoR16A             = 0
-	UacAc1SelectassistinfoR16B             = 1
-	UacAc1SelectassistinfoR16C             = 2
-	UacAc1SelectassistinfoR16Notconfigured = 3
+	UacAc1SelectassistinfoR16EnumeratedNothing = iota
+	UacAc1SelectassistinfoR16EnumeratedA
+	UacAc1SelectassistinfoR16EnumeratedB
+	UacAc1SelectassistinfoR16EnumeratedC
+	UacAc1SelectassistinfoR16EnumeratedNotconfigured
 )

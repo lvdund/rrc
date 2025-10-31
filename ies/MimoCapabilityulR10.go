@@ -8,6 +8,7 @@ type MimoCapabilityulR10 struct {
 }
 
 const (
-	MimoCapabilityulR10Twolayers  = 0
-	MimoCapabilityulR10Fourlayers = 1
+	MimoCapabilityulR10EnumeratedNothing = iota
+	MimoCapabilityulR10EnumeratedTwolayers
+	MimoCapabilityulR10EnumeratedFourlayers
 )

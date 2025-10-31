@@ -1,0 +1,19 @@
+package ies
+
+import "rrc/utils"
+
+// RLF-TimersAndConstants-r9-setup-t310-r9 ::= ENUMERATED
+type RlfTimersandconstantsR9SetupT310R9 struct {
+	Value utils.ENUMERATED
+}
+
+const (
+	RlfTimersandconstantsR9SetupT310R9EnumeratedNothing = iota
+	RlfTimersandconstantsR9SetupT310R9EnumeratedMs0
+	RlfTimersandconstantsR9SetupT310R9EnumeratedMs50
+	RlfTimersandconstantsR9SetupT310R9EnumeratedMs100
+	RlfTimersandconstantsR9SetupT310R9EnumeratedMs200
+	RlfTimersandconstantsR9SetupT310R9EnumeratedMs500
+	RlfTimersandconstantsR9SetupT310R9EnumeratedMs1000
+	RlfTimersandconstantsR9SetupT310R9EnumeratedMs2000
+)

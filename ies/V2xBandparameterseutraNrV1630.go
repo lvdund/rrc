@@ -1,20 +1,14 @@
 package ies
 
-import "rrc/utils"
-
 // V2X-BandParametersEUTRA-NR-v1630 ::= CHOICE
-type V2xBandparameterseutraNrV1630 interface {
-	isV2xBandparameterseutraNrV1630()
+const (
+	V2xBandparameterseutraNrV1630ChoiceNothing = iota
+	V2xBandparameterseutraNrV1630ChoiceEutra
+	V2xBandparameterseutraNrV1630ChoiceNr
+)
+
+type V2xBandparameterseutraNrV1630 struct {
+	Choice uint64
+	Eutra  *struct{}
+	Nr     *V2xBandparameterseutraNrV1630Nr
 }
-
-type V2xBandparameterseutraNrV1630Eutra struct {
-	Value struct{}
-}
-
-func (*V2xBandparameterseutraNrV1630Eutra) isV2xBandparameterseutraNrV1630() {}
-
-type V2xBandparameterseutraNrV1630Nr struct {
-	Value interface{}
-}
-
-func (*V2xBandparameterseutraNrV1630Nr) isV2xBandparameterseutraNrV1630() {}

@@ -1,0 +1,20 @@
+package ies
+
+import "rrc/utils"
+
+// DRX-Config-NB-r13-setup-drx-InactivityTimer-r13 ::= ENUMERATED
+type DrxConfigNbR13SetupDrxInactivitytimerR13 struct {
+	Value utils.ENUMERATED
+}
+
+const (
+	DrxConfigNbR13SetupDrxInactivitytimerR13EnumeratedNothing = iota
+	DrxConfigNbR13SetupDrxInactivitytimerR13EnumeratedPp0
+	DrxConfigNbR13SetupDrxInactivitytimerR13EnumeratedPp1
+	DrxConfigNbR13SetupDrxInactivitytimerR13EnumeratedPp2
+	DrxConfigNbR13SetupDrxInactivitytimerR13EnumeratedPp3
+	DrxConfigNbR13SetupDrxInactivitytimerR13EnumeratedPp4
+	DrxConfigNbR13SetupDrxInactivitytimerR13EnumeratedPp8
+	DrxConfigNbR13SetupDrxInactivitytimerR13EnumeratedPp16
+	DrxConfigNbR13SetupDrxInactivitytimerR13EnumeratedPp32
+)

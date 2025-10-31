@@ -3,54 +3,26 @@ package ies
 import "rrc/utils"
 
 // PeriodicityStartPos-r16 ::= CHOICE
-type PeriodicitystartposR16 interface {
-	isPeriodicitystartposR16()
+const (
+	PeriodicitystartposR16ChoiceNothing = iota
+	PeriodicitystartposR16ChoicePeriodicity10ms
+	PeriodicitystartposR16ChoicePeriodicity20ms
+	PeriodicitystartposR16ChoicePeriodicity40ms
+	PeriodicitystartposR16ChoicePeriodicity80ms
+	PeriodicitystartposR16ChoicePeriodicity160ms
+	PeriodicitystartposR16ChoiceSpare3
+	PeriodicitystartposR16ChoiceSpare2
+	PeriodicitystartposR16ChoiceSpare1
+)
+
+type PeriodicitystartposR16 struct {
+	Choice           uint64
+	Periodicity10ms  *struct{}
+	Periodicity20ms  *utils.INTEGER `lb:0,ub:1`
+	Periodicity40ms  *utils.INTEGER `lb:0,ub:3`
+	Periodicity80ms  *utils.INTEGER `lb:0,ub:7`
+	Periodicity160ms *utils.INTEGER `lb:0,ub:15`
+	Spare3           *struct{}
+	Spare2           *struct{}
+	Spare1           *struct{}
 }
-
-type PeriodicitystartposR16Periodicity10ms struct {
-	Value struct{}
-}
-
-func (*PeriodicitystartposR16Periodicity10ms) isPeriodicitystartposR16() {}
-
-type PeriodicitystartposR16Periodicity20ms struct {
-	Value utils.INTEGER
-}
-
-func (*PeriodicitystartposR16Periodicity20ms) isPeriodicitystartposR16() {}
-
-type PeriodicitystartposR16Periodicity40ms struct {
-	Value utils.INTEGER
-}
-
-func (*PeriodicitystartposR16Periodicity40ms) isPeriodicitystartposR16() {}
-
-type PeriodicitystartposR16Periodicity80ms struct {
-	Value utils.INTEGER
-}
-
-func (*PeriodicitystartposR16Periodicity80ms) isPeriodicitystartposR16() {}
-
-type PeriodicitystartposR16Periodicity160ms struct {
-	Value utils.INTEGER
-}
-
-func (*PeriodicitystartposR16Periodicity160ms) isPeriodicitystartposR16() {}
-
-type PeriodicitystartposR16Spare3 struct {
-	Value struct{}
-}
-
-func (*PeriodicitystartposR16Spare3) isPeriodicitystartposR16() {}
-
-type PeriodicitystartposR16Spare2 struct {
-	Value struct{}
-}
-
-func (*PeriodicitystartposR16Spare2) isPeriodicitystartposR16() {}
-
-type PeriodicitystartposR16Spare1 struct {
-	Value struct{}
-}
-
-func (*PeriodicitystartposR16Spare1) isPeriodicitystartposR16() {}

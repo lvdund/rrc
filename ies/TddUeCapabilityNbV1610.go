@@ -1,11 +1,9 @@
 package ies
 
-import "rrc/utils"
-
 // TDD-UE-Capability-NB-v1610 ::= SEQUENCE
 type TddUeCapabilityNbV1610 struct {
-	SlotsymbolresourceresvdlR16 *utils.ENUMERATED
-	SlotsymbolresourceresvulR16 *utils.ENUMERATED
-	SubframeresourceresvdlR16   *utils.ENUMERATED
-	SubframeresourceresvulR16   *utils.ENUMERATED
+	SlotsymbolresourceresvdlR16 *TddUeCapabilityNbV1610SlotsymbolresourceresvdlR16
+	SlotsymbolresourceresvulR16 *TddUeCapabilityNbV1610SlotsymbolresourceresvulR16
+	SubframeresourceresvdlR16   *TddUeCapabilityNbV1610SubframeresourceresvdlR16
+	SubframeresourceresvulR16   *TddUeCapabilityNbV1610SubframeresourceresvulR16
 }

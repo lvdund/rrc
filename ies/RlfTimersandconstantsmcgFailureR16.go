@@ -1,21 +1,15 @@
 package ies
 
-import "rrc/utils"
-
 // RLF-TimersAndConstantsMCG-Failure-r16 ::= CHOICE
 // Extensible
-type RlfTimersandconstantsmcgFailureR16 interface {
-	isRlfTimersandconstantsmcgFailureR16()
+const (
+	RlfTimersandconstantsmcgFailureR16ChoiceNothing = iota
+	RlfTimersandconstantsmcgFailureR16ChoiceRelease
+	RlfTimersandconstantsmcgFailureR16ChoiceSetup
+)
+
+type RlfTimersandconstantsmcgFailureR16 struct {
+	Choice  uint64
+	Release *struct{}
+	Setup   *RlfTimersandconstantsmcgFailureR16Setup
 }
-
-type RlfTimersandconstantsmcgFailureR16Release struct {
-	Value struct{}
-}
-
-func (*RlfTimersandconstantsmcgFailureR16Release) isRlfTimersandconstantsmcgFailureR16() {}
-
-type RlfTimersandconstantsmcgFailureR16Setup struct {
-	Value interface{}
-}
-
-func (*RlfTimersandconstantsmcgFailureR16Setup) isRlfTimersandconstantsmcgFailureR16() {}

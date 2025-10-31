@@ -1,7 +1,5 @@
 package ies
 
-import "rrc/utils"
-
 // VarMeasIdleReport-r16 ::= SEQUENCE
 type VarmeasidlereportR16 struct {
 	MeasreportidleR16   *MeasresultlistextidleR16

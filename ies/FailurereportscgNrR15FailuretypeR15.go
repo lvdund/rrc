@@ -1,0 +1,19 @@
+package ies
+
+import "rrc/utils"
+
+// FailureReportSCG-NR-r15-failureType-r15 ::= ENUMERATED
+type FailurereportscgNrR15FailuretypeR15 struct {
+	Value utils.ENUMERATED
+}
+
+const (
+	FailurereportscgNrR15FailuretypeR15EnumeratedNothing = iota
+	FailurereportscgNrR15FailuretypeR15EnumeratedT310_Expiry
+	FailurereportscgNrR15FailuretypeR15EnumeratedRandomaccessproblem
+	FailurereportscgNrR15FailuretypeR15EnumeratedRlc_Maxnumretx
+	FailurereportscgNrR15FailuretypeR15EnumeratedSynchreconfigfailurescg
+	FailurereportscgNrR15FailuretypeR15EnumeratedScg_Reconfigfailure
+	FailurereportscgNrR15FailuretypeR15EnumeratedSrb3_Integrityfailure
+	FailurereportscgNrR15FailuretypeR15EnumeratedDummy
+)

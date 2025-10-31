@@ -1,9 +1,7 @@
 package ies
 
-import "rrc/utils"
-
 // UE-BasedNetwPerfMeasParameters-r10 ::= SEQUENCE
 type UeBasednetwperfmeasparametersR10 struct {
-	LoggedmeasurementsidleR10 *utils.ENUMERATED
-	StandalonegnssLocationR10 *utils.ENUMERATED
+	LoggedmeasurementsidleR10 *UeBasednetwperfmeasparametersR10LoggedmeasurementsidleR10
+	StandalonegnssLocationR10 *UeBasednetwperfmeasparametersR10StandalonegnssLocationR10
 }

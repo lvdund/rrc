@@ -8,20 +8,21 @@ type Reportinterval struct {
 }
 
 const (
-	ReportintervalMs120   = 0
-	ReportintervalMs240   = 1
-	ReportintervalMs480   = 2
-	ReportintervalMs640   = 3
-	ReportintervalMs1024  = 4
-	ReportintervalMs2048  = 5
-	ReportintervalMs5120  = 6
-	ReportintervalMs10240 = 7
-	ReportintervalMin1    = 8
-	ReportintervalMin6    = 9
-	ReportintervalMin12   = 10
-	ReportintervalMin30   = 11
-	ReportintervalMin60   = 12
-	ReportintervalSpare3  = 13
-	ReportintervalSpare2  = 14
-	ReportintervalSpare1  = 15
+	ReportintervalEnumeratedNothing = iota
+	ReportintervalEnumeratedMs120
+	ReportintervalEnumeratedMs240
+	ReportintervalEnumeratedMs480
+	ReportintervalEnumeratedMs640
+	ReportintervalEnumeratedMs1024
+	ReportintervalEnumeratedMs2048
+	ReportintervalEnumeratedMs5120
+	ReportintervalEnumeratedMs10240
+	ReportintervalEnumeratedMin1
+	ReportintervalEnumeratedMin6
+	ReportintervalEnumeratedMin12
+	ReportintervalEnumeratedMin30
+	ReportintervalEnumeratedMin60
+	ReportintervalEnumeratedSpare3
+	ReportintervalEnumeratedSpare2
+	ReportintervalEnumeratedSpare1
 )

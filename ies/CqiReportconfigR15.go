@@ -1,20 +1,14 @@
 package ies
 
-import "rrc/utils"
-
 // CQI-ReportConfig-r15 ::= CHOICE
-type CqiReportconfigR15 interface {
-	isCqiReportconfigR15()
+const (
+	CqiReportconfigR15ChoiceNothing = iota
+	CqiReportconfigR15ChoiceRelease
+	CqiReportconfigR15ChoiceSetup
+)
+
+type CqiReportconfigR15 struct {
+	Choice  uint64
+	Release *struct{}
+	Setup   *CqiReportconfigR15Setup
 }
-
-type CqiReportconfigR15Release struct {
-	Value struct{}
-}
-
-func (*CqiReportconfigR15Release) isCqiReportconfigR15() {}
-
-type CqiReportconfigR15Setup struct {
-	Value interface{}
-}
-
-func (*CqiReportconfigR15Setup) isCqiReportconfigR15() {}

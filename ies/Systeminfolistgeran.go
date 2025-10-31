@@ -2,8 +2,7 @@ package ies
 
 import "rrc/utils"
 
-// SystemInfoListGERAN ::= SEQUENCE OF OCTET
-// SIZE (1..maxGERAN-SI)
+// SystemInfoListGERAN ::= SEQUENCE OF utils.OCTETSTRING // SIZE (1..maxGERAN-SI)
 type Systeminfolistgeran struct {
-	Value []Octet
+	Value []utils.OCTETSTRING `lb:1,ub:maxGERANSi`
 }

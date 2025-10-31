@@ -1,0 +1,14 @@
+package ies
+
+// SoundingRS-UL-ConfigDedicatedAperiodicUpPTsExt-r13-setup-srs-ActivateAp-r13 ::= CHOICE
+const (
+	SoundingrsUlConfigdedicatedaperiodicupptsextR13SetupSrsActivateapR13ChoiceNothing = iota
+	SoundingrsUlConfigdedicatedaperiodicupptsextR13SetupSrsActivateapR13ChoiceRelease
+	SoundingrsUlConfigdedicatedaperiodicupptsextR13SetupSrsActivateapR13ChoiceSetup
+)
+
+type SoundingrsUlConfigdedicatedaperiodicupptsextR13SetupSrsActivateapR13 struct {
+	Choice  uint64
+	Release *struct{}
+	Setup   *SoundingrsUlConfigdedicatedaperiodicupptsextR13SetupSrsActivateapR13Setup
+}

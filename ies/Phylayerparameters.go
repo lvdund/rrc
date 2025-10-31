@@ -4,6 +4,6 @@ import "rrc/utils"
 
 // PhyLayerParameters ::= SEQUENCE
 type Phylayerparameters struct {
-	UeTxantennaselectionsupported bool
-	UeSpecificrefsigssupported    bool
+	UeTxantennaselectionsupported utils.BOOLEAN
+	UeSpecificrefsigssupported    utils.BOOLEAN
 }

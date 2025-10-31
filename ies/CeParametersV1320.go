@@ -1,11 +1,9 @@
 package ies
 
-import "rrc/utils"
-
 // CE-Parameters-v1320 ::= SEQUENCE
 type CeParametersV1320 struct {
-	Intrafreqa3CeModeaR13 *utils.ENUMERATED
-	Intrafreqa3CeModebR13 *utils.ENUMERATED
-	IntrafreqhoCeModeaR13 *utils.ENUMERATED
-	IntrafreqhoCeModebR13 *utils.ENUMERATED
+	Intrafreqa3CeModeaR13 *CeParametersV1320Intrafreqa3CeModeaR13
+	Intrafreqa3CeModebR13 *CeParametersV1320Intrafreqa3CeModebR13
+	IntrafreqhoCeModeaR13 *CeParametersV1320IntrafreqhoCeModeaR13
+	IntrafreqhoCeModebR13 *CeParametersV1320IntrafreqhoCeModebR13
 }

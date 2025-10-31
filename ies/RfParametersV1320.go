@@ -1,7 +1,5 @@
 package ies
 
-import "rrc/utils"
-
 // RF-Parameters-v1320 ::= SEQUENCE
 type RfParametersV1320 struct {
 	SupportedbandlisteutraV1320          *SupportedbandlisteutraV1320

@@ -1,0 +1,20 @@
+package ies
+
+import "rrc/utils"
+
+// DRX-Config-setup-drx-RetransmissionTimer ::= ENUMERATED
+type DrxConfigSetupDrxRetransmissiontimer struct {
+	Value utils.ENUMERATED
+}
+
+const (
+	DrxConfigSetupDrxRetransmissiontimerEnumeratedNothing = iota
+	DrxConfigSetupDrxRetransmissiontimerEnumeratedPsf1
+	DrxConfigSetupDrxRetransmissiontimerEnumeratedPsf2
+	DrxConfigSetupDrxRetransmissiontimerEnumeratedPsf4
+	DrxConfigSetupDrxRetransmissiontimerEnumeratedPsf6
+	DrxConfigSetupDrxRetransmissiontimerEnumeratedPsf8
+	DrxConfigSetupDrxRetransmissiontimerEnumeratedPsf16
+	DrxConfigSetupDrxRetransmissiontimerEnumeratedPsf24
+	DrxConfigSetupDrxRetransmissiontimerEnumeratedPsf33
+)

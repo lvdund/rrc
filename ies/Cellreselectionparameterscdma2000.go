@@ -1,7 +1,5 @@
 package ies
 
-import "rrc/utils"
-
 // CellReselectionParametersCDMA2000 ::= SEQUENCE
 type Cellreselectionparameterscdma2000 struct {
 	Bandclasslist          Bandclasslistcdma2000

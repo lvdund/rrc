@@ -1,10 +1,8 @@
 package ies
 
-import "rrc/utils"
-
 // GuardbandTDD-NB-r15 ::= SEQUENCE
 type GuardbandtddNbR15 struct {
 	RasteroffsetR15     ChannelrasteroffsetNbR13
-	SibGuardbandinfoR15 interface{}
-	EutraBandwitdhR15   utils.ENUMERATED
+	SibGuardbandinfoR15 GuardbandtddNbR15SibGuardbandinfoR15
+	EutraBandwitdhR15   GuardbandtddNbR15EutraBandwitdhR15
 }

@@ -1,0 +1,20 @@
+package ies
+
+import "rrc/utils"
+
+// RedirectedCarrierInfo-NB-v1430-t322-r14 ::= ENUMERATED
+type RedirectedcarrierinfoNbV1430T322R14 struct {
+	Value utils.ENUMERATED
+}
+
+const (
+	RedirectedcarrierinfoNbV1430T322R14EnumeratedNothing = iota
+	RedirectedcarrierinfoNbV1430T322R14EnumeratedMin5
+	RedirectedcarrierinfoNbV1430T322R14EnumeratedMin10
+	RedirectedcarrierinfoNbV1430T322R14EnumeratedMin20
+	RedirectedcarrierinfoNbV1430T322R14EnumeratedMin30
+	RedirectedcarrierinfoNbV1430T322R14EnumeratedMin60
+	RedirectedcarrierinfoNbV1430T322R14EnumeratedMin120
+	RedirectedcarrierinfoNbV1430T322R14EnumeratedMin180
+	RedirectedcarrierinfoNbV1430T322R14EnumeratedSpare1
+)

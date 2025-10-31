@@ -1,11 +1,9 @@
 package ies
 
-import "rrc/utils"
-
 // MBMS-Parameters-v1430 ::= SEQUENCE
 type MbmsParametersV1430 struct {
-	FembmsdedicatedcellR14            *utils.ENUMERATED
-	FembmsmixedcellR14                *utils.ENUMERATED
-	SubcarrierspacingmbmsKhz7dot5R14  *utils.ENUMERATED
-	SubcarrierspacingmbmsKhz1dot25R14 *utils.ENUMERATED
+	FembmsdedicatedcellR14            *MbmsParametersV1430FembmsdedicatedcellR14
+	FembmsmixedcellR14                *MbmsParametersV1430FembmsmixedcellR14
+	SubcarrierspacingmbmsKhz7dot5R14  *MbmsParametersV1430SubcarrierspacingmbmsKhz7dot5R14
+	SubcarrierspacingmbmsKhz1dot25R14 *MbmsParametersV1430SubcarrierspacingmbmsKhz1dot25R14
 }

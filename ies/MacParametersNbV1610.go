@@ -1,8 +1,6 @@
 package ies
 
-import "rrc/utils"
-
 // MAC-Parameters-NB-v1610 ::= SEQUENCE
 type MacParametersNbV1610 struct {
-	RaiSupportenhR16 *utils.ENUMERATED
+	RaiSupportenhR16 *MacParametersNbV1610RaiSupportenhR16
 }

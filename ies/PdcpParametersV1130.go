@@ -1,9 +1,7 @@
 package ies
 
-import "rrc/utils"
-
 // PDCP-Parameters-v1130 ::= SEQUENCE
 type PdcpParametersV1130 struct {
-	PdcpSnExtensionR11            *utils.ENUMERATED
-	SupportrohccontextcontinueR11 *utils.ENUMERATED
+	PdcpSnExtensionR11            *PdcpParametersV1130PdcpSnExtensionR11
+	SupportrohccontextcontinueR11 *PdcpParametersV1130SupportrohccontextcontinueR11
 }

@@ -8,12 +8,13 @@ type MeascyclescellR10 struct {
 }
 
 const (
-	MeascyclescellR10Sf160  = 0
-	MeascyclescellR10Sf256  = 1
-	MeascyclescellR10Sf320  = 2
-	MeascyclescellR10Sf512  = 3
-	MeascyclescellR10Sf640  = 4
-	MeascyclescellR10Sf1024 = 5
-	MeascyclescellR10Sf1280 = 6
-	MeascyclescellR10Spare1 = 7
+	MeascyclescellR10EnumeratedNothing = iota
+	MeascyclescellR10EnumeratedSf160
+	MeascyclescellR10EnumeratedSf256
+	MeascyclescellR10EnumeratedSf320
+	MeascyclescellR10EnumeratedSf512
+	MeascyclescellR10EnumeratedSf640
+	MeascyclescellR10EnumeratedSf1024
+	MeascyclescellR10EnumeratedSf1280
+	MeascyclescellR10EnumeratedSpare1
 )

@@ -6,5 +6,5 @@ import "rrc/utils"
 type DlAmRlcR15 struct {
 	TReorderingR15        TReordering
 	TStatusprohibitR15    TStatusprohibit
-	ExtendedRlcLiFieldR15 bool
+	ExtendedRlcLiFieldR15 utils.BOOLEAN
 }

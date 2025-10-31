@@ -4,6 +4,6 @@ import "rrc/utils"
 
 // PRACH-Config ::= SEQUENCE
 type PrachConfig struct {
-	Rootsequenceindex utils.INTEGER
+	Rootsequenceindex utils.INTEGER `lb:0,ub:837`
 	PrachConfiginfo   *PrachConfiginfo
 }

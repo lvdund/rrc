@@ -1,7 +1,5 @@
 package ies
 
-import "rrc/utils"
-
 // RadioResourceConfigCommonSIB-NB-r13 ::= SEQUENCE
 // Extensible
 type RadioresourceconfigcommonsibNbR13 struct {

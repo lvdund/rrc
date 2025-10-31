@@ -1,0 +1,18 @@
+package ies
+
+import "rrc/utils"
+
+// RadioResourceConfigCommonSCell-r10-nonUL-Configuration-r10-dl-Bandwidth-r10 ::= ENUMERATED
+type RadioresourceconfigcommonscellR10NonulConfigurationR10DlBandwidthR10 struct {
+	Value utils.ENUMERATED
+}
+
+const (
+	RadioresourceconfigcommonscellR10NonulConfigurationR10DlBandwidthR10EnumeratedNothing = iota
+	RadioresourceconfigcommonscellR10NonulConfigurationR10DlBandwidthR10EnumeratedN6
+	RadioresourceconfigcommonscellR10NonulConfigurationR10DlBandwidthR10EnumeratedN15
+	RadioresourceconfigcommonscellR10NonulConfigurationR10DlBandwidthR10EnumeratedN25
+	RadioresourceconfigcommonscellR10NonulConfigurationR10DlBandwidthR10EnumeratedN50
+	RadioresourceconfigcommonscellR10NonulConfigurationR10DlBandwidthR10EnumeratedN75
+	RadioresourceconfigcommonscellR10NonulConfigurationR10DlBandwidthR10EnumeratedN100
+)

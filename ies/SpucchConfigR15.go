@@ -1,20 +1,14 @@
 package ies
 
-import "rrc/utils"
-
 // SPUCCH-Config-r15 ::= CHOICE
-type SpucchConfigR15 interface {
-	isSpucchConfigR15()
+const (
+	SpucchConfigR15ChoiceNothing = iota
+	SpucchConfigR15ChoiceRelease
+	SpucchConfigR15ChoiceSetup
+)
+
+type SpucchConfigR15 struct {
+	Choice  uint64
+	Release *struct{}
+	Setup   *SpucchConfigR15Setup
 }
-
-type SpucchConfigR15Release struct {
-	Value struct{}
-}
-
-func (*SpucchConfigR15Release) isSpucchConfigR15() {}
-
-type SpucchConfigR15Setup struct {
-	Value interface{}
-}
-
-func (*SpucchConfigR15Setup) isSpucchConfigR15() {}

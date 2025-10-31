@@ -1,20 +1,14 @@
 package ies
 
-import "rrc/utils"
-
 // NeighCellsCRS-Info-r15 ::= CHOICE
-type NeighcellscrsInfoR15 interface {
-	isNeighcellscrsInfoR15()
+const (
+	NeighcellscrsInfoR15ChoiceNothing = iota
+	NeighcellscrsInfoR15ChoiceRelease
+	NeighcellscrsInfoR15ChoiceSetup
+)
+
+type NeighcellscrsInfoR15 struct {
+	Choice  uint64
+	Release *struct{}
+	Setup   *CrsAssistanceinfolistR15
 }
-
-type NeighcellscrsInfoR15Release struct {
-	Value struct{}
-}
-
-func (*NeighcellscrsInfoR15Release) isNeighcellscrsInfoR15() {}
-
-type NeighcellscrsInfoR15Setup struct {
-	Value CrsAssistanceinfolistR15
-}
-
-func (*NeighcellscrsInfoR15Setup) isNeighcellscrsInfoR15() {}

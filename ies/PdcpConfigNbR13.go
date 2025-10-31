@@ -1,10 +1,8 @@
 package ies
 
-import "rrc/utils"
-
 // PDCP-Config-NB-r13 ::= SEQUENCE
 // Extensible
 type PdcpConfigNbR13 struct {
-	DiscardtimerR13      *utils.ENUMERATED
-	HeadercompressionR13 interface{}
+	DiscardtimerR13      *PdcpConfigNbR13DiscardtimerR13
+	HeadercompressionR13 PdcpConfigNbR13HeadercompressionR13
 }

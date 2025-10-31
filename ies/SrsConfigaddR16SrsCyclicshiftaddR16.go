@@ -1,0 +1,24 @@
+package ies
+
+import "rrc/utils"
+
+// SRS-ConfigAdd-r16-srs-CyclicShiftAdd-r16 ::= ENUMERATED
+type SrsConfigaddR16SrsCyclicshiftaddR16 struct {
+	Value utils.ENUMERATED
+}
+
+const (
+	SrsConfigaddR16SrsCyclicshiftaddR16EnumeratedNothing = iota
+	SrsConfigaddR16SrsCyclicshiftaddR16EnumeratedCs0
+	SrsConfigaddR16SrsCyclicshiftaddR16EnumeratedCs1
+	SrsConfigaddR16SrsCyclicshiftaddR16EnumeratedCs2
+	SrsConfigaddR16SrsCyclicshiftaddR16EnumeratedCs3
+	SrsConfigaddR16SrsCyclicshiftaddR16EnumeratedCs4
+	SrsConfigaddR16SrsCyclicshiftaddR16EnumeratedCs5
+	SrsConfigaddR16SrsCyclicshiftaddR16EnumeratedCs6
+	SrsConfigaddR16SrsCyclicshiftaddR16EnumeratedCs7
+	SrsConfigaddR16SrsCyclicshiftaddR16EnumeratedCs8
+	SrsConfigaddR16SrsCyclicshiftaddR16EnumeratedCs9
+	SrsConfigaddR16SrsCyclicshiftaddR16EnumeratedCs10
+	SrsConfigaddR16SrsCyclicshiftaddR16EnumeratedCs11
+)

@@ -1,0 +1,17 @@
+package ies
+
+import "rrc/utils"
+
+// CSI-RS-ConfigNonPrecoded-r13-codebookConfigN1-r13 ::= ENUMERATED
+type CsiRsConfignonprecodedR13Codebookconfign1R13 struct {
+	Value utils.ENUMERATED
+}
+
+const (
+	CsiRsConfignonprecodedR13Codebookconfign1R13EnumeratedNothing = iota
+	CsiRsConfignonprecodedR13Codebookconfign1R13EnumeratedN1
+	CsiRsConfignonprecodedR13Codebookconfign1R13EnumeratedN2
+	CsiRsConfignonprecodedR13Codebookconfign1R13EnumeratedN3
+	CsiRsConfignonprecodedR13Codebookconfign1R13EnumeratedN4
+	CsiRsConfignonprecodedR13Codebookconfign1R13EnumeratedN8
+)

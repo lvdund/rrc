@@ -1,20 +1,14 @@
 package ies
 
-import "rrc/utils"
-
 // MeasGapSharingConfig-r14 ::= CHOICE
-type MeasgapsharingconfigR14 interface {
-	isMeasgapsharingconfigR14()
+const (
+	MeasgapsharingconfigR14ChoiceNothing = iota
+	MeasgapsharingconfigR14ChoiceRelease
+	MeasgapsharingconfigR14ChoiceSetup
+)
+
+type MeasgapsharingconfigR14 struct {
+	Choice  uint64
+	Release *struct{}
+	Setup   *MeasgapsharingconfigR14Setup
 }
-
-type MeasgapsharingconfigR14Release struct {
-	Value struct{}
-}
-
-func (*MeasgapsharingconfigR14Release) isMeasgapsharingconfigR14() {}
-
-type MeasgapsharingconfigR14Setup struct {
-	Value interface{}
-}
-
-func (*MeasgapsharingconfigR14Setup) isMeasgapsharingconfigR14() {}

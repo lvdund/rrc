@@ -6,8 +6,8 @@ import "rrc/utils"
 // Extensible
 type UeEutraCapabilityaddxddModeR9 struct {
 	PhylayerparametersR9               *Phylayerparameters
-	FeaturegroupindicatorsR9           *utils.BITSTRING
-	Featuregroupindrel9addR9           *utils.BITSTRING
+	FeaturegroupindicatorsR9           *utils.BITSTRING `lb:32,ub:32`
+	Featuregroupindrel9addR9           *utils.BITSTRING `lb:32,ub:32`
 	InterratParametersgeranR9          *IratParametersgeran
 	InterratParametersutraR9           *IratParametersutraV920
 	InterratParameterscdma2000R9       *IratParameterscdma20001xrttV920

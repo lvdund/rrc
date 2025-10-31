@@ -1,0 +1,20 @@
+package ies
+
+import "rrc/utils"
+
+// SchedulingInfo-NB-r13-si-Periodicity-r13 ::= ENUMERATED
+type SchedulinginfoNbR13SiPeriodicityR13 struct {
+	Value utils.ENUMERATED
+}
+
+const (
+	SchedulinginfoNbR13SiPeriodicityR13EnumeratedNothing = iota
+	SchedulinginfoNbR13SiPeriodicityR13EnumeratedRf64
+	SchedulinginfoNbR13SiPeriodicityR13EnumeratedRf128
+	SchedulinginfoNbR13SiPeriodicityR13EnumeratedRf256
+	SchedulinginfoNbR13SiPeriodicityR13EnumeratedRf512
+	SchedulinginfoNbR13SiPeriodicityR13EnumeratedRf1024
+	SchedulinginfoNbR13SiPeriodicityR13EnumeratedRf2048
+	SchedulinginfoNbR13SiPeriodicityR13EnumeratedRf4096
+	SchedulinginfoNbR13SiPeriodicityR13EnumeratedSpare
+)

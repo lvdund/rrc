@@ -1,0 +1,20 @@
+package ies
+
+import "rrc/utils"
+
+// MobilityStateParameters-t-Evaluation ::= ENUMERATED
+type MobilitystateparametersTEvaluation struct {
+	Value utils.ENUMERATED
+}
+
+const (
+	MobilitystateparametersTEvaluationEnumeratedNothing = iota
+	MobilitystateparametersTEvaluationEnumeratedS30
+	MobilitystateparametersTEvaluationEnumeratedS60
+	MobilitystateparametersTEvaluationEnumeratedS120
+	MobilitystateparametersTEvaluationEnumeratedS180
+	MobilitystateparametersTEvaluationEnumeratedS240
+	MobilitystateparametersTEvaluationEnumeratedSpare3
+	MobilitystateparametersTEvaluationEnumeratedSpare2
+	MobilitystateparametersTEvaluationEnumeratedSpare1
+)

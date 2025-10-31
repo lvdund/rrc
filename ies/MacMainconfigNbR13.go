@@ -1,12 +1,10 @@
 package ies
 
-import "rrc/utils"
-
 // MAC-MainConfig-NB-r13 ::= SEQUENCE
 // Extensible
 type MacMainconfigNbR13 struct {
-	UlSchConfigR13                 *interface{}
+	UlSchConfigR13                 *MacMainconfigNbR13UlSchConfigR13
 	DrxConfigR13                   *DrxConfigNbR13
 	TimealignmenttimerdedicatedR13 Timealignmenttimer
-	LogicalchannelsrConfigR13      *interface{}
+	LogicalchannelsrConfigR13      *MacMainconfigNbR13LogicalchannelsrConfigR13
 }

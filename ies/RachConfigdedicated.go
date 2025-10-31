@@ -4,6 +4,6 @@ import "rrc/utils"
 
 // RACH-ConfigDedicated ::= SEQUENCE
 type RachConfigdedicated struct {
-	RaPreambleindex  utils.INTEGER
-	RaPrachMaskindex utils.INTEGER
+	RaPreambleindex  utils.INTEGER `lb:0,ub:63`
+	RaPrachMaskindex utils.INTEGER `lb:0,ub:15`
 }

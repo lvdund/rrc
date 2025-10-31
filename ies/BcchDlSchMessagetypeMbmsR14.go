@@ -1,20 +1,14 @@
 package ies
 
-import "rrc/utils"
-
 // BCCH-DL-SCH-MessageType-MBMS-r14 ::= CHOICE
-type BcchDlSchMessagetypeMbmsR14 interface {
-	isBcchDlSchMessagetypeMbmsR14()
+const (
+	BcchDlSchMessagetypeMbmsR14ChoiceNothing = iota
+	BcchDlSchMessagetypeMbmsR14ChoiceC1
+	BcchDlSchMessagetypeMbmsR14ChoiceMessageclassextension
+)
+
+type BcchDlSchMessagetypeMbmsR14 struct {
+	Choice                uint64
+	C1                    *BcchDlSchMessagetypeMbmsR14C1
+	Messageclassextension *BcchDlSchMessagetypeMbmsR14Messageclassextension
 }
-
-type BcchDlSchMessagetypeMbmsR14C1 struct {
-	Value interface{}
-}
-
-func (*BcchDlSchMessagetypeMbmsR14C1) isBcchDlSchMessagetypeMbmsR14() {}
-
-type BcchDlSchMessagetypeMbmsR14Messageclassextension struct {
-	Value interface{}
-}
-
-func (*BcchDlSchMessagetypeMbmsR14Messageclassextension) isBcchDlSchMessagetypeMbmsR14() {}

@@ -1,20 +1,14 @@
 package ies
 
-import "rrc/utils"
-
 // CQI-ShortConfigSCell-r15 ::= CHOICE
-type CqiShortconfigscellR15 interface {
-	isCqiShortconfigscellR15()
+const (
+	CqiShortconfigscellR15ChoiceNothing = iota
+	CqiShortconfigscellR15ChoiceRelease
+	CqiShortconfigscellR15ChoiceSetup
+)
+
+type CqiShortconfigscellR15 struct {
+	Choice  uint64
+	Release *struct{}
+	Setup   *CqiShortconfigscellR15Setup
 }
-
-type CqiShortconfigscellR15Release struct {
-	Value struct{}
-}
-
-func (*CqiShortconfigscellR15Release) isCqiShortconfigscellR15() {}
-
-type CqiShortconfigscellR15Setup struct {
-	Value interface{}
-}
-
-func (*CqiShortconfigscellR15Setup) isCqiShortconfigscellR15() {}

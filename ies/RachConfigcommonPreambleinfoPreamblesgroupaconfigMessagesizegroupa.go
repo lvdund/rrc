@@ -1,0 +1,16 @@
+package ies
+
+import "rrc/utils"
+
+// RACH-ConfigCommon-preambleInfo-preamblesGroupAConfig-messageSizeGroupA ::= ENUMERATED
+type RachConfigcommonPreambleinfoPreamblesgroupaconfigMessagesizegroupa struct {
+	Value utils.ENUMERATED
+}
+
+const (
+	RachConfigcommonPreambleinfoPreamblesgroupaconfigMessagesizegroupaEnumeratedNothing = iota
+	RachConfigcommonPreambleinfoPreamblesgroupaconfigMessagesizegroupaEnumeratedB56
+	RachConfigcommonPreambleinfoPreamblesgroupaconfigMessagesizegroupaEnumeratedB144
+	RachConfigcommonPreambleinfoPreamblesgroupaconfigMessagesizegroupaEnumeratedB208
+	RachConfigcommonPreambleinfoPreamblesgroupaconfigMessagesizegroupaEnumeratedB256
+)

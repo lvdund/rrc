@@ -4,6 +4,6 @@ import "rrc/utils"
 
 // StandaloneTDD-NB-r15 ::= SEQUENCE
 type StandalonetddNbR15 struct {
-	SibStandalonelocationR15 utils.ENUMERATED
-	Spare                    utils.BITSTRING
+	SibStandalonelocationR15 StandalonetddNbR15SibStandalonelocationR15
+	Spare                    utils.BITSTRING `lb:5,ub:5`
 }

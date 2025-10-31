@@ -8,12 +8,13 @@ type RssMeaspowerbiasR16 struct {
 }
 
 const (
-	RssMeaspowerbiasR16Db6        = 0
-	RssMeaspowerbiasR16Db3        = 1
-	RssMeaspowerbiasR16Db0        = 2
-	RssMeaspowerbiasR16Db3        = 3
-	RssMeaspowerbiasR16Db6        = 4
-	RssMeaspowerbiasR16Db9        = 5
-	RssMeaspowerbiasR16Db12       = 6
-	RssMeaspowerbiasR16Rssnotused = 7
+	RssMeaspowerbiasR16EnumeratedNothing = iota
+	RssMeaspowerbiasR16EnumeratedDb_6
+	RssMeaspowerbiasR16EnumeratedDb_3
+	RssMeaspowerbiasR16EnumeratedDb0
+	RssMeaspowerbiasR16EnumeratedDb3
+	RssMeaspowerbiasR16EnumeratedDb6
+	RssMeaspowerbiasR16EnumeratedDb9
+	RssMeaspowerbiasR16EnumeratedDb12
+	RssMeaspowerbiasR16EnumeratedRssnotused
 )

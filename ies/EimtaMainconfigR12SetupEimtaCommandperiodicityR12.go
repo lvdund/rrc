@@ -1,0 +1,16 @@
+package ies
+
+import "rrc/utils"
+
+// EIMTA-MainConfig-r12-setup-eimta-CommandPeriodicity-r12 ::= ENUMERATED
+type EimtaMainconfigR12SetupEimtaCommandperiodicityR12 struct {
+	Value utils.ENUMERATED
+}
+
+const (
+	EimtaMainconfigR12SetupEimtaCommandperiodicityR12EnumeratedNothing = iota
+	EimtaMainconfigR12SetupEimtaCommandperiodicityR12EnumeratedSf10
+	EimtaMainconfigR12SetupEimtaCommandperiodicityR12EnumeratedSf20
+	EimtaMainconfigR12SetupEimtaCommandperiodicityR12EnumeratedSf40
+	EimtaMainconfigR12SetupEimtaCommandperiodicityR12EnumeratedSf80
+)

@@ -1,20 +1,14 @@
 package ies
 
-import "rrc/utils"
-
 // PUSCH-EnhancementsConfig-r14 ::= CHOICE
-type PuschEnhancementsconfigR14 interface {
-	isPuschEnhancementsconfigR14()
+const (
+	PuschEnhancementsconfigR14ChoiceNothing = iota
+	PuschEnhancementsconfigR14ChoiceRelease
+	PuschEnhancementsconfigR14ChoiceSetup
+)
+
+type PuschEnhancementsconfigR14 struct {
+	Choice  uint64
+	Release *struct{}
+	Setup   *PuschEnhancementsconfigR14Setup
 }
-
-type PuschEnhancementsconfigR14Release struct {
-	Value struct{}
-}
-
-func (*PuschEnhancementsconfigR14Release) isPuschEnhancementsconfigR14() {}
-
-type PuschEnhancementsconfigR14Setup struct {
-	Value interface{}
-}
-
-func (*PuschEnhancementsconfigR14Setup) isPuschEnhancementsconfigR14() {}

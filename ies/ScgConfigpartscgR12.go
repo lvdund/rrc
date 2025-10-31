@@ -1,7 +1,5 @@
 package ies
 
-import "rrc/utils"
-
 // SCG-ConfigPartSCG-r12 ::= SEQUENCE
 // Extensible
 type ScgConfigpartscgR12 struct {

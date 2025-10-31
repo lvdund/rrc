@@ -1,0 +1,22 @@
+package ies
+
+import "rrc/utils"
+
+// DRX-Config-r15-drx-RetransmissionTimerShortTTI-r15 ::= ENUMERATED
+type DrxConfigR15DrxRetransmissiontimershortttiR15 struct {
+	Value utils.ENUMERATED
+}
+
+const (
+	DrxConfigR15DrxRetransmissiontimershortttiR15EnumeratedNothing = iota
+	DrxConfigR15DrxRetransmissiontimershortttiR15EnumeratedTti10
+	DrxConfigR15DrxRetransmissiontimershortttiR15EnumeratedTti20
+	DrxConfigR15DrxRetransmissiontimershortttiR15EnumeratedTti40
+	DrxConfigR15DrxRetransmissiontimershortttiR15EnumeratedTti64
+	DrxConfigR15DrxRetransmissiontimershortttiR15EnumeratedTti80
+	DrxConfigR15DrxRetransmissiontimershortttiR15EnumeratedTti96
+	DrxConfigR15DrxRetransmissiontimershortttiR15EnumeratedTti112
+	DrxConfigR15DrxRetransmissiontimershortttiR15EnumeratedTti128
+	DrxConfigR15DrxRetransmissiontimershortttiR15EnumeratedTti160
+	DrxConfigR15DrxRetransmissiontimershortttiR15EnumeratedTti320
+)

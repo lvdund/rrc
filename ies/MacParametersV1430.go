@@ -1,13 +1,11 @@
 package ies
 
-import "rrc/utils"
-
 // MAC-Parameters-v1430 ::= SEQUENCE
 type MacParametersV1430 struct {
-	ShortspsIntervalfddR14 *utils.ENUMERATED
-	ShortspsIntervaltddR14 *utils.ENUMERATED
-	SkipuplinkdynamicR14   *utils.ENUMERATED
-	SkipuplinkspsR14       *utils.ENUMERATED
-	MultipleuplinkspsR14   *utils.ENUMERATED
-	DatainactmonR14        *utils.ENUMERATED
+	ShortspsIntervalfddR14 *MacParametersV1430ShortspsIntervalfddR14
+	ShortspsIntervaltddR14 *MacParametersV1430ShortspsIntervaltddR14
+	SkipuplinkdynamicR14   *MacParametersV1430SkipuplinkdynamicR14
+	SkipuplinkspsR14       *MacParametersV1430SkipuplinkspsR14
+	MultipleuplinkspsR14   *MacParametersV1430MultipleuplinkspsR14
+	DatainactmonR14        *MacParametersV1430DatainactmonR14
 }

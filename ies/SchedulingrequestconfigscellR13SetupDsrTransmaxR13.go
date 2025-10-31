@@ -1,0 +1,20 @@
+package ies
+
+import "rrc/utils"
+
+// SchedulingRequestConfigSCell-r13-setup-dsr-TransMax-r13 ::= ENUMERATED
+type SchedulingrequestconfigscellR13SetupDsrTransmaxR13 struct {
+	Value utils.ENUMERATED
+}
+
+const (
+	SchedulingrequestconfigscellR13SetupDsrTransmaxR13EnumeratedNothing = iota
+	SchedulingrequestconfigscellR13SetupDsrTransmaxR13EnumeratedN4
+	SchedulingrequestconfigscellR13SetupDsrTransmaxR13EnumeratedN8
+	SchedulingrequestconfigscellR13SetupDsrTransmaxR13EnumeratedN16
+	SchedulingrequestconfigscellR13SetupDsrTransmaxR13EnumeratedN32
+	SchedulingrequestconfigscellR13SetupDsrTransmaxR13EnumeratedN64
+	SchedulingrequestconfigscellR13SetupDsrTransmaxR13EnumeratedSpare3
+	SchedulingrequestconfigscellR13SetupDsrTransmaxR13EnumeratedSpare2
+	SchedulingrequestconfigscellR13SetupDsrTransmaxR13EnumeratedSpare1
+)

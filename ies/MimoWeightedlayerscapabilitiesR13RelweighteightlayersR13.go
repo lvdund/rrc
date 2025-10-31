@@ -1,0 +1,20 @@
+package ies
+
+import "rrc/utils"
+
+// MIMO-WeightedLayersCapabilities-r13-relWeightEightLayers-r13 ::= ENUMERATED
+type MimoWeightedlayerscapabilitiesR13RelweighteightlayersR13 struct {
+	Value utils.ENUMERATED
+}
+
+const (
+	MimoWeightedlayerscapabilitiesR13RelweighteightlayersR13EnumeratedNothing = iota
+	MimoWeightedlayerscapabilitiesR13RelweighteightlayersR13EnumeratedV1
+	MimoWeightedlayerscapabilitiesR13RelweighteightlayersR13EnumeratedV1dot25
+	MimoWeightedlayerscapabilitiesR13RelweighteightlayersR13EnumeratedV1dot5
+	MimoWeightedlayerscapabilitiesR13RelweighteightlayersR13EnumeratedV1dot75
+	MimoWeightedlayerscapabilitiesR13RelweighteightlayersR13EnumeratedV2
+	MimoWeightedlayerscapabilitiesR13RelweighteightlayersR13EnumeratedV2dot5
+	MimoWeightedlayerscapabilitiesR13RelweighteightlayersR13EnumeratedV3
+	MimoWeightedlayerscapabilitiesR13RelweighteightlayersR13EnumeratedV4
+)

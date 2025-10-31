@@ -1,0 +1,20 @@
+package ies
+
+import "rrc/utils"
+
+// NPRACH-Parameters-NB-r13-numRepetitionsPerPreambleAttempt-r13 ::= ENUMERATED
+type NprachParametersNbR13NumrepetitionsperpreambleattemptR13 struct {
+	Value utils.ENUMERATED
+}
+
+const (
+	NprachParametersNbR13NumrepetitionsperpreambleattemptR13EnumeratedNothing = iota
+	NprachParametersNbR13NumrepetitionsperpreambleattemptR13EnumeratedN1
+	NprachParametersNbR13NumrepetitionsperpreambleattemptR13EnumeratedN2
+	NprachParametersNbR13NumrepetitionsperpreambleattemptR13EnumeratedN4
+	NprachParametersNbR13NumrepetitionsperpreambleattemptR13EnumeratedN8
+	NprachParametersNbR13NumrepetitionsperpreambleattemptR13EnumeratedN16
+	NprachParametersNbR13NumrepetitionsperpreambleattemptR13EnumeratedN32
+	NprachParametersNbR13NumrepetitionsperpreambleattemptR13EnumeratedN64
+	NprachParametersNbR13NumrepetitionsperpreambleattemptR13EnumeratedN128
+)

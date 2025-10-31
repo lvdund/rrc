@@ -1,9 +1,7 @@
 package ies
 
-import "rrc/utils"
-
 // IntraFreqNeighCellList ::= SEQUENCE OF IntraFreqNeighCellInfo
 // SIZE (1..maxCellIntra)
 type Intrafreqneighcelllist struct {
-	Value []Intrafreqneighcellinfo
+	Value []Intrafreqneighcellinfo `lb:1,ub:maxCellIntra`
 }

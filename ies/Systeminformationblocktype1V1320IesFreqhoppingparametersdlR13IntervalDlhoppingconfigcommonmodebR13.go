@@ -1,0 +1,16 @@
+package ies
+
+import "rrc/utils"
+
+// SystemInformationBlockType1-v1320-IEs-freqHoppingParametersDL-r13-interval-DLHoppingConfigCommonModeB-r13 ::= CHOICE
+const (
+	Systeminformationblocktype1V1320IesFreqhoppingparametersdlR13IntervalDlhoppingconfigcommonmodebR13ChoiceNothing = iota
+	Systeminformationblocktype1V1320IesFreqhoppingparametersdlR13IntervalDlhoppingconfigcommonmodebR13ChoiceIntervalFddR13
+	Systeminformationblocktype1V1320IesFreqhoppingparametersdlR13IntervalDlhoppingconfigcommonmodebR13ChoiceIntervalTddR13
+)
+
+type Systeminformationblocktype1V1320IesFreqhoppingparametersdlR13IntervalDlhoppingconfigcommonmodebR13 struct {
+	Choice         uint64
+	IntervalFddR13 *utils.ENUMERATED
+	IntervalTddR13 *utils.ENUMERATED
+}

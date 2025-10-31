@@ -3,18 +3,14 @@ package ies
 import "rrc/utils"
 
 // InitialUE-Identity-5GC-NB-r16 ::= CHOICE
-type InitialueIdentity5gcNbR16 interface {
-	isInitialueIdentity5gcNbR16()
+const (
+	InitialueIdentity5gcNbR16ChoiceNothing = iota
+	InitialueIdentity5gcNbR16ChoiceNg5gSTmsiR16
+	InitialueIdentity5gcNbR16ChoiceRandomvalue
+)
+
+type InitialueIdentity5gcNbR16 struct {
+	Choice       uint64
+	Ng5gSTmsiR16 *Ng5gSTmsiR15
+	Randomvalue  *utils.BITSTRING `lb:48,ub:48`
 }
-
-type InitialueIdentity5gcNbR16Ng5gSTmsiR16 struct {
-	Value Ng5gSTmsiR15
-}
-
-func (*InitialueIdentity5gcNbR16Ng5gSTmsiR16) isInitialueIdentity5gcNbR16() {}
-
-type InitialueIdentity5gcNbR16Randomvalue struct {
-	Value utils.BITSTRING
-}
-
-func (*InitialueIdentity5gcNbR16Randomvalue) isInitialueIdentity5gcNbR16() {}

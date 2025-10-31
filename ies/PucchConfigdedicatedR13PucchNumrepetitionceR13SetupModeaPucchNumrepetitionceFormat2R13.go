@@ -1,0 +1,16 @@
+package ies
+
+import "rrc/utils"
+
+// PUCCH-ConfigDedicated-r13-pucch-NumRepetitionCE-r13-setup-modeA-pucch-NumRepetitionCE-format2-r13 ::= ENUMERATED
+type PucchConfigdedicatedR13PucchNumrepetitionceR13SetupModeaPucchNumrepetitionceFormat2R13 struct {
+	Value utils.ENUMERATED
+}
+
+const (
+	PucchConfigdedicatedR13PucchNumrepetitionceR13SetupModeaPucchNumrepetitionceFormat2R13EnumeratedNothing = iota
+	PucchConfigdedicatedR13PucchNumrepetitionceR13SetupModeaPucchNumrepetitionceFormat2R13EnumeratedR1
+	PucchConfigdedicatedR13PucchNumrepetitionceR13SetupModeaPucchNumrepetitionceFormat2R13EnumeratedR2
+	PucchConfigdedicatedR13PucchNumrepetitionceR13SetupModeaPucchNumrepetitionceFormat2R13EnumeratedR4
+	PucchConfigdedicatedR13PucchNumrepetitionceR13SetupModeaPucchNumrepetitionceFormat2R13EnumeratedR8
+)

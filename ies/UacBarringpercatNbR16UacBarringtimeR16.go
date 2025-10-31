@@ -1,0 +1,20 @@
+package ies
+
+import "rrc/utils"
+
+// UAC-BarringPerCat-NB-r16-uac-BarringTime-r16 ::= ENUMERATED
+type UacBarringpercatNbR16UacBarringtimeR16 struct {
+	Value utils.ENUMERATED
+}
+
+const (
+	UacBarringpercatNbR16UacBarringtimeR16EnumeratedNothing = iota
+	UacBarringpercatNbR16UacBarringtimeR16EnumeratedS4
+	UacBarringpercatNbR16UacBarringtimeR16EnumeratedS8
+	UacBarringpercatNbR16UacBarringtimeR16EnumeratedS16
+	UacBarringpercatNbR16UacBarringtimeR16EnumeratedS32
+	UacBarringpercatNbR16UacBarringtimeR16EnumeratedS64
+	UacBarringpercatNbR16UacBarringtimeR16EnumeratedS128
+	UacBarringpercatNbR16UacBarringtimeR16EnumeratedS256
+	UacBarringpercatNbR16UacBarringtimeR16EnumeratedS512
+)

@@ -1,9 +1,7 @@
 package ies
 
-import "rrc/utils"
-
 // CarrierFreqsInfoListGERAN ::= SEQUENCE OF CarrierFreqsInfoGERAN
 // SIZE (1..maxGNFG)
 type Carrierfreqsinfolistgeran struct {
-	Value []Carrierfreqsinfogeran
+	Value []Carrierfreqsinfogeran `lb:1,ub:maxGNFG`
 }

@@ -6,7 +6,7 @@ import "rrc/utils"
 // Extensible
 type UeEutraCapabilityaddxddModeV1060 struct {
 	PhylayerparametersV1060         *PhylayerparametersV1020
-	Featuregroupindrel10V1060       *utils.BITSTRING
+	Featuregroupindrel10V1060       *utils.BITSTRING `lb:32,ub:32`
 	InterratParameterscdma2000V1060 *IratParameterscdma20001xrttV1020
 	InterratParametersutraTddV1060  *IratParametersutraTddV1020
 }

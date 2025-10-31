@@ -1,0 +1,20 @@
+package ies
+
+import "rrc/utils"
+
+// SC-MTCH-Info-NB-r14-npdcch-Offset-SC-MTCH-r14 ::= ENUMERATED
+type ScMtchInfoNbR14NpdcchOffsetScMtchR14 struct {
+	Value utils.ENUMERATED
+}
+
+const (
+	ScMtchInfoNbR14NpdcchOffsetScMtchR14EnumeratedNothing = iota
+	ScMtchInfoNbR14NpdcchOffsetScMtchR14EnumeratedZero
+	ScMtchInfoNbR14NpdcchOffsetScMtchR14EnumeratedOneeighth
+	ScMtchInfoNbR14NpdcchOffsetScMtchR14EnumeratedOnequarter
+	ScMtchInfoNbR14NpdcchOffsetScMtchR14EnumeratedThreeeighth
+	ScMtchInfoNbR14NpdcchOffsetScMtchR14EnumeratedOnehalf
+	ScMtchInfoNbR14NpdcchOffsetScMtchR14EnumeratedFiveeighth
+	ScMtchInfoNbR14NpdcchOffsetScMtchR14EnumeratedThreequarter
+	ScMtchInfoNbR14NpdcchOffsetScMtchR14EnumeratedSeveneighth
+)

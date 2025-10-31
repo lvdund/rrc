@@ -1,0 +1,16 @@
+package ies
+
+import "rrc/utils"
+
+// CQI-ReportConfigSCell-r15-altCQI-Table-1024QAM-r15 ::= ENUMERATED
+type CqiReportconfigscellR15AltcqiTable1024qamR15 struct {
+	Value utils.ENUMERATED
+}
+
+const (
+	CqiReportconfigscellR15AltcqiTable1024qamR15EnumeratedNothing = iota
+	CqiReportconfigscellR15AltcqiTable1024qamR15EnumeratedAllsubframes
+	CqiReportconfigscellR15AltcqiTable1024qamR15EnumeratedCsi_Subframeset1
+	CqiReportconfigscellR15AltcqiTable1024qamR15EnumeratedCsi_Subframeset2
+	CqiReportconfigscellR15AltcqiTable1024qamR15EnumeratedSpare1
+)

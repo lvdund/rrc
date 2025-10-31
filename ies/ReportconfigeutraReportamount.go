@@ -1,0 +1,20 @@
+package ies
+
+import "rrc/utils"
+
+// ReportConfigEUTRA-reportAmount ::= ENUMERATED
+type ReportconfigeutraReportamount struct {
+	Value utils.ENUMERATED
+}
+
+const (
+	ReportconfigeutraReportamountEnumeratedNothing = iota
+	ReportconfigeutraReportamountEnumeratedR1
+	ReportconfigeutraReportamountEnumeratedR2
+	ReportconfigeutraReportamountEnumeratedR4
+	ReportconfigeutraReportamountEnumeratedR8
+	ReportconfigeutraReportamountEnumeratedR16
+	ReportconfigeutraReportamountEnumeratedR32
+	ReportconfigeutraReportamountEnumeratedR64
+	ReportconfigeutraReportamountEnumeratedInfinity
+)

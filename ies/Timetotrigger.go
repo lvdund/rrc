@@ -8,20 +8,21 @@ type Timetotrigger struct {
 }
 
 const (
-	TimetotriggerMs0    = 0
-	TimetotriggerMs40   = 1
-	TimetotriggerMs64   = 2
-	TimetotriggerMs80   = 3
-	TimetotriggerMs100  = 4
-	TimetotriggerMs128  = 5
-	TimetotriggerMs160  = 6
-	TimetotriggerMs256  = 7
-	TimetotriggerMs320  = 8
-	TimetotriggerMs480  = 9
-	TimetotriggerMs512  = 10
-	TimetotriggerMs640  = 11
-	TimetotriggerMs1024 = 12
-	TimetotriggerMs1280 = 13
-	TimetotriggerMs2560 = 14
-	TimetotriggerMs5120 = 15
+	TimetotriggerEnumeratedNothing = iota
+	TimetotriggerEnumeratedMs0
+	TimetotriggerEnumeratedMs40
+	TimetotriggerEnumeratedMs64
+	TimetotriggerEnumeratedMs80
+	TimetotriggerEnumeratedMs100
+	TimetotriggerEnumeratedMs128
+	TimetotriggerEnumeratedMs160
+	TimetotriggerEnumeratedMs256
+	TimetotriggerEnumeratedMs320
+	TimetotriggerEnumeratedMs480
+	TimetotriggerEnumeratedMs512
+	TimetotriggerEnumeratedMs640
+	TimetotriggerEnumeratedMs1024
+	TimetotriggerEnumeratedMs1280
+	TimetotriggerEnumeratedMs2560
+	TimetotriggerEnumeratedMs5120
 )

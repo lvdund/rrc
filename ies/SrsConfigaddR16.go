@@ -4,16 +4,16 @@ import "rrc/utils"
 
 // SRS-ConfigAdd-r16 ::= SEQUENCE
 type SrsConfigaddR16 struct {
-	SrsRepnumaddR16              utils.ENUMERATED
-	SrsBandwidthaddR16           utils.ENUMERATED
-	SrsHoppingbandwidthaddR16    utils.ENUMERATED
-	SrsFreqdomainposaddR16       utils.INTEGER
+	SrsRepnumaddR16              SrsConfigaddR16SrsRepnumaddR16
+	SrsBandwidthaddR16           SrsConfigaddR16SrsBandwidthaddR16
+	SrsHoppingbandwidthaddR16    SrsConfigaddR16SrsHoppingbandwidthaddR16
+	SrsFreqdomainposaddR16       utils.INTEGER `lb:0,ub:23`
 	SrsAntennaportaddR16         SrsAntennaport
-	SrsCyclicshiftaddR16         utils.ENUMERATED
-	SrsTransmissioncombnumaddR16 utils.ENUMERATED
-	SrsTransmissioncombaddR16    utils.INTEGER
-	SrsStartposaddR16            utils.INTEGER
-	SrsDurationaddR16            utils.INTEGER
-	SrsGuardsymbolasAddR16       *utils.ENUMERATED
-	SrsGuardsymbolfhAddR16       *utils.ENUMERATED
+	SrsCyclicshiftaddR16         SrsConfigaddR16SrsCyclicshiftaddR16
+	SrsTransmissioncombnumaddR16 SrsConfigaddR16SrsTransmissioncombnumaddR16
+	SrsTransmissioncombaddR16    utils.INTEGER `lb:0,ub:3`
+	SrsStartposaddR16            utils.INTEGER `lb:0,ub:13`
+	SrsDurationaddR16            utils.INTEGER `lb:0,ub:13`
+	SrsGuardsymbolasAddR16       *SrsConfigaddR16SrsGuardsymbolasAddR16
+	SrsGuardsymbolfhAddR16       *SrsConfigaddR16SrsGuardsymbolfhAddR16
 }

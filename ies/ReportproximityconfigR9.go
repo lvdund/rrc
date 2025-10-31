@@ -1,9 +1,7 @@
 package ies
 
-import "rrc/utils"
-
 // ReportProximityConfig-r9 ::= SEQUENCE
 type ReportproximityconfigR9 struct {
-	ProximityindicationeutraR9 *utils.ENUMERATED
-	ProximityindicationutraR9  *utils.ENUMERATED
+	ProximityindicationeutraR9 *ReportproximityconfigR9ProximityindicationeutraR9
+	ProximityindicationutraR9  *ReportproximityconfigR9ProximityindicationutraR9
 }

@@ -1,0 +1,20 @@
+package ies
+
+import "rrc/utils"
+
+// NPRACH-Parameters-NB-r13-maxNumPreambleAttemptCE-r13 ::= ENUMERATED
+type NprachParametersNbR13MaxnumpreambleattemptceR13 struct {
+	Value utils.ENUMERATED
+}
+
+const (
+	NprachParametersNbR13MaxnumpreambleattemptceR13EnumeratedNothing = iota
+	NprachParametersNbR13MaxnumpreambleattemptceR13EnumeratedN3
+	NprachParametersNbR13MaxnumpreambleattemptceR13EnumeratedN4
+	NprachParametersNbR13MaxnumpreambleattemptceR13EnumeratedN5
+	NprachParametersNbR13MaxnumpreambleattemptceR13EnumeratedN6
+	NprachParametersNbR13MaxnumpreambleattemptceR13EnumeratedN7
+	NprachParametersNbR13MaxnumpreambleattemptceR13EnumeratedN8
+	NprachParametersNbR13MaxnumpreambleattemptceR13EnumeratedN10
+	NprachParametersNbR13MaxnumpreambleattemptceR13EnumeratedSpare1
+)

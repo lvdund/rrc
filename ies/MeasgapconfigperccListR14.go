@@ -1,20 +1,14 @@
 package ies
 
-import "rrc/utils"
-
 // MeasGapConfigPerCC-List-r14 ::= CHOICE
-type MeasgapconfigperccListR14 interface {
-	isMeasgapconfigperccListR14()
+const (
+	MeasgapconfigperccListR14ChoiceNothing = iota
+	MeasgapconfigperccListR14ChoiceRelease
+	MeasgapconfigperccListR14ChoiceSetup
+)
+
+type MeasgapconfigperccListR14 struct {
+	Choice  uint64
+	Release *struct{}
+	Setup   *MeasgapconfigperccListR14Setup
 }
-
-type MeasgapconfigperccListR14Release struct {
-	Value struct{}
-}
-
-func (*MeasgapconfigperccListR14Release) isMeasgapconfigperccListR14() {}
-
-type MeasgapconfigperccListR14Setup struct {
-	Value interface{}
-}
-
-func (*MeasgapconfigperccListR14Setup) isMeasgapconfigperccListR14() {}

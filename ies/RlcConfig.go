@@ -1,33 +1,19 @@
 package ies
 
-import "rrc/utils"
-
 // RLC-Config ::= CHOICE
 // Extensible
-type RlcConfig interface {
-	isRlcConfig()
+const (
+	RlcConfigChoiceNothing = iota
+	RlcConfigChoiceAm
+	RlcConfigChoiceUmBiDirectional
+	RlcConfigChoiceUmUniDirectionalUl
+	RlcConfigChoiceUmUniDirectionalDl
+)
+
+type RlcConfig struct {
+	Choice             uint64
+	Am                 *RlcConfigAm
+	UmBiDirectional    *RlcConfigUmBiDirectional
+	UmUniDirectionalUl *RlcConfigUmUniDirectionalUl
+	UmUniDirectionalDl *RlcConfigUmUniDirectionalDl
 }
-
-type RlcConfigAm struct {
-	Value interface{}
-}
-
-func (*RlcConfigAm) isRlcConfig() {}
-
-type RlcConfigUmBiDirectional struct {
-	Value interface{}
-}
-
-func (*RlcConfigUmBiDirectional) isRlcConfig() {}
-
-type RlcConfigUmUniDirectionalUl struct {
-	Value interface{}
-}
-
-func (*RlcConfigUmUniDirectionalUl) isRlcConfig() {}
-
-type RlcConfigUmUniDirectionalDl struct {
-	Value interface{}
-}
-
-func (*RlcConfigUmUniDirectionalDl) isRlcConfig() {}

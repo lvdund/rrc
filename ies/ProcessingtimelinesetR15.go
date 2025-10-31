@@ -8,6 +8,7 @@ type ProcessingtimelinesetR15 struct {
 }
 
 const (
-	ProcessingtimelinesetR15Set1 = 0
-	ProcessingtimelinesetR15Set2 = 1
+	ProcessingtimelinesetR15EnumeratedNothing = iota
+	ProcessingtimelinesetR15EnumeratedSet1
+	ProcessingtimelinesetR15EnumeratedSet2
 )

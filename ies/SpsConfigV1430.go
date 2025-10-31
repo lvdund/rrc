@@ -1,7 +1,5 @@
 package ies
 
-import "rrc/utils"
-
 // SPS-Config-v1430 ::= SEQUENCE
 type SpsConfigV1430 struct {
 	UlSpsVRntiR14               *CRnti

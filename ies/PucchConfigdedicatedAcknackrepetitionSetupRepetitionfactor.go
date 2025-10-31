@@ -1,0 +1,16 @@
+package ies
+
+import "rrc/utils"
+
+// PUCCH-ConfigDedicated-ackNackRepetition-setup-repetitionFactor ::= ENUMERATED
+type PucchConfigdedicatedAcknackrepetitionSetupRepetitionfactor struct {
+	Value utils.ENUMERATED
+}
+
+const (
+	PucchConfigdedicatedAcknackrepetitionSetupRepetitionfactorEnumeratedNothing = iota
+	PucchConfigdedicatedAcknackrepetitionSetupRepetitionfactorEnumeratedN2
+	PucchConfigdedicatedAcknackrepetitionSetupRepetitionfactorEnumeratedN4
+	PucchConfigdedicatedAcknackrepetitionSetupRepetitionfactorEnumeratedN6
+	PucchConfigdedicatedAcknackrepetitionSetupRepetitionfactorEnumeratedSpare1
+)

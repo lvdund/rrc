@@ -1,9 +1,7 @@
 package ies
 
-import "rrc/utils"
-
 // MIMO-UE-BeamformedCapabilities-r13 ::= SEQUENCE
 type MimoUeBeamformedcapabilitiesR13 struct {
-	AltcodebookR13                *utils.ENUMERATED
+	AltcodebookR13                *MimoUeBeamformedcapabilitiesR13AltcodebookR13
 	MimoBeamformedcapabilitiesR13 MimoBeamformedcapabilitylistR13
 }

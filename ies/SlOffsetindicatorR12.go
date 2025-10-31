@@ -3,18 +3,14 @@ package ies
 import "rrc/utils"
 
 // SL-OffsetIndicator-r12 ::= CHOICE
-type SlOffsetindicatorR12 interface {
-	isSlOffsetindicatorR12()
+const (
+	SlOffsetindicatorR12ChoiceNothing = iota
+	SlOffsetindicatorR12ChoiceSmallR12
+	SlOffsetindicatorR12ChoiceLargeR12
+)
+
+type SlOffsetindicatorR12 struct {
+	Choice   uint64
+	SmallR12 *utils.INTEGER `lb:0,ub:319`
+	LargeR12 *utils.INTEGER `lb:0,ub:10239`
 }
-
-type SlOffsetindicatorR12SmallR12 struct {
-	Value utils.INTEGER
-}
-
-func (*SlOffsetindicatorR12SmallR12) isSlOffsetindicatorR12() {}
-
-type SlOffsetindicatorR12LargeR12 struct {
-	Value utils.INTEGER
-}
-
-func (*SlOffsetindicatorR12LargeR12) isSlOffsetindicatorR12() {}

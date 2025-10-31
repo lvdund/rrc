@@ -1,20 +1,14 @@
 package ies
 
-import "rrc/utils"
-
 // DRX-Config ::= CHOICE
-type DrxConfig interface {
-	isDrxConfig()
+const (
+	DrxConfigChoiceNothing = iota
+	DrxConfigChoiceRelease
+	DrxConfigChoiceSetup
+)
+
+type DrxConfig struct {
+	Choice  uint64
+	Release *struct{}
+	Setup   *DrxConfigSetup
 }
-
-type DrxConfigRelease struct {
-	Value struct{}
-}
-
-func (*DrxConfigRelease) isDrxConfig() {}
-
-type DrxConfigSetup struct {
-	Value interface{}
-}
-
-func (*DrxConfigSetup) isDrxConfig() {}

@@ -1,0 +1,28 @@
+package ies
+
+import "rrc/utils"
+
+// AC-BarringConfig-ac-BarringFactor ::= ENUMERATED
+type AcBarringconfigAcBarringfactor struct {
+	Value utils.ENUMERATED
+}
+
+const (
+	AcBarringconfigAcBarringfactorEnumeratedNothing = iota
+	AcBarringconfigAcBarringfactorEnumeratedP00
+	AcBarringconfigAcBarringfactorEnumeratedP05
+	AcBarringconfigAcBarringfactorEnumeratedP10
+	AcBarringconfigAcBarringfactorEnumeratedP15
+	AcBarringconfigAcBarringfactorEnumeratedP20
+	AcBarringconfigAcBarringfactorEnumeratedP25
+	AcBarringconfigAcBarringfactorEnumeratedP30
+	AcBarringconfigAcBarringfactorEnumeratedP40
+	AcBarringconfigAcBarringfactorEnumeratedP50
+	AcBarringconfigAcBarringfactorEnumeratedP60
+	AcBarringconfigAcBarringfactorEnumeratedP70
+	AcBarringconfigAcBarringfactorEnumeratedP75
+	AcBarringconfigAcBarringfactorEnumeratedP80
+	AcBarringconfigAcBarringfactorEnumeratedP85
+	AcBarringconfigAcBarringfactorEnumeratedP90
+	AcBarringconfigAcBarringfactorEnumeratedP95
+)

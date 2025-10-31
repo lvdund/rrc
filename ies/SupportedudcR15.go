@@ -1,9 +1,7 @@
 package ies
 
-import "rrc/utils"
-
 // SupportedUDC-r15 ::= SEQUENCE
 type SupportedudcR15 struct {
-	SupportedstandarddicR15 *utils.ENUMERATED
+	SupportedstandarddicR15 *SupportedudcR15SupportedstandarddicR15
 	SupportedoperatordicR15 *SupportedoperatordicR15
 }

@@ -1,0 +1,16 @@
+package ies
+
+import "rrc/utils"
+
+// MeasGapSharingConfig-r14-setup-measGapSharingScheme-r14 ::= ENUMERATED
+type MeasgapsharingconfigR14SetupMeasgapsharingschemeR14 struct {
+	Value utils.ENUMERATED
+}
+
+const (
+	MeasgapsharingconfigR14SetupMeasgapsharingschemeR14EnumeratedNothing = iota
+	MeasgapsharingconfigR14SetupMeasgapsharingschemeR14EnumeratedScheme00
+	MeasgapsharingconfigR14SetupMeasgapsharingschemeR14EnumeratedScheme01
+	MeasgapsharingconfigR14SetupMeasgapsharingschemeR14EnumeratedScheme10
+	MeasgapsharingconfigR14SetupMeasgapsharingschemeR14EnumeratedScheme11
+)

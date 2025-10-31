@@ -1,10 +1,8 @@
 package ies
 
-import "rrc/utils"
-
 // RLC-Parameters-v1530 ::= SEQUENCE
 type RlcParametersV1530 struct {
-	FlexibleumAmCombinationsR15 *utils.ENUMERATED
-	RlcAmOooDeliveryR15         *utils.ENUMERATED
-	RlcUmOooDeliveryR15         *utils.ENUMERATED
+	FlexibleumAmCombinationsR15 *RlcParametersV1530FlexibleumAmCombinationsR15
+	RlcAmOooDeliveryR15         *RlcParametersV1530RlcAmOooDeliveryR15
+	RlcUmOooDeliveryR15         *RlcParametersV1530RlcUmOooDeliveryR15
 }

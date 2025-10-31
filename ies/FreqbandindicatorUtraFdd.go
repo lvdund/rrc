@@ -2,7 +2,7 @@ package ies
 
 import "rrc/utils"
 
-// FreqBandIndicator-UTRA-FDD ::= INTEGER (1..86)
+// FreqBandIndicator-UTRA-FDD ::= utils.INTEGER (1..86)
 type FreqbandindicatorUtraFdd struct {
-	Value utils.INTEGER
+	Value utils.INTEGER `lb:0,ub:86`
 }

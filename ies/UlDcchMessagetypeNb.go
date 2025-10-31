@@ -1,20 +1,14 @@
 package ies
 
-import "rrc/utils"
-
 // UL-DCCH-MessageType-NB ::= CHOICE
-type UlDcchMessagetypeNb interface {
-	isUlDcchMessagetypeNb()
+const (
+	UlDcchMessagetypeNbChoiceNothing = iota
+	UlDcchMessagetypeNbChoiceC1
+	UlDcchMessagetypeNbChoiceMessageclassextension
+)
+
+type UlDcchMessagetypeNb struct {
+	Choice                uint64
+	C1                    *UlDcchMessagetypeNbC1
+	Messageclassextension *UlDcchMessagetypeNbMessageclassextension
 }
-
-type UlDcchMessagetypeNbC1 struct {
-	Value interface{}
-}
-
-func (*UlDcchMessagetypeNbC1) isUlDcchMessagetypeNb() {}
-
-type UlDcchMessagetypeNbMessageclassextension struct {
-	Value interface{}
-}
-
-func (*UlDcchMessagetypeNbMessageclassextension) isUlDcchMessagetypeNb() {}

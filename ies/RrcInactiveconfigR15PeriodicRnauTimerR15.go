@@ -1,0 +1,20 @@
+package ies
+
+import "rrc/utils"
+
+// RRC-InactiveConfig-r15-periodic-RNAU-timer-r15 ::= ENUMERATED
+type RrcInactiveconfigR15PeriodicRnauTimerR15 struct {
+	Value utils.ENUMERATED
+}
+
+const (
+	RrcInactiveconfigR15PeriodicRnauTimerR15EnumeratedNothing = iota
+	RrcInactiveconfigR15PeriodicRnauTimerR15EnumeratedMin5
+	RrcInactiveconfigR15PeriodicRnauTimerR15EnumeratedMin10
+	RrcInactiveconfigR15PeriodicRnauTimerR15EnumeratedMin20
+	RrcInactiveconfigR15PeriodicRnauTimerR15EnumeratedMin30
+	RrcInactiveconfigR15PeriodicRnauTimerR15EnumeratedMin60
+	RrcInactiveconfigR15PeriodicRnauTimerR15EnumeratedMin120
+	RrcInactiveconfigR15PeriodicRnauTimerR15EnumeratedMin360
+	RrcInactiveconfigR15PeriodicRnauTimerR15EnumeratedMin720
+)

@@ -1,14 +1,12 @@
 package ies
 
-import "rrc/utils"
-
 // RadioResourceConfigDedicated ::= SEQUENCE
 // Extensible
 type Radioresourceconfigdedicated struct {
 	SrbToaddmodlist         *SrbToaddmodlist
 	DrbToaddmodlist         *DrbToaddmodlist
 	DrbToreleaselist        *DrbToreleaselist
-	MacMainconfig           *interface{}
+	MacMainconfig           *RadioresourceconfigdedicatedMacMainconfig
 	SpsConfig               *SpsConfig
 	Physicalconfigdedicated *Physicalconfigdedicated
 }

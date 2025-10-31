@@ -1,0 +1,20 @@
+package ies
+
+import "rrc/utils"
+
+// SC-MCCH-SchedulingInfo-r14-onDurationTimerSCPTM-r14 ::= ENUMERATED
+type ScMcchSchedulinginfoR14OndurationtimerscptmR14 struct {
+	Value utils.ENUMERATED
+}
+
+const (
+	ScMcchSchedulinginfoR14OndurationtimerscptmR14EnumeratedNothing = iota
+	ScMcchSchedulinginfoR14OndurationtimerscptmR14EnumeratedPsf10
+	ScMcchSchedulinginfoR14OndurationtimerscptmR14EnumeratedPsf20
+	ScMcchSchedulinginfoR14OndurationtimerscptmR14EnumeratedPsf100
+	ScMcchSchedulinginfoR14OndurationtimerscptmR14EnumeratedPsf300
+	ScMcchSchedulinginfoR14OndurationtimerscptmR14EnumeratedPsf500
+	ScMcchSchedulinginfoR14OndurationtimerscptmR14EnumeratedPsf1000
+	ScMcchSchedulinginfoR14OndurationtimerscptmR14EnumeratedPsf1200
+	ScMcchSchedulinginfoR14OndurationtimerscptmR14EnumeratedPsf1600
+)

@@ -8,7 +8,8 @@ type TddUlDlAlignmentoffsetNbR15 struct {
 }
 
 const (
-	TddUlDlAlignmentoffsetNbR15Khz7dot5 = 0
-	TddUlDlAlignmentoffsetNbR15Khz0     = 1
-	TddUlDlAlignmentoffsetNbR15Khz7dot5 = 2
+	TddUlDlAlignmentoffsetNbR15EnumeratedNothing = iota
+	TddUlDlAlignmentoffsetNbR15EnumeratedKhz_7dot5
+	TddUlDlAlignmentoffsetNbR15EnumeratedKhz0
+	TddUlDlAlignmentoffsetNbR15EnumeratedKhz7dot5
 )

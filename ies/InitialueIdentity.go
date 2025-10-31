@@ -3,18 +3,14 @@ package ies
 import "rrc/utils"
 
 // InitialUE-Identity ::= CHOICE
-type InitialueIdentity interface {
-	isInitialueIdentity()
+const (
+	InitialueIdentityChoiceNothing = iota
+	InitialueIdentityChoiceSTmsi
+	InitialueIdentityChoiceRandomvalue
+)
+
+type InitialueIdentity struct {
+	Choice      uint64
+	STmsi       *STmsi
+	Randomvalue *utils.BITSTRING `lb:40,ub:40`
 }
-
-type InitialueIdentitySTmsi struct {
-	Value STmsi
-}
-
-func (*InitialueIdentitySTmsi) isInitialueIdentity() {}
-
-type InitialueIdentityRandomvalue struct {
-	Value utils.BITSTRING
-}
-
-func (*InitialueIdentityRandomvalue) isInitialueIdentity() {}

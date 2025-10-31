@@ -1,0 +1,14 @@
+package ies
+
+import "rrc/utils"
+
+// SystemInformationBlockType1-v1310-IEs-bandwidthReducedAccessRelatedInfo-r13-si-HoppingConfigCommon-r13 ::= ENUMERATED
+type Systeminformationblocktype1V1310IesBandwidthreducedaccessrelatedinfoR13SiHoppingconfigcommonR13 struct {
+	Value utils.ENUMERATED
+}
+
+const (
+	Systeminformationblocktype1V1310IesBandwidthreducedaccessrelatedinfoR13SiHoppingconfigcommonR13EnumeratedNothing = iota
+	Systeminformationblocktype1V1310IesBandwidthreducedaccessrelatedinfoR13SiHoppingconfigcommonR13EnumeratedOn
+	Systeminformationblocktype1V1310IesBandwidthreducedaccessrelatedinfoR13SiHoppingconfigcommonR13EnumeratedOff
+)

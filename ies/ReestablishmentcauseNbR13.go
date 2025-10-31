@@ -8,8 +8,9 @@ type ReestablishmentcauseNbR13 struct {
 }
 
 const (
-	ReestablishmentcauseNbR13Reconfigurationfailure = 0
-	ReestablishmentcauseNbR13Otherfailure           = 1
-	ReestablishmentcauseNbR13Spare2                 = 2
-	ReestablishmentcauseNbR13Spare1                 = 3
+	ReestablishmentcauseNbR13EnumeratedNothing = iota
+	ReestablishmentcauseNbR13EnumeratedReconfigurationfailure
+	ReestablishmentcauseNbR13EnumeratedOtherfailure
+	ReestablishmentcauseNbR13EnumeratedSpare2
+	ReestablishmentcauseNbR13EnumeratedSpare1
 )

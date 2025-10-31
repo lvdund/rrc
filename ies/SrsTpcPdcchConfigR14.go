@@ -1,20 +1,14 @@
 package ies
 
-import "rrc/utils"
-
 // SRS-TPC-PDCCH-Config-r14 ::= CHOICE
-type SrsTpcPdcchConfigR14 interface {
-	isSrsTpcPdcchConfigR14()
+const (
+	SrsTpcPdcchConfigR14ChoiceNothing = iota
+	SrsTpcPdcchConfigR14ChoiceRelease
+	SrsTpcPdcchConfigR14ChoiceSetup
+)
+
+type SrsTpcPdcchConfigR14 struct {
+	Choice  uint64
+	Release *struct{}
+	Setup   *SrsTpcPdcchConfigR14Setup
 }
-
-type SrsTpcPdcchConfigR14Release struct {
-	Value struct{}
-}
-
-func (*SrsTpcPdcchConfigR14Release) isSrsTpcPdcchConfigR14() {}
-
-type SrsTpcPdcchConfigR14Setup struct {
-	Value interface{}
-}
-
-func (*SrsTpcPdcchConfigR14Setup) isSrsTpcPdcchConfigR14() {}

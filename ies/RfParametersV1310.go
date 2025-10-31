@@ -1,13 +1,11 @@
 package ies
 
-import "rrc/utils"
-
 // RF-Parameters-v1310 ::= SEQUENCE
 type RfParametersV1310 struct {
-	EnbRequestedparametersR13          *interface{}
-	MaximumccsretrievalR13             *utils.ENUMERATED
-	SkipfallbackcombinationsR13        *utils.ENUMERATED
-	ReducedintnoncontcombR13           *utils.ENUMERATED
+	EnbRequestedparametersR13          *RfParametersV1310EnbRequestedparametersR13
+	MaximumccsretrievalR13             *RfParametersV1310MaximumccsretrievalR13
+	SkipfallbackcombinationsR13        *RfParametersV1310SkipfallbackcombinationsR13
+	ReducedintnoncontcombR13           *RfParametersV1310ReducedintnoncontcombR13
 	SupportedbandlisteutraV1310        *SupportedbandlisteutraV1310
 	SupportedbandcombinationreducedR13 *SupportedbandcombinationreducedR13
 }

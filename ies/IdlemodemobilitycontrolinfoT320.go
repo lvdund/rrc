@@ -1,0 +1,20 @@
+package ies
+
+import "rrc/utils"
+
+// IdleModeMobilityControlInfo-t320 ::= ENUMERATED
+type IdlemodemobilitycontrolinfoT320 struct {
+	Value utils.ENUMERATED
+}
+
+const (
+	IdlemodemobilitycontrolinfoT320EnumeratedNothing = iota
+	IdlemodemobilitycontrolinfoT320EnumeratedMin5
+	IdlemodemobilitycontrolinfoT320EnumeratedMin10
+	IdlemodemobilitycontrolinfoT320EnumeratedMin20
+	IdlemodemobilitycontrolinfoT320EnumeratedMin30
+	IdlemodemobilitycontrolinfoT320EnumeratedMin60
+	IdlemodemobilitycontrolinfoT320EnumeratedMin120
+	IdlemodemobilitycontrolinfoT320EnumeratedMin180
+	IdlemodemobilitycontrolinfoT320EnumeratedSpare1
+)

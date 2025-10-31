@@ -1,7 +1,5 @@
 package ies
 
-import "rrc/utils"
-
 // InterFreqCarrierFreqInfo-r12 ::= SEQUENCE
 // Extensible
 type InterfreqcarrierfreqinfoR12 struct {
@@ -20,9 +18,9 @@ type InterfreqcarrierfreqinfoR12 struct {
 	InterfreqneighcelllistR12   *Interfreqneighcelllist
 	InterfreqblackcelllistR12   *Interfreqblackcelllist
 	QQualminR12                 *QQualminR9
-	ThreshxQR12                 *interface{}
+	ThreshxQR12                 *InterfreqcarrierfreqinfoR12ThreshxQR12
 	QQualminwbR12               *QQualminR9
 	MultibandinfolistR12        *MultibandinfolistR11
-	ReducedmeasperformanceR12   *utils.ENUMERATED
+	ReducedmeasperformanceR12   *bool
 	QQualminrsrqOnallsymbolsR12 *QQualminR9
 }

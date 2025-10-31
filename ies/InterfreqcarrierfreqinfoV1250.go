@@ -1,9 +1,7 @@
 package ies
 
-import "rrc/utils"
-
 // InterFreqCarrierFreqInfo-v1250 ::= SEQUENCE
 type InterfreqcarrierfreqinfoV1250 struct {
-	ReducedmeasperformanceR12   *utils.ENUMERATED
+	ReducedmeasperformanceR12   *bool
 	QQualminrsrqOnallsymbolsR12 *QQualminR9
 }

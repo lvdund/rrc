@@ -1,14 +1,12 @@
 package ies
 
-import "rrc/utils"
-
 // EUTRA-5GC-Parameters-r15 ::= SEQUENCE
 type Eutra5gcParametersR15 struct {
-	Eutra5gcR15                      *utils.ENUMERATED
-	EutraEpcHoEutra5gcR15            *utils.ENUMERATED
-	HoEutra5gcFddTddR15              *utils.ENUMERATED
-	HoInterfreqeutra5gcR15           *utils.ENUMERATED
-	ImsVoiceovermcgBearereutra5gcR15 *utils.ENUMERATED
-	InactivestateR15                 *utils.ENUMERATED
-	ReflectiveqosR15                 *utils.ENUMERATED
+	Eutra5gcR15                      *Eutra5gcParametersR15Eutra5gcR15
+	EutraEpcHoEutra5gcR15            *Eutra5gcParametersR15EutraEpcHoEutra5gcR15
+	HoEutra5gcFddTddR15              *Eutra5gcParametersR15HoEutra5gcFddTddR15
+	HoInterfreqeutra5gcR15           *Eutra5gcParametersR15HoInterfreqeutra5gcR15
+	ImsVoiceovermcgBearereutra5gcR15 *Eutra5gcParametersR15ImsVoiceovermcgBearereutra5gcR15
+	InactivestateR15                 *Eutra5gcParametersR15InactivestateR15
+	ReflectiveqosR15                 *Eutra5gcParametersR15ReflectiveqosR15
 }

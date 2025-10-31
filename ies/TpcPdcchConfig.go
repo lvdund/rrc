@@ -1,20 +1,14 @@
 package ies
 
-import "rrc/utils"
-
 // TPC-PDCCH-Config ::= CHOICE
-type TpcPdcchConfig interface {
-	isTpcPdcchConfig()
+const (
+	TpcPdcchConfigChoiceNothing = iota
+	TpcPdcchConfigChoiceRelease
+	TpcPdcchConfigChoiceSetup
+)
+
+type TpcPdcchConfig struct {
+	Choice  uint64
+	Release *struct{}
+	Setup   *TpcPdcchConfigSetup
 }
-
-type TpcPdcchConfigRelease struct {
-	Value struct{}
-}
-
-func (*TpcPdcchConfigRelease) isTpcPdcchConfig() {}
-
-type TpcPdcchConfigSetup struct {
-	Value interface{}
-}
-
-func (*TpcPdcchConfigSetup) isTpcPdcchConfig() {}

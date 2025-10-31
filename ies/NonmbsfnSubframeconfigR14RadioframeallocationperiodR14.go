@@ -1,0 +1,19 @@
+package ies
+
+import "rrc/utils"
+
+// NonMBSFN-SubframeConfig-r14-radioFrameAllocationPeriod-r14 ::= ENUMERATED
+type NonmbsfnSubframeconfigR14RadioframeallocationperiodR14 struct {
+	Value utils.ENUMERATED
+}
+
+const (
+	NonmbsfnSubframeconfigR14RadioframeallocationperiodR14EnumeratedNothing = iota
+	NonmbsfnSubframeconfigR14RadioframeallocationperiodR14EnumeratedRf4
+	NonmbsfnSubframeconfigR14RadioframeallocationperiodR14EnumeratedRf8
+	NonmbsfnSubframeconfigR14RadioframeallocationperiodR14EnumeratedRf16
+	NonmbsfnSubframeconfigR14RadioframeallocationperiodR14EnumeratedRf32
+	NonmbsfnSubframeconfigR14RadioframeallocationperiodR14EnumeratedRf64
+	NonmbsfnSubframeconfigR14RadioframeallocationperiodR14EnumeratedRf128
+	NonmbsfnSubframeconfigR14RadioframeallocationperiodR14EnumeratedRf512
+)

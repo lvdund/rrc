@@ -1,0 +1,20 @@
+package ies
+
+import "rrc/utils"
+
+// UplinkPowerControlCommon-v1310-deltaF-PUCCH-Format4-r13 ::= ENUMERATED
+type UplinkpowercontrolcommonV1310DeltafPucchFormat4R13 struct {
+	Value utils.ENUMERATED
+}
+
+const (
+	UplinkpowercontrolcommonV1310DeltafPucchFormat4R13EnumeratedNothing = iota
+	UplinkpowercontrolcommonV1310DeltafPucchFormat4R13EnumeratedDeltaf16
+	UplinkpowercontrolcommonV1310DeltafPucchFormat4R13EnumeratedDeltaf15
+	UplinkpowercontrolcommonV1310DeltafPucchFormat4R13EnumeratedDeltaf14
+	UplinkpowercontrolcommonV1310DeltafPucchFormat4R13EnumeratedDeltaf13
+	UplinkpowercontrolcommonV1310DeltafPucchFormat4R13EnumeratedDeltaf12
+	UplinkpowercontrolcommonV1310DeltafPucchFormat4R13EnumeratedDeltaf11
+	UplinkpowercontrolcommonV1310DeltafPucchFormat4R13EnumeratedDeltaf10
+	UplinkpowercontrolcommonV1310DeltafPucchFormat4R13EnumeratedSpare1
+)

@@ -1,10 +1,8 @@
 package ies
 
-import "rrc/utils"
-
 // MeasParameters-v1630 ::= SEQUENCE
 type MeasparametersV1630 struct {
-	NrIdleinactivebeammeasfr1R16 *utils.ENUMERATED
-	NrIdleinactivebeammeasfr2R16 *utils.ENUMERATED
-	CeMeasrssDedicatedsamerbsR16 *utils.ENUMERATED
+	NrIdleinactivebeammeasfr1R16 *MeasparametersV1630NrIdleinactivebeammeasfr1R16
+	NrIdleinactivebeammeasfr2R16 *MeasparametersV1630NrIdleinactivebeammeasfr2R16
+	CeMeasrssDedicatedsamerbsR16 *MeasparametersV1630CeMeasrssDedicatedsamerbsR16
 }

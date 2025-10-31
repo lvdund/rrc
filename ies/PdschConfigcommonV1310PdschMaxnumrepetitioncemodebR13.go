@@ -1,0 +1,20 @@
+package ies
+
+import "rrc/utils"
+
+// PDSCH-ConfigCommon-v1310-pdsch-maxNumRepetitionCEmodeB-r13 ::= ENUMERATED
+type PdschConfigcommonV1310PdschMaxnumrepetitioncemodebR13 struct {
+	Value utils.ENUMERATED
+}
+
+const (
+	PdschConfigcommonV1310PdschMaxnumrepetitioncemodebR13EnumeratedNothing = iota
+	PdschConfigcommonV1310PdschMaxnumrepetitioncemodebR13EnumeratedR192
+	PdschConfigcommonV1310PdschMaxnumrepetitioncemodebR13EnumeratedR256
+	PdschConfigcommonV1310PdschMaxnumrepetitioncemodebR13EnumeratedR384
+	PdschConfigcommonV1310PdschMaxnumrepetitioncemodebR13EnumeratedR512
+	PdschConfigcommonV1310PdschMaxnumrepetitioncemodebR13EnumeratedR768
+	PdschConfigcommonV1310PdschMaxnumrepetitioncemodebR13EnumeratedR1024
+	PdschConfigcommonV1310PdschMaxnumrepetitioncemodebR13EnumeratedR1536
+	PdschConfigcommonV1310PdschMaxnumrepetitioncemodebR13EnumeratedR2048
+)

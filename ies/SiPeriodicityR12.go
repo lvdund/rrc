@@ -8,11 +8,12 @@ type SiPeriodicityR12 struct {
 }
 
 const (
-	SiPeriodicityR12Rf8   = 0
-	SiPeriodicityR12Rf16  = 1
-	SiPeriodicityR12Rf32  = 2
-	SiPeriodicityR12Rf64  = 3
-	SiPeriodicityR12Rf128 = 4
-	SiPeriodicityR12Rf256 = 5
-	SiPeriodicityR12Rf512 = 6
+	SiPeriodicityR12EnumeratedNothing = iota
+	SiPeriodicityR12EnumeratedRf8
+	SiPeriodicityR12EnumeratedRf16
+	SiPeriodicityR12EnumeratedRf32
+	SiPeriodicityR12EnumeratedRf64
+	SiPeriodicityR12EnumeratedRf128
+	SiPeriodicityR12EnumeratedRf256
+	SiPeriodicityR12EnumeratedRf512
 )

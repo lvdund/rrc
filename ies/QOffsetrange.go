@@ -1,0 +1,43 @@
+package ies
+
+import "rrc/utils"
+
+// Q-OffsetRange ::= ENUMERATED
+type QOffsetrange struct {
+	Value utils.ENUMERATED
+}
+
+const (
+	QOffsetrangeEnumeratedNothing = iota
+	QOffsetrangeEnumeratedDb_24
+	QOffsetrangeEnumeratedDb_22
+	QOffsetrangeEnumeratedDb_20
+	QOffsetrangeEnumeratedDb_18
+	QOffsetrangeEnumeratedDb_16
+	QOffsetrangeEnumeratedDb_14
+	QOffsetrangeEnumeratedDb_12
+	QOffsetrangeEnumeratedDb_10
+	QOffsetrangeEnumeratedDb_8
+	QOffsetrangeEnumeratedDb_6
+	QOffsetrangeEnumeratedDb_5
+	QOffsetrangeEnumeratedDb_4
+	QOffsetrangeEnumeratedDb_3
+	QOffsetrangeEnumeratedDb_2
+	QOffsetrangeEnumeratedDb_1
+	QOffsetrangeEnumeratedDb0
+	QOffsetrangeEnumeratedDb1
+	QOffsetrangeEnumeratedDb2
+	QOffsetrangeEnumeratedDb3
+	QOffsetrangeEnumeratedDb4
+	QOffsetrangeEnumeratedDb5
+	QOffsetrangeEnumeratedDb6
+	QOffsetrangeEnumeratedDb8
+	QOffsetrangeEnumeratedDb10
+	QOffsetrangeEnumeratedDb12
+	QOffsetrangeEnumeratedDb14
+	QOffsetrangeEnumeratedDb16
+	QOffsetrangeEnumeratedDb18
+	QOffsetrangeEnumeratedDb20
+	QOffsetrangeEnumeratedDb22
+	QOffsetrangeEnumeratedDb24
+)

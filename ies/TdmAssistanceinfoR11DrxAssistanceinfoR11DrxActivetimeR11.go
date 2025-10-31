@@ -1,0 +1,20 @@
+package ies
+
+import "rrc/utils"
+
+// TDM-AssistanceInfo-r11-drx-AssistanceInfo-r11-drx-ActiveTime-r11 ::= ENUMERATED
+type TdmAssistanceinfoR11DrxAssistanceinfoR11DrxActivetimeR11 struct {
+	Value utils.ENUMERATED
+}
+
+const (
+	TdmAssistanceinfoR11DrxAssistanceinfoR11DrxActivetimeR11EnumeratedNothing = iota
+	TdmAssistanceinfoR11DrxAssistanceinfoR11DrxActivetimeR11EnumeratedSf20
+	TdmAssistanceinfoR11DrxAssistanceinfoR11DrxActivetimeR11EnumeratedSf30
+	TdmAssistanceinfoR11DrxAssistanceinfoR11DrxActivetimeR11EnumeratedSf40
+	TdmAssistanceinfoR11DrxAssistanceinfoR11DrxActivetimeR11EnumeratedSf60
+	TdmAssistanceinfoR11DrxAssistanceinfoR11DrxActivetimeR11EnumeratedSf80
+	TdmAssistanceinfoR11DrxAssistanceinfoR11DrxActivetimeR11EnumeratedSf100
+	TdmAssistanceinfoR11DrxAssistanceinfoR11DrxActivetimeR11EnumeratedSpare2
+	TdmAssistanceinfoR11DrxAssistanceinfoR11DrxActivetimeR11EnumeratedSpare1
+)

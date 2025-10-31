@@ -1,9 +1,7 @@
 package ies
 
-import "rrc/utils"
-
 // PLMN-IdentityList2 ::= SEQUENCE OF PLMN-Identity
 // SIZE (1..5)
 type PlmnIdentitylist2 struct {
-	Value []PlmnIdentity
+	Value []PlmnIdentity `lb:1,ub:5`
 }

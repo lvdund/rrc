@@ -2,8 +2,7 @@ package ies
 
 import "rrc/utils"
 
-// GWUS-GroupsForServiceList-NB-r16 ::= SEQUENCE OF INTEGER
-// SIZE (1..maxGWUS-ProbThresholds-NB-r16)
+// GWUS-GroupsForServiceList-NB-r16 ::= SEQUENCE OF utils.INTEGER // SIZE (1..maxGWUS-ProbThresholds-NB-r16)
 type GwusGroupsforservicelistNbR16 struct {
-	Value []Integer
+	Value []utils.INTEGER `lb:1,ub:maxGWUSProbthresholdsNbR16`
 }

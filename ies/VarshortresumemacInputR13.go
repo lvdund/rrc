@@ -7,5 +7,5 @@ type VarshortresumemacInputR13 struct {
 	CellidentityR13        Cellidentity
 	PhyscellidR13          Physcellid
 	CRntiR13               CRnti
-	ResumediscriminatorR13 utils.BITSTRING
+	ResumediscriminatorR13 utils.BITSTRING `lb:1,ub:1`
 }

@@ -1,0 +1,14 @@
+package ies
+
+// CrossCarrierSchedulingConfig-r13-schedulingCellInfo-r13 ::= CHOICE
+const (
+	CrosscarrierschedulingconfigR13SchedulingcellinfoR13ChoiceNothing = iota
+	CrosscarrierschedulingconfigR13SchedulingcellinfoR13ChoiceOwnR13
+	CrosscarrierschedulingconfigR13SchedulingcellinfoR13ChoiceOtherR13
+)
+
+type CrosscarrierschedulingconfigR13SchedulingcellinfoR13 struct {
+	Choice   uint64
+	OwnR13   *CrosscarrierschedulingconfigR13SchedulingcellinfoR13OwnR13
+	OtherR13 *CrosscarrierschedulingconfigR13SchedulingcellinfoR13OtherR13
+}

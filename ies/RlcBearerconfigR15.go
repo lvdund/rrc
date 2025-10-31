@@ -1,20 +1,14 @@
 package ies
 
-import "rrc/utils"
-
 // RLC-BearerConfig-r15 ::= CHOICE
-type RlcBearerconfigR15 interface {
-	isRlcBearerconfigR15()
+const (
+	RlcBearerconfigR15ChoiceNothing = iota
+	RlcBearerconfigR15ChoiceRelease
+	RlcBearerconfigR15ChoiceSetup
+)
+
+type RlcBearerconfigR15 struct {
+	Choice  uint64
+	Release *struct{}
+	Setup   *RlcBearerconfigR15Setup
 }
-
-type RlcBearerconfigR15Release struct {
-	Value struct{}
-}
-
-func (*RlcBearerconfigR15Release) isRlcBearerconfigR15() {}
-
-type RlcBearerconfigR15Setup struct {
-	Value interface{}
-}
-
-func (*RlcBearerconfigR15Setup) isRlcBearerconfigR15() {}

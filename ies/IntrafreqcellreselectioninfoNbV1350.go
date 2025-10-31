@@ -4,5 +4,5 @@ import "rrc/utils"
 
 // IntraFreqCellReselectionInfo-NB-v1350 ::= SEQUENCE
 type IntrafreqcellreselectioninfoNbV1350 struct {
-	DeltaRxlevminV1350 utils.INTEGER
+	DeltaRxlevminV1350 utils.INTEGER `lb:0,ub:-1`
 }

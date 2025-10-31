@@ -1,0 +1,20 @@
+package ies
+
+import "rrc/utils"
+
+// SecurityAlgorithmConfig-integrityProtAlgorithm ::= utils.ENUMERATED // Extensible
+type SecurityalgorithmconfigIntegrityprotalgorithm struct {
+	Value utils.ENUMERATED
+}
+
+const (
+	SecurityalgorithmconfigIntegrityprotalgorithmEnumeratedNothing = iota
+	SecurityalgorithmconfigIntegrityprotalgorithmEnumeratedEia0_V920
+	SecurityalgorithmconfigIntegrityprotalgorithmEnumeratedEia1
+	SecurityalgorithmconfigIntegrityprotalgorithmEnumeratedEia2
+	SecurityalgorithmconfigIntegrityprotalgorithmEnumeratedEia3_V1130
+	SecurityalgorithmconfigIntegrityprotalgorithmEnumeratedSpare4
+	SecurityalgorithmconfigIntegrityprotalgorithmEnumeratedSpare3
+	SecurityalgorithmconfigIntegrityprotalgorithmEnumeratedSpare2
+	SecurityalgorithmconfigIntegrityprotalgorithmEnumeratedSpare1
+)

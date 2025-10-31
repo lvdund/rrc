@@ -1,7 +1,5 @@
 package ies
 
-import "rrc/utils"
-
 // RadioResourceConfigCommon ::= SEQUENCE
 // Extensible
 type Radioresourceconfigcommon struct {

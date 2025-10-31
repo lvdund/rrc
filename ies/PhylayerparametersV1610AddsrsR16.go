@@ -1,0 +1,8 @@
+package ies
+
+// PhyLayerParameters-v1610-addSRS-r16 ::= SEQUENCE
+type PhylayerparametersV1610AddsrsR16 struct {
+	AddsrsFrequencyhoppingR16 *PhylayerparametersV1610AddsrsR16AddsrsFrequencyhoppingR16
+	AddsrsAntennaswitchingR16 *PhylayerparametersV1610AddsrsR16AddsrsAntennaswitchingR16
+	AddsrsCarrierswitchingR16 *PhylayerparametersV1610AddsrsR16AddsrsCarrierswitchingR16
+}

@@ -8,20 +8,21 @@ type Pollbyte struct {
 }
 
 const (
-	PollbyteKb25       = 0
-	PollbyteKb50       = 1
-	PollbyteKb75       = 2
-	PollbyteKb100      = 3
-	PollbyteKb125      = 4
-	PollbyteKb250      = 5
-	PollbyteKb375      = 6
-	PollbyteKb500      = 7
-	PollbyteKb750      = 8
-	PollbyteKb1000     = 9
-	PollbyteKb1250     = 10
-	PollbyteKb1500     = 11
-	PollbyteKb2000     = 12
-	PollbyteKb3000     = 13
-	PollbyteKbinfinity = 14
-	PollbyteSpare1     = 15
+	PollbyteEnumeratedNothing = iota
+	PollbyteEnumeratedKb25
+	PollbyteEnumeratedKb50
+	PollbyteEnumeratedKb75
+	PollbyteEnumeratedKb100
+	PollbyteEnumeratedKb125
+	PollbyteEnumeratedKb250
+	PollbyteEnumeratedKb375
+	PollbyteEnumeratedKb500
+	PollbyteEnumeratedKb750
+	PollbyteEnumeratedKb1000
+	PollbyteEnumeratedKb1250
+	PollbyteEnumeratedKb1500
+	PollbyteEnumeratedKb2000
+	PollbyteEnumeratedKb3000
+	PollbyteEnumeratedKbinfinity
+	PollbyteEnumeratedSpare1
 )

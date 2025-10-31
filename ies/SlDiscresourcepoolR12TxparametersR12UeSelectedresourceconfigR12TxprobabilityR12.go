@@ -1,0 +1,16 @@
+package ies
+
+import "rrc/utils"
+
+// SL-DiscResourcePool-r12-txParameters-r12-ue-SelectedResourceConfig-r12-txProbability-r12 ::= ENUMERATED
+type SlDiscresourcepoolR12TxparametersR12UeSelectedresourceconfigR12TxprobabilityR12 struct {
+	Value utils.ENUMERATED
+}
+
+const (
+	SlDiscresourcepoolR12TxparametersR12UeSelectedresourceconfigR12TxprobabilityR12EnumeratedNothing = iota
+	SlDiscresourcepoolR12TxparametersR12UeSelectedresourceconfigR12TxprobabilityR12EnumeratedP25
+	SlDiscresourcepoolR12TxparametersR12UeSelectedresourceconfigR12TxprobabilityR12EnumeratedP50
+	SlDiscresourcepoolR12TxparametersR12UeSelectedresourceconfigR12TxprobabilityR12EnumeratedP75
+	SlDiscresourcepoolR12TxparametersR12UeSelectedresourceconfigR12TxprobabilityR12EnumeratedP100
+)

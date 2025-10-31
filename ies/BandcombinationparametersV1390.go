@@ -1,8 +1,6 @@
 package ies
 
-import "rrc/utils"
-
 // BandCombinationParameters-v1390 ::= SEQUENCE
 type BandcombinationparametersV1390 struct {
-	UeCaPowerclassNR13 *utils.ENUMERATED
+	UeCaPowerclassNR13 *BandcombinationparametersV1390UeCaPowerclassNR13
 }

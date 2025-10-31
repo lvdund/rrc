@@ -1,7 +1,5 @@
 package ies
 
-import "rrc/utils"
-
 // AS-Config-v1430 ::= SEQUENCE
 type AsConfigV1430 struct {
 	SourceslV2xCommconfigR14 *SlV2xConfigdedicatedR14

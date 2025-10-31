@@ -1,7 +1,5 @@
 package ies
 
-import "rrc/utils"
-
 // WLAN-OffloadInfoPerPLMN-r12 ::= SEQUENCE
 // Extensible
 type WlanOffloadinfoperplmnR12 struct {

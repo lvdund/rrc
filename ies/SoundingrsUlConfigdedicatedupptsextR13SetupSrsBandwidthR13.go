@@ -1,0 +1,16 @@
+package ies
+
+import "rrc/utils"
+
+// SoundingRS-UL-ConfigDedicatedUpPTsExt-r13-setup-srs-Bandwidth-r13 ::= ENUMERATED
+type SoundingrsUlConfigdedicatedupptsextR13SetupSrsBandwidthR13 struct {
+	Value utils.ENUMERATED
+}
+
+const (
+	SoundingrsUlConfigdedicatedupptsextR13SetupSrsBandwidthR13EnumeratedNothing = iota
+	SoundingrsUlConfigdedicatedupptsextR13SetupSrsBandwidthR13EnumeratedBw0
+	SoundingrsUlConfigdedicatedupptsextR13SetupSrsBandwidthR13EnumeratedBw1
+	SoundingrsUlConfigdedicatedupptsextR13SetupSrsBandwidthR13EnumeratedBw2
+	SoundingrsUlConfigdedicatedupptsextR13SetupSrsBandwidthR13EnumeratedBw3
+)

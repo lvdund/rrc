@@ -1,20 +1,14 @@
 package ies
 
-import "rrc/utils"
-
 // SI-OrPSI-GERAN ::= CHOICE
-type SiOrpsiGeran interface {
-	isSiOrpsiGeran()
+const (
+	SiOrpsiGeranChoiceNothing = iota
+	SiOrpsiGeranChoiceSi
+	SiOrpsiGeranChoicePsi
+)
+
+type SiOrpsiGeran struct {
+	Choice uint64
+	Si     *Systeminfolistgeran
+	Psi    *Systeminfolistgeran
 }
-
-type SiOrpsiGeranSi struct {
-	Value Systeminfolistgeran
-}
-
-func (*SiOrpsiGeranSi) isSiOrpsiGeran() {}
-
-type SiOrpsiGeranPsi struct {
-	Value Systeminfolistgeran
-}
-
-func (*SiOrpsiGeranPsi) isSiOrpsiGeran() {}

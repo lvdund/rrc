@@ -2,7 +2,7 @@ package ies
 
 import "rrc/utils"
 
-// P-Max ::= INTEGER (-30..33)
+// P-Max ::= utils.INTEGER (-30..33)
 type PMax struct {
-	Value utils.INTEGER
+	Value utils.INTEGER `lb:0,ub:33`
 }

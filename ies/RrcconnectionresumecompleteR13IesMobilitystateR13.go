@@ -1,0 +1,16 @@
+package ies
+
+import "rrc/utils"
+
+// RRCConnectionResumeComplete-r13-IEs-mobilityState-r13 ::= ENUMERATED
+type RrcconnectionresumecompleteR13IesMobilitystateR13 struct {
+	Value utils.ENUMERATED
+}
+
+const (
+	RrcconnectionresumecompleteR13IesMobilitystateR13EnumeratedNothing = iota
+	RrcconnectionresumecompleteR13IesMobilitystateR13EnumeratedNormal
+	RrcconnectionresumecompleteR13IesMobilitystateR13EnumeratedMedium
+	RrcconnectionresumecompleteR13IesMobilitystateR13EnumeratedHigh
+	RrcconnectionresumecompleteR13IesMobilitystateR13EnumeratedSpare
+)

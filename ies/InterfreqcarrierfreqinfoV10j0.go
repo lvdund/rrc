@@ -1,7 +1,5 @@
 package ies
 
-import "rrc/utils"
-
 // InterFreqCarrierFreqInfo-v10j0 ::= SEQUENCE
 type InterfreqcarrierfreqinfoV10j0 struct {
 	FreqbandinfoR10        *NsPmaxlistR10

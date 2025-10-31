@@ -1,0 +1,18 @@
+package ies
+
+import "rrc/utils"
+
+// SL-DiscSysInfoReport-r13-freqInfo-r13-ul-Bandwidth-r13 ::= ENUMERATED
+type SlDiscsysinforeportR13FreqinfoR13UlBandwidthR13 struct {
+	Value utils.ENUMERATED
+}
+
+const (
+	SlDiscsysinforeportR13FreqinfoR13UlBandwidthR13EnumeratedNothing = iota
+	SlDiscsysinforeportR13FreqinfoR13UlBandwidthR13EnumeratedN6
+	SlDiscsysinforeportR13FreqinfoR13UlBandwidthR13EnumeratedN15
+	SlDiscsysinforeportR13FreqinfoR13UlBandwidthR13EnumeratedN25
+	SlDiscsysinforeportR13FreqinfoR13UlBandwidthR13EnumeratedN50
+	SlDiscsysinforeportR13FreqinfoR13UlBandwidthR13EnumeratedN75
+	SlDiscsysinforeportR13FreqinfoR13UlBandwidthR13EnumeratedN100
+)

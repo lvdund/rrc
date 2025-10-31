@@ -4,7 +4,7 @@ import "rrc/utils"
 
 // MBSFN-SubframeConfig ::= SEQUENCE
 type MbsfnSubframeconfig struct {
-	Radioframeallocationperiod utils.ENUMERATED
-	Radioframeallocationoffset utils.INTEGER
-	Subframeallocation         interface{}
+	Radioframeallocationperiod MbsfnSubframeconfigRadioframeallocationperiod
+	Radioframeallocationoffset utils.INTEGER `lb:0,ub:7`
+	Subframeallocation         MbsfnSubframeconfigSubframeallocation
 }

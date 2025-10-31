@@ -8,20 +8,21 @@ type PollpduR15 struct {
 }
 
 const (
-	PollpduR15P4        = 0
-	PollpduR15P8        = 1
-	PollpduR15P16       = 2
-	PollpduR15P32       = 3
-	PollpduR15P64       = 4
-	PollpduR15P128      = 5
-	PollpduR15P256      = 6
-	PollpduR15P512      = 7
-	PollpduR15P1024     = 8
-	PollpduR15P2048R15  = 9
-	PollpduR15P4096R15  = 10
-	PollpduR15P6144R15  = 11
-	PollpduR15P8192R15  = 12
-	PollpduR15P12288R15 = 13
-	PollpduR15P16384R15 = 14
-	PollpduR15Pinfinity = 15
+	PollpduR15EnumeratedNothing = iota
+	PollpduR15EnumeratedP4
+	PollpduR15EnumeratedP8
+	PollpduR15EnumeratedP16
+	PollpduR15EnumeratedP32
+	PollpduR15EnumeratedP64
+	PollpduR15EnumeratedP128
+	PollpduR15EnumeratedP256
+	PollpduR15EnumeratedP512
+	PollpduR15EnumeratedP1024
+	PollpduR15EnumeratedP2048_R15
+	PollpduR15EnumeratedP4096_R15
+	PollpduR15EnumeratedP6144_R15
+	PollpduR15EnumeratedP8192_R15
+	PollpduR15EnumeratedP12288_R15
+	PollpduR15EnumeratedP16384_R15
+	PollpduR15EnumeratedPinfinity
 )

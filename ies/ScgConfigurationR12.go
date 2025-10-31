@@ -1,21 +1,15 @@
 package ies
 
-import "rrc/utils"
-
 // SCG-Configuration-r12 ::= CHOICE
 // Extensible
-type ScgConfigurationR12 interface {
-	isScgConfigurationR12()
+const (
+	ScgConfigurationR12ChoiceNothing = iota
+	ScgConfigurationR12ChoiceRelease
+	ScgConfigurationR12ChoiceSetup
+)
+
+type ScgConfigurationR12 struct {
+	Choice  uint64
+	Release *struct{}
+	Setup   *ScgConfigurationR12Setup
 }
-
-type ScgConfigurationR12Release struct {
-	Value struct{}
-}
-
-func (*ScgConfigurationR12Release) isScgConfigurationR12() {}
-
-type ScgConfigurationR12Setup struct {
-	Value interface{}
-}
-
-func (*ScgConfigurationR12Setup) isScgConfigurationR12() {}

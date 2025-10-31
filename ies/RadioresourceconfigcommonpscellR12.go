@@ -1,7 +1,5 @@
 package ies
 
-import "rrc/utils"
-
 // RadioResourceConfigCommonPSCell-r12 ::= SEQUENCE
 // Extensible
 type RadioresourceconfigcommonpscellR12 struct {

@@ -6,12 +6,12 @@ import "rrc/utils"
 // Extensible
 type PurConfigNbR16 struct {
 	PurConfigidR16             *PurConfigidNbR16
-	PurTimealignmenttimerR16   *utils.INTEGER
-	PurNrsrpChangethresholdR16 *Setuprelease
-	PurImplicitreleaseafterR16 *utils.ENUMERATED
+	PurTimealignmenttimerR16   *utils.INTEGER `lb:0,ub:8`
+	PurNrsrpChangethresholdR16 *SetupreleasePurNrsrpChangethresholdR16
+	PurImplicitreleaseafterR16 *PurConfigNbR16PurImplicitreleaseafterR16
 	PurRntiR16                 *CRnti
-	PurResponsewindowtimerR16  *utils.ENUMERATED
-	PurStarttimeparametersR16  *interface{}
-	PurNumoccasionsR16         utils.ENUMERATED
-	PurPhysicalconfigR16       *interface{}
+	PurResponsewindowtimerR16  *PurConfigNbR16PurResponsewindowtimerR16
+	PurStarttimeparametersR16  *PurConfigNbR16PurStarttimeparametersR16
+	PurNumoccasionsR16         PurConfigNbR16PurNumoccasionsR16
+	PurPhysicalconfigR16       *PurConfigNbR16PurPhysicalconfigR16
 }

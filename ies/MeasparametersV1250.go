@@ -1,16 +1,14 @@
 package ies
 
-import "rrc/utils"
-
 // MeasParameters-v1250 ::= SEQUENCE
 type MeasparametersV1250 struct {
-	Timert312R12                 *utils.ENUMERATED
-	AlternativetimetotriggerR12  *utils.ENUMERATED
-	IncmoneutraR12               *utils.ENUMERATED
-	IncmonutraR12                *utils.ENUMERATED
-	ExtendedmaxmeasidR12         *utils.ENUMERATED
-	ExtendedrsrqLowerrangeR12    *utils.ENUMERATED
-	RsrqOnallsymbolsR12          *utils.ENUMERATED
-	CrsDiscoverysignalsmeasR12   *utils.ENUMERATED
-	CsiRsDiscoverysignalsmeasR12 *utils.ENUMERATED
+	Timert312R12                 *MeasparametersV1250Timert312R12
+	AlternativetimetotriggerR12  *MeasparametersV1250AlternativetimetotriggerR12
+	IncmoneutraR12               *MeasparametersV1250IncmoneutraR12
+	IncmonutraR12                *MeasparametersV1250IncmonutraR12
+	ExtendedmaxmeasidR12         *MeasparametersV1250ExtendedmaxmeasidR12
+	ExtendedrsrqLowerrangeR12    *MeasparametersV1250ExtendedrsrqLowerrangeR12
+	RsrqOnallsymbolsR12          *MeasparametersV1250RsrqOnallsymbolsR12
+	CrsDiscoverysignalsmeasR12   *MeasparametersV1250CrsDiscoverysignalsmeasR12
+	CsiRsDiscoverysignalsmeasR12 *MeasparametersV1250CsiRsDiscoverysignalsmeasR12
 }

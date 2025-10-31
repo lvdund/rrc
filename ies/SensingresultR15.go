@@ -4,5 +4,5 @@ import "rrc/utils"
 
 // SensingResult-r15 ::= SEQUENCE
 type SensingresultR15 struct {
-	ResourceindexR15 utils.INTEGER
+	ResourceindexR15 utils.INTEGER `lb:0,ub:2000`
 }

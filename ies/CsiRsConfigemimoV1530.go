@@ -1,20 +1,14 @@
 package ies
 
-import "rrc/utils"
-
 // CSI-RS-ConfigEMIMO-v1530 ::= CHOICE
-type CsiRsConfigemimoV1530 interface {
-	isCsiRsConfigemimoV1530()
+const (
+	CsiRsConfigemimoV1530ChoiceNothing = iota
+	CsiRsConfigemimoV1530ChoiceRelease
+	CsiRsConfigemimoV1530ChoiceSetup
+)
+
+type CsiRsConfigemimoV1530 struct {
+	Choice  uint64
+	Release *struct{}
+	Setup   *CsiRsConfigemimoV1530Setup
 }
-
-type CsiRsConfigemimoV1530Release struct {
-	Value struct{}
-}
-
-func (*CsiRsConfigemimoV1530Release) isCsiRsConfigemimoV1530() {}
-
-type CsiRsConfigemimoV1530Setup struct {
-	Value interface{}
-}
-
-func (*CsiRsConfigemimoV1530Setup) isCsiRsConfigemimoV1530() {}

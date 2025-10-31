@@ -2,7 +2,7 @@ package ies
 
 import "rrc/utils"
 
-// FeatureSetDL-PerCC-Id-r15 ::= INTEGER (0..maxPerCC-FeatureSets-r15)
+// FeatureSetDL-PerCC-Id-r15 ::= utils.INTEGER (0..maxPerCC-FeatureSets-r15)
 type FeaturesetdlPerccIdR15 struct {
-	Value utils.INTEGER
+	Value utils.INTEGER `lb:0,ub:maxPerCCFeaturesetsR15`
 }

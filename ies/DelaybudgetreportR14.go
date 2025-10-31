@@ -3,18 +3,14 @@ package ies
 import "rrc/utils"
 
 // DelayBudgetReport-r14 ::= CHOICE
-type DelaybudgetreportR14 interface {
-	isDelaybudgetreportR14()
+const (
+	DelaybudgetreportR14ChoiceNothing = iota
+	DelaybudgetreportR14ChoiceType1
+	DelaybudgetreportR14ChoiceType2
+)
+
+type DelaybudgetreportR14 struct {
+	Choice uint64
+	Type1  *utils.ENUMERATED
+	Type2  *utils.ENUMERATED
 }
-
-type DelaybudgetreportR14Type1 struct {
-	Value utils.ENUMERATED
-}
-
-func (*DelaybudgetreportR14Type1) isDelaybudgetreportR14() {}
-
-type DelaybudgetreportR14Type2 struct {
-	Value utils.ENUMERATED
-}
-
-func (*DelaybudgetreportR14Type2) isDelaybudgetreportR14() {}

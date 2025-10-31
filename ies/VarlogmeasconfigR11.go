@@ -1,7 +1,5 @@
 package ies
 
-import "rrc/utils"
-
 // VarLogMeasConfig-r11 ::= SEQUENCE
 type VarlogmeasconfigR11 struct {
 	AreaconfigurationR10   *AreaconfigurationR10

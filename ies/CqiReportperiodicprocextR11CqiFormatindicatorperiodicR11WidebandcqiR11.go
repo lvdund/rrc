@@ -1,0 +1,6 @@
+package ies
+
+// CQI-ReportPeriodicProcExt-r11-cqi-FormatIndicatorPeriodic-r11-widebandCQI-r11 ::= SEQUENCE
+type CqiReportperiodicprocextR11CqiFormatindicatorperiodicR11WidebandcqiR11 struct {
+	CsiReportmodeR11 *CqiReportperiodicprocextR11CqiFormatindicatorperiodicR11WidebandcqiR11CsiReportmodeR11
+}

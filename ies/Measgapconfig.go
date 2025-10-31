@@ -1,21 +1,15 @@
 package ies
 
-import "rrc/utils"
-
 // MeasGapConfig ::= CHOICE
 // Extensible
-type Measgapconfig interface {
-	isMeasgapconfig()
+const (
+	MeasgapconfigChoiceNothing = iota
+	MeasgapconfigChoiceRelease
+	MeasgapconfigChoiceSetup
+)
+
+type Measgapconfig struct {
+	Choice  uint64
+	Release *struct{}
+	Setup   *MeasgapconfigSetup
 }
-
-type MeasgapconfigRelease struct {
-	Value struct{}
-}
-
-func (*MeasgapconfigRelease) isMeasgapconfig() {}
-
-type MeasgapconfigSetup struct {
-	Value interface{}
-}
-
-func (*MeasgapconfigSetup) isMeasgapconfig() {}

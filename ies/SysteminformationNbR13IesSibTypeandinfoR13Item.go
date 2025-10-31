@@ -1,0 +1,33 @@
+package ies
+
+// SystemInformation-NB-r13-IEs-sib-TypeAndInfo-r13-Item ::= CHOICE
+// Extensible
+const (
+	SysteminformationNbR13IesSibTypeandinfoR13ItemChoiceNothing = iota
+	SysteminformationNbR13IesSibTypeandinfoR13ItemChoiceSib2R13
+	SysteminformationNbR13IesSibTypeandinfoR13ItemChoiceSib3R13
+	SysteminformationNbR13IesSibTypeandinfoR13ItemChoiceSib4R13
+	SysteminformationNbR13IesSibTypeandinfoR13ItemChoiceSib5R13
+	SysteminformationNbR13IesSibTypeandinfoR13ItemChoiceSib14R13
+	SysteminformationNbR13IesSibTypeandinfoR13ItemChoiceSib16R13
+	SysteminformationNbR13IesSibTypeandinfoR13ItemChoiceSib15V1430
+	SysteminformationNbR13IesSibTypeandinfoR13ItemChoiceSib20V1430
+	SysteminformationNbR13IesSibTypeandinfoR13ItemChoiceSib22V1430
+	SysteminformationNbR13IesSibTypeandinfoR13ItemChoiceSib23V1530
+	SysteminformationNbR13IesSibTypeandinfoR13ItemChoiceSib27V1610
+)
+
+type SysteminformationNbR13IesSibTypeandinfoR13Item struct {
+	Choice     uint64
+	Sib2R13    *Systeminformationblocktype2NbR13
+	Sib3R13    *Systeminformationblocktype3NbR13
+	Sib4R13    *Systeminformationblocktype4NbR13
+	Sib5R13    *Systeminformationblocktype5NbR13
+	Sib14R13   *Systeminformationblocktype14NbR13
+	Sib16R13   *Systeminformationblocktype16NbR13
+	Sib15V1430 *Systeminformationblocktype15NbR14
+	Sib20V1430 *Systeminformationblocktype20NbR14
+	Sib22V1430 *Systeminformationblocktype22NbR14
+	Sib23V1530 *Systeminformationblocktype23NbR15
+	Sib27V1610 *Systeminformationblocktype27NbR16
+}

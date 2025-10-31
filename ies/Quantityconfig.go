@@ -1,7 +1,5 @@
 package ies
 
-import "rrc/utils"
-
 // QuantityConfig ::= SEQUENCE
 // Extensible
 type Quantityconfig struct {

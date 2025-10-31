@@ -1,20 +1,14 @@
 package ies
 
-import "rrc/utils"
-
 // SCG-Configuration-v13c0 ::= CHOICE
-type ScgConfigurationV13c0 interface {
-	isScgConfigurationV13c0()
+const (
+	ScgConfigurationV13c0ChoiceNothing = iota
+	ScgConfigurationV13c0ChoiceRelease
+	ScgConfigurationV13c0ChoiceSetup
+)
+
+type ScgConfigurationV13c0 struct {
+	Choice  uint64
+	Release *struct{}
+	Setup   *ScgConfigurationV13c0Setup
 }
-
-type ScgConfigurationV13c0Release struct {
-	Value struct{}
-}
-
-func (*ScgConfigurationV13c0Release) isScgConfigurationV13c0() {}
-
-type ScgConfigurationV13c0Setup struct {
-	Value interface{}
-}
-
-func (*ScgConfigurationV13c0Setup) isScgConfigurationV13c0() {}

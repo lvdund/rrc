@@ -4,18 +4,14 @@ import "rrc/utils"
 
 // MeasSubframePattern-r10 ::= CHOICE
 // Extensible
-type MeassubframepatternR10 interface {
-	isMeassubframepatternR10()
+const (
+	MeassubframepatternR10ChoiceNothing = iota
+	MeassubframepatternR10ChoiceSubframepatternfddR10
+	MeassubframepatternR10ChoiceSubframepatterntddR10
+)
+
+type MeassubframepatternR10 struct {
+	Choice                uint64
+	SubframepatternfddR10 *utils.BITSTRING `lb:40,ub:40`
+	SubframepatterntddR10 *MeassubframepatternR10SubframepatterntddR10
 }
-
-type MeassubframepatternR10SubframepatternfddR10 struct {
-	Value utils.BITSTRING
-}
-
-func (*MeassubframepatternR10SubframepatternfddR10) isMeassubframepatternR10() {}
-
-type MeassubframepatternR10SubframepatterntddR10 struct {
-	Value interface{}
-}
-
-func (*MeassubframepatternR10SubframepatterntddR10) isMeassubframepatternR10() {}

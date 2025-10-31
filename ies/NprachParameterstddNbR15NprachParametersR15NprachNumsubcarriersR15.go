@@ -1,0 +1,16 @@
+package ies
+
+import "rrc/utils"
+
+// NPRACH-ParametersTDD-NB-r15-nprach-Parameters-r15-nprach-NumSubcarriers-r15 ::= ENUMERATED
+type NprachParameterstddNbR15NprachParametersR15NprachNumsubcarriersR15 struct {
+	Value utils.ENUMERATED
+}
+
+const (
+	NprachParameterstddNbR15NprachParametersR15NprachNumsubcarriersR15EnumeratedNothing = iota
+	NprachParameterstddNbR15NprachParametersR15NprachNumsubcarriersR15EnumeratedN12
+	NprachParameterstddNbR15NprachParametersR15NprachNumsubcarriersR15EnumeratedN24
+	NprachParameterstddNbR15NprachParametersR15NprachNumsubcarriersR15EnumeratedN36
+	NprachParameterstddNbR15NprachParametersR15NprachNumsubcarriersR15EnumeratedN48
+)

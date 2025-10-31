@@ -1,0 +1,20 @@
+package ies
+
+import "rrc/utils"
+
+// SystemInformationBlockType20-r13-sc-mcch-RepetitionPeriod-r13 ::= ENUMERATED
+type Systeminformationblocktype20R13ScMcchRepetitionperiodR13 struct {
+	Value utils.ENUMERATED
+}
+
+const (
+	Systeminformationblocktype20R13ScMcchRepetitionperiodR13EnumeratedNothing = iota
+	Systeminformationblocktype20R13ScMcchRepetitionperiodR13EnumeratedRf2
+	Systeminformationblocktype20R13ScMcchRepetitionperiodR13EnumeratedRf4
+	Systeminformationblocktype20R13ScMcchRepetitionperiodR13EnumeratedRf8
+	Systeminformationblocktype20R13ScMcchRepetitionperiodR13EnumeratedRf16
+	Systeminformationblocktype20R13ScMcchRepetitionperiodR13EnumeratedRf32
+	Systeminformationblocktype20R13ScMcchRepetitionperiodR13EnumeratedRf64
+	Systeminformationblocktype20R13ScMcchRepetitionperiodR13EnumeratedRf128
+	Systeminformationblocktype20R13ScMcchRepetitionperiodR13EnumeratedRf256
+)

@@ -1,0 +1,9 @@
+package ies
+
+// RACH-ConfigCommon-preambleInfo-preamblesGroupAConfig ::= SEQUENCE
+// Extensible
+type RachConfigcommonPreambleinfoPreamblesgroupaconfig struct {
+	SizeofraPreamblesgroupa  RachConfigcommonPreambleinfoPreamblesgroupaconfigSizeofraPreamblesgroupa
+	Messagesizegroupa        RachConfigcommonPreambleinfoPreamblesgroupaconfigMessagesizegroupa
+	Messagepoweroffsetgroupb RachConfigcommonPreambleinfoPreamblesgroupaconfigMessagepoweroffsetgroupb
+}

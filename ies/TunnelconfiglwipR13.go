@@ -1,7 +1,5 @@
 package ies
 
-import "rrc/utils"
-
 // TunnelConfigLWIP-r13 ::= SEQUENCE
 // Extensible
 type TunnelconfiglwipR13 struct {

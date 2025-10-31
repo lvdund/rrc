@@ -1,0 +1,6 @@
+package ies
+
+// DL-CarrierConfigCommon-NB-r14-inbandCarrierInfo-r14-samePCI-Indicator-r14-differentPCI-r14 ::= SEQUENCE
+type DlCarrierconfigcommonNbR14InbandcarrierinfoR14SamepciIndicatorR14DifferentpciR14 struct {
+	EutraNumcrsPortsR14 DlCarrierconfigcommonNbR14InbandcarrierinfoR14SamepciIndicatorR14DifferentpciR14EutraNumcrsPortsR14
+}

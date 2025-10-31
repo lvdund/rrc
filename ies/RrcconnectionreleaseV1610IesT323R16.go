@@ -1,0 +1,20 @@
+package ies
+
+import "rrc/utils"
+
+// RRCConnectionRelease-v1610-IEs-t323-r16 ::= ENUMERATED
+type RrcconnectionreleaseV1610IesT323R16 struct {
+	Value utils.ENUMERATED
+}
+
+const (
+	RrcconnectionreleaseV1610IesT323R16EnumeratedNothing = iota
+	RrcconnectionreleaseV1610IesT323R16EnumeratedMin5
+	RrcconnectionreleaseV1610IesT323R16EnumeratedMin10
+	RrcconnectionreleaseV1610IesT323R16EnumeratedMin20
+	RrcconnectionreleaseV1610IesT323R16EnumeratedMin30
+	RrcconnectionreleaseV1610IesT323R16EnumeratedMin60
+	RrcconnectionreleaseV1610IesT323R16EnumeratedMin120
+	RrcconnectionreleaseV1610IesT323R16EnumeratedMin180
+	RrcconnectionreleaseV1610IesT323R16EnumeratedMin720
+)

@@ -8,8 +8,9 @@ type CqiNpdcchShortNbR14 struct {
 }
 
 const (
-	CqiNpdcchShortNbR14Nomeasurements = 0
-	CqiNpdcchShortNbR14Candidaterep1  = 1
-	CqiNpdcchShortNbR14Candidaterep2  = 2
-	CqiNpdcchShortNbR14Candidaterep3  = 3
+	CqiNpdcchShortNbR14EnumeratedNothing = iota
+	CqiNpdcchShortNbR14EnumeratedNomeasurements
+	CqiNpdcchShortNbR14EnumeratedCandidaterep_1
+	CqiNpdcchShortNbR14EnumeratedCandidaterep_2
+	CqiNpdcchShortNbR14EnumeratedCandidaterep_3
 )

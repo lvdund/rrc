@@ -1,9 +1,7 @@
 package ies
 
-import "rrc/utils"
-
 // FeMBMS-Unicast-Parameters-r14 ::= SEQUENCE
 type FembmsUnicastParametersR14 struct {
-	UnicastFembmsmixedscellR14 *utils.ENUMERATED
-	EmptyunicastregionR14      *utils.ENUMERATED
+	UnicastFembmsmixedscellR14 *FembmsUnicastParametersR14UnicastFembmsmixedscellR14
+	EmptyunicastregionR14      *FembmsUnicastParametersR14EmptyunicastregionR14
 }

@@ -8,12 +8,13 @@ type RetxbsrTimerR12 struct {
 }
 
 const (
-	RetxbsrTimerR12Sf320   = 0
-	RetxbsrTimerR12Sf640   = 1
-	RetxbsrTimerR12Sf1280  = 2
-	RetxbsrTimerR12Sf2560  = 3
-	RetxbsrTimerR12Sf5120  = 4
-	RetxbsrTimerR12Sf10240 = 5
-	RetxbsrTimerR12Spare2  = 6
-	RetxbsrTimerR12Spare1  = 7
+	RetxbsrTimerR12EnumeratedNothing = iota
+	RetxbsrTimerR12EnumeratedSf320
+	RetxbsrTimerR12EnumeratedSf640
+	RetxbsrTimerR12EnumeratedSf1280
+	RetxbsrTimerR12EnumeratedSf2560
+	RetxbsrTimerR12EnumeratedSf5120
+	RetxbsrTimerR12EnumeratedSf10240
+	RetxbsrTimerR12EnumeratedSpare2
+	RetxbsrTimerR12EnumeratedSpare1
 )

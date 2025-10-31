@@ -1,0 +1,18 @@
+package ies
+
+import "rrc/utils"
+
+// MIMO-CA-ParametersPerBoBCPerTM-v1470-csi-ReportingAdvancedMaxPorts-r14 ::= ENUMERATED
+type MimoCaParametersperbobcpertmV1470CsiReportingadvancedmaxportsR14 struct {
+	Value utils.ENUMERATED
+}
+
+const (
+	MimoCaParametersperbobcpertmV1470CsiReportingadvancedmaxportsR14EnumeratedNothing = iota
+	MimoCaParametersperbobcpertmV1470CsiReportingadvancedmaxportsR14EnumeratedN8
+	MimoCaParametersperbobcpertmV1470CsiReportingadvancedmaxportsR14EnumeratedN12
+	MimoCaParametersperbobcpertmV1470CsiReportingadvancedmaxportsR14EnumeratedN16
+	MimoCaParametersperbobcpertmV1470CsiReportingadvancedmaxportsR14EnumeratedN20
+	MimoCaParametersperbobcpertmV1470CsiReportingadvancedmaxportsR14EnumeratedN24
+	MimoCaParametersperbobcpertmV1470CsiReportingadvancedmaxportsR14EnumeratedN28
+)

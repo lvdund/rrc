@@ -6,5 +6,5 @@ import "rrc/utils"
 // Extensible
 type MeasresultforrssiNrR16 struct {
 	RssiResultnrR16       RssiRangeR13
-	ChanneloccupancynrR16 utils.INTEGER
+	ChanneloccupancynrR16 utils.INTEGER `lb:0,ub:100`
 }

@@ -1,0 +1,28 @@
+package ies
+
+import "rrc/utils"
+
+// PhysCellIdRangeNR-r16-range ::= ENUMERATED
+type PhyscellidrangenrR16Range struct {
+	Value utils.ENUMERATED
+}
+
+const (
+	PhyscellidrangenrR16RangeEnumeratedNothing = iota
+	PhyscellidrangenrR16RangeEnumeratedN4
+	PhyscellidrangenrR16RangeEnumeratedN8
+	PhyscellidrangenrR16RangeEnumeratedN12
+	PhyscellidrangenrR16RangeEnumeratedN16
+	PhyscellidrangenrR16RangeEnumeratedN24
+	PhyscellidrangenrR16RangeEnumeratedN32
+	PhyscellidrangenrR16RangeEnumeratedN48
+	PhyscellidrangenrR16RangeEnumeratedN64
+	PhyscellidrangenrR16RangeEnumeratedN84
+	PhyscellidrangenrR16RangeEnumeratedN96
+	PhyscellidrangenrR16RangeEnumeratedN128
+	PhyscellidrangenrR16RangeEnumeratedN168
+	PhyscellidrangenrR16RangeEnumeratedN252
+	PhyscellidrangenrR16RangeEnumeratedN504
+	PhyscellidrangenrR16RangeEnumeratedN1008
+	PhyscellidrangenrR16RangeEnumeratedSpare1
+)

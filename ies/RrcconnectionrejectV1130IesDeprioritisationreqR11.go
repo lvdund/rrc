@@ -1,0 +1,7 @@
+package ies
+
+// RRCConnectionReject-v1130-IEs-deprioritisationReq-r11 ::= SEQUENCE
+type RrcconnectionrejectV1130IesDeprioritisationreqR11 struct {
+	DeprioritisationtypeR11  RrcconnectionrejectV1130IesDeprioritisationreqR11DeprioritisationtypeR11
+	DeprioritisationtimerR11 RrcconnectionrejectV1130IesDeprioritisationreqR11DeprioritisationtimerR11
+}

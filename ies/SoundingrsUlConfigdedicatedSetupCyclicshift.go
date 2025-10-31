@@ -1,0 +1,20 @@
+package ies
+
+import "rrc/utils"
+
+// SoundingRS-UL-ConfigDedicated-setup-cyclicShift ::= ENUMERATED
+type SoundingrsUlConfigdedicatedSetupCyclicshift struct {
+	Value utils.ENUMERATED
+}
+
+const (
+	SoundingrsUlConfigdedicatedSetupCyclicshiftEnumeratedNothing = iota
+	SoundingrsUlConfigdedicatedSetupCyclicshiftEnumeratedCs0
+	SoundingrsUlConfigdedicatedSetupCyclicshiftEnumeratedCs1
+	SoundingrsUlConfigdedicatedSetupCyclicshiftEnumeratedCs2
+	SoundingrsUlConfigdedicatedSetupCyclicshiftEnumeratedCs3
+	SoundingrsUlConfigdedicatedSetupCyclicshiftEnumeratedCs4
+	SoundingrsUlConfigdedicatedSetupCyclicshiftEnumeratedCs5
+	SoundingrsUlConfigdedicatedSetupCyclicshiftEnumeratedCs6
+	SoundingrsUlConfigdedicatedSetupCyclicshiftEnumeratedCs7
+)

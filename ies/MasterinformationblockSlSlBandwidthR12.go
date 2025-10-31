@@ -1,0 +1,18 @@
+package ies
+
+import "rrc/utils"
+
+// MasterInformationBlock-SL-sl-Bandwidth-r12 ::= ENUMERATED
+type MasterinformationblockSlSlBandwidthR12 struct {
+	Value utils.ENUMERATED
+}
+
+const (
+	MasterinformationblockSlSlBandwidthR12EnumeratedNothing = iota
+	MasterinformationblockSlSlBandwidthR12EnumeratedN6
+	MasterinformationblockSlSlBandwidthR12EnumeratedN15
+	MasterinformationblockSlSlBandwidthR12EnumeratedN25
+	MasterinformationblockSlSlBandwidthR12EnumeratedN50
+	MasterinformationblockSlSlBandwidthR12EnumeratedN75
+	MasterinformationblockSlSlBandwidthR12EnumeratedN100
+)
