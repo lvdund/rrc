@@ -1,0 +1,16 @@
+package ies
+
+import "rrc/utils"
+
+// MIMO-ParametersPerBand-uplinkBeamManagement-maxNumberSRS-ResourcePerSet-BM ::= ENUMERATED
+type MimoParametersperbandUplinkbeammanagementMaxnumbersrsResourcepersetBm struct {
+	Value utils.ENUMERATED
+}
+
+const (
+	MimoParametersperbandUplinkbeammanagementMaxnumbersrsResourcepersetBmEnumeratedNothing = iota
+	MimoParametersperbandUplinkbeammanagementMaxnumbersrsResourcepersetBmEnumeratedN2
+	MimoParametersperbandUplinkbeammanagementMaxnumbersrsResourcepersetBmEnumeratedN4
+	MimoParametersperbandUplinkbeammanagementMaxnumbersrsResourcepersetBmEnumeratedN8
+	MimoParametersperbandUplinkbeammanagementMaxnumbersrsResourcepersetBmEnumeratedN16
+)

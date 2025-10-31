@@ -1,0 +1,20 @@
+package ies
+
+import "rrc/utils"
+
+// RepFactorAndTimeGap-r17-repetitionFactor-r17 ::= ENUMERATED
+type RepfactorandtimegapR17RepetitionfactorR17 struct {
+	Value utils.ENUMERATED
+}
+
+const (
+	RepfactorandtimegapR17RepetitionfactorR17EnumeratedNothing = iota
+	RepfactorandtimegapR17RepetitionfactorR17EnumeratedN2
+	RepfactorandtimegapR17RepetitionfactorR17EnumeratedN4
+	RepfactorandtimegapR17RepetitionfactorR17EnumeratedN6
+	RepfactorandtimegapR17RepetitionfactorR17EnumeratedN8
+	RepfactorandtimegapR17RepetitionfactorR17EnumeratedN16
+	RepfactorandtimegapR17RepetitionfactorR17EnumeratedN32
+	RepfactorandtimegapR17RepetitionfactorR17EnumeratedSpare2
+	RepfactorandtimegapR17RepetitionfactorR17EnumeratedSpare1
+)

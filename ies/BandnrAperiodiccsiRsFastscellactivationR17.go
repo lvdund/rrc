@@ -1,0 +1,7 @@
+package ies
+
+// BandNR-aperiodicCSI-RS-FastScellActivation-r17 ::= SEQUENCE
+type BandnrAperiodiccsiRsFastscellactivationR17 struct {
+	MaxnumberaperiodiccsiRsPerccR17     BandnrAperiodiccsiRsFastscellactivationR17MaxnumberaperiodiccsiRsPerccR17
+	MaxnumberaperiodiccsiRsAcrossccsR17 BandnrAperiodiccsiRsFastscellactivationR17MaxnumberaperiodiccsiRsAcrossccsR17
+}

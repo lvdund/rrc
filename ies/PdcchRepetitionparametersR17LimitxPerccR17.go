@@ -1,0 +1,19 @@
+package ies
+
+import "rrc/utils"
+
+// PDCCH-RepetitionParameters-r17-limitX-PerCC-r17 ::= ENUMERATED
+type PdcchRepetitionparametersR17LimitxPerccR17 struct {
+	Value utils.ENUMERATED
+}
+
+const (
+	PdcchRepetitionparametersR17LimitxPerccR17EnumeratedNothing = iota
+	PdcchRepetitionparametersR17LimitxPerccR17EnumeratedN4
+	PdcchRepetitionparametersR17LimitxPerccR17EnumeratedN8
+	PdcchRepetitionparametersR17LimitxPerccR17EnumeratedN16
+	PdcchRepetitionparametersR17LimitxPerccR17EnumeratedN32
+	PdcchRepetitionparametersR17LimitxPerccR17EnumeratedN44
+	PdcchRepetitionparametersR17LimitxPerccR17EnumeratedN64
+	PdcchRepetitionparametersR17LimitxPerccR17EnumeratedNolimit
+)

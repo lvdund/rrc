@@ -1,0 +1,16 @@
+package ies
+
+import "rrc/utils"
+
+// CG-ConfigInfo-v1560-IEs-scgFailureInfoEUTRA-failureTypeEUTRA ::= ENUMERATED
+type CgConfiginfoV1560IesScgfailureinfoeutraFailuretypeeutra struct {
+	Value utils.ENUMERATED
+}
+
+const (
+	CgConfiginfoV1560IesScgfailureinfoeutraFailuretypeeutraEnumeratedNothing = iota
+	CgConfiginfoV1560IesScgfailureinfoeutraFailuretypeeutraEnumeratedT313_Expiry
+	CgConfiginfoV1560IesScgfailureinfoeutraFailuretypeeutraEnumeratedRandomaccessproblem
+	CgConfiginfoV1560IesScgfailureinfoeutraFailuretypeeutraEnumeratedRlc_Maxnumretx
+	CgConfiginfoV1560IesScgfailureinfoeutraFailuretypeeutraEnumeratedScg_Changefailure
+)

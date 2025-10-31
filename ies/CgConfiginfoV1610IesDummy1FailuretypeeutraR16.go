@@ -1,0 +1,20 @@
+package ies
+
+import "rrc/utils"
+
+// CG-ConfigInfo-v1610-IEs-dummy1-failureTypeEUTRA-r16 ::= ENUMERATED
+type CgConfiginfoV1610IesDummy1FailuretypeeutraR16 struct {
+	Value utils.ENUMERATED
+}
+
+const (
+	CgConfiginfoV1610IesDummy1FailuretypeeutraR16EnumeratedNothing = iota
+	CgConfiginfoV1610IesDummy1FailuretypeeutraR16EnumeratedScg_Lbtfailure_R16
+	CgConfiginfoV1610IesDummy1FailuretypeeutraR16EnumeratedBeamfailurerecoveryfailure_R16
+	CgConfiginfoV1610IesDummy1FailuretypeeutraR16EnumeratedT312_Expiry_R16
+	CgConfiginfoV1610IesDummy1FailuretypeeutraR16EnumeratedSpare5
+	CgConfiginfoV1610IesDummy1FailuretypeeutraR16EnumeratedSpare4
+	CgConfiginfoV1610IesDummy1FailuretypeeutraR16EnumeratedSpare3
+	CgConfiginfoV1610IesDummy1FailuretypeeutraR16EnumeratedSpare2
+	CgConfiginfoV1610IesDummy1FailuretypeeutraR16EnumeratedSpare1
+)

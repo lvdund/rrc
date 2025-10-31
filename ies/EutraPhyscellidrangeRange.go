@@ -1,0 +1,28 @@
+package ies
+
+import "rrc/utils"
+
+// EUTRA-PhysCellIdRange-range ::= ENUMERATED
+type EutraPhyscellidrangeRange struct {
+	Value utils.ENUMERATED
+}
+
+const (
+	EutraPhyscellidrangeRangeEnumeratedNothing = iota
+	EutraPhyscellidrangeRangeEnumeratedN4
+	EutraPhyscellidrangeRangeEnumeratedN8
+	EutraPhyscellidrangeRangeEnumeratedN12
+	EutraPhyscellidrangeRangeEnumeratedN16
+	EutraPhyscellidrangeRangeEnumeratedN24
+	EutraPhyscellidrangeRangeEnumeratedN32
+	EutraPhyscellidrangeRangeEnumeratedN48
+	EutraPhyscellidrangeRangeEnumeratedN64
+	EutraPhyscellidrangeRangeEnumeratedN84
+	EutraPhyscellidrangeRangeEnumeratedN96
+	EutraPhyscellidrangeRangeEnumeratedN128
+	EutraPhyscellidrangeRangeEnumeratedN168
+	EutraPhyscellidrangeRangeEnumeratedN252
+	EutraPhyscellidrangeRangeEnumeratedN504
+	EutraPhyscellidrangeRangeEnumeratedSpare2
+	EutraPhyscellidrangeRangeEnumeratedSpare1
+)

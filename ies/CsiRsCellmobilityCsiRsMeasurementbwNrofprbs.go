@@ -1,0 +1,17 @@
+package ies
+
+import "rrc/utils"
+
+// CSI-RS-CellMobility-csi-rs-MeasurementBW-nrofPRBs ::= ENUMERATED
+type CsiRsCellmobilityCsiRsMeasurementbwNrofprbs struct {
+	Value utils.ENUMERATED
+}
+
+const (
+	CsiRsCellmobilityCsiRsMeasurementbwNrofprbsEnumeratedNothing = iota
+	CsiRsCellmobilityCsiRsMeasurementbwNrofprbsEnumeratedSize24
+	CsiRsCellmobilityCsiRsMeasurementbwNrofprbsEnumeratedSize48
+	CsiRsCellmobilityCsiRsMeasurementbwNrofprbsEnumeratedSize96
+	CsiRsCellmobilityCsiRsMeasurementbwNrofprbsEnumeratedSize192
+	CsiRsCellmobilityCsiRsMeasurementbwNrofprbsEnumeratedSize264
+)

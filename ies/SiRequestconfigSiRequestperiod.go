@@ -1,0 +1,20 @@
+package ies
+
+import "rrc/utils"
+
+// SI-RequestConfig-si-RequestPeriod ::= ENUMERATED
+type SiRequestconfigSiRequestperiod struct {
+	Value utils.ENUMERATED
+}
+
+const (
+	SiRequestconfigSiRequestperiodEnumeratedNothing = iota
+	SiRequestconfigSiRequestperiodEnumeratedOne
+	SiRequestconfigSiRequestperiodEnumeratedTwo
+	SiRequestconfigSiRequestperiodEnumeratedFour
+	SiRequestconfigSiRequestperiodEnumeratedSix
+	SiRequestconfigSiRequestperiodEnumeratedEight
+	SiRequestconfigSiRequestperiodEnumeratedTen
+	SiRequestconfigSiRequestperiodEnumeratedTwelve
+	SiRequestconfigSiRequestperiodEnumeratedSixteen
+)

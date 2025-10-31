@@ -1,0 +1,20 @@
+package ies
+
+import "rrc/utils"
+
+// CellReselectionPriorities-t320 ::= ENUMERATED
+type CellreselectionprioritiesT320 struct {
+	Value utils.ENUMERATED
+}
+
+const (
+	CellreselectionprioritiesT320EnumeratedNothing = iota
+	CellreselectionprioritiesT320EnumeratedMin5
+	CellreselectionprioritiesT320EnumeratedMin10
+	CellreselectionprioritiesT320EnumeratedMin20
+	CellreselectionprioritiesT320EnumeratedMin30
+	CellreselectionprioritiesT320EnumeratedMin60
+	CellreselectionprioritiesT320EnumeratedMin120
+	CellreselectionprioritiesT320EnumeratedMin180
+	CellreselectionprioritiesT320EnumeratedSpare1
+)

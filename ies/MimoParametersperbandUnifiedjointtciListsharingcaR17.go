@@ -1,0 +1,16 @@
+package ies
+
+import "rrc/utils"
+
+// MIMO-ParametersPerBand-unifiedJointTCI-ListSharingCA-r17 ::= ENUMERATED
+type MimoParametersperbandUnifiedjointtciListsharingcaR17 struct {
+	Value utils.ENUMERATED
+}
+
+const (
+	MimoParametersperbandUnifiedjointtciListsharingcaR17EnumeratedNothing = iota
+	MimoParametersperbandUnifiedjointtciListsharingcaR17EnumeratedN1
+	MimoParametersperbandUnifiedjointtciListsharingcaR17EnumeratedN2
+	MimoParametersperbandUnifiedjointtciListsharingcaR17EnumeratedN4
+	MimoParametersperbandUnifiedjointtciListsharingcaR17EnumeratedN8
+)

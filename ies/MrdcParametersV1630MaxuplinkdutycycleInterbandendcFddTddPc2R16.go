@@ -1,0 +1,7 @@
+package ies
+
+// MRDC-Parameters-v1630-maxUplinkDutyCycle-interBandENDC-FDD-TDD-PC2-r16 ::= SEQUENCE
+type MrdcParametersV1630MaxuplinkdutycycleInterbandendcFddTddPc2R16 struct {
+	MaxuplinkdutycycleFddTddEnDc1R16 *MrdcParametersV1630MaxuplinkdutycycleInterbandendcFddTddPc2R16MaxuplinkdutycycleFddTddEnDc1R16
+	MaxuplinkdutycycleFddTddEnDc2R16 *MrdcParametersV1630MaxuplinkdutycycleInterbandendcFddTddPc2R16MaxuplinkdutycycleFddTddEnDc2R16
+}

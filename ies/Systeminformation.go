@@ -1,6 +1,11 @@
 package ies
 
-// SystemInformation ::= SEQUENCE
+import "rrc/utils"
+
+// SystemInformation-IEs ::= SEQUENCE
+// Extensible
 type Systeminformation struct {
-	Criticalextensions SysteminformationCriticalextensions
+	SibTypeandinfo           []SysteminformationIesSibTypeandinfoItem `lb:1,ub:maxSIB`
+	Latenoncriticalextension *utils.OCTETSTRING
+	Noncriticalextension     *SysteminformationIesNoncriticalextension
 }

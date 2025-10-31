@@ -1,0 +1,22 @@
+package ies
+
+import "rrc/utils"
+
+// SRS-Resource-resourceMapping-r17-repetitionFactor-r17 ::= ENUMERATED
+type SrsResourceResourcemappingR17RepetitionfactorR17 struct {
+	Value utils.ENUMERATED
+}
+
+const (
+	SrsResourceResourcemappingR17RepetitionfactorR17EnumeratedNothing = iota
+	SrsResourceResourcemappingR17RepetitionfactorR17EnumeratedN1
+	SrsResourceResourcemappingR17RepetitionfactorR17EnumeratedN2
+	SrsResourceResourcemappingR17RepetitionfactorR17EnumeratedN4
+	SrsResourceResourcemappingR17RepetitionfactorR17EnumeratedN5
+	SrsResourceResourcemappingR17RepetitionfactorR17EnumeratedN6
+	SrsResourceResourcemappingR17RepetitionfactorR17EnumeratedN7
+	SrsResourceResourcemappingR17RepetitionfactorR17EnumeratedN8
+	SrsResourceResourcemappingR17RepetitionfactorR17EnumeratedN10
+	SrsResourceResourcemappingR17RepetitionfactorR17EnumeratedN12
+	SrsResourceResourcemappingR17RepetitionfactorR17EnumeratedN14
+)

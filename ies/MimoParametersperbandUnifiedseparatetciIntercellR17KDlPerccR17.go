@@ -1,0 +1,16 @@
+package ies
+
+import "rrc/utils"
+
+// MIMO-ParametersPerBand-unifiedSeparateTCI-InterCell-r17-k-DL-PerCC-r17 ::= ENUMERATED
+type MimoParametersperbandUnifiedseparatetciIntercellR17KDlPerccR17 struct {
+	Value utils.ENUMERATED
+}
+
+const (
+	MimoParametersperbandUnifiedseparatetciIntercellR17KDlPerccR17EnumeratedNothing = iota
+	MimoParametersperbandUnifiedseparatetciIntercellR17KDlPerccR17EnumeratedN0
+	MimoParametersperbandUnifiedseparatetciIntercellR17KDlPerccR17EnumeratedN1
+	MimoParametersperbandUnifiedseparatetciIntercellR17KDlPerccR17EnumeratedN2
+	MimoParametersperbandUnifiedseparatetciIntercellR17KDlPerccR17EnumeratedN4
+)

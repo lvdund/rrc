@@ -1,0 +1,16 @@
+package ies
+
+import "rrc/utils"
+
+// OLPC-SRS-Pos-r16-maxNumberPathLossEstimatePerServing-r16 ::= ENUMERATED
+type OlpcSrsPosR16MaxnumberpathlossestimateperservingR16 struct {
+	Value utils.ENUMERATED
+}
+
+const (
+	OlpcSrsPosR16MaxnumberpathlossestimateperservingR16EnumeratedNothing = iota
+	OlpcSrsPosR16MaxnumberpathlossestimateperservingR16EnumeratedN1
+	OlpcSrsPosR16MaxnumberpathlossestimateperservingR16EnumeratedN4
+	OlpcSrsPosR16MaxnumberpathlossestimateperservingR16EnumeratedN8
+	OlpcSrsPosR16MaxnumberpathlossestimateperservingR16EnumeratedN16
+)

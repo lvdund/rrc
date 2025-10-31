@@ -1,0 +1,7 @@
+package ies
+
+// MIMO-ParametersPerBand-maxNumberRxTxBeamSwitchDL-v1710 ::= SEQUENCE
+type MimoParametersperbandMaxnumberrxtxbeamswitchdlV1710 struct {
+	Scs480khzR17 *MimoParametersperbandMaxnumberrxtxbeamswitchdlV1710Scs480khzR17
+	Scs960khzR17 *MimoParametersperbandMaxnumberrxtxbeamswitchdlV1710Scs960khzR17
+}

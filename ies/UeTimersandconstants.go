@@ -9,4 +9,5 @@ type UeTimersandconstants struct {
 	N310 UeTimersandconstantsN310
 	T311 UeTimersandconstantsT311
 	N311 UeTimersandconstantsN311
+	T319 UeTimersandconstantsT319
 }

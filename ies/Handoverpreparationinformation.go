@@ -1,6 +1,10 @@
 package ies
 
-// HandoverPreparationInformation ::= SEQUENCE
+// HandoverPreparationInformation-IEs ::= SEQUENCE
 type Handoverpreparationinformation struct {
-	Criticalextensions HandoverpreparationinformationCriticalextensions
+	UeCapabilityratList  UeCapabilityratContainerlist
+	Sourceconfig         *AsConfig
+	RrmConfig            *RrmConfig
+	AsContext            *AsContext
+	Noncriticalextension *HandoverpreparationinformationIesNoncriticalextension
 }

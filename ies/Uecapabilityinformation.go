@@ -1,7 +1,10 @@
 package ies
 
-// UECapabilityInformation ::= SEQUENCE
+import "rrc/utils"
+
+// UECapabilityInformation-IEs ::= SEQUENCE
 type Uecapabilityinformation struct {
-	RrcTransactionidentifier RrcTransactionidentifier
-	Criticalextensions       UecapabilityinformationCriticalextensions
+	UeCapabilityratContainerlist *UeCapabilityratContainerlist
+	Latenoncriticalextension     *utils.OCTETSTRING
+	Noncriticalextension         *UecapabilityinformationIesNoncriticalextension
 }

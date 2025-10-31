@@ -1,0 +1,20 @@
+package ies
+
+import "rrc/utils"
+
+// UAC-BarringInfoSet-uac-BarringTime ::= ENUMERATED
+type UacBarringinfosetUacBarringtime struct {
+	Value utils.ENUMERATED
+}
+
+const (
+	UacBarringinfosetUacBarringtimeEnumeratedNothing = iota
+	UacBarringinfosetUacBarringtimeEnumeratedS4
+	UacBarringinfosetUacBarringtimeEnumeratedS8
+	UacBarringinfosetUacBarringtimeEnumeratedS16
+	UacBarringinfosetUacBarringtimeEnumeratedS32
+	UacBarringinfosetUacBarringtimeEnumeratedS64
+	UacBarringinfosetUacBarringtimeEnumeratedS128
+	UacBarringinfosetUacBarringtimeEnumeratedS256
+	UacBarringinfosetUacBarringtimeEnumeratedS512
+)

@@ -1,0 +1,40 @@
+package ies
+
+import "rrc/utils"
+
+// CA-BandwidthClassNR ::= utils.ENUMERATED // Extensible
+type CaBandwidthclassnr struct {
+	Value utils.ENUMERATED
+}
+
+const (
+	CaBandwidthclassnrEnumeratedNothing = iota
+	CaBandwidthclassnrEnumeratedA
+	CaBandwidthclassnrEnumeratedB
+	CaBandwidthclassnrEnumeratedC
+	CaBandwidthclassnrEnumeratedD
+	CaBandwidthclassnrEnumeratedE
+	CaBandwidthclassnrEnumeratedF
+	CaBandwidthclassnrEnumeratedG
+	CaBandwidthclassnrEnumeratedH
+	CaBandwidthclassnrEnumeratedI
+	CaBandwidthclassnrEnumeratedJ
+	CaBandwidthclassnrEnumeratedK
+	CaBandwidthclassnrEnumeratedL
+	CaBandwidthclassnrEnumeratedM
+	CaBandwidthclassnrEnumeratedN
+	CaBandwidthclassnrEnumeratedO
+	CaBandwidthclassnrEnumeratedP
+	CaBandwidthclassnrEnumeratedQ
+	CaBandwidthclassnrEnumeratedR2_V1730
+	CaBandwidthclassnrEnumeratedR3_V1730
+	CaBandwidthclassnrEnumeratedR4_V1730
+	CaBandwidthclassnrEnumeratedR5_V1730
+	CaBandwidthclassnrEnumeratedR6_V1730
+	CaBandwidthclassnrEnumeratedR7_V1730
+	CaBandwidthclassnrEnumeratedR8_V1730
+	CaBandwidthclassnrEnumeratedR9_V1730
+	CaBandwidthclassnrEnumeratedR10_V1730
+	CaBandwidthclassnrEnumeratedR11_V1730
+	CaBandwidthclassnrEnumeratedR12_V1730
+)

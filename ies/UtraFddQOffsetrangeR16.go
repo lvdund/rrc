@@ -1,0 +1,43 @@
+package ies
+
+import "rrc/utils"
+
+// UTRA-FDD-Q-OffsetRange-r16 ::= ENUMERATED
+type UtraFddQOffsetrangeR16 struct {
+	Value utils.ENUMERATED
+}
+
+const (
+	UtraFddQOffsetrangeR16EnumeratedNothing = iota
+	UtraFddQOffsetrangeR16EnumeratedDb_24
+	UtraFddQOffsetrangeR16EnumeratedDb_22
+	UtraFddQOffsetrangeR16EnumeratedDb_20
+	UtraFddQOffsetrangeR16EnumeratedDb_18
+	UtraFddQOffsetrangeR16EnumeratedDb_16
+	UtraFddQOffsetrangeR16EnumeratedDb_14
+	UtraFddQOffsetrangeR16EnumeratedDb_12
+	UtraFddQOffsetrangeR16EnumeratedDb_10
+	UtraFddQOffsetrangeR16EnumeratedDb_8
+	UtraFddQOffsetrangeR16EnumeratedDb_6
+	UtraFddQOffsetrangeR16EnumeratedDb_5
+	UtraFddQOffsetrangeR16EnumeratedDb_4
+	UtraFddQOffsetrangeR16EnumeratedDb_3
+	UtraFddQOffsetrangeR16EnumeratedDb_2
+	UtraFddQOffsetrangeR16EnumeratedDb_1
+	UtraFddQOffsetrangeR16EnumeratedDb0
+	UtraFddQOffsetrangeR16EnumeratedDb1
+	UtraFddQOffsetrangeR16EnumeratedDb2
+	UtraFddQOffsetrangeR16EnumeratedDb3
+	UtraFddQOffsetrangeR16EnumeratedDb4
+	UtraFddQOffsetrangeR16EnumeratedDb5
+	UtraFddQOffsetrangeR16EnumeratedDb6
+	UtraFddQOffsetrangeR16EnumeratedDb8
+	UtraFddQOffsetrangeR16EnumeratedDb10
+	UtraFddQOffsetrangeR16EnumeratedDb12
+	UtraFddQOffsetrangeR16EnumeratedDb14
+	UtraFddQOffsetrangeR16EnumeratedDb16
+	UtraFddQOffsetrangeR16EnumeratedDb18
+	UtraFddQOffsetrangeR16EnumeratedDb20
+	UtraFddQOffsetrangeR16EnumeratedDb22
+	UtraFddQOffsetrangeR16EnumeratedDb24
+)

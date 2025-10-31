@@ -1,0 +1,20 @@
+package ies
+
+import "rrc/utils"
+
+// EventTriggerConfig-reportAmount ::= ENUMERATED
+type EventtriggerconfigReportamount struct {
+	Value utils.ENUMERATED
+}
+
+const (
+	EventtriggerconfigReportamountEnumeratedNothing = iota
+	EventtriggerconfigReportamountEnumeratedR1
+	EventtriggerconfigReportamountEnumeratedR2
+	EventtriggerconfigReportamountEnumeratedR4
+	EventtriggerconfigReportamountEnumeratedR8
+	EventtriggerconfigReportamountEnumeratedR16
+	EventtriggerconfigReportamountEnumeratedR32
+	EventtriggerconfigReportamountEnumeratedR64
+	EventtriggerconfigReportamountEnumeratedInfinity
+)

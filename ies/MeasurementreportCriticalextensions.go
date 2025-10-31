@@ -3,12 +3,12 @@ package ies
 // MeasurementReport-criticalExtensions ::= CHOICE
 const (
 	MeasurementreportCriticalextensionsChoiceNothing = iota
-	MeasurementreportCriticalextensionsChoiceC1
+	MeasurementreportCriticalextensionsChoiceMeasurementreport
 	MeasurementreportCriticalextensionsChoiceCriticalextensionsfuture
 )
 
 type MeasurementreportCriticalextensions struct {
 	Choice                   uint64
-	C1                       *MeasurementreportCriticalextensionsC1
+	Measurementreport        *Measurementreport
 	Criticalextensionsfuture *MeasurementreportCriticalextensionsCriticalextensionsfuture
 }

@@ -1,0 +1,20 @@
+package ies
+
+import "rrc/utils"
+
+// BandParameters-v1540-srs-TxSwitch-supportedSRS-TxPortSwitch ::= ENUMERATED
+type BandparametersV1540SrsTxswitchSupportedsrsTxportswitch struct {
+	Value utils.ENUMERATED
+}
+
+const (
+	BandparametersV1540SrsTxswitchSupportedsrsTxportswitchEnumeratedNothing = iota
+	BandparametersV1540SrsTxswitchSupportedsrsTxportswitchEnumeratedT1r2
+	BandparametersV1540SrsTxswitchSupportedsrsTxportswitchEnumeratedT1r4
+	BandparametersV1540SrsTxswitchSupportedsrsTxportswitchEnumeratedT2r4
+	BandparametersV1540SrsTxswitchSupportedsrsTxportswitchEnumeratedT1r4_T2r4
+	BandparametersV1540SrsTxswitchSupportedsrsTxportswitchEnumeratedT1r1
+	BandparametersV1540SrsTxswitchSupportedsrsTxportswitchEnumeratedT2r2
+	BandparametersV1540SrsTxswitchSupportedsrsTxportswitchEnumeratedT4r4
+	BandparametersV1540SrsTxswitchSupportedsrsTxportswitchEnumeratedNotsupported
+)

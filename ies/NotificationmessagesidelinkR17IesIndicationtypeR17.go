@@ -1,0 +1,16 @@
+package ies
+
+import "rrc/utils"
+
+// NotificationMessageSidelink-r17-IEs-indicationType-r17 ::= ENUMERATED
+type NotificationmessagesidelinkR17IesIndicationtypeR17 struct {
+	Value utils.ENUMERATED
+}
+
+const (
+	NotificationmessagesidelinkR17IesIndicationtypeR17EnumeratedNothing = iota
+	NotificationmessagesidelinkR17IesIndicationtypeR17EnumeratedRelayue_Uu_Rlf
+	NotificationmessagesidelinkR17IesIndicationtypeR17EnumeratedRelayue_Ho
+	NotificationmessagesidelinkR17IesIndicationtypeR17EnumeratedRelayue_Cellreselection
+	NotificationmessagesidelinkR17IesIndicationtypeR17EnumeratedRelayue_Uu_Rrc_Failure
+)

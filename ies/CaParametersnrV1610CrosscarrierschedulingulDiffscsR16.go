@@ -1,0 +1,15 @@
+package ies
+
+import "rrc/utils"
+
+// CA-ParametersNR-v1610-crossCarrierSchedulingUL-DiffSCS-r16 ::= ENUMERATED
+type CaParametersnrV1610CrosscarrierschedulingulDiffscsR16 struct {
+	Value utils.ENUMERATED
+}
+
+const (
+	CaParametersnrV1610CrosscarrierschedulingulDiffscsR16EnumeratedNothing = iota
+	CaParametersnrV1610CrosscarrierschedulingulDiffscsR16EnumeratedLow_To_High
+	CaParametersnrV1610CrosscarrierschedulingulDiffscsR16EnumeratedHigh_To_Low
+	CaParametersnrV1610CrosscarrierschedulingulDiffscsR16EnumeratedBoth
+)

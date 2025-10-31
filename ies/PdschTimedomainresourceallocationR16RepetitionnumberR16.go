@@ -1,0 +1,20 @@
+package ies
+
+import "rrc/utils"
+
+// PDSCH-TimeDomainResourceAllocation-r16-repetitionNumber-r16 ::= ENUMERATED
+type PdschTimedomainresourceallocationR16RepetitionnumberR16 struct {
+	Value utils.ENUMERATED
+}
+
+const (
+	PdschTimedomainresourceallocationR16RepetitionnumberR16EnumeratedNothing = iota
+	PdschTimedomainresourceallocationR16RepetitionnumberR16EnumeratedN2
+	PdschTimedomainresourceallocationR16RepetitionnumberR16EnumeratedN3
+	PdschTimedomainresourceallocationR16RepetitionnumberR16EnumeratedN4
+	PdschTimedomainresourceallocationR16RepetitionnumberR16EnumeratedN5
+	PdschTimedomainresourceallocationR16RepetitionnumberR16EnumeratedN6
+	PdschTimedomainresourceallocationR16RepetitionnumberR16EnumeratedN7
+	PdschTimedomainresourceallocationR16RepetitionnumberR16EnumeratedN8
+	PdschTimedomainresourceallocationR16RepetitionnumberR16EnumeratedN16
+)

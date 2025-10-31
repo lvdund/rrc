@@ -1,21 +1,21 @@
 package ies
 
+import "rrc/utils"
+
 // MeasResults-measResultNeighCells ::= CHOICE
 // Extensible
 const (
 	MeasresultsMeasresultneighcellsChoiceNothing = iota
+	MeasresultsMeasresultneighcellsChoiceMeasresultlistnr
 	MeasresultsMeasresultneighcellsChoiceMeasresultlisteutra
-	MeasresultsMeasresultneighcellsChoiceMeasresultlistutra
-	MeasresultsMeasresultneighcellsChoiceMeasresultlistgeran
-	MeasresultsMeasresultneighcellsChoiceMeasresultscdma2000
-	MeasresultsMeasresultneighcellsChoiceMeasresultneighcelllistnrR15
+	MeasresultsMeasresultneighcellsChoiceMeasresultlistutraFddR16
+	MeasresultsMeasresultneighcellsChoiceSlMeasresultscandrelayR17
 )
 
 type MeasresultsMeasresultneighcells struct {
-	Choice                       uint64
-	Measresultlisteutra          *Measresultlisteutra
-	Measresultlistutra           *Measresultlistutra
-	Measresultlistgeran          *Measresultlistgeran
-	Measresultscdma2000          *Measresultscdma2000
-	MeasresultneighcelllistnrR15 *MeasresultcelllistnrR15
+	Choice                    uint64
+	Measresultlistnr          *Measresultlistnr
+	Measresultlisteutra       *Measresultlisteutra
+	MeasresultlistutraFddR16  *MeasresultlistutraFddR16
+	SlMeasresultscandrelayR17 *utils.OCTETSTRING
 }

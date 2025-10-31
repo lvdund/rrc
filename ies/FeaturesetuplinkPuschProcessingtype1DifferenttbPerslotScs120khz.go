@@ -1,0 +1,15 @@
+package ies
+
+import "rrc/utils"
+
+// FeatureSetUplink-pusch-ProcessingType1-DifferentTB-PerSlot-scs-120kHz ::= ENUMERATED
+type FeaturesetuplinkPuschProcessingtype1DifferenttbPerslotScs120khz struct {
+	Value utils.ENUMERATED
+}
+
+const (
+	FeaturesetuplinkPuschProcessingtype1DifferenttbPerslotScs120khzEnumeratedNothing = iota
+	FeaturesetuplinkPuschProcessingtype1DifferenttbPerslotScs120khzEnumeratedUpto2
+	FeaturesetuplinkPuschProcessingtype1DifferenttbPerslotScs120khzEnumeratedUpto4
+	FeaturesetuplinkPuschProcessingtype1DifferenttbPerslotScs120khzEnumeratedUpto7
+)

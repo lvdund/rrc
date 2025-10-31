@@ -1,0 +1,20 @@
+package ies
+
+import "rrc/utils"
+
+// RadioLinkMonitoringConfig-beamFailureDetectionTimer ::= ENUMERATED
+type RadiolinkmonitoringconfigBeamfailuredetectiontimer struct {
+	Value utils.ENUMERATED
+}
+
+const (
+	RadiolinkmonitoringconfigBeamfailuredetectiontimerEnumeratedNothing = iota
+	RadiolinkmonitoringconfigBeamfailuredetectiontimerEnumeratedPbfd1
+	RadiolinkmonitoringconfigBeamfailuredetectiontimerEnumeratedPbfd2
+	RadiolinkmonitoringconfigBeamfailuredetectiontimerEnumeratedPbfd3
+	RadiolinkmonitoringconfigBeamfailuredetectiontimerEnumeratedPbfd4
+	RadiolinkmonitoringconfigBeamfailuredetectiontimerEnumeratedPbfd5
+	RadiolinkmonitoringconfigBeamfailuredetectiontimerEnumeratedPbfd6
+	RadiolinkmonitoringconfigBeamfailuredetectiontimerEnumeratedPbfd8
+	RadiolinkmonitoringconfigBeamfailuredetectiontimerEnumeratedPbfd10
+)

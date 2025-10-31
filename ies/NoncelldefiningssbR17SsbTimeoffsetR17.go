@@ -1,0 +1,20 @@
+package ies
+
+import "rrc/utils"
+
+// NonCellDefiningSSB-r17-ssb-TimeOffset-r17 ::= ENUMERATED
+type NoncelldefiningssbR17SsbTimeoffsetR17 struct {
+	Value utils.ENUMERATED
+}
+
+const (
+	NoncelldefiningssbR17SsbTimeoffsetR17EnumeratedNothing = iota
+	NoncelldefiningssbR17SsbTimeoffsetR17EnumeratedMs5
+	NoncelldefiningssbR17SsbTimeoffsetR17EnumeratedMs10
+	NoncelldefiningssbR17SsbTimeoffsetR17EnumeratedMs15
+	NoncelldefiningssbR17SsbTimeoffsetR17EnumeratedMs20
+	NoncelldefiningssbR17SsbTimeoffsetR17EnumeratedMs40
+	NoncelldefiningssbR17SsbTimeoffsetR17EnumeratedMs80
+	NoncelldefiningssbR17SsbTimeoffsetR17EnumeratedSpare2
+	NoncelldefiningssbR17SsbTimeoffsetR17EnumeratedSpare1
+)

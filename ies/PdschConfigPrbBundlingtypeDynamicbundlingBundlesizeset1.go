@@ -1,0 +1,16 @@
+package ies
+
+import "rrc/utils"
+
+// PDSCH-Config-prb-BundlingType-dynamicBundling-bundleSizeSet1 ::= ENUMERATED
+type PdschConfigPrbBundlingtypeDynamicbundlingBundlesizeset1 struct {
+	Value utils.ENUMERATED
+}
+
+const (
+	PdschConfigPrbBundlingtypeDynamicbundlingBundlesizeset1EnumeratedNothing = iota
+	PdschConfigPrbBundlingtypeDynamicbundlingBundlesizeset1EnumeratedN4
+	PdschConfigPrbBundlingtypeDynamicbundlingBundlesizeset1EnumeratedWideband
+	PdschConfigPrbBundlingtypeDynamicbundlingBundlesizeset1EnumeratedN2_Wideband
+	PdschConfigPrbBundlingtypeDynamicbundlingBundlesizeset1EnumeratedN4_Wideband
+)

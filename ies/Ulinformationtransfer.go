@@ -1,6 +1,10 @@
 package ies
 
-// ULInformationTransfer ::= SEQUENCE
+import "rrc/utils"
+
+// ULInformationTransfer-IEs ::= SEQUENCE
 type Ulinformationtransfer struct {
-	Criticalextensions UlinformationtransferCriticalextensions
+	DedicatednasMessage      *DedicatednasMessage
+	Latenoncriticalextension *utils.OCTETSTRING
+	Noncriticalextension     *UlinformationtransferV1700
 }

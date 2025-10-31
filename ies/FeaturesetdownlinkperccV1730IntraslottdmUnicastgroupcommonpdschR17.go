@@ -1,0 +1,14 @@
+package ies
+
+import "rrc/utils"
+
+// FeatureSetDownlinkPerCC-v1730-intraSlotTDM-UnicastGroupCommonPDSCH-r17 ::= ENUMERATED
+type FeaturesetdownlinkperccV1730IntraslottdmUnicastgroupcommonpdschR17 struct {
+	Value utils.ENUMERATED
+}
+
+const (
+	FeaturesetdownlinkperccV1730IntraslottdmUnicastgroupcommonpdschR17EnumeratedNothing = iota
+	FeaturesetdownlinkperccV1730IntraslottdmUnicastgroupcommonpdschR17EnumeratedYes
+	FeaturesetdownlinkperccV1730IntraslottdmUnicastgroupcommonpdschR17EnumeratedNo
+)

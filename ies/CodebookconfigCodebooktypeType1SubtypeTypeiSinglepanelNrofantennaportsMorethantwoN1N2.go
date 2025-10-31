@@ -1,0 +1,38 @@
+package ies
+
+import "rrc/utils"
+
+// CodebookConfig-codebookType-type1-subType-typeI-SinglePanel-nrOfAntennaPorts-moreThanTwo-n1-n2 ::= CHOICE
+const (
+	CodebookconfigCodebooktypeType1SubtypeTypeiSinglepanelNrofantennaportsMorethantwoN1N2ChoiceNothing = iota
+	CodebookconfigCodebooktypeType1SubtypeTypeiSinglepanelNrofantennaportsMorethantwoN1N2ChoiceTwoOneTypeiSinglepanelRestriction
+	CodebookconfigCodebooktypeType1SubtypeTypeiSinglepanelNrofantennaportsMorethantwoN1N2ChoiceTwoTwoTypeiSinglepanelRestriction
+	CodebookconfigCodebooktypeType1SubtypeTypeiSinglepanelNrofantennaportsMorethantwoN1N2ChoiceFourOneTypeiSinglepanelRestriction
+	CodebookconfigCodebooktypeType1SubtypeTypeiSinglepanelNrofantennaportsMorethantwoN1N2ChoiceThreeTwoTypeiSinglepanelRestriction
+	CodebookconfigCodebooktypeType1SubtypeTypeiSinglepanelNrofantennaportsMorethantwoN1N2ChoiceSixOneTypeiSinglepanelRestriction
+	CodebookconfigCodebooktypeType1SubtypeTypeiSinglepanelNrofantennaportsMorethantwoN1N2ChoiceFourTwoTypeiSinglepanelRestriction
+	CodebookconfigCodebooktypeType1SubtypeTypeiSinglepanelNrofantennaportsMorethantwoN1N2ChoiceEightOneTypeiSinglepanelRestriction
+	CodebookconfigCodebooktypeType1SubtypeTypeiSinglepanelNrofantennaportsMorethantwoN1N2ChoiceFourThreeTypeiSinglepanelRestriction
+	CodebookconfigCodebooktypeType1SubtypeTypeiSinglepanelNrofantennaportsMorethantwoN1N2ChoiceSixTwoTypeiSinglepanelRestriction
+	CodebookconfigCodebooktypeType1SubtypeTypeiSinglepanelNrofantennaportsMorethantwoN1N2ChoiceTwelveOneTypeiSinglepanelRestriction
+	CodebookconfigCodebooktypeType1SubtypeTypeiSinglepanelNrofantennaportsMorethantwoN1N2ChoiceFourFourTypeiSinglepanelRestriction
+	CodebookconfigCodebooktypeType1SubtypeTypeiSinglepanelNrofantennaportsMorethantwoN1N2ChoiceEightTwoTypeiSinglepanelRestriction
+	CodebookconfigCodebooktypeType1SubtypeTypeiSinglepanelNrofantennaportsMorethantwoN1N2ChoiceSixteenOneTypeiSinglepanelRestriction
+)
+
+type CodebookconfigCodebooktypeType1SubtypeTypeiSinglepanelNrofantennaportsMorethantwoN1N2 struct {
+	Choice                                uint64
+	TwoOneTypeiSinglepanelRestriction     *utils.BITSTRING `lb:8,ub:8`
+	TwoTwoTypeiSinglepanelRestriction     *utils.BITSTRING `lb:64,ub:64`
+	FourOneTypeiSinglepanelRestriction    *utils.BITSTRING `lb:16,ub:16`
+	ThreeTwoTypeiSinglepanelRestriction   *utils.BITSTRING `lb:96,ub:96`
+	SixOneTypeiSinglepanelRestriction     *utils.BITSTRING `lb:24,ub:24`
+	FourTwoTypeiSinglepanelRestriction    *utils.BITSTRING `lb:128,ub:128`
+	EightOneTypeiSinglepanelRestriction   *utils.BITSTRING `lb:32,ub:32`
+	FourThreeTypeiSinglepanelRestriction  *utils.BITSTRING `lb:192,ub:192`
+	SixTwoTypeiSinglepanelRestriction     *utils.BITSTRING `lb:192,ub:192`
+	TwelveOneTypeiSinglepanelRestriction  *utils.BITSTRING `lb:48,ub:48`
+	FourFourTypeiSinglepanelRestriction   *utils.BITSTRING `lb:256,ub:256`
+	EightTwoTypeiSinglepanelRestriction   *utils.BITSTRING `lb:256,ub:256`
+	SixteenOneTypeiSinglepanelRestriction *utils.BITSTRING `lb:64,ub:64`
+}

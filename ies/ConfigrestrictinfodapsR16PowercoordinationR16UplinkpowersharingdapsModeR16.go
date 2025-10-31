@@ -1,0 +1,15 @@
+package ies
+
+import "rrc/utils"
+
+// ConfigRestrictInfoDAPS-r16-powerCoordination-r16-uplinkPowerSharingDAPS-Mode-r16 ::= ENUMERATED
+type ConfigrestrictinfodapsR16PowercoordinationR16UplinkpowersharingdapsModeR16 struct {
+	Value utils.ENUMERATED
+}
+
+const (
+	ConfigrestrictinfodapsR16PowercoordinationR16UplinkpowersharingdapsModeR16EnumeratedNothing = iota
+	ConfigrestrictinfodapsR16PowercoordinationR16UplinkpowersharingdapsModeR16EnumeratedSemi_Static_Mode1
+	ConfigrestrictinfodapsR16PowercoordinationR16UplinkpowersharingdapsModeR16EnumeratedSemi_Static_Mode2
+	ConfigrestrictinfodapsR16PowercoordinationR16UplinkpowersharingdapsModeR16EnumeratedDynamic
+)

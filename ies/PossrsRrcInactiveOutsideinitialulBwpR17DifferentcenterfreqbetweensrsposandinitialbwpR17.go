@@ -1,0 +1,13 @@
+package ies
+
+import "rrc/utils"
+
+// PosSRS-RRC-Inactive-OutsideInitialUL-BWP-r17-differentCenterFreqBetweenSRSposAndInitialBWP-r17 ::= ENUMERATED
+type PossrsRrcInactiveOutsideinitialulBwpR17DifferentcenterfreqbetweensrsposandinitialbwpR17 struct {
+	Value utils.ENUMERATED
+}
+
+const (
+	PossrsRrcInactiveOutsideinitialulBwpR17DifferentcenterfreqbetweensrsposandinitialbwpR17EnumeratedNothing = iota
+	PossrsRrcInactiveOutsideinitialulBwpR17DifferentcenterfreqbetweensrsposandinitialbwpR17EnumeratedSupported
+)

@@ -1,0 +1,6 @@
+package ies
+
+// SharedSpectrumChAccessParamsPerBand-v1650 ::= SEQUENCE
+type SharedspectrumchaccessparamsperbandV1650 struct {
+	ExtendedsearchspaceswitchwithdciR16 *SharedspectrumchaccessparamsperbandV1650ExtendedsearchspaceswitchwithdciR16
+}

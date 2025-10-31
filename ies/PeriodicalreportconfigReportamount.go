@@ -1,0 +1,20 @@
+package ies
+
+import "rrc/utils"
+
+// PeriodicalReportConfig-reportAmount ::= ENUMERATED
+type PeriodicalreportconfigReportamount struct {
+	Value utils.ENUMERATED
+}
+
+const (
+	PeriodicalreportconfigReportamountEnumeratedNothing = iota
+	PeriodicalreportconfigReportamountEnumeratedR1
+	PeriodicalreportconfigReportamountEnumeratedR2
+	PeriodicalreportconfigReportamountEnumeratedR4
+	PeriodicalreportconfigReportamountEnumeratedR8
+	PeriodicalreportconfigReportamountEnumeratedR16
+	PeriodicalreportconfigReportamountEnumeratedR32
+	PeriodicalreportconfigReportamountEnumeratedR64
+	PeriodicalreportconfigReportamountEnumeratedInfinity
+)

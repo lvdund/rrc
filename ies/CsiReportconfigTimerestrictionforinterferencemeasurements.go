@@ -1,0 +1,14 @@
+package ies
+
+import "rrc/utils"
+
+// CSI-ReportConfig-timeRestrictionForInterferenceMeasurements ::= ENUMERATED
+type CsiReportconfigTimerestrictionforinterferencemeasurements struct {
+	Value utils.ENUMERATED
+}
+
+const (
+	CsiReportconfigTimerestrictionforinterferencemeasurementsEnumeratedNothing = iota
+	CsiReportconfigTimerestrictionforinterferencemeasurementsEnumeratedConfigured
+	CsiReportconfigTimerestrictionforinterferencemeasurementsEnumeratedNotconfigured
+)

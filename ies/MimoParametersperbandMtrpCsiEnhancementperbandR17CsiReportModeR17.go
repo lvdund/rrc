@@ -1,0 +1,15 @@
+package ies
+
+import "rrc/utils"
+
+// MIMO-ParametersPerBand-mTRP-CSI-EnhancementPerBand-r17-cSI-Report-mode-r17 ::= ENUMERATED
+type MimoParametersperbandMtrpCsiEnhancementperbandR17CsiReportModeR17 struct {
+	Value utils.ENUMERATED
+}
+
+const (
+	MimoParametersperbandMtrpCsiEnhancementperbandR17CsiReportModeR17EnumeratedNothing = iota
+	MimoParametersperbandMtrpCsiEnhancementperbandR17CsiReportModeR17EnumeratedMode1
+	MimoParametersperbandMtrpCsiEnhancementperbandR17CsiReportModeR17EnumeratedMode2
+	MimoParametersperbandMtrpCsiEnhancementperbandR17CsiReportModeR17EnumeratedBoth
+)

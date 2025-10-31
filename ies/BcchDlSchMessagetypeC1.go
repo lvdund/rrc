@@ -10,5 +10,5 @@ const (
 type BcchDlSchMessagetypeC1 struct {
 	Choice                      uint64
 	Systeminformation           *Systeminformation
-	Systeminformationblocktype1 *Systeminformationblocktype1
+	Systeminformationblocktype1 *Sib1
 }

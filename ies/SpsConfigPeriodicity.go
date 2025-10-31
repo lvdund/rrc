@@ -1,0 +1,28 @@
+package ies
+
+import "rrc/utils"
+
+// SPS-Config-periodicity ::= ENUMERATED
+type SpsConfigPeriodicity struct {
+	Value utils.ENUMERATED
+}
+
+const (
+	SpsConfigPeriodicityEnumeratedNothing = iota
+	SpsConfigPeriodicityEnumeratedMs10
+	SpsConfigPeriodicityEnumeratedMs20
+	SpsConfigPeriodicityEnumeratedMs32
+	SpsConfigPeriodicityEnumeratedMs40
+	SpsConfigPeriodicityEnumeratedMs64
+	SpsConfigPeriodicityEnumeratedMs80
+	SpsConfigPeriodicityEnumeratedMs128
+	SpsConfigPeriodicityEnumeratedMs160
+	SpsConfigPeriodicityEnumeratedMs320
+	SpsConfigPeriodicityEnumeratedMs640
+	SpsConfigPeriodicityEnumeratedSpare6
+	SpsConfigPeriodicityEnumeratedSpare5
+	SpsConfigPeriodicityEnumeratedSpare4
+	SpsConfigPeriodicityEnumeratedSpare3
+	SpsConfigPeriodicityEnumeratedSpare2
+	SpsConfigPeriodicityEnumeratedSpare1
+)

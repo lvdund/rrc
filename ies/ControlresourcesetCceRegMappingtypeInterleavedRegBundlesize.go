@@ -1,0 +1,15 @@
+package ies
+
+import "rrc/utils"
+
+// ControlResourceSet-cce-REG-MappingType-interleaved-reg-BundleSize ::= ENUMERATED
+type ControlresourcesetCceRegMappingtypeInterleavedRegBundlesize struct {
+	Value utils.ENUMERATED
+}
+
+const (
+	ControlresourcesetCceRegMappingtypeInterleavedRegBundlesizeEnumeratedNothing = iota
+	ControlresourcesetCceRegMappingtypeInterleavedRegBundlesizeEnumeratedN2
+	ControlresourcesetCceRegMappingtypeInterleavedRegBundlesizeEnumeratedN3
+	ControlresourcesetCceRegMappingtypeInterleavedRegBundlesizeEnumeratedN6
+)

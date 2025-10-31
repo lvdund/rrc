@@ -1,0 +1,7 @@
+package ies
+
+// RedCap-ConfigCommonSIB-r17-cellBarredRedCap-r17 ::= SEQUENCE
+type RedcapConfigcommonsibR17CellbarredredcapR17 struct {
+	Cellbarredredcap1rxR17 RedcapConfigcommonsibR17CellbarredredcapR17Cellbarredredcap1rxR17
+	Cellbarredredcap2rxR17 RedcapConfigcommonsibR17CellbarredredcapR17Cellbarredredcap2rxR17
+}

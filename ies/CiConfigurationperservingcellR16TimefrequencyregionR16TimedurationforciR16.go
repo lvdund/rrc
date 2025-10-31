@@ -1,0 +1,16 @@
+package ies
+
+import "rrc/utils"
+
+// CI-ConfigurationPerServingCell-r16-timeFrequencyRegion-r16-timeDurationForCI-r16 ::= ENUMERATED
+type CiConfigurationperservingcellR16TimefrequencyregionR16TimedurationforciR16 struct {
+	Value utils.ENUMERATED
+}
+
+const (
+	CiConfigurationperservingcellR16TimefrequencyregionR16TimedurationforciR16EnumeratedNothing = iota
+	CiConfigurationperservingcellR16TimefrequencyregionR16TimedurationforciR16EnumeratedN2
+	CiConfigurationperservingcellR16TimefrequencyregionR16TimedurationforciR16EnumeratedN4
+	CiConfigurationperservingcellR16TimefrequencyregionR16TimedurationforciR16EnumeratedN7
+	CiConfigurationperservingcellR16TimefrequencyregionR16TimedurationforciR16EnumeratedN14
+)

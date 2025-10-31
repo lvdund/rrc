@@ -1,7 +1,9 @@
 package ies
 
-// SecurityModeFailure ::= SEQUENCE
+import "rrc/utils"
+
+// SecurityModeFailure-IEs ::= SEQUENCE
 type Securitymodefailure struct {
-	RrcTransactionidentifier RrcTransactionidentifier
-	Criticalextensions       SecuritymodefailureCriticalextensions
+	Latenoncriticalextension *utils.OCTETSTRING
+	Noncriticalextension     *SecuritymodefailureIesNoncriticalextension
 }

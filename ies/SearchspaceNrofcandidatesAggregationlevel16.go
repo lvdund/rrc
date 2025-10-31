@@ -1,0 +1,20 @@
+package ies
+
+import "rrc/utils"
+
+// SearchSpace-nrofCandidates-aggregationLevel16 ::= ENUMERATED
+type SearchspaceNrofcandidatesAggregationlevel16 struct {
+	Value utils.ENUMERATED
+}
+
+const (
+	SearchspaceNrofcandidatesAggregationlevel16EnumeratedNothing = iota
+	SearchspaceNrofcandidatesAggregationlevel16EnumeratedN0
+	SearchspaceNrofcandidatesAggregationlevel16EnumeratedN1
+	SearchspaceNrofcandidatesAggregationlevel16EnumeratedN2
+	SearchspaceNrofcandidatesAggregationlevel16EnumeratedN3
+	SearchspaceNrofcandidatesAggregationlevel16EnumeratedN4
+	SearchspaceNrofcandidatesAggregationlevel16EnumeratedN5
+	SearchspaceNrofcandidatesAggregationlevel16EnumeratedN6
+	SearchspaceNrofcandidatesAggregationlevel16EnumeratedN8
+)

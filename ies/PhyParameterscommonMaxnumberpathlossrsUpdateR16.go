@@ -1,0 +1,17 @@
+package ies
+
+import "rrc/utils"
+
+// Phy-ParametersCommon-maxNumberPathlossRS-Update-r16 ::= ENUMERATED
+type PhyParameterscommonMaxnumberpathlossrsUpdateR16 struct {
+	Value utils.ENUMERATED
+}
+
+const (
+	PhyParameterscommonMaxnumberpathlossrsUpdateR16EnumeratedNothing = iota
+	PhyParameterscommonMaxnumberpathlossrsUpdateR16EnumeratedN4
+	PhyParameterscommonMaxnumberpathlossrsUpdateR16EnumeratedN8
+	PhyParameterscommonMaxnumberpathlossrsUpdateR16EnumeratedN16
+	PhyParameterscommonMaxnumberpathlossrsUpdateR16EnumeratedN32
+	PhyParameterscommonMaxnumberpathlossrsUpdateR16EnumeratedN64
+)

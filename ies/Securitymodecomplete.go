@@ -1,7 +1,9 @@
 package ies
 
-// SecurityModeComplete ::= SEQUENCE
+import "rrc/utils"
+
+// SecurityModeComplete-IEs ::= SEQUENCE
 type Securitymodecomplete struct {
-	RrcTransactionidentifier RrcTransactionidentifier
-	Criticalextensions       SecuritymodecompleteCriticalextensions
+	Latenoncriticalextension *utils.OCTETSTRING
+	Noncriticalextension     *SecuritymodecompleteIesNoncriticalextension
 }

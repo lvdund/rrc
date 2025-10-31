@@ -1,0 +1,15 @@
+package ies
+
+import "rrc/utils"
+
+// FeatureSetUplink-v1720-phy-PrioritizationHighPriorityDG-LowPriorityCG-r17-pusch-PreparationLowPriority-r17 ::= ENUMERATED
+type FeaturesetuplinkV1720PhyPrioritizationhighprioritydgLowprioritycgR17PuschPreparationlowpriorityR17 struct {
+	Value utils.ENUMERATED
+}
+
+const (
+	FeaturesetuplinkV1720PhyPrioritizationhighprioritydgLowprioritycgR17PuschPreparationlowpriorityR17EnumeratedNothing = iota
+	FeaturesetuplinkV1720PhyPrioritizationhighprioritydgLowprioritycgR17PuschPreparationlowpriorityR17EnumeratedSym0
+	FeaturesetuplinkV1720PhyPrioritizationhighprioritydgLowprioritycgR17PuschPreparationlowpriorityR17EnumeratedSym1
+	FeaturesetuplinkV1720PhyPrioritizationhighprioritydgLowprioritycgR17PuschPreparationlowpriorityR17EnumeratedSym2
+)

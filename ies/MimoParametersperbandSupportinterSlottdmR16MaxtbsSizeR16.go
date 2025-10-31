@@ -1,0 +1,17 @@
+package ies
+
+import "rrc/utils"
+
+// MIMO-ParametersPerBand-supportInter-slotTDM-r16-maxTBS-Size-r16 ::= ENUMERATED
+type MimoParametersperbandSupportinterSlottdmR16MaxtbsSizeR16 struct {
+	Value utils.ENUMERATED
+}
+
+const (
+	MimoParametersperbandSupportinterSlottdmR16MaxtbsSizeR16EnumeratedNothing = iota
+	MimoParametersperbandSupportinterSlottdmR16MaxtbsSizeR16EnumeratedKb3
+	MimoParametersperbandSupportinterSlottdmR16MaxtbsSizeR16EnumeratedKb5
+	MimoParametersperbandSupportinterSlottdmR16MaxtbsSizeR16EnumeratedKb10
+	MimoParametersperbandSupportinterSlottdmR16MaxtbsSizeR16EnumeratedKb20
+	MimoParametersperbandSupportinterSlottdmR16MaxtbsSizeR16EnumeratedNorestriction
+)

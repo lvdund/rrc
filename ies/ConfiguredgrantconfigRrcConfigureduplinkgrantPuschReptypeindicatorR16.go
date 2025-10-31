@@ -1,0 +1,14 @@
+package ies
+
+import "rrc/utils"
+
+// ConfiguredGrantConfig-rrc-ConfiguredUplinkGrant-pusch-RepTypeIndicator-r16 ::= ENUMERATED
+type ConfiguredgrantconfigRrcConfigureduplinkgrantPuschReptypeindicatorR16 struct {
+	Value utils.ENUMERATED
+}
+
+const (
+	ConfiguredgrantconfigRrcConfigureduplinkgrantPuschReptypeindicatorR16EnumeratedNothing = iota
+	ConfiguredgrantconfigRrcConfigureduplinkgrantPuschReptypeindicatorR16EnumeratedPusch_Reptypea
+	ConfiguredgrantconfigRrcConfigureduplinkgrantPuschReptypeindicatorR16EnumeratedPusch_Reptypeb
+)

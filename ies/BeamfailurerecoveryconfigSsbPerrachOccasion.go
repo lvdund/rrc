@@ -1,0 +1,20 @@
+package ies
+
+import "rrc/utils"
+
+// BeamFailureRecoveryConfig-ssb-perRACH-Occasion ::= ENUMERATED
+type BeamfailurerecoveryconfigSsbPerrachOccasion struct {
+	Value utils.ENUMERATED
+}
+
+const (
+	BeamfailurerecoveryconfigSsbPerrachOccasionEnumeratedNothing = iota
+	BeamfailurerecoveryconfigSsbPerrachOccasionEnumeratedOneeighth
+	BeamfailurerecoveryconfigSsbPerrachOccasionEnumeratedOnefourth
+	BeamfailurerecoveryconfigSsbPerrachOccasionEnumeratedOnehalf
+	BeamfailurerecoveryconfigSsbPerrachOccasionEnumeratedOne
+	BeamfailurerecoveryconfigSsbPerrachOccasionEnumeratedTwo
+	BeamfailurerecoveryconfigSsbPerrachOccasionEnumeratedFour
+	BeamfailurerecoveryconfigSsbPerrachOccasionEnumeratedEight
+	BeamfailurerecoveryconfigSsbPerrachOccasionEnumeratedSixteen
+)

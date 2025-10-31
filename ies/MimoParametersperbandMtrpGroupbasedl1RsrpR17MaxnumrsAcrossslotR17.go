@@ -1,0 +1,17 @@
+package ies
+
+import "rrc/utils"
+
+// MIMO-ParametersPerBand-mTRP-GroupBasedL1-RSRP-r17-maxNumRS-AcrossSlot-r17 ::= ENUMERATED
+type MimoParametersperbandMtrpGroupbasedl1RsrpR17MaxnumrsAcrossslotR17 struct {
+	Value utils.ENUMERATED
+}
+
+const (
+	MimoParametersperbandMtrpGroupbasedl1RsrpR17MaxnumrsAcrossslotR17EnumeratedNothing = iota
+	MimoParametersperbandMtrpGroupbasedl1RsrpR17MaxnumrsAcrossslotR17EnumeratedN8
+	MimoParametersperbandMtrpGroupbasedl1RsrpR17MaxnumrsAcrossslotR17EnumeratedN16
+	MimoParametersperbandMtrpGroupbasedl1RsrpR17MaxnumrsAcrossslotR17EnumeratedN32
+	MimoParametersperbandMtrpGroupbasedl1RsrpR17MaxnumrsAcrossslotR17EnumeratedN64
+	MimoParametersperbandMtrpGroupbasedl1RsrpR17MaxnumrsAcrossslotR17EnumeratedN128
+)

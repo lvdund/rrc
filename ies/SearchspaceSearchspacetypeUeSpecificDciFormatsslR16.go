@@ -1,0 +1,17 @@
+package ies
+
+import "rrc/utils"
+
+// SearchSpace-searchSpaceType-ue-Specific-dci-FormatsSL-r16 ::= ENUMERATED
+type SearchspaceSearchspacetypeUeSpecificDciFormatsslR16 struct {
+	Value utils.ENUMERATED
+}
+
+const (
+	SearchspaceSearchspacetypeUeSpecificDciFormatsslR16EnumeratedNothing = iota
+	SearchspaceSearchspacetypeUeSpecificDciFormatsslR16EnumeratedFormats0_0_And_1_0
+	SearchspaceSearchspacetypeUeSpecificDciFormatsslR16EnumeratedFormats0_1_And_1_1
+	SearchspaceSearchspacetypeUeSpecificDciFormatsslR16EnumeratedFormats3_0
+	SearchspaceSearchspacetypeUeSpecificDciFormatsslR16EnumeratedFormats3_1
+	SearchspaceSearchspacetypeUeSpecificDciFormatsslR16EnumeratedFormats3_0_And_3_1
+)

@@ -1,0 +1,20 @@
+package ies
+
+import "rrc/utils"
+
+// RadioLinkMonitoringConfig-beamFailureInstanceMaxCount ::= ENUMERATED
+type RadiolinkmonitoringconfigBeamfailureinstancemaxcount struct {
+	Value utils.ENUMERATED
+}
+
+const (
+	RadiolinkmonitoringconfigBeamfailureinstancemaxcountEnumeratedNothing = iota
+	RadiolinkmonitoringconfigBeamfailureinstancemaxcountEnumeratedN1
+	RadiolinkmonitoringconfigBeamfailureinstancemaxcountEnumeratedN2
+	RadiolinkmonitoringconfigBeamfailureinstancemaxcountEnumeratedN3
+	RadiolinkmonitoringconfigBeamfailureinstancemaxcountEnumeratedN4
+	RadiolinkmonitoringconfigBeamfailureinstancemaxcountEnumeratedN5
+	RadiolinkmonitoringconfigBeamfailureinstancemaxcountEnumeratedN6
+	RadiolinkmonitoringconfigBeamfailureinstancemaxcountEnumeratedN8
+	RadiolinkmonitoringconfigBeamfailureinstancemaxcountEnumeratedN10
+)

@@ -1,0 +1,20 @@
+package ies
+
+import "rrc/utils"
+
+// MsgA-PUSCH-Resource-r16-msgA-Alpha-r16 ::= ENUMERATED
+type MsgaPuschResourceR16MsgaAlphaR16 struct {
+	Value utils.ENUMERATED
+}
+
+const (
+	MsgaPuschResourceR16MsgaAlphaR16EnumeratedNothing = iota
+	MsgaPuschResourceR16MsgaAlphaR16EnumeratedAlpha0
+	MsgaPuschResourceR16MsgaAlphaR16EnumeratedAlpha04
+	MsgaPuschResourceR16MsgaAlphaR16EnumeratedAlpha05
+	MsgaPuschResourceR16MsgaAlphaR16EnumeratedAlpha06
+	MsgaPuschResourceR16MsgaAlphaR16EnumeratedAlpha07
+	MsgaPuschResourceR16MsgaAlphaR16EnumeratedAlpha08
+	MsgaPuschResourceR16MsgaAlphaR16EnumeratedAlpha09
+	MsgaPuschResourceR16MsgaAlphaR16EnumeratedAlpha1
+)

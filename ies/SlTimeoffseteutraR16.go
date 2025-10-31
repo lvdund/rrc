@@ -1,0 +1,30 @@
+package ies
+
+import "rrc/utils"
+
+// SL-TimeOffsetEUTRA-r16 ::= ENUMERATED
+type SlTimeoffseteutraR16 struct {
+	Value utils.ENUMERATED
+}
+
+const (
+	SlTimeoffseteutraR16EnumeratedNothing = iota
+	SlTimeoffseteutraR16EnumeratedMs0
+	SlTimeoffseteutraR16EnumeratedMs0dot25
+	SlTimeoffseteutraR16EnumeratedMs0dot5
+	SlTimeoffseteutraR16EnumeratedMs0dot625
+	SlTimeoffseteutraR16EnumeratedMs0dot75
+	SlTimeoffseteutraR16EnumeratedMs1
+	SlTimeoffseteutraR16EnumeratedMs1dot25
+	SlTimeoffseteutraR16EnumeratedMs1dot5
+	SlTimeoffseteutraR16EnumeratedMs1dot75
+	SlTimeoffseteutraR16EnumeratedMs2
+	SlTimeoffseteutraR16EnumeratedMs2dot5
+	SlTimeoffseteutraR16EnumeratedMs3
+	SlTimeoffseteutraR16EnumeratedMs4
+	SlTimeoffseteutraR16EnumeratedMs5
+	SlTimeoffseteutraR16EnumeratedMs6
+	SlTimeoffseteutraR16EnumeratedMs8
+	SlTimeoffseteutraR16EnumeratedMs10
+	SlTimeoffseteutraR16EnumeratedMs20
+)

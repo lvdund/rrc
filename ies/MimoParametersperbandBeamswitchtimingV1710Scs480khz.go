@@ -1,0 +1,17 @@
+package ies
+
+import "rrc/utils"
+
+// MIMO-ParametersPerBand-beamSwitchTiming-v1710-scs-480kHz ::= ENUMERATED
+type MimoParametersperbandBeamswitchtimingV1710Scs480khz struct {
+	Value utils.ENUMERATED
+}
+
+const (
+	MimoParametersperbandBeamswitchtimingV1710Scs480khzEnumeratedNothing = iota
+	MimoParametersperbandBeamswitchtimingV1710Scs480khzEnumeratedSym56
+	MimoParametersperbandBeamswitchtimingV1710Scs480khzEnumeratedSym112
+	MimoParametersperbandBeamswitchtimingV1710Scs480khzEnumeratedSym192
+	MimoParametersperbandBeamswitchtimingV1710Scs480khzEnumeratedSym896
+	MimoParametersperbandBeamswitchtimingV1710Scs480khzEnumeratedSym1344
+)

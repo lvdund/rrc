@@ -1,0 +1,20 @@
+package ies
+
+import "rrc/utils"
+
+// CLI-EventTriggerConfig-r16-reportAmount-r16 ::= ENUMERATED
+type CliEventtriggerconfigR16ReportamountR16 struct {
+	Value utils.ENUMERATED
+}
+
+const (
+	CliEventtriggerconfigR16ReportamountR16EnumeratedNothing = iota
+	CliEventtriggerconfigR16ReportamountR16EnumeratedR1
+	CliEventtriggerconfigR16ReportamountR16EnumeratedR2
+	CliEventtriggerconfigR16ReportamountR16EnumeratedR4
+	CliEventtriggerconfigR16ReportamountR16EnumeratedR8
+	CliEventtriggerconfigR16ReportamountR16EnumeratedR16
+	CliEventtriggerconfigR16ReportamountR16EnumeratedR32
+	CliEventtriggerconfigR16ReportamountR16EnumeratedR64
+	CliEventtriggerconfigR16ReportamountR16EnumeratedInfinity
+)

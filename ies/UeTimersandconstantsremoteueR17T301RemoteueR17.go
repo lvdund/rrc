@@ -1,0 +1,20 @@
+package ies
+
+import "rrc/utils"
+
+// UE-TimersAndConstantsRemoteUE-r17-t301-RemoteUE-r17 ::= ENUMERATED
+type UeTimersandconstantsremoteueR17T301RemoteueR17 struct {
+	Value utils.ENUMERATED
+}
+
+const (
+	UeTimersandconstantsremoteueR17T301RemoteueR17EnumeratedNothing = iota
+	UeTimersandconstantsremoteueR17T301RemoteueR17EnumeratedMs100
+	UeTimersandconstantsremoteueR17T301RemoteueR17EnumeratedMs200
+	UeTimersandconstantsremoteueR17T301RemoteueR17EnumeratedMs300
+	UeTimersandconstantsremoteueR17T301RemoteueR17EnumeratedMs400
+	UeTimersandconstantsremoteueR17T301RemoteueR17EnumeratedMs600
+	UeTimersandconstantsremoteueR17T301RemoteueR17EnumeratedMs1000
+	UeTimersandconstantsremoteueR17T301RemoteueR17EnumeratedMs1500
+	UeTimersandconstantsremoteueR17T301RemoteueR17EnumeratedMs2000
+)

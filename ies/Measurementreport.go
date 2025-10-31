@@ -1,6 +1,10 @@
 package ies
 
-// MeasurementReport ::= SEQUENCE
+import "rrc/utils"
+
+// MeasurementReport-IEs ::= SEQUENCE
 type Measurementreport struct {
-	Criticalextensions MeasurementreportCriticalextensions
+	Measresults              Measresults
+	Latenoncriticalextension *utils.OCTETSTRING
+	Noncriticalextension     *MeasurementreportIesNoncriticalextension
 }

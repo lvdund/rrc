@@ -1,0 +1,15 @@
+package ies
+
+import "rrc/utils"
+
+// SearchSpaceExt-v1700-searchSpaceType-r17-common-r17-dci-Format2-7-r17-nrofCandidates-PEI-r17-aggregationLevel8-r17 ::= ENUMERATED
+type SearchspaceextV1700SearchspacetypeR17CommonR17DciFormat27R17NrofcandidatesPeiR17Aggregationlevel8R17 struct {
+	Value utils.ENUMERATED
+}
+
+const (
+	SearchspaceextV1700SearchspacetypeR17CommonR17DciFormat27R17NrofcandidatesPeiR17Aggregationlevel8R17EnumeratedNothing = iota
+	SearchspaceextV1700SearchspacetypeR17CommonR17DciFormat27R17NrofcandidatesPeiR17Aggregationlevel8R17EnumeratedN0
+	SearchspaceextV1700SearchspacetypeR17CommonR17DciFormat27R17NrofcandidatesPeiR17Aggregationlevel8R17EnumeratedN1
+	SearchspaceextV1700SearchspacetypeR17CommonR17DciFormat27R17NrofcandidatesPeiR17Aggregationlevel8R17EnumeratedN2
+)

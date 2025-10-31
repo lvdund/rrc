@@ -3,40 +3,40 @@ package ies
 // UL-DCCH-MessageType-c1 ::= CHOICE
 const (
 	UlDcchMessagetypeC1ChoiceNothing = iota
-	UlDcchMessagetypeC1ChoiceCsfbparametersrequestcdma2000
 	UlDcchMessagetypeC1ChoiceMeasurementreport
-	UlDcchMessagetypeC1ChoiceRrcconnectionreconfigurationcomplete
-	UlDcchMessagetypeC1ChoiceRrcconnectionreestablishmentcomplete
-	UlDcchMessagetypeC1ChoiceRrcconnectionsetupcomplete
+	UlDcchMessagetypeC1ChoiceRrcreconfigurationcomplete
+	UlDcchMessagetypeC1ChoiceRrcsetupcomplete
+	UlDcchMessagetypeC1ChoiceRrcreestablishmentcomplete
+	UlDcchMessagetypeC1ChoiceRrcresumecomplete
 	UlDcchMessagetypeC1ChoiceSecuritymodecomplete
 	UlDcchMessagetypeC1ChoiceSecuritymodefailure
-	UlDcchMessagetypeC1ChoiceUecapabilityinformation
-	UlDcchMessagetypeC1ChoiceUlhandoverpreparationtransfer
 	UlDcchMessagetypeC1ChoiceUlinformationtransfer
+	UlDcchMessagetypeC1ChoiceLocationmeasurementindication
+	UlDcchMessagetypeC1ChoiceUecapabilityinformation
 	UlDcchMessagetypeC1ChoiceCountercheckresponse
-	UlDcchMessagetypeC1ChoiceUeinformationresponseR9
-	UlDcchMessagetypeC1ChoiceProximityindicationR9
-	UlDcchMessagetypeC1ChoiceRnreconfigurationcompleteR10
-	UlDcchMessagetypeC1ChoiceMbmscountingresponseR10
-	UlDcchMessagetypeC1ChoiceInterfreqrstdmeasurementindicationR10
+	UlDcchMessagetypeC1ChoiceUeassistanceinformation
+	UlDcchMessagetypeC1ChoiceFailureinformation
+	UlDcchMessagetypeC1ChoiceUlinformationtransfermrdc
+	UlDcchMessagetypeC1ChoiceScgfailureinformation
+	UlDcchMessagetypeC1ChoiceScgfailureinformationeutra
 )
 
 type UlDcchMessagetypeC1 struct {
-	Choice                                uint64
-	Csfbparametersrequestcdma2000         *Csfbparametersrequestcdma2000
-	Measurementreport                     *Measurementreport
-	Rrcconnectionreconfigurationcomplete  *Rrcconnectionreconfigurationcomplete
-	Rrcconnectionreestablishmentcomplete  *Rrcconnectionreestablishmentcomplete
-	Rrcconnectionsetupcomplete            *Rrcconnectionsetupcomplete
-	Securitymodecomplete                  *Securitymodecomplete
-	Securitymodefailure                   *Securitymodefailure
-	Uecapabilityinformation               *Uecapabilityinformation
-	Ulhandoverpreparationtransfer         *Ulhandoverpreparationtransfer
-	Ulinformationtransfer                 *Ulinformationtransfer
-	Countercheckresponse                  *Countercheckresponse
-	UeinformationresponseR9               *UeinformationresponseR9
-	ProximityindicationR9                 *ProximityindicationR9
-	RnreconfigurationcompleteR10          *RnreconfigurationcompleteR10
-	MbmscountingresponseR10               *MbmscountingresponseR10
-	InterfreqrstdmeasurementindicationR10 *InterfreqrstdmeasurementindicationR10
+	Choice                        uint64
+	Measurementreport             *Measurementreport
+	Rrcreconfigurationcomplete    *Rrcreconfigurationcomplete
+	Rrcsetupcomplete              *Rrcsetupcomplete
+	Rrcreestablishmentcomplete    *Rrcreestablishmentcomplete
+	Rrcresumecomplete             *Rrcresumecomplete
+	Securitymodecomplete          *Securitymodecomplete
+	Securitymodefailure           *Securitymodefailure
+	Ulinformationtransfer         *Ulinformationtransfer
+	Locationmeasurementindication *Locationmeasurementindication
+	Uecapabilityinformation       *Uecapabilityinformation
+	Countercheckresponse          *Countercheckresponse
+	Ueassistanceinformation       *Ueassistanceinformation
+	Failureinformation            *Failureinformation
+	Ulinformationtransfermrdc     *Ulinformationtransfermrdc
+	Scgfailureinformation         *Scgfailureinformation
+	Scgfailureinformationeutra    *Scgfailureinformationeutra
 }

@@ -1,0 +1,16 @@
+package ies
+
+import "rrc/utils"
+
+// PDSCH-CodeBlockGroupTransmission-maxCodeBlockGroupsPerTransportBlock ::= ENUMERATED
+type PdschCodeblockgrouptransmissionMaxcodeblockgroupspertransportblock struct {
+	Value utils.ENUMERATED
+}
+
+const (
+	PdschCodeblockgrouptransmissionMaxcodeblockgroupspertransportblockEnumeratedNothing = iota
+	PdschCodeblockgrouptransmissionMaxcodeblockgroupspertransportblockEnumeratedN2
+	PdschCodeblockgrouptransmissionMaxcodeblockgroupspertransportblockEnumeratedN4
+	PdschCodeblockgrouptransmissionMaxcodeblockgroupspertransportblockEnumeratedN6
+	PdschCodeblockgrouptransmissionMaxcodeblockgroupspertransportblockEnumeratedN8
+)

@@ -1,0 +1,13 @@
+package ies
+
+import "rrc/utils"
+
+// MeasAndMobParametersMRDC-Common-v1610-condPSCellChangeParametersCommon-r16-condPSCellChangeFDD-TDD-r16 ::= ENUMERATED
+type MeasandmobparametersmrdcCommonV1610CondpscellchangeparameterscommonR16CondpscellchangefddTddR16 struct {
+	Value utils.ENUMERATED
+}
+
+const (
+	MeasandmobparametersmrdcCommonV1610CondpscellchangeparameterscommonR16CondpscellchangefddTddR16EnumeratedNothing = iota
+	MeasandmobparametersmrdcCommonV1610CondpscellchangeparameterscommonR16CondpscellchangefddTddR16EnumeratedSupported
+)

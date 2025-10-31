@@ -1,0 +1,18 @@
+package ies
+
+import "rrc/utils"
+
+// CSI-IM-Resource-csi-IM-ResourceElementPattern-pattern0-subcarrierLocation-p0 ::= ENUMERATED
+type CsiImResourceCsiImResourceelementpatternPattern0SubcarrierlocationP0 struct {
+	Value utils.ENUMERATED
+}
+
+const (
+	CsiImResourceCsiImResourceelementpatternPattern0SubcarrierlocationP0EnumeratedNothing = iota
+	CsiImResourceCsiImResourceelementpatternPattern0SubcarrierlocationP0EnumeratedS0
+	CsiImResourceCsiImResourceelementpatternPattern0SubcarrierlocationP0EnumeratedS2
+	CsiImResourceCsiImResourceelementpatternPattern0SubcarrierlocationP0EnumeratedS4
+	CsiImResourceCsiImResourceelementpatternPattern0SubcarrierlocationP0EnumeratedS6
+	CsiImResourceCsiImResourceelementpatternPattern0SubcarrierlocationP0EnumeratedS8
+	CsiImResourceCsiImResourceelementpatternPattern0SubcarrierlocationP0EnumeratedS10
+)

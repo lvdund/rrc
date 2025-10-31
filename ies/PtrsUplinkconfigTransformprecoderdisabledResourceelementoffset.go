@@ -1,0 +1,15 @@
+package ies
+
+import "rrc/utils"
+
+// PTRS-UplinkConfig-transformPrecoderDisabled-resourceElementOffset ::= ENUMERATED
+type PtrsUplinkconfigTransformprecoderdisabledResourceelementoffset struct {
+	Value utils.ENUMERATED
+}
+
+const (
+	PtrsUplinkconfigTransformprecoderdisabledResourceelementoffsetEnumeratedNothing = iota
+	PtrsUplinkconfigTransformprecoderdisabledResourceelementoffsetEnumeratedOffset01
+	PtrsUplinkconfigTransformprecoderdisabledResourceelementoffsetEnumeratedOffset10
+	PtrsUplinkconfigTransformprecoderdisabledResourceelementoffsetEnumeratedOffset11
+)

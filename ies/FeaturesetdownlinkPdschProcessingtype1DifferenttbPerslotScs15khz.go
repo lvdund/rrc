@@ -1,0 +1,15 @@
+package ies
+
+import "rrc/utils"
+
+// FeatureSetDownlink-pdsch-ProcessingType1-DifferentTB-PerSlot-scs-15kHz ::= ENUMERATED
+type FeaturesetdownlinkPdschProcessingtype1DifferenttbPerslotScs15khz struct {
+	Value utils.ENUMERATED
+}
+
+const (
+	FeaturesetdownlinkPdschProcessingtype1DifferenttbPerslotScs15khzEnumeratedNothing = iota
+	FeaturesetdownlinkPdschProcessingtype1DifferenttbPerslotScs15khzEnumeratedUpto2
+	FeaturesetdownlinkPdschProcessingtype1DifferenttbPerslotScs15khzEnumeratedUpto4
+	FeaturesetdownlinkPdschProcessingtype1DifferenttbPerslotScs15khzEnumeratedUpto7
+)

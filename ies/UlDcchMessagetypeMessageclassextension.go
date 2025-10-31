@@ -4,11 +4,11 @@ package ies
 const (
 	UlDcchMessagetypeMessageclassextensionChoiceNothing = iota
 	UlDcchMessagetypeMessageclassextensionChoiceC2
-	UlDcchMessagetypeMessageclassextensionChoiceMessageclassextensionfutureR11
+	UlDcchMessagetypeMessageclassextensionChoiceMessageclassextensionfutureR16
 )
 
 type UlDcchMessagetypeMessageclassextension struct {
 	Choice                         uint64
 	C2                             *UlDcchMessagetypeMessageclassextensionC2
-	MessageclassextensionfutureR11 *UlDcchMessagetypeMessageclassextensionMessageclassextensionfutureR11
+	MessageclassextensionfutureR16 *UlDcchMessagetypeMessageclassextensionMessageclassextensionfutureR16
 }

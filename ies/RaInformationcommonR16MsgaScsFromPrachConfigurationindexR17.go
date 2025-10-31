@@ -1,0 +1,16 @@
+package ies
+
+import "rrc/utils"
+
+// RA-InformationCommon-r16-msgA-SCS-From-prach-ConfigurationIndex-r17 ::= ENUMERATED
+type RaInformationcommonR16MsgaScsFromPrachConfigurationindexR17 struct {
+	Value utils.ENUMERATED
+}
+
+const (
+	RaInformationcommonR16MsgaScsFromPrachConfigurationindexR17EnumeratedNothing = iota
+	RaInformationcommonR16MsgaScsFromPrachConfigurationindexR17EnumeratedKhz1dot25
+	RaInformationcommonR16MsgaScsFromPrachConfigurationindexR17EnumeratedKhz5
+	RaInformationcommonR16MsgaScsFromPrachConfigurationindexR17EnumeratedSpare2
+	RaInformationcommonR16MsgaScsFromPrachConfigurationindexR17EnumeratedSpare1
+)

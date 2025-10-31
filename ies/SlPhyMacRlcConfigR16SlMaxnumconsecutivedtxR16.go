@@ -1,0 +1,20 @@
+package ies
+
+import "rrc/utils"
+
+// SL-PHY-MAC-RLC-Config-r16-sl-MaxNumConsecutiveDTX-r16 ::= ENUMERATED
+type SlPhyMacRlcConfigR16SlMaxnumconsecutivedtxR16 struct {
+	Value utils.ENUMERATED
+}
+
+const (
+	SlPhyMacRlcConfigR16SlMaxnumconsecutivedtxR16EnumeratedNothing = iota
+	SlPhyMacRlcConfigR16SlMaxnumconsecutivedtxR16EnumeratedN1
+	SlPhyMacRlcConfigR16SlMaxnumconsecutivedtxR16EnumeratedN2
+	SlPhyMacRlcConfigR16SlMaxnumconsecutivedtxR16EnumeratedN3
+	SlPhyMacRlcConfigR16SlMaxnumconsecutivedtxR16EnumeratedN4
+	SlPhyMacRlcConfigR16SlMaxnumconsecutivedtxR16EnumeratedN6
+	SlPhyMacRlcConfigR16SlMaxnumconsecutivedtxR16EnumeratedN8
+	SlPhyMacRlcConfigR16SlMaxnumconsecutivedtxR16EnumeratedN16
+	SlPhyMacRlcConfigR16SlMaxnumconsecutivedtxR16EnumeratedN32
+)

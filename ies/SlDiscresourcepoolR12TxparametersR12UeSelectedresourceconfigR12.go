@@ -1,7 +1,0 @@
-package ies
-
-// SL-DiscResourcePool-r12-txParameters-r12-ue-SelectedResourceConfig-r12 ::= SEQUENCE
-type SlDiscresourcepoolR12TxparametersR12UeSelectedresourceconfigR12 struct {
-	PoolselectionR12 SlDiscresourcepoolR12TxparametersR12UeSelectedresourceconfigR12PoolselectionR12
-	TxprobabilityR12 SlDiscresourcepoolR12TxparametersR12UeSelectedresourceconfigR12TxprobabilityR12
-}

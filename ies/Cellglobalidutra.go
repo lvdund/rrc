@@ -1,9 +1,0 @@
-package ies
-
-import "rrc/utils"
-
-// CellGlobalIdUTRA ::= SEQUENCE
-type Cellglobalidutra struct {
-	PlmnIdentity PlmnIdentity
-	Cellidentity utils.BITSTRING `lb:28,ub:28`
-}

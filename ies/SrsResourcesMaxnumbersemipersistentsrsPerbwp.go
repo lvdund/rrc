@@ -1,0 +1,17 @@
+package ies
+
+import "rrc/utils"
+
+// SRS-Resources-maxNumberSemiPersistentSRS-PerBWP ::= ENUMERATED
+type SrsResourcesMaxnumbersemipersistentsrsPerbwp struct {
+	Value utils.ENUMERATED
+}
+
+const (
+	SrsResourcesMaxnumbersemipersistentsrsPerbwpEnumeratedNothing = iota
+	SrsResourcesMaxnumbersemipersistentsrsPerbwpEnumeratedN1
+	SrsResourcesMaxnumbersemipersistentsrsPerbwpEnumeratedN2
+	SrsResourcesMaxnumbersemipersistentsrsPerbwpEnumeratedN4
+	SrsResourcesMaxnumbersemipersistentsrsPerbwpEnumeratedN8
+	SrsResourcesMaxnumbersemipersistentsrsPerbwpEnumeratedN16
+)

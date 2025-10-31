@@ -1,0 +1,7 @@
+package ies
+
+// MeasAndMobParametersMRDC-Common-v1610-condPSCellChangeParametersCommon-r16 ::= SEQUENCE
+type MeasandmobparametersmrdcCommonV1610CondpscellchangeparameterscommonR16 struct {
+	CondpscellchangefddTddR16 *MeasandmobparametersmrdcCommonV1610CondpscellchangeparameterscommonR16CondpscellchangefddTddR16
+	Condpscellchangefr1Fr2R16 *MeasandmobparametersmrdcCommonV1610CondpscellchangeparameterscommonR16Condpscellchangefr1Fr2R16
+}

@@ -1,0 +1,13 @@
+package ies
+
+import "rrc/utils"
+
+// BandParametersSidelinkDiscovery-r17-sl-TransmissionMode2-PartialSensing-r17-extendedCP-Mode2PartialSensing-r17 ::= ENUMERATED
+type BandparameterssidelinkdiscoveryR17SlTransmissionmode2PartialsensingR17ExtendedcpMode2partialsensingR17 struct {
+	Value utils.ENUMERATED
+}
+
+const (
+	BandparameterssidelinkdiscoveryR17SlTransmissionmode2PartialsensingR17ExtendedcpMode2partialsensingR17EnumeratedNothing = iota
+	BandparameterssidelinkdiscoveryR17SlTransmissionmode2PartialsensingR17ExtendedcpMode2partialsensingR17EnumeratedSupported
+)

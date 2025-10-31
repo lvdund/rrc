@@ -1,0 +1,15 @@
+package ies
+
+import "rrc/utils"
+
+// BandCombination-UplinkTxSwitch-v1720-uplinkTxSwitching-OptionSupport2T2T-r17 ::= ENUMERATED
+type BandcombinationUplinktxswitchV1720UplinktxswitchingOptionsupport2t2tR17 struct {
+	Value utils.ENUMERATED
+}
+
+const (
+	BandcombinationUplinktxswitchV1720UplinktxswitchingOptionsupport2t2tR17EnumeratedNothing = iota
+	BandcombinationUplinktxswitchV1720UplinktxswitchingOptionsupport2t2tR17EnumeratedSwitchedul
+	BandcombinationUplinktxswitchV1720UplinktxswitchingOptionsupport2t2tR17EnumeratedDualul
+	BandcombinationUplinktxswitchV1720UplinktxswitchingOptionsupport2t2tR17EnumeratedBoth
+)

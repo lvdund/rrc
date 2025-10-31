@@ -1,0 +1,13 @@
+package ies
+
+import "rrc/utils"
+
+// SharedSpectrumChAccessParamsPerBand-v1710-ul-Semi-StaticChAccessIndependentConfig-r17 ::= ENUMERATED
+type SharedspectrumchaccessparamsperbandV1710UlSemiStaticchaccessindependentconfigR17 struct {
+	Value utils.ENUMERATED
+}
+
+const (
+	SharedspectrumchaccessparamsperbandV1710UlSemiStaticchaccessindependentconfigR17EnumeratedNothing = iota
+	SharedspectrumchaccessparamsperbandV1710UlSemiStaticchaccessindependentconfigR17EnumeratedSupported
+)

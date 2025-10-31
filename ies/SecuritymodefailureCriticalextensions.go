@@ -3,12 +3,12 @@ package ies
 // SecurityModeFailure-criticalExtensions ::= CHOICE
 const (
 	SecuritymodefailureCriticalextensionsChoiceNothing = iota
-	SecuritymodefailureCriticalextensionsChoiceSecuritymodefailureR8
+	SecuritymodefailureCriticalextensionsChoiceSecuritymodefailure
 	SecuritymodefailureCriticalextensionsChoiceCriticalextensionsfuture
 )
 
 type SecuritymodefailureCriticalextensions struct {
 	Choice                   uint64
-	SecuritymodefailureR8    *SecuritymodefailureR8
+	Securitymodefailure      *Securitymodefailure
 	Criticalextensionsfuture *SecuritymodefailureCriticalextensionsCriticalextensionsfuture
 }

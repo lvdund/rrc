@@ -1,0 +1,15 @@
+package ies
+
+import "rrc/utils"
+
+// MIMO-ParametersPerBand-maxNumberNonGroupBeamReporting ::= ENUMERATED
+type MimoParametersperbandMaxnumbernongroupbeamreporting struct {
+	Value utils.ENUMERATED
+}
+
+const (
+	MimoParametersperbandMaxnumbernongroupbeamreportingEnumeratedNothing = iota
+	MimoParametersperbandMaxnumbernongroupbeamreportingEnumeratedN1
+	MimoParametersperbandMaxnumbernongroupbeamreportingEnumeratedN2
+	MimoParametersperbandMaxnumbernongroupbeamreportingEnumeratedN4
+)

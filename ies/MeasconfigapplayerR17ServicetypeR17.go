@@ -1,0 +1,20 @@
+package ies
+
+import "rrc/utils"
+
+// MeasConfigAppLayer-r17-serviceType-r17 ::= ENUMERATED
+type MeasconfigapplayerR17ServicetypeR17 struct {
+	Value utils.ENUMERATED
+}
+
+const (
+	MeasconfigapplayerR17ServicetypeR17EnumeratedNothing = iota
+	MeasconfigapplayerR17ServicetypeR17EnumeratedStreaming
+	MeasconfigapplayerR17ServicetypeR17EnumeratedMtsi
+	MeasconfigapplayerR17ServicetypeR17EnumeratedVr
+	MeasconfigapplayerR17ServicetypeR17EnumeratedSpare5
+	MeasconfigapplayerR17ServicetypeR17EnumeratedSpare4
+	MeasconfigapplayerR17ServicetypeR17EnumeratedSpare3
+	MeasconfigapplayerR17ServicetypeR17EnumeratedSpare2
+	MeasconfigapplayerR17ServicetypeR17EnumeratedSpare1
+)

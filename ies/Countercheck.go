@@ -1,7 +1,10 @@
 package ies
 
-// CounterCheck ::= SEQUENCE
+import "rrc/utils"
+
+// CounterCheck-IEs ::= SEQUENCE
 type Countercheck struct {
-	RrcTransactionidentifier RrcTransactionidentifier
-	Criticalextensions       CountercheckCriticalextensions
+	DrbCountmsbInfolist      DrbCountmsbInfolist
+	Latenoncriticalextension *utils.OCTETSTRING
+	Noncriticalextension     *CountercheckIesNoncriticalextension
 }

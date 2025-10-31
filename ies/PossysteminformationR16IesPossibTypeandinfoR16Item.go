@@ -1,0 +1,99 @@
+package ies
+
+// PosSystemInformation-r16-IEs-posSIB-TypeAndInfo-r16-Item ::= CHOICE
+// Extensible
+const (
+	PossysteminformationR16IesPossibTypeandinfoR16ItemChoiceNothing = iota
+	PossysteminformationR16IesPossibTypeandinfoR16ItemChoicePossib11R16
+	PossysteminformationR16IesPossibTypeandinfoR16ItemChoicePossib12R16
+	PossysteminformationR16IesPossibTypeandinfoR16ItemChoicePossib13R16
+	PossysteminformationR16IesPossibTypeandinfoR16ItemChoicePossib14R16
+	PossysteminformationR16IesPossibTypeandinfoR16ItemChoicePossib15R16
+	PossysteminformationR16IesPossibTypeandinfoR16ItemChoicePossib16R16
+	PossysteminformationR16IesPossibTypeandinfoR16ItemChoicePossib17R16
+	PossysteminformationR16IesPossibTypeandinfoR16ItemChoicePossib18R16
+	PossysteminformationR16IesPossibTypeandinfoR16ItemChoicePossib21R16
+	PossysteminformationR16IesPossibTypeandinfoR16ItemChoicePossib22R16
+	PossysteminformationR16IesPossibTypeandinfoR16ItemChoicePossib23R16
+	PossysteminformationR16IesPossibTypeandinfoR16ItemChoicePossib24R16
+	PossysteminformationR16IesPossibTypeandinfoR16ItemChoicePossib25R16
+	PossysteminformationR16IesPossibTypeandinfoR16ItemChoicePossib26R16
+	PossysteminformationR16IesPossibTypeandinfoR16ItemChoicePossib27R16
+	PossysteminformationR16IesPossibTypeandinfoR16ItemChoicePossib28R16
+	PossysteminformationR16IesPossibTypeandinfoR16ItemChoicePossib29R16
+	PossysteminformationR16IesPossibTypeandinfoR16ItemChoicePossib210R16
+	PossysteminformationR16IesPossibTypeandinfoR16ItemChoicePossib211R16
+	PossysteminformationR16IesPossibTypeandinfoR16ItemChoicePossib212R16
+	PossysteminformationR16IesPossibTypeandinfoR16ItemChoicePossib213R16
+	PossysteminformationR16IesPossibTypeandinfoR16ItemChoicePossib214R16
+	PossysteminformationR16IesPossibTypeandinfoR16ItemChoicePossib215R16
+	PossysteminformationR16IesPossibTypeandinfoR16ItemChoicePossib216R16
+	PossysteminformationR16IesPossibTypeandinfoR16ItemChoicePossib217R16
+	PossysteminformationR16IesPossibTypeandinfoR16ItemChoicePossib218R16
+	PossysteminformationR16IesPossibTypeandinfoR16ItemChoicePossib219R16
+	PossysteminformationR16IesPossibTypeandinfoR16ItemChoicePossib220R16
+	PossysteminformationR16IesPossibTypeandinfoR16ItemChoicePossib221R16
+	PossysteminformationR16IesPossibTypeandinfoR16ItemChoicePossib222R16
+	PossysteminformationR16IesPossibTypeandinfoR16ItemChoicePossib223R16
+	PossysteminformationR16IesPossibTypeandinfoR16ItemChoicePossib31R16
+	PossysteminformationR16IesPossibTypeandinfoR16ItemChoicePossib41R16
+	PossysteminformationR16IesPossibTypeandinfoR16ItemChoicePossib51R16
+	PossysteminformationR16IesPossibTypeandinfoR16ItemChoicePossib61R16
+	PossysteminformationR16IesPossibTypeandinfoR16ItemChoicePossib62R16
+	PossysteminformationR16IesPossibTypeandinfoR16ItemChoicePossib63R16
+	PossysteminformationR16IesPossibTypeandinfoR16ItemChoicePossib19V1700
+	PossysteminformationR16IesPossibTypeandinfoR16ItemChoicePossib110V1700
+	PossysteminformationR16IesPossibTypeandinfoR16ItemChoicePossib224V1700
+	PossysteminformationR16IesPossibTypeandinfoR16ItemChoicePossib225V1700
+	PossysteminformationR16IesPossibTypeandinfoR16ItemChoicePossib64V1700
+	PossysteminformationR16IesPossibTypeandinfoR16ItemChoicePossib65V1700
+	PossysteminformationR16IesPossibTypeandinfoR16ItemChoicePossib66V1700
+)
+
+type PossysteminformationR16IesPossibTypeandinfoR16Item struct {
+	Choice         uint64
+	Possib11R16    *SibposR16
+	Possib12R16    *SibposR16
+	Possib13R16    *SibposR16
+	Possib14R16    *SibposR16
+	Possib15R16    *SibposR16
+	Possib16R16    *SibposR16
+	Possib17R16    *SibposR16
+	Possib18R16    *SibposR16
+	Possib21R16    *SibposR16
+	Possib22R16    *SibposR16
+	Possib23R16    *SibposR16
+	Possib24R16    *SibposR16
+	Possib25R16    *SibposR16
+	Possib26R16    *SibposR16
+	Possib27R16    *SibposR16
+	Possib28R16    *SibposR16
+	Possib29R16    *SibposR16
+	Possib210R16   *SibposR16
+	Possib211R16   *SibposR16
+	Possib212R16   *SibposR16
+	Possib213R16   *SibposR16
+	Possib214R16   *SibposR16
+	Possib215R16   *SibposR16
+	Possib216R16   *SibposR16
+	Possib217R16   *SibposR16
+	Possib218R16   *SibposR16
+	Possib219R16   *SibposR16
+	Possib220R16   *SibposR16
+	Possib221R16   *SibposR16
+	Possib222R16   *SibposR16
+	Possib223R16   *SibposR16
+	Possib31R16    *SibposR16
+	Possib41R16    *SibposR16
+	Possib51R16    *SibposR16
+	Possib61R16    *SibposR16
+	Possib62R16    *SibposR16
+	Possib63R16    *SibposR16
+	Possib19V1700  *SibposR16
+	Possib110V1700 *SibposR16
+	Possib224V1700 *SibposR16
+	Possib225V1700 *SibposR16
+	Possib64V1700  *SibposR16
+	Possib65V1700  *SibposR16
+	Possib66V1700  *SibposR16
+}

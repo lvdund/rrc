@@ -3,12 +3,12 @@ package ies
 // ULInformationTransfer-criticalExtensions ::= CHOICE
 const (
 	UlinformationtransferCriticalextensionsChoiceNothing = iota
-	UlinformationtransferCriticalextensionsChoiceC1
+	UlinformationtransferCriticalextensionsChoiceUlinformationtransfer
 	UlinformationtransferCriticalextensionsChoiceCriticalextensionsfuture
 )
 
 type UlinformationtransferCriticalextensions struct {
 	Choice                   uint64
-	C1                       *UlinformationtransferCriticalextensionsC1
+	Ulinformationtransfer    *Ulinformationtransfer
 	Criticalextensionsfuture *UlinformationtransferCriticalextensionsCriticalextensionsfuture
 }

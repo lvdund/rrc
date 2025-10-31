@@ -2,7 +2,7 @@ package ies
 
 import "rrc/utils"
 
-// AdditionalSpectrumEmission ::= utils.INTEGER (1..32)
+// AdditionalSpectrumEmission ::= utils.INTEGER (0..7)
 type Additionalspectrumemission struct {
-	Value utils.INTEGER `lb:0,ub:32`
+	Value utils.INTEGER `lb:0,ub:7`
 }

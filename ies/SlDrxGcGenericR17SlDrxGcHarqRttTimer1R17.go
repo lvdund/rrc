@@ -1,0 +1,20 @@
+package ies
+
+import "rrc/utils"
+
+// SL-DRX-GC-Generic-r17-sl-DRX-GC-HARQ-RTT-Timer1-r17 ::= ENUMERATED
+type SlDrxGcGenericR17SlDrxGcHarqRttTimer1R17 struct {
+	Value utils.ENUMERATED
+}
+
+const (
+	SlDrxGcGenericR17SlDrxGcHarqRttTimer1R17EnumeratedNothing = iota
+	SlDrxGcGenericR17SlDrxGcHarqRttTimer1R17EnumeratedSl0
+	SlDrxGcGenericR17SlDrxGcHarqRttTimer1R17EnumeratedSl1
+	SlDrxGcGenericR17SlDrxGcHarqRttTimer1R17EnumeratedSl2
+	SlDrxGcGenericR17SlDrxGcHarqRttTimer1R17EnumeratedSl4
+	SlDrxGcGenericR17SlDrxGcHarqRttTimer1R17EnumeratedSpare4
+	SlDrxGcGenericR17SlDrxGcHarqRttTimer1R17EnumeratedSpare3
+	SlDrxGcGenericR17SlDrxGcHarqRttTimer1R17EnumeratedSpare2
+	SlDrxGcGenericR17SlDrxGcHarqRttTimer1R17EnumeratedSpare1
+)

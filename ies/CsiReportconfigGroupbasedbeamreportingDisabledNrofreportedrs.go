@@ -1,0 +1,16 @@
+package ies
+
+import "rrc/utils"
+
+// CSI-ReportConfig-groupBasedBeamReporting-disabled-nrofReportedRS ::= ENUMERATED
+type CsiReportconfigGroupbasedbeamreportingDisabledNrofreportedrs struct {
+	Value utils.ENUMERATED
+}
+
+const (
+	CsiReportconfigGroupbasedbeamreportingDisabledNrofreportedrsEnumeratedNothing = iota
+	CsiReportconfigGroupbasedbeamreportingDisabledNrofreportedrsEnumeratedN1
+	CsiReportconfigGroupbasedbeamreportingDisabledNrofreportedrsEnumeratedN2
+	CsiReportconfigGroupbasedbeamreportingDisabledNrofreportedrsEnumeratedN3
+	CsiReportconfigGroupbasedbeamreportingDisabledNrofreportedrsEnumeratedN4
+)

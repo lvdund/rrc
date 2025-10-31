@@ -1,0 +1,20 @@
+package ies
+
+import "rrc/utils"
+
+// SI-RequestConfig-rach-OccasionsSI-ssb-perRACH-Occasion ::= ENUMERATED
+type SiRequestconfigRachOccasionssiSsbPerrachOccasion struct {
+	Value utils.ENUMERATED
+}
+
+const (
+	SiRequestconfigRachOccasionssiSsbPerrachOccasionEnumeratedNothing = iota
+	SiRequestconfigRachOccasionssiSsbPerrachOccasionEnumeratedOneeighth
+	SiRequestconfigRachOccasionssiSsbPerrachOccasionEnumeratedOnefourth
+	SiRequestconfigRachOccasionssiSsbPerrachOccasionEnumeratedOnehalf
+	SiRequestconfigRachOccasionssiSsbPerrachOccasionEnumeratedOne
+	SiRequestconfigRachOccasionssiSsbPerrachOccasionEnumeratedTwo
+	SiRequestconfigRachOccasionssiSsbPerrachOccasionEnumeratedFour
+	SiRequestconfigRachOccasionssiSsbPerrachOccasionEnumeratedEight
+	SiRequestconfigRachOccasionssiSsbPerrachOccasionEnumeratedSixteen
+)

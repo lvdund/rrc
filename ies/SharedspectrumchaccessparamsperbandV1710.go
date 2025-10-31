@@ -1,0 +1,7 @@
+package ies
+
+// SharedSpectrumChAccessParamsPerBand-v1710 ::= SEQUENCE
+type SharedspectrumchaccessparamsperbandV1710 struct {
+	UlSemiStaticchaccessdependentconfigR17   *SharedspectrumchaccessparamsperbandV1710UlSemiStaticchaccessdependentconfigR17
+	UlSemiStaticchaccessindependentconfigR17 *SharedspectrumchaccessparamsperbandV1710UlSemiStaticchaccessindependentconfigR17
+}

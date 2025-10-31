@@ -1,8 +1,0 @@
-package ies
-
-// MeasParameters-v1630 ::= SEQUENCE
-type MeasparametersV1630 struct {
-	NrIdleinactivebeammeasfr1R16 *MeasparametersV1630NrIdleinactivebeammeasfr1R16
-	NrIdleinactivebeammeasfr2R16 *MeasparametersV1630NrIdleinactivebeammeasfr2R16
-	CeMeasrssDedicatedsamerbsR16 *MeasparametersV1630CeMeasrssDedicatedsamerbsR16
-}

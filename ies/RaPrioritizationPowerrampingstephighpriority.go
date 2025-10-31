@@ -1,0 +1,16 @@
+package ies
+
+import "rrc/utils"
+
+// RA-Prioritization-powerRampingStepHighPriority ::= ENUMERATED
+type RaPrioritizationPowerrampingstephighpriority struct {
+	Value utils.ENUMERATED
+}
+
+const (
+	RaPrioritizationPowerrampingstephighpriorityEnumeratedNothing = iota
+	RaPrioritizationPowerrampingstephighpriorityEnumeratedDb0
+	RaPrioritizationPowerrampingstephighpriorityEnumeratedDb2
+	RaPrioritizationPowerrampingstephighpriorityEnumeratedDb4
+	RaPrioritizationPowerrampingstephighpriorityEnumeratedDb6
+)

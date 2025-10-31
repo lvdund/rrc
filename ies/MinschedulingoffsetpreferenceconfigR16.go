@@ -1,0 +1,6 @@
+package ies
+
+// MinSchedulingOffsetPreferenceConfig-r16 ::= SEQUENCE
+type MinschedulingoffsetpreferenceconfigR16 struct {
+	MinschedulingoffsetpreferenceprohibittimerR16 MinschedulingoffsetpreferenceconfigR16MinschedulingoffsetpreferenceprohibittimerR16
+}

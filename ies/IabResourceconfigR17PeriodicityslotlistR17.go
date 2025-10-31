@@ -1,0 +1,24 @@
+package ies
+
+import "rrc/utils"
+
+// IAB-ResourceConfig-r17-periodicitySlotList-r17 ::= ENUMERATED
+type IabResourceconfigR17PeriodicityslotlistR17 struct {
+	Value utils.ENUMERATED
+}
+
+const (
+	IabResourceconfigR17PeriodicityslotlistR17EnumeratedNothing = iota
+	IabResourceconfigR17PeriodicityslotlistR17EnumeratedMs0p5
+	IabResourceconfigR17PeriodicityslotlistR17EnumeratedMs0p625
+	IabResourceconfigR17PeriodicityslotlistR17EnumeratedMs1
+	IabResourceconfigR17PeriodicityslotlistR17EnumeratedMs1p25
+	IabResourceconfigR17PeriodicityslotlistR17EnumeratedMs2
+	IabResourceconfigR17PeriodicityslotlistR17EnumeratedMs2p5
+	IabResourceconfigR17PeriodicityslotlistR17EnumeratedMs5
+	IabResourceconfigR17PeriodicityslotlistR17EnumeratedMs10
+	IabResourceconfigR17PeriodicityslotlistR17EnumeratedMs20
+	IabResourceconfigR17PeriodicityslotlistR17EnumeratedMs40
+	IabResourceconfigR17PeriodicityslotlistR17EnumeratedMs80
+	IabResourceconfigR17PeriodicityslotlistR17EnumeratedMs160
+)

@@ -1,0 +1,20 @@
+package ies
+
+import "rrc/utils"
+
+// FailureReportSCG-failureType-v1610 ::= ENUMERATED
+type FailurereportscgFailuretypeV1610 struct {
+	Value utils.ENUMERATED
+}
+
+const (
+	FailurereportscgFailuretypeV1610EnumeratedNothing = iota
+	FailurereportscgFailuretypeV1610EnumeratedScg_Lbtfailure_R16
+	FailurereportscgFailuretypeV1610EnumeratedBeamfailurerecoveryfailure_R16
+	FailurereportscgFailuretypeV1610EnumeratedT312_Expiry_R16
+	FailurereportscgFailuretypeV1610EnumeratedBh_Rlf_R16
+	FailurereportscgFailuretypeV1610EnumeratedBeamfailure_R17
+	FailurereportscgFailuretypeV1610EnumeratedSpare3
+	FailurereportscgFailuretypeV1610EnumeratedSpare2
+	FailurereportscgFailuretypeV1610EnumeratedSpare1
+)

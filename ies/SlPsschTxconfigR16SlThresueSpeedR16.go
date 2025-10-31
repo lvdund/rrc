@@ -1,0 +1,20 @@
+package ies
+
+import "rrc/utils"
+
+// SL-PSSCH-TxConfig-r16-sl-ThresUE-Speed-r16 ::= ENUMERATED
+type SlPsschTxconfigR16SlThresueSpeedR16 struct {
+	Value utils.ENUMERATED
+}
+
+const (
+	SlPsschTxconfigR16SlThresueSpeedR16EnumeratedNothing = iota
+	SlPsschTxconfigR16SlThresueSpeedR16EnumeratedKmph60
+	SlPsschTxconfigR16SlThresueSpeedR16EnumeratedKmph80
+	SlPsschTxconfigR16SlThresueSpeedR16EnumeratedKmph100
+	SlPsschTxconfigR16SlThresueSpeedR16EnumeratedKmph120
+	SlPsschTxconfigR16SlThresueSpeedR16EnumeratedKmph140
+	SlPsschTxconfigR16SlThresueSpeedR16EnumeratedKmph160
+	SlPsschTxconfigR16SlThresueSpeedR16EnumeratedKmph180
+	SlPsschTxconfigR16SlThresueSpeedR16EnumeratedKmph200
+)

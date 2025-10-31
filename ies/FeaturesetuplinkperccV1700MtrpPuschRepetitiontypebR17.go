@@ -1,0 +1,16 @@
+package ies
+
+import "rrc/utils"
+
+// FeatureSetUplinkPerCC-v1700-mTRP-PUSCH-RepetitionTypeB-r17 ::= ENUMERATED
+type FeaturesetuplinkperccV1700MtrpPuschRepetitiontypebR17 struct {
+	Value utils.ENUMERATED
+}
+
+const (
+	FeaturesetuplinkperccV1700MtrpPuschRepetitiontypebR17EnumeratedNothing = iota
+	FeaturesetuplinkperccV1700MtrpPuschRepetitiontypebR17EnumeratedN1
+	FeaturesetuplinkperccV1700MtrpPuschRepetitiontypebR17EnumeratedN2
+	FeaturesetuplinkperccV1700MtrpPuschRepetitiontypebR17EnumeratedN3
+	FeaturesetuplinkperccV1700MtrpPuschRepetitiontypebR17EnumeratedN4
+)

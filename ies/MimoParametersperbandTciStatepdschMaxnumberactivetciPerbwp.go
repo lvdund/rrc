@@ -1,0 +1,16 @@
+package ies
+
+import "rrc/utils"
+
+// MIMO-ParametersPerBand-tci-StatePDSCH-maxNumberActiveTCI-PerBWP ::= ENUMERATED
+type MimoParametersperbandTciStatepdschMaxnumberactivetciPerbwp struct {
+	Value utils.ENUMERATED
+}
+
+const (
+	MimoParametersperbandTciStatepdschMaxnumberactivetciPerbwpEnumeratedNothing = iota
+	MimoParametersperbandTciStatepdschMaxnumberactivetciPerbwpEnumeratedN1
+	MimoParametersperbandTciStatepdschMaxnumberactivetciPerbwpEnumeratedN2
+	MimoParametersperbandTciStatepdschMaxnumberactivetciPerbwpEnumeratedN4
+	MimoParametersperbandTciStatepdschMaxnumberactivetciPerbwpEnumeratedN8
+)

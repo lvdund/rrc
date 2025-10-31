@@ -1,0 +1,20 @@
+package ies
+
+import "rrc/utils"
+
+// BandSidelink-r16-rx-IUC-Scheme2-Mode2Sidelink-r17 ::= ENUMERATED
+type BandsidelinkR16RxIucScheme2Mode2sidelinkR17 struct {
+	Value utils.ENUMERATED
+}
+
+const (
+	BandsidelinkR16RxIucScheme2Mode2sidelinkR17EnumeratedNothing = iota
+	BandsidelinkR16RxIucScheme2Mode2sidelinkR17EnumeratedN5
+	BandsidelinkR16RxIucScheme2Mode2sidelinkR17EnumeratedN15
+	BandsidelinkR16RxIucScheme2Mode2sidelinkR17EnumeratedN25
+	BandsidelinkR16RxIucScheme2Mode2sidelinkR17EnumeratedN32
+	BandsidelinkR16RxIucScheme2Mode2sidelinkR17EnumeratedN35
+	BandsidelinkR16RxIucScheme2Mode2sidelinkR17EnumeratedN45
+	BandsidelinkR16RxIucScheme2Mode2sidelinkR17EnumeratedN50
+	BandsidelinkR16RxIucScheme2Mode2sidelinkR17EnumeratedN64
+)

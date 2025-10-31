@@ -1,0 +1,14 @@
+package ies
+
+import "rrc/utils"
+
+// Phy-ParametersCommon-pdcch-MonitoringAnyOccasionsWithSpanGapCrossCarrierSch-r16 ::= ENUMERATED
+type PhyParameterscommonPdcchMonitoringanyoccasionswithspangapcrosscarrierschR16 struct {
+	Value utils.ENUMERATED
+}
+
+const (
+	PhyParameterscommonPdcchMonitoringanyoccasionswithspangapcrosscarrierschR16EnumeratedNothing = iota
+	PhyParameterscommonPdcchMonitoringanyoccasionswithspangapcrosscarrierschR16EnumeratedMode2
+	PhyParameterscommonPdcchMonitoringanyoccasionswithspangapcrosscarrierschR16EnumeratedMode3
+)

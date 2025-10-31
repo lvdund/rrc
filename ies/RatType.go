@@ -9,12 +9,8 @@ type RatType struct {
 
 const (
 	RatTypeEnumeratedNothing = iota
-	RatTypeEnumeratedEutra
-	RatTypeEnumeratedUtra
-	RatTypeEnumeratedGeran_Cs
-	RatTypeEnumeratedGeran_Ps
-	RatTypeEnumeratedCdma2000_1xrtt
 	RatTypeEnumeratedNr
 	RatTypeEnumeratedEutra_Nr
-	RatTypeEnumeratedSpare1
+	RatTypeEnumeratedEutra
+	RatTypeEnumeratedUtra_Fdd_V1610
 )

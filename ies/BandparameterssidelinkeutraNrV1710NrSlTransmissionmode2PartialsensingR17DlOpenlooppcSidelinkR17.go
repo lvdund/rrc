@@ -1,0 +1,13 @@
+package ies
+
+import "rrc/utils"
+
+// BandParametersSidelinkEUTRA-NR-v1710-nr-sl-TransmissionMode2-PartialSensing-r17-dl-openLoopPC-Sidelink-r17 ::= ENUMERATED
+type BandparameterssidelinkeutraNrV1710NrSlTransmissionmode2PartialsensingR17DlOpenlooppcSidelinkR17 struct {
+	Value utils.ENUMERATED
+}
+
+const (
+	BandparameterssidelinkeutraNrV1710NrSlTransmissionmode2PartialsensingR17DlOpenlooppcSidelinkR17EnumeratedNothing = iota
+	BandparameterssidelinkeutraNrV1710NrSlTransmissionmode2PartialsensingR17DlOpenlooppcSidelinkR17EnumeratedSupported
+)

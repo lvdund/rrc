@@ -1,7 +1,0 @@
-package ies
-
-// PLMN-IdentityList-r15 ::= SEQUENCE OF PLMN-IdentityInfo-r15
-// SIZE (1..maxPLMN-r11)
-type PlmnIdentitylistR15 struct {
-	Value []PlmnIdentityinfoR15 `lb:1,ub:maxPLMNR11`
-}

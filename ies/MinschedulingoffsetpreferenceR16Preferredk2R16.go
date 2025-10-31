@@ -1,0 +1,9 @@
+package ies
+
+// MinSchedulingOffsetPreference-r16-preferredK2-r16 ::= SEQUENCE
+type MinschedulingoffsetpreferenceR16Preferredk2R16 struct {
+	Preferredk2Scs15khzR16  *MinschedulingoffsetpreferenceR16Preferredk2R16Preferredk2Scs15khzR16
+	Preferredk2Scs30khzR16  *MinschedulingoffsetpreferenceR16Preferredk2R16Preferredk2Scs30khzR16
+	Preferredk2Scs60khzR16  *MinschedulingoffsetpreferenceR16Preferredk2R16Preferredk2Scs60khzR16
+	Preferredk2Scs120khzR16 *MinschedulingoffsetpreferenceR16Preferredk2R16Preferredk2Scs120khzR16
+}

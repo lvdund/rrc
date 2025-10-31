@@ -1,0 +1,20 @@
+package ies
+
+import "rrc/utils"
+
+// VarMeasIdleConfig-r16-measIdleDuration-r16 ::= ENUMERATED
+type VarmeasidleconfigR16MeasidledurationR16 struct {
+	Value utils.ENUMERATED
+}
+
+const (
+	VarmeasidleconfigR16MeasidledurationR16EnumeratedNothing = iota
+	VarmeasidleconfigR16MeasidledurationR16EnumeratedSec10
+	VarmeasidleconfigR16MeasidledurationR16EnumeratedSec30
+	VarmeasidleconfigR16MeasidledurationR16EnumeratedSec60
+	VarmeasidleconfigR16MeasidledurationR16EnumeratedSec120
+	VarmeasidleconfigR16MeasidledurationR16EnumeratedSec180
+	VarmeasidleconfigR16MeasidledurationR16EnumeratedSec240
+	VarmeasidleconfigR16MeasidledurationR16EnumeratedSec300
+	VarmeasidleconfigR16MeasidledurationR16EnumeratedSpare
+)

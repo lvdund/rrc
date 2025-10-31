@@ -1,0 +1,14 @@
+package ies
+
+import "rrc/utils"
+
+// BandNR-dynamicSlotRepetitionMulticastTN-NonSharedSpectrumChAccess-r17 ::= ENUMERATED
+type BandnrDynamicslotrepetitionmulticasttnNonsharedspectrumchaccessR17 struct {
+	Value utils.ENUMERATED
+}
+
+const (
+	BandnrDynamicslotrepetitionmulticasttnNonsharedspectrumchaccessR17EnumeratedNothing = iota
+	BandnrDynamicslotrepetitionmulticasttnNonsharedspectrumchaccessR17EnumeratedN8
+	BandnrDynamicslotrepetitionmulticasttnNonsharedspectrumchaccessR17EnumeratedN16
+)

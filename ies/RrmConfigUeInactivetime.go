@@ -22,7 +22,7 @@ const (
 	RrmConfigUeInactivetimeEnumeratedS40
 	RrmConfigUeInactivetimeEnumeratedS50
 	RrmConfigUeInactivetimeEnumeratedMin1
-	RrmConfigUeInactivetimeEnumeratedMin1s20c
+	RrmConfigUeInactivetimeEnumeratedMin1s20
 	RrmConfigUeInactivetimeEnumeratedMin1s40
 	RrmConfigUeInactivetimeEnumeratedMin2
 	RrmConfigUeInactivetimeEnumeratedMin2s30

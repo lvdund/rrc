@@ -1,4 +1,14 @@
 package ies
 
-// BCCH-BCH-MessageType ::= MasterInformationBlock
-type BcchBchMessagetype Masterinformationblock
+// BCCH-BCH-MessageType ::= CHOICE
+const (
+	BcchBchMessagetypeChoiceNothing = iota
+	BcchBchMessagetypeChoiceMib
+	BcchBchMessagetypeChoiceMessageclassextension
+)
+
+type BcchBchMessagetype struct {
+	Choice                uint64
+	Mib                   *Mib
+	Messageclassextension *BcchBchMessagetypeMessageclassextension
+}

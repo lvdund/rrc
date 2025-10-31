@@ -1,0 +1,14 @@
+package ies
+
+import "rrc/utils"
+
+// PhysicalCellGroupConfig-pdsch-HARQ-ACK-Codebook-secondaryPUCCHgroup-r16 ::= ENUMERATED
+type PhysicalcellgroupconfigPdschHarqAckCodebookSecondarypucchgroupR16 struct {
+	Value utils.ENUMERATED
+}
+
+const (
+	PhysicalcellgroupconfigPdschHarqAckCodebookSecondarypucchgroupR16EnumeratedNothing = iota
+	PhysicalcellgroupconfigPdschHarqAckCodebookSecondarypucchgroupR16EnumeratedSemistatic
+	PhysicalcellgroupconfigPdschHarqAckCodebookSecondarypucchgroupR16EnumeratedDynamic
+)

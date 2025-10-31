@@ -1,0 +1,16 @@
+package ies
+
+import "rrc/utils"
+
+// MinSchedulingOffsetPreferenceExt-r17-preferredK2-r17-preferredK2-SCS-960kHz-r17 ::= ENUMERATED
+type MinschedulingoffsetpreferenceextR17Preferredk2R17Preferredk2Scs960khzR17 struct {
+	Value utils.ENUMERATED
+}
+
+const (
+	MinschedulingoffsetpreferenceextR17Preferredk2R17Preferredk2Scs960khzR17EnumeratedNothing = iota
+	MinschedulingoffsetpreferenceextR17Preferredk2R17Preferredk2Scs960khzR17EnumeratedSl8
+	MinschedulingoffsetpreferenceextR17Preferredk2R17Preferredk2Scs960khzR17EnumeratedSl16
+	MinschedulingoffsetpreferenceextR17Preferredk2R17Preferredk2Scs960khzR17EnumeratedSl32
+	MinschedulingoffsetpreferenceextR17Preferredk2R17Preferredk2Scs960khzR17EnumeratedSl48
+)

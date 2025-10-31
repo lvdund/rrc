@@ -1,0 +1,9 @@
+package ies
+
+// FeatureSetUplink-v1610-cbgPUSCH-ProcessingType1-DifferentTB-PerSlot-r16 ::= SEQUENCE
+type FeaturesetuplinkV1610CbgpuschProcessingtype1DifferenttbPerslotR16 struct {
+	Scs15khzR16  *FeaturesetuplinkV1610CbgpuschProcessingtype1DifferenttbPerslotR16Scs15khzR16
+	Scs30khzR16  *FeaturesetuplinkV1610CbgpuschProcessingtype1DifferenttbPerslotR16Scs30khzR16
+	Scs60khzR16  *FeaturesetuplinkV1610CbgpuschProcessingtype1DifferenttbPerslotR16Scs60khzR16
+	Scs120khzR16 *FeaturesetuplinkV1610CbgpuschProcessingtype1DifferenttbPerslotR16Scs120khzR16
+}

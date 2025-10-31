@@ -1,0 +1,7 @@
+package ies
+
+// SpCellConfig-lowMobilityEvaluationConnected-r17 ::= SEQUENCE
+type SpcellconfigLowmobilityevaluationconnectedR17 struct {
+	SSearchdeltapConnectedR17 SpcellconfigLowmobilityevaluationconnectedR17SSearchdeltapConnectedR17
+	TSearchdeltapConnectedR17 SpcellconfigLowmobilityevaluationconnectedR17TSearchdeltapConnectedR17
+}

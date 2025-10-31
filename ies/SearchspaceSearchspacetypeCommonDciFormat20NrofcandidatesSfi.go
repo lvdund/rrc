@@ -1,0 +1,10 @@
+package ies
+
+// SearchSpace-searchSpaceType-common-dci-Format2-0-nrofCandidates-SFI ::= SEQUENCE
+type SearchspaceSearchspacetypeCommonDciFormat20NrofcandidatesSfi struct {
+	Aggregationlevel1  *SearchspaceSearchspacetypeCommonDciFormat20NrofcandidatesSfiAggregationlevel1
+	Aggregationlevel2  *SearchspaceSearchspacetypeCommonDciFormat20NrofcandidatesSfiAggregationlevel2
+	Aggregationlevel4  *SearchspaceSearchspacetypeCommonDciFormat20NrofcandidatesSfiAggregationlevel4
+	Aggregationlevel8  *SearchspaceSearchspacetypeCommonDciFormat20NrofcandidatesSfiAggregationlevel8
+	Aggregationlevel16 *SearchspaceSearchspacetypeCommonDciFormat20NrofcandidatesSfiAggregationlevel16
+}

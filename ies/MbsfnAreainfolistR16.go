@@ -1,7 +1,0 @@
-package ies
-
-// MBSFN-AreaInfoList-r16 ::= SEQUENCE OF MBSFN-AreaInfo-r16
-// SIZE (1..maxMBSFN-Area)
-type MbsfnAreainfolistR16 struct {
-	Value []MbsfnAreainfoR16 `lb:1,ub:maxMBSFNArea`
-}

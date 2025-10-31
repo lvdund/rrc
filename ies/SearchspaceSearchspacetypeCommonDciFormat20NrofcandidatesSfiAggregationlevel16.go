@@ -1,0 +1,14 @@
+package ies
+
+import "rrc/utils"
+
+// SearchSpace-searchSpaceType-common-dci-Format2-0-nrofCandidates-SFI-aggregationLevel16 ::= ENUMERATED
+type SearchspaceSearchspacetypeCommonDciFormat20NrofcandidatesSfiAggregationlevel16 struct {
+	Value utils.ENUMERATED
+}
+
+const (
+	SearchspaceSearchspacetypeCommonDciFormat20NrofcandidatesSfiAggregationlevel16EnumeratedNothing = iota
+	SearchspaceSearchspacetypeCommonDciFormat20NrofcandidatesSfiAggregationlevel16EnumeratedN1
+	SearchspaceSearchspacetypeCommonDciFormat20NrofcandidatesSfiAggregationlevel16EnumeratedN2
+)

@@ -1,5 +1,4 @@
 package ies
 
 // DLDedicatedMessageSegment-r16-IEs-nonCriticalExtension ::= SEQUENCE
-type DldedicatedmessagesegmentR16IesNoncriticalextension struct {
-}
+type DldedicatedmessagesegmentR16IesNoncriticalextension struct{}

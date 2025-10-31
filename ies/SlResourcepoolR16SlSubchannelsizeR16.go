@@ -1,0 +1,20 @@
+package ies
+
+import "rrc/utils"
+
+// SL-ResourcePool-r16-sl-SubchannelSize-r16 ::= ENUMERATED
+type SlResourcepoolR16SlSubchannelsizeR16 struct {
+	Value utils.ENUMERATED
+}
+
+const (
+	SlResourcepoolR16SlSubchannelsizeR16EnumeratedNothing = iota
+	SlResourcepoolR16SlSubchannelsizeR16EnumeratedN10
+	SlResourcepoolR16SlSubchannelsizeR16EnumeratedN12
+	SlResourcepoolR16SlSubchannelsizeR16EnumeratedN15
+	SlResourcepoolR16SlSubchannelsizeR16EnumeratedN20
+	SlResourcepoolR16SlSubchannelsizeR16EnumeratedN25
+	SlResourcepoolR16SlSubchannelsizeR16EnumeratedN50
+	SlResourcepoolR16SlSubchannelsizeR16EnumeratedN75
+	SlResourcepoolR16SlSubchannelsizeR16EnumeratedN100
+)

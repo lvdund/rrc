@@ -1,9 +1,10 @@
 package ies
 
+import "rrc/utils"
+
 // Paging ::= SEQUENCE
 type Paging struct {
-	Pagingrecordlist       *Pagingrecordlist
-	Systeminfomodification *bool
-	EtwsIndication         *bool
-	Noncriticalextension   *PagingV890
+	Pagingrecordlist         *Pagingrecordlist
+	Latenoncriticalextension *utils.OCTETSTRING
+	Noncriticalextension     *PagingV1700
 }

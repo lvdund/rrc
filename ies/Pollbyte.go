@@ -9,6 +9,12 @@ type Pollbyte struct {
 
 const (
 	PollbyteEnumeratedNothing = iota
+	PollbyteEnumeratedKb1
+	PollbyteEnumeratedKb2
+	PollbyteEnumeratedKb5
+	PollbyteEnumeratedKb8
+	PollbyteEnumeratedKb10
+	PollbyteEnumeratedKb15
 	PollbyteEnumeratedKb25
 	PollbyteEnumeratedKb50
 	PollbyteEnumeratedKb75
@@ -23,6 +29,48 @@ const (
 	PollbyteEnumeratedKb1500
 	PollbyteEnumeratedKb2000
 	PollbyteEnumeratedKb3000
-	PollbyteEnumeratedKbinfinity
+	PollbyteEnumeratedKb4000
+	PollbyteEnumeratedKb4500
+	PollbyteEnumeratedKb5000
+	PollbyteEnumeratedKb5500
+	PollbyteEnumeratedKb6000
+	PollbyteEnumeratedKb6500
+	PollbyteEnumeratedKb7000
+	PollbyteEnumeratedKb7500
+	PollbyteEnumeratedMb8
+	PollbyteEnumeratedMb9
+	PollbyteEnumeratedMb10
+	PollbyteEnumeratedMb11
+	PollbyteEnumeratedMb12
+	PollbyteEnumeratedMb13
+	PollbyteEnumeratedMb14
+	PollbyteEnumeratedMb15
+	PollbyteEnumeratedMb16
+	PollbyteEnumeratedMb17
+	PollbyteEnumeratedMb18
+	PollbyteEnumeratedMb20
+	PollbyteEnumeratedMb25
+	PollbyteEnumeratedMb30
+	PollbyteEnumeratedMb40
+	PollbyteEnumeratedInfinity
+	PollbyteEnumeratedSpare20
+	PollbyteEnumeratedSpare19
+	PollbyteEnumeratedSpare18
+	PollbyteEnumeratedSpare17
+	PollbyteEnumeratedSpare16
+	PollbyteEnumeratedSpare15
+	PollbyteEnumeratedSpare14
+	PollbyteEnumeratedSpare13
+	PollbyteEnumeratedSpare12
+	PollbyteEnumeratedSpare11
+	PollbyteEnumeratedSpare10
+	PollbyteEnumeratedSpare9
+	PollbyteEnumeratedSpare8
+	PollbyteEnumeratedSpare7
+	PollbyteEnumeratedSpare6
+	PollbyteEnumeratedSpare5
+	PollbyteEnumeratedSpare4
+	PollbyteEnumeratedSpare3
+	PollbyteEnumeratedSpare2
 	PollbyteEnumeratedSpare1
 )

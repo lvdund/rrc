@@ -1,0 +1,28 @@
+package ies
+
+import "rrc/utils"
+
+// PDCP-Config-drb-discardTimer ::= ENUMERATED
+type PdcpConfigDrbDiscardtimer struct {
+	Value utils.ENUMERATED
+}
+
+const (
+	PdcpConfigDrbDiscardtimerEnumeratedNothing = iota
+	PdcpConfigDrbDiscardtimerEnumeratedMs10
+	PdcpConfigDrbDiscardtimerEnumeratedMs20
+	PdcpConfigDrbDiscardtimerEnumeratedMs30
+	PdcpConfigDrbDiscardtimerEnumeratedMs40
+	PdcpConfigDrbDiscardtimerEnumeratedMs50
+	PdcpConfigDrbDiscardtimerEnumeratedMs60
+	PdcpConfigDrbDiscardtimerEnumeratedMs75
+	PdcpConfigDrbDiscardtimerEnumeratedMs100
+	PdcpConfigDrbDiscardtimerEnumeratedMs150
+	PdcpConfigDrbDiscardtimerEnumeratedMs200
+	PdcpConfigDrbDiscardtimerEnumeratedMs250
+	PdcpConfigDrbDiscardtimerEnumeratedMs300
+	PdcpConfigDrbDiscardtimerEnumeratedMs500
+	PdcpConfigDrbDiscardtimerEnumeratedMs750
+	PdcpConfigDrbDiscardtimerEnumeratedMs1500
+	PdcpConfigDrbDiscardtimerEnumeratedInfinity
+)

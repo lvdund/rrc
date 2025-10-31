@@ -1,0 +1,18 @@
+package ies
+
+import "rrc/utils"
+
+// MeasAndMobParametersCommon-maxNumberCSI-RS-RRM-RS-SINR ::= ENUMERATED
+type MeasandmobparameterscommonMaxnumbercsiRsRrmRsSinr struct {
+	Value utils.ENUMERATED
+}
+
+const (
+	MeasandmobparameterscommonMaxnumbercsiRsRrmRsSinrEnumeratedNothing = iota
+	MeasandmobparameterscommonMaxnumbercsiRsRrmRsSinrEnumeratedN4
+	MeasandmobparameterscommonMaxnumbercsiRsRrmRsSinrEnumeratedN8
+	MeasandmobparameterscommonMaxnumbercsiRsRrmRsSinrEnumeratedN16
+	MeasandmobparameterscommonMaxnumbercsiRsRrmRsSinrEnumeratedN32
+	MeasandmobparameterscommonMaxnumbercsiRsRrmRsSinrEnumeratedN64
+	MeasandmobparameterscommonMaxnumbercsiRsRrmRsSinrEnumeratedN96
+)

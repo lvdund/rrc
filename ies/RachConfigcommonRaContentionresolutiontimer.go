@@ -1,0 +1,20 @@
+package ies
+
+import "rrc/utils"
+
+// RACH-ConfigCommon-ra-ContentionResolutionTimer ::= ENUMERATED
+type RachConfigcommonRaContentionresolutiontimer struct {
+	Value utils.ENUMERATED
+}
+
+const (
+	RachConfigcommonRaContentionresolutiontimerEnumeratedNothing = iota
+	RachConfigcommonRaContentionresolutiontimerEnumeratedSf8
+	RachConfigcommonRaContentionresolutiontimerEnumeratedSf16
+	RachConfigcommonRaContentionresolutiontimerEnumeratedSf24
+	RachConfigcommonRaContentionresolutiontimerEnumeratedSf32
+	RachConfigcommonRaContentionresolutiontimerEnumeratedSf40
+	RachConfigcommonRaContentionresolutiontimerEnumeratedSf48
+	RachConfigcommonRaContentionresolutiontimerEnumeratedSf56
+	RachConfigcommonRaContentionresolutiontimerEnumeratedSf64
+)

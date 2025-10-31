@@ -1,7 +1,10 @@
 package ies
 
-// SecurityModeCommand ::= SEQUENCE
+import "rrc/utils"
+
+// SecurityModeCommand-IEs ::= SEQUENCE
 type Securitymodecommand struct {
-	RrcTransactionidentifier RrcTransactionidentifier
-	Criticalextensions       SecuritymodecommandCriticalextensions
+	Securityconfigsmc        Securityconfigsmc
+	Latenoncriticalextension *utils.OCTETSTRING
+	Noncriticalextension     *SecuritymodecommandIesNoncriticalextension
 }

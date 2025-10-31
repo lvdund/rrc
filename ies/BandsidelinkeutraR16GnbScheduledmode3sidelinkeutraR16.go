@@ -1,0 +1,6 @@
+package ies
+
+// BandSidelinkEUTRA-r16-gnb-ScheduledMode3SidelinkEUTRA-r16 ::= SEQUENCE
+type BandsidelinkeutraR16GnbScheduledmode3sidelinkeutraR16 struct {
+	GnbScheduledmode3delaysidelinkeutraR16 BandsidelinkeutraR16GnbScheduledmode3sidelinkeutraR16GnbScheduledmode3delaysidelinkeutraR16
+}

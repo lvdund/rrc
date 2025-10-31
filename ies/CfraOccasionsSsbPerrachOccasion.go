@@ -1,0 +1,20 @@
+package ies
+
+import "rrc/utils"
+
+// CFRA-occasions-ssb-perRACH-Occasion ::= ENUMERATED
+type CfraOccasionsSsbPerrachOccasion struct {
+	Value utils.ENUMERATED
+}
+
+const (
+	CfraOccasionsSsbPerrachOccasionEnumeratedNothing = iota
+	CfraOccasionsSsbPerrachOccasionEnumeratedOneeighth
+	CfraOccasionsSsbPerrachOccasionEnumeratedOnefourth
+	CfraOccasionsSsbPerrachOccasionEnumeratedOnehalf
+	CfraOccasionsSsbPerrachOccasionEnumeratedOne
+	CfraOccasionsSsbPerrachOccasionEnumeratedTwo
+	CfraOccasionsSsbPerrachOccasionEnumeratedFour
+	CfraOccasionsSsbPerrachOccasionEnumeratedEight
+	CfraOccasionsSsbPerrachOccasionEnumeratedSixteen
+)

@@ -2,6 +2,7 @@ package ies
 
 // DL-AM-RLC ::= SEQUENCE
 type DlAmRlc struct {
-	TReordering     TReordering
+	SnFieldlength   *SnFieldlengtham
+	TReassembly     TReassembly
 	TStatusprohibit TStatusprohibit
 }

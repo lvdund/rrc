@@ -1,7 +1,0 @@
-package ies
-
-// SystemInformationBlockType3-cellReselectionInfoCommon-speedStateReselectionPars-q-HystSF ::= SEQUENCE
-type Systeminformationblocktype3CellreselectioninfocommonSpeedstatereselectionparsQHystsf struct {
-	SfMedium Systeminformationblocktype3CellreselectioninfocommonSpeedstatereselectionparsQHystsfSfMedium
-	SfHigh   Systeminformationblocktype3CellreselectioninfocommonSpeedstatereselectionparsQHystsfSfHigh
-}

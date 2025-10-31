@@ -1,0 +1,16 @@
+package ies
+
+import "rrc/utils"
+
+// PTRS-UplinkConfig-transformPrecoderDisabled-ptrs-Power ::= ENUMERATED
+type PtrsUplinkconfigTransformprecoderdisabledPtrsPower struct {
+	Value utils.ENUMERATED
+}
+
+const (
+	PtrsUplinkconfigTransformprecoderdisabledPtrsPowerEnumeratedNothing = iota
+	PtrsUplinkconfigTransformprecoderdisabledPtrsPowerEnumeratedP00
+	PtrsUplinkconfigTransformprecoderdisabledPtrsPowerEnumeratedP01
+	PtrsUplinkconfigTransformprecoderdisabledPtrsPowerEnumeratedP10
+	PtrsUplinkconfigTransformprecoderdisabledPtrsPowerEnumeratedP11
+)

@@ -1,0 +1,7 @@
+package ies
+
+// MIMO-ParametersPerBand-semi-PersistentL1-SINR-Report-PUCCH-r16 ::= SEQUENCE
+type MimoParametersperbandSemiPersistentl1SinrReportPucchR16 struct {
+	Supportreportformat12ofdmSymsR16  *MimoParametersperbandSemiPersistentl1SinrReportPucchR16Supportreportformat12ofdmSymsR16
+	Supportreportformat414ofdmSymsR16 *MimoParametersperbandSemiPersistentl1SinrReportPucchR16Supportreportformat414ofdmSymsR16
+}

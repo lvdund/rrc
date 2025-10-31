@@ -1,0 +1,28 @@
+package ies
+
+import "rrc/utils"
+
+// AggregatedBandwidth ::= ENUMERATED
+type Aggregatedbandwidth struct {
+	Value utils.ENUMERATED
+}
+
+const (
+	AggregatedbandwidthEnumeratedNothing = iota
+	AggregatedbandwidthEnumeratedMhz50
+	AggregatedbandwidthEnumeratedMhz100
+	AggregatedbandwidthEnumeratedMhz150
+	AggregatedbandwidthEnumeratedMhz200
+	AggregatedbandwidthEnumeratedMhz250
+	AggregatedbandwidthEnumeratedMhz300
+	AggregatedbandwidthEnumeratedMhz350
+	AggregatedbandwidthEnumeratedMhz400
+	AggregatedbandwidthEnumeratedMhz450
+	AggregatedbandwidthEnumeratedMhz500
+	AggregatedbandwidthEnumeratedMhz550
+	AggregatedbandwidthEnumeratedMhz600
+	AggregatedbandwidthEnumeratedMhz650
+	AggregatedbandwidthEnumeratedMhz700
+	AggregatedbandwidthEnumeratedMhz750
+	AggregatedbandwidthEnumeratedMhz800
+)

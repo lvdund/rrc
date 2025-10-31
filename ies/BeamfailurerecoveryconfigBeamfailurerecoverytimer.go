@@ -1,0 +1,20 @@
+package ies
+
+import "rrc/utils"
+
+// BeamFailureRecoveryConfig-beamFailureRecoveryTimer ::= ENUMERATED
+type BeamfailurerecoveryconfigBeamfailurerecoverytimer struct {
+	Value utils.ENUMERATED
+}
+
+const (
+	BeamfailurerecoveryconfigBeamfailurerecoverytimerEnumeratedNothing = iota
+	BeamfailurerecoveryconfigBeamfailurerecoverytimerEnumeratedMs10
+	BeamfailurerecoveryconfigBeamfailurerecoverytimerEnumeratedMs20
+	BeamfailurerecoveryconfigBeamfailurerecoverytimerEnumeratedMs40
+	BeamfailurerecoveryconfigBeamfailurerecoverytimerEnumeratedMs60
+	BeamfailurerecoveryconfigBeamfailurerecoverytimerEnumeratedMs80
+	BeamfailurerecoveryconfigBeamfailurerecoverytimerEnumeratedMs100
+	BeamfailurerecoveryconfigBeamfailurerecoverytimerEnumeratedMs150
+	BeamfailurerecoveryconfigBeamfailurerecoverytimerEnumeratedMs200
+)

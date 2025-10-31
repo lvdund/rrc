@@ -1,0 +1,17 @@
+package ies
+
+import "rrc/utils"
+
+// SpatialRelations-maxNumberActiveSpatialRelations ::= ENUMERATED
+type SpatialrelationsMaxnumberactivespatialrelations struct {
+	Value utils.ENUMERATED
+}
+
+const (
+	SpatialrelationsMaxnumberactivespatialrelationsEnumeratedNothing = iota
+	SpatialrelationsMaxnumberactivespatialrelationsEnumeratedN1
+	SpatialrelationsMaxnumberactivespatialrelationsEnumeratedN2
+	SpatialrelationsMaxnumberactivespatialrelationsEnumeratedN4
+	SpatialrelationsMaxnumberactivespatialrelationsEnumeratedN8
+	SpatialrelationsMaxnumberactivespatialrelationsEnumeratedN14
+)

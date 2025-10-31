@@ -65,12 +65,12 @@ const (
 	TStatusprohibitEnumeratedMs400
 	TStatusprohibitEnumeratedMs450
 	TStatusprohibitEnumeratedMs500
-	TStatusprohibitEnumeratedMs800_V1310
-	TStatusprohibitEnumeratedMs1000_V1310
-	TStatusprohibitEnumeratedMs1200_V1310
-	TStatusprohibitEnumeratedMs1600_V1310
-	TStatusprohibitEnumeratedMs2000_V1310
-	TStatusprohibitEnumeratedMs2400_V1310
+	TStatusprohibitEnumeratedMs800
+	TStatusprohibitEnumeratedMs1000
+	TStatusprohibitEnumeratedMs1200
+	TStatusprohibitEnumeratedMs1600
+	TStatusprohibitEnumeratedMs2000
+	TStatusprohibitEnumeratedMs2400
 	TStatusprohibitEnumeratedSpare2
 	TStatusprohibitEnumeratedSpare1
 )

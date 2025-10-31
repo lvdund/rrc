@@ -3,7 +3,7 @@ package ies
 // UERadioPagingInformation-criticalExtensions-c1 ::= CHOICE
 const (
 	UeradiopaginginformationCriticalextensionsC1ChoiceNothing = iota
-	UeradiopaginginformationCriticalextensionsC1ChoiceUeradiopaginginformationR12
+	UeradiopaginginformationCriticalextensionsC1ChoiceUeradiopaginginformation
 	UeradiopaginginformationCriticalextensionsC1ChoiceSpare7
 	UeradiopaginginformationCriticalextensionsC1ChoiceSpare6
 	UeradiopaginginformationCriticalextensionsC1ChoiceSpare5
@@ -14,13 +14,13 @@ const (
 )
 
 type UeradiopaginginformationCriticalextensionsC1 struct {
-	Choice                      uint64
-	UeradiopaginginformationR12 *UeradiopaginginformationR12
-	Spare7                      *struct{}
-	Spare6                      *struct{}
-	Spare5                      *struct{}
-	Spare4                      *struct{}
-	Spare3                      *struct{}
-	Spare2                      *struct{}
-	Spare1                      *struct{}
+	Choice                   uint64
+	Ueradiopaginginformation *Ueradiopaginginformation
+	Spare7                   *struct{}
+	Spare6                   *struct{}
+	Spare5                   *struct{}
+	Spare4                   *struct{}
+	Spare3                   *struct{}
+	Spare2                   *struct{}
+	Spare1                   *struct{}
 }

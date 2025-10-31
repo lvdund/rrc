@@ -1,0 +1,6 @@
+package ies
+
+// OtherConfig-delayBudgetReportingConfig-setup ::= SEQUENCE
+type OtherconfigDelaybudgetreportingconfigSetup struct {
+	Delaybudgetreportingprohibittimer OtherconfigDelaybudgetreportingconfigSetupDelaybudgetreportingprohibittimer
+}

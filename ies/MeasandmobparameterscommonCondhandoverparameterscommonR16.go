@@ -1,0 +1,7 @@
+package ies
+
+// MeasAndMobParametersCommon-condHandoverParametersCommon-r16 ::= SEQUENCE
+type MeasandmobparameterscommonCondhandoverparameterscommonR16 struct {
+	CondhandoverfddTddR16 *MeasandmobparameterscommonCondhandoverparameterscommonR16CondhandoverfddTddR16
+	Condhandoverfr1Fr2R16 *MeasandmobparameterscommonCondhandoverparameterscommonR16Condhandoverfr1Fr2R16
+}

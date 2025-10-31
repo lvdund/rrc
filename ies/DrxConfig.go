@@ -1,14 +1,16 @@
 package ies
 
-// DRX-Config ::= CHOICE
-const (
-	DrxConfigChoiceNothing = iota
-	DrxConfigChoiceRelease
-	DrxConfigChoiceSetup
-)
+import "rrc/utils"
 
+// DRX-Config ::= SEQUENCE
 type DrxConfig struct {
-	Choice  uint64
-	Release *struct{}
-	Setup   *DrxConfigSetup
+	DrxOndurationtimer       DrxConfigDrxOndurationtimer
+	DrxInactivitytimer       DrxConfigDrxInactivitytimer
+	DrxHarqRttTimerdl        utils.INTEGER `lb:0,ub:56`
+	DrxHarqRttTimerul        utils.INTEGER `lb:0,ub:56`
+	DrxRetransmissiontimerdl DrxConfigDrxRetransmissiontimerdl
+	DrxRetransmissiontimerul DrxConfigDrxRetransmissiontimerul
+	DrxLongcyclestartoffset  DrxConfigDrxLongcyclestartoffset
+	Shortdrx                 *DrxConfigShortdrx
+	DrxSlotoffset            utils.INTEGER `lb:0,ub:31`
 }

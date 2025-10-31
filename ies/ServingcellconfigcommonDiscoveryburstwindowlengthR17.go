@@ -1,0 +1,18 @@
+package ies
+
+import "rrc/utils"
+
+// ServingCellConfigCommon-discoveryBurstWindowLength-r17 ::= ENUMERATED
+type ServingcellconfigcommonDiscoveryburstwindowlengthR17 struct {
+	Value utils.ENUMERATED
+}
+
+const (
+	ServingcellconfigcommonDiscoveryburstwindowlengthR17EnumeratedNothing = iota
+	ServingcellconfigcommonDiscoveryburstwindowlengthR17EnumeratedMs0dot125
+	ServingcellconfigcommonDiscoveryburstwindowlengthR17EnumeratedMs0dot25
+	ServingcellconfigcommonDiscoveryburstwindowlengthR17EnumeratedMs0dot5
+	ServingcellconfigcommonDiscoveryburstwindowlengthR17EnumeratedMs0dot75
+	ServingcellconfigcommonDiscoveryburstwindowlengthR17EnumeratedMs1
+	ServingcellconfigcommonDiscoveryburstwindowlengthR17EnumeratedMs1dot25
+)

@@ -1,0 +1,15 @@
+package ies
+
+import "rrc/utils"
+
+// FeatureSetDownlink-v1540-pdcch-MonitoringAnyOccasionsWithSpanGap-scs-15kHz ::= ENUMERATED
+type FeaturesetdownlinkV1540PdcchMonitoringanyoccasionswithspangapScs15khz struct {
+	Value utils.ENUMERATED
+}
+
+const (
+	FeaturesetdownlinkV1540PdcchMonitoringanyoccasionswithspangapScs15khzEnumeratedNothing = iota
+	FeaturesetdownlinkV1540PdcchMonitoringanyoccasionswithspangapScs15khzEnumeratedSet1
+	FeaturesetdownlinkV1540PdcchMonitoringanyoccasionswithspangapScs15khzEnumeratedSet2
+	FeaturesetdownlinkV1540PdcchMonitoringanyoccasionswithspangapScs15khzEnumeratedSet3
+)

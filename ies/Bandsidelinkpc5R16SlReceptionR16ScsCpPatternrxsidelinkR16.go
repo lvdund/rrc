@@ -1,0 +1,14 @@
+package ies
+
+// BandSidelinkPC5-r16-sl-Reception-r16-scs-CP-PatternRxSidelink-r16 ::= CHOICE
+const (
+	Bandsidelinkpc5R16SlReceptionR16ScsCpPatternrxsidelinkR16ChoiceNothing = iota
+	Bandsidelinkpc5R16SlReceptionR16ScsCpPatternrxsidelinkR16ChoiceFr1R16
+	Bandsidelinkpc5R16SlReceptionR16ScsCpPatternrxsidelinkR16ChoiceFr2R16
+)
+
+type Bandsidelinkpc5R16SlReceptionR16ScsCpPatternrxsidelinkR16 struct {
+	Choice uint64
+	Fr1R16 *Bandsidelinkpc5R16SlReceptionR16ScsCpPatternrxsidelinkR16Fr1R16
+	Fr2R16 *Bandsidelinkpc5R16SlReceptionR16ScsCpPatternrxsidelinkR16Fr2R16
+}

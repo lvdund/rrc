@@ -1,0 +1,20 @@
+package ies
+
+import "rrc/utils"
+
+// LTE-NeighCellsCRS-AssistInfo-r17-neighCarrierBandwidthDL-r17 ::= ENUMERATED
+type LteNeighcellscrsAssistinfoR17NeighcarrierbandwidthdlR17 struct {
+	Value utils.ENUMERATED
+}
+
+const (
+	LteNeighcellscrsAssistinfoR17NeighcarrierbandwidthdlR17EnumeratedNothing = iota
+	LteNeighcellscrsAssistinfoR17NeighcarrierbandwidthdlR17EnumeratedN6
+	LteNeighcellscrsAssistinfoR17NeighcarrierbandwidthdlR17EnumeratedN15
+	LteNeighcellscrsAssistinfoR17NeighcarrierbandwidthdlR17EnumeratedN25
+	LteNeighcellscrsAssistinfoR17NeighcarrierbandwidthdlR17EnumeratedN50
+	LteNeighcellscrsAssistinfoR17NeighcarrierbandwidthdlR17EnumeratedN75
+	LteNeighcellscrsAssistinfoR17NeighcarrierbandwidthdlR17EnumeratedN100
+	LteNeighcellscrsAssistinfoR17NeighcarrierbandwidthdlR17EnumeratedSpare2
+	LteNeighcellscrsAssistinfoR17NeighcarrierbandwidthdlR17EnumeratedSpare1
+)

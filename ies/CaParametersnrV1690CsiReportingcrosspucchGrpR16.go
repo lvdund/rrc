@@ -1,0 +1,10 @@
+package ies
+
+// CA-ParametersNR-v1690-csi-ReportingCrossPUCCH-Grp-r16 ::= SEQUENCE
+type CaParametersnrV1690CsiReportingcrosspucchGrpR16 struct {
+	ComputationtimeforaCsiR16 CaParametersnrV1690CsiReportingcrosspucchGrpR16ComputationtimeforaCsiR16
+	AdditionalsymbolsR16      *CaParametersnrV1690CsiReportingcrosspucchGrpR16AdditionalsymbolsR16
+	SpCsiReportingonpucchR16  *CaParametersnrV1690CsiReportingcrosspucchGrpR16SpCsiReportingonpucchR16
+	SpCsiReportingonpuschR16  *CaParametersnrV1690CsiReportingcrosspucchGrpR16SpCsiReportingonpuschR16
+	CarriertypepairlistR16    []CarriertypepairR16 `lb:1,ub:maxCarrierTypePairListR16`
+}

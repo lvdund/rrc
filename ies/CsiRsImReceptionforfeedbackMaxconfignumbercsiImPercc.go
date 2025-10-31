@@ -1,0 +1,18 @@
+package ies
+
+import "rrc/utils"
+
+// CSI-RS-IM-ReceptionForFeedback-maxConfigNumberCSI-IM-PerCC ::= ENUMERATED
+type CsiRsImReceptionforfeedbackMaxconfignumbercsiImPercc struct {
+	Value utils.ENUMERATED
+}
+
+const (
+	CsiRsImReceptionforfeedbackMaxconfignumbercsiImPerccEnumeratedNothing = iota
+	CsiRsImReceptionforfeedbackMaxconfignumbercsiImPerccEnumeratedN1
+	CsiRsImReceptionforfeedbackMaxconfignumbercsiImPerccEnumeratedN2
+	CsiRsImReceptionforfeedbackMaxconfignumbercsiImPerccEnumeratedN4
+	CsiRsImReceptionforfeedbackMaxconfignumbercsiImPerccEnumeratedN8
+	CsiRsImReceptionforfeedbackMaxconfignumbercsiImPerccEnumeratedN16
+	CsiRsImReceptionforfeedbackMaxconfignumbercsiImPerccEnumeratedN32
+)

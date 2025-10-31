@@ -1,0 +1,20 @@
+package ies
+
+import "rrc/utils"
+
+// SearchSpace-searchSpaceType-common-dci-Format2-3-dummy1 ::= ENUMERATED
+type SearchspaceSearchspacetypeCommonDciFormat23Dummy1 struct {
+	Value utils.ENUMERATED
+}
+
+const (
+	SearchspaceSearchspacetypeCommonDciFormat23Dummy1EnumeratedNothing = iota
+	SearchspaceSearchspacetypeCommonDciFormat23Dummy1EnumeratedSl1
+	SearchspaceSearchspacetypeCommonDciFormat23Dummy1EnumeratedSl2
+	SearchspaceSearchspacetypeCommonDciFormat23Dummy1EnumeratedSl4
+	SearchspaceSearchspacetypeCommonDciFormat23Dummy1EnumeratedSl5
+	SearchspaceSearchspacetypeCommonDciFormat23Dummy1EnumeratedSl8
+	SearchspaceSearchspacetypeCommonDciFormat23Dummy1EnumeratedSl10
+	SearchspaceSearchspacetypeCommonDciFormat23Dummy1EnumeratedSl16
+	SearchspaceSearchspacetypeCommonDciFormat23Dummy1EnumeratedSl20
+)

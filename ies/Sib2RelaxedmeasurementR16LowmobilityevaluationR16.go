@@ -1,0 +1,7 @@
+package ies
+
+// SIB2-relaxedMeasurement-r16-lowMobilityEvaluation-r16 ::= SEQUENCE
+type Sib2RelaxedmeasurementR16LowmobilityevaluationR16 struct {
+	SSearchdeltapR16 Sib2RelaxedmeasurementR16LowmobilityevaluationR16SSearchdeltapR16
+	TSearchdeltapR16 Sib2RelaxedmeasurementR16LowmobilityevaluationR16TSearchdeltapR16
+}

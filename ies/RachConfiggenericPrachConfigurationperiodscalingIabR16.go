@@ -1,0 +1,19 @@
+package ies
+
+import "rrc/utils"
+
+// RACH-ConfigGeneric-prach-ConfigurationPeriodScaling-IAB-r16 ::= ENUMERATED
+type RachConfiggenericPrachConfigurationperiodscalingIabR16 struct {
+	Value utils.ENUMERATED
+}
+
+const (
+	RachConfiggenericPrachConfigurationperiodscalingIabR16EnumeratedNothing = iota
+	RachConfiggenericPrachConfigurationperiodscalingIabR16EnumeratedScf1
+	RachConfiggenericPrachConfigurationperiodscalingIabR16EnumeratedScf2
+	RachConfiggenericPrachConfigurationperiodscalingIabR16EnumeratedScf4
+	RachConfiggenericPrachConfigurationperiodscalingIabR16EnumeratedScf8
+	RachConfiggenericPrachConfigurationperiodscalingIabR16EnumeratedScf16
+	RachConfiggenericPrachConfigurationperiodscalingIabR16EnumeratedScf32
+	RachConfiggenericPrachConfigurationperiodscalingIabR16EnumeratedScf64
+)

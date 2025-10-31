@@ -1,0 +1,13 @@
+package ies
+
+import "rrc/utils"
+
+// SharedSpectrumChAccessParamsPerBand-v1650-extendedSearchSpaceSwitchWithDCI-r16 ::= ENUMERATED
+type SharedspectrumchaccessparamsperbandV1650ExtendedsearchspaceswitchwithdciR16 struct {
+	Value utils.ENUMERATED
+}
+
+const (
+	SharedspectrumchaccessparamsperbandV1650ExtendedsearchspaceswitchwithdciR16EnumeratedNothing = iota
+	SharedspectrumchaccessparamsperbandV1650ExtendedsearchspaceswitchwithdciR16EnumeratedSupported
+)

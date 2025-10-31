@@ -1,0 +1,20 @@
+package ies
+
+import "rrc/utils"
+
+// BSR-Config-logicalChannelSR-DelayTimer ::= ENUMERATED
+type BsrConfigLogicalchannelsrDelaytimer struct {
+	Value utils.ENUMERATED
+}
+
+const (
+	BsrConfigLogicalchannelsrDelaytimerEnumeratedNothing = iota
+	BsrConfigLogicalchannelsrDelaytimerEnumeratedSf20
+	BsrConfigLogicalchannelsrDelaytimerEnumeratedSf40
+	BsrConfigLogicalchannelsrDelaytimerEnumeratedSf64
+	BsrConfigLogicalchannelsrDelaytimerEnumeratedSf128
+	BsrConfigLogicalchannelsrDelaytimerEnumeratedSf512
+	BsrConfigLogicalchannelsrDelaytimerEnumeratedSf1024
+	BsrConfigLogicalchannelsrDelaytimerEnumeratedSf2560
+	BsrConfigLogicalchannelsrDelaytimerEnumeratedSpare1
+)

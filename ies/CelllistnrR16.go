@@ -1,7 +1,7 @@
 package ies
 
-// CellListNR-r16 ::= SEQUENCE OF PhysCellIdRangeNR-r16
-// SIZE (1..maxCellMeasIdle-r15)
+// CellListNR-r16 ::= SEQUENCE OF PCI-Range
+// SIZE (1..maxCellMeasIdle-r16)
 type CelllistnrR16 struct {
-	Value []PhyscellidrangenrR16 `lb:1,ub:maxCellMeasIdleR15`
+	Value []PciRange `lb:1,ub:maxCellMeasIdleR16`
 }

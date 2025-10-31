@@ -1,0 +1,7 @@
+package ies
+
+// FeatureSetDownlink-v1610-pdcch-Monitoring-r16 ::= SEQUENCE
+type FeaturesetdownlinkV1610PdcchMonitoringR16 struct {
+	PdschProcessingtype1R16 *FeaturesetdownlinkV1610PdcchMonitoringR16PdschProcessingtype1R16
+	PdschProcessingtype2R16 *FeaturesetdownlinkV1610PdcchMonitoringR16PdschProcessingtype2R16
+}

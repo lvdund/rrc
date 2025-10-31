@@ -1,0 +1,7 @@
+package ies
+
+// BandNR-srs-SemiPersistent-PosResourcesRRC-Inactive-r17 ::= SEQUENCE
+type BandnrSrsSemipersistentPosresourcesrrcInactiveR17 struct {
+	MaxnumofsemipersistentsrsposresourcesR17        BandnrSrsSemipersistentPosresourcesrrcInactiveR17MaxnumofsemipersistentsrsposresourcesR17
+	MaxnumofsemipersistentsrsposresourcesperslotR17 BandnrSrsSemipersistentPosresourcesrrcInactiveR17MaxnumofsemipersistentsrsposresourcesperslotR17
+}

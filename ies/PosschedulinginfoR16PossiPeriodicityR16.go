@@ -1,0 +1,19 @@
+package ies
+
+import "rrc/utils"
+
+// PosSchedulingInfo-r16-posSI-Periodicity-r16 ::= ENUMERATED
+type PosschedulinginfoR16PossiPeriodicityR16 struct {
+	Value utils.ENUMERATED
+}
+
+const (
+	PosschedulinginfoR16PossiPeriodicityR16EnumeratedNothing = iota
+	PosschedulinginfoR16PossiPeriodicityR16EnumeratedRf8
+	PosschedulinginfoR16PossiPeriodicityR16EnumeratedRf16
+	PosschedulinginfoR16PossiPeriodicityR16EnumeratedRf32
+	PosschedulinginfoR16PossiPeriodicityR16EnumeratedRf64
+	PosschedulinginfoR16PossiPeriodicityR16EnumeratedRf128
+	PosschedulinginfoR16PossiPeriodicityR16EnumeratedRf256
+	PosschedulinginfoR16PossiPeriodicityR16EnumeratedRf512
+)

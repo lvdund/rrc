@@ -1,7 +1,0 @@
-package ies
-
-// PUCCH-ConfigDedicated-r13-pucch-NumRepetitionCE-r13-setup-modeA ::= SEQUENCE
-type PucchConfigdedicatedR13PucchNumrepetitionceR13SetupModea struct {
-	PucchNumrepetitionceFormat1R13 PucchConfigdedicatedR13PucchNumrepetitionceR13SetupModeaPucchNumrepetitionceFormat1R13
-	PucchNumrepetitionceFormat2R13 PucchConfigdedicatedR13PucchNumrepetitionceR13SetupModeaPucchNumrepetitionceFormat2R13
-}

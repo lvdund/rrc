@@ -9,13 +9,12 @@ type Accessstratumrelease struct {
 
 const (
 	AccessstratumreleaseEnumeratedNothing = iota
-	AccessstratumreleaseEnumeratedRel8
-	AccessstratumreleaseEnumeratedRel9
-	AccessstratumreleaseEnumeratedRel10
-	AccessstratumreleaseEnumeratedRel11
-	AccessstratumreleaseEnumeratedRel12
-	AccessstratumreleaseEnumeratedRel13
-	AccessstratumreleaseEnumeratedRel14
 	AccessstratumreleaseEnumeratedRel15
 	AccessstratumreleaseEnumeratedRel16
+	AccessstratumreleaseEnumeratedRel17
+	AccessstratumreleaseEnumeratedSpare5
+	AccessstratumreleaseEnumeratedSpare4
+	AccessstratumreleaseEnumeratedSpare3
+	AccessstratumreleaseEnumeratedSpare2
+	AccessstratumreleaseEnumeratedSpare1
 )

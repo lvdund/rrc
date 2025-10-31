@@ -1,0 +1,28 @@
+package ies
+
+import "rrc/utils"
+
+// PDCP-Parameters-maxNumberEHC-Contexts-r16 ::= ENUMERATED
+type PdcpParametersMaxnumberehcContextsR16 struct {
+	Value utils.ENUMERATED
+}
+
+const (
+	PdcpParametersMaxnumberehcContextsR16EnumeratedNothing = iota
+	PdcpParametersMaxnumberehcContextsR16EnumeratedCs2
+	PdcpParametersMaxnumberehcContextsR16EnumeratedCs4
+	PdcpParametersMaxnumberehcContextsR16EnumeratedCs8
+	PdcpParametersMaxnumberehcContextsR16EnumeratedCs16
+	PdcpParametersMaxnumberehcContextsR16EnumeratedCs32
+	PdcpParametersMaxnumberehcContextsR16EnumeratedCs64
+	PdcpParametersMaxnumberehcContextsR16EnumeratedCs128
+	PdcpParametersMaxnumberehcContextsR16EnumeratedCs256
+	PdcpParametersMaxnumberehcContextsR16EnumeratedCs512
+	PdcpParametersMaxnumberehcContextsR16EnumeratedCs1024
+	PdcpParametersMaxnumberehcContextsR16EnumeratedCs2048
+	PdcpParametersMaxnumberehcContextsR16EnumeratedCs4096
+	PdcpParametersMaxnumberehcContextsR16EnumeratedCs8192
+	PdcpParametersMaxnumberehcContextsR16EnumeratedCs16384
+	PdcpParametersMaxnumberehcContextsR16EnumeratedCs32768
+	PdcpParametersMaxnumberehcContextsR16EnumeratedCs65536
+)

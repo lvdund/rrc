@@ -1,14 +1,17 @@
 package ies
 
 // ReportConfigToAddMod-reportConfig ::= CHOICE
+// Extensible
 const (
 	ReportconfigtoaddmodReportconfigChoiceNothing = iota
-	ReportconfigtoaddmodReportconfigChoiceReportconfigeutra
+	ReportconfigtoaddmodReportconfigChoiceReportconfignr
 	ReportconfigtoaddmodReportconfigChoiceReportconfiginterrat
+	ReportconfigtoaddmodReportconfigChoiceReportconfignrSlR16
 )
 
 type ReportconfigtoaddmodReportconfig struct {
 	Choice               uint64
-	Reportconfigeutra    *Reportconfigeutra
+	Reportconfignr       *Reportconfignr
 	Reportconfiginterrat *Reportconfiginterrat
+	ReportconfignrSlR16  *ReportconfignrSlR16
 }

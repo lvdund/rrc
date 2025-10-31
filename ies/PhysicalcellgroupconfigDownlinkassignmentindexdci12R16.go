@@ -1,0 +1,15 @@
+package ies
+
+import "rrc/utils"
+
+// PhysicalCellGroupConfig-downlinkAssignmentIndexDCI-1-2-r16 ::= ENUMERATED
+type PhysicalcellgroupconfigDownlinkassignmentindexdci12R16 struct {
+	Value utils.ENUMERATED
+}
+
+const (
+	PhysicalcellgroupconfigDownlinkassignmentindexdci12R16EnumeratedNothing = iota
+	PhysicalcellgroupconfigDownlinkassignmentindexdci12R16EnumeratedN1
+	PhysicalcellgroupconfigDownlinkassignmentindexdci12R16EnumeratedN2
+	PhysicalcellgroupconfigDownlinkassignmentindexdci12R16EnumeratedN4
+)

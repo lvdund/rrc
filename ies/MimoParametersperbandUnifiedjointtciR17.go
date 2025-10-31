@@ -1,0 +1,7 @@
+package ies
+
+// MIMO-ParametersPerBand-unifiedJointTCI-r17 ::= SEQUENCE
+type MimoParametersperbandUnifiedjointtciR17 struct {
+	MaxconfiguredjointtciR17   MimoParametersperbandUnifiedjointtciR17MaxconfiguredjointtciR17
+	MaxactivatedtciacrossccR17 MimoParametersperbandUnifiedjointtciR17MaxactivatedtciacrossccR17
+}

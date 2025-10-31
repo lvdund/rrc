@@ -1,0 +1,20 @@
+package ies
+
+import "rrc/utils"
+
+// CLI-PeriodicalReportConfig-r16-reportAmount-r16 ::= ENUMERATED
+type CliPeriodicalreportconfigR16ReportamountR16 struct {
+	Value utils.ENUMERATED
+}
+
+const (
+	CliPeriodicalreportconfigR16ReportamountR16EnumeratedNothing = iota
+	CliPeriodicalreportconfigR16ReportamountR16EnumeratedR1
+	CliPeriodicalreportconfigR16ReportamountR16EnumeratedR2
+	CliPeriodicalreportconfigR16ReportamountR16EnumeratedR4
+	CliPeriodicalreportconfigR16ReportamountR16EnumeratedR8
+	CliPeriodicalreportconfigR16ReportamountR16EnumeratedR16
+	CliPeriodicalreportconfigR16ReportamountR16EnumeratedR32
+	CliPeriodicalreportconfigR16ReportamountR16EnumeratedR64
+	CliPeriodicalreportconfigR16ReportamountR16EnumeratedInfinity
+)

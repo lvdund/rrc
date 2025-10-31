@@ -4,20 +4,22 @@ package ies
 // Extensible
 const (
 	MeasobjecttoaddmodMeasobjectChoiceNothing = iota
+	MeasobjecttoaddmodMeasobjectChoiceMeasobjectnr
 	MeasobjecttoaddmodMeasobjectChoiceMeasobjecteutra
-	MeasobjecttoaddmodMeasobjectChoiceMeasobjectutra
-	MeasobjecttoaddmodMeasobjectChoiceMeasobjectgeran
-	MeasobjecttoaddmodMeasobjectChoiceMeasobjectcdma2000
-	MeasobjecttoaddmodMeasobjectChoiceMeasobjectwlanR13
-	MeasobjecttoaddmodMeasobjectChoiceMeasobjectnrR15
+	MeasobjecttoaddmodMeasobjectChoiceMeasobjectutraFddR16
+	MeasobjecttoaddmodMeasobjectChoiceMeasobjectnrSlR16
+	MeasobjecttoaddmodMeasobjectChoiceMeasobjectcliR16
+	MeasobjecttoaddmodMeasobjectChoiceMeasobjectrxtxdiffR17
+	MeasobjecttoaddmodMeasobjectChoiceMeasobjectrelayR17
 )
 
 type MeasobjecttoaddmodMeasobject struct {
-	Choice             uint64
-	Measobjecteutra    *Measobjecteutra
-	Measobjectutra     *Measobjectutra
-	Measobjectgeran    *Measobjectgeran
-	Measobjectcdma2000 *Measobjectcdma2000
-	MeasobjectwlanR13  *MeasobjectwlanR13
-	MeasobjectnrR15    *MeasobjectnrR15
+	Choice                uint64
+	Measobjectnr          *Measobjectnr
+	Measobjecteutra       *Measobjecteutra
+	MeasobjectutraFddR16  *MeasobjectutraFddR16
+	MeasobjectnrSlR16     *MeasobjectnrSlR16
+	MeasobjectcliR16      *MeasobjectcliR16
+	MeasobjectrxtxdiffR17 *MeasobjectrxtxdiffR17
+	MeasobjectrelayR17    *SlMeasobjectR16
 }

@@ -1,0 +1,18 @@
+package ies
+
+import "rrc/utils"
+
+// PosSRS-RRC-Inactive-OutsideInitialUL-BWP-r17-maxNumOfSRSposResourceSets-r17 ::= ENUMERATED
+type PossrsRrcInactiveOutsideinitialulBwpR17MaxnumofsrsposresourcesetsR17 struct {
+	Value utils.ENUMERATED
+}
+
+const (
+	PossrsRrcInactiveOutsideinitialulBwpR17MaxnumofsrsposresourcesetsR17EnumeratedNothing = iota
+	PossrsRrcInactiveOutsideinitialulBwpR17MaxnumofsrsposresourcesetsR17EnumeratedN1
+	PossrsRrcInactiveOutsideinitialulBwpR17MaxnumofsrsposresourcesetsR17EnumeratedN2
+	PossrsRrcInactiveOutsideinitialulBwpR17MaxnumofsrsposresourcesetsR17EnumeratedN4
+	PossrsRrcInactiveOutsideinitialulBwpR17MaxnumofsrsposresourcesetsR17EnumeratedN8
+	PossrsRrcInactiveOutsideinitialulBwpR17MaxnumofsrsposresourcesetsR17EnumeratedN12
+	PossrsRrcInactiveOutsideinitialulBwpR17MaxnumofsrsposresourcesetsR17EnumeratedN16
+)

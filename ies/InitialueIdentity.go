@@ -5,12 +5,12 @@ import "rrc/utils"
 // InitialUE-Identity ::= CHOICE
 const (
 	InitialueIdentityChoiceNothing = iota
-	InitialueIdentityChoiceSTmsi
+	InitialueIdentityChoiceNg5gSTmsiPart1
 	InitialueIdentityChoiceRandomvalue
 )
 
 type InitialueIdentity struct {
-	Choice      uint64
-	STmsi       *STmsi
-	Randomvalue *utils.BITSTRING `lb:40,ub:40`
+	Choice         uint64
+	Ng5gSTmsiPart1 *utils.BITSTRING `lb:39,ub:39`
+	Randomvalue    *utils.BITSTRING `lb:39,ub:39`
 }

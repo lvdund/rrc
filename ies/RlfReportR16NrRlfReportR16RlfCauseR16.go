@@ -1,0 +1,20 @@
+package ies
+
+import "rrc/utils"
+
+// RLF-Report-r16-nr-RLF-Report-r16-rlf-Cause-r16 ::= ENUMERATED
+type RlfReportR16NrRlfReportR16RlfCauseR16 struct {
+	Value utils.ENUMERATED
+}
+
+const (
+	RlfReportR16NrRlfReportR16RlfCauseR16EnumeratedNothing = iota
+	RlfReportR16NrRlfReportR16RlfCauseR16EnumeratedT310_Expiry
+	RlfReportR16NrRlfReportR16RlfCauseR16EnumeratedRandomaccessproblem
+	RlfReportR16NrRlfReportR16RlfCauseR16EnumeratedRlc_Maxnumretx
+	RlfReportR16NrRlfReportR16RlfCauseR16EnumeratedBeamfailurerecoveryfailure
+	RlfReportR16NrRlfReportR16RlfCauseR16EnumeratedLbtfailure_R16
+	RlfReportR16NrRlfReportR16RlfCauseR16EnumeratedBh_Rlfrecoveryfailure
+	RlfReportR16NrRlfReportR16RlfCauseR16EnumeratedT312_Expiry_R17
+	RlfReportR16NrRlfReportR16RlfCauseR16EnumeratedSpare1
+)

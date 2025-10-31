@@ -1,0 +1,15 @@
+package ies
+
+import "rrc/utils"
+
+// MIMO-ParametersPerBand-singleDCI-SDM-scheme-Parameters-r16-supportNewDMRS-Port-r16 ::= ENUMERATED
+type MimoParametersperbandSingledciSdmSchemeParametersR16SupportnewdmrsPortR16 struct {
+	Value utils.ENUMERATED
+}
+
+const (
+	MimoParametersperbandSingledciSdmSchemeParametersR16SupportnewdmrsPortR16EnumeratedNothing = iota
+	MimoParametersperbandSingledciSdmSchemeParametersR16SupportnewdmrsPortR16EnumeratedSupported1
+	MimoParametersperbandSingledciSdmSchemeParametersR16SupportnewdmrsPortR16EnumeratedSupported2
+	MimoParametersperbandSingledciSdmSchemeParametersR16SupportnewdmrsPortR16EnumeratedSupported3
+)

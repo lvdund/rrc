@@ -1,0 +1,15 @@
+package ies
+
+import "rrc/utils"
+
+// ControlResourceSet-cce-REG-MappingType-interleaved-interleaverSize ::= ENUMERATED
+type ControlresourcesetCceRegMappingtypeInterleavedInterleaversize struct {
+	Value utils.ENUMERATED
+}
+
+const (
+	ControlresourcesetCceRegMappingtypeInterleavedInterleaversizeEnumeratedNothing = iota
+	ControlresourcesetCceRegMappingtypeInterleavedInterleaversizeEnumeratedN2
+	ControlresourcesetCceRegMappingtypeInterleavedInterleaversizeEnumeratedN3
+	ControlresourcesetCceRegMappingtypeInterleavedInterleaversizeEnumeratedN6
+)

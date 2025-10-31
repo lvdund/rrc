@@ -4,16 +4,12 @@ package ies
 // Extensible
 const (
 	PagingueIdentityChoiceNothing = iota
-	PagingueIdentityChoiceSTmsi
-	PagingueIdentityChoiceImsi
-	PagingueIdentityChoiceNg5gSTmsiR15
-	PagingueIdentityChoiceFulliRntiR15
+	PagingueIdentityChoiceNg5gSTmsi
+	PagingueIdentityChoiceFulliRnti
 )
 
 type PagingueIdentity struct {
-	Choice       uint64
-	STmsi        *STmsi
-	Imsi         *Imsi
-	Ng5gSTmsiR15 *Ng5gSTmsiR15
-	FulliRntiR15 *IRntiR15
+	Choice    uint64
+	Ng5gSTmsi *Ng5gSTmsi
+	FulliRnti *IRntiValue
 }

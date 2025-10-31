@@ -1,0 +1,14 @@
+package ies
+
+import "rrc/utils"
+
+// RedCap-ConfigCommonSIB-r17-cellBarredRedCap-r17-cellBarredRedCap1Rx-r17 ::= ENUMERATED
+type RedcapConfigcommonsibR17CellbarredredcapR17Cellbarredredcap1rxR17 struct {
+	Value utils.ENUMERATED
+}
+
+const (
+	RedcapConfigcommonsibR17CellbarredredcapR17Cellbarredredcap1rxR17EnumeratedNothing = iota
+	RedcapConfigcommonsibR17CellbarredredcapR17Cellbarredredcap1rxR17EnumeratedBarred
+	RedcapConfigcommonsibR17CellbarredredcapR17Cellbarredredcap1rxR17EnumeratedNotbarred
+)

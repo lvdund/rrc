@@ -1,0 +1,43 @@
+package ies
+
+import "rrc/utils"
+
+// EUTRA-Q-OffsetRange ::= ENUMERATED
+type EutraQOffsetrange struct {
+	Value utils.ENUMERATED
+}
+
+const (
+	EutraQOffsetrangeEnumeratedNothing = iota
+	EutraQOffsetrangeEnumeratedDb_24
+	EutraQOffsetrangeEnumeratedDb_22
+	EutraQOffsetrangeEnumeratedDb_20
+	EutraQOffsetrangeEnumeratedDb_18
+	EutraQOffsetrangeEnumeratedDb_16
+	EutraQOffsetrangeEnumeratedDb_14
+	EutraQOffsetrangeEnumeratedDb_12
+	EutraQOffsetrangeEnumeratedDb_10
+	EutraQOffsetrangeEnumeratedDb_8
+	EutraQOffsetrangeEnumeratedDb_6
+	EutraQOffsetrangeEnumeratedDb_5
+	EutraQOffsetrangeEnumeratedDb_4
+	EutraQOffsetrangeEnumeratedDb_3
+	EutraQOffsetrangeEnumeratedDb_2
+	EutraQOffsetrangeEnumeratedDb_1
+	EutraQOffsetrangeEnumeratedDb0
+	EutraQOffsetrangeEnumeratedDb1
+	EutraQOffsetrangeEnumeratedDb2
+	EutraQOffsetrangeEnumeratedDb3
+	EutraQOffsetrangeEnumeratedDb4
+	EutraQOffsetrangeEnumeratedDb5
+	EutraQOffsetrangeEnumeratedDb6
+	EutraQOffsetrangeEnumeratedDb8
+	EutraQOffsetrangeEnumeratedDb10
+	EutraQOffsetrangeEnumeratedDb12
+	EutraQOffsetrangeEnumeratedDb14
+	EutraQOffsetrangeEnumeratedDb16
+	EutraQOffsetrangeEnumeratedDb18
+	EutraQOffsetrangeEnumeratedDb20
+	EutraQOffsetrangeEnumeratedDb22
+	EutraQOffsetrangeEnumeratedDb24
+)

@@ -1,0 +1,7 @@
+package ies
+
+// SIB2-relaxedMeasurement-r17-stationaryMobilityEvaluation-r17 ::= SEQUENCE
+type Sib2RelaxedmeasurementR17StationarymobilityevaluationR17 struct {
+	SSearchdeltapStationaryR17 Sib2RelaxedmeasurementR17StationarymobilityevaluationR17SSearchdeltapStationaryR17
+	TSearchdeltapStationaryR17 Sib2RelaxedmeasurementR17StationarymobilityevaluationR17TSearchdeltapStationaryR17
+}

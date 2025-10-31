@@ -1,0 +1,17 @@
+package ies
+
+import "rrc/utils"
+
+// BandNR-triggeredHARQ-CodebookRetx-r17-minHARQ-Retx-Offset-r17 ::= ENUMERATED
+type BandnrTriggeredharqCodebookretxR17MinharqRetxOffsetR17 struct {
+	Value utils.ENUMERATED
+}
+
+const (
+	BandnrTriggeredharqCodebookretxR17MinharqRetxOffsetR17EnumeratedNothing = iota
+	BandnrTriggeredharqCodebookretxR17MinharqRetxOffsetR17EnumeratedN_7
+	BandnrTriggeredharqCodebookretxR17MinharqRetxOffsetR17EnumeratedN_5
+	BandnrTriggeredharqCodebookretxR17MinharqRetxOffsetR17EnumeratedN_3
+	BandnrTriggeredharqCodebookretxR17MinharqRetxOffsetR17EnumeratedN_1
+	BandnrTriggeredharqCodebookretxR17MinharqRetxOffsetR17EnumeratedN1
+)

@@ -64,13 +64,13 @@ const (
 	TPollretransmitEnumeratedMs400
 	TPollretransmitEnumeratedMs450
 	TPollretransmitEnumeratedMs500
-	TPollretransmitEnumeratedMs800_V1310
-	TPollretransmitEnumeratedMs1000_V1310
-	TPollretransmitEnumeratedMs2000_V1310
-	TPollretransmitEnumeratedMs4000_V1310
-	TPollretransmitEnumeratedSpare5
-	TPollretransmitEnumeratedSpare4
-	TPollretransmitEnumeratedSpare3
-	TPollretransmitEnumeratedSpare2
+	TPollretransmitEnumeratedMs800
+	TPollretransmitEnumeratedMs1000
+	TPollretransmitEnumeratedMs2000
+	TPollretransmitEnumeratedMs4000
+	TPollretransmitEnumeratedMs1_V1610
+	TPollretransmitEnumeratedMs2_V1610
+	TPollretransmitEnumeratedMs3_V1610
+	TPollretransmitEnumeratedMs4_V1610
 	TPollretransmitEnumeratedSpare1
 )

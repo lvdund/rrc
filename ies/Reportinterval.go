@@ -17,12 +17,10 @@ const (
 	ReportintervalEnumeratedMs2048
 	ReportintervalEnumeratedMs5120
 	ReportintervalEnumeratedMs10240
+	ReportintervalEnumeratedMs20480
+	ReportintervalEnumeratedMs40960
 	ReportintervalEnumeratedMin1
 	ReportintervalEnumeratedMin6
 	ReportintervalEnumeratedMin12
 	ReportintervalEnumeratedMin30
-	ReportintervalEnumeratedMin60
-	ReportintervalEnumeratedSpare3
-	ReportintervalEnumeratedSpare2
-	ReportintervalEnumeratedSpare1
 )

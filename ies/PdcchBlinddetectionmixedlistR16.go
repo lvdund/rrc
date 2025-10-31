@@ -1,0 +1,7 @@
+package ies
+
+// PDCCH-BlindDetectionMixedList-r16 ::= SEQUENCE
+type PdcchBlinddetectionmixedlistR16 struct {
+	PdcchBlinddetectioncaMixedextR16   *PdcchBlinddetectionmixedlistR16PdcchBlinddetectioncaMixedextR16
+	PdcchBlinddetectioncgUeMixedextR16 *PdcchBlinddetectionmixedlistR16PdcchBlinddetectioncgUeMixedextR16
+}

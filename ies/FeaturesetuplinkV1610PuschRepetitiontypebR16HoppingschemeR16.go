@@ -1,0 +1,15 @@
+package ies
+
+import "rrc/utils"
+
+// FeatureSetUplink-v1610-pusch-RepetitionTypeB-r16-hoppingScheme-r16 ::= ENUMERATED
+type FeaturesetuplinkV1610PuschRepetitiontypebR16HoppingschemeR16 struct {
+	Value utils.ENUMERATED
+}
+
+const (
+	FeaturesetuplinkV1610PuschRepetitiontypebR16HoppingschemeR16EnumeratedNothing = iota
+	FeaturesetuplinkV1610PuschRepetitiontypebR16HoppingschemeR16EnumeratedInterslothopping
+	FeaturesetuplinkV1610PuschRepetitiontypebR16HoppingschemeR16EnumeratedInterrepetitionhopping
+	FeaturesetuplinkV1610PuschRepetitiontypebR16HoppingschemeR16EnumeratedBoth
+)

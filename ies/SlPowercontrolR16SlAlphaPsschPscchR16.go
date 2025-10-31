@@ -1,0 +1,20 @@
+package ies
+
+import "rrc/utils"
+
+// SL-PowerControl-r16-sl-Alpha-PSSCH-PSCCH-r16 ::= ENUMERATED
+type SlPowercontrolR16SlAlphaPsschPscchR16 struct {
+	Value utils.ENUMERATED
+}
+
+const (
+	SlPowercontrolR16SlAlphaPsschPscchR16EnumeratedNothing = iota
+	SlPowercontrolR16SlAlphaPsschPscchR16EnumeratedAlpha0
+	SlPowercontrolR16SlAlphaPsschPscchR16EnumeratedAlpha04
+	SlPowercontrolR16SlAlphaPsschPscchR16EnumeratedAlpha05
+	SlPowercontrolR16SlAlphaPsschPscchR16EnumeratedAlpha06
+	SlPowercontrolR16SlAlphaPsschPscchR16EnumeratedAlpha07
+	SlPowercontrolR16SlAlphaPsschPscchR16EnumeratedAlpha08
+	SlPowercontrolR16SlAlphaPsschPscchR16EnumeratedAlpha09
+	SlPowercontrolR16SlAlphaPsschPscchR16EnumeratedAlpha1
+)

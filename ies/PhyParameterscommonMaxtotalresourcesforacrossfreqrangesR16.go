@@ -1,0 +1,7 @@
+package ies
+
+// Phy-ParametersCommon-maxTotalResourcesForAcrossFreqRanges-r16 ::= SEQUENCE
+type PhyParameterscommonMaxtotalresourcesforacrossfreqrangesR16 struct {
+	MaxnumberreswithinslotacrossccAcrossfrR16 *PhyParameterscommonMaxtotalresourcesforacrossfreqrangesR16MaxnumberreswithinslotacrossccAcrossfrR16
+	MaxnumberresacrossccAcrossfrR16           *PhyParameterscommonMaxtotalresourcesforacrossfreqrangesR16MaxnumberresacrossccAcrossfrR16
+}

@@ -1,0 +1,20 @@
+package ies
+
+import "rrc/utils"
+
+// ReducedAggregatedBandwidth-r17 ::= ENUMERATED
+type ReducedaggregatedbandwidthR17 struct {
+	Value utils.ENUMERATED
+}
+
+const (
+	ReducedaggregatedbandwidthR17EnumeratedNothing = iota
+	ReducedaggregatedbandwidthR17EnumeratedMhz0
+	ReducedaggregatedbandwidthR17EnumeratedMhz100
+	ReducedaggregatedbandwidthR17EnumeratedMhz200
+	ReducedaggregatedbandwidthR17EnumeratedMhz400
+	ReducedaggregatedbandwidthR17EnumeratedMhz800
+	ReducedaggregatedbandwidthR17EnumeratedMhz1200
+	ReducedaggregatedbandwidthR17EnumeratedMhz1600
+	ReducedaggregatedbandwidthR17EnumeratedMhz2000
+)

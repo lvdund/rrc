@@ -1,0 +1,20 @@
+package ies
+
+import "rrc/utils"
+
+// CG-SDT-Configuration-r17-sdt-SSB-PerCG-PUSCH-r17 ::= ENUMERATED
+type CgSdtConfigurationR17SdtSsbPercgPuschR17 struct {
+	Value utils.ENUMERATED
+}
+
+const (
+	CgSdtConfigurationR17SdtSsbPercgPuschR17EnumeratedNothing = iota
+	CgSdtConfigurationR17SdtSsbPercgPuschR17EnumeratedOneeighth
+	CgSdtConfigurationR17SdtSsbPercgPuschR17EnumeratedOnefourth
+	CgSdtConfigurationR17SdtSsbPercgPuschR17EnumeratedHalf
+	CgSdtConfigurationR17SdtSsbPercgPuschR17EnumeratedOne
+	CgSdtConfigurationR17SdtSsbPercgPuschR17EnumeratedTwo
+	CgSdtConfigurationR17SdtSsbPercgPuschR17EnumeratedFour
+	CgSdtConfigurationR17SdtSsbPercgPuschR17EnumeratedEight
+	CgSdtConfigurationR17SdtSsbPercgPuschR17EnumeratedSixteen
+)

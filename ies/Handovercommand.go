@@ -1,6 +1,9 @@
 package ies
 
-// HandoverCommand ::= SEQUENCE
+import "rrc/utils"
+
+// HandoverCommand-IEs ::= SEQUENCE
 type Handovercommand struct {
-	Criticalextensions HandovercommandCriticalextensions
+	Handovercommandmessage utils.OCTETSTRING
+	Noncriticalextension   *HandovercommandIesNoncriticalextension
 }

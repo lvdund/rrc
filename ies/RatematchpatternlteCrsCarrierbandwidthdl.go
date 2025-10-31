@@ -1,0 +1,20 @@
+package ies
+
+import "rrc/utils"
+
+// RateMatchPatternLTE-CRS-carrierBandwidthDL ::= ENUMERATED
+type RatematchpatternlteCrsCarrierbandwidthdl struct {
+	Value utils.ENUMERATED
+}
+
+const (
+	RatematchpatternlteCrsCarrierbandwidthdlEnumeratedNothing = iota
+	RatematchpatternlteCrsCarrierbandwidthdlEnumeratedN6
+	RatematchpatternlteCrsCarrierbandwidthdlEnumeratedN15
+	RatematchpatternlteCrsCarrierbandwidthdlEnumeratedN25
+	RatematchpatternlteCrsCarrierbandwidthdlEnumeratedN50
+	RatematchpatternlteCrsCarrierbandwidthdlEnumeratedN75
+	RatematchpatternlteCrsCarrierbandwidthdlEnumeratedN100
+	RatematchpatternlteCrsCarrierbandwidthdlEnumeratedSpare2
+	RatematchpatternlteCrsCarrierbandwidthdlEnumeratedSpare1
+)

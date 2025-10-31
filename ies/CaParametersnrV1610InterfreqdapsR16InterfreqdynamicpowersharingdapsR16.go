@@ -1,0 +1,14 @@
+package ies
+
+import "rrc/utils"
+
+// CA-ParametersNR-v1610-interFreqDAPS-r16-interFreqDynamicPowerSharingDAPS-r16 ::= ENUMERATED
+type CaParametersnrV1610InterfreqdapsR16InterfreqdynamicpowersharingdapsR16 struct {
+	Value utils.ENUMERATED
+}
+
+const (
+	CaParametersnrV1610InterfreqdapsR16InterfreqdynamicpowersharingdapsR16EnumeratedNothing = iota
+	CaParametersnrV1610InterfreqdapsR16InterfreqdynamicpowersharingdapsR16EnumeratedShort
+	CaParametersnrV1610InterfreqdapsR16InterfreqdynamicpowersharingdapsR16EnumeratedLong
+)

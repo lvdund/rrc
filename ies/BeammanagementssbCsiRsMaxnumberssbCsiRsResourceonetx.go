@@ -1,0 +1,17 @@
+package ies
+
+import "rrc/utils"
+
+// BeamManagementSSB-CSI-RS-maxNumberSSB-CSI-RS-ResourceOneTx ::= ENUMERATED
+type BeammanagementssbCsiRsMaxnumberssbCsiRsResourceonetx struct {
+	Value utils.ENUMERATED
+}
+
+const (
+	BeammanagementssbCsiRsMaxnumberssbCsiRsResourceonetxEnumeratedNothing = iota
+	BeammanagementssbCsiRsMaxnumberssbCsiRsResourceonetxEnumeratedN0
+	BeammanagementssbCsiRsMaxnumberssbCsiRsResourceonetxEnumeratedN8
+	BeammanagementssbCsiRsMaxnumberssbCsiRsResourceonetxEnumeratedN16
+	BeammanagementssbCsiRsMaxnumberssbCsiRsResourceonetxEnumeratedN32
+	BeammanagementssbCsiRsMaxnumberssbCsiRsResourceonetxEnumeratedN64
+)

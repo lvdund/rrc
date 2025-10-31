@@ -1,0 +1,8 @@
+package ies
+
+// SearchSpaceExt-v1700-searchSpaceType-r17-common-r17-dci-Format2-7-r17-nrofCandidates-PEI-r17 ::= SEQUENCE
+type SearchspaceextV1700SearchspacetypeR17CommonR17DciFormat27R17NrofcandidatesPeiR17 struct {
+	Aggregationlevel4R17  *SearchspaceextV1700SearchspacetypeR17CommonR17DciFormat27R17NrofcandidatesPeiR17Aggregationlevel4R17
+	Aggregationlevel8R17  *SearchspaceextV1700SearchspacetypeR17CommonR17DciFormat27R17NrofcandidatesPeiR17Aggregationlevel8R17
+	Aggregationlevel16R17 *SearchspaceextV1700SearchspacetypeR17CommonR17DciFormat27R17NrofcandidatesPeiR17Aggregationlevel16R17
+}

@@ -1,0 +1,28 @@
+package ies
+
+import "rrc/utils"
+
+// UAC-BarringInfoSet-uac-BarringFactor ::= ENUMERATED
+type UacBarringinfosetUacBarringfactor struct {
+	Value utils.ENUMERATED
+}
+
+const (
+	UacBarringinfosetUacBarringfactorEnumeratedNothing = iota
+	UacBarringinfosetUacBarringfactorEnumeratedP00
+	UacBarringinfosetUacBarringfactorEnumeratedP05
+	UacBarringinfosetUacBarringfactorEnumeratedP10
+	UacBarringinfosetUacBarringfactorEnumeratedP15
+	UacBarringinfosetUacBarringfactorEnumeratedP20
+	UacBarringinfosetUacBarringfactorEnumeratedP25
+	UacBarringinfosetUacBarringfactorEnumeratedP30
+	UacBarringinfosetUacBarringfactorEnumeratedP40
+	UacBarringinfosetUacBarringfactorEnumeratedP50
+	UacBarringinfosetUacBarringfactorEnumeratedP60
+	UacBarringinfosetUacBarringfactorEnumeratedP70
+	UacBarringinfosetUacBarringfactorEnumeratedP75
+	UacBarringinfosetUacBarringfactorEnumeratedP80
+	UacBarringinfosetUacBarringfactorEnumeratedP85
+	UacBarringinfosetUacBarringfactorEnumeratedP90
+	UacBarringinfosetUacBarringfactorEnumeratedP95
+)

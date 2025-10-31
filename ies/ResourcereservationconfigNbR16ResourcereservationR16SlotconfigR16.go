@@ -1,7 +1,0 @@
-package ies
-
-// ResourceReservationConfig-NB-r16-resourceReservation-r16-slotConfig-r16 ::= SEQUENCE
-type ResourcereservationconfigNbR16ResourcereservationR16SlotconfigR16 struct {
-	SlotbitmapR16   ResourcereservationconfigNbR16ResourcereservationR16SlotconfigR16SlotbitmapR16
-	SymbolbitmapR16 *ResourcereservationconfigNbR16ResourcereservationR16SlotconfigR16SymbolbitmapR16
-}

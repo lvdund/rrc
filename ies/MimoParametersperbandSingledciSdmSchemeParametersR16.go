@@ -1,0 +1,7 @@
+package ies
+
+// MIMO-ParametersPerBand-singleDCI-SDM-scheme-Parameters-r16 ::= SEQUENCE
+type MimoParametersperbandSingledciSdmSchemeParametersR16 struct {
+	SupportnewdmrsPortR16   *MimoParametersperbandSingledciSdmSchemeParametersR16SupportnewdmrsPortR16
+	SupporttwoportdlPtrsR16 *MimoParametersperbandSingledciSdmSchemeParametersR16SupporttwoportdlPtrsR16
+}

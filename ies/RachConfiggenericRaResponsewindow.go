@@ -1,0 +1,20 @@
+package ies
+
+import "rrc/utils"
+
+// RACH-ConfigGeneric-ra-ResponseWindow ::= ENUMERATED
+type RachConfiggenericRaResponsewindow struct {
+	Value utils.ENUMERATED
+}
+
+const (
+	RachConfiggenericRaResponsewindowEnumeratedNothing = iota
+	RachConfiggenericRaResponsewindowEnumeratedSl1
+	RachConfiggenericRaResponsewindowEnumeratedSl2
+	RachConfiggenericRaResponsewindowEnumeratedSl4
+	RachConfiggenericRaResponsewindowEnumeratedSl8
+	RachConfiggenericRaResponsewindowEnumeratedSl10
+	RachConfiggenericRaResponsewindowEnumeratedSl20
+	RachConfiggenericRaResponsewindowEnumeratedSl40
+	RachConfiggenericRaResponsewindowEnumeratedSl80
+)

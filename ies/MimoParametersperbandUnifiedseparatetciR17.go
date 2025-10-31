@@ -1,0 +1,9 @@
+package ies
+
+// MIMO-ParametersPerBand-unifiedSeparateTCI-r17 ::= SEQUENCE
+type MimoParametersperbandUnifiedseparatetciR17 struct {
+	MaxconfigureddlTciR17        MimoParametersperbandUnifiedseparatetciR17MaxconfigureddlTciR17
+	MaxconfiguredulTciR17        MimoParametersperbandUnifiedseparatetciR17MaxconfiguredulTciR17
+	MaxactivateddlTciacrossccR17 MimoParametersperbandUnifiedseparatetciR17MaxactivateddlTciacrossccR17
+	MaxactivatedulTciacrossccR17 MimoParametersperbandUnifiedseparatetciR17MaxactivatedulTciacrossccR17
+}

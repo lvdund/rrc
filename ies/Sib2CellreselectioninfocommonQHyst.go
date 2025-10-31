@@ -1,0 +1,28 @@
+package ies
+
+import "rrc/utils"
+
+// SIB2-cellReselectionInfoCommon-q-Hyst ::= ENUMERATED
+type Sib2CellreselectioninfocommonQHyst struct {
+	Value utils.ENUMERATED
+}
+
+const (
+	Sib2CellreselectioninfocommonQHystEnumeratedNothing = iota
+	Sib2CellreselectioninfocommonQHystEnumeratedDb0
+	Sib2CellreselectioninfocommonQHystEnumeratedDb1
+	Sib2CellreselectioninfocommonQHystEnumeratedDb2
+	Sib2CellreselectioninfocommonQHystEnumeratedDb3
+	Sib2CellreselectioninfocommonQHystEnumeratedDb4
+	Sib2CellreselectioninfocommonQHystEnumeratedDb5
+	Sib2CellreselectioninfocommonQHystEnumeratedDb6
+	Sib2CellreselectioninfocommonQHystEnumeratedDb8
+	Sib2CellreselectioninfocommonQHystEnumeratedDb10
+	Sib2CellreselectioninfocommonQHystEnumeratedDb12
+	Sib2CellreselectioninfocommonQHystEnumeratedDb14
+	Sib2CellreselectioninfocommonQHystEnumeratedDb16
+	Sib2CellreselectioninfocommonQHystEnumeratedDb18
+	Sib2CellreselectioninfocommonQHystEnumeratedDb20
+	Sib2CellreselectioninfocommonQHystEnumeratedDb22
+	Sib2CellreselectioninfocommonQHystEnumeratedDb24
+)

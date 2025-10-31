@@ -1,0 +1,20 @@
+package ies
+
+import "rrc/utils"
+
+// MeasObjectNR-measCyclePSCell-r17 ::= ENUMERATED
+type MeasobjectnrMeascyclepscellR17 struct {
+	Value utils.ENUMERATED
+}
+
+const (
+	MeasobjectnrMeascyclepscellR17EnumeratedNothing = iota
+	MeasobjectnrMeascyclepscellR17EnumeratedMs160
+	MeasobjectnrMeascyclepscellR17EnumeratedMs256
+	MeasobjectnrMeascyclepscellR17EnumeratedMs320
+	MeasobjectnrMeascyclepscellR17EnumeratedMs512
+	MeasobjectnrMeascyclepscellR17EnumeratedMs640
+	MeasobjectnrMeascyclepscellR17EnumeratedMs1024
+	MeasobjectnrMeascyclepscellR17EnumeratedMs1280
+	MeasobjectnrMeascyclepscellR17EnumeratedSpare1
+)

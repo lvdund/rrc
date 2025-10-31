@@ -1,0 +1,19 @@
+package ies
+
+import "rrc/utils"
+
+// MIMO-ParametersPerBand-unifiedJointTCI-multiMAC-CE-r17-maxNumMAC-CE-PerCC ::= ENUMERATED
+type MimoParametersperbandUnifiedjointtciMultimacCeR17MaxnummacCePercc struct {
+	Value utils.ENUMERATED
+}
+
+const (
+	MimoParametersperbandUnifiedjointtciMultimacCeR17MaxnummacCePerccEnumeratedNothing = iota
+	MimoParametersperbandUnifiedjointtciMultimacCeR17MaxnummacCePerccEnumeratedN2
+	MimoParametersperbandUnifiedjointtciMultimacCeR17MaxnummacCePerccEnumeratedN3
+	MimoParametersperbandUnifiedjointtciMultimacCeR17MaxnummacCePerccEnumeratedN4
+	MimoParametersperbandUnifiedjointtciMultimacCeR17MaxnummacCePerccEnumeratedN5
+	MimoParametersperbandUnifiedjointtciMultimacCeR17MaxnummacCePerccEnumeratedN6
+	MimoParametersperbandUnifiedjointtciMultimacCeR17MaxnummacCePerccEnumeratedN7
+	MimoParametersperbandUnifiedjointtciMultimacCeR17MaxnummacCePerccEnumeratedN8
+)

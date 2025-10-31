@@ -1,0 +1,16 @@
+package ies
+
+import "rrc/utils"
+
+// MinSchedulingOffsetPreference-r16-preferredK0-r16-preferredK0-SCS-15kHz-r16 ::= ENUMERATED
+type MinschedulingoffsetpreferenceR16Preferredk0R16Preferredk0Scs15khzR16 struct {
+	Value utils.ENUMERATED
+}
+
+const (
+	MinschedulingoffsetpreferenceR16Preferredk0R16Preferredk0Scs15khzR16EnumeratedNothing = iota
+	MinschedulingoffsetpreferenceR16Preferredk0R16Preferredk0Scs15khzR16EnumeratedSl1
+	MinschedulingoffsetpreferenceR16Preferredk0R16Preferredk0Scs15khzR16EnumeratedSl2
+	MinschedulingoffsetpreferenceR16Preferredk0R16Preferredk0Scs15khzR16EnumeratedSl4
+	MinschedulingoffsetpreferenceR16Preferredk0R16Preferredk0Scs15khzR16EnumeratedSl6
+)

@@ -1,0 +1,28 @@
+package ies
+
+import "rrc/utils"
+
+// SIB17-IEs-r17-validityDuration-r17 ::= ENUMERATED
+type Sib17IesR17ValiditydurationR17 struct {
+	Value utils.ENUMERATED
+}
+
+const (
+	Sib17IesR17ValiditydurationR17EnumeratedNothing = iota
+	Sib17IesR17ValiditydurationR17EnumeratedT1
+	Sib17IesR17ValiditydurationR17EnumeratedT2
+	Sib17IesR17ValiditydurationR17EnumeratedT4
+	Sib17IesR17ValiditydurationR17EnumeratedT8
+	Sib17IesR17ValiditydurationR17EnumeratedT16
+	Sib17IesR17ValiditydurationR17EnumeratedT32
+	Sib17IesR17ValiditydurationR17EnumeratedT64
+	Sib17IesR17ValiditydurationR17EnumeratedT128
+	Sib17IesR17ValiditydurationR17EnumeratedT256
+	Sib17IesR17ValiditydurationR17EnumeratedT512
+	Sib17IesR17ValiditydurationR17EnumeratedInfinity
+	Sib17IesR17ValiditydurationR17EnumeratedSpare5
+	Sib17IesR17ValiditydurationR17EnumeratedSpare4
+	Sib17IesR17ValiditydurationR17EnumeratedSpare3
+	Sib17IesR17ValiditydurationR17EnumeratedSpare2
+	Sib17IesR17ValiditydurationR17EnumeratedSpare1
+)

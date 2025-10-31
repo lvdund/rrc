@@ -3,9 +3,14 @@ package ies
 import "rrc/utils"
 
 // PUCCH-ConfigCommon ::= SEQUENCE
+// Extensible
 type PucchConfigcommon struct {
-	DeltapucchShift PucchConfigcommonDeltapucchShift
-	NrbCqi          utils.INTEGER `lb:0,ub:98`
-	NcsAn           utils.INTEGER `lb:0,ub:7`
-	N1pucchAn       utils.INTEGER `lb:0,ub:2047`
+	PucchResourcecommon          *utils.INTEGER `lb:0,ub:15`
+	PucchGrouphopping            PucchConfigcommonPucchGrouphopping
+	Hoppingid                    *utils.INTEGER                           `lb:0,ub:1023`
+	P0Nominal                    *utils.INTEGER                           `lb:0,ub:24`
+	Nrofprbs                     *utils.INTEGER                           `lb:0,ub:16,ext`
+	IntraSlotfhR17               *PucchConfigcommonIntraSlotfhR17         `ext`
+	PucchResourcecommonredcapR17 *utils.INTEGER                           `lb:0,ub:15,ext`
+	AdditionalprboffsetR17       *PucchConfigcommonAdditionalprboffsetR17 `ext`
 }

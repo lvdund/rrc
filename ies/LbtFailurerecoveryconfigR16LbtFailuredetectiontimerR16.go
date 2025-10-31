@@ -1,0 +1,18 @@
+package ies
+
+import "rrc/utils"
+
+// LBT-FailureRecoveryConfig-r16-lbt-FailureDetectionTimer-r16 ::= ENUMERATED
+type LbtFailurerecoveryconfigR16LbtFailuredetectiontimerR16 struct {
+	Value utils.ENUMERATED
+}
+
+const (
+	LbtFailurerecoveryconfigR16LbtFailuredetectiontimerR16EnumeratedNothing = iota
+	LbtFailurerecoveryconfigR16LbtFailuredetectiontimerR16EnumeratedMs10
+	LbtFailurerecoveryconfigR16LbtFailuredetectiontimerR16EnumeratedMs20
+	LbtFailurerecoveryconfigR16LbtFailuredetectiontimerR16EnumeratedMs40
+	LbtFailurerecoveryconfigR16LbtFailuredetectiontimerR16EnumeratedMs80
+	LbtFailurerecoveryconfigR16LbtFailuredetectiontimerR16EnumeratedMs160
+	LbtFailurerecoveryconfigR16LbtFailuredetectiontimerR16EnumeratedMs320
+)

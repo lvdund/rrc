@@ -1,0 +1,18 @@
+package ies
+
+import "rrc/utils"
+
+// CG-ConfigInfo-IEs-scgFailureInfo-failureType ::= ENUMERATED
+type CgConfiginfoIesScgfailureinfoFailuretype struct {
+	Value utils.ENUMERATED
+}
+
+const (
+	CgConfiginfoIesScgfailureinfoFailuretypeEnumeratedNothing = iota
+	CgConfiginfoIesScgfailureinfoFailuretypeEnumeratedT310_Expiry
+	CgConfiginfoIesScgfailureinfoFailuretypeEnumeratedRandomaccessproblem
+	CgConfiginfoIesScgfailureinfoFailuretypeEnumeratedRlc_Maxnumretx
+	CgConfiginfoIesScgfailureinfoFailuretypeEnumeratedSynchreconfigfailure_Scg
+	CgConfiginfoIesScgfailureinfoFailuretypeEnumeratedScg_Reconfigfailure
+	CgConfiginfoIesScgfailureinfoFailuretypeEnumeratedSrb3_Integrityfailure
+)

@@ -1,0 +1,14 @@
+package ies
+
+import "rrc/utils"
+
+// BandSidelink-r16-congestionControlSidelink-r16-cbr-CR-TimeLimitSidelink-r16 ::= ENUMERATED
+type BandsidelinkR16CongestioncontrolsidelinkR16CbrCrTimelimitsidelinkR16 struct {
+	Value utils.ENUMERATED
+}
+
+const (
+	BandsidelinkR16CongestioncontrolsidelinkR16CbrCrTimelimitsidelinkR16EnumeratedNothing = iota
+	BandsidelinkR16CongestioncontrolsidelinkR16CbrCrTimelimitsidelinkR16EnumeratedTime1
+	BandsidelinkR16CongestioncontrolsidelinkR16CbrCrTimelimitsidelinkR16EnumeratedTime2
+)

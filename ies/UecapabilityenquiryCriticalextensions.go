@@ -3,12 +3,12 @@ package ies
 // UECapabilityEnquiry-criticalExtensions ::= CHOICE
 const (
 	UecapabilityenquiryCriticalextensionsChoiceNothing = iota
-	UecapabilityenquiryCriticalextensionsChoiceC1
+	UecapabilityenquiryCriticalextensionsChoiceUecapabilityenquiry
 	UecapabilityenquiryCriticalextensionsChoiceCriticalextensionsfuture
 )
 
 type UecapabilityenquiryCriticalextensions struct {
 	Choice                   uint64
-	C1                       *UecapabilityenquiryCriticalextensionsC1
+	Uecapabilityenquiry      *Uecapabilityenquiry
 	Criticalextensionsfuture *UecapabilityenquiryCriticalextensionsCriticalextensionsfuture
 }

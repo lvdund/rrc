@@ -1,0 +1,16 @@
+package ies
+
+import "rrc/utils"
+
+// RACH-ConfigGenericTwoStepRA-r16-msgA-PreamblePowerRampingStep-r16 ::= ENUMERATED
+type RachConfiggenerictwostepraR16MsgaPreamblepowerrampingstepR16 struct {
+	Value utils.ENUMERATED
+}
+
+const (
+	RachConfiggenerictwostepraR16MsgaPreamblepowerrampingstepR16EnumeratedNothing = iota
+	RachConfiggenerictwostepraR16MsgaPreamblepowerrampingstepR16EnumeratedDb0
+	RachConfiggenerictwostepraR16MsgaPreamblepowerrampingstepR16EnumeratedDb2
+	RachConfiggenerictwostepraR16MsgaPreamblepowerrampingstepR16EnumeratedDb4
+	RachConfiggenerictwostepraR16MsgaPreamblepowerrampingstepR16EnumeratedDb6
+)

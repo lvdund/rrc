@@ -1,0 +1,7 @@
+package ies
+
+// MIMO-ParametersPerBand-multiDCI-multiTRP-Parameters-r16-outOfOrderOperationDL-r16 ::= SEQUENCE
+type MimoParametersperbandMultidciMultitrpParametersR16OutoforderoperationdlR16 struct {
+	SupportpdcchTopdschR16   *MimoParametersperbandMultidciMultitrpParametersR16OutoforderoperationdlR16SupportpdcchTopdschR16
+	SupportpdschToharqAckR16 *MimoParametersperbandMultidciMultitrpParametersR16OutoforderoperationdlR16SupportpdschToharqAckR16
+}

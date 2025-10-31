@@ -1,0 +1,19 @@
+package ies
+
+import "rrc/utils"
+
+// SRS-Resource-resourceMapping-r17-nrofSymbols-r17 ::= ENUMERATED
+type SrsResourceResourcemappingR17NrofsymbolsR17 struct {
+	Value utils.ENUMERATED
+}
+
+const (
+	SrsResourceResourcemappingR17NrofsymbolsR17EnumeratedNothing = iota
+	SrsResourceResourcemappingR17NrofsymbolsR17EnumeratedN1
+	SrsResourceResourcemappingR17NrofsymbolsR17EnumeratedN2
+	SrsResourceResourcemappingR17NrofsymbolsR17EnumeratedN4
+	SrsResourceResourcemappingR17NrofsymbolsR17EnumeratedN8
+	SrsResourceResourcemappingR17NrofsymbolsR17EnumeratedN10
+	SrsResourceResourcemappingR17NrofsymbolsR17EnumeratedN12
+	SrsResourceResourcemappingR17NrofsymbolsR17EnumeratedN14
+)

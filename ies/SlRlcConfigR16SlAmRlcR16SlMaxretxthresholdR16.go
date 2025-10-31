@@ -1,0 +1,20 @@
+package ies
+
+import "rrc/utils"
+
+// SL-RLC-Config-r16-sl-AM-RLC-r16-sl-MaxRetxThreshold-r16 ::= ENUMERATED
+type SlRlcConfigR16SlAmRlcR16SlMaxretxthresholdR16 struct {
+	Value utils.ENUMERATED
+}
+
+const (
+	SlRlcConfigR16SlAmRlcR16SlMaxretxthresholdR16EnumeratedNothing = iota
+	SlRlcConfigR16SlAmRlcR16SlMaxretxthresholdR16EnumeratedT1
+	SlRlcConfigR16SlAmRlcR16SlMaxretxthresholdR16EnumeratedT2
+	SlRlcConfigR16SlAmRlcR16SlMaxretxthresholdR16EnumeratedT3
+	SlRlcConfigR16SlAmRlcR16SlMaxretxthresholdR16EnumeratedT4
+	SlRlcConfigR16SlAmRlcR16SlMaxretxthresholdR16EnumeratedT6
+	SlRlcConfigR16SlAmRlcR16SlMaxretxthresholdR16EnumeratedT8
+	SlRlcConfigR16SlAmRlcR16SlMaxretxthresholdR16EnumeratedT16
+	SlRlcConfigR16SlAmRlcR16SlMaxretxthresholdR16EnumeratedT32
+)

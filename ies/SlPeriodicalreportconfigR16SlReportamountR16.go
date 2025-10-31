@@ -1,0 +1,20 @@
+package ies
+
+import "rrc/utils"
+
+// SL-PeriodicalReportConfig-r16-sl-ReportAmount-r16 ::= ENUMERATED
+type SlPeriodicalreportconfigR16SlReportamountR16 struct {
+	Value utils.ENUMERATED
+}
+
+const (
+	SlPeriodicalreportconfigR16SlReportamountR16EnumeratedNothing = iota
+	SlPeriodicalreportconfigR16SlReportamountR16EnumeratedR1
+	SlPeriodicalreportconfigR16SlReportamountR16EnumeratedR2
+	SlPeriodicalreportconfigR16SlReportamountR16EnumeratedR4
+	SlPeriodicalreportconfigR16SlReportamountR16EnumeratedR8
+	SlPeriodicalreportconfigR16SlReportamountR16EnumeratedR16
+	SlPeriodicalreportconfigR16SlReportamountR16EnumeratedR32
+	SlPeriodicalreportconfigR16SlReportamountR16EnumeratedR64
+	SlPeriodicalreportconfigR16SlReportamountR16EnumeratedInfinity
+)

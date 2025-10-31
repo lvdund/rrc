@@ -1,0 +1,19 @@
+package ies
+
+import "rrc/utils"
+
+// FeatureSetDownlink-v1720-rtt-BasedPDC-PRS-r17-maxNumberPRS-Resource-r17 ::= ENUMERATED
+type FeaturesetdownlinkV1720RttBasedpdcPrsR17MaxnumberprsResourceR17 struct {
+	Value utils.ENUMERATED
+}
+
+const (
+	FeaturesetdownlinkV1720RttBasedpdcPrsR17MaxnumberprsResourceR17EnumeratedNothing = iota
+	FeaturesetdownlinkV1720RttBasedpdcPrsR17MaxnumberprsResourceR17EnumeratedN1
+	FeaturesetdownlinkV1720RttBasedpdcPrsR17MaxnumberprsResourceR17EnumeratedN2
+	FeaturesetdownlinkV1720RttBasedpdcPrsR17MaxnumberprsResourceR17EnumeratedN4
+	FeaturesetdownlinkV1720RttBasedpdcPrsR17MaxnumberprsResourceR17EnumeratedN8
+	FeaturesetdownlinkV1720RttBasedpdcPrsR17MaxnumberprsResourceR17EnumeratedN16
+	FeaturesetdownlinkV1720RttBasedpdcPrsR17MaxnumberprsResourceR17EnumeratedN32
+	FeaturesetdownlinkV1720RttBasedpdcPrsR17MaxnumberprsResourceR17EnumeratedN64
+)

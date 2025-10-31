@@ -1,0 +1,10 @@
+package ies
+
+// RF-ParametersMRDC-supportedBandCombinationListNEDC-Only-v15a0 ::= SEQUENCE
+type RfParametersmrdcSupportedbandcombinationlistnedcOnlyV15a0 struct {
+	SupportedbandcombinationlistV1540 *BandcombinationlistV1540
+	SupportedbandcombinationlistV1560 *BandcombinationlistV1560
+	SupportedbandcombinationlistV1570 *BandcombinationlistV1570
+	SupportedbandcombinationlistV1580 *BandcombinationlistV1580
+	SupportedbandcombinationlistV1590 *BandcombinationlistV1590
+}

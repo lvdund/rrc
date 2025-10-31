@@ -2,7 +2,7 @@ package ies
 
 import "rrc/utils"
 
-// RSRP-Range ::= utils.INTEGER (0..97)
+// RSRP-Range ::= utils.INTEGER (0..127)
 type RsrpRange struct {
-	Value utils.INTEGER `lb:0,ub:97`
+	Value utils.INTEGER `lb:0,ub:127`
 }

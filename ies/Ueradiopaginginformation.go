@@ -1,6 +1,7 @@
 package ies
 
-// UERadioPagingInformation ::= SEQUENCE
+// UERadioPagingInformation-IEs ::= SEQUENCE
 type Ueradiopaginginformation struct {
-	Criticalextensions UeradiopaginginformationCriticalextensions
+	Supportedbandlistnrforpaging *[]Freqbandindicatornr `lb:1,ub:maxBands`
+	Noncriticalextension         *UeradiopaginginformationV15e0
 }

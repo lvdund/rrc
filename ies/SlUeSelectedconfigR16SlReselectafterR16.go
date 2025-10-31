@@ -1,0 +1,21 @@
+package ies
+
+import "rrc/utils"
+
+// SL-UE-SelectedConfig-r16-sl-ReselectAfter-r16 ::= ENUMERATED
+type SlUeSelectedconfigR16SlReselectafterR16 struct {
+	Value utils.ENUMERATED
+}
+
+const (
+	SlUeSelectedconfigR16SlReselectafterR16EnumeratedNothing = iota
+	SlUeSelectedconfigR16SlReselectafterR16EnumeratedN1
+	SlUeSelectedconfigR16SlReselectafterR16EnumeratedN2
+	SlUeSelectedconfigR16SlReselectafterR16EnumeratedN3
+	SlUeSelectedconfigR16SlReselectafterR16EnumeratedN4
+	SlUeSelectedconfigR16SlReselectafterR16EnumeratedN5
+	SlUeSelectedconfigR16SlReselectafterR16EnumeratedN6
+	SlUeSelectedconfigR16SlReselectafterR16EnumeratedN7
+	SlUeSelectedconfigR16SlReselectafterR16EnumeratedN8
+	SlUeSelectedconfigR16SlReselectafterR16EnumeratedN9
+)

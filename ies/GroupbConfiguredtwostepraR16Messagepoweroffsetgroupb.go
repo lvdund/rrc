@@ -1,0 +1,20 @@
+package ies
+
+import "rrc/utils"
+
+// GroupB-ConfiguredTwoStepRA-r16-messagePowerOffsetGroupB ::= ENUMERATED
+type GroupbConfiguredtwostepraR16Messagepoweroffsetgroupb struct {
+	Value utils.ENUMERATED
+}
+
+const (
+	GroupbConfiguredtwostepraR16MessagepoweroffsetgroupbEnumeratedNothing = iota
+	GroupbConfiguredtwostepraR16MessagepoweroffsetgroupbEnumeratedMinusinfinity
+	GroupbConfiguredtwostepraR16MessagepoweroffsetgroupbEnumeratedDb0
+	GroupbConfiguredtwostepraR16MessagepoweroffsetgroupbEnumeratedDb5
+	GroupbConfiguredtwostepraR16MessagepoweroffsetgroupbEnumeratedDb8
+	GroupbConfiguredtwostepraR16MessagepoweroffsetgroupbEnumeratedDb10
+	GroupbConfiguredtwostepraR16MessagepoweroffsetgroupbEnumeratedDb12
+	GroupbConfiguredtwostepraR16MessagepoweroffsetgroupbEnumeratedDb15
+	GroupbConfiguredtwostepraR16MessagepoweroffsetgroupbEnumeratedDb18
+)

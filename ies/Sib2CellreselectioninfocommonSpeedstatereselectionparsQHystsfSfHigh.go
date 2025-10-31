@@ -1,0 +1,16 @@
+package ies
+
+import "rrc/utils"
+
+// SIB2-cellReselectionInfoCommon-speedStateReselectionPars-q-HystSF-sf-High ::= ENUMERATED
+type Sib2CellreselectioninfocommonSpeedstatereselectionparsQHystsfSfHigh struct {
+	Value utils.ENUMERATED
+}
+
+const (
+	Sib2CellreselectioninfocommonSpeedstatereselectionparsQHystsfSfHighEnumeratedNothing = iota
+	Sib2CellreselectioninfocommonSpeedstatereselectionparsQHystsfSfHighEnumeratedDb_6
+	Sib2CellreselectioninfocommonSpeedstatereselectionparsQHystsfSfHighEnumeratedDb_4
+	Sib2CellreselectioninfocommonSpeedstatereselectionparsQHystsfSfHighEnumeratedDb_2
+	Sib2CellreselectioninfocommonSpeedstatereselectionparsQHystsfSfHighEnumeratedDb0
+)

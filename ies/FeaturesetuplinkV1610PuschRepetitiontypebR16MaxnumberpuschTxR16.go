@@ -1,0 +1,18 @@
+package ies
+
+import "rrc/utils"
+
+// FeatureSetUplink-v1610-pusch-RepetitionTypeB-r16-maxNumberPUSCH-Tx-r16 ::= ENUMERATED
+type FeaturesetuplinkV1610PuschRepetitiontypebR16MaxnumberpuschTxR16 struct {
+	Value utils.ENUMERATED
+}
+
+const (
+	FeaturesetuplinkV1610PuschRepetitiontypebR16MaxnumberpuschTxR16EnumeratedNothing = iota
+	FeaturesetuplinkV1610PuschRepetitiontypebR16MaxnumberpuschTxR16EnumeratedN2
+	FeaturesetuplinkV1610PuschRepetitiontypebR16MaxnumberpuschTxR16EnumeratedN3
+	FeaturesetuplinkV1610PuschRepetitiontypebR16MaxnumberpuschTxR16EnumeratedN4
+	FeaturesetuplinkV1610PuschRepetitiontypebR16MaxnumberpuschTxR16EnumeratedN7
+	FeaturesetuplinkV1610PuschRepetitiontypebR16MaxnumberpuschTxR16EnumeratedN8
+	FeaturesetuplinkV1610PuschRepetitiontypebR16MaxnumberpuschTxR16EnumeratedN12
+)

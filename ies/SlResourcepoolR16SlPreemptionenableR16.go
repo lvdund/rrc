@@ -1,0 +1,21 @@
+package ies
+
+import "rrc/utils"
+
+// SL-ResourcePool-r16-sl-PreemptionEnable-r16 ::= ENUMERATED
+type SlResourcepoolR16SlPreemptionenableR16 struct {
+	Value utils.ENUMERATED
+}
+
+const (
+	SlResourcepoolR16SlPreemptionenableR16EnumeratedNothing = iota
+	SlResourcepoolR16SlPreemptionenableR16EnumeratedEnabled
+	SlResourcepoolR16SlPreemptionenableR16EnumeratedPl1
+	SlResourcepoolR16SlPreemptionenableR16EnumeratedPl2
+	SlResourcepoolR16SlPreemptionenableR16EnumeratedPl3
+	SlResourcepoolR16SlPreemptionenableR16EnumeratedPl4
+	SlResourcepoolR16SlPreemptionenableR16EnumeratedPl5
+	SlResourcepoolR16SlPreemptionenableR16EnumeratedPl6
+	SlResourcepoolR16SlPreemptionenableR16EnumeratedPl7
+	SlResourcepoolR16SlPreemptionenableR16EnumeratedPl8
+)

@@ -1,0 +1,24 @@
+package ies
+
+import "rrc/utils"
+
+// BandNR-maxUplinkDutyCycle-PC1dot5-MPE-FR1-r16 ::= ENUMERATED
+type BandnrMaxuplinkdutycyclePc1dot5MpeFr1R16 struct {
+	Value utils.ENUMERATED
+}
+
+const (
+	BandnrMaxuplinkdutycyclePc1dot5MpeFr1R16EnumeratedNothing = iota
+	BandnrMaxuplinkdutycyclePc1dot5MpeFr1R16EnumeratedN10
+	BandnrMaxuplinkdutycyclePc1dot5MpeFr1R16EnumeratedN15
+	BandnrMaxuplinkdutycyclePc1dot5MpeFr1R16EnumeratedN20
+	BandnrMaxuplinkdutycyclePc1dot5MpeFr1R16EnumeratedN25
+	BandnrMaxuplinkdutycyclePc1dot5MpeFr1R16EnumeratedN30
+	BandnrMaxuplinkdutycyclePc1dot5MpeFr1R16EnumeratedN40
+	BandnrMaxuplinkdutycyclePc1dot5MpeFr1R16EnumeratedN50
+	BandnrMaxuplinkdutycyclePc1dot5MpeFr1R16EnumeratedN60
+	BandnrMaxuplinkdutycyclePc1dot5MpeFr1R16EnumeratedN70
+	BandnrMaxuplinkdutycyclePc1dot5MpeFr1R16EnumeratedN80
+	BandnrMaxuplinkdutycyclePc1dot5MpeFr1R16EnumeratedN90
+	BandnrMaxuplinkdutycyclePc1dot5MpeFr1R16EnumeratedN100
+)

@@ -14,7 +14,15 @@ const (
 	ResumecauseEnumeratedMt_Access
 	ResumecauseEnumeratedMo_Signalling
 	ResumecauseEnumeratedMo_Data
-	ResumecauseEnumeratedDelaytolerantaccess_V1020
-	ResumecauseEnumeratedMo_Voicecall_V1280
-	ResumecauseEnumeratedMt_Edt_V1610
+	ResumecauseEnumeratedMo_Voicecall
+	ResumecauseEnumeratedMo_Videocall
+	ResumecauseEnumeratedMo_Sms
+	ResumecauseEnumeratedRna_Update
+	ResumecauseEnumeratedMps_Priorityaccess
+	ResumecauseEnumeratedMcs_Priorityaccess
+	ResumecauseEnumeratedSpare1
+	ResumecauseEnumeratedSpare2
+	ResumecauseEnumeratedSpare3
+	ResumecauseEnumeratedSpare4
+	ResumecauseEnumeratedSpare5
 )

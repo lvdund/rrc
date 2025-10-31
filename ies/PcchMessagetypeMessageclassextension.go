@@ -1,5 +1,4 @@
 package ies
 
 // PCCH-MessageType-messageClassExtension ::= SEQUENCE
-type PcchMessagetypeMessageclassextension struct {
-}
+type PcchMessagetypeMessageclassextension struct{}

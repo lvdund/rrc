@@ -4,5 +4,5 @@ package ies
 // Extensible
 type Pagingrecord struct {
 	UeIdentity PagingueIdentity
-	CnDomain   PagingrecordCnDomain
+	Accesstype *PagingrecordAccesstype
 }

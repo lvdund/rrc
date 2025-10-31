@@ -1,0 +1,20 @@
+package ies
+
+import "rrc/utils"
+
+// MCCH-Config-r17-mcch-WindowDuration-r17 ::= ENUMERATED
+type McchConfigR17McchWindowdurationR17 struct {
+	Value utils.ENUMERATED
+}
+
+const (
+	McchConfigR17McchWindowdurationR17EnumeratedNothing = iota
+	McchConfigR17McchWindowdurationR17EnumeratedSl2
+	McchConfigR17McchWindowdurationR17EnumeratedSl4
+	McchConfigR17McchWindowdurationR17EnumeratedSl8
+	McchConfigR17McchWindowdurationR17EnumeratedSl10
+	McchConfigR17McchWindowdurationR17EnumeratedSl20
+	McchConfigR17McchWindowdurationR17EnumeratedSl40
+	McchConfigR17McchWindowdurationR17EnumeratedSl80
+	McchConfigR17McchWindowdurationR17EnumeratedSl160
+)

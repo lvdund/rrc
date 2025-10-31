@@ -1,0 +1,28 @@
+package ies
+
+import "rrc/utils"
+
+// RA-Report-r16-raPurpose-r16 ::= ENUMERATED
+type RaReportR16RapurposeR16 struct {
+	Value utils.ENUMERATED
+}
+
+const (
+	RaReportR16RapurposeR16EnumeratedNothing = iota
+	RaReportR16RapurposeR16EnumeratedAccessrelated
+	RaReportR16RapurposeR16EnumeratedBeamfailurerecovery
+	RaReportR16RapurposeR16EnumeratedReconfigurationwithsync
+	RaReportR16RapurposeR16EnumeratedUlunsynchronized
+	RaReportR16RapurposeR16EnumeratedSchedulingrequestfailure
+	RaReportR16RapurposeR16EnumeratedNopucchresourceavailable
+	RaReportR16RapurposeR16EnumeratedRequestforothersi
+	RaReportR16RapurposeR16EnumeratedMsg3requestforothersi_R17
+	RaReportR16RapurposeR16EnumeratedSpare8
+	RaReportR16RapurposeR16EnumeratedSpare7
+	RaReportR16RapurposeR16EnumeratedSpare6
+	RaReportR16RapurposeR16EnumeratedSpare5
+	RaReportR16RapurposeR16EnumeratedSpare4
+	RaReportR16RapurposeR16EnumeratedSpare3
+	RaReportR16RapurposeR16EnumeratedSpare2
+	RaReportR16RapurposeR16EnumeratedSpare1
+)

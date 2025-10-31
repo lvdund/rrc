@@ -1,9 +1,10 @@
 package ies
 
-import "rrc/utils"
-
 // RACH-ConfigDedicated ::= SEQUENCE
+// Extensible
 type RachConfigdedicated struct {
-	RaPreambleindex  utils.INTEGER `lb:0,ub:63`
-	RaPrachMaskindex utils.INTEGER `lb:0,ub:15`
+	Cfra                       *Cfra
+	RaPrioritization           *RaPrioritization
+	RaPrioritizationtwostepR16 *RaPrioritization `ext`
+	CfraTwostepR16             *CfraTwostepR16   `ext`
 }

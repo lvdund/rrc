@@ -1,0 +1,19 @@
+package ies
+
+// CodebookComboParametersAddition-r16 ::= SEQUENCE
+type CodebookcomboparametersadditionR16 struct {
+	Type1spType2NullR16      *CodebookcomboparametersadditionR16Type1spType2NullR16
+	Type1spType2psNullR16    *CodebookcomboparametersadditionR16Type1spType2psNullR16
+	Type1spEtype2r1NullR16   *CodebookcomboparametersadditionR16Type1spEtype2r1NullR16
+	Type1spEtype2r2NullR16   *CodebookcomboparametersadditionR16Type1spEtype2r2NullR16
+	Type1spEtype2r1psNullR16 *CodebookcomboparametersadditionR16Type1spEtype2r1psNullR16
+	Type1spEtype2r2psNullR16 *CodebookcomboparametersadditionR16Type1spEtype2r2psNullR16
+	Type1spType2Type2psR16   *CodebookcomboparametersadditionR16Type1spType2Type2psR16
+	Type1mpType2NullR16      *CodebookcomboparametersadditionR16Type1mpType2NullR16
+	Type1mpType2psNullR16    *CodebookcomboparametersadditionR16Type1mpType2psNullR16
+	Type1mpEtype2r1NullR16   *CodebookcomboparametersadditionR16Type1mpEtype2r1NullR16
+	Type1mpEtype2r2NullR16   *CodebookcomboparametersadditionR16Type1mpEtype2r2NullR16
+	Type1mpEtype2r1psNullR16 *CodebookcomboparametersadditionR16Type1mpEtype2r1psNullR16
+	Type1mpEtype2r2psNullR16 *CodebookcomboparametersadditionR16Type1mpEtype2r2psNullR16
+	Type1mpType2Type2psR16   *CodebookcomboparametersadditionR16Type1mpType2Type2psR16
+}

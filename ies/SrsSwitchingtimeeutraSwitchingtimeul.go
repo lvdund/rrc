@@ -1,0 +1,27 @@
+package ies
+
+import "rrc/utils"
+
+// SRS-SwitchingTimeEUTRA-switchingTimeUL ::= ENUMERATED
+type SrsSwitchingtimeeutraSwitchingtimeul struct {
+	Value utils.ENUMERATED
+}
+
+const (
+	SrsSwitchingtimeeutraSwitchingtimeulEnumeratedNothing = iota
+	SrsSwitchingtimeeutraSwitchingtimeulEnumeratedN0
+	SrsSwitchingtimeeutraSwitchingtimeulEnumeratedN0dot5
+	SrsSwitchingtimeeutraSwitchingtimeulEnumeratedN1
+	SrsSwitchingtimeeutraSwitchingtimeulEnumeratedN1dot5
+	SrsSwitchingtimeeutraSwitchingtimeulEnumeratedN2
+	SrsSwitchingtimeeutraSwitchingtimeulEnumeratedN2dot5
+	SrsSwitchingtimeeutraSwitchingtimeulEnumeratedN3
+	SrsSwitchingtimeeutraSwitchingtimeulEnumeratedN3dot5
+	SrsSwitchingtimeeutraSwitchingtimeulEnumeratedN4
+	SrsSwitchingtimeeutraSwitchingtimeulEnumeratedN4dot5
+	SrsSwitchingtimeeutraSwitchingtimeulEnumeratedN5
+	SrsSwitchingtimeeutraSwitchingtimeulEnumeratedN5dot5
+	SrsSwitchingtimeeutraSwitchingtimeulEnumeratedN6
+	SrsSwitchingtimeeutraSwitchingtimeulEnumeratedN6dot5
+	SrsSwitchingtimeeutraSwitchingtimeulEnumeratedN7
+)

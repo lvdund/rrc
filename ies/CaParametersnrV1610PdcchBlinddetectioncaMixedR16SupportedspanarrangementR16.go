@@ -1,0 +1,14 @@
+package ies
+
+import "rrc/utils"
+
+// CA-ParametersNR-v1610-pdcch-BlindDetectionCA-Mixed-r16-supportedSpanArrangement-r16 ::= ENUMERATED
+type CaParametersnrV1610PdcchBlinddetectioncaMixedR16SupportedspanarrangementR16 struct {
+	Value utils.ENUMERATED
+}
+
+const (
+	CaParametersnrV1610PdcchBlinddetectioncaMixedR16SupportedspanarrangementR16EnumeratedNothing = iota
+	CaParametersnrV1610PdcchBlinddetectioncaMixedR16SupportedspanarrangementR16EnumeratedAlignedonly
+	CaParametersnrV1610PdcchBlinddetectioncaMixedR16SupportedspanarrangementR16EnumeratedAlignedandnonaligned
+)

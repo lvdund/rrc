@@ -1,0 +1,20 @@
+package ies
+
+import "rrc/utils"
+
+// SchedulingRequestToAddMod-sr-TransMax ::= ENUMERATED
+type SchedulingrequesttoaddmodSrTransmax struct {
+	Value utils.ENUMERATED
+}
+
+const (
+	SchedulingrequesttoaddmodSrTransmaxEnumeratedNothing = iota
+	SchedulingrequesttoaddmodSrTransmaxEnumeratedN4
+	SchedulingrequesttoaddmodSrTransmaxEnumeratedN8
+	SchedulingrequesttoaddmodSrTransmaxEnumeratedN16
+	SchedulingrequesttoaddmodSrTransmaxEnumeratedN32
+	SchedulingrequesttoaddmodSrTransmaxEnumeratedN64
+	SchedulingrequesttoaddmodSrTransmaxEnumeratedSpare3
+	SchedulingrequesttoaddmodSrTransmaxEnumeratedSpare2
+	SchedulingrequesttoaddmodSrTransmaxEnumeratedSpare1
+)

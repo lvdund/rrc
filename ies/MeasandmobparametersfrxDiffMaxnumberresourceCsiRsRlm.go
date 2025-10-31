@@ -1,0 +1,16 @@
+package ies
+
+import "rrc/utils"
+
+// MeasAndMobParametersFRX-Diff-maxNumberResource-CSI-RS-RLM ::= ENUMERATED
+type MeasandmobparametersfrxDiffMaxnumberresourceCsiRsRlm struct {
+	Value utils.ENUMERATED
+}
+
+const (
+	MeasandmobparametersfrxDiffMaxnumberresourceCsiRsRlmEnumeratedNothing = iota
+	MeasandmobparametersfrxDiffMaxnumberresourceCsiRsRlmEnumeratedN2
+	MeasandmobparametersfrxDiffMaxnumberresourceCsiRsRlmEnumeratedN4
+	MeasandmobparametersfrxDiffMaxnumberresourceCsiRsRlmEnumeratedN6
+	MeasandmobparametersfrxDiffMaxnumberresourceCsiRsRlmEnumeratedN8
+)

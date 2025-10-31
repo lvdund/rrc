@@ -1,0 +1,9 @@
+package ies
+
+// FeatureSetUplink-pusch-ProcessingType1-DifferentTB-PerSlot ::= SEQUENCE
+type FeaturesetuplinkPuschProcessingtype1DifferenttbPerslot struct {
+	Scs15khz  *FeaturesetuplinkPuschProcessingtype1DifferenttbPerslotScs15khz
+	Scs30khz  *FeaturesetuplinkPuschProcessingtype1DifferenttbPerslotScs30khz
+	Scs60khz  *FeaturesetuplinkPuschProcessingtype1DifferenttbPerslotScs60khz
+	Scs120khz *FeaturesetuplinkPuschProcessingtype1DifferenttbPerslotScs120khz
+}

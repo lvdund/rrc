@@ -1,0 +1,15 @@
+package ies
+
+import "rrc/utils"
+
+// CSI-ReportConfig-semiPersistentOnPUSCH-v1530-reportSlotConfig-v1530 ::= ENUMERATED
+type CsiReportconfigSemipersistentonpuschV1530ReportslotconfigV1530 struct {
+	Value utils.ENUMERATED
+}
+
+const (
+	CsiReportconfigSemipersistentonpuschV1530ReportslotconfigV1530EnumeratedNothing = iota
+	CsiReportconfigSemipersistentonpuschV1530ReportslotconfigV1530EnumeratedSl4
+	CsiReportconfigSemipersistentonpuschV1530ReportslotconfigV1530EnumeratedSl8
+	CsiReportconfigSemipersistentonpuschV1530ReportslotconfigV1530EnumeratedSl16
+)

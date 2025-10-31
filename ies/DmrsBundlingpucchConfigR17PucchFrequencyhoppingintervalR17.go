@@ -1,0 +1,16 @@
+package ies
+
+import "rrc/utils"
+
+// DMRS-BundlingPUCCH-Config-r17-pucch-FrequencyHoppingInterval-r17 ::= ENUMERATED
+type DmrsBundlingpucchConfigR17PucchFrequencyhoppingintervalR17 struct {
+	Value utils.ENUMERATED
+}
+
+const (
+	DmrsBundlingpucchConfigR17PucchFrequencyhoppingintervalR17EnumeratedNothing = iota
+	DmrsBundlingpucchConfigR17PucchFrequencyhoppingintervalR17EnumeratedS2
+	DmrsBundlingpucchConfigR17PucchFrequencyhoppingintervalR17EnumeratedS4
+	DmrsBundlingpucchConfigR17PucchFrequencyhoppingintervalR17EnumeratedS5
+	DmrsBundlingpucchConfigR17PucchFrequencyhoppingintervalR17EnumeratedS10
+)

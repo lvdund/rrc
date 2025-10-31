@@ -1,0 +1,14 @@
+package ies
+
+import "rrc/utils"
+
+// PhysicalCellGroupConfig-harq-ACK-SpatialBundlingPUCCH-secondaryPUCCHgroup-r16 ::= ENUMERATED
+type PhysicalcellgroupconfigHarqAckSpatialbundlingpucchSecondarypucchgroupR16 struct {
+	Value utils.ENUMERATED
+}
+
+const (
+	PhysicalcellgroupconfigHarqAckSpatialbundlingpucchSecondarypucchgroupR16EnumeratedNothing = iota
+	PhysicalcellgroupconfigHarqAckSpatialbundlingpucchSecondarypucchgroupR16EnumeratedEnabled
+	PhysicalcellgroupconfigHarqAckSpatialbundlingpucchSecondarypucchgroupR16EnumeratedDisabled
+)

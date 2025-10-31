@@ -1,0 +1,20 @@
+package ies
+
+import "rrc/utils"
+
+// SchedulingRequestToAddMod-sr-ProhibitTimer ::= ENUMERATED
+type SchedulingrequesttoaddmodSrProhibittimer struct {
+	Value utils.ENUMERATED
+}
+
+const (
+	SchedulingrequesttoaddmodSrProhibittimerEnumeratedNothing = iota
+	SchedulingrequesttoaddmodSrProhibittimerEnumeratedMs1
+	SchedulingrequesttoaddmodSrProhibittimerEnumeratedMs2
+	SchedulingrequesttoaddmodSrProhibittimerEnumeratedMs4
+	SchedulingrequesttoaddmodSrProhibittimerEnumeratedMs8
+	SchedulingrequesttoaddmodSrProhibittimerEnumeratedMs16
+	SchedulingrequesttoaddmodSrProhibittimerEnumeratedMs32
+	SchedulingrequesttoaddmodSrProhibittimerEnumeratedMs64
+	SchedulingrequesttoaddmodSrProhibittimerEnumeratedMs128
+)

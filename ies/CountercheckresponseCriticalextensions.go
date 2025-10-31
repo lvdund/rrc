@@ -3,12 +3,12 @@ package ies
 // CounterCheckResponse-criticalExtensions ::= CHOICE
 const (
 	CountercheckresponseCriticalextensionsChoiceNothing = iota
-	CountercheckresponseCriticalextensionsChoiceCountercheckresponseR8
+	CountercheckresponseCriticalextensionsChoiceCountercheckresponse
 	CountercheckresponseCriticalextensionsChoiceCriticalextensionsfuture
 )
 
 type CountercheckresponseCriticalextensions struct {
 	Choice                   uint64
-	CountercheckresponseR8   *CountercheckresponseR8
+	Countercheckresponse     *Countercheckresponse
 	Criticalextensionsfuture *CountercheckresponseCriticalextensionsCriticalextensionsfuture
 }

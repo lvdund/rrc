@@ -1,0 +1,16 @@
+package ies
+
+import "rrc/utils"
+
+// FeatureSetDownlink-v1540-pdsch-ProcessingType2-Limited-differentTB-PerSlot-SCS-30kHz ::= ENUMERATED
+type FeaturesetdownlinkV1540PdschProcessingtype2LimitedDifferenttbPerslotScs30khz struct {
+	Value utils.ENUMERATED
+}
+
+const (
+	FeaturesetdownlinkV1540PdschProcessingtype2LimitedDifferenttbPerslotScs30khzEnumeratedNothing = iota
+	FeaturesetdownlinkV1540PdschProcessingtype2LimitedDifferenttbPerslotScs30khzEnumeratedUpto1
+	FeaturesetdownlinkV1540PdschProcessingtype2LimitedDifferenttbPerslotScs30khzEnumeratedUpto2
+	FeaturesetdownlinkV1540PdschProcessingtype2LimitedDifferenttbPerslotScs30khzEnumeratedUpto4
+	FeaturesetdownlinkV1540PdschProcessingtype2LimitedDifferenttbPerslotScs30khzEnumeratedUpto7
+)

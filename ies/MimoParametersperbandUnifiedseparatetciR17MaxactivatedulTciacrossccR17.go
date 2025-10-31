@@ -1,0 +1,17 @@
+package ies
+
+import "rrc/utils"
+
+// MIMO-ParametersPerBand-unifiedSeparateTCI-r17-maxActivatedUL-TCIAcrossCC-r17 ::= ENUMERATED
+type MimoParametersperbandUnifiedseparatetciR17MaxactivatedulTciacrossccR17 struct {
+	Value utils.ENUMERATED
+}
+
+const (
+	MimoParametersperbandUnifiedseparatetciR17MaxactivatedulTciacrossccR17EnumeratedNothing = iota
+	MimoParametersperbandUnifiedseparatetciR17MaxactivatedulTciacrossccR17EnumeratedN1
+	MimoParametersperbandUnifiedseparatetciR17MaxactivatedulTciacrossccR17EnumeratedN2
+	MimoParametersperbandUnifiedseparatetciR17MaxactivatedulTciacrossccR17EnumeratedN4
+	MimoParametersperbandUnifiedseparatetciR17MaxactivatedulTciacrossccR17EnumeratedN8
+	MimoParametersperbandUnifiedseparatetciR17MaxactivatedulTciacrossccR17EnumeratedN16
+)

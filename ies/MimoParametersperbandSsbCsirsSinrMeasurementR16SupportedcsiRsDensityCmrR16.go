@@ -1,0 +1,15 @@
+package ies
+
+import "rrc/utils"
+
+// MIMO-ParametersPerBand-ssb-csirs-SINR-measurement-r16-supportedCSI-RS-Density-CMR-r16 ::= ENUMERATED
+type MimoParametersperbandSsbCsirsSinrMeasurementR16SupportedcsiRsDensityCmrR16 struct {
+	Value utils.ENUMERATED
+}
+
+const (
+	MimoParametersperbandSsbCsirsSinrMeasurementR16SupportedcsiRsDensityCmrR16EnumeratedNothing = iota
+	MimoParametersperbandSsbCsirsSinrMeasurementR16SupportedcsiRsDensityCmrR16EnumeratedOne
+	MimoParametersperbandSsbCsirsSinrMeasurementR16SupportedcsiRsDensityCmrR16EnumeratedThree
+	MimoParametersperbandSsbCsirsSinrMeasurementR16SupportedcsiRsDensityCmrR16EnumeratedOneandthree
+)

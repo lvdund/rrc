@@ -1,0 +1,14 @@
+package ies
+
+import "rrc/utils"
+
+// CA-ParametersNR-v1690-csi-ReportingCrossPUCCH-Grp-r16-additionalSymbols-r16-scs-30kHz-additionalSymbols-r16 ::= ENUMERATED
+type CaParametersnrV1690CsiReportingcrosspucchGrpR16AdditionalsymbolsR16Scs30khzAdditionalsymbolsR16 struct {
+	Value utils.ENUMERATED
+}
+
+const (
+	CaParametersnrV1690CsiReportingcrosspucchGrpR16AdditionalsymbolsR16Scs30khzAdditionalsymbolsR16EnumeratedNothing = iota
+	CaParametersnrV1690CsiReportingcrosspucchGrpR16AdditionalsymbolsR16Scs30khzAdditionalsymbolsR16EnumeratedS14
+	CaParametersnrV1690CsiReportingcrosspucchGrpR16AdditionalsymbolsR16Scs30khzAdditionalsymbolsR16EnumeratedS28
+)

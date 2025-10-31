@@ -1,0 +1,15 @@
+package ies
+
+import "rrc/utils"
+
+// FeatureSetUplink-v1610-ul-IntraUE-Mux-r16-pusch-PreparationLowPriority-r16 ::= ENUMERATED
+type FeaturesetuplinkV1610UlIntraueMuxR16PuschPreparationlowpriorityR16 struct {
+	Value utils.ENUMERATED
+}
+
+const (
+	FeaturesetuplinkV1610UlIntraueMuxR16PuschPreparationlowpriorityR16EnumeratedNothing = iota
+	FeaturesetuplinkV1610UlIntraueMuxR16PuschPreparationlowpriorityR16EnumeratedSym0
+	FeaturesetuplinkV1610UlIntraueMuxR16PuschPreparationlowpriorityR16EnumeratedSym1
+	FeaturesetuplinkV1610UlIntraueMuxR16PuschPreparationlowpriorityR16EnumeratedSym2
+)

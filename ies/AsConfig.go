@@ -1,15 +1,14 @@
 package ies
 
+import "rrc/utils"
+
 // AS-Config ::= SEQUENCE
 // Extensible
 type AsConfig struct {
-	Sourcemeasconfig                  Measconfig
-	Sourceradioresourceconfig         Radioresourceconfigdedicated
-	Sourcesecurityalgorithmconfig     Securityalgorithmconfig
-	SourceueIdentity                  CRnti
-	Sourcemasterinformationblock      Masterinformationblock
-	Sourcesysteminformationblocktype1 Systeminformationblocktype1
-	Sourcesysteminformationblocktype2 Systeminformationblocktype2
-	Antennainfocommon                 Antennainfocommon
-	SourcedlCarrierfreq               ArfcnValueeutra
+	Rrcreconfiguration   utils.OCTETSTRING
+	SourcerbSnConfig     *utils.OCTETSTRING `ext`
+	SourcescgNrConfig    *utils.OCTETSTRING `ext`
+	SourcescgEutraConfig *utils.OCTETSTRING `ext`
+	SourcescgConfigured  *utils.BOOLEAN     `ext`
+	SdtConfigR17         *SdtConfigR17      `ext`
 }

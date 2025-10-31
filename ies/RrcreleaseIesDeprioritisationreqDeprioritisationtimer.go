@@ -1,0 +1,16 @@
+package ies
+
+import "rrc/utils"
+
+// RRCRelease-IEs-deprioritisationReq-deprioritisationTimer ::= ENUMERATED
+type RrcreleaseIesDeprioritisationreqDeprioritisationtimer struct {
+	Value utils.ENUMERATED
+}
+
+const (
+	RrcreleaseIesDeprioritisationreqDeprioritisationtimerEnumeratedNothing = iota
+	RrcreleaseIesDeprioritisationreqDeprioritisationtimerEnumeratedMin5
+	RrcreleaseIesDeprioritisationreqDeprioritisationtimerEnumeratedMin10
+	RrcreleaseIesDeprioritisationreqDeprioritisationtimerEnumeratedMin15
+	RrcreleaseIesDeprioritisationreqDeprioritisationtimerEnumeratedMin30
+)

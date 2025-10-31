@@ -1,0 +1,28 @@
+package ies
+
+import "rrc/utils"
+
+// RxTxReportInterval-r17 ::= ENUMERATED
+type RxtxreportintervalR17 struct {
+	Value utils.ENUMERATED
+}
+
+const (
+	RxtxreportintervalR17EnumeratedNothing = iota
+	RxtxreportintervalR17EnumeratedMs80
+	RxtxreportintervalR17EnumeratedMs120
+	RxtxreportintervalR17EnumeratedMs160
+	RxtxreportintervalR17EnumeratedMs240
+	RxtxreportintervalR17EnumeratedMs320
+	RxtxreportintervalR17EnumeratedMs480
+	RxtxreportintervalR17EnumeratedMs640
+	RxtxreportintervalR17EnumeratedMs1024
+	RxtxreportintervalR17EnumeratedMs1280
+	RxtxreportintervalR17EnumeratedMs2048
+	RxtxreportintervalR17EnumeratedMs2560
+	RxtxreportintervalR17EnumeratedMs5120
+	RxtxreportintervalR17EnumeratedSpare4
+	RxtxreportintervalR17EnumeratedSpare3
+	RxtxreportintervalR17EnumeratedSpare2
+	RxtxreportintervalR17EnumeratedSpare1
+)

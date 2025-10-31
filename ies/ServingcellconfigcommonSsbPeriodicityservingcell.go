@@ -1,0 +1,20 @@
+package ies
+
+import "rrc/utils"
+
+// ServingCellConfigCommon-ssb-periodicityServingCell ::= ENUMERATED
+type ServingcellconfigcommonSsbPeriodicityservingcell struct {
+	Value utils.ENUMERATED
+}
+
+const (
+	ServingcellconfigcommonSsbPeriodicityservingcellEnumeratedNothing = iota
+	ServingcellconfigcommonSsbPeriodicityservingcellEnumeratedMs5
+	ServingcellconfigcommonSsbPeriodicityservingcellEnumeratedMs10
+	ServingcellconfigcommonSsbPeriodicityservingcellEnumeratedMs20
+	ServingcellconfigcommonSsbPeriodicityservingcellEnumeratedMs40
+	ServingcellconfigcommonSsbPeriodicityservingcellEnumeratedMs80
+	ServingcellconfigcommonSsbPeriodicityservingcellEnumeratedMs160
+	ServingcellconfigcommonSsbPeriodicityservingcellEnumeratedSpare2
+	ServingcellconfigcommonSsbPeriodicityservingcellEnumeratedSpare1
+)

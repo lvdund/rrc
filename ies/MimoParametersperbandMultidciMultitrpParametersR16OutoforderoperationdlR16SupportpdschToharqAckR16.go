@@ -1,0 +1,13 @@
+package ies
+
+import "rrc/utils"
+
+// MIMO-ParametersPerBand-multiDCI-multiTRP-Parameters-r16-outOfOrderOperationDL-r16-supportPDSCH-ToHARQ-ACK-r16 ::= ENUMERATED
+type MimoParametersperbandMultidciMultitrpParametersR16OutoforderoperationdlR16SupportpdschToharqAckR16 struct {
+	Value utils.ENUMERATED
+}
+
+const (
+	MimoParametersperbandMultidciMultitrpParametersR16OutoforderoperationdlR16SupportpdschToharqAckR16EnumeratedNothing = iota
+	MimoParametersperbandMultidciMultitrpParametersR16OutoforderoperationdlR16SupportpdschToharqAckR16EnumeratedSupported
+)

@@ -1,0 +1,16 @@
+package ies
+
+import "rrc/utils"
+
+// FeatureSetDownlink-v1610-cbgPDSCH-ProcessingType1-DifferentTB-PerSlot-r16-scs-120kHz-r16 ::= ENUMERATED
+type FeaturesetdownlinkV1610CbgpdschProcessingtype1DifferenttbPerslotR16Scs120khzR16 struct {
+	Value utils.ENUMERATED
+}
+
+const (
+	FeaturesetdownlinkV1610CbgpdschProcessingtype1DifferenttbPerslotR16Scs120khzR16EnumeratedNothing = iota
+	FeaturesetdownlinkV1610CbgpdschProcessingtype1DifferenttbPerslotR16Scs120khzR16EnumeratedOne
+	FeaturesetdownlinkV1610CbgpdschProcessingtype1DifferenttbPerslotR16Scs120khzR16EnumeratedUpto2
+	FeaturesetdownlinkV1610CbgpdschProcessingtype1DifferenttbPerslotR16Scs120khzR16EnumeratedUpto4
+	FeaturesetdownlinkV1610CbgpdschProcessingtype1DifferenttbPerslotR16Scs120khzR16EnumeratedUpto7
+)

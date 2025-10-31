@@ -1,0 +1,4 @@
+package ies
+
+// RRCSystemInfoRequest-criticalExtensions-criticalExtensionsFuture-r16-criticalExtensionsFuture ::= SEQUENCE
+type RrcsysteminforequestCriticalextensionsCriticalextensionsfutureR16Criticalextensionsfuture struct{}

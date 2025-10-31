@@ -1,0 +1,14 @@
+package ies
+
+// SRS-SpatialRelationInfoPos-r16-servingRS-r16-referenceSignal-r16-srs-SpatialRelation-r16-resourceSelection-r16 ::= CHOICE
+const (
+	SrsSpatialrelationinfoposR16ServingrsR16ReferencesignalR16SrsSpatialrelationR16ResourceselectionR16ChoiceNothing = iota
+	SrsSpatialrelationinfoposR16ServingrsR16ReferencesignalR16SrsSpatialrelationR16ResourceselectionR16ChoiceSrsResourceidR16
+	SrsSpatialrelationinfoposR16ServingrsR16ReferencesignalR16SrsSpatialrelationR16ResourceselectionR16ChoiceSrsPosresourceidR16
+)
+
+type SrsSpatialrelationinfoposR16ServingrsR16ReferencesignalR16SrsSpatialrelationR16ResourceselectionR16 struct {
+	Choice              uint64
+	SrsResourceidR16    *SrsResourceid
+	SrsPosresourceidR16 *SrsPosresourceidR16
+}

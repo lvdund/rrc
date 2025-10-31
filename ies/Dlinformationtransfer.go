@@ -1,7 +1,10 @@
 package ies
 
-// DLInformationTransfer ::= SEQUENCE
+import "rrc/utils"
+
+// DLInformationTransfer-IEs ::= SEQUENCE
 type Dlinformationtransfer struct {
-	RrcTransactionidentifier RrcTransactionidentifier
-	Criticalextensions       DlinformationtransferCriticalextensions
+	DedicatednasMessage      *DedicatednasMessage
+	Latenoncriticalextension *utils.OCTETSTRING
+	Noncriticalextension     *DlinformationtransferV1610
 }

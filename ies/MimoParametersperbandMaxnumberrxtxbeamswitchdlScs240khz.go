@@ -1,0 +1,15 @@
+package ies
+
+import "rrc/utils"
+
+// MIMO-ParametersPerBand-maxNumberRxTxBeamSwitchDL-scs-240kHz ::= ENUMERATED
+type MimoParametersperbandMaxnumberrxtxbeamswitchdlScs240khz struct {
+	Value utils.ENUMERATED
+}
+
+const (
+	MimoParametersperbandMaxnumberrxtxbeamswitchdlScs240khzEnumeratedNothing = iota
+	MimoParametersperbandMaxnumberrxtxbeamswitchdlScs240khzEnumeratedN4
+	MimoParametersperbandMaxnumberrxtxbeamswitchdlScs240khzEnumeratedN7
+	MimoParametersperbandMaxnumberrxtxbeamswitchdlScs240khzEnumeratedN14
+)

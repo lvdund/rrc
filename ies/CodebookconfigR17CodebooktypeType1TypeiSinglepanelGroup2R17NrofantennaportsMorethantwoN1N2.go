@@ -1,0 +1,38 @@
+package ies
+
+import "rrc/utils"
+
+// CodebookConfig-r17-codebookType-type1-typeI-SinglePanel-Group2-r17-nrOfAntennaPorts-moreThanTwo-n1-n2 ::= CHOICE
+const (
+	CodebookconfigR17CodebooktypeType1TypeiSinglepanelGroup2R17NrofantennaportsMorethantwoN1N2ChoiceNothing = iota
+	CodebookconfigR17CodebooktypeType1TypeiSinglepanelGroup2R17NrofantennaportsMorethantwoN1N2ChoiceTwoOneTypeiSinglepanelRestriction2R17
+	CodebookconfigR17CodebooktypeType1TypeiSinglepanelGroup2R17NrofantennaportsMorethantwoN1N2ChoiceTwoTwoTypeiSinglepanelRestriction2R17
+	CodebookconfigR17CodebooktypeType1TypeiSinglepanelGroup2R17NrofantennaportsMorethantwoN1N2ChoiceFourOneTypeiSinglepanelRestriction2R17
+	CodebookconfigR17CodebooktypeType1TypeiSinglepanelGroup2R17NrofantennaportsMorethantwoN1N2ChoiceThreeTwoTypeiSinglepanelRestriction2R17
+	CodebookconfigR17CodebooktypeType1TypeiSinglepanelGroup2R17NrofantennaportsMorethantwoN1N2ChoiceSixOneTypeiSinglepanelRestriction2R17
+	CodebookconfigR17CodebooktypeType1TypeiSinglepanelGroup2R17NrofantennaportsMorethantwoN1N2ChoiceFourTwoTypeiSinglepanelRestriction2R17
+	CodebookconfigR17CodebooktypeType1TypeiSinglepanelGroup2R17NrofantennaportsMorethantwoN1N2ChoiceEightOneTypeiSinglepanelRestriction2R17
+	CodebookconfigR17CodebooktypeType1TypeiSinglepanelGroup2R17NrofantennaportsMorethantwoN1N2ChoiceFourThreeTypeiSinglepanelRestriction2R17
+	CodebookconfigR17CodebooktypeType1TypeiSinglepanelGroup2R17NrofantennaportsMorethantwoN1N2ChoiceSixTwoTypeiSinglepanelRestriction2R17
+	CodebookconfigR17CodebooktypeType1TypeiSinglepanelGroup2R17NrofantennaportsMorethantwoN1N2ChoiceTwelveOneTypeiSinglepanelRestriction2R17
+	CodebookconfigR17CodebooktypeType1TypeiSinglepanelGroup2R17NrofantennaportsMorethantwoN1N2ChoiceFourFourTypeiSinglepanelRestriction2R17
+	CodebookconfigR17CodebooktypeType1TypeiSinglepanelGroup2R17NrofantennaportsMorethantwoN1N2ChoiceEightTwoTypeiSinglepanelRestriction2R17
+	CodebookconfigR17CodebooktypeType1TypeiSinglepanelGroup2R17NrofantennaportsMorethantwoN1N2ChoiceSixteenOneTypeiSinglepanelRestriction2R17
+)
+
+type CodebookconfigR17CodebooktypeType1TypeiSinglepanelGroup2R17NrofantennaportsMorethantwoN1N2 struct {
+	Choice                                    uint64
+	TwoOneTypeiSinglepanelRestriction2R17     *utils.BITSTRING `lb:8,ub:8`
+	TwoTwoTypeiSinglepanelRestriction2R17     *utils.BITSTRING `lb:64,ub:64`
+	FourOneTypeiSinglepanelRestriction2R17    *utils.BITSTRING `lb:16,ub:16`
+	ThreeTwoTypeiSinglepanelRestriction2R17   *utils.BITSTRING `lb:96,ub:96`
+	SixOneTypeiSinglepanelRestriction2R17     *utils.BITSTRING `lb:24,ub:24`
+	FourTwoTypeiSinglepanelRestriction2R17    *utils.BITSTRING `lb:128,ub:128`
+	EightOneTypeiSinglepanelRestriction2R17   *utils.BITSTRING `lb:32,ub:32`
+	FourThreeTypeiSinglepanelRestriction2R17  *utils.BITSTRING `lb:192,ub:192`
+	SixTwoTypeiSinglepanelRestriction2R17     *utils.BITSTRING `lb:192,ub:192`
+	TwelveOneTypeiSinglepanelRestriction2R17  *utils.BITSTRING `lb:48,ub:48`
+	FourFourTypeiSinglepanelRestriction2R17   *utils.BITSTRING `lb:256,ub:256`
+	EightTwoTypeiSinglepanelRestriction2R17   *utils.BITSTRING `lb:256,ub:256`
+	SixteenOneTypeiSinglepanelRestriction2R17 *utils.BITSTRING `lb:64,ub:64`
+}

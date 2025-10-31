@@ -1,0 +1,15 @@
+package ies
+
+import "rrc/utils"
+
+// CA-ParametersNR-v1720-dynamicPUCCH-CellSwitchSameLengthSingleGroup-r17-pucch-Group-r17 ::= ENUMERATED
+type CaParametersnrV1720DynamicpucchCellswitchsamelengthsinglegroupR17PucchGroupR17 struct {
+	Value utils.ENUMERATED
+}
+
+const (
+	CaParametersnrV1720DynamicpucchCellswitchsamelengthsinglegroupR17PucchGroupR17EnumeratedNothing = iota
+	CaParametersnrV1720DynamicpucchCellswitchsamelengthsinglegroupR17PucchGroupR17EnumeratedPrimarygrouponly
+	CaParametersnrV1720DynamicpucchCellswitchsamelengthsinglegroupR17PucchGroupR17EnumeratedSecondarygrouponly
+	CaParametersnrV1720DynamicpucchCellswitchsamelengthsinglegroupR17PucchGroupR17EnumeratedEitherprimaryorsecondarygroup
+)

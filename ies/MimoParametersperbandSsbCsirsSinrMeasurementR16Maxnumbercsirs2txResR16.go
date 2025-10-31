@@ -1,0 +1,18 @@
+package ies
+
+import "rrc/utils"
+
+// MIMO-ParametersPerBand-ssb-csirs-SINR-measurement-r16-maxNumberCSIRS-2Tx-res-r16 ::= ENUMERATED
+type MimoParametersperbandSsbCsirsSinrMeasurementR16Maxnumbercsirs2txResR16 struct {
+	Value utils.ENUMERATED
+}
+
+const (
+	MimoParametersperbandSsbCsirsSinrMeasurementR16Maxnumbercsirs2txResR16EnumeratedNothing = iota
+	MimoParametersperbandSsbCsirsSinrMeasurementR16Maxnumbercsirs2txResR16EnumeratedN0
+	MimoParametersperbandSsbCsirsSinrMeasurementR16Maxnumbercsirs2txResR16EnumeratedN4
+	MimoParametersperbandSsbCsirsSinrMeasurementR16Maxnumbercsirs2txResR16EnumeratedN8
+	MimoParametersperbandSsbCsirsSinrMeasurementR16Maxnumbercsirs2txResR16EnumeratedN16
+	MimoParametersperbandSsbCsirsSinrMeasurementR16Maxnumbercsirs2txResR16EnumeratedN32
+	MimoParametersperbandSsbCsirsSinrMeasurementR16Maxnumbercsirs2txResR16EnumeratedN64
+)

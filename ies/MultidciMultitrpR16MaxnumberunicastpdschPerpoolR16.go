@@ -1,0 +1,17 @@
+package ies
+
+import "rrc/utils"
+
+// MultiDCI-MultiTRP-r16-maxNumberUnicastPDSCH-PerPool-r16 ::= ENUMERATED
+type MultidciMultitrpR16MaxnumberunicastpdschPerpoolR16 struct {
+	Value utils.ENUMERATED
+}
+
+const (
+	MultidciMultitrpR16MaxnumberunicastpdschPerpoolR16EnumeratedNothing = iota
+	MultidciMultitrpR16MaxnumberunicastpdschPerpoolR16EnumeratedN1
+	MultidciMultitrpR16MaxnumberunicastpdschPerpoolR16EnumeratedN2
+	MultidciMultitrpR16MaxnumberunicastpdschPerpoolR16EnumeratedN3
+	MultidciMultitrpR16MaxnumberunicastpdschPerpoolR16EnumeratedN4
+	MultidciMultitrpR16MaxnumberunicastpdschPerpoolR16EnumeratedN7
+)

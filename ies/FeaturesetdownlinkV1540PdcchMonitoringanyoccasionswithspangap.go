@@ -1,0 +1,9 @@
+package ies
+
+// FeatureSetDownlink-v1540-pdcch-MonitoringAnyOccasionsWithSpanGap ::= SEQUENCE
+type FeaturesetdownlinkV1540PdcchMonitoringanyoccasionswithspangap struct {
+	Scs15khz  *FeaturesetdownlinkV1540PdcchMonitoringanyoccasionswithspangapScs15khz
+	Scs30khz  *FeaturesetdownlinkV1540PdcchMonitoringanyoccasionswithspangapScs30khz
+	Scs60khz  *FeaturesetdownlinkV1540PdcchMonitoringanyoccasionswithspangapScs60khz
+	Scs120khz *FeaturesetdownlinkV1540PdcchMonitoringanyoccasionswithspangapScs120khz
+}

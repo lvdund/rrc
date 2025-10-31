@@ -2,6 +2,7 @@ package ies
 
 // SchedulingInfo ::= SEQUENCE
 type Schedulinginfo struct {
-	SiPeriodicity  SiPeriodicityR12
-	SibMappinginfo SibMappinginfo
+	SiBroadcaststatus SchedulinginfoSiBroadcaststatus
+	SiPeriodicity     SchedulinginfoSiPeriodicity
+	SibMappinginfo    SibMapping
 }

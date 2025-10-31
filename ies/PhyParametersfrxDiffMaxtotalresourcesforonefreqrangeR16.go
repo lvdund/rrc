@@ -1,0 +1,7 @@
+package ies
+
+// Phy-ParametersFRX-Diff-maxTotalResourcesForOneFreqRange-r16 ::= SEQUENCE
+type PhyParametersfrxDiffMaxtotalresourcesforonefreqrangeR16 struct {
+	MaxnumberreswithinslotacrossccOnefrR16 *PhyParametersfrxDiffMaxtotalresourcesforonefreqrangeR16MaxnumberreswithinslotacrossccOnefrR16
+	MaxnumberresacrossccOnefrR16           *PhyParametersfrxDiffMaxtotalresourcesforonefreqrangeR16MaxnumberresacrossccOnefrR16
+}

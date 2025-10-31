@@ -1,0 +1,7 @@
+package ies
+
+// RRM-MeasRelaxationReportingConfig-r17 ::= SEQUENCE
+type RrmMeasrelaxationreportingconfigR17 struct {
+	SSearchdeltapStationaryR17 RrmMeasrelaxationreportingconfigR17SSearchdeltapStationaryR17
+	TSearchdeltapStationaryR17 RrmMeasrelaxationreportingconfigR17TSearchdeltapStationaryR17
+}

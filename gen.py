@@ -240,19 +240,43 @@ class ASN1Parser:
         # Extract inline types first
         self._extract_inline_types_from_sequence(name, definition)
         
-        field_defs = self._split_by_comma(content)
+        # Parse fields, handling extension groups
+        # Split content but preserve structure to identify extension groups
+        parts = self._split_by_comma(content)
         
-        for field_def in field_defs:
-            field_def = field_def.strip()
-            if not field_def or field_def == '...' or field_def.startswith('--'):
+        in_extension = False
+        for part in parts:
+            part_orig = part
+            part = part.strip()
+            
+            # Check if we're entering extension group BEFORE this field
+            if '[[' in part_orig:
+                in_extension = True
+            
+            # Clean up the field definition
+            part = part.replace('[[', '').replace(']]', '').strip()
+            
+            if not part or part == '...' or part.startswith('--'):
+                if part == '...':
+                    # Extension marker - reset extension flag
+                    # Fields after ... but before [[ are not extensions
+                    pass
+                # Check if we're leaving extension group in this part
+                if ']]' in part_orig:
+                    in_extension = False
                 continue
             
-            if field_def.startswith('[['):
-                continue
-            
-            parsed_field = self._parse_field(field_def)
+            parsed_field = self._parse_field(part)
             if parsed_field:
+                # Mark as extension if we're currently in an extension group
+                # The field is an extension if in_extension was true when we started processing this part
+                parsed_field.is_extension = in_extension
                 fields.append(parsed_field)
+            
+            # Update extension flag AFTER processing the field
+            # Check if we're leaving extension group AFTER this field
+            if ']]' in part_orig:
+                in_extension = False
         
         return ASN1Sequence(name=name, fields=fields, extensible=extensible)
     
@@ -407,6 +431,18 @@ class ASN1Parser:
                 comment=comment
             )
         
+        # Handle SetupRelease { Type } pattern
+        setuprelease_match = re.match(r'([a-zA-Z0-9_-]+)\s+SetupRelease\s*\{\s*([A-Z][a-zA-Z0-9_-]+)\s*\}', field_def)
+        if setuprelease_match:
+            field_name = setuprelease_match.group(1)
+            inner_type = setuprelease_match.group(2)
+            return ASN1Field(
+                name=field_name,
+                type_name=f'SETUPRELEASE_{inner_type}',
+                optional=optional,
+                comment=comment
+            )
+        
         # Handle inline SEQUENCE/CHOICE/ENUMERATED definitions
         if 'SEQUENCE {' in field_def or 'CHOICE {' in field_def or 'ENUMERATED {' in field_def:
             name_match = re.match(r'([a-zA-Z0-9_-]+)\s+', field_def)
@@ -512,8 +548,13 @@ class ASN1Parser:
         
         for field_def in field_defs:
             field_def = field_def.strip()
-            if not field_def or field_def == '...' or field_def.startswith('--') or field_def.startswith('[['):
+            # Remove extension markers for processing
+            field_def_clean = field_def.replace('[[', '').replace(']]', '').strip()
+            if not field_def_clean or field_def_clean == '...' or field_def_clean.startswith('--'):
                 continue
+            
+            # Use cleaned field_def for matching
+            field_def = field_def_clean
             
             # Check for inline SEQUENCE
             seq_match = re.match(r'([a-zA-Z0-9_-]+)\s+SEQUENCE\s*\{(.*)\}', field_def, re.DOTALL)
@@ -622,12 +663,13 @@ class ASN1Parser:
         return ASN1Choice(name=name, alternatives=alternatives, extensible=extensible)
     
     def _split_by_comma(self, text: str) -> List[str]:
-        """Split text by comma, respecting nested braces and parentheses"""
+        """Split text by comma, respecting nested braces and parentheses
+        Note: [[ and ]] are ASN.1 extension markers, not brackets, so we don't track them as depth
+        """
         parts = []
         current = []
         brace_depth = 0
         paren_depth = 0
-        bracket_depth = 0
         
         i = 0
         while i < len(text):
@@ -641,11 +683,8 @@ class ASN1Parser:
                 paren_depth += 1
             elif char == ')':
                 paren_depth -= 1
-            elif char == '[':
-                bracket_depth += 1
-            elif char == ']':
-                bracket_depth -= 1
-            elif char == ',' and brace_depth == 0 and paren_depth == 0 and bracket_depth == 0:
+            # Note: Removed [ and ] tracking since [[ and ]] are extension markers, not brackets
+            elif char == ',' and brace_depth == 0 and paren_depth == 0:
                 parts.append(''.join(current))
                 current = []
                 i += 1
@@ -723,6 +762,12 @@ class GoGenerator:
         f.write(f"// {seq.name} ::= SEQUENCE\n")
         if seq.extensible:
             f.write("// Extensible\n")
+        
+        # Empty SEQUENCE {} -> struct{}
+        if not seq.fields:
+            f.write(f"type {go_name} struct{{}}\n")
+            return
+        
         f.write(f"type {go_name} struct {{\n")
         
         for field in seq.fields:
@@ -910,16 +955,24 @@ class GoGenerator:
                 go_type = f"*{go_type}"
         
         # Build constraint tag
-        tag_str = ""
+        tag_parts = []
         if field.size_constraint or field.range_constraint:
             constraint = field.size_constraint or field.range_constraint
             lb, ub = self._resolve_constraint_bounds(constraint)
             # Special case: For INTEGER range constraints, use lb:0
             # For SIZE constraints (including inline SEQUENCE OF), use actual lower bound
             if field.range_constraint and field.type_name == 'INTEGER':
-                tag_str = f" `lb:0,ub:{ub}`"
+                tag_parts.append(f"lb:0,ub:{ub}")
             else:
-                tag_str = f" `lb:{lb},ub:{ub}`"
+                tag_parts.append(f"lb:{lb},ub:{ub}")
+        
+        # Add ext tag for extension fields
+        if field.is_extension:
+            tag_parts.append("ext")
+        
+        tag_str = ""
+        if tag_parts:
+            tag_str = f" `{','.join(tag_parts)}`"
         
         comment_str = ""
         if field.comment:
@@ -930,6 +983,12 @@ class GoGenerator:
     def _field_type_to_go(self, field: ASN1Field, parent_name: str = '') -> str:
         """Convert field type to Go type"""
         type_name = field.type_name
+        
+        # Handle SetupRelease pattern
+        if type_name.startswith('SETUPRELEASE_'):
+            inner_type = type_name[len('SETUPRELEASE_'):]
+            inner_go_type = self._to_go_name(inner_type)
+            return f'utils.Setuprelease[{inner_go_type}]'
         
         if type_name == 'INTEGER':
             return 'utils.INTEGER'
@@ -1185,7 +1244,7 @@ def validate_and_fix_generated_files(output_dir: str):
 
 def main():
     """Main function"""
-    asn1_file = 'lte-rrc-16.13.0.asn1'
+    asn1_file = 'asn1/nr-rrc-17.3.0.asn1'
     output_dir = 'ies'
     
     if not os.path.exists(asn1_file):

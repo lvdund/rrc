@@ -1,0 +1,17 @@
+package ies
+
+import "rrc/utils"
+
+// BandSidelink-r16-sl-Reception-r16-harq-RxProcessSidelink-r16 ::= ENUMERATED
+type BandsidelinkR16SlReceptionR16HarqRxprocesssidelinkR16 struct {
+	Value utils.ENUMERATED
+}
+
+const (
+	BandsidelinkR16SlReceptionR16HarqRxprocesssidelinkR16EnumeratedNothing = iota
+	BandsidelinkR16SlReceptionR16HarqRxprocesssidelinkR16EnumeratedN16
+	BandsidelinkR16SlReceptionR16HarqRxprocesssidelinkR16EnumeratedN24
+	BandsidelinkR16SlReceptionR16HarqRxprocesssidelinkR16EnumeratedN32
+	BandsidelinkR16SlReceptionR16HarqRxprocesssidelinkR16EnumeratedN48
+	BandsidelinkR16SlReceptionR16HarqRxprocesssidelinkR16EnumeratedN64
+)

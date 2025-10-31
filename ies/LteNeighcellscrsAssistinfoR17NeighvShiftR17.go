@@ -1,0 +1,18 @@
+package ies
+
+import "rrc/utils"
+
+// LTE-NeighCellsCRS-AssistInfo-r17-neighV-Shift-r17 ::= ENUMERATED
+type LteNeighcellscrsAssistinfoR17NeighvShiftR17 struct {
+	Value utils.ENUMERATED
+}
+
+const (
+	LteNeighcellscrsAssistinfoR17NeighvShiftR17EnumeratedNothing = iota
+	LteNeighcellscrsAssistinfoR17NeighvShiftR17EnumeratedN0
+	LteNeighcellscrsAssistinfoR17NeighvShiftR17EnumeratedN1
+	LteNeighcellscrsAssistinfoR17NeighvShiftR17EnumeratedN2
+	LteNeighcellscrsAssistinfoR17NeighvShiftR17EnumeratedN3
+	LteNeighcellscrsAssistinfoR17NeighvShiftR17EnumeratedN4
+	LteNeighcellscrsAssistinfoR17NeighvShiftR17EnumeratedN5
+)

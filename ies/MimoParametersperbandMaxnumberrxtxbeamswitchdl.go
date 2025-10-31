@@ -1,0 +1,10 @@
+package ies
+
+// MIMO-ParametersPerBand-maxNumberRxTxBeamSwitchDL ::= SEQUENCE
+type MimoParametersperbandMaxnumberrxtxbeamswitchdl struct {
+	Scs15khz  *MimoParametersperbandMaxnumberrxtxbeamswitchdlScs15khz
+	Scs30khz  *MimoParametersperbandMaxnumberrxtxbeamswitchdlScs30khz
+	Scs60khz  *MimoParametersperbandMaxnumberrxtxbeamswitchdlScs60khz
+	Scs120khz *MimoParametersperbandMaxnumberrxtxbeamswitchdlScs120khz
+	Scs240khz *MimoParametersperbandMaxnumberrxtxbeamswitchdlScs240khz
+}
