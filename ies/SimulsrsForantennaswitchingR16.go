@@ -1,8 +1,0 @@
-package ies
-
-// SimulSRS-ForAntennaSwitching-r16 ::= SEQUENCE
-type SimulsrsForantennaswitchingR16 struct {
-	SupportsrsXtyrXlessthanyR16   *SimulsrsForantennaswitchingR16SupportsrsXtyrXlessthanyR16
-	SupportsrsXtyrXequaltoyR16    *SimulsrsForantennaswitchingR16SupportsrsXtyrXequaltoyR16
-	SupportsrsAntennaswitchingR16 *SimulsrsForantennaswitchingR16SupportsrsAntennaswitchingR16
-}

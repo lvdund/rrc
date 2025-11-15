@@ -1,7 +1,0 @@
-package ies
-
-// Phy-ParametersSharedSpectrumChAccess-r16-mux-SR-HARQ-ACK-CSI-PUCCH-OncePerSlot-r16 ::= SEQUENCE
-type PhyParameterssharedspectrumchaccessR16MuxSrHarqAckCsiPucchOnceperslotR16 struct {
-	SamesymbolR16 *PhyParameterssharedspectrumchaccessR16MuxSrHarqAckCsiPucchOnceperslotR16SamesymbolR16
-	DiffsymbolR16 *PhyParameterssharedspectrumchaccessR16MuxSrHarqAckCsiPucchOnceperslotR16DiffsymbolR16
-}

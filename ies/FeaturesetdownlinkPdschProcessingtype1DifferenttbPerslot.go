@@ -1,9 +1,0 @@
-package ies
-
-// FeatureSetDownlink-pdsch-ProcessingType1-DifferentTB-PerSlot ::= SEQUENCE
-type FeaturesetdownlinkPdschProcessingtype1DifferenttbPerslot struct {
-	Scs15khz  *FeaturesetdownlinkPdschProcessingtype1DifferenttbPerslotScs15khz
-	Scs30khz  *FeaturesetdownlinkPdschProcessingtype1DifferenttbPerslotScs30khz
-	Scs60khz  *FeaturesetdownlinkPdschProcessingtype1DifferenttbPerslotScs60khz
-	Scs120khz *FeaturesetdownlinkPdschProcessingtype1DifferenttbPerslotScs120khz
-}

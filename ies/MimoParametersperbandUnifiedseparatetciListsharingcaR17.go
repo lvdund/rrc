@@ -1,7 +1,0 @@
-package ies
-
-// MIMO-ParametersPerBand-unifiedSeparateTCI-ListSharingCA-r17 ::= SEQUENCE
-type MimoParametersperbandUnifiedseparatetciListsharingcaR17 struct {
-	MaxnumlistdlTciR17 *MimoParametersperbandUnifiedseparatetciListsharingcaR17MaxnumlistdlTciR17
-	MaxnumlistulTciR17 *MimoParametersperbandUnifiedseparatetciListsharingcaR17MaxnumlistulTciR17
-}

@@ -1,4 +1,0 @@
-package ies
-
-// RRCReconfigurationCompleteSidelink-criticalExtensions-criticalExtensionsFuture ::= SEQUENCE
-type RrcreconfigurationcompletesidelinkCriticalextensionsCriticalextensionsfuture struct{}

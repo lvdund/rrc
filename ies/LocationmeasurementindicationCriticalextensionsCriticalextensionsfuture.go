@@ -1,4 +1,0 @@
-package ies
-
-// LocationMeasurementIndication-criticalExtensions-criticalExtensionsFuture ::= SEQUENCE
-type LocationmeasurementindicationCriticalextensionsCriticalextensionsfuture struct{}

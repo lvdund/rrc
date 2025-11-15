@@ -1,8 +1,0 @@
-package ies
-
-// FR2-2-AccessParamsPerBand-r17-support32-DL-HARQ-ProcessPerSCS-r17 ::= SEQUENCE
-type Fr22AccessparamsperbandR17Support32DlHarqProcessperscsR17 struct {
-	Scs120khzR17 *Fr22AccessparamsperbandR17Support32DlHarqProcessperscsR17Scs120khzR17
-	Scs480khzR17 *Fr22AccessparamsperbandR17Support32DlHarqProcessperscsR17Scs480khzR17
-	Scs960khzR17 *Fr22AccessparamsperbandR17Support32DlHarqProcessperscsR17Scs960khzR17
-}

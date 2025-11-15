@@ -4,14 +4,13 @@ import (
 	"bytes"
 	"fmt"
 	"io"
-
-	"rrc/aper"
+	"github.com/lvdund/asn1go/uper"
 )
 
 func encodeTransferMessage(ies []NgapMessageIE) (w []byte, err error) {
 	var buf bytes.Buffer
-	aw := aper.NewWriter(&buf)
-	if err = aw.WriteBool(aper.Zero); err != nil {
+	aw := uper.NewWriter(&buf)
+	if err = aw.WriteBool(uper.Zero); err != nil {
 		return
 	}
 	if len(ies) == 0 {
@@ -19,9 +18,9 @@ func encodeTransferMessage(ies []NgapMessageIE) (w []byte, err error) {
 		return
 	}
 
-	if err = aper.WriteSequenceOf[NgapMessageIE](ies, aw, &aper.Constraint{
+	if err = uper.WriteSequenceOf[NgapMessageIE](ies, aw, &uper.Constraint{
 		Lb: 0,
-		Ub: int64(aper.POW_16 - 1),
+		Ub: int64(uper.POW_16 - 1),
 	}, false); err != nil {
 		return
 	}
@@ -31,16 +30,16 @@ func encodeTransferMessage(ies []NgapMessageIE) (w []byte, err error) {
 	return
 }
 
-func encodeMessage(w io.Writer, present uint8, procedureCode int64, criticality aper.Enumerated, ies []NgapMessageIE) (err error) {
-	aw := aper.NewWriter(w)
-	if err = aw.WriteBool(aper.Zero); err != nil {
+func encodeMessage(w io.Writer, present uint8, procedureCode int64, criticality uper.Enumerated, ies []NgapMessageIE) (err error) {
+	aw := uper.NewWriter(w)
+	if err = aw.WriteBool(uper.Zero); err != nil {
 		return
 	}
 	if err = aw.WriteChoice(uint64(present), 2, true); err != nil {
 		return
 	}
 	pCode := ProcedureCode{
-		Value: aper.Integer(procedureCode),
+		Value: uper.Integer(procedureCode),
 	}
 	if err = pCode.Encode(aw); err != nil {
 		return
@@ -57,11 +56,11 @@ func encodeMessage(w io.Writer, present uint8, procedureCode int64, criticality 
 	}
 
 	var buf bytes.Buffer
-	cW := aper.NewWriter(&buf) //container writer
-	cW.WriteBool(aper.Zero)
-	if err = aper.WriteSequenceOf[NgapMessageIE](ies, cW, &aper.Constraint{
+	cW := uper.NewWriter(&buf) //container writer
+	cW.WriteBool(uper.Zero)
+	if err = uper.WriteSequenceOf[NgapMessageIE](ies, cW, &uper.Constraint{
 		Lb: 0,
-		Ub: int64(aper.POW_16 - 1),
+		Ub: int64(uper.POW_16 - 1),
 	}, false); err != nil {
 		return
 	}
@@ -80,10 +79,10 @@ func encodeMessage(w io.Writer, present uint8, procedureCode int64, criticality 
 type NgapMessageIE struct {
 	Id          ProtocolIEID //protocol IE identity
 	Criticality Criticality
-	Value       aper.AperMarshaller //open type
+	Value       uper.UperMarshaller //open type
 }
 
-func (ie NgapMessageIE) Encode(w *aper.AperWriter) (err error) {
+func (ie NgapMessageIE) Encode(w *uper.UperWriter) (err error) {
 	//1. encode protocol Ie Id
 	if err = ie.Id.Encode(w); err != nil {
 		return
@@ -95,7 +94,7 @@ func (ie NgapMessageIE) Encode(w *aper.AperWriter) (err error) {
 	//3. encode NgapIE
 	//encode IE into a byte array first
 	var buf bytes.Buffer
-	ieW := aper.NewWriter(&buf)
+	ieW := uper.NewWriter(&buf)
 	if err = ie.Value.Encode(ieW); err != nil {
 		return
 	}
@@ -106,76 +105,76 @@ func (ie NgapMessageIE) Encode(w *aper.AperWriter) (err error) {
 }
 
 type ProcedureCode struct {
-	Value aper.Integer `aper:"valueLB:0,valueUB:255"`
+	Value uper.Integer `aper:"valueLB:0,valueUB:255"`
 }
 
-func (ie *ProcedureCode) Decode(r *aper.AperReader) error {
-	if v, err := r.ReadInteger(&aper.Constraint{Lb: 0, Ub: 2}, false); err != nil {
+func (ie *ProcedureCode) Decode(r *uper.UperReader) error {
+	if v, err := r.ReadInteger(&uper.Constraint{Lb: 0, Ub: 2}, false); err != nil {
 		return err
 	} else {
-		ie.Value = aper.Integer(v)
+		ie.Value = uper.Integer(v)
 	}
 	return nil
 }
-func (ie *ProcedureCode) Encode(r *aper.AperWriter) (err error) {
-	if err = r.WriteInteger(int64(ie.Value), &aper.Constraint{Lb: 0, Ub: 255}, false); err != nil {
+func (ie *ProcedureCode) Encode(r *uper.UperWriter) (err error) {
+	if err = r.WriteInteger(int64(ie.Value), &uper.Constraint{Lb: 0, Ub: 255}, false); err != nil {
 		return err
 	}
 	return nil
 }
 
 type TriggeringMessage struct {
-	Value aper.Enumerated `aper:"valueLB:0,valueUB:2"`
+	Value uper.Enumerated `aper:"valueLB:0,valueUB:2"`
 }
 
-func (ie *TriggeringMessage) Decode(r *aper.AperReader) error {
-	if v, err := r.ReadInteger(&aper.Constraint{Lb: 0, Ub: 2}, false); err != nil {
+func (ie *TriggeringMessage) Decode(r *uper.UperReader) error {
+	if v, err := r.ReadInteger(&uper.Constraint{Lb: 0, Ub: 2}, false); err != nil {
 		return err
 	} else {
-		ie.Value = aper.Enumerated(v)
+		ie.Value = uper.Enumerated(v)
 	}
 	return nil
 }
-func (ie *TriggeringMessage) Encode(r *aper.AperWriter) (err error) {
-	if err = r.WriteEnumerate(uint64(ie.Value), aper.Constraint{Lb: 0, Ub: 2}, false); err != nil {
+func (ie *TriggeringMessage) Encode(r *uper.UperWriter) (err error) {
+	if err = r.WriteEnumerate(uint64(ie.Value), uper.Constraint{Lb: 0, Ub: 2}, false); err != nil {
 		return err
 	}
 	return nil
 }
 
 type Criticality struct {
-	Value aper.Enumerated `aper:"valueLB:0,valueUB:2"`
+	Value uper.Enumerated `aper:"valueLB:0,valueUB:2"`
 }
 
-func (ie *Criticality) Decode(r *aper.AperReader) error {
-	if v, err := r.ReadInteger(&aper.Constraint{Lb: 0, Ub: 2}, false); err != nil {
+func (ie *Criticality) Decode(r *uper.UperReader) error {
+	if v, err := r.ReadInteger(&uper.Constraint{Lb: 0, Ub: 2}, false); err != nil {
 		return err
 	} else {
-		ie.Value = aper.Enumerated(v)
+		ie.Value = uper.Enumerated(v)
 	}
 	return nil
 }
-func (ie *Criticality) Encode(r *aper.AperWriter) (err error) {
-	if err = r.WriteEnumerate(uint64(ie.Value), aper.Constraint{Lb: 0, Ub: 2}, false); err != nil {
+func (ie *Criticality) Encode(r *uper.UperWriter) (err error) {
+	if err = r.WriteEnumerate(uint64(ie.Value), uper.Constraint{Lb: 0, Ub: 2}, false); err != nil {
 		return err
 	}
 	return nil
 }
 
 type ProtocolIEID struct {
-	Value aper.Integer `aper:"valueLB:0,valueUB:65535"`
+	Value uper.Integer `aper:"valueLB:0,valueUB:65535"`
 }
 
-func (ie *ProtocolIEID) Decode(r *aper.AperReader) error {
-	if v, err := r.ReadInteger(&aper.Constraint{Lb: 0, Ub: 65535}, false); err != nil {
+func (ie *ProtocolIEID) Decode(r *uper.UperReader) error {
+	if v, err := r.ReadInteger(&uper.Constraint{Lb: 0, Ub: 65535}, false); err != nil {
 		return err
 	} else {
-		ie.Value = aper.Integer(v)
+		ie.Value = uper.Integer(v)
 	}
 	return nil
 }
-func (ie *ProtocolIEID) Encode(r *aper.AperWriter) (err error) {
-	if err = r.WriteInteger(int64(ie.Value), &aper.Constraint{Lb: 0, Ub: 65535}, false); err != nil {
+func (ie *ProtocolIEID) Encode(r *uper.UperWriter) (err error) {
+	if err = r.WriteInteger(int64(ie.Value), &uper.Constraint{Lb: 0, Ub: 65535}, false); err != nil {
 		return err
 	}
 	return nil
@@ -201,4 +200,3 @@ const (
 	NgapPduSuccessfulOutcome
 	NgapPduUnsuccessfulOutcome
 )
-

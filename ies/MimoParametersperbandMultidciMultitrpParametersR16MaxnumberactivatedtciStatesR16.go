@@ -1,7 +1,0 @@
-package ies
-
-// MIMO-ParametersPerBand-multiDCI-multiTRP-Parameters-r16-maxNumberActivatedTCI-States-r16 ::= SEQUENCE
-type MimoParametersperbandMultidciMultitrpParametersR16MaxnumberactivatedtciStatesR16 struct {
-	MaxnumberpercoresetPoolR16         MimoParametersperbandMultidciMultitrpParametersR16MaxnumberactivatedtciStatesR16MaxnumberpercoresetPoolR16
-	MaxtotalnumberacrosscoresetPoolR16 MimoParametersperbandMultidciMultitrpParametersR16MaxnumberactivatedtciStatesR16MaxtotalnumberacrosscoresetPoolR16
-}

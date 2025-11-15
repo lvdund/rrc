@@ -1,7 +1,0 @@
-package ies
-
-// FeatureSetUplink-v1610-ul-IntraUE-Mux-r16 ::= SEQUENCE
-type FeaturesetuplinkV1610UlIntraueMuxR16 struct {
-	PuschPreparationlowpriorityR16  FeaturesetuplinkV1610UlIntraueMuxR16PuschPreparationlowpriorityR16
-	PuschPreparationhighpriorityR16 FeaturesetuplinkV1610UlIntraueMuxR16PuschPreparationhighpriorityR16
-}

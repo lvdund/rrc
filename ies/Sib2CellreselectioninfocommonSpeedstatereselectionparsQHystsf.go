@@ -1,7 +1,0 @@
-package ies
-
-// SIB2-cellReselectionInfoCommon-speedStateReselectionPars-q-HystSF ::= SEQUENCE
-type Sib2CellreselectioninfocommonSpeedstatereselectionparsQHystsf struct {
-	SfMedium Sib2CellreselectioninfocommonSpeedstatereselectionparsQHystsfSfMedium
-	SfHigh   Sib2CellreselectioninfocommonSpeedstatereselectionparsQHystsfSfHigh
-}

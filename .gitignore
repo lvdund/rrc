@@ -1,6 +1,3 @@
-.cursor/
 __pycache__/
 Makefile
-FIX_SUMMARY.md
-GENERATION_SUMMARY.md
-ies copy/
+cache/

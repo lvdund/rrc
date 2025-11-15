@@ -1,9 +1,0 @@
-package ies
-
-// FeatureSetDownlink-v1610-cbgPDSCH-ProcessingType1-DifferentTB-PerSlot-r16 ::= SEQUENCE
-type FeaturesetdownlinkV1610CbgpdschProcessingtype1DifferenttbPerslotR16 struct {
-	Scs15khzR16  *FeaturesetdownlinkV1610CbgpdschProcessingtype1DifferenttbPerslotR16Scs15khzR16
-	Scs30khzR16  *FeaturesetdownlinkV1610CbgpdschProcessingtype1DifferenttbPerslotR16Scs30khzR16
-	Scs60khzR16  *FeaturesetdownlinkV1610CbgpdschProcessingtype1DifferenttbPerslotR16Scs60khzR16
-	Scs120khzR16 *FeaturesetdownlinkV1610CbgpdschProcessingtype1DifferenttbPerslotR16Scs120khzR16
-}

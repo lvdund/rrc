@@ -1,4 +1,0 @@
-package ies
-
-// MeasurementTimingConfiguration-criticalExtensions-criticalExtensionsFuture ::= SEQUENCE
-type MeasurementtimingconfigurationCriticalextensionsCriticalextensionsfuture struct{}

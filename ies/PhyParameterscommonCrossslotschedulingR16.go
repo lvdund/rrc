@@ -1,7 +1,0 @@
-package ies
-
-// Phy-ParametersCommon-crossSlotScheduling-r16 ::= SEQUENCE
-type PhyParameterscommonCrossslotschedulingR16 struct {
-	NonSharedspectrumchaccessR16 *PhyParameterscommonCrossslotschedulingR16NonSharedspectrumchaccessR16
-	SharedspectrumchaccessR16    *PhyParameterscommonCrossslotschedulingR16SharedspectrumchaccessR16
-}

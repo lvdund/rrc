@@ -1,8 +1,0 @@
-package ies
-
-// FeatureSetUplink-v1640-offsetSRS-CB-PUSCH-PDCCH-MonitorAnyOccWithSpanGap-fr1-r16 ::= SEQUENCE
-type FeaturesetuplinkV1640OffsetsrsCbPuschPdcchMonitoranyoccwithspangapFr1R16 struct {
-	Scs15khzR16 *FeaturesetuplinkV1640OffsetsrsCbPuschPdcchMonitoranyoccwithspangapFr1R16Scs15khzR16
-	Scs30khzR16 *FeaturesetuplinkV1640OffsetsrsCbPuschPdcchMonitoranyoccwithspangapFr1R16Scs30khzR16
-	Scs60khzR16 *FeaturesetuplinkV1640OffsetsrsCbPuschPdcchMonitoranyoccwithspangapFr1R16Scs60khzR16
-}

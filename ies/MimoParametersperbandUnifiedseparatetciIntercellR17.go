@@ -1,9 +1,0 @@
-package ies
-
-// MIMO-ParametersPerBand-unifiedSeparateTCI-InterCell-r17 ::= SEQUENCE
-type MimoParametersperbandUnifiedseparatetciIntercellR17 struct {
-	KDlPerccR17    MimoParametersperbandUnifiedseparatetciIntercellR17KDlPerccR17
-	KUlPerccR17    MimoParametersperbandUnifiedseparatetciIntercellR17KUlPerccR17
-	KDlAcrossccR17 MimoParametersperbandUnifiedseparatetciIntercellR17KDlAcrossccR17
-	KUlAcrossccR17 MimoParametersperbandUnifiedseparatetciIntercellR17KUlAcrossccR17
-}

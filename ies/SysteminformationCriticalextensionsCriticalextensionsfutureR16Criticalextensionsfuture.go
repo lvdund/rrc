@@ -1,4 +1,0 @@
-package ies
-
-// SystemInformation-criticalExtensions-criticalExtensionsFuture-r16-criticalExtensionsFuture ::= SEQUENCE
-type SysteminformationCriticalextensionsCriticalextensionsfutureR16Criticalextensionsfuture struct{}

@@ -1,6 +1,0 @@
-package ies
-
-// CodebookConfig-r17-codebookType-type1-typeI-SinglePanel-Group2-r17-nrOfAntennaPorts-moreThanTwo ::= SEQUENCE
-type CodebookconfigR17CodebooktypeType1TypeiSinglepanelGroup2R17NrofantennaportsMorethantwo struct {
-	N1N2 CodebookconfigR17CodebooktypeType1TypeiSinglepanelGroup2R17NrofantennaportsMorethantwoN1N2
-}

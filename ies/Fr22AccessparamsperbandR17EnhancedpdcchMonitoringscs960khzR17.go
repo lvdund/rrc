@@ -1,8 +1,0 @@
-package ies
-
-// FR2-2-AccessParamsPerBand-r17-enhancedPDCCH-monitoringSCS-960kHz-r17 ::= SEQUENCE
-type Fr22AccessparamsperbandR17EnhancedpdcchMonitoringscs960khzR17 struct {
-	PdcchMonitoring41R17 *Fr22AccessparamsperbandR17EnhancedpdcchMonitoringscs960khzR17PdcchMonitoring41R17
-	PdcchMonitoring42R17 *Fr22AccessparamsperbandR17EnhancedpdcchMonitoringscs960khzR17PdcchMonitoring42R17
-	PdcchMonitoring84R17 *Fr22AccessparamsperbandR17EnhancedpdcchMonitoringscs960khzR17PdcchMonitoring84R17
-}

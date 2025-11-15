@@ -1,6 +1,0 @@
-package ies
-
-// MIMO-ParametersPerBand-spatialRelations-v1640 ::= SEQUENCE
-type MimoParametersperbandSpatialrelationsV1640 struct {
-	MaxnumberconfiguredspatialrelationsV1640 MimoParametersperbandSpatialrelationsV1640MaxnumberconfiguredspatialrelationsV1640
-}

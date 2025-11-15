@@ -1,8 +1,0 @@
-package ies
-
-// MeasAndMobParametersMRDC-Common-v1700 ::= SEQUENCE
-type MeasandmobparametersmrdcCommonV1700 struct {
-	CondpscellchangeparametersR17 *MeasandmobparametersmrdcCommonV1700CondpscellchangeparametersR17
-	CondhandoverwithscgEndcR17    *MeasandmobparametersmrdcCommonV1700CondhandoverwithscgEndcR17
-	CondhandoverwithscgNedcR17    *MeasandmobparametersmrdcCommonV1700CondhandoverwithscgNedcR17
-}

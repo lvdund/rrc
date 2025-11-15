@@ -1,9 +1,0 @@
-package ies
-
-// BandSidelink-r16-sl-TransmissionMode2-RandomResourceSelection-r17 ::= SEQUENCE
-type BandsidelinkR16SlTransmissionmode2RandomresourceselectionR17 struct {
-	HarqTxprocessmodetwosidelinkR17  BandsidelinkR16SlTransmissionmode2RandomresourceselectionR17HarqTxprocessmodetwosidelinkR17
-	ScsCpPatterntxsidelinkmodetwoR17 *BandsidelinkR16SlTransmissionmode2RandomresourceselectionR17ScsCpPatterntxsidelinkmodetwoR17
-	ExtendedcpMode2randomR17         *BandsidelinkR16SlTransmissionmode2RandomresourceselectionR17ExtendedcpMode2randomR17
-	DlOpenlooppcSidelinkR17          *BandsidelinkR16SlTransmissionmode2RandomresourceselectionR17DlOpenlooppcSidelinkR17
-}

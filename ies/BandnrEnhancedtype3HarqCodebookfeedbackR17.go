@@ -1,7 +1,0 @@
-package ies
-
-// BandNR-enhancedType3-HARQ-CodebookFeedback-r17 ::= SEQUENCE
-type BandnrEnhancedtype3HarqCodebookfeedbackR17 struct {
-	Enhancedtype3HarqCodebooksR17  BandnrEnhancedtype3HarqCodebookfeedbackR17Enhancedtype3HarqCodebooksR17
-	MaxnumberpucchTransmissionsR17 BandnrEnhancedtype3HarqCodebookfeedbackR17MaxnumberpucchTransmissionsR17
-}

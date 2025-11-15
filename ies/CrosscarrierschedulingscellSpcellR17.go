@@ -1,7 +1,0 @@
-package ies
-
-// CrossCarrierSchedulingSCell-SpCell-r17 ::= SEQUENCE
-type CrosscarrierschedulingscellSpcellR17 struct {
-	SupportedscsCombinationsR17 *CrosscarrierschedulingscellSpcellR17SupportedscsCombinationsR17
-	PdcchMonitoringoccasionR17  CrosscarrierschedulingscellSpcellR17PdcchMonitoringoccasionR17
-}

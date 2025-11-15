@@ -1,4 +1,0 @@
-package ies
-
-// UEAssistanceInformationSidelink-r17-criticalExtensions-criticalExtensionsFuture ::= SEQUENCE
-type UeassistanceinformationsidelinkR17CriticalextensionsCriticalextensionsfuture struct{}

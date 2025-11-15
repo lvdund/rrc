@@ -1,9 +1,0 @@
-package ies
-
-// FeatureSetDownlink-v1720-rtt-BasedPDC-PRS-r17-maxNumberPRS-ResourceProcessedPerSlot-r17 ::= SEQUENCE
-type FeaturesetdownlinkV1720RttBasedpdcPrsR17MaxnumberprsResourceprocessedperslotR17 struct {
-	Scs15khzR17  *FeaturesetdownlinkV1720RttBasedpdcPrsR17MaxnumberprsResourceprocessedperslotR17Scs15khzR17
-	Scs30khzR17  *FeaturesetdownlinkV1720RttBasedpdcPrsR17MaxnumberprsResourceprocessedperslotR17Scs30khzR17
-	Scs60khzR17  *FeaturesetdownlinkV1720RttBasedpdcPrsR17MaxnumberprsResourceprocessedperslotR17Scs60khzR17
-	Scs120khzR17 *FeaturesetdownlinkV1720RttBasedpdcPrsR17MaxnumberprsResourceprocessedperslotR17Scs120khzR17
-}

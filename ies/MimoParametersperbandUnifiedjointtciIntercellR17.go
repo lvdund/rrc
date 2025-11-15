@@ -1,7 +1,0 @@
-package ies
-
-// MIMO-ParametersPerBand-unifiedJointTCI-InterCell-r17 ::= SEQUENCE
-type MimoParametersperbandUnifiedjointtciIntercellR17 struct {
-	AdditionalmacCePerccR17    MimoParametersperbandUnifiedjointtciIntercellR17AdditionalmacCePerccR17
-	AdditionalmacCeAcrossccR17 MimoParametersperbandUnifiedjointtciIntercellR17AdditionalmacCeAcrossccR17
-}
