@@ -9,14 +9,14 @@ import (
 
 const (
 	MRB_PDCP_ConfigBroadcast_r17_headerCompression_r17_Choice_nothing uint64 = iota
-	MRB_PDCP_ConfigBroadcast_r17_headerCompression_r17_Choice_notUsed
-	MRB_PDCP_ConfigBroadcast_r17_headerCompression_r17_Choice_rohc
+	MRB_PDCP_ConfigBroadcast_r17_headerCompression_r17_Choice_NotUsed
+	MRB_PDCP_ConfigBroadcast_r17_headerCompression_r17_Choice_Rohc
 )
 
 type MRB_PDCP_ConfigBroadcast_r17_headerCompression_r17 struct {
 	Choice  uint64
-	notUsed uper.NULL `madatory`
-	rohc    *MRB_PDCP_ConfigBroadcast_r17_headerCompression_r17_rohc
+	NotUsed uper.NULL `madatory`
+	Rohc    *MRB_PDCP_ConfigBroadcast_r17_headerCompression_r17_rohc
 }
 
 func (ie *MRB_PDCP_ConfigBroadcast_r17_headerCompression_r17) Encode(w *uper.UperWriter) error {
@@ -25,13 +25,13 @@ func (ie *MRB_PDCP_ConfigBroadcast_r17_headerCompression_r17) Encode(w *uper.Upe
 		return err
 	}
 	switch ie.Choice {
-	case MRB_PDCP_ConfigBroadcast_r17_headerCompression_r17_Choice_notUsed:
+	case MRB_PDCP_ConfigBroadcast_r17_headerCompression_r17_Choice_NotUsed:
 		if err := w.WriteNull(); err != nil {
-			err = utils.WrapError("Encode notUsed", err)
+			err = utils.WrapError("Encode NotUsed", err)
 		}
-	case MRB_PDCP_ConfigBroadcast_r17_headerCompression_r17_Choice_rohc:
-		if err = ie.rohc.Encode(w); err != nil {
-			err = utils.WrapError("Encode rohc", err)
+	case MRB_PDCP_ConfigBroadcast_r17_headerCompression_r17_Choice_Rohc:
+		if err = ie.Rohc.Encode(w); err != nil {
+			err = utils.WrapError("Encode Rohc", err)
 		}
 	default:
 		err = fmt.Errorf("invalid choice: %d", ie.Choice)
@@ -45,14 +45,14 @@ func (ie *MRB_PDCP_ConfigBroadcast_r17_headerCompression_r17) Decode(r *uper.Upe
 		return err
 	}
 	switch ie.Choice {
-	case MRB_PDCP_ConfigBroadcast_r17_headerCompression_r17_Choice_notUsed:
+	case MRB_PDCP_ConfigBroadcast_r17_headerCompression_r17_Choice_NotUsed:
 		if err := r.ReadNull(); err != nil {
-			return utils.WrapError("Decode notUsed", err)
+			return utils.WrapError("Decode NotUsed", err)
 		}
-	case MRB_PDCP_ConfigBroadcast_r17_headerCompression_r17_Choice_rohc:
-		ie.rohc = new(MRB_PDCP_ConfigBroadcast_r17_headerCompression_r17_rohc)
-		if err = ie.rohc.Decode(r); err != nil {
-			return utils.WrapError("Decode rohc", err)
+	case MRB_PDCP_ConfigBroadcast_r17_headerCompression_r17_Choice_Rohc:
+		ie.Rohc = new(MRB_PDCP_ConfigBroadcast_r17_headerCompression_r17_rohc)
+		if err = ie.Rohc.Decode(r); err != nil {
+			return utils.WrapError("Decode Rohc", err)
 		}
 	default:
 		return fmt.Errorf("invalid choice: %d", ie.Choice)

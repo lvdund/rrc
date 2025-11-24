@@ -6,26 +6,26 @@ import (
 )
 
 type MeasResultNR_measResult struct {
-	cellResults    *MeasResultNR_measResult_cellResults    `optional`
-	rsIndexResults *MeasResultNR_measResult_rsIndexResults `optional`
+	CellResults    *MeasResultNR_measResult_cellResults    `optional`
+	RsIndexResults *MeasResultNR_measResult_rsIndexResults `optional`
 }
 
 func (ie *MeasResultNR_measResult) Encode(w *uper.UperWriter) error {
 	var err error
-	preambleBits := []bool{ie.cellResults != nil, ie.rsIndexResults != nil}
+	preambleBits := []bool{ie.CellResults != nil, ie.RsIndexResults != nil}
 	for _, bit := range preambleBits {
 		if err = w.WriteBool(bit); err != nil {
 			return err
 		}
 	}
-	if ie.cellResults != nil {
-		if err = ie.cellResults.Encode(w); err != nil {
-			return utils.WrapError("Encode cellResults", err)
+	if ie.CellResults != nil {
+		if err = ie.CellResults.Encode(w); err != nil {
+			return utils.WrapError("Encode CellResults", err)
 		}
 	}
-	if ie.rsIndexResults != nil {
-		if err = ie.rsIndexResults.Encode(w); err != nil {
-			return utils.WrapError("Encode rsIndexResults", err)
+	if ie.RsIndexResults != nil {
+		if err = ie.RsIndexResults.Encode(w); err != nil {
+			return utils.WrapError("Encode RsIndexResults", err)
 		}
 	}
 	return nil
@@ -33,24 +33,24 @@ func (ie *MeasResultNR_measResult) Encode(w *uper.UperWriter) error {
 
 func (ie *MeasResultNR_measResult) Decode(r *uper.UperReader) error {
 	var err error
-	var cellResultsPresent bool
-	if cellResultsPresent, err = r.ReadBool(); err != nil {
+	var CellResultsPresent bool
+	if CellResultsPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var rsIndexResultsPresent bool
-	if rsIndexResultsPresent, err = r.ReadBool(); err != nil {
+	var RsIndexResultsPresent bool
+	if RsIndexResultsPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	if cellResultsPresent {
-		ie.cellResults = new(MeasResultNR_measResult_cellResults)
-		if err = ie.cellResults.Decode(r); err != nil {
-			return utils.WrapError("Decode cellResults", err)
+	if CellResultsPresent {
+		ie.CellResults = new(MeasResultNR_measResult_cellResults)
+		if err = ie.CellResults.Decode(r); err != nil {
+			return utils.WrapError("Decode CellResults", err)
 		}
 	}
-	if rsIndexResultsPresent {
-		ie.rsIndexResults = new(MeasResultNR_measResult_rsIndexResults)
-		if err = ie.rsIndexResults.Decode(r); err != nil {
-			return utils.WrapError("Decode rsIndexResults", err)
+	if RsIndexResultsPresent {
+		ie.RsIndexResults = new(MeasResultNR_measResult_rsIndexResults)
+		if err = ie.RsIndexResults.Decode(r); err != nil {
+			return utils.WrapError("Decode RsIndexResults", err)
 		}
 	}
 	return nil

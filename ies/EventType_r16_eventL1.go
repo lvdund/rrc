@@ -6,35 +6,35 @@ import (
 )
 
 type EventType_r16_eventL1 struct {
-	l1_Threshold  MeasTriggerQuantity `madatory`
-	hysteresis    Hysteresis          `madatory`
-	timeToTrigger TimeToTrigger       `madatory`
+	L1_Threshold  MeasTriggerQuantity `madatory`
+	Hysteresis    Hysteresis          `madatory`
+	TimeToTrigger TimeToTrigger       `madatory`
 }
 
 func (ie *EventType_r16_eventL1) Encode(w *uper.UperWriter) error {
 	var err error
-	if err = ie.l1_Threshold.Encode(w); err != nil {
-		return utils.WrapError("Encode l1_Threshold", err)
+	if err = ie.L1_Threshold.Encode(w); err != nil {
+		return utils.WrapError("Encode L1_Threshold", err)
 	}
-	if err = ie.hysteresis.Encode(w); err != nil {
-		return utils.WrapError("Encode hysteresis", err)
+	if err = ie.Hysteresis.Encode(w); err != nil {
+		return utils.WrapError("Encode Hysteresis", err)
 	}
-	if err = ie.timeToTrigger.Encode(w); err != nil {
-		return utils.WrapError("Encode timeToTrigger", err)
+	if err = ie.TimeToTrigger.Encode(w); err != nil {
+		return utils.WrapError("Encode TimeToTrigger", err)
 	}
 	return nil
 }
 
 func (ie *EventType_r16_eventL1) Decode(r *uper.UperReader) error {
 	var err error
-	if err = ie.l1_Threshold.Decode(r); err != nil {
-		return utils.WrapError("Decode l1_Threshold", err)
+	if err = ie.L1_Threshold.Decode(r); err != nil {
+		return utils.WrapError("Decode L1_Threshold", err)
 	}
-	if err = ie.hysteresis.Decode(r); err != nil {
-		return utils.WrapError("Decode hysteresis", err)
+	if err = ie.Hysteresis.Decode(r); err != nil {
+		return utils.WrapError("Decode Hysteresis", err)
 	}
-	if err = ie.timeToTrigger.Decode(r); err != nil {
-		return utils.WrapError("Decode timeToTrigger", err)
+	if err = ie.TimeToTrigger.Decode(r); err != nil {
+		return utils.WrapError("Decode TimeToTrigger", err)
 	}
 	return nil
 }

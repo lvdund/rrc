@@ -6,44 +6,44 @@ import (
 )
 
 type UE_MRDC_Capability_v1560 struct {
-	receivedFilters                    *[]byte                              `optional`
-	measAndMobParametersMRDC_v1560     *MeasAndMobParametersMRDC_v1560      `optional`
-	fdd_Add_UE_MRDC_Capabilities_v1560 *UE_MRDC_CapabilityAddXDD_Mode_v1560 `optional`
-	tdd_Add_UE_MRDC_Capabilities_v1560 *UE_MRDC_CapabilityAddXDD_Mode_v1560 `optional`
-	nonCriticalExtension               *UE_MRDC_Capability_v1610            `optional`
+	ReceivedFilters                    *[]byte                              `optional`
+	MeasAndMobParametersMRDC_v1560     *MeasAndMobParametersMRDC_v1560      `optional`
+	Fdd_Add_UE_MRDC_Capabilities_v1560 *UE_MRDC_CapabilityAddXDD_Mode_v1560 `optional`
+	Tdd_Add_UE_MRDC_Capabilities_v1560 *UE_MRDC_CapabilityAddXDD_Mode_v1560 `optional`
+	NonCriticalExtension               *UE_MRDC_Capability_v1610            `optional`
 }
 
 func (ie *UE_MRDC_Capability_v1560) Encode(w *uper.UperWriter) error {
 	var err error
-	preambleBits := []bool{ie.receivedFilters != nil, ie.measAndMobParametersMRDC_v1560 != nil, ie.fdd_Add_UE_MRDC_Capabilities_v1560 != nil, ie.tdd_Add_UE_MRDC_Capabilities_v1560 != nil, ie.nonCriticalExtension != nil}
+	preambleBits := []bool{ie.ReceivedFilters != nil, ie.MeasAndMobParametersMRDC_v1560 != nil, ie.Fdd_Add_UE_MRDC_Capabilities_v1560 != nil, ie.Tdd_Add_UE_MRDC_Capabilities_v1560 != nil, ie.NonCriticalExtension != nil}
 	for _, bit := range preambleBits {
 		if err = w.WriteBool(bit); err != nil {
 			return err
 		}
 	}
-	if ie.receivedFilters != nil {
-		if err = w.WriteOctetString(*ie.receivedFilters, &uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
-			return utils.WrapError("Encode receivedFilters", err)
+	if ie.ReceivedFilters != nil {
+		if err = w.WriteOctetString(*ie.ReceivedFilters, &uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+			return utils.WrapError("Encode ReceivedFilters", err)
 		}
 	}
-	if ie.measAndMobParametersMRDC_v1560 != nil {
-		if err = ie.measAndMobParametersMRDC_v1560.Encode(w); err != nil {
-			return utils.WrapError("Encode measAndMobParametersMRDC_v1560", err)
+	if ie.MeasAndMobParametersMRDC_v1560 != nil {
+		if err = ie.MeasAndMobParametersMRDC_v1560.Encode(w); err != nil {
+			return utils.WrapError("Encode MeasAndMobParametersMRDC_v1560", err)
 		}
 	}
-	if ie.fdd_Add_UE_MRDC_Capabilities_v1560 != nil {
-		if err = ie.fdd_Add_UE_MRDC_Capabilities_v1560.Encode(w); err != nil {
-			return utils.WrapError("Encode fdd_Add_UE_MRDC_Capabilities_v1560", err)
+	if ie.Fdd_Add_UE_MRDC_Capabilities_v1560 != nil {
+		if err = ie.Fdd_Add_UE_MRDC_Capabilities_v1560.Encode(w); err != nil {
+			return utils.WrapError("Encode Fdd_Add_UE_MRDC_Capabilities_v1560", err)
 		}
 	}
-	if ie.tdd_Add_UE_MRDC_Capabilities_v1560 != nil {
-		if err = ie.tdd_Add_UE_MRDC_Capabilities_v1560.Encode(w); err != nil {
-			return utils.WrapError("Encode tdd_Add_UE_MRDC_Capabilities_v1560", err)
+	if ie.Tdd_Add_UE_MRDC_Capabilities_v1560 != nil {
+		if err = ie.Tdd_Add_UE_MRDC_Capabilities_v1560.Encode(w); err != nil {
+			return utils.WrapError("Encode Tdd_Add_UE_MRDC_Capabilities_v1560", err)
 		}
 	}
-	if ie.nonCriticalExtension != nil {
-		if err = ie.nonCriticalExtension.Encode(w); err != nil {
-			return utils.WrapError("Encode nonCriticalExtension", err)
+	if ie.NonCriticalExtension != nil {
+		if err = ie.NonCriticalExtension.Encode(w); err != nil {
+			return utils.WrapError("Encode NonCriticalExtension", err)
 		}
 	}
 	return nil
@@ -51,55 +51,55 @@ func (ie *UE_MRDC_Capability_v1560) Encode(w *uper.UperWriter) error {
 
 func (ie *UE_MRDC_Capability_v1560) Decode(r *uper.UperReader) error {
 	var err error
-	var receivedFiltersPresent bool
-	if receivedFiltersPresent, err = r.ReadBool(); err != nil {
+	var ReceivedFiltersPresent bool
+	if ReceivedFiltersPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var measAndMobParametersMRDC_v1560Present bool
-	if measAndMobParametersMRDC_v1560Present, err = r.ReadBool(); err != nil {
+	var MeasAndMobParametersMRDC_v1560Present bool
+	if MeasAndMobParametersMRDC_v1560Present, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var fdd_Add_UE_MRDC_Capabilities_v1560Present bool
-	if fdd_Add_UE_MRDC_Capabilities_v1560Present, err = r.ReadBool(); err != nil {
+	var Fdd_Add_UE_MRDC_Capabilities_v1560Present bool
+	if Fdd_Add_UE_MRDC_Capabilities_v1560Present, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var tdd_Add_UE_MRDC_Capabilities_v1560Present bool
-	if tdd_Add_UE_MRDC_Capabilities_v1560Present, err = r.ReadBool(); err != nil {
+	var Tdd_Add_UE_MRDC_Capabilities_v1560Present bool
+	if Tdd_Add_UE_MRDC_Capabilities_v1560Present, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var nonCriticalExtensionPresent bool
-	if nonCriticalExtensionPresent, err = r.ReadBool(); err != nil {
+	var NonCriticalExtensionPresent bool
+	if NonCriticalExtensionPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	if receivedFiltersPresent {
-		var tmp_os_receivedFilters []byte
-		if tmp_os_receivedFilters, err = r.ReadOctetString(&uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
-			return utils.WrapError("Decode receivedFilters", err)
+	if ReceivedFiltersPresent {
+		var tmp_os_ReceivedFilters []byte
+		if tmp_os_ReceivedFilters, err = r.ReadOctetString(&uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+			return utils.WrapError("Decode ReceivedFilters", err)
 		}
-		ie.receivedFilters = &tmp_os_receivedFilters
+		ie.ReceivedFilters = &tmp_os_ReceivedFilters
 	}
-	if measAndMobParametersMRDC_v1560Present {
-		ie.measAndMobParametersMRDC_v1560 = new(MeasAndMobParametersMRDC_v1560)
-		if err = ie.measAndMobParametersMRDC_v1560.Decode(r); err != nil {
-			return utils.WrapError("Decode measAndMobParametersMRDC_v1560", err)
-		}
-	}
-	if fdd_Add_UE_MRDC_Capabilities_v1560Present {
-		ie.fdd_Add_UE_MRDC_Capabilities_v1560 = new(UE_MRDC_CapabilityAddXDD_Mode_v1560)
-		if err = ie.fdd_Add_UE_MRDC_Capabilities_v1560.Decode(r); err != nil {
-			return utils.WrapError("Decode fdd_Add_UE_MRDC_Capabilities_v1560", err)
+	if MeasAndMobParametersMRDC_v1560Present {
+		ie.MeasAndMobParametersMRDC_v1560 = new(MeasAndMobParametersMRDC_v1560)
+		if err = ie.MeasAndMobParametersMRDC_v1560.Decode(r); err != nil {
+			return utils.WrapError("Decode MeasAndMobParametersMRDC_v1560", err)
 		}
 	}
-	if tdd_Add_UE_MRDC_Capabilities_v1560Present {
-		ie.tdd_Add_UE_MRDC_Capabilities_v1560 = new(UE_MRDC_CapabilityAddXDD_Mode_v1560)
-		if err = ie.tdd_Add_UE_MRDC_Capabilities_v1560.Decode(r); err != nil {
-			return utils.WrapError("Decode tdd_Add_UE_MRDC_Capabilities_v1560", err)
+	if Fdd_Add_UE_MRDC_Capabilities_v1560Present {
+		ie.Fdd_Add_UE_MRDC_Capabilities_v1560 = new(UE_MRDC_CapabilityAddXDD_Mode_v1560)
+		if err = ie.Fdd_Add_UE_MRDC_Capabilities_v1560.Decode(r); err != nil {
+			return utils.WrapError("Decode Fdd_Add_UE_MRDC_Capabilities_v1560", err)
 		}
 	}
-	if nonCriticalExtensionPresent {
-		ie.nonCriticalExtension = new(UE_MRDC_Capability_v1610)
-		if err = ie.nonCriticalExtension.Decode(r); err != nil {
-			return utils.WrapError("Decode nonCriticalExtension", err)
+	if Tdd_Add_UE_MRDC_Capabilities_v1560Present {
+		ie.Tdd_Add_UE_MRDC_Capabilities_v1560 = new(UE_MRDC_CapabilityAddXDD_Mode_v1560)
+		if err = ie.Tdd_Add_UE_MRDC_Capabilities_v1560.Decode(r); err != nil {
+			return utils.WrapError("Decode Tdd_Add_UE_MRDC_Capabilities_v1560", err)
+		}
+	}
+	if NonCriticalExtensionPresent {
+		ie.NonCriticalExtension = new(UE_MRDC_Capability_v1610)
+		if err = ie.NonCriticalExtension.Decode(r); err != nil {
+			return utils.WrapError("Decode NonCriticalExtension", err)
 		}
 	}
 	return nil

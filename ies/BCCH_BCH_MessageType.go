@@ -9,14 +9,14 @@ import (
 
 const (
 	BCCH_BCH_MessageType_Choice_nothing uint64 = iota
-	BCCH_BCH_MessageType_Choice_mib
-	BCCH_BCH_MessageType_Choice_messageClassExtension
+	BCCH_BCH_MessageType_Choice_Mib
+	BCCH_BCH_MessageType_Choice_MessageClassExtension
 )
 
 type BCCH_BCH_MessageType struct {
 	Choice                uint64
-	mib                   *MIB
-	messageClassExtension interface{} `madatory`
+	Mib                   *MIB
+	MessageClassExtension interface{} `madatory`
 }
 
 func (ie *BCCH_BCH_MessageType) Encode(w *uper.UperWriter) error {
@@ -25,11 +25,11 @@ func (ie *BCCH_BCH_MessageType) Encode(w *uper.UperWriter) error {
 		return err
 	}
 	switch ie.Choice {
-	case BCCH_BCH_MessageType_Choice_mib:
-		if err = ie.mib.Encode(w); err != nil {
-			err = utils.WrapError("Encode mib", err)
+	case BCCH_BCH_MessageType_Choice_Mib:
+		if err = ie.Mib.Encode(w); err != nil {
+			err = utils.WrapError("Encode Mib", err)
 		}
-	case BCCH_BCH_MessageType_Choice_messageClassExtension:
+	case BCCH_BCH_MessageType_Choice_MessageClassExtension:
 		// interface{} field of choice - nothing to encode
 	default:
 		err = fmt.Errorf("invalid choice: %d", ie.Choice)
@@ -43,12 +43,12 @@ func (ie *BCCH_BCH_MessageType) Decode(r *uper.UperReader) error {
 		return err
 	}
 	switch ie.Choice {
-	case BCCH_BCH_MessageType_Choice_mib:
-		ie.mib = new(MIB)
-		if err = ie.mib.Decode(r); err != nil {
-			return utils.WrapError("Decode mib", err)
+	case BCCH_BCH_MessageType_Choice_Mib:
+		ie.Mib = new(MIB)
+		if err = ie.Mib.Decode(r); err != nil {
+			return utils.WrapError("Decode Mib", err)
 		}
-	case BCCH_BCH_MessageType_Choice_messageClassExtension:
+	case BCCH_BCH_MessageType_Choice_MessageClassExtension:
 		// interface{} field of choice - nothing to decode
 	default:
 		return fmt.Errorf("invalid choice: %d", ie.Choice)

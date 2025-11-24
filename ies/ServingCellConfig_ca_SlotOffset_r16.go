@@ -9,18 +9,18 @@ import (
 
 const (
 	ServingCellConfig_ca_SlotOffset_r16_Choice_nothing uint64 = iota
-	ServingCellConfig_ca_SlotOffset_r16_Choice_refSCS15kHz
-	ServingCellConfig_ca_SlotOffset_r16_Choice_refSCS30KHz
-	ServingCellConfig_ca_SlotOffset_r16_Choice_refSCS60KHz
-	ServingCellConfig_ca_SlotOffset_r16_Choice_refSCS120KHz
+	ServingCellConfig_ca_SlotOffset_r16_Choice_RefSCS15kHz
+	ServingCellConfig_ca_SlotOffset_r16_Choice_RefSCS30KHz
+	ServingCellConfig_ca_SlotOffset_r16_Choice_RefSCS60KHz
+	ServingCellConfig_ca_SlotOffset_r16_Choice_RefSCS120KHz
 )
 
 type ServingCellConfig_ca_SlotOffset_r16 struct {
 	Choice       uint64
-	refSCS15kHz  int64 `lb:-2,ub:2,madatory`
-	refSCS30KHz  int64 `lb:-5,ub:5,madatory`
-	refSCS60KHz  int64 `lb:-10,ub:10,madatory`
-	refSCS120KHz int64 `lb:-20,ub:20,madatory`
+	RefSCS15kHz  int64 `lb:-2,ub:2,madatory`
+	RefSCS30KHz  int64 `lb:-5,ub:5,madatory`
+	RefSCS60KHz  int64 `lb:-10,ub:10,madatory`
+	RefSCS120KHz int64 `lb:-20,ub:20,madatory`
 }
 
 func (ie *ServingCellConfig_ca_SlotOffset_r16) Encode(w *uper.UperWriter) error {
@@ -29,21 +29,21 @@ func (ie *ServingCellConfig_ca_SlotOffset_r16) Encode(w *uper.UperWriter) error 
 		return err
 	}
 	switch ie.Choice {
-	case ServingCellConfig_ca_SlotOffset_r16_Choice_refSCS15kHz:
-		if err = w.WriteInteger(int64(ie.refSCS15kHz), &uper.Constraint{Lb: -2, Ub: 2}, false); err != nil {
-			err = utils.WrapError("Encode refSCS15kHz", err)
+	case ServingCellConfig_ca_SlotOffset_r16_Choice_RefSCS15kHz:
+		if err = w.WriteInteger(int64(ie.RefSCS15kHz), &uper.Constraint{Lb: -2, Ub: 2}, false); err != nil {
+			err = utils.WrapError("Encode RefSCS15kHz", err)
 		}
-	case ServingCellConfig_ca_SlotOffset_r16_Choice_refSCS30KHz:
-		if err = w.WriteInteger(int64(ie.refSCS30KHz), &uper.Constraint{Lb: -5, Ub: 5}, false); err != nil {
-			err = utils.WrapError("Encode refSCS30KHz", err)
+	case ServingCellConfig_ca_SlotOffset_r16_Choice_RefSCS30KHz:
+		if err = w.WriteInteger(int64(ie.RefSCS30KHz), &uper.Constraint{Lb: -5, Ub: 5}, false); err != nil {
+			err = utils.WrapError("Encode RefSCS30KHz", err)
 		}
-	case ServingCellConfig_ca_SlotOffset_r16_Choice_refSCS60KHz:
-		if err = w.WriteInteger(int64(ie.refSCS60KHz), &uper.Constraint{Lb: -10, Ub: 10}, false); err != nil {
-			err = utils.WrapError("Encode refSCS60KHz", err)
+	case ServingCellConfig_ca_SlotOffset_r16_Choice_RefSCS60KHz:
+		if err = w.WriteInteger(int64(ie.RefSCS60KHz), &uper.Constraint{Lb: -10, Ub: 10}, false); err != nil {
+			err = utils.WrapError("Encode RefSCS60KHz", err)
 		}
-	case ServingCellConfig_ca_SlotOffset_r16_Choice_refSCS120KHz:
-		if err = w.WriteInteger(int64(ie.refSCS120KHz), &uper.Constraint{Lb: -20, Ub: 20}, false); err != nil {
-			err = utils.WrapError("Encode refSCS120KHz", err)
+	case ServingCellConfig_ca_SlotOffset_r16_Choice_RefSCS120KHz:
+		if err = w.WriteInteger(int64(ie.RefSCS120KHz), &uper.Constraint{Lb: -20, Ub: 20}, false); err != nil {
+			err = utils.WrapError("Encode RefSCS120KHz", err)
 		}
 	default:
 		err = fmt.Errorf("invalid choice: %d", ie.Choice)
@@ -57,30 +57,30 @@ func (ie *ServingCellConfig_ca_SlotOffset_r16) Decode(r *uper.UperReader) error 
 		return err
 	}
 	switch ie.Choice {
-	case ServingCellConfig_ca_SlotOffset_r16_Choice_refSCS15kHz:
-		var tmp_int_refSCS15kHz int64
-		if tmp_int_refSCS15kHz, err = r.ReadInteger(&uper.Constraint{Lb: -2, Ub: 2}, false); err != nil {
-			return utils.WrapError("Decode refSCS15kHz", err)
+	case ServingCellConfig_ca_SlotOffset_r16_Choice_RefSCS15kHz:
+		var tmp_int_RefSCS15kHz int64
+		if tmp_int_RefSCS15kHz, err = r.ReadInteger(&uper.Constraint{Lb: -2, Ub: 2}, false); err != nil {
+			return utils.WrapError("Decode RefSCS15kHz", err)
 		}
-		ie.refSCS15kHz = tmp_int_refSCS15kHz
-	case ServingCellConfig_ca_SlotOffset_r16_Choice_refSCS30KHz:
-		var tmp_int_refSCS30KHz int64
-		if tmp_int_refSCS30KHz, err = r.ReadInteger(&uper.Constraint{Lb: -5, Ub: 5}, false); err != nil {
-			return utils.WrapError("Decode refSCS30KHz", err)
+		ie.RefSCS15kHz = tmp_int_RefSCS15kHz
+	case ServingCellConfig_ca_SlotOffset_r16_Choice_RefSCS30KHz:
+		var tmp_int_RefSCS30KHz int64
+		if tmp_int_RefSCS30KHz, err = r.ReadInteger(&uper.Constraint{Lb: -5, Ub: 5}, false); err != nil {
+			return utils.WrapError("Decode RefSCS30KHz", err)
 		}
-		ie.refSCS30KHz = tmp_int_refSCS30KHz
-	case ServingCellConfig_ca_SlotOffset_r16_Choice_refSCS60KHz:
-		var tmp_int_refSCS60KHz int64
-		if tmp_int_refSCS60KHz, err = r.ReadInteger(&uper.Constraint{Lb: -10, Ub: 10}, false); err != nil {
-			return utils.WrapError("Decode refSCS60KHz", err)
+		ie.RefSCS30KHz = tmp_int_RefSCS30KHz
+	case ServingCellConfig_ca_SlotOffset_r16_Choice_RefSCS60KHz:
+		var tmp_int_RefSCS60KHz int64
+		if tmp_int_RefSCS60KHz, err = r.ReadInteger(&uper.Constraint{Lb: -10, Ub: 10}, false); err != nil {
+			return utils.WrapError("Decode RefSCS60KHz", err)
 		}
-		ie.refSCS60KHz = tmp_int_refSCS60KHz
-	case ServingCellConfig_ca_SlotOffset_r16_Choice_refSCS120KHz:
-		var tmp_int_refSCS120KHz int64
-		if tmp_int_refSCS120KHz, err = r.ReadInteger(&uper.Constraint{Lb: -20, Ub: 20}, false); err != nil {
-			return utils.WrapError("Decode refSCS120KHz", err)
+		ie.RefSCS60KHz = tmp_int_RefSCS60KHz
+	case ServingCellConfig_ca_SlotOffset_r16_Choice_RefSCS120KHz:
+		var tmp_int_RefSCS120KHz int64
+		if tmp_int_RefSCS120KHz, err = r.ReadInteger(&uper.Constraint{Lb: -20, Ub: 20}, false); err != nil {
+			return utils.WrapError("Decode RefSCS120KHz", err)
 		}
-		ie.refSCS120KHz = tmp_int_refSCS120KHz
+		ie.RefSCS120KHz = tmp_int_RefSCS120KHz
 	default:
 		return fmt.Errorf("invalid choice: %d", ie.Choice)
 	}

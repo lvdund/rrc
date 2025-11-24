@@ -9,14 +9,14 @@ import (
 
 const (
 	RRCReconfigurationComplete_CriticalExtensions_Choice_nothing uint64 = iota
-	RRCReconfigurationComplete_CriticalExtensions_Choice_rrcReconfigurationComplete
-	RRCReconfigurationComplete_CriticalExtensions_Choice_criticalExtensionsFuture
+	RRCReconfigurationComplete_CriticalExtensions_Choice_RrcReconfigurationComplete
+	RRCReconfigurationComplete_CriticalExtensions_Choice_CriticalExtensionsFuture
 )
 
 type RRCReconfigurationComplete_CriticalExtensions struct {
 	Choice                     uint64
-	rrcReconfigurationComplete *RRCReconfigurationComplete_IEs
-	criticalExtensionsFuture   interface{} `madatory`
+	RrcReconfigurationComplete *RRCReconfigurationComplete_IEs
+	CriticalExtensionsFuture   interface{} `madatory`
 }
 
 func (ie *RRCReconfigurationComplete_CriticalExtensions) Encode(w *uper.UperWriter) error {
@@ -25,11 +25,11 @@ func (ie *RRCReconfigurationComplete_CriticalExtensions) Encode(w *uper.UperWrit
 		return err
 	}
 	switch ie.Choice {
-	case RRCReconfigurationComplete_CriticalExtensions_Choice_rrcReconfigurationComplete:
-		if err = ie.rrcReconfigurationComplete.Encode(w); err != nil {
-			err = utils.WrapError("Encode rrcReconfigurationComplete", err)
+	case RRCReconfigurationComplete_CriticalExtensions_Choice_RrcReconfigurationComplete:
+		if err = ie.RrcReconfigurationComplete.Encode(w); err != nil {
+			err = utils.WrapError("Encode RrcReconfigurationComplete", err)
 		}
-	case RRCReconfigurationComplete_CriticalExtensions_Choice_criticalExtensionsFuture:
+	case RRCReconfigurationComplete_CriticalExtensions_Choice_CriticalExtensionsFuture:
 		// interface{} field of choice - nothing to encode
 	default:
 		err = fmt.Errorf("invalid choice: %d", ie.Choice)
@@ -43,12 +43,12 @@ func (ie *RRCReconfigurationComplete_CriticalExtensions) Decode(r *uper.UperRead
 		return err
 	}
 	switch ie.Choice {
-	case RRCReconfigurationComplete_CriticalExtensions_Choice_rrcReconfigurationComplete:
-		ie.rrcReconfigurationComplete = new(RRCReconfigurationComplete_IEs)
-		if err = ie.rrcReconfigurationComplete.Decode(r); err != nil {
-			return utils.WrapError("Decode rrcReconfigurationComplete", err)
+	case RRCReconfigurationComplete_CriticalExtensions_Choice_RrcReconfigurationComplete:
+		ie.RrcReconfigurationComplete = new(RRCReconfigurationComplete_IEs)
+		if err = ie.RrcReconfigurationComplete.Decode(r); err != nil {
+			return utils.WrapError("Decode RrcReconfigurationComplete", err)
 		}
-	case RRCReconfigurationComplete_CriticalExtensions_Choice_criticalExtensionsFuture:
+	case RRCReconfigurationComplete_CriticalExtensions_Choice_CriticalExtensionsFuture:
 		// interface{} field of choice - nothing to decode
 	default:
 		return fmt.Errorf("invalid choice: %d", ie.Choice)

@@ -8,36 +8,36 @@ import (
 )
 
 type PDCP_Config struct {
-	drb                           *PDCP_Config_drb                          `lb:1,ub:16383,optional`
-	moreThanOneRLC                *PDCP_Config_moreThanOneRLC               `optional,ext`
-	t_Reordering                  *PDCP_Config_t_Reordering                 `optional,ext`
-	cipheringDisabled             *PDCP_Config_cipheringDisabled            `optional,ext-1`
-	discardTimerExt_r16           *DiscardTimerExt_r16                      `optional,ext-2,setuprelease`
-	moreThanTwoRLC_DRB_r16        *PDCP_Config_moreThanTwoRLC_DRB_r16       `lb:3,ub:3,optional,ext-2`
-	ethernetHeaderCompression_r16 *EthernetHeaderCompression_r16            `optional,ext-2,setuprelease`
-	survivalTimeStateSupport_r17  *PDCP_Config_survivalTimeStateSupport_r17 `optional,ext-3`
-	uplinkDataCompression_r17     *UplinkDataCompression_r17                `optional,ext-3,setuprelease`
-	discardTimerExt2_r17          *DiscardTimerExt2_r17                     `optional,ext-3,setuprelease`
-	initialRX_DELIV_r17           *uper.BitString                           `lb:32,ub:32,optional,ext-3`
+	Drb                           *PDCP_Config_drb                          `lb:1,ub:16383,optional`
+	MoreThanOneRLC                *PDCP_Config_moreThanOneRLC               `optional,ext`
+	T_Reordering                  *PDCP_Config_t_Reordering                 `optional,ext`
+	CipheringDisabled             *PDCP_Config_cipheringDisabled            `optional,ext-1`
+	DiscardTimerExt_r16           *DiscardTimerExt_r16                      `optional,ext-2,setuprelease`
+	MoreThanTwoRLC_DRB_r16        *PDCP_Config_moreThanTwoRLC_DRB_r16       `lb:3,ub:3,optional,ext-2`
+	EthernetHeaderCompression_r16 *EthernetHeaderCompression_r16            `optional,ext-2,setuprelease`
+	SurvivalTimeStateSupport_r17  *PDCP_Config_survivalTimeStateSupport_r17 `optional,ext-3`
+	UplinkDataCompression_r17     *UplinkDataCompression_r17                `optional,ext-3,setuprelease`
+	DiscardTimerExt2_r17          *DiscardTimerExt2_r17                     `optional,ext-3,setuprelease`
+	InitialRX_DELIV_r17           *uper.BitString                           `lb:32,ub:32,optional,ext-3`
 }
 
 func (ie *PDCP_Config) Encode(w *uper.UperWriter) error {
 	var err error
-	hasExtensions := ie.cipheringDisabled != nil || ie.discardTimerExt_r16 != nil || ie.moreThanTwoRLC_DRB_r16 != nil || ie.ethernetHeaderCompression_r16 != nil || ie.survivalTimeStateSupport_r17 != nil || ie.uplinkDataCompression_r17 != nil || ie.discardTimerExt2_r17 != nil || ie.initialRX_DELIV_r17 != nil
-	preambleBits := []bool{hasExtensions, ie.drb != nil}
+	hasExtensions := ie.CipheringDisabled != nil || ie.DiscardTimerExt_r16 != nil || ie.MoreThanTwoRLC_DRB_r16 != nil || ie.EthernetHeaderCompression_r16 != nil || ie.SurvivalTimeStateSupport_r17 != nil || ie.UplinkDataCompression_r17 != nil || ie.DiscardTimerExt2_r17 != nil || ie.InitialRX_DELIV_r17 != nil
+	preambleBits := []bool{hasExtensions, ie.Drb != nil}
 	for _, bit := range preambleBits {
 		if err = w.WriteBool(bit); err != nil {
 			return err
 		}
 	}
-	if ie.drb != nil {
-		if err = ie.drb.Encode(w); err != nil {
-			return utils.WrapError("Encode drb", err)
+	if ie.Drb != nil {
+		if err = ie.Drb.Encode(w); err != nil {
+			return utils.WrapError("Encode Drb", err)
 		}
 	}
 	if hasExtensions {
 		// Extension bitmap: 3 bits for 3 extension groups
-		extBitmap := []bool{ie.cipheringDisabled != nil, ie.discardTimerExt_r16 != nil || ie.moreThanTwoRLC_DRB_r16 != nil || ie.ethernetHeaderCompression_r16 != nil, ie.survivalTimeStateSupport_r17 != nil || ie.uplinkDataCompression_r17 != nil || ie.discardTimerExt2_r17 != nil || ie.initialRX_DELIV_r17 != nil}
+		extBitmap := []bool{ie.CipheringDisabled != nil, ie.DiscardTimerExt_r16 != nil || ie.MoreThanTwoRLC_DRB_r16 != nil || ie.EthernetHeaderCompression_r16 != nil, ie.SurvivalTimeStateSupport_r17 != nil || ie.UplinkDataCompression_r17 != nil || ie.DiscardTimerExt2_r17 != nil || ie.InitialRX_DELIV_r17 != nil}
 		if err := w.WriteExtBitMap(extBitmap); err != nil {
 			return utils.WrapError("WriteExtBitMap PDCP_Config", err)
 		}
@@ -48,17 +48,17 @@ func (ie *PDCP_Config) Encode(w *uper.UperWriter) error {
 			extWriter := uper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 1
-			optionals_ext_1 := []bool{ie.cipheringDisabled != nil}
+			optionals_ext_1 := []bool{ie.CipheringDisabled != nil}
 			for _, bit := range optionals_ext_1 {
 				if err := extWriter.WriteBool(bit); err != nil {
 					return err
 				}
 			}
 
-			// encode cipheringDisabled optional
-			if ie.cipheringDisabled != nil {
-				if err = ie.cipheringDisabled.Encode(extWriter); err != nil {
-					return utils.WrapError("Encode cipheringDisabled", err)
+			// encode CipheringDisabled optional
+			if ie.CipheringDisabled != nil {
+				if err = ie.CipheringDisabled.Encode(extWriter); err != nil {
+					return utils.WrapError("Encode CipheringDisabled", err)
 				}
 			}
 
@@ -77,35 +77,35 @@ func (ie *PDCP_Config) Encode(w *uper.UperWriter) error {
 			extWriter := uper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 2
-			optionals_ext_2 := []bool{ie.discardTimerExt_r16 != nil, ie.moreThanTwoRLC_DRB_r16 != nil, ie.ethernetHeaderCompression_r16 != nil}
+			optionals_ext_2 := []bool{ie.DiscardTimerExt_r16 != nil, ie.MoreThanTwoRLC_DRB_r16 != nil, ie.EthernetHeaderCompression_r16 != nil}
 			for _, bit := range optionals_ext_2 {
 				if err := extWriter.WriteBool(bit); err != nil {
 					return err
 				}
 			}
 
-			// encode discardTimerExt_r16 optional
-			if ie.discardTimerExt_r16 != nil {
-				tmp_discardTimerExt_r16 := utils.SetupRelease[*DiscardTimerExt_r16]{
-					Setup: ie.discardTimerExt_r16,
+			// encode DiscardTimerExt_r16 optional
+			if ie.DiscardTimerExt_r16 != nil {
+				tmp_DiscardTimerExt_r16 := utils.SetupRelease[*DiscardTimerExt_r16]{
+					Setup: ie.DiscardTimerExt_r16,
 				}
-				if err = tmp_discardTimerExt_r16.Encode(extWriter); err != nil {
-					return utils.WrapError("Encode discardTimerExt_r16", err)
-				}
-			}
-			// encode moreThanTwoRLC_DRB_r16 optional
-			if ie.moreThanTwoRLC_DRB_r16 != nil {
-				if err = ie.moreThanTwoRLC_DRB_r16.Encode(extWriter); err != nil {
-					return utils.WrapError("Encode moreThanTwoRLC_DRB_r16", err)
+				if err = tmp_DiscardTimerExt_r16.Encode(extWriter); err != nil {
+					return utils.WrapError("Encode DiscardTimerExt_r16", err)
 				}
 			}
-			// encode ethernetHeaderCompression_r16 optional
-			if ie.ethernetHeaderCompression_r16 != nil {
-				tmp_ethernetHeaderCompression_r16 := utils.SetupRelease[*EthernetHeaderCompression_r16]{
-					Setup: ie.ethernetHeaderCompression_r16,
+			// encode MoreThanTwoRLC_DRB_r16 optional
+			if ie.MoreThanTwoRLC_DRB_r16 != nil {
+				if err = ie.MoreThanTwoRLC_DRB_r16.Encode(extWriter); err != nil {
+					return utils.WrapError("Encode MoreThanTwoRLC_DRB_r16", err)
 				}
-				if err = tmp_ethernetHeaderCompression_r16.Encode(extWriter); err != nil {
-					return utils.WrapError("Encode ethernetHeaderCompression_r16", err)
+			}
+			// encode EthernetHeaderCompression_r16 optional
+			if ie.EthernetHeaderCompression_r16 != nil {
+				tmp_EthernetHeaderCompression_r16 := utils.SetupRelease[*EthernetHeaderCompression_r16]{
+					Setup: ie.EthernetHeaderCompression_r16,
+				}
+				if err = tmp_EthernetHeaderCompression_r16.Encode(extWriter); err != nil {
+					return utils.WrapError("Encode EthernetHeaderCompression_r16", err)
 				}
 			}
 
@@ -124,41 +124,41 @@ func (ie *PDCP_Config) Encode(w *uper.UperWriter) error {
 			extWriter := uper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 3
-			optionals_ext_3 := []bool{ie.survivalTimeStateSupport_r17 != nil, ie.uplinkDataCompression_r17 != nil, ie.discardTimerExt2_r17 != nil, ie.initialRX_DELIV_r17 != nil}
+			optionals_ext_3 := []bool{ie.SurvivalTimeStateSupport_r17 != nil, ie.UplinkDataCompression_r17 != nil, ie.DiscardTimerExt2_r17 != nil, ie.InitialRX_DELIV_r17 != nil}
 			for _, bit := range optionals_ext_3 {
 				if err := extWriter.WriteBool(bit); err != nil {
 					return err
 				}
 			}
 
-			// encode survivalTimeStateSupport_r17 optional
-			if ie.survivalTimeStateSupport_r17 != nil {
-				if err = ie.survivalTimeStateSupport_r17.Encode(extWriter); err != nil {
-					return utils.WrapError("Encode survivalTimeStateSupport_r17", err)
+			// encode SurvivalTimeStateSupport_r17 optional
+			if ie.SurvivalTimeStateSupport_r17 != nil {
+				if err = ie.SurvivalTimeStateSupport_r17.Encode(extWriter); err != nil {
+					return utils.WrapError("Encode SurvivalTimeStateSupport_r17", err)
 				}
 			}
-			// encode uplinkDataCompression_r17 optional
-			if ie.uplinkDataCompression_r17 != nil {
-				tmp_uplinkDataCompression_r17 := utils.SetupRelease[*UplinkDataCompression_r17]{
-					Setup: ie.uplinkDataCompression_r17,
+			// encode UplinkDataCompression_r17 optional
+			if ie.UplinkDataCompression_r17 != nil {
+				tmp_UplinkDataCompression_r17 := utils.SetupRelease[*UplinkDataCompression_r17]{
+					Setup: ie.UplinkDataCompression_r17,
 				}
-				if err = tmp_uplinkDataCompression_r17.Encode(extWriter); err != nil {
-					return utils.WrapError("Encode uplinkDataCompression_r17", err)
-				}
-			}
-			// encode discardTimerExt2_r17 optional
-			if ie.discardTimerExt2_r17 != nil {
-				tmp_discardTimerExt2_r17 := utils.SetupRelease[*DiscardTimerExt2_r17]{
-					Setup: ie.discardTimerExt2_r17,
-				}
-				if err = tmp_discardTimerExt2_r17.Encode(extWriter); err != nil {
-					return utils.WrapError("Encode discardTimerExt2_r17", err)
+				if err = tmp_UplinkDataCompression_r17.Encode(extWriter); err != nil {
+					return utils.WrapError("Encode UplinkDataCompression_r17", err)
 				}
 			}
-			// encode initialRX_DELIV_r17 optional
-			if ie.initialRX_DELIV_r17 != nil {
-				if err = extWriter.WriteBitString(ie.initialRX_DELIV_r17.Bytes, uint(ie.initialRX_DELIV_r17.NumBits), &uper.Constraint{Lb: 32, Ub: 32}, false); err != nil {
-					return utils.WrapError("Encode initialRX_DELIV_r17", err)
+			// encode DiscardTimerExt2_r17 optional
+			if ie.DiscardTimerExt2_r17 != nil {
+				tmp_DiscardTimerExt2_r17 := utils.SetupRelease[*DiscardTimerExt2_r17]{
+					Setup: ie.DiscardTimerExt2_r17,
+				}
+				if err = tmp_DiscardTimerExt2_r17.Encode(extWriter); err != nil {
+					return utils.WrapError("Encode DiscardTimerExt2_r17", err)
+				}
+			}
+			// encode InitialRX_DELIV_r17 optional
+			if ie.InitialRX_DELIV_r17 != nil {
+				if err = extWriter.WriteBitString(ie.InitialRX_DELIV_r17.Bytes, uint(ie.InitialRX_DELIV_r17.NumBits), &uper.Constraint{Lb: 32, Ub: 32}, false); err != nil {
+					return utils.WrapError("Encode InitialRX_DELIV_r17", err)
 				}
 			}
 
@@ -180,14 +180,14 @@ func (ie *PDCP_Config) Decode(r *uper.UperReader) error {
 	if extensionBit, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var drbPresent bool
-	if drbPresent, err = r.ReadBool(); err != nil {
+	var DrbPresent bool
+	if DrbPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	if drbPresent {
-		ie.drb = new(PDCP_Config_drb)
-		if err = ie.drb.Decode(r); err != nil {
-			return utils.WrapError("Decode drb", err)
+	if DrbPresent {
+		ie.Drb = new(PDCP_Config_drb)
+		if err = ie.Drb.Decode(r); err != nil {
+			return utils.WrapError("Decode Drb", err)
 		}
 	}
 
@@ -207,15 +207,15 @@ func (ie *PDCP_Config) Decode(r *uper.UperReader) error {
 
 			extReader := uper.NewReader(bytes.NewReader(extBytes))
 
-			cipheringDisabledPresent, err := extReader.ReadBool()
+			CipheringDisabledPresent, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			// decode cipheringDisabled optional
-			if cipheringDisabledPresent {
-				ie.cipheringDisabled = new(PDCP_Config_cipheringDisabled)
-				if err = ie.cipheringDisabled.Decode(extReader); err != nil {
-					return utils.WrapError("Decode cipheringDisabled", err)
+			// decode CipheringDisabled optional
+			if CipheringDisabledPresent {
+				ie.CipheringDisabled = new(PDCP_Config_cipheringDisabled)
+				if err = ie.CipheringDisabled.Decode(extReader); err != nil {
+					return utils.WrapError("Decode CipheringDisabled", err)
 				}
 			}
 		}
@@ -228,40 +228,40 @@ func (ie *PDCP_Config) Decode(r *uper.UperReader) error {
 
 			extReader := uper.NewReader(bytes.NewReader(extBytes))
 
-			discardTimerExt_r16Present, err := extReader.ReadBool()
+			DiscardTimerExt_r16Present, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			moreThanTwoRLC_DRB_r16Present, err := extReader.ReadBool()
+			MoreThanTwoRLC_DRB_r16Present, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			ethernetHeaderCompression_r16Present, err := extReader.ReadBool()
+			EthernetHeaderCompression_r16Present, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			// decode discardTimerExt_r16 optional
-			if discardTimerExt_r16Present {
-				tmp_discardTimerExt_r16 := utils.SetupRelease[*DiscardTimerExt_r16]{}
-				if err = tmp_discardTimerExt_r16.Decode(extReader); err != nil {
-					return utils.WrapError("Decode discardTimerExt_r16", err)
+			// decode DiscardTimerExt_r16 optional
+			if DiscardTimerExt_r16Present {
+				tmp_DiscardTimerExt_r16 := utils.SetupRelease[*DiscardTimerExt_r16]{}
+				if err = tmp_DiscardTimerExt_r16.Decode(extReader); err != nil {
+					return utils.WrapError("Decode DiscardTimerExt_r16", err)
 				}
-				ie.discardTimerExt_r16 = tmp_discardTimerExt_r16.Setup
+				ie.DiscardTimerExt_r16 = tmp_DiscardTimerExt_r16.Setup
 			}
-			// decode moreThanTwoRLC_DRB_r16 optional
-			if moreThanTwoRLC_DRB_r16Present {
-				ie.moreThanTwoRLC_DRB_r16 = new(PDCP_Config_moreThanTwoRLC_DRB_r16)
-				if err = ie.moreThanTwoRLC_DRB_r16.Decode(extReader); err != nil {
-					return utils.WrapError("Decode moreThanTwoRLC_DRB_r16", err)
+			// decode MoreThanTwoRLC_DRB_r16 optional
+			if MoreThanTwoRLC_DRB_r16Present {
+				ie.MoreThanTwoRLC_DRB_r16 = new(PDCP_Config_moreThanTwoRLC_DRB_r16)
+				if err = ie.MoreThanTwoRLC_DRB_r16.Decode(extReader); err != nil {
+					return utils.WrapError("Decode MoreThanTwoRLC_DRB_r16", err)
 				}
 			}
-			// decode ethernetHeaderCompression_r16 optional
-			if ethernetHeaderCompression_r16Present {
-				tmp_ethernetHeaderCompression_r16 := utils.SetupRelease[*EthernetHeaderCompression_r16]{}
-				if err = tmp_ethernetHeaderCompression_r16.Decode(extReader); err != nil {
-					return utils.WrapError("Decode ethernetHeaderCompression_r16", err)
+			// decode EthernetHeaderCompression_r16 optional
+			if EthernetHeaderCompression_r16Present {
+				tmp_EthernetHeaderCompression_r16 := utils.SetupRelease[*EthernetHeaderCompression_r16]{}
+				if err = tmp_EthernetHeaderCompression_r16.Decode(extReader); err != nil {
+					return utils.WrapError("Decode EthernetHeaderCompression_r16", err)
 				}
-				ie.ethernetHeaderCompression_r16 = tmp_ethernetHeaderCompression_r16.Setup
+				ie.EthernetHeaderCompression_r16 = tmp_EthernetHeaderCompression_r16.Setup
 			}
 		}
 		// decode extension group 3
@@ -273,57 +273,57 @@ func (ie *PDCP_Config) Decode(r *uper.UperReader) error {
 
 			extReader := uper.NewReader(bytes.NewReader(extBytes))
 
-			survivalTimeStateSupport_r17Present, err := extReader.ReadBool()
+			SurvivalTimeStateSupport_r17Present, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			uplinkDataCompression_r17Present, err := extReader.ReadBool()
+			UplinkDataCompression_r17Present, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			discardTimerExt2_r17Present, err := extReader.ReadBool()
+			DiscardTimerExt2_r17Present, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			initialRX_DELIV_r17Present, err := extReader.ReadBool()
+			InitialRX_DELIV_r17Present, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			// decode survivalTimeStateSupport_r17 optional
-			if survivalTimeStateSupport_r17Present {
-				ie.survivalTimeStateSupport_r17 = new(PDCP_Config_survivalTimeStateSupport_r17)
-				if err = ie.survivalTimeStateSupport_r17.Decode(extReader); err != nil {
-					return utils.WrapError("Decode survivalTimeStateSupport_r17", err)
+			// decode SurvivalTimeStateSupport_r17 optional
+			if SurvivalTimeStateSupport_r17Present {
+				ie.SurvivalTimeStateSupport_r17 = new(PDCP_Config_survivalTimeStateSupport_r17)
+				if err = ie.SurvivalTimeStateSupport_r17.Decode(extReader); err != nil {
+					return utils.WrapError("Decode SurvivalTimeStateSupport_r17", err)
 				}
 			}
-			// decode uplinkDataCompression_r17 optional
-			if uplinkDataCompression_r17Present {
-				tmp_uplinkDataCompression_r17 := utils.SetupRelease[*UplinkDataCompression_r17]{}
-				if err = tmp_uplinkDataCompression_r17.Decode(extReader); err != nil {
-					return utils.WrapError("Decode uplinkDataCompression_r17", err)
+			// decode UplinkDataCompression_r17 optional
+			if UplinkDataCompression_r17Present {
+				tmp_UplinkDataCompression_r17 := utils.SetupRelease[*UplinkDataCompression_r17]{}
+				if err = tmp_UplinkDataCompression_r17.Decode(extReader); err != nil {
+					return utils.WrapError("Decode UplinkDataCompression_r17", err)
 				}
-				ie.uplinkDataCompression_r17 = tmp_uplinkDataCompression_r17.Setup
+				ie.UplinkDataCompression_r17 = tmp_UplinkDataCompression_r17.Setup
 			}
-			// decode discardTimerExt2_r17 optional
-			if discardTimerExt2_r17Present {
-				tmp_discardTimerExt2_r17 := utils.SetupRelease[*DiscardTimerExt2_r17]{}
-				if err = tmp_discardTimerExt2_r17.Decode(extReader); err != nil {
-					return utils.WrapError("Decode discardTimerExt2_r17", err)
+			// decode DiscardTimerExt2_r17 optional
+			if DiscardTimerExt2_r17Present {
+				tmp_DiscardTimerExt2_r17 := utils.SetupRelease[*DiscardTimerExt2_r17]{}
+				if err = tmp_DiscardTimerExt2_r17.Decode(extReader); err != nil {
+					return utils.WrapError("Decode DiscardTimerExt2_r17", err)
 				}
-				ie.discardTimerExt2_r17 = tmp_discardTimerExt2_r17.Setup
+				ie.DiscardTimerExt2_r17 = tmp_DiscardTimerExt2_r17.Setup
 			}
-			// decode initialRX_DELIV_r17 optional
-			if initialRX_DELIV_r17Present {
-				var tmp_bs_initialRX_DELIV_r17 []byte
-				var n_initialRX_DELIV_r17 uint
-				if tmp_bs_initialRX_DELIV_r17, n_initialRX_DELIV_r17, err = extReader.ReadBitString(&uper.Constraint{Lb: 32, Ub: 32}, false); err != nil {
-					return utils.WrapError("Decode initialRX_DELIV_r17", err)
+			// decode InitialRX_DELIV_r17 optional
+			if InitialRX_DELIV_r17Present {
+				var tmp_bs_InitialRX_DELIV_r17 []byte
+				var n_InitialRX_DELIV_r17 uint
+				if tmp_bs_InitialRX_DELIV_r17, n_InitialRX_DELIV_r17, err = extReader.ReadBitString(&uper.Constraint{Lb: 32, Ub: 32}, false); err != nil {
+					return utils.WrapError("Decode InitialRX_DELIV_r17", err)
 				}
 				tmp_bitstring := uper.BitString{
-					Bytes:   tmp_bs_initialRX_DELIV_r17,
-					NumBits: uint64(n_initialRX_DELIV_r17),
+					Bytes:   tmp_bs_InitialRX_DELIV_r17,
+					NumBits: uint64(n_InitialRX_DELIV_r17),
 				}
-				ie.initialRX_DELIV_r17 = &tmp_bitstring
+				ie.InitialRX_DELIV_r17 = &tmp_bitstring
 			}
 		}
 	}

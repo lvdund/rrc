@@ -6,35 +6,35 @@ import (
 )
 
 type FilterConfig struct {
-	filterCoefficientRSRP    FilterCoefficient `madatory`
-	filterCoefficientRSRQ    FilterCoefficient `madatory`
-	filterCoefficientRS_SINR FilterCoefficient `madatory`
+	FilterCoefficientRSRP    FilterCoefficient `madatory`
+	FilterCoefficientRSRQ    FilterCoefficient `madatory`
+	FilterCoefficientRS_SINR FilterCoefficient `madatory`
 }
 
 func (ie *FilterConfig) Encode(w *uper.UperWriter) error {
 	var err error
-	if err = ie.filterCoefficientRSRP.Encode(w); err != nil {
-		return utils.WrapError("Encode filterCoefficientRSRP", err)
+	if err = ie.FilterCoefficientRSRP.Encode(w); err != nil {
+		return utils.WrapError("Encode FilterCoefficientRSRP", err)
 	}
-	if err = ie.filterCoefficientRSRQ.Encode(w); err != nil {
-		return utils.WrapError("Encode filterCoefficientRSRQ", err)
+	if err = ie.FilterCoefficientRSRQ.Encode(w); err != nil {
+		return utils.WrapError("Encode FilterCoefficientRSRQ", err)
 	}
-	if err = ie.filterCoefficientRS_SINR.Encode(w); err != nil {
-		return utils.WrapError("Encode filterCoefficientRS_SINR", err)
+	if err = ie.FilterCoefficientRS_SINR.Encode(w); err != nil {
+		return utils.WrapError("Encode FilterCoefficientRS_SINR", err)
 	}
 	return nil
 }
 
 func (ie *FilterConfig) Decode(r *uper.UperReader) error {
 	var err error
-	if err = ie.filterCoefficientRSRP.Decode(r); err != nil {
-		return utils.WrapError("Decode filterCoefficientRSRP", err)
+	if err = ie.FilterCoefficientRSRP.Decode(r); err != nil {
+		return utils.WrapError("Decode FilterCoefficientRSRP", err)
 	}
-	if err = ie.filterCoefficientRSRQ.Decode(r); err != nil {
-		return utils.WrapError("Decode filterCoefficientRSRQ", err)
+	if err = ie.FilterCoefficientRSRQ.Decode(r); err != nil {
+		return utils.WrapError("Decode FilterCoefficientRSRQ", err)
 	}
-	if err = ie.filterCoefficientRS_SINR.Decode(r); err != nil {
-		return utils.WrapError("Decode filterCoefficientRS_SINR", err)
+	if err = ie.FilterCoefficientRS_SINR.Decode(r); err != nil {
+		return utils.WrapError("Decode FilterCoefficientRS_SINR", err)
 	}
 	return nil
 }

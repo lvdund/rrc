@@ -9,14 +9,14 @@ import (
 
 const (
 	RRCSetup_CriticalExtensions_Choice_nothing uint64 = iota
-	RRCSetup_CriticalExtensions_Choice_rrcSetup
-	RRCSetup_CriticalExtensions_Choice_criticalExtensionsFuture
+	RRCSetup_CriticalExtensions_Choice_RrcSetup
+	RRCSetup_CriticalExtensions_Choice_CriticalExtensionsFuture
 )
 
 type RRCSetup_CriticalExtensions struct {
 	Choice                   uint64
-	rrcSetup                 *RRCSetup_IEs
-	criticalExtensionsFuture interface{} `madatory`
+	RrcSetup                 *RRCSetup_IEs
+	CriticalExtensionsFuture interface{} `madatory`
 }
 
 func (ie *RRCSetup_CriticalExtensions) Encode(w *uper.UperWriter) error {
@@ -25,11 +25,11 @@ func (ie *RRCSetup_CriticalExtensions) Encode(w *uper.UperWriter) error {
 		return err
 	}
 	switch ie.Choice {
-	case RRCSetup_CriticalExtensions_Choice_rrcSetup:
-		if err = ie.rrcSetup.Encode(w); err != nil {
-			err = utils.WrapError("Encode rrcSetup", err)
+	case RRCSetup_CriticalExtensions_Choice_RrcSetup:
+		if err = ie.RrcSetup.Encode(w); err != nil {
+			err = utils.WrapError("Encode RrcSetup", err)
 		}
-	case RRCSetup_CriticalExtensions_Choice_criticalExtensionsFuture:
+	case RRCSetup_CriticalExtensions_Choice_CriticalExtensionsFuture:
 		// interface{} field of choice - nothing to encode
 	default:
 		err = fmt.Errorf("invalid choice: %d", ie.Choice)
@@ -43,12 +43,12 @@ func (ie *RRCSetup_CriticalExtensions) Decode(r *uper.UperReader) error {
 		return err
 	}
 	switch ie.Choice {
-	case RRCSetup_CriticalExtensions_Choice_rrcSetup:
-		ie.rrcSetup = new(RRCSetup_IEs)
-		if err = ie.rrcSetup.Decode(r); err != nil {
-			return utils.WrapError("Decode rrcSetup", err)
+	case RRCSetup_CriticalExtensions_Choice_RrcSetup:
+		ie.RrcSetup = new(RRCSetup_IEs)
+		if err = ie.RrcSetup.Decode(r); err != nil {
+			return utils.WrapError("Decode RrcSetup", err)
 		}
-	case RRCSetup_CriticalExtensions_Choice_criticalExtensionsFuture:
+	case RRCSetup_CriticalExtensions_Choice_CriticalExtensionsFuture:
 		// interface{} field of choice - nothing to decode
 	default:
 		return fmt.Errorf("invalid choice: %d", ie.Choice)

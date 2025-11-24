@@ -8,46 +8,46 @@ import (
 )
 
 type PUSCH_ServingCellConfig struct {
-	codeBlockGroupTransmission     *PUSCH_CodeBlockGroupTransmission                       `optional,setuprelease`
-	rateMatching                   *PUSCH_ServingCellConfig_rateMatching                   `optional`
-	xOverhead                      *PUSCH_ServingCellConfig_xOverhead                      `optional`
-	maxMIMO_Layers                 *int64                                                  `lb:1,ub:4,optional,ext-1`
-	processingType2Enabled         *bool                                                   `optional,ext-1`
-	maxMIMO_LayersDCI_0_2_r16      *MaxMIMO_LayersDCI_0_2_r16                              `optional,ext-2,setuprelease`
-	nrofHARQ_ProcessesForPUSCH_r17 *PUSCH_ServingCellConfig_nrofHARQ_ProcessesForPUSCH_r17 `optional,ext-3`
-	uplinkHARQ_mode_r17            *UplinkHARQ_mode_r17                                    `optional,ext-3,setuprelease`
+	CodeBlockGroupTransmission     *PUSCH_CodeBlockGroupTransmission                       `optional,setuprelease`
+	RateMatching                   *PUSCH_ServingCellConfig_rateMatching                   `optional`
+	XOverhead                      *PUSCH_ServingCellConfig_xOverhead                      `optional`
+	MaxMIMO_Layers                 *int64                                                  `lb:1,ub:4,optional,ext-1`
+	ProcessingType2Enabled         *bool                                                   `optional,ext-1`
+	MaxMIMO_LayersDCI_0_2_r16      *MaxMIMO_LayersDCI_0_2_r16                              `optional,ext-2,setuprelease`
+	NrofHARQ_ProcessesForPUSCH_r17 *PUSCH_ServingCellConfig_nrofHARQ_ProcessesForPUSCH_r17 `optional,ext-3`
+	UplinkHARQ_mode_r17            *UplinkHARQ_mode_r17                                    `optional,ext-3,setuprelease`
 }
 
 func (ie *PUSCH_ServingCellConfig) Encode(w *uper.UperWriter) error {
 	var err error
-	hasExtensions := ie.maxMIMO_Layers != nil || ie.processingType2Enabled != nil || ie.maxMIMO_LayersDCI_0_2_r16 != nil || ie.nrofHARQ_ProcessesForPUSCH_r17 != nil || ie.uplinkHARQ_mode_r17 != nil
-	preambleBits := []bool{hasExtensions, ie.codeBlockGroupTransmission != nil, ie.rateMatching != nil, ie.xOverhead != nil}
+	hasExtensions := ie.MaxMIMO_Layers != nil || ie.ProcessingType2Enabled != nil || ie.MaxMIMO_LayersDCI_0_2_r16 != nil || ie.NrofHARQ_ProcessesForPUSCH_r17 != nil || ie.UplinkHARQ_mode_r17 != nil
+	preambleBits := []bool{hasExtensions, ie.CodeBlockGroupTransmission != nil, ie.RateMatching != nil, ie.XOverhead != nil}
 	for _, bit := range preambleBits {
 		if err = w.WriteBool(bit); err != nil {
 			return err
 		}
 	}
-	if ie.codeBlockGroupTransmission != nil {
-		tmp_codeBlockGroupTransmission := utils.SetupRelease[*PUSCH_CodeBlockGroupTransmission]{
-			Setup: ie.codeBlockGroupTransmission,
+	if ie.CodeBlockGroupTransmission != nil {
+		tmp_CodeBlockGroupTransmission := utils.SetupRelease[*PUSCH_CodeBlockGroupTransmission]{
+			Setup: ie.CodeBlockGroupTransmission,
 		}
-		if err = tmp_codeBlockGroupTransmission.Encode(w); err != nil {
-			return utils.WrapError("Encode codeBlockGroupTransmission", err)
-		}
-	}
-	if ie.rateMatching != nil {
-		if err = ie.rateMatching.Encode(w); err != nil {
-			return utils.WrapError("Encode rateMatching", err)
+		if err = tmp_CodeBlockGroupTransmission.Encode(w); err != nil {
+			return utils.WrapError("Encode CodeBlockGroupTransmission", err)
 		}
 	}
-	if ie.xOverhead != nil {
-		if err = ie.xOverhead.Encode(w); err != nil {
-			return utils.WrapError("Encode xOverhead", err)
+	if ie.RateMatching != nil {
+		if err = ie.RateMatching.Encode(w); err != nil {
+			return utils.WrapError("Encode RateMatching", err)
+		}
+	}
+	if ie.XOverhead != nil {
+		if err = ie.XOverhead.Encode(w); err != nil {
+			return utils.WrapError("Encode XOverhead", err)
 		}
 	}
 	if hasExtensions {
 		// Extension bitmap: 3 bits for 3 extension groups
-		extBitmap := []bool{ie.maxMIMO_Layers != nil || ie.processingType2Enabled != nil, ie.maxMIMO_LayersDCI_0_2_r16 != nil, ie.nrofHARQ_ProcessesForPUSCH_r17 != nil || ie.uplinkHARQ_mode_r17 != nil}
+		extBitmap := []bool{ie.MaxMIMO_Layers != nil || ie.ProcessingType2Enabled != nil, ie.MaxMIMO_LayersDCI_0_2_r16 != nil, ie.NrofHARQ_ProcessesForPUSCH_r17 != nil || ie.UplinkHARQ_mode_r17 != nil}
 		if err := w.WriteExtBitMap(extBitmap); err != nil {
 			return utils.WrapError("WriteExtBitMap PUSCH_ServingCellConfig", err)
 		}
@@ -58,23 +58,23 @@ func (ie *PUSCH_ServingCellConfig) Encode(w *uper.UperWriter) error {
 			extWriter := uper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 1
-			optionals_ext_1 := []bool{ie.maxMIMO_Layers != nil, ie.processingType2Enabled != nil}
+			optionals_ext_1 := []bool{ie.MaxMIMO_Layers != nil, ie.ProcessingType2Enabled != nil}
 			for _, bit := range optionals_ext_1 {
 				if err := extWriter.WriteBool(bit); err != nil {
 					return err
 				}
 			}
 
-			// encode maxMIMO_Layers optional
-			if ie.maxMIMO_Layers != nil {
-				if err = extWriter.WriteInteger(*ie.maxMIMO_Layers, &uper.Constraint{Lb: 1, Ub: 4}, false); err != nil {
-					return utils.WrapError("Encode maxMIMO_Layers", err)
+			// encode MaxMIMO_Layers optional
+			if ie.MaxMIMO_Layers != nil {
+				if err = extWriter.WriteInteger(*ie.MaxMIMO_Layers, &uper.Constraint{Lb: 1, Ub: 4}, false); err != nil {
+					return utils.WrapError("Encode MaxMIMO_Layers", err)
 				}
 			}
-			// encode processingType2Enabled optional
-			if ie.processingType2Enabled != nil {
-				if err = extWriter.WriteBoolean(*ie.processingType2Enabled); err != nil {
-					return utils.WrapError("Encode processingType2Enabled", err)
+			// encode ProcessingType2Enabled optional
+			if ie.ProcessingType2Enabled != nil {
+				if err = extWriter.WriteBoolean(*ie.ProcessingType2Enabled); err != nil {
+					return utils.WrapError("Encode ProcessingType2Enabled", err)
 				}
 			}
 
@@ -93,20 +93,20 @@ func (ie *PUSCH_ServingCellConfig) Encode(w *uper.UperWriter) error {
 			extWriter := uper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 2
-			optionals_ext_2 := []bool{ie.maxMIMO_LayersDCI_0_2_r16 != nil}
+			optionals_ext_2 := []bool{ie.MaxMIMO_LayersDCI_0_2_r16 != nil}
 			for _, bit := range optionals_ext_2 {
 				if err := extWriter.WriteBool(bit); err != nil {
 					return err
 				}
 			}
 
-			// encode maxMIMO_LayersDCI_0_2_r16 optional
-			if ie.maxMIMO_LayersDCI_0_2_r16 != nil {
-				tmp_maxMIMO_LayersDCI_0_2_r16 := utils.SetupRelease[*MaxMIMO_LayersDCI_0_2_r16]{
-					Setup: ie.maxMIMO_LayersDCI_0_2_r16,
+			// encode MaxMIMO_LayersDCI_0_2_r16 optional
+			if ie.MaxMIMO_LayersDCI_0_2_r16 != nil {
+				tmp_MaxMIMO_LayersDCI_0_2_r16 := utils.SetupRelease[*MaxMIMO_LayersDCI_0_2_r16]{
+					Setup: ie.MaxMIMO_LayersDCI_0_2_r16,
 				}
-				if err = tmp_maxMIMO_LayersDCI_0_2_r16.Encode(extWriter); err != nil {
-					return utils.WrapError("Encode maxMIMO_LayersDCI_0_2_r16", err)
+				if err = tmp_MaxMIMO_LayersDCI_0_2_r16.Encode(extWriter); err != nil {
+					return utils.WrapError("Encode MaxMIMO_LayersDCI_0_2_r16", err)
 				}
 			}
 
@@ -125,26 +125,26 @@ func (ie *PUSCH_ServingCellConfig) Encode(w *uper.UperWriter) error {
 			extWriter := uper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 3
-			optionals_ext_3 := []bool{ie.nrofHARQ_ProcessesForPUSCH_r17 != nil, ie.uplinkHARQ_mode_r17 != nil}
+			optionals_ext_3 := []bool{ie.NrofHARQ_ProcessesForPUSCH_r17 != nil, ie.UplinkHARQ_mode_r17 != nil}
 			for _, bit := range optionals_ext_3 {
 				if err := extWriter.WriteBool(bit); err != nil {
 					return err
 				}
 			}
 
-			// encode nrofHARQ_ProcessesForPUSCH_r17 optional
-			if ie.nrofHARQ_ProcessesForPUSCH_r17 != nil {
-				if err = ie.nrofHARQ_ProcessesForPUSCH_r17.Encode(extWriter); err != nil {
-					return utils.WrapError("Encode nrofHARQ_ProcessesForPUSCH_r17", err)
+			// encode NrofHARQ_ProcessesForPUSCH_r17 optional
+			if ie.NrofHARQ_ProcessesForPUSCH_r17 != nil {
+				if err = ie.NrofHARQ_ProcessesForPUSCH_r17.Encode(extWriter); err != nil {
+					return utils.WrapError("Encode NrofHARQ_ProcessesForPUSCH_r17", err)
 				}
 			}
-			// encode uplinkHARQ_mode_r17 optional
-			if ie.uplinkHARQ_mode_r17 != nil {
-				tmp_uplinkHARQ_mode_r17 := utils.SetupRelease[*UplinkHARQ_mode_r17]{
-					Setup: ie.uplinkHARQ_mode_r17,
+			// encode UplinkHARQ_mode_r17 optional
+			if ie.UplinkHARQ_mode_r17 != nil {
+				tmp_UplinkHARQ_mode_r17 := utils.SetupRelease[*UplinkHARQ_mode_r17]{
+					Setup: ie.UplinkHARQ_mode_r17,
 				}
-				if err = tmp_uplinkHARQ_mode_r17.Encode(extWriter); err != nil {
-					return utils.WrapError("Encode uplinkHARQ_mode_r17", err)
+				if err = tmp_UplinkHARQ_mode_r17.Encode(extWriter); err != nil {
+					return utils.WrapError("Encode UplinkHARQ_mode_r17", err)
 				}
 			}
 
@@ -166,35 +166,35 @@ func (ie *PUSCH_ServingCellConfig) Decode(r *uper.UperReader) error {
 	if extensionBit, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var codeBlockGroupTransmissionPresent bool
-	if codeBlockGroupTransmissionPresent, err = r.ReadBool(); err != nil {
+	var CodeBlockGroupTransmissionPresent bool
+	if CodeBlockGroupTransmissionPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var rateMatchingPresent bool
-	if rateMatchingPresent, err = r.ReadBool(); err != nil {
+	var RateMatchingPresent bool
+	if RateMatchingPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var xOverheadPresent bool
-	if xOverheadPresent, err = r.ReadBool(); err != nil {
+	var XOverheadPresent bool
+	if XOverheadPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	if codeBlockGroupTransmissionPresent {
-		tmp_codeBlockGroupTransmission := utils.SetupRelease[*PUSCH_CodeBlockGroupTransmission]{}
-		if err = tmp_codeBlockGroupTransmission.Decode(r); err != nil {
-			return utils.WrapError("Decode codeBlockGroupTransmission", err)
+	if CodeBlockGroupTransmissionPresent {
+		tmp_CodeBlockGroupTransmission := utils.SetupRelease[*PUSCH_CodeBlockGroupTransmission]{}
+		if err = tmp_CodeBlockGroupTransmission.Decode(r); err != nil {
+			return utils.WrapError("Decode CodeBlockGroupTransmission", err)
 		}
-		ie.codeBlockGroupTransmission = tmp_codeBlockGroupTransmission.Setup
+		ie.CodeBlockGroupTransmission = tmp_CodeBlockGroupTransmission.Setup
 	}
-	if rateMatchingPresent {
-		ie.rateMatching = new(PUSCH_ServingCellConfig_rateMatching)
-		if err = ie.rateMatching.Decode(r); err != nil {
-			return utils.WrapError("Decode rateMatching", err)
+	if RateMatchingPresent {
+		ie.RateMatching = new(PUSCH_ServingCellConfig_rateMatching)
+		if err = ie.RateMatching.Decode(r); err != nil {
+			return utils.WrapError("Decode RateMatching", err)
 		}
 	}
-	if xOverheadPresent {
-		ie.xOverhead = new(PUSCH_ServingCellConfig_xOverhead)
-		if err = ie.xOverhead.Decode(r); err != nil {
-			return utils.WrapError("Decode xOverhead", err)
+	if XOverheadPresent {
+		ie.XOverhead = new(PUSCH_ServingCellConfig_xOverhead)
+		if err = ie.XOverhead.Decode(r); err != nil {
+			return utils.WrapError("Decode XOverhead", err)
 		}
 	}
 
@@ -214,29 +214,29 @@ func (ie *PUSCH_ServingCellConfig) Decode(r *uper.UperReader) error {
 
 			extReader := uper.NewReader(bytes.NewReader(extBytes))
 
-			maxMIMO_LayersPresent, err := extReader.ReadBool()
+			MaxMIMO_LayersPresent, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			processingType2EnabledPresent, err := extReader.ReadBool()
+			ProcessingType2EnabledPresent, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			// decode maxMIMO_Layers optional
-			if maxMIMO_LayersPresent {
-				var tmp_int_maxMIMO_Layers int64
-				if tmp_int_maxMIMO_Layers, err = extReader.ReadInteger(&uper.Constraint{Lb: 1, Ub: 4}, false); err != nil {
-					return utils.WrapError("Decode maxMIMO_Layers", err)
+			// decode MaxMIMO_Layers optional
+			if MaxMIMO_LayersPresent {
+				var tmp_int_MaxMIMO_Layers int64
+				if tmp_int_MaxMIMO_Layers, err = extReader.ReadInteger(&uper.Constraint{Lb: 1, Ub: 4}, false); err != nil {
+					return utils.WrapError("Decode MaxMIMO_Layers", err)
 				}
-				ie.maxMIMO_Layers = &tmp_int_maxMIMO_Layers
+				ie.MaxMIMO_Layers = &tmp_int_MaxMIMO_Layers
 			}
-			// decode processingType2Enabled optional
-			if processingType2EnabledPresent {
-				var tmp_bool_processingType2Enabled bool
-				if tmp_bool_processingType2Enabled, err = extReader.ReadBoolean(); err != nil {
-					return utils.WrapError("Decode processingType2Enabled", err)
+			// decode ProcessingType2Enabled optional
+			if ProcessingType2EnabledPresent {
+				var tmp_bool_ProcessingType2Enabled bool
+				if tmp_bool_ProcessingType2Enabled, err = extReader.ReadBoolean(); err != nil {
+					return utils.WrapError("Decode ProcessingType2Enabled", err)
 				}
-				ie.processingType2Enabled = &tmp_bool_processingType2Enabled
+				ie.ProcessingType2Enabled = &tmp_bool_ProcessingType2Enabled
 			}
 		}
 		// decode extension group 2
@@ -248,17 +248,17 @@ func (ie *PUSCH_ServingCellConfig) Decode(r *uper.UperReader) error {
 
 			extReader := uper.NewReader(bytes.NewReader(extBytes))
 
-			maxMIMO_LayersDCI_0_2_r16Present, err := extReader.ReadBool()
+			MaxMIMO_LayersDCI_0_2_r16Present, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			// decode maxMIMO_LayersDCI_0_2_r16 optional
-			if maxMIMO_LayersDCI_0_2_r16Present {
-				tmp_maxMIMO_LayersDCI_0_2_r16 := utils.SetupRelease[*MaxMIMO_LayersDCI_0_2_r16]{}
-				if err = tmp_maxMIMO_LayersDCI_0_2_r16.Decode(extReader); err != nil {
-					return utils.WrapError("Decode maxMIMO_LayersDCI_0_2_r16", err)
+			// decode MaxMIMO_LayersDCI_0_2_r16 optional
+			if MaxMIMO_LayersDCI_0_2_r16Present {
+				tmp_MaxMIMO_LayersDCI_0_2_r16 := utils.SetupRelease[*MaxMIMO_LayersDCI_0_2_r16]{}
+				if err = tmp_MaxMIMO_LayersDCI_0_2_r16.Decode(extReader); err != nil {
+					return utils.WrapError("Decode MaxMIMO_LayersDCI_0_2_r16", err)
 				}
-				ie.maxMIMO_LayersDCI_0_2_r16 = tmp_maxMIMO_LayersDCI_0_2_r16.Setup
+				ie.MaxMIMO_LayersDCI_0_2_r16 = tmp_MaxMIMO_LayersDCI_0_2_r16.Setup
 			}
 		}
 		// decode extension group 3
@@ -270,28 +270,28 @@ func (ie *PUSCH_ServingCellConfig) Decode(r *uper.UperReader) error {
 
 			extReader := uper.NewReader(bytes.NewReader(extBytes))
 
-			nrofHARQ_ProcessesForPUSCH_r17Present, err := extReader.ReadBool()
+			NrofHARQ_ProcessesForPUSCH_r17Present, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			uplinkHARQ_mode_r17Present, err := extReader.ReadBool()
+			UplinkHARQ_mode_r17Present, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			// decode nrofHARQ_ProcessesForPUSCH_r17 optional
-			if nrofHARQ_ProcessesForPUSCH_r17Present {
-				ie.nrofHARQ_ProcessesForPUSCH_r17 = new(PUSCH_ServingCellConfig_nrofHARQ_ProcessesForPUSCH_r17)
-				if err = ie.nrofHARQ_ProcessesForPUSCH_r17.Decode(extReader); err != nil {
-					return utils.WrapError("Decode nrofHARQ_ProcessesForPUSCH_r17", err)
+			// decode NrofHARQ_ProcessesForPUSCH_r17 optional
+			if NrofHARQ_ProcessesForPUSCH_r17Present {
+				ie.NrofHARQ_ProcessesForPUSCH_r17 = new(PUSCH_ServingCellConfig_nrofHARQ_ProcessesForPUSCH_r17)
+				if err = ie.NrofHARQ_ProcessesForPUSCH_r17.Decode(extReader); err != nil {
+					return utils.WrapError("Decode NrofHARQ_ProcessesForPUSCH_r17", err)
 				}
 			}
-			// decode uplinkHARQ_mode_r17 optional
-			if uplinkHARQ_mode_r17Present {
-				tmp_uplinkHARQ_mode_r17 := utils.SetupRelease[*UplinkHARQ_mode_r17]{}
-				if err = tmp_uplinkHARQ_mode_r17.Decode(extReader); err != nil {
-					return utils.WrapError("Decode uplinkHARQ_mode_r17", err)
+			// decode UplinkHARQ_mode_r17 optional
+			if UplinkHARQ_mode_r17Present {
+				tmp_UplinkHARQ_mode_r17 := utils.SetupRelease[*UplinkHARQ_mode_r17]{}
+				if err = tmp_UplinkHARQ_mode_r17.Decode(extReader); err != nil {
+					return utils.WrapError("Decode UplinkHARQ_mode_r17", err)
 				}
-				ie.uplinkHARQ_mode_r17 = tmp_uplinkHARQ_mode_r17.Setup
+				ie.UplinkHARQ_mode_r17 = tmp_UplinkHARQ_mode_r17.Setup
 			}
 		}
 	}

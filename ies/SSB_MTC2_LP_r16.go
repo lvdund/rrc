@@ -6,54 +6,54 @@ import (
 )
 
 type SSB_MTC2_LP_r16 struct {
-	pci_List    []PhysCellId                `lb:1,ub:maxNrofPCIsPerSMTC,optional`
-	periodicity SSB_MTC2_LP_r16_periodicity `madatory`
+	Pci_List    []PhysCellId                `lb:1,ub:maxNrofPCIsPerSMTC,optional`
+	Periodicity SSB_MTC2_LP_r16_periodicity `madatory`
 }
 
 func (ie *SSB_MTC2_LP_r16) Encode(w *uper.UperWriter) error {
 	var err error
-	preambleBits := []bool{len(ie.pci_List) > 0}
+	preambleBits := []bool{len(ie.Pci_List) > 0}
 	for _, bit := range preambleBits {
 		if err = w.WriteBool(bit); err != nil {
 			return err
 		}
 	}
-	if len(ie.pci_List) > 0 {
-		tmp_pci_List := utils.NewSequence[*PhysCellId]([]*PhysCellId{}, uper.Constraint{Lb: 1, Ub: maxNrofPCIsPerSMTC}, false)
-		for _, i := range ie.pci_List {
-			tmp_pci_List.Value = append(tmp_pci_List.Value, &i)
+	if len(ie.Pci_List) > 0 {
+		tmp_Pci_List := utils.NewSequence[*PhysCellId]([]*PhysCellId{}, uper.Constraint{Lb: 1, Ub: maxNrofPCIsPerSMTC}, false)
+		for _, i := range ie.Pci_List {
+			tmp_Pci_List.Value = append(tmp_Pci_List.Value, &i)
 		}
-		if err = tmp_pci_List.Encode(w); err != nil {
-			return utils.WrapError("Encode pci_List", err)
+		if err = tmp_Pci_List.Encode(w); err != nil {
+			return utils.WrapError("Encode Pci_List", err)
 		}
 	}
-	if err = ie.periodicity.Encode(w); err != nil {
-		return utils.WrapError("Encode periodicity", err)
+	if err = ie.Periodicity.Encode(w); err != nil {
+		return utils.WrapError("Encode Periodicity", err)
 	}
 	return nil
 }
 
 func (ie *SSB_MTC2_LP_r16) Decode(r *uper.UperReader) error {
 	var err error
-	var pci_ListPresent bool
-	if pci_ListPresent, err = r.ReadBool(); err != nil {
+	var Pci_ListPresent bool
+	if Pci_ListPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	if pci_ListPresent {
-		tmp_pci_List := utils.NewSequence[*PhysCellId]([]*PhysCellId{}, uper.Constraint{Lb: 1, Ub: maxNrofPCIsPerSMTC}, false)
-		fn_pci_List := func() *PhysCellId {
+	if Pci_ListPresent {
+		tmp_Pci_List := utils.NewSequence[*PhysCellId]([]*PhysCellId{}, uper.Constraint{Lb: 1, Ub: maxNrofPCIsPerSMTC}, false)
+		fn_Pci_List := func() *PhysCellId {
 			return new(PhysCellId)
 		}
-		if err = tmp_pci_List.Decode(r, fn_pci_List); err != nil {
-			return utils.WrapError("Decode pci_List", err)
+		if err = tmp_Pci_List.Decode(r, fn_Pci_List); err != nil {
+			return utils.WrapError("Decode Pci_List", err)
 		}
-		ie.pci_List = []PhysCellId{}
-		for _, i := range tmp_pci_List.Value {
-			ie.pci_List = append(ie.pci_List, *i)
+		ie.Pci_List = []PhysCellId{}
+		for _, i := range tmp_Pci_List.Value {
+			ie.Pci_List = append(ie.Pci_List, *i)
 		}
 	}
-	if err = ie.periodicity.Decode(r); err != nil {
-		return utils.WrapError("Decode periodicity", err)
+	if err = ie.Periodicity.Decode(r); err != nil {
+		return utils.WrapError("Decode Periodicity", err)
 	}
 	return nil
 }

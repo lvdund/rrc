@@ -6,36 +6,36 @@ import (
 )
 
 type BWP_DownlinkCommon struct {
-	genericParameters  BWP                 `madatory`
-	pdcch_ConfigCommon *PDCCH_ConfigCommon `optional,setuprelease`
-	pdsch_ConfigCommon *PDSCH_ConfigCommon `optional,setuprelease`
+	GenericParameters  BWP                 `madatory`
+	Pdcch_ConfigCommon *PDCCH_ConfigCommon `optional,setuprelease`
+	Pdsch_ConfigCommon *PDSCH_ConfigCommon `optional,setuprelease`
 }
 
 func (ie *BWP_DownlinkCommon) Encode(w *uper.UperWriter) error {
 	var err error
-	preambleBits := []bool{ie.pdcch_ConfigCommon != nil, ie.pdsch_ConfigCommon != nil}
+	preambleBits := []bool{ie.Pdcch_ConfigCommon != nil, ie.Pdsch_ConfigCommon != nil}
 	for _, bit := range preambleBits {
 		if err = w.WriteBool(bit); err != nil {
 			return err
 		}
 	}
-	if err = ie.genericParameters.Encode(w); err != nil {
-		return utils.WrapError("Encode genericParameters", err)
+	if err = ie.GenericParameters.Encode(w); err != nil {
+		return utils.WrapError("Encode GenericParameters", err)
 	}
-	if ie.pdcch_ConfigCommon != nil {
-		tmp_pdcch_ConfigCommon := utils.SetupRelease[*PDCCH_ConfigCommon]{
-			Setup: ie.pdcch_ConfigCommon,
+	if ie.Pdcch_ConfigCommon != nil {
+		tmp_Pdcch_ConfigCommon := utils.SetupRelease[*PDCCH_ConfigCommon]{
+			Setup: ie.Pdcch_ConfigCommon,
 		}
-		if err = tmp_pdcch_ConfigCommon.Encode(w); err != nil {
-			return utils.WrapError("Encode pdcch_ConfigCommon", err)
+		if err = tmp_Pdcch_ConfigCommon.Encode(w); err != nil {
+			return utils.WrapError("Encode Pdcch_ConfigCommon", err)
 		}
 	}
-	if ie.pdsch_ConfigCommon != nil {
-		tmp_pdsch_ConfigCommon := utils.SetupRelease[*PDSCH_ConfigCommon]{
-			Setup: ie.pdsch_ConfigCommon,
+	if ie.Pdsch_ConfigCommon != nil {
+		tmp_Pdsch_ConfigCommon := utils.SetupRelease[*PDSCH_ConfigCommon]{
+			Setup: ie.Pdsch_ConfigCommon,
 		}
-		if err = tmp_pdsch_ConfigCommon.Encode(w); err != nil {
-			return utils.WrapError("Encode pdsch_ConfigCommon", err)
+		if err = tmp_Pdsch_ConfigCommon.Encode(w); err != nil {
+			return utils.WrapError("Encode Pdsch_ConfigCommon", err)
 		}
 	}
 	return nil
@@ -43,30 +43,30 @@ func (ie *BWP_DownlinkCommon) Encode(w *uper.UperWriter) error {
 
 func (ie *BWP_DownlinkCommon) Decode(r *uper.UperReader) error {
 	var err error
-	var pdcch_ConfigCommonPresent bool
-	if pdcch_ConfigCommonPresent, err = r.ReadBool(); err != nil {
+	var Pdcch_ConfigCommonPresent bool
+	if Pdcch_ConfigCommonPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var pdsch_ConfigCommonPresent bool
-	if pdsch_ConfigCommonPresent, err = r.ReadBool(); err != nil {
+	var Pdsch_ConfigCommonPresent bool
+	if Pdsch_ConfigCommonPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	if err = ie.genericParameters.Decode(r); err != nil {
-		return utils.WrapError("Decode genericParameters", err)
+	if err = ie.GenericParameters.Decode(r); err != nil {
+		return utils.WrapError("Decode GenericParameters", err)
 	}
-	if pdcch_ConfigCommonPresent {
-		tmp_pdcch_ConfigCommon := utils.SetupRelease[*PDCCH_ConfigCommon]{}
-		if err = tmp_pdcch_ConfigCommon.Decode(r); err != nil {
-			return utils.WrapError("Decode pdcch_ConfigCommon", err)
+	if Pdcch_ConfigCommonPresent {
+		tmp_Pdcch_ConfigCommon := utils.SetupRelease[*PDCCH_ConfigCommon]{}
+		if err = tmp_Pdcch_ConfigCommon.Decode(r); err != nil {
+			return utils.WrapError("Decode Pdcch_ConfigCommon", err)
 		}
-		ie.pdcch_ConfigCommon = tmp_pdcch_ConfigCommon.Setup
+		ie.Pdcch_ConfigCommon = tmp_Pdcch_ConfigCommon.Setup
 	}
-	if pdsch_ConfigCommonPresent {
-		tmp_pdsch_ConfigCommon := utils.SetupRelease[*PDSCH_ConfigCommon]{}
-		if err = tmp_pdsch_ConfigCommon.Decode(r); err != nil {
-			return utils.WrapError("Decode pdsch_ConfigCommon", err)
+	if Pdsch_ConfigCommonPresent {
+		tmp_Pdsch_ConfigCommon := utils.SetupRelease[*PDSCH_ConfigCommon]{}
+		if err = tmp_Pdsch_ConfigCommon.Decode(r); err != nil {
+			return utils.WrapError("Decode Pdsch_ConfigCommon", err)
 		}
-		ie.pdsch_ConfigCommon = tmp_pdsch_ConfigCommon.Setup
+		ie.Pdsch_ConfigCommon = tmp_Pdsch_ConfigCommon.Setup
 	}
 	return nil
 }

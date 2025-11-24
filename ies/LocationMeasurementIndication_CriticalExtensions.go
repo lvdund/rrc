@@ -9,14 +9,14 @@ import (
 
 const (
 	LocationMeasurementIndication_CriticalExtensions_Choice_nothing uint64 = iota
-	LocationMeasurementIndication_CriticalExtensions_Choice_locationMeasurementIndication
-	LocationMeasurementIndication_CriticalExtensions_Choice_criticalExtensionsFuture
+	LocationMeasurementIndication_CriticalExtensions_Choice_LocationMeasurementIndication
+	LocationMeasurementIndication_CriticalExtensions_Choice_CriticalExtensionsFuture
 )
 
 type LocationMeasurementIndication_CriticalExtensions struct {
 	Choice                        uint64
-	locationMeasurementIndication *LocationMeasurementIndication_IEs
-	criticalExtensionsFuture      interface{} `madatory`
+	LocationMeasurementIndication *LocationMeasurementIndication_IEs
+	CriticalExtensionsFuture      interface{} `madatory`
 }
 
 func (ie *LocationMeasurementIndication_CriticalExtensions) Encode(w *uper.UperWriter) error {
@@ -25,11 +25,11 @@ func (ie *LocationMeasurementIndication_CriticalExtensions) Encode(w *uper.UperW
 		return err
 	}
 	switch ie.Choice {
-	case LocationMeasurementIndication_CriticalExtensions_Choice_locationMeasurementIndication:
-		if err = ie.locationMeasurementIndication.Encode(w); err != nil {
-			err = utils.WrapError("Encode locationMeasurementIndication", err)
+	case LocationMeasurementIndication_CriticalExtensions_Choice_LocationMeasurementIndication:
+		if err = ie.LocationMeasurementIndication.Encode(w); err != nil {
+			err = utils.WrapError("Encode LocationMeasurementIndication", err)
 		}
-	case LocationMeasurementIndication_CriticalExtensions_Choice_criticalExtensionsFuture:
+	case LocationMeasurementIndication_CriticalExtensions_Choice_CriticalExtensionsFuture:
 		// interface{} field of choice - nothing to encode
 	default:
 		err = fmt.Errorf("invalid choice: %d", ie.Choice)
@@ -43,12 +43,12 @@ func (ie *LocationMeasurementIndication_CriticalExtensions) Decode(r *uper.UperR
 		return err
 	}
 	switch ie.Choice {
-	case LocationMeasurementIndication_CriticalExtensions_Choice_locationMeasurementIndication:
-		ie.locationMeasurementIndication = new(LocationMeasurementIndication_IEs)
-		if err = ie.locationMeasurementIndication.Decode(r); err != nil {
-			return utils.WrapError("Decode locationMeasurementIndication", err)
+	case LocationMeasurementIndication_CriticalExtensions_Choice_LocationMeasurementIndication:
+		ie.LocationMeasurementIndication = new(LocationMeasurementIndication_IEs)
+		if err = ie.LocationMeasurementIndication.Decode(r); err != nil {
+			return utils.WrapError("Decode LocationMeasurementIndication", err)
 		}
-	case LocationMeasurementIndication_CriticalExtensions_Choice_criticalExtensionsFuture:
+	case LocationMeasurementIndication_CriticalExtensions_Choice_CriticalExtensionsFuture:
 		// interface{} field of choice - nothing to decode
 	default:
 		return fmt.Errorf("invalid choice: %d", ie.Choice)

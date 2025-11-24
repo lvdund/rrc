@@ -8,51 +8,51 @@ import (
 )
 
 type SlotFormatCombinationsPerCell struct {
-	servingCellId          ServCellIndex                                         `madatory`
-	subcarrierSpacing      SubcarrierSpacing                                     `madatory`
-	subcarrierSpacing2     *SubcarrierSpacing                                    `optional`
-	slotFormatCombinations []SlotFormatCombination                               `lb:1,ub:maxNrofSlotFormatCombinationsPerSet,optional`
-	positionInDCI          *int64                                                `lb:0,ub:maxSFI_DCI_PayloadSize_1,optional`
-	enableConfiguredUL_r16 *SlotFormatCombinationsPerCell_enableConfiguredUL_r16 `optional,ext-1`
+	ServingCellId          ServCellIndex                                         `madatory`
+	SubcarrierSpacing      SubcarrierSpacing                                     `madatory`
+	SubcarrierSpacing2     *SubcarrierSpacing                                    `optional`
+	SlotFormatCombinations []SlotFormatCombination                               `lb:1,ub:maxNrofSlotFormatCombinationsPerSet,optional`
+	PositionInDCI          *int64                                                `lb:0,ub:maxSFI_DCI_PayloadSize_1,optional`
+	EnableConfiguredUL_r16 *SlotFormatCombinationsPerCell_enableConfiguredUL_r16 `optional,ext-1`
 }
 
 func (ie *SlotFormatCombinationsPerCell) Encode(w *uper.UperWriter) error {
 	var err error
-	hasExtensions := ie.enableConfiguredUL_r16 != nil
-	preambleBits := []bool{hasExtensions, ie.subcarrierSpacing2 != nil, len(ie.slotFormatCombinations) > 0, ie.positionInDCI != nil}
+	hasExtensions := ie.EnableConfiguredUL_r16 != nil
+	preambleBits := []bool{hasExtensions, ie.SubcarrierSpacing2 != nil, len(ie.SlotFormatCombinations) > 0, ie.PositionInDCI != nil}
 	for _, bit := range preambleBits {
 		if err = w.WriteBool(bit); err != nil {
 			return err
 		}
 	}
-	if err = ie.servingCellId.Encode(w); err != nil {
-		return utils.WrapError("Encode servingCellId", err)
+	if err = ie.ServingCellId.Encode(w); err != nil {
+		return utils.WrapError("Encode ServingCellId", err)
 	}
-	if err = ie.subcarrierSpacing.Encode(w); err != nil {
-		return utils.WrapError("Encode subcarrierSpacing", err)
+	if err = ie.SubcarrierSpacing.Encode(w); err != nil {
+		return utils.WrapError("Encode SubcarrierSpacing", err)
 	}
-	if ie.subcarrierSpacing2 != nil {
-		if err = ie.subcarrierSpacing2.Encode(w); err != nil {
-			return utils.WrapError("Encode subcarrierSpacing2", err)
+	if ie.SubcarrierSpacing2 != nil {
+		if err = ie.SubcarrierSpacing2.Encode(w); err != nil {
+			return utils.WrapError("Encode SubcarrierSpacing2", err)
 		}
 	}
-	if len(ie.slotFormatCombinations) > 0 {
-		tmp_slotFormatCombinations := utils.NewSequence[*SlotFormatCombination]([]*SlotFormatCombination{}, uper.Constraint{Lb: 1, Ub: maxNrofSlotFormatCombinationsPerSet}, false)
-		for _, i := range ie.slotFormatCombinations {
-			tmp_slotFormatCombinations.Value = append(tmp_slotFormatCombinations.Value, &i)
+	if len(ie.SlotFormatCombinations) > 0 {
+		tmp_SlotFormatCombinations := utils.NewSequence[*SlotFormatCombination]([]*SlotFormatCombination{}, uper.Constraint{Lb: 1, Ub: maxNrofSlotFormatCombinationsPerSet}, false)
+		for _, i := range ie.SlotFormatCombinations {
+			tmp_SlotFormatCombinations.Value = append(tmp_SlotFormatCombinations.Value, &i)
 		}
-		if err = tmp_slotFormatCombinations.Encode(w); err != nil {
-			return utils.WrapError("Encode slotFormatCombinations", err)
+		if err = tmp_SlotFormatCombinations.Encode(w); err != nil {
+			return utils.WrapError("Encode SlotFormatCombinations", err)
 		}
 	}
-	if ie.positionInDCI != nil {
-		if err = w.WriteInteger(*ie.positionInDCI, &uper.Constraint{Lb: 0, Ub: maxSFI_DCI_PayloadSize_1}, false); err != nil {
-			return utils.WrapError("Encode positionInDCI", err)
+	if ie.PositionInDCI != nil {
+		if err = w.WriteInteger(*ie.PositionInDCI, &uper.Constraint{Lb: 0, Ub: maxSFI_DCI_PayloadSize_1}, false); err != nil {
+			return utils.WrapError("Encode PositionInDCI", err)
 		}
 	}
 	if hasExtensions {
 		// Extension bitmap: 1 bits for 1 extension groups
-		extBitmap := []bool{ie.enableConfiguredUL_r16 != nil}
+		extBitmap := []bool{ie.EnableConfiguredUL_r16 != nil}
 		if err := w.WriteExtBitMap(extBitmap); err != nil {
 			return utils.WrapError("WriteExtBitMap SlotFormatCombinationsPerCell", err)
 		}
@@ -63,17 +63,17 @@ func (ie *SlotFormatCombinationsPerCell) Encode(w *uper.UperWriter) error {
 			extWriter := uper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 1
-			optionals_ext_1 := []bool{ie.enableConfiguredUL_r16 != nil}
+			optionals_ext_1 := []bool{ie.EnableConfiguredUL_r16 != nil}
 			for _, bit := range optionals_ext_1 {
 				if err := extWriter.WriteBool(bit); err != nil {
 					return err
 				}
 			}
 
-			// encode enableConfiguredUL_r16 optional
-			if ie.enableConfiguredUL_r16 != nil {
-				if err = ie.enableConfiguredUL_r16.Encode(extWriter); err != nil {
-					return utils.WrapError("Encode enableConfiguredUL_r16", err)
+			// encode EnableConfiguredUL_r16 optional
+			if ie.EnableConfiguredUL_r16 != nil {
+				if err = ie.EnableConfiguredUL_r16.Encode(extWriter); err != nil {
+					return utils.WrapError("Encode EnableConfiguredUL_r16", err)
 				}
 			}
 
@@ -95,49 +95,49 @@ func (ie *SlotFormatCombinationsPerCell) Decode(r *uper.UperReader) error {
 	if extensionBit, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var subcarrierSpacing2Present bool
-	if subcarrierSpacing2Present, err = r.ReadBool(); err != nil {
+	var SubcarrierSpacing2Present bool
+	if SubcarrierSpacing2Present, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var slotFormatCombinationsPresent bool
-	if slotFormatCombinationsPresent, err = r.ReadBool(); err != nil {
+	var SlotFormatCombinationsPresent bool
+	if SlotFormatCombinationsPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var positionInDCIPresent bool
-	if positionInDCIPresent, err = r.ReadBool(); err != nil {
+	var PositionInDCIPresent bool
+	if PositionInDCIPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	if err = ie.servingCellId.Decode(r); err != nil {
-		return utils.WrapError("Decode servingCellId", err)
+	if err = ie.ServingCellId.Decode(r); err != nil {
+		return utils.WrapError("Decode ServingCellId", err)
 	}
-	if err = ie.subcarrierSpacing.Decode(r); err != nil {
-		return utils.WrapError("Decode subcarrierSpacing", err)
+	if err = ie.SubcarrierSpacing.Decode(r); err != nil {
+		return utils.WrapError("Decode SubcarrierSpacing", err)
 	}
-	if subcarrierSpacing2Present {
-		ie.subcarrierSpacing2 = new(SubcarrierSpacing)
-		if err = ie.subcarrierSpacing2.Decode(r); err != nil {
-			return utils.WrapError("Decode subcarrierSpacing2", err)
+	if SubcarrierSpacing2Present {
+		ie.SubcarrierSpacing2 = new(SubcarrierSpacing)
+		if err = ie.SubcarrierSpacing2.Decode(r); err != nil {
+			return utils.WrapError("Decode SubcarrierSpacing2", err)
 		}
 	}
-	if slotFormatCombinationsPresent {
-		tmp_slotFormatCombinations := utils.NewSequence[*SlotFormatCombination]([]*SlotFormatCombination{}, uper.Constraint{Lb: 1, Ub: maxNrofSlotFormatCombinationsPerSet}, false)
-		fn_slotFormatCombinations := func() *SlotFormatCombination {
+	if SlotFormatCombinationsPresent {
+		tmp_SlotFormatCombinations := utils.NewSequence[*SlotFormatCombination]([]*SlotFormatCombination{}, uper.Constraint{Lb: 1, Ub: maxNrofSlotFormatCombinationsPerSet}, false)
+		fn_SlotFormatCombinations := func() *SlotFormatCombination {
 			return new(SlotFormatCombination)
 		}
-		if err = tmp_slotFormatCombinations.Decode(r, fn_slotFormatCombinations); err != nil {
-			return utils.WrapError("Decode slotFormatCombinations", err)
+		if err = tmp_SlotFormatCombinations.Decode(r, fn_SlotFormatCombinations); err != nil {
+			return utils.WrapError("Decode SlotFormatCombinations", err)
 		}
-		ie.slotFormatCombinations = []SlotFormatCombination{}
-		for _, i := range tmp_slotFormatCombinations.Value {
-			ie.slotFormatCombinations = append(ie.slotFormatCombinations, *i)
+		ie.SlotFormatCombinations = []SlotFormatCombination{}
+		for _, i := range tmp_SlotFormatCombinations.Value {
+			ie.SlotFormatCombinations = append(ie.SlotFormatCombinations, *i)
 		}
 	}
-	if positionInDCIPresent {
-		var tmp_int_positionInDCI int64
-		if tmp_int_positionInDCI, err = r.ReadInteger(&uper.Constraint{Lb: 0, Ub: maxSFI_DCI_PayloadSize_1}, false); err != nil {
-			return utils.WrapError("Decode positionInDCI", err)
+	if PositionInDCIPresent {
+		var tmp_int_PositionInDCI int64
+		if tmp_int_PositionInDCI, err = r.ReadInteger(&uper.Constraint{Lb: 0, Ub: maxSFI_DCI_PayloadSize_1}, false); err != nil {
+			return utils.WrapError("Decode PositionInDCI", err)
 		}
-		ie.positionInDCI = &tmp_int_positionInDCI
+		ie.PositionInDCI = &tmp_int_PositionInDCI
 	}
 
 	if extensionBit {
@@ -156,15 +156,15 @@ func (ie *SlotFormatCombinationsPerCell) Decode(r *uper.UperReader) error {
 
 			extReader := uper.NewReader(bytes.NewReader(extBytes))
 
-			enableConfiguredUL_r16Present, err := extReader.ReadBool()
+			EnableConfiguredUL_r16Present, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			// decode enableConfiguredUL_r16 optional
-			if enableConfiguredUL_r16Present {
-				ie.enableConfiguredUL_r16 = new(SlotFormatCombinationsPerCell_enableConfiguredUL_r16)
-				if err = ie.enableConfiguredUL_r16.Decode(extReader); err != nil {
-					return utils.WrapError("Decode enableConfiguredUL_r16", err)
+			// decode EnableConfiguredUL_r16 optional
+			if EnableConfiguredUL_r16Present {
+				ie.EnableConfiguredUL_r16 = new(SlotFormatCombinationsPerCell_enableConfiguredUL_r16)
+				if err = ie.EnableConfiguredUL_r16.Decode(extReader); err != nil {
+					return utils.WrapError("Decode EnableConfiguredUL_r16", err)
 				}
 			}
 		}

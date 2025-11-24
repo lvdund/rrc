@@ -6,26 +6,26 @@ import (
 )
 
 type SL_CBR_PSSCH_TxConfig_r16 struct {
-	sl_CR_Limit_r16     *int64                     `lb:0,ub:10000,optional`
-	sl_TxParameters_r16 *SL_PSSCH_TxParameters_r16 `optional`
+	Sl_CR_Limit_r16     *int64                     `lb:0,ub:10000,optional`
+	Sl_TxParameters_r16 *SL_PSSCH_TxParameters_r16 `optional`
 }
 
 func (ie *SL_CBR_PSSCH_TxConfig_r16) Encode(w *uper.UperWriter) error {
 	var err error
-	preambleBits := []bool{ie.sl_CR_Limit_r16 != nil, ie.sl_TxParameters_r16 != nil}
+	preambleBits := []bool{ie.Sl_CR_Limit_r16 != nil, ie.Sl_TxParameters_r16 != nil}
 	for _, bit := range preambleBits {
 		if err = w.WriteBool(bit); err != nil {
 			return err
 		}
 	}
-	if ie.sl_CR_Limit_r16 != nil {
-		if err = w.WriteInteger(*ie.sl_CR_Limit_r16, &uper.Constraint{Lb: 0, Ub: 10000}, false); err != nil {
-			return utils.WrapError("Encode sl_CR_Limit_r16", err)
+	if ie.Sl_CR_Limit_r16 != nil {
+		if err = w.WriteInteger(*ie.Sl_CR_Limit_r16, &uper.Constraint{Lb: 0, Ub: 10000}, false); err != nil {
+			return utils.WrapError("Encode Sl_CR_Limit_r16", err)
 		}
 	}
-	if ie.sl_TxParameters_r16 != nil {
-		if err = ie.sl_TxParameters_r16.Encode(w); err != nil {
-			return utils.WrapError("Encode sl_TxParameters_r16", err)
+	if ie.Sl_TxParameters_r16 != nil {
+		if err = ie.Sl_TxParameters_r16.Encode(w); err != nil {
+			return utils.WrapError("Encode Sl_TxParameters_r16", err)
 		}
 	}
 	return nil
@@ -33,25 +33,25 @@ func (ie *SL_CBR_PSSCH_TxConfig_r16) Encode(w *uper.UperWriter) error {
 
 func (ie *SL_CBR_PSSCH_TxConfig_r16) Decode(r *uper.UperReader) error {
 	var err error
-	var sl_CR_Limit_r16Present bool
-	if sl_CR_Limit_r16Present, err = r.ReadBool(); err != nil {
+	var Sl_CR_Limit_r16Present bool
+	if Sl_CR_Limit_r16Present, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var sl_TxParameters_r16Present bool
-	if sl_TxParameters_r16Present, err = r.ReadBool(); err != nil {
+	var Sl_TxParameters_r16Present bool
+	if Sl_TxParameters_r16Present, err = r.ReadBool(); err != nil {
 		return err
 	}
-	if sl_CR_Limit_r16Present {
-		var tmp_int_sl_CR_Limit_r16 int64
-		if tmp_int_sl_CR_Limit_r16, err = r.ReadInteger(&uper.Constraint{Lb: 0, Ub: 10000}, false); err != nil {
-			return utils.WrapError("Decode sl_CR_Limit_r16", err)
+	if Sl_CR_Limit_r16Present {
+		var tmp_int_Sl_CR_Limit_r16 int64
+		if tmp_int_Sl_CR_Limit_r16, err = r.ReadInteger(&uper.Constraint{Lb: 0, Ub: 10000}, false); err != nil {
+			return utils.WrapError("Decode Sl_CR_Limit_r16", err)
 		}
-		ie.sl_CR_Limit_r16 = &tmp_int_sl_CR_Limit_r16
+		ie.Sl_CR_Limit_r16 = &tmp_int_Sl_CR_Limit_r16
 	}
-	if sl_TxParameters_r16Present {
-		ie.sl_TxParameters_r16 = new(SL_PSSCH_TxParameters_r16)
-		if err = ie.sl_TxParameters_r16.Decode(r); err != nil {
-			return utils.WrapError("Decode sl_TxParameters_r16", err)
+	if Sl_TxParameters_r16Present {
+		ie.Sl_TxParameters_r16 = new(SL_PSSCH_TxParameters_r16)
+		if err = ie.Sl_TxParameters_r16.Decode(r); err != nil {
+			return utils.WrapError("Decode Sl_TxParameters_r16", err)
 		}
 	}
 	return nil

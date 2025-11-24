@@ -6,21 +6,21 @@ import (
 )
 
 type MUSIM_GapAssistanceConfig_r17 struct {
-	musim_GapProhibitTimer_r17 MUSIM_GapAssistanceConfig_r17_musim_GapProhibitTimer_r17 `madatory`
+	Musim_GapProhibitTimer_r17 MUSIM_GapAssistanceConfig_r17_musim_GapProhibitTimer_r17 `madatory`
 }
 
 func (ie *MUSIM_GapAssistanceConfig_r17) Encode(w *uper.UperWriter) error {
 	var err error
-	if err = ie.musim_GapProhibitTimer_r17.Encode(w); err != nil {
-		return utils.WrapError("Encode musim_GapProhibitTimer_r17", err)
+	if err = ie.Musim_GapProhibitTimer_r17.Encode(w); err != nil {
+		return utils.WrapError("Encode Musim_GapProhibitTimer_r17", err)
 	}
 	return nil
 }
 
 func (ie *MUSIM_GapAssistanceConfig_r17) Decode(r *uper.UperReader) error {
 	var err error
-	if err = ie.musim_GapProhibitTimer_r17.Decode(r); err != nil {
-		return utils.WrapError("Decode musim_GapProhibitTimer_r17", err)
+	if err = ie.Musim_GapProhibitTimer_r17.Decode(r); err != nil {
+		return utils.WrapError("Decode Musim_GapProhibitTimer_r17", err)
 	}
 	return nil
 }

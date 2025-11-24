@@ -9,14 +9,14 @@ import (
 
 const (
 	EphemerisInfo_r17_Choice_nothing uint64 = iota
-	EphemerisInfo_r17_Choice_positionVelocity_r17
-	EphemerisInfo_r17_Choice_orbital_r17
+	EphemerisInfo_r17_Choice_PositionVelocity_r17
+	EphemerisInfo_r17_Choice_Orbital_r17
 )
 
 type EphemerisInfo_r17 struct {
 	Choice               uint64
-	positionVelocity_r17 *PositionVelocity_r17
-	orbital_r17          *Orbital_r17
+	PositionVelocity_r17 *PositionVelocity_r17
+	Orbital_r17          *Orbital_r17
 }
 
 func (ie *EphemerisInfo_r17) Encode(w *uper.UperWriter) error {
@@ -25,13 +25,13 @@ func (ie *EphemerisInfo_r17) Encode(w *uper.UperWriter) error {
 		return err
 	}
 	switch ie.Choice {
-	case EphemerisInfo_r17_Choice_positionVelocity_r17:
-		if err = ie.positionVelocity_r17.Encode(w); err != nil {
-			err = utils.WrapError("Encode positionVelocity_r17", err)
+	case EphemerisInfo_r17_Choice_PositionVelocity_r17:
+		if err = ie.PositionVelocity_r17.Encode(w); err != nil {
+			err = utils.WrapError("Encode PositionVelocity_r17", err)
 		}
-	case EphemerisInfo_r17_Choice_orbital_r17:
-		if err = ie.orbital_r17.Encode(w); err != nil {
-			err = utils.WrapError("Encode orbital_r17", err)
+	case EphemerisInfo_r17_Choice_Orbital_r17:
+		if err = ie.Orbital_r17.Encode(w); err != nil {
+			err = utils.WrapError("Encode Orbital_r17", err)
 		}
 	default:
 		err = fmt.Errorf("invalid choice: %d", ie.Choice)
@@ -45,15 +45,15 @@ func (ie *EphemerisInfo_r17) Decode(r *uper.UperReader) error {
 		return err
 	}
 	switch ie.Choice {
-	case EphemerisInfo_r17_Choice_positionVelocity_r17:
-		ie.positionVelocity_r17 = new(PositionVelocity_r17)
-		if err = ie.positionVelocity_r17.Decode(r); err != nil {
-			return utils.WrapError("Decode positionVelocity_r17", err)
+	case EphemerisInfo_r17_Choice_PositionVelocity_r17:
+		ie.PositionVelocity_r17 = new(PositionVelocity_r17)
+		if err = ie.PositionVelocity_r17.Decode(r); err != nil {
+			return utils.WrapError("Decode PositionVelocity_r17", err)
 		}
-	case EphemerisInfo_r17_Choice_orbital_r17:
-		ie.orbital_r17 = new(Orbital_r17)
-		if err = ie.orbital_r17.Decode(r); err != nil {
-			return utils.WrapError("Decode orbital_r17", err)
+	case EphemerisInfo_r17_Choice_Orbital_r17:
+		ie.Orbital_r17 = new(Orbital_r17)
+		if err = ie.Orbital_r17.Decode(r); err != nil {
+			return utils.WrapError("Decode Orbital_r17", err)
 		}
 	default:
 		return fmt.Errorf("invalid choice: %d", ie.Choice)

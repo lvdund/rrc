@@ -6,28 +6,28 @@ import (
 )
 
 type SSB_MTC struct {
-	periodicityAndOffset SSB_MTC_periodicityAndOffset `lb:0,ub:4,madatory`
-	duration             SSB_MTC_duration             `madatory`
+	PeriodicityAndOffset SSB_MTC_periodicityAndOffset `lb:0,ub:4,madatory`
+	Duration             SSB_MTC_duration             `madatory`
 }
 
 func (ie *SSB_MTC) Encode(w *uper.UperWriter) error {
 	var err error
-	if err = ie.periodicityAndOffset.Encode(w); err != nil {
-		return utils.WrapError("Encode periodicityAndOffset", err)
+	if err = ie.PeriodicityAndOffset.Encode(w); err != nil {
+		return utils.WrapError("Encode PeriodicityAndOffset", err)
 	}
-	if err = ie.duration.Encode(w); err != nil {
-		return utils.WrapError("Encode duration", err)
+	if err = ie.Duration.Encode(w); err != nil {
+		return utils.WrapError("Encode Duration", err)
 	}
 	return nil
 }
 
 func (ie *SSB_MTC) Decode(r *uper.UperReader) error {
 	var err error
-	if err = ie.periodicityAndOffset.Decode(r); err != nil {
-		return utils.WrapError("Decode periodicityAndOffset", err)
+	if err = ie.PeriodicityAndOffset.Decode(r); err != nil {
+		return utils.WrapError("Decode PeriodicityAndOffset", err)
 	}
-	if err = ie.duration.Decode(r); err != nil {
-		return utils.WrapError("Decode duration", err)
+	if err = ie.Duration.Decode(r); err != nil {
+		return utils.WrapError("Decode Duration", err)
 	}
 	return nil
 }

@@ -6,26 +6,26 @@ import (
 )
 
 type EUTRA_NS_PmaxValue struct {
-	additionalPmax             *int64 `lb:-30,ub:33,optional`
-	additionalSpectrumEmission *int64 `lb:1,ub:288,optional`
+	AdditionalPmax             *int64 `lb:-30,ub:33,optional`
+	AdditionalSpectrumEmission *int64 `lb:1,ub:288,optional`
 }
 
 func (ie *EUTRA_NS_PmaxValue) Encode(w *uper.UperWriter) error {
 	var err error
-	preambleBits := []bool{ie.additionalPmax != nil, ie.additionalSpectrumEmission != nil}
+	preambleBits := []bool{ie.AdditionalPmax != nil, ie.AdditionalSpectrumEmission != nil}
 	for _, bit := range preambleBits {
 		if err = w.WriteBool(bit); err != nil {
 			return err
 		}
 	}
-	if ie.additionalPmax != nil {
-		if err = w.WriteInteger(*ie.additionalPmax, &uper.Constraint{Lb: -30, Ub: 33}, false); err != nil {
-			return utils.WrapError("Encode additionalPmax", err)
+	if ie.AdditionalPmax != nil {
+		if err = w.WriteInteger(*ie.AdditionalPmax, &uper.Constraint{Lb: -30, Ub: 33}, false); err != nil {
+			return utils.WrapError("Encode AdditionalPmax", err)
 		}
 	}
-	if ie.additionalSpectrumEmission != nil {
-		if err = w.WriteInteger(*ie.additionalSpectrumEmission, &uper.Constraint{Lb: 1, Ub: 288}, false); err != nil {
-			return utils.WrapError("Encode additionalSpectrumEmission", err)
+	if ie.AdditionalSpectrumEmission != nil {
+		if err = w.WriteInteger(*ie.AdditionalSpectrumEmission, &uper.Constraint{Lb: 1, Ub: 288}, false); err != nil {
+			return utils.WrapError("Encode AdditionalSpectrumEmission", err)
 		}
 	}
 	return nil
@@ -33,27 +33,27 @@ func (ie *EUTRA_NS_PmaxValue) Encode(w *uper.UperWriter) error {
 
 func (ie *EUTRA_NS_PmaxValue) Decode(r *uper.UperReader) error {
 	var err error
-	var additionalPmaxPresent bool
-	if additionalPmaxPresent, err = r.ReadBool(); err != nil {
+	var AdditionalPmaxPresent bool
+	if AdditionalPmaxPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var additionalSpectrumEmissionPresent bool
-	if additionalSpectrumEmissionPresent, err = r.ReadBool(); err != nil {
+	var AdditionalSpectrumEmissionPresent bool
+	if AdditionalSpectrumEmissionPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	if additionalPmaxPresent {
-		var tmp_int_additionalPmax int64
-		if tmp_int_additionalPmax, err = r.ReadInteger(&uper.Constraint{Lb: -30, Ub: 33}, false); err != nil {
-			return utils.WrapError("Decode additionalPmax", err)
+	if AdditionalPmaxPresent {
+		var tmp_int_AdditionalPmax int64
+		if tmp_int_AdditionalPmax, err = r.ReadInteger(&uper.Constraint{Lb: -30, Ub: 33}, false); err != nil {
+			return utils.WrapError("Decode AdditionalPmax", err)
 		}
-		ie.additionalPmax = &tmp_int_additionalPmax
+		ie.AdditionalPmax = &tmp_int_AdditionalPmax
 	}
-	if additionalSpectrumEmissionPresent {
-		var tmp_int_additionalSpectrumEmission int64
-		if tmp_int_additionalSpectrumEmission, err = r.ReadInteger(&uper.Constraint{Lb: 1, Ub: 288}, false); err != nil {
-			return utils.WrapError("Decode additionalSpectrumEmission", err)
+	if AdditionalSpectrumEmissionPresent {
+		var tmp_int_AdditionalSpectrumEmission int64
+		if tmp_int_AdditionalSpectrumEmission, err = r.ReadInteger(&uper.Constraint{Lb: 1, Ub: 288}, false); err != nil {
+			return utils.WrapError("Decode AdditionalSpectrumEmission", err)
 		}
-		ie.additionalSpectrumEmission = &tmp_int_additionalSpectrumEmission
+		ie.AdditionalSpectrumEmission = &tmp_int_AdditionalSpectrumEmission
 	}
 	return nil
 }

@@ -9,18 +9,18 @@ import (
 
 const (
 	ReportConfigInterRAT_reportType_Choice_nothing uint64 = iota
-	ReportConfigInterRAT_reportType_Choice_periodical
-	ReportConfigInterRAT_reportType_Choice_eventTriggered
-	ReportConfigInterRAT_reportType_Choice_reportCGI
-	ReportConfigInterRAT_reportType_Choice_reportSFTD
+	ReportConfigInterRAT_reportType_Choice_Periodical
+	ReportConfigInterRAT_reportType_Choice_EventTriggered
+	ReportConfigInterRAT_reportType_Choice_ReportCGI
+	ReportConfigInterRAT_reportType_Choice_ReportSFTD
 )
 
 type ReportConfigInterRAT_reportType struct {
 	Choice         uint64
-	periodical     *PeriodicalReportConfigInterRAT
-	eventTriggered *EventTriggerConfigInterRAT
-	reportCGI      *ReportCGI_EUTRA
-	reportSFTD     *ReportSFTD_EUTRA
+	Periodical     *PeriodicalReportConfigInterRAT
+	EventTriggered *EventTriggerConfigInterRAT
+	ReportCGI      *ReportCGI_EUTRA
+	ReportSFTD     *ReportSFTD_EUTRA
 }
 
 func (ie *ReportConfigInterRAT_reportType) Encode(w *uper.UperWriter) error {
@@ -29,21 +29,21 @@ func (ie *ReportConfigInterRAT_reportType) Encode(w *uper.UperWriter) error {
 		return err
 	}
 	switch ie.Choice {
-	case ReportConfigInterRAT_reportType_Choice_periodical:
-		if err = ie.periodical.Encode(w); err != nil {
-			err = utils.WrapError("Encode periodical", err)
+	case ReportConfigInterRAT_reportType_Choice_Periodical:
+		if err = ie.Periodical.Encode(w); err != nil {
+			err = utils.WrapError("Encode Periodical", err)
 		}
-	case ReportConfigInterRAT_reportType_Choice_eventTriggered:
-		if err = ie.eventTriggered.Encode(w); err != nil {
-			err = utils.WrapError("Encode eventTriggered", err)
+	case ReportConfigInterRAT_reportType_Choice_EventTriggered:
+		if err = ie.EventTriggered.Encode(w); err != nil {
+			err = utils.WrapError("Encode EventTriggered", err)
 		}
-	case ReportConfigInterRAT_reportType_Choice_reportCGI:
-		if err = ie.reportCGI.Encode(w); err != nil {
-			err = utils.WrapError("Encode reportCGI", err)
+	case ReportConfigInterRAT_reportType_Choice_ReportCGI:
+		if err = ie.ReportCGI.Encode(w); err != nil {
+			err = utils.WrapError("Encode ReportCGI", err)
 		}
-	case ReportConfigInterRAT_reportType_Choice_reportSFTD:
-		if err = ie.reportSFTD.Encode(w); err != nil {
-			err = utils.WrapError("Encode reportSFTD", err)
+	case ReportConfigInterRAT_reportType_Choice_ReportSFTD:
+		if err = ie.ReportSFTD.Encode(w); err != nil {
+			err = utils.WrapError("Encode ReportSFTD", err)
 		}
 	default:
 		err = fmt.Errorf("invalid choice: %d", ie.Choice)
@@ -57,25 +57,25 @@ func (ie *ReportConfigInterRAT_reportType) Decode(r *uper.UperReader) error {
 		return err
 	}
 	switch ie.Choice {
-	case ReportConfigInterRAT_reportType_Choice_periodical:
-		ie.periodical = new(PeriodicalReportConfigInterRAT)
-		if err = ie.periodical.Decode(r); err != nil {
-			return utils.WrapError("Decode periodical", err)
+	case ReportConfigInterRAT_reportType_Choice_Periodical:
+		ie.Periodical = new(PeriodicalReportConfigInterRAT)
+		if err = ie.Periodical.Decode(r); err != nil {
+			return utils.WrapError("Decode Periodical", err)
 		}
-	case ReportConfigInterRAT_reportType_Choice_eventTriggered:
-		ie.eventTriggered = new(EventTriggerConfigInterRAT)
-		if err = ie.eventTriggered.Decode(r); err != nil {
-			return utils.WrapError("Decode eventTriggered", err)
+	case ReportConfigInterRAT_reportType_Choice_EventTriggered:
+		ie.EventTriggered = new(EventTriggerConfigInterRAT)
+		if err = ie.EventTriggered.Decode(r); err != nil {
+			return utils.WrapError("Decode EventTriggered", err)
 		}
-	case ReportConfigInterRAT_reportType_Choice_reportCGI:
-		ie.reportCGI = new(ReportCGI_EUTRA)
-		if err = ie.reportCGI.Decode(r); err != nil {
-			return utils.WrapError("Decode reportCGI", err)
+	case ReportConfigInterRAT_reportType_Choice_ReportCGI:
+		ie.ReportCGI = new(ReportCGI_EUTRA)
+		if err = ie.ReportCGI.Decode(r); err != nil {
+			return utils.WrapError("Decode ReportCGI", err)
 		}
-	case ReportConfigInterRAT_reportType_Choice_reportSFTD:
-		ie.reportSFTD = new(ReportSFTD_EUTRA)
-		if err = ie.reportSFTD.Decode(r); err != nil {
-			return utils.WrapError("Decode reportSFTD", err)
+	case ReportConfigInterRAT_reportType_Choice_ReportSFTD:
+		ie.ReportSFTD = new(ReportSFTD_EUTRA)
+		if err = ie.ReportSFTD.Decode(r); err != nil {
+			return utils.WrapError("Decode ReportSFTD", err)
 		}
 	default:
 		return fmt.Errorf("invalid choice: %d", ie.Choice)

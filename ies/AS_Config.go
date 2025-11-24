@@ -8,29 +8,29 @@ import (
 )
 
 type AS_Config struct {
-	rrcReconfiguration     []byte                          `madatory`
-	sourceRB_SN_Config     *[]byte                         `optional,ext-1`
-	sourceSCG_NR_Config    *[]byte                         `optional,ext-1`
-	sourceSCG_EUTRA_Config *[]byte                         `optional,ext-1`
-	sourceSCG_Configured   *AS_Config_sourceSCG_Configured `optional,ext-2`
-	sdt_Config_r17         *SDT_Config_r17                 `optional,ext-3`
+	RrcReconfiguration     []byte                          `madatory`
+	SourceRB_SN_Config     *[]byte                         `optional,ext-1`
+	SourceSCG_NR_Config    *[]byte                         `optional,ext-1`
+	SourceSCG_EUTRA_Config *[]byte                         `optional,ext-1`
+	SourceSCG_Configured   *AS_Config_sourceSCG_Configured `optional,ext-2`
+	Sdt_Config_r17         *SDT_Config_r17                 `optional,ext-3`
 }
 
 func (ie *AS_Config) Encode(w *uper.UperWriter) error {
 	var err error
-	hasExtensions := ie.sourceRB_SN_Config != nil || ie.sourceSCG_NR_Config != nil || ie.sourceSCG_EUTRA_Config != nil || ie.sourceSCG_Configured != nil || ie.sdt_Config_r17 != nil
+	hasExtensions := ie.SourceRB_SN_Config != nil || ie.SourceSCG_NR_Config != nil || ie.SourceSCG_EUTRA_Config != nil || ie.SourceSCG_Configured != nil || ie.Sdt_Config_r17 != nil
 	preambleBits := []bool{hasExtensions}
 	for _, bit := range preambleBits {
 		if err = w.WriteBool(bit); err != nil {
 			return err
 		}
 	}
-	if err = w.WriteOctetString(ie.rrcReconfiguration, &uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
-		return utils.WrapError("WriteOctetString rrcReconfiguration", err)
+	if err = w.WriteOctetString(ie.RrcReconfiguration, &uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+		return utils.WrapError("WriteOctetString RrcReconfiguration", err)
 	}
 	if hasExtensions {
 		// Extension bitmap: 3 bits for 3 extension groups
-		extBitmap := []bool{ie.sourceRB_SN_Config != nil || ie.sourceSCG_NR_Config != nil || ie.sourceSCG_EUTRA_Config != nil, ie.sourceSCG_Configured != nil, ie.sdt_Config_r17 != nil}
+		extBitmap := []bool{ie.SourceRB_SN_Config != nil || ie.SourceSCG_NR_Config != nil || ie.SourceSCG_EUTRA_Config != nil, ie.SourceSCG_Configured != nil, ie.Sdt_Config_r17 != nil}
 		if err := w.WriteExtBitMap(extBitmap); err != nil {
 			return utils.WrapError("WriteExtBitMap AS_Config", err)
 		}
@@ -41,29 +41,29 @@ func (ie *AS_Config) Encode(w *uper.UperWriter) error {
 			extWriter := uper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 1
-			optionals_ext_1 := []bool{ie.sourceRB_SN_Config != nil, ie.sourceSCG_NR_Config != nil, ie.sourceSCG_EUTRA_Config != nil}
+			optionals_ext_1 := []bool{ie.SourceRB_SN_Config != nil, ie.SourceSCG_NR_Config != nil, ie.SourceSCG_EUTRA_Config != nil}
 			for _, bit := range optionals_ext_1 {
 				if err := extWriter.WriteBool(bit); err != nil {
 					return err
 				}
 			}
 
-			// encode sourceRB_SN_Config optional
-			if ie.sourceRB_SN_Config != nil {
-				if err = extWriter.WriteOctetString(*ie.sourceRB_SN_Config, &uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
-					return utils.WrapError("Encode sourceRB_SN_Config", err)
+			// encode SourceRB_SN_Config optional
+			if ie.SourceRB_SN_Config != nil {
+				if err = extWriter.WriteOctetString(*ie.SourceRB_SN_Config, &uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+					return utils.WrapError("Encode SourceRB_SN_Config", err)
 				}
 			}
-			// encode sourceSCG_NR_Config optional
-			if ie.sourceSCG_NR_Config != nil {
-				if err = extWriter.WriteOctetString(*ie.sourceSCG_NR_Config, &uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
-					return utils.WrapError("Encode sourceSCG_NR_Config", err)
+			// encode SourceSCG_NR_Config optional
+			if ie.SourceSCG_NR_Config != nil {
+				if err = extWriter.WriteOctetString(*ie.SourceSCG_NR_Config, &uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+					return utils.WrapError("Encode SourceSCG_NR_Config", err)
 				}
 			}
-			// encode sourceSCG_EUTRA_Config optional
-			if ie.sourceSCG_EUTRA_Config != nil {
-				if err = extWriter.WriteOctetString(*ie.sourceSCG_EUTRA_Config, &uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
-					return utils.WrapError("Encode sourceSCG_EUTRA_Config", err)
+			// encode SourceSCG_EUTRA_Config optional
+			if ie.SourceSCG_EUTRA_Config != nil {
+				if err = extWriter.WriteOctetString(*ie.SourceSCG_EUTRA_Config, &uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+					return utils.WrapError("Encode SourceSCG_EUTRA_Config", err)
 				}
 			}
 
@@ -82,17 +82,17 @@ func (ie *AS_Config) Encode(w *uper.UperWriter) error {
 			extWriter := uper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 2
-			optionals_ext_2 := []bool{ie.sourceSCG_Configured != nil}
+			optionals_ext_2 := []bool{ie.SourceSCG_Configured != nil}
 			for _, bit := range optionals_ext_2 {
 				if err := extWriter.WriteBool(bit); err != nil {
 					return err
 				}
 			}
 
-			// encode sourceSCG_Configured optional
-			if ie.sourceSCG_Configured != nil {
-				if err = ie.sourceSCG_Configured.Encode(extWriter); err != nil {
-					return utils.WrapError("Encode sourceSCG_Configured", err)
+			// encode SourceSCG_Configured optional
+			if ie.SourceSCG_Configured != nil {
+				if err = ie.SourceSCG_Configured.Encode(extWriter); err != nil {
+					return utils.WrapError("Encode SourceSCG_Configured", err)
 				}
 			}
 
@@ -111,17 +111,17 @@ func (ie *AS_Config) Encode(w *uper.UperWriter) error {
 			extWriter := uper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 3
-			optionals_ext_3 := []bool{ie.sdt_Config_r17 != nil}
+			optionals_ext_3 := []bool{ie.Sdt_Config_r17 != nil}
 			for _, bit := range optionals_ext_3 {
 				if err := extWriter.WriteBool(bit); err != nil {
 					return err
 				}
 			}
 
-			// encode sdt_Config_r17 optional
-			if ie.sdt_Config_r17 != nil {
-				if err = ie.sdt_Config_r17.Encode(extWriter); err != nil {
-					return utils.WrapError("Encode sdt_Config_r17", err)
+			// encode Sdt_Config_r17 optional
+			if ie.Sdt_Config_r17 != nil {
+				if err = ie.Sdt_Config_r17.Encode(extWriter); err != nil {
+					return utils.WrapError("Encode Sdt_Config_r17", err)
 				}
 			}
 
@@ -143,11 +143,11 @@ func (ie *AS_Config) Decode(r *uper.UperReader) error {
 	if extensionBit, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var tmp_os_rrcReconfiguration []byte
-	if tmp_os_rrcReconfiguration, err = r.ReadOctetString(&uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
-		return utils.WrapError("ReadOctetString rrcReconfiguration", err)
+	var tmp_os_RrcReconfiguration []byte
+	if tmp_os_RrcReconfiguration, err = r.ReadOctetString(&uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+		return utils.WrapError("ReadOctetString RrcReconfiguration", err)
 	}
-	ie.rrcReconfiguration = tmp_os_rrcReconfiguration
+	ie.RrcReconfiguration = tmp_os_RrcReconfiguration
 
 	if extensionBit {
 		// Read extension bitmap: 3 bits for 3 extension groups
@@ -165,41 +165,41 @@ func (ie *AS_Config) Decode(r *uper.UperReader) error {
 
 			extReader := uper.NewReader(bytes.NewReader(extBytes))
 
-			sourceRB_SN_ConfigPresent, err := extReader.ReadBool()
+			SourceRB_SN_ConfigPresent, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			sourceSCG_NR_ConfigPresent, err := extReader.ReadBool()
+			SourceSCG_NR_ConfigPresent, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			sourceSCG_EUTRA_ConfigPresent, err := extReader.ReadBool()
+			SourceSCG_EUTRA_ConfigPresent, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			// decode sourceRB_SN_Config optional
-			if sourceRB_SN_ConfigPresent {
-				var tmp_os_sourceRB_SN_Config []byte
-				if tmp_os_sourceRB_SN_Config, err = extReader.ReadOctetString(&uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
-					return utils.WrapError("Decode sourceRB_SN_Config", err)
+			// decode SourceRB_SN_Config optional
+			if SourceRB_SN_ConfigPresent {
+				var tmp_os_SourceRB_SN_Config []byte
+				if tmp_os_SourceRB_SN_Config, err = extReader.ReadOctetString(&uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+					return utils.WrapError("Decode SourceRB_SN_Config", err)
 				}
-				ie.sourceRB_SN_Config = &tmp_os_sourceRB_SN_Config
+				ie.SourceRB_SN_Config = &tmp_os_SourceRB_SN_Config
 			}
-			// decode sourceSCG_NR_Config optional
-			if sourceSCG_NR_ConfigPresent {
-				var tmp_os_sourceSCG_NR_Config []byte
-				if tmp_os_sourceSCG_NR_Config, err = extReader.ReadOctetString(&uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
-					return utils.WrapError("Decode sourceSCG_NR_Config", err)
+			// decode SourceSCG_NR_Config optional
+			if SourceSCG_NR_ConfigPresent {
+				var tmp_os_SourceSCG_NR_Config []byte
+				if tmp_os_SourceSCG_NR_Config, err = extReader.ReadOctetString(&uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+					return utils.WrapError("Decode SourceSCG_NR_Config", err)
 				}
-				ie.sourceSCG_NR_Config = &tmp_os_sourceSCG_NR_Config
+				ie.SourceSCG_NR_Config = &tmp_os_SourceSCG_NR_Config
 			}
-			// decode sourceSCG_EUTRA_Config optional
-			if sourceSCG_EUTRA_ConfigPresent {
-				var tmp_os_sourceSCG_EUTRA_Config []byte
-				if tmp_os_sourceSCG_EUTRA_Config, err = extReader.ReadOctetString(&uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
-					return utils.WrapError("Decode sourceSCG_EUTRA_Config", err)
+			// decode SourceSCG_EUTRA_Config optional
+			if SourceSCG_EUTRA_ConfigPresent {
+				var tmp_os_SourceSCG_EUTRA_Config []byte
+				if tmp_os_SourceSCG_EUTRA_Config, err = extReader.ReadOctetString(&uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+					return utils.WrapError("Decode SourceSCG_EUTRA_Config", err)
 				}
-				ie.sourceSCG_EUTRA_Config = &tmp_os_sourceSCG_EUTRA_Config
+				ie.SourceSCG_EUTRA_Config = &tmp_os_SourceSCG_EUTRA_Config
 			}
 		}
 		// decode extension group 2
@@ -211,15 +211,15 @@ func (ie *AS_Config) Decode(r *uper.UperReader) error {
 
 			extReader := uper.NewReader(bytes.NewReader(extBytes))
 
-			sourceSCG_ConfiguredPresent, err := extReader.ReadBool()
+			SourceSCG_ConfiguredPresent, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			// decode sourceSCG_Configured optional
-			if sourceSCG_ConfiguredPresent {
-				ie.sourceSCG_Configured = new(AS_Config_sourceSCG_Configured)
-				if err = ie.sourceSCG_Configured.Decode(extReader); err != nil {
-					return utils.WrapError("Decode sourceSCG_Configured", err)
+			// decode SourceSCG_Configured optional
+			if SourceSCG_ConfiguredPresent {
+				ie.SourceSCG_Configured = new(AS_Config_sourceSCG_Configured)
+				if err = ie.SourceSCG_Configured.Decode(extReader); err != nil {
+					return utils.WrapError("Decode SourceSCG_Configured", err)
 				}
 			}
 		}
@@ -232,15 +232,15 @@ func (ie *AS_Config) Decode(r *uper.UperReader) error {
 
 			extReader := uper.NewReader(bytes.NewReader(extBytes))
 
-			sdt_Config_r17Present, err := extReader.ReadBool()
+			Sdt_Config_r17Present, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			// decode sdt_Config_r17 optional
-			if sdt_Config_r17Present {
-				ie.sdt_Config_r17 = new(SDT_Config_r17)
-				if err = ie.sdt_Config_r17.Decode(extReader); err != nil {
-					return utils.WrapError("Decode sdt_Config_r17", err)
+			// decode Sdt_Config_r17 optional
+			if Sdt_Config_r17Present {
+				ie.Sdt_Config_r17 = new(SDT_Config_r17)
+				if err = ie.Sdt_Config_r17.Decode(extReader); err != nil {
+					return utils.WrapError("Decode Sdt_Config_r17", err)
 				}
 			}
 		}

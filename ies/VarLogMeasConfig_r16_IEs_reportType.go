@@ -9,14 +9,14 @@ import (
 
 const (
 	VarLogMeasConfig_r16_IEs_reportType_Choice_nothing uint64 = iota
-	VarLogMeasConfig_r16_IEs_reportType_Choice_periodical
-	VarLogMeasConfig_r16_IEs_reportType_Choice_eventTriggered
+	VarLogMeasConfig_r16_IEs_reportType_Choice_Periodical
+	VarLogMeasConfig_r16_IEs_reportType_Choice_EventTriggered
 )
 
 type VarLogMeasConfig_r16_IEs_reportType struct {
 	Choice         uint64
-	periodical     *LoggedPeriodicalReportConfig_r16
-	eventTriggered *LoggedEventTriggerConfig_r16
+	Periodical     *LoggedPeriodicalReportConfig_r16
+	EventTriggered *LoggedEventTriggerConfig_r16
 }
 
 func (ie *VarLogMeasConfig_r16_IEs_reportType) Encode(w *uper.UperWriter) error {
@@ -25,13 +25,13 @@ func (ie *VarLogMeasConfig_r16_IEs_reportType) Encode(w *uper.UperWriter) error 
 		return err
 	}
 	switch ie.Choice {
-	case VarLogMeasConfig_r16_IEs_reportType_Choice_periodical:
-		if err = ie.periodical.Encode(w); err != nil {
-			err = utils.WrapError("Encode periodical", err)
+	case VarLogMeasConfig_r16_IEs_reportType_Choice_Periodical:
+		if err = ie.Periodical.Encode(w); err != nil {
+			err = utils.WrapError("Encode Periodical", err)
 		}
-	case VarLogMeasConfig_r16_IEs_reportType_Choice_eventTriggered:
-		if err = ie.eventTriggered.Encode(w); err != nil {
-			err = utils.WrapError("Encode eventTriggered", err)
+	case VarLogMeasConfig_r16_IEs_reportType_Choice_EventTriggered:
+		if err = ie.EventTriggered.Encode(w); err != nil {
+			err = utils.WrapError("Encode EventTriggered", err)
 		}
 	default:
 		err = fmt.Errorf("invalid choice: %d", ie.Choice)
@@ -45,15 +45,15 @@ func (ie *VarLogMeasConfig_r16_IEs_reportType) Decode(r *uper.UperReader) error 
 		return err
 	}
 	switch ie.Choice {
-	case VarLogMeasConfig_r16_IEs_reportType_Choice_periodical:
-		ie.periodical = new(LoggedPeriodicalReportConfig_r16)
-		if err = ie.periodical.Decode(r); err != nil {
-			return utils.WrapError("Decode periodical", err)
+	case VarLogMeasConfig_r16_IEs_reportType_Choice_Periodical:
+		ie.Periodical = new(LoggedPeriodicalReportConfig_r16)
+		if err = ie.Periodical.Decode(r); err != nil {
+			return utils.WrapError("Decode Periodical", err)
 		}
-	case VarLogMeasConfig_r16_IEs_reportType_Choice_eventTriggered:
-		ie.eventTriggered = new(LoggedEventTriggerConfig_r16)
-		if err = ie.eventTriggered.Decode(r); err != nil {
-			return utils.WrapError("Decode eventTriggered", err)
+	case VarLogMeasConfig_r16_IEs_reportType_Choice_EventTriggered:
+		ie.EventTriggered = new(LoggedEventTriggerConfig_r16)
+		if err = ie.EventTriggered.Decode(r); err != nil {
+			return utils.WrapError("Decode EventTriggered", err)
 		}
 	default:
 		return fmt.Errorf("invalid choice: %d", ie.Choice)

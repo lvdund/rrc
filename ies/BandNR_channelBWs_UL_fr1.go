@@ -6,32 +6,32 @@ import (
 )
 
 type BandNR_channelBWs_UL_fr1 struct {
-	scs_15kHz *uper.BitString `lb:10,ub:10,optional`
-	scs_30kHz *uper.BitString `lb:10,ub:10,optional`
-	scs_60kHz *uper.BitString `lb:10,ub:10,optional`
+	Scs_15kHz *uper.BitString `lb:10,ub:10,optional`
+	Scs_30kHz *uper.BitString `lb:10,ub:10,optional`
+	Scs_60kHz *uper.BitString `lb:10,ub:10,optional`
 }
 
 func (ie *BandNR_channelBWs_UL_fr1) Encode(w *uper.UperWriter) error {
 	var err error
-	preambleBits := []bool{ie.scs_15kHz != nil, ie.scs_30kHz != nil, ie.scs_60kHz != nil}
+	preambleBits := []bool{ie.Scs_15kHz != nil, ie.Scs_30kHz != nil, ie.Scs_60kHz != nil}
 	for _, bit := range preambleBits {
 		if err = w.WriteBool(bit); err != nil {
 			return err
 		}
 	}
-	if ie.scs_15kHz != nil {
-		if err = w.WriteBitString(ie.scs_15kHz.Bytes, uint(ie.scs_15kHz.NumBits), &uper.Constraint{Lb: 10, Ub: 10}, false); err != nil {
-			return utils.WrapError("Encode scs_15kHz", err)
+	if ie.Scs_15kHz != nil {
+		if err = w.WriteBitString(ie.Scs_15kHz.Bytes, uint(ie.Scs_15kHz.NumBits), &uper.Constraint{Lb: 10, Ub: 10}, false); err != nil {
+			return utils.WrapError("Encode Scs_15kHz", err)
 		}
 	}
-	if ie.scs_30kHz != nil {
-		if err = w.WriteBitString(ie.scs_30kHz.Bytes, uint(ie.scs_30kHz.NumBits), &uper.Constraint{Lb: 10, Ub: 10}, false); err != nil {
-			return utils.WrapError("Encode scs_30kHz", err)
+	if ie.Scs_30kHz != nil {
+		if err = w.WriteBitString(ie.Scs_30kHz.Bytes, uint(ie.Scs_30kHz.NumBits), &uper.Constraint{Lb: 10, Ub: 10}, false); err != nil {
+			return utils.WrapError("Encode Scs_30kHz", err)
 		}
 	}
-	if ie.scs_60kHz != nil {
-		if err = w.WriteBitString(ie.scs_60kHz.Bytes, uint(ie.scs_60kHz.NumBits), &uper.Constraint{Lb: 10, Ub: 10}, false); err != nil {
-			return utils.WrapError("Encode scs_60kHz", err)
+	if ie.Scs_60kHz != nil {
+		if err = w.WriteBitString(ie.Scs_60kHz.Bytes, uint(ie.Scs_60kHz.NumBits), &uper.Constraint{Lb: 10, Ub: 10}, false); err != nil {
+			return utils.WrapError("Encode Scs_60kHz", err)
 		}
 	}
 	return nil
@@ -39,53 +39,53 @@ func (ie *BandNR_channelBWs_UL_fr1) Encode(w *uper.UperWriter) error {
 
 func (ie *BandNR_channelBWs_UL_fr1) Decode(r *uper.UperReader) error {
 	var err error
-	var scs_15kHzPresent bool
-	if scs_15kHzPresent, err = r.ReadBool(); err != nil {
+	var Scs_15kHzPresent bool
+	if Scs_15kHzPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var scs_30kHzPresent bool
-	if scs_30kHzPresent, err = r.ReadBool(); err != nil {
+	var Scs_30kHzPresent bool
+	if Scs_30kHzPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var scs_60kHzPresent bool
-	if scs_60kHzPresent, err = r.ReadBool(); err != nil {
+	var Scs_60kHzPresent bool
+	if Scs_60kHzPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	if scs_15kHzPresent {
-		var tmp_bs_scs_15kHz []byte
-		var n_scs_15kHz uint
-		if tmp_bs_scs_15kHz, n_scs_15kHz, err = r.ReadBitString(&uper.Constraint{Lb: 10, Ub: 10}, false); err != nil {
-			return utils.WrapError("Decode scs_15kHz", err)
+	if Scs_15kHzPresent {
+		var tmp_bs_Scs_15kHz []byte
+		var n_Scs_15kHz uint
+		if tmp_bs_Scs_15kHz, n_Scs_15kHz, err = r.ReadBitString(&uper.Constraint{Lb: 10, Ub: 10}, false); err != nil {
+			return utils.WrapError("Decode Scs_15kHz", err)
 		}
 		tmp_bitstring := uper.BitString{
-			Bytes:   tmp_bs_scs_15kHz,
-			NumBits: uint64(n_scs_15kHz),
+			Bytes:   tmp_bs_Scs_15kHz,
+			NumBits: uint64(n_Scs_15kHz),
 		}
-		ie.scs_15kHz = &tmp_bitstring
+		ie.Scs_15kHz = &tmp_bitstring
 	}
-	if scs_30kHzPresent {
-		var tmp_bs_scs_30kHz []byte
-		var n_scs_30kHz uint
-		if tmp_bs_scs_30kHz, n_scs_30kHz, err = r.ReadBitString(&uper.Constraint{Lb: 10, Ub: 10}, false); err != nil {
-			return utils.WrapError("Decode scs_30kHz", err)
+	if Scs_30kHzPresent {
+		var tmp_bs_Scs_30kHz []byte
+		var n_Scs_30kHz uint
+		if tmp_bs_Scs_30kHz, n_Scs_30kHz, err = r.ReadBitString(&uper.Constraint{Lb: 10, Ub: 10}, false); err != nil {
+			return utils.WrapError("Decode Scs_30kHz", err)
 		}
 		tmp_bitstring := uper.BitString{
-			Bytes:   tmp_bs_scs_30kHz,
-			NumBits: uint64(n_scs_30kHz),
+			Bytes:   tmp_bs_Scs_30kHz,
+			NumBits: uint64(n_Scs_30kHz),
 		}
-		ie.scs_30kHz = &tmp_bitstring
+		ie.Scs_30kHz = &tmp_bitstring
 	}
-	if scs_60kHzPresent {
-		var tmp_bs_scs_60kHz []byte
-		var n_scs_60kHz uint
-		if tmp_bs_scs_60kHz, n_scs_60kHz, err = r.ReadBitString(&uper.Constraint{Lb: 10, Ub: 10}, false); err != nil {
-			return utils.WrapError("Decode scs_60kHz", err)
+	if Scs_60kHzPresent {
+		var tmp_bs_Scs_60kHz []byte
+		var n_Scs_60kHz uint
+		if tmp_bs_Scs_60kHz, n_Scs_60kHz, err = r.ReadBitString(&uper.Constraint{Lb: 10, Ub: 10}, false); err != nil {
+			return utils.WrapError("Decode Scs_60kHz", err)
 		}
 		tmp_bitstring := uper.BitString{
-			Bytes:   tmp_bs_scs_60kHz,
-			NumBits: uint64(n_scs_60kHz),
+			Bytes:   tmp_bs_Scs_60kHz,
+			NumBits: uint64(n_Scs_60kHz),
 		}
-		ie.scs_60kHz = &tmp_bitstring
+		ie.Scs_60kHz = &tmp_bitstring
 	}
 	return nil
 }

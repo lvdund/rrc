@@ -9,14 +9,14 @@ import (
 
 const (
 	OtherConfig_delayBudgetReportingConfig_Choice_nothing uint64 = iota
-	OtherConfig_delayBudgetReportingConfig_Choice_release
-	OtherConfig_delayBudgetReportingConfig_Choice_setup
+	OtherConfig_delayBudgetReportingConfig_Choice_Release
+	OtherConfig_delayBudgetReportingConfig_Choice_Setup
 )
 
 type OtherConfig_delayBudgetReportingConfig struct {
 	Choice  uint64
-	release uper.NULL `madatory`
-	setup   *OtherConfig_delayBudgetReportingConfig_setup
+	Release uper.NULL `madatory`
+	Setup   *OtherConfig_delayBudgetReportingConfig_setup
 }
 
 func (ie *OtherConfig_delayBudgetReportingConfig) Encode(w *uper.UperWriter) error {
@@ -25,13 +25,13 @@ func (ie *OtherConfig_delayBudgetReportingConfig) Encode(w *uper.UperWriter) err
 		return err
 	}
 	switch ie.Choice {
-	case OtherConfig_delayBudgetReportingConfig_Choice_release:
+	case OtherConfig_delayBudgetReportingConfig_Choice_Release:
 		if err := w.WriteNull(); err != nil {
-			err = utils.WrapError("Encode release", err)
+			err = utils.WrapError("Encode Release", err)
 		}
-	case OtherConfig_delayBudgetReportingConfig_Choice_setup:
-		if err = ie.setup.Encode(w); err != nil {
-			err = utils.WrapError("Encode setup", err)
+	case OtherConfig_delayBudgetReportingConfig_Choice_Setup:
+		if err = ie.Setup.Encode(w); err != nil {
+			err = utils.WrapError("Encode Setup", err)
 		}
 	default:
 		err = fmt.Errorf("invalid choice: %d", ie.Choice)
@@ -45,14 +45,14 @@ func (ie *OtherConfig_delayBudgetReportingConfig) Decode(r *uper.UperReader) err
 		return err
 	}
 	switch ie.Choice {
-	case OtherConfig_delayBudgetReportingConfig_Choice_release:
+	case OtherConfig_delayBudgetReportingConfig_Choice_Release:
 		if err := r.ReadNull(); err != nil {
-			return utils.WrapError("Decode release", err)
+			return utils.WrapError("Decode Release", err)
 		}
-	case OtherConfig_delayBudgetReportingConfig_Choice_setup:
-		ie.setup = new(OtherConfig_delayBudgetReportingConfig_setup)
-		if err = ie.setup.Decode(r); err != nil {
-			return utils.WrapError("Decode setup", err)
+	case OtherConfig_delayBudgetReportingConfig_Choice_Setup:
+		ie.Setup = new(OtherConfig_delayBudgetReportingConfig_setup)
+		if err = ie.Setup.Decode(r); err != nil {
+			return utils.WrapError("Decode Setup", err)
 		}
 	default:
 		return fmt.Errorf("invalid choice: %d", ie.Choice)

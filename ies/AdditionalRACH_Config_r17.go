@@ -6,26 +6,26 @@ import (
 )
 
 type AdditionalRACH_Config_r17 struct {
-	rach_ConfigCommon_r17 *RACH_ConfigCommon     `optional`
-	msgA_ConfigCommon_r17 *MsgA_ConfigCommon_r16 `optional`
+	Rach_ConfigCommon_r17 *RACH_ConfigCommon     `optional`
+	MsgA_ConfigCommon_r17 *MsgA_ConfigCommon_r16 `optional`
 }
 
 func (ie *AdditionalRACH_Config_r17) Encode(w *uper.UperWriter) error {
 	var err error
-	preambleBits := []bool{ie.rach_ConfigCommon_r17 != nil, ie.msgA_ConfigCommon_r17 != nil}
+	preambleBits := []bool{ie.Rach_ConfigCommon_r17 != nil, ie.MsgA_ConfigCommon_r17 != nil}
 	for _, bit := range preambleBits {
 		if err = w.WriteBool(bit); err != nil {
 			return err
 		}
 	}
-	if ie.rach_ConfigCommon_r17 != nil {
-		if err = ie.rach_ConfigCommon_r17.Encode(w); err != nil {
-			return utils.WrapError("Encode rach_ConfigCommon_r17", err)
+	if ie.Rach_ConfigCommon_r17 != nil {
+		if err = ie.Rach_ConfigCommon_r17.Encode(w); err != nil {
+			return utils.WrapError("Encode Rach_ConfigCommon_r17", err)
 		}
 	}
-	if ie.msgA_ConfigCommon_r17 != nil {
-		if err = ie.msgA_ConfigCommon_r17.Encode(w); err != nil {
-			return utils.WrapError("Encode msgA_ConfigCommon_r17", err)
+	if ie.MsgA_ConfigCommon_r17 != nil {
+		if err = ie.MsgA_ConfigCommon_r17.Encode(w); err != nil {
+			return utils.WrapError("Encode MsgA_ConfigCommon_r17", err)
 		}
 	}
 	return nil
@@ -33,24 +33,24 @@ func (ie *AdditionalRACH_Config_r17) Encode(w *uper.UperWriter) error {
 
 func (ie *AdditionalRACH_Config_r17) Decode(r *uper.UperReader) error {
 	var err error
-	var rach_ConfigCommon_r17Present bool
-	if rach_ConfigCommon_r17Present, err = r.ReadBool(); err != nil {
+	var Rach_ConfigCommon_r17Present bool
+	if Rach_ConfigCommon_r17Present, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var msgA_ConfigCommon_r17Present bool
-	if msgA_ConfigCommon_r17Present, err = r.ReadBool(); err != nil {
+	var MsgA_ConfigCommon_r17Present bool
+	if MsgA_ConfigCommon_r17Present, err = r.ReadBool(); err != nil {
 		return err
 	}
-	if rach_ConfigCommon_r17Present {
-		ie.rach_ConfigCommon_r17 = new(RACH_ConfigCommon)
-		if err = ie.rach_ConfigCommon_r17.Decode(r); err != nil {
-			return utils.WrapError("Decode rach_ConfigCommon_r17", err)
+	if Rach_ConfigCommon_r17Present {
+		ie.Rach_ConfigCommon_r17 = new(RACH_ConfigCommon)
+		if err = ie.Rach_ConfigCommon_r17.Decode(r); err != nil {
+			return utils.WrapError("Decode Rach_ConfigCommon_r17", err)
 		}
 	}
-	if msgA_ConfigCommon_r17Present {
-		ie.msgA_ConfigCommon_r17 = new(MsgA_ConfigCommon_r16)
-		if err = ie.msgA_ConfigCommon_r17.Decode(r); err != nil {
-			return utils.WrapError("Decode msgA_ConfigCommon_r17", err)
+	if MsgA_ConfigCommon_r17Present {
+		ie.MsgA_ConfigCommon_r17 = new(MsgA_ConfigCommon_r16)
+		if err = ie.MsgA_ConfigCommon_r17.Decode(r); err != nil {
+			return utils.WrapError("Decode MsgA_ConfigCommon_r17", err)
 		}
 	}
 	return nil

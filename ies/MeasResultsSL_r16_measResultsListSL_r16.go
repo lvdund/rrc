@@ -9,12 +9,12 @@ import (
 
 const (
 	MeasResultsSL_r16_measResultsListSL_r16_Choice_nothing uint64 = iota
-	MeasResultsSL_r16_measResultsListSL_r16_Choice_measResultNR_SL_r16
+	MeasResultsSL_r16_measResultsListSL_r16_Choice_MeasResultNR_SL_r16
 )
 
 type MeasResultsSL_r16_measResultsListSL_r16 struct {
 	Choice              uint64
-	measResultNR_SL_r16 *MeasResultNR_SL_r16
+	MeasResultNR_SL_r16 *MeasResultNR_SL_r16
 }
 
 func (ie *MeasResultsSL_r16_measResultsListSL_r16) Encode(w *uper.UperWriter) error {
@@ -23,9 +23,9 @@ func (ie *MeasResultsSL_r16_measResultsListSL_r16) Encode(w *uper.UperWriter) er
 		return err
 	}
 	switch ie.Choice {
-	case MeasResultsSL_r16_measResultsListSL_r16_Choice_measResultNR_SL_r16:
-		if err = ie.measResultNR_SL_r16.Encode(w); err != nil {
-			err = utils.WrapError("Encode measResultNR_SL_r16", err)
+	case MeasResultsSL_r16_measResultsListSL_r16_Choice_MeasResultNR_SL_r16:
+		if err = ie.MeasResultNR_SL_r16.Encode(w); err != nil {
+			err = utils.WrapError("Encode MeasResultNR_SL_r16", err)
 		}
 	default:
 		err = fmt.Errorf("invalid choice: %d", ie.Choice)
@@ -39,10 +39,10 @@ func (ie *MeasResultsSL_r16_measResultsListSL_r16) Decode(r *uper.UperReader) er
 		return err
 	}
 	switch ie.Choice {
-	case MeasResultsSL_r16_measResultsListSL_r16_Choice_measResultNR_SL_r16:
-		ie.measResultNR_SL_r16 = new(MeasResultNR_SL_r16)
-		if err = ie.measResultNR_SL_r16.Decode(r); err != nil {
-			return utils.WrapError("Decode measResultNR_SL_r16", err)
+	case MeasResultsSL_r16_measResultsListSL_r16_Choice_MeasResultNR_SL_r16:
+		ie.MeasResultNR_SL_r16 = new(MeasResultNR_SL_r16)
+		if err = ie.MeasResultNR_SL_r16.Decode(r); err != nil {
+			return utils.WrapError("Decode MeasResultNR_SL_r16", err)
 		}
 	default:
 		return fmt.Errorf("invalid choice: %d", ie.Choice)

@@ -6,28 +6,28 @@ import (
 )
 
 type CarrierInfoNR struct {
-	carrierFreq          ARFCN_ValueNR     `madatory`
-	ssbSubcarrierSpacing SubcarrierSpacing `madatory`
-	smtc                 *SSB_MTC          `optional`
+	CarrierFreq          ARFCN_ValueNR     `madatory`
+	SsbSubcarrierSpacing SubcarrierSpacing `madatory`
+	Smtc                 *SSB_MTC          `optional`
 }
 
 func (ie *CarrierInfoNR) Encode(w *uper.UperWriter) error {
 	var err error
-	preambleBits := []bool{ie.smtc != nil}
+	preambleBits := []bool{ie.Smtc != nil}
 	for _, bit := range preambleBits {
 		if err = w.WriteBool(bit); err != nil {
 			return err
 		}
 	}
-	if err = ie.carrierFreq.Encode(w); err != nil {
-		return utils.WrapError("Encode carrierFreq", err)
+	if err = ie.CarrierFreq.Encode(w); err != nil {
+		return utils.WrapError("Encode CarrierFreq", err)
 	}
-	if err = ie.ssbSubcarrierSpacing.Encode(w); err != nil {
-		return utils.WrapError("Encode ssbSubcarrierSpacing", err)
+	if err = ie.SsbSubcarrierSpacing.Encode(w); err != nil {
+		return utils.WrapError("Encode SsbSubcarrierSpacing", err)
 	}
-	if ie.smtc != nil {
-		if err = ie.smtc.Encode(w); err != nil {
-			return utils.WrapError("Encode smtc", err)
+	if ie.Smtc != nil {
+		if err = ie.Smtc.Encode(w); err != nil {
+			return utils.WrapError("Encode Smtc", err)
 		}
 	}
 	return nil
@@ -35,20 +35,20 @@ func (ie *CarrierInfoNR) Encode(w *uper.UperWriter) error {
 
 func (ie *CarrierInfoNR) Decode(r *uper.UperReader) error {
 	var err error
-	var smtcPresent bool
-	if smtcPresent, err = r.ReadBool(); err != nil {
+	var SmtcPresent bool
+	if SmtcPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	if err = ie.carrierFreq.Decode(r); err != nil {
-		return utils.WrapError("Decode carrierFreq", err)
+	if err = ie.CarrierFreq.Decode(r); err != nil {
+		return utils.WrapError("Decode CarrierFreq", err)
 	}
-	if err = ie.ssbSubcarrierSpacing.Decode(r); err != nil {
-		return utils.WrapError("Decode ssbSubcarrierSpacing", err)
+	if err = ie.SsbSubcarrierSpacing.Decode(r); err != nil {
+		return utils.WrapError("Decode SsbSubcarrierSpacing", err)
 	}
-	if smtcPresent {
-		ie.smtc = new(SSB_MTC)
-		if err = ie.smtc.Decode(r); err != nil {
-			return utils.WrapError("Decode smtc", err)
+	if SmtcPresent {
+		ie.Smtc = new(SSB_MTC)
+		if err = ie.Smtc.Decode(r); err != nil {
+			return utils.WrapError("Decode Smtc", err)
 		}
 	}
 	return nil

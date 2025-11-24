@@ -6,35 +6,35 @@ import (
 )
 
 type FailureInfoRLC_Bearer struct {
-	cellGroupId            CellGroupId                       `madatory`
-	logicalChannelIdentity LogicalChannelIdentity            `madatory`
-	failureType            FailureInfoRLC_Bearer_failureType `madatory`
+	CellGroupId            CellGroupId                       `madatory`
+	LogicalChannelIdentity LogicalChannelIdentity            `madatory`
+	FailureType            FailureInfoRLC_Bearer_failureType `madatory`
 }
 
 func (ie *FailureInfoRLC_Bearer) Encode(w *uper.UperWriter) error {
 	var err error
-	if err = ie.cellGroupId.Encode(w); err != nil {
-		return utils.WrapError("Encode cellGroupId", err)
+	if err = ie.CellGroupId.Encode(w); err != nil {
+		return utils.WrapError("Encode CellGroupId", err)
 	}
-	if err = ie.logicalChannelIdentity.Encode(w); err != nil {
-		return utils.WrapError("Encode logicalChannelIdentity", err)
+	if err = ie.LogicalChannelIdentity.Encode(w); err != nil {
+		return utils.WrapError("Encode LogicalChannelIdentity", err)
 	}
-	if err = ie.failureType.Encode(w); err != nil {
-		return utils.WrapError("Encode failureType", err)
+	if err = ie.FailureType.Encode(w); err != nil {
+		return utils.WrapError("Encode FailureType", err)
 	}
 	return nil
 }
 
 func (ie *FailureInfoRLC_Bearer) Decode(r *uper.UperReader) error {
 	var err error
-	if err = ie.cellGroupId.Decode(r); err != nil {
-		return utils.WrapError("Decode cellGroupId", err)
+	if err = ie.CellGroupId.Decode(r); err != nil {
+		return utils.WrapError("Decode CellGroupId", err)
 	}
-	if err = ie.logicalChannelIdentity.Decode(r); err != nil {
-		return utils.WrapError("Decode logicalChannelIdentity", err)
+	if err = ie.LogicalChannelIdentity.Decode(r); err != nil {
+		return utils.WrapError("Decode LogicalChannelIdentity", err)
 	}
-	if err = ie.failureType.Decode(r); err != nil {
-		return utils.WrapError("Decode failureType", err)
+	if err = ie.FailureType.Decode(r); err != nil {
+		return utils.WrapError("Decode FailureType", err)
 	}
 	return nil
 }

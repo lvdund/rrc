@@ -6,28 +6,28 @@ import (
 )
 
 type SRS_SpatialRelationInfo_referenceSignal_srs struct {
-	resourceId SRS_ResourceId `madatory`
-	uplinkBWP  BWP_Id         `madatory`
+	ResourceId SRS_ResourceId `madatory`
+	UplinkBWP  BWP_Id         `madatory`
 }
 
 func (ie *SRS_SpatialRelationInfo_referenceSignal_srs) Encode(w *uper.UperWriter) error {
 	var err error
-	if err = ie.resourceId.Encode(w); err != nil {
-		return utils.WrapError("Encode resourceId", err)
+	if err = ie.ResourceId.Encode(w); err != nil {
+		return utils.WrapError("Encode ResourceId", err)
 	}
-	if err = ie.uplinkBWP.Encode(w); err != nil {
-		return utils.WrapError("Encode uplinkBWP", err)
+	if err = ie.UplinkBWP.Encode(w); err != nil {
+		return utils.WrapError("Encode UplinkBWP", err)
 	}
 	return nil
 }
 
 func (ie *SRS_SpatialRelationInfo_referenceSignal_srs) Decode(r *uper.UperReader) error {
 	var err error
-	if err = ie.resourceId.Decode(r); err != nil {
-		return utils.WrapError("Decode resourceId", err)
+	if err = ie.ResourceId.Decode(r); err != nil {
+		return utils.WrapError("Decode ResourceId", err)
 	}
-	if err = ie.uplinkBWP.Decode(r); err != nil {
-		return utils.WrapError("Decode uplinkBWP", err)
+	if err = ie.UplinkBWP.Decode(r); err != nil {
+		return utils.WrapError("Decode UplinkBWP", err)
 	}
 	return nil
 }

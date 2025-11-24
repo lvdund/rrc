@@ -6,63 +6,63 @@ import (
 )
 
 type PDCCH_BlindDetectionCA_CombIndicator_r17 struct {
-	pdcch_BlindDetectionCA1_r17 *int64 `lb:1,ub:15,optional`
-	pdcch_BlindDetectionCA2_r17 *int64 `lb:1,ub:15,optional`
-	pdcch_BlindDetectionCA3_r17 int64  `lb:1,ub:15,madatory`
+	Pdcch_BlindDetectionCA1_r17 *int64 `lb:1,ub:15,optional`
+	Pdcch_BlindDetectionCA2_r17 *int64 `lb:1,ub:15,optional`
+	Pdcch_BlindDetectionCA3_r17 int64  `lb:1,ub:15,madatory`
 }
 
 func (ie *PDCCH_BlindDetectionCA_CombIndicator_r17) Encode(w *uper.UperWriter) error {
 	var err error
-	preambleBits := []bool{ie.pdcch_BlindDetectionCA1_r17 != nil, ie.pdcch_BlindDetectionCA2_r17 != nil}
+	preambleBits := []bool{ie.Pdcch_BlindDetectionCA1_r17 != nil, ie.Pdcch_BlindDetectionCA2_r17 != nil}
 	for _, bit := range preambleBits {
 		if err = w.WriteBool(bit); err != nil {
 			return err
 		}
 	}
-	if ie.pdcch_BlindDetectionCA1_r17 != nil {
-		if err = w.WriteInteger(*ie.pdcch_BlindDetectionCA1_r17, &uper.Constraint{Lb: 1, Ub: 15}, false); err != nil {
-			return utils.WrapError("Encode pdcch_BlindDetectionCA1_r17", err)
+	if ie.Pdcch_BlindDetectionCA1_r17 != nil {
+		if err = w.WriteInteger(*ie.Pdcch_BlindDetectionCA1_r17, &uper.Constraint{Lb: 1, Ub: 15}, false); err != nil {
+			return utils.WrapError("Encode Pdcch_BlindDetectionCA1_r17", err)
 		}
 	}
-	if ie.pdcch_BlindDetectionCA2_r17 != nil {
-		if err = w.WriteInteger(*ie.pdcch_BlindDetectionCA2_r17, &uper.Constraint{Lb: 1, Ub: 15}, false); err != nil {
-			return utils.WrapError("Encode pdcch_BlindDetectionCA2_r17", err)
+	if ie.Pdcch_BlindDetectionCA2_r17 != nil {
+		if err = w.WriteInteger(*ie.Pdcch_BlindDetectionCA2_r17, &uper.Constraint{Lb: 1, Ub: 15}, false); err != nil {
+			return utils.WrapError("Encode Pdcch_BlindDetectionCA2_r17", err)
 		}
 	}
-	if err = w.WriteInteger(ie.pdcch_BlindDetectionCA3_r17, &uper.Constraint{Lb: 1, Ub: 15}, false); err != nil {
-		return utils.WrapError("WriteInteger pdcch_BlindDetectionCA3_r17", err)
+	if err = w.WriteInteger(ie.Pdcch_BlindDetectionCA3_r17, &uper.Constraint{Lb: 1, Ub: 15}, false); err != nil {
+		return utils.WrapError("WriteInteger Pdcch_BlindDetectionCA3_r17", err)
 	}
 	return nil
 }
 
 func (ie *PDCCH_BlindDetectionCA_CombIndicator_r17) Decode(r *uper.UperReader) error {
 	var err error
-	var pdcch_BlindDetectionCA1_r17Present bool
-	if pdcch_BlindDetectionCA1_r17Present, err = r.ReadBool(); err != nil {
+	var Pdcch_BlindDetectionCA1_r17Present bool
+	if Pdcch_BlindDetectionCA1_r17Present, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var pdcch_BlindDetectionCA2_r17Present bool
-	if pdcch_BlindDetectionCA2_r17Present, err = r.ReadBool(); err != nil {
+	var Pdcch_BlindDetectionCA2_r17Present bool
+	if Pdcch_BlindDetectionCA2_r17Present, err = r.ReadBool(); err != nil {
 		return err
 	}
-	if pdcch_BlindDetectionCA1_r17Present {
-		var tmp_int_pdcch_BlindDetectionCA1_r17 int64
-		if tmp_int_pdcch_BlindDetectionCA1_r17, err = r.ReadInteger(&uper.Constraint{Lb: 1, Ub: 15}, false); err != nil {
-			return utils.WrapError("Decode pdcch_BlindDetectionCA1_r17", err)
+	if Pdcch_BlindDetectionCA1_r17Present {
+		var tmp_int_Pdcch_BlindDetectionCA1_r17 int64
+		if tmp_int_Pdcch_BlindDetectionCA1_r17, err = r.ReadInteger(&uper.Constraint{Lb: 1, Ub: 15}, false); err != nil {
+			return utils.WrapError("Decode Pdcch_BlindDetectionCA1_r17", err)
 		}
-		ie.pdcch_BlindDetectionCA1_r17 = &tmp_int_pdcch_BlindDetectionCA1_r17
+		ie.Pdcch_BlindDetectionCA1_r17 = &tmp_int_Pdcch_BlindDetectionCA1_r17
 	}
-	if pdcch_BlindDetectionCA2_r17Present {
-		var tmp_int_pdcch_BlindDetectionCA2_r17 int64
-		if tmp_int_pdcch_BlindDetectionCA2_r17, err = r.ReadInteger(&uper.Constraint{Lb: 1, Ub: 15}, false); err != nil {
-			return utils.WrapError("Decode pdcch_BlindDetectionCA2_r17", err)
+	if Pdcch_BlindDetectionCA2_r17Present {
+		var tmp_int_Pdcch_BlindDetectionCA2_r17 int64
+		if tmp_int_Pdcch_BlindDetectionCA2_r17, err = r.ReadInteger(&uper.Constraint{Lb: 1, Ub: 15}, false); err != nil {
+			return utils.WrapError("Decode Pdcch_BlindDetectionCA2_r17", err)
 		}
-		ie.pdcch_BlindDetectionCA2_r17 = &tmp_int_pdcch_BlindDetectionCA2_r17
+		ie.Pdcch_BlindDetectionCA2_r17 = &tmp_int_Pdcch_BlindDetectionCA2_r17
 	}
-	var tmp_int_pdcch_BlindDetectionCA3_r17 int64
-	if tmp_int_pdcch_BlindDetectionCA3_r17, err = r.ReadInteger(&uper.Constraint{Lb: 1, Ub: 15}, false); err != nil {
-		return utils.WrapError("ReadInteger pdcch_BlindDetectionCA3_r17", err)
+	var tmp_int_Pdcch_BlindDetectionCA3_r17 int64
+	if tmp_int_Pdcch_BlindDetectionCA3_r17, err = r.ReadInteger(&uper.Constraint{Lb: 1, Ub: 15}, false); err != nil {
+		return utils.WrapError("ReadInteger Pdcch_BlindDetectionCA3_r17", err)
 	}
-	ie.pdcch_BlindDetectionCA3_r17 = tmp_int_pdcch_BlindDetectionCA3_r17
+	ie.Pdcch_BlindDetectionCA3_r17 = tmp_int_Pdcch_BlindDetectionCA3_r17
 	return nil
 }

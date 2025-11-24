@@ -6,24 +6,24 @@ import (
 )
 
 type ResultsPerSSB_Index struct {
-	ssb_Index   SSB_Index            `madatory`
-	ssb_Results *MeasQuantityResults `optional`
+	Ssb_Index   SSB_Index            `madatory`
+	Ssb_Results *MeasQuantityResults `optional`
 }
 
 func (ie *ResultsPerSSB_Index) Encode(w *uper.UperWriter) error {
 	var err error
-	preambleBits := []bool{ie.ssb_Results != nil}
+	preambleBits := []bool{ie.Ssb_Results != nil}
 	for _, bit := range preambleBits {
 		if err = w.WriteBool(bit); err != nil {
 			return err
 		}
 	}
-	if err = ie.ssb_Index.Encode(w); err != nil {
-		return utils.WrapError("Encode ssb_Index", err)
+	if err = ie.Ssb_Index.Encode(w); err != nil {
+		return utils.WrapError("Encode Ssb_Index", err)
 	}
-	if ie.ssb_Results != nil {
-		if err = ie.ssb_Results.Encode(w); err != nil {
-			return utils.WrapError("Encode ssb_Results", err)
+	if ie.Ssb_Results != nil {
+		if err = ie.Ssb_Results.Encode(w); err != nil {
+			return utils.WrapError("Encode Ssb_Results", err)
 		}
 	}
 	return nil
@@ -31,17 +31,17 @@ func (ie *ResultsPerSSB_Index) Encode(w *uper.UperWriter) error {
 
 func (ie *ResultsPerSSB_Index) Decode(r *uper.UperReader) error {
 	var err error
-	var ssb_ResultsPresent bool
-	if ssb_ResultsPresent, err = r.ReadBool(); err != nil {
+	var Ssb_ResultsPresent bool
+	if Ssb_ResultsPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	if err = ie.ssb_Index.Decode(r); err != nil {
-		return utils.WrapError("Decode ssb_Index", err)
+	if err = ie.Ssb_Index.Decode(r); err != nil {
+		return utils.WrapError("Decode Ssb_Index", err)
 	}
-	if ssb_ResultsPresent {
-		ie.ssb_Results = new(MeasQuantityResults)
-		if err = ie.ssb_Results.Decode(r); err != nil {
-			return utils.WrapError("Decode ssb_Results", err)
+	if Ssb_ResultsPresent {
+		ie.Ssb_Results = new(MeasQuantityResults)
+		if err = ie.Ssb_Results.Decode(r); err != nil {
+			return utils.WrapError("Decode Ssb_Results", err)
 		}
 	}
 	return nil

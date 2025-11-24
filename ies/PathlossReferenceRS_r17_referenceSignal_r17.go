@@ -9,14 +9,14 @@ import (
 
 const (
 	PathlossReferenceRS_r17_referenceSignal_r17_Choice_nothing uint64 = iota
-	PathlossReferenceRS_r17_referenceSignal_r17_Choice_ssb_Index
-	PathlossReferenceRS_r17_referenceSignal_r17_Choice_csi_RS_Index
+	PathlossReferenceRS_r17_referenceSignal_r17_Choice_Ssb_Index
+	PathlossReferenceRS_r17_referenceSignal_r17_Choice_Csi_RS_Index
 )
 
 type PathlossReferenceRS_r17_referenceSignal_r17 struct {
 	Choice       uint64
-	ssb_Index    *SSB_Index
-	csi_RS_Index *NZP_CSI_RS_ResourceId
+	Ssb_Index    *SSB_Index
+	Csi_RS_Index *NZP_CSI_RS_ResourceId
 }
 
 func (ie *PathlossReferenceRS_r17_referenceSignal_r17) Encode(w *uper.UperWriter) error {
@@ -25,13 +25,13 @@ func (ie *PathlossReferenceRS_r17_referenceSignal_r17) Encode(w *uper.UperWriter
 		return err
 	}
 	switch ie.Choice {
-	case PathlossReferenceRS_r17_referenceSignal_r17_Choice_ssb_Index:
-		if err = ie.ssb_Index.Encode(w); err != nil {
-			err = utils.WrapError("Encode ssb_Index", err)
+	case PathlossReferenceRS_r17_referenceSignal_r17_Choice_Ssb_Index:
+		if err = ie.Ssb_Index.Encode(w); err != nil {
+			err = utils.WrapError("Encode Ssb_Index", err)
 		}
-	case PathlossReferenceRS_r17_referenceSignal_r17_Choice_csi_RS_Index:
-		if err = ie.csi_RS_Index.Encode(w); err != nil {
-			err = utils.WrapError("Encode csi_RS_Index", err)
+	case PathlossReferenceRS_r17_referenceSignal_r17_Choice_Csi_RS_Index:
+		if err = ie.Csi_RS_Index.Encode(w); err != nil {
+			err = utils.WrapError("Encode Csi_RS_Index", err)
 		}
 	default:
 		err = fmt.Errorf("invalid choice: %d", ie.Choice)
@@ -45,15 +45,15 @@ func (ie *PathlossReferenceRS_r17_referenceSignal_r17) Decode(r *uper.UperReader
 		return err
 	}
 	switch ie.Choice {
-	case PathlossReferenceRS_r17_referenceSignal_r17_Choice_ssb_Index:
-		ie.ssb_Index = new(SSB_Index)
-		if err = ie.ssb_Index.Decode(r); err != nil {
-			return utils.WrapError("Decode ssb_Index", err)
+	case PathlossReferenceRS_r17_referenceSignal_r17_Choice_Ssb_Index:
+		ie.Ssb_Index = new(SSB_Index)
+		if err = ie.Ssb_Index.Decode(r); err != nil {
+			return utils.WrapError("Decode Ssb_Index", err)
 		}
-	case PathlossReferenceRS_r17_referenceSignal_r17_Choice_csi_RS_Index:
-		ie.csi_RS_Index = new(NZP_CSI_RS_ResourceId)
-		if err = ie.csi_RS_Index.Decode(r); err != nil {
-			return utils.WrapError("Decode csi_RS_Index", err)
+	case PathlossReferenceRS_r17_referenceSignal_r17_Choice_Csi_RS_Index:
+		ie.Csi_RS_Index = new(NZP_CSI_RS_ResourceId)
+		if err = ie.Csi_RS_Index.Decode(r); err != nil {
+			return utils.WrapError("Decode Csi_RS_Index", err)
 		}
 	default:
 		return fmt.Errorf("invalid choice: %d", ie.Choice)

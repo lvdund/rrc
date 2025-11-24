@@ -9,14 +9,14 @@ import (
 
 const (
 	CG_CandidateList_CriticalExtensions_Choice_nothing uint64 = iota
-	CG_CandidateList_CriticalExtensions_Choice_c1
-	CG_CandidateList_CriticalExtensions_Choice_criticalExtensionsFuture
+	CG_CandidateList_CriticalExtensions_Choice_C1
+	CG_CandidateList_CriticalExtensions_Choice_CriticalExtensionsFuture
 )
 
 type CG_CandidateList_CriticalExtensions struct {
 	Choice                   uint64
-	c1                       *CG_CandidateList_CriticalExtensions_C1
-	criticalExtensionsFuture interface{} `madatory`
+	C1                       *CG_CandidateList_CriticalExtensions_C1
+	CriticalExtensionsFuture interface{} `madatory`
 }
 
 func (ie *CG_CandidateList_CriticalExtensions) Encode(w *uper.UperWriter) error {
@@ -25,11 +25,11 @@ func (ie *CG_CandidateList_CriticalExtensions) Encode(w *uper.UperWriter) error 
 		return err
 	}
 	switch ie.Choice {
-	case CG_CandidateList_CriticalExtensions_Choice_c1:
-		if err = ie.c1.Encode(w); err != nil {
-			err = utils.WrapError("Encode c1", err)
+	case CG_CandidateList_CriticalExtensions_Choice_C1:
+		if err = ie.C1.Encode(w); err != nil {
+			err = utils.WrapError("Encode C1", err)
 		}
-	case CG_CandidateList_CriticalExtensions_Choice_criticalExtensionsFuture:
+	case CG_CandidateList_CriticalExtensions_Choice_CriticalExtensionsFuture:
 		// interface{} field of choice - nothing to encode
 	default:
 		err = fmt.Errorf("invalid choice: %d", ie.Choice)
@@ -43,12 +43,12 @@ func (ie *CG_CandidateList_CriticalExtensions) Decode(r *uper.UperReader) error 
 		return err
 	}
 	switch ie.Choice {
-	case CG_CandidateList_CriticalExtensions_Choice_c1:
-		ie.c1 = new(CG_CandidateList_CriticalExtensions_C1)
-		if err = ie.c1.Decode(r); err != nil {
-			return utils.WrapError("Decode c1", err)
+	case CG_CandidateList_CriticalExtensions_Choice_C1:
+		ie.C1 = new(CG_CandidateList_CriticalExtensions_C1)
+		if err = ie.C1.Decode(r); err != nil {
+			return utils.WrapError("Decode C1", err)
 		}
-	case CG_CandidateList_CriticalExtensions_Choice_criticalExtensionsFuture:
+	case CG_CandidateList_CriticalExtensions_Choice_CriticalExtensionsFuture:
 		// interface{} field of choice - nothing to decode
 	default:
 		return fmt.Errorf("invalid choice: %d", ie.Choice)

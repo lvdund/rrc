@@ -9,14 +9,14 @@ import (
 
 const (
 	LocationAndBandwidthBroadcast_r17_Choice_nothing uint64 = iota
-	LocationAndBandwidthBroadcast_r17_Choice_sameAsSib1ConfiguredLocationAndBW
-	LocationAndBandwidthBroadcast_r17_Choice_locationAndBandwidth
+	LocationAndBandwidthBroadcast_r17_Choice_SameAsSib1ConfiguredLocationAndBW
+	LocationAndBandwidthBroadcast_r17_Choice_LocationAndBandwidth
 )
 
 type LocationAndBandwidthBroadcast_r17 struct {
 	Choice                            uint64
-	sameAsSib1ConfiguredLocationAndBW uper.NULL `madatory`
-	locationAndBandwidth              int64     `lb:0,ub:37949,madatory`
+	SameAsSib1ConfiguredLocationAndBW uper.NULL `madatory`
+	LocationAndBandwidth              int64     `lb:0,ub:37949,madatory`
 }
 
 func (ie *LocationAndBandwidthBroadcast_r17) Encode(w *uper.UperWriter) error {
@@ -25,13 +25,13 @@ func (ie *LocationAndBandwidthBroadcast_r17) Encode(w *uper.UperWriter) error {
 		return err
 	}
 	switch ie.Choice {
-	case LocationAndBandwidthBroadcast_r17_Choice_sameAsSib1ConfiguredLocationAndBW:
+	case LocationAndBandwidthBroadcast_r17_Choice_SameAsSib1ConfiguredLocationAndBW:
 		if err := w.WriteNull(); err != nil {
-			err = utils.WrapError("Encode sameAsSib1ConfiguredLocationAndBW", err)
+			err = utils.WrapError("Encode SameAsSib1ConfiguredLocationAndBW", err)
 		}
-	case LocationAndBandwidthBroadcast_r17_Choice_locationAndBandwidth:
-		if err = w.WriteInteger(int64(ie.locationAndBandwidth), &uper.Constraint{Lb: 0, Ub: 37949}, false); err != nil {
-			err = utils.WrapError("Encode locationAndBandwidth", err)
+	case LocationAndBandwidthBroadcast_r17_Choice_LocationAndBandwidth:
+		if err = w.WriteInteger(int64(ie.LocationAndBandwidth), &uper.Constraint{Lb: 0, Ub: 37949}, false); err != nil {
+			err = utils.WrapError("Encode LocationAndBandwidth", err)
 		}
 	default:
 		err = fmt.Errorf("invalid choice: %d", ie.Choice)
@@ -45,16 +45,16 @@ func (ie *LocationAndBandwidthBroadcast_r17) Decode(r *uper.UperReader) error {
 		return err
 	}
 	switch ie.Choice {
-	case LocationAndBandwidthBroadcast_r17_Choice_sameAsSib1ConfiguredLocationAndBW:
+	case LocationAndBandwidthBroadcast_r17_Choice_SameAsSib1ConfiguredLocationAndBW:
 		if err := r.ReadNull(); err != nil {
-			return utils.WrapError("Decode sameAsSib1ConfiguredLocationAndBW", err)
+			return utils.WrapError("Decode SameAsSib1ConfiguredLocationAndBW", err)
 		}
-	case LocationAndBandwidthBroadcast_r17_Choice_locationAndBandwidth:
-		var tmp_int_locationAndBandwidth int64
-		if tmp_int_locationAndBandwidth, err = r.ReadInteger(&uper.Constraint{Lb: 0, Ub: 37949}, false); err != nil {
-			return utils.WrapError("Decode locationAndBandwidth", err)
+	case LocationAndBandwidthBroadcast_r17_Choice_LocationAndBandwidth:
+		var tmp_int_LocationAndBandwidth int64
+		if tmp_int_LocationAndBandwidth, err = r.ReadInteger(&uper.Constraint{Lb: 0, Ub: 37949}, false); err != nil {
+			return utils.WrapError("Decode LocationAndBandwidth", err)
 		}
-		ie.locationAndBandwidth = tmp_int_locationAndBandwidth
+		ie.LocationAndBandwidth = tmp_int_LocationAndBandwidth
 	default:
 		return fmt.Errorf("invalid choice: %d", ie.Choice)
 	}

@@ -6,26 +6,26 @@ import (
 )
 
 type ServCellInfoXCG_NR_r16 struct {
-	dl_FreqInfo_NR_r16 *FrequencyConfig_NR_r16 `optional`
-	ul_FreqInfo_NR_r16 *FrequencyConfig_NR_r16 `optional`
+	Dl_FreqInfo_NR_r16 *FrequencyConfig_NR_r16 `optional`
+	Ul_FreqInfo_NR_r16 *FrequencyConfig_NR_r16 `optional`
 }
 
 func (ie *ServCellInfoXCG_NR_r16) Encode(w *uper.UperWriter) error {
 	var err error
-	preambleBits := []bool{ie.dl_FreqInfo_NR_r16 != nil, ie.ul_FreqInfo_NR_r16 != nil}
+	preambleBits := []bool{ie.Dl_FreqInfo_NR_r16 != nil, ie.Ul_FreqInfo_NR_r16 != nil}
 	for _, bit := range preambleBits {
 		if err = w.WriteBool(bit); err != nil {
 			return err
 		}
 	}
-	if ie.dl_FreqInfo_NR_r16 != nil {
-		if err = ie.dl_FreqInfo_NR_r16.Encode(w); err != nil {
-			return utils.WrapError("Encode dl_FreqInfo_NR_r16", err)
+	if ie.Dl_FreqInfo_NR_r16 != nil {
+		if err = ie.Dl_FreqInfo_NR_r16.Encode(w); err != nil {
+			return utils.WrapError("Encode Dl_FreqInfo_NR_r16", err)
 		}
 	}
-	if ie.ul_FreqInfo_NR_r16 != nil {
-		if err = ie.ul_FreqInfo_NR_r16.Encode(w); err != nil {
-			return utils.WrapError("Encode ul_FreqInfo_NR_r16", err)
+	if ie.Ul_FreqInfo_NR_r16 != nil {
+		if err = ie.Ul_FreqInfo_NR_r16.Encode(w); err != nil {
+			return utils.WrapError("Encode Ul_FreqInfo_NR_r16", err)
 		}
 	}
 	return nil
@@ -33,24 +33,24 @@ func (ie *ServCellInfoXCG_NR_r16) Encode(w *uper.UperWriter) error {
 
 func (ie *ServCellInfoXCG_NR_r16) Decode(r *uper.UperReader) error {
 	var err error
-	var dl_FreqInfo_NR_r16Present bool
-	if dl_FreqInfo_NR_r16Present, err = r.ReadBool(); err != nil {
+	var Dl_FreqInfo_NR_r16Present bool
+	if Dl_FreqInfo_NR_r16Present, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var ul_FreqInfo_NR_r16Present bool
-	if ul_FreqInfo_NR_r16Present, err = r.ReadBool(); err != nil {
+	var Ul_FreqInfo_NR_r16Present bool
+	if Ul_FreqInfo_NR_r16Present, err = r.ReadBool(); err != nil {
 		return err
 	}
-	if dl_FreqInfo_NR_r16Present {
-		ie.dl_FreqInfo_NR_r16 = new(FrequencyConfig_NR_r16)
-		if err = ie.dl_FreqInfo_NR_r16.Decode(r); err != nil {
-			return utils.WrapError("Decode dl_FreqInfo_NR_r16", err)
+	if Dl_FreqInfo_NR_r16Present {
+		ie.Dl_FreqInfo_NR_r16 = new(FrequencyConfig_NR_r16)
+		if err = ie.Dl_FreqInfo_NR_r16.Decode(r); err != nil {
+			return utils.WrapError("Decode Dl_FreqInfo_NR_r16", err)
 		}
 	}
-	if ul_FreqInfo_NR_r16Present {
-		ie.ul_FreqInfo_NR_r16 = new(FrequencyConfig_NR_r16)
-		if err = ie.ul_FreqInfo_NR_r16.Decode(r); err != nil {
-			return utils.WrapError("Decode ul_FreqInfo_NR_r16", err)
+	if Ul_FreqInfo_NR_r16Present {
+		ie.Ul_FreqInfo_NR_r16 = new(FrequencyConfig_NR_r16)
+		if err = ie.Ul_FreqInfo_NR_r16.Decode(r); err != nil {
+			return utils.WrapError("Decode Ul_FreqInfo_NR_r16", err)
 		}
 	}
 	return nil

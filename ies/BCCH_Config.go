@@ -6,21 +6,21 @@ import (
 )
 
 type BCCH_Config struct {
-	modificationPeriodCoeff BCCH_Config_modificationPeriodCoeff `madatory`
+	ModificationPeriodCoeff BCCH_Config_modificationPeriodCoeff `madatory`
 }
 
 func (ie *BCCH_Config) Encode(w *uper.UperWriter) error {
 	var err error
-	if err = ie.modificationPeriodCoeff.Encode(w); err != nil {
-		return utils.WrapError("Encode modificationPeriodCoeff", err)
+	if err = ie.ModificationPeriodCoeff.Encode(w); err != nil {
+		return utils.WrapError("Encode ModificationPeriodCoeff", err)
 	}
 	return nil
 }
 
 func (ie *BCCH_Config) Decode(r *uper.UperReader) error {
 	var err error
-	if err = ie.modificationPeriodCoeff.Decode(r); err != nil {
-		return utils.WrapError("Decode modificationPeriodCoeff", err)
+	if err = ie.ModificationPeriodCoeff.Decode(r); err != nil {
+		return utils.WrapError("Decode ModificationPeriodCoeff", err)
 	}
 	return nil
 }

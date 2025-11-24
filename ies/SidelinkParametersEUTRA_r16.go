@@ -6,42 +6,42 @@ import (
 )
 
 type SidelinkParametersEUTRA_r16 struct {
-	sl_ParametersEUTRA1_r16            *[]byte                 `optional`
-	sl_ParametersEUTRA2_r16            *[]byte                 `optional`
-	sl_ParametersEUTRA3_r16            *[]byte                 `optional`
-	supportedBandListSidelinkEUTRA_r16 []BandSidelinkEUTRA_r16 `lb:1,ub:maxBandsEUTRA,optional`
+	Sl_ParametersEUTRA1_r16            *[]byte                 `optional`
+	Sl_ParametersEUTRA2_r16            *[]byte                 `optional`
+	Sl_ParametersEUTRA3_r16            *[]byte                 `optional`
+	SupportedBandListSidelinkEUTRA_r16 []BandSidelinkEUTRA_r16 `lb:1,ub:maxBandsEUTRA,optional`
 }
 
 func (ie *SidelinkParametersEUTRA_r16) Encode(w *uper.UperWriter) error {
 	var err error
-	preambleBits := []bool{ie.sl_ParametersEUTRA1_r16 != nil, ie.sl_ParametersEUTRA2_r16 != nil, ie.sl_ParametersEUTRA3_r16 != nil, len(ie.supportedBandListSidelinkEUTRA_r16) > 0}
+	preambleBits := []bool{ie.Sl_ParametersEUTRA1_r16 != nil, ie.Sl_ParametersEUTRA2_r16 != nil, ie.Sl_ParametersEUTRA3_r16 != nil, len(ie.SupportedBandListSidelinkEUTRA_r16) > 0}
 	for _, bit := range preambleBits {
 		if err = w.WriteBool(bit); err != nil {
 			return err
 		}
 	}
-	if ie.sl_ParametersEUTRA1_r16 != nil {
-		if err = w.WriteOctetString(*ie.sl_ParametersEUTRA1_r16, &uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
-			return utils.WrapError("Encode sl_ParametersEUTRA1_r16", err)
+	if ie.Sl_ParametersEUTRA1_r16 != nil {
+		if err = w.WriteOctetString(*ie.Sl_ParametersEUTRA1_r16, &uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+			return utils.WrapError("Encode Sl_ParametersEUTRA1_r16", err)
 		}
 	}
-	if ie.sl_ParametersEUTRA2_r16 != nil {
-		if err = w.WriteOctetString(*ie.sl_ParametersEUTRA2_r16, &uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
-			return utils.WrapError("Encode sl_ParametersEUTRA2_r16", err)
+	if ie.Sl_ParametersEUTRA2_r16 != nil {
+		if err = w.WriteOctetString(*ie.Sl_ParametersEUTRA2_r16, &uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+			return utils.WrapError("Encode Sl_ParametersEUTRA2_r16", err)
 		}
 	}
-	if ie.sl_ParametersEUTRA3_r16 != nil {
-		if err = w.WriteOctetString(*ie.sl_ParametersEUTRA3_r16, &uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
-			return utils.WrapError("Encode sl_ParametersEUTRA3_r16", err)
+	if ie.Sl_ParametersEUTRA3_r16 != nil {
+		if err = w.WriteOctetString(*ie.Sl_ParametersEUTRA3_r16, &uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+			return utils.WrapError("Encode Sl_ParametersEUTRA3_r16", err)
 		}
 	}
-	if len(ie.supportedBandListSidelinkEUTRA_r16) > 0 {
-		tmp_supportedBandListSidelinkEUTRA_r16 := utils.NewSequence[*BandSidelinkEUTRA_r16]([]*BandSidelinkEUTRA_r16{}, uper.Constraint{Lb: 1, Ub: maxBandsEUTRA}, false)
-		for _, i := range ie.supportedBandListSidelinkEUTRA_r16 {
-			tmp_supportedBandListSidelinkEUTRA_r16.Value = append(tmp_supportedBandListSidelinkEUTRA_r16.Value, &i)
+	if len(ie.SupportedBandListSidelinkEUTRA_r16) > 0 {
+		tmp_SupportedBandListSidelinkEUTRA_r16 := utils.NewSequence[*BandSidelinkEUTRA_r16]([]*BandSidelinkEUTRA_r16{}, uper.Constraint{Lb: 1, Ub: maxBandsEUTRA}, false)
+		for _, i := range ie.SupportedBandListSidelinkEUTRA_r16 {
+			tmp_SupportedBandListSidelinkEUTRA_r16.Value = append(tmp_SupportedBandListSidelinkEUTRA_r16.Value, &i)
 		}
-		if err = tmp_supportedBandListSidelinkEUTRA_r16.Encode(w); err != nil {
-			return utils.WrapError("Encode supportedBandListSidelinkEUTRA_r16", err)
+		if err = tmp_SupportedBandListSidelinkEUTRA_r16.Encode(w); err != nil {
+			return utils.WrapError("Encode SupportedBandListSidelinkEUTRA_r16", err)
 		}
 	}
 	return nil
@@ -49,54 +49,54 @@ func (ie *SidelinkParametersEUTRA_r16) Encode(w *uper.UperWriter) error {
 
 func (ie *SidelinkParametersEUTRA_r16) Decode(r *uper.UperReader) error {
 	var err error
-	var sl_ParametersEUTRA1_r16Present bool
-	if sl_ParametersEUTRA1_r16Present, err = r.ReadBool(); err != nil {
+	var Sl_ParametersEUTRA1_r16Present bool
+	if Sl_ParametersEUTRA1_r16Present, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var sl_ParametersEUTRA2_r16Present bool
-	if sl_ParametersEUTRA2_r16Present, err = r.ReadBool(); err != nil {
+	var Sl_ParametersEUTRA2_r16Present bool
+	if Sl_ParametersEUTRA2_r16Present, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var sl_ParametersEUTRA3_r16Present bool
-	if sl_ParametersEUTRA3_r16Present, err = r.ReadBool(); err != nil {
+	var Sl_ParametersEUTRA3_r16Present bool
+	if Sl_ParametersEUTRA3_r16Present, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var supportedBandListSidelinkEUTRA_r16Present bool
-	if supportedBandListSidelinkEUTRA_r16Present, err = r.ReadBool(); err != nil {
+	var SupportedBandListSidelinkEUTRA_r16Present bool
+	if SupportedBandListSidelinkEUTRA_r16Present, err = r.ReadBool(); err != nil {
 		return err
 	}
-	if sl_ParametersEUTRA1_r16Present {
-		var tmp_os_sl_ParametersEUTRA1_r16 []byte
-		if tmp_os_sl_ParametersEUTRA1_r16, err = r.ReadOctetString(&uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
-			return utils.WrapError("Decode sl_ParametersEUTRA1_r16", err)
+	if Sl_ParametersEUTRA1_r16Present {
+		var tmp_os_Sl_ParametersEUTRA1_r16 []byte
+		if tmp_os_Sl_ParametersEUTRA1_r16, err = r.ReadOctetString(&uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+			return utils.WrapError("Decode Sl_ParametersEUTRA1_r16", err)
 		}
-		ie.sl_ParametersEUTRA1_r16 = &tmp_os_sl_ParametersEUTRA1_r16
+		ie.Sl_ParametersEUTRA1_r16 = &tmp_os_Sl_ParametersEUTRA1_r16
 	}
-	if sl_ParametersEUTRA2_r16Present {
-		var tmp_os_sl_ParametersEUTRA2_r16 []byte
-		if tmp_os_sl_ParametersEUTRA2_r16, err = r.ReadOctetString(&uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
-			return utils.WrapError("Decode sl_ParametersEUTRA2_r16", err)
+	if Sl_ParametersEUTRA2_r16Present {
+		var tmp_os_Sl_ParametersEUTRA2_r16 []byte
+		if tmp_os_Sl_ParametersEUTRA2_r16, err = r.ReadOctetString(&uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+			return utils.WrapError("Decode Sl_ParametersEUTRA2_r16", err)
 		}
-		ie.sl_ParametersEUTRA2_r16 = &tmp_os_sl_ParametersEUTRA2_r16
+		ie.Sl_ParametersEUTRA2_r16 = &tmp_os_Sl_ParametersEUTRA2_r16
 	}
-	if sl_ParametersEUTRA3_r16Present {
-		var tmp_os_sl_ParametersEUTRA3_r16 []byte
-		if tmp_os_sl_ParametersEUTRA3_r16, err = r.ReadOctetString(&uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
-			return utils.WrapError("Decode sl_ParametersEUTRA3_r16", err)
+	if Sl_ParametersEUTRA3_r16Present {
+		var tmp_os_Sl_ParametersEUTRA3_r16 []byte
+		if tmp_os_Sl_ParametersEUTRA3_r16, err = r.ReadOctetString(&uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+			return utils.WrapError("Decode Sl_ParametersEUTRA3_r16", err)
 		}
-		ie.sl_ParametersEUTRA3_r16 = &tmp_os_sl_ParametersEUTRA3_r16
+		ie.Sl_ParametersEUTRA3_r16 = &tmp_os_Sl_ParametersEUTRA3_r16
 	}
-	if supportedBandListSidelinkEUTRA_r16Present {
-		tmp_supportedBandListSidelinkEUTRA_r16 := utils.NewSequence[*BandSidelinkEUTRA_r16]([]*BandSidelinkEUTRA_r16{}, uper.Constraint{Lb: 1, Ub: maxBandsEUTRA}, false)
-		fn_supportedBandListSidelinkEUTRA_r16 := func() *BandSidelinkEUTRA_r16 {
+	if SupportedBandListSidelinkEUTRA_r16Present {
+		tmp_SupportedBandListSidelinkEUTRA_r16 := utils.NewSequence[*BandSidelinkEUTRA_r16]([]*BandSidelinkEUTRA_r16{}, uper.Constraint{Lb: 1, Ub: maxBandsEUTRA}, false)
+		fn_SupportedBandListSidelinkEUTRA_r16 := func() *BandSidelinkEUTRA_r16 {
 			return new(BandSidelinkEUTRA_r16)
 		}
-		if err = tmp_supportedBandListSidelinkEUTRA_r16.Decode(r, fn_supportedBandListSidelinkEUTRA_r16); err != nil {
-			return utils.WrapError("Decode supportedBandListSidelinkEUTRA_r16", err)
+		if err = tmp_SupportedBandListSidelinkEUTRA_r16.Decode(r, fn_SupportedBandListSidelinkEUTRA_r16); err != nil {
+			return utils.WrapError("Decode SupportedBandListSidelinkEUTRA_r16", err)
 		}
-		ie.supportedBandListSidelinkEUTRA_r16 = []BandSidelinkEUTRA_r16{}
-		for _, i := range tmp_supportedBandListSidelinkEUTRA_r16.Value {
-			ie.supportedBandListSidelinkEUTRA_r16 = append(ie.supportedBandListSidelinkEUTRA_r16, *i)
+		ie.SupportedBandListSidelinkEUTRA_r16 = []BandSidelinkEUTRA_r16{}
+		for _, i := range tmp_SupportedBandListSidelinkEUTRA_r16.Value {
+			ie.SupportedBandListSidelinkEUTRA_r16 = append(ie.SupportedBandListSidelinkEUTRA_r16, *i)
 		}
 	}
 	return nil

@@ -6,43 +6,43 @@ import (
 )
 
 type PLMN_Identity struct {
-	mcc *MCC `optional`
-	mnc MNC  `madatory`
+	Mcc *MCC `optional`
+	Mnc MNC  `madatory`
 }
 
 func (ie *PLMN_Identity) Encode(w *uper.UperWriter) error {
 	var err error
-	preambleBits := []bool{ie.mcc != nil}
+	preambleBits := []bool{ie.Mcc != nil}
 	for _, bit := range preambleBits {
 		if err = w.WriteBool(bit); err != nil {
 			return err
 		}
 	}
-	if ie.mcc != nil {
-		if err = ie.mcc.Encode(w); err != nil {
-			return utils.WrapError("Encode mcc", err)
+	if ie.Mcc != nil {
+		if err = ie.Mcc.Encode(w); err != nil {
+			return utils.WrapError("Encode Mcc", err)
 		}
 	}
-	if err = ie.mnc.Encode(w); err != nil {
-		return utils.WrapError("Encode mnc", err)
+	if err = ie.Mnc.Encode(w); err != nil {
+		return utils.WrapError("Encode Mnc", err)
 	}
 	return nil
 }
 
 func (ie *PLMN_Identity) Decode(r *uper.UperReader) error {
 	var err error
-	var mccPresent bool
-	if mccPresent, err = r.ReadBool(); err != nil {
+	var MccPresent bool
+	if MccPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	if mccPresent {
-		ie.mcc = new(MCC)
-		if err = ie.mcc.Decode(r); err != nil {
-			return utils.WrapError("Decode mcc", err)
+	if MccPresent {
+		ie.Mcc = new(MCC)
+		if err = ie.Mcc.Decode(r); err != nil {
+			return utils.WrapError("Decode Mcc", err)
 		}
 	}
-	if err = ie.mnc.Decode(r); err != nil {
-		return utils.WrapError("Decode mnc", err)
+	if err = ie.Mnc.Decode(r); err != nil {
+		return utils.WrapError("Decode Mnc", err)
 	}
 	return nil
 }

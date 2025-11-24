@@ -9,14 +9,14 @@ import (
 
 const (
 	SCGFailureInformation_CriticalExtensions_Choice_nothing uint64 = iota
-	SCGFailureInformation_CriticalExtensions_Choice_scgFailureInformation
-	SCGFailureInformation_CriticalExtensions_Choice_criticalExtensionsFuture
+	SCGFailureInformation_CriticalExtensions_Choice_ScgFailureInformation
+	SCGFailureInformation_CriticalExtensions_Choice_CriticalExtensionsFuture
 )
 
 type SCGFailureInformation_CriticalExtensions struct {
 	Choice                   uint64
-	scgFailureInformation    *SCGFailureInformation_IEs
-	criticalExtensionsFuture interface{} `madatory`
+	ScgFailureInformation    *SCGFailureInformation_IEs
+	CriticalExtensionsFuture interface{} `madatory`
 }
 
 func (ie *SCGFailureInformation_CriticalExtensions) Encode(w *uper.UperWriter) error {
@@ -25,11 +25,11 @@ func (ie *SCGFailureInformation_CriticalExtensions) Encode(w *uper.UperWriter) e
 		return err
 	}
 	switch ie.Choice {
-	case SCGFailureInformation_CriticalExtensions_Choice_scgFailureInformation:
-		if err = ie.scgFailureInformation.Encode(w); err != nil {
-			err = utils.WrapError("Encode scgFailureInformation", err)
+	case SCGFailureInformation_CriticalExtensions_Choice_ScgFailureInformation:
+		if err = ie.ScgFailureInformation.Encode(w); err != nil {
+			err = utils.WrapError("Encode ScgFailureInformation", err)
 		}
-	case SCGFailureInformation_CriticalExtensions_Choice_criticalExtensionsFuture:
+	case SCGFailureInformation_CriticalExtensions_Choice_CriticalExtensionsFuture:
 		// interface{} field of choice - nothing to encode
 	default:
 		err = fmt.Errorf("invalid choice: %d", ie.Choice)
@@ -43,12 +43,12 @@ func (ie *SCGFailureInformation_CriticalExtensions) Decode(r *uper.UperReader) e
 		return err
 	}
 	switch ie.Choice {
-	case SCGFailureInformation_CriticalExtensions_Choice_scgFailureInformation:
-		ie.scgFailureInformation = new(SCGFailureInformation_IEs)
-		if err = ie.scgFailureInformation.Decode(r); err != nil {
-			return utils.WrapError("Decode scgFailureInformation", err)
+	case SCGFailureInformation_CriticalExtensions_Choice_ScgFailureInformation:
+		ie.ScgFailureInformation = new(SCGFailureInformation_IEs)
+		if err = ie.ScgFailureInformation.Decode(r); err != nil {
+			return utils.WrapError("Decode ScgFailureInformation", err)
 		}
-	case SCGFailureInformation_CriticalExtensions_Choice_criticalExtensionsFuture:
+	case SCGFailureInformation_CriticalExtensions_Choice_CriticalExtensionsFuture:
 		// interface{} field of choice - nothing to decode
 	default:
 		return fmt.Errorf("invalid choice: %d", ie.Choice)

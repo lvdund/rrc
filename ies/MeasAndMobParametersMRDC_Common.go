@@ -6,20 +6,20 @@ import (
 )
 
 type MeasAndMobParametersMRDC_Common struct {
-	independentGapConfig *MeasAndMobParametersMRDC_Common_independentGapConfig `optional`
+	IndependentGapConfig *MeasAndMobParametersMRDC_Common_independentGapConfig `optional`
 }
 
 func (ie *MeasAndMobParametersMRDC_Common) Encode(w *uper.UperWriter) error {
 	var err error
-	preambleBits := []bool{ie.independentGapConfig != nil}
+	preambleBits := []bool{ie.IndependentGapConfig != nil}
 	for _, bit := range preambleBits {
 		if err = w.WriteBool(bit); err != nil {
 			return err
 		}
 	}
-	if ie.independentGapConfig != nil {
-		if err = ie.independentGapConfig.Encode(w); err != nil {
-			return utils.WrapError("Encode independentGapConfig", err)
+	if ie.IndependentGapConfig != nil {
+		if err = ie.IndependentGapConfig.Encode(w); err != nil {
+			return utils.WrapError("Encode IndependentGapConfig", err)
 		}
 	}
 	return nil
@@ -27,14 +27,14 @@ func (ie *MeasAndMobParametersMRDC_Common) Encode(w *uper.UperWriter) error {
 
 func (ie *MeasAndMobParametersMRDC_Common) Decode(r *uper.UperReader) error {
 	var err error
-	var independentGapConfigPresent bool
-	if independentGapConfigPresent, err = r.ReadBool(); err != nil {
+	var IndependentGapConfigPresent bool
+	if IndependentGapConfigPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	if independentGapConfigPresent {
-		ie.independentGapConfig = new(MeasAndMobParametersMRDC_Common_independentGapConfig)
-		if err = ie.independentGapConfig.Decode(r); err != nil {
-			return utils.WrapError("Decode independentGapConfig", err)
+	if IndependentGapConfigPresent {
+		ie.IndependentGapConfig = new(MeasAndMobParametersMRDC_Common_independentGapConfig)
+		if err = ie.IndependentGapConfig.Decode(r); err != nil {
+			return utils.WrapError("Decode IndependentGapConfig", err)
 		}
 	}
 	return nil

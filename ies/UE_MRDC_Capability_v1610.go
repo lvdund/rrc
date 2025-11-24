@@ -6,38 +6,38 @@ import (
 )
 
 type UE_MRDC_Capability_v1610 struct {
-	measAndMobParametersMRDC_v1610 *MeasAndMobParametersMRDC_v1610 `optional`
-	generalParametersMRDC_v1610    *GeneralParametersMRDC_v1610    `optional`
-	pdcp_ParametersMRDC_v1610      *PDCP_ParametersMRDC_v1610      `optional`
-	nonCriticalExtension           *UE_MRDC_Capability_v1700       `optional`
+	MeasAndMobParametersMRDC_v1610 *MeasAndMobParametersMRDC_v1610 `optional`
+	GeneralParametersMRDC_v1610    *GeneralParametersMRDC_v1610    `optional`
+	Pdcp_ParametersMRDC_v1610      *PDCP_ParametersMRDC_v1610      `optional`
+	NonCriticalExtension           *UE_MRDC_Capability_v1700       `optional`
 }
 
 func (ie *UE_MRDC_Capability_v1610) Encode(w *uper.UperWriter) error {
 	var err error
-	preambleBits := []bool{ie.measAndMobParametersMRDC_v1610 != nil, ie.generalParametersMRDC_v1610 != nil, ie.pdcp_ParametersMRDC_v1610 != nil, ie.nonCriticalExtension != nil}
+	preambleBits := []bool{ie.MeasAndMobParametersMRDC_v1610 != nil, ie.GeneralParametersMRDC_v1610 != nil, ie.Pdcp_ParametersMRDC_v1610 != nil, ie.NonCriticalExtension != nil}
 	for _, bit := range preambleBits {
 		if err = w.WriteBool(bit); err != nil {
 			return err
 		}
 	}
-	if ie.measAndMobParametersMRDC_v1610 != nil {
-		if err = ie.measAndMobParametersMRDC_v1610.Encode(w); err != nil {
-			return utils.WrapError("Encode measAndMobParametersMRDC_v1610", err)
+	if ie.MeasAndMobParametersMRDC_v1610 != nil {
+		if err = ie.MeasAndMobParametersMRDC_v1610.Encode(w); err != nil {
+			return utils.WrapError("Encode MeasAndMobParametersMRDC_v1610", err)
 		}
 	}
-	if ie.generalParametersMRDC_v1610 != nil {
-		if err = ie.generalParametersMRDC_v1610.Encode(w); err != nil {
-			return utils.WrapError("Encode generalParametersMRDC_v1610", err)
+	if ie.GeneralParametersMRDC_v1610 != nil {
+		if err = ie.GeneralParametersMRDC_v1610.Encode(w); err != nil {
+			return utils.WrapError("Encode GeneralParametersMRDC_v1610", err)
 		}
 	}
-	if ie.pdcp_ParametersMRDC_v1610 != nil {
-		if err = ie.pdcp_ParametersMRDC_v1610.Encode(w); err != nil {
-			return utils.WrapError("Encode pdcp_ParametersMRDC_v1610", err)
+	if ie.Pdcp_ParametersMRDC_v1610 != nil {
+		if err = ie.Pdcp_ParametersMRDC_v1610.Encode(w); err != nil {
+			return utils.WrapError("Encode Pdcp_ParametersMRDC_v1610", err)
 		}
 	}
-	if ie.nonCriticalExtension != nil {
-		if err = ie.nonCriticalExtension.Encode(w); err != nil {
-			return utils.WrapError("Encode nonCriticalExtension", err)
+	if ie.NonCriticalExtension != nil {
+		if err = ie.NonCriticalExtension.Encode(w); err != nil {
+			return utils.WrapError("Encode NonCriticalExtension", err)
 		}
 	}
 	return nil
@@ -45,44 +45,44 @@ func (ie *UE_MRDC_Capability_v1610) Encode(w *uper.UperWriter) error {
 
 func (ie *UE_MRDC_Capability_v1610) Decode(r *uper.UperReader) error {
 	var err error
-	var measAndMobParametersMRDC_v1610Present bool
-	if measAndMobParametersMRDC_v1610Present, err = r.ReadBool(); err != nil {
+	var MeasAndMobParametersMRDC_v1610Present bool
+	if MeasAndMobParametersMRDC_v1610Present, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var generalParametersMRDC_v1610Present bool
-	if generalParametersMRDC_v1610Present, err = r.ReadBool(); err != nil {
+	var GeneralParametersMRDC_v1610Present bool
+	if GeneralParametersMRDC_v1610Present, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var pdcp_ParametersMRDC_v1610Present bool
-	if pdcp_ParametersMRDC_v1610Present, err = r.ReadBool(); err != nil {
+	var Pdcp_ParametersMRDC_v1610Present bool
+	if Pdcp_ParametersMRDC_v1610Present, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var nonCriticalExtensionPresent bool
-	if nonCriticalExtensionPresent, err = r.ReadBool(); err != nil {
+	var NonCriticalExtensionPresent bool
+	if NonCriticalExtensionPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	if measAndMobParametersMRDC_v1610Present {
-		ie.measAndMobParametersMRDC_v1610 = new(MeasAndMobParametersMRDC_v1610)
-		if err = ie.measAndMobParametersMRDC_v1610.Decode(r); err != nil {
-			return utils.WrapError("Decode measAndMobParametersMRDC_v1610", err)
+	if MeasAndMobParametersMRDC_v1610Present {
+		ie.MeasAndMobParametersMRDC_v1610 = new(MeasAndMobParametersMRDC_v1610)
+		if err = ie.MeasAndMobParametersMRDC_v1610.Decode(r); err != nil {
+			return utils.WrapError("Decode MeasAndMobParametersMRDC_v1610", err)
 		}
 	}
-	if generalParametersMRDC_v1610Present {
-		ie.generalParametersMRDC_v1610 = new(GeneralParametersMRDC_v1610)
-		if err = ie.generalParametersMRDC_v1610.Decode(r); err != nil {
-			return utils.WrapError("Decode generalParametersMRDC_v1610", err)
+	if GeneralParametersMRDC_v1610Present {
+		ie.GeneralParametersMRDC_v1610 = new(GeneralParametersMRDC_v1610)
+		if err = ie.GeneralParametersMRDC_v1610.Decode(r); err != nil {
+			return utils.WrapError("Decode GeneralParametersMRDC_v1610", err)
 		}
 	}
-	if pdcp_ParametersMRDC_v1610Present {
-		ie.pdcp_ParametersMRDC_v1610 = new(PDCP_ParametersMRDC_v1610)
-		if err = ie.pdcp_ParametersMRDC_v1610.Decode(r); err != nil {
-			return utils.WrapError("Decode pdcp_ParametersMRDC_v1610", err)
+	if Pdcp_ParametersMRDC_v1610Present {
+		ie.Pdcp_ParametersMRDC_v1610 = new(PDCP_ParametersMRDC_v1610)
+		if err = ie.Pdcp_ParametersMRDC_v1610.Decode(r); err != nil {
+			return utils.WrapError("Decode Pdcp_ParametersMRDC_v1610", err)
 		}
 	}
-	if nonCriticalExtensionPresent {
-		ie.nonCriticalExtension = new(UE_MRDC_Capability_v1700)
-		if err = ie.nonCriticalExtension.Decode(r); err != nil {
-			return utils.WrapError("Decode nonCriticalExtension", err)
+	if NonCriticalExtensionPresent {
+		ie.NonCriticalExtension = new(UE_MRDC_Capability_v1700)
+		if err = ie.NonCriticalExtension.Decode(r); err != nil {
+			return utils.WrapError("Decode NonCriticalExtension", err)
 		}
 	}
 	return nil

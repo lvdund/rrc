@@ -6,41 +6,41 @@ import (
 )
 
 type UAC_BarringInfoSet struct {
-	uac_BarringFactor            UAC_BarringInfoSet_uac_BarringFactor `madatory`
-	uac_BarringTime              UAC_BarringInfoSet_uac_BarringTime   `madatory`
-	uac_BarringForAccessIdentity uper.BitString                       `lb:7,ub:7,madatory`
+	Uac_BarringFactor            UAC_BarringInfoSet_uac_BarringFactor `madatory`
+	Uac_BarringTime              UAC_BarringInfoSet_uac_BarringTime   `madatory`
+	Uac_BarringForAccessIdentity uper.BitString                       `lb:7,ub:7,madatory`
 }
 
 func (ie *UAC_BarringInfoSet) Encode(w *uper.UperWriter) error {
 	var err error
-	if err = ie.uac_BarringFactor.Encode(w); err != nil {
-		return utils.WrapError("Encode uac_BarringFactor", err)
+	if err = ie.Uac_BarringFactor.Encode(w); err != nil {
+		return utils.WrapError("Encode Uac_BarringFactor", err)
 	}
-	if err = ie.uac_BarringTime.Encode(w); err != nil {
-		return utils.WrapError("Encode uac_BarringTime", err)
+	if err = ie.Uac_BarringTime.Encode(w); err != nil {
+		return utils.WrapError("Encode Uac_BarringTime", err)
 	}
-	if err = w.WriteBitString(ie.uac_BarringForAccessIdentity.Bytes, uint(ie.uac_BarringForAccessIdentity.NumBits), &uper.Constraint{Lb: 7, Ub: 7}, false); err != nil {
-		return utils.WrapError("WriteBitString uac_BarringForAccessIdentity", err)
+	if err = w.WriteBitString(ie.Uac_BarringForAccessIdentity.Bytes, uint(ie.Uac_BarringForAccessIdentity.NumBits), &uper.Constraint{Lb: 7, Ub: 7}, false); err != nil {
+		return utils.WrapError("WriteBitString Uac_BarringForAccessIdentity", err)
 	}
 	return nil
 }
 
 func (ie *UAC_BarringInfoSet) Decode(r *uper.UperReader) error {
 	var err error
-	if err = ie.uac_BarringFactor.Decode(r); err != nil {
-		return utils.WrapError("Decode uac_BarringFactor", err)
+	if err = ie.Uac_BarringFactor.Decode(r); err != nil {
+		return utils.WrapError("Decode Uac_BarringFactor", err)
 	}
-	if err = ie.uac_BarringTime.Decode(r); err != nil {
-		return utils.WrapError("Decode uac_BarringTime", err)
+	if err = ie.Uac_BarringTime.Decode(r); err != nil {
+		return utils.WrapError("Decode Uac_BarringTime", err)
 	}
-	var tmp_bs_uac_BarringForAccessIdentity []byte
-	var n_uac_BarringForAccessIdentity uint
-	if tmp_bs_uac_BarringForAccessIdentity, n_uac_BarringForAccessIdentity, err = r.ReadBitString(&uper.Constraint{Lb: 7, Ub: 7}, false); err != nil {
-		return utils.WrapError("ReadBitString uac_BarringForAccessIdentity", err)
+	var tmp_bs_Uac_BarringForAccessIdentity []byte
+	var n_Uac_BarringForAccessIdentity uint
+	if tmp_bs_Uac_BarringForAccessIdentity, n_Uac_BarringForAccessIdentity, err = r.ReadBitString(&uper.Constraint{Lb: 7, Ub: 7}, false); err != nil {
+		return utils.WrapError("ReadBitString Uac_BarringForAccessIdentity", err)
 	}
-	ie.uac_BarringForAccessIdentity = uper.BitString{
-		Bytes:   tmp_bs_uac_BarringForAccessIdentity,
-		NumBits: uint64(n_uac_BarringForAccessIdentity),
+	ie.Uac_BarringForAccessIdentity = uper.BitString{
+		Bytes:   tmp_bs_Uac_BarringForAccessIdentity,
+		NumBits: uint64(n_Uac_BarringForAccessIdentity),
 	}
 	return nil
 }

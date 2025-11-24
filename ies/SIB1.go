@@ -6,84 +6,84 @@ import (
 )
 
 type SIB1 struct {
-	cellSelectionInfo        *SIB1_cellSelectionInfo     `lb:1,ub:8,optional`
-	cellAccessRelatedInfo    CellAccessRelatedInfo       `madatory`
-	connEstFailureControl    *ConnEstFailureControl      `optional`
-	si_SchedulingInfo        *SI_SchedulingInfo          `optional`
-	servingCellConfigCommon  *ServingCellConfigCommonSIB `optional`
-	ims_EmergencySupport     *SIB1_ims_EmergencySupport  `optional`
-	eCallOverIMS_Support     *SIB1_eCallOverIMS_Support  `optional`
-	ue_TimersAndConstants    *UE_TimersAndConstants      `optional`
-	uac_BarringInfo          *SIB1_uac_BarringInfo       `lb:2,ub:maxPLMN,optional`
-	useFullResumeID          *SIB1_useFullResumeID       `optional`
-	lateNonCriticalExtension *[]byte                     `optional`
-	nonCriticalExtension     *SIB1_v1610_IEs             `optional`
+	CellSelectionInfo        *SIB1_cellSelectionInfo     `lb:1,ub:8,optional`
+	CellAccessRelatedInfo    CellAccessRelatedInfo       `madatory`
+	ConnEstFailureControl    *ConnEstFailureControl      `optional`
+	Si_SchedulingInfo        *SI_SchedulingInfo          `optional`
+	ServingCellConfigCommon  *ServingCellConfigCommonSIB `optional`
+	Ims_EmergencySupport     *SIB1_ims_EmergencySupport  `optional`
+	ECallOverIMS_Support     *SIB1_eCallOverIMS_Support  `optional`
+	Ue_TimersAndConstants    *UE_TimersAndConstants      `optional`
+	Uac_BarringInfo          *SIB1_uac_BarringInfo       `lb:2,ub:maxPLMN,optional`
+	UseFullResumeID          *SIB1_useFullResumeID       `optional`
+	LateNonCriticalExtension *[]byte                     `optional`
+	NonCriticalExtension     *SIB1_v1610_IEs             `optional`
 }
 
 func (ie *SIB1) Encode(w *uper.UperWriter) error {
 	var err error
-	preambleBits := []bool{ie.cellSelectionInfo != nil, ie.connEstFailureControl != nil, ie.si_SchedulingInfo != nil, ie.servingCellConfigCommon != nil, ie.ims_EmergencySupport != nil, ie.eCallOverIMS_Support != nil, ie.ue_TimersAndConstants != nil, ie.uac_BarringInfo != nil, ie.useFullResumeID != nil, ie.lateNonCriticalExtension != nil, ie.nonCriticalExtension != nil}
+	preambleBits := []bool{ie.CellSelectionInfo != nil, ie.ConnEstFailureControl != nil, ie.Si_SchedulingInfo != nil, ie.ServingCellConfigCommon != nil, ie.Ims_EmergencySupport != nil, ie.ECallOverIMS_Support != nil, ie.Ue_TimersAndConstants != nil, ie.Uac_BarringInfo != nil, ie.UseFullResumeID != nil, ie.LateNonCriticalExtension != nil, ie.NonCriticalExtension != nil}
 	for _, bit := range preambleBits {
 		if err = w.WriteBool(bit); err != nil {
 			return err
 		}
 	}
-	if ie.cellSelectionInfo != nil {
-		if err = ie.cellSelectionInfo.Encode(w); err != nil {
-			return utils.WrapError("Encode cellSelectionInfo", err)
+	if ie.CellSelectionInfo != nil {
+		if err = ie.CellSelectionInfo.Encode(w); err != nil {
+			return utils.WrapError("Encode CellSelectionInfo", err)
 		}
 	}
-	if err = ie.cellAccessRelatedInfo.Encode(w); err != nil {
-		return utils.WrapError("Encode cellAccessRelatedInfo", err)
+	if err = ie.CellAccessRelatedInfo.Encode(w); err != nil {
+		return utils.WrapError("Encode CellAccessRelatedInfo", err)
 	}
-	if ie.connEstFailureControl != nil {
-		if err = ie.connEstFailureControl.Encode(w); err != nil {
-			return utils.WrapError("Encode connEstFailureControl", err)
+	if ie.ConnEstFailureControl != nil {
+		if err = ie.ConnEstFailureControl.Encode(w); err != nil {
+			return utils.WrapError("Encode ConnEstFailureControl", err)
 		}
 	}
-	if ie.si_SchedulingInfo != nil {
-		if err = ie.si_SchedulingInfo.Encode(w); err != nil {
-			return utils.WrapError("Encode si_SchedulingInfo", err)
+	if ie.Si_SchedulingInfo != nil {
+		if err = ie.Si_SchedulingInfo.Encode(w); err != nil {
+			return utils.WrapError("Encode Si_SchedulingInfo", err)
 		}
 	}
-	if ie.servingCellConfigCommon != nil {
-		if err = ie.servingCellConfigCommon.Encode(w); err != nil {
-			return utils.WrapError("Encode servingCellConfigCommon", err)
+	if ie.ServingCellConfigCommon != nil {
+		if err = ie.ServingCellConfigCommon.Encode(w); err != nil {
+			return utils.WrapError("Encode ServingCellConfigCommon", err)
 		}
 	}
-	if ie.ims_EmergencySupport != nil {
-		if err = ie.ims_EmergencySupport.Encode(w); err != nil {
-			return utils.WrapError("Encode ims_EmergencySupport", err)
+	if ie.Ims_EmergencySupport != nil {
+		if err = ie.Ims_EmergencySupport.Encode(w); err != nil {
+			return utils.WrapError("Encode Ims_EmergencySupport", err)
 		}
 	}
-	if ie.eCallOverIMS_Support != nil {
-		if err = ie.eCallOverIMS_Support.Encode(w); err != nil {
-			return utils.WrapError("Encode eCallOverIMS_Support", err)
+	if ie.ECallOverIMS_Support != nil {
+		if err = ie.ECallOverIMS_Support.Encode(w); err != nil {
+			return utils.WrapError("Encode ECallOverIMS_Support", err)
 		}
 	}
-	if ie.ue_TimersAndConstants != nil {
-		if err = ie.ue_TimersAndConstants.Encode(w); err != nil {
-			return utils.WrapError("Encode ue_TimersAndConstants", err)
+	if ie.Ue_TimersAndConstants != nil {
+		if err = ie.Ue_TimersAndConstants.Encode(w); err != nil {
+			return utils.WrapError("Encode Ue_TimersAndConstants", err)
 		}
 	}
-	if ie.uac_BarringInfo != nil {
-		if err = ie.uac_BarringInfo.Encode(w); err != nil {
-			return utils.WrapError("Encode uac_BarringInfo", err)
+	if ie.Uac_BarringInfo != nil {
+		if err = ie.Uac_BarringInfo.Encode(w); err != nil {
+			return utils.WrapError("Encode Uac_BarringInfo", err)
 		}
 	}
-	if ie.useFullResumeID != nil {
-		if err = ie.useFullResumeID.Encode(w); err != nil {
-			return utils.WrapError("Encode useFullResumeID", err)
+	if ie.UseFullResumeID != nil {
+		if err = ie.UseFullResumeID.Encode(w); err != nil {
+			return utils.WrapError("Encode UseFullResumeID", err)
 		}
 	}
-	if ie.lateNonCriticalExtension != nil {
-		if err = w.WriteOctetString(*ie.lateNonCriticalExtension, &uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
-			return utils.WrapError("Encode lateNonCriticalExtension", err)
+	if ie.LateNonCriticalExtension != nil {
+		if err = w.WriteOctetString(*ie.LateNonCriticalExtension, &uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+			return utils.WrapError("Encode LateNonCriticalExtension", err)
 		}
 	}
-	if ie.nonCriticalExtension != nil {
-		if err = ie.nonCriticalExtension.Encode(w); err != nil {
-			return utils.WrapError("Encode nonCriticalExtension", err)
+	if ie.NonCriticalExtension != nil {
+		if err = ie.NonCriticalExtension.Encode(w); err != nil {
+			return utils.WrapError("Encode NonCriticalExtension", err)
 		}
 	}
 	return nil
@@ -91,118 +91,118 @@ func (ie *SIB1) Encode(w *uper.UperWriter) error {
 
 func (ie *SIB1) Decode(r *uper.UperReader) error {
 	var err error
-	var cellSelectionInfoPresent bool
-	if cellSelectionInfoPresent, err = r.ReadBool(); err != nil {
+	var CellSelectionInfoPresent bool
+	if CellSelectionInfoPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var connEstFailureControlPresent bool
-	if connEstFailureControlPresent, err = r.ReadBool(); err != nil {
+	var ConnEstFailureControlPresent bool
+	if ConnEstFailureControlPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var si_SchedulingInfoPresent bool
-	if si_SchedulingInfoPresent, err = r.ReadBool(); err != nil {
+	var Si_SchedulingInfoPresent bool
+	if Si_SchedulingInfoPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var servingCellConfigCommonPresent bool
-	if servingCellConfigCommonPresent, err = r.ReadBool(); err != nil {
+	var ServingCellConfigCommonPresent bool
+	if ServingCellConfigCommonPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var ims_EmergencySupportPresent bool
-	if ims_EmergencySupportPresent, err = r.ReadBool(); err != nil {
+	var Ims_EmergencySupportPresent bool
+	if Ims_EmergencySupportPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var eCallOverIMS_SupportPresent bool
-	if eCallOverIMS_SupportPresent, err = r.ReadBool(); err != nil {
+	var ECallOverIMS_SupportPresent bool
+	if ECallOverIMS_SupportPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var ue_TimersAndConstantsPresent bool
-	if ue_TimersAndConstantsPresent, err = r.ReadBool(); err != nil {
+	var Ue_TimersAndConstantsPresent bool
+	if Ue_TimersAndConstantsPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var uac_BarringInfoPresent bool
-	if uac_BarringInfoPresent, err = r.ReadBool(); err != nil {
+	var Uac_BarringInfoPresent bool
+	if Uac_BarringInfoPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var useFullResumeIDPresent bool
-	if useFullResumeIDPresent, err = r.ReadBool(); err != nil {
+	var UseFullResumeIDPresent bool
+	if UseFullResumeIDPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var lateNonCriticalExtensionPresent bool
-	if lateNonCriticalExtensionPresent, err = r.ReadBool(); err != nil {
+	var LateNonCriticalExtensionPresent bool
+	if LateNonCriticalExtensionPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var nonCriticalExtensionPresent bool
-	if nonCriticalExtensionPresent, err = r.ReadBool(); err != nil {
+	var NonCriticalExtensionPresent bool
+	if NonCriticalExtensionPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	if cellSelectionInfoPresent {
-		ie.cellSelectionInfo = new(SIB1_cellSelectionInfo)
-		if err = ie.cellSelectionInfo.Decode(r); err != nil {
-			return utils.WrapError("Decode cellSelectionInfo", err)
+	if CellSelectionInfoPresent {
+		ie.CellSelectionInfo = new(SIB1_cellSelectionInfo)
+		if err = ie.CellSelectionInfo.Decode(r); err != nil {
+			return utils.WrapError("Decode CellSelectionInfo", err)
 		}
 	}
-	if err = ie.cellAccessRelatedInfo.Decode(r); err != nil {
-		return utils.WrapError("Decode cellAccessRelatedInfo", err)
+	if err = ie.CellAccessRelatedInfo.Decode(r); err != nil {
+		return utils.WrapError("Decode CellAccessRelatedInfo", err)
 	}
-	if connEstFailureControlPresent {
-		ie.connEstFailureControl = new(ConnEstFailureControl)
-		if err = ie.connEstFailureControl.Decode(r); err != nil {
-			return utils.WrapError("Decode connEstFailureControl", err)
+	if ConnEstFailureControlPresent {
+		ie.ConnEstFailureControl = new(ConnEstFailureControl)
+		if err = ie.ConnEstFailureControl.Decode(r); err != nil {
+			return utils.WrapError("Decode ConnEstFailureControl", err)
 		}
 	}
-	if si_SchedulingInfoPresent {
-		ie.si_SchedulingInfo = new(SI_SchedulingInfo)
-		if err = ie.si_SchedulingInfo.Decode(r); err != nil {
-			return utils.WrapError("Decode si_SchedulingInfo", err)
+	if Si_SchedulingInfoPresent {
+		ie.Si_SchedulingInfo = new(SI_SchedulingInfo)
+		if err = ie.Si_SchedulingInfo.Decode(r); err != nil {
+			return utils.WrapError("Decode Si_SchedulingInfo", err)
 		}
 	}
-	if servingCellConfigCommonPresent {
-		ie.servingCellConfigCommon = new(ServingCellConfigCommonSIB)
-		if err = ie.servingCellConfigCommon.Decode(r); err != nil {
-			return utils.WrapError("Decode servingCellConfigCommon", err)
+	if ServingCellConfigCommonPresent {
+		ie.ServingCellConfigCommon = new(ServingCellConfigCommonSIB)
+		if err = ie.ServingCellConfigCommon.Decode(r); err != nil {
+			return utils.WrapError("Decode ServingCellConfigCommon", err)
 		}
 	}
-	if ims_EmergencySupportPresent {
-		ie.ims_EmergencySupport = new(SIB1_ims_EmergencySupport)
-		if err = ie.ims_EmergencySupport.Decode(r); err != nil {
-			return utils.WrapError("Decode ims_EmergencySupport", err)
+	if Ims_EmergencySupportPresent {
+		ie.Ims_EmergencySupport = new(SIB1_ims_EmergencySupport)
+		if err = ie.Ims_EmergencySupport.Decode(r); err != nil {
+			return utils.WrapError("Decode Ims_EmergencySupport", err)
 		}
 	}
-	if eCallOverIMS_SupportPresent {
-		ie.eCallOverIMS_Support = new(SIB1_eCallOverIMS_Support)
-		if err = ie.eCallOverIMS_Support.Decode(r); err != nil {
-			return utils.WrapError("Decode eCallOverIMS_Support", err)
+	if ECallOverIMS_SupportPresent {
+		ie.ECallOverIMS_Support = new(SIB1_eCallOverIMS_Support)
+		if err = ie.ECallOverIMS_Support.Decode(r); err != nil {
+			return utils.WrapError("Decode ECallOverIMS_Support", err)
 		}
 	}
-	if ue_TimersAndConstantsPresent {
-		ie.ue_TimersAndConstants = new(UE_TimersAndConstants)
-		if err = ie.ue_TimersAndConstants.Decode(r); err != nil {
-			return utils.WrapError("Decode ue_TimersAndConstants", err)
+	if Ue_TimersAndConstantsPresent {
+		ie.Ue_TimersAndConstants = new(UE_TimersAndConstants)
+		if err = ie.Ue_TimersAndConstants.Decode(r); err != nil {
+			return utils.WrapError("Decode Ue_TimersAndConstants", err)
 		}
 	}
-	if uac_BarringInfoPresent {
-		ie.uac_BarringInfo = new(SIB1_uac_BarringInfo)
-		if err = ie.uac_BarringInfo.Decode(r); err != nil {
-			return utils.WrapError("Decode uac_BarringInfo", err)
+	if Uac_BarringInfoPresent {
+		ie.Uac_BarringInfo = new(SIB1_uac_BarringInfo)
+		if err = ie.Uac_BarringInfo.Decode(r); err != nil {
+			return utils.WrapError("Decode Uac_BarringInfo", err)
 		}
 	}
-	if useFullResumeIDPresent {
-		ie.useFullResumeID = new(SIB1_useFullResumeID)
-		if err = ie.useFullResumeID.Decode(r); err != nil {
-			return utils.WrapError("Decode useFullResumeID", err)
+	if UseFullResumeIDPresent {
+		ie.UseFullResumeID = new(SIB1_useFullResumeID)
+		if err = ie.UseFullResumeID.Decode(r); err != nil {
+			return utils.WrapError("Decode UseFullResumeID", err)
 		}
 	}
-	if lateNonCriticalExtensionPresent {
-		var tmp_os_lateNonCriticalExtension []byte
-		if tmp_os_lateNonCriticalExtension, err = r.ReadOctetString(&uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
-			return utils.WrapError("Decode lateNonCriticalExtension", err)
+	if LateNonCriticalExtensionPresent {
+		var tmp_os_LateNonCriticalExtension []byte
+		if tmp_os_LateNonCriticalExtension, err = r.ReadOctetString(&uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+			return utils.WrapError("Decode LateNonCriticalExtension", err)
 		}
-		ie.lateNonCriticalExtension = &tmp_os_lateNonCriticalExtension
+		ie.LateNonCriticalExtension = &tmp_os_LateNonCriticalExtension
 	}
-	if nonCriticalExtensionPresent {
-		ie.nonCriticalExtension = new(SIB1_v1610_IEs)
-		if err = ie.nonCriticalExtension.Decode(r); err != nil {
-			return utils.WrapError("Decode nonCriticalExtension", err)
+	if NonCriticalExtensionPresent {
+		ie.NonCriticalExtension = new(SIB1_v1610_IEs)
+		if err = ie.NonCriticalExtension.Decode(r); err != nil {
+			return utils.WrapError("Decode NonCriticalExtension", err)
 		}
 	}
 	return nil

@@ -8,33 +8,33 @@ import (
 )
 
 type RateMatchPattern struct {
-	rateMatchPatternId     RateMatchPatternId            `madatory`
-	patternType            *RateMatchPattern_patternType `lb:275,ub:275,optional`
-	subcarrierSpacing      *SubcarrierSpacing            `optional,ext`
-	dummy                  RateMatchPattern_dummy        `madatory,ext`
-	controlResourceSet_r16 *ControlResourceSetId_r16     `optional,ext-1`
+	RateMatchPatternId     RateMatchPatternId            `madatory`
+	PatternType            *RateMatchPattern_patternType `lb:275,ub:275,optional`
+	SubcarrierSpacing      *SubcarrierSpacing            `optional,ext`
+	Dummy                  RateMatchPattern_dummy        `madatory,ext`
+	ControlResourceSet_r16 *ControlResourceSetId_r16     `optional,ext-1`
 }
 
 func (ie *RateMatchPattern) Encode(w *uper.UperWriter) error {
 	var err error
-	hasExtensions := ie.controlResourceSet_r16 != nil
-	preambleBits := []bool{hasExtensions, ie.patternType != nil}
+	hasExtensions := ie.ControlResourceSet_r16 != nil
+	preambleBits := []bool{hasExtensions, ie.PatternType != nil}
 	for _, bit := range preambleBits {
 		if err = w.WriteBool(bit); err != nil {
 			return err
 		}
 	}
-	if err = ie.rateMatchPatternId.Encode(w); err != nil {
-		return utils.WrapError("Encode rateMatchPatternId", err)
+	if err = ie.RateMatchPatternId.Encode(w); err != nil {
+		return utils.WrapError("Encode RateMatchPatternId", err)
 	}
-	if ie.patternType != nil {
-		if err = ie.patternType.Encode(w); err != nil {
-			return utils.WrapError("Encode patternType", err)
+	if ie.PatternType != nil {
+		if err = ie.PatternType.Encode(w); err != nil {
+			return utils.WrapError("Encode PatternType", err)
 		}
 	}
 	if hasExtensions {
 		// Extension bitmap: 1 bits for 1 extension groups
-		extBitmap := []bool{ie.controlResourceSet_r16 != nil}
+		extBitmap := []bool{ie.ControlResourceSet_r16 != nil}
 		if err := w.WriteExtBitMap(extBitmap); err != nil {
 			return utils.WrapError("WriteExtBitMap RateMatchPattern", err)
 		}
@@ -45,17 +45,17 @@ func (ie *RateMatchPattern) Encode(w *uper.UperWriter) error {
 			extWriter := uper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 1
-			optionals_ext_1 := []bool{ie.controlResourceSet_r16 != nil}
+			optionals_ext_1 := []bool{ie.ControlResourceSet_r16 != nil}
 			for _, bit := range optionals_ext_1 {
 				if err := extWriter.WriteBool(bit); err != nil {
 					return err
 				}
 			}
 
-			// encode controlResourceSet_r16 optional
-			if ie.controlResourceSet_r16 != nil {
-				if err = ie.controlResourceSet_r16.Encode(extWriter); err != nil {
-					return utils.WrapError("Encode controlResourceSet_r16", err)
+			// encode ControlResourceSet_r16 optional
+			if ie.ControlResourceSet_r16 != nil {
+				if err = ie.ControlResourceSet_r16.Encode(extWriter); err != nil {
+					return utils.WrapError("Encode ControlResourceSet_r16", err)
 				}
 			}
 
@@ -77,17 +77,17 @@ func (ie *RateMatchPattern) Decode(r *uper.UperReader) error {
 	if extensionBit, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var patternTypePresent bool
-	if patternTypePresent, err = r.ReadBool(); err != nil {
+	var PatternTypePresent bool
+	if PatternTypePresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	if err = ie.rateMatchPatternId.Decode(r); err != nil {
-		return utils.WrapError("Decode rateMatchPatternId", err)
+	if err = ie.RateMatchPatternId.Decode(r); err != nil {
+		return utils.WrapError("Decode RateMatchPatternId", err)
 	}
-	if patternTypePresent {
-		ie.patternType = new(RateMatchPattern_patternType)
-		if err = ie.patternType.Decode(r); err != nil {
-			return utils.WrapError("Decode patternType", err)
+	if PatternTypePresent {
+		ie.PatternType = new(RateMatchPattern_patternType)
+		if err = ie.PatternType.Decode(r); err != nil {
+			return utils.WrapError("Decode PatternType", err)
 		}
 	}
 
@@ -107,15 +107,15 @@ func (ie *RateMatchPattern) Decode(r *uper.UperReader) error {
 
 			extReader := uper.NewReader(bytes.NewReader(extBytes))
 
-			controlResourceSet_r16Present, err := extReader.ReadBool()
+			ControlResourceSet_r16Present, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			// decode controlResourceSet_r16 optional
-			if controlResourceSet_r16Present {
-				ie.controlResourceSet_r16 = new(ControlResourceSetId_r16)
-				if err = ie.controlResourceSet_r16.Decode(extReader); err != nil {
-					return utils.WrapError("Decode controlResourceSet_r16", err)
+			// decode ControlResourceSet_r16 optional
+			if ControlResourceSet_r16Present {
+				ie.ControlResourceSet_r16 = new(ControlResourceSetId_r16)
+				if err = ie.ControlResourceSet_r16.Decode(extReader); err != nil {
+					return utils.WrapError("Decode ControlResourceSet_r16", err)
 				}
 			}
 		}

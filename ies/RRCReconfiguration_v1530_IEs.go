@@ -6,66 +6,66 @@ import (
 )
 
 type RRCReconfiguration_v1530_IEs struct {
-	masterCellGroup                    *[]byte                                  `optional`
-	fullConfig                         *RRCReconfiguration_v1530_IEs_fullConfig `optional`
-	dedicatedNAS_MessageList           []DedicatedNAS_Message                   `lb:1,ub:maxDRB,optional`
-	masterKeyUpdate                    *MasterKeyUpdate                         `optional`
-	dedicatedSIB1_Delivery             *[]byte                                  `optional`
-	dedicatedSystemInformationDelivery *[]byte                                  `optional`
-	otherConfig                        *OtherConfig                             `optional`
-	nonCriticalExtension               *RRCReconfiguration_v1540_IEs            `optional`
+	MasterCellGroup                    *[]byte                                  `optional`
+	FullConfig                         *RRCReconfiguration_v1530_IEs_fullConfig `optional`
+	DedicatedNAS_MessageList           []DedicatedNAS_Message                   `lb:1,ub:maxDRB,optional`
+	MasterKeyUpdate                    *MasterKeyUpdate                         `optional`
+	DedicatedSIB1_Delivery             *[]byte                                  `optional`
+	DedicatedSystemInformationDelivery *[]byte                                  `optional`
+	OtherConfig                        *OtherConfig                             `optional`
+	NonCriticalExtension               *RRCReconfiguration_v1540_IEs            `optional`
 }
 
 func (ie *RRCReconfiguration_v1530_IEs) Encode(w *uper.UperWriter) error {
 	var err error
-	preambleBits := []bool{ie.masterCellGroup != nil, ie.fullConfig != nil, len(ie.dedicatedNAS_MessageList) > 0, ie.masterKeyUpdate != nil, ie.dedicatedSIB1_Delivery != nil, ie.dedicatedSystemInformationDelivery != nil, ie.otherConfig != nil, ie.nonCriticalExtension != nil}
+	preambleBits := []bool{ie.MasterCellGroup != nil, ie.FullConfig != nil, len(ie.DedicatedNAS_MessageList) > 0, ie.MasterKeyUpdate != nil, ie.DedicatedSIB1_Delivery != nil, ie.DedicatedSystemInformationDelivery != nil, ie.OtherConfig != nil, ie.NonCriticalExtension != nil}
 	for _, bit := range preambleBits {
 		if err = w.WriteBool(bit); err != nil {
 			return err
 		}
 	}
-	if ie.masterCellGroup != nil {
-		if err = w.WriteOctetString(*ie.masterCellGroup, &uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
-			return utils.WrapError("Encode masterCellGroup", err)
+	if ie.MasterCellGroup != nil {
+		if err = w.WriteOctetString(*ie.MasterCellGroup, &uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+			return utils.WrapError("Encode MasterCellGroup", err)
 		}
 	}
-	if ie.fullConfig != nil {
-		if err = ie.fullConfig.Encode(w); err != nil {
-			return utils.WrapError("Encode fullConfig", err)
+	if ie.FullConfig != nil {
+		if err = ie.FullConfig.Encode(w); err != nil {
+			return utils.WrapError("Encode FullConfig", err)
 		}
 	}
-	if len(ie.dedicatedNAS_MessageList) > 0 {
-		tmp_dedicatedNAS_MessageList := utils.NewSequence[*DedicatedNAS_Message]([]*DedicatedNAS_Message{}, uper.Constraint{Lb: 1, Ub: maxDRB}, false)
-		for _, i := range ie.dedicatedNAS_MessageList {
-			tmp_dedicatedNAS_MessageList.Value = append(tmp_dedicatedNAS_MessageList.Value, &i)
+	if len(ie.DedicatedNAS_MessageList) > 0 {
+		tmp_DedicatedNAS_MessageList := utils.NewSequence[*DedicatedNAS_Message]([]*DedicatedNAS_Message{}, uper.Constraint{Lb: 1, Ub: maxDRB}, false)
+		for _, i := range ie.DedicatedNAS_MessageList {
+			tmp_DedicatedNAS_MessageList.Value = append(tmp_DedicatedNAS_MessageList.Value, &i)
 		}
-		if err = tmp_dedicatedNAS_MessageList.Encode(w); err != nil {
-			return utils.WrapError("Encode dedicatedNAS_MessageList", err)
-		}
-	}
-	if ie.masterKeyUpdate != nil {
-		if err = ie.masterKeyUpdate.Encode(w); err != nil {
-			return utils.WrapError("Encode masterKeyUpdate", err)
+		if err = tmp_DedicatedNAS_MessageList.Encode(w); err != nil {
+			return utils.WrapError("Encode DedicatedNAS_MessageList", err)
 		}
 	}
-	if ie.dedicatedSIB1_Delivery != nil {
-		if err = w.WriteOctetString(*ie.dedicatedSIB1_Delivery, &uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
-			return utils.WrapError("Encode dedicatedSIB1_Delivery", err)
+	if ie.MasterKeyUpdate != nil {
+		if err = ie.MasterKeyUpdate.Encode(w); err != nil {
+			return utils.WrapError("Encode MasterKeyUpdate", err)
 		}
 	}
-	if ie.dedicatedSystemInformationDelivery != nil {
-		if err = w.WriteOctetString(*ie.dedicatedSystemInformationDelivery, &uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
-			return utils.WrapError("Encode dedicatedSystemInformationDelivery", err)
+	if ie.DedicatedSIB1_Delivery != nil {
+		if err = w.WriteOctetString(*ie.DedicatedSIB1_Delivery, &uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+			return utils.WrapError("Encode DedicatedSIB1_Delivery", err)
 		}
 	}
-	if ie.otherConfig != nil {
-		if err = ie.otherConfig.Encode(w); err != nil {
-			return utils.WrapError("Encode otherConfig", err)
+	if ie.DedicatedSystemInformationDelivery != nil {
+		if err = w.WriteOctetString(*ie.DedicatedSystemInformationDelivery, &uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+			return utils.WrapError("Encode DedicatedSystemInformationDelivery", err)
 		}
 	}
-	if ie.nonCriticalExtension != nil {
-		if err = ie.nonCriticalExtension.Encode(w); err != nil {
-			return utils.WrapError("Encode nonCriticalExtension", err)
+	if ie.OtherConfig != nil {
+		if err = ie.OtherConfig.Encode(w); err != nil {
+			return utils.WrapError("Encode OtherConfig", err)
+		}
+	}
+	if ie.NonCriticalExtension != nil {
+		if err = ie.NonCriticalExtension.Encode(w); err != nil {
+			return utils.WrapError("Encode NonCriticalExtension", err)
 		}
 	}
 	return nil
@@ -73,94 +73,94 @@ func (ie *RRCReconfiguration_v1530_IEs) Encode(w *uper.UperWriter) error {
 
 func (ie *RRCReconfiguration_v1530_IEs) Decode(r *uper.UperReader) error {
 	var err error
-	var masterCellGroupPresent bool
-	if masterCellGroupPresent, err = r.ReadBool(); err != nil {
+	var MasterCellGroupPresent bool
+	if MasterCellGroupPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var fullConfigPresent bool
-	if fullConfigPresent, err = r.ReadBool(); err != nil {
+	var FullConfigPresent bool
+	if FullConfigPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var dedicatedNAS_MessageListPresent bool
-	if dedicatedNAS_MessageListPresent, err = r.ReadBool(); err != nil {
+	var DedicatedNAS_MessageListPresent bool
+	if DedicatedNAS_MessageListPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var masterKeyUpdatePresent bool
-	if masterKeyUpdatePresent, err = r.ReadBool(); err != nil {
+	var MasterKeyUpdatePresent bool
+	if MasterKeyUpdatePresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var dedicatedSIB1_DeliveryPresent bool
-	if dedicatedSIB1_DeliveryPresent, err = r.ReadBool(); err != nil {
+	var DedicatedSIB1_DeliveryPresent bool
+	if DedicatedSIB1_DeliveryPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var dedicatedSystemInformationDeliveryPresent bool
-	if dedicatedSystemInformationDeliveryPresent, err = r.ReadBool(); err != nil {
+	var DedicatedSystemInformationDeliveryPresent bool
+	if DedicatedSystemInformationDeliveryPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var otherConfigPresent bool
-	if otherConfigPresent, err = r.ReadBool(); err != nil {
+	var OtherConfigPresent bool
+	if OtherConfigPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var nonCriticalExtensionPresent bool
-	if nonCriticalExtensionPresent, err = r.ReadBool(); err != nil {
+	var NonCriticalExtensionPresent bool
+	if NonCriticalExtensionPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	if masterCellGroupPresent {
-		var tmp_os_masterCellGroup []byte
-		if tmp_os_masterCellGroup, err = r.ReadOctetString(&uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
-			return utils.WrapError("Decode masterCellGroup", err)
+	if MasterCellGroupPresent {
+		var tmp_os_MasterCellGroup []byte
+		if tmp_os_MasterCellGroup, err = r.ReadOctetString(&uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+			return utils.WrapError("Decode MasterCellGroup", err)
 		}
-		ie.masterCellGroup = &tmp_os_masterCellGroup
+		ie.MasterCellGroup = &tmp_os_MasterCellGroup
 	}
-	if fullConfigPresent {
-		ie.fullConfig = new(RRCReconfiguration_v1530_IEs_fullConfig)
-		if err = ie.fullConfig.Decode(r); err != nil {
-			return utils.WrapError("Decode fullConfig", err)
+	if FullConfigPresent {
+		ie.FullConfig = new(RRCReconfiguration_v1530_IEs_fullConfig)
+		if err = ie.FullConfig.Decode(r); err != nil {
+			return utils.WrapError("Decode FullConfig", err)
 		}
 	}
-	if dedicatedNAS_MessageListPresent {
-		tmp_dedicatedNAS_MessageList := utils.NewSequence[*DedicatedNAS_Message]([]*DedicatedNAS_Message{}, uper.Constraint{Lb: 1, Ub: maxDRB}, false)
-		fn_dedicatedNAS_MessageList := func() *DedicatedNAS_Message {
+	if DedicatedNAS_MessageListPresent {
+		tmp_DedicatedNAS_MessageList := utils.NewSequence[*DedicatedNAS_Message]([]*DedicatedNAS_Message{}, uper.Constraint{Lb: 1, Ub: maxDRB}, false)
+		fn_DedicatedNAS_MessageList := func() *DedicatedNAS_Message {
 			return new(DedicatedNAS_Message)
 		}
-		if err = tmp_dedicatedNAS_MessageList.Decode(r, fn_dedicatedNAS_MessageList); err != nil {
-			return utils.WrapError("Decode dedicatedNAS_MessageList", err)
+		if err = tmp_DedicatedNAS_MessageList.Decode(r, fn_DedicatedNAS_MessageList); err != nil {
+			return utils.WrapError("Decode DedicatedNAS_MessageList", err)
 		}
-		ie.dedicatedNAS_MessageList = []DedicatedNAS_Message{}
-		for _, i := range tmp_dedicatedNAS_MessageList.Value {
-			ie.dedicatedNAS_MessageList = append(ie.dedicatedNAS_MessageList, *i)
-		}
-	}
-	if masterKeyUpdatePresent {
-		ie.masterKeyUpdate = new(MasterKeyUpdate)
-		if err = ie.masterKeyUpdate.Decode(r); err != nil {
-			return utils.WrapError("Decode masterKeyUpdate", err)
+		ie.DedicatedNAS_MessageList = []DedicatedNAS_Message{}
+		for _, i := range tmp_DedicatedNAS_MessageList.Value {
+			ie.DedicatedNAS_MessageList = append(ie.DedicatedNAS_MessageList, *i)
 		}
 	}
-	if dedicatedSIB1_DeliveryPresent {
-		var tmp_os_dedicatedSIB1_Delivery []byte
-		if tmp_os_dedicatedSIB1_Delivery, err = r.ReadOctetString(&uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
-			return utils.WrapError("Decode dedicatedSIB1_Delivery", err)
-		}
-		ie.dedicatedSIB1_Delivery = &tmp_os_dedicatedSIB1_Delivery
-	}
-	if dedicatedSystemInformationDeliveryPresent {
-		var tmp_os_dedicatedSystemInformationDelivery []byte
-		if tmp_os_dedicatedSystemInformationDelivery, err = r.ReadOctetString(&uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
-			return utils.WrapError("Decode dedicatedSystemInformationDelivery", err)
-		}
-		ie.dedicatedSystemInformationDelivery = &tmp_os_dedicatedSystemInformationDelivery
-	}
-	if otherConfigPresent {
-		ie.otherConfig = new(OtherConfig)
-		if err = ie.otherConfig.Decode(r); err != nil {
-			return utils.WrapError("Decode otherConfig", err)
+	if MasterKeyUpdatePresent {
+		ie.MasterKeyUpdate = new(MasterKeyUpdate)
+		if err = ie.MasterKeyUpdate.Decode(r); err != nil {
+			return utils.WrapError("Decode MasterKeyUpdate", err)
 		}
 	}
-	if nonCriticalExtensionPresent {
-		ie.nonCriticalExtension = new(RRCReconfiguration_v1540_IEs)
-		if err = ie.nonCriticalExtension.Decode(r); err != nil {
-			return utils.WrapError("Decode nonCriticalExtension", err)
+	if DedicatedSIB1_DeliveryPresent {
+		var tmp_os_DedicatedSIB1_Delivery []byte
+		if tmp_os_DedicatedSIB1_Delivery, err = r.ReadOctetString(&uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+			return utils.WrapError("Decode DedicatedSIB1_Delivery", err)
+		}
+		ie.DedicatedSIB1_Delivery = &tmp_os_DedicatedSIB1_Delivery
+	}
+	if DedicatedSystemInformationDeliveryPresent {
+		var tmp_os_DedicatedSystemInformationDelivery []byte
+		if tmp_os_DedicatedSystemInformationDelivery, err = r.ReadOctetString(&uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+			return utils.WrapError("Decode DedicatedSystemInformationDelivery", err)
+		}
+		ie.DedicatedSystemInformationDelivery = &tmp_os_DedicatedSystemInformationDelivery
+	}
+	if OtherConfigPresent {
+		ie.OtherConfig = new(OtherConfig)
+		if err = ie.OtherConfig.Decode(r); err != nil {
+			return utils.WrapError("Decode OtherConfig", err)
+		}
+	}
+	if NonCriticalExtensionPresent {
+		ie.NonCriticalExtension = new(RRCReconfiguration_v1540_IEs)
+		if err = ie.NonCriticalExtension.Decode(r); err != nil {
+			return utils.WrapError("Decode NonCriticalExtension", err)
 		}
 	}
 	return nil

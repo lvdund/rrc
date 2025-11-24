@@ -8,78 +8,78 @@ import (
 )
 
 type FeatureSets struct {
-	featureSetsDownlink            []FeatureSetDownlink            `lb:1,ub:maxDownlinkFeatureSets,optional`
-	featureSetsDownlinkPerCC       []FeatureSetDownlinkPerCC       `lb:1,ub:maxPerCC_FeatureSets,optional`
-	featureSetsUplink              []FeatureSetUplink              `lb:1,ub:maxUplinkFeatureSets,optional`
-	featureSetsUplinkPerCC         []FeatureSetUplinkPerCC         `lb:1,ub:maxPerCC_FeatureSets,optional`
-	featureSetsDownlink_v1540      []FeatureSetDownlink_v1540      `lb:1,ub:maxDownlinkFeatureSets,optional,ext-1`
-	featureSetsUplink_v1540        []FeatureSetUplink_v1540        `lb:1,ub:maxUplinkFeatureSets,optional,ext-1`
-	featureSetsUplinkPerCC_v1540   []FeatureSetUplinkPerCC_v1540   `lb:1,ub:maxPerCC_FeatureSets,optional,ext-1`
-	featureSetsDownlink_v15a0      []FeatureSetDownlink_v15a0      `lb:1,ub:maxDownlinkFeatureSets,optional,ext-2`
-	featureSetsDownlink_v1610      []FeatureSetDownlink_v1610      `lb:1,ub:maxDownlinkFeatureSets,optional,ext-3`
-	featureSetsUplink_v1610        []FeatureSetUplink_v1610        `lb:1,ub:maxUplinkFeatureSets,optional,ext-3`
-	featureSetDownlinkPerCC_v1620  []FeatureSetDownlinkPerCC_v1620 `lb:1,ub:maxPerCC_FeatureSets,optional,ext-3`
-	featureSetsUplink_v1630        []FeatureSetUplink_v1630        `lb:1,ub:maxUplinkFeatureSets,optional,ext-4`
-	featureSetsUplink_v1640        []FeatureSetUplink_v1640        `lb:1,ub:maxUplinkFeatureSets,optional,ext-5`
-	featureSetsDownlink_v1700      []FeatureSetDownlink_v1700      `lb:1,ub:maxDownlinkFeatureSets,optional,ext-6`
-	featureSetsDownlinkPerCC_v1700 []FeatureSetDownlinkPerCC_v1700 `lb:1,ub:maxPerCC_FeatureSets,optional,ext-6`
-	featureSetsUplink_v1710        []FeatureSetUplink_v1710        `lb:1,ub:maxUplinkFeatureSets,optional,ext-6`
-	featureSetsUplinkPerCC_v1700   []FeatureSetUplinkPerCC_v1700   `lb:1,ub:maxPerCC_FeatureSets,optional,ext-6`
-	featureSetsDownlink_v1720      []FeatureSetDownlink_v1720      `lb:1,ub:maxDownlinkFeatureSets,optional,ext-7`
-	featureSetsDownlinkPerCC_v1720 []FeatureSetDownlinkPerCC_v1720 `lb:1,ub:maxPerCC_FeatureSets,optional,ext-7`
-	featureSetsUplink_v1720        []FeatureSetUplink_v1720        `lb:1,ub:maxUplinkFeatureSets,optional,ext-7`
-	featureSetsDownlink_v1730      []FeatureSetDownlink_v1730      `lb:1,ub:maxDownlinkFeatureSets,optional,ext-8`
-	featureSetsDownlinkPerCC_v1730 []FeatureSetDownlinkPerCC_v1730 `lb:1,ub:maxPerCC_FeatureSets,optional,ext-8`
+	FeatureSetsDownlink            []FeatureSetDownlink            `lb:1,ub:maxDownlinkFeatureSets,optional`
+	FeatureSetsDownlinkPerCC       []FeatureSetDownlinkPerCC       `lb:1,ub:maxPerCC_FeatureSets,optional`
+	FeatureSetsUplink              []FeatureSetUplink              `lb:1,ub:maxUplinkFeatureSets,optional`
+	FeatureSetsUplinkPerCC         []FeatureSetUplinkPerCC         `lb:1,ub:maxPerCC_FeatureSets,optional`
+	FeatureSetsDownlink_v1540      []FeatureSetDownlink_v1540      `lb:1,ub:maxDownlinkFeatureSets,optional,ext-1`
+	FeatureSetsUplink_v1540        []FeatureSetUplink_v1540        `lb:1,ub:maxUplinkFeatureSets,optional,ext-1`
+	FeatureSetsUplinkPerCC_v1540   []FeatureSetUplinkPerCC_v1540   `lb:1,ub:maxPerCC_FeatureSets,optional,ext-1`
+	FeatureSetsDownlink_v15a0      []FeatureSetDownlink_v15a0      `lb:1,ub:maxDownlinkFeatureSets,optional,ext-2`
+	FeatureSetsDownlink_v1610      []FeatureSetDownlink_v1610      `lb:1,ub:maxDownlinkFeatureSets,optional,ext-3`
+	FeatureSetsUplink_v1610        []FeatureSetUplink_v1610        `lb:1,ub:maxUplinkFeatureSets,optional,ext-3`
+	FeatureSetDownlinkPerCC_v1620  []FeatureSetDownlinkPerCC_v1620 `lb:1,ub:maxPerCC_FeatureSets,optional,ext-3`
+	FeatureSetsUplink_v1630        []FeatureSetUplink_v1630        `lb:1,ub:maxUplinkFeatureSets,optional,ext-4`
+	FeatureSetsUplink_v1640        []FeatureSetUplink_v1640        `lb:1,ub:maxUplinkFeatureSets,optional,ext-5`
+	FeatureSetsDownlink_v1700      []FeatureSetDownlink_v1700      `lb:1,ub:maxDownlinkFeatureSets,optional,ext-6`
+	FeatureSetsDownlinkPerCC_v1700 []FeatureSetDownlinkPerCC_v1700 `lb:1,ub:maxPerCC_FeatureSets,optional,ext-6`
+	FeatureSetsUplink_v1710        []FeatureSetUplink_v1710        `lb:1,ub:maxUplinkFeatureSets,optional,ext-6`
+	FeatureSetsUplinkPerCC_v1700   []FeatureSetUplinkPerCC_v1700   `lb:1,ub:maxPerCC_FeatureSets,optional,ext-6`
+	FeatureSetsDownlink_v1720      []FeatureSetDownlink_v1720      `lb:1,ub:maxDownlinkFeatureSets,optional,ext-7`
+	FeatureSetsDownlinkPerCC_v1720 []FeatureSetDownlinkPerCC_v1720 `lb:1,ub:maxPerCC_FeatureSets,optional,ext-7`
+	FeatureSetsUplink_v1720        []FeatureSetUplink_v1720        `lb:1,ub:maxUplinkFeatureSets,optional,ext-7`
+	FeatureSetsDownlink_v1730      []FeatureSetDownlink_v1730      `lb:1,ub:maxDownlinkFeatureSets,optional,ext-8`
+	FeatureSetsDownlinkPerCC_v1730 []FeatureSetDownlinkPerCC_v1730 `lb:1,ub:maxPerCC_FeatureSets,optional,ext-8`
 }
 
 func (ie *FeatureSets) Encode(w *uper.UperWriter) error {
 	var err error
-	hasExtensions := len(ie.featureSetsDownlink_v1540) > 0 || len(ie.featureSetsUplink_v1540) > 0 || len(ie.featureSetsUplinkPerCC_v1540) > 0 || len(ie.featureSetsDownlink_v15a0) > 0 || len(ie.featureSetsDownlink_v1610) > 0 || len(ie.featureSetsUplink_v1610) > 0 || len(ie.featureSetDownlinkPerCC_v1620) > 0 || len(ie.featureSetsUplink_v1630) > 0 || len(ie.featureSetsUplink_v1640) > 0 || len(ie.featureSetsDownlink_v1700) > 0 || len(ie.featureSetsDownlinkPerCC_v1700) > 0 || len(ie.featureSetsUplink_v1710) > 0 || len(ie.featureSetsUplinkPerCC_v1700) > 0 || len(ie.featureSetsDownlink_v1720) > 0 || len(ie.featureSetsDownlinkPerCC_v1720) > 0 || len(ie.featureSetsUplink_v1720) > 0 || len(ie.featureSetsDownlink_v1730) > 0 || len(ie.featureSetsDownlinkPerCC_v1730) > 0
-	preambleBits := []bool{hasExtensions, len(ie.featureSetsDownlink) > 0, len(ie.featureSetsDownlinkPerCC) > 0, len(ie.featureSetsUplink) > 0, len(ie.featureSetsUplinkPerCC) > 0}
+	hasExtensions := len(ie.FeatureSetsDownlink_v1540) > 0 || len(ie.FeatureSetsUplink_v1540) > 0 || len(ie.FeatureSetsUplinkPerCC_v1540) > 0 || len(ie.FeatureSetsDownlink_v15a0) > 0 || len(ie.FeatureSetsDownlink_v1610) > 0 || len(ie.FeatureSetsUplink_v1610) > 0 || len(ie.FeatureSetDownlinkPerCC_v1620) > 0 || len(ie.FeatureSetsUplink_v1630) > 0 || len(ie.FeatureSetsUplink_v1640) > 0 || len(ie.FeatureSetsDownlink_v1700) > 0 || len(ie.FeatureSetsDownlinkPerCC_v1700) > 0 || len(ie.FeatureSetsUplink_v1710) > 0 || len(ie.FeatureSetsUplinkPerCC_v1700) > 0 || len(ie.FeatureSetsDownlink_v1720) > 0 || len(ie.FeatureSetsDownlinkPerCC_v1720) > 0 || len(ie.FeatureSetsUplink_v1720) > 0 || len(ie.FeatureSetsDownlink_v1730) > 0 || len(ie.FeatureSetsDownlinkPerCC_v1730) > 0
+	preambleBits := []bool{hasExtensions, len(ie.FeatureSetsDownlink) > 0, len(ie.FeatureSetsDownlinkPerCC) > 0, len(ie.FeatureSetsUplink) > 0, len(ie.FeatureSetsUplinkPerCC) > 0}
 	for _, bit := range preambleBits {
 		if err = w.WriteBool(bit); err != nil {
 			return err
 		}
 	}
-	if len(ie.featureSetsDownlink) > 0 {
-		tmp_featureSetsDownlink := utils.NewSequence[*FeatureSetDownlink]([]*FeatureSetDownlink{}, uper.Constraint{Lb: 1, Ub: maxDownlinkFeatureSets}, false)
-		for _, i := range ie.featureSetsDownlink {
-			tmp_featureSetsDownlink.Value = append(tmp_featureSetsDownlink.Value, &i)
+	if len(ie.FeatureSetsDownlink) > 0 {
+		tmp_FeatureSetsDownlink := utils.NewSequence[*FeatureSetDownlink]([]*FeatureSetDownlink{}, uper.Constraint{Lb: 1, Ub: maxDownlinkFeatureSets}, false)
+		for _, i := range ie.FeatureSetsDownlink {
+			tmp_FeatureSetsDownlink.Value = append(tmp_FeatureSetsDownlink.Value, &i)
 		}
-		if err = tmp_featureSetsDownlink.Encode(w); err != nil {
-			return utils.WrapError("Encode featureSetsDownlink", err)
-		}
-	}
-	if len(ie.featureSetsDownlinkPerCC) > 0 {
-		tmp_featureSetsDownlinkPerCC := utils.NewSequence[*FeatureSetDownlinkPerCC]([]*FeatureSetDownlinkPerCC{}, uper.Constraint{Lb: 1, Ub: maxPerCC_FeatureSets}, false)
-		for _, i := range ie.featureSetsDownlinkPerCC {
-			tmp_featureSetsDownlinkPerCC.Value = append(tmp_featureSetsDownlinkPerCC.Value, &i)
-		}
-		if err = tmp_featureSetsDownlinkPerCC.Encode(w); err != nil {
-			return utils.WrapError("Encode featureSetsDownlinkPerCC", err)
+		if err = tmp_FeatureSetsDownlink.Encode(w); err != nil {
+			return utils.WrapError("Encode FeatureSetsDownlink", err)
 		}
 	}
-	if len(ie.featureSetsUplink) > 0 {
-		tmp_featureSetsUplink := utils.NewSequence[*FeatureSetUplink]([]*FeatureSetUplink{}, uper.Constraint{Lb: 1, Ub: maxUplinkFeatureSets}, false)
-		for _, i := range ie.featureSetsUplink {
-			tmp_featureSetsUplink.Value = append(tmp_featureSetsUplink.Value, &i)
+	if len(ie.FeatureSetsDownlinkPerCC) > 0 {
+		tmp_FeatureSetsDownlinkPerCC := utils.NewSequence[*FeatureSetDownlinkPerCC]([]*FeatureSetDownlinkPerCC{}, uper.Constraint{Lb: 1, Ub: maxPerCC_FeatureSets}, false)
+		for _, i := range ie.FeatureSetsDownlinkPerCC {
+			tmp_FeatureSetsDownlinkPerCC.Value = append(tmp_FeatureSetsDownlinkPerCC.Value, &i)
 		}
-		if err = tmp_featureSetsUplink.Encode(w); err != nil {
-			return utils.WrapError("Encode featureSetsUplink", err)
+		if err = tmp_FeatureSetsDownlinkPerCC.Encode(w); err != nil {
+			return utils.WrapError("Encode FeatureSetsDownlinkPerCC", err)
 		}
 	}
-	if len(ie.featureSetsUplinkPerCC) > 0 {
-		tmp_featureSetsUplinkPerCC := utils.NewSequence[*FeatureSetUplinkPerCC]([]*FeatureSetUplinkPerCC{}, uper.Constraint{Lb: 1, Ub: maxPerCC_FeatureSets}, false)
-		for _, i := range ie.featureSetsUplinkPerCC {
-			tmp_featureSetsUplinkPerCC.Value = append(tmp_featureSetsUplinkPerCC.Value, &i)
+	if len(ie.FeatureSetsUplink) > 0 {
+		tmp_FeatureSetsUplink := utils.NewSequence[*FeatureSetUplink]([]*FeatureSetUplink{}, uper.Constraint{Lb: 1, Ub: maxUplinkFeatureSets}, false)
+		for _, i := range ie.FeatureSetsUplink {
+			tmp_FeatureSetsUplink.Value = append(tmp_FeatureSetsUplink.Value, &i)
 		}
-		if err = tmp_featureSetsUplinkPerCC.Encode(w); err != nil {
-			return utils.WrapError("Encode featureSetsUplinkPerCC", err)
+		if err = tmp_FeatureSetsUplink.Encode(w); err != nil {
+			return utils.WrapError("Encode FeatureSetsUplink", err)
+		}
+	}
+	if len(ie.FeatureSetsUplinkPerCC) > 0 {
+		tmp_FeatureSetsUplinkPerCC := utils.NewSequence[*FeatureSetUplinkPerCC]([]*FeatureSetUplinkPerCC{}, uper.Constraint{Lb: 1, Ub: maxPerCC_FeatureSets}, false)
+		for _, i := range ie.FeatureSetsUplinkPerCC {
+			tmp_FeatureSetsUplinkPerCC.Value = append(tmp_FeatureSetsUplinkPerCC.Value, &i)
+		}
+		if err = tmp_FeatureSetsUplinkPerCC.Encode(w); err != nil {
+			return utils.WrapError("Encode FeatureSetsUplinkPerCC", err)
 		}
 	}
 	if hasExtensions {
 		// Extension bitmap: 8 bits for 8 extension groups
-		extBitmap := []bool{len(ie.featureSetsDownlink_v1540) > 0 || len(ie.featureSetsUplink_v1540) > 0 || len(ie.featureSetsUplinkPerCC_v1540) > 0, len(ie.featureSetsDownlink_v15a0) > 0, len(ie.featureSetsDownlink_v1610) > 0 || len(ie.featureSetsUplink_v1610) > 0 || len(ie.featureSetDownlinkPerCC_v1620) > 0, len(ie.featureSetsUplink_v1630) > 0, len(ie.featureSetsUplink_v1640) > 0, len(ie.featureSetsDownlink_v1700) > 0 || len(ie.featureSetsDownlinkPerCC_v1700) > 0 || len(ie.featureSetsUplink_v1710) > 0 || len(ie.featureSetsUplinkPerCC_v1700) > 0, len(ie.featureSetsDownlink_v1720) > 0 || len(ie.featureSetsDownlinkPerCC_v1720) > 0 || len(ie.featureSetsUplink_v1720) > 0, len(ie.featureSetsDownlink_v1730) > 0 || len(ie.featureSetsDownlinkPerCC_v1730) > 0}
+		extBitmap := []bool{len(ie.FeatureSetsDownlink_v1540) > 0 || len(ie.FeatureSetsUplink_v1540) > 0 || len(ie.FeatureSetsUplinkPerCC_v1540) > 0, len(ie.FeatureSetsDownlink_v15a0) > 0, len(ie.FeatureSetsDownlink_v1610) > 0 || len(ie.FeatureSetsUplink_v1610) > 0 || len(ie.FeatureSetDownlinkPerCC_v1620) > 0, len(ie.FeatureSetsUplink_v1630) > 0, len(ie.FeatureSetsUplink_v1640) > 0, len(ie.FeatureSetsDownlink_v1700) > 0 || len(ie.FeatureSetsDownlinkPerCC_v1700) > 0 || len(ie.FeatureSetsUplink_v1710) > 0 || len(ie.FeatureSetsUplinkPerCC_v1700) > 0, len(ie.FeatureSetsDownlink_v1720) > 0 || len(ie.FeatureSetsDownlinkPerCC_v1720) > 0 || len(ie.FeatureSetsUplink_v1720) > 0, len(ie.FeatureSetsDownlink_v1730) > 0 || len(ie.FeatureSetsDownlinkPerCC_v1730) > 0}
 		if err := w.WriteExtBitMap(extBitmap); err != nil {
 			return utils.WrapError("WriteExtBitMap FeatureSets", err)
 		}
@@ -90,41 +90,41 @@ func (ie *FeatureSets) Encode(w *uper.UperWriter) error {
 			extWriter := uper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 1
-			optionals_ext_1 := []bool{len(ie.featureSetsDownlink_v1540) > 0, len(ie.featureSetsUplink_v1540) > 0, len(ie.featureSetsUplinkPerCC_v1540) > 0}
+			optionals_ext_1 := []bool{len(ie.FeatureSetsDownlink_v1540) > 0, len(ie.FeatureSetsUplink_v1540) > 0, len(ie.FeatureSetsUplinkPerCC_v1540) > 0}
 			for _, bit := range optionals_ext_1 {
 				if err := extWriter.WriteBool(bit); err != nil {
 					return err
 				}
 			}
 
-			// encode featureSetsDownlink_v1540 optional
-			if len(ie.featureSetsDownlink_v1540) > 0 {
-				tmp_featureSetsDownlink_v1540 := utils.NewSequence[*FeatureSetDownlink_v1540]([]*FeatureSetDownlink_v1540{}, uper.Constraint{Lb: 1, Ub: maxDownlinkFeatureSets}, false)
-				for _, i := range ie.featureSetsDownlink_v1540 {
-					tmp_featureSetsDownlink_v1540.Value = append(tmp_featureSetsDownlink_v1540.Value, &i)
+			// encode FeatureSetsDownlink_v1540 optional
+			if len(ie.FeatureSetsDownlink_v1540) > 0 {
+				tmp_FeatureSetsDownlink_v1540 := utils.NewSequence[*FeatureSetDownlink_v1540]([]*FeatureSetDownlink_v1540{}, uper.Constraint{Lb: 1, Ub: maxDownlinkFeatureSets}, false)
+				for _, i := range ie.FeatureSetsDownlink_v1540 {
+					tmp_FeatureSetsDownlink_v1540.Value = append(tmp_FeatureSetsDownlink_v1540.Value, &i)
 				}
-				if err = tmp_featureSetsDownlink_v1540.Encode(extWriter); err != nil {
-					return utils.WrapError("Encode featureSetsDownlink_v1540", err)
-				}
-			}
-			// encode featureSetsUplink_v1540 optional
-			if len(ie.featureSetsUplink_v1540) > 0 {
-				tmp_featureSetsUplink_v1540 := utils.NewSequence[*FeatureSetUplink_v1540]([]*FeatureSetUplink_v1540{}, uper.Constraint{Lb: 1, Ub: maxUplinkFeatureSets}, false)
-				for _, i := range ie.featureSetsUplink_v1540 {
-					tmp_featureSetsUplink_v1540.Value = append(tmp_featureSetsUplink_v1540.Value, &i)
-				}
-				if err = tmp_featureSetsUplink_v1540.Encode(extWriter); err != nil {
-					return utils.WrapError("Encode featureSetsUplink_v1540", err)
+				if err = tmp_FeatureSetsDownlink_v1540.Encode(extWriter); err != nil {
+					return utils.WrapError("Encode FeatureSetsDownlink_v1540", err)
 				}
 			}
-			// encode featureSetsUplinkPerCC_v1540 optional
-			if len(ie.featureSetsUplinkPerCC_v1540) > 0 {
-				tmp_featureSetsUplinkPerCC_v1540 := utils.NewSequence[*FeatureSetUplinkPerCC_v1540]([]*FeatureSetUplinkPerCC_v1540{}, uper.Constraint{Lb: 1, Ub: maxPerCC_FeatureSets}, false)
-				for _, i := range ie.featureSetsUplinkPerCC_v1540 {
-					tmp_featureSetsUplinkPerCC_v1540.Value = append(tmp_featureSetsUplinkPerCC_v1540.Value, &i)
+			// encode FeatureSetsUplink_v1540 optional
+			if len(ie.FeatureSetsUplink_v1540) > 0 {
+				tmp_FeatureSetsUplink_v1540 := utils.NewSequence[*FeatureSetUplink_v1540]([]*FeatureSetUplink_v1540{}, uper.Constraint{Lb: 1, Ub: maxUplinkFeatureSets}, false)
+				for _, i := range ie.FeatureSetsUplink_v1540 {
+					tmp_FeatureSetsUplink_v1540.Value = append(tmp_FeatureSetsUplink_v1540.Value, &i)
 				}
-				if err = tmp_featureSetsUplinkPerCC_v1540.Encode(extWriter); err != nil {
-					return utils.WrapError("Encode featureSetsUplinkPerCC_v1540", err)
+				if err = tmp_FeatureSetsUplink_v1540.Encode(extWriter); err != nil {
+					return utils.WrapError("Encode FeatureSetsUplink_v1540", err)
+				}
+			}
+			// encode FeatureSetsUplinkPerCC_v1540 optional
+			if len(ie.FeatureSetsUplinkPerCC_v1540) > 0 {
+				tmp_FeatureSetsUplinkPerCC_v1540 := utils.NewSequence[*FeatureSetUplinkPerCC_v1540]([]*FeatureSetUplinkPerCC_v1540{}, uper.Constraint{Lb: 1, Ub: maxPerCC_FeatureSets}, false)
+				for _, i := range ie.FeatureSetsUplinkPerCC_v1540 {
+					tmp_FeatureSetsUplinkPerCC_v1540.Value = append(tmp_FeatureSetsUplinkPerCC_v1540.Value, &i)
+				}
+				if err = tmp_FeatureSetsUplinkPerCC_v1540.Encode(extWriter); err != nil {
+					return utils.WrapError("Encode FeatureSetsUplinkPerCC_v1540", err)
 				}
 			}
 
@@ -143,21 +143,21 @@ func (ie *FeatureSets) Encode(w *uper.UperWriter) error {
 			extWriter := uper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 2
-			optionals_ext_2 := []bool{len(ie.featureSetsDownlink_v15a0) > 0}
+			optionals_ext_2 := []bool{len(ie.FeatureSetsDownlink_v15a0) > 0}
 			for _, bit := range optionals_ext_2 {
 				if err := extWriter.WriteBool(bit); err != nil {
 					return err
 				}
 			}
 
-			// encode featureSetsDownlink_v15a0 optional
-			if len(ie.featureSetsDownlink_v15a0) > 0 {
-				tmp_featureSetsDownlink_v15a0 := utils.NewSequence[*FeatureSetDownlink_v15a0]([]*FeatureSetDownlink_v15a0{}, uper.Constraint{Lb: 1, Ub: maxDownlinkFeatureSets}, false)
-				for _, i := range ie.featureSetsDownlink_v15a0 {
-					tmp_featureSetsDownlink_v15a0.Value = append(tmp_featureSetsDownlink_v15a0.Value, &i)
+			// encode FeatureSetsDownlink_v15a0 optional
+			if len(ie.FeatureSetsDownlink_v15a0) > 0 {
+				tmp_FeatureSetsDownlink_v15a0 := utils.NewSequence[*FeatureSetDownlink_v15a0]([]*FeatureSetDownlink_v15a0{}, uper.Constraint{Lb: 1, Ub: maxDownlinkFeatureSets}, false)
+				for _, i := range ie.FeatureSetsDownlink_v15a0 {
+					tmp_FeatureSetsDownlink_v15a0.Value = append(tmp_FeatureSetsDownlink_v15a0.Value, &i)
 				}
-				if err = tmp_featureSetsDownlink_v15a0.Encode(extWriter); err != nil {
-					return utils.WrapError("Encode featureSetsDownlink_v15a0", err)
+				if err = tmp_FeatureSetsDownlink_v15a0.Encode(extWriter); err != nil {
+					return utils.WrapError("Encode FeatureSetsDownlink_v15a0", err)
 				}
 			}
 
@@ -176,41 +176,41 @@ func (ie *FeatureSets) Encode(w *uper.UperWriter) error {
 			extWriter := uper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 3
-			optionals_ext_3 := []bool{len(ie.featureSetsDownlink_v1610) > 0, len(ie.featureSetsUplink_v1610) > 0, len(ie.featureSetDownlinkPerCC_v1620) > 0}
+			optionals_ext_3 := []bool{len(ie.FeatureSetsDownlink_v1610) > 0, len(ie.FeatureSetsUplink_v1610) > 0, len(ie.FeatureSetDownlinkPerCC_v1620) > 0}
 			for _, bit := range optionals_ext_3 {
 				if err := extWriter.WriteBool(bit); err != nil {
 					return err
 				}
 			}
 
-			// encode featureSetsDownlink_v1610 optional
-			if len(ie.featureSetsDownlink_v1610) > 0 {
-				tmp_featureSetsDownlink_v1610 := utils.NewSequence[*FeatureSetDownlink_v1610]([]*FeatureSetDownlink_v1610{}, uper.Constraint{Lb: 1, Ub: maxDownlinkFeatureSets}, false)
-				for _, i := range ie.featureSetsDownlink_v1610 {
-					tmp_featureSetsDownlink_v1610.Value = append(tmp_featureSetsDownlink_v1610.Value, &i)
+			// encode FeatureSetsDownlink_v1610 optional
+			if len(ie.FeatureSetsDownlink_v1610) > 0 {
+				tmp_FeatureSetsDownlink_v1610 := utils.NewSequence[*FeatureSetDownlink_v1610]([]*FeatureSetDownlink_v1610{}, uper.Constraint{Lb: 1, Ub: maxDownlinkFeatureSets}, false)
+				for _, i := range ie.FeatureSetsDownlink_v1610 {
+					tmp_FeatureSetsDownlink_v1610.Value = append(tmp_FeatureSetsDownlink_v1610.Value, &i)
 				}
-				if err = tmp_featureSetsDownlink_v1610.Encode(extWriter); err != nil {
-					return utils.WrapError("Encode featureSetsDownlink_v1610", err)
-				}
-			}
-			// encode featureSetsUplink_v1610 optional
-			if len(ie.featureSetsUplink_v1610) > 0 {
-				tmp_featureSetsUplink_v1610 := utils.NewSequence[*FeatureSetUplink_v1610]([]*FeatureSetUplink_v1610{}, uper.Constraint{Lb: 1, Ub: maxUplinkFeatureSets}, false)
-				for _, i := range ie.featureSetsUplink_v1610 {
-					tmp_featureSetsUplink_v1610.Value = append(tmp_featureSetsUplink_v1610.Value, &i)
-				}
-				if err = tmp_featureSetsUplink_v1610.Encode(extWriter); err != nil {
-					return utils.WrapError("Encode featureSetsUplink_v1610", err)
+				if err = tmp_FeatureSetsDownlink_v1610.Encode(extWriter); err != nil {
+					return utils.WrapError("Encode FeatureSetsDownlink_v1610", err)
 				}
 			}
-			// encode featureSetDownlinkPerCC_v1620 optional
-			if len(ie.featureSetDownlinkPerCC_v1620) > 0 {
-				tmp_featureSetDownlinkPerCC_v1620 := utils.NewSequence[*FeatureSetDownlinkPerCC_v1620]([]*FeatureSetDownlinkPerCC_v1620{}, uper.Constraint{Lb: 1, Ub: maxPerCC_FeatureSets}, false)
-				for _, i := range ie.featureSetDownlinkPerCC_v1620 {
-					tmp_featureSetDownlinkPerCC_v1620.Value = append(tmp_featureSetDownlinkPerCC_v1620.Value, &i)
+			// encode FeatureSetsUplink_v1610 optional
+			if len(ie.FeatureSetsUplink_v1610) > 0 {
+				tmp_FeatureSetsUplink_v1610 := utils.NewSequence[*FeatureSetUplink_v1610]([]*FeatureSetUplink_v1610{}, uper.Constraint{Lb: 1, Ub: maxUplinkFeatureSets}, false)
+				for _, i := range ie.FeatureSetsUplink_v1610 {
+					tmp_FeatureSetsUplink_v1610.Value = append(tmp_FeatureSetsUplink_v1610.Value, &i)
 				}
-				if err = tmp_featureSetDownlinkPerCC_v1620.Encode(extWriter); err != nil {
-					return utils.WrapError("Encode featureSetDownlinkPerCC_v1620", err)
+				if err = tmp_FeatureSetsUplink_v1610.Encode(extWriter); err != nil {
+					return utils.WrapError("Encode FeatureSetsUplink_v1610", err)
+				}
+			}
+			// encode FeatureSetDownlinkPerCC_v1620 optional
+			if len(ie.FeatureSetDownlinkPerCC_v1620) > 0 {
+				tmp_FeatureSetDownlinkPerCC_v1620 := utils.NewSequence[*FeatureSetDownlinkPerCC_v1620]([]*FeatureSetDownlinkPerCC_v1620{}, uper.Constraint{Lb: 1, Ub: maxPerCC_FeatureSets}, false)
+				for _, i := range ie.FeatureSetDownlinkPerCC_v1620 {
+					tmp_FeatureSetDownlinkPerCC_v1620.Value = append(tmp_FeatureSetDownlinkPerCC_v1620.Value, &i)
+				}
+				if err = tmp_FeatureSetDownlinkPerCC_v1620.Encode(extWriter); err != nil {
+					return utils.WrapError("Encode FeatureSetDownlinkPerCC_v1620", err)
 				}
 			}
 
@@ -229,21 +229,21 @@ func (ie *FeatureSets) Encode(w *uper.UperWriter) error {
 			extWriter := uper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 4
-			optionals_ext_4 := []bool{len(ie.featureSetsUplink_v1630) > 0}
+			optionals_ext_4 := []bool{len(ie.FeatureSetsUplink_v1630) > 0}
 			for _, bit := range optionals_ext_4 {
 				if err := extWriter.WriteBool(bit); err != nil {
 					return err
 				}
 			}
 
-			// encode featureSetsUplink_v1630 optional
-			if len(ie.featureSetsUplink_v1630) > 0 {
-				tmp_featureSetsUplink_v1630 := utils.NewSequence[*FeatureSetUplink_v1630]([]*FeatureSetUplink_v1630{}, uper.Constraint{Lb: 1, Ub: maxUplinkFeatureSets}, false)
-				for _, i := range ie.featureSetsUplink_v1630 {
-					tmp_featureSetsUplink_v1630.Value = append(tmp_featureSetsUplink_v1630.Value, &i)
+			// encode FeatureSetsUplink_v1630 optional
+			if len(ie.FeatureSetsUplink_v1630) > 0 {
+				tmp_FeatureSetsUplink_v1630 := utils.NewSequence[*FeatureSetUplink_v1630]([]*FeatureSetUplink_v1630{}, uper.Constraint{Lb: 1, Ub: maxUplinkFeatureSets}, false)
+				for _, i := range ie.FeatureSetsUplink_v1630 {
+					tmp_FeatureSetsUplink_v1630.Value = append(tmp_FeatureSetsUplink_v1630.Value, &i)
 				}
-				if err = tmp_featureSetsUplink_v1630.Encode(extWriter); err != nil {
-					return utils.WrapError("Encode featureSetsUplink_v1630", err)
+				if err = tmp_FeatureSetsUplink_v1630.Encode(extWriter); err != nil {
+					return utils.WrapError("Encode FeatureSetsUplink_v1630", err)
 				}
 			}
 
@@ -262,21 +262,21 @@ func (ie *FeatureSets) Encode(w *uper.UperWriter) error {
 			extWriter := uper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 5
-			optionals_ext_5 := []bool{len(ie.featureSetsUplink_v1640) > 0}
+			optionals_ext_5 := []bool{len(ie.FeatureSetsUplink_v1640) > 0}
 			for _, bit := range optionals_ext_5 {
 				if err := extWriter.WriteBool(bit); err != nil {
 					return err
 				}
 			}
 
-			// encode featureSetsUplink_v1640 optional
-			if len(ie.featureSetsUplink_v1640) > 0 {
-				tmp_featureSetsUplink_v1640 := utils.NewSequence[*FeatureSetUplink_v1640]([]*FeatureSetUplink_v1640{}, uper.Constraint{Lb: 1, Ub: maxUplinkFeatureSets}, false)
-				for _, i := range ie.featureSetsUplink_v1640 {
-					tmp_featureSetsUplink_v1640.Value = append(tmp_featureSetsUplink_v1640.Value, &i)
+			// encode FeatureSetsUplink_v1640 optional
+			if len(ie.FeatureSetsUplink_v1640) > 0 {
+				tmp_FeatureSetsUplink_v1640 := utils.NewSequence[*FeatureSetUplink_v1640]([]*FeatureSetUplink_v1640{}, uper.Constraint{Lb: 1, Ub: maxUplinkFeatureSets}, false)
+				for _, i := range ie.FeatureSetsUplink_v1640 {
+					tmp_FeatureSetsUplink_v1640.Value = append(tmp_FeatureSetsUplink_v1640.Value, &i)
 				}
-				if err = tmp_featureSetsUplink_v1640.Encode(extWriter); err != nil {
-					return utils.WrapError("Encode featureSetsUplink_v1640", err)
+				if err = tmp_FeatureSetsUplink_v1640.Encode(extWriter); err != nil {
+					return utils.WrapError("Encode FeatureSetsUplink_v1640", err)
 				}
 			}
 
@@ -295,51 +295,51 @@ func (ie *FeatureSets) Encode(w *uper.UperWriter) error {
 			extWriter := uper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 6
-			optionals_ext_6 := []bool{len(ie.featureSetsDownlink_v1700) > 0, len(ie.featureSetsDownlinkPerCC_v1700) > 0, len(ie.featureSetsUplink_v1710) > 0, len(ie.featureSetsUplinkPerCC_v1700) > 0}
+			optionals_ext_6 := []bool{len(ie.FeatureSetsDownlink_v1700) > 0, len(ie.FeatureSetsDownlinkPerCC_v1700) > 0, len(ie.FeatureSetsUplink_v1710) > 0, len(ie.FeatureSetsUplinkPerCC_v1700) > 0}
 			for _, bit := range optionals_ext_6 {
 				if err := extWriter.WriteBool(bit); err != nil {
 					return err
 				}
 			}
 
-			// encode featureSetsDownlink_v1700 optional
-			if len(ie.featureSetsDownlink_v1700) > 0 {
-				tmp_featureSetsDownlink_v1700 := utils.NewSequence[*FeatureSetDownlink_v1700]([]*FeatureSetDownlink_v1700{}, uper.Constraint{Lb: 1, Ub: maxDownlinkFeatureSets}, false)
-				for _, i := range ie.featureSetsDownlink_v1700 {
-					tmp_featureSetsDownlink_v1700.Value = append(tmp_featureSetsDownlink_v1700.Value, &i)
+			// encode FeatureSetsDownlink_v1700 optional
+			if len(ie.FeatureSetsDownlink_v1700) > 0 {
+				tmp_FeatureSetsDownlink_v1700 := utils.NewSequence[*FeatureSetDownlink_v1700]([]*FeatureSetDownlink_v1700{}, uper.Constraint{Lb: 1, Ub: maxDownlinkFeatureSets}, false)
+				for _, i := range ie.FeatureSetsDownlink_v1700 {
+					tmp_FeatureSetsDownlink_v1700.Value = append(tmp_FeatureSetsDownlink_v1700.Value, &i)
 				}
-				if err = tmp_featureSetsDownlink_v1700.Encode(extWriter); err != nil {
-					return utils.WrapError("Encode featureSetsDownlink_v1700", err)
-				}
-			}
-			// encode featureSetsDownlinkPerCC_v1700 optional
-			if len(ie.featureSetsDownlinkPerCC_v1700) > 0 {
-				tmp_featureSetsDownlinkPerCC_v1700 := utils.NewSequence[*FeatureSetDownlinkPerCC_v1700]([]*FeatureSetDownlinkPerCC_v1700{}, uper.Constraint{Lb: 1, Ub: maxPerCC_FeatureSets}, false)
-				for _, i := range ie.featureSetsDownlinkPerCC_v1700 {
-					tmp_featureSetsDownlinkPerCC_v1700.Value = append(tmp_featureSetsDownlinkPerCC_v1700.Value, &i)
-				}
-				if err = tmp_featureSetsDownlinkPerCC_v1700.Encode(extWriter); err != nil {
-					return utils.WrapError("Encode featureSetsDownlinkPerCC_v1700", err)
+				if err = tmp_FeatureSetsDownlink_v1700.Encode(extWriter); err != nil {
+					return utils.WrapError("Encode FeatureSetsDownlink_v1700", err)
 				}
 			}
-			// encode featureSetsUplink_v1710 optional
-			if len(ie.featureSetsUplink_v1710) > 0 {
-				tmp_featureSetsUplink_v1710 := utils.NewSequence[*FeatureSetUplink_v1710]([]*FeatureSetUplink_v1710{}, uper.Constraint{Lb: 1, Ub: maxUplinkFeatureSets}, false)
-				for _, i := range ie.featureSetsUplink_v1710 {
-					tmp_featureSetsUplink_v1710.Value = append(tmp_featureSetsUplink_v1710.Value, &i)
+			// encode FeatureSetsDownlinkPerCC_v1700 optional
+			if len(ie.FeatureSetsDownlinkPerCC_v1700) > 0 {
+				tmp_FeatureSetsDownlinkPerCC_v1700 := utils.NewSequence[*FeatureSetDownlinkPerCC_v1700]([]*FeatureSetDownlinkPerCC_v1700{}, uper.Constraint{Lb: 1, Ub: maxPerCC_FeatureSets}, false)
+				for _, i := range ie.FeatureSetsDownlinkPerCC_v1700 {
+					tmp_FeatureSetsDownlinkPerCC_v1700.Value = append(tmp_FeatureSetsDownlinkPerCC_v1700.Value, &i)
 				}
-				if err = tmp_featureSetsUplink_v1710.Encode(extWriter); err != nil {
-					return utils.WrapError("Encode featureSetsUplink_v1710", err)
+				if err = tmp_FeatureSetsDownlinkPerCC_v1700.Encode(extWriter); err != nil {
+					return utils.WrapError("Encode FeatureSetsDownlinkPerCC_v1700", err)
 				}
 			}
-			// encode featureSetsUplinkPerCC_v1700 optional
-			if len(ie.featureSetsUplinkPerCC_v1700) > 0 {
-				tmp_featureSetsUplinkPerCC_v1700 := utils.NewSequence[*FeatureSetUplinkPerCC_v1700]([]*FeatureSetUplinkPerCC_v1700{}, uper.Constraint{Lb: 1, Ub: maxPerCC_FeatureSets}, false)
-				for _, i := range ie.featureSetsUplinkPerCC_v1700 {
-					tmp_featureSetsUplinkPerCC_v1700.Value = append(tmp_featureSetsUplinkPerCC_v1700.Value, &i)
+			// encode FeatureSetsUplink_v1710 optional
+			if len(ie.FeatureSetsUplink_v1710) > 0 {
+				tmp_FeatureSetsUplink_v1710 := utils.NewSequence[*FeatureSetUplink_v1710]([]*FeatureSetUplink_v1710{}, uper.Constraint{Lb: 1, Ub: maxUplinkFeatureSets}, false)
+				for _, i := range ie.FeatureSetsUplink_v1710 {
+					tmp_FeatureSetsUplink_v1710.Value = append(tmp_FeatureSetsUplink_v1710.Value, &i)
 				}
-				if err = tmp_featureSetsUplinkPerCC_v1700.Encode(extWriter); err != nil {
-					return utils.WrapError("Encode featureSetsUplinkPerCC_v1700", err)
+				if err = tmp_FeatureSetsUplink_v1710.Encode(extWriter); err != nil {
+					return utils.WrapError("Encode FeatureSetsUplink_v1710", err)
+				}
+			}
+			// encode FeatureSetsUplinkPerCC_v1700 optional
+			if len(ie.FeatureSetsUplinkPerCC_v1700) > 0 {
+				tmp_FeatureSetsUplinkPerCC_v1700 := utils.NewSequence[*FeatureSetUplinkPerCC_v1700]([]*FeatureSetUplinkPerCC_v1700{}, uper.Constraint{Lb: 1, Ub: maxPerCC_FeatureSets}, false)
+				for _, i := range ie.FeatureSetsUplinkPerCC_v1700 {
+					tmp_FeatureSetsUplinkPerCC_v1700.Value = append(tmp_FeatureSetsUplinkPerCC_v1700.Value, &i)
+				}
+				if err = tmp_FeatureSetsUplinkPerCC_v1700.Encode(extWriter); err != nil {
+					return utils.WrapError("Encode FeatureSetsUplinkPerCC_v1700", err)
 				}
 			}
 
@@ -358,41 +358,41 @@ func (ie *FeatureSets) Encode(w *uper.UperWriter) error {
 			extWriter := uper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 7
-			optionals_ext_7 := []bool{len(ie.featureSetsDownlink_v1720) > 0, len(ie.featureSetsDownlinkPerCC_v1720) > 0, len(ie.featureSetsUplink_v1720) > 0}
+			optionals_ext_7 := []bool{len(ie.FeatureSetsDownlink_v1720) > 0, len(ie.FeatureSetsDownlinkPerCC_v1720) > 0, len(ie.FeatureSetsUplink_v1720) > 0}
 			for _, bit := range optionals_ext_7 {
 				if err := extWriter.WriteBool(bit); err != nil {
 					return err
 				}
 			}
 
-			// encode featureSetsDownlink_v1720 optional
-			if len(ie.featureSetsDownlink_v1720) > 0 {
-				tmp_featureSetsDownlink_v1720 := utils.NewSequence[*FeatureSetDownlink_v1720]([]*FeatureSetDownlink_v1720{}, uper.Constraint{Lb: 1, Ub: maxDownlinkFeatureSets}, false)
-				for _, i := range ie.featureSetsDownlink_v1720 {
-					tmp_featureSetsDownlink_v1720.Value = append(tmp_featureSetsDownlink_v1720.Value, &i)
+			// encode FeatureSetsDownlink_v1720 optional
+			if len(ie.FeatureSetsDownlink_v1720) > 0 {
+				tmp_FeatureSetsDownlink_v1720 := utils.NewSequence[*FeatureSetDownlink_v1720]([]*FeatureSetDownlink_v1720{}, uper.Constraint{Lb: 1, Ub: maxDownlinkFeatureSets}, false)
+				for _, i := range ie.FeatureSetsDownlink_v1720 {
+					tmp_FeatureSetsDownlink_v1720.Value = append(tmp_FeatureSetsDownlink_v1720.Value, &i)
 				}
-				if err = tmp_featureSetsDownlink_v1720.Encode(extWriter); err != nil {
-					return utils.WrapError("Encode featureSetsDownlink_v1720", err)
-				}
-			}
-			// encode featureSetsDownlinkPerCC_v1720 optional
-			if len(ie.featureSetsDownlinkPerCC_v1720) > 0 {
-				tmp_featureSetsDownlinkPerCC_v1720 := utils.NewSequence[*FeatureSetDownlinkPerCC_v1720]([]*FeatureSetDownlinkPerCC_v1720{}, uper.Constraint{Lb: 1, Ub: maxPerCC_FeatureSets}, false)
-				for _, i := range ie.featureSetsDownlinkPerCC_v1720 {
-					tmp_featureSetsDownlinkPerCC_v1720.Value = append(tmp_featureSetsDownlinkPerCC_v1720.Value, &i)
-				}
-				if err = tmp_featureSetsDownlinkPerCC_v1720.Encode(extWriter); err != nil {
-					return utils.WrapError("Encode featureSetsDownlinkPerCC_v1720", err)
+				if err = tmp_FeatureSetsDownlink_v1720.Encode(extWriter); err != nil {
+					return utils.WrapError("Encode FeatureSetsDownlink_v1720", err)
 				}
 			}
-			// encode featureSetsUplink_v1720 optional
-			if len(ie.featureSetsUplink_v1720) > 0 {
-				tmp_featureSetsUplink_v1720 := utils.NewSequence[*FeatureSetUplink_v1720]([]*FeatureSetUplink_v1720{}, uper.Constraint{Lb: 1, Ub: maxUplinkFeatureSets}, false)
-				for _, i := range ie.featureSetsUplink_v1720 {
-					tmp_featureSetsUplink_v1720.Value = append(tmp_featureSetsUplink_v1720.Value, &i)
+			// encode FeatureSetsDownlinkPerCC_v1720 optional
+			if len(ie.FeatureSetsDownlinkPerCC_v1720) > 0 {
+				tmp_FeatureSetsDownlinkPerCC_v1720 := utils.NewSequence[*FeatureSetDownlinkPerCC_v1720]([]*FeatureSetDownlinkPerCC_v1720{}, uper.Constraint{Lb: 1, Ub: maxPerCC_FeatureSets}, false)
+				for _, i := range ie.FeatureSetsDownlinkPerCC_v1720 {
+					tmp_FeatureSetsDownlinkPerCC_v1720.Value = append(tmp_FeatureSetsDownlinkPerCC_v1720.Value, &i)
 				}
-				if err = tmp_featureSetsUplink_v1720.Encode(extWriter); err != nil {
-					return utils.WrapError("Encode featureSetsUplink_v1720", err)
+				if err = tmp_FeatureSetsDownlinkPerCC_v1720.Encode(extWriter); err != nil {
+					return utils.WrapError("Encode FeatureSetsDownlinkPerCC_v1720", err)
+				}
+			}
+			// encode FeatureSetsUplink_v1720 optional
+			if len(ie.FeatureSetsUplink_v1720) > 0 {
+				tmp_FeatureSetsUplink_v1720 := utils.NewSequence[*FeatureSetUplink_v1720]([]*FeatureSetUplink_v1720{}, uper.Constraint{Lb: 1, Ub: maxUplinkFeatureSets}, false)
+				for _, i := range ie.FeatureSetsUplink_v1720 {
+					tmp_FeatureSetsUplink_v1720.Value = append(tmp_FeatureSetsUplink_v1720.Value, &i)
+				}
+				if err = tmp_FeatureSetsUplink_v1720.Encode(extWriter); err != nil {
+					return utils.WrapError("Encode FeatureSetsUplink_v1720", err)
 				}
 			}
 
@@ -411,31 +411,31 @@ func (ie *FeatureSets) Encode(w *uper.UperWriter) error {
 			extWriter := uper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 8
-			optionals_ext_8 := []bool{len(ie.featureSetsDownlink_v1730) > 0, len(ie.featureSetsDownlinkPerCC_v1730) > 0}
+			optionals_ext_8 := []bool{len(ie.FeatureSetsDownlink_v1730) > 0, len(ie.FeatureSetsDownlinkPerCC_v1730) > 0}
 			for _, bit := range optionals_ext_8 {
 				if err := extWriter.WriteBool(bit); err != nil {
 					return err
 				}
 			}
 
-			// encode featureSetsDownlink_v1730 optional
-			if len(ie.featureSetsDownlink_v1730) > 0 {
-				tmp_featureSetsDownlink_v1730 := utils.NewSequence[*FeatureSetDownlink_v1730]([]*FeatureSetDownlink_v1730{}, uper.Constraint{Lb: 1, Ub: maxDownlinkFeatureSets}, false)
-				for _, i := range ie.featureSetsDownlink_v1730 {
-					tmp_featureSetsDownlink_v1730.Value = append(tmp_featureSetsDownlink_v1730.Value, &i)
+			// encode FeatureSetsDownlink_v1730 optional
+			if len(ie.FeatureSetsDownlink_v1730) > 0 {
+				tmp_FeatureSetsDownlink_v1730 := utils.NewSequence[*FeatureSetDownlink_v1730]([]*FeatureSetDownlink_v1730{}, uper.Constraint{Lb: 1, Ub: maxDownlinkFeatureSets}, false)
+				for _, i := range ie.FeatureSetsDownlink_v1730 {
+					tmp_FeatureSetsDownlink_v1730.Value = append(tmp_FeatureSetsDownlink_v1730.Value, &i)
 				}
-				if err = tmp_featureSetsDownlink_v1730.Encode(extWriter); err != nil {
-					return utils.WrapError("Encode featureSetsDownlink_v1730", err)
+				if err = tmp_FeatureSetsDownlink_v1730.Encode(extWriter); err != nil {
+					return utils.WrapError("Encode FeatureSetsDownlink_v1730", err)
 				}
 			}
-			// encode featureSetsDownlinkPerCC_v1730 optional
-			if len(ie.featureSetsDownlinkPerCC_v1730) > 0 {
-				tmp_featureSetsDownlinkPerCC_v1730 := utils.NewSequence[*FeatureSetDownlinkPerCC_v1730]([]*FeatureSetDownlinkPerCC_v1730{}, uper.Constraint{Lb: 1, Ub: maxPerCC_FeatureSets}, false)
-				for _, i := range ie.featureSetsDownlinkPerCC_v1730 {
-					tmp_featureSetsDownlinkPerCC_v1730.Value = append(tmp_featureSetsDownlinkPerCC_v1730.Value, &i)
+			// encode FeatureSetsDownlinkPerCC_v1730 optional
+			if len(ie.FeatureSetsDownlinkPerCC_v1730) > 0 {
+				tmp_FeatureSetsDownlinkPerCC_v1730 := utils.NewSequence[*FeatureSetDownlinkPerCC_v1730]([]*FeatureSetDownlinkPerCC_v1730{}, uper.Constraint{Lb: 1, Ub: maxPerCC_FeatureSets}, false)
+				for _, i := range ie.FeatureSetsDownlinkPerCC_v1730 {
+					tmp_FeatureSetsDownlinkPerCC_v1730.Value = append(tmp_FeatureSetsDownlinkPerCC_v1730.Value, &i)
 				}
-				if err = tmp_featureSetsDownlinkPerCC_v1730.Encode(extWriter); err != nil {
-					return utils.WrapError("Encode featureSetsDownlinkPerCC_v1730", err)
+				if err = tmp_FeatureSetsDownlinkPerCC_v1730.Encode(extWriter); err != nil {
+					return utils.WrapError("Encode FeatureSetsDownlinkPerCC_v1730", err)
 				}
 			}
 
@@ -457,72 +457,72 @@ func (ie *FeatureSets) Decode(r *uper.UperReader) error {
 	if extensionBit, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var featureSetsDownlinkPresent bool
-	if featureSetsDownlinkPresent, err = r.ReadBool(); err != nil {
+	var FeatureSetsDownlinkPresent bool
+	if FeatureSetsDownlinkPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var featureSetsDownlinkPerCCPresent bool
-	if featureSetsDownlinkPerCCPresent, err = r.ReadBool(); err != nil {
+	var FeatureSetsDownlinkPerCCPresent bool
+	if FeatureSetsDownlinkPerCCPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var featureSetsUplinkPresent bool
-	if featureSetsUplinkPresent, err = r.ReadBool(); err != nil {
+	var FeatureSetsUplinkPresent bool
+	if FeatureSetsUplinkPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var featureSetsUplinkPerCCPresent bool
-	if featureSetsUplinkPerCCPresent, err = r.ReadBool(); err != nil {
+	var FeatureSetsUplinkPerCCPresent bool
+	if FeatureSetsUplinkPerCCPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	if featureSetsDownlinkPresent {
-		tmp_featureSetsDownlink := utils.NewSequence[*FeatureSetDownlink]([]*FeatureSetDownlink{}, uper.Constraint{Lb: 1, Ub: maxDownlinkFeatureSets}, false)
-		fn_featureSetsDownlink := func() *FeatureSetDownlink {
+	if FeatureSetsDownlinkPresent {
+		tmp_FeatureSetsDownlink := utils.NewSequence[*FeatureSetDownlink]([]*FeatureSetDownlink{}, uper.Constraint{Lb: 1, Ub: maxDownlinkFeatureSets}, false)
+		fn_FeatureSetsDownlink := func() *FeatureSetDownlink {
 			return new(FeatureSetDownlink)
 		}
-		if err = tmp_featureSetsDownlink.Decode(r, fn_featureSetsDownlink); err != nil {
-			return utils.WrapError("Decode featureSetsDownlink", err)
+		if err = tmp_FeatureSetsDownlink.Decode(r, fn_FeatureSetsDownlink); err != nil {
+			return utils.WrapError("Decode FeatureSetsDownlink", err)
 		}
-		ie.featureSetsDownlink = []FeatureSetDownlink{}
-		for _, i := range tmp_featureSetsDownlink.Value {
-			ie.featureSetsDownlink = append(ie.featureSetsDownlink, *i)
+		ie.FeatureSetsDownlink = []FeatureSetDownlink{}
+		for _, i := range tmp_FeatureSetsDownlink.Value {
+			ie.FeatureSetsDownlink = append(ie.FeatureSetsDownlink, *i)
 		}
 	}
-	if featureSetsDownlinkPerCCPresent {
-		tmp_featureSetsDownlinkPerCC := utils.NewSequence[*FeatureSetDownlinkPerCC]([]*FeatureSetDownlinkPerCC{}, uper.Constraint{Lb: 1, Ub: maxPerCC_FeatureSets}, false)
-		fn_featureSetsDownlinkPerCC := func() *FeatureSetDownlinkPerCC {
+	if FeatureSetsDownlinkPerCCPresent {
+		tmp_FeatureSetsDownlinkPerCC := utils.NewSequence[*FeatureSetDownlinkPerCC]([]*FeatureSetDownlinkPerCC{}, uper.Constraint{Lb: 1, Ub: maxPerCC_FeatureSets}, false)
+		fn_FeatureSetsDownlinkPerCC := func() *FeatureSetDownlinkPerCC {
 			return new(FeatureSetDownlinkPerCC)
 		}
-		if err = tmp_featureSetsDownlinkPerCC.Decode(r, fn_featureSetsDownlinkPerCC); err != nil {
-			return utils.WrapError("Decode featureSetsDownlinkPerCC", err)
+		if err = tmp_FeatureSetsDownlinkPerCC.Decode(r, fn_FeatureSetsDownlinkPerCC); err != nil {
+			return utils.WrapError("Decode FeatureSetsDownlinkPerCC", err)
 		}
-		ie.featureSetsDownlinkPerCC = []FeatureSetDownlinkPerCC{}
-		for _, i := range tmp_featureSetsDownlinkPerCC.Value {
-			ie.featureSetsDownlinkPerCC = append(ie.featureSetsDownlinkPerCC, *i)
+		ie.FeatureSetsDownlinkPerCC = []FeatureSetDownlinkPerCC{}
+		for _, i := range tmp_FeatureSetsDownlinkPerCC.Value {
+			ie.FeatureSetsDownlinkPerCC = append(ie.FeatureSetsDownlinkPerCC, *i)
 		}
 	}
-	if featureSetsUplinkPresent {
-		tmp_featureSetsUplink := utils.NewSequence[*FeatureSetUplink]([]*FeatureSetUplink{}, uper.Constraint{Lb: 1, Ub: maxUplinkFeatureSets}, false)
-		fn_featureSetsUplink := func() *FeatureSetUplink {
+	if FeatureSetsUplinkPresent {
+		tmp_FeatureSetsUplink := utils.NewSequence[*FeatureSetUplink]([]*FeatureSetUplink{}, uper.Constraint{Lb: 1, Ub: maxUplinkFeatureSets}, false)
+		fn_FeatureSetsUplink := func() *FeatureSetUplink {
 			return new(FeatureSetUplink)
 		}
-		if err = tmp_featureSetsUplink.Decode(r, fn_featureSetsUplink); err != nil {
-			return utils.WrapError("Decode featureSetsUplink", err)
+		if err = tmp_FeatureSetsUplink.Decode(r, fn_FeatureSetsUplink); err != nil {
+			return utils.WrapError("Decode FeatureSetsUplink", err)
 		}
-		ie.featureSetsUplink = []FeatureSetUplink{}
-		for _, i := range tmp_featureSetsUplink.Value {
-			ie.featureSetsUplink = append(ie.featureSetsUplink, *i)
+		ie.FeatureSetsUplink = []FeatureSetUplink{}
+		for _, i := range tmp_FeatureSetsUplink.Value {
+			ie.FeatureSetsUplink = append(ie.FeatureSetsUplink, *i)
 		}
 	}
-	if featureSetsUplinkPerCCPresent {
-		tmp_featureSetsUplinkPerCC := utils.NewSequence[*FeatureSetUplinkPerCC]([]*FeatureSetUplinkPerCC{}, uper.Constraint{Lb: 1, Ub: maxPerCC_FeatureSets}, false)
-		fn_featureSetsUplinkPerCC := func() *FeatureSetUplinkPerCC {
+	if FeatureSetsUplinkPerCCPresent {
+		tmp_FeatureSetsUplinkPerCC := utils.NewSequence[*FeatureSetUplinkPerCC]([]*FeatureSetUplinkPerCC{}, uper.Constraint{Lb: 1, Ub: maxPerCC_FeatureSets}, false)
+		fn_FeatureSetsUplinkPerCC := func() *FeatureSetUplinkPerCC {
 			return new(FeatureSetUplinkPerCC)
 		}
-		if err = tmp_featureSetsUplinkPerCC.Decode(r, fn_featureSetsUplinkPerCC); err != nil {
-			return utils.WrapError("Decode featureSetsUplinkPerCC", err)
+		if err = tmp_FeatureSetsUplinkPerCC.Decode(r, fn_FeatureSetsUplinkPerCC); err != nil {
+			return utils.WrapError("Decode FeatureSetsUplinkPerCC", err)
 		}
-		ie.featureSetsUplinkPerCC = []FeatureSetUplinkPerCC{}
-		for _, i := range tmp_featureSetsUplinkPerCC.Value {
-			ie.featureSetsUplinkPerCC = append(ie.featureSetsUplinkPerCC, *i)
+		ie.FeatureSetsUplinkPerCC = []FeatureSetUplinkPerCC{}
+		for _, i := range tmp_FeatureSetsUplinkPerCC.Value {
+			ie.FeatureSetsUplinkPerCC = append(ie.FeatureSetsUplinkPerCC, *i)
 		}
 	}
 
@@ -542,58 +542,58 @@ func (ie *FeatureSets) Decode(r *uper.UperReader) error {
 
 			extReader := uper.NewReader(bytes.NewReader(extBytes))
 
-			featureSetsDownlink_v1540Present, err := extReader.ReadBool()
+			FeatureSetsDownlink_v1540Present, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			featureSetsUplink_v1540Present, err := extReader.ReadBool()
+			FeatureSetsUplink_v1540Present, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			featureSetsUplinkPerCC_v1540Present, err := extReader.ReadBool()
+			FeatureSetsUplinkPerCC_v1540Present, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			// decode featureSetsDownlink_v1540 optional
-			if featureSetsDownlink_v1540Present {
-				tmp_featureSetsDownlink_v1540 := utils.NewSequence[*FeatureSetDownlink_v1540]([]*FeatureSetDownlink_v1540{}, uper.Constraint{Lb: 1, Ub: maxDownlinkFeatureSets}, false)
-				fn_featureSetsDownlink_v1540 := func() *FeatureSetDownlink_v1540 {
+			// decode FeatureSetsDownlink_v1540 optional
+			if FeatureSetsDownlink_v1540Present {
+				tmp_FeatureSetsDownlink_v1540 := utils.NewSequence[*FeatureSetDownlink_v1540]([]*FeatureSetDownlink_v1540{}, uper.Constraint{Lb: 1, Ub: maxDownlinkFeatureSets}, false)
+				fn_FeatureSetsDownlink_v1540 := func() *FeatureSetDownlink_v1540 {
 					return new(FeatureSetDownlink_v1540)
 				}
-				if err = tmp_featureSetsDownlink_v1540.Decode(extReader, fn_featureSetsDownlink_v1540); err != nil {
-					return utils.WrapError("Decode featureSetsDownlink_v1540", err)
+				if err = tmp_FeatureSetsDownlink_v1540.Decode(extReader, fn_FeatureSetsDownlink_v1540); err != nil {
+					return utils.WrapError("Decode FeatureSetsDownlink_v1540", err)
 				}
-				ie.featureSetsDownlink_v1540 = []FeatureSetDownlink_v1540{}
-				for _, i := range tmp_featureSetsDownlink_v1540.Value {
-					ie.featureSetsDownlink_v1540 = append(ie.featureSetsDownlink_v1540, *i)
+				ie.FeatureSetsDownlink_v1540 = []FeatureSetDownlink_v1540{}
+				for _, i := range tmp_FeatureSetsDownlink_v1540.Value {
+					ie.FeatureSetsDownlink_v1540 = append(ie.FeatureSetsDownlink_v1540, *i)
 				}
 			}
-			// decode featureSetsUplink_v1540 optional
-			if featureSetsUplink_v1540Present {
-				tmp_featureSetsUplink_v1540 := utils.NewSequence[*FeatureSetUplink_v1540]([]*FeatureSetUplink_v1540{}, uper.Constraint{Lb: 1, Ub: maxUplinkFeatureSets}, false)
-				fn_featureSetsUplink_v1540 := func() *FeatureSetUplink_v1540 {
+			// decode FeatureSetsUplink_v1540 optional
+			if FeatureSetsUplink_v1540Present {
+				tmp_FeatureSetsUplink_v1540 := utils.NewSequence[*FeatureSetUplink_v1540]([]*FeatureSetUplink_v1540{}, uper.Constraint{Lb: 1, Ub: maxUplinkFeatureSets}, false)
+				fn_FeatureSetsUplink_v1540 := func() *FeatureSetUplink_v1540 {
 					return new(FeatureSetUplink_v1540)
 				}
-				if err = tmp_featureSetsUplink_v1540.Decode(extReader, fn_featureSetsUplink_v1540); err != nil {
-					return utils.WrapError("Decode featureSetsUplink_v1540", err)
+				if err = tmp_FeatureSetsUplink_v1540.Decode(extReader, fn_FeatureSetsUplink_v1540); err != nil {
+					return utils.WrapError("Decode FeatureSetsUplink_v1540", err)
 				}
-				ie.featureSetsUplink_v1540 = []FeatureSetUplink_v1540{}
-				for _, i := range tmp_featureSetsUplink_v1540.Value {
-					ie.featureSetsUplink_v1540 = append(ie.featureSetsUplink_v1540, *i)
+				ie.FeatureSetsUplink_v1540 = []FeatureSetUplink_v1540{}
+				for _, i := range tmp_FeatureSetsUplink_v1540.Value {
+					ie.FeatureSetsUplink_v1540 = append(ie.FeatureSetsUplink_v1540, *i)
 				}
 			}
-			// decode featureSetsUplinkPerCC_v1540 optional
-			if featureSetsUplinkPerCC_v1540Present {
-				tmp_featureSetsUplinkPerCC_v1540 := utils.NewSequence[*FeatureSetUplinkPerCC_v1540]([]*FeatureSetUplinkPerCC_v1540{}, uper.Constraint{Lb: 1, Ub: maxPerCC_FeatureSets}, false)
-				fn_featureSetsUplinkPerCC_v1540 := func() *FeatureSetUplinkPerCC_v1540 {
+			// decode FeatureSetsUplinkPerCC_v1540 optional
+			if FeatureSetsUplinkPerCC_v1540Present {
+				tmp_FeatureSetsUplinkPerCC_v1540 := utils.NewSequence[*FeatureSetUplinkPerCC_v1540]([]*FeatureSetUplinkPerCC_v1540{}, uper.Constraint{Lb: 1, Ub: maxPerCC_FeatureSets}, false)
+				fn_FeatureSetsUplinkPerCC_v1540 := func() *FeatureSetUplinkPerCC_v1540 {
 					return new(FeatureSetUplinkPerCC_v1540)
 				}
-				if err = tmp_featureSetsUplinkPerCC_v1540.Decode(extReader, fn_featureSetsUplinkPerCC_v1540); err != nil {
-					return utils.WrapError("Decode featureSetsUplinkPerCC_v1540", err)
+				if err = tmp_FeatureSetsUplinkPerCC_v1540.Decode(extReader, fn_FeatureSetsUplinkPerCC_v1540); err != nil {
+					return utils.WrapError("Decode FeatureSetsUplinkPerCC_v1540", err)
 				}
-				ie.featureSetsUplinkPerCC_v1540 = []FeatureSetUplinkPerCC_v1540{}
-				for _, i := range tmp_featureSetsUplinkPerCC_v1540.Value {
-					ie.featureSetsUplinkPerCC_v1540 = append(ie.featureSetsUplinkPerCC_v1540, *i)
+				ie.FeatureSetsUplinkPerCC_v1540 = []FeatureSetUplinkPerCC_v1540{}
+				for _, i := range tmp_FeatureSetsUplinkPerCC_v1540.Value {
+					ie.FeatureSetsUplinkPerCC_v1540 = append(ie.FeatureSetsUplinkPerCC_v1540, *i)
 				}
 			}
 		}
@@ -606,22 +606,22 @@ func (ie *FeatureSets) Decode(r *uper.UperReader) error {
 
 			extReader := uper.NewReader(bytes.NewReader(extBytes))
 
-			featureSetsDownlink_v15a0Present, err := extReader.ReadBool()
+			FeatureSetsDownlink_v15a0Present, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			// decode featureSetsDownlink_v15a0 optional
-			if featureSetsDownlink_v15a0Present {
-				tmp_featureSetsDownlink_v15a0 := utils.NewSequence[*FeatureSetDownlink_v15a0]([]*FeatureSetDownlink_v15a0{}, uper.Constraint{Lb: 1, Ub: maxDownlinkFeatureSets}, false)
-				fn_featureSetsDownlink_v15a0 := func() *FeatureSetDownlink_v15a0 {
+			// decode FeatureSetsDownlink_v15a0 optional
+			if FeatureSetsDownlink_v15a0Present {
+				tmp_FeatureSetsDownlink_v15a0 := utils.NewSequence[*FeatureSetDownlink_v15a0]([]*FeatureSetDownlink_v15a0{}, uper.Constraint{Lb: 1, Ub: maxDownlinkFeatureSets}, false)
+				fn_FeatureSetsDownlink_v15a0 := func() *FeatureSetDownlink_v15a0 {
 					return new(FeatureSetDownlink_v15a0)
 				}
-				if err = tmp_featureSetsDownlink_v15a0.Decode(extReader, fn_featureSetsDownlink_v15a0); err != nil {
-					return utils.WrapError("Decode featureSetsDownlink_v15a0", err)
+				if err = tmp_FeatureSetsDownlink_v15a0.Decode(extReader, fn_FeatureSetsDownlink_v15a0); err != nil {
+					return utils.WrapError("Decode FeatureSetsDownlink_v15a0", err)
 				}
-				ie.featureSetsDownlink_v15a0 = []FeatureSetDownlink_v15a0{}
-				for _, i := range tmp_featureSetsDownlink_v15a0.Value {
-					ie.featureSetsDownlink_v15a0 = append(ie.featureSetsDownlink_v15a0, *i)
+				ie.FeatureSetsDownlink_v15a0 = []FeatureSetDownlink_v15a0{}
+				for _, i := range tmp_FeatureSetsDownlink_v15a0.Value {
+					ie.FeatureSetsDownlink_v15a0 = append(ie.FeatureSetsDownlink_v15a0, *i)
 				}
 			}
 		}
@@ -634,58 +634,58 @@ func (ie *FeatureSets) Decode(r *uper.UperReader) error {
 
 			extReader := uper.NewReader(bytes.NewReader(extBytes))
 
-			featureSetsDownlink_v1610Present, err := extReader.ReadBool()
+			FeatureSetsDownlink_v1610Present, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			featureSetsUplink_v1610Present, err := extReader.ReadBool()
+			FeatureSetsUplink_v1610Present, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			featureSetDownlinkPerCC_v1620Present, err := extReader.ReadBool()
+			FeatureSetDownlinkPerCC_v1620Present, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			// decode featureSetsDownlink_v1610 optional
-			if featureSetsDownlink_v1610Present {
-				tmp_featureSetsDownlink_v1610 := utils.NewSequence[*FeatureSetDownlink_v1610]([]*FeatureSetDownlink_v1610{}, uper.Constraint{Lb: 1, Ub: maxDownlinkFeatureSets}, false)
-				fn_featureSetsDownlink_v1610 := func() *FeatureSetDownlink_v1610 {
+			// decode FeatureSetsDownlink_v1610 optional
+			if FeatureSetsDownlink_v1610Present {
+				tmp_FeatureSetsDownlink_v1610 := utils.NewSequence[*FeatureSetDownlink_v1610]([]*FeatureSetDownlink_v1610{}, uper.Constraint{Lb: 1, Ub: maxDownlinkFeatureSets}, false)
+				fn_FeatureSetsDownlink_v1610 := func() *FeatureSetDownlink_v1610 {
 					return new(FeatureSetDownlink_v1610)
 				}
-				if err = tmp_featureSetsDownlink_v1610.Decode(extReader, fn_featureSetsDownlink_v1610); err != nil {
-					return utils.WrapError("Decode featureSetsDownlink_v1610", err)
+				if err = tmp_FeatureSetsDownlink_v1610.Decode(extReader, fn_FeatureSetsDownlink_v1610); err != nil {
+					return utils.WrapError("Decode FeatureSetsDownlink_v1610", err)
 				}
-				ie.featureSetsDownlink_v1610 = []FeatureSetDownlink_v1610{}
-				for _, i := range tmp_featureSetsDownlink_v1610.Value {
-					ie.featureSetsDownlink_v1610 = append(ie.featureSetsDownlink_v1610, *i)
+				ie.FeatureSetsDownlink_v1610 = []FeatureSetDownlink_v1610{}
+				for _, i := range tmp_FeatureSetsDownlink_v1610.Value {
+					ie.FeatureSetsDownlink_v1610 = append(ie.FeatureSetsDownlink_v1610, *i)
 				}
 			}
-			// decode featureSetsUplink_v1610 optional
-			if featureSetsUplink_v1610Present {
-				tmp_featureSetsUplink_v1610 := utils.NewSequence[*FeatureSetUplink_v1610]([]*FeatureSetUplink_v1610{}, uper.Constraint{Lb: 1, Ub: maxUplinkFeatureSets}, false)
-				fn_featureSetsUplink_v1610 := func() *FeatureSetUplink_v1610 {
+			// decode FeatureSetsUplink_v1610 optional
+			if FeatureSetsUplink_v1610Present {
+				tmp_FeatureSetsUplink_v1610 := utils.NewSequence[*FeatureSetUplink_v1610]([]*FeatureSetUplink_v1610{}, uper.Constraint{Lb: 1, Ub: maxUplinkFeatureSets}, false)
+				fn_FeatureSetsUplink_v1610 := func() *FeatureSetUplink_v1610 {
 					return new(FeatureSetUplink_v1610)
 				}
-				if err = tmp_featureSetsUplink_v1610.Decode(extReader, fn_featureSetsUplink_v1610); err != nil {
-					return utils.WrapError("Decode featureSetsUplink_v1610", err)
+				if err = tmp_FeatureSetsUplink_v1610.Decode(extReader, fn_FeatureSetsUplink_v1610); err != nil {
+					return utils.WrapError("Decode FeatureSetsUplink_v1610", err)
 				}
-				ie.featureSetsUplink_v1610 = []FeatureSetUplink_v1610{}
-				for _, i := range tmp_featureSetsUplink_v1610.Value {
-					ie.featureSetsUplink_v1610 = append(ie.featureSetsUplink_v1610, *i)
+				ie.FeatureSetsUplink_v1610 = []FeatureSetUplink_v1610{}
+				for _, i := range tmp_FeatureSetsUplink_v1610.Value {
+					ie.FeatureSetsUplink_v1610 = append(ie.FeatureSetsUplink_v1610, *i)
 				}
 			}
-			// decode featureSetDownlinkPerCC_v1620 optional
-			if featureSetDownlinkPerCC_v1620Present {
-				tmp_featureSetDownlinkPerCC_v1620 := utils.NewSequence[*FeatureSetDownlinkPerCC_v1620]([]*FeatureSetDownlinkPerCC_v1620{}, uper.Constraint{Lb: 1, Ub: maxPerCC_FeatureSets}, false)
-				fn_featureSetDownlinkPerCC_v1620 := func() *FeatureSetDownlinkPerCC_v1620 {
+			// decode FeatureSetDownlinkPerCC_v1620 optional
+			if FeatureSetDownlinkPerCC_v1620Present {
+				tmp_FeatureSetDownlinkPerCC_v1620 := utils.NewSequence[*FeatureSetDownlinkPerCC_v1620]([]*FeatureSetDownlinkPerCC_v1620{}, uper.Constraint{Lb: 1, Ub: maxPerCC_FeatureSets}, false)
+				fn_FeatureSetDownlinkPerCC_v1620 := func() *FeatureSetDownlinkPerCC_v1620 {
 					return new(FeatureSetDownlinkPerCC_v1620)
 				}
-				if err = tmp_featureSetDownlinkPerCC_v1620.Decode(extReader, fn_featureSetDownlinkPerCC_v1620); err != nil {
-					return utils.WrapError("Decode featureSetDownlinkPerCC_v1620", err)
+				if err = tmp_FeatureSetDownlinkPerCC_v1620.Decode(extReader, fn_FeatureSetDownlinkPerCC_v1620); err != nil {
+					return utils.WrapError("Decode FeatureSetDownlinkPerCC_v1620", err)
 				}
-				ie.featureSetDownlinkPerCC_v1620 = []FeatureSetDownlinkPerCC_v1620{}
-				for _, i := range tmp_featureSetDownlinkPerCC_v1620.Value {
-					ie.featureSetDownlinkPerCC_v1620 = append(ie.featureSetDownlinkPerCC_v1620, *i)
+				ie.FeatureSetDownlinkPerCC_v1620 = []FeatureSetDownlinkPerCC_v1620{}
+				for _, i := range tmp_FeatureSetDownlinkPerCC_v1620.Value {
+					ie.FeatureSetDownlinkPerCC_v1620 = append(ie.FeatureSetDownlinkPerCC_v1620, *i)
 				}
 			}
 		}
@@ -698,22 +698,22 @@ func (ie *FeatureSets) Decode(r *uper.UperReader) error {
 
 			extReader := uper.NewReader(bytes.NewReader(extBytes))
 
-			featureSetsUplink_v1630Present, err := extReader.ReadBool()
+			FeatureSetsUplink_v1630Present, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			// decode featureSetsUplink_v1630 optional
-			if featureSetsUplink_v1630Present {
-				tmp_featureSetsUplink_v1630 := utils.NewSequence[*FeatureSetUplink_v1630]([]*FeatureSetUplink_v1630{}, uper.Constraint{Lb: 1, Ub: maxUplinkFeatureSets}, false)
-				fn_featureSetsUplink_v1630 := func() *FeatureSetUplink_v1630 {
+			// decode FeatureSetsUplink_v1630 optional
+			if FeatureSetsUplink_v1630Present {
+				tmp_FeatureSetsUplink_v1630 := utils.NewSequence[*FeatureSetUplink_v1630]([]*FeatureSetUplink_v1630{}, uper.Constraint{Lb: 1, Ub: maxUplinkFeatureSets}, false)
+				fn_FeatureSetsUplink_v1630 := func() *FeatureSetUplink_v1630 {
 					return new(FeatureSetUplink_v1630)
 				}
-				if err = tmp_featureSetsUplink_v1630.Decode(extReader, fn_featureSetsUplink_v1630); err != nil {
-					return utils.WrapError("Decode featureSetsUplink_v1630", err)
+				if err = tmp_FeatureSetsUplink_v1630.Decode(extReader, fn_FeatureSetsUplink_v1630); err != nil {
+					return utils.WrapError("Decode FeatureSetsUplink_v1630", err)
 				}
-				ie.featureSetsUplink_v1630 = []FeatureSetUplink_v1630{}
-				for _, i := range tmp_featureSetsUplink_v1630.Value {
-					ie.featureSetsUplink_v1630 = append(ie.featureSetsUplink_v1630, *i)
+				ie.FeatureSetsUplink_v1630 = []FeatureSetUplink_v1630{}
+				for _, i := range tmp_FeatureSetsUplink_v1630.Value {
+					ie.FeatureSetsUplink_v1630 = append(ie.FeatureSetsUplink_v1630, *i)
 				}
 			}
 		}
@@ -726,22 +726,22 @@ func (ie *FeatureSets) Decode(r *uper.UperReader) error {
 
 			extReader := uper.NewReader(bytes.NewReader(extBytes))
 
-			featureSetsUplink_v1640Present, err := extReader.ReadBool()
+			FeatureSetsUplink_v1640Present, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			// decode featureSetsUplink_v1640 optional
-			if featureSetsUplink_v1640Present {
-				tmp_featureSetsUplink_v1640 := utils.NewSequence[*FeatureSetUplink_v1640]([]*FeatureSetUplink_v1640{}, uper.Constraint{Lb: 1, Ub: maxUplinkFeatureSets}, false)
-				fn_featureSetsUplink_v1640 := func() *FeatureSetUplink_v1640 {
+			// decode FeatureSetsUplink_v1640 optional
+			if FeatureSetsUplink_v1640Present {
+				tmp_FeatureSetsUplink_v1640 := utils.NewSequence[*FeatureSetUplink_v1640]([]*FeatureSetUplink_v1640{}, uper.Constraint{Lb: 1, Ub: maxUplinkFeatureSets}, false)
+				fn_FeatureSetsUplink_v1640 := func() *FeatureSetUplink_v1640 {
 					return new(FeatureSetUplink_v1640)
 				}
-				if err = tmp_featureSetsUplink_v1640.Decode(extReader, fn_featureSetsUplink_v1640); err != nil {
-					return utils.WrapError("Decode featureSetsUplink_v1640", err)
+				if err = tmp_FeatureSetsUplink_v1640.Decode(extReader, fn_FeatureSetsUplink_v1640); err != nil {
+					return utils.WrapError("Decode FeatureSetsUplink_v1640", err)
 				}
-				ie.featureSetsUplink_v1640 = []FeatureSetUplink_v1640{}
-				for _, i := range tmp_featureSetsUplink_v1640.Value {
-					ie.featureSetsUplink_v1640 = append(ie.featureSetsUplink_v1640, *i)
+				ie.FeatureSetsUplink_v1640 = []FeatureSetUplink_v1640{}
+				for _, i := range tmp_FeatureSetsUplink_v1640.Value {
+					ie.FeatureSetsUplink_v1640 = append(ie.FeatureSetsUplink_v1640, *i)
 				}
 			}
 		}
@@ -754,76 +754,76 @@ func (ie *FeatureSets) Decode(r *uper.UperReader) error {
 
 			extReader := uper.NewReader(bytes.NewReader(extBytes))
 
-			featureSetsDownlink_v1700Present, err := extReader.ReadBool()
+			FeatureSetsDownlink_v1700Present, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			featureSetsDownlinkPerCC_v1700Present, err := extReader.ReadBool()
+			FeatureSetsDownlinkPerCC_v1700Present, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			featureSetsUplink_v1710Present, err := extReader.ReadBool()
+			FeatureSetsUplink_v1710Present, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			featureSetsUplinkPerCC_v1700Present, err := extReader.ReadBool()
+			FeatureSetsUplinkPerCC_v1700Present, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			// decode featureSetsDownlink_v1700 optional
-			if featureSetsDownlink_v1700Present {
-				tmp_featureSetsDownlink_v1700 := utils.NewSequence[*FeatureSetDownlink_v1700]([]*FeatureSetDownlink_v1700{}, uper.Constraint{Lb: 1, Ub: maxDownlinkFeatureSets}, false)
-				fn_featureSetsDownlink_v1700 := func() *FeatureSetDownlink_v1700 {
+			// decode FeatureSetsDownlink_v1700 optional
+			if FeatureSetsDownlink_v1700Present {
+				tmp_FeatureSetsDownlink_v1700 := utils.NewSequence[*FeatureSetDownlink_v1700]([]*FeatureSetDownlink_v1700{}, uper.Constraint{Lb: 1, Ub: maxDownlinkFeatureSets}, false)
+				fn_FeatureSetsDownlink_v1700 := func() *FeatureSetDownlink_v1700 {
 					return new(FeatureSetDownlink_v1700)
 				}
-				if err = tmp_featureSetsDownlink_v1700.Decode(extReader, fn_featureSetsDownlink_v1700); err != nil {
-					return utils.WrapError("Decode featureSetsDownlink_v1700", err)
+				if err = tmp_FeatureSetsDownlink_v1700.Decode(extReader, fn_FeatureSetsDownlink_v1700); err != nil {
+					return utils.WrapError("Decode FeatureSetsDownlink_v1700", err)
 				}
-				ie.featureSetsDownlink_v1700 = []FeatureSetDownlink_v1700{}
-				for _, i := range tmp_featureSetsDownlink_v1700.Value {
-					ie.featureSetsDownlink_v1700 = append(ie.featureSetsDownlink_v1700, *i)
+				ie.FeatureSetsDownlink_v1700 = []FeatureSetDownlink_v1700{}
+				for _, i := range tmp_FeatureSetsDownlink_v1700.Value {
+					ie.FeatureSetsDownlink_v1700 = append(ie.FeatureSetsDownlink_v1700, *i)
 				}
 			}
-			// decode featureSetsDownlinkPerCC_v1700 optional
-			if featureSetsDownlinkPerCC_v1700Present {
-				tmp_featureSetsDownlinkPerCC_v1700 := utils.NewSequence[*FeatureSetDownlinkPerCC_v1700]([]*FeatureSetDownlinkPerCC_v1700{}, uper.Constraint{Lb: 1, Ub: maxPerCC_FeatureSets}, false)
-				fn_featureSetsDownlinkPerCC_v1700 := func() *FeatureSetDownlinkPerCC_v1700 {
+			// decode FeatureSetsDownlinkPerCC_v1700 optional
+			if FeatureSetsDownlinkPerCC_v1700Present {
+				tmp_FeatureSetsDownlinkPerCC_v1700 := utils.NewSequence[*FeatureSetDownlinkPerCC_v1700]([]*FeatureSetDownlinkPerCC_v1700{}, uper.Constraint{Lb: 1, Ub: maxPerCC_FeatureSets}, false)
+				fn_FeatureSetsDownlinkPerCC_v1700 := func() *FeatureSetDownlinkPerCC_v1700 {
 					return new(FeatureSetDownlinkPerCC_v1700)
 				}
-				if err = tmp_featureSetsDownlinkPerCC_v1700.Decode(extReader, fn_featureSetsDownlinkPerCC_v1700); err != nil {
-					return utils.WrapError("Decode featureSetsDownlinkPerCC_v1700", err)
+				if err = tmp_FeatureSetsDownlinkPerCC_v1700.Decode(extReader, fn_FeatureSetsDownlinkPerCC_v1700); err != nil {
+					return utils.WrapError("Decode FeatureSetsDownlinkPerCC_v1700", err)
 				}
-				ie.featureSetsDownlinkPerCC_v1700 = []FeatureSetDownlinkPerCC_v1700{}
-				for _, i := range tmp_featureSetsDownlinkPerCC_v1700.Value {
-					ie.featureSetsDownlinkPerCC_v1700 = append(ie.featureSetsDownlinkPerCC_v1700, *i)
+				ie.FeatureSetsDownlinkPerCC_v1700 = []FeatureSetDownlinkPerCC_v1700{}
+				for _, i := range tmp_FeatureSetsDownlinkPerCC_v1700.Value {
+					ie.FeatureSetsDownlinkPerCC_v1700 = append(ie.FeatureSetsDownlinkPerCC_v1700, *i)
 				}
 			}
-			// decode featureSetsUplink_v1710 optional
-			if featureSetsUplink_v1710Present {
-				tmp_featureSetsUplink_v1710 := utils.NewSequence[*FeatureSetUplink_v1710]([]*FeatureSetUplink_v1710{}, uper.Constraint{Lb: 1, Ub: maxUplinkFeatureSets}, false)
-				fn_featureSetsUplink_v1710 := func() *FeatureSetUplink_v1710 {
+			// decode FeatureSetsUplink_v1710 optional
+			if FeatureSetsUplink_v1710Present {
+				tmp_FeatureSetsUplink_v1710 := utils.NewSequence[*FeatureSetUplink_v1710]([]*FeatureSetUplink_v1710{}, uper.Constraint{Lb: 1, Ub: maxUplinkFeatureSets}, false)
+				fn_FeatureSetsUplink_v1710 := func() *FeatureSetUplink_v1710 {
 					return new(FeatureSetUplink_v1710)
 				}
-				if err = tmp_featureSetsUplink_v1710.Decode(extReader, fn_featureSetsUplink_v1710); err != nil {
-					return utils.WrapError("Decode featureSetsUplink_v1710", err)
+				if err = tmp_FeatureSetsUplink_v1710.Decode(extReader, fn_FeatureSetsUplink_v1710); err != nil {
+					return utils.WrapError("Decode FeatureSetsUplink_v1710", err)
 				}
-				ie.featureSetsUplink_v1710 = []FeatureSetUplink_v1710{}
-				for _, i := range tmp_featureSetsUplink_v1710.Value {
-					ie.featureSetsUplink_v1710 = append(ie.featureSetsUplink_v1710, *i)
+				ie.FeatureSetsUplink_v1710 = []FeatureSetUplink_v1710{}
+				for _, i := range tmp_FeatureSetsUplink_v1710.Value {
+					ie.FeatureSetsUplink_v1710 = append(ie.FeatureSetsUplink_v1710, *i)
 				}
 			}
-			// decode featureSetsUplinkPerCC_v1700 optional
-			if featureSetsUplinkPerCC_v1700Present {
-				tmp_featureSetsUplinkPerCC_v1700 := utils.NewSequence[*FeatureSetUplinkPerCC_v1700]([]*FeatureSetUplinkPerCC_v1700{}, uper.Constraint{Lb: 1, Ub: maxPerCC_FeatureSets}, false)
-				fn_featureSetsUplinkPerCC_v1700 := func() *FeatureSetUplinkPerCC_v1700 {
+			// decode FeatureSetsUplinkPerCC_v1700 optional
+			if FeatureSetsUplinkPerCC_v1700Present {
+				tmp_FeatureSetsUplinkPerCC_v1700 := utils.NewSequence[*FeatureSetUplinkPerCC_v1700]([]*FeatureSetUplinkPerCC_v1700{}, uper.Constraint{Lb: 1, Ub: maxPerCC_FeatureSets}, false)
+				fn_FeatureSetsUplinkPerCC_v1700 := func() *FeatureSetUplinkPerCC_v1700 {
 					return new(FeatureSetUplinkPerCC_v1700)
 				}
-				if err = tmp_featureSetsUplinkPerCC_v1700.Decode(extReader, fn_featureSetsUplinkPerCC_v1700); err != nil {
-					return utils.WrapError("Decode featureSetsUplinkPerCC_v1700", err)
+				if err = tmp_FeatureSetsUplinkPerCC_v1700.Decode(extReader, fn_FeatureSetsUplinkPerCC_v1700); err != nil {
+					return utils.WrapError("Decode FeatureSetsUplinkPerCC_v1700", err)
 				}
-				ie.featureSetsUplinkPerCC_v1700 = []FeatureSetUplinkPerCC_v1700{}
-				for _, i := range tmp_featureSetsUplinkPerCC_v1700.Value {
-					ie.featureSetsUplinkPerCC_v1700 = append(ie.featureSetsUplinkPerCC_v1700, *i)
+				ie.FeatureSetsUplinkPerCC_v1700 = []FeatureSetUplinkPerCC_v1700{}
+				for _, i := range tmp_FeatureSetsUplinkPerCC_v1700.Value {
+					ie.FeatureSetsUplinkPerCC_v1700 = append(ie.FeatureSetsUplinkPerCC_v1700, *i)
 				}
 			}
 		}
@@ -836,58 +836,58 @@ func (ie *FeatureSets) Decode(r *uper.UperReader) error {
 
 			extReader := uper.NewReader(bytes.NewReader(extBytes))
 
-			featureSetsDownlink_v1720Present, err := extReader.ReadBool()
+			FeatureSetsDownlink_v1720Present, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			featureSetsDownlinkPerCC_v1720Present, err := extReader.ReadBool()
+			FeatureSetsDownlinkPerCC_v1720Present, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			featureSetsUplink_v1720Present, err := extReader.ReadBool()
+			FeatureSetsUplink_v1720Present, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			// decode featureSetsDownlink_v1720 optional
-			if featureSetsDownlink_v1720Present {
-				tmp_featureSetsDownlink_v1720 := utils.NewSequence[*FeatureSetDownlink_v1720]([]*FeatureSetDownlink_v1720{}, uper.Constraint{Lb: 1, Ub: maxDownlinkFeatureSets}, false)
-				fn_featureSetsDownlink_v1720 := func() *FeatureSetDownlink_v1720 {
+			// decode FeatureSetsDownlink_v1720 optional
+			if FeatureSetsDownlink_v1720Present {
+				tmp_FeatureSetsDownlink_v1720 := utils.NewSequence[*FeatureSetDownlink_v1720]([]*FeatureSetDownlink_v1720{}, uper.Constraint{Lb: 1, Ub: maxDownlinkFeatureSets}, false)
+				fn_FeatureSetsDownlink_v1720 := func() *FeatureSetDownlink_v1720 {
 					return new(FeatureSetDownlink_v1720)
 				}
-				if err = tmp_featureSetsDownlink_v1720.Decode(extReader, fn_featureSetsDownlink_v1720); err != nil {
-					return utils.WrapError("Decode featureSetsDownlink_v1720", err)
+				if err = tmp_FeatureSetsDownlink_v1720.Decode(extReader, fn_FeatureSetsDownlink_v1720); err != nil {
+					return utils.WrapError("Decode FeatureSetsDownlink_v1720", err)
 				}
-				ie.featureSetsDownlink_v1720 = []FeatureSetDownlink_v1720{}
-				for _, i := range tmp_featureSetsDownlink_v1720.Value {
-					ie.featureSetsDownlink_v1720 = append(ie.featureSetsDownlink_v1720, *i)
+				ie.FeatureSetsDownlink_v1720 = []FeatureSetDownlink_v1720{}
+				for _, i := range tmp_FeatureSetsDownlink_v1720.Value {
+					ie.FeatureSetsDownlink_v1720 = append(ie.FeatureSetsDownlink_v1720, *i)
 				}
 			}
-			// decode featureSetsDownlinkPerCC_v1720 optional
-			if featureSetsDownlinkPerCC_v1720Present {
-				tmp_featureSetsDownlinkPerCC_v1720 := utils.NewSequence[*FeatureSetDownlinkPerCC_v1720]([]*FeatureSetDownlinkPerCC_v1720{}, uper.Constraint{Lb: 1, Ub: maxPerCC_FeatureSets}, false)
-				fn_featureSetsDownlinkPerCC_v1720 := func() *FeatureSetDownlinkPerCC_v1720 {
+			// decode FeatureSetsDownlinkPerCC_v1720 optional
+			if FeatureSetsDownlinkPerCC_v1720Present {
+				tmp_FeatureSetsDownlinkPerCC_v1720 := utils.NewSequence[*FeatureSetDownlinkPerCC_v1720]([]*FeatureSetDownlinkPerCC_v1720{}, uper.Constraint{Lb: 1, Ub: maxPerCC_FeatureSets}, false)
+				fn_FeatureSetsDownlinkPerCC_v1720 := func() *FeatureSetDownlinkPerCC_v1720 {
 					return new(FeatureSetDownlinkPerCC_v1720)
 				}
-				if err = tmp_featureSetsDownlinkPerCC_v1720.Decode(extReader, fn_featureSetsDownlinkPerCC_v1720); err != nil {
-					return utils.WrapError("Decode featureSetsDownlinkPerCC_v1720", err)
+				if err = tmp_FeatureSetsDownlinkPerCC_v1720.Decode(extReader, fn_FeatureSetsDownlinkPerCC_v1720); err != nil {
+					return utils.WrapError("Decode FeatureSetsDownlinkPerCC_v1720", err)
 				}
-				ie.featureSetsDownlinkPerCC_v1720 = []FeatureSetDownlinkPerCC_v1720{}
-				for _, i := range tmp_featureSetsDownlinkPerCC_v1720.Value {
-					ie.featureSetsDownlinkPerCC_v1720 = append(ie.featureSetsDownlinkPerCC_v1720, *i)
+				ie.FeatureSetsDownlinkPerCC_v1720 = []FeatureSetDownlinkPerCC_v1720{}
+				for _, i := range tmp_FeatureSetsDownlinkPerCC_v1720.Value {
+					ie.FeatureSetsDownlinkPerCC_v1720 = append(ie.FeatureSetsDownlinkPerCC_v1720, *i)
 				}
 			}
-			// decode featureSetsUplink_v1720 optional
-			if featureSetsUplink_v1720Present {
-				tmp_featureSetsUplink_v1720 := utils.NewSequence[*FeatureSetUplink_v1720]([]*FeatureSetUplink_v1720{}, uper.Constraint{Lb: 1, Ub: maxUplinkFeatureSets}, false)
-				fn_featureSetsUplink_v1720 := func() *FeatureSetUplink_v1720 {
+			// decode FeatureSetsUplink_v1720 optional
+			if FeatureSetsUplink_v1720Present {
+				tmp_FeatureSetsUplink_v1720 := utils.NewSequence[*FeatureSetUplink_v1720]([]*FeatureSetUplink_v1720{}, uper.Constraint{Lb: 1, Ub: maxUplinkFeatureSets}, false)
+				fn_FeatureSetsUplink_v1720 := func() *FeatureSetUplink_v1720 {
 					return new(FeatureSetUplink_v1720)
 				}
-				if err = tmp_featureSetsUplink_v1720.Decode(extReader, fn_featureSetsUplink_v1720); err != nil {
-					return utils.WrapError("Decode featureSetsUplink_v1720", err)
+				if err = tmp_FeatureSetsUplink_v1720.Decode(extReader, fn_FeatureSetsUplink_v1720); err != nil {
+					return utils.WrapError("Decode FeatureSetsUplink_v1720", err)
 				}
-				ie.featureSetsUplink_v1720 = []FeatureSetUplink_v1720{}
-				for _, i := range tmp_featureSetsUplink_v1720.Value {
-					ie.featureSetsUplink_v1720 = append(ie.featureSetsUplink_v1720, *i)
+				ie.FeatureSetsUplink_v1720 = []FeatureSetUplink_v1720{}
+				for _, i := range tmp_FeatureSetsUplink_v1720.Value {
+					ie.FeatureSetsUplink_v1720 = append(ie.FeatureSetsUplink_v1720, *i)
 				}
 			}
 		}
@@ -900,40 +900,40 @@ func (ie *FeatureSets) Decode(r *uper.UperReader) error {
 
 			extReader := uper.NewReader(bytes.NewReader(extBytes))
 
-			featureSetsDownlink_v1730Present, err := extReader.ReadBool()
+			FeatureSetsDownlink_v1730Present, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			featureSetsDownlinkPerCC_v1730Present, err := extReader.ReadBool()
+			FeatureSetsDownlinkPerCC_v1730Present, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			// decode featureSetsDownlink_v1730 optional
-			if featureSetsDownlink_v1730Present {
-				tmp_featureSetsDownlink_v1730 := utils.NewSequence[*FeatureSetDownlink_v1730]([]*FeatureSetDownlink_v1730{}, uper.Constraint{Lb: 1, Ub: maxDownlinkFeatureSets}, false)
-				fn_featureSetsDownlink_v1730 := func() *FeatureSetDownlink_v1730 {
+			// decode FeatureSetsDownlink_v1730 optional
+			if FeatureSetsDownlink_v1730Present {
+				tmp_FeatureSetsDownlink_v1730 := utils.NewSequence[*FeatureSetDownlink_v1730]([]*FeatureSetDownlink_v1730{}, uper.Constraint{Lb: 1, Ub: maxDownlinkFeatureSets}, false)
+				fn_FeatureSetsDownlink_v1730 := func() *FeatureSetDownlink_v1730 {
 					return new(FeatureSetDownlink_v1730)
 				}
-				if err = tmp_featureSetsDownlink_v1730.Decode(extReader, fn_featureSetsDownlink_v1730); err != nil {
-					return utils.WrapError("Decode featureSetsDownlink_v1730", err)
+				if err = tmp_FeatureSetsDownlink_v1730.Decode(extReader, fn_FeatureSetsDownlink_v1730); err != nil {
+					return utils.WrapError("Decode FeatureSetsDownlink_v1730", err)
 				}
-				ie.featureSetsDownlink_v1730 = []FeatureSetDownlink_v1730{}
-				for _, i := range tmp_featureSetsDownlink_v1730.Value {
-					ie.featureSetsDownlink_v1730 = append(ie.featureSetsDownlink_v1730, *i)
+				ie.FeatureSetsDownlink_v1730 = []FeatureSetDownlink_v1730{}
+				for _, i := range tmp_FeatureSetsDownlink_v1730.Value {
+					ie.FeatureSetsDownlink_v1730 = append(ie.FeatureSetsDownlink_v1730, *i)
 				}
 			}
-			// decode featureSetsDownlinkPerCC_v1730 optional
-			if featureSetsDownlinkPerCC_v1730Present {
-				tmp_featureSetsDownlinkPerCC_v1730 := utils.NewSequence[*FeatureSetDownlinkPerCC_v1730]([]*FeatureSetDownlinkPerCC_v1730{}, uper.Constraint{Lb: 1, Ub: maxPerCC_FeatureSets}, false)
-				fn_featureSetsDownlinkPerCC_v1730 := func() *FeatureSetDownlinkPerCC_v1730 {
+			// decode FeatureSetsDownlinkPerCC_v1730 optional
+			if FeatureSetsDownlinkPerCC_v1730Present {
+				tmp_FeatureSetsDownlinkPerCC_v1730 := utils.NewSequence[*FeatureSetDownlinkPerCC_v1730]([]*FeatureSetDownlinkPerCC_v1730{}, uper.Constraint{Lb: 1, Ub: maxPerCC_FeatureSets}, false)
+				fn_FeatureSetsDownlinkPerCC_v1730 := func() *FeatureSetDownlinkPerCC_v1730 {
 					return new(FeatureSetDownlinkPerCC_v1730)
 				}
-				if err = tmp_featureSetsDownlinkPerCC_v1730.Decode(extReader, fn_featureSetsDownlinkPerCC_v1730); err != nil {
-					return utils.WrapError("Decode featureSetsDownlinkPerCC_v1730", err)
+				if err = tmp_FeatureSetsDownlinkPerCC_v1730.Decode(extReader, fn_FeatureSetsDownlinkPerCC_v1730); err != nil {
+					return utils.WrapError("Decode FeatureSetsDownlinkPerCC_v1730", err)
 				}
-				ie.featureSetsDownlinkPerCC_v1730 = []FeatureSetDownlinkPerCC_v1730{}
-				for _, i := range tmp_featureSetsDownlinkPerCC_v1730.Value {
-					ie.featureSetsDownlinkPerCC_v1730 = append(ie.featureSetsDownlinkPerCC_v1730, *i)
+				ie.FeatureSetsDownlinkPerCC_v1730 = []FeatureSetDownlinkPerCC_v1730{}
+				for _, i := range tmp_FeatureSetsDownlinkPerCC_v1730.Value {
+					ie.FeatureSetsDownlinkPerCC_v1730 = append(ie.FeatureSetsDownlinkPerCC_v1730, *i)
 				}
 			}
 		}

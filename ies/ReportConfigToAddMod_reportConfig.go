@@ -9,16 +9,16 @@ import (
 
 const (
 	ReportConfigToAddMod_reportConfig_Choice_nothing uint64 = iota
-	ReportConfigToAddMod_reportConfig_Choice_reportConfigNR
-	ReportConfigToAddMod_reportConfig_Choice_reportConfigInterRAT
-	ReportConfigToAddMod_reportConfig_Choice_reportConfigNR_SL_r16
+	ReportConfigToAddMod_reportConfig_Choice_ReportConfigNR
+	ReportConfigToAddMod_reportConfig_Choice_ReportConfigInterRAT
+	ReportConfigToAddMod_reportConfig_Choice_ReportConfigNR_SL_r16
 )
 
 type ReportConfigToAddMod_reportConfig struct {
 	Choice                uint64
-	reportConfigNR        *ReportConfigNR
-	reportConfigInterRAT  *ReportConfigInterRAT
-	reportConfigNR_SL_r16 *ReportConfigNR_SL_r16
+	ReportConfigNR        *ReportConfigNR
+	ReportConfigInterRAT  *ReportConfigInterRAT
+	ReportConfigNR_SL_r16 *ReportConfigNR_SL_r16
 }
 
 func (ie *ReportConfigToAddMod_reportConfig) Encode(w *uper.UperWriter) error {
@@ -27,17 +27,17 @@ func (ie *ReportConfigToAddMod_reportConfig) Encode(w *uper.UperWriter) error {
 		return err
 	}
 	switch ie.Choice {
-	case ReportConfigToAddMod_reportConfig_Choice_reportConfigNR:
-		if err = ie.reportConfigNR.Encode(w); err != nil {
-			err = utils.WrapError("Encode reportConfigNR", err)
+	case ReportConfigToAddMod_reportConfig_Choice_ReportConfigNR:
+		if err = ie.ReportConfigNR.Encode(w); err != nil {
+			err = utils.WrapError("Encode ReportConfigNR", err)
 		}
-	case ReportConfigToAddMod_reportConfig_Choice_reportConfigInterRAT:
-		if err = ie.reportConfigInterRAT.Encode(w); err != nil {
-			err = utils.WrapError("Encode reportConfigInterRAT", err)
+	case ReportConfigToAddMod_reportConfig_Choice_ReportConfigInterRAT:
+		if err = ie.ReportConfigInterRAT.Encode(w); err != nil {
+			err = utils.WrapError("Encode ReportConfigInterRAT", err)
 		}
-	case ReportConfigToAddMod_reportConfig_Choice_reportConfigNR_SL_r16:
-		if err = ie.reportConfigNR_SL_r16.Encode(w); err != nil {
-			err = utils.WrapError("Encode reportConfigNR_SL_r16", err)
+	case ReportConfigToAddMod_reportConfig_Choice_ReportConfigNR_SL_r16:
+		if err = ie.ReportConfigNR_SL_r16.Encode(w); err != nil {
+			err = utils.WrapError("Encode ReportConfigNR_SL_r16", err)
 		}
 	default:
 		err = fmt.Errorf("invalid choice: %d", ie.Choice)
@@ -51,20 +51,20 @@ func (ie *ReportConfigToAddMod_reportConfig) Decode(r *uper.UperReader) error {
 		return err
 	}
 	switch ie.Choice {
-	case ReportConfigToAddMod_reportConfig_Choice_reportConfigNR:
-		ie.reportConfigNR = new(ReportConfigNR)
-		if err = ie.reportConfigNR.Decode(r); err != nil {
-			return utils.WrapError("Decode reportConfigNR", err)
+	case ReportConfigToAddMod_reportConfig_Choice_ReportConfigNR:
+		ie.ReportConfigNR = new(ReportConfigNR)
+		if err = ie.ReportConfigNR.Decode(r); err != nil {
+			return utils.WrapError("Decode ReportConfigNR", err)
 		}
-	case ReportConfigToAddMod_reportConfig_Choice_reportConfigInterRAT:
-		ie.reportConfigInterRAT = new(ReportConfigInterRAT)
-		if err = ie.reportConfigInterRAT.Decode(r); err != nil {
-			return utils.WrapError("Decode reportConfigInterRAT", err)
+	case ReportConfigToAddMod_reportConfig_Choice_ReportConfigInterRAT:
+		ie.ReportConfigInterRAT = new(ReportConfigInterRAT)
+		if err = ie.ReportConfigInterRAT.Decode(r); err != nil {
+			return utils.WrapError("Decode ReportConfigInterRAT", err)
 		}
-	case ReportConfigToAddMod_reportConfig_Choice_reportConfigNR_SL_r16:
-		ie.reportConfigNR_SL_r16 = new(ReportConfigNR_SL_r16)
-		if err = ie.reportConfigNR_SL_r16.Decode(r); err != nil {
-			return utils.WrapError("Decode reportConfigNR_SL_r16", err)
+	case ReportConfigToAddMod_reportConfig_Choice_ReportConfigNR_SL_r16:
+		ie.ReportConfigNR_SL_r16 = new(ReportConfigNR_SL_r16)
+		if err = ie.ReportConfigNR_SL_r16.Decode(r); err != nil {
+			return utils.WrapError("Decode ReportConfigNR_SL_r16", err)
 		}
 	default:
 		return fmt.Errorf("invalid choice: %d", ie.Choice)

@@ -9,14 +9,14 @@ import (
 
 const (
 	CounterCheck_CriticalExtensions_Choice_nothing uint64 = iota
-	CounterCheck_CriticalExtensions_Choice_counterCheck
-	CounterCheck_CriticalExtensions_Choice_criticalExtensionsFuture
+	CounterCheck_CriticalExtensions_Choice_CounterCheck
+	CounterCheck_CriticalExtensions_Choice_CriticalExtensionsFuture
 )
 
 type CounterCheck_CriticalExtensions struct {
 	Choice                   uint64
-	counterCheck             *CounterCheck_IEs
-	criticalExtensionsFuture interface{} `madatory`
+	CounterCheck             *CounterCheck_IEs
+	CriticalExtensionsFuture interface{} `madatory`
 }
 
 func (ie *CounterCheck_CriticalExtensions) Encode(w *uper.UperWriter) error {
@@ -25,11 +25,11 @@ func (ie *CounterCheck_CriticalExtensions) Encode(w *uper.UperWriter) error {
 		return err
 	}
 	switch ie.Choice {
-	case CounterCheck_CriticalExtensions_Choice_counterCheck:
-		if err = ie.counterCheck.Encode(w); err != nil {
-			err = utils.WrapError("Encode counterCheck", err)
+	case CounterCheck_CriticalExtensions_Choice_CounterCheck:
+		if err = ie.CounterCheck.Encode(w); err != nil {
+			err = utils.WrapError("Encode CounterCheck", err)
 		}
-	case CounterCheck_CriticalExtensions_Choice_criticalExtensionsFuture:
+	case CounterCheck_CriticalExtensions_Choice_CriticalExtensionsFuture:
 		// interface{} field of choice - nothing to encode
 	default:
 		err = fmt.Errorf("invalid choice: %d", ie.Choice)
@@ -43,12 +43,12 @@ func (ie *CounterCheck_CriticalExtensions) Decode(r *uper.UperReader) error {
 		return err
 	}
 	switch ie.Choice {
-	case CounterCheck_CriticalExtensions_Choice_counterCheck:
-		ie.counterCheck = new(CounterCheck_IEs)
-		if err = ie.counterCheck.Decode(r); err != nil {
-			return utils.WrapError("Decode counterCheck", err)
+	case CounterCheck_CriticalExtensions_Choice_CounterCheck:
+		ie.CounterCheck = new(CounterCheck_IEs)
+		if err = ie.CounterCheck.Decode(r); err != nil {
+			return utils.WrapError("Decode CounterCheck", err)
 		}
-	case CounterCheck_CriticalExtensions_Choice_criticalExtensionsFuture:
+	case CounterCheck_CriticalExtensions_Choice_CriticalExtensionsFuture:
 		// interface{} field of choice - nothing to decode
 	default:
 		return fmt.Errorf("invalid choice: %d", ie.Choice)

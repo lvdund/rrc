@@ -9,18 +9,18 @@ import (
 
 const (
 	MeasurementTimingConfiguration_CriticalExtensions_C1_Choice_nothing uint64 = iota
-	MeasurementTimingConfiguration_CriticalExtensions_C1_Choice_measTimingConf
-	MeasurementTimingConfiguration_CriticalExtensions_C1_Choice_spare3
-	MeasurementTimingConfiguration_CriticalExtensions_C1_Choice_spare2
-	MeasurementTimingConfiguration_CriticalExtensions_C1_Choice_spare1
+	MeasurementTimingConfiguration_CriticalExtensions_C1_Choice_MeasTimingConf
+	MeasurementTimingConfiguration_CriticalExtensions_C1_Choice_Spare3
+	MeasurementTimingConfiguration_CriticalExtensions_C1_Choice_Spare2
+	MeasurementTimingConfiguration_CriticalExtensions_C1_Choice_Spare1
 )
 
 type MeasurementTimingConfiguration_CriticalExtensions_C1 struct {
 	Choice         uint64
-	measTimingConf *MeasurementTimingConfiguration_IEs
-	spare3         uper.NULL `madatory`
-	spare2         uper.NULL `madatory`
-	spare1         uper.NULL `madatory`
+	MeasTimingConf *MeasurementTimingConfiguration_IEs
+	Spare3         uper.NULL `madatory`
+	Spare2         uper.NULL `madatory`
+	Spare1         uper.NULL `madatory`
 }
 
 func (ie *MeasurementTimingConfiguration_CriticalExtensions_C1) Encode(w *uper.UperWriter) error {
@@ -29,21 +29,21 @@ func (ie *MeasurementTimingConfiguration_CriticalExtensions_C1) Encode(w *uper.U
 		return err
 	}
 	switch ie.Choice {
-	case MeasurementTimingConfiguration_CriticalExtensions_C1_Choice_measTimingConf:
-		if err = ie.measTimingConf.Encode(w); err != nil {
-			err = utils.WrapError("Encode measTimingConf", err)
+	case MeasurementTimingConfiguration_CriticalExtensions_C1_Choice_MeasTimingConf:
+		if err = ie.MeasTimingConf.Encode(w); err != nil {
+			err = utils.WrapError("Encode MeasTimingConf", err)
 		}
-	case MeasurementTimingConfiguration_CriticalExtensions_C1_Choice_spare3:
+	case MeasurementTimingConfiguration_CriticalExtensions_C1_Choice_Spare3:
 		if err := w.WriteNull(); err != nil {
-			err = utils.WrapError("Encode spare3", err)
+			err = utils.WrapError("Encode Spare3", err)
 		}
-	case MeasurementTimingConfiguration_CriticalExtensions_C1_Choice_spare2:
+	case MeasurementTimingConfiguration_CriticalExtensions_C1_Choice_Spare2:
 		if err := w.WriteNull(); err != nil {
-			err = utils.WrapError("Encode spare2", err)
+			err = utils.WrapError("Encode Spare2", err)
 		}
-	case MeasurementTimingConfiguration_CriticalExtensions_C1_Choice_spare1:
+	case MeasurementTimingConfiguration_CriticalExtensions_C1_Choice_Spare1:
 		if err := w.WriteNull(); err != nil {
-			err = utils.WrapError("Encode spare1", err)
+			err = utils.WrapError("Encode Spare1", err)
 		}
 	default:
 		err = fmt.Errorf("invalid choice: %d", ie.Choice)
@@ -57,22 +57,22 @@ func (ie *MeasurementTimingConfiguration_CriticalExtensions_C1) Decode(r *uper.U
 		return err
 	}
 	switch ie.Choice {
-	case MeasurementTimingConfiguration_CriticalExtensions_C1_Choice_measTimingConf:
-		ie.measTimingConf = new(MeasurementTimingConfiguration_IEs)
-		if err = ie.measTimingConf.Decode(r); err != nil {
-			return utils.WrapError("Decode measTimingConf", err)
+	case MeasurementTimingConfiguration_CriticalExtensions_C1_Choice_MeasTimingConf:
+		ie.MeasTimingConf = new(MeasurementTimingConfiguration_IEs)
+		if err = ie.MeasTimingConf.Decode(r); err != nil {
+			return utils.WrapError("Decode MeasTimingConf", err)
 		}
-	case MeasurementTimingConfiguration_CriticalExtensions_C1_Choice_spare3:
+	case MeasurementTimingConfiguration_CriticalExtensions_C1_Choice_Spare3:
 		if err := r.ReadNull(); err != nil {
-			return utils.WrapError("Decode spare3", err)
+			return utils.WrapError("Decode Spare3", err)
 		}
-	case MeasurementTimingConfiguration_CriticalExtensions_C1_Choice_spare2:
+	case MeasurementTimingConfiguration_CriticalExtensions_C1_Choice_Spare2:
 		if err := r.ReadNull(); err != nil {
-			return utils.WrapError("Decode spare2", err)
+			return utils.WrapError("Decode Spare2", err)
 		}
-	case MeasurementTimingConfiguration_CriticalExtensions_C1_Choice_spare1:
+	case MeasurementTimingConfiguration_CriticalExtensions_C1_Choice_Spare1:
 		if err := r.ReadNull(); err != nil {
-			return utils.WrapError("Decode spare1", err)
+			return utils.WrapError("Decode Spare1", err)
 		}
 	default:
 		return fmt.Errorf("invalid choice: %d", ie.Choice)

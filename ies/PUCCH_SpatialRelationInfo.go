@@ -6,71 +6,71 @@ import (
 )
 
 type PUCCH_SpatialRelationInfo struct {
-	pucch_SpatialRelationInfoId  PUCCH_SpatialRelationInfoId               `madatory`
-	servingCellId                *ServCellIndex                            `optional`
-	referenceSignal              PUCCH_SpatialRelationInfo_referenceSignal `madatory`
-	pucch_PathlossReferenceRS_Id PUCCH_PathlossReferenceRS_Id              `madatory`
-	p0_PUCCH_Id                  P0_PUCCH_Id                               `madatory`
-	closedLoopIndex              PUCCH_SpatialRelationInfo_closedLoopIndex `madatory`
+	Pucch_SpatialRelationInfoId  PUCCH_SpatialRelationInfoId               `madatory`
+	ServingCellId                *ServCellIndex                            `optional`
+	ReferenceSignal              PUCCH_SpatialRelationInfo_referenceSignal `madatory`
+	Pucch_PathlossReferenceRS_Id PUCCH_PathlossReferenceRS_Id              `madatory`
+	P0_PUCCH_Id                  P0_PUCCH_Id                               `madatory`
+	ClosedLoopIndex              PUCCH_SpatialRelationInfo_closedLoopIndex `madatory`
 }
 
 func (ie *PUCCH_SpatialRelationInfo) Encode(w *uper.UperWriter) error {
 	var err error
-	preambleBits := []bool{ie.servingCellId != nil}
+	preambleBits := []bool{ie.ServingCellId != nil}
 	for _, bit := range preambleBits {
 		if err = w.WriteBool(bit); err != nil {
 			return err
 		}
 	}
-	if err = ie.pucch_SpatialRelationInfoId.Encode(w); err != nil {
-		return utils.WrapError("Encode pucch_SpatialRelationInfoId", err)
+	if err = ie.Pucch_SpatialRelationInfoId.Encode(w); err != nil {
+		return utils.WrapError("Encode Pucch_SpatialRelationInfoId", err)
 	}
-	if ie.servingCellId != nil {
-		if err = ie.servingCellId.Encode(w); err != nil {
-			return utils.WrapError("Encode servingCellId", err)
+	if ie.ServingCellId != nil {
+		if err = ie.ServingCellId.Encode(w); err != nil {
+			return utils.WrapError("Encode ServingCellId", err)
 		}
 	}
-	if err = ie.referenceSignal.Encode(w); err != nil {
-		return utils.WrapError("Encode referenceSignal", err)
+	if err = ie.ReferenceSignal.Encode(w); err != nil {
+		return utils.WrapError("Encode ReferenceSignal", err)
 	}
-	if err = ie.pucch_PathlossReferenceRS_Id.Encode(w); err != nil {
-		return utils.WrapError("Encode pucch_PathlossReferenceRS_Id", err)
+	if err = ie.Pucch_PathlossReferenceRS_Id.Encode(w); err != nil {
+		return utils.WrapError("Encode Pucch_PathlossReferenceRS_Id", err)
 	}
-	if err = ie.p0_PUCCH_Id.Encode(w); err != nil {
-		return utils.WrapError("Encode p0_PUCCH_Id", err)
+	if err = ie.P0_PUCCH_Id.Encode(w); err != nil {
+		return utils.WrapError("Encode P0_PUCCH_Id", err)
 	}
-	if err = ie.closedLoopIndex.Encode(w); err != nil {
-		return utils.WrapError("Encode closedLoopIndex", err)
+	if err = ie.ClosedLoopIndex.Encode(w); err != nil {
+		return utils.WrapError("Encode ClosedLoopIndex", err)
 	}
 	return nil
 }
 
 func (ie *PUCCH_SpatialRelationInfo) Decode(r *uper.UperReader) error {
 	var err error
-	var servingCellIdPresent bool
-	if servingCellIdPresent, err = r.ReadBool(); err != nil {
+	var ServingCellIdPresent bool
+	if ServingCellIdPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	if err = ie.pucch_SpatialRelationInfoId.Decode(r); err != nil {
-		return utils.WrapError("Decode pucch_SpatialRelationInfoId", err)
+	if err = ie.Pucch_SpatialRelationInfoId.Decode(r); err != nil {
+		return utils.WrapError("Decode Pucch_SpatialRelationInfoId", err)
 	}
-	if servingCellIdPresent {
-		ie.servingCellId = new(ServCellIndex)
-		if err = ie.servingCellId.Decode(r); err != nil {
-			return utils.WrapError("Decode servingCellId", err)
+	if ServingCellIdPresent {
+		ie.ServingCellId = new(ServCellIndex)
+		if err = ie.ServingCellId.Decode(r); err != nil {
+			return utils.WrapError("Decode ServingCellId", err)
 		}
 	}
-	if err = ie.referenceSignal.Decode(r); err != nil {
-		return utils.WrapError("Decode referenceSignal", err)
+	if err = ie.ReferenceSignal.Decode(r); err != nil {
+		return utils.WrapError("Decode ReferenceSignal", err)
 	}
-	if err = ie.pucch_PathlossReferenceRS_Id.Decode(r); err != nil {
-		return utils.WrapError("Decode pucch_PathlossReferenceRS_Id", err)
+	if err = ie.Pucch_PathlossReferenceRS_Id.Decode(r); err != nil {
+		return utils.WrapError("Decode Pucch_PathlossReferenceRS_Id", err)
 	}
-	if err = ie.p0_PUCCH_Id.Decode(r); err != nil {
-		return utils.WrapError("Decode p0_PUCCH_Id", err)
+	if err = ie.P0_PUCCH_Id.Decode(r); err != nil {
+		return utils.WrapError("Decode P0_PUCCH_Id", err)
 	}
-	if err = ie.closedLoopIndex.Decode(r); err != nil {
-		return utils.WrapError("Decode closedLoopIndex", err)
+	if err = ie.ClosedLoopIndex.Decode(r); err != nil {
+		return utils.WrapError("Decode ClosedLoopIndex", err)
 	}
 	return nil
 }

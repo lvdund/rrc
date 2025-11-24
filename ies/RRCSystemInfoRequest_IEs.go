@@ -6,40 +6,40 @@ import (
 )
 
 type RRCSystemInfoRequest_IEs struct {
-	requested_SI_List uper.BitString `lb:maxSI_Message,ub:maxSI_Message,madatory`
-	spare             uper.BitString `lb:12,ub:12,madatory`
+	Requested_SI_List uper.BitString `lb:maxSI_Message,ub:maxSI_Message,madatory`
+	Spare             uper.BitString `lb:12,ub:12,madatory`
 }
 
 func (ie *RRCSystemInfoRequest_IEs) Encode(w *uper.UperWriter) error {
 	var err error
-	if err = w.WriteBitString(ie.requested_SI_List.Bytes, uint(ie.requested_SI_List.NumBits), &uper.Constraint{Lb: maxSI_Message, Ub: maxSI_Message}, false); err != nil {
-		return utils.WrapError("WriteBitString requested_SI_List", err)
+	if err = w.WriteBitString(ie.Requested_SI_List.Bytes, uint(ie.Requested_SI_List.NumBits), &uper.Constraint{Lb: maxSI_Message, Ub: maxSI_Message}, false); err != nil {
+		return utils.WrapError("WriteBitString Requested_SI_List", err)
 	}
-	if err = w.WriteBitString(ie.spare.Bytes, uint(ie.spare.NumBits), &uper.Constraint{Lb: 12, Ub: 12}, false); err != nil {
-		return utils.WrapError("WriteBitString spare", err)
+	if err = w.WriteBitString(ie.Spare.Bytes, uint(ie.Spare.NumBits), &uper.Constraint{Lb: 12, Ub: 12}, false); err != nil {
+		return utils.WrapError("WriteBitString Spare", err)
 	}
 	return nil
 }
 
 func (ie *RRCSystemInfoRequest_IEs) Decode(r *uper.UperReader) error {
 	var err error
-	var tmp_bs_requested_SI_List []byte
-	var n_requested_SI_List uint
-	if tmp_bs_requested_SI_List, n_requested_SI_List, err = r.ReadBitString(&uper.Constraint{Lb: maxSI_Message, Ub: maxSI_Message}, false); err != nil {
-		return utils.WrapError("ReadBitString requested_SI_List", err)
+	var tmp_bs_Requested_SI_List []byte
+	var n_Requested_SI_List uint
+	if tmp_bs_Requested_SI_List, n_Requested_SI_List, err = r.ReadBitString(&uper.Constraint{Lb: maxSI_Message, Ub: maxSI_Message}, false); err != nil {
+		return utils.WrapError("ReadBitString Requested_SI_List", err)
 	}
-	ie.requested_SI_List = uper.BitString{
-		Bytes:   tmp_bs_requested_SI_List,
-		NumBits: uint64(n_requested_SI_List),
+	ie.Requested_SI_List = uper.BitString{
+		Bytes:   tmp_bs_Requested_SI_List,
+		NumBits: uint64(n_Requested_SI_List),
 	}
-	var tmp_bs_spare []byte
-	var n_spare uint
-	if tmp_bs_spare, n_spare, err = r.ReadBitString(&uper.Constraint{Lb: 12, Ub: 12}, false); err != nil {
-		return utils.WrapError("ReadBitString spare", err)
+	var tmp_bs_Spare []byte
+	var n_Spare uint
+	if tmp_bs_Spare, n_Spare, err = r.ReadBitString(&uper.Constraint{Lb: 12, Ub: 12}, false); err != nil {
+		return utils.WrapError("ReadBitString Spare", err)
 	}
-	ie.spare = uper.BitString{
-		Bytes:   tmp_bs_spare,
-		NumBits: uint64(n_spare),
+	ie.Spare = uper.BitString{
+		Bytes:   tmp_bs_Spare,
+		NumBits: uint64(n_Spare),
 	}
 	return nil
 }

@@ -6,21 +6,21 @@ import (
 )
 
 type SL_MeasObject_r16 struct {
-	frequencyInfoSL_r16 ARFCN_ValueNR `madatory`
+	FrequencyInfoSL_r16 ARFCN_ValueNR `madatory`
 }
 
 func (ie *SL_MeasObject_r16) Encode(w *uper.UperWriter) error {
 	var err error
-	if err = ie.frequencyInfoSL_r16.Encode(w); err != nil {
-		return utils.WrapError("Encode frequencyInfoSL_r16", err)
+	if err = ie.FrequencyInfoSL_r16.Encode(w); err != nil {
+		return utils.WrapError("Encode FrequencyInfoSL_r16", err)
 	}
 	return nil
 }
 
 func (ie *SL_MeasObject_r16) Decode(r *uper.UperReader) error {
 	var err error
-	if err = ie.frequencyInfoSL_r16.Decode(r); err != nil {
-		return utils.WrapError("Decode frequencyInfoSL_r16", err)
+	if err = ie.FrequencyInfoSL_r16.Decode(r); err != nil {
+		return utils.WrapError("Decode FrequencyInfoSL_r16", err)
 	}
 	return nil
 }

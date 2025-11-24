@@ -6,140 +6,140 @@ import (
 )
 
 type UE_NR_Capability_v1610 struct {
-	inDeviceCoexInd_r16                 *UE_NR_Capability_v1610_inDeviceCoexInd_r16                 `optional`
-	dl_DedicatedMessageSegmentation_r16 *UE_NR_Capability_v1610_dl_DedicatedMessageSegmentation_r16 `optional`
-	nrdc_Parameters_v1610               *NRDC_Parameters_v1610                                      `optional`
-	powSav_Parameters_r16               *PowSav_Parameters_r16                                      `optional`
-	fr1_Add_UE_NR_Capabilities_v1610    *UE_NR_CapabilityAddFRX_Mode_v1610                          `optional`
-	fr2_Add_UE_NR_Capabilities_v1610    *UE_NR_CapabilityAddFRX_Mode_v1610                          `optional`
-	bh_RLF_Indication_r16               *UE_NR_Capability_v1610_bh_RLF_Indication_r16               `optional`
-	directSN_AdditionFirstRRC_IAB_r16   *UE_NR_Capability_v1610_directSN_AdditionFirstRRC_IAB_r16   `optional`
-	bap_Parameters_r16                  *BAP_Parameters_r16                                         `optional`
-	referenceTimeProvision_r16          *UE_NR_Capability_v1610_referenceTimeProvision_r16          `optional`
-	sidelinkParameters_r16              *SidelinkParameters_r16                                     `optional`
-	highSpeedParameters_r16             *HighSpeedParameters_r16                                    `optional`
-	mac_Parameters_v1610                *MAC_Parameters_v1610                                       `optional`
-	mcgRLF_RecoveryViaSCG_r16           *UE_NR_Capability_v1610_mcgRLF_RecoveryViaSCG_r16           `optional`
-	resumeWithStoredMCG_SCells_r16      *UE_NR_Capability_v1610_resumeWithStoredMCG_SCells_r16      `optional`
-	resumeWithStoredSCG_r16             *UE_NR_Capability_v1610_resumeWithStoredSCG_r16             `optional`
-	resumeWithSCG_Config_r16            *UE_NR_Capability_v1610_resumeWithSCG_Config_r16            `optional`
-	ue_BasedPerfMeas_Parameters_r16     *UE_BasedPerfMeas_Parameters_r16                            `optional`
-	son_Parameters_r16                  *SON_Parameters_r16                                         `optional`
-	onDemandSIB_Connected_r16           *UE_NR_Capability_v1610_onDemandSIB_Connected_r16           `optional`
-	nonCriticalExtension                *UE_NR_Capability_v1640                                     `optional`
+	InDeviceCoexInd_r16                 *UE_NR_Capability_v1610_inDeviceCoexInd_r16                 `optional`
+	Dl_DedicatedMessageSegmentation_r16 *UE_NR_Capability_v1610_dl_DedicatedMessageSegmentation_r16 `optional`
+	Nrdc_Parameters_v1610               *NRDC_Parameters_v1610                                      `optional`
+	PowSav_Parameters_r16               *PowSav_Parameters_r16                                      `optional`
+	Fr1_Add_UE_NR_Capabilities_v1610    *UE_NR_CapabilityAddFRX_Mode_v1610                          `optional`
+	Fr2_Add_UE_NR_Capabilities_v1610    *UE_NR_CapabilityAddFRX_Mode_v1610                          `optional`
+	Bh_RLF_Indication_r16               *UE_NR_Capability_v1610_bh_RLF_Indication_r16               `optional`
+	DirectSN_AdditionFirstRRC_IAB_r16   *UE_NR_Capability_v1610_directSN_AdditionFirstRRC_IAB_r16   `optional`
+	Bap_Parameters_r16                  *BAP_Parameters_r16                                         `optional`
+	ReferenceTimeProvision_r16          *UE_NR_Capability_v1610_referenceTimeProvision_r16          `optional`
+	SidelinkParameters_r16              *SidelinkParameters_r16                                     `optional`
+	HighSpeedParameters_r16             *HighSpeedParameters_r16                                    `optional`
+	Mac_Parameters_v1610                *MAC_Parameters_v1610                                       `optional`
+	McgRLF_RecoveryViaSCG_r16           *UE_NR_Capability_v1610_mcgRLF_RecoveryViaSCG_r16           `optional`
+	ResumeWithStoredMCG_SCells_r16      *UE_NR_Capability_v1610_resumeWithStoredMCG_SCells_r16      `optional`
+	ResumeWithStoredSCG_r16             *UE_NR_Capability_v1610_resumeWithStoredSCG_r16             `optional`
+	ResumeWithSCG_Config_r16            *UE_NR_Capability_v1610_resumeWithSCG_Config_r16            `optional`
+	Ue_BasedPerfMeas_Parameters_r16     *UE_BasedPerfMeas_Parameters_r16                            `optional`
+	Son_Parameters_r16                  *SON_Parameters_r16                                         `optional`
+	OnDemandSIB_Connected_r16           *UE_NR_Capability_v1610_onDemandSIB_Connected_r16           `optional`
+	NonCriticalExtension                *UE_NR_Capability_v1640                                     `optional`
 }
 
 func (ie *UE_NR_Capability_v1610) Encode(w *uper.UperWriter) error {
 	var err error
-	preambleBits := []bool{ie.inDeviceCoexInd_r16 != nil, ie.dl_DedicatedMessageSegmentation_r16 != nil, ie.nrdc_Parameters_v1610 != nil, ie.powSav_Parameters_r16 != nil, ie.fr1_Add_UE_NR_Capabilities_v1610 != nil, ie.fr2_Add_UE_NR_Capabilities_v1610 != nil, ie.bh_RLF_Indication_r16 != nil, ie.directSN_AdditionFirstRRC_IAB_r16 != nil, ie.bap_Parameters_r16 != nil, ie.referenceTimeProvision_r16 != nil, ie.sidelinkParameters_r16 != nil, ie.highSpeedParameters_r16 != nil, ie.mac_Parameters_v1610 != nil, ie.mcgRLF_RecoveryViaSCG_r16 != nil, ie.resumeWithStoredMCG_SCells_r16 != nil, ie.resumeWithStoredSCG_r16 != nil, ie.resumeWithSCG_Config_r16 != nil, ie.ue_BasedPerfMeas_Parameters_r16 != nil, ie.son_Parameters_r16 != nil, ie.onDemandSIB_Connected_r16 != nil, ie.nonCriticalExtension != nil}
+	preambleBits := []bool{ie.InDeviceCoexInd_r16 != nil, ie.Dl_DedicatedMessageSegmentation_r16 != nil, ie.Nrdc_Parameters_v1610 != nil, ie.PowSav_Parameters_r16 != nil, ie.Fr1_Add_UE_NR_Capabilities_v1610 != nil, ie.Fr2_Add_UE_NR_Capabilities_v1610 != nil, ie.Bh_RLF_Indication_r16 != nil, ie.DirectSN_AdditionFirstRRC_IAB_r16 != nil, ie.Bap_Parameters_r16 != nil, ie.ReferenceTimeProvision_r16 != nil, ie.SidelinkParameters_r16 != nil, ie.HighSpeedParameters_r16 != nil, ie.Mac_Parameters_v1610 != nil, ie.McgRLF_RecoveryViaSCG_r16 != nil, ie.ResumeWithStoredMCG_SCells_r16 != nil, ie.ResumeWithStoredSCG_r16 != nil, ie.ResumeWithSCG_Config_r16 != nil, ie.Ue_BasedPerfMeas_Parameters_r16 != nil, ie.Son_Parameters_r16 != nil, ie.OnDemandSIB_Connected_r16 != nil, ie.NonCriticalExtension != nil}
 	for _, bit := range preambleBits {
 		if err = w.WriteBool(bit); err != nil {
 			return err
 		}
 	}
-	if ie.inDeviceCoexInd_r16 != nil {
-		if err = ie.inDeviceCoexInd_r16.Encode(w); err != nil {
-			return utils.WrapError("Encode inDeviceCoexInd_r16", err)
+	if ie.InDeviceCoexInd_r16 != nil {
+		if err = ie.InDeviceCoexInd_r16.Encode(w); err != nil {
+			return utils.WrapError("Encode InDeviceCoexInd_r16", err)
 		}
 	}
-	if ie.dl_DedicatedMessageSegmentation_r16 != nil {
-		if err = ie.dl_DedicatedMessageSegmentation_r16.Encode(w); err != nil {
-			return utils.WrapError("Encode dl_DedicatedMessageSegmentation_r16", err)
+	if ie.Dl_DedicatedMessageSegmentation_r16 != nil {
+		if err = ie.Dl_DedicatedMessageSegmentation_r16.Encode(w); err != nil {
+			return utils.WrapError("Encode Dl_DedicatedMessageSegmentation_r16", err)
 		}
 	}
-	if ie.nrdc_Parameters_v1610 != nil {
-		if err = ie.nrdc_Parameters_v1610.Encode(w); err != nil {
-			return utils.WrapError("Encode nrdc_Parameters_v1610", err)
+	if ie.Nrdc_Parameters_v1610 != nil {
+		if err = ie.Nrdc_Parameters_v1610.Encode(w); err != nil {
+			return utils.WrapError("Encode Nrdc_Parameters_v1610", err)
 		}
 	}
-	if ie.powSav_Parameters_r16 != nil {
-		if err = ie.powSav_Parameters_r16.Encode(w); err != nil {
-			return utils.WrapError("Encode powSav_Parameters_r16", err)
+	if ie.PowSav_Parameters_r16 != nil {
+		if err = ie.PowSav_Parameters_r16.Encode(w); err != nil {
+			return utils.WrapError("Encode PowSav_Parameters_r16", err)
 		}
 	}
-	if ie.fr1_Add_UE_NR_Capabilities_v1610 != nil {
-		if err = ie.fr1_Add_UE_NR_Capabilities_v1610.Encode(w); err != nil {
-			return utils.WrapError("Encode fr1_Add_UE_NR_Capabilities_v1610", err)
+	if ie.Fr1_Add_UE_NR_Capabilities_v1610 != nil {
+		if err = ie.Fr1_Add_UE_NR_Capabilities_v1610.Encode(w); err != nil {
+			return utils.WrapError("Encode Fr1_Add_UE_NR_Capabilities_v1610", err)
 		}
 	}
-	if ie.fr2_Add_UE_NR_Capabilities_v1610 != nil {
-		if err = ie.fr2_Add_UE_NR_Capabilities_v1610.Encode(w); err != nil {
-			return utils.WrapError("Encode fr2_Add_UE_NR_Capabilities_v1610", err)
+	if ie.Fr2_Add_UE_NR_Capabilities_v1610 != nil {
+		if err = ie.Fr2_Add_UE_NR_Capabilities_v1610.Encode(w); err != nil {
+			return utils.WrapError("Encode Fr2_Add_UE_NR_Capabilities_v1610", err)
 		}
 	}
-	if ie.bh_RLF_Indication_r16 != nil {
-		if err = ie.bh_RLF_Indication_r16.Encode(w); err != nil {
-			return utils.WrapError("Encode bh_RLF_Indication_r16", err)
+	if ie.Bh_RLF_Indication_r16 != nil {
+		if err = ie.Bh_RLF_Indication_r16.Encode(w); err != nil {
+			return utils.WrapError("Encode Bh_RLF_Indication_r16", err)
 		}
 	}
-	if ie.directSN_AdditionFirstRRC_IAB_r16 != nil {
-		if err = ie.directSN_AdditionFirstRRC_IAB_r16.Encode(w); err != nil {
-			return utils.WrapError("Encode directSN_AdditionFirstRRC_IAB_r16", err)
+	if ie.DirectSN_AdditionFirstRRC_IAB_r16 != nil {
+		if err = ie.DirectSN_AdditionFirstRRC_IAB_r16.Encode(w); err != nil {
+			return utils.WrapError("Encode DirectSN_AdditionFirstRRC_IAB_r16", err)
 		}
 	}
-	if ie.bap_Parameters_r16 != nil {
-		if err = ie.bap_Parameters_r16.Encode(w); err != nil {
-			return utils.WrapError("Encode bap_Parameters_r16", err)
+	if ie.Bap_Parameters_r16 != nil {
+		if err = ie.Bap_Parameters_r16.Encode(w); err != nil {
+			return utils.WrapError("Encode Bap_Parameters_r16", err)
 		}
 	}
-	if ie.referenceTimeProvision_r16 != nil {
-		if err = ie.referenceTimeProvision_r16.Encode(w); err != nil {
-			return utils.WrapError("Encode referenceTimeProvision_r16", err)
+	if ie.ReferenceTimeProvision_r16 != nil {
+		if err = ie.ReferenceTimeProvision_r16.Encode(w); err != nil {
+			return utils.WrapError("Encode ReferenceTimeProvision_r16", err)
 		}
 	}
-	if ie.sidelinkParameters_r16 != nil {
-		if err = ie.sidelinkParameters_r16.Encode(w); err != nil {
-			return utils.WrapError("Encode sidelinkParameters_r16", err)
+	if ie.SidelinkParameters_r16 != nil {
+		if err = ie.SidelinkParameters_r16.Encode(w); err != nil {
+			return utils.WrapError("Encode SidelinkParameters_r16", err)
 		}
 	}
-	if ie.highSpeedParameters_r16 != nil {
-		if err = ie.highSpeedParameters_r16.Encode(w); err != nil {
-			return utils.WrapError("Encode highSpeedParameters_r16", err)
+	if ie.HighSpeedParameters_r16 != nil {
+		if err = ie.HighSpeedParameters_r16.Encode(w); err != nil {
+			return utils.WrapError("Encode HighSpeedParameters_r16", err)
 		}
 	}
-	if ie.mac_Parameters_v1610 != nil {
-		if err = ie.mac_Parameters_v1610.Encode(w); err != nil {
-			return utils.WrapError("Encode mac_Parameters_v1610", err)
+	if ie.Mac_Parameters_v1610 != nil {
+		if err = ie.Mac_Parameters_v1610.Encode(w); err != nil {
+			return utils.WrapError("Encode Mac_Parameters_v1610", err)
 		}
 	}
-	if ie.mcgRLF_RecoveryViaSCG_r16 != nil {
-		if err = ie.mcgRLF_RecoveryViaSCG_r16.Encode(w); err != nil {
-			return utils.WrapError("Encode mcgRLF_RecoveryViaSCG_r16", err)
+	if ie.McgRLF_RecoveryViaSCG_r16 != nil {
+		if err = ie.McgRLF_RecoveryViaSCG_r16.Encode(w); err != nil {
+			return utils.WrapError("Encode McgRLF_RecoveryViaSCG_r16", err)
 		}
 	}
-	if ie.resumeWithStoredMCG_SCells_r16 != nil {
-		if err = ie.resumeWithStoredMCG_SCells_r16.Encode(w); err != nil {
-			return utils.WrapError("Encode resumeWithStoredMCG_SCells_r16", err)
+	if ie.ResumeWithStoredMCG_SCells_r16 != nil {
+		if err = ie.ResumeWithStoredMCG_SCells_r16.Encode(w); err != nil {
+			return utils.WrapError("Encode ResumeWithStoredMCG_SCells_r16", err)
 		}
 	}
-	if ie.resumeWithStoredSCG_r16 != nil {
-		if err = ie.resumeWithStoredSCG_r16.Encode(w); err != nil {
-			return utils.WrapError("Encode resumeWithStoredSCG_r16", err)
+	if ie.ResumeWithStoredSCG_r16 != nil {
+		if err = ie.ResumeWithStoredSCG_r16.Encode(w); err != nil {
+			return utils.WrapError("Encode ResumeWithStoredSCG_r16", err)
 		}
 	}
-	if ie.resumeWithSCG_Config_r16 != nil {
-		if err = ie.resumeWithSCG_Config_r16.Encode(w); err != nil {
-			return utils.WrapError("Encode resumeWithSCG_Config_r16", err)
+	if ie.ResumeWithSCG_Config_r16 != nil {
+		if err = ie.ResumeWithSCG_Config_r16.Encode(w); err != nil {
+			return utils.WrapError("Encode ResumeWithSCG_Config_r16", err)
 		}
 	}
-	if ie.ue_BasedPerfMeas_Parameters_r16 != nil {
-		if err = ie.ue_BasedPerfMeas_Parameters_r16.Encode(w); err != nil {
-			return utils.WrapError("Encode ue_BasedPerfMeas_Parameters_r16", err)
+	if ie.Ue_BasedPerfMeas_Parameters_r16 != nil {
+		if err = ie.Ue_BasedPerfMeas_Parameters_r16.Encode(w); err != nil {
+			return utils.WrapError("Encode Ue_BasedPerfMeas_Parameters_r16", err)
 		}
 	}
-	if ie.son_Parameters_r16 != nil {
-		if err = ie.son_Parameters_r16.Encode(w); err != nil {
-			return utils.WrapError("Encode son_Parameters_r16", err)
+	if ie.Son_Parameters_r16 != nil {
+		if err = ie.Son_Parameters_r16.Encode(w); err != nil {
+			return utils.WrapError("Encode Son_Parameters_r16", err)
 		}
 	}
-	if ie.onDemandSIB_Connected_r16 != nil {
-		if err = ie.onDemandSIB_Connected_r16.Encode(w); err != nil {
-			return utils.WrapError("Encode onDemandSIB_Connected_r16", err)
+	if ie.OnDemandSIB_Connected_r16 != nil {
+		if err = ie.OnDemandSIB_Connected_r16.Encode(w); err != nil {
+			return utils.WrapError("Encode OnDemandSIB_Connected_r16", err)
 		}
 	}
-	if ie.nonCriticalExtension != nil {
-		if err = ie.nonCriticalExtension.Encode(w); err != nil {
-			return utils.WrapError("Encode nonCriticalExtension", err)
+	if ie.NonCriticalExtension != nil {
+		if err = ie.NonCriticalExtension.Encode(w); err != nil {
+			return utils.WrapError("Encode NonCriticalExtension", err)
 		}
 	}
 	return nil
@@ -147,214 +147,214 @@ func (ie *UE_NR_Capability_v1610) Encode(w *uper.UperWriter) error {
 
 func (ie *UE_NR_Capability_v1610) Decode(r *uper.UperReader) error {
 	var err error
-	var inDeviceCoexInd_r16Present bool
-	if inDeviceCoexInd_r16Present, err = r.ReadBool(); err != nil {
+	var InDeviceCoexInd_r16Present bool
+	if InDeviceCoexInd_r16Present, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var dl_DedicatedMessageSegmentation_r16Present bool
-	if dl_DedicatedMessageSegmentation_r16Present, err = r.ReadBool(); err != nil {
+	var Dl_DedicatedMessageSegmentation_r16Present bool
+	if Dl_DedicatedMessageSegmentation_r16Present, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var nrdc_Parameters_v1610Present bool
-	if nrdc_Parameters_v1610Present, err = r.ReadBool(); err != nil {
+	var Nrdc_Parameters_v1610Present bool
+	if Nrdc_Parameters_v1610Present, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var powSav_Parameters_r16Present bool
-	if powSav_Parameters_r16Present, err = r.ReadBool(); err != nil {
+	var PowSav_Parameters_r16Present bool
+	if PowSav_Parameters_r16Present, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var fr1_Add_UE_NR_Capabilities_v1610Present bool
-	if fr1_Add_UE_NR_Capabilities_v1610Present, err = r.ReadBool(); err != nil {
+	var Fr1_Add_UE_NR_Capabilities_v1610Present bool
+	if Fr1_Add_UE_NR_Capabilities_v1610Present, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var fr2_Add_UE_NR_Capabilities_v1610Present bool
-	if fr2_Add_UE_NR_Capabilities_v1610Present, err = r.ReadBool(); err != nil {
+	var Fr2_Add_UE_NR_Capabilities_v1610Present bool
+	if Fr2_Add_UE_NR_Capabilities_v1610Present, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var bh_RLF_Indication_r16Present bool
-	if bh_RLF_Indication_r16Present, err = r.ReadBool(); err != nil {
+	var Bh_RLF_Indication_r16Present bool
+	if Bh_RLF_Indication_r16Present, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var directSN_AdditionFirstRRC_IAB_r16Present bool
-	if directSN_AdditionFirstRRC_IAB_r16Present, err = r.ReadBool(); err != nil {
+	var DirectSN_AdditionFirstRRC_IAB_r16Present bool
+	if DirectSN_AdditionFirstRRC_IAB_r16Present, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var bap_Parameters_r16Present bool
-	if bap_Parameters_r16Present, err = r.ReadBool(); err != nil {
+	var Bap_Parameters_r16Present bool
+	if Bap_Parameters_r16Present, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var referenceTimeProvision_r16Present bool
-	if referenceTimeProvision_r16Present, err = r.ReadBool(); err != nil {
+	var ReferenceTimeProvision_r16Present bool
+	if ReferenceTimeProvision_r16Present, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var sidelinkParameters_r16Present bool
-	if sidelinkParameters_r16Present, err = r.ReadBool(); err != nil {
+	var SidelinkParameters_r16Present bool
+	if SidelinkParameters_r16Present, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var highSpeedParameters_r16Present bool
-	if highSpeedParameters_r16Present, err = r.ReadBool(); err != nil {
+	var HighSpeedParameters_r16Present bool
+	if HighSpeedParameters_r16Present, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var mac_Parameters_v1610Present bool
-	if mac_Parameters_v1610Present, err = r.ReadBool(); err != nil {
+	var Mac_Parameters_v1610Present bool
+	if Mac_Parameters_v1610Present, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var mcgRLF_RecoveryViaSCG_r16Present bool
-	if mcgRLF_RecoveryViaSCG_r16Present, err = r.ReadBool(); err != nil {
+	var McgRLF_RecoveryViaSCG_r16Present bool
+	if McgRLF_RecoveryViaSCG_r16Present, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var resumeWithStoredMCG_SCells_r16Present bool
-	if resumeWithStoredMCG_SCells_r16Present, err = r.ReadBool(); err != nil {
+	var ResumeWithStoredMCG_SCells_r16Present bool
+	if ResumeWithStoredMCG_SCells_r16Present, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var resumeWithStoredSCG_r16Present bool
-	if resumeWithStoredSCG_r16Present, err = r.ReadBool(); err != nil {
+	var ResumeWithStoredSCG_r16Present bool
+	if ResumeWithStoredSCG_r16Present, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var resumeWithSCG_Config_r16Present bool
-	if resumeWithSCG_Config_r16Present, err = r.ReadBool(); err != nil {
+	var ResumeWithSCG_Config_r16Present bool
+	if ResumeWithSCG_Config_r16Present, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var ue_BasedPerfMeas_Parameters_r16Present bool
-	if ue_BasedPerfMeas_Parameters_r16Present, err = r.ReadBool(); err != nil {
+	var Ue_BasedPerfMeas_Parameters_r16Present bool
+	if Ue_BasedPerfMeas_Parameters_r16Present, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var son_Parameters_r16Present bool
-	if son_Parameters_r16Present, err = r.ReadBool(); err != nil {
+	var Son_Parameters_r16Present bool
+	if Son_Parameters_r16Present, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var onDemandSIB_Connected_r16Present bool
-	if onDemandSIB_Connected_r16Present, err = r.ReadBool(); err != nil {
+	var OnDemandSIB_Connected_r16Present bool
+	if OnDemandSIB_Connected_r16Present, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var nonCriticalExtensionPresent bool
-	if nonCriticalExtensionPresent, err = r.ReadBool(); err != nil {
+	var NonCriticalExtensionPresent bool
+	if NonCriticalExtensionPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	if inDeviceCoexInd_r16Present {
-		ie.inDeviceCoexInd_r16 = new(UE_NR_Capability_v1610_inDeviceCoexInd_r16)
-		if err = ie.inDeviceCoexInd_r16.Decode(r); err != nil {
-			return utils.WrapError("Decode inDeviceCoexInd_r16", err)
+	if InDeviceCoexInd_r16Present {
+		ie.InDeviceCoexInd_r16 = new(UE_NR_Capability_v1610_inDeviceCoexInd_r16)
+		if err = ie.InDeviceCoexInd_r16.Decode(r); err != nil {
+			return utils.WrapError("Decode InDeviceCoexInd_r16", err)
 		}
 	}
-	if dl_DedicatedMessageSegmentation_r16Present {
-		ie.dl_DedicatedMessageSegmentation_r16 = new(UE_NR_Capability_v1610_dl_DedicatedMessageSegmentation_r16)
-		if err = ie.dl_DedicatedMessageSegmentation_r16.Decode(r); err != nil {
-			return utils.WrapError("Decode dl_DedicatedMessageSegmentation_r16", err)
+	if Dl_DedicatedMessageSegmentation_r16Present {
+		ie.Dl_DedicatedMessageSegmentation_r16 = new(UE_NR_Capability_v1610_dl_DedicatedMessageSegmentation_r16)
+		if err = ie.Dl_DedicatedMessageSegmentation_r16.Decode(r); err != nil {
+			return utils.WrapError("Decode Dl_DedicatedMessageSegmentation_r16", err)
 		}
 	}
-	if nrdc_Parameters_v1610Present {
-		ie.nrdc_Parameters_v1610 = new(NRDC_Parameters_v1610)
-		if err = ie.nrdc_Parameters_v1610.Decode(r); err != nil {
-			return utils.WrapError("Decode nrdc_Parameters_v1610", err)
+	if Nrdc_Parameters_v1610Present {
+		ie.Nrdc_Parameters_v1610 = new(NRDC_Parameters_v1610)
+		if err = ie.Nrdc_Parameters_v1610.Decode(r); err != nil {
+			return utils.WrapError("Decode Nrdc_Parameters_v1610", err)
 		}
 	}
-	if powSav_Parameters_r16Present {
-		ie.powSav_Parameters_r16 = new(PowSav_Parameters_r16)
-		if err = ie.powSav_Parameters_r16.Decode(r); err != nil {
-			return utils.WrapError("Decode powSav_Parameters_r16", err)
+	if PowSav_Parameters_r16Present {
+		ie.PowSav_Parameters_r16 = new(PowSav_Parameters_r16)
+		if err = ie.PowSav_Parameters_r16.Decode(r); err != nil {
+			return utils.WrapError("Decode PowSav_Parameters_r16", err)
 		}
 	}
-	if fr1_Add_UE_NR_Capabilities_v1610Present {
-		ie.fr1_Add_UE_NR_Capabilities_v1610 = new(UE_NR_CapabilityAddFRX_Mode_v1610)
-		if err = ie.fr1_Add_UE_NR_Capabilities_v1610.Decode(r); err != nil {
-			return utils.WrapError("Decode fr1_Add_UE_NR_Capabilities_v1610", err)
+	if Fr1_Add_UE_NR_Capabilities_v1610Present {
+		ie.Fr1_Add_UE_NR_Capabilities_v1610 = new(UE_NR_CapabilityAddFRX_Mode_v1610)
+		if err = ie.Fr1_Add_UE_NR_Capabilities_v1610.Decode(r); err != nil {
+			return utils.WrapError("Decode Fr1_Add_UE_NR_Capabilities_v1610", err)
 		}
 	}
-	if fr2_Add_UE_NR_Capabilities_v1610Present {
-		ie.fr2_Add_UE_NR_Capabilities_v1610 = new(UE_NR_CapabilityAddFRX_Mode_v1610)
-		if err = ie.fr2_Add_UE_NR_Capabilities_v1610.Decode(r); err != nil {
-			return utils.WrapError("Decode fr2_Add_UE_NR_Capabilities_v1610", err)
+	if Fr2_Add_UE_NR_Capabilities_v1610Present {
+		ie.Fr2_Add_UE_NR_Capabilities_v1610 = new(UE_NR_CapabilityAddFRX_Mode_v1610)
+		if err = ie.Fr2_Add_UE_NR_Capabilities_v1610.Decode(r); err != nil {
+			return utils.WrapError("Decode Fr2_Add_UE_NR_Capabilities_v1610", err)
 		}
 	}
-	if bh_RLF_Indication_r16Present {
-		ie.bh_RLF_Indication_r16 = new(UE_NR_Capability_v1610_bh_RLF_Indication_r16)
-		if err = ie.bh_RLF_Indication_r16.Decode(r); err != nil {
-			return utils.WrapError("Decode bh_RLF_Indication_r16", err)
+	if Bh_RLF_Indication_r16Present {
+		ie.Bh_RLF_Indication_r16 = new(UE_NR_Capability_v1610_bh_RLF_Indication_r16)
+		if err = ie.Bh_RLF_Indication_r16.Decode(r); err != nil {
+			return utils.WrapError("Decode Bh_RLF_Indication_r16", err)
 		}
 	}
-	if directSN_AdditionFirstRRC_IAB_r16Present {
-		ie.directSN_AdditionFirstRRC_IAB_r16 = new(UE_NR_Capability_v1610_directSN_AdditionFirstRRC_IAB_r16)
-		if err = ie.directSN_AdditionFirstRRC_IAB_r16.Decode(r); err != nil {
-			return utils.WrapError("Decode directSN_AdditionFirstRRC_IAB_r16", err)
+	if DirectSN_AdditionFirstRRC_IAB_r16Present {
+		ie.DirectSN_AdditionFirstRRC_IAB_r16 = new(UE_NR_Capability_v1610_directSN_AdditionFirstRRC_IAB_r16)
+		if err = ie.DirectSN_AdditionFirstRRC_IAB_r16.Decode(r); err != nil {
+			return utils.WrapError("Decode DirectSN_AdditionFirstRRC_IAB_r16", err)
 		}
 	}
-	if bap_Parameters_r16Present {
-		ie.bap_Parameters_r16 = new(BAP_Parameters_r16)
-		if err = ie.bap_Parameters_r16.Decode(r); err != nil {
-			return utils.WrapError("Decode bap_Parameters_r16", err)
+	if Bap_Parameters_r16Present {
+		ie.Bap_Parameters_r16 = new(BAP_Parameters_r16)
+		if err = ie.Bap_Parameters_r16.Decode(r); err != nil {
+			return utils.WrapError("Decode Bap_Parameters_r16", err)
 		}
 	}
-	if referenceTimeProvision_r16Present {
-		ie.referenceTimeProvision_r16 = new(UE_NR_Capability_v1610_referenceTimeProvision_r16)
-		if err = ie.referenceTimeProvision_r16.Decode(r); err != nil {
-			return utils.WrapError("Decode referenceTimeProvision_r16", err)
+	if ReferenceTimeProvision_r16Present {
+		ie.ReferenceTimeProvision_r16 = new(UE_NR_Capability_v1610_referenceTimeProvision_r16)
+		if err = ie.ReferenceTimeProvision_r16.Decode(r); err != nil {
+			return utils.WrapError("Decode ReferenceTimeProvision_r16", err)
 		}
 	}
-	if sidelinkParameters_r16Present {
-		ie.sidelinkParameters_r16 = new(SidelinkParameters_r16)
-		if err = ie.sidelinkParameters_r16.Decode(r); err != nil {
-			return utils.WrapError("Decode sidelinkParameters_r16", err)
+	if SidelinkParameters_r16Present {
+		ie.SidelinkParameters_r16 = new(SidelinkParameters_r16)
+		if err = ie.SidelinkParameters_r16.Decode(r); err != nil {
+			return utils.WrapError("Decode SidelinkParameters_r16", err)
 		}
 	}
-	if highSpeedParameters_r16Present {
-		ie.highSpeedParameters_r16 = new(HighSpeedParameters_r16)
-		if err = ie.highSpeedParameters_r16.Decode(r); err != nil {
-			return utils.WrapError("Decode highSpeedParameters_r16", err)
+	if HighSpeedParameters_r16Present {
+		ie.HighSpeedParameters_r16 = new(HighSpeedParameters_r16)
+		if err = ie.HighSpeedParameters_r16.Decode(r); err != nil {
+			return utils.WrapError("Decode HighSpeedParameters_r16", err)
 		}
 	}
-	if mac_Parameters_v1610Present {
-		ie.mac_Parameters_v1610 = new(MAC_Parameters_v1610)
-		if err = ie.mac_Parameters_v1610.Decode(r); err != nil {
-			return utils.WrapError("Decode mac_Parameters_v1610", err)
+	if Mac_Parameters_v1610Present {
+		ie.Mac_Parameters_v1610 = new(MAC_Parameters_v1610)
+		if err = ie.Mac_Parameters_v1610.Decode(r); err != nil {
+			return utils.WrapError("Decode Mac_Parameters_v1610", err)
 		}
 	}
-	if mcgRLF_RecoveryViaSCG_r16Present {
-		ie.mcgRLF_RecoveryViaSCG_r16 = new(UE_NR_Capability_v1610_mcgRLF_RecoveryViaSCG_r16)
-		if err = ie.mcgRLF_RecoveryViaSCG_r16.Decode(r); err != nil {
-			return utils.WrapError("Decode mcgRLF_RecoveryViaSCG_r16", err)
+	if McgRLF_RecoveryViaSCG_r16Present {
+		ie.McgRLF_RecoveryViaSCG_r16 = new(UE_NR_Capability_v1610_mcgRLF_RecoveryViaSCG_r16)
+		if err = ie.McgRLF_RecoveryViaSCG_r16.Decode(r); err != nil {
+			return utils.WrapError("Decode McgRLF_RecoveryViaSCG_r16", err)
 		}
 	}
-	if resumeWithStoredMCG_SCells_r16Present {
-		ie.resumeWithStoredMCG_SCells_r16 = new(UE_NR_Capability_v1610_resumeWithStoredMCG_SCells_r16)
-		if err = ie.resumeWithStoredMCG_SCells_r16.Decode(r); err != nil {
-			return utils.WrapError("Decode resumeWithStoredMCG_SCells_r16", err)
+	if ResumeWithStoredMCG_SCells_r16Present {
+		ie.ResumeWithStoredMCG_SCells_r16 = new(UE_NR_Capability_v1610_resumeWithStoredMCG_SCells_r16)
+		if err = ie.ResumeWithStoredMCG_SCells_r16.Decode(r); err != nil {
+			return utils.WrapError("Decode ResumeWithStoredMCG_SCells_r16", err)
 		}
 	}
-	if resumeWithStoredSCG_r16Present {
-		ie.resumeWithStoredSCG_r16 = new(UE_NR_Capability_v1610_resumeWithStoredSCG_r16)
-		if err = ie.resumeWithStoredSCG_r16.Decode(r); err != nil {
-			return utils.WrapError("Decode resumeWithStoredSCG_r16", err)
+	if ResumeWithStoredSCG_r16Present {
+		ie.ResumeWithStoredSCG_r16 = new(UE_NR_Capability_v1610_resumeWithStoredSCG_r16)
+		if err = ie.ResumeWithStoredSCG_r16.Decode(r); err != nil {
+			return utils.WrapError("Decode ResumeWithStoredSCG_r16", err)
 		}
 	}
-	if resumeWithSCG_Config_r16Present {
-		ie.resumeWithSCG_Config_r16 = new(UE_NR_Capability_v1610_resumeWithSCG_Config_r16)
-		if err = ie.resumeWithSCG_Config_r16.Decode(r); err != nil {
-			return utils.WrapError("Decode resumeWithSCG_Config_r16", err)
+	if ResumeWithSCG_Config_r16Present {
+		ie.ResumeWithSCG_Config_r16 = new(UE_NR_Capability_v1610_resumeWithSCG_Config_r16)
+		if err = ie.ResumeWithSCG_Config_r16.Decode(r); err != nil {
+			return utils.WrapError("Decode ResumeWithSCG_Config_r16", err)
 		}
 	}
-	if ue_BasedPerfMeas_Parameters_r16Present {
-		ie.ue_BasedPerfMeas_Parameters_r16 = new(UE_BasedPerfMeas_Parameters_r16)
-		if err = ie.ue_BasedPerfMeas_Parameters_r16.Decode(r); err != nil {
-			return utils.WrapError("Decode ue_BasedPerfMeas_Parameters_r16", err)
+	if Ue_BasedPerfMeas_Parameters_r16Present {
+		ie.Ue_BasedPerfMeas_Parameters_r16 = new(UE_BasedPerfMeas_Parameters_r16)
+		if err = ie.Ue_BasedPerfMeas_Parameters_r16.Decode(r); err != nil {
+			return utils.WrapError("Decode Ue_BasedPerfMeas_Parameters_r16", err)
 		}
 	}
-	if son_Parameters_r16Present {
-		ie.son_Parameters_r16 = new(SON_Parameters_r16)
-		if err = ie.son_Parameters_r16.Decode(r); err != nil {
-			return utils.WrapError("Decode son_Parameters_r16", err)
+	if Son_Parameters_r16Present {
+		ie.Son_Parameters_r16 = new(SON_Parameters_r16)
+		if err = ie.Son_Parameters_r16.Decode(r); err != nil {
+			return utils.WrapError("Decode Son_Parameters_r16", err)
 		}
 	}
-	if onDemandSIB_Connected_r16Present {
-		ie.onDemandSIB_Connected_r16 = new(UE_NR_Capability_v1610_onDemandSIB_Connected_r16)
-		if err = ie.onDemandSIB_Connected_r16.Decode(r); err != nil {
-			return utils.WrapError("Decode onDemandSIB_Connected_r16", err)
+	if OnDemandSIB_Connected_r16Present {
+		ie.OnDemandSIB_Connected_r16 = new(UE_NR_Capability_v1610_onDemandSIB_Connected_r16)
+		if err = ie.OnDemandSIB_Connected_r16.Decode(r); err != nil {
+			return utils.WrapError("Decode OnDemandSIB_Connected_r16", err)
 		}
 	}
-	if nonCriticalExtensionPresent {
-		ie.nonCriticalExtension = new(UE_NR_Capability_v1640)
-		if err = ie.nonCriticalExtension.Decode(r); err != nil {
-			return utils.WrapError("Decode nonCriticalExtension", err)
+	if NonCriticalExtensionPresent {
+		ie.NonCriticalExtension = new(UE_NR_Capability_v1640)
+		if err = ie.NonCriticalExtension.Decode(r); err != nil {
+			return utils.WrapError("Decode NonCriticalExtension", err)
 		}
 	}
 	return nil

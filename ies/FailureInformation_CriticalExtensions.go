@@ -9,14 +9,14 @@ import (
 
 const (
 	FailureInformation_CriticalExtensions_Choice_nothing uint64 = iota
-	FailureInformation_CriticalExtensions_Choice_failureInformation
-	FailureInformation_CriticalExtensions_Choice_criticalExtensionsFuture
+	FailureInformation_CriticalExtensions_Choice_FailureInformation
+	FailureInformation_CriticalExtensions_Choice_CriticalExtensionsFuture
 )
 
 type FailureInformation_CriticalExtensions struct {
 	Choice                   uint64
-	failureInformation       *FailureInformation_IEs
-	criticalExtensionsFuture interface{} `madatory`
+	FailureInformation       *FailureInformation_IEs
+	CriticalExtensionsFuture interface{} `madatory`
 }
 
 func (ie *FailureInformation_CriticalExtensions) Encode(w *uper.UperWriter) error {
@@ -25,11 +25,11 @@ func (ie *FailureInformation_CriticalExtensions) Encode(w *uper.UperWriter) erro
 		return err
 	}
 	switch ie.Choice {
-	case FailureInformation_CriticalExtensions_Choice_failureInformation:
-		if err = ie.failureInformation.Encode(w); err != nil {
-			err = utils.WrapError("Encode failureInformation", err)
+	case FailureInformation_CriticalExtensions_Choice_FailureInformation:
+		if err = ie.FailureInformation.Encode(w); err != nil {
+			err = utils.WrapError("Encode FailureInformation", err)
 		}
-	case FailureInformation_CriticalExtensions_Choice_criticalExtensionsFuture:
+	case FailureInformation_CriticalExtensions_Choice_CriticalExtensionsFuture:
 		// interface{} field of choice - nothing to encode
 	default:
 		err = fmt.Errorf("invalid choice: %d", ie.Choice)
@@ -43,12 +43,12 @@ func (ie *FailureInformation_CriticalExtensions) Decode(r *uper.UperReader) erro
 		return err
 	}
 	switch ie.Choice {
-	case FailureInformation_CriticalExtensions_Choice_failureInformation:
-		ie.failureInformation = new(FailureInformation_IEs)
-		if err = ie.failureInformation.Decode(r); err != nil {
-			return utils.WrapError("Decode failureInformation", err)
+	case FailureInformation_CriticalExtensions_Choice_FailureInformation:
+		ie.FailureInformation = new(FailureInformation_IEs)
+		if err = ie.FailureInformation.Decode(r); err != nil {
+			return utils.WrapError("Decode FailureInformation", err)
 		}
-	case FailureInformation_CriticalExtensions_Choice_criticalExtensionsFuture:
+	case FailureInformation_CriticalExtensions_Choice_CriticalExtensionsFuture:
 		// interface{} field of choice - nothing to decode
 	default:
 		return fmt.Errorf("invalid choice: %d", ie.Choice)

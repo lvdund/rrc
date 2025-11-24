@@ -6,52 +6,52 @@ import (
 )
 
 type FrequencyInfoUL struct {
-	frequencyBandList          *MultiFrequencyBandListNR             `optional`
-	absoluteFrequencyPointA    *ARFCN_ValueNR                        `optional`
-	scs_SpecificCarrierList    []SCS_SpecificCarrier                 `lb:1,ub:maxSCSs,madatory`
-	additionalSpectrumEmission *AdditionalSpectrumEmission           `optional`
-	p_Max                      *P_Max                                `optional`
-	frequencyShift7p5khz       *FrequencyInfoUL_frequencyShift7p5khz `optional`
+	FrequencyBandList          *MultiFrequencyBandListNR             `optional`
+	AbsoluteFrequencyPointA    *ARFCN_ValueNR                        `optional`
+	Scs_SpecificCarrierList    []SCS_SpecificCarrier                 `lb:1,ub:maxSCSs,madatory`
+	AdditionalSpectrumEmission *AdditionalSpectrumEmission           `optional`
+	P_Max                      *P_Max                                `optional`
+	FrequencyShift7p5khz       *FrequencyInfoUL_frequencyShift7p5khz `optional`
 }
 
 func (ie *FrequencyInfoUL) Encode(w *uper.UperWriter) error {
 	var err error
-	preambleBits := []bool{ie.frequencyBandList != nil, ie.absoluteFrequencyPointA != nil, ie.additionalSpectrumEmission != nil, ie.p_Max != nil, ie.frequencyShift7p5khz != nil}
+	preambleBits := []bool{ie.FrequencyBandList != nil, ie.AbsoluteFrequencyPointA != nil, ie.AdditionalSpectrumEmission != nil, ie.P_Max != nil, ie.FrequencyShift7p5khz != nil}
 	for _, bit := range preambleBits {
 		if err = w.WriteBool(bit); err != nil {
 			return err
 		}
 	}
-	if ie.frequencyBandList != nil {
-		if err = ie.frequencyBandList.Encode(w); err != nil {
-			return utils.WrapError("Encode frequencyBandList", err)
+	if ie.FrequencyBandList != nil {
+		if err = ie.FrequencyBandList.Encode(w); err != nil {
+			return utils.WrapError("Encode FrequencyBandList", err)
 		}
 	}
-	if ie.absoluteFrequencyPointA != nil {
-		if err = ie.absoluteFrequencyPointA.Encode(w); err != nil {
-			return utils.WrapError("Encode absoluteFrequencyPointA", err)
+	if ie.AbsoluteFrequencyPointA != nil {
+		if err = ie.AbsoluteFrequencyPointA.Encode(w); err != nil {
+			return utils.WrapError("Encode AbsoluteFrequencyPointA", err)
 		}
 	}
-	tmp_scs_SpecificCarrierList := utils.NewSequence[*SCS_SpecificCarrier]([]*SCS_SpecificCarrier{}, uper.Constraint{Lb: 1, Ub: maxSCSs}, false)
-	for _, i := range ie.scs_SpecificCarrierList {
-		tmp_scs_SpecificCarrierList.Value = append(tmp_scs_SpecificCarrierList.Value, &i)
+	tmp_Scs_SpecificCarrierList := utils.NewSequence[*SCS_SpecificCarrier]([]*SCS_SpecificCarrier{}, uper.Constraint{Lb: 1, Ub: maxSCSs}, false)
+	for _, i := range ie.Scs_SpecificCarrierList {
+		tmp_Scs_SpecificCarrierList.Value = append(tmp_Scs_SpecificCarrierList.Value, &i)
 	}
-	if err = tmp_scs_SpecificCarrierList.Encode(w); err != nil {
-		return utils.WrapError("Encode scs_SpecificCarrierList", err)
+	if err = tmp_Scs_SpecificCarrierList.Encode(w); err != nil {
+		return utils.WrapError("Encode Scs_SpecificCarrierList", err)
 	}
-	if ie.additionalSpectrumEmission != nil {
-		if err = ie.additionalSpectrumEmission.Encode(w); err != nil {
-			return utils.WrapError("Encode additionalSpectrumEmission", err)
+	if ie.AdditionalSpectrumEmission != nil {
+		if err = ie.AdditionalSpectrumEmission.Encode(w); err != nil {
+			return utils.WrapError("Encode AdditionalSpectrumEmission", err)
 		}
 	}
-	if ie.p_Max != nil {
-		if err = ie.p_Max.Encode(w); err != nil {
-			return utils.WrapError("Encode p_Max", err)
+	if ie.P_Max != nil {
+		if err = ie.P_Max.Encode(w); err != nil {
+			return utils.WrapError("Encode P_Max", err)
 		}
 	}
-	if ie.frequencyShift7p5khz != nil {
-		if err = ie.frequencyShift7p5khz.Encode(w); err != nil {
-			return utils.WrapError("Encode frequencyShift7p5khz", err)
+	if ie.FrequencyShift7p5khz != nil {
+		if err = ie.FrequencyShift7p5khz.Encode(w); err != nil {
+			return utils.WrapError("Encode FrequencyShift7p5khz", err)
 		}
 	}
 	return nil
@@ -59,65 +59,65 @@ func (ie *FrequencyInfoUL) Encode(w *uper.UperWriter) error {
 
 func (ie *FrequencyInfoUL) Decode(r *uper.UperReader) error {
 	var err error
-	var frequencyBandListPresent bool
-	if frequencyBandListPresent, err = r.ReadBool(); err != nil {
+	var FrequencyBandListPresent bool
+	if FrequencyBandListPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var absoluteFrequencyPointAPresent bool
-	if absoluteFrequencyPointAPresent, err = r.ReadBool(); err != nil {
+	var AbsoluteFrequencyPointAPresent bool
+	if AbsoluteFrequencyPointAPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var additionalSpectrumEmissionPresent bool
-	if additionalSpectrumEmissionPresent, err = r.ReadBool(); err != nil {
+	var AdditionalSpectrumEmissionPresent bool
+	if AdditionalSpectrumEmissionPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var p_MaxPresent bool
-	if p_MaxPresent, err = r.ReadBool(); err != nil {
+	var P_MaxPresent bool
+	if P_MaxPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var frequencyShift7p5khzPresent bool
-	if frequencyShift7p5khzPresent, err = r.ReadBool(); err != nil {
+	var FrequencyShift7p5khzPresent bool
+	if FrequencyShift7p5khzPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	if frequencyBandListPresent {
-		ie.frequencyBandList = new(MultiFrequencyBandListNR)
-		if err = ie.frequencyBandList.Decode(r); err != nil {
-			return utils.WrapError("Decode frequencyBandList", err)
+	if FrequencyBandListPresent {
+		ie.FrequencyBandList = new(MultiFrequencyBandListNR)
+		if err = ie.FrequencyBandList.Decode(r); err != nil {
+			return utils.WrapError("Decode FrequencyBandList", err)
 		}
 	}
-	if absoluteFrequencyPointAPresent {
-		ie.absoluteFrequencyPointA = new(ARFCN_ValueNR)
-		if err = ie.absoluteFrequencyPointA.Decode(r); err != nil {
-			return utils.WrapError("Decode absoluteFrequencyPointA", err)
+	if AbsoluteFrequencyPointAPresent {
+		ie.AbsoluteFrequencyPointA = new(ARFCN_ValueNR)
+		if err = ie.AbsoluteFrequencyPointA.Decode(r); err != nil {
+			return utils.WrapError("Decode AbsoluteFrequencyPointA", err)
 		}
 	}
-	tmp_scs_SpecificCarrierList := utils.NewSequence[*SCS_SpecificCarrier]([]*SCS_SpecificCarrier{}, uper.Constraint{Lb: 1, Ub: maxSCSs}, false)
-	fn_scs_SpecificCarrierList := func() *SCS_SpecificCarrier {
+	tmp_Scs_SpecificCarrierList := utils.NewSequence[*SCS_SpecificCarrier]([]*SCS_SpecificCarrier{}, uper.Constraint{Lb: 1, Ub: maxSCSs}, false)
+	fn_Scs_SpecificCarrierList := func() *SCS_SpecificCarrier {
 		return new(SCS_SpecificCarrier)
 	}
-	if err = tmp_scs_SpecificCarrierList.Decode(r, fn_scs_SpecificCarrierList); err != nil {
-		return utils.WrapError("Decode scs_SpecificCarrierList", err)
+	if err = tmp_Scs_SpecificCarrierList.Decode(r, fn_Scs_SpecificCarrierList); err != nil {
+		return utils.WrapError("Decode Scs_SpecificCarrierList", err)
 	}
-	ie.scs_SpecificCarrierList = []SCS_SpecificCarrier{}
-	for _, i := range tmp_scs_SpecificCarrierList.Value {
-		ie.scs_SpecificCarrierList = append(ie.scs_SpecificCarrierList, *i)
+	ie.Scs_SpecificCarrierList = []SCS_SpecificCarrier{}
+	for _, i := range tmp_Scs_SpecificCarrierList.Value {
+		ie.Scs_SpecificCarrierList = append(ie.Scs_SpecificCarrierList, *i)
 	}
-	if additionalSpectrumEmissionPresent {
-		ie.additionalSpectrumEmission = new(AdditionalSpectrumEmission)
-		if err = ie.additionalSpectrumEmission.Decode(r); err != nil {
-			return utils.WrapError("Decode additionalSpectrumEmission", err)
+	if AdditionalSpectrumEmissionPresent {
+		ie.AdditionalSpectrumEmission = new(AdditionalSpectrumEmission)
+		if err = ie.AdditionalSpectrumEmission.Decode(r); err != nil {
+			return utils.WrapError("Decode AdditionalSpectrumEmission", err)
 		}
 	}
-	if p_MaxPresent {
-		ie.p_Max = new(P_Max)
-		if err = ie.p_Max.Decode(r); err != nil {
-			return utils.WrapError("Decode p_Max", err)
+	if P_MaxPresent {
+		ie.P_Max = new(P_Max)
+		if err = ie.P_Max.Decode(r); err != nil {
+			return utils.WrapError("Decode P_Max", err)
 		}
 	}
-	if frequencyShift7p5khzPresent {
-		ie.frequencyShift7p5khz = new(FrequencyInfoUL_frequencyShift7p5khz)
-		if err = ie.frequencyShift7p5khz.Decode(r); err != nil {
-			return utils.WrapError("Decode frequencyShift7p5khz", err)
+	if FrequencyShift7p5khzPresent {
+		ie.FrequencyShift7p5khz = new(FrequencyInfoUL_frequencyShift7p5khz)
+		if err = ie.FrequencyShift7p5khz.Decode(r); err != nil {
+			return utils.WrapError("Decode FrequencyShift7p5khz", err)
 		}
 	}
 	return nil

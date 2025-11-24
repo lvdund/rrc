@@ -9,14 +9,14 @@ import (
 
 const (
 	SL_RLC_ModeIndication_r16_sl_Mode_r16_Choice_nothing uint64 = iota
-	SL_RLC_ModeIndication_r16_sl_Mode_r16_Choice_sl_AM_Mode_r16
-	SL_RLC_ModeIndication_r16_sl_Mode_r16_Choice_sl_UM_Mode_r16
+	SL_RLC_ModeIndication_r16_sl_Mode_r16_Choice_Sl_AM_Mode_r16
+	SL_RLC_ModeIndication_r16_sl_Mode_r16_Choice_Sl_UM_Mode_r16
 )
 
 type SL_RLC_ModeIndication_r16_sl_Mode_r16 struct {
 	Choice         uint64
-	sl_AM_Mode_r16 uper.NULL `madatory`
-	sl_UM_Mode_r16 uper.NULL `madatory`
+	Sl_AM_Mode_r16 uper.NULL `madatory`
+	Sl_UM_Mode_r16 uper.NULL `madatory`
 }
 
 func (ie *SL_RLC_ModeIndication_r16_sl_Mode_r16) Encode(w *uper.UperWriter) error {
@@ -25,13 +25,13 @@ func (ie *SL_RLC_ModeIndication_r16_sl_Mode_r16) Encode(w *uper.UperWriter) erro
 		return err
 	}
 	switch ie.Choice {
-	case SL_RLC_ModeIndication_r16_sl_Mode_r16_Choice_sl_AM_Mode_r16:
+	case SL_RLC_ModeIndication_r16_sl_Mode_r16_Choice_Sl_AM_Mode_r16:
 		if err := w.WriteNull(); err != nil {
-			err = utils.WrapError("Encode sl_AM_Mode_r16", err)
+			err = utils.WrapError("Encode Sl_AM_Mode_r16", err)
 		}
-	case SL_RLC_ModeIndication_r16_sl_Mode_r16_Choice_sl_UM_Mode_r16:
+	case SL_RLC_ModeIndication_r16_sl_Mode_r16_Choice_Sl_UM_Mode_r16:
 		if err := w.WriteNull(); err != nil {
-			err = utils.WrapError("Encode sl_UM_Mode_r16", err)
+			err = utils.WrapError("Encode Sl_UM_Mode_r16", err)
 		}
 	default:
 		err = fmt.Errorf("invalid choice: %d", ie.Choice)
@@ -45,13 +45,13 @@ func (ie *SL_RLC_ModeIndication_r16_sl_Mode_r16) Decode(r *uper.UperReader) erro
 		return err
 	}
 	switch ie.Choice {
-	case SL_RLC_ModeIndication_r16_sl_Mode_r16_Choice_sl_AM_Mode_r16:
+	case SL_RLC_ModeIndication_r16_sl_Mode_r16_Choice_Sl_AM_Mode_r16:
 		if err := r.ReadNull(); err != nil {
-			return utils.WrapError("Decode sl_AM_Mode_r16", err)
+			return utils.WrapError("Decode Sl_AM_Mode_r16", err)
 		}
-	case SL_RLC_ModeIndication_r16_sl_Mode_r16_Choice_sl_UM_Mode_r16:
+	case SL_RLC_ModeIndication_r16_sl_Mode_r16_Choice_Sl_UM_Mode_r16:
 		if err := r.ReadNull(); err != nil {
-			return utils.WrapError("Decode sl_UM_Mode_r16", err)
+			return utils.WrapError("Decode Sl_UM_Mode_r16", err)
 		}
 	default:
 		return fmt.Errorf("invalid choice: %d", ie.Choice)

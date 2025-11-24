@@ -6,29 +6,29 @@ import (
 )
 
 type PTRS_UplinkConfig_transformPrecoderEnabled struct {
-	sampleDensity                 []int64                                                                   `lb:5,ub:5,e_lb:0,e_ub:0,madatory`
-	timeDensityTransformPrecoding *PTRS_UplinkConfig_transformPrecoderEnabled_timeDensityTransformPrecoding `optional`
+	SampleDensity                 []int64                                                                   `lb:5,ub:5,e_lb:0,e_ub:0,madatory`
+	TimeDensityTransformPrecoding *PTRS_UplinkConfig_transformPrecoderEnabled_timeDensityTransformPrecoding `optional`
 }
 
 func (ie *PTRS_UplinkConfig_transformPrecoderEnabled) Encode(w *uper.UperWriter) error {
 	var err error
-	preambleBits := []bool{ie.timeDensityTransformPrecoding != nil}
+	preambleBits := []bool{ie.TimeDensityTransformPrecoding != nil}
 	for _, bit := range preambleBits {
 		if err = w.WriteBool(bit); err != nil {
 			return err
 		}
 	}
-	tmp_sampleDensity := utils.NewSequence[*utils.INTEGER]([]*utils.INTEGER{}, uper.Constraint{Lb: 5, Ub: 5}, false)
-	for _, i := range ie.sampleDensity {
+	tmp_SampleDensity := utils.NewSequence[*utils.INTEGER]([]*utils.INTEGER{}, uper.Constraint{Lb: 5, Ub: 5}, false)
+	for _, i := range ie.SampleDensity {
 		tmp_ie := utils.NewINTEGER(int64(i), uper.Constraint{Lb: 0, Ub: 0}, false)
-		tmp_sampleDensity.Value = append(tmp_sampleDensity.Value, &tmp_ie)
+		tmp_SampleDensity.Value = append(tmp_SampleDensity.Value, &tmp_ie)
 	}
-	if err = tmp_sampleDensity.Encode(w); err != nil {
-		return utils.WrapError("Encode sampleDensity", err)
+	if err = tmp_SampleDensity.Encode(w); err != nil {
+		return utils.WrapError("Encode SampleDensity", err)
 	}
-	if ie.timeDensityTransformPrecoding != nil {
-		if err = ie.timeDensityTransformPrecoding.Encode(w); err != nil {
-			return utils.WrapError("Encode timeDensityTransformPrecoding", err)
+	if ie.TimeDensityTransformPrecoding != nil {
+		if err = ie.TimeDensityTransformPrecoding.Encode(w); err != nil {
+			return utils.WrapError("Encode TimeDensityTransformPrecoding", err)
 		}
 	}
 	return nil
@@ -36,26 +36,26 @@ func (ie *PTRS_UplinkConfig_transformPrecoderEnabled) Encode(w *uper.UperWriter)
 
 func (ie *PTRS_UplinkConfig_transformPrecoderEnabled) Decode(r *uper.UperReader) error {
 	var err error
-	var timeDensityTransformPrecodingPresent bool
-	if timeDensityTransformPrecodingPresent, err = r.ReadBool(); err != nil {
+	var TimeDensityTransformPrecodingPresent bool
+	if TimeDensityTransformPrecodingPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	tmp_sampleDensity := utils.NewSequence[*utils.INTEGER]([]*utils.INTEGER{}, uper.Constraint{Lb: 5, Ub: 5}, false)
-	fn_sampleDensity := func() *utils.INTEGER {
+	tmp_SampleDensity := utils.NewSequence[*utils.INTEGER]([]*utils.INTEGER{}, uper.Constraint{Lb: 5, Ub: 5}, false)
+	fn_SampleDensity := func() *utils.INTEGER {
 		ie := utils.NewINTEGER(0, uper.Constraint{Lb: 0, Ub: 0}, false)
 		return &ie
 	}
-	if err = tmp_sampleDensity.Decode(r, fn_sampleDensity); err != nil {
-		return utils.WrapError("Decode sampleDensity", err)
+	if err = tmp_SampleDensity.Decode(r, fn_SampleDensity); err != nil {
+		return utils.WrapError("Decode SampleDensity", err)
 	}
-	ie.sampleDensity = []int64{}
-	for _, i := range tmp_sampleDensity.Value {
-		ie.sampleDensity = append(ie.sampleDensity, int64(i.Value))
+	ie.SampleDensity = []int64{}
+	for _, i := range tmp_SampleDensity.Value {
+		ie.SampleDensity = append(ie.SampleDensity, int64(i.Value))
 	}
-	if timeDensityTransformPrecodingPresent {
-		ie.timeDensityTransformPrecoding = new(PTRS_UplinkConfig_transformPrecoderEnabled_timeDensityTransformPrecoding)
-		if err = ie.timeDensityTransformPrecoding.Decode(r); err != nil {
-			return utils.WrapError("Decode timeDensityTransformPrecoding", err)
+	if TimeDensityTransformPrecodingPresent {
+		ie.TimeDensityTransformPrecoding = new(PTRS_UplinkConfig_transformPrecoderEnabled_timeDensityTransformPrecoding)
+		if err = ie.TimeDensityTransformPrecoding.Decode(r); err != nil {
+			return utils.WrapError("Decode TimeDensityTransformPrecoding", err)
 		}
 	}
 	return nil

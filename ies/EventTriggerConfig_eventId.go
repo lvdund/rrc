@@ -9,28 +9,28 @@ import (
 
 const (
 	EventTriggerConfig_eventId_Choice_nothing uint64 = iota
-	EventTriggerConfig_eventId_Choice_eventA1
-	EventTriggerConfig_eventId_Choice_eventA2
-	EventTriggerConfig_eventId_Choice_eventA3
-	EventTriggerConfig_eventId_Choice_eventA4
-	EventTriggerConfig_eventId_Choice_eventA5
-	EventTriggerConfig_eventId_Choice_eventA6
-	EventTriggerConfig_eventId_Choice_eventX1_r17
-	EventTriggerConfig_eventId_Choice_eventX2_r17
-	EventTriggerConfig_eventId_Choice_eventD1_r17
+	EventTriggerConfig_eventId_Choice_EventA1
+	EventTriggerConfig_eventId_Choice_EventA2
+	EventTriggerConfig_eventId_Choice_EventA3
+	EventTriggerConfig_eventId_Choice_EventA4
+	EventTriggerConfig_eventId_Choice_EventA5
+	EventTriggerConfig_eventId_Choice_EventA6
+	EventTriggerConfig_eventId_Choice_EventX1_r17
+	EventTriggerConfig_eventId_Choice_EventX2_r17
+	EventTriggerConfig_eventId_Choice_EventD1_r17
 )
 
 type EventTriggerConfig_eventId struct {
 	Choice      uint64
-	eventA1     *EventTriggerConfig_eventId_eventA1
-	eventA2     *EventTriggerConfig_eventId_eventA2
-	eventA3     *EventTriggerConfig_eventId_eventA3
-	eventA4     *EventTriggerConfig_eventId_eventA4
-	eventA5     *EventTriggerConfig_eventId_eventA5
-	eventA6     *EventTriggerConfig_eventId_eventA6
-	eventX1_r17 *EventTriggerConfig_eventId_eventX1_r17
-	eventX2_r17 *EventTriggerConfig_eventId_eventX2_r17
-	eventD1_r17 *EventTriggerConfig_eventId_eventD1_r17
+	EventA1     *EventTriggerConfig_eventId_eventA1
+	EventA2     *EventTriggerConfig_eventId_eventA2
+	EventA3     *EventTriggerConfig_eventId_eventA3
+	EventA4     *EventTriggerConfig_eventId_eventA4
+	EventA5     *EventTriggerConfig_eventId_eventA5
+	EventA6     *EventTriggerConfig_eventId_eventA6
+	EventX1_r17 *EventTriggerConfig_eventId_eventX1_r17
+	EventX2_r17 *EventTriggerConfig_eventId_eventX2_r17
+	EventD1_r17 *EventTriggerConfig_eventId_eventD1_r17
 }
 
 func (ie *EventTriggerConfig_eventId) Encode(w *uper.UperWriter) error {
@@ -39,41 +39,41 @@ func (ie *EventTriggerConfig_eventId) Encode(w *uper.UperWriter) error {
 		return err
 	}
 	switch ie.Choice {
-	case EventTriggerConfig_eventId_Choice_eventA1:
-		if err = ie.eventA1.Encode(w); err != nil {
-			err = utils.WrapError("Encode eventA1", err)
+	case EventTriggerConfig_eventId_Choice_EventA1:
+		if err = ie.EventA1.Encode(w); err != nil {
+			err = utils.WrapError("Encode EventA1", err)
 		}
-	case EventTriggerConfig_eventId_Choice_eventA2:
-		if err = ie.eventA2.Encode(w); err != nil {
-			err = utils.WrapError("Encode eventA2", err)
+	case EventTriggerConfig_eventId_Choice_EventA2:
+		if err = ie.EventA2.Encode(w); err != nil {
+			err = utils.WrapError("Encode EventA2", err)
 		}
-	case EventTriggerConfig_eventId_Choice_eventA3:
-		if err = ie.eventA3.Encode(w); err != nil {
-			err = utils.WrapError("Encode eventA3", err)
+	case EventTriggerConfig_eventId_Choice_EventA3:
+		if err = ie.EventA3.Encode(w); err != nil {
+			err = utils.WrapError("Encode EventA3", err)
 		}
-	case EventTriggerConfig_eventId_Choice_eventA4:
-		if err = ie.eventA4.Encode(w); err != nil {
-			err = utils.WrapError("Encode eventA4", err)
+	case EventTriggerConfig_eventId_Choice_EventA4:
+		if err = ie.EventA4.Encode(w); err != nil {
+			err = utils.WrapError("Encode EventA4", err)
 		}
-	case EventTriggerConfig_eventId_Choice_eventA5:
-		if err = ie.eventA5.Encode(w); err != nil {
-			err = utils.WrapError("Encode eventA5", err)
+	case EventTriggerConfig_eventId_Choice_EventA5:
+		if err = ie.EventA5.Encode(w); err != nil {
+			err = utils.WrapError("Encode EventA5", err)
 		}
-	case EventTriggerConfig_eventId_Choice_eventA6:
-		if err = ie.eventA6.Encode(w); err != nil {
-			err = utils.WrapError("Encode eventA6", err)
+	case EventTriggerConfig_eventId_Choice_EventA6:
+		if err = ie.EventA6.Encode(w); err != nil {
+			err = utils.WrapError("Encode EventA6", err)
 		}
-	case EventTriggerConfig_eventId_Choice_eventX1_r17:
-		if err = ie.eventX1_r17.Encode(w); err != nil {
-			err = utils.WrapError("Encode eventX1_r17", err)
+	case EventTriggerConfig_eventId_Choice_EventX1_r17:
+		if err = ie.EventX1_r17.Encode(w); err != nil {
+			err = utils.WrapError("Encode EventX1_r17", err)
 		}
-	case EventTriggerConfig_eventId_Choice_eventX2_r17:
-		if err = ie.eventX2_r17.Encode(w); err != nil {
-			err = utils.WrapError("Encode eventX2_r17", err)
+	case EventTriggerConfig_eventId_Choice_EventX2_r17:
+		if err = ie.EventX2_r17.Encode(w); err != nil {
+			err = utils.WrapError("Encode EventX2_r17", err)
 		}
-	case EventTriggerConfig_eventId_Choice_eventD1_r17:
-		if err = ie.eventD1_r17.Encode(w); err != nil {
-			err = utils.WrapError("Encode eventD1_r17", err)
+	case EventTriggerConfig_eventId_Choice_EventD1_r17:
+		if err = ie.EventD1_r17.Encode(w); err != nil {
+			err = utils.WrapError("Encode EventD1_r17", err)
 		}
 	default:
 		err = fmt.Errorf("invalid choice: %d", ie.Choice)
@@ -87,50 +87,50 @@ func (ie *EventTriggerConfig_eventId) Decode(r *uper.UperReader) error {
 		return err
 	}
 	switch ie.Choice {
-	case EventTriggerConfig_eventId_Choice_eventA1:
-		ie.eventA1 = new(EventTriggerConfig_eventId_eventA1)
-		if err = ie.eventA1.Decode(r); err != nil {
-			return utils.WrapError("Decode eventA1", err)
+	case EventTriggerConfig_eventId_Choice_EventA1:
+		ie.EventA1 = new(EventTriggerConfig_eventId_eventA1)
+		if err = ie.EventA1.Decode(r); err != nil {
+			return utils.WrapError("Decode EventA1", err)
 		}
-	case EventTriggerConfig_eventId_Choice_eventA2:
-		ie.eventA2 = new(EventTriggerConfig_eventId_eventA2)
-		if err = ie.eventA2.Decode(r); err != nil {
-			return utils.WrapError("Decode eventA2", err)
+	case EventTriggerConfig_eventId_Choice_EventA2:
+		ie.EventA2 = new(EventTriggerConfig_eventId_eventA2)
+		if err = ie.EventA2.Decode(r); err != nil {
+			return utils.WrapError("Decode EventA2", err)
 		}
-	case EventTriggerConfig_eventId_Choice_eventA3:
-		ie.eventA3 = new(EventTriggerConfig_eventId_eventA3)
-		if err = ie.eventA3.Decode(r); err != nil {
-			return utils.WrapError("Decode eventA3", err)
+	case EventTriggerConfig_eventId_Choice_EventA3:
+		ie.EventA3 = new(EventTriggerConfig_eventId_eventA3)
+		if err = ie.EventA3.Decode(r); err != nil {
+			return utils.WrapError("Decode EventA3", err)
 		}
-	case EventTriggerConfig_eventId_Choice_eventA4:
-		ie.eventA4 = new(EventTriggerConfig_eventId_eventA4)
-		if err = ie.eventA4.Decode(r); err != nil {
-			return utils.WrapError("Decode eventA4", err)
+	case EventTriggerConfig_eventId_Choice_EventA4:
+		ie.EventA4 = new(EventTriggerConfig_eventId_eventA4)
+		if err = ie.EventA4.Decode(r); err != nil {
+			return utils.WrapError("Decode EventA4", err)
 		}
-	case EventTriggerConfig_eventId_Choice_eventA5:
-		ie.eventA5 = new(EventTriggerConfig_eventId_eventA5)
-		if err = ie.eventA5.Decode(r); err != nil {
-			return utils.WrapError("Decode eventA5", err)
+	case EventTriggerConfig_eventId_Choice_EventA5:
+		ie.EventA5 = new(EventTriggerConfig_eventId_eventA5)
+		if err = ie.EventA5.Decode(r); err != nil {
+			return utils.WrapError("Decode EventA5", err)
 		}
-	case EventTriggerConfig_eventId_Choice_eventA6:
-		ie.eventA6 = new(EventTriggerConfig_eventId_eventA6)
-		if err = ie.eventA6.Decode(r); err != nil {
-			return utils.WrapError("Decode eventA6", err)
+	case EventTriggerConfig_eventId_Choice_EventA6:
+		ie.EventA6 = new(EventTriggerConfig_eventId_eventA6)
+		if err = ie.EventA6.Decode(r); err != nil {
+			return utils.WrapError("Decode EventA6", err)
 		}
-	case EventTriggerConfig_eventId_Choice_eventX1_r17:
-		ie.eventX1_r17 = new(EventTriggerConfig_eventId_eventX1_r17)
-		if err = ie.eventX1_r17.Decode(r); err != nil {
-			return utils.WrapError("Decode eventX1_r17", err)
+	case EventTriggerConfig_eventId_Choice_EventX1_r17:
+		ie.EventX1_r17 = new(EventTriggerConfig_eventId_eventX1_r17)
+		if err = ie.EventX1_r17.Decode(r); err != nil {
+			return utils.WrapError("Decode EventX1_r17", err)
 		}
-	case EventTriggerConfig_eventId_Choice_eventX2_r17:
-		ie.eventX2_r17 = new(EventTriggerConfig_eventId_eventX2_r17)
-		if err = ie.eventX2_r17.Decode(r); err != nil {
-			return utils.WrapError("Decode eventX2_r17", err)
+	case EventTriggerConfig_eventId_Choice_EventX2_r17:
+		ie.EventX2_r17 = new(EventTriggerConfig_eventId_eventX2_r17)
+		if err = ie.EventX2_r17.Decode(r); err != nil {
+			return utils.WrapError("Decode EventX2_r17", err)
 		}
-	case EventTriggerConfig_eventId_Choice_eventD1_r17:
-		ie.eventD1_r17 = new(EventTriggerConfig_eventId_eventD1_r17)
-		if err = ie.eventD1_r17.Decode(r); err != nil {
-			return utils.WrapError("Decode eventD1_r17", err)
+	case EventTriggerConfig_eventId_Choice_EventD1_r17:
+		ie.EventD1_r17 = new(EventTriggerConfig_eventId_eventD1_r17)
+		if err = ie.EventD1_r17.Decode(r); err != nil {
+			return utils.WrapError("Decode EventD1_r17", err)
 		}
 	default:
 		return fmt.Errorf("invalid choice: %d", ie.Choice)

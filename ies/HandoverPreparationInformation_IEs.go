@@ -6,34 +6,34 @@ import (
 )
 
 type HandoverPreparationInformation_IEs struct {
-	ue_CapabilityRAT_List UE_CapabilityRAT_ContainerList `madatory`
-	sourceConfig          *AS_Config                     `optional`
-	rrm_Config            *RRM_Config                    `optional`
-	as_Context            *AS_Context                    `optional`
-	nonCriticalExtension  interface{}                    `optional`
+	Ue_CapabilityRAT_List UE_CapabilityRAT_ContainerList `madatory`
+	SourceConfig          *AS_Config                     `optional`
+	Rrm_Config            *RRM_Config                    `optional`
+	As_Context            *AS_Context                    `optional`
+	NonCriticalExtension  interface{}                    `optional`
 }
 
 func (ie *HandoverPreparationInformation_IEs) Encode(w *uper.UperWriter) error {
 	var err error
-	preambleBits := []bool{ie.sourceConfig != nil, ie.rrm_Config != nil, ie.as_Context != nil}
+	preambleBits := []bool{ie.SourceConfig != nil, ie.Rrm_Config != nil, ie.As_Context != nil}
 	for _, bit := range preambleBits {
 		if err = w.WriteBool(bit); err != nil {
 			return err
 		}
 	}
-	if ie.sourceConfig != nil {
-		if err = ie.sourceConfig.Encode(w); err != nil {
-			return utils.WrapError("Encode sourceConfig", err)
+	if ie.SourceConfig != nil {
+		if err = ie.SourceConfig.Encode(w); err != nil {
+			return utils.WrapError("Encode SourceConfig", err)
 		}
 	}
-	if ie.rrm_Config != nil {
-		if err = ie.rrm_Config.Encode(w); err != nil {
-			return utils.WrapError("Encode rrm_Config", err)
+	if ie.Rrm_Config != nil {
+		if err = ie.Rrm_Config.Encode(w); err != nil {
+			return utils.WrapError("Encode Rrm_Config", err)
 		}
 	}
-	if ie.as_Context != nil {
-		if err = ie.as_Context.Encode(w); err != nil {
-			return utils.WrapError("Encode as_Context", err)
+	if ie.As_Context != nil {
+		if err = ie.As_Context.Encode(w); err != nil {
+			return utils.WrapError("Encode As_Context", err)
 		}
 	}
 	return nil
@@ -41,34 +41,34 @@ func (ie *HandoverPreparationInformation_IEs) Encode(w *uper.UperWriter) error {
 
 func (ie *HandoverPreparationInformation_IEs) Decode(r *uper.UperReader) error {
 	var err error
-	var sourceConfigPresent bool
-	if sourceConfigPresent, err = r.ReadBool(); err != nil {
+	var SourceConfigPresent bool
+	if SourceConfigPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var rrm_ConfigPresent bool
-	if rrm_ConfigPresent, err = r.ReadBool(); err != nil {
+	var Rrm_ConfigPresent bool
+	if Rrm_ConfigPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var as_ContextPresent bool
-	if as_ContextPresent, err = r.ReadBool(); err != nil {
+	var As_ContextPresent bool
+	if As_ContextPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	if sourceConfigPresent {
-		ie.sourceConfig = new(AS_Config)
-		if err = ie.sourceConfig.Decode(r); err != nil {
-			return utils.WrapError("Decode sourceConfig", err)
+	if SourceConfigPresent {
+		ie.SourceConfig = new(AS_Config)
+		if err = ie.SourceConfig.Decode(r); err != nil {
+			return utils.WrapError("Decode SourceConfig", err)
 		}
 	}
-	if rrm_ConfigPresent {
-		ie.rrm_Config = new(RRM_Config)
-		if err = ie.rrm_Config.Decode(r); err != nil {
-			return utils.WrapError("Decode rrm_Config", err)
+	if Rrm_ConfigPresent {
+		ie.Rrm_Config = new(RRM_Config)
+		if err = ie.Rrm_Config.Decode(r); err != nil {
+			return utils.WrapError("Decode Rrm_Config", err)
 		}
 	}
-	if as_ContextPresent {
-		ie.as_Context = new(AS_Context)
-		if err = ie.as_Context.Decode(r); err != nil {
-			return utils.WrapError("Decode as_Context", err)
+	if As_ContextPresent {
+		ie.As_Context = new(AS_Context)
+		if err = ie.As_Context.Decode(r); err != nil {
+			return utils.WrapError("Decode As_Context", err)
 		}
 	}
 	return nil

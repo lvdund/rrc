@@ -9,26 +9,26 @@ import (
 
 const (
 	RACH_ConfigCommonTwoStepRA_r16_msgA_SSB_PerRACH_OccasionAndCB_PreamblesPerSSB_r16_Choice_nothing uint64 = iota
-	RACH_ConfigCommonTwoStepRA_r16_msgA_SSB_PerRACH_OccasionAndCB_PreamblesPerSSB_r16_Choice_oneEighth
-	RACH_ConfigCommonTwoStepRA_r16_msgA_SSB_PerRACH_OccasionAndCB_PreamblesPerSSB_r16_Choice_oneFourth
-	RACH_ConfigCommonTwoStepRA_r16_msgA_SSB_PerRACH_OccasionAndCB_PreamblesPerSSB_r16_Choice_oneHalf
-	RACH_ConfigCommonTwoStepRA_r16_msgA_SSB_PerRACH_OccasionAndCB_PreamblesPerSSB_r16_Choice_one
-	RACH_ConfigCommonTwoStepRA_r16_msgA_SSB_PerRACH_OccasionAndCB_PreamblesPerSSB_r16_Choice_two
-	RACH_ConfigCommonTwoStepRA_r16_msgA_SSB_PerRACH_OccasionAndCB_PreamblesPerSSB_r16_Choice_four
-	RACH_ConfigCommonTwoStepRA_r16_msgA_SSB_PerRACH_OccasionAndCB_PreamblesPerSSB_r16_Choice_eight
-	RACH_ConfigCommonTwoStepRA_r16_msgA_SSB_PerRACH_OccasionAndCB_PreamblesPerSSB_r16_Choice_sixteen
+	RACH_ConfigCommonTwoStepRA_r16_msgA_SSB_PerRACH_OccasionAndCB_PreamblesPerSSB_r16_Choice_OneEighth
+	RACH_ConfigCommonTwoStepRA_r16_msgA_SSB_PerRACH_OccasionAndCB_PreamblesPerSSB_r16_Choice_OneFourth
+	RACH_ConfigCommonTwoStepRA_r16_msgA_SSB_PerRACH_OccasionAndCB_PreamblesPerSSB_r16_Choice_OneHalf
+	RACH_ConfigCommonTwoStepRA_r16_msgA_SSB_PerRACH_OccasionAndCB_PreamblesPerSSB_r16_Choice_One
+	RACH_ConfigCommonTwoStepRA_r16_msgA_SSB_PerRACH_OccasionAndCB_PreamblesPerSSB_r16_Choice_Two
+	RACH_ConfigCommonTwoStepRA_r16_msgA_SSB_PerRACH_OccasionAndCB_PreamblesPerSSB_r16_Choice_Four
+	RACH_ConfigCommonTwoStepRA_r16_msgA_SSB_PerRACH_OccasionAndCB_PreamblesPerSSB_r16_Choice_Eight
+	RACH_ConfigCommonTwoStepRA_r16_msgA_SSB_PerRACH_OccasionAndCB_PreamblesPerSSB_r16_Choice_Sixteen
 )
 
 type RACH_ConfigCommonTwoStepRA_r16_msgA_SSB_PerRACH_OccasionAndCB_PreamblesPerSSB_r16 struct {
 	Choice    uint64
-	oneEighth *RACH_ConfigCommonTwoStepRA_r16_msgA_SSB_PerRACH_OccasionAndCB_PreamblesPerSSB_r16_oneEighth
-	oneFourth *RACH_ConfigCommonTwoStepRA_r16_msgA_SSB_PerRACH_OccasionAndCB_PreamblesPerSSB_r16_oneFourth
-	oneHalf   *RACH_ConfigCommonTwoStepRA_r16_msgA_SSB_PerRACH_OccasionAndCB_PreamblesPerSSB_r16_oneHalf
-	one       *RACH_ConfigCommonTwoStepRA_r16_msgA_SSB_PerRACH_OccasionAndCB_PreamblesPerSSB_r16_one
-	two       *RACH_ConfigCommonTwoStepRA_r16_msgA_SSB_PerRACH_OccasionAndCB_PreamblesPerSSB_r16_two
-	four      int64 `lb:1,ub:16,madatory`
-	eight     int64 `lb:1,ub:8,madatory`
-	sixteen   int64 `lb:1,ub:4,madatory`
+	OneEighth *RACH_ConfigCommonTwoStepRA_r16_msgA_SSB_PerRACH_OccasionAndCB_PreamblesPerSSB_r16_oneEighth
+	OneFourth *RACH_ConfigCommonTwoStepRA_r16_msgA_SSB_PerRACH_OccasionAndCB_PreamblesPerSSB_r16_oneFourth
+	OneHalf   *RACH_ConfigCommonTwoStepRA_r16_msgA_SSB_PerRACH_OccasionAndCB_PreamblesPerSSB_r16_oneHalf
+	One       *RACH_ConfigCommonTwoStepRA_r16_msgA_SSB_PerRACH_OccasionAndCB_PreamblesPerSSB_r16_one
+	Two       *RACH_ConfigCommonTwoStepRA_r16_msgA_SSB_PerRACH_OccasionAndCB_PreamblesPerSSB_r16_two
+	Four      int64 `lb:1,ub:16,madatory`
+	Eight     int64 `lb:1,ub:8,madatory`
+	Sixteen   int64 `lb:1,ub:4,madatory`
 }
 
 func (ie *RACH_ConfigCommonTwoStepRA_r16_msgA_SSB_PerRACH_OccasionAndCB_PreamblesPerSSB_r16) Encode(w *uper.UperWriter) error {
@@ -37,37 +37,37 @@ func (ie *RACH_ConfigCommonTwoStepRA_r16_msgA_SSB_PerRACH_OccasionAndCB_Preamble
 		return err
 	}
 	switch ie.Choice {
-	case RACH_ConfigCommonTwoStepRA_r16_msgA_SSB_PerRACH_OccasionAndCB_PreamblesPerSSB_r16_Choice_oneEighth:
-		if err = ie.oneEighth.Encode(w); err != nil {
-			err = utils.WrapError("Encode oneEighth", err)
+	case RACH_ConfigCommonTwoStepRA_r16_msgA_SSB_PerRACH_OccasionAndCB_PreamblesPerSSB_r16_Choice_OneEighth:
+		if err = ie.OneEighth.Encode(w); err != nil {
+			err = utils.WrapError("Encode OneEighth", err)
 		}
-	case RACH_ConfigCommonTwoStepRA_r16_msgA_SSB_PerRACH_OccasionAndCB_PreamblesPerSSB_r16_Choice_oneFourth:
-		if err = ie.oneFourth.Encode(w); err != nil {
-			err = utils.WrapError("Encode oneFourth", err)
+	case RACH_ConfigCommonTwoStepRA_r16_msgA_SSB_PerRACH_OccasionAndCB_PreamblesPerSSB_r16_Choice_OneFourth:
+		if err = ie.OneFourth.Encode(w); err != nil {
+			err = utils.WrapError("Encode OneFourth", err)
 		}
-	case RACH_ConfigCommonTwoStepRA_r16_msgA_SSB_PerRACH_OccasionAndCB_PreamblesPerSSB_r16_Choice_oneHalf:
-		if err = ie.oneHalf.Encode(w); err != nil {
-			err = utils.WrapError("Encode oneHalf", err)
+	case RACH_ConfigCommonTwoStepRA_r16_msgA_SSB_PerRACH_OccasionAndCB_PreamblesPerSSB_r16_Choice_OneHalf:
+		if err = ie.OneHalf.Encode(w); err != nil {
+			err = utils.WrapError("Encode OneHalf", err)
 		}
-	case RACH_ConfigCommonTwoStepRA_r16_msgA_SSB_PerRACH_OccasionAndCB_PreamblesPerSSB_r16_Choice_one:
-		if err = ie.one.Encode(w); err != nil {
-			err = utils.WrapError("Encode one", err)
+	case RACH_ConfigCommonTwoStepRA_r16_msgA_SSB_PerRACH_OccasionAndCB_PreamblesPerSSB_r16_Choice_One:
+		if err = ie.One.Encode(w); err != nil {
+			err = utils.WrapError("Encode One", err)
 		}
-	case RACH_ConfigCommonTwoStepRA_r16_msgA_SSB_PerRACH_OccasionAndCB_PreamblesPerSSB_r16_Choice_two:
-		if err = ie.two.Encode(w); err != nil {
-			err = utils.WrapError("Encode two", err)
+	case RACH_ConfigCommonTwoStepRA_r16_msgA_SSB_PerRACH_OccasionAndCB_PreamblesPerSSB_r16_Choice_Two:
+		if err = ie.Two.Encode(w); err != nil {
+			err = utils.WrapError("Encode Two", err)
 		}
-	case RACH_ConfigCommonTwoStepRA_r16_msgA_SSB_PerRACH_OccasionAndCB_PreamblesPerSSB_r16_Choice_four:
-		if err = w.WriteInteger(int64(ie.four), &uper.Constraint{Lb: 1, Ub: 16}, false); err != nil {
-			err = utils.WrapError("Encode four", err)
+	case RACH_ConfigCommonTwoStepRA_r16_msgA_SSB_PerRACH_OccasionAndCB_PreamblesPerSSB_r16_Choice_Four:
+		if err = w.WriteInteger(int64(ie.Four), &uper.Constraint{Lb: 1, Ub: 16}, false); err != nil {
+			err = utils.WrapError("Encode Four", err)
 		}
-	case RACH_ConfigCommonTwoStepRA_r16_msgA_SSB_PerRACH_OccasionAndCB_PreamblesPerSSB_r16_Choice_eight:
-		if err = w.WriteInteger(int64(ie.eight), &uper.Constraint{Lb: 1, Ub: 8}, false); err != nil {
-			err = utils.WrapError("Encode eight", err)
+	case RACH_ConfigCommonTwoStepRA_r16_msgA_SSB_PerRACH_OccasionAndCB_PreamblesPerSSB_r16_Choice_Eight:
+		if err = w.WriteInteger(int64(ie.Eight), &uper.Constraint{Lb: 1, Ub: 8}, false); err != nil {
+			err = utils.WrapError("Encode Eight", err)
 		}
-	case RACH_ConfigCommonTwoStepRA_r16_msgA_SSB_PerRACH_OccasionAndCB_PreamblesPerSSB_r16_Choice_sixteen:
-		if err = w.WriteInteger(int64(ie.sixteen), &uper.Constraint{Lb: 1, Ub: 4}, false); err != nil {
-			err = utils.WrapError("Encode sixteen", err)
+	case RACH_ConfigCommonTwoStepRA_r16_msgA_SSB_PerRACH_OccasionAndCB_PreamblesPerSSB_r16_Choice_Sixteen:
+		if err = w.WriteInteger(int64(ie.Sixteen), &uper.Constraint{Lb: 1, Ub: 4}, false); err != nil {
+			err = utils.WrapError("Encode Sixteen", err)
 		}
 	default:
 		err = fmt.Errorf("invalid choice: %d", ie.Choice)
@@ -81,49 +81,49 @@ func (ie *RACH_ConfigCommonTwoStepRA_r16_msgA_SSB_PerRACH_OccasionAndCB_Preamble
 		return err
 	}
 	switch ie.Choice {
-	case RACH_ConfigCommonTwoStepRA_r16_msgA_SSB_PerRACH_OccasionAndCB_PreamblesPerSSB_r16_Choice_oneEighth:
-		ie.oneEighth = new(RACH_ConfigCommonTwoStepRA_r16_msgA_SSB_PerRACH_OccasionAndCB_PreamblesPerSSB_r16_oneEighth)
-		if err = ie.oneEighth.Decode(r); err != nil {
-			return utils.WrapError("Decode oneEighth", err)
+	case RACH_ConfigCommonTwoStepRA_r16_msgA_SSB_PerRACH_OccasionAndCB_PreamblesPerSSB_r16_Choice_OneEighth:
+		ie.OneEighth = new(RACH_ConfigCommonTwoStepRA_r16_msgA_SSB_PerRACH_OccasionAndCB_PreamblesPerSSB_r16_oneEighth)
+		if err = ie.OneEighth.Decode(r); err != nil {
+			return utils.WrapError("Decode OneEighth", err)
 		}
-	case RACH_ConfigCommonTwoStepRA_r16_msgA_SSB_PerRACH_OccasionAndCB_PreamblesPerSSB_r16_Choice_oneFourth:
-		ie.oneFourth = new(RACH_ConfigCommonTwoStepRA_r16_msgA_SSB_PerRACH_OccasionAndCB_PreamblesPerSSB_r16_oneFourth)
-		if err = ie.oneFourth.Decode(r); err != nil {
-			return utils.WrapError("Decode oneFourth", err)
+	case RACH_ConfigCommonTwoStepRA_r16_msgA_SSB_PerRACH_OccasionAndCB_PreamblesPerSSB_r16_Choice_OneFourth:
+		ie.OneFourth = new(RACH_ConfigCommonTwoStepRA_r16_msgA_SSB_PerRACH_OccasionAndCB_PreamblesPerSSB_r16_oneFourth)
+		if err = ie.OneFourth.Decode(r); err != nil {
+			return utils.WrapError("Decode OneFourth", err)
 		}
-	case RACH_ConfigCommonTwoStepRA_r16_msgA_SSB_PerRACH_OccasionAndCB_PreamblesPerSSB_r16_Choice_oneHalf:
-		ie.oneHalf = new(RACH_ConfigCommonTwoStepRA_r16_msgA_SSB_PerRACH_OccasionAndCB_PreamblesPerSSB_r16_oneHalf)
-		if err = ie.oneHalf.Decode(r); err != nil {
-			return utils.WrapError("Decode oneHalf", err)
+	case RACH_ConfigCommonTwoStepRA_r16_msgA_SSB_PerRACH_OccasionAndCB_PreamblesPerSSB_r16_Choice_OneHalf:
+		ie.OneHalf = new(RACH_ConfigCommonTwoStepRA_r16_msgA_SSB_PerRACH_OccasionAndCB_PreamblesPerSSB_r16_oneHalf)
+		if err = ie.OneHalf.Decode(r); err != nil {
+			return utils.WrapError("Decode OneHalf", err)
 		}
-	case RACH_ConfigCommonTwoStepRA_r16_msgA_SSB_PerRACH_OccasionAndCB_PreamblesPerSSB_r16_Choice_one:
-		ie.one = new(RACH_ConfigCommonTwoStepRA_r16_msgA_SSB_PerRACH_OccasionAndCB_PreamblesPerSSB_r16_one)
-		if err = ie.one.Decode(r); err != nil {
-			return utils.WrapError("Decode one", err)
+	case RACH_ConfigCommonTwoStepRA_r16_msgA_SSB_PerRACH_OccasionAndCB_PreamblesPerSSB_r16_Choice_One:
+		ie.One = new(RACH_ConfigCommonTwoStepRA_r16_msgA_SSB_PerRACH_OccasionAndCB_PreamblesPerSSB_r16_one)
+		if err = ie.One.Decode(r); err != nil {
+			return utils.WrapError("Decode One", err)
 		}
-	case RACH_ConfigCommonTwoStepRA_r16_msgA_SSB_PerRACH_OccasionAndCB_PreamblesPerSSB_r16_Choice_two:
-		ie.two = new(RACH_ConfigCommonTwoStepRA_r16_msgA_SSB_PerRACH_OccasionAndCB_PreamblesPerSSB_r16_two)
-		if err = ie.two.Decode(r); err != nil {
-			return utils.WrapError("Decode two", err)
+	case RACH_ConfigCommonTwoStepRA_r16_msgA_SSB_PerRACH_OccasionAndCB_PreamblesPerSSB_r16_Choice_Two:
+		ie.Two = new(RACH_ConfigCommonTwoStepRA_r16_msgA_SSB_PerRACH_OccasionAndCB_PreamblesPerSSB_r16_two)
+		if err = ie.Two.Decode(r); err != nil {
+			return utils.WrapError("Decode Two", err)
 		}
-	case RACH_ConfigCommonTwoStepRA_r16_msgA_SSB_PerRACH_OccasionAndCB_PreamblesPerSSB_r16_Choice_four:
-		var tmp_int_four int64
-		if tmp_int_four, err = r.ReadInteger(&uper.Constraint{Lb: 1, Ub: 16}, false); err != nil {
-			return utils.WrapError("Decode four", err)
+	case RACH_ConfigCommonTwoStepRA_r16_msgA_SSB_PerRACH_OccasionAndCB_PreamblesPerSSB_r16_Choice_Four:
+		var tmp_int_Four int64
+		if tmp_int_Four, err = r.ReadInteger(&uper.Constraint{Lb: 1, Ub: 16}, false); err != nil {
+			return utils.WrapError("Decode Four", err)
 		}
-		ie.four = tmp_int_four
-	case RACH_ConfigCommonTwoStepRA_r16_msgA_SSB_PerRACH_OccasionAndCB_PreamblesPerSSB_r16_Choice_eight:
-		var tmp_int_eight int64
-		if tmp_int_eight, err = r.ReadInteger(&uper.Constraint{Lb: 1, Ub: 8}, false); err != nil {
-			return utils.WrapError("Decode eight", err)
+		ie.Four = tmp_int_Four
+	case RACH_ConfigCommonTwoStepRA_r16_msgA_SSB_PerRACH_OccasionAndCB_PreamblesPerSSB_r16_Choice_Eight:
+		var tmp_int_Eight int64
+		if tmp_int_Eight, err = r.ReadInteger(&uper.Constraint{Lb: 1, Ub: 8}, false); err != nil {
+			return utils.WrapError("Decode Eight", err)
 		}
-		ie.eight = tmp_int_eight
-	case RACH_ConfigCommonTwoStepRA_r16_msgA_SSB_PerRACH_OccasionAndCB_PreamblesPerSSB_r16_Choice_sixteen:
-		var tmp_int_sixteen int64
-		if tmp_int_sixteen, err = r.ReadInteger(&uper.Constraint{Lb: 1, Ub: 4}, false); err != nil {
-			return utils.WrapError("Decode sixteen", err)
+		ie.Eight = tmp_int_Eight
+	case RACH_ConfigCommonTwoStepRA_r16_msgA_SSB_PerRACH_OccasionAndCB_PreamblesPerSSB_r16_Choice_Sixteen:
+		var tmp_int_Sixteen int64
+		if tmp_int_Sixteen, err = r.ReadInteger(&uper.Constraint{Lb: 1, Ub: 4}, false); err != nil {
+			return utils.WrapError("Decode Sixteen", err)
 		}
-		ie.sixteen = tmp_int_sixteen
+		ie.Sixteen = tmp_int_Sixteen
 	default:
 		return fmt.Errorf("invalid choice: %d", ie.Choice)
 	}

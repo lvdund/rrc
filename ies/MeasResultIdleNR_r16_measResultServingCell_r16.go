@@ -6,32 +6,32 @@ import (
 )
 
 type MeasResultIdleNR_r16_measResultServingCell_r16 struct {
-	rsrp_Result_r16        *RSRP_Range                  `optional`
-	rsrq_Result_r16        *RSRQ_Range                  `optional`
-	resultsSSB_Indexes_r16 *ResultsPerSSB_IndexList_r16 `optional`
+	Rsrp_Result_r16        *RSRP_Range                  `optional`
+	Rsrq_Result_r16        *RSRQ_Range                  `optional`
+	ResultsSSB_Indexes_r16 *ResultsPerSSB_IndexList_r16 `optional`
 }
 
 func (ie *MeasResultIdleNR_r16_measResultServingCell_r16) Encode(w *uper.UperWriter) error {
 	var err error
-	preambleBits := []bool{ie.rsrp_Result_r16 != nil, ie.rsrq_Result_r16 != nil, ie.resultsSSB_Indexes_r16 != nil}
+	preambleBits := []bool{ie.Rsrp_Result_r16 != nil, ie.Rsrq_Result_r16 != nil, ie.ResultsSSB_Indexes_r16 != nil}
 	for _, bit := range preambleBits {
 		if err = w.WriteBool(bit); err != nil {
 			return err
 		}
 	}
-	if ie.rsrp_Result_r16 != nil {
-		if err = ie.rsrp_Result_r16.Encode(w); err != nil {
-			return utils.WrapError("Encode rsrp_Result_r16", err)
+	if ie.Rsrp_Result_r16 != nil {
+		if err = ie.Rsrp_Result_r16.Encode(w); err != nil {
+			return utils.WrapError("Encode Rsrp_Result_r16", err)
 		}
 	}
-	if ie.rsrq_Result_r16 != nil {
-		if err = ie.rsrq_Result_r16.Encode(w); err != nil {
-			return utils.WrapError("Encode rsrq_Result_r16", err)
+	if ie.Rsrq_Result_r16 != nil {
+		if err = ie.Rsrq_Result_r16.Encode(w); err != nil {
+			return utils.WrapError("Encode Rsrq_Result_r16", err)
 		}
 	}
-	if ie.resultsSSB_Indexes_r16 != nil {
-		if err = ie.resultsSSB_Indexes_r16.Encode(w); err != nil {
-			return utils.WrapError("Encode resultsSSB_Indexes_r16", err)
+	if ie.ResultsSSB_Indexes_r16 != nil {
+		if err = ie.ResultsSSB_Indexes_r16.Encode(w); err != nil {
+			return utils.WrapError("Encode ResultsSSB_Indexes_r16", err)
 		}
 	}
 	return nil
@@ -39,34 +39,34 @@ func (ie *MeasResultIdleNR_r16_measResultServingCell_r16) Encode(w *uper.UperWri
 
 func (ie *MeasResultIdleNR_r16_measResultServingCell_r16) Decode(r *uper.UperReader) error {
 	var err error
-	var rsrp_Result_r16Present bool
-	if rsrp_Result_r16Present, err = r.ReadBool(); err != nil {
+	var Rsrp_Result_r16Present bool
+	if Rsrp_Result_r16Present, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var rsrq_Result_r16Present bool
-	if rsrq_Result_r16Present, err = r.ReadBool(); err != nil {
+	var Rsrq_Result_r16Present bool
+	if Rsrq_Result_r16Present, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var resultsSSB_Indexes_r16Present bool
-	if resultsSSB_Indexes_r16Present, err = r.ReadBool(); err != nil {
+	var ResultsSSB_Indexes_r16Present bool
+	if ResultsSSB_Indexes_r16Present, err = r.ReadBool(); err != nil {
 		return err
 	}
-	if rsrp_Result_r16Present {
-		ie.rsrp_Result_r16 = new(RSRP_Range)
-		if err = ie.rsrp_Result_r16.Decode(r); err != nil {
-			return utils.WrapError("Decode rsrp_Result_r16", err)
+	if Rsrp_Result_r16Present {
+		ie.Rsrp_Result_r16 = new(RSRP_Range)
+		if err = ie.Rsrp_Result_r16.Decode(r); err != nil {
+			return utils.WrapError("Decode Rsrp_Result_r16", err)
 		}
 	}
-	if rsrq_Result_r16Present {
-		ie.rsrq_Result_r16 = new(RSRQ_Range)
-		if err = ie.rsrq_Result_r16.Decode(r); err != nil {
-			return utils.WrapError("Decode rsrq_Result_r16", err)
+	if Rsrq_Result_r16Present {
+		ie.Rsrq_Result_r16 = new(RSRQ_Range)
+		if err = ie.Rsrq_Result_r16.Decode(r); err != nil {
+			return utils.WrapError("Decode Rsrq_Result_r16", err)
 		}
 	}
-	if resultsSSB_Indexes_r16Present {
-		ie.resultsSSB_Indexes_r16 = new(ResultsPerSSB_IndexList_r16)
-		if err = ie.resultsSSB_Indexes_r16.Decode(r); err != nil {
-			return utils.WrapError("Decode resultsSSB_Indexes_r16", err)
+	if ResultsSSB_Indexes_r16Present {
+		ie.ResultsSSB_Indexes_r16 = new(ResultsPerSSB_IndexList_r16)
+		if err = ie.ResultsSSB_Indexes_r16.Decode(r); err != nil {
+			return utils.WrapError("Decode ResultsSSB_Indexes_r16", err)
 		}
 	}
 	return nil

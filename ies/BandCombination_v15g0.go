@@ -6,32 +6,32 @@ import (
 )
 
 type BandCombination_v15g0 struct {
-	ca_ParametersNR_v15g0   *CA_ParametersNR_v15g0   `optional`
-	ca_ParametersNRDC_v15g0 *CA_ParametersNRDC_v15g0 `optional`
-	mrdc_Parameters_v15g0   *MRDC_Parameters_v15g0   `optional`
+	Ca_ParametersNR_v15g0   *CA_ParametersNR_v15g0   `optional`
+	Ca_ParametersNRDC_v15g0 *CA_ParametersNRDC_v15g0 `optional`
+	Mrdc_Parameters_v15g0   *MRDC_Parameters_v15g0   `optional`
 }
 
 func (ie *BandCombination_v15g0) Encode(w *uper.UperWriter) error {
 	var err error
-	preambleBits := []bool{ie.ca_ParametersNR_v15g0 != nil, ie.ca_ParametersNRDC_v15g0 != nil, ie.mrdc_Parameters_v15g0 != nil}
+	preambleBits := []bool{ie.Ca_ParametersNR_v15g0 != nil, ie.Ca_ParametersNRDC_v15g0 != nil, ie.Mrdc_Parameters_v15g0 != nil}
 	for _, bit := range preambleBits {
 		if err = w.WriteBool(bit); err != nil {
 			return err
 		}
 	}
-	if ie.ca_ParametersNR_v15g0 != nil {
-		if err = ie.ca_ParametersNR_v15g0.Encode(w); err != nil {
-			return utils.WrapError("Encode ca_ParametersNR_v15g0", err)
+	if ie.Ca_ParametersNR_v15g0 != nil {
+		if err = ie.Ca_ParametersNR_v15g0.Encode(w); err != nil {
+			return utils.WrapError("Encode Ca_ParametersNR_v15g0", err)
 		}
 	}
-	if ie.ca_ParametersNRDC_v15g0 != nil {
-		if err = ie.ca_ParametersNRDC_v15g0.Encode(w); err != nil {
-			return utils.WrapError("Encode ca_ParametersNRDC_v15g0", err)
+	if ie.Ca_ParametersNRDC_v15g0 != nil {
+		if err = ie.Ca_ParametersNRDC_v15g0.Encode(w); err != nil {
+			return utils.WrapError("Encode Ca_ParametersNRDC_v15g0", err)
 		}
 	}
-	if ie.mrdc_Parameters_v15g0 != nil {
-		if err = ie.mrdc_Parameters_v15g0.Encode(w); err != nil {
-			return utils.WrapError("Encode mrdc_Parameters_v15g0", err)
+	if ie.Mrdc_Parameters_v15g0 != nil {
+		if err = ie.Mrdc_Parameters_v15g0.Encode(w); err != nil {
+			return utils.WrapError("Encode Mrdc_Parameters_v15g0", err)
 		}
 	}
 	return nil
@@ -39,34 +39,34 @@ func (ie *BandCombination_v15g0) Encode(w *uper.UperWriter) error {
 
 func (ie *BandCombination_v15g0) Decode(r *uper.UperReader) error {
 	var err error
-	var ca_ParametersNR_v15g0Present bool
-	if ca_ParametersNR_v15g0Present, err = r.ReadBool(); err != nil {
+	var Ca_ParametersNR_v15g0Present bool
+	if Ca_ParametersNR_v15g0Present, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var ca_ParametersNRDC_v15g0Present bool
-	if ca_ParametersNRDC_v15g0Present, err = r.ReadBool(); err != nil {
+	var Ca_ParametersNRDC_v15g0Present bool
+	if Ca_ParametersNRDC_v15g0Present, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var mrdc_Parameters_v15g0Present bool
-	if mrdc_Parameters_v15g0Present, err = r.ReadBool(); err != nil {
+	var Mrdc_Parameters_v15g0Present bool
+	if Mrdc_Parameters_v15g0Present, err = r.ReadBool(); err != nil {
 		return err
 	}
-	if ca_ParametersNR_v15g0Present {
-		ie.ca_ParametersNR_v15g0 = new(CA_ParametersNR_v15g0)
-		if err = ie.ca_ParametersNR_v15g0.Decode(r); err != nil {
-			return utils.WrapError("Decode ca_ParametersNR_v15g0", err)
+	if Ca_ParametersNR_v15g0Present {
+		ie.Ca_ParametersNR_v15g0 = new(CA_ParametersNR_v15g0)
+		if err = ie.Ca_ParametersNR_v15g0.Decode(r); err != nil {
+			return utils.WrapError("Decode Ca_ParametersNR_v15g0", err)
 		}
 	}
-	if ca_ParametersNRDC_v15g0Present {
-		ie.ca_ParametersNRDC_v15g0 = new(CA_ParametersNRDC_v15g0)
-		if err = ie.ca_ParametersNRDC_v15g0.Decode(r); err != nil {
-			return utils.WrapError("Decode ca_ParametersNRDC_v15g0", err)
+	if Ca_ParametersNRDC_v15g0Present {
+		ie.Ca_ParametersNRDC_v15g0 = new(CA_ParametersNRDC_v15g0)
+		if err = ie.Ca_ParametersNRDC_v15g0.Decode(r); err != nil {
+			return utils.WrapError("Decode Ca_ParametersNRDC_v15g0", err)
 		}
 	}
-	if mrdc_Parameters_v15g0Present {
-		ie.mrdc_Parameters_v15g0 = new(MRDC_Parameters_v15g0)
-		if err = ie.mrdc_Parameters_v15g0.Decode(r); err != nil {
-			return utils.WrapError("Decode mrdc_Parameters_v15g0", err)
+	if Mrdc_Parameters_v15g0Present {
+		ie.Mrdc_Parameters_v15g0 = new(MRDC_Parameters_v15g0)
+		if err = ie.Mrdc_Parameters_v15g0.Decode(r); err != nil {
+			return utils.WrapError("Decode Mrdc_Parameters_v15g0", err)
 		}
 	}
 	return nil

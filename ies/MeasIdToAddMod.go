@@ -6,35 +6,35 @@ import (
 )
 
 type MeasIdToAddMod struct {
-	measId         MeasId         `madatory`
-	measObjectId   MeasObjectId   `madatory`
-	reportConfigId ReportConfigId `madatory`
+	MeasId         MeasId         `madatory`
+	MeasObjectId   MeasObjectId   `madatory`
+	ReportConfigId ReportConfigId `madatory`
 }
 
 func (ie *MeasIdToAddMod) Encode(w *uper.UperWriter) error {
 	var err error
-	if err = ie.measId.Encode(w); err != nil {
-		return utils.WrapError("Encode measId", err)
+	if err = ie.MeasId.Encode(w); err != nil {
+		return utils.WrapError("Encode MeasId", err)
 	}
-	if err = ie.measObjectId.Encode(w); err != nil {
-		return utils.WrapError("Encode measObjectId", err)
+	if err = ie.MeasObjectId.Encode(w); err != nil {
+		return utils.WrapError("Encode MeasObjectId", err)
 	}
-	if err = ie.reportConfigId.Encode(w); err != nil {
-		return utils.WrapError("Encode reportConfigId", err)
+	if err = ie.ReportConfigId.Encode(w); err != nil {
+		return utils.WrapError("Encode ReportConfigId", err)
 	}
 	return nil
 }
 
 func (ie *MeasIdToAddMod) Decode(r *uper.UperReader) error {
 	var err error
-	if err = ie.measId.Decode(r); err != nil {
-		return utils.WrapError("Decode measId", err)
+	if err = ie.MeasId.Decode(r); err != nil {
+		return utils.WrapError("Decode MeasId", err)
 	}
-	if err = ie.measObjectId.Decode(r); err != nil {
-		return utils.WrapError("Decode measObjectId", err)
+	if err = ie.MeasObjectId.Decode(r); err != nil {
+		return utils.WrapError("Decode MeasObjectId", err)
 	}
-	if err = ie.reportConfigId.Decode(r); err != nil {
-		return utils.WrapError("Decode reportConfigId", err)
+	if err = ie.ReportConfigId.Decode(r); err != nil {
+		return utils.WrapError("Decode ReportConfigId", err)
 	}
 	return nil
 }

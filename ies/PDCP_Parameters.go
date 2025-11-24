@@ -8,74 +8,74 @@ import (
 )
 
 type PDCP_Parameters struct {
-	supportedROHC_Profiles             PDCP_Parameters_supportedROHC_Profiles              `madatory`
-	maxNumberROHC_ContextSessions      PDCP_Parameters_maxNumberROHC_ContextSessions       `madatory`
-	uplinkOnlyROHC_Profiles            *PDCP_Parameters_uplinkOnlyROHC_Profiles            `optional`
-	continueROHC_Context               *PDCP_Parameters_continueROHC_Context               `optional`
-	outOfOrderDelivery                 *PDCP_Parameters_outOfOrderDelivery                 `optional`
-	shortSN                            *PDCP_Parameters_shortSN                            `optional`
-	pdcp_DuplicationSRB                *PDCP_Parameters_pdcp_DuplicationSRB                `optional`
-	pdcp_DuplicationMCG_OrSCG_DRB      *PDCP_Parameters_pdcp_DuplicationMCG_OrSCG_DRB      `optional`
-	drb_IAB_r16                        *PDCP_Parameters_drb_IAB_r16                        `optional,ext-1`
-	non_DRB_IAB_r16                    *PDCP_Parameters_non_DRB_IAB_r16                    `optional,ext-1`
-	extendedDiscardTimer_r16           *PDCP_Parameters_extendedDiscardTimer_r16           `optional,ext-1`
-	continueEHC_Context_r16            *PDCP_Parameters_continueEHC_Context_r16            `optional,ext-1`
-	ehc_r16                            *PDCP_Parameters_ehc_r16                            `optional,ext-1`
-	maxNumberEHC_Contexts_r16          *PDCP_Parameters_maxNumberEHC_Contexts_r16          `optional,ext-1`
-	jointEHC_ROHC_Config_r16           *PDCP_Parameters_jointEHC_ROHC_Config_r16           `optional,ext-1`
-	pdcp_DuplicationMoreThanTwoRLC_r16 *PDCP_Parameters_pdcp_DuplicationMoreThanTwoRLC_r16 `optional,ext-1`
-	longSN_RedCap_r17                  *PDCP_Parameters_longSN_RedCap_r17                  `optional,ext-2`
-	udc_r17                            *PDCP_Parameters_udc_r17                            `lb:0,ub:15,optional,ext-2`
+	SupportedROHC_Profiles             PDCP_Parameters_supportedROHC_Profiles              `madatory`
+	MaxNumberROHC_ContextSessions      PDCP_Parameters_maxNumberROHC_ContextSessions       `madatory`
+	UplinkOnlyROHC_Profiles            *PDCP_Parameters_uplinkOnlyROHC_Profiles            `optional`
+	ContinueROHC_Context               *PDCP_Parameters_continueROHC_Context               `optional`
+	OutOfOrderDelivery                 *PDCP_Parameters_outOfOrderDelivery                 `optional`
+	ShortSN                            *PDCP_Parameters_shortSN                            `optional`
+	Pdcp_DuplicationSRB                *PDCP_Parameters_pdcp_DuplicationSRB                `optional`
+	Pdcp_DuplicationMCG_OrSCG_DRB      *PDCP_Parameters_pdcp_DuplicationMCG_OrSCG_DRB      `optional`
+	Drb_IAB_r16                        *PDCP_Parameters_drb_IAB_r16                        `optional,ext-1`
+	Non_DRB_IAB_r16                    *PDCP_Parameters_non_DRB_IAB_r16                    `optional,ext-1`
+	ExtendedDiscardTimer_r16           *PDCP_Parameters_extendedDiscardTimer_r16           `optional,ext-1`
+	ContinueEHC_Context_r16            *PDCP_Parameters_continueEHC_Context_r16            `optional,ext-1`
+	Ehc_r16                            *PDCP_Parameters_ehc_r16                            `optional,ext-1`
+	MaxNumberEHC_Contexts_r16          *PDCP_Parameters_maxNumberEHC_Contexts_r16          `optional,ext-1`
+	JointEHC_ROHC_Config_r16           *PDCP_Parameters_jointEHC_ROHC_Config_r16           `optional,ext-1`
+	Pdcp_DuplicationMoreThanTwoRLC_r16 *PDCP_Parameters_pdcp_DuplicationMoreThanTwoRLC_r16 `optional,ext-1`
+	LongSN_RedCap_r17                  *PDCP_Parameters_longSN_RedCap_r17                  `optional,ext-2`
+	Udc_r17                            *PDCP_Parameters_udc_r17                            `lb:0,ub:15,optional,ext-2`
 }
 
 func (ie *PDCP_Parameters) Encode(w *uper.UperWriter) error {
 	var err error
-	hasExtensions := ie.drb_IAB_r16 != nil || ie.non_DRB_IAB_r16 != nil || ie.extendedDiscardTimer_r16 != nil || ie.continueEHC_Context_r16 != nil || ie.ehc_r16 != nil || ie.maxNumberEHC_Contexts_r16 != nil || ie.jointEHC_ROHC_Config_r16 != nil || ie.pdcp_DuplicationMoreThanTwoRLC_r16 != nil || ie.longSN_RedCap_r17 != nil || ie.udc_r17 != nil
-	preambleBits := []bool{hasExtensions, ie.uplinkOnlyROHC_Profiles != nil, ie.continueROHC_Context != nil, ie.outOfOrderDelivery != nil, ie.shortSN != nil, ie.pdcp_DuplicationSRB != nil, ie.pdcp_DuplicationMCG_OrSCG_DRB != nil}
+	hasExtensions := ie.Drb_IAB_r16 != nil || ie.Non_DRB_IAB_r16 != nil || ie.ExtendedDiscardTimer_r16 != nil || ie.ContinueEHC_Context_r16 != nil || ie.Ehc_r16 != nil || ie.MaxNumberEHC_Contexts_r16 != nil || ie.JointEHC_ROHC_Config_r16 != nil || ie.Pdcp_DuplicationMoreThanTwoRLC_r16 != nil || ie.LongSN_RedCap_r17 != nil || ie.Udc_r17 != nil
+	preambleBits := []bool{hasExtensions, ie.UplinkOnlyROHC_Profiles != nil, ie.ContinueROHC_Context != nil, ie.OutOfOrderDelivery != nil, ie.ShortSN != nil, ie.Pdcp_DuplicationSRB != nil, ie.Pdcp_DuplicationMCG_OrSCG_DRB != nil}
 	for _, bit := range preambleBits {
 		if err = w.WriteBool(bit); err != nil {
 			return err
 		}
 	}
-	if err = ie.supportedROHC_Profiles.Encode(w); err != nil {
-		return utils.WrapError("Encode supportedROHC_Profiles", err)
+	if err = ie.SupportedROHC_Profiles.Encode(w); err != nil {
+		return utils.WrapError("Encode SupportedROHC_Profiles", err)
 	}
-	if err = ie.maxNumberROHC_ContextSessions.Encode(w); err != nil {
-		return utils.WrapError("Encode maxNumberROHC_ContextSessions", err)
+	if err = ie.MaxNumberROHC_ContextSessions.Encode(w); err != nil {
+		return utils.WrapError("Encode MaxNumberROHC_ContextSessions", err)
 	}
-	if ie.uplinkOnlyROHC_Profiles != nil {
-		if err = ie.uplinkOnlyROHC_Profiles.Encode(w); err != nil {
-			return utils.WrapError("Encode uplinkOnlyROHC_Profiles", err)
+	if ie.UplinkOnlyROHC_Profiles != nil {
+		if err = ie.UplinkOnlyROHC_Profiles.Encode(w); err != nil {
+			return utils.WrapError("Encode UplinkOnlyROHC_Profiles", err)
 		}
 	}
-	if ie.continueROHC_Context != nil {
-		if err = ie.continueROHC_Context.Encode(w); err != nil {
-			return utils.WrapError("Encode continueROHC_Context", err)
+	if ie.ContinueROHC_Context != nil {
+		if err = ie.ContinueROHC_Context.Encode(w); err != nil {
+			return utils.WrapError("Encode ContinueROHC_Context", err)
 		}
 	}
-	if ie.outOfOrderDelivery != nil {
-		if err = ie.outOfOrderDelivery.Encode(w); err != nil {
-			return utils.WrapError("Encode outOfOrderDelivery", err)
+	if ie.OutOfOrderDelivery != nil {
+		if err = ie.OutOfOrderDelivery.Encode(w); err != nil {
+			return utils.WrapError("Encode OutOfOrderDelivery", err)
 		}
 	}
-	if ie.shortSN != nil {
-		if err = ie.shortSN.Encode(w); err != nil {
-			return utils.WrapError("Encode shortSN", err)
+	if ie.ShortSN != nil {
+		if err = ie.ShortSN.Encode(w); err != nil {
+			return utils.WrapError("Encode ShortSN", err)
 		}
 	}
-	if ie.pdcp_DuplicationSRB != nil {
-		if err = ie.pdcp_DuplicationSRB.Encode(w); err != nil {
-			return utils.WrapError("Encode pdcp_DuplicationSRB", err)
+	if ie.Pdcp_DuplicationSRB != nil {
+		if err = ie.Pdcp_DuplicationSRB.Encode(w); err != nil {
+			return utils.WrapError("Encode Pdcp_DuplicationSRB", err)
 		}
 	}
-	if ie.pdcp_DuplicationMCG_OrSCG_DRB != nil {
-		if err = ie.pdcp_DuplicationMCG_OrSCG_DRB.Encode(w); err != nil {
-			return utils.WrapError("Encode pdcp_DuplicationMCG_OrSCG_DRB", err)
+	if ie.Pdcp_DuplicationMCG_OrSCG_DRB != nil {
+		if err = ie.Pdcp_DuplicationMCG_OrSCG_DRB.Encode(w); err != nil {
+			return utils.WrapError("Encode Pdcp_DuplicationMCG_OrSCG_DRB", err)
 		}
 	}
 	if hasExtensions {
 		// Extension bitmap: 2 bits for 2 extension groups
-		extBitmap := []bool{ie.drb_IAB_r16 != nil || ie.non_DRB_IAB_r16 != nil || ie.extendedDiscardTimer_r16 != nil || ie.continueEHC_Context_r16 != nil || ie.ehc_r16 != nil || ie.maxNumberEHC_Contexts_r16 != nil || ie.jointEHC_ROHC_Config_r16 != nil || ie.pdcp_DuplicationMoreThanTwoRLC_r16 != nil, ie.longSN_RedCap_r17 != nil || ie.udc_r17 != nil}
+		extBitmap := []bool{ie.Drb_IAB_r16 != nil || ie.Non_DRB_IAB_r16 != nil || ie.ExtendedDiscardTimer_r16 != nil || ie.ContinueEHC_Context_r16 != nil || ie.Ehc_r16 != nil || ie.MaxNumberEHC_Contexts_r16 != nil || ie.JointEHC_ROHC_Config_r16 != nil || ie.Pdcp_DuplicationMoreThanTwoRLC_r16 != nil, ie.LongSN_RedCap_r17 != nil || ie.Udc_r17 != nil}
 		if err := w.WriteExtBitMap(extBitmap); err != nil {
 			return utils.WrapError("WriteExtBitMap PDCP_Parameters", err)
 		}
@@ -86,59 +86,59 @@ func (ie *PDCP_Parameters) Encode(w *uper.UperWriter) error {
 			extWriter := uper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 1
-			optionals_ext_1 := []bool{ie.drb_IAB_r16 != nil, ie.non_DRB_IAB_r16 != nil, ie.extendedDiscardTimer_r16 != nil, ie.continueEHC_Context_r16 != nil, ie.ehc_r16 != nil, ie.maxNumberEHC_Contexts_r16 != nil, ie.jointEHC_ROHC_Config_r16 != nil, ie.pdcp_DuplicationMoreThanTwoRLC_r16 != nil}
+			optionals_ext_1 := []bool{ie.Drb_IAB_r16 != nil, ie.Non_DRB_IAB_r16 != nil, ie.ExtendedDiscardTimer_r16 != nil, ie.ContinueEHC_Context_r16 != nil, ie.Ehc_r16 != nil, ie.MaxNumberEHC_Contexts_r16 != nil, ie.JointEHC_ROHC_Config_r16 != nil, ie.Pdcp_DuplicationMoreThanTwoRLC_r16 != nil}
 			for _, bit := range optionals_ext_1 {
 				if err := extWriter.WriteBool(bit); err != nil {
 					return err
 				}
 			}
 
-			// encode drb_IAB_r16 optional
-			if ie.drb_IAB_r16 != nil {
-				if err = ie.drb_IAB_r16.Encode(extWriter); err != nil {
-					return utils.WrapError("Encode drb_IAB_r16", err)
+			// encode Drb_IAB_r16 optional
+			if ie.Drb_IAB_r16 != nil {
+				if err = ie.Drb_IAB_r16.Encode(extWriter); err != nil {
+					return utils.WrapError("Encode Drb_IAB_r16", err)
 				}
 			}
-			// encode non_DRB_IAB_r16 optional
-			if ie.non_DRB_IAB_r16 != nil {
-				if err = ie.non_DRB_IAB_r16.Encode(extWriter); err != nil {
-					return utils.WrapError("Encode non_DRB_IAB_r16", err)
+			// encode Non_DRB_IAB_r16 optional
+			if ie.Non_DRB_IAB_r16 != nil {
+				if err = ie.Non_DRB_IAB_r16.Encode(extWriter); err != nil {
+					return utils.WrapError("Encode Non_DRB_IAB_r16", err)
 				}
 			}
-			// encode extendedDiscardTimer_r16 optional
-			if ie.extendedDiscardTimer_r16 != nil {
-				if err = ie.extendedDiscardTimer_r16.Encode(extWriter); err != nil {
-					return utils.WrapError("Encode extendedDiscardTimer_r16", err)
+			// encode ExtendedDiscardTimer_r16 optional
+			if ie.ExtendedDiscardTimer_r16 != nil {
+				if err = ie.ExtendedDiscardTimer_r16.Encode(extWriter); err != nil {
+					return utils.WrapError("Encode ExtendedDiscardTimer_r16", err)
 				}
 			}
-			// encode continueEHC_Context_r16 optional
-			if ie.continueEHC_Context_r16 != nil {
-				if err = ie.continueEHC_Context_r16.Encode(extWriter); err != nil {
-					return utils.WrapError("Encode continueEHC_Context_r16", err)
+			// encode ContinueEHC_Context_r16 optional
+			if ie.ContinueEHC_Context_r16 != nil {
+				if err = ie.ContinueEHC_Context_r16.Encode(extWriter); err != nil {
+					return utils.WrapError("Encode ContinueEHC_Context_r16", err)
 				}
 			}
-			// encode ehc_r16 optional
-			if ie.ehc_r16 != nil {
-				if err = ie.ehc_r16.Encode(extWriter); err != nil {
-					return utils.WrapError("Encode ehc_r16", err)
+			// encode Ehc_r16 optional
+			if ie.Ehc_r16 != nil {
+				if err = ie.Ehc_r16.Encode(extWriter); err != nil {
+					return utils.WrapError("Encode Ehc_r16", err)
 				}
 			}
-			// encode maxNumberEHC_Contexts_r16 optional
-			if ie.maxNumberEHC_Contexts_r16 != nil {
-				if err = ie.maxNumberEHC_Contexts_r16.Encode(extWriter); err != nil {
-					return utils.WrapError("Encode maxNumberEHC_Contexts_r16", err)
+			// encode MaxNumberEHC_Contexts_r16 optional
+			if ie.MaxNumberEHC_Contexts_r16 != nil {
+				if err = ie.MaxNumberEHC_Contexts_r16.Encode(extWriter); err != nil {
+					return utils.WrapError("Encode MaxNumberEHC_Contexts_r16", err)
 				}
 			}
-			// encode jointEHC_ROHC_Config_r16 optional
-			if ie.jointEHC_ROHC_Config_r16 != nil {
-				if err = ie.jointEHC_ROHC_Config_r16.Encode(extWriter); err != nil {
-					return utils.WrapError("Encode jointEHC_ROHC_Config_r16", err)
+			// encode JointEHC_ROHC_Config_r16 optional
+			if ie.JointEHC_ROHC_Config_r16 != nil {
+				if err = ie.JointEHC_ROHC_Config_r16.Encode(extWriter); err != nil {
+					return utils.WrapError("Encode JointEHC_ROHC_Config_r16", err)
 				}
 			}
-			// encode pdcp_DuplicationMoreThanTwoRLC_r16 optional
-			if ie.pdcp_DuplicationMoreThanTwoRLC_r16 != nil {
-				if err = ie.pdcp_DuplicationMoreThanTwoRLC_r16.Encode(extWriter); err != nil {
-					return utils.WrapError("Encode pdcp_DuplicationMoreThanTwoRLC_r16", err)
+			// encode Pdcp_DuplicationMoreThanTwoRLC_r16 optional
+			if ie.Pdcp_DuplicationMoreThanTwoRLC_r16 != nil {
+				if err = ie.Pdcp_DuplicationMoreThanTwoRLC_r16.Encode(extWriter); err != nil {
+					return utils.WrapError("Encode Pdcp_DuplicationMoreThanTwoRLC_r16", err)
 				}
 			}
 
@@ -157,23 +157,23 @@ func (ie *PDCP_Parameters) Encode(w *uper.UperWriter) error {
 			extWriter := uper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 2
-			optionals_ext_2 := []bool{ie.longSN_RedCap_r17 != nil, ie.udc_r17 != nil}
+			optionals_ext_2 := []bool{ie.LongSN_RedCap_r17 != nil, ie.Udc_r17 != nil}
 			for _, bit := range optionals_ext_2 {
 				if err := extWriter.WriteBool(bit); err != nil {
 					return err
 				}
 			}
 
-			// encode longSN_RedCap_r17 optional
-			if ie.longSN_RedCap_r17 != nil {
-				if err = ie.longSN_RedCap_r17.Encode(extWriter); err != nil {
-					return utils.WrapError("Encode longSN_RedCap_r17", err)
+			// encode LongSN_RedCap_r17 optional
+			if ie.LongSN_RedCap_r17 != nil {
+				if err = ie.LongSN_RedCap_r17.Encode(extWriter); err != nil {
+					return utils.WrapError("Encode LongSN_RedCap_r17", err)
 				}
 			}
-			// encode udc_r17 optional
-			if ie.udc_r17 != nil {
-				if err = ie.udc_r17.Encode(extWriter); err != nil {
-					return utils.WrapError("Encode udc_r17", err)
+			// encode Udc_r17 optional
+			if ie.Udc_r17 != nil {
+				if err = ie.Udc_r17.Encode(extWriter); err != nil {
+					return utils.WrapError("Encode Udc_r17", err)
 				}
 			}
 
@@ -195,70 +195,70 @@ func (ie *PDCP_Parameters) Decode(r *uper.UperReader) error {
 	if extensionBit, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var uplinkOnlyROHC_ProfilesPresent bool
-	if uplinkOnlyROHC_ProfilesPresent, err = r.ReadBool(); err != nil {
+	var UplinkOnlyROHC_ProfilesPresent bool
+	if UplinkOnlyROHC_ProfilesPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var continueROHC_ContextPresent bool
-	if continueROHC_ContextPresent, err = r.ReadBool(); err != nil {
+	var ContinueROHC_ContextPresent bool
+	if ContinueROHC_ContextPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var outOfOrderDeliveryPresent bool
-	if outOfOrderDeliveryPresent, err = r.ReadBool(); err != nil {
+	var OutOfOrderDeliveryPresent bool
+	if OutOfOrderDeliveryPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var shortSNPresent bool
-	if shortSNPresent, err = r.ReadBool(); err != nil {
+	var ShortSNPresent bool
+	if ShortSNPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var pdcp_DuplicationSRBPresent bool
-	if pdcp_DuplicationSRBPresent, err = r.ReadBool(); err != nil {
+	var Pdcp_DuplicationSRBPresent bool
+	if Pdcp_DuplicationSRBPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var pdcp_DuplicationMCG_OrSCG_DRBPresent bool
-	if pdcp_DuplicationMCG_OrSCG_DRBPresent, err = r.ReadBool(); err != nil {
+	var Pdcp_DuplicationMCG_OrSCG_DRBPresent bool
+	if Pdcp_DuplicationMCG_OrSCG_DRBPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	if err = ie.supportedROHC_Profiles.Decode(r); err != nil {
-		return utils.WrapError("Decode supportedROHC_Profiles", err)
+	if err = ie.SupportedROHC_Profiles.Decode(r); err != nil {
+		return utils.WrapError("Decode SupportedROHC_Profiles", err)
 	}
-	if err = ie.maxNumberROHC_ContextSessions.Decode(r); err != nil {
-		return utils.WrapError("Decode maxNumberROHC_ContextSessions", err)
+	if err = ie.MaxNumberROHC_ContextSessions.Decode(r); err != nil {
+		return utils.WrapError("Decode MaxNumberROHC_ContextSessions", err)
 	}
-	if uplinkOnlyROHC_ProfilesPresent {
-		ie.uplinkOnlyROHC_Profiles = new(PDCP_Parameters_uplinkOnlyROHC_Profiles)
-		if err = ie.uplinkOnlyROHC_Profiles.Decode(r); err != nil {
-			return utils.WrapError("Decode uplinkOnlyROHC_Profiles", err)
+	if UplinkOnlyROHC_ProfilesPresent {
+		ie.UplinkOnlyROHC_Profiles = new(PDCP_Parameters_uplinkOnlyROHC_Profiles)
+		if err = ie.UplinkOnlyROHC_Profiles.Decode(r); err != nil {
+			return utils.WrapError("Decode UplinkOnlyROHC_Profiles", err)
 		}
 	}
-	if continueROHC_ContextPresent {
-		ie.continueROHC_Context = new(PDCP_Parameters_continueROHC_Context)
-		if err = ie.continueROHC_Context.Decode(r); err != nil {
-			return utils.WrapError("Decode continueROHC_Context", err)
+	if ContinueROHC_ContextPresent {
+		ie.ContinueROHC_Context = new(PDCP_Parameters_continueROHC_Context)
+		if err = ie.ContinueROHC_Context.Decode(r); err != nil {
+			return utils.WrapError("Decode ContinueROHC_Context", err)
 		}
 	}
-	if outOfOrderDeliveryPresent {
-		ie.outOfOrderDelivery = new(PDCP_Parameters_outOfOrderDelivery)
-		if err = ie.outOfOrderDelivery.Decode(r); err != nil {
-			return utils.WrapError("Decode outOfOrderDelivery", err)
+	if OutOfOrderDeliveryPresent {
+		ie.OutOfOrderDelivery = new(PDCP_Parameters_outOfOrderDelivery)
+		if err = ie.OutOfOrderDelivery.Decode(r); err != nil {
+			return utils.WrapError("Decode OutOfOrderDelivery", err)
 		}
 	}
-	if shortSNPresent {
-		ie.shortSN = new(PDCP_Parameters_shortSN)
-		if err = ie.shortSN.Decode(r); err != nil {
-			return utils.WrapError("Decode shortSN", err)
+	if ShortSNPresent {
+		ie.ShortSN = new(PDCP_Parameters_shortSN)
+		if err = ie.ShortSN.Decode(r); err != nil {
+			return utils.WrapError("Decode ShortSN", err)
 		}
 	}
-	if pdcp_DuplicationSRBPresent {
-		ie.pdcp_DuplicationSRB = new(PDCP_Parameters_pdcp_DuplicationSRB)
-		if err = ie.pdcp_DuplicationSRB.Decode(r); err != nil {
-			return utils.WrapError("Decode pdcp_DuplicationSRB", err)
+	if Pdcp_DuplicationSRBPresent {
+		ie.Pdcp_DuplicationSRB = new(PDCP_Parameters_pdcp_DuplicationSRB)
+		if err = ie.Pdcp_DuplicationSRB.Decode(r); err != nil {
+			return utils.WrapError("Decode Pdcp_DuplicationSRB", err)
 		}
 	}
-	if pdcp_DuplicationMCG_OrSCG_DRBPresent {
-		ie.pdcp_DuplicationMCG_OrSCG_DRB = new(PDCP_Parameters_pdcp_DuplicationMCG_OrSCG_DRB)
-		if err = ie.pdcp_DuplicationMCG_OrSCG_DRB.Decode(r); err != nil {
-			return utils.WrapError("Decode pdcp_DuplicationMCG_OrSCG_DRB", err)
+	if Pdcp_DuplicationMCG_OrSCG_DRBPresent {
+		ie.Pdcp_DuplicationMCG_OrSCG_DRB = new(PDCP_Parameters_pdcp_DuplicationMCG_OrSCG_DRB)
+		if err = ie.Pdcp_DuplicationMCG_OrSCG_DRB.Decode(r); err != nil {
+			return utils.WrapError("Decode Pdcp_DuplicationMCG_OrSCG_DRB", err)
 		}
 	}
 
@@ -278,92 +278,92 @@ func (ie *PDCP_Parameters) Decode(r *uper.UperReader) error {
 
 			extReader := uper.NewReader(bytes.NewReader(extBytes))
 
-			drb_IAB_r16Present, err := extReader.ReadBool()
+			Drb_IAB_r16Present, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			non_DRB_IAB_r16Present, err := extReader.ReadBool()
+			Non_DRB_IAB_r16Present, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			extendedDiscardTimer_r16Present, err := extReader.ReadBool()
+			ExtendedDiscardTimer_r16Present, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			continueEHC_Context_r16Present, err := extReader.ReadBool()
+			ContinueEHC_Context_r16Present, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			ehc_r16Present, err := extReader.ReadBool()
+			Ehc_r16Present, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			maxNumberEHC_Contexts_r16Present, err := extReader.ReadBool()
+			MaxNumberEHC_Contexts_r16Present, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			jointEHC_ROHC_Config_r16Present, err := extReader.ReadBool()
+			JointEHC_ROHC_Config_r16Present, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			pdcp_DuplicationMoreThanTwoRLC_r16Present, err := extReader.ReadBool()
+			Pdcp_DuplicationMoreThanTwoRLC_r16Present, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			// decode drb_IAB_r16 optional
-			if drb_IAB_r16Present {
-				ie.drb_IAB_r16 = new(PDCP_Parameters_drb_IAB_r16)
-				if err = ie.drb_IAB_r16.Decode(extReader); err != nil {
-					return utils.WrapError("Decode drb_IAB_r16", err)
+			// decode Drb_IAB_r16 optional
+			if Drb_IAB_r16Present {
+				ie.Drb_IAB_r16 = new(PDCP_Parameters_drb_IAB_r16)
+				if err = ie.Drb_IAB_r16.Decode(extReader); err != nil {
+					return utils.WrapError("Decode Drb_IAB_r16", err)
 				}
 			}
-			// decode non_DRB_IAB_r16 optional
-			if non_DRB_IAB_r16Present {
-				ie.non_DRB_IAB_r16 = new(PDCP_Parameters_non_DRB_IAB_r16)
-				if err = ie.non_DRB_IAB_r16.Decode(extReader); err != nil {
-					return utils.WrapError("Decode non_DRB_IAB_r16", err)
+			// decode Non_DRB_IAB_r16 optional
+			if Non_DRB_IAB_r16Present {
+				ie.Non_DRB_IAB_r16 = new(PDCP_Parameters_non_DRB_IAB_r16)
+				if err = ie.Non_DRB_IAB_r16.Decode(extReader); err != nil {
+					return utils.WrapError("Decode Non_DRB_IAB_r16", err)
 				}
 			}
-			// decode extendedDiscardTimer_r16 optional
-			if extendedDiscardTimer_r16Present {
-				ie.extendedDiscardTimer_r16 = new(PDCP_Parameters_extendedDiscardTimer_r16)
-				if err = ie.extendedDiscardTimer_r16.Decode(extReader); err != nil {
-					return utils.WrapError("Decode extendedDiscardTimer_r16", err)
+			// decode ExtendedDiscardTimer_r16 optional
+			if ExtendedDiscardTimer_r16Present {
+				ie.ExtendedDiscardTimer_r16 = new(PDCP_Parameters_extendedDiscardTimer_r16)
+				if err = ie.ExtendedDiscardTimer_r16.Decode(extReader); err != nil {
+					return utils.WrapError("Decode ExtendedDiscardTimer_r16", err)
 				}
 			}
-			// decode continueEHC_Context_r16 optional
-			if continueEHC_Context_r16Present {
-				ie.continueEHC_Context_r16 = new(PDCP_Parameters_continueEHC_Context_r16)
-				if err = ie.continueEHC_Context_r16.Decode(extReader); err != nil {
-					return utils.WrapError("Decode continueEHC_Context_r16", err)
+			// decode ContinueEHC_Context_r16 optional
+			if ContinueEHC_Context_r16Present {
+				ie.ContinueEHC_Context_r16 = new(PDCP_Parameters_continueEHC_Context_r16)
+				if err = ie.ContinueEHC_Context_r16.Decode(extReader); err != nil {
+					return utils.WrapError("Decode ContinueEHC_Context_r16", err)
 				}
 			}
-			// decode ehc_r16 optional
-			if ehc_r16Present {
-				ie.ehc_r16 = new(PDCP_Parameters_ehc_r16)
-				if err = ie.ehc_r16.Decode(extReader); err != nil {
-					return utils.WrapError("Decode ehc_r16", err)
+			// decode Ehc_r16 optional
+			if Ehc_r16Present {
+				ie.Ehc_r16 = new(PDCP_Parameters_ehc_r16)
+				if err = ie.Ehc_r16.Decode(extReader); err != nil {
+					return utils.WrapError("Decode Ehc_r16", err)
 				}
 			}
-			// decode maxNumberEHC_Contexts_r16 optional
-			if maxNumberEHC_Contexts_r16Present {
-				ie.maxNumberEHC_Contexts_r16 = new(PDCP_Parameters_maxNumberEHC_Contexts_r16)
-				if err = ie.maxNumberEHC_Contexts_r16.Decode(extReader); err != nil {
-					return utils.WrapError("Decode maxNumberEHC_Contexts_r16", err)
+			// decode MaxNumberEHC_Contexts_r16 optional
+			if MaxNumberEHC_Contexts_r16Present {
+				ie.MaxNumberEHC_Contexts_r16 = new(PDCP_Parameters_maxNumberEHC_Contexts_r16)
+				if err = ie.MaxNumberEHC_Contexts_r16.Decode(extReader); err != nil {
+					return utils.WrapError("Decode MaxNumberEHC_Contexts_r16", err)
 				}
 			}
-			// decode jointEHC_ROHC_Config_r16 optional
-			if jointEHC_ROHC_Config_r16Present {
-				ie.jointEHC_ROHC_Config_r16 = new(PDCP_Parameters_jointEHC_ROHC_Config_r16)
-				if err = ie.jointEHC_ROHC_Config_r16.Decode(extReader); err != nil {
-					return utils.WrapError("Decode jointEHC_ROHC_Config_r16", err)
+			// decode JointEHC_ROHC_Config_r16 optional
+			if JointEHC_ROHC_Config_r16Present {
+				ie.JointEHC_ROHC_Config_r16 = new(PDCP_Parameters_jointEHC_ROHC_Config_r16)
+				if err = ie.JointEHC_ROHC_Config_r16.Decode(extReader); err != nil {
+					return utils.WrapError("Decode JointEHC_ROHC_Config_r16", err)
 				}
 			}
-			// decode pdcp_DuplicationMoreThanTwoRLC_r16 optional
-			if pdcp_DuplicationMoreThanTwoRLC_r16Present {
-				ie.pdcp_DuplicationMoreThanTwoRLC_r16 = new(PDCP_Parameters_pdcp_DuplicationMoreThanTwoRLC_r16)
-				if err = ie.pdcp_DuplicationMoreThanTwoRLC_r16.Decode(extReader); err != nil {
-					return utils.WrapError("Decode pdcp_DuplicationMoreThanTwoRLC_r16", err)
+			// decode Pdcp_DuplicationMoreThanTwoRLC_r16 optional
+			if Pdcp_DuplicationMoreThanTwoRLC_r16Present {
+				ie.Pdcp_DuplicationMoreThanTwoRLC_r16 = new(PDCP_Parameters_pdcp_DuplicationMoreThanTwoRLC_r16)
+				if err = ie.Pdcp_DuplicationMoreThanTwoRLC_r16.Decode(extReader); err != nil {
+					return utils.WrapError("Decode Pdcp_DuplicationMoreThanTwoRLC_r16", err)
 				}
 			}
 		}
@@ -376,26 +376,26 @@ func (ie *PDCP_Parameters) Decode(r *uper.UperReader) error {
 
 			extReader := uper.NewReader(bytes.NewReader(extBytes))
 
-			longSN_RedCap_r17Present, err := extReader.ReadBool()
+			LongSN_RedCap_r17Present, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			udc_r17Present, err := extReader.ReadBool()
+			Udc_r17Present, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			// decode longSN_RedCap_r17 optional
-			if longSN_RedCap_r17Present {
-				ie.longSN_RedCap_r17 = new(PDCP_Parameters_longSN_RedCap_r17)
-				if err = ie.longSN_RedCap_r17.Decode(extReader); err != nil {
-					return utils.WrapError("Decode longSN_RedCap_r17", err)
+			// decode LongSN_RedCap_r17 optional
+			if LongSN_RedCap_r17Present {
+				ie.LongSN_RedCap_r17 = new(PDCP_Parameters_longSN_RedCap_r17)
+				if err = ie.LongSN_RedCap_r17.Decode(extReader); err != nil {
+					return utils.WrapError("Decode LongSN_RedCap_r17", err)
 				}
 			}
-			// decode udc_r17 optional
-			if udc_r17Present {
-				ie.udc_r17 = new(PDCP_Parameters_udc_r17)
-				if err = ie.udc_r17.Decode(extReader); err != nil {
-					return utils.WrapError("Decode udc_r17", err)
+			// decode Udc_r17 optional
+			if Udc_r17Present {
+				ie.Udc_r17 = new(PDCP_Parameters_udc_r17)
+				if err = ie.Udc_r17.Decode(extReader); err != nil {
+					return utils.WrapError("Decode Udc_r17", err)
 				}
 			}
 		}

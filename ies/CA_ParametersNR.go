@@ -6,62 +6,62 @@ import (
 )
 
 type CA_ParametersNR struct {
-	dummy                                     *CA_ParametersNR_dummy                                     `optional`
-	parallelTxSRS_PUCCH_PUSCH                 *CA_ParametersNR_parallelTxSRS_PUCCH_PUSCH                 `optional`
-	parallelTxPRACH_SRS_PUCCH_PUSCH           *CA_ParametersNR_parallelTxPRACH_SRS_PUCCH_PUSCH           `optional`
-	simultaneousRxTxInterBandCA               *CA_ParametersNR_simultaneousRxTxInterBandCA               `optional`
-	simultaneousRxTxSUL                       *CA_ParametersNR_simultaneousRxTxSUL                       `optional`
-	diffNumerologyAcrossPUCCH_Group           *CA_ParametersNR_diffNumerologyAcrossPUCCH_Group           `optional`
-	diffNumerologyWithinPUCCH_GroupSmallerSCS *CA_ParametersNR_diffNumerologyWithinPUCCH_GroupSmallerSCS `optional`
-	supportedNumberTAG                        *CA_ParametersNR_supportedNumberTAG                        `optional`
+	Dummy                                     *CA_ParametersNR_dummy                                     `optional`
+	ParallelTxSRS_PUCCH_PUSCH                 *CA_ParametersNR_parallelTxSRS_PUCCH_PUSCH                 `optional`
+	ParallelTxPRACH_SRS_PUCCH_PUSCH           *CA_ParametersNR_parallelTxPRACH_SRS_PUCCH_PUSCH           `optional`
+	SimultaneousRxTxInterBandCA               *CA_ParametersNR_simultaneousRxTxInterBandCA               `optional`
+	SimultaneousRxTxSUL                       *CA_ParametersNR_simultaneousRxTxSUL                       `optional`
+	DiffNumerologyAcrossPUCCH_Group           *CA_ParametersNR_diffNumerologyAcrossPUCCH_Group           `optional`
+	DiffNumerologyWithinPUCCH_GroupSmallerSCS *CA_ParametersNR_diffNumerologyWithinPUCCH_GroupSmallerSCS `optional`
+	SupportedNumberTAG                        *CA_ParametersNR_supportedNumberTAG                        `optional`
 }
 
 func (ie *CA_ParametersNR) Encode(w *uper.UperWriter) error {
 	var err error
-	preambleBits := []bool{ie.dummy != nil, ie.parallelTxSRS_PUCCH_PUSCH != nil, ie.parallelTxPRACH_SRS_PUCCH_PUSCH != nil, ie.simultaneousRxTxInterBandCA != nil, ie.simultaneousRxTxSUL != nil, ie.diffNumerologyAcrossPUCCH_Group != nil, ie.diffNumerologyWithinPUCCH_GroupSmallerSCS != nil, ie.supportedNumberTAG != nil}
+	preambleBits := []bool{ie.Dummy != nil, ie.ParallelTxSRS_PUCCH_PUSCH != nil, ie.ParallelTxPRACH_SRS_PUCCH_PUSCH != nil, ie.SimultaneousRxTxInterBandCA != nil, ie.SimultaneousRxTxSUL != nil, ie.DiffNumerologyAcrossPUCCH_Group != nil, ie.DiffNumerologyWithinPUCCH_GroupSmallerSCS != nil, ie.SupportedNumberTAG != nil}
 	for _, bit := range preambleBits {
 		if err = w.WriteBool(bit); err != nil {
 			return err
 		}
 	}
-	if ie.dummy != nil {
-		if err = ie.dummy.Encode(w); err != nil {
-			return utils.WrapError("Encode dummy", err)
+	if ie.Dummy != nil {
+		if err = ie.Dummy.Encode(w); err != nil {
+			return utils.WrapError("Encode Dummy", err)
 		}
 	}
-	if ie.parallelTxSRS_PUCCH_PUSCH != nil {
-		if err = ie.parallelTxSRS_PUCCH_PUSCH.Encode(w); err != nil {
-			return utils.WrapError("Encode parallelTxSRS_PUCCH_PUSCH", err)
+	if ie.ParallelTxSRS_PUCCH_PUSCH != nil {
+		if err = ie.ParallelTxSRS_PUCCH_PUSCH.Encode(w); err != nil {
+			return utils.WrapError("Encode ParallelTxSRS_PUCCH_PUSCH", err)
 		}
 	}
-	if ie.parallelTxPRACH_SRS_PUCCH_PUSCH != nil {
-		if err = ie.parallelTxPRACH_SRS_PUCCH_PUSCH.Encode(w); err != nil {
-			return utils.WrapError("Encode parallelTxPRACH_SRS_PUCCH_PUSCH", err)
+	if ie.ParallelTxPRACH_SRS_PUCCH_PUSCH != nil {
+		if err = ie.ParallelTxPRACH_SRS_PUCCH_PUSCH.Encode(w); err != nil {
+			return utils.WrapError("Encode ParallelTxPRACH_SRS_PUCCH_PUSCH", err)
 		}
 	}
-	if ie.simultaneousRxTxInterBandCA != nil {
-		if err = ie.simultaneousRxTxInterBandCA.Encode(w); err != nil {
-			return utils.WrapError("Encode simultaneousRxTxInterBandCA", err)
+	if ie.SimultaneousRxTxInterBandCA != nil {
+		if err = ie.SimultaneousRxTxInterBandCA.Encode(w); err != nil {
+			return utils.WrapError("Encode SimultaneousRxTxInterBandCA", err)
 		}
 	}
-	if ie.simultaneousRxTxSUL != nil {
-		if err = ie.simultaneousRxTxSUL.Encode(w); err != nil {
-			return utils.WrapError("Encode simultaneousRxTxSUL", err)
+	if ie.SimultaneousRxTxSUL != nil {
+		if err = ie.SimultaneousRxTxSUL.Encode(w); err != nil {
+			return utils.WrapError("Encode SimultaneousRxTxSUL", err)
 		}
 	}
-	if ie.diffNumerologyAcrossPUCCH_Group != nil {
-		if err = ie.diffNumerologyAcrossPUCCH_Group.Encode(w); err != nil {
-			return utils.WrapError("Encode diffNumerologyAcrossPUCCH_Group", err)
+	if ie.DiffNumerologyAcrossPUCCH_Group != nil {
+		if err = ie.DiffNumerologyAcrossPUCCH_Group.Encode(w); err != nil {
+			return utils.WrapError("Encode DiffNumerologyAcrossPUCCH_Group", err)
 		}
 	}
-	if ie.diffNumerologyWithinPUCCH_GroupSmallerSCS != nil {
-		if err = ie.diffNumerologyWithinPUCCH_GroupSmallerSCS.Encode(w); err != nil {
-			return utils.WrapError("Encode diffNumerologyWithinPUCCH_GroupSmallerSCS", err)
+	if ie.DiffNumerologyWithinPUCCH_GroupSmallerSCS != nil {
+		if err = ie.DiffNumerologyWithinPUCCH_GroupSmallerSCS.Encode(w); err != nil {
+			return utils.WrapError("Encode DiffNumerologyWithinPUCCH_GroupSmallerSCS", err)
 		}
 	}
-	if ie.supportedNumberTAG != nil {
-		if err = ie.supportedNumberTAG.Encode(w); err != nil {
-			return utils.WrapError("Encode supportedNumberTAG", err)
+	if ie.SupportedNumberTAG != nil {
+		if err = ie.SupportedNumberTAG.Encode(w); err != nil {
+			return utils.WrapError("Encode SupportedNumberTAG", err)
 		}
 	}
 	return nil
@@ -69,84 +69,84 @@ func (ie *CA_ParametersNR) Encode(w *uper.UperWriter) error {
 
 func (ie *CA_ParametersNR) Decode(r *uper.UperReader) error {
 	var err error
-	var dummyPresent bool
-	if dummyPresent, err = r.ReadBool(); err != nil {
+	var DummyPresent bool
+	if DummyPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var parallelTxSRS_PUCCH_PUSCHPresent bool
-	if parallelTxSRS_PUCCH_PUSCHPresent, err = r.ReadBool(); err != nil {
+	var ParallelTxSRS_PUCCH_PUSCHPresent bool
+	if ParallelTxSRS_PUCCH_PUSCHPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var parallelTxPRACH_SRS_PUCCH_PUSCHPresent bool
-	if parallelTxPRACH_SRS_PUCCH_PUSCHPresent, err = r.ReadBool(); err != nil {
+	var ParallelTxPRACH_SRS_PUCCH_PUSCHPresent bool
+	if ParallelTxPRACH_SRS_PUCCH_PUSCHPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var simultaneousRxTxInterBandCAPresent bool
-	if simultaneousRxTxInterBandCAPresent, err = r.ReadBool(); err != nil {
+	var SimultaneousRxTxInterBandCAPresent bool
+	if SimultaneousRxTxInterBandCAPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var simultaneousRxTxSULPresent bool
-	if simultaneousRxTxSULPresent, err = r.ReadBool(); err != nil {
+	var SimultaneousRxTxSULPresent bool
+	if SimultaneousRxTxSULPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var diffNumerologyAcrossPUCCH_GroupPresent bool
-	if diffNumerologyAcrossPUCCH_GroupPresent, err = r.ReadBool(); err != nil {
+	var DiffNumerologyAcrossPUCCH_GroupPresent bool
+	if DiffNumerologyAcrossPUCCH_GroupPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var diffNumerologyWithinPUCCH_GroupSmallerSCSPresent bool
-	if diffNumerologyWithinPUCCH_GroupSmallerSCSPresent, err = r.ReadBool(); err != nil {
+	var DiffNumerologyWithinPUCCH_GroupSmallerSCSPresent bool
+	if DiffNumerologyWithinPUCCH_GroupSmallerSCSPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var supportedNumberTAGPresent bool
-	if supportedNumberTAGPresent, err = r.ReadBool(); err != nil {
+	var SupportedNumberTAGPresent bool
+	if SupportedNumberTAGPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	if dummyPresent {
-		ie.dummy = new(CA_ParametersNR_dummy)
-		if err = ie.dummy.Decode(r); err != nil {
-			return utils.WrapError("Decode dummy", err)
+	if DummyPresent {
+		ie.Dummy = new(CA_ParametersNR_dummy)
+		if err = ie.Dummy.Decode(r); err != nil {
+			return utils.WrapError("Decode Dummy", err)
 		}
 	}
-	if parallelTxSRS_PUCCH_PUSCHPresent {
-		ie.parallelTxSRS_PUCCH_PUSCH = new(CA_ParametersNR_parallelTxSRS_PUCCH_PUSCH)
-		if err = ie.parallelTxSRS_PUCCH_PUSCH.Decode(r); err != nil {
-			return utils.WrapError("Decode parallelTxSRS_PUCCH_PUSCH", err)
+	if ParallelTxSRS_PUCCH_PUSCHPresent {
+		ie.ParallelTxSRS_PUCCH_PUSCH = new(CA_ParametersNR_parallelTxSRS_PUCCH_PUSCH)
+		if err = ie.ParallelTxSRS_PUCCH_PUSCH.Decode(r); err != nil {
+			return utils.WrapError("Decode ParallelTxSRS_PUCCH_PUSCH", err)
 		}
 	}
-	if parallelTxPRACH_SRS_PUCCH_PUSCHPresent {
-		ie.parallelTxPRACH_SRS_PUCCH_PUSCH = new(CA_ParametersNR_parallelTxPRACH_SRS_PUCCH_PUSCH)
-		if err = ie.parallelTxPRACH_SRS_PUCCH_PUSCH.Decode(r); err != nil {
-			return utils.WrapError("Decode parallelTxPRACH_SRS_PUCCH_PUSCH", err)
+	if ParallelTxPRACH_SRS_PUCCH_PUSCHPresent {
+		ie.ParallelTxPRACH_SRS_PUCCH_PUSCH = new(CA_ParametersNR_parallelTxPRACH_SRS_PUCCH_PUSCH)
+		if err = ie.ParallelTxPRACH_SRS_PUCCH_PUSCH.Decode(r); err != nil {
+			return utils.WrapError("Decode ParallelTxPRACH_SRS_PUCCH_PUSCH", err)
 		}
 	}
-	if simultaneousRxTxInterBandCAPresent {
-		ie.simultaneousRxTxInterBandCA = new(CA_ParametersNR_simultaneousRxTxInterBandCA)
-		if err = ie.simultaneousRxTxInterBandCA.Decode(r); err != nil {
-			return utils.WrapError("Decode simultaneousRxTxInterBandCA", err)
+	if SimultaneousRxTxInterBandCAPresent {
+		ie.SimultaneousRxTxInterBandCA = new(CA_ParametersNR_simultaneousRxTxInterBandCA)
+		if err = ie.SimultaneousRxTxInterBandCA.Decode(r); err != nil {
+			return utils.WrapError("Decode SimultaneousRxTxInterBandCA", err)
 		}
 	}
-	if simultaneousRxTxSULPresent {
-		ie.simultaneousRxTxSUL = new(CA_ParametersNR_simultaneousRxTxSUL)
-		if err = ie.simultaneousRxTxSUL.Decode(r); err != nil {
-			return utils.WrapError("Decode simultaneousRxTxSUL", err)
+	if SimultaneousRxTxSULPresent {
+		ie.SimultaneousRxTxSUL = new(CA_ParametersNR_simultaneousRxTxSUL)
+		if err = ie.SimultaneousRxTxSUL.Decode(r); err != nil {
+			return utils.WrapError("Decode SimultaneousRxTxSUL", err)
 		}
 	}
-	if diffNumerologyAcrossPUCCH_GroupPresent {
-		ie.diffNumerologyAcrossPUCCH_Group = new(CA_ParametersNR_diffNumerologyAcrossPUCCH_Group)
-		if err = ie.diffNumerologyAcrossPUCCH_Group.Decode(r); err != nil {
-			return utils.WrapError("Decode diffNumerologyAcrossPUCCH_Group", err)
+	if DiffNumerologyAcrossPUCCH_GroupPresent {
+		ie.DiffNumerologyAcrossPUCCH_Group = new(CA_ParametersNR_diffNumerologyAcrossPUCCH_Group)
+		if err = ie.DiffNumerologyAcrossPUCCH_Group.Decode(r); err != nil {
+			return utils.WrapError("Decode DiffNumerologyAcrossPUCCH_Group", err)
 		}
 	}
-	if diffNumerologyWithinPUCCH_GroupSmallerSCSPresent {
-		ie.diffNumerologyWithinPUCCH_GroupSmallerSCS = new(CA_ParametersNR_diffNumerologyWithinPUCCH_GroupSmallerSCS)
-		if err = ie.diffNumerologyWithinPUCCH_GroupSmallerSCS.Decode(r); err != nil {
-			return utils.WrapError("Decode diffNumerologyWithinPUCCH_GroupSmallerSCS", err)
+	if DiffNumerologyWithinPUCCH_GroupSmallerSCSPresent {
+		ie.DiffNumerologyWithinPUCCH_GroupSmallerSCS = new(CA_ParametersNR_diffNumerologyWithinPUCCH_GroupSmallerSCS)
+		if err = ie.DiffNumerologyWithinPUCCH_GroupSmallerSCS.Decode(r); err != nil {
+			return utils.WrapError("Decode DiffNumerologyWithinPUCCH_GroupSmallerSCS", err)
 		}
 	}
-	if supportedNumberTAGPresent {
-		ie.supportedNumberTAG = new(CA_ParametersNR_supportedNumberTAG)
-		if err = ie.supportedNumberTAG.Decode(r); err != nil {
-			return utils.WrapError("Decode supportedNumberTAG", err)
+	if SupportedNumberTAGPresent {
+		ie.SupportedNumberTAG = new(CA_ParametersNR_supportedNumberTAG)
+		if err = ie.SupportedNumberTAG.Decode(r); err != nil {
+			return utils.WrapError("Decode SupportedNumberTAG", err)
 		}
 	}
 	return nil

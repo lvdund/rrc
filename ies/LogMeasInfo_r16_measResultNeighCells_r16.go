@@ -6,26 +6,26 @@ import (
 )
 
 type LogMeasInfo_r16_measResultNeighCells_r16 struct {
-	measResultNeighCellListNR    *MeasResultListLogging2NR_r16 `optional`
-	measResultNeighCellListEUTRA *MeasResultList2EUTRA_r16     `optional`
+	MeasResultNeighCellListNR    *MeasResultListLogging2NR_r16 `optional`
+	MeasResultNeighCellListEUTRA *MeasResultList2EUTRA_r16     `optional`
 }
 
 func (ie *LogMeasInfo_r16_measResultNeighCells_r16) Encode(w *uper.UperWriter) error {
 	var err error
-	preambleBits := []bool{ie.measResultNeighCellListNR != nil, ie.measResultNeighCellListEUTRA != nil}
+	preambleBits := []bool{ie.MeasResultNeighCellListNR != nil, ie.MeasResultNeighCellListEUTRA != nil}
 	for _, bit := range preambleBits {
 		if err = w.WriteBool(bit); err != nil {
 			return err
 		}
 	}
-	if ie.measResultNeighCellListNR != nil {
-		if err = ie.measResultNeighCellListNR.Encode(w); err != nil {
-			return utils.WrapError("Encode measResultNeighCellListNR", err)
+	if ie.MeasResultNeighCellListNR != nil {
+		if err = ie.MeasResultNeighCellListNR.Encode(w); err != nil {
+			return utils.WrapError("Encode MeasResultNeighCellListNR", err)
 		}
 	}
-	if ie.measResultNeighCellListEUTRA != nil {
-		if err = ie.measResultNeighCellListEUTRA.Encode(w); err != nil {
-			return utils.WrapError("Encode measResultNeighCellListEUTRA", err)
+	if ie.MeasResultNeighCellListEUTRA != nil {
+		if err = ie.MeasResultNeighCellListEUTRA.Encode(w); err != nil {
+			return utils.WrapError("Encode MeasResultNeighCellListEUTRA", err)
 		}
 	}
 	return nil
@@ -33,24 +33,24 @@ func (ie *LogMeasInfo_r16_measResultNeighCells_r16) Encode(w *uper.UperWriter) e
 
 func (ie *LogMeasInfo_r16_measResultNeighCells_r16) Decode(r *uper.UperReader) error {
 	var err error
-	var measResultNeighCellListNRPresent bool
-	if measResultNeighCellListNRPresent, err = r.ReadBool(); err != nil {
+	var MeasResultNeighCellListNRPresent bool
+	if MeasResultNeighCellListNRPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var measResultNeighCellListEUTRAPresent bool
-	if measResultNeighCellListEUTRAPresent, err = r.ReadBool(); err != nil {
+	var MeasResultNeighCellListEUTRAPresent bool
+	if MeasResultNeighCellListEUTRAPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	if measResultNeighCellListNRPresent {
-		ie.measResultNeighCellListNR = new(MeasResultListLogging2NR_r16)
-		if err = ie.measResultNeighCellListNR.Decode(r); err != nil {
-			return utils.WrapError("Decode measResultNeighCellListNR", err)
+	if MeasResultNeighCellListNRPresent {
+		ie.MeasResultNeighCellListNR = new(MeasResultListLogging2NR_r16)
+		if err = ie.MeasResultNeighCellListNR.Decode(r); err != nil {
+			return utils.WrapError("Decode MeasResultNeighCellListNR", err)
 		}
 	}
-	if measResultNeighCellListEUTRAPresent {
-		ie.measResultNeighCellListEUTRA = new(MeasResultList2EUTRA_r16)
-		if err = ie.measResultNeighCellListEUTRA.Decode(r); err != nil {
-			return utils.WrapError("Decode measResultNeighCellListEUTRA", err)
+	if MeasResultNeighCellListEUTRAPresent {
+		ie.MeasResultNeighCellListEUTRA = new(MeasResultList2EUTRA_r16)
+		if err = ie.MeasResultNeighCellListEUTRA.Decode(r); err != nil {
+			return utils.WrapError("Decode MeasResultNeighCellListEUTRA", err)
 		}
 	}
 	return nil

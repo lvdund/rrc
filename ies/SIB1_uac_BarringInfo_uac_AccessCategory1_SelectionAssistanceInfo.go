@@ -9,14 +9,14 @@ import (
 
 const (
 	SIB1_uac_BarringInfo_uac_AccessCategory1_SelectionAssistanceInfo_Choice_nothing uint64 = iota
-	SIB1_uac_BarringInfo_uac_AccessCategory1_SelectionAssistanceInfo_Choice_plmnCommon
-	SIB1_uac_BarringInfo_uac_AccessCategory1_SelectionAssistanceInfo_Choice_individualPLMNList
+	SIB1_uac_BarringInfo_uac_AccessCategory1_SelectionAssistanceInfo_Choice_PlmnCommon
+	SIB1_uac_BarringInfo_uac_AccessCategory1_SelectionAssistanceInfo_Choice_IndividualPLMNList
 )
 
 type SIB1_uac_BarringInfo_uac_AccessCategory1_SelectionAssistanceInfo struct {
 	Choice             uint64
-	plmnCommon         *UAC_AccessCategory1_SelectionAssistanceInfo
-	individualPLMNList []UAC_AccessCategory1_SelectionAssistanceInfo `lb:2,ub:maxPLMN,madatory`
+	PlmnCommon         *UAC_AccessCategory1_SelectionAssistanceInfo
+	IndividualPLMNList []UAC_AccessCategory1_SelectionAssistanceInfo `lb:2,ub:maxPLMN,madatory`
 }
 
 func (ie *SIB1_uac_BarringInfo_uac_AccessCategory1_SelectionAssistanceInfo) Encode(w *uper.UperWriter) error {
@@ -25,17 +25,17 @@ func (ie *SIB1_uac_BarringInfo_uac_AccessCategory1_SelectionAssistanceInfo) Enco
 		return err
 	}
 	switch ie.Choice {
-	case SIB1_uac_BarringInfo_uac_AccessCategory1_SelectionAssistanceInfo_Choice_plmnCommon:
-		if err = ie.plmnCommon.Encode(w); err != nil {
-			err = utils.WrapError("Encode plmnCommon", err)
+	case SIB1_uac_BarringInfo_uac_AccessCategory1_SelectionAssistanceInfo_Choice_PlmnCommon:
+		if err = ie.PlmnCommon.Encode(w); err != nil {
+			err = utils.WrapError("Encode PlmnCommon", err)
 		}
-	case SIB1_uac_BarringInfo_uac_AccessCategory1_SelectionAssistanceInfo_Choice_individualPLMNList:
+	case SIB1_uac_BarringInfo_uac_AccessCategory1_SelectionAssistanceInfo_Choice_IndividualPLMNList:
 		tmp := utils.NewSequence[*UAC_AccessCategory1_SelectionAssistanceInfo]([]*UAC_AccessCategory1_SelectionAssistanceInfo{}, uper.Constraint{Lb: 2, Ub: maxPLMN}, false)
-		for _, i := range ie.individualPLMNList {
+		for _, i := range ie.IndividualPLMNList {
 			tmp.Value = append(tmp.Value, &i)
 		}
 		if err = tmp.Encode(w); err != nil {
-			err = utils.WrapError("Encode individualPLMNList", err)
+			err = utils.WrapError("Encode IndividualPLMNList", err)
 		}
 	default:
 		err = fmt.Errorf("invalid choice: %d", ie.Choice)
@@ -49,22 +49,22 @@ func (ie *SIB1_uac_BarringInfo_uac_AccessCategory1_SelectionAssistanceInfo) Deco
 		return err
 	}
 	switch ie.Choice {
-	case SIB1_uac_BarringInfo_uac_AccessCategory1_SelectionAssistanceInfo_Choice_plmnCommon:
-		ie.plmnCommon = new(UAC_AccessCategory1_SelectionAssistanceInfo)
-		if err = ie.plmnCommon.Decode(r); err != nil {
-			return utils.WrapError("Decode plmnCommon", err)
+	case SIB1_uac_BarringInfo_uac_AccessCategory1_SelectionAssistanceInfo_Choice_PlmnCommon:
+		ie.PlmnCommon = new(UAC_AccessCategory1_SelectionAssistanceInfo)
+		if err = ie.PlmnCommon.Decode(r); err != nil {
+			return utils.WrapError("Decode PlmnCommon", err)
 		}
-	case SIB1_uac_BarringInfo_uac_AccessCategory1_SelectionAssistanceInfo_Choice_individualPLMNList:
+	case SIB1_uac_BarringInfo_uac_AccessCategory1_SelectionAssistanceInfo_Choice_IndividualPLMNList:
 		tmp := utils.NewSequence[*UAC_AccessCategory1_SelectionAssistanceInfo]([]*UAC_AccessCategory1_SelectionAssistanceInfo{}, uper.Constraint{Lb: 2, Ub: maxPLMN}, false)
 		fn := func() *UAC_AccessCategory1_SelectionAssistanceInfo {
 			return new(UAC_AccessCategory1_SelectionAssistanceInfo)
 		}
 		if err = tmp.Decode(r, fn); err != nil {
-			return utils.WrapError("Decode individualPLMNList", err)
+			return utils.WrapError("Decode IndividualPLMNList", err)
 		}
-		ie.individualPLMNList = []UAC_AccessCategory1_SelectionAssistanceInfo{}
+		ie.IndividualPLMNList = []UAC_AccessCategory1_SelectionAssistanceInfo{}
 		for _, i := range tmp.Value {
-			ie.individualPLMNList = append(ie.individualPLMNList, *i)
+			ie.IndividualPLMNList = append(ie.IndividualPLMNList, *i)
 		}
 	default:
 		return fmt.Errorf("invalid choice: %d", ie.Choice)

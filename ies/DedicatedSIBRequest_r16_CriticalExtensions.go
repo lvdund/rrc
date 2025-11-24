@@ -9,14 +9,14 @@ import (
 
 const (
 	DedicatedSIBRequest_r16_CriticalExtensions_Choice_nothing uint64 = iota
-	DedicatedSIBRequest_r16_CriticalExtensions_Choice_dedicatedSIBRequest_r16
-	DedicatedSIBRequest_r16_CriticalExtensions_Choice_criticalExtensionsFuture
+	DedicatedSIBRequest_r16_CriticalExtensions_Choice_DedicatedSIBRequest_r16
+	DedicatedSIBRequest_r16_CriticalExtensions_Choice_CriticalExtensionsFuture
 )
 
 type DedicatedSIBRequest_r16_CriticalExtensions struct {
 	Choice                   uint64
-	dedicatedSIBRequest_r16  *DedicatedSIBRequest_r16_IEs
-	criticalExtensionsFuture interface{} `madatory`
+	DedicatedSIBRequest_r16  *DedicatedSIBRequest_r16_IEs
+	CriticalExtensionsFuture interface{} `madatory`
 }
 
 func (ie *DedicatedSIBRequest_r16_CriticalExtensions) Encode(w *uper.UperWriter) error {
@@ -25,11 +25,11 @@ func (ie *DedicatedSIBRequest_r16_CriticalExtensions) Encode(w *uper.UperWriter)
 		return err
 	}
 	switch ie.Choice {
-	case DedicatedSIBRequest_r16_CriticalExtensions_Choice_dedicatedSIBRequest_r16:
-		if err = ie.dedicatedSIBRequest_r16.Encode(w); err != nil {
-			err = utils.WrapError("Encode dedicatedSIBRequest_r16", err)
+	case DedicatedSIBRequest_r16_CriticalExtensions_Choice_DedicatedSIBRequest_r16:
+		if err = ie.DedicatedSIBRequest_r16.Encode(w); err != nil {
+			err = utils.WrapError("Encode DedicatedSIBRequest_r16", err)
 		}
-	case DedicatedSIBRequest_r16_CriticalExtensions_Choice_criticalExtensionsFuture:
+	case DedicatedSIBRequest_r16_CriticalExtensions_Choice_CriticalExtensionsFuture:
 		// interface{} field of choice - nothing to encode
 	default:
 		err = fmt.Errorf("invalid choice: %d", ie.Choice)
@@ -43,12 +43,12 @@ func (ie *DedicatedSIBRequest_r16_CriticalExtensions) Decode(r *uper.UperReader)
 		return err
 	}
 	switch ie.Choice {
-	case DedicatedSIBRequest_r16_CriticalExtensions_Choice_dedicatedSIBRequest_r16:
-		ie.dedicatedSIBRequest_r16 = new(DedicatedSIBRequest_r16_IEs)
-		if err = ie.dedicatedSIBRequest_r16.Decode(r); err != nil {
-			return utils.WrapError("Decode dedicatedSIBRequest_r16", err)
+	case DedicatedSIBRequest_r16_CriticalExtensions_Choice_DedicatedSIBRequest_r16:
+		ie.DedicatedSIBRequest_r16 = new(DedicatedSIBRequest_r16_IEs)
+		if err = ie.DedicatedSIBRequest_r16.Decode(r); err != nil {
+			return utils.WrapError("Decode DedicatedSIBRequest_r16", err)
 		}
-	case DedicatedSIBRequest_r16_CriticalExtensions_Choice_criticalExtensionsFuture:
+	case DedicatedSIBRequest_r16_CriticalExtensions_Choice_CriticalExtensionsFuture:
 		// interface{} field of choice - nothing to decode
 	default:
 		return fmt.Errorf("invalid choice: %d", ie.Choice)

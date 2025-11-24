@@ -9,14 +9,14 @@ import (
 
 const (
 	RRCReject_CriticalExtensions_Choice_nothing uint64 = iota
-	RRCReject_CriticalExtensions_Choice_rrcReject
-	RRCReject_CriticalExtensions_Choice_criticalExtensionsFuture
+	RRCReject_CriticalExtensions_Choice_RrcReject
+	RRCReject_CriticalExtensions_Choice_CriticalExtensionsFuture
 )
 
 type RRCReject_CriticalExtensions struct {
 	Choice                   uint64
-	rrcReject                *RRCReject_IEs
-	criticalExtensionsFuture interface{} `madatory`
+	RrcReject                *RRCReject_IEs
+	CriticalExtensionsFuture interface{} `madatory`
 }
 
 func (ie *RRCReject_CriticalExtensions) Encode(w *uper.UperWriter) error {
@@ -25,11 +25,11 @@ func (ie *RRCReject_CriticalExtensions) Encode(w *uper.UperWriter) error {
 		return err
 	}
 	switch ie.Choice {
-	case RRCReject_CriticalExtensions_Choice_rrcReject:
-		if err = ie.rrcReject.Encode(w); err != nil {
-			err = utils.WrapError("Encode rrcReject", err)
+	case RRCReject_CriticalExtensions_Choice_RrcReject:
+		if err = ie.RrcReject.Encode(w); err != nil {
+			err = utils.WrapError("Encode RrcReject", err)
 		}
-	case RRCReject_CriticalExtensions_Choice_criticalExtensionsFuture:
+	case RRCReject_CriticalExtensions_Choice_CriticalExtensionsFuture:
 		// interface{} field of choice - nothing to encode
 	default:
 		err = fmt.Errorf("invalid choice: %d", ie.Choice)
@@ -43,12 +43,12 @@ func (ie *RRCReject_CriticalExtensions) Decode(r *uper.UperReader) error {
 		return err
 	}
 	switch ie.Choice {
-	case RRCReject_CriticalExtensions_Choice_rrcReject:
-		ie.rrcReject = new(RRCReject_IEs)
-		if err = ie.rrcReject.Decode(r); err != nil {
-			return utils.WrapError("Decode rrcReject", err)
+	case RRCReject_CriticalExtensions_Choice_RrcReject:
+		ie.RrcReject = new(RRCReject_IEs)
+		if err = ie.RrcReject.Decode(r); err != nil {
+			return utils.WrapError("Decode RrcReject", err)
 		}
-	case RRCReject_CriticalExtensions_Choice_criticalExtensionsFuture:
+	case RRCReject_CriticalExtensions_Choice_CriticalExtensionsFuture:
 		// interface{} field of choice - nothing to decode
 	default:
 		return fmt.Errorf("invalid choice: %d", ie.Choice)

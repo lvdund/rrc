@@ -6,34 +6,34 @@ import (
 )
 
 type SchedulingRequestResourceConfig struct {
-	schedulingRequestResourceId SchedulingRequestResourceId                           `madatory`
-	schedulingRequestID         SchedulingRequestId                                   `madatory`
-	periodicityAndOffset        *SchedulingRequestResourceConfig_periodicityAndOffset `lb:0,ub:1,optional`
-	resource                    *PUCCH_ResourceId                                     `optional`
+	SchedulingRequestResourceId SchedulingRequestResourceId                           `madatory`
+	SchedulingRequestID         SchedulingRequestId                                   `madatory`
+	PeriodicityAndOffset        *SchedulingRequestResourceConfig_periodicityAndOffset `lb:0,ub:1,optional`
+	Resource                    *PUCCH_ResourceId                                     `optional`
 }
 
 func (ie *SchedulingRequestResourceConfig) Encode(w *uper.UperWriter) error {
 	var err error
-	preambleBits := []bool{ie.periodicityAndOffset != nil, ie.resource != nil}
+	preambleBits := []bool{ie.PeriodicityAndOffset != nil, ie.Resource != nil}
 	for _, bit := range preambleBits {
 		if err = w.WriteBool(bit); err != nil {
 			return err
 		}
 	}
-	if err = ie.schedulingRequestResourceId.Encode(w); err != nil {
-		return utils.WrapError("Encode schedulingRequestResourceId", err)
+	if err = ie.SchedulingRequestResourceId.Encode(w); err != nil {
+		return utils.WrapError("Encode SchedulingRequestResourceId", err)
 	}
-	if err = ie.schedulingRequestID.Encode(w); err != nil {
-		return utils.WrapError("Encode schedulingRequestID", err)
+	if err = ie.SchedulingRequestID.Encode(w); err != nil {
+		return utils.WrapError("Encode SchedulingRequestID", err)
 	}
-	if ie.periodicityAndOffset != nil {
-		if err = ie.periodicityAndOffset.Encode(w); err != nil {
-			return utils.WrapError("Encode periodicityAndOffset", err)
+	if ie.PeriodicityAndOffset != nil {
+		if err = ie.PeriodicityAndOffset.Encode(w); err != nil {
+			return utils.WrapError("Encode PeriodicityAndOffset", err)
 		}
 	}
-	if ie.resource != nil {
-		if err = ie.resource.Encode(w); err != nil {
-			return utils.WrapError("Encode resource", err)
+	if ie.Resource != nil {
+		if err = ie.Resource.Encode(w); err != nil {
+			return utils.WrapError("Encode Resource", err)
 		}
 	}
 	return nil
@@ -41,30 +41,30 @@ func (ie *SchedulingRequestResourceConfig) Encode(w *uper.UperWriter) error {
 
 func (ie *SchedulingRequestResourceConfig) Decode(r *uper.UperReader) error {
 	var err error
-	var periodicityAndOffsetPresent bool
-	if periodicityAndOffsetPresent, err = r.ReadBool(); err != nil {
+	var PeriodicityAndOffsetPresent bool
+	if PeriodicityAndOffsetPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var resourcePresent bool
-	if resourcePresent, err = r.ReadBool(); err != nil {
+	var ResourcePresent bool
+	if ResourcePresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	if err = ie.schedulingRequestResourceId.Decode(r); err != nil {
-		return utils.WrapError("Decode schedulingRequestResourceId", err)
+	if err = ie.SchedulingRequestResourceId.Decode(r); err != nil {
+		return utils.WrapError("Decode SchedulingRequestResourceId", err)
 	}
-	if err = ie.schedulingRequestID.Decode(r); err != nil {
-		return utils.WrapError("Decode schedulingRequestID", err)
+	if err = ie.SchedulingRequestID.Decode(r); err != nil {
+		return utils.WrapError("Decode SchedulingRequestID", err)
 	}
-	if periodicityAndOffsetPresent {
-		ie.periodicityAndOffset = new(SchedulingRequestResourceConfig_periodicityAndOffset)
-		if err = ie.periodicityAndOffset.Decode(r); err != nil {
-			return utils.WrapError("Decode periodicityAndOffset", err)
+	if PeriodicityAndOffsetPresent {
+		ie.PeriodicityAndOffset = new(SchedulingRequestResourceConfig_periodicityAndOffset)
+		if err = ie.PeriodicityAndOffset.Decode(r); err != nil {
+			return utils.WrapError("Decode PeriodicityAndOffset", err)
 		}
 	}
-	if resourcePresent {
-		ie.resource = new(PUCCH_ResourceId)
-		if err = ie.resource.Decode(r); err != nil {
-			return utils.WrapError("Decode resource", err)
+	if ResourcePresent {
+		ie.Resource = new(PUCCH_ResourceId)
+		if err = ie.Resource.Decode(r); err != nil {
+			return utils.WrapError("Decode Resource", err)
 		}
 	}
 	return nil

@@ -6,35 +6,35 @@ import (
 )
 
 type CondTriggerConfig_r16_condEventId_condEventA3 struct {
-	a3_Offset     MeasTriggerQuantityOffset `madatory`
-	hysteresis    Hysteresis                `madatory`
-	timeToTrigger TimeToTrigger             `madatory`
+	A3_Offset     MeasTriggerQuantityOffset `madatory`
+	Hysteresis    Hysteresis                `madatory`
+	TimeToTrigger TimeToTrigger             `madatory`
 }
 
 func (ie *CondTriggerConfig_r16_condEventId_condEventA3) Encode(w *uper.UperWriter) error {
 	var err error
-	if err = ie.a3_Offset.Encode(w); err != nil {
-		return utils.WrapError("Encode a3_Offset", err)
+	if err = ie.A3_Offset.Encode(w); err != nil {
+		return utils.WrapError("Encode A3_Offset", err)
 	}
-	if err = ie.hysteresis.Encode(w); err != nil {
-		return utils.WrapError("Encode hysteresis", err)
+	if err = ie.Hysteresis.Encode(w); err != nil {
+		return utils.WrapError("Encode Hysteresis", err)
 	}
-	if err = ie.timeToTrigger.Encode(w); err != nil {
-		return utils.WrapError("Encode timeToTrigger", err)
+	if err = ie.TimeToTrigger.Encode(w); err != nil {
+		return utils.WrapError("Encode TimeToTrigger", err)
 	}
 	return nil
 }
 
 func (ie *CondTriggerConfig_r16_condEventId_condEventA3) Decode(r *uper.UperReader) error {
 	var err error
-	if err = ie.a3_Offset.Decode(r); err != nil {
-		return utils.WrapError("Decode a3_Offset", err)
+	if err = ie.A3_Offset.Decode(r); err != nil {
+		return utils.WrapError("Decode A3_Offset", err)
 	}
-	if err = ie.hysteresis.Decode(r); err != nil {
-		return utils.WrapError("Decode hysteresis", err)
+	if err = ie.Hysteresis.Decode(r); err != nil {
+		return utils.WrapError("Decode Hysteresis", err)
 	}
-	if err = ie.timeToTrigger.Decode(r); err != nil {
-		return utils.WrapError("Decode timeToTrigger", err)
+	if err = ie.TimeToTrigger.Decode(r); err != nil {
+		return utils.WrapError("Decode TimeToTrigger", err)
 	}
 	return nil
 }

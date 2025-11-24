@@ -6,28 +6,28 @@ import (
 )
 
 type FeatureSet_nr struct {
-	downlinkSetNR FeatureSetDownlinkId `madatory`
-	uplinkSetNR   FeatureSetUplinkId   `madatory`
+	DownlinkSetNR FeatureSetDownlinkId `madatory`
+	UplinkSetNR   FeatureSetUplinkId   `madatory`
 }
 
 func (ie *FeatureSet_nr) Encode(w *uper.UperWriter) error {
 	var err error
-	if err = ie.downlinkSetNR.Encode(w); err != nil {
-		return utils.WrapError("Encode downlinkSetNR", err)
+	if err = ie.DownlinkSetNR.Encode(w); err != nil {
+		return utils.WrapError("Encode DownlinkSetNR", err)
 	}
-	if err = ie.uplinkSetNR.Encode(w); err != nil {
-		return utils.WrapError("Encode uplinkSetNR", err)
+	if err = ie.UplinkSetNR.Encode(w); err != nil {
+		return utils.WrapError("Encode UplinkSetNR", err)
 	}
 	return nil
 }
 
 func (ie *FeatureSet_nr) Decode(r *uper.UperReader) error {
 	var err error
-	if err = ie.downlinkSetNR.Decode(r); err != nil {
-		return utils.WrapError("Decode downlinkSetNR", err)
+	if err = ie.DownlinkSetNR.Decode(r); err != nil {
+		return utils.WrapError("Decode DownlinkSetNR", err)
 	}
-	if err = ie.uplinkSetNR.Decode(r); err != nil {
-		return utils.WrapError("Decode uplinkSetNR", err)
+	if err = ie.UplinkSetNR.Decode(r); err != nil {
+		return utils.WrapError("Decode UplinkSetNR", err)
 	}
 	return nil
 }

@@ -9,14 +9,14 @@ import (
 
 const (
 	CG_COT_Sharing_r16_Choice_nothing uint64 = iota
-	CG_COT_Sharing_r16_Choice_noCOT_Sharing_r16
-	CG_COT_Sharing_r16_Choice_cot_Sharing_r16
+	CG_COT_Sharing_r16_Choice_NoCOT_Sharing_r16
+	CG_COT_Sharing_r16_Choice_Cot_Sharing_r16
 )
 
 type CG_COT_Sharing_r16 struct {
 	Choice            uint64
-	noCOT_Sharing_r16 uper.NULL `madatory`
-	cot_Sharing_r16   *CG_COT_Sharing_r16_cot_Sharing_r16
+	NoCOT_Sharing_r16 uper.NULL `madatory`
+	Cot_Sharing_r16   *CG_COT_Sharing_r16_cot_Sharing_r16
 }
 
 func (ie *CG_COT_Sharing_r16) Encode(w *uper.UperWriter) error {
@@ -25,13 +25,13 @@ func (ie *CG_COT_Sharing_r16) Encode(w *uper.UperWriter) error {
 		return err
 	}
 	switch ie.Choice {
-	case CG_COT_Sharing_r16_Choice_noCOT_Sharing_r16:
+	case CG_COT_Sharing_r16_Choice_NoCOT_Sharing_r16:
 		if err := w.WriteNull(); err != nil {
-			err = utils.WrapError("Encode noCOT_Sharing_r16", err)
+			err = utils.WrapError("Encode NoCOT_Sharing_r16", err)
 		}
-	case CG_COT_Sharing_r16_Choice_cot_Sharing_r16:
-		if err = ie.cot_Sharing_r16.Encode(w); err != nil {
-			err = utils.WrapError("Encode cot_Sharing_r16", err)
+	case CG_COT_Sharing_r16_Choice_Cot_Sharing_r16:
+		if err = ie.Cot_Sharing_r16.Encode(w); err != nil {
+			err = utils.WrapError("Encode Cot_Sharing_r16", err)
 		}
 	default:
 		err = fmt.Errorf("invalid choice: %d", ie.Choice)
@@ -45,14 +45,14 @@ func (ie *CG_COT_Sharing_r16) Decode(r *uper.UperReader) error {
 		return err
 	}
 	switch ie.Choice {
-	case CG_COT_Sharing_r16_Choice_noCOT_Sharing_r16:
+	case CG_COT_Sharing_r16_Choice_NoCOT_Sharing_r16:
 		if err := r.ReadNull(); err != nil {
-			return utils.WrapError("Decode noCOT_Sharing_r16", err)
+			return utils.WrapError("Decode NoCOT_Sharing_r16", err)
 		}
-	case CG_COT_Sharing_r16_Choice_cot_Sharing_r16:
-		ie.cot_Sharing_r16 = new(CG_COT_Sharing_r16_cot_Sharing_r16)
-		if err = ie.cot_Sharing_r16.Decode(r); err != nil {
-			return utils.WrapError("Decode cot_Sharing_r16", err)
+	case CG_COT_Sharing_r16_Choice_Cot_Sharing_r16:
+		ie.Cot_Sharing_r16 = new(CG_COT_Sharing_r16_cot_Sharing_r16)
+		if err = ie.Cot_Sharing_r16.Decode(r); err != nil {
+			return utils.WrapError("Decode Cot_Sharing_r16", err)
 		}
 	default:
 		return fmt.Errorf("invalid choice: %d", ie.Choice)

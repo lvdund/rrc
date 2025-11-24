@@ -9,14 +9,14 @@ import (
 
 const (
 	UEInformationRequest_r16_CriticalExtensions_Choice_nothing uint64 = iota
-	UEInformationRequest_r16_CriticalExtensions_Choice_ueInformationRequest_r16
-	UEInformationRequest_r16_CriticalExtensions_Choice_criticalExtensionsFuture
+	UEInformationRequest_r16_CriticalExtensions_Choice_UeInformationRequest_r16
+	UEInformationRequest_r16_CriticalExtensions_Choice_CriticalExtensionsFuture
 )
 
 type UEInformationRequest_r16_CriticalExtensions struct {
 	Choice                   uint64
-	ueInformationRequest_r16 *UEInformationRequest_r16_IEs
-	criticalExtensionsFuture interface{} `madatory`
+	UeInformationRequest_r16 *UEInformationRequest_r16_IEs
+	CriticalExtensionsFuture interface{} `madatory`
 }
 
 func (ie *UEInformationRequest_r16_CriticalExtensions) Encode(w *uper.UperWriter) error {
@@ -25,11 +25,11 @@ func (ie *UEInformationRequest_r16_CriticalExtensions) Encode(w *uper.UperWriter
 		return err
 	}
 	switch ie.Choice {
-	case UEInformationRequest_r16_CriticalExtensions_Choice_ueInformationRequest_r16:
-		if err = ie.ueInformationRequest_r16.Encode(w); err != nil {
-			err = utils.WrapError("Encode ueInformationRequest_r16", err)
+	case UEInformationRequest_r16_CriticalExtensions_Choice_UeInformationRequest_r16:
+		if err = ie.UeInformationRequest_r16.Encode(w); err != nil {
+			err = utils.WrapError("Encode UeInformationRequest_r16", err)
 		}
-	case UEInformationRequest_r16_CriticalExtensions_Choice_criticalExtensionsFuture:
+	case UEInformationRequest_r16_CriticalExtensions_Choice_CriticalExtensionsFuture:
 		// interface{} field of choice - nothing to encode
 	default:
 		err = fmt.Errorf("invalid choice: %d", ie.Choice)
@@ -43,12 +43,12 @@ func (ie *UEInformationRequest_r16_CriticalExtensions) Decode(r *uper.UperReader
 		return err
 	}
 	switch ie.Choice {
-	case UEInformationRequest_r16_CriticalExtensions_Choice_ueInformationRequest_r16:
-		ie.ueInformationRequest_r16 = new(UEInformationRequest_r16_IEs)
-		if err = ie.ueInformationRequest_r16.Decode(r); err != nil {
-			return utils.WrapError("Decode ueInformationRequest_r16", err)
+	case UEInformationRequest_r16_CriticalExtensions_Choice_UeInformationRequest_r16:
+		ie.UeInformationRequest_r16 = new(UEInformationRequest_r16_IEs)
+		if err = ie.UeInformationRequest_r16.Decode(r); err != nil {
+			return utils.WrapError("Decode UeInformationRequest_r16", err)
 		}
-	case UEInformationRequest_r16_CriticalExtensions_Choice_criticalExtensionsFuture:
+	case UEInformationRequest_r16_CriticalExtensions_Choice_CriticalExtensionsFuture:
 		// interface{} field of choice - nothing to decode
 	default:
 		return fmt.Errorf("invalid choice: %d", ie.Choice)

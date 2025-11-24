@@ -6,28 +6,28 @@ import (
 )
 
 type AffectedCarrierFreqCombInfoMRDC struct {
-	victimSystemType            VictimSystemType                                             `madatory`
-	interferenceDirectionMRDC   AffectedCarrierFreqCombInfoMRDC_interferenceDirectionMRDC    `madatory`
-	affectedCarrierFreqCombMRDC *AffectedCarrierFreqCombInfoMRDC_affectedCarrierFreqCombMRDC `optional`
+	VictimSystemType            VictimSystemType                                             `madatory`
+	InterferenceDirectionMRDC   AffectedCarrierFreqCombInfoMRDC_interferenceDirectionMRDC    `madatory`
+	AffectedCarrierFreqCombMRDC *AffectedCarrierFreqCombInfoMRDC_affectedCarrierFreqCombMRDC `optional`
 }
 
 func (ie *AffectedCarrierFreqCombInfoMRDC) Encode(w *uper.UperWriter) error {
 	var err error
-	preambleBits := []bool{ie.affectedCarrierFreqCombMRDC != nil}
+	preambleBits := []bool{ie.AffectedCarrierFreqCombMRDC != nil}
 	for _, bit := range preambleBits {
 		if err = w.WriteBool(bit); err != nil {
 			return err
 		}
 	}
-	if err = ie.victimSystemType.Encode(w); err != nil {
-		return utils.WrapError("Encode victimSystemType", err)
+	if err = ie.VictimSystemType.Encode(w); err != nil {
+		return utils.WrapError("Encode VictimSystemType", err)
 	}
-	if err = ie.interferenceDirectionMRDC.Encode(w); err != nil {
-		return utils.WrapError("Encode interferenceDirectionMRDC", err)
+	if err = ie.InterferenceDirectionMRDC.Encode(w); err != nil {
+		return utils.WrapError("Encode InterferenceDirectionMRDC", err)
 	}
-	if ie.affectedCarrierFreqCombMRDC != nil {
-		if err = ie.affectedCarrierFreqCombMRDC.Encode(w); err != nil {
-			return utils.WrapError("Encode affectedCarrierFreqCombMRDC", err)
+	if ie.AffectedCarrierFreqCombMRDC != nil {
+		if err = ie.AffectedCarrierFreqCombMRDC.Encode(w); err != nil {
+			return utils.WrapError("Encode AffectedCarrierFreqCombMRDC", err)
 		}
 	}
 	return nil
@@ -35,20 +35,20 @@ func (ie *AffectedCarrierFreqCombInfoMRDC) Encode(w *uper.UperWriter) error {
 
 func (ie *AffectedCarrierFreqCombInfoMRDC) Decode(r *uper.UperReader) error {
 	var err error
-	var affectedCarrierFreqCombMRDCPresent bool
-	if affectedCarrierFreqCombMRDCPresent, err = r.ReadBool(); err != nil {
+	var AffectedCarrierFreqCombMRDCPresent bool
+	if AffectedCarrierFreqCombMRDCPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	if err = ie.victimSystemType.Decode(r); err != nil {
-		return utils.WrapError("Decode victimSystemType", err)
+	if err = ie.VictimSystemType.Decode(r); err != nil {
+		return utils.WrapError("Decode VictimSystemType", err)
 	}
-	if err = ie.interferenceDirectionMRDC.Decode(r); err != nil {
-		return utils.WrapError("Decode interferenceDirectionMRDC", err)
+	if err = ie.InterferenceDirectionMRDC.Decode(r); err != nil {
+		return utils.WrapError("Decode InterferenceDirectionMRDC", err)
 	}
-	if affectedCarrierFreqCombMRDCPresent {
-		ie.affectedCarrierFreqCombMRDC = new(AffectedCarrierFreqCombInfoMRDC_affectedCarrierFreqCombMRDC)
-		if err = ie.affectedCarrierFreqCombMRDC.Decode(r); err != nil {
-			return utils.WrapError("Decode affectedCarrierFreqCombMRDC", err)
+	if AffectedCarrierFreqCombMRDCPresent {
+		ie.AffectedCarrierFreqCombMRDC = new(AffectedCarrierFreqCombInfoMRDC_affectedCarrierFreqCombMRDC)
+		if err = ie.AffectedCarrierFreqCombMRDC.Decode(r); err != nil {
+			return utils.WrapError("Decode AffectedCarrierFreqCombMRDC", err)
 		}
 	}
 	return nil

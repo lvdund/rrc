@@ -6,26 +6,26 @@ import (
 )
 
 type SCGFailureInformation_IEs struct {
-	failureReportSCG     *FailureReportSCG                `optional`
-	nonCriticalExtension *SCGFailureInformation_v1590_IEs `optional`
+	FailureReportSCG     *FailureReportSCG                `optional`
+	NonCriticalExtension *SCGFailureInformation_v1590_IEs `optional`
 }
 
 func (ie *SCGFailureInformation_IEs) Encode(w *uper.UperWriter) error {
 	var err error
-	preambleBits := []bool{ie.failureReportSCG != nil, ie.nonCriticalExtension != nil}
+	preambleBits := []bool{ie.FailureReportSCG != nil, ie.NonCriticalExtension != nil}
 	for _, bit := range preambleBits {
 		if err = w.WriteBool(bit); err != nil {
 			return err
 		}
 	}
-	if ie.failureReportSCG != nil {
-		if err = ie.failureReportSCG.Encode(w); err != nil {
-			return utils.WrapError("Encode failureReportSCG", err)
+	if ie.FailureReportSCG != nil {
+		if err = ie.FailureReportSCG.Encode(w); err != nil {
+			return utils.WrapError("Encode FailureReportSCG", err)
 		}
 	}
-	if ie.nonCriticalExtension != nil {
-		if err = ie.nonCriticalExtension.Encode(w); err != nil {
-			return utils.WrapError("Encode nonCriticalExtension", err)
+	if ie.NonCriticalExtension != nil {
+		if err = ie.NonCriticalExtension.Encode(w); err != nil {
+			return utils.WrapError("Encode NonCriticalExtension", err)
 		}
 	}
 	return nil
@@ -33,24 +33,24 @@ func (ie *SCGFailureInformation_IEs) Encode(w *uper.UperWriter) error {
 
 func (ie *SCGFailureInformation_IEs) Decode(r *uper.UperReader) error {
 	var err error
-	var failureReportSCGPresent bool
-	if failureReportSCGPresent, err = r.ReadBool(); err != nil {
+	var FailureReportSCGPresent bool
+	if FailureReportSCGPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var nonCriticalExtensionPresent bool
-	if nonCriticalExtensionPresent, err = r.ReadBool(); err != nil {
+	var NonCriticalExtensionPresent bool
+	if NonCriticalExtensionPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	if failureReportSCGPresent {
-		ie.failureReportSCG = new(FailureReportSCG)
-		if err = ie.failureReportSCG.Decode(r); err != nil {
-			return utils.WrapError("Decode failureReportSCG", err)
+	if FailureReportSCGPresent {
+		ie.FailureReportSCG = new(FailureReportSCG)
+		if err = ie.FailureReportSCG.Decode(r); err != nil {
+			return utils.WrapError("Decode FailureReportSCG", err)
 		}
 	}
-	if nonCriticalExtensionPresent {
-		ie.nonCriticalExtension = new(SCGFailureInformation_v1590_IEs)
-		if err = ie.nonCriticalExtension.Decode(r); err != nil {
-			return utils.WrapError("Decode nonCriticalExtension", err)
+	if NonCriticalExtensionPresent {
+		ie.NonCriticalExtension = new(SCGFailureInformation_v1590_IEs)
+		if err = ie.NonCriticalExtension.Decode(r); err != nil {
+			return utils.WrapError("Decode NonCriticalExtension", err)
 		}
 	}
 	return nil

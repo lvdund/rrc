@@ -6,26 +6,26 @@ import (
 )
 
 type UE_NR_Capability_v1690 struct {
-	ul_RRC_Segmentation_r16 *UE_NR_Capability_v1690_ul_RRC_Segmentation_r16 `optional`
-	nonCriticalExtension    *UE_NR_Capability_v1700                         `optional`
+	Ul_RRC_Segmentation_r16 *UE_NR_Capability_v1690_ul_RRC_Segmentation_r16 `optional`
+	NonCriticalExtension    *UE_NR_Capability_v1700                         `optional`
 }
 
 func (ie *UE_NR_Capability_v1690) Encode(w *uper.UperWriter) error {
 	var err error
-	preambleBits := []bool{ie.ul_RRC_Segmentation_r16 != nil, ie.nonCriticalExtension != nil}
+	preambleBits := []bool{ie.Ul_RRC_Segmentation_r16 != nil, ie.NonCriticalExtension != nil}
 	for _, bit := range preambleBits {
 		if err = w.WriteBool(bit); err != nil {
 			return err
 		}
 	}
-	if ie.ul_RRC_Segmentation_r16 != nil {
-		if err = ie.ul_RRC_Segmentation_r16.Encode(w); err != nil {
-			return utils.WrapError("Encode ul_RRC_Segmentation_r16", err)
+	if ie.Ul_RRC_Segmentation_r16 != nil {
+		if err = ie.Ul_RRC_Segmentation_r16.Encode(w); err != nil {
+			return utils.WrapError("Encode Ul_RRC_Segmentation_r16", err)
 		}
 	}
-	if ie.nonCriticalExtension != nil {
-		if err = ie.nonCriticalExtension.Encode(w); err != nil {
-			return utils.WrapError("Encode nonCriticalExtension", err)
+	if ie.NonCriticalExtension != nil {
+		if err = ie.NonCriticalExtension.Encode(w); err != nil {
+			return utils.WrapError("Encode NonCriticalExtension", err)
 		}
 	}
 	return nil
@@ -33,24 +33,24 @@ func (ie *UE_NR_Capability_v1690) Encode(w *uper.UperWriter) error {
 
 func (ie *UE_NR_Capability_v1690) Decode(r *uper.UperReader) error {
 	var err error
-	var ul_RRC_Segmentation_r16Present bool
-	if ul_RRC_Segmentation_r16Present, err = r.ReadBool(); err != nil {
+	var Ul_RRC_Segmentation_r16Present bool
+	if Ul_RRC_Segmentation_r16Present, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var nonCriticalExtensionPresent bool
-	if nonCriticalExtensionPresent, err = r.ReadBool(); err != nil {
+	var NonCriticalExtensionPresent bool
+	if NonCriticalExtensionPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	if ul_RRC_Segmentation_r16Present {
-		ie.ul_RRC_Segmentation_r16 = new(UE_NR_Capability_v1690_ul_RRC_Segmentation_r16)
-		if err = ie.ul_RRC_Segmentation_r16.Decode(r); err != nil {
-			return utils.WrapError("Decode ul_RRC_Segmentation_r16", err)
+	if Ul_RRC_Segmentation_r16Present {
+		ie.Ul_RRC_Segmentation_r16 = new(UE_NR_Capability_v1690_ul_RRC_Segmentation_r16)
+		if err = ie.Ul_RRC_Segmentation_r16.Decode(r); err != nil {
+			return utils.WrapError("Decode Ul_RRC_Segmentation_r16", err)
 		}
 	}
-	if nonCriticalExtensionPresent {
-		ie.nonCriticalExtension = new(UE_NR_Capability_v1700)
-		if err = ie.nonCriticalExtension.Decode(r); err != nil {
-			return utils.WrapError("Decode nonCriticalExtension", err)
+	if NonCriticalExtensionPresent {
+		ie.NonCriticalExtension = new(UE_NR_Capability_v1700)
+		if err = ie.NonCriticalExtension.Decode(r); err != nil {
+			return utils.WrapError("Decode NonCriticalExtension", err)
 		}
 	}
 	return nil

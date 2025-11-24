@@ -6,30 +6,30 @@ import (
 )
 
 type INT_ConfigurationPerServingCell struct {
-	servingCellId ServCellIndex `madatory`
-	positionInDCI int64         `lb:0,ub:maxINT_DCI_PayloadSize_1,madatory`
+	ServingCellId ServCellIndex `madatory`
+	PositionInDCI int64         `lb:0,ub:maxINT_DCI_PayloadSize_1,madatory`
 }
 
 func (ie *INT_ConfigurationPerServingCell) Encode(w *uper.UperWriter) error {
 	var err error
-	if err = ie.servingCellId.Encode(w); err != nil {
-		return utils.WrapError("Encode servingCellId", err)
+	if err = ie.ServingCellId.Encode(w); err != nil {
+		return utils.WrapError("Encode ServingCellId", err)
 	}
-	if err = w.WriteInteger(ie.positionInDCI, &uper.Constraint{Lb: 0, Ub: maxINT_DCI_PayloadSize_1}, false); err != nil {
-		return utils.WrapError("WriteInteger positionInDCI", err)
+	if err = w.WriteInteger(ie.PositionInDCI, &uper.Constraint{Lb: 0, Ub: maxINT_DCI_PayloadSize_1}, false); err != nil {
+		return utils.WrapError("WriteInteger PositionInDCI", err)
 	}
 	return nil
 }
 
 func (ie *INT_ConfigurationPerServingCell) Decode(r *uper.UperReader) error {
 	var err error
-	if err = ie.servingCellId.Decode(r); err != nil {
-		return utils.WrapError("Decode servingCellId", err)
+	if err = ie.ServingCellId.Decode(r); err != nil {
+		return utils.WrapError("Decode ServingCellId", err)
 	}
-	var tmp_int_positionInDCI int64
-	if tmp_int_positionInDCI, err = r.ReadInteger(&uper.Constraint{Lb: 0, Ub: maxINT_DCI_PayloadSize_1}, false); err != nil {
-		return utils.WrapError("ReadInteger positionInDCI", err)
+	var tmp_int_PositionInDCI int64
+	if tmp_int_PositionInDCI, err = r.ReadInteger(&uper.Constraint{Lb: 0, Ub: maxINT_DCI_PayloadSize_1}, false); err != nil {
+		return utils.WrapError("ReadInteger PositionInDCI", err)
 	}
-	ie.positionInDCI = tmp_int_positionInDCI
+	ie.PositionInDCI = tmp_int_PositionInDCI
 	return nil
 }

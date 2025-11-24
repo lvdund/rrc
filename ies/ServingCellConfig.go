@@ -8,177 +8,177 @@ import (
 )
 
 type ServingCellConfig struct {
-	tdd_UL_DL_ConfigurationDedicated              *TDD_UL_DL_ConfigDedicated                                       `optional`
-	initialDownlinkBWP                            *BWP_DownlinkDedicated                                           `optional`
-	downlinkBWP_ToReleaseList                     []BWP_Id                                                         `lb:1,ub:maxNrofBWPs,optional`
-	downlinkBWP_ToAddModList                      []BWP_Downlink                                                   `lb:1,ub:maxNrofBWPs,optional`
-	firstActiveDownlinkBWP_Id                     *BWP_Id                                                          `optional`
-	bwp_InactivityTimer                           *ServingCellConfig_bwp_InactivityTimer                           `optional`
-	defaultDownlinkBWP_Id                         *BWP_Id                                                          `optional`
-	uplinkConfig                                  *UplinkConfig                                                    `optional`
-	supplementaryUplink                           *UplinkConfig                                                    `optional`
-	pdcch_ServingCellConfig                       *PDCCH_ServingCellConfig                                         `optional,setuprelease`
-	pdsch_ServingCellConfig                       *PDSCH_ServingCellConfig                                         `optional,setuprelease`
-	csi_MeasConfig                                *CSI_MeasConfig                                                  `optional,setuprelease`
-	sCellDeactivationTimer                        *ServingCellConfig_sCellDeactivationTimer                        `optional`
-	crossCarrierSchedulingConfig                  *CrossCarrierSchedulingConfig                                    `optional`
-	tag_Id                                        TAG_Id                                                           `madatory`
-	dummy1                                        *ServingCellConfig_dummy1                                        `optional`
-	pathlossReferenceLinking                      *ServingCellConfig_pathlossReferenceLinking                      `optional`
-	servingCellMO                                 *MeasObjectId                                                    `optional`
-	lte_CRS_ToMatchAround                         *RateMatchPatternLTE_CRS                                         `optional,ext-1,setuprelease`
-	rateMatchPatternToAddModList                  []RateMatchPattern                                               `lb:1,ub:maxNrofRateMatchPatterns,optional,ext-1`
-	rateMatchPatternToReleaseList                 []RateMatchPatternId                                             `lb:1,ub:maxNrofRateMatchPatterns,optional,ext-1`
-	downlinkChannelBW_PerSCS_List                 []SCS_SpecificCarrier                                            `lb:1,ub:maxSCSs,optional,ext-1`
-	supplementaryUplinkRelease_r16                *ServingCellConfig_supplementaryUplinkRelease_r16                `optional,ext-2`
-	tdd_UL_DL_ConfigurationDedicated_IAB_MT_r16   *TDD_UL_DL_ConfigDedicated_IAB_MT_r16                            `optional,ext-2`
-	dormantBWP_Config_r16                         *DormantBWP_Config_r16                                           `optional,ext-2,setuprelease`
-	ca_SlotOffset_r16                             *ServingCellConfig_ca_SlotOffset_r16                             `lb:-2,ub:2,optional,ext-2`
-	dummy2                                        *DummyJ                                                          `optional,ext-2,setuprelease`
-	intraCellGuardBandsDL_List_r16                []IntraCellGuardBandsPerSCS_r16                                  `lb:1,ub:maxSCSs,optional,ext-2`
-	intraCellGuardBandsUL_List_r16                []IntraCellGuardBandsPerSCS_r16                                  `lb:1,ub:maxSCSs,optional,ext-2`
-	csi_RS_ValidationWithDCI_r16                  *ServingCellConfig_csi_RS_ValidationWithDCI_r16                  `optional,ext-2`
-	lte_CRS_PatternList1_r16                      *LTE_CRS_PatternList_r16                                         `optional,ext-2,setuprelease`
-	lte_CRS_PatternList2_r16                      *LTE_CRS_PatternList_r16                                         `optional,ext-2,setuprelease`
-	crs_RateMatch_PerCORESETPoolIndex_r16         *ServingCellConfig_crs_RateMatch_PerCORESETPoolIndex_r16         `optional,ext-2`
-	enableTwoDefaultTCI_States_r16                *ServingCellConfig_enableTwoDefaultTCI_States_r16                `optional,ext-2`
-	enableDefaultTCI_StatePerCoresetPoolIndex_r16 *ServingCellConfig_enableDefaultTCI_StatePerCoresetPoolIndex_r16 `optional,ext-2`
-	enableBeamSwitchTiming_r16                    *ServingCellConfig_enableBeamSwitchTiming_r16                    `optional,ext-2`
-	cbg_TxDiffTBsProcessingType1_r16              *ServingCellConfig_cbg_TxDiffTBsProcessingType1_r16              `optional,ext-2`
-	cbg_TxDiffTBsProcessingType2_r16              *ServingCellConfig_cbg_TxDiffTBsProcessingType2_r16              `optional,ext-2`
-	directionalCollisionHandling_r16              *ServingCellConfig_directionalCollisionHandling_r16              `optional,ext-3`
-	channelAccessConfig_r16                       *ChannelAccessConfig_r16                                         `optional,ext-3,setuprelease`
-	nr_dl_PRS_PDC_Info_r17                        *NR_DL_PRS_PDC_Info_r17                                          `optional,ext-4,setuprelease`
-	semiStaticChannelAccessConfigUE_r17           *SemiStaticChannelAccessConfigUE_r17                             `optional,ext-4,setuprelease`
-	mimoParam_r17                                 *MIMOParam_r17                                                   `optional,ext-4,setuprelease`
-	channelAccessMode2_r17                        *ServingCellConfig_channelAccessMode2_r17                        `optional,ext-4`
-	timeDomainHARQ_BundlingType1_r17              *ServingCellConfig_timeDomainHARQ_BundlingType1_r17              `optional,ext-4`
-	nrofHARQ_BundlingGroups_r17                   *ServingCellConfig_nrofHARQ_BundlingGroups_r17                   `optional,ext-4`
-	fdmed_ReceptionMulticast_r17                  *ServingCellConfig_fdmed_ReceptionMulticast_r17                  `optional,ext-4`
-	moreThanOneNackOnlyMode_r17                   *ServingCellConfig_moreThanOneNackOnlyMode_r17                   `optional,ext-4`
-	tci_ActivatedConfig_r17                       *TCI_ActivatedConfig_r17                                         `optional,ext-4`
-	directionalCollisionHandling_DC_r17           *ServingCellConfig_directionalCollisionHandling_DC_r17           `optional,ext-4`
-	lte_NeighCellsCRS_AssistInfoList_r17          *LTE_NeighCellsCRS_AssistInfoList_r17                            `optional,ext-4,setuprelease`
-	lte_NeighCellsCRS_Assumptions_r17             *ServingCellConfig_lte_NeighCellsCRS_Assumptions_r17             `optional,ext-5`
+	Tdd_UL_DL_ConfigurationDedicated              *TDD_UL_DL_ConfigDedicated                                       `optional`
+	InitialDownlinkBWP                            *BWP_DownlinkDedicated                                           `optional`
+	DownlinkBWP_ToReleaseList                     []BWP_Id                                                         `lb:1,ub:maxNrofBWPs,optional`
+	DownlinkBWP_ToAddModList                      []BWP_Downlink                                                   `lb:1,ub:maxNrofBWPs,optional`
+	FirstActiveDownlinkBWP_Id                     *BWP_Id                                                          `optional`
+	Bwp_InactivityTimer                           *ServingCellConfig_bwp_InactivityTimer                           `optional`
+	DefaultDownlinkBWP_Id                         *BWP_Id                                                          `optional`
+	UplinkConfig                                  *UplinkConfig                                                    `optional`
+	SupplementaryUplink                           *UplinkConfig                                                    `optional`
+	Pdcch_ServingCellConfig                       *PDCCH_ServingCellConfig                                         `optional,setuprelease`
+	Pdsch_ServingCellConfig                       *PDSCH_ServingCellConfig                                         `optional,setuprelease`
+	Csi_MeasConfig                                *CSI_MeasConfig                                                  `optional,setuprelease`
+	SCellDeactivationTimer                        *ServingCellConfig_sCellDeactivationTimer                        `optional`
+	CrossCarrierSchedulingConfig                  *CrossCarrierSchedulingConfig                                    `optional`
+	Tag_Id                                        TAG_Id                                                           `madatory`
+	Dummy1                                        *ServingCellConfig_dummy1                                        `optional`
+	PathlossReferenceLinking                      *ServingCellConfig_pathlossReferenceLinking                      `optional`
+	ServingCellMO                                 *MeasObjectId                                                    `optional`
+	Lte_CRS_ToMatchAround                         *RateMatchPatternLTE_CRS                                         `optional,ext-1,setuprelease`
+	RateMatchPatternToAddModList                  []RateMatchPattern                                               `lb:1,ub:maxNrofRateMatchPatterns,optional,ext-1`
+	RateMatchPatternToReleaseList                 []RateMatchPatternId                                             `lb:1,ub:maxNrofRateMatchPatterns,optional,ext-1`
+	DownlinkChannelBW_PerSCS_List                 []SCS_SpecificCarrier                                            `lb:1,ub:maxSCSs,optional,ext-1`
+	SupplementaryUplinkRelease_r16                *ServingCellConfig_supplementaryUplinkRelease_r16                `optional,ext-2`
+	Tdd_UL_DL_ConfigurationDedicated_IAB_MT_r16   *TDD_UL_DL_ConfigDedicated_IAB_MT_r16                            `optional,ext-2`
+	DormantBWP_Config_r16                         *DormantBWP_Config_r16                                           `optional,ext-2,setuprelease`
+	Ca_SlotOffset_r16                             *ServingCellConfig_ca_SlotOffset_r16                             `lb:-2,ub:2,optional,ext-2`
+	Dummy2                                        *DummyJ                                                          `optional,ext-2,setuprelease`
+	IntraCellGuardBandsDL_List_r16                []IntraCellGuardBandsPerSCS_r16                                  `lb:1,ub:maxSCSs,optional,ext-2`
+	IntraCellGuardBandsUL_List_r16                []IntraCellGuardBandsPerSCS_r16                                  `lb:1,ub:maxSCSs,optional,ext-2`
+	Csi_RS_ValidationWithDCI_r16                  *ServingCellConfig_csi_RS_ValidationWithDCI_r16                  `optional,ext-2`
+	Lte_CRS_PatternList1_r16                      *LTE_CRS_PatternList_r16                                         `optional,ext-2,setuprelease`
+	Lte_CRS_PatternList2_r16                      *LTE_CRS_PatternList_r16                                         `optional,ext-2,setuprelease`
+	Crs_RateMatch_PerCORESETPoolIndex_r16         *ServingCellConfig_crs_RateMatch_PerCORESETPoolIndex_r16         `optional,ext-2`
+	EnableTwoDefaultTCI_States_r16                *ServingCellConfig_enableTwoDefaultTCI_States_r16                `optional,ext-2`
+	EnableDefaultTCI_StatePerCoresetPoolIndex_r16 *ServingCellConfig_enableDefaultTCI_StatePerCoresetPoolIndex_r16 `optional,ext-2`
+	EnableBeamSwitchTiming_r16                    *ServingCellConfig_enableBeamSwitchTiming_r16                    `optional,ext-2`
+	Cbg_TxDiffTBsProcessingType1_r16              *ServingCellConfig_cbg_TxDiffTBsProcessingType1_r16              `optional,ext-2`
+	Cbg_TxDiffTBsProcessingType2_r16              *ServingCellConfig_cbg_TxDiffTBsProcessingType2_r16              `optional,ext-2`
+	DirectionalCollisionHandling_r16              *ServingCellConfig_directionalCollisionHandling_r16              `optional,ext-3`
+	ChannelAccessConfig_r16                       *ChannelAccessConfig_r16                                         `optional,ext-3,setuprelease`
+	Nr_dl_PRS_PDC_Info_r17                        *NR_DL_PRS_PDC_Info_r17                                          `optional,ext-4,setuprelease`
+	SemiStaticChannelAccessConfigUE_r17           *SemiStaticChannelAccessConfigUE_r17                             `optional,ext-4,setuprelease`
+	MimoParam_r17                                 *MIMOParam_r17                                                   `optional,ext-4,setuprelease`
+	ChannelAccessMode2_r17                        *ServingCellConfig_channelAccessMode2_r17                        `optional,ext-4`
+	TimeDomainHARQ_BundlingType1_r17              *ServingCellConfig_timeDomainHARQ_BundlingType1_r17              `optional,ext-4`
+	NrofHARQ_BundlingGroups_r17                   *ServingCellConfig_nrofHARQ_BundlingGroups_r17                   `optional,ext-4`
+	Fdmed_ReceptionMulticast_r17                  *ServingCellConfig_fdmed_ReceptionMulticast_r17                  `optional,ext-4`
+	MoreThanOneNackOnlyMode_r17                   *ServingCellConfig_moreThanOneNackOnlyMode_r17                   `optional,ext-4`
+	Tci_ActivatedConfig_r17                       *TCI_ActivatedConfig_r17                                         `optional,ext-4`
+	DirectionalCollisionHandling_DC_r17           *ServingCellConfig_directionalCollisionHandling_DC_r17           `optional,ext-4`
+	Lte_NeighCellsCRS_AssistInfoList_r17          *LTE_NeighCellsCRS_AssistInfoList_r17                            `optional,ext-4,setuprelease`
+	Lte_NeighCellsCRS_Assumptions_r17             *ServingCellConfig_lte_NeighCellsCRS_Assumptions_r17             `optional,ext-5`
 }
 
 func (ie *ServingCellConfig) Encode(w *uper.UperWriter) error {
 	var err error
-	hasExtensions := ie.lte_CRS_ToMatchAround != nil || len(ie.rateMatchPatternToAddModList) > 0 || len(ie.rateMatchPatternToReleaseList) > 0 || len(ie.downlinkChannelBW_PerSCS_List) > 0 || ie.supplementaryUplinkRelease_r16 != nil || ie.tdd_UL_DL_ConfigurationDedicated_IAB_MT_r16 != nil || ie.dormantBWP_Config_r16 != nil || ie.ca_SlotOffset_r16 != nil || ie.dummy2 != nil || len(ie.intraCellGuardBandsDL_List_r16) > 0 || len(ie.intraCellGuardBandsUL_List_r16) > 0 || ie.csi_RS_ValidationWithDCI_r16 != nil || ie.lte_CRS_PatternList1_r16 != nil || ie.lte_CRS_PatternList2_r16 != nil || ie.crs_RateMatch_PerCORESETPoolIndex_r16 != nil || ie.enableTwoDefaultTCI_States_r16 != nil || ie.enableDefaultTCI_StatePerCoresetPoolIndex_r16 != nil || ie.enableBeamSwitchTiming_r16 != nil || ie.cbg_TxDiffTBsProcessingType1_r16 != nil || ie.cbg_TxDiffTBsProcessingType2_r16 != nil || ie.directionalCollisionHandling_r16 != nil || ie.channelAccessConfig_r16 != nil || ie.nr_dl_PRS_PDC_Info_r17 != nil || ie.semiStaticChannelAccessConfigUE_r17 != nil || ie.mimoParam_r17 != nil || ie.channelAccessMode2_r17 != nil || ie.timeDomainHARQ_BundlingType1_r17 != nil || ie.nrofHARQ_BundlingGroups_r17 != nil || ie.fdmed_ReceptionMulticast_r17 != nil || ie.moreThanOneNackOnlyMode_r17 != nil || ie.tci_ActivatedConfig_r17 != nil || ie.directionalCollisionHandling_DC_r17 != nil || ie.lte_NeighCellsCRS_AssistInfoList_r17 != nil || ie.lte_NeighCellsCRS_Assumptions_r17 != nil
-	preambleBits := []bool{hasExtensions, ie.tdd_UL_DL_ConfigurationDedicated != nil, ie.initialDownlinkBWP != nil, len(ie.downlinkBWP_ToReleaseList) > 0, len(ie.downlinkBWP_ToAddModList) > 0, ie.firstActiveDownlinkBWP_Id != nil, ie.bwp_InactivityTimer != nil, ie.defaultDownlinkBWP_Id != nil, ie.uplinkConfig != nil, ie.supplementaryUplink != nil, ie.pdcch_ServingCellConfig != nil, ie.pdsch_ServingCellConfig != nil, ie.csi_MeasConfig != nil, ie.sCellDeactivationTimer != nil, ie.crossCarrierSchedulingConfig != nil, ie.dummy1 != nil, ie.pathlossReferenceLinking != nil, ie.servingCellMO != nil}
+	hasExtensions := ie.Lte_CRS_ToMatchAround != nil || len(ie.RateMatchPatternToAddModList) > 0 || len(ie.RateMatchPatternToReleaseList) > 0 || len(ie.DownlinkChannelBW_PerSCS_List) > 0 || ie.SupplementaryUplinkRelease_r16 != nil || ie.Tdd_UL_DL_ConfigurationDedicated_IAB_MT_r16 != nil || ie.DormantBWP_Config_r16 != nil || ie.Ca_SlotOffset_r16 != nil || ie.Dummy2 != nil || len(ie.IntraCellGuardBandsDL_List_r16) > 0 || len(ie.IntraCellGuardBandsUL_List_r16) > 0 || ie.Csi_RS_ValidationWithDCI_r16 != nil || ie.Lte_CRS_PatternList1_r16 != nil || ie.Lte_CRS_PatternList2_r16 != nil || ie.Crs_RateMatch_PerCORESETPoolIndex_r16 != nil || ie.EnableTwoDefaultTCI_States_r16 != nil || ie.EnableDefaultTCI_StatePerCoresetPoolIndex_r16 != nil || ie.EnableBeamSwitchTiming_r16 != nil || ie.Cbg_TxDiffTBsProcessingType1_r16 != nil || ie.Cbg_TxDiffTBsProcessingType2_r16 != nil || ie.DirectionalCollisionHandling_r16 != nil || ie.ChannelAccessConfig_r16 != nil || ie.Nr_dl_PRS_PDC_Info_r17 != nil || ie.SemiStaticChannelAccessConfigUE_r17 != nil || ie.MimoParam_r17 != nil || ie.ChannelAccessMode2_r17 != nil || ie.TimeDomainHARQ_BundlingType1_r17 != nil || ie.NrofHARQ_BundlingGroups_r17 != nil || ie.Fdmed_ReceptionMulticast_r17 != nil || ie.MoreThanOneNackOnlyMode_r17 != nil || ie.Tci_ActivatedConfig_r17 != nil || ie.DirectionalCollisionHandling_DC_r17 != nil || ie.Lte_NeighCellsCRS_AssistInfoList_r17 != nil || ie.Lte_NeighCellsCRS_Assumptions_r17 != nil
+	preambleBits := []bool{hasExtensions, ie.Tdd_UL_DL_ConfigurationDedicated != nil, ie.InitialDownlinkBWP != nil, len(ie.DownlinkBWP_ToReleaseList) > 0, len(ie.DownlinkBWP_ToAddModList) > 0, ie.FirstActiveDownlinkBWP_Id != nil, ie.Bwp_InactivityTimer != nil, ie.DefaultDownlinkBWP_Id != nil, ie.UplinkConfig != nil, ie.SupplementaryUplink != nil, ie.Pdcch_ServingCellConfig != nil, ie.Pdsch_ServingCellConfig != nil, ie.Csi_MeasConfig != nil, ie.SCellDeactivationTimer != nil, ie.CrossCarrierSchedulingConfig != nil, ie.Dummy1 != nil, ie.PathlossReferenceLinking != nil, ie.ServingCellMO != nil}
 	for _, bit := range preambleBits {
 		if err = w.WriteBool(bit); err != nil {
 			return err
 		}
 	}
-	if ie.tdd_UL_DL_ConfigurationDedicated != nil {
-		if err = ie.tdd_UL_DL_ConfigurationDedicated.Encode(w); err != nil {
-			return utils.WrapError("Encode tdd_UL_DL_ConfigurationDedicated", err)
+	if ie.Tdd_UL_DL_ConfigurationDedicated != nil {
+		if err = ie.Tdd_UL_DL_ConfigurationDedicated.Encode(w); err != nil {
+			return utils.WrapError("Encode Tdd_UL_DL_ConfigurationDedicated", err)
 		}
 	}
-	if ie.initialDownlinkBWP != nil {
-		if err = ie.initialDownlinkBWP.Encode(w); err != nil {
-			return utils.WrapError("Encode initialDownlinkBWP", err)
+	if ie.InitialDownlinkBWP != nil {
+		if err = ie.InitialDownlinkBWP.Encode(w); err != nil {
+			return utils.WrapError("Encode InitialDownlinkBWP", err)
 		}
 	}
-	if len(ie.downlinkBWP_ToReleaseList) > 0 {
-		tmp_downlinkBWP_ToReleaseList := utils.NewSequence[*BWP_Id]([]*BWP_Id{}, uper.Constraint{Lb: 1, Ub: maxNrofBWPs}, false)
-		for _, i := range ie.downlinkBWP_ToReleaseList {
-			tmp_downlinkBWP_ToReleaseList.Value = append(tmp_downlinkBWP_ToReleaseList.Value, &i)
+	if len(ie.DownlinkBWP_ToReleaseList) > 0 {
+		tmp_DownlinkBWP_ToReleaseList := utils.NewSequence[*BWP_Id]([]*BWP_Id{}, uper.Constraint{Lb: 1, Ub: maxNrofBWPs}, false)
+		for _, i := range ie.DownlinkBWP_ToReleaseList {
+			tmp_DownlinkBWP_ToReleaseList.Value = append(tmp_DownlinkBWP_ToReleaseList.Value, &i)
 		}
-		if err = tmp_downlinkBWP_ToReleaseList.Encode(w); err != nil {
-			return utils.WrapError("Encode downlinkBWP_ToReleaseList", err)
-		}
-	}
-	if len(ie.downlinkBWP_ToAddModList) > 0 {
-		tmp_downlinkBWP_ToAddModList := utils.NewSequence[*BWP_Downlink]([]*BWP_Downlink{}, uper.Constraint{Lb: 1, Ub: maxNrofBWPs}, false)
-		for _, i := range ie.downlinkBWP_ToAddModList {
-			tmp_downlinkBWP_ToAddModList.Value = append(tmp_downlinkBWP_ToAddModList.Value, &i)
-		}
-		if err = tmp_downlinkBWP_ToAddModList.Encode(w); err != nil {
-			return utils.WrapError("Encode downlinkBWP_ToAddModList", err)
+		if err = tmp_DownlinkBWP_ToReleaseList.Encode(w); err != nil {
+			return utils.WrapError("Encode DownlinkBWP_ToReleaseList", err)
 		}
 	}
-	if ie.firstActiveDownlinkBWP_Id != nil {
-		if err = ie.firstActiveDownlinkBWP_Id.Encode(w); err != nil {
-			return utils.WrapError("Encode firstActiveDownlinkBWP_Id", err)
+	if len(ie.DownlinkBWP_ToAddModList) > 0 {
+		tmp_DownlinkBWP_ToAddModList := utils.NewSequence[*BWP_Downlink]([]*BWP_Downlink{}, uper.Constraint{Lb: 1, Ub: maxNrofBWPs}, false)
+		for _, i := range ie.DownlinkBWP_ToAddModList {
+			tmp_DownlinkBWP_ToAddModList.Value = append(tmp_DownlinkBWP_ToAddModList.Value, &i)
+		}
+		if err = tmp_DownlinkBWP_ToAddModList.Encode(w); err != nil {
+			return utils.WrapError("Encode DownlinkBWP_ToAddModList", err)
 		}
 	}
-	if ie.bwp_InactivityTimer != nil {
-		if err = ie.bwp_InactivityTimer.Encode(w); err != nil {
-			return utils.WrapError("Encode bwp_InactivityTimer", err)
+	if ie.FirstActiveDownlinkBWP_Id != nil {
+		if err = ie.FirstActiveDownlinkBWP_Id.Encode(w); err != nil {
+			return utils.WrapError("Encode FirstActiveDownlinkBWP_Id", err)
 		}
 	}
-	if ie.defaultDownlinkBWP_Id != nil {
-		if err = ie.defaultDownlinkBWP_Id.Encode(w); err != nil {
-			return utils.WrapError("Encode defaultDownlinkBWP_Id", err)
+	if ie.Bwp_InactivityTimer != nil {
+		if err = ie.Bwp_InactivityTimer.Encode(w); err != nil {
+			return utils.WrapError("Encode Bwp_InactivityTimer", err)
 		}
 	}
-	if ie.uplinkConfig != nil {
-		if err = ie.uplinkConfig.Encode(w); err != nil {
-			return utils.WrapError("Encode uplinkConfig", err)
+	if ie.DefaultDownlinkBWP_Id != nil {
+		if err = ie.DefaultDownlinkBWP_Id.Encode(w); err != nil {
+			return utils.WrapError("Encode DefaultDownlinkBWP_Id", err)
 		}
 	}
-	if ie.supplementaryUplink != nil {
-		if err = ie.supplementaryUplink.Encode(w); err != nil {
-			return utils.WrapError("Encode supplementaryUplink", err)
+	if ie.UplinkConfig != nil {
+		if err = ie.UplinkConfig.Encode(w); err != nil {
+			return utils.WrapError("Encode UplinkConfig", err)
 		}
 	}
-	if ie.pdcch_ServingCellConfig != nil {
-		tmp_pdcch_ServingCellConfig := utils.SetupRelease[*PDCCH_ServingCellConfig]{
-			Setup: ie.pdcch_ServingCellConfig,
-		}
-		if err = tmp_pdcch_ServingCellConfig.Encode(w); err != nil {
-			return utils.WrapError("Encode pdcch_ServingCellConfig", err)
+	if ie.SupplementaryUplink != nil {
+		if err = ie.SupplementaryUplink.Encode(w); err != nil {
+			return utils.WrapError("Encode SupplementaryUplink", err)
 		}
 	}
-	if ie.pdsch_ServingCellConfig != nil {
-		tmp_pdsch_ServingCellConfig := utils.SetupRelease[*PDSCH_ServingCellConfig]{
-			Setup: ie.pdsch_ServingCellConfig,
+	if ie.Pdcch_ServingCellConfig != nil {
+		tmp_Pdcch_ServingCellConfig := utils.SetupRelease[*PDCCH_ServingCellConfig]{
+			Setup: ie.Pdcch_ServingCellConfig,
 		}
-		if err = tmp_pdsch_ServingCellConfig.Encode(w); err != nil {
-			return utils.WrapError("Encode pdsch_ServingCellConfig", err)
-		}
-	}
-	if ie.csi_MeasConfig != nil {
-		tmp_csi_MeasConfig := utils.SetupRelease[*CSI_MeasConfig]{
-			Setup: ie.csi_MeasConfig,
-		}
-		if err = tmp_csi_MeasConfig.Encode(w); err != nil {
-			return utils.WrapError("Encode csi_MeasConfig", err)
+		if err = tmp_Pdcch_ServingCellConfig.Encode(w); err != nil {
+			return utils.WrapError("Encode Pdcch_ServingCellConfig", err)
 		}
 	}
-	if ie.sCellDeactivationTimer != nil {
-		if err = ie.sCellDeactivationTimer.Encode(w); err != nil {
-			return utils.WrapError("Encode sCellDeactivationTimer", err)
+	if ie.Pdsch_ServingCellConfig != nil {
+		tmp_Pdsch_ServingCellConfig := utils.SetupRelease[*PDSCH_ServingCellConfig]{
+			Setup: ie.Pdsch_ServingCellConfig,
+		}
+		if err = tmp_Pdsch_ServingCellConfig.Encode(w); err != nil {
+			return utils.WrapError("Encode Pdsch_ServingCellConfig", err)
 		}
 	}
-	if ie.crossCarrierSchedulingConfig != nil {
-		if err = ie.crossCarrierSchedulingConfig.Encode(w); err != nil {
-			return utils.WrapError("Encode crossCarrierSchedulingConfig", err)
+	if ie.Csi_MeasConfig != nil {
+		tmp_Csi_MeasConfig := utils.SetupRelease[*CSI_MeasConfig]{
+			Setup: ie.Csi_MeasConfig,
+		}
+		if err = tmp_Csi_MeasConfig.Encode(w); err != nil {
+			return utils.WrapError("Encode Csi_MeasConfig", err)
 		}
 	}
-	if err = ie.tag_Id.Encode(w); err != nil {
-		return utils.WrapError("Encode tag_Id", err)
-	}
-	if ie.dummy1 != nil {
-		if err = ie.dummy1.Encode(w); err != nil {
-			return utils.WrapError("Encode dummy1", err)
+	if ie.SCellDeactivationTimer != nil {
+		if err = ie.SCellDeactivationTimer.Encode(w); err != nil {
+			return utils.WrapError("Encode SCellDeactivationTimer", err)
 		}
 	}
-	if ie.pathlossReferenceLinking != nil {
-		if err = ie.pathlossReferenceLinking.Encode(w); err != nil {
-			return utils.WrapError("Encode pathlossReferenceLinking", err)
+	if ie.CrossCarrierSchedulingConfig != nil {
+		if err = ie.CrossCarrierSchedulingConfig.Encode(w); err != nil {
+			return utils.WrapError("Encode CrossCarrierSchedulingConfig", err)
 		}
 	}
-	if ie.servingCellMO != nil {
-		if err = ie.servingCellMO.Encode(w); err != nil {
-			return utils.WrapError("Encode servingCellMO", err)
+	if err = ie.Tag_Id.Encode(w); err != nil {
+		return utils.WrapError("Encode Tag_Id", err)
+	}
+	if ie.Dummy1 != nil {
+		if err = ie.Dummy1.Encode(w); err != nil {
+			return utils.WrapError("Encode Dummy1", err)
+		}
+	}
+	if ie.PathlossReferenceLinking != nil {
+		if err = ie.PathlossReferenceLinking.Encode(w); err != nil {
+			return utils.WrapError("Encode PathlossReferenceLinking", err)
+		}
+	}
+	if ie.ServingCellMO != nil {
+		if err = ie.ServingCellMO.Encode(w); err != nil {
+			return utils.WrapError("Encode ServingCellMO", err)
 		}
 	}
 	if hasExtensions {
 		// Extension bitmap: 5 bits for 5 extension groups
-		extBitmap := []bool{ie.lte_CRS_ToMatchAround != nil || len(ie.rateMatchPatternToAddModList) > 0 || len(ie.rateMatchPatternToReleaseList) > 0 || len(ie.downlinkChannelBW_PerSCS_List) > 0, ie.supplementaryUplinkRelease_r16 != nil || ie.tdd_UL_DL_ConfigurationDedicated_IAB_MT_r16 != nil || ie.dormantBWP_Config_r16 != nil || ie.ca_SlotOffset_r16 != nil || ie.dummy2 != nil || len(ie.intraCellGuardBandsDL_List_r16) > 0 || len(ie.intraCellGuardBandsUL_List_r16) > 0 || ie.csi_RS_ValidationWithDCI_r16 != nil || ie.lte_CRS_PatternList1_r16 != nil || ie.lte_CRS_PatternList2_r16 != nil || ie.crs_RateMatch_PerCORESETPoolIndex_r16 != nil || ie.enableTwoDefaultTCI_States_r16 != nil || ie.enableDefaultTCI_StatePerCoresetPoolIndex_r16 != nil || ie.enableBeamSwitchTiming_r16 != nil || ie.cbg_TxDiffTBsProcessingType1_r16 != nil || ie.cbg_TxDiffTBsProcessingType2_r16 != nil, ie.directionalCollisionHandling_r16 != nil || ie.channelAccessConfig_r16 != nil, ie.nr_dl_PRS_PDC_Info_r17 != nil || ie.semiStaticChannelAccessConfigUE_r17 != nil || ie.mimoParam_r17 != nil || ie.channelAccessMode2_r17 != nil || ie.timeDomainHARQ_BundlingType1_r17 != nil || ie.nrofHARQ_BundlingGroups_r17 != nil || ie.fdmed_ReceptionMulticast_r17 != nil || ie.moreThanOneNackOnlyMode_r17 != nil || ie.tci_ActivatedConfig_r17 != nil || ie.directionalCollisionHandling_DC_r17 != nil || ie.lte_NeighCellsCRS_AssistInfoList_r17 != nil, ie.lte_NeighCellsCRS_Assumptions_r17 != nil}
+		extBitmap := []bool{ie.Lte_CRS_ToMatchAround != nil || len(ie.RateMatchPatternToAddModList) > 0 || len(ie.RateMatchPatternToReleaseList) > 0 || len(ie.DownlinkChannelBW_PerSCS_List) > 0, ie.SupplementaryUplinkRelease_r16 != nil || ie.Tdd_UL_DL_ConfigurationDedicated_IAB_MT_r16 != nil || ie.DormantBWP_Config_r16 != nil || ie.Ca_SlotOffset_r16 != nil || ie.Dummy2 != nil || len(ie.IntraCellGuardBandsDL_List_r16) > 0 || len(ie.IntraCellGuardBandsUL_List_r16) > 0 || ie.Csi_RS_ValidationWithDCI_r16 != nil || ie.Lte_CRS_PatternList1_r16 != nil || ie.Lte_CRS_PatternList2_r16 != nil || ie.Crs_RateMatch_PerCORESETPoolIndex_r16 != nil || ie.EnableTwoDefaultTCI_States_r16 != nil || ie.EnableDefaultTCI_StatePerCoresetPoolIndex_r16 != nil || ie.EnableBeamSwitchTiming_r16 != nil || ie.Cbg_TxDiffTBsProcessingType1_r16 != nil || ie.Cbg_TxDiffTBsProcessingType2_r16 != nil, ie.DirectionalCollisionHandling_r16 != nil || ie.ChannelAccessConfig_r16 != nil, ie.Nr_dl_PRS_PDC_Info_r17 != nil || ie.SemiStaticChannelAccessConfigUE_r17 != nil || ie.MimoParam_r17 != nil || ie.ChannelAccessMode2_r17 != nil || ie.TimeDomainHARQ_BundlingType1_r17 != nil || ie.NrofHARQ_BundlingGroups_r17 != nil || ie.Fdmed_ReceptionMulticast_r17 != nil || ie.MoreThanOneNackOnlyMode_r17 != nil || ie.Tci_ActivatedConfig_r17 != nil || ie.DirectionalCollisionHandling_DC_r17 != nil || ie.Lte_NeighCellsCRS_AssistInfoList_r17 != nil, ie.Lte_NeighCellsCRS_Assumptions_r17 != nil}
 		if err := w.WriteExtBitMap(extBitmap); err != nil {
 			return utils.WrapError("WriteExtBitMap ServingCellConfig", err)
 		}
@@ -189,50 +189,50 @@ func (ie *ServingCellConfig) Encode(w *uper.UperWriter) error {
 			extWriter := uper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 1
-			optionals_ext_1 := []bool{ie.lte_CRS_ToMatchAround != nil, len(ie.rateMatchPatternToAddModList) > 0, len(ie.rateMatchPatternToReleaseList) > 0, len(ie.downlinkChannelBW_PerSCS_List) > 0}
+			optionals_ext_1 := []bool{ie.Lte_CRS_ToMatchAround != nil, len(ie.RateMatchPatternToAddModList) > 0, len(ie.RateMatchPatternToReleaseList) > 0, len(ie.DownlinkChannelBW_PerSCS_List) > 0}
 			for _, bit := range optionals_ext_1 {
 				if err := extWriter.WriteBool(bit); err != nil {
 					return err
 				}
 			}
 
-			// encode lte_CRS_ToMatchAround optional
-			if ie.lte_CRS_ToMatchAround != nil {
-				tmp_lte_CRS_ToMatchAround := utils.SetupRelease[*RateMatchPatternLTE_CRS]{
-					Setup: ie.lte_CRS_ToMatchAround,
+			// encode Lte_CRS_ToMatchAround optional
+			if ie.Lte_CRS_ToMatchAround != nil {
+				tmp_Lte_CRS_ToMatchAround := utils.SetupRelease[*RateMatchPatternLTE_CRS]{
+					Setup: ie.Lte_CRS_ToMatchAround,
 				}
-				if err = tmp_lte_CRS_ToMatchAround.Encode(extWriter); err != nil {
-					return utils.WrapError("Encode lte_CRS_ToMatchAround", err)
-				}
-			}
-			// encode rateMatchPatternToAddModList optional
-			if len(ie.rateMatchPatternToAddModList) > 0 {
-				tmp_rateMatchPatternToAddModList := utils.NewSequence[*RateMatchPattern]([]*RateMatchPattern{}, uper.Constraint{Lb: 1, Ub: maxNrofRateMatchPatterns}, false)
-				for _, i := range ie.rateMatchPatternToAddModList {
-					tmp_rateMatchPatternToAddModList.Value = append(tmp_rateMatchPatternToAddModList.Value, &i)
-				}
-				if err = tmp_rateMatchPatternToAddModList.Encode(extWriter); err != nil {
-					return utils.WrapError("Encode rateMatchPatternToAddModList", err)
+				if err = tmp_Lte_CRS_ToMatchAround.Encode(extWriter); err != nil {
+					return utils.WrapError("Encode Lte_CRS_ToMatchAround", err)
 				}
 			}
-			// encode rateMatchPatternToReleaseList optional
-			if len(ie.rateMatchPatternToReleaseList) > 0 {
-				tmp_rateMatchPatternToReleaseList := utils.NewSequence[*RateMatchPatternId]([]*RateMatchPatternId{}, uper.Constraint{Lb: 1, Ub: maxNrofRateMatchPatterns}, false)
-				for _, i := range ie.rateMatchPatternToReleaseList {
-					tmp_rateMatchPatternToReleaseList.Value = append(tmp_rateMatchPatternToReleaseList.Value, &i)
+			// encode RateMatchPatternToAddModList optional
+			if len(ie.RateMatchPatternToAddModList) > 0 {
+				tmp_RateMatchPatternToAddModList := utils.NewSequence[*RateMatchPattern]([]*RateMatchPattern{}, uper.Constraint{Lb: 1, Ub: maxNrofRateMatchPatterns}, false)
+				for _, i := range ie.RateMatchPatternToAddModList {
+					tmp_RateMatchPatternToAddModList.Value = append(tmp_RateMatchPatternToAddModList.Value, &i)
 				}
-				if err = tmp_rateMatchPatternToReleaseList.Encode(extWriter); err != nil {
-					return utils.WrapError("Encode rateMatchPatternToReleaseList", err)
+				if err = tmp_RateMatchPatternToAddModList.Encode(extWriter); err != nil {
+					return utils.WrapError("Encode RateMatchPatternToAddModList", err)
 				}
 			}
-			// encode downlinkChannelBW_PerSCS_List optional
-			if len(ie.downlinkChannelBW_PerSCS_List) > 0 {
-				tmp_downlinkChannelBW_PerSCS_List := utils.NewSequence[*SCS_SpecificCarrier]([]*SCS_SpecificCarrier{}, uper.Constraint{Lb: 1, Ub: maxSCSs}, false)
-				for _, i := range ie.downlinkChannelBW_PerSCS_List {
-					tmp_downlinkChannelBW_PerSCS_List.Value = append(tmp_downlinkChannelBW_PerSCS_List.Value, &i)
+			// encode RateMatchPatternToReleaseList optional
+			if len(ie.RateMatchPatternToReleaseList) > 0 {
+				tmp_RateMatchPatternToReleaseList := utils.NewSequence[*RateMatchPatternId]([]*RateMatchPatternId{}, uper.Constraint{Lb: 1, Ub: maxNrofRateMatchPatterns}, false)
+				for _, i := range ie.RateMatchPatternToReleaseList {
+					tmp_RateMatchPatternToReleaseList.Value = append(tmp_RateMatchPatternToReleaseList.Value, &i)
 				}
-				if err = tmp_downlinkChannelBW_PerSCS_List.Encode(extWriter); err != nil {
-					return utils.WrapError("Encode downlinkChannelBW_PerSCS_List", err)
+				if err = tmp_RateMatchPatternToReleaseList.Encode(extWriter); err != nil {
+					return utils.WrapError("Encode RateMatchPatternToReleaseList", err)
+				}
+			}
+			// encode DownlinkChannelBW_PerSCS_List optional
+			if len(ie.DownlinkChannelBW_PerSCS_List) > 0 {
+				tmp_DownlinkChannelBW_PerSCS_List := utils.NewSequence[*SCS_SpecificCarrier]([]*SCS_SpecificCarrier{}, uper.Constraint{Lb: 1, Ub: maxSCSs}, false)
+				for _, i := range ie.DownlinkChannelBW_PerSCS_List {
+					tmp_DownlinkChannelBW_PerSCS_List.Value = append(tmp_DownlinkChannelBW_PerSCS_List.Value, &i)
+				}
+				if err = tmp_DownlinkChannelBW_PerSCS_List.Encode(extWriter); err != nil {
+					return utils.WrapError("Encode DownlinkChannelBW_PerSCS_List", err)
 				}
 			}
 
@@ -251,127 +251,127 @@ func (ie *ServingCellConfig) Encode(w *uper.UperWriter) error {
 			extWriter := uper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 2
-			optionals_ext_2 := []bool{ie.supplementaryUplinkRelease_r16 != nil, ie.tdd_UL_DL_ConfigurationDedicated_IAB_MT_r16 != nil, ie.dormantBWP_Config_r16 != nil, ie.ca_SlotOffset_r16 != nil, ie.dummy2 != nil, len(ie.intraCellGuardBandsDL_List_r16) > 0, len(ie.intraCellGuardBandsUL_List_r16) > 0, ie.csi_RS_ValidationWithDCI_r16 != nil, ie.lte_CRS_PatternList1_r16 != nil, ie.lte_CRS_PatternList2_r16 != nil, ie.crs_RateMatch_PerCORESETPoolIndex_r16 != nil, ie.enableTwoDefaultTCI_States_r16 != nil, ie.enableDefaultTCI_StatePerCoresetPoolIndex_r16 != nil, ie.enableBeamSwitchTiming_r16 != nil, ie.cbg_TxDiffTBsProcessingType1_r16 != nil, ie.cbg_TxDiffTBsProcessingType2_r16 != nil}
+			optionals_ext_2 := []bool{ie.SupplementaryUplinkRelease_r16 != nil, ie.Tdd_UL_DL_ConfigurationDedicated_IAB_MT_r16 != nil, ie.DormantBWP_Config_r16 != nil, ie.Ca_SlotOffset_r16 != nil, ie.Dummy2 != nil, len(ie.IntraCellGuardBandsDL_List_r16) > 0, len(ie.IntraCellGuardBandsUL_List_r16) > 0, ie.Csi_RS_ValidationWithDCI_r16 != nil, ie.Lte_CRS_PatternList1_r16 != nil, ie.Lte_CRS_PatternList2_r16 != nil, ie.Crs_RateMatch_PerCORESETPoolIndex_r16 != nil, ie.EnableTwoDefaultTCI_States_r16 != nil, ie.EnableDefaultTCI_StatePerCoresetPoolIndex_r16 != nil, ie.EnableBeamSwitchTiming_r16 != nil, ie.Cbg_TxDiffTBsProcessingType1_r16 != nil, ie.Cbg_TxDiffTBsProcessingType2_r16 != nil}
 			for _, bit := range optionals_ext_2 {
 				if err := extWriter.WriteBool(bit); err != nil {
 					return err
 				}
 			}
 
-			// encode supplementaryUplinkRelease_r16 optional
-			if ie.supplementaryUplinkRelease_r16 != nil {
-				if err = ie.supplementaryUplinkRelease_r16.Encode(extWriter); err != nil {
-					return utils.WrapError("Encode supplementaryUplinkRelease_r16", err)
+			// encode SupplementaryUplinkRelease_r16 optional
+			if ie.SupplementaryUplinkRelease_r16 != nil {
+				if err = ie.SupplementaryUplinkRelease_r16.Encode(extWriter); err != nil {
+					return utils.WrapError("Encode SupplementaryUplinkRelease_r16", err)
 				}
 			}
-			// encode tdd_UL_DL_ConfigurationDedicated_IAB_MT_r16 optional
-			if ie.tdd_UL_DL_ConfigurationDedicated_IAB_MT_r16 != nil {
-				if err = ie.tdd_UL_DL_ConfigurationDedicated_IAB_MT_r16.Encode(extWriter); err != nil {
-					return utils.WrapError("Encode tdd_UL_DL_ConfigurationDedicated_IAB_MT_r16", err)
+			// encode Tdd_UL_DL_ConfigurationDedicated_IAB_MT_r16 optional
+			if ie.Tdd_UL_DL_ConfigurationDedicated_IAB_MT_r16 != nil {
+				if err = ie.Tdd_UL_DL_ConfigurationDedicated_IAB_MT_r16.Encode(extWriter); err != nil {
+					return utils.WrapError("Encode Tdd_UL_DL_ConfigurationDedicated_IAB_MT_r16", err)
 				}
 			}
-			// encode dormantBWP_Config_r16 optional
-			if ie.dormantBWP_Config_r16 != nil {
-				tmp_dormantBWP_Config_r16 := utils.SetupRelease[*DormantBWP_Config_r16]{
-					Setup: ie.dormantBWP_Config_r16,
+			// encode DormantBWP_Config_r16 optional
+			if ie.DormantBWP_Config_r16 != nil {
+				tmp_DormantBWP_Config_r16 := utils.SetupRelease[*DormantBWP_Config_r16]{
+					Setup: ie.DormantBWP_Config_r16,
 				}
-				if err = tmp_dormantBWP_Config_r16.Encode(extWriter); err != nil {
-					return utils.WrapError("Encode dormantBWP_Config_r16", err)
-				}
-			}
-			// encode ca_SlotOffset_r16 optional
-			if ie.ca_SlotOffset_r16 != nil {
-				if err = ie.ca_SlotOffset_r16.Encode(extWriter); err != nil {
-					return utils.WrapError("Encode ca_SlotOffset_r16", err)
+				if err = tmp_DormantBWP_Config_r16.Encode(extWriter); err != nil {
+					return utils.WrapError("Encode DormantBWP_Config_r16", err)
 				}
 			}
-			// encode dummy2 optional
-			if ie.dummy2 != nil {
-				tmp_dummy2 := utils.SetupRelease[*DummyJ]{
-					Setup: ie.dummy2,
-				}
-				if err = tmp_dummy2.Encode(extWriter); err != nil {
-					return utils.WrapError("Encode dummy2", err)
+			// encode Ca_SlotOffset_r16 optional
+			if ie.Ca_SlotOffset_r16 != nil {
+				if err = ie.Ca_SlotOffset_r16.Encode(extWriter); err != nil {
+					return utils.WrapError("Encode Ca_SlotOffset_r16", err)
 				}
 			}
-			// encode intraCellGuardBandsDL_List_r16 optional
-			if len(ie.intraCellGuardBandsDL_List_r16) > 0 {
-				tmp_intraCellGuardBandsDL_List_r16 := utils.NewSequence[*IntraCellGuardBandsPerSCS_r16]([]*IntraCellGuardBandsPerSCS_r16{}, uper.Constraint{Lb: 1, Ub: maxSCSs}, false)
-				for _, i := range ie.intraCellGuardBandsDL_List_r16 {
-					tmp_intraCellGuardBandsDL_List_r16.Value = append(tmp_intraCellGuardBandsDL_List_r16.Value, &i)
+			// encode Dummy2 optional
+			if ie.Dummy2 != nil {
+				tmp_Dummy2 := utils.SetupRelease[*DummyJ]{
+					Setup: ie.Dummy2,
 				}
-				if err = tmp_intraCellGuardBandsDL_List_r16.Encode(extWriter); err != nil {
-					return utils.WrapError("Encode intraCellGuardBandsDL_List_r16", err)
-				}
-			}
-			// encode intraCellGuardBandsUL_List_r16 optional
-			if len(ie.intraCellGuardBandsUL_List_r16) > 0 {
-				tmp_intraCellGuardBandsUL_List_r16 := utils.NewSequence[*IntraCellGuardBandsPerSCS_r16]([]*IntraCellGuardBandsPerSCS_r16{}, uper.Constraint{Lb: 1, Ub: maxSCSs}, false)
-				for _, i := range ie.intraCellGuardBandsUL_List_r16 {
-					tmp_intraCellGuardBandsUL_List_r16.Value = append(tmp_intraCellGuardBandsUL_List_r16.Value, &i)
-				}
-				if err = tmp_intraCellGuardBandsUL_List_r16.Encode(extWriter); err != nil {
-					return utils.WrapError("Encode intraCellGuardBandsUL_List_r16", err)
+				if err = tmp_Dummy2.Encode(extWriter); err != nil {
+					return utils.WrapError("Encode Dummy2", err)
 				}
 			}
-			// encode csi_RS_ValidationWithDCI_r16 optional
-			if ie.csi_RS_ValidationWithDCI_r16 != nil {
-				if err = ie.csi_RS_ValidationWithDCI_r16.Encode(extWriter); err != nil {
-					return utils.WrapError("Encode csi_RS_ValidationWithDCI_r16", err)
+			// encode IntraCellGuardBandsDL_List_r16 optional
+			if len(ie.IntraCellGuardBandsDL_List_r16) > 0 {
+				tmp_IntraCellGuardBandsDL_List_r16 := utils.NewSequence[*IntraCellGuardBandsPerSCS_r16]([]*IntraCellGuardBandsPerSCS_r16{}, uper.Constraint{Lb: 1, Ub: maxSCSs}, false)
+				for _, i := range ie.IntraCellGuardBandsDL_List_r16 {
+					tmp_IntraCellGuardBandsDL_List_r16.Value = append(tmp_IntraCellGuardBandsDL_List_r16.Value, &i)
+				}
+				if err = tmp_IntraCellGuardBandsDL_List_r16.Encode(extWriter); err != nil {
+					return utils.WrapError("Encode IntraCellGuardBandsDL_List_r16", err)
 				}
 			}
-			// encode lte_CRS_PatternList1_r16 optional
-			if ie.lte_CRS_PatternList1_r16 != nil {
-				tmp_lte_CRS_PatternList1_r16 := utils.SetupRelease[*LTE_CRS_PatternList_r16]{
-					Setup: ie.lte_CRS_PatternList1_r16,
+			// encode IntraCellGuardBandsUL_List_r16 optional
+			if len(ie.IntraCellGuardBandsUL_List_r16) > 0 {
+				tmp_IntraCellGuardBandsUL_List_r16 := utils.NewSequence[*IntraCellGuardBandsPerSCS_r16]([]*IntraCellGuardBandsPerSCS_r16{}, uper.Constraint{Lb: 1, Ub: maxSCSs}, false)
+				for _, i := range ie.IntraCellGuardBandsUL_List_r16 {
+					tmp_IntraCellGuardBandsUL_List_r16.Value = append(tmp_IntraCellGuardBandsUL_List_r16.Value, &i)
 				}
-				if err = tmp_lte_CRS_PatternList1_r16.Encode(extWriter); err != nil {
-					return utils.WrapError("Encode lte_CRS_PatternList1_r16", err)
-				}
-			}
-			// encode lte_CRS_PatternList2_r16 optional
-			if ie.lte_CRS_PatternList2_r16 != nil {
-				tmp_lte_CRS_PatternList2_r16 := utils.SetupRelease[*LTE_CRS_PatternList_r16]{
-					Setup: ie.lte_CRS_PatternList2_r16,
-				}
-				if err = tmp_lte_CRS_PatternList2_r16.Encode(extWriter); err != nil {
-					return utils.WrapError("Encode lte_CRS_PatternList2_r16", err)
+				if err = tmp_IntraCellGuardBandsUL_List_r16.Encode(extWriter); err != nil {
+					return utils.WrapError("Encode IntraCellGuardBandsUL_List_r16", err)
 				}
 			}
-			// encode crs_RateMatch_PerCORESETPoolIndex_r16 optional
-			if ie.crs_RateMatch_PerCORESETPoolIndex_r16 != nil {
-				if err = ie.crs_RateMatch_PerCORESETPoolIndex_r16.Encode(extWriter); err != nil {
-					return utils.WrapError("Encode crs_RateMatch_PerCORESETPoolIndex_r16", err)
+			// encode Csi_RS_ValidationWithDCI_r16 optional
+			if ie.Csi_RS_ValidationWithDCI_r16 != nil {
+				if err = ie.Csi_RS_ValidationWithDCI_r16.Encode(extWriter); err != nil {
+					return utils.WrapError("Encode Csi_RS_ValidationWithDCI_r16", err)
 				}
 			}
-			// encode enableTwoDefaultTCI_States_r16 optional
-			if ie.enableTwoDefaultTCI_States_r16 != nil {
-				if err = ie.enableTwoDefaultTCI_States_r16.Encode(extWriter); err != nil {
-					return utils.WrapError("Encode enableTwoDefaultTCI_States_r16", err)
+			// encode Lte_CRS_PatternList1_r16 optional
+			if ie.Lte_CRS_PatternList1_r16 != nil {
+				tmp_Lte_CRS_PatternList1_r16 := utils.SetupRelease[*LTE_CRS_PatternList_r16]{
+					Setup: ie.Lte_CRS_PatternList1_r16,
+				}
+				if err = tmp_Lte_CRS_PatternList1_r16.Encode(extWriter); err != nil {
+					return utils.WrapError("Encode Lte_CRS_PatternList1_r16", err)
 				}
 			}
-			// encode enableDefaultTCI_StatePerCoresetPoolIndex_r16 optional
-			if ie.enableDefaultTCI_StatePerCoresetPoolIndex_r16 != nil {
-				if err = ie.enableDefaultTCI_StatePerCoresetPoolIndex_r16.Encode(extWriter); err != nil {
-					return utils.WrapError("Encode enableDefaultTCI_StatePerCoresetPoolIndex_r16", err)
+			// encode Lte_CRS_PatternList2_r16 optional
+			if ie.Lte_CRS_PatternList2_r16 != nil {
+				tmp_Lte_CRS_PatternList2_r16 := utils.SetupRelease[*LTE_CRS_PatternList_r16]{
+					Setup: ie.Lte_CRS_PatternList2_r16,
+				}
+				if err = tmp_Lte_CRS_PatternList2_r16.Encode(extWriter); err != nil {
+					return utils.WrapError("Encode Lte_CRS_PatternList2_r16", err)
 				}
 			}
-			// encode enableBeamSwitchTiming_r16 optional
-			if ie.enableBeamSwitchTiming_r16 != nil {
-				if err = ie.enableBeamSwitchTiming_r16.Encode(extWriter); err != nil {
-					return utils.WrapError("Encode enableBeamSwitchTiming_r16", err)
+			// encode Crs_RateMatch_PerCORESETPoolIndex_r16 optional
+			if ie.Crs_RateMatch_PerCORESETPoolIndex_r16 != nil {
+				if err = ie.Crs_RateMatch_PerCORESETPoolIndex_r16.Encode(extWriter); err != nil {
+					return utils.WrapError("Encode Crs_RateMatch_PerCORESETPoolIndex_r16", err)
 				}
 			}
-			// encode cbg_TxDiffTBsProcessingType1_r16 optional
-			if ie.cbg_TxDiffTBsProcessingType1_r16 != nil {
-				if err = ie.cbg_TxDiffTBsProcessingType1_r16.Encode(extWriter); err != nil {
-					return utils.WrapError("Encode cbg_TxDiffTBsProcessingType1_r16", err)
+			// encode EnableTwoDefaultTCI_States_r16 optional
+			if ie.EnableTwoDefaultTCI_States_r16 != nil {
+				if err = ie.EnableTwoDefaultTCI_States_r16.Encode(extWriter); err != nil {
+					return utils.WrapError("Encode EnableTwoDefaultTCI_States_r16", err)
 				}
 			}
-			// encode cbg_TxDiffTBsProcessingType2_r16 optional
-			if ie.cbg_TxDiffTBsProcessingType2_r16 != nil {
-				if err = ie.cbg_TxDiffTBsProcessingType2_r16.Encode(extWriter); err != nil {
-					return utils.WrapError("Encode cbg_TxDiffTBsProcessingType2_r16", err)
+			// encode EnableDefaultTCI_StatePerCoresetPoolIndex_r16 optional
+			if ie.EnableDefaultTCI_StatePerCoresetPoolIndex_r16 != nil {
+				if err = ie.EnableDefaultTCI_StatePerCoresetPoolIndex_r16.Encode(extWriter); err != nil {
+					return utils.WrapError("Encode EnableDefaultTCI_StatePerCoresetPoolIndex_r16", err)
+				}
+			}
+			// encode EnableBeamSwitchTiming_r16 optional
+			if ie.EnableBeamSwitchTiming_r16 != nil {
+				if err = ie.EnableBeamSwitchTiming_r16.Encode(extWriter); err != nil {
+					return utils.WrapError("Encode EnableBeamSwitchTiming_r16", err)
+				}
+			}
+			// encode Cbg_TxDiffTBsProcessingType1_r16 optional
+			if ie.Cbg_TxDiffTBsProcessingType1_r16 != nil {
+				if err = ie.Cbg_TxDiffTBsProcessingType1_r16.Encode(extWriter); err != nil {
+					return utils.WrapError("Encode Cbg_TxDiffTBsProcessingType1_r16", err)
+				}
+			}
+			// encode Cbg_TxDiffTBsProcessingType2_r16 optional
+			if ie.Cbg_TxDiffTBsProcessingType2_r16 != nil {
+				if err = ie.Cbg_TxDiffTBsProcessingType2_r16.Encode(extWriter); err != nil {
+					return utils.WrapError("Encode Cbg_TxDiffTBsProcessingType2_r16", err)
 				}
 			}
 
@@ -390,26 +390,26 @@ func (ie *ServingCellConfig) Encode(w *uper.UperWriter) error {
 			extWriter := uper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 3
-			optionals_ext_3 := []bool{ie.directionalCollisionHandling_r16 != nil, ie.channelAccessConfig_r16 != nil}
+			optionals_ext_3 := []bool{ie.DirectionalCollisionHandling_r16 != nil, ie.ChannelAccessConfig_r16 != nil}
 			for _, bit := range optionals_ext_3 {
 				if err := extWriter.WriteBool(bit); err != nil {
 					return err
 				}
 			}
 
-			// encode directionalCollisionHandling_r16 optional
-			if ie.directionalCollisionHandling_r16 != nil {
-				if err = ie.directionalCollisionHandling_r16.Encode(extWriter); err != nil {
-					return utils.WrapError("Encode directionalCollisionHandling_r16", err)
+			// encode DirectionalCollisionHandling_r16 optional
+			if ie.DirectionalCollisionHandling_r16 != nil {
+				if err = ie.DirectionalCollisionHandling_r16.Encode(extWriter); err != nil {
+					return utils.WrapError("Encode DirectionalCollisionHandling_r16", err)
 				}
 			}
-			// encode channelAccessConfig_r16 optional
-			if ie.channelAccessConfig_r16 != nil {
-				tmp_channelAccessConfig_r16 := utils.SetupRelease[*ChannelAccessConfig_r16]{
-					Setup: ie.channelAccessConfig_r16,
+			// encode ChannelAccessConfig_r16 optional
+			if ie.ChannelAccessConfig_r16 != nil {
+				tmp_ChannelAccessConfig_r16 := utils.SetupRelease[*ChannelAccessConfig_r16]{
+					Setup: ie.ChannelAccessConfig_r16,
 				}
-				if err = tmp_channelAccessConfig_r16.Encode(extWriter); err != nil {
-					return utils.WrapError("Encode channelAccessConfig_r16", err)
+				if err = tmp_ChannelAccessConfig_r16.Encode(extWriter); err != nil {
+					return utils.WrapError("Encode ChannelAccessConfig_r16", err)
 				}
 			}
 
@@ -428,89 +428,89 @@ func (ie *ServingCellConfig) Encode(w *uper.UperWriter) error {
 			extWriter := uper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 4
-			optionals_ext_4 := []bool{ie.nr_dl_PRS_PDC_Info_r17 != nil, ie.semiStaticChannelAccessConfigUE_r17 != nil, ie.mimoParam_r17 != nil, ie.channelAccessMode2_r17 != nil, ie.timeDomainHARQ_BundlingType1_r17 != nil, ie.nrofHARQ_BundlingGroups_r17 != nil, ie.fdmed_ReceptionMulticast_r17 != nil, ie.moreThanOneNackOnlyMode_r17 != nil, ie.tci_ActivatedConfig_r17 != nil, ie.directionalCollisionHandling_DC_r17 != nil, ie.lte_NeighCellsCRS_AssistInfoList_r17 != nil}
+			optionals_ext_4 := []bool{ie.Nr_dl_PRS_PDC_Info_r17 != nil, ie.SemiStaticChannelAccessConfigUE_r17 != nil, ie.MimoParam_r17 != nil, ie.ChannelAccessMode2_r17 != nil, ie.TimeDomainHARQ_BundlingType1_r17 != nil, ie.NrofHARQ_BundlingGroups_r17 != nil, ie.Fdmed_ReceptionMulticast_r17 != nil, ie.MoreThanOneNackOnlyMode_r17 != nil, ie.Tci_ActivatedConfig_r17 != nil, ie.DirectionalCollisionHandling_DC_r17 != nil, ie.Lte_NeighCellsCRS_AssistInfoList_r17 != nil}
 			for _, bit := range optionals_ext_4 {
 				if err := extWriter.WriteBool(bit); err != nil {
 					return err
 				}
 			}
 
-			// encode nr_dl_PRS_PDC_Info_r17 optional
-			if ie.nr_dl_PRS_PDC_Info_r17 != nil {
-				tmp_nr_dl_PRS_PDC_Info_r17 := utils.SetupRelease[*NR_DL_PRS_PDC_Info_r17]{
-					Setup: ie.nr_dl_PRS_PDC_Info_r17,
+			// encode Nr_dl_PRS_PDC_Info_r17 optional
+			if ie.Nr_dl_PRS_PDC_Info_r17 != nil {
+				tmp_Nr_dl_PRS_PDC_Info_r17 := utils.SetupRelease[*NR_DL_PRS_PDC_Info_r17]{
+					Setup: ie.Nr_dl_PRS_PDC_Info_r17,
 				}
-				if err = tmp_nr_dl_PRS_PDC_Info_r17.Encode(extWriter); err != nil {
-					return utils.WrapError("Encode nr_dl_PRS_PDC_Info_r17", err)
-				}
-			}
-			// encode semiStaticChannelAccessConfigUE_r17 optional
-			if ie.semiStaticChannelAccessConfigUE_r17 != nil {
-				tmp_semiStaticChannelAccessConfigUE_r17 := utils.SetupRelease[*SemiStaticChannelAccessConfigUE_r17]{
-					Setup: ie.semiStaticChannelAccessConfigUE_r17,
-				}
-				if err = tmp_semiStaticChannelAccessConfigUE_r17.Encode(extWriter); err != nil {
-					return utils.WrapError("Encode semiStaticChannelAccessConfigUE_r17", err)
+				if err = tmp_Nr_dl_PRS_PDC_Info_r17.Encode(extWriter); err != nil {
+					return utils.WrapError("Encode Nr_dl_PRS_PDC_Info_r17", err)
 				}
 			}
-			// encode mimoParam_r17 optional
-			if ie.mimoParam_r17 != nil {
-				tmp_mimoParam_r17 := utils.SetupRelease[*MIMOParam_r17]{
-					Setup: ie.mimoParam_r17,
+			// encode SemiStaticChannelAccessConfigUE_r17 optional
+			if ie.SemiStaticChannelAccessConfigUE_r17 != nil {
+				tmp_SemiStaticChannelAccessConfigUE_r17 := utils.SetupRelease[*SemiStaticChannelAccessConfigUE_r17]{
+					Setup: ie.SemiStaticChannelAccessConfigUE_r17,
 				}
-				if err = tmp_mimoParam_r17.Encode(extWriter); err != nil {
-					return utils.WrapError("Encode mimoParam_r17", err)
-				}
-			}
-			// encode channelAccessMode2_r17 optional
-			if ie.channelAccessMode2_r17 != nil {
-				if err = ie.channelAccessMode2_r17.Encode(extWriter); err != nil {
-					return utils.WrapError("Encode channelAccessMode2_r17", err)
+				if err = tmp_SemiStaticChannelAccessConfigUE_r17.Encode(extWriter); err != nil {
+					return utils.WrapError("Encode SemiStaticChannelAccessConfigUE_r17", err)
 				}
 			}
-			// encode timeDomainHARQ_BundlingType1_r17 optional
-			if ie.timeDomainHARQ_BundlingType1_r17 != nil {
-				if err = ie.timeDomainHARQ_BundlingType1_r17.Encode(extWriter); err != nil {
-					return utils.WrapError("Encode timeDomainHARQ_BundlingType1_r17", err)
+			// encode MimoParam_r17 optional
+			if ie.MimoParam_r17 != nil {
+				tmp_MimoParam_r17 := utils.SetupRelease[*MIMOParam_r17]{
+					Setup: ie.MimoParam_r17,
+				}
+				if err = tmp_MimoParam_r17.Encode(extWriter); err != nil {
+					return utils.WrapError("Encode MimoParam_r17", err)
 				}
 			}
-			// encode nrofHARQ_BundlingGroups_r17 optional
-			if ie.nrofHARQ_BundlingGroups_r17 != nil {
-				if err = ie.nrofHARQ_BundlingGroups_r17.Encode(extWriter); err != nil {
-					return utils.WrapError("Encode nrofHARQ_BundlingGroups_r17", err)
+			// encode ChannelAccessMode2_r17 optional
+			if ie.ChannelAccessMode2_r17 != nil {
+				if err = ie.ChannelAccessMode2_r17.Encode(extWriter); err != nil {
+					return utils.WrapError("Encode ChannelAccessMode2_r17", err)
 				}
 			}
-			// encode fdmed_ReceptionMulticast_r17 optional
-			if ie.fdmed_ReceptionMulticast_r17 != nil {
-				if err = ie.fdmed_ReceptionMulticast_r17.Encode(extWriter); err != nil {
-					return utils.WrapError("Encode fdmed_ReceptionMulticast_r17", err)
+			// encode TimeDomainHARQ_BundlingType1_r17 optional
+			if ie.TimeDomainHARQ_BundlingType1_r17 != nil {
+				if err = ie.TimeDomainHARQ_BundlingType1_r17.Encode(extWriter); err != nil {
+					return utils.WrapError("Encode TimeDomainHARQ_BundlingType1_r17", err)
 				}
 			}
-			// encode moreThanOneNackOnlyMode_r17 optional
-			if ie.moreThanOneNackOnlyMode_r17 != nil {
-				if err = ie.moreThanOneNackOnlyMode_r17.Encode(extWriter); err != nil {
-					return utils.WrapError("Encode moreThanOneNackOnlyMode_r17", err)
+			// encode NrofHARQ_BundlingGroups_r17 optional
+			if ie.NrofHARQ_BundlingGroups_r17 != nil {
+				if err = ie.NrofHARQ_BundlingGroups_r17.Encode(extWriter); err != nil {
+					return utils.WrapError("Encode NrofHARQ_BundlingGroups_r17", err)
 				}
 			}
-			// encode tci_ActivatedConfig_r17 optional
-			if ie.tci_ActivatedConfig_r17 != nil {
-				if err = ie.tci_ActivatedConfig_r17.Encode(extWriter); err != nil {
-					return utils.WrapError("Encode tci_ActivatedConfig_r17", err)
+			// encode Fdmed_ReceptionMulticast_r17 optional
+			if ie.Fdmed_ReceptionMulticast_r17 != nil {
+				if err = ie.Fdmed_ReceptionMulticast_r17.Encode(extWriter); err != nil {
+					return utils.WrapError("Encode Fdmed_ReceptionMulticast_r17", err)
 				}
 			}
-			// encode directionalCollisionHandling_DC_r17 optional
-			if ie.directionalCollisionHandling_DC_r17 != nil {
-				if err = ie.directionalCollisionHandling_DC_r17.Encode(extWriter); err != nil {
-					return utils.WrapError("Encode directionalCollisionHandling_DC_r17", err)
+			// encode MoreThanOneNackOnlyMode_r17 optional
+			if ie.MoreThanOneNackOnlyMode_r17 != nil {
+				if err = ie.MoreThanOneNackOnlyMode_r17.Encode(extWriter); err != nil {
+					return utils.WrapError("Encode MoreThanOneNackOnlyMode_r17", err)
 				}
 			}
-			// encode lte_NeighCellsCRS_AssistInfoList_r17 optional
-			if ie.lte_NeighCellsCRS_AssistInfoList_r17 != nil {
-				tmp_lte_NeighCellsCRS_AssistInfoList_r17 := utils.SetupRelease[*LTE_NeighCellsCRS_AssistInfoList_r17]{
-					Setup: ie.lte_NeighCellsCRS_AssistInfoList_r17,
+			// encode Tci_ActivatedConfig_r17 optional
+			if ie.Tci_ActivatedConfig_r17 != nil {
+				if err = ie.Tci_ActivatedConfig_r17.Encode(extWriter); err != nil {
+					return utils.WrapError("Encode Tci_ActivatedConfig_r17", err)
 				}
-				if err = tmp_lte_NeighCellsCRS_AssistInfoList_r17.Encode(extWriter); err != nil {
-					return utils.WrapError("Encode lte_NeighCellsCRS_AssistInfoList_r17", err)
+			}
+			// encode DirectionalCollisionHandling_DC_r17 optional
+			if ie.DirectionalCollisionHandling_DC_r17 != nil {
+				if err = ie.DirectionalCollisionHandling_DC_r17.Encode(extWriter); err != nil {
+					return utils.WrapError("Encode DirectionalCollisionHandling_DC_r17", err)
+				}
+			}
+			// encode Lte_NeighCellsCRS_AssistInfoList_r17 optional
+			if ie.Lte_NeighCellsCRS_AssistInfoList_r17 != nil {
+				tmp_Lte_NeighCellsCRS_AssistInfoList_r17 := utils.SetupRelease[*LTE_NeighCellsCRS_AssistInfoList_r17]{
+					Setup: ie.Lte_NeighCellsCRS_AssistInfoList_r17,
+				}
+				if err = tmp_Lte_NeighCellsCRS_AssistInfoList_r17.Encode(extWriter); err != nil {
+					return utils.WrapError("Encode Lte_NeighCellsCRS_AssistInfoList_r17", err)
 				}
 			}
 
@@ -529,17 +529,17 @@ func (ie *ServingCellConfig) Encode(w *uper.UperWriter) error {
 			extWriter := uper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 5
-			optionals_ext_5 := []bool{ie.lte_NeighCellsCRS_Assumptions_r17 != nil}
+			optionals_ext_5 := []bool{ie.Lte_NeighCellsCRS_Assumptions_r17 != nil}
 			for _, bit := range optionals_ext_5 {
 				if err := extWriter.WriteBool(bit); err != nil {
 					return err
 				}
 			}
 
-			// encode lte_NeighCellsCRS_Assumptions_r17 optional
-			if ie.lte_NeighCellsCRS_Assumptions_r17 != nil {
-				if err = ie.lte_NeighCellsCRS_Assumptions_r17.Encode(extWriter); err != nil {
-					return utils.WrapError("Encode lte_NeighCellsCRS_Assumptions_r17", err)
+			// encode Lte_NeighCellsCRS_Assumptions_r17 optional
+			if ie.Lte_NeighCellsCRS_Assumptions_r17 != nil {
+				if err = ie.Lte_NeighCellsCRS_Assumptions_r17.Encode(extWriter); err != nil {
+					return utils.WrapError("Encode Lte_NeighCellsCRS_Assumptions_r17", err)
 				}
 			}
 
@@ -561,194 +561,194 @@ func (ie *ServingCellConfig) Decode(r *uper.UperReader) error {
 	if extensionBit, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var tdd_UL_DL_ConfigurationDedicatedPresent bool
-	if tdd_UL_DL_ConfigurationDedicatedPresent, err = r.ReadBool(); err != nil {
+	var Tdd_UL_DL_ConfigurationDedicatedPresent bool
+	if Tdd_UL_DL_ConfigurationDedicatedPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var initialDownlinkBWPPresent bool
-	if initialDownlinkBWPPresent, err = r.ReadBool(); err != nil {
+	var InitialDownlinkBWPPresent bool
+	if InitialDownlinkBWPPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var downlinkBWP_ToReleaseListPresent bool
-	if downlinkBWP_ToReleaseListPresent, err = r.ReadBool(); err != nil {
+	var DownlinkBWP_ToReleaseListPresent bool
+	if DownlinkBWP_ToReleaseListPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var downlinkBWP_ToAddModListPresent bool
-	if downlinkBWP_ToAddModListPresent, err = r.ReadBool(); err != nil {
+	var DownlinkBWP_ToAddModListPresent bool
+	if DownlinkBWP_ToAddModListPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var firstActiveDownlinkBWP_IdPresent bool
-	if firstActiveDownlinkBWP_IdPresent, err = r.ReadBool(); err != nil {
+	var FirstActiveDownlinkBWP_IdPresent bool
+	if FirstActiveDownlinkBWP_IdPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var bwp_InactivityTimerPresent bool
-	if bwp_InactivityTimerPresent, err = r.ReadBool(); err != nil {
+	var Bwp_InactivityTimerPresent bool
+	if Bwp_InactivityTimerPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var defaultDownlinkBWP_IdPresent bool
-	if defaultDownlinkBWP_IdPresent, err = r.ReadBool(); err != nil {
+	var DefaultDownlinkBWP_IdPresent bool
+	if DefaultDownlinkBWP_IdPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var uplinkConfigPresent bool
-	if uplinkConfigPresent, err = r.ReadBool(); err != nil {
+	var UplinkConfigPresent bool
+	if UplinkConfigPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var supplementaryUplinkPresent bool
-	if supplementaryUplinkPresent, err = r.ReadBool(); err != nil {
+	var SupplementaryUplinkPresent bool
+	if SupplementaryUplinkPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var pdcch_ServingCellConfigPresent bool
-	if pdcch_ServingCellConfigPresent, err = r.ReadBool(); err != nil {
+	var Pdcch_ServingCellConfigPresent bool
+	if Pdcch_ServingCellConfigPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var pdsch_ServingCellConfigPresent bool
-	if pdsch_ServingCellConfigPresent, err = r.ReadBool(); err != nil {
+	var Pdsch_ServingCellConfigPresent bool
+	if Pdsch_ServingCellConfigPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var csi_MeasConfigPresent bool
-	if csi_MeasConfigPresent, err = r.ReadBool(); err != nil {
+	var Csi_MeasConfigPresent bool
+	if Csi_MeasConfigPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var sCellDeactivationTimerPresent bool
-	if sCellDeactivationTimerPresent, err = r.ReadBool(); err != nil {
+	var SCellDeactivationTimerPresent bool
+	if SCellDeactivationTimerPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var crossCarrierSchedulingConfigPresent bool
-	if crossCarrierSchedulingConfigPresent, err = r.ReadBool(); err != nil {
+	var CrossCarrierSchedulingConfigPresent bool
+	if CrossCarrierSchedulingConfigPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var dummy1Present bool
-	if dummy1Present, err = r.ReadBool(); err != nil {
+	var Dummy1Present bool
+	if Dummy1Present, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var pathlossReferenceLinkingPresent bool
-	if pathlossReferenceLinkingPresent, err = r.ReadBool(); err != nil {
+	var PathlossReferenceLinkingPresent bool
+	if PathlossReferenceLinkingPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var servingCellMOPresent bool
-	if servingCellMOPresent, err = r.ReadBool(); err != nil {
+	var ServingCellMOPresent bool
+	if ServingCellMOPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	if tdd_UL_DL_ConfigurationDedicatedPresent {
-		ie.tdd_UL_DL_ConfigurationDedicated = new(TDD_UL_DL_ConfigDedicated)
-		if err = ie.tdd_UL_DL_ConfigurationDedicated.Decode(r); err != nil {
-			return utils.WrapError("Decode tdd_UL_DL_ConfigurationDedicated", err)
+	if Tdd_UL_DL_ConfigurationDedicatedPresent {
+		ie.Tdd_UL_DL_ConfigurationDedicated = new(TDD_UL_DL_ConfigDedicated)
+		if err = ie.Tdd_UL_DL_ConfigurationDedicated.Decode(r); err != nil {
+			return utils.WrapError("Decode Tdd_UL_DL_ConfigurationDedicated", err)
 		}
 	}
-	if initialDownlinkBWPPresent {
-		ie.initialDownlinkBWP = new(BWP_DownlinkDedicated)
-		if err = ie.initialDownlinkBWP.Decode(r); err != nil {
-			return utils.WrapError("Decode initialDownlinkBWP", err)
+	if InitialDownlinkBWPPresent {
+		ie.InitialDownlinkBWP = new(BWP_DownlinkDedicated)
+		if err = ie.InitialDownlinkBWP.Decode(r); err != nil {
+			return utils.WrapError("Decode InitialDownlinkBWP", err)
 		}
 	}
-	if downlinkBWP_ToReleaseListPresent {
-		tmp_downlinkBWP_ToReleaseList := utils.NewSequence[*BWP_Id]([]*BWP_Id{}, uper.Constraint{Lb: 1, Ub: maxNrofBWPs}, false)
-		fn_downlinkBWP_ToReleaseList := func() *BWP_Id {
+	if DownlinkBWP_ToReleaseListPresent {
+		tmp_DownlinkBWP_ToReleaseList := utils.NewSequence[*BWP_Id]([]*BWP_Id{}, uper.Constraint{Lb: 1, Ub: maxNrofBWPs}, false)
+		fn_DownlinkBWP_ToReleaseList := func() *BWP_Id {
 			return new(BWP_Id)
 		}
-		if err = tmp_downlinkBWP_ToReleaseList.Decode(r, fn_downlinkBWP_ToReleaseList); err != nil {
-			return utils.WrapError("Decode downlinkBWP_ToReleaseList", err)
+		if err = tmp_DownlinkBWP_ToReleaseList.Decode(r, fn_DownlinkBWP_ToReleaseList); err != nil {
+			return utils.WrapError("Decode DownlinkBWP_ToReleaseList", err)
 		}
-		ie.downlinkBWP_ToReleaseList = []BWP_Id{}
-		for _, i := range tmp_downlinkBWP_ToReleaseList.Value {
-			ie.downlinkBWP_ToReleaseList = append(ie.downlinkBWP_ToReleaseList, *i)
+		ie.DownlinkBWP_ToReleaseList = []BWP_Id{}
+		for _, i := range tmp_DownlinkBWP_ToReleaseList.Value {
+			ie.DownlinkBWP_ToReleaseList = append(ie.DownlinkBWP_ToReleaseList, *i)
 		}
 	}
-	if downlinkBWP_ToAddModListPresent {
-		tmp_downlinkBWP_ToAddModList := utils.NewSequence[*BWP_Downlink]([]*BWP_Downlink{}, uper.Constraint{Lb: 1, Ub: maxNrofBWPs}, false)
-		fn_downlinkBWP_ToAddModList := func() *BWP_Downlink {
+	if DownlinkBWP_ToAddModListPresent {
+		tmp_DownlinkBWP_ToAddModList := utils.NewSequence[*BWP_Downlink]([]*BWP_Downlink{}, uper.Constraint{Lb: 1, Ub: maxNrofBWPs}, false)
+		fn_DownlinkBWP_ToAddModList := func() *BWP_Downlink {
 			return new(BWP_Downlink)
 		}
-		if err = tmp_downlinkBWP_ToAddModList.Decode(r, fn_downlinkBWP_ToAddModList); err != nil {
-			return utils.WrapError("Decode downlinkBWP_ToAddModList", err)
+		if err = tmp_DownlinkBWP_ToAddModList.Decode(r, fn_DownlinkBWP_ToAddModList); err != nil {
+			return utils.WrapError("Decode DownlinkBWP_ToAddModList", err)
 		}
-		ie.downlinkBWP_ToAddModList = []BWP_Downlink{}
-		for _, i := range tmp_downlinkBWP_ToAddModList.Value {
-			ie.downlinkBWP_ToAddModList = append(ie.downlinkBWP_ToAddModList, *i)
-		}
-	}
-	if firstActiveDownlinkBWP_IdPresent {
-		ie.firstActiveDownlinkBWP_Id = new(BWP_Id)
-		if err = ie.firstActiveDownlinkBWP_Id.Decode(r); err != nil {
-			return utils.WrapError("Decode firstActiveDownlinkBWP_Id", err)
+		ie.DownlinkBWP_ToAddModList = []BWP_Downlink{}
+		for _, i := range tmp_DownlinkBWP_ToAddModList.Value {
+			ie.DownlinkBWP_ToAddModList = append(ie.DownlinkBWP_ToAddModList, *i)
 		}
 	}
-	if bwp_InactivityTimerPresent {
-		ie.bwp_InactivityTimer = new(ServingCellConfig_bwp_InactivityTimer)
-		if err = ie.bwp_InactivityTimer.Decode(r); err != nil {
-			return utils.WrapError("Decode bwp_InactivityTimer", err)
+	if FirstActiveDownlinkBWP_IdPresent {
+		ie.FirstActiveDownlinkBWP_Id = new(BWP_Id)
+		if err = ie.FirstActiveDownlinkBWP_Id.Decode(r); err != nil {
+			return utils.WrapError("Decode FirstActiveDownlinkBWP_Id", err)
 		}
 	}
-	if defaultDownlinkBWP_IdPresent {
-		ie.defaultDownlinkBWP_Id = new(BWP_Id)
-		if err = ie.defaultDownlinkBWP_Id.Decode(r); err != nil {
-			return utils.WrapError("Decode defaultDownlinkBWP_Id", err)
+	if Bwp_InactivityTimerPresent {
+		ie.Bwp_InactivityTimer = new(ServingCellConfig_bwp_InactivityTimer)
+		if err = ie.Bwp_InactivityTimer.Decode(r); err != nil {
+			return utils.WrapError("Decode Bwp_InactivityTimer", err)
 		}
 	}
-	if uplinkConfigPresent {
-		ie.uplinkConfig = new(UplinkConfig)
-		if err = ie.uplinkConfig.Decode(r); err != nil {
-			return utils.WrapError("Decode uplinkConfig", err)
+	if DefaultDownlinkBWP_IdPresent {
+		ie.DefaultDownlinkBWP_Id = new(BWP_Id)
+		if err = ie.DefaultDownlinkBWP_Id.Decode(r); err != nil {
+			return utils.WrapError("Decode DefaultDownlinkBWP_Id", err)
 		}
 	}
-	if supplementaryUplinkPresent {
-		ie.supplementaryUplink = new(UplinkConfig)
-		if err = ie.supplementaryUplink.Decode(r); err != nil {
-			return utils.WrapError("Decode supplementaryUplink", err)
+	if UplinkConfigPresent {
+		ie.UplinkConfig = new(UplinkConfig)
+		if err = ie.UplinkConfig.Decode(r); err != nil {
+			return utils.WrapError("Decode UplinkConfig", err)
 		}
 	}
-	if pdcch_ServingCellConfigPresent {
-		tmp_pdcch_ServingCellConfig := utils.SetupRelease[*PDCCH_ServingCellConfig]{}
-		if err = tmp_pdcch_ServingCellConfig.Decode(r); err != nil {
-			return utils.WrapError("Decode pdcch_ServingCellConfig", err)
-		}
-		ie.pdcch_ServingCellConfig = tmp_pdcch_ServingCellConfig.Setup
-	}
-	if pdsch_ServingCellConfigPresent {
-		tmp_pdsch_ServingCellConfig := utils.SetupRelease[*PDSCH_ServingCellConfig]{}
-		if err = tmp_pdsch_ServingCellConfig.Decode(r); err != nil {
-			return utils.WrapError("Decode pdsch_ServingCellConfig", err)
-		}
-		ie.pdsch_ServingCellConfig = tmp_pdsch_ServingCellConfig.Setup
-	}
-	if csi_MeasConfigPresent {
-		tmp_csi_MeasConfig := utils.SetupRelease[*CSI_MeasConfig]{}
-		if err = tmp_csi_MeasConfig.Decode(r); err != nil {
-			return utils.WrapError("Decode csi_MeasConfig", err)
-		}
-		ie.csi_MeasConfig = tmp_csi_MeasConfig.Setup
-	}
-	if sCellDeactivationTimerPresent {
-		ie.sCellDeactivationTimer = new(ServingCellConfig_sCellDeactivationTimer)
-		if err = ie.sCellDeactivationTimer.Decode(r); err != nil {
-			return utils.WrapError("Decode sCellDeactivationTimer", err)
+	if SupplementaryUplinkPresent {
+		ie.SupplementaryUplink = new(UplinkConfig)
+		if err = ie.SupplementaryUplink.Decode(r); err != nil {
+			return utils.WrapError("Decode SupplementaryUplink", err)
 		}
 	}
-	if crossCarrierSchedulingConfigPresent {
-		ie.crossCarrierSchedulingConfig = new(CrossCarrierSchedulingConfig)
-		if err = ie.crossCarrierSchedulingConfig.Decode(r); err != nil {
-			return utils.WrapError("Decode crossCarrierSchedulingConfig", err)
+	if Pdcch_ServingCellConfigPresent {
+		tmp_Pdcch_ServingCellConfig := utils.SetupRelease[*PDCCH_ServingCellConfig]{}
+		if err = tmp_Pdcch_ServingCellConfig.Decode(r); err != nil {
+			return utils.WrapError("Decode Pdcch_ServingCellConfig", err)
+		}
+		ie.Pdcch_ServingCellConfig = tmp_Pdcch_ServingCellConfig.Setup
+	}
+	if Pdsch_ServingCellConfigPresent {
+		tmp_Pdsch_ServingCellConfig := utils.SetupRelease[*PDSCH_ServingCellConfig]{}
+		if err = tmp_Pdsch_ServingCellConfig.Decode(r); err != nil {
+			return utils.WrapError("Decode Pdsch_ServingCellConfig", err)
+		}
+		ie.Pdsch_ServingCellConfig = tmp_Pdsch_ServingCellConfig.Setup
+	}
+	if Csi_MeasConfigPresent {
+		tmp_Csi_MeasConfig := utils.SetupRelease[*CSI_MeasConfig]{}
+		if err = tmp_Csi_MeasConfig.Decode(r); err != nil {
+			return utils.WrapError("Decode Csi_MeasConfig", err)
+		}
+		ie.Csi_MeasConfig = tmp_Csi_MeasConfig.Setup
+	}
+	if SCellDeactivationTimerPresent {
+		ie.SCellDeactivationTimer = new(ServingCellConfig_sCellDeactivationTimer)
+		if err = ie.SCellDeactivationTimer.Decode(r); err != nil {
+			return utils.WrapError("Decode SCellDeactivationTimer", err)
 		}
 	}
-	if err = ie.tag_Id.Decode(r); err != nil {
-		return utils.WrapError("Decode tag_Id", err)
-	}
-	if dummy1Present {
-		ie.dummy1 = new(ServingCellConfig_dummy1)
-		if err = ie.dummy1.Decode(r); err != nil {
-			return utils.WrapError("Decode dummy1", err)
+	if CrossCarrierSchedulingConfigPresent {
+		ie.CrossCarrierSchedulingConfig = new(CrossCarrierSchedulingConfig)
+		if err = ie.CrossCarrierSchedulingConfig.Decode(r); err != nil {
+			return utils.WrapError("Decode CrossCarrierSchedulingConfig", err)
 		}
 	}
-	if pathlossReferenceLinkingPresent {
-		ie.pathlossReferenceLinking = new(ServingCellConfig_pathlossReferenceLinking)
-		if err = ie.pathlossReferenceLinking.Decode(r); err != nil {
-			return utils.WrapError("Decode pathlossReferenceLinking", err)
+	if err = ie.Tag_Id.Decode(r); err != nil {
+		return utils.WrapError("Decode Tag_Id", err)
+	}
+	if Dummy1Present {
+		ie.Dummy1 = new(ServingCellConfig_dummy1)
+		if err = ie.Dummy1.Decode(r); err != nil {
+			return utils.WrapError("Decode Dummy1", err)
 		}
 	}
-	if servingCellMOPresent {
-		ie.servingCellMO = new(MeasObjectId)
-		if err = ie.servingCellMO.Decode(r); err != nil {
-			return utils.WrapError("Decode servingCellMO", err)
+	if PathlossReferenceLinkingPresent {
+		ie.PathlossReferenceLinking = new(ServingCellConfig_pathlossReferenceLinking)
+		if err = ie.PathlossReferenceLinking.Decode(r); err != nil {
+			return utils.WrapError("Decode PathlossReferenceLinking", err)
+		}
+	}
+	if ServingCellMOPresent {
+		ie.ServingCellMO = new(MeasObjectId)
+		if err = ie.ServingCellMO.Decode(r); err != nil {
+			return utils.WrapError("Decode ServingCellMO", err)
 		}
 	}
 
@@ -768,70 +768,70 @@ func (ie *ServingCellConfig) Decode(r *uper.UperReader) error {
 
 			extReader := uper.NewReader(bytes.NewReader(extBytes))
 
-			lte_CRS_ToMatchAroundPresent, err := extReader.ReadBool()
+			Lte_CRS_ToMatchAroundPresent, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			rateMatchPatternToAddModListPresent, err := extReader.ReadBool()
+			RateMatchPatternToAddModListPresent, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			rateMatchPatternToReleaseListPresent, err := extReader.ReadBool()
+			RateMatchPatternToReleaseListPresent, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			downlinkChannelBW_PerSCS_ListPresent, err := extReader.ReadBool()
+			DownlinkChannelBW_PerSCS_ListPresent, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			// decode lte_CRS_ToMatchAround optional
-			if lte_CRS_ToMatchAroundPresent {
-				tmp_lte_CRS_ToMatchAround := utils.SetupRelease[*RateMatchPatternLTE_CRS]{}
-				if err = tmp_lte_CRS_ToMatchAround.Decode(extReader); err != nil {
-					return utils.WrapError("Decode lte_CRS_ToMatchAround", err)
+			// decode Lte_CRS_ToMatchAround optional
+			if Lte_CRS_ToMatchAroundPresent {
+				tmp_Lte_CRS_ToMatchAround := utils.SetupRelease[*RateMatchPatternLTE_CRS]{}
+				if err = tmp_Lte_CRS_ToMatchAround.Decode(extReader); err != nil {
+					return utils.WrapError("Decode Lte_CRS_ToMatchAround", err)
 				}
-				ie.lte_CRS_ToMatchAround = tmp_lte_CRS_ToMatchAround.Setup
+				ie.Lte_CRS_ToMatchAround = tmp_Lte_CRS_ToMatchAround.Setup
 			}
-			// decode rateMatchPatternToAddModList optional
-			if rateMatchPatternToAddModListPresent {
-				tmp_rateMatchPatternToAddModList := utils.NewSequence[*RateMatchPattern]([]*RateMatchPattern{}, uper.Constraint{Lb: 1, Ub: maxNrofRateMatchPatterns}, false)
-				fn_rateMatchPatternToAddModList := func() *RateMatchPattern {
+			// decode RateMatchPatternToAddModList optional
+			if RateMatchPatternToAddModListPresent {
+				tmp_RateMatchPatternToAddModList := utils.NewSequence[*RateMatchPattern]([]*RateMatchPattern{}, uper.Constraint{Lb: 1, Ub: maxNrofRateMatchPatterns}, false)
+				fn_RateMatchPatternToAddModList := func() *RateMatchPattern {
 					return new(RateMatchPattern)
 				}
-				if err = tmp_rateMatchPatternToAddModList.Decode(extReader, fn_rateMatchPatternToAddModList); err != nil {
-					return utils.WrapError("Decode rateMatchPatternToAddModList", err)
+				if err = tmp_RateMatchPatternToAddModList.Decode(extReader, fn_RateMatchPatternToAddModList); err != nil {
+					return utils.WrapError("Decode RateMatchPatternToAddModList", err)
 				}
-				ie.rateMatchPatternToAddModList = []RateMatchPattern{}
-				for _, i := range tmp_rateMatchPatternToAddModList.Value {
-					ie.rateMatchPatternToAddModList = append(ie.rateMatchPatternToAddModList, *i)
+				ie.RateMatchPatternToAddModList = []RateMatchPattern{}
+				for _, i := range tmp_RateMatchPatternToAddModList.Value {
+					ie.RateMatchPatternToAddModList = append(ie.RateMatchPatternToAddModList, *i)
 				}
 			}
-			// decode rateMatchPatternToReleaseList optional
-			if rateMatchPatternToReleaseListPresent {
-				tmp_rateMatchPatternToReleaseList := utils.NewSequence[*RateMatchPatternId]([]*RateMatchPatternId{}, uper.Constraint{Lb: 1, Ub: maxNrofRateMatchPatterns}, false)
-				fn_rateMatchPatternToReleaseList := func() *RateMatchPatternId {
+			// decode RateMatchPatternToReleaseList optional
+			if RateMatchPatternToReleaseListPresent {
+				tmp_RateMatchPatternToReleaseList := utils.NewSequence[*RateMatchPatternId]([]*RateMatchPatternId{}, uper.Constraint{Lb: 1, Ub: maxNrofRateMatchPatterns}, false)
+				fn_RateMatchPatternToReleaseList := func() *RateMatchPatternId {
 					return new(RateMatchPatternId)
 				}
-				if err = tmp_rateMatchPatternToReleaseList.Decode(extReader, fn_rateMatchPatternToReleaseList); err != nil {
-					return utils.WrapError("Decode rateMatchPatternToReleaseList", err)
+				if err = tmp_RateMatchPatternToReleaseList.Decode(extReader, fn_RateMatchPatternToReleaseList); err != nil {
+					return utils.WrapError("Decode RateMatchPatternToReleaseList", err)
 				}
-				ie.rateMatchPatternToReleaseList = []RateMatchPatternId{}
-				for _, i := range tmp_rateMatchPatternToReleaseList.Value {
-					ie.rateMatchPatternToReleaseList = append(ie.rateMatchPatternToReleaseList, *i)
+				ie.RateMatchPatternToReleaseList = []RateMatchPatternId{}
+				for _, i := range tmp_RateMatchPatternToReleaseList.Value {
+					ie.RateMatchPatternToReleaseList = append(ie.RateMatchPatternToReleaseList, *i)
 				}
 			}
-			// decode downlinkChannelBW_PerSCS_List optional
-			if downlinkChannelBW_PerSCS_ListPresent {
-				tmp_downlinkChannelBW_PerSCS_List := utils.NewSequence[*SCS_SpecificCarrier]([]*SCS_SpecificCarrier{}, uper.Constraint{Lb: 1, Ub: maxSCSs}, false)
-				fn_downlinkChannelBW_PerSCS_List := func() *SCS_SpecificCarrier {
+			// decode DownlinkChannelBW_PerSCS_List optional
+			if DownlinkChannelBW_PerSCS_ListPresent {
+				tmp_DownlinkChannelBW_PerSCS_List := utils.NewSequence[*SCS_SpecificCarrier]([]*SCS_SpecificCarrier{}, uper.Constraint{Lb: 1, Ub: maxSCSs}, false)
+				fn_DownlinkChannelBW_PerSCS_List := func() *SCS_SpecificCarrier {
 					return new(SCS_SpecificCarrier)
 				}
-				if err = tmp_downlinkChannelBW_PerSCS_List.Decode(extReader, fn_downlinkChannelBW_PerSCS_List); err != nil {
-					return utils.WrapError("Decode downlinkChannelBW_PerSCS_List", err)
+				if err = tmp_DownlinkChannelBW_PerSCS_List.Decode(extReader, fn_DownlinkChannelBW_PerSCS_List); err != nil {
+					return utils.WrapError("Decode DownlinkChannelBW_PerSCS_List", err)
 				}
-				ie.downlinkChannelBW_PerSCS_List = []SCS_SpecificCarrier{}
-				for _, i := range tmp_downlinkChannelBW_PerSCS_List.Value {
-					ie.downlinkChannelBW_PerSCS_List = append(ie.downlinkChannelBW_PerSCS_List, *i)
+				ie.DownlinkChannelBW_PerSCS_List = []SCS_SpecificCarrier{}
+				for _, i := range tmp_DownlinkChannelBW_PerSCS_List.Value {
+					ie.DownlinkChannelBW_PerSCS_List = append(ie.DownlinkChannelBW_PerSCS_List, *i)
 				}
 			}
 		}
@@ -844,198 +844,198 @@ func (ie *ServingCellConfig) Decode(r *uper.UperReader) error {
 
 			extReader := uper.NewReader(bytes.NewReader(extBytes))
 
-			supplementaryUplinkRelease_r16Present, err := extReader.ReadBool()
+			SupplementaryUplinkRelease_r16Present, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			tdd_UL_DL_ConfigurationDedicated_IAB_MT_r16Present, err := extReader.ReadBool()
+			Tdd_UL_DL_ConfigurationDedicated_IAB_MT_r16Present, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			dormantBWP_Config_r16Present, err := extReader.ReadBool()
+			DormantBWP_Config_r16Present, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			ca_SlotOffset_r16Present, err := extReader.ReadBool()
+			Ca_SlotOffset_r16Present, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			dummy2Present, err := extReader.ReadBool()
+			Dummy2Present, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			intraCellGuardBandsDL_List_r16Present, err := extReader.ReadBool()
+			IntraCellGuardBandsDL_List_r16Present, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			intraCellGuardBandsUL_List_r16Present, err := extReader.ReadBool()
+			IntraCellGuardBandsUL_List_r16Present, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			csi_RS_ValidationWithDCI_r16Present, err := extReader.ReadBool()
+			Csi_RS_ValidationWithDCI_r16Present, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			lte_CRS_PatternList1_r16Present, err := extReader.ReadBool()
+			Lte_CRS_PatternList1_r16Present, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			lte_CRS_PatternList2_r16Present, err := extReader.ReadBool()
+			Lte_CRS_PatternList2_r16Present, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			crs_RateMatch_PerCORESETPoolIndex_r16Present, err := extReader.ReadBool()
+			Crs_RateMatch_PerCORESETPoolIndex_r16Present, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			enableTwoDefaultTCI_States_r16Present, err := extReader.ReadBool()
+			EnableTwoDefaultTCI_States_r16Present, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			enableDefaultTCI_StatePerCoresetPoolIndex_r16Present, err := extReader.ReadBool()
+			EnableDefaultTCI_StatePerCoresetPoolIndex_r16Present, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			enableBeamSwitchTiming_r16Present, err := extReader.ReadBool()
+			EnableBeamSwitchTiming_r16Present, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			cbg_TxDiffTBsProcessingType1_r16Present, err := extReader.ReadBool()
+			Cbg_TxDiffTBsProcessingType1_r16Present, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			cbg_TxDiffTBsProcessingType2_r16Present, err := extReader.ReadBool()
+			Cbg_TxDiffTBsProcessingType2_r16Present, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			// decode supplementaryUplinkRelease_r16 optional
-			if supplementaryUplinkRelease_r16Present {
-				ie.supplementaryUplinkRelease_r16 = new(ServingCellConfig_supplementaryUplinkRelease_r16)
-				if err = ie.supplementaryUplinkRelease_r16.Decode(extReader); err != nil {
-					return utils.WrapError("Decode supplementaryUplinkRelease_r16", err)
+			// decode SupplementaryUplinkRelease_r16 optional
+			if SupplementaryUplinkRelease_r16Present {
+				ie.SupplementaryUplinkRelease_r16 = new(ServingCellConfig_supplementaryUplinkRelease_r16)
+				if err = ie.SupplementaryUplinkRelease_r16.Decode(extReader); err != nil {
+					return utils.WrapError("Decode SupplementaryUplinkRelease_r16", err)
 				}
 			}
-			// decode tdd_UL_DL_ConfigurationDedicated_IAB_MT_r16 optional
-			if tdd_UL_DL_ConfigurationDedicated_IAB_MT_r16Present {
-				ie.tdd_UL_DL_ConfigurationDedicated_IAB_MT_r16 = new(TDD_UL_DL_ConfigDedicated_IAB_MT_r16)
-				if err = ie.tdd_UL_DL_ConfigurationDedicated_IAB_MT_r16.Decode(extReader); err != nil {
-					return utils.WrapError("Decode tdd_UL_DL_ConfigurationDedicated_IAB_MT_r16", err)
+			// decode Tdd_UL_DL_ConfigurationDedicated_IAB_MT_r16 optional
+			if Tdd_UL_DL_ConfigurationDedicated_IAB_MT_r16Present {
+				ie.Tdd_UL_DL_ConfigurationDedicated_IAB_MT_r16 = new(TDD_UL_DL_ConfigDedicated_IAB_MT_r16)
+				if err = ie.Tdd_UL_DL_ConfigurationDedicated_IAB_MT_r16.Decode(extReader); err != nil {
+					return utils.WrapError("Decode Tdd_UL_DL_ConfigurationDedicated_IAB_MT_r16", err)
 				}
 			}
-			// decode dormantBWP_Config_r16 optional
-			if dormantBWP_Config_r16Present {
-				tmp_dormantBWP_Config_r16 := utils.SetupRelease[*DormantBWP_Config_r16]{}
-				if err = tmp_dormantBWP_Config_r16.Decode(extReader); err != nil {
-					return utils.WrapError("Decode dormantBWP_Config_r16", err)
+			// decode DormantBWP_Config_r16 optional
+			if DormantBWP_Config_r16Present {
+				tmp_DormantBWP_Config_r16 := utils.SetupRelease[*DormantBWP_Config_r16]{}
+				if err = tmp_DormantBWP_Config_r16.Decode(extReader); err != nil {
+					return utils.WrapError("Decode DormantBWP_Config_r16", err)
 				}
-				ie.dormantBWP_Config_r16 = tmp_dormantBWP_Config_r16.Setup
+				ie.DormantBWP_Config_r16 = tmp_DormantBWP_Config_r16.Setup
 			}
-			// decode ca_SlotOffset_r16 optional
-			if ca_SlotOffset_r16Present {
-				ie.ca_SlotOffset_r16 = new(ServingCellConfig_ca_SlotOffset_r16)
-				if err = ie.ca_SlotOffset_r16.Decode(extReader); err != nil {
-					return utils.WrapError("Decode ca_SlotOffset_r16", err)
+			// decode Ca_SlotOffset_r16 optional
+			if Ca_SlotOffset_r16Present {
+				ie.Ca_SlotOffset_r16 = new(ServingCellConfig_ca_SlotOffset_r16)
+				if err = ie.Ca_SlotOffset_r16.Decode(extReader); err != nil {
+					return utils.WrapError("Decode Ca_SlotOffset_r16", err)
 				}
 			}
-			// decode dummy2 optional
-			if dummy2Present {
-				tmp_dummy2 := utils.SetupRelease[*DummyJ]{}
-				if err = tmp_dummy2.Decode(extReader); err != nil {
-					return utils.WrapError("Decode dummy2", err)
+			// decode Dummy2 optional
+			if Dummy2Present {
+				tmp_Dummy2 := utils.SetupRelease[*DummyJ]{}
+				if err = tmp_Dummy2.Decode(extReader); err != nil {
+					return utils.WrapError("Decode Dummy2", err)
 				}
-				ie.dummy2 = tmp_dummy2.Setup
+				ie.Dummy2 = tmp_Dummy2.Setup
 			}
-			// decode intraCellGuardBandsDL_List_r16 optional
-			if intraCellGuardBandsDL_List_r16Present {
-				tmp_intraCellGuardBandsDL_List_r16 := utils.NewSequence[*IntraCellGuardBandsPerSCS_r16]([]*IntraCellGuardBandsPerSCS_r16{}, uper.Constraint{Lb: 1, Ub: maxSCSs}, false)
-				fn_intraCellGuardBandsDL_List_r16 := func() *IntraCellGuardBandsPerSCS_r16 {
+			// decode IntraCellGuardBandsDL_List_r16 optional
+			if IntraCellGuardBandsDL_List_r16Present {
+				tmp_IntraCellGuardBandsDL_List_r16 := utils.NewSequence[*IntraCellGuardBandsPerSCS_r16]([]*IntraCellGuardBandsPerSCS_r16{}, uper.Constraint{Lb: 1, Ub: maxSCSs}, false)
+				fn_IntraCellGuardBandsDL_List_r16 := func() *IntraCellGuardBandsPerSCS_r16 {
 					return new(IntraCellGuardBandsPerSCS_r16)
 				}
-				if err = tmp_intraCellGuardBandsDL_List_r16.Decode(extReader, fn_intraCellGuardBandsDL_List_r16); err != nil {
-					return utils.WrapError("Decode intraCellGuardBandsDL_List_r16", err)
+				if err = tmp_IntraCellGuardBandsDL_List_r16.Decode(extReader, fn_IntraCellGuardBandsDL_List_r16); err != nil {
+					return utils.WrapError("Decode IntraCellGuardBandsDL_List_r16", err)
 				}
-				ie.intraCellGuardBandsDL_List_r16 = []IntraCellGuardBandsPerSCS_r16{}
-				for _, i := range tmp_intraCellGuardBandsDL_List_r16.Value {
-					ie.intraCellGuardBandsDL_List_r16 = append(ie.intraCellGuardBandsDL_List_r16, *i)
+				ie.IntraCellGuardBandsDL_List_r16 = []IntraCellGuardBandsPerSCS_r16{}
+				for _, i := range tmp_IntraCellGuardBandsDL_List_r16.Value {
+					ie.IntraCellGuardBandsDL_List_r16 = append(ie.IntraCellGuardBandsDL_List_r16, *i)
 				}
 			}
-			// decode intraCellGuardBandsUL_List_r16 optional
-			if intraCellGuardBandsUL_List_r16Present {
-				tmp_intraCellGuardBandsUL_List_r16 := utils.NewSequence[*IntraCellGuardBandsPerSCS_r16]([]*IntraCellGuardBandsPerSCS_r16{}, uper.Constraint{Lb: 1, Ub: maxSCSs}, false)
-				fn_intraCellGuardBandsUL_List_r16 := func() *IntraCellGuardBandsPerSCS_r16 {
+			// decode IntraCellGuardBandsUL_List_r16 optional
+			if IntraCellGuardBandsUL_List_r16Present {
+				tmp_IntraCellGuardBandsUL_List_r16 := utils.NewSequence[*IntraCellGuardBandsPerSCS_r16]([]*IntraCellGuardBandsPerSCS_r16{}, uper.Constraint{Lb: 1, Ub: maxSCSs}, false)
+				fn_IntraCellGuardBandsUL_List_r16 := func() *IntraCellGuardBandsPerSCS_r16 {
 					return new(IntraCellGuardBandsPerSCS_r16)
 				}
-				if err = tmp_intraCellGuardBandsUL_List_r16.Decode(extReader, fn_intraCellGuardBandsUL_List_r16); err != nil {
-					return utils.WrapError("Decode intraCellGuardBandsUL_List_r16", err)
+				if err = tmp_IntraCellGuardBandsUL_List_r16.Decode(extReader, fn_IntraCellGuardBandsUL_List_r16); err != nil {
+					return utils.WrapError("Decode IntraCellGuardBandsUL_List_r16", err)
 				}
-				ie.intraCellGuardBandsUL_List_r16 = []IntraCellGuardBandsPerSCS_r16{}
-				for _, i := range tmp_intraCellGuardBandsUL_List_r16.Value {
-					ie.intraCellGuardBandsUL_List_r16 = append(ie.intraCellGuardBandsUL_List_r16, *i)
-				}
-			}
-			// decode csi_RS_ValidationWithDCI_r16 optional
-			if csi_RS_ValidationWithDCI_r16Present {
-				ie.csi_RS_ValidationWithDCI_r16 = new(ServingCellConfig_csi_RS_ValidationWithDCI_r16)
-				if err = ie.csi_RS_ValidationWithDCI_r16.Decode(extReader); err != nil {
-					return utils.WrapError("Decode csi_RS_ValidationWithDCI_r16", err)
+				ie.IntraCellGuardBandsUL_List_r16 = []IntraCellGuardBandsPerSCS_r16{}
+				for _, i := range tmp_IntraCellGuardBandsUL_List_r16.Value {
+					ie.IntraCellGuardBandsUL_List_r16 = append(ie.IntraCellGuardBandsUL_List_r16, *i)
 				}
 			}
-			// decode lte_CRS_PatternList1_r16 optional
-			if lte_CRS_PatternList1_r16Present {
-				tmp_lte_CRS_PatternList1_r16 := utils.SetupRelease[*LTE_CRS_PatternList_r16]{}
-				if err = tmp_lte_CRS_PatternList1_r16.Decode(extReader); err != nil {
-					return utils.WrapError("Decode lte_CRS_PatternList1_r16", err)
-				}
-				ie.lte_CRS_PatternList1_r16 = tmp_lte_CRS_PatternList1_r16.Setup
-			}
-			// decode lte_CRS_PatternList2_r16 optional
-			if lte_CRS_PatternList2_r16Present {
-				tmp_lte_CRS_PatternList2_r16 := utils.SetupRelease[*LTE_CRS_PatternList_r16]{}
-				if err = tmp_lte_CRS_PatternList2_r16.Decode(extReader); err != nil {
-					return utils.WrapError("Decode lte_CRS_PatternList2_r16", err)
-				}
-				ie.lte_CRS_PatternList2_r16 = tmp_lte_CRS_PatternList2_r16.Setup
-			}
-			// decode crs_RateMatch_PerCORESETPoolIndex_r16 optional
-			if crs_RateMatch_PerCORESETPoolIndex_r16Present {
-				ie.crs_RateMatch_PerCORESETPoolIndex_r16 = new(ServingCellConfig_crs_RateMatch_PerCORESETPoolIndex_r16)
-				if err = ie.crs_RateMatch_PerCORESETPoolIndex_r16.Decode(extReader); err != nil {
-					return utils.WrapError("Decode crs_RateMatch_PerCORESETPoolIndex_r16", err)
+			// decode Csi_RS_ValidationWithDCI_r16 optional
+			if Csi_RS_ValidationWithDCI_r16Present {
+				ie.Csi_RS_ValidationWithDCI_r16 = new(ServingCellConfig_csi_RS_ValidationWithDCI_r16)
+				if err = ie.Csi_RS_ValidationWithDCI_r16.Decode(extReader); err != nil {
+					return utils.WrapError("Decode Csi_RS_ValidationWithDCI_r16", err)
 				}
 			}
-			// decode enableTwoDefaultTCI_States_r16 optional
-			if enableTwoDefaultTCI_States_r16Present {
-				ie.enableTwoDefaultTCI_States_r16 = new(ServingCellConfig_enableTwoDefaultTCI_States_r16)
-				if err = ie.enableTwoDefaultTCI_States_r16.Decode(extReader); err != nil {
-					return utils.WrapError("Decode enableTwoDefaultTCI_States_r16", err)
+			// decode Lte_CRS_PatternList1_r16 optional
+			if Lte_CRS_PatternList1_r16Present {
+				tmp_Lte_CRS_PatternList1_r16 := utils.SetupRelease[*LTE_CRS_PatternList_r16]{}
+				if err = tmp_Lte_CRS_PatternList1_r16.Decode(extReader); err != nil {
+					return utils.WrapError("Decode Lte_CRS_PatternList1_r16", err)
+				}
+				ie.Lte_CRS_PatternList1_r16 = tmp_Lte_CRS_PatternList1_r16.Setup
+			}
+			// decode Lte_CRS_PatternList2_r16 optional
+			if Lte_CRS_PatternList2_r16Present {
+				tmp_Lte_CRS_PatternList2_r16 := utils.SetupRelease[*LTE_CRS_PatternList_r16]{}
+				if err = tmp_Lte_CRS_PatternList2_r16.Decode(extReader); err != nil {
+					return utils.WrapError("Decode Lte_CRS_PatternList2_r16", err)
+				}
+				ie.Lte_CRS_PatternList2_r16 = tmp_Lte_CRS_PatternList2_r16.Setup
+			}
+			// decode Crs_RateMatch_PerCORESETPoolIndex_r16 optional
+			if Crs_RateMatch_PerCORESETPoolIndex_r16Present {
+				ie.Crs_RateMatch_PerCORESETPoolIndex_r16 = new(ServingCellConfig_crs_RateMatch_PerCORESETPoolIndex_r16)
+				if err = ie.Crs_RateMatch_PerCORESETPoolIndex_r16.Decode(extReader); err != nil {
+					return utils.WrapError("Decode Crs_RateMatch_PerCORESETPoolIndex_r16", err)
 				}
 			}
-			// decode enableDefaultTCI_StatePerCoresetPoolIndex_r16 optional
-			if enableDefaultTCI_StatePerCoresetPoolIndex_r16Present {
-				ie.enableDefaultTCI_StatePerCoresetPoolIndex_r16 = new(ServingCellConfig_enableDefaultTCI_StatePerCoresetPoolIndex_r16)
-				if err = ie.enableDefaultTCI_StatePerCoresetPoolIndex_r16.Decode(extReader); err != nil {
-					return utils.WrapError("Decode enableDefaultTCI_StatePerCoresetPoolIndex_r16", err)
+			// decode EnableTwoDefaultTCI_States_r16 optional
+			if EnableTwoDefaultTCI_States_r16Present {
+				ie.EnableTwoDefaultTCI_States_r16 = new(ServingCellConfig_enableTwoDefaultTCI_States_r16)
+				if err = ie.EnableTwoDefaultTCI_States_r16.Decode(extReader); err != nil {
+					return utils.WrapError("Decode EnableTwoDefaultTCI_States_r16", err)
 				}
 			}
-			// decode enableBeamSwitchTiming_r16 optional
-			if enableBeamSwitchTiming_r16Present {
-				ie.enableBeamSwitchTiming_r16 = new(ServingCellConfig_enableBeamSwitchTiming_r16)
-				if err = ie.enableBeamSwitchTiming_r16.Decode(extReader); err != nil {
-					return utils.WrapError("Decode enableBeamSwitchTiming_r16", err)
+			// decode EnableDefaultTCI_StatePerCoresetPoolIndex_r16 optional
+			if EnableDefaultTCI_StatePerCoresetPoolIndex_r16Present {
+				ie.EnableDefaultTCI_StatePerCoresetPoolIndex_r16 = new(ServingCellConfig_enableDefaultTCI_StatePerCoresetPoolIndex_r16)
+				if err = ie.EnableDefaultTCI_StatePerCoresetPoolIndex_r16.Decode(extReader); err != nil {
+					return utils.WrapError("Decode EnableDefaultTCI_StatePerCoresetPoolIndex_r16", err)
 				}
 			}
-			// decode cbg_TxDiffTBsProcessingType1_r16 optional
-			if cbg_TxDiffTBsProcessingType1_r16Present {
-				ie.cbg_TxDiffTBsProcessingType1_r16 = new(ServingCellConfig_cbg_TxDiffTBsProcessingType1_r16)
-				if err = ie.cbg_TxDiffTBsProcessingType1_r16.Decode(extReader); err != nil {
-					return utils.WrapError("Decode cbg_TxDiffTBsProcessingType1_r16", err)
+			// decode EnableBeamSwitchTiming_r16 optional
+			if EnableBeamSwitchTiming_r16Present {
+				ie.EnableBeamSwitchTiming_r16 = new(ServingCellConfig_enableBeamSwitchTiming_r16)
+				if err = ie.EnableBeamSwitchTiming_r16.Decode(extReader); err != nil {
+					return utils.WrapError("Decode EnableBeamSwitchTiming_r16", err)
 				}
 			}
-			// decode cbg_TxDiffTBsProcessingType2_r16 optional
-			if cbg_TxDiffTBsProcessingType2_r16Present {
-				ie.cbg_TxDiffTBsProcessingType2_r16 = new(ServingCellConfig_cbg_TxDiffTBsProcessingType2_r16)
-				if err = ie.cbg_TxDiffTBsProcessingType2_r16.Decode(extReader); err != nil {
-					return utils.WrapError("Decode cbg_TxDiffTBsProcessingType2_r16", err)
+			// decode Cbg_TxDiffTBsProcessingType1_r16 optional
+			if Cbg_TxDiffTBsProcessingType1_r16Present {
+				ie.Cbg_TxDiffTBsProcessingType1_r16 = new(ServingCellConfig_cbg_TxDiffTBsProcessingType1_r16)
+				if err = ie.Cbg_TxDiffTBsProcessingType1_r16.Decode(extReader); err != nil {
+					return utils.WrapError("Decode Cbg_TxDiffTBsProcessingType1_r16", err)
+				}
+			}
+			// decode Cbg_TxDiffTBsProcessingType2_r16 optional
+			if Cbg_TxDiffTBsProcessingType2_r16Present {
+				ie.Cbg_TxDiffTBsProcessingType2_r16 = new(ServingCellConfig_cbg_TxDiffTBsProcessingType2_r16)
+				if err = ie.Cbg_TxDiffTBsProcessingType2_r16.Decode(extReader); err != nil {
+					return utils.WrapError("Decode Cbg_TxDiffTBsProcessingType2_r16", err)
 				}
 			}
 		}
@@ -1048,28 +1048,28 @@ func (ie *ServingCellConfig) Decode(r *uper.UperReader) error {
 
 			extReader := uper.NewReader(bytes.NewReader(extBytes))
 
-			directionalCollisionHandling_r16Present, err := extReader.ReadBool()
+			DirectionalCollisionHandling_r16Present, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			channelAccessConfig_r16Present, err := extReader.ReadBool()
+			ChannelAccessConfig_r16Present, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			// decode directionalCollisionHandling_r16 optional
-			if directionalCollisionHandling_r16Present {
-				ie.directionalCollisionHandling_r16 = new(ServingCellConfig_directionalCollisionHandling_r16)
-				if err = ie.directionalCollisionHandling_r16.Decode(extReader); err != nil {
-					return utils.WrapError("Decode directionalCollisionHandling_r16", err)
+			// decode DirectionalCollisionHandling_r16 optional
+			if DirectionalCollisionHandling_r16Present {
+				ie.DirectionalCollisionHandling_r16 = new(ServingCellConfig_directionalCollisionHandling_r16)
+				if err = ie.DirectionalCollisionHandling_r16.Decode(extReader); err != nil {
+					return utils.WrapError("Decode DirectionalCollisionHandling_r16", err)
 				}
 			}
-			// decode channelAccessConfig_r16 optional
-			if channelAccessConfig_r16Present {
-				tmp_channelAccessConfig_r16 := utils.SetupRelease[*ChannelAccessConfig_r16]{}
-				if err = tmp_channelAccessConfig_r16.Decode(extReader); err != nil {
-					return utils.WrapError("Decode channelAccessConfig_r16", err)
+			// decode ChannelAccessConfig_r16 optional
+			if ChannelAccessConfig_r16Present {
+				tmp_ChannelAccessConfig_r16 := utils.SetupRelease[*ChannelAccessConfig_r16]{}
+				if err = tmp_ChannelAccessConfig_r16.Decode(extReader); err != nil {
+					return utils.WrapError("Decode ChannelAccessConfig_r16", err)
 				}
-				ie.channelAccessConfig_r16 = tmp_channelAccessConfig_r16.Setup
+				ie.ChannelAccessConfig_r16 = tmp_ChannelAccessConfig_r16.Setup
 			}
 		}
 		// decode extension group 4
@@ -1081,130 +1081,130 @@ func (ie *ServingCellConfig) Decode(r *uper.UperReader) error {
 
 			extReader := uper.NewReader(bytes.NewReader(extBytes))
 
-			nr_dl_PRS_PDC_Info_r17Present, err := extReader.ReadBool()
+			Nr_dl_PRS_PDC_Info_r17Present, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			semiStaticChannelAccessConfigUE_r17Present, err := extReader.ReadBool()
+			SemiStaticChannelAccessConfigUE_r17Present, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			mimoParam_r17Present, err := extReader.ReadBool()
+			MimoParam_r17Present, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			channelAccessMode2_r17Present, err := extReader.ReadBool()
+			ChannelAccessMode2_r17Present, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			timeDomainHARQ_BundlingType1_r17Present, err := extReader.ReadBool()
+			TimeDomainHARQ_BundlingType1_r17Present, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			nrofHARQ_BundlingGroups_r17Present, err := extReader.ReadBool()
+			NrofHARQ_BundlingGroups_r17Present, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			fdmed_ReceptionMulticast_r17Present, err := extReader.ReadBool()
+			Fdmed_ReceptionMulticast_r17Present, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			moreThanOneNackOnlyMode_r17Present, err := extReader.ReadBool()
+			MoreThanOneNackOnlyMode_r17Present, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			tci_ActivatedConfig_r17Present, err := extReader.ReadBool()
+			Tci_ActivatedConfig_r17Present, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			directionalCollisionHandling_DC_r17Present, err := extReader.ReadBool()
+			DirectionalCollisionHandling_DC_r17Present, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			lte_NeighCellsCRS_AssistInfoList_r17Present, err := extReader.ReadBool()
+			Lte_NeighCellsCRS_AssistInfoList_r17Present, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			// decode nr_dl_PRS_PDC_Info_r17 optional
-			if nr_dl_PRS_PDC_Info_r17Present {
-				tmp_nr_dl_PRS_PDC_Info_r17 := utils.SetupRelease[*NR_DL_PRS_PDC_Info_r17]{}
-				if err = tmp_nr_dl_PRS_PDC_Info_r17.Decode(extReader); err != nil {
-					return utils.WrapError("Decode nr_dl_PRS_PDC_Info_r17", err)
+			// decode Nr_dl_PRS_PDC_Info_r17 optional
+			if Nr_dl_PRS_PDC_Info_r17Present {
+				tmp_Nr_dl_PRS_PDC_Info_r17 := utils.SetupRelease[*NR_DL_PRS_PDC_Info_r17]{}
+				if err = tmp_Nr_dl_PRS_PDC_Info_r17.Decode(extReader); err != nil {
+					return utils.WrapError("Decode Nr_dl_PRS_PDC_Info_r17", err)
 				}
-				ie.nr_dl_PRS_PDC_Info_r17 = tmp_nr_dl_PRS_PDC_Info_r17.Setup
+				ie.Nr_dl_PRS_PDC_Info_r17 = tmp_Nr_dl_PRS_PDC_Info_r17.Setup
 			}
-			// decode semiStaticChannelAccessConfigUE_r17 optional
-			if semiStaticChannelAccessConfigUE_r17Present {
-				tmp_semiStaticChannelAccessConfigUE_r17 := utils.SetupRelease[*SemiStaticChannelAccessConfigUE_r17]{}
-				if err = tmp_semiStaticChannelAccessConfigUE_r17.Decode(extReader); err != nil {
-					return utils.WrapError("Decode semiStaticChannelAccessConfigUE_r17", err)
+			// decode SemiStaticChannelAccessConfigUE_r17 optional
+			if SemiStaticChannelAccessConfigUE_r17Present {
+				tmp_SemiStaticChannelAccessConfigUE_r17 := utils.SetupRelease[*SemiStaticChannelAccessConfigUE_r17]{}
+				if err = tmp_SemiStaticChannelAccessConfigUE_r17.Decode(extReader); err != nil {
+					return utils.WrapError("Decode SemiStaticChannelAccessConfigUE_r17", err)
 				}
-				ie.semiStaticChannelAccessConfigUE_r17 = tmp_semiStaticChannelAccessConfigUE_r17.Setup
+				ie.SemiStaticChannelAccessConfigUE_r17 = tmp_SemiStaticChannelAccessConfigUE_r17.Setup
 			}
-			// decode mimoParam_r17 optional
-			if mimoParam_r17Present {
-				tmp_mimoParam_r17 := utils.SetupRelease[*MIMOParam_r17]{}
-				if err = tmp_mimoParam_r17.Decode(extReader); err != nil {
-					return utils.WrapError("Decode mimoParam_r17", err)
+			// decode MimoParam_r17 optional
+			if MimoParam_r17Present {
+				tmp_MimoParam_r17 := utils.SetupRelease[*MIMOParam_r17]{}
+				if err = tmp_MimoParam_r17.Decode(extReader); err != nil {
+					return utils.WrapError("Decode MimoParam_r17", err)
 				}
-				ie.mimoParam_r17 = tmp_mimoParam_r17.Setup
+				ie.MimoParam_r17 = tmp_MimoParam_r17.Setup
 			}
-			// decode channelAccessMode2_r17 optional
-			if channelAccessMode2_r17Present {
-				ie.channelAccessMode2_r17 = new(ServingCellConfig_channelAccessMode2_r17)
-				if err = ie.channelAccessMode2_r17.Decode(extReader); err != nil {
-					return utils.WrapError("Decode channelAccessMode2_r17", err)
-				}
-			}
-			// decode timeDomainHARQ_BundlingType1_r17 optional
-			if timeDomainHARQ_BundlingType1_r17Present {
-				ie.timeDomainHARQ_BundlingType1_r17 = new(ServingCellConfig_timeDomainHARQ_BundlingType1_r17)
-				if err = ie.timeDomainHARQ_BundlingType1_r17.Decode(extReader); err != nil {
-					return utils.WrapError("Decode timeDomainHARQ_BundlingType1_r17", err)
+			// decode ChannelAccessMode2_r17 optional
+			if ChannelAccessMode2_r17Present {
+				ie.ChannelAccessMode2_r17 = new(ServingCellConfig_channelAccessMode2_r17)
+				if err = ie.ChannelAccessMode2_r17.Decode(extReader); err != nil {
+					return utils.WrapError("Decode ChannelAccessMode2_r17", err)
 				}
 			}
-			// decode nrofHARQ_BundlingGroups_r17 optional
-			if nrofHARQ_BundlingGroups_r17Present {
-				ie.nrofHARQ_BundlingGroups_r17 = new(ServingCellConfig_nrofHARQ_BundlingGroups_r17)
-				if err = ie.nrofHARQ_BundlingGroups_r17.Decode(extReader); err != nil {
-					return utils.WrapError("Decode nrofHARQ_BundlingGroups_r17", err)
+			// decode TimeDomainHARQ_BundlingType1_r17 optional
+			if TimeDomainHARQ_BundlingType1_r17Present {
+				ie.TimeDomainHARQ_BundlingType1_r17 = new(ServingCellConfig_timeDomainHARQ_BundlingType1_r17)
+				if err = ie.TimeDomainHARQ_BundlingType1_r17.Decode(extReader); err != nil {
+					return utils.WrapError("Decode TimeDomainHARQ_BundlingType1_r17", err)
 				}
 			}
-			// decode fdmed_ReceptionMulticast_r17 optional
-			if fdmed_ReceptionMulticast_r17Present {
-				ie.fdmed_ReceptionMulticast_r17 = new(ServingCellConfig_fdmed_ReceptionMulticast_r17)
-				if err = ie.fdmed_ReceptionMulticast_r17.Decode(extReader); err != nil {
-					return utils.WrapError("Decode fdmed_ReceptionMulticast_r17", err)
+			// decode NrofHARQ_BundlingGroups_r17 optional
+			if NrofHARQ_BundlingGroups_r17Present {
+				ie.NrofHARQ_BundlingGroups_r17 = new(ServingCellConfig_nrofHARQ_BundlingGroups_r17)
+				if err = ie.NrofHARQ_BundlingGroups_r17.Decode(extReader); err != nil {
+					return utils.WrapError("Decode NrofHARQ_BundlingGroups_r17", err)
 				}
 			}
-			// decode moreThanOneNackOnlyMode_r17 optional
-			if moreThanOneNackOnlyMode_r17Present {
-				ie.moreThanOneNackOnlyMode_r17 = new(ServingCellConfig_moreThanOneNackOnlyMode_r17)
-				if err = ie.moreThanOneNackOnlyMode_r17.Decode(extReader); err != nil {
-					return utils.WrapError("Decode moreThanOneNackOnlyMode_r17", err)
+			// decode Fdmed_ReceptionMulticast_r17 optional
+			if Fdmed_ReceptionMulticast_r17Present {
+				ie.Fdmed_ReceptionMulticast_r17 = new(ServingCellConfig_fdmed_ReceptionMulticast_r17)
+				if err = ie.Fdmed_ReceptionMulticast_r17.Decode(extReader); err != nil {
+					return utils.WrapError("Decode Fdmed_ReceptionMulticast_r17", err)
 				}
 			}
-			// decode tci_ActivatedConfig_r17 optional
-			if tci_ActivatedConfig_r17Present {
-				ie.tci_ActivatedConfig_r17 = new(TCI_ActivatedConfig_r17)
-				if err = ie.tci_ActivatedConfig_r17.Decode(extReader); err != nil {
-					return utils.WrapError("Decode tci_ActivatedConfig_r17", err)
+			// decode MoreThanOneNackOnlyMode_r17 optional
+			if MoreThanOneNackOnlyMode_r17Present {
+				ie.MoreThanOneNackOnlyMode_r17 = new(ServingCellConfig_moreThanOneNackOnlyMode_r17)
+				if err = ie.MoreThanOneNackOnlyMode_r17.Decode(extReader); err != nil {
+					return utils.WrapError("Decode MoreThanOneNackOnlyMode_r17", err)
 				}
 			}
-			// decode directionalCollisionHandling_DC_r17 optional
-			if directionalCollisionHandling_DC_r17Present {
-				ie.directionalCollisionHandling_DC_r17 = new(ServingCellConfig_directionalCollisionHandling_DC_r17)
-				if err = ie.directionalCollisionHandling_DC_r17.Decode(extReader); err != nil {
-					return utils.WrapError("Decode directionalCollisionHandling_DC_r17", err)
+			// decode Tci_ActivatedConfig_r17 optional
+			if Tci_ActivatedConfig_r17Present {
+				ie.Tci_ActivatedConfig_r17 = new(TCI_ActivatedConfig_r17)
+				if err = ie.Tci_ActivatedConfig_r17.Decode(extReader); err != nil {
+					return utils.WrapError("Decode Tci_ActivatedConfig_r17", err)
 				}
 			}
-			// decode lte_NeighCellsCRS_AssistInfoList_r17 optional
-			if lte_NeighCellsCRS_AssistInfoList_r17Present {
-				tmp_lte_NeighCellsCRS_AssistInfoList_r17 := utils.SetupRelease[*LTE_NeighCellsCRS_AssistInfoList_r17]{}
-				if err = tmp_lte_NeighCellsCRS_AssistInfoList_r17.Decode(extReader); err != nil {
-					return utils.WrapError("Decode lte_NeighCellsCRS_AssistInfoList_r17", err)
+			// decode DirectionalCollisionHandling_DC_r17 optional
+			if DirectionalCollisionHandling_DC_r17Present {
+				ie.DirectionalCollisionHandling_DC_r17 = new(ServingCellConfig_directionalCollisionHandling_DC_r17)
+				if err = ie.DirectionalCollisionHandling_DC_r17.Decode(extReader); err != nil {
+					return utils.WrapError("Decode DirectionalCollisionHandling_DC_r17", err)
 				}
-				ie.lte_NeighCellsCRS_AssistInfoList_r17 = tmp_lte_NeighCellsCRS_AssistInfoList_r17.Setup
+			}
+			// decode Lte_NeighCellsCRS_AssistInfoList_r17 optional
+			if Lte_NeighCellsCRS_AssistInfoList_r17Present {
+				tmp_Lte_NeighCellsCRS_AssistInfoList_r17 := utils.SetupRelease[*LTE_NeighCellsCRS_AssistInfoList_r17]{}
+				if err = tmp_Lte_NeighCellsCRS_AssistInfoList_r17.Decode(extReader); err != nil {
+					return utils.WrapError("Decode Lte_NeighCellsCRS_AssistInfoList_r17", err)
+				}
+				ie.Lte_NeighCellsCRS_AssistInfoList_r17 = tmp_Lte_NeighCellsCRS_AssistInfoList_r17.Setup
 			}
 		}
 		// decode extension group 5
@@ -1216,15 +1216,15 @@ func (ie *ServingCellConfig) Decode(r *uper.UperReader) error {
 
 			extReader := uper.NewReader(bytes.NewReader(extBytes))
 
-			lte_NeighCellsCRS_Assumptions_r17Present, err := extReader.ReadBool()
+			Lte_NeighCellsCRS_Assumptions_r17Present, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			// decode lte_NeighCellsCRS_Assumptions_r17 optional
-			if lte_NeighCellsCRS_Assumptions_r17Present {
-				ie.lte_NeighCellsCRS_Assumptions_r17 = new(ServingCellConfig_lte_NeighCellsCRS_Assumptions_r17)
-				if err = ie.lte_NeighCellsCRS_Assumptions_r17.Decode(extReader); err != nil {
-					return utils.WrapError("Decode lte_NeighCellsCRS_Assumptions_r17", err)
+			// decode Lte_NeighCellsCRS_Assumptions_r17 optional
+			if Lte_NeighCellsCRS_Assumptions_r17Present {
+				ie.Lte_NeighCellsCRS_Assumptions_r17 = new(ServingCellConfig_lte_NeighCellsCRS_Assumptions_r17)
+				if err = ie.Lte_NeighCellsCRS_Assumptions_r17.Decode(extReader); err != nil {
+					return utils.WrapError("Decode Lte_NeighCellsCRS_Assumptions_r17", err)
 				}
 			}
 		}

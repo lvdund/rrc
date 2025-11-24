@@ -8,45 +8,45 @@ import (
 )
 
 type SIB5 struct {
-	carrierFreqListEUTRA          *CarrierFreqListEUTRA               `optional`
-	t_ReselectionEUTRA            T_Reselection                       `madatory`
-	t_ReselectionEUTRA_SF         *SpeedStateScaleFactors             `optional`
-	lateNonCriticalExtension      *[]byte                             `optional`
-	carrierFreqListEUTRA_v1610    *CarrierFreqListEUTRA_v1610         `optional,ext-1`
-	carrierFreqListEUTRA_v1700    *CarrierFreqListEUTRA_v1700         `optional,ext-2`
-	idleModeMeasVoiceFallback_r17 *SIB5_idleModeMeasVoiceFallback_r17 `optional,ext-2`
+	CarrierFreqListEUTRA          *CarrierFreqListEUTRA               `optional`
+	T_ReselectionEUTRA            T_Reselection                       `madatory`
+	T_ReselectionEUTRA_SF         *SpeedStateScaleFactors             `optional`
+	LateNonCriticalExtension      *[]byte                             `optional`
+	CarrierFreqListEUTRA_v1610    *CarrierFreqListEUTRA_v1610         `optional,ext-1`
+	CarrierFreqListEUTRA_v1700    *CarrierFreqListEUTRA_v1700         `optional,ext-2`
+	IdleModeMeasVoiceFallback_r17 *SIB5_idleModeMeasVoiceFallback_r17 `optional,ext-2`
 }
 
 func (ie *SIB5) Encode(w *uper.UperWriter) error {
 	var err error
-	hasExtensions := ie.carrierFreqListEUTRA_v1610 != nil || ie.carrierFreqListEUTRA_v1700 != nil || ie.idleModeMeasVoiceFallback_r17 != nil
-	preambleBits := []bool{hasExtensions, ie.carrierFreqListEUTRA != nil, ie.t_ReselectionEUTRA_SF != nil, ie.lateNonCriticalExtension != nil}
+	hasExtensions := ie.CarrierFreqListEUTRA_v1610 != nil || ie.CarrierFreqListEUTRA_v1700 != nil || ie.IdleModeMeasVoiceFallback_r17 != nil
+	preambleBits := []bool{hasExtensions, ie.CarrierFreqListEUTRA != nil, ie.T_ReselectionEUTRA_SF != nil, ie.LateNonCriticalExtension != nil}
 	for _, bit := range preambleBits {
 		if err = w.WriteBool(bit); err != nil {
 			return err
 		}
 	}
-	if ie.carrierFreqListEUTRA != nil {
-		if err = ie.carrierFreqListEUTRA.Encode(w); err != nil {
-			return utils.WrapError("Encode carrierFreqListEUTRA", err)
+	if ie.CarrierFreqListEUTRA != nil {
+		if err = ie.CarrierFreqListEUTRA.Encode(w); err != nil {
+			return utils.WrapError("Encode CarrierFreqListEUTRA", err)
 		}
 	}
-	if err = ie.t_ReselectionEUTRA.Encode(w); err != nil {
-		return utils.WrapError("Encode t_ReselectionEUTRA", err)
+	if err = ie.T_ReselectionEUTRA.Encode(w); err != nil {
+		return utils.WrapError("Encode T_ReselectionEUTRA", err)
 	}
-	if ie.t_ReselectionEUTRA_SF != nil {
-		if err = ie.t_ReselectionEUTRA_SF.Encode(w); err != nil {
-			return utils.WrapError("Encode t_ReselectionEUTRA_SF", err)
+	if ie.T_ReselectionEUTRA_SF != nil {
+		if err = ie.T_ReselectionEUTRA_SF.Encode(w); err != nil {
+			return utils.WrapError("Encode T_ReselectionEUTRA_SF", err)
 		}
 	}
-	if ie.lateNonCriticalExtension != nil {
-		if err = w.WriteOctetString(*ie.lateNonCriticalExtension, &uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
-			return utils.WrapError("Encode lateNonCriticalExtension", err)
+	if ie.LateNonCriticalExtension != nil {
+		if err = w.WriteOctetString(*ie.LateNonCriticalExtension, &uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+			return utils.WrapError("Encode LateNonCriticalExtension", err)
 		}
 	}
 	if hasExtensions {
 		// Extension bitmap: 2 bits for 2 extension groups
-		extBitmap := []bool{ie.carrierFreqListEUTRA_v1610 != nil, ie.carrierFreqListEUTRA_v1700 != nil || ie.idleModeMeasVoiceFallback_r17 != nil}
+		extBitmap := []bool{ie.CarrierFreqListEUTRA_v1610 != nil, ie.CarrierFreqListEUTRA_v1700 != nil || ie.IdleModeMeasVoiceFallback_r17 != nil}
 		if err := w.WriteExtBitMap(extBitmap); err != nil {
 			return utils.WrapError("WriteExtBitMap SIB5", err)
 		}
@@ -57,17 +57,17 @@ func (ie *SIB5) Encode(w *uper.UperWriter) error {
 			extWriter := uper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 1
-			optionals_ext_1 := []bool{ie.carrierFreqListEUTRA_v1610 != nil}
+			optionals_ext_1 := []bool{ie.CarrierFreqListEUTRA_v1610 != nil}
 			for _, bit := range optionals_ext_1 {
 				if err := extWriter.WriteBool(bit); err != nil {
 					return err
 				}
 			}
 
-			// encode carrierFreqListEUTRA_v1610 optional
-			if ie.carrierFreqListEUTRA_v1610 != nil {
-				if err = ie.carrierFreqListEUTRA_v1610.Encode(extWriter); err != nil {
-					return utils.WrapError("Encode carrierFreqListEUTRA_v1610", err)
+			// encode CarrierFreqListEUTRA_v1610 optional
+			if ie.CarrierFreqListEUTRA_v1610 != nil {
+				if err = ie.CarrierFreqListEUTRA_v1610.Encode(extWriter); err != nil {
+					return utils.WrapError("Encode CarrierFreqListEUTRA_v1610", err)
 				}
 			}
 
@@ -86,23 +86,23 @@ func (ie *SIB5) Encode(w *uper.UperWriter) error {
 			extWriter := uper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 2
-			optionals_ext_2 := []bool{ie.carrierFreqListEUTRA_v1700 != nil, ie.idleModeMeasVoiceFallback_r17 != nil}
+			optionals_ext_2 := []bool{ie.CarrierFreqListEUTRA_v1700 != nil, ie.IdleModeMeasVoiceFallback_r17 != nil}
 			for _, bit := range optionals_ext_2 {
 				if err := extWriter.WriteBool(bit); err != nil {
 					return err
 				}
 			}
 
-			// encode carrierFreqListEUTRA_v1700 optional
-			if ie.carrierFreqListEUTRA_v1700 != nil {
-				if err = ie.carrierFreqListEUTRA_v1700.Encode(extWriter); err != nil {
-					return utils.WrapError("Encode carrierFreqListEUTRA_v1700", err)
+			// encode CarrierFreqListEUTRA_v1700 optional
+			if ie.CarrierFreqListEUTRA_v1700 != nil {
+				if err = ie.CarrierFreqListEUTRA_v1700.Encode(extWriter); err != nil {
+					return utils.WrapError("Encode CarrierFreqListEUTRA_v1700", err)
 				}
 			}
-			// encode idleModeMeasVoiceFallback_r17 optional
-			if ie.idleModeMeasVoiceFallback_r17 != nil {
-				if err = ie.idleModeMeasVoiceFallback_r17.Encode(extWriter); err != nil {
-					return utils.WrapError("Encode idleModeMeasVoiceFallback_r17", err)
+			// encode IdleModeMeasVoiceFallback_r17 optional
+			if ie.IdleModeMeasVoiceFallback_r17 != nil {
+				if err = ie.IdleModeMeasVoiceFallback_r17.Encode(extWriter); err != nil {
+					return utils.WrapError("Encode IdleModeMeasVoiceFallback_r17", err)
 				}
 			}
 
@@ -124,39 +124,39 @@ func (ie *SIB5) Decode(r *uper.UperReader) error {
 	if extensionBit, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var carrierFreqListEUTRAPresent bool
-	if carrierFreqListEUTRAPresent, err = r.ReadBool(); err != nil {
+	var CarrierFreqListEUTRAPresent bool
+	if CarrierFreqListEUTRAPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var t_ReselectionEUTRA_SFPresent bool
-	if t_ReselectionEUTRA_SFPresent, err = r.ReadBool(); err != nil {
+	var T_ReselectionEUTRA_SFPresent bool
+	if T_ReselectionEUTRA_SFPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var lateNonCriticalExtensionPresent bool
-	if lateNonCriticalExtensionPresent, err = r.ReadBool(); err != nil {
+	var LateNonCriticalExtensionPresent bool
+	if LateNonCriticalExtensionPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	if carrierFreqListEUTRAPresent {
-		ie.carrierFreqListEUTRA = new(CarrierFreqListEUTRA)
-		if err = ie.carrierFreqListEUTRA.Decode(r); err != nil {
-			return utils.WrapError("Decode carrierFreqListEUTRA", err)
+	if CarrierFreqListEUTRAPresent {
+		ie.CarrierFreqListEUTRA = new(CarrierFreqListEUTRA)
+		if err = ie.CarrierFreqListEUTRA.Decode(r); err != nil {
+			return utils.WrapError("Decode CarrierFreqListEUTRA", err)
 		}
 	}
-	if err = ie.t_ReselectionEUTRA.Decode(r); err != nil {
-		return utils.WrapError("Decode t_ReselectionEUTRA", err)
+	if err = ie.T_ReselectionEUTRA.Decode(r); err != nil {
+		return utils.WrapError("Decode T_ReselectionEUTRA", err)
 	}
-	if t_ReselectionEUTRA_SFPresent {
-		ie.t_ReselectionEUTRA_SF = new(SpeedStateScaleFactors)
-		if err = ie.t_ReselectionEUTRA_SF.Decode(r); err != nil {
-			return utils.WrapError("Decode t_ReselectionEUTRA_SF", err)
+	if T_ReselectionEUTRA_SFPresent {
+		ie.T_ReselectionEUTRA_SF = new(SpeedStateScaleFactors)
+		if err = ie.T_ReselectionEUTRA_SF.Decode(r); err != nil {
+			return utils.WrapError("Decode T_ReselectionEUTRA_SF", err)
 		}
 	}
-	if lateNonCriticalExtensionPresent {
-		var tmp_os_lateNonCriticalExtension []byte
-		if tmp_os_lateNonCriticalExtension, err = r.ReadOctetString(&uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
-			return utils.WrapError("Decode lateNonCriticalExtension", err)
+	if LateNonCriticalExtensionPresent {
+		var tmp_os_LateNonCriticalExtension []byte
+		if tmp_os_LateNonCriticalExtension, err = r.ReadOctetString(&uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+			return utils.WrapError("Decode LateNonCriticalExtension", err)
 		}
-		ie.lateNonCriticalExtension = &tmp_os_lateNonCriticalExtension
+		ie.LateNonCriticalExtension = &tmp_os_LateNonCriticalExtension
 	}
 
 	if extensionBit {
@@ -175,15 +175,15 @@ func (ie *SIB5) Decode(r *uper.UperReader) error {
 
 			extReader := uper.NewReader(bytes.NewReader(extBytes))
 
-			carrierFreqListEUTRA_v1610Present, err := extReader.ReadBool()
+			CarrierFreqListEUTRA_v1610Present, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			// decode carrierFreqListEUTRA_v1610 optional
-			if carrierFreqListEUTRA_v1610Present {
-				ie.carrierFreqListEUTRA_v1610 = new(CarrierFreqListEUTRA_v1610)
-				if err = ie.carrierFreqListEUTRA_v1610.Decode(extReader); err != nil {
-					return utils.WrapError("Decode carrierFreqListEUTRA_v1610", err)
+			// decode CarrierFreqListEUTRA_v1610 optional
+			if CarrierFreqListEUTRA_v1610Present {
+				ie.CarrierFreqListEUTRA_v1610 = new(CarrierFreqListEUTRA_v1610)
+				if err = ie.CarrierFreqListEUTRA_v1610.Decode(extReader); err != nil {
+					return utils.WrapError("Decode CarrierFreqListEUTRA_v1610", err)
 				}
 			}
 		}
@@ -196,26 +196,26 @@ func (ie *SIB5) Decode(r *uper.UperReader) error {
 
 			extReader := uper.NewReader(bytes.NewReader(extBytes))
 
-			carrierFreqListEUTRA_v1700Present, err := extReader.ReadBool()
+			CarrierFreqListEUTRA_v1700Present, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			idleModeMeasVoiceFallback_r17Present, err := extReader.ReadBool()
+			IdleModeMeasVoiceFallback_r17Present, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			// decode carrierFreqListEUTRA_v1700 optional
-			if carrierFreqListEUTRA_v1700Present {
-				ie.carrierFreqListEUTRA_v1700 = new(CarrierFreqListEUTRA_v1700)
-				if err = ie.carrierFreqListEUTRA_v1700.Decode(extReader); err != nil {
-					return utils.WrapError("Decode carrierFreqListEUTRA_v1700", err)
+			// decode CarrierFreqListEUTRA_v1700 optional
+			if CarrierFreqListEUTRA_v1700Present {
+				ie.CarrierFreqListEUTRA_v1700 = new(CarrierFreqListEUTRA_v1700)
+				if err = ie.CarrierFreqListEUTRA_v1700.Decode(extReader); err != nil {
+					return utils.WrapError("Decode CarrierFreqListEUTRA_v1700", err)
 				}
 			}
-			// decode idleModeMeasVoiceFallback_r17 optional
-			if idleModeMeasVoiceFallback_r17Present {
-				ie.idleModeMeasVoiceFallback_r17 = new(SIB5_idleModeMeasVoiceFallback_r17)
-				if err = ie.idleModeMeasVoiceFallback_r17.Decode(extReader); err != nil {
-					return utils.WrapError("Decode idleModeMeasVoiceFallback_r17", err)
+			// decode IdleModeMeasVoiceFallback_r17 optional
+			if IdleModeMeasVoiceFallback_r17Present {
+				ie.IdleModeMeasVoiceFallback_r17 = new(SIB5_idleModeMeasVoiceFallback_r17)
+				if err = ie.IdleModeMeasVoiceFallback_r17.Decode(extReader); err != nil {
+					return utils.WrapError("Decode IdleModeMeasVoiceFallback_r17", err)
 				}
 			}
 		}

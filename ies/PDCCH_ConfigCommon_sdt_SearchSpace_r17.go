@@ -9,14 +9,14 @@ import (
 
 const (
 	PDCCH_ConfigCommon_sdt_SearchSpace_r17_Choice_nothing uint64 = iota
-	PDCCH_ConfigCommon_sdt_SearchSpace_r17_Choice_newSearchSpace
-	PDCCH_ConfigCommon_sdt_SearchSpace_r17_Choice_existingSearchSpace
+	PDCCH_ConfigCommon_sdt_SearchSpace_r17_Choice_NewSearchSpace
+	PDCCH_ConfigCommon_sdt_SearchSpace_r17_Choice_ExistingSearchSpace
 )
 
 type PDCCH_ConfigCommon_sdt_SearchSpace_r17 struct {
 	Choice              uint64
-	newSearchSpace      *SearchSpace
-	existingSearchSpace *SearchSpaceId
+	NewSearchSpace      *SearchSpace
+	ExistingSearchSpace *SearchSpaceId
 }
 
 func (ie *PDCCH_ConfigCommon_sdt_SearchSpace_r17) Encode(w *uper.UperWriter) error {
@@ -25,13 +25,13 @@ func (ie *PDCCH_ConfigCommon_sdt_SearchSpace_r17) Encode(w *uper.UperWriter) err
 		return err
 	}
 	switch ie.Choice {
-	case PDCCH_ConfigCommon_sdt_SearchSpace_r17_Choice_newSearchSpace:
-		if err = ie.newSearchSpace.Encode(w); err != nil {
-			err = utils.WrapError("Encode newSearchSpace", err)
+	case PDCCH_ConfigCommon_sdt_SearchSpace_r17_Choice_NewSearchSpace:
+		if err = ie.NewSearchSpace.Encode(w); err != nil {
+			err = utils.WrapError("Encode NewSearchSpace", err)
 		}
-	case PDCCH_ConfigCommon_sdt_SearchSpace_r17_Choice_existingSearchSpace:
-		if err = ie.existingSearchSpace.Encode(w); err != nil {
-			err = utils.WrapError("Encode existingSearchSpace", err)
+	case PDCCH_ConfigCommon_sdt_SearchSpace_r17_Choice_ExistingSearchSpace:
+		if err = ie.ExistingSearchSpace.Encode(w); err != nil {
+			err = utils.WrapError("Encode ExistingSearchSpace", err)
 		}
 	default:
 		err = fmt.Errorf("invalid choice: %d", ie.Choice)
@@ -45,15 +45,15 @@ func (ie *PDCCH_ConfigCommon_sdt_SearchSpace_r17) Decode(r *uper.UperReader) err
 		return err
 	}
 	switch ie.Choice {
-	case PDCCH_ConfigCommon_sdt_SearchSpace_r17_Choice_newSearchSpace:
-		ie.newSearchSpace = new(SearchSpace)
-		if err = ie.newSearchSpace.Decode(r); err != nil {
-			return utils.WrapError("Decode newSearchSpace", err)
+	case PDCCH_ConfigCommon_sdt_SearchSpace_r17_Choice_NewSearchSpace:
+		ie.NewSearchSpace = new(SearchSpace)
+		if err = ie.NewSearchSpace.Decode(r); err != nil {
+			return utils.WrapError("Decode NewSearchSpace", err)
 		}
-	case PDCCH_ConfigCommon_sdt_SearchSpace_r17_Choice_existingSearchSpace:
-		ie.existingSearchSpace = new(SearchSpaceId)
-		if err = ie.existingSearchSpace.Decode(r); err != nil {
-			return utils.WrapError("Decode existingSearchSpace", err)
+	case PDCCH_ConfigCommon_sdt_SearchSpace_r17_Choice_ExistingSearchSpace:
+		ie.ExistingSearchSpace = new(SearchSpaceId)
+		if err = ie.ExistingSearchSpace.Decode(r); err != nil {
+			return utils.WrapError("Decode ExistingSearchSpace", err)
 		}
 	default:
 		return fmt.Errorf("invalid choice: %d", ie.Choice)

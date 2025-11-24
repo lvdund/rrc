@@ -6,41 +6,41 @@ import (
 )
 
 type MeasReportQuantity struct {
-	rsrp bool `madatory`
-	rsrq bool `madatory`
-	sinr bool `madatory`
+	Rsrp bool `madatory`
+	Rsrq bool `madatory`
+	Sinr bool `madatory`
 }
 
 func (ie *MeasReportQuantity) Encode(w *uper.UperWriter) error {
 	var err error
-	if err = w.WriteBoolean(ie.rsrp); err != nil {
-		return utils.WrapError("WriteBoolean rsrp", err)
+	if err = w.WriteBoolean(ie.Rsrp); err != nil {
+		return utils.WrapError("WriteBoolean Rsrp", err)
 	}
-	if err = w.WriteBoolean(ie.rsrq); err != nil {
-		return utils.WrapError("WriteBoolean rsrq", err)
+	if err = w.WriteBoolean(ie.Rsrq); err != nil {
+		return utils.WrapError("WriteBoolean Rsrq", err)
 	}
-	if err = w.WriteBoolean(ie.sinr); err != nil {
-		return utils.WrapError("WriteBoolean sinr", err)
+	if err = w.WriteBoolean(ie.Sinr); err != nil {
+		return utils.WrapError("WriteBoolean Sinr", err)
 	}
 	return nil
 }
 
 func (ie *MeasReportQuantity) Decode(r *uper.UperReader) error {
 	var err error
-	var tmp_bool_rsrp bool
-	if tmp_bool_rsrp, err = r.ReadBoolean(); err != nil {
-		return utils.WrapError("ReadBoolean rsrp", err)
+	var tmp_bool_Rsrp bool
+	if tmp_bool_Rsrp, err = r.ReadBoolean(); err != nil {
+		return utils.WrapError("ReadBoolean Rsrp", err)
 	}
-	ie.rsrp = tmp_bool_rsrp
-	var tmp_bool_rsrq bool
-	if tmp_bool_rsrq, err = r.ReadBoolean(); err != nil {
-		return utils.WrapError("ReadBoolean rsrq", err)
+	ie.Rsrp = tmp_bool_Rsrp
+	var tmp_bool_Rsrq bool
+	if tmp_bool_Rsrq, err = r.ReadBoolean(); err != nil {
+		return utils.WrapError("ReadBoolean Rsrq", err)
 	}
-	ie.rsrq = tmp_bool_rsrq
-	var tmp_bool_sinr bool
-	if tmp_bool_sinr, err = r.ReadBoolean(); err != nil {
-		return utils.WrapError("ReadBoolean sinr", err)
+	ie.Rsrq = tmp_bool_Rsrq
+	var tmp_bool_Sinr bool
+	if tmp_bool_Sinr, err = r.ReadBoolean(); err != nil {
+		return utils.WrapError("ReadBoolean Sinr", err)
 	}
-	ie.sinr = tmp_bool_sinr
+	ie.Sinr = tmp_bool_Sinr
 	return nil
 }

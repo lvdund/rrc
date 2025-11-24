@@ -8,34 +8,34 @@ import (
 )
 
 type PUCCH_TPC_CommandConfig struct {
-	tpc_IndexPCell                               *int64 `lb:1,ub:15,optional`
-	tpc_IndexPUCCH_SCell                         *int64 `lb:1,ub:15,optional`
-	tpc_IndexPUCCH_sSCell_r17                    *int64 `lb:1,ub:15,optional,ext-1`
-	tpc_IndexPUCCH_sScellSecondaryPUCCHgroup_r17 *int64 `lb:1,ub:15,optional,ext-1`
+	Tpc_IndexPCell                               *int64 `lb:1,ub:15,optional`
+	Tpc_IndexPUCCH_SCell                         *int64 `lb:1,ub:15,optional`
+	Tpc_IndexPUCCH_sSCell_r17                    *int64 `lb:1,ub:15,optional,ext-1`
+	Tpc_IndexPUCCH_sScellSecondaryPUCCHgroup_r17 *int64 `lb:1,ub:15,optional,ext-1`
 }
 
 func (ie *PUCCH_TPC_CommandConfig) Encode(w *uper.UperWriter) error {
 	var err error
-	hasExtensions := ie.tpc_IndexPUCCH_sSCell_r17 != nil || ie.tpc_IndexPUCCH_sScellSecondaryPUCCHgroup_r17 != nil
-	preambleBits := []bool{hasExtensions, ie.tpc_IndexPCell != nil, ie.tpc_IndexPUCCH_SCell != nil}
+	hasExtensions := ie.Tpc_IndexPUCCH_sSCell_r17 != nil || ie.Tpc_IndexPUCCH_sScellSecondaryPUCCHgroup_r17 != nil
+	preambleBits := []bool{hasExtensions, ie.Tpc_IndexPCell != nil, ie.Tpc_IndexPUCCH_SCell != nil}
 	for _, bit := range preambleBits {
 		if err = w.WriteBool(bit); err != nil {
 			return err
 		}
 	}
-	if ie.tpc_IndexPCell != nil {
-		if err = w.WriteInteger(*ie.tpc_IndexPCell, &uper.Constraint{Lb: 1, Ub: 15}, false); err != nil {
-			return utils.WrapError("Encode tpc_IndexPCell", err)
+	if ie.Tpc_IndexPCell != nil {
+		if err = w.WriteInteger(*ie.Tpc_IndexPCell, &uper.Constraint{Lb: 1, Ub: 15}, false); err != nil {
+			return utils.WrapError("Encode Tpc_IndexPCell", err)
 		}
 	}
-	if ie.tpc_IndexPUCCH_SCell != nil {
-		if err = w.WriteInteger(*ie.tpc_IndexPUCCH_SCell, &uper.Constraint{Lb: 1, Ub: 15}, false); err != nil {
-			return utils.WrapError("Encode tpc_IndexPUCCH_SCell", err)
+	if ie.Tpc_IndexPUCCH_SCell != nil {
+		if err = w.WriteInteger(*ie.Tpc_IndexPUCCH_SCell, &uper.Constraint{Lb: 1, Ub: 15}, false); err != nil {
+			return utils.WrapError("Encode Tpc_IndexPUCCH_SCell", err)
 		}
 	}
 	if hasExtensions {
 		// Extension bitmap: 1 bits for 1 extension groups
-		extBitmap := []bool{ie.tpc_IndexPUCCH_sSCell_r17 != nil || ie.tpc_IndexPUCCH_sScellSecondaryPUCCHgroup_r17 != nil}
+		extBitmap := []bool{ie.Tpc_IndexPUCCH_sSCell_r17 != nil || ie.Tpc_IndexPUCCH_sScellSecondaryPUCCHgroup_r17 != nil}
 		if err := w.WriteExtBitMap(extBitmap); err != nil {
 			return utils.WrapError("WriteExtBitMap PUCCH_TPC_CommandConfig", err)
 		}
@@ -46,23 +46,23 @@ func (ie *PUCCH_TPC_CommandConfig) Encode(w *uper.UperWriter) error {
 			extWriter := uper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 1
-			optionals_ext_1 := []bool{ie.tpc_IndexPUCCH_sSCell_r17 != nil, ie.tpc_IndexPUCCH_sScellSecondaryPUCCHgroup_r17 != nil}
+			optionals_ext_1 := []bool{ie.Tpc_IndexPUCCH_sSCell_r17 != nil, ie.Tpc_IndexPUCCH_sScellSecondaryPUCCHgroup_r17 != nil}
 			for _, bit := range optionals_ext_1 {
 				if err := extWriter.WriteBool(bit); err != nil {
 					return err
 				}
 			}
 
-			// encode tpc_IndexPUCCH_sSCell_r17 optional
-			if ie.tpc_IndexPUCCH_sSCell_r17 != nil {
-				if err = extWriter.WriteInteger(*ie.tpc_IndexPUCCH_sSCell_r17, &uper.Constraint{Lb: 1, Ub: 15}, false); err != nil {
-					return utils.WrapError("Encode tpc_IndexPUCCH_sSCell_r17", err)
+			// encode Tpc_IndexPUCCH_sSCell_r17 optional
+			if ie.Tpc_IndexPUCCH_sSCell_r17 != nil {
+				if err = extWriter.WriteInteger(*ie.Tpc_IndexPUCCH_sSCell_r17, &uper.Constraint{Lb: 1, Ub: 15}, false); err != nil {
+					return utils.WrapError("Encode Tpc_IndexPUCCH_sSCell_r17", err)
 				}
 			}
-			// encode tpc_IndexPUCCH_sScellSecondaryPUCCHgroup_r17 optional
-			if ie.tpc_IndexPUCCH_sScellSecondaryPUCCHgroup_r17 != nil {
-				if err = extWriter.WriteInteger(*ie.tpc_IndexPUCCH_sScellSecondaryPUCCHgroup_r17, &uper.Constraint{Lb: 1, Ub: 15}, false); err != nil {
-					return utils.WrapError("Encode tpc_IndexPUCCH_sScellSecondaryPUCCHgroup_r17", err)
+			// encode Tpc_IndexPUCCH_sScellSecondaryPUCCHgroup_r17 optional
+			if ie.Tpc_IndexPUCCH_sScellSecondaryPUCCHgroup_r17 != nil {
+				if err = extWriter.WriteInteger(*ie.Tpc_IndexPUCCH_sScellSecondaryPUCCHgroup_r17, &uper.Constraint{Lb: 1, Ub: 15}, false); err != nil {
+					return utils.WrapError("Encode Tpc_IndexPUCCH_sScellSecondaryPUCCHgroup_r17", err)
 				}
 			}
 
@@ -84,27 +84,27 @@ func (ie *PUCCH_TPC_CommandConfig) Decode(r *uper.UperReader) error {
 	if extensionBit, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var tpc_IndexPCellPresent bool
-	if tpc_IndexPCellPresent, err = r.ReadBool(); err != nil {
+	var Tpc_IndexPCellPresent bool
+	if Tpc_IndexPCellPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var tpc_IndexPUCCH_SCellPresent bool
-	if tpc_IndexPUCCH_SCellPresent, err = r.ReadBool(); err != nil {
+	var Tpc_IndexPUCCH_SCellPresent bool
+	if Tpc_IndexPUCCH_SCellPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	if tpc_IndexPCellPresent {
-		var tmp_int_tpc_IndexPCell int64
-		if tmp_int_tpc_IndexPCell, err = r.ReadInteger(&uper.Constraint{Lb: 1, Ub: 15}, false); err != nil {
-			return utils.WrapError("Decode tpc_IndexPCell", err)
+	if Tpc_IndexPCellPresent {
+		var tmp_int_Tpc_IndexPCell int64
+		if tmp_int_Tpc_IndexPCell, err = r.ReadInteger(&uper.Constraint{Lb: 1, Ub: 15}, false); err != nil {
+			return utils.WrapError("Decode Tpc_IndexPCell", err)
 		}
-		ie.tpc_IndexPCell = &tmp_int_tpc_IndexPCell
+		ie.Tpc_IndexPCell = &tmp_int_Tpc_IndexPCell
 	}
-	if tpc_IndexPUCCH_SCellPresent {
-		var tmp_int_tpc_IndexPUCCH_SCell int64
-		if tmp_int_tpc_IndexPUCCH_SCell, err = r.ReadInteger(&uper.Constraint{Lb: 1, Ub: 15}, false); err != nil {
-			return utils.WrapError("Decode tpc_IndexPUCCH_SCell", err)
+	if Tpc_IndexPUCCH_SCellPresent {
+		var tmp_int_Tpc_IndexPUCCH_SCell int64
+		if tmp_int_Tpc_IndexPUCCH_SCell, err = r.ReadInteger(&uper.Constraint{Lb: 1, Ub: 15}, false); err != nil {
+			return utils.WrapError("Decode Tpc_IndexPUCCH_SCell", err)
 		}
-		ie.tpc_IndexPUCCH_SCell = &tmp_int_tpc_IndexPUCCH_SCell
+		ie.Tpc_IndexPUCCH_SCell = &tmp_int_Tpc_IndexPUCCH_SCell
 	}
 
 	if extensionBit {
@@ -123,29 +123,29 @@ func (ie *PUCCH_TPC_CommandConfig) Decode(r *uper.UperReader) error {
 
 			extReader := uper.NewReader(bytes.NewReader(extBytes))
 
-			tpc_IndexPUCCH_sSCell_r17Present, err := extReader.ReadBool()
+			Tpc_IndexPUCCH_sSCell_r17Present, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			tpc_IndexPUCCH_sScellSecondaryPUCCHgroup_r17Present, err := extReader.ReadBool()
+			Tpc_IndexPUCCH_sScellSecondaryPUCCHgroup_r17Present, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			// decode tpc_IndexPUCCH_sSCell_r17 optional
-			if tpc_IndexPUCCH_sSCell_r17Present {
-				var tmp_int_tpc_IndexPUCCH_sSCell_r17 int64
-				if tmp_int_tpc_IndexPUCCH_sSCell_r17, err = extReader.ReadInteger(&uper.Constraint{Lb: 1, Ub: 15}, false); err != nil {
-					return utils.WrapError("Decode tpc_IndexPUCCH_sSCell_r17", err)
+			// decode Tpc_IndexPUCCH_sSCell_r17 optional
+			if Tpc_IndexPUCCH_sSCell_r17Present {
+				var tmp_int_Tpc_IndexPUCCH_sSCell_r17 int64
+				if tmp_int_Tpc_IndexPUCCH_sSCell_r17, err = extReader.ReadInteger(&uper.Constraint{Lb: 1, Ub: 15}, false); err != nil {
+					return utils.WrapError("Decode Tpc_IndexPUCCH_sSCell_r17", err)
 				}
-				ie.tpc_IndexPUCCH_sSCell_r17 = &tmp_int_tpc_IndexPUCCH_sSCell_r17
+				ie.Tpc_IndexPUCCH_sSCell_r17 = &tmp_int_Tpc_IndexPUCCH_sSCell_r17
 			}
-			// decode tpc_IndexPUCCH_sScellSecondaryPUCCHgroup_r17 optional
-			if tpc_IndexPUCCH_sScellSecondaryPUCCHgroup_r17Present {
-				var tmp_int_tpc_IndexPUCCH_sScellSecondaryPUCCHgroup_r17 int64
-				if tmp_int_tpc_IndexPUCCH_sScellSecondaryPUCCHgroup_r17, err = extReader.ReadInteger(&uper.Constraint{Lb: 1, Ub: 15}, false); err != nil {
-					return utils.WrapError("Decode tpc_IndexPUCCH_sScellSecondaryPUCCHgroup_r17", err)
+			// decode Tpc_IndexPUCCH_sScellSecondaryPUCCHgroup_r17 optional
+			if Tpc_IndexPUCCH_sScellSecondaryPUCCHgroup_r17Present {
+				var tmp_int_Tpc_IndexPUCCH_sScellSecondaryPUCCHgroup_r17 int64
+				if tmp_int_Tpc_IndexPUCCH_sScellSecondaryPUCCHgroup_r17, err = extReader.ReadInteger(&uper.Constraint{Lb: 1, Ub: 15}, false); err != nil {
+					return utils.WrapError("Decode Tpc_IndexPUCCH_sScellSecondaryPUCCHgroup_r17", err)
 				}
-				ie.tpc_IndexPUCCH_sScellSecondaryPUCCHgroup_r17 = &tmp_int_tpc_IndexPUCCH_sScellSecondaryPUCCHgroup_r17
+				ie.Tpc_IndexPUCCH_sScellSecondaryPUCCHgroup_r17 = &tmp_int_Tpc_IndexPUCCH_sScellSecondaryPUCCHgroup_r17
 			}
 		}
 	}

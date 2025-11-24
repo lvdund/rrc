@@ -6,44 +6,44 @@ import (
 )
 
 type EventTriggerConfig_eventId_eventA1 struct {
-	a1_Threshold  MeasTriggerQuantity `madatory`
-	reportOnLeave bool                `madatory`
-	hysteresis    Hysteresis          `madatory`
-	timeToTrigger TimeToTrigger       `madatory`
+	A1_Threshold  MeasTriggerQuantity `madatory`
+	ReportOnLeave bool                `madatory`
+	Hysteresis    Hysteresis          `madatory`
+	TimeToTrigger TimeToTrigger       `madatory`
 }
 
 func (ie *EventTriggerConfig_eventId_eventA1) Encode(w *uper.UperWriter) error {
 	var err error
-	if err = ie.a1_Threshold.Encode(w); err != nil {
-		return utils.WrapError("Encode a1_Threshold", err)
+	if err = ie.A1_Threshold.Encode(w); err != nil {
+		return utils.WrapError("Encode A1_Threshold", err)
 	}
-	if err = w.WriteBoolean(ie.reportOnLeave); err != nil {
-		return utils.WrapError("WriteBoolean reportOnLeave", err)
+	if err = w.WriteBoolean(ie.ReportOnLeave); err != nil {
+		return utils.WrapError("WriteBoolean ReportOnLeave", err)
 	}
-	if err = ie.hysteresis.Encode(w); err != nil {
-		return utils.WrapError("Encode hysteresis", err)
+	if err = ie.Hysteresis.Encode(w); err != nil {
+		return utils.WrapError("Encode Hysteresis", err)
 	}
-	if err = ie.timeToTrigger.Encode(w); err != nil {
-		return utils.WrapError("Encode timeToTrigger", err)
+	if err = ie.TimeToTrigger.Encode(w); err != nil {
+		return utils.WrapError("Encode TimeToTrigger", err)
 	}
 	return nil
 }
 
 func (ie *EventTriggerConfig_eventId_eventA1) Decode(r *uper.UperReader) error {
 	var err error
-	if err = ie.a1_Threshold.Decode(r); err != nil {
-		return utils.WrapError("Decode a1_Threshold", err)
+	if err = ie.A1_Threshold.Decode(r); err != nil {
+		return utils.WrapError("Decode A1_Threshold", err)
 	}
-	var tmp_bool_reportOnLeave bool
-	if tmp_bool_reportOnLeave, err = r.ReadBoolean(); err != nil {
-		return utils.WrapError("ReadBoolean reportOnLeave", err)
+	var tmp_bool_ReportOnLeave bool
+	if tmp_bool_ReportOnLeave, err = r.ReadBoolean(); err != nil {
+		return utils.WrapError("ReadBoolean ReportOnLeave", err)
 	}
-	ie.reportOnLeave = tmp_bool_reportOnLeave
-	if err = ie.hysteresis.Decode(r); err != nil {
-		return utils.WrapError("Decode hysteresis", err)
+	ie.ReportOnLeave = tmp_bool_ReportOnLeave
+	if err = ie.Hysteresis.Decode(r); err != nil {
+		return utils.WrapError("Decode Hysteresis", err)
 	}
-	if err = ie.timeToTrigger.Decode(r); err != nil {
-		return utils.WrapError("Decode timeToTrigger", err)
+	if err = ie.TimeToTrigger.Decode(r); err != nil {
+		return utils.WrapError("Decode TimeToTrigger", err)
 	}
 	return nil
 }

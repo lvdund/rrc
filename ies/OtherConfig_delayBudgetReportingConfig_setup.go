@@ -6,21 +6,21 @@ import (
 )
 
 type OtherConfig_delayBudgetReportingConfig_setup struct {
-	delayBudgetReportingProhibitTimer OtherConfig_delayBudgetReportingConfig_setup_delayBudgetReportingProhibitTimer `madatory`
+	DelayBudgetReportingProhibitTimer OtherConfig_delayBudgetReportingConfig_setup_delayBudgetReportingProhibitTimer `madatory`
 }
 
 func (ie *OtherConfig_delayBudgetReportingConfig_setup) Encode(w *uper.UperWriter) error {
 	var err error
-	if err = ie.delayBudgetReportingProhibitTimer.Encode(w); err != nil {
-		return utils.WrapError("Encode delayBudgetReportingProhibitTimer", err)
+	if err = ie.DelayBudgetReportingProhibitTimer.Encode(w); err != nil {
+		return utils.WrapError("Encode DelayBudgetReportingProhibitTimer", err)
 	}
 	return nil
 }
 
 func (ie *OtherConfig_delayBudgetReportingConfig_setup) Decode(r *uper.UperReader) error {
 	var err error
-	if err = ie.delayBudgetReportingProhibitTimer.Decode(r); err != nil {
-		return utils.WrapError("Decode delayBudgetReportingProhibitTimer", err)
+	if err = ie.DelayBudgetReportingProhibitTimer.Decode(r); err != nil {
+		return utils.WrapError("Decode DelayBudgetReportingProhibitTimer", err)
 	}
 	return nil
 }

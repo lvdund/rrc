@@ -6,28 +6,28 @@ import (
 )
 
 type MeasResultServMO struct {
-	servCellId              ServCellIndex `madatory`
-	measResultServingCell   MeasResultNR  `madatory`
-	measResultBestNeighCell *MeasResultNR `optional`
+	ServCellId              ServCellIndex `madatory`
+	MeasResultServingCell   MeasResultNR  `madatory`
+	MeasResultBestNeighCell *MeasResultNR `optional`
 }
 
 func (ie *MeasResultServMO) Encode(w *uper.UperWriter) error {
 	var err error
-	preambleBits := []bool{ie.measResultBestNeighCell != nil}
+	preambleBits := []bool{ie.MeasResultBestNeighCell != nil}
 	for _, bit := range preambleBits {
 		if err = w.WriteBool(bit); err != nil {
 			return err
 		}
 	}
-	if err = ie.servCellId.Encode(w); err != nil {
-		return utils.WrapError("Encode servCellId", err)
+	if err = ie.ServCellId.Encode(w); err != nil {
+		return utils.WrapError("Encode ServCellId", err)
 	}
-	if err = ie.measResultServingCell.Encode(w); err != nil {
-		return utils.WrapError("Encode measResultServingCell", err)
+	if err = ie.MeasResultServingCell.Encode(w); err != nil {
+		return utils.WrapError("Encode MeasResultServingCell", err)
 	}
-	if ie.measResultBestNeighCell != nil {
-		if err = ie.measResultBestNeighCell.Encode(w); err != nil {
-			return utils.WrapError("Encode measResultBestNeighCell", err)
+	if ie.MeasResultBestNeighCell != nil {
+		if err = ie.MeasResultBestNeighCell.Encode(w); err != nil {
+			return utils.WrapError("Encode MeasResultBestNeighCell", err)
 		}
 	}
 	return nil
@@ -35,20 +35,20 @@ func (ie *MeasResultServMO) Encode(w *uper.UperWriter) error {
 
 func (ie *MeasResultServMO) Decode(r *uper.UperReader) error {
 	var err error
-	var measResultBestNeighCellPresent bool
-	if measResultBestNeighCellPresent, err = r.ReadBool(); err != nil {
+	var MeasResultBestNeighCellPresent bool
+	if MeasResultBestNeighCellPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	if err = ie.servCellId.Decode(r); err != nil {
-		return utils.WrapError("Decode servCellId", err)
+	if err = ie.ServCellId.Decode(r); err != nil {
+		return utils.WrapError("Decode ServCellId", err)
 	}
-	if err = ie.measResultServingCell.Decode(r); err != nil {
-		return utils.WrapError("Decode measResultServingCell", err)
+	if err = ie.MeasResultServingCell.Decode(r); err != nil {
+		return utils.WrapError("Decode MeasResultServingCell", err)
 	}
-	if measResultBestNeighCellPresent {
-		ie.measResultBestNeighCell = new(MeasResultNR)
-		if err = ie.measResultBestNeighCell.Decode(r); err != nil {
-			return utils.WrapError("Decode measResultBestNeighCell", err)
+	if MeasResultBestNeighCellPresent {
+		ie.MeasResultBestNeighCell = new(MeasResultNR)
+		if err = ie.MeasResultBestNeighCell.Decode(r); err != nil {
+			return utils.WrapError("Decode MeasResultBestNeighCell", err)
 		}
 	}
 	return nil

@@ -9,14 +9,14 @@ import (
 
 const (
 	SBCCH_SL_BCH_MessageType_C1_Choice_nothing uint64 = iota
-	SBCCH_SL_BCH_MessageType_C1_Choice_masterInformationBlockSidelink
-	SBCCH_SL_BCH_MessageType_C1_Choice_spare1
+	SBCCH_SL_BCH_MessageType_C1_Choice_MasterInformationBlockSidelink
+	SBCCH_SL_BCH_MessageType_C1_Choice_Spare1
 )
 
 type SBCCH_SL_BCH_MessageType_C1 struct {
 	Choice                         uint64
-	masterInformationBlockSidelink *MasterInformationBlockSidelink
-	spare1                         uper.NULL `madatory`
+	MasterInformationBlockSidelink *MasterInformationBlockSidelink
+	Spare1                         uper.NULL `madatory`
 }
 
 func (ie *SBCCH_SL_BCH_MessageType_C1) Encode(w *uper.UperWriter) error {
@@ -25,13 +25,13 @@ func (ie *SBCCH_SL_BCH_MessageType_C1) Encode(w *uper.UperWriter) error {
 		return err
 	}
 	switch ie.Choice {
-	case SBCCH_SL_BCH_MessageType_C1_Choice_masterInformationBlockSidelink:
-		if err = ie.masterInformationBlockSidelink.Encode(w); err != nil {
-			err = utils.WrapError("Encode masterInformationBlockSidelink", err)
+	case SBCCH_SL_BCH_MessageType_C1_Choice_MasterInformationBlockSidelink:
+		if err = ie.MasterInformationBlockSidelink.Encode(w); err != nil {
+			err = utils.WrapError("Encode MasterInformationBlockSidelink", err)
 		}
-	case SBCCH_SL_BCH_MessageType_C1_Choice_spare1:
+	case SBCCH_SL_BCH_MessageType_C1_Choice_Spare1:
 		if err := w.WriteNull(); err != nil {
-			err = utils.WrapError("Encode spare1", err)
+			err = utils.WrapError("Encode Spare1", err)
 		}
 	default:
 		err = fmt.Errorf("invalid choice: %d", ie.Choice)
@@ -45,14 +45,14 @@ func (ie *SBCCH_SL_BCH_MessageType_C1) Decode(r *uper.UperReader) error {
 		return err
 	}
 	switch ie.Choice {
-	case SBCCH_SL_BCH_MessageType_C1_Choice_masterInformationBlockSidelink:
-		ie.masterInformationBlockSidelink = new(MasterInformationBlockSidelink)
-		if err = ie.masterInformationBlockSidelink.Decode(r); err != nil {
-			return utils.WrapError("Decode masterInformationBlockSidelink", err)
+	case SBCCH_SL_BCH_MessageType_C1_Choice_MasterInformationBlockSidelink:
+		ie.MasterInformationBlockSidelink = new(MasterInformationBlockSidelink)
+		if err = ie.MasterInformationBlockSidelink.Decode(r); err != nil {
+			return utils.WrapError("Decode MasterInformationBlockSidelink", err)
 		}
-	case SBCCH_SL_BCH_MessageType_C1_Choice_spare1:
+	case SBCCH_SL_BCH_MessageType_C1_Choice_Spare1:
 		if err := r.ReadNull(); err != nil {
-			return utils.WrapError("Decode spare1", err)
+			return utils.WrapError("Decode Spare1", err)
 		}
 	default:
 		return fmt.Errorf("invalid choice: %d", ie.Choice)

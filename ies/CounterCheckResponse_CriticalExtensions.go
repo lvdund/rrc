@@ -9,14 +9,14 @@ import (
 
 const (
 	CounterCheckResponse_CriticalExtensions_Choice_nothing uint64 = iota
-	CounterCheckResponse_CriticalExtensions_Choice_counterCheckResponse
-	CounterCheckResponse_CriticalExtensions_Choice_criticalExtensionsFuture
+	CounterCheckResponse_CriticalExtensions_Choice_CounterCheckResponse
+	CounterCheckResponse_CriticalExtensions_Choice_CriticalExtensionsFuture
 )
 
 type CounterCheckResponse_CriticalExtensions struct {
 	Choice                   uint64
-	counterCheckResponse     *CounterCheckResponse_IEs
-	criticalExtensionsFuture interface{} `madatory`
+	CounterCheckResponse     *CounterCheckResponse_IEs
+	CriticalExtensionsFuture interface{} `madatory`
 }
 
 func (ie *CounterCheckResponse_CriticalExtensions) Encode(w *uper.UperWriter) error {
@@ -25,11 +25,11 @@ func (ie *CounterCheckResponse_CriticalExtensions) Encode(w *uper.UperWriter) er
 		return err
 	}
 	switch ie.Choice {
-	case CounterCheckResponse_CriticalExtensions_Choice_counterCheckResponse:
-		if err = ie.counterCheckResponse.Encode(w); err != nil {
-			err = utils.WrapError("Encode counterCheckResponse", err)
+	case CounterCheckResponse_CriticalExtensions_Choice_CounterCheckResponse:
+		if err = ie.CounterCheckResponse.Encode(w); err != nil {
+			err = utils.WrapError("Encode CounterCheckResponse", err)
 		}
-	case CounterCheckResponse_CriticalExtensions_Choice_criticalExtensionsFuture:
+	case CounterCheckResponse_CriticalExtensions_Choice_CriticalExtensionsFuture:
 		// interface{} field of choice - nothing to encode
 	default:
 		err = fmt.Errorf("invalid choice: %d", ie.Choice)
@@ -43,12 +43,12 @@ func (ie *CounterCheckResponse_CriticalExtensions) Decode(r *uper.UperReader) er
 		return err
 	}
 	switch ie.Choice {
-	case CounterCheckResponse_CriticalExtensions_Choice_counterCheckResponse:
-		ie.counterCheckResponse = new(CounterCheckResponse_IEs)
-		if err = ie.counterCheckResponse.Decode(r); err != nil {
-			return utils.WrapError("Decode counterCheckResponse", err)
+	case CounterCheckResponse_CriticalExtensions_Choice_CounterCheckResponse:
+		ie.CounterCheckResponse = new(CounterCheckResponse_IEs)
+		if err = ie.CounterCheckResponse.Decode(r); err != nil {
+			return utils.WrapError("Decode CounterCheckResponse", err)
 		}
-	case CounterCheckResponse_CriticalExtensions_Choice_criticalExtensionsFuture:
+	case CounterCheckResponse_CriticalExtensions_Choice_CriticalExtensionsFuture:
 		// interface{} field of choice - nothing to decode
 	default:
 		return fmt.Errorf("invalid choice: %d", ie.Choice)

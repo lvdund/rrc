@@ -9,14 +9,14 @@ import (
 
 const (
 	MeasurementReportAppLayer_r17_CriticalExtensions_Choice_nothing uint64 = iota
-	MeasurementReportAppLayer_r17_CriticalExtensions_Choice_measurementReportAppLayer_r17
-	MeasurementReportAppLayer_r17_CriticalExtensions_Choice_criticalExtensionsFuture
+	MeasurementReportAppLayer_r17_CriticalExtensions_Choice_MeasurementReportAppLayer_r17
+	MeasurementReportAppLayer_r17_CriticalExtensions_Choice_CriticalExtensionsFuture
 )
 
 type MeasurementReportAppLayer_r17_CriticalExtensions struct {
 	Choice                        uint64
-	measurementReportAppLayer_r17 *MeasurementReportAppLayer_r17_IEs
-	criticalExtensionsFuture      interface{} `madatory`
+	MeasurementReportAppLayer_r17 *MeasurementReportAppLayer_r17_IEs
+	CriticalExtensionsFuture      interface{} `madatory`
 }
 
 func (ie *MeasurementReportAppLayer_r17_CriticalExtensions) Encode(w *uper.UperWriter) error {
@@ -25,11 +25,11 @@ func (ie *MeasurementReportAppLayer_r17_CriticalExtensions) Encode(w *uper.UperW
 		return err
 	}
 	switch ie.Choice {
-	case MeasurementReportAppLayer_r17_CriticalExtensions_Choice_measurementReportAppLayer_r17:
-		if err = ie.measurementReportAppLayer_r17.Encode(w); err != nil {
-			err = utils.WrapError("Encode measurementReportAppLayer_r17", err)
+	case MeasurementReportAppLayer_r17_CriticalExtensions_Choice_MeasurementReportAppLayer_r17:
+		if err = ie.MeasurementReportAppLayer_r17.Encode(w); err != nil {
+			err = utils.WrapError("Encode MeasurementReportAppLayer_r17", err)
 		}
-	case MeasurementReportAppLayer_r17_CriticalExtensions_Choice_criticalExtensionsFuture:
+	case MeasurementReportAppLayer_r17_CriticalExtensions_Choice_CriticalExtensionsFuture:
 		// interface{} field of choice - nothing to encode
 	default:
 		err = fmt.Errorf("invalid choice: %d", ie.Choice)
@@ -43,12 +43,12 @@ func (ie *MeasurementReportAppLayer_r17_CriticalExtensions) Decode(r *uper.UperR
 		return err
 	}
 	switch ie.Choice {
-	case MeasurementReportAppLayer_r17_CriticalExtensions_Choice_measurementReportAppLayer_r17:
-		ie.measurementReportAppLayer_r17 = new(MeasurementReportAppLayer_r17_IEs)
-		if err = ie.measurementReportAppLayer_r17.Decode(r); err != nil {
-			return utils.WrapError("Decode measurementReportAppLayer_r17", err)
+	case MeasurementReportAppLayer_r17_CriticalExtensions_Choice_MeasurementReportAppLayer_r17:
+		ie.MeasurementReportAppLayer_r17 = new(MeasurementReportAppLayer_r17_IEs)
+		if err = ie.MeasurementReportAppLayer_r17.Decode(r); err != nil {
+			return utils.WrapError("Decode MeasurementReportAppLayer_r17", err)
 		}
-	case MeasurementReportAppLayer_r17_CriticalExtensions_Choice_criticalExtensionsFuture:
+	case MeasurementReportAppLayer_r17_CriticalExtensions_Choice_CriticalExtensionsFuture:
 		// interface{} field of choice - nothing to decode
 	default:
 		return fmt.Errorf("invalid choice: %d", ie.Choice)

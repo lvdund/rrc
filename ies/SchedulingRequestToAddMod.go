@@ -6,50 +6,50 @@ import (
 )
 
 type SchedulingRequestToAddMod struct {
-	schedulingRequestId SchedulingRequestId                         `madatory`
-	sr_ProhibitTimer    *SchedulingRequestToAddMod_sr_ProhibitTimer `optional`
-	sr_TransMax         SchedulingRequestToAddMod_sr_TransMax       `madatory`
+	SchedulingRequestId SchedulingRequestId                         `madatory`
+	Sr_ProhibitTimer    *SchedulingRequestToAddMod_sr_ProhibitTimer `optional`
+	Sr_TransMax         SchedulingRequestToAddMod_sr_TransMax       `madatory`
 }
 
 func (ie *SchedulingRequestToAddMod) Encode(w *uper.UperWriter) error {
 	var err error
-	preambleBits := []bool{ie.sr_ProhibitTimer != nil}
+	preambleBits := []bool{ie.Sr_ProhibitTimer != nil}
 	for _, bit := range preambleBits {
 		if err = w.WriteBool(bit); err != nil {
 			return err
 		}
 	}
-	if err = ie.schedulingRequestId.Encode(w); err != nil {
-		return utils.WrapError("Encode schedulingRequestId", err)
+	if err = ie.SchedulingRequestId.Encode(w); err != nil {
+		return utils.WrapError("Encode SchedulingRequestId", err)
 	}
-	if ie.sr_ProhibitTimer != nil {
-		if err = ie.sr_ProhibitTimer.Encode(w); err != nil {
-			return utils.WrapError("Encode sr_ProhibitTimer", err)
+	if ie.Sr_ProhibitTimer != nil {
+		if err = ie.Sr_ProhibitTimer.Encode(w); err != nil {
+			return utils.WrapError("Encode Sr_ProhibitTimer", err)
 		}
 	}
-	if err = ie.sr_TransMax.Encode(w); err != nil {
-		return utils.WrapError("Encode sr_TransMax", err)
+	if err = ie.Sr_TransMax.Encode(w); err != nil {
+		return utils.WrapError("Encode Sr_TransMax", err)
 	}
 	return nil
 }
 
 func (ie *SchedulingRequestToAddMod) Decode(r *uper.UperReader) error {
 	var err error
-	var sr_ProhibitTimerPresent bool
-	if sr_ProhibitTimerPresent, err = r.ReadBool(); err != nil {
+	var Sr_ProhibitTimerPresent bool
+	if Sr_ProhibitTimerPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	if err = ie.schedulingRequestId.Decode(r); err != nil {
-		return utils.WrapError("Decode schedulingRequestId", err)
+	if err = ie.SchedulingRequestId.Decode(r); err != nil {
+		return utils.WrapError("Decode SchedulingRequestId", err)
 	}
-	if sr_ProhibitTimerPresent {
-		ie.sr_ProhibitTimer = new(SchedulingRequestToAddMod_sr_ProhibitTimer)
-		if err = ie.sr_ProhibitTimer.Decode(r); err != nil {
-			return utils.WrapError("Decode sr_ProhibitTimer", err)
+	if Sr_ProhibitTimerPresent {
+		ie.Sr_ProhibitTimer = new(SchedulingRequestToAddMod_sr_ProhibitTimer)
+		if err = ie.Sr_ProhibitTimer.Decode(r); err != nil {
+			return utils.WrapError("Decode Sr_ProhibitTimer", err)
 		}
 	}
-	if err = ie.sr_TransMax.Decode(r); err != nil {
-		return utils.WrapError("Decode sr_TransMax", err)
+	if err = ie.Sr_TransMax.Decode(r); err != nil {
+		return utils.WrapError("Decode Sr_TransMax", err)
 	}
 	return nil
 }

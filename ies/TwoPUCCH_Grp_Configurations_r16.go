@@ -6,28 +6,28 @@ import (
 )
 
 type TwoPUCCH_Grp_Configurations_r16 struct {
-	pucch_PrimaryGroupMapping_r16   TwoPUCCH_Grp_ConfigParams_r16 `madatory`
-	pucch_SecondaryGroupMapping_r16 TwoPUCCH_Grp_ConfigParams_r16 `madatory`
+	Pucch_PrimaryGroupMapping_r16   TwoPUCCH_Grp_ConfigParams_r16 `madatory`
+	Pucch_SecondaryGroupMapping_r16 TwoPUCCH_Grp_ConfigParams_r16 `madatory`
 }
 
 func (ie *TwoPUCCH_Grp_Configurations_r16) Encode(w *uper.UperWriter) error {
 	var err error
-	if err = ie.pucch_PrimaryGroupMapping_r16.Encode(w); err != nil {
-		return utils.WrapError("Encode pucch_PrimaryGroupMapping_r16", err)
+	if err = ie.Pucch_PrimaryGroupMapping_r16.Encode(w); err != nil {
+		return utils.WrapError("Encode Pucch_PrimaryGroupMapping_r16", err)
 	}
-	if err = ie.pucch_SecondaryGroupMapping_r16.Encode(w); err != nil {
-		return utils.WrapError("Encode pucch_SecondaryGroupMapping_r16", err)
+	if err = ie.Pucch_SecondaryGroupMapping_r16.Encode(w); err != nil {
+		return utils.WrapError("Encode Pucch_SecondaryGroupMapping_r16", err)
 	}
 	return nil
 }
 
 func (ie *TwoPUCCH_Grp_Configurations_r16) Decode(r *uper.UperReader) error {
 	var err error
-	if err = ie.pucch_PrimaryGroupMapping_r16.Decode(r); err != nil {
-		return utils.WrapError("Decode pucch_PrimaryGroupMapping_r16", err)
+	if err = ie.Pucch_PrimaryGroupMapping_r16.Decode(r); err != nil {
+		return utils.WrapError("Decode Pucch_PrimaryGroupMapping_r16", err)
 	}
-	if err = ie.pucch_SecondaryGroupMapping_r16.Decode(r); err != nil {
-		return utils.WrapError("Decode pucch_SecondaryGroupMapping_r16", err)
+	if err = ie.Pucch_SecondaryGroupMapping_r16.Decode(r); err != nil {
+		return utils.WrapError("Decode Pucch_SecondaryGroupMapping_r16", err)
 	}
 	return nil
 }

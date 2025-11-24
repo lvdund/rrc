@@ -6,104 +6,104 @@ import (
 )
 
 type CA_ParametersNR_v1730 struct {
-	dmrs_BundlingPUSCH_RepTypeAPerBC_r17                  *CA_ParametersNR_v1730_dmrs_BundlingPUSCH_RepTypeAPerBC_r17                  `optional`
-	dmrs_BundlingPUSCH_RepTypeBPerBC_r17                  *CA_ParametersNR_v1730_dmrs_BundlingPUSCH_RepTypeBPerBC_r17                  `optional`
-	dmrs_BundlingPUSCH_multiSlotPerBC_r17                 *CA_ParametersNR_v1730_dmrs_BundlingPUSCH_multiSlotPerBC_r17                 `optional`
-	dmrs_BundlingPUCCH_RepPerBC_r17                       *CA_ParametersNR_v1730_dmrs_BundlingPUCCH_RepPerBC_r17                       `optional`
-	dmrs_BundlingRestartPerBC_r17                         *CA_ParametersNR_v1730_dmrs_BundlingRestartPerBC_r17                         `optional`
-	dmrs_BundlingNonBackToBackTX_PerBC_r17                *CA_ParametersNR_v1730_dmrs_BundlingNonBackToBackTX_PerBC_r17                `optional`
-	stayOnTargetCC_SRS_CarrierSwitch_r17                  *CA_ParametersNR_v1730_stayOnTargetCC_SRS_CarrierSwitch_r17                  `optional`
-	fdm_CodebookForMux_UnicastMulticastHARQ_ACK_r17       *CA_ParametersNR_v1730_fdm_CodebookForMux_UnicastMulticastHARQ_ACK_r17       `optional`
-	mode2_TDM_CodebookForMux_UnicastMulticastHARQ_ACK_r17 *CA_ParametersNR_v1730_mode2_TDM_CodebookForMux_UnicastMulticastHARQ_ACK_r17 `optional`
-	mode1_ForType1_CodebookGeneration_r17                 *CA_ParametersNR_v1730_mode1_ForType1_CodebookGeneration_r17                 `optional`
-	nack_OnlyFeedbackSpecificResourceForSPS_Multicast_r17 *CA_ParametersNR_v1730_nack_OnlyFeedbackSpecificResourceForSPS_Multicast_r17 `optional`
-	multiPUCCH_ConfigForMulticast_r17                     *CA_ParametersNR_v1730_multiPUCCH_ConfigForMulticast_r17                     `optional`
-	pucch_ConfigForSPS_Multicast_r17                      *CA_ParametersNR_v1730_pucch_ConfigForSPS_Multicast_r17                      `optional`
-	maxNumberG_RNTI_HARQ_ACK_Codebook_r17                 *int64                                                                       `lb:1,ub:4,optional`
-	mux_HARQ_ACK_UnicastMulticast_r17                     *CA_ParametersNR_v1730_mux_HARQ_ACK_UnicastMulticast_r17                     `optional`
+	Dmrs_BundlingPUSCH_RepTypeAPerBC_r17                  *CA_ParametersNR_v1730_dmrs_BundlingPUSCH_RepTypeAPerBC_r17                  `optional`
+	Dmrs_BundlingPUSCH_RepTypeBPerBC_r17                  *CA_ParametersNR_v1730_dmrs_BundlingPUSCH_RepTypeBPerBC_r17                  `optional`
+	Dmrs_BundlingPUSCH_multiSlotPerBC_r17                 *CA_ParametersNR_v1730_dmrs_BundlingPUSCH_multiSlotPerBC_r17                 `optional`
+	Dmrs_BundlingPUCCH_RepPerBC_r17                       *CA_ParametersNR_v1730_dmrs_BundlingPUCCH_RepPerBC_r17                       `optional`
+	Dmrs_BundlingRestartPerBC_r17                         *CA_ParametersNR_v1730_dmrs_BundlingRestartPerBC_r17                         `optional`
+	Dmrs_BundlingNonBackToBackTX_PerBC_r17                *CA_ParametersNR_v1730_dmrs_BundlingNonBackToBackTX_PerBC_r17                `optional`
+	StayOnTargetCC_SRS_CarrierSwitch_r17                  *CA_ParametersNR_v1730_stayOnTargetCC_SRS_CarrierSwitch_r17                  `optional`
+	Fdm_CodebookForMux_UnicastMulticastHARQ_ACK_r17       *CA_ParametersNR_v1730_fdm_CodebookForMux_UnicastMulticastHARQ_ACK_r17       `optional`
+	Mode2_TDM_CodebookForMux_UnicastMulticastHARQ_ACK_r17 *CA_ParametersNR_v1730_mode2_TDM_CodebookForMux_UnicastMulticastHARQ_ACK_r17 `optional`
+	Mode1_ForType1_CodebookGeneration_r17                 *CA_ParametersNR_v1730_mode1_ForType1_CodebookGeneration_r17                 `optional`
+	Nack_OnlyFeedbackSpecificResourceForSPS_Multicast_r17 *CA_ParametersNR_v1730_nack_OnlyFeedbackSpecificResourceForSPS_Multicast_r17 `optional`
+	MultiPUCCH_ConfigForMulticast_r17                     *CA_ParametersNR_v1730_multiPUCCH_ConfigForMulticast_r17                     `optional`
+	Pucch_ConfigForSPS_Multicast_r17                      *CA_ParametersNR_v1730_pucch_ConfigForSPS_Multicast_r17                      `optional`
+	MaxNumberG_RNTI_HARQ_ACK_Codebook_r17                 *int64                                                                       `lb:1,ub:4,optional`
+	Mux_HARQ_ACK_UnicastMulticast_r17                     *CA_ParametersNR_v1730_mux_HARQ_ACK_UnicastMulticast_r17                     `optional`
 }
 
 func (ie *CA_ParametersNR_v1730) Encode(w *uper.UperWriter) error {
 	var err error
-	preambleBits := []bool{ie.dmrs_BundlingPUSCH_RepTypeAPerBC_r17 != nil, ie.dmrs_BundlingPUSCH_RepTypeBPerBC_r17 != nil, ie.dmrs_BundlingPUSCH_multiSlotPerBC_r17 != nil, ie.dmrs_BundlingPUCCH_RepPerBC_r17 != nil, ie.dmrs_BundlingRestartPerBC_r17 != nil, ie.dmrs_BundlingNonBackToBackTX_PerBC_r17 != nil, ie.stayOnTargetCC_SRS_CarrierSwitch_r17 != nil, ie.fdm_CodebookForMux_UnicastMulticastHARQ_ACK_r17 != nil, ie.mode2_TDM_CodebookForMux_UnicastMulticastHARQ_ACK_r17 != nil, ie.mode1_ForType1_CodebookGeneration_r17 != nil, ie.nack_OnlyFeedbackSpecificResourceForSPS_Multicast_r17 != nil, ie.multiPUCCH_ConfigForMulticast_r17 != nil, ie.pucch_ConfigForSPS_Multicast_r17 != nil, ie.maxNumberG_RNTI_HARQ_ACK_Codebook_r17 != nil, ie.mux_HARQ_ACK_UnicastMulticast_r17 != nil}
+	preambleBits := []bool{ie.Dmrs_BundlingPUSCH_RepTypeAPerBC_r17 != nil, ie.Dmrs_BundlingPUSCH_RepTypeBPerBC_r17 != nil, ie.Dmrs_BundlingPUSCH_multiSlotPerBC_r17 != nil, ie.Dmrs_BundlingPUCCH_RepPerBC_r17 != nil, ie.Dmrs_BundlingRestartPerBC_r17 != nil, ie.Dmrs_BundlingNonBackToBackTX_PerBC_r17 != nil, ie.StayOnTargetCC_SRS_CarrierSwitch_r17 != nil, ie.Fdm_CodebookForMux_UnicastMulticastHARQ_ACK_r17 != nil, ie.Mode2_TDM_CodebookForMux_UnicastMulticastHARQ_ACK_r17 != nil, ie.Mode1_ForType1_CodebookGeneration_r17 != nil, ie.Nack_OnlyFeedbackSpecificResourceForSPS_Multicast_r17 != nil, ie.MultiPUCCH_ConfigForMulticast_r17 != nil, ie.Pucch_ConfigForSPS_Multicast_r17 != nil, ie.MaxNumberG_RNTI_HARQ_ACK_Codebook_r17 != nil, ie.Mux_HARQ_ACK_UnicastMulticast_r17 != nil}
 	for _, bit := range preambleBits {
 		if err = w.WriteBool(bit); err != nil {
 			return err
 		}
 	}
-	if ie.dmrs_BundlingPUSCH_RepTypeAPerBC_r17 != nil {
-		if err = ie.dmrs_BundlingPUSCH_RepTypeAPerBC_r17.Encode(w); err != nil {
-			return utils.WrapError("Encode dmrs_BundlingPUSCH_RepTypeAPerBC_r17", err)
+	if ie.Dmrs_BundlingPUSCH_RepTypeAPerBC_r17 != nil {
+		if err = ie.Dmrs_BundlingPUSCH_RepTypeAPerBC_r17.Encode(w); err != nil {
+			return utils.WrapError("Encode Dmrs_BundlingPUSCH_RepTypeAPerBC_r17", err)
 		}
 	}
-	if ie.dmrs_BundlingPUSCH_RepTypeBPerBC_r17 != nil {
-		if err = ie.dmrs_BundlingPUSCH_RepTypeBPerBC_r17.Encode(w); err != nil {
-			return utils.WrapError("Encode dmrs_BundlingPUSCH_RepTypeBPerBC_r17", err)
+	if ie.Dmrs_BundlingPUSCH_RepTypeBPerBC_r17 != nil {
+		if err = ie.Dmrs_BundlingPUSCH_RepTypeBPerBC_r17.Encode(w); err != nil {
+			return utils.WrapError("Encode Dmrs_BundlingPUSCH_RepTypeBPerBC_r17", err)
 		}
 	}
-	if ie.dmrs_BundlingPUSCH_multiSlotPerBC_r17 != nil {
-		if err = ie.dmrs_BundlingPUSCH_multiSlotPerBC_r17.Encode(w); err != nil {
-			return utils.WrapError("Encode dmrs_BundlingPUSCH_multiSlotPerBC_r17", err)
+	if ie.Dmrs_BundlingPUSCH_multiSlotPerBC_r17 != nil {
+		if err = ie.Dmrs_BundlingPUSCH_multiSlotPerBC_r17.Encode(w); err != nil {
+			return utils.WrapError("Encode Dmrs_BundlingPUSCH_multiSlotPerBC_r17", err)
 		}
 	}
-	if ie.dmrs_BundlingPUCCH_RepPerBC_r17 != nil {
-		if err = ie.dmrs_BundlingPUCCH_RepPerBC_r17.Encode(w); err != nil {
-			return utils.WrapError("Encode dmrs_BundlingPUCCH_RepPerBC_r17", err)
+	if ie.Dmrs_BundlingPUCCH_RepPerBC_r17 != nil {
+		if err = ie.Dmrs_BundlingPUCCH_RepPerBC_r17.Encode(w); err != nil {
+			return utils.WrapError("Encode Dmrs_BundlingPUCCH_RepPerBC_r17", err)
 		}
 	}
-	if ie.dmrs_BundlingRestartPerBC_r17 != nil {
-		if err = ie.dmrs_BundlingRestartPerBC_r17.Encode(w); err != nil {
-			return utils.WrapError("Encode dmrs_BundlingRestartPerBC_r17", err)
+	if ie.Dmrs_BundlingRestartPerBC_r17 != nil {
+		if err = ie.Dmrs_BundlingRestartPerBC_r17.Encode(w); err != nil {
+			return utils.WrapError("Encode Dmrs_BundlingRestartPerBC_r17", err)
 		}
 	}
-	if ie.dmrs_BundlingNonBackToBackTX_PerBC_r17 != nil {
-		if err = ie.dmrs_BundlingNonBackToBackTX_PerBC_r17.Encode(w); err != nil {
-			return utils.WrapError("Encode dmrs_BundlingNonBackToBackTX_PerBC_r17", err)
+	if ie.Dmrs_BundlingNonBackToBackTX_PerBC_r17 != nil {
+		if err = ie.Dmrs_BundlingNonBackToBackTX_PerBC_r17.Encode(w); err != nil {
+			return utils.WrapError("Encode Dmrs_BundlingNonBackToBackTX_PerBC_r17", err)
 		}
 	}
-	if ie.stayOnTargetCC_SRS_CarrierSwitch_r17 != nil {
-		if err = ie.stayOnTargetCC_SRS_CarrierSwitch_r17.Encode(w); err != nil {
-			return utils.WrapError("Encode stayOnTargetCC_SRS_CarrierSwitch_r17", err)
+	if ie.StayOnTargetCC_SRS_CarrierSwitch_r17 != nil {
+		if err = ie.StayOnTargetCC_SRS_CarrierSwitch_r17.Encode(w); err != nil {
+			return utils.WrapError("Encode StayOnTargetCC_SRS_CarrierSwitch_r17", err)
 		}
 	}
-	if ie.fdm_CodebookForMux_UnicastMulticastHARQ_ACK_r17 != nil {
-		if err = ie.fdm_CodebookForMux_UnicastMulticastHARQ_ACK_r17.Encode(w); err != nil {
-			return utils.WrapError("Encode fdm_CodebookForMux_UnicastMulticastHARQ_ACK_r17", err)
+	if ie.Fdm_CodebookForMux_UnicastMulticastHARQ_ACK_r17 != nil {
+		if err = ie.Fdm_CodebookForMux_UnicastMulticastHARQ_ACK_r17.Encode(w); err != nil {
+			return utils.WrapError("Encode Fdm_CodebookForMux_UnicastMulticastHARQ_ACK_r17", err)
 		}
 	}
-	if ie.mode2_TDM_CodebookForMux_UnicastMulticastHARQ_ACK_r17 != nil {
-		if err = ie.mode2_TDM_CodebookForMux_UnicastMulticastHARQ_ACK_r17.Encode(w); err != nil {
-			return utils.WrapError("Encode mode2_TDM_CodebookForMux_UnicastMulticastHARQ_ACK_r17", err)
+	if ie.Mode2_TDM_CodebookForMux_UnicastMulticastHARQ_ACK_r17 != nil {
+		if err = ie.Mode2_TDM_CodebookForMux_UnicastMulticastHARQ_ACK_r17.Encode(w); err != nil {
+			return utils.WrapError("Encode Mode2_TDM_CodebookForMux_UnicastMulticastHARQ_ACK_r17", err)
 		}
 	}
-	if ie.mode1_ForType1_CodebookGeneration_r17 != nil {
-		if err = ie.mode1_ForType1_CodebookGeneration_r17.Encode(w); err != nil {
-			return utils.WrapError("Encode mode1_ForType1_CodebookGeneration_r17", err)
+	if ie.Mode1_ForType1_CodebookGeneration_r17 != nil {
+		if err = ie.Mode1_ForType1_CodebookGeneration_r17.Encode(w); err != nil {
+			return utils.WrapError("Encode Mode1_ForType1_CodebookGeneration_r17", err)
 		}
 	}
-	if ie.nack_OnlyFeedbackSpecificResourceForSPS_Multicast_r17 != nil {
-		if err = ie.nack_OnlyFeedbackSpecificResourceForSPS_Multicast_r17.Encode(w); err != nil {
-			return utils.WrapError("Encode nack_OnlyFeedbackSpecificResourceForSPS_Multicast_r17", err)
+	if ie.Nack_OnlyFeedbackSpecificResourceForSPS_Multicast_r17 != nil {
+		if err = ie.Nack_OnlyFeedbackSpecificResourceForSPS_Multicast_r17.Encode(w); err != nil {
+			return utils.WrapError("Encode Nack_OnlyFeedbackSpecificResourceForSPS_Multicast_r17", err)
 		}
 	}
-	if ie.multiPUCCH_ConfigForMulticast_r17 != nil {
-		if err = ie.multiPUCCH_ConfigForMulticast_r17.Encode(w); err != nil {
-			return utils.WrapError("Encode multiPUCCH_ConfigForMulticast_r17", err)
+	if ie.MultiPUCCH_ConfigForMulticast_r17 != nil {
+		if err = ie.MultiPUCCH_ConfigForMulticast_r17.Encode(w); err != nil {
+			return utils.WrapError("Encode MultiPUCCH_ConfigForMulticast_r17", err)
 		}
 	}
-	if ie.pucch_ConfigForSPS_Multicast_r17 != nil {
-		if err = ie.pucch_ConfigForSPS_Multicast_r17.Encode(w); err != nil {
-			return utils.WrapError("Encode pucch_ConfigForSPS_Multicast_r17", err)
+	if ie.Pucch_ConfigForSPS_Multicast_r17 != nil {
+		if err = ie.Pucch_ConfigForSPS_Multicast_r17.Encode(w); err != nil {
+			return utils.WrapError("Encode Pucch_ConfigForSPS_Multicast_r17", err)
 		}
 	}
-	if ie.maxNumberG_RNTI_HARQ_ACK_Codebook_r17 != nil {
-		if err = w.WriteInteger(*ie.maxNumberG_RNTI_HARQ_ACK_Codebook_r17, &uper.Constraint{Lb: 1, Ub: 4}, false); err != nil {
-			return utils.WrapError("Encode maxNumberG_RNTI_HARQ_ACK_Codebook_r17", err)
+	if ie.MaxNumberG_RNTI_HARQ_ACK_Codebook_r17 != nil {
+		if err = w.WriteInteger(*ie.MaxNumberG_RNTI_HARQ_ACK_Codebook_r17, &uper.Constraint{Lb: 1, Ub: 4}, false); err != nil {
+			return utils.WrapError("Encode MaxNumberG_RNTI_HARQ_ACK_Codebook_r17", err)
 		}
 	}
-	if ie.mux_HARQ_ACK_UnicastMulticast_r17 != nil {
-		if err = ie.mux_HARQ_ACK_UnicastMulticast_r17.Encode(w); err != nil {
-			return utils.WrapError("Encode mux_HARQ_ACK_UnicastMulticast_r17", err)
+	if ie.Mux_HARQ_ACK_UnicastMulticast_r17 != nil {
+		if err = ie.Mux_HARQ_ACK_UnicastMulticast_r17.Encode(w); err != nil {
+			return utils.WrapError("Encode Mux_HARQ_ACK_UnicastMulticast_r17", err)
 		}
 	}
 	return nil
@@ -111,155 +111,155 @@ func (ie *CA_ParametersNR_v1730) Encode(w *uper.UperWriter) error {
 
 func (ie *CA_ParametersNR_v1730) Decode(r *uper.UperReader) error {
 	var err error
-	var dmrs_BundlingPUSCH_RepTypeAPerBC_r17Present bool
-	if dmrs_BundlingPUSCH_RepTypeAPerBC_r17Present, err = r.ReadBool(); err != nil {
+	var Dmrs_BundlingPUSCH_RepTypeAPerBC_r17Present bool
+	if Dmrs_BundlingPUSCH_RepTypeAPerBC_r17Present, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var dmrs_BundlingPUSCH_RepTypeBPerBC_r17Present bool
-	if dmrs_BundlingPUSCH_RepTypeBPerBC_r17Present, err = r.ReadBool(); err != nil {
+	var Dmrs_BundlingPUSCH_RepTypeBPerBC_r17Present bool
+	if Dmrs_BundlingPUSCH_RepTypeBPerBC_r17Present, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var dmrs_BundlingPUSCH_multiSlotPerBC_r17Present bool
-	if dmrs_BundlingPUSCH_multiSlotPerBC_r17Present, err = r.ReadBool(); err != nil {
+	var Dmrs_BundlingPUSCH_multiSlotPerBC_r17Present bool
+	if Dmrs_BundlingPUSCH_multiSlotPerBC_r17Present, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var dmrs_BundlingPUCCH_RepPerBC_r17Present bool
-	if dmrs_BundlingPUCCH_RepPerBC_r17Present, err = r.ReadBool(); err != nil {
+	var Dmrs_BundlingPUCCH_RepPerBC_r17Present bool
+	if Dmrs_BundlingPUCCH_RepPerBC_r17Present, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var dmrs_BundlingRestartPerBC_r17Present bool
-	if dmrs_BundlingRestartPerBC_r17Present, err = r.ReadBool(); err != nil {
+	var Dmrs_BundlingRestartPerBC_r17Present bool
+	if Dmrs_BundlingRestartPerBC_r17Present, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var dmrs_BundlingNonBackToBackTX_PerBC_r17Present bool
-	if dmrs_BundlingNonBackToBackTX_PerBC_r17Present, err = r.ReadBool(); err != nil {
+	var Dmrs_BundlingNonBackToBackTX_PerBC_r17Present bool
+	if Dmrs_BundlingNonBackToBackTX_PerBC_r17Present, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var stayOnTargetCC_SRS_CarrierSwitch_r17Present bool
-	if stayOnTargetCC_SRS_CarrierSwitch_r17Present, err = r.ReadBool(); err != nil {
+	var StayOnTargetCC_SRS_CarrierSwitch_r17Present bool
+	if StayOnTargetCC_SRS_CarrierSwitch_r17Present, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var fdm_CodebookForMux_UnicastMulticastHARQ_ACK_r17Present bool
-	if fdm_CodebookForMux_UnicastMulticastHARQ_ACK_r17Present, err = r.ReadBool(); err != nil {
+	var Fdm_CodebookForMux_UnicastMulticastHARQ_ACK_r17Present bool
+	if Fdm_CodebookForMux_UnicastMulticastHARQ_ACK_r17Present, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var mode2_TDM_CodebookForMux_UnicastMulticastHARQ_ACK_r17Present bool
-	if mode2_TDM_CodebookForMux_UnicastMulticastHARQ_ACK_r17Present, err = r.ReadBool(); err != nil {
+	var Mode2_TDM_CodebookForMux_UnicastMulticastHARQ_ACK_r17Present bool
+	if Mode2_TDM_CodebookForMux_UnicastMulticastHARQ_ACK_r17Present, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var mode1_ForType1_CodebookGeneration_r17Present bool
-	if mode1_ForType1_CodebookGeneration_r17Present, err = r.ReadBool(); err != nil {
+	var Mode1_ForType1_CodebookGeneration_r17Present bool
+	if Mode1_ForType1_CodebookGeneration_r17Present, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var nack_OnlyFeedbackSpecificResourceForSPS_Multicast_r17Present bool
-	if nack_OnlyFeedbackSpecificResourceForSPS_Multicast_r17Present, err = r.ReadBool(); err != nil {
+	var Nack_OnlyFeedbackSpecificResourceForSPS_Multicast_r17Present bool
+	if Nack_OnlyFeedbackSpecificResourceForSPS_Multicast_r17Present, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var multiPUCCH_ConfigForMulticast_r17Present bool
-	if multiPUCCH_ConfigForMulticast_r17Present, err = r.ReadBool(); err != nil {
+	var MultiPUCCH_ConfigForMulticast_r17Present bool
+	if MultiPUCCH_ConfigForMulticast_r17Present, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var pucch_ConfigForSPS_Multicast_r17Present bool
-	if pucch_ConfigForSPS_Multicast_r17Present, err = r.ReadBool(); err != nil {
+	var Pucch_ConfigForSPS_Multicast_r17Present bool
+	if Pucch_ConfigForSPS_Multicast_r17Present, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var maxNumberG_RNTI_HARQ_ACK_Codebook_r17Present bool
-	if maxNumberG_RNTI_HARQ_ACK_Codebook_r17Present, err = r.ReadBool(); err != nil {
+	var MaxNumberG_RNTI_HARQ_ACK_Codebook_r17Present bool
+	if MaxNumberG_RNTI_HARQ_ACK_Codebook_r17Present, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var mux_HARQ_ACK_UnicastMulticast_r17Present bool
-	if mux_HARQ_ACK_UnicastMulticast_r17Present, err = r.ReadBool(); err != nil {
+	var Mux_HARQ_ACK_UnicastMulticast_r17Present bool
+	if Mux_HARQ_ACK_UnicastMulticast_r17Present, err = r.ReadBool(); err != nil {
 		return err
 	}
-	if dmrs_BundlingPUSCH_RepTypeAPerBC_r17Present {
-		ie.dmrs_BundlingPUSCH_RepTypeAPerBC_r17 = new(CA_ParametersNR_v1730_dmrs_BundlingPUSCH_RepTypeAPerBC_r17)
-		if err = ie.dmrs_BundlingPUSCH_RepTypeAPerBC_r17.Decode(r); err != nil {
-			return utils.WrapError("Decode dmrs_BundlingPUSCH_RepTypeAPerBC_r17", err)
+	if Dmrs_BundlingPUSCH_RepTypeAPerBC_r17Present {
+		ie.Dmrs_BundlingPUSCH_RepTypeAPerBC_r17 = new(CA_ParametersNR_v1730_dmrs_BundlingPUSCH_RepTypeAPerBC_r17)
+		if err = ie.Dmrs_BundlingPUSCH_RepTypeAPerBC_r17.Decode(r); err != nil {
+			return utils.WrapError("Decode Dmrs_BundlingPUSCH_RepTypeAPerBC_r17", err)
 		}
 	}
-	if dmrs_BundlingPUSCH_RepTypeBPerBC_r17Present {
-		ie.dmrs_BundlingPUSCH_RepTypeBPerBC_r17 = new(CA_ParametersNR_v1730_dmrs_BundlingPUSCH_RepTypeBPerBC_r17)
-		if err = ie.dmrs_BundlingPUSCH_RepTypeBPerBC_r17.Decode(r); err != nil {
-			return utils.WrapError("Decode dmrs_BundlingPUSCH_RepTypeBPerBC_r17", err)
+	if Dmrs_BundlingPUSCH_RepTypeBPerBC_r17Present {
+		ie.Dmrs_BundlingPUSCH_RepTypeBPerBC_r17 = new(CA_ParametersNR_v1730_dmrs_BundlingPUSCH_RepTypeBPerBC_r17)
+		if err = ie.Dmrs_BundlingPUSCH_RepTypeBPerBC_r17.Decode(r); err != nil {
+			return utils.WrapError("Decode Dmrs_BundlingPUSCH_RepTypeBPerBC_r17", err)
 		}
 	}
-	if dmrs_BundlingPUSCH_multiSlotPerBC_r17Present {
-		ie.dmrs_BundlingPUSCH_multiSlotPerBC_r17 = new(CA_ParametersNR_v1730_dmrs_BundlingPUSCH_multiSlotPerBC_r17)
-		if err = ie.dmrs_BundlingPUSCH_multiSlotPerBC_r17.Decode(r); err != nil {
-			return utils.WrapError("Decode dmrs_BundlingPUSCH_multiSlotPerBC_r17", err)
+	if Dmrs_BundlingPUSCH_multiSlotPerBC_r17Present {
+		ie.Dmrs_BundlingPUSCH_multiSlotPerBC_r17 = new(CA_ParametersNR_v1730_dmrs_BundlingPUSCH_multiSlotPerBC_r17)
+		if err = ie.Dmrs_BundlingPUSCH_multiSlotPerBC_r17.Decode(r); err != nil {
+			return utils.WrapError("Decode Dmrs_BundlingPUSCH_multiSlotPerBC_r17", err)
 		}
 	}
-	if dmrs_BundlingPUCCH_RepPerBC_r17Present {
-		ie.dmrs_BundlingPUCCH_RepPerBC_r17 = new(CA_ParametersNR_v1730_dmrs_BundlingPUCCH_RepPerBC_r17)
-		if err = ie.dmrs_BundlingPUCCH_RepPerBC_r17.Decode(r); err != nil {
-			return utils.WrapError("Decode dmrs_BundlingPUCCH_RepPerBC_r17", err)
+	if Dmrs_BundlingPUCCH_RepPerBC_r17Present {
+		ie.Dmrs_BundlingPUCCH_RepPerBC_r17 = new(CA_ParametersNR_v1730_dmrs_BundlingPUCCH_RepPerBC_r17)
+		if err = ie.Dmrs_BundlingPUCCH_RepPerBC_r17.Decode(r); err != nil {
+			return utils.WrapError("Decode Dmrs_BundlingPUCCH_RepPerBC_r17", err)
 		}
 	}
-	if dmrs_BundlingRestartPerBC_r17Present {
-		ie.dmrs_BundlingRestartPerBC_r17 = new(CA_ParametersNR_v1730_dmrs_BundlingRestartPerBC_r17)
-		if err = ie.dmrs_BundlingRestartPerBC_r17.Decode(r); err != nil {
-			return utils.WrapError("Decode dmrs_BundlingRestartPerBC_r17", err)
+	if Dmrs_BundlingRestartPerBC_r17Present {
+		ie.Dmrs_BundlingRestartPerBC_r17 = new(CA_ParametersNR_v1730_dmrs_BundlingRestartPerBC_r17)
+		if err = ie.Dmrs_BundlingRestartPerBC_r17.Decode(r); err != nil {
+			return utils.WrapError("Decode Dmrs_BundlingRestartPerBC_r17", err)
 		}
 	}
-	if dmrs_BundlingNonBackToBackTX_PerBC_r17Present {
-		ie.dmrs_BundlingNonBackToBackTX_PerBC_r17 = new(CA_ParametersNR_v1730_dmrs_BundlingNonBackToBackTX_PerBC_r17)
-		if err = ie.dmrs_BundlingNonBackToBackTX_PerBC_r17.Decode(r); err != nil {
-			return utils.WrapError("Decode dmrs_BundlingNonBackToBackTX_PerBC_r17", err)
+	if Dmrs_BundlingNonBackToBackTX_PerBC_r17Present {
+		ie.Dmrs_BundlingNonBackToBackTX_PerBC_r17 = new(CA_ParametersNR_v1730_dmrs_BundlingNonBackToBackTX_PerBC_r17)
+		if err = ie.Dmrs_BundlingNonBackToBackTX_PerBC_r17.Decode(r); err != nil {
+			return utils.WrapError("Decode Dmrs_BundlingNonBackToBackTX_PerBC_r17", err)
 		}
 	}
-	if stayOnTargetCC_SRS_CarrierSwitch_r17Present {
-		ie.stayOnTargetCC_SRS_CarrierSwitch_r17 = new(CA_ParametersNR_v1730_stayOnTargetCC_SRS_CarrierSwitch_r17)
-		if err = ie.stayOnTargetCC_SRS_CarrierSwitch_r17.Decode(r); err != nil {
-			return utils.WrapError("Decode stayOnTargetCC_SRS_CarrierSwitch_r17", err)
+	if StayOnTargetCC_SRS_CarrierSwitch_r17Present {
+		ie.StayOnTargetCC_SRS_CarrierSwitch_r17 = new(CA_ParametersNR_v1730_stayOnTargetCC_SRS_CarrierSwitch_r17)
+		if err = ie.StayOnTargetCC_SRS_CarrierSwitch_r17.Decode(r); err != nil {
+			return utils.WrapError("Decode StayOnTargetCC_SRS_CarrierSwitch_r17", err)
 		}
 	}
-	if fdm_CodebookForMux_UnicastMulticastHARQ_ACK_r17Present {
-		ie.fdm_CodebookForMux_UnicastMulticastHARQ_ACK_r17 = new(CA_ParametersNR_v1730_fdm_CodebookForMux_UnicastMulticastHARQ_ACK_r17)
-		if err = ie.fdm_CodebookForMux_UnicastMulticastHARQ_ACK_r17.Decode(r); err != nil {
-			return utils.WrapError("Decode fdm_CodebookForMux_UnicastMulticastHARQ_ACK_r17", err)
+	if Fdm_CodebookForMux_UnicastMulticastHARQ_ACK_r17Present {
+		ie.Fdm_CodebookForMux_UnicastMulticastHARQ_ACK_r17 = new(CA_ParametersNR_v1730_fdm_CodebookForMux_UnicastMulticastHARQ_ACK_r17)
+		if err = ie.Fdm_CodebookForMux_UnicastMulticastHARQ_ACK_r17.Decode(r); err != nil {
+			return utils.WrapError("Decode Fdm_CodebookForMux_UnicastMulticastHARQ_ACK_r17", err)
 		}
 	}
-	if mode2_TDM_CodebookForMux_UnicastMulticastHARQ_ACK_r17Present {
-		ie.mode2_TDM_CodebookForMux_UnicastMulticastHARQ_ACK_r17 = new(CA_ParametersNR_v1730_mode2_TDM_CodebookForMux_UnicastMulticastHARQ_ACK_r17)
-		if err = ie.mode2_TDM_CodebookForMux_UnicastMulticastHARQ_ACK_r17.Decode(r); err != nil {
-			return utils.WrapError("Decode mode2_TDM_CodebookForMux_UnicastMulticastHARQ_ACK_r17", err)
+	if Mode2_TDM_CodebookForMux_UnicastMulticastHARQ_ACK_r17Present {
+		ie.Mode2_TDM_CodebookForMux_UnicastMulticastHARQ_ACK_r17 = new(CA_ParametersNR_v1730_mode2_TDM_CodebookForMux_UnicastMulticastHARQ_ACK_r17)
+		if err = ie.Mode2_TDM_CodebookForMux_UnicastMulticastHARQ_ACK_r17.Decode(r); err != nil {
+			return utils.WrapError("Decode Mode2_TDM_CodebookForMux_UnicastMulticastHARQ_ACK_r17", err)
 		}
 	}
-	if mode1_ForType1_CodebookGeneration_r17Present {
-		ie.mode1_ForType1_CodebookGeneration_r17 = new(CA_ParametersNR_v1730_mode1_ForType1_CodebookGeneration_r17)
-		if err = ie.mode1_ForType1_CodebookGeneration_r17.Decode(r); err != nil {
-			return utils.WrapError("Decode mode1_ForType1_CodebookGeneration_r17", err)
+	if Mode1_ForType1_CodebookGeneration_r17Present {
+		ie.Mode1_ForType1_CodebookGeneration_r17 = new(CA_ParametersNR_v1730_mode1_ForType1_CodebookGeneration_r17)
+		if err = ie.Mode1_ForType1_CodebookGeneration_r17.Decode(r); err != nil {
+			return utils.WrapError("Decode Mode1_ForType1_CodebookGeneration_r17", err)
 		}
 	}
-	if nack_OnlyFeedbackSpecificResourceForSPS_Multicast_r17Present {
-		ie.nack_OnlyFeedbackSpecificResourceForSPS_Multicast_r17 = new(CA_ParametersNR_v1730_nack_OnlyFeedbackSpecificResourceForSPS_Multicast_r17)
-		if err = ie.nack_OnlyFeedbackSpecificResourceForSPS_Multicast_r17.Decode(r); err != nil {
-			return utils.WrapError("Decode nack_OnlyFeedbackSpecificResourceForSPS_Multicast_r17", err)
+	if Nack_OnlyFeedbackSpecificResourceForSPS_Multicast_r17Present {
+		ie.Nack_OnlyFeedbackSpecificResourceForSPS_Multicast_r17 = new(CA_ParametersNR_v1730_nack_OnlyFeedbackSpecificResourceForSPS_Multicast_r17)
+		if err = ie.Nack_OnlyFeedbackSpecificResourceForSPS_Multicast_r17.Decode(r); err != nil {
+			return utils.WrapError("Decode Nack_OnlyFeedbackSpecificResourceForSPS_Multicast_r17", err)
 		}
 	}
-	if multiPUCCH_ConfigForMulticast_r17Present {
-		ie.multiPUCCH_ConfigForMulticast_r17 = new(CA_ParametersNR_v1730_multiPUCCH_ConfigForMulticast_r17)
-		if err = ie.multiPUCCH_ConfigForMulticast_r17.Decode(r); err != nil {
-			return utils.WrapError("Decode multiPUCCH_ConfigForMulticast_r17", err)
+	if MultiPUCCH_ConfigForMulticast_r17Present {
+		ie.MultiPUCCH_ConfigForMulticast_r17 = new(CA_ParametersNR_v1730_multiPUCCH_ConfigForMulticast_r17)
+		if err = ie.MultiPUCCH_ConfigForMulticast_r17.Decode(r); err != nil {
+			return utils.WrapError("Decode MultiPUCCH_ConfigForMulticast_r17", err)
 		}
 	}
-	if pucch_ConfigForSPS_Multicast_r17Present {
-		ie.pucch_ConfigForSPS_Multicast_r17 = new(CA_ParametersNR_v1730_pucch_ConfigForSPS_Multicast_r17)
-		if err = ie.pucch_ConfigForSPS_Multicast_r17.Decode(r); err != nil {
-			return utils.WrapError("Decode pucch_ConfigForSPS_Multicast_r17", err)
+	if Pucch_ConfigForSPS_Multicast_r17Present {
+		ie.Pucch_ConfigForSPS_Multicast_r17 = new(CA_ParametersNR_v1730_pucch_ConfigForSPS_Multicast_r17)
+		if err = ie.Pucch_ConfigForSPS_Multicast_r17.Decode(r); err != nil {
+			return utils.WrapError("Decode Pucch_ConfigForSPS_Multicast_r17", err)
 		}
 	}
-	if maxNumberG_RNTI_HARQ_ACK_Codebook_r17Present {
-		var tmp_int_maxNumberG_RNTI_HARQ_ACK_Codebook_r17 int64
-		if tmp_int_maxNumberG_RNTI_HARQ_ACK_Codebook_r17, err = r.ReadInteger(&uper.Constraint{Lb: 1, Ub: 4}, false); err != nil {
-			return utils.WrapError("Decode maxNumberG_RNTI_HARQ_ACK_Codebook_r17", err)
+	if MaxNumberG_RNTI_HARQ_ACK_Codebook_r17Present {
+		var tmp_int_MaxNumberG_RNTI_HARQ_ACK_Codebook_r17 int64
+		if tmp_int_MaxNumberG_RNTI_HARQ_ACK_Codebook_r17, err = r.ReadInteger(&uper.Constraint{Lb: 1, Ub: 4}, false); err != nil {
+			return utils.WrapError("Decode MaxNumberG_RNTI_HARQ_ACK_Codebook_r17", err)
 		}
-		ie.maxNumberG_RNTI_HARQ_ACK_Codebook_r17 = &tmp_int_maxNumberG_RNTI_HARQ_ACK_Codebook_r17
+		ie.MaxNumberG_RNTI_HARQ_ACK_Codebook_r17 = &tmp_int_MaxNumberG_RNTI_HARQ_ACK_Codebook_r17
 	}
-	if mux_HARQ_ACK_UnicastMulticast_r17Present {
-		ie.mux_HARQ_ACK_UnicastMulticast_r17 = new(CA_ParametersNR_v1730_mux_HARQ_ACK_UnicastMulticast_r17)
-		if err = ie.mux_HARQ_ACK_UnicastMulticast_r17.Decode(r); err != nil {
-			return utils.WrapError("Decode mux_HARQ_ACK_UnicastMulticast_r17", err)
+	if Mux_HARQ_ACK_UnicastMulticast_r17Present {
+		ie.Mux_HARQ_ACK_UnicastMulticast_r17 = new(CA_ParametersNR_v1730_mux_HARQ_ACK_UnicastMulticast_r17)
+		if err = ie.Mux_HARQ_ACK_UnicastMulticast_r17.Decode(r); err != nil {
+			return utils.WrapError("Decode Mux_HARQ_ACK_UnicastMulticast_r17", err)
 		}
 	}
 	return nil

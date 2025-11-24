@@ -6,42 +6,42 @@ import (
 )
 
 type SL_PeriodicalReportConfig_r16 struct {
-	sl_ReportInterval_r16 ReportInterval                                    `madatory`
-	sl_ReportAmount_r16   SL_PeriodicalReportConfig_r16_sl_ReportAmount_r16 `madatory`
-	sl_ReportQuantity_r16 SL_MeasReportQuantity_r16                         `madatory`
-	sl_RS_Type_r16        SL_RS_Type_r16                                    `madatory`
+	Sl_ReportInterval_r16 ReportInterval                                    `madatory`
+	Sl_ReportAmount_r16   SL_PeriodicalReportConfig_r16_sl_ReportAmount_r16 `madatory`
+	Sl_ReportQuantity_r16 SL_MeasReportQuantity_r16                         `madatory`
+	Sl_RS_Type_r16        SL_RS_Type_r16                                    `madatory`
 }
 
 func (ie *SL_PeriodicalReportConfig_r16) Encode(w *uper.UperWriter) error {
 	var err error
-	if err = ie.sl_ReportInterval_r16.Encode(w); err != nil {
-		return utils.WrapError("Encode sl_ReportInterval_r16", err)
+	if err = ie.Sl_ReportInterval_r16.Encode(w); err != nil {
+		return utils.WrapError("Encode Sl_ReportInterval_r16", err)
 	}
-	if err = ie.sl_ReportAmount_r16.Encode(w); err != nil {
-		return utils.WrapError("Encode sl_ReportAmount_r16", err)
+	if err = ie.Sl_ReportAmount_r16.Encode(w); err != nil {
+		return utils.WrapError("Encode Sl_ReportAmount_r16", err)
 	}
-	if err = ie.sl_ReportQuantity_r16.Encode(w); err != nil {
-		return utils.WrapError("Encode sl_ReportQuantity_r16", err)
+	if err = ie.Sl_ReportQuantity_r16.Encode(w); err != nil {
+		return utils.WrapError("Encode Sl_ReportQuantity_r16", err)
 	}
-	if err = ie.sl_RS_Type_r16.Encode(w); err != nil {
-		return utils.WrapError("Encode sl_RS_Type_r16", err)
+	if err = ie.Sl_RS_Type_r16.Encode(w); err != nil {
+		return utils.WrapError("Encode Sl_RS_Type_r16", err)
 	}
 	return nil
 }
 
 func (ie *SL_PeriodicalReportConfig_r16) Decode(r *uper.UperReader) error {
 	var err error
-	if err = ie.sl_ReportInterval_r16.Decode(r); err != nil {
-		return utils.WrapError("Decode sl_ReportInterval_r16", err)
+	if err = ie.Sl_ReportInterval_r16.Decode(r); err != nil {
+		return utils.WrapError("Decode Sl_ReportInterval_r16", err)
 	}
-	if err = ie.sl_ReportAmount_r16.Decode(r); err != nil {
-		return utils.WrapError("Decode sl_ReportAmount_r16", err)
+	if err = ie.Sl_ReportAmount_r16.Decode(r); err != nil {
+		return utils.WrapError("Decode Sl_ReportAmount_r16", err)
 	}
-	if err = ie.sl_ReportQuantity_r16.Decode(r); err != nil {
-		return utils.WrapError("Decode sl_ReportQuantity_r16", err)
+	if err = ie.Sl_ReportQuantity_r16.Decode(r); err != nil {
+		return utils.WrapError("Decode Sl_ReportQuantity_r16", err)
 	}
-	if err = ie.sl_RS_Type_r16.Decode(r); err != nil {
-		return utils.WrapError("Decode sl_RS_Type_r16", err)
+	if err = ie.Sl_RS_Type_r16.Decode(r); err != nil {
+		return utils.WrapError("Decode Sl_RS_Type_r16", err)
 	}
 	return nil
 }

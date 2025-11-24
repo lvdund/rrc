@@ -9,14 +9,14 @@ import (
 
 const (
 	UE_TxTEG_RequestUL_TDOA_Config_r17_Choice_nothing uint64 = iota
-	UE_TxTEG_RequestUL_TDOA_Config_r17_Choice_oneShot_r17
-	UE_TxTEG_RequestUL_TDOA_Config_r17_Choice_periodicReporting_r17
+	UE_TxTEG_RequestUL_TDOA_Config_r17_Choice_OneShot_r17
+	UE_TxTEG_RequestUL_TDOA_Config_r17_Choice_PeriodicReporting_r17
 )
 
 type UE_TxTEG_RequestUL_TDOA_Config_r17 struct {
 	Choice                uint64
-	oneShot_r17           uper.NULL `madatory`
-	periodicReporting_r17 *UE_TxTEG_RequestUL_TDOA_Config_r17_periodicReporting_r17
+	OneShot_r17           uper.NULL `madatory`
+	PeriodicReporting_r17 *UE_TxTEG_RequestUL_TDOA_Config_r17_periodicReporting_r17
 }
 
 func (ie *UE_TxTEG_RequestUL_TDOA_Config_r17) Encode(w *uper.UperWriter) error {
@@ -25,13 +25,13 @@ func (ie *UE_TxTEG_RequestUL_TDOA_Config_r17) Encode(w *uper.UperWriter) error {
 		return err
 	}
 	switch ie.Choice {
-	case UE_TxTEG_RequestUL_TDOA_Config_r17_Choice_oneShot_r17:
+	case UE_TxTEG_RequestUL_TDOA_Config_r17_Choice_OneShot_r17:
 		if err := w.WriteNull(); err != nil {
-			err = utils.WrapError("Encode oneShot_r17", err)
+			err = utils.WrapError("Encode OneShot_r17", err)
 		}
-	case UE_TxTEG_RequestUL_TDOA_Config_r17_Choice_periodicReporting_r17:
-		if err = ie.periodicReporting_r17.Encode(w); err != nil {
-			err = utils.WrapError("Encode periodicReporting_r17", err)
+	case UE_TxTEG_RequestUL_TDOA_Config_r17_Choice_PeriodicReporting_r17:
+		if err = ie.PeriodicReporting_r17.Encode(w); err != nil {
+			err = utils.WrapError("Encode PeriodicReporting_r17", err)
 		}
 	default:
 		err = fmt.Errorf("invalid choice: %d", ie.Choice)
@@ -45,14 +45,14 @@ func (ie *UE_TxTEG_RequestUL_TDOA_Config_r17) Decode(r *uper.UperReader) error {
 		return err
 	}
 	switch ie.Choice {
-	case UE_TxTEG_RequestUL_TDOA_Config_r17_Choice_oneShot_r17:
+	case UE_TxTEG_RequestUL_TDOA_Config_r17_Choice_OneShot_r17:
 		if err := r.ReadNull(); err != nil {
-			return utils.WrapError("Decode oneShot_r17", err)
+			return utils.WrapError("Decode OneShot_r17", err)
 		}
-	case UE_TxTEG_RequestUL_TDOA_Config_r17_Choice_periodicReporting_r17:
-		ie.periodicReporting_r17 = new(UE_TxTEG_RequestUL_TDOA_Config_r17_periodicReporting_r17)
-		if err = ie.periodicReporting_r17.Decode(r); err != nil {
-			return utils.WrapError("Decode periodicReporting_r17", err)
+	case UE_TxTEG_RequestUL_TDOA_Config_r17_Choice_PeriodicReporting_r17:
+		ie.PeriodicReporting_r17 = new(UE_TxTEG_RequestUL_TDOA_Config_r17_periodicReporting_r17)
+		if err = ie.PeriodicReporting_r17.Decode(r); err != nil {
+			return utils.WrapError("Decode PeriodicReporting_r17", err)
 		}
 	default:
 		return fmt.Errorf("invalid choice: %d", ie.Choice)

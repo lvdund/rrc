@@ -9,14 +9,14 @@ import (
 
 const (
 	RACH_ConfigCommon_prach_RootSequenceIndex_Choice_nothing uint64 = iota
-	RACH_ConfigCommon_prach_RootSequenceIndex_Choice_l839
-	RACH_ConfigCommon_prach_RootSequenceIndex_Choice_l139
+	RACH_ConfigCommon_prach_RootSequenceIndex_Choice_L839
+	RACH_ConfigCommon_prach_RootSequenceIndex_Choice_L139
 )
 
 type RACH_ConfigCommon_prach_RootSequenceIndex struct {
 	Choice uint64
-	l839   int64 `lb:0,ub:837,madatory`
-	l139   int64 `lb:0,ub:137,madatory`
+	L839   int64 `lb:0,ub:837,madatory`
+	L139   int64 `lb:0,ub:137,madatory`
 }
 
 func (ie *RACH_ConfigCommon_prach_RootSequenceIndex) Encode(w *uper.UperWriter) error {
@@ -25,13 +25,13 @@ func (ie *RACH_ConfigCommon_prach_RootSequenceIndex) Encode(w *uper.UperWriter) 
 		return err
 	}
 	switch ie.Choice {
-	case RACH_ConfigCommon_prach_RootSequenceIndex_Choice_l839:
-		if err = w.WriteInteger(int64(ie.l839), &uper.Constraint{Lb: 0, Ub: 837}, false); err != nil {
-			err = utils.WrapError("Encode l839", err)
+	case RACH_ConfigCommon_prach_RootSequenceIndex_Choice_L839:
+		if err = w.WriteInteger(int64(ie.L839), &uper.Constraint{Lb: 0, Ub: 837}, false); err != nil {
+			err = utils.WrapError("Encode L839", err)
 		}
-	case RACH_ConfigCommon_prach_RootSequenceIndex_Choice_l139:
-		if err = w.WriteInteger(int64(ie.l139), &uper.Constraint{Lb: 0, Ub: 137}, false); err != nil {
-			err = utils.WrapError("Encode l139", err)
+	case RACH_ConfigCommon_prach_RootSequenceIndex_Choice_L139:
+		if err = w.WriteInteger(int64(ie.L139), &uper.Constraint{Lb: 0, Ub: 137}, false); err != nil {
+			err = utils.WrapError("Encode L139", err)
 		}
 	default:
 		err = fmt.Errorf("invalid choice: %d", ie.Choice)
@@ -45,18 +45,18 @@ func (ie *RACH_ConfigCommon_prach_RootSequenceIndex) Decode(r *uper.UperReader) 
 		return err
 	}
 	switch ie.Choice {
-	case RACH_ConfigCommon_prach_RootSequenceIndex_Choice_l839:
-		var tmp_int_l839 int64
-		if tmp_int_l839, err = r.ReadInteger(&uper.Constraint{Lb: 0, Ub: 837}, false); err != nil {
-			return utils.WrapError("Decode l839", err)
+	case RACH_ConfigCommon_prach_RootSequenceIndex_Choice_L839:
+		var tmp_int_L839 int64
+		if tmp_int_L839, err = r.ReadInteger(&uper.Constraint{Lb: 0, Ub: 837}, false); err != nil {
+			return utils.WrapError("Decode L839", err)
 		}
-		ie.l839 = tmp_int_l839
-	case RACH_ConfigCommon_prach_RootSequenceIndex_Choice_l139:
-		var tmp_int_l139 int64
-		if tmp_int_l139, err = r.ReadInteger(&uper.Constraint{Lb: 0, Ub: 137}, false); err != nil {
-			return utils.WrapError("Decode l139", err)
+		ie.L839 = tmp_int_L839
+	case RACH_ConfigCommon_prach_RootSequenceIndex_Choice_L139:
+		var tmp_int_L139 int64
+		if tmp_int_L139, err = r.ReadInteger(&uper.Constraint{Lb: 0, Ub: 137}, false); err != nil {
+			return utils.WrapError("Decode L139", err)
 		}
-		ie.l139 = tmp_int_l139
+		ie.L139 = tmp_int_L139
 	default:
 		return fmt.Errorf("invalid choice: %d", ie.Choice)
 	}

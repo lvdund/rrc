@@ -9,14 +9,14 @@ import (
 
 const (
 	CrossCarrierSchedulingConfig_schedulingCellInfo_Choice_nothing uint64 = iota
-	CrossCarrierSchedulingConfig_schedulingCellInfo_Choice_own
-	CrossCarrierSchedulingConfig_schedulingCellInfo_Choice_other
+	CrossCarrierSchedulingConfig_schedulingCellInfo_Choice_Own
+	CrossCarrierSchedulingConfig_schedulingCellInfo_Choice_Other
 )
 
 type CrossCarrierSchedulingConfig_schedulingCellInfo struct {
 	Choice uint64
-	own    *CrossCarrierSchedulingConfig_schedulingCellInfo_own
-	other  *CrossCarrierSchedulingConfig_schedulingCellInfo_other
+	Own    *CrossCarrierSchedulingConfig_schedulingCellInfo_own
+	Other  *CrossCarrierSchedulingConfig_schedulingCellInfo_other
 }
 
 func (ie *CrossCarrierSchedulingConfig_schedulingCellInfo) Encode(w *uper.UperWriter) error {
@@ -25,13 +25,13 @@ func (ie *CrossCarrierSchedulingConfig_schedulingCellInfo) Encode(w *uper.UperWr
 		return err
 	}
 	switch ie.Choice {
-	case CrossCarrierSchedulingConfig_schedulingCellInfo_Choice_own:
-		if err = ie.own.Encode(w); err != nil {
-			err = utils.WrapError("Encode own", err)
+	case CrossCarrierSchedulingConfig_schedulingCellInfo_Choice_Own:
+		if err = ie.Own.Encode(w); err != nil {
+			err = utils.WrapError("Encode Own", err)
 		}
-	case CrossCarrierSchedulingConfig_schedulingCellInfo_Choice_other:
-		if err = ie.other.Encode(w); err != nil {
-			err = utils.WrapError("Encode other", err)
+	case CrossCarrierSchedulingConfig_schedulingCellInfo_Choice_Other:
+		if err = ie.Other.Encode(w); err != nil {
+			err = utils.WrapError("Encode Other", err)
 		}
 	default:
 		err = fmt.Errorf("invalid choice: %d", ie.Choice)
@@ -45,15 +45,15 @@ func (ie *CrossCarrierSchedulingConfig_schedulingCellInfo) Decode(r *uper.UperRe
 		return err
 	}
 	switch ie.Choice {
-	case CrossCarrierSchedulingConfig_schedulingCellInfo_Choice_own:
-		ie.own = new(CrossCarrierSchedulingConfig_schedulingCellInfo_own)
-		if err = ie.own.Decode(r); err != nil {
-			return utils.WrapError("Decode own", err)
+	case CrossCarrierSchedulingConfig_schedulingCellInfo_Choice_Own:
+		ie.Own = new(CrossCarrierSchedulingConfig_schedulingCellInfo_own)
+		if err = ie.Own.Decode(r); err != nil {
+			return utils.WrapError("Decode Own", err)
 		}
-	case CrossCarrierSchedulingConfig_schedulingCellInfo_Choice_other:
-		ie.other = new(CrossCarrierSchedulingConfig_schedulingCellInfo_other)
-		if err = ie.other.Decode(r); err != nil {
-			return utils.WrapError("Decode other", err)
+	case CrossCarrierSchedulingConfig_schedulingCellInfo_Choice_Other:
+		ie.Other = new(CrossCarrierSchedulingConfig_schedulingCellInfo_other)
+		if err = ie.Other.Decode(r); err != nil {
+			return utils.WrapError("Decode Other", err)
 		}
 	default:
 		return fmt.Errorf("invalid choice: %d", ie.Choice)

@@ -6,62 +6,62 @@ import (
 )
 
 type DummyC struct {
-	maxNumberTxPortsPerResource    DummyC_maxNumberTxPortsPerResource `madatory`
-	maxNumberResources             int64                              `lb:1,ub:64,madatory`
-	totalNumberTxPorts             int64                              `lb:2,ub:256,madatory`
-	supportedCodebookMode          DummyC_supportedCodebookMode       `madatory`
-	supportedNumberPanels          DummyC_supportedNumberPanels       `madatory`
-	maxNumberCSI_RS_PerResourceSet int64                              `lb:1,ub:8,madatory`
+	MaxNumberTxPortsPerResource    DummyC_maxNumberTxPortsPerResource `madatory`
+	MaxNumberResources             int64                              `lb:1,ub:64,madatory`
+	TotalNumberTxPorts             int64                              `lb:2,ub:256,madatory`
+	SupportedCodebookMode          DummyC_supportedCodebookMode       `madatory`
+	SupportedNumberPanels          DummyC_supportedNumberPanels       `madatory`
+	MaxNumberCSI_RS_PerResourceSet int64                              `lb:1,ub:8,madatory`
 }
 
 func (ie *DummyC) Encode(w *uper.UperWriter) error {
 	var err error
-	if err = ie.maxNumberTxPortsPerResource.Encode(w); err != nil {
-		return utils.WrapError("Encode maxNumberTxPortsPerResource", err)
+	if err = ie.MaxNumberTxPortsPerResource.Encode(w); err != nil {
+		return utils.WrapError("Encode MaxNumberTxPortsPerResource", err)
 	}
-	if err = w.WriteInteger(ie.maxNumberResources, &uper.Constraint{Lb: 1, Ub: 64}, false); err != nil {
-		return utils.WrapError("WriteInteger maxNumberResources", err)
+	if err = w.WriteInteger(ie.MaxNumberResources, &uper.Constraint{Lb: 1, Ub: 64}, false); err != nil {
+		return utils.WrapError("WriteInteger MaxNumberResources", err)
 	}
-	if err = w.WriteInteger(ie.totalNumberTxPorts, &uper.Constraint{Lb: 2, Ub: 256}, false); err != nil {
-		return utils.WrapError("WriteInteger totalNumberTxPorts", err)
+	if err = w.WriteInteger(ie.TotalNumberTxPorts, &uper.Constraint{Lb: 2, Ub: 256}, false); err != nil {
+		return utils.WrapError("WriteInteger TotalNumberTxPorts", err)
 	}
-	if err = ie.supportedCodebookMode.Encode(w); err != nil {
-		return utils.WrapError("Encode supportedCodebookMode", err)
+	if err = ie.SupportedCodebookMode.Encode(w); err != nil {
+		return utils.WrapError("Encode SupportedCodebookMode", err)
 	}
-	if err = ie.supportedNumberPanels.Encode(w); err != nil {
-		return utils.WrapError("Encode supportedNumberPanels", err)
+	if err = ie.SupportedNumberPanels.Encode(w); err != nil {
+		return utils.WrapError("Encode SupportedNumberPanels", err)
 	}
-	if err = w.WriteInteger(ie.maxNumberCSI_RS_PerResourceSet, &uper.Constraint{Lb: 1, Ub: 8}, false); err != nil {
-		return utils.WrapError("WriteInteger maxNumberCSI_RS_PerResourceSet", err)
+	if err = w.WriteInteger(ie.MaxNumberCSI_RS_PerResourceSet, &uper.Constraint{Lb: 1, Ub: 8}, false); err != nil {
+		return utils.WrapError("WriteInteger MaxNumberCSI_RS_PerResourceSet", err)
 	}
 	return nil
 }
 
 func (ie *DummyC) Decode(r *uper.UperReader) error {
 	var err error
-	if err = ie.maxNumberTxPortsPerResource.Decode(r); err != nil {
-		return utils.WrapError("Decode maxNumberTxPortsPerResource", err)
+	if err = ie.MaxNumberTxPortsPerResource.Decode(r); err != nil {
+		return utils.WrapError("Decode MaxNumberTxPortsPerResource", err)
 	}
-	var tmp_int_maxNumberResources int64
-	if tmp_int_maxNumberResources, err = r.ReadInteger(&uper.Constraint{Lb: 1, Ub: 64}, false); err != nil {
-		return utils.WrapError("ReadInteger maxNumberResources", err)
+	var tmp_int_MaxNumberResources int64
+	if tmp_int_MaxNumberResources, err = r.ReadInteger(&uper.Constraint{Lb: 1, Ub: 64}, false); err != nil {
+		return utils.WrapError("ReadInteger MaxNumberResources", err)
 	}
-	ie.maxNumberResources = tmp_int_maxNumberResources
-	var tmp_int_totalNumberTxPorts int64
-	if tmp_int_totalNumberTxPorts, err = r.ReadInteger(&uper.Constraint{Lb: 2, Ub: 256}, false); err != nil {
-		return utils.WrapError("ReadInteger totalNumberTxPorts", err)
+	ie.MaxNumberResources = tmp_int_MaxNumberResources
+	var tmp_int_TotalNumberTxPorts int64
+	if tmp_int_TotalNumberTxPorts, err = r.ReadInteger(&uper.Constraint{Lb: 2, Ub: 256}, false); err != nil {
+		return utils.WrapError("ReadInteger TotalNumberTxPorts", err)
 	}
-	ie.totalNumberTxPorts = tmp_int_totalNumberTxPorts
-	if err = ie.supportedCodebookMode.Decode(r); err != nil {
-		return utils.WrapError("Decode supportedCodebookMode", err)
+	ie.TotalNumberTxPorts = tmp_int_TotalNumberTxPorts
+	if err = ie.SupportedCodebookMode.Decode(r); err != nil {
+		return utils.WrapError("Decode SupportedCodebookMode", err)
 	}
-	if err = ie.supportedNumberPanels.Decode(r); err != nil {
-		return utils.WrapError("Decode supportedNumberPanels", err)
+	if err = ie.SupportedNumberPanels.Decode(r); err != nil {
+		return utils.WrapError("Decode SupportedNumberPanels", err)
 	}
-	var tmp_int_maxNumberCSI_RS_PerResourceSet int64
-	if tmp_int_maxNumberCSI_RS_PerResourceSet, err = r.ReadInteger(&uper.Constraint{Lb: 1, Ub: 8}, false); err != nil {
-		return utils.WrapError("ReadInteger maxNumberCSI_RS_PerResourceSet", err)
+	var tmp_int_MaxNumberCSI_RS_PerResourceSet int64
+	if tmp_int_MaxNumberCSI_RS_PerResourceSet, err = r.ReadInteger(&uper.Constraint{Lb: 1, Ub: 8}, false); err != nil {
+		return utils.WrapError("ReadInteger MaxNumberCSI_RS_PerResourceSet", err)
 	}
-	ie.maxNumberCSI_RS_PerResourceSet = tmp_int_maxNumberCSI_RS_PerResourceSet
+	ie.MaxNumberCSI_RS_PerResourceSet = tmp_int_MaxNumberCSI_RS_PerResourceSet
 	return nil
 }

@@ -8,40 +8,40 @@ import (
 )
 
 type CGI_InfoNR struct {
-	plmn_IdentityInfoList       *PLMN_IdentityInfoList                  `optional`
-	frequencyBandList           *MultiFrequencyBandListNR               `optional`
-	noSIB1                      *CGI_InfoNR_noSIB1                      `lb:0,ub:15,optional`
-	npn_IdentityInfoList_r16    *NPN_IdentityInfoList_r16               `optional,ext-1`
-	cellReservedForOtherUse_r16 *CGI_InfoNR_cellReservedForOtherUse_r16 `optional,ext-2`
+	Plmn_IdentityInfoList       *PLMN_IdentityInfoList                  `optional`
+	FrequencyBandList           *MultiFrequencyBandListNR               `optional`
+	NoSIB1                      *CGI_InfoNR_noSIB1                      `lb:0,ub:15,optional`
+	Npn_IdentityInfoList_r16    *NPN_IdentityInfoList_r16               `optional,ext-1`
+	CellReservedForOtherUse_r16 *CGI_InfoNR_cellReservedForOtherUse_r16 `optional,ext-2`
 }
 
 func (ie *CGI_InfoNR) Encode(w *uper.UperWriter) error {
 	var err error
-	hasExtensions := ie.npn_IdentityInfoList_r16 != nil || ie.cellReservedForOtherUse_r16 != nil
-	preambleBits := []bool{hasExtensions, ie.plmn_IdentityInfoList != nil, ie.frequencyBandList != nil, ie.noSIB1 != nil}
+	hasExtensions := ie.Npn_IdentityInfoList_r16 != nil || ie.CellReservedForOtherUse_r16 != nil
+	preambleBits := []bool{hasExtensions, ie.Plmn_IdentityInfoList != nil, ie.FrequencyBandList != nil, ie.NoSIB1 != nil}
 	for _, bit := range preambleBits {
 		if err = w.WriteBool(bit); err != nil {
 			return err
 		}
 	}
-	if ie.plmn_IdentityInfoList != nil {
-		if err = ie.plmn_IdentityInfoList.Encode(w); err != nil {
-			return utils.WrapError("Encode plmn_IdentityInfoList", err)
+	if ie.Plmn_IdentityInfoList != nil {
+		if err = ie.Plmn_IdentityInfoList.Encode(w); err != nil {
+			return utils.WrapError("Encode Plmn_IdentityInfoList", err)
 		}
 	}
-	if ie.frequencyBandList != nil {
-		if err = ie.frequencyBandList.Encode(w); err != nil {
-			return utils.WrapError("Encode frequencyBandList", err)
+	if ie.FrequencyBandList != nil {
+		if err = ie.FrequencyBandList.Encode(w); err != nil {
+			return utils.WrapError("Encode FrequencyBandList", err)
 		}
 	}
-	if ie.noSIB1 != nil {
-		if err = ie.noSIB1.Encode(w); err != nil {
-			return utils.WrapError("Encode noSIB1", err)
+	if ie.NoSIB1 != nil {
+		if err = ie.NoSIB1.Encode(w); err != nil {
+			return utils.WrapError("Encode NoSIB1", err)
 		}
 	}
 	if hasExtensions {
 		// Extension bitmap: 2 bits for 2 extension groups
-		extBitmap := []bool{ie.npn_IdentityInfoList_r16 != nil, ie.cellReservedForOtherUse_r16 != nil}
+		extBitmap := []bool{ie.Npn_IdentityInfoList_r16 != nil, ie.CellReservedForOtherUse_r16 != nil}
 		if err := w.WriteExtBitMap(extBitmap); err != nil {
 			return utils.WrapError("WriteExtBitMap CGI_InfoNR", err)
 		}
@@ -52,17 +52,17 @@ func (ie *CGI_InfoNR) Encode(w *uper.UperWriter) error {
 			extWriter := uper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 1
-			optionals_ext_1 := []bool{ie.npn_IdentityInfoList_r16 != nil}
+			optionals_ext_1 := []bool{ie.Npn_IdentityInfoList_r16 != nil}
 			for _, bit := range optionals_ext_1 {
 				if err := extWriter.WriteBool(bit); err != nil {
 					return err
 				}
 			}
 
-			// encode npn_IdentityInfoList_r16 optional
-			if ie.npn_IdentityInfoList_r16 != nil {
-				if err = ie.npn_IdentityInfoList_r16.Encode(extWriter); err != nil {
-					return utils.WrapError("Encode npn_IdentityInfoList_r16", err)
+			// encode Npn_IdentityInfoList_r16 optional
+			if ie.Npn_IdentityInfoList_r16 != nil {
+				if err = ie.Npn_IdentityInfoList_r16.Encode(extWriter); err != nil {
+					return utils.WrapError("Encode Npn_IdentityInfoList_r16", err)
 				}
 			}
 
@@ -81,17 +81,17 @@ func (ie *CGI_InfoNR) Encode(w *uper.UperWriter) error {
 			extWriter := uper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 2
-			optionals_ext_2 := []bool{ie.cellReservedForOtherUse_r16 != nil}
+			optionals_ext_2 := []bool{ie.CellReservedForOtherUse_r16 != nil}
 			for _, bit := range optionals_ext_2 {
 				if err := extWriter.WriteBool(bit); err != nil {
 					return err
 				}
 			}
 
-			// encode cellReservedForOtherUse_r16 optional
-			if ie.cellReservedForOtherUse_r16 != nil {
-				if err = ie.cellReservedForOtherUse_r16.Encode(extWriter); err != nil {
-					return utils.WrapError("Encode cellReservedForOtherUse_r16", err)
+			// encode CellReservedForOtherUse_r16 optional
+			if ie.CellReservedForOtherUse_r16 != nil {
+				if err = ie.CellReservedForOtherUse_r16.Encode(extWriter); err != nil {
+					return utils.WrapError("Encode CellReservedForOtherUse_r16", err)
 				}
 			}
 
@@ -113,34 +113,34 @@ func (ie *CGI_InfoNR) Decode(r *uper.UperReader) error {
 	if extensionBit, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var plmn_IdentityInfoListPresent bool
-	if plmn_IdentityInfoListPresent, err = r.ReadBool(); err != nil {
+	var Plmn_IdentityInfoListPresent bool
+	if Plmn_IdentityInfoListPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var frequencyBandListPresent bool
-	if frequencyBandListPresent, err = r.ReadBool(); err != nil {
+	var FrequencyBandListPresent bool
+	if FrequencyBandListPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var noSIB1Present bool
-	if noSIB1Present, err = r.ReadBool(); err != nil {
+	var NoSIB1Present bool
+	if NoSIB1Present, err = r.ReadBool(); err != nil {
 		return err
 	}
-	if plmn_IdentityInfoListPresent {
-		ie.plmn_IdentityInfoList = new(PLMN_IdentityInfoList)
-		if err = ie.plmn_IdentityInfoList.Decode(r); err != nil {
-			return utils.WrapError("Decode plmn_IdentityInfoList", err)
+	if Plmn_IdentityInfoListPresent {
+		ie.Plmn_IdentityInfoList = new(PLMN_IdentityInfoList)
+		if err = ie.Plmn_IdentityInfoList.Decode(r); err != nil {
+			return utils.WrapError("Decode Plmn_IdentityInfoList", err)
 		}
 	}
-	if frequencyBandListPresent {
-		ie.frequencyBandList = new(MultiFrequencyBandListNR)
-		if err = ie.frequencyBandList.Decode(r); err != nil {
-			return utils.WrapError("Decode frequencyBandList", err)
+	if FrequencyBandListPresent {
+		ie.FrequencyBandList = new(MultiFrequencyBandListNR)
+		if err = ie.FrequencyBandList.Decode(r); err != nil {
+			return utils.WrapError("Decode FrequencyBandList", err)
 		}
 	}
-	if noSIB1Present {
-		ie.noSIB1 = new(CGI_InfoNR_noSIB1)
-		if err = ie.noSIB1.Decode(r); err != nil {
-			return utils.WrapError("Decode noSIB1", err)
+	if NoSIB1Present {
+		ie.NoSIB1 = new(CGI_InfoNR_noSIB1)
+		if err = ie.NoSIB1.Decode(r); err != nil {
+			return utils.WrapError("Decode NoSIB1", err)
 		}
 	}
 
@@ -160,15 +160,15 @@ func (ie *CGI_InfoNR) Decode(r *uper.UperReader) error {
 
 			extReader := uper.NewReader(bytes.NewReader(extBytes))
 
-			npn_IdentityInfoList_r16Present, err := extReader.ReadBool()
+			Npn_IdentityInfoList_r16Present, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			// decode npn_IdentityInfoList_r16 optional
-			if npn_IdentityInfoList_r16Present {
-				ie.npn_IdentityInfoList_r16 = new(NPN_IdentityInfoList_r16)
-				if err = ie.npn_IdentityInfoList_r16.Decode(extReader); err != nil {
-					return utils.WrapError("Decode npn_IdentityInfoList_r16", err)
+			// decode Npn_IdentityInfoList_r16 optional
+			if Npn_IdentityInfoList_r16Present {
+				ie.Npn_IdentityInfoList_r16 = new(NPN_IdentityInfoList_r16)
+				if err = ie.Npn_IdentityInfoList_r16.Decode(extReader); err != nil {
+					return utils.WrapError("Decode Npn_IdentityInfoList_r16", err)
 				}
 			}
 		}
@@ -181,15 +181,15 @@ func (ie *CGI_InfoNR) Decode(r *uper.UperReader) error {
 
 			extReader := uper.NewReader(bytes.NewReader(extBytes))
 
-			cellReservedForOtherUse_r16Present, err := extReader.ReadBool()
+			CellReservedForOtherUse_r16Present, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			// decode cellReservedForOtherUse_r16 optional
-			if cellReservedForOtherUse_r16Present {
-				ie.cellReservedForOtherUse_r16 = new(CGI_InfoNR_cellReservedForOtherUse_r16)
-				if err = ie.cellReservedForOtherUse_r16.Decode(extReader); err != nil {
-					return utils.WrapError("Decode cellReservedForOtherUse_r16", err)
+			// decode CellReservedForOtherUse_r16 optional
+			if CellReservedForOtherUse_r16Present {
+				ie.CellReservedForOtherUse_r16 = new(CGI_InfoNR_cellReservedForOtherUse_r16)
+				if err = ie.CellReservedForOtherUse_r16.Decode(extReader); err != nil {
+					return utils.WrapError("Decode CellReservedForOtherUse_r16", err)
 				}
 			}
 		}

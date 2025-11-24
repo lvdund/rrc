@@ -6,24 +6,24 @@ import (
 )
 
 type RA_Prioritization struct {
-	powerRampingStepHighPriority RA_Prioritization_powerRampingStepHighPriority `madatory`
-	scalingFactorBI              *RA_Prioritization_scalingFactorBI             `optional`
+	PowerRampingStepHighPriority RA_Prioritization_powerRampingStepHighPriority `madatory`
+	ScalingFactorBI              *RA_Prioritization_scalingFactorBI             `optional`
 }
 
 func (ie *RA_Prioritization) Encode(w *uper.UperWriter) error {
 	var err error
-	preambleBits := []bool{ie.scalingFactorBI != nil}
+	preambleBits := []bool{ie.ScalingFactorBI != nil}
 	for _, bit := range preambleBits {
 		if err = w.WriteBool(bit); err != nil {
 			return err
 		}
 	}
-	if err = ie.powerRampingStepHighPriority.Encode(w); err != nil {
-		return utils.WrapError("Encode powerRampingStepHighPriority", err)
+	if err = ie.PowerRampingStepHighPriority.Encode(w); err != nil {
+		return utils.WrapError("Encode PowerRampingStepHighPriority", err)
 	}
-	if ie.scalingFactorBI != nil {
-		if err = ie.scalingFactorBI.Encode(w); err != nil {
-			return utils.WrapError("Encode scalingFactorBI", err)
+	if ie.ScalingFactorBI != nil {
+		if err = ie.ScalingFactorBI.Encode(w); err != nil {
+			return utils.WrapError("Encode ScalingFactorBI", err)
 		}
 	}
 	return nil
@@ -31,17 +31,17 @@ func (ie *RA_Prioritization) Encode(w *uper.UperWriter) error {
 
 func (ie *RA_Prioritization) Decode(r *uper.UperReader) error {
 	var err error
-	var scalingFactorBIPresent bool
-	if scalingFactorBIPresent, err = r.ReadBool(); err != nil {
+	var ScalingFactorBIPresent bool
+	if ScalingFactorBIPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	if err = ie.powerRampingStepHighPriority.Decode(r); err != nil {
-		return utils.WrapError("Decode powerRampingStepHighPriority", err)
+	if err = ie.PowerRampingStepHighPriority.Decode(r); err != nil {
+		return utils.WrapError("Decode PowerRampingStepHighPriority", err)
 	}
-	if scalingFactorBIPresent {
-		ie.scalingFactorBI = new(RA_Prioritization_scalingFactorBI)
-		if err = ie.scalingFactorBI.Decode(r); err != nil {
-			return utils.WrapError("Decode scalingFactorBI", err)
+	if ScalingFactorBIPresent {
+		ie.ScalingFactorBI = new(RA_Prioritization_scalingFactorBI)
+		if err = ie.ScalingFactorBI.Decode(r); err != nil {
+			return utils.WrapError("Decode ScalingFactorBI", err)
 		}
 	}
 	return nil

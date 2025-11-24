@@ -6,26 +6,26 @@ import (
 )
 
 type PDCP_Config_moreThanOneRLC_primaryPath struct {
-	cellGroup      *CellGroupId            `optional`
-	logicalChannel *LogicalChannelIdentity `optional`
+	CellGroup      *CellGroupId            `optional`
+	LogicalChannel *LogicalChannelIdentity `optional`
 }
 
 func (ie *PDCP_Config_moreThanOneRLC_primaryPath) Encode(w *uper.UperWriter) error {
 	var err error
-	preambleBits := []bool{ie.cellGroup != nil, ie.logicalChannel != nil}
+	preambleBits := []bool{ie.CellGroup != nil, ie.LogicalChannel != nil}
 	for _, bit := range preambleBits {
 		if err = w.WriteBool(bit); err != nil {
 			return err
 		}
 	}
-	if ie.cellGroup != nil {
-		if err = ie.cellGroup.Encode(w); err != nil {
-			return utils.WrapError("Encode cellGroup", err)
+	if ie.CellGroup != nil {
+		if err = ie.CellGroup.Encode(w); err != nil {
+			return utils.WrapError("Encode CellGroup", err)
 		}
 	}
-	if ie.logicalChannel != nil {
-		if err = ie.logicalChannel.Encode(w); err != nil {
-			return utils.WrapError("Encode logicalChannel", err)
+	if ie.LogicalChannel != nil {
+		if err = ie.LogicalChannel.Encode(w); err != nil {
+			return utils.WrapError("Encode LogicalChannel", err)
 		}
 	}
 	return nil
@@ -33,24 +33,24 @@ func (ie *PDCP_Config_moreThanOneRLC_primaryPath) Encode(w *uper.UperWriter) err
 
 func (ie *PDCP_Config_moreThanOneRLC_primaryPath) Decode(r *uper.UperReader) error {
 	var err error
-	var cellGroupPresent bool
-	if cellGroupPresent, err = r.ReadBool(); err != nil {
+	var CellGroupPresent bool
+	if CellGroupPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var logicalChannelPresent bool
-	if logicalChannelPresent, err = r.ReadBool(); err != nil {
+	var LogicalChannelPresent bool
+	if LogicalChannelPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	if cellGroupPresent {
-		ie.cellGroup = new(CellGroupId)
-		if err = ie.cellGroup.Decode(r); err != nil {
-			return utils.WrapError("Decode cellGroup", err)
+	if CellGroupPresent {
+		ie.CellGroup = new(CellGroupId)
+		if err = ie.CellGroup.Decode(r); err != nil {
+			return utils.WrapError("Decode CellGroup", err)
 		}
 	}
-	if logicalChannelPresent {
-		ie.logicalChannel = new(LogicalChannelIdentity)
-		if err = ie.logicalChannel.Decode(r); err != nil {
-			return utils.WrapError("Decode logicalChannel", err)
+	if LogicalChannelPresent {
+		ie.LogicalChannel = new(LogicalChannelIdentity)
+		if err = ie.LogicalChannel.Decode(r); err != nil {
+			return utils.WrapError("Decode LogicalChannel", err)
 		}
 	}
 	return nil

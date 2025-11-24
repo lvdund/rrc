@@ -6,81 +6,81 @@ import (
 )
 
 type SIB1_v1700_IEs struct {
-	hsdn_Cell_r17                  *SIB1_v1700_IEs_hsdn_Cell_r17                  `optional`
-	uac_BarringInfo_v1700          *SIB1_v1700_IEs_uac_BarringInfo_v1700          `optional`
-	sdt_ConfigCommon_r17           *SDT_ConfigCommonSIB_r17                       `optional`
-	redCap_ConfigCommon_r17        *RedCap_ConfigCommonSIB_r17                    `optional`
-	featurePriorities_r17          *FeaturePriorities_r17                         `optional`
-	si_SchedulingInfo_v1700        *SI_SchedulingInfo_v1700                       `optional`
-	hyperSFN_r17                   *uper.BitString                                `lb:10,ub:10,optional`
-	eDRX_AllowedIdle_r17           *SIB1_v1700_IEs_eDRX_AllowedIdle_r17           `optional`
-	eDRX_AllowedInactive_r17       *SIB1_v1700_IEs_eDRX_AllowedInactive_r17       `optional`
-	intraFreqReselectionRedCap_r17 *SIB1_v1700_IEs_intraFreqReselectionRedCap_r17 `optional`
-	cellBarredNTN_r17              *SIB1_v1700_IEs_cellBarredNTN_r17              `optional`
-	nonCriticalExtension           interface{}                                    `optional`
+	Hsdn_Cell_r17                  *SIB1_v1700_IEs_hsdn_Cell_r17                  `optional`
+	Uac_BarringInfo_v1700          *SIB1_v1700_IEs_uac_BarringInfo_v1700          `optional`
+	Sdt_ConfigCommon_r17           *SDT_ConfigCommonSIB_r17                       `optional`
+	RedCap_ConfigCommon_r17        *RedCap_ConfigCommonSIB_r17                    `optional`
+	FeaturePriorities_r17          *FeaturePriorities_r17                         `optional`
+	Si_SchedulingInfo_v1700        *SI_SchedulingInfo_v1700                       `optional`
+	HyperSFN_r17                   *uper.BitString                                `lb:10,ub:10,optional`
+	EDRX_AllowedIdle_r17           *SIB1_v1700_IEs_eDRX_AllowedIdle_r17           `optional`
+	EDRX_AllowedInactive_r17       *SIB1_v1700_IEs_eDRX_AllowedInactive_r17       `optional`
+	IntraFreqReselectionRedCap_r17 *SIB1_v1700_IEs_intraFreqReselectionRedCap_r17 `optional`
+	CellBarredNTN_r17              *SIB1_v1700_IEs_cellBarredNTN_r17              `optional`
+	NonCriticalExtension           interface{}                                    `optional`
 }
 
 func (ie *SIB1_v1700_IEs) Encode(w *uper.UperWriter) error {
 	var err error
-	preambleBits := []bool{ie.hsdn_Cell_r17 != nil, ie.uac_BarringInfo_v1700 != nil, ie.sdt_ConfigCommon_r17 != nil, ie.redCap_ConfigCommon_r17 != nil, ie.featurePriorities_r17 != nil, ie.si_SchedulingInfo_v1700 != nil, ie.hyperSFN_r17 != nil, ie.eDRX_AllowedIdle_r17 != nil, ie.eDRX_AllowedInactive_r17 != nil, ie.intraFreqReselectionRedCap_r17 != nil, ie.cellBarredNTN_r17 != nil}
+	preambleBits := []bool{ie.Hsdn_Cell_r17 != nil, ie.Uac_BarringInfo_v1700 != nil, ie.Sdt_ConfigCommon_r17 != nil, ie.RedCap_ConfigCommon_r17 != nil, ie.FeaturePriorities_r17 != nil, ie.Si_SchedulingInfo_v1700 != nil, ie.HyperSFN_r17 != nil, ie.EDRX_AllowedIdle_r17 != nil, ie.EDRX_AllowedInactive_r17 != nil, ie.IntraFreqReselectionRedCap_r17 != nil, ie.CellBarredNTN_r17 != nil}
 	for _, bit := range preambleBits {
 		if err = w.WriteBool(bit); err != nil {
 			return err
 		}
 	}
-	if ie.hsdn_Cell_r17 != nil {
-		if err = ie.hsdn_Cell_r17.Encode(w); err != nil {
-			return utils.WrapError("Encode hsdn_Cell_r17", err)
+	if ie.Hsdn_Cell_r17 != nil {
+		if err = ie.Hsdn_Cell_r17.Encode(w); err != nil {
+			return utils.WrapError("Encode Hsdn_Cell_r17", err)
 		}
 	}
-	if ie.uac_BarringInfo_v1700 != nil {
-		if err = ie.uac_BarringInfo_v1700.Encode(w); err != nil {
-			return utils.WrapError("Encode uac_BarringInfo_v1700", err)
+	if ie.Uac_BarringInfo_v1700 != nil {
+		if err = ie.Uac_BarringInfo_v1700.Encode(w); err != nil {
+			return utils.WrapError("Encode Uac_BarringInfo_v1700", err)
 		}
 	}
-	if ie.sdt_ConfigCommon_r17 != nil {
-		if err = ie.sdt_ConfigCommon_r17.Encode(w); err != nil {
-			return utils.WrapError("Encode sdt_ConfigCommon_r17", err)
+	if ie.Sdt_ConfigCommon_r17 != nil {
+		if err = ie.Sdt_ConfigCommon_r17.Encode(w); err != nil {
+			return utils.WrapError("Encode Sdt_ConfigCommon_r17", err)
 		}
 	}
-	if ie.redCap_ConfigCommon_r17 != nil {
-		if err = ie.redCap_ConfigCommon_r17.Encode(w); err != nil {
-			return utils.WrapError("Encode redCap_ConfigCommon_r17", err)
+	if ie.RedCap_ConfigCommon_r17 != nil {
+		if err = ie.RedCap_ConfigCommon_r17.Encode(w); err != nil {
+			return utils.WrapError("Encode RedCap_ConfigCommon_r17", err)
 		}
 	}
-	if ie.featurePriorities_r17 != nil {
-		if err = ie.featurePriorities_r17.Encode(w); err != nil {
-			return utils.WrapError("Encode featurePriorities_r17", err)
+	if ie.FeaturePriorities_r17 != nil {
+		if err = ie.FeaturePriorities_r17.Encode(w); err != nil {
+			return utils.WrapError("Encode FeaturePriorities_r17", err)
 		}
 	}
-	if ie.si_SchedulingInfo_v1700 != nil {
-		if err = ie.si_SchedulingInfo_v1700.Encode(w); err != nil {
-			return utils.WrapError("Encode si_SchedulingInfo_v1700", err)
+	if ie.Si_SchedulingInfo_v1700 != nil {
+		if err = ie.Si_SchedulingInfo_v1700.Encode(w); err != nil {
+			return utils.WrapError("Encode Si_SchedulingInfo_v1700", err)
 		}
 	}
-	if ie.hyperSFN_r17 != nil {
-		if err = w.WriteBitString(ie.hyperSFN_r17.Bytes, uint(ie.hyperSFN_r17.NumBits), &uper.Constraint{Lb: 10, Ub: 10}, false); err != nil {
-			return utils.WrapError("Encode hyperSFN_r17", err)
+	if ie.HyperSFN_r17 != nil {
+		if err = w.WriteBitString(ie.HyperSFN_r17.Bytes, uint(ie.HyperSFN_r17.NumBits), &uper.Constraint{Lb: 10, Ub: 10}, false); err != nil {
+			return utils.WrapError("Encode HyperSFN_r17", err)
 		}
 	}
-	if ie.eDRX_AllowedIdle_r17 != nil {
-		if err = ie.eDRX_AllowedIdle_r17.Encode(w); err != nil {
-			return utils.WrapError("Encode eDRX_AllowedIdle_r17", err)
+	if ie.EDRX_AllowedIdle_r17 != nil {
+		if err = ie.EDRX_AllowedIdle_r17.Encode(w); err != nil {
+			return utils.WrapError("Encode EDRX_AllowedIdle_r17", err)
 		}
 	}
-	if ie.eDRX_AllowedInactive_r17 != nil {
-		if err = ie.eDRX_AllowedInactive_r17.Encode(w); err != nil {
-			return utils.WrapError("Encode eDRX_AllowedInactive_r17", err)
+	if ie.EDRX_AllowedInactive_r17 != nil {
+		if err = ie.EDRX_AllowedInactive_r17.Encode(w); err != nil {
+			return utils.WrapError("Encode EDRX_AllowedInactive_r17", err)
 		}
 	}
-	if ie.intraFreqReselectionRedCap_r17 != nil {
-		if err = ie.intraFreqReselectionRedCap_r17.Encode(w); err != nil {
-			return utils.WrapError("Encode intraFreqReselectionRedCap_r17", err)
+	if ie.IntraFreqReselectionRedCap_r17 != nil {
+		if err = ie.IntraFreqReselectionRedCap_r17.Encode(w); err != nil {
+			return utils.WrapError("Encode IntraFreqReselectionRedCap_r17", err)
 		}
 	}
-	if ie.cellBarredNTN_r17 != nil {
-		if err = ie.cellBarredNTN_r17.Encode(w); err != nil {
-			return utils.WrapError("Encode cellBarredNTN_r17", err)
+	if ie.CellBarredNTN_r17 != nil {
+		if err = ie.CellBarredNTN_r17.Encode(w); err != nil {
+			return utils.WrapError("Encode CellBarredNTN_r17", err)
 		}
 	}
 	return nil
@@ -88,120 +88,120 @@ func (ie *SIB1_v1700_IEs) Encode(w *uper.UperWriter) error {
 
 func (ie *SIB1_v1700_IEs) Decode(r *uper.UperReader) error {
 	var err error
-	var hsdn_Cell_r17Present bool
-	if hsdn_Cell_r17Present, err = r.ReadBool(); err != nil {
+	var Hsdn_Cell_r17Present bool
+	if Hsdn_Cell_r17Present, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var uac_BarringInfo_v1700Present bool
-	if uac_BarringInfo_v1700Present, err = r.ReadBool(); err != nil {
+	var Uac_BarringInfo_v1700Present bool
+	if Uac_BarringInfo_v1700Present, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var sdt_ConfigCommon_r17Present bool
-	if sdt_ConfigCommon_r17Present, err = r.ReadBool(); err != nil {
+	var Sdt_ConfigCommon_r17Present bool
+	if Sdt_ConfigCommon_r17Present, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var redCap_ConfigCommon_r17Present bool
-	if redCap_ConfigCommon_r17Present, err = r.ReadBool(); err != nil {
+	var RedCap_ConfigCommon_r17Present bool
+	if RedCap_ConfigCommon_r17Present, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var featurePriorities_r17Present bool
-	if featurePriorities_r17Present, err = r.ReadBool(); err != nil {
+	var FeaturePriorities_r17Present bool
+	if FeaturePriorities_r17Present, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var si_SchedulingInfo_v1700Present bool
-	if si_SchedulingInfo_v1700Present, err = r.ReadBool(); err != nil {
+	var Si_SchedulingInfo_v1700Present bool
+	if Si_SchedulingInfo_v1700Present, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var hyperSFN_r17Present bool
-	if hyperSFN_r17Present, err = r.ReadBool(); err != nil {
+	var HyperSFN_r17Present bool
+	if HyperSFN_r17Present, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var eDRX_AllowedIdle_r17Present bool
-	if eDRX_AllowedIdle_r17Present, err = r.ReadBool(); err != nil {
+	var EDRX_AllowedIdle_r17Present bool
+	if EDRX_AllowedIdle_r17Present, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var eDRX_AllowedInactive_r17Present bool
-	if eDRX_AllowedInactive_r17Present, err = r.ReadBool(); err != nil {
+	var EDRX_AllowedInactive_r17Present bool
+	if EDRX_AllowedInactive_r17Present, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var intraFreqReselectionRedCap_r17Present bool
-	if intraFreqReselectionRedCap_r17Present, err = r.ReadBool(); err != nil {
+	var IntraFreqReselectionRedCap_r17Present bool
+	if IntraFreqReselectionRedCap_r17Present, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var cellBarredNTN_r17Present bool
-	if cellBarredNTN_r17Present, err = r.ReadBool(); err != nil {
+	var CellBarredNTN_r17Present bool
+	if CellBarredNTN_r17Present, err = r.ReadBool(); err != nil {
 		return err
 	}
-	if hsdn_Cell_r17Present {
-		ie.hsdn_Cell_r17 = new(SIB1_v1700_IEs_hsdn_Cell_r17)
-		if err = ie.hsdn_Cell_r17.Decode(r); err != nil {
-			return utils.WrapError("Decode hsdn_Cell_r17", err)
+	if Hsdn_Cell_r17Present {
+		ie.Hsdn_Cell_r17 = new(SIB1_v1700_IEs_hsdn_Cell_r17)
+		if err = ie.Hsdn_Cell_r17.Decode(r); err != nil {
+			return utils.WrapError("Decode Hsdn_Cell_r17", err)
 		}
 	}
-	if uac_BarringInfo_v1700Present {
-		ie.uac_BarringInfo_v1700 = new(SIB1_v1700_IEs_uac_BarringInfo_v1700)
-		if err = ie.uac_BarringInfo_v1700.Decode(r); err != nil {
-			return utils.WrapError("Decode uac_BarringInfo_v1700", err)
+	if Uac_BarringInfo_v1700Present {
+		ie.Uac_BarringInfo_v1700 = new(SIB1_v1700_IEs_uac_BarringInfo_v1700)
+		if err = ie.Uac_BarringInfo_v1700.Decode(r); err != nil {
+			return utils.WrapError("Decode Uac_BarringInfo_v1700", err)
 		}
 	}
-	if sdt_ConfigCommon_r17Present {
-		ie.sdt_ConfigCommon_r17 = new(SDT_ConfigCommonSIB_r17)
-		if err = ie.sdt_ConfigCommon_r17.Decode(r); err != nil {
-			return utils.WrapError("Decode sdt_ConfigCommon_r17", err)
+	if Sdt_ConfigCommon_r17Present {
+		ie.Sdt_ConfigCommon_r17 = new(SDT_ConfigCommonSIB_r17)
+		if err = ie.Sdt_ConfigCommon_r17.Decode(r); err != nil {
+			return utils.WrapError("Decode Sdt_ConfigCommon_r17", err)
 		}
 	}
-	if redCap_ConfigCommon_r17Present {
-		ie.redCap_ConfigCommon_r17 = new(RedCap_ConfigCommonSIB_r17)
-		if err = ie.redCap_ConfigCommon_r17.Decode(r); err != nil {
-			return utils.WrapError("Decode redCap_ConfigCommon_r17", err)
+	if RedCap_ConfigCommon_r17Present {
+		ie.RedCap_ConfigCommon_r17 = new(RedCap_ConfigCommonSIB_r17)
+		if err = ie.RedCap_ConfigCommon_r17.Decode(r); err != nil {
+			return utils.WrapError("Decode RedCap_ConfigCommon_r17", err)
 		}
 	}
-	if featurePriorities_r17Present {
-		ie.featurePriorities_r17 = new(FeaturePriorities_r17)
-		if err = ie.featurePriorities_r17.Decode(r); err != nil {
-			return utils.WrapError("Decode featurePriorities_r17", err)
+	if FeaturePriorities_r17Present {
+		ie.FeaturePriorities_r17 = new(FeaturePriorities_r17)
+		if err = ie.FeaturePriorities_r17.Decode(r); err != nil {
+			return utils.WrapError("Decode FeaturePriorities_r17", err)
 		}
 	}
-	if si_SchedulingInfo_v1700Present {
-		ie.si_SchedulingInfo_v1700 = new(SI_SchedulingInfo_v1700)
-		if err = ie.si_SchedulingInfo_v1700.Decode(r); err != nil {
-			return utils.WrapError("Decode si_SchedulingInfo_v1700", err)
+	if Si_SchedulingInfo_v1700Present {
+		ie.Si_SchedulingInfo_v1700 = new(SI_SchedulingInfo_v1700)
+		if err = ie.Si_SchedulingInfo_v1700.Decode(r); err != nil {
+			return utils.WrapError("Decode Si_SchedulingInfo_v1700", err)
 		}
 	}
-	if hyperSFN_r17Present {
-		var tmp_bs_hyperSFN_r17 []byte
-		var n_hyperSFN_r17 uint
-		if tmp_bs_hyperSFN_r17, n_hyperSFN_r17, err = r.ReadBitString(&uper.Constraint{Lb: 10, Ub: 10}, false); err != nil {
-			return utils.WrapError("Decode hyperSFN_r17", err)
+	if HyperSFN_r17Present {
+		var tmp_bs_HyperSFN_r17 []byte
+		var n_HyperSFN_r17 uint
+		if tmp_bs_HyperSFN_r17, n_HyperSFN_r17, err = r.ReadBitString(&uper.Constraint{Lb: 10, Ub: 10}, false); err != nil {
+			return utils.WrapError("Decode HyperSFN_r17", err)
 		}
 		tmp_bitstring := uper.BitString{
-			Bytes:   tmp_bs_hyperSFN_r17,
-			NumBits: uint64(n_hyperSFN_r17),
+			Bytes:   tmp_bs_HyperSFN_r17,
+			NumBits: uint64(n_HyperSFN_r17),
 		}
-		ie.hyperSFN_r17 = &tmp_bitstring
+		ie.HyperSFN_r17 = &tmp_bitstring
 	}
-	if eDRX_AllowedIdle_r17Present {
-		ie.eDRX_AllowedIdle_r17 = new(SIB1_v1700_IEs_eDRX_AllowedIdle_r17)
-		if err = ie.eDRX_AllowedIdle_r17.Decode(r); err != nil {
-			return utils.WrapError("Decode eDRX_AllowedIdle_r17", err)
-		}
-	}
-	if eDRX_AllowedInactive_r17Present {
-		ie.eDRX_AllowedInactive_r17 = new(SIB1_v1700_IEs_eDRX_AllowedInactive_r17)
-		if err = ie.eDRX_AllowedInactive_r17.Decode(r); err != nil {
-			return utils.WrapError("Decode eDRX_AllowedInactive_r17", err)
+	if EDRX_AllowedIdle_r17Present {
+		ie.EDRX_AllowedIdle_r17 = new(SIB1_v1700_IEs_eDRX_AllowedIdle_r17)
+		if err = ie.EDRX_AllowedIdle_r17.Decode(r); err != nil {
+			return utils.WrapError("Decode EDRX_AllowedIdle_r17", err)
 		}
 	}
-	if intraFreqReselectionRedCap_r17Present {
-		ie.intraFreqReselectionRedCap_r17 = new(SIB1_v1700_IEs_intraFreqReselectionRedCap_r17)
-		if err = ie.intraFreqReselectionRedCap_r17.Decode(r); err != nil {
-			return utils.WrapError("Decode intraFreqReselectionRedCap_r17", err)
+	if EDRX_AllowedInactive_r17Present {
+		ie.EDRX_AllowedInactive_r17 = new(SIB1_v1700_IEs_eDRX_AllowedInactive_r17)
+		if err = ie.EDRX_AllowedInactive_r17.Decode(r); err != nil {
+			return utils.WrapError("Decode EDRX_AllowedInactive_r17", err)
 		}
 	}
-	if cellBarredNTN_r17Present {
-		ie.cellBarredNTN_r17 = new(SIB1_v1700_IEs_cellBarredNTN_r17)
-		if err = ie.cellBarredNTN_r17.Decode(r); err != nil {
-			return utils.WrapError("Decode cellBarredNTN_r17", err)
+	if IntraFreqReselectionRedCap_r17Present {
+		ie.IntraFreqReselectionRedCap_r17 = new(SIB1_v1700_IEs_intraFreqReselectionRedCap_r17)
+		if err = ie.IntraFreqReselectionRedCap_r17.Decode(r); err != nil {
+			return utils.WrapError("Decode IntraFreqReselectionRedCap_r17", err)
+		}
+	}
+	if CellBarredNTN_r17Present {
+		ie.CellBarredNTN_r17 = new(SIB1_v1700_IEs_cellBarredNTN_r17)
+		if err = ie.CellBarredNTN_r17.Decode(r); err != nil {
+			return utils.WrapError("Decode CellBarredNTN_r17", err)
 		}
 	}
 	return nil

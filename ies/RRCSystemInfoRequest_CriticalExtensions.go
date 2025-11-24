@@ -9,14 +9,14 @@ import (
 
 const (
 	RRCSystemInfoRequest_CriticalExtensions_Choice_nothing uint64 = iota
-	RRCSystemInfoRequest_CriticalExtensions_Choice_rrcSystemInfoRequest
-	RRCSystemInfoRequest_CriticalExtensions_Choice_criticalExtensionsFuture_r16_RRCSystemInfoRequest
+	RRCSystemInfoRequest_CriticalExtensions_Choice_RrcSystemInfoRequest
+	RRCSystemInfoRequest_CriticalExtensions_Choice_CriticalExtensionsFuture_r16_RRCSystemInfoRequest
 )
 
 type RRCSystemInfoRequest_CriticalExtensions struct {
 	Choice                                            uint64
-	rrcSystemInfoRequest                              *RRCSystemInfoRequest_IEs
-	criticalExtensionsFuture_r16_RRCSystemInfoRequest *RRCSystemInfoRequest_CriticalExtensions_criticalExtensionsFuture_r16_RRCSystemInfoRequest
+	RrcSystemInfoRequest                              *RRCSystemInfoRequest_IEs
+	CriticalExtensionsFuture_r16_RRCSystemInfoRequest *RRCSystemInfoRequest_CriticalExtensions_criticalExtensionsFuture_r16_RRCSystemInfoRequest
 }
 
 func (ie *RRCSystemInfoRequest_CriticalExtensions) Encode(w *uper.UperWriter) error {
@@ -25,13 +25,13 @@ func (ie *RRCSystemInfoRequest_CriticalExtensions) Encode(w *uper.UperWriter) er
 		return err
 	}
 	switch ie.Choice {
-	case RRCSystemInfoRequest_CriticalExtensions_Choice_rrcSystemInfoRequest:
-		if err = ie.rrcSystemInfoRequest.Encode(w); err != nil {
-			err = utils.WrapError("Encode rrcSystemInfoRequest", err)
+	case RRCSystemInfoRequest_CriticalExtensions_Choice_RrcSystemInfoRequest:
+		if err = ie.RrcSystemInfoRequest.Encode(w); err != nil {
+			err = utils.WrapError("Encode RrcSystemInfoRequest", err)
 		}
-	case RRCSystemInfoRequest_CriticalExtensions_Choice_criticalExtensionsFuture_r16_RRCSystemInfoRequest:
-		if err = ie.criticalExtensionsFuture_r16_RRCSystemInfoRequest.Encode(w); err != nil {
-			err = utils.WrapError("Encode criticalExtensionsFuture_r16_RRCSystemInfoRequest", err)
+	case RRCSystemInfoRequest_CriticalExtensions_Choice_CriticalExtensionsFuture_r16_RRCSystemInfoRequest:
+		if err = ie.CriticalExtensionsFuture_r16_RRCSystemInfoRequest.Encode(w); err != nil {
+			err = utils.WrapError("Encode CriticalExtensionsFuture_r16_RRCSystemInfoRequest", err)
 		}
 	default:
 		err = fmt.Errorf("invalid choice: %d", ie.Choice)
@@ -45,15 +45,15 @@ func (ie *RRCSystemInfoRequest_CriticalExtensions) Decode(r *uper.UperReader) er
 		return err
 	}
 	switch ie.Choice {
-	case RRCSystemInfoRequest_CriticalExtensions_Choice_rrcSystemInfoRequest:
-		ie.rrcSystemInfoRequest = new(RRCSystemInfoRequest_IEs)
-		if err = ie.rrcSystemInfoRequest.Decode(r); err != nil {
-			return utils.WrapError("Decode rrcSystemInfoRequest", err)
+	case RRCSystemInfoRequest_CriticalExtensions_Choice_RrcSystemInfoRequest:
+		ie.RrcSystemInfoRequest = new(RRCSystemInfoRequest_IEs)
+		if err = ie.RrcSystemInfoRequest.Decode(r); err != nil {
+			return utils.WrapError("Decode RrcSystemInfoRequest", err)
 		}
-	case RRCSystemInfoRequest_CriticalExtensions_Choice_criticalExtensionsFuture_r16_RRCSystemInfoRequest:
-		ie.criticalExtensionsFuture_r16_RRCSystemInfoRequest = new(RRCSystemInfoRequest_CriticalExtensions_criticalExtensionsFuture_r16_RRCSystemInfoRequest)
-		if err = ie.criticalExtensionsFuture_r16_RRCSystemInfoRequest.Decode(r); err != nil {
-			return utils.WrapError("Decode criticalExtensionsFuture_r16_RRCSystemInfoRequest", err)
+	case RRCSystemInfoRequest_CriticalExtensions_Choice_CriticalExtensionsFuture_r16_RRCSystemInfoRequest:
+		ie.CriticalExtensionsFuture_r16_RRCSystemInfoRequest = new(RRCSystemInfoRequest_CriticalExtensions_criticalExtensionsFuture_r16_RRCSystemInfoRequest)
+		if err = ie.CriticalExtensionsFuture_r16_RRCSystemInfoRequest.Decode(r); err != nil {
+			return utils.WrapError("Decode CriticalExtensionsFuture_r16_RRCSystemInfoRequest", err)
 		}
 	default:
 		return fmt.Errorf("invalid choice: %d", ie.Choice)

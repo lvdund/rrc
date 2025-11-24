@@ -9,14 +9,14 @@ import (
 
 const (
 	CC_Group_r17_offsetToDefault_r17_Choice_nothing uint64 = iota
-	CC_Group_r17_offsetToDefault_r17_Choice_offsetValue
-	CC_Group_r17_offsetToDefault_r17_Choice_offsetlist
+	CC_Group_r17_offsetToDefault_r17_Choice_OffsetValue
+	CC_Group_r17_offsetToDefault_r17_Choice_Offsetlist
 )
 
 type CC_Group_r17_offsetToDefault_r17 struct {
 	Choice      uint64
-	offsetValue *OffsetValue_r17
-	offsetlist  []OffsetValue_r17 `lb:1,ub:maxNrofReqComDC_Location_r17,madatory`
+	OffsetValue *OffsetValue_r17
+	Offsetlist  []OffsetValue_r17 `lb:1,ub:maxNrofReqComDC_Location_r17,madatory`
 }
 
 func (ie *CC_Group_r17_offsetToDefault_r17) Encode(w *uper.UperWriter) error {
@@ -25,17 +25,17 @@ func (ie *CC_Group_r17_offsetToDefault_r17) Encode(w *uper.UperWriter) error {
 		return err
 	}
 	switch ie.Choice {
-	case CC_Group_r17_offsetToDefault_r17_Choice_offsetValue:
-		if err = ie.offsetValue.Encode(w); err != nil {
-			err = utils.WrapError("Encode offsetValue", err)
+	case CC_Group_r17_offsetToDefault_r17_Choice_OffsetValue:
+		if err = ie.OffsetValue.Encode(w); err != nil {
+			err = utils.WrapError("Encode OffsetValue", err)
 		}
-	case CC_Group_r17_offsetToDefault_r17_Choice_offsetlist:
+	case CC_Group_r17_offsetToDefault_r17_Choice_Offsetlist:
 		tmp := utils.NewSequence[*OffsetValue_r17]([]*OffsetValue_r17{}, uper.Constraint{Lb: 1, Ub: maxNrofReqComDC_Location_r17}, false)
-		for _, i := range ie.offsetlist {
+		for _, i := range ie.Offsetlist {
 			tmp.Value = append(tmp.Value, &i)
 		}
 		if err = tmp.Encode(w); err != nil {
-			err = utils.WrapError("Encode offsetlist", err)
+			err = utils.WrapError("Encode Offsetlist", err)
 		}
 	default:
 		err = fmt.Errorf("invalid choice: %d", ie.Choice)
@@ -49,22 +49,22 @@ func (ie *CC_Group_r17_offsetToDefault_r17) Decode(r *uper.UperReader) error {
 		return err
 	}
 	switch ie.Choice {
-	case CC_Group_r17_offsetToDefault_r17_Choice_offsetValue:
-		ie.offsetValue = new(OffsetValue_r17)
-		if err = ie.offsetValue.Decode(r); err != nil {
-			return utils.WrapError("Decode offsetValue", err)
+	case CC_Group_r17_offsetToDefault_r17_Choice_OffsetValue:
+		ie.OffsetValue = new(OffsetValue_r17)
+		if err = ie.OffsetValue.Decode(r); err != nil {
+			return utils.WrapError("Decode OffsetValue", err)
 		}
-	case CC_Group_r17_offsetToDefault_r17_Choice_offsetlist:
+	case CC_Group_r17_offsetToDefault_r17_Choice_Offsetlist:
 		tmp := utils.NewSequence[*OffsetValue_r17]([]*OffsetValue_r17{}, uper.Constraint{Lb: 1, Ub: maxNrofReqComDC_Location_r17}, false)
 		fn := func() *OffsetValue_r17 {
 			return new(OffsetValue_r17)
 		}
 		if err = tmp.Decode(r, fn); err != nil {
-			return utils.WrapError("Decode offsetlist", err)
+			return utils.WrapError("Decode Offsetlist", err)
 		}
-		ie.offsetlist = []OffsetValue_r17{}
+		ie.Offsetlist = []OffsetValue_r17{}
 		for _, i := range tmp.Value {
-			ie.offsetlist = append(ie.offsetlist, *i)
+			ie.Offsetlist = append(ie.Offsetlist, *i)
 		}
 	default:
 		return fmt.Errorf("invalid choice: %d", ie.Choice)

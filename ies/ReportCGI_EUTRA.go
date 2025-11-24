@@ -8,25 +8,25 @@ import (
 )
 
 type ReportCGI_EUTRA struct {
-	cellForWhichToReportCGI EUTRA_PhysCellId                       `madatory`
-	useAutonomousGaps_r16   *ReportCGI_EUTRA_useAutonomousGaps_r16 `optional,ext-1`
+	CellForWhichToReportCGI EUTRA_PhysCellId                       `madatory`
+	UseAutonomousGaps_r16   *ReportCGI_EUTRA_useAutonomousGaps_r16 `optional,ext-1`
 }
 
 func (ie *ReportCGI_EUTRA) Encode(w *uper.UperWriter) error {
 	var err error
-	hasExtensions := ie.useAutonomousGaps_r16 != nil
+	hasExtensions := ie.UseAutonomousGaps_r16 != nil
 	preambleBits := []bool{hasExtensions}
 	for _, bit := range preambleBits {
 		if err = w.WriteBool(bit); err != nil {
 			return err
 		}
 	}
-	if err = ie.cellForWhichToReportCGI.Encode(w); err != nil {
-		return utils.WrapError("Encode cellForWhichToReportCGI", err)
+	if err = ie.CellForWhichToReportCGI.Encode(w); err != nil {
+		return utils.WrapError("Encode CellForWhichToReportCGI", err)
 	}
 	if hasExtensions {
 		// Extension bitmap: 1 bits for 1 extension groups
-		extBitmap := []bool{ie.useAutonomousGaps_r16 != nil}
+		extBitmap := []bool{ie.UseAutonomousGaps_r16 != nil}
 		if err := w.WriteExtBitMap(extBitmap); err != nil {
 			return utils.WrapError("WriteExtBitMap ReportCGI_EUTRA", err)
 		}
@@ -37,17 +37,17 @@ func (ie *ReportCGI_EUTRA) Encode(w *uper.UperWriter) error {
 			extWriter := uper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 1
-			optionals_ext_1 := []bool{ie.useAutonomousGaps_r16 != nil}
+			optionals_ext_1 := []bool{ie.UseAutonomousGaps_r16 != nil}
 			for _, bit := range optionals_ext_1 {
 				if err := extWriter.WriteBool(bit); err != nil {
 					return err
 				}
 			}
 
-			// encode useAutonomousGaps_r16 optional
-			if ie.useAutonomousGaps_r16 != nil {
-				if err = ie.useAutonomousGaps_r16.Encode(extWriter); err != nil {
-					return utils.WrapError("Encode useAutonomousGaps_r16", err)
+			// encode UseAutonomousGaps_r16 optional
+			if ie.UseAutonomousGaps_r16 != nil {
+				if err = ie.UseAutonomousGaps_r16.Encode(extWriter); err != nil {
+					return utils.WrapError("Encode UseAutonomousGaps_r16", err)
 				}
 			}
 
@@ -69,8 +69,8 @@ func (ie *ReportCGI_EUTRA) Decode(r *uper.UperReader) error {
 	if extensionBit, err = r.ReadBool(); err != nil {
 		return err
 	}
-	if err = ie.cellForWhichToReportCGI.Decode(r); err != nil {
-		return utils.WrapError("Decode cellForWhichToReportCGI", err)
+	if err = ie.CellForWhichToReportCGI.Decode(r); err != nil {
+		return utils.WrapError("Decode CellForWhichToReportCGI", err)
 	}
 
 	if extensionBit {
@@ -89,15 +89,15 @@ func (ie *ReportCGI_EUTRA) Decode(r *uper.UperReader) error {
 
 			extReader := uper.NewReader(bytes.NewReader(extBytes))
 
-			useAutonomousGaps_r16Present, err := extReader.ReadBool()
+			UseAutonomousGaps_r16Present, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			// decode useAutonomousGaps_r16 optional
-			if useAutonomousGaps_r16Present {
-				ie.useAutonomousGaps_r16 = new(ReportCGI_EUTRA_useAutonomousGaps_r16)
-				if err = ie.useAutonomousGaps_r16.Decode(extReader); err != nil {
-					return utils.WrapError("Decode useAutonomousGaps_r16", err)
+			// decode UseAutonomousGaps_r16 optional
+			if UseAutonomousGaps_r16Present {
+				ie.UseAutonomousGaps_r16 = new(ReportCGI_EUTRA_useAutonomousGaps_r16)
+				if err = ie.UseAutonomousGaps_r16.Decode(extReader); err != nil {
+					return utils.WrapError("Decode UseAutonomousGaps_r16", err)
 				}
 			}
 		}

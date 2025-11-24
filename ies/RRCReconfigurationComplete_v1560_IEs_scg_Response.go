@@ -9,14 +9,14 @@ import (
 
 const (
 	RRCReconfigurationComplete_v1560_IEs_scg_Response_Choice_nothing uint64 = iota
-	RRCReconfigurationComplete_v1560_IEs_scg_Response_Choice_nr_SCG_Response
-	RRCReconfigurationComplete_v1560_IEs_scg_Response_Choice_eutra_SCG_Response
+	RRCReconfigurationComplete_v1560_IEs_scg_Response_Choice_Nr_SCG_Response
+	RRCReconfigurationComplete_v1560_IEs_scg_Response_Choice_Eutra_SCG_Response
 )
 
 type RRCReconfigurationComplete_v1560_IEs_scg_Response struct {
 	Choice             uint64
-	nr_SCG_Response    []byte `madatory`
-	eutra_SCG_Response []byte `madatory`
+	Nr_SCG_Response    []byte `madatory`
+	Eutra_SCG_Response []byte `madatory`
 }
 
 func (ie *RRCReconfigurationComplete_v1560_IEs_scg_Response) Encode(w *uper.UperWriter) error {
@@ -25,13 +25,13 @@ func (ie *RRCReconfigurationComplete_v1560_IEs_scg_Response) Encode(w *uper.Uper
 		return err
 	}
 	switch ie.Choice {
-	case RRCReconfigurationComplete_v1560_IEs_scg_Response_Choice_nr_SCG_Response:
-		if err = w.WriteOctetString(ie.nr_SCG_Response, &uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
-			err = utils.WrapError("Encode nr_SCG_Response", err)
+	case RRCReconfigurationComplete_v1560_IEs_scg_Response_Choice_Nr_SCG_Response:
+		if err = w.WriteOctetString(ie.Nr_SCG_Response, &uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+			err = utils.WrapError("Encode Nr_SCG_Response", err)
 		}
-	case RRCReconfigurationComplete_v1560_IEs_scg_Response_Choice_eutra_SCG_Response:
-		if err = w.WriteOctetString(ie.eutra_SCG_Response, &uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
-			err = utils.WrapError("Encode eutra_SCG_Response", err)
+	case RRCReconfigurationComplete_v1560_IEs_scg_Response_Choice_Eutra_SCG_Response:
+		if err = w.WriteOctetString(ie.Eutra_SCG_Response, &uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+			err = utils.WrapError("Encode Eutra_SCG_Response", err)
 		}
 	default:
 		err = fmt.Errorf("invalid choice: %d", ie.Choice)
@@ -45,18 +45,18 @@ func (ie *RRCReconfigurationComplete_v1560_IEs_scg_Response) Decode(r *uper.Uper
 		return err
 	}
 	switch ie.Choice {
-	case RRCReconfigurationComplete_v1560_IEs_scg_Response_Choice_nr_SCG_Response:
-		var tmp_os_nr_SCG_Response []byte
-		if tmp_os_nr_SCG_Response, err = r.ReadOctetString(&uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
-			return utils.WrapError("Decode nr_SCG_Response", err)
+	case RRCReconfigurationComplete_v1560_IEs_scg_Response_Choice_Nr_SCG_Response:
+		var tmp_os_Nr_SCG_Response []byte
+		if tmp_os_Nr_SCG_Response, err = r.ReadOctetString(&uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+			return utils.WrapError("Decode Nr_SCG_Response", err)
 		}
-		ie.nr_SCG_Response = tmp_os_nr_SCG_Response
-	case RRCReconfigurationComplete_v1560_IEs_scg_Response_Choice_eutra_SCG_Response:
-		var tmp_os_eutra_SCG_Response []byte
-		if tmp_os_eutra_SCG_Response, err = r.ReadOctetString(&uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
-			return utils.WrapError("Decode eutra_SCG_Response", err)
+		ie.Nr_SCG_Response = tmp_os_Nr_SCG_Response
+	case RRCReconfigurationComplete_v1560_IEs_scg_Response_Choice_Eutra_SCG_Response:
+		var tmp_os_Eutra_SCG_Response []byte
+		if tmp_os_Eutra_SCG_Response, err = r.ReadOctetString(&uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+			return utils.WrapError("Decode Eutra_SCG_Response", err)
 		}
-		ie.eutra_SCG_Response = tmp_os_eutra_SCG_Response
+		ie.Eutra_SCG_Response = tmp_os_Eutra_SCG_Response
 	default:
 		return fmt.Errorf("invalid choice: %d", ie.Choice)
 	}

@@ -6,24 +6,24 @@ import (
 )
 
 type HandoverCommand_IEs struct {
-	handoverCommandMessage []byte      `madatory`
-	nonCriticalExtension   interface{} `optional`
+	HandoverCommandMessage []byte      `madatory`
+	NonCriticalExtension   interface{} `optional`
 }
 
 func (ie *HandoverCommand_IEs) Encode(w *uper.UperWriter) error {
 	var err error
-	if err = w.WriteOctetString(ie.handoverCommandMessage, &uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
-		return utils.WrapError("WriteOctetString handoverCommandMessage", err)
+	if err = w.WriteOctetString(ie.HandoverCommandMessage, &uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+		return utils.WrapError("WriteOctetString HandoverCommandMessage", err)
 	}
 	return nil
 }
 
 func (ie *HandoverCommand_IEs) Decode(r *uper.UperReader) error {
 	var err error
-	var tmp_os_handoverCommandMessage []byte
-	if tmp_os_handoverCommandMessage, err = r.ReadOctetString(&uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
-		return utils.WrapError("ReadOctetString handoverCommandMessage", err)
+	var tmp_os_HandoverCommandMessage []byte
+	if tmp_os_HandoverCommandMessage, err = r.ReadOctetString(&uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+		return utils.WrapError("ReadOctetString HandoverCommandMessage", err)
 	}
-	ie.handoverCommandMessage = tmp_os_handoverCommandMessage
+	ie.HandoverCommandMessage = tmp_os_HandoverCommandMessage
 	return nil
 }

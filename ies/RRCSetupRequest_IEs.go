@@ -6,41 +6,41 @@ import (
 )
 
 type RRCSetupRequest_IEs struct {
-	ue_Identity        InitialUE_Identity `madatory`
-	establishmentCause EstablishmentCause `madatory`
-	spare              uper.BitString     `lb:1,ub:1,madatory`
+	Ue_Identity        InitialUE_Identity `madatory`
+	EstablishmentCause EstablishmentCause `madatory`
+	Spare              uper.BitString     `lb:1,ub:1,madatory`
 }
 
 func (ie *RRCSetupRequest_IEs) Encode(w *uper.UperWriter) error {
 	var err error
-	if err = ie.ue_Identity.Encode(w); err != nil {
-		return utils.WrapError("Encode ue_Identity", err)
+	if err = ie.Ue_Identity.Encode(w); err != nil {
+		return utils.WrapError("Encode Ue_Identity", err)
 	}
-	if err = ie.establishmentCause.Encode(w); err != nil {
-		return utils.WrapError("Encode establishmentCause", err)
+	if err = ie.EstablishmentCause.Encode(w); err != nil {
+		return utils.WrapError("Encode EstablishmentCause", err)
 	}
-	if err = w.WriteBitString(ie.spare.Bytes, uint(ie.spare.NumBits), &uper.Constraint{Lb: 1, Ub: 1}, false); err != nil {
-		return utils.WrapError("WriteBitString spare", err)
+	if err = w.WriteBitString(ie.Spare.Bytes, uint(ie.Spare.NumBits), &uper.Constraint{Lb: 1, Ub: 1}, false); err != nil {
+		return utils.WrapError("WriteBitString Spare", err)
 	}
 	return nil
 }
 
 func (ie *RRCSetupRequest_IEs) Decode(r *uper.UperReader) error {
 	var err error
-	if err = ie.ue_Identity.Decode(r); err != nil {
-		return utils.WrapError("Decode ue_Identity", err)
+	if err = ie.Ue_Identity.Decode(r); err != nil {
+		return utils.WrapError("Decode Ue_Identity", err)
 	}
-	if err = ie.establishmentCause.Decode(r); err != nil {
-		return utils.WrapError("Decode establishmentCause", err)
+	if err = ie.EstablishmentCause.Decode(r); err != nil {
+		return utils.WrapError("Decode EstablishmentCause", err)
 	}
-	var tmp_bs_spare []byte
-	var n_spare uint
-	if tmp_bs_spare, n_spare, err = r.ReadBitString(&uper.Constraint{Lb: 1, Ub: 1}, false); err != nil {
-		return utils.WrapError("ReadBitString spare", err)
+	var tmp_bs_Spare []byte
+	var n_Spare uint
+	if tmp_bs_Spare, n_Spare, err = r.ReadBitString(&uper.Constraint{Lb: 1, Ub: 1}, false); err != nil {
+		return utils.WrapError("ReadBitString Spare", err)
 	}
-	ie.spare = uper.BitString{
-		Bytes:   tmp_bs_spare,
-		NumBits: uint64(n_spare),
+	ie.Spare = uper.BitString{
+		Bytes:   tmp_bs_Spare,
+		NumBits: uint64(n_Spare),
 	}
 	return nil
 }

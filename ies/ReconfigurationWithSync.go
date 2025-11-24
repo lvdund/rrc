@@ -8,43 +8,43 @@ import (
 )
 
 type ReconfigurationWithSync struct {
-	spCellConfigCommon         *ServingCellConfigCommon                      `optional`
-	newUE_Identity             RNTI_Value                                    `madatory`
-	t304                       ReconfigurationWithSync_t304                  `madatory`
-	rach_ConfigDedicated       *ReconfigurationWithSync_rach_ConfigDedicated `optional`
-	smtc                       *SSB_MTC                                      `optional,ext-1`
-	daps_UplinkPowerConfig_r16 *DAPS_UplinkPowerConfig_r16                   `optional,ext-2`
-	sl_PathSwitchConfig_r17    *SL_PathSwitchConfig_r17                      `optional,ext-3`
+	SpCellConfigCommon         *ServingCellConfigCommon                      `optional`
+	NewUE_Identity             RNTI_Value                                    `madatory`
+	T304                       ReconfigurationWithSync_t304                  `madatory`
+	Rach_ConfigDedicated       *ReconfigurationWithSync_rach_ConfigDedicated `optional`
+	Smtc                       *SSB_MTC                                      `optional,ext-1`
+	Daps_UplinkPowerConfig_r16 *DAPS_UplinkPowerConfig_r16                   `optional,ext-2`
+	Sl_PathSwitchConfig_r17    *SL_PathSwitchConfig_r17                      `optional,ext-3`
 }
 
 func (ie *ReconfigurationWithSync) Encode(w *uper.UperWriter) error {
 	var err error
-	hasExtensions := ie.smtc != nil || ie.daps_UplinkPowerConfig_r16 != nil || ie.sl_PathSwitchConfig_r17 != nil
-	preambleBits := []bool{hasExtensions, ie.spCellConfigCommon != nil, ie.rach_ConfigDedicated != nil}
+	hasExtensions := ie.Smtc != nil || ie.Daps_UplinkPowerConfig_r16 != nil || ie.Sl_PathSwitchConfig_r17 != nil
+	preambleBits := []bool{hasExtensions, ie.SpCellConfigCommon != nil, ie.Rach_ConfigDedicated != nil}
 	for _, bit := range preambleBits {
 		if err = w.WriteBool(bit); err != nil {
 			return err
 		}
 	}
-	if ie.spCellConfigCommon != nil {
-		if err = ie.spCellConfigCommon.Encode(w); err != nil {
-			return utils.WrapError("Encode spCellConfigCommon", err)
+	if ie.SpCellConfigCommon != nil {
+		if err = ie.SpCellConfigCommon.Encode(w); err != nil {
+			return utils.WrapError("Encode SpCellConfigCommon", err)
 		}
 	}
-	if err = ie.newUE_Identity.Encode(w); err != nil {
-		return utils.WrapError("Encode newUE_Identity", err)
+	if err = ie.NewUE_Identity.Encode(w); err != nil {
+		return utils.WrapError("Encode NewUE_Identity", err)
 	}
-	if err = ie.t304.Encode(w); err != nil {
-		return utils.WrapError("Encode t304", err)
+	if err = ie.T304.Encode(w); err != nil {
+		return utils.WrapError("Encode T304", err)
 	}
-	if ie.rach_ConfigDedicated != nil {
-		if err = ie.rach_ConfigDedicated.Encode(w); err != nil {
-			return utils.WrapError("Encode rach_ConfigDedicated", err)
+	if ie.Rach_ConfigDedicated != nil {
+		if err = ie.Rach_ConfigDedicated.Encode(w); err != nil {
+			return utils.WrapError("Encode Rach_ConfigDedicated", err)
 		}
 	}
 	if hasExtensions {
 		// Extension bitmap: 3 bits for 3 extension groups
-		extBitmap := []bool{ie.smtc != nil, ie.daps_UplinkPowerConfig_r16 != nil, ie.sl_PathSwitchConfig_r17 != nil}
+		extBitmap := []bool{ie.Smtc != nil, ie.Daps_UplinkPowerConfig_r16 != nil, ie.Sl_PathSwitchConfig_r17 != nil}
 		if err := w.WriteExtBitMap(extBitmap); err != nil {
 			return utils.WrapError("WriteExtBitMap ReconfigurationWithSync", err)
 		}
@@ -55,17 +55,17 @@ func (ie *ReconfigurationWithSync) Encode(w *uper.UperWriter) error {
 			extWriter := uper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 1
-			optionals_ext_1 := []bool{ie.smtc != nil}
+			optionals_ext_1 := []bool{ie.Smtc != nil}
 			for _, bit := range optionals_ext_1 {
 				if err := extWriter.WriteBool(bit); err != nil {
 					return err
 				}
 			}
 
-			// encode smtc optional
-			if ie.smtc != nil {
-				if err = ie.smtc.Encode(extWriter); err != nil {
-					return utils.WrapError("Encode smtc", err)
+			// encode Smtc optional
+			if ie.Smtc != nil {
+				if err = ie.Smtc.Encode(extWriter); err != nil {
+					return utils.WrapError("Encode Smtc", err)
 				}
 			}
 
@@ -84,17 +84,17 @@ func (ie *ReconfigurationWithSync) Encode(w *uper.UperWriter) error {
 			extWriter := uper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 2
-			optionals_ext_2 := []bool{ie.daps_UplinkPowerConfig_r16 != nil}
+			optionals_ext_2 := []bool{ie.Daps_UplinkPowerConfig_r16 != nil}
 			for _, bit := range optionals_ext_2 {
 				if err := extWriter.WriteBool(bit); err != nil {
 					return err
 				}
 			}
 
-			// encode daps_UplinkPowerConfig_r16 optional
-			if ie.daps_UplinkPowerConfig_r16 != nil {
-				if err = ie.daps_UplinkPowerConfig_r16.Encode(extWriter); err != nil {
-					return utils.WrapError("Encode daps_UplinkPowerConfig_r16", err)
+			// encode Daps_UplinkPowerConfig_r16 optional
+			if ie.Daps_UplinkPowerConfig_r16 != nil {
+				if err = ie.Daps_UplinkPowerConfig_r16.Encode(extWriter); err != nil {
+					return utils.WrapError("Encode Daps_UplinkPowerConfig_r16", err)
 				}
 			}
 
@@ -113,17 +113,17 @@ func (ie *ReconfigurationWithSync) Encode(w *uper.UperWriter) error {
 			extWriter := uper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 3
-			optionals_ext_3 := []bool{ie.sl_PathSwitchConfig_r17 != nil}
+			optionals_ext_3 := []bool{ie.Sl_PathSwitchConfig_r17 != nil}
 			for _, bit := range optionals_ext_3 {
 				if err := extWriter.WriteBool(bit); err != nil {
 					return err
 				}
 			}
 
-			// encode sl_PathSwitchConfig_r17 optional
-			if ie.sl_PathSwitchConfig_r17 != nil {
-				if err = ie.sl_PathSwitchConfig_r17.Encode(extWriter); err != nil {
-					return utils.WrapError("Encode sl_PathSwitchConfig_r17", err)
+			// encode Sl_PathSwitchConfig_r17 optional
+			if ie.Sl_PathSwitchConfig_r17 != nil {
+				if err = ie.Sl_PathSwitchConfig_r17.Encode(extWriter); err != nil {
+					return utils.WrapError("Encode Sl_PathSwitchConfig_r17", err)
 				}
 			}
 
@@ -145,30 +145,30 @@ func (ie *ReconfigurationWithSync) Decode(r *uper.UperReader) error {
 	if extensionBit, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var spCellConfigCommonPresent bool
-	if spCellConfigCommonPresent, err = r.ReadBool(); err != nil {
+	var SpCellConfigCommonPresent bool
+	if SpCellConfigCommonPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var rach_ConfigDedicatedPresent bool
-	if rach_ConfigDedicatedPresent, err = r.ReadBool(); err != nil {
+	var Rach_ConfigDedicatedPresent bool
+	if Rach_ConfigDedicatedPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	if spCellConfigCommonPresent {
-		ie.spCellConfigCommon = new(ServingCellConfigCommon)
-		if err = ie.spCellConfigCommon.Decode(r); err != nil {
-			return utils.WrapError("Decode spCellConfigCommon", err)
+	if SpCellConfigCommonPresent {
+		ie.SpCellConfigCommon = new(ServingCellConfigCommon)
+		if err = ie.SpCellConfigCommon.Decode(r); err != nil {
+			return utils.WrapError("Decode SpCellConfigCommon", err)
 		}
 	}
-	if err = ie.newUE_Identity.Decode(r); err != nil {
-		return utils.WrapError("Decode newUE_Identity", err)
+	if err = ie.NewUE_Identity.Decode(r); err != nil {
+		return utils.WrapError("Decode NewUE_Identity", err)
 	}
-	if err = ie.t304.Decode(r); err != nil {
-		return utils.WrapError("Decode t304", err)
+	if err = ie.T304.Decode(r); err != nil {
+		return utils.WrapError("Decode T304", err)
 	}
-	if rach_ConfigDedicatedPresent {
-		ie.rach_ConfigDedicated = new(ReconfigurationWithSync_rach_ConfigDedicated)
-		if err = ie.rach_ConfigDedicated.Decode(r); err != nil {
-			return utils.WrapError("Decode rach_ConfigDedicated", err)
+	if Rach_ConfigDedicatedPresent {
+		ie.Rach_ConfigDedicated = new(ReconfigurationWithSync_rach_ConfigDedicated)
+		if err = ie.Rach_ConfigDedicated.Decode(r); err != nil {
+			return utils.WrapError("Decode Rach_ConfigDedicated", err)
 		}
 	}
 
@@ -188,15 +188,15 @@ func (ie *ReconfigurationWithSync) Decode(r *uper.UperReader) error {
 
 			extReader := uper.NewReader(bytes.NewReader(extBytes))
 
-			smtcPresent, err := extReader.ReadBool()
+			SmtcPresent, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			// decode smtc optional
-			if smtcPresent {
-				ie.smtc = new(SSB_MTC)
-				if err = ie.smtc.Decode(extReader); err != nil {
-					return utils.WrapError("Decode smtc", err)
+			// decode Smtc optional
+			if SmtcPresent {
+				ie.Smtc = new(SSB_MTC)
+				if err = ie.Smtc.Decode(extReader); err != nil {
+					return utils.WrapError("Decode Smtc", err)
 				}
 			}
 		}
@@ -209,15 +209,15 @@ func (ie *ReconfigurationWithSync) Decode(r *uper.UperReader) error {
 
 			extReader := uper.NewReader(bytes.NewReader(extBytes))
 
-			daps_UplinkPowerConfig_r16Present, err := extReader.ReadBool()
+			Daps_UplinkPowerConfig_r16Present, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			// decode daps_UplinkPowerConfig_r16 optional
-			if daps_UplinkPowerConfig_r16Present {
-				ie.daps_UplinkPowerConfig_r16 = new(DAPS_UplinkPowerConfig_r16)
-				if err = ie.daps_UplinkPowerConfig_r16.Decode(extReader); err != nil {
-					return utils.WrapError("Decode daps_UplinkPowerConfig_r16", err)
+			// decode Daps_UplinkPowerConfig_r16 optional
+			if Daps_UplinkPowerConfig_r16Present {
+				ie.Daps_UplinkPowerConfig_r16 = new(DAPS_UplinkPowerConfig_r16)
+				if err = ie.Daps_UplinkPowerConfig_r16.Decode(extReader); err != nil {
+					return utils.WrapError("Decode Daps_UplinkPowerConfig_r16", err)
 				}
 			}
 		}
@@ -230,15 +230,15 @@ func (ie *ReconfigurationWithSync) Decode(r *uper.UperReader) error {
 
 			extReader := uper.NewReader(bytes.NewReader(extBytes))
 
-			sl_PathSwitchConfig_r17Present, err := extReader.ReadBool()
+			Sl_PathSwitchConfig_r17Present, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			// decode sl_PathSwitchConfig_r17 optional
-			if sl_PathSwitchConfig_r17Present {
-				ie.sl_PathSwitchConfig_r17 = new(SL_PathSwitchConfig_r17)
-				if err = ie.sl_PathSwitchConfig_r17.Decode(extReader); err != nil {
-					return utils.WrapError("Decode sl_PathSwitchConfig_r17", err)
+			// decode Sl_PathSwitchConfig_r17 optional
+			if Sl_PathSwitchConfig_r17Present {
+				ie.Sl_PathSwitchConfig_r17 = new(SL_PathSwitchConfig_r17)
+				if err = ie.Sl_PathSwitchConfig_r17.Decode(extReader); err != nil {
+					return utils.WrapError("Decode Sl_PathSwitchConfig_r17", err)
 				}
 			}
 		}

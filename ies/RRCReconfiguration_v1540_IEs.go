@@ -6,26 +6,26 @@ import (
 )
 
 type RRCReconfiguration_v1540_IEs struct {
-	otherConfig_v1540    *OtherConfig_v1540            `optional`
-	nonCriticalExtension *RRCReconfiguration_v1560_IEs `optional`
+	OtherConfig_v1540    *OtherConfig_v1540            `optional`
+	NonCriticalExtension *RRCReconfiguration_v1560_IEs `optional`
 }
 
 func (ie *RRCReconfiguration_v1540_IEs) Encode(w *uper.UperWriter) error {
 	var err error
-	preambleBits := []bool{ie.otherConfig_v1540 != nil, ie.nonCriticalExtension != nil}
+	preambleBits := []bool{ie.OtherConfig_v1540 != nil, ie.NonCriticalExtension != nil}
 	for _, bit := range preambleBits {
 		if err = w.WriteBool(bit); err != nil {
 			return err
 		}
 	}
-	if ie.otherConfig_v1540 != nil {
-		if err = ie.otherConfig_v1540.Encode(w); err != nil {
-			return utils.WrapError("Encode otherConfig_v1540", err)
+	if ie.OtherConfig_v1540 != nil {
+		if err = ie.OtherConfig_v1540.Encode(w); err != nil {
+			return utils.WrapError("Encode OtherConfig_v1540", err)
 		}
 	}
-	if ie.nonCriticalExtension != nil {
-		if err = ie.nonCriticalExtension.Encode(w); err != nil {
-			return utils.WrapError("Encode nonCriticalExtension", err)
+	if ie.NonCriticalExtension != nil {
+		if err = ie.NonCriticalExtension.Encode(w); err != nil {
+			return utils.WrapError("Encode NonCriticalExtension", err)
 		}
 	}
 	return nil
@@ -33,24 +33,24 @@ func (ie *RRCReconfiguration_v1540_IEs) Encode(w *uper.UperWriter) error {
 
 func (ie *RRCReconfiguration_v1540_IEs) Decode(r *uper.UperReader) error {
 	var err error
-	var otherConfig_v1540Present bool
-	if otherConfig_v1540Present, err = r.ReadBool(); err != nil {
+	var OtherConfig_v1540Present bool
+	if OtherConfig_v1540Present, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var nonCriticalExtensionPresent bool
-	if nonCriticalExtensionPresent, err = r.ReadBool(); err != nil {
+	var NonCriticalExtensionPresent bool
+	if NonCriticalExtensionPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	if otherConfig_v1540Present {
-		ie.otherConfig_v1540 = new(OtherConfig_v1540)
-		if err = ie.otherConfig_v1540.Decode(r); err != nil {
-			return utils.WrapError("Decode otherConfig_v1540", err)
+	if OtherConfig_v1540Present {
+		ie.OtherConfig_v1540 = new(OtherConfig_v1540)
+		if err = ie.OtherConfig_v1540.Decode(r); err != nil {
+			return utils.WrapError("Decode OtherConfig_v1540", err)
 		}
 	}
-	if nonCriticalExtensionPresent {
-		ie.nonCriticalExtension = new(RRCReconfiguration_v1560_IEs)
-		if err = ie.nonCriticalExtension.Decode(r); err != nil {
-			return utils.WrapError("Decode nonCriticalExtension", err)
+	if NonCriticalExtensionPresent {
+		ie.NonCriticalExtension = new(RRCReconfiguration_v1560_IEs)
+		if err = ie.NonCriticalExtension.Decode(r); err != nil {
+			return utils.WrapError("Decode NonCriticalExtension", err)
 		}
 	}
 	return nil

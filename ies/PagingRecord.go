@@ -6,24 +6,24 @@ import (
 )
 
 type PagingRecord struct {
-	ue_Identity PagingUE_Identity        `madatory`
-	accessType  *PagingRecord_accessType `optional`
+	Ue_Identity PagingUE_Identity        `madatory`
+	AccessType  *PagingRecord_accessType `optional`
 }
 
 func (ie *PagingRecord) Encode(w *uper.UperWriter) error {
 	var err error
-	preambleBits := []bool{ie.accessType != nil}
+	preambleBits := []bool{ie.AccessType != nil}
 	for _, bit := range preambleBits {
 		if err = w.WriteBool(bit); err != nil {
 			return err
 		}
 	}
-	if err = ie.ue_Identity.Encode(w); err != nil {
-		return utils.WrapError("Encode ue_Identity", err)
+	if err = ie.Ue_Identity.Encode(w); err != nil {
+		return utils.WrapError("Encode Ue_Identity", err)
 	}
-	if ie.accessType != nil {
-		if err = ie.accessType.Encode(w); err != nil {
-			return utils.WrapError("Encode accessType", err)
+	if ie.AccessType != nil {
+		if err = ie.AccessType.Encode(w); err != nil {
+			return utils.WrapError("Encode AccessType", err)
 		}
 	}
 	return nil
@@ -31,17 +31,17 @@ func (ie *PagingRecord) Encode(w *uper.UperWriter) error {
 
 func (ie *PagingRecord) Decode(r *uper.UperReader) error {
 	var err error
-	var accessTypePresent bool
-	if accessTypePresent, err = r.ReadBool(); err != nil {
+	var AccessTypePresent bool
+	if AccessTypePresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	if err = ie.ue_Identity.Decode(r); err != nil {
-		return utils.WrapError("Decode ue_Identity", err)
+	if err = ie.Ue_Identity.Decode(r); err != nil {
+		return utils.WrapError("Decode Ue_Identity", err)
 	}
-	if accessTypePresent {
-		ie.accessType = new(PagingRecord_accessType)
-		if err = ie.accessType.Decode(r); err != nil {
-			return utils.WrapError("Decode accessType", err)
+	if AccessTypePresent {
+		ie.AccessType = new(PagingRecord_accessType)
+		if err = ie.AccessType.Decode(r); err != nil {
+			return utils.WrapError("Decode AccessType", err)
 		}
 	}
 	return nil

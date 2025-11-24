@@ -6,24 +6,24 @@ import (
 )
 
 type RedirectedCarrierInfo_EUTRA struct {
-	eutraFrequency ARFCN_ValueEUTRA                    `madatory`
-	cnType         *RedirectedCarrierInfo_EUTRA_cnType `optional`
+	EutraFrequency ARFCN_ValueEUTRA                    `madatory`
+	CnType         *RedirectedCarrierInfo_EUTRA_cnType `optional`
 }
 
 func (ie *RedirectedCarrierInfo_EUTRA) Encode(w *uper.UperWriter) error {
 	var err error
-	preambleBits := []bool{ie.cnType != nil}
+	preambleBits := []bool{ie.CnType != nil}
 	for _, bit := range preambleBits {
 		if err = w.WriteBool(bit); err != nil {
 			return err
 		}
 	}
-	if err = ie.eutraFrequency.Encode(w); err != nil {
-		return utils.WrapError("Encode eutraFrequency", err)
+	if err = ie.EutraFrequency.Encode(w); err != nil {
+		return utils.WrapError("Encode EutraFrequency", err)
 	}
-	if ie.cnType != nil {
-		if err = ie.cnType.Encode(w); err != nil {
-			return utils.WrapError("Encode cnType", err)
+	if ie.CnType != nil {
+		if err = ie.CnType.Encode(w); err != nil {
+			return utils.WrapError("Encode CnType", err)
 		}
 	}
 	return nil
@@ -31,17 +31,17 @@ func (ie *RedirectedCarrierInfo_EUTRA) Encode(w *uper.UperWriter) error {
 
 func (ie *RedirectedCarrierInfo_EUTRA) Decode(r *uper.UperReader) error {
 	var err error
-	var cnTypePresent bool
-	if cnTypePresent, err = r.ReadBool(); err != nil {
+	var CnTypePresent bool
+	if CnTypePresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	if err = ie.eutraFrequency.Decode(r); err != nil {
-		return utils.WrapError("Decode eutraFrequency", err)
+	if err = ie.EutraFrequency.Decode(r); err != nil {
+		return utils.WrapError("Decode EutraFrequency", err)
 	}
-	if cnTypePresent {
-		ie.cnType = new(RedirectedCarrierInfo_EUTRA_cnType)
-		if err = ie.cnType.Decode(r); err != nil {
-			return utils.WrapError("Decode cnType", err)
+	if CnTypePresent {
+		ie.CnType = new(RedirectedCarrierInfo_EUTRA_cnType)
+		if err = ie.CnType.Decode(r); err != nil {
+			return utils.WrapError("Decode CnType", err)
 		}
 	}
 	return nil

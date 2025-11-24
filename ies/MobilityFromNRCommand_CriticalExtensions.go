@@ -9,14 +9,14 @@ import (
 
 const (
 	MobilityFromNRCommand_CriticalExtensions_Choice_nothing uint64 = iota
-	MobilityFromNRCommand_CriticalExtensions_Choice_mobilityFromNRCommand
-	MobilityFromNRCommand_CriticalExtensions_Choice_criticalExtensionsFuture
+	MobilityFromNRCommand_CriticalExtensions_Choice_MobilityFromNRCommand
+	MobilityFromNRCommand_CriticalExtensions_Choice_CriticalExtensionsFuture
 )
 
 type MobilityFromNRCommand_CriticalExtensions struct {
 	Choice                   uint64
-	mobilityFromNRCommand    *MobilityFromNRCommand_IEs
-	criticalExtensionsFuture interface{} `madatory`
+	MobilityFromNRCommand    *MobilityFromNRCommand_IEs
+	CriticalExtensionsFuture interface{} `madatory`
 }
 
 func (ie *MobilityFromNRCommand_CriticalExtensions) Encode(w *uper.UperWriter) error {
@@ -25,11 +25,11 @@ func (ie *MobilityFromNRCommand_CriticalExtensions) Encode(w *uper.UperWriter) e
 		return err
 	}
 	switch ie.Choice {
-	case MobilityFromNRCommand_CriticalExtensions_Choice_mobilityFromNRCommand:
-		if err = ie.mobilityFromNRCommand.Encode(w); err != nil {
-			err = utils.WrapError("Encode mobilityFromNRCommand", err)
+	case MobilityFromNRCommand_CriticalExtensions_Choice_MobilityFromNRCommand:
+		if err = ie.MobilityFromNRCommand.Encode(w); err != nil {
+			err = utils.WrapError("Encode MobilityFromNRCommand", err)
 		}
-	case MobilityFromNRCommand_CriticalExtensions_Choice_criticalExtensionsFuture:
+	case MobilityFromNRCommand_CriticalExtensions_Choice_CriticalExtensionsFuture:
 		// interface{} field of choice - nothing to encode
 	default:
 		err = fmt.Errorf("invalid choice: %d", ie.Choice)
@@ -43,12 +43,12 @@ func (ie *MobilityFromNRCommand_CriticalExtensions) Decode(r *uper.UperReader) e
 		return err
 	}
 	switch ie.Choice {
-	case MobilityFromNRCommand_CriticalExtensions_Choice_mobilityFromNRCommand:
-		ie.mobilityFromNRCommand = new(MobilityFromNRCommand_IEs)
-		if err = ie.mobilityFromNRCommand.Decode(r); err != nil {
-			return utils.WrapError("Decode mobilityFromNRCommand", err)
+	case MobilityFromNRCommand_CriticalExtensions_Choice_MobilityFromNRCommand:
+		ie.MobilityFromNRCommand = new(MobilityFromNRCommand_IEs)
+		if err = ie.MobilityFromNRCommand.Decode(r); err != nil {
+			return utils.WrapError("Decode MobilityFromNRCommand", err)
 		}
-	case MobilityFromNRCommand_CriticalExtensions_Choice_criticalExtensionsFuture:
+	case MobilityFromNRCommand_CriticalExtensions_Choice_CriticalExtensionsFuture:
 		// interface{} field of choice - nothing to decode
 	default:
 		return fmt.Errorf("invalid choice: %d", ie.Choice)

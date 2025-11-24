@@ -9,14 +9,14 @@ import (
 
 const (
 	MBSInterestIndication_r17_CriticalExtensions_Choice_nothing uint64 = iota
-	MBSInterestIndication_r17_CriticalExtensions_Choice_mbsInterestIndication_r17
-	MBSInterestIndication_r17_CriticalExtensions_Choice_criticalExtensionsFuture
+	MBSInterestIndication_r17_CriticalExtensions_Choice_MbsInterestIndication_r17
+	MBSInterestIndication_r17_CriticalExtensions_Choice_CriticalExtensionsFuture
 )
 
 type MBSInterestIndication_r17_CriticalExtensions struct {
 	Choice                    uint64
-	mbsInterestIndication_r17 *MBSInterestIndication_r17_IEs
-	criticalExtensionsFuture  interface{} `madatory`
+	MbsInterestIndication_r17 *MBSInterestIndication_r17_IEs
+	CriticalExtensionsFuture  interface{} `madatory`
 }
 
 func (ie *MBSInterestIndication_r17_CriticalExtensions) Encode(w *uper.UperWriter) error {
@@ -25,11 +25,11 @@ func (ie *MBSInterestIndication_r17_CriticalExtensions) Encode(w *uper.UperWrite
 		return err
 	}
 	switch ie.Choice {
-	case MBSInterestIndication_r17_CriticalExtensions_Choice_mbsInterestIndication_r17:
-		if err = ie.mbsInterestIndication_r17.Encode(w); err != nil {
-			err = utils.WrapError("Encode mbsInterestIndication_r17", err)
+	case MBSInterestIndication_r17_CriticalExtensions_Choice_MbsInterestIndication_r17:
+		if err = ie.MbsInterestIndication_r17.Encode(w); err != nil {
+			err = utils.WrapError("Encode MbsInterestIndication_r17", err)
 		}
-	case MBSInterestIndication_r17_CriticalExtensions_Choice_criticalExtensionsFuture:
+	case MBSInterestIndication_r17_CriticalExtensions_Choice_CriticalExtensionsFuture:
 		// interface{} field of choice - nothing to encode
 	default:
 		err = fmt.Errorf("invalid choice: %d", ie.Choice)
@@ -43,12 +43,12 @@ func (ie *MBSInterestIndication_r17_CriticalExtensions) Decode(r *uper.UperReade
 		return err
 	}
 	switch ie.Choice {
-	case MBSInterestIndication_r17_CriticalExtensions_Choice_mbsInterestIndication_r17:
-		ie.mbsInterestIndication_r17 = new(MBSInterestIndication_r17_IEs)
-		if err = ie.mbsInterestIndication_r17.Decode(r); err != nil {
-			return utils.WrapError("Decode mbsInterestIndication_r17", err)
+	case MBSInterestIndication_r17_CriticalExtensions_Choice_MbsInterestIndication_r17:
+		ie.MbsInterestIndication_r17 = new(MBSInterestIndication_r17_IEs)
+		if err = ie.MbsInterestIndication_r17.Decode(r); err != nil {
+			return utils.WrapError("Decode MbsInterestIndication_r17", err)
 		}
-	case MBSInterestIndication_r17_CriticalExtensions_Choice_criticalExtensionsFuture:
+	case MBSInterestIndication_r17_CriticalExtensions_Choice_CriticalExtensionsFuture:
 		// interface{} field of choice - nothing to decode
 	default:
 		return fmt.Errorf("invalid choice: %d", ie.Choice)

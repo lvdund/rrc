@@ -6,20 +6,20 @@ import (
 )
 
 type OtherConfig struct {
-	delayBudgetReportingConfig *OtherConfig_delayBudgetReportingConfig `optional`
+	DelayBudgetReportingConfig *OtherConfig_delayBudgetReportingConfig `optional`
 }
 
 func (ie *OtherConfig) Encode(w *uper.UperWriter) error {
 	var err error
-	preambleBits := []bool{ie.delayBudgetReportingConfig != nil}
+	preambleBits := []bool{ie.DelayBudgetReportingConfig != nil}
 	for _, bit := range preambleBits {
 		if err = w.WriteBool(bit); err != nil {
 			return err
 		}
 	}
-	if ie.delayBudgetReportingConfig != nil {
-		if err = ie.delayBudgetReportingConfig.Encode(w); err != nil {
-			return utils.WrapError("Encode delayBudgetReportingConfig", err)
+	if ie.DelayBudgetReportingConfig != nil {
+		if err = ie.DelayBudgetReportingConfig.Encode(w); err != nil {
+			return utils.WrapError("Encode DelayBudgetReportingConfig", err)
 		}
 	}
 	return nil
@@ -27,14 +27,14 @@ func (ie *OtherConfig) Encode(w *uper.UperWriter) error {
 
 func (ie *OtherConfig) Decode(r *uper.UperReader) error {
 	var err error
-	var delayBudgetReportingConfigPresent bool
-	if delayBudgetReportingConfigPresent, err = r.ReadBool(); err != nil {
+	var DelayBudgetReportingConfigPresent bool
+	if DelayBudgetReportingConfigPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	if delayBudgetReportingConfigPresent {
-		ie.delayBudgetReportingConfig = new(OtherConfig_delayBudgetReportingConfig)
-		if err = ie.delayBudgetReportingConfig.Decode(r); err != nil {
-			return utils.WrapError("Decode delayBudgetReportingConfig", err)
+	if DelayBudgetReportingConfigPresent {
+		ie.DelayBudgetReportingConfig = new(OtherConfig_delayBudgetReportingConfig)
+		if err = ie.DelayBudgetReportingConfig.Decode(r); err != nil {
+			return utils.WrapError("Decode DelayBudgetReportingConfig", err)
 		}
 	}
 	return nil

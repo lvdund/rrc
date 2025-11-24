@@ -6,29 +6,29 @@ import (
 )
 
 type ReferenceSignalConfig struct {
-	ssb_ConfigMobility            *SSB_ConfigMobility            `optional`
-	csi_rs_ResourceConfigMobility *CSI_RS_ResourceConfigMobility `optional,setuprelease`
+	Ssb_ConfigMobility            *SSB_ConfigMobility            `optional`
+	Csi_rs_ResourceConfigMobility *CSI_RS_ResourceConfigMobility `optional,setuprelease`
 }
 
 func (ie *ReferenceSignalConfig) Encode(w *uper.UperWriter) error {
 	var err error
-	preambleBits := []bool{ie.ssb_ConfigMobility != nil, ie.csi_rs_ResourceConfigMobility != nil}
+	preambleBits := []bool{ie.Ssb_ConfigMobility != nil, ie.Csi_rs_ResourceConfigMobility != nil}
 	for _, bit := range preambleBits {
 		if err = w.WriteBool(bit); err != nil {
 			return err
 		}
 	}
-	if ie.ssb_ConfigMobility != nil {
-		if err = ie.ssb_ConfigMobility.Encode(w); err != nil {
-			return utils.WrapError("Encode ssb_ConfigMobility", err)
+	if ie.Ssb_ConfigMobility != nil {
+		if err = ie.Ssb_ConfigMobility.Encode(w); err != nil {
+			return utils.WrapError("Encode Ssb_ConfigMobility", err)
 		}
 	}
-	if ie.csi_rs_ResourceConfigMobility != nil {
-		tmp_csi_rs_ResourceConfigMobility := utils.SetupRelease[*CSI_RS_ResourceConfigMobility]{
-			Setup: ie.csi_rs_ResourceConfigMobility,
+	if ie.Csi_rs_ResourceConfigMobility != nil {
+		tmp_Csi_rs_ResourceConfigMobility := utils.SetupRelease[*CSI_RS_ResourceConfigMobility]{
+			Setup: ie.Csi_rs_ResourceConfigMobility,
 		}
-		if err = tmp_csi_rs_ResourceConfigMobility.Encode(w); err != nil {
-			return utils.WrapError("Encode csi_rs_ResourceConfigMobility", err)
+		if err = tmp_Csi_rs_ResourceConfigMobility.Encode(w); err != nil {
+			return utils.WrapError("Encode Csi_rs_ResourceConfigMobility", err)
 		}
 	}
 	return nil
@@ -36,26 +36,26 @@ func (ie *ReferenceSignalConfig) Encode(w *uper.UperWriter) error {
 
 func (ie *ReferenceSignalConfig) Decode(r *uper.UperReader) error {
 	var err error
-	var ssb_ConfigMobilityPresent bool
-	if ssb_ConfigMobilityPresent, err = r.ReadBool(); err != nil {
+	var Ssb_ConfigMobilityPresent bool
+	if Ssb_ConfigMobilityPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var csi_rs_ResourceConfigMobilityPresent bool
-	if csi_rs_ResourceConfigMobilityPresent, err = r.ReadBool(); err != nil {
+	var Csi_rs_ResourceConfigMobilityPresent bool
+	if Csi_rs_ResourceConfigMobilityPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	if ssb_ConfigMobilityPresent {
-		ie.ssb_ConfigMobility = new(SSB_ConfigMobility)
-		if err = ie.ssb_ConfigMobility.Decode(r); err != nil {
-			return utils.WrapError("Decode ssb_ConfigMobility", err)
+	if Ssb_ConfigMobilityPresent {
+		ie.Ssb_ConfigMobility = new(SSB_ConfigMobility)
+		if err = ie.Ssb_ConfigMobility.Decode(r); err != nil {
+			return utils.WrapError("Decode Ssb_ConfigMobility", err)
 		}
 	}
-	if csi_rs_ResourceConfigMobilityPresent {
-		tmp_csi_rs_ResourceConfigMobility := utils.SetupRelease[*CSI_RS_ResourceConfigMobility]{}
-		if err = tmp_csi_rs_ResourceConfigMobility.Decode(r); err != nil {
-			return utils.WrapError("Decode csi_rs_ResourceConfigMobility", err)
+	if Csi_rs_ResourceConfigMobilityPresent {
+		tmp_Csi_rs_ResourceConfigMobility := utils.SetupRelease[*CSI_RS_ResourceConfigMobility]{}
+		if err = tmp_Csi_rs_ResourceConfigMobility.Decode(r); err != nil {
+			return utils.WrapError("Decode Csi_rs_ResourceConfigMobility", err)
 		}
-		ie.csi_rs_ResourceConfigMobility = tmp_csi_rs_ResourceConfigMobility.Setup
+		ie.Csi_rs_ResourceConfigMobility = tmp_Csi_rs_ResourceConfigMobility.Setup
 	}
 	return nil
 }

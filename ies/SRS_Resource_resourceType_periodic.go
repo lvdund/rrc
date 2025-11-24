@@ -6,21 +6,21 @@ import (
 )
 
 type SRS_Resource_resourceType_periodic struct {
-	periodicityAndOffset_p SRS_PeriodicityAndOffset `madatory`
+	PeriodicityAndOffset_p SRS_PeriodicityAndOffset `madatory`
 }
 
 func (ie *SRS_Resource_resourceType_periodic) Encode(w *uper.UperWriter) error {
 	var err error
-	if err = ie.periodicityAndOffset_p.Encode(w); err != nil {
-		return utils.WrapError("Encode periodicityAndOffset_p", err)
+	if err = ie.PeriodicityAndOffset_p.Encode(w); err != nil {
+		return utils.WrapError("Encode PeriodicityAndOffset_p", err)
 	}
 	return nil
 }
 
 func (ie *SRS_Resource_resourceType_periodic) Decode(r *uper.UperReader) error {
 	var err error
-	if err = ie.periodicityAndOffset_p.Decode(r); err != nil {
-		return utils.WrapError("Decode periodicityAndOffset_p", err)
+	if err = ie.PeriodicityAndOffset_p.Decode(r); err != nil {
+		return utils.WrapError("Decode PeriodicityAndOffset_p", err)
 	}
 	return nil
 }

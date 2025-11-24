@@ -6,34 +6,34 @@ import (
 )
 
 type TAG_Config struct {
-	tag_ToReleaseList []TAG_Id `lb:1,ub:maxNrofTAGs,optional`
-	tag_ToAddModList  []TAG    `lb:1,ub:maxNrofTAGs,optional`
+	Tag_ToReleaseList []TAG_Id `lb:1,ub:maxNrofTAGs,optional`
+	Tag_ToAddModList  []TAG    `lb:1,ub:maxNrofTAGs,optional`
 }
 
 func (ie *TAG_Config) Encode(w *uper.UperWriter) error {
 	var err error
-	preambleBits := []bool{len(ie.tag_ToReleaseList) > 0, len(ie.tag_ToAddModList) > 0}
+	preambleBits := []bool{len(ie.Tag_ToReleaseList) > 0, len(ie.Tag_ToAddModList) > 0}
 	for _, bit := range preambleBits {
 		if err = w.WriteBool(bit); err != nil {
 			return err
 		}
 	}
-	if len(ie.tag_ToReleaseList) > 0 {
-		tmp_tag_ToReleaseList := utils.NewSequence[*TAG_Id]([]*TAG_Id{}, uper.Constraint{Lb: 1, Ub: maxNrofTAGs}, false)
-		for _, i := range ie.tag_ToReleaseList {
-			tmp_tag_ToReleaseList.Value = append(tmp_tag_ToReleaseList.Value, &i)
+	if len(ie.Tag_ToReleaseList) > 0 {
+		tmp_Tag_ToReleaseList := utils.NewSequence[*TAG_Id]([]*TAG_Id{}, uper.Constraint{Lb: 1, Ub: maxNrofTAGs}, false)
+		for _, i := range ie.Tag_ToReleaseList {
+			tmp_Tag_ToReleaseList.Value = append(tmp_Tag_ToReleaseList.Value, &i)
 		}
-		if err = tmp_tag_ToReleaseList.Encode(w); err != nil {
-			return utils.WrapError("Encode tag_ToReleaseList", err)
+		if err = tmp_Tag_ToReleaseList.Encode(w); err != nil {
+			return utils.WrapError("Encode Tag_ToReleaseList", err)
 		}
 	}
-	if len(ie.tag_ToAddModList) > 0 {
-		tmp_tag_ToAddModList := utils.NewSequence[*TAG]([]*TAG{}, uper.Constraint{Lb: 1, Ub: maxNrofTAGs}, false)
-		for _, i := range ie.tag_ToAddModList {
-			tmp_tag_ToAddModList.Value = append(tmp_tag_ToAddModList.Value, &i)
+	if len(ie.Tag_ToAddModList) > 0 {
+		tmp_Tag_ToAddModList := utils.NewSequence[*TAG]([]*TAG{}, uper.Constraint{Lb: 1, Ub: maxNrofTAGs}, false)
+		for _, i := range ie.Tag_ToAddModList {
+			tmp_Tag_ToAddModList.Value = append(tmp_Tag_ToAddModList.Value, &i)
 		}
-		if err = tmp_tag_ToAddModList.Encode(w); err != nil {
-			return utils.WrapError("Encode tag_ToAddModList", err)
+		if err = tmp_Tag_ToAddModList.Encode(w); err != nil {
+			return utils.WrapError("Encode Tag_ToAddModList", err)
 		}
 	}
 	return nil
@@ -41,38 +41,38 @@ func (ie *TAG_Config) Encode(w *uper.UperWriter) error {
 
 func (ie *TAG_Config) Decode(r *uper.UperReader) error {
 	var err error
-	var tag_ToReleaseListPresent bool
-	if tag_ToReleaseListPresent, err = r.ReadBool(); err != nil {
+	var Tag_ToReleaseListPresent bool
+	if Tag_ToReleaseListPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var tag_ToAddModListPresent bool
-	if tag_ToAddModListPresent, err = r.ReadBool(); err != nil {
+	var Tag_ToAddModListPresent bool
+	if Tag_ToAddModListPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	if tag_ToReleaseListPresent {
-		tmp_tag_ToReleaseList := utils.NewSequence[*TAG_Id]([]*TAG_Id{}, uper.Constraint{Lb: 1, Ub: maxNrofTAGs}, false)
-		fn_tag_ToReleaseList := func() *TAG_Id {
+	if Tag_ToReleaseListPresent {
+		tmp_Tag_ToReleaseList := utils.NewSequence[*TAG_Id]([]*TAG_Id{}, uper.Constraint{Lb: 1, Ub: maxNrofTAGs}, false)
+		fn_Tag_ToReleaseList := func() *TAG_Id {
 			return new(TAG_Id)
 		}
-		if err = tmp_tag_ToReleaseList.Decode(r, fn_tag_ToReleaseList); err != nil {
-			return utils.WrapError("Decode tag_ToReleaseList", err)
+		if err = tmp_Tag_ToReleaseList.Decode(r, fn_Tag_ToReleaseList); err != nil {
+			return utils.WrapError("Decode Tag_ToReleaseList", err)
 		}
-		ie.tag_ToReleaseList = []TAG_Id{}
-		for _, i := range tmp_tag_ToReleaseList.Value {
-			ie.tag_ToReleaseList = append(ie.tag_ToReleaseList, *i)
+		ie.Tag_ToReleaseList = []TAG_Id{}
+		for _, i := range tmp_Tag_ToReleaseList.Value {
+			ie.Tag_ToReleaseList = append(ie.Tag_ToReleaseList, *i)
 		}
 	}
-	if tag_ToAddModListPresent {
-		tmp_tag_ToAddModList := utils.NewSequence[*TAG]([]*TAG{}, uper.Constraint{Lb: 1, Ub: maxNrofTAGs}, false)
-		fn_tag_ToAddModList := func() *TAG {
+	if Tag_ToAddModListPresent {
+		tmp_Tag_ToAddModList := utils.NewSequence[*TAG]([]*TAG{}, uper.Constraint{Lb: 1, Ub: maxNrofTAGs}, false)
+		fn_Tag_ToAddModList := func() *TAG {
 			return new(TAG)
 		}
-		if err = tmp_tag_ToAddModList.Decode(r, fn_tag_ToAddModList); err != nil {
-			return utils.WrapError("Decode tag_ToAddModList", err)
+		if err = tmp_Tag_ToAddModList.Decode(r, fn_Tag_ToAddModList); err != nil {
+			return utils.WrapError("Decode Tag_ToAddModList", err)
 		}
-		ie.tag_ToAddModList = []TAG{}
-		for _, i := range tmp_tag_ToAddModList.Value {
-			ie.tag_ToAddModList = append(ie.tag_ToAddModList, *i)
+		ie.Tag_ToAddModList = []TAG{}
+		for _, i := range tmp_Tag_ToAddModList.Value {
+			ie.Tag_ToAddModList = append(ie.Tag_ToAddModList, *i)
 		}
 	}
 	return nil

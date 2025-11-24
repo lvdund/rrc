@@ -9,16 +9,16 @@ import (
 
 const (
 	TDD_UL_DL_SlotConfig_symbols_Choice_nothing uint64 = iota
-	TDD_UL_DL_SlotConfig_symbols_Choice_allDownlink
-	TDD_UL_DL_SlotConfig_symbols_Choice_allUplink
-	TDD_UL_DL_SlotConfig_symbols_Choice_explicit
+	TDD_UL_DL_SlotConfig_symbols_Choice_AllDownlink
+	TDD_UL_DL_SlotConfig_symbols_Choice_AllUplink
+	TDD_UL_DL_SlotConfig_symbols_Choice_Explicit
 )
 
 type TDD_UL_DL_SlotConfig_symbols struct {
 	Choice      uint64
-	allDownlink uper.NULL `madatory`
-	allUplink   uper.NULL `madatory`
-	explicit    *TDD_UL_DL_SlotConfig_symbols_explicit
+	AllDownlink uper.NULL `madatory`
+	AllUplink   uper.NULL `madatory`
+	Explicit    *TDD_UL_DL_SlotConfig_symbols_explicit
 }
 
 func (ie *TDD_UL_DL_SlotConfig_symbols) Encode(w *uper.UperWriter) error {
@@ -27,17 +27,17 @@ func (ie *TDD_UL_DL_SlotConfig_symbols) Encode(w *uper.UperWriter) error {
 		return err
 	}
 	switch ie.Choice {
-	case TDD_UL_DL_SlotConfig_symbols_Choice_allDownlink:
+	case TDD_UL_DL_SlotConfig_symbols_Choice_AllDownlink:
 		if err := w.WriteNull(); err != nil {
-			err = utils.WrapError("Encode allDownlink", err)
+			err = utils.WrapError("Encode AllDownlink", err)
 		}
-	case TDD_UL_DL_SlotConfig_symbols_Choice_allUplink:
+	case TDD_UL_DL_SlotConfig_symbols_Choice_AllUplink:
 		if err := w.WriteNull(); err != nil {
-			err = utils.WrapError("Encode allUplink", err)
+			err = utils.WrapError("Encode AllUplink", err)
 		}
-	case TDD_UL_DL_SlotConfig_symbols_Choice_explicit:
-		if err = ie.explicit.Encode(w); err != nil {
-			err = utils.WrapError("Encode explicit", err)
+	case TDD_UL_DL_SlotConfig_symbols_Choice_Explicit:
+		if err = ie.Explicit.Encode(w); err != nil {
+			err = utils.WrapError("Encode Explicit", err)
 		}
 	default:
 		err = fmt.Errorf("invalid choice: %d", ie.Choice)
@@ -51,18 +51,18 @@ func (ie *TDD_UL_DL_SlotConfig_symbols) Decode(r *uper.UperReader) error {
 		return err
 	}
 	switch ie.Choice {
-	case TDD_UL_DL_SlotConfig_symbols_Choice_allDownlink:
+	case TDD_UL_DL_SlotConfig_symbols_Choice_AllDownlink:
 		if err := r.ReadNull(); err != nil {
-			return utils.WrapError("Decode allDownlink", err)
+			return utils.WrapError("Decode AllDownlink", err)
 		}
-	case TDD_UL_DL_SlotConfig_symbols_Choice_allUplink:
+	case TDD_UL_DL_SlotConfig_symbols_Choice_AllUplink:
 		if err := r.ReadNull(); err != nil {
-			return utils.WrapError("Decode allUplink", err)
+			return utils.WrapError("Decode AllUplink", err)
 		}
-	case TDD_UL_DL_SlotConfig_symbols_Choice_explicit:
-		ie.explicit = new(TDD_UL_DL_SlotConfig_symbols_explicit)
-		if err = ie.explicit.Decode(r); err != nil {
-			return utils.WrapError("Decode explicit", err)
+	case TDD_UL_DL_SlotConfig_symbols_Choice_Explicit:
+		ie.Explicit = new(TDD_UL_DL_SlotConfig_symbols_explicit)
+		if err = ie.Explicit.Decode(r); err != nil {
+			return utils.WrapError("Decode Explicit", err)
 		}
 	default:
 		return fmt.Errorf("invalid choice: %d", ie.Choice)

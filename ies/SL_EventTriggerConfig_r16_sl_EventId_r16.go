@@ -9,14 +9,14 @@ import (
 
 const (
 	SL_EventTriggerConfig_r16_sl_EventId_r16_Choice_nothing uint64 = iota
-	SL_EventTriggerConfig_r16_sl_EventId_r16_Choice_eventS1_r16
-	SL_EventTriggerConfig_r16_sl_EventId_r16_Choice_eventS2_r16
+	SL_EventTriggerConfig_r16_sl_EventId_r16_Choice_EventS1_r16
+	SL_EventTriggerConfig_r16_sl_EventId_r16_Choice_EventS2_r16
 )
 
 type SL_EventTriggerConfig_r16_sl_EventId_r16 struct {
 	Choice      uint64
-	eventS1_r16 *SL_EventTriggerConfig_r16_sl_EventId_r16_eventS1_r16
-	eventS2_r16 *SL_EventTriggerConfig_r16_sl_EventId_r16_eventS2_r16
+	EventS1_r16 *SL_EventTriggerConfig_r16_sl_EventId_r16_eventS1_r16
+	EventS2_r16 *SL_EventTriggerConfig_r16_sl_EventId_r16_eventS2_r16
 }
 
 func (ie *SL_EventTriggerConfig_r16_sl_EventId_r16) Encode(w *uper.UperWriter) error {
@@ -25,13 +25,13 @@ func (ie *SL_EventTriggerConfig_r16_sl_EventId_r16) Encode(w *uper.UperWriter) e
 		return err
 	}
 	switch ie.Choice {
-	case SL_EventTriggerConfig_r16_sl_EventId_r16_Choice_eventS1_r16:
-		if err = ie.eventS1_r16.Encode(w); err != nil {
-			err = utils.WrapError("Encode eventS1_r16", err)
+	case SL_EventTriggerConfig_r16_sl_EventId_r16_Choice_EventS1_r16:
+		if err = ie.EventS1_r16.Encode(w); err != nil {
+			err = utils.WrapError("Encode EventS1_r16", err)
 		}
-	case SL_EventTriggerConfig_r16_sl_EventId_r16_Choice_eventS2_r16:
-		if err = ie.eventS2_r16.Encode(w); err != nil {
-			err = utils.WrapError("Encode eventS2_r16", err)
+	case SL_EventTriggerConfig_r16_sl_EventId_r16_Choice_EventS2_r16:
+		if err = ie.EventS2_r16.Encode(w); err != nil {
+			err = utils.WrapError("Encode EventS2_r16", err)
 		}
 	default:
 		err = fmt.Errorf("invalid choice: %d", ie.Choice)
@@ -45,15 +45,15 @@ func (ie *SL_EventTriggerConfig_r16_sl_EventId_r16) Decode(r *uper.UperReader) e
 		return err
 	}
 	switch ie.Choice {
-	case SL_EventTriggerConfig_r16_sl_EventId_r16_Choice_eventS1_r16:
-		ie.eventS1_r16 = new(SL_EventTriggerConfig_r16_sl_EventId_r16_eventS1_r16)
-		if err = ie.eventS1_r16.Decode(r); err != nil {
-			return utils.WrapError("Decode eventS1_r16", err)
+	case SL_EventTriggerConfig_r16_sl_EventId_r16_Choice_EventS1_r16:
+		ie.EventS1_r16 = new(SL_EventTriggerConfig_r16_sl_EventId_r16_eventS1_r16)
+		if err = ie.EventS1_r16.Decode(r); err != nil {
+			return utils.WrapError("Decode EventS1_r16", err)
 		}
-	case SL_EventTriggerConfig_r16_sl_EventId_r16_Choice_eventS2_r16:
-		ie.eventS2_r16 = new(SL_EventTriggerConfig_r16_sl_EventId_r16_eventS2_r16)
-		if err = ie.eventS2_r16.Decode(r); err != nil {
-			return utils.WrapError("Decode eventS2_r16", err)
+	case SL_EventTriggerConfig_r16_sl_EventId_r16_Choice_EventS2_r16:
+		ie.EventS2_r16 = new(SL_EventTriggerConfig_r16_sl_EventId_r16_eventS2_r16)
+		if err = ie.EventS2_r16.Decode(r); err != nil {
+			return utils.WrapError("Decode EventS2_r16", err)
 		}
 	default:
 		return fmt.Errorf("invalid choice: %d", ie.Choice)

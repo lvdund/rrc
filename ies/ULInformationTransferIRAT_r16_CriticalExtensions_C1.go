@@ -9,18 +9,18 @@ import (
 
 const (
 	ULInformationTransferIRAT_r16_CriticalExtensions_C1_Choice_nothing uint64 = iota
-	ULInformationTransferIRAT_r16_CriticalExtensions_C1_Choice_ulInformationTransferIRAT_r16
-	ULInformationTransferIRAT_r16_CriticalExtensions_C1_Choice_spare3
-	ULInformationTransferIRAT_r16_CriticalExtensions_C1_Choice_spare2
-	ULInformationTransferIRAT_r16_CriticalExtensions_C1_Choice_spare1
+	ULInformationTransferIRAT_r16_CriticalExtensions_C1_Choice_UlInformationTransferIRAT_r16
+	ULInformationTransferIRAT_r16_CriticalExtensions_C1_Choice_Spare3
+	ULInformationTransferIRAT_r16_CriticalExtensions_C1_Choice_Spare2
+	ULInformationTransferIRAT_r16_CriticalExtensions_C1_Choice_Spare1
 )
 
 type ULInformationTransferIRAT_r16_CriticalExtensions_C1 struct {
 	Choice                        uint64
-	ulInformationTransferIRAT_r16 *ULInformationTransferIRAT_r16_IEs
-	spare3                        uper.NULL `madatory`
-	spare2                        uper.NULL `madatory`
-	spare1                        uper.NULL `madatory`
+	UlInformationTransferIRAT_r16 *ULInformationTransferIRAT_r16_IEs
+	Spare3                        uper.NULL `madatory`
+	Spare2                        uper.NULL `madatory`
+	Spare1                        uper.NULL `madatory`
 }
 
 func (ie *ULInformationTransferIRAT_r16_CriticalExtensions_C1) Encode(w *uper.UperWriter) error {
@@ -29,21 +29,21 @@ func (ie *ULInformationTransferIRAT_r16_CriticalExtensions_C1) Encode(w *uper.Up
 		return err
 	}
 	switch ie.Choice {
-	case ULInformationTransferIRAT_r16_CriticalExtensions_C1_Choice_ulInformationTransferIRAT_r16:
-		if err = ie.ulInformationTransferIRAT_r16.Encode(w); err != nil {
-			err = utils.WrapError("Encode ulInformationTransferIRAT_r16", err)
+	case ULInformationTransferIRAT_r16_CriticalExtensions_C1_Choice_UlInformationTransferIRAT_r16:
+		if err = ie.UlInformationTransferIRAT_r16.Encode(w); err != nil {
+			err = utils.WrapError("Encode UlInformationTransferIRAT_r16", err)
 		}
-	case ULInformationTransferIRAT_r16_CriticalExtensions_C1_Choice_spare3:
+	case ULInformationTransferIRAT_r16_CriticalExtensions_C1_Choice_Spare3:
 		if err := w.WriteNull(); err != nil {
-			err = utils.WrapError("Encode spare3", err)
+			err = utils.WrapError("Encode Spare3", err)
 		}
-	case ULInformationTransferIRAT_r16_CriticalExtensions_C1_Choice_spare2:
+	case ULInformationTransferIRAT_r16_CriticalExtensions_C1_Choice_Spare2:
 		if err := w.WriteNull(); err != nil {
-			err = utils.WrapError("Encode spare2", err)
+			err = utils.WrapError("Encode Spare2", err)
 		}
-	case ULInformationTransferIRAT_r16_CriticalExtensions_C1_Choice_spare1:
+	case ULInformationTransferIRAT_r16_CriticalExtensions_C1_Choice_Spare1:
 		if err := w.WriteNull(); err != nil {
-			err = utils.WrapError("Encode spare1", err)
+			err = utils.WrapError("Encode Spare1", err)
 		}
 	default:
 		err = fmt.Errorf("invalid choice: %d", ie.Choice)
@@ -57,22 +57,22 @@ func (ie *ULInformationTransferIRAT_r16_CriticalExtensions_C1) Decode(r *uper.Up
 		return err
 	}
 	switch ie.Choice {
-	case ULInformationTransferIRAT_r16_CriticalExtensions_C1_Choice_ulInformationTransferIRAT_r16:
-		ie.ulInformationTransferIRAT_r16 = new(ULInformationTransferIRAT_r16_IEs)
-		if err = ie.ulInformationTransferIRAT_r16.Decode(r); err != nil {
-			return utils.WrapError("Decode ulInformationTransferIRAT_r16", err)
+	case ULInformationTransferIRAT_r16_CriticalExtensions_C1_Choice_UlInformationTransferIRAT_r16:
+		ie.UlInformationTransferIRAT_r16 = new(ULInformationTransferIRAT_r16_IEs)
+		if err = ie.UlInformationTransferIRAT_r16.Decode(r); err != nil {
+			return utils.WrapError("Decode UlInformationTransferIRAT_r16", err)
 		}
-	case ULInformationTransferIRAT_r16_CriticalExtensions_C1_Choice_spare3:
+	case ULInformationTransferIRAT_r16_CriticalExtensions_C1_Choice_Spare3:
 		if err := r.ReadNull(); err != nil {
-			return utils.WrapError("Decode spare3", err)
+			return utils.WrapError("Decode Spare3", err)
 		}
-	case ULInformationTransferIRAT_r16_CriticalExtensions_C1_Choice_spare2:
+	case ULInformationTransferIRAT_r16_CriticalExtensions_C1_Choice_Spare2:
 		if err := r.ReadNull(); err != nil {
-			return utils.WrapError("Decode spare2", err)
+			return utils.WrapError("Decode Spare2", err)
 		}
-	case ULInformationTransferIRAT_r16_CriticalExtensions_C1_Choice_spare1:
+	case ULInformationTransferIRAT_r16_CriticalExtensions_C1_Choice_Spare1:
 		if err := r.ReadNull(); err != nil {
-			return utils.WrapError("Decode spare1", err)
+			return utils.WrapError("Decode Spare1", err)
 		}
 	default:
 		return fmt.Errorf("invalid choice: %d", ie.Choice)

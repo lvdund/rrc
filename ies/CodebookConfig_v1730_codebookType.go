@@ -9,12 +9,12 @@ import (
 
 const (
 	CodebookConfig_v1730_codebookType_Choice_nothing uint64 = iota
-	CodebookConfig_v1730_codebookType_Choice_type1
+	CodebookConfig_v1730_codebookType_Choice_Type1
 )
 
 type CodebookConfig_v1730_codebookType struct {
 	Choice uint64
-	type1  *CodebookConfig_v1730_codebookType_type1
+	Type1  *CodebookConfig_v1730_codebookType_type1
 }
 
 func (ie *CodebookConfig_v1730_codebookType) Encode(w *uper.UperWriter) error {
@@ -23,9 +23,9 @@ func (ie *CodebookConfig_v1730_codebookType) Encode(w *uper.UperWriter) error {
 		return err
 	}
 	switch ie.Choice {
-	case CodebookConfig_v1730_codebookType_Choice_type1:
-		if err = ie.type1.Encode(w); err != nil {
-			err = utils.WrapError("Encode type1", err)
+	case CodebookConfig_v1730_codebookType_Choice_Type1:
+		if err = ie.Type1.Encode(w); err != nil {
+			err = utils.WrapError("Encode Type1", err)
 		}
 	default:
 		err = fmt.Errorf("invalid choice: %d", ie.Choice)
@@ -39,10 +39,10 @@ func (ie *CodebookConfig_v1730_codebookType) Decode(r *uper.UperReader) error {
 		return err
 	}
 	switch ie.Choice {
-	case CodebookConfig_v1730_codebookType_Choice_type1:
-		ie.type1 = new(CodebookConfig_v1730_codebookType_type1)
-		if err = ie.type1.Decode(r); err != nil {
-			return utils.WrapError("Decode type1", err)
+	case CodebookConfig_v1730_codebookType_Choice_Type1:
+		ie.Type1 = new(CodebookConfig_v1730_codebookType_type1)
+		if err = ie.Type1.Decode(r); err != nil {
+			return utils.WrapError("Decode Type1", err)
 		}
 	default:
 		return fmt.Errorf("invalid choice: %d", ie.Choice)

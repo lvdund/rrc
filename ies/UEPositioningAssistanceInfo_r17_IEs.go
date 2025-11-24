@@ -6,32 +6,32 @@ import (
 )
 
 type UEPositioningAssistanceInfo_r17_IEs struct {
-	ue_TxTEG_AssociationList_r17 *UE_TxTEG_AssociationList_r17          `optional`
-	lateNonCriticalExtension     *[]byte                                `optional`
-	nonCriticalExtension         *UEPositioningAssistanceInfo_v1720_IEs `optional`
+	Ue_TxTEG_AssociationList_r17 *UE_TxTEG_AssociationList_r17          `optional`
+	LateNonCriticalExtension     *[]byte                                `optional`
+	NonCriticalExtension         *UEPositioningAssistanceInfo_v1720_IEs `optional`
 }
 
 func (ie *UEPositioningAssistanceInfo_r17_IEs) Encode(w *uper.UperWriter) error {
 	var err error
-	preambleBits := []bool{ie.ue_TxTEG_AssociationList_r17 != nil, ie.lateNonCriticalExtension != nil, ie.nonCriticalExtension != nil}
+	preambleBits := []bool{ie.Ue_TxTEG_AssociationList_r17 != nil, ie.LateNonCriticalExtension != nil, ie.NonCriticalExtension != nil}
 	for _, bit := range preambleBits {
 		if err = w.WriteBool(bit); err != nil {
 			return err
 		}
 	}
-	if ie.ue_TxTEG_AssociationList_r17 != nil {
-		if err = ie.ue_TxTEG_AssociationList_r17.Encode(w); err != nil {
-			return utils.WrapError("Encode ue_TxTEG_AssociationList_r17", err)
+	if ie.Ue_TxTEG_AssociationList_r17 != nil {
+		if err = ie.Ue_TxTEG_AssociationList_r17.Encode(w); err != nil {
+			return utils.WrapError("Encode Ue_TxTEG_AssociationList_r17", err)
 		}
 	}
-	if ie.lateNonCriticalExtension != nil {
-		if err = w.WriteOctetString(*ie.lateNonCriticalExtension, &uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
-			return utils.WrapError("Encode lateNonCriticalExtension", err)
+	if ie.LateNonCriticalExtension != nil {
+		if err = w.WriteOctetString(*ie.LateNonCriticalExtension, &uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+			return utils.WrapError("Encode LateNonCriticalExtension", err)
 		}
 	}
-	if ie.nonCriticalExtension != nil {
-		if err = ie.nonCriticalExtension.Encode(w); err != nil {
-			return utils.WrapError("Encode nonCriticalExtension", err)
+	if ie.NonCriticalExtension != nil {
+		if err = ie.NonCriticalExtension.Encode(w); err != nil {
+			return utils.WrapError("Encode NonCriticalExtension", err)
 		}
 	}
 	return nil
@@ -39,35 +39,35 @@ func (ie *UEPositioningAssistanceInfo_r17_IEs) Encode(w *uper.UperWriter) error 
 
 func (ie *UEPositioningAssistanceInfo_r17_IEs) Decode(r *uper.UperReader) error {
 	var err error
-	var ue_TxTEG_AssociationList_r17Present bool
-	if ue_TxTEG_AssociationList_r17Present, err = r.ReadBool(); err != nil {
+	var Ue_TxTEG_AssociationList_r17Present bool
+	if Ue_TxTEG_AssociationList_r17Present, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var lateNonCriticalExtensionPresent bool
-	if lateNonCriticalExtensionPresent, err = r.ReadBool(); err != nil {
+	var LateNonCriticalExtensionPresent bool
+	if LateNonCriticalExtensionPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var nonCriticalExtensionPresent bool
-	if nonCriticalExtensionPresent, err = r.ReadBool(); err != nil {
+	var NonCriticalExtensionPresent bool
+	if NonCriticalExtensionPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	if ue_TxTEG_AssociationList_r17Present {
-		ie.ue_TxTEG_AssociationList_r17 = new(UE_TxTEG_AssociationList_r17)
-		if err = ie.ue_TxTEG_AssociationList_r17.Decode(r); err != nil {
-			return utils.WrapError("Decode ue_TxTEG_AssociationList_r17", err)
+	if Ue_TxTEG_AssociationList_r17Present {
+		ie.Ue_TxTEG_AssociationList_r17 = new(UE_TxTEG_AssociationList_r17)
+		if err = ie.Ue_TxTEG_AssociationList_r17.Decode(r); err != nil {
+			return utils.WrapError("Decode Ue_TxTEG_AssociationList_r17", err)
 		}
 	}
-	if lateNonCriticalExtensionPresent {
-		var tmp_os_lateNonCriticalExtension []byte
-		if tmp_os_lateNonCriticalExtension, err = r.ReadOctetString(&uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
-			return utils.WrapError("Decode lateNonCriticalExtension", err)
+	if LateNonCriticalExtensionPresent {
+		var tmp_os_LateNonCriticalExtension []byte
+		if tmp_os_LateNonCriticalExtension, err = r.ReadOctetString(&uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+			return utils.WrapError("Decode LateNonCriticalExtension", err)
 		}
-		ie.lateNonCriticalExtension = &tmp_os_lateNonCriticalExtension
+		ie.LateNonCriticalExtension = &tmp_os_LateNonCriticalExtension
 	}
-	if nonCriticalExtensionPresent {
-		ie.nonCriticalExtension = new(UEPositioningAssistanceInfo_v1720_IEs)
-		if err = ie.nonCriticalExtension.Decode(r); err != nil {
-			return utils.WrapError("Decode nonCriticalExtension", err)
+	if NonCriticalExtensionPresent {
+		ie.NonCriticalExtension = new(UEPositioningAssistanceInfo_v1720_IEs)
+		if err = ie.NonCriticalExtension.Decode(r); err != nil {
+			return utils.WrapError("Decode NonCriticalExtension", err)
 		}
 	}
 	return nil

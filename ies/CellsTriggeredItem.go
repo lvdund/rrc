@@ -9,16 +9,16 @@ import (
 
 const (
 	CellsTriggeredItem_Choice_nothing uint64 = iota
-	CellsTriggeredItem_Choice_physCellId
-	CellsTriggeredItem_Choice_physCellIdEUTRA
-	CellsTriggeredItem_Choice_physCellIdUTRA_FDD_r16
+	CellsTriggeredItem_Choice_PhysCellId
+	CellsTriggeredItem_Choice_PhysCellIdEUTRA
+	CellsTriggeredItem_Choice_PhysCellIdUTRA_FDD_r16
 )
 
 type CellsTriggeredItem struct {
 	Choice                 uint64
-	physCellId             *PhysCellId
-	physCellIdEUTRA        *EUTRA_PhysCellId
-	physCellIdUTRA_FDD_r16 *PhysCellIdUTRA_FDD_r16
+	PhysCellId             *PhysCellId
+	PhysCellIdEUTRA        *EUTRA_PhysCellId
+	PhysCellIdUTRA_FDD_r16 *PhysCellIdUTRA_FDD_r16
 }
 
 func (ie *CellsTriggeredItem) Encode(w *uper.UperWriter) error {
@@ -27,17 +27,17 @@ func (ie *CellsTriggeredItem) Encode(w *uper.UperWriter) error {
 		return err
 	}
 	switch ie.Choice {
-	case CellsTriggeredItem_Choice_physCellId:
-		if err = ie.physCellId.Encode(w); err != nil {
-			err = utils.WrapError("Encode physCellId", err)
+	case CellsTriggeredItem_Choice_PhysCellId:
+		if err = ie.PhysCellId.Encode(w); err != nil {
+			err = utils.WrapError("Encode PhysCellId", err)
 		}
-	case CellsTriggeredItem_Choice_physCellIdEUTRA:
-		if err = ie.physCellIdEUTRA.Encode(w); err != nil {
-			err = utils.WrapError("Encode physCellIdEUTRA", err)
+	case CellsTriggeredItem_Choice_PhysCellIdEUTRA:
+		if err = ie.PhysCellIdEUTRA.Encode(w); err != nil {
+			err = utils.WrapError("Encode PhysCellIdEUTRA", err)
 		}
-	case CellsTriggeredItem_Choice_physCellIdUTRA_FDD_r16:
-		if err = ie.physCellIdUTRA_FDD_r16.Encode(w); err != nil {
-			err = utils.WrapError("Encode physCellIdUTRA_FDD_r16", err)
+	case CellsTriggeredItem_Choice_PhysCellIdUTRA_FDD_r16:
+		if err = ie.PhysCellIdUTRA_FDD_r16.Encode(w); err != nil {
+			err = utils.WrapError("Encode PhysCellIdUTRA_FDD_r16", err)
 		}
 	default:
 		err = fmt.Errorf("invalid choice: %d", ie.Choice)
@@ -51,20 +51,20 @@ func (ie *CellsTriggeredItem) Decode(r *uper.UperReader) error {
 		return err
 	}
 	switch ie.Choice {
-	case CellsTriggeredItem_Choice_physCellId:
-		ie.physCellId = new(PhysCellId)
-		if err = ie.physCellId.Decode(r); err != nil {
-			return utils.WrapError("Decode physCellId", err)
+	case CellsTriggeredItem_Choice_PhysCellId:
+		ie.PhysCellId = new(PhysCellId)
+		if err = ie.PhysCellId.Decode(r); err != nil {
+			return utils.WrapError("Decode PhysCellId", err)
 		}
-	case CellsTriggeredItem_Choice_physCellIdEUTRA:
-		ie.physCellIdEUTRA = new(EUTRA_PhysCellId)
-		if err = ie.physCellIdEUTRA.Decode(r); err != nil {
-			return utils.WrapError("Decode physCellIdEUTRA", err)
+	case CellsTriggeredItem_Choice_PhysCellIdEUTRA:
+		ie.PhysCellIdEUTRA = new(EUTRA_PhysCellId)
+		if err = ie.PhysCellIdEUTRA.Decode(r); err != nil {
+			return utils.WrapError("Decode PhysCellIdEUTRA", err)
 		}
-	case CellsTriggeredItem_Choice_physCellIdUTRA_FDD_r16:
-		ie.physCellIdUTRA_FDD_r16 = new(PhysCellIdUTRA_FDD_r16)
-		if err = ie.physCellIdUTRA_FDD_r16.Decode(r); err != nil {
-			return utils.WrapError("Decode physCellIdUTRA_FDD_r16", err)
+	case CellsTriggeredItem_Choice_PhysCellIdUTRA_FDD_r16:
+		ie.PhysCellIdUTRA_FDD_r16 = new(PhysCellIdUTRA_FDD_r16)
+		if err = ie.PhysCellIdUTRA_FDD_r16.Decode(r); err != nil {
+			return utils.WrapError("Decode PhysCellIdUTRA_FDD_r16", err)
 		}
 	default:
 		return fmt.Errorf("invalid choice: %d", ie.Choice)

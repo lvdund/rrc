@@ -6,92 +6,92 @@ import (
 )
 
 type PosSRS_RRC_Inactive_OutsideInitialUL_BWP_r17 struct {
-	maxSRSposBandwidthForEachSCS_withinCC_FR1_r17               *PosSRS_RRC_Inactive_OutsideInitialUL_BWP_r17_maxSRSposBandwidthForEachSCS_withinCC_FR1_r17               `optional`
-	maxSRSposBandwidthForEachSCS_withinCC_FR2_r17               *PosSRS_RRC_Inactive_OutsideInitialUL_BWP_r17_maxSRSposBandwidthForEachSCS_withinCC_FR2_r17               `optional`
-	maxNumOfSRSposResourceSets_r17                              *PosSRS_RRC_Inactive_OutsideInitialUL_BWP_r17_maxNumOfSRSposResourceSets_r17                              `optional`
-	maxNumOfPeriodicSRSposResources_r17                         *PosSRS_RRC_Inactive_OutsideInitialUL_BWP_r17_maxNumOfPeriodicSRSposResources_r17                         `optional`
-	maxNumOfPeriodicSRSposResourcesPerSlot_r17                  *PosSRS_RRC_Inactive_OutsideInitialUL_BWP_r17_maxNumOfPeriodicSRSposResourcesPerSlot_r17                  `optional`
-	differentNumerologyBetweenSRSposAndInitialBWP_r17           *PosSRS_RRC_Inactive_OutsideInitialUL_BWP_r17_differentNumerologyBetweenSRSposAndInitialBWP_r17           `optional`
-	srsPosWithoutRestrictionOnBWP_r17                           *PosSRS_RRC_Inactive_OutsideInitialUL_BWP_r17_srsPosWithoutRestrictionOnBWP_r17                           `optional`
-	maxNumOfPeriodicAndSemipersistentSRSposResources_r17        *PosSRS_RRC_Inactive_OutsideInitialUL_BWP_r17_maxNumOfPeriodicAndSemipersistentSRSposResources_r17        `optional`
-	maxNumOfPeriodicAndSemipersistentSRSposResourcesPerSlot_r17 *PosSRS_RRC_Inactive_OutsideInitialUL_BWP_r17_maxNumOfPeriodicAndSemipersistentSRSposResourcesPerSlot_r17 `optional`
-	differentCenterFreqBetweenSRSposAndInitialBWP_r17           *PosSRS_RRC_Inactive_OutsideInitialUL_BWP_r17_differentCenterFreqBetweenSRSposAndInitialBWP_r17           `optional`
-	switchingTimeSRS_TX_OtherTX_r17                             *PosSRS_RRC_Inactive_OutsideInitialUL_BWP_r17_switchingTimeSRS_TX_OtherTX_r17                             `optional`
-	maxNumOfSemiPersistentSRSposResources_r17                   *PosSRS_RRC_Inactive_OutsideInitialUL_BWP_r17_maxNumOfSemiPersistentSRSposResources_r17                   `optional`
-	maxNumOfSemiPersistentSRSposResourcesPerSlot_r17            *PosSRS_RRC_Inactive_OutsideInitialUL_BWP_r17_maxNumOfSemiPersistentSRSposResourcesPerSlot_r17            `optional`
+	MaxSRSposBandwidthForEachSCS_withinCC_FR1_r17               *PosSRS_RRC_Inactive_OutsideInitialUL_BWP_r17_maxSRSposBandwidthForEachSCS_withinCC_FR1_r17               `optional`
+	MaxSRSposBandwidthForEachSCS_withinCC_FR2_r17               *PosSRS_RRC_Inactive_OutsideInitialUL_BWP_r17_maxSRSposBandwidthForEachSCS_withinCC_FR2_r17               `optional`
+	MaxNumOfSRSposResourceSets_r17                              *PosSRS_RRC_Inactive_OutsideInitialUL_BWP_r17_maxNumOfSRSposResourceSets_r17                              `optional`
+	MaxNumOfPeriodicSRSposResources_r17                         *PosSRS_RRC_Inactive_OutsideInitialUL_BWP_r17_maxNumOfPeriodicSRSposResources_r17                         `optional`
+	MaxNumOfPeriodicSRSposResourcesPerSlot_r17                  *PosSRS_RRC_Inactive_OutsideInitialUL_BWP_r17_maxNumOfPeriodicSRSposResourcesPerSlot_r17                  `optional`
+	DifferentNumerologyBetweenSRSposAndInitialBWP_r17           *PosSRS_RRC_Inactive_OutsideInitialUL_BWP_r17_differentNumerologyBetweenSRSposAndInitialBWP_r17           `optional`
+	SrsPosWithoutRestrictionOnBWP_r17                           *PosSRS_RRC_Inactive_OutsideInitialUL_BWP_r17_srsPosWithoutRestrictionOnBWP_r17                           `optional`
+	MaxNumOfPeriodicAndSemipersistentSRSposResources_r17        *PosSRS_RRC_Inactive_OutsideInitialUL_BWP_r17_maxNumOfPeriodicAndSemipersistentSRSposResources_r17        `optional`
+	MaxNumOfPeriodicAndSemipersistentSRSposResourcesPerSlot_r17 *PosSRS_RRC_Inactive_OutsideInitialUL_BWP_r17_maxNumOfPeriodicAndSemipersistentSRSposResourcesPerSlot_r17 `optional`
+	DifferentCenterFreqBetweenSRSposAndInitialBWP_r17           *PosSRS_RRC_Inactive_OutsideInitialUL_BWP_r17_differentCenterFreqBetweenSRSposAndInitialBWP_r17           `optional`
+	SwitchingTimeSRS_TX_OtherTX_r17                             *PosSRS_RRC_Inactive_OutsideInitialUL_BWP_r17_switchingTimeSRS_TX_OtherTX_r17                             `optional`
+	MaxNumOfSemiPersistentSRSposResources_r17                   *PosSRS_RRC_Inactive_OutsideInitialUL_BWP_r17_maxNumOfSemiPersistentSRSposResources_r17                   `optional`
+	MaxNumOfSemiPersistentSRSposResourcesPerSlot_r17            *PosSRS_RRC_Inactive_OutsideInitialUL_BWP_r17_maxNumOfSemiPersistentSRSposResourcesPerSlot_r17            `optional`
 }
 
 func (ie *PosSRS_RRC_Inactive_OutsideInitialUL_BWP_r17) Encode(w *uper.UperWriter) error {
 	var err error
-	preambleBits := []bool{ie.maxSRSposBandwidthForEachSCS_withinCC_FR1_r17 != nil, ie.maxSRSposBandwidthForEachSCS_withinCC_FR2_r17 != nil, ie.maxNumOfSRSposResourceSets_r17 != nil, ie.maxNumOfPeriodicSRSposResources_r17 != nil, ie.maxNumOfPeriodicSRSposResourcesPerSlot_r17 != nil, ie.differentNumerologyBetweenSRSposAndInitialBWP_r17 != nil, ie.srsPosWithoutRestrictionOnBWP_r17 != nil, ie.maxNumOfPeriodicAndSemipersistentSRSposResources_r17 != nil, ie.maxNumOfPeriodicAndSemipersistentSRSposResourcesPerSlot_r17 != nil, ie.differentCenterFreqBetweenSRSposAndInitialBWP_r17 != nil, ie.switchingTimeSRS_TX_OtherTX_r17 != nil, ie.maxNumOfSemiPersistentSRSposResources_r17 != nil, ie.maxNumOfSemiPersistentSRSposResourcesPerSlot_r17 != nil}
+	preambleBits := []bool{ie.MaxSRSposBandwidthForEachSCS_withinCC_FR1_r17 != nil, ie.MaxSRSposBandwidthForEachSCS_withinCC_FR2_r17 != nil, ie.MaxNumOfSRSposResourceSets_r17 != nil, ie.MaxNumOfPeriodicSRSposResources_r17 != nil, ie.MaxNumOfPeriodicSRSposResourcesPerSlot_r17 != nil, ie.DifferentNumerologyBetweenSRSposAndInitialBWP_r17 != nil, ie.SrsPosWithoutRestrictionOnBWP_r17 != nil, ie.MaxNumOfPeriodicAndSemipersistentSRSposResources_r17 != nil, ie.MaxNumOfPeriodicAndSemipersistentSRSposResourcesPerSlot_r17 != nil, ie.DifferentCenterFreqBetweenSRSposAndInitialBWP_r17 != nil, ie.SwitchingTimeSRS_TX_OtherTX_r17 != nil, ie.MaxNumOfSemiPersistentSRSposResources_r17 != nil, ie.MaxNumOfSemiPersistentSRSposResourcesPerSlot_r17 != nil}
 	for _, bit := range preambleBits {
 		if err = w.WriteBool(bit); err != nil {
 			return err
 		}
 	}
-	if ie.maxSRSposBandwidthForEachSCS_withinCC_FR1_r17 != nil {
-		if err = ie.maxSRSposBandwidthForEachSCS_withinCC_FR1_r17.Encode(w); err != nil {
-			return utils.WrapError("Encode maxSRSposBandwidthForEachSCS_withinCC_FR1_r17", err)
+	if ie.MaxSRSposBandwidthForEachSCS_withinCC_FR1_r17 != nil {
+		if err = ie.MaxSRSposBandwidthForEachSCS_withinCC_FR1_r17.Encode(w); err != nil {
+			return utils.WrapError("Encode MaxSRSposBandwidthForEachSCS_withinCC_FR1_r17", err)
 		}
 	}
-	if ie.maxSRSposBandwidthForEachSCS_withinCC_FR2_r17 != nil {
-		if err = ie.maxSRSposBandwidthForEachSCS_withinCC_FR2_r17.Encode(w); err != nil {
-			return utils.WrapError("Encode maxSRSposBandwidthForEachSCS_withinCC_FR2_r17", err)
+	if ie.MaxSRSposBandwidthForEachSCS_withinCC_FR2_r17 != nil {
+		if err = ie.MaxSRSposBandwidthForEachSCS_withinCC_FR2_r17.Encode(w); err != nil {
+			return utils.WrapError("Encode MaxSRSposBandwidthForEachSCS_withinCC_FR2_r17", err)
 		}
 	}
-	if ie.maxNumOfSRSposResourceSets_r17 != nil {
-		if err = ie.maxNumOfSRSposResourceSets_r17.Encode(w); err != nil {
-			return utils.WrapError("Encode maxNumOfSRSposResourceSets_r17", err)
+	if ie.MaxNumOfSRSposResourceSets_r17 != nil {
+		if err = ie.MaxNumOfSRSposResourceSets_r17.Encode(w); err != nil {
+			return utils.WrapError("Encode MaxNumOfSRSposResourceSets_r17", err)
 		}
 	}
-	if ie.maxNumOfPeriodicSRSposResources_r17 != nil {
-		if err = ie.maxNumOfPeriodicSRSposResources_r17.Encode(w); err != nil {
-			return utils.WrapError("Encode maxNumOfPeriodicSRSposResources_r17", err)
+	if ie.MaxNumOfPeriodicSRSposResources_r17 != nil {
+		if err = ie.MaxNumOfPeriodicSRSposResources_r17.Encode(w); err != nil {
+			return utils.WrapError("Encode MaxNumOfPeriodicSRSposResources_r17", err)
 		}
 	}
-	if ie.maxNumOfPeriodicSRSposResourcesPerSlot_r17 != nil {
-		if err = ie.maxNumOfPeriodicSRSposResourcesPerSlot_r17.Encode(w); err != nil {
-			return utils.WrapError("Encode maxNumOfPeriodicSRSposResourcesPerSlot_r17", err)
+	if ie.MaxNumOfPeriodicSRSposResourcesPerSlot_r17 != nil {
+		if err = ie.MaxNumOfPeriodicSRSposResourcesPerSlot_r17.Encode(w); err != nil {
+			return utils.WrapError("Encode MaxNumOfPeriodicSRSposResourcesPerSlot_r17", err)
 		}
 	}
-	if ie.differentNumerologyBetweenSRSposAndInitialBWP_r17 != nil {
-		if err = ie.differentNumerologyBetweenSRSposAndInitialBWP_r17.Encode(w); err != nil {
-			return utils.WrapError("Encode differentNumerologyBetweenSRSposAndInitialBWP_r17", err)
+	if ie.DifferentNumerologyBetweenSRSposAndInitialBWP_r17 != nil {
+		if err = ie.DifferentNumerologyBetweenSRSposAndInitialBWP_r17.Encode(w); err != nil {
+			return utils.WrapError("Encode DifferentNumerologyBetweenSRSposAndInitialBWP_r17", err)
 		}
 	}
-	if ie.srsPosWithoutRestrictionOnBWP_r17 != nil {
-		if err = ie.srsPosWithoutRestrictionOnBWP_r17.Encode(w); err != nil {
-			return utils.WrapError("Encode srsPosWithoutRestrictionOnBWP_r17", err)
+	if ie.SrsPosWithoutRestrictionOnBWP_r17 != nil {
+		if err = ie.SrsPosWithoutRestrictionOnBWP_r17.Encode(w); err != nil {
+			return utils.WrapError("Encode SrsPosWithoutRestrictionOnBWP_r17", err)
 		}
 	}
-	if ie.maxNumOfPeriodicAndSemipersistentSRSposResources_r17 != nil {
-		if err = ie.maxNumOfPeriodicAndSemipersistentSRSposResources_r17.Encode(w); err != nil {
-			return utils.WrapError("Encode maxNumOfPeriodicAndSemipersistentSRSposResources_r17", err)
+	if ie.MaxNumOfPeriodicAndSemipersistentSRSposResources_r17 != nil {
+		if err = ie.MaxNumOfPeriodicAndSemipersistentSRSposResources_r17.Encode(w); err != nil {
+			return utils.WrapError("Encode MaxNumOfPeriodicAndSemipersistentSRSposResources_r17", err)
 		}
 	}
-	if ie.maxNumOfPeriodicAndSemipersistentSRSposResourcesPerSlot_r17 != nil {
-		if err = ie.maxNumOfPeriodicAndSemipersistentSRSposResourcesPerSlot_r17.Encode(w); err != nil {
-			return utils.WrapError("Encode maxNumOfPeriodicAndSemipersistentSRSposResourcesPerSlot_r17", err)
+	if ie.MaxNumOfPeriodicAndSemipersistentSRSposResourcesPerSlot_r17 != nil {
+		if err = ie.MaxNumOfPeriodicAndSemipersistentSRSposResourcesPerSlot_r17.Encode(w); err != nil {
+			return utils.WrapError("Encode MaxNumOfPeriodicAndSemipersistentSRSposResourcesPerSlot_r17", err)
 		}
 	}
-	if ie.differentCenterFreqBetweenSRSposAndInitialBWP_r17 != nil {
-		if err = ie.differentCenterFreqBetweenSRSposAndInitialBWP_r17.Encode(w); err != nil {
-			return utils.WrapError("Encode differentCenterFreqBetweenSRSposAndInitialBWP_r17", err)
+	if ie.DifferentCenterFreqBetweenSRSposAndInitialBWP_r17 != nil {
+		if err = ie.DifferentCenterFreqBetweenSRSposAndInitialBWP_r17.Encode(w); err != nil {
+			return utils.WrapError("Encode DifferentCenterFreqBetweenSRSposAndInitialBWP_r17", err)
 		}
 	}
-	if ie.switchingTimeSRS_TX_OtherTX_r17 != nil {
-		if err = ie.switchingTimeSRS_TX_OtherTX_r17.Encode(w); err != nil {
-			return utils.WrapError("Encode switchingTimeSRS_TX_OtherTX_r17", err)
+	if ie.SwitchingTimeSRS_TX_OtherTX_r17 != nil {
+		if err = ie.SwitchingTimeSRS_TX_OtherTX_r17.Encode(w); err != nil {
+			return utils.WrapError("Encode SwitchingTimeSRS_TX_OtherTX_r17", err)
 		}
 	}
-	if ie.maxNumOfSemiPersistentSRSposResources_r17 != nil {
-		if err = ie.maxNumOfSemiPersistentSRSposResources_r17.Encode(w); err != nil {
-			return utils.WrapError("Encode maxNumOfSemiPersistentSRSposResources_r17", err)
+	if ie.MaxNumOfSemiPersistentSRSposResources_r17 != nil {
+		if err = ie.MaxNumOfSemiPersistentSRSposResources_r17.Encode(w); err != nil {
+			return utils.WrapError("Encode MaxNumOfSemiPersistentSRSposResources_r17", err)
 		}
 	}
-	if ie.maxNumOfSemiPersistentSRSposResourcesPerSlot_r17 != nil {
-		if err = ie.maxNumOfSemiPersistentSRSposResourcesPerSlot_r17.Encode(w); err != nil {
-			return utils.WrapError("Encode maxNumOfSemiPersistentSRSposResourcesPerSlot_r17", err)
+	if ie.MaxNumOfSemiPersistentSRSposResourcesPerSlot_r17 != nil {
+		if err = ie.MaxNumOfSemiPersistentSRSposResourcesPerSlot_r17.Encode(w); err != nil {
+			return utils.WrapError("Encode MaxNumOfSemiPersistentSRSposResourcesPerSlot_r17", err)
 		}
 	}
 	return nil
@@ -99,134 +99,134 @@ func (ie *PosSRS_RRC_Inactive_OutsideInitialUL_BWP_r17) Encode(w *uper.UperWrite
 
 func (ie *PosSRS_RRC_Inactive_OutsideInitialUL_BWP_r17) Decode(r *uper.UperReader) error {
 	var err error
-	var maxSRSposBandwidthForEachSCS_withinCC_FR1_r17Present bool
-	if maxSRSposBandwidthForEachSCS_withinCC_FR1_r17Present, err = r.ReadBool(); err != nil {
+	var MaxSRSposBandwidthForEachSCS_withinCC_FR1_r17Present bool
+	if MaxSRSposBandwidthForEachSCS_withinCC_FR1_r17Present, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var maxSRSposBandwidthForEachSCS_withinCC_FR2_r17Present bool
-	if maxSRSposBandwidthForEachSCS_withinCC_FR2_r17Present, err = r.ReadBool(); err != nil {
+	var MaxSRSposBandwidthForEachSCS_withinCC_FR2_r17Present bool
+	if MaxSRSposBandwidthForEachSCS_withinCC_FR2_r17Present, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var maxNumOfSRSposResourceSets_r17Present bool
-	if maxNumOfSRSposResourceSets_r17Present, err = r.ReadBool(); err != nil {
+	var MaxNumOfSRSposResourceSets_r17Present bool
+	if MaxNumOfSRSposResourceSets_r17Present, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var maxNumOfPeriodicSRSposResources_r17Present bool
-	if maxNumOfPeriodicSRSposResources_r17Present, err = r.ReadBool(); err != nil {
+	var MaxNumOfPeriodicSRSposResources_r17Present bool
+	if MaxNumOfPeriodicSRSposResources_r17Present, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var maxNumOfPeriodicSRSposResourcesPerSlot_r17Present bool
-	if maxNumOfPeriodicSRSposResourcesPerSlot_r17Present, err = r.ReadBool(); err != nil {
+	var MaxNumOfPeriodicSRSposResourcesPerSlot_r17Present bool
+	if MaxNumOfPeriodicSRSposResourcesPerSlot_r17Present, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var differentNumerologyBetweenSRSposAndInitialBWP_r17Present bool
-	if differentNumerologyBetweenSRSposAndInitialBWP_r17Present, err = r.ReadBool(); err != nil {
+	var DifferentNumerologyBetweenSRSposAndInitialBWP_r17Present bool
+	if DifferentNumerologyBetweenSRSposAndInitialBWP_r17Present, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var srsPosWithoutRestrictionOnBWP_r17Present bool
-	if srsPosWithoutRestrictionOnBWP_r17Present, err = r.ReadBool(); err != nil {
+	var SrsPosWithoutRestrictionOnBWP_r17Present bool
+	if SrsPosWithoutRestrictionOnBWP_r17Present, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var maxNumOfPeriodicAndSemipersistentSRSposResources_r17Present bool
-	if maxNumOfPeriodicAndSemipersistentSRSposResources_r17Present, err = r.ReadBool(); err != nil {
+	var MaxNumOfPeriodicAndSemipersistentSRSposResources_r17Present bool
+	if MaxNumOfPeriodicAndSemipersistentSRSposResources_r17Present, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var maxNumOfPeriodicAndSemipersistentSRSposResourcesPerSlot_r17Present bool
-	if maxNumOfPeriodicAndSemipersistentSRSposResourcesPerSlot_r17Present, err = r.ReadBool(); err != nil {
+	var MaxNumOfPeriodicAndSemipersistentSRSposResourcesPerSlot_r17Present bool
+	if MaxNumOfPeriodicAndSemipersistentSRSposResourcesPerSlot_r17Present, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var differentCenterFreqBetweenSRSposAndInitialBWP_r17Present bool
-	if differentCenterFreqBetweenSRSposAndInitialBWP_r17Present, err = r.ReadBool(); err != nil {
+	var DifferentCenterFreqBetweenSRSposAndInitialBWP_r17Present bool
+	if DifferentCenterFreqBetweenSRSposAndInitialBWP_r17Present, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var switchingTimeSRS_TX_OtherTX_r17Present bool
-	if switchingTimeSRS_TX_OtherTX_r17Present, err = r.ReadBool(); err != nil {
+	var SwitchingTimeSRS_TX_OtherTX_r17Present bool
+	if SwitchingTimeSRS_TX_OtherTX_r17Present, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var maxNumOfSemiPersistentSRSposResources_r17Present bool
-	if maxNumOfSemiPersistentSRSposResources_r17Present, err = r.ReadBool(); err != nil {
+	var MaxNumOfSemiPersistentSRSposResources_r17Present bool
+	if MaxNumOfSemiPersistentSRSposResources_r17Present, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var maxNumOfSemiPersistentSRSposResourcesPerSlot_r17Present bool
-	if maxNumOfSemiPersistentSRSposResourcesPerSlot_r17Present, err = r.ReadBool(); err != nil {
+	var MaxNumOfSemiPersistentSRSposResourcesPerSlot_r17Present bool
+	if MaxNumOfSemiPersistentSRSposResourcesPerSlot_r17Present, err = r.ReadBool(); err != nil {
 		return err
 	}
-	if maxSRSposBandwidthForEachSCS_withinCC_FR1_r17Present {
-		ie.maxSRSposBandwidthForEachSCS_withinCC_FR1_r17 = new(PosSRS_RRC_Inactive_OutsideInitialUL_BWP_r17_maxSRSposBandwidthForEachSCS_withinCC_FR1_r17)
-		if err = ie.maxSRSposBandwidthForEachSCS_withinCC_FR1_r17.Decode(r); err != nil {
-			return utils.WrapError("Decode maxSRSposBandwidthForEachSCS_withinCC_FR1_r17", err)
+	if MaxSRSposBandwidthForEachSCS_withinCC_FR1_r17Present {
+		ie.MaxSRSposBandwidthForEachSCS_withinCC_FR1_r17 = new(PosSRS_RRC_Inactive_OutsideInitialUL_BWP_r17_maxSRSposBandwidthForEachSCS_withinCC_FR1_r17)
+		if err = ie.MaxSRSposBandwidthForEachSCS_withinCC_FR1_r17.Decode(r); err != nil {
+			return utils.WrapError("Decode MaxSRSposBandwidthForEachSCS_withinCC_FR1_r17", err)
 		}
 	}
-	if maxSRSposBandwidthForEachSCS_withinCC_FR2_r17Present {
-		ie.maxSRSposBandwidthForEachSCS_withinCC_FR2_r17 = new(PosSRS_RRC_Inactive_OutsideInitialUL_BWP_r17_maxSRSposBandwidthForEachSCS_withinCC_FR2_r17)
-		if err = ie.maxSRSposBandwidthForEachSCS_withinCC_FR2_r17.Decode(r); err != nil {
-			return utils.WrapError("Decode maxSRSposBandwidthForEachSCS_withinCC_FR2_r17", err)
+	if MaxSRSposBandwidthForEachSCS_withinCC_FR2_r17Present {
+		ie.MaxSRSposBandwidthForEachSCS_withinCC_FR2_r17 = new(PosSRS_RRC_Inactive_OutsideInitialUL_BWP_r17_maxSRSposBandwidthForEachSCS_withinCC_FR2_r17)
+		if err = ie.MaxSRSposBandwidthForEachSCS_withinCC_FR2_r17.Decode(r); err != nil {
+			return utils.WrapError("Decode MaxSRSposBandwidthForEachSCS_withinCC_FR2_r17", err)
 		}
 	}
-	if maxNumOfSRSposResourceSets_r17Present {
-		ie.maxNumOfSRSposResourceSets_r17 = new(PosSRS_RRC_Inactive_OutsideInitialUL_BWP_r17_maxNumOfSRSposResourceSets_r17)
-		if err = ie.maxNumOfSRSposResourceSets_r17.Decode(r); err != nil {
-			return utils.WrapError("Decode maxNumOfSRSposResourceSets_r17", err)
+	if MaxNumOfSRSposResourceSets_r17Present {
+		ie.MaxNumOfSRSposResourceSets_r17 = new(PosSRS_RRC_Inactive_OutsideInitialUL_BWP_r17_maxNumOfSRSposResourceSets_r17)
+		if err = ie.MaxNumOfSRSposResourceSets_r17.Decode(r); err != nil {
+			return utils.WrapError("Decode MaxNumOfSRSposResourceSets_r17", err)
 		}
 	}
-	if maxNumOfPeriodicSRSposResources_r17Present {
-		ie.maxNumOfPeriodicSRSposResources_r17 = new(PosSRS_RRC_Inactive_OutsideInitialUL_BWP_r17_maxNumOfPeriodicSRSposResources_r17)
-		if err = ie.maxNumOfPeriodicSRSposResources_r17.Decode(r); err != nil {
-			return utils.WrapError("Decode maxNumOfPeriodicSRSposResources_r17", err)
+	if MaxNumOfPeriodicSRSposResources_r17Present {
+		ie.MaxNumOfPeriodicSRSposResources_r17 = new(PosSRS_RRC_Inactive_OutsideInitialUL_BWP_r17_maxNumOfPeriodicSRSposResources_r17)
+		if err = ie.MaxNumOfPeriodicSRSposResources_r17.Decode(r); err != nil {
+			return utils.WrapError("Decode MaxNumOfPeriodicSRSposResources_r17", err)
 		}
 	}
-	if maxNumOfPeriodicSRSposResourcesPerSlot_r17Present {
-		ie.maxNumOfPeriodicSRSposResourcesPerSlot_r17 = new(PosSRS_RRC_Inactive_OutsideInitialUL_BWP_r17_maxNumOfPeriodicSRSposResourcesPerSlot_r17)
-		if err = ie.maxNumOfPeriodicSRSposResourcesPerSlot_r17.Decode(r); err != nil {
-			return utils.WrapError("Decode maxNumOfPeriodicSRSposResourcesPerSlot_r17", err)
+	if MaxNumOfPeriodicSRSposResourcesPerSlot_r17Present {
+		ie.MaxNumOfPeriodicSRSposResourcesPerSlot_r17 = new(PosSRS_RRC_Inactive_OutsideInitialUL_BWP_r17_maxNumOfPeriodicSRSposResourcesPerSlot_r17)
+		if err = ie.MaxNumOfPeriodicSRSposResourcesPerSlot_r17.Decode(r); err != nil {
+			return utils.WrapError("Decode MaxNumOfPeriodicSRSposResourcesPerSlot_r17", err)
 		}
 	}
-	if differentNumerologyBetweenSRSposAndInitialBWP_r17Present {
-		ie.differentNumerologyBetweenSRSposAndInitialBWP_r17 = new(PosSRS_RRC_Inactive_OutsideInitialUL_BWP_r17_differentNumerologyBetweenSRSposAndInitialBWP_r17)
-		if err = ie.differentNumerologyBetweenSRSposAndInitialBWP_r17.Decode(r); err != nil {
-			return utils.WrapError("Decode differentNumerologyBetweenSRSposAndInitialBWP_r17", err)
+	if DifferentNumerologyBetweenSRSposAndInitialBWP_r17Present {
+		ie.DifferentNumerologyBetweenSRSposAndInitialBWP_r17 = new(PosSRS_RRC_Inactive_OutsideInitialUL_BWP_r17_differentNumerologyBetweenSRSposAndInitialBWP_r17)
+		if err = ie.DifferentNumerologyBetweenSRSposAndInitialBWP_r17.Decode(r); err != nil {
+			return utils.WrapError("Decode DifferentNumerologyBetweenSRSposAndInitialBWP_r17", err)
 		}
 	}
-	if srsPosWithoutRestrictionOnBWP_r17Present {
-		ie.srsPosWithoutRestrictionOnBWP_r17 = new(PosSRS_RRC_Inactive_OutsideInitialUL_BWP_r17_srsPosWithoutRestrictionOnBWP_r17)
-		if err = ie.srsPosWithoutRestrictionOnBWP_r17.Decode(r); err != nil {
-			return utils.WrapError("Decode srsPosWithoutRestrictionOnBWP_r17", err)
+	if SrsPosWithoutRestrictionOnBWP_r17Present {
+		ie.SrsPosWithoutRestrictionOnBWP_r17 = new(PosSRS_RRC_Inactive_OutsideInitialUL_BWP_r17_srsPosWithoutRestrictionOnBWP_r17)
+		if err = ie.SrsPosWithoutRestrictionOnBWP_r17.Decode(r); err != nil {
+			return utils.WrapError("Decode SrsPosWithoutRestrictionOnBWP_r17", err)
 		}
 	}
-	if maxNumOfPeriodicAndSemipersistentSRSposResources_r17Present {
-		ie.maxNumOfPeriodicAndSemipersistentSRSposResources_r17 = new(PosSRS_RRC_Inactive_OutsideInitialUL_BWP_r17_maxNumOfPeriodicAndSemipersistentSRSposResources_r17)
-		if err = ie.maxNumOfPeriodicAndSemipersistentSRSposResources_r17.Decode(r); err != nil {
-			return utils.WrapError("Decode maxNumOfPeriodicAndSemipersistentSRSposResources_r17", err)
+	if MaxNumOfPeriodicAndSemipersistentSRSposResources_r17Present {
+		ie.MaxNumOfPeriodicAndSemipersistentSRSposResources_r17 = new(PosSRS_RRC_Inactive_OutsideInitialUL_BWP_r17_maxNumOfPeriodicAndSemipersistentSRSposResources_r17)
+		if err = ie.MaxNumOfPeriodicAndSemipersistentSRSposResources_r17.Decode(r); err != nil {
+			return utils.WrapError("Decode MaxNumOfPeriodicAndSemipersistentSRSposResources_r17", err)
 		}
 	}
-	if maxNumOfPeriodicAndSemipersistentSRSposResourcesPerSlot_r17Present {
-		ie.maxNumOfPeriodicAndSemipersistentSRSposResourcesPerSlot_r17 = new(PosSRS_RRC_Inactive_OutsideInitialUL_BWP_r17_maxNumOfPeriodicAndSemipersistentSRSposResourcesPerSlot_r17)
-		if err = ie.maxNumOfPeriodicAndSemipersistentSRSposResourcesPerSlot_r17.Decode(r); err != nil {
-			return utils.WrapError("Decode maxNumOfPeriodicAndSemipersistentSRSposResourcesPerSlot_r17", err)
+	if MaxNumOfPeriodicAndSemipersistentSRSposResourcesPerSlot_r17Present {
+		ie.MaxNumOfPeriodicAndSemipersistentSRSposResourcesPerSlot_r17 = new(PosSRS_RRC_Inactive_OutsideInitialUL_BWP_r17_maxNumOfPeriodicAndSemipersistentSRSposResourcesPerSlot_r17)
+		if err = ie.MaxNumOfPeriodicAndSemipersistentSRSposResourcesPerSlot_r17.Decode(r); err != nil {
+			return utils.WrapError("Decode MaxNumOfPeriodicAndSemipersistentSRSposResourcesPerSlot_r17", err)
 		}
 	}
-	if differentCenterFreqBetweenSRSposAndInitialBWP_r17Present {
-		ie.differentCenterFreqBetweenSRSposAndInitialBWP_r17 = new(PosSRS_RRC_Inactive_OutsideInitialUL_BWP_r17_differentCenterFreqBetweenSRSposAndInitialBWP_r17)
-		if err = ie.differentCenterFreqBetweenSRSposAndInitialBWP_r17.Decode(r); err != nil {
-			return utils.WrapError("Decode differentCenterFreqBetweenSRSposAndInitialBWP_r17", err)
+	if DifferentCenterFreqBetweenSRSposAndInitialBWP_r17Present {
+		ie.DifferentCenterFreqBetweenSRSposAndInitialBWP_r17 = new(PosSRS_RRC_Inactive_OutsideInitialUL_BWP_r17_differentCenterFreqBetweenSRSposAndInitialBWP_r17)
+		if err = ie.DifferentCenterFreqBetweenSRSposAndInitialBWP_r17.Decode(r); err != nil {
+			return utils.WrapError("Decode DifferentCenterFreqBetweenSRSposAndInitialBWP_r17", err)
 		}
 	}
-	if switchingTimeSRS_TX_OtherTX_r17Present {
-		ie.switchingTimeSRS_TX_OtherTX_r17 = new(PosSRS_RRC_Inactive_OutsideInitialUL_BWP_r17_switchingTimeSRS_TX_OtherTX_r17)
-		if err = ie.switchingTimeSRS_TX_OtherTX_r17.Decode(r); err != nil {
-			return utils.WrapError("Decode switchingTimeSRS_TX_OtherTX_r17", err)
+	if SwitchingTimeSRS_TX_OtherTX_r17Present {
+		ie.SwitchingTimeSRS_TX_OtherTX_r17 = new(PosSRS_RRC_Inactive_OutsideInitialUL_BWP_r17_switchingTimeSRS_TX_OtherTX_r17)
+		if err = ie.SwitchingTimeSRS_TX_OtherTX_r17.Decode(r); err != nil {
+			return utils.WrapError("Decode SwitchingTimeSRS_TX_OtherTX_r17", err)
 		}
 	}
-	if maxNumOfSemiPersistentSRSposResources_r17Present {
-		ie.maxNumOfSemiPersistentSRSposResources_r17 = new(PosSRS_RRC_Inactive_OutsideInitialUL_BWP_r17_maxNumOfSemiPersistentSRSposResources_r17)
-		if err = ie.maxNumOfSemiPersistentSRSposResources_r17.Decode(r); err != nil {
-			return utils.WrapError("Decode maxNumOfSemiPersistentSRSposResources_r17", err)
+	if MaxNumOfSemiPersistentSRSposResources_r17Present {
+		ie.MaxNumOfSemiPersistentSRSposResources_r17 = new(PosSRS_RRC_Inactive_OutsideInitialUL_BWP_r17_maxNumOfSemiPersistentSRSposResources_r17)
+		if err = ie.MaxNumOfSemiPersistentSRSposResources_r17.Decode(r); err != nil {
+			return utils.WrapError("Decode MaxNumOfSemiPersistentSRSposResources_r17", err)
 		}
 	}
-	if maxNumOfSemiPersistentSRSposResourcesPerSlot_r17Present {
-		ie.maxNumOfSemiPersistentSRSposResourcesPerSlot_r17 = new(PosSRS_RRC_Inactive_OutsideInitialUL_BWP_r17_maxNumOfSemiPersistentSRSposResourcesPerSlot_r17)
-		if err = ie.maxNumOfSemiPersistentSRSposResourcesPerSlot_r17.Decode(r); err != nil {
-			return utils.WrapError("Decode maxNumOfSemiPersistentSRSposResourcesPerSlot_r17", err)
+	if MaxNumOfSemiPersistentSRSposResourcesPerSlot_r17Present {
+		ie.MaxNumOfSemiPersistentSRSposResourcesPerSlot_r17 = new(PosSRS_RRC_Inactive_OutsideInitialUL_BWP_r17_maxNumOfSemiPersistentSRSposResourcesPerSlot_r17)
+		if err = ie.MaxNumOfSemiPersistentSRSposResourcesPerSlot_r17.Decode(r); err != nil {
+			return utils.WrapError("Decode MaxNumOfSemiPersistentSRSposResourcesPerSlot_r17", err)
 		}
 	}
 	return nil

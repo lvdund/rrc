@@ -9,14 +9,14 @@ import (
 
 const (
 	MeasurementTimingConfiguration_CriticalExtensions_Choice_nothing uint64 = iota
-	MeasurementTimingConfiguration_CriticalExtensions_Choice_c1
-	MeasurementTimingConfiguration_CriticalExtensions_Choice_criticalExtensionsFuture
+	MeasurementTimingConfiguration_CriticalExtensions_Choice_C1
+	MeasurementTimingConfiguration_CriticalExtensions_Choice_CriticalExtensionsFuture
 )
 
 type MeasurementTimingConfiguration_CriticalExtensions struct {
 	Choice                   uint64
-	c1                       *MeasurementTimingConfiguration_CriticalExtensions_C1
-	criticalExtensionsFuture interface{} `madatory`
+	C1                       *MeasurementTimingConfiguration_CriticalExtensions_C1
+	CriticalExtensionsFuture interface{} `madatory`
 }
 
 func (ie *MeasurementTimingConfiguration_CriticalExtensions) Encode(w *uper.UperWriter) error {
@@ -25,11 +25,11 @@ func (ie *MeasurementTimingConfiguration_CriticalExtensions) Encode(w *uper.Uper
 		return err
 	}
 	switch ie.Choice {
-	case MeasurementTimingConfiguration_CriticalExtensions_Choice_c1:
-		if err = ie.c1.Encode(w); err != nil {
-			err = utils.WrapError("Encode c1", err)
+	case MeasurementTimingConfiguration_CriticalExtensions_Choice_C1:
+		if err = ie.C1.Encode(w); err != nil {
+			err = utils.WrapError("Encode C1", err)
 		}
-	case MeasurementTimingConfiguration_CriticalExtensions_Choice_criticalExtensionsFuture:
+	case MeasurementTimingConfiguration_CriticalExtensions_Choice_CriticalExtensionsFuture:
 		// interface{} field of choice - nothing to encode
 	default:
 		err = fmt.Errorf("invalid choice: %d", ie.Choice)
@@ -43,12 +43,12 @@ func (ie *MeasurementTimingConfiguration_CriticalExtensions) Decode(r *uper.Uper
 		return err
 	}
 	switch ie.Choice {
-	case MeasurementTimingConfiguration_CriticalExtensions_Choice_c1:
-		ie.c1 = new(MeasurementTimingConfiguration_CriticalExtensions_C1)
-		if err = ie.c1.Decode(r); err != nil {
-			return utils.WrapError("Decode c1", err)
+	case MeasurementTimingConfiguration_CriticalExtensions_Choice_C1:
+		ie.C1 = new(MeasurementTimingConfiguration_CriticalExtensions_C1)
+		if err = ie.C1.Decode(r); err != nil {
+			return utils.WrapError("Decode C1", err)
 		}
-	case MeasurementTimingConfiguration_CriticalExtensions_Choice_criticalExtensionsFuture:
+	case MeasurementTimingConfiguration_CriticalExtensions_Choice_CriticalExtensionsFuture:
 		// interface{} field of choice - nothing to decode
 	default:
 		return fmt.Errorf("invalid choice: %d", ie.Choice)

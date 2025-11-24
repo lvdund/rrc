@@ -6,28 +6,28 @@ import (
 )
 
 type CellsToAddModUTRA_FDD_r16 struct {
-	cellIndexUTRA_FDD_r16 UTRA_FDD_CellIndex_r16 `madatory`
-	physCellId_r16        PhysCellIdUTRA_FDD_r16 `madatory`
+	CellIndexUTRA_FDD_r16 UTRA_FDD_CellIndex_r16 `madatory`
+	PhysCellId_r16        PhysCellIdUTRA_FDD_r16 `madatory`
 }
 
 func (ie *CellsToAddModUTRA_FDD_r16) Encode(w *uper.UperWriter) error {
 	var err error
-	if err = ie.cellIndexUTRA_FDD_r16.Encode(w); err != nil {
-		return utils.WrapError("Encode cellIndexUTRA_FDD_r16", err)
+	if err = ie.CellIndexUTRA_FDD_r16.Encode(w); err != nil {
+		return utils.WrapError("Encode CellIndexUTRA_FDD_r16", err)
 	}
-	if err = ie.physCellId_r16.Encode(w); err != nil {
-		return utils.WrapError("Encode physCellId_r16", err)
+	if err = ie.PhysCellId_r16.Encode(w); err != nil {
+		return utils.WrapError("Encode PhysCellId_r16", err)
 	}
 	return nil
 }
 
 func (ie *CellsToAddModUTRA_FDD_r16) Decode(r *uper.UperReader) error {
 	var err error
-	if err = ie.cellIndexUTRA_FDD_r16.Decode(r); err != nil {
-		return utils.WrapError("Decode cellIndexUTRA_FDD_r16", err)
+	if err = ie.CellIndexUTRA_FDD_r16.Decode(r); err != nil {
+		return utils.WrapError("Decode CellIndexUTRA_FDD_r16", err)
 	}
-	if err = ie.physCellId_r16.Decode(r); err != nil {
-		return utils.WrapError("Decode physCellId_r16", err)
+	if err = ie.PhysCellId_r16.Decode(r); err != nil {
+		return utils.WrapError("Decode PhysCellId_r16", err)
 	}
 	return nil
 }

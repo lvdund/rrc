@@ -6,53 +6,53 @@ import (
 )
 
 type EventTriggerConfig_eventId_eventA3 struct {
-	a3_Offset          MeasTriggerQuantityOffset `madatory`
-	reportOnLeave      bool                      `madatory`
-	hysteresis         Hysteresis                `madatory`
-	timeToTrigger      TimeToTrigger             `madatory`
-	useAllowedCellList bool                      `madatory`
+	A3_Offset          MeasTriggerQuantityOffset `madatory`
+	ReportOnLeave      bool                      `madatory`
+	Hysteresis         Hysteresis                `madatory`
+	TimeToTrigger      TimeToTrigger             `madatory`
+	UseAllowedCellList bool                      `madatory`
 }
 
 func (ie *EventTriggerConfig_eventId_eventA3) Encode(w *uper.UperWriter) error {
 	var err error
-	if err = ie.a3_Offset.Encode(w); err != nil {
-		return utils.WrapError("Encode a3_Offset", err)
+	if err = ie.A3_Offset.Encode(w); err != nil {
+		return utils.WrapError("Encode A3_Offset", err)
 	}
-	if err = w.WriteBoolean(ie.reportOnLeave); err != nil {
-		return utils.WrapError("WriteBoolean reportOnLeave", err)
+	if err = w.WriteBoolean(ie.ReportOnLeave); err != nil {
+		return utils.WrapError("WriteBoolean ReportOnLeave", err)
 	}
-	if err = ie.hysteresis.Encode(w); err != nil {
-		return utils.WrapError("Encode hysteresis", err)
+	if err = ie.Hysteresis.Encode(w); err != nil {
+		return utils.WrapError("Encode Hysteresis", err)
 	}
-	if err = ie.timeToTrigger.Encode(w); err != nil {
-		return utils.WrapError("Encode timeToTrigger", err)
+	if err = ie.TimeToTrigger.Encode(w); err != nil {
+		return utils.WrapError("Encode TimeToTrigger", err)
 	}
-	if err = w.WriteBoolean(ie.useAllowedCellList); err != nil {
-		return utils.WrapError("WriteBoolean useAllowedCellList", err)
+	if err = w.WriteBoolean(ie.UseAllowedCellList); err != nil {
+		return utils.WrapError("WriteBoolean UseAllowedCellList", err)
 	}
 	return nil
 }
 
 func (ie *EventTriggerConfig_eventId_eventA3) Decode(r *uper.UperReader) error {
 	var err error
-	if err = ie.a3_Offset.Decode(r); err != nil {
-		return utils.WrapError("Decode a3_Offset", err)
+	if err = ie.A3_Offset.Decode(r); err != nil {
+		return utils.WrapError("Decode A3_Offset", err)
 	}
-	var tmp_bool_reportOnLeave bool
-	if tmp_bool_reportOnLeave, err = r.ReadBoolean(); err != nil {
-		return utils.WrapError("ReadBoolean reportOnLeave", err)
+	var tmp_bool_ReportOnLeave bool
+	if tmp_bool_ReportOnLeave, err = r.ReadBoolean(); err != nil {
+		return utils.WrapError("ReadBoolean ReportOnLeave", err)
 	}
-	ie.reportOnLeave = tmp_bool_reportOnLeave
-	if err = ie.hysteresis.Decode(r); err != nil {
-		return utils.WrapError("Decode hysteresis", err)
+	ie.ReportOnLeave = tmp_bool_ReportOnLeave
+	if err = ie.Hysteresis.Decode(r); err != nil {
+		return utils.WrapError("Decode Hysteresis", err)
 	}
-	if err = ie.timeToTrigger.Decode(r); err != nil {
-		return utils.WrapError("Decode timeToTrigger", err)
+	if err = ie.TimeToTrigger.Decode(r); err != nil {
+		return utils.WrapError("Decode TimeToTrigger", err)
 	}
-	var tmp_bool_useAllowedCellList bool
-	if tmp_bool_useAllowedCellList, err = r.ReadBoolean(); err != nil {
-		return utils.WrapError("ReadBoolean useAllowedCellList", err)
+	var tmp_bool_UseAllowedCellList bool
+	if tmp_bool_UseAllowedCellList, err = r.ReadBoolean(); err != nil {
+		return utils.WrapError("ReadBoolean UseAllowedCellList", err)
 	}
-	ie.useAllowedCellList = tmp_bool_useAllowedCellList
+	ie.UseAllowedCellList = tmp_bool_UseAllowedCellList
 	return nil
 }

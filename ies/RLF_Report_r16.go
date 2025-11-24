@@ -9,14 +9,14 @@ import (
 
 const (
 	RLF_Report_r16_Choice_nothing uint64 = iota
-	RLF_Report_r16_Choice_nr_RLF_Report_r16
-	RLF_Report_r16_Choice_eutra_RLF_Report_r16
+	RLF_Report_r16_Choice_Nr_RLF_Report_r16
+	RLF_Report_r16_Choice_Eutra_RLF_Report_r16
 )
 
 type RLF_Report_r16 struct {
 	Choice               uint64
-	nr_RLF_Report_r16    *RLF_Report_r16_nr_RLF_Report_r16
-	eutra_RLF_Report_r16 *RLF_Report_r16_eutra_RLF_Report_r16
+	Nr_RLF_Report_r16    *RLF_Report_r16_nr_RLF_Report_r16
+	Eutra_RLF_Report_r16 *RLF_Report_r16_eutra_RLF_Report_r16
 }
 
 func (ie *RLF_Report_r16) Encode(w *uper.UperWriter) error {
@@ -25,13 +25,13 @@ func (ie *RLF_Report_r16) Encode(w *uper.UperWriter) error {
 		return err
 	}
 	switch ie.Choice {
-	case RLF_Report_r16_Choice_nr_RLF_Report_r16:
-		if err = ie.nr_RLF_Report_r16.Encode(w); err != nil {
-			err = utils.WrapError("Encode nr_RLF_Report_r16", err)
+	case RLF_Report_r16_Choice_Nr_RLF_Report_r16:
+		if err = ie.Nr_RLF_Report_r16.Encode(w); err != nil {
+			err = utils.WrapError("Encode Nr_RLF_Report_r16", err)
 		}
-	case RLF_Report_r16_Choice_eutra_RLF_Report_r16:
-		if err = ie.eutra_RLF_Report_r16.Encode(w); err != nil {
-			err = utils.WrapError("Encode eutra_RLF_Report_r16", err)
+	case RLF_Report_r16_Choice_Eutra_RLF_Report_r16:
+		if err = ie.Eutra_RLF_Report_r16.Encode(w); err != nil {
+			err = utils.WrapError("Encode Eutra_RLF_Report_r16", err)
 		}
 	default:
 		err = fmt.Errorf("invalid choice: %d", ie.Choice)
@@ -45,15 +45,15 @@ func (ie *RLF_Report_r16) Decode(r *uper.UperReader) error {
 		return err
 	}
 	switch ie.Choice {
-	case RLF_Report_r16_Choice_nr_RLF_Report_r16:
-		ie.nr_RLF_Report_r16 = new(RLF_Report_r16_nr_RLF_Report_r16)
-		if err = ie.nr_RLF_Report_r16.Decode(r); err != nil {
-			return utils.WrapError("Decode nr_RLF_Report_r16", err)
+	case RLF_Report_r16_Choice_Nr_RLF_Report_r16:
+		ie.Nr_RLF_Report_r16 = new(RLF_Report_r16_nr_RLF_Report_r16)
+		if err = ie.Nr_RLF_Report_r16.Decode(r); err != nil {
+			return utils.WrapError("Decode Nr_RLF_Report_r16", err)
 		}
-	case RLF_Report_r16_Choice_eutra_RLF_Report_r16:
-		ie.eutra_RLF_Report_r16 = new(RLF_Report_r16_eutra_RLF_Report_r16)
-		if err = ie.eutra_RLF_Report_r16.Decode(r); err != nil {
-			return utils.WrapError("Decode eutra_RLF_Report_r16", err)
+	case RLF_Report_r16_Choice_Eutra_RLF_Report_r16:
+		ie.Eutra_RLF_Report_r16 = new(RLF_Report_r16_eutra_RLF_Report_r16)
+		if err = ie.Eutra_RLF_Report_r16.Decode(r); err != nil {
+			return utils.WrapError("Decode Eutra_RLF_Report_r16", err)
 		}
 	default:
 		return fmt.Errorf("invalid choice: %d", ie.Choice)

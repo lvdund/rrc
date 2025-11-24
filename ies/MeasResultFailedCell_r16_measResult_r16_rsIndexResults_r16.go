@@ -6,21 +6,21 @@ import (
 )
 
 type MeasResultFailedCell_r16_measResult_r16_rsIndexResults_r16 struct {
-	resultsSSB_Indexes_r16 ResultsPerSSB_IndexList `madatory`
+	ResultsSSB_Indexes_r16 ResultsPerSSB_IndexList `madatory`
 }
 
 func (ie *MeasResultFailedCell_r16_measResult_r16_rsIndexResults_r16) Encode(w *uper.UperWriter) error {
 	var err error
-	if err = ie.resultsSSB_Indexes_r16.Encode(w); err != nil {
-		return utils.WrapError("Encode resultsSSB_Indexes_r16", err)
+	if err = ie.ResultsSSB_Indexes_r16.Encode(w); err != nil {
+		return utils.WrapError("Encode ResultsSSB_Indexes_r16", err)
 	}
 	return nil
 }
 
 func (ie *MeasResultFailedCell_r16_measResult_r16_rsIndexResults_r16) Decode(r *uper.UperReader) error {
 	var err error
-	if err = ie.resultsSSB_Indexes_r16.Decode(r); err != nil {
-		return utils.WrapError("Decode resultsSSB_Indexes_r16", err)
+	if err = ie.ResultsSSB_Indexes_r16.Decode(r); err != nil {
+		return utils.WrapError("Decode ResultsSSB_Indexes_r16", err)
 	}
 	return nil
 }

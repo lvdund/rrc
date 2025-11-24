@@ -8,59 +8,59 @@ import (
 )
 
 type MAC_ParametersXDD_Diff struct {
-	skipUplinkTxDynamic                *MAC_ParametersXDD_Diff_skipUplinkTxDynamic                `optional`
-	logicalChannelSR_DelayTimer        *MAC_ParametersXDD_Diff_logicalChannelSR_DelayTimer        `optional`
-	longDRX_Cycle                      *MAC_ParametersXDD_Diff_longDRX_Cycle                      `optional`
-	shortDRX_Cycle                     *MAC_ParametersXDD_Diff_shortDRX_Cycle                     `optional`
-	multipleSR_Configurations          *MAC_ParametersXDD_Diff_multipleSR_Configurations          `optional`
-	multipleConfiguredGrants           *MAC_ParametersXDD_Diff_multipleConfiguredGrants           `optional`
-	secondaryDRX_Group_r16             *MAC_ParametersXDD_Diff_secondaryDRX_Group_r16             `optional,ext-1`
-	enhancedSkipUplinkTxDynamic_r16    *MAC_ParametersXDD_Diff_enhancedSkipUplinkTxDynamic_r16    `optional,ext-2`
-	enhancedSkipUplinkTxConfigured_r16 *MAC_ParametersXDD_Diff_enhancedSkipUplinkTxConfigured_r16 `optional,ext-2`
+	SkipUplinkTxDynamic                *MAC_ParametersXDD_Diff_skipUplinkTxDynamic                `optional`
+	LogicalChannelSR_DelayTimer        *MAC_ParametersXDD_Diff_logicalChannelSR_DelayTimer        `optional`
+	LongDRX_Cycle                      *MAC_ParametersXDD_Diff_longDRX_Cycle                      `optional`
+	ShortDRX_Cycle                     *MAC_ParametersXDD_Diff_shortDRX_Cycle                     `optional`
+	MultipleSR_Configurations          *MAC_ParametersXDD_Diff_multipleSR_Configurations          `optional`
+	MultipleConfiguredGrants           *MAC_ParametersXDD_Diff_multipleConfiguredGrants           `optional`
+	SecondaryDRX_Group_r16             *MAC_ParametersXDD_Diff_secondaryDRX_Group_r16             `optional,ext-1`
+	EnhancedSkipUplinkTxDynamic_r16    *MAC_ParametersXDD_Diff_enhancedSkipUplinkTxDynamic_r16    `optional,ext-2`
+	EnhancedSkipUplinkTxConfigured_r16 *MAC_ParametersXDD_Diff_enhancedSkipUplinkTxConfigured_r16 `optional,ext-2`
 }
 
 func (ie *MAC_ParametersXDD_Diff) Encode(w *uper.UperWriter) error {
 	var err error
-	hasExtensions := ie.secondaryDRX_Group_r16 != nil || ie.enhancedSkipUplinkTxDynamic_r16 != nil || ie.enhancedSkipUplinkTxConfigured_r16 != nil
-	preambleBits := []bool{hasExtensions, ie.skipUplinkTxDynamic != nil, ie.logicalChannelSR_DelayTimer != nil, ie.longDRX_Cycle != nil, ie.shortDRX_Cycle != nil, ie.multipleSR_Configurations != nil, ie.multipleConfiguredGrants != nil}
+	hasExtensions := ie.SecondaryDRX_Group_r16 != nil || ie.EnhancedSkipUplinkTxDynamic_r16 != nil || ie.EnhancedSkipUplinkTxConfigured_r16 != nil
+	preambleBits := []bool{hasExtensions, ie.SkipUplinkTxDynamic != nil, ie.LogicalChannelSR_DelayTimer != nil, ie.LongDRX_Cycle != nil, ie.ShortDRX_Cycle != nil, ie.MultipleSR_Configurations != nil, ie.MultipleConfiguredGrants != nil}
 	for _, bit := range preambleBits {
 		if err = w.WriteBool(bit); err != nil {
 			return err
 		}
 	}
-	if ie.skipUplinkTxDynamic != nil {
-		if err = ie.skipUplinkTxDynamic.Encode(w); err != nil {
-			return utils.WrapError("Encode skipUplinkTxDynamic", err)
+	if ie.SkipUplinkTxDynamic != nil {
+		if err = ie.SkipUplinkTxDynamic.Encode(w); err != nil {
+			return utils.WrapError("Encode SkipUplinkTxDynamic", err)
 		}
 	}
-	if ie.logicalChannelSR_DelayTimer != nil {
-		if err = ie.logicalChannelSR_DelayTimer.Encode(w); err != nil {
-			return utils.WrapError("Encode logicalChannelSR_DelayTimer", err)
+	if ie.LogicalChannelSR_DelayTimer != nil {
+		if err = ie.LogicalChannelSR_DelayTimer.Encode(w); err != nil {
+			return utils.WrapError("Encode LogicalChannelSR_DelayTimer", err)
 		}
 	}
-	if ie.longDRX_Cycle != nil {
-		if err = ie.longDRX_Cycle.Encode(w); err != nil {
-			return utils.WrapError("Encode longDRX_Cycle", err)
+	if ie.LongDRX_Cycle != nil {
+		if err = ie.LongDRX_Cycle.Encode(w); err != nil {
+			return utils.WrapError("Encode LongDRX_Cycle", err)
 		}
 	}
-	if ie.shortDRX_Cycle != nil {
-		if err = ie.shortDRX_Cycle.Encode(w); err != nil {
-			return utils.WrapError("Encode shortDRX_Cycle", err)
+	if ie.ShortDRX_Cycle != nil {
+		if err = ie.ShortDRX_Cycle.Encode(w); err != nil {
+			return utils.WrapError("Encode ShortDRX_Cycle", err)
 		}
 	}
-	if ie.multipleSR_Configurations != nil {
-		if err = ie.multipleSR_Configurations.Encode(w); err != nil {
-			return utils.WrapError("Encode multipleSR_Configurations", err)
+	if ie.MultipleSR_Configurations != nil {
+		if err = ie.MultipleSR_Configurations.Encode(w); err != nil {
+			return utils.WrapError("Encode MultipleSR_Configurations", err)
 		}
 	}
-	if ie.multipleConfiguredGrants != nil {
-		if err = ie.multipleConfiguredGrants.Encode(w); err != nil {
-			return utils.WrapError("Encode multipleConfiguredGrants", err)
+	if ie.MultipleConfiguredGrants != nil {
+		if err = ie.MultipleConfiguredGrants.Encode(w); err != nil {
+			return utils.WrapError("Encode MultipleConfiguredGrants", err)
 		}
 	}
 	if hasExtensions {
 		// Extension bitmap: 2 bits for 2 extension groups
-		extBitmap := []bool{ie.secondaryDRX_Group_r16 != nil, ie.enhancedSkipUplinkTxDynamic_r16 != nil || ie.enhancedSkipUplinkTxConfigured_r16 != nil}
+		extBitmap := []bool{ie.SecondaryDRX_Group_r16 != nil, ie.EnhancedSkipUplinkTxDynamic_r16 != nil || ie.EnhancedSkipUplinkTxConfigured_r16 != nil}
 		if err := w.WriteExtBitMap(extBitmap); err != nil {
 			return utils.WrapError("WriteExtBitMap MAC_ParametersXDD_Diff", err)
 		}
@@ -71,17 +71,17 @@ func (ie *MAC_ParametersXDD_Diff) Encode(w *uper.UperWriter) error {
 			extWriter := uper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 1
-			optionals_ext_1 := []bool{ie.secondaryDRX_Group_r16 != nil}
+			optionals_ext_1 := []bool{ie.SecondaryDRX_Group_r16 != nil}
 			for _, bit := range optionals_ext_1 {
 				if err := extWriter.WriteBool(bit); err != nil {
 					return err
 				}
 			}
 
-			// encode secondaryDRX_Group_r16 optional
-			if ie.secondaryDRX_Group_r16 != nil {
-				if err = ie.secondaryDRX_Group_r16.Encode(extWriter); err != nil {
-					return utils.WrapError("Encode secondaryDRX_Group_r16", err)
+			// encode SecondaryDRX_Group_r16 optional
+			if ie.SecondaryDRX_Group_r16 != nil {
+				if err = ie.SecondaryDRX_Group_r16.Encode(extWriter); err != nil {
+					return utils.WrapError("Encode SecondaryDRX_Group_r16", err)
 				}
 			}
 
@@ -100,23 +100,23 @@ func (ie *MAC_ParametersXDD_Diff) Encode(w *uper.UperWriter) error {
 			extWriter := uper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 2
-			optionals_ext_2 := []bool{ie.enhancedSkipUplinkTxDynamic_r16 != nil, ie.enhancedSkipUplinkTxConfigured_r16 != nil}
+			optionals_ext_2 := []bool{ie.EnhancedSkipUplinkTxDynamic_r16 != nil, ie.EnhancedSkipUplinkTxConfigured_r16 != nil}
 			for _, bit := range optionals_ext_2 {
 				if err := extWriter.WriteBool(bit); err != nil {
 					return err
 				}
 			}
 
-			// encode enhancedSkipUplinkTxDynamic_r16 optional
-			if ie.enhancedSkipUplinkTxDynamic_r16 != nil {
-				if err = ie.enhancedSkipUplinkTxDynamic_r16.Encode(extWriter); err != nil {
-					return utils.WrapError("Encode enhancedSkipUplinkTxDynamic_r16", err)
+			// encode EnhancedSkipUplinkTxDynamic_r16 optional
+			if ie.EnhancedSkipUplinkTxDynamic_r16 != nil {
+				if err = ie.EnhancedSkipUplinkTxDynamic_r16.Encode(extWriter); err != nil {
+					return utils.WrapError("Encode EnhancedSkipUplinkTxDynamic_r16", err)
 				}
 			}
-			// encode enhancedSkipUplinkTxConfigured_r16 optional
-			if ie.enhancedSkipUplinkTxConfigured_r16 != nil {
-				if err = ie.enhancedSkipUplinkTxConfigured_r16.Encode(extWriter); err != nil {
-					return utils.WrapError("Encode enhancedSkipUplinkTxConfigured_r16", err)
+			// encode EnhancedSkipUplinkTxConfigured_r16 optional
+			if ie.EnhancedSkipUplinkTxConfigured_r16 != nil {
+				if err = ie.EnhancedSkipUplinkTxConfigured_r16.Encode(extWriter); err != nil {
+					return utils.WrapError("Encode EnhancedSkipUplinkTxConfigured_r16", err)
 				}
 			}
 
@@ -138,64 +138,64 @@ func (ie *MAC_ParametersXDD_Diff) Decode(r *uper.UperReader) error {
 	if extensionBit, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var skipUplinkTxDynamicPresent bool
-	if skipUplinkTxDynamicPresent, err = r.ReadBool(); err != nil {
+	var SkipUplinkTxDynamicPresent bool
+	if SkipUplinkTxDynamicPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var logicalChannelSR_DelayTimerPresent bool
-	if logicalChannelSR_DelayTimerPresent, err = r.ReadBool(); err != nil {
+	var LogicalChannelSR_DelayTimerPresent bool
+	if LogicalChannelSR_DelayTimerPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var longDRX_CyclePresent bool
-	if longDRX_CyclePresent, err = r.ReadBool(); err != nil {
+	var LongDRX_CyclePresent bool
+	if LongDRX_CyclePresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var shortDRX_CyclePresent bool
-	if shortDRX_CyclePresent, err = r.ReadBool(); err != nil {
+	var ShortDRX_CyclePresent bool
+	if ShortDRX_CyclePresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var multipleSR_ConfigurationsPresent bool
-	if multipleSR_ConfigurationsPresent, err = r.ReadBool(); err != nil {
+	var MultipleSR_ConfigurationsPresent bool
+	if MultipleSR_ConfigurationsPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var multipleConfiguredGrantsPresent bool
-	if multipleConfiguredGrantsPresent, err = r.ReadBool(); err != nil {
+	var MultipleConfiguredGrantsPresent bool
+	if MultipleConfiguredGrantsPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	if skipUplinkTxDynamicPresent {
-		ie.skipUplinkTxDynamic = new(MAC_ParametersXDD_Diff_skipUplinkTxDynamic)
-		if err = ie.skipUplinkTxDynamic.Decode(r); err != nil {
-			return utils.WrapError("Decode skipUplinkTxDynamic", err)
+	if SkipUplinkTxDynamicPresent {
+		ie.SkipUplinkTxDynamic = new(MAC_ParametersXDD_Diff_skipUplinkTxDynamic)
+		if err = ie.SkipUplinkTxDynamic.Decode(r); err != nil {
+			return utils.WrapError("Decode SkipUplinkTxDynamic", err)
 		}
 	}
-	if logicalChannelSR_DelayTimerPresent {
-		ie.logicalChannelSR_DelayTimer = new(MAC_ParametersXDD_Diff_logicalChannelSR_DelayTimer)
-		if err = ie.logicalChannelSR_DelayTimer.Decode(r); err != nil {
-			return utils.WrapError("Decode logicalChannelSR_DelayTimer", err)
+	if LogicalChannelSR_DelayTimerPresent {
+		ie.LogicalChannelSR_DelayTimer = new(MAC_ParametersXDD_Diff_logicalChannelSR_DelayTimer)
+		if err = ie.LogicalChannelSR_DelayTimer.Decode(r); err != nil {
+			return utils.WrapError("Decode LogicalChannelSR_DelayTimer", err)
 		}
 	}
-	if longDRX_CyclePresent {
-		ie.longDRX_Cycle = new(MAC_ParametersXDD_Diff_longDRX_Cycle)
-		if err = ie.longDRX_Cycle.Decode(r); err != nil {
-			return utils.WrapError("Decode longDRX_Cycle", err)
+	if LongDRX_CyclePresent {
+		ie.LongDRX_Cycle = new(MAC_ParametersXDD_Diff_longDRX_Cycle)
+		if err = ie.LongDRX_Cycle.Decode(r); err != nil {
+			return utils.WrapError("Decode LongDRX_Cycle", err)
 		}
 	}
-	if shortDRX_CyclePresent {
-		ie.shortDRX_Cycle = new(MAC_ParametersXDD_Diff_shortDRX_Cycle)
-		if err = ie.shortDRX_Cycle.Decode(r); err != nil {
-			return utils.WrapError("Decode shortDRX_Cycle", err)
+	if ShortDRX_CyclePresent {
+		ie.ShortDRX_Cycle = new(MAC_ParametersXDD_Diff_shortDRX_Cycle)
+		if err = ie.ShortDRX_Cycle.Decode(r); err != nil {
+			return utils.WrapError("Decode ShortDRX_Cycle", err)
 		}
 	}
-	if multipleSR_ConfigurationsPresent {
-		ie.multipleSR_Configurations = new(MAC_ParametersXDD_Diff_multipleSR_Configurations)
-		if err = ie.multipleSR_Configurations.Decode(r); err != nil {
-			return utils.WrapError("Decode multipleSR_Configurations", err)
+	if MultipleSR_ConfigurationsPresent {
+		ie.MultipleSR_Configurations = new(MAC_ParametersXDD_Diff_multipleSR_Configurations)
+		if err = ie.MultipleSR_Configurations.Decode(r); err != nil {
+			return utils.WrapError("Decode MultipleSR_Configurations", err)
 		}
 	}
-	if multipleConfiguredGrantsPresent {
-		ie.multipleConfiguredGrants = new(MAC_ParametersXDD_Diff_multipleConfiguredGrants)
-		if err = ie.multipleConfiguredGrants.Decode(r); err != nil {
-			return utils.WrapError("Decode multipleConfiguredGrants", err)
+	if MultipleConfiguredGrantsPresent {
+		ie.MultipleConfiguredGrants = new(MAC_ParametersXDD_Diff_multipleConfiguredGrants)
+		if err = ie.MultipleConfiguredGrants.Decode(r); err != nil {
+			return utils.WrapError("Decode MultipleConfiguredGrants", err)
 		}
 	}
 
@@ -215,15 +215,15 @@ func (ie *MAC_ParametersXDD_Diff) Decode(r *uper.UperReader) error {
 
 			extReader := uper.NewReader(bytes.NewReader(extBytes))
 
-			secondaryDRX_Group_r16Present, err := extReader.ReadBool()
+			SecondaryDRX_Group_r16Present, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			// decode secondaryDRX_Group_r16 optional
-			if secondaryDRX_Group_r16Present {
-				ie.secondaryDRX_Group_r16 = new(MAC_ParametersXDD_Diff_secondaryDRX_Group_r16)
-				if err = ie.secondaryDRX_Group_r16.Decode(extReader); err != nil {
-					return utils.WrapError("Decode secondaryDRX_Group_r16", err)
+			// decode SecondaryDRX_Group_r16 optional
+			if SecondaryDRX_Group_r16Present {
+				ie.SecondaryDRX_Group_r16 = new(MAC_ParametersXDD_Diff_secondaryDRX_Group_r16)
+				if err = ie.SecondaryDRX_Group_r16.Decode(extReader); err != nil {
+					return utils.WrapError("Decode SecondaryDRX_Group_r16", err)
 				}
 			}
 		}
@@ -236,26 +236,26 @@ func (ie *MAC_ParametersXDD_Diff) Decode(r *uper.UperReader) error {
 
 			extReader := uper.NewReader(bytes.NewReader(extBytes))
 
-			enhancedSkipUplinkTxDynamic_r16Present, err := extReader.ReadBool()
+			EnhancedSkipUplinkTxDynamic_r16Present, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			enhancedSkipUplinkTxConfigured_r16Present, err := extReader.ReadBool()
+			EnhancedSkipUplinkTxConfigured_r16Present, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			// decode enhancedSkipUplinkTxDynamic_r16 optional
-			if enhancedSkipUplinkTxDynamic_r16Present {
-				ie.enhancedSkipUplinkTxDynamic_r16 = new(MAC_ParametersXDD_Diff_enhancedSkipUplinkTxDynamic_r16)
-				if err = ie.enhancedSkipUplinkTxDynamic_r16.Decode(extReader); err != nil {
-					return utils.WrapError("Decode enhancedSkipUplinkTxDynamic_r16", err)
+			// decode EnhancedSkipUplinkTxDynamic_r16 optional
+			if EnhancedSkipUplinkTxDynamic_r16Present {
+				ie.EnhancedSkipUplinkTxDynamic_r16 = new(MAC_ParametersXDD_Diff_enhancedSkipUplinkTxDynamic_r16)
+				if err = ie.EnhancedSkipUplinkTxDynamic_r16.Decode(extReader); err != nil {
+					return utils.WrapError("Decode EnhancedSkipUplinkTxDynamic_r16", err)
 				}
 			}
-			// decode enhancedSkipUplinkTxConfigured_r16 optional
-			if enhancedSkipUplinkTxConfigured_r16Present {
-				ie.enhancedSkipUplinkTxConfigured_r16 = new(MAC_ParametersXDD_Diff_enhancedSkipUplinkTxConfigured_r16)
-				if err = ie.enhancedSkipUplinkTxConfigured_r16.Decode(extReader); err != nil {
-					return utils.WrapError("Decode enhancedSkipUplinkTxConfigured_r16", err)
+			// decode EnhancedSkipUplinkTxConfigured_r16 optional
+			if EnhancedSkipUplinkTxConfigured_r16Present {
+				ie.EnhancedSkipUplinkTxConfigured_r16 = new(MAC_ParametersXDD_Diff_enhancedSkipUplinkTxConfigured_r16)
+				if err = ie.EnhancedSkipUplinkTxConfigured_r16.Decode(extReader); err != nil {
+					return utils.WrapError("Decode EnhancedSkipUplinkTxConfigured_r16", err)
 				}
 			}
 		}

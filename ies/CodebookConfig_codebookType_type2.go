@@ -6,59 +6,59 @@ import (
 )
 
 type CodebookConfig_codebookType_type2 struct {
-	subType           *CodebookConfig_codebookType_type2_subType          `lb:16,ub:16,optional`
-	phaseAlphabetSize CodebookConfig_codebookType_type2_phaseAlphabetSize `madatory`
-	subbandAmplitude  bool                                                `madatory`
-	numberOfBeams     CodebookConfig_codebookType_type2_numberOfBeams     `madatory`
+	SubType           *CodebookConfig_codebookType_type2_subType          `lb:16,ub:16,optional`
+	PhaseAlphabetSize CodebookConfig_codebookType_type2_phaseAlphabetSize `madatory`
+	SubbandAmplitude  bool                                                `madatory`
+	NumberOfBeams     CodebookConfig_codebookType_type2_numberOfBeams     `madatory`
 }
 
 func (ie *CodebookConfig_codebookType_type2) Encode(w *uper.UperWriter) error {
 	var err error
-	preambleBits := []bool{ie.subType != nil}
+	preambleBits := []bool{ie.SubType != nil}
 	for _, bit := range preambleBits {
 		if err = w.WriteBool(bit); err != nil {
 			return err
 		}
 	}
-	if ie.subType != nil {
-		if err = ie.subType.Encode(w); err != nil {
-			return utils.WrapError("Encode subType", err)
+	if ie.SubType != nil {
+		if err = ie.SubType.Encode(w); err != nil {
+			return utils.WrapError("Encode SubType", err)
 		}
 	}
-	if err = ie.phaseAlphabetSize.Encode(w); err != nil {
-		return utils.WrapError("Encode phaseAlphabetSize", err)
+	if err = ie.PhaseAlphabetSize.Encode(w); err != nil {
+		return utils.WrapError("Encode PhaseAlphabetSize", err)
 	}
-	if err = w.WriteBoolean(ie.subbandAmplitude); err != nil {
-		return utils.WrapError("WriteBoolean subbandAmplitude", err)
+	if err = w.WriteBoolean(ie.SubbandAmplitude); err != nil {
+		return utils.WrapError("WriteBoolean SubbandAmplitude", err)
 	}
-	if err = ie.numberOfBeams.Encode(w); err != nil {
-		return utils.WrapError("Encode numberOfBeams", err)
+	if err = ie.NumberOfBeams.Encode(w); err != nil {
+		return utils.WrapError("Encode NumberOfBeams", err)
 	}
 	return nil
 }
 
 func (ie *CodebookConfig_codebookType_type2) Decode(r *uper.UperReader) error {
 	var err error
-	var subTypePresent bool
-	if subTypePresent, err = r.ReadBool(); err != nil {
+	var SubTypePresent bool
+	if SubTypePresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	if subTypePresent {
-		ie.subType = new(CodebookConfig_codebookType_type2_subType)
-		if err = ie.subType.Decode(r); err != nil {
-			return utils.WrapError("Decode subType", err)
+	if SubTypePresent {
+		ie.SubType = new(CodebookConfig_codebookType_type2_subType)
+		if err = ie.SubType.Decode(r); err != nil {
+			return utils.WrapError("Decode SubType", err)
 		}
 	}
-	if err = ie.phaseAlphabetSize.Decode(r); err != nil {
-		return utils.WrapError("Decode phaseAlphabetSize", err)
+	if err = ie.PhaseAlphabetSize.Decode(r); err != nil {
+		return utils.WrapError("Decode PhaseAlphabetSize", err)
 	}
-	var tmp_bool_subbandAmplitude bool
-	if tmp_bool_subbandAmplitude, err = r.ReadBoolean(); err != nil {
-		return utils.WrapError("ReadBoolean subbandAmplitude", err)
+	var tmp_bool_SubbandAmplitude bool
+	if tmp_bool_SubbandAmplitude, err = r.ReadBoolean(); err != nil {
+		return utils.WrapError("ReadBoolean SubbandAmplitude", err)
 	}
-	ie.subbandAmplitude = tmp_bool_subbandAmplitude
-	if err = ie.numberOfBeams.Decode(r); err != nil {
-		return utils.WrapError("Decode numberOfBeams", err)
+	ie.SubbandAmplitude = tmp_bool_SubbandAmplitude
+	if err = ie.NumberOfBeams.Decode(r); err != nil {
+		return utils.WrapError("Decode NumberOfBeams", err)
 	}
 	return nil
 }

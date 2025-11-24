@@ -9,14 +9,14 @@ import (
 
 const (
 	PDSCH_Config_prb_BundlingType_Choice_nothing uint64 = iota
-	PDSCH_Config_prb_BundlingType_Choice_staticBundling
-	PDSCH_Config_prb_BundlingType_Choice_dynamicBundling
+	PDSCH_Config_prb_BundlingType_Choice_StaticBundling
+	PDSCH_Config_prb_BundlingType_Choice_DynamicBundling
 )
 
 type PDSCH_Config_prb_BundlingType struct {
 	Choice          uint64
-	staticBundling  *PDSCH_Config_prb_BundlingType_staticBundling
-	dynamicBundling *PDSCH_Config_prb_BundlingType_dynamicBundling
+	StaticBundling  *PDSCH_Config_prb_BundlingType_staticBundling
+	DynamicBundling *PDSCH_Config_prb_BundlingType_dynamicBundling
 }
 
 func (ie *PDSCH_Config_prb_BundlingType) Encode(w *uper.UperWriter) error {
@@ -25,13 +25,13 @@ func (ie *PDSCH_Config_prb_BundlingType) Encode(w *uper.UperWriter) error {
 		return err
 	}
 	switch ie.Choice {
-	case PDSCH_Config_prb_BundlingType_Choice_staticBundling:
-		if err = ie.staticBundling.Encode(w); err != nil {
-			err = utils.WrapError("Encode staticBundling", err)
+	case PDSCH_Config_prb_BundlingType_Choice_StaticBundling:
+		if err = ie.StaticBundling.Encode(w); err != nil {
+			err = utils.WrapError("Encode StaticBundling", err)
 		}
-	case PDSCH_Config_prb_BundlingType_Choice_dynamicBundling:
-		if err = ie.dynamicBundling.Encode(w); err != nil {
-			err = utils.WrapError("Encode dynamicBundling", err)
+	case PDSCH_Config_prb_BundlingType_Choice_DynamicBundling:
+		if err = ie.DynamicBundling.Encode(w); err != nil {
+			err = utils.WrapError("Encode DynamicBundling", err)
 		}
 	default:
 		err = fmt.Errorf("invalid choice: %d", ie.Choice)
@@ -45,15 +45,15 @@ func (ie *PDSCH_Config_prb_BundlingType) Decode(r *uper.UperReader) error {
 		return err
 	}
 	switch ie.Choice {
-	case PDSCH_Config_prb_BundlingType_Choice_staticBundling:
-		ie.staticBundling = new(PDSCH_Config_prb_BundlingType_staticBundling)
-		if err = ie.staticBundling.Decode(r); err != nil {
-			return utils.WrapError("Decode staticBundling", err)
+	case PDSCH_Config_prb_BundlingType_Choice_StaticBundling:
+		ie.StaticBundling = new(PDSCH_Config_prb_BundlingType_staticBundling)
+		if err = ie.StaticBundling.Decode(r); err != nil {
+			return utils.WrapError("Decode StaticBundling", err)
 		}
-	case PDSCH_Config_prb_BundlingType_Choice_dynamicBundling:
-		ie.dynamicBundling = new(PDSCH_Config_prb_BundlingType_dynamicBundling)
-		if err = ie.dynamicBundling.Decode(r); err != nil {
-			return utils.WrapError("Decode dynamicBundling", err)
+	case PDSCH_Config_prb_BundlingType_Choice_DynamicBundling:
+		ie.DynamicBundling = new(PDSCH_Config_prb_BundlingType_dynamicBundling)
+		if err = ie.DynamicBundling.Decode(r); err != nil {
+			return utils.WrapError("Decode DynamicBundling", err)
 		}
 	default:
 		return fmt.Errorf("invalid choice: %d", ie.Choice)

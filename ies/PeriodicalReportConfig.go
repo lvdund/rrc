@@ -8,70 +8,70 @@ import (
 )
 
 type PeriodicalReportConfig struct {
-	rsType                        NR_RS_Type                                            `madatory`
-	reportInterval                ReportInterval                                        `madatory`
-	reportAmount                  PeriodicalReportConfig_reportAmount                   `madatory`
-	reportQuantityCell            MeasReportQuantity                                    `madatory`
-	maxReportCells                int64                                                 `lb:1,ub:maxCellReport,madatory`
-	reportQuantityRS_Indexes      *MeasReportQuantity                                   `optional`
-	maxNrofRS_IndexesToReport     *int64                                                `lb:1,ub:maxNrofIndexesToReport,optional`
-	includeBeamMeasurements       bool                                                  `madatory`
-	useAllowedCellList            bool                                                  `madatory`
-	measRSSI_ReportConfig_r16     *MeasRSSI_ReportConfig_r16                            `optional,ext-1`
-	includeCommonLocationInfo_r16 *PeriodicalReportConfig_includeCommonLocationInfo_r16 `optional,ext-1`
-	includeBT_Meas_r16            *BT_NameList_r16                                      `optional,ext-1,setuprelease`
-	includeWLAN_Meas_r16          *WLAN_NameList_r16                                    `optional,ext-1,setuprelease`
-	includeSensor_Meas_r16        *Sensor_NameList_r16                                  `optional,ext-1,setuprelease`
-	ul_DelayValueConfig_r16       *UL_DelayValueConfig_r16                              `optional,ext-1,setuprelease`
-	reportAddNeighMeas_r16        *PeriodicalReportConfig_reportAddNeighMeas_r16        `optional,ext-1`
-	ul_ExcessDelayConfig_r17      *UL_ExcessDelayConfig_r17                             `optional,ext-2,setuprelease`
-	coarseLocationRequest_r17     *PeriodicalReportConfig_coarseLocationRequest_r17     `optional,ext-2`
-	reportQuantityRelay_r17       *SL_MeasReportQuantity_r16                            `optional,ext-2`
+	RsType                        NR_RS_Type                                            `madatory`
+	ReportInterval                ReportInterval                                        `madatory`
+	ReportAmount                  PeriodicalReportConfig_reportAmount                   `madatory`
+	ReportQuantityCell            MeasReportQuantity                                    `madatory`
+	MaxReportCells                int64                                                 `lb:1,ub:maxCellReport,madatory`
+	ReportQuantityRS_Indexes      *MeasReportQuantity                                   `optional`
+	MaxNrofRS_IndexesToReport     *int64                                                `lb:1,ub:maxNrofIndexesToReport,optional`
+	IncludeBeamMeasurements       bool                                                  `madatory`
+	UseAllowedCellList            bool                                                  `madatory`
+	MeasRSSI_ReportConfig_r16     *MeasRSSI_ReportConfig_r16                            `optional,ext-1`
+	IncludeCommonLocationInfo_r16 *PeriodicalReportConfig_includeCommonLocationInfo_r16 `optional,ext-1`
+	IncludeBT_Meas_r16            *BT_NameList_r16                                      `optional,ext-1,setuprelease`
+	IncludeWLAN_Meas_r16          *WLAN_NameList_r16                                    `optional,ext-1,setuprelease`
+	IncludeSensor_Meas_r16        *Sensor_NameList_r16                                  `optional,ext-1,setuprelease`
+	Ul_DelayValueConfig_r16       *UL_DelayValueConfig_r16                              `optional,ext-1,setuprelease`
+	ReportAddNeighMeas_r16        *PeriodicalReportConfig_reportAddNeighMeas_r16        `optional,ext-1`
+	Ul_ExcessDelayConfig_r17      *UL_ExcessDelayConfig_r17                             `optional,ext-2,setuprelease`
+	CoarseLocationRequest_r17     *PeriodicalReportConfig_coarseLocationRequest_r17     `optional,ext-2`
+	ReportQuantityRelay_r17       *SL_MeasReportQuantity_r16                            `optional,ext-2`
 }
 
 func (ie *PeriodicalReportConfig) Encode(w *uper.UperWriter) error {
 	var err error
-	hasExtensions := ie.measRSSI_ReportConfig_r16 != nil || ie.includeCommonLocationInfo_r16 != nil || ie.includeBT_Meas_r16 != nil || ie.includeWLAN_Meas_r16 != nil || ie.includeSensor_Meas_r16 != nil || ie.ul_DelayValueConfig_r16 != nil || ie.reportAddNeighMeas_r16 != nil || ie.ul_ExcessDelayConfig_r17 != nil || ie.coarseLocationRequest_r17 != nil || ie.reportQuantityRelay_r17 != nil
-	preambleBits := []bool{hasExtensions, ie.reportQuantityRS_Indexes != nil, ie.maxNrofRS_IndexesToReport != nil}
+	hasExtensions := ie.MeasRSSI_ReportConfig_r16 != nil || ie.IncludeCommonLocationInfo_r16 != nil || ie.IncludeBT_Meas_r16 != nil || ie.IncludeWLAN_Meas_r16 != nil || ie.IncludeSensor_Meas_r16 != nil || ie.Ul_DelayValueConfig_r16 != nil || ie.ReportAddNeighMeas_r16 != nil || ie.Ul_ExcessDelayConfig_r17 != nil || ie.CoarseLocationRequest_r17 != nil || ie.ReportQuantityRelay_r17 != nil
+	preambleBits := []bool{hasExtensions, ie.ReportQuantityRS_Indexes != nil, ie.MaxNrofRS_IndexesToReport != nil}
 	for _, bit := range preambleBits {
 		if err = w.WriteBool(bit); err != nil {
 			return err
 		}
 	}
-	if err = ie.rsType.Encode(w); err != nil {
-		return utils.WrapError("Encode rsType", err)
+	if err = ie.RsType.Encode(w); err != nil {
+		return utils.WrapError("Encode RsType", err)
 	}
-	if err = ie.reportInterval.Encode(w); err != nil {
-		return utils.WrapError("Encode reportInterval", err)
+	if err = ie.ReportInterval.Encode(w); err != nil {
+		return utils.WrapError("Encode ReportInterval", err)
 	}
-	if err = ie.reportAmount.Encode(w); err != nil {
-		return utils.WrapError("Encode reportAmount", err)
+	if err = ie.ReportAmount.Encode(w); err != nil {
+		return utils.WrapError("Encode ReportAmount", err)
 	}
-	if err = ie.reportQuantityCell.Encode(w); err != nil {
-		return utils.WrapError("Encode reportQuantityCell", err)
+	if err = ie.ReportQuantityCell.Encode(w); err != nil {
+		return utils.WrapError("Encode ReportQuantityCell", err)
 	}
-	if err = w.WriteInteger(ie.maxReportCells, &uper.Constraint{Lb: 1, Ub: maxCellReport}, false); err != nil {
-		return utils.WrapError("WriteInteger maxReportCells", err)
+	if err = w.WriteInteger(ie.MaxReportCells, &uper.Constraint{Lb: 1, Ub: maxCellReport}, false); err != nil {
+		return utils.WrapError("WriteInteger MaxReportCells", err)
 	}
-	if ie.reportQuantityRS_Indexes != nil {
-		if err = ie.reportQuantityRS_Indexes.Encode(w); err != nil {
-			return utils.WrapError("Encode reportQuantityRS_Indexes", err)
+	if ie.ReportQuantityRS_Indexes != nil {
+		if err = ie.ReportQuantityRS_Indexes.Encode(w); err != nil {
+			return utils.WrapError("Encode ReportQuantityRS_Indexes", err)
 		}
 	}
-	if ie.maxNrofRS_IndexesToReport != nil {
-		if err = w.WriteInteger(*ie.maxNrofRS_IndexesToReport, &uper.Constraint{Lb: 1, Ub: maxNrofIndexesToReport}, false); err != nil {
-			return utils.WrapError("Encode maxNrofRS_IndexesToReport", err)
+	if ie.MaxNrofRS_IndexesToReport != nil {
+		if err = w.WriteInteger(*ie.MaxNrofRS_IndexesToReport, &uper.Constraint{Lb: 1, Ub: maxNrofIndexesToReport}, false); err != nil {
+			return utils.WrapError("Encode MaxNrofRS_IndexesToReport", err)
 		}
 	}
-	if err = w.WriteBoolean(ie.includeBeamMeasurements); err != nil {
-		return utils.WrapError("WriteBoolean includeBeamMeasurements", err)
+	if err = w.WriteBoolean(ie.IncludeBeamMeasurements); err != nil {
+		return utils.WrapError("WriteBoolean IncludeBeamMeasurements", err)
 	}
-	if err = w.WriteBoolean(ie.useAllowedCellList); err != nil {
-		return utils.WrapError("WriteBoolean useAllowedCellList", err)
+	if err = w.WriteBoolean(ie.UseAllowedCellList); err != nil {
+		return utils.WrapError("WriteBoolean UseAllowedCellList", err)
 	}
 	if hasExtensions {
 		// Extension bitmap: 2 bits for 2 extension groups
-		extBitmap := []bool{ie.measRSSI_ReportConfig_r16 != nil || ie.includeCommonLocationInfo_r16 != nil || ie.includeBT_Meas_r16 != nil || ie.includeWLAN_Meas_r16 != nil || ie.includeSensor_Meas_r16 != nil || ie.ul_DelayValueConfig_r16 != nil || ie.reportAddNeighMeas_r16 != nil, ie.ul_ExcessDelayConfig_r17 != nil || ie.coarseLocationRequest_r17 != nil || ie.reportQuantityRelay_r17 != nil}
+		extBitmap := []bool{ie.MeasRSSI_ReportConfig_r16 != nil || ie.IncludeCommonLocationInfo_r16 != nil || ie.IncludeBT_Meas_r16 != nil || ie.IncludeWLAN_Meas_r16 != nil || ie.IncludeSensor_Meas_r16 != nil || ie.Ul_DelayValueConfig_r16 != nil || ie.ReportAddNeighMeas_r16 != nil, ie.Ul_ExcessDelayConfig_r17 != nil || ie.CoarseLocationRequest_r17 != nil || ie.ReportQuantityRelay_r17 != nil}
 		if err := w.WriteExtBitMap(extBitmap); err != nil {
 			return utils.WrapError("WriteExtBitMap PeriodicalReportConfig", err)
 		}
@@ -82,65 +82,65 @@ func (ie *PeriodicalReportConfig) Encode(w *uper.UperWriter) error {
 			extWriter := uper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 1
-			optionals_ext_1 := []bool{ie.measRSSI_ReportConfig_r16 != nil, ie.includeCommonLocationInfo_r16 != nil, ie.includeBT_Meas_r16 != nil, ie.includeWLAN_Meas_r16 != nil, ie.includeSensor_Meas_r16 != nil, ie.ul_DelayValueConfig_r16 != nil, ie.reportAddNeighMeas_r16 != nil}
+			optionals_ext_1 := []bool{ie.MeasRSSI_ReportConfig_r16 != nil, ie.IncludeCommonLocationInfo_r16 != nil, ie.IncludeBT_Meas_r16 != nil, ie.IncludeWLAN_Meas_r16 != nil, ie.IncludeSensor_Meas_r16 != nil, ie.Ul_DelayValueConfig_r16 != nil, ie.ReportAddNeighMeas_r16 != nil}
 			for _, bit := range optionals_ext_1 {
 				if err := extWriter.WriteBool(bit); err != nil {
 					return err
 				}
 			}
 
-			// encode measRSSI_ReportConfig_r16 optional
-			if ie.measRSSI_ReportConfig_r16 != nil {
-				if err = ie.measRSSI_ReportConfig_r16.Encode(extWriter); err != nil {
-					return utils.WrapError("Encode measRSSI_ReportConfig_r16", err)
+			// encode MeasRSSI_ReportConfig_r16 optional
+			if ie.MeasRSSI_ReportConfig_r16 != nil {
+				if err = ie.MeasRSSI_ReportConfig_r16.Encode(extWriter); err != nil {
+					return utils.WrapError("Encode MeasRSSI_ReportConfig_r16", err)
 				}
 			}
-			// encode includeCommonLocationInfo_r16 optional
-			if ie.includeCommonLocationInfo_r16 != nil {
-				if err = ie.includeCommonLocationInfo_r16.Encode(extWriter); err != nil {
-					return utils.WrapError("Encode includeCommonLocationInfo_r16", err)
+			// encode IncludeCommonLocationInfo_r16 optional
+			if ie.IncludeCommonLocationInfo_r16 != nil {
+				if err = ie.IncludeCommonLocationInfo_r16.Encode(extWriter); err != nil {
+					return utils.WrapError("Encode IncludeCommonLocationInfo_r16", err)
 				}
 			}
-			// encode includeBT_Meas_r16 optional
-			if ie.includeBT_Meas_r16 != nil {
-				tmp_includeBT_Meas_r16 := utils.SetupRelease[*BT_NameList_r16]{
-					Setup: ie.includeBT_Meas_r16,
+			// encode IncludeBT_Meas_r16 optional
+			if ie.IncludeBT_Meas_r16 != nil {
+				tmp_IncludeBT_Meas_r16 := utils.SetupRelease[*BT_NameList_r16]{
+					Setup: ie.IncludeBT_Meas_r16,
 				}
-				if err = tmp_includeBT_Meas_r16.Encode(extWriter); err != nil {
-					return utils.WrapError("Encode includeBT_Meas_r16", err)
-				}
-			}
-			// encode includeWLAN_Meas_r16 optional
-			if ie.includeWLAN_Meas_r16 != nil {
-				tmp_includeWLAN_Meas_r16 := utils.SetupRelease[*WLAN_NameList_r16]{
-					Setup: ie.includeWLAN_Meas_r16,
-				}
-				if err = tmp_includeWLAN_Meas_r16.Encode(extWriter); err != nil {
-					return utils.WrapError("Encode includeWLAN_Meas_r16", err)
+				if err = tmp_IncludeBT_Meas_r16.Encode(extWriter); err != nil {
+					return utils.WrapError("Encode IncludeBT_Meas_r16", err)
 				}
 			}
-			// encode includeSensor_Meas_r16 optional
-			if ie.includeSensor_Meas_r16 != nil {
-				tmp_includeSensor_Meas_r16 := utils.SetupRelease[*Sensor_NameList_r16]{
-					Setup: ie.includeSensor_Meas_r16,
+			// encode IncludeWLAN_Meas_r16 optional
+			if ie.IncludeWLAN_Meas_r16 != nil {
+				tmp_IncludeWLAN_Meas_r16 := utils.SetupRelease[*WLAN_NameList_r16]{
+					Setup: ie.IncludeWLAN_Meas_r16,
 				}
-				if err = tmp_includeSensor_Meas_r16.Encode(extWriter); err != nil {
-					return utils.WrapError("Encode includeSensor_Meas_r16", err)
-				}
-			}
-			// encode ul_DelayValueConfig_r16 optional
-			if ie.ul_DelayValueConfig_r16 != nil {
-				tmp_ul_DelayValueConfig_r16 := utils.SetupRelease[*UL_DelayValueConfig_r16]{
-					Setup: ie.ul_DelayValueConfig_r16,
-				}
-				if err = tmp_ul_DelayValueConfig_r16.Encode(extWriter); err != nil {
-					return utils.WrapError("Encode ul_DelayValueConfig_r16", err)
+				if err = tmp_IncludeWLAN_Meas_r16.Encode(extWriter); err != nil {
+					return utils.WrapError("Encode IncludeWLAN_Meas_r16", err)
 				}
 			}
-			// encode reportAddNeighMeas_r16 optional
-			if ie.reportAddNeighMeas_r16 != nil {
-				if err = ie.reportAddNeighMeas_r16.Encode(extWriter); err != nil {
-					return utils.WrapError("Encode reportAddNeighMeas_r16", err)
+			// encode IncludeSensor_Meas_r16 optional
+			if ie.IncludeSensor_Meas_r16 != nil {
+				tmp_IncludeSensor_Meas_r16 := utils.SetupRelease[*Sensor_NameList_r16]{
+					Setup: ie.IncludeSensor_Meas_r16,
+				}
+				if err = tmp_IncludeSensor_Meas_r16.Encode(extWriter); err != nil {
+					return utils.WrapError("Encode IncludeSensor_Meas_r16", err)
+				}
+			}
+			// encode Ul_DelayValueConfig_r16 optional
+			if ie.Ul_DelayValueConfig_r16 != nil {
+				tmp_Ul_DelayValueConfig_r16 := utils.SetupRelease[*UL_DelayValueConfig_r16]{
+					Setup: ie.Ul_DelayValueConfig_r16,
+				}
+				if err = tmp_Ul_DelayValueConfig_r16.Encode(extWriter); err != nil {
+					return utils.WrapError("Encode Ul_DelayValueConfig_r16", err)
+				}
+			}
+			// encode ReportAddNeighMeas_r16 optional
+			if ie.ReportAddNeighMeas_r16 != nil {
+				if err = ie.ReportAddNeighMeas_r16.Encode(extWriter); err != nil {
+					return utils.WrapError("Encode ReportAddNeighMeas_r16", err)
 				}
 			}
 
@@ -159,32 +159,32 @@ func (ie *PeriodicalReportConfig) Encode(w *uper.UperWriter) error {
 			extWriter := uper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 2
-			optionals_ext_2 := []bool{ie.ul_ExcessDelayConfig_r17 != nil, ie.coarseLocationRequest_r17 != nil, ie.reportQuantityRelay_r17 != nil}
+			optionals_ext_2 := []bool{ie.Ul_ExcessDelayConfig_r17 != nil, ie.CoarseLocationRequest_r17 != nil, ie.ReportQuantityRelay_r17 != nil}
 			for _, bit := range optionals_ext_2 {
 				if err := extWriter.WriteBool(bit); err != nil {
 					return err
 				}
 			}
 
-			// encode ul_ExcessDelayConfig_r17 optional
-			if ie.ul_ExcessDelayConfig_r17 != nil {
-				tmp_ul_ExcessDelayConfig_r17 := utils.SetupRelease[*UL_ExcessDelayConfig_r17]{
-					Setup: ie.ul_ExcessDelayConfig_r17,
+			// encode Ul_ExcessDelayConfig_r17 optional
+			if ie.Ul_ExcessDelayConfig_r17 != nil {
+				tmp_Ul_ExcessDelayConfig_r17 := utils.SetupRelease[*UL_ExcessDelayConfig_r17]{
+					Setup: ie.Ul_ExcessDelayConfig_r17,
 				}
-				if err = tmp_ul_ExcessDelayConfig_r17.Encode(extWriter); err != nil {
-					return utils.WrapError("Encode ul_ExcessDelayConfig_r17", err)
-				}
-			}
-			// encode coarseLocationRequest_r17 optional
-			if ie.coarseLocationRequest_r17 != nil {
-				if err = ie.coarseLocationRequest_r17.Encode(extWriter); err != nil {
-					return utils.WrapError("Encode coarseLocationRequest_r17", err)
+				if err = tmp_Ul_ExcessDelayConfig_r17.Encode(extWriter); err != nil {
+					return utils.WrapError("Encode Ul_ExcessDelayConfig_r17", err)
 				}
 			}
-			// encode reportQuantityRelay_r17 optional
-			if ie.reportQuantityRelay_r17 != nil {
-				if err = ie.reportQuantityRelay_r17.Encode(extWriter); err != nil {
-					return utils.WrapError("Encode reportQuantityRelay_r17", err)
+			// encode CoarseLocationRequest_r17 optional
+			if ie.CoarseLocationRequest_r17 != nil {
+				if err = ie.CoarseLocationRequest_r17.Encode(extWriter); err != nil {
+					return utils.WrapError("Encode CoarseLocationRequest_r17", err)
+				}
+			}
+			// encode ReportQuantityRelay_r17 optional
+			if ie.ReportQuantityRelay_r17 != nil {
+				if err = ie.ReportQuantityRelay_r17.Encode(extWriter); err != nil {
+					return utils.WrapError("Encode ReportQuantityRelay_r17", err)
 				}
 			}
 
@@ -206,54 +206,54 @@ func (ie *PeriodicalReportConfig) Decode(r *uper.UperReader) error {
 	if extensionBit, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var reportQuantityRS_IndexesPresent bool
-	if reportQuantityRS_IndexesPresent, err = r.ReadBool(); err != nil {
+	var ReportQuantityRS_IndexesPresent bool
+	if ReportQuantityRS_IndexesPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var maxNrofRS_IndexesToReportPresent bool
-	if maxNrofRS_IndexesToReportPresent, err = r.ReadBool(); err != nil {
+	var MaxNrofRS_IndexesToReportPresent bool
+	if MaxNrofRS_IndexesToReportPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	if err = ie.rsType.Decode(r); err != nil {
-		return utils.WrapError("Decode rsType", err)
+	if err = ie.RsType.Decode(r); err != nil {
+		return utils.WrapError("Decode RsType", err)
 	}
-	if err = ie.reportInterval.Decode(r); err != nil {
-		return utils.WrapError("Decode reportInterval", err)
+	if err = ie.ReportInterval.Decode(r); err != nil {
+		return utils.WrapError("Decode ReportInterval", err)
 	}
-	if err = ie.reportAmount.Decode(r); err != nil {
-		return utils.WrapError("Decode reportAmount", err)
+	if err = ie.ReportAmount.Decode(r); err != nil {
+		return utils.WrapError("Decode ReportAmount", err)
 	}
-	if err = ie.reportQuantityCell.Decode(r); err != nil {
-		return utils.WrapError("Decode reportQuantityCell", err)
+	if err = ie.ReportQuantityCell.Decode(r); err != nil {
+		return utils.WrapError("Decode ReportQuantityCell", err)
 	}
-	var tmp_int_maxReportCells int64
-	if tmp_int_maxReportCells, err = r.ReadInteger(&uper.Constraint{Lb: 1, Ub: maxCellReport}, false); err != nil {
-		return utils.WrapError("ReadInteger maxReportCells", err)
+	var tmp_int_MaxReportCells int64
+	if tmp_int_MaxReportCells, err = r.ReadInteger(&uper.Constraint{Lb: 1, Ub: maxCellReport}, false); err != nil {
+		return utils.WrapError("ReadInteger MaxReportCells", err)
 	}
-	ie.maxReportCells = tmp_int_maxReportCells
-	if reportQuantityRS_IndexesPresent {
-		ie.reportQuantityRS_Indexes = new(MeasReportQuantity)
-		if err = ie.reportQuantityRS_Indexes.Decode(r); err != nil {
-			return utils.WrapError("Decode reportQuantityRS_Indexes", err)
+	ie.MaxReportCells = tmp_int_MaxReportCells
+	if ReportQuantityRS_IndexesPresent {
+		ie.ReportQuantityRS_Indexes = new(MeasReportQuantity)
+		if err = ie.ReportQuantityRS_Indexes.Decode(r); err != nil {
+			return utils.WrapError("Decode ReportQuantityRS_Indexes", err)
 		}
 	}
-	if maxNrofRS_IndexesToReportPresent {
-		var tmp_int_maxNrofRS_IndexesToReport int64
-		if tmp_int_maxNrofRS_IndexesToReport, err = r.ReadInteger(&uper.Constraint{Lb: 1, Ub: maxNrofIndexesToReport}, false); err != nil {
-			return utils.WrapError("Decode maxNrofRS_IndexesToReport", err)
+	if MaxNrofRS_IndexesToReportPresent {
+		var tmp_int_MaxNrofRS_IndexesToReport int64
+		if tmp_int_MaxNrofRS_IndexesToReport, err = r.ReadInteger(&uper.Constraint{Lb: 1, Ub: maxNrofIndexesToReport}, false); err != nil {
+			return utils.WrapError("Decode MaxNrofRS_IndexesToReport", err)
 		}
-		ie.maxNrofRS_IndexesToReport = &tmp_int_maxNrofRS_IndexesToReport
+		ie.MaxNrofRS_IndexesToReport = &tmp_int_MaxNrofRS_IndexesToReport
 	}
-	var tmp_bool_includeBeamMeasurements bool
-	if tmp_bool_includeBeamMeasurements, err = r.ReadBoolean(); err != nil {
-		return utils.WrapError("ReadBoolean includeBeamMeasurements", err)
+	var tmp_bool_IncludeBeamMeasurements bool
+	if tmp_bool_IncludeBeamMeasurements, err = r.ReadBoolean(); err != nil {
+		return utils.WrapError("ReadBoolean IncludeBeamMeasurements", err)
 	}
-	ie.includeBeamMeasurements = tmp_bool_includeBeamMeasurements
-	var tmp_bool_useAllowedCellList bool
-	if tmp_bool_useAllowedCellList, err = r.ReadBoolean(); err != nil {
-		return utils.WrapError("ReadBoolean useAllowedCellList", err)
+	ie.IncludeBeamMeasurements = tmp_bool_IncludeBeamMeasurements
+	var tmp_bool_UseAllowedCellList bool
+	if tmp_bool_UseAllowedCellList, err = r.ReadBoolean(); err != nil {
+		return utils.WrapError("ReadBoolean UseAllowedCellList", err)
 	}
-	ie.useAllowedCellList = tmp_bool_useAllowedCellList
+	ie.UseAllowedCellList = tmp_bool_UseAllowedCellList
 
 	if extensionBit {
 		// Read extension bitmap: 2 bits for 2 extension groups
@@ -271,85 +271,85 @@ func (ie *PeriodicalReportConfig) Decode(r *uper.UperReader) error {
 
 			extReader := uper.NewReader(bytes.NewReader(extBytes))
 
-			measRSSI_ReportConfig_r16Present, err := extReader.ReadBool()
+			MeasRSSI_ReportConfig_r16Present, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			includeCommonLocationInfo_r16Present, err := extReader.ReadBool()
+			IncludeCommonLocationInfo_r16Present, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			includeBT_Meas_r16Present, err := extReader.ReadBool()
+			IncludeBT_Meas_r16Present, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			includeWLAN_Meas_r16Present, err := extReader.ReadBool()
+			IncludeWLAN_Meas_r16Present, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			includeSensor_Meas_r16Present, err := extReader.ReadBool()
+			IncludeSensor_Meas_r16Present, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			ul_DelayValueConfig_r16Present, err := extReader.ReadBool()
+			Ul_DelayValueConfig_r16Present, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			reportAddNeighMeas_r16Present, err := extReader.ReadBool()
+			ReportAddNeighMeas_r16Present, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			// decode measRSSI_ReportConfig_r16 optional
-			if measRSSI_ReportConfig_r16Present {
-				ie.measRSSI_ReportConfig_r16 = new(MeasRSSI_ReportConfig_r16)
-				if err = ie.measRSSI_ReportConfig_r16.Decode(extReader); err != nil {
-					return utils.WrapError("Decode measRSSI_ReportConfig_r16", err)
+			// decode MeasRSSI_ReportConfig_r16 optional
+			if MeasRSSI_ReportConfig_r16Present {
+				ie.MeasRSSI_ReportConfig_r16 = new(MeasRSSI_ReportConfig_r16)
+				if err = ie.MeasRSSI_ReportConfig_r16.Decode(extReader); err != nil {
+					return utils.WrapError("Decode MeasRSSI_ReportConfig_r16", err)
 				}
 			}
-			// decode includeCommonLocationInfo_r16 optional
-			if includeCommonLocationInfo_r16Present {
-				ie.includeCommonLocationInfo_r16 = new(PeriodicalReportConfig_includeCommonLocationInfo_r16)
-				if err = ie.includeCommonLocationInfo_r16.Decode(extReader); err != nil {
-					return utils.WrapError("Decode includeCommonLocationInfo_r16", err)
+			// decode IncludeCommonLocationInfo_r16 optional
+			if IncludeCommonLocationInfo_r16Present {
+				ie.IncludeCommonLocationInfo_r16 = new(PeriodicalReportConfig_includeCommonLocationInfo_r16)
+				if err = ie.IncludeCommonLocationInfo_r16.Decode(extReader); err != nil {
+					return utils.WrapError("Decode IncludeCommonLocationInfo_r16", err)
 				}
 			}
-			// decode includeBT_Meas_r16 optional
-			if includeBT_Meas_r16Present {
-				tmp_includeBT_Meas_r16 := utils.SetupRelease[*BT_NameList_r16]{}
-				if err = tmp_includeBT_Meas_r16.Decode(extReader); err != nil {
-					return utils.WrapError("Decode includeBT_Meas_r16", err)
+			// decode IncludeBT_Meas_r16 optional
+			if IncludeBT_Meas_r16Present {
+				tmp_IncludeBT_Meas_r16 := utils.SetupRelease[*BT_NameList_r16]{}
+				if err = tmp_IncludeBT_Meas_r16.Decode(extReader); err != nil {
+					return utils.WrapError("Decode IncludeBT_Meas_r16", err)
 				}
-				ie.includeBT_Meas_r16 = tmp_includeBT_Meas_r16.Setup
+				ie.IncludeBT_Meas_r16 = tmp_IncludeBT_Meas_r16.Setup
 			}
-			// decode includeWLAN_Meas_r16 optional
-			if includeWLAN_Meas_r16Present {
-				tmp_includeWLAN_Meas_r16 := utils.SetupRelease[*WLAN_NameList_r16]{}
-				if err = tmp_includeWLAN_Meas_r16.Decode(extReader); err != nil {
-					return utils.WrapError("Decode includeWLAN_Meas_r16", err)
+			// decode IncludeWLAN_Meas_r16 optional
+			if IncludeWLAN_Meas_r16Present {
+				tmp_IncludeWLAN_Meas_r16 := utils.SetupRelease[*WLAN_NameList_r16]{}
+				if err = tmp_IncludeWLAN_Meas_r16.Decode(extReader); err != nil {
+					return utils.WrapError("Decode IncludeWLAN_Meas_r16", err)
 				}
-				ie.includeWLAN_Meas_r16 = tmp_includeWLAN_Meas_r16.Setup
+				ie.IncludeWLAN_Meas_r16 = tmp_IncludeWLAN_Meas_r16.Setup
 			}
-			// decode includeSensor_Meas_r16 optional
-			if includeSensor_Meas_r16Present {
-				tmp_includeSensor_Meas_r16 := utils.SetupRelease[*Sensor_NameList_r16]{}
-				if err = tmp_includeSensor_Meas_r16.Decode(extReader); err != nil {
-					return utils.WrapError("Decode includeSensor_Meas_r16", err)
+			// decode IncludeSensor_Meas_r16 optional
+			if IncludeSensor_Meas_r16Present {
+				tmp_IncludeSensor_Meas_r16 := utils.SetupRelease[*Sensor_NameList_r16]{}
+				if err = tmp_IncludeSensor_Meas_r16.Decode(extReader); err != nil {
+					return utils.WrapError("Decode IncludeSensor_Meas_r16", err)
 				}
-				ie.includeSensor_Meas_r16 = tmp_includeSensor_Meas_r16.Setup
+				ie.IncludeSensor_Meas_r16 = tmp_IncludeSensor_Meas_r16.Setup
 			}
-			// decode ul_DelayValueConfig_r16 optional
-			if ul_DelayValueConfig_r16Present {
-				tmp_ul_DelayValueConfig_r16 := utils.SetupRelease[*UL_DelayValueConfig_r16]{}
-				if err = tmp_ul_DelayValueConfig_r16.Decode(extReader); err != nil {
-					return utils.WrapError("Decode ul_DelayValueConfig_r16", err)
+			// decode Ul_DelayValueConfig_r16 optional
+			if Ul_DelayValueConfig_r16Present {
+				tmp_Ul_DelayValueConfig_r16 := utils.SetupRelease[*UL_DelayValueConfig_r16]{}
+				if err = tmp_Ul_DelayValueConfig_r16.Decode(extReader); err != nil {
+					return utils.WrapError("Decode Ul_DelayValueConfig_r16", err)
 				}
-				ie.ul_DelayValueConfig_r16 = tmp_ul_DelayValueConfig_r16.Setup
+				ie.Ul_DelayValueConfig_r16 = tmp_Ul_DelayValueConfig_r16.Setup
 			}
-			// decode reportAddNeighMeas_r16 optional
-			if reportAddNeighMeas_r16Present {
-				ie.reportAddNeighMeas_r16 = new(PeriodicalReportConfig_reportAddNeighMeas_r16)
-				if err = ie.reportAddNeighMeas_r16.Decode(extReader); err != nil {
-					return utils.WrapError("Decode reportAddNeighMeas_r16", err)
+			// decode ReportAddNeighMeas_r16 optional
+			if ReportAddNeighMeas_r16Present {
+				ie.ReportAddNeighMeas_r16 = new(PeriodicalReportConfig_reportAddNeighMeas_r16)
+				if err = ie.ReportAddNeighMeas_r16.Decode(extReader); err != nil {
+					return utils.WrapError("Decode ReportAddNeighMeas_r16", err)
 				}
 			}
 		}
@@ -362,38 +362,38 @@ func (ie *PeriodicalReportConfig) Decode(r *uper.UperReader) error {
 
 			extReader := uper.NewReader(bytes.NewReader(extBytes))
 
-			ul_ExcessDelayConfig_r17Present, err := extReader.ReadBool()
+			Ul_ExcessDelayConfig_r17Present, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			coarseLocationRequest_r17Present, err := extReader.ReadBool()
+			CoarseLocationRequest_r17Present, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			reportQuantityRelay_r17Present, err := extReader.ReadBool()
+			ReportQuantityRelay_r17Present, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			// decode ul_ExcessDelayConfig_r17 optional
-			if ul_ExcessDelayConfig_r17Present {
-				tmp_ul_ExcessDelayConfig_r17 := utils.SetupRelease[*UL_ExcessDelayConfig_r17]{}
-				if err = tmp_ul_ExcessDelayConfig_r17.Decode(extReader); err != nil {
-					return utils.WrapError("Decode ul_ExcessDelayConfig_r17", err)
+			// decode Ul_ExcessDelayConfig_r17 optional
+			if Ul_ExcessDelayConfig_r17Present {
+				tmp_Ul_ExcessDelayConfig_r17 := utils.SetupRelease[*UL_ExcessDelayConfig_r17]{}
+				if err = tmp_Ul_ExcessDelayConfig_r17.Decode(extReader); err != nil {
+					return utils.WrapError("Decode Ul_ExcessDelayConfig_r17", err)
 				}
-				ie.ul_ExcessDelayConfig_r17 = tmp_ul_ExcessDelayConfig_r17.Setup
+				ie.Ul_ExcessDelayConfig_r17 = tmp_Ul_ExcessDelayConfig_r17.Setup
 			}
-			// decode coarseLocationRequest_r17 optional
-			if coarseLocationRequest_r17Present {
-				ie.coarseLocationRequest_r17 = new(PeriodicalReportConfig_coarseLocationRequest_r17)
-				if err = ie.coarseLocationRequest_r17.Decode(extReader); err != nil {
-					return utils.WrapError("Decode coarseLocationRequest_r17", err)
+			// decode CoarseLocationRequest_r17 optional
+			if CoarseLocationRequest_r17Present {
+				ie.CoarseLocationRequest_r17 = new(PeriodicalReportConfig_coarseLocationRequest_r17)
+				if err = ie.CoarseLocationRequest_r17.Decode(extReader); err != nil {
+					return utils.WrapError("Decode CoarseLocationRequest_r17", err)
 				}
 			}
-			// decode reportQuantityRelay_r17 optional
-			if reportQuantityRelay_r17Present {
-				ie.reportQuantityRelay_r17 = new(SL_MeasReportQuantity_r16)
-				if err = ie.reportQuantityRelay_r17.Decode(extReader); err != nil {
-					return utils.WrapError("Decode reportQuantityRelay_r17", err)
+			// decode ReportQuantityRelay_r17 optional
+			if ReportQuantityRelay_r17Present {
+				ie.ReportQuantityRelay_r17 = new(SL_MeasReportQuantity_r16)
+				if err = ie.ReportQuantityRelay_r17.Decode(extReader); err != nil {
+					return utils.WrapError("Decode ReportQuantityRelay_r17", err)
 				}
 			}
 		}

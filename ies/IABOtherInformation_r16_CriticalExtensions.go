@@ -9,14 +9,14 @@ import (
 
 const (
 	IABOtherInformation_r16_CriticalExtensions_Choice_nothing uint64 = iota
-	IABOtherInformation_r16_CriticalExtensions_Choice_iabOtherInformation_r16
-	IABOtherInformation_r16_CriticalExtensions_Choice_criticalExtensionsFuture
+	IABOtherInformation_r16_CriticalExtensions_Choice_IabOtherInformation_r16
+	IABOtherInformation_r16_CriticalExtensions_Choice_CriticalExtensionsFuture
 )
 
 type IABOtherInformation_r16_CriticalExtensions struct {
 	Choice                   uint64
-	iabOtherInformation_r16  *IABOtherInformation_r16_IEs
-	criticalExtensionsFuture interface{} `madatory`
+	IabOtherInformation_r16  *IABOtherInformation_r16_IEs
+	CriticalExtensionsFuture interface{} `madatory`
 }
 
 func (ie *IABOtherInformation_r16_CriticalExtensions) Encode(w *uper.UperWriter) error {
@@ -25,11 +25,11 @@ func (ie *IABOtherInformation_r16_CriticalExtensions) Encode(w *uper.UperWriter)
 		return err
 	}
 	switch ie.Choice {
-	case IABOtherInformation_r16_CriticalExtensions_Choice_iabOtherInformation_r16:
-		if err = ie.iabOtherInformation_r16.Encode(w); err != nil {
-			err = utils.WrapError("Encode iabOtherInformation_r16", err)
+	case IABOtherInformation_r16_CriticalExtensions_Choice_IabOtherInformation_r16:
+		if err = ie.IabOtherInformation_r16.Encode(w); err != nil {
+			err = utils.WrapError("Encode IabOtherInformation_r16", err)
 		}
-	case IABOtherInformation_r16_CriticalExtensions_Choice_criticalExtensionsFuture:
+	case IABOtherInformation_r16_CriticalExtensions_Choice_CriticalExtensionsFuture:
 		// interface{} field of choice - nothing to encode
 	default:
 		err = fmt.Errorf("invalid choice: %d", ie.Choice)
@@ -43,12 +43,12 @@ func (ie *IABOtherInformation_r16_CriticalExtensions) Decode(r *uper.UperReader)
 		return err
 	}
 	switch ie.Choice {
-	case IABOtherInformation_r16_CriticalExtensions_Choice_iabOtherInformation_r16:
-		ie.iabOtherInformation_r16 = new(IABOtherInformation_r16_IEs)
-		if err = ie.iabOtherInformation_r16.Decode(r); err != nil {
-			return utils.WrapError("Decode iabOtherInformation_r16", err)
+	case IABOtherInformation_r16_CriticalExtensions_Choice_IabOtherInformation_r16:
+		ie.IabOtherInformation_r16 = new(IABOtherInformation_r16_IEs)
+		if err = ie.IabOtherInformation_r16.Decode(r); err != nil {
+			return utils.WrapError("Decode IabOtherInformation_r16", err)
 		}
-	case IABOtherInformation_r16_CriticalExtensions_Choice_criticalExtensionsFuture:
+	case IABOtherInformation_r16_CriticalExtensions_Choice_CriticalExtensionsFuture:
 		// interface{} field of choice - nothing to decode
 	default:
 		return fmt.Errorf("invalid choice: %d", ie.Choice)

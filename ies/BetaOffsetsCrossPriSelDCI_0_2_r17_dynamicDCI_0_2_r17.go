@@ -9,14 +9,14 @@ import (
 
 const (
 	BetaOffsetsCrossPriSelDCI_0_2_r17_dynamicDCI_0_2_r17_Choice_nothing uint64 = iota
-	BetaOffsetsCrossPriSelDCI_0_2_r17_dynamicDCI_0_2_r17_Choice_oneBit_r17
-	BetaOffsetsCrossPriSelDCI_0_2_r17_dynamicDCI_0_2_r17_Choice_twoBits_r17
+	BetaOffsetsCrossPriSelDCI_0_2_r17_dynamicDCI_0_2_r17_Choice_OneBit_r17
+	BetaOffsetsCrossPriSelDCI_0_2_r17_dynamicDCI_0_2_r17_Choice_TwoBits_r17
 )
 
 type BetaOffsetsCrossPriSelDCI_0_2_r17_dynamicDCI_0_2_r17 struct {
 	Choice      uint64
-	oneBit_r17  []BetaOffsetsCrossPri_r17 `lb:2,ub:2,madatory`
-	twoBits_r17 []BetaOffsetsCrossPri_r17 `lb:4,ub:4,madatory`
+	OneBit_r17  []BetaOffsetsCrossPri_r17 `lb:2,ub:2,madatory`
+	TwoBits_r17 []BetaOffsetsCrossPri_r17 `lb:4,ub:4,madatory`
 }
 
 func (ie *BetaOffsetsCrossPriSelDCI_0_2_r17_dynamicDCI_0_2_r17) Encode(w *uper.UperWriter) error {
@@ -25,21 +25,21 @@ func (ie *BetaOffsetsCrossPriSelDCI_0_2_r17_dynamicDCI_0_2_r17) Encode(w *uper.U
 		return err
 	}
 	switch ie.Choice {
-	case BetaOffsetsCrossPriSelDCI_0_2_r17_dynamicDCI_0_2_r17_Choice_oneBit_r17:
+	case BetaOffsetsCrossPriSelDCI_0_2_r17_dynamicDCI_0_2_r17_Choice_OneBit_r17:
 		tmp := utils.NewSequence[*BetaOffsetsCrossPri_r17]([]*BetaOffsetsCrossPri_r17{}, uper.Constraint{Lb: 2, Ub: 2}, false)
-		for _, i := range ie.oneBit_r17 {
+		for _, i := range ie.OneBit_r17 {
 			tmp.Value = append(tmp.Value, &i)
 		}
 		if err = tmp.Encode(w); err != nil {
-			err = utils.WrapError("Encode oneBit_r17", err)
+			err = utils.WrapError("Encode OneBit_r17", err)
 		}
-	case BetaOffsetsCrossPriSelDCI_0_2_r17_dynamicDCI_0_2_r17_Choice_twoBits_r17:
+	case BetaOffsetsCrossPriSelDCI_0_2_r17_dynamicDCI_0_2_r17_Choice_TwoBits_r17:
 		tmp := utils.NewSequence[*BetaOffsetsCrossPri_r17]([]*BetaOffsetsCrossPri_r17{}, uper.Constraint{Lb: 4, Ub: 4}, false)
-		for _, i := range ie.twoBits_r17 {
+		for _, i := range ie.TwoBits_r17 {
 			tmp.Value = append(tmp.Value, &i)
 		}
 		if err = tmp.Encode(w); err != nil {
-			err = utils.WrapError("Encode twoBits_r17", err)
+			err = utils.WrapError("Encode TwoBits_r17", err)
 		}
 	default:
 		err = fmt.Errorf("invalid choice: %d", ie.Choice)
@@ -53,29 +53,29 @@ func (ie *BetaOffsetsCrossPriSelDCI_0_2_r17_dynamicDCI_0_2_r17) Decode(r *uper.U
 		return err
 	}
 	switch ie.Choice {
-	case BetaOffsetsCrossPriSelDCI_0_2_r17_dynamicDCI_0_2_r17_Choice_oneBit_r17:
+	case BetaOffsetsCrossPriSelDCI_0_2_r17_dynamicDCI_0_2_r17_Choice_OneBit_r17:
 		tmp := utils.NewSequence[*BetaOffsetsCrossPri_r17]([]*BetaOffsetsCrossPri_r17{}, uper.Constraint{Lb: 2, Ub: 2}, false)
 		fn := func() *BetaOffsetsCrossPri_r17 {
 			return new(BetaOffsetsCrossPri_r17)
 		}
 		if err = tmp.Decode(r, fn); err != nil {
-			return utils.WrapError("Decode oneBit_r17", err)
+			return utils.WrapError("Decode OneBit_r17", err)
 		}
-		ie.oneBit_r17 = []BetaOffsetsCrossPri_r17{}
+		ie.OneBit_r17 = []BetaOffsetsCrossPri_r17{}
 		for _, i := range tmp.Value {
-			ie.oneBit_r17 = append(ie.oneBit_r17, *i)
+			ie.OneBit_r17 = append(ie.OneBit_r17, *i)
 		}
-	case BetaOffsetsCrossPriSelDCI_0_2_r17_dynamicDCI_0_2_r17_Choice_twoBits_r17:
+	case BetaOffsetsCrossPriSelDCI_0_2_r17_dynamicDCI_0_2_r17_Choice_TwoBits_r17:
 		tmp := utils.NewSequence[*BetaOffsetsCrossPri_r17]([]*BetaOffsetsCrossPri_r17{}, uper.Constraint{Lb: 4, Ub: 4}, false)
 		fn := func() *BetaOffsetsCrossPri_r17 {
 			return new(BetaOffsetsCrossPri_r17)
 		}
 		if err = tmp.Decode(r, fn); err != nil {
-			return utils.WrapError("Decode twoBits_r17", err)
+			return utils.WrapError("Decode TwoBits_r17", err)
 		}
-		ie.twoBits_r17 = []BetaOffsetsCrossPri_r17{}
+		ie.TwoBits_r17 = []BetaOffsetsCrossPri_r17{}
 		for _, i := range tmp.Value {
-			ie.twoBits_r17 = append(ie.twoBits_r17, *i)
+			ie.TwoBits_r17 = append(ie.TwoBits_r17, *i)
 		}
 	default:
 		return fmt.Errorf("invalid choice: %d", ie.Choice)

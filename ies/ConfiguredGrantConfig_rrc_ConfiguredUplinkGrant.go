@@ -6,114 +6,114 @@ import (
 )
 
 type ConfiguredGrantConfig_rrc_ConfiguredUplinkGrant struct {
-	timeDomainOffset                   int64                                                                               `lb:0,ub:5119,madatory`
-	timeDomainAllocation               int64                                                                               `lb:0,ub:15,madatory`
-	frequencyDomainAllocation          uper.BitString                                                                      `lb:18,ub:18,madatory`
-	antennaPort                        int64                                                                               `lb:0,ub:31,madatory`
-	dmrs_SeqInitialization             *int64                                                                              `lb:0,ub:1,optional`
-	precodingAndNumberOfLayers         int64                                                                               `lb:0,ub:63,madatory`
-	srs_ResourceIndicator              *int64                                                                              `lb:0,ub:15,optional`
-	mcsAndTBS                          int64                                                                               `lb:0,ub:31,madatory`
-	frequencyHoppingOffset             *int64                                                                              `lb:1,ub:maxNrofPhysicalResourceBlocks_1,optional`
-	pathlossReferenceIndex             int64                                                                               `lb:0,ub:maxNrofPUSCH_PathlossReferenceRSs_1,madatory`
-	pusch_RepTypeIndicator_r16         *ConfiguredGrantConfig_rrc_ConfiguredUplinkGrant_pusch_RepTypeIndicator_r16         `optional`
-	frequencyHoppingPUSCH_RepTypeB_r16 *ConfiguredGrantConfig_rrc_ConfiguredUplinkGrant_frequencyHoppingPUSCH_RepTypeB_r16 `optional`
-	timeReferenceSFN_r16               *ConfiguredGrantConfig_rrc_ConfiguredUplinkGrant_timeReferenceSFN_r16               `optional`
-	pathlossReferenceIndex2_r17        *int64                                                                              `lb:0,ub:maxNrofPUSCH_PathlossReferenceRSs_1,optional`
-	srs_ResourceIndicator2_r17         *int64                                                                              `lb:0,ub:15,optional`
-	precodingAndNumberOfLayers2_r17    *int64                                                                              `lb:0,ub:63,optional`
-	timeDomainAllocation_v1710         *int64                                                                              `lb:16,ub:63,optional`
-	timeDomainOffset_r17               *int64                                                                              `lb:0,ub:40959,optional`
-	cg_SDT_Configuration_r17           *CG_SDT_Configuration_r17                                                           `optional`
+	TimeDomainOffset                   int64                                                                               `lb:0,ub:5119,madatory`
+	TimeDomainAllocation               int64                                                                               `lb:0,ub:15,madatory`
+	FrequencyDomainAllocation          uper.BitString                                                                      `lb:18,ub:18,madatory`
+	AntennaPort                        int64                                                                               `lb:0,ub:31,madatory`
+	Dmrs_SeqInitialization             *int64                                                                              `lb:0,ub:1,optional`
+	PrecodingAndNumberOfLayers         int64                                                                               `lb:0,ub:63,madatory`
+	Srs_ResourceIndicator              *int64                                                                              `lb:0,ub:15,optional`
+	McsAndTBS                          int64                                                                               `lb:0,ub:31,madatory`
+	FrequencyHoppingOffset             *int64                                                                              `lb:1,ub:maxNrofPhysicalResourceBlocks_1,optional`
+	PathlossReferenceIndex             int64                                                                               `lb:0,ub:maxNrofPUSCH_PathlossReferenceRSs_1,madatory`
+	Pusch_RepTypeIndicator_r16         *ConfiguredGrantConfig_rrc_ConfiguredUplinkGrant_pusch_RepTypeIndicator_r16         `optional`
+	FrequencyHoppingPUSCH_RepTypeB_r16 *ConfiguredGrantConfig_rrc_ConfiguredUplinkGrant_frequencyHoppingPUSCH_RepTypeB_r16 `optional`
+	TimeReferenceSFN_r16               *ConfiguredGrantConfig_rrc_ConfiguredUplinkGrant_timeReferenceSFN_r16               `optional`
+	PathlossReferenceIndex2_r17        *int64                                                                              `lb:0,ub:maxNrofPUSCH_PathlossReferenceRSs_1,optional`
+	Srs_ResourceIndicator2_r17         *int64                                                                              `lb:0,ub:15,optional`
+	PrecodingAndNumberOfLayers2_r17    *int64                                                                              `lb:0,ub:63,optional`
+	TimeDomainAllocation_v1710         *int64                                                                              `lb:16,ub:63,optional`
+	TimeDomainOffset_r17               *int64                                                                              `lb:0,ub:40959,optional`
+	Cg_SDT_Configuration_r17           *CG_SDT_Configuration_r17                                                           `optional`
 }
 
 func (ie *ConfiguredGrantConfig_rrc_ConfiguredUplinkGrant) Encode(w *uper.UperWriter) error {
 	var err error
-	preambleBits := []bool{ie.dmrs_SeqInitialization != nil, ie.srs_ResourceIndicator != nil, ie.frequencyHoppingOffset != nil, ie.pusch_RepTypeIndicator_r16 != nil, ie.frequencyHoppingPUSCH_RepTypeB_r16 != nil, ie.timeReferenceSFN_r16 != nil, ie.pathlossReferenceIndex2_r17 != nil, ie.srs_ResourceIndicator2_r17 != nil, ie.precodingAndNumberOfLayers2_r17 != nil, ie.timeDomainAllocation_v1710 != nil, ie.timeDomainOffset_r17 != nil, ie.cg_SDT_Configuration_r17 != nil}
+	preambleBits := []bool{ie.Dmrs_SeqInitialization != nil, ie.Srs_ResourceIndicator != nil, ie.FrequencyHoppingOffset != nil, ie.Pusch_RepTypeIndicator_r16 != nil, ie.FrequencyHoppingPUSCH_RepTypeB_r16 != nil, ie.TimeReferenceSFN_r16 != nil, ie.PathlossReferenceIndex2_r17 != nil, ie.Srs_ResourceIndicator2_r17 != nil, ie.PrecodingAndNumberOfLayers2_r17 != nil, ie.TimeDomainAllocation_v1710 != nil, ie.TimeDomainOffset_r17 != nil, ie.Cg_SDT_Configuration_r17 != nil}
 	for _, bit := range preambleBits {
 		if err = w.WriteBool(bit); err != nil {
 			return err
 		}
 	}
-	if err = w.WriteInteger(ie.timeDomainOffset, &uper.Constraint{Lb: 0, Ub: 5119}, false); err != nil {
-		return utils.WrapError("WriteInteger timeDomainOffset", err)
+	if err = w.WriteInteger(ie.TimeDomainOffset, &uper.Constraint{Lb: 0, Ub: 5119}, false); err != nil {
+		return utils.WrapError("WriteInteger TimeDomainOffset", err)
 	}
-	if err = w.WriteInteger(ie.timeDomainAllocation, &uper.Constraint{Lb: 0, Ub: 15}, false); err != nil {
-		return utils.WrapError("WriteInteger timeDomainAllocation", err)
+	if err = w.WriteInteger(ie.TimeDomainAllocation, &uper.Constraint{Lb: 0, Ub: 15}, false); err != nil {
+		return utils.WrapError("WriteInteger TimeDomainAllocation", err)
 	}
-	if err = w.WriteBitString(ie.frequencyDomainAllocation.Bytes, uint(ie.frequencyDomainAllocation.NumBits), &uper.Constraint{Lb: 18, Ub: 18}, false); err != nil {
-		return utils.WrapError("WriteBitString frequencyDomainAllocation", err)
+	if err = w.WriteBitString(ie.FrequencyDomainAllocation.Bytes, uint(ie.FrequencyDomainAllocation.NumBits), &uper.Constraint{Lb: 18, Ub: 18}, false); err != nil {
+		return utils.WrapError("WriteBitString FrequencyDomainAllocation", err)
 	}
-	if err = w.WriteInteger(ie.antennaPort, &uper.Constraint{Lb: 0, Ub: 31}, false); err != nil {
-		return utils.WrapError("WriteInteger antennaPort", err)
+	if err = w.WriteInteger(ie.AntennaPort, &uper.Constraint{Lb: 0, Ub: 31}, false); err != nil {
+		return utils.WrapError("WriteInteger AntennaPort", err)
 	}
-	if ie.dmrs_SeqInitialization != nil {
-		if err = w.WriteInteger(*ie.dmrs_SeqInitialization, &uper.Constraint{Lb: 0, Ub: 1}, false); err != nil {
-			return utils.WrapError("Encode dmrs_SeqInitialization", err)
+	if ie.Dmrs_SeqInitialization != nil {
+		if err = w.WriteInteger(*ie.Dmrs_SeqInitialization, &uper.Constraint{Lb: 0, Ub: 1}, false); err != nil {
+			return utils.WrapError("Encode Dmrs_SeqInitialization", err)
 		}
 	}
-	if err = w.WriteInteger(ie.precodingAndNumberOfLayers, &uper.Constraint{Lb: 0, Ub: 63}, false); err != nil {
-		return utils.WrapError("WriteInteger precodingAndNumberOfLayers", err)
+	if err = w.WriteInteger(ie.PrecodingAndNumberOfLayers, &uper.Constraint{Lb: 0, Ub: 63}, false); err != nil {
+		return utils.WrapError("WriteInteger PrecodingAndNumberOfLayers", err)
 	}
-	if ie.srs_ResourceIndicator != nil {
-		if err = w.WriteInteger(*ie.srs_ResourceIndicator, &uper.Constraint{Lb: 0, Ub: 15}, false); err != nil {
-			return utils.WrapError("Encode srs_ResourceIndicator", err)
+	if ie.Srs_ResourceIndicator != nil {
+		if err = w.WriteInteger(*ie.Srs_ResourceIndicator, &uper.Constraint{Lb: 0, Ub: 15}, false); err != nil {
+			return utils.WrapError("Encode Srs_ResourceIndicator", err)
 		}
 	}
-	if err = w.WriteInteger(ie.mcsAndTBS, &uper.Constraint{Lb: 0, Ub: 31}, false); err != nil {
-		return utils.WrapError("WriteInteger mcsAndTBS", err)
+	if err = w.WriteInteger(ie.McsAndTBS, &uper.Constraint{Lb: 0, Ub: 31}, false); err != nil {
+		return utils.WrapError("WriteInteger McsAndTBS", err)
 	}
-	if ie.frequencyHoppingOffset != nil {
-		if err = w.WriteInteger(*ie.frequencyHoppingOffset, &uper.Constraint{Lb: 1, Ub: maxNrofPhysicalResourceBlocks_1}, false); err != nil {
-			return utils.WrapError("Encode frequencyHoppingOffset", err)
+	if ie.FrequencyHoppingOffset != nil {
+		if err = w.WriteInteger(*ie.FrequencyHoppingOffset, &uper.Constraint{Lb: 1, Ub: maxNrofPhysicalResourceBlocks_1}, false); err != nil {
+			return utils.WrapError("Encode FrequencyHoppingOffset", err)
 		}
 	}
-	if err = w.WriteInteger(ie.pathlossReferenceIndex, &uper.Constraint{Lb: 0, Ub: maxNrofPUSCH_PathlossReferenceRSs_1}, false); err != nil {
-		return utils.WrapError("WriteInteger pathlossReferenceIndex", err)
+	if err = w.WriteInteger(ie.PathlossReferenceIndex, &uper.Constraint{Lb: 0, Ub: maxNrofPUSCH_PathlossReferenceRSs_1}, false); err != nil {
+		return utils.WrapError("WriteInteger PathlossReferenceIndex", err)
 	}
-	if ie.pusch_RepTypeIndicator_r16 != nil {
-		if err = ie.pusch_RepTypeIndicator_r16.Encode(w); err != nil {
-			return utils.WrapError("Encode pusch_RepTypeIndicator_r16", err)
+	if ie.Pusch_RepTypeIndicator_r16 != nil {
+		if err = ie.Pusch_RepTypeIndicator_r16.Encode(w); err != nil {
+			return utils.WrapError("Encode Pusch_RepTypeIndicator_r16", err)
 		}
 	}
-	if ie.frequencyHoppingPUSCH_RepTypeB_r16 != nil {
-		if err = ie.frequencyHoppingPUSCH_RepTypeB_r16.Encode(w); err != nil {
-			return utils.WrapError("Encode frequencyHoppingPUSCH_RepTypeB_r16", err)
+	if ie.FrequencyHoppingPUSCH_RepTypeB_r16 != nil {
+		if err = ie.FrequencyHoppingPUSCH_RepTypeB_r16.Encode(w); err != nil {
+			return utils.WrapError("Encode FrequencyHoppingPUSCH_RepTypeB_r16", err)
 		}
 	}
-	if ie.timeReferenceSFN_r16 != nil {
-		if err = ie.timeReferenceSFN_r16.Encode(w); err != nil {
-			return utils.WrapError("Encode timeReferenceSFN_r16", err)
+	if ie.TimeReferenceSFN_r16 != nil {
+		if err = ie.TimeReferenceSFN_r16.Encode(w); err != nil {
+			return utils.WrapError("Encode TimeReferenceSFN_r16", err)
 		}
 	}
-	if ie.pathlossReferenceIndex2_r17 != nil {
-		if err = w.WriteInteger(*ie.pathlossReferenceIndex2_r17, &uper.Constraint{Lb: 0, Ub: maxNrofPUSCH_PathlossReferenceRSs_1}, false); err != nil {
-			return utils.WrapError("Encode pathlossReferenceIndex2_r17", err)
+	if ie.PathlossReferenceIndex2_r17 != nil {
+		if err = w.WriteInteger(*ie.PathlossReferenceIndex2_r17, &uper.Constraint{Lb: 0, Ub: maxNrofPUSCH_PathlossReferenceRSs_1}, false); err != nil {
+			return utils.WrapError("Encode PathlossReferenceIndex2_r17", err)
 		}
 	}
-	if ie.srs_ResourceIndicator2_r17 != nil {
-		if err = w.WriteInteger(*ie.srs_ResourceIndicator2_r17, &uper.Constraint{Lb: 0, Ub: 15}, false); err != nil {
-			return utils.WrapError("Encode srs_ResourceIndicator2_r17", err)
+	if ie.Srs_ResourceIndicator2_r17 != nil {
+		if err = w.WriteInteger(*ie.Srs_ResourceIndicator2_r17, &uper.Constraint{Lb: 0, Ub: 15}, false); err != nil {
+			return utils.WrapError("Encode Srs_ResourceIndicator2_r17", err)
 		}
 	}
-	if ie.precodingAndNumberOfLayers2_r17 != nil {
-		if err = w.WriteInteger(*ie.precodingAndNumberOfLayers2_r17, &uper.Constraint{Lb: 0, Ub: 63}, false); err != nil {
-			return utils.WrapError("Encode precodingAndNumberOfLayers2_r17", err)
+	if ie.PrecodingAndNumberOfLayers2_r17 != nil {
+		if err = w.WriteInteger(*ie.PrecodingAndNumberOfLayers2_r17, &uper.Constraint{Lb: 0, Ub: 63}, false); err != nil {
+			return utils.WrapError("Encode PrecodingAndNumberOfLayers2_r17", err)
 		}
 	}
-	if ie.timeDomainAllocation_v1710 != nil {
-		if err = w.WriteInteger(*ie.timeDomainAllocation_v1710, &uper.Constraint{Lb: 16, Ub: 63}, false); err != nil {
-			return utils.WrapError("Encode timeDomainAllocation_v1710", err)
+	if ie.TimeDomainAllocation_v1710 != nil {
+		if err = w.WriteInteger(*ie.TimeDomainAllocation_v1710, &uper.Constraint{Lb: 16, Ub: 63}, false); err != nil {
+			return utils.WrapError("Encode TimeDomainAllocation_v1710", err)
 		}
 	}
-	if ie.timeDomainOffset_r17 != nil {
-		if err = w.WriteInteger(*ie.timeDomainOffset_r17, &uper.Constraint{Lb: 0, Ub: 40959}, false); err != nil {
-			return utils.WrapError("Encode timeDomainOffset_r17", err)
+	if ie.TimeDomainOffset_r17 != nil {
+		if err = w.WriteInteger(*ie.TimeDomainOffset_r17, &uper.Constraint{Lb: 0, Ub: 40959}, false); err != nil {
+			return utils.WrapError("Encode TimeDomainOffset_r17", err)
 		}
 	}
-	if ie.cg_SDT_Configuration_r17 != nil {
-		if err = ie.cg_SDT_Configuration_r17.Encode(w); err != nil {
-			return utils.WrapError("Encode cg_SDT_Configuration_r17", err)
+	if ie.Cg_SDT_Configuration_r17 != nil {
+		if err = ie.Cg_SDT_Configuration_r17.Encode(w); err != nil {
+			return utils.WrapError("Encode Cg_SDT_Configuration_r17", err)
 		}
 	}
 	return nil
@@ -121,171 +121,171 @@ func (ie *ConfiguredGrantConfig_rrc_ConfiguredUplinkGrant) Encode(w *uper.UperWr
 
 func (ie *ConfiguredGrantConfig_rrc_ConfiguredUplinkGrant) Decode(r *uper.UperReader) error {
 	var err error
-	var dmrs_SeqInitializationPresent bool
-	if dmrs_SeqInitializationPresent, err = r.ReadBool(); err != nil {
+	var Dmrs_SeqInitializationPresent bool
+	if Dmrs_SeqInitializationPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var srs_ResourceIndicatorPresent bool
-	if srs_ResourceIndicatorPresent, err = r.ReadBool(); err != nil {
+	var Srs_ResourceIndicatorPresent bool
+	if Srs_ResourceIndicatorPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var frequencyHoppingOffsetPresent bool
-	if frequencyHoppingOffsetPresent, err = r.ReadBool(); err != nil {
+	var FrequencyHoppingOffsetPresent bool
+	if FrequencyHoppingOffsetPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var pusch_RepTypeIndicator_r16Present bool
-	if pusch_RepTypeIndicator_r16Present, err = r.ReadBool(); err != nil {
+	var Pusch_RepTypeIndicator_r16Present bool
+	if Pusch_RepTypeIndicator_r16Present, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var frequencyHoppingPUSCH_RepTypeB_r16Present bool
-	if frequencyHoppingPUSCH_RepTypeB_r16Present, err = r.ReadBool(); err != nil {
+	var FrequencyHoppingPUSCH_RepTypeB_r16Present bool
+	if FrequencyHoppingPUSCH_RepTypeB_r16Present, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var timeReferenceSFN_r16Present bool
-	if timeReferenceSFN_r16Present, err = r.ReadBool(); err != nil {
+	var TimeReferenceSFN_r16Present bool
+	if TimeReferenceSFN_r16Present, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var pathlossReferenceIndex2_r17Present bool
-	if pathlossReferenceIndex2_r17Present, err = r.ReadBool(); err != nil {
+	var PathlossReferenceIndex2_r17Present bool
+	if PathlossReferenceIndex2_r17Present, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var srs_ResourceIndicator2_r17Present bool
-	if srs_ResourceIndicator2_r17Present, err = r.ReadBool(); err != nil {
+	var Srs_ResourceIndicator2_r17Present bool
+	if Srs_ResourceIndicator2_r17Present, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var precodingAndNumberOfLayers2_r17Present bool
-	if precodingAndNumberOfLayers2_r17Present, err = r.ReadBool(); err != nil {
+	var PrecodingAndNumberOfLayers2_r17Present bool
+	if PrecodingAndNumberOfLayers2_r17Present, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var timeDomainAllocation_v1710Present bool
-	if timeDomainAllocation_v1710Present, err = r.ReadBool(); err != nil {
+	var TimeDomainAllocation_v1710Present bool
+	if TimeDomainAllocation_v1710Present, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var timeDomainOffset_r17Present bool
-	if timeDomainOffset_r17Present, err = r.ReadBool(); err != nil {
+	var TimeDomainOffset_r17Present bool
+	if TimeDomainOffset_r17Present, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var cg_SDT_Configuration_r17Present bool
-	if cg_SDT_Configuration_r17Present, err = r.ReadBool(); err != nil {
+	var Cg_SDT_Configuration_r17Present bool
+	if Cg_SDT_Configuration_r17Present, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var tmp_int_timeDomainOffset int64
-	if tmp_int_timeDomainOffset, err = r.ReadInteger(&uper.Constraint{Lb: 0, Ub: 5119}, false); err != nil {
-		return utils.WrapError("ReadInteger timeDomainOffset", err)
+	var tmp_int_TimeDomainOffset int64
+	if tmp_int_TimeDomainOffset, err = r.ReadInteger(&uper.Constraint{Lb: 0, Ub: 5119}, false); err != nil {
+		return utils.WrapError("ReadInteger TimeDomainOffset", err)
 	}
-	ie.timeDomainOffset = tmp_int_timeDomainOffset
-	var tmp_int_timeDomainAllocation int64
-	if tmp_int_timeDomainAllocation, err = r.ReadInteger(&uper.Constraint{Lb: 0, Ub: 15}, false); err != nil {
-		return utils.WrapError("ReadInteger timeDomainAllocation", err)
+	ie.TimeDomainOffset = tmp_int_TimeDomainOffset
+	var tmp_int_TimeDomainAllocation int64
+	if tmp_int_TimeDomainAllocation, err = r.ReadInteger(&uper.Constraint{Lb: 0, Ub: 15}, false); err != nil {
+		return utils.WrapError("ReadInteger TimeDomainAllocation", err)
 	}
-	ie.timeDomainAllocation = tmp_int_timeDomainAllocation
-	var tmp_bs_frequencyDomainAllocation []byte
-	var n_frequencyDomainAllocation uint
-	if tmp_bs_frequencyDomainAllocation, n_frequencyDomainAllocation, err = r.ReadBitString(&uper.Constraint{Lb: 18, Ub: 18}, false); err != nil {
-		return utils.WrapError("ReadBitString frequencyDomainAllocation", err)
+	ie.TimeDomainAllocation = tmp_int_TimeDomainAllocation
+	var tmp_bs_FrequencyDomainAllocation []byte
+	var n_FrequencyDomainAllocation uint
+	if tmp_bs_FrequencyDomainAllocation, n_FrequencyDomainAllocation, err = r.ReadBitString(&uper.Constraint{Lb: 18, Ub: 18}, false); err != nil {
+		return utils.WrapError("ReadBitString FrequencyDomainAllocation", err)
 	}
-	ie.frequencyDomainAllocation = uper.BitString{
-		Bytes:   tmp_bs_frequencyDomainAllocation,
-		NumBits: uint64(n_frequencyDomainAllocation),
+	ie.FrequencyDomainAllocation = uper.BitString{
+		Bytes:   tmp_bs_FrequencyDomainAllocation,
+		NumBits: uint64(n_FrequencyDomainAllocation),
 	}
-	var tmp_int_antennaPort int64
-	if tmp_int_antennaPort, err = r.ReadInteger(&uper.Constraint{Lb: 0, Ub: 31}, false); err != nil {
-		return utils.WrapError("ReadInteger antennaPort", err)
+	var tmp_int_AntennaPort int64
+	if tmp_int_AntennaPort, err = r.ReadInteger(&uper.Constraint{Lb: 0, Ub: 31}, false); err != nil {
+		return utils.WrapError("ReadInteger AntennaPort", err)
 	}
-	ie.antennaPort = tmp_int_antennaPort
-	if dmrs_SeqInitializationPresent {
-		var tmp_int_dmrs_SeqInitialization int64
-		if tmp_int_dmrs_SeqInitialization, err = r.ReadInteger(&uper.Constraint{Lb: 0, Ub: 1}, false); err != nil {
-			return utils.WrapError("Decode dmrs_SeqInitialization", err)
+	ie.AntennaPort = tmp_int_AntennaPort
+	if Dmrs_SeqInitializationPresent {
+		var tmp_int_Dmrs_SeqInitialization int64
+		if tmp_int_Dmrs_SeqInitialization, err = r.ReadInteger(&uper.Constraint{Lb: 0, Ub: 1}, false); err != nil {
+			return utils.WrapError("Decode Dmrs_SeqInitialization", err)
 		}
-		ie.dmrs_SeqInitialization = &tmp_int_dmrs_SeqInitialization
+		ie.Dmrs_SeqInitialization = &tmp_int_Dmrs_SeqInitialization
 	}
-	var tmp_int_precodingAndNumberOfLayers int64
-	if tmp_int_precodingAndNumberOfLayers, err = r.ReadInteger(&uper.Constraint{Lb: 0, Ub: 63}, false); err != nil {
-		return utils.WrapError("ReadInteger precodingAndNumberOfLayers", err)
+	var tmp_int_PrecodingAndNumberOfLayers int64
+	if tmp_int_PrecodingAndNumberOfLayers, err = r.ReadInteger(&uper.Constraint{Lb: 0, Ub: 63}, false); err != nil {
+		return utils.WrapError("ReadInteger PrecodingAndNumberOfLayers", err)
 	}
-	ie.precodingAndNumberOfLayers = tmp_int_precodingAndNumberOfLayers
-	if srs_ResourceIndicatorPresent {
-		var tmp_int_srs_ResourceIndicator int64
-		if tmp_int_srs_ResourceIndicator, err = r.ReadInteger(&uper.Constraint{Lb: 0, Ub: 15}, false); err != nil {
-			return utils.WrapError("Decode srs_ResourceIndicator", err)
+	ie.PrecodingAndNumberOfLayers = tmp_int_PrecodingAndNumberOfLayers
+	if Srs_ResourceIndicatorPresent {
+		var tmp_int_Srs_ResourceIndicator int64
+		if tmp_int_Srs_ResourceIndicator, err = r.ReadInteger(&uper.Constraint{Lb: 0, Ub: 15}, false); err != nil {
+			return utils.WrapError("Decode Srs_ResourceIndicator", err)
 		}
-		ie.srs_ResourceIndicator = &tmp_int_srs_ResourceIndicator
+		ie.Srs_ResourceIndicator = &tmp_int_Srs_ResourceIndicator
 	}
-	var tmp_int_mcsAndTBS int64
-	if tmp_int_mcsAndTBS, err = r.ReadInteger(&uper.Constraint{Lb: 0, Ub: 31}, false); err != nil {
-		return utils.WrapError("ReadInteger mcsAndTBS", err)
+	var tmp_int_McsAndTBS int64
+	if tmp_int_McsAndTBS, err = r.ReadInteger(&uper.Constraint{Lb: 0, Ub: 31}, false); err != nil {
+		return utils.WrapError("ReadInteger McsAndTBS", err)
 	}
-	ie.mcsAndTBS = tmp_int_mcsAndTBS
-	if frequencyHoppingOffsetPresent {
-		var tmp_int_frequencyHoppingOffset int64
-		if tmp_int_frequencyHoppingOffset, err = r.ReadInteger(&uper.Constraint{Lb: 1, Ub: maxNrofPhysicalResourceBlocks_1}, false); err != nil {
-			return utils.WrapError("Decode frequencyHoppingOffset", err)
+	ie.McsAndTBS = tmp_int_McsAndTBS
+	if FrequencyHoppingOffsetPresent {
+		var tmp_int_FrequencyHoppingOffset int64
+		if tmp_int_FrequencyHoppingOffset, err = r.ReadInteger(&uper.Constraint{Lb: 1, Ub: maxNrofPhysicalResourceBlocks_1}, false); err != nil {
+			return utils.WrapError("Decode FrequencyHoppingOffset", err)
 		}
-		ie.frequencyHoppingOffset = &tmp_int_frequencyHoppingOffset
+		ie.FrequencyHoppingOffset = &tmp_int_FrequencyHoppingOffset
 	}
-	var tmp_int_pathlossReferenceIndex int64
-	if tmp_int_pathlossReferenceIndex, err = r.ReadInteger(&uper.Constraint{Lb: 0, Ub: maxNrofPUSCH_PathlossReferenceRSs_1}, false); err != nil {
-		return utils.WrapError("ReadInteger pathlossReferenceIndex", err)
+	var tmp_int_PathlossReferenceIndex int64
+	if tmp_int_PathlossReferenceIndex, err = r.ReadInteger(&uper.Constraint{Lb: 0, Ub: maxNrofPUSCH_PathlossReferenceRSs_1}, false); err != nil {
+		return utils.WrapError("ReadInteger PathlossReferenceIndex", err)
 	}
-	ie.pathlossReferenceIndex = tmp_int_pathlossReferenceIndex
-	if pusch_RepTypeIndicator_r16Present {
-		ie.pusch_RepTypeIndicator_r16 = new(ConfiguredGrantConfig_rrc_ConfiguredUplinkGrant_pusch_RepTypeIndicator_r16)
-		if err = ie.pusch_RepTypeIndicator_r16.Decode(r); err != nil {
-			return utils.WrapError("Decode pusch_RepTypeIndicator_r16", err)
-		}
-	}
-	if frequencyHoppingPUSCH_RepTypeB_r16Present {
-		ie.frequencyHoppingPUSCH_RepTypeB_r16 = new(ConfiguredGrantConfig_rrc_ConfiguredUplinkGrant_frequencyHoppingPUSCH_RepTypeB_r16)
-		if err = ie.frequencyHoppingPUSCH_RepTypeB_r16.Decode(r); err != nil {
-			return utils.WrapError("Decode frequencyHoppingPUSCH_RepTypeB_r16", err)
+	ie.PathlossReferenceIndex = tmp_int_PathlossReferenceIndex
+	if Pusch_RepTypeIndicator_r16Present {
+		ie.Pusch_RepTypeIndicator_r16 = new(ConfiguredGrantConfig_rrc_ConfiguredUplinkGrant_pusch_RepTypeIndicator_r16)
+		if err = ie.Pusch_RepTypeIndicator_r16.Decode(r); err != nil {
+			return utils.WrapError("Decode Pusch_RepTypeIndicator_r16", err)
 		}
 	}
-	if timeReferenceSFN_r16Present {
-		ie.timeReferenceSFN_r16 = new(ConfiguredGrantConfig_rrc_ConfiguredUplinkGrant_timeReferenceSFN_r16)
-		if err = ie.timeReferenceSFN_r16.Decode(r); err != nil {
-			return utils.WrapError("Decode timeReferenceSFN_r16", err)
+	if FrequencyHoppingPUSCH_RepTypeB_r16Present {
+		ie.FrequencyHoppingPUSCH_RepTypeB_r16 = new(ConfiguredGrantConfig_rrc_ConfiguredUplinkGrant_frequencyHoppingPUSCH_RepTypeB_r16)
+		if err = ie.FrequencyHoppingPUSCH_RepTypeB_r16.Decode(r); err != nil {
+			return utils.WrapError("Decode FrequencyHoppingPUSCH_RepTypeB_r16", err)
 		}
 	}
-	if pathlossReferenceIndex2_r17Present {
-		var tmp_int_pathlossReferenceIndex2_r17 int64
-		if tmp_int_pathlossReferenceIndex2_r17, err = r.ReadInteger(&uper.Constraint{Lb: 0, Ub: maxNrofPUSCH_PathlossReferenceRSs_1}, false); err != nil {
-			return utils.WrapError("Decode pathlossReferenceIndex2_r17", err)
+	if TimeReferenceSFN_r16Present {
+		ie.TimeReferenceSFN_r16 = new(ConfiguredGrantConfig_rrc_ConfiguredUplinkGrant_timeReferenceSFN_r16)
+		if err = ie.TimeReferenceSFN_r16.Decode(r); err != nil {
+			return utils.WrapError("Decode TimeReferenceSFN_r16", err)
 		}
-		ie.pathlossReferenceIndex2_r17 = &tmp_int_pathlossReferenceIndex2_r17
 	}
-	if srs_ResourceIndicator2_r17Present {
-		var tmp_int_srs_ResourceIndicator2_r17 int64
-		if tmp_int_srs_ResourceIndicator2_r17, err = r.ReadInteger(&uper.Constraint{Lb: 0, Ub: 15}, false); err != nil {
-			return utils.WrapError("Decode srs_ResourceIndicator2_r17", err)
+	if PathlossReferenceIndex2_r17Present {
+		var tmp_int_PathlossReferenceIndex2_r17 int64
+		if tmp_int_PathlossReferenceIndex2_r17, err = r.ReadInteger(&uper.Constraint{Lb: 0, Ub: maxNrofPUSCH_PathlossReferenceRSs_1}, false); err != nil {
+			return utils.WrapError("Decode PathlossReferenceIndex2_r17", err)
 		}
-		ie.srs_ResourceIndicator2_r17 = &tmp_int_srs_ResourceIndicator2_r17
+		ie.PathlossReferenceIndex2_r17 = &tmp_int_PathlossReferenceIndex2_r17
 	}
-	if precodingAndNumberOfLayers2_r17Present {
-		var tmp_int_precodingAndNumberOfLayers2_r17 int64
-		if tmp_int_precodingAndNumberOfLayers2_r17, err = r.ReadInteger(&uper.Constraint{Lb: 0, Ub: 63}, false); err != nil {
-			return utils.WrapError("Decode precodingAndNumberOfLayers2_r17", err)
+	if Srs_ResourceIndicator2_r17Present {
+		var tmp_int_Srs_ResourceIndicator2_r17 int64
+		if tmp_int_Srs_ResourceIndicator2_r17, err = r.ReadInteger(&uper.Constraint{Lb: 0, Ub: 15}, false); err != nil {
+			return utils.WrapError("Decode Srs_ResourceIndicator2_r17", err)
 		}
-		ie.precodingAndNumberOfLayers2_r17 = &tmp_int_precodingAndNumberOfLayers2_r17
+		ie.Srs_ResourceIndicator2_r17 = &tmp_int_Srs_ResourceIndicator2_r17
 	}
-	if timeDomainAllocation_v1710Present {
-		var tmp_int_timeDomainAllocation_v1710 int64
-		if tmp_int_timeDomainAllocation_v1710, err = r.ReadInteger(&uper.Constraint{Lb: 16, Ub: 63}, false); err != nil {
-			return utils.WrapError("Decode timeDomainAllocation_v1710", err)
+	if PrecodingAndNumberOfLayers2_r17Present {
+		var tmp_int_PrecodingAndNumberOfLayers2_r17 int64
+		if tmp_int_PrecodingAndNumberOfLayers2_r17, err = r.ReadInteger(&uper.Constraint{Lb: 0, Ub: 63}, false); err != nil {
+			return utils.WrapError("Decode PrecodingAndNumberOfLayers2_r17", err)
 		}
-		ie.timeDomainAllocation_v1710 = &tmp_int_timeDomainAllocation_v1710
+		ie.PrecodingAndNumberOfLayers2_r17 = &tmp_int_PrecodingAndNumberOfLayers2_r17
 	}
-	if timeDomainOffset_r17Present {
-		var tmp_int_timeDomainOffset_r17 int64
-		if tmp_int_timeDomainOffset_r17, err = r.ReadInteger(&uper.Constraint{Lb: 0, Ub: 40959}, false); err != nil {
-			return utils.WrapError("Decode timeDomainOffset_r17", err)
+	if TimeDomainAllocation_v1710Present {
+		var tmp_int_TimeDomainAllocation_v1710 int64
+		if tmp_int_TimeDomainAllocation_v1710, err = r.ReadInteger(&uper.Constraint{Lb: 16, Ub: 63}, false); err != nil {
+			return utils.WrapError("Decode TimeDomainAllocation_v1710", err)
 		}
-		ie.timeDomainOffset_r17 = &tmp_int_timeDomainOffset_r17
+		ie.TimeDomainAllocation_v1710 = &tmp_int_TimeDomainAllocation_v1710
 	}
-	if cg_SDT_Configuration_r17Present {
-		ie.cg_SDT_Configuration_r17 = new(CG_SDT_Configuration_r17)
-		if err = ie.cg_SDT_Configuration_r17.Decode(r); err != nil {
-			return utils.WrapError("Decode cg_SDT_Configuration_r17", err)
+	if TimeDomainOffset_r17Present {
+		var tmp_int_TimeDomainOffset_r17 int64
+		if tmp_int_TimeDomainOffset_r17, err = r.ReadInteger(&uper.Constraint{Lb: 0, Ub: 40959}, false); err != nil {
+			return utils.WrapError("Decode TimeDomainOffset_r17", err)
+		}
+		ie.TimeDomainOffset_r17 = &tmp_int_TimeDomainOffset_r17
+	}
+	if Cg_SDT_Configuration_r17Present {
+		ie.Cg_SDT_Configuration_r17 = new(CG_SDT_Configuration_r17)
+		if err = ie.Cg_SDT_Configuration_r17.Decode(r); err != nil {
+			return utils.WrapError("Decode Cg_SDT_Configuration_r17", err)
 		}
 	}
 	return nil

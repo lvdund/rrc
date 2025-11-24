@@ -9,14 +9,14 @@ import (
 
 const (
 	SRS_Resource_transmissionComb_Choice_nothing uint64 = iota
-	SRS_Resource_transmissionComb_Choice_n2
-	SRS_Resource_transmissionComb_Choice_n4
+	SRS_Resource_transmissionComb_Choice_N2
+	SRS_Resource_transmissionComb_Choice_N4
 )
 
 type SRS_Resource_transmissionComb struct {
 	Choice uint64
-	n2     *SRS_Resource_transmissionComb_n2
-	n4     *SRS_Resource_transmissionComb_n4
+	N2     *SRS_Resource_transmissionComb_n2
+	N4     *SRS_Resource_transmissionComb_n4
 }
 
 func (ie *SRS_Resource_transmissionComb) Encode(w *uper.UperWriter) error {
@@ -25,13 +25,13 @@ func (ie *SRS_Resource_transmissionComb) Encode(w *uper.UperWriter) error {
 		return err
 	}
 	switch ie.Choice {
-	case SRS_Resource_transmissionComb_Choice_n2:
-		if err = ie.n2.Encode(w); err != nil {
-			err = utils.WrapError("Encode n2", err)
+	case SRS_Resource_transmissionComb_Choice_N2:
+		if err = ie.N2.Encode(w); err != nil {
+			err = utils.WrapError("Encode N2", err)
 		}
-	case SRS_Resource_transmissionComb_Choice_n4:
-		if err = ie.n4.Encode(w); err != nil {
-			err = utils.WrapError("Encode n4", err)
+	case SRS_Resource_transmissionComb_Choice_N4:
+		if err = ie.N4.Encode(w); err != nil {
+			err = utils.WrapError("Encode N4", err)
 		}
 	default:
 		err = fmt.Errorf("invalid choice: %d", ie.Choice)
@@ -45,15 +45,15 @@ func (ie *SRS_Resource_transmissionComb) Decode(r *uper.UperReader) error {
 		return err
 	}
 	switch ie.Choice {
-	case SRS_Resource_transmissionComb_Choice_n2:
-		ie.n2 = new(SRS_Resource_transmissionComb_n2)
-		if err = ie.n2.Decode(r); err != nil {
-			return utils.WrapError("Decode n2", err)
+	case SRS_Resource_transmissionComb_Choice_N2:
+		ie.N2 = new(SRS_Resource_transmissionComb_n2)
+		if err = ie.N2.Decode(r); err != nil {
+			return utils.WrapError("Decode N2", err)
 		}
-	case SRS_Resource_transmissionComb_Choice_n4:
-		ie.n4 = new(SRS_Resource_transmissionComb_n4)
-		if err = ie.n4.Decode(r); err != nil {
-			return utils.WrapError("Decode n4", err)
+	case SRS_Resource_transmissionComb_Choice_N4:
+		ie.N4 = new(SRS_Resource_transmissionComb_n4)
+		if err = ie.N4.Decode(r); err != nil {
+			return utils.WrapError("Decode N4", err)
 		}
 	default:
 		return fmt.Errorf("invalid choice: %d", ie.Choice)

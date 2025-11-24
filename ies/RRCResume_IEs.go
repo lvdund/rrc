@@ -6,50 +6,50 @@ import (
 )
 
 type RRCResume_IEs struct {
-	radioBearerConfig        *RadioBearerConfig        `optional`
-	masterCellGroup          *[]byte                   `optional`
-	measConfig               *MeasConfig               `optional`
-	fullConfig               *RRCResume_IEs_fullConfig `optional`
-	lateNonCriticalExtension *[]byte                   `optional`
-	nonCriticalExtension     *RRCResume_v1560_IEs      `optional`
+	RadioBearerConfig        *RadioBearerConfig        `optional`
+	MasterCellGroup          *[]byte                   `optional`
+	MeasConfig               *MeasConfig               `optional`
+	FullConfig               *RRCResume_IEs_fullConfig `optional`
+	LateNonCriticalExtension *[]byte                   `optional`
+	NonCriticalExtension     *RRCResume_v1560_IEs      `optional`
 }
 
 func (ie *RRCResume_IEs) Encode(w *uper.UperWriter) error {
 	var err error
-	preambleBits := []bool{ie.radioBearerConfig != nil, ie.masterCellGroup != nil, ie.measConfig != nil, ie.fullConfig != nil, ie.lateNonCriticalExtension != nil, ie.nonCriticalExtension != nil}
+	preambleBits := []bool{ie.RadioBearerConfig != nil, ie.MasterCellGroup != nil, ie.MeasConfig != nil, ie.FullConfig != nil, ie.LateNonCriticalExtension != nil, ie.NonCriticalExtension != nil}
 	for _, bit := range preambleBits {
 		if err = w.WriteBool(bit); err != nil {
 			return err
 		}
 	}
-	if ie.radioBearerConfig != nil {
-		if err = ie.radioBearerConfig.Encode(w); err != nil {
-			return utils.WrapError("Encode radioBearerConfig", err)
+	if ie.RadioBearerConfig != nil {
+		if err = ie.RadioBearerConfig.Encode(w); err != nil {
+			return utils.WrapError("Encode RadioBearerConfig", err)
 		}
 	}
-	if ie.masterCellGroup != nil {
-		if err = w.WriteOctetString(*ie.masterCellGroup, &uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
-			return utils.WrapError("Encode masterCellGroup", err)
+	if ie.MasterCellGroup != nil {
+		if err = w.WriteOctetString(*ie.MasterCellGroup, &uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+			return utils.WrapError("Encode MasterCellGroup", err)
 		}
 	}
-	if ie.measConfig != nil {
-		if err = ie.measConfig.Encode(w); err != nil {
-			return utils.WrapError("Encode measConfig", err)
+	if ie.MeasConfig != nil {
+		if err = ie.MeasConfig.Encode(w); err != nil {
+			return utils.WrapError("Encode MeasConfig", err)
 		}
 	}
-	if ie.fullConfig != nil {
-		if err = ie.fullConfig.Encode(w); err != nil {
-			return utils.WrapError("Encode fullConfig", err)
+	if ie.FullConfig != nil {
+		if err = ie.FullConfig.Encode(w); err != nil {
+			return utils.WrapError("Encode FullConfig", err)
 		}
 	}
-	if ie.lateNonCriticalExtension != nil {
-		if err = w.WriteOctetString(*ie.lateNonCriticalExtension, &uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
-			return utils.WrapError("Encode lateNonCriticalExtension", err)
+	if ie.LateNonCriticalExtension != nil {
+		if err = w.WriteOctetString(*ie.LateNonCriticalExtension, &uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+			return utils.WrapError("Encode LateNonCriticalExtension", err)
 		}
 	}
-	if ie.nonCriticalExtension != nil {
-		if err = ie.nonCriticalExtension.Encode(w); err != nil {
-			return utils.WrapError("Encode nonCriticalExtension", err)
+	if ie.NonCriticalExtension != nil {
+		if err = ie.NonCriticalExtension.Encode(w); err != nil {
+			return utils.WrapError("Encode NonCriticalExtension", err)
 		}
 	}
 	return nil
@@ -57,66 +57,66 @@ func (ie *RRCResume_IEs) Encode(w *uper.UperWriter) error {
 
 func (ie *RRCResume_IEs) Decode(r *uper.UperReader) error {
 	var err error
-	var radioBearerConfigPresent bool
-	if radioBearerConfigPresent, err = r.ReadBool(); err != nil {
+	var RadioBearerConfigPresent bool
+	if RadioBearerConfigPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var masterCellGroupPresent bool
-	if masterCellGroupPresent, err = r.ReadBool(); err != nil {
+	var MasterCellGroupPresent bool
+	if MasterCellGroupPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var measConfigPresent bool
-	if measConfigPresent, err = r.ReadBool(); err != nil {
+	var MeasConfigPresent bool
+	if MeasConfigPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var fullConfigPresent bool
-	if fullConfigPresent, err = r.ReadBool(); err != nil {
+	var FullConfigPresent bool
+	if FullConfigPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var lateNonCriticalExtensionPresent bool
-	if lateNonCriticalExtensionPresent, err = r.ReadBool(); err != nil {
+	var LateNonCriticalExtensionPresent bool
+	if LateNonCriticalExtensionPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var nonCriticalExtensionPresent bool
-	if nonCriticalExtensionPresent, err = r.ReadBool(); err != nil {
+	var NonCriticalExtensionPresent bool
+	if NonCriticalExtensionPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	if radioBearerConfigPresent {
-		ie.radioBearerConfig = new(RadioBearerConfig)
-		if err = ie.radioBearerConfig.Decode(r); err != nil {
-			return utils.WrapError("Decode radioBearerConfig", err)
+	if RadioBearerConfigPresent {
+		ie.RadioBearerConfig = new(RadioBearerConfig)
+		if err = ie.RadioBearerConfig.Decode(r); err != nil {
+			return utils.WrapError("Decode RadioBearerConfig", err)
 		}
 	}
-	if masterCellGroupPresent {
-		var tmp_os_masterCellGroup []byte
-		if tmp_os_masterCellGroup, err = r.ReadOctetString(&uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
-			return utils.WrapError("Decode masterCellGroup", err)
+	if MasterCellGroupPresent {
+		var tmp_os_MasterCellGroup []byte
+		if tmp_os_MasterCellGroup, err = r.ReadOctetString(&uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+			return utils.WrapError("Decode MasterCellGroup", err)
 		}
-		ie.masterCellGroup = &tmp_os_masterCellGroup
+		ie.MasterCellGroup = &tmp_os_MasterCellGroup
 	}
-	if measConfigPresent {
-		ie.measConfig = new(MeasConfig)
-		if err = ie.measConfig.Decode(r); err != nil {
-			return utils.WrapError("Decode measConfig", err)
-		}
-	}
-	if fullConfigPresent {
-		ie.fullConfig = new(RRCResume_IEs_fullConfig)
-		if err = ie.fullConfig.Decode(r); err != nil {
-			return utils.WrapError("Decode fullConfig", err)
+	if MeasConfigPresent {
+		ie.MeasConfig = new(MeasConfig)
+		if err = ie.MeasConfig.Decode(r); err != nil {
+			return utils.WrapError("Decode MeasConfig", err)
 		}
 	}
-	if lateNonCriticalExtensionPresent {
-		var tmp_os_lateNonCriticalExtension []byte
-		if tmp_os_lateNonCriticalExtension, err = r.ReadOctetString(&uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
-			return utils.WrapError("Decode lateNonCriticalExtension", err)
+	if FullConfigPresent {
+		ie.FullConfig = new(RRCResume_IEs_fullConfig)
+		if err = ie.FullConfig.Decode(r); err != nil {
+			return utils.WrapError("Decode FullConfig", err)
 		}
-		ie.lateNonCriticalExtension = &tmp_os_lateNonCriticalExtension
 	}
-	if nonCriticalExtensionPresent {
-		ie.nonCriticalExtension = new(RRCResume_v1560_IEs)
-		if err = ie.nonCriticalExtension.Decode(r); err != nil {
-			return utils.WrapError("Decode nonCriticalExtension", err)
+	if LateNonCriticalExtensionPresent {
+		var tmp_os_LateNonCriticalExtension []byte
+		if tmp_os_LateNonCriticalExtension, err = r.ReadOctetString(&uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+			return utils.WrapError("Decode LateNonCriticalExtension", err)
+		}
+		ie.LateNonCriticalExtension = &tmp_os_LateNonCriticalExtension
+	}
+	if NonCriticalExtensionPresent {
+		ie.NonCriticalExtension = new(RRCResume_v1560_IEs)
+		if err = ie.NonCriticalExtension.Decode(r); err != nil {
+			return utils.WrapError("Decode NonCriticalExtension", err)
 		}
 	}
 	return nil

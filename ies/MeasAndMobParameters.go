@@ -6,32 +6,32 @@ import (
 )
 
 type MeasAndMobParameters struct {
-	measAndMobParametersCommon   *MeasAndMobParametersCommon   `optional`
-	measAndMobParametersXDD_Diff *MeasAndMobParametersXDD_Diff `optional`
-	measAndMobParametersFRX_Diff *MeasAndMobParametersFRX_Diff `optional`
+	MeasAndMobParametersCommon   *MeasAndMobParametersCommon   `optional`
+	MeasAndMobParametersXDD_Diff *MeasAndMobParametersXDD_Diff `optional`
+	MeasAndMobParametersFRX_Diff *MeasAndMobParametersFRX_Diff `optional`
 }
 
 func (ie *MeasAndMobParameters) Encode(w *uper.UperWriter) error {
 	var err error
-	preambleBits := []bool{ie.measAndMobParametersCommon != nil, ie.measAndMobParametersXDD_Diff != nil, ie.measAndMobParametersFRX_Diff != nil}
+	preambleBits := []bool{ie.MeasAndMobParametersCommon != nil, ie.MeasAndMobParametersXDD_Diff != nil, ie.MeasAndMobParametersFRX_Diff != nil}
 	for _, bit := range preambleBits {
 		if err = w.WriteBool(bit); err != nil {
 			return err
 		}
 	}
-	if ie.measAndMobParametersCommon != nil {
-		if err = ie.measAndMobParametersCommon.Encode(w); err != nil {
-			return utils.WrapError("Encode measAndMobParametersCommon", err)
+	if ie.MeasAndMobParametersCommon != nil {
+		if err = ie.MeasAndMobParametersCommon.Encode(w); err != nil {
+			return utils.WrapError("Encode MeasAndMobParametersCommon", err)
 		}
 	}
-	if ie.measAndMobParametersXDD_Diff != nil {
-		if err = ie.measAndMobParametersXDD_Diff.Encode(w); err != nil {
-			return utils.WrapError("Encode measAndMobParametersXDD_Diff", err)
+	if ie.MeasAndMobParametersXDD_Diff != nil {
+		if err = ie.MeasAndMobParametersXDD_Diff.Encode(w); err != nil {
+			return utils.WrapError("Encode MeasAndMobParametersXDD_Diff", err)
 		}
 	}
-	if ie.measAndMobParametersFRX_Diff != nil {
-		if err = ie.measAndMobParametersFRX_Diff.Encode(w); err != nil {
-			return utils.WrapError("Encode measAndMobParametersFRX_Diff", err)
+	if ie.MeasAndMobParametersFRX_Diff != nil {
+		if err = ie.MeasAndMobParametersFRX_Diff.Encode(w); err != nil {
+			return utils.WrapError("Encode MeasAndMobParametersFRX_Diff", err)
 		}
 	}
 	return nil
@@ -39,34 +39,34 @@ func (ie *MeasAndMobParameters) Encode(w *uper.UperWriter) error {
 
 func (ie *MeasAndMobParameters) Decode(r *uper.UperReader) error {
 	var err error
-	var measAndMobParametersCommonPresent bool
-	if measAndMobParametersCommonPresent, err = r.ReadBool(); err != nil {
+	var MeasAndMobParametersCommonPresent bool
+	if MeasAndMobParametersCommonPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var measAndMobParametersXDD_DiffPresent bool
-	if measAndMobParametersXDD_DiffPresent, err = r.ReadBool(); err != nil {
+	var MeasAndMobParametersXDD_DiffPresent bool
+	if MeasAndMobParametersXDD_DiffPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var measAndMobParametersFRX_DiffPresent bool
-	if measAndMobParametersFRX_DiffPresent, err = r.ReadBool(); err != nil {
+	var MeasAndMobParametersFRX_DiffPresent bool
+	if MeasAndMobParametersFRX_DiffPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	if measAndMobParametersCommonPresent {
-		ie.measAndMobParametersCommon = new(MeasAndMobParametersCommon)
-		if err = ie.measAndMobParametersCommon.Decode(r); err != nil {
-			return utils.WrapError("Decode measAndMobParametersCommon", err)
+	if MeasAndMobParametersCommonPresent {
+		ie.MeasAndMobParametersCommon = new(MeasAndMobParametersCommon)
+		if err = ie.MeasAndMobParametersCommon.Decode(r); err != nil {
+			return utils.WrapError("Decode MeasAndMobParametersCommon", err)
 		}
 	}
-	if measAndMobParametersXDD_DiffPresent {
-		ie.measAndMobParametersXDD_Diff = new(MeasAndMobParametersXDD_Diff)
-		if err = ie.measAndMobParametersXDD_Diff.Decode(r); err != nil {
-			return utils.WrapError("Decode measAndMobParametersXDD_Diff", err)
+	if MeasAndMobParametersXDD_DiffPresent {
+		ie.MeasAndMobParametersXDD_Diff = new(MeasAndMobParametersXDD_Diff)
+		if err = ie.MeasAndMobParametersXDD_Diff.Decode(r); err != nil {
+			return utils.WrapError("Decode MeasAndMobParametersXDD_Diff", err)
 		}
 	}
-	if measAndMobParametersFRX_DiffPresent {
-		ie.measAndMobParametersFRX_Diff = new(MeasAndMobParametersFRX_Diff)
-		if err = ie.measAndMobParametersFRX_Diff.Decode(r); err != nil {
-			return utils.WrapError("Decode measAndMobParametersFRX_Diff", err)
+	if MeasAndMobParametersFRX_DiffPresent {
+		ie.MeasAndMobParametersFRX_Diff = new(MeasAndMobParametersFRX_Diff)
+		if err = ie.MeasAndMobParametersFRX_Diff.Decode(r); err != nil {
+			return utils.WrapError("Decode MeasAndMobParametersFRX_Diff", err)
 		}
 	}
 	return nil

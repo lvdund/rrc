@@ -6,28 +6,28 @@ import (
 )
 
 type MeasResultFailedCell_r16 struct {
-	cgi_Info       CGI_Info_Logging_r16                    `madatory`
-	measResult_r16 MeasResultFailedCell_r16_measResult_r16 `madatory`
+	Cgi_Info       CGI_Info_Logging_r16                    `madatory`
+	MeasResult_r16 MeasResultFailedCell_r16_measResult_r16 `madatory`
 }
 
 func (ie *MeasResultFailedCell_r16) Encode(w *uper.UperWriter) error {
 	var err error
-	if err = ie.cgi_Info.Encode(w); err != nil {
-		return utils.WrapError("Encode cgi_Info", err)
+	if err = ie.Cgi_Info.Encode(w); err != nil {
+		return utils.WrapError("Encode Cgi_Info", err)
 	}
-	if err = ie.measResult_r16.Encode(w); err != nil {
-		return utils.WrapError("Encode measResult_r16", err)
+	if err = ie.MeasResult_r16.Encode(w); err != nil {
+		return utils.WrapError("Encode MeasResult_r16", err)
 	}
 	return nil
 }
 
 func (ie *MeasResultFailedCell_r16) Decode(r *uper.UperReader) error {
 	var err error
-	if err = ie.cgi_Info.Decode(r); err != nil {
-		return utils.WrapError("Decode cgi_Info", err)
+	if err = ie.Cgi_Info.Decode(r); err != nil {
+		return utils.WrapError("Decode Cgi_Info", err)
 	}
-	if err = ie.measResult_r16.Decode(r); err != nil {
-		return utils.WrapError("Decode measResult_r16", err)
+	if err = ie.MeasResult_r16.Decode(r); err != nil {
+		return utils.WrapError("Decode MeasResult_r16", err)
 	}
 	return nil
 }

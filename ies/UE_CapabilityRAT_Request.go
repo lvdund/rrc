@@ -6,24 +6,24 @@ import (
 )
 
 type UE_CapabilityRAT_Request struct {
-	rat_Type                RAT_Type `madatory`
-	capabilityRequestFilter *[]byte  `optional`
+	Rat_Type                RAT_Type `madatory`
+	CapabilityRequestFilter *[]byte  `optional`
 }
 
 func (ie *UE_CapabilityRAT_Request) Encode(w *uper.UperWriter) error {
 	var err error
-	preambleBits := []bool{ie.capabilityRequestFilter != nil}
+	preambleBits := []bool{ie.CapabilityRequestFilter != nil}
 	for _, bit := range preambleBits {
 		if err = w.WriteBool(bit); err != nil {
 			return err
 		}
 	}
-	if err = ie.rat_Type.Encode(w); err != nil {
-		return utils.WrapError("Encode rat_Type", err)
+	if err = ie.Rat_Type.Encode(w); err != nil {
+		return utils.WrapError("Encode Rat_Type", err)
 	}
-	if ie.capabilityRequestFilter != nil {
-		if err = w.WriteOctetString(*ie.capabilityRequestFilter, &uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
-			return utils.WrapError("Encode capabilityRequestFilter", err)
+	if ie.CapabilityRequestFilter != nil {
+		if err = w.WriteOctetString(*ie.CapabilityRequestFilter, &uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+			return utils.WrapError("Encode CapabilityRequestFilter", err)
 		}
 	}
 	return nil
@@ -31,19 +31,19 @@ func (ie *UE_CapabilityRAT_Request) Encode(w *uper.UperWriter) error {
 
 func (ie *UE_CapabilityRAT_Request) Decode(r *uper.UperReader) error {
 	var err error
-	var capabilityRequestFilterPresent bool
-	if capabilityRequestFilterPresent, err = r.ReadBool(); err != nil {
+	var CapabilityRequestFilterPresent bool
+	if CapabilityRequestFilterPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	if err = ie.rat_Type.Decode(r); err != nil {
-		return utils.WrapError("Decode rat_Type", err)
+	if err = ie.Rat_Type.Decode(r); err != nil {
+		return utils.WrapError("Decode Rat_Type", err)
 	}
-	if capabilityRequestFilterPresent {
-		var tmp_os_capabilityRequestFilter []byte
-		if tmp_os_capabilityRequestFilter, err = r.ReadOctetString(&uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
-			return utils.WrapError("Decode capabilityRequestFilter", err)
+	if CapabilityRequestFilterPresent {
+		var tmp_os_CapabilityRequestFilter []byte
+		if tmp_os_CapabilityRequestFilter, err = r.ReadOctetString(&uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+			return utils.WrapError("Decode CapabilityRequestFilter", err)
 		}
-		ie.capabilityRequestFilter = &tmp_os_capabilityRequestFilter
+		ie.CapabilityRequestFilter = &tmp_os_CapabilityRequestFilter
 	}
 	return nil
 }

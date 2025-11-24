@@ -9,24 +9,24 @@ import (
 
 const (
 	InvalidSymbolPattern_r16_periodicityAndPattern_r16_Choice_nothing uint64 = iota
-	InvalidSymbolPattern_r16_periodicityAndPattern_r16_Choice_n2
-	InvalidSymbolPattern_r16_periodicityAndPattern_r16_Choice_n4
-	InvalidSymbolPattern_r16_periodicityAndPattern_r16_Choice_n5
-	InvalidSymbolPattern_r16_periodicityAndPattern_r16_Choice_n8
-	InvalidSymbolPattern_r16_periodicityAndPattern_r16_Choice_n10
-	InvalidSymbolPattern_r16_periodicityAndPattern_r16_Choice_n20
-	InvalidSymbolPattern_r16_periodicityAndPattern_r16_Choice_n40
+	InvalidSymbolPattern_r16_periodicityAndPattern_r16_Choice_N2
+	InvalidSymbolPattern_r16_periodicityAndPattern_r16_Choice_N4
+	InvalidSymbolPattern_r16_periodicityAndPattern_r16_Choice_N5
+	InvalidSymbolPattern_r16_periodicityAndPattern_r16_Choice_N8
+	InvalidSymbolPattern_r16_periodicityAndPattern_r16_Choice_N10
+	InvalidSymbolPattern_r16_periodicityAndPattern_r16_Choice_N20
+	InvalidSymbolPattern_r16_periodicityAndPattern_r16_Choice_N40
 )
 
 type InvalidSymbolPattern_r16_periodicityAndPattern_r16 struct {
 	Choice uint64
-	n2     uper.BitString `lb:2,ub:2,madatory`
-	n4     uper.BitString `lb:4,ub:4,madatory`
-	n5     uper.BitString `lb:5,ub:5,madatory`
-	n8     uper.BitString `lb:8,ub:8,madatory`
-	n10    uper.BitString `lb:10,ub:10,madatory`
-	n20    uper.BitString `lb:20,ub:20,madatory`
-	n40    uper.BitString `lb:40,ub:40,madatory`
+	N2     uper.BitString `lb:2,ub:2,madatory`
+	N4     uper.BitString `lb:4,ub:4,madatory`
+	N5     uper.BitString `lb:5,ub:5,madatory`
+	N8     uper.BitString `lb:8,ub:8,madatory`
+	N10    uper.BitString `lb:10,ub:10,madatory`
+	N20    uper.BitString `lb:20,ub:20,madatory`
+	N40    uper.BitString `lb:40,ub:40,madatory`
 }
 
 func (ie *InvalidSymbolPattern_r16_periodicityAndPattern_r16) Encode(w *uper.UperWriter) error {
@@ -35,33 +35,33 @@ func (ie *InvalidSymbolPattern_r16_periodicityAndPattern_r16) Encode(w *uper.Upe
 		return err
 	}
 	switch ie.Choice {
-	case InvalidSymbolPattern_r16_periodicityAndPattern_r16_Choice_n2:
-		if err = w.WriteBitString(ie.n2.Bytes, uint(ie.n2.NumBits), &uper.Constraint{Lb: 2, Ub: 2}, false); err != nil {
-			err = utils.WrapError("Encode n2", err)
+	case InvalidSymbolPattern_r16_periodicityAndPattern_r16_Choice_N2:
+		if err = w.WriteBitString(ie.N2.Bytes, uint(ie.N2.NumBits), &uper.Constraint{Lb: 2, Ub: 2}, false); err != nil {
+			err = utils.WrapError("Encode N2", err)
 		}
-	case InvalidSymbolPattern_r16_periodicityAndPattern_r16_Choice_n4:
-		if err = w.WriteBitString(ie.n4.Bytes, uint(ie.n4.NumBits), &uper.Constraint{Lb: 4, Ub: 4}, false); err != nil {
-			err = utils.WrapError("Encode n4", err)
+	case InvalidSymbolPattern_r16_periodicityAndPattern_r16_Choice_N4:
+		if err = w.WriteBitString(ie.N4.Bytes, uint(ie.N4.NumBits), &uper.Constraint{Lb: 4, Ub: 4}, false); err != nil {
+			err = utils.WrapError("Encode N4", err)
 		}
-	case InvalidSymbolPattern_r16_periodicityAndPattern_r16_Choice_n5:
-		if err = w.WriteBitString(ie.n5.Bytes, uint(ie.n5.NumBits), &uper.Constraint{Lb: 5, Ub: 5}, false); err != nil {
-			err = utils.WrapError("Encode n5", err)
+	case InvalidSymbolPattern_r16_periodicityAndPattern_r16_Choice_N5:
+		if err = w.WriteBitString(ie.N5.Bytes, uint(ie.N5.NumBits), &uper.Constraint{Lb: 5, Ub: 5}, false); err != nil {
+			err = utils.WrapError("Encode N5", err)
 		}
-	case InvalidSymbolPattern_r16_periodicityAndPattern_r16_Choice_n8:
-		if err = w.WriteBitString(ie.n8.Bytes, uint(ie.n8.NumBits), &uper.Constraint{Lb: 8, Ub: 8}, false); err != nil {
-			err = utils.WrapError("Encode n8", err)
+	case InvalidSymbolPattern_r16_periodicityAndPattern_r16_Choice_N8:
+		if err = w.WriteBitString(ie.N8.Bytes, uint(ie.N8.NumBits), &uper.Constraint{Lb: 8, Ub: 8}, false); err != nil {
+			err = utils.WrapError("Encode N8", err)
 		}
-	case InvalidSymbolPattern_r16_periodicityAndPattern_r16_Choice_n10:
-		if err = w.WriteBitString(ie.n10.Bytes, uint(ie.n10.NumBits), &uper.Constraint{Lb: 10, Ub: 10}, false); err != nil {
-			err = utils.WrapError("Encode n10", err)
+	case InvalidSymbolPattern_r16_periodicityAndPattern_r16_Choice_N10:
+		if err = w.WriteBitString(ie.N10.Bytes, uint(ie.N10.NumBits), &uper.Constraint{Lb: 10, Ub: 10}, false); err != nil {
+			err = utils.WrapError("Encode N10", err)
 		}
-	case InvalidSymbolPattern_r16_periodicityAndPattern_r16_Choice_n20:
-		if err = w.WriteBitString(ie.n20.Bytes, uint(ie.n20.NumBits), &uper.Constraint{Lb: 20, Ub: 20}, false); err != nil {
-			err = utils.WrapError("Encode n20", err)
+	case InvalidSymbolPattern_r16_periodicityAndPattern_r16_Choice_N20:
+		if err = w.WriteBitString(ie.N20.Bytes, uint(ie.N20.NumBits), &uper.Constraint{Lb: 20, Ub: 20}, false); err != nil {
+			err = utils.WrapError("Encode N20", err)
 		}
-	case InvalidSymbolPattern_r16_periodicityAndPattern_r16_Choice_n40:
-		if err = w.WriteBitString(ie.n40.Bytes, uint(ie.n40.NumBits), &uper.Constraint{Lb: 40, Ub: 40}, false); err != nil {
-			err = utils.WrapError("Encode n40", err)
+	case InvalidSymbolPattern_r16_periodicityAndPattern_r16_Choice_N40:
+		if err = w.WriteBitString(ie.N40.Bytes, uint(ie.N40.NumBits), &uper.Constraint{Lb: 40, Ub: 40}, false); err != nil {
+			err = utils.WrapError("Encode N40", err)
 		}
 	default:
 		err = fmt.Errorf("invalid choice: %d", ie.Choice)
@@ -75,75 +75,75 @@ func (ie *InvalidSymbolPattern_r16_periodicityAndPattern_r16) Decode(r *uper.Upe
 		return err
 	}
 	switch ie.Choice {
-	case InvalidSymbolPattern_r16_periodicityAndPattern_r16_Choice_n2:
-		var tmp_bs_n2 []byte
-		var n_n2 uint
-		if tmp_bs_n2, n_n2, err = r.ReadBitString(&uper.Constraint{Lb: 2, Ub: 2}, false); err != nil {
-			return utils.WrapError("Decode n2", err)
+	case InvalidSymbolPattern_r16_periodicityAndPattern_r16_Choice_N2:
+		var tmp_bs_N2 []byte
+		var n_N2 uint
+		if tmp_bs_N2, n_N2, err = r.ReadBitString(&uper.Constraint{Lb: 2, Ub: 2}, false); err != nil {
+			return utils.WrapError("Decode N2", err)
 		}
-		ie.n2 = uper.BitString{
-			Bytes:   tmp_bs_n2,
-			NumBits: uint64(n_n2),
+		ie.N2 = uper.BitString{
+			Bytes:   tmp_bs_N2,
+			NumBits: uint64(n_N2),
 		}
-	case InvalidSymbolPattern_r16_periodicityAndPattern_r16_Choice_n4:
-		var tmp_bs_n4 []byte
-		var n_n4 uint
-		if tmp_bs_n4, n_n4, err = r.ReadBitString(&uper.Constraint{Lb: 4, Ub: 4}, false); err != nil {
-			return utils.WrapError("Decode n4", err)
+	case InvalidSymbolPattern_r16_periodicityAndPattern_r16_Choice_N4:
+		var tmp_bs_N4 []byte
+		var n_N4 uint
+		if tmp_bs_N4, n_N4, err = r.ReadBitString(&uper.Constraint{Lb: 4, Ub: 4}, false); err != nil {
+			return utils.WrapError("Decode N4", err)
 		}
-		ie.n4 = uper.BitString{
-			Bytes:   tmp_bs_n4,
-			NumBits: uint64(n_n4),
+		ie.N4 = uper.BitString{
+			Bytes:   tmp_bs_N4,
+			NumBits: uint64(n_N4),
 		}
-	case InvalidSymbolPattern_r16_periodicityAndPattern_r16_Choice_n5:
-		var tmp_bs_n5 []byte
-		var n_n5 uint
-		if tmp_bs_n5, n_n5, err = r.ReadBitString(&uper.Constraint{Lb: 5, Ub: 5}, false); err != nil {
-			return utils.WrapError("Decode n5", err)
+	case InvalidSymbolPattern_r16_periodicityAndPattern_r16_Choice_N5:
+		var tmp_bs_N5 []byte
+		var n_N5 uint
+		if tmp_bs_N5, n_N5, err = r.ReadBitString(&uper.Constraint{Lb: 5, Ub: 5}, false); err != nil {
+			return utils.WrapError("Decode N5", err)
 		}
-		ie.n5 = uper.BitString{
-			Bytes:   tmp_bs_n5,
-			NumBits: uint64(n_n5),
+		ie.N5 = uper.BitString{
+			Bytes:   tmp_bs_N5,
+			NumBits: uint64(n_N5),
 		}
-	case InvalidSymbolPattern_r16_periodicityAndPattern_r16_Choice_n8:
-		var tmp_bs_n8 []byte
-		var n_n8 uint
-		if tmp_bs_n8, n_n8, err = r.ReadBitString(&uper.Constraint{Lb: 8, Ub: 8}, false); err != nil {
-			return utils.WrapError("Decode n8", err)
+	case InvalidSymbolPattern_r16_periodicityAndPattern_r16_Choice_N8:
+		var tmp_bs_N8 []byte
+		var n_N8 uint
+		if tmp_bs_N8, n_N8, err = r.ReadBitString(&uper.Constraint{Lb: 8, Ub: 8}, false); err != nil {
+			return utils.WrapError("Decode N8", err)
 		}
-		ie.n8 = uper.BitString{
-			Bytes:   tmp_bs_n8,
-			NumBits: uint64(n_n8),
+		ie.N8 = uper.BitString{
+			Bytes:   tmp_bs_N8,
+			NumBits: uint64(n_N8),
 		}
-	case InvalidSymbolPattern_r16_periodicityAndPattern_r16_Choice_n10:
-		var tmp_bs_n10 []byte
-		var n_n10 uint
-		if tmp_bs_n10, n_n10, err = r.ReadBitString(&uper.Constraint{Lb: 10, Ub: 10}, false); err != nil {
-			return utils.WrapError("Decode n10", err)
+	case InvalidSymbolPattern_r16_periodicityAndPattern_r16_Choice_N10:
+		var tmp_bs_N10 []byte
+		var n_N10 uint
+		if tmp_bs_N10, n_N10, err = r.ReadBitString(&uper.Constraint{Lb: 10, Ub: 10}, false); err != nil {
+			return utils.WrapError("Decode N10", err)
 		}
-		ie.n10 = uper.BitString{
-			Bytes:   tmp_bs_n10,
-			NumBits: uint64(n_n10),
+		ie.N10 = uper.BitString{
+			Bytes:   tmp_bs_N10,
+			NumBits: uint64(n_N10),
 		}
-	case InvalidSymbolPattern_r16_periodicityAndPattern_r16_Choice_n20:
-		var tmp_bs_n20 []byte
-		var n_n20 uint
-		if tmp_bs_n20, n_n20, err = r.ReadBitString(&uper.Constraint{Lb: 20, Ub: 20}, false); err != nil {
-			return utils.WrapError("Decode n20", err)
+	case InvalidSymbolPattern_r16_periodicityAndPattern_r16_Choice_N20:
+		var tmp_bs_N20 []byte
+		var n_N20 uint
+		if tmp_bs_N20, n_N20, err = r.ReadBitString(&uper.Constraint{Lb: 20, Ub: 20}, false); err != nil {
+			return utils.WrapError("Decode N20", err)
 		}
-		ie.n20 = uper.BitString{
-			Bytes:   tmp_bs_n20,
-			NumBits: uint64(n_n20),
+		ie.N20 = uper.BitString{
+			Bytes:   tmp_bs_N20,
+			NumBits: uint64(n_N20),
 		}
-	case InvalidSymbolPattern_r16_periodicityAndPattern_r16_Choice_n40:
-		var tmp_bs_n40 []byte
-		var n_n40 uint
-		if tmp_bs_n40, n_n40, err = r.ReadBitString(&uper.Constraint{Lb: 40, Ub: 40}, false); err != nil {
-			return utils.WrapError("Decode n40", err)
+	case InvalidSymbolPattern_r16_periodicityAndPattern_r16_Choice_N40:
+		var tmp_bs_N40 []byte
+		var n_N40 uint
+		if tmp_bs_N40, n_N40, err = r.ReadBitString(&uper.Constraint{Lb: 40, Ub: 40}, false); err != nil {
+			return utils.WrapError("Decode N40", err)
 		}
-		ie.n40 = uper.BitString{
-			Bytes:   tmp_bs_n40,
-			NumBits: uint64(n_n40),
+		ie.N40 = uper.BitString{
+			Bytes:   tmp_bs_N40,
+			NumBits: uint64(n_N40),
 		}
 	default:
 		return fmt.Errorf("invalid choice: %d", ie.Choice)

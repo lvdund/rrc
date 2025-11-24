@@ -8,30 +8,30 @@ import (
 )
 
 type UE_CapabilityRequestFilterCommon struct {
-	mrdc_Request                 *UE_CapabilityRequestFilterCommon_mrdc_Request                 `optional`
-	codebookTypeRequest_r16      *UE_CapabilityRequestFilterCommon_codebookTypeRequest_r16      `optional,ext-1`
-	uplinkTxSwitchRequest_r16    *UE_CapabilityRequestFilterCommon_uplinkTxSwitchRequest_r16    `optional,ext-1`
-	requestedCellGrouping_r16    []CellGrouping_r16                                             `lb:1,ub:maxCellGroupings_r16,optional,ext-2`
-	fallbackGroupFiveRequest_r17 *UE_CapabilityRequestFilterCommon_fallbackGroupFiveRequest_r17 `optional,ext-3`
+	Mrdc_Request                 *UE_CapabilityRequestFilterCommon_mrdc_Request                 `optional`
+	CodebookTypeRequest_r16      *UE_CapabilityRequestFilterCommon_codebookTypeRequest_r16      `optional,ext-1`
+	UplinkTxSwitchRequest_r16    *UE_CapabilityRequestFilterCommon_uplinkTxSwitchRequest_r16    `optional,ext-1`
+	RequestedCellGrouping_r16    []CellGrouping_r16                                             `lb:1,ub:maxCellGroupings_r16,optional,ext-2`
+	FallbackGroupFiveRequest_r17 *UE_CapabilityRequestFilterCommon_fallbackGroupFiveRequest_r17 `optional,ext-3`
 }
 
 func (ie *UE_CapabilityRequestFilterCommon) Encode(w *uper.UperWriter) error {
 	var err error
-	hasExtensions := ie.codebookTypeRequest_r16 != nil || ie.uplinkTxSwitchRequest_r16 != nil || len(ie.requestedCellGrouping_r16) > 0 || ie.fallbackGroupFiveRequest_r17 != nil
-	preambleBits := []bool{hasExtensions, ie.mrdc_Request != nil}
+	hasExtensions := ie.CodebookTypeRequest_r16 != nil || ie.UplinkTxSwitchRequest_r16 != nil || len(ie.RequestedCellGrouping_r16) > 0 || ie.FallbackGroupFiveRequest_r17 != nil
+	preambleBits := []bool{hasExtensions, ie.Mrdc_Request != nil}
 	for _, bit := range preambleBits {
 		if err = w.WriteBool(bit); err != nil {
 			return err
 		}
 	}
-	if ie.mrdc_Request != nil {
-		if err = ie.mrdc_Request.Encode(w); err != nil {
-			return utils.WrapError("Encode mrdc_Request", err)
+	if ie.Mrdc_Request != nil {
+		if err = ie.Mrdc_Request.Encode(w); err != nil {
+			return utils.WrapError("Encode Mrdc_Request", err)
 		}
 	}
 	if hasExtensions {
 		// Extension bitmap: 3 bits for 3 extension groups
-		extBitmap := []bool{ie.codebookTypeRequest_r16 != nil || ie.uplinkTxSwitchRequest_r16 != nil, len(ie.requestedCellGrouping_r16) > 0, ie.fallbackGroupFiveRequest_r17 != nil}
+		extBitmap := []bool{ie.CodebookTypeRequest_r16 != nil || ie.UplinkTxSwitchRequest_r16 != nil, len(ie.RequestedCellGrouping_r16) > 0, ie.FallbackGroupFiveRequest_r17 != nil}
 		if err := w.WriteExtBitMap(extBitmap); err != nil {
 			return utils.WrapError("WriteExtBitMap UE_CapabilityRequestFilterCommon", err)
 		}
@@ -42,23 +42,23 @@ func (ie *UE_CapabilityRequestFilterCommon) Encode(w *uper.UperWriter) error {
 			extWriter := uper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 1
-			optionals_ext_1 := []bool{ie.codebookTypeRequest_r16 != nil, ie.uplinkTxSwitchRequest_r16 != nil}
+			optionals_ext_1 := []bool{ie.CodebookTypeRequest_r16 != nil, ie.UplinkTxSwitchRequest_r16 != nil}
 			for _, bit := range optionals_ext_1 {
 				if err := extWriter.WriteBool(bit); err != nil {
 					return err
 				}
 			}
 
-			// encode codebookTypeRequest_r16 optional
-			if ie.codebookTypeRequest_r16 != nil {
-				if err = ie.codebookTypeRequest_r16.Encode(extWriter); err != nil {
-					return utils.WrapError("Encode codebookTypeRequest_r16", err)
+			// encode CodebookTypeRequest_r16 optional
+			if ie.CodebookTypeRequest_r16 != nil {
+				if err = ie.CodebookTypeRequest_r16.Encode(extWriter); err != nil {
+					return utils.WrapError("Encode CodebookTypeRequest_r16", err)
 				}
 			}
-			// encode uplinkTxSwitchRequest_r16 optional
-			if ie.uplinkTxSwitchRequest_r16 != nil {
-				if err = ie.uplinkTxSwitchRequest_r16.Encode(extWriter); err != nil {
-					return utils.WrapError("Encode uplinkTxSwitchRequest_r16", err)
+			// encode UplinkTxSwitchRequest_r16 optional
+			if ie.UplinkTxSwitchRequest_r16 != nil {
+				if err = ie.UplinkTxSwitchRequest_r16.Encode(extWriter); err != nil {
+					return utils.WrapError("Encode UplinkTxSwitchRequest_r16", err)
 				}
 			}
 
@@ -77,21 +77,21 @@ func (ie *UE_CapabilityRequestFilterCommon) Encode(w *uper.UperWriter) error {
 			extWriter := uper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 2
-			optionals_ext_2 := []bool{len(ie.requestedCellGrouping_r16) > 0}
+			optionals_ext_2 := []bool{len(ie.RequestedCellGrouping_r16) > 0}
 			for _, bit := range optionals_ext_2 {
 				if err := extWriter.WriteBool(bit); err != nil {
 					return err
 				}
 			}
 
-			// encode requestedCellGrouping_r16 optional
-			if len(ie.requestedCellGrouping_r16) > 0 {
-				tmp_requestedCellGrouping_r16 := utils.NewSequence[*CellGrouping_r16]([]*CellGrouping_r16{}, uper.Constraint{Lb: 1, Ub: maxCellGroupings_r16}, false)
-				for _, i := range ie.requestedCellGrouping_r16 {
-					tmp_requestedCellGrouping_r16.Value = append(tmp_requestedCellGrouping_r16.Value, &i)
+			// encode RequestedCellGrouping_r16 optional
+			if len(ie.RequestedCellGrouping_r16) > 0 {
+				tmp_RequestedCellGrouping_r16 := utils.NewSequence[*CellGrouping_r16]([]*CellGrouping_r16{}, uper.Constraint{Lb: 1, Ub: maxCellGroupings_r16}, false)
+				for _, i := range ie.RequestedCellGrouping_r16 {
+					tmp_RequestedCellGrouping_r16.Value = append(tmp_RequestedCellGrouping_r16.Value, &i)
 				}
-				if err = tmp_requestedCellGrouping_r16.Encode(extWriter); err != nil {
-					return utils.WrapError("Encode requestedCellGrouping_r16", err)
+				if err = tmp_RequestedCellGrouping_r16.Encode(extWriter); err != nil {
+					return utils.WrapError("Encode RequestedCellGrouping_r16", err)
 				}
 			}
 
@@ -110,17 +110,17 @@ func (ie *UE_CapabilityRequestFilterCommon) Encode(w *uper.UperWriter) error {
 			extWriter := uper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 3
-			optionals_ext_3 := []bool{ie.fallbackGroupFiveRequest_r17 != nil}
+			optionals_ext_3 := []bool{ie.FallbackGroupFiveRequest_r17 != nil}
 			for _, bit := range optionals_ext_3 {
 				if err := extWriter.WriteBool(bit); err != nil {
 					return err
 				}
 			}
 
-			// encode fallbackGroupFiveRequest_r17 optional
-			if ie.fallbackGroupFiveRequest_r17 != nil {
-				if err = ie.fallbackGroupFiveRequest_r17.Encode(extWriter); err != nil {
-					return utils.WrapError("Encode fallbackGroupFiveRequest_r17", err)
+			// encode FallbackGroupFiveRequest_r17 optional
+			if ie.FallbackGroupFiveRequest_r17 != nil {
+				if err = ie.FallbackGroupFiveRequest_r17.Encode(extWriter); err != nil {
+					return utils.WrapError("Encode FallbackGroupFiveRequest_r17", err)
 				}
 			}
 
@@ -142,14 +142,14 @@ func (ie *UE_CapabilityRequestFilterCommon) Decode(r *uper.UperReader) error {
 	if extensionBit, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var mrdc_RequestPresent bool
-	if mrdc_RequestPresent, err = r.ReadBool(); err != nil {
+	var Mrdc_RequestPresent bool
+	if Mrdc_RequestPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	if mrdc_RequestPresent {
-		ie.mrdc_Request = new(UE_CapabilityRequestFilterCommon_mrdc_Request)
-		if err = ie.mrdc_Request.Decode(r); err != nil {
-			return utils.WrapError("Decode mrdc_Request", err)
+	if Mrdc_RequestPresent {
+		ie.Mrdc_Request = new(UE_CapabilityRequestFilterCommon_mrdc_Request)
+		if err = ie.Mrdc_Request.Decode(r); err != nil {
+			return utils.WrapError("Decode Mrdc_Request", err)
 		}
 	}
 
@@ -169,26 +169,26 @@ func (ie *UE_CapabilityRequestFilterCommon) Decode(r *uper.UperReader) error {
 
 			extReader := uper.NewReader(bytes.NewReader(extBytes))
 
-			codebookTypeRequest_r16Present, err := extReader.ReadBool()
+			CodebookTypeRequest_r16Present, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			uplinkTxSwitchRequest_r16Present, err := extReader.ReadBool()
+			UplinkTxSwitchRequest_r16Present, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			// decode codebookTypeRequest_r16 optional
-			if codebookTypeRequest_r16Present {
-				ie.codebookTypeRequest_r16 = new(UE_CapabilityRequestFilterCommon_codebookTypeRequest_r16)
-				if err = ie.codebookTypeRequest_r16.Decode(extReader); err != nil {
-					return utils.WrapError("Decode codebookTypeRequest_r16", err)
+			// decode CodebookTypeRequest_r16 optional
+			if CodebookTypeRequest_r16Present {
+				ie.CodebookTypeRequest_r16 = new(UE_CapabilityRequestFilterCommon_codebookTypeRequest_r16)
+				if err = ie.CodebookTypeRequest_r16.Decode(extReader); err != nil {
+					return utils.WrapError("Decode CodebookTypeRequest_r16", err)
 				}
 			}
-			// decode uplinkTxSwitchRequest_r16 optional
-			if uplinkTxSwitchRequest_r16Present {
-				ie.uplinkTxSwitchRequest_r16 = new(UE_CapabilityRequestFilterCommon_uplinkTxSwitchRequest_r16)
-				if err = ie.uplinkTxSwitchRequest_r16.Decode(extReader); err != nil {
-					return utils.WrapError("Decode uplinkTxSwitchRequest_r16", err)
+			// decode UplinkTxSwitchRequest_r16 optional
+			if UplinkTxSwitchRequest_r16Present {
+				ie.UplinkTxSwitchRequest_r16 = new(UE_CapabilityRequestFilterCommon_uplinkTxSwitchRequest_r16)
+				if err = ie.UplinkTxSwitchRequest_r16.Decode(extReader); err != nil {
+					return utils.WrapError("Decode UplinkTxSwitchRequest_r16", err)
 				}
 			}
 		}
@@ -201,22 +201,22 @@ func (ie *UE_CapabilityRequestFilterCommon) Decode(r *uper.UperReader) error {
 
 			extReader := uper.NewReader(bytes.NewReader(extBytes))
 
-			requestedCellGrouping_r16Present, err := extReader.ReadBool()
+			RequestedCellGrouping_r16Present, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			// decode requestedCellGrouping_r16 optional
-			if requestedCellGrouping_r16Present {
-				tmp_requestedCellGrouping_r16 := utils.NewSequence[*CellGrouping_r16]([]*CellGrouping_r16{}, uper.Constraint{Lb: 1, Ub: maxCellGroupings_r16}, false)
-				fn_requestedCellGrouping_r16 := func() *CellGrouping_r16 {
+			// decode RequestedCellGrouping_r16 optional
+			if RequestedCellGrouping_r16Present {
+				tmp_RequestedCellGrouping_r16 := utils.NewSequence[*CellGrouping_r16]([]*CellGrouping_r16{}, uper.Constraint{Lb: 1, Ub: maxCellGroupings_r16}, false)
+				fn_RequestedCellGrouping_r16 := func() *CellGrouping_r16 {
 					return new(CellGrouping_r16)
 				}
-				if err = tmp_requestedCellGrouping_r16.Decode(extReader, fn_requestedCellGrouping_r16); err != nil {
-					return utils.WrapError("Decode requestedCellGrouping_r16", err)
+				if err = tmp_RequestedCellGrouping_r16.Decode(extReader, fn_RequestedCellGrouping_r16); err != nil {
+					return utils.WrapError("Decode RequestedCellGrouping_r16", err)
 				}
-				ie.requestedCellGrouping_r16 = []CellGrouping_r16{}
-				for _, i := range tmp_requestedCellGrouping_r16.Value {
-					ie.requestedCellGrouping_r16 = append(ie.requestedCellGrouping_r16, *i)
+				ie.RequestedCellGrouping_r16 = []CellGrouping_r16{}
+				for _, i := range tmp_RequestedCellGrouping_r16.Value {
+					ie.RequestedCellGrouping_r16 = append(ie.RequestedCellGrouping_r16, *i)
 				}
 			}
 		}
@@ -229,15 +229,15 @@ func (ie *UE_CapabilityRequestFilterCommon) Decode(r *uper.UperReader) error {
 
 			extReader := uper.NewReader(bytes.NewReader(extBytes))
 
-			fallbackGroupFiveRequest_r17Present, err := extReader.ReadBool()
+			FallbackGroupFiveRequest_r17Present, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			// decode fallbackGroupFiveRequest_r17 optional
-			if fallbackGroupFiveRequest_r17Present {
-				ie.fallbackGroupFiveRequest_r17 = new(UE_CapabilityRequestFilterCommon_fallbackGroupFiveRequest_r17)
-				if err = ie.fallbackGroupFiveRequest_r17.Decode(extReader); err != nil {
-					return utils.WrapError("Decode fallbackGroupFiveRequest_r17", err)
+			// decode FallbackGroupFiveRequest_r17 optional
+			if FallbackGroupFiveRequest_r17Present {
+				ie.FallbackGroupFiveRequest_r17 = new(UE_CapabilityRequestFilterCommon_fallbackGroupFiveRequest_r17)
+				if err = ie.FallbackGroupFiveRequest_r17.Decode(extReader); err != nil {
+					return utils.WrapError("Decode FallbackGroupFiveRequest_r17", err)
 				}
 			}
 		}

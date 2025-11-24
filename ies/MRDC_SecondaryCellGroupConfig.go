@@ -6,43 +6,43 @@ import (
 )
 
 type MRDC_SecondaryCellGroupConfig struct {
-	mrdc_ReleaseAndAdd      *MRDC_SecondaryCellGroupConfig_mrdc_ReleaseAndAdd     `optional`
-	mrdc_SecondaryCellGroup MRDC_SecondaryCellGroupConfig_mrdc_SecondaryCellGroup `madatory`
+	Mrdc_ReleaseAndAdd      *MRDC_SecondaryCellGroupConfig_mrdc_ReleaseAndAdd     `optional`
+	Mrdc_SecondaryCellGroup MRDC_SecondaryCellGroupConfig_mrdc_SecondaryCellGroup `madatory`
 }
 
 func (ie *MRDC_SecondaryCellGroupConfig) Encode(w *uper.UperWriter) error {
 	var err error
-	preambleBits := []bool{ie.mrdc_ReleaseAndAdd != nil}
+	preambleBits := []bool{ie.Mrdc_ReleaseAndAdd != nil}
 	for _, bit := range preambleBits {
 		if err = w.WriteBool(bit); err != nil {
 			return err
 		}
 	}
-	if ie.mrdc_ReleaseAndAdd != nil {
-		if err = ie.mrdc_ReleaseAndAdd.Encode(w); err != nil {
-			return utils.WrapError("Encode mrdc_ReleaseAndAdd", err)
+	if ie.Mrdc_ReleaseAndAdd != nil {
+		if err = ie.Mrdc_ReleaseAndAdd.Encode(w); err != nil {
+			return utils.WrapError("Encode Mrdc_ReleaseAndAdd", err)
 		}
 	}
-	if err = ie.mrdc_SecondaryCellGroup.Encode(w); err != nil {
-		return utils.WrapError("Encode mrdc_SecondaryCellGroup", err)
+	if err = ie.Mrdc_SecondaryCellGroup.Encode(w); err != nil {
+		return utils.WrapError("Encode Mrdc_SecondaryCellGroup", err)
 	}
 	return nil
 }
 
 func (ie *MRDC_SecondaryCellGroupConfig) Decode(r *uper.UperReader) error {
 	var err error
-	var mrdc_ReleaseAndAddPresent bool
-	if mrdc_ReleaseAndAddPresent, err = r.ReadBool(); err != nil {
+	var Mrdc_ReleaseAndAddPresent bool
+	if Mrdc_ReleaseAndAddPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	if mrdc_ReleaseAndAddPresent {
-		ie.mrdc_ReleaseAndAdd = new(MRDC_SecondaryCellGroupConfig_mrdc_ReleaseAndAdd)
-		if err = ie.mrdc_ReleaseAndAdd.Decode(r); err != nil {
-			return utils.WrapError("Decode mrdc_ReleaseAndAdd", err)
+	if Mrdc_ReleaseAndAddPresent {
+		ie.Mrdc_ReleaseAndAdd = new(MRDC_SecondaryCellGroupConfig_mrdc_ReleaseAndAdd)
+		if err = ie.Mrdc_ReleaseAndAdd.Decode(r); err != nil {
+			return utils.WrapError("Decode Mrdc_ReleaseAndAdd", err)
 		}
 	}
-	if err = ie.mrdc_SecondaryCellGroup.Decode(r); err != nil {
-		return utils.WrapError("Decode mrdc_SecondaryCellGroup", err)
+	if err = ie.Mrdc_SecondaryCellGroup.Decode(r); err != nil {
+		return utils.WrapError("Decode Mrdc_SecondaryCellGroup", err)
 	}
 	return nil
 }

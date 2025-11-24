@@ -6,38 +6,38 @@ import (
 )
 
 type SIB1_v1610_IEs struct {
-	idleModeMeasurementsEUTRA_r16 *SIB1_v1610_IEs_idleModeMeasurementsEUTRA_r16 `optional`
-	idleModeMeasurementsNR_r16    *SIB1_v1610_IEs_idleModeMeasurementsNR_r16    `optional`
-	posSI_SchedulingInfo_r16      *PosSI_SchedulingInfo_r16                     `optional`
-	nonCriticalExtension          *SIB1_v1630_IEs                               `optional`
+	IdleModeMeasurementsEUTRA_r16 *SIB1_v1610_IEs_idleModeMeasurementsEUTRA_r16 `optional`
+	IdleModeMeasurementsNR_r16    *SIB1_v1610_IEs_idleModeMeasurementsNR_r16    `optional`
+	PosSI_SchedulingInfo_r16      *PosSI_SchedulingInfo_r16                     `optional`
+	NonCriticalExtension          *SIB1_v1630_IEs                               `optional`
 }
 
 func (ie *SIB1_v1610_IEs) Encode(w *uper.UperWriter) error {
 	var err error
-	preambleBits := []bool{ie.idleModeMeasurementsEUTRA_r16 != nil, ie.idleModeMeasurementsNR_r16 != nil, ie.posSI_SchedulingInfo_r16 != nil, ie.nonCriticalExtension != nil}
+	preambleBits := []bool{ie.IdleModeMeasurementsEUTRA_r16 != nil, ie.IdleModeMeasurementsNR_r16 != nil, ie.PosSI_SchedulingInfo_r16 != nil, ie.NonCriticalExtension != nil}
 	for _, bit := range preambleBits {
 		if err = w.WriteBool(bit); err != nil {
 			return err
 		}
 	}
-	if ie.idleModeMeasurementsEUTRA_r16 != nil {
-		if err = ie.idleModeMeasurementsEUTRA_r16.Encode(w); err != nil {
-			return utils.WrapError("Encode idleModeMeasurementsEUTRA_r16", err)
+	if ie.IdleModeMeasurementsEUTRA_r16 != nil {
+		if err = ie.IdleModeMeasurementsEUTRA_r16.Encode(w); err != nil {
+			return utils.WrapError("Encode IdleModeMeasurementsEUTRA_r16", err)
 		}
 	}
-	if ie.idleModeMeasurementsNR_r16 != nil {
-		if err = ie.idleModeMeasurementsNR_r16.Encode(w); err != nil {
-			return utils.WrapError("Encode idleModeMeasurementsNR_r16", err)
+	if ie.IdleModeMeasurementsNR_r16 != nil {
+		if err = ie.IdleModeMeasurementsNR_r16.Encode(w); err != nil {
+			return utils.WrapError("Encode IdleModeMeasurementsNR_r16", err)
 		}
 	}
-	if ie.posSI_SchedulingInfo_r16 != nil {
-		if err = ie.posSI_SchedulingInfo_r16.Encode(w); err != nil {
-			return utils.WrapError("Encode posSI_SchedulingInfo_r16", err)
+	if ie.PosSI_SchedulingInfo_r16 != nil {
+		if err = ie.PosSI_SchedulingInfo_r16.Encode(w); err != nil {
+			return utils.WrapError("Encode PosSI_SchedulingInfo_r16", err)
 		}
 	}
-	if ie.nonCriticalExtension != nil {
-		if err = ie.nonCriticalExtension.Encode(w); err != nil {
-			return utils.WrapError("Encode nonCriticalExtension", err)
+	if ie.NonCriticalExtension != nil {
+		if err = ie.NonCriticalExtension.Encode(w); err != nil {
+			return utils.WrapError("Encode NonCriticalExtension", err)
 		}
 	}
 	return nil
@@ -45,44 +45,44 @@ func (ie *SIB1_v1610_IEs) Encode(w *uper.UperWriter) error {
 
 func (ie *SIB1_v1610_IEs) Decode(r *uper.UperReader) error {
 	var err error
-	var idleModeMeasurementsEUTRA_r16Present bool
-	if idleModeMeasurementsEUTRA_r16Present, err = r.ReadBool(); err != nil {
+	var IdleModeMeasurementsEUTRA_r16Present bool
+	if IdleModeMeasurementsEUTRA_r16Present, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var idleModeMeasurementsNR_r16Present bool
-	if idleModeMeasurementsNR_r16Present, err = r.ReadBool(); err != nil {
+	var IdleModeMeasurementsNR_r16Present bool
+	if IdleModeMeasurementsNR_r16Present, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var posSI_SchedulingInfo_r16Present bool
-	if posSI_SchedulingInfo_r16Present, err = r.ReadBool(); err != nil {
+	var PosSI_SchedulingInfo_r16Present bool
+	if PosSI_SchedulingInfo_r16Present, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var nonCriticalExtensionPresent bool
-	if nonCriticalExtensionPresent, err = r.ReadBool(); err != nil {
+	var NonCriticalExtensionPresent bool
+	if NonCriticalExtensionPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	if idleModeMeasurementsEUTRA_r16Present {
-		ie.idleModeMeasurementsEUTRA_r16 = new(SIB1_v1610_IEs_idleModeMeasurementsEUTRA_r16)
-		if err = ie.idleModeMeasurementsEUTRA_r16.Decode(r); err != nil {
-			return utils.WrapError("Decode idleModeMeasurementsEUTRA_r16", err)
+	if IdleModeMeasurementsEUTRA_r16Present {
+		ie.IdleModeMeasurementsEUTRA_r16 = new(SIB1_v1610_IEs_idleModeMeasurementsEUTRA_r16)
+		if err = ie.IdleModeMeasurementsEUTRA_r16.Decode(r); err != nil {
+			return utils.WrapError("Decode IdleModeMeasurementsEUTRA_r16", err)
 		}
 	}
-	if idleModeMeasurementsNR_r16Present {
-		ie.idleModeMeasurementsNR_r16 = new(SIB1_v1610_IEs_idleModeMeasurementsNR_r16)
-		if err = ie.idleModeMeasurementsNR_r16.Decode(r); err != nil {
-			return utils.WrapError("Decode idleModeMeasurementsNR_r16", err)
+	if IdleModeMeasurementsNR_r16Present {
+		ie.IdleModeMeasurementsNR_r16 = new(SIB1_v1610_IEs_idleModeMeasurementsNR_r16)
+		if err = ie.IdleModeMeasurementsNR_r16.Decode(r); err != nil {
+			return utils.WrapError("Decode IdleModeMeasurementsNR_r16", err)
 		}
 	}
-	if posSI_SchedulingInfo_r16Present {
-		ie.posSI_SchedulingInfo_r16 = new(PosSI_SchedulingInfo_r16)
-		if err = ie.posSI_SchedulingInfo_r16.Decode(r); err != nil {
-			return utils.WrapError("Decode posSI_SchedulingInfo_r16", err)
+	if PosSI_SchedulingInfo_r16Present {
+		ie.PosSI_SchedulingInfo_r16 = new(PosSI_SchedulingInfo_r16)
+		if err = ie.PosSI_SchedulingInfo_r16.Decode(r); err != nil {
+			return utils.WrapError("Decode PosSI_SchedulingInfo_r16", err)
 		}
 	}
-	if nonCriticalExtensionPresent {
-		ie.nonCriticalExtension = new(SIB1_v1630_IEs)
-		if err = ie.nonCriticalExtension.Decode(r); err != nil {
-			return utils.WrapError("Decode nonCriticalExtension", err)
+	if NonCriticalExtensionPresent {
+		ie.NonCriticalExtension = new(SIB1_v1630_IEs)
+		if err = ie.NonCriticalExtension.Decode(r); err != nil {
+			return utils.WrapError("Decode NonCriticalExtension", err)
 		}
 	}
 	return nil

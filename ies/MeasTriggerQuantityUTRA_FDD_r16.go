@@ -9,14 +9,14 @@ import (
 
 const (
 	MeasTriggerQuantityUTRA_FDD_r16_Choice_nothing uint64 = iota
-	MeasTriggerQuantityUTRA_FDD_r16_Choice_utra_FDD_RSCP_r16
-	MeasTriggerQuantityUTRA_FDD_r16_Choice_utra_FDD_EcN0_r16
+	MeasTriggerQuantityUTRA_FDD_r16_Choice_Utra_FDD_RSCP_r16
+	MeasTriggerQuantityUTRA_FDD_r16_Choice_Utra_FDD_EcN0_r16
 )
 
 type MeasTriggerQuantityUTRA_FDD_r16 struct {
 	Choice            uint64
-	utra_FDD_RSCP_r16 int64 `lb:-5,ub:91,madatory`
-	utra_FDD_EcN0_r16 int64 `lb:0,ub:49,madatory`
+	Utra_FDD_RSCP_r16 int64 `lb:-5,ub:91,madatory`
+	Utra_FDD_EcN0_r16 int64 `lb:0,ub:49,madatory`
 }
 
 func (ie *MeasTriggerQuantityUTRA_FDD_r16) Encode(w *uper.UperWriter) error {
@@ -25,13 +25,13 @@ func (ie *MeasTriggerQuantityUTRA_FDD_r16) Encode(w *uper.UperWriter) error {
 		return err
 	}
 	switch ie.Choice {
-	case MeasTriggerQuantityUTRA_FDD_r16_Choice_utra_FDD_RSCP_r16:
-		if err = w.WriteInteger(int64(ie.utra_FDD_RSCP_r16), &uper.Constraint{Lb: -5, Ub: 91}, false); err != nil {
-			err = utils.WrapError("Encode utra_FDD_RSCP_r16", err)
+	case MeasTriggerQuantityUTRA_FDD_r16_Choice_Utra_FDD_RSCP_r16:
+		if err = w.WriteInteger(int64(ie.Utra_FDD_RSCP_r16), &uper.Constraint{Lb: -5, Ub: 91}, false); err != nil {
+			err = utils.WrapError("Encode Utra_FDD_RSCP_r16", err)
 		}
-	case MeasTriggerQuantityUTRA_FDD_r16_Choice_utra_FDD_EcN0_r16:
-		if err = w.WriteInteger(int64(ie.utra_FDD_EcN0_r16), &uper.Constraint{Lb: 0, Ub: 49}, false); err != nil {
-			err = utils.WrapError("Encode utra_FDD_EcN0_r16", err)
+	case MeasTriggerQuantityUTRA_FDD_r16_Choice_Utra_FDD_EcN0_r16:
+		if err = w.WriteInteger(int64(ie.Utra_FDD_EcN0_r16), &uper.Constraint{Lb: 0, Ub: 49}, false); err != nil {
+			err = utils.WrapError("Encode Utra_FDD_EcN0_r16", err)
 		}
 	default:
 		err = fmt.Errorf("invalid choice: %d", ie.Choice)
@@ -45,18 +45,18 @@ func (ie *MeasTriggerQuantityUTRA_FDD_r16) Decode(r *uper.UperReader) error {
 		return err
 	}
 	switch ie.Choice {
-	case MeasTriggerQuantityUTRA_FDD_r16_Choice_utra_FDD_RSCP_r16:
-		var tmp_int_utra_FDD_RSCP_r16 int64
-		if tmp_int_utra_FDD_RSCP_r16, err = r.ReadInteger(&uper.Constraint{Lb: -5, Ub: 91}, false); err != nil {
-			return utils.WrapError("Decode utra_FDD_RSCP_r16", err)
+	case MeasTriggerQuantityUTRA_FDD_r16_Choice_Utra_FDD_RSCP_r16:
+		var tmp_int_Utra_FDD_RSCP_r16 int64
+		if tmp_int_Utra_FDD_RSCP_r16, err = r.ReadInteger(&uper.Constraint{Lb: -5, Ub: 91}, false); err != nil {
+			return utils.WrapError("Decode Utra_FDD_RSCP_r16", err)
 		}
-		ie.utra_FDD_RSCP_r16 = tmp_int_utra_FDD_RSCP_r16
-	case MeasTriggerQuantityUTRA_FDD_r16_Choice_utra_FDD_EcN0_r16:
-		var tmp_int_utra_FDD_EcN0_r16 int64
-		if tmp_int_utra_FDD_EcN0_r16, err = r.ReadInteger(&uper.Constraint{Lb: 0, Ub: 49}, false); err != nil {
-			return utils.WrapError("Decode utra_FDD_EcN0_r16", err)
+		ie.Utra_FDD_RSCP_r16 = tmp_int_Utra_FDD_RSCP_r16
+	case MeasTriggerQuantityUTRA_FDD_r16_Choice_Utra_FDD_EcN0_r16:
+		var tmp_int_Utra_FDD_EcN0_r16 int64
+		if tmp_int_Utra_FDD_EcN0_r16, err = r.ReadInteger(&uper.Constraint{Lb: 0, Ub: 49}, false); err != nil {
+			return utils.WrapError("Decode Utra_FDD_EcN0_r16", err)
 		}
-		ie.utra_FDD_EcN0_r16 = tmp_int_utra_FDD_EcN0_r16
+		ie.Utra_FDD_EcN0_r16 = tmp_int_Utra_FDD_EcN0_r16
 	default:
 		return fmt.Errorf("invalid choice: %d", ie.Choice)
 	}

@@ -9,16 +9,16 @@ import (
 
 const (
 	PUCCH_SpatialRelationInfo_referenceSignal_Choice_nothing uint64 = iota
-	PUCCH_SpatialRelationInfo_referenceSignal_Choice_ssb_Index
-	PUCCH_SpatialRelationInfo_referenceSignal_Choice_csi_RS_Index
-	PUCCH_SpatialRelationInfo_referenceSignal_Choice_srs
+	PUCCH_SpatialRelationInfo_referenceSignal_Choice_Ssb_Index
+	PUCCH_SpatialRelationInfo_referenceSignal_Choice_Csi_RS_Index
+	PUCCH_SpatialRelationInfo_referenceSignal_Choice_Srs
 )
 
 type PUCCH_SpatialRelationInfo_referenceSignal struct {
 	Choice       uint64
-	ssb_Index    *SSB_Index
-	csi_RS_Index *NZP_CSI_RS_ResourceId
-	srs          *PUCCH_SRS
+	Ssb_Index    *SSB_Index
+	Csi_RS_Index *NZP_CSI_RS_ResourceId
+	Srs          *PUCCH_SRS
 }
 
 func (ie *PUCCH_SpatialRelationInfo_referenceSignal) Encode(w *uper.UperWriter) error {
@@ -27,17 +27,17 @@ func (ie *PUCCH_SpatialRelationInfo_referenceSignal) Encode(w *uper.UperWriter) 
 		return err
 	}
 	switch ie.Choice {
-	case PUCCH_SpatialRelationInfo_referenceSignal_Choice_ssb_Index:
-		if err = ie.ssb_Index.Encode(w); err != nil {
-			err = utils.WrapError("Encode ssb_Index", err)
+	case PUCCH_SpatialRelationInfo_referenceSignal_Choice_Ssb_Index:
+		if err = ie.Ssb_Index.Encode(w); err != nil {
+			err = utils.WrapError("Encode Ssb_Index", err)
 		}
-	case PUCCH_SpatialRelationInfo_referenceSignal_Choice_csi_RS_Index:
-		if err = ie.csi_RS_Index.Encode(w); err != nil {
-			err = utils.WrapError("Encode csi_RS_Index", err)
+	case PUCCH_SpatialRelationInfo_referenceSignal_Choice_Csi_RS_Index:
+		if err = ie.Csi_RS_Index.Encode(w); err != nil {
+			err = utils.WrapError("Encode Csi_RS_Index", err)
 		}
-	case PUCCH_SpatialRelationInfo_referenceSignal_Choice_srs:
-		if err = ie.srs.Encode(w); err != nil {
-			err = utils.WrapError("Encode srs", err)
+	case PUCCH_SpatialRelationInfo_referenceSignal_Choice_Srs:
+		if err = ie.Srs.Encode(w); err != nil {
+			err = utils.WrapError("Encode Srs", err)
 		}
 	default:
 		err = fmt.Errorf("invalid choice: %d", ie.Choice)
@@ -51,20 +51,20 @@ func (ie *PUCCH_SpatialRelationInfo_referenceSignal) Decode(r *uper.UperReader) 
 		return err
 	}
 	switch ie.Choice {
-	case PUCCH_SpatialRelationInfo_referenceSignal_Choice_ssb_Index:
-		ie.ssb_Index = new(SSB_Index)
-		if err = ie.ssb_Index.Decode(r); err != nil {
-			return utils.WrapError("Decode ssb_Index", err)
+	case PUCCH_SpatialRelationInfo_referenceSignal_Choice_Ssb_Index:
+		ie.Ssb_Index = new(SSB_Index)
+		if err = ie.Ssb_Index.Decode(r); err != nil {
+			return utils.WrapError("Decode Ssb_Index", err)
 		}
-	case PUCCH_SpatialRelationInfo_referenceSignal_Choice_csi_RS_Index:
-		ie.csi_RS_Index = new(NZP_CSI_RS_ResourceId)
-		if err = ie.csi_RS_Index.Decode(r); err != nil {
-			return utils.WrapError("Decode csi_RS_Index", err)
+	case PUCCH_SpatialRelationInfo_referenceSignal_Choice_Csi_RS_Index:
+		ie.Csi_RS_Index = new(NZP_CSI_RS_ResourceId)
+		if err = ie.Csi_RS_Index.Decode(r); err != nil {
+			return utils.WrapError("Decode Csi_RS_Index", err)
 		}
-	case PUCCH_SpatialRelationInfo_referenceSignal_Choice_srs:
-		ie.srs = new(PUCCH_SRS)
-		if err = ie.srs.Decode(r); err != nil {
-			return utils.WrapError("Decode srs", err)
+	case PUCCH_SpatialRelationInfo_referenceSignal_Choice_Srs:
+		ie.Srs = new(PUCCH_SRS)
+		if err = ie.Srs.Decode(r); err != nil {
+			return utils.WrapError("Decode Srs", err)
 		}
 	default:
 		return fmt.Errorf("invalid choice: %d", ie.Choice)

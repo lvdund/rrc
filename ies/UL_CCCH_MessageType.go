@@ -9,14 +9,14 @@ import (
 
 const (
 	UL_CCCH_MessageType_Choice_nothing uint64 = iota
-	UL_CCCH_MessageType_Choice_c1
-	UL_CCCH_MessageType_Choice_messageClassExtension
+	UL_CCCH_MessageType_Choice_C1
+	UL_CCCH_MessageType_Choice_MessageClassExtension
 )
 
 type UL_CCCH_MessageType struct {
 	Choice                uint64
-	c1                    *UL_CCCH_MessageType_C1
-	messageClassExtension interface{} `madatory`
+	C1                    *UL_CCCH_MessageType_C1
+	MessageClassExtension interface{} `madatory`
 }
 
 func (ie *UL_CCCH_MessageType) Encode(w *uper.UperWriter) error {
@@ -25,11 +25,11 @@ func (ie *UL_CCCH_MessageType) Encode(w *uper.UperWriter) error {
 		return err
 	}
 	switch ie.Choice {
-	case UL_CCCH_MessageType_Choice_c1:
-		if err = ie.c1.Encode(w); err != nil {
-			err = utils.WrapError("Encode c1", err)
+	case UL_CCCH_MessageType_Choice_C1:
+		if err = ie.C1.Encode(w); err != nil {
+			err = utils.WrapError("Encode C1", err)
 		}
-	case UL_CCCH_MessageType_Choice_messageClassExtension:
+	case UL_CCCH_MessageType_Choice_MessageClassExtension:
 		// interface{} field of choice - nothing to encode
 	default:
 		err = fmt.Errorf("invalid choice: %d", ie.Choice)
@@ -43,12 +43,12 @@ func (ie *UL_CCCH_MessageType) Decode(r *uper.UperReader) error {
 		return err
 	}
 	switch ie.Choice {
-	case UL_CCCH_MessageType_Choice_c1:
-		ie.c1 = new(UL_CCCH_MessageType_C1)
-		if err = ie.c1.Decode(r); err != nil {
-			return utils.WrapError("Decode c1", err)
+	case UL_CCCH_MessageType_Choice_C1:
+		ie.C1 = new(UL_CCCH_MessageType_C1)
+		if err = ie.C1.Decode(r); err != nil {
+			return utils.WrapError("Decode C1", err)
 		}
-	case UL_CCCH_MessageType_Choice_messageClassExtension:
+	case UL_CCCH_MessageType_Choice_MessageClassExtension:
 		// interface{} field of choice - nothing to decode
 	default:
 		return fmt.Errorf("invalid choice: %d", ie.Choice)

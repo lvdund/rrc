@@ -9,14 +9,14 @@ import (
 
 const (
 	RateMatchPatternGroupItem_Choice_nothing uint64 = iota
-	RateMatchPatternGroupItem_Choice_cellLevel
-	RateMatchPatternGroupItem_Choice_bwpLevel
+	RateMatchPatternGroupItem_Choice_CellLevel
+	RateMatchPatternGroupItem_Choice_BwpLevel
 )
 
 type RateMatchPatternGroupItem struct {
 	Choice    uint64
-	cellLevel *RateMatchPatternId
-	bwpLevel  *RateMatchPatternId
+	CellLevel *RateMatchPatternId
+	BwpLevel  *RateMatchPatternId
 }
 
 func (ie *RateMatchPatternGroupItem) Encode(w *uper.UperWriter) error {
@@ -25,13 +25,13 @@ func (ie *RateMatchPatternGroupItem) Encode(w *uper.UperWriter) error {
 		return err
 	}
 	switch ie.Choice {
-	case RateMatchPatternGroupItem_Choice_cellLevel:
-		if err = ie.cellLevel.Encode(w); err != nil {
-			err = utils.WrapError("Encode cellLevel", err)
+	case RateMatchPatternGroupItem_Choice_CellLevel:
+		if err = ie.CellLevel.Encode(w); err != nil {
+			err = utils.WrapError("Encode CellLevel", err)
 		}
-	case RateMatchPatternGroupItem_Choice_bwpLevel:
-		if err = ie.bwpLevel.Encode(w); err != nil {
-			err = utils.WrapError("Encode bwpLevel", err)
+	case RateMatchPatternGroupItem_Choice_BwpLevel:
+		if err = ie.BwpLevel.Encode(w); err != nil {
+			err = utils.WrapError("Encode BwpLevel", err)
 		}
 	default:
 		err = fmt.Errorf("invalid choice: %d", ie.Choice)
@@ -45,15 +45,15 @@ func (ie *RateMatchPatternGroupItem) Decode(r *uper.UperReader) error {
 		return err
 	}
 	switch ie.Choice {
-	case RateMatchPatternGroupItem_Choice_cellLevel:
-		ie.cellLevel = new(RateMatchPatternId)
-		if err = ie.cellLevel.Decode(r); err != nil {
-			return utils.WrapError("Decode cellLevel", err)
+	case RateMatchPatternGroupItem_Choice_CellLevel:
+		ie.CellLevel = new(RateMatchPatternId)
+		if err = ie.CellLevel.Decode(r); err != nil {
+			return utils.WrapError("Decode CellLevel", err)
 		}
-	case RateMatchPatternGroupItem_Choice_bwpLevel:
-		ie.bwpLevel = new(RateMatchPatternId)
-		if err = ie.bwpLevel.Decode(r); err != nil {
-			return utils.WrapError("Decode bwpLevel", err)
+	case RateMatchPatternGroupItem_Choice_BwpLevel:
+		ie.BwpLevel = new(RateMatchPatternId)
+		if err = ie.BwpLevel.Decode(r); err != nil {
+			return utils.WrapError("Decode BwpLevel", err)
 		}
 	default:
 		return fmt.Errorf("invalid choice: %d", ie.Choice)

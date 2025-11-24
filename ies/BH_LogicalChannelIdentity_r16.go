@@ -9,14 +9,14 @@ import (
 
 const (
 	BH_LogicalChannelIdentity_r16_Choice_nothing uint64 = iota
-	BH_LogicalChannelIdentity_r16_Choice_bh_LogicalChannelIdentity_r16
-	BH_LogicalChannelIdentity_r16_Choice_bh_LogicalChannelIdentityExt_r16
+	BH_LogicalChannelIdentity_r16_Choice_Bh_LogicalChannelIdentity_r16
+	BH_LogicalChannelIdentity_r16_Choice_Bh_LogicalChannelIdentityExt_r16
 )
 
 type BH_LogicalChannelIdentity_r16 struct {
 	Choice                           uint64
-	bh_LogicalChannelIdentity_r16    *LogicalChannelIdentity
-	bh_LogicalChannelIdentityExt_r16 *BH_LogicalChannelIdentity_Ext_r16
+	Bh_LogicalChannelIdentity_r16    *LogicalChannelIdentity
+	Bh_LogicalChannelIdentityExt_r16 *BH_LogicalChannelIdentity_Ext_r16
 }
 
 func (ie *BH_LogicalChannelIdentity_r16) Encode(w *uper.UperWriter) error {
@@ -25,13 +25,13 @@ func (ie *BH_LogicalChannelIdentity_r16) Encode(w *uper.UperWriter) error {
 		return err
 	}
 	switch ie.Choice {
-	case BH_LogicalChannelIdentity_r16_Choice_bh_LogicalChannelIdentity_r16:
-		if err = ie.bh_LogicalChannelIdentity_r16.Encode(w); err != nil {
-			err = utils.WrapError("Encode bh_LogicalChannelIdentity_r16", err)
+	case BH_LogicalChannelIdentity_r16_Choice_Bh_LogicalChannelIdentity_r16:
+		if err = ie.Bh_LogicalChannelIdentity_r16.Encode(w); err != nil {
+			err = utils.WrapError("Encode Bh_LogicalChannelIdentity_r16", err)
 		}
-	case BH_LogicalChannelIdentity_r16_Choice_bh_LogicalChannelIdentityExt_r16:
-		if err = ie.bh_LogicalChannelIdentityExt_r16.Encode(w); err != nil {
-			err = utils.WrapError("Encode bh_LogicalChannelIdentityExt_r16", err)
+	case BH_LogicalChannelIdentity_r16_Choice_Bh_LogicalChannelIdentityExt_r16:
+		if err = ie.Bh_LogicalChannelIdentityExt_r16.Encode(w); err != nil {
+			err = utils.WrapError("Encode Bh_LogicalChannelIdentityExt_r16", err)
 		}
 	default:
 		err = fmt.Errorf("invalid choice: %d", ie.Choice)
@@ -45,15 +45,15 @@ func (ie *BH_LogicalChannelIdentity_r16) Decode(r *uper.UperReader) error {
 		return err
 	}
 	switch ie.Choice {
-	case BH_LogicalChannelIdentity_r16_Choice_bh_LogicalChannelIdentity_r16:
-		ie.bh_LogicalChannelIdentity_r16 = new(LogicalChannelIdentity)
-		if err = ie.bh_LogicalChannelIdentity_r16.Decode(r); err != nil {
-			return utils.WrapError("Decode bh_LogicalChannelIdentity_r16", err)
+	case BH_LogicalChannelIdentity_r16_Choice_Bh_LogicalChannelIdentity_r16:
+		ie.Bh_LogicalChannelIdentity_r16 = new(LogicalChannelIdentity)
+		if err = ie.Bh_LogicalChannelIdentity_r16.Decode(r); err != nil {
+			return utils.WrapError("Decode Bh_LogicalChannelIdentity_r16", err)
 		}
-	case BH_LogicalChannelIdentity_r16_Choice_bh_LogicalChannelIdentityExt_r16:
-		ie.bh_LogicalChannelIdentityExt_r16 = new(BH_LogicalChannelIdentity_Ext_r16)
-		if err = ie.bh_LogicalChannelIdentityExt_r16.Decode(r); err != nil {
-			return utils.WrapError("Decode bh_LogicalChannelIdentityExt_r16", err)
+	case BH_LogicalChannelIdentity_r16_Choice_Bh_LogicalChannelIdentityExt_r16:
+		ie.Bh_LogicalChannelIdentityExt_r16 = new(BH_LogicalChannelIdentity_Ext_r16)
+		if err = ie.Bh_LogicalChannelIdentityExt_r16.Decode(r); err != nil {
+			return utils.WrapError("Decode Bh_LogicalChannelIdentityExt_r16", err)
 		}
 	default:
 		return fmt.Errorf("invalid choice: %d", ie.Choice)

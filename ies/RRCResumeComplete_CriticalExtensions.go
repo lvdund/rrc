@@ -9,14 +9,14 @@ import (
 
 const (
 	RRCResumeComplete_CriticalExtensions_Choice_nothing uint64 = iota
-	RRCResumeComplete_CriticalExtensions_Choice_rrcResumeComplete
-	RRCResumeComplete_CriticalExtensions_Choice_criticalExtensionsFuture
+	RRCResumeComplete_CriticalExtensions_Choice_RrcResumeComplete
+	RRCResumeComplete_CriticalExtensions_Choice_CriticalExtensionsFuture
 )
 
 type RRCResumeComplete_CriticalExtensions struct {
 	Choice                   uint64
-	rrcResumeComplete        *RRCResumeComplete_IEs
-	criticalExtensionsFuture interface{} `madatory`
+	RrcResumeComplete        *RRCResumeComplete_IEs
+	CriticalExtensionsFuture interface{} `madatory`
 }
 
 func (ie *RRCResumeComplete_CriticalExtensions) Encode(w *uper.UperWriter) error {
@@ -25,11 +25,11 @@ func (ie *RRCResumeComplete_CriticalExtensions) Encode(w *uper.UperWriter) error
 		return err
 	}
 	switch ie.Choice {
-	case RRCResumeComplete_CriticalExtensions_Choice_rrcResumeComplete:
-		if err = ie.rrcResumeComplete.Encode(w); err != nil {
-			err = utils.WrapError("Encode rrcResumeComplete", err)
+	case RRCResumeComplete_CriticalExtensions_Choice_RrcResumeComplete:
+		if err = ie.RrcResumeComplete.Encode(w); err != nil {
+			err = utils.WrapError("Encode RrcResumeComplete", err)
 		}
-	case RRCResumeComplete_CriticalExtensions_Choice_criticalExtensionsFuture:
+	case RRCResumeComplete_CriticalExtensions_Choice_CriticalExtensionsFuture:
 		// interface{} field of choice - nothing to encode
 	default:
 		err = fmt.Errorf("invalid choice: %d", ie.Choice)
@@ -43,12 +43,12 @@ func (ie *RRCResumeComplete_CriticalExtensions) Decode(r *uper.UperReader) error
 		return err
 	}
 	switch ie.Choice {
-	case RRCResumeComplete_CriticalExtensions_Choice_rrcResumeComplete:
-		ie.rrcResumeComplete = new(RRCResumeComplete_IEs)
-		if err = ie.rrcResumeComplete.Decode(r); err != nil {
-			return utils.WrapError("Decode rrcResumeComplete", err)
+	case RRCResumeComplete_CriticalExtensions_Choice_RrcResumeComplete:
+		ie.RrcResumeComplete = new(RRCResumeComplete_IEs)
+		if err = ie.RrcResumeComplete.Decode(r); err != nil {
+			return utils.WrapError("Decode RrcResumeComplete", err)
 		}
-	case RRCResumeComplete_CriticalExtensions_Choice_criticalExtensionsFuture:
+	case RRCResumeComplete_CriticalExtensions_Choice_CriticalExtensionsFuture:
 		// interface{} field of choice - nothing to decode
 	default:
 		return fmt.Errorf("invalid choice: %d", ie.Choice)

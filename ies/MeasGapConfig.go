@@ -8,35 +8,35 @@ import (
 )
 
 type MeasGapConfig struct {
-	gapFR2                               *GapConfig                            `optional,setuprelease`
-	gapFR1                               *GapConfig                            `optional,ext-1,setuprelease`
-	gapUE                                *GapConfig                            `optional,ext-1,setuprelease`
-	gapToAddModList_r17                  []GapConfig_r17                       `lb:1,ub:maxNrofGapId_r17,optional,ext-2`
-	gapToReleaseList_r17                 []MeasGapId_r17                       `lb:1,ub:maxNrofGapId_r17,optional,ext-2`
-	posMeasGapPreConfigToAddModList_r17  *PosMeasGapPreConfigToAddModList_r17  `optional,ext-2`
-	posMeasGapPreConfigToReleaseList_r17 *PosMeasGapPreConfigToReleaseList_r17 `optional,ext-2`
+	GapFR2                               *GapConfig                            `optional,setuprelease`
+	GapFR1                               *GapConfig                            `optional,ext-1,setuprelease`
+	GapUE                                *GapConfig                            `optional,ext-1,setuprelease`
+	GapToAddModList_r17                  []GapConfig_r17                       `lb:1,ub:maxNrofGapId_r17,optional,ext-2`
+	GapToReleaseList_r17                 []MeasGapId_r17                       `lb:1,ub:maxNrofGapId_r17,optional,ext-2`
+	PosMeasGapPreConfigToAddModList_r17  *PosMeasGapPreConfigToAddModList_r17  `optional,ext-2`
+	PosMeasGapPreConfigToReleaseList_r17 *PosMeasGapPreConfigToReleaseList_r17 `optional,ext-2`
 }
 
 func (ie *MeasGapConfig) Encode(w *uper.UperWriter) error {
 	var err error
-	hasExtensions := ie.gapFR1 != nil || ie.gapUE != nil || len(ie.gapToAddModList_r17) > 0 || len(ie.gapToReleaseList_r17) > 0 || ie.posMeasGapPreConfigToAddModList_r17 != nil || ie.posMeasGapPreConfigToReleaseList_r17 != nil
-	preambleBits := []bool{hasExtensions, ie.gapFR2 != nil}
+	hasExtensions := ie.GapFR1 != nil || ie.GapUE != nil || len(ie.GapToAddModList_r17) > 0 || len(ie.GapToReleaseList_r17) > 0 || ie.PosMeasGapPreConfigToAddModList_r17 != nil || ie.PosMeasGapPreConfigToReleaseList_r17 != nil
+	preambleBits := []bool{hasExtensions, ie.GapFR2 != nil}
 	for _, bit := range preambleBits {
 		if err = w.WriteBool(bit); err != nil {
 			return err
 		}
 	}
-	if ie.gapFR2 != nil {
-		tmp_gapFR2 := utils.SetupRelease[*GapConfig]{
-			Setup: ie.gapFR2,
+	if ie.GapFR2 != nil {
+		tmp_GapFR2 := utils.SetupRelease[*GapConfig]{
+			Setup: ie.GapFR2,
 		}
-		if err = tmp_gapFR2.Encode(w); err != nil {
-			return utils.WrapError("Encode gapFR2", err)
+		if err = tmp_GapFR2.Encode(w); err != nil {
+			return utils.WrapError("Encode GapFR2", err)
 		}
 	}
 	if hasExtensions {
 		// Extension bitmap: 2 bits for 2 extension groups
-		extBitmap := []bool{ie.gapFR1 != nil || ie.gapUE != nil, len(ie.gapToAddModList_r17) > 0 || len(ie.gapToReleaseList_r17) > 0 || ie.posMeasGapPreConfigToAddModList_r17 != nil || ie.posMeasGapPreConfigToReleaseList_r17 != nil}
+		extBitmap := []bool{ie.GapFR1 != nil || ie.GapUE != nil, len(ie.GapToAddModList_r17) > 0 || len(ie.GapToReleaseList_r17) > 0 || ie.PosMeasGapPreConfigToAddModList_r17 != nil || ie.PosMeasGapPreConfigToReleaseList_r17 != nil}
 		if err := w.WriteExtBitMap(extBitmap); err != nil {
 			return utils.WrapError("WriteExtBitMap MeasGapConfig", err)
 		}
@@ -47,29 +47,29 @@ func (ie *MeasGapConfig) Encode(w *uper.UperWriter) error {
 			extWriter := uper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 1
-			optionals_ext_1 := []bool{ie.gapFR1 != nil, ie.gapUE != nil}
+			optionals_ext_1 := []bool{ie.GapFR1 != nil, ie.GapUE != nil}
 			for _, bit := range optionals_ext_1 {
 				if err := extWriter.WriteBool(bit); err != nil {
 					return err
 				}
 			}
 
-			// encode gapFR1 optional
-			if ie.gapFR1 != nil {
-				tmp_gapFR1 := utils.SetupRelease[*GapConfig]{
-					Setup: ie.gapFR1,
+			// encode GapFR1 optional
+			if ie.GapFR1 != nil {
+				tmp_GapFR1 := utils.SetupRelease[*GapConfig]{
+					Setup: ie.GapFR1,
 				}
-				if err = tmp_gapFR1.Encode(extWriter); err != nil {
-					return utils.WrapError("Encode gapFR1", err)
+				if err = tmp_GapFR1.Encode(extWriter); err != nil {
+					return utils.WrapError("Encode GapFR1", err)
 				}
 			}
-			// encode gapUE optional
-			if ie.gapUE != nil {
-				tmp_gapUE := utils.SetupRelease[*GapConfig]{
-					Setup: ie.gapUE,
+			// encode GapUE optional
+			if ie.GapUE != nil {
+				tmp_GapUE := utils.SetupRelease[*GapConfig]{
+					Setup: ie.GapUE,
 				}
-				if err = tmp_gapUE.Encode(extWriter); err != nil {
-					return utils.WrapError("Encode gapUE", err)
+				if err = tmp_GapUE.Encode(extWriter); err != nil {
+					return utils.WrapError("Encode GapUE", err)
 				}
 			}
 
@@ -88,43 +88,43 @@ func (ie *MeasGapConfig) Encode(w *uper.UperWriter) error {
 			extWriter := uper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 2
-			optionals_ext_2 := []bool{len(ie.gapToAddModList_r17) > 0, len(ie.gapToReleaseList_r17) > 0, ie.posMeasGapPreConfigToAddModList_r17 != nil, ie.posMeasGapPreConfigToReleaseList_r17 != nil}
+			optionals_ext_2 := []bool{len(ie.GapToAddModList_r17) > 0, len(ie.GapToReleaseList_r17) > 0, ie.PosMeasGapPreConfigToAddModList_r17 != nil, ie.PosMeasGapPreConfigToReleaseList_r17 != nil}
 			for _, bit := range optionals_ext_2 {
 				if err := extWriter.WriteBool(bit); err != nil {
 					return err
 				}
 			}
 
-			// encode gapToAddModList_r17 optional
-			if len(ie.gapToAddModList_r17) > 0 {
-				tmp_gapToAddModList_r17 := utils.NewSequence[*GapConfig_r17]([]*GapConfig_r17{}, uper.Constraint{Lb: 1, Ub: maxNrofGapId_r17}, false)
-				for _, i := range ie.gapToAddModList_r17 {
-					tmp_gapToAddModList_r17.Value = append(tmp_gapToAddModList_r17.Value, &i)
+			// encode GapToAddModList_r17 optional
+			if len(ie.GapToAddModList_r17) > 0 {
+				tmp_GapToAddModList_r17 := utils.NewSequence[*GapConfig_r17]([]*GapConfig_r17{}, uper.Constraint{Lb: 1, Ub: maxNrofGapId_r17}, false)
+				for _, i := range ie.GapToAddModList_r17 {
+					tmp_GapToAddModList_r17.Value = append(tmp_GapToAddModList_r17.Value, &i)
 				}
-				if err = tmp_gapToAddModList_r17.Encode(extWriter); err != nil {
-					return utils.WrapError("Encode gapToAddModList_r17", err)
-				}
-			}
-			// encode gapToReleaseList_r17 optional
-			if len(ie.gapToReleaseList_r17) > 0 {
-				tmp_gapToReleaseList_r17 := utils.NewSequence[*MeasGapId_r17]([]*MeasGapId_r17{}, uper.Constraint{Lb: 1, Ub: maxNrofGapId_r17}, false)
-				for _, i := range ie.gapToReleaseList_r17 {
-					tmp_gapToReleaseList_r17.Value = append(tmp_gapToReleaseList_r17.Value, &i)
-				}
-				if err = tmp_gapToReleaseList_r17.Encode(extWriter); err != nil {
-					return utils.WrapError("Encode gapToReleaseList_r17", err)
+				if err = tmp_GapToAddModList_r17.Encode(extWriter); err != nil {
+					return utils.WrapError("Encode GapToAddModList_r17", err)
 				}
 			}
-			// encode posMeasGapPreConfigToAddModList_r17 optional
-			if ie.posMeasGapPreConfigToAddModList_r17 != nil {
-				if err = ie.posMeasGapPreConfigToAddModList_r17.Encode(extWriter); err != nil {
-					return utils.WrapError("Encode posMeasGapPreConfigToAddModList_r17", err)
+			// encode GapToReleaseList_r17 optional
+			if len(ie.GapToReleaseList_r17) > 0 {
+				tmp_GapToReleaseList_r17 := utils.NewSequence[*MeasGapId_r17]([]*MeasGapId_r17{}, uper.Constraint{Lb: 1, Ub: maxNrofGapId_r17}, false)
+				for _, i := range ie.GapToReleaseList_r17 {
+					tmp_GapToReleaseList_r17.Value = append(tmp_GapToReleaseList_r17.Value, &i)
+				}
+				if err = tmp_GapToReleaseList_r17.Encode(extWriter); err != nil {
+					return utils.WrapError("Encode GapToReleaseList_r17", err)
 				}
 			}
-			// encode posMeasGapPreConfigToReleaseList_r17 optional
-			if ie.posMeasGapPreConfigToReleaseList_r17 != nil {
-				if err = ie.posMeasGapPreConfigToReleaseList_r17.Encode(extWriter); err != nil {
-					return utils.WrapError("Encode posMeasGapPreConfigToReleaseList_r17", err)
+			// encode PosMeasGapPreConfigToAddModList_r17 optional
+			if ie.PosMeasGapPreConfigToAddModList_r17 != nil {
+				if err = ie.PosMeasGapPreConfigToAddModList_r17.Encode(extWriter); err != nil {
+					return utils.WrapError("Encode PosMeasGapPreConfigToAddModList_r17", err)
+				}
+			}
+			// encode PosMeasGapPreConfigToReleaseList_r17 optional
+			if ie.PosMeasGapPreConfigToReleaseList_r17 != nil {
+				if err = ie.PosMeasGapPreConfigToReleaseList_r17.Encode(extWriter); err != nil {
+					return utils.WrapError("Encode PosMeasGapPreConfigToReleaseList_r17", err)
 				}
 			}
 
@@ -146,16 +146,16 @@ func (ie *MeasGapConfig) Decode(r *uper.UperReader) error {
 	if extensionBit, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var gapFR2Present bool
-	if gapFR2Present, err = r.ReadBool(); err != nil {
+	var GapFR2Present bool
+	if GapFR2Present, err = r.ReadBool(); err != nil {
 		return err
 	}
-	if gapFR2Present {
-		tmp_gapFR2 := utils.SetupRelease[*GapConfig]{}
-		if err = tmp_gapFR2.Decode(r); err != nil {
-			return utils.WrapError("Decode gapFR2", err)
+	if GapFR2Present {
+		tmp_GapFR2 := utils.SetupRelease[*GapConfig]{}
+		if err = tmp_GapFR2.Decode(r); err != nil {
+			return utils.WrapError("Decode GapFR2", err)
 		}
-		ie.gapFR2 = tmp_gapFR2.Setup
+		ie.GapFR2 = tmp_GapFR2.Setup
 	}
 
 	if extensionBit {
@@ -174,29 +174,29 @@ func (ie *MeasGapConfig) Decode(r *uper.UperReader) error {
 
 			extReader := uper.NewReader(bytes.NewReader(extBytes))
 
-			gapFR1Present, err := extReader.ReadBool()
+			GapFR1Present, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			gapUEPresent, err := extReader.ReadBool()
+			GapUEPresent, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			// decode gapFR1 optional
-			if gapFR1Present {
-				tmp_gapFR1 := utils.SetupRelease[*GapConfig]{}
-				if err = tmp_gapFR1.Decode(extReader); err != nil {
-					return utils.WrapError("Decode gapFR1", err)
+			// decode GapFR1 optional
+			if GapFR1Present {
+				tmp_GapFR1 := utils.SetupRelease[*GapConfig]{}
+				if err = tmp_GapFR1.Decode(extReader); err != nil {
+					return utils.WrapError("Decode GapFR1", err)
 				}
-				ie.gapFR1 = tmp_gapFR1.Setup
+				ie.GapFR1 = tmp_GapFR1.Setup
 			}
-			// decode gapUE optional
-			if gapUEPresent {
-				tmp_gapUE := utils.SetupRelease[*GapConfig]{}
-				if err = tmp_gapUE.Decode(extReader); err != nil {
-					return utils.WrapError("Decode gapUE", err)
+			// decode GapUE optional
+			if GapUEPresent {
+				tmp_GapUE := utils.SetupRelease[*GapConfig]{}
+				if err = tmp_GapUE.Decode(extReader); err != nil {
+					return utils.WrapError("Decode GapUE", err)
 				}
-				ie.gapUE = tmp_gapUE.Setup
+				ie.GapUE = tmp_GapUE.Setup
 			}
 		}
 		// decode extension group 2
@@ -208,62 +208,62 @@ func (ie *MeasGapConfig) Decode(r *uper.UperReader) error {
 
 			extReader := uper.NewReader(bytes.NewReader(extBytes))
 
-			gapToAddModList_r17Present, err := extReader.ReadBool()
+			GapToAddModList_r17Present, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			gapToReleaseList_r17Present, err := extReader.ReadBool()
+			GapToReleaseList_r17Present, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			posMeasGapPreConfigToAddModList_r17Present, err := extReader.ReadBool()
+			PosMeasGapPreConfigToAddModList_r17Present, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			posMeasGapPreConfigToReleaseList_r17Present, err := extReader.ReadBool()
+			PosMeasGapPreConfigToReleaseList_r17Present, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			// decode gapToAddModList_r17 optional
-			if gapToAddModList_r17Present {
-				tmp_gapToAddModList_r17 := utils.NewSequence[*GapConfig_r17]([]*GapConfig_r17{}, uper.Constraint{Lb: 1, Ub: maxNrofGapId_r17}, false)
-				fn_gapToAddModList_r17 := func() *GapConfig_r17 {
+			// decode GapToAddModList_r17 optional
+			if GapToAddModList_r17Present {
+				tmp_GapToAddModList_r17 := utils.NewSequence[*GapConfig_r17]([]*GapConfig_r17{}, uper.Constraint{Lb: 1, Ub: maxNrofGapId_r17}, false)
+				fn_GapToAddModList_r17 := func() *GapConfig_r17 {
 					return new(GapConfig_r17)
 				}
-				if err = tmp_gapToAddModList_r17.Decode(extReader, fn_gapToAddModList_r17); err != nil {
-					return utils.WrapError("Decode gapToAddModList_r17", err)
+				if err = tmp_GapToAddModList_r17.Decode(extReader, fn_GapToAddModList_r17); err != nil {
+					return utils.WrapError("Decode GapToAddModList_r17", err)
 				}
-				ie.gapToAddModList_r17 = []GapConfig_r17{}
-				for _, i := range tmp_gapToAddModList_r17.Value {
-					ie.gapToAddModList_r17 = append(ie.gapToAddModList_r17, *i)
+				ie.GapToAddModList_r17 = []GapConfig_r17{}
+				for _, i := range tmp_GapToAddModList_r17.Value {
+					ie.GapToAddModList_r17 = append(ie.GapToAddModList_r17, *i)
 				}
 			}
-			// decode gapToReleaseList_r17 optional
-			if gapToReleaseList_r17Present {
-				tmp_gapToReleaseList_r17 := utils.NewSequence[*MeasGapId_r17]([]*MeasGapId_r17{}, uper.Constraint{Lb: 1, Ub: maxNrofGapId_r17}, false)
-				fn_gapToReleaseList_r17 := func() *MeasGapId_r17 {
+			// decode GapToReleaseList_r17 optional
+			if GapToReleaseList_r17Present {
+				tmp_GapToReleaseList_r17 := utils.NewSequence[*MeasGapId_r17]([]*MeasGapId_r17{}, uper.Constraint{Lb: 1, Ub: maxNrofGapId_r17}, false)
+				fn_GapToReleaseList_r17 := func() *MeasGapId_r17 {
 					return new(MeasGapId_r17)
 				}
-				if err = tmp_gapToReleaseList_r17.Decode(extReader, fn_gapToReleaseList_r17); err != nil {
-					return utils.WrapError("Decode gapToReleaseList_r17", err)
+				if err = tmp_GapToReleaseList_r17.Decode(extReader, fn_GapToReleaseList_r17); err != nil {
+					return utils.WrapError("Decode GapToReleaseList_r17", err)
 				}
-				ie.gapToReleaseList_r17 = []MeasGapId_r17{}
-				for _, i := range tmp_gapToReleaseList_r17.Value {
-					ie.gapToReleaseList_r17 = append(ie.gapToReleaseList_r17, *i)
-				}
-			}
-			// decode posMeasGapPreConfigToAddModList_r17 optional
-			if posMeasGapPreConfigToAddModList_r17Present {
-				ie.posMeasGapPreConfigToAddModList_r17 = new(PosMeasGapPreConfigToAddModList_r17)
-				if err = ie.posMeasGapPreConfigToAddModList_r17.Decode(extReader); err != nil {
-					return utils.WrapError("Decode posMeasGapPreConfigToAddModList_r17", err)
+				ie.GapToReleaseList_r17 = []MeasGapId_r17{}
+				for _, i := range tmp_GapToReleaseList_r17.Value {
+					ie.GapToReleaseList_r17 = append(ie.GapToReleaseList_r17, *i)
 				}
 			}
-			// decode posMeasGapPreConfigToReleaseList_r17 optional
-			if posMeasGapPreConfigToReleaseList_r17Present {
-				ie.posMeasGapPreConfigToReleaseList_r17 = new(PosMeasGapPreConfigToReleaseList_r17)
-				if err = ie.posMeasGapPreConfigToReleaseList_r17.Decode(extReader); err != nil {
-					return utils.WrapError("Decode posMeasGapPreConfigToReleaseList_r17", err)
+			// decode PosMeasGapPreConfigToAddModList_r17 optional
+			if PosMeasGapPreConfigToAddModList_r17Present {
+				ie.PosMeasGapPreConfigToAddModList_r17 = new(PosMeasGapPreConfigToAddModList_r17)
+				if err = ie.PosMeasGapPreConfigToAddModList_r17.Decode(extReader); err != nil {
+					return utils.WrapError("Decode PosMeasGapPreConfigToAddModList_r17", err)
+				}
+			}
+			// decode PosMeasGapPreConfigToReleaseList_r17 optional
+			if PosMeasGapPreConfigToReleaseList_r17Present {
+				ie.PosMeasGapPreConfigToReleaseList_r17 = new(PosMeasGapPreConfigToReleaseList_r17)
+				if err = ie.PosMeasGapPreConfigToReleaseList_r17.Decode(extReader); err != nil {
+					return utils.WrapError("Decode PosMeasGapPreConfigToReleaseList_r17", err)
 				}
 			}
 		}

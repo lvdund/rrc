@@ -9,14 +9,14 @@ import (
 
 const (
 	ReconfigurationWithSync_rach_ConfigDedicated_Choice_nothing uint64 = iota
-	ReconfigurationWithSync_rach_ConfigDedicated_Choice_uplink
-	ReconfigurationWithSync_rach_ConfigDedicated_Choice_supplementaryUplink
+	ReconfigurationWithSync_rach_ConfigDedicated_Choice_Uplink
+	ReconfigurationWithSync_rach_ConfigDedicated_Choice_SupplementaryUplink
 )
 
 type ReconfigurationWithSync_rach_ConfigDedicated struct {
 	Choice              uint64
-	uplink              *RACH_ConfigDedicated
-	supplementaryUplink *RACH_ConfigDedicated
+	Uplink              *RACH_ConfigDedicated
+	SupplementaryUplink *RACH_ConfigDedicated
 }
 
 func (ie *ReconfigurationWithSync_rach_ConfigDedicated) Encode(w *uper.UperWriter) error {
@@ -25,13 +25,13 @@ func (ie *ReconfigurationWithSync_rach_ConfigDedicated) Encode(w *uper.UperWrite
 		return err
 	}
 	switch ie.Choice {
-	case ReconfigurationWithSync_rach_ConfigDedicated_Choice_uplink:
-		if err = ie.uplink.Encode(w); err != nil {
-			err = utils.WrapError("Encode uplink", err)
+	case ReconfigurationWithSync_rach_ConfigDedicated_Choice_Uplink:
+		if err = ie.Uplink.Encode(w); err != nil {
+			err = utils.WrapError("Encode Uplink", err)
 		}
-	case ReconfigurationWithSync_rach_ConfigDedicated_Choice_supplementaryUplink:
-		if err = ie.supplementaryUplink.Encode(w); err != nil {
-			err = utils.WrapError("Encode supplementaryUplink", err)
+	case ReconfigurationWithSync_rach_ConfigDedicated_Choice_SupplementaryUplink:
+		if err = ie.SupplementaryUplink.Encode(w); err != nil {
+			err = utils.WrapError("Encode SupplementaryUplink", err)
 		}
 	default:
 		err = fmt.Errorf("invalid choice: %d", ie.Choice)
@@ -45,15 +45,15 @@ func (ie *ReconfigurationWithSync_rach_ConfigDedicated) Decode(r *uper.UperReade
 		return err
 	}
 	switch ie.Choice {
-	case ReconfigurationWithSync_rach_ConfigDedicated_Choice_uplink:
-		ie.uplink = new(RACH_ConfigDedicated)
-		if err = ie.uplink.Decode(r); err != nil {
-			return utils.WrapError("Decode uplink", err)
+	case ReconfigurationWithSync_rach_ConfigDedicated_Choice_Uplink:
+		ie.Uplink = new(RACH_ConfigDedicated)
+		if err = ie.Uplink.Decode(r); err != nil {
+			return utils.WrapError("Decode Uplink", err)
 		}
-	case ReconfigurationWithSync_rach_ConfigDedicated_Choice_supplementaryUplink:
-		ie.supplementaryUplink = new(RACH_ConfigDedicated)
-		if err = ie.supplementaryUplink.Decode(r); err != nil {
-			return utils.WrapError("Decode supplementaryUplink", err)
+	case ReconfigurationWithSync_rach_ConfigDedicated_Choice_SupplementaryUplink:
+		ie.SupplementaryUplink = new(RACH_ConfigDedicated)
+		if err = ie.SupplementaryUplink.Decode(r); err != nil {
+			return utils.WrapError("Decode SupplementaryUplink", err)
 		}
 	default:
 		return fmt.Errorf("invalid choice: %d", ie.Choice)

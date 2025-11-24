@@ -6,68 +6,68 @@ import (
 )
 
 type CG_ConfigInfo_v1560_IEs struct {
-	candidateCellInfoListMN_EUTRA *[]byte                                            `optional`
-	candidateCellInfoListSN_EUTRA *[]byte                                            `optional`
-	sourceConfigSCG_EUTRA         *[]byte                                            `optional`
-	scgFailureInfoEUTRA           *CG_ConfigInfo_v1560_IEs_scgFailureInfoEUTRA       `optional`
-	drx_ConfigMCG                 *DRX_Config                                        `optional`
-	measResultReportCGI_EUTRA     *CG_ConfigInfo_v1560_IEs_measResultReportCGI_EUTRA `optional`
-	measResultCellListSFTD_EUTRA  *MeasResultCellListSFTD_EUTRA                      `optional`
-	fr_InfoListMCG                *FR_InfoList                                       `optional`
-	nonCriticalExtension          *CG_ConfigInfo_v1570_IEs                           `optional`
+	CandidateCellInfoListMN_EUTRA *[]byte                                            `optional`
+	CandidateCellInfoListSN_EUTRA *[]byte                                            `optional`
+	SourceConfigSCG_EUTRA         *[]byte                                            `optional`
+	ScgFailureInfoEUTRA           *CG_ConfigInfo_v1560_IEs_scgFailureInfoEUTRA       `optional`
+	Drx_ConfigMCG                 *DRX_Config                                        `optional`
+	MeasResultReportCGI_EUTRA     *CG_ConfigInfo_v1560_IEs_measResultReportCGI_EUTRA `optional`
+	MeasResultCellListSFTD_EUTRA  *MeasResultCellListSFTD_EUTRA                      `optional`
+	Fr_InfoListMCG                *FR_InfoList                                       `optional`
+	NonCriticalExtension          *CG_ConfigInfo_v1570_IEs                           `optional`
 }
 
 func (ie *CG_ConfigInfo_v1560_IEs) Encode(w *uper.UperWriter) error {
 	var err error
-	preambleBits := []bool{ie.candidateCellInfoListMN_EUTRA != nil, ie.candidateCellInfoListSN_EUTRA != nil, ie.sourceConfigSCG_EUTRA != nil, ie.scgFailureInfoEUTRA != nil, ie.drx_ConfigMCG != nil, ie.measResultReportCGI_EUTRA != nil, ie.measResultCellListSFTD_EUTRA != nil, ie.fr_InfoListMCG != nil, ie.nonCriticalExtension != nil}
+	preambleBits := []bool{ie.CandidateCellInfoListMN_EUTRA != nil, ie.CandidateCellInfoListSN_EUTRA != nil, ie.SourceConfigSCG_EUTRA != nil, ie.ScgFailureInfoEUTRA != nil, ie.Drx_ConfigMCG != nil, ie.MeasResultReportCGI_EUTRA != nil, ie.MeasResultCellListSFTD_EUTRA != nil, ie.Fr_InfoListMCG != nil, ie.NonCriticalExtension != nil}
 	for _, bit := range preambleBits {
 		if err = w.WriteBool(bit); err != nil {
 			return err
 		}
 	}
-	if ie.candidateCellInfoListMN_EUTRA != nil {
-		if err = w.WriteOctetString(*ie.candidateCellInfoListMN_EUTRA, &uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
-			return utils.WrapError("Encode candidateCellInfoListMN_EUTRA", err)
+	if ie.CandidateCellInfoListMN_EUTRA != nil {
+		if err = w.WriteOctetString(*ie.CandidateCellInfoListMN_EUTRA, &uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+			return utils.WrapError("Encode CandidateCellInfoListMN_EUTRA", err)
 		}
 	}
-	if ie.candidateCellInfoListSN_EUTRA != nil {
-		if err = w.WriteOctetString(*ie.candidateCellInfoListSN_EUTRA, &uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
-			return utils.WrapError("Encode candidateCellInfoListSN_EUTRA", err)
+	if ie.CandidateCellInfoListSN_EUTRA != nil {
+		if err = w.WriteOctetString(*ie.CandidateCellInfoListSN_EUTRA, &uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+			return utils.WrapError("Encode CandidateCellInfoListSN_EUTRA", err)
 		}
 	}
-	if ie.sourceConfigSCG_EUTRA != nil {
-		if err = w.WriteOctetString(*ie.sourceConfigSCG_EUTRA, &uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
-			return utils.WrapError("Encode sourceConfigSCG_EUTRA", err)
+	if ie.SourceConfigSCG_EUTRA != nil {
+		if err = w.WriteOctetString(*ie.SourceConfigSCG_EUTRA, &uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+			return utils.WrapError("Encode SourceConfigSCG_EUTRA", err)
 		}
 	}
-	if ie.scgFailureInfoEUTRA != nil {
-		if err = ie.scgFailureInfoEUTRA.Encode(w); err != nil {
-			return utils.WrapError("Encode scgFailureInfoEUTRA", err)
+	if ie.ScgFailureInfoEUTRA != nil {
+		if err = ie.ScgFailureInfoEUTRA.Encode(w); err != nil {
+			return utils.WrapError("Encode ScgFailureInfoEUTRA", err)
 		}
 	}
-	if ie.drx_ConfigMCG != nil {
-		if err = ie.drx_ConfigMCG.Encode(w); err != nil {
-			return utils.WrapError("Encode drx_ConfigMCG", err)
+	if ie.Drx_ConfigMCG != nil {
+		if err = ie.Drx_ConfigMCG.Encode(w); err != nil {
+			return utils.WrapError("Encode Drx_ConfigMCG", err)
 		}
 	}
-	if ie.measResultReportCGI_EUTRA != nil {
-		if err = ie.measResultReportCGI_EUTRA.Encode(w); err != nil {
-			return utils.WrapError("Encode measResultReportCGI_EUTRA", err)
+	if ie.MeasResultReportCGI_EUTRA != nil {
+		if err = ie.MeasResultReportCGI_EUTRA.Encode(w); err != nil {
+			return utils.WrapError("Encode MeasResultReportCGI_EUTRA", err)
 		}
 	}
-	if ie.measResultCellListSFTD_EUTRA != nil {
-		if err = ie.measResultCellListSFTD_EUTRA.Encode(w); err != nil {
-			return utils.WrapError("Encode measResultCellListSFTD_EUTRA", err)
+	if ie.MeasResultCellListSFTD_EUTRA != nil {
+		if err = ie.MeasResultCellListSFTD_EUTRA.Encode(w); err != nil {
+			return utils.WrapError("Encode MeasResultCellListSFTD_EUTRA", err)
 		}
 	}
-	if ie.fr_InfoListMCG != nil {
-		if err = ie.fr_InfoListMCG.Encode(w); err != nil {
-			return utils.WrapError("Encode fr_InfoListMCG", err)
+	if ie.Fr_InfoListMCG != nil {
+		if err = ie.Fr_InfoListMCG.Encode(w); err != nil {
+			return utils.WrapError("Encode Fr_InfoListMCG", err)
 		}
 	}
-	if ie.nonCriticalExtension != nil {
-		if err = ie.nonCriticalExtension.Encode(w); err != nil {
-			return utils.WrapError("Encode nonCriticalExtension", err)
+	if ie.NonCriticalExtension != nil {
+		if err = ie.NonCriticalExtension.Encode(w); err != nil {
+			return utils.WrapError("Encode NonCriticalExtension", err)
 		}
 	}
 	return nil
@@ -75,97 +75,97 @@ func (ie *CG_ConfigInfo_v1560_IEs) Encode(w *uper.UperWriter) error {
 
 func (ie *CG_ConfigInfo_v1560_IEs) Decode(r *uper.UperReader) error {
 	var err error
-	var candidateCellInfoListMN_EUTRAPresent bool
-	if candidateCellInfoListMN_EUTRAPresent, err = r.ReadBool(); err != nil {
+	var CandidateCellInfoListMN_EUTRAPresent bool
+	if CandidateCellInfoListMN_EUTRAPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var candidateCellInfoListSN_EUTRAPresent bool
-	if candidateCellInfoListSN_EUTRAPresent, err = r.ReadBool(); err != nil {
+	var CandidateCellInfoListSN_EUTRAPresent bool
+	if CandidateCellInfoListSN_EUTRAPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var sourceConfigSCG_EUTRAPresent bool
-	if sourceConfigSCG_EUTRAPresent, err = r.ReadBool(); err != nil {
+	var SourceConfigSCG_EUTRAPresent bool
+	if SourceConfigSCG_EUTRAPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var scgFailureInfoEUTRAPresent bool
-	if scgFailureInfoEUTRAPresent, err = r.ReadBool(); err != nil {
+	var ScgFailureInfoEUTRAPresent bool
+	if ScgFailureInfoEUTRAPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var drx_ConfigMCGPresent bool
-	if drx_ConfigMCGPresent, err = r.ReadBool(); err != nil {
+	var Drx_ConfigMCGPresent bool
+	if Drx_ConfigMCGPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var measResultReportCGI_EUTRAPresent bool
-	if measResultReportCGI_EUTRAPresent, err = r.ReadBool(); err != nil {
+	var MeasResultReportCGI_EUTRAPresent bool
+	if MeasResultReportCGI_EUTRAPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var measResultCellListSFTD_EUTRAPresent bool
-	if measResultCellListSFTD_EUTRAPresent, err = r.ReadBool(); err != nil {
+	var MeasResultCellListSFTD_EUTRAPresent bool
+	if MeasResultCellListSFTD_EUTRAPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var fr_InfoListMCGPresent bool
-	if fr_InfoListMCGPresent, err = r.ReadBool(); err != nil {
+	var Fr_InfoListMCGPresent bool
+	if Fr_InfoListMCGPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var nonCriticalExtensionPresent bool
-	if nonCriticalExtensionPresent, err = r.ReadBool(); err != nil {
+	var NonCriticalExtensionPresent bool
+	if NonCriticalExtensionPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	if candidateCellInfoListMN_EUTRAPresent {
-		var tmp_os_candidateCellInfoListMN_EUTRA []byte
-		if tmp_os_candidateCellInfoListMN_EUTRA, err = r.ReadOctetString(&uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
-			return utils.WrapError("Decode candidateCellInfoListMN_EUTRA", err)
+	if CandidateCellInfoListMN_EUTRAPresent {
+		var tmp_os_CandidateCellInfoListMN_EUTRA []byte
+		if tmp_os_CandidateCellInfoListMN_EUTRA, err = r.ReadOctetString(&uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+			return utils.WrapError("Decode CandidateCellInfoListMN_EUTRA", err)
 		}
-		ie.candidateCellInfoListMN_EUTRA = &tmp_os_candidateCellInfoListMN_EUTRA
+		ie.CandidateCellInfoListMN_EUTRA = &tmp_os_CandidateCellInfoListMN_EUTRA
 	}
-	if candidateCellInfoListSN_EUTRAPresent {
-		var tmp_os_candidateCellInfoListSN_EUTRA []byte
-		if tmp_os_candidateCellInfoListSN_EUTRA, err = r.ReadOctetString(&uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
-			return utils.WrapError("Decode candidateCellInfoListSN_EUTRA", err)
+	if CandidateCellInfoListSN_EUTRAPresent {
+		var tmp_os_CandidateCellInfoListSN_EUTRA []byte
+		if tmp_os_CandidateCellInfoListSN_EUTRA, err = r.ReadOctetString(&uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+			return utils.WrapError("Decode CandidateCellInfoListSN_EUTRA", err)
 		}
-		ie.candidateCellInfoListSN_EUTRA = &tmp_os_candidateCellInfoListSN_EUTRA
+		ie.CandidateCellInfoListSN_EUTRA = &tmp_os_CandidateCellInfoListSN_EUTRA
 	}
-	if sourceConfigSCG_EUTRAPresent {
-		var tmp_os_sourceConfigSCG_EUTRA []byte
-		if tmp_os_sourceConfigSCG_EUTRA, err = r.ReadOctetString(&uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
-			return utils.WrapError("Decode sourceConfigSCG_EUTRA", err)
+	if SourceConfigSCG_EUTRAPresent {
+		var tmp_os_SourceConfigSCG_EUTRA []byte
+		if tmp_os_SourceConfigSCG_EUTRA, err = r.ReadOctetString(&uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+			return utils.WrapError("Decode SourceConfigSCG_EUTRA", err)
 		}
-		ie.sourceConfigSCG_EUTRA = &tmp_os_sourceConfigSCG_EUTRA
+		ie.SourceConfigSCG_EUTRA = &tmp_os_SourceConfigSCG_EUTRA
 	}
-	if scgFailureInfoEUTRAPresent {
-		ie.scgFailureInfoEUTRA = new(CG_ConfigInfo_v1560_IEs_scgFailureInfoEUTRA)
-		if err = ie.scgFailureInfoEUTRA.Decode(r); err != nil {
-			return utils.WrapError("Decode scgFailureInfoEUTRA", err)
-		}
-	}
-	if drx_ConfigMCGPresent {
-		ie.drx_ConfigMCG = new(DRX_Config)
-		if err = ie.drx_ConfigMCG.Decode(r); err != nil {
-			return utils.WrapError("Decode drx_ConfigMCG", err)
+	if ScgFailureInfoEUTRAPresent {
+		ie.ScgFailureInfoEUTRA = new(CG_ConfigInfo_v1560_IEs_scgFailureInfoEUTRA)
+		if err = ie.ScgFailureInfoEUTRA.Decode(r); err != nil {
+			return utils.WrapError("Decode ScgFailureInfoEUTRA", err)
 		}
 	}
-	if measResultReportCGI_EUTRAPresent {
-		ie.measResultReportCGI_EUTRA = new(CG_ConfigInfo_v1560_IEs_measResultReportCGI_EUTRA)
-		if err = ie.measResultReportCGI_EUTRA.Decode(r); err != nil {
-			return utils.WrapError("Decode measResultReportCGI_EUTRA", err)
+	if Drx_ConfigMCGPresent {
+		ie.Drx_ConfigMCG = new(DRX_Config)
+		if err = ie.Drx_ConfigMCG.Decode(r); err != nil {
+			return utils.WrapError("Decode Drx_ConfigMCG", err)
 		}
 	}
-	if measResultCellListSFTD_EUTRAPresent {
-		ie.measResultCellListSFTD_EUTRA = new(MeasResultCellListSFTD_EUTRA)
-		if err = ie.measResultCellListSFTD_EUTRA.Decode(r); err != nil {
-			return utils.WrapError("Decode measResultCellListSFTD_EUTRA", err)
+	if MeasResultReportCGI_EUTRAPresent {
+		ie.MeasResultReportCGI_EUTRA = new(CG_ConfigInfo_v1560_IEs_measResultReportCGI_EUTRA)
+		if err = ie.MeasResultReportCGI_EUTRA.Decode(r); err != nil {
+			return utils.WrapError("Decode MeasResultReportCGI_EUTRA", err)
 		}
 	}
-	if fr_InfoListMCGPresent {
-		ie.fr_InfoListMCG = new(FR_InfoList)
-		if err = ie.fr_InfoListMCG.Decode(r); err != nil {
-			return utils.WrapError("Decode fr_InfoListMCG", err)
+	if MeasResultCellListSFTD_EUTRAPresent {
+		ie.MeasResultCellListSFTD_EUTRA = new(MeasResultCellListSFTD_EUTRA)
+		if err = ie.MeasResultCellListSFTD_EUTRA.Decode(r); err != nil {
+			return utils.WrapError("Decode MeasResultCellListSFTD_EUTRA", err)
 		}
 	}
-	if nonCriticalExtensionPresent {
-		ie.nonCriticalExtension = new(CG_ConfigInfo_v1570_IEs)
-		if err = ie.nonCriticalExtension.Decode(r); err != nil {
-			return utils.WrapError("Decode nonCriticalExtension", err)
+	if Fr_InfoListMCGPresent {
+		ie.Fr_InfoListMCG = new(FR_InfoList)
+		if err = ie.Fr_InfoListMCG.Decode(r); err != nil {
+			return utils.WrapError("Decode Fr_InfoListMCG", err)
+		}
+	}
+	if NonCriticalExtensionPresent {
+		ie.NonCriticalExtension = new(CG_ConfigInfo_v1570_IEs)
+		if err = ie.NonCriticalExtension.Decode(r); err != nil {
+			return utils.WrapError("Decode NonCriticalExtension", err)
 		}
 	}
 	return nil

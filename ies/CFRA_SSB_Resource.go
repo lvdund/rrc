@@ -8,29 +8,29 @@ import (
 )
 
 type CFRA_SSB_Resource struct {
-	ssb                           SSB_Index `madatory`
-	ra_PreambleIndex              int64     `lb:0,ub:63,madatory`
-	msgA_PUSCH_Resource_Index_r16 *int64    `lb:0,ub:3071,optional,ext-1`
+	Ssb                           SSB_Index `madatory`
+	Ra_PreambleIndex              int64     `lb:0,ub:63,madatory`
+	MsgA_PUSCH_Resource_Index_r16 *int64    `lb:0,ub:3071,optional,ext-1`
 }
 
 func (ie *CFRA_SSB_Resource) Encode(w *uper.UperWriter) error {
 	var err error
-	hasExtensions := ie.msgA_PUSCH_Resource_Index_r16 != nil
+	hasExtensions := ie.MsgA_PUSCH_Resource_Index_r16 != nil
 	preambleBits := []bool{hasExtensions}
 	for _, bit := range preambleBits {
 		if err = w.WriteBool(bit); err != nil {
 			return err
 		}
 	}
-	if err = ie.ssb.Encode(w); err != nil {
-		return utils.WrapError("Encode ssb", err)
+	if err = ie.Ssb.Encode(w); err != nil {
+		return utils.WrapError("Encode Ssb", err)
 	}
-	if err = w.WriteInteger(ie.ra_PreambleIndex, &uper.Constraint{Lb: 0, Ub: 63}, false); err != nil {
-		return utils.WrapError("WriteInteger ra_PreambleIndex", err)
+	if err = w.WriteInteger(ie.Ra_PreambleIndex, &uper.Constraint{Lb: 0, Ub: 63}, false); err != nil {
+		return utils.WrapError("WriteInteger Ra_PreambleIndex", err)
 	}
 	if hasExtensions {
 		// Extension bitmap: 1 bits for 1 extension groups
-		extBitmap := []bool{ie.msgA_PUSCH_Resource_Index_r16 != nil}
+		extBitmap := []bool{ie.MsgA_PUSCH_Resource_Index_r16 != nil}
 		if err := w.WriteExtBitMap(extBitmap); err != nil {
 			return utils.WrapError("WriteExtBitMap CFRA_SSB_Resource", err)
 		}
@@ -41,17 +41,17 @@ func (ie *CFRA_SSB_Resource) Encode(w *uper.UperWriter) error {
 			extWriter := uper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 1
-			optionals_ext_1 := []bool{ie.msgA_PUSCH_Resource_Index_r16 != nil}
+			optionals_ext_1 := []bool{ie.MsgA_PUSCH_Resource_Index_r16 != nil}
 			for _, bit := range optionals_ext_1 {
 				if err := extWriter.WriteBool(bit); err != nil {
 					return err
 				}
 			}
 
-			// encode msgA_PUSCH_Resource_Index_r16 optional
-			if ie.msgA_PUSCH_Resource_Index_r16 != nil {
-				if err = extWriter.WriteInteger(*ie.msgA_PUSCH_Resource_Index_r16, &uper.Constraint{Lb: 0, Ub: 3071}, false); err != nil {
-					return utils.WrapError("Encode msgA_PUSCH_Resource_Index_r16", err)
+			// encode MsgA_PUSCH_Resource_Index_r16 optional
+			if ie.MsgA_PUSCH_Resource_Index_r16 != nil {
+				if err = extWriter.WriteInteger(*ie.MsgA_PUSCH_Resource_Index_r16, &uper.Constraint{Lb: 0, Ub: 3071}, false); err != nil {
+					return utils.WrapError("Encode MsgA_PUSCH_Resource_Index_r16", err)
 				}
 			}
 
@@ -73,14 +73,14 @@ func (ie *CFRA_SSB_Resource) Decode(r *uper.UperReader) error {
 	if extensionBit, err = r.ReadBool(); err != nil {
 		return err
 	}
-	if err = ie.ssb.Decode(r); err != nil {
-		return utils.WrapError("Decode ssb", err)
+	if err = ie.Ssb.Decode(r); err != nil {
+		return utils.WrapError("Decode Ssb", err)
 	}
-	var tmp_int_ra_PreambleIndex int64
-	if tmp_int_ra_PreambleIndex, err = r.ReadInteger(&uper.Constraint{Lb: 0, Ub: 63}, false); err != nil {
-		return utils.WrapError("ReadInteger ra_PreambleIndex", err)
+	var tmp_int_Ra_PreambleIndex int64
+	if tmp_int_Ra_PreambleIndex, err = r.ReadInteger(&uper.Constraint{Lb: 0, Ub: 63}, false); err != nil {
+		return utils.WrapError("ReadInteger Ra_PreambleIndex", err)
 	}
-	ie.ra_PreambleIndex = tmp_int_ra_PreambleIndex
+	ie.Ra_PreambleIndex = tmp_int_Ra_PreambleIndex
 
 	if extensionBit {
 		// Read extension bitmap: 1 bits for 1 extension groups
@@ -98,17 +98,17 @@ func (ie *CFRA_SSB_Resource) Decode(r *uper.UperReader) error {
 
 			extReader := uper.NewReader(bytes.NewReader(extBytes))
 
-			msgA_PUSCH_Resource_Index_r16Present, err := extReader.ReadBool()
+			MsgA_PUSCH_Resource_Index_r16Present, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			// decode msgA_PUSCH_Resource_Index_r16 optional
-			if msgA_PUSCH_Resource_Index_r16Present {
-				var tmp_int_msgA_PUSCH_Resource_Index_r16 int64
-				if tmp_int_msgA_PUSCH_Resource_Index_r16, err = extReader.ReadInteger(&uper.Constraint{Lb: 0, Ub: 3071}, false); err != nil {
-					return utils.WrapError("Decode msgA_PUSCH_Resource_Index_r16", err)
+			// decode MsgA_PUSCH_Resource_Index_r16 optional
+			if MsgA_PUSCH_Resource_Index_r16Present {
+				var tmp_int_MsgA_PUSCH_Resource_Index_r16 int64
+				if tmp_int_MsgA_PUSCH_Resource_Index_r16, err = extReader.ReadInteger(&uper.Constraint{Lb: 0, Ub: 3071}, false); err != nil {
+					return utils.WrapError("Decode MsgA_PUSCH_Resource_Index_r16", err)
 				}
-				ie.msgA_PUSCH_Resource_Index_r16 = &tmp_int_msgA_PUSCH_Resource_Index_r16
+				ie.MsgA_PUSCH_Resource_Index_r16 = &tmp_int_MsgA_PUSCH_Resource_Index_r16
 			}
 		}
 	}

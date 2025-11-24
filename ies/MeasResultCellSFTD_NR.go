@@ -6,32 +6,32 @@ import (
 )
 
 type MeasResultCellSFTD_NR struct {
-	physCellId                PhysCellId  `madatory`
-	sfn_OffsetResult          int64       `lb:0,ub:1023,madatory`
-	frameBoundaryOffsetResult int64       `lb:-30720,ub:30719,madatory`
-	rsrp_Result               *RSRP_Range `optional`
+	PhysCellId                PhysCellId  `madatory`
+	Sfn_OffsetResult          int64       `lb:0,ub:1023,madatory`
+	FrameBoundaryOffsetResult int64       `lb:-30720,ub:30719,madatory`
+	Rsrp_Result               *RSRP_Range `optional`
 }
 
 func (ie *MeasResultCellSFTD_NR) Encode(w *uper.UperWriter) error {
 	var err error
-	preambleBits := []bool{ie.rsrp_Result != nil}
+	preambleBits := []bool{ie.Rsrp_Result != nil}
 	for _, bit := range preambleBits {
 		if err = w.WriteBool(bit); err != nil {
 			return err
 		}
 	}
-	if err = ie.physCellId.Encode(w); err != nil {
-		return utils.WrapError("Encode physCellId", err)
+	if err = ie.PhysCellId.Encode(w); err != nil {
+		return utils.WrapError("Encode PhysCellId", err)
 	}
-	if err = w.WriteInteger(ie.sfn_OffsetResult, &uper.Constraint{Lb: 0, Ub: 1023}, false); err != nil {
-		return utils.WrapError("WriteInteger sfn_OffsetResult", err)
+	if err = w.WriteInteger(ie.Sfn_OffsetResult, &uper.Constraint{Lb: 0, Ub: 1023}, false); err != nil {
+		return utils.WrapError("WriteInteger Sfn_OffsetResult", err)
 	}
-	if err = w.WriteInteger(ie.frameBoundaryOffsetResult, &uper.Constraint{Lb: -30720, Ub: 30719}, false); err != nil {
-		return utils.WrapError("WriteInteger frameBoundaryOffsetResult", err)
+	if err = w.WriteInteger(ie.FrameBoundaryOffsetResult, &uper.Constraint{Lb: -30720, Ub: 30719}, false); err != nil {
+		return utils.WrapError("WriteInteger FrameBoundaryOffsetResult", err)
 	}
-	if ie.rsrp_Result != nil {
-		if err = ie.rsrp_Result.Encode(w); err != nil {
-			return utils.WrapError("Encode rsrp_Result", err)
+	if ie.Rsrp_Result != nil {
+		if err = ie.Rsrp_Result.Encode(w); err != nil {
+			return utils.WrapError("Encode Rsrp_Result", err)
 		}
 	}
 	return nil
@@ -39,27 +39,27 @@ func (ie *MeasResultCellSFTD_NR) Encode(w *uper.UperWriter) error {
 
 func (ie *MeasResultCellSFTD_NR) Decode(r *uper.UperReader) error {
 	var err error
-	var rsrp_ResultPresent bool
-	if rsrp_ResultPresent, err = r.ReadBool(); err != nil {
+	var Rsrp_ResultPresent bool
+	if Rsrp_ResultPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	if err = ie.physCellId.Decode(r); err != nil {
-		return utils.WrapError("Decode physCellId", err)
+	if err = ie.PhysCellId.Decode(r); err != nil {
+		return utils.WrapError("Decode PhysCellId", err)
 	}
-	var tmp_int_sfn_OffsetResult int64
-	if tmp_int_sfn_OffsetResult, err = r.ReadInteger(&uper.Constraint{Lb: 0, Ub: 1023}, false); err != nil {
-		return utils.WrapError("ReadInteger sfn_OffsetResult", err)
+	var tmp_int_Sfn_OffsetResult int64
+	if tmp_int_Sfn_OffsetResult, err = r.ReadInteger(&uper.Constraint{Lb: 0, Ub: 1023}, false); err != nil {
+		return utils.WrapError("ReadInteger Sfn_OffsetResult", err)
 	}
-	ie.sfn_OffsetResult = tmp_int_sfn_OffsetResult
-	var tmp_int_frameBoundaryOffsetResult int64
-	if tmp_int_frameBoundaryOffsetResult, err = r.ReadInteger(&uper.Constraint{Lb: -30720, Ub: 30719}, false); err != nil {
-		return utils.WrapError("ReadInteger frameBoundaryOffsetResult", err)
+	ie.Sfn_OffsetResult = tmp_int_Sfn_OffsetResult
+	var tmp_int_FrameBoundaryOffsetResult int64
+	if tmp_int_FrameBoundaryOffsetResult, err = r.ReadInteger(&uper.Constraint{Lb: -30720, Ub: 30719}, false); err != nil {
+		return utils.WrapError("ReadInteger FrameBoundaryOffsetResult", err)
 	}
-	ie.frameBoundaryOffsetResult = tmp_int_frameBoundaryOffsetResult
-	if rsrp_ResultPresent {
-		ie.rsrp_Result = new(RSRP_Range)
-		if err = ie.rsrp_Result.Decode(r); err != nil {
-			return utils.WrapError("Decode rsrp_Result", err)
+	ie.FrameBoundaryOffsetResult = tmp_int_FrameBoundaryOffsetResult
+	if Rsrp_ResultPresent {
+		ie.Rsrp_Result = new(RSRP_Range)
+		if err = ie.Rsrp_Result.Decode(r); err != nil {
+			return utils.WrapError("Decode Rsrp_Result", err)
 		}
 	}
 	return nil

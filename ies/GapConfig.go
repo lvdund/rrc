@@ -8,39 +8,39 @@ import (
 )
 
 type GapConfig struct {
-	gapOffset                 int64                           `lb:0,ub:159,madatory`
-	mgl                       GapConfig_mgl                   `madatory`
-	mgrp                      GapConfig_mgrp                  `madatory`
-	mgta                      GapConfig_mgta                  `madatory`
-	refServCellIndicator      *GapConfig_refServCellIndicator `optional,ext-1`
-	refFR2ServCellAsyncCA_r16 *ServCellIndex                  `optional,ext-2`
-	mgl_r16                   *GapConfig_mgl_r16              `optional,ext-2`
+	GapOffset                 int64                           `lb:0,ub:159,madatory`
+	Mgl                       GapConfig_mgl                   `madatory`
+	Mgrp                      GapConfig_mgrp                  `madatory`
+	Mgta                      GapConfig_mgta                  `madatory`
+	RefServCellIndicator      *GapConfig_refServCellIndicator `optional,ext-1`
+	RefFR2ServCellAsyncCA_r16 *ServCellIndex                  `optional,ext-2`
+	Mgl_r16                   *GapConfig_mgl_r16              `optional,ext-2`
 }
 
 func (ie *GapConfig) Encode(w *uper.UperWriter) error {
 	var err error
-	hasExtensions := ie.refServCellIndicator != nil || ie.refFR2ServCellAsyncCA_r16 != nil || ie.mgl_r16 != nil
+	hasExtensions := ie.RefServCellIndicator != nil || ie.RefFR2ServCellAsyncCA_r16 != nil || ie.Mgl_r16 != nil
 	preambleBits := []bool{hasExtensions}
 	for _, bit := range preambleBits {
 		if err = w.WriteBool(bit); err != nil {
 			return err
 		}
 	}
-	if err = w.WriteInteger(ie.gapOffset, &uper.Constraint{Lb: 0, Ub: 159}, false); err != nil {
-		return utils.WrapError("WriteInteger gapOffset", err)
+	if err = w.WriteInteger(ie.GapOffset, &uper.Constraint{Lb: 0, Ub: 159}, false); err != nil {
+		return utils.WrapError("WriteInteger GapOffset", err)
 	}
-	if err = ie.mgl.Encode(w); err != nil {
-		return utils.WrapError("Encode mgl", err)
+	if err = ie.Mgl.Encode(w); err != nil {
+		return utils.WrapError("Encode Mgl", err)
 	}
-	if err = ie.mgrp.Encode(w); err != nil {
-		return utils.WrapError("Encode mgrp", err)
+	if err = ie.Mgrp.Encode(w); err != nil {
+		return utils.WrapError("Encode Mgrp", err)
 	}
-	if err = ie.mgta.Encode(w); err != nil {
-		return utils.WrapError("Encode mgta", err)
+	if err = ie.Mgta.Encode(w); err != nil {
+		return utils.WrapError("Encode Mgta", err)
 	}
 	if hasExtensions {
 		// Extension bitmap: 2 bits for 2 extension groups
-		extBitmap := []bool{ie.refServCellIndicator != nil, ie.refFR2ServCellAsyncCA_r16 != nil || ie.mgl_r16 != nil}
+		extBitmap := []bool{ie.RefServCellIndicator != nil, ie.RefFR2ServCellAsyncCA_r16 != nil || ie.Mgl_r16 != nil}
 		if err := w.WriteExtBitMap(extBitmap); err != nil {
 			return utils.WrapError("WriteExtBitMap GapConfig", err)
 		}
@@ -51,17 +51,17 @@ func (ie *GapConfig) Encode(w *uper.UperWriter) error {
 			extWriter := uper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 1
-			optionals_ext_1 := []bool{ie.refServCellIndicator != nil}
+			optionals_ext_1 := []bool{ie.RefServCellIndicator != nil}
 			for _, bit := range optionals_ext_1 {
 				if err := extWriter.WriteBool(bit); err != nil {
 					return err
 				}
 			}
 
-			// encode refServCellIndicator optional
-			if ie.refServCellIndicator != nil {
-				if err = ie.refServCellIndicator.Encode(extWriter); err != nil {
-					return utils.WrapError("Encode refServCellIndicator", err)
+			// encode RefServCellIndicator optional
+			if ie.RefServCellIndicator != nil {
+				if err = ie.RefServCellIndicator.Encode(extWriter); err != nil {
+					return utils.WrapError("Encode RefServCellIndicator", err)
 				}
 			}
 
@@ -80,23 +80,23 @@ func (ie *GapConfig) Encode(w *uper.UperWriter) error {
 			extWriter := uper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 2
-			optionals_ext_2 := []bool{ie.refFR2ServCellAsyncCA_r16 != nil, ie.mgl_r16 != nil}
+			optionals_ext_2 := []bool{ie.RefFR2ServCellAsyncCA_r16 != nil, ie.Mgl_r16 != nil}
 			for _, bit := range optionals_ext_2 {
 				if err := extWriter.WriteBool(bit); err != nil {
 					return err
 				}
 			}
 
-			// encode refFR2ServCellAsyncCA_r16 optional
-			if ie.refFR2ServCellAsyncCA_r16 != nil {
-				if err = ie.refFR2ServCellAsyncCA_r16.Encode(extWriter); err != nil {
-					return utils.WrapError("Encode refFR2ServCellAsyncCA_r16", err)
+			// encode RefFR2ServCellAsyncCA_r16 optional
+			if ie.RefFR2ServCellAsyncCA_r16 != nil {
+				if err = ie.RefFR2ServCellAsyncCA_r16.Encode(extWriter); err != nil {
+					return utils.WrapError("Encode RefFR2ServCellAsyncCA_r16", err)
 				}
 			}
-			// encode mgl_r16 optional
-			if ie.mgl_r16 != nil {
-				if err = ie.mgl_r16.Encode(extWriter); err != nil {
-					return utils.WrapError("Encode mgl_r16", err)
+			// encode Mgl_r16 optional
+			if ie.Mgl_r16 != nil {
+				if err = ie.Mgl_r16.Encode(extWriter); err != nil {
+					return utils.WrapError("Encode Mgl_r16", err)
 				}
 			}
 
@@ -118,19 +118,19 @@ func (ie *GapConfig) Decode(r *uper.UperReader) error {
 	if extensionBit, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var tmp_int_gapOffset int64
-	if tmp_int_gapOffset, err = r.ReadInteger(&uper.Constraint{Lb: 0, Ub: 159}, false); err != nil {
-		return utils.WrapError("ReadInteger gapOffset", err)
+	var tmp_int_GapOffset int64
+	if tmp_int_GapOffset, err = r.ReadInteger(&uper.Constraint{Lb: 0, Ub: 159}, false); err != nil {
+		return utils.WrapError("ReadInteger GapOffset", err)
 	}
-	ie.gapOffset = tmp_int_gapOffset
-	if err = ie.mgl.Decode(r); err != nil {
-		return utils.WrapError("Decode mgl", err)
+	ie.GapOffset = tmp_int_GapOffset
+	if err = ie.Mgl.Decode(r); err != nil {
+		return utils.WrapError("Decode Mgl", err)
 	}
-	if err = ie.mgrp.Decode(r); err != nil {
-		return utils.WrapError("Decode mgrp", err)
+	if err = ie.Mgrp.Decode(r); err != nil {
+		return utils.WrapError("Decode Mgrp", err)
 	}
-	if err = ie.mgta.Decode(r); err != nil {
-		return utils.WrapError("Decode mgta", err)
+	if err = ie.Mgta.Decode(r); err != nil {
+		return utils.WrapError("Decode Mgta", err)
 	}
 
 	if extensionBit {
@@ -149,15 +149,15 @@ func (ie *GapConfig) Decode(r *uper.UperReader) error {
 
 			extReader := uper.NewReader(bytes.NewReader(extBytes))
 
-			refServCellIndicatorPresent, err := extReader.ReadBool()
+			RefServCellIndicatorPresent, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			// decode refServCellIndicator optional
-			if refServCellIndicatorPresent {
-				ie.refServCellIndicator = new(GapConfig_refServCellIndicator)
-				if err = ie.refServCellIndicator.Decode(extReader); err != nil {
-					return utils.WrapError("Decode refServCellIndicator", err)
+			// decode RefServCellIndicator optional
+			if RefServCellIndicatorPresent {
+				ie.RefServCellIndicator = new(GapConfig_refServCellIndicator)
+				if err = ie.RefServCellIndicator.Decode(extReader); err != nil {
+					return utils.WrapError("Decode RefServCellIndicator", err)
 				}
 			}
 		}
@@ -170,26 +170,26 @@ func (ie *GapConfig) Decode(r *uper.UperReader) error {
 
 			extReader := uper.NewReader(bytes.NewReader(extBytes))
 
-			refFR2ServCellAsyncCA_r16Present, err := extReader.ReadBool()
+			RefFR2ServCellAsyncCA_r16Present, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			mgl_r16Present, err := extReader.ReadBool()
+			Mgl_r16Present, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			// decode refFR2ServCellAsyncCA_r16 optional
-			if refFR2ServCellAsyncCA_r16Present {
-				ie.refFR2ServCellAsyncCA_r16 = new(ServCellIndex)
-				if err = ie.refFR2ServCellAsyncCA_r16.Decode(extReader); err != nil {
-					return utils.WrapError("Decode refFR2ServCellAsyncCA_r16", err)
+			// decode RefFR2ServCellAsyncCA_r16 optional
+			if RefFR2ServCellAsyncCA_r16Present {
+				ie.RefFR2ServCellAsyncCA_r16 = new(ServCellIndex)
+				if err = ie.RefFR2ServCellAsyncCA_r16.Decode(extReader); err != nil {
+					return utils.WrapError("Decode RefFR2ServCellAsyncCA_r16", err)
 				}
 			}
-			// decode mgl_r16 optional
-			if mgl_r16Present {
-				ie.mgl_r16 = new(GapConfig_mgl_r16)
-				if err = ie.mgl_r16.Decode(extReader); err != nil {
-					return utils.WrapError("Decode mgl_r16", err)
+			// decode Mgl_r16 optional
+			if Mgl_r16Present {
+				ie.Mgl_r16 = new(GapConfig_mgl_r16)
+				if err = ie.Mgl_r16.Decode(extReader); err != nil {
+					return utils.WrapError("Decode Mgl_r16", err)
 				}
 			}
 		}

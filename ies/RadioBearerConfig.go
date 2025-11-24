@@ -8,54 +8,54 @@ import (
 )
 
 type RadioBearerConfig struct {
-	srb_ToAddModList      *SRB_ToAddModList                     `optional`
-	srb3_ToRelease        *RadioBearerConfig_srb3_ToRelease     `optional`
-	drb_ToAddModList      *DRB_ToAddModList                     `optional`
-	drb_ToReleaseList     *DRB_ToReleaseList                    `optional`
-	securityConfig        *SecurityConfig                       `optional`
-	mrb_ToAddModList_r17  *MRB_ToAddModList_r17                 `optional,ext-1`
-	mrb_ToReleaseList_r17 *MRB_ToReleaseList_r17                `optional,ext-1`
-	srb4_ToAddMod_r17     *SRB_ToAddMod                         `optional,ext-1`
-	srb4_ToRelease_r17    *RadioBearerConfig_srb4_ToRelease_r17 `optional,ext-1`
+	Srb_ToAddModList      *SRB_ToAddModList                     `optional`
+	Srb3_ToRelease        *RadioBearerConfig_srb3_ToRelease     `optional`
+	Drb_ToAddModList      *DRB_ToAddModList                     `optional`
+	Drb_ToReleaseList     *DRB_ToReleaseList                    `optional`
+	SecurityConfig        *SecurityConfig                       `optional`
+	Mrb_ToAddModList_r17  *MRB_ToAddModList_r17                 `optional,ext-1`
+	Mrb_ToReleaseList_r17 *MRB_ToReleaseList_r17                `optional,ext-1`
+	Srb4_ToAddMod_r17     *SRB_ToAddMod                         `optional,ext-1`
+	Srb4_ToRelease_r17    *RadioBearerConfig_srb4_ToRelease_r17 `optional,ext-1`
 }
 
 func (ie *RadioBearerConfig) Encode(w *uper.UperWriter) error {
 	var err error
-	hasExtensions := ie.mrb_ToAddModList_r17 != nil || ie.mrb_ToReleaseList_r17 != nil || ie.srb4_ToAddMod_r17 != nil || ie.srb4_ToRelease_r17 != nil
-	preambleBits := []bool{hasExtensions, ie.srb_ToAddModList != nil, ie.srb3_ToRelease != nil, ie.drb_ToAddModList != nil, ie.drb_ToReleaseList != nil, ie.securityConfig != nil}
+	hasExtensions := ie.Mrb_ToAddModList_r17 != nil || ie.Mrb_ToReleaseList_r17 != nil || ie.Srb4_ToAddMod_r17 != nil || ie.Srb4_ToRelease_r17 != nil
+	preambleBits := []bool{hasExtensions, ie.Srb_ToAddModList != nil, ie.Srb3_ToRelease != nil, ie.Drb_ToAddModList != nil, ie.Drb_ToReleaseList != nil, ie.SecurityConfig != nil}
 	for _, bit := range preambleBits {
 		if err = w.WriteBool(bit); err != nil {
 			return err
 		}
 	}
-	if ie.srb_ToAddModList != nil {
-		if err = ie.srb_ToAddModList.Encode(w); err != nil {
-			return utils.WrapError("Encode srb_ToAddModList", err)
+	if ie.Srb_ToAddModList != nil {
+		if err = ie.Srb_ToAddModList.Encode(w); err != nil {
+			return utils.WrapError("Encode Srb_ToAddModList", err)
 		}
 	}
-	if ie.srb3_ToRelease != nil {
-		if err = ie.srb3_ToRelease.Encode(w); err != nil {
-			return utils.WrapError("Encode srb3_ToRelease", err)
+	if ie.Srb3_ToRelease != nil {
+		if err = ie.Srb3_ToRelease.Encode(w); err != nil {
+			return utils.WrapError("Encode Srb3_ToRelease", err)
 		}
 	}
-	if ie.drb_ToAddModList != nil {
-		if err = ie.drb_ToAddModList.Encode(w); err != nil {
-			return utils.WrapError("Encode drb_ToAddModList", err)
+	if ie.Drb_ToAddModList != nil {
+		if err = ie.Drb_ToAddModList.Encode(w); err != nil {
+			return utils.WrapError("Encode Drb_ToAddModList", err)
 		}
 	}
-	if ie.drb_ToReleaseList != nil {
-		if err = ie.drb_ToReleaseList.Encode(w); err != nil {
-			return utils.WrapError("Encode drb_ToReleaseList", err)
+	if ie.Drb_ToReleaseList != nil {
+		if err = ie.Drb_ToReleaseList.Encode(w); err != nil {
+			return utils.WrapError("Encode Drb_ToReleaseList", err)
 		}
 	}
-	if ie.securityConfig != nil {
-		if err = ie.securityConfig.Encode(w); err != nil {
-			return utils.WrapError("Encode securityConfig", err)
+	if ie.SecurityConfig != nil {
+		if err = ie.SecurityConfig.Encode(w); err != nil {
+			return utils.WrapError("Encode SecurityConfig", err)
 		}
 	}
 	if hasExtensions {
 		// Extension bitmap: 1 bits for 1 extension groups
-		extBitmap := []bool{ie.mrb_ToAddModList_r17 != nil || ie.mrb_ToReleaseList_r17 != nil || ie.srb4_ToAddMod_r17 != nil || ie.srb4_ToRelease_r17 != nil}
+		extBitmap := []bool{ie.Mrb_ToAddModList_r17 != nil || ie.Mrb_ToReleaseList_r17 != nil || ie.Srb4_ToAddMod_r17 != nil || ie.Srb4_ToRelease_r17 != nil}
 		if err := w.WriteExtBitMap(extBitmap); err != nil {
 			return utils.WrapError("WriteExtBitMap RadioBearerConfig", err)
 		}
@@ -66,35 +66,35 @@ func (ie *RadioBearerConfig) Encode(w *uper.UperWriter) error {
 			extWriter := uper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 1
-			optionals_ext_1 := []bool{ie.mrb_ToAddModList_r17 != nil, ie.mrb_ToReleaseList_r17 != nil, ie.srb4_ToAddMod_r17 != nil, ie.srb4_ToRelease_r17 != nil}
+			optionals_ext_1 := []bool{ie.Mrb_ToAddModList_r17 != nil, ie.Mrb_ToReleaseList_r17 != nil, ie.Srb4_ToAddMod_r17 != nil, ie.Srb4_ToRelease_r17 != nil}
 			for _, bit := range optionals_ext_1 {
 				if err := extWriter.WriteBool(bit); err != nil {
 					return err
 				}
 			}
 
-			// encode mrb_ToAddModList_r17 optional
-			if ie.mrb_ToAddModList_r17 != nil {
-				if err = ie.mrb_ToAddModList_r17.Encode(extWriter); err != nil {
-					return utils.WrapError("Encode mrb_ToAddModList_r17", err)
+			// encode Mrb_ToAddModList_r17 optional
+			if ie.Mrb_ToAddModList_r17 != nil {
+				if err = ie.Mrb_ToAddModList_r17.Encode(extWriter); err != nil {
+					return utils.WrapError("Encode Mrb_ToAddModList_r17", err)
 				}
 			}
-			// encode mrb_ToReleaseList_r17 optional
-			if ie.mrb_ToReleaseList_r17 != nil {
-				if err = ie.mrb_ToReleaseList_r17.Encode(extWriter); err != nil {
-					return utils.WrapError("Encode mrb_ToReleaseList_r17", err)
+			// encode Mrb_ToReleaseList_r17 optional
+			if ie.Mrb_ToReleaseList_r17 != nil {
+				if err = ie.Mrb_ToReleaseList_r17.Encode(extWriter); err != nil {
+					return utils.WrapError("Encode Mrb_ToReleaseList_r17", err)
 				}
 			}
-			// encode srb4_ToAddMod_r17 optional
-			if ie.srb4_ToAddMod_r17 != nil {
-				if err = ie.srb4_ToAddMod_r17.Encode(extWriter); err != nil {
-					return utils.WrapError("Encode srb4_ToAddMod_r17", err)
+			// encode Srb4_ToAddMod_r17 optional
+			if ie.Srb4_ToAddMod_r17 != nil {
+				if err = ie.Srb4_ToAddMod_r17.Encode(extWriter); err != nil {
+					return utils.WrapError("Encode Srb4_ToAddMod_r17", err)
 				}
 			}
-			// encode srb4_ToRelease_r17 optional
-			if ie.srb4_ToRelease_r17 != nil {
-				if err = ie.srb4_ToRelease_r17.Encode(extWriter); err != nil {
-					return utils.WrapError("Encode srb4_ToRelease_r17", err)
+			// encode Srb4_ToRelease_r17 optional
+			if ie.Srb4_ToRelease_r17 != nil {
+				if err = ie.Srb4_ToRelease_r17.Encode(extWriter); err != nil {
+					return utils.WrapError("Encode Srb4_ToRelease_r17", err)
 				}
 			}
 
@@ -116,54 +116,54 @@ func (ie *RadioBearerConfig) Decode(r *uper.UperReader) error {
 	if extensionBit, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var srb_ToAddModListPresent bool
-	if srb_ToAddModListPresent, err = r.ReadBool(); err != nil {
+	var Srb_ToAddModListPresent bool
+	if Srb_ToAddModListPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var srb3_ToReleasePresent bool
-	if srb3_ToReleasePresent, err = r.ReadBool(); err != nil {
+	var Srb3_ToReleasePresent bool
+	if Srb3_ToReleasePresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var drb_ToAddModListPresent bool
-	if drb_ToAddModListPresent, err = r.ReadBool(); err != nil {
+	var Drb_ToAddModListPresent bool
+	if Drb_ToAddModListPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var drb_ToReleaseListPresent bool
-	if drb_ToReleaseListPresent, err = r.ReadBool(); err != nil {
+	var Drb_ToReleaseListPresent bool
+	if Drb_ToReleaseListPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var securityConfigPresent bool
-	if securityConfigPresent, err = r.ReadBool(); err != nil {
+	var SecurityConfigPresent bool
+	if SecurityConfigPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	if srb_ToAddModListPresent {
-		ie.srb_ToAddModList = new(SRB_ToAddModList)
-		if err = ie.srb_ToAddModList.Decode(r); err != nil {
-			return utils.WrapError("Decode srb_ToAddModList", err)
+	if Srb_ToAddModListPresent {
+		ie.Srb_ToAddModList = new(SRB_ToAddModList)
+		if err = ie.Srb_ToAddModList.Decode(r); err != nil {
+			return utils.WrapError("Decode Srb_ToAddModList", err)
 		}
 	}
-	if srb3_ToReleasePresent {
-		ie.srb3_ToRelease = new(RadioBearerConfig_srb3_ToRelease)
-		if err = ie.srb3_ToRelease.Decode(r); err != nil {
-			return utils.WrapError("Decode srb3_ToRelease", err)
+	if Srb3_ToReleasePresent {
+		ie.Srb3_ToRelease = new(RadioBearerConfig_srb3_ToRelease)
+		if err = ie.Srb3_ToRelease.Decode(r); err != nil {
+			return utils.WrapError("Decode Srb3_ToRelease", err)
 		}
 	}
-	if drb_ToAddModListPresent {
-		ie.drb_ToAddModList = new(DRB_ToAddModList)
-		if err = ie.drb_ToAddModList.Decode(r); err != nil {
-			return utils.WrapError("Decode drb_ToAddModList", err)
+	if Drb_ToAddModListPresent {
+		ie.Drb_ToAddModList = new(DRB_ToAddModList)
+		if err = ie.Drb_ToAddModList.Decode(r); err != nil {
+			return utils.WrapError("Decode Drb_ToAddModList", err)
 		}
 	}
-	if drb_ToReleaseListPresent {
-		ie.drb_ToReleaseList = new(DRB_ToReleaseList)
-		if err = ie.drb_ToReleaseList.Decode(r); err != nil {
-			return utils.WrapError("Decode drb_ToReleaseList", err)
+	if Drb_ToReleaseListPresent {
+		ie.Drb_ToReleaseList = new(DRB_ToReleaseList)
+		if err = ie.Drb_ToReleaseList.Decode(r); err != nil {
+			return utils.WrapError("Decode Drb_ToReleaseList", err)
 		}
 	}
-	if securityConfigPresent {
-		ie.securityConfig = new(SecurityConfig)
-		if err = ie.securityConfig.Decode(r); err != nil {
-			return utils.WrapError("Decode securityConfig", err)
+	if SecurityConfigPresent {
+		ie.SecurityConfig = new(SecurityConfig)
+		if err = ie.SecurityConfig.Decode(r); err != nil {
+			return utils.WrapError("Decode SecurityConfig", err)
 		}
 	}
 
@@ -183,48 +183,48 @@ func (ie *RadioBearerConfig) Decode(r *uper.UperReader) error {
 
 			extReader := uper.NewReader(bytes.NewReader(extBytes))
 
-			mrb_ToAddModList_r17Present, err := extReader.ReadBool()
+			Mrb_ToAddModList_r17Present, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			mrb_ToReleaseList_r17Present, err := extReader.ReadBool()
+			Mrb_ToReleaseList_r17Present, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			srb4_ToAddMod_r17Present, err := extReader.ReadBool()
+			Srb4_ToAddMod_r17Present, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			srb4_ToRelease_r17Present, err := extReader.ReadBool()
+			Srb4_ToRelease_r17Present, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			// decode mrb_ToAddModList_r17 optional
-			if mrb_ToAddModList_r17Present {
-				ie.mrb_ToAddModList_r17 = new(MRB_ToAddModList_r17)
-				if err = ie.mrb_ToAddModList_r17.Decode(extReader); err != nil {
-					return utils.WrapError("Decode mrb_ToAddModList_r17", err)
+			// decode Mrb_ToAddModList_r17 optional
+			if Mrb_ToAddModList_r17Present {
+				ie.Mrb_ToAddModList_r17 = new(MRB_ToAddModList_r17)
+				if err = ie.Mrb_ToAddModList_r17.Decode(extReader); err != nil {
+					return utils.WrapError("Decode Mrb_ToAddModList_r17", err)
 				}
 			}
-			// decode mrb_ToReleaseList_r17 optional
-			if mrb_ToReleaseList_r17Present {
-				ie.mrb_ToReleaseList_r17 = new(MRB_ToReleaseList_r17)
-				if err = ie.mrb_ToReleaseList_r17.Decode(extReader); err != nil {
-					return utils.WrapError("Decode mrb_ToReleaseList_r17", err)
+			// decode Mrb_ToReleaseList_r17 optional
+			if Mrb_ToReleaseList_r17Present {
+				ie.Mrb_ToReleaseList_r17 = new(MRB_ToReleaseList_r17)
+				if err = ie.Mrb_ToReleaseList_r17.Decode(extReader); err != nil {
+					return utils.WrapError("Decode Mrb_ToReleaseList_r17", err)
 				}
 			}
-			// decode srb4_ToAddMod_r17 optional
-			if srb4_ToAddMod_r17Present {
-				ie.srb4_ToAddMod_r17 = new(SRB_ToAddMod)
-				if err = ie.srb4_ToAddMod_r17.Decode(extReader); err != nil {
-					return utils.WrapError("Decode srb4_ToAddMod_r17", err)
+			// decode Srb4_ToAddMod_r17 optional
+			if Srb4_ToAddMod_r17Present {
+				ie.Srb4_ToAddMod_r17 = new(SRB_ToAddMod)
+				if err = ie.Srb4_ToAddMod_r17.Decode(extReader); err != nil {
+					return utils.WrapError("Decode Srb4_ToAddMod_r17", err)
 				}
 			}
-			// decode srb4_ToRelease_r17 optional
-			if srb4_ToRelease_r17Present {
-				ie.srb4_ToRelease_r17 = new(RadioBearerConfig_srb4_ToRelease_r17)
-				if err = ie.srb4_ToRelease_r17.Decode(extReader); err != nil {
-					return utils.WrapError("Decode srb4_ToRelease_r17", err)
+			// decode Srb4_ToRelease_r17 optional
+			if Srb4_ToRelease_r17Present {
+				ie.Srb4_ToRelease_r17 = new(RadioBearerConfig_srb4_ToRelease_r17)
+				if err = ie.Srb4_ToRelease_r17.Decode(extReader); err != nil {
+					return utils.WrapError("Decode Srb4_ToRelease_r17", err)
 				}
 			}
 		}

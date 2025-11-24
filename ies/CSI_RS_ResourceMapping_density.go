@@ -9,18 +9,18 @@ import (
 
 const (
 	CSI_RS_ResourceMapping_density_Choice_nothing uint64 = iota
-	CSI_RS_ResourceMapping_density_Choice_dot5
-	CSI_RS_ResourceMapping_density_Choice_one
-	CSI_RS_ResourceMapping_density_Choice_three
-	CSI_RS_ResourceMapping_density_Choice_spare
+	CSI_RS_ResourceMapping_density_Choice_Dot5
+	CSI_RS_ResourceMapping_density_Choice_One
+	CSI_RS_ResourceMapping_density_Choice_Three
+	CSI_RS_ResourceMapping_density_Choice_Spare
 )
 
 type CSI_RS_ResourceMapping_density struct {
 	Choice uint64
-	dot5   *CSI_RS_ResourceMapping_density_dot5
-	one    uper.NULL `madatory`
-	three  uper.NULL `madatory`
-	spare  uper.NULL `madatory`
+	Dot5   *CSI_RS_ResourceMapping_density_dot5
+	One    uper.NULL `madatory`
+	Three  uper.NULL `madatory`
+	Spare  uper.NULL `madatory`
 }
 
 func (ie *CSI_RS_ResourceMapping_density) Encode(w *uper.UperWriter) error {
@@ -29,21 +29,21 @@ func (ie *CSI_RS_ResourceMapping_density) Encode(w *uper.UperWriter) error {
 		return err
 	}
 	switch ie.Choice {
-	case CSI_RS_ResourceMapping_density_Choice_dot5:
-		if err = ie.dot5.Encode(w); err != nil {
-			err = utils.WrapError("Encode dot5", err)
+	case CSI_RS_ResourceMapping_density_Choice_Dot5:
+		if err = ie.Dot5.Encode(w); err != nil {
+			err = utils.WrapError("Encode Dot5", err)
 		}
-	case CSI_RS_ResourceMapping_density_Choice_one:
+	case CSI_RS_ResourceMapping_density_Choice_One:
 		if err := w.WriteNull(); err != nil {
-			err = utils.WrapError("Encode one", err)
+			err = utils.WrapError("Encode One", err)
 		}
-	case CSI_RS_ResourceMapping_density_Choice_three:
+	case CSI_RS_ResourceMapping_density_Choice_Three:
 		if err := w.WriteNull(); err != nil {
-			err = utils.WrapError("Encode three", err)
+			err = utils.WrapError("Encode Three", err)
 		}
-	case CSI_RS_ResourceMapping_density_Choice_spare:
+	case CSI_RS_ResourceMapping_density_Choice_Spare:
 		if err := w.WriteNull(); err != nil {
-			err = utils.WrapError("Encode spare", err)
+			err = utils.WrapError("Encode Spare", err)
 		}
 	default:
 		err = fmt.Errorf("invalid choice: %d", ie.Choice)
@@ -57,22 +57,22 @@ func (ie *CSI_RS_ResourceMapping_density) Decode(r *uper.UperReader) error {
 		return err
 	}
 	switch ie.Choice {
-	case CSI_RS_ResourceMapping_density_Choice_dot5:
-		ie.dot5 = new(CSI_RS_ResourceMapping_density_dot5)
-		if err = ie.dot5.Decode(r); err != nil {
-			return utils.WrapError("Decode dot5", err)
+	case CSI_RS_ResourceMapping_density_Choice_Dot5:
+		ie.Dot5 = new(CSI_RS_ResourceMapping_density_dot5)
+		if err = ie.Dot5.Decode(r); err != nil {
+			return utils.WrapError("Decode Dot5", err)
 		}
-	case CSI_RS_ResourceMapping_density_Choice_one:
+	case CSI_RS_ResourceMapping_density_Choice_One:
 		if err := r.ReadNull(); err != nil {
-			return utils.WrapError("Decode one", err)
+			return utils.WrapError("Decode One", err)
 		}
-	case CSI_RS_ResourceMapping_density_Choice_three:
+	case CSI_RS_ResourceMapping_density_Choice_Three:
 		if err := r.ReadNull(); err != nil {
-			return utils.WrapError("Decode three", err)
+			return utils.WrapError("Decode Three", err)
 		}
-	case CSI_RS_ResourceMapping_density_Choice_spare:
+	case CSI_RS_ResourceMapping_density_Choice_Spare:
 		if err := r.ReadNull(); err != nil {
-			return utils.WrapError("Decode spare", err)
+			return utils.WrapError("Decode Spare", err)
 		}
 	default:
 		return fmt.Errorf("invalid choice: %d", ie.Choice)

@@ -9,14 +9,14 @@ import (
 
 const (
 	BandParametersSidelinkEUTRA_NR_v1630_Choice_nothing uint64 = iota
-	BandParametersSidelinkEUTRA_NR_v1630_Choice_eutra
-	BandParametersSidelinkEUTRA_NR_v1630_Choice_nr
+	BandParametersSidelinkEUTRA_NR_v1630_Choice_Eutra
+	BandParametersSidelinkEUTRA_NR_v1630_Choice_Nr
 )
 
 type BandParametersSidelinkEUTRA_NR_v1630 struct {
 	Choice uint64
-	eutra  uper.NULL `madatory`
-	nr     *BandParametersSidelinkEUTRA_NR_v1630_nr
+	Eutra  uper.NULL `madatory`
+	Nr     *BandParametersSidelinkEUTRA_NR_v1630_nr
 }
 
 func (ie *BandParametersSidelinkEUTRA_NR_v1630) Encode(w *uper.UperWriter) error {
@@ -25,13 +25,13 @@ func (ie *BandParametersSidelinkEUTRA_NR_v1630) Encode(w *uper.UperWriter) error
 		return err
 	}
 	switch ie.Choice {
-	case BandParametersSidelinkEUTRA_NR_v1630_Choice_eutra:
+	case BandParametersSidelinkEUTRA_NR_v1630_Choice_Eutra:
 		if err := w.WriteNull(); err != nil {
-			err = utils.WrapError("Encode eutra", err)
+			err = utils.WrapError("Encode Eutra", err)
 		}
-	case BandParametersSidelinkEUTRA_NR_v1630_Choice_nr:
-		if err = ie.nr.Encode(w); err != nil {
-			err = utils.WrapError("Encode nr", err)
+	case BandParametersSidelinkEUTRA_NR_v1630_Choice_Nr:
+		if err = ie.Nr.Encode(w); err != nil {
+			err = utils.WrapError("Encode Nr", err)
 		}
 	default:
 		err = fmt.Errorf("invalid choice: %d", ie.Choice)
@@ -45,14 +45,14 @@ func (ie *BandParametersSidelinkEUTRA_NR_v1630) Decode(r *uper.UperReader) error
 		return err
 	}
 	switch ie.Choice {
-	case BandParametersSidelinkEUTRA_NR_v1630_Choice_eutra:
+	case BandParametersSidelinkEUTRA_NR_v1630_Choice_Eutra:
 		if err := r.ReadNull(); err != nil {
-			return utils.WrapError("Decode eutra", err)
+			return utils.WrapError("Decode Eutra", err)
 		}
-	case BandParametersSidelinkEUTRA_NR_v1630_Choice_nr:
-		ie.nr = new(BandParametersSidelinkEUTRA_NR_v1630_nr)
-		if err = ie.nr.Decode(r); err != nil {
-			return utils.WrapError("Decode nr", err)
+	case BandParametersSidelinkEUTRA_NR_v1630_Choice_Nr:
+		ie.Nr = new(BandParametersSidelinkEUTRA_NR_v1630_nr)
+		if err = ie.Nr.Decode(r); err != nil {
+			return utils.WrapError("Decode Nr", err)
 		}
 	default:
 		return fmt.Errorf("invalid choice: %d", ie.Choice)

@@ -6,26 +6,26 @@ import (
 )
 
 type PDCP_ParametersMRDC struct {
-	pdcp_DuplicationSplitSRB *PDCP_ParametersMRDC_pdcp_DuplicationSplitSRB `optional`
-	pdcp_DuplicationSplitDRB *PDCP_ParametersMRDC_pdcp_DuplicationSplitDRB `optional`
+	Pdcp_DuplicationSplitSRB *PDCP_ParametersMRDC_pdcp_DuplicationSplitSRB `optional`
+	Pdcp_DuplicationSplitDRB *PDCP_ParametersMRDC_pdcp_DuplicationSplitDRB `optional`
 }
 
 func (ie *PDCP_ParametersMRDC) Encode(w *uper.UperWriter) error {
 	var err error
-	preambleBits := []bool{ie.pdcp_DuplicationSplitSRB != nil, ie.pdcp_DuplicationSplitDRB != nil}
+	preambleBits := []bool{ie.Pdcp_DuplicationSplitSRB != nil, ie.Pdcp_DuplicationSplitDRB != nil}
 	for _, bit := range preambleBits {
 		if err = w.WriteBool(bit); err != nil {
 			return err
 		}
 	}
-	if ie.pdcp_DuplicationSplitSRB != nil {
-		if err = ie.pdcp_DuplicationSplitSRB.Encode(w); err != nil {
-			return utils.WrapError("Encode pdcp_DuplicationSplitSRB", err)
+	if ie.Pdcp_DuplicationSplitSRB != nil {
+		if err = ie.Pdcp_DuplicationSplitSRB.Encode(w); err != nil {
+			return utils.WrapError("Encode Pdcp_DuplicationSplitSRB", err)
 		}
 	}
-	if ie.pdcp_DuplicationSplitDRB != nil {
-		if err = ie.pdcp_DuplicationSplitDRB.Encode(w); err != nil {
-			return utils.WrapError("Encode pdcp_DuplicationSplitDRB", err)
+	if ie.Pdcp_DuplicationSplitDRB != nil {
+		if err = ie.Pdcp_DuplicationSplitDRB.Encode(w); err != nil {
+			return utils.WrapError("Encode Pdcp_DuplicationSplitDRB", err)
 		}
 	}
 	return nil
@@ -33,24 +33,24 @@ func (ie *PDCP_ParametersMRDC) Encode(w *uper.UperWriter) error {
 
 func (ie *PDCP_ParametersMRDC) Decode(r *uper.UperReader) error {
 	var err error
-	var pdcp_DuplicationSplitSRBPresent bool
-	if pdcp_DuplicationSplitSRBPresent, err = r.ReadBool(); err != nil {
+	var Pdcp_DuplicationSplitSRBPresent bool
+	if Pdcp_DuplicationSplitSRBPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var pdcp_DuplicationSplitDRBPresent bool
-	if pdcp_DuplicationSplitDRBPresent, err = r.ReadBool(); err != nil {
+	var Pdcp_DuplicationSplitDRBPresent bool
+	if Pdcp_DuplicationSplitDRBPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	if pdcp_DuplicationSplitSRBPresent {
-		ie.pdcp_DuplicationSplitSRB = new(PDCP_ParametersMRDC_pdcp_DuplicationSplitSRB)
-		if err = ie.pdcp_DuplicationSplitSRB.Decode(r); err != nil {
-			return utils.WrapError("Decode pdcp_DuplicationSplitSRB", err)
+	if Pdcp_DuplicationSplitSRBPresent {
+		ie.Pdcp_DuplicationSplitSRB = new(PDCP_ParametersMRDC_pdcp_DuplicationSplitSRB)
+		if err = ie.Pdcp_DuplicationSplitSRB.Decode(r); err != nil {
+			return utils.WrapError("Decode Pdcp_DuplicationSplitSRB", err)
 		}
 	}
-	if pdcp_DuplicationSplitDRBPresent {
-		ie.pdcp_DuplicationSplitDRB = new(PDCP_ParametersMRDC_pdcp_DuplicationSplitDRB)
-		if err = ie.pdcp_DuplicationSplitDRB.Decode(r); err != nil {
-			return utils.WrapError("Decode pdcp_DuplicationSplitDRB", err)
+	if Pdcp_DuplicationSplitDRBPresent {
+		ie.Pdcp_DuplicationSplitDRB = new(PDCP_ParametersMRDC_pdcp_DuplicationSplitDRB)
+		if err = ie.Pdcp_DuplicationSplitDRB.Decode(r); err != nil {
+			return utils.WrapError("Decode Pdcp_DuplicationSplitDRB", err)
 		}
 	}
 	return nil

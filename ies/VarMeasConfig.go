@@ -6,44 +6,44 @@ import (
 )
 
 type VarMeasConfig struct {
-	measIdList       *MeasIdToAddModList            `optional`
-	measObjectList   *MeasObjectToAddModList        `optional`
-	reportConfigList *ReportConfigToAddModList      `optional`
-	quantityConfig   *QuantityConfig                `optional`
-	s_MeasureConfig  *VarMeasConfig_s_MeasureConfig `optional`
+	MeasIdList       *MeasIdToAddModList            `optional`
+	MeasObjectList   *MeasObjectToAddModList        `optional`
+	ReportConfigList *ReportConfigToAddModList      `optional`
+	QuantityConfig   *QuantityConfig                `optional`
+	S_MeasureConfig  *VarMeasConfig_s_MeasureConfig `optional`
 }
 
 func (ie *VarMeasConfig) Encode(w *uper.UperWriter) error {
 	var err error
-	preambleBits := []bool{ie.measIdList != nil, ie.measObjectList != nil, ie.reportConfigList != nil, ie.quantityConfig != nil, ie.s_MeasureConfig != nil}
+	preambleBits := []bool{ie.MeasIdList != nil, ie.MeasObjectList != nil, ie.ReportConfigList != nil, ie.QuantityConfig != nil, ie.S_MeasureConfig != nil}
 	for _, bit := range preambleBits {
 		if err = w.WriteBool(bit); err != nil {
 			return err
 		}
 	}
-	if ie.measIdList != nil {
-		if err = ie.measIdList.Encode(w); err != nil {
-			return utils.WrapError("Encode measIdList", err)
+	if ie.MeasIdList != nil {
+		if err = ie.MeasIdList.Encode(w); err != nil {
+			return utils.WrapError("Encode MeasIdList", err)
 		}
 	}
-	if ie.measObjectList != nil {
-		if err = ie.measObjectList.Encode(w); err != nil {
-			return utils.WrapError("Encode measObjectList", err)
+	if ie.MeasObjectList != nil {
+		if err = ie.MeasObjectList.Encode(w); err != nil {
+			return utils.WrapError("Encode MeasObjectList", err)
 		}
 	}
-	if ie.reportConfigList != nil {
-		if err = ie.reportConfigList.Encode(w); err != nil {
-			return utils.WrapError("Encode reportConfigList", err)
+	if ie.ReportConfigList != nil {
+		if err = ie.ReportConfigList.Encode(w); err != nil {
+			return utils.WrapError("Encode ReportConfigList", err)
 		}
 	}
-	if ie.quantityConfig != nil {
-		if err = ie.quantityConfig.Encode(w); err != nil {
-			return utils.WrapError("Encode quantityConfig", err)
+	if ie.QuantityConfig != nil {
+		if err = ie.QuantityConfig.Encode(w); err != nil {
+			return utils.WrapError("Encode QuantityConfig", err)
 		}
 	}
-	if ie.s_MeasureConfig != nil {
-		if err = ie.s_MeasureConfig.Encode(w); err != nil {
-			return utils.WrapError("Encode s_MeasureConfig", err)
+	if ie.S_MeasureConfig != nil {
+		if err = ie.S_MeasureConfig.Encode(w); err != nil {
+			return utils.WrapError("Encode S_MeasureConfig", err)
 		}
 	}
 	return nil
@@ -51,54 +51,54 @@ func (ie *VarMeasConfig) Encode(w *uper.UperWriter) error {
 
 func (ie *VarMeasConfig) Decode(r *uper.UperReader) error {
 	var err error
-	var measIdListPresent bool
-	if measIdListPresent, err = r.ReadBool(); err != nil {
+	var MeasIdListPresent bool
+	if MeasIdListPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var measObjectListPresent bool
-	if measObjectListPresent, err = r.ReadBool(); err != nil {
+	var MeasObjectListPresent bool
+	if MeasObjectListPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var reportConfigListPresent bool
-	if reportConfigListPresent, err = r.ReadBool(); err != nil {
+	var ReportConfigListPresent bool
+	if ReportConfigListPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var quantityConfigPresent bool
-	if quantityConfigPresent, err = r.ReadBool(); err != nil {
+	var QuantityConfigPresent bool
+	if QuantityConfigPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var s_MeasureConfigPresent bool
-	if s_MeasureConfigPresent, err = r.ReadBool(); err != nil {
+	var S_MeasureConfigPresent bool
+	if S_MeasureConfigPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	if measIdListPresent {
-		ie.measIdList = new(MeasIdToAddModList)
-		if err = ie.measIdList.Decode(r); err != nil {
-			return utils.WrapError("Decode measIdList", err)
+	if MeasIdListPresent {
+		ie.MeasIdList = new(MeasIdToAddModList)
+		if err = ie.MeasIdList.Decode(r); err != nil {
+			return utils.WrapError("Decode MeasIdList", err)
 		}
 	}
-	if measObjectListPresent {
-		ie.measObjectList = new(MeasObjectToAddModList)
-		if err = ie.measObjectList.Decode(r); err != nil {
-			return utils.WrapError("Decode measObjectList", err)
+	if MeasObjectListPresent {
+		ie.MeasObjectList = new(MeasObjectToAddModList)
+		if err = ie.MeasObjectList.Decode(r); err != nil {
+			return utils.WrapError("Decode MeasObjectList", err)
 		}
 	}
-	if reportConfigListPresent {
-		ie.reportConfigList = new(ReportConfigToAddModList)
-		if err = ie.reportConfigList.Decode(r); err != nil {
-			return utils.WrapError("Decode reportConfigList", err)
+	if ReportConfigListPresent {
+		ie.ReportConfigList = new(ReportConfigToAddModList)
+		if err = ie.ReportConfigList.Decode(r); err != nil {
+			return utils.WrapError("Decode ReportConfigList", err)
 		}
 	}
-	if quantityConfigPresent {
-		ie.quantityConfig = new(QuantityConfig)
-		if err = ie.quantityConfig.Decode(r); err != nil {
-			return utils.WrapError("Decode quantityConfig", err)
+	if QuantityConfigPresent {
+		ie.QuantityConfig = new(QuantityConfig)
+		if err = ie.QuantityConfig.Decode(r); err != nil {
+			return utils.WrapError("Decode QuantityConfig", err)
 		}
 	}
-	if s_MeasureConfigPresent {
-		ie.s_MeasureConfig = new(VarMeasConfig_s_MeasureConfig)
-		if err = ie.s_MeasureConfig.Decode(r); err != nil {
-			return utils.WrapError("Decode s_MeasureConfig", err)
+	if S_MeasureConfigPresent {
+		ie.S_MeasureConfig = new(VarMeasConfig_s_MeasureConfig)
+		if err = ie.S_MeasureConfig.Decode(r); err != nil {
+			return utils.WrapError("Decode S_MeasureConfig", err)
 		}
 	}
 	return nil

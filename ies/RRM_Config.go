@@ -8,33 +8,33 @@ import (
 )
 
 type RRM_Config struct {
-	ue_InactiveTime               *RRM_Config_ue_InactiveTime      `optional`
-	candidateCellInfoList         *MeasResultList2NR               `optional`
-	candidateCellInfoListSN_EUTRA *MeasResultServFreqListEUTRA_SCG `optional,ext-1`
+	Ue_InactiveTime               *RRM_Config_ue_InactiveTime      `optional`
+	CandidateCellInfoList         *MeasResultList2NR               `optional`
+	CandidateCellInfoListSN_EUTRA *MeasResultServFreqListEUTRA_SCG `optional,ext-1`
 }
 
 func (ie *RRM_Config) Encode(w *uper.UperWriter) error {
 	var err error
-	hasExtensions := ie.candidateCellInfoListSN_EUTRA != nil
-	preambleBits := []bool{hasExtensions, ie.ue_InactiveTime != nil, ie.candidateCellInfoList != nil}
+	hasExtensions := ie.CandidateCellInfoListSN_EUTRA != nil
+	preambleBits := []bool{hasExtensions, ie.Ue_InactiveTime != nil, ie.CandidateCellInfoList != nil}
 	for _, bit := range preambleBits {
 		if err = w.WriteBool(bit); err != nil {
 			return err
 		}
 	}
-	if ie.ue_InactiveTime != nil {
-		if err = ie.ue_InactiveTime.Encode(w); err != nil {
-			return utils.WrapError("Encode ue_InactiveTime", err)
+	if ie.Ue_InactiveTime != nil {
+		if err = ie.Ue_InactiveTime.Encode(w); err != nil {
+			return utils.WrapError("Encode Ue_InactiveTime", err)
 		}
 	}
-	if ie.candidateCellInfoList != nil {
-		if err = ie.candidateCellInfoList.Encode(w); err != nil {
-			return utils.WrapError("Encode candidateCellInfoList", err)
+	if ie.CandidateCellInfoList != nil {
+		if err = ie.CandidateCellInfoList.Encode(w); err != nil {
+			return utils.WrapError("Encode CandidateCellInfoList", err)
 		}
 	}
 	if hasExtensions {
 		// Extension bitmap: 1 bits for 1 extension groups
-		extBitmap := []bool{ie.candidateCellInfoListSN_EUTRA != nil}
+		extBitmap := []bool{ie.CandidateCellInfoListSN_EUTRA != nil}
 		if err := w.WriteExtBitMap(extBitmap); err != nil {
 			return utils.WrapError("WriteExtBitMap RRM_Config", err)
 		}
@@ -45,17 +45,17 @@ func (ie *RRM_Config) Encode(w *uper.UperWriter) error {
 			extWriter := uper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 1
-			optionals_ext_1 := []bool{ie.candidateCellInfoListSN_EUTRA != nil}
+			optionals_ext_1 := []bool{ie.CandidateCellInfoListSN_EUTRA != nil}
 			for _, bit := range optionals_ext_1 {
 				if err := extWriter.WriteBool(bit); err != nil {
 					return err
 				}
 			}
 
-			// encode candidateCellInfoListSN_EUTRA optional
-			if ie.candidateCellInfoListSN_EUTRA != nil {
-				if err = ie.candidateCellInfoListSN_EUTRA.Encode(extWriter); err != nil {
-					return utils.WrapError("Encode candidateCellInfoListSN_EUTRA", err)
+			// encode CandidateCellInfoListSN_EUTRA optional
+			if ie.CandidateCellInfoListSN_EUTRA != nil {
+				if err = ie.CandidateCellInfoListSN_EUTRA.Encode(extWriter); err != nil {
+					return utils.WrapError("Encode CandidateCellInfoListSN_EUTRA", err)
 				}
 			}
 
@@ -77,24 +77,24 @@ func (ie *RRM_Config) Decode(r *uper.UperReader) error {
 	if extensionBit, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var ue_InactiveTimePresent bool
-	if ue_InactiveTimePresent, err = r.ReadBool(); err != nil {
+	var Ue_InactiveTimePresent bool
+	if Ue_InactiveTimePresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var candidateCellInfoListPresent bool
-	if candidateCellInfoListPresent, err = r.ReadBool(); err != nil {
+	var CandidateCellInfoListPresent bool
+	if CandidateCellInfoListPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	if ue_InactiveTimePresent {
-		ie.ue_InactiveTime = new(RRM_Config_ue_InactiveTime)
-		if err = ie.ue_InactiveTime.Decode(r); err != nil {
-			return utils.WrapError("Decode ue_InactiveTime", err)
+	if Ue_InactiveTimePresent {
+		ie.Ue_InactiveTime = new(RRM_Config_ue_InactiveTime)
+		if err = ie.Ue_InactiveTime.Decode(r); err != nil {
+			return utils.WrapError("Decode Ue_InactiveTime", err)
 		}
 	}
-	if candidateCellInfoListPresent {
-		ie.candidateCellInfoList = new(MeasResultList2NR)
-		if err = ie.candidateCellInfoList.Decode(r); err != nil {
-			return utils.WrapError("Decode candidateCellInfoList", err)
+	if CandidateCellInfoListPresent {
+		ie.CandidateCellInfoList = new(MeasResultList2NR)
+		if err = ie.CandidateCellInfoList.Decode(r); err != nil {
+			return utils.WrapError("Decode CandidateCellInfoList", err)
 		}
 	}
 
@@ -114,15 +114,15 @@ func (ie *RRM_Config) Decode(r *uper.UperReader) error {
 
 			extReader := uper.NewReader(bytes.NewReader(extBytes))
 
-			candidateCellInfoListSN_EUTRAPresent, err := extReader.ReadBool()
+			CandidateCellInfoListSN_EUTRAPresent, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			// decode candidateCellInfoListSN_EUTRA optional
-			if candidateCellInfoListSN_EUTRAPresent {
-				ie.candidateCellInfoListSN_EUTRA = new(MeasResultServFreqListEUTRA_SCG)
-				if err = ie.candidateCellInfoListSN_EUTRA.Decode(extReader); err != nil {
-					return utils.WrapError("Decode candidateCellInfoListSN_EUTRA", err)
+			// decode CandidateCellInfoListSN_EUTRA optional
+			if CandidateCellInfoListSN_EUTRAPresent {
+				ie.CandidateCellInfoListSN_EUTRA = new(MeasResultServFreqListEUTRA_SCG)
+				if err = ie.CandidateCellInfoListSN_EUTRA.Decode(extReader); err != nil {
+					return utils.WrapError("Decode CandidateCellInfoListSN_EUTRA", err)
 				}
 			}
 		}

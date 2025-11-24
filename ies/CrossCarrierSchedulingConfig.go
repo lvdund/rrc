@@ -8,27 +8,27 @@ import (
 )
 
 type CrossCarrierSchedulingConfig struct {
-	schedulingCellInfo          CrossCarrierSchedulingConfig_schedulingCellInfo           `lb:1,ub:7,madatory`
-	carrierIndicatorSize_r16    *CrossCarrierSchedulingConfig_carrierIndicatorSize_r16    `lb:0,ub:3,optional,ext-1`
-	enableDefaultBeamForCCS_r16 *CrossCarrierSchedulingConfig_enableDefaultBeamForCCS_r16 `optional,ext-1`
-	ccs_BlindDetectionSplit_r17 *CrossCarrierSchedulingConfig_ccs_BlindDetectionSplit_r17 `optional,ext-2`
+	SchedulingCellInfo          CrossCarrierSchedulingConfig_schedulingCellInfo           `lb:1,ub:7,madatory`
+	CarrierIndicatorSize_r16    *CrossCarrierSchedulingConfig_carrierIndicatorSize_r16    `lb:0,ub:3,optional,ext-1`
+	EnableDefaultBeamForCCS_r16 *CrossCarrierSchedulingConfig_enableDefaultBeamForCCS_r16 `optional,ext-1`
+	Ccs_BlindDetectionSplit_r17 *CrossCarrierSchedulingConfig_ccs_BlindDetectionSplit_r17 `optional,ext-2`
 }
 
 func (ie *CrossCarrierSchedulingConfig) Encode(w *uper.UperWriter) error {
 	var err error
-	hasExtensions := ie.carrierIndicatorSize_r16 != nil || ie.enableDefaultBeamForCCS_r16 != nil || ie.ccs_BlindDetectionSplit_r17 != nil
+	hasExtensions := ie.CarrierIndicatorSize_r16 != nil || ie.EnableDefaultBeamForCCS_r16 != nil || ie.Ccs_BlindDetectionSplit_r17 != nil
 	preambleBits := []bool{hasExtensions}
 	for _, bit := range preambleBits {
 		if err = w.WriteBool(bit); err != nil {
 			return err
 		}
 	}
-	if err = ie.schedulingCellInfo.Encode(w); err != nil {
-		return utils.WrapError("Encode schedulingCellInfo", err)
+	if err = ie.SchedulingCellInfo.Encode(w); err != nil {
+		return utils.WrapError("Encode SchedulingCellInfo", err)
 	}
 	if hasExtensions {
 		// Extension bitmap: 2 bits for 2 extension groups
-		extBitmap := []bool{ie.carrierIndicatorSize_r16 != nil || ie.enableDefaultBeamForCCS_r16 != nil, ie.ccs_BlindDetectionSplit_r17 != nil}
+		extBitmap := []bool{ie.CarrierIndicatorSize_r16 != nil || ie.EnableDefaultBeamForCCS_r16 != nil, ie.Ccs_BlindDetectionSplit_r17 != nil}
 		if err := w.WriteExtBitMap(extBitmap); err != nil {
 			return utils.WrapError("WriteExtBitMap CrossCarrierSchedulingConfig", err)
 		}
@@ -39,23 +39,23 @@ func (ie *CrossCarrierSchedulingConfig) Encode(w *uper.UperWriter) error {
 			extWriter := uper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 1
-			optionals_ext_1 := []bool{ie.carrierIndicatorSize_r16 != nil, ie.enableDefaultBeamForCCS_r16 != nil}
+			optionals_ext_1 := []bool{ie.CarrierIndicatorSize_r16 != nil, ie.EnableDefaultBeamForCCS_r16 != nil}
 			for _, bit := range optionals_ext_1 {
 				if err := extWriter.WriteBool(bit); err != nil {
 					return err
 				}
 			}
 
-			// encode carrierIndicatorSize_r16 optional
-			if ie.carrierIndicatorSize_r16 != nil {
-				if err = ie.carrierIndicatorSize_r16.Encode(extWriter); err != nil {
-					return utils.WrapError("Encode carrierIndicatorSize_r16", err)
+			// encode CarrierIndicatorSize_r16 optional
+			if ie.CarrierIndicatorSize_r16 != nil {
+				if err = ie.CarrierIndicatorSize_r16.Encode(extWriter); err != nil {
+					return utils.WrapError("Encode CarrierIndicatorSize_r16", err)
 				}
 			}
-			// encode enableDefaultBeamForCCS_r16 optional
-			if ie.enableDefaultBeamForCCS_r16 != nil {
-				if err = ie.enableDefaultBeamForCCS_r16.Encode(extWriter); err != nil {
-					return utils.WrapError("Encode enableDefaultBeamForCCS_r16", err)
+			// encode EnableDefaultBeamForCCS_r16 optional
+			if ie.EnableDefaultBeamForCCS_r16 != nil {
+				if err = ie.EnableDefaultBeamForCCS_r16.Encode(extWriter); err != nil {
+					return utils.WrapError("Encode EnableDefaultBeamForCCS_r16", err)
 				}
 			}
 
@@ -74,17 +74,17 @@ func (ie *CrossCarrierSchedulingConfig) Encode(w *uper.UperWriter) error {
 			extWriter := uper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 2
-			optionals_ext_2 := []bool{ie.ccs_BlindDetectionSplit_r17 != nil}
+			optionals_ext_2 := []bool{ie.Ccs_BlindDetectionSplit_r17 != nil}
 			for _, bit := range optionals_ext_2 {
 				if err := extWriter.WriteBool(bit); err != nil {
 					return err
 				}
 			}
 
-			// encode ccs_BlindDetectionSplit_r17 optional
-			if ie.ccs_BlindDetectionSplit_r17 != nil {
-				if err = ie.ccs_BlindDetectionSplit_r17.Encode(extWriter); err != nil {
-					return utils.WrapError("Encode ccs_BlindDetectionSplit_r17", err)
+			// encode Ccs_BlindDetectionSplit_r17 optional
+			if ie.Ccs_BlindDetectionSplit_r17 != nil {
+				if err = ie.Ccs_BlindDetectionSplit_r17.Encode(extWriter); err != nil {
+					return utils.WrapError("Encode Ccs_BlindDetectionSplit_r17", err)
 				}
 			}
 
@@ -106,8 +106,8 @@ func (ie *CrossCarrierSchedulingConfig) Decode(r *uper.UperReader) error {
 	if extensionBit, err = r.ReadBool(); err != nil {
 		return err
 	}
-	if err = ie.schedulingCellInfo.Decode(r); err != nil {
-		return utils.WrapError("Decode schedulingCellInfo", err)
+	if err = ie.SchedulingCellInfo.Decode(r); err != nil {
+		return utils.WrapError("Decode SchedulingCellInfo", err)
 	}
 
 	if extensionBit {
@@ -126,26 +126,26 @@ func (ie *CrossCarrierSchedulingConfig) Decode(r *uper.UperReader) error {
 
 			extReader := uper.NewReader(bytes.NewReader(extBytes))
 
-			carrierIndicatorSize_r16Present, err := extReader.ReadBool()
+			CarrierIndicatorSize_r16Present, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			enableDefaultBeamForCCS_r16Present, err := extReader.ReadBool()
+			EnableDefaultBeamForCCS_r16Present, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			// decode carrierIndicatorSize_r16 optional
-			if carrierIndicatorSize_r16Present {
-				ie.carrierIndicatorSize_r16 = new(CrossCarrierSchedulingConfig_carrierIndicatorSize_r16)
-				if err = ie.carrierIndicatorSize_r16.Decode(extReader); err != nil {
-					return utils.WrapError("Decode carrierIndicatorSize_r16", err)
+			// decode CarrierIndicatorSize_r16 optional
+			if CarrierIndicatorSize_r16Present {
+				ie.CarrierIndicatorSize_r16 = new(CrossCarrierSchedulingConfig_carrierIndicatorSize_r16)
+				if err = ie.CarrierIndicatorSize_r16.Decode(extReader); err != nil {
+					return utils.WrapError("Decode CarrierIndicatorSize_r16", err)
 				}
 			}
-			// decode enableDefaultBeamForCCS_r16 optional
-			if enableDefaultBeamForCCS_r16Present {
-				ie.enableDefaultBeamForCCS_r16 = new(CrossCarrierSchedulingConfig_enableDefaultBeamForCCS_r16)
-				if err = ie.enableDefaultBeamForCCS_r16.Decode(extReader); err != nil {
-					return utils.WrapError("Decode enableDefaultBeamForCCS_r16", err)
+			// decode EnableDefaultBeamForCCS_r16 optional
+			if EnableDefaultBeamForCCS_r16Present {
+				ie.EnableDefaultBeamForCCS_r16 = new(CrossCarrierSchedulingConfig_enableDefaultBeamForCCS_r16)
+				if err = ie.EnableDefaultBeamForCCS_r16.Decode(extReader); err != nil {
+					return utils.WrapError("Decode EnableDefaultBeamForCCS_r16", err)
 				}
 			}
 		}
@@ -158,15 +158,15 @@ func (ie *CrossCarrierSchedulingConfig) Decode(r *uper.UperReader) error {
 
 			extReader := uper.NewReader(bytes.NewReader(extBytes))
 
-			ccs_BlindDetectionSplit_r17Present, err := extReader.ReadBool()
+			Ccs_BlindDetectionSplit_r17Present, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			// decode ccs_BlindDetectionSplit_r17 optional
-			if ccs_BlindDetectionSplit_r17Present {
-				ie.ccs_BlindDetectionSplit_r17 = new(CrossCarrierSchedulingConfig_ccs_BlindDetectionSplit_r17)
-				if err = ie.ccs_BlindDetectionSplit_r17.Decode(extReader); err != nil {
-					return utils.WrapError("Decode ccs_BlindDetectionSplit_r17", err)
+			// decode Ccs_BlindDetectionSplit_r17 optional
+			if Ccs_BlindDetectionSplit_r17Present {
+				ie.Ccs_BlindDetectionSplit_r17 = new(CrossCarrierSchedulingConfig_ccs_BlindDetectionSplit_r17)
+				if err = ie.Ccs_BlindDetectionSplit_r17.Decode(extReader); err != nil {
+					return utils.WrapError("Decode Ccs_BlindDetectionSplit_r17", err)
 				}
 			}
 		}

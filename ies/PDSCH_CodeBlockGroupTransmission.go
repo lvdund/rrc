@@ -6,30 +6,30 @@ import (
 )
 
 type PDSCH_CodeBlockGroupTransmission struct {
-	maxCodeBlockGroupsPerTransportBlock PDSCH_CodeBlockGroupTransmission_maxCodeBlockGroupsPerTransportBlock `madatory`
-	codeBlockGroupFlushIndicator        bool                                                                 `madatory`
+	MaxCodeBlockGroupsPerTransportBlock PDSCH_CodeBlockGroupTransmission_maxCodeBlockGroupsPerTransportBlock `madatory`
+	CodeBlockGroupFlushIndicator        bool                                                                 `madatory`
 }
 
 func (ie *PDSCH_CodeBlockGroupTransmission) Encode(w *uper.UperWriter) error {
 	var err error
-	if err = ie.maxCodeBlockGroupsPerTransportBlock.Encode(w); err != nil {
-		return utils.WrapError("Encode maxCodeBlockGroupsPerTransportBlock", err)
+	if err = ie.MaxCodeBlockGroupsPerTransportBlock.Encode(w); err != nil {
+		return utils.WrapError("Encode MaxCodeBlockGroupsPerTransportBlock", err)
 	}
-	if err = w.WriteBoolean(ie.codeBlockGroupFlushIndicator); err != nil {
-		return utils.WrapError("WriteBoolean codeBlockGroupFlushIndicator", err)
+	if err = w.WriteBoolean(ie.CodeBlockGroupFlushIndicator); err != nil {
+		return utils.WrapError("WriteBoolean CodeBlockGroupFlushIndicator", err)
 	}
 	return nil
 }
 
 func (ie *PDSCH_CodeBlockGroupTransmission) Decode(r *uper.UperReader) error {
 	var err error
-	if err = ie.maxCodeBlockGroupsPerTransportBlock.Decode(r); err != nil {
-		return utils.WrapError("Decode maxCodeBlockGroupsPerTransportBlock", err)
+	if err = ie.MaxCodeBlockGroupsPerTransportBlock.Decode(r); err != nil {
+		return utils.WrapError("Decode MaxCodeBlockGroupsPerTransportBlock", err)
 	}
-	var tmp_bool_codeBlockGroupFlushIndicator bool
-	if tmp_bool_codeBlockGroupFlushIndicator, err = r.ReadBoolean(); err != nil {
-		return utils.WrapError("ReadBoolean codeBlockGroupFlushIndicator", err)
+	var tmp_bool_CodeBlockGroupFlushIndicator bool
+	if tmp_bool_CodeBlockGroupFlushIndicator, err = r.ReadBoolean(); err != nil {
+		return utils.WrapError("ReadBoolean CodeBlockGroupFlushIndicator", err)
 	}
-	ie.codeBlockGroupFlushIndicator = tmp_bool_codeBlockGroupFlushIndicator
+	ie.CodeBlockGroupFlushIndicator = tmp_bool_CodeBlockGroupFlushIndicator
 	return nil
 }

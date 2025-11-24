@@ -6,44 +6,44 @@ import (
 )
 
 type SidelinkUEInformationNR_r16_IEs struct {
-	sl_RxInterestedFreqList_r16 *SL_InterestedFreqList_r16         `optional`
-	sl_TxResourceReqList_r16    *SL_TxResourceReqList_r16          `optional`
-	sl_FailureList_r16          *SL_FailureList_r16                `optional`
-	lateNonCriticalExtension    *[]byte                            `optional`
-	nonCriticalExtension        *SidelinkUEInformationNR_v1700_IEs `optional`
+	Sl_RxInterestedFreqList_r16 *SL_InterestedFreqList_r16         `optional`
+	Sl_TxResourceReqList_r16    *SL_TxResourceReqList_r16          `optional`
+	Sl_FailureList_r16          *SL_FailureList_r16                `optional`
+	LateNonCriticalExtension    *[]byte                            `optional`
+	NonCriticalExtension        *SidelinkUEInformationNR_v1700_IEs `optional`
 }
 
 func (ie *SidelinkUEInformationNR_r16_IEs) Encode(w *uper.UperWriter) error {
 	var err error
-	preambleBits := []bool{ie.sl_RxInterestedFreqList_r16 != nil, ie.sl_TxResourceReqList_r16 != nil, ie.sl_FailureList_r16 != nil, ie.lateNonCriticalExtension != nil, ie.nonCriticalExtension != nil}
+	preambleBits := []bool{ie.Sl_RxInterestedFreqList_r16 != nil, ie.Sl_TxResourceReqList_r16 != nil, ie.Sl_FailureList_r16 != nil, ie.LateNonCriticalExtension != nil, ie.NonCriticalExtension != nil}
 	for _, bit := range preambleBits {
 		if err = w.WriteBool(bit); err != nil {
 			return err
 		}
 	}
-	if ie.sl_RxInterestedFreqList_r16 != nil {
-		if err = ie.sl_RxInterestedFreqList_r16.Encode(w); err != nil {
-			return utils.WrapError("Encode sl_RxInterestedFreqList_r16", err)
+	if ie.Sl_RxInterestedFreqList_r16 != nil {
+		if err = ie.Sl_RxInterestedFreqList_r16.Encode(w); err != nil {
+			return utils.WrapError("Encode Sl_RxInterestedFreqList_r16", err)
 		}
 	}
-	if ie.sl_TxResourceReqList_r16 != nil {
-		if err = ie.sl_TxResourceReqList_r16.Encode(w); err != nil {
-			return utils.WrapError("Encode sl_TxResourceReqList_r16", err)
+	if ie.Sl_TxResourceReqList_r16 != nil {
+		if err = ie.Sl_TxResourceReqList_r16.Encode(w); err != nil {
+			return utils.WrapError("Encode Sl_TxResourceReqList_r16", err)
 		}
 	}
-	if ie.sl_FailureList_r16 != nil {
-		if err = ie.sl_FailureList_r16.Encode(w); err != nil {
-			return utils.WrapError("Encode sl_FailureList_r16", err)
+	if ie.Sl_FailureList_r16 != nil {
+		if err = ie.Sl_FailureList_r16.Encode(w); err != nil {
+			return utils.WrapError("Encode Sl_FailureList_r16", err)
 		}
 	}
-	if ie.lateNonCriticalExtension != nil {
-		if err = w.WriteOctetString(*ie.lateNonCriticalExtension, &uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
-			return utils.WrapError("Encode lateNonCriticalExtension", err)
+	if ie.LateNonCriticalExtension != nil {
+		if err = w.WriteOctetString(*ie.LateNonCriticalExtension, &uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+			return utils.WrapError("Encode LateNonCriticalExtension", err)
 		}
 	}
-	if ie.nonCriticalExtension != nil {
-		if err = ie.nonCriticalExtension.Encode(w); err != nil {
-			return utils.WrapError("Encode nonCriticalExtension", err)
+	if ie.NonCriticalExtension != nil {
+		if err = ie.NonCriticalExtension.Encode(w); err != nil {
+			return utils.WrapError("Encode NonCriticalExtension", err)
 		}
 	}
 	return nil
@@ -51,55 +51,55 @@ func (ie *SidelinkUEInformationNR_r16_IEs) Encode(w *uper.UperWriter) error {
 
 func (ie *SidelinkUEInformationNR_r16_IEs) Decode(r *uper.UperReader) error {
 	var err error
-	var sl_RxInterestedFreqList_r16Present bool
-	if sl_RxInterestedFreqList_r16Present, err = r.ReadBool(); err != nil {
+	var Sl_RxInterestedFreqList_r16Present bool
+	if Sl_RxInterestedFreqList_r16Present, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var sl_TxResourceReqList_r16Present bool
-	if sl_TxResourceReqList_r16Present, err = r.ReadBool(); err != nil {
+	var Sl_TxResourceReqList_r16Present bool
+	if Sl_TxResourceReqList_r16Present, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var sl_FailureList_r16Present bool
-	if sl_FailureList_r16Present, err = r.ReadBool(); err != nil {
+	var Sl_FailureList_r16Present bool
+	if Sl_FailureList_r16Present, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var lateNonCriticalExtensionPresent bool
-	if lateNonCriticalExtensionPresent, err = r.ReadBool(); err != nil {
+	var LateNonCriticalExtensionPresent bool
+	if LateNonCriticalExtensionPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var nonCriticalExtensionPresent bool
-	if nonCriticalExtensionPresent, err = r.ReadBool(); err != nil {
+	var NonCriticalExtensionPresent bool
+	if NonCriticalExtensionPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	if sl_RxInterestedFreqList_r16Present {
-		ie.sl_RxInterestedFreqList_r16 = new(SL_InterestedFreqList_r16)
-		if err = ie.sl_RxInterestedFreqList_r16.Decode(r); err != nil {
-			return utils.WrapError("Decode sl_RxInterestedFreqList_r16", err)
+	if Sl_RxInterestedFreqList_r16Present {
+		ie.Sl_RxInterestedFreqList_r16 = new(SL_InterestedFreqList_r16)
+		if err = ie.Sl_RxInterestedFreqList_r16.Decode(r); err != nil {
+			return utils.WrapError("Decode Sl_RxInterestedFreqList_r16", err)
 		}
 	}
-	if sl_TxResourceReqList_r16Present {
-		ie.sl_TxResourceReqList_r16 = new(SL_TxResourceReqList_r16)
-		if err = ie.sl_TxResourceReqList_r16.Decode(r); err != nil {
-			return utils.WrapError("Decode sl_TxResourceReqList_r16", err)
+	if Sl_TxResourceReqList_r16Present {
+		ie.Sl_TxResourceReqList_r16 = new(SL_TxResourceReqList_r16)
+		if err = ie.Sl_TxResourceReqList_r16.Decode(r); err != nil {
+			return utils.WrapError("Decode Sl_TxResourceReqList_r16", err)
 		}
 	}
-	if sl_FailureList_r16Present {
-		ie.sl_FailureList_r16 = new(SL_FailureList_r16)
-		if err = ie.sl_FailureList_r16.Decode(r); err != nil {
-			return utils.WrapError("Decode sl_FailureList_r16", err)
+	if Sl_FailureList_r16Present {
+		ie.Sl_FailureList_r16 = new(SL_FailureList_r16)
+		if err = ie.Sl_FailureList_r16.Decode(r); err != nil {
+			return utils.WrapError("Decode Sl_FailureList_r16", err)
 		}
 	}
-	if lateNonCriticalExtensionPresent {
-		var tmp_os_lateNonCriticalExtension []byte
-		if tmp_os_lateNonCriticalExtension, err = r.ReadOctetString(&uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
-			return utils.WrapError("Decode lateNonCriticalExtension", err)
+	if LateNonCriticalExtensionPresent {
+		var tmp_os_LateNonCriticalExtension []byte
+		if tmp_os_LateNonCriticalExtension, err = r.ReadOctetString(&uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+			return utils.WrapError("Decode LateNonCriticalExtension", err)
 		}
-		ie.lateNonCriticalExtension = &tmp_os_lateNonCriticalExtension
+		ie.LateNonCriticalExtension = &tmp_os_LateNonCriticalExtension
 	}
-	if nonCriticalExtensionPresent {
-		ie.nonCriticalExtension = new(SidelinkUEInformationNR_v1700_IEs)
-		if err = ie.nonCriticalExtension.Decode(r); err != nil {
-			return utils.WrapError("Decode nonCriticalExtension", err)
+	if NonCriticalExtensionPresent {
+		ie.NonCriticalExtension = new(SidelinkUEInformationNR_v1700_IEs)
+		if err = ie.NonCriticalExtension.Decode(r); err != nil {
+			return utils.WrapError("Decode NonCriticalExtension", err)
 		}
 	}
 	return nil

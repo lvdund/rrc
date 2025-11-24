@@ -6,20 +6,20 @@ import (
 )
 
 type BandCombination_v1650 struct {
-	ca_ParametersNRDC_v1650 *CA_ParametersNRDC_v1650 `optional`
+	Ca_ParametersNRDC_v1650 *CA_ParametersNRDC_v1650 `optional`
 }
 
 func (ie *BandCombination_v1650) Encode(w *uper.UperWriter) error {
 	var err error
-	preambleBits := []bool{ie.ca_ParametersNRDC_v1650 != nil}
+	preambleBits := []bool{ie.Ca_ParametersNRDC_v1650 != nil}
 	for _, bit := range preambleBits {
 		if err = w.WriteBool(bit); err != nil {
 			return err
 		}
 	}
-	if ie.ca_ParametersNRDC_v1650 != nil {
-		if err = ie.ca_ParametersNRDC_v1650.Encode(w); err != nil {
-			return utils.WrapError("Encode ca_ParametersNRDC_v1650", err)
+	if ie.Ca_ParametersNRDC_v1650 != nil {
+		if err = ie.Ca_ParametersNRDC_v1650.Encode(w); err != nil {
+			return utils.WrapError("Encode Ca_ParametersNRDC_v1650", err)
 		}
 	}
 	return nil
@@ -27,14 +27,14 @@ func (ie *BandCombination_v1650) Encode(w *uper.UperWriter) error {
 
 func (ie *BandCombination_v1650) Decode(r *uper.UperReader) error {
 	var err error
-	var ca_ParametersNRDC_v1650Present bool
-	if ca_ParametersNRDC_v1650Present, err = r.ReadBool(); err != nil {
+	var Ca_ParametersNRDC_v1650Present bool
+	if Ca_ParametersNRDC_v1650Present, err = r.ReadBool(); err != nil {
 		return err
 	}
-	if ca_ParametersNRDC_v1650Present {
-		ie.ca_ParametersNRDC_v1650 = new(CA_ParametersNRDC_v1650)
-		if err = ie.ca_ParametersNRDC_v1650.Decode(r); err != nil {
-			return utils.WrapError("Decode ca_ParametersNRDC_v1650", err)
+	if Ca_ParametersNRDC_v1650Present {
+		ie.Ca_ParametersNRDC_v1650 = new(CA_ParametersNRDC_v1650)
+		if err = ie.Ca_ParametersNRDC_v1650.Decode(r); err != nil {
+			return utils.WrapError("Decode Ca_ParametersNRDC_v1650", err)
 		}
 	}
 	return nil

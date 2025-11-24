@@ -8,28 +8,28 @@ import (
 )
 
 type IMS_ParametersCommon struct {
-	voiceOverEUTRA_5GC             *IMS_ParametersCommon_voiceOverEUTRA_5GC             `optional`
-	voiceOverSCG_BearerEUTRA_5GC   *IMS_ParametersCommon_voiceOverSCG_BearerEUTRA_5GC   `optional,ext-1`
-	voiceFallbackIndicationEPS_r16 *IMS_ParametersCommon_voiceFallbackIndicationEPS_r16 `optional,ext-2`
+	VoiceOverEUTRA_5GC             *IMS_ParametersCommon_voiceOverEUTRA_5GC             `optional`
+	VoiceOverSCG_BearerEUTRA_5GC   *IMS_ParametersCommon_voiceOverSCG_BearerEUTRA_5GC   `optional,ext-1`
+	VoiceFallbackIndicationEPS_r16 *IMS_ParametersCommon_voiceFallbackIndicationEPS_r16 `optional,ext-2`
 }
 
 func (ie *IMS_ParametersCommon) Encode(w *uper.UperWriter) error {
 	var err error
-	hasExtensions := ie.voiceOverSCG_BearerEUTRA_5GC != nil || ie.voiceFallbackIndicationEPS_r16 != nil
-	preambleBits := []bool{hasExtensions, ie.voiceOverEUTRA_5GC != nil}
+	hasExtensions := ie.VoiceOverSCG_BearerEUTRA_5GC != nil || ie.VoiceFallbackIndicationEPS_r16 != nil
+	preambleBits := []bool{hasExtensions, ie.VoiceOverEUTRA_5GC != nil}
 	for _, bit := range preambleBits {
 		if err = w.WriteBool(bit); err != nil {
 			return err
 		}
 	}
-	if ie.voiceOverEUTRA_5GC != nil {
-		if err = ie.voiceOverEUTRA_5GC.Encode(w); err != nil {
-			return utils.WrapError("Encode voiceOverEUTRA_5GC", err)
+	if ie.VoiceOverEUTRA_5GC != nil {
+		if err = ie.VoiceOverEUTRA_5GC.Encode(w); err != nil {
+			return utils.WrapError("Encode VoiceOverEUTRA_5GC", err)
 		}
 	}
 	if hasExtensions {
 		// Extension bitmap: 2 bits for 2 extension groups
-		extBitmap := []bool{ie.voiceOverSCG_BearerEUTRA_5GC != nil, ie.voiceFallbackIndicationEPS_r16 != nil}
+		extBitmap := []bool{ie.VoiceOverSCG_BearerEUTRA_5GC != nil, ie.VoiceFallbackIndicationEPS_r16 != nil}
 		if err := w.WriteExtBitMap(extBitmap); err != nil {
 			return utils.WrapError("WriteExtBitMap IMS_ParametersCommon", err)
 		}
@@ -40,17 +40,17 @@ func (ie *IMS_ParametersCommon) Encode(w *uper.UperWriter) error {
 			extWriter := uper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 1
-			optionals_ext_1 := []bool{ie.voiceOverSCG_BearerEUTRA_5GC != nil}
+			optionals_ext_1 := []bool{ie.VoiceOverSCG_BearerEUTRA_5GC != nil}
 			for _, bit := range optionals_ext_1 {
 				if err := extWriter.WriteBool(bit); err != nil {
 					return err
 				}
 			}
 
-			// encode voiceOverSCG_BearerEUTRA_5GC optional
-			if ie.voiceOverSCG_BearerEUTRA_5GC != nil {
-				if err = ie.voiceOverSCG_BearerEUTRA_5GC.Encode(extWriter); err != nil {
-					return utils.WrapError("Encode voiceOverSCG_BearerEUTRA_5GC", err)
+			// encode VoiceOverSCG_BearerEUTRA_5GC optional
+			if ie.VoiceOverSCG_BearerEUTRA_5GC != nil {
+				if err = ie.VoiceOverSCG_BearerEUTRA_5GC.Encode(extWriter); err != nil {
+					return utils.WrapError("Encode VoiceOverSCG_BearerEUTRA_5GC", err)
 				}
 			}
 
@@ -69,17 +69,17 @@ func (ie *IMS_ParametersCommon) Encode(w *uper.UperWriter) error {
 			extWriter := uper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 2
-			optionals_ext_2 := []bool{ie.voiceFallbackIndicationEPS_r16 != nil}
+			optionals_ext_2 := []bool{ie.VoiceFallbackIndicationEPS_r16 != nil}
 			for _, bit := range optionals_ext_2 {
 				if err := extWriter.WriteBool(bit); err != nil {
 					return err
 				}
 			}
 
-			// encode voiceFallbackIndicationEPS_r16 optional
-			if ie.voiceFallbackIndicationEPS_r16 != nil {
-				if err = ie.voiceFallbackIndicationEPS_r16.Encode(extWriter); err != nil {
-					return utils.WrapError("Encode voiceFallbackIndicationEPS_r16", err)
+			// encode VoiceFallbackIndicationEPS_r16 optional
+			if ie.VoiceFallbackIndicationEPS_r16 != nil {
+				if err = ie.VoiceFallbackIndicationEPS_r16.Encode(extWriter); err != nil {
+					return utils.WrapError("Encode VoiceFallbackIndicationEPS_r16", err)
 				}
 			}
 
@@ -101,14 +101,14 @@ func (ie *IMS_ParametersCommon) Decode(r *uper.UperReader) error {
 	if extensionBit, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var voiceOverEUTRA_5GCPresent bool
-	if voiceOverEUTRA_5GCPresent, err = r.ReadBool(); err != nil {
+	var VoiceOverEUTRA_5GCPresent bool
+	if VoiceOverEUTRA_5GCPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	if voiceOverEUTRA_5GCPresent {
-		ie.voiceOverEUTRA_5GC = new(IMS_ParametersCommon_voiceOverEUTRA_5GC)
-		if err = ie.voiceOverEUTRA_5GC.Decode(r); err != nil {
-			return utils.WrapError("Decode voiceOverEUTRA_5GC", err)
+	if VoiceOverEUTRA_5GCPresent {
+		ie.VoiceOverEUTRA_5GC = new(IMS_ParametersCommon_voiceOverEUTRA_5GC)
+		if err = ie.VoiceOverEUTRA_5GC.Decode(r); err != nil {
+			return utils.WrapError("Decode VoiceOverEUTRA_5GC", err)
 		}
 	}
 
@@ -128,15 +128,15 @@ func (ie *IMS_ParametersCommon) Decode(r *uper.UperReader) error {
 
 			extReader := uper.NewReader(bytes.NewReader(extBytes))
 
-			voiceOverSCG_BearerEUTRA_5GCPresent, err := extReader.ReadBool()
+			VoiceOverSCG_BearerEUTRA_5GCPresent, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			// decode voiceOverSCG_BearerEUTRA_5GC optional
-			if voiceOverSCG_BearerEUTRA_5GCPresent {
-				ie.voiceOverSCG_BearerEUTRA_5GC = new(IMS_ParametersCommon_voiceOverSCG_BearerEUTRA_5GC)
-				if err = ie.voiceOverSCG_BearerEUTRA_5GC.Decode(extReader); err != nil {
-					return utils.WrapError("Decode voiceOverSCG_BearerEUTRA_5GC", err)
+			// decode VoiceOverSCG_BearerEUTRA_5GC optional
+			if VoiceOverSCG_BearerEUTRA_5GCPresent {
+				ie.VoiceOverSCG_BearerEUTRA_5GC = new(IMS_ParametersCommon_voiceOverSCG_BearerEUTRA_5GC)
+				if err = ie.VoiceOverSCG_BearerEUTRA_5GC.Decode(extReader); err != nil {
+					return utils.WrapError("Decode VoiceOverSCG_BearerEUTRA_5GC", err)
 				}
 			}
 		}
@@ -149,15 +149,15 @@ func (ie *IMS_ParametersCommon) Decode(r *uper.UperReader) error {
 
 			extReader := uper.NewReader(bytes.NewReader(extBytes))
 
-			voiceFallbackIndicationEPS_r16Present, err := extReader.ReadBool()
+			VoiceFallbackIndicationEPS_r16Present, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			// decode voiceFallbackIndicationEPS_r16 optional
-			if voiceFallbackIndicationEPS_r16Present {
-				ie.voiceFallbackIndicationEPS_r16 = new(IMS_ParametersCommon_voiceFallbackIndicationEPS_r16)
-				if err = ie.voiceFallbackIndicationEPS_r16.Decode(extReader); err != nil {
-					return utils.WrapError("Decode voiceFallbackIndicationEPS_r16", err)
+			// decode VoiceFallbackIndicationEPS_r16 optional
+			if VoiceFallbackIndicationEPS_r16Present {
+				ie.VoiceFallbackIndicationEPS_r16 = new(IMS_ParametersCommon_voiceFallbackIndicationEPS_r16)
+				if err = ie.VoiceFallbackIndicationEPS_r16.Decode(extReader); err != nil {
+					return utils.WrapError("Decode VoiceFallbackIndicationEPS_r16", err)
 				}
 			}
 		}

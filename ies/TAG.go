@@ -6,28 +6,28 @@ import (
 )
 
 type TAG struct {
-	tag_Id             TAG_Id             `madatory`
-	timeAlignmentTimer TimeAlignmentTimer `madatory`
+	Tag_Id             TAG_Id             `madatory`
+	TimeAlignmentTimer TimeAlignmentTimer `madatory`
 }
 
 func (ie *TAG) Encode(w *uper.UperWriter) error {
 	var err error
-	if err = ie.tag_Id.Encode(w); err != nil {
-		return utils.WrapError("Encode tag_Id", err)
+	if err = ie.Tag_Id.Encode(w); err != nil {
+		return utils.WrapError("Encode Tag_Id", err)
 	}
-	if err = ie.timeAlignmentTimer.Encode(w); err != nil {
-		return utils.WrapError("Encode timeAlignmentTimer", err)
+	if err = ie.TimeAlignmentTimer.Encode(w); err != nil {
+		return utils.WrapError("Encode TimeAlignmentTimer", err)
 	}
 	return nil
 }
 
 func (ie *TAG) Decode(r *uper.UperReader) error {
 	var err error
-	if err = ie.tag_Id.Decode(r); err != nil {
-		return utils.WrapError("Decode tag_Id", err)
+	if err = ie.Tag_Id.Decode(r); err != nil {
+		return utils.WrapError("Decode Tag_Id", err)
 	}
-	if err = ie.timeAlignmentTimer.Decode(r); err != nil {
-		return utils.WrapError("Decode timeAlignmentTimer", err)
+	if err = ie.TimeAlignmentTimer.Decode(r); err != nil {
+		return utils.WrapError("Decode TimeAlignmentTimer", err)
 	}
 	return nil
 }

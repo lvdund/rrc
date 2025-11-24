@@ -8,65 +8,65 @@ import (
 )
 
 type MAC_ParametersCommon struct {
-	lcp_Restriction                           *MAC_ParametersCommon_lcp_Restriction                           `optional`
-	dummy                                     *MAC_ParametersCommon_dummy                                     `optional`
-	lch_ToSCellRestriction                    *MAC_ParametersCommon_lch_ToSCellRestriction                    `optional`
-	recommendedBitRate                        *MAC_ParametersCommon_recommendedBitRate                        `optional,ext-1`
-	recommendedBitRateQuery                   *MAC_ParametersCommon_recommendedBitRateQuery                   `optional,ext-1`
-	recommendedBitRateMultiplier_r16          *MAC_ParametersCommon_recommendedBitRateMultiplier_r16          `optional,ext-2`
-	preEmptiveBSR_r16                         *MAC_ParametersCommon_preEmptiveBSR_r16                         `optional,ext-2`
-	autonomousTransmission_r16                *MAC_ParametersCommon_autonomousTransmission_r16                `optional,ext-2`
-	lch_PriorityBasedPrioritization_r16       *MAC_ParametersCommon_lch_PriorityBasedPrioritization_r16       `optional,ext-2`
-	lch_ToConfiguredGrantMapping_r16          *MAC_ParametersCommon_lch_ToConfiguredGrantMapping_r16          `optional,ext-2`
-	lch_ToGrantPriorityRestriction_r16        *MAC_ParametersCommon_lch_ToGrantPriorityRestriction_r16        `optional,ext-2`
-	singlePHR_P_r16                           *MAC_ParametersCommon_singlePHR_P_r16                           `optional,ext-2`
-	ul_LBT_FailureDetectionRecovery_r16       *MAC_ParametersCommon_ul_LBT_FailureDetectionRecovery_r16       `optional,ext-2`
-	tdd_MPE_P_MPR_Reporting_r16               *MAC_ParametersCommon_tdd_MPE_P_MPR_Reporting_r16               `optional,ext-2`
-	lcid_ExtensionIAB_r16                     *MAC_ParametersCommon_lcid_ExtensionIAB_r16                     `optional,ext-2`
-	spCell_BFR_CBRA_r16                       *MAC_ParametersCommon_spCell_BFR_CBRA_r16                       `optional,ext-3`
-	srs_ResourceId_Ext_r16                    *MAC_ParametersCommon_srs_ResourceId_Ext_r16                    `optional,ext-4`
-	enhancedUuDRX_forSidelink_r17             *MAC_ParametersCommon_enhancedUuDRX_forSidelink_r17             `optional,ext-5`
-	mg_ActivationRequestPRS_Meas_r17          *MAC_ParametersCommon_mg_ActivationRequestPRS_Meas_r17          `optional,ext-5`
-	mg_ActivationCommPRS_Meas_r17             *MAC_ParametersCommon_mg_ActivationCommPRS_Meas_r17             `optional,ext-5`
-	intraCG_Prioritization_r17                *MAC_ParametersCommon_intraCG_Prioritization_r17                `optional,ext-5`
-	jointPrioritizationCG_Retx_Timer_r17      *MAC_ParametersCommon_jointPrioritizationCG_Retx_Timer_r17      `optional,ext-5`
-	survivalTime_r17                          *MAC_ParametersCommon_survivalTime_r17                          `optional,ext-5`
-	lcg_ExtensionIAB_r17                      *MAC_ParametersCommon_lcg_ExtensionIAB_r17                      `optional,ext-5`
-	harq_FeedbackDisabled_r17                 *MAC_ParametersCommon_harq_FeedbackDisabled_r17                 `optional,ext-5`
-	uplink_Harq_ModeB_r17                     *MAC_ParametersCommon_uplink_Harq_ModeB_r17                     `optional,ext-5`
-	sr_TriggeredBy_TA_Report_r17              *MAC_ParametersCommon_sr_TriggeredBy_TA_Report_r17              `optional,ext-5`
-	extendedDRX_CycleInactive_r17             *MAC_ParametersCommon_extendedDRX_CycleInactive_r17             `optional,ext-5`
-	simultaneousSR_PUSCH_DiffPUCCH_groups_r17 *MAC_ParametersCommon_simultaneousSR_PUSCH_DiffPUCCH_groups_r17 `optional,ext-5`
-	lastTransmissionUL_r17                    *MAC_ParametersCommon_lastTransmissionUL_r17                    `optional,ext-5`
+	Lcp_Restriction                           *MAC_ParametersCommon_lcp_Restriction                           `optional`
+	Dummy                                     *MAC_ParametersCommon_dummy                                     `optional`
+	Lch_ToSCellRestriction                    *MAC_ParametersCommon_lch_ToSCellRestriction                    `optional`
+	RecommendedBitRate                        *MAC_ParametersCommon_recommendedBitRate                        `optional,ext-1`
+	RecommendedBitRateQuery                   *MAC_ParametersCommon_recommendedBitRateQuery                   `optional,ext-1`
+	RecommendedBitRateMultiplier_r16          *MAC_ParametersCommon_recommendedBitRateMultiplier_r16          `optional,ext-2`
+	PreEmptiveBSR_r16                         *MAC_ParametersCommon_preEmptiveBSR_r16                         `optional,ext-2`
+	AutonomousTransmission_r16                *MAC_ParametersCommon_autonomousTransmission_r16                `optional,ext-2`
+	Lch_PriorityBasedPrioritization_r16       *MAC_ParametersCommon_lch_PriorityBasedPrioritization_r16       `optional,ext-2`
+	Lch_ToConfiguredGrantMapping_r16          *MAC_ParametersCommon_lch_ToConfiguredGrantMapping_r16          `optional,ext-2`
+	Lch_ToGrantPriorityRestriction_r16        *MAC_ParametersCommon_lch_ToGrantPriorityRestriction_r16        `optional,ext-2`
+	SinglePHR_P_r16                           *MAC_ParametersCommon_singlePHR_P_r16                           `optional,ext-2`
+	Ul_LBT_FailureDetectionRecovery_r16       *MAC_ParametersCommon_ul_LBT_FailureDetectionRecovery_r16       `optional,ext-2`
+	Tdd_MPE_P_MPR_Reporting_r16               *MAC_ParametersCommon_tdd_MPE_P_MPR_Reporting_r16               `optional,ext-2`
+	Lcid_ExtensionIAB_r16                     *MAC_ParametersCommon_lcid_ExtensionIAB_r16                     `optional,ext-2`
+	SpCell_BFR_CBRA_r16                       *MAC_ParametersCommon_spCell_BFR_CBRA_r16                       `optional,ext-3`
+	Srs_ResourceId_Ext_r16                    *MAC_ParametersCommon_srs_ResourceId_Ext_r16                    `optional,ext-4`
+	EnhancedUuDRX_forSidelink_r17             *MAC_ParametersCommon_enhancedUuDRX_forSidelink_r17             `optional,ext-5`
+	Mg_ActivationRequestPRS_Meas_r17          *MAC_ParametersCommon_mg_ActivationRequestPRS_Meas_r17          `optional,ext-5`
+	Mg_ActivationCommPRS_Meas_r17             *MAC_ParametersCommon_mg_ActivationCommPRS_Meas_r17             `optional,ext-5`
+	IntraCG_Prioritization_r17                *MAC_ParametersCommon_intraCG_Prioritization_r17                `optional,ext-5`
+	JointPrioritizationCG_Retx_Timer_r17      *MAC_ParametersCommon_jointPrioritizationCG_Retx_Timer_r17      `optional,ext-5`
+	SurvivalTime_r17                          *MAC_ParametersCommon_survivalTime_r17                          `optional,ext-5`
+	Lcg_ExtensionIAB_r17                      *MAC_ParametersCommon_lcg_ExtensionIAB_r17                      `optional,ext-5`
+	Harq_FeedbackDisabled_r17                 *MAC_ParametersCommon_harq_FeedbackDisabled_r17                 `optional,ext-5`
+	Uplink_Harq_ModeB_r17                     *MAC_ParametersCommon_uplink_Harq_ModeB_r17                     `optional,ext-5`
+	Sr_TriggeredBy_TA_Report_r17              *MAC_ParametersCommon_sr_TriggeredBy_TA_Report_r17              `optional,ext-5`
+	ExtendedDRX_CycleInactive_r17             *MAC_ParametersCommon_extendedDRX_CycleInactive_r17             `optional,ext-5`
+	SimultaneousSR_PUSCH_DiffPUCCH_groups_r17 *MAC_ParametersCommon_simultaneousSR_PUSCH_DiffPUCCH_groups_r17 `optional,ext-5`
+	LastTransmissionUL_r17                    *MAC_ParametersCommon_lastTransmissionUL_r17                    `optional,ext-5`
 }
 
 func (ie *MAC_ParametersCommon) Encode(w *uper.UperWriter) error {
 	var err error
-	hasExtensions := ie.recommendedBitRate != nil || ie.recommendedBitRateQuery != nil || ie.recommendedBitRateMultiplier_r16 != nil || ie.preEmptiveBSR_r16 != nil || ie.autonomousTransmission_r16 != nil || ie.lch_PriorityBasedPrioritization_r16 != nil || ie.lch_ToConfiguredGrantMapping_r16 != nil || ie.lch_ToGrantPriorityRestriction_r16 != nil || ie.singlePHR_P_r16 != nil || ie.ul_LBT_FailureDetectionRecovery_r16 != nil || ie.tdd_MPE_P_MPR_Reporting_r16 != nil || ie.lcid_ExtensionIAB_r16 != nil || ie.spCell_BFR_CBRA_r16 != nil || ie.srs_ResourceId_Ext_r16 != nil || ie.enhancedUuDRX_forSidelink_r17 != nil || ie.mg_ActivationRequestPRS_Meas_r17 != nil || ie.mg_ActivationCommPRS_Meas_r17 != nil || ie.intraCG_Prioritization_r17 != nil || ie.jointPrioritizationCG_Retx_Timer_r17 != nil || ie.survivalTime_r17 != nil || ie.lcg_ExtensionIAB_r17 != nil || ie.harq_FeedbackDisabled_r17 != nil || ie.uplink_Harq_ModeB_r17 != nil || ie.sr_TriggeredBy_TA_Report_r17 != nil || ie.extendedDRX_CycleInactive_r17 != nil || ie.simultaneousSR_PUSCH_DiffPUCCH_groups_r17 != nil || ie.lastTransmissionUL_r17 != nil
-	preambleBits := []bool{hasExtensions, ie.lcp_Restriction != nil, ie.dummy != nil, ie.lch_ToSCellRestriction != nil}
+	hasExtensions := ie.RecommendedBitRate != nil || ie.RecommendedBitRateQuery != nil || ie.RecommendedBitRateMultiplier_r16 != nil || ie.PreEmptiveBSR_r16 != nil || ie.AutonomousTransmission_r16 != nil || ie.Lch_PriorityBasedPrioritization_r16 != nil || ie.Lch_ToConfiguredGrantMapping_r16 != nil || ie.Lch_ToGrantPriorityRestriction_r16 != nil || ie.SinglePHR_P_r16 != nil || ie.Ul_LBT_FailureDetectionRecovery_r16 != nil || ie.Tdd_MPE_P_MPR_Reporting_r16 != nil || ie.Lcid_ExtensionIAB_r16 != nil || ie.SpCell_BFR_CBRA_r16 != nil || ie.Srs_ResourceId_Ext_r16 != nil || ie.EnhancedUuDRX_forSidelink_r17 != nil || ie.Mg_ActivationRequestPRS_Meas_r17 != nil || ie.Mg_ActivationCommPRS_Meas_r17 != nil || ie.IntraCG_Prioritization_r17 != nil || ie.JointPrioritizationCG_Retx_Timer_r17 != nil || ie.SurvivalTime_r17 != nil || ie.Lcg_ExtensionIAB_r17 != nil || ie.Harq_FeedbackDisabled_r17 != nil || ie.Uplink_Harq_ModeB_r17 != nil || ie.Sr_TriggeredBy_TA_Report_r17 != nil || ie.ExtendedDRX_CycleInactive_r17 != nil || ie.SimultaneousSR_PUSCH_DiffPUCCH_groups_r17 != nil || ie.LastTransmissionUL_r17 != nil
+	preambleBits := []bool{hasExtensions, ie.Lcp_Restriction != nil, ie.Dummy != nil, ie.Lch_ToSCellRestriction != nil}
 	for _, bit := range preambleBits {
 		if err = w.WriteBool(bit); err != nil {
 			return err
 		}
 	}
-	if ie.lcp_Restriction != nil {
-		if err = ie.lcp_Restriction.Encode(w); err != nil {
-			return utils.WrapError("Encode lcp_Restriction", err)
+	if ie.Lcp_Restriction != nil {
+		if err = ie.Lcp_Restriction.Encode(w); err != nil {
+			return utils.WrapError("Encode Lcp_Restriction", err)
 		}
 	}
-	if ie.dummy != nil {
-		if err = ie.dummy.Encode(w); err != nil {
-			return utils.WrapError("Encode dummy", err)
+	if ie.Dummy != nil {
+		if err = ie.Dummy.Encode(w); err != nil {
+			return utils.WrapError("Encode Dummy", err)
 		}
 	}
-	if ie.lch_ToSCellRestriction != nil {
-		if err = ie.lch_ToSCellRestriction.Encode(w); err != nil {
-			return utils.WrapError("Encode lch_ToSCellRestriction", err)
+	if ie.Lch_ToSCellRestriction != nil {
+		if err = ie.Lch_ToSCellRestriction.Encode(w); err != nil {
+			return utils.WrapError("Encode Lch_ToSCellRestriction", err)
 		}
 	}
 	if hasExtensions {
 		// Extension bitmap: 5 bits for 5 extension groups
-		extBitmap := []bool{ie.recommendedBitRate != nil || ie.recommendedBitRateQuery != nil, ie.recommendedBitRateMultiplier_r16 != nil || ie.preEmptiveBSR_r16 != nil || ie.autonomousTransmission_r16 != nil || ie.lch_PriorityBasedPrioritization_r16 != nil || ie.lch_ToConfiguredGrantMapping_r16 != nil || ie.lch_ToGrantPriorityRestriction_r16 != nil || ie.singlePHR_P_r16 != nil || ie.ul_LBT_FailureDetectionRecovery_r16 != nil || ie.tdd_MPE_P_MPR_Reporting_r16 != nil || ie.lcid_ExtensionIAB_r16 != nil, ie.spCell_BFR_CBRA_r16 != nil, ie.srs_ResourceId_Ext_r16 != nil, ie.enhancedUuDRX_forSidelink_r17 != nil || ie.mg_ActivationRequestPRS_Meas_r17 != nil || ie.mg_ActivationCommPRS_Meas_r17 != nil || ie.intraCG_Prioritization_r17 != nil || ie.jointPrioritizationCG_Retx_Timer_r17 != nil || ie.survivalTime_r17 != nil || ie.lcg_ExtensionIAB_r17 != nil || ie.harq_FeedbackDisabled_r17 != nil || ie.uplink_Harq_ModeB_r17 != nil || ie.sr_TriggeredBy_TA_Report_r17 != nil || ie.extendedDRX_CycleInactive_r17 != nil || ie.simultaneousSR_PUSCH_DiffPUCCH_groups_r17 != nil || ie.lastTransmissionUL_r17 != nil}
+		extBitmap := []bool{ie.RecommendedBitRate != nil || ie.RecommendedBitRateQuery != nil, ie.RecommendedBitRateMultiplier_r16 != nil || ie.PreEmptiveBSR_r16 != nil || ie.AutonomousTransmission_r16 != nil || ie.Lch_PriorityBasedPrioritization_r16 != nil || ie.Lch_ToConfiguredGrantMapping_r16 != nil || ie.Lch_ToGrantPriorityRestriction_r16 != nil || ie.SinglePHR_P_r16 != nil || ie.Ul_LBT_FailureDetectionRecovery_r16 != nil || ie.Tdd_MPE_P_MPR_Reporting_r16 != nil || ie.Lcid_ExtensionIAB_r16 != nil, ie.SpCell_BFR_CBRA_r16 != nil, ie.Srs_ResourceId_Ext_r16 != nil, ie.EnhancedUuDRX_forSidelink_r17 != nil || ie.Mg_ActivationRequestPRS_Meas_r17 != nil || ie.Mg_ActivationCommPRS_Meas_r17 != nil || ie.IntraCG_Prioritization_r17 != nil || ie.JointPrioritizationCG_Retx_Timer_r17 != nil || ie.SurvivalTime_r17 != nil || ie.Lcg_ExtensionIAB_r17 != nil || ie.Harq_FeedbackDisabled_r17 != nil || ie.Uplink_Harq_ModeB_r17 != nil || ie.Sr_TriggeredBy_TA_Report_r17 != nil || ie.ExtendedDRX_CycleInactive_r17 != nil || ie.SimultaneousSR_PUSCH_DiffPUCCH_groups_r17 != nil || ie.LastTransmissionUL_r17 != nil}
 		if err := w.WriteExtBitMap(extBitmap); err != nil {
 			return utils.WrapError("WriteExtBitMap MAC_ParametersCommon", err)
 		}
@@ -77,23 +77,23 @@ func (ie *MAC_ParametersCommon) Encode(w *uper.UperWriter) error {
 			extWriter := uper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 1
-			optionals_ext_1 := []bool{ie.recommendedBitRate != nil, ie.recommendedBitRateQuery != nil}
+			optionals_ext_1 := []bool{ie.RecommendedBitRate != nil, ie.RecommendedBitRateQuery != nil}
 			for _, bit := range optionals_ext_1 {
 				if err := extWriter.WriteBool(bit); err != nil {
 					return err
 				}
 			}
 
-			// encode recommendedBitRate optional
-			if ie.recommendedBitRate != nil {
-				if err = ie.recommendedBitRate.Encode(extWriter); err != nil {
-					return utils.WrapError("Encode recommendedBitRate", err)
+			// encode RecommendedBitRate optional
+			if ie.RecommendedBitRate != nil {
+				if err = ie.RecommendedBitRate.Encode(extWriter); err != nil {
+					return utils.WrapError("Encode RecommendedBitRate", err)
 				}
 			}
-			// encode recommendedBitRateQuery optional
-			if ie.recommendedBitRateQuery != nil {
-				if err = ie.recommendedBitRateQuery.Encode(extWriter); err != nil {
-					return utils.WrapError("Encode recommendedBitRateQuery", err)
+			// encode RecommendedBitRateQuery optional
+			if ie.RecommendedBitRateQuery != nil {
+				if err = ie.RecommendedBitRateQuery.Encode(extWriter); err != nil {
+					return utils.WrapError("Encode RecommendedBitRateQuery", err)
 				}
 			}
 
@@ -112,71 +112,71 @@ func (ie *MAC_ParametersCommon) Encode(w *uper.UperWriter) error {
 			extWriter := uper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 2
-			optionals_ext_2 := []bool{ie.recommendedBitRateMultiplier_r16 != nil, ie.preEmptiveBSR_r16 != nil, ie.autonomousTransmission_r16 != nil, ie.lch_PriorityBasedPrioritization_r16 != nil, ie.lch_ToConfiguredGrantMapping_r16 != nil, ie.lch_ToGrantPriorityRestriction_r16 != nil, ie.singlePHR_P_r16 != nil, ie.ul_LBT_FailureDetectionRecovery_r16 != nil, ie.tdd_MPE_P_MPR_Reporting_r16 != nil, ie.lcid_ExtensionIAB_r16 != nil}
+			optionals_ext_2 := []bool{ie.RecommendedBitRateMultiplier_r16 != nil, ie.PreEmptiveBSR_r16 != nil, ie.AutonomousTransmission_r16 != nil, ie.Lch_PriorityBasedPrioritization_r16 != nil, ie.Lch_ToConfiguredGrantMapping_r16 != nil, ie.Lch_ToGrantPriorityRestriction_r16 != nil, ie.SinglePHR_P_r16 != nil, ie.Ul_LBT_FailureDetectionRecovery_r16 != nil, ie.Tdd_MPE_P_MPR_Reporting_r16 != nil, ie.Lcid_ExtensionIAB_r16 != nil}
 			for _, bit := range optionals_ext_2 {
 				if err := extWriter.WriteBool(bit); err != nil {
 					return err
 				}
 			}
 
-			// encode recommendedBitRateMultiplier_r16 optional
-			if ie.recommendedBitRateMultiplier_r16 != nil {
-				if err = ie.recommendedBitRateMultiplier_r16.Encode(extWriter); err != nil {
-					return utils.WrapError("Encode recommendedBitRateMultiplier_r16", err)
+			// encode RecommendedBitRateMultiplier_r16 optional
+			if ie.RecommendedBitRateMultiplier_r16 != nil {
+				if err = ie.RecommendedBitRateMultiplier_r16.Encode(extWriter); err != nil {
+					return utils.WrapError("Encode RecommendedBitRateMultiplier_r16", err)
 				}
 			}
-			// encode preEmptiveBSR_r16 optional
-			if ie.preEmptiveBSR_r16 != nil {
-				if err = ie.preEmptiveBSR_r16.Encode(extWriter); err != nil {
-					return utils.WrapError("Encode preEmptiveBSR_r16", err)
+			// encode PreEmptiveBSR_r16 optional
+			if ie.PreEmptiveBSR_r16 != nil {
+				if err = ie.PreEmptiveBSR_r16.Encode(extWriter); err != nil {
+					return utils.WrapError("Encode PreEmptiveBSR_r16", err)
 				}
 			}
-			// encode autonomousTransmission_r16 optional
-			if ie.autonomousTransmission_r16 != nil {
-				if err = ie.autonomousTransmission_r16.Encode(extWriter); err != nil {
-					return utils.WrapError("Encode autonomousTransmission_r16", err)
+			// encode AutonomousTransmission_r16 optional
+			if ie.AutonomousTransmission_r16 != nil {
+				if err = ie.AutonomousTransmission_r16.Encode(extWriter); err != nil {
+					return utils.WrapError("Encode AutonomousTransmission_r16", err)
 				}
 			}
-			// encode lch_PriorityBasedPrioritization_r16 optional
-			if ie.lch_PriorityBasedPrioritization_r16 != nil {
-				if err = ie.lch_PriorityBasedPrioritization_r16.Encode(extWriter); err != nil {
-					return utils.WrapError("Encode lch_PriorityBasedPrioritization_r16", err)
+			// encode Lch_PriorityBasedPrioritization_r16 optional
+			if ie.Lch_PriorityBasedPrioritization_r16 != nil {
+				if err = ie.Lch_PriorityBasedPrioritization_r16.Encode(extWriter); err != nil {
+					return utils.WrapError("Encode Lch_PriorityBasedPrioritization_r16", err)
 				}
 			}
-			// encode lch_ToConfiguredGrantMapping_r16 optional
-			if ie.lch_ToConfiguredGrantMapping_r16 != nil {
-				if err = ie.lch_ToConfiguredGrantMapping_r16.Encode(extWriter); err != nil {
-					return utils.WrapError("Encode lch_ToConfiguredGrantMapping_r16", err)
+			// encode Lch_ToConfiguredGrantMapping_r16 optional
+			if ie.Lch_ToConfiguredGrantMapping_r16 != nil {
+				if err = ie.Lch_ToConfiguredGrantMapping_r16.Encode(extWriter); err != nil {
+					return utils.WrapError("Encode Lch_ToConfiguredGrantMapping_r16", err)
 				}
 			}
-			// encode lch_ToGrantPriorityRestriction_r16 optional
-			if ie.lch_ToGrantPriorityRestriction_r16 != nil {
-				if err = ie.lch_ToGrantPriorityRestriction_r16.Encode(extWriter); err != nil {
-					return utils.WrapError("Encode lch_ToGrantPriorityRestriction_r16", err)
+			// encode Lch_ToGrantPriorityRestriction_r16 optional
+			if ie.Lch_ToGrantPriorityRestriction_r16 != nil {
+				if err = ie.Lch_ToGrantPriorityRestriction_r16.Encode(extWriter); err != nil {
+					return utils.WrapError("Encode Lch_ToGrantPriorityRestriction_r16", err)
 				}
 			}
-			// encode singlePHR_P_r16 optional
-			if ie.singlePHR_P_r16 != nil {
-				if err = ie.singlePHR_P_r16.Encode(extWriter); err != nil {
-					return utils.WrapError("Encode singlePHR_P_r16", err)
+			// encode SinglePHR_P_r16 optional
+			if ie.SinglePHR_P_r16 != nil {
+				if err = ie.SinglePHR_P_r16.Encode(extWriter); err != nil {
+					return utils.WrapError("Encode SinglePHR_P_r16", err)
 				}
 			}
-			// encode ul_LBT_FailureDetectionRecovery_r16 optional
-			if ie.ul_LBT_FailureDetectionRecovery_r16 != nil {
-				if err = ie.ul_LBT_FailureDetectionRecovery_r16.Encode(extWriter); err != nil {
-					return utils.WrapError("Encode ul_LBT_FailureDetectionRecovery_r16", err)
+			// encode Ul_LBT_FailureDetectionRecovery_r16 optional
+			if ie.Ul_LBT_FailureDetectionRecovery_r16 != nil {
+				if err = ie.Ul_LBT_FailureDetectionRecovery_r16.Encode(extWriter); err != nil {
+					return utils.WrapError("Encode Ul_LBT_FailureDetectionRecovery_r16", err)
 				}
 			}
-			// encode tdd_MPE_P_MPR_Reporting_r16 optional
-			if ie.tdd_MPE_P_MPR_Reporting_r16 != nil {
-				if err = ie.tdd_MPE_P_MPR_Reporting_r16.Encode(extWriter); err != nil {
-					return utils.WrapError("Encode tdd_MPE_P_MPR_Reporting_r16", err)
+			// encode Tdd_MPE_P_MPR_Reporting_r16 optional
+			if ie.Tdd_MPE_P_MPR_Reporting_r16 != nil {
+				if err = ie.Tdd_MPE_P_MPR_Reporting_r16.Encode(extWriter); err != nil {
+					return utils.WrapError("Encode Tdd_MPE_P_MPR_Reporting_r16", err)
 				}
 			}
-			// encode lcid_ExtensionIAB_r16 optional
-			if ie.lcid_ExtensionIAB_r16 != nil {
-				if err = ie.lcid_ExtensionIAB_r16.Encode(extWriter); err != nil {
-					return utils.WrapError("Encode lcid_ExtensionIAB_r16", err)
+			// encode Lcid_ExtensionIAB_r16 optional
+			if ie.Lcid_ExtensionIAB_r16 != nil {
+				if err = ie.Lcid_ExtensionIAB_r16.Encode(extWriter); err != nil {
+					return utils.WrapError("Encode Lcid_ExtensionIAB_r16", err)
 				}
 			}
 
@@ -195,17 +195,17 @@ func (ie *MAC_ParametersCommon) Encode(w *uper.UperWriter) error {
 			extWriter := uper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 3
-			optionals_ext_3 := []bool{ie.spCell_BFR_CBRA_r16 != nil}
+			optionals_ext_3 := []bool{ie.SpCell_BFR_CBRA_r16 != nil}
 			for _, bit := range optionals_ext_3 {
 				if err := extWriter.WriteBool(bit); err != nil {
 					return err
 				}
 			}
 
-			// encode spCell_BFR_CBRA_r16 optional
-			if ie.spCell_BFR_CBRA_r16 != nil {
-				if err = ie.spCell_BFR_CBRA_r16.Encode(extWriter); err != nil {
-					return utils.WrapError("Encode spCell_BFR_CBRA_r16", err)
+			// encode SpCell_BFR_CBRA_r16 optional
+			if ie.SpCell_BFR_CBRA_r16 != nil {
+				if err = ie.SpCell_BFR_CBRA_r16.Encode(extWriter); err != nil {
+					return utils.WrapError("Encode SpCell_BFR_CBRA_r16", err)
 				}
 			}
 
@@ -224,17 +224,17 @@ func (ie *MAC_ParametersCommon) Encode(w *uper.UperWriter) error {
 			extWriter := uper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 4
-			optionals_ext_4 := []bool{ie.srs_ResourceId_Ext_r16 != nil}
+			optionals_ext_4 := []bool{ie.Srs_ResourceId_Ext_r16 != nil}
 			for _, bit := range optionals_ext_4 {
 				if err := extWriter.WriteBool(bit); err != nil {
 					return err
 				}
 			}
 
-			// encode srs_ResourceId_Ext_r16 optional
-			if ie.srs_ResourceId_Ext_r16 != nil {
-				if err = ie.srs_ResourceId_Ext_r16.Encode(extWriter); err != nil {
-					return utils.WrapError("Encode srs_ResourceId_Ext_r16", err)
+			// encode Srs_ResourceId_Ext_r16 optional
+			if ie.Srs_ResourceId_Ext_r16 != nil {
+				if err = ie.Srs_ResourceId_Ext_r16.Encode(extWriter); err != nil {
+					return utils.WrapError("Encode Srs_ResourceId_Ext_r16", err)
 				}
 			}
 
@@ -253,89 +253,89 @@ func (ie *MAC_ParametersCommon) Encode(w *uper.UperWriter) error {
 			extWriter := uper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 5
-			optionals_ext_5 := []bool{ie.enhancedUuDRX_forSidelink_r17 != nil, ie.mg_ActivationRequestPRS_Meas_r17 != nil, ie.mg_ActivationCommPRS_Meas_r17 != nil, ie.intraCG_Prioritization_r17 != nil, ie.jointPrioritizationCG_Retx_Timer_r17 != nil, ie.survivalTime_r17 != nil, ie.lcg_ExtensionIAB_r17 != nil, ie.harq_FeedbackDisabled_r17 != nil, ie.uplink_Harq_ModeB_r17 != nil, ie.sr_TriggeredBy_TA_Report_r17 != nil, ie.extendedDRX_CycleInactive_r17 != nil, ie.simultaneousSR_PUSCH_DiffPUCCH_groups_r17 != nil, ie.lastTransmissionUL_r17 != nil}
+			optionals_ext_5 := []bool{ie.EnhancedUuDRX_forSidelink_r17 != nil, ie.Mg_ActivationRequestPRS_Meas_r17 != nil, ie.Mg_ActivationCommPRS_Meas_r17 != nil, ie.IntraCG_Prioritization_r17 != nil, ie.JointPrioritizationCG_Retx_Timer_r17 != nil, ie.SurvivalTime_r17 != nil, ie.Lcg_ExtensionIAB_r17 != nil, ie.Harq_FeedbackDisabled_r17 != nil, ie.Uplink_Harq_ModeB_r17 != nil, ie.Sr_TriggeredBy_TA_Report_r17 != nil, ie.ExtendedDRX_CycleInactive_r17 != nil, ie.SimultaneousSR_PUSCH_DiffPUCCH_groups_r17 != nil, ie.LastTransmissionUL_r17 != nil}
 			for _, bit := range optionals_ext_5 {
 				if err := extWriter.WriteBool(bit); err != nil {
 					return err
 				}
 			}
 
-			// encode enhancedUuDRX_forSidelink_r17 optional
-			if ie.enhancedUuDRX_forSidelink_r17 != nil {
-				if err = ie.enhancedUuDRX_forSidelink_r17.Encode(extWriter); err != nil {
-					return utils.WrapError("Encode enhancedUuDRX_forSidelink_r17", err)
+			// encode EnhancedUuDRX_forSidelink_r17 optional
+			if ie.EnhancedUuDRX_forSidelink_r17 != nil {
+				if err = ie.EnhancedUuDRX_forSidelink_r17.Encode(extWriter); err != nil {
+					return utils.WrapError("Encode EnhancedUuDRX_forSidelink_r17", err)
 				}
 			}
-			// encode mg_ActivationRequestPRS_Meas_r17 optional
-			if ie.mg_ActivationRequestPRS_Meas_r17 != nil {
-				if err = ie.mg_ActivationRequestPRS_Meas_r17.Encode(extWriter); err != nil {
-					return utils.WrapError("Encode mg_ActivationRequestPRS_Meas_r17", err)
+			// encode Mg_ActivationRequestPRS_Meas_r17 optional
+			if ie.Mg_ActivationRequestPRS_Meas_r17 != nil {
+				if err = ie.Mg_ActivationRequestPRS_Meas_r17.Encode(extWriter); err != nil {
+					return utils.WrapError("Encode Mg_ActivationRequestPRS_Meas_r17", err)
 				}
 			}
-			// encode mg_ActivationCommPRS_Meas_r17 optional
-			if ie.mg_ActivationCommPRS_Meas_r17 != nil {
-				if err = ie.mg_ActivationCommPRS_Meas_r17.Encode(extWriter); err != nil {
-					return utils.WrapError("Encode mg_ActivationCommPRS_Meas_r17", err)
+			// encode Mg_ActivationCommPRS_Meas_r17 optional
+			if ie.Mg_ActivationCommPRS_Meas_r17 != nil {
+				if err = ie.Mg_ActivationCommPRS_Meas_r17.Encode(extWriter); err != nil {
+					return utils.WrapError("Encode Mg_ActivationCommPRS_Meas_r17", err)
 				}
 			}
-			// encode intraCG_Prioritization_r17 optional
-			if ie.intraCG_Prioritization_r17 != nil {
-				if err = ie.intraCG_Prioritization_r17.Encode(extWriter); err != nil {
-					return utils.WrapError("Encode intraCG_Prioritization_r17", err)
+			// encode IntraCG_Prioritization_r17 optional
+			if ie.IntraCG_Prioritization_r17 != nil {
+				if err = ie.IntraCG_Prioritization_r17.Encode(extWriter); err != nil {
+					return utils.WrapError("Encode IntraCG_Prioritization_r17", err)
 				}
 			}
-			// encode jointPrioritizationCG_Retx_Timer_r17 optional
-			if ie.jointPrioritizationCG_Retx_Timer_r17 != nil {
-				if err = ie.jointPrioritizationCG_Retx_Timer_r17.Encode(extWriter); err != nil {
-					return utils.WrapError("Encode jointPrioritizationCG_Retx_Timer_r17", err)
+			// encode JointPrioritizationCG_Retx_Timer_r17 optional
+			if ie.JointPrioritizationCG_Retx_Timer_r17 != nil {
+				if err = ie.JointPrioritizationCG_Retx_Timer_r17.Encode(extWriter); err != nil {
+					return utils.WrapError("Encode JointPrioritizationCG_Retx_Timer_r17", err)
 				}
 			}
-			// encode survivalTime_r17 optional
-			if ie.survivalTime_r17 != nil {
-				if err = ie.survivalTime_r17.Encode(extWriter); err != nil {
-					return utils.WrapError("Encode survivalTime_r17", err)
+			// encode SurvivalTime_r17 optional
+			if ie.SurvivalTime_r17 != nil {
+				if err = ie.SurvivalTime_r17.Encode(extWriter); err != nil {
+					return utils.WrapError("Encode SurvivalTime_r17", err)
 				}
 			}
-			// encode lcg_ExtensionIAB_r17 optional
-			if ie.lcg_ExtensionIAB_r17 != nil {
-				if err = ie.lcg_ExtensionIAB_r17.Encode(extWriter); err != nil {
-					return utils.WrapError("Encode lcg_ExtensionIAB_r17", err)
+			// encode Lcg_ExtensionIAB_r17 optional
+			if ie.Lcg_ExtensionIAB_r17 != nil {
+				if err = ie.Lcg_ExtensionIAB_r17.Encode(extWriter); err != nil {
+					return utils.WrapError("Encode Lcg_ExtensionIAB_r17", err)
 				}
 			}
-			// encode harq_FeedbackDisabled_r17 optional
-			if ie.harq_FeedbackDisabled_r17 != nil {
-				if err = ie.harq_FeedbackDisabled_r17.Encode(extWriter); err != nil {
-					return utils.WrapError("Encode harq_FeedbackDisabled_r17", err)
+			// encode Harq_FeedbackDisabled_r17 optional
+			if ie.Harq_FeedbackDisabled_r17 != nil {
+				if err = ie.Harq_FeedbackDisabled_r17.Encode(extWriter); err != nil {
+					return utils.WrapError("Encode Harq_FeedbackDisabled_r17", err)
 				}
 			}
-			// encode uplink_Harq_ModeB_r17 optional
-			if ie.uplink_Harq_ModeB_r17 != nil {
-				if err = ie.uplink_Harq_ModeB_r17.Encode(extWriter); err != nil {
-					return utils.WrapError("Encode uplink_Harq_ModeB_r17", err)
+			// encode Uplink_Harq_ModeB_r17 optional
+			if ie.Uplink_Harq_ModeB_r17 != nil {
+				if err = ie.Uplink_Harq_ModeB_r17.Encode(extWriter); err != nil {
+					return utils.WrapError("Encode Uplink_Harq_ModeB_r17", err)
 				}
 			}
-			// encode sr_TriggeredBy_TA_Report_r17 optional
-			if ie.sr_TriggeredBy_TA_Report_r17 != nil {
-				if err = ie.sr_TriggeredBy_TA_Report_r17.Encode(extWriter); err != nil {
-					return utils.WrapError("Encode sr_TriggeredBy_TA_Report_r17", err)
+			// encode Sr_TriggeredBy_TA_Report_r17 optional
+			if ie.Sr_TriggeredBy_TA_Report_r17 != nil {
+				if err = ie.Sr_TriggeredBy_TA_Report_r17.Encode(extWriter); err != nil {
+					return utils.WrapError("Encode Sr_TriggeredBy_TA_Report_r17", err)
 				}
 			}
-			// encode extendedDRX_CycleInactive_r17 optional
-			if ie.extendedDRX_CycleInactive_r17 != nil {
-				if err = ie.extendedDRX_CycleInactive_r17.Encode(extWriter); err != nil {
-					return utils.WrapError("Encode extendedDRX_CycleInactive_r17", err)
+			// encode ExtendedDRX_CycleInactive_r17 optional
+			if ie.ExtendedDRX_CycleInactive_r17 != nil {
+				if err = ie.ExtendedDRX_CycleInactive_r17.Encode(extWriter); err != nil {
+					return utils.WrapError("Encode ExtendedDRX_CycleInactive_r17", err)
 				}
 			}
-			// encode simultaneousSR_PUSCH_DiffPUCCH_groups_r17 optional
-			if ie.simultaneousSR_PUSCH_DiffPUCCH_groups_r17 != nil {
-				if err = ie.simultaneousSR_PUSCH_DiffPUCCH_groups_r17.Encode(extWriter); err != nil {
-					return utils.WrapError("Encode simultaneousSR_PUSCH_DiffPUCCH_groups_r17", err)
+			// encode SimultaneousSR_PUSCH_DiffPUCCH_groups_r17 optional
+			if ie.SimultaneousSR_PUSCH_DiffPUCCH_groups_r17 != nil {
+				if err = ie.SimultaneousSR_PUSCH_DiffPUCCH_groups_r17.Encode(extWriter); err != nil {
+					return utils.WrapError("Encode SimultaneousSR_PUSCH_DiffPUCCH_groups_r17", err)
 				}
 			}
-			// encode lastTransmissionUL_r17 optional
-			if ie.lastTransmissionUL_r17 != nil {
-				if err = ie.lastTransmissionUL_r17.Encode(extWriter); err != nil {
-					return utils.WrapError("Encode lastTransmissionUL_r17", err)
+			// encode LastTransmissionUL_r17 optional
+			if ie.LastTransmissionUL_r17 != nil {
+				if err = ie.LastTransmissionUL_r17.Encode(extWriter); err != nil {
+					return utils.WrapError("Encode LastTransmissionUL_r17", err)
 				}
 			}
 
@@ -357,34 +357,34 @@ func (ie *MAC_ParametersCommon) Decode(r *uper.UperReader) error {
 	if extensionBit, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var lcp_RestrictionPresent bool
-	if lcp_RestrictionPresent, err = r.ReadBool(); err != nil {
+	var Lcp_RestrictionPresent bool
+	if Lcp_RestrictionPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var dummyPresent bool
-	if dummyPresent, err = r.ReadBool(); err != nil {
+	var DummyPresent bool
+	if DummyPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var lch_ToSCellRestrictionPresent bool
-	if lch_ToSCellRestrictionPresent, err = r.ReadBool(); err != nil {
+	var Lch_ToSCellRestrictionPresent bool
+	if Lch_ToSCellRestrictionPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	if lcp_RestrictionPresent {
-		ie.lcp_Restriction = new(MAC_ParametersCommon_lcp_Restriction)
-		if err = ie.lcp_Restriction.Decode(r); err != nil {
-			return utils.WrapError("Decode lcp_Restriction", err)
+	if Lcp_RestrictionPresent {
+		ie.Lcp_Restriction = new(MAC_ParametersCommon_lcp_Restriction)
+		if err = ie.Lcp_Restriction.Decode(r); err != nil {
+			return utils.WrapError("Decode Lcp_Restriction", err)
 		}
 	}
-	if dummyPresent {
-		ie.dummy = new(MAC_ParametersCommon_dummy)
-		if err = ie.dummy.Decode(r); err != nil {
-			return utils.WrapError("Decode dummy", err)
+	if DummyPresent {
+		ie.Dummy = new(MAC_ParametersCommon_dummy)
+		if err = ie.Dummy.Decode(r); err != nil {
+			return utils.WrapError("Decode Dummy", err)
 		}
 	}
-	if lch_ToSCellRestrictionPresent {
-		ie.lch_ToSCellRestriction = new(MAC_ParametersCommon_lch_ToSCellRestriction)
-		if err = ie.lch_ToSCellRestriction.Decode(r); err != nil {
-			return utils.WrapError("Decode lch_ToSCellRestriction", err)
+	if Lch_ToSCellRestrictionPresent {
+		ie.Lch_ToSCellRestriction = new(MAC_ParametersCommon_lch_ToSCellRestriction)
+		if err = ie.Lch_ToSCellRestriction.Decode(r); err != nil {
+			return utils.WrapError("Decode Lch_ToSCellRestriction", err)
 		}
 	}
 
@@ -404,26 +404,26 @@ func (ie *MAC_ParametersCommon) Decode(r *uper.UperReader) error {
 
 			extReader := uper.NewReader(bytes.NewReader(extBytes))
 
-			recommendedBitRatePresent, err := extReader.ReadBool()
+			RecommendedBitRatePresent, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			recommendedBitRateQueryPresent, err := extReader.ReadBool()
+			RecommendedBitRateQueryPresent, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			// decode recommendedBitRate optional
-			if recommendedBitRatePresent {
-				ie.recommendedBitRate = new(MAC_ParametersCommon_recommendedBitRate)
-				if err = ie.recommendedBitRate.Decode(extReader); err != nil {
-					return utils.WrapError("Decode recommendedBitRate", err)
+			// decode RecommendedBitRate optional
+			if RecommendedBitRatePresent {
+				ie.RecommendedBitRate = new(MAC_ParametersCommon_recommendedBitRate)
+				if err = ie.RecommendedBitRate.Decode(extReader); err != nil {
+					return utils.WrapError("Decode RecommendedBitRate", err)
 				}
 			}
-			// decode recommendedBitRateQuery optional
-			if recommendedBitRateQueryPresent {
-				ie.recommendedBitRateQuery = new(MAC_ParametersCommon_recommendedBitRateQuery)
-				if err = ie.recommendedBitRateQuery.Decode(extReader); err != nil {
-					return utils.WrapError("Decode recommendedBitRateQuery", err)
+			// decode RecommendedBitRateQuery optional
+			if RecommendedBitRateQueryPresent {
+				ie.RecommendedBitRateQuery = new(MAC_ParametersCommon_recommendedBitRateQuery)
+				if err = ie.RecommendedBitRateQuery.Decode(extReader); err != nil {
+					return utils.WrapError("Decode RecommendedBitRateQuery", err)
 				}
 			}
 		}
@@ -436,114 +436,114 @@ func (ie *MAC_ParametersCommon) Decode(r *uper.UperReader) error {
 
 			extReader := uper.NewReader(bytes.NewReader(extBytes))
 
-			recommendedBitRateMultiplier_r16Present, err := extReader.ReadBool()
+			RecommendedBitRateMultiplier_r16Present, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			preEmptiveBSR_r16Present, err := extReader.ReadBool()
+			PreEmptiveBSR_r16Present, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			autonomousTransmission_r16Present, err := extReader.ReadBool()
+			AutonomousTransmission_r16Present, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			lch_PriorityBasedPrioritization_r16Present, err := extReader.ReadBool()
+			Lch_PriorityBasedPrioritization_r16Present, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			lch_ToConfiguredGrantMapping_r16Present, err := extReader.ReadBool()
+			Lch_ToConfiguredGrantMapping_r16Present, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			lch_ToGrantPriorityRestriction_r16Present, err := extReader.ReadBool()
+			Lch_ToGrantPriorityRestriction_r16Present, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			singlePHR_P_r16Present, err := extReader.ReadBool()
+			SinglePHR_P_r16Present, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			ul_LBT_FailureDetectionRecovery_r16Present, err := extReader.ReadBool()
+			Ul_LBT_FailureDetectionRecovery_r16Present, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			tdd_MPE_P_MPR_Reporting_r16Present, err := extReader.ReadBool()
+			Tdd_MPE_P_MPR_Reporting_r16Present, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			lcid_ExtensionIAB_r16Present, err := extReader.ReadBool()
+			Lcid_ExtensionIAB_r16Present, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			// decode recommendedBitRateMultiplier_r16 optional
-			if recommendedBitRateMultiplier_r16Present {
-				ie.recommendedBitRateMultiplier_r16 = new(MAC_ParametersCommon_recommendedBitRateMultiplier_r16)
-				if err = ie.recommendedBitRateMultiplier_r16.Decode(extReader); err != nil {
-					return utils.WrapError("Decode recommendedBitRateMultiplier_r16", err)
+			// decode RecommendedBitRateMultiplier_r16 optional
+			if RecommendedBitRateMultiplier_r16Present {
+				ie.RecommendedBitRateMultiplier_r16 = new(MAC_ParametersCommon_recommendedBitRateMultiplier_r16)
+				if err = ie.RecommendedBitRateMultiplier_r16.Decode(extReader); err != nil {
+					return utils.WrapError("Decode RecommendedBitRateMultiplier_r16", err)
 				}
 			}
-			// decode preEmptiveBSR_r16 optional
-			if preEmptiveBSR_r16Present {
-				ie.preEmptiveBSR_r16 = new(MAC_ParametersCommon_preEmptiveBSR_r16)
-				if err = ie.preEmptiveBSR_r16.Decode(extReader); err != nil {
-					return utils.WrapError("Decode preEmptiveBSR_r16", err)
+			// decode PreEmptiveBSR_r16 optional
+			if PreEmptiveBSR_r16Present {
+				ie.PreEmptiveBSR_r16 = new(MAC_ParametersCommon_preEmptiveBSR_r16)
+				if err = ie.PreEmptiveBSR_r16.Decode(extReader); err != nil {
+					return utils.WrapError("Decode PreEmptiveBSR_r16", err)
 				}
 			}
-			// decode autonomousTransmission_r16 optional
-			if autonomousTransmission_r16Present {
-				ie.autonomousTransmission_r16 = new(MAC_ParametersCommon_autonomousTransmission_r16)
-				if err = ie.autonomousTransmission_r16.Decode(extReader); err != nil {
-					return utils.WrapError("Decode autonomousTransmission_r16", err)
+			// decode AutonomousTransmission_r16 optional
+			if AutonomousTransmission_r16Present {
+				ie.AutonomousTransmission_r16 = new(MAC_ParametersCommon_autonomousTransmission_r16)
+				if err = ie.AutonomousTransmission_r16.Decode(extReader); err != nil {
+					return utils.WrapError("Decode AutonomousTransmission_r16", err)
 				}
 			}
-			// decode lch_PriorityBasedPrioritization_r16 optional
-			if lch_PriorityBasedPrioritization_r16Present {
-				ie.lch_PriorityBasedPrioritization_r16 = new(MAC_ParametersCommon_lch_PriorityBasedPrioritization_r16)
-				if err = ie.lch_PriorityBasedPrioritization_r16.Decode(extReader); err != nil {
-					return utils.WrapError("Decode lch_PriorityBasedPrioritization_r16", err)
+			// decode Lch_PriorityBasedPrioritization_r16 optional
+			if Lch_PriorityBasedPrioritization_r16Present {
+				ie.Lch_PriorityBasedPrioritization_r16 = new(MAC_ParametersCommon_lch_PriorityBasedPrioritization_r16)
+				if err = ie.Lch_PriorityBasedPrioritization_r16.Decode(extReader); err != nil {
+					return utils.WrapError("Decode Lch_PriorityBasedPrioritization_r16", err)
 				}
 			}
-			// decode lch_ToConfiguredGrantMapping_r16 optional
-			if lch_ToConfiguredGrantMapping_r16Present {
-				ie.lch_ToConfiguredGrantMapping_r16 = new(MAC_ParametersCommon_lch_ToConfiguredGrantMapping_r16)
-				if err = ie.lch_ToConfiguredGrantMapping_r16.Decode(extReader); err != nil {
-					return utils.WrapError("Decode lch_ToConfiguredGrantMapping_r16", err)
+			// decode Lch_ToConfiguredGrantMapping_r16 optional
+			if Lch_ToConfiguredGrantMapping_r16Present {
+				ie.Lch_ToConfiguredGrantMapping_r16 = new(MAC_ParametersCommon_lch_ToConfiguredGrantMapping_r16)
+				if err = ie.Lch_ToConfiguredGrantMapping_r16.Decode(extReader); err != nil {
+					return utils.WrapError("Decode Lch_ToConfiguredGrantMapping_r16", err)
 				}
 			}
-			// decode lch_ToGrantPriorityRestriction_r16 optional
-			if lch_ToGrantPriorityRestriction_r16Present {
-				ie.lch_ToGrantPriorityRestriction_r16 = new(MAC_ParametersCommon_lch_ToGrantPriorityRestriction_r16)
-				if err = ie.lch_ToGrantPriorityRestriction_r16.Decode(extReader); err != nil {
-					return utils.WrapError("Decode lch_ToGrantPriorityRestriction_r16", err)
+			// decode Lch_ToGrantPriorityRestriction_r16 optional
+			if Lch_ToGrantPriorityRestriction_r16Present {
+				ie.Lch_ToGrantPriorityRestriction_r16 = new(MAC_ParametersCommon_lch_ToGrantPriorityRestriction_r16)
+				if err = ie.Lch_ToGrantPriorityRestriction_r16.Decode(extReader); err != nil {
+					return utils.WrapError("Decode Lch_ToGrantPriorityRestriction_r16", err)
 				}
 			}
-			// decode singlePHR_P_r16 optional
-			if singlePHR_P_r16Present {
-				ie.singlePHR_P_r16 = new(MAC_ParametersCommon_singlePHR_P_r16)
-				if err = ie.singlePHR_P_r16.Decode(extReader); err != nil {
-					return utils.WrapError("Decode singlePHR_P_r16", err)
+			// decode SinglePHR_P_r16 optional
+			if SinglePHR_P_r16Present {
+				ie.SinglePHR_P_r16 = new(MAC_ParametersCommon_singlePHR_P_r16)
+				if err = ie.SinglePHR_P_r16.Decode(extReader); err != nil {
+					return utils.WrapError("Decode SinglePHR_P_r16", err)
 				}
 			}
-			// decode ul_LBT_FailureDetectionRecovery_r16 optional
-			if ul_LBT_FailureDetectionRecovery_r16Present {
-				ie.ul_LBT_FailureDetectionRecovery_r16 = new(MAC_ParametersCommon_ul_LBT_FailureDetectionRecovery_r16)
-				if err = ie.ul_LBT_FailureDetectionRecovery_r16.Decode(extReader); err != nil {
-					return utils.WrapError("Decode ul_LBT_FailureDetectionRecovery_r16", err)
+			// decode Ul_LBT_FailureDetectionRecovery_r16 optional
+			if Ul_LBT_FailureDetectionRecovery_r16Present {
+				ie.Ul_LBT_FailureDetectionRecovery_r16 = new(MAC_ParametersCommon_ul_LBT_FailureDetectionRecovery_r16)
+				if err = ie.Ul_LBT_FailureDetectionRecovery_r16.Decode(extReader); err != nil {
+					return utils.WrapError("Decode Ul_LBT_FailureDetectionRecovery_r16", err)
 				}
 			}
-			// decode tdd_MPE_P_MPR_Reporting_r16 optional
-			if tdd_MPE_P_MPR_Reporting_r16Present {
-				ie.tdd_MPE_P_MPR_Reporting_r16 = new(MAC_ParametersCommon_tdd_MPE_P_MPR_Reporting_r16)
-				if err = ie.tdd_MPE_P_MPR_Reporting_r16.Decode(extReader); err != nil {
-					return utils.WrapError("Decode tdd_MPE_P_MPR_Reporting_r16", err)
+			// decode Tdd_MPE_P_MPR_Reporting_r16 optional
+			if Tdd_MPE_P_MPR_Reporting_r16Present {
+				ie.Tdd_MPE_P_MPR_Reporting_r16 = new(MAC_ParametersCommon_tdd_MPE_P_MPR_Reporting_r16)
+				if err = ie.Tdd_MPE_P_MPR_Reporting_r16.Decode(extReader); err != nil {
+					return utils.WrapError("Decode Tdd_MPE_P_MPR_Reporting_r16", err)
 				}
 			}
-			// decode lcid_ExtensionIAB_r16 optional
-			if lcid_ExtensionIAB_r16Present {
-				ie.lcid_ExtensionIAB_r16 = new(MAC_ParametersCommon_lcid_ExtensionIAB_r16)
-				if err = ie.lcid_ExtensionIAB_r16.Decode(extReader); err != nil {
-					return utils.WrapError("Decode lcid_ExtensionIAB_r16", err)
+			// decode Lcid_ExtensionIAB_r16 optional
+			if Lcid_ExtensionIAB_r16Present {
+				ie.Lcid_ExtensionIAB_r16 = new(MAC_ParametersCommon_lcid_ExtensionIAB_r16)
+				if err = ie.Lcid_ExtensionIAB_r16.Decode(extReader); err != nil {
+					return utils.WrapError("Decode Lcid_ExtensionIAB_r16", err)
 				}
 			}
 		}
@@ -556,15 +556,15 @@ func (ie *MAC_ParametersCommon) Decode(r *uper.UperReader) error {
 
 			extReader := uper.NewReader(bytes.NewReader(extBytes))
 
-			spCell_BFR_CBRA_r16Present, err := extReader.ReadBool()
+			SpCell_BFR_CBRA_r16Present, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			// decode spCell_BFR_CBRA_r16 optional
-			if spCell_BFR_CBRA_r16Present {
-				ie.spCell_BFR_CBRA_r16 = new(MAC_ParametersCommon_spCell_BFR_CBRA_r16)
-				if err = ie.spCell_BFR_CBRA_r16.Decode(extReader); err != nil {
-					return utils.WrapError("Decode spCell_BFR_CBRA_r16", err)
+			// decode SpCell_BFR_CBRA_r16 optional
+			if SpCell_BFR_CBRA_r16Present {
+				ie.SpCell_BFR_CBRA_r16 = new(MAC_ParametersCommon_spCell_BFR_CBRA_r16)
+				if err = ie.SpCell_BFR_CBRA_r16.Decode(extReader); err != nil {
+					return utils.WrapError("Decode SpCell_BFR_CBRA_r16", err)
 				}
 			}
 		}
@@ -577,15 +577,15 @@ func (ie *MAC_ParametersCommon) Decode(r *uper.UperReader) error {
 
 			extReader := uper.NewReader(bytes.NewReader(extBytes))
 
-			srs_ResourceId_Ext_r16Present, err := extReader.ReadBool()
+			Srs_ResourceId_Ext_r16Present, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			// decode srs_ResourceId_Ext_r16 optional
-			if srs_ResourceId_Ext_r16Present {
-				ie.srs_ResourceId_Ext_r16 = new(MAC_ParametersCommon_srs_ResourceId_Ext_r16)
-				if err = ie.srs_ResourceId_Ext_r16.Decode(extReader); err != nil {
-					return utils.WrapError("Decode srs_ResourceId_Ext_r16", err)
+			// decode Srs_ResourceId_Ext_r16 optional
+			if Srs_ResourceId_Ext_r16Present {
+				ie.Srs_ResourceId_Ext_r16 = new(MAC_ParametersCommon_srs_ResourceId_Ext_r16)
+				if err = ie.Srs_ResourceId_Ext_r16.Decode(extReader); err != nil {
+					return utils.WrapError("Decode Srs_ResourceId_Ext_r16", err)
 				}
 			}
 		}
@@ -598,147 +598,147 @@ func (ie *MAC_ParametersCommon) Decode(r *uper.UperReader) error {
 
 			extReader := uper.NewReader(bytes.NewReader(extBytes))
 
-			enhancedUuDRX_forSidelink_r17Present, err := extReader.ReadBool()
+			EnhancedUuDRX_forSidelink_r17Present, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			mg_ActivationRequestPRS_Meas_r17Present, err := extReader.ReadBool()
+			Mg_ActivationRequestPRS_Meas_r17Present, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			mg_ActivationCommPRS_Meas_r17Present, err := extReader.ReadBool()
+			Mg_ActivationCommPRS_Meas_r17Present, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			intraCG_Prioritization_r17Present, err := extReader.ReadBool()
+			IntraCG_Prioritization_r17Present, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			jointPrioritizationCG_Retx_Timer_r17Present, err := extReader.ReadBool()
+			JointPrioritizationCG_Retx_Timer_r17Present, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			survivalTime_r17Present, err := extReader.ReadBool()
+			SurvivalTime_r17Present, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			lcg_ExtensionIAB_r17Present, err := extReader.ReadBool()
+			Lcg_ExtensionIAB_r17Present, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			harq_FeedbackDisabled_r17Present, err := extReader.ReadBool()
+			Harq_FeedbackDisabled_r17Present, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			uplink_Harq_ModeB_r17Present, err := extReader.ReadBool()
+			Uplink_Harq_ModeB_r17Present, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			sr_TriggeredBy_TA_Report_r17Present, err := extReader.ReadBool()
+			Sr_TriggeredBy_TA_Report_r17Present, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			extendedDRX_CycleInactive_r17Present, err := extReader.ReadBool()
+			ExtendedDRX_CycleInactive_r17Present, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			simultaneousSR_PUSCH_DiffPUCCH_groups_r17Present, err := extReader.ReadBool()
+			SimultaneousSR_PUSCH_DiffPUCCH_groups_r17Present, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			lastTransmissionUL_r17Present, err := extReader.ReadBool()
+			LastTransmissionUL_r17Present, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			// decode enhancedUuDRX_forSidelink_r17 optional
-			if enhancedUuDRX_forSidelink_r17Present {
-				ie.enhancedUuDRX_forSidelink_r17 = new(MAC_ParametersCommon_enhancedUuDRX_forSidelink_r17)
-				if err = ie.enhancedUuDRX_forSidelink_r17.Decode(extReader); err != nil {
-					return utils.WrapError("Decode enhancedUuDRX_forSidelink_r17", err)
+			// decode EnhancedUuDRX_forSidelink_r17 optional
+			if EnhancedUuDRX_forSidelink_r17Present {
+				ie.EnhancedUuDRX_forSidelink_r17 = new(MAC_ParametersCommon_enhancedUuDRX_forSidelink_r17)
+				if err = ie.EnhancedUuDRX_forSidelink_r17.Decode(extReader); err != nil {
+					return utils.WrapError("Decode EnhancedUuDRX_forSidelink_r17", err)
 				}
 			}
-			// decode mg_ActivationRequestPRS_Meas_r17 optional
-			if mg_ActivationRequestPRS_Meas_r17Present {
-				ie.mg_ActivationRequestPRS_Meas_r17 = new(MAC_ParametersCommon_mg_ActivationRequestPRS_Meas_r17)
-				if err = ie.mg_ActivationRequestPRS_Meas_r17.Decode(extReader); err != nil {
-					return utils.WrapError("Decode mg_ActivationRequestPRS_Meas_r17", err)
+			// decode Mg_ActivationRequestPRS_Meas_r17 optional
+			if Mg_ActivationRequestPRS_Meas_r17Present {
+				ie.Mg_ActivationRequestPRS_Meas_r17 = new(MAC_ParametersCommon_mg_ActivationRequestPRS_Meas_r17)
+				if err = ie.Mg_ActivationRequestPRS_Meas_r17.Decode(extReader); err != nil {
+					return utils.WrapError("Decode Mg_ActivationRequestPRS_Meas_r17", err)
 				}
 			}
-			// decode mg_ActivationCommPRS_Meas_r17 optional
-			if mg_ActivationCommPRS_Meas_r17Present {
-				ie.mg_ActivationCommPRS_Meas_r17 = new(MAC_ParametersCommon_mg_ActivationCommPRS_Meas_r17)
-				if err = ie.mg_ActivationCommPRS_Meas_r17.Decode(extReader); err != nil {
-					return utils.WrapError("Decode mg_ActivationCommPRS_Meas_r17", err)
+			// decode Mg_ActivationCommPRS_Meas_r17 optional
+			if Mg_ActivationCommPRS_Meas_r17Present {
+				ie.Mg_ActivationCommPRS_Meas_r17 = new(MAC_ParametersCommon_mg_ActivationCommPRS_Meas_r17)
+				if err = ie.Mg_ActivationCommPRS_Meas_r17.Decode(extReader); err != nil {
+					return utils.WrapError("Decode Mg_ActivationCommPRS_Meas_r17", err)
 				}
 			}
-			// decode intraCG_Prioritization_r17 optional
-			if intraCG_Prioritization_r17Present {
-				ie.intraCG_Prioritization_r17 = new(MAC_ParametersCommon_intraCG_Prioritization_r17)
-				if err = ie.intraCG_Prioritization_r17.Decode(extReader); err != nil {
-					return utils.WrapError("Decode intraCG_Prioritization_r17", err)
+			// decode IntraCG_Prioritization_r17 optional
+			if IntraCG_Prioritization_r17Present {
+				ie.IntraCG_Prioritization_r17 = new(MAC_ParametersCommon_intraCG_Prioritization_r17)
+				if err = ie.IntraCG_Prioritization_r17.Decode(extReader); err != nil {
+					return utils.WrapError("Decode IntraCG_Prioritization_r17", err)
 				}
 			}
-			// decode jointPrioritizationCG_Retx_Timer_r17 optional
-			if jointPrioritizationCG_Retx_Timer_r17Present {
-				ie.jointPrioritizationCG_Retx_Timer_r17 = new(MAC_ParametersCommon_jointPrioritizationCG_Retx_Timer_r17)
-				if err = ie.jointPrioritizationCG_Retx_Timer_r17.Decode(extReader); err != nil {
-					return utils.WrapError("Decode jointPrioritizationCG_Retx_Timer_r17", err)
+			// decode JointPrioritizationCG_Retx_Timer_r17 optional
+			if JointPrioritizationCG_Retx_Timer_r17Present {
+				ie.JointPrioritizationCG_Retx_Timer_r17 = new(MAC_ParametersCommon_jointPrioritizationCG_Retx_Timer_r17)
+				if err = ie.JointPrioritizationCG_Retx_Timer_r17.Decode(extReader); err != nil {
+					return utils.WrapError("Decode JointPrioritizationCG_Retx_Timer_r17", err)
 				}
 			}
-			// decode survivalTime_r17 optional
-			if survivalTime_r17Present {
-				ie.survivalTime_r17 = new(MAC_ParametersCommon_survivalTime_r17)
-				if err = ie.survivalTime_r17.Decode(extReader); err != nil {
-					return utils.WrapError("Decode survivalTime_r17", err)
+			// decode SurvivalTime_r17 optional
+			if SurvivalTime_r17Present {
+				ie.SurvivalTime_r17 = new(MAC_ParametersCommon_survivalTime_r17)
+				if err = ie.SurvivalTime_r17.Decode(extReader); err != nil {
+					return utils.WrapError("Decode SurvivalTime_r17", err)
 				}
 			}
-			// decode lcg_ExtensionIAB_r17 optional
-			if lcg_ExtensionIAB_r17Present {
-				ie.lcg_ExtensionIAB_r17 = new(MAC_ParametersCommon_lcg_ExtensionIAB_r17)
-				if err = ie.lcg_ExtensionIAB_r17.Decode(extReader); err != nil {
-					return utils.WrapError("Decode lcg_ExtensionIAB_r17", err)
+			// decode Lcg_ExtensionIAB_r17 optional
+			if Lcg_ExtensionIAB_r17Present {
+				ie.Lcg_ExtensionIAB_r17 = new(MAC_ParametersCommon_lcg_ExtensionIAB_r17)
+				if err = ie.Lcg_ExtensionIAB_r17.Decode(extReader); err != nil {
+					return utils.WrapError("Decode Lcg_ExtensionIAB_r17", err)
 				}
 			}
-			// decode harq_FeedbackDisabled_r17 optional
-			if harq_FeedbackDisabled_r17Present {
-				ie.harq_FeedbackDisabled_r17 = new(MAC_ParametersCommon_harq_FeedbackDisabled_r17)
-				if err = ie.harq_FeedbackDisabled_r17.Decode(extReader); err != nil {
-					return utils.WrapError("Decode harq_FeedbackDisabled_r17", err)
+			// decode Harq_FeedbackDisabled_r17 optional
+			if Harq_FeedbackDisabled_r17Present {
+				ie.Harq_FeedbackDisabled_r17 = new(MAC_ParametersCommon_harq_FeedbackDisabled_r17)
+				if err = ie.Harq_FeedbackDisabled_r17.Decode(extReader); err != nil {
+					return utils.WrapError("Decode Harq_FeedbackDisabled_r17", err)
 				}
 			}
-			// decode uplink_Harq_ModeB_r17 optional
-			if uplink_Harq_ModeB_r17Present {
-				ie.uplink_Harq_ModeB_r17 = new(MAC_ParametersCommon_uplink_Harq_ModeB_r17)
-				if err = ie.uplink_Harq_ModeB_r17.Decode(extReader); err != nil {
-					return utils.WrapError("Decode uplink_Harq_ModeB_r17", err)
+			// decode Uplink_Harq_ModeB_r17 optional
+			if Uplink_Harq_ModeB_r17Present {
+				ie.Uplink_Harq_ModeB_r17 = new(MAC_ParametersCommon_uplink_Harq_ModeB_r17)
+				if err = ie.Uplink_Harq_ModeB_r17.Decode(extReader); err != nil {
+					return utils.WrapError("Decode Uplink_Harq_ModeB_r17", err)
 				}
 			}
-			// decode sr_TriggeredBy_TA_Report_r17 optional
-			if sr_TriggeredBy_TA_Report_r17Present {
-				ie.sr_TriggeredBy_TA_Report_r17 = new(MAC_ParametersCommon_sr_TriggeredBy_TA_Report_r17)
-				if err = ie.sr_TriggeredBy_TA_Report_r17.Decode(extReader); err != nil {
-					return utils.WrapError("Decode sr_TriggeredBy_TA_Report_r17", err)
+			// decode Sr_TriggeredBy_TA_Report_r17 optional
+			if Sr_TriggeredBy_TA_Report_r17Present {
+				ie.Sr_TriggeredBy_TA_Report_r17 = new(MAC_ParametersCommon_sr_TriggeredBy_TA_Report_r17)
+				if err = ie.Sr_TriggeredBy_TA_Report_r17.Decode(extReader); err != nil {
+					return utils.WrapError("Decode Sr_TriggeredBy_TA_Report_r17", err)
 				}
 			}
-			// decode extendedDRX_CycleInactive_r17 optional
-			if extendedDRX_CycleInactive_r17Present {
-				ie.extendedDRX_CycleInactive_r17 = new(MAC_ParametersCommon_extendedDRX_CycleInactive_r17)
-				if err = ie.extendedDRX_CycleInactive_r17.Decode(extReader); err != nil {
-					return utils.WrapError("Decode extendedDRX_CycleInactive_r17", err)
+			// decode ExtendedDRX_CycleInactive_r17 optional
+			if ExtendedDRX_CycleInactive_r17Present {
+				ie.ExtendedDRX_CycleInactive_r17 = new(MAC_ParametersCommon_extendedDRX_CycleInactive_r17)
+				if err = ie.ExtendedDRX_CycleInactive_r17.Decode(extReader); err != nil {
+					return utils.WrapError("Decode ExtendedDRX_CycleInactive_r17", err)
 				}
 			}
-			// decode simultaneousSR_PUSCH_DiffPUCCH_groups_r17 optional
-			if simultaneousSR_PUSCH_DiffPUCCH_groups_r17Present {
-				ie.simultaneousSR_PUSCH_DiffPUCCH_groups_r17 = new(MAC_ParametersCommon_simultaneousSR_PUSCH_DiffPUCCH_groups_r17)
-				if err = ie.simultaneousSR_PUSCH_DiffPUCCH_groups_r17.Decode(extReader); err != nil {
-					return utils.WrapError("Decode simultaneousSR_PUSCH_DiffPUCCH_groups_r17", err)
+			// decode SimultaneousSR_PUSCH_DiffPUCCH_groups_r17 optional
+			if SimultaneousSR_PUSCH_DiffPUCCH_groups_r17Present {
+				ie.SimultaneousSR_PUSCH_DiffPUCCH_groups_r17 = new(MAC_ParametersCommon_simultaneousSR_PUSCH_DiffPUCCH_groups_r17)
+				if err = ie.SimultaneousSR_PUSCH_DiffPUCCH_groups_r17.Decode(extReader); err != nil {
+					return utils.WrapError("Decode SimultaneousSR_PUSCH_DiffPUCCH_groups_r17", err)
 				}
 			}
-			// decode lastTransmissionUL_r17 optional
-			if lastTransmissionUL_r17Present {
-				ie.lastTransmissionUL_r17 = new(MAC_ParametersCommon_lastTransmissionUL_r17)
-				if err = ie.lastTransmissionUL_r17.Decode(extReader); err != nil {
-					return utils.WrapError("Decode lastTransmissionUL_r17", err)
+			// decode LastTransmissionUL_r17 optional
+			if LastTransmissionUL_r17Present {
+				ie.LastTransmissionUL_r17 = new(MAC_ParametersCommon_lastTransmissionUL_r17)
+				if err = ie.LastTransmissionUL_r17.Decode(extReader); err != nil {
+					return utils.WrapError("Decode LastTransmissionUL_r17", err)
 				}
 			}
 		}

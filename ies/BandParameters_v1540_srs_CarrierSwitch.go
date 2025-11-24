@@ -9,14 +9,14 @@ import (
 
 const (
 	BandParameters_v1540_srs_CarrierSwitch_Choice_nothing uint64 = iota
-	BandParameters_v1540_srs_CarrierSwitch_Choice_nr
-	BandParameters_v1540_srs_CarrierSwitch_Choice_eutra
+	BandParameters_v1540_srs_CarrierSwitch_Choice_Nr
+	BandParameters_v1540_srs_CarrierSwitch_Choice_Eutra
 )
 
 type BandParameters_v1540_srs_CarrierSwitch struct {
 	Choice uint64
-	nr     *BandParameters_v1540_srs_CarrierSwitch_nr
-	eutra  *BandParameters_v1540_srs_CarrierSwitch_eutra
+	Nr     *BandParameters_v1540_srs_CarrierSwitch_nr
+	Eutra  *BandParameters_v1540_srs_CarrierSwitch_eutra
 }
 
 func (ie *BandParameters_v1540_srs_CarrierSwitch) Encode(w *uper.UperWriter) error {
@@ -25,13 +25,13 @@ func (ie *BandParameters_v1540_srs_CarrierSwitch) Encode(w *uper.UperWriter) err
 		return err
 	}
 	switch ie.Choice {
-	case BandParameters_v1540_srs_CarrierSwitch_Choice_nr:
-		if err = ie.nr.Encode(w); err != nil {
-			err = utils.WrapError("Encode nr", err)
+	case BandParameters_v1540_srs_CarrierSwitch_Choice_Nr:
+		if err = ie.Nr.Encode(w); err != nil {
+			err = utils.WrapError("Encode Nr", err)
 		}
-	case BandParameters_v1540_srs_CarrierSwitch_Choice_eutra:
-		if err = ie.eutra.Encode(w); err != nil {
-			err = utils.WrapError("Encode eutra", err)
+	case BandParameters_v1540_srs_CarrierSwitch_Choice_Eutra:
+		if err = ie.Eutra.Encode(w); err != nil {
+			err = utils.WrapError("Encode Eutra", err)
 		}
 	default:
 		err = fmt.Errorf("invalid choice: %d", ie.Choice)
@@ -45,15 +45,15 @@ func (ie *BandParameters_v1540_srs_CarrierSwitch) Decode(r *uper.UperReader) err
 		return err
 	}
 	switch ie.Choice {
-	case BandParameters_v1540_srs_CarrierSwitch_Choice_nr:
-		ie.nr = new(BandParameters_v1540_srs_CarrierSwitch_nr)
-		if err = ie.nr.Decode(r); err != nil {
-			return utils.WrapError("Decode nr", err)
+	case BandParameters_v1540_srs_CarrierSwitch_Choice_Nr:
+		ie.Nr = new(BandParameters_v1540_srs_CarrierSwitch_nr)
+		if err = ie.Nr.Decode(r); err != nil {
+			return utils.WrapError("Decode Nr", err)
 		}
-	case BandParameters_v1540_srs_CarrierSwitch_Choice_eutra:
-		ie.eutra = new(BandParameters_v1540_srs_CarrierSwitch_eutra)
-		if err = ie.eutra.Decode(r); err != nil {
-			return utils.WrapError("Decode eutra", err)
+	case BandParameters_v1540_srs_CarrierSwitch_Choice_Eutra:
+		ie.Eutra = new(BandParameters_v1540_srs_CarrierSwitch_eutra)
+		if err = ie.Eutra.Decode(r); err != nil {
+			return utils.WrapError("Decode Eutra", err)
 		}
 	default:
 		return fmt.Errorf("invalid choice: %d", ie.Choice)

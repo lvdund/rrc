@@ -9,14 +9,14 @@ import (
 
 const (
 	NotificationMessageSidelink_r17_CriticalExtensions_Choice_nothing uint64 = iota
-	NotificationMessageSidelink_r17_CriticalExtensions_Choice_notificationMessageSidelink_r17
-	NotificationMessageSidelink_r17_CriticalExtensions_Choice_criticalExtensionsFuture
+	NotificationMessageSidelink_r17_CriticalExtensions_Choice_NotificationMessageSidelink_r17
+	NotificationMessageSidelink_r17_CriticalExtensions_Choice_CriticalExtensionsFuture
 )
 
 type NotificationMessageSidelink_r17_CriticalExtensions struct {
 	Choice                          uint64
-	notificationMessageSidelink_r17 *NotificationMessageSidelink_r17_IEs
-	criticalExtensionsFuture        interface{} `madatory`
+	NotificationMessageSidelink_r17 *NotificationMessageSidelink_r17_IEs
+	CriticalExtensionsFuture        interface{} `madatory`
 }
 
 func (ie *NotificationMessageSidelink_r17_CriticalExtensions) Encode(w *uper.UperWriter) error {
@@ -25,11 +25,11 @@ func (ie *NotificationMessageSidelink_r17_CriticalExtensions) Encode(w *uper.Upe
 		return err
 	}
 	switch ie.Choice {
-	case NotificationMessageSidelink_r17_CriticalExtensions_Choice_notificationMessageSidelink_r17:
-		if err = ie.notificationMessageSidelink_r17.Encode(w); err != nil {
-			err = utils.WrapError("Encode notificationMessageSidelink_r17", err)
+	case NotificationMessageSidelink_r17_CriticalExtensions_Choice_NotificationMessageSidelink_r17:
+		if err = ie.NotificationMessageSidelink_r17.Encode(w); err != nil {
+			err = utils.WrapError("Encode NotificationMessageSidelink_r17", err)
 		}
-	case NotificationMessageSidelink_r17_CriticalExtensions_Choice_criticalExtensionsFuture:
+	case NotificationMessageSidelink_r17_CriticalExtensions_Choice_CriticalExtensionsFuture:
 		// interface{} field of choice - nothing to encode
 	default:
 		err = fmt.Errorf("invalid choice: %d", ie.Choice)
@@ -43,12 +43,12 @@ func (ie *NotificationMessageSidelink_r17_CriticalExtensions) Decode(r *uper.Upe
 		return err
 	}
 	switch ie.Choice {
-	case NotificationMessageSidelink_r17_CriticalExtensions_Choice_notificationMessageSidelink_r17:
-		ie.notificationMessageSidelink_r17 = new(NotificationMessageSidelink_r17_IEs)
-		if err = ie.notificationMessageSidelink_r17.Decode(r); err != nil {
-			return utils.WrapError("Decode notificationMessageSidelink_r17", err)
+	case NotificationMessageSidelink_r17_CriticalExtensions_Choice_NotificationMessageSidelink_r17:
+		ie.NotificationMessageSidelink_r17 = new(NotificationMessageSidelink_r17_IEs)
+		if err = ie.NotificationMessageSidelink_r17.Decode(r); err != nil {
+			return utils.WrapError("Decode NotificationMessageSidelink_r17", err)
 		}
-	case NotificationMessageSidelink_r17_CriticalExtensions_Choice_criticalExtensionsFuture:
+	case NotificationMessageSidelink_r17_CriticalExtensions_Choice_CriticalExtensionsFuture:
 		// interface{} field of choice - nothing to decode
 	default:
 		return fmt.Errorf("invalid choice: %d", ie.Choice)

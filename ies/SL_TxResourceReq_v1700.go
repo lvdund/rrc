@@ -6,30 +6,30 @@ import (
 )
 
 type SL_TxResourceReq_v1700 struct {
-	sl_DRX_InfoFromRxList_r17 []SL_DRX_ConfigUC_SemiStatic_r17              `lb:1,ub:maxNrofSL_RxInfoSet_r17,optional`
-	sl_DRX_Indication_r17     *SL_TxResourceReq_v1700_sl_DRX_Indication_r17 `optional`
+	Sl_DRX_InfoFromRxList_r17 []SL_DRX_ConfigUC_SemiStatic_r17              `lb:1,ub:maxNrofSL_RxInfoSet_r17,optional`
+	Sl_DRX_Indication_r17     *SL_TxResourceReq_v1700_sl_DRX_Indication_r17 `optional`
 }
 
 func (ie *SL_TxResourceReq_v1700) Encode(w *uper.UperWriter) error {
 	var err error
-	preambleBits := []bool{len(ie.sl_DRX_InfoFromRxList_r17) > 0, ie.sl_DRX_Indication_r17 != nil}
+	preambleBits := []bool{len(ie.Sl_DRX_InfoFromRxList_r17) > 0, ie.Sl_DRX_Indication_r17 != nil}
 	for _, bit := range preambleBits {
 		if err = w.WriteBool(bit); err != nil {
 			return err
 		}
 	}
-	if len(ie.sl_DRX_InfoFromRxList_r17) > 0 {
-		tmp_sl_DRX_InfoFromRxList_r17 := utils.NewSequence[*SL_DRX_ConfigUC_SemiStatic_r17]([]*SL_DRX_ConfigUC_SemiStatic_r17{}, uper.Constraint{Lb: 1, Ub: maxNrofSL_RxInfoSet_r17}, false)
-		for _, i := range ie.sl_DRX_InfoFromRxList_r17 {
-			tmp_sl_DRX_InfoFromRxList_r17.Value = append(tmp_sl_DRX_InfoFromRxList_r17.Value, &i)
+	if len(ie.Sl_DRX_InfoFromRxList_r17) > 0 {
+		tmp_Sl_DRX_InfoFromRxList_r17 := utils.NewSequence[*SL_DRX_ConfigUC_SemiStatic_r17]([]*SL_DRX_ConfigUC_SemiStatic_r17{}, uper.Constraint{Lb: 1, Ub: maxNrofSL_RxInfoSet_r17}, false)
+		for _, i := range ie.Sl_DRX_InfoFromRxList_r17 {
+			tmp_Sl_DRX_InfoFromRxList_r17.Value = append(tmp_Sl_DRX_InfoFromRxList_r17.Value, &i)
 		}
-		if err = tmp_sl_DRX_InfoFromRxList_r17.Encode(w); err != nil {
-			return utils.WrapError("Encode sl_DRX_InfoFromRxList_r17", err)
+		if err = tmp_Sl_DRX_InfoFromRxList_r17.Encode(w); err != nil {
+			return utils.WrapError("Encode Sl_DRX_InfoFromRxList_r17", err)
 		}
 	}
-	if ie.sl_DRX_Indication_r17 != nil {
-		if err = ie.sl_DRX_Indication_r17.Encode(w); err != nil {
-			return utils.WrapError("Encode sl_DRX_Indication_r17", err)
+	if ie.Sl_DRX_Indication_r17 != nil {
+		if err = ie.Sl_DRX_Indication_r17.Encode(w); err != nil {
+			return utils.WrapError("Encode Sl_DRX_Indication_r17", err)
 		}
 	}
 	return nil
@@ -37,31 +37,31 @@ func (ie *SL_TxResourceReq_v1700) Encode(w *uper.UperWriter) error {
 
 func (ie *SL_TxResourceReq_v1700) Decode(r *uper.UperReader) error {
 	var err error
-	var sl_DRX_InfoFromRxList_r17Present bool
-	if sl_DRX_InfoFromRxList_r17Present, err = r.ReadBool(); err != nil {
+	var Sl_DRX_InfoFromRxList_r17Present bool
+	if Sl_DRX_InfoFromRxList_r17Present, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var sl_DRX_Indication_r17Present bool
-	if sl_DRX_Indication_r17Present, err = r.ReadBool(); err != nil {
+	var Sl_DRX_Indication_r17Present bool
+	if Sl_DRX_Indication_r17Present, err = r.ReadBool(); err != nil {
 		return err
 	}
-	if sl_DRX_InfoFromRxList_r17Present {
-		tmp_sl_DRX_InfoFromRxList_r17 := utils.NewSequence[*SL_DRX_ConfigUC_SemiStatic_r17]([]*SL_DRX_ConfigUC_SemiStatic_r17{}, uper.Constraint{Lb: 1, Ub: maxNrofSL_RxInfoSet_r17}, false)
-		fn_sl_DRX_InfoFromRxList_r17 := func() *SL_DRX_ConfigUC_SemiStatic_r17 {
+	if Sl_DRX_InfoFromRxList_r17Present {
+		tmp_Sl_DRX_InfoFromRxList_r17 := utils.NewSequence[*SL_DRX_ConfigUC_SemiStatic_r17]([]*SL_DRX_ConfigUC_SemiStatic_r17{}, uper.Constraint{Lb: 1, Ub: maxNrofSL_RxInfoSet_r17}, false)
+		fn_Sl_DRX_InfoFromRxList_r17 := func() *SL_DRX_ConfigUC_SemiStatic_r17 {
 			return new(SL_DRX_ConfigUC_SemiStatic_r17)
 		}
-		if err = tmp_sl_DRX_InfoFromRxList_r17.Decode(r, fn_sl_DRX_InfoFromRxList_r17); err != nil {
-			return utils.WrapError("Decode sl_DRX_InfoFromRxList_r17", err)
+		if err = tmp_Sl_DRX_InfoFromRxList_r17.Decode(r, fn_Sl_DRX_InfoFromRxList_r17); err != nil {
+			return utils.WrapError("Decode Sl_DRX_InfoFromRxList_r17", err)
 		}
-		ie.sl_DRX_InfoFromRxList_r17 = []SL_DRX_ConfigUC_SemiStatic_r17{}
-		for _, i := range tmp_sl_DRX_InfoFromRxList_r17.Value {
-			ie.sl_DRX_InfoFromRxList_r17 = append(ie.sl_DRX_InfoFromRxList_r17, *i)
+		ie.Sl_DRX_InfoFromRxList_r17 = []SL_DRX_ConfigUC_SemiStatic_r17{}
+		for _, i := range tmp_Sl_DRX_InfoFromRxList_r17.Value {
+			ie.Sl_DRX_InfoFromRxList_r17 = append(ie.Sl_DRX_InfoFromRxList_r17, *i)
 		}
 	}
-	if sl_DRX_Indication_r17Present {
-		ie.sl_DRX_Indication_r17 = new(SL_TxResourceReq_v1700_sl_DRX_Indication_r17)
-		if err = ie.sl_DRX_Indication_r17.Decode(r); err != nil {
-			return utils.WrapError("Decode sl_DRX_Indication_r17", err)
+	if Sl_DRX_Indication_r17Present {
+		ie.Sl_DRX_Indication_r17 = new(SL_TxResourceReq_v1700_sl_DRX_Indication_r17)
+		if err = ie.Sl_DRX_Indication_r17.Decode(r); err != nil {
+			return utils.WrapError("Decode Sl_DRX_Indication_r17", err)
 		}
 	}
 	return nil

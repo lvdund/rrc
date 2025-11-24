@@ -9,42 +9,42 @@ import (
 
 const (
 	UL_DCCH_MessageType_C1_Choice_nothing uint64 = iota
-	UL_DCCH_MessageType_C1_Choice_measurementReport
-	UL_DCCH_MessageType_C1_Choice_rrcReconfigurationComplete
-	UL_DCCH_MessageType_C1_Choice_rrcSetupComplete
-	UL_DCCH_MessageType_C1_Choice_rrcReestablishmentComplete
-	UL_DCCH_MessageType_C1_Choice_rrcResumeComplete
-	UL_DCCH_MessageType_C1_Choice_securityModeComplete
-	UL_DCCH_MessageType_C1_Choice_securityModeFailure
-	UL_DCCH_MessageType_C1_Choice_ulInformationTransfer
-	UL_DCCH_MessageType_C1_Choice_locationMeasurementIndication
-	UL_DCCH_MessageType_C1_Choice_ueCapabilityInformation
-	UL_DCCH_MessageType_C1_Choice_counterCheckResponse
-	UL_DCCH_MessageType_C1_Choice_ueAssistanceInformation
-	UL_DCCH_MessageType_C1_Choice_failureInformation
-	UL_DCCH_MessageType_C1_Choice_ulInformationTransferMRDC
-	UL_DCCH_MessageType_C1_Choice_scgFailureInformation
-	UL_DCCH_MessageType_C1_Choice_scgFailureInformationEUTRA
+	UL_DCCH_MessageType_C1_Choice_MeasurementReport
+	UL_DCCH_MessageType_C1_Choice_RrcReconfigurationComplete
+	UL_DCCH_MessageType_C1_Choice_RrcSetupComplete
+	UL_DCCH_MessageType_C1_Choice_RrcReestablishmentComplete
+	UL_DCCH_MessageType_C1_Choice_RrcResumeComplete
+	UL_DCCH_MessageType_C1_Choice_SecurityModeComplete
+	UL_DCCH_MessageType_C1_Choice_SecurityModeFailure
+	UL_DCCH_MessageType_C1_Choice_UlInformationTransfer
+	UL_DCCH_MessageType_C1_Choice_LocationMeasurementIndication
+	UL_DCCH_MessageType_C1_Choice_UeCapabilityInformation
+	UL_DCCH_MessageType_C1_Choice_CounterCheckResponse
+	UL_DCCH_MessageType_C1_Choice_UeAssistanceInformation
+	UL_DCCH_MessageType_C1_Choice_FailureInformation
+	UL_DCCH_MessageType_C1_Choice_UlInformationTransferMRDC
+	UL_DCCH_MessageType_C1_Choice_ScgFailureInformation
+	UL_DCCH_MessageType_C1_Choice_ScgFailureInformationEUTRA
 )
 
 type UL_DCCH_MessageType_C1 struct {
 	Choice                        uint64
-	measurementReport             *MeasurementReport
-	rrcReconfigurationComplete    *RRCReconfigurationComplete
-	rrcSetupComplete              *RRCSetupComplete
-	rrcReestablishmentComplete    *RRCReestablishmentComplete
-	rrcResumeComplete             *RRCResumeComplete
-	securityModeComplete          *SecurityModeComplete
-	securityModeFailure           *SecurityModeFailure
-	ulInformationTransfer         *ULInformationTransfer
-	locationMeasurementIndication *LocationMeasurementIndication
-	ueCapabilityInformation       *UECapabilityInformation
-	counterCheckResponse          *CounterCheckResponse
-	ueAssistanceInformation       *UEAssistanceInformation
-	failureInformation            *FailureInformation
-	ulInformationTransferMRDC     *ULInformationTransferMRDC
-	scgFailureInformation         *SCGFailureInformation
-	scgFailureInformationEUTRA    *SCGFailureInformationEUTRA
+	MeasurementReport             *MeasurementReport
+	RrcReconfigurationComplete    *RRCReconfigurationComplete
+	RrcSetupComplete              *RRCSetupComplete
+	RrcReestablishmentComplete    *RRCReestablishmentComplete
+	RrcResumeComplete             *RRCResumeComplete
+	SecurityModeComplete          *SecurityModeComplete
+	SecurityModeFailure           *SecurityModeFailure
+	UlInformationTransfer         *ULInformationTransfer
+	LocationMeasurementIndication *LocationMeasurementIndication
+	UeCapabilityInformation       *UECapabilityInformation
+	CounterCheckResponse          *CounterCheckResponse
+	UeAssistanceInformation       *UEAssistanceInformation
+	FailureInformation            *FailureInformation
+	UlInformationTransferMRDC     *ULInformationTransferMRDC
+	ScgFailureInformation         *SCGFailureInformation
+	ScgFailureInformationEUTRA    *SCGFailureInformationEUTRA
 }
 
 func (ie *UL_DCCH_MessageType_C1) Encode(w *uper.UperWriter) error {
@@ -53,69 +53,69 @@ func (ie *UL_DCCH_MessageType_C1) Encode(w *uper.UperWriter) error {
 		return err
 	}
 	switch ie.Choice {
-	case UL_DCCH_MessageType_C1_Choice_measurementReport:
-		if err = ie.measurementReport.Encode(w); err != nil {
-			err = utils.WrapError("Encode measurementReport", err)
+	case UL_DCCH_MessageType_C1_Choice_MeasurementReport:
+		if err = ie.MeasurementReport.Encode(w); err != nil {
+			err = utils.WrapError("Encode MeasurementReport", err)
 		}
-	case UL_DCCH_MessageType_C1_Choice_rrcReconfigurationComplete:
-		if err = ie.rrcReconfigurationComplete.Encode(w); err != nil {
-			err = utils.WrapError("Encode rrcReconfigurationComplete", err)
+	case UL_DCCH_MessageType_C1_Choice_RrcReconfigurationComplete:
+		if err = ie.RrcReconfigurationComplete.Encode(w); err != nil {
+			err = utils.WrapError("Encode RrcReconfigurationComplete", err)
 		}
-	case UL_DCCH_MessageType_C1_Choice_rrcSetupComplete:
-		if err = ie.rrcSetupComplete.Encode(w); err != nil {
-			err = utils.WrapError("Encode rrcSetupComplete", err)
+	case UL_DCCH_MessageType_C1_Choice_RrcSetupComplete:
+		if err = ie.RrcSetupComplete.Encode(w); err != nil {
+			err = utils.WrapError("Encode RrcSetupComplete", err)
 		}
-	case UL_DCCH_MessageType_C1_Choice_rrcReestablishmentComplete:
-		if err = ie.rrcReestablishmentComplete.Encode(w); err != nil {
-			err = utils.WrapError("Encode rrcReestablishmentComplete", err)
+	case UL_DCCH_MessageType_C1_Choice_RrcReestablishmentComplete:
+		if err = ie.RrcReestablishmentComplete.Encode(w); err != nil {
+			err = utils.WrapError("Encode RrcReestablishmentComplete", err)
 		}
-	case UL_DCCH_MessageType_C1_Choice_rrcResumeComplete:
-		if err = ie.rrcResumeComplete.Encode(w); err != nil {
-			err = utils.WrapError("Encode rrcResumeComplete", err)
+	case UL_DCCH_MessageType_C1_Choice_RrcResumeComplete:
+		if err = ie.RrcResumeComplete.Encode(w); err != nil {
+			err = utils.WrapError("Encode RrcResumeComplete", err)
 		}
-	case UL_DCCH_MessageType_C1_Choice_securityModeComplete:
-		if err = ie.securityModeComplete.Encode(w); err != nil {
-			err = utils.WrapError("Encode securityModeComplete", err)
+	case UL_DCCH_MessageType_C1_Choice_SecurityModeComplete:
+		if err = ie.SecurityModeComplete.Encode(w); err != nil {
+			err = utils.WrapError("Encode SecurityModeComplete", err)
 		}
-	case UL_DCCH_MessageType_C1_Choice_securityModeFailure:
-		if err = ie.securityModeFailure.Encode(w); err != nil {
-			err = utils.WrapError("Encode securityModeFailure", err)
+	case UL_DCCH_MessageType_C1_Choice_SecurityModeFailure:
+		if err = ie.SecurityModeFailure.Encode(w); err != nil {
+			err = utils.WrapError("Encode SecurityModeFailure", err)
 		}
-	case UL_DCCH_MessageType_C1_Choice_ulInformationTransfer:
-		if err = ie.ulInformationTransfer.Encode(w); err != nil {
-			err = utils.WrapError("Encode ulInformationTransfer", err)
+	case UL_DCCH_MessageType_C1_Choice_UlInformationTransfer:
+		if err = ie.UlInformationTransfer.Encode(w); err != nil {
+			err = utils.WrapError("Encode UlInformationTransfer", err)
 		}
-	case UL_DCCH_MessageType_C1_Choice_locationMeasurementIndication:
-		if err = ie.locationMeasurementIndication.Encode(w); err != nil {
-			err = utils.WrapError("Encode locationMeasurementIndication", err)
+	case UL_DCCH_MessageType_C1_Choice_LocationMeasurementIndication:
+		if err = ie.LocationMeasurementIndication.Encode(w); err != nil {
+			err = utils.WrapError("Encode LocationMeasurementIndication", err)
 		}
-	case UL_DCCH_MessageType_C1_Choice_ueCapabilityInformation:
-		if err = ie.ueCapabilityInformation.Encode(w); err != nil {
-			err = utils.WrapError("Encode ueCapabilityInformation", err)
+	case UL_DCCH_MessageType_C1_Choice_UeCapabilityInformation:
+		if err = ie.UeCapabilityInformation.Encode(w); err != nil {
+			err = utils.WrapError("Encode UeCapabilityInformation", err)
 		}
-	case UL_DCCH_MessageType_C1_Choice_counterCheckResponse:
-		if err = ie.counterCheckResponse.Encode(w); err != nil {
-			err = utils.WrapError("Encode counterCheckResponse", err)
+	case UL_DCCH_MessageType_C1_Choice_CounterCheckResponse:
+		if err = ie.CounterCheckResponse.Encode(w); err != nil {
+			err = utils.WrapError("Encode CounterCheckResponse", err)
 		}
-	case UL_DCCH_MessageType_C1_Choice_ueAssistanceInformation:
-		if err = ie.ueAssistanceInformation.Encode(w); err != nil {
-			err = utils.WrapError("Encode ueAssistanceInformation", err)
+	case UL_DCCH_MessageType_C1_Choice_UeAssistanceInformation:
+		if err = ie.UeAssistanceInformation.Encode(w); err != nil {
+			err = utils.WrapError("Encode UeAssistanceInformation", err)
 		}
-	case UL_DCCH_MessageType_C1_Choice_failureInformation:
-		if err = ie.failureInformation.Encode(w); err != nil {
-			err = utils.WrapError("Encode failureInformation", err)
+	case UL_DCCH_MessageType_C1_Choice_FailureInformation:
+		if err = ie.FailureInformation.Encode(w); err != nil {
+			err = utils.WrapError("Encode FailureInformation", err)
 		}
-	case UL_DCCH_MessageType_C1_Choice_ulInformationTransferMRDC:
-		if err = ie.ulInformationTransferMRDC.Encode(w); err != nil {
-			err = utils.WrapError("Encode ulInformationTransferMRDC", err)
+	case UL_DCCH_MessageType_C1_Choice_UlInformationTransferMRDC:
+		if err = ie.UlInformationTransferMRDC.Encode(w); err != nil {
+			err = utils.WrapError("Encode UlInformationTransferMRDC", err)
 		}
-	case UL_DCCH_MessageType_C1_Choice_scgFailureInformation:
-		if err = ie.scgFailureInformation.Encode(w); err != nil {
-			err = utils.WrapError("Encode scgFailureInformation", err)
+	case UL_DCCH_MessageType_C1_Choice_ScgFailureInformation:
+		if err = ie.ScgFailureInformation.Encode(w); err != nil {
+			err = utils.WrapError("Encode ScgFailureInformation", err)
 		}
-	case UL_DCCH_MessageType_C1_Choice_scgFailureInformationEUTRA:
-		if err = ie.scgFailureInformationEUTRA.Encode(w); err != nil {
-			err = utils.WrapError("Encode scgFailureInformationEUTRA", err)
+	case UL_DCCH_MessageType_C1_Choice_ScgFailureInformationEUTRA:
+		if err = ie.ScgFailureInformationEUTRA.Encode(w); err != nil {
+			err = utils.WrapError("Encode ScgFailureInformationEUTRA", err)
 		}
 	default:
 		err = fmt.Errorf("invalid choice: %d", ie.Choice)
@@ -129,85 +129,85 @@ func (ie *UL_DCCH_MessageType_C1) Decode(r *uper.UperReader) error {
 		return err
 	}
 	switch ie.Choice {
-	case UL_DCCH_MessageType_C1_Choice_measurementReport:
-		ie.measurementReport = new(MeasurementReport)
-		if err = ie.measurementReport.Decode(r); err != nil {
-			return utils.WrapError("Decode measurementReport", err)
+	case UL_DCCH_MessageType_C1_Choice_MeasurementReport:
+		ie.MeasurementReport = new(MeasurementReport)
+		if err = ie.MeasurementReport.Decode(r); err != nil {
+			return utils.WrapError("Decode MeasurementReport", err)
 		}
-	case UL_DCCH_MessageType_C1_Choice_rrcReconfigurationComplete:
-		ie.rrcReconfigurationComplete = new(RRCReconfigurationComplete)
-		if err = ie.rrcReconfigurationComplete.Decode(r); err != nil {
-			return utils.WrapError("Decode rrcReconfigurationComplete", err)
+	case UL_DCCH_MessageType_C1_Choice_RrcReconfigurationComplete:
+		ie.RrcReconfigurationComplete = new(RRCReconfigurationComplete)
+		if err = ie.RrcReconfigurationComplete.Decode(r); err != nil {
+			return utils.WrapError("Decode RrcReconfigurationComplete", err)
 		}
-	case UL_DCCH_MessageType_C1_Choice_rrcSetupComplete:
-		ie.rrcSetupComplete = new(RRCSetupComplete)
-		if err = ie.rrcSetupComplete.Decode(r); err != nil {
-			return utils.WrapError("Decode rrcSetupComplete", err)
+	case UL_DCCH_MessageType_C1_Choice_RrcSetupComplete:
+		ie.RrcSetupComplete = new(RRCSetupComplete)
+		if err = ie.RrcSetupComplete.Decode(r); err != nil {
+			return utils.WrapError("Decode RrcSetupComplete", err)
 		}
-	case UL_DCCH_MessageType_C1_Choice_rrcReestablishmentComplete:
-		ie.rrcReestablishmentComplete = new(RRCReestablishmentComplete)
-		if err = ie.rrcReestablishmentComplete.Decode(r); err != nil {
-			return utils.WrapError("Decode rrcReestablishmentComplete", err)
+	case UL_DCCH_MessageType_C1_Choice_RrcReestablishmentComplete:
+		ie.RrcReestablishmentComplete = new(RRCReestablishmentComplete)
+		if err = ie.RrcReestablishmentComplete.Decode(r); err != nil {
+			return utils.WrapError("Decode RrcReestablishmentComplete", err)
 		}
-	case UL_DCCH_MessageType_C1_Choice_rrcResumeComplete:
-		ie.rrcResumeComplete = new(RRCResumeComplete)
-		if err = ie.rrcResumeComplete.Decode(r); err != nil {
-			return utils.WrapError("Decode rrcResumeComplete", err)
+	case UL_DCCH_MessageType_C1_Choice_RrcResumeComplete:
+		ie.RrcResumeComplete = new(RRCResumeComplete)
+		if err = ie.RrcResumeComplete.Decode(r); err != nil {
+			return utils.WrapError("Decode RrcResumeComplete", err)
 		}
-	case UL_DCCH_MessageType_C1_Choice_securityModeComplete:
-		ie.securityModeComplete = new(SecurityModeComplete)
-		if err = ie.securityModeComplete.Decode(r); err != nil {
-			return utils.WrapError("Decode securityModeComplete", err)
+	case UL_DCCH_MessageType_C1_Choice_SecurityModeComplete:
+		ie.SecurityModeComplete = new(SecurityModeComplete)
+		if err = ie.SecurityModeComplete.Decode(r); err != nil {
+			return utils.WrapError("Decode SecurityModeComplete", err)
 		}
-	case UL_DCCH_MessageType_C1_Choice_securityModeFailure:
-		ie.securityModeFailure = new(SecurityModeFailure)
-		if err = ie.securityModeFailure.Decode(r); err != nil {
-			return utils.WrapError("Decode securityModeFailure", err)
+	case UL_DCCH_MessageType_C1_Choice_SecurityModeFailure:
+		ie.SecurityModeFailure = new(SecurityModeFailure)
+		if err = ie.SecurityModeFailure.Decode(r); err != nil {
+			return utils.WrapError("Decode SecurityModeFailure", err)
 		}
-	case UL_DCCH_MessageType_C1_Choice_ulInformationTransfer:
-		ie.ulInformationTransfer = new(ULInformationTransfer)
-		if err = ie.ulInformationTransfer.Decode(r); err != nil {
-			return utils.WrapError("Decode ulInformationTransfer", err)
+	case UL_DCCH_MessageType_C1_Choice_UlInformationTransfer:
+		ie.UlInformationTransfer = new(ULInformationTransfer)
+		if err = ie.UlInformationTransfer.Decode(r); err != nil {
+			return utils.WrapError("Decode UlInformationTransfer", err)
 		}
-	case UL_DCCH_MessageType_C1_Choice_locationMeasurementIndication:
-		ie.locationMeasurementIndication = new(LocationMeasurementIndication)
-		if err = ie.locationMeasurementIndication.Decode(r); err != nil {
-			return utils.WrapError("Decode locationMeasurementIndication", err)
+	case UL_DCCH_MessageType_C1_Choice_LocationMeasurementIndication:
+		ie.LocationMeasurementIndication = new(LocationMeasurementIndication)
+		if err = ie.LocationMeasurementIndication.Decode(r); err != nil {
+			return utils.WrapError("Decode LocationMeasurementIndication", err)
 		}
-	case UL_DCCH_MessageType_C1_Choice_ueCapabilityInformation:
-		ie.ueCapabilityInformation = new(UECapabilityInformation)
-		if err = ie.ueCapabilityInformation.Decode(r); err != nil {
-			return utils.WrapError("Decode ueCapabilityInformation", err)
+	case UL_DCCH_MessageType_C1_Choice_UeCapabilityInformation:
+		ie.UeCapabilityInformation = new(UECapabilityInformation)
+		if err = ie.UeCapabilityInformation.Decode(r); err != nil {
+			return utils.WrapError("Decode UeCapabilityInformation", err)
 		}
-	case UL_DCCH_MessageType_C1_Choice_counterCheckResponse:
-		ie.counterCheckResponse = new(CounterCheckResponse)
-		if err = ie.counterCheckResponse.Decode(r); err != nil {
-			return utils.WrapError("Decode counterCheckResponse", err)
+	case UL_DCCH_MessageType_C1_Choice_CounterCheckResponse:
+		ie.CounterCheckResponse = new(CounterCheckResponse)
+		if err = ie.CounterCheckResponse.Decode(r); err != nil {
+			return utils.WrapError("Decode CounterCheckResponse", err)
 		}
-	case UL_DCCH_MessageType_C1_Choice_ueAssistanceInformation:
-		ie.ueAssistanceInformation = new(UEAssistanceInformation)
-		if err = ie.ueAssistanceInformation.Decode(r); err != nil {
-			return utils.WrapError("Decode ueAssistanceInformation", err)
+	case UL_DCCH_MessageType_C1_Choice_UeAssistanceInformation:
+		ie.UeAssistanceInformation = new(UEAssistanceInformation)
+		if err = ie.UeAssistanceInformation.Decode(r); err != nil {
+			return utils.WrapError("Decode UeAssistanceInformation", err)
 		}
-	case UL_DCCH_MessageType_C1_Choice_failureInformation:
-		ie.failureInformation = new(FailureInformation)
-		if err = ie.failureInformation.Decode(r); err != nil {
-			return utils.WrapError("Decode failureInformation", err)
+	case UL_DCCH_MessageType_C1_Choice_FailureInformation:
+		ie.FailureInformation = new(FailureInformation)
+		if err = ie.FailureInformation.Decode(r); err != nil {
+			return utils.WrapError("Decode FailureInformation", err)
 		}
-	case UL_DCCH_MessageType_C1_Choice_ulInformationTransferMRDC:
-		ie.ulInformationTransferMRDC = new(ULInformationTransferMRDC)
-		if err = ie.ulInformationTransferMRDC.Decode(r); err != nil {
-			return utils.WrapError("Decode ulInformationTransferMRDC", err)
+	case UL_DCCH_MessageType_C1_Choice_UlInformationTransferMRDC:
+		ie.UlInformationTransferMRDC = new(ULInformationTransferMRDC)
+		if err = ie.UlInformationTransferMRDC.Decode(r); err != nil {
+			return utils.WrapError("Decode UlInformationTransferMRDC", err)
 		}
-	case UL_DCCH_MessageType_C1_Choice_scgFailureInformation:
-		ie.scgFailureInformation = new(SCGFailureInformation)
-		if err = ie.scgFailureInformation.Decode(r); err != nil {
-			return utils.WrapError("Decode scgFailureInformation", err)
+	case UL_DCCH_MessageType_C1_Choice_ScgFailureInformation:
+		ie.ScgFailureInformation = new(SCGFailureInformation)
+		if err = ie.ScgFailureInformation.Decode(r); err != nil {
+			return utils.WrapError("Decode ScgFailureInformation", err)
 		}
-	case UL_DCCH_MessageType_C1_Choice_scgFailureInformationEUTRA:
-		ie.scgFailureInformationEUTRA = new(SCGFailureInformationEUTRA)
-		if err = ie.scgFailureInformationEUTRA.Decode(r); err != nil {
-			return utils.WrapError("Decode scgFailureInformationEUTRA", err)
+	case UL_DCCH_MessageType_C1_Choice_ScgFailureInformationEUTRA:
+		ie.ScgFailureInformationEUTRA = new(SCGFailureInformationEUTRA)
+		if err = ie.ScgFailureInformationEUTRA.Decode(r); err != nil {
+			return utils.WrapError("Decode ScgFailureInformationEUTRA", err)
 		}
 	default:
 		return fmt.Errorf("invalid choice: %d", ie.Choice)

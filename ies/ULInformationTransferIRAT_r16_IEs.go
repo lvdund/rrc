@@ -6,27 +6,27 @@ import (
 )
 
 type ULInformationTransferIRAT_r16_IEs struct {
-	ul_DCCH_MessageEUTRA_r16 *[]byte     `optional`
-	lateNonCriticalExtension *[]byte     `optional`
-	nonCriticalExtension     interface{} `optional`
+	Ul_DCCH_MessageEUTRA_r16 *[]byte     `optional`
+	LateNonCriticalExtension *[]byte     `optional`
+	NonCriticalExtension     interface{} `optional`
 }
 
 func (ie *ULInformationTransferIRAT_r16_IEs) Encode(w *uper.UperWriter) error {
 	var err error
-	preambleBits := []bool{ie.ul_DCCH_MessageEUTRA_r16 != nil, ie.lateNonCriticalExtension != nil}
+	preambleBits := []bool{ie.Ul_DCCH_MessageEUTRA_r16 != nil, ie.LateNonCriticalExtension != nil}
 	for _, bit := range preambleBits {
 		if err = w.WriteBool(bit); err != nil {
 			return err
 		}
 	}
-	if ie.ul_DCCH_MessageEUTRA_r16 != nil {
-		if err = w.WriteOctetString(*ie.ul_DCCH_MessageEUTRA_r16, &uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
-			return utils.WrapError("Encode ul_DCCH_MessageEUTRA_r16", err)
+	if ie.Ul_DCCH_MessageEUTRA_r16 != nil {
+		if err = w.WriteOctetString(*ie.Ul_DCCH_MessageEUTRA_r16, &uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+			return utils.WrapError("Encode Ul_DCCH_MessageEUTRA_r16", err)
 		}
 	}
-	if ie.lateNonCriticalExtension != nil {
-		if err = w.WriteOctetString(*ie.lateNonCriticalExtension, &uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
-			return utils.WrapError("Encode lateNonCriticalExtension", err)
+	if ie.LateNonCriticalExtension != nil {
+		if err = w.WriteOctetString(*ie.LateNonCriticalExtension, &uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+			return utils.WrapError("Encode LateNonCriticalExtension", err)
 		}
 	}
 	return nil
@@ -34,27 +34,27 @@ func (ie *ULInformationTransferIRAT_r16_IEs) Encode(w *uper.UperWriter) error {
 
 func (ie *ULInformationTransferIRAT_r16_IEs) Decode(r *uper.UperReader) error {
 	var err error
-	var ul_DCCH_MessageEUTRA_r16Present bool
-	if ul_DCCH_MessageEUTRA_r16Present, err = r.ReadBool(); err != nil {
+	var Ul_DCCH_MessageEUTRA_r16Present bool
+	if Ul_DCCH_MessageEUTRA_r16Present, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var lateNonCriticalExtensionPresent bool
-	if lateNonCriticalExtensionPresent, err = r.ReadBool(); err != nil {
+	var LateNonCriticalExtensionPresent bool
+	if LateNonCriticalExtensionPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	if ul_DCCH_MessageEUTRA_r16Present {
-		var tmp_os_ul_DCCH_MessageEUTRA_r16 []byte
-		if tmp_os_ul_DCCH_MessageEUTRA_r16, err = r.ReadOctetString(&uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
-			return utils.WrapError("Decode ul_DCCH_MessageEUTRA_r16", err)
+	if Ul_DCCH_MessageEUTRA_r16Present {
+		var tmp_os_Ul_DCCH_MessageEUTRA_r16 []byte
+		if tmp_os_Ul_DCCH_MessageEUTRA_r16, err = r.ReadOctetString(&uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+			return utils.WrapError("Decode Ul_DCCH_MessageEUTRA_r16", err)
 		}
-		ie.ul_DCCH_MessageEUTRA_r16 = &tmp_os_ul_DCCH_MessageEUTRA_r16
+		ie.Ul_DCCH_MessageEUTRA_r16 = &tmp_os_Ul_DCCH_MessageEUTRA_r16
 	}
-	if lateNonCriticalExtensionPresent {
-		var tmp_os_lateNonCriticalExtension []byte
-		if tmp_os_lateNonCriticalExtension, err = r.ReadOctetString(&uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
-			return utils.WrapError("Decode lateNonCriticalExtension", err)
+	if LateNonCriticalExtensionPresent {
+		var tmp_os_LateNonCriticalExtension []byte
+		if tmp_os_LateNonCriticalExtension, err = r.ReadOctetString(&uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+			return utils.WrapError("Decode LateNonCriticalExtension", err)
 		}
-		ie.lateNonCriticalExtension = &tmp_os_lateNonCriticalExtension
+		ie.LateNonCriticalExtension = &tmp_os_LateNonCriticalExtension
 	}
 	return nil
 }

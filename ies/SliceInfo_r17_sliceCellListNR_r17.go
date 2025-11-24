@@ -9,14 +9,14 @@ import (
 
 const (
 	SliceInfo_r17_sliceCellListNR_r17_Choice_nothing uint64 = iota
-	SliceInfo_r17_sliceCellListNR_r17_Choice_sliceAllowedCellListNR_r17
-	SliceInfo_r17_sliceCellListNR_r17_Choice_sliceExcludedCellListNR_r17
+	SliceInfo_r17_sliceCellListNR_r17_Choice_SliceAllowedCellListNR_r17
+	SliceInfo_r17_sliceCellListNR_r17_Choice_SliceExcludedCellListNR_r17
 )
 
 type SliceInfo_r17_sliceCellListNR_r17 struct {
 	Choice                      uint64
-	sliceAllowedCellListNR_r17  *SliceCellListNR_r17
-	sliceExcludedCellListNR_r17 *SliceCellListNR_r17
+	SliceAllowedCellListNR_r17  *SliceCellListNR_r17
+	SliceExcludedCellListNR_r17 *SliceCellListNR_r17
 }
 
 func (ie *SliceInfo_r17_sliceCellListNR_r17) Encode(w *uper.UperWriter) error {
@@ -25,13 +25,13 @@ func (ie *SliceInfo_r17_sliceCellListNR_r17) Encode(w *uper.UperWriter) error {
 		return err
 	}
 	switch ie.Choice {
-	case SliceInfo_r17_sliceCellListNR_r17_Choice_sliceAllowedCellListNR_r17:
-		if err = ie.sliceAllowedCellListNR_r17.Encode(w); err != nil {
-			err = utils.WrapError("Encode sliceAllowedCellListNR_r17", err)
+	case SliceInfo_r17_sliceCellListNR_r17_Choice_SliceAllowedCellListNR_r17:
+		if err = ie.SliceAllowedCellListNR_r17.Encode(w); err != nil {
+			err = utils.WrapError("Encode SliceAllowedCellListNR_r17", err)
 		}
-	case SliceInfo_r17_sliceCellListNR_r17_Choice_sliceExcludedCellListNR_r17:
-		if err = ie.sliceExcludedCellListNR_r17.Encode(w); err != nil {
-			err = utils.WrapError("Encode sliceExcludedCellListNR_r17", err)
+	case SliceInfo_r17_sliceCellListNR_r17_Choice_SliceExcludedCellListNR_r17:
+		if err = ie.SliceExcludedCellListNR_r17.Encode(w); err != nil {
+			err = utils.WrapError("Encode SliceExcludedCellListNR_r17", err)
 		}
 	default:
 		err = fmt.Errorf("invalid choice: %d", ie.Choice)
@@ -45,15 +45,15 @@ func (ie *SliceInfo_r17_sliceCellListNR_r17) Decode(r *uper.UperReader) error {
 		return err
 	}
 	switch ie.Choice {
-	case SliceInfo_r17_sliceCellListNR_r17_Choice_sliceAllowedCellListNR_r17:
-		ie.sliceAllowedCellListNR_r17 = new(SliceCellListNR_r17)
-		if err = ie.sliceAllowedCellListNR_r17.Decode(r); err != nil {
-			return utils.WrapError("Decode sliceAllowedCellListNR_r17", err)
+	case SliceInfo_r17_sliceCellListNR_r17_Choice_SliceAllowedCellListNR_r17:
+		ie.SliceAllowedCellListNR_r17 = new(SliceCellListNR_r17)
+		if err = ie.SliceAllowedCellListNR_r17.Decode(r); err != nil {
+			return utils.WrapError("Decode SliceAllowedCellListNR_r17", err)
 		}
-	case SliceInfo_r17_sliceCellListNR_r17_Choice_sliceExcludedCellListNR_r17:
-		ie.sliceExcludedCellListNR_r17 = new(SliceCellListNR_r17)
-		if err = ie.sliceExcludedCellListNR_r17.Decode(r); err != nil {
-			return utils.WrapError("Decode sliceExcludedCellListNR_r17", err)
+	case SliceInfo_r17_sliceCellListNR_r17_Choice_SliceExcludedCellListNR_r17:
+		ie.SliceExcludedCellListNR_r17 = new(SliceCellListNR_r17)
+		if err = ie.SliceExcludedCellListNR_r17.Decode(r); err != nil {
+			return utils.WrapError("Decode SliceExcludedCellListNR_r17", err)
 		}
 	default:
 		return fmt.Errorf("invalid choice: %d", ie.Choice)

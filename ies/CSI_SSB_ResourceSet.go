@@ -8,33 +8,33 @@ import (
 )
 
 type CSI_SSB_ResourceSet struct {
-	csi_SSB_ResourceSetId        CSI_SSB_ResourceSetId           `madatory`
-	csi_SSB_ResourceList         []SSB_Index                     `lb:1,ub:maxNrofCSI_SSB_ResourcePerSet,madatory`
-	servingAdditionalPCIList_r17 []ServingAdditionalPCIIndex_r17 `lb:1,ub:maxNrofCSI_SSB_ResourcePerSet,optional,ext-1`
+	Csi_SSB_ResourceSetId        CSI_SSB_ResourceSetId           `madatory`
+	Csi_SSB_ResourceList         []SSB_Index                     `lb:1,ub:maxNrofCSI_SSB_ResourcePerSet,madatory`
+	ServingAdditionalPCIList_r17 []ServingAdditionalPCIIndex_r17 `lb:1,ub:maxNrofCSI_SSB_ResourcePerSet,optional,ext-1`
 }
 
 func (ie *CSI_SSB_ResourceSet) Encode(w *uper.UperWriter) error {
 	var err error
-	hasExtensions := len(ie.servingAdditionalPCIList_r17) > 0
+	hasExtensions := len(ie.ServingAdditionalPCIList_r17) > 0
 	preambleBits := []bool{hasExtensions}
 	for _, bit := range preambleBits {
 		if err = w.WriteBool(bit); err != nil {
 			return err
 		}
 	}
-	if err = ie.csi_SSB_ResourceSetId.Encode(w); err != nil {
-		return utils.WrapError("Encode csi_SSB_ResourceSetId", err)
+	if err = ie.Csi_SSB_ResourceSetId.Encode(w); err != nil {
+		return utils.WrapError("Encode Csi_SSB_ResourceSetId", err)
 	}
-	tmp_csi_SSB_ResourceList := utils.NewSequence[*SSB_Index]([]*SSB_Index{}, uper.Constraint{Lb: 1, Ub: maxNrofCSI_SSB_ResourcePerSet}, false)
-	for _, i := range ie.csi_SSB_ResourceList {
-		tmp_csi_SSB_ResourceList.Value = append(tmp_csi_SSB_ResourceList.Value, &i)
+	tmp_Csi_SSB_ResourceList := utils.NewSequence[*SSB_Index]([]*SSB_Index{}, uper.Constraint{Lb: 1, Ub: maxNrofCSI_SSB_ResourcePerSet}, false)
+	for _, i := range ie.Csi_SSB_ResourceList {
+		tmp_Csi_SSB_ResourceList.Value = append(tmp_Csi_SSB_ResourceList.Value, &i)
 	}
-	if err = tmp_csi_SSB_ResourceList.Encode(w); err != nil {
-		return utils.WrapError("Encode csi_SSB_ResourceList", err)
+	if err = tmp_Csi_SSB_ResourceList.Encode(w); err != nil {
+		return utils.WrapError("Encode Csi_SSB_ResourceList", err)
 	}
 	if hasExtensions {
 		// Extension bitmap: 1 bits for 1 extension groups
-		extBitmap := []bool{len(ie.servingAdditionalPCIList_r17) > 0}
+		extBitmap := []bool{len(ie.ServingAdditionalPCIList_r17) > 0}
 		if err := w.WriteExtBitMap(extBitmap); err != nil {
 			return utils.WrapError("WriteExtBitMap CSI_SSB_ResourceSet", err)
 		}
@@ -45,21 +45,21 @@ func (ie *CSI_SSB_ResourceSet) Encode(w *uper.UperWriter) error {
 			extWriter := uper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 1
-			optionals_ext_1 := []bool{len(ie.servingAdditionalPCIList_r17) > 0}
+			optionals_ext_1 := []bool{len(ie.ServingAdditionalPCIList_r17) > 0}
 			for _, bit := range optionals_ext_1 {
 				if err := extWriter.WriteBool(bit); err != nil {
 					return err
 				}
 			}
 
-			// encode servingAdditionalPCIList_r17 optional
-			if len(ie.servingAdditionalPCIList_r17) > 0 {
-				tmp_servingAdditionalPCIList_r17 := utils.NewSequence[*ServingAdditionalPCIIndex_r17]([]*ServingAdditionalPCIIndex_r17{}, uper.Constraint{Lb: 1, Ub: maxNrofCSI_SSB_ResourcePerSet}, false)
-				for _, i := range ie.servingAdditionalPCIList_r17 {
-					tmp_servingAdditionalPCIList_r17.Value = append(tmp_servingAdditionalPCIList_r17.Value, &i)
+			// encode ServingAdditionalPCIList_r17 optional
+			if len(ie.ServingAdditionalPCIList_r17) > 0 {
+				tmp_ServingAdditionalPCIList_r17 := utils.NewSequence[*ServingAdditionalPCIIndex_r17]([]*ServingAdditionalPCIIndex_r17{}, uper.Constraint{Lb: 1, Ub: maxNrofCSI_SSB_ResourcePerSet}, false)
+				for _, i := range ie.ServingAdditionalPCIList_r17 {
+					tmp_ServingAdditionalPCIList_r17.Value = append(tmp_ServingAdditionalPCIList_r17.Value, &i)
 				}
-				if err = tmp_servingAdditionalPCIList_r17.Encode(extWriter); err != nil {
-					return utils.WrapError("Encode servingAdditionalPCIList_r17", err)
+				if err = tmp_ServingAdditionalPCIList_r17.Encode(extWriter); err != nil {
+					return utils.WrapError("Encode ServingAdditionalPCIList_r17", err)
 				}
 			}
 
@@ -81,19 +81,19 @@ func (ie *CSI_SSB_ResourceSet) Decode(r *uper.UperReader) error {
 	if extensionBit, err = r.ReadBool(); err != nil {
 		return err
 	}
-	if err = ie.csi_SSB_ResourceSetId.Decode(r); err != nil {
-		return utils.WrapError("Decode csi_SSB_ResourceSetId", err)
+	if err = ie.Csi_SSB_ResourceSetId.Decode(r); err != nil {
+		return utils.WrapError("Decode Csi_SSB_ResourceSetId", err)
 	}
-	tmp_csi_SSB_ResourceList := utils.NewSequence[*SSB_Index]([]*SSB_Index{}, uper.Constraint{Lb: 1, Ub: maxNrofCSI_SSB_ResourcePerSet}, false)
-	fn_csi_SSB_ResourceList := func() *SSB_Index {
+	tmp_Csi_SSB_ResourceList := utils.NewSequence[*SSB_Index]([]*SSB_Index{}, uper.Constraint{Lb: 1, Ub: maxNrofCSI_SSB_ResourcePerSet}, false)
+	fn_Csi_SSB_ResourceList := func() *SSB_Index {
 		return new(SSB_Index)
 	}
-	if err = tmp_csi_SSB_ResourceList.Decode(r, fn_csi_SSB_ResourceList); err != nil {
-		return utils.WrapError("Decode csi_SSB_ResourceList", err)
+	if err = tmp_Csi_SSB_ResourceList.Decode(r, fn_Csi_SSB_ResourceList); err != nil {
+		return utils.WrapError("Decode Csi_SSB_ResourceList", err)
 	}
-	ie.csi_SSB_ResourceList = []SSB_Index{}
-	for _, i := range tmp_csi_SSB_ResourceList.Value {
-		ie.csi_SSB_ResourceList = append(ie.csi_SSB_ResourceList, *i)
+	ie.Csi_SSB_ResourceList = []SSB_Index{}
+	for _, i := range tmp_Csi_SSB_ResourceList.Value {
+		ie.Csi_SSB_ResourceList = append(ie.Csi_SSB_ResourceList, *i)
 	}
 
 	if extensionBit {
@@ -112,22 +112,22 @@ func (ie *CSI_SSB_ResourceSet) Decode(r *uper.UperReader) error {
 
 			extReader := uper.NewReader(bytes.NewReader(extBytes))
 
-			servingAdditionalPCIList_r17Present, err := extReader.ReadBool()
+			ServingAdditionalPCIList_r17Present, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			// decode servingAdditionalPCIList_r17 optional
-			if servingAdditionalPCIList_r17Present {
-				tmp_servingAdditionalPCIList_r17 := utils.NewSequence[*ServingAdditionalPCIIndex_r17]([]*ServingAdditionalPCIIndex_r17{}, uper.Constraint{Lb: 1, Ub: maxNrofCSI_SSB_ResourcePerSet}, false)
-				fn_servingAdditionalPCIList_r17 := func() *ServingAdditionalPCIIndex_r17 {
+			// decode ServingAdditionalPCIList_r17 optional
+			if ServingAdditionalPCIList_r17Present {
+				tmp_ServingAdditionalPCIList_r17 := utils.NewSequence[*ServingAdditionalPCIIndex_r17]([]*ServingAdditionalPCIIndex_r17{}, uper.Constraint{Lb: 1, Ub: maxNrofCSI_SSB_ResourcePerSet}, false)
+				fn_ServingAdditionalPCIList_r17 := func() *ServingAdditionalPCIIndex_r17 {
 					return new(ServingAdditionalPCIIndex_r17)
 				}
-				if err = tmp_servingAdditionalPCIList_r17.Decode(extReader, fn_servingAdditionalPCIList_r17); err != nil {
-					return utils.WrapError("Decode servingAdditionalPCIList_r17", err)
+				if err = tmp_ServingAdditionalPCIList_r17.Decode(extReader, fn_ServingAdditionalPCIList_r17); err != nil {
+					return utils.WrapError("Decode ServingAdditionalPCIList_r17", err)
 				}
-				ie.servingAdditionalPCIList_r17 = []ServingAdditionalPCIIndex_r17{}
-				for _, i := range tmp_servingAdditionalPCIList_r17.Value {
-					ie.servingAdditionalPCIList_r17 = append(ie.servingAdditionalPCIList_r17, *i)
+				ie.ServingAdditionalPCIList_r17 = []ServingAdditionalPCIIndex_r17{}
+				for _, i := range tmp_ServingAdditionalPCIList_r17.Value {
+					ie.ServingAdditionalPCIList_r17 = append(ie.ServingAdditionalPCIList_r17, *i)
 				}
 			}
 		}

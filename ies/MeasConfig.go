@@ -8,81 +8,81 @@ import (
 )
 
 type MeasConfig struct {
-	measObjectToRemoveList         *MeasObjectToRemoveList                    `optional`
-	measObjectToAddModList         *MeasObjectToAddModList                    `optional`
-	reportConfigToRemoveList       *ReportConfigToRemoveList                  `optional`
-	reportConfigToAddModList       *ReportConfigToAddModList                  `optional`
-	measIdToRemoveList             *MeasIdToRemoveList                        `optional`
-	measIdToAddModList             *MeasIdToAddModList                        `optional`
-	s_MeasureConfig                *MeasConfig_s_MeasureConfig                `optional`
-	quantityConfig                 *QuantityConfig                            `optional`
-	measGapConfig                  *MeasGapConfig                             `optional`
-	measGapSharingConfig           *MeasGapSharingConfig                      `optional`
-	interFrequencyConfig_NoGap_r16 *MeasConfig_interFrequencyConfig_NoGap_r16 `optional,ext-1`
+	MeasObjectToRemoveList         *MeasObjectToRemoveList                    `optional`
+	MeasObjectToAddModList         *MeasObjectToAddModList                    `optional`
+	ReportConfigToRemoveList       *ReportConfigToRemoveList                  `optional`
+	ReportConfigToAddModList       *ReportConfigToAddModList                  `optional`
+	MeasIdToRemoveList             *MeasIdToRemoveList                        `optional`
+	MeasIdToAddModList             *MeasIdToAddModList                        `optional`
+	S_MeasureConfig                *MeasConfig_s_MeasureConfig                `optional`
+	QuantityConfig                 *QuantityConfig                            `optional`
+	MeasGapConfig                  *MeasGapConfig                             `optional`
+	MeasGapSharingConfig           *MeasGapSharingConfig                      `optional`
+	InterFrequencyConfig_NoGap_r16 *MeasConfig_interFrequencyConfig_NoGap_r16 `optional,ext-1`
 }
 
 func (ie *MeasConfig) Encode(w *uper.UperWriter) error {
 	var err error
-	hasExtensions := ie.interFrequencyConfig_NoGap_r16 != nil
-	preambleBits := []bool{hasExtensions, ie.measObjectToRemoveList != nil, ie.measObjectToAddModList != nil, ie.reportConfigToRemoveList != nil, ie.reportConfigToAddModList != nil, ie.measIdToRemoveList != nil, ie.measIdToAddModList != nil, ie.s_MeasureConfig != nil, ie.quantityConfig != nil, ie.measGapConfig != nil, ie.measGapSharingConfig != nil}
+	hasExtensions := ie.InterFrequencyConfig_NoGap_r16 != nil
+	preambleBits := []bool{hasExtensions, ie.MeasObjectToRemoveList != nil, ie.MeasObjectToAddModList != nil, ie.ReportConfigToRemoveList != nil, ie.ReportConfigToAddModList != nil, ie.MeasIdToRemoveList != nil, ie.MeasIdToAddModList != nil, ie.S_MeasureConfig != nil, ie.QuantityConfig != nil, ie.MeasGapConfig != nil, ie.MeasGapSharingConfig != nil}
 	for _, bit := range preambleBits {
 		if err = w.WriteBool(bit); err != nil {
 			return err
 		}
 	}
-	if ie.measObjectToRemoveList != nil {
-		if err = ie.measObjectToRemoveList.Encode(w); err != nil {
-			return utils.WrapError("Encode measObjectToRemoveList", err)
+	if ie.MeasObjectToRemoveList != nil {
+		if err = ie.MeasObjectToRemoveList.Encode(w); err != nil {
+			return utils.WrapError("Encode MeasObjectToRemoveList", err)
 		}
 	}
-	if ie.measObjectToAddModList != nil {
-		if err = ie.measObjectToAddModList.Encode(w); err != nil {
-			return utils.WrapError("Encode measObjectToAddModList", err)
+	if ie.MeasObjectToAddModList != nil {
+		if err = ie.MeasObjectToAddModList.Encode(w); err != nil {
+			return utils.WrapError("Encode MeasObjectToAddModList", err)
 		}
 	}
-	if ie.reportConfigToRemoveList != nil {
-		if err = ie.reportConfigToRemoveList.Encode(w); err != nil {
-			return utils.WrapError("Encode reportConfigToRemoveList", err)
+	if ie.ReportConfigToRemoveList != nil {
+		if err = ie.ReportConfigToRemoveList.Encode(w); err != nil {
+			return utils.WrapError("Encode ReportConfigToRemoveList", err)
 		}
 	}
-	if ie.reportConfigToAddModList != nil {
-		if err = ie.reportConfigToAddModList.Encode(w); err != nil {
-			return utils.WrapError("Encode reportConfigToAddModList", err)
+	if ie.ReportConfigToAddModList != nil {
+		if err = ie.ReportConfigToAddModList.Encode(w); err != nil {
+			return utils.WrapError("Encode ReportConfigToAddModList", err)
 		}
 	}
-	if ie.measIdToRemoveList != nil {
-		if err = ie.measIdToRemoveList.Encode(w); err != nil {
-			return utils.WrapError("Encode measIdToRemoveList", err)
+	if ie.MeasIdToRemoveList != nil {
+		if err = ie.MeasIdToRemoveList.Encode(w); err != nil {
+			return utils.WrapError("Encode MeasIdToRemoveList", err)
 		}
 	}
-	if ie.measIdToAddModList != nil {
-		if err = ie.measIdToAddModList.Encode(w); err != nil {
-			return utils.WrapError("Encode measIdToAddModList", err)
+	if ie.MeasIdToAddModList != nil {
+		if err = ie.MeasIdToAddModList.Encode(w); err != nil {
+			return utils.WrapError("Encode MeasIdToAddModList", err)
 		}
 	}
-	if ie.s_MeasureConfig != nil {
-		if err = ie.s_MeasureConfig.Encode(w); err != nil {
-			return utils.WrapError("Encode s_MeasureConfig", err)
+	if ie.S_MeasureConfig != nil {
+		if err = ie.S_MeasureConfig.Encode(w); err != nil {
+			return utils.WrapError("Encode S_MeasureConfig", err)
 		}
 	}
-	if ie.quantityConfig != nil {
-		if err = ie.quantityConfig.Encode(w); err != nil {
-			return utils.WrapError("Encode quantityConfig", err)
+	if ie.QuantityConfig != nil {
+		if err = ie.QuantityConfig.Encode(w); err != nil {
+			return utils.WrapError("Encode QuantityConfig", err)
 		}
 	}
-	if ie.measGapConfig != nil {
-		if err = ie.measGapConfig.Encode(w); err != nil {
-			return utils.WrapError("Encode measGapConfig", err)
+	if ie.MeasGapConfig != nil {
+		if err = ie.MeasGapConfig.Encode(w); err != nil {
+			return utils.WrapError("Encode MeasGapConfig", err)
 		}
 	}
-	if ie.measGapSharingConfig != nil {
-		if err = ie.measGapSharingConfig.Encode(w); err != nil {
-			return utils.WrapError("Encode measGapSharingConfig", err)
+	if ie.MeasGapSharingConfig != nil {
+		if err = ie.MeasGapSharingConfig.Encode(w); err != nil {
+			return utils.WrapError("Encode MeasGapSharingConfig", err)
 		}
 	}
 	if hasExtensions {
 		// Extension bitmap: 1 bits for 1 extension groups
-		extBitmap := []bool{ie.interFrequencyConfig_NoGap_r16 != nil}
+		extBitmap := []bool{ie.InterFrequencyConfig_NoGap_r16 != nil}
 		if err := w.WriteExtBitMap(extBitmap); err != nil {
 			return utils.WrapError("WriteExtBitMap MeasConfig", err)
 		}
@@ -93,17 +93,17 @@ func (ie *MeasConfig) Encode(w *uper.UperWriter) error {
 			extWriter := uper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 1
-			optionals_ext_1 := []bool{ie.interFrequencyConfig_NoGap_r16 != nil}
+			optionals_ext_1 := []bool{ie.InterFrequencyConfig_NoGap_r16 != nil}
 			for _, bit := range optionals_ext_1 {
 				if err := extWriter.WriteBool(bit); err != nil {
 					return err
 				}
 			}
 
-			// encode interFrequencyConfig_NoGap_r16 optional
-			if ie.interFrequencyConfig_NoGap_r16 != nil {
-				if err = ie.interFrequencyConfig_NoGap_r16.Encode(extWriter); err != nil {
-					return utils.WrapError("Encode interFrequencyConfig_NoGap_r16", err)
+			// encode InterFrequencyConfig_NoGap_r16 optional
+			if ie.InterFrequencyConfig_NoGap_r16 != nil {
+				if err = ie.InterFrequencyConfig_NoGap_r16.Encode(extWriter); err != nil {
+					return utils.WrapError("Encode InterFrequencyConfig_NoGap_r16", err)
 				}
 			}
 
@@ -125,104 +125,104 @@ func (ie *MeasConfig) Decode(r *uper.UperReader) error {
 	if extensionBit, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var measObjectToRemoveListPresent bool
-	if measObjectToRemoveListPresent, err = r.ReadBool(); err != nil {
+	var MeasObjectToRemoveListPresent bool
+	if MeasObjectToRemoveListPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var measObjectToAddModListPresent bool
-	if measObjectToAddModListPresent, err = r.ReadBool(); err != nil {
+	var MeasObjectToAddModListPresent bool
+	if MeasObjectToAddModListPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var reportConfigToRemoveListPresent bool
-	if reportConfigToRemoveListPresent, err = r.ReadBool(); err != nil {
+	var ReportConfigToRemoveListPresent bool
+	if ReportConfigToRemoveListPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var reportConfigToAddModListPresent bool
-	if reportConfigToAddModListPresent, err = r.ReadBool(); err != nil {
+	var ReportConfigToAddModListPresent bool
+	if ReportConfigToAddModListPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var measIdToRemoveListPresent bool
-	if measIdToRemoveListPresent, err = r.ReadBool(); err != nil {
+	var MeasIdToRemoveListPresent bool
+	if MeasIdToRemoveListPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var measIdToAddModListPresent bool
-	if measIdToAddModListPresent, err = r.ReadBool(); err != nil {
+	var MeasIdToAddModListPresent bool
+	if MeasIdToAddModListPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var s_MeasureConfigPresent bool
-	if s_MeasureConfigPresent, err = r.ReadBool(); err != nil {
+	var S_MeasureConfigPresent bool
+	if S_MeasureConfigPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var quantityConfigPresent bool
-	if quantityConfigPresent, err = r.ReadBool(); err != nil {
+	var QuantityConfigPresent bool
+	if QuantityConfigPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var measGapConfigPresent bool
-	if measGapConfigPresent, err = r.ReadBool(); err != nil {
+	var MeasGapConfigPresent bool
+	if MeasGapConfigPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var measGapSharingConfigPresent bool
-	if measGapSharingConfigPresent, err = r.ReadBool(); err != nil {
+	var MeasGapSharingConfigPresent bool
+	if MeasGapSharingConfigPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	if measObjectToRemoveListPresent {
-		ie.measObjectToRemoveList = new(MeasObjectToRemoveList)
-		if err = ie.measObjectToRemoveList.Decode(r); err != nil {
-			return utils.WrapError("Decode measObjectToRemoveList", err)
+	if MeasObjectToRemoveListPresent {
+		ie.MeasObjectToRemoveList = new(MeasObjectToRemoveList)
+		if err = ie.MeasObjectToRemoveList.Decode(r); err != nil {
+			return utils.WrapError("Decode MeasObjectToRemoveList", err)
 		}
 	}
-	if measObjectToAddModListPresent {
-		ie.measObjectToAddModList = new(MeasObjectToAddModList)
-		if err = ie.measObjectToAddModList.Decode(r); err != nil {
-			return utils.WrapError("Decode measObjectToAddModList", err)
+	if MeasObjectToAddModListPresent {
+		ie.MeasObjectToAddModList = new(MeasObjectToAddModList)
+		if err = ie.MeasObjectToAddModList.Decode(r); err != nil {
+			return utils.WrapError("Decode MeasObjectToAddModList", err)
 		}
 	}
-	if reportConfigToRemoveListPresent {
-		ie.reportConfigToRemoveList = new(ReportConfigToRemoveList)
-		if err = ie.reportConfigToRemoveList.Decode(r); err != nil {
-			return utils.WrapError("Decode reportConfigToRemoveList", err)
+	if ReportConfigToRemoveListPresent {
+		ie.ReportConfigToRemoveList = new(ReportConfigToRemoveList)
+		if err = ie.ReportConfigToRemoveList.Decode(r); err != nil {
+			return utils.WrapError("Decode ReportConfigToRemoveList", err)
 		}
 	}
-	if reportConfigToAddModListPresent {
-		ie.reportConfigToAddModList = new(ReportConfigToAddModList)
-		if err = ie.reportConfigToAddModList.Decode(r); err != nil {
-			return utils.WrapError("Decode reportConfigToAddModList", err)
+	if ReportConfigToAddModListPresent {
+		ie.ReportConfigToAddModList = new(ReportConfigToAddModList)
+		if err = ie.ReportConfigToAddModList.Decode(r); err != nil {
+			return utils.WrapError("Decode ReportConfigToAddModList", err)
 		}
 	}
-	if measIdToRemoveListPresent {
-		ie.measIdToRemoveList = new(MeasIdToRemoveList)
-		if err = ie.measIdToRemoveList.Decode(r); err != nil {
-			return utils.WrapError("Decode measIdToRemoveList", err)
+	if MeasIdToRemoveListPresent {
+		ie.MeasIdToRemoveList = new(MeasIdToRemoveList)
+		if err = ie.MeasIdToRemoveList.Decode(r); err != nil {
+			return utils.WrapError("Decode MeasIdToRemoveList", err)
 		}
 	}
-	if measIdToAddModListPresent {
-		ie.measIdToAddModList = new(MeasIdToAddModList)
-		if err = ie.measIdToAddModList.Decode(r); err != nil {
-			return utils.WrapError("Decode measIdToAddModList", err)
+	if MeasIdToAddModListPresent {
+		ie.MeasIdToAddModList = new(MeasIdToAddModList)
+		if err = ie.MeasIdToAddModList.Decode(r); err != nil {
+			return utils.WrapError("Decode MeasIdToAddModList", err)
 		}
 	}
-	if s_MeasureConfigPresent {
-		ie.s_MeasureConfig = new(MeasConfig_s_MeasureConfig)
-		if err = ie.s_MeasureConfig.Decode(r); err != nil {
-			return utils.WrapError("Decode s_MeasureConfig", err)
+	if S_MeasureConfigPresent {
+		ie.S_MeasureConfig = new(MeasConfig_s_MeasureConfig)
+		if err = ie.S_MeasureConfig.Decode(r); err != nil {
+			return utils.WrapError("Decode S_MeasureConfig", err)
 		}
 	}
-	if quantityConfigPresent {
-		ie.quantityConfig = new(QuantityConfig)
-		if err = ie.quantityConfig.Decode(r); err != nil {
-			return utils.WrapError("Decode quantityConfig", err)
+	if QuantityConfigPresent {
+		ie.QuantityConfig = new(QuantityConfig)
+		if err = ie.QuantityConfig.Decode(r); err != nil {
+			return utils.WrapError("Decode QuantityConfig", err)
 		}
 	}
-	if measGapConfigPresent {
-		ie.measGapConfig = new(MeasGapConfig)
-		if err = ie.measGapConfig.Decode(r); err != nil {
-			return utils.WrapError("Decode measGapConfig", err)
+	if MeasGapConfigPresent {
+		ie.MeasGapConfig = new(MeasGapConfig)
+		if err = ie.MeasGapConfig.Decode(r); err != nil {
+			return utils.WrapError("Decode MeasGapConfig", err)
 		}
 	}
-	if measGapSharingConfigPresent {
-		ie.measGapSharingConfig = new(MeasGapSharingConfig)
-		if err = ie.measGapSharingConfig.Decode(r); err != nil {
-			return utils.WrapError("Decode measGapSharingConfig", err)
+	if MeasGapSharingConfigPresent {
+		ie.MeasGapSharingConfig = new(MeasGapSharingConfig)
+		if err = ie.MeasGapSharingConfig.Decode(r); err != nil {
+			return utils.WrapError("Decode MeasGapSharingConfig", err)
 		}
 	}
 
@@ -242,15 +242,15 @@ func (ie *MeasConfig) Decode(r *uper.UperReader) error {
 
 			extReader := uper.NewReader(bytes.NewReader(extBytes))
 
-			interFrequencyConfig_NoGap_r16Present, err := extReader.ReadBool()
+			InterFrequencyConfig_NoGap_r16Present, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			// decode interFrequencyConfig_NoGap_r16 optional
-			if interFrequencyConfig_NoGap_r16Present {
-				ie.interFrequencyConfig_NoGap_r16 = new(MeasConfig_interFrequencyConfig_NoGap_r16)
-				if err = ie.interFrequencyConfig_NoGap_r16.Decode(extReader); err != nil {
-					return utils.WrapError("Decode interFrequencyConfig_NoGap_r16", err)
+			// decode InterFrequencyConfig_NoGap_r16 optional
+			if InterFrequencyConfig_NoGap_r16Present {
+				ie.InterFrequencyConfig_NoGap_r16 = new(MeasConfig_interFrequencyConfig_NoGap_r16)
+				if err = ie.InterFrequencyConfig_NoGap_r16.Decode(extReader); err != nil {
+					return utils.WrapError("Decode InterFrequencyConfig_NoGap_r16", err)
 				}
 			}
 		}

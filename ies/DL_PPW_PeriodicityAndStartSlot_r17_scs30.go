@@ -9,44 +9,44 @@ import (
 
 const (
 	DL_PPW_PeriodicityAndStartSlot_r17_scs30_Choice_nothing uint64 = iota
-	DL_PPW_PeriodicityAndStartSlot_r17_scs30_Choice_n8
-	DL_PPW_PeriodicityAndStartSlot_r17_scs30_Choice_n10
-	DL_PPW_PeriodicityAndStartSlot_r17_scs30_Choice_n16
-	DL_PPW_PeriodicityAndStartSlot_r17_scs30_Choice_n20
-	DL_PPW_PeriodicityAndStartSlot_r17_scs30_Choice_n32
-	DL_PPW_PeriodicityAndStartSlot_r17_scs30_Choice_n40
-	DL_PPW_PeriodicityAndStartSlot_r17_scs30_Choice_n64
-	DL_PPW_PeriodicityAndStartSlot_r17_scs30_Choice_n80
-	DL_PPW_PeriodicityAndStartSlot_r17_scs30_Choice_n128
-	DL_PPW_PeriodicityAndStartSlot_r17_scs30_Choice_n160
-	DL_PPW_PeriodicityAndStartSlot_r17_scs30_Choice_n320
-	DL_PPW_PeriodicityAndStartSlot_r17_scs30_Choice_n640
-	DL_PPW_PeriodicityAndStartSlot_r17_scs30_Choice_n1280
-	DL_PPW_PeriodicityAndStartSlot_r17_scs30_Choice_n2560
-	DL_PPW_PeriodicityAndStartSlot_r17_scs30_Choice_n5120
-	DL_PPW_PeriodicityAndStartSlot_r17_scs30_Choice_n10240
-	DL_PPW_PeriodicityAndStartSlot_r17_scs30_Choice_n20480
+	DL_PPW_PeriodicityAndStartSlot_r17_scs30_Choice_N8
+	DL_PPW_PeriodicityAndStartSlot_r17_scs30_Choice_N10
+	DL_PPW_PeriodicityAndStartSlot_r17_scs30_Choice_N16
+	DL_PPW_PeriodicityAndStartSlot_r17_scs30_Choice_N20
+	DL_PPW_PeriodicityAndStartSlot_r17_scs30_Choice_N32
+	DL_PPW_PeriodicityAndStartSlot_r17_scs30_Choice_N40
+	DL_PPW_PeriodicityAndStartSlot_r17_scs30_Choice_N64
+	DL_PPW_PeriodicityAndStartSlot_r17_scs30_Choice_N80
+	DL_PPW_PeriodicityAndStartSlot_r17_scs30_Choice_N128
+	DL_PPW_PeriodicityAndStartSlot_r17_scs30_Choice_N160
+	DL_PPW_PeriodicityAndStartSlot_r17_scs30_Choice_N320
+	DL_PPW_PeriodicityAndStartSlot_r17_scs30_Choice_N640
+	DL_PPW_PeriodicityAndStartSlot_r17_scs30_Choice_N1280
+	DL_PPW_PeriodicityAndStartSlot_r17_scs30_Choice_N2560
+	DL_PPW_PeriodicityAndStartSlot_r17_scs30_Choice_N5120
+	DL_PPW_PeriodicityAndStartSlot_r17_scs30_Choice_N10240
+	DL_PPW_PeriodicityAndStartSlot_r17_scs30_Choice_N20480
 )
 
 type DL_PPW_PeriodicityAndStartSlot_r17_scs30 struct {
 	Choice uint64
-	n8     int64 `lb:0,ub:7,madatory`
-	n10    int64 `lb:0,ub:9,madatory`
-	n16    int64 `lb:0,ub:15,madatory`
-	n20    int64 `lb:0,ub:19,madatory`
-	n32    int64 `lb:0,ub:31,madatory`
-	n40    int64 `lb:0,ub:39,madatory`
-	n64    int64 `lb:0,ub:63,madatory`
-	n80    int64 `lb:0,ub:79,madatory`
-	n128   int64 `lb:0,ub:127,madatory`
-	n160   int64 `lb:0,ub:159,madatory`
-	n320   int64 `lb:0,ub:319,madatory`
-	n640   int64 `lb:0,ub:639,madatory`
-	n1280  int64 `lb:0,ub:1279,madatory`
-	n2560  int64 `lb:0,ub:2559,madatory`
-	n5120  int64 `lb:0,ub:5119,madatory`
-	n10240 int64 `lb:0,ub:10239,madatory`
-	n20480 int64 `lb:0,ub:20479,madatory`
+	N8     int64 `lb:0,ub:7,madatory`
+	N10    int64 `lb:0,ub:9,madatory`
+	N16    int64 `lb:0,ub:15,madatory`
+	N20    int64 `lb:0,ub:19,madatory`
+	N32    int64 `lb:0,ub:31,madatory`
+	N40    int64 `lb:0,ub:39,madatory`
+	N64    int64 `lb:0,ub:63,madatory`
+	N80    int64 `lb:0,ub:79,madatory`
+	N128   int64 `lb:0,ub:127,madatory`
+	N160   int64 `lb:0,ub:159,madatory`
+	N320   int64 `lb:0,ub:319,madatory`
+	N640   int64 `lb:0,ub:639,madatory`
+	N1280  int64 `lb:0,ub:1279,madatory`
+	N2560  int64 `lb:0,ub:2559,madatory`
+	N5120  int64 `lb:0,ub:5119,madatory`
+	N10240 int64 `lb:0,ub:10239,madatory`
+	N20480 int64 `lb:0,ub:20479,madatory`
 }
 
 func (ie *DL_PPW_PeriodicityAndStartSlot_r17_scs30) Encode(w *uper.UperWriter) error {
@@ -55,73 +55,73 @@ func (ie *DL_PPW_PeriodicityAndStartSlot_r17_scs30) Encode(w *uper.UperWriter) e
 		return err
 	}
 	switch ie.Choice {
-	case DL_PPW_PeriodicityAndStartSlot_r17_scs30_Choice_n8:
-		if err = w.WriteInteger(int64(ie.n8), &uper.Constraint{Lb: 0, Ub: 7}, false); err != nil {
-			err = utils.WrapError("Encode n8", err)
+	case DL_PPW_PeriodicityAndStartSlot_r17_scs30_Choice_N8:
+		if err = w.WriteInteger(int64(ie.N8), &uper.Constraint{Lb: 0, Ub: 7}, false); err != nil {
+			err = utils.WrapError("Encode N8", err)
 		}
-	case DL_PPW_PeriodicityAndStartSlot_r17_scs30_Choice_n10:
-		if err = w.WriteInteger(int64(ie.n10), &uper.Constraint{Lb: 0, Ub: 9}, false); err != nil {
-			err = utils.WrapError("Encode n10", err)
+	case DL_PPW_PeriodicityAndStartSlot_r17_scs30_Choice_N10:
+		if err = w.WriteInteger(int64(ie.N10), &uper.Constraint{Lb: 0, Ub: 9}, false); err != nil {
+			err = utils.WrapError("Encode N10", err)
 		}
-	case DL_PPW_PeriodicityAndStartSlot_r17_scs30_Choice_n16:
-		if err = w.WriteInteger(int64(ie.n16), &uper.Constraint{Lb: 0, Ub: 15}, false); err != nil {
-			err = utils.WrapError("Encode n16", err)
+	case DL_PPW_PeriodicityAndStartSlot_r17_scs30_Choice_N16:
+		if err = w.WriteInteger(int64(ie.N16), &uper.Constraint{Lb: 0, Ub: 15}, false); err != nil {
+			err = utils.WrapError("Encode N16", err)
 		}
-	case DL_PPW_PeriodicityAndStartSlot_r17_scs30_Choice_n20:
-		if err = w.WriteInteger(int64(ie.n20), &uper.Constraint{Lb: 0, Ub: 19}, false); err != nil {
-			err = utils.WrapError("Encode n20", err)
+	case DL_PPW_PeriodicityAndStartSlot_r17_scs30_Choice_N20:
+		if err = w.WriteInteger(int64(ie.N20), &uper.Constraint{Lb: 0, Ub: 19}, false); err != nil {
+			err = utils.WrapError("Encode N20", err)
 		}
-	case DL_PPW_PeriodicityAndStartSlot_r17_scs30_Choice_n32:
-		if err = w.WriteInteger(int64(ie.n32), &uper.Constraint{Lb: 0, Ub: 31}, false); err != nil {
-			err = utils.WrapError("Encode n32", err)
+	case DL_PPW_PeriodicityAndStartSlot_r17_scs30_Choice_N32:
+		if err = w.WriteInteger(int64(ie.N32), &uper.Constraint{Lb: 0, Ub: 31}, false); err != nil {
+			err = utils.WrapError("Encode N32", err)
 		}
-	case DL_PPW_PeriodicityAndStartSlot_r17_scs30_Choice_n40:
-		if err = w.WriteInteger(int64(ie.n40), &uper.Constraint{Lb: 0, Ub: 39}, false); err != nil {
-			err = utils.WrapError("Encode n40", err)
+	case DL_PPW_PeriodicityAndStartSlot_r17_scs30_Choice_N40:
+		if err = w.WriteInteger(int64(ie.N40), &uper.Constraint{Lb: 0, Ub: 39}, false); err != nil {
+			err = utils.WrapError("Encode N40", err)
 		}
-	case DL_PPW_PeriodicityAndStartSlot_r17_scs30_Choice_n64:
-		if err = w.WriteInteger(int64(ie.n64), &uper.Constraint{Lb: 0, Ub: 63}, false); err != nil {
-			err = utils.WrapError("Encode n64", err)
+	case DL_PPW_PeriodicityAndStartSlot_r17_scs30_Choice_N64:
+		if err = w.WriteInteger(int64(ie.N64), &uper.Constraint{Lb: 0, Ub: 63}, false); err != nil {
+			err = utils.WrapError("Encode N64", err)
 		}
-	case DL_PPW_PeriodicityAndStartSlot_r17_scs30_Choice_n80:
-		if err = w.WriteInteger(int64(ie.n80), &uper.Constraint{Lb: 0, Ub: 79}, false); err != nil {
-			err = utils.WrapError("Encode n80", err)
+	case DL_PPW_PeriodicityAndStartSlot_r17_scs30_Choice_N80:
+		if err = w.WriteInteger(int64(ie.N80), &uper.Constraint{Lb: 0, Ub: 79}, false); err != nil {
+			err = utils.WrapError("Encode N80", err)
 		}
-	case DL_PPW_PeriodicityAndStartSlot_r17_scs30_Choice_n128:
-		if err = w.WriteInteger(int64(ie.n128), &uper.Constraint{Lb: 0, Ub: 127}, false); err != nil {
-			err = utils.WrapError("Encode n128", err)
+	case DL_PPW_PeriodicityAndStartSlot_r17_scs30_Choice_N128:
+		if err = w.WriteInteger(int64(ie.N128), &uper.Constraint{Lb: 0, Ub: 127}, false); err != nil {
+			err = utils.WrapError("Encode N128", err)
 		}
-	case DL_PPW_PeriodicityAndStartSlot_r17_scs30_Choice_n160:
-		if err = w.WriteInteger(int64(ie.n160), &uper.Constraint{Lb: 0, Ub: 159}, false); err != nil {
-			err = utils.WrapError("Encode n160", err)
+	case DL_PPW_PeriodicityAndStartSlot_r17_scs30_Choice_N160:
+		if err = w.WriteInteger(int64(ie.N160), &uper.Constraint{Lb: 0, Ub: 159}, false); err != nil {
+			err = utils.WrapError("Encode N160", err)
 		}
-	case DL_PPW_PeriodicityAndStartSlot_r17_scs30_Choice_n320:
-		if err = w.WriteInteger(int64(ie.n320), &uper.Constraint{Lb: 0, Ub: 319}, false); err != nil {
-			err = utils.WrapError("Encode n320", err)
+	case DL_PPW_PeriodicityAndStartSlot_r17_scs30_Choice_N320:
+		if err = w.WriteInteger(int64(ie.N320), &uper.Constraint{Lb: 0, Ub: 319}, false); err != nil {
+			err = utils.WrapError("Encode N320", err)
 		}
-	case DL_PPW_PeriodicityAndStartSlot_r17_scs30_Choice_n640:
-		if err = w.WriteInteger(int64(ie.n640), &uper.Constraint{Lb: 0, Ub: 639}, false); err != nil {
-			err = utils.WrapError("Encode n640", err)
+	case DL_PPW_PeriodicityAndStartSlot_r17_scs30_Choice_N640:
+		if err = w.WriteInteger(int64(ie.N640), &uper.Constraint{Lb: 0, Ub: 639}, false); err != nil {
+			err = utils.WrapError("Encode N640", err)
 		}
-	case DL_PPW_PeriodicityAndStartSlot_r17_scs30_Choice_n1280:
-		if err = w.WriteInteger(int64(ie.n1280), &uper.Constraint{Lb: 0, Ub: 1279}, false); err != nil {
-			err = utils.WrapError("Encode n1280", err)
+	case DL_PPW_PeriodicityAndStartSlot_r17_scs30_Choice_N1280:
+		if err = w.WriteInteger(int64(ie.N1280), &uper.Constraint{Lb: 0, Ub: 1279}, false); err != nil {
+			err = utils.WrapError("Encode N1280", err)
 		}
-	case DL_PPW_PeriodicityAndStartSlot_r17_scs30_Choice_n2560:
-		if err = w.WriteInteger(int64(ie.n2560), &uper.Constraint{Lb: 0, Ub: 2559}, false); err != nil {
-			err = utils.WrapError("Encode n2560", err)
+	case DL_PPW_PeriodicityAndStartSlot_r17_scs30_Choice_N2560:
+		if err = w.WriteInteger(int64(ie.N2560), &uper.Constraint{Lb: 0, Ub: 2559}, false); err != nil {
+			err = utils.WrapError("Encode N2560", err)
 		}
-	case DL_PPW_PeriodicityAndStartSlot_r17_scs30_Choice_n5120:
-		if err = w.WriteInteger(int64(ie.n5120), &uper.Constraint{Lb: 0, Ub: 5119}, false); err != nil {
-			err = utils.WrapError("Encode n5120", err)
+	case DL_PPW_PeriodicityAndStartSlot_r17_scs30_Choice_N5120:
+		if err = w.WriteInteger(int64(ie.N5120), &uper.Constraint{Lb: 0, Ub: 5119}, false); err != nil {
+			err = utils.WrapError("Encode N5120", err)
 		}
-	case DL_PPW_PeriodicityAndStartSlot_r17_scs30_Choice_n10240:
-		if err = w.WriteInteger(int64(ie.n10240), &uper.Constraint{Lb: 0, Ub: 10239}, false); err != nil {
-			err = utils.WrapError("Encode n10240", err)
+	case DL_PPW_PeriodicityAndStartSlot_r17_scs30_Choice_N10240:
+		if err = w.WriteInteger(int64(ie.N10240), &uper.Constraint{Lb: 0, Ub: 10239}, false); err != nil {
+			err = utils.WrapError("Encode N10240", err)
 		}
-	case DL_PPW_PeriodicityAndStartSlot_r17_scs30_Choice_n20480:
-		if err = w.WriteInteger(int64(ie.n20480), &uper.Constraint{Lb: 0, Ub: 20479}, false); err != nil {
-			err = utils.WrapError("Encode n20480", err)
+	case DL_PPW_PeriodicityAndStartSlot_r17_scs30_Choice_N20480:
+		if err = w.WriteInteger(int64(ie.N20480), &uper.Constraint{Lb: 0, Ub: 20479}, false); err != nil {
+			err = utils.WrapError("Encode N20480", err)
 		}
 	default:
 		err = fmt.Errorf("invalid choice: %d", ie.Choice)
@@ -135,108 +135,108 @@ func (ie *DL_PPW_PeriodicityAndStartSlot_r17_scs30) Decode(r *uper.UperReader) e
 		return err
 	}
 	switch ie.Choice {
-	case DL_PPW_PeriodicityAndStartSlot_r17_scs30_Choice_n8:
-		var tmp_int_n8 int64
-		if tmp_int_n8, err = r.ReadInteger(&uper.Constraint{Lb: 0, Ub: 7}, false); err != nil {
-			return utils.WrapError("Decode n8", err)
+	case DL_PPW_PeriodicityAndStartSlot_r17_scs30_Choice_N8:
+		var tmp_int_N8 int64
+		if tmp_int_N8, err = r.ReadInteger(&uper.Constraint{Lb: 0, Ub: 7}, false); err != nil {
+			return utils.WrapError("Decode N8", err)
 		}
-		ie.n8 = tmp_int_n8
-	case DL_PPW_PeriodicityAndStartSlot_r17_scs30_Choice_n10:
-		var tmp_int_n10 int64
-		if tmp_int_n10, err = r.ReadInteger(&uper.Constraint{Lb: 0, Ub: 9}, false); err != nil {
-			return utils.WrapError("Decode n10", err)
+		ie.N8 = tmp_int_N8
+	case DL_PPW_PeriodicityAndStartSlot_r17_scs30_Choice_N10:
+		var tmp_int_N10 int64
+		if tmp_int_N10, err = r.ReadInteger(&uper.Constraint{Lb: 0, Ub: 9}, false); err != nil {
+			return utils.WrapError("Decode N10", err)
 		}
-		ie.n10 = tmp_int_n10
-	case DL_PPW_PeriodicityAndStartSlot_r17_scs30_Choice_n16:
-		var tmp_int_n16 int64
-		if tmp_int_n16, err = r.ReadInteger(&uper.Constraint{Lb: 0, Ub: 15}, false); err != nil {
-			return utils.WrapError("Decode n16", err)
+		ie.N10 = tmp_int_N10
+	case DL_PPW_PeriodicityAndStartSlot_r17_scs30_Choice_N16:
+		var tmp_int_N16 int64
+		if tmp_int_N16, err = r.ReadInteger(&uper.Constraint{Lb: 0, Ub: 15}, false); err != nil {
+			return utils.WrapError("Decode N16", err)
 		}
-		ie.n16 = tmp_int_n16
-	case DL_PPW_PeriodicityAndStartSlot_r17_scs30_Choice_n20:
-		var tmp_int_n20 int64
-		if tmp_int_n20, err = r.ReadInteger(&uper.Constraint{Lb: 0, Ub: 19}, false); err != nil {
-			return utils.WrapError("Decode n20", err)
+		ie.N16 = tmp_int_N16
+	case DL_PPW_PeriodicityAndStartSlot_r17_scs30_Choice_N20:
+		var tmp_int_N20 int64
+		if tmp_int_N20, err = r.ReadInteger(&uper.Constraint{Lb: 0, Ub: 19}, false); err != nil {
+			return utils.WrapError("Decode N20", err)
 		}
-		ie.n20 = tmp_int_n20
-	case DL_PPW_PeriodicityAndStartSlot_r17_scs30_Choice_n32:
-		var tmp_int_n32 int64
-		if tmp_int_n32, err = r.ReadInteger(&uper.Constraint{Lb: 0, Ub: 31}, false); err != nil {
-			return utils.WrapError("Decode n32", err)
+		ie.N20 = tmp_int_N20
+	case DL_PPW_PeriodicityAndStartSlot_r17_scs30_Choice_N32:
+		var tmp_int_N32 int64
+		if tmp_int_N32, err = r.ReadInteger(&uper.Constraint{Lb: 0, Ub: 31}, false); err != nil {
+			return utils.WrapError("Decode N32", err)
 		}
-		ie.n32 = tmp_int_n32
-	case DL_PPW_PeriodicityAndStartSlot_r17_scs30_Choice_n40:
-		var tmp_int_n40 int64
-		if tmp_int_n40, err = r.ReadInteger(&uper.Constraint{Lb: 0, Ub: 39}, false); err != nil {
-			return utils.WrapError("Decode n40", err)
+		ie.N32 = tmp_int_N32
+	case DL_PPW_PeriodicityAndStartSlot_r17_scs30_Choice_N40:
+		var tmp_int_N40 int64
+		if tmp_int_N40, err = r.ReadInteger(&uper.Constraint{Lb: 0, Ub: 39}, false); err != nil {
+			return utils.WrapError("Decode N40", err)
 		}
-		ie.n40 = tmp_int_n40
-	case DL_PPW_PeriodicityAndStartSlot_r17_scs30_Choice_n64:
-		var tmp_int_n64 int64
-		if tmp_int_n64, err = r.ReadInteger(&uper.Constraint{Lb: 0, Ub: 63}, false); err != nil {
-			return utils.WrapError("Decode n64", err)
+		ie.N40 = tmp_int_N40
+	case DL_PPW_PeriodicityAndStartSlot_r17_scs30_Choice_N64:
+		var tmp_int_N64 int64
+		if tmp_int_N64, err = r.ReadInteger(&uper.Constraint{Lb: 0, Ub: 63}, false); err != nil {
+			return utils.WrapError("Decode N64", err)
 		}
-		ie.n64 = tmp_int_n64
-	case DL_PPW_PeriodicityAndStartSlot_r17_scs30_Choice_n80:
-		var tmp_int_n80 int64
-		if tmp_int_n80, err = r.ReadInteger(&uper.Constraint{Lb: 0, Ub: 79}, false); err != nil {
-			return utils.WrapError("Decode n80", err)
+		ie.N64 = tmp_int_N64
+	case DL_PPW_PeriodicityAndStartSlot_r17_scs30_Choice_N80:
+		var tmp_int_N80 int64
+		if tmp_int_N80, err = r.ReadInteger(&uper.Constraint{Lb: 0, Ub: 79}, false); err != nil {
+			return utils.WrapError("Decode N80", err)
 		}
-		ie.n80 = tmp_int_n80
-	case DL_PPW_PeriodicityAndStartSlot_r17_scs30_Choice_n128:
-		var tmp_int_n128 int64
-		if tmp_int_n128, err = r.ReadInteger(&uper.Constraint{Lb: 0, Ub: 127}, false); err != nil {
-			return utils.WrapError("Decode n128", err)
+		ie.N80 = tmp_int_N80
+	case DL_PPW_PeriodicityAndStartSlot_r17_scs30_Choice_N128:
+		var tmp_int_N128 int64
+		if tmp_int_N128, err = r.ReadInteger(&uper.Constraint{Lb: 0, Ub: 127}, false); err != nil {
+			return utils.WrapError("Decode N128", err)
 		}
-		ie.n128 = tmp_int_n128
-	case DL_PPW_PeriodicityAndStartSlot_r17_scs30_Choice_n160:
-		var tmp_int_n160 int64
-		if tmp_int_n160, err = r.ReadInteger(&uper.Constraint{Lb: 0, Ub: 159}, false); err != nil {
-			return utils.WrapError("Decode n160", err)
+		ie.N128 = tmp_int_N128
+	case DL_PPW_PeriodicityAndStartSlot_r17_scs30_Choice_N160:
+		var tmp_int_N160 int64
+		if tmp_int_N160, err = r.ReadInteger(&uper.Constraint{Lb: 0, Ub: 159}, false); err != nil {
+			return utils.WrapError("Decode N160", err)
 		}
-		ie.n160 = tmp_int_n160
-	case DL_PPW_PeriodicityAndStartSlot_r17_scs30_Choice_n320:
-		var tmp_int_n320 int64
-		if tmp_int_n320, err = r.ReadInteger(&uper.Constraint{Lb: 0, Ub: 319}, false); err != nil {
-			return utils.WrapError("Decode n320", err)
+		ie.N160 = tmp_int_N160
+	case DL_PPW_PeriodicityAndStartSlot_r17_scs30_Choice_N320:
+		var tmp_int_N320 int64
+		if tmp_int_N320, err = r.ReadInteger(&uper.Constraint{Lb: 0, Ub: 319}, false); err != nil {
+			return utils.WrapError("Decode N320", err)
 		}
-		ie.n320 = tmp_int_n320
-	case DL_PPW_PeriodicityAndStartSlot_r17_scs30_Choice_n640:
-		var tmp_int_n640 int64
-		if tmp_int_n640, err = r.ReadInteger(&uper.Constraint{Lb: 0, Ub: 639}, false); err != nil {
-			return utils.WrapError("Decode n640", err)
+		ie.N320 = tmp_int_N320
+	case DL_PPW_PeriodicityAndStartSlot_r17_scs30_Choice_N640:
+		var tmp_int_N640 int64
+		if tmp_int_N640, err = r.ReadInteger(&uper.Constraint{Lb: 0, Ub: 639}, false); err != nil {
+			return utils.WrapError("Decode N640", err)
 		}
-		ie.n640 = tmp_int_n640
-	case DL_PPW_PeriodicityAndStartSlot_r17_scs30_Choice_n1280:
-		var tmp_int_n1280 int64
-		if tmp_int_n1280, err = r.ReadInteger(&uper.Constraint{Lb: 0, Ub: 1279}, false); err != nil {
-			return utils.WrapError("Decode n1280", err)
+		ie.N640 = tmp_int_N640
+	case DL_PPW_PeriodicityAndStartSlot_r17_scs30_Choice_N1280:
+		var tmp_int_N1280 int64
+		if tmp_int_N1280, err = r.ReadInteger(&uper.Constraint{Lb: 0, Ub: 1279}, false); err != nil {
+			return utils.WrapError("Decode N1280", err)
 		}
-		ie.n1280 = tmp_int_n1280
-	case DL_PPW_PeriodicityAndStartSlot_r17_scs30_Choice_n2560:
-		var tmp_int_n2560 int64
-		if tmp_int_n2560, err = r.ReadInteger(&uper.Constraint{Lb: 0, Ub: 2559}, false); err != nil {
-			return utils.WrapError("Decode n2560", err)
+		ie.N1280 = tmp_int_N1280
+	case DL_PPW_PeriodicityAndStartSlot_r17_scs30_Choice_N2560:
+		var tmp_int_N2560 int64
+		if tmp_int_N2560, err = r.ReadInteger(&uper.Constraint{Lb: 0, Ub: 2559}, false); err != nil {
+			return utils.WrapError("Decode N2560", err)
 		}
-		ie.n2560 = tmp_int_n2560
-	case DL_PPW_PeriodicityAndStartSlot_r17_scs30_Choice_n5120:
-		var tmp_int_n5120 int64
-		if tmp_int_n5120, err = r.ReadInteger(&uper.Constraint{Lb: 0, Ub: 5119}, false); err != nil {
-			return utils.WrapError("Decode n5120", err)
+		ie.N2560 = tmp_int_N2560
+	case DL_PPW_PeriodicityAndStartSlot_r17_scs30_Choice_N5120:
+		var tmp_int_N5120 int64
+		if tmp_int_N5120, err = r.ReadInteger(&uper.Constraint{Lb: 0, Ub: 5119}, false); err != nil {
+			return utils.WrapError("Decode N5120", err)
 		}
-		ie.n5120 = tmp_int_n5120
-	case DL_PPW_PeriodicityAndStartSlot_r17_scs30_Choice_n10240:
-		var tmp_int_n10240 int64
-		if tmp_int_n10240, err = r.ReadInteger(&uper.Constraint{Lb: 0, Ub: 10239}, false); err != nil {
-			return utils.WrapError("Decode n10240", err)
+		ie.N5120 = tmp_int_N5120
+	case DL_PPW_PeriodicityAndStartSlot_r17_scs30_Choice_N10240:
+		var tmp_int_N10240 int64
+		if tmp_int_N10240, err = r.ReadInteger(&uper.Constraint{Lb: 0, Ub: 10239}, false); err != nil {
+			return utils.WrapError("Decode N10240", err)
 		}
-		ie.n10240 = tmp_int_n10240
-	case DL_PPW_PeriodicityAndStartSlot_r17_scs30_Choice_n20480:
-		var tmp_int_n20480 int64
-		if tmp_int_n20480, err = r.ReadInteger(&uper.Constraint{Lb: 0, Ub: 20479}, false); err != nil {
-			return utils.WrapError("Decode n20480", err)
+		ie.N10240 = tmp_int_N10240
+	case DL_PPW_PeriodicityAndStartSlot_r17_scs30_Choice_N20480:
+		var tmp_int_N20480 int64
+		if tmp_int_N20480, err = r.ReadInteger(&uper.Constraint{Lb: 0, Ub: 20479}, false); err != nil {
+			return utils.WrapError("Decode N20480", err)
 		}
-		ie.n20480 = tmp_int_n20480
+		ie.N20480 = tmp_int_N20480
 	default:
 		return fmt.Errorf("invalid choice: %d", ie.Choice)
 	}

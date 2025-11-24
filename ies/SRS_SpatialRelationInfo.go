@@ -6,43 +6,43 @@ import (
 )
 
 type SRS_SpatialRelationInfo struct {
-	servingCellId   *ServCellIndex                          `optional`
-	referenceSignal SRS_SpatialRelationInfo_referenceSignal `madatory`
+	ServingCellId   *ServCellIndex                          `optional`
+	ReferenceSignal SRS_SpatialRelationInfo_referenceSignal `madatory`
 }
 
 func (ie *SRS_SpatialRelationInfo) Encode(w *uper.UperWriter) error {
 	var err error
-	preambleBits := []bool{ie.servingCellId != nil}
+	preambleBits := []bool{ie.ServingCellId != nil}
 	for _, bit := range preambleBits {
 		if err = w.WriteBool(bit); err != nil {
 			return err
 		}
 	}
-	if ie.servingCellId != nil {
-		if err = ie.servingCellId.Encode(w); err != nil {
-			return utils.WrapError("Encode servingCellId", err)
+	if ie.ServingCellId != nil {
+		if err = ie.ServingCellId.Encode(w); err != nil {
+			return utils.WrapError("Encode ServingCellId", err)
 		}
 	}
-	if err = ie.referenceSignal.Encode(w); err != nil {
-		return utils.WrapError("Encode referenceSignal", err)
+	if err = ie.ReferenceSignal.Encode(w); err != nil {
+		return utils.WrapError("Encode ReferenceSignal", err)
 	}
 	return nil
 }
 
 func (ie *SRS_SpatialRelationInfo) Decode(r *uper.UperReader) error {
 	var err error
-	var servingCellIdPresent bool
-	if servingCellIdPresent, err = r.ReadBool(); err != nil {
+	var ServingCellIdPresent bool
+	if ServingCellIdPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	if servingCellIdPresent {
-		ie.servingCellId = new(ServCellIndex)
-		if err = ie.servingCellId.Decode(r); err != nil {
-			return utils.WrapError("Decode servingCellId", err)
+	if ServingCellIdPresent {
+		ie.ServingCellId = new(ServCellIndex)
+		if err = ie.ServingCellId.Decode(r); err != nil {
+			return utils.WrapError("Decode ServingCellId", err)
 		}
 	}
-	if err = ie.referenceSignal.Decode(r); err != nil {
-		return utils.WrapError("Decode referenceSignal", err)
+	if err = ie.ReferenceSignal.Decode(r); err != nil {
+		return utils.WrapError("Decode ReferenceSignal", err)
 	}
 	return nil
 }

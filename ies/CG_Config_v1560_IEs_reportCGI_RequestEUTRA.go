@@ -6,20 +6,20 @@ import (
 )
 
 type CG_Config_v1560_IEs_reportCGI_RequestEUTRA struct {
-	requestedCellInfoEUTRA *CG_Config_v1560_IEs_reportCGI_RequestEUTRA_requestedCellInfoEUTRA `optional`
+	RequestedCellInfoEUTRA *CG_Config_v1560_IEs_reportCGI_RequestEUTRA_requestedCellInfoEUTRA `optional`
 }
 
 func (ie *CG_Config_v1560_IEs_reportCGI_RequestEUTRA) Encode(w *uper.UperWriter) error {
 	var err error
-	preambleBits := []bool{ie.requestedCellInfoEUTRA != nil}
+	preambleBits := []bool{ie.RequestedCellInfoEUTRA != nil}
 	for _, bit := range preambleBits {
 		if err = w.WriteBool(bit); err != nil {
 			return err
 		}
 	}
-	if ie.requestedCellInfoEUTRA != nil {
-		if err = ie.requestedCellInfoEUTRA.Encode(w); err != nil {
-			return utils.WrapError("Encode requestedCellInfoEUTRA", err)
+	if ie.RequestedCellInfoEUTRA != nil {
+		if err = ie.RequestedCellInfoEUTRA.Encode(w); err != nil {
+			return utils.WrapError("Encode RequestedCellInfoEUTRA", err)
 		}
 	}
 	return nil
@@ -27,14 +27,14 @@ func (ie *CG_Config_v1560_IEs_reportCGI_RequestEUTRA) Encode(w *uper.UperWriter)
 
 func (ie *CG_Config_v1560_IEs_reportCGI_RequestEUTRA) Decode(r *uper.UperReader) error {
 	var err error
-	var requestedCellInfoEUTRAPresent bool
-	if requestedCellInfoEUTRAPresent, err = r.ReadBool(); err != nil {
+	var RequestedCellInfoEUTRAPresent bool
+	if RequestedCellInfoEUTRAPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	if requestedCellInfoEUTRAPresent {
-		ie.requestedCellInfoEUTRA = new(CG_Config_v1560_IEs_reportCGI_RequestEUTRA_requestedCellInfoEUTRA)
-		if err = ie.requestedCellInfoEUTRA.Decode(r); err != nil {
-			return utils.WrapError("Decode requestedCellInfoEUTRA", err)
+	if RequestedCellInfoEUTRAPresent {
+		ie.RequestedCellInfoEUTRA = new(CG_Config_v1560_IEs_reportCGI_RequestEUTRA_requestedCellInfoEUTRA)
+		if err = ie.RequestedCellInfoEUTRA.Decode(r); err != nil {
+			return utils.WrapError("Decode RequestedCellInfoEUTRA", err)
 		}
 	}
 	return nil

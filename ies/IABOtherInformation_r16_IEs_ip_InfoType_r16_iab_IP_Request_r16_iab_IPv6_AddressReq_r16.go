@@ -9,14 +9,14 @@ import (
 
 const (
 	IABOtherInformation_r16_IEs_ip_InfoType_r16_iab_IP_Request_r16_iab_IPv6_AddressReq_r16_Choice_nothing uint64 = iota
-	IABOtherInformation_r16_IEs_ip_InfoType_r16_iab_IP_Request_r16_iab_IPv6_AddressReq_r16_Choice_iab_IPv6_AddressNumReq_r16
-	IABOtherInformation_r16_IEs_ip_InfoType_r16_iab_IP_Request_r16_iab_IPv6_AddressReq_r16_Choice_iab_IPv6_AddressPrefixReq_r16
+	IABOtherInformation_r16_IEs_ip_InfoType_r16_iab_IP_Request_r16_iab_IPv6_AddressReq_r16_Choice_Iab_IPv6_AddressNumReq_r16
+	IABOtherInformation_r16_IEs_ip_InfoType_r16_iab_IP_Request_r16_iab_IPv6_AddressReq_r16_Choice_Iab_IPv6_AddressPrefixReq_r16
 )
 
 type IABOtherInformation_r16_IEs_ip_InfoType_r16_iab_IP_Request_r16_iab_IPv6_AddressReq_r16 struct {
 	Choice                        uint64
-	iab_IPv6_AddressNumReq_r16    *IAB_IP_AddressNumReq_r16
-	iab_IPv6_AddressPrefixReq_r16 *IAB_IP_AddressPrefixReq_r16
+	Iab_IPv6_AddressNumReq_r16    *IAB_IP_AddressNumReq_r16
+	Iab_IPv6_AddressPrefixReq_r16 *IAB_IP_AddressPrefixReq_r16
 }
 
 func (ie *IABOtherInformation_r16_IEs_ip_InfoType_r16_iab_IP_Request_r16_iab_IPv6_AddressReq_r16) Encode(w *uper.UperWriter) error {
@@ -25,13 +25,13 @@ func (ie *IABOtherInformation_r16_IEs_ip_InfoType_r16_iab_IP_Request_r16_iab_IPv
 		return err
 	}
 	switch ie.Choice {
-	case IABOtherInformation_r16_IEs_ip_InfoType_r16_iab_IP_Request_r16_iab_IPv6_AddressReq_r16_Choice_iab_IPv6_AddressNumReq_r16:
-		if err = ie.iab_IPv6_AddressNumReq_r16.Encode(w); err != nil {
-			err = utils.WrapError("Encode iab_IPv6_AddressNumReq_r16", err)
+	case IABOtherInformation_r16_IEs_ip_InfoType_r16_iab_IP_Request_r16_iab_IPv6_AddressReq_r16_Choice_Iab_IPv6_AddressNumReq_r16:
+		if err = ie.Iab_IPv6_AddressNumReq_r16.Encode(w); err != nil {
+			err = utils.WrapError("Encode Iab_IPv6_AddressNumReq_r16", err)
 		}
-	case IABOtherInformation_r16_IEs_ip_InfoType_r16_iab_IP_Request_r16_iab_IPv6_AddressReq_r16_Choice_iab_IPv6_AddressPrefixReq_r16:
-		if err = ie.iab_IPv6_AddressPrefixReq_r16.Encode(w); err != nil {
-			err = utils.WrapError("Encode iab_IPv6_AddressPrefixReq_r16", err)
+	case IABOtherInformation_r16_IEs_ip_InfoType_r16_iab_IP_Request_r16_iab_IPv6_AddressReq_r16_Choice_Iab_IPv6_AddressPrefixReq_r16:
+		if err = ie.Iab_IPv6_AddressPrefixReq_r16.Encode(w); err != nil {
+			err = utils.WrapError("Encode Iab_IPv6_AddressPrefixReq_r16", err)
 		}
 	default:
 		err = fmt.Errorf("invalid choice: %d", ie.Choice)
@@ -45,15 +45,15 @@ func (ie *IABOtherInformation_r16_IEs_ip_InfoType_r16_iab_IP_Request_r16_iab_IPv
 		return err
 	}
 	switch ie.Choice {
-	case IABOtherInformation_r16_IEs_ip_InfoType_r16_iab_IP_Request_r16_iab_IPv6_AddressReq_r16_Choice_iab_IPv6_AddressNumReq_r16:
-		ie.iab_IPv6_AddressNumReq_r16 = new(IAB_IP_AddressNumReq_r16)
-		if err = ie.iab_IPv6_AddressNumReq_r16.Decode(r); err != nil {
-			return utils.WrapError("Decode iab_IPv6_AddressNumReq_r16", err)
+	case IABOtherInformation_r16_IEs_ip_InfoType_r16_iab_IP_Request_r16_iab_IPv6_AddressReq_r16_Choice_Iab_IPv6_AddressNumReq_r16:
+		ie.Iab_IPv6_AddressNumReq_r16 = new(IAB_IP_AddressNumReq_r16)
+		if err = ie.Iab_IPv6_AddressNumReq_r16.Decode(r); err != nil {
+			return utils.WrapError("Decode Iab_IPv6_AddressNumReq_r16", err)
 		}
-	case IABOtherInformation_r16_IEs_ip_InfoType_r16_iab_IP_Request_r16_iab_IPv6_AddressReq_r16_Choice_iab_IPv6_AddressPrefixReq_r16:
-		ie.iab_IPv6_AddressPrefixReq_r16 = new(IAB_IP_AddressPrefixReq_r16)
-		if err = ie.iab_IPv6_AddressPrefixReq_r16.Decode(r); err != nil {
-			return utils.WrapError("Decode iab_IPv6_AddressPrefixReq_r16", err)
+	case IABOtherInformation_r16_IEs_ip_InfoType_r16_iab_IP_Request_r16_iab_IPv6_AddressReq_r16_Choice_Iab_IPv6_AddressPrefixReq_r16:
+		ie.Iab_IPv6_AddressPrefixReq_r16 = new(IAB_IP_AddressPrefixReq_r16)
+		if err = ie.Iab_IPv6_AddressPrefixReq_r16.Decode(r); err != nil {
+			return utils.WrapError("Decode Iab_IPv6_AddressPrefixReq_r16", err)
 		}
 	default:
 		return fmt.Errorf("invalid choice: %d", ie.Choice)

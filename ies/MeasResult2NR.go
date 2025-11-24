@@ -6,38 +6,38 @@ import (
 )
 
 type MeasResult2NR struct {
-	ssbFrequency              *ARFCN_ValueNR    `optional`
-	refFreqCSI_RS             *ARFCN_ValueNR    `optional`
-	measResultServingCell     *MeasResultNR     `optional`
-	measResultNeighCellListNR *MeasResultListNR `optional`
+	SsbFrequency              *ARFCN_ValueNR    `optional`
+	RefFreqCSI_RS             *ARFCN_ValueNR    `optional`
+	MeasResultServingCell     *MeasResultNR     `optional`
+	MeasResultNeighCellListNR *MeasResultListNR `optional`
 }
 
 func (ie *MeasResult2NR) Encode(w *uper.UperWriter) error {
 	var err error
-	preambleBits := []bool{ie.ssbFrequency != nil, ie.refFreqCSI_RS != nil, ie.measResultServingCell != nil, ie.measResultNeighCellListNR != nil}
+	preambleBits := []bool{ie.SsbFrequency != nil, ie.RefFreqCSI_RS != nil, ie.MeasResultServingCell != nil, ie.MeasResultNeighCellListNR != nil}
 	for _, bit := range preambleBits {
 		if err = w.WriteBool(bit); err != nil {
 			return err
 		}
 	}
-	if ie.ssbFrequency != nil {
-		if err = ie.ssbFrequency.Encode(w); err != nil {
-			return utils.WrapError("Encode ssbFrequency", err)
+	if ie.SsbFrequency != nil {
+		if err = ie.SsbFrequency.Encode(w); err != nil {
+			return utils.WrapError("Encode SsbFrequency", err)
 		}
 	}
-	if ie.refFreqCSI_RS != nil {
-		if err = ie.refFreqCSI_RS.Encode(w); err != nil {
-			return utils.WrapError("Encode refFreqCSI_RS", err)
+	if ie.RefFreqCSI_RS != nil {
+		if err = ie.RefFreqCSI_RS.Encode(w); err != nil {
+			return utils.WrapError("Encode RefFreqCSI_RS", err)
 		}
 	}
-	if ie.measResultServingCell != nil {
-		if err = ie.measResultServingCell.Encode(w); err != nil {
-			return utils.WrapError("Encode measResultServingCell", err)
+	if ie.MeasResultServingCell != nil {
+		if err = ie.MeasResultServingCell.Encode(w); err != nil {
+			return utils.WrapError("Encode MeasResultServingCell", err)
 		}
 	}
-	if ie.measResultNeighCellListNR != nil {
-		if err = ie.measResultNeighCellListNR.Encode(w); err != nil {
-			return utils.WrapError("Encode measResultNeighCellListNR", err)
+	if ie.MeasResultNeighCellListNR != nil {
+		if err = ie.MeasResultNeighCellListNR.Encode(w); err != nil {
+			return utils.WrapError("Encode MeasResultNeighCellListNR", err)
 		}
 	}
 	return nil
@@ -45,44 +45,44 @@ func (ie *MeasResult2NR) Encode(w *uper.UperWriter) error {
 
 func (ie *MeasResult2NR) Decode(r *uper.UperReader) error {
 	var err error
-	var ssbFrequencyPresent bool
-	if ssbFrequencyPresent, err = r.ReadBool(); err != nil {
+	var SsbFrequencyPresent bool
+	if SsbFrequencyPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var refFreqCSI_RSPresent bool
-	if refFreqCSI_RSPresent, err = r.ReadBool(); err != nil {
+	var RefFreqCSI_RSPresent bool
+	if RefFreqCSI_RSPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var measResultServingCellPresent bool
-	if measResultServingCellPresent, err = r.ReadBool(); err != nil {
+	var MeasResultServingCellPresent bool
+	if MeasResultServingCellPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var measResultNeighCellListNRPresent bool
-	if measResultNeighCellListNRPresent, err = r.ReadBool(); err != nil {
+	var MeasResultNeighCellListNRPresent bool
+	if MeasResultNeighCellListNRPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	if ssbFrequencyPresent {
-		ie.ssbFrequency = new(ARFCN_ValueNR)
-		if err = ie.ssbFrequency.Decode(r); err != nil {
-			return utils.WrapError("Decode ssbFrequency", err)
+	if SsbFrequencyPresent {
+		ie.SsbFrequency = new(ARFCN_ValueNR)
+		if err = ie.SsbFrequency.Decode(r); err != nil {
+			return utils.WrapError("Decode SsbFrequency", err)
 		}
 	}
-	if refFreqCSI_RSPresent {
-		ie.refFreqCSI_RS = new(ARFCN_ValueNR)
-		if err = ie.refFreqCSI_RS.Decode(r); err != nil {
-			return utils.WrapError("Decode refFreqCSI_RS", err)
+	if RefFreqCSI_RSPresent {
+		ie.RefFreqCSI_RS = new(ARFCN_ValueNR)
+		if err = ie.RefFreqCSI_RS.Decode(r); err != nil {
+			return utils.WrapError("Decode RefFreqCSI_RS", err)
 		}
 	}
-	if measResultServingCellPresent {
-		ie.measResultServingCell = new(MeasResultNR)
-		if err = ie.measResultServingCell.Decode(r); err != nil {
-			return utils.WrapError("Decode measResultServingCell", err)
+	if MeasResultServingCellPresent {
+		ie.MeasResultServingCell = new(MeasResultNR)
+		if err = ie.MeasResultServingCell.Decode(r); err != nil {
+			return utils.WrapError("Decode MeasResultServingCell", err)
 		}
 	}
-	if measResultNeighCellListNRPresent {
-		ie.measResultNeighCellListNR = new(MeasResultListNR)
-		if err = ie.measResultNeighCellListNR.Decode(r); err != nil {
-			return utils.WrapError("Decode measResultNeighCellListNR", err)
+	if MeasResultNeighCellListNRPresent {
+		ie.MeasResultNeighCellListNR = new(MeasResultListNR)
+		if err = ie.MeasResultNeighCellListNR.Decode(r); err != nil {
+			return utils.WrapError("Decode MeasResultNeighCellListNR", err)
 		}
 	}
 	return nil

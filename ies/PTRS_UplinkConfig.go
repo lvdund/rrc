@@ -6,26 +6,26 @@ import (
 )
 
 type PTRS_UplinkConfig struct {
-	transformPrecoderDisabled *PTRS_UplinkConfig_transformPrecoderDisabled `lb:2,ub:2,optional`
-	transformPrecoderEnabled  *PTRS_UplinkConfig_transformPrecoderEnabled  `lb:5,ub:5,optional`
+	TransformPrecoderDisabled *PTRS_UplinkConfig_transformPrecoderDisabled `lb:2,ub:2,optional`
+	TransformPrecoderEnabled  *PTRS_UplinkConfig_transformPrecoderEnabled  `lb:5,ub:5,optional`
 }
 
 func (ie *PTRS_UplinkConfig) Encode(w *uper.UperWriter) error {
 	var err error
-	preambleBits := []bool{ie.transformPrecoderDisabled != nil, ie.transformPrecoderEnabled != nil}
+	preambleBits := []bool{ie.TransformPrecoderDisabled != nil, ie.TransformPrecoderEnabled != nil}
 	for _, bit := range preambleBits {
 		if err = w.WriteBool(bit); err != nil {
 			return err
 		}
 	}
-	if ie.transformPrecoderDisabled != nil {
-		if err = ie.transformPrecoderDisabled.Encode(w); err != nil {
-			return utils.WrapError("Encode transformPrecoderDisabled", err)
+	if ie.TransformPrecoderDisabled != nil {
+		if err = ie.TransformPrecoderDisabled.Encode(w); err != nil {
+			return utils.WrapError("Encode TransformPrecoderDisabled", err)
 		}
 	}
-	if ie.transformPrecoderEnabled != nil {
-		if err = ie.transformPrecoderEnabled.Encode(w); err != nil {
-			return utils.WrapError("Encode transformPrecoderEnabled", err)
+	if ie.TransformPrecoderEnabled != nil {
+		if err = ie.TransformPrecoderEnabled.Encode(w); err != nil {
+			return utils.WrapError("Encode TransformPrecoderEnabled", err)
 		}
 	}
 	return nil
@@ -33,24 +33,24 @@ func (ie *PTRS_UplinkConfig) Encode(w *uper.UperWriter) error {
 
 func (ie *PTRS_UplinkConfig) Decode(r *uper.UperReader) error {
 	var err error
-	var transformPrecoderDisabledPresent bool
-	if transformPrecoderDisabledPresent, err = r.ReadBool(); err != nil {
+	var TransformPrecoderDisabledPresent bool
+	if TransformPrecoderDisabledPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var transformPrecoderEnabledPresent bool
-	if transformPrecoderEnabledPresent, err = r.ReadBool(); err != nil {
+	var TransformPrecoderEnabledPresent bool
+	if TransformPrecoderEnabledPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	if transformPrecoderDisabledPresent {
-		ie.transformPrecoderDisabled = new(PTRS_UplinkConfig_transformPrecoderDisabled)
-		if err = ie.transformPrecoderDisabled.Decode(r); err != nil {
-			return utils.WrapError("Decode transformPrecoderDisabled", err)
+	if TransformPrecoderDisabledPresent {
+		ie.TransformPrecoderDisabled = new(PTRS_UplinkConfig_transformPrecoderDisabled)
+		if err = ie.TransformPrecoderDisabled.Decode(r); err != nil {
+			return utils.WrapError("Decode TransformPrecoderDisabled", err)
 		}
 	}
-	if transformPrecoderEnabledPresent {
-		ie.transformPrecoderEnabled = new(PTRS_UplinkConfig_transformPrecoderEnabled)
-		if err = ie.transformPrecoderEnabled.Decode(r); err != nil {
-			return utils.WrapError("Decode transformPrecoderEnabled", err)
+	if TransformPrecoderEnabledPresent {
+		ie.TransformPrecoderEnabled = new(PTRS_UplinkConfig_transformPrecoderEnabled)
+		if err = ie.TransformPrecoderEnabled.Decode(r); err != nil {
+			return utils.WrapError("Decode TransformPrecoderEnabled", err)
 		}
 	}
 	return nil

@@ -6,32 +6,32 @@ import (
 )
 
 type PUCCH_ResourceSet struct {
-	pucch_ResourceSetId PUCCH_ResourceSetId `madatory`
-	resourceList        []PUCCH_ResourceId  `lb:1,ub:maxNrofPUCCH_ResourcesPerSet,madatory`
-	maxPayloadSize      *int64              `lb:4,ub:256,optional`
+	Pucch_ResourceSetId PUCCH_ResourceSetId `madatory`
+	ResourceList        []PUCCH_ResourceId  `lb:1,ub:maxNrofPUCCH_ResourcesPerSet,madatory`
+	MaxPayloadSize      *int64              `lb:4,ub:256,optional`
 }
 
 func (ie *PUCCH_ResourceSet) Encode(w *uper.UperWriter) error {
 	var err error
-	preambleBits := []bool{ie.maxPayloadSize != nil}
+	preambleBits := []bool{ie.MaxPayloadSize != nil}
 	for _, bit := range preambleBits {
 		if err = w.WriteBool(bit); err != nil {
 			return err
 		}
 	}
-	if err = ie.pucch_ResourceSetId.Encode(w); err != nil {
-		return utils.WrapError("Encode pucch_ResourceSetId", err)
+	if err = ie.Pucch_ResourceSetId.Encode(w); err != nil {
+		return utils.WrapError("Encode Pucch_ResourceSetId", err)
 	}
-	tmp_resourceList := utils.NewSequence[*PUCCH_ResourceId]([]*PUCCH_ResourceId{}, uper.Constraint{Lb: 1, Ub: maxNrofPUCCH_ResourcesPerSet}, false)
-	for _, i := range ie.resourceList {
-		tmp_resourceList.Value = append(tmp_resourceList.Value, &i)
+	tmp_ResourceList := utils.NewSequence[*PUCCH_ResourceId]([]*PUCCH_ResourceId{}, uper.Constraint{Lb: 1, Ub: maxNrofPUCCH_ResourcesPerSet}, false)
+	for _, i := range ie.ResourceList {
+		tmp_ResourceList.Value = append(tmp_ResourceList.Value, &i)
 	}
-	if err = tmp_resourceList.Encode(w); err != nil {
-		return utils.WrapError("Encode resourceList", err)
+	if err = tmp_ResourceList.Encode(w); err != nil {
+		return utils.WrapError("Encode ResourceList", err)
 	}
-	if ie.maxPayloadSize != nil {
-		if err = w.WriteInteger(*ie.maxPayloadSize, &uper.Constraint{Lb: 4, Ub: 256}, false); err != nil {
-			return utils.WrapError("Encode maxPayloadSize", err)
+	if ie.MaxPayloadSize != nil {
+		if err = w.WriteInteger(*ie.MaxPayloadSize, &uper.Constraint{Lb: 4, Ub: 256}, false); err != nil {
+			return utils.WrapError("Encode MaxPayloadSize", err)
 		}
 	}
 	return nil
@@ -39,30 +39,30 @@ func (ie *PUCCH_ResourceSet) Encode(w *uper.UperWriter) error {
 
 func (ie *PUCCH_ResourceSet) Decode(r *uper.UperReader) error {
 	var err error
-	var maxPayloadSizePresent bool
-	if maxPayloadSizePresent, err = r.ReadBool(); err != nil {
+	var MaxPayloadSizePresent bool
+	if MaxPayloadSizePresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	if err = ie.pucch_ResourceSetId.Decode(r); err != nil {
-		return utils.WrapError("Decode pucch_ResourceSetId", err)
+	if err = ie.Pucch_ResourceSetId.Decode(r); err != nil {
+		return utils.WrapError("Decode Pucch_ResourceSetId", err)
 	}
-	tmp_resourceList := utils.NewSequence[*PUCCH_ResourceId]([]*PUCCH_ResourceId{}, uper.Constraint{Lb: 1, Ub: maxNrofPUCCH_ResourcesPerSet}, false)
-	fn_resourceList := func() *PUCCH_ResourceId {
+	tmp_ResourceList := utils.NewSequence[*PUCCH_ResourceId]([]*PUCCH_ResourceId{}, uper.Constraint{Lb: 1, Ub: maxNrofPUCCH_ResourcesPerSet}, false)
+	fn_ResourceList := func() *PUCCH_ResourceId {
 		return new(PUCCH_ResourceId)
 	}
-	if err = tmp_resourceList.Decode(r, fn_resourceList); err != nil {
-		return utils.WrapError("Decode resourceList", err)
+	if err = tmp_ResourceList.Decode(r, fn_ResourceList); err != nil {
+		return utils.WrapError("Decode ResourceList", err)
 	}
-	ie.resourceList = []PUCCH_ResourceId{}
-	for _, i := range tmp_resourceList.Value {
-		ie.resourceList = append(ie.resourceList, *i)
+	ie.ResourceList = []PUCCH_ResourceId{}
+	for _, i := range tmp_ResourceList.Value {
+		ie.ResourceList = append(ie.ResourceList, *i)
 	}
-	if maxPayloadSizePresent {
-		var tmp_int_maxPayloadSize int64
-		if tmp_int_maxPayloadSize, err = r.ReadInteger(&uper.Constraint{Lb: 4, Ub: 256}, false); err != nil {
-			return utils.WrapError("Decode maxPayloadSize", err)
+	if MaxPayloadSizePresent {
+		var tmp_int_MaxPayloadSize int64
+		if tmp_int_MaxPayloadSize, err = r.ReadInteger(&uper.Constraint{Lb: 4, Ub: 256}, false); err != nil {
+			return utils.WrapError("Decode MaxPayloadSize", err)
 		}
-		ie.maxPayloadSize = &tmp_int_maxPayloadSize
+		ie.MaxPayloadSize = &tmp_int_MaxPayloadSize
 	}
 	return nil
 }

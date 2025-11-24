@@ -9,14 +9,14 @@ import (
 
 const (
 	SidelinkUEInformationNR_r16_CriticalExtensions_Choice_nothing uint64 = iota
-	SidelinkUEInformationNR_r16_CriticalExtensions_Choice_sidelinkUEInformationNR_r16
-	SidelinkUEInformationNR_r16_CriticalExtensions_Choice_criticalExtensionsFuture
+	SidelinkUEInformationNR_r16_CriticalExtensions_Choice_SidelinkUEInformationNR_r16
+	SidelinkUEInformationNR_r16_CriticalExtensions_Choice_CriticalExtensionsFuture
 )
 
 type SidelinkUEInformationNR_r16_CriticalExtensions struct {
 	Choice                      uint64
-	sidelinkUEInformationNR_r16 *SidelinkUEInformationNR_r16_IEs
-	criticalExtensionsFuture    interface{} `madatory`
+	SidelinkUEInformationNR_r16 *SidelinkUEInformationNR_r16_IEs
+	CriticalExtensionsFuture    interface{} `madatory`
 }
 
 func (ie *SidelinkUEInformationNR_r16_CriticalExtensions) Encode(w *uper.UperWriter) error {
@@ -25,11 +25,11 @@ func (ie *SidelinkUEInformationNR_r16_CriticalExtensions) Encode(w *uper.UperWri
 		return err
 	}
 	switch ie.Choice {
-	case SidelinkUEInformationNR_r16_CriticalExtensions_Choice_sidelinkUEInformationNR_r16:
-		if err = ie.sidelinkUEInformationNR_r16.Encode(w); err != nil {
-			err = utils.WrapError("Encode sidelinkUEInformationNR_r16", err)
+	case SidelinkUEInformationNR_r16_CriticalExtensions_Choice_SidelinkUEInformationNR_r16:
+		if err = ie.SidelinkUEInformationNR_r16.Encode(w); err != nil {
+			err = utils.WrapError("Encode SidelinkUEInformationNR_r16", err)
 		}
-	case SidelinkUEInformationNR_r16_CriticalExtensions_Choice_criticalExtensionsFuture:
+	case SidelinkUEInformationNR_r16_CriticalExtensions_Choice_CriticalExtensionsFuture:
 		// interface{} field of choice - nothing to encode
 	default:
 		err = fmt.Errorf("invalid choice: %d", ie.Choice)
@@ -43,12 +43,12 @@ func (ie *SidelinkUEInformationNR_r16_CriticalExtensions) Decode(r *uper.UperRea
 		return err
 	}
 	switch ie.Choice {
-	case SidelinkUEInformationNR_r16_CriticalExtensions_Choice_sidelinkUEInformationNR_r16:
-		ie.sidelinkUEInformationNR_r16 = new(SidelinkUEInformationNR_r16_IEs)
-		if err = ie.sidelinkUEInformationNR_r16.Decode(r); err != nil {
-			return utils.WrapError("Decode sidelinkUEInformationNR_r16", err)
+	case SidelinkUEInformationNR_r16_CriticalExtensions_Choice_SidelinkUEInformationNR_r16:
+		ie.SidelinkUEInformationNR_r16 = new(SidelinkUEInformationNR_r16_IEs)
+		if err = ie.SidelinkUEInformationNR_r16.Decode(r); err != nil {
+			return utils.WrapError("Decode SidelinkUEInformationNR_r16", err)
 		}
-	case SidelinkUEInformationNR_r16_CriticalExtensions_Choice_criticalExtensionsFuture:
+	case SidelinkUEInformationNR_r16_CriticalExtensions_Choice_CriticalExtensionsFuture:
 		// interface{} field of choice - nothing to decode
 	default:
 		return fmt.Errorf("invalid choice: %d", ie.Choice)

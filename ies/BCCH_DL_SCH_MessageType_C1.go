@@ -9,14 +9,14 @@ import (
 
 const (
 	BCCH_DL_SCH_MessageType_C1_Choice_nothing uint64 = iota
-	BCCH_DL_SCH_MessageType_C1_Choice_systemInformation
-	BCCH_DL_SCH_MessageType_C1_Choice_systemInformationBlockType1
+	BCCH_DL_SCH_MessageType_C1_Choice_SystemInformation
+	BCCH_DL_SCH_MessageType_C1_Choice_SystemInformationBlockType1
 )
 
 type BCCH_DL_SCH_MessageType_C1 struct {
 	Choice                      uint64
-	systemInformation           *SystemInformation
-	systemInformationBlockType1 *SIB1
+	SystemInformation           *SystemInformation
+	SystemInformationBlockType1 *SIB1
 }
 
 func (ie *BCCH_DL_SCH_MessageType_C1) Encode(w *uper.UperWriter) error {
@@ -25,13 +25,13 @@ func (ie *BCCH_DL_SCH_MessageType_C1) Encode(w *uper.UperWriter) error {
 		return err
 	}
 	switch ie.Choice {
-	case BCCH_DL_SCH_MessageType_C1_Choice_systemInformation:
-		if err = ie.systemInformation.Encode(w); err != nil {
-			err = utils.WrapError("Encode systemInformation", err)
+	case BCCH_DL_SCH_MessageType_C1_Choice_SystemInformation:
+		if err = ie.SystemInformation.Encode(w); err != nil {
+			err = utils.WrapError("Encode SystemInformation", err)
 		}
-	case BCCH_DL_SCH_MessageType_C1_Choice_systemInformationBlockType1:
-		if err = ie.systemInformationBlockType1.Encode(w); err != nil {
-			err = utils.WrapError("Encode systemInformationBlockType1", err)
+	case BCCH_DL_SCH_MessageType_C1_Choice_SystemInformationBlockType1:
+		if err = ie.SystemInformationBlockType1.Encode(w); err != nil {
+			err = utils.WrapError("Encode SystemInformationBlockType1", err)
 		}
 	default:
 		err = fmt.Errorf("invalid choice: %d", ie.Choice)
@@ -45,15 +45,15 @@ func (ie *BCCH_DL_SCH_MessageType_C1) Decode(r *uper.UperReader) error {
 		return err
 	}
 	switch ie.Choice {
-	case BCCH_DL_SCH_MessageType_C1_Choice_systemInformation:
-		ie.systemInformation = new(SystemInformation)
-		if err = ie.systemInformation.Decode(r); err != nil {
-			return utils.WrapError("Decode systemInformation", err)
+	case BCCH_DL_SCH_MessageType_C1_Choice_SystemInformation:
+		ie.SystemInformation = new(SystemInformation)
+		if err = ie.SystemInformation.Decode(r); err != nil {
+			return utils.WrapError("Decode SystemInformation", err)
 		}
-	case BCCH_DL_SCH_MessageType_C1_Choice_systemInformationBlockType1:
-		ie.systemInformationBlockType1 = new(SIB1)
-		if err = ie.systemInformationBlockType1.Decode(r); err != nil {
-			return utils.WrapError("Decode systemInformationBlockType1", err)
+	case BCCH_DL_SCH_MessageType_C1_Choice_SystemInformationBlockType1:
+		ie.SystemInformationBlockType1 = new(SIB1)
+		if err = ie.SystemInformationBlockType1.Decode(r); err != nil {
+			return utils.WrapError("Decode SystemInformationBlockType1", err)
 		}
 	default:
 		return fmt.Errorf("invalid choice: %d", ie.Choice)

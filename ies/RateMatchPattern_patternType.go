@@ -9,14 +9,14 @@ import (
 
 const (
 	RateMatchPattern_patternType_Choice_nothing uint64 = iota
-	RateMatchPattern_patternType_Choice_bitmaps
-	RateMatchPattern_patternType_Choice_controlResourceSet
+	RateMatchPattern_patternType_Choice_Bitmaps
+	RateMatchPattern_patternType_Choice_ControlResourceSet
 )
 
 type RateMatchPattern_patternType struct {
 	Choice             uint64
-	bitmaps            *RateMatchPattern_patternType_bitmaps
-	controlResourceSet *ControlResourceSetId
+	Bitmaps            *RateMatchPattern_patternType_bitmaps
+	ControlResourceSet *ControlResourceSetId
 }
 
 func (ie *RateMatchPattern_patternType) Encode(w *uper.UperWriter) error {
@@ -25,13 +25,13 @@ func (ie *RateMatchPattern_patternType) Encode(w *uper.UperWriter) error {
 		return err
 	}
 	switch ie.Choice {
-	case RateMatchPattern_patternType_Choice_bitmaps:
-		if err = ie.bitmaps.Encode(w); err != nil {
-			err = utils.WrapError("Encode bitmaps", err)
+	case RateMatchPattern_patternType_Choice_Bitmaps:
+		if err = ie.Bitmaps.Encode(w); err != nil {
+			err = utils.WrapError("Encode Bitmaps", err)
 		}
-	case RateMatchPattern_patternType_Choice_controlResourceSet:
-		if err = ie.controlResourceSet.Encode(w); err != nil {
-			err = utils.WrapError("Encode controlResourceSet", err)
+	case RateMatchPattern_patternType_Choice_ControlResourceSet:
+		if err = ie.ControlResourceSet.Encode(w); err != nil {
+			err = utils.WrapError("Encode ControlResourceSet", err)
 		}
 	default:
 		err = fmt.Errorf("invalid choice: %d", ie.Choice)
@@ -45,15 +45,15 @@ func (ie *RateMatchPattern_patternType) Decode(r *uper.UperReader) error {
 		return err
 	}
 	switch ie.Choice {
-	case RateMatchPattern_patternType_Choice_bitmaps:
-		ie.bitmaps = new(RateMatchPattern_patternType_bitmaps)
-		if err = ie.bitmaps.Decode(r); err != nil {
-			return utils.WrapError("Decode bitmaps", err)
+	case RateMatchPattern_patternType_Choice_Bitmaps:
+		ie.Bitmaps = new(RateMatchPattern_patternType_bitmaps)
+		if err = ie.Bitmaps.Decode(r); err != nil {
+			return utils.WrapError("Decode Bitmaps", err)
 		}
-	case RateMatchPattern_patternType_Choice_controlResourceSet:
-		ie.controlResourceSet = new(ControlResourceSetId)
-		if err = ie.controlResourceSet.Decode(r); err != nil {
-			return utils.WrapError("Decode controlResourceSet", err)
+	case RateMatchPattern_patternType_Choice_ControlResourceSet:
+		ie.ControlResourceSet = new(ControlResourceSetId)
+		if err = ie.ControlResourceSet.Decode(r); err != nil {
+			return utils.WrapError("Decode ControlResourceSet", err)
 		}
 	default:
 		return fmt.Errorf("invalid choice: %d", ie.Choice)

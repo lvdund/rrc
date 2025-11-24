@@ -6,30 +6,30 @@ import (
 )
 
 type MRB_RLC_ConfigBroadcast_r17 struct {
-	logicalChannelIdentity_r17 LogicalChannelIdentity                          `madatory`
-	sn_FieldLength_r17         *MRB_RLC_ConfigBroadcast_r17_sn_FieldLength_r17 `optional`
-	t_Reassembly_r17           *T_Reassembly                                   `optional`
+	LogicalChannelIdentity_r17 LogicalChannelIdentity                          `madatory`
+	Sn_FieldLength_r17         *MRB_RLC_ConfigBroadcast_r17_sn_FieldLength_r17 `optional`
+	T_Reassembly_r17           *T_Reassembly                                   `optional`
 }
 
 func (ie *MRB_RLC_ConfigBroadcast_r17) Encode(w *uper.UperWriter) error {
 	var err error
-	preambleBits := []bool{ie.sn_FieldLength_r17 != nil, ie.t_Reassembly_r17 != nil}
+	preambleBits := []bool{ie.Sn_FieldLength_r17 != nil, ie.T_Reassembly_r17 != nil}
 	for _, bit := range preambleBits {
 		if err = w.WriteBool(bit); err != nil {
 			return err
 		}
 	}
-	if err = ie.logicalChannelIdentity_r17.Encode(w); err != nil {
-		return utils.WrapError("Encode logicalChannelIdentity_r17", err)
+	if err = ie.LogicalChannelIdentity_r17.Encode(w); err != nil {
+		return utils.WrapError("Encode LogicalChannelIdentity_r17", err)
 	}
-	if ie.sn_FieldLength_r17 != nil {
-		if err = ie.sn_FieldLength_r17.Encode(w); err != nil {
-			return utils.WrapError("Encode sn_FieldLength_r17", err)
+	if ie.Sn_FieldLength_r17 != nil {
+		if err = ie.Sn_FieldLength_r17.Encode(w); err != nil {
+			return utils.WrapError("Encode Sn_FieldLength_r17", err)
 		}
 	}
-	if ie.t_Reassembly_r17 != nil {
-		if err = ie.t_Reassembly_r17.Encode(w); err != nil {
-			return utils.WrapError("Encode t_Reassembly_r17", err)
+	if ie.T_Reassembly_r17 != nil {
+		if err = ie.T_Reassembly_r17.Encode(w); err != nil {
+			return utils.WrapError("Encode T_Reassembly_r17", err)
 		}
 	}
 	return nil
@@ -37,27 +37,27 @@ func (ie *MRB_RLC_ConfigBroadcast_r17) Encode(w *uper.UperWriter) error {
 
 func (ie *MRB_RLC_ConfigBroadcast_r17) Decode(r *uper.UperReader) error {
 	var err error
-	var sn_FieldLength_r17Present bool
-	if sn_FieldLength_r17Present, err = r.ReadBool(); err != nil {
+	var Sn_FieldLength_r17Present bool
+	if Sn_FieldLength_r17Present, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var t_Reassembly_r17Present bool
-	if t_Reassembly_r17Present, err = r.ReadBool(); err != nil {
+	var T_Reassembly_r17Present bool
+	if T_Reassembly_r17Present, err = r.ReadBool(); err != nil {
 		return err
 	}
-	if err = ie.logicalChannelIdentity_r17.Decode(r); err != nil {
-		return utils.WrapError("Decode logicalChannelIdentity_r17", err)
+	if err = ie.LogicalChannelIdentity_r17.Decode(r); err != nil {
+		return utils.WrapError("Decode LogicalChannelIdentity_r17", err)
 	}
-	if sn_FieldLength_r17Present {
-		ie.sn_FieldLength_r17 = new(MRB_RLC_ConfigBroadcast_r17_sn_FieldLength_r17)
-		if err = ie.sn_FieldLength_r17.Decode(r); err != nil {
-			return utils.WrapError("Decode sn_FieldLength_r17", err)
+	if Sn_FieldLength_r17Present {
+		ie.Sn_FieldLength_r17 = new(MRB_RLC_ConfigBroadcast_r17_sn_FieldLength_r17)
+		if err = ie.Sn_FieldLength_r17.Decode(r); err != nil {
+			return utils.WrapError("Decode Sn_FieldLength_r17", err)
 		}
 	}
-	if t_Reassembly_r17Present {
-		ie.t_Reassembly_r17 = new(T_Reassembly)
-		if err = ie.t_Reassembly_r17.Decode(r); err != nil {
-			return utils.WrapError("Decode t_Reassembly_r17", err)
+	if T_Reassembly_r17Present {
+		ie.T_Reassembly_r17 = new(T_Reassembly)
+		if err = ie.T_Reassembly_r17.Decode(r); err != nil {
+			return utils.WrapError("Decode T_Reassembly_r17", err)
 		}
 	}
 	return nil

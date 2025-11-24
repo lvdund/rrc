@@ -6,24 +6,24 @@ import (
 )
 
 type TDD_UL_DL_SlotConfig struct {
-	slotIndex TDD_UL_DL_SlotIndex           `madatory`
-	symbols   *TDD_UL_DL_SlotConfig_symbols `lb:1,ub:maxNrofSymbols_1,optional`
+	SlotIndex TDD_UL_DL_SlotIndex           `madatory`
+	Symbols   *TDD_UL_DL_SlotConfig_symbols `lb:1,ub:maxNrofSymbols_1,optional`
 }
 
 func (ie *TDD_UL_DL_SlotConfig) Encode(w *uper.UperWriter) error {
 	var err error
-	preambleBits := []bool{ie.symbols != nil}
+	preambleBits := []bool{ie.Symbols != nil}
 	for _, bit := range preambleBits {
 		if err = w.WriteBool(bit); err != nil {
 			return err
 		}
 	}
-	if err = ie.slotIndex.Encode(w); err != nil {
-		return utils.WrapError("Encode slotIndex", err)
+	if err = ie.SlotIndex.Encode(w); err != nil {
+		return utils.WrapError("Encode SlotIndex", err)
 	}
-	if ie.symbols != nil {
-		if err = ie.symbols.Encode(w); err != nil {
-			return utils.WrapError("Encode symbols", err)
+	if ie.Symbols != nil {
+		if err = ie.Symbols.Encode(w); err != nil {
+			return utils.WrapError("Encode Symbols", err)
 		}
 	}
 	return nil
@@ -31,17 +31,17 @@ func (ie *TDD_UL_DL_SlotConfig) Encode(w *uper.UperWriter) error {
 
 func (ie *TDD_UL_DL_SlotConfig) Decode(r *uper.UperReader) error {
 	var err error
-	var symbolsPresent bool
-	if symbolsPresent, err = r.ReadBool(); err != nil {
+	var SymbolsPresent bool
+	if SymbolsPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	if err = ie.slotIndex.Decode(r); err != nil {
-		return utils.WrapError("Decode slotIndex", err)
+	if err = ie.SlotIndex.Decode(r); err != nil {
+		return utils.WrapError("Decode SlotIndex", err)
 	}
-	if symbolsPresent {
-		ie.symbols = new(TDD_UL_DL_SlotConfig_symbols)
-		if err = ie.symbols.Decode(r); err != nil {
-			return utils.WrapError("Decode symbols", err)
+	if SymbolsPresent {
+		ie.Symbols = new(TDD_UL_DL_SlotConfig_symbols)
+		if err = ie.Symbols.Decode(r); err != nil {
+			return utils.WrapError("Decode Symbols", err)
 		}
 	}
 	return nil

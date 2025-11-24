@@ -8,46 +8,46 @@ import (
 )
 
 type EUTRA_ParametersCommon struct {
-	mfbi_EUTRA                *EUTRA_ParametersCommon_mfbi_EUTRA         `optional`
-	modifiedMPR_BehaviorEUTRA *uper.BitString                            `lb:32,ub:32,optional`
-	multiNS_Pmax_EUTRA        *EUTRA_ParametersCommon_multiNS_Pmax_EUTRA `optional`
-	rs_SINR_MeasEUTRA         *EUTRA_ParametersCommon_rs_SINR_MeasEUTRA  `optional`
-	ne_DC                     *EUTRA_ParametersCommon_ne_DC              `optional,ext-1`
-	nr_HO_ToEN_DC_r16         *EUTRA_ParametersCommon_nr_HO_ToEN_DC_r16  `optional,ext-2`
+	Mfbi_EUTRA                *EUTRA_ParametersCommon_mfbi_EUTRA         `optional`
+	ModifiedMPR_BehaviorEUTRA *uper.BitString                            `lb:32,ub:32,optional`
+	MultiNS_Pmax_EUTRA        *EUTRA_ParametersCommon_multiNS_Pmax_EUTRA `optional`
+	Rs_SINR_MeasEUTRA         *EUTRA_ParametersCommon_rs_SINR_MeasEUTRA  `optional`
+	Ne_DC                     *EUTRA_ParametersCommon_ne_DC              `optional,ext-1`
+	Nr_HO_ToEN_DC_r16         *EUTRA_ParametersCommon_nr_HO_ToEN_DC_r16  `optional,ext-2`
 }
 
 func (ie *EUTRA_ParametersCommon) Encode(w *uper.UperWriter) error {
 	var err error
-	hasExtensions := ie.ne_DC != nil || ie.nr_HO_ToEN_DC_r16 != nil
-	preambleBits := []bool{hasExtensions, ie.mfbi_EUTRA != nil, ie.modifiedMPR_BehaviorEUTRA != nil, ie.multiNS_Pmax_EUTRA != nil, ie.rs_SINR_MeasEUTRA != nil}
+	hasExtensions := ie.Ne_DC != nil || ie.Nr_HO_ToEN_DC_r16 != nil
+	preambleBits := []bool{hasExtensions, ie.Mfbi_EUTRA != nil, ie.ModifiedMPR_BehaviorEUTRA != nil, ie.MultiNS_Pmax_EUTRA != nil, ie.Rs_SINR_MeasEUTRA != nil}
 	for _, bit := range preambleBits {
 		if err = w.WriteBool(bit); err != nil {
 			return err
 		}
 	}
-	if ie.mfbi_EUTRA != nil {
-		if err = ie.mfbi_EUTRA.Encode(w); err != nil {
-			return utils.WrapError("Encode mfbi_EUTRA", err)
+	if ie.Mfbi_EUTRA != nil {
+		if err = ie.Mfbi_EUTRA.Encode(w); err != nil {
+			return utils.WrapError("Encode Mfbi_EUTRA", err)
 		}
 	}
-	if ie.modifiedMPR_BehaviorEUTRA != nil {
-		if err = w.WriteBitString(ie.modifiedMPR_BehaviorEUTRA.Bytes, uint(ie.modifiedMPR_BehaviorEUTRA.NumBits), &uper.Constraint{Lb: 32, Ub: 32}, false); err != nil {
-			return utils.WrapError("Encode modifiedMPR_BehaviorEUTRA", err)
+	if ie.ModifiedMPR_BehaviorEUTRA != nil {
+		if err = w.WriteBitString(ie.ModifiedMPR_BehaviorEUTRA.Bytes, uint(ie.ModifiedMPR_BehaviorEUTRA.NumBits), &uper.Constraint{Lb: 32, Ub: 32}, false); err != nil {
+			return utils.WrapError("Encode ModifiedMPR_BehaviorEUTRA", err)
 		}
 	}
-	if ie.multiNS_Pmax_EUTRA != nil {
-		if err = ie.multiNS_Pmax_EUTRA.Encode(w); err != nil {
-			return utils.WrapError("Encode multiNS_Pmax_EUTRA", err)
+	if ie.MultiNS_Pmax_EUTRA != nil {
+		if err = ie.MultiNS_Pmax_EUTRA.Encode(w); err != nil {
+			return utils.WrapError("Encode MultiNS_Pmax_EUTRA", err)
 		}
 	}
-	if ie.rs_SINR_MeasEUTRA != nil {
-		if err = ie.rs_SINR_MeasEUTRA.Encode(w); err != nil {
-			return utils.WrapError("Encode rs_SINR_MeasEUTRA", err)
+	if ie.Rs_SINR_MeasEUTRA != nil {
+		if err = ie.Rs_SINR_MeasEUTRA.Encode(w); err != nil {
+			return utils.WrapError("Encode Rs_SINR_MeasEUTRA", err)
 		}
 	}
 	if hasExtensions {
 		// Extension bitmap: 2 bits for 2 extension groups
-		extBitmap := []bool{ie.ne_DC != nil, ie.nr_HO_ToEN_DC_r16 != nil}
+		extBitmap := []bool{ie.Ne_DC != nil, ie.Nr_HO_ToEN_DC_r16 != nil}
 		if err := w.WriteExtBitMap(extBitmap); err != nil {
 			return utils.WrapError("WriteExtBitMap EUTRA_ParametersCommon", err)
 		}
@@ -58,17 +58,17 @@ func (ie *EUTRA_ParametersCommon) Encode(w *uper.UperWriter) error {
 			extWriter := uper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 1
-			optionals_ext_1 := []bool{ie.ne_DC != nil}
+			optionals_ext_1 := []bool{ie.Ne_DC != nil}
 			for _, bit := range optionals_ext_1 {
 				if err := extWriter.WriteBool(bit); err != nil {
 					return err
 				}
 			}
 
-			// encode ne_DC optional
-			if ie.ne_DC != nil {
-				if err = ie.ne_DC.Encode(extWriter); err != nil {
-					return utils.WrapError("Encode ne_DC", err)
+			// encode Ne_DC optional
+			if ie.Ne_DC != nil {
+				if err = ie.Ne_DC.Encode(extWriter); err != nil {
+					return utils.WrapError("Encode Ne_DC", err)
 				}
 			}
 
@@ -87,17 +87,17 @@ func (ie *EUTRA_ParametersCommon) Encode(w *uper.UperWriter) error {
 			extWriter := uper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 2
-			optionals_ext_2 := []bool{ie.nr_HO_ToEN_DC_r16 != nil}
+			optionals_ext_2 := []bool{ie.Nr_HO_ToEN_DC_r16 != nil}
 			for _, bit := range optionals_ext_2 {
 				if err := extWriter.WriteBool(bit); err != nil {
 					return err
 				}
 			}
 
-			// encode nr_HO_ToEN_DC_r16 optional
-			if ie.nr_HO_ToEN_DC_r16 != nil {
-				if err = ie.nr_HO_ToEN_DC_r16.Encode(extWriter); err != nil {
-					return utils.WrapError("Encode nr_HO_ToEN_DC_r16", err)
+			// encode Nr_HO_ToEN_DC_r16 optional
+			if ie.Nr_HO_ToEN_DC_r16 != nil {
+				if err = ie.Nr_HO_ToEN_DC_r16.Encode(extWriter); err != nil {
+					return utils.WrapError("Encode Nr_HO_ToEN_DC_r16", err)
 				}
 			}
 
@@ -119,50 +119,50 @@ func (ie *EUTRA_ParametersCommon) Decode(r *uper.UperReader) error {
 	if extensionBit, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var mfbi_EUTRAPresent bool
-	if mfbi_EUTRAPresent, err = r.ReadBool(); err != nil {
+	var Mfbi_EUTRAPresent bool
+	if Mfbi_EUTRAPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var modifiedMPR_BehaviorEUTRAPresent bool
-	if modifiedMPR_BehaviorEUTRAPresent, err = r.ReadBool(); err != nil {
+	var ModifiedMPR_BehaviorEUTRAPresent bool
+	if ModifiedMPR_BehaviorEUTRAPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var multiNS_Pmax_EUTRAPresent bool
-	if multiNS_Pmax_EUTRAPresent, err = r.ReadBool(); err != nil {
+	var MultiNS_Pmax_EUTRAPresent bool
+	if MultiNS_Pmax_EUTRAPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var rs_SINR_MeasEUTRAPresent bool
-	if rs_SINR_MeasEUTRAPresent, err = r.ReadBool(); err != nil {
+	var Rs_SINR_MeasEUTRAPresent bool
+	if Rs_SINR_MeasEUTRAPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	if mfbi_EUTRAPresent {
-		ie.mfbi_EUTRA = new(EUTRA_ParametersCommon_mfbi_EUTRA)
-		if err = ie.mfbi_EUTRA.Decode(r); err != nil {
-			return utils.WrapError("Decode mfbi_EUTRA", err)
+	if Mfbi_EUTRAPresent {
+		ie.Mfbi_EUTRA = new(EUTRA_ParametersCommon_mfbi_EUTRA)
+		if err = ie.Mfbi_EUTRA.Decode(r); err != nil {
+			return utils.WrapError("Decode Mfbi_EUTRA", err)
 		}
 	}
-	if modifiedMPR_BehaviorEUTRAPresent {
-		var tmp_bs_modifiedMPR_BehaviorEUTRA []byte
-		var n_modifiedMPR_BehaviorEUTRA uint
-		if tmp_bs_modifiedMPR_BehaviorEUTRA, n_modifiedMPR_BehaviorEUTRA, err = r.ReadBitString(&uper.Constraint{Lb: 32, Ub: 32}, false); err != nil {
-			return utils.WrapError("Decode modifiedMPR_BehaviorEUTRA", err)
+	if ModifiedMPR_BehaviorEUTRAPresent {
+		var tmp_bs_ModifiedMPR_BehaviorEUTRA []byte
+		var n_ModifiedMPR_BehaviorEUTRA uint
+		if tmp_bs_ModifiedMPR_BehaviorEUTRA, n_ModifiedMPR_BehaviorEUTRA, err = r.ReadBitString(&uper.Constraint{Lb: 32, Ub: 32}, false); err != nil {
+			return utils.WrapError("Decode ModifiedMPR_BehaviorEUTRA", err)
 		}
 		tmp_bitstring := uper.BitString{
-			Bytes:   tmp_bs_modifiedMPR_BehaviorEUTRA,
-			NumBits: uint64(n_modifiedMPR_BehaviorEUTRA),
+			Bytes:   tmp_bs_ModifiedMPR_BehaviorEUTRA,
+			NumBits: uint64(n_ModifiedMPR_BehaviorEUTRA),
 		}
-		ie.modifiedMPR_BehaviorEUTRA = &tmp_bitstring
+		ie.ModifiedMPR_BehaviorEUTRA = &tmp_bitstring
 	}
-	if multiNS_Pmax_EUTRAPresent {
-		ie.multiNS_Pmax_EUTRA = new(EUTRA_ParametersCommon_multiNS_Pmax_EUTRA)
-		if err = ie.multiNS_Pmax_EUTRA.Decode(r); err != nil {
-			return utils.WrapError("Decode multiNS_Pmax_EUTRA", err)
+	if MultiNS_Pmax_EUTRAPresent {
+		ie.MultiNS_Pmax_EUTRA = new(EUTRA_ParametersCommon_multiNS_Pmax_EUTRA)
+		if err = ie.MultiNS_Pmax_EUTRA.Decode(r); err != nil {
+			return utils.WrapError("Decode MultiNS_Pmax_EUTRA", err)
 		}
 	}
-	if rs_SINR_MeasEUTRAPresent {
-		ie.rs_SINR_MeasEUTRA = new(EUTRA_ParametersCommon_rs_SINR_MeasEUTRA)
-		if err = ie.rs_SINR_MeasEUTRA.Decode(r); err != nil {
-			return utils.WrapError("Decode rs_SINR_MeasEUTRA", err)
+	if Rs_SINR_MeasEUTRAPresent {
+		ie.Rs_SINR_MeasEUTRA = new(EUTRA_ParametersCommon_rs_SINR_MeasEUTRA)
+		if err = ie.Rs_SINR_MeasEUTRA.Decode(r); err != nil {
+			return utils.WrapError("Decode Rs_SINR_MeasEUTRA", err)
 		}
 	}
 
@@ -182,15 +182,15 @@ func (ie *EUTRA_ParametersCommon) Decode(r *uper.UperReader) error {
 
 			extReader := uper.NewReader(bytes.NewReader(extBytes))
 
-			ne_DCPresent, err := extReader.ReadBool()
+			Ne_DCPresent, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			// decode ne_DC optional
-			if ne_DCPresent {
-				ie.ne_DC = new(EUTRA_ParametersCommon_ne_DC)
-				if err = ie.ne_DC.Decode(extReader); err != nil {
-					return utils.WrapError("Decode ne_DC", err)
+			// decode Ne_DC optional
+			if Ne_DCPresent {
+				ie.Ne_DC = new(EUTRA_ParametersCommon_ne_DC)
+				if err = ie.Ne_DC.Decode(extReader); err != nil {
+					return utils.WrapError("Decode Ne_DC", err)
 				}
 			}
 		}
@@ -203,15 +203,15 @@ func (ie *EUTRA_ParametersCommon) Decode(r *uper.UperReader) error {
 
 			extReader := uper.NewReader(bytes.NewReader(extBytes))
 
-			nr_HO_ToEN_DC_r16Present, err := extReader.ReadBool()
+			Nr_HO_ToEN_DC_r16Present, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			// decode nr_HO_ToEN_DC_r16 optional
-			if nr_HO_ToEN_DC_r16Present {
-				ie.nr_HO_ToEN_DC_r16 = new(EUTRA_ParametersCommon_nr_HO_ToEN_DC_r16)
-				if err = ie.nr_HO_ToEN_DC_r16.Decode(extReader); err != nil {
-					return utils.WrapError("Decode nr_HO_ToEN_DC_r16", err)
+			// decode Nr_HO_ToEN_DC_r16 optional
+			if Nr_HO_ToEN_DC_r16Present {
+				ie.Nr_HO_ToEN_DC_r16 = new(EUTRA_ParametersCommon_nr_HO_ToEN_DC_r16)
+				if err = ie.Nr_HO_ToEN_DC_r16.Decode(extReader); err != nil {
+					return utils.WrapError("Decode Nr_HO_ToEN_DC_r16", err)
 				}
 			}
 		}

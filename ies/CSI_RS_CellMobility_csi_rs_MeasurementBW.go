@@ -6,30 +6,30 @@ import (
 )
 
 type CSI_RS_CellMobility_csi_rs_MeasurementBW struct {
-	nrofPRBs CSI_RS_CellMobility_csi_rs_MeasurementBW_nrofPRBs `madatory`
-	startPRB int64                                             `lb:0,ub:2169,madatory`
+	NrofPRBs CSI_RS_CellMobility_csi_rs_MeasurementBW_nrofPRBs `madatory`
+	StartPRB int64                                             `lb:0,ub:2169,madatory`
 }
 
 func (ie *CSI_RS_CellMobility_csi_rs_MeasurementBW) Encode(w *uper.UperWriter) error {
 	var err error
-	if err = ie.nrofPRBs.Encode(w); err != nil {
-		return utils.WrapError("Encode nrofPRBs", err)
+	if err = ie.NrofPRBs.Encode(w); err != nil {
+		return utils.WrapError("Encode NrofPRBs", err)
 	}
-	if err = w.WriteInteger(ie.startPRB, &uper.Constraint{Lb: 0, Ub: 2169}, false); err != nil {
-		return utils.WrapError("WriteInteger startPRB", err)
+	if err = w.WriteInteger(ie.StartPRB, &uper.Constraint{Lb: 0, Ub: 2169}, false); err != nil {
+		return utils.WrapError("WriteInteger StartPRB", err)
 	}
 	return nil
 }
 
 func (ie *CSI_RS_CellMobility_csi_rs_MeasurementBW) Decode(r *uper.UperReader) error {
 	var err error
-	if err = ie.nrofPRBs.Decode(r); err != nil {
-		return utils.WrapError("Decode nrofPRBs", err)
+	if err = ie.NrofPRBs.Decode(r); err != nil {
+		return utils.WrapError("Decode NrofPRBs", err)
 	}
-	var tmp_int_startPRB int64
-	if tmp_int_startPRB, err = r.ReadInteger(&uper.Constraint{Lb: 0, Ub: 2169}, false); err != nil {
-		return utils.WrapError("ReadInteger startPRB", err)
+	var tmp_int_StartPRB int64
+	if tmp_int_StartPRB, err = r.ReadInteger(&uper.Constraint{Lb: 0, Ub: 2169}, false); err != nil {
+		return utils.WrapError("ReadInteger StartPRB", err)
 	}
-	ie.startPRB = tmp_int_startPRB
+	ie.StartPRB = tmp_int_StartPRB
 	return nil
 }

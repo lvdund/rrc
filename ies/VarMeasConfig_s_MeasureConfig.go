@@ -9,14 +9,14 @@ import (
 
 const (
 	VarMeasConfig_s_MeasureConfig_Choice_nothing uint64 = iota
-	VarMeasConfig_s_MeasureConfig_Choice_ssb_RSRP
-	VarMeasConfig_s_MeasureConfig_Choice_csi_RSRP
+	VarMeasConfig_s_MeasureConfig_Choice_Ssb_RSRP
+	VarMeasConfig_s_MeasureConfig_Choice_Csi_RSRP
 )
 
 type VarMeasConfig_s_MeasureConfig struct {
 	Choice   uint64
-	ssb_RSRP *RSRP_Range
-	csi_RSRP *RSRP_Range
+	Ssb_RSRP *RSRP_Range
+	Csi_RSRP *RSRP_Range
 }
 
 func (ie *VarMeasConfig_s_MeasureConfig) Encode(w *uper.UperWriter) error {
@@ -25,13 +25,13 @@ func (ie *VarMeasConfig_s_MeasureConfig) Encode(w *uper.UperWriter) error {
 		return err
 	}
 	switch ie.Choice {
-	case VarMeasConfig_s_MeasureConfig_Choice_ssb_RSRP:
-		if err = ie.ssb_RSRP.Encode(w); err != nil {
-			err = utils.WrapError("Encode ssb_RSRP", err)
+	case VarMeasConfig_s_MeasureConfig_Choice_Ssb_RSRP:
+		if err = ie.Ssb_RSRP.Encode(w); err != nil {
+			err = utils.WrapError("Encode Ssb_RSRP", err)
 		}
-	case VarMeasConfig_s_MeasureConfig_Choice_csi_RSRP:
-		if err = ie.csi_RSRP.Encode(w); err != nil {
-			err = utils.WrapError("Encode csi_RSRP", err)
+	case VarMeasConfig_s_MeasureConfig_Choice_Csi_RSRP:
+		if err = ie.Csi_RSRP.Encode(w); err != nil {
+			err = utils.WrapError("Encode Csi_RSRP", err)
 		}
 	default:
 		err = fmt.Errorf("invalid choice: %d", ie.Choice)
@@ -45,15 +45,15 @@ func (ie *VarMeasConfig_s_MeasureConfig) Decode(r *uper.UperReader) error {
 		return err
 	}
 	switch ie.Choice {
-	case VarMeasConfig_s_MeasureConfig_Choice_ssb_RSRP:
-		ie.ssb_RSRP = new(RSRP_Range)
-		if err = ie.ssb_RSRP.Decode(r); err != nil {
-			return utils.WrapError("Decode ssb_RSRP", err)
+	case VarMeasConfig_s_MeasureConfig_Choice_Ssb_RSRP:
+		ie.Ssb_RSRP = new(RSRP_Range)
+		if err = ie.Ssb_RSRP.Decode(r); err != nil {
+			return utils.WrapError("Decode Ssb_RSRP", err)
 		}
-	case VarMeasConfig_s_MeasureConfig_Choice_csi_RSRP:
-		ie.csi_RSRP = new(RSRP_Range)
-		if err = ie.csi_RSRP.Decode(r); err != nil {
-			return utils.WrapError("Decode csi_RSRP", err)
+	case VarMeasConfig_s_MeasureConfig_Choice_Csi_RSRP:
+		ie.Csi_RSRP = new(RSRP_Range)
+		if err = ie.Csi_RSRP.Decode(r); err != nil {
+			return utils.WrapError("Decode Csi_RSRP", err)
 		}
 	default:
 		return fmt.Errorf("invalid choice: %d", ie.Choice)

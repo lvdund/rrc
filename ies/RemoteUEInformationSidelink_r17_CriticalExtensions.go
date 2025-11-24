@@ -9,14 +9,14 @@ import (
 
 const (
 	RemoteUEInformationSidelink_r17_CriticalExtensions_Choice_nothing uint64 = iota
-	RemoteUEInformationSidelink_r17_CriticalExtensions_Choice_remoteUEInformationSidelink_r17
-	RemoteUEInformationSidelink_r17_CriticalExtensions_Choice_criticalExtensionsFuture
+	RemoteUEInformationSidelink_r17_CriticalExtensions_Choice_RemoteUEInformationSidelink_r17
+	RemoteUEInformationSidelink_r17_CriticalExtensions_Choice_CriticalExtensionsFuture
 )
 
 type RemoteUEInformationSidelink_r17_CriticalExtensions struct {
 	Choice                          uint64
-	remoteUEInformationSidelink_r17 *RemoteUEInformationSidelink_r17_IEs
-	criticalExtensionsFuture        interface{} `madatory`
+	RemoteUEInformationSidelink_r17 *RemoteUEInformationSidelink_r17_IEs
+	CriticalExtensionsFuture        interface{} `madatory`
 }
 
 func (ie *RemoteUEInformationSidelink_r17_CriticalExtensions) Encode(w *uper.UperWriter) error {
@@ -25,11 +25,11 @@ func (ie *RemoteUEInformationSidelink_r17_CriticalExtensions) Encode(w *uper.Upe
 		return err
 	}
 	switch ie.Choice {
-	case RemoteUEInformationSidelink_r17_CriticalExtensions_Choice_remoteUEInformationSidelink_r17:
-		if err = ie.remoteUEInformationSidelink_r17.Encode(w); err != nil {
-			err = utils.WrapError("Encode remoteUEInformationSidelink_r17", err)
+	case RemoteUEInformationSidelink_r17_CriticalExtensions_Choice_RemoteUEInformationSidelink_r17:
+		if err = ie.RemoteUEInformationSidelink_r17.Encode(w); err != nil {
+			err = utils.WrapError("Encode RemoteUEInformationSidelink_r17", err)
 		}
-	case RemoteUEInformationSidelink_r17_CriticalExtensions_Choice_criticalExtensionsFuture:
+	case RemoteUEInformationSidelink_r17_CriticalExtensions_Choice_CriticalExtensionsFuture:
 		// interface{} field of choice - nothing to encode
 	default:
 		err = fmt.Errorf("invalid choice: %d", ie.Choice)
@@ -43,12 +43,12 @@ func (ie *RemoteUEInformationSidelink_r17_CriticalExtensions) Decode(r *uper.Upe
 		return err
 	}
 	switch ie.Choice {
-	case RemoteUEInformationSidelink_r17_CriticalExtensions_Choice_remoteUEInformationSidelink_r17:
-		ie.remoteUEInformationSidelink_r17 = new(RemoteUEInformationSidelink_r17_IEs)
-		if err = ie.remoteUEInformationSidelink_r17.Decode(r); err != nil {
-			return utils.WrapError("Decode remoteUEInformationSidelink_r17", err)
+	case RemoteUEInformationSidelink_r17_CriticalExtensions_Choice_RemoteUEInformationSidelink_r17:
+		ie.RemoteUEInformationSidelink_r17 = new(RemoteUEInformationSidelink_r17_IEs)
+		if err = ie.RemoteUEInformationSidelink_r17.Decode(r); err != nil {
+			return utils.WrapError("Decode RemoteUEInformationSidelink_r17", err)
 		}
-	case RemoteUEInformationSidelink_r17_CriticalExtensions_Choice_criticalExtensionsFuture:
+	case RemoteUEInformationSidelink_r17_CriticalExtensions_Choice_CriticalExtensionsFuture:
 		// interface{} field of choice - nothing to decode
 	default:
 		return fmt.Errorf("invalid choice: %d", ie.Choice)

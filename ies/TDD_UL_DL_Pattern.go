@@ -8,41 +8,41 @@ import (
 )
 
 type TDD_UL_DL_Pattern struct {
-	dl_UL_TransmissionPeriodicity       TDD_UL_DL_Pattern_dl_UL_TransmissionPeriodicity        `madatory`
-	nrofDownlinkSlots                   int64                                                  `lb:0,ub:maxNrofSlots,madatory`
-	nrofDownlinkSymbols                 int64                                                  `lb:0,ub:maxNrofSymbols_1,madatory`
-	nrofUplinkSlots                     int64                                                  `lb:0,ub:maxNrofSlots,madatory`
-	nrofUplinkSymbols                   int64                                                  `lb:0,ub:maxNrofSymbols_1,madatory`
-	dl_UL_TransmissionPeriodicity_v1530 *TDD_UL_DL_Pattern_dl_UL_TransmissionPeriodicity_v1530 `optional,ext-1`
+	Dl_UL_TransmissionPeriodicity       TDD_UL_DL_Pattern_dl_UL_TransmissionPeriodicity        `madatory`
+	NrofDownlinkSlots                   int64                                                  `lb:0,ub:maxNrofSlots,madatory`
+	NrofDownlinkSymbols                 int64                                                  `lb:0,ub:maxNrofSymbols_1,madatory`
+	NrofUplinkSlots                     int64                                                  `lb:0,ub:maxNrofSlots,madatory`
+	NrofUplinkSymbols                   int64                                                  `lb:0,ub:maxNrofSymbols_1,madatory`
+	Dl_UL_TransmissionPeriodicity_v1530 *TDD_UL_DL_Pattern_dl_UL_TransmissionPeriodicity_v1530 `optional,ext-1`
 }
 
 func (ie *TDD_UL_DL_Pattern) Encode(w *uper.UperWriter) error {
 	var err error
-	hasExtensions := ie.dl_UL_TransmissionPeriodicity_v1530 != nil
+	hasExtensions := ie.Dl_UL_TransmissionPeriodicity_v1530 != nil
 	preambleBits := []bool{hasExtensions}
 	for _, bit := range preambleBits {
 		if err = w.WriteBool(bit); err != nil {
 			return err
 		}
 	}
-	if err = ie.dl_UL_TransmissionPeriodicity.Encode(w); err != nil {
-		return utils.WrapError("Encode dl_UL_TransmissionPeriodicity", err)
+	if err = ie.Dl_UL_TransmissionPeriodicity.Encode(w); err != nil {
+		return utils.WrapError("Encode Dl_UL_TransmissionPeriodicity", err)
 	}
-	if err = w.WriteInteger(ie.nrofDownlinkSlots, &uper.Constraint{Lb: 0, Ub: maxNrofSlots}, false); err != nil {
-		return utils.WrapError("WriteInteger nrofDownlinkSlots", err)
+	if err = w.WriteInteger(ie.NrofDownlinkSlots, &uper.Constraint{Lb: 0, Ub: maxNrofSlots}, false); err != nil {
+		return utils.WrapError("WriteInteger NrofDownlinkSlots", err)
 	}
-	if err = w.WriteInteger(ie.nrofDownlinkSymbols, &uper.Constraint{Lb: 0, Ub: maxNrofSymbols_1}, false); err != nil {
-		return utils.WrapError("WriteInteger nrofDownlinkSymbols", err)
+	if err = w.WriteInteger(ie.NrofDownlinkSymbols, &uper.Constraint{Lb: 0, Ub: maxNrofSymbols_1}, false); err != nil {
+		return utils.WrapError("WriteInteger NrofDownlinkSymbols", err)
 	}
-	if err = w.WriteInteger(ie.nrofUplinkSlots, &uper.Constraint{Lb: 0, Ub: maxNrofSlots}, false); err != nil {
-		return utils.WrapError("WriteInteger nrofUplinkSlots", err)
+	if err = w.WriteInteger(ie.NrofUplinkSlots, &uper.Constraint{Lb: 0, Ub: maxNrofSlots}, false); err != nil {
+		return utils.WrapError("WriteInteger NrofUplinkSlots", err)
 	}
-	if err = w.WriteInteger(ie.nrofUplinkSymbols, &uper.Constraint{Lb: 0, Ub: maxNrofSymbols_1}, false); err != nil {
-		return utils.WrapError("WriteInteger nrofUplinkSymbols", err)
+	if err = w.WriteInteger(ie.NrofUplinkSymbols, &uper.Constraint{Lb: 0, Ub: maxNrofSymbols_1}, false); err != nil {
+		return utils.WrapError("WriteInteger NrofUplinkSymbols", err)
 	}
 	if hasExtensions {
 		// Extension bitmap: 1 bits for 1 extension groups
-		extBitmap := []bool{ie.dl_UL_TransmissionPeriodicity_v1530 != nil}
+		extBitmap := []bool{ie.Dl_UL_TransmissionPeriodicity_v1530 != nil}
 		if err := w.WriteExtBitMap(extBitmap); err != nil {
 			return utils.WrapError("WriteExtBitMap TDD_UL_DL_Pattern", err)
 		}
@@ -53,17 +53,17 @@ func (ie *TDD_UL_DL_Pattern) Encode(w *uper.UperWriter) error {
 			extWriter := uper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 1
-			optionals_ext_1 := []bool{ie.dl_UL_TransmissionPeriodicity_v1530 != nil}
+			optionals_ext_1 := []bool{ie.Dl_UL_TransmissionPeriodicity_v1530 != nil}
 			for _, bit := range optionals_ext_1 {
 				if err := extWriter.WriteBool(bit); err != nil {
 					return err
 				}
 			}
 
-			// encode dl_UL_TransmissionPeriodicity_v1530 optional
-			if ie.dl_UL_TransmissionPeriodicity_v1530 != nil {
-				if err = ie.dl_UL_TransmissionPeriodicity_v1530.Encode(extWriter); err != nil {
-					return utils.WrapError("Encode dl_UL_TransmissionPeriodicity_v1530", err)
+			// encode Dl_UL_TransmissionPeriodicity_v1530 optional
+			if ie.Dl_UL_TransmissionPeriodicity_v1530 != nil {
+				if err = ie.Dl_UL_TransmissionPeriodicity_v1530.Encode(extWriter); err != nil {
+					return utils.WrapError("Encode Dl_UL_TransmissionPeriodicity_v1530", err)
 				}
 			}
 
@@ -85,29 +85,29 @@ func (ie *TDD_UL_DL_Pattern) Decode(r *uper.UperReader) error {
 	if extensionBit, err = r.ReadBool(); err != nil {
 		return err
 	}
-	if err = ie.dl_UL_TransmissionPeriodicity.Decode(r); err != nil {
-		return utils.WrapError("Decode dl_UL_TransmissionPeriodicity", err)
+	if err = ie.Dl_UL_TransmissionPeriodicity.Decode(r); err != nil {
+		return utils.WrapError("Decode Dl_UL_TransmissionPeriodicity", err)
 	}
-	var tmp_int_nrofDownlinkSlots int64
-	if tmp_int_nrofDownlinkSlots, err = r.ReadInteger(&uper.Constraint{Lb: 0, Ub: maxNrofSlots}, false); err != nil {
-		return utils.WrapError("ReadInteger nrofDownlinkSlots", err)
+	var tmp_int_NrofDownlinkSlots int64
+	if tmp_int_NrofDownlinkSlots, err = r.ReadInteger(&uper.Constraint{Lb: 0, Ub: maxNrofSlots}, false); err != nil {
+		return utils.WrapError("ReadInteger NrofDownlinkSlots", err)
 	}
-	ie.nrofDownlinkSlots = tmp_int_nrofDownlinkSlots
-	var tmp_int_nrofDownlinkSymbols int64
-	if tmp_int_nrofDownlinkSymbols, err = r.ReadInteger(&uper.Constraint{Lb: 0, Ub: maxNrofSymbols_1}, false); err != nil {
-		return utils.WrapError("ReadInteger nrofDownlinkSymbols", err)
+	ie.NrofDownlinkSlots = tmp_int_NrofDownlinkSlots
+	var tmp_int_NrofDownlinkSymbols int64
+	if tmp_int_NrofDownlinkSymbols, err = r.ReadInteger(&uper.Constraint{Lb: 0, Ub: maxNrofSymbols_1}, false); err != nil {
+		return utils.WrapError("ReadInteger NrofDownlinkSymbols", err)
 	}
-	ie.nrofDownlinkSymbols = tmp_int_nrofDownlinkSymbols
-	var tmp_int_nrofUplinkSlots int64
-	if tmp_int_nrofUplinkSlots, err = r.ReadInteger(&uper.Constraint{Lb: 0, Ub: maxNrofSlots}, false); err != nil {
-		return utils.WrapError("ReadInteger nrofUplinkSlots", err)
+	ie.NrofDownlinkSymbols = tmp_int_NrofDownlinkSymbols
+	var tmp_int_NrofUplinkSlots int64
+	if tmp_int_NrofUplinkSlots, err = r.ReadInteger(&uper.Constraint{Lb: 0, Ub: maxNrofSlots}, false); err != nil {
+		return utils.WrapError("ReadInteger NrofUplinkSlots", err)
 	}
-	ie.nrofUplinkSlots = tmp_int_nrofUplinkSlots
-	var tmp_int_nrofUplinkSymbols int64
-	if tmp_int_nrofUplinkSymbols, err = r.ReadInteger(&uper.Constraint{Lb: 0, Ub: maxNrofSymbols_1}, false); err != nil {
-		return utils.WrapError("ReadInteger nrofUplinkSymbols", err)
+	ie.NrofUplinkSlots = tmp_int_NrofUplinkSlots
+	var tmp_int_NrofUplinkSymbols int64
+	if tmp_int_NrofUplinkSymbols, err = r.ReadInteger(&uper.Constraint{Lb: 0, Ub: maxNrofSymbols_1}, false); err != nil {
+		return utils.WrapError("ReadInteger NrofUplinkSymbols", err)
 	}
-	ie.nrofUplinkSymbols = tmp_int_nrofUplinkSymbols
+	ie.NrofUplinkSymbols = tmp_int_NrofUplinkSymbols
 
 	if extensionBit {
 		// Read extension bitmap: 1 bits for 1 extension groups
@@ -125,15 +125,15 @@ func (ie *TDD_UL_DL_Pattern) Decode(r *uper.UperReader) error {
 
 			extReader := uper.NewReader(bytes.NewReader(extBytes))
 
-			dl_UL_TransmissionPeriodicity_v1530Present, err := extReader.ReadBool()
+			Dl_UL_TransmissionPeriodicity_v1530Present, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			// decode dl_UL_TransmissionPeriodicity_v1530 optional
-			if dl_UL_TransmissionPeriodicity_v1530Present {
-				ie.dl_UL_TransmissionPeriodicity_v1530 = new(TDD_UL_DL_Pattern_dl_UL_TransmissionPeriodicity_v1530)
-				if err = ie.dl_UL_TransmissionPeriodicity_v1530.Decode(extReader); err != nil {
-					return utils.WrapError("Decode dl_UL_TransmissionPeriodicity_v1530", err)
+			// decode Dl_UL_TransmissionPeriodicity_v1530 optional
+			if Dl_UL_TransmissionPeriodicity_v1530Present {
+				ie.Dl_UL_TransmissionPeriodicity_v1530 = new(TDD_UL_DL_Pattern_dl_UL_TransmissionPeriodicity_v1530)
+				if err = ie.Dl_UL_TransmissionPeriodicity_v1530.Decode(extReader); err != nil {
+					return utils.WrapError("Decode Dl_UL_TransmissionPeriodicity_v1530", err)
 				}
 			}
 		}

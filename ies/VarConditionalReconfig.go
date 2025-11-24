@@ -6,20 +6,20 @@ import (
 )
 
 type VarConditionalReconfig struct {
-	condReconfigList *CondReconfigToAddModList_r16 `optional`
+	CondReconfigList *CondReconfigToAddModList_r16 `optional`
 }
 
 func (ie *VarConditionalReconfig) Encode(w *uper.UperWriter) error {
 	var err error
-	preambleBits := []bool{ie.condReconfigList != nil}
+	preambleBits := []bool{ie.CondReconfigList != nil}
 	for _, bit := range preambleBits {
 		if err = w.WriteBool(bit); err != nil {
 			return err
 		}
 	}
-	if ie.condReconfigList != nil {
-		if err = ie.condReconfigList.Encode(w); err != nil {
-			return utils.WrapError("Encode condReconfigList", err)
+	if ie.CondReconfigList != nil {
+		if err = ie.CondReconfigList.Encode(w); err != nil {
+			return utils.WrapError("Encode CondReconfigList", err)
 		}
 	}
 	return nil
@@ -27,14 +27,14 @@ func (ie *VarConditionalReconfig) Encode(w *uper.UperWriter) error {
 
 func (ie *VarConditionalReconfig) Decode(r *uper.UperReader) error {
 	var err error
-	var condReconfigListPresent bool
-	if condReconfigListPresent, err = r.ReadBool(); err != nil {
+	var CondReconfigListPresent bool
+	if CondReconfigListPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	if condReconfigListPresent {
-		ie.condReconfigList = new(CondReconfigToAddModList_r16)
-		if err = ie.condReconfigList.Decode(r); err != nil {
-			return utils.WrapError("Decode condReconfigList", err)
+	if CondReconfigListPresent {
+		ie.CondReconfigList = new(CondReconfigToAddModList_r16)
+		if err = ie.CondReconfigList.Decode(r); err != nil {
+			return utils.WrapError("Decode CondReconfigList", err)
 		}
 	}
 	return nil

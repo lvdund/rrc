@@ -9,14 +9,14 @@ import (
 
 const (
 	MCGFailureInformation_r16_CriticalExtensions_Choice_nothing uint64 = iota
-	MCGFailureInformation_r16_CriticalExtensions_Choice_mcgFailureInformation_r16
-	MCGFailureInformation_r16_CriticalExtensions_Choice_criticalExtensionsFuture
+	MCGFailureInformation_r16_CriticalExtensions_Choice_McgFailureInformation_r16
+	MCGFailureInformation_r16_CriticalExtensions_Choice_CriticalExtensionsFuture
 )
 
 type MCGFailureInformation_r16_CriticalExtensions struct {
 	Choice                    uint64
-	mcgFailureInformation_r16 *MCGFailureInformation_r16_IEs
-	criticalExtensionsFuture  interface{} `madatory`
+	McgFailureInformation_r16 *MCGFailureInformation_r16_IEs
+	CriticalExtensionsFuture  interface{} `madatory`
 }
 
 func (ie *MCGFailureInformation_r16_CriticalExtensions) Encode(w *uper.UperWriter) error {
@@ -25,11 +25,11 @@ func (ie *MCGFailureInformation_r16_CriticalExtensions) Encode(w *uper.UperWrite
 		return err
 	}
 	switch ie.Choice {
-	case MCGFailureInformation_r16_CriticalExtensions_Choice_mcgFailureInformation_r16:
-		if err = ie.mcgFailureInformation_r16.Encode(w); err != nil {
-			err = utils.WrapError("Encode mcgFailureInformation_r16", err)
+	case MCGFailureInformation_r16_CriticalExtensions_Choice_McgFailureInformation_r16:
+		if err = ie.McgFailureInformation_r16.Encode(w); err != nil {
+			err = utils.WrapError("Encode McgFailureInformation_r16", err)
 		}
-	case MCGFailureInformation_r16_CriticalExtensions_Choice_criticalExtensionsFuture:
+	case MCGFailureInformation_r16_CriticalExtensions_Choice_CriticalExtensionsFuture:
 		// interface{} field of choice - nothing to encode
 	default:
 		err = fmt.Errorf("invalid choice: %d", ie.Choice)
@@ -43,12 +43,12 @@ func (ie *MCGFailureInformation_r16_CriticalExtensions) Decode(r *uper.UperReade
 		return err
 	}
 	switch ie.Choice {
-	case MCGFailureInformation_r16_CriticalExtensions_Choice_mcgFailureInformation_r16:
-		ie.mcgFailureInformation_r16 = new(MCGFailureInformation_r16_IEs)
-		if err = ie.mcgFailureInformation_r16.Decode(r); err != nil {
-			return utils.WrapError("Decode mcgFailureInformation_r16", err)
+	case MCGFailureInformation_r16_CriticalExtensions_Choice_McgFailureInformation_r16:
+		ie.McgFailureInformation_r16 = new(MCGFailureInformation_r16_IEs)
+		if err = ie.McgFailureInformation_r16.Decode(r); err != nil {
+			return utils.WrapError("Decode McgFailureInformation_r16", err)
 		}
-	case MCGFailureInformation_r16_CriticalExtensions_Choice_criticalExtensionsFuture:
+	case MCGFailureInformation_r16_CriticalExtensions_Choice_CriticalExtensionsFuture:
 		// interface{} field of choice - nothing to decode
 	default:
 		return fmt.Errorf("invalid choice: %d", ie.Choice)

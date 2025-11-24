@@ -6,41 +6,41 @@ import (
 )
 
 type RRCReconfiguration_v1560_IEs struct {
-	mrdc_SecondaryCellGroupConfig *MRDC_SecondaryCellGroupConfig `optional,setuprelease`
-	radioBearerConfig2            *[]byte                        `optional`
-	sk_Counter                    *SK_Counter                    `optional`
-	nonCriticalExtension          *RRCReconfiguration_v1610_IEs  `optional`
+	Mrdc_SecondaryCellGroupConfig *MRDC_SecondaryCellGroupConfig `optional,setuprelease`
+	RadioBearerConfig2            *[]byte                        `optional`
+	Sk_Counter                    *SK_Counter                    `optional`
+	NonCriticalExtension          *RRCReconfiguration_v1610_IEs  `optional`
 }
 
 func (ie *RRCReconfiguration_v1560_IEs) Encode(w *uper.UperWriter) error {
 	var err error
-	preambleBits := []bool{ie.mrdc_SecondaryCellGroupConfig != nil, ie.radioBearerConfig2 != nil, ie.sk_Counter != nil, ie.nonCriticalExtension != nil}
+	preambleBits := []bool{ie.Mrdc_SecondaryCellGroupConfig != nil, ie.RadioBearerConfig2 != nil, ie.Sk_Counter != nil, ie.NonCriticalExtension != nil}
 	for _, bit := range preambleBits {
 		if err = w.WriteBool(bit); err != nil {
 			return err
 		}
 	}
-	if ie.mrdc_SecondaryCellGroupConfig != nil {
-		tmp_mrdc_SecondaryCellGroupConfig := utils.SetupRelease[*MRDC_SecondaryCellGroupConfig]{
-			Setup: ie.mrdc_SecondaryCellGroupConfig,
+	if ie.Mrdc_SecondaryCellGroupConfig != nil {
+		tmp_Mrdc_SecondaryCellGroupConfig := utils.SetupRelease[*MRDC_SecondaryCellGroupConfig]{
+			Setup: ie.Mrdc_SecondaryCellGroupConfig,
 		}
-		if err = tmp_mrdc_SecondaryCellGroupConfig.Encode(w); err != nil {
-			return utils.WrapError("Encode mrdc_SecondaryCellGroupConfig", err)
-		}
-	}
-	if ie.radioBearerConfig2 != nil {
-		if err = w.WriteOctetString(*ie.radioBearerConfig2, &uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
-			return utils.WrapError("Encode radioBearerConfig2", err)
+		if err = tmp_Mrdc_SecondaryCellGroupConfig.Encode(w); err != nil {
+			return utils.WrapError("Encode Mrdc_SecondaryCellGroupConfig", err)
 		}
 	}
-	if ie.sk_Counter != nil {
-		if err = ie.sk_Counter.Encode(w); err != nil {
-			return utils.WrapError("Encode sk_Counter", err)
+	if ie.RadioBearerConfig2 != nil {
+		if err = w.WriteOctetString(*ie.RadioBearerConfig2, &uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+			return utils.WrapError("Encode RadioBearerConfig2", err)
 		}
 	}
-	if ie.nonCriticalExtension != nil {
-		if err = ie.nonCriticalExtension.Encode(w); err != nil {
-			return utils.WrapError("Encode nonCriticalExtension", err)
+	if ie.Sk_Counter != nil {
+		if err = ie.Sk_Counter.Encode(w); err != nil {
+			return utils.WrapError("Encode Sk_Counter", err)
+		}
+	}
+	if ie.NonCriticalExtension != nil {
+		if err = ie.NonCriticalExtension.Encode(w); err != nil {
+			return utils.WrapError("Encode NonCriticalExtension", err)
 		}
 	}
 	return nil
@@ -48,46 +48,46 @@ func (ie *RRCReconfiguration_v1560_IEs) Encode(w *uper.UperWriter) error {
 
 func (ie *RRCReconfiguration_v1560_IEs) Decode(r *uper.UperReader) error {
 	var err error
-	var mrdc_SecondaryCellGroupConfigPresent bool
-	if mrdc_SecondaryCellGroupConfigPresent, err = r.ReadBool(); err != nil {
+	var Mrdc_SecondaryCellGroupConfigPresent bool
+	if Mrdc_SecondaryCellGroupConfigPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var radioBearerConfig2Present bool
-	if radioBearerConfig2Present, err = r.ReadBool(); err != nil {
+	var RadioBearerConfig2Present bool
+	if RadioBearerConfig2Present, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var sk_CounterPresent bool
-	if sk_CounterPresent, err = r.ReadBool(); err != nil {
+	var Sk_CounterPresent bool
+	if Sk_CounterPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var nonCriticalExtensionPresent bool
-	if nonCriticalExtensionPresent, err = r.ReadBool(); err != nil {
+	var NonCriticalExtensionPresent bool
+	if NonCriticalExtensionPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	if mrdc_SecondaryCellGroupConfigPresent {
-		tmp_mrdc_SecondaryCellGroupConfig := utils.SetupRelease[*MRDC_SecondaryCellGroupConfig]{}
-		if err = tmp_mrdc_SecondaryCellGroupConfig.Decode(r); err != nil {
-			return utils.WrapError("Decode mrdc_SecondaryCellGroupConfig", err)
+	if Mrdc_SecondaryCellGroupConfigPresent {
+		tmp_Mrdc_SecondaryCellGroupConfig := utils.SetupRelease[*MRDC_SecondaryCellGroupConfig]{}
+		if err = tmp_Mrdc_SecondaryCellGroupConfig.Decode(r); err != nil {
+			return utils.WrapError("Decode Mrdc_SecondaryCellGroupConfig", err)
 		}
-		ie.mrdc_SecondaryCellGroupConfig = tmp_mrdc_SecondaryCellGroupConfig.Setup
+		ie.Mrdc_SecondaryCellGroupConfig = tmp_Mrdc_SecondaryCellGroupConfig.Setup
 	}
-	if radioBearerConfig2Present {
-		var tmp_os_radioBearerConfig2 []byte
-		if tmp_os_radioBearerConfig2, err = r.ReadOctetString(&uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
-			return utils.WrapError("Decode radioBearerConfig2", err)
+	if RadioBearerConfig2Present {
+		var tmp_os_RadioBearerConfig2 []byte
+		if tmp_os_RadioBearerConfig2, err = r.ReadOctetString(&uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+			return utils.WrapError("Decode RadioBearerConfig2", err)
 		}
-		ie.radioBearerConfig2 = &tmp_os_radioBearerConfig2
+		ie.RadioBearerConfig2 = &tmp_os_RadioBearerConfig2
 	}
-	if sk_CounterPresent {
-		ie.sk_Counter = new(SK_Counter)
-		if err = ie.sk_Counter.Decode(r); err != nil {
-			return utils.WrapError("Decode sk_Counter", err)
+	if Sk_CounterPresent {
+		ie.Sk_Counter = new(SK_Counter)
+		if err = ie.Sk_Counter.Decode(r); err != nil {
+			return utils.WrapError("Decode Sk_Counter", err)
 		}
 	}
-	if nonCriticalExtensionPresent {
-		ie.nonCriticalExtension = new(RRCReconfiguration_v1610_IEs)
-		if err = ie.nonCriticalExtension.Decode(r); err != nil {
-			return utils.WrapError("Decode nonCriticalExtension", err)
+	if NonCriticalExtensionPresent {
+		ie.NonCriticalExtension = new(RRCReconfiguration_v1610_IEs)
+		if err = ie.NonCriticalExtension.Decode(r); err != nil {
+			return utils.WrapError("Decode NonCriticalExtension", err)
 		}
 	}
 	return nil

@@ -9,14 +9,14 @@ import (
 
 const (
 	BandParametersSidelinkEUTRA_NR_v1710_nr_sl_TransmissionMode2_PartialSensing_r17_scs_CP_PatternTxSidelinkModeTwo_r17_Choice_nothing uint64 = iota
-	BandParametersSidelinkEUTRA_NR_v1710_nr_sl_TransmissionMode2_PartialSensing_r17_scs_CP_PatternTxSidelinkModeTwo_r17_Choice_fr1_r17
-	BandParametersSidelinkEUTRA_NR_v1710_nr_sl_TransmissionMode2_PartialSensing_r17_scs_CP_PatternTxSidelinkModeTwo_r17_Choice_fr2_r17
+	BandParametersSidelinkEUTRA_NR_v1710_nr_sl_TransmissionMode2_PartialSensing_r17_scs_CP_PatternTxSidelinkModeTwo_r17_Choice_Fr1_r17
+	BandParametersSidelinkEUTRA_NR_v1710_nr_sl_TransmissionMode2_PartialSensing_r17_scs_CP_PatternTxSidelinkModeTwo_r17_Choice_Fr2_r17
 )
 
 type BandParametersSidelinkEUTRA_NR_v1710_nr_sl_TransmissionMode2_PartialSensing_r17_scs_CP_PatternTxSidelinkModeTwo_r17 struct {
 	Choice  uint64
-	fr1_r17 *Fr1_r17
-	fr2_r17 *Fr2_r17
+	Fr1_r17 *Fr1_r17
+	Fr2_r17 *Fr2_r17
 }
 
 func (ie *BandParametersSidelinkEUTRA_NR_v1710_nr_sl_TransmissionMode2_PartialSensing_r17_scs_CP_PatternTxSidelinkModeTwo_r17) Encode(w *uper.UperWriter) error {
@@ -25,13 +25,13 @@ func (ie *BandParametersSidelinkEUTRA_NR_v1710_nr_sl_TransmissionMode2_PartialSe
 		return err
 	}
 	switch ie.Choice {
-	case BandParametersSidelinkEUTRA_NR_v1710_nr_sl_TransmissionMode2_PartialSensing_r17_scs_CP_PatternTxSidelinkModeTwo_r17_Choice_fr1_r17:
-		if err = ie.fr1_r17.Encode(w); err != nil {
-			err = utils.WrapError("Encode fr1_r17", err)
+	case BandParametersSidelinkEUTRA_NR_v1710_nr_sl_TransmissionMode2_PartialSensing_r17_scs_CP_PatternTxSidelinkModeTwo_r17_Choice_Fr1_r17:
+		if err = ie.Fr1_r17.Encode(w); err != nil {
+			err = utils.WrapError("Encode Fr1_r17", err)
 		}
-	case BandParametersSidelinkEUTRA_NR_v1710_nr_sl_TransmissionMode2_PartialSensing_r17_scs_CP_PatternTxSidelinkModeTwo_r17_Choice_fr2_r17:
-		if err = ie.fr2_r17.Encode(w); err != nil {
-			err = utils.WrapError("Encode fr2_r17", err)
+	case BandParametersSidelinkEUTRA_NR_v1710_nr_sl_TransmissionMode2_PartialSensing_r17_scs_CP_PatternTxSidelinkModeTwo_r17_Choice_Fr2_r17:
+		if err = ie.Fr2_r17.Encode(w); err != nil {
+			err = utils.WrapError("Encode Fr2_r17", err)
 		}
 	default:
 		err = fmt.Errorf("invalid choice: %d", ie.Choice)
@@ -45,15 +45,15 @@ func (ie *BandParametersSidelinkEUTRA_NR_v1710_nr_sl_TransmissionMode2_PartialSe
 		return err
 	}
 	switch ie.Choice {
-	case BandParametersSidelinkEUTRA_NR_v1710_nr_sl_TransmissionMode2_PartialSensing_r17_scs_CP_PatternTxSidelinkModeTwo_r17_Choice_fr1_r17:
-		ie.fr1_r17 = new(Fr1_r17)
-		if err = ie.fr1_r17.Decode(r); err != nil {
-			return utils.WrapError("Decode fr1_r17", err)
+	case BandParametersSidelinkEUTRA_NR_v1710_nr_sl_TransmissionMode2_PartialSensing_r17_scs_CP_PatternTxSidelinkModeTwo_r17_Choice_Fr1_r17:
+		ie.Fr1_r17 = new(Fr1_r17)
+		if err = ie.Fr1_r17.Decode(r); err != nil {
+			return utils.WrapError("Decode Fr1_r17", err)
 		}
-	case BandParametersSidelinkEUTRA_NR_v1710_nr_sl_TransmissionMode2_PartialSensing_r17_scs_CP_PatternTxSidelinkModeTwo_r17_Choice_fr2_r17:
-		ie.fr2_r17 = new(Fr2_r17)
-		if err = ie.fr2_r17.Decode(r); err != nil {
-			return utils.WrapError("Decode fr2_r17", err)
+	case BandParametersSidelinkEUTRA_NR_v1710_nr_sl_TransmissionMode2_PartialSensing_r17_scs_CP_PatternTxSidelinkModeTwo_r17_Choice_Fr2_r17:
+		ie.Fr2_r17 = new(Fr2_r17)
+		if err = ie.Fr2_r17.Decode(r); err != nil {
+			return utils.WrapError("Decode Fr2_r17", err)
 		}
 	default:
 		return fmt.Errorf("invalid choice: %d", ie.Choice)

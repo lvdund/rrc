@@ -9,14 +9,14 @@ import (
 
 const (
 	SL_DRX_ConfigUC_r17_sl_drx_onDurationTimer_r17_Choice_nothing uint64 = iota
-	SL_DRX_ConfigUC_r17_sl_drx_onDurationTimer_r17_Choice_subMilliSeconds
-	SL_DRX_ConfigUC_r17_sl_drx_onDurationTimer_r17_Choice_milliSeconds
+	SL_DRX_ConfigUC_r17_sl_drx_onDurationTimer_r17_Choice_SubMilliSeconds
+	SL_DRX_ConfigUC_r17_sl_drx_onDurationTimer_r17_Choice_MilliSeconds
 )
 
 type SL_DRX_ConfigUC_r17_sl_drx_onDurationTimer_r17 struct {
 	Choice          uint64
-	subMilliSeconds int64 `lb:1,ub:31,madatory`
-	milliSeconds    *SL_DRX_ConfigUC_r17_sl_drx_onDurationTimer_r17_milliSeconds
+	SubMilliSeconds int64 `lb:1,ub:31,madatory`
+	MilliSeconds    *SL_DRX_ConfigUC_r17_sl_drx_onDurationTimer_r17_milliSeconds
 }
 
 func (ie *SL_DRX_ConfigUC_r17_sl_drx_onDurationTimer_r17) Encode(w *uper.UperWriter) error {
@@ -25,13 +25,13 @@ func (ie *SL_DRX_ConfigUC_r17_sl_drx_onDurationTimer_r17) Encode(w *uper.UperWri
 		return err
 	}
 	switch ie.Choice {
-	case SL_DRX_ConfigUC_r17_sl_drx_onDurationTimer_r17_Choice_subMilliSeconds:
-		if err = w.WriteInteger(int64(ie.subMilliSeconds), &uper.Constraint{Lb: 1, Ub: 31}, false); err != nil {
-			err = utils.WrapError("Encode subMilliSeconds", err)
+	case SL_DRX_ConfigUC_r17_sl_drx_onDurationTimer_r17_Choice_SubMilliSeconds:
+		if err = w.WriteInteger(int64(ie.SubMilliSeconds), &uper.Constraint{Lb: 1, Ub: 31}, false); err != nil {
+			err = utils.WrapError("Encode SubMilliSeconds", err)
 		}
-	case SL_DRX_ConfigUC_r17_sl_drx_onDurationTimer_r17_Choice_milliSeconds:
-		if err = ie.milliSeconds.Encode(w); err != nil {
-			err = utils.WrapError("Encode milliSeconds", err)
+	case SL_DRX_ConfigUC_r17_sl_drx_onDurationTimer_r17_Choice_MilliSeconds:
+		if err = ie.MilliSeconds.Encode(w); err != nil {
+			err = utils.WrapError("Encode MilliSeconds", err)
 		}
 	default:
 		err = fmt.Errorf("invalid choice: %d", ie.Choice)
@@ -45,16 +45,16 @@ func (ie *SL_DRX_ConfigUC_r17_sl_drx_onDurationTimer_r17) Decode(r *uper.UperRea
 		return err
 	}
 	switch ie.Choice {
-	case SL_DRX_ConfigUC_r17_sl_drx_onDurationTimer_r17_Choice_subMilliSeconds:
-		var tmp_int_subMilliSeconds int64
-		if tmp_int_subMilliSeconds, err = r.ReadInteger(&uper.Constraint{Lb: 1, Ub: 31}, false); err != nil {
-			return utils.WrapError("Decode subMilliSeconds", err)
+	case SL_DRX_ConfigUC_r17_sl_drx_onDurationTimer_r17_Choice_SubMilliSeconds:
+		var tmp_int_SubMilliSeconds int64
+		if tmp_int_SubMilliSeconds, err = r.ReadInteger(&uper.Constraint{Lb: 1, Ub: 31}, false); err != nil {
+			return utils.WrapError("Decode SubMilliSeconds", err)
 		}
-		ie.subMilliSeconds = tmp_int_subMilliSeconds
-	case SL_DRX_ConfigUC_r17_sl_drx_onDurationTimer_r17_Choice_milliSeconds:
-		ie.milliSeconds = new(SL_DRX_ConfigUC_r17_sl_drx_onDurationTimer_r17_milliSeconds)
-		if err = ie.milliSeconds.Decode(r); err != nil {
-			return utils.WrapError("Decode milliSeconds", err)
+		ie.SubMilliSeconds = tmp_int_SubMilliSeconds
+	case SL_DRX_ConfigUC_r17_sl_drx_onDurationTimer_r17_Choice_MilliSeconds:
+		ie.MilliSeconds = new(SL_DRX_ConfigUC_r17_sl_drx_onDurationTimer_r17_milliSeconds)
+		if err = ie.MilliSeconds.Decode(r); err != nil {
+			return utils.WrapError("Decode MilliSeconds", err)
 		}
 	default:
 		return fmt.Errorf("invalid choice: %d", ie.Choice)

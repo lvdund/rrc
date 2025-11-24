@@ -6,24 +6,24 @@ import (
 )
 
 type DRX_Info struct {
-	drx_LongCycleStartOffset DRX_Info_drx_LongCycleStartOffset `lb:0,ub:9,madatory`
-	shortDRX                 *DRX_Info_shortDRX                `lb:1,ub:16,optional`
+	Drx_LongCycleStartOffset DRX_Info_drx_LongCycleStartOffset `lb:0,ub:9,madatory`
+	ShortDRX                 *DRX_Info_shortDRX                `lb:1,ub:16,optional`
 }
 
 func (ie *DRX_Info) Encode(w *uper.UperWriter) error {
 	var err error
-	preambleBits := []bool{ie.shortDRX != nil}
+	preambleBits := []bool{ie.ShortDRX != nil}
 	for _, bit := range preambleBits {
 		if err = w.WriteBool(bit); err != nil {
 			return err
 		}
 	}
-	if err = ie.drx_LongCycleStartOffset.Encode(w); err != nil {
-		return utils.WrapError("Encode drx_LongCycleStartOffset", err)
+	if err = ie.Drx_LongCycleStartOffset.Encode(w); err != nil {
+		return utils.WrapError("Encode Drx_LongCycleStartOffset", err)
 	}
-	if ie.shortDRX != nil {
-		if err = ie.shortDRX.Encode(w); err != nil {
-			return utils.WrapError("Encode shortDRX", err)
+	if ie.ShortDRX != nil {
+		if err = ie.ShortDRX.Encode(w); err != nil {
+			return utils.WrapError("Encode ShortDRX", err)
 		}
 	}
 	return nil
@@ -31,17 +31,17 @@ func (ie *DRX_Info) Encode(w *uper.UperWriter) error {
 
 func (ie *DRX_Info) Decode(r *uper.UperReader) error {
 	var err error
-	var shortDRXPresent bool
-	if shortDRXPresent, err = r.ReadBool(); err != nil {
+	var ShortDRXPresent bool
+	if ShortDRXPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	if err = ie.drx_LongCycleStartOffset.Decode(r); err != nil {
-		return utils.WrapError("Decode drx_LongCycleStartOffset", err)
+	if err = ie.Drx_LongCycleStartOffset.Decode(r); err != nil {
+		return utils.WrapError("Decode Drx_LongCycleStartOffset", err)
 	}
-	if shortDRXPresent {
-		ie.shortDRX = new(DRX_Info_shortDRX)
-		if err = ie.shortDRX.Decode(r); err != nil {
-			return utils.WrapError("Decode shortDRX", err)
+	if ShortDRXPresent {
+		ie.ShortDRX = new(DRX_Info_shortDRX)
+		if err = ie.ShortDRX.Decode(r); err != nil {
+			return utils.WrapError("Decode ShortDRX", err)
 		}
 	}
 	return nil

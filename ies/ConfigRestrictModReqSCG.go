@@ -8,38 +8,38 @@ import (
 )
 
 type ConfigRestrictModReqSCG struct {
-	requestedBC_MRDC                   *BandCombinationInfoSN `optional`
-	requestedP_MaxFR1                  *P_Max                 `optional`
-	requestedPDCCH_BlindDetectionSCG   *int64                 `lb:1,ub:15,optional,ext-1`
-	requestedP_MaxEUTRA                *P_Max                 `optional,ext-1`
-	requestedP_MaxFR2_r16              *P_Max                 `optional,ext-2`
-	requestedMaxInterFreqMeasIdSCG_r16 *int64                 `lb:1,ub:maxMeasIdentitiesMN,optional,ext-2`
-	requestedMaxIntraFreqMeasIdSCG_r16 *int64                 `lb:1,ub:maxMeasIdentitiesMN,optional,ext-2`
-	requestedToffset_r16               *T_Offset_r16          `optional,ext-2`
+	RequestedBC_MRDC                   *BandCombinationInfoSN `optional`
+	RequestedP_MaxFR1                  *P_Max                 `optional`
+	RequestedPDCCH_BlindDetectionSCG   *int64                 `lb:1,ub:15,optional,ext-1`
+	RequestedP_MaxEUTRA                *P_Max                 `optional,ext-1`
+	RequestedP_MaxFR2_r16              *P_Max                 `optional,ext-2`
+	RequestedMaxInterFreqMeasIdSCG_r16 *int64                 `lb:1,ub:maxMeasIdentitiesMN,optional,ext-2`
+	RequestedMaxIntraFreqMeasIdSCG_r16 *int64                 `lb:1,ub:maxMeasIdentitiesMN,optional,ext-2`
+	RequestedToffset_r16               *T_Offset_r16          `optional,ext-2`
 }
 
 func (ie *ConfigRestrictModReqSCG) Encode(w *uper.UperWriter) error {
 	var err error
-	hasExtensions := ie.requestedPDCCH_BlindDetectionSCG != nil || ie.requestedP_MaxEUTRA != nil || ie.requestedP_MaxFR2_r16 != nil || ie.requestedMaxInterFreqMeasIdSCG_r16 != nil || ie.requestedMaxIntraFreqMeasIdSCG_r16 != nil || ie.requestedToffset_r16 != nil
-	preambleBits := []bool{hasExtensions, ie.requestedBC_MRDC != nil, ie.requestedP_MaxFR1 != nil}
+	hasExtensions := ie.RequestedPDCCH_BlindDetectionSCG != nil || ie.RequestedP_MaxEUTRA != nil || ie.RequestedP_MaxFR2_r16 != nil || ie.RequestedMaxInterFreqMeasIdSCG_r16 != nil || ie.RequestedMaxIntraFreqMeasIdSCG_r16 != nil || ie.RequestedToffset_r16 != nil
+	preambleBits := []bool{hasExtensions, ie.RequestedBC_MRDC != nil, ie.RequestedP_MaxFR1 != nil}
 	for _, bit := range preambleBits {
 		if err = w.WriteBool(bit); err != nil {
 			return err
 		}
 	}
-	if ie.requestedBC_MRDC != nil {
-		if err = ie.requestedBC_MRDC.Encode(w); err != nil {
-			return utils.WrapError("Encode requestedBC_MRDC", err)
+	if ie.RequestedBC_MRDC != nil {
+		if err = ie.RequestedBC_MRDC.Encode(w); err != nil {
+			return utils.WrapError("Encode RequestedBC_MRDC", err)
 		}
 	}
-	if ie.requestedP_MaxFR1 != nil {
-		if err = ie.requestedP_MaxFR1.Encode(w); err != nil {
-			return utils.WrapError("Encode requestedP_MaxFR1", err)
+	if ie.RequestedP_MaxFR1 != nil {
+		if err = ie.RequestedP_MaxFR1.Encode(w); err != nil {
+			return utils.WrapError("Encode RequestedP_MaxFR1", err)
 		}
 	}
 	if hasExtensions {
 		// Extension bitmap: 2 bits for 2 extension groups
-		extBitmap := []bool{ie.requestedPDCCH_BlindDetectionSCG != nil || ie.requestedP_MaxEUTRA != nil, ie.requestedP_MaxFR2_r16 != nil || ie.requestedMaxInterFreqMeasIdSCG_r16 != nil || ie.requestedMaxIntraFreqMeasIdSCG_r16 != nil || ie.requestedToffset_r16 != nil}
+		extBitmap := []bool{ie.RequestedPDCCH_BlindDetectionSCG != nil || ie.RequestedP_MaxEUTRA != nil, ie.RequestedP_MaxFR2_r16 != nil || ie.RequestedMaxInterFreqMeasIdSCG_r16 != nil || ie.RequestedMaxIntraFreqMeasIdSCG_r16 != nil || ie.RequestedToffset_r16 != nil}
 		if err := w.WriteExtBitMap(extBitmap); err != nil {
 			return utils.WrapError("WriteExtBitMap ConfigRestrictModReqSCG", err)
 		}
@@ -50,23 +50,23 @@ func (ie *ConfigRestrictModReqSCG) Encode(w *uper.UperWriter) error {
 			extWriter := uper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 1
-			optionals_ext_1 := []bool{ie.requestedPDCCH_BlindDetectionSCG != nil, ie.requestedP_MaxEUTRA != nil}
+			optionals_ext_1 := []bool{ie.RequestedPDCCH_BlindDetectionSCG != nil, ie.RequestedP_MaxEUTRA != nil}
 			for _, bit := range optionals_ext_1 {
 				if err := extWriter.WriteBool(bit); err != nil {
 					return err
 				}
 			}
 
-			// encode requestedPDCCH_BlindDetectionSCG optional
-			if ie.requestedPDCCH_BlindDetectionSCG != nil {
-				if err = extWriter.WriteInteger(*ie.requestedPDCCH_BlindDetectionSCG, &uper.Constraint{Lb: 1, Ub: 15}, false); err != nil {
-					return utils.WrapError("Encode requestedPDCCH_BlindDetectionSCG", err)
+			// encode RequestedPDCCH_BlindDetectionSCG optional
+			if ie.RequestedPDCCH_BlindDetectionSCG != nil {
+				if err = extWriter.WriteInteger(*ie.RequestedPDCCH_BlindDetectionSCG, &uper.Constraint{Lb: 1, Ub: 15}, false); err != nil {
+					return utils.WrapError("Encode RequestedPDCCH_BlindDetectionSCG", err)
 				}
 			}
-			// encode requestedP_MaxEUTRA optional
-			if ie.requestedP_MaxEUTRA != nil {
-				if err = ie.requestedP_MaxEUTRA.Encode(extWriter); err != nil {
-					return utils.WrapError("Encode requestedP_MaxEUTRA", err)
+			// encode RequestedP_MaxEUTRA optional
+			if ie.RequestedP_MaxEUTRA != nil {
+				if err = ie.RequestedP_MaxEUTRA.Encode(extWriter); err != nil {
+					return utils.WrapError("Encode RequestedP_MaxEUTRA", err)
 				}
 			}
 
@@ -85,35 +85,35 @@ func (ie *ConfigRestrictModReqSCG) Encode(w *uper.UperWriter) error {
 			extWriter := uper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 2
-			optionals_ext_2 := []bool{ie.requestedP_MaxFR2_r16 != nil, ie.requestedMaxInterFreqMeasIdSCG_r16 != nil, ie.requestedMaxIntraFreqMeasIdSCG_r16 != nil, ie.requestedToffset_r16 != nil}
+			optionals_ext_2 := []bool{ie.RequestedP_MaxFR2_r16 != nil, ie.RequestedMaxInterFreqMeasIdSCG_r16 != nil, ie.RequestedMaxIntraFreqMeasIdSCG_r16 != nil, ie.RequestedToffset_r16 != nil}
 			for _, bit := range optionals_ext_2 {
 				if err := extWriter.WriteBool(bit); err != nil {
 					return err
 				}
 			}
 
-			// encode requestedP_MaxFR2_r16 optional
-			if ie.requestedP_MaxFR2_r16 != nil {
-				if err = ie.requestedP_MaxFR2_r16.Encode(extWriter); err != nil {
-					return utils.WrapError("Encode requestedP_MaxFR2_r16", err)
+			// encode RequestedP_MaxFR2_r16 optional
+			if ie.RequestedP_MaxFR2_r16 != nil {
+				if err = ie.RequestedP_MaxFR2_r16.Encode(extWriter); err != nil {
+					return utils.WrapError("Encode RequestedP_MaxFR2_r16", err)
 				}
 			}
-			// encode requestedMaxInterFreqMeasIdSCG_r16 optional
-			if ie.requestedMaxInterFreqMeasIdSCG_r16 != nil {
-				if err = extWriter.WriteInteger(*ie.requestedMaxInterFreqMeasIdSCG_r16, &uper.Constraint{Lb: 1, Ub: maxMeasIdentitiesMN}, false); err != nil {
-					return utils.WrapError("Encode requestedMaxInterFreqMeasIdSCG_r16", err)
+			// encode RequestedMaxInterFreqMeasIdSCG_r16 optional
+			if ie.RequestedMaxInterFreqMeasIdSCG_r16 != nil {
+				if err = extWriter.WriteInteger(*ie.RequestedMaxInterFreqMeasIdSCG_r16, &uper.Constraint{Lb: 1, Ub: maxMeasIdentitiesMN}, false); err != nil {
+					return utils.WrapError("Encode RequestedMaxInterFreqMeasIdSCG_r16", err)
 				}
 			}
-			// encode requestedMaxIntraFreqMeasIdSCG_r16 optional
-			if ie.requestedMaxIntraFreqMeasIdSCG_r16 != nil {
-				if err = extWriter.WriteInteger(*ie.requestedMaxIntraFreqMeasIdSCG_r16, &uper.Constraint{Lb: 1, Ub: maxMeasIdentitiesMN}, false); err != nil {
-					return utils.WrapError("Encode requestedMaxIntraFreqMeasIdSCG_r16", err)
+			// encode RequestedMaxIntraFreqMeasIdSCG_r16 optional
+			if ie.RequestedMaxIntraFreqMeasIdSCG_r16 != nil {
+				if err = extWriter.WriteInteger(*ie.RequestedMaxIntraFreqMeasIdSCG_r16, &uper.Constraint{Lb: 1, Ub: maxMeasIdentitiesMN}, false); err != nil {
+					return utils.WrapError("Encode RequestedMaxIntraFreqMeasIdSCG_r16", err)
 				}
 			}
-			// encode requestedToffset_r16 optional
-			if ie.requestedToffset_r16 != nil {
-				if err = ie.requestedToffset_r16.Encode(extWriter); err != nil {
-					return utils.WrapError("Encode requestedToffset_r16", err)
+			// encode RequestedToffset_r16 optional
+			if ie.RequestedToffset_r16 != nil {
+				if err = ie.RequestedToffset_r16.Encode(extWriter); err != nil {
+					return utils.WrapError("Encode RequestedToffset_r16", err)
 				}
 			}
 
@@ -135,24 +135,24 @@ func (ie *ConfigRestrictModReqSCG) Decode(r *uper.UperReader) error {
 	if extensionBit, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var requestedBC_MRDCPresent bool
-	if requestedBC_MRDCPresent, err = r.ReadBool(); err != nil {
+	var RequestedBC_MRDCPresent bool
+	if RequestedBC_MRDCPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var requestedP_MaxFR1Present bool
-	if requestedP_MaxFR1Present, err = r.ReadBool(); err != nil {
+	var RequestedP_MaxFR1Present bool
+	if RequestedP_MaxFR1Present, err = r.ReadBool(); err != nil {
 		return err
 	}
-	if requestedBC_MRDCPresent {
-		ie.requestedBC_MRDC = new(BandCombinationInfoSN)
-		if err = ie.requestedBC_MRDC.Decode(r); err != nil {
-			return utils.WrapError("Decode requestedBC_MRDC", err)
+	if RequestedBC_MRDCPresent {
+		ie.RequestedBC_MRDC = new(BandCombinationInfoSN)
+		if err = ie.RequestedBC_MRDC.Decode(r); err != nil {
+			return utils.WrapError("Decode RequestedBC_MRDC", err)
 		}
 	}
-	if requestedP_MaxFR1Present {
-		ie.requestedP_MaxFR1 = new(P_Max)
-		if err = ie.requestedP_MaxFR1.Decode(r); err != nil {
-			return utils.WrapError("Decode requestedP_MaxFR1", err)
+	if RequestedP_MaxFR1Present {
+		ie.RequestedP_MaxFR1 = new(P_Max)
+		if err = ie.RequestedP_MaxFR1.Decode(r); err != nil {
+			return utils.WrapError("Decode RequestedP_MaxFR1", err)
 		}
 	}
 
@@ -172,27 +172,27 @@ func (ie *ConfigRestrictModReqSCG) Decode(r *uper.UperReader) error {
 
 			extReader := uper.NewReader(bytes.NewReader(extBytes))
 
-			requestedPDCCH_BlindDetectionSCGPresent, err := extReader.ReadBool()
+			RequestedPDCCH_BlindDetectionSCGPresent, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			requestedP_MaxEUTRAPresent, err := extReader.ReadBool()
+			RequestedP_MaxEUTRAPresent, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			// decode requestedPDCCH_BlindDetectionSCG optional
-			if requestedPDCCH_BlindDetectionSCGPresent {
-				var tmp_int_requestedPDCCH_BlindDetectionSCG int64
-				if tmp_int_requestedPDCCH_BlindDetectionSCG, err = extReader.ReadInteger(&uper.Constraint{Lb: 1, Ub: 15}, false); err != nil {
-					return utils.WrapError("Decode requestedPDCCH_BlindDetectionSCG", err)
+			// decode RequestedPDCCH_BlindDetectionSCG optional
+			if RequestedPDCCH_BlindDetectionSCGPresent {
+				var tmp_int_RequestedPDCCH_BlindDetectionSCG int64
+				if tmp_int_RequestedPDCCH_BlindDetectionSCG, err = extReader.ReadInteger(&uper.Constraint{Lb: 1, Ub: 15}, false); err != nil {
+					return utils.WrapError("Decode RequestedPDCCH_BlindDetectionSCG", err)
 				}
-				ie.requestedPDCCH_BlindDetectionSCG = &tmp_int_requestedPDCCH_BlindDetectionSCG
+				ie.RequestedPDCCH_BlindDetectionSCG = &tmp_int_RequestedPDCCH_BlindDetectionSCG
 			}
-			// decode requestedP_MaxEUTRA optional
-			if requestedP_MaxEUTRAPresent {
-				ie.requestedP_MaxEUTRA = new(P_Max)
-				if err = ie.requestedP_MaxEUTRA.Decode(extReader); err != nil {
-					return utils.WrapError("Decode requestedP_MaxEUTRA", err)
+			// decode RequestedP_MaxEUTRA optional
+			if RequestedP_MaxEUTRAPresent {
+				ie.RequestedP_MaxEUTRA = new(P_Max)
+				if err = ie.RequestedP_MaxEUTRA.Decode(extReader); err != nil {
+					return utils.WrapError("Decode RequestedP_MaxEUTRA", err)
 				}
 			}
 		}
@@ -205,50 +205,50 @@ func (ie *ConfigRestrictModReqSCG) Decode(r *uper.UperReader) error {
 
 			extReader := uper.NewReader(bytes.NewReader(extBytes))
 
-			requestedP_MaxFR2_r16Present, err := extReader.ReadBool()
+			RequestedP_MaxFR2_r16Present, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			requestedMaxInterFreqMeasIdSCG_r16Present, err := extReader.ReadBool()
+			RequestedMaxInterFreqMeasIdSCG_r16Present, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			requestedMaxIntraFreqMeasIdSCG_r16Present, err := extReader.ReadBool()
+			RequestedMaxIntraFreqMeasIdSCG_r16Present, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			requestedToffset_r16Present, err := extReader.ReadBool()
+			RequestedToffset_r16Present, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			// decode requestedP_MaxFR2_r16 optional
-			if requestedP_MaxFR2_r16Present {
-				ie.requestedP_MaxFR2_r16 = new(P_Max)
-				if err = ie.requestedP_MaxFR2_r16.Decode(extReader); err != nil {
-					return utils.WrapError("Decode requestedP_MaxFR2_r16", err)
+			// decode RequestedP_MaxFR2_r16 optional
+			if RequestedP_MaxFR2_r16Present {
+				ie.RequestedP_MaxFR2_r16 = new(P_Max)
+				if err = ie.RequestedP_MaxFR2_r16.Decode(extReader); err != nil {
+					return utils.WrapError("Decode RequestedP_MaxFR2_r16", err)
 				}
 			}
-			// decode requestedMaxInterFreqMeasIdSCG_r16 optional
-			if requestedMaxInterFreqMeasIdSCG_r16Present {
-				var tmp_int_requestedMaxInterFreqMeasIdSCG_r16 int64
-				if tmp_int_requestedMaxInterFreqMeasIdSCG_r16, err = extReader.ReadInteger(&uper.Constraint{Lb: 1, Ub: maxMeasIdentitiesMN}, false); err != nil {
-					return utils.WrapError("Decode requestedMaxInterFreqMeasIdSCG_r16", err)
+			// decode RequestedMaxInterFreqMeasIdSCG_r16 optional
+			if RequestedMaxInterFreqMeasIdSCG_r16Present {
+				var tmp_int_RequestedMaxInterFreqMeasIdSCG_r16 int64
+				if tmp_int_RequestedMaxInterFreqMeasIdSCG_r16, err = extReader.ReadInteger(&uper.Constraint{Lb: 1, Ub: maxMeasIdentitiesMN}, false); err != nil {
+					return utils.WrapError("Decode RequestedMaxInterFreqMeasIdSCG_r16", err)
 				}
-				ie.requestedMaxInterFreqMeasIdSCG_r16 = &tmp_int_requestedMaxInterFreqMeasIdSCG_r16
+				ie.RequestedMaxInterFreqMeasIdSCG_r16 = &tmp_int_RequestedMaxInterFreqMeasIdSCG_r16
 			}
-			// decode requestedMaxIntraFreqMeasIdSCG_r16 optional
-			if requestedMaxIntraFreqMeasIdSCG_r16Present {
-				var tmp_int_requestedMaxIntraFreqMeasIdSCG_r16 int64
-				if tmp_int_requestedMaxIntraFreqMeasIdSCG_r16, err = extReader.ReadInteger(&uper.Constraint{Lb: 1, Ub: maxMeasIdentitiesMN}, false); err != nil {
-					return utils.WrapError("Decode requestedMaxIntraFreqMeasIdSCG_r16", err)
+			// decode RequestedMaxIntraFreqMeasIdSCG_r16 optional
+			if RequestedMaxIntraFreqMeasIdSCG_r16Present {
+				var tmp_int_RequestedMaxIntraFreqMeasIdSCG_r16 int64
+				if tmp_int_RequestedMaxIntraFreqMeasIdSCG_r16, err = extReader.ReadInteger(&uper.Constraint{Lb: 1, Ub: maxMeasIdentitiesMN}, false); err != nil {
+					return utils.WrapError("Decode RequestedMaxIntraFreqMeasIdSCG_r16", err)
 				}
-				ie.requestedMaxIntraFreqMeasIdSCG_r16 = &tmp_int_requestedMaxIntraFreqMeasIdSCG_r16
+				ie.RequestedMaxIntraFreqMeasIdSCG_r16 = &tmp_int_RequestedMaxIntraFreqMeasIdSCG_r16
 			}
-			// decode requestedToffset_r16 optional
-			if requestedToffset_r16Present {
-				ie.requestedToffset_r16 = new(T_Offset_r16)
-				if err = ie.requestedToffset_r16.Decode(extReader); err != nil {
-					return utils.WrapError("Decode requestedToffset_r16", err)
+			// decode RequestedToffset_r16 optional
+			if RequestedToffset_r16Present {
+				ie.RequestedToffset_r16 = new(T_Offset_r16)
+				if err = ie.RequestedToffset_r16.Decode(extReader); err != nil {
+					return utils.WrapError("Decode RequestedToffset_r16", err)
 				}
 			}
 		}

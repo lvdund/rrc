@@ -6,30 +6,30 @@ import (
 )
 
 type BandSidelink_r16_sl_TransmissionMode2_r16 struct {
-	harq_TxProcessModeTwoSidelink_r16   BandSidelink_r16_sl_TransmissionMode2_r16_harq_TxProcessModeTwoSidelink_r16    `madatory`
-	scs_CP_PatternTxSidelinkModeTwo_r16 *BandSidelink_r16_sl_TransmissionMode2_r16_scs_CP_PatternTxSidelinkModeTwo_r16 `optional`
-	dl_openLoopPC_Sidelink_r16          *BandSidelink_r16_sl_TransmissionMode2_r16_dl_openLoopPC_Sidelink_r16          `optional`
+	Harq_TxProcessModeTwoSidelink_r16   BandSidelink_r16_sl_TransmissionMode2_r16_harq_TxProcessModeTwoSidelink_r16    `madatory`
+	Scs_CP_PatternTxSidelinkModeTwo_r16 *BandSidelink_r16_sl_TransmissionMode2_r16_scs_CP_PatternTxSidelinkModeTwo_r16 `optional`
+	Dl_openLoopPC_Sidelink_r16          *BandSidelink_r16_sl_TransmissionMode2_r16_dl_openLoopPC_Sidelink_r16          `optional`
 }
 
 func (ie *BandSidelink_r16_sl_TransmissionMode2_r16) Encode(w *uper.UperWriter) error {
 	var err error
-	preambleBits := []bool{ie.scs_CP_PatternTxSidelinkModeTwo_r16 != nil, ie.dl_openLoopPC_Sidelink_r16 != nil}
+	preambleBits := []bool{ie.Scs_CP_PatternTxSidelinkModeTwo_r16 != nil, ie.Dl_openLoopPC_Sidelink_r16 != nil}
 	for _, bit := range preambleBits {
 		if err = w.WriteBool(bit); err != nil {
 			return err
 		}
 	}
-	if err = ie.harq_TxProcessModeTwoSidelink_r16.Encode(w); err != nil {
-		return utils.WrapError("Encode harq_TxProcessModeTwoSidelink_r16", err)
+	if err = ie.Harq_TxProcessModeTwoSidelink_r16.Encode(w); err != nil {
+		return utils.WrapError("Encode Harq_TxProcessModeTwoSidelink_r16", err)
 	}
-	if ie.scs_CP_PatternTxSidelinkModeTwo_r16 != nil {
-		if err = ie.scs_CP_PatternTxSidelinkModeTwo_r16.Encode(w); err != nil {
-			return utils.WrapError("Encode scs_CP_PatternTxSidelinkModeTwo_r16", err)
+	if ie.Scs_CP_PatternTxSidelinkModeTwo_r16 != nil {
+		if err = ie.Scs_CP_PatternTxSidelinkModeTwo_r16.Encode(w); err != nil {
+			return utils.WrapError("Encode Scs_CP_PatternTxSidelinkModeTwo_r16", err)
 		}
 	}
-	if ie.dl_openLoopPC_Sidelink_r16 != nil {
-		if err = ie.dl_openLoopPC_Sidelink_r16.Encode(w); err != nil {
-			return utils.WrapError("Encode dl_openLoopPC_Sidelink_r16", err)
+	if ie.Dl_openLoopPC_Sidelink_r16 != nil {
+		if err = ie.Dl_openLoopPC_Sidelink_r16.Encode(w); err != nil {
+			return utils.WrapError("Encode Dl_openLoopPC_Sidelink_r16", err)
 		}
 	}
 	return nil
@@ -37,27 +37,27 @@ func (ie *BandSidelink_r16_sl_TransmissionMode2_r16) Encode(w *uper.UperWriter) 
 
 func (ie *BandSidelink_r16_sl_TransmissionMode2_r16) Decode(r *uper.UperReader) error {
 	var err error
-	var scs_CP_PatternTxSidelinkModeTwo_r16Present bool
-	if scs_CP_PatternTxSidelinkModeTwo_r16Present, err = r.ReadBool(); err != nil {
+	var Scs_CP_PatternTxSidelinkModeTwo_r16Present bool
+	if Scs_CP_PatternTxSidelinkModeTwo_r16Present, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var dl_openLoopPC_Sidelink_r16Present bool
-	if dl_openLoopPC_Sidelink_r16Present, err = r.ReadBool(); err != nil {
+	var Dl_openLoopPC_Sidelink_r16Present bool
+	if Dl_openLoopPC_Sidelink_r16Present, err = r.ReadBool(); err != nil {
 		return err
 	}
-	if err = ie.harq_TxProcessModeTwoSidelink_r16.Decode(r); err != nil {
-		return utils.WrapError("Decode harq_TxProcessModeTwoSidelink_r16", err)
+	if err = ie.Harq_TxProcessModeTwoSidelink_r16.Decode(r); err != nil {
+		return utils.WrapError("Decode Harq_TxProcessModeTwoSidelink_r16", err)
 	}
-	if scs_CP_PatternTxSidelinkModeTwo_r16Present {
-		ie.scs_CP_PatternTxSidelinkModeTwo_r16 = new(BandSidelink_r16_sl_TransmissionMode2_r16_scs_CP_PatternTxSidelinkModeTwo_r16)
-		if err = ie.scs_CP_PatternTxSidelinkModeTwo_r16.Decode(r); err != nil {
-			return utils.WrapError("Decode scs_CP_PatternTxSidelinkModeTwo_r16", err)
+	if Scs_CP_PatternTxSidelinkModeTwo_r16Present {
+		ie.Scs_CP_PatternTxSidelinkModeTwo_r16 = new(BandSidelink_r16_sl_TransmissionMode2_r16_scs_CP_PatternTxSidelinkModeTwo_r16)
+		if err = ie.Scs_CP_PatternTxSidelinkModeTwo_r16.Decode(r); err != nil {
+			return utils.WrapError("Decode Scs_CP_PatternTxSidelinkModeTwo_r16", err)
 		}
 	}
-	if dl_openLoopPC_Sidelink_r16Present {
-		ie.dl_openLoopPC_Sidelink_r16 = new(BandSidelink_r16_sl_TransmissionMode2_r16_dl_openLoopPC_Sidelink_r16)
-		if err = ie.dl_openLoopPC_Sidelink_r16.Decode(r); err != nil {
-			return utils.WrapError("Decode dl_openLoopPC_Sidelink_r16", err)
+	if Dl_openLoopPC_Sidelink_r16Present {
+		ie.Dl_openLoopPC_Sidelink_r16 = new(BandSidelink_r16_sl_TransmissionMode2_r16_dl_openLoopPC_Sidelink_r16)
+		if err = ie.Dl_openLoopPC_Sidelink_r16.Decode(r); err != nil {
+			return utils.WrapError("Decode Dl_openLoopPC_Sidelink_r16", err)
 		}
 	}
 	return nil

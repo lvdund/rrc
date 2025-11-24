@@ -6,62 +6,62 @@ import (
 )
 
 type CG_Config_v1560_IEs struct {
-	pSCellFrequencyEUTRA          *ARFCN_ValueEUTRA                           `optional`
-	scg_CellGroupConfigEUTRA      *[]byte                                     `optional`
-	candidateCellInfoListSN_EUTRA *[]byte                                     `optional`
-	candidateServingFreqListEUTRA *CandidateServingFreqListEUTRA              `optional`
-	needForGaps                   *CG_Config_v1560_IEs_needForGaps            `optional`
-	drx_ConfigSCG                 *DRX_Config                                 `optional`
-	reportCGI_RequestEUTRA        *CG_Config_v1560_IEs_reportCGI_RequestEUTRA `optional`
-	nonCriticalExtension          *CG_Config_v1590_IEs                        `optional`
+	PSCellFrequencyEUTRA          *ARFCN_ValueEUTRA                           `optional`
+	Scg_CellGroupConfigEUTRA      *[]byte                                     `optional`
+	CandidateCellInfoListSN_EUTRA *[]byte                                     `optional`
+	CandidateServingFreqListEUTRA *CandidateServingFreqListEUTRA              `optional`
+	NeedForGaps                   *CG_Config_v1560_IEs_needForGaps            `optional`
+	Drx_ConfigSCG                 *DRX_Config                                 `optional`
+	ReportCGI_RequestEUTRA        *CG_Config_v1560_IEs_reportCGI_RequestEUTRA `optional`
+	NonCriticalExtension          *CG_Config_v1590_IEs                        `optional`
 }
 
 func (ie *CG_Config_v1560_IEs) Encode(w *uper.UperWriter) error {
 	var err error
-	preambleBits := []bool{ie.pSCellFrequencyEUTRA != nil, ie.scg_CellGroupConfigEUTRA != nil, ie.candidateCellInfoListSN_EUTRA != nil, ie.candidateServingFreqListEUTRA != nil, ie.needForGaps != nil, ie.drx_ConfigSCG != nil, ie.reportCGI_RequestEUTRA != nil, ie.nonCriticalExtension != nil}
+	preambleBits := []bool{ie.PSCellFrequencyEUTRA != nil, ie.Scg_CellGroupConfigEUTRA != nil, ie.CandidateCellInfoListSN_EUTRA != nil, ie.CandidateServingFreqListEUTRA != nil, ie.NeedForGaps != nil, ie.Drx_ConfigSCG != nil, ie.ReportCGI_RequestEUTRA != nil, ie.NonCriticalExtension != nil}
 	for _, bit := range preambleBits {
 		if err = w.WriteBool(bit); err != nil {
 			return err
 		}
 	}
-	if ie.pSCellFrequencyEUTRA != nil {
-		if err = ie.pSCellFrequencyEUTRA.Encode(w); err != nil {
-			return utils.WrapError("Encode pSCellFrequencyEUTRA", err)
+	if ie.PSCellFrequencyEUTRA != nil {
+		if err = ie.PSCellFrequencyEUTRA.Encode(w); err != nil {
+			return utils.WrapError("Encode PSCellFrequencyEUTRA", err)
 		}
 	}
-	if ie.scg_CellGroupConfigEUTRA != nil {
-		if err = w.WriteOctetString(*ie.scg_CellGroupConfigEUTRA, &uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
-			return utils.WrapError("Encode scg_CellGroupConfigEUTRA", err)
+	if ie.Scg_CellGroupConfigEUTRA != nil {
+		if err = w.WriteOctetString(*ie.Scg_CellGroupConfigEUTRA, &uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+			return utils.WrapError("Encode Scg_CellGroupConfigEUTRA", err)
 		}
 	}
-	if ie.candidateCellInfoListSN_EUTRA != nil {
-		if err = w.WriteOctetString(*ie.candidateCellInfoListSN_EUTRA, &uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
-			return utils.WrapError("Encode candidateCellInfoListSN_EUTRA", err)
+	if ie.CandidateCellInfoListSN_EUTRA != nil {
+		if err = w.WriteOctetString(*ie.CandidateCellInfoListSN_EUTRA, &uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+			return utils.WrapError("Encode CandidateCellInfoListSN_EUTRA", err)
 		}
 	}
-	if ie.candidateServingFreqListEUTRA != nil {
-		if err = ie.candidateServingFreqListEUTRA.Encode(w); err != nil {
-			return utils.WrapError("Encode candidateServingFreqListEUTRA", err)
+	if ie.CandidateServingFreqListEUTRA != nil {
+		if err = ie.CandidateServingFreqListEUTRA.Encode(w); err != nil {
+			return utils.WrapError("Encode CandidateServingFreqListEUTRA", err)
 		}
 	}
-	if ie.needForGaps != nil {
-		if err = ie.needForGaps.Encode(w); err != nil {
-			return utils.WrapError("Encode needForGaps", err)
+	if ie.NeedForGaps != nil {
+		if err = ie.NeedForGaps.Encode(w); err != nil {
+			return utils.WrapError("Encode NeedForGaps", err)
 		}
 	}
-	if ie.drx_ConfigSCG != nil {
-		if err = ie.drx_ConfigSCG.Encode(w); err != nil {
-			return utils.WrapError("Encode drx_ConfigSCG", err)
+	if ie.Drx_ConfigSCG != nil {
+		if err = ie.Drx_ConfigSCG.Encode(w); err != nil {
+			return utils.WrapError("Encode Drx_ConfigSCG", err)
 		}
 	}
-	if ie.reportCGI_RequestEUTRA != nil {
-		if err = ie.reportCGI_RequestEUTRA.Encode(w); err != nil {
-			return utils.WrapError("Encode reportCGI_RequestEUTRA", err)
+	if ie.ReportCGI_RequestEUTRA != nil {
+		if err = ie.ReportCGI_RequestEUTRA.Encode(w); err != nil {
+			return utils.WrapError("Encode ReportCGI_RequestEUTRA", err)
 		}
 	}
-	if ie.nonCriticalExtension != nil {
-		if err = ie.nonCriticalExtension.Encode(w); err != nil {
-			return utils.WrapError("Encode nonCriticalExtension", err)
+	if ie.NonCriticalExtension != nil {
+		if err = ie.NonCriticalExtension.Encode(w); err != nil {
+			return utils.WrapError("Encode NonCriticalExtension", err)
 		}
 	}
 	return nil
@@ -69,86 +69,86 @@ func (ie *CG_Config_v1560_IEs) Encode(w *uper.UperWriter) error {
 
 func (ie *CG_Config_v1560_IEs) Decode(r *uper.UperReader) error {
 	var err error
-	var pSCellFrequencyEUTRAPresent bool
-	if pSCellFrequencyEUTRAPresent, err = r.ReadBool(); err != nil {
+	var PSCellFrequencyEUTRAPresent bool
+	if PSCellFrequencyEUTRAPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var scg_CellGroupConfigEUTRAPresent bool
-	if scg_CellGroupConfigEUTRAPresent, err = r.ReadBool(); err != nil {
+	var Scg_CellGroupConfigEUTRAPresent bool
+	if Scg_CellGroupConfigEUTRAPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var candidateCellInfoListSN_EUTRAPresent bool
-	if candidateCellInfoListSN_EUTRAPresent, err = r.ReadBool(); err != nil {
+	var CandidateCellInfoListSN_EUTRAPresent bool
+	if CandidateCellInfoListSN_EUTRAPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var candidateServingFreqListEUTRAPresent bool
-	if candidateServingFreqListEUTRAPresent, err = r.ReadBool(); err != nil {
+	var CandidateServingFreqListEUTRAPresent bool
+	if CandidateServingFreqListEUTRAPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var needForGapsPresent bool
-	if needForGapsPresent, err = r.ReadBool(); err != nil {
+	var NeedForGapsPresent bool
+	if NeedForGapsPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var drx_ConfigSCGPresent bool
-	if drx_ConfigSCGPresent, err = r.ReadBool(); err != nil {
+	var Drx_ConfigSCGPresent bool
+	if Drx_ConfigSCGPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var reportCGI_RequestEUTRAPresent bool
-	if reportCGI_RequestEUTRAPresent, err = r.ReadBool(); err != nil {
+	var ReportCGI_RequestEUTRAPresent bool
+	if ReportCGI_RequestEUTRAPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var nonCriticalExtensionPresent bool
-	if nonCriticalExtensionPresent, err = r.ReadBool(); err != nil {
+	var NonCriticalExtensionPresent bool
+	if NonCriticalExtensionPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	if pSCellFrequencyEUTRAPresent {
-		ie.pSCellFrequencyEUTRA = new(ARFCN_ValueEUTRA)
-		if err = ie.pSCellFrequencyEUTRA.Decode(r); err != nil {
-			return utils.WrapError("Decode pSCellFrequencyEUTRA", err)
+	if PSCellFrequencyEUTRAPresent {
+		ie.PSCellFrequencyEUTRA = new(ARFCN_ValueEUTRA)
+		if err = ie.PSCellFrequencyEUTRA.Decode(r); err != nil {
+			return utils.WrapError("Decode PSCellFrequencyEUTRA", err)
 		}
 	}
-	if scg_CellGroupConfigEUTRAPresent {
-		var tmp_os_scg_CellGroupConfigEUTRA []byte
-		if tmp_os_scg_CellGroupConfigEUTRA, err = r.ReadOctetString(&uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
-			return utils.WrapError("Decode scg_CellGroupConfigEUTRA", err)
+	if Scg_CellGroupConfigEUTRAPresent {
+		var tmp_os_Scg_CellGroupConfigEUTRA []byte
+		if tmp_os_Scg_CellGroupConfigEUTRA, err = r.ReadOctetString(&uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+			return utils.WrapError("Decode Scg_CellGroupConfigEUTRA", err)
 		}
-		ie.scg_CellGroupConfigEUTRA = &tmp_os_scg_CellGroupConfigEUTRA
+		ie.Scg_CellGroupConfigEUTRA = &tmp_os_Scg_CellGroupConfigEUTRA
 	}
-	if candidateCellInfoListSN_EUTRAPresent {
-		var tmp_os_candidateCellInfoListSN_EUTRA []byte
-		if tmp_os_candidateCellInfoListSN_EUTRA, err = r.ReadOctetString(&uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
-			return utils.WrapError("Decode candidateCellInfoListSN_EUTRA", err)
+	if CandidateCellInfoListSN_EUTRAPresent {
+		var tmp_os_CandidateCellInfoListSN_EUTRA []byte
+		if tmp_os_CandidateCellInfoListSN_EUTRA, err = r.ReadOctetString(&uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+			return utils.WrapError("Decode CandidateCellInfoListSN_EUTRA", err)
 		}
-		ie.candidateCellInfoListSN_EUTRA = &tmp_os_candidateCellInfoListSN_EUTRA
+		ie.CandidateCellInfoListSN_EUTRA = &tmp_os_CandidateCellInfoListSN_EUTRA
 	}
-	if candidateServingFreqListEUTRAPresent {
-		ie.candidateServingFreqListEUTRA = new(CandidateServingFreqListEUTRA)
-		if err = ie.candidateServingFreqListEUTRA.Decode(r); err != nil {
-			return utils.WrapError("Decode candidateServingFreqListEUTRA", err)
-		}
-	}
-	if needForGapsPresent {
-		ie.needForGaps = new(CG_Config_v1560_IEs_needForGaps)
-		if err = ie.needForGaps.Decode(r); err != nil {
-			return utils.WrapError("Decode needForGaps", err)
+	if CandidateServingFreqListEUTRAPresent {
+		ie.CandidateServingFreqListEUTRA = new(CandidateServingFreqListEUTRA)
+		if err = ie.CandidateServingFreqListEUTRA.Decode(r); err != nil {
+			return utils.WrapError("Decode CandidateServingFreqListEUTRA", err)
 		}
 	}
-	if drx_ConfigSCGPresent {
-		ie.drx_ConfigSCG = new(DRX_Config)
-		if err = ie.drx_ConfigSCG.Decode(r); err != nil {
-			return utils.WrapError("Decode drx_ConfigSCG", err)
+	if NeedForGapsPresent {
+		ie.NeedForGaps = new(CG_Config_v1560_IEs_needForGaps)
+		if err = ie.NeedForGaps.Decode(r); err != nil {
+			return utils.WrapError("Decode NeedForGaps", err)
 		}
 	}
-	if reportCGI_RequestEUTRAPresent {
-		ie.reportCGI_RequestEUTRA = new(CG_Config_v1560_IEs_reportCGI_RequestEUTRA)
-		if err = ie.reportCGI_RequestEUTRA.Decode(r); err != nil {
-			return utils.WrapError("Decode reportCGI_RequestEUTRA", err)
+	if Drx_ConfigSCGPresent {
+		ie.Drx_ConfigSCG = new(DRX_Config)
+		if err = ie.Drx_ConfigSCG.Decode(r); err != nil {
+			return utils.WrapError("Decode Drx_ConfigSCG", err)
 		}
 	}
-	if nonCriticalExtensionPresent {
-		ie.nonCriticalExtension = new(CG_Config_v1590_IEs)
-		if err = ie.nonCriticalExtension.Decode(r); err != nil {
-			return utils.WrapError("Decode nonCriticalExtension", err)
+	if ReportCGI_RequestEUTRAPresent {
+		ie.ReportCGI_RequestEUTRA = new(CG_Config_v1560_IEs_reportCGI_RequestEUTRA)
+		if err = ie.ReportCGI_RequestEUTRA.Decode(r); err != nil {
+			return utils.WrapError("Decode ReportCGI_RequestEUTRA", err)
+		}
+	}
+	if NonCriticalExtensionPresent {
+		ie.NonCriticalExtension = new(CG_Config_v1590_IEs)
+		if err = ie.NonCriticalExtension.Decode(r); err != nil {
+			return utils.WrapError("Decode NonCriticalExtension", err)
 		}
 	}
 	return nil

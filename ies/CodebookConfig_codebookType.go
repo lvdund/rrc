@@ -9,14 +9,14 @@ import (
 
 const (
 	CodebookConfig_codebookType_Choice_nothing uint64 = iota
-	CodebookConfig_codebookType_Choice_type1
-	CodebookConfig_codebookType_Choice_type2
+	CodebookConfig_codebookType_Choice_Type1
+	CodebookConfig_codebookType_Choice_Type2
 )
 
 type CodebookConfig_codebookType struct {
 	Choice uint64
-	type1  *CodebookConfig_codebookType_type1
-	type2  *CodebookConfig_codebookType_type2
+	Type1  *CodebookConfig_codebookType_type1
+	Type2  *CodebookConfig_codebookType_type2
 }
 
 func (ie *CodebookConfig_codebookType) Encode(w *uper.UperWriter) error {
@@ -25,13 +25,13 @@ func (ie *CodebookConfig_codebookType) Encode(w *uper.UperWriter) error {
 		return err
 	}
 	switch ie.Choice {
-	case CodebookConfig_codebookType_Choice_type1:
-		if err = ie.type1.Encode(w); err != nil {
-			err = utils.WrapError("Encode type1", err)
+	case CodebookConfig_codebookType_Choice_Type1:
+		if err = ie.Type1.Encode(w); err != nil {
+			err = utils.WrapError("Encode Type1", err)
 		}
-	case CodebookConfig_codebookType_Choice_type2:
-		if err = ie.type2.Encode(w); err != nil {
-			err = utils.WrapError("Encode type2", err)
+	case CodebookConfig_codebookType_Choice_Type2:
+		if err = ie.Type2.Encode(w); err != nil {
+			err = utils.WrapError("Encode Type2", err)
 		}
 	default:
 		err = fmt.Errorf("invalid choice: %d", ie.Choice)
@@ -45,15 +45,15 @@ func (ie *CodebookConfig_codebookType) Decode(r *uper.UperReader) error {
 		return err
 	}
 	switch ie.Choice {
-	case CodebookConfig_codebookType_Choice_type1:
-		ie.type1 = new(CodebookConfig_codebookType_type1)
-		if err = ie.type1.Decode(r); err != nil {
-			return utils.WrapError("Decode type1", err)
+	case CodebookConfig_codebookType_Choice_Type1:
+		ie.Type1 = new(CodebookConfig_codebookType_type1)
+		if err = ie.Type1.Decode(r); err != nil {
+			return utils.WrapError("Decode Type1", err)
 		}
-	case CodebookConfig_codebookType_Choice_type2:
-		ie.type2 = new(CodebookConfig_codebookType_type2)
-		if err = ie.type2.Decode(r); err != nil {
-			return utils.WrapError("Decode type2", err)
+	case CodebookConfig_codebookType_Choice_Type2:
+		ie.Type2 = new(CodebookConfig_codebookType_type2)
+		if err = ie.Type2.Decode(r); err != nil {
+			return utils.WrapError("Decode Type2", err)
 		}
 	default:
 		return fmt.Errorf("invalid choice: %d", ie.Choice)

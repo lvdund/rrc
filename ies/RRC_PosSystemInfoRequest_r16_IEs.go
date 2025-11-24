@@ -6,40 +6,40 @@ import (
 )
 
 type RRC_PosSystemInfoRequest_r16_IEs struct {
-	requestedPosSI_List uper.BitString `lb:maxSI_Message,ub:maxSI_Message,madatory`
-	spare               uper.BitString `lb:11,ub:11,madatory`
+	RequestedPosSI_List uper.BitString `lb:maxSI_Message,ub:maxSI_Message,madatory`
+	Spare               uper.BitString `lb:11,ub:11,madatory`
 }
 
 func (ie *RRC_PosSystemInfoRequest_r16_IEs) Encode(w *uper.UperWriter) error {
 	var err error
-	if err = w.WriteBitString(ie.requestedPosSI_List.Bytes, uint(ie.requestedPosSI_List.NumBits), &uper.Constraint{Lb: maxSI_Message, Ub: maxSI_Message}, false); err != nil {
-		return utils.WrapError("WriteBitString requestedPosSI_List", err)
+	if err = w.WriteBitString(ie.RequestedPosSI_List.Bytes, uint(ie.RequestedPosSI_List.NumBits), &uper.Constraint{Lb: maxSI_Message, Ub: maxSI_Message}, false); err != nil {
+		return utils.WrapError("WriteBitString RequestedPosSI_List", err)
 	}
-	if err = w.WriteBitString(ie.spare.Bytes, uint(ie.spare.NumBits), &uper.Constraint{Lb: 11, Ub: 11}, false); err != nil {
-		return utils.WrapError("WriteBitString spare", err)
+	if err = w.WriteBitString(ie.Spare.Bytes, uint(ie.Spare.NumBits), &uper.Constraint{Lb: 11, Ub: 11}, false); err != nil {
+		return utils.WrapError("WriteBitString Spare", err)
 	}
 	return nil
 }
 
 func (ie *RRC_PosSystemInfoRequest_r16_IEs) Decode(r *uper.UperReader) error {
 	var err error
-	var tmp_bs_requestedPosSI_List []byte
-	var n_requestedPosSI_List uint
-	if tmp_bs_requestedPosSI_List, n_requestedPosSI_List, err = r.ReadBitString(&uper.Constraint{Lb: maxSI_Message, Ub: maxSI_Message}, false); err != nil {
-		return utils.WrapError("ReadBitString requestedPosSI_List", err)
+	var tmp_bs_RequestedPosSI_List []byte
+	var n_RequestedPosSI_List uint
+	if tmp_bs_RequestedPosSI_List, n_RequestedPosSI_List, err = r.ReadBitString(&uper.Constraint{Lb: maxSI_Message, Ub: maxSI_Message}, false); err != nil {
+		return utils.WrapError("ReadBitString RequestedPosSI_List", err)
 	}
-	ie.requestedPosSI_List = uper.BitString{
-		Bytes:   tmp_bs_requestedPosSI_List,
-		NumBits: uint64(n_requestedPosSI_List),
+	ie.RequestedPosSI_List = uper.BitString{
+		Bytes:   tmp_bs_RequestedPosSI_List,
+		NumBits: uint64(n_RequestedPosSI_List),
 	}
-	var tmp_bs_spare []byte
-	var n_spare uint
-	if tmp_bs_spare, n_spare, err = r.ReadBitString(&uper.Constraint{Lb: 11, Ub: 11}, false); err != nil {
-		return utils.WrapError("ReadBitString spare", err)
+	var tmp_bs_Spare []byte
+	var n_Spare uint
+	if tmp_bs_Spare, n_Spare, err = r.ReadBitString(&uper.Constraint{Lb: 11, Ub: 11}, false); err != nil {
+		return utils.WrapError("ReadBitString Spare", err)
 	}
-	ie.spare = uper.BitString{
-		Bytes:   tmp_bs_spare,
-		NumBits: uint64(n_spare),
+	ie.Spare = uper.BitString{
+		Bytes:   tmp_bs_Spare,
+		NumBits: uint64(n_Spare),
 	}
 	return nil
 }

@@ -9,22 +9,22 @@ import (
 
 const (
 	MTCH_SSB_MappingWindowCycleOffset_r17_Choice_nothing uint64 = iota
-	MTCH_SSB_MappingWindowCycleOffset_r17_Choice_ms10
-	MTCH_SSB_MappingWindowCycleOffset_r17_Choice_ms20
-	MTCH_SSB_MappingWindowCycleOffset_r17_Choice_ms32
-	MTCH_SSB_MappingWindowCycleOffset_r17_Choice_ms64
-	MTCH_SSB_MappingWindowCycleOffset_r17_Choice_ms128
-	MTCH_SSB_MappingWindowCycleOffset_r17_Choice_ms256
+	MTCH_SSB_MappingWindowCycleOffset_r17_Choice_Ms10
+	MTCH_SSB_MappingWindowCycleOffset_r17_Choice_Ms20
+	MTCH_SSB_MappingWindowCycleOffset_r17_Choice_Ms32
+	MTCH_SSB_MappingWindowCycleOffset_r17_Choice_Ms64
+	MTCH_SSB_MappingWindowCycleOffset_r17_Choice_Ms128
+	MTCH_SSB_MappingWindowCycleOffset_r17_Choice_Ms256
 )
 
 type MTCH_SSB_MappingWindowCycleOffset_r17 struct {
 	Choice uint64
-	ms10   int64 `lb:0,ub:9,madatory`
-	ms20   int64 `lb:0,ub:19,madatory`
-	ms32   int64 `lb:0,ub:31,madatory`
-	ms64   int64 `lb:0,ub:63,madatory`
-	ms128  int64 `lb:0,ub:127,madatory`
-	ms256  int64 `lb:0,ub:255,madatory`
+	Ms10   int64 `lb:0,ub:9,madatory`
+	Ms20   int64 `lb:0,ub:19,madatory`
+	Ms32   int64 `lb:0,ub:31,madatory`
+	Ms64   int64 `lb:0,ub:63,madatory`
+	Ms128  int64 `lb:0,ub:127,madatory`
+	Ms256  int64 `lb:0,ub:255,madatory`
 }
 
 func (ie *MTCH_SSB_MappingWindowCycleOffset_r17) Encode(w *uper.UperWriter) error {
@@ -33,29 +33,29 @@ func (ie *MTCH_SSB_MappingWindowCycleOffset_r17) Encode(w *uper.UperWriter) erro
 		return err
 	}
 	switch ie.Choice {
-	case MTCH_SSB_MappingWindowCycleOffset_r17_Choice_ms10:
-		if err = w.WriteInteger(int64(ie.ms10), &uper.Constraint{Lb: 0, Ub: 9}, false); err != nil {
-			err = utils.WrapError("Encode ms10", err)
+	case MTCH_SSB_MappingWindowCycleOffset_r17_Choice_Ms10:
+		if err = w.WriteInteger(int64(ie.Ms10), &uper.Constraint{Lb: 0, Ub: 9}, false); err != nil {
+			err = utils.WrapError("Encode Ms10", err)
 		}
-	case MTCH_SSB_MappingWindowCycleOffset_r17_Choice_ms20:
-		if err = w.WriteInteger(int64(ie.ms20), &uper.Constraint{Lb: 0, Ub: 19}, false); err != nil {
-			err = utils.WrapError("Encode ms20", err)
+	case MTCH_SSB_MappingWindowCycleOffset_r17_Choice_Ms20:
+		if err = w.WriteInteger(int64(ie.Ms20), &uper.Constraint{Lb: 0, Ub: 19}, false); err != nil {
+			err = utils.WrapError("Encode Ms20", err)
 		}
-	case MTCH_SSB_MappingWindowCycleOffset_r17_Choice_ms32:
-		if err = w.WriteInteger(int64(ie.ms32), &uper.Constraint{Lb: 0, Ub: 31}, false); err != nil {
-			err = utils.WrapError("Encode ms32", err)
+	case MTCH_SSB_MappingWindowCycleOffset_r17_Choice_Ms32:
+		if err = w.WriteInteger(int64(ie.Ms32), &uper.Constraint{Lb: 0, Ub: 31}, false); err != nil {
+			err = utils.WrapError("Encode Ms32", err)
 		}
-	case MTCH_SSB_MappingWindowCycleOffset_r17_Choice_ms64:
-		if err = w.WriteInteger(int64(ie.ms64), &uper.Constraint{Lb: 0, Ub: 63}, false); err != nil {
-			err = utils.WrapError("Encode ms64", err)
+	case MTCH_SSB_MappingWindowCycleOffset_r17_Choice_Ms64:
+		if err = w.WriteInteger(int64(ie.Ms64), &uper.Constraint{Lb: 0, Ub: 63}, false); err != nil {
+			err = utils.WrapError("Encode Ms64", err)
 		}
-	case MTCH_SSB_MappingWindowCycleOffset_r17_Choice_ms128:
-		if err = w.WriteInteger(int64(ie.ms128), &uper.Constraint{Lb: 0, Ub: 127}, false); err != nil {
-			err = utils.WrapError("Encode ms128", err)
+	case MTCH_SSB_MappingWindowCycleOffset_r17_Choice_Ms128:
+		if err = w.WriteInteger(int64(ie.Ms128), &uper.Constraint{Lb: 0, Ub: 127}, false); err != nil {
+			err = utils.WrapError("Encode Ms128", err)
 		}
-	case MTCH_SSB_MappingWindowCycleOffset_r17_Choice_ms256:
-		if err = w.WriteInteger(int64(ie.ms256), &uper.Constraint{Lb: 0, Ub: 255}, false); err != nil {
-			err = utils.WrapError("Encode ms256", err)
+	case MTCH_SSB_MappingWindowCycleOffset_r17_Choice_Ms256:
+		if err = w.WriteInteger(int64(ie.Ms256), &uper.Constraint{Lb: 0, Ub: 255}, false); err != nil {
+			err = utils.WrapError("Encode Ms256", err)
 		}
 	default:
 		err = fmt.Errorf("invalid choice: %d", ie.Choice)
@@ -69,42 +69,42 @@ func (ie *MTCH_SSB_MappingWindowCycleOffset_r17) Decode(r *uper.UperReader) erro
 		return err
 	}
 	switch ie.Choice {
-	case MTCH_SSB_MappingWindowCycleOffset_r17_Choice_ms10:
-		var tmp_int_ms10 int64
-		if tmp_int_ms10, err = r.ReadInteger(&uper.Constraint{Lb: 0, Ub: 9}, false); err != nil {
-			return utils.WrapError("Decode ms10", err)
+	case MTCH_SSB_MappingWindowCycleOffset_r17_Choice_Ms10:
+		var tmp_int_Ms10 int64
+		if tmp_int_Ms10, err = r.ReadInteger(&uper.Constraint{Lb: 0, Ub: 9}, false); err != nil {
+			return utils.WrapError("Decode Ms10", err)
 		}
-		ie.ms10 = tmp_int_ms10
-	case MTCH_SSB_MappingWindowCycleOffset_r17_Choice_ms20:
-		var tmp_int_ms20 int64
-		if tmp_int_ms20, err = r.ReadInteger(&uper.Constraint{Lb: 0, Ub: 19}, false); err != nil {
-			return utils.WrapError("Decode ms20", err)
+		ie.Ms10 = tmp_int_Ms10
+	case MTCH_SSB_MappingWindowCycleOffset_r17_Choice_Ms20:
+		var tmp_int_Ms20 int64
+		if tmp_int_Ms20, err = r.ReadInteger(&uper.Constraint{Lb: 0, Ub: 19}, false); err != nil {
+			return utils.WrapError("Decode Ms20", err)
 		}
-		ie.ms20 = tmp_int_ms20
-	case MTCH_SSB_MappingWindowCycleOffset_r17_Choice_ms32:
-		var tmp_int_ms32 int64
-		if tmp_int_ms32, err = r.ReadInteger(&uper.Constraint{Lb: 0, Ub: 31}, false); err != nil {
-			return utils.WrapError("Decode ms32", err)
+		ie.Ms20 = tmp_int_Ms20
+	case MTCH_SSB_MappingWindowCycleOffset_r17_Choice_Ms32:
+		var tmp_int_Ms32 int64
+		if tmp_int_Ms32, err = r.ReadInteger(&uper.Constraint{Lb: 0, Ub: 31}, false); err != nil {
+			return utils.WrapError("Decode Ms32", err)
 		}
-		ie.ms32 = tmp_int_ms32
-	case MTCH_SSB_MappingWindowCycleOffset_r17_Choice_ms64:
-		var tmp_int_ms64 int64
-		if tmp_int_ms64, err = r.ReadInteger(&uper.Constraint{Lb: 0, Ub: 63}, false); err != nil {
-			return utils.WrapError("Decode ms64", err)
+		ie.Ms32 = tmp_int_Ms32
+	case MTCH_SSB_MappingWindowCycleOffset_r17_Choice_Ms64:
+		var tmp_int_Ms64 int64
+		if tmp_int_Ms64, err = r.ReadInteger(&uper.Constraint{Lb: 0, Ub: 63}, false); err != nil {
+			return utils.WrapError("Decode Ms64", err)
 		}
-		ie.ms64 = tmp_int_ms64
-	case MTCH_SSB_MappingWindowCycleOffset_r17_Choice_ms128:
-		var tmp_int_ms128 int64
-		if tmp_int_ms128, err = r.ReadInteger(&uper.Constraint{Lb: 0, Ub: 127}, false); err != nil {
-			return utils.WrapError("Decode ms128", err)
+		ie.Ms64 = tmp_int_Ms64
+	case MTCH_SSB_MappingWindowCycleOffset_r17_Choice_Ms128:
+		var tmp_int_Ms128 int64
+		if tmp_int_Ms128, err = r.ReadInteger(&uper.Constraint{Lb: 0, Ub: 127}, false); err != nil {
+			return utils.WrapError("Decode Ms128", err)
 		}
-		ie.ms128 = tmp_int_ms128
-	case MTCH_SSB_MappingWindowCycleOffset_r17_Choice_ms256:
-		var tmp_int_ms256 int64
-		if tmp_int_ms256, err = r.ReadInteger(&uper.Constraint{Lb: 0, Ub: 255}, false); err != nil {
-			return utils.WrapError("Decode ms256", err)
+		ie.Ms128 = tmp_int_Ms128
+	case MTCH_SSB_MappingWindowCycleOffset_r17_Choice_Ms256:
+		var tmp_int_Ms256 int64
+		if tmp_int_Ms256, err = r.ReadInteger(&uper.Constraint{Lb: 0, Ub: 255}, false); err != nil {
+			return utils.WrapError("Decode Ms256", err)
 		}
-		ie.ms256 = tmp_int_ms256
+		ie.Ms256 = tmp_int_Ms256
 	default:
 		return fmt.Errorf("invalid choice: %d", ie.Choice)
 	}

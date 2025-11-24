@@ -6,32 +6,32 @@ import (
 )
 
 type ThresholdNR struct {
-	thresholdRSRP *RSRP_Range `optional`
-	thresholdRSRQ *RSRQ_Range `optional`
-	thresholdSINR *SINR_Range `optional`
+	ThresholdRSRP *RSRP_Range `optional`
+	ThresholdRSRQ *RSRQ_Range `optional`
+	ThresholdSINR *SINR_Range `optional`
 }
 
 func (ie *ThresholdNR) Encode(w *uper.UperWriter) error {
 	var err error
-	preambleBits := []bool{ie.thresholdRSRP != nil, ie.thresholdRSRQ != nil, ie.thresholdSINR != nil}
+	preambleBits := []bool{ie.ThresholdRSRP != nil, ie.ThresholdRSRQ != nil, ie.ThresholdSINR != nil}
 	for _, bit := range preambleBits {
 		if err = w.WriteBool(bit); err != nil {
 			return err
 		}
 	}
-	if ie.thresholdRSRP != nil {
-		if err = ie.thresholdRSRP.Encode(w); err != nil {
-			return utils.WrapError("Encode thresholdRSRP", err)
+	if ie.ThresholdRSRP != nil {
+		if err = ie.ThresholdRSRP.Encode(w); err != nil {
+			return utils.WrapError("Encode ThresholdRSRP", err)
 		}
 	}
-	if ie.thresholdRSRQ != nil {
-		if err = ie.thresholdRSRQ.Encode(w); err != nil {
-			return utils.WrapError("Encode thresholdRSRQ", err)
+	if ie.ThresholdRSRQ != nil {
+		if err = ie.ThresholdRSRQ.Encode(w); err != nil {
+			return utils.WrapError("Encode ThresholdRSRQ", err)
 		}
 	}
-	if ie.thresholdSINR != nil {
-		if err = ie.thresholdSINR.Encode(w); err != nil {
-			return utils.WrapError("Encode thresholdSINR", err)
+	if ie.ThresholdSINR != nil {
+		if err = ie.ThresholdSINR.Encode(w); err != nil {
+			return utils.WrapError("Encode ThresholdSINR", err)
 		}
 	}
 	return nil
@@ -39,34 +39,34 @@ func (ie *ThresholdNR) Encode(w *uper.UperWriter) error {
 
 func (ie *ThresholdNR) Decode(r *uper.UperReader) error {
 	var err error
-	var thresholdRSRPPresent bool
-	if thresholdRSRPPresent, err = r.ReadBool(); err != nil {
+	var ThresholdRSRPPresent bool
+	if ThresholdRSRPPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var thresholdRSRQPresent bool
-	if thresholdRSRQPresent, err = r.ReadBool(); err != nil {
+	var ThresholdRSRQPresent bool
+	if ThresholdRSRQPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var thresholdSINRPresent bool
-	if thresholdSINRPresent, err = r.ReadBool(); err != nil {
+	var ThresholdSINRPresent bool
+	if ThresholdSINRPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	if thresholdRSRPPresent {
-		ie.thresholdRSRP = new(RSRP_Range)
-		if err = ie.thresholdRSRP.Decode(r); err != nil {
-			return utils.WrapError("Decode thresholdRSRP", err)
+	if ThresholdRSRPPresent {
+		ie.ThresholdRSRP = new(RSRP_Range)
+		if err = ie.ThresholdRSRP.Decode(r); err != nil {
+			return utils.WrapError("Decode ThresholdRSRP", err)
 		}
 	}
-	if thresholdRSRQPresent {
-		ie.thresholdRSRQ = new(RSRQ_Range)
-		if err = ie.thresholdRSRQ.Decode(r); err != nil {
-			return utils.WrapError("Decode thresholdRSRQ", err)
+	if ThresholdRSRQPresent {
+		ie.ThresholdRSRQ = new(RSRQ_Range)
+		if err = ie.ThresholdRSRQ.Decode(r); err != nil {
+			return utils.WrapError("Decode ThresholdRSRQ", err)
 		}
 	}
-	if thresholdSINRPresent {
-		ie.thresholdSINR = new(SINR_Range)
-		if err = ie.thresholdSINR.Decode(r); err != nil {
-			return utils.WrapError("Decode thresholdSINR", err)
+	if ThresholdSINRPresent {
+		ie.ThresholdSINR = new(SINR_Range)
+		if err = ie.ThresholdSINR.Decode(r); err != nil {
+			return utils.WrapError("Decode ThresholdSINR", err)
 		}
 	}
 	return nil

@@ -6,36 +6,36 @@ import (
 )
 
 type SliceInfo_r17 struct {
-	nsag_IdentityInfo_r17               NSAG_IdentityInfo_r17              `madatory`
-	nsag_CellReselectionPriority_r17    *CellReselectionPriority           `optional`
-	nsag_CellReselectionSubPriority_r17 *CellReselectionSubPriority        `optional`
-	sliceCellListNR_r17                 *SliceInfo_r17_sliceCellListNR_r17 `optional`
+	Nsag_IdentityInfo_r17               NSAG_IdentityInfo_r17              `madatory`
+	Nsag_CellReselectionPriority_r17    *CellReselectionPriority           `optional`
+	Nsag_CellReselectionSubPriority_r17 *CellReselectionSubPriority        `optional`
+	SliceCellListNR_r17                 *SliceInfo_r17_sliceCellListNR_r17 `optional`
 }
 
 func (ie *SliceInfo_r17) Encode(w *uper.UperWriter) error {
 	var err error
-	preambleBits := []bool{ie.nsag_CellReselectionPriority_r17 != nil, ie.nsag_CellReselectionSubPriority_r17 != nil, ie.sliceCellListNR_r17 != nil}
+	preambleBits := []bool{ie.Nsag_CellReselectionPriority_r17 != nil, ie.Nsag_CellReselectionSubPriority_r17 != nil, ie.SliceCellListNR_r17 != nil}
 	for _, bit := range preambleBits {
 		if err = w.WriteBool(bit); err != nil {
 			return err
 		}
 	}
-	if err = ie.nsag_IdentityInfo_r17.Encode(w); err != nil {
-		return utils.WrapError("Encode nsag_IdentityInfo_r17", err)
+	if err = ie.Nsag_IdentityInfo_r17.Encode(w); err != nil {
+		return utils.WrapError("Encode Nsag_IdentityInfo_r17", err)
 	}
-	if ie.nsag_CellReselectionPriority_r17 != nil {
-		if err = ie.nsag_CellReselectionPriority_r17.Encode(w); err != nil {
-			return utils.WrapError("Encode nsag_CellReselectionPriority_r17", err)
+	if ie.Nsag_CellReselectionPriority_r17 != nil {
+		if err = ie.Nsag_CellReselectionPriority_r17.Encode(w); err != nil {
+			return utils.WrapError("Encode Nsag_CellReselectionPriority_r17", err)
 		}
 	}
-	if ie.nsag_CellReselectionSubPriority_r17 != nil {
-		if err = ie.nsag_CellReselectionSubPriority_r17.Encode(w); err != nil {
-			return utils.WrapError("Encode nsag_CellReselectionSubPriority_r17", err)
+	if ie.Nsag_CellReselectionSubPriority_r17 != nil {
+		if err = ie.Nsag_CellReselectionSubPriority_r17.Encode(w); err != nil {
+			return utils.WrapError("Encode Nsag_CellReselectionSubPriority_r17", err)
 		}
 	}
-	if ie.sliceCellListNR_r17 != nil {
-		if err = ie.sliceCellListNR_r17.Encode(w); err != nil {
-			return utils.WrapError("Encode sliceCellListNR_r17", err)
+	if ie.SliceCellListNR_r17 != nil {
+		if err = ie.SliceCellListNR_r17.Encode(w); err != nil {
+			return utils.WrapError("Encode SliceCellListNR_r17", err)
 		}
 	}
 	return nil
@@ -43,37 +43,37 @@ func (ie *SliceInfo_r17) Encode(w *uper.UperWriter) error {
 
 func (ie *SliceInfo_r17) Decode(r *uper.UperReader) error {
 	var err error
-	var nsag_CellReselectionPriority_r17Present bool
-	if nsag_CellReselectionPriority_r17Present, err = r.ReadBool(); err != nil {
+	var Nsag_CellReselectionPriority_r17Present bool
+	if Nsag_CellReselectionPriority_r17Present, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var nsag_CellReselectionSubPriority_r17Present bool
-	if nsag_CellReselectionSubPriority_r17Present, err = r.ReadBool(); err != nil {
+	var Nsag_CellReselectionSubPriority_r17Present bool
+	if Nsag_CellReselectionSubPriority_r17Present, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var sliceCellListNR_r17Present bool
-	if sliceCellListNR_r17Present, err = r.ReadBool(); err != nil {
+	var SliceCellListNR_r17Present bool
+	if SliceCellListNR_r17Present, err = r.ReadBool(); err != nil {
 		return err
 	}
-	if err = ie.nsag_IdentityInfo_r17.Decode(r); err != nil {
-		return utils.WrapError("Decode nsag_IdentityInfo_r17", err)
+	if err = ie.Nsag_IdentityInfo_r17.Decode(r); err != nil {
+		return utils.WrapError("Decode Nsag_IdentityInfo_r17", err)
 	}
-	if nsag_CellReselectionPriority_r17Present {
-		ie.nsag_CellReselectionPriority_r17 = new(CellReselectionPriority)
-		if err = ie.nsag_CellReselectionPriority_r17.Decode(r); err != nil {
-			return utils.WrapError("Decode nsag_CellReselectionPriority_r17", err)
+	if Nsag_CellReselectionPriority_r17Present {
+		ie.Nsag_CellReselectionPriority_r17 = new(CellReselectionPriority)
+		if err = ie.Nsag_CellReselectionPriority_r17.Decode(r); err != nil {
+			return utils.WrapError("Decode Nsag_CellReselectionPriority_r17", err)
 		}
 	}
-	if nsag_CellReselectionSubPriority_r17Present {
-		ie.nsag_CellReselectionSubPriority_r17 = new(CellReselectionSubPriority)
-		if err = ie.nsag_CellReselectionSubPriority_r17.Decode(r); err != nil {
-			return utils.WrapError("Decode nsag_CellReselectionSubPriority_r17", err)
+	if Nsag_CellReselectionSubPriority_r17Present {
+		ie.Nsag_CellReselectionSubPriority_r17 = new(CellReselectionSubPriority)
+		if err = ie.Nsag_CellReselectionSubPriority_r17.Decode(r); err != nil {
+			return utils.WrapError("Decode Nsag_CellReselectionSubPriority_r17", err)
 		}
 	}
-	if sliceCellListNR_r17Present {
-		ie.sliceCellListNR_r17 = new(SliceInfo_r17_sliceCellListNR_r17)
-		if err = ie.sliceCellListNR_r17.Decode(r); err != nil {
-			return utils.WrapError("Decode sliceCellListNR_r17", err)
+	if SliceCellListNR_r17Present {
+		ie.SliceCellListNR_r17 = new(SliceInfo_r17_sliceCellListNR_r17)
+		if err = ie.SliceCellListNR_r17.Decode(r); err != nil {
+			return utils.WrapError("Decode SliceCellListNR_r17", err)
 		}
 	}
 	return nil

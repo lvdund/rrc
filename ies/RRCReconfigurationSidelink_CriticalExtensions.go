@@ -9,14 +9,14 @@ import (
 
 const (
 	RRCReconfigurationSidelink_CriticalExtensions_Choice_nothing uint64 = iota
-	RRCReconfigurationSidelink_CriticalExtensions_Choice_rrcReconfigurationSidelink_r16
-	RRCReconfigurationSidelink_CriticalExtensions_Choice_criticalExtensionsFuture
+	RRCReconfigurationSidelink_CriticalExtensions_Choice_RrcReconfigurationSidelink_r16
+	RRCReconfigurationSidelink_CriticalExtensions_Choice_CriticalExtensionsFuture
 )
 
 type RRCReconfigurationSidelink_CriticalExtensions struct {
 	Choice                         uint64
-	rrcReconfigurationSidelink_r16 *RRCReconfigurationSidelink_r16_IEs
-	criticalExtensionsFuture       interface{} `madatory`
+	RrcReconfigurationSidelink_r16 *RRCReconfigurationSidelink_r16_IEs
+	CriticalExtensionsFuture       interface{} `madatory`
 }
 
 func (ie *RRCReconfigurationSidelink_CriticalExtensions) Encode(w *uper.UperWriter) error {
@@ -25,11 +25,11 @@ func (ie *RRCReconfigurationSidelink_CriticalExtensions) Encode(w *uper.UperWrit
 		return err
 	}
 	switch ie.Choice {
-	case RRCReconfigurationSidelink_CriticalExtensions_Choice_rrcReconfigurationSidelink_r16:
-		if err = ie.rrcReconfigurationSidelink_r16.Encode(w); err != nil {
-			err = utils.WrapError("Encode rrcReconfigurationSidelink_r16", err)
+	case RRCReconfigurationSidelink_CriticalExtensions_Choice_RrcReconfigurationSidelink_r16:
+		if err = ie.RrcReconfigurationSidelink_r16.Encode(w); err != nil {
+			err = utils.WrapError("Encode RrcReconfigurationSidelink_r16", err)
 		}
-	case RRCReconfigurationSidelink_CriticalExtensions_Choice_criticalExtensionsFuture:
+	case RRCReconfigurationSidelink_CriticalExtensions_Choice_CriticalExtensionsFuture:
 		// interface{} field of choice - nothing to encode
 	default:
 		err = fmt.Errorf("invalid choice: %d", ie.Choice)
@@ -43,12 +43,12 @@ func (ie *RRCReconfigurationSidelink_CriticalExtensions) Decode(r *uper.UperRead
 		return err
 	}
 	switch ie.Choice {
-	case RRCReconfigurationSidelink_CriticalExtensions_Choice_rrcReconfigurationSidelink_r16:
-		ie.rrcReconfigurationSidelink_r16 = new(RRCReconfigurationSidelink_r16_IEs)
-		if err = ie.rrcReconfigurationSidelink_r16.Decode(r); err != nil {
-			return utils.WrapError("Decode rrcReconfigurationSidelink_r16", err)
+	case RRCReconfigurationSidelink_CriticalExtensions_Choice_RrcReconfigurationSidelink_r16:
+		ie.RrcReconfigurationSidelink_r16 = new(RRCReconfigurationSidelink_r16_IEs)
+		if err = ie.RrcReconfigurationSidelink_r16.Decode(r); err != nil {
+			return utils.WrapError("Decode RrcReconfigurationSidelink_r16", err)
 		}
-	case RRCReconfigurationSidelink_CriticalExtensions_Choice_criticalExtensionsFuture:
+	case RRCReconfigurationSidelink_CriticalExtensions_Choice_CriticalExtensionsFuture:
 		// interface{} field of choice - nothing to decode
 	default:
 		return fmt.Errorf("invalid choice: %d", ie.Choice)

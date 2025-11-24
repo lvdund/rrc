@@ -9,14 +9,14 @@ import (
 
 const (
 	PDSCH_Config_dl_OrJointTCI_StateList_r17_Choice_nothing uint64 = iota
-	PDSCH_Config_dl_OrJointTCI_StateList_r17_Choice_explicitlist
-	PDSCH_Config_dl_OrJointTCI_StateList_r17_Choice_unifiedTCI_StateRef_r17
+	PDSCH_Config_dl_OrJointTCI_StateList_r17_Choice_Explicitlist
+	PDSCH_Config_dl_OrJointTCI_StateList_r17_Choice_UnifiedTCI_StateRef_r17
 )
 
 type PDSCH_Config_dl_OrJointTCI_StateList_r17 struct {
 	Choice                  uint64
-	explicitlist            *PDSCH_Config_dl_OrJointTCI_StateList_r17_explicitlist
-	unifiedTCI_StateRef_r17 *ServingCellAndBWP_Id_r17
+	Explicitlist            *PDSCH_Config_dl_OrJointTCI_StateList_r17_explicitlist
+	UnifiedTCI_StateRef_r17 *ServingCellAndBWP_Id_r17
 }
 
 func (ie *PDSCH_Config_dl_OrJointTCI_StateList_r17) Encode(w *uper.UperWriter) error {
@@ -25,13 +25,13 @@ func (ie *PDSCH_Config_dl_OrJointTCI_StateList_r17) Encode(w *uper.UperWriter) e
 		return err
 	}
 	switch ie.Choice {
-	case PDSCH_Config_dl_OrJointTCI_StateList_r17_Choice_explicitlist:
-		if err = ie.explicitlist.Encode(w); err != nil {
-			err = utils.WrapError("Encode explicitlist", err)
+	case PDSCH_Config_dl_OrJointTCI_StateList_r17_Choice_Explicitlist:
+		if err = ie.Explicitlist.Encode(w); err != nil {
+			err = utils.WrapError("Encode Explicitlist", err)
 		}
-	case PDSCH_Config_dl_OrJointTCI_StateList_r17_Choice_unifiedTCI_StateRef_r17:
-		if err = ie.unifiedTCI_StateRef_r17.Encode(w); err != nil {
-			err = utils.WrapError("Encode unifiedTCI_StateRef_r17", err)
+	case PDSCH_Config_dl_OrJointTCI_StateList_r17_Choice_UnifiedTCI_StateRef_r17:
+		if err = ie.UnifiedTCI_StateRef_r17.Encode(w); err != nil {
+			err = utils.WrapError("Encode UnifiedTCI_StateRef_r17", err)
 		}
 	default:
 		err = fmt.Errorf("invalid choice: %d", ie.Choice)
@@ -45,15 +45,15 @@ func (ie *PDSCH_Config_dl_OrJointTCI_StateList_r17) Decode(r *uper.UperReader) e
 		return err
 	}
 	switch ie.Choice {
-	case PDSCH_Config_dl_OrJointTCI_StateList_r17_Choice_explicitlist:
-		ie.explicitlist = new(PDSCH_Config_dl_OrJointTCI_StateList_r17_explicitlist)
-		if err = ie.explicitlist.Decode(r); err != nil {
-			return utils.WrapError("Decode explicitlist", err)
+	case PDSCH_Config_dl_OrJointTCI_StateList_r17_Choice_Explicitlist:
+		ie.Explicitlist = new(PDSCH_Config_dl_OrJointTCI_StateList_r17_explicitlist)
+		if err = ie.Explicitlist.Decode(r); err != nil {
+			return utils.WrapError("Decode Explicitlist", err)
 		}
-	case PDSCH_Config_dl_OrJointTCI_StateList_r17_Choice_unifiedTCI_StateRef_r17:
-		ie.unifiedTCI_StateRef_r17 = new(ServingCellAndBWP_Id_r17)
-		if err = ie.unifiedTCI_StateRef_r17.Decode(r); err != nil {
-			return utils.WrapError("Decode unifiedTCI_StateRef_r17", err)
+	case PDSCH_Config_dl_OrJointTCI_StateList_r17_Choice_UnifiedTCI_StateRef_r17:
+		ie.UnifiedTCI_StateRef_r17 = new(ServingCellAndBWP_Id_r17)
+		if err = ie.UnifiedTCI_StateRef_r17.Decode(r); err != nil {
+			return utils.WrapError("Decode UnifiedTCI_StateRef_r17", err)
 		}
 	default:
 		return fmt.Errorf("invalid choice: %d", ie.Choice)

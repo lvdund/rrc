@@ -9,14 +9,14 @@ import (
 
 const (
 	UEPositioningAssistanceInfo_r17_CriticalExtensions_Choice_nothing uint64 = iota
-	UEPositioningAssistanceInfo_r17_CriticalExtensions_Choice_uePositioningAssistanceInfo_r17
-	UEPositioningAssistanceInfo_r17_CriticalExtensions_Choice_criticalExtensionsFuture
+	UEPositioningAssistanceInfo_r17_CriticalExtensions_Choice_UePositioningAssistanceInfo_r17
+	UEPositioningAssistanceInfo_r17_CriticalExtensions_Choice_CriticalExtensionsFuture
 )
 
 type UEPositioningAssistanceInfo_r17_CriticalExtensions struct {
 	Choice                          uint64
-	uePositioningAssistanceInfo_r17 *UEPositioningAssistanceInfo_r17_IEs
-	criticalExtensionsFuture        interface{} `madatory`
+	UePositioningAssistanceInfo_r17 *UEPositioningAssistanceInfo_r17_IEs
+	CriticalExtensionsFuture        interface{} `madatory`
 }
 
 func (ie *UEPositioningAssistanceInfo_r17_CriticalExtensions) Encode(w *uper.UperWriter) error {
@@ -25,11 +25,11 @@ func (ie *UEPositioningAssistanceInfo_r17_CriticalExtensions) Encode(w *uper.Upe
 		return err
 	}
 	switch ie.Choice {
-	case UEPositioningAssistanceInfo_r17_CriticalExtensions_Choice_uePositioningAssistanceInfo_r17:
-		if err = ie.uePositioningAssistanceInfo_r17.Encode(w); err != nil {
-			err = utils.WrapError("Encode uePositioningAssistanceInfo_r17", err)
+	case UEPositioningAssistanceInfo_r17_CriticalExtensions_Choice_UePositioningAssistanceInfo_r17:
+		if err = ie.UePositioningAssistanceInfo_r17.Encode(w); err != nil {
+			err = utils.WrapError("Encode UePositioningAssistanceInfo_r17", err)
 		}
-	case UEPositioningAssistanceInfo_r17_CriticalExtensions_Choice_criticalExtensionsFuture:
+	case UEPositioningAssistanceInfo_r17_CriticalExtensions_Choice_CriticalExtensionsFuture:
 		// interface{} field of choice - nothing to encode
 	default:
 		err = fmt.Errorf("invalid choice: %d", ie.Choice)
@@ -43,12 +43,12 @@ func (ie *UEPositioningAssistanceInfo_r17_CriticalExtensions) Decode(r *uper.Upe
 		return err
 	}
 	switch ie.Choice {
-	case UEPositioningAssistanceInfo_r17_CriticalExtensions_Choice_uePositioningAssistanceInfo_r17:
-		ie.uePositioningAssistanceInfo_r17 = new(UEPositioningAssistanceInfo_r17_IEs)
-		if err = ie.uePositioningAssistanceInfo_r17.Decode(r); err != nil {
-			return utils.WrapError("Decode uePositioningAssistanceInfo_r17", err)
+	case UEPositioningAssistanceInfo_r17_CriticalExtensions_Choice_UePositioningAssistanceInfo_r17:
+		ie.UePositioningAssistanceInfo_r17 = new(UEPositioningAssistanceInfo_r17_IEs)
+		if err = ie.UePositioningAssistanceInfo_r17.Decode(r); err != nil {
+			return utils.WrapError("Decode UePositioningAssistanceInfo_r17", err)
 		}
-	case UEPositioningAssistanceInfo_r17_CriticalExtensions_Choice_criticalExtensionsFuture:
+	case UEPositioningAssistanceInfo_r17_CriticalExtensions_Choice_CriticalExtensionsFuture:
 		// interface{} field of choice - nothing to decode
 	default:
 		return fmt.Errorf("invalid choice: %d", ie.Choice)

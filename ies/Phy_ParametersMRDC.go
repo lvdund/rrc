@@ -8,33 +8,33 @@ import (
 )
 
 type Phy_ParametersMRDC struct {
-	naics_Capability_List             []NAICS_Capability_Entry                              `lb:1,ub:maxNrofNAICS_Entries,optional`
-	spCellPlacement                   *CarrierAggregationVariant                            `optional,ext-1`
-	tdd_PCellUL_TX_AllUL_Subframe_r16 *Phy_ParametersMRDC_tdd_PCellUL_TX_AllUL_Subframe_r16 `optional,ext-2`
-	fdd_PCellUL_TX_AllUL_Subframe_r16 *Phy_ParametersMRDC_fdd_PCellUL_TX_AllUL_Subframe_r16 `optional,ext-2`
+	Naics_Capability_List             []NAICS_Capability_Entry                              `lb:1,ub:maxNrofNAICS_Entries,optional`
+	SpCellPlacement                   *CarrierAggregationVariant                            `optional,ext-1`
+	Tdd_PCellUL_TX_AllUL_Subframe_r16 *Phy_ParametersMRDC_tdd_PCellUL_TX_AllUL_Subframe_r16 `optional,ext-2`
+	Fdd_PCellUL_TX_AllUL_Subframe_r16 *Phy_ParametersMRDC_fdd_PCellUL_TX_AllUL_Subframe_r16 `optional,ext-2`
 }
 
 func (ie *Phy_ParametersMRDC) Encode(w *uper.UperWriter) error {
 	var err error
-	hasExtensions := ie.spCellPlacement != nil || ie.tdd_PCellUL_TX_AllUL_Subframe_r16 != nil || ie.fdd_PCellUL_TX_AllUL_Subframe_r16 != nil
-	preambleBits := []bool{hasExtensions, len(ie.naics_Capability_List) > 0}
+	hasExtensions := ie.SpCellPlacement != nil || ie.Tdd_PCellUL_TX_AllUL_Subframe_r16 != nil || ie.Fdd_PCellUL_TX_AllUL_Subframe_r16 != nil
+	preambleBits := []bool{hasExtensions, len(ie.Naics_Capability_List) > 0}
 	for _, bit := range preambleBits {
 		if err = w.WriteBool(bit); err != nil {
 			return err
 		}
 	}
-	if len(ie.naics_Capability_List) > 0 {
-		tmp_naics_Capability_List := utils.NewSequence[*NAICS_Capability_Entry]([]*NAICS_Capability_Entry{}, uper.Constraint{Lb: 1, Ub: maxNrofNAICS_Entries}, false)
-		for _, i := range ie.naics_Capability_List {
-			tmp_naics_Capability_List.Value = append(tmp_naics_Capability_List.Value, &i)
+	if len(ie.Naics_Capability_List) > 0 {
+		tmp_Naics_Capability_List := utils.NewSequence[*NAICS_Capability_Entry]([]*NAICS_Capability_Entry{}, uper.Constraint{Lb: 1, Ub: maxNrofNAICS_Entries}, false)
+		for _, i := range ie.Naics_Capability_List {
+			tmp_Naics_Capability_List.Value = append(tmp_Naics_Capability_List.Value, &i)
 		}
-		if err = tmp_naics_Capability_List.Encode(w); err != nil {
-			return utils.WrapError("Encode naics_Capability_List", err)
+		if err = tmp_Naics_Capability_List.Encode(w); err != nil {
+			return utils.WrapError("Encode Naics_Capability_List", err)
 		}
 	}
 	if hasExtensions {
 		// Extension bitmap: 2 bits for 2 extension groups
-		extBitmap := []bool{ie.spCellPlacement != nil, ie.tdd_PCellUL_TX_AllUL_Subframe_r16 != nil || ie.fdd_PCellUL_TX_AllUL_Subframe_r16 != nil}
+		extBitmap := []bool{ie.SpCellPlacement != nil, ie.Tdd_PCellUL_TX_AllUL_Subframe_r16 != nil || ie.Fdd_PCellUL_TX_AllUL_Subframe_r16 != nil}
 		if err := w.WriteExtBitMap(extBitmap); err != nil {
 			return utils.WrapError("WriteExtBitMap Phy_ParametersMRDC", err)
 		}
@@ -45,17 +45,17 @@ func (ie *Phy_ParametersMRDC) Encode(w *uper.UperWriter) error {
 			extWriter := uper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 1
-			optionals_ext_1 := []bool{ie.spCellPlacement != nil}
+			optionals_ext_1 := []bool{ie.SpCellPlacement != nil}
 			for _, bit := range optionals_ext_1 {
 				if err := extWriter.WriteBool(bit); err != nil {
 					return err
 				}
 			}
 
-			// encode spCellPlacement optional
-			if ie.spCellPlacement != nil {
-				if err = ie.spCellPlacement.Encode(extWriter); err != nil {
-					return utils.WrapError("Encode spCellPlacement", err)
+			// encode SpCellPlacement optional
+			if ie.SpCellPlacement != nil {
+				if err = ie.SpCellPlacement.Encode(extWriter); err != nil {
+					return utils.WrapError("Encode SpCellPlacement", err)
 				}
 			}
 
@@ -74,23 +74,23 @@ func (ie *Phy_ParametersMRDC) Encode(w *uper.UperWriter) error {
 			extWriter := uper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 2
-			optionals_ext_2 := []bool{ie.tdd_PCellUL_TX_AllUL_Subframe_r16 != nil, ie.fdd_PCellUL_TX_AllUL_Subframe_r16 != nil}
+			optionals_ext_2 := []bool{ie.Tdd_PCellUL_TX_AllUL_Subframe_r16 != nil, ie.Fdd_PCellUL_TX_AllUL_Subframe_r16 != nil}
 			for _, bit := range optionals_ext_2 {
 				if err := extWriter.WriteBool(bit); err != nil {
 					return err
 				}
 			}
 
-			// encode tdd_PCellUL_TX_AllUL_Subframe_r16 optional
-			if ie.tdd_PCellUL_TX_AllUL_Subframe_r16 != nil {
-				if err = ie.tdd_PCellUL_TX_AllUL_Subframe_r16.Encode(extWriter); err != nil {
-					return utils.WrapError("Encode tdd_PCellUL_TX_AllUL_Subframe_r16", err)
+			// encode Tdd_PCellUL_TX_AllUL_Subframe_r16 optional
+			if ie.Tdd_PCellUL_TX_AllUL_Subframe_r16 != nil {
+				if err = ie.Tdd_PCellUL_TX_AllUL_Subframe_r16.Encode(extWriter); err != nil {
+					return utils.WrapError("Encode Tdd_PCellUL_TX_AllUL_Subframe_r16", err)
 				}
 			}
-			// encode fdd_PCellUL_TX_AllUL_Subframe_r16 optional
-			if ie.fdd_PCellUL_TX_AllUL_Subframe_r16 != nil {
-				if err = ie.fdd_PCellUL_TX_AllUL_Subframe_r16.Encode(extWriter); err != nil {
-					return utils.WrapError("Encode fdd_PCellUL_TX_AllUL_Subframe_r16", err)
+			// encode Fdd_PCellUL_TX_AllUL_Subframe_r16 optional
+			if ie.Fdd_PCellUL_TX_AllUL_Subframe_r16 != nil {
+				if err = ie.Fdd_PCellUL_TX_AllUL_Subframe_r16.Encode(extWriter); err != nil {
+					return utils.WrapError("Encode Fdd_PCellUL_TX_AllUL_Subframe_r16", err)
 				}
 			}
 
@@ -112,21 +112,21 @@ func (ie *Phy_ParametersMRDC) Decode(r *uper.UperReader) error {
 	if extensionBit, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var naics_Capability_ListPresent bool
-	if naics_Capability_ListPresent, err = r.ReadBool(); err != nil {
+	var Naics_Capability_ListPresent bool
+	if Naics_Capability_ListPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	if naics_Capability_ListPresent {
-		tmp_naics_Capability_List := utils.NewSequence[*NAICS_Capability_Entry]([]*NAICS_Capability_Entry{}, uper.Constraint{Lb: 1, Ub: maxNrofNAICS_Entries}, false)
-		fn_naics_Capability_List := func() *NAICS_Capability_Entry {
+	if Naics_Capability_ListPresent {
+		tmp_Naics_Capability_List := utils.NewSequence[*NAICS_Capability_Entry]([]*NAICS_Capability_Entry{}, uper.Constraint{Lb: 1, Ub: maxNrofNAICS_Entries}, false)
+		fn_Naics_Capability_List := func() *NAICS_Capability_Entry {
 			return new(NAICS_Capability_Entry)
 		}
-		if err = tmp_naics_Capability_List.Decode(r, fn_naics_Capability_List); err != nil {
-			return utils.WrapError("Decode naics_Capability_List", err)
+		if err = tmp_Naics_Capability_List.Decode(r, fn_Naics_Capability_List); err != nil {
+			return utils.WrapError("Decode Naics_Capability_List", err)
 		}
-		ie.naics_Capability_List = []NAICS_Capability_Entry{}
-		for _, i := range tmp_naics_Capability_List.Value {
-			ie.naics_Capability_List = append(ie.naics_Capability_List, *i)
+		ie.Naics_Capability_List = []NAICS_Capability_Entry{}
+		for _, i := range tmp_Naics_Capability_List.Value {
+			ie.Naics_Capability_List = append(ie.Naics_Capability_List, *i)
 		}
 	}
 
@@ -146,15 +146,15 @@ func (ie *Phy_ParametersMRDC) Decode(r *uper.UperReader) error {
 
 			extReader := uper.NewReader(bytes.NewReader(extBytes))
 
-			spCellPlacementPresent, err := extReader.ReadBool()
+			SpCellPlacementPresent, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			// decode spCellPlacement optional
-			if spCellPlacementPresent {
-				ie.spCellPlacement = new(CarrierAggregationVariant)
-				if err = ie.spCellPlacement.Decode(extReader); err != nil {
-					return utils.WrapError("Decode spCellPlacement", err)
+			// decode SpCellPlacement optional
+			if SpCellPlacementPresent {
+				ie.SpCellPlacement = new(CarrierAggregationVariant)
+				if err = ie.SpCellPlacement.Decode(extReader); err != nil {
+					return utils.WrapError("Decode SpCellPlacement", err)
 				}
 			}
 		}
@@ -167,26 +167,26 @@ func (ie *Phy_ParametersMRDC) Decode(r *uper.UperReader) error {
 
 			extReader := uper.NewReader(bytes.NewReader(extBytes))
 
-			tdd_PCellUL_TX_AllUL_Subframe_r16Present, err := extReader.ReadBool()
+			Tdd_PCellUL_TX_AllUL_Subframe_r16Present, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			fdd_PCellUL_TX_AllUL_Subframe_r16Present, err := extReader.ReadBool()
+			Fdd_PCellUL_TX_AllUL_Subframe_r16Present, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			// decode tdd_PCellUL_TX_AllUL_Subframe_r16 optional
-			if tdd_PCellUL_TX_AllUL_Subframe_r16Present {
-				ie.tdd_PCellUL_TX_AllUL_Subframe_r16 = new(Phy_ParametersMRDC_tdd_PCellUL_TX_AllUL_Subframe_r16)
-				if err = ie.tdd_PCellUL_TX_AllUL_Subframe_r16.Decode(extReader); err != nil {
-					return utils.WrapError("Decode tdd_PCellUL_TX_AllUL_Subframe_r16", err)
+			// decode Tdd_PCellUL_TX_AllUL_Subframe_r16 optional
+			if Tdd_PCellUL_TX_AllUL_Subframe_r16Present {
+				ie.Tdd_PCellUL_TX_AllUL_Subframe_r16 = new(Phy_ParametersMRDC_tdd_PCellUL_TX_AllUL_Subframe_r16)
+				if err = ie.Tdd_PCellUL_TX_AllUL_Subframe_r16.Decode(extReader); err != nil {
+					return utils.WrapError("Decode Tdd_PCellUL_TX_AllUL_Subframe_r16", err)
 				}
 			}
-			// decode fdd_PCellUL_TX_AllUL_Subframe_r16 optional
-			if fdd_PCellUL_TX_AllUL_Subframe_r16Present {
-				ie.fdd_PCellUL_TX_AllUL_Subframe_r16 = new(Phy_ParametersMRDC_fdd_PCellUL_TX_AllUL_Subframe_r16)
-				if err = ie.fdd_PCellUL_TX_AllUL_Subframe_r16.Decode(extReader); err != nil {
-					return utils.WrapError("Decode fdd_PCellUL_TX_AllUL_Subframe_r16", err)
+			// decode Fdd_PCellUL_TX_AllUL_Subframe_r16 optional
+			if Fdd_PCellUL_TX_AllUL_Subframe_r16Present {
+				ie.Fdd_PCellUL_TX_AllUL_Subframe_r16 = new(Phy_ParametersMRDC_fdd_PCellUL_TX_AllUL_Subframe_r16)
+				if err = ie.Fdd_PCellUL_TX_AllUL_Subframe_r16.Decode(extReader); err != nil {
+					return utils.WrapError("Decode Fdd_PCellUL_TX_AllUL_Subframe_r16", err)
 				}
 			}
 		}

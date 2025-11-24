@@ -9,14 +9,14 @@ import (
 
 const (
 	BetaOffsetsCrossPriSelCG_r17_Choice_nothing uint64 = iota
-	BetaOffsetsCrossPriSelCG_r17_Choice_dynamic_r17
-	BetaOffsetsCrossPriSelCG_r17_Choice_semiStatic_r17
+	BetaOffsetsCrossPriSelCG_r17_Choice_Dynamic_r17
+	BetaOffsetsCrossPriSelCG_r17_Choice_SemiStatic_r17
 )
 
 type BetaOffsetsCrossPriSelCG_r17 struct {
 	Choice         uint64
-	dynamic_r17    []BetaOffsetsCrossPri_r17 `lb:1,ub:4,madatory`
-	semiStatic_r17 *BetaOffsetsCrossPri_r17
+	Dynamic_r17    []BetaOffsetsCrossPri_r17 `lb:1,ub:4,madatory`
+	SemiStatic_r17 *BetaOffsetsCrossPri_r17
 }
 
 func (ie *BetaOffsetsCrossPriSelCG_r17) Encode(w *uper.UperWriter) error {
@@ -25,17 +25,17 @@ func (ie *BetaOffsetsCrossPriSelCG_r17) Encode(w *uper.UperWriter) error {
 		return err
 	}
 	switch ie.Choice {
-	case BetaOffsetsCrossPriSelCG_r17_Choice_dynamic_r17:
+	case BetaOffsetsCrossPriSelCG_r17_Choice_Dynamic_r17:
 		tmp := utils.NewSequence[*BetaOffsetsCrossPri_r17]([]*BetaOffsetsCrossPri_r17{}, uper.Constraint{Lb: 1, Ub: 4}, false)
-		for _, i := range ie.dynamic_r17 {
+		for _, i := range ie.Dynamic_r17 {
 			tmp.Value = append(tmp.Value, &i)
 		}
 		if err = tmp.Encode(w); err != nil {
-			err = utils.WrapError("Encode dynamic_r17", err)
+			err = utils.WrapError("Encode Dynamic_r17", err)
 		}
-	case BetaOffsetsCrossPriSelCG_r17_Choice_semiStatic_r17:
-		if err = ie.semiStatic_r17.Encode(w); err != nil {
-			err = utils.WrapError("Encode semiStatic_r17", err)
+	case BetaOffsetsCrossPriSelCG_r17_Choice_SemiStatic_r17:
+		if err = ie.SemiStatic_r17.Encode(w); err != nil {
+			err = utils.WrapError("Encode SemiStatic_r17", err)
 		}
 	default:
 		err = fmt.Errorf("invalid choice: %d", ie.Choice)
@@ -49,22 +49,22 @@ func (ie *BetaOffsetsCrossPriSelCG_r17) Decode(r *uper.UperReader) error {
 		return err
 	}
 	switch ie.Choice {
-	case BetaOffsetsCrossPriSelCG_r17_Choice_dynamic_r17:
+	case BetaOffsetsCrossPriSelCG_r17_Choice_Dynamic_r17:
 		tmp := utils.NewSequence[*BetaOffsetsCrossPri_r17]([]*BetaOffsetsCrossPri_r17{}, uper.Constraint{Lb: 1, Ub: 4}, false)
 		fn := func() *BetaOffsetsCrossPri_r17 {
 			return new(BetaOffsetsCrossPri_r17)
 		}
 		if err = tmp.Decode(r, fn); err != nil {
-			return utils.WrapError("Decode dynamic_r17", err)
+			return utils.WrapError("Decode Dynamic_r17", err)
 		}
-		ie.dynamic_r17 = []BetaOffsetsCrossPri_r17{}
+		ie.Dynamic_r17 = []BetaOffsetsCrossPri_r17{}
 		for _, i := range tmp.Value {
-			ie.dynamic_r17 = append(ie.dynamic_r17, *i)
+			ie.Dynamic_r17 = append(ie.Dynamic_r17, *i)
 		}
-	case BetaOffsetsCrossPriSelCG_r17_Choice_semiStatic_r17:
-		ie.semiStatic_r17 = new(BetaOffsetsCrossPri_r17)
-		if err = ie.semiStatic_r17.Decode(r); err != nil {
-			return utils.WrapError("Decode semiStatic_r17", err)
+	case BetaOffsetsCrossPriSelCG_r17_Choice_SemiStatic_r17:
+		ie.SemiStatic_r17 = new(BetaOffsetsCrossPri_r17)
+		if err = ie.SemiStatic_r17.Decode(r); err != nil {
+			return utils.WrapError("Decode SemiStatic_r17", err)
 		}
 	default:
 		return fmt.Errorf("invalid choice: %d", ie.Choice)

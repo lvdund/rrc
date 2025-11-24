@@ -6,30 +6,30 @@ import (
 )
 
 type ULDedicatedMessageSegment_r16_IEs struct {
-	segmentNumber_r16               int64                                                        `lb:0,ub:15,madatory`
-	rrc_MessageSegmentContainer_r16 []byte                                                       `madatory`
-	rrc_MessageSegmentType_r16      ULDedicatedMessageSegment_r16_IEs_rrc_MessageSegmentType_r16 `madatory`
-	lateNonCriticalExtension        *[]byte                                                      `optional`
-	nonCriticalExtension            interface{}                                                  `optional`
+	SegmentNumber_r16               int64                                                        `lb:0,ub:15,madatory`
+	Rrc_MessageSegmentContainer_r16 []byte                                                       `madatory`
+	Rrc_MessageSegmentType_r16      ULDedicatedMessageSegment_r16_IEs_rrc_MessageSegmentType_r16 `madatory`
+	LateNonCriticalExtension        *[]byte                                                      `optional`
+	NonCriticalExtension            interface{}                                                  `optional`
 }
 
 func (ie *ULDedicatedMessageSegment_r16_IEs) Encode(w *uper.UperWriter) error {
 	var err error
-	preambleBits := []bool{ie.lateNonCriticalExtension != nil}
+	preambleBits := []bool{ie.LateNonCriticalExtension != nil}
 	for _, bit := range preambleBits {
 		if err = w.WriteBool(bit); err != nil {
 			return err
 		}
 	}
-	if err = w.WriteInteger(ie.segmentNumber_r16, &uper.Constraint{Lb: 0, Ub: 15}, false); err != nil {
-		return utils.WrapError("WriteInteger segmentNumber_r16", err)
+	if err = w.WriteInteger(ie.SegmentNumber_r16, &uper.Constraint{Lb: 0, Ub: 15}, false); err != nil {
+		return utils.WrapError("WriteInteger SegmentNumber_r16", err)
 	}
-	if err = w.WriteOctetString(ie.rrc_MessageSegmentContainer_r16, &uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
-		return utils.WrapError("WriteOctetString rrc_MessageSegmentContainer_r16", err)
+	if err = w.WriteOctetString(ie.Rrc_MessageSegmentContainer_r16, &uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+		return utils.WrapError("WriteOctetString Rrc_MessageSegmentContainer_r16", err)
 	}
-	if ie.lateNonCriticalExtension != nil {
-		if err = w.WriteOctetString(*ie.lateNonCriticalExtension, &uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
-			return utils.WrapError("Encode lateNonCriticalExtension", err)
+	if ie.LateNonCriticalExtension != nil {
+		if err = w.WriteOctetString(*ie.LateNonCriticalExtension, &uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+			return utils.WrapError("Encode LateNonCriticalExtension", err)
 		}
 	}
 	return nil
@@ -37,26 +37,26 @@ func (ie *ULDedicatedMessageSegment_r16_IEs) Encode(w *uper.UperWriter) error {
 
 func (ie *ULDedicatedMessageSegment_r16_IEs) Decode(r *uper.UperReader) error {
 	var err error
-	var lateNonCriticalExtensionPresent bool
-	if lateNonCriticalExtensionPresent, err = r.ReadBool(); err != nil {
+	var LateNonCriticalExtensionPresent bool
+	if LateNonCriticalExtensionPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var tmp_int_segmentNumber_r16 int64
-	if tmp_int_segmentNumber_r16, err = r.ReadInteger(&uper.Constraint{Lb: 0, Ub: 15}, false); err != nil {
-		return utils.WrapError("ReadInteger segmentNumber_r16", err)
+	var tmp_int_SegmentNumber_r16 int64
+	if tmp_int_SegmentNumber_r16, err = r.ReadInteger(&uper.Constraint{Lb: 0, Ub: 15}, false); err != nil {
+		return utils.WrapError("ReadInteger SegmentNumber_r16", err)
 	}
-	ie.segmentNumber_r16 = tmp_int_segmentNumber_r16
-	var tmp_os_rrc_MessageSegmentContainer_r16 []byte
-	if tmp_os_rrc_MessageSegmentContainer_r16, err = r.ReadOctetString(&uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
-		return utils.WrapError("ReadOctetString rrc_MessageSegmentContainer_r16", err)
+	ie.SegmentNumber_r16 = tmp_int_SegmentNumber_r16
+	var tmp_os_Rrc_MessageSegmentContainer_r16 []byte
+	if tmp_os_Rrc_MessageSegmentContainer_r16, err = r.ReadOctetString(&uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+		return utils.WrapError("ReadOctetString Rrc_MessageSegmentContainer_r16", err)
 	}
-	ie.rrc_MessageSegmentContainer_r16 = tmp_os_rrc_MessageSegmentContainer_r16
-	if lateNonCriticalExtensionPresent {
-		var tmp_os_lateNonCriticalExtension []byte
-		if tmp_os_lateNonCriticalExtension, err = r.ReadOctetString(&uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
-			return utils.WrapError("Decode lateNonCriticalExtension", err)
+	ie.Rrc_MessageSegmentContainer_r16 = tmp_os_Rrc_MessageSegmentContainer_r16
+	if LateNonCriticalExtensionPresent {
+		var tmp_os_LateNonCriticalExtension []byte
+		if tmp_os_LateNonCriticalExtension, err = r.ReadOctetString(&uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+			return utils.WrapError("Decode LateNonCriticalExtension", err)
 		}
-		ie.lateNonCriticalExtension = &tmp_os_lateNonCriticalExtension
+		ie.LateNonCriticalExtension = &tmp_os_LateNonCriticalExtension
 	}
 	return nil
 }

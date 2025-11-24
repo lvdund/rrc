@@ -8,67 +8,67 @@ import (
 )
 
 type MeasAndMobParametersFRX_Diff struct {
-	ss_SINR_Meas                                   *MeasAndMobParametersFRX_Diff_ss_SINR_Meas                                   `optional`
-	csi_RSRP_AndRSRQ_MeasWithSSB                   *MeasAndMobParametersFRX_Diff_csi_RSRP_AndRSRQ_MeasWithSSB                   `optional`
-	csi_RSRP_AndRSRQ_MeasWithoutSSB                *MeasAndMobParametersFRX_Diff_csi_RSRP_AndRSRQ_MeasWithoutSSB                `optional`
-	csi_SINR_Meas                                  *MeasAndMobParametersFRX_Diff_csi_SINR_Meas                                  `optional`
-	csi_RS_RLM                                     *MeasAndMobParametersFRX_Diff_csi_RS_RLM                                     `optional`
-	handoverInterF                                 *MeasAndMobParametersFRX_Diff_handoverInterF                                 `optional,ext-1`
-	handoverLTE_EPC                                *MeasAndMobParametersFRX_Diff_handoverLTE_EPC                                `optional,ext-1`
-	handoverLTE_5GC                                *MeasAndMobParametersFRX_Diff_handoverLTE_5GC                                `optional,ext-1`
-	maxNumberResource_CSI_RS_RLM                   *MeasAndMobParametersFRX_Diff_maxNumberResource_CSI_RS_RLM                   `optional,ext-2`
-	simultaneousRxDataSSB_DiffNumerology           *MeasAndMobParametersFRX_Diff_simultaneousRxDataSSB_DiffNumerology           `optional,ext-3`
-	nr_AutonomousGaps_r16                          *MeasAndMobParametersFRX_Diff_nr_AutonomousGaps_r16                          `optional,ext-4`
-	nr_AutonomousGaps_ENDC_r16                     *MeasAndMobParametersFRX_Diff_nr_AutonomousGaps_ENDC_r16                     `optional,ext-4`
-	nr_AutonomousGaps_NEDC_r16                     *MeasAndMobParametersFRX_Diff_nr_AutonomousGaps_NEDC_r16                     `optional,ext-4`
-	nr_AutonomousGaps_NRDC_r16                     *MeasAndMobParametersFRX_Diff_nr_AutonomousGaps_NRDC_r16                     `optional,ext-4`
-	dummy                                          *MeasAndMobParametersFRX_Diff_dummy                                          `optional,ext-4`
-	cli_RSSI_Meas_r16                              *MeasAndMobParametersFRX_Diff_cli_RSSI_Meas_r16                              `optional,ext-4`
-	cli_SRS_RSRP_Meas_r16                          *MeasAndMobParametersFRX_Diff_cli_SRS_RSRP_Meas_r16                          `optional,ext-4`
-	interFrequencyMeas_NoGap_r16                   *MeasAndMobParametersFRX_Diff_interFrequencyMeas_NoGap_r16                   `optional,ext-4`
-	simultaneousRxDataSSB_DiffNumerology_Inter_r16 *MeasAndMobParametersFRX_Diff_simultaneousRxDataSSB_DiffNumerology_Inter_r16 `optional,ext-4`
-	idleInactiveNR_MeasReport_r16                  *MeasAndMobParametersFRX_Diff_idleInactiveNR_MeasReport_r16                  `optional,ext-4`
-	idleInactiveNR_MeasBeamReport_r16              *MeasAndMobParametersFRX_Diff_idleInactiveNR_MeasBeamReport_r16              `optional,ext-4`
-	increasedNumberofCSIRSPerMO_r16                *MeasAndMobParametersFRX_Diff_increasedNumberofCSIRSPerMO_r16                `optional,ext-5`
+	Ss_SINR_Meas                                   *MeasAndMobParametersFRX_Diff_ss_SINR_Meas                                   `optional`
+	Csi_RSRP_AndRSRQ_MeasWithSSB                   *MeasAndMobParametersFRX_Diff_csi_RSRP_AndRSRQ_MeasWithSSB                   `optional`
+	Csi_RSRP_AndRSRQ_MeasWithoutSSB                *MeasAndMobParametersFRX_Diff_csi_RSRP_AndRSRQ_MeasWithoutSSB                `optional`
+	Csi_SINR_Meas                                  *MeasAndMobParametersFRX_Diff_csi_SINR_Meas                                  `optional`
+	Csi_RS_RLM                                     *MeasAndMobParametersFRX_Diff_csi_RS_RLM                                     `optional`
+	HandoverInterF                                 *MeasAndMobParametersFRX_Diff_handoverInterF                                 `optional,ext-1`
+	HandoverLTE_EPC                                *MeasAndMobParametersFRX_Diff_handoverLTE_EPC                                `optional,ext-1`
+	HandoverLTE_5GC                                *MeasAndMobParametersFRX_Diff_handoverLTE_5GC                                `optional,ext-1`
+	MaxNumberResource_CSI_RS_RLM                   *MeasAndMobParametersFRX_Diff_maxNumberResource_CSI_RS_RLM                   `optional,ext-2`
+	SimultaneousRxDataSSB_DiffNumerology           *MeasAndMobParametersFRX_Diff_simultaneousRxDataSSB_DiffNumerology           `optional,ext-3`
+	Nr_AutonomousGaps_r16                          *MeasAndMobParametersFRX_Diff_nr_AutonomousGaps_r16                          `optional,ext-4`
+	Nr_AutonomousGaps_ENDC_r16                     *MeasAndMobParametersFRX_Diff_nr_AutonomousGaps_ENDC_r16                     `optional,ext-4`
+	Nr_AutonomousGaps_NEDC_r16                     *MeasAndMobParametersFRX_Diff_nr_AutonomousGaps_NEDC_r16                     `optional,ext-4`
+	Nr_AutonomousGaps_NRDC_r16                     *MeasAndMobParametersFRX_Diff_nr_AutonomousGaps_NRDC_r16                     `optional,ext-4`
+	Dummy                                          *MeasAndMobParametersFRX_Diff_dummy                                          `optional,ext-4`
+	Cli_RSSI_Meas_r16                              *MeasAndMobParametersFRX_Diff_cli_RSSI_Meas_r16                              `optional,ext-4`
+	Cli_SRS_RSRP_Meas_r16                          *MeasAndMobParametersFRX_Diff_cli_SRS_RSRP_Meas_r16                          `optional,ext-4`
+	InterFrequencyMeas_NoGap_r16                   *MeasAndMobParametersFRX_Diff_interFrequencyMeas_NoGap_r16                   `optional,ext-4`
+	SimultaneousRxDataSSB_DiffNumerology_Inter_r16 *MeasAndMobParametersFRX_Diff_simultaneousRxDataSSB_DiffNumerology_Inter_r16 `optional,ext-4`
+	IdleInactiveNR_MeasReport_r16                  *MeasAndMobParametersFRX_Diff_idleInactiveNR_MeasReport_r16                  `optional,ext-4`
+	IdleInactiveNR_MeasBeamReport_r16              *MeasAndMobParametersFRX_Diff_idleInactiveNR_MeasBeamReport_r16              `optional,ext-4`
+	IncreasedNumberofCSIRSPerMO_r16                *MeasAndMobParametersFRX_Diff_increasedNumberofCSIRSPerMO_r16                `optional,ext-5`
 }
 
 func (ie *MeasAndMobParametersFRX_Diff) Encode(w *uper.UperWriter) error {
 	var err error
-	hasExtensions := ie.handoverInterF != nil || ie.handoverLTE_EPC != nil || ie.handoverLTE_5GC != nil || ie.maxNumberResource_CSI_RS_RLM != nil || ie.simultaneousRxDataSSB_DiffNumerology != nil || ie.nr_AutonomousGaps_r16 != nil || ie.nr_AutonomousGaps_ENDC_r16 != nil || ie.nr_AutonomousGaps_NEDC_r16 != nil || ie.nr_AutonomousGaps_NRDC_r16 != nil || ie.dummy != nil || ie.cli_RSSI_Meas_r16 != nil || ie.cli_SRS_RSRP_Meas_r16 != nil || ie.interFrequencyMeas_NoGap_r16 != nil || ie.simultaneousRxDataSSB_DiffNumerology_Inter_r16 != nil || ie.idleInactiveNR_MeasReport_r16 != nil || ie.idleInactiveNR_MeasBeamReport_r16 != nil || ie.increasedNumberofCSIRSPerMO_r16 != nil
-	preambleBits := []bool{hasExtensions, ie.ss_SINR_Meas != nil, ie.csi_RSRP_AndRSRQ_MeasWithSSB != nil, ie.csi_RSRP_AndRSRQ_MeasWithoutSSB != nil, ie.csi_SINR_Meas != nil, ie.csi_RS_RLM != nil}
+	hasExtensions := ie.HandoverInterF != nil || ie.HandoverLTE_EPC != nil || ie.HandoverLTE_5GC != nil || ie.MaxNumberResource_CSI_RS_RLM != nil || ie.SimultaneousRxDataSSB_DiffNumerology != nil || ie.Nr_AutonomousGaps_r16 != nil || ie.Nr_AutonomousGaps_ENDC_r16 != nil || ie.Nr_AutonomousGaps_NEDC_r16 != nil || ie.Nr_AutonomousGaps_NRDC_r16 != nil || ie.Dummy != nil || ie.Cli_RSSI_Meas_r16 != nil || ie.Cli_SRS_RSRP_Meas_r16 != nil || ie.InterFrequencyMeas_NoGap_r16 != nil || ie.SimultaneousRxDataSSB_DiffNumerology_Inter_r16 != nil || ie.IdleInactiveNR_MeasReport_r16 != nil || ie.IdleInactiveNR_MeasBeamReport_r16 != nil || ie.IncreasedNumberofCSIRSPerMO_r16 != nil
+	preambleBits := []bool{hasExtensions, ie.Ss_SINR_Meas != nil, ie.Csi_RSRP_AndRSRQ_MeasWithSSB != nil, ie.Csi_RSRP_AndRSRQ_MeasWithoutSSB != nil, ie.Csi_SINR_Meas != nil, ie.Csi_RS_RLM != nil}
 	for _, bit := range preambleBits {
 		if err = w.WriteBool(bit); err != nil {
 			return err
 		}
 	}
-	if ie.ss_SINR_Meas != nil {
-		if err = ie.ss_SINR_Meas.Encode(w); err != nil {
-			return utils.WrapError("Encode ss_SINR_Meas", err)
+	if ie.Ss_SINR_Meas != nil {
+		if err = ie.Ss_SINR_Meas.Encode(w); err != nil {
+			return utils.WrapError("Encode Ss_SINR_Meas", err)
 		}
 	}
-	if ie.csi_RSRP_AndRSRQ_MeasWithSSB != nil {
-		if err = ie.csi_RSRP_AndRSRQ_MeasWithSSB.Encode(w); err != nil {
-			return utils.WrapError("Encode csi_RSRP_AndRSRQ_MeasWithSSB", err)
+	if ie.Csi_RSRP_AndRSRQ_MeasWithSSB != nil {
+		if err = ie.Csi_RSRP_AndRSRQ_MeasWithSSB.Encode(w); err != nil {
+			return utils.WrapError("Encode Csi_RSRP_AndRSRQ_MeasWithSSB", err)
 		}
 	}
-	if ie.csi_RSRP_AndRSRQ_MeasWithoutSSB != nil {
-		if err = ie.csi_RSRP_AndRSRQ_MeasWithoutSSB.Encode(w); err != nil {
-			return utils.WrapError("Encode csi_RSRP_AndRSRQ_MeasWithoutSSB", err)
+	if ie.Csi_RSRP_AndRSRQ_MeasWithoutSSB != nil {
+		if err = ie.Csi_RSRP_AndRSRQ_MeasWithoutSSB.Encode(w); err != nil {
+			return utils.WrapError("Encode Csi_RSRP_AndRSRQ_MeasWithoutSSB", err)
 		}
 	}
-	if ie.csi_SINR_Meas != nil {
-		if err = ie.csi_SINR_Meas.Encode(w); err != nil {
-			return utils.WrapError("Encode csi_SINR_Meas", err)
+	if ie.Csi_SINR_Meas != nil {
+		if err = ie.Csi_SINR_Meas.Encode(w); err != nil {
+			return utils.WrapError("Encode Csi_SINR_Meas", err)
 		}
 	}
-	if ie.csi_RS_RLM != nil {
-		if err = ie.csi_RS_RLM.Encode(w); err != nil {
-			return utils.WrapError("Encode csi_RS_RLM", err)
+	if ie.Csi_RS_RLM != nil {
+		if err = ie.Csi_RS_RLM.Encode(w); err != nil {
+			return utils.WrapError("Encode Csi_RS_RLM", err)
 		}
 	}
 	if hasExtensions {
 		// Extension bitmap: 5 bits for 5 extension groups
-		extBitmap := []bool{ie.handoverInterF != nil || ie.handoverLTE_EPC != nil || ie.handoverLTE_5GC != nil, ie.maxNumberResource_CSI_RS_RLM != nil, ie.simultaneousRxDataSSB_DiffNumerology != nil, ie.nr_AutonomousGaps_r16 != nil || ie.nr_AutonomousGaps_ENDC_r16 != nil || ie.nr_AutonomousGaps_NEDC_r16 != nil || ie.nr_AutonomousGaps_NRDC_r16 != nil || ie.dummy != nil || ie.cli_RSSI_Meas_r16 != nil || ie.cli_SRS_RSRP_Meas_r16 != nil || ie.interFrequencyMeas_NoGap_r16 != nil || ie.simultaneousRxDataSSB_DiffNumerology_Inter_r16 != nil || ie.idleInactiveNR_MeasReport_r16 != nil || ie.idleInactiveNR_MeasBeamReport_r16 != nil, ie.increasedNumberofCSIRSPerMO_r16 != nil}
+		extBitmap := []bool{ie.HandoverInterF != nil || ie.HandoverLTE_EPC != nil || ie.HandoverLTE_5GC != nil, ie.MaxNumberResource_CSI_RS_RLM != nil, ie.SimultaneousRxDataSSB_DiffNumerology != nil, ie.Nr_AutonomousGaps_r16 != nil || ie.Nr_AutonomousGaps_ENDC_r16 != nil || ie.Nr_AutonomousGaps_NEDC_r16 != nil || ie.Nr_AutonomousGaps_NRDC_r16 != nil || ie.Dummy != nil || ie.Cli_RSSI_Meas_r16 != nil || ie.Cli_SRS_RSRP_Meas_r16 != nil || ie.InterFrequencyMeas_NoGap_r16 != nil || ie.SimultaneousRxDataSSB_DiffNumerology_Inter_r16 != nil || ie.IdleInactiveNR_MeasReport_r16 != nil || ie.IdleInactiveNR_MeasBeamReport_r16 != nil, ie.IncreasedNumberofCSIRSPerMO_r16 != nil}
 		if err := w.WriteExtBitMap(extBitmap); err != nil {
 			return utils.WrapError("WriteExtBitMap MeasAndMobParametersFRX_Diff", err)
 		}
@@ -79,29 +79,29 @@ func (ie *MeasAndMobParametersFRX_Diff) Encode(w *uper.UperWriter) error {
 			extWriter := uper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 1
-			optionals_ext_1 := []bool{ie.handoverInterF != nil, ie.handoverLTE_EPC != nil, ie.handoverLTE_5GC != nil}
+			optionals_ext_1 := []bool{ie.HandoverInterF != nil, ie.HandoverLTE_EPC != nil, ie.HandoverLTE_5GC != nil}
 			for _, bit := range optionals_ext_1 {
 				if err := extWriter.WriteBool(bit); err != nil {
 					return err
 				}
 			}
 
-			// encode handoverInterF optional
-			if ie.handoverInterF != nil {
-				if err = ie.handoverInterF.Encode(extWriter); err != nil {
-					return utils.WrapError("Encode handoverInterF", err)
+			// encode HandoverInterF optional
+			if ie.HandoverInterF != nil {
+				if err = ie.HandoverInterF.Encode(extWriter); err != nil {
+					return utils.WrapError("Encode HandoverInterF", err)
 				}
 			}
-			// encode handoverLTE_EPC optional
-			if ie.handoverLTE_EPC != nil {
-				if err = ie.handoverLTE_EPC.Encode(extWriter); err != nil {
-					return utils.WrapError("Encode handoverLTE_EPC", err)
+			// encode HandoverLTE_EPC optional
+			if ie.HandoverLTE_EPC != nil {
+				if err = ie.HandoverLTE_EPC.Encode(extWriter); err != nil {
+					return utils.WrapError("Encode HandoverLTE_EPC", err)
 				}
 			}
-			// encode handoverLTE_5GC optional
-			if ie.handoverLTE_5GC != nil {
-				if err = ie.handoverLTE_5GC.Encode(extWriter); err != nil {
-					return utils.WrapError("Encode handoverLTE_5GC", err)
+			// encode HandoverLTE_5GC optional
+			if ie.HandoverLTE_5GC != nil {
+				if err = ie.HandoverLTE_5GC.Encode(extWriter); err != nil {
+					return utils.WrapError("Encode HandoverLTE_5GC", err)
 				}
 			}
 
@@ -120,17 +120,17 @@ func (ie *MeasAndMobParametersFRX_Diff) Encode(w *uper.UperWriter) error {
 			extWriter := uper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 2
-			optionals_ext_2 := []bool{ie.maxNumberResource_CSI_RS_RLM != nil}
+			optionals_ext_2 := []bool{ie.MaxNumberResource_CSI_RS_RLM != nil}
 			for _, bit := range optionals_ext_2 {
 				if err := extWriter.WriteBool(bit); err != nil {
 					return err
 				}
 			}
 
-			// encode maxNumberResource_CSI_RS_RLM optional
-			if ie.maxNumberResource_CSI_RS_RLM != nil {
-				if err = ie.maxNumberResource_CSI_RS_RLM.Encode(extWriter); err != nil {
-					return utils.WrapError("Encode maxNumberResource_CSI_RS_RLM", err)
+			// encode MaxNumberResource_CSI_RS_RLM optional
+			if ie.MaxNumberResource_CSI_RS_RLM != nil {
+				if err = ie.MaxNumberResource_CSI_RS_RLM.Encode(extWriter); err != nil {
+					return utils.WrapError("Encode MaxNumberResource_CSI_RS_RLM", err)
 				}
 			}
 
@@ -149,17 +149,17 @@ func (ie *MeasAndMobParametersFRX_Diff) Encode(w *uper.UperWriter) error {
 			extWriter := uper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 3
-			optionals_ext_3 := []bool{ie.simultaneousRxDataSSB_DiffNumerology != nil}
+			optionals_ext_3 := []bool{ie.SimultaneousRxDataSSB_DiffNumerology != nil}
 			for _, bit := range optionals_ext_3 {
 				if err := extWriter.WriteBool(bit); err != nil {
 					return err
 				}
 			}
 
-			// encode simultaneousRxDataSSB_DiffNumerology optional
-			if ie.simultaneousRxDataSSB_DiffNumerology != nil {
-				if err = ie.simultaneousRxDataSSB_DiffNumerology.Encode(extWriter); err != nil {
-					return utils.WrapError("Encode simultaneousRxDataSSB_DiffNumerology", err)
+			// encode SimultaneousRxDataSSB_DiffNumerology optional
+			if ie.SimultaneousRxDataSSB_DiffNumerology != nil {
+				if err = ie.SimultaneousRxDataSSB_DiffNumerology.Encode(extWriter); err != nil {
+					return utils.WrapError("Encode SimultaneousRxDataSSB_DiffNumerology", err)
 				}
 			}
 
@@ -178,77 +178,77 @@ func (ie *MeasAndMobParametersFRX_Diff) Encode(w *uper.UperWriter) error {
 			extWriter := uper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 4
-			optionals_ext_4 := []bool{ie.nr_AutonomousGaps_r16 != nil, ie.nr_AutonomousGaps_ENDC_r16 != nil, ie.nr_AutonomousGaps_NEDC_r16 != nil, ie.nr_AutonomousGaps_NRDC_r16 != nil, ie.dummy != nil, ie.cli_RSSI_Meas_r16 != nil, ie.cli_SRS_RSRP_Meas_r16 != nil, ie.interFrequencyMeas_NoGap_r16 != nil, ie.simultaneousRxDataSSB_DiffNumerology_Inter_r16 != nil, ie.idleInactiveNR_MeasReport_r16 != nil, ie.idleInactiveNR_MeasBeamReport_r16 != nil}
+			optionals_ext_4 := []bool{ie.Nr_AutonomousGaps_r16 != nil, ie.Nr_AutonomousGaps_ENDC_r16 != nil, ie.Nr_AutonomousGaps_NEDC_r16 != nil, ie.Nr_AutonomousGaps_NRDC_r16 != nil, ie.Dummy != nil, ie.Cli_RSSI_Meas_r16 != nil, ie.Cli_SRS_RSRP_Meas_r16 != nil, ie.InterFrequencyMeas_NoGap_r16 != nil, ie.SimultaneousRxDataSSB_DiffNumerology_Inter_r16 != nil, ie.IdleInactiveNR_MeasReport_r16 != nil, ie.IdleInactiveNR_MeasBeamReport_r16 != nil}
 			for _, bit := range optionals_ext_4 {
 				if err := extWriter.WriteBool(bit); err != nil {
 					return err
 				}
 			}
 
-			// encode nr_AutonomousGaps_r16 optional
-			if ie.nr_AutonomousGaps_r16 != nil {
-				if err = ie.nr_AutonomousGaps_r16.Encode(extWriter); err != nil {
-					return utils.WrapError("Encode nr_AutonomousGaps_r16", err)
+			// encode Nr_AutonomousGaps_r16 optional
+			if ie.Nr_AutonomousGaps_r16 != nil {
+				if err = ie.Nr_AutonomousGaps_r16.Encode(extWriter); err != nil {
+					return utils.WrapError("Encode Nr_AutonomousGaps_r16", err)
 				}
 			}
-			// encode nr_AutonomousGaps_ENDC_r16 optional
-			if ie.nr_AutonomousGaps_ENDC_r16 != nil {
-				if err = ie.nr_AutonomousGaps_ENDC_r16.Encode(extWriter); err != nil {
-					return utils.WrapError("Encode nr_AutonomousGaps_ENDC_r16", err)
+			// encode Nr_AutonomousGaps_ENDC_r16 optional
+			if ie.Nr_AutonomousGaps_ENDC_r16 != nil {
+				if err = ie.Nr_AutonomousGaps_ENDC_r16.Encode(extWriter); err != nil {
+					return utils.WrapError("Encode Nr_AutonomousGaps_ENDC_r16", err)
 				}
 			}
-			// encode nr_AutonomousGaps_NEDC_r16 optional
-			if ie.nr_AutonomousGaps_NEDC_r16 != nil {
-				if err = ie.nr_AutonomousGaps_NEDC_r16.Encode(extWriter); err != nil {
-					return utils.WrapError("Encode nr_AutonomousGaps_NEDC_r16", err)
+			// encode Nr_AutonomousGaps_NEDC_r16 optional
+			if ie.Nr_AutonomousGaps_NEDC_r16 != nil {
+				if err = ie.Nr_AutonomousGaps_NEDC_r16.Encode(extWriter); err != nil {
+					return utils.WrapError("Encode Nr_AutonomousGaps_NEDC_r16", err)
 				}
 			}
-			// encode nr_AutonomousGaps_NRDC_r16 optional
-			if ie.nr_AutonomousGaps_NRDC_r16 != nil {
-				if err = ie.nr_AutonomousGaps_NRDC_r16.Encode(extWriter); err != nil {
-					return utils.WrapError("Encode nr_AutonomousGaps_NRDC_r16", err)
+			// encode Nr_AutonomousGaps_NRDC_r16 optional
+			if ie.Nr_AutonomousGaps_NRDC_r16 != nil {
+				if err = ie.Nr_AutonomousGaps_NRDC_r16.Encode(extWriter); err != nil {
+					return utils.WrapError("Encode Nr_AutonomousGaps_NRDC_r16", err)
 				}
 			}
-			// encode dummy optional
-			if ie.dummy != nil {
-				if err = ie.dummy.Encode(extWriter); err != nil {
-					return utils.WrapError("Encode dummy", err)
+			// encode Dummy optional
+			if ie.Dummy != nil {
+				if err = ie.Dummy.Encode(extWriter); err != nil {
+					return utils.WrapError("Encode Dummy", err)
 				}
 			}
-			// encode cli_RSSI_Meas_r16 optional
-			if ie.cli_RSSI_Meas_r16 != nil {
-				if err = ie.cli_RSSI_Meas_r16.Encode(extWriter); err != nil {
-					return utils.WrapError("Encode cli_RSSI_Meas_r16", err)
+			// encode Cli_RSSI_Meas_r16 optional
+			if ie.Cli_RSSI_Meas_r16 != nil {
+				if err = ie.Cli_RSSI_Meas_r16.Encode(extWriter); err != nil {
+					return utils.WrapError("Encode Cli_RSSI_Meas_r16", err)
 				}
 			}
-			// encode cli_SRS_RSRP_Meas_r16 optional
-			if ie.cli_SRS_RSRP_Meas_r16 != nil {
-				if err = ie.cli_SRS_RSRP_Meas_r16.Encode(extWriter); err != nil {
-					return utils.WrapError("Encode cli_SRS_RSRP_Meas_r16", err)
+			// encode Cli_SRS_RSRP_Meas_r16 optional
+			if ie.Cli_SRS_RSRP_Meas_r16 != nil {
+				if err = ie.Cli_SRS_RSRP_Meas_r16.Encode(extWriter); err != nil {
+					return utils.WrapError("Encode Cli_SRS_RSRP_Meas_r16", err)
 				}
 			}
-			// encode interFrequencyMeas_NoGap_r16 optional
-			if ie.interFrequencyMeas_NoGap_r16 != nil {
-				if err = ie.interFrequencyMeas_NoGap_r16.Encode(extWriter); err != nil {
-					return utils.WrapError("Encode interFrequencyMeas_NoGap_r16", err)
+			// encode InterFrequencyMeas_NoGap_r16 optional
+			if ie.InterFrequencyMeas_NoGap_r16 != nil {
+				if err = ie.InterFrequencyMeas_NoGap_r16.Encode(extWriter); err != nil {
+					return utils.WrapError("Encode InterFrequencyMeas_NoGap_r16", err)
 				}
 			}
-			// encode simultaneousRxDataSSB_DiffNumerology_Inter_r16 optional
-			if ie.simultaneousRxDataSSB_DiffNumerology_Inter_r16 != nil {
-				if err = ie.simultaneousRxDataSSB_DiffNumerology_Inter_r16.Encode(extWriter); err != nil {
-					return utils.WrapError("Encode simultaneousRxDataSSB_DiffNumerology_Inter_r16", err)
+			// encode SimultaneousRxDataSSB_DiffNumerology_Inter_r16 optional
+			if ie.SimultaneousRxDataSSB_DiffNumerology_Inter_r16 != nil {
+				if err = ie.SimultaneousRxDataSSB_DiffNumerology_Inter_r16.Encode(extWriter); err != nil {
+					return utils.WrapError("Encode SimultaneousRxDataSSB_DiffNumerology_Inter_r16", err)
 				}
 			}
-			// encode idleInactiveNR_MeasReport_r16 optional
-			if ie.idleInactiveNR_MeasReport_r16 != nil {
-				if err = ie.idleInactiveNR_MeasReport_r16.Encode(extWriter); err != nil {
-					return utils.WrapError("Encode idleInactiveNR_MeasReport_r16", err)
+			// encode IdleInactiveNR_MeasReport_r16 optional
+			if ie.IdleInactiveNR_MeasReport_r16 != nil {
+				if err = ie.IdleInactiveNR_MeasReport_r16.Encode(extWriter); err != nil {
+					return utils.WrapError("Encode IdleInactiveNR_MeasReport_r16", err)
 				}
 			}
-			// encode idleInactiveNR_MeasBeamReport_r16 optional
-			if ie.idleInactiveNR_MeasBeamReport_r16 != nil {
-				if err = ie.idleInactiveNR_MeasBeamReport_r16.Encode(extWriter); err != nil {
-					return utils.WrapError("Encode idleInactiveNR_MeasBeamReport_r16", err)
+			// encode IdleInactiveNR_MeasBeamReport_r16 optional
+			if ie.IdleInactiveNR_MeasBeamReport_r16 != nil {
+				if err = ie.IdleInactiveNR_MeasBeamReport_r16.Encode(extWriter); err != nil {
+					return utils.WrapError("Encode IdleInactiveNR_MeasBeamReport_r16", err)
 				}
 			}
 
@@ -267,17 +267,17 @@ func (ie *MeasAndMobParametersFRX_Diff) Encode(w *uper.UperWriter) error {
 			extWriter := uper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 5
-			optionals_ext_5 := []bool{ie.increasedNumberofCSIRSPerMO_r16 != nil}
+			optionals_ext_5 := []bool{ie.IncreasedNumberofCSIRSPerMO_r16 != nil}
 			for _, bit := range optionals_ext_5 {
 				if err := extWriter.WriteBool(bit); err != nil {
 					return err
 				}
 			}
 
-			// encode increasedNumberofCSIRSPerMO_r16 optional
-			if ie.increasedNumberofCSIRSPerMO_r16 != nil {
-				if err = ie.increasedNumberofCSIRSPerMO_r16.Encode(extWriter); err != nil {
-					return utils.WrapError("Encode increasedNumberofCSIRSPerMO_r16", err)
+			// encode IncreasedNumberofCSIRSPerMO_r16 optional
+			if ie.IncreasedNumberofCSIRSPerMO_r16 != nil {
+				if err = ie.IncreasedNumberofCSIRSPerMO_r16.Encode(extWriter); err != nil {
+					return utils.WrapError("Encode IncreasedNumberofCSIRSPerMO_r16", err)
 				}
 			}
 
@@ -299,54 +299,54 @@ func (ie *MeasAndMobParametersFRX_Diff) Decode(r *uper.UperReader) error {
 	if extensionBit, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var ss_SINR_MeasPresent bool
-	if ss_SINR_MeasPresent, err = r.ReadBool(); err != nil {
+	var Ss_SINR_MeasPresent bool
+	if Ss_SINR_MeasPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var csi_RSRP_AndRSRQ_MeasWithSSBPresent bool
-	if csi_RSRP_AndRSRQ_MeasWithSSBPresent, err = r.ReadBool(); err != nil {
+	var Csi_RSRP_AndRSRQ_MeasWithSSBPresent bool
+	if Csi_RSRP_AndRSRQ_MeasWithSSBPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var csi_RSRP_AndRSRQ_MeasWithoutSSBPresent bool
-	if csi_RSRP_AndRSRQ_MeasWithoutSSBPresent, err = r.ReadBool(); err != nil {
+	var Csi_RSRP_AndRSRQ_MeasWithoutSSBPresent bool
+	if Csi_RSRP_AndRSRQ_MeasWithoutSSBPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var csi_SINR_MeasPresent bool
-	if csi_SINR_MeasPresent, err = r.ReadBool(); err != nil {
+	var Csi_SINR_MeasPresent bool
+	if Csi_SINR_MeasPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var csi_RS_RLMPresent bool
-	if csi_RS_RLMPresent, err = r.ReadBool(); err != nil {
+	var Csi_RS_RLMPresent bool
+	if Csi_RS_RLMPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	if ss_SINR_MeasPresent {
-		ie.ss_SINR_Meas = new(MeasAndMobParametersFRX_Diff_ss_SINR_Meas)
-		if err = ie.ss_SINR_Meas.Decode(r); err != nil {
-			return utils.WrapError("Decode ss_SINR_Meas", err)
+	if Ss_SINR_MeasPresent {
+		ie.Ss_SINR_Meas = new(MeasAndMobParametersFRX_Diff_ss_SINR_Meas)
+		if err = ie.Ss_SINR_Meas.Decode(r); err != nil {
+			return utils.WrapError("Decode Ss_SINR_Meas", err)
 		}
 	}
-	if csi_RSRP_AndRSRQ_MeasWithSSBPresent {
-		ie.csi_RSRP_AndRSRQ_MeasWithSSB = new(MeasAndMobParametersFRX_Diff_csi_RSRP_AndRSRQ_MeasWithSSB)
-		if err = ie.csi_RSRP_AndRSRQ_MeasWithSSB.Decode(r); err != nil {
-			return utils.WrapError("Decode csi_RSRP_AndRSRQ_MeasWithSSB", err)
+	if Csi_RSRP_AndRSRQ_MeasWithSSBPresent {
+		ie.Csi_RSRP_AndRSRQ_MeasWithSSB = new(MeasAndMobParametersFRX_Diff_csi_RSRP_AndRSRQ_MeasWithSSB)
+		if err = ie.Csi_RSRP_AndRSRQ_MeasWithSSB.Decode(r); err != nil {
+			return utils.WrapError("Decode Csi_RSRP_AndRSRQ_MeasWithSSB", err)
 		}
 	}
-	if csi_RSRP_AndRSRQ_MeasWithoutSSBPresent {
-		ie.csi_RSRP_AndRSRQ_MeasWithoutSSB = new(MeasAndMobParametersFRX_Diff_csi_RSRP_AndRSRQ_MeasWithoutSSB)
-		if err = ie.csi_RSRP_AndRSRQ_MeasWithoutSSB.Decode(r); err != nil {
-			return utils.WrapError("Decode csi_RSRP_AndRSRQ_MeasWithoutSSB", err)
+	if Csi_RSRP_AndRSRQ_MeasWithoutSSBPresent {
+		ie.Csi_RSRP_AndRSRQ_MeasWithoutSSB = new(MeasAndMobParametersFRX_Diff_csi_RSRP_AndRSRQ_MeasWithoutSSB)
+		if err = ie.Csi_RSRP_AndRSRQ_MeasWithoutSSB.Decode(r); err != nil {
+			return utils.WrapError("Decode Csi_RSRP_AndRSRQ_MeasWithoutSSB", err)
 		}
 	}
-	if csi_SINR_MeasPresent {
-		ie.csi_SINR_Meas = new(MeasAndMobParametersFRX_Diff_csi_SINR_Meas)
-		if err = ie.csi_SINR_Meas.Decode(r); err != nil {
-			return utils.WrapError("Decode csi_SINR_Meas", err)
+	if Csi_SINR_MeasPresent {
+		ie.Csi_SINR_Meas = new(MeasAndMobParametersFRX_Diff_csi_SINR_Meas)
+		if err = ie.Csi_SINR_Meas.Decode(r); err != nil {
+			return utils.WrapError("Decode Csi_SINR_Meas", err)
 		}
 	}
-	if csi_RS_RLMPresent {
-		ie.csi_RS_RLM = new(MeasAndMobParametersFRX_Diff_csi_RS_RLM)
-		if err = ie.csi_RS_RLM.Decode(r); err != nil {
-			return utils.WrapError("Decode csi_RS_RLM", err)
+	if Csi_RS_RLMPresent {
+		ie.Csi_RS_RLM = new(MeasAndMobParametersFRX_Diff_csi_RS_RLM)
+		if err = ie.Csi_RS_RLM.Decode(r); err != nil {
+			return utils.WrapError("Decode Csi_RS_RLM", err)
 		}
 	}
 
@@ -366,37 +366,37 @@ func (ie *MeasAndMobParametersFRX_Diff) Decode(r *uper.UperReader) error {
 
 			extReader := uper.NewReader(bytes.NewReader(extBytes))
 
-			handoverInterFPresent, err := extReader.ReadBool()
+			HandoverInterFPresent, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			handoverLTE_EPCPresent, err := extReader.ReadBool()
+			HandoverLTE_EPCPresent, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			handoverLTE_5GCPresent, err := extReader.ReadBool()
+			HandoverLTE_5GCPresent, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			// decode handoverInterF optional
-			if handoverInterFPresent {
-				ie.handoverInterF = new(MeasAndMobParametersFRX_Diff_handoverInterF)
-				if err = ie.handoverInterF.Decode(extReader); err != nil {
-					return utils.WrapError("Decode handoverInterF", err)
+			// decode HandoverInterF optional
+			if HandoverInterFPresent {
+				ie.HandoverInterF = new(MeasAndMobParametersFRX_Diff_handoverInterF)
+				if err = ie.HandoverInterF.Decode(extReader); err != nil {
+					return utils.WrapError("Decode HandoverInterF", err)
 				}
 			}
-			// decode handoverLTE_EPC optional
-			if handoverLTE_EPCPresent {
-				ie.handoverLTE_EPC = new(MeasAndMobParametersFRX_Diff_handoverLTE_EPC)
-				if err = ie.handoverLTE_EPC.Decode(extReader); err != nil {
-					return utils.WrapError("Decode handoverLTE_EPC", err)
+			// decode HandoverLTE_EPC optional
+			if HandoverLTE_EPCPresent {
+				ie.HandoverLTE_EPC = new(MeasAndMobParametersFRX_Diff_handoverLTE_EPC)
+				if err = ie.HandoverLTE_EPC.Decode(extReader); err != nil {
+					return utils.WrapError("Decode HandoverLTE_EPC", err)
 				}
 			}
-			// decode handoverLTE_5GC optional
-			if handoverLTE_5GCPresent {
-				ie.handoverLTE_5GC = new(MeasAndMobParametersFRX_Diff_handoverLTE_5GC)
-				if err = ie.handoverLTE_5GC.Decode(extReader); err != nil {
-					return utils.WrapError("Decode handoverLTE_5GC", err)
+			// decode HandoverLTE_5GC optional
+			if HandoverLTE_5GCPresent {
+				ie.HandoverLTE_5GC = new(MeasAndMobParametersFRX_Diff_handoverLTE_5GC)
+				if err = ie.HandoverLTE_5GC.Decode(extReader); err != nil {
+					return utils.WrapError("Decode HandoverLTE_5GC", err)
 				}
 			}
 		}
@@ -409,15 +409,15 @@ func (ie *MeasAndMobParametersFRX_Diff) Decode(r *uper.UperReader) error {
 
 			extReader := uper.NewReader(bytes.NewReader(extBytes))
 
-			maxNumberResource_CSI_RS_RLMPresent, err := extReader.ReadBool()
+			MaxNumberResource_CSI_RS_RLMPresent, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			// decode maxNumberResource_CSI_RS_RLM optional
-			if maxNumberResource_CSI_RS_RLMPresent {
-				ie.maxNumberResource_CSI_RS_RLM = new(MeasAndMobParametersFRX_Diff_maxNumberResource_CSI_RS_RLM)
-				if err = ie.maxNumberResource_CSI_RS_RLM.Decode(extReader); err != nil {
-					return utils.WrapError("Decode maxNumberResource_CSI_RS_RLM", err)
+			// decode MaxNumberResource_CSI_RS_RLM optional
+			if MaxNumberResource_CSI_RS_RLMPresent {
+				ie.MaxNumberResource_CSI_RS_RLM = new(MeasAndMobParametersFRX_Diff_maxNumberResource_CSI_RS_RLM)
+				if err = ie.MaxNumberResource_CSI_RS_RLM.Decode(extReader); err != nil {
+					return utils.WrapError("Decode MaxNumberResource_CSI_RS_RLM", err)
 				}
 			}
 		}
@@ -430,15 +430,15 @@ func (ie *MeasAndMobParametersFRX_Diff) Decode(r *uper.UperReader) error {
 
 			extReader := uper.NewReader(bytes.NewReader(extBytes))
 
-			simultaneousRxDataSSB_DiffNumerologyPresent, err := extReader.ReadBool()
+			SimultaneousRxDataSSB_DiffNumerologyPresent, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			// decode simultaneousRxDataSSB_DiffNumerology optional
-			if simultaneousRxDataSSB_DiffNumerologyPresent {
-				ie.simultaneousRxDataSSB_DiffNumerology = new(MeasAndMobParametersFRX_Diff_simultaneousRxDataSSB_DiffNumerology)
-				if err = ie.simultaneousRxDataSSB_DiffNumerology.Decode(extReader); err != nil {
-					return utils.WrapError("Decode simultaneousRxDataSSB_DiffNumerology", err)
+			// decode SimultaneousRxDataSSB_DiffNumerology optional
+			if SimultaneousRxDataSSB_DiffNumerologyPresent {
+				ie.SimultaneousRxDataSSB_DiffNumerology = new(MeasAndMobParametersFRX_Diff_simultaneousRxDataSSB_DiffNumerology)
+				if err = ie.SimultaneousRxDataSSB_DiffNumerology.Decode(extReader); err != nil {
+					return utils.WrapError("Decode SimultaneousRxDataSSB_DiffNumerology", err)
 				}
 			}
 		}
@@ -451,125 +451,125 @@ func (ie *MeasAndMobParametersFRX_Diff) Decode(r *uper.UperReader) error {
 
 			extReader := uper.NewReader(bytes.NewReader(extBytes))
 
-			nr_AutonomousGaps_r16Present, err := extReader.ReadBool()
+			Nr_AutonomousGaps_r16Present, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			nr_AutonomousGaps_ENDC_r16Present, err := extReader.ReadBool()
+			Nr_AutonomousGaps_ENDC_r16Present, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			nr_AutonomousGaps_NEDC_r16Present, err := extReader.ReadBool()
+			Nr_AutonomousGaps_NEDC_r16Present, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			nr_AutonomousGaps_NRDC_r16Present, err := extReader.ReadBool()
+			Nr_AutonomousGaps_NRDC_r16Present, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			dummyPresent, err := extReader.ReadBool()
+			DummyPresent, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			cli_RSSI_Meas_r16Present, err := extReader.ReadBool()
+			Cli_RSSI_Meas_r16Present, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			cli_SRS_RSRP_Meas_r16Present, err := extReader.ReadBool()
+			Cli_SRS_RSRP_Meas_r16Present, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			interFrequencyMeas_NoGap_r16Present, err := extReader.ReadBool()
+			InterFrequencyMeas_NoGap_r16Present, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			simultaneousRxDataSSB_DiffNumerology_Inter_r16Present, err := extReader.ReadBool()
+			SimultaneousRxDataSSB_DiffNumerology_Inter_r16Present, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			idleInactiveNR_MeasReport_r16Present, err := extReader.ReadBool()
+			IdleInactiveNR_MeasReport_r16Present, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			idleInactiveNR_MeasBeamReport_r16Present, err := extReader.ReadBool()
+			IdleInactiveNR_MeasBeamReport_r16Present, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			// decode nr_AutonomousGaps_r16 optional
-			if nr_AutonomousGaps_r16Present {
-				ie.nr_AutonomousGaps_r16 = new(MeasAndMobParametersFRX_Diff_nr_AutonomousGaps_r16)
-				if err = ie.nr_AutonomousGaps_r16.Decode(extReader); err != nil {
-					return utils.WrapError("Decode nr_AutonomousGaps_r16", err)
+			// decode Nr_AutonomousGaps_r16 optional
+			if Nr_AutonomousGaps_r16Present {
+				ie.Nr_AutonomousGaps_r16 = new(MeasAndMobParametersFRX_Diff_nr_AutonomousGaps_r16)
+				if err = ie.Nr_AutonomousGaps_r16.Decode(extReader); err != nil {
+					return utils.WrapError("Decode Nr_AutonomousGaps_r16", err)
 				}
 			}
-			// decode nr_AutonomousGaps_ENDC_r16 optional
-			if nr_AutonomousGaps_ENDC_r16Present {
-				ie.nr_AutonomousGaps_ENDC_r16 = new(MeasAndMobParametersFRX_Diff_nr_AutonomousGaps_ENDC_r16)
-				if err = ie.nr_AutonomousGaps_ENDC_r16.Decode(extReader); err != nil {
-					return utils.WrapError("Decode nr_AutonomousGaps_ENDC_r16", err)
+			// decode Nr_AutonomousGaps_ENDC_r16 optional
+			if Nr_AutonomousGaps_ENDC_r16Present {
+				ie.Nr_AutonomousGaps_ENDC_r16 = new(MeasAndMobParametersFRX_Diff_nr_AutonomousGaps_ENDC_r16)
+				if err = ie.Nr_AutonomousGaps_ENDC_r16.Decode(extReader); err != nil {
+					return utils.WrapError("Decode Nr_AutonomousGaps_ENDC_r16", err)
 				}
 			}
-			// decode nr_AutonomousGaps_NEDC_r16 optional
-			if nr_AutonomousGaps_NEDC_r16Present {
-				ie.nr_AutonomousGaps_NEDC_r16 = new(MeasAndMobParametersFRX_Diff_nr_AutonomousGaps_NEDC_r16)
-				if err = ie.nr_AutonomousGaps_NEDC_r16.Decode(extReader); err != nil {
-					return utils.WrapError("Decode nr_AutonomousGaps_NEDC_r16", err)
+			// decode Nr_AutonomousGaps_NEDC_r16 optional
+			if Nr_AutonomousGaps_NEDC_r16Present {
+				ie.Nr_AutonomousGaps_NEDC_r16 = new(MeasAndMobParametersFRX_Diff_nr_AutonomousGaps_NEDC_r16)
+				if err = ie.Nr_AutonomousGaps_NEDC_r16.Decode(extReader); err != nil {
+					return utils.WrapError("Decode Nr_AutonomousGaps_NEDC_r16", err)
 				}
 			}
-			// decode nr_AutonomousGaps_NRDC_r16 optional
-			if nr_AutonomousGaps_NRDC_r16Present {
-				ie.nr_AutonomousGaps_NRDC_r16 = new(MeasAndMobParametersFRX_Diff_nr_AutonomousGaps_NRDC_r16)
-				if err = ie.nr_AutonomousGaps_NRDC_r16.Decode(extReader); err != nil {
-					return utils.WrapError("Decode nr_AutonomousGaps_NRDC_r16", err)
+			// decode Nr_AutonomousGaps_NRDC_r16 optional
+			if Nr_AutonomousGaps_NRDC_r16Present {
+				ie.Nr_AutonomousGaps_NRDC_r16 = new(MeasAndMobParametersFRX_Diff_nr_AutonomousGaps_NRDC_r16)
+				if err = ie.Nr_AutonomousGaps_NRDC_r16.Decode(extReader); err != nil {
+					return utils.WrapError("Decode Nr_AutonomousGaps_NRDC_r16", err)
 				}
 			}
-			// decode dummy optional
-			if dummyPresent {
-				ie.dummy = new(MeasAndMobParametersFRX_Diff_dummy)
-				if err = ie.dummy.Decode(extReader); err != nil {
-					return utils.WrapError("Decode dummy", err)
+			// decode Dummy optional
+			if DummyPresent {
+				ie.Dummy = new(MeasAndMobParametersFRX_Diff_dummy)
+				if err = ie.Dummy.Decode(extReader); err != nil {
+					return utils.WrapError("Decode Dummy", err)
 				}
 			}
-			// decode cli_RSSI_Meas_r16 optional
-			if cli_RSSI_Meas_r16Present {
-				ie.cli_RSSI_Meas_r16 = new(MeasAndMobParametersFRX_Diff_cli_RSSI_Meas_r16)
-				if err = ie.cli_RSSI_Meas_r16.Decode(extReader); err != nil {
-					return utils.WrapError("Decode cli_RSSI_Meas_r16", err)
+			// decode Cli_RSSI_Meas_r16 optional
+			if Cli_RSSI_Meas_r16Present {
+				ie.Cli_RSSI_Meas_r16 = new(MeasAndMobParametersFRX_Diff_cli_RSSI_Meas_r16)
+				if err = ie.Cli_RSSI_Meas_r16.Decode(extReader); err != nil {
+					return utils.WrapError("Decode Cli_RSSI_Meas_r16", err)
 				}
 			}
-			// decode cli_SRS_RSRP_Meas_r16 optional
-			if cli_SRS_RSRP_Meas_r16Present {
-				ie.cli_SRS_RSRP_Meas_r16 = new(MeasAndMobParametersFRX_Diff_cli_SRS_RSRP_Meas_r16)
-				if err = ie.cli_SRS_RSRP_Meas_r16.Decode(extReader); err != nil {
-					return utils.WrapError("Decode cli_SRS_RSRP_Meas_r16", err)
+			// decode Cli_SRS_RSRP_Meas_r16 optional
+			if Cli_SRS_RSRP_Meas_r16Present {
+				ie.Cli_SRS_RSRP_Meas_r16 = new(MeasAndMobParametersFRX_Diff_cli_SRS_RSRP_Meas_r16)
+				if err = ie.Cli_SRS_RSRP_Meas_r16.Decode(extReader); err != nil {
+					return utils.WrapError("Decode Cli_SRS_RSRP_Meas_r16", err)
 				}
 			}
-			// decode interFrequencyMeas_NoGap_r16 optional
-			if interFrequencyMeas_NoGap_r16Present {
-				ie.interFrequencyMeas_NoGap_r16 = new(MeasAndMobParametersFRX_Diff_interFrequencyMeas_NoGap_r16)
-				if err = ie.interFrequencyMeas_NoGap_r16.Decode(extReader); err != nil {
-					return utils.WrapError("Decode interFrequencyMeas_NoGap_r16", err)
+			// decode InterFrequencyMeas_NoGap_r16 optional
+			if InterFrequencyMeas_NoGap_r16Present {
+				ie.InterFrequencyMeas_NoGap_r16 = new(MeasAndMobParametersFRX_Diff_interFrequencyMeas_NoGap_r16)
+				if err = ie.InterFrequencyMeas_NoGap_r16.Decode(extReader); err != nil {
+					return utils.WrapError("Decode InterFrequencyMeas_NoGap_r16", err)
 				}
 			}
-			// decode simultaneousRxDataSSB_DiffNumerology_Inter_r16 optional
-			if simultaneousRxDataSSB_DiffNumerology_Inter_r16Present {
-				ie.simultaneousRxDataSSB_DiffNumerology_Inter_r16 = new(MeasAndMobParametersFRX_Diff_simultaneousRxDataSSB_DiffNumerology_Inter_r16)
-				if err = ie.simultaneousRxDataSSB_DiffNumerology_Inter_r16.Decode(extReader); err != nil {
-					return utils.WrapError("Decode simultaneousRxDataSSB_DiffNumerology_Inter_r16", err)
+			// decode SimultaneousRxDataSSB_DiffNumerology_Inter_r16 optional
+			if SimultaneousRxDataSSB_DiffNumerology_Inter_r16Present {
+				ie.SimultaneousRxDataSSB_DiffNumerology_Inter_r16 = new(MeasAndMobParametersFRX_Diff_simultaneousRxDataSSB_DiffNumerology_Inter_r16)
+				if err = ie.SimultaneousRxDataSSB_DiffNumerology_Inter_r16.Decode(extReader); err != nil {
+					return utils.WrapError("Decode SimultaneousRxDataSSB_DiffNumerology_Inter_r16", err)
 				}
 			}
-			// decode idleInactiveNR_MeasReport_r16 optional
-			if idleInactiveNR_MeasReport_r16Present {
-				ie.idleInactiveNR_MeasReport_r16 = new(MeasAndMobParametersFRX_Diff_idleInactiveNR_MeasReport_r16)
-				if err = ie.idleInactiveNR_MeasReport_r16.Decode(extReader); err != nil {
-					return utils.WrapError("Decode idleInactiveNR_MeasReport_r16", err)
+			// decode IdleInactiveNR_MeasReport_r16 optional
+			if IdleInactiveNR_MeasReport_r16Present {
+				ie.IdleInactiveNR_MeasReport_r16 = new(MeasAndMobParametersFRX_Diff_idleInactiveNR_MeasReport_r16)
+				if err = ie.IdleInactiveNR_MeasReport_r16.Decode(extReader); err != nil {
+					return utils.WrapError("Decode IdleInactiveNR_MeasReport_r16", err)
 				}
 			}
-			// decode idleInactiveNR_MeasBeamReport_r16 optional
-			if idleInactiveNR_MeasBeamReport_r16Present {
-				ie.idleInactiveNR_MeasBeamReport_r16 = new(MeasAndMobParametersFRX_Diff_idleInactiveNR_MeasBeamReport_r16)
-				if err = ie.idleInactiveNR_MeasBeamReport_r16.Decode(extReader); err != nil {
-					return utils.WrapError("Decode idleInactiveNR_MeasBeamReport_r16", err)
+			// decode IdleInactiveNR_MeasBeamReport_r16 optional
+			if IdleInactiveNR_MeasBeamReport_r16Present {
+				ie.IdleInactiveNR_MeasBeamReport_r16 = new(MeasAndMobParametersFRX_Diff_idleInactiveNR_MeasBeamReport_r16)
+				if err = ie.IdleInactiveNR_MeasBeamReport_r16.Decode(extReader); err != nil {
+					return utils.WrapError("Decode IdleInactiveNR_MeasBeamReport_r16", err)
 				}
 			}
 		}
@@ -582,15 +582,15 @@ func (ie *MeasAndMobParametersFRX_Diff) Decode(r *uper.UperReader) error {
 
 			extReader := uper.NewReader(bytes.NewReader(extBytes))
 
-			increasedNumberofCSIRSPerMO_r16Present, err := extReader.ReadBool()
+			IncreasedNumberofCSIRSPerMO_r16Present, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			// decode increasedNumberofCSIRSPerMO_r16 optional
-			if increasedNumberofCSIRSPerMO_r16Present {
-				ie.increasedNumberofCSIRSPerMO_r16 = new(MeasAndMobParametersFRX_Diff_increasedNumberofCSIRSPerMO_r16)
-				if err = ie.increasedNumberofCSIRSPerMO_r16.Decode(extReader); err != nil {
-					return utils.WrapError("Decode increasedNumberofCSIRSPerMO_r16", err)
+			// decode IncreasedNumberofCSIRSPerMO_r16 optional
+			if IncreasedNumberofCSIRSPerMO_r16Present {
+				ie.IncreasedNumberofCSIRSPerMO_r16 = new(MeasAndMobParametersFRX_Diff_increasedNumberofCSIRSPerMO_r16)
+				if err = ie.IncreasedNumberofCSIRSPerMO_r16.Decode(extReader); err != nil {
+					return utils.WrapError("Decode IncreasedNumberofCSIRSPerMO_r16", err)
 				}
 			}
 		}

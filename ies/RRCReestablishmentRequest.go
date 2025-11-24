@@ -6,21 +6,21 @@ import (
 )
 
 type RRCReestablishmentRequest struct {
-	rrcReestablishmentRequest RRCReestablishmentRequest_IEs `madatory`
+	RrcReestablishmentRequest RRCReestablishmentRequest_IEs `madatory`
 }
 
 func (ie *RRCReestablishmentRequest) Encode(w *uper.UperWriter) error {
 	var err error
-	if err = ie.rrcReestablishmentRequest.Encode(w); err != nil {
-		return utils.WrapError("Encode rrcReestablishmentRequest", err)
+	if err = ie.RrcReestablishmentRequest.Encode(w); err != nil {
+		return utils.WrapError("Encode RrcReestablishmentRequest", err)
 	}
 	return nil
 }
 
 func (ie *RRCReestablishmentRequest) Decode(r *uper.UperReader) error {
 	var err error
-	if err = ie.rrcReestablishmentRequest.Decode(r); err != nil {
-		return utils.WrapError("Decode rrcReestablishmentRequest", err)
+	if err = ie.RrcReestablishmentRequest.Decode(r); err != nil {
+		return utils.WrapError("Decode RrcReestablishmentRequest", err)
 	}
 	return nil
 }

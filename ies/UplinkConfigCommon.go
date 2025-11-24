@@ -6,59 +6,59 @@ import (
 )
 
 type UplinkConfigCommon struct {
-	frequencyInfoUL  *FrequencyInfoUL   `optional`
-	initialUplinkBWP *BWP_UplinkCommon  `optional`
-	dummy            TimeAlignmentTimer `madatory`
+	FrequencyInfoUL  *FrequencyInfoUL   `optional`
+	InitialUplinkBWP *BWP_UplinkCommon  `optional`
+	Dummy            TimeAlignmentTimer `madatory`
 }
 
 func (ie *UplinkConfigCommon) Encode(w *uper.UperWriter) error {
 	var err error
-	preambleBits := []bool{ie.frequencyInfoUL != nil, ie.initialUplinkBWP != nil}
+	preambleBits := []bool{ie.FrequencyInfoUL != nil, ie.InitialUplinkBWP != nil}
 	for _, bit := range preambleBits {
 		if err = w.WriteBool(bit); err != nil {
 			return err
 		}
 	}
-	if ie.frequencyInfoUL != nil {
-		if err = ie.frequencyInfoUL.Encode(w); err != nil {
-			return utils.WrapError("Encode frequencyInfoUL", err)
+	if ie.FrequencyInfoUL != nil {
+		if err = ie.FrequencyInfoUL.Encode(w); err != nil {
+			return utils.WrapError("Encode FrequencyInfoUL", err)
 		}
 	}
-	if ie.initialUplinkBWP != nil {
-		if err = ie.initialUplinkBWP.Encode(w); err != nil {
-			return utils.WrapError("Encode initialUplinkBWP", err)
+	if ie.InitialUplinkBWP != nil {
+		if err = ie.InitialUplinkBWP.Encode(w); err != nil {
+			return utils.WrapError("Encode InitialUplinkBWP", err)
 		}
 	}
-	if err = ie.dummy.Encode(w); err != nil {
-		return utils.WrapError("Encode dummy", err)
+	if err = ie.Dummy.Encode(w); err != nil {
+		return utils.WrapError("Encode Dummy", err)
 	}
 	return nil
 }
 
 func (ie *UplinkConfigCommon) Decode(r *uper.UperReader) error {
 	var err error
-	var frequencyInfoULPresent bool
-	if frequencyInfoULPresent, err = r.ReadBool(); err != nil {
+	var FrequencyInfoULPresent bool
+	if FrequencyInfoULPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var initialUplinkBWPPresent bool
-	if initialUplinkBWPPresent, err = r.ReadBool(); err != nil {
+	var InitialUplinkBWPPresent bool
+	if InitialUplinkBWPPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	if frequencyInfoULPresent {
-		ie.frequencyInfoUL = new(FrequencyInfoUL)
-		if err = ie.frequencyInfoUL.Decode(r); err != nil {
-			return utils.WrapError("Decode frequencyInfoUL", err)
+	if FrequencyInfoULPresent {
+		ie.FrequencyInfoUL = new(FrequencyInfoUL)
+		if err = ie.FrequencyInfoUL.Decode(r); err != nil {
+			return utils.WrapError("Decode FrequencyInfoUL", err)
 		}
 	}
-	if initialUplinkBWPPresent {
-		ie.initialUplinkBWP = new(BWP_UplinkCommon)
-		if err = ie.initialUplinkBWP.Decode(r); err != nil {
-			return utils.WrapError("Decode initialUplinkBWP", err)
+	if InitialUplinkBWPPresent {
+		ie.InitialUplinkBWP = new(BWP_UplinkCommon)
+		if err = ie.InitialUplinkBWP.Decode(r); err != nil {
+			return utils.WrapError("Decode InitialUplinkBWP", err)
 		}
 	}
-	if err = ie.dummy.Decode(r); err != nil {
-		return utils.WrapError("Decode dummy", err)
+	if err = ie.Dummy.Decode(r); err != nil {
+		return utils.WrapError("Decode Dummy", err)
 	}
 	return nil
 }

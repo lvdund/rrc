@@ -9,14 +9,14 @@ import (
 
 const (
 	RAN_NotificationAreaInfo_Choice_nothing uint64 = iota
-	RAN_NotificationAreaInfo_Choice_cellList
-	RAN_NotificationAreaInfo_Choice_ran_AreaConfigList
+	RAN_NotificationAreaInfo_Choice_CellList
+	RAN_NotificationAreaInfo_Choice_Ran_AreaConfigList
 )
 
 type RAN_NotificationAreaInfo struct {
 	Choice             uint64
-	cellList           *PLMN_RAN_AreaCellList
-	ran_AreaConfigList *PLMN_RAN_AreaConfigList
+	CellList           *PLMN_RAN_AreaCellList
+	Ran_AreaConfigList *PLMN_RAN_AreaConfigList
 }
 
 func (ie *RAN_NotificationAreaInfo) Encode(w *uper.UperWriter) error {
@@ -25,13 +25,13 @@ func (ie *RAN_NotificationAreaInfo) Encode(w *uper.UperWriter) error {
 		return err
 	}
 	switch ie.Choice {
-	case RAN_NotificationAreaInfo_Choice_cellList:
-		if err = ie.cellList.Encode(w); err != nil {
-			err = utils.WrapError("Encode cellList", err)
+	case RAN_NotificationAreaInfo_Choice_CellList:
+		if err = ie.CellList.Encode(w); err != nil {
+			err = utils.WrapError("Encode CellList", err)
 		}
-	case RAN_NotificationAreaInfo_Choice_ran_AreaConfigList:
-		if err = ie.ran_AreaConfigList.Encode(w); err != nil {
-			err = utils.WrapError("Encode ran_AreaConfigList", err)
+	case RAN_NotificationAreaInfo_Choice_Ran_AreaConfigList:
+		if err = ie.Ran_AreaConfigList.Encode(w); err != nil {
+			err = utils.WrapError("Encode Ran_AreaConfigList", err)
 		}
 	default:
 		err = fmt.Errorf("invalid choice: %d", ie.Choice)
@@ -45,15 +45,15 @@ func (ie *RAN_NotificationAreaInfo) Decode(r *uper.UperReader) error {
 		return err
 	}
 	switch ie.Choice {
-	case RAN_NotificationAreaInfo_Choice_cellList:
-		ie.cellList = new(PLMN_RAN_AreaCellList)
-		if err = ie.cellList.Decode(r); err != nil {
-			return utils.WrapError("Decode cellList", err)
+	case RAN_NotificationAreaInfo_Choice_CellList:
+		ie.CellList = new(PLMN_RAN_AreaCellList)
+		if err = ie.CellList.Decode(r); err != nil {
+			return utils.WrapError("Decode CellList", err)
 		}
-	case RAN_NotificationAreaInfo_Choice_ran_AreaConfigList:
-		ie.ran_AreaConfigList = new(PLMN_RAN_AreaConfigList)
-		if err = ie.ran_AreaConfigList.Decode(r); err != nil {
-			return utils.WrapError("Decode ran_AreaConfigList", err)
+	case RAN_NotificationAreaInfo_Choice_Ran_AreaConfigList:
+		ie.Ran_AreaConfigList = new(PLMN_RAN_AreaConfigList)
+		if err = ie.Ran_AreaConfigList.Decode(r); err != nil {
+			return utils.WrapError("Decode Ran_AreaConfigList", err)
 		}
 	default:
 		return fmt.Errorf("invalid choice: %d", ie.Choice)

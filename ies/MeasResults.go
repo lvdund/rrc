@@ -8,48 +8,48 @@ import (
 )
 
 type MeasResults struct {
-	measId                            MeasId                             `madatory`
-	measResultServingMOList           MeasResultServMOList               `madatory`
-	measResultNeighCells              *MeasResults_measResultNeighCells  `optional`
-	measResultServFreqListEUTRA_SCG   *MeasResultServFreqListEUTRA_SCG   `optional,ext-1`
-	measResultServFreqListNR_SCG      *MeasResultServFreqListNR_SCG      `optional,ext-1`
-	measResultSFTD_EUTRA              *MeasResultSFTD_EUTRA              `optional,ext-1`
-	measResultSFTD_NR                 *MeasResultCellSFTD_NR             `optional,ext-1`
-	measResultCellListSFTD_NR         *MeasResultCellListSFTD_NR         `optional,ext-2`
-	measResultForRSSI_r16             *MeasResultForRSSI_r16             `optional,ext-3`
-	locationInfo_r16                  *LocationInfo_r16                  `optional,ext-3`
-	ul_PDCP_DelayValueResultList_r16  *UL_PDCP_DelayValueResultList_r16  `optional,ext-3`
-	measResultsSL_r16                 *MeasResultsSL_r16                 `optional,ext-3`
-	measResultCLI_r16                 *MeasResultCLI_r16                 `optional,ext-3`
-	measResultRxTxTimeDiff_r17        *MeasResultRxTxTimeDiff_r17        `optional,ext-4`
-	sl_MeasResultServingRelay_r17     *[]byte                            `optional,ext-4`
-	ul_PDCP_ExcessDelayResultList_r17 *UL_PDCP_ExcessDelayResultList_r17 `optional,ext-4`
-	coarseLocationInfo_r17            *[]byte                            `optional,ext-4`
+	MeasId                            MeasId                             `madatory`
+	MeasResultServingMOList           MeasResultServMOList               `madatory`
+	MeasResultNeighCells              *MeasResults_measResultNeighCells  `optional`
+	MeasResultServFreqListEUTRA_SCG   *MeasResultServFreqListEUTRA_SCG   `optional,ext-1`
+	MeasResultServFreqListNR_SCG      *MeasResultServFreqListNR_SCG      `optional,ext-1`
+	MeasResultSFTD_EUTRA              *MeasResultSFTD_EUTRA              `optional,ext-1`
+	MeasResultSFTD_NR                 *MeasResultCellSFTD_NR             `optional,ext-1`
+	MeasResultCellListSFTD_NR         *MeasResultCellListSFTD_NR         `optional,ext-2`
+	MeasResultForRSSI_r16             *MeasResultForRSSI_r16             `optional,ext-3`
+	LocationInfo_r16                  *LocationInfo_r16                  `optional,ext-3`
+	Ul_PDCP_DelayValueResultList_r16  *UL_PDCP_DelayValueResultList_r16  `optional,ext-3`
+	MeasResultsSL_r16                 *MeasResultsSL_r16                 `optional,ext-3`
+	MeasResultCLI_r16                 *MeasResultCLI_r16                 `optional,ext-3`
+	MeasResultRxTxTimeDiff_r17        *MeasResultRxTxTimeDiff_r17        `optional,ext-4`
+	Sl_MeasResultServingRelay_r17     *[]byte                            `optional,ext-4`
+	Ul_PDCP_ExcessDelayResultList_r17 *UL_PDCP_ExcessDelayResultList_r17 `optional,ext-4`
+	CoarseLocationInfo_r17            *[]byte                            `optional,ext-4`
 }
 
 func (ie *MeasResults) Encode(w *uper.UperWriter) error {
 	var err error
-	hasExtensions := ie.measResultServFreqListEUTRA_SCG != nil || ie.measResultServFreqListNR_SCG != nil || ie.measResultSFTD_EUTRA != nil || ie.measResultSFTD_NR != nil || ie.measResultCellListSFTD_NR != nil || ie.measResultForRSSI_r16 != nil || ie.locationInfo_r16 != nil || ie.ul_PDCP_DelayValueResultList_r16 != nil || ie.measResultsSL_r16 != nil || ie.measResultCLI_r16 != nil || ie.measResultRxTxTimeDiff_r17 != nil || ie.sl_MeasResultServingRelay_r17 != nil || ie.ul_PDCP_ExcessDelayResultList_r17 != nil || ie.coarseLocationInfo_r17 != nil
-	preambleBits := []bool{hasExtensions, ie.measResultNeighCells != nil}
+	hasExtensions := ie.MeasResultServFreqListEUTRA_SCG != nil || ie.MeasResultServFreqListNR_SCG != nil || ie.MeasResultSFTD_EUTRA != nil || ie.MeasResultSFTD_NR != nil || ie.MeasResultCellListSFTD_NR != nil || ie.MeasResultForRSSI_r16 != nil || ie.LocationInfo_r16 != nil || ie.Ul_PDCP_DelayValueResultList_r16 != nil || ie.MeasResultsSL_r16 != nil || ie.MeasResultCLI_r16 != nil || ie.MeasResultRxTxTimeDiff_r17 != nil || ie.Sl_MeasResultServingRelay_r17 != nil || ie.Ul_PDCP_ExcessDelayResultList_r17 != nil || ie.CoarseLocationInfo_r17 != nil
+	preambleBits := []bool{hasExtensions, ie.MeasResultNeighCells != nil}
 	for _, bit := range preambleBits {
 		if err = w.WriteBool(bit); err != nil {
 			return err
 		}
 	}
-	if err = ie.measId.Encode(w); err != nil {
-		return utils.WrapError("Encode measId", err)
+	if err = ie.MeasId.Encode(w); err != nil {
+		return utils.WrapError("Encode MeasId", err)
 	}
-	if err = ie.measResultServingMOList.Encode(w); err != nil {
-		return utils.WrapError("Encode measResultServingMOList", err)
+	if err = ie.MeasResultServingMOList.Encode(w); err != nil {
+		return utils.WrapError("Encode MeasResultServingMOList", err)
 	}
-	if ie.measResultNeighCells != nil {
-		if err = ie.measResultNeighCells.Encode(w); err != nil {
-			return utils.WrapError("Encode measResultNeighCells", err)
+	if ie.MeasResultNeighCells != nil {
+		if err = ie.MeasResultNeighCells.Encode(w); err != nil {
+			return utils.WrapError("Encode MeasResultNeighCells", err)
 		}
 	}
 	if hasExtensions {
 		// Extension bitmap: 4 bits for 4 extension groups
-		extBitmap := []bool{ie.measResultServFreqListEUTRA_SCG != nil || ie.measResultServFreqListNR_SCG != nil || ie.measResultSFTD_EUTRA != nil || ie.measResultSFTD_NR != nil, ie.measResultCellListSFTD_NR != nil, ie.measResultForRSSI_r16 != nil || ie.locationInfo_r16 != nil || ie.ul_PDCP_DelayValueResultList_r16 != nil || ie.measResultsSL_r16 != nil || ie.measResultCLI_r16 != nil, ie.measResultRxTxTimeDiff_r17 != nil || ie.sl_MeasResultServingRelay_r17 != nil || ie.ul_PDCP_ExcessDelayResultList_r17 != nil || ie.coarseLocationInfo_r17 != nil}
+		extBitmap := []bool{ie.MeasResultServFreqListEUTRA_SCG != nil || ie.MeasResultServFreqListNR_SCG != nil || ie.MeasResultSFTD_EUTRA != nil || ie.MeasResultSFTD_NR != nil, ie.MeasResultCellListSFTD_NR != nil, ie.MeasResultForRSSI_r16 != nil || ie.LocationInfo_r16 != nil || ie.Ul_PDCP_DelayValueResultList_r16 != nil || ie.MeasResultsSL_r16 != nil || ie.MeasResultCLI_r16 != nil, ie.MeasResultRxTxTimeDiff_r17 != nil || ie.Sl_MeasResultServingRelay_r17 != nil || ie.Ul_PDCP_ExcessDelayResultList_r17 != nil || ie.CoarseLocationInfo_r17 != nil}
 		if err := w.WriteExtBitMap(extBitmap); err != nil {
 			return utils.WrapError("WriteExtBitMap MeasResults", err)
 		}
@@ -60,35 +60,35 @@ func (ie *MeasResults) Encode(w *uper.UperWriter) error {
 			extWriter := uper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 1
-			optionals_ext_1 := []bool{ie.measResultServFreqListEUTRA_SCG != nil, ie.measResultServFreqListNR_SCG != nil, ie.measResultSFTD_EUTRA != nil, ie.measResultSFTD_NR != nil}
+			optionals_ext_1 := []bool{ie.MeasResultServFreqListEUTRA_SCG != nil, ie.MeasResultServFreqListNR_SCG != nil, ie.MeasResultSFTD_EUTRA != nil, ie.MeasResultSFTD_NR != nil}
 			for _, bit := range optionals_ext_1 {
 				if err := extWriter.WriteBool(bit); err != nil {
 					return err
 				}
 			}
 
-			// encode measResultServFreqListEUTRA_SCG optional
-			if ie.measResultServFreqListEUTRA_SCG != nil {
-				if err = ie.measResultServFreqListEUTRA_SCG.Encode(extWriter); err != nil {
-					return utils.WrapError("Encode measResultServFreqListEUTRA_SCG", err)
+			// encode MeasResultServFreqListEUTRA_SCG optional
+			if ie.MeasResultServFreqListEUTRA_SCG != nil {
+				if err = ie.MeasResultServFreqListEUTRA_SCG.Encode(extWriter); err != nil {
+					return utils.WrapError("Encode MeasResultServFreqListEUTRA_SCG", err)
 				}
 			}
-			// encode measResultServFreqListNR_SCG optional
-			if ie.measResultServFreqListNR_SCG != nil {
-				if err = ie.measResultServFreqListNR_SCG.Encode(extWriter); err != nil {
-					return utils.WrapError("Encode measResultServFreqListNR_SCG", err)
+			// encode MeasResultServFreqListNR_SCG optional
+			if ie.MeasResultServFreqListNR_SCG != nil {
+				if err = ie.MeasResultServFreqListNR_SCG.Encode(extWriter); err != nil {
+					return utils.WrapError("Encode MeasResultServFreqListNR_SCG", err)
 				}
 			}
-			// encode measResultSFTD_EUTRA optional
-			if ie.measResultSFTD_EUTRA != nil {
-				if err = ie.measResultSFTD_EUTRA.Encode(extWriter); err != nil {
-					return utils.WrapError("Encode measResultSFTD_EUTRA", err)
+			// encode MeasResultSFTD_EUTRA optional
+			if ie.MeasResultSFTD_EUTRA != nil {
+				if err = ie.MeasResultSFTD_EUTRA.Encode(extWriter); err != nil {
+					return utils.WrapError("Encode MeasResultSFTD_EUTRA", err)
 				}
 			}
-			// encode measResultSFTD_NR optional
-			if ie.measResultSFTD_NR != nil {
-				if err = ie.measResultSFTD_NR.Encode(extWriter); err != nil {
-					return utils.WrapError("Encode measResultSFTD_NR", err)
+			// encode MeasResultSFTD_NR optional
+			if ie.MeasResultSFTD_NR != nil {
+				if err = ie.MeasResultSFTD_NR.Encode(extWriter); err != nil {
+					return utils.WrapError("Encode MeasResultSFTD_NR", err)
 				}
 			}
 
@@ -107,17 +107,17 @@ func (ie *MeasResults) Encode(w *uper.UperWriter) error {
 			extWriter := uper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 2
-			optionals_ext_2 := []bool{ie.measResultCellListSFTD_NR != nil}
+			optionals_ext_2 := []bool{ie.MeasResultCellListSFTD_NR != nil}
 			for _, bit := range optionals_ext_2 {
 				if err := extWriter.WriteBool(bit); err != nil {
 					return err
 				}
 			}
 
-			// encode measResultCellListSFTD_NR optional
-			if ie.measResultCellListSFTD_NR != nil {
-				if err = ie.measResultCellListSFTD_NR.Encode(extWriter); err != nil {
-					return utils.WrapError("Encode measResultCellListSFTD_NR", err)
+			// encode MeasResultCellListSFTD_NR optional
+			if ie.MeasResultCellListSFTD_NR != nil {
+				if err = ie.MeasResultCellListSFTD_NR.Encode(extWriter); err != nil {
+					return utils.WrapError("Encode MeasResultCellListSFTD_NR", err)
 				}
 			}
 
@@ -136,41 +136,41 @@ func (ie *MeasResults) Encode(w *uper.UperWriter) error {
 			extWriter := uper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 3
-			optionals_ext_3 := []bool{ie.measResultForRSSI_r16 != nil, ie.locationInfo_r16 != nil, ie.ul_PDCP_DelayValueResultList_r16 != nil, ie.measResultsSL_r16 != nil, ie.measResultCLI_r16 != nil}
+			optionals_ext_3 := []bool{ie.MeasResultForRSSI_r16 != nil, ie.LocationInfo_r16 != nil, ie.Ul_PDCP_DelayValueResultList_r16 != nil, ie.MeasResultsSL_r16 != nil, ie.MeasResultCLI_r16 != nil}
 			for _, bit := range optionals_ext_3 {
 				if err := extWriter.WriteBool(bit); err != nil {
 					return err
 				}
 			}
 
-			// encode measResultForRSSI_r16 optional
-			if ie.measResultForRSSI_r16 != nil {
-				if err = ie.measResultForRSSI_r16.Encode(extWriter); err != nil {
-					return utils.WrapError("Encode measResultForRSSI_r16", err)
+			// encode MeasResultForRSSI_r16 optional
+			if ie.MeasResultForRSSI_r16 != nil {
+				if err = ie.MeasResultForRSSI_r16.Encode(extWriter); err != nil {
+					return utils.WrapError("Encode MeasResultForRSSI_r16", err)
 				}
 			}
-			// encode locationInfo_r16 optional
-			if ie.locationInfo_r16 != nil {
-				if err = ie.locationInfo_r16.Encode(extWriter); err != nil {
-					return utils.WrapError("Encode locationInfo_r16", err)
+			// encode LocationInfo_r16 optional
+			if ie.LocationInfo_r16 != nil {
+				if err = ie.LocationInfo_r16.Encode(extWriter); err != nil {
+					return utils.WrapError("Encode LocationInfo_r16", err)
 				}
 			}
-			// encode ul_PDCP_DelayValueResultList_r16 optional
-			if ie.ul_PDCP_DelayValueResultList_r16 != nil {
-				if err = ie.ul_PDCP_DelayValueResultList_r16.Encode(extWriter); err != nil {
-					return utils.WrapError("Encode ul_PDCP_DelayValueResultList_r16", err)
+			// encode Ul_PDCP_DelayValueResultList_r16 optional
+			if ie.Ul_PDCP_DelayValueResultList_r16 != nil {
+				if err = ie.Ul_PDCP_DelayValueResultList_r16.Encode(extWriter); err != nil {
+					return utils.WrapError("Encode Ul_PDCP_DelayValueResultList_r16", err)
 				}
 			}
-			// encode measResultsSL_r16 optional
-			if ie.measResultsSL_r16 != nil {
-				if err = ie.measResultsSL_r16.Encode(extWriter); err != nil {
-					return utils.WrapError("Encode measResultsSL_r16", err)
+			// encode MeasResultsSL_r16 optional
+			if ie.MeasResultsSL_r16 != nil {
+				if err = ie.MeasResultsSL_r16.Encode(extWriter); err != nil {
+					return utils.WrapError("Encode MeasResultsSL_r16", err)
 				}
 			}
-			// encode measResultCLI_r16 optional
-			if ie.measResultCLI_r16 != nil {
-				if err = ie.measResultCLI_r16.Encode(extWriter); err != nil {
-					return utils.WrapError("Encode measResultCLI_r16", err)
+			// encode MeasResultCLI_r16 optional
+			if ie.MeasResultCLI_r16 != nil {
+				if err = ie.MeasResultCLI_r16.Encode(extWriter); err != nil {
+					return utils.WrapError("Encode MeasResultCLI_r16", err)
 				}
 			}
 
@@ -189,35 +189,35 @@ func (ie *MeasResults) Encode(w *uper.UperWriter) error {
 			extWriter := uper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 4
-			optionals_ext_4 := []bool{ie.measResultRxTxTimeDiff_r17 != nil, ie.sl_MeasResultServingRelay_r17 != nil, ie.ul_PDCP_ExcessDelayResultList_r17 != nil, ie.coarseLocationInfo_r17 != nil}
+			optionals_ext_4 := []bool{ie.MeasResultRxTxTimeDiff_r17 != nil, ie.Sl_MeasResultServingRelay_r17 != nil, ie.Ul_PDCP_ExcessDelayResultList_r17 != nil, ie.CoarseLocationInfo_r17 != nil}
 			for _, bit := range optionals_ext_4 {
 				if err := extWriter.WriteBool(bit); err != nil {
 					return err
 				}
 			}
 
-			// encode measResultRxTxTimeDiff_r17 optional
-			if ie.measResultRxTxTimeDiff_r17 != nil {
-				if err = ie.measResultRxTxTimeDiff_r17.Encode(extWriter); err != nil {
-					return utils.WrapError("Encode measResultRxTxTimeDiff_r17", err)
+			// encode MeasResultRxTxTimeDiff_r17 optional
+			if ie.MeasResultRxTxTimeDiff_r17 != nil {
+				if err = ie.MeasResultRxTxTimeDiff_r17.Encode(extWriter); err != nil {
+					return utils.WrapError("Encode MeasResultRxTxTimeDiff_r17", err)
 				}
 			}
-			// encode sl_MeasResultServingRelay_r17 optional
-			if ie.sl_MeasResultServingRelay_r17 != nil {
-				if err = extWriter.WriteOctetString(*ie.sl_MeasResultServingRelay_r17, &uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
-					return utils.WrapError("Encode sl_MeasResultServingRelay_r17", err)
+			// encode Sl_MeasResultServingRelay_r17 optional
+			if ie.Sl_MeasResultServingRelay_r17 != nil {
+				if err = extWriter.WriteOctetString(*ie.Sl_MeasResultServingRelay_r17, &uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+					return utils.WrapError("Encode Sl_MeasResultServingRelay_r17", err)
 				}
 			}
-			// encode ul_PDCP_ExcessDelayResultList_r17 optional
-			if ie.ul_PDCP_ExcessDelayResultList_r17 != nil {
-				if err = ie.ul_PDCP_ExcessDelayResultList_r17.Encode(extWriter); err != nil {
-					return utils.WrapError("Encode ul_PDCP_ExcessDelayResultList_r17", err)
+			// encode Ul_PDCP_ExcessDelayResultList_r17 optional
+			if ie.Ul_PDCP_ExcessDelayResultList_r17 != nil {
+				if err = ie.Ul_PDCP_ExcessDelayResultList_r17.Encode(extWriter); err != nil {
+					return utils.WrapError("Encode Ul_PDCP_ExcessDelayResultList_r17", err)
 				}
 			}
-			// encode coarseLocationInfo_r17 optional
-			if ie.coarseLocationInfo_r17 != nil {
-				if err = extWriter.WriteOctetString(*ie.coarseLocationInfo_r17, &uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
-					return utils.WrapError("Encode coarseLocationInfo_r17", err)
+			// encode CoarseLocationInfo_r17 optional
+			if ie.CoarseLocationInfo_r17 != nil {
+				if err = extWriter.WriteOctetString(*ie.CoarseLocationInfo_r17, &uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+					return utils.WrapError("Encode CoarseLocationInfo_r17", err)
 				}
 			}
 
@@ -239,20 +239,20 @@ func (ie *MeasResults) Decode(r *uper.UperReader) error {
 	if extensionBit, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var measResultNeighCellsPresent bool
-	if measResultNeighCellsPresent, err = r.ReadBool(); err != nil {
+	var MeasResultNeighCellsPresent bool
+	if MeasResultNeighCellsPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	if err = ie.measId.Decode(r); err != nil {
-		return utils.WrapError("Decode measId", err)
+	if err = ie.MeasId.Decode(r); err != nil {
+		return utils.WrapError("Decode MeasId", err)
 	}
-	if err = ie.measResultServingMOList.Decode(r); err != nil {
-		return utils.WrapError("Decode measResultServingMOList", err)
+	if err = ie.MeasResultServingMOList.Decode(r); err != nil {
+		return utils.WrapError("Decode MeasResultServingMOList", err)
 	}
-	if measResultNeighCellsPresent {
-		ie.measResultNeighCells = new(MeasResults_measResultNeighCells)
-		if err = ie.measResultNeighCells.Decode(r); err != nil {
-			return utils.WrapError("Decode measResultNeighCells", err)
+	if MeasResultNeighCellsPresent {
+		ie.MeasResultNeighCells = new(MeasResults_measResultNeighCells)
+		if err = ie.MeasResultNeighCells.Decode(r); err != nil {
+			return utils.WrapError("Decode MeasResultNeighCells", err)
 		}
 	}
 
@@ -272,48 +272,48 @@ func (ie *MeasResults) Decode(r *uper.UperReader) error {
 
 			extReader := uper.NewReader(bytes.NewReader(extBytes))
 
-			measResultServFreqListEUTRA_SCGPresent, err := extReader.ReadBool()
+			MeasResultServFreqListEUTRA_SCGPresent, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			measResultServFreqListNR_SCGPresent, err := extReader.ReadBool()
+			MeasResultServFreqListNR_SCGPresent, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			measResultSFTD_EUTRAPresent, err := extReader.ReadBool()
+			MeasResultSFTD_EUTRAPresent, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			measResultSFTD_NRPresent, err := extReader.ReadBool()
+			MeasResultSFTD_NRPresent, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			// decode measResultServFreqListEUTRA_SCG optional
-			if measResultServFreqListEUTRA_SCGPresent {
-				ie.measResultServFreqListEUTRA_SCG = new(MeasResultServFreqListEUTRA_SCG)
-				if err = ie.measResultServFreqListEUTRA_SCG.Decode(extReader); err != nil {
-					return utils.WrapError("Decode measResultServFreqListEUTRA_SCG", err)
+			// decode MeasResultServFreqListEUTRA_SCG optional
+			if MeasResultServFreqListEUTRA_SCGPresent {
+				ie.MeasResultServFreqListEUTRA_SCG = new(MeasResultServFreqListEUTRA_SCG)
+				if err = ie.MeasResultServFreqListEUTRA_SCG.Decode(extReader); err != nil {
+					return utils.WrapError("Decode MeasResultServFreqListEUTRA_SCG", err)
 				}
 			}
-			// decode measResultServFreqListNR_SCG optional
-			if measResultServFreqListNR_SCGPresent {
-				ie.measResultServFreqListNR_SCG = new(MeasResultServFreqListNR_SCG)
-				if err = ie.measResultServFreqListNR_SCG.Decode(extReader); err != nil {
-					return utils.WrapError("Decode measResultServFreqListNR_SCG", err)
+			// decode MeasResultServFreqListNR_SCG optional
+			if MeasResultServFreqListNR_SCGPresent {
+				ie.MeasResultServFreqListNR_SCG = new(MeasResultServFreqListNR_SCG)
+				if err = ie.MeasResultServFreqListNR_SCG.Decode(extReader); err != nil {
+					return utils.WrapError("Decode MeasResultServFreqListNR_SCG", err)
 				}
 			}
-			// decode measResultSFTD_EUTRA optional
-			if measResultSFTD_EUTRAPresent {
-				ie.measResultSFTD_EUTRA = new(MeasResultSFTD_EUTRA)
-				if err = ie.measResultSFTD_EUTRA.Decode(extReader); err != nil {
-					return utils.WrapError("Decode measResultSFTD_EUTRA", err)
+			// decode MeasResultSFTD_EUTRA optional
+			if MeasResultSFTD_EUTRAPresent {
+				ie.MeasResultSFTD_EUTRA = new(MeasResultSFTD_EUTRA)
+				if err = ie.MeasResultSFTD_EUTRA.Decode(extReader); err != nil {
+					return utils.WrapError("Decode MeasResultSFTD_EUTRA", err)
 				}
 			}
-			// decode measResultSFTD_NR optional
-			if measResultSFTD_NRPresent {
-				ie.measResultSFTD_NR = new(MeasResultCellSFTD_NR)
-				if err = ie.measResultSFTD_NR.Decode(extReader); err != nil {
-					return utils.WrapError("Decode measResultSFTD_NR", err)
+			// decode MeasResultSFTD_NR optional
+			if MeasResultSFTD_NRPresent {
+				ie.MeasResultSFTD_NR = new(MeasResultCellSFTD_NR)
+				if err = ie.MeasResultSFTD_NR.Decode(extReader); err != nil {
+					return utils.WrapError("Decode MeasResultSFTD_NR", err)
 				}
 			}
 		}
@@ -326,15 +326,15 @@ func (ie *MeasResults) Decode(r *uper.UperReader) error {
 
 			extReader := uper.NewReader(bytes.NewReader(extBytes))
 
-			measResultCellListSFTD_NRPresent, err := extReader.ReadBool()
+			MeasResultCellListSFTD_NRPresent, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			// decode measResultCellListSFTD_NR optional
-			if measResultCellListSFTD_NRPresent {
-				ie.measResultCellListSFTD_NR = new(MeasResultCellListSFTD_NR)
-				if err = ie.measResultCellListSFTD_NR.Decode(extReader); err != nil {
-					return utils.WrapError("Decode measResultCellListSFTD_NR", err)
+			// decode MeasResultCellListSFTD_NR optional
+			if MeasResultCellListSFTD_NRPresent {
+				ie.MeasResultCellListSFTD_NR = new(MeasResultCellListSFTD_NR)
+				if err = ie.MeasResultCellListSFTD_NR.Decode(extReader); err != nil {
+					return utils.WrapError("Decode MeasResultCellListSFTD_NR", err)
 				}
 			}
 		}
@@ -347,59 +347,59 @@ func (ie *MeasResults) Decode(r *uper.UperReader) error {
 
 			extReader := uper.NewReader(bytes.NewReader(extBytes))
 
-			measResultForRSSI_r16Present, err := extReader.ReadBool()
+			MeasResultForRSSI_r16Present, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			locationInfo_r16Present, err := extReader.ReadBool()
+			LocationInfo_r16Present, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			ul_PDCP_DelayValueResultList_r16Present, err := extReader.ReadBool()
+			Ul_PDCP_DelayValueResultList_r16Present, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			measResultsSL_r16Present, err := extReader.ReadBool()
+			MeasResultsSL_r16Present, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			measResultCLI_r16Present, err := extReader.ReadBool()
+			MeasResultCLI_r16Present, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			// decode measResultForRSSI_r16 optional
-			if measResultForRSSI_r16Present {
-				ie.measResultForRSSI_r16 = new(MeasResultForRSSI_r16)
-				if err = ie.measResultForRSSI_r16.Decode(extReader); err != nil {
-					return utils.WrapError("Decode measResultForRSSI_r16", err)
+			// decode MeasResultForRSSI_r16 optional
+			if MeasResultForRSSI_r16Present {
+				ie.MeasResultForRSSI_r16 = new(MeasResultForRSSI_r16)
+				if err = ie.MeasResultForRSSI_r16.Decode(extReader); err != nil {
+					return utils.WrapError("Decode MeasResultForRSSI_r16", err)
 				}
 			}
-			// decode locationInfo_r16 optional
-			if locationInfo_r16Present {
-				ie.locationInfo_r16 = new(LocationInfo_r16)
-				if err = ie.locationInfo_r16.Decode(extReader); err != nil {
-					return utils.WrapError("Decode locationInfo_r16", err)
+			// decode LocationInfo_r16 optional
+			if LocationInfo_r16Present {
+				ie.LocationInfo_r16 = new(LocationInfo_r16)
+				if err = ie.LocationInfo_r16.Decode(extReader); err != nil {
+					return utils.WrapError("Decode LocationInfo_r16", err)
 				}
 			}
-			// decode ul_PDCP_DelayValueResultList_r16 optional
-			if ul_PDCP_DelayValueResultList_r16Present {
-				ie.ul_PDCP_DelayValueResultList_r16 = new(UL_PDCP_DelayValueResultList_r16)
-				if err = ie.ul_PDCP_DelayValueResultList_r16.Decode(extReader); err != nil {
-					return utils.WrapError("Decode ul_PDCP_DelayValueResultList_r16", err)
+			// decode Ul_PDCP_DelayValueResultList_r16 optional
+			if Ul_PDCP_DelayValueResultList_r16Present {
+				ie.Ul_PDCP_DelayValueResultList_r16 = new(UL_PDCP_DelayValueResultList_r16)
+				if err = ie.Ul_PDCP_DelayValueResultList_r16.Decode(extReader); err != nil {
+					return utils.WrapError("Decode Ul_PDCP_DelayValueResultList_r16", err)
 				}
 			}
-			// decode measResultsSL_r16 optional
-			if measResultsSL_r16Present {
-				ie.measResultsSL_r16 = new(MeasResultsSL_r16)
-				if err = ie.measResultsSL_r16.Decode(extReader); err != nil {
-					return utils.WrapError("Decode measResultsSL_r16", err)
+			// decode MeasResultsSL_r16 optional
+			if MeasResultsSL_r16Present {
+				ie.MeasResultsSL_r16 = new(MeasResultsSL_r16)
+				if err = ie.MeasResultsSL_r16.Decode(extReader); err != nil {
+					return utils.WrapError("Decode MeasResultsSL_r16", err)
 				}
 			}
-			// decode measResultCLI_r16 optional
-			if measResultCLI_r16Present {
-				ie.measResultCLI_r16 = new(MeasResultCLI_r16)
-				if err = ie.measResultCLI_r16.Decode(extReader); err != nil {
-					return utils.WrapError("Decode measResultCLI_r16", err)
+			// decode MeasResultCLI_r16 optional
+			if MeasResultCLI_r16Present {
+				ie.MeasResultCLI_r16 = new(MeasResultCLI_r16)
+				if err = ie.MeasResultCLI_r16.Decode(extReader); err != nil {
+					return utils.WrapError("Decode MeasResultCLI_r16", err)
 				}
 			}
 		}
@@ -412,51 +412,51 @@ func (ie *MeasResults) Decode(r *uper.UperReader) error {
 
 			extReader := uper.NewReader(bytes.NewReader(extBytes))
 
-			measResultRxTxTimeDiff_r17Present, err := extReader.ReadBool()
+			MeasResultRxTxTimeDiff_r17Present, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			sl_MeasResultServingRelay_r17Present, err := extReader.ReadBool()
+			Sl_MeasResultServingRelay_r17Present, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			ul_PDCP_ExcessDelayResultList_r17Present, err := extReader.ReadBool()
+			Ul_PDCP_ExcessDelayResultList_r17Present, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			coarseLocationInfo_r17Present, err := extReader.ReadBool()
+			CoarseLocationInfo_r17Present, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			// decode measResultRxTxTimeDiff_r17 optional
-			if measResultRxTxTimeDiff_r17Present {
-				ie.measResultRxTxTimeDiff_r17 = new(MeasResultRxTxTimeDiff_r17)
-				if err = ie.measResultRxTxTimeDiff_r17.Decode(extReader); err != nil {
-					return utils.WrapError("Decode measResultRxTxTimeDiff_r17", err)
+			// decode MeasResultRxTxTimeDiff_r17 optional
+			if MeasResultRxTxTimeDiff_r17Present {
+				ie.MeasResultRxTxTimeDiff_r17 = new(MeasResultRxTxTimeDiff_r17)
+				if err = ie.MeasResultRxTxTimeDiff_r17.Decode(extReader); err != nil {
+					return utils.WrapError("Decode MeasResultRxTxTimeDiff_r17", err)
 				}
 			}
-			// decode sl_MeasResultServingRelay_r17 optional
-			if sl_MeasResultServingRelay_r17Present {
-				var tmp_os_sl_MeasResultServingRelay_r17 []byte
-				if tmp_os_sl_MeasResultServingRelay_r17, err = extReader.ReadOctetString(&uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
-					return utils.WrapError("Decode sl_MeasResultServingRelay_r17", err)
+			// decode Sl_MeasResultServingRelay_r17 optional
+			if Sl_MeasResultServingRelay_r17Present {
+				var tmp_os_Sl_MeasResultServingRelay_r17 []byte
+				if tmp_os_Sl_MeasResultServingRelay_r17, err = extReader.ReadOctetString(&uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+					return utils.WrapError("Decode Sl_MeasResultServingRelay_r17", err)
 				}
-				ie.sl_MeasResultServingRelay_r17 = &tmp_os_sl_MeasResultServingRelay_r17
+				ie.Sl_MeasResultServingRelay_r17 = &tmp_os_Sl_MeasResultServingRelay_r17
 			}
-			// decode ul_PDCP_ExcessDelayResultList_r17 optional
-			if ul_PDCP_ExcessDelayResultList_r17Present {
-				ie.ul_PDCP_ExcessDelayResultList_r17 = new(UL_PDCP_ExcessDelayResultList_r17)
-				if err = ie.ul_PDCP_ExcessDelayResultList_r17.Decode(extReader); err != nil {
-					return utils.WrapError("Decode ul_PDCP_ExcessDelayResultList_r17", err)
+			// decode Ul_PDCP_ExcessDelayResultList_r17 optional
+			if Ul_PDCP_ExcessDelayResultList_r17Present {
+				ie.Ul_PDCP_ExcessDelayResultList_r17 = new(UL_PDCP_ExcessDelayResultList_r17)
+				if err = ie.Ul_PDCP_ExcessDelayResultList_r17.Decode(extReader); err != nil {
+					return utils.WrapError("Decode Ul_PDCP_ExcessDelayResultList_r17", err)
 				}
 			}
-			// decode coarseLocationInfo_r17 optional
-			if coarseLocationInfo_r17Present {
-				var tmp_os_coarseLocationInfo_r17 []byte
-				if tmp_os_coarseLocationInfo_r17, err = extReader.ReadOctetString(&uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
-					return utils.WrapError("Decode coarseLocationInfo_r17", err)
+			// decode CoarseLocationInfo_r17 optional
+			if CoarseLocationInfo_r17Present {
+				var tmp_os_CoarseLocationInfo_r17 []byte
+				if tmp_os_CoarseLocationInfo_r17, err = extReader.ReadOctetString(&uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+					return utils.WrapError("Decode CoarseLocationInfo_r17", err)
 				}
-				ie.coarseLocationInfo_r17 = &tmp_os_coarseLocationInfo_r17
+				ie.CoarseLocationInfo_r17 = &tmp_os_CoarseLocationInfo_r17
 			}
 		}
 	}

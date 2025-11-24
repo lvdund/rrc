@@ -6,26 +6,26 @@ import (
 )
 
 type HighSpeedParameters_r16 struct {
-	measurementEnhancement_r16  *HighSpeedParameters_r16_measurementEnhancement_r16  `optional`
-	demodulationEnhancement_r16 *HighSpeedParameters_r16_demodulationEnhancement_r16 `optional`
+	MeasurementEnhancement_r16  *HighSpeedParameters_r16_measurementEnhancement_r16  `optional`
+	DemodulationEnhancement_r16 *HighSpeedParameters_r16_demodulationEnhancement_r16 `optional`
 }
 
 func (ie *HighSpeedParameters_r16) Encode(w *uper.UperWriter) error {
 	var err error
-	preambleBits := []bool{ie.measurementEnhancement_r16 != nil, ie.demodulationEnhancement_r16 != nil}
+	preambleBits := []bool{ie.MeasurementEnhancement_r16 != nil, ie.DemodulationEnhancement_r16 != nil}
 	for _, bit := range preambleBits {
 		if err = w.WriteBool(bit); err != nil {
 			return err
 		}
 	}
-	if ie.measurementEnhancement_r16 != nil {
-		if err = ie.measurementEnhancement_r16.Encode(w); err != nil {
-			return utils.WrapError("Encode measurementEnhancement_r16", err)
+	if ie.MeasurementEnhancement_r16 != nil {
+		if err = ie.MeasurementEnhancement_r16.Encode(w); err != nil {
+			return utils.WrapError("Encode MeasurementEnhancement_r16", err)
 		}
 	}
-	if ie.demodulationEnhancement_r16 != nil {
-		if err = ie.demodulationEnhancement_r16.Encode(w); err != nil {
-			return utils.WrapError("Encode demodulationEnhancement_r16", err)
+	if ie.DemodulationEnhancement_r16 != nil {
+		if err = ie.DemodulationEnhancement_r16.Encode(w); err != nil {
+			return utils.WrapError("Encode DemodulationEnhancement_r16", err)
 		}
 	}
 	return nil
@@ -33,24 +33,24 @@ func (ie *HighSpeedParameters_r16) Encode(w *uper.UperWriter) error {
 
 func (ie *HighSpeedParameters_r16) Decode(r *uper.UperReader) error {
 	var err error
-	var measurementEnhancement_r16Present bool
-	if measurementEnhancement_r16Present, err = r.ReadBool(); err != nil {
+	var MeasurementEnhancement_r16Present bool
+	if MeasurementEnhancement_r16Present, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var demodulationEnhancement_r16Present bool
-	if demodulationEnhancement_r16Present, err = r.ReadBool(); err != nil {
+	var DemodulationEnhancement_r16Present bool
+	if DemodulationEnhancement_r16Present, err = r.ReadBool(); err != nil {
 		return err
 	}
-	if measurementEnhancement_r16Present {
-		ie.measurementEnhancement_r16 = new(HighSpeedParameters_r16_measurementEnhancement_r16)
-		if err = ie.measurementEnhancement_r16.Decode(r); err != nil {
-			return utils.WrapError("Decode measurementEnhancement_r16", err)
+	if MeasurementEnhancement_r16Present {
+		ie.MeasurementEnhancement_r16 = new(HighSpeedParameters_r16_measurementEnhancement_r16)
+		if err = ie.MeasurementEnhancement_r16.Decode(r); err != nil {
+			return utils.WrapError("Decode MeasurementEnhancement_r16", err)
 		}
 	}
-	if demodulationEnhancement_r16Present {
-		ie.demodulationEnhancement_r16 = new(HighSpeedParameters_r16_demodulationEnhancement_r16)
-		if err = ie.demodulationEnhancement_r16.Decode(r); err != nil {
-			return utils.WrapError("Decode demodulationEnhancement_r16", err)
+	if DemodulationEnhancement_r16Present {
+		ie.DemodulationEnhancement_r16 = new(HighSpeedParameters_r16_demodulationEnhancement_r16)
+		if err = ie.DemodulationEnhancement_r16.Decode(r); err != nil {
+			return utils.WrapError("Decode DemodulationEnhancement_r16", err)
 		}
 	}
 	return nil

@@ -6,24 +6,24 @@ import (
 )
 
 type RMTC_Config_r16_tci_StateInfo_r17 struct {
-	tci_StateId_r17    TCI_StateId    `madatory`
-	ref_ServCellId_r17 *ServCellIndex `optional`
+	Tci_StateId_r17    TCI_StateId    `madatory`
+	Ref_ServCellId_r17 *ServCellIndex `optional`
 }
 
 func (ie *RMTC_Config_r16_tci_StateInfo_r17) Encode(w *uper.UperWriter) error {
 	var err error
-	preambleBits := []bool{ie.ref_ServCellId_r17 != nil}
+	preambleBits := []bool{ie.Ref_ServCellId_r17 != nil}
 	for _, bit := range preambleBits {
 		if err = w.WriteBool(bit); err != nil {
 			return err
 		}
 	}
-	if err = ie.tci_StateId_r17.Encode(w); err != nil {
-		return utils.WrapError("Encode tci_StateId_r17", err)
+	if err = ie.Tci_StateId_r17.Encode(w); err != nil {
+		return utils.WrapError("Encode Tci_StateId_r17", err)
 	}
-	if ie.ref_ServCellId_r17 != nil {
-		if err = ie.ref_ServCellId_r17.Encode(w); err != nil {
-			return utils.WrapError("Encode ref_ServCellId_r17", err)
+	if ie.Ref_ServCellId_r17 != nil {
+		if err = ie.Ref_ServCellId_r17.Encode(w); err != nil {
+			return utils.WrapError("Encode Ref_ServCellId_r17", err)
 		}
 	}
 	return nil
@@ -31,17 +31,17 @@ func (ie *RMTC_Config_r16_tci_StateInfo_r17) Encode(w *uper.UperWriter) error {
 
 func (ie *RMTC_Config_r16_tci_StateInfo_r17) Decode(r *uper.UperReader) error {
 	var err error
-	var ref_ServCellId_r17Present bool
-	if ref_ServCellId_r17Present, err = r.ReadBool(); err != nil {
+	var Ref_ServCellId_r17Present bool
+	if Ref_ServCellId_r17Present, err = r.ReadBool(); err != nil {
 		return err
 	}
-	if err = ie.tci_StateId_r17.Decode(r); err != nil {
-		return utils.WrapError("Decode tci_StateId_r17", err)
+	if err = ie.Tci_StateId_r17.Decode(r); err != nil {
+		return utils.WrapError("Decode Tci_StateId_r17", err)
 	}
-	if ref_ServCellId_r17Present {
-		ie.ref_ServCellId_r17 = new(ServCellIndex)
-		if err = ie.ref_ServCellId_r17.Decode(r); err != nil {
-			return utils.WrapError("Decode ref_ServCellId_r17", err)
+	if Ref_ServCellId_r17Present {
+		ie.Ref_ServCellId_r17 = new(ServCellIndex)
+		if err = ie.Ref_ServCellId_r17.Decode(r); err != nil {
+			return utils.WrapError("Decode Ref_ServCellId_r17", err)
 		}
 	}
 	return nil

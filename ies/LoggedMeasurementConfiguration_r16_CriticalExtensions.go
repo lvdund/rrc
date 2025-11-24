@@ -9,14 +9,14 @@ import (
 
 const (
 	LoggedMeasurementConfiguration_r16_CriticalExtensions_Choice_nothing uint64 = iota
-	LoggedMeasurementConfiguration_r16_CriticalExtensions_Choice_loggedMeasurementConfiguration_r16
-	LoggedMeasurementConfiguration_r16_CriticalExtensions_Choice_criticalExtensionsFuture
+	LoggedMeasurementConfiguration_r16_CriticalExtensions_Choice_LoggedMeasurementConfiguration_r16
+	LoggedMeasurementConfiguration_r16_CriticalExtensions_Choice_CriticalExtensionsFuture
 )
 
 type LoggedMeasurementConfiguration_r16_CriticalExtensions struct {
 	Choice                             uint64
-	loggedMeasurementConfiguration_r16 *LoggedMeasurementConfiguration_r16_IEs
-	criticalExtensionsFuture           interface{} `madatory`
+	LoggedMeasurementConfiguration_r16 *LoggedMeasurementConfiguration_r16_IEs
+	CriticalExtensionsFuture           interface{} `madatory`
 }
 
 func (ie *LoggedMeasurementConfiguration_r16_CriticalExtensions) Encode(w *uper.UperWriter) error {
@@ -25,11 +25,11 @@ func (ie *LoggedMeasurementConfiguration_r16_CriticalExtensions) Encode(w *uper.
 		return err
 	}
 	switch ie.Choice {
-	case LoggedMeasurementConfiguration_r16_CriticalExtensions_Choice_loggedMeasurementConfiguration_r16:
-		if err = ie.loggedMeasurementConfiguration_r16.Encode(w); err != nil {
-			err = utils.WrapError("Encode loggedMeasurementConfiguration_r16", err)
+	case LoggedMeasurementConfiguration_r16_CriticalExtensions_Choice_LoggedMeasurementConfiguration_r16:
+		if err = ie.LoggedMeasurementConfiguration_r16.Encode(w); err != nil {
+			err = utils.WrapError("Encode LoggedMeasurementConfiguration_r16", err)
 		}
-	case LoggedMeasurementConfiguration_r16_CriticalExtensions_Choice_criticalExtensionsFuture:
+	case LoggedMeasurementConfiguration_r16_CriticalExtensions_Choice_CriticalExtensionsFuture:
 		// interface{} field of choice - nothing to encode
 	default:
 		err = fmt.Errorf("invalid choice: %d", ie.Choice)
@@ -43,12 +43,12 @@ func (ie *LoggedMeasurementConfiguration_r16_CriticalExtensions) Decode(r *uper.
 		return err
 	}
 	switch ie.Choice {
-	case LoggedMeasurementConfiguration_r16_CriticalExtensions_Choice_loggedMeasurementConfiguration_r16:
-		ie.loggedMeasurementConfiguration_r16 = new(LoggedMeasurementConfiguration_r16_IEs)
-		if err = ie.loggedMeasurementConfiguration_r16.Decode(r); err != nil {
-			return utils.WrapError("Decode loggedMeasurementConfiguration_r16", err)
+	case LoggedMeasurementConfiguration_r16_CriticalExtensions_Choice_LoggedMeasurementConfiguration_r16:
+		ie.LoggedMeasurementConfiguration_r16 = new(LoggedMeasurementConfiguration_r16_IEs)
+		if err = ie.LoggedMeasurementConfiguration_r16.Decode(r); err != nil {
+			return utils.WrapError("Decode LoggedMeasurementConfiguration_r16", err)
 		}
-	case LoggedMeasurementConfiguration_r16_CriticalExtensions_Choice_criticalExtensionsFuture:
+	case LoggedMeasurementConfiguration_r16_CriticalExtensions_Choice_CriticalExtensionsFuture:
 		// interface{} field of choice - nothing to decode
 	default:
 		return fmt.Errorf("invalid choice: %d", ie.Choice)

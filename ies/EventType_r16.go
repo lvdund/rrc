@@ -9,14 +9,14 @@ import (
 
 const (
 	EventType_r16_Choice_nothing uint64 = iota
-	EventType_r16_Choice_outOfCoverage
-	EventType_r16_Choice_eventL1
+	EventType_r16_Choice_OutOfCoverage
+	EventType_r16_Choice_EventL1
 )
 
 type EventType_r16 struct {
 	Choice        uint64
-	outOfCoverage uper.NULL `madatory`
-	eventL1       *EventType_r16_eventL1
+	OutOfCoverage uper.NULL `madatory`
+	EventL1       *EventType_r16_eventL1
 }
 
 func (ie *EventType_r16) Encode(w *uper.UperWriter) error {
@@ -25,13 +25,13 @@ func (ie *EventType_r16) Encode(w *uper.UperWriter) error {
 		return err
 	}
 	switch ie.Choice {
-	case EventType_r16_Choice_outOfCoverage:
+	case EventType_r16_Choice_OutOfCoverage:
 		if err := w.WriteNull(); err != nil {
-			err = utils.WrapError("Encode outOfCoverage", err)
+			err = utils.WrapError("Encode OutOfCoverage", err)
 		}
-	case EventType_r16_Choice_eventL1:
-		if err = ie.eventL1.Encode(w); err != nil {
-			err = utils.WrapError("Encode eventL1", err)
+	case EventType_r16_Choice_EventL1:
+		if err = ie.EventL1.Encode(w); err != nil {
+			err = utils.WrapError("Encode EventL1", err)
 		}
 	default:
 		err = fmt.Errorf("invalid choice: %d", ie.Choice)
@@ -45,14 +45,14 @@ func (ie *EventType_r16) Decode(r *uper.UperReader) error {
 		return err
 	}
 	switch ie.Choice {
-	case EventType_r16_Choice_outOfCoverage:
+	case EventType_r16_Choice_OutOfCoverage:
 		if err := r.ReadNull(); err != nil {
-			return utils.WrapError("Decode outOfCoverage", err)
+			return utils.WrapError("Decode OutOfCoverage", err)
 		}
-	case EventType_r16_Choice_eventL1:
-		ie.eventL1 = new(EventType_r16_eventL1)
-		if err = ie.eventL1.Decode(r); err != nil {
-			return utils.WrapError("Decode eventL1", err)
+	case EventType_r16_Choice_EventL1:
+		ie.EventL1 = new(EventType_r16_eventL1)
+		if err = ie.EventL1.Decode(r); err != nil {
+			return utils.WrapError("Decode EventL1", err)
 		}
 	default:
 		return fmt.Errorf("invalid choice: %d", ie.Choice)

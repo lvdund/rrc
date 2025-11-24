@@ -6,50 +6,50 @@ import (
 )
 
 type CommonLocationInfo_r16 struct {
-	gnss_TOD_msec_r16      *[]byte `optional`
-	locationTimestamp_r16  *[]byte `optional`
-	locationCoordinate_r16 *[]byte `optional`
-	locationError_r16      *[]byte `optional`
-	locationSource_r16     *[]byte `optional`
-	velocityEstimate_r16   *[]byte `optional`
+	Gnss_TOD_msec_r16      *[]byte `optional`
+	LocationTimestamp_r16  *[]byte `optional`
+	LocationCoordinate_r16 *[]byte `optional`
+	LocationError_r16      *[]byte `optional`
+	LocationSource_r16     *[]byte `optional`
+	VelocityEstimate_r16   *[]byte `optional`
 }
 
 func (ie *CommonLocationInfo_r16) Encode(w *uper.UperWriter) error {
 	var err error
-	preambleBits := []bool{ie.gnss_TOD_msec_r16 != nil, ie.locationTimestamp_r16 != nil, ie.locationCoordinate_r16 != nil, ie.locationError_r16 != nil, ie.locationSource_r16 != nil, ie.velocityEstimate_r16 != nil}
+	preambleBits := []bool{ie.Gnss_TOD_msec_r16 != nil, ie.LocationTimestamp_r16 != nil, ie.LocationCoordinate_r16 != nil, ie.LocationError_r16 != nil, ie.LocationSource_r16 != nil, ie.VelocityEstimate_r16 != nil}
 	for _, bit := range preambleBits {
 		if err = w.WriteBool(bit); err != nil {
 			return err
 		}
 	}
-	if ie.gnss_TOD_msec_r16 != nil {
-		if err = w.WriteOctetString(*ie.gnss_TOD_msec_r16, &uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
-			return utils.WrapError("Encode gnss_TOD_msec_r16", err)
+	if ie.Gnss_TOD_msec_r16 != nil {
+		if err = w.WriteOctetString(*ie.Gnss_TOD_msec_r16, &uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+			return utils.WrapError("Encode Gnss_TOD_msec_r16", err)
 		}
 	}
-	if ie.locationTimestamp_r16 != nil {
-		if err = w.WriteOctetString(*ie.locationTimestamp_r16, &uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
-			return utils.WrapError("Encode locationTimestamp_r16", err)
+	if ie.LocationTimestamp_r16 != nil {
+		if err = w.WriteOctetString(*ie.LocationTimestamp_r16, &uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+			return utils.WrapError("Encode LocationTimestamp_r16", err)
 		}
 	}
-	if ie.locationCoordinate_r16 != nil {
-		if err = w.WriteOctetString(*ie.locationCoordinate_r16, &uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
-			return utils.WrapError("Encode locationCoordinate_r16", err)
+	if ie.LocationCoordinate_r16 != nil {
+		if err = w.WriteOctetString(*ie.LocationCoordinate_r16, &uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+			return utils.WrapError("Encode LocationCoordinate_r16", err)
 		}
 	}
-	if ie.locationError_r16 != nil {
-		if err = w.WriteOctetString(*ie.locationError_r16, &uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
-			return utils.WrapError("Encode locationError_r16", err)
+	if ie.LocationError_r16 != nil {
+		if err = w.WriteOctetString(*ie.LocationError_r16, &uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+			return utils.WrapError("Encode LocationError_r16", err)
 		}
 	}
-	if ie.locationSource_r16 != nil {
-		if err = w.WriteOctetString(*ie.locationSource_r16, &uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
-			return utils.WrapError("Encode locationSource_r16", err)
+	if ie.LocationSource_r16 != nil {
+		if err = w.WriteOctetString(*ie.LocationSource_r16, &uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+			return utils.WrapError("Encode LocationSource_r16", err)
 		}
 	}
-	if ie.velocityEstimate_r16 != nil {
-		if err = w.WriteOctetString(*ie.velocityEstimate_r16, &uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
-			return utils.WrapError("Encode velocityEstimate_r16", err)
+	if ie.VelocityEstimate_r16 != nil {
+		if err = w.WriteOctetString(*ie.VelocityEstimate_r16, &uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+			return utils.WrapError("Encode VelocityEstimate_r16", err)
 		}
 	}
 	return nil
@@ -57,71 +57,71 @@ func (ie *CommonLocationInfo_r16) Encode(w *uper.UperWriter) error {
 
 func (ie *CommonLocationInfo_r16) Decode(r *uper.UperReader) error {
 	var err error
-	var gnss_TOD_msec_r16Present bool
-	if gnss_TOD_msec_r16Present, err = r.ReadBool(); err != nil {
+	var Gnss_TOD_msec_r16Present bool
+	if Gnss_TOD_msec_r16Present, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var locationTimestamp_r16Present bool
-	if locationTimestamp_r16Present, err = r.ReadBool(); err != nil {
+	var LocationTimestamp_r16Present bool
+	if LocationTimestamp_r16Present, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var locationCoordinate_r16Present bool
-	if locationCoordinate_r16Present, err = r.ReadBool(); err != nil {
+	var LocationCoordinate_r16Present bool
+	if LocationCoordinate_r16Present, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var locationError_r16Present bool
-	if locationError_r16Present, err = r.ReadBool(); err != nil {
+	var LocationError_r16Present bool
+	if LocationError_r16Present, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var locationSource_r16Present bool
-	if locationSource_r16Present, err = r.ReadBool(); err != nil {
+	var LocationSource_r16Present bool
+	if LocationSource_r16Present, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var velocityEstimate_r16Present bool
-	if velocityEstimate_r16Present, err = r.ReadBool(); err != nil {
+	var VelocityEstimate_r16Present bool
+	if VelocityEstimate_r16Present, err = r.ReadBool(); err != nil {
 		return err
 	}
-	if gnss_TOD_msec_r16Present {
-		var tmp_os_gnss_TOD_msec_r16 []byte
-		if tmp_os_gnss_TOD_msec_r16, err = r.ReadOctetString(&uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
-			return utils.WrapError("Decode gnss_TOD_msec_r16", err)
+	if Gnss_TOD_msec_r16Present {
+		var tmp_os_Gnss_TOD_msec_r16 []byte
+		if tmp_os_Gnss_TOD_msec_r16, err = r.ReadOctetString(&uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+			return utils.WrapError("Decode Gnss_TOD_msec_r16", err)
 		}
-		ie.gnss_TOD_msec_r16 = &tmp_os_gnss_TOD_msec_r16
+		ie.Gnss_TOD_msec_r16 = &tmp_os_Gnss_TOD_msec_r16
 	}
-	if locationTimestamp_r16Present {
-		var tmp_os_locationTimestamp_r16 []byte
-		if tmp_os_locationTimestamp_r16, err = r.ReadOctetString(&uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
-			return utils.WrapError("Decode locationTimestamp_r16", err)
+	if LocationTimestamp_r16Present {
+		var tmp_os_LocationTimestamp_r16 []byte
+		if tmp_os_LocationTimestamp_r16, err = r.ReadOctetString(&uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+			return utils.WrapError("Decode LocationTimestamp_r16", err)
 		}
-		ie.locationTimestamp_r16 = &tmp_os_locationTimestamp_r16
+		ie.LocationTimestamp_r16 = &tmp_os_LocationTimestamp_r16
 	}
-	if locationCoordinate_r16Present {
-		var tmp_os_locationCoordinate_r16 []byte
-		if tmp_os_locationCoordinate_r16, err = r.ReadOctetString(&uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
-			return utils.WrapError("Decode locationCoordinate_r16", err)
+	if LocationCoordinate_r16Present {
+		var tmp_os_LocationCoordinate_r16 []byte
+		if tmp_os_LocationCoordinate_r16, err = r.ReadOctetString(&uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+			return utils.WrapError("Decode LocationCoordinate_r16", err)
 		}
-		ie.locationCoordinate_r16 = &tmp_os_locationCoordinate_r16
+		ie.LocationCoordinate_r16 = &tmp_os_LocationCoordinate_r16
 	}
-	if locationError_r16Present {
-		var tmp_os_locationError_r16 []byte
-		if tmp_os_locationError_r16, err = r.ReadOctetString(&uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
-			return utils.WrapError("Decode locationError_r16", err)
+	if LocationError_r16Present {
+		var tmp_os_LocationError_r16 []byte
+		if tmp_os_LocationError_r16, err = r.ReadOctetString(&uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+			return utils.WrapError("Decode LocationError_r16", err)
 		}
-		ie.locationError_r16 = &tmp_os_locationError_r16
+		ie.LocationError_r16 = &tmp_os_LocationError_r16
 	}
-	if locationSource_r16Present {
-		var tmp_os_locationSource_r16 []byte
-		if tmp_os_locationSource_r16, err = r.ReadOctetString(&uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
-			return utils.WrapError("Decode locationSource_r16", err)
+	if LocationSource_r16Present {
+		var tmp_os_LocationSource_r16 []byte
+		if tmp_os_LocationSource_r16, err = r.ReadOctetString(&uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+			return utils.WrapError("Decode LocationSource_r16", err)
 		}
-		ie.locationSource_r16 = &tmp_os_locationSource_r16
+		ie.LocationSource_r16 = &tmp_os_LocationSource_r16
 	}
-	if velocityEstimate_r16Present {
-		var tmp_os_velocityEstimate_r16 []byte
-		if tmp_os_velocityEstimate_r16, err = r.ReadOctetString(&uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
-			return utils.WrapError("Decode velocityEstimate_r16", err)
+	if VelocityEstimate_r16Present {
+		var tmp_os_VelocityEstimate_r16 []byte
+		if tmp_os_VelocityEstimate_r16, err = r.ReadOctetString(&uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+			return utils.WrapError("Decode VelocityEstimate_r16", err)
 		}
-		ie.velocityEstimate_r16 = &tmp_os_velocityEstimate_r16
+		ie.VelocityEstimate_r16 = &tmp_os_VelocityEstimate_r16
 	}
 	return nil
 }

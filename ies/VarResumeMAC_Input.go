@@ -6,35 +6,35 @@ import (
 )
 
 type VarResumeMAC_Input struct {
-	sourcePhysCellId   PhysCellId   `madatory`
-	targetCellIdentity CellIdentity `madatory`
-	source_c_RNTI      RNTI_Value   `madatory`
+	SourcePhysCellId   PhysCellId   `madatory`
+	TargetCellIdentity CellIdentity `madatory`
+	Source_c_RNTI      RNTI_Value   `madatory`
 }
 
 func (ie *VarResumeMAC_Input) Encode(w *uper.UperWriter) error {
 	var err error
-	if err = ie.sourcePhysCellId.Encode(w); err != nil {
-		return utils.WrapError("Encode sourcePhysCellId", err)
+	if err = ie.SourcePhysCellId.Encode(w); err != nil {
+		return utils.WrapError("Encode SourcePhysCellId", err)
 	}
-	if err = ie.targetCellIdentity.Encode(w); err != nil {
-		return utils.WrapError("Encode targetCellIdentity", err)
+	if err = ie.TargetCellIdentity.Encode(w); err != nil {
+		return utils.WrapError("Encode TargetCellIdentity", err)
 	}
-	if err = ie.source_c_RNTI.Encode(w); err != nil {
-		return utils.WrapError("Encode source_c_RNTI", err)
+	if err = ie.Source_c_RNTI.Encode(w); err != nil {
+		return utils.WrapError("Encode Source_c_RNTI", err)
 	}
 	return nil
 }
 
 func (ie *VarResumeMAC_Input) Decode(r *uper.UperReader) error {
 	var err error
-	if err = ie.sourcePhysCellId.Decode(r); err != nil {
-		return utils.WrapError("Decode sourcePhysCellId", err)
+	if err = ie.SourcePhysCellId.Decode(r); err != nil {
+		return utils.WrapError("Decode SourcePhysCellId", err)
 	}
-	if err = ie.targetCellIdentity.Decode(r); err != nil {
-		return utils.WrapError("Decode targetCellIdentity", err)
+	if err = ie.TargetCellIdentity.Decode(r); err != nil {
+		return utils.WrapError("Decode TargetCellIdentity", err)
 	}
-	if err = ie.source_c_RNTI.Decode(r); err != nil {
-		return utils.WrapError("Decode source_c_RNTI", err)
+	if err = ie.Source_c_RNTI.Decode(r); err != nil {
+		return utils.WrapError("Decode Source_c_RNTI", err)
 	}
 	return nil
 }

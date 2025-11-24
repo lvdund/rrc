@@ -6,53 +6,53 @@ import (
 )
 
 type RRCResume_v1610_IEs struct {
-	idleModeMeasurementReq_r16  *RRCResume_v1610_IEs_idleModeMeasurementReq_r16  `optional`
-	restoreMCG_SCells_r16       *RRCResume_v1610_IEs_restoreMCG_SCells_r16       `optional`
-	restoreSCG_r16              *RRCResume_v1610_IEs_restoreSCG_r16              `optional`
-	mrdc_SecondaryCellGroup_r16 *RRCResume_v1610_IEs_mrdc_SecondaryCellGroup_r16 `optional`
-	needForGapsConfigNR_r16     *NeedForGapsConfigNR_r16                         `optional,setuprelease`
-	nonCriticalExtension        *RRCResume_v1700_IEs                             `optional`
+	IdleModeMeasurementReq_r16  *RRCResume_v1610_IEs_idleModeMeasurementReq_r16  `optional`
+	RestoreMCG_SCells_r16       *RRCResume_v1610_IEs_restoreMCG_SCells_r16       `optional`
+	RestoreSCG_r16              *RRCResume_v1610_IEs_restoreSCG_r16              `optional`
+	Mrdc_SecondaryCellGroup_r16 *RRCResume_v1610_IEs_mrdc_SecondaryCellGroup_r16 `optional`
+	NeedForGapsConfigNR_r16     *NeedForGapsConfigNR_r16                         `optional,setuprelease`
+	NonCriticalExtension        *RRCResume_v1700_IEs                             `optional`
 }
 
 func (ie *RRCResume_v1610_IEs) Encode(w *uper.UperWriter) error {
 	var err error
-	preambleBits := []bool{ie.idleModeMeasurementReq_r16 != nil, ie.restoreMCG_SCells_r16 != nil, ie.restoreSCG_r16 != nil, ie.mrdc_SecondaryCellGroup_r16 != nil, ie.needForGapsConfigNR_r16 != nil, ie.nonCriticalExtension != nil}
+	preambleBits := []bool{ie.IdleModeMeasurementReq_r16 != nil, ie.RestoreMCG_SCells_r16 != nil, ie.RestoreSCG_r16 != nil, ie.Mrdc_SecondaryCellGroup_r16 != nil, ie.NeedForGapsConfigNR_r16 != nil, ie.NonCriticalExtension != nil}
 	for _, bit := range preambleBits {
 		if err = w.WriteBool(bit); err != nil {
 			return err
 		}
 	}
-	if ie.idleModeMeasurementReq_r16 != nil {
-		if err = ie.idleModeMeasurementReq_r16.Encode(w); err != nil {
-			return utils.WrapError("Encode idleModeMeasurementReq_r16", err)
+	if ie.IdleModeMeasurementReq_r16 != nil {
+		if err = ie.IdleModeMeasurementReq_r16.Encode(w); err != nil {
+			return utils.WrapError("Encode IdleModeMeasurementReq_r16", err)
 		}
 	}
-	if ie.restoreMCG_SCells_r16 != nil {
-		if err = ie.restoreMCG_SCells_r16.Encode(w); err != nil {
-			return utils.WrapError("Encode restoreMCG_SCells_r16", err)
+	if ie.RestoreMCG_SCells_r16 != nil {
+		if err = ie.RestoreMCG_SCells_r16.Encode(w); err != nil {
+			return utils.WrapError("Encode RestoreMCG_SCells_r16", err)
 		}
 	}
-	if ie.restoreSCG_r16 != nil {
-		if err = ie.restoreSCG_r16.Encode(w); err != nil {
-			return utils.WrapError("Encode restoreSCG_r16", err)
+	if ie.RestoreSCG_r16 != nil {
+		if err = ie.RestoreSCG_r16.Encode(w); err != nil {
+			return utils.WrapError("Encode RestoreSCG_r16", err)
 		}
 	}
-	if ie.mrdc_SecondaryCellGroup_r16 != nil {
-		if err = ie.mrdc_SecondaryCellGroup_r16.Encode(w); err != nil {
-			return utils.WrapError("Encode mrdc_SecondaryCellGroup_r16", err)
+	if ie.Mrdc_SecondaryCellGroup_r16 != nil {
+		if err = ie.Mrdc_SecondaryCellGroup_r16.Encode(w); err != nil {
+			return utils.WrapError("Encode Mrdc_SecondaryCellGroup_r16", err)
 		}
 	}
-	if ie.needForGapsConfigNR_r16 != nil {
-		tmp_needForGapsConfigNR_r16 := utils.SetupRelease[*NeedForGapsConfigNR_r16]{
-			Setup: ie.needForGapsConfigNR_r16,
+	if ie.NeedForGapsConfigNR_r16 != nil {
+		tmp_NeedForGapsConfigNR_r16 := utils.SetupRelease[*NeedForGapsConfigNR_r16]{
+			Setup: ie.NeedForGapsConfigNR_r16,
 		}
-		if err = tmp_needForGapsConfigNR_r16.Encode(w); err != nil {
-			return utils.WrapError("Encode needForGapsConfigNR_r16", err)
+		if err = tmp_NeedForGapsConfigNR_r16.Encode(w); err != nil {
+			return utils.WrapError("Encode NeedForGapsConfigNR_r16", err)
 		}
 	}
-	if ie.nonCriticalExtension != nil {
-		if err = ie.nonCriticalExtension.Encode(w); err != nil {
-			return utils.WrapError("Encode nonCriticalExtension", err)
+	if ie.NonCriticalExtension != nil {
+		if err = ie.NonCriticalExtension.Encode(w); err != nil {
+			return utils.WrapError("Encode NonCriticalExtension", err)
 		}
 	}
 	return nil
@@ -60,65 +60,65 @@ func (ie *RRCResume_v1610_IEs) Encode(w *uper.UperWriter) error {
 
 func (ie *RRCResume_v1610_IEs) Decode(r *uper.UperReader) error {
 	var err error
-	var idleModeMeasurementReq_r16Present bool
-	if idleModeMeasurementReq_r16Present, err = r.ReadBool(); err != nil {
+	var IdleModeMeasurementReq_r16Present bool
+	if IdleModeMeasurementReq_r16Present, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var restoreMCG_SCells_r16Present bool
-	if restoreMCG_SCells_r16Present, err = r.ReadBool(); err != nil {
+	var RestoreMCG_SCells_r16Present bool
+	if RestoreMCG_SCells_r16Present, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var restoreSCG_r16Present bool
-	if restoreSCG_r16Present, err = r.ReadBool(); err != nil {
+	var RestoreSCG_r16Present bool
+	if RestoreSCG_r16Present, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var mrdc_SecondaryCellGroup_r16Present bool
-	if mrdc_SecondaryCellGroup_r16Present, err = r.ReadBool(); err != nil {
+	var Mrdc_SecondaryCellGroup_r16Present bool
+	if Mrdc_SecondaryCellGroup_r16Present, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var needForGapsConfigNR_r16Present bool
-	if needForGapsConfigNR_r16Present, err = r.ReadBool(); err != nil {
+	var NeedForGapsConfigNR_r16Present bool
+	if NeedForGapsConfigNR_r16Present, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var nonCriticalExtensionPresent bool
-	if nonCriticalExtensionPresent, err = r.ReadBool(); err != nil {
+	var NonCriticalExtensionPresent bool
+	if NonCriticalExtensionPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	if idleModeMeasurementReq_r16Present {
-		ie.idleModeMeasurementReq_r16 = new(RRCResume_v1610_IEs_idleModeMeasurementReq_r16)
-		if err = ie.idleModeMeasurementReq_r16.Decode(r); err != nil {
-			return utils.WrapError("Decode idleModeMeasurementReq_r16", err)
+	if IdleModeMeasurementReq_r16Present {
+		ie.IdleModeMeasurementReq_r16 = new(RRCResume_v1610_IEs_idleModeMeasurementReq_r16)
+		if err = ie.IdleModeMeasurementReq_r16.Decode(r); err != nil {
+			return utils.WrapError("Decode IdleModeMeasurementReq_r16", err)
 		}
 	}
-	if restoreMCG_SCells_r16Present {
-		ie.restoreMCG_SCells_r16 = new(RRCResume_v1610_IEs_restoreMCG_SCells_r16)
-		if err = ie.restoreMCG_SCells_r16.Decode(r); err != nil {
-			return utils.WrapError("Decode restoreMCG_SCells_r16", err)
+	if RestoreMCG_SCells_r16Present {
+		ie.RestoreMCG_SCells_r16 = new(RRCResume_v1610_IEs_restoreMCG_SCells_r16)
+		if err = ie.RestoreMCG_SCells_r16.Decode(r); err != nil {
+			return utils.WrapError("Decode RestoreMCG_SCells_r16", err)
 		}
 	}
-	if restoreSCG_r16Present {
-		ie.restoreSCG_r16 = new(RRCResume_v1610_IEs_restoreSCG_r16)
-		if err = ie.restoreSCG_r16.Decode(r); err != nil {
-			return utils.WrapError("Decode restoreSCG_r16", err)
+	if RestoreSCG_r16Present {
+		ie.RestoreSCG_r16 = new(RRCResume_v1610_IEs_restoreSCG_r16)
+		if err = ie.RestoreSCG_r16.Decode(r); err != nil {
+			return utils.WrapError("Decode RestoreSCG_r16", err)
 		}
 	}
-	if mrdc_SecondaryCellGroup_r16Present {
-		ie.mrdc_SecondaryCellGroup_r16 = new(RRCResume_v1610_IEs_mrdc_SecondaryCellGroup_r16)
-		if err = ie.mrdc_SecondaryCellGroup_r16.Decode(r); err != nil {
-			return utils.WrapError("Decode mrdc_SecondaryCellGroup_r16", err)
+	if Mrdc_SecondaryCellGroup_r16Present {
+		ie.Mrdc_SecondaryCellGroup_r16 = new(RRCResume_v1610_IEs_mrdc_SecondaryCellGroup_r16)
+		if err = ie.Mrdc_SecondaryCellGroup_r16.Decode(r); err != nil {
+			return utils.WrapError("Decode Mrdc_SecondaryCellGroup_r16", err)
 		}
 	}
-	if needForGapsConfigNR_r16Present {
-		tmp_needForGapsConfigNR_r16 := utils.SetupRelease[*NeedForGapsConfigNR_r16]{}
-		if err = tmp_needForGapsConfigNR_r16.Decode(r); err != nil {
-			return utils.WrapError("Decode needForGapsConfigNR_r16", err)
+	if NeedForGapsConfigNR_r16Present {
+		tmp_NeedForGapsConfigNR_r16 := utils.SetupRelease[*NeedForGapsConfigNR_r16]{}
+		if err = tmp_NeedForGapsConfigNR_r16.Decode(r); err != nil {
+			return utils.WrapError("Decode NeedForGapsConfigNR_r16", err)
 		}
-		ie.needForGapsConfigNR_r16 = tmp_needForGapsConfigNR_r16.Setup
+		ie.NeedForGapsConfigNR_r16 = tmp_NeedForGapsConfigNR_r16.Setup
 	}
-	if nonCriticalExtensionPresent {
-		ie.nonCriticalExtension = new(RRCResume_v1700_IEs)
-		if err = ie.nonCriticalExtension.Decode(r); err != nil {
-			return utils.WrapError("Decode nonCriticalExtension", err)
+	if NonCriticalExtensionPresent {
+		ie.NonCriticalExtension = new(RRCResume_v1700_IEs)
+		if err = ie.NonCriticalExtension.Decode(r); err != nil {
+			return utils.WrapError("Decode NonCriticalExtension", err)
 		}
 	}
 	return nil

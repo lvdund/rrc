@@ -9,14 +9,14 @@ import (
 
 const (
 	SL_TxPower_r16_Choice_nothing uint64 = iota
-	SL_TxPower_r16_Choice_minusinfinity_r16
-	SL_TxPower_r16_Choice_txPower_r16
+	SL_TxPower_r16_Choice_Minusinfinity_r16
+	SL_TxPower_r16_Choice_TxPower_r16
 )
 
 type SL_TxPower_r16 struct {
 	Choice            uint64
-	minusinfinity_r16 uper.NULL `madatory`
-	txPower_r16       int64     `lb:-30,ub:33,madatory`
+	Minusinfinity_r16 uper.NULL `madatory`
+	TxPower_r16       int64     `lb:-30,ub:33,madatory`
 }
 
 func (ie *SL_TxPower_r16) Encode(w *uper.UperWriter) error {
@@ -25,13 +25,13 @@ func (ie *SL_TxPower_r16) Encode(w *uper.UperWriter) error {
 		return err
 	}
 	switch ie.Choice {
-	case SL_TxPower_r16_Choice_minusinfinity_r16:
+	case SL_TxPower_r16_Choice_Minusinfinity_r16:
 		if err := w.WriteNull(); err != nil {
-			err = utils.WrapError("Encode minusinfinity_r16", err)
+			err = utils.WrapError("Encode Minusinfinity_r16", err)
 		}
-	case SL_TxPower_r16_Choice_txPower_r16:
-		if err = w.WriteInteger(int64(ie.txPower_r16), &uper.Constraint{Lb: -30, Ub: 33}, false); err != nil {
-			err = utils.WrapError("Encode txPower_r16", err)
+	case SL_TxPower_r16_Choice_TxPower_r16:
+		if err = w.WriteInteger(int64(ie.TxPower_r16), &uper.Constraint{Lb: -30, Ub: 33}, false); err != nil {
+			err = utils.WrapError("Encode TxPower_r16", err)
 		}
 	default:
 		err = fmt.Errorf("invalid choice: %d", ie.Choice)
@@ -45,16 +45,16 @@ func (ie *SL_TxPower_r16) Decode(r *uper.UperReader) error {
 		return err
 	}
 	switch ie.Choice {
-	case SL_TxPower_r16_Choice_minusinfinity_r16:
+	case SL_TxPower_r16_Choice_Minusinfinity_r16:
 		if err := r.ReadNull(); err != nil {
-			return utils.WrapError("Decode minusinfinity_r16", err)
+			return utils.WrapError("Decode Minusinfinity_r16", err)
 		}
-	case SL_TxPower_r16_Choice_txPower_r16:
-		var tmp_int_txPower_r16 int64
-		if tmp_int_txPower_r16, err = r.ReadInteger(&uper.Constraint{Lb: -30, Ub: 33}, false); err != nil {
-			return utils.WrapError("Decode txPower_r16", err)
+	case SL_TxPower_r16_Choice_TxPower_r16:
+		var tmp_int_TxPower_r16 int64
+		if tmp_int_TxPower_r16, err = r.ReadInteger(&uper.Constraint{Lb: -30, Ub: 33}, false); err != nil {
+			return utils.WrapError("Decode TxPower_r16", err)
 		}
-		ie.txPower_r16 = tmp_int_txPower_r16
+		ie.TxPower_r16 = tmp_int_TxPower_r16
 	default:
 		return fmt.Errorf("invalid choice: %d", ie.Choice)
 	}

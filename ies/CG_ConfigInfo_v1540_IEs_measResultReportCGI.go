@@ -6,35 +6,35 @@ import (
 )
 
 type CG_ConfigInfo_v1540_IEs_measResultReportCGI struct {
-	ssbFrequency            ARFCN_ValueNR `madatory`
-	cellForWhichToReportCGI PhysCellId    `madatory`
-	cgi_Info                CGI_InfoNR    `madatory`
+	SsbFrequency            ARFCN_ValueNR `madatory`
+	CellForWhichToReportCGI PhysCellId    `madatory`
+	Cgi_Info                CGI_InfoNR    `madatory`
 }
 
 func (ie *CG_ConfigInfo_v1540_IEs_measResultReportCGI) Encode(w *uper.UperWriter) error {
 	var err error
-	if err = ie.ssbFrequency.Encode(w); err != nil {
-		return utils.WrapError("Encode ssbFrequency", err)
+	if err = ie.SsbFrequency.Encode(w); err != nil {
+		return utils.WrapError("Encode SsbFrequency", err)
 	}
-	if err = ie.cellForWhichToReportCGI.Encode(w); err != nil {
-		return utils.WrapError("Encode cellForWhichToReportCGI", err)
+	if err = ie.CellForWhichToReportCGI.Encode(w); err != nil {
+		return utils.WrapError("Encode CellForWhichToReportCGI", err)
 	}
-	if err = ie.cgi_Info.Encode(w); err != nil {
-		return utils.WrapError("Encode cgi_Info", err)
+	if err = ie.Cgi_Info.Encode(w); err != nil {
+		return utils.WrapError("Encode Cgi_Info", err)
 	}
 	return nil
 }
 
 func (ie *CG_ConfigInfo_v1540_IEs_measResultReportCGI) Decode(r *uper.UperReader) error {
 	var err error
-	if err = ie.ssbFrequency.Decode(r); err != nil {
-		return utils.WrapError("Decode ssbFrequency", err)
+	if err = ie.SsbFrequency.Decode(r); err != nil {
+		return utils.WrapError("Decode SsbFrequency", err)
 	}
-	if err = ie.cellForWhichToReportCGI.Decode(r); err != nil {
-		return utils.WrapError("Decode cellForWhichToReportCGI", err)
+	if err = ie.CellForWhichToReportCGI.Decode(r); err != nil {
+		return utils.WrapError("Decode CellForWhichToReportCGI", err)
 	}
-	if err = ie.cgi_Info.Decode(r); err != nil {
-		return utils.WrapError("Decode cgi_Info", err)
+	if err = ie.Cgi_Info.Decode(r); err != nil {
+		return utils.WrapError("Decode Cgi_Info", err)
 	}
 	return nil
 }

@@ -9,14 +9,14 @@ import (
 
 const (
 	PLMN_Identity_EUTRA_5GC_Choice_nothing uint64 = iota
-	PLMN_Identity_EUTRA_5GC_Choice_plmn_Identity_EUTRA_5GC
-	PLMN_Identity_EUTRA_5GC_Choice_plmn_index
+	PLMN_Identity_EUTRA_5GC_Choice_Plmn_Identity_EUTRA_5GC
+	PLMN_Identity_EUTRA_5GC_Choice_Plmn_index
 )
 
 type PLMN_Identity_EUTRA_5GC struct {
 	Choice                  uint64
-	plmn_Identity_EUTRA_5GC *PLMN_Identity
-	plmn_index              int64 `lb:1,ub:maxPLMN,madatory`
+	Plmn_Identity_EUTRA_5GC *PLMN_Identity
+	Plmn_index              int64 `lb:1,ub:maxPLMN,madatory`
 }
 
 func (ie *PLMN_Identity_EUTRA_5GC) Encode(w *uper.UperWriter) error {
@@ -25,13 +25,13 @@ func (ie *PLMN_Identity_EUTRA_5GC) Encode(w *uper.UperWriter) error {
 		return err
 	}
 	switch ie.Choice {
-	case PLMN_Identity_EUTRA_5GC_Choice_plmn_Identity_EUTRA_5GC:
-		if err = ie.plmn_Identity_EUTRA_5GC.Encode(w); err != nil {
-			err = utils.WrapError("Encode plmn_Identity_EUTRA_5GC", err)
+	case PLMN_Identity_EUTRA_5GC_Choice_Plmn_Identity_EUTRA_5GC:
+		if err = ie.Plmn_Identity_EUTRA_5GC.Encode(w); err != nil {
+			err = utils.WrapError("Encode Plmn_Identity_EUTRA_5GC", err)
 		}
-	case PLMN_Identity_EUTRA_5GC_Choice_plmn_index:
-		if err = w.WriteInteger(int64(ie.plmn_index), &uper.Constraint{Lb: 1, Ub: maxPLMN}, false); err != nil {
-			err = utils.WrapError("Encode plmn_index", err)
+	case PLMN_Identity_EUTRA_5GC_Choice_Plmn_index:
+		if err = w.WriteInteger(int64(ie.Plmn_index), &uper.Constraint{Lb: 1, Ub: maxPLMN}, false); err != nil {
+			err = utils.WrapError("Encode Plmn_index", err)
 		}
 	default:
 		err = fmt.Errorf("invalid choice: %d", ie.Choice)
@@ -45,17 +45,17 @@ func (ie *PLMN_Identity_EUTRA_5GC) Decode(r *uper.UperReader) error {
 		return err
 	}
 	switch ie.Choice {
-	case PLMN_Identity_EUTRA_5GC_Choice_plmn_Identity_EUTRA_5GC:
-		ie.plmn_Identity_EUTRA_5GC = new(PLMN_Identity)
-		if err = ie.plmn_Identity_EUTRA_5GC.Decode(r); err != nil {
-			return utils.WrapError("Decode plmn_Identity_EUTRA_5GC", err)
+	case PLMN_Identity_EUTRA_5GC_Choice_Plmn_Identity_EUTRA_5GC:
+		ie.Plmn_Identity_EUTRA_5GC = new(PLMN_Identity)
+		if err = ie.Plmn_Identity_EUTRA_5GC.Decode(r); err != nil {
+			return utils.WrapError("Decode Plmn_Identity_EUTRA_5GC", err)
 		}
-	case PLMN_Identity_EUTRA_5GC_Choice_plmn_index:
-		var tmp_int_plmn_index int64
-		if tmp_int_plmn_index, err = r.ReadInteger(&uper.Constraint{Lb: 1, Ub: maxPLMN}, false); err != nil {
-			return utils.WrapError("Decode plmn_index", err)
+	case PLMN_Identity_EUTRA_5GC_Choice_Plmn_index:
+		var tmp_int_Plmn_index int64
+		if tmp_int_Plmn_index, err = r.ReadInteger(&uper.Constraint{Lb: 1, Ub: maxPLMN}, false); err != nil {
+			return utils.WrapError("Decode Plmn_index", err)
 		}
-		ie.plmn_index = tmp_int_plmn_index
+		ie.Plmn_index = tmp_int_Plmn_index
 	default:
 		return fmt.Errorf("invalid choice: %d", ie.Choice)
 	}

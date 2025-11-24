@@ -6,32 +6,32 @@ import (
 )
 
 type SearchSpaceExt_v1700_searchSpaceType_r17_common_r17_dci_Format2_7_r17_nrofCandidates_PEI_r17 struct {
-	aggregationLevel4_r17  *SearchSpaceExt_v1700_searchSpaceType_r17_common_r17_dci_Format2_7_r17_nrofCandidates_PEI_r17_aggregationLevel4_r17  `optional`
-	aggregationLevel8_r17  *SearchSpaceExt_v1700_searchSpaceType_r17_common_r17_dci_Format2_7_r17_nrofCandidates_PEI_r17_aggregationLevel8_r17  `optional`
-	aggregationLevel16_r17 *SearchSpaceExt_v1700_searchSpaceType_r17_common_r17_dci_Format2_7_r17_nrofCandidates_PEI_r17_aggregationLevel16_r17 `optional`
+	AggregationLevel4_r17  *SearchSpaceExt_v1700_searchSpaceType_r17_common_r17_dci_Format2_7_r17_nrofCandidates_PEI_r17_aggregationLevel4_r17  `optional`
+	AggregationLevel8_r17  *SearchSpaceExt_v1700_searchSpaceType_r17_common_r17_dci_Format2_7_r17_nrofCandidates_PEI_r17_aggregationLevel8_r17  `optional`
+	AggregationLevel16_r17 *SearchSpaceExt_v1700_searchSpaceType_r17_common_r17_dci_Format2_7_r17_nrofCandidates_PEI_r17_aggregationLevel16_r17 `optional`
 }
 
 func (ie *SearchSpaceExt_v1700_searchSpaceType_r17_common_r17_dci_Format2_7_r17_nrofCandidates_PEI_r17) Encode(w *uper.UperWriter) error {
 	var err error
-	preambleBits := []bool{ie.aggregationLevel4_r17 != nil, ie.aggregationLevel8_r17 != nil, ie.aggregationLevel16_r17 != nil}
+	preambleBits := []bool{ie.AggregationLevel4_r17 != nil, ie.AggregationLevel8_r17 != nil, ie.AggregationLevel16_r17 != nil}
 	for _, bit := range preambleBits {
 		if err = w.WriteBool(bit); err != nil {
 			return err
 		}
 	}
-	if ie.aggregationLevel4_r17 != nil {
-		if err = ie.aggregationLevel4_r17.Encode(w); err != nil {
-			return utils.WrapError("Encode aggregationLevel4_r17", err)
+	if ie.AggregationLevel4_r17 != nil {
+		if err = ie.AggregationLevel4_r17.Encode(w); err != nil {
+			return utils.WrapError("Encode AggregationLevel4_r17", err)
 		}
 	}
-	if ie.aggregationLevel8_r17 != nil {
-		if err = ie.aggregationLevel8_r17.Encode(w); err != nil {
-			return utils.WrapError("Encode aggregationLevel8_r17", err)
+	if ie.AggregationLevel8_r17 != nil {
+		if err = ie.AggregationLevel8_r17.Encode(w); err != nil {
+			return utils.WrapError("Encode AggregationLevel8_r17", err)
 		}
 	}
-	if ie.aggregationLevel16_r17 != nil {
-		if err = ie.aggregationLevel16_r17.Encode(w); err != nil {
-			return utils.WrapError("Encode aggregationLevel16_r17", err)
+	if ie.AggregationLevel16_r17 != nil {
+		if err = ie.AggregationLevel16_r17.Encode(w); err != nil {
+			return utils.WrapError("Encode AggregationLevel16_r17", err)
 		}
 	}
 	return nil
@@ -39,34 +39,34 @@ func (ie *SearchSpaceExt_v1700_searchSpaceType_r17_common_r17_dci_Format2_7_r17_
 
 func (ie *SearchSpaceExt_v1700_searchSpaceType_r17_common_r17_dci_Format2_7_r17_nrofCandidates_PEI_r17) Decode(r *uper.UperReader) error {
 	var err error
-	var aggregationLevel4_r17Present bool
-	if aggregationLevel4_r17Present, err = r.ReadBool(); err != nil {
+	var AggregationLevel4_r17Present bool
+	if AggregationLevel4_r17Present, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var aggregationLevel8_r17Present bool
-	if aggregationLevel8_r17Present, err = r.ReadBool(); err != nil {
+	var AggregationLevel8_r17Present bool
+	if AggregationLevel8_r17Present, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var aggregationLevel16_r17Present bool
-	if aggregationLevel16_r17Present, err = r.ReadBool(); err != nil {
+	var AggregationLevel16_r17Present bool
+	if AggregationLevel16_r17Present, err = r.ReadBool(); err != nil {
 		return err
 	}
-	if aggregationLevel4_r17Present {
-		ie.aggregationLevel4_r17 = new(SearchSpaceExt_v1700_searchSpaceType_r17_common_r17_dci_Format2_7_r17_nrofCandidates_PEI_r17_aggregationLevel4_r17)
-		if err = ie.aggregationLevel4_r17.Decode(r); err != nil {
-			return utils.WrapError("Decode aggregationLevel4_r17", err)
+	if AggregationLevel4_r17Present {
+		ie.AggregationLevel4_r17 = new(SearchSpaceExt_v1700_searchSpaceType_r17_common_r17_dci_Format2_7_r17_nrofCandidates_PEI_r17_aggregationLevel4_r17)
+		if err = ie.AggregationLevel4_r17.Decode(r); err != nil {
+			return utils.WrapError("Decode AggregationLevel4_r17", err)
 		}
 	}
-	if aggregationLevel8_r17Present {
-		ie.aggregationLevel8_r17 = new(SearchSpaceExt_v1700_searchSpaceType_r17_common_r17_dci_Format2_7_r17_nrofCandidates_PEI_r17_aggregationLevel8_r17)
-		if err = ie.aggregationLevel8_r17.Decode(r); err != nil {
-			return utils.WrapError("Decode aggregationLevel8_r17", err)
+	if AggregationLevel8_r17Present {
+		ie.AggregationLevel8_r17 = new(SearchSpaceExt_v1700_searchSpaceType_r17_common_r17_dci_Format2_7_r17_nrofCandidates_PEI_r17_aggregationLevel8_r17)
+		if err = ie.AggregationLevel8_r17.Decode(r); err != nil {
+			return utils.WrapError("Decode AggregationLevel8_r17", err)
 		}
 	}
-	if aggregationLevel16_r17Present {
-		ie.aggregationLevel16_r17 = new(SearchSpaceExt_v1700_searchSpaceType_r17_common_r17_dci_Format2_7_r17_nrofCandidates_PEI_r17_aggregationLevel16_r17)
-		if err = ie.aggregationLevel16_r17.Decode(r); err != nil {
-			return utils.WrapError("Decode aggregationLevel16_r17", err)
+	if AggregationLevel16_r17Present {
+		ie.AggregationLevel16_r17 = new(SearchSpaceExt_v1700_searchSpaceType_r17_common_r17_dci_Format2_7_r17_nrofCandidates_PEI_r17_aggregationLevel16_r17)
+		if err = ie.AggregationLevel16_r17.Decode(r); err != nil {
+			return utils.WrapError("Decode AggregationLevel16_r17", err)
 		}
 	}
 	return nil

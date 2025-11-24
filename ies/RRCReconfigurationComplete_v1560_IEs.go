@@ -6,26 +6,26 @@ import (
 )
 
 type RRCReconfigurationComplete_v1560_IEs struct {
-	scg_Response         *RRCReconfigurationComplete_v1560_IEs_scg_Response `optional`
-	nonCriticalExtension *RRCReconfigurationComplete_v1610_IEs              `optional`
+	Scg_Response         *RRCReconfigurationComplete_v1560_IEs_scg_Response `optional`
+	NonCriticalExtension *RRCReconfigurationComplete_v1610_IEs              `optional`
 }
 
 func (ie *RRCReconfigurationComplete_v1560_IEs) Encode(w *uper.UperWriter) error {
 	var err error
-	preambleBits := []bool{ie.scg_Response != nil, ie.nonCriticalExtension != nil}
+	preambleBits := []bool{ie.Scg_Response != nil, ie.NonCriticalExtension != nil}
 	for _, bit := range preambleBits {
 		if err = w.WriteBool(bit); err != nil {
 			return err
 		}
 	}
-	if ie.scg_Response != nil {
-		if err = ie.scg_Response.Encode(w); err != nil {
-			return utils.WrapError("Encode scg_Response", err)
+	if ie.Scg_Response != nil {
+		if err = ie.Scg_Response.Encode(w); err != nil {
+			return utils.WrapError("Encode Scg_Response", err)
 		}
 	}
-	if ie.nonCriticalExtension != nil {
-		if err = ie.nonCriticalExtension.Encode(w); err != nil {
-			return utils.WrapError("Encode nonCriticalExtension", err)
+	if ie.NonCriticalExtension != nil {
+		if err = ie.NonCriticalExtension.Encode(w); err != nil {
+			return utils.WrapError("Encode NonCriticalExtension", err)
 		}
 	}
 	return nil
@@ -33,24 +33,24 @@ func (ie *RRCReconfigurationComplete_v1560_IEs) Encode(w *uper.UperWriter) error
 
 func (ie *RRCReconfigurationComplete_v1560_IEs) Decode(r *uper.UperReader) error {
 	var err error
-	var scg_ResponsePresent bool
-	if scg_ResponsePresent, err = r.ReadBool(); err != nil {
+	var Scg_ResponsePresent bool
+	if Scg_ResponsePresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var nonCriticalExtensionPresent bool
-	if nonCriticalExtensionPresent, err = r.ReadBool(); err != nil {
+	var NonCriticalExtensionPresent bool
+	if NonCriticalExtensionPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	if scg_ResponsePresent {
-		ie.scg_Response = new(RRCReconfigurationComplete_v1560_IEs_scg_Response)
-		if err = ie.scg_Response.Decode(r); err != nil {
-			return utils.WrapError("Decode scg_Response", err)
+	if Scg_ResponsePresent {
+		ie.Scg_Response = new(RRCReconfigurationComplete_v1560_IEs_scg_Response)
+		if err = ie.Scg_Response.Decode(r); err != nil {
+			return utils.WrapError("Decode Scg_Response", err)
 		}
 	}
-	if nonCriticalExtensionPresent {
-		ie.nonCriticalExtension = new(RRCReconfigurationComplete_v1610_IEs)
-		if err = ie.nonCriticalExtension.Decode(r); err != nil {
-			return utils.WrapError("Decode nonCriticalExtension", err)
+	if NonCriticalExtensionPresent {
+		ie.NonCriticalExtension = new(RRCReconfigurationComplete_v1610_IEs)
+		if err = ie.NonCriticalExtension.Decode(r); err != nil {
+			return utils.WrapError("Decode NonCriticalExtension", err)
 		}
 	}
 	return nil

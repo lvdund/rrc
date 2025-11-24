@@ -6,21 +6,21 @@ import (
 )
 
 type UL_CCCH1_Message struct {
-	message UL_CCCH1_MessageType `madatory`
+	Message UL_CCCH1_MessageType `madatory`
 }
 
 func (ie *UL_CCCH1_Message) Encode(w *uper.UperWriter) error {
 	var err error
-	if err = ie.message.Encode(w); err != nil {
-		return utils.WrapError("Encode message", err)
+	if err = ie.Message.Encode(w); err != nil {
+		return utils.WrapError("Encode Message", err)
 	}
 	return nil
 }
 
 func (ie *UL_CCCH1_Message) Decode(r *uper.UperReader) error {
 	var err error
-	if err = ie.message.Decode(r); err != nil {
-		return utils.WrapError("Decode message", err)
+	if err = ie.Message.Decode(r); err != nil {
+		return utils.WrapError("Decode Message", err)
 	}
 	return nil
 }

@@ -9,14 +9,14 @@ import (
 
 const (
 	CodebookConfig_r17_codebookType_type1_typeI_SinglePanel_Group2_r17_nrOfAntennaPorts_Choice_nothing uint64 = iota
-	CodebookConfig_r17_codebookType_type1_typeI_SinglePanel_Group2_r17_nrOfAntennaPorts_Choice_two
-	CodebookConfig_r17_codebookType_type1_typeI_SinglePanel_Group2_r17_nrOfAntennaPorts_Choice_moreThanTwo
+	CodebookConfig_r17_codebookType_type1_typeI_SinglePanel_Group2_r17_nrOfAntennaPorts_Choice_Two
+	CodebookConfig_r17_codebookType_type1_typeI_SinglePanel_Group2_r17_nrOfAntennaPorts_Choice_MoreThanTwo
 )
 
 type CodebookConfig_r17_codebookType_type1_typeI_SinglePanel_Group2_r17_nrOfAntennaPorts struct {
 	Choice      uint64
-	two         *CodebookConfig_r17_codebookType_type1_typeI_SinglePanel_Group2_r17_nrOfAntennaPorts_two
-	moreThanTwo *CodebookConfig_r17_codebookType_type1_typeI_SinglePanel_Group2_r17_nrOfAntennaPorts_moreThanTwo
+	Two         *CodebookConfig_r17_codebookType_type1_typeI_SinglePanel_Group2_r17_nrOfAntennaPorts_two
+	MoreThanTwo *CodebookConfig_r17_codebookType_type1_typeI_SinglePanel_Group2_r17_nrOfAntennaPorts_moreThanTwo
 }
 
 func (ie *CodebookConfig_r17_codebookType_type1_typeI_SinglePanel_Group2_r17_nrOfAntennaPorts) Encode(w *uper.UperWriter) error {
@@ -25,13 +25,13 @@ func (ie *CodebookConfig_r17_codebookType_type1_typeI_SinglePanel_Group2_r17_nrO
 		return err
 	}
 	switch ie.Choice {
-	case CodebookConfig_r17_codebookType_type1_typeI_SinglePanel_Group2_r17_nrOfAntennaPorts_Choice_two:
-		if err = ie.two.Encode(w); err != nil {
-			err = utils.WrapError("Encode two", err)
+	case CodebookConfig_r17_codebookType_type1_typeI_SinglePanel_Group2_r17_nrOfAntennaPorts_Choice_Two:
+		if err = ie.Two.Encode(w); err != nil {
+			err = utils.WrapError("Encode Two", err)
 		}
-	case CodebookConfig_r17_codebookType_type1_typeI_SinglePanel_Group2_r17_nrOfAntennaPorts_Choice_moreThanTwo:
-		if err = ie.moreThanTwo.Encode(w); err != nil {
-			err = utils.WrapError("Encode moreThanTwo", err)
+	case CodebookConfig_r17_codebookType_type1_typeI_SinglePanel_Group2_r17_nrOfAntennaPorts_Choice_MoreThanTwo:
+		if err = ie.MoreThanTwo.Encode(w); err != nil {
+			err = utils.WrapError("Encode MoreThanTwo", err)
 		}
 	default:
 		err = fmt.Errorf("invalid choice: %d", ie.Choice)
@@ -45,15 +45,15 @@ func (ie *CodebookConfig_r17_codebookType_type1_typeI_SinglePanel_Group2_r17_nrO
 		return err
 	}
 	switch ie.Choice {
-	case CodebookConfig_r17_codebookType_type1_typeI_SinglePanel_Group2_r17_nrOfAntennaPorts_Choice_two:
-		ie.two = new(CodebookConfig_r17_codebookType_type1_typeI_SinglePanel_Group2_r17_nrOfAntennaPorts_two)
-		if err = ie.two.Decode(r); err != nil {
-			return utils.WrapError("Decode two", err)
+	case CodebookConfig_r17_codebookType_type1_typeI_SinglePanel_Group2_r17_nrOfAntennaPorts_Choice_Two:
+		ie.Two = new(CodebookConfig_r17_codebookType_type1_typeI_SinglePanel_Group2_r17_nrOfAntennaPorts_two)
+		if err = ie.Two.Decode(r); err != nil {
+			return utils.WrapError("Decode Two", err)
 		}
-	case CodebookConfig_r17_codebookType_type1_typeI_SinglePanel_Group2_r17_nrOfAntennaPorts_Choice_moreThanTwo:
-		ie.moreThanTwo = new(CodebookConfig_r17_codebookType_type1_typeI_SinglePanel_Group2_r17_nrOfAntennaPorts_moreThanTwo)
-		if err = ie.moreThanTwo.Decode(r); err != nil {
-			return utils.WrapError("Decode moreThanTwo", err)
+	case CodebookConfig_r17_codebookType_type1_typeI_SinglePanel_Group2_r17_nrOfAntennaPorts_Choice_MoreThanTwo:
+		ie.MoreThanTwo = new(CodebookConfig_r17_codebookType_type1_typeI_SinglePanel_Group2_r17_nrOfAntennaPorts_moreThanTwo)
+		if err = ie.MoreThanTwo.Decode(r); err != nil {
+			return utils.WrapError("Decode MoreThanTwo", err)
 		}
 	default:
 		return fmt.Errorf("invalid choice: %d", ie.Choice)

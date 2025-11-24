@@ -6,30 +6,30 @@ import (
 )
 
 type SL_MappingToAddMod_r17 struct {
-	sl_RemoteUE_RB_Identity_r17 SL_RemoteUE_RB_Identity_r17 `madatory`
-	sl_EgressRLC_ChannelUu_r17  *Uu_RelayRLC_ChannelID_r17  `optional`
-	sl_EgressRLC_ChannelPC5_r17 *SL_RLC_ChannelID_r17       `optional`
+	Sl_RemoteUE_RB_Identity_r17 SL_RemoteUE_RB_Identity_r17 `madatory`
+	Sl_EgressRLC_ChannelUu_r17  *Uu_RelayRLC_ChannelID_r17  `optional`
+	Sl_EgressRLC_ChannelPC5_r17 *SL_RLC_ChannelID_r17       `optional`
 }
 
 func (ie *SL_MappingToAddMod_r17) Encode(w *uper.UperWriter) error {
 	var err error
-	preambleBits := []bool{ie.sl_EgressRLC_ChannelUu_r17 != nil, ie.sl_EgressRLC_ChannelPC5_r17 != nil}
+	preambleBits := []bool{ie.Sl_EgressRLC_ChannelUu_r17 != nil, ie.Sl_EgressRLC_ChannelPC5_r17 != nil}
 	for _, bit := range preambleBits {
 		if err = w.WriteBool(bit); err != nil {
 			return err
 		}
 	}
-	if err = ie.sl_RemoteUE_RB_Identity_r17.Encode(w); err != nil {
-		return utils.WrapError("Encode sl_RemoteUE_RB_Identity_r17", err)
+	if err = ie.Sl_RemoteUE_RB_Identity_r17.Encode(w); err != nil {
+		return utils.WrapError("Encode Sl_RemoteUE_RB_Identity_r17", err)
 	}
-	if ie.sl_EgressRLC_ChannelUu_r17 != nil {
-		if err = ie.sl_EgressRLC_ChannelUu_r17.Encode(w); err != nil {
-			return utils.WrapError("Encode sl_EgressRLC_ChannelUu_r17", err)
+	if ie.Sl_EgressRLC_ChannelUu_r17 != nil {
+		if err = ie.Sl_EgressRLC_ChannelUu_r17.Encode(w); err != nil {
+			return utils.WrapError("Encode Sl_EgressRLC_ChannelUu_r17", err)
 		}
 	}
-	if ie.sl_EgressRLC_ChannelPC5_r17 != nil {
-		if err = ie.sl_EgressRLC_ChannelPC5_r17.Encode(w); err != nil {
-			return utils.WrapError("Encode sl_EgressRLC_ChannelPC5_r17", err)
+	if ie.Sl_EgressRLC_ChannelPC5_r17 != nil {
+		if err = ie.Sl_EgressRLC_ChannelPC5_r17.Encode(w); err != nil {
+			return utils.WrapError("Encode Sl_EgressRLC_ChannelPC5_r17", err)
 		}
 	}
 	return nil
@@ -37,27 +37,27 @@ func (ie *SL_MappingToAddMod_r17) Encode(w *uper.UperWriter) error {
 
 func (ie *SL_MappingToAddMod_r17) Decode(r *uper.UperReader) error {
 	var err error
-	var sl_EgressRLC_ChannelUu_r17Present bool
-	if sl_EgressRLC_ChannelUu_r17Present, err = r.ReadBool(); err != nil {
+	var Sl_EgressRLC_ChannelUu_r17Present bool
+	if Sl_EgressRLC_ChannelUu_r17Present, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var sl_EgressRLC_ChannelPC5_r17Present bool
-	if sl_EgressRLC_ChannelPC5_r17Present, err = r.ReadBool(); err != nil {
+	var Sl_EgressRLC_ChannelPC5_r17Present bool
+	if Sl_EgressRLC_ChannelPC5_r17Present, err = r.ReadBool(); err != nil {
 		return err
 	}
-	if err = ie.sl_RemoteUE_RB_Identity_r17.Decode(r); err != nil {
-		return utils.WrapError("Decode sl_RemoteUE_RB_Identity_r17", err)
+	if err = ie.Sl_RemoteUE_RB_Identity_r17.Decode(r); err != nil {
+		return utils.WrapError("Decode Sl_RemoteUE_RB_Identity_r17", err)
 	}
-	if sl_EgressRLC_ChannelUu_r17Present {
-		ie.sl_EgressRLC_ChannelUu_r17 = new(Uu_RelayRLC_ChannelID_r17)
-		if err = ie.sl_EgressRLC_ChannelUu_r17.Decode(r); err != nil {
-			return utils.WrapError("Decode sl_EgressRLC_ChannelUu_r17", err)
+	if Sl_EgressRLC_ChannelUu_r17Present {
+		ie.Sl_EgressRLC_ChannelUu_r17 = new(Uu_RelayRLC_ChannelID_r17)
+		if err = ie.Sl_EgressRLC_ChannelUu_r17.Decode(r); err != nil {
+			return utils.WrapError("Decode Sl_EgressRLC_ChannelUu_r17", err)
 		}
 	}
-	if sl_EgressRLC_ChannelPC5_r17Present {
-		ie.sl_EgressRLC_ChannelPC5_r17 = new(SL_RLC_ChannelID_r17)
-		if err = ie.sl_EgressRLC_ChannelPC5_r17.Decode(r); err != nil {
-			return utils.WrapError("Decode sl_EgressRLC_ChannelPC5_r17", err)
+	if Sl_EgressRLC_ChannelPC5_r17Present {
+		ie.Sl_EgressRLC_ChannelPC5_r17 = new(SL_RLC_ChannelID_r17)
+		if err = ie.Sl_EgressRLC_ChannelPC5_r17.Decode(r); err != nil {
+			return utils.WrapError("Decode Sl_EgressRLC_ChannelPC5_r17", err)
 		}
 	}
 	return nil

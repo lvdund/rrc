@@ -8,45 +8,45 @@ import (
 )
 
 type AS_Context struct {
-	reestablishmentInfo              *ReestablishmentInfo          `optional`
-	configRestrictInfo               *ConfigRestrictInfoSCG        `optional`
-	ran_NotificationAreaInfo         *RAN_NotificationAreaInfo     `optional,ext-1`
-	ueAssistanceInformation          *[]byte                       `optional,ext-2`
-	selectedBandCombinationSN        *BandCombinationInfoSN        `optional,ext-3`
-	configRestrictInfoDAPS_r16       *ConfigRestrictInfoDAPS_r16   `optional,ext-4`
-	sidelinkUEInformationNR_r16      *[]byte                       `optional,ext-4`
-	sidelinkUEInformationEUTRA_r16   *[]byte                       `optional,ext-4`
-	ueAssistanceInformationEUTRA_r16 *[]byte                       `optional,ext-4`
-	ueAssistanceInformationSCG_r16   *[]byte                       `optional,ext-4`
-	needForGapsInfoNR_r16            *NeedForGapsInfoNR_r16        `optional,ext-4`
-	configRestrictInfoDAPS_v1640     *ConfigRestrictInfoDAPS_v1640 `optional,ext-5`
-	needForGapNCSG_InfoNR_r17        *NeedForGapNCSG_InfoNR_r17    `optional,ext-6`
-	needForGapNCSG_InfoEUTRA_r17     *NeedForGapNCSG_InfoEUTRA_r17 `optional,ext-6`
-	mbsInterestIndication_r17        *[]byte                       `optional,ext-6`
+	ReestablishmentInfo              *ReestablishmentInfo          `optional`
+	ConfigRestrictInfo               *ConfigRestrictInfoSCG        `optional`
+	Ran_NotificationAreaInfo         *RAN_NotificationAreaInfo     `optional,ext-1`
+	UeAssistanceInformation          *[]byte                       `optional,ext-2`
+	SelectedBandCombinationSN        *BandCombinationInfoSN        `optional,ext-3`
+	ConfigRestrictInfoDAPS_r16       *ConfigRestrictInfoDAPS_r16   `optional,ext-4`
+	SidelinkUEInformationNR_r16      *[]byte                       `optional,ext-4`
+	SidelinkUEInformationEUTRA_r16   *[]byte                       `optional,ext-4`
+	UeAssistanceInformationEUTRA_r16 *[]byte                       `optional,ext-4`
+	UeAssistanceInformationSCG_r16   *[]byte                       `optional,ext-4`
+	NeedForGapsInfoNR_r16            *NeedForGapsInfoNR_r16        `optional,ext-4`
+	ConfigRestrictInfoDAPS_v1640     *ConfigRestrictInfoDAPS_v1640 `optional,ext-5`
+	NeedForGapNCSG_InfoNR_r17        *NeedForGapNCSG_InfoNR_r17    `optional,ext-6`
+	NeedForGapNCSG_InfoEUTRA_r17     *NeedForGapNCSG_InfoEUTRA_r17 `optional,ext-6`
+	MbsInterestIndication_r17        *[]byte                       `optional,ext-6`
 }
 
 func (ie *AS_Context) Encode(w *uper.UperWriter) error {
 	var err error
-	hasExtensions := ie.ran_NotificationAreaInfo != nil || ie.ueAssistanceInformation != nil || ie.selectedBandCombinationSN != nil || ie.configRestrictInfoDAPS_r16 != nil || ie.sidelinkUEInformationNR_r16 != nil || ie.sidelinkUEInformationEUTRA_r16 != nil || ie.ueAssistanceInformationEUTRA_r16 != nil || ie.ueAssistanceInformationSCG_r16 != nil || ie.needForGapsInfoNR_r16 != nil || ie.configRestrictInfoDAPS_v1640 != nil || ie.needForGapNCSG_InfoNR_r17 != nil || ie.needForGapNCSG_InfoEUTRA_r17 != nil || ie.mbsInterestIndication_r17 != nil
-	preambleBits := []bool{hasExtensions, ie.reestablishmentInfo != nil, ie.configRestrictInfo != nil}
+	hasExtensions := ie.Ran_NotificationAreaInfo != nil || ie.UeAssistanceInformation != nil || ie.SelectedBandCombinationSN != nil || ie.ConfigRestrictInfoDAPS_r16 != nil || ie.SidelinkUEInformationNR_r16 != nil || ie.SidelinkUEInformationEUTRA_r16 != nil || ie.UeAssistanceInformationEUTRA_r16 != nil || ie.UeAssistanceInformationSCG_r16 != nil || ie.NeedForGapsInfoNR_r16 != nil || ie.ConfigRestrictInfoDAPS_v1640 != nil || ie.NeedForGapNCSG_InfoNR_r17 != nil || ie.NeedForGapNCSG_InfoEUTRA_r17 != nil || ie.MbsInterestIndication_r17 != nil
+	preambleBits := []bool{hasExtensions, ie.ReestablishmentInfo != nil, ie.ConfigRestrictInfo != nil}
 	for _, bit := range preambleBits {
 		if err = w.WriteBool(bit); err != nil {
 			return err
 		}
 	}
-	if ie.reestablishmentInfo != nil {
-		if err = ie.reestablishmentInfo.Encode(w); err != nil {
-			return utils.WrapError("Encode reestablishmentInfo", err)
+	if ie.ReestablishmentInfo != nil {
+		if err = ie.ReestablishmentInfo.Encode(w); err != nil {
+			return utils.WrapError("Encode ReestablishmentInfo", err)
 		}
 	}
-	if ie.configRestrictInfo != nil {
-		if err = ie.configRestrictInfo.Encode(w); err != nil {
-			return utils.WrapError("Encode configRestrictInfo", err)
+	if ie.ConfigRestrictInfo != nil {
+		if err = ie.ConfigRestrictInfo.Encode(w); err != nil {
+			return utils.WrapError("Encode ConfigRestrictInfo", err)
 		}
 	}
 	if hasExtensions {
 		// Extension bitmap: 6 bits for 6 extension groups
-		extBitmap := []bool{ie.ran_NotificationAreaInfo != nil, ie.ueAssistanceInformation != nil, ie.selectedBandCombinationSN != nil, ie.configRestrictInfoDAPS_r16 != nil || ie.sidelinkUEInformationNR_r16 != nil || ie.sidelinkUEInformationEUTRA_r16 != nil || ie.ueAssistanceInformationEUTRA_r16 != nil || ie.ueAssistanceInformationSCG_r16 != nil || ie.needForGapsInfoNR_r16 != nil, ie.configRestrictInfoDAPS_v1640 != nil, ie.needForGapNCSG_InfoNR_r17 != nil || ie.needForGapNCSG_InfoEUTRA_r17 != nil || ie.mbsInterestIndication_r17 != nil}
+		extBitmap := []bool{ie.Ran_NotificationAreaInfo != nil, ie.UeAssistanceInformation != nil, ie.SelectedBandCombinationSN != nil, ie.ConfigRestrictInfoDAPS_r16 != nil || ie.SidelinkUEInformationNR_r16 != nil || ie.SidelinkUEInformationEUTRA_r16 != nil || ie.UeAssistanceInformationEUTRA_r16 != nil || ie.UeAssistanceInformationSCG_r16 != nil || ie.NeedForGapsInfoNR_r16 != nil, ie.ConfigRestrictInfoDAPS_v1640 != nil, ie.NeedForGapNCSG_InfoNR_r17 != nil || ie.NeedForGapNCSG_InfoEUTRA_r17 != nil || ie.MbsInterestIndication_r17 != nil}
 		if err := w.WriteExtBitMap(extBitmap); err != nil {
 			return utils.WrapError("WriteExtBitMap AS_Context", err)
 		}
@@ -57,17 +57,17 @@ func (ie *AS_Context) Encode(w *uper.UperWriter) error {
 			extWriter := uper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 1
-			optionals_ext_1 := []bool{ie.ran_NotificationAreaInfo != nil}
+			optionals_ext_1 := []bool{ie.Ran_NotificationAreaInfo != nil}
 			for _, bit := range optionals_ext_1 {
 				if err := extWriter.WriteBool(bit); err != nil {
 					return err
 				}
 			}
 
-			// encode ran_NotificationAreaInfo optional
-			if ie.ran_NotificationAreaInfo != nil {
-				if err = ie.ran_NotificationAreaInfo.Encode(extWriter); err != nil {
-					return utils.WrapError("Encode ran_NotificationAreaInfo", err)
+			// encode Ran_NotificationAreaInfo optional
+			if ie.Ran_NotificationAreaInfo != nil {
+				if err = ie.Ran_NotificationAreaInfo.Encode(extWriter); err != nil {
+					return utils.WrapError("Encode Ran_NotificationAreaInfo", err)
 				}
 			}
 
@@ -86,17 +86,17 @@ func (ie *AS_Context) Encode(w *uper.UperWriter) error {
 			extWriter := uper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 2
-			optionals_ext_2 := []bool{ie.ueAssistanceInformation != nil}
+			optionals_ext_2 := []bool{ie.UeAssistanceInformation != nil}
 			for _, bit := range optionals_ext_2 {
 				if err := extWriter.WriteBool(bit); err != nil {
 					return err
 				}
 			}
 
-			// encode ueAssistanceInformation optional
-			if ie.ueAssistanceInformation != nil {
-				if err = extWriter.WriteOctetString(*ie.ueAssistanceInformation, &uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
-					return utils.WrapError("Encode ueAssistanceInformation", err)
+			// encode UeAssistanceInformation optional
+			if ie.UeAssistanceInformation != nil {
+				if err = extWriter.WriteOctetString(*ie.UeAssistanceInformation, &uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+					return utils.WrapError("Encode UeAssistanceInformation", err)
 				}
 			}
 
@@ -115,17 +115,17 @@ func (ie *AS_Context) Encode(w *uper.UperWriter) error {
 			extWriter := uper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 3
-			optionals_ext_3 := []bool{ie.selectedBandCombinationSN != nil}
+			optionals_ext_3 := []bool{ie.SelectedBandCombinationSN != nil}
 			for _, bit := range optionals_ext_3 {
 				if err := extWriter.WriteBool(bit); err != nil {
 					return err
 				}
 			}
 
-			// encode selectedBandCombinationSN optional
-			if ie.selectedBandCombinationSN != nil {
-				if err = ie.selectedBandCombinationSN.Encode(extWriter); err != nil {
-					return utils.WrapError("Encode selectedBandCombinationSN", err)
+			// encode SelectedBandCombinationSN optional
+			if ie.SelectedBandCombinationSN != nil {
+				if err = ie.SelectedBandCombinationSN.Encode(extWriter); err != nil {
+					return utils.WrapError("Encode SelectedBandCombinationSN", err)
 				}
 			}
 
@@ -144,47 +144,47 @@ func (ie *AS_Context) Encode(w *uper.UperWriter) error {
 			extWriter := uper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 4
-			optionals_ext_4 := []bool{ie.configRestrictInfoDAPS_r16 != nil, ie.sidelinkUEInformationNR_r16 != nil, ie.sidelinkUEInformationEUTRA_r16 != nil, ie.ueAssistanceInformationEUTRA_r16 != nil, ie.ueAssistanceInformationSCG_r16 != nil, ie.needForGapsInfoNR_r16 != nil}
+			optionals_ext_4 := []bool{ie.ConfigRestrictInfoDAPS_r16 != nil, ie.SidelinkUEInformationNR_r16 != nil, ie.SidelinkUEInformationEUTRA_r16 != nil, ie.UeAssistanceInformationEUTRA_r16 != nil, ie.UeAssistanceInformationSCG_r16 != nil, ie.NeedForGapsInfoNR_r16 != nil}
 			for _, bit := range optionals_ext_4 {
 				if err := extWriter.WriteBool(bit); err != nil {
 					return err
 				}
 			}
 
-			// encode configRestrictInfoDAPS_r16 optional
-			if ie.configRestrictInfoDAPS_r16 != nil {
-				if err = ie.configRestrictInfoDAPS_r16.Encode(extWriter); err != nil {
-					return utils.WrapError("Encode configRestrictInfoDAPS_r16", err)
+			// encode ConfigRestrictInfoDAPS_r16 optional
+			if ie.ConfigRestrictInfoDAPS_r16 != nil {
+				if err = ie.ConfigRestrictInfoDAPS_r16.Encode(extWriter); err != nil {
+					return utils.WrapError("Encode ConfigRestrictInfoDAPS_r16", err)
 				}
 			}
-			// encode sidelinkUEInformationNR_r16 optional
-			if ie.sidelinkUEInformationNR_r16 != nil {
-				if err = extWriter.WriteOctetString(*ie.sidelinkUEInformationNR_r16, &uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
-					return utils.WrapError("Encode sidelinkUEInformationNR_r16", err)
+			// encode SidelinkUEInformationNR_r16 optional
+			if ie.SidelinkUEInformationNR_r16 != nil {
+				if err = extWriter.WriteOctetString(*ie.SidelinkUEInformationNR_r16, &uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+					return utils.WrapError("Encode SidelinkUEInformationNR_r16", err)
 				}
 			}
-			// encode sidelinkUEInformationEUTRA_r16 optional
-			if ie.sidelinkUEInformationEUTRA_r16 != nil {
-				if err = extWriter.WriteOctetString(*ie.sidelinkUEInformationEUTRA_r16, &uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
-					return utils.WrapError("Encode sidelinkUEInformationEUTRA_r16", err)
+			// encode SidelinkUEInformationEUTRA_r16 optional
+			if ie.SidelinkUEInformationEUTRA_r16 != nil {
+				if err = extWriter.WriteOctetString(*ie.SidelinkUEInformationEUTRA_r16, &uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+					return utils.WrapError("Encode SidelinkUEInformationEUTRA_r16", err)
 				}
 			}
-			// encode ueAssistanceInformationEUTRA_r16 optional
-			if ie.ueAssistanceInformationEUTRA_r16 != nil {
-				if err = extWriter.WriteOctetString(*ie.ueAssistanceInformationEUTRA_r16, &uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
-					return utils.WrapError("Encode ueAssistanceInformationEUTRA_r16", err)
+			// encode UeAssistanceInformationEUTRA_r16 optional
+			if ie.UeAssistanceInformationEUTRA_r16 != nil {
+				if err = extWriter.WriteOctetString(*ie.UeAssistanceInformationEUTRA_r16, &uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+					return utils.WrapError("Encode UeAssistanceInformationEUTRA_r16", err)
 				}
 			}
-			// encode ueAssistanceInformationSCG_r16 optional
-			if ie.ueAssistanceInformationSCG_r16 != nil {
-				if err = extWriter.WriteOctetString(*ie.ueAssistanceInformationSCG_r16, &uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
-					return utils.WrapError("Encode ueAssistanceInformationSCG_r16", err)
+			// encode UeAssistanceInformationSCG_r16 optional
+			if ie.UeAssistanceInformationSCG_r16 != nil {
+				if err = extWriter.WriteOctetString(*ie.UeAssistanceInformationSCG_r16, &uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+					return utils.WrapError("Encode UeAssistanceInformationSCG_r16", err)
 				}
 			}
-			// encode needForGapsInfoNR_r16 optional
-			if ie.needForGapsInfoNR_r16 != nil {
-				if err = ie.needForGapsInfoNR_r16.Encode(extWriter); err != nil {
-					return utils.WrapError("Encode needForGapsInfoNR_r16", err)
+			// encode NeedForGapsInfoNR_r16 optional
+			if ie.NeedForGapsInfoNR_r16 != nil {
+				if err = ie.NeedForGapsInfoNR_r16.Encode(extWriter); err != nil {
+					return utils.WrapError("Encode NeedForGapsInfoNR_r16", err)
 				}
 			}
 
@@ -203,17 +203,17 @@ func (ie *AS_Context) Encode(w *uper.UperWriter) error {
 			extWriter := uper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 5
-			optionals_ext_5 := []bool{ie.configRestrictInfoDAPS_v1640 != nil}
+			optionals_ext_5 := []bool{ie.ConfigRestrictInfoDAPS_v1640 != nil}
 			for _, bit := range optionals_ext_5 {
 				if err := extWriter.WriteBool(bit); err != nil {
 					return err
 				}
 			}
 
-			// encode configRestrictInfoDAPS_v1640 optional
-			if ie.configRestrictInfoDAPS_v1640 != nil {
-				if err = ie.configRestrictInfoDAPS_v1640.Encode(extWriter); err != nil {
-					return utils.WrapError("Encode configRestrictInfoDAPS_v1640", err)
+			// encode ConfigRestrictInfoDAPS_v1640 optional
+			if ie.ConfigRestrictInfoDAPS_v1640 != nil {
+				if err = ie.ConfigRestrictInfoDAPS_v1640.Encode(extWriter); err != nil {
+					return utils.WrapError("Encode ConfigRestrictInfoDAPS_v1640", err)
 				}
 			}
 
@@ -232,29 +232,29 @@ func (ie *AS_Context) Encode(w *uper.UperWriter) error {
 			extWriter := uper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 6
-			optionals_ext_6 := []bool{ie.needForGapNCSG_InfoNR_r17 != nil, ie.needForGapNCSG_InfoEUTRA_r17 != nil, ie.mbsInterestIndication_r17 != nil}
+			optionals_ext_6 := []bool{ie.NeedForGapNCSG_InfoNR_r17 != nil, ie.NeedForGapNCSG_InfoEUTRA_r17 != nil, ie.MbsInterestIndication_r17 != nil}
 			for _, bit := range optionals_ext_6 {
 				if err := extWriter.WriteBool(bit); err != nil {
 					return err
 				}
 			}
 
-			// encode needForGapNCSG_InfoNR_r17 optional
-			if ie.needForGapNCSG_InfoNR_r17 != nil {
-				if err = ie.needForGapNCSG_InfoNR_r17.Encode(extWriter); err != nil {
-					return utils.WrapError("Encode needForGapNCSG_InfoNR_r17", err)
+			// encode NeedForGapNCSG_InfoNR_r17 optional
+			if ie.NeedForGapNCSG_InfoNR_r17 != nil {
+				if err = ie.NeedForGapNCSG_InfoNR_r17.Encode(extWriter); err != nil {
+					return utils.WrapError("Encode NeedForGapNCSG_InfoNR_r17", err)
 				}
 			}
-			// encode needForGapNCSG_InfoEUTRA_r17 optional
-			if ie.needForGapNCSG_InfoEUTRA_r17 != nil {
-				if err = ie.needForGapNCSG_InfoEUTRA_r17.Encode(extWriter); err != nil {
-					return utils.WrapError("Encode needForGapNCSG_InfoEUTRA_r17", err)
+			// encode NeedForGapNCSG_InfoEUTRA_r17 optional
+			if ie.NeedForGapNCSG_InfoEUTRA_r17 != nil {
+				if err = ie.NeedForGapNCSG_InfoEUTRA_r17.Encode(extWriter); err != nil {
+					return utils.WrapError("Encode NeedForGapNCSG_InfoEUTRA_r17", err)
 				}
 			}
-			// encode mbsInterestIndication_r17 optional
-			if ie.mbsInterestIndication_r17 != nil {
-				if err = extWriter.WriteOctetString(*ie.mbsInterestIndication_r17, &uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
-					return utils.WrapError("Encode mbsInterestIndication_r17", err)
+			// encode MbsInterestIndication_r17 optional
+			if ie.MbsInterestIndication_r17 != nil {
+				if err = extWriter.WriteOctetString(*ie.MbsInterestIndication_r17, &uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+					return utils.WrapError("Encode MbsInterestIndication_r17", err)
 				}
 			}
 
@@ -276,24 +276,24 @@ func (ie *AS_Context) Decode(r *uper.UperReader) error {
 	if extensionBit, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var reestablishmentInfoPresent bool
-	if reestablishmentInfoPresent, err = r.ReadBool(); err != nil {
+	var ReestablishmentInfoPresent bool
+	if ReestablishmentInfoPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var configRestrictInfoPresent bool
-	if configRestrictInfoPresent, err = r.ReadBool(); err != nil {
+	var ConfigRestrictInfoPresent bool
+	if ConfigRestrictInfoPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	if reestablishmentInfoPresent {
-		ie.reestablishmentInfo = new(ReestablishmentInfo)
-		if err = ie.reestablishmentInfo.Decode(r); err != nil {
-			return utils.WrapError("Decode reestablishmentInfo", err)
+	if ReestablishmentInfoPresent {
+		ie.ReestablishmentInfo = new(ReestablishmentInfo)
+		if err = ie.ReestablishmentInfo.Decode(r); err != nil {
+			return utils.WrapError("Decode ReestablishmentInfo", err)
 		}
 	}
-	if configRestrictInfoPresent {
-		ie.configRestrictInfo = new(ConfigRestrictInfoSCG)
-		if err = ie.configRestrictInfo.Decode(r); err != nil {
-			return utils.WrapError("Decode configRestrictInfo", err)
+	if ConfigRestrictInfoPresent {
+		ie.ConfigRestrictInfo = new(ConfigRestrictInfoSCG)
+		if err = ie.ConfigRestrictInfo.Decode(r); err != nil {
+			return utils.WrapError("Decode ConfigRestrictInfo", err)
 		}
 	}
 
@@ -313,15 +313,15 @@ func (ie *AS_Context) Decode(r *uper.UperReader) error {
 
 			extReader := uper.NewReader(bytes.NewReader(extBytes))
 
-			ran_NotificationAreaInfoPresent, err := extReader.ReadBool()
+			Ran_NotificationAreaInfoPresent, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			// decode ran_NotificationAreaInfo optional
-			if ran_NotificationAreaInfoPresent {
-				ie.ran_NotificationAreaInfo = new(RAN_NotificationAreaInfo)
-				if err = ie.ran_NotificationAreaInfo.Decode(extReader); err != nil {
-					return utils.WrapError("Decode ran_NotificationAreaInfo", err)
+			// decode Ran_NotificationAreaInfo optional
+			if Ran_NotificationAreaInfoPresent {
+				ie.Ran_NotificationAreaInfo = new(RAN_NotificationAreaInfo)
+				if err = ie.Ran_NotificationAreaInfo.Decode(extReader); err != nil {
+					return utils.WrapError("Decode Ran_NotificationAreaInfo", err)
 				}
 			}
 		}
@@ -334,17 +334,17 @@ func (ie *AS_Context) Decode(r *uper.UperReader) error {
 
 			extReader := uper.NewReader(bytes.NewReader(extBytes))
 
-			ueAssistanceInformationPresent, err := extReader.ReadBool()
+			UeAssistanceInformationPresent, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			// decode ueAssistanceInformation optional
-			if ueAssistanceInformationPresent {
-				var tmp_os_ueAssistanceInformation []byte
-				if tmp_os_ueAssistanceInformation, err = extReader.ReadOctetString(&uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
-					return utils.WrapError("Decode ueAssistanceInformation", err)
+			// decode UeAssistanceInformation optional
+			if UeAssistanceInformationPresent {
+				var tmp_os_UeAssistanceInformation []byte
+				if tmp_os_UeAssistanceInformation, err = extReader.ReadOctetString(&uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+					return utils.WrapError("Decode UeAssistanceInformation", err)
 				}
-				ie.ueAssistanceInformation = &tmp_os_ueAssistanceInformation
+				ie.UeAssistanceInformation = &tmp_os_UeAssistanceInformation
 			}
 		}
 		// decode extension group 3
@@ -356,15 +356,15 @@ func (ie *AS_Context) Decode(r *uper.UperReader) error {
 
 			extReader := uper.NewReader(bytes.NewReader(extBytes))
 
-			selectedBandCombinationSNPresent, err := extReader.ReadBool()
+			SelectedBandCombinationSNPresent, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			// decode selectedBandCombinationSN optional
-			if selectedBandCombinationSNPresent {
-				ie.selectedBandCombinationSN = new(BandCombinationInfoSN)
-				if err = ie.selectedBandCombinationSN.Decode(extReader); err != nil {
-					return utils.WrapError("Decode selectedBandCombinationSN", err)
+			// decode SelectedBandCombinationSN optional
+			if SelectedBandCombinationSNPresent {
+				ie.SelectedBandCombinationSN = new(BandCombinationInfoSN)
+				if err = ie.SelectedBandCombinationSN.Decode(extReader); err != nil {
+					return utils.WrapError("Decode SelectedBandCombinationSN", err)
 				}
 			}
 		}
@@ -377,74 +377,74 @@ func (ie *AS_Context) Decode(r *uper.UperReader) error {
 
 			extReader := uper.NewReader(bytes.NewReader(extBytes))
 
-			configRestrictInfoDAPS_r16Present, err := extReader.ReadBool()
+			ConfigRestrictInfoDAPS_r16Present, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			sidelinkUEInformationNR_r16Present, err := extReader.ReadBool()
+			SidelinkUEInformationNR_r16Present, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			sidelinkUEInformationEUTRA_r16Present, err := extReader.ReadBool()
+			SidelinkUEInformationEUTRA_r16Present, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			ueAssistanceInformationEUTRA_r16Present, err := extReader.ReadBool()
+			UeAssistanceInformationEUTRA_r16Present, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			ueAssistanceInformationSCG_r16Present, err := extReader.ReadBool()
+			UeAssistanceInformationSCG_r16Present, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			needForGapsInfoNR_r16Present, err := extReader.ReadBool()
+			NeedForGapsInfoNR_r16Present, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			// decode configRestrictInfoDAPS_r16 optional
-			if configRestrictInfoDAPS_r16Present {
-				ie.configRestrictInfoDAPS_r16 = new(ConfigRestrictInfoDAPS_r16)
-				if err = ie.configRestrictInfoDAPS_r16.Decode(extReader); err != nil {
-					return utils.WrapError("Decode configRestrictInfoDAPS_r16", err)
+			// decode ConfigRestrictInfoDAPS_r16 optional
+			if ConfigRestrictInfoDAPS_r16Present {
+				ie.ConfigRestrictInfoDAPS_r16 = new(ConfigRestrictInfoDAPS_r16)
+				if err = ie.ConfigRestrictInfoDAPS_r16.Decode(extReader); err != nil {
+					return utils.WrapError("Decode ConfigRestrictInfoDAPS_r16", err)
 				}
 			}
-			// decode sidelinkUEInformationNR_r16 optional
-			if sidelinkUEInformationNR_r16Present {
-				var tmp_os_sidelinkUEInformationNR_r16 []byte
-				if tmp_os_sidelinkUEInformationNR_r16, err = extReader.ReadOctetString(&uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
-					return utils.WrapError("Decode sidelinkUEInformationNR_r16", err)
+			// decode SidelinkUEInformationNR_r16 optional
+			if SidelinkUEInformationNR_r16Present {
+				var tmp_os_SidelinkUEInformationNR_r16 []byte
+				if tmp_os_SidelinkUEInformationNR_r16, err = extReader.ReadOctetString(&uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+					return utils.WrapError("Decode SidelinkUEInformationNR_r16", err)
 				}
-				ie.sidelinkUEInformationNR_r16 = &tmp_os_sidelinkUEInformationNR_r16
+				ie.SidelinkUEInformationNR_r16 = &tmp_os_SidelinkUEInformationNR_r16
 			}
-			// decode sidelinkUEInformationEUTRA_r16 optional
-			if sidelinkUEInformationEUTRA_r16Present {
-				var tmp_os_sidelinkUEInformationEUTRA_r16 []byte
-				if tmp_os_sidelinkUEInformationEUTRA_r16, err = extReader.ReadOctetString(&uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
-					return utils.WrapError("Decode sidelinkUEInformationEUTRA_r16", err)
+			// decode SidelinkUEInformationEUTRA_r16 optional
+			if SidelinkUEInformationEUTRA_r16Present {
+				var tmp_os_SidelinkUEInformationEUTRA_r16 []byte
+				if tmp_os_SidelinkUEInformationEUTRA_r16, err = extReader.ReadOctetString(&uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+					return utils.WrapError("Decode SidelinkUEInformationEUTRA_r16", err)
 				}
-				ie.sidelinkUEInformationEUTRA_r16 = &tmp_os_sidelinkUEInformationEUTRA_r16
+				ie.SidelinkUEInformationEUTRA_r16 = &tmp_os_SidelinkUEInformationEUTRA_r16
 			}
-			// decode ueAssistanceInformationEUTRA_r16 optional
-			if ueAssistanceInformationEUTRA_r16Present {
-				var tmp_os_ueAssistanceInformationEUTRA_r16 []byte
-				if tmp_os_ueAssistanceInformationEUTRA_r16, err = extReader.ReadOctetString(&uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
-					return utils.WrapError("Decode ueAssistanceInformationEUTRA_r16", err)
+			// decode UeAssistanceInformationEUTRA_r16 optional
+			if UeAssistanceInformationEUTRA_r16Present {
+				var tmp_os_UeAssistanceInformationEUTRA_r16 []byte
+				if tmp_os_UeAssistanceInformationEUTRA_r16, err = extReader.ReadOctetString(&uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+					return utils.WrapError("Decode UeAssistanceInformationEUTRA_r16", err)
 				}
-				ie.ueAssistanceInformationEUTRA_r16 = &tmp_os_ueAssistanceInformationEUTRA_r16
+				ie.UeAssistanceInformationEUTRA_r16 = &tmp_os_UeAssistanceInformationEUTRA_r16
 			}
-			// decode ueAssistanceInformationSCG_r16 optional
-			if ueAssistanceInformationSCG_r16Present {
-				var tmp_os_ueAssistanceInformationSCG_r16 []byte
-				if tmp_os_ueAssistanceInformationSCG_r16, err = extReader.ReadOctetString(&uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
-					return utils.WrapError("Decode ueAssistanceInformationSCG_r16", err)
+			// decode UeAssistanceInformationSCG_r16 optional
+			if UeAssistanceInformationSCG_r16Present {
+				var tmp_os_UeAssistanceInformationSCG_r16 []byte
+				if tmp_os_UeAssistanceInformationSCG_r16, err = extReader.ReadOctetString(&uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+					return utils.WrapError("Decode UeAssistanceInformationSCG_r16", err)
 				}
-				ie.ueAssistanceInformationSCG_r16 = &tmp_os_ueAssistanceInformationSCG_r16
+				ie.UeAssistanceInformationSCG_r16 = &tmp_os_UeAssistanceInformationSCG_r16
 			}
-			// decode needForGapsInfoNR_r16 optional
-			if needForGapsInfoNR_r16Present {
-				ie.needForGapsInfoNR_r16 = new(NeedForGapsInfoNR_r16)
-				if err = ie.needForGapsInfoNR_r16.Decode(extReader); err != nil {
-					return utils.WrapError("Decode needForGapsInfoNR_r16", err)
+			// decode NeedForGapsInfoNR_r16 optional
+			if NeedForGapsInfoNR_r16Present {
+				ie.NeedForGapsInfoNR_r16 = new(NeedForGapsInfoNR_r16)
+				if err = ie.NeedForGapsInfoNR_r16.Decode(extReader); err != nil {
+					return utils.WrapError("Decode NeedForGapsInfoNR_r16", err)
 				}
 			}
 		}
@@ -457,15 +457,15 @@ func (ie *AS_Context) Decode(r *uper.UperReader) error {
 
 			extReader := uper.NewReader(bytes.NewReader(extBytes))
 
-			configRestrictInfoDAPS_v1640Present, err := extReader.ReadBool()
+			ConfigRestrictInfoDAPS_v1640Present, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			// decode configRestrictInfoDAPS_v1640 optional
-			if configRestrictInfoDAPS_v1640Present {
-				ie.configRestrictInfoDAPS_v1640 = new(ConfigRestrictInfoDAPS_v1640)
-				if err = ie.configRestrictInfoDAPS_v1640.Decode(extReader); err != nil {
-					return utils.WrapError("Decode configRestrictInfoDAPS_v1640", err)
+			// decode ConfigRestrictInfoDAPS_v1640 optional
+			if ConfigRestrictInfoDAPS_v1640Present {
+				ie.ConfigRestrictInfoDAPS_v1640 = new(ConfigRestrictInfoDAPS_v1640)
+				if err = ie.ConfigRestrictInfoDAPS_v1640.Decode(extReader); err != nil {
+					return utils.WrapError("Decode ConfigRestrictInfoDAPS_v1640", err)
 				}
 			}
 		}
@@ -478,39 +478,39 @@ func (ie *AS_Context) Decode(r *uper.UperReader) error {
 
 			extReader := uper.NewReader(bytes.NewReader(extBytes))
 
-			needForGapNCSG_InfoNR_r17Present, err := extReader.ReadBool()
+			NeedForGapNCSG_InfoNR_r17Present, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			needForGapNCSG_InfoEUTRA_r17Present, err := extReader.ReadBool()
+			NeedForGapNCSG_InfoEUTRA_r17Present, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			mbsInterestIndication_r17Present, err := extReader.ReadBool()
+			MbsInterestIndication_r17Present, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			// decode needForGapNCSG_InfoNR_r17 optional
-			if needForGapNCSG_InfoNR_r17Present {
-				ie.needForGapNCSG_InfoNR_r17 = new(NeedForGapNCSG_InfoNR_r17)
-				if err = ie.needForGapNCSG_InfoNR_r17.Decode(extReader); err != nil {
-					return utils.WrapError("Decode needForGapNCSG_InfoNR_r17", err)
+			// decode NeedForGapNCSG_InfoNR_r17 optional
+			if NeedForGapNCSG_InfoNR_r17Present {
+				ie.NeedForGapNCSG_InfoNR_r17 = new(NeedForGapNCSG_InfoNR_r17)
+				if err = ie.NeedForGapNCSG_InfoNR_r17.Decode(extReader); err != nil {
+					return utils.WrapError("Decode NeedForGapNCSG_InfoNR_r17", err)
 				}
 			}
-			// decode needForGapNCSG_InfoEUTRA_r17 optional
-			if needForGapNCSG_InfoEUTRA_r17Present {
-				ie.needForGapNCSG_InfoEUTRA_r17 = new(NeedForGapNCSG_InfoEUTRA_r17)
-				if err = ie.needForGapNCSG_InfoEUTRA_r17.Decode(extReader); err != nil {
-					return utils.WrapError("Decode needForGapNCSG_InfoEUTRA_r17", err)
+			// decode NeedForGapNCSG_InfoEUTRA_r17 optional
+			if NeedForGapNCSG_InfoEUTRA_r17Present {
+				ie.NeedForGapNCSG_InfoEUTRA_r17 = new(NeedForGapNCSG_InfoEUTRA_r17)
+				if err = ie.NeedForGapNCSG_InfoEUTRA_r17.Decode(extReader); err != nil {
+					return utils.WrapError("Decode NeedForGapNCSG_InfoEUTRA_r17", err)
 				}
 			}
-			// decode mbsInterestIndication_r17 optional
-			if mbsInterestIndication_r17Present {
-				var tmp_os_mbsInterestIndication_r17 []byte
-				if tmp_os_mbsInterestIndication_r17, err = extReader.ReadOctetString(&uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
-					return utils.WrapError("Decode mbsInterestIndication_r17", err)
+			// decode MbsInterestIndication_r17 optional
+			if MbsInterestIndication_r17Present {
+				var tmp_os_MbsInterestIndication_r17 []byte
+				if tmp_os_MbsInterestIndication_r17, err = extReader.ReadOctetString(&uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+					return utils.WrapError("Decode MbsInterestIndication_r17", err)
 				}
-				ie.mbsInterestIndication_r17 = &tmp_os_mbsInterestIndication_r17
+				ie.MbsInterestIndication_r17 = &tmp_os_MbsInterestIndication_r17
 			}
 		}
 	}

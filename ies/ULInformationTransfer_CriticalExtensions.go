@@ -9,14 +9,14 @@ import (
 
 const (
 	ULInformationTransfer_CriticalExtensions_Choice_nothing uint64 = iota
-	ULInformationTransfer_CriticalExtensions_Choice_ulInformationTransfer
-	ULInformationTransfer_CriticalExtensions_Choice_criticalExtensionsFuture
+	ULInformationTransfer_CriticalExtensions_Choice_UlInformationTransfer
+	ULInformationTransfer_CriticalExtensions_Choice_CriticalExtensionsFuture
 )
 
 type ULInformationTransfer_CriticalExtensions struct {
 	Choice                   uint64
-	ulInformationTransfer    *ULInformationTransfer_IEs
-	criticalExtensionsFuture interface{} `madatory`
+	UlInformationTransfer    *ULInformationTransfer_IEs
+	CriticalExtensionsFuture interface{} `madatory`
 }
 
 func (ie *ULInformationTransfer_CriticalExtensions) Encode(w *uper.UperWriter) error {
@@ -25,11 +25,11 @@ func (ie *ULInformationTransfer_CriticalExtensions) Encode(w *uper.UperWriter) e
 		return err
 	}
 	switch ie.Choice {
-	case ULInformationTransfer_CriticalExtensions_Choice_ulInformationTransfer:
-		if err = ie.ulInformationTransfer.Encode(w); err != nil {
-			err = utils.WrapError("Encode ulInformationTransfer", err)
+	case ULInformationTransfer_CriticalExtensions_Choice_UlInformationTransfer:
+		if err = ie.UlInformationTransfer.Encode(w); err != nil {
+			err = utils.WrapError("Encode UlInformationTransfer", err)
 		}
-	case ULInformationTransfer_CriticalExtensions_Choice_criticalExtensionsFuture:
+	case ULInformationTransfer_CriticalExtensions_Choice_CriticalExtensionsFuture:
 		// interface{} field of choice - nothing to encode
 	default:
 		err = fmt.Errorf("invalid choice: %d", ie.Choice)
@@ -43,12 +43,12 @@ func (ie *ULInformationTransfer_CriticalExtensions) Decode(r *uper.UperReader) e
 		return err
 	}
 	switch ie.Choice {
-	case ULInformationTransfer_CriticalExtensions_Choice_ulInformationTransfer:
-		ie.ulInformationTransfer = new(ULInformationTransfer_IEs)
-		if err = ie.ulInformationTransfer.Decode(r); err != nil {
-			return utils.WrapError("Decode ulInformationTransfer", err)
+	case ULInformationTransfer_CriticalExtensions_Choice_UlInformationTransfer:
+		ie.UlInformationTransfer = new(ULInformationTransfer_IEs)
+		if err = ie.UlInformationTransfer.Decode(r); err != nil {
+			return utils.WrapError("Decode UlInformationTransfer", err)
 		}
-	case ULInformationTransfer_CriticalExtensions_Choice_criticalExtensionsFuture:
+	case ULInformationTransfer_CriticalExtensions_Choice_CriticalExtensionsFuture:
 		// interface{} field of choice - nothing to decode
 	default:
 		return fmt.Errorf("invalid choice: %d", ie.Choice)

@@ -9,14 +9,14 @@ import (
 
 const (
 	CellIdentity_EUTRA_5GC_Choice_nothing uint64 = iota
-	CellIdentity_EUTRA_5GC_Choice_cellIdentity_EUTRA
-	CellIdentity_EUTRA_5GC_Choice_cellId_index
+	CellIdentity_EUTRA_5GC_Choice_CellIdentity_EUTRA
+	CellIdentity_EUTRA_5GC_Choice_CellId_index
 )
 
 type CellIdentity_EUTRA_5GC struct {
 	Choice             uint64
-	cellIdentity_EUTRA uper.BitString `lb:28,ub:28,madatory`
-	cellId_index       int64          `lb:1,ub:maxPLMN,madatory`
+	CellIdentity_EUTRA uper.BitString `lb:28,ub:28,madatory`
+	CellId_index       int64          `lb:1,ub:maxPLMN,madatory`
 }
 
 func (ie *CellIdentity_EUTRA_5GC) Encode(w *uper.UperWriter) error {
@@ -25,13 +25,13 @@ func (ie *CellIdentity_EUTRA_5GC) Encode(w *uper.UperWriter) error {
 		return err
 	}
 	switch ie.Choice {
-	case CellIdentity_EUTRA_5GC_Choice_cellIdentity_EUTRA:
-		if err = w.WriteBitString(ie.cellIdentity_EUTRA.Bytes, uint(ie.cellIdentity_EUTRA.NumBits), &uper.Constraint{Lb: 28, Ub: 28}, false); err != nil {
-			err = utils.WrapError("Encode cellIdentity_EUTRA", err)
+	case CellIdentity_EUTRA_5GC_Choice_CellIdentity_EUTRA:
+		if err = w.WriteBitString(ie.CellIdentity_EUTRA.Bytes, uint(ie.CellIdentity_EUTRA.NumBits), &uper.Constraint{Lb: 28, Ub: 28}, false); err != nil {
+			err = utils.WrapError("Encode CellIdentity_EUTRA", err)
 		}
-	case CellIdentity_EUTRA_5GC_Choice_cellId_index:
-		if err = w.WriteInteger(int64(ie.cellId_index), &uper.Constraint{Lb: 1, Ub: maxPLMN}, false); err != nil {
-			err = utils.WrapError("Encode cellId_index", err)
+	case CellIdentity_EUTRA_5GC_Choice_CellId_index:
+		if err = w.WriteInteger(int64(ie.CellId_index), &uper.Constraint{Lb: 1, Ub: maxPLMN}, false); err != nil {
+			err = utils.WrapError("Encode CellId_index", err)
 		}
 	default:
 		err = fmt.Errorf("invalid choice: %d", ie.Choice)
@@ -45,22 +45,22 @@ func (ie *CellIdentity_EUTRA_5GC) Decode(r *uper.UperReader) error {
 		return err
 	}
 	switch ie.Choice {
-	case CellIdentity_EUTRA_5GC_Choice_cellIdentity_EUTRA:
-		var tmp_bs_cellIdentity_EUTRA []byte
-		var n_cellIdentity_EUTRA uint
-		if tmp_bs_cellIdentity_EUTRA, n_cellIdentity_EUTRA, err = r.ReadBitString(&uper.Constraint{Lb: 28, Ub: 28}, false); err != nil {
-			return utils.WrapError("Decode cellIdentity_EUTRA", err)
+	case CellIdentity_EUTRA_5GC_Choice_CellIdentity_EUTRA:
+		var tmp_bs_CellIdentity_EUTRA []byte
+		var n_CellIdentity_EUTRA uint
+		if tmp_bs_CellIdentity_EUTRA, n_CellIdentity_EUTRA, err = r.ReadBitString(&uper.Constraint{Lb: 28, Ub: 28}, false); err != nil {
+			return utils.WrapError("Decode CellIdentity_EUTRA", err)
 		}
-		ie.cellIdentity_EUTRA = uper.BitString{
-			Bytes:   tmp_bs_cellIdentity_EUTRA,
-			NumBits: uint64(n_cellIdentity_EUTRA),
+		ie.CellIdentity_EUTRA = uper.BitString{
+			Bytes:   tmp_bs_CellIdentity_EUTRA,
+			NumBits: uint64(n_CellIdentity_EUTRA),
 		}
-	case CellIdentity_EUTRA_5GC_Choice_cellId_index:
-		var tmp_int_cellId_index int64
-		if tmp_int_cellId_index, err = r.ReadInteger(&uper.Constraint{Lb: 1, Ub: maxPLMN}, false); err != nil {
-			return utils.WrapError("Decode cellId_index", err)
+	case CellIdentity_EUTRA_5GC_Choice_CellId_index:
+		var tmp_int_CellId_index int64
+		if tmp_int_CellId_index, err = r.ReadInteger(&uper.Constraint{Lb: 1, Ub: maxPLMN}, false); err != nil {
+			return utils.WrapError("Decode CellId_index", err)
 		}
-		ie.cellId_index = tmp_int_cellId_index
+		ie.CellId_index = tmp_int_CellId_index
 	default:
 		return fmt.Errorf("invalid choice: %d", ie.Choice)
 	}

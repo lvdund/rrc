@@ -9,14 +9,14 @@ import (
 
 const (
 	CSI_RS_Resource_Mobility_frequencyDomainAllocation_Choice_nothing uint64 = iota
-	CSI_RS_Resource_Mobility_frequencyDomainAllocation_Choice_row1
-	CSI_RS_Resource_Mobility_frequencyDomainAllocation_Choice_row2
+	CSI_RS_Resource_Mobility_frequencyDomainAllocation_Choice_Row1
+	CSI_RS_Resource_Mobility_frequencyDomainAllocation_Choice_Row2
 )
 
 type CSI_RS_Resource_Mobility_frequencyDomainAllocation struct {
 	Choice uint64
-	row1   uper.BitString `lb:4,ub:4,madatory`
-	row2   uper.BitString `lb:12,ub:12,madatory`
+	Row1   uper.BitString `lb:4,ub:4,madatory`
+	Row2   uper.BitString `lb:12,ub:12,madatory`
 }
 
 func (ie *CSI_RS_Resource_Mobility_frequencyDomainAllocation) Encode(w *uper.UperWriter) error {
@@ -25,13 +25,13 @@ func (ie *CSI_RS_Resource_Mobility_frequencyDomainAllocation) Encode(w *uper.Upe
 		return err
 	}
 	switch ie.Choice {
-	case CSI_RS_Resource_Mobility_frequencyDomainAllocation_Choice_row1:
-		if err = w.WriteBitString(ie.row1.Bytes, uint(ie.row1.NumBits), &uper.Constraint{Lb: 4, Ub: 4}, false); err != nil {
-			err = utils.WrapError("Encode row1", err)
+	case CSI_RS_Resource_Mobility_frequencyDomainAllocation_Choice_Row1:
+		if err = w.WriteBitString(ie.Row1.Bytes, uint(ie.Row1.NumBits), &uper.Constraint{Lb: 4, Ub: 4}, false); err != nil {
+			err = utils.WrapError("Encode Row1", err)
 		}
-	case CSI_RS_Resource_Mobility_frequencyDomainAllocation_Choice_row2:
-		if err = w.WriteBitString(ie.row2.Bytes, uint(ie.row2.NumBits), &uper.Constraint{Lb: 12, Ub: 12}, false); err != nil {
-			err = utils.WrapError("Encode row2", err)
+	case CSI_RS_Resource_Mobility_frequencyDomainAllocation_Choice_Row2:
+		if err = w.WriteBitString(ie.Row2.Bytes, uint(ie.Row2.NumBits), &uper.Constraint{Lb: 12, Ub: 12}, false); err != nil {
+			err = utils.WrapError("Encode Row2", err)
 		}
 	default:
 		err = fmt.Errorf("invalid choice: %d", ie.Choice)
@@ -45,25 +45,25 @@ func (ie *CSI_RS_Resource_Mobility_frequencyDomainAllocation) Decode(r *uper.Upe
 		return err
 	}
 	switch ie.Choice {
-	case CSI_RS_Resource_Mobility_frequencyDomainAllocation_Choice_row1:
-		var tmp_bs_row1 []byte
-		var n_row1 uint
-		if tmp_bs_row1, n_row1, err = r.ReadBitString(&uper.Constraint{Lb: 4, Ub: 4}, false); err != nil {
-			return utils.WrapError("Decode row1", err)
+	case CSI_RS_Resource_Mobility_frequencyDomainAllocation_Choice_Row1:
+		var tmp_bs_Row1 []byte
+		var n_Row1 uint
+		if tmp_bs_Row1, n_Row1, err = r.ReadBitString(&uper.Constraint{Lb: 4, Ub: 4}, false); err != nil {
+			return utils.WrapError("Decode Row1", err)
 		}
-		ie.row1 = uper.BitString{
-			Bytes:   tmp_bs_row1,
-			NumBits: uint64(n_row1),
+		ie.Row1 = uper.BitString{
+			Bytes:   tmp_bs_Row1,
+			NumBits: uint64(n_Row1),
 		}
-	case CSI_RS_Resource_Mobility_frequencyDomainAllocation_Choice_row2:
-		var tmp_bs_row2 []byte
-		var n_row2 uint
-		if tmp_bs_row2, n_row2, err = r.ReadBitString(&uper.Constraint{Lb: 12, Ub: 12}, false); err != nil {
-			return utils.WrapError("Decode row2", err)
+	case CSI_RS_Resource_Mobility_frequencyDomainAllocation_Choice_Row2:
+		var tmp_bs_Row2 []byte
+		var n_Row2 uint
+		if tmp_bs_Row2, n_Row2, err = r.ReadBitString(&uper.Constraint{Lb: 12, Ub: 12}, false); err != nil {
+			return utils.WrapError("Decode Row2", err)
 		}
-		ie.row2 = uper.BitString{
-			Bytes:   tmp_bs_row2,
-			NumBits: uint64(n_row2),
+		ie.Row2 = uper.BitString{
+			Bytes:   tmp_bs_Row2,
+			NumBits: uint64(n_Row2),
 		}
 	default:
 		return fmt.Errorf("invalid choice: %d", ie.Choice)

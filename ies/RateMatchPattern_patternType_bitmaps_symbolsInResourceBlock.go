@@ -9,14 +9,14 @@ import (
 
 const (
 	RateMatchPattern_patternType_bitmaps_symbolsInResourceBlock_Choice_nothing uint64 = iota
-	RateMatchPattern_patternType_bitmaps_symbolsInResourceBlock_Choice_oneSlot
-	RateMatchPattern_patternType_bitmaps_symbolsInResourceBlock_Choice_twoSlots
+	RateMatchPattern_patternType_bitmaps_symbolsInResourceBlock_Choice_OneSlot
+	RateMatchPattern_patternType_bitmaps_symbolsInResourceBlock_Choice_TwoSlots
 )
 
 type RateMatchPattern_patternType_bitmaps_symbolsInResourceBlock struct {
 	Choice   uint64
-	oneSlot  uper.BitString `lb:14,ub:14,madatory`
-	twoSlots uper.BitString `lb:28,ub:28,madatory`
+	OneSlot  uper.BitString `lb:14,ub:14,madatory`
+	TwoSlots uper.BitString `lb:28,ub:28,madatory`
 }
 
 func (ie *RateMatchPattern_patternType_bitmaps_symbolsInResourceBlock) Encode(w *uper.UperWriter) error {
@@ -25,13 +25,13 @@ func (ie *RateMatchPattern_patternType_bitmaps_symbolsInResourceBlock) Encode(w 
 		return err
 	}
 	switch ie.Choice {
-	case RateMatchPattern_patternType_bitmaps_symbolsInResourceBlock_Choice_oneSlot:
-		if err = w.WriteBitString(ie.oneSlot.Bytes, uint(ie.oneSlot.NumBits), &uper.Constraint{Lb: 14, Ub: 14}, false); err != nil {
-			err = utils.WrapError("Encode oneSlot", err)
+	case RateMatchPattern_patternType_bitmaps_symbolsInResourceBlock_Choice_OneSlot:
+		if err = w.WriteBitString(ie.OneSlot.Bytes, uint(ie.OneSlot.NumBits), &uper.Constraint{Lb: 14, Ub: 14}, false); err != nil {
+			err = utils.WrapError("Encode OneSlot", err)
 		}
-	case RateMatchPattern_patternType_bitmaps_symbolsInResourceBlock_Choice_twoSlots:
-		if err = w.WriteBitString(ie.twoSlots.Bytes, uint(ie.twoSlots.NumBits), &uper.Constraint{Lb: 28, Ub: 28}, false); err != nil {
-			err = utils.WrapError("Encode twoSlots", err)
+	case RateMatchPattern_patternType_bitmaps_symbolsInResourceBlock_Choice_TwoSlots:
+		if err = w.WriteBitString(ie.TwoSlots.Bytes, uint(ie.TwoSlots.NumBits), &uper.Constraint{Lb: 28, Ub: 28}, false); err != nil {
+			err = utils.WrapError("Encode TwoSlots", err)
 		}
 	default:
 		err = fmt.Errorf("invalid choice: %d", ie.Choice)
@@ -45,25 +45,25 @@ func (ie *RateMatchPattern_patternType_bitmaps_symbolsInResourceBlock) Decode(r 
 		return err
 	}
 	switch ie.Choice {
-	case RateMatchPattern_patternType_bitmaps_symbolsInResourceBlock_Choice_oneSlot:
-		var tmp_bs_oneSlot []byte
-		var n_oneSlot uint
-		if tmp_bs_oneSlot, n_oneSlot, err = r.ReadBitString(&uper.Constraint{Lb: 14, Ub: 14}, false); err != nil {
-			return utils.WrapError("Decode oneSlot", err)
+	case RateMatchPattern_patternType_bitmaps_symbolsInResourceBlock_Choice_OneSlot:
+		var tmp_bs_OneSlot []byte
+		var n_OneSlot uint
+		if tmp_bs_OneSlot, n_OneSlot, err = r.ReadBitString(&uper.Constraint{Lb: 14, Ub: 14}, false); err != nil {
+			return utils.WrapError("Decode OneSlot", err)
 		}
-		ie.oneSlot = uper.BitString{
-			Bytes:   tmp_bs_oneSlot,
-			NumBits: uint64(n_oneSlot),
+		ie.OneSlot = uper.BitString{
+			Bytes:   tmp_bs_OneSlot,
+			NumBits: uint64(n_OneSlot),
 		}
-	case RateMatchPattern_patternType_bitmaps_symbolsInResourceBlock_Choice_twoSlots:
-		var tmp_bs_twoSlots []byte
-		var n_twoSlots uint
-		if tmp_bs_twoSlots, n_twoSlots, err = r.ReadBitString(&uper.Constraint{Lb: 28, Ub: 28}, false); err != nil {
-			return utils.WrapError("Decode twoSlots", err)
+	case RateMatchPattern_patternType_bitmaps_symbolsInResourceBlock_Choice_TwoSlots:
+		var tmp_bs_TwoSlots []byte
+		var n_TwoSlots uint
+		if tmp_bs_TwoSlots, n_TwoSlots, err = r.ReadBitString(&uper.Constraint{Lb: 28, Ub: 28}, false); err != nil {
+			return utils.WrapError("Decode TwoSlots", err)
 		}
-		ie.twoSlots = uper.BitString{
-			Bytes:   tmp_bs_twoSlots,
-			NumBits: uint64(n_twoSlots),
+		ie.TwoSlots = uper.BitString{
+			Bytes:   tmp_bs_TwoSlots,
+			NumBits: uint64(n_TwoSlots),
 		}
 	default:
 		return fmt.Errorf("invalid choice: %d", ie.Choice)

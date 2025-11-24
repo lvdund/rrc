@@ -8,33 +8,33 @@ import (
 )
 
 type SIB9 struct {
-	timeInfo                 *SIB9_timeInfo         `lb:2,ub:2,optional`
-	lateNonCriticalExtension *[]byte                `optional`
-	referenceTimeInfo_r16    *ReferenceTimeInfo_r16 `optional,ext-1`
+	TimeInfo                 *SIB9_timeInfo         `lb:2,ub:2,optional`
+	LateNonCriticalExtension *[]byte                `optional`
+	ReferenceTimeInfo_r16    *ReferenceTimeInfo_r16 `optional,ext-1`
 }
 
 func (ie *SIB9) Encode(w *uper.UperWriter) error {
 	var err error
-	hasExtensions := ie.referenceTimeInfo_r16 != nil
-	preambleBits := []bool{hasExtensions, ie.timeInfo != nil, ie.lateNonCriticalExtension != nil}
+	hasExtensions := ie.ReferenceTimeInfo_r16 != nil
+	preambleBits := []bool{hasExtensions, ie.TimeInfo != nil, ie.LateNonCriticalExtension != nil}
 	for _, bit := range preambleBits {
 		if err = w.WriteBool(bit); err != nil {
 			return err
 		}
 	}
-	if ie.timeInfo != nil {
-		if err = ie.timeInfo.Encode(w); err != nil {
-			return utils.WrapError("Encode timeInfo", err)
+	if ie.TimeInfo != nil {
+		if err = ie.TimeInfo.Encode(w); err != nil {
+			return utils.WrapError("Encode TimeInfo", err)
 		}
 	}
-	if ie.lateNonCriticalExtension != nil {
-		if err = w.WriteOctetString(*ie.lateNonCriticalExtension, &uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
-			return utils.WrapError("Encode lateNonCriticalExtension", err)
+	if ie.LateNonCriticalExtension != nil {
+		if err = w.WriteOctetString(*ie.LateNonCriticalExtension, &uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+			return utils.WrapError("Encode LateNonCriticalExtension", err)
 		}
 	}
 	if hasExtensions {
 		// Extension bitmap: 1 bits for 1 extension groups
-		extBitmap := []bool{ie.referenceTimeInfo_r16 != nil}
+		extBitmap := []bool{ie.ReferenceTimeInfo_r16 != nil}
 		if err := w.WriteExtBitMap(extBitmap); err != nil {
 			return utils.WrapError("WriteExtBitMap SIB9", err)
 		}
@@ -45,17 +45,17 @@ func (ie *SIB9) Encode(w *uper.UperWriter) error {
 			extWriter := uper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 1
-			optionals_ext_1 := []bool{ie.referenceTimeInfo_r16 != nil}
+			optionals_ext_1 := []bool{ie.ReferenceTimeInfo_r16 != nil}
 			for _, bit := range optionals_ext_1 {
 				if err := extWriter.WriteBool(bit); err != nil {
 					return err
 				}
 			}
 
-			// encode referenceTimeInfo_r16 optional
-			if ie.referenceTimeInfo_r16 != nil {
-				if err = ie.referenceTimeInfo_r16.Encode(extWriter); err != nil {
-					return utils.WrapError("Encode referenceTimeInfo_r16", err)
+			// encode ReferenceTimeInfo_r16 optional
+			if ie.ReferenceTimeInfo_r16 != nil {
+				if err = ie.ReferenceTimeInfo_r16.Encode(extWriter); err != nil {
+					return utils.WrapError("Encode ReferenceTimeInfo_r16", err)
 				}
 			}
 
@@ -77,26 +77,26 @@ func (ie *SIB9) Decode(r *uper.UperReader) error {
 	if extensionBit, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var timeInfoPresent bool
-	if timeInfoPresent, err = r.ReadBool(); err != nil {
+	var TimeInfoPresent bool
+	if TimeInfoPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var lateNonCriticalExtensionPresent bool
-	if lateNonCriticalExtensionPresent, err = r.ReadBool(); err != nil {
+	var LateNonCriticalExtensionPresent bool
+	if LateNonCriticalExtensionPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	if timeInfoPresent {
-		ie.timeInfo = new(SIB9_timeInfo)
-		if err = ie.timeInfo.Decode(r); err != nil {
-			return utils.WrapError("Decode timeInfo", err)
+	if TimeInfoPresent {
+		ie.TimeInfo = new(SIB9_timeInfo)
+		if err = ie.TimeInfo.Decode(r); err != nil {
+			return utils.WrapError("Decode TimeInfo", err)
 		}
 	}
-	if lateNonCriticalExtensionPresent {
-		var tmp_os_lateNonCriticalExtension []byte
-		if tmp_os_lateNonCriticalExtension, err = r.ReadOctetString(&uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
-			return utils.WrapError("Decode lateNonCriticalExtension", err)
+	if LateNonCriticalExtensionPresent {
+		var tmp_os_LateNonCriticalExtension []byte
+		if tmp_os_LateNonCriticalExtension, err = r.ReadOctetString(&uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+			return utils.WrapError("Decode LateNonCriticalExtension", err)
 		}
-		ie.lateNonCriticalExtension = &tmp_os_lateNonCriticalExtension
+		ie.LateNonCriticalExtension = &tmp_os_LateNonCriticalExtension
 	}
 
 	if extensionBit {
@@ -115,15 +115,15 @@ func (ie *SIB9) Decode(r *uper.UperReader) error {
 
 			extReader := uper.NewReader(bytes.NewReader(extBytes))
 
-			referenceTimeInfo_r16Present, err := extReader.ReadBool()
+			ReferenceTimeInfo_r16Present, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			// decode referenceTimeInfo_r16 optional
-			if referenceTimeInfo_r16Present {
-				ie.referenceTimeInfo_r16 = new(ReferenceTimeInfo_r16)
-				if err = ie.referenceTimeInfo_r16.Decode(extReader); err != nil {
-					return utils.WrapError("Decode referenceTimeInfo_r16", err)
+			// decode ReferenceTimeInfo_r16 optional
+			if ReferenceTimeInfo_r16Present {
+				ie.ReferenceTimeInfo_r16 = new(ReferenceTimeInfo_r16)
+				if err = ie.ReferenceTimeInfo_r16.Decode(extReader); err != nil {
+					return utils.WrapError("Decode ReferenceTimeInfo_r16", err)
 				}
 			}
 		}

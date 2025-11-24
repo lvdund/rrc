@@ -9,14 +9,14 @@ import (
 
 const (
 	RedirectedCarrierInfo_Choice_nothing uint64 = iota
-	RedirectedCarrierInfo_Choice_nr
-	RedirectedCarrierInfo_Choice_eutra
+	RedirectedCarrierInfo_Choice_Nr
+	RedirectedCarrierInfo_Choice_Eutra
 )
 
 type RedirectedCarrierInfo struct {
 	Choice uint64
-	nr     *CarrierInfoNR
-	eutra  *RedirectedCarrierInfo_EUTRA
+	Nr     *CarrierInfoNR
+	Eutra  *RedirectedCarrierInfo_EUTRA
 }
 
 func (ie *RedirectedCarrierInfo) Encode(w *uper.UperWriter) error {
@@ -25,13 +25,13 @@ func (ie *RedirectedCarrierInfo) Encode(w *uper.UperWriter) error {
 		return err
 	}
 	switch ie.Choice {
-	case RedirectedCarrierInfo_Choice_nr:
-		if err = ie.nr.Encode(w); err != nil {
-			err = utils.WrapError("Encode nr", err)
+	case RedirectedCarrierInfo_Choice_Nr:
+		if err = ie.Nr.Encode(w); err != nil {
+			err = utils.WrapError("Encode Nr", err)
 		}
-	case RedirectedCarrierInfo_Choice_eutra:
-		if err = ie.eutra.Encode(w); err != nil {
-			err = utils.WrapError("Encode eutra", err)
+	case RedirectedCarrierInfo_Choice_Eutra:
+		if err = ie.Eutra.Encode(w); err != nil {
+			err = utils.WrapError("Encode Eutra", err)
 		}
 	default:
 		err = fmt.Errorf("invalid choice: %d", ie.Choice)
@@ -45,15 +45,15 @@ func (ie *RedirectedCarrierInfo) Decode(r *uper.UperReader) error {
 		return err
 	}
 	switch ie.Choice {
-	case RedirectedCarrierInfo_Choice_nr:
-		ie.nr = new(CarrierInfoNR)
-		if err = ie.nr.Decode(r); err != nil {
-			return utils.WrapError("Decode nr", err)
+	case RedirectedCarrierInfo_Choice_Nr:
+		ie.Nr = new(CarrierInfoNR)
+		if err = ie.Nr.Decode(r); err != nil {
+			return utils.WrapError("Decode Nr", err)
 		}
-	case RedirectedCarrierInfo_Choice_eutra:
-		ie.eutra = new(RedirectedCarrierInfo_EUTRA)
-		if err = ie.eutra.Decode(r); err != nil {
-			return utils.WrapError("Decode eutra", err)
+	case RedirectedCarrierInfo_Choice_Eutra:
+		ie.Eutra = new(RedirectedCarrierInfo_EUTRA)
+		if err = ie.Eutra.Decode(r); err != nil {
+			return utils.WrapError("Decode Eutra", err)
 		}
 	default:
 		return fmt.Errorf("invalid choice: %d", ie.Choice)

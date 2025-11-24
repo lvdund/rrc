@@ -6,32 +6,32 @@ import (
 )
 
 type BeamFailureDetection_r17 struct {
-	failureDetectionSet1_r17 *BeamFailureDetectionSet_r17 `optional`
-	failureDetectionSet2_r17 *BeamFailureDetectionSet_r17 `optional`
-	additionalPCI_r17        *AdditionalPCIIndex_r17      `optional`
+	FailureDetectionSet1_r17 *BeamFailureDetectionSet_r17 `optional`
+	FailureDetectionSet2_r17 *BeamFailureDetectionSet_r17 `optional`
+	AdditionalPCI_r17        *AdditionalPCIIndex_r17      `optional`
 }
 
 func (ie *BeamFailureDetection_r17) Encode(w *uper.UperWriter) error {
 	var err error
-	preambleBits := []bool{ie.failureDetectionSet1_r17 != nil, ie.failureDetectionSet2_r17 != nil, ie.additionalPCI_r17 != nil}
+	preambleBits := []bool{ie.FailureDetectionSet1_r17 != nil, ie.FailureDetectionSet2_r17 != nil, ie.AdditionalPCI_r17 != nil}
 	for _, bit := range preambleBits {
 		if err = w.WriteBool(bit); err != nil {
 			return err
 		}
 	}
-	if ie.failureDetectionSet1_r17 != nil {
-		if err = ie.failureDetectionSet1_r17.Encode(w); err != nil {
-			return utils.WrapError("Encode failureDetectionSet1_r17", err)
+	if ie.FailureDetectionSet1_r17 != nil {
+		if err = ie.FailureDetectionSet1_r17.Encode(w); err != nil {
+			return utils.WrapError("Encode FailureDetectionSet1_r17", err)
 		}
 	}
-	if ie.failureDetectionSet2_r17 != nil {
-		if err = ie.failureDetectionSet2_r17.Encode(w); err != nil {
-			return utils.WrapError("Encode failureDetectionSet2_r17", err)
+	if ie.FailureDetectionSet2_r17 != nil {
+		if err = ie.FailureDetectionSet2_r17.Encode(w); err != nil {
+			return utils.WrapError("Encode FailureDetectionSet2_r17", err)
 		}
 	}
-	if ie.additionalPCI_r17 != nil {
-		if err = ie.additionalPCI_r17.Encode(w); err != nil {
-			return utils.WrapError("Encode additionalPCI_r17", err)
+	if ie.AdditionalPCI_r17 != nil {
+		if err = ie.AdditionalPCI_r17.Encode(w); err != nil {
+			return utils.WrapError("Encode AdditionalPCI_r17", err)
 		}
 	}
 	return nil
@@ -39,34 +39,34 @@ func (ie *BeamFailureDetection_r17) Encode(w *uper.UperWriter) error {
 
 func (ie *BeamFailureDetection_r17) Decode(r *uper.UperReader) error {
 	var err error
-	var failureDetectionSet1_r17Present bool
-	if failureDetectionSet1_r17Present, err = r.ReadBool(); err != nil {
+	var FailureDetectionSet1_r17Present bool
+	if FailureDetectionSet1_r17Present, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var failureDetectionSet2_r17Present bool
-	if failureDetectionSet2_r17Present, err = r.ReadBool(); err != nil {
+	var FailureDetectionSet2_r17Present bool
+	if FailureDetectionSet2_r17Present, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var additionalPCI_r17Present bool
-	if additionalPCI_r17Present, err = r.ReadBool(); err != nil {
+	var AdditionalPCI_r17Present bool
+	if AdditionalPCI_r17Present, err = r.ReadBool(); err != nil {
 		return err
 	}
-	if failureDetectionSet1_r17Present {
-		ie.failureDetectionSet1_r17 = new(BeamFailureDetectionSet_r17)
-		if err = ie.failureDetectionSet1_r17.Decode(r); err != nil {
-			return utils.WrapError("Decode failureDetectionSet1_r17", err)
+	if FailureDetectionSet1_r17Present {
+		ie.FailureDetectionSet1_r17 = new(BeamFailureDetectionSet_r17)
+		if err = ie.FailureDetectionSet1_r17.Decode(r); err != nil {
+			return utils.WrapError("Decode FailureDetectionSet1_r17", err)
 		}
 	}
-	if failureDetectionSet2_r17Present {
-		ie.failureDetectionSet2_r17 = new(BeamFailureDetectionSet_r17)
-		if err = ie.failureDetectionSet2_r17.Decode(r); err != nil {
-			return utils.WrapError("Decode failureDetectionSet2_r17", err)
+	if FailureDetectionSet2_r17Present {
+		ie.FailureDetectionSet2_r17 = new(BeamFailureDetectionSet_r17)
+		if err = ie.FailureDetectionSet2_r17.Decode(r); err != nil {
+			return utils.WrapError("Decode FailureDetectionSet2_r17", err)
 		}
 	}
-	if additionalPCI_r17Present {
-		ie.additionalPCI_r17 = new(AdditionalPCIIndex_r17)
-		if err = ie.additionalPCI_r17.Decode(r); err != nil {
-			return utils.WrapError("Decode additionalPCI_r17", err)
+	if AdditionalPCI_r17Present {
+		ie.AdditionalPCI_r17 = new(AdditionalPCIIndex_r17)
+		if err = ie.AdditionalPCI_r17.Decode(r); err != nil {
+			return utils.WrapError("Decode AdditionalPCI_r17", err)
 		}
 	}
 	return nil

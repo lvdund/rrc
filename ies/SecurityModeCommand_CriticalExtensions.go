@@ -9,14 +9,14 @@ import (
 
 const (
 	SecurityModeCommand_CriticalExtensions_Choice_nothing uint64 = iota
-	SecurityModeCommand_CriticalExtensions_Choice_securityModeCommand
-	SecurityModeCommand_CriticalExtensions_Choice_criticalExtensionsFuture
+	SecurityModeCommand_CriticalExtensions_Choice_SecurityModeCommand
+	SecurityModeCommand_CriticalExtensions_Choice_CriticalExtensionsFuture
 )
 
 type SecurityModeCommand_CriticalExtensions struct {
 	Choice                   uint64
-	securityModeCommand      *SecurityModeCommand_IEs
-	criticalExtensionsFuture interface{} `madatory`
+	SecurityModeCommand      *SecurityModeCommand_IEs
+	CriticalExtensionsFuture interface{} `madatory`
 }
 
 func (ie *SecurityModeCommand_CriticalExtensions) Encode(w *uper.UperWriter) error {
@@ -25,11 +25,11 @@ func (ie *SecurityModeCommand_CriticalExtensions) Encode(w *uper.UperWriter) err
 		return err
 	}
 	switch ie.Choice {
-	case SecurityModeCommand_CriticalExtensions_Choice_securityModeCommand:
-		if err = ie.securityModeCommand.Encode(w); err != nil {
-			err = utils.WrapError("Encode securityModeCommand", err)
+	case SecurityModeCommand_CriticalExtensions_Choice_SecurityModeCommand:
+		if err = ie.SecurityModeCommand.Encode(w); err != nil {
+			err = utils.WrapError("Encode SecurityModeCommand", err)
 		}
-	case SecurityModeCommand_CriticalExtensions_Choice_criticalExtensionsFuture:
+	case SecurityModeCommand_CriticalExtensions_Choice_CriticalExtensionsFuture:
 		// interface{} field of choice - nothing to encode
 	default:
 		err = fmt.Errorf("invalid choice: %d", ie.Choice)
@@ -43,12 +43,12 @@ func (ie *SecurityModeCommand_CriticalExtensions) Decode(r *uper.UperReader) err
 		return err
 	}
 	switch ie.Choice {
-	case SecurityModeCommand_CriticalExtensions_Choice_securityModeCommand:
-		ie.securityModeCommand = new(SecurityModeCommand_IEs)
-		if err = ie.securityModeCommand.Decode(r); err != nil {
-			return utils.WrapError("Decode securityModeCommand", err)
+	case SecurityModeCommand_CriticalExtensions_Choice_SecurityModeCommand:
+		ie.SecurityModeCommand = new(SecurityModeCommand_IEs)
+		if err = ie.SecurityModeCommand.Decode(r); err != nil {
+			return utils.WrapError("Decode SecurityModeCommand", err)
 		}
-	case SecurityModeCommand_CriticalExtensions_Choice_criticalExtensionsFuture:
+	case SecurityModeCommand_CriticalExtensions_Choice_CriticalExtensionsFuture:
 		// interface{} field of choice - nothing to decode
 	default:
 		return fmt.Errorf("invalid choice: %d", ie.Choice)

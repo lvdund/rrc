@@ -6,50 +6,50 @@ import (
 )
 
 type CSI_RS_ForTracking struct {
-	maxBurstLength                   int64 `lb:1,ub:2,madatory`
-	maxSimultaneousResourceSetsPerCC int64 `lb:1,ub:8,madatory`
-	maxConfiguredResourceSetsPerCC   int64 `lb:1,ub:64,madatory`
-	maxConfiguredResourceSetsAllCC   int64 `lb:1,ub:256,madatory`
+	MaxBurstLength                   int64 `lb:1,ub:2,madatory`
+	MaxSimultaneousResourceSetsPerCC int64 `lb:1,ub:8,madatory`
+	MaxConfiguredResourceSetsPerCC   int64 `lb:1,ub:64,madatory`
+	MaxConfiguredResourceSetsAllCC   int64 `lb:1,ub:256,madatory`
 }
 
 func (ie *CSI_RS_ForTracking) Encode(w *uper.UperWriter) error {
 	var err error
-	if err = w.WriteInteger(ie.maxBurstLength, &uper.Constraint{Lb: 1, Ub: 2}, false); err != nil {
-		return utils.WrapError("WriteInteger maxBurstLength", err)
+	if err = w.WriteInteger(ie.MaxBurstLength, &uper.Constraint{Lb: 1, Ub: 2}, false); err != nil {
+		return utils.WrapError("WriteInteger MaxBurstLength", err)
 	}
-	if err = w.WriteInteger(ie.maxSimultaneousResourceSetsPerCC, &uper.Constraint{Lb: 1, Ub: 8}, false); err != nil {
-		return utils.WrapError("WriteInteger maxSimultaneousResourceSetsPerCC", err)
+	if err = w.WriteInteger(ie.MaxSimultaneousResourceSetsPerCC, &uper.Constraint{Lb: 1, Ub: 8}, false); err != nil {
+		return utils.WrapError("WriteInteger MaxSimultaneousResourceSetsPerCC", err)
 	}
-	if err = w.WriteInteger(ie.maxConfiguredResourceSetsPerCC, &uper.Constraint{Lb: 1, Ub: 64}, false); err != nil {
-		return utils.WrapError("WriteInteger maxConfiguredResourceSetsPerCC", err)
+	if err = w.WriteInteger(ie.MaxConfiguredResourceSetsPerCC, &uper.Constraint{Lb: 1, Ub: 64}, false); err != nil {
+		return utils.WrapError("WriteInteger MaxConfiguredResourceSetsPerCC", err)
 	}
-	if err = w.WriteInteger(ie.maxConfiguredResourceSetsAllCC, &uper.Constraint{Lb: 1, Ub: 256}, false); err != nil {
-		return utils.WrapError("WriteInteger maxConfiguredResourceSetsAllCC", err)
+	if err = w.WriteInteger(ie.MaxConfiguredResourceSetsAllCC, &uper.Constraint{Lb: 1, Ub: 256}, false); err != nil {
+		return utils.WrapError("WriteInteger MaxConfiguredResourceSetsAllCC", err)
 	}
 	return nil
 }
 
 func (ie *CSI_RS_ForTracking) Decode(r *uper.UperReader) error {
 	var err error
-	var tmp_int_maxBurstLength int64
-	if tmp_int_maxBurstLength, err = r.ReadInteger(&uper.Constraint{Lb: 1, Ub: 2}, false); err != nil {
-		return utils.WrapError("ReadInteger maxBurstLength", err)
+	var tmp_int_MaxBurstLength int64
+	if tmp_int_MaxBurstLength, err = r.ReadInteger(&uper.Constraint{Lb: 1, Ub: 2}, false); err != nil {
+		return utils.WrapError("ReadInteger MaxBurstLength", err)
 	}
-	ie.maxBurstLength = tmp_int_maxBurstLength
-	var tmp_int_maxSimultaneousResourceSetsPerCC int64
-	if tmp_int_maxSimultaneousResourceSetsPerCC, err = r.ReadInteger(&uper.Constraint{Lb: 1, Ub: 8}, false); err != nil {
-		return utils.WrapError("ReadInteger maxSimultaneousResourceSetsPerCC", err)
+	ie.MaxBurstLength = tmp_int_MaxBurstLength
+	var tmp_int_MaxSimultaneousResourceSetsPerCC int64
+	if tmp_int_MaxSimultaneousResourceSetsPerCC, err = r.ReadInteger(&uper.Constraint{Lb: 1, Ub: 8}, false); err != nil {
+		return utils.WrapError("ReadInteger MaxSimultaneousResourceSetsPerCC", err)
 	}
-	ie.maxSimultaneousResourceSetsPerCC = tmp_int_maxSimultaneousResourceSetsPerCC
-	var tmp_int_maxConfiguredResourceSetsPerCC int64
-	if tmp_int_maxConfiguredResourceSetsPerCC, err = r.ReadInteger(&uper.Constraint{Lb: 1, Ub: 64}, false); err != nil {
-		return utils.WrapError("ReadInteger maxConfiguredResourceSetsPerCC", err)
+	ie.MaxSimultaneousResourceSetsPerCC = tmp_int_MaxSimultaneousResourceSetsPerCC
+	var tmp_int_MaxConfiguredResourceSetsPerCC int64
+	if tmp_int_MaxConfiguredResourceSetsPerCC, err = r.ReadInteger(&uper.Constraint{Lb: 1, Ub: 64}, false); err != nil {
+		return utils.WrapError("ReadInteger MaxConfiguredResourceSetsPerCC", err)
 	}
-	ie.maxConfiguredResourceSetsPerCC = tmp_int_maxConfiguredResourceSetsPerCC
-	var tmp_int_maxConfiguredResourceSetsAllCC int64
-	if tmp_int_maxConfiguredResourceSetsAllCC, err = r.ReadInteger(&uper.Constraint{Lb: 1, Ub: 256}, false); err != nil {
-		return utils.WrapError("ReadInteger maxConfiguredResourceSetsAllCC", err)
+	ie.MaxConfiguredResourceSetsPerCC = tmp_int_MaxConfiguredResourceSetsPerCC
+	var tmp_int_MaxConfiguredResourceSetsAllCC int64
+	if tmp_int_MaxConfiguredResourceSetsAllCC, err = r.ReadInteger(&uper.Constraint{Lb: 1, Ub: 256}, false); err != nil {
+		return utils.WrapError("ReadInteger MaxConfiguredResourceSetsAllCC", err)
 	}
-	ie.maxConfiguredResourceSetsAllCC = tmp_int_maxConfiguredResourceSetsAllCC
+	ie.MaxConfiguredResourceSetsAllCC = tmp_int_MaxConfiguredResourceSetsAllCC
 	return nil
 }

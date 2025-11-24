@@ -9,14 +9,14 @@ import (
 
 const (
 	PUCCH_ResourceExt_v1610_interlaceAllocation_r16_interlace0_r16_Choice_nothing uint64 = iota
-	PUCCH_ResourceExt_v1610_interlaceAllocation_r16_interlace0_r16_Choice_scs15
-	PUCCH_ResourceExt_v1610_interlaceAllocation_r16_interlace0_r16_Choice_scs30
+	PUCCH_ResourceExt_v1610_interlaceAllocation_r16_interlace0_r16_Choice_Scs15
+	PUCCH_ResourceExt_v1610_interlaceAllocation_r16_interlace0_r16_Choice_Scs30
 )
 
 type PUCCH_ResourceExt_v1610_interlaceAllocation_r16_interlace0_r16 struct {
 	Choice uint64
-	scs15  int64 `lb:0,ub:9,madatory`
-	scs30  int64 `lb:0,ub:4,madatory`
+	Scs15  int64 `lb:0,ub:9,madatory`
+	Scs30  int64 `lb:0,ub:4,madatory`
 }
 
 func (ie *PUCCH_ResourceExt_v1610_interlaceAllocation_r16_interlace0_r16) Encode(w *uper.UperWriter) error {
@@ -25,13 +25,13 @@ func (ie *PUCCH_ResourceExt_v1610_interlaceAllocation_r16_interlace0_r16) Encode
 		return err
 	}
 	switch ie.Choice {
-	case PUCCH_ResourceExt_v1610_interlaceAllocation_r16_interlace0_r16_Choice_scs15:
-		if err = w.WriteInteger(int64(ie.scs15), &uper.Constraint{Lb: 0, Ub: 9}, false); err != nil {
-			err = utils.WrapError("Encode scs15", err)
+	case PUCCH_ResourceExt_v1610_interlaceAllocation_r16_interlace0_r16_Choice_Scs15:
+		if err = w.WriteInteger(int64(ie.Scs15), &uper.Constraint{Lb: 0, Ub: 9}, false); err != nil {
+			err = utils.WrapError("Encode Scs15", err)
 		}
-	case PUCCH_ResourceExt_v1610_interlaceAllocation_r16_interlace0_r16_Choice_scs30:
-		if err = w.WriteInteger(int64(ie.scs30), &uper.Constraint{Lb: 0, Ub: 4}, false); err != nil {
-			err = utils.WrapError("Encode scs30", err)
+	case PUCCH_ResourceExt_v1610_interlaceAllocation_r16_interlace0_r16_Choice_Scs30:
+		if err = w.WriteInteger(int64(ie.Scs30), &uper.Constraint{Lb: 0, Ub: 4}, false); err != nil {
+			err = utils.WrapError("Encode Scs30", err)
 		}
 	default:
 		err = fmt.Errorf("invalid choice: %d", ie.Choice)
@@ -45,18 +45,18 @@ func (ie *PUCCH_ResourceExt_v1610_interlaceAllocation_r16_interlace0_r16) Decode
 		return err
 	}
 	switch ie.Choice {
-	case PUCCH_ResourceExt_v1610_interlaceAllocation_r16_interlace0_r16_Choice_scs15:
-		var tmp_int_scs15 int64
-		if tmp_int_scs15, err = r.ReadInteger(&uper.Constraint{Lb: 0, Ub: 9}, false); err != nil {
-			return utils.WrapError("Decode scs15", err)
+	case PUCCH_ResourceExt_v1610_interlaceAllocation_r16_interlace0_r16_Choice_Scs15:
+		var tmp_int_Scs15 int64
+		if tmp_int_Scs15, err = r.ReadInteger(&uper.Constraint{Lb: 0, Ub: 9}, false); err != nil {
+			return utils.WrapError("Decode Scs15", err)
 		}
-		ie.scs15 = tmp_int_scs15
-	case PUCCH_ResourceExt_v1610_interlaceAllocation_r16_interlace0_r16_Choice_scs30:
-		var tmp_int_scs30 int64
-		if tmp_int_scs30, err = r.ReadInteger(&uper.Constraint{Lb: 0, Ub: 4}, false); err != nil {
-			return utils.WrapError("Decode scs30", err)
+		ie.Scs15 = tmp_int_Scs15
+	case PUCCH_ResourceExt_v1610_interlaceAllocation_r16_interlace0_r16_Choice_Scs30:
+		var tmp_int_Scs30 int64
+		if tmp_int_Scs30, err = r.ReadInteger(&uper.Constraint{Lb: 0, Ub: 4}, false); err != nil {
+			return utils.WrapError("Decode Scs30", err)
 		}
-		ie.scs30 = tmp_int_scs30
+		ie.Scs30 = tmp_int_Scs30
 	default:
 		return fmt.Errorf("invalid choice: %d", ie.Choice)
 	}

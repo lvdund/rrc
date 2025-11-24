@@ -6,24 +6,24 @@ import (
 )
 
 type ReleasePreferenceConfig_r16 struct {
-	releasePreferenceProhibitTimer_r16 ReleasePreferenceConfig_r16_releasePreferenceProhibitTimer_r16 `madatory`
-	connectedReporting                 *ReleasePreferenceConfig_r16_connectedReporting                `optional`
+	ReleasePreferenceProhibitTimer_r16 ReleasePreferenceConfig_r16_releasePreferenceProhibitTimer_r16 `madatory`
+	ConnectedReporting                 *ReleasePreferenceConfig_r16_connectedReporting                `optional`
 }
 
 func (ie *ReleasePreferenceConfig_r16) Encode(w *uper.UperWriter) error {
 	var err error
-	preambleBits := []bool{ie.connectedReporting != nil}
+	preambleBits := []bool{ie.ConnectedReporting != nil}
 	for _, bit := range preambleBits {
 		if err = w.WriteBool(bit); err != nil {
 			return err
 		}
 	}
-	if err = ie.releasePreferenceProhibitTimer_r16.Encode(w); err != nil {
-		return utils.WrapError("Encode releasePreferenceProhibitTimer_r16", err)
+	if err = ie.ReleasePreferenceProhibitTimer_r16.Encode(w); err != nil {
+		return utils.WrapError("Encode ReleasePreferenceProhibitTimer_r16", err)
 	}
-	if ie.connectedReporting != nil {
-		if err = ie.connectedReporting.Encode(w); err != nil {
-			return utils.WrapError("Encode connectedReporting", err)
+	if ie.ConnectedReporting != nil {
+		if err = ie.ConnectedReporting.Encode(w); err != nil {
+			return utils.WrapError("Encode ConnectedReporting", err)
 		}
 	}
 	return nil
@@ -31,17 +31,17 @@ func (ie *ReleasePreferenceConfig_r16) Encode(w *uper.UperWriter) error {
 
 func (ie *ReleasePreferenceConfig_r16) Decode(r *uper.UperReader) error {
 	var err error
-	var connectedReportingPresent bool
-	if connectedReportingPresent, err = r.ReadBool(); err != nil {
+	var ConnectedReportingPresent bool
+	if ConnectedReportingPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	if err = ie.releasePreferenceProhibitTimer_r16.Decode(r); err != nil {
-		return utils.WrapError("Decode releasePreferenceProhibitTimer_r16", err)
+	if err = ie.ReleasePreferenceProhibitTimer_r16.Decode(r); err != nil {
+		return utils.WrapError("Decode ReleasePreferenceProhibitTimer_r16", err)
 	}
-	if connectedReportingPresent {
-		ie.connectedReporting = new(ReleasePreferenceConfig_r16_connectedReporting)
-		if err = ie.connectedReporting.Decode(r); err != nil {
-			return utils.WrapError("Decode connectedReporting", err)
+	if ConnectedReportingPresent {
+		ie.ConnectedReporting = new(ReleasePreferenceConfig_r16_connectedReporting)
+		if err = ie.ConnectedReporting.Decode(r); err != nil {
+			return utils.WrapError("Decode ConnectedReporting", err)
 		}
 	}
 	return nil

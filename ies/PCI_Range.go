@@ -6,24 +6,24 @@ import (
 )
 
 type PCI_Range struct {
-	start     PhysCellId           `madatory`
-	range_pci *PCI_Range_range_pci `optional`
+	Start     PhysCellId           `madatory`
+	Range_pci *PCI_Range_range_pci `optional`
 }
 
 func (ie *PCI_Range) Encode(w *uper.UperWriter) error {
 	var err error
-	preambleBits := []bool{ie.range_pci != nil}
+	preambleBits := []bool{ie.Range_pci != nil}
 	for _, bit := range preambleBits {
 		if err = w.WriteBool(bit); err != nil {
 			return err
 		}
 	}
-	if err = ie.start.Encode(w); err != nil {
-		return utils.WrapError("Encode start", err)
+	if err = ie.Start.Encode(w); err != nil {
+		return utils.WrapError("Encode Start", err)
 	}
-	if ie.range_pci != nil {
-		if err = ie.range_pci.Encode(w); err != nil {
-			return utils.WrapError("Encode range_pci", err)
+	if ie.Range_pci != nil {
+		if err = ie.Range_pci.Encode(w); err != nil {
+			return utils.WrapError("Encode Range_pci", err)
 		}
 	}
 	return nil
@@ -31,17 +31,17 @@ func (ie *PCI_Range) Encode(w *uper.UperWriter) error {
 
 func (ie *PCI_Range) Decode(r *uper.UperReader) error {
 	var err error
-	var range_pciPresent bool
-	if range_pciPresent, err = r.ReadBool(); err != nil {
+	var Range_pciPresent bool
+	if Range_pciPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	if err = ie.start.Decode(r); err != nil {
-		return utils.WrapError("Decode start", err)
+	if err = ie.Start.Decode(r); err != nil {
+		return utils.WrapError("Decode Start", err)
 	}
-	if range_pciPresent {
-		ie.range_pci = new(PCI_Range_range_pci)
-		if err = ie.range_pci.Decode(r); err != nil {
-			return utils.WrapError("Decode range_pci", err)
+	if Range_pciPresent {
+		ie.Range_pci = new(PCI_Range_range_pci)
+		if err = ie.Range_pci.Decode(r); err != nil {
+			return utils.WrapError("Decode Range_pci", err)
 		}
 	}
 	return nil

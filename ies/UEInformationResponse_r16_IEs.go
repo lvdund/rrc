@@ -6,68 +6,68 @@ import (
 )
 
 type UEInformationResponse_r16_IEs struct {
-	measResultIdleEUTRA_r16   *MeasResultIdleEUTRA_r16         `optional`
-	measResultIdleNR_r16      *MeasResultIdleNR_r16            `optional`
-	logMeasReport_r16         *LogMeasReport_r16               `optional`
-	connEstFailReport_r16     *ConnEstFailReport_r16           `optional`
-	ra_ReportList_r16         *RA_ReportList_r16               `optional`
-	rlf_Report_r16            *RLF_Report_r16                  `optional`
-	mobilityHistoryReport_r16 *MobilityHistoryReport_r16       `optional`
-	lateNonCriticalExtension  *[]byte                          `optional`
-	nonCriticalExtension      *UEInformationResponse_v1700_IEs `optional`
+	MeasResultIdleEUTRA_r16   *MeasResultIdleEUTRA_r16         `optional`
+	MeasResultIdleNR_r16      *MeasResultIdleNR_r16            `optional`
+	LogMeasReport_r16         *LogMeasReport_r16               `optional`
+	ConnEstFailReport_r16     *ConnEstFailReport_r16           `optional`
+	Ra_ReportList_r16         *RA_ReportList_r16               `optional`
+	Rlf_Report_r16            *RLF_Report_r16                  `optional`
+	MobilityHistoryReport_r16 *MobilityHistoryReport_r16       `optional`
+	LateNonCriticalExtension  *[]byte                          `optional`
+	NonCriticalExtension      *UEInformationResponse_v1700_IEs `optional`
 }
 
 func (ie *UEInformationResponse_r16_IEs) Encode(w *uper.UperWriter) error {
 	var err error
-	preambleBits := []bool{ie.measResultIdleEUTRA_r16 != nil, ie.measResultIdleNR_r16 != nil, ie.logMeasReport_r16 != nil, ie.connEstFailReport_r16 != nil, ie.ra_ReportList_r16 != nil, ie.rlf_Report_r16 != nil, ie.mobilityHistoryReport_r16 != nil, ie.lateNonCriticalExtension != nil, ie.nonCriticalExtension != nil}
+	preambleBits := []bool{ie.MeasResultIdleEUTRA_r16 != nil, ie.MeasResultIdleNR_r16 != nil, ie.LogMeasReport_r16 != nil, ie.ConnEstFailReport_r16 != nil, ie.Ra_ReportList_r16 != nil, ie.Rlf_Report_r16 != nil, ie.MobilityHistoryReport_r16 != nil, ie.LateNonCriticalExtension != nil, ie.NonCriticalExtension != nil}
 	for _, bit := range preambleBits {
 		if err = w.WriteBool(bit); err != nil {
 			return err
 		}
 	}
-	if ie.measResultIdleEUTRA_r16 != nil {
-		if err = ie.measResultIdleEUTRA_r16.Encode(w); err != nil {
-			return utils.WrapError("Encode measResultIdleEUTRA_r16", err)
+	if ie.MeasResultIdleEUTRA_r16 != nil {
+		if err = ie.MeasResultIdleEUTRA_r16.Encode(w); err != nil {
+			return utils.WrapError("Encode MeasResultIdleEUTRA_r16", err)
 		}
 	}
-	if ie.measResultIdleNR_r16 != nil {
-		if err = ie.measResultIdleNR_r16.Encode(w); err != nil {
-			return utils.WrapError("Encode measResultIdleNR_r16", err)
+	if ie.MeasResultIdleNR_r16 != nil {
+		if err = ie.MeasResultIdleNR_r16.Encode(w); err != nil {
+			return utils.WrapError("Encode MeasResultIdleNR_r16", err)
 		}
 	}
-	if ie.logMeasReport_r16 != nil {
-		if err = ie.logMeasReport_r16.Encode(w); err != nil {
-			return utils.WrapError("Encode logMeasReport_r16", err)
+	if ie.LogMeasReport_r16 != nil {
+		if err = ie.LogMeasReport_r16.Encode(w); err != nil {
+			return utils.WrapError("Encode LogMeasReport_r16", err)
 		}
 	}
-	if ie.connEstFailReport_r16 != nil {
-		if err = ie.connEstFailReport_r16.Encode(w); err != nil {
-			return utils.WrapError("Encode connEstFailReport_r16", err)
+	if ie.ConnEstFailReport_r16 != nil {
+		if err = ie.ConnEstFailReport_r16.Encode(w); err != nil {
+			return utils.WrapError("Encode ConnEstFailReport_r16", err)
 		}
 	}
-	if ie.ra_ReportList_r16 != nil {
-		if err = ie.ra_ReportList_r16.Encode(w); err != nil {
-			return utils.WrapError("Encode ra_ReportList_r16", err)
+	if ie.Ra_ReportList_r16 != nil {
+		if err = ie.Ra_ReportList_r16.Encode(w); err != nil {
+			return utils.WrapError("Encode Ra_ReportList_r16", err)
 		}
 	}
-	if ie.rlf_Report_r16 != nil {
-		if err = ie.rlf_Report_r16.Encode(w); err != nil {
-			return utils.WrapError("Encode rlf_Report_r16", err)
+	if ie.Rlf_Report_r16 != nil {
+		if err = ie.Rlf_Report_r16.Encode(w); err != nil {
+			return utils.WrapError("Encode Rlf_Report_r16", err)
 		}
 	}
-	if ie.mobilityHistoryReport_r16 != nil {
-		if err = ie.mobilityHistoryReport_r16.Encode(w); err != nil {
-			return utils.WrapError("Encode mobilityHistoryReport_r16", err)
+	if ie.MobilityHistoryReport_r16 != nil {
+		if err = ie.MobilityHistoryReport_r16.Encode(w); err != nil {
+			return utils.WrapError("Encode MobilityHistoryReport_r16", err)
 		}
 	}
-	if ie.lateNonCriticalExtension != nil {
-		if err = w.WriteOctetString(*ie.lateNonCriticalExtension, &uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
-			return utils.WrapError("Encode lateNonCriticalExtension", err)
+	if ie.LateNonCriticalExtension != nil {
+		if err = w.WriteOctetString(*ie.LateNonCriticalExtension, &uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+			return utils.WrapError("Encode LateNonCriticalExtension", err)
 		}
 	}
-	if ie.nonCriticalExtension != nil {
-		if err = ie.nonCriticalExtension.Encode(w); err != nil {
-			return utils.WrapError("Encode nonCriticalExtension", err)
+	if ie.NonCriticalExtension != nil {
+		if err = ie.NonCriticalExtension.Encode(w); err != nil {
+			return utils.WrapError("Encode NonCriticalExtension", err)
 		}
 	}
 	return nil
@@ -75,95 +75,95 @@ func (ie *UEInformationResponse_r16_IEs) Encode(w *uper.UperWriter) error {
 
 func (ie *UEInformationResponse_r16_IEs) Decode(r *uper.UperReader) error {
 	var err error
-	var measResultIdleEUTRA_r16Present bool
-	if measResultIdleEUTRA_r16Present, err = r.ReadBool(); err != nil {
+	var MeasResultIdleEUTRA_r16Present bool
+	if MeasResultIdleEUTRA_r16Present, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var measResultIdleNR_r16Present bool
-	if measResultIdleNR_r16Present, err = r.ReadBool(); err != nil {
+	var MeasResultIdleNR_r16Present bool
+	if MeasResultIdleNR_r16Present, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var logMeasReport_r16Present bool
-	if logMeasReport_r16Present, err = r.ReadBool(); err != nil {
+	var LogMeasReport_r16Present bool
+	if LogMeasReport_r16Present, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var connEstFailReport_r16Present bool
-	if connEstFailReport_r16Present, err = r.ReadBool(); err != nil {
+	var ConnEstFailReport_r16Present bool
+	if ConnEstFailReport_r16Present, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var ra_ReportList_r16Present bool
-	if ra_ReportList_r16Present, err = r.ReadBool(); err != nil {
+	var Ra_ReportList_r16Present bool
+	if Ra_ReportList_r16Present, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var rlf_Report_r16Present bool
-	if rlf_Report_r16Present, err = r.ReadBool(); err != nil {
+	var Rlf_Report_r16Present bool
+	if Rlf_Report_r16Present, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var mobilityHistoryReport_r16Present bool
-	if mobilityHistoryReport_r16Present, err = r.ReadBool(); err != nil {
+	var MobilityHistoryReport_r16Present bool
+	if MobilityHistoryReport_r16Present, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var lateNonCriticalExtensionPresent bool
-	if lateNonCriticalExtensionPresent, err = r.ReadBool(); err != nil {
+	var LateNonCriticalExtensionPresent bool
+	if LateNonCriticalExtensionPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var nonCriticalExtensionPresent bool
-	if nonCriticalExtensionPresent, err = r.ReadBool(); err != nil {
+	var NonCriticalExtensionPresent bool
+	if NonCriticalExtensionPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	if measResultIdleEUTRA_r16Present {
-		ie.measResultIdleEUTRA_r16 = new(MeasResultIdleEUTRA_r16)
-		if err = ie.measResultIdleEUTRA_r16.Decode(r); err != nil {
-			return utils.WrapError("Decode measResultIdleEUTRA_r16", err)
+	if MeasResultIdleEUTRA_r16Present {
+		ie.MeasResultIdleEUTRA_r16 = new(MeasResultIdleEUTRA_r16)
+		if err = ie.MeasResultIdleEUTRA_r16.Decode(r); err != nil {
+			return utils.WrapError("Decode MeasResultIdleEUTRA_r16", err)
 		}
 	}
-	if measResultIdleNR_r16Present {
-		ie.measResultIdleNR_r16 = new(MeasResultIdleNR_r16)
-		if err = ie.measResultIdleNR_r16.Decode(r); err != nil {
-			return utils.WrapError("Decode measResultIdleNR_r16", err)
+	if MeasResultIdleNR_r16Present {
+		ie.MeasResultIdleNR_r16 = new(MeasResultIdleNR_r16)
+		if err = ie.MeasResultIdleNR_r16.Decode(r); err != nil {
+			return utils.WrapError("Decode MeasResultIdleNR_r16", err)
 		}
 	}
-	if logMeasReport_r16Present {
-		ie.logMeasReport_r16 = new(LogMeasReport_r16)
-		if err = ie.logMeasReport_r16.Decode(r); err != nil {
-			return utils.WrapError("Decode logMeasReport_r16", err)
+	if LogMeasReport_r16Present {
+		ie.LogMeasReport_r16 = new(LogMeasReport_r16)
+		if err = ie.LogMeasReport_r16.Decode(r); err != nil {
+			return utils.WrapError("Decode LogMeasReport_r16", err)
 		}
 	}
-	if connEstFailReport_r16Present {
-		ie.connEstFailReport_r16 = new(ConnEstFailReport_r16)
-		if err = ie.connEstFailReport_r16.Decode(r); err != nil {
-			return utils.WrapError("Decode connEstFailReport_r16", err)
+	if ConnEstFailReport_r16Present {
+		ie.ConnEstFailReport_r16 = new(ConnEstFailReport_r16)
+		if err = ie.ConnEstFailReport_r16.Decode(r); err != nil {
+			return utils.WrapError("Decode ConnEstFailReport_r16", err)
 		}
 	}
-	if ra_ReportList_r16Present {
-		ie.ra_ReportList_r16 = new(RA_ReportList_r16)
-		if err = ie.ra_ReportList_r16.Decode(r); err != nil {
-			return utils.WrapError("Decode ra_ReportList_r16", err)
+	if Ra_ReportList_r16Present {
+		ie.Ra_ReportList_r16 = new(RA_ReportList_r16)
+		if err = ie.Ra_ReportList_r16.Decode(r); err != nil {
+			return utils.WrapError("Decode Ra_ReportList_r16", err)
 		}
 	}
-	if rlf_Report_r16Present {
-		ie.rlf_Report_r16 = new(RLF_Report_r16)
-		if err = ie.rlf_Report_r16.Decode(r); err != nil {
-			return utils.WrapError("Decode rlf_Report_r16", err)
+	if Rlf_Report_r16Present {
+		ie.Rlf_Report_r16 = new(RLF_Report_r16)
+		if err = ie.Rlf_Report_r16.Decode(r); err != nil {
+			return utils.WrapError("Decode Rlf_Report_r16", err)
 		}
 	}
-	if mobilityHistoryReport_r16Present {
-		ie.mobilityHistoryReport_r16 = new(MobilityHistoryReport_r16)
-		if err = ie.mobilityHistoryReport_r16.Decode(r); err != nil {
-			return utils.WrapError("Decode mobilityHistoryReport_r16", err)
+	if MobilityHistoryReport_r16Present {
+		ie.MobilityHistoryReport_r16 = new(MobilityHistoryReport_r16)
+		if err = ie.MobilityHistoryReport_r16.Decode(r); err != nil {
+			return utils.WrapError("Decode MobilityHistoryReport_r16", err)
 		}
 	}
-	if lateNonCriticalExtensionPresent {
-		var tmp_os_lateNonCriticalExtension []byte
-		if tmp_os_lateNonCriticalExtension, err = r.ReadOctetString(&uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
-			return utils.WrapError("Decode lateNonCriticalExtension", err)
+	if LateNonCriticalExtensionPresent {
+		var tmp_os_LateNonCriticalExtension []byte
+		if tmp_os_LateNonCriticalExtension, err = r.ReadOctetString(&uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+			return utils.WrapError("Decode LateNonCriticalExtension", err)
 		}
-		ie.lateNonCriticalExtension = &tmp_os_lateNonCriticalExtension
+		ie.LateNonCriticalExtension = &tmp_os_LateNonCriticalExtension
 	}
-	if nonCriticalExtensionPresent {
-		ie.nonCriticalExtension = new(UEInformationResponse_v1700_IEs)
-		if err = ie.nonCriticalExtension.Decode(r); err != nil {
-			return utils.WrapError("Decode nonCriticalExtension", err)
+	if NonCriticalExtensionPresent {
+		ie.NonCriticalExtension = new(UEInformationResponse_v1700_IEs)
+		if err = ie.NonCriticalExtension.Decode(r); err != nil {
+			return utils.WrapError("Decode NonCriticalExtension", err)
 		}
 	}
 	return nil

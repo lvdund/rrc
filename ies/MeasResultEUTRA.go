@@ -6,28 +6,28 @@ import (
 )
 
 type MeasResultEUTRA struct {
-	eutra_PhysCellId PhysCellId               `madatory`
-	measResult       MeasQuantityResultsEUTRA `madatory`
-	cgi_Info         *CGI_InfoEUTRA           `optional`
+	Eutra_PhysCellId PhysCellId               `madatory`
+	MeasResult       MeasQuantityResultsEUTRA `madatory`
+	Cgi_Info         *CGI_InfoEUTRA           `optional`
 }
 
 func (ie *MeasResultEUTRA) Encode(w *uper.UperWriter) error {
 	var err error
-	preambleBits := []bool{ie.cgi_Info != nil}
+	preambleBits := []bool{ie.Cgi_Info != nil}
 	for _, bit := range preambleBits {
 		if err = w.WriteBool(bit); err != nil {
 			return err
 		}
 	}
-	if err = ie.eutra_PhysCellId.Encode(w); err != nil {
-		return utils.WrapError("Encode eutra_PhysCellId", err)
+	if err = ie.Eutra_PhysCellId.Encode(w); err != nil {
+		return utils.WrapError("Encode Eutra_PhysCellId", err)
 	}
-	if err = ie.measResult.Encode(w); err != nil {
-		return utils.WrapError("Encode measResult", err)
+	if err = ie.MeasResult.Encode(w); err != nil {
+		return utils.WrapError("Encode MeasResult", err)
 	}
-	if ie.cgi_Info != nil {
-		if err = ie.cgi_Info.Encode(w); err != nil {
-			return utils.WrapError("Encode cgi_Info", err)
+	if ie.Cgi_Info != nil {
+		if err = ie.Cgi_Info.Encode(w); err != nil {
+			return utils.WrapError("Encode Cgi_Info", err)
 		}
 	}
 	return nil
@@ -35,20 +35,20 @@ func (ie *MeasResultEUTRA) Encode(w *uper.UperWriter) error {
 
 func (ie *MeasResultEUTRA) Decode(r *uper.UperReader) error {
 	var err error
-	var cgi_InfoPresent bool
-	if cgi_InfoPresent, err = r.ReadBool(); err != nil {
+	var Cgi_InfoPresent bool
+	if Cgi_InfoPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	if err = ie.eutra_PhysCellId.Decode(r); err != nil {
-		return utils.WrapError("Decode eutra_PhysCellId", err)
+	if err = ie.Eutra_PhysCellId.Decode(r); err != nil {
+		return utils.WrapError("Decode Eutra_PhysCellId", err)
 	}
-	if err = ie.measResult.Decode(r); err != nil {
-		return utils.WrapError("Decode measResult", err)
+	if err = ie.MeasResult.Decode(r); err != nil {
+		return utils.WrapError("Decode MeasResult", err)
 	}
-	if cgi_InfoPresent {
-		ie.cgi_Info = new(CGI_InfoEUTRA)
-		if err = ie.cgi_Info.Decode(r); err != nil {
-			return utils.WrapError("Decode cgi_Info", err)
+	if Cgi_InfoPresent {
+		ie.Cgi_Info = new(CGI_InfoEUTRA)
+		if err = ie.Cgi_Info.Decode(r); err != nil {
+			return utils.WrapError("Decode Cgi_Info", err)
 		}
 	}
 	return nil

@@ -6,164 +6,164 @@ import (
 )
 
 type CA_ParametersNR_v1610 struct {
-	parallelTxMsgA_SRS_PUCCH_PUSCH_r16       *CA_ParametersNR_v1610_parallelTxMsgA_SRS_PUCCH_PUSCH_r16    `optional`
-	msgA_SUL_r16                             *CA_ParametersNR_v1610_msgA_SUL_r16                          `optional`
-	jointSearchSpaceSwitchAcrossCells_r16    *CA_ParametersNR_v1610_jointSearchSpaceSwitchAcrossCells_r16 `optional`
-	half_DuplexTDD_CA_SameSCS_r16            *CA_ParametersNR_v1610_half_DuplexTDD_CA_SameSCS_r16         `optional`
-	scellDormancyWithinActiveTime_r16        *CA_ParametersNR_v1610_scellDormancyWithinActiveTime_r16     `optional`
-	scellDormancyOutsideActiveTime_r16       *CA_ParametersNR_v1610_scellDormancyOutsideActiveTime_r16    `optional`
-	crossCarrierA_CSI_trigDiffSCS_r16        *CA_ParametersNR_v1610_crossCarrierA_CSI_trigDiffSCS_r16     `optional`
-	defaultQCL_CrossCarrierA_CSI_Trig_r16    *CA_ParametersNR_v1610_defaultQCL_CrossCarrierA_CSI_Trig_r16 `optional`
-	interCA_NonAlignedFrame_r16              *CA_ParametersNR_v1610_interCA_NonAlignedFrame_r16           `optional`
-	simul_SRS_Trans_BC_r16                   *CA_ParametersNR_v1610_simul_SRS_Trans_BC_r16                `optional`
-	interFreqDAPS_r16                        *CA_ParametersNR_v1610_interFreqDAPS_r16                     `optional`
-	codebookParametersPerBC_r16              *CodebookParameters_v1610                                    `optional`
-	blindDetectFactor_r16                    *int64                                                       `lb:1,ub:2,optional`
-	pdcch_MonitoringCA_r16                   *CA_ParametersNR_v1610_pdcch_MonitoringCA_r16                `lb:2,ub:16,optional`
-	pdcch_BlindDetectionCA_Mixed_r16         *CA_ParametersNR_v1610_pdcch_BlindDetectionCA_Mixed_r16      `lb:1,ub:15,optional`
-	pdcch_BlindDetectionMCG_UE_r16           *int64                                                       `lb:1,ub:14,optional`
-	pdcch_BlindDetectionSCG_UE_r16           *int64                                                       `lb:1,ub:14,optional`
-	pdcch_BlindDetectionMCG_UE_Mixed_r16     *CA_ParametersNR_v1610_pdcch_BlindDetectionMCG_UE_Mixed_r16  `lb:0,ub:15,optional`
-	pdcch_BlindDetectionSCG_UE_Mixed_r16     *CA_ParametersNR_v1610_pdcch_BlindDetectionSCG_UE_Mixed_r16  `lb:0,ub:15,optional`
-	crossCarrierSchedulingDL_DiffSCS_r16     *CA_ParametersNR_v1610_crossCarrierSchedulingDL_DiffSCS_r16  `optional`
-	crossCarrierSchedulingDefaultQCL_r16     *CA_ParametersNR_v1610_crossCarrierSchedulingDefaultQCL_r16  `optional`
-	crossCarrierSchedulingUL_DiffSCS_r16     *CA_ParametersNR_v1610_crossCarrierSchedulingUL_DiffSCS_r16  `optional`
-	simul_SRS_MIMO_Trans_BC_r16              *CA_ParametersNR_v1610_simul_SRS_MIMO_Trans_BC_r16           `optional`
-	codebookParametersAdditionPerBC_r16      *CodebookParametersAdditionPerBC_r16                         `optional`
-	codebookComboParametersAdditionPerBC_r16 *CodebookComboParametersAdditionPerBC_r16                    `optional`
+	ParallelTxMsgA_SRS_PUCCH_PUSCH_r16       *CA_ParametersNR_v1610_parallelTxMsgA_SRS_PUCCH_PUSCH_r16    `optional`
+	MsgA_SUL_r16                             *CA_ParametersNR_v1610_msgA_SUL_r16                          `optional`
+	JointSearchSpaceSwitchAcrossCells_r16    *CA_ParametersNR_v1610_jointSearchSpaceSwitchAcrossCells_r16 `optional`
+	Half_DuplexTDD_CA_SameSCS_r16            *CA_ParametersNR_v1610_half_DuplexTDD_CA_SameSCS_r16         `optional`
+	ScellDormancyWithinActiveTime_r16        *CA_ParametersNR_v1610_scellDormancyWithinActiveTime_r16     `optional`
+	ScellDormancyOutsideActiveTime_r16       *CA_ParametersNR_v1610_scellDormancyOutsideActiveTime_r16    `optional`
+	CrossCarrierA_CSI_trigDiffSCS_r16        *CA_ParametersNR_v1610_crossCarrierA_CSI_trigDiffSCS_r16     `optional`
+	DefaultQCL_CrossCarrierA_CSI_Trig_r16    *CA_ParametersNR_v1610_defaultQCL_CrossCarrierA_CSI_Trig_r16 `optional`
+	InterCA_NonAlignedFrame_r16              *CA_ParametersNR_v1610_interCA_NonAlignedFrame_r16           `optional`
+	Simul_SRS_Trans_BC_r16                   *CA_ParametersNR_v1610_simul_SRS_Trans_BC_r16                `optional`
+	InterFreqDAPS_r16                        *CA_ParametersNR_v1610_interFreqDAPS_r16                     `optional`
+	CodebookParametersPerBC_r16              *CodebookParameters_v1610                                    `optional`
+	BlindDetectFactor_r16                    *int64                                                       `lb:1,ub:2,optional`
+	Pdcch_MonitoringCA_r16                   *CA_ParametersNR_v1610_pdcch_MonitoringCA_r16                `lb:2,ub:16,optional`
+	Pdcch_BlindDetectionCA_Mixed_r16         *CA_ParametersNR_v1610_pdcch_BlindDetectionCA_Mixed_r16      `lb:1,ub:15,optional`
+	Pdcch_BlindDetectionMCG_UE_r16           *int64                                                       `lb:1,ub:14,optional`
+	Pdcch_BlindDetectionSCG_UE_r16           *int64                                                       `lb:1,ub:14,optional`
+	Pdcch_BlindDetectionMCG_UE_Mixed_r16     *CA_ParametersNR_v1610_pdcch_BlindDetectionMCG_UE_Mixed_r16  `lb:0,ub:15,optional`
+	Pdcch_BlindDetectionSCG_UE_Mixed_r16     *CA_ParametersNR_v1610_pdcch_BlindDetectionSCG_UE_Mixed_r16  `lb:0,ub:15,optional`
+	CrossCarrierSchedulingDL_DiffSCS_r16     *CA_ParametersNR_v1610_crossCarrierSchedulingDL_DiffSCS_r16  `optional`
+	CrossCarrierSchedulingDefaultQCL_r16     *CA_ParametersNR_v1610_crossCarrierSchedulingDefaultQCL_r16  `optional`
+	CrossCarrierSchedulingUL_DiffSCS_r16     *CA_ParametersNR_v1610_crossCarrierSchedulingUL_DiffSCS_r16  `optional`
+	Simul_SRS_MIMO_Trans_BC_r16              *CA_ParametersNR_v1610_simul_SRS_MIMO_Trans_BC_r16           `optional`
+	CodebookParametersAdditionPerBC_r16      *CodebookParametersAdditionPerBC_r16                         `optional`
+	CodebookComboParametersAdditionPerBC_r16 *CodebookComboParametersAdditionPerBC_r16                    `optional`
 }
 
 func (ie *CA_ParametersNR_v1610) Encode(w *uper.UperWriter) error {
 	var err error
-	preambleBits := []bool{ie.parallelTxMsgA_SRS_PUCCH_PUSCH_r16 != nil, ie.msgA_SUL_r16 != nil, ie.jointSearchSpaceSwitchAcrossCells_r16 != nil, ie.half_DuplexTDD_CA_SameSCS_r16 != nil, ie.scellDormancyWithinActiveTime_r16 != nil, ie.scellDormancyOutsideActiveTime_r16 != nil, ie.crossCarrierA_CSI_trigDiffSCS_r16 != nil, ie.defaultQCL_CrossCarrierA_CSI_Trig_r16 != nil, ie.interCA_NonAlignedFrame_r16 != nil, ie.simul_SRS_Trans_BC_r16 != nil, ie.interFreqDAPS_r16 != nil, ie.codebookParametersPerBC_r16 != nil, ie.blindDetectFactor_r16 != nil, ie.pdcch_MonitoringCA_r16 != nil, ie.pdcch_BlindDetectionCA_Mixed_r16 != nil, ie.pdcch_BlindDetectionMCG_UE_r16 != nil, ie.pdcch_BlindDetectionSCG_UE_r16 != nil, ie.pdcch_BlindDetectionMCG_UE_Mixed_r16 != nil, ie.pdcch_BlindDetectionSCG_UE_Mixed_r16 != nil, ie.crossCarrierSchedulingDL_DiffSCS_r16 != nil, ie.crossCarrierSchedulingDefaultQCL_r16 != nil, ie.crossCarrierSchedulingUL_DiffSCS_r16 != nil, ie.simul_SRS_MIMO_Trans_BC_r16 != nil, ie.codebookParametersAdditionPerBC_r16 != nil, ie.codebookComboParametersAdditionPerBC_r16 != nil}
+	preambleBits := []bool{ie.ParallelTxMsgA_SRS_PUCCH_PUSCH_r16 != nil, ie.MsgA_SUL_r16 != nil, ie.JointSearchSpaceSwitchAcrossCells_r16 != nil, ie.Half_DuplexTDD_CA_SameSCS_r16 != nil, ie.ScellDormancyWithinActiveTime_r16 != nil, ie.ScellDormancyOutsideActiveTime_r16 != nil, ie.CrossCarrierA_CSI_trigDiffSCS_r16 != nil, ie.DefaultQCL_CrossCarrierA_CSI_Trig_r16 != nil, ie.InterCA_NonAlignedFrame_r16 != nil, ie.Simul_SRS_Trans_BC_r16 != nil, ie.InterFreqDAPS_r16 != nil, ie.CodebookParametersPerBC_r16 != nil, ie.BlindDetectFactor_r16 != nil, ie.Pdcch_MonitoringCA_r16 != nil, ie.Pdcch_BlindDetectionCA_Mixed_r16 != nil, ie.Pdcch_BlindDetectionMCG_UE_r16 != nil, ie.Pdcch_BlindDetectionSCG_UE_r16 != nil, ie.Pdcch_BlindDetectionMCG_UE_Mixed_r16 != nil, ie.Pdcch_BlindDetectionSCG_UE_Mixed_r16 != nil, ie.CrossCarrierSchedulingDL_DiffSCS_r16 != nil, ie.CrossCarrierSchedulingDefaultQCL_r16 != nil, ie.CrossCarrierSchedulingUL_DiffSCS_r16 != nil, ie.Simul_SRS_MIMO_Trans_BC_r16 != nil, ie.CodebookParametersAdditionPerBC_r16 != nil, ie.CodebookComboParametersAdditionPerBC_r16 != nil}
 	for _, bit := range preambleBits {
 		if err = w.WriteBool(bit); err != nil {
 			return err
 		}
 	}
-	if ie.parallelTxMsgA_SRS_PUCCH_PUSCH_r16 != nil {
-		if err = ie.parallelTxMsgA_SRS_PUCCH_PUSCH_r16.Encode(w); err != nil {
-			return utils.WrapError("Encode parallelTxMsgA_SRS_PUCCH_PUSCH_r16", err)
+	if ie.ParallelTxMsgA_SRS_PUCCH_PUSCH_r16 != nil {
+		if err = ie.ParallelTxMsgA_SRS_PUCCH_PUSCH_r16.Encode(w); err != nil {
+			return utils.WrapError("Encode ParallelTxMsgA_SRS_PUCCH_PUSCH_r16", err)
 		}
 	}
-	if ie.msgA_SUL_r16 != nil {
-		if err = ie.msgA_SUL_r16.Encode(w); err != nil {
-			return utils.WrapError("Encode msgA_SUL_r16", err)
+	if ie.MsgA_SUL_r16 != nil {
+		if err = ie.MsgA_SUL_r16.Encode(w); err != nil {
+			return utils.WrapError("Encode MsgA_SUL_r16", err)
 		}
 	}
-	if ie.jointSearchSpaceSwitchAcrossCells_r16 != nil {
-		if err = ie.jointSearchSpaceSwitchAcrossCells_r16.Encode(w); err != nil {
-			return utils.WrapError("Encode jointSearchSpaceSwitchAcrossCells_r16", err)
+	if ie.JointSearchSpaceSwitchAcrossCells_r16 != nil {
+		if err = ie.JointSearchSpaceSwitchAcrossCells_r16.Encode(w); err != nil {
+			return utils.WrapError("Encode JointSearchSpaceSwitchAcrossCells_r16", err)
 		}
 	}
-	if ie.half_DuplexTDD_CA_SameSCS_r16 != nil {
-		if err = ie.half_DuplexTDD_CA_SameSCS_r16.Encode(w); err != nil {
-			return utils.WrapError("Encode half_DuplexTDD_CA_SameSCS_r16", err)
+	if ie.Half_DuplexTDD_CA_SameSCS_r16 != nil {
+		if err = ie.Half_DuplexTDD_CA_SameSCS_r16.Encode(w); err != nil {
+			return utils.WrapError("Encode Half_DuplexTDD_CA_SameSCS_r16", err)
 		}
 	}
-	if ie.scellDormancyWithinActiveTime_r16 != nil {
-		if err = ie.scellDormancyWithinActiveTime_r16.Encode(w); err != nil {
-			return utils.WrapError("Encode scellDormancyWithinActiveTime_r16", err)
+	if ie.ScellDormancyWithinActiveTime_r16 != nil {
+		if err = ie.ScellDormancyWithinActiveTime_r16.Encode(w); err != nil {
+			return utils.WrapError("Encode ScellDormancyWithinActiveTime_r16", err)
 		}
 	}
-	if ie.scellDormancyOutsideActiveTime_r16 != nil {
-		if err = ie.scellDormancyOutsideActiveTime_r16.Encode(w); err != nil {
-			return utils.WrapError("Encode scellDormancyOutsideActiveTime_r16", err)
+	if ie.ScellDormancyOutsideActiveTime_r16 != nil {
+		if err = ie.ScellDormancyOutsideActiveTime_r16.Encode(w); err != nil {
+			return utils.WrapError("Encode ScellDormancyOutsideActiveTime_r16", err)
 		}
 	}
-	if ie.crossCarrierA_CSI_trigDiffSCS_r16 != nil {
-		if err = ie.crossCarrierA_CSI_trigDiffSCS_r16.Encode(w); err != nil {
-			return utils.WrapError("Encode crossCarrierA_CSI_trigDiffSCS_r16", err)
+	if ie.CrossCarrierA_CSI_trigDiffSCS_r16 != nil {
+		if err = ie.CrossCarrierA_CSI_trigDiffSCS_r16.Encode(w); err != nil {
+			return utils.WrapError("Encode CrossCarrierA_CSI_trigDiffSCS_r16", err)
 		}
 	}
-	if ie.defaultQCL_CrossCarrierA_CSI_Trig_r16 != nil {
-		if err = ie.defaultQCL_CrossCarrierA_CSI_Trig_r16.Encode(w); err != nil {
-			return utils.WrapError("Encode defaultQCL_CrossCarrierA_CSI_Trig_r16", err)
+	if ie.DefaultQCL_CrossCarrierA_CSI_Trig_r16 != nil {
+		if err = ie.DefaultQCL_CrossCarrierA_CSI_Trig_r16.Encode(w); err != nil {
+			return utils.WrapError("Encode DefaultQCL_CrossCarrierA_CSI_Trig_r16", err)
 		}
 	}
-	if ie.interCA_NonAlignedFrame_r16 != nil {
-		if err = ie.interCA_NonAlignedFrame_r16.Encode(w); err != nil {
-			return utils.WrapError("Encode interCA_NonAlignedFrame_r16", err)
+	if ie.InterCA_NonAlignedFrame_r16 != nil {
+		if err = ie.InterCA_NonAlignedFrame_r16.Encode(w); err != nil {
+			return utils.WrapError("Encode InterCA_NonAlignedFrame_r16", err)
 		}
 	}
-	if ie.simul_SRS_Trans_BC_r16 != nil {
-		if err = ie.simul_SRS_Trans_BC_r16.Encode(w); err != nil {
-			return utils.WrapError("Encode simul_SRS_Trans_BC_r16", err)
+	if ie.Simul_SRS_Trans_BC_r16 != nil {
+		if err = ie.Simul_SRS_Trans_BC_r16.Encode(w); err != nil {
+			return utils.WrapError("Encode Simul_SRS_Trans_BC_r16", err)
 		}
 	}
-	if ie.interFreqDAPS_r16 != nil {
-		if err = ie.interFreqDAPS_r16.Encode(w); err != nil {
-			return utils.WrapError("Encode interFreqDAPS_r16", err)
+	if ie.InterFreqDAPS_r16 != nil {
+		if err = ie.InterFreqDAPS_r16.Encode(w); err != nil {
+			return utils.WrapError("Encode InterFreqDAPS_r16", err)
 		}
 	}
-	if ie.codebookParametersPerBC_r16 != nil {
-		if err = ie.codebookParametersPerBC_r16.Encode(w); err != nil {
-			return utils.WrapError("Encode codebookParametersPerBC_r16", err)
+	if ie.CodebookParametersPerBC_r16 != nil {
+		if err = ie.CodebookParametersPerBC_r16.Encode(w); err != nil {
+			return utils.WrapError("Encode CodebookParametersPerBC_r16", err)
 		}
 	}
-	if ie.blindDetectFactor_r16 != nil {
-		if err = w.WriteInteger(*ie.blindDetectFactor_r16, &uper.Constraint{Lb: 1, Ub: 2}, false); err != nil {
-			return utils.WrapError("Encode blindDetectFactor_r16", err)
+	if ie.BlindDetectFactor_r16 != nil {
+		if err = w.WriteInteger(*ie.BlindDetectFactor_r16, &uper.Constraint{Lb: 1, Ub: 2}, false); err != nil {
+			return utils.WrapError("Encode BlindDetectFactor_r16", err)
 		}
 	}
-	if ie.pdcch_MonitoringCA_r16 != nil {
-		if err = ie.pdcch_MonitoringCA_r16.Encode(w); err != nil {
-			return utils.WrapError("Encode pdcch_MonitoringCA_r16", err)
+	if ie.Pdcch_MonitoringCA_r16 != nil {
+		if err = ie.Pdcch_MonitoringCA_r16.Encode(w); err != nil {
+			return utils.WrapError("Encode Pdcch_MonitoringCA_r16", err)
 		}
 	}
-	if ie.pdcch_BlindDetectionCA_Mixed_r16 != nil {
-		if err = ie.pdcch_BlindDetectionCA_Mixed_r16.Encode(w); err != nil {
-			return utils.WrapError("Encode pdcch_BlindDetectionCA_Mixed_r16", err)
+	if ie.Pdcch_BlindDetectionCA_Mixed_r16 != nil {
+		if err = ie.Pdcch_BlindDetectionCA_Mixed_r16.Encode(w); err != nil {
+			return utils.WrapError("Encode Pdcch_BlindDetectionCA_Mixed_r16", err)
 		}
 	}
-	if ie.pdcch_BlindDetectionMCG_UE_r16 != nil {
-		if err = w.WriteInteger(*ie.pdcch_BlindDetectionMCG_UE_r16, &uper.Constraint{Lb: 1, Ub: 14}, false); err != nil {
-			return utils.WrapError("Encode pdcch_BlindDetectionMCG_UE_r16", err)
+	if ie.Pdcch_BlindDetectionMCG_UE_r16 != nil {
+		if err = w.WriteInteger(*ie.Pdcch_BlindDetectionMCG_UE_r16, &uper.Constraint{Lb: 1, Ub: 14}, false); err != nil {
+			return utils.WrapError("Encode Pdcch_BlindDetectionMCG_UE_r16", err)
 		}
 	}
-	if ie.pdcch_BlindDetectionSCG_UE_r16 != nil {
-		if err = w.WriteInteger(*ie.pdcch_BlindDetectionSCG_UE_r16, &uper.Constraint{Lb: 1, Ub: 14}, false); err != nil {
-			return utils.WrapError("Encode pdcch_BlindDetectionSCG_UE_r16", err)
+	if ie.Pdcch_BlindDetectionSCG_UE_r16 != nil {
+		if err = w.WriteInteger(*ie.Pdcch_BlindDetectionSCG_UE_r16, &uper.Constraint{Lb: 1, Ub: 14}, false); err != nil {
+			return utils.WrapError("Encode Pdcch_BlindDetectionSCG_UE_r16", err)
 		}
 	}
-	if ie.pdcch_BlindDetectionMCG_UE_Mixed_r16 != nil {
-		if err = ie.pdcch_BlindDetectionMCG_UE_Mixed_r16.Encode(w); err != nil {
-			return utils.WrapError("Encode pdcch_BlindDetectionMCG_UE_Mixed_r16", err)
+	if ie.Pdcch_BlindDetectionMCG_UE_Mixed_r16 != nil {
+		if err = ie.Pdcch_BlindDetectionMCG_UE_Mixed_r16.Encode(w); err != nil {
+			return utils.WrapError("Encode Pdcch_BlindDetectionMCG_UE_Mixed_r16", err)
 		}
 	}
-	if ie.pdcch_BlindDetectionSCG_UE_Mixed_r16 != nil {
-		if err = ie.pdcch_BlindDetectionSCG_UE_Mixed_r16.Encode(w); err != nil {
-			return utils.WrapError("Encode pdcch_BlindDetectionSCG_UE_Mixed_r16", err)
+	if ie.Pdcch_BlindDetectionSCG_UE_Mixed_r16 != nil {
+		if err = ie.Pdcch_BlindDetectionSCG_UE_Mixed_r16.Encode(w); err != nil {
+			return utils.WrapError("Encode Pdcch_BlindDetectionSCG_UE_Mixed_r16", err)
 		}
 	}
-	if ie.crossCarrierSchedulingDL_DiffSCS_r16 != nil {
-		if err = ie.crossCarrierSchedulingDL_DiffSCS_r16.Encode(w); err != nil {
-			return utils.WrapError("Encode crossCarrierSchedulingDL_DiffSCS_r16", err)
+	if ie.CrossCarrierSchedulingDL_DiffSCS_r16 != nil {
+		if err = ie.CrossCarrierSchedulingDL_DiffSCS_r16.Encode(w); err != nil {
+			return utils.WrapError("Encode CrossCarrierSchedulingDL_DiffSCS_r16", err)
 		}
 	}
-	if ie.crossCarrierSchedulingDefaultQCL_r16 != nil {
-		if err = ie.crossCarrierSchedulingDefaultQCL_r16.Encode(w); err != nil {
-			return utils.WrapError("Encode crossCarrierSchedulingDefaultQCL_r16", err)
+	if ie.CrossCarrierSchedulingDefaultQCL_r16 != nil {
+		if err = ie.CrossCarrierSchedulingDefaultQCL_r16.Encode(w); err != nil {
+			return utils.WrapError("Encode CrossCarrierSchedulingDefaultQCL_r16", err)
 		}
 	}
-	if ie.crossCarrierSchedulingUL_DiffSCS_r16 != nil {
-		if err = ie.crossCarrierSchedulingUL_DiffSCS_r16.Encode(w); err != nil {
-			return utils.WrapError("Encode crossCarrierSchedulingUL_DiffSCS_r16", err)
+	if ie.CrossCarrierSchedulingUL_DiffSCS_r16 != nil {
+		if err = ie.CrossCarrierSchedulingUL_DiffSCS_r16.Encode(w); err != nil {
+			return utils.WrapError("Encode CrossCarrierSchedulingUL_DiffSCS_r16", err)
 		}
 	}
-	if ie.simul_SRS_MIMO_Trans_BC_r16 != nil {
-		if err = ie.simul_SRS_MIMO_Trans_BC_r16.Encode(w); err != nil {
-			return utils.WrapError("Encode simul_SRS_MIMO_Trans_BC_r16", err)
+	if ie.Simul_SRS_MIMO_Trans_BC_r16 != nil {
+		if err = ie.Simul_SRS_MIMO_Trans_BC_r16.Encode(w); err != nil {
+			return utils.WrapError("Encode Simul_SRS_MIMO_Trans_BC_r16", err)
 		}
 	}
-	if ie.codebookParametersAdditionPerBC_r16 != nil {
-		if err = ie.codebookParametersAdditionPerBC_r16.Encode(w); err != nil {
-			return utils.WrapError("Encode codebookParametersAdditionPerBC_r16", err)
+	if ie.CodebookParametersAdditionPerBC_r16 != nil {
+		if err = ie.CodebookParametersAdditionPerBC_r16.Encode(w); err != nil {
+			return utils.WrapError("Encode CodebookParametersAdditionPerBC_r16", err)
 		}
 	}
-	if ie.codebookComboParametersAdditionPerBC_r16 != nil {
-		if err = ie.codebookComboParametersAdditionPerBC_r16.Encode(w); err != nil {
-			return utils.WrapError("Encode codebookComboParametersAdditionPerBC_r16", err)
+	if ie.CodebookComboParametersAdditionPerBC_r16 != nil {
+		if err = ie.CodebookComboParametersAdditionPerBC_r16.Encode(w); err != nil {
+			return utils.WrapError("Encode CodebookComboParametersAdditionPerBC_r16", err)
 		}
 	}
 	return nil
@@ -171,257 +171,257 @@ func (ie *CA_ParametersNR_v1610) Encode(w *uper.UperWriter) error {
 
 func (ie *CA_ParametersNR_v1610) Decode(r *uper.UperReader) error {
 	var err error
-	var parallelTxMsgA_SRS_PUCCH_PUSCH_r16Present bool
-	if parallelTxMsgA_SRS_PUCCH_PUSCH_r16Present, err = r.ReadBool(); err != nil {
+	var ParallelTxMsgA_SRS_PUCCH_PUSCH_r16Present bool
+	if ParallelTxMsgA_SRS_PUCCH_PUSCH_r16Present, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var msgA_SUL_r16Present bool
-	if msgA_SUL_r16Present, err = r.ReadBool(); err != nil {
+	var MsgA_SUL_r16Present bool
+	if MsgA_SUL_r16Present, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var jointSearchSpaceSwitchAcrossCells_r16Present bool
-	if jointSearchSpaceSwitchAcrossCells_r16Present, err = r.ReadBool(); err != nil {
+	var JointSearchSpaceSwitchAcrossCells_r16Present bool
+	if JointSearchSpaceSwitchAcrossCells_r16Present, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var half_DuplexTDD_CA_SameSCS_r16Present bool
-	if half_DuplexTDD_CA_SameSCS_r16Present, err = r.ReadBool(); err != nil {
+	var Half_DuplexTDD_CA_SameSCS_r16Present bool
+	if Half_DuplexTDD_CA_SameSCS_r16Present, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var scellDormancyWithinActiveTime_r16Present bool
-	if scellDormancyWithinActiveTime_r16Present, err = r.ReadBool(); err != nil {
+	var ScellDormancyWithinActiveTime_r16Present bool
+	if ScellDormancyWithinActiveTime_r16Present, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var scellDormancyOutsideActiveTime_r16Present bool
-	if scellDormancyOutsideActiveTime_r16Present, err = r.ReadBool(); err != nil {
+	var ScellDormancyOutsideActiveTime_r16Present bool
+	if ScellDormancyOutsideActiveTime_r16Present, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var crossCarrierA_CSI_trigDiffSCS_r16Present bool
-	if crossCarrierA_CSI_trigDiffSCS_r16Present, err = r.ReadBool(); err != nil {
+	var CrossCarrierA_CSI_trigDiffSCS_r16Present bool
+	if CrossCarrierA_CSI_trigDiffSCS_r16Present, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var defaultQCL_CrossCarrierA_CSI_Trig_r16Present bool
-	if defaultQCL_CrossCarrierA_CSI_Trig_r16Present, err = r.ReadBool(); err != nil {
+	var DefaultQCL_CrossCarrierA_CSI_Trig_r16Present bool
+	if DefaultQCL_CrossCarrierA_CSI_Trig_r16Present, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var interCA_NonAlignedFrame_r16Present bool
-	if interCA_NonAlignedFrame_r16Present, err = r.ReadBool(); err != nil {
+	var InterCA_NonAlignedFrame_r16Present bool
+	if InterCA_NonAlignedFrame_r16Present, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var simul_SRS_Trans_BC_r16Present bool
-	if simul_SRS_Trans_BC_r16Present, err = r.ReadBool(); err != nil {
+	var Simul_SRS_Trans_BC_r16Present bool
+	if Simul_SRS_Trans_BC_r16Present, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var interFreqDAPS_r16Present bool
-	if interFreqDAPS_r16Present, err = r.ReadBool(); err != nil {
+	var InterFreqDAPS_r16Present bool
+	if InterFreqDAPS_r16Present, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var codebookParametersPerBC_r16Present bool
-	if codebookParametersPerBC_r16Present, err = r.ReadBool(); err != nil {
+	var CodebookParametersPerBC_r16Present bool
+	if CodebookParametersPerBC_r16Present, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var blindDetectFactor_r16Present bool
-	if blindDetectFactor_r16Present, err = r.ReadBool(); err != nil {
+	var BlindDetectFactor_r16Present bool
+	if BlindDetectFactor_r16Present, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var pdcch_MonitoringCA_r16Present bool
-	if pdcch_MonitoringCA_r16Present, err = r.ReadBool(); err != nil {
+	var Pdcch_MonitoringCA_r16Present bool
+	if Pdcch_MonitoringCA_r16Present, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var pdcch_BlindDetectionCA_Mixed_r16Present bool
-	if pdcch_BlindDetectionCA_Mixed_r16Present, err = r.ReadBool(); err != nil {
+	var Pdcch_BlindDetectionCA_Mixed_r16Present bool
+	if Pdcch_BlindDetectionCA_Mixed_r16Present, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var pdcch_BlindDetectionMCG_UE_r16Present bool
-	if pdcch_BlindDetectionMCG_UE_r16Present, err = r.ReadBool(); err != nil {
+	var Pdcch_BlindDetectionMCG_UE_r16Present bool
+	if Pdcch_BlindDetectionMCG_UE_r16Present, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var pdcch_BlindDetectionSCG_UE_r16Present bool
-	if pdcch_BlindDetectionSCG_UE_r16Present, err = r.ReadBool(); err != nil {
+	var Pdcch_BlindDetectionSCG_UE_r16Present bool
+	if Pdcch_BlindDetectionSCG_UE_r16Present, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var pdcch_BlindDetectionMCG_UE_Mixed_r16Present bool
-	if pdcch_BlindDetectionMCG_UE_Mixed_r16Present, err = r.ReadBool(); err != nil {
+	var Pdcch_BlindDetectionMCG_UE_Mixed_r16Present bool
+	if Pdcch_BlindDetectionMCG_UE_Mixed_r16Present, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var pdcch_BlindDetectionSCG_UE_Mixed_r16Present bool
-	if pdcch_BlindDetectionSCG_UE_Mixed_r16Present, err = r.ReadBool(); err != nil {
+	var Pdcch_BlindDetectionSCG_UE_Mixed_r16Present bool
+	if Pdcch_BlindDetectionSCG_UE_Mixed_r16Present, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var crossCarrierSchedulingDL_DiffSCS_r16Present bool
-	if crossCarrierSchedulingDL_DiffSCS_r16Present, err = r.ReadBool(); err != nil {
+	var CrossCarrierSchedulingDL_DiffSCS_r16Present bool
+	if CrossCarrierSchedulingDL_DiffSCS_r16Present, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var crossCarrierSchedulingDefaultQCL_r16Present bool
-	if crossCarrierSchedulingDefaultQCL_r16Present, err = r.ReadBool(); err != nil {
+	var CrossCarrierSchedulingDefaultQCL_r16Present bool
+	if CrossCarrierSchedulingDefaultQCL_r16Present, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var crossCarrierSchedulingUL_DiffSCS_r16Present bool
-	if crossCarrierSchedulingUL_DiffSCS_r16Present, err = r.ReadBool(); err != nil {
+	var CrossCarrierSchedulingUL_DiffSCS_r16Present bool
+	if CrossCarrierSchedulingUL_DiffSCS_r16Present, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var simul_SRS_MIMO_Trans_BC_r16Present bool
-	if simul_SRS_MIMO_Trans_BC_r16Present, err = r.ReadBool(); err != nil {
+	var Simul_SRS_MIMO_Trans_BC_r16Present bool
+	if Simul_SRS_MIMO_Trans_BC_r16Present, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var codebookParametersAdditionPerBC_r16Present bool
-	if codebookParametersAdditionPerBC_r16Present, err = r.ReadBool(); err != nil {
+	var CodebookParametersAdditionPerBC_r16Present bool
+	if CodebookParametersAdditionPerBC_r16Present, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var codebookComboParametersAdditionPerBC_r16Present bool
-	if codebookComboParametersAdditionPerBC_r16Present, err = r.ReadBool(); err != nil {
+	var CodebookComboParametersAdditionPerBC_r16Present bool
+	if CodebookComboParametersAdditionPerBC_r16Present, err = r.ReadBool(); err != nil {
 		return err
 	}
-	if parallelTxMsgA_SRS_PUCCH_PUSCH_r16Present {
-		ie.parallelTxMsgA_SRS_PUCCH_PUSCH_r16 = new(CA_ParametersNR_v1610_parallelTxMsgA_SRS_PUCCH_PUSCH_r16)
-		if err = ie.parallelTxMsgA_SRS_PUCCH_PUSCH_r16.Decode(r); err != nil {
-			return utils.WrapError("Decode parallelTxMsgA_SRS_PUCCH_PUSCH_r16", err)
+	if ParallelTxMsgA_SRS_PUCCH_PUSCH_r16Present {
+		ie.ParallelTxMsgA_SRS_PUCCH_PUSCH_r16 = new(CA_ParametersNR_v1610_parallelTxMsgA_SRS_PUCCH_PUSCH_r16)
+		if err = ie.ParallelTxMsgA_SRS_PUCCH_PUSCH_r16.Decode(r); err != nil {
+			return utils.WrapError("Decode ParallelTxMsgA_SRS_PUCCH_PUSCH_r16", err)
 		}
 	}
-	if msgA_SUL_r16Present {
-		ie.msgA_SUL_r16 = new(CA_ParametersNR_v1610_msgA_SUL_r16)
-		if err = ie.msgA_SUL_r16.Decode(r); err != nil {
-			return utils.WrapError("Decode msgA_SUL_r16", err)
+	if MsgA_SUL_r16Present {
+		ie.MsgA_SUL_r16 = new(CA_ParametersNR_v1610_msgA_SUL_r16)
+		if err = ie.MsgA_SUL_r16.Decode(r); err != nil {
+			return utils.WrapError("Decode MsgA_SUL_r16", err)
 		}
 	}
-	if jointSearchSpaceSwitchAcrossCells_r16Present {
-		ie.jointSearchSpaceSwitchAcrossCells_r16 = new(CA_ParametersNR_v1610_jointSearchSpaceSwitchAcrossCells_r16)
-		if err = ie.jointSearchSpaceSwitchAcrossCells_r16.Decode(r); err != nil {
-			return utils.WrapError("Decode jointSearchSpaceSwitchAcrossCells_r16", err)
+	if JointSearchSpaceSwitchAcrossCells_r16Present {
+		ie.JointSearchSpaceSwitchAcrossCells_r16 = new(CA_ParametersNR_v1610_jointSearchSpaceSwitchAcrossCells_r16)
+		if err = ie.JointSearchSpaceSwitchAcrossCells_r16.Decode(r); err != nil {
+			return utils.WrapError("Decode JointSearchSpaceSwitchAcrossCells_r16", err)
 		}
 	}
-	if half_DuplexTDD_CA_SameSCS_r16Present {
-		ie.half_DuplexTDD_CA_SameSCS_r16 = new(CA_ParametersNR_v1610_half_DuplexTDD_CA_SameSCS_r16)
-		if err = ie.half_DuplexTDD_CA_SameSCS_r16.Decode(r); err != nil {
-			return utils.WrapError("Decode half_DuplexTDD_CA_SameSCS_r16", err)
+	if Half_DuplexTDD_CA_SameSCS_r16Present {
+		ie.Half_DuplexTDD_CA_SameSCS_r16 = new(CA_ParametersNR_v1610_half_DuplexTDD_CA_SameSCS_r16)
+		if err = ie.Half_DuplexTDD_CA_SameSCS_r16.Decode(r); err != nil {
+			return utils.WrapError("Decode Half_DuplexTDD_CA_SameSCS_r16", err)
 		}
 	}
-	if scellDormancyWithinActiveTime_r16Present {
-		ie.scellDormancyWithinActiveTime_r16 = new(CA_ParametersNR_v1610_scellDormancyWithinActiveTime_r16)
-		if err = ie.scellDormancyWithinActiveTime_r16.Decode(r); err != nil {
-			return utils.WrapError("Decode scellDormancyWithinActiveTime_r16", err)
+	if ScellDormancyWithinActiveTime_r16Present {
+		ie.ScellDormancyWithinActiveTime_r16 = new(CA_ParametersNR_v1610_scellDormancyWithinActiveTime_r16)
+		if err = ie.ScellDormancyWithinActiveTime_r16.Decode(r); err != nil {
+			return utils.WrapError("Decode ScellDormancyWithinActiveTime_r16", err)
 		}
 	}
-	if scellDormancyOutsideActiveTime_r16Present {
-		ie.scellDormancyOutsideActiveTime_r16 = new(CA_ParametersNR_v1610_scellDormancyOutsideActiveTime_r16)
-		if err = ie.scellDormancyOutsideActiveTime_r16.Decode(r); err != nil {
-			return utils.WrapError("Decode scellDormancyOutsideActiveTime_r16", err)
+	if ScellDormancyOutsideActiveTime_r16Present {
+		ie.ScellDormancyOutsideActiveTime_r16 = new(CA_ParametersNR_v1610_scellDormancyOutsideActiveTime_r16)
+		if err = ie.ScellDormancyOutsideActiveTime_r16.Decode(r); err != nil {
+			return utils.WrapError("Decode ScellDormancyOutsideActiveTime_r16", err)
 		}
 	}
-	if crossCarrierA_CSI_trigDiffSCS_r16Present {
-		ie.crossCarrierA_CSI_trigDiffSCS_r16 = new(CA_ParametersNR_v1610_crossCarrierA_CSI_trigDiffSCS_r16)
-		if err = ie.crossCarrierA_CSI_trigDiffSCS_r16.Decode(r); err != nil {
-			return utils.WrapError("Decode crossCarrierA_CSI_trigDiffSCS_r16", err)
+	if CrossCarrierA_CSI_trigDiffSCS_r16Present {
+		ie.CrossCarrierA_CSI_trigDiffSCS_r16 = new(CA_ParametersNR_v1610_crossCarrierA_CSI_trigDiffSCS_r16)
+		if err = ie.CrossCarrierA_CSI_trigDiffSCS_r16.Decode(r); err != nil {
+			return utils.WrapError("Decode CrossCarrierA_CSI_trigDiffSCS_r16", err)
 		}
 	}
-	if defaultQCL_CrossCarrierA_CSI_Trig_r16Present {
-		ie.defaultQCL_CrossCarrierA_CSI_Trig_r16 = new(CA_ParametersNR_v1610_defaultQCL_CrossCarrierA_CSI_Trig_r16)
-		if err = ie.defaultQCL_CrossCarrierA_CSI_Trig_r16.Decode(r); err != nil {
-			return utils.WrapError("Decode defaultQCL_CrossCarrierA_CSI_Trig_r16", err)
+	if DefaultQCL_CrossCarrierA_CSI_Trig_r16Present {
+		ie.DefaultQCL_CrossCarrierA_CSI_Trig_r16 = new(CA_ParametersNR_v1610_defaultQCL_CrossCarrierA_CSI_Trig_r16)
+		if err = ie.DefaultQCL_CrossCarrierA_CSI_Trig_r16.Decode(r); err != nil {
+			return utils.WrapError("Decode DefaultQCL_CrossCarrierA_CSI_Trig_r16", err)
 		}
 	}
-	if interCA_NonAlignedFrame_r16Present {
-		ie.interCA_NonAlignedFrame_r16 = new(CA_ParametersNR_v1610_interCA_NonAlignedFrame_r16)
-		if err = ie.interCA_NonAlignedFrame_r16.Decode(r); err != nil {
-			return utils.WrapError("Decode interCA_NonAlignedFrame_r16", err)
+	if InterCA_NonAlignedFrame_r16Present {
+		ie.InterCA_NonAlignedFrame_r16 = new(CA_ParametersNR_v1610_interCA_NonAlignedFrame_r16)
+		if err = ie.InterCA_NonAlignedFrame_r16.Decode(r); err != nil {
+			return utils.WrapError("Decode InterCA_NonAlignedFrame_r16", err)
 		}
 	}
-	if simul_SRS_Trans_BC_r16Present {
-		ie.simul_SRS_Trans_BC_r16 = new(CA_ParametersNR_v1610_simul_SRS_Trans_BC_r16)
-		if err = ie.simul_SRS_Trans_BC_r16.Decode(r); err != nil {
-			return utils.WrapError("Decode simul_SRS_Trans_BC_r16", err)
+	if Simul_SRS_Trans_BC_r16Present {
+		ie.Simul_SRS_Trans_BC_r16 = new(CA_ParametersNR_v1610_simul_SRS_Trans_BC_r16)
+		if err = ie.Simul_SRS_Trans_BC_r16.Decode(r); err != nil {
+			return utils.WrapError("Decode Simul_SRS_Trans_BC_r16", err)
 		}
 	}
-	if interFreqDAPS_r16Present {
-		ie.interFreqDAPS_r16 = new(CA_ParametersNR_v1610_interFreqDAPS_r16)
-		if err = ie.interFreqDAPS_r16.Decode(r); err != nil {
-			return utils.WrapError("Decode interFreqDAPS_r16", err)
+	if InterFreqDAPS_r16Present {
+		ie.InterFreqDAPS_r16 = new(CA_ParametersNR_v1610_interFreqDAPS_r16)
+		if err = ie.InterFreqDAPS_r16.Decode(r); err != nil {
+			return utils.WrapError("Decode InterFreqDAPS_r16", err)
 		}
 	}
-	if codebookParametersPerBC_r16Present {
-		ie.codebookParametersPerBC_r16 = new(CodebookParameters_v1610)
-		if err = ie.codebookParametersPerBC_r16.Decode(r); err != nil {
-			return utils.WrapError("Decode codebookParametersPerBC_r16", err)
+	if CodebookParametersPerBC_r16Present {
+		ie.CodebookParametersPerBC_r16 = new(CodebookParameters_v1610)
+		if err = ie.CodebookParametersPerBC_r16.Decode(r); err != nil {
+			return utils.WrapError("Decode CodebookParametersPerBC_r16", err)
 		}
 	}
-	if blindDetectFactor_r16Present {
-		var tmp_int_blindDetectFactor_r16 int64
-		if tmp_int_blindDetectFactor_r16, err = r.ReadInteger(&uper.Constraint{Lb: 1, Ub: 2}, false); err != nil {
-			return utils.WrapError("Decode blindDetectFactor_r16", err)
+	if BlindDetectFactor_r16Present {
+		var tmp_int_BlindDetectFactor_r16 int64
+		if tmp_int_BlindDetectFactor_r16, err = r.ReadInteger(&uper.Constraint{Lb: 1, Ub: 2}, false); err != nil {
+			return utils.WrapError("Decode BlindDetectFactor_r16", err)
 		}
-		ie.blindDetectFactor_r16 = &tmp_int_blindDetectFactor_r16
+		ie.BlindDetectFactor_r16 = &tmp_int_BlindDetectFactor_r16
 	}
-	if pdcch_MonitoringCA_r16Present {
-		ie.pdcch_MonitoringCA_r16 = new(CA_ParametersNR_v1610_pdcch_MonitoringCA_r16)
-		if err = ie.pdcch_MonitoringCA_r16.Decode(r); err != nil {
-			return utils.WrapError("Decode pdcch_MonitoringCA_r16", err)
-		}
-	}
-	if pdcch_BlindDetectionCA_Mixed_r16Present {
-		ie.pdcch_BlindDetectionCA_Mixed_r16 = new(CA_ParametersNR_v1610_pdcch_BlindDetectionCA_Mixed_r16)
-		if err = ie.pdcch_BlindDetectionCA_Mixed_r16.Decode(r); err != nil {
-			return utils.WrapError("Decode pdcch_BlindDetectionCA_Mixed_r16", err)
+	if Pdcch_MonitoringCA_r16Present {
+		ie.Pdcch_MonitoringCA_r16 = new(CA_ParametersNR_v1610_pdcch_MonitoringCA_r16)
+		if err = ie.Pdcch_MonitoringCA_r16.Decode(r); err != nil {
+			return utils.WrapError("Decode Pdcch_MonitoringCA_r16", err)
 		}
 	}
-	if pdcch_BlindDetectionMCG_UE_r16Present {
-		var tmp_int_pdcch_BlindDetectionMCG_UE_r16 int64
-		if tmp_int_pdcch_BlindDetectionMCG_UE_r16, err = r.ReadInteger(&uper.Constraint{Lb: 1, Ub: 14}, false); err != nil {
-			return utils.WrapError("Decode pdcch_BlindDetectionMCG_UE_r16", err)
-		}
-		ie.pdcch_BlindDetectionMCG_UE_r16 = &tmp_int_pdcch_BlindDetectionMCG_UE_r16
-	}
-	if pdcch_BlindDetectionSCG_UE_r16Present {
-		var tmp_int_pdcch_BlindDetectionSCG_UE_r16 int64
-		if tmp_int_pdcch_BlindDetectionSCG_UE_r16, err = r.ReadInteger(&uper.Constraint{Lb: 1, Ub: 14}, false); err != nil {
-			return utils.WrapError("Decode pdcch_BlindDetectionSCG_UE_r16", err)
-		}
-		ie.pdcch_BlindDetectionSCG_UE_r16 = &tmp_int_pdcch_BlindDetectionSCG_UE_r16
-	}
-	if pdcch_BlindDetectionMCG_UE_Mixed_r16Present {
-		ie.pdcch_BlindDetectionMCG_UE_Mixed_r16 = new(CA_ParametersNR_v1610_pdcch_BlindDetectionMCG_UE_Mixed_r16)
-		if err = ie.pdcch_BlindDetectionMCG_UE_Mixed_r16.Decode(r); err != nil {
-			return utils.WrapError("Decode pdcch_BlindDetectionMCG_UE_Mixed_r16", err)
+	if Pdcch_BlindDetectionCA_Mixed_r16Present {
+		ie.Pdcch_BlindDetectionCA_Mixed_r16 = new(CA_ParametersNR_v1610_pdcch_BlindDetectionCA_Mixed_r16)
+		if err = ie.Pdcch_BlindDetectionCA_Mixed_r16.Decode(r); err != nil {
+			return utils.WrapError("Decode Pdcch_BlindDetectionCA_Mixed_r16", err)
 		}
 	}
-	if pdcch_BlindDetectionSCG_UE_Mixed_r16Present {
-		ie.pdcch_BlindDetectionSCG_UE_Mixed_r16 = new(CA_ParametersNR_v1610_pdcch_BlindDetectionSCG_UE_Mixed_r16)
-		if err = ie.pdcch_BlindDetectionSCG_UE_Mixed_r16.Decode(r); err != nil {
-			return utils.WrapError("Decode pdcch_BlindDetectionSCG_UE_Mixed_r16", err)
+	if Pdcch_BlindDetectionMCG_UE_r16Present {
+		var tmp_int_Pdcch_BlindDetectionMCG_UE_r16 int64
+		if tmp_int_Pdcch_BlindDetectionMCG_UE_r16, err = r.ReadInteger(&uper.Constraint{Lb: 1, Ub: 14}, false); err != nil {
+			return utils.WrapError("Decode Pdcch_BlindDetectionMCG_UE_r16", err)
+		}
+		ie.Pdcch_BlindDetectionMCG_UE_r16 = &tmp_int_Pdcch_BlindDetectionMCG_UE_r16
+	}
+	if Pdcch_BlindDetectionSCG_UE_r16Present {
+		var tmp_int_Pdcch_BlindDetectionSCG_UE_r16 int64
+		if tmp_int_Pdcch_BlindDetectionSCG_UE_r16, err = r.ReadInteger(&uper.Constraint{Lb: 1, Ub: 14}, false); err != nil {
+			return utils.WrapError("Decode Pdcch_BlindDetectionSCG_UE_r16", err)
+		}
+		ie.Pdcch_BlindDetectionSCG_UE_r16 = &tmp_int_Pdcch_BlindDetectionSCG_UE_r16
+	}
+	if Pdcch_BlindDetectionMCG_UE_Mixed_r16Present {
+		ie.Pdcch_BlindDetectionMCG_UE_Mixed_r16 = new(CA_ParametersNR_v1610_pdcch_BlindDetectionMCG_UE_Mixed_r16)
+		if err = ie.Pdcch_BlindDetectionMCG_UE_Mixed_r16.Decode(r); err != nil {
+			return utils.WrapError("Decode Pdcch_BlindDetectionMCG_UE_Mixed_r16", err)
 		}
 	}
-	if crossCarrierSchedulingDL_DiffSCS_r16Present {
-		ie.crossCarrierSchedulingDL_DiffSCS_r16 = new(CA_ParametersNR_v1610_crossCarrierSchedulingDL_DiffSCS_r16)
-		if err = ie.crossCarrierSchedulingDL_DiffSCS_r16.Decode(r); err != nil {
-			return utils.WrapError("Decode crossCarrierSchedulingDL_DiffSCS_r16", err)
+	if Pdcch_BlindDetectionSCG_UE_Mixed_r16Present {
+		ie.Pdcch_BlindDetectionSCG_UE_Mixed_r16 = new(CA_ParametersNR_v1610_pdcch_BlindDetectionSCG_UE_Mixed_r16)
+		if err = ie.Pdcch_BlindDetectionSCG_UE_Mixed_r16.Decode(r); err != nil {
+			return utils.WrapError("Decode Pdcch_BlindDetectionSCG_UE_Mixed_r16", err)
 		}
 	}
-	if crossCarrierSchedulingDefaultQCL_r16Present {
-		ie.crossCarrierSchedulingDefaultQCL_r16 = new(CA_ParametersNR_v1610_crossCarrierSchedulingDefaultQCL_r16)
-		if err = ie.crossCarrierSchedulingDefaultQCL_r16.Decode(r); err != nil {
-			return utils.WrapError("Decode crossCarrierSchedulingDefaultQCL_r16", err)
+	if CrossCarrierSchedulingDL_DiffSCS_r16Present {
+		ie.CrossCarrierSchedulingDL_DiffSCS_r16 = new(CA_ParametersNR_v1610_crossCarrierSchedulingDL_DiffSCS_r16)
+		if err = ie.CrossCarrierSchedulingDL_DiffSCS_r16.Decode(r); err != nil {
+			return utils.WrapError("Decode CrossCarrierSchedulingDL_DiffSCS_r16", err)
 		}
 	}
-	if crossCarrierSchedulingUL_DiffSCS_r16Present {
-		ie.crossCarrierSchedulingUL_DiffSCS_r16 = new(CA_ParametersNR_v1610_crossCarrierSchedulingUL_DiffSCS_r16)
-		if err = ie.crossCarrierSchedulingUL_DiffSCS_r16.Decode(r); err != nil {
-			return utils.WrapError("Decode crossCarrierSchedulingUL_DiffSCS_r16", err)
+	if CrossCarrierSchedulingDefaultQCL_r16Present {
+		ie.CrossCarrierSchedulingDefaultQCL_r16 = new(CA_ParametersNR_v1610_crossCarrierSchedulingDefaultQCL_r16)
+		if err = ie.CrossCarrierSchedulingDefaultQCL_r16.Decode(r); err != nil {
+			return utils.WrapError("Decode CrossCarrierSchedulingDefaultQCL_r16", err)
 		}
 	}
-	if simul_SRS_MIMO_Trans_BC_r16Present {
-		ie.simul_SRS_MIMO_Trans_BC_r16 = new(CA_ParametersNR_v1610_simul_SRS_MIMO_Trans_BC_r16)
-		if err = ie.simul_SRS_MIMO_Trans_BC_r16.Decode(r); err != nil {
-			return utils.WrapError("Decode simul_SRS_MIMO_Trans_BC_r16", err)
+	if CrossCarrierSchedulingUL_DiffSCS_r16Present {
+		ie.CrossCarrierSchedulingUL_DiffSCS_r16 = new(CA_ParametersNR_v1610_crossCarrierSchedulingUL_DiffSCS_r16)
+		if err = ie.CrossCarrierSchedulingUL_DiffSCS_r16.Decode(r); err != nil {
+			return utils.WrapError("Decode CrossCarrierSchedulingUL_DiffSCS_r16", err)
 		}
 	}
-	if codebookParametersAdditionPerBC_r16Present {
-		ie.codebookParametersAdditionPerBC_r16 = new(CodebookParametersAdditionPerBC_r16)
-		if err = ie.codebookParametersAdditionPerBC_r16.Decode(r); err != nil {
-			return utils.WrapError("Decode codebookParametersAdditionPerBC_r16", err)
+	if Simul_SRS_MIMO_Trans_BC_r16Present {
+		ie.Simul_SRS_MIMO_Trans_BC_r16 = new(CA_ParametersNR_v1610_simul_SRS_MIMO_Trans_BC_r16)
+		if err = ie.Simul_SRS_MIMO_Trans_BC_r16.Decode(r); err != nil {
+			return utils.WrapError("Decode Simul_SRS_MIMO_Trans_BC_r16", err)
 		}
 	}
-	if codebookComboParametersAdditionPerBC_r16Present {
-		ie.codebookComboParametersAdditionPerBC_r16 = new(CodebookComboParametersAdditionPerBC_r16)
-		if err = ie.codebookComboParametersAdditionPerBC_r16.Decode(r); err != nil {
-			return utils.WrapError("Decode codebookComboParametersAdditionPerBC_r16", err)
+	if CodebookParametersAdditionPerBC_r16Present {
+		ie.CodebookParametersAdditionPerBC_r16 = new(CodebookParametersAdditionPerBC_r16)
+		if err = ie.CodebookParametersAdditionPerBC_r16.Decode(r); err != nil {
+			return utils.WrapError("Decode CodebookParametersAdditionPerBC_r16", err)
+		}
+	}
+	if CodebookComboParametersAdditionPerBC_r16Present {
+		ie.CodebookComboParametersAdditionPerBC_r16 = new(CodebookComboParametersAdditionPerBC_r16)
+		if err = ie.CodebookComboParametersAdditionPerBC_r16.Decode(r); err != nil {
+			return utils.WrapError("Decode CodebookComboParametersAdditionPerBC_r16", err)
 		}
 	}
 	return nil

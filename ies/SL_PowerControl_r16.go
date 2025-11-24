@@ -8,63 +8,63 @@ import (
 )
 
 type SL_PowerControl_r16 struct {
-	sl_MaxTransPower_r16     int64                                         `lb:-30,ub:33,madatory`
-	sl_Alpha_PSSCH_PSCCH_r16 *SL_PowerControl_r16_sl_Alpha_PSSCH_PSCCH_r16 `optional`
-	dl_Alpha_PSSCH_PSCCH_r16 *SL_PowerControl_r16_dl_Alpha_PSSCH_PSCCH_r16 `optional`
-	sl_P0_PSSCH_PSCCH_r16    *int64                                        `lb:-16,ub:15,optional`
-	dl_P0_PSSCH_PSCCH_r16    *int64                                        `lb:-16,ub:15,optional`
-	dl_Alpha_PSFCH_r16       *SL_PowerControl_r16_dl_Alpha_PSFCH_r16       `optional`
-	dl_P0_PSFCH_r16          *int64                                        `lb:-16,ub:15,optional`
-	dl_P0_PSSCH_PSCCH_r17    *int64                                        `lb:-202,ub:24,optional,ext-1`
-	sl_P0_PSSCH_PSCCH_r17    *int64                                        `lb:-202,ub:24,optional,ext-1`
-	dl_P0_PSFCH_r17          *int64                                        `lb:-202,ub:24,optional,ext-1`
+	Sl_MaxTransPower_r16     int64                                         `lb:-30,ub:33,madatory`
+	Sl_Alpha_PSSCH_PSCCH_r16 *SL_PowerControl_r16_sl_Alpha_PSSCH_PSCCH_r16 `optional`
+	Dl_Alpha_PSSCH_PSCCH_r16 *SL_PowerControl_r16_dl_Alpha_PSSCH_PSCCH_r16 `optional`
+	Sl_P0_PSSCH_PSCCH_r16    *int64                                        `lb:-16,ub:15,optional`
+	Dl_P0_PSSCH_PSCCH_r16    *int64                                        `lb:-16,ub:15,optional`
+	Dl_Alpha_PSFCH_r16       *SL_PowerControl_r16_dl_Alpha_PSFCH_r16       `optional`
+	Dl_P0_PSFCH_r16          *int64                                        `lb:-16,ub:15,optional`
+	Dl_P0_PSSCH_PSCCH_r17    *int64                                        `lb:-202,ub:24,optional,ext-1`
+	Sl_P0_PSSCH_PSCCH_r17    *int64                                        `lb:-202,ub:24,optional,ext-1`
+	Dl_P0_PSFCH_r17          *int64                                        `lb:-202,ub:24,optional,ext-1`
 }
 
 func (ie *SL_PowerControl_r16) Encode(w *uper.UperWriter) error {
 	var err error
-	hasExtensions := ie.dl_P0_PSSCH_PSCCH_r17 != nil || ie.sl_P0_PSSCH_PSCCH_r17 != nil || ie.dl_P0_PSFCH_r17 != nil
-	preambleBits := []bool{hasExtensions, ie.sl_Alpha_PSSCH_PSCCH_r16 != nil, ie.dl_Alpha_PSSCH_PSCCH_r16 != nil, ie.sl_P0_PSSCH_PSCCH_r16 != nil, ie.dl_P0_PSSCH_PSCCH_r16 != nil, ie.dl_Alpha_PSFCH_r16 != nil, ie.dl_P0_PSFCH_r16 != nil}
+	hasExtensions := ie.Dl_P0_PSSCH_PSCCH_r17 != nil || ie.Sl_P0_PSSCH_PSCCH_r17 != nil || ie.Dl_P0_PSFCH_r17 != nil
+	preambleBits := []bool{hasExtensions, ie.Sl_Alpha_PSSCH_PSCCH_r16 != nil, ie.Dl_Alpha_PSSCH_PSCCH_r16 != nil, ie.Sl_P0_PSSCH_PSCCH_r16 != nil, ie.Dl_P0_PSSCH_PSCCH_r16 != nil, ie.Dl_Alpha_PSFCH_r16 != nil, ie.Dl_P0_PSFCH_r16 != nil}
 	for _, bit := range preambleBits {
 		if err = w.WriteBool(bit); err != nil {
 			return err
 		}
 	}
-	if err = w.WriteInteger(ie.sl_MaxTransPower_r16, &uper.Constraint{Lb: -30, Ub: 33}, false); err != nil {
-		return utils.WrapError("WriteInteger sl_MaxTransPower_r16", err)
+	if err = w.WriteInteger(ie.Sl_MaxTransPower_r16, &uper.Constraint{Lb: -30, Ub: 33}, false); err != nil {
+		return utils.WrapError("WriteInteger Sl_MaxTransPower_r16", err)
 	}
-	if ie.sl_Alpha_PSSCH_PSCCH_r16 != nil {
-		if err = ie.sl_Alpha_PSSCH_PSCCH_r16.Encode(w); err != nil {
-			return utils.WrapError("Encode sl_Alpha_PSSCH_PSCCH_r16", err)
+	if ie.Sl_Alpha_PSSCH_PSCCH_r16 != nil {
+		if err = ie.Sl_Alpha_PSSCH_PSCCH_r16.Encode(w); err != nil {
+			return utils.WrapError("Encode Sl_Alpha_PSSCH_PSCCH_r16", err)
 		}
 	}
-	if ie.dl_Alpha_PSSCH_PSCCH_r16 != nil {
-		if err = ie.dl_Alpha_PSSCH_PSCCH_r16.Encode(w); err != nil {
-			return utils.WrapError("Encode dl_Alpha_PSSCH_PSCCH_r16", err)
+	if ie.Dl_Alpha_PSSCH_PSCCH_r16 != nil {
+		if err = ie.Dl_Alpha_PSSCH_PSCCH_r16.Encode(w); err != nil {
+			return utils.WrapError("Encode Dl_Alpha_PSSCH_PSCCH_r16", err)
 		}
 	}
-	if ie.sl_P0_PSSCH_PSCCH_r16 != nil {
-		if err = w.WriteInteger(*ie.sl_P0_PSSCH_PSCCH_r16, &uper.Constraint{Lb: -16, Ub: 15}, false); err != nil {
-			return utils.WrapError("Encode sl_P0_PSSCH_PSCCH_r16", err)
+	if ie.Sl_P0_PSSCH_PSCCH_r16 != nil {
+		if err = w.WriteInteger(*ie.Sl_P0_PSSCH_PSCCH_r16, &uper.Constraint{Lb: -16, Ub: 15}, false); err != nil {
+			return utils.WrapError("Encode Sl_P0_PSSCH_PSCCH_r16", err)
 		}
 	}
-	if ie.dl_P0_PSSCH_PSCCH_r16 != nil {
-		if err = w.WriteInteger(*ie.dl_P0_PSSCH_PSCCH_r16, &uper.Constraint{Lb: -16, Ub: 15}, false); err != nil {
-			return utils.WrapError("Encode dl_P0_PSSCH_PSCCH_r16", err)
+	if ie.Dl_P0_PSSCH_PSCCH_r16 != nil {
+		if err = w.WriteInteger(*ie.Dl_P0_PSSCH_PSCCH_r16, &uper.Constraint{Lb: -16, Ub: 15}, false); err != nil {
+			return utils.WrapError("Encode Dl_P0_PSSCH_PSCCH_r16", err)
 		}
 	}
-	if ie.dl_Alpha_PSFCH_r16 != nil {
-		if err = ie.dl_Alpha_PSFCH_r16.Encode(w); err != nil {
-			return utils.WrapError("Encode dl_Alpha_PSFCH_r16", err)
+	if ie.Dl_Alpha_PSFCH_r16 != nil {
+		if err = ie.Dl_Alpha_PSFCH_r16.Encode(w); err != nil {
+			return utils.WrapError("Encode Dl_Alpha_PSFCH_r16", err)
 		}
 	}
-	if ie.dl_P0_PSFCH_r16 != nil {
-		if err = w.WriteInteger(*ie.dl_P0_PSFCH_r16, &uper.Constraint{Lb: -16, Ub: 15}, false); err != nil {
-			return utils.WrapError("Encode dl_P0_PSFCH_r16", err)
+	if ie.Dl_P0_PSFCH_r16 != nil {
+		if err = w.WriteInteger(*ie.Dl_P0_PSFCH_r16, &uper.Constraint{Lb: -16, Ub: 15}, false); err != nil {
+			return utils.WrapError("Encode Dl_P0_PSFCH_r16", err)
 		}
 	}
 	if hasExtensions {
 		// Extension bitmap: 1 bits for 1 extension groups
-		extBitmap := []bool{ie.dl_P0_PSSCH_PSCCH_r17 != nil || ie.sl_P0_PSSCH_PSCCH_r17 != nil || ie.dl_P0_PSFCH_r17 != nil}
+		extBitmap := []bool{ie.Dl_P0_PSSCH_PSCCH_r17 != nil || ie.Sl_P0_PSSCH_PSCCH_r17 != nil || ie.Dl_P0_PSFCH_r17 != nil}
 		if err := w.WriteExtBitMap(extBitmap); err != nil {
 			return utils.WrapError("WriteExtBitMap SL_PowerControl_r16", err)
 		}
@@ -75,29 +75,29 @@ func (ie *SL_PowerControl_r16) Encode(w *uper.UperWriter) error {
 			extWriter := uper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 1
-			optionals_ext_1 := []bool{ie.dl_P0_PSSCH_PSCCH_r17 != nil, ie.sl_P0_PSSCH_PSCCH_r17 != nil, ie.dl_P0_PSFCH_r17 != nil}
+			optionals_ext_1 := []bool{ie.Dl_P0_PSSCH_PSCCH_r17 != nil, ie.Sl_P0_PSSCH_PSCCH_r17 != nil, ie.Dl_P0_PSFCH_r17 != nil}
 			for _, bit := range optionals_ext_1 {
 				if err := extWriter.WriteBool(bit); err != nil {
 					return err
 				}
 			}
 
-			// encode dl_P0_PSSCH_PSCCH_r17 optional
-			if ie.dl_P0_PSSCH_PSCCH_r17 != nil {
-				if err = extWriter.WriteInteger(*ie.dl_P0_PSSCH_PSCCH_r17, &uper.Constraint{Lb: -202, Ub: 24}, false); err != nil {
-					return utils.WrapError("Encode dl_P0_PSSCH_PSCCH_r17", err)
+			// encode Dl_P0_PSSCH_PSCCH_r17 optional
+			if ie.Dl_P0_PSSCH_PSCCH_r17 != nil {
+				if err = extWriter.WriteInteger(*ie.Dl_P0_PSSCH_PSCCH_r17, &uper.Constraint{Lb: -202, Ub: 24}, false); err != nil {
+					return utils.WrapError("Encode Dl_P0_PSSCH_PSCCH_r17", err)
 				}
 			}
-			// encode sl_P0_PSSCH_PSCCH_r17 optional
-			if ie.sl_P0_PSSCH_PSCCH_r17 != nil {
-				if err = extWriter.WriteInteger(*ie.sl_P0_PSSCH_PSCCH_r17, &uper.Constraint{Lb: -202, Ub: 24}, false); err != nil {
-					return utils.WrapError("Encode sl_P0_PSSCH_PSCCH_r17", err)
+			// encode Sl_P0_PSSCH_PSCCH_r17 optional
+			if ie.Sl_P0_PSSCH_PSCCH_r17 != nil {
+				if err = extWriter.WriteInteger(*ie.Sl_P0_PSSCH_PSCCH_r17, &uper.Constraint{Lb: -202, Ub: 24}, false); err != nil {
+					return utils.WrapError("Encode Sl_P0_PSSCH_PSCCH_r17", err)
 				}
 			}
-			// encode dl_P0_PSFCH_r17 optional
-			if ie.dl_P0_PSFCH_r17 != nil {
-				if err = extWriter.WriteInteger(*ie.dl_P0_PSFCH_r17, &uper.Constraint{Lb: -202, Ub: 24}, false); err != nil {
-					return utils.WrapError("Encode dl_P0_PSFCH_r17", err)
+			// encode Dl_P0_PSFCH_r17 optional
+			if ie.Dl_P0_PSFCH_r17 != nil {
+				if err = extWriter.WriteInteger(*ie.Dl_P0_PSFCH_r17, &uper.Constraint{Lb: -202, Ub: 24}, false); err != nil {
+					return utils.WrapError("Encode Dl_P0_PSFCH_r17", err)
 				}
 			}
 
@@ -119,73 +119,73 @@ func (ie *SL_PowerControl_r16) Decode(r *uper.UperReader) error {
 	if extensionBit, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var sl_Alpha_PSSCH_PSCCH_r16Present bool
-	if sl_Alpha_PSSCH_PSCCH_r16Present, err = r.ReadBool(); err != nil {
+	var Sl_Alpha_PSSCH_PSCCH_r16Present bool
+	if Sl_Alpha_PSSCH_PSCCH_r16Present, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var dl_Alpha_PSSCH_PSCCH_r16Present bool
-	if dl_Alpha_PSSCH_PSCCH_r16Present, err = r.ReadBool(); err != nil {
+	var Dl_Alpha_PSSCH_PSCCH_r16Present bool
+	if Dl_Alpha_PSSCH_PSCCH_r16Present, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var sl_P0_PSSCH_PSCCH_r16Present bool
-	if sl_P0_PSSCH_PSCCH_r16Present, err = r.ReadBool(); err != nil {
+	var Sl_P0_PSSCH_PSCCH_r16Present bool
+	if Sl_P0_PSSCH_PSCCH_r16Present, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var dl_P0_PSSCH_PSCCH_r16Present bool
-	if dl_P0_PSSCH_PSCCH_r16Present, err = r.ReadBool(); err != nil {
+	var Dl_P0_PSSCH_PSCCH_r16Present bool
+	if Dl_P0_PSSCH_PSCCH_r16Present, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var dl_Alpha_PSFCH_r16Present bool
-	if dl_Alpha_PSFCH_r16Present, err = r.ReadBool(); err != nil {
+	var Dl_Alpha_PSFCH_r16Present bool
+	if Dl_Alpha_PSFCH_r16Present, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var dl_P0_PSFCH_r16Present bool
-	if dl_P0_PSFCH_r16Present, err = r.ReadBool(); err != nil {
+	var Dl_P0_PSFCH_r16Present bool
+	if Dl_P0_PSFCH_r16Present, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var tmp_int_sl_MaxTransPower_r16 int64
-	if tmp_int_sl_MaxTransPower_r16, err = r.ReadInteger(&uper.Constraint{Lb: -30, Ub: 33}, false); err != nil {
-		return utils.WrapError("ReadInteger sl_MaxTransPower_r16", err)
+	var tmp_int_Sl_MaxTransPower_r16 int64
+	if tmp_int_Sl_MaxTransPower_r16, err = r.ReadInteger(&uper.Constraint{Lb: -30, Ub: 33}, false); err != nil {
+		return utils.WrapError("ReadInteger Sl_MaxTransPower_r16", err)
 	}
-	ie.sl_MaxTransPower_r16 = tmp_int_sl_MaxTransPower_r16
-	if sl_Alpha_PSSCH_PSCCH_r16Present {
-		ie.sl_Alpha_PSSCH_PSCCH_r16 = new(SL_PowerControl_r16_sl_Alpha_PSSCH_PSCCH_r16)
-		if err = ie.sl_Alpha_PSSCH_PSCCH_r16.Decode(r); err != nil {
-			return utils.WrapError("Decode sl_Alpha_PSSCH_PSCCH_r16", err)
+	ie.Sl_MaxTransPower_r16 = tmp_int_Sl_MaxTransPower_r16
+	if Sl_Alpha_PSSCH_PSCCH_r16Present {
+		ie.Sl_Alpha_PSSCH_PSCCH_r16 = new(SL_PowerControl_r16_sl_Alpha_PSSCH_PSCCH_r16)
+		if err = ie.Sl_Alpha_PSSCH_PSCCH_r16.Decode(r); err != nil {
+			return utils.WrapError("Decode Sl_Alpha_PSSCH_PSCCH_r16", err)
 		}
 	}
-	if dl_Alpha_PSSCH_PSCCH_r16Present {
-		ie.dl_Alpha_PSSCH_PSCCH_r16 = new(SL_PowerControl_r16_dl_Alpha_PSSCH_PSCCH_r16)
-		if err = ie.dl_Alpha_PSSCH_PSCCH_r16.Decode(r); err != nil {
-			return utils.WrapError("Decode dl_Alpha_PSSCH_PSCCH_r16", err)
+	if Dl_Alpha_PSSCH_PSCCH_r16Present {
+		ie.Dl_Alpha_PSSCH_PSCCH_r16 = new(SL_PowerControl_r16_dl_Alpha_PSSCH_PSCCH_r16)
+		if err = ie.Dl_Alpha_PSSCH_PSCCH_r16.Decode(r); err != nil {
+			return utils.WrapError("Decode Dl_Alpha_PSSCH_PSCCH_r16", err)
 		}
 	}
-	if sl_P0_PSSCH_PSCCH_r16Present {
-		var tmp_int_sl_P0_PSSCH_PSCCH_r16 int64
-		if tmp_int_sl_P0_PSSCH_PSCCH_r16, err = r.ReadInteger(&uper.Constraint{Lb: -16, Ub: 15}, false); err != nil {
-			return utils.WrapError("Decode sl_P0_PSSCH_PSCCH_r16", err)
+	if Sl_P0_PSSCH_PSCCH_r16Present {
+		var tmp_int_Sl_P0_PSSCH_PSCCH_r16 int64
+		if tmp_int_Sl_P0_PSSCH_PSCCH_r16, err = r.ReadInteger(&uper.Constraint{Lb: -16, Ub: 15}, false); err != nil {
+			return utils.WrapError("Decode Sl_P0_PSSCH_PSCCH_r16", err)
 		}
-		ie.sl_P0_PSSCH_PSCCH_r16 = &tmp_int_sl_P0_PSSCH_PSCCH_r16
+		ie.Sl_P0_PSSCH_PSCCH_r16 = &tmp_int_Sl_P0_PSSCH_PSCCH_r16
 	}
-	if dl_P0_PSSCH_PSCCH_r16Present {
-		var tmp_int_dl_P0_PSSCH_PSCCH_r16 int64
-		if tmp_int_dl_P0_PSSCH_PSCCH_r16, err = r.ReadInteger(&uper.Constraint{Lb: -16, Ub: 15}, false); err != nil {
-			return utils.WrapError("Decode dl_P0_PSSCH_PSCCH_r16", err)
+	if Dl_P0_PSSCH_PSCCH_r16Present {
+		var tmp_int_Dl_P0_PSSCH_PSCCH_r16 int64
+		if tmp_int_Dl_P0_PSSCH_PSCCH_r16, err = r.ReadInteger(&uper.Constraint{Lb: -16, Ub: 15}, false); err != nil {
+			return utils.WrapError("Decode Dl_P0_PSSCH_PSCCH_r16", err)
 		}
-		ie.dl_P0_PSSCH_PSCCH_r16 = &tmp_int_dl_P0_PSSCH_PSCCH_r16
+		ie.Dl_P0_PSSCH_PSCCH_r16 = &tmp_int_Dl_P0_PSSCH_PSCCH_r16
 	}
-	if dl_Alpha_PSFCH_r16Present {
-		ie.dl_Alpha_PSFCH_r16 = new(SL_PowerControl_r16_dl_Alpha_PSFCH_r16)
-		if err = ie.dl_Alpha_PSFCH_r16.Decode(r); err != nil {
-			return utils.WrapError("Decode dl_Alpha_PSFCH_r16", err)
+	if Dl_Alpha_PSFCH_r16Present {
+		ie.Dl_Alpha_PSFCH_r16 = new(SL_PowerControl_r16_dl_Alpha_PSFCH_r16)
+		if err = ie.Dl_Alpha_PSFCH_r16.Decode(r); err != nil {
+			return utils.WrapError("Decode Dl_Alpha_PSFCH_r16", err)
 		}
 	}
-	if dl_P0_PSFCH_r16Present {
-		var tmp_int_dl_P0_PSFCH_r16 int64
-		if tmp_int_dl_P0_PSFCH_r16, err = r.ReadInteger(&uper.Constraint{Lb: -16, Ub: 15}, false); err != nil {
-			return utils.WrapError("Decode dl_P0_PSFCH_r16", err)
+	if Dl_P0_PSFCH_r16Present {
+		var tmp_int_Dl_P0_PSFCH_r16 int64
+		if tmp_int_Dl_P0_PSFCH_r16, err = r.ReadInteger(&uper.Constraint{Lb: -16, Ub: 15}, false); err != nil {
+			return utils.WrapError("Decode Dl_P0_PSFCH_r16", err)
 		}
-		ie.dl_P0_PSFCH_r16 = &tmp_int_dl_P0_PSFCH_r16
+		ie.Dl_P0_PSFCH_r16 = &tmp_int_Dl_P0_PSFCH_r16
 	}
 
 	if extensionBit {
@@ -204,41 +204,41 @@ func (ie *SL_PowerControl_r16) Decode(r *uper.UperReader) error {
 
 			extReader := uper.NewReader(bytes.NewReader(extBytes))
 
-			dl_P0_PSSCH_PSCCH_r17Present, err := extReader.ReadBool()
+			Dl_P0_PSSCH_PSCCH_r17Present, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			sl_P0_PSSCH_PSCCH_r17Present, err := extReader.ReadBool()
+			Sl_P0_PSSCH_PSCCH_r17Present, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			dl_P0_PSFCH_r17Present, err := extReader.ReadBool()
+			Dl_P0_PSFCH_r17Present, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			// decode dl_P0_PSSCH_PSCCH_r17 optional
-			if dl_P0_PSSCH_PSCCH_r17Present {
-				var tmp_int_dl_P0_PSSCH_PSCCH_r17 int64
-				if tmp_int_dl_P0_PSSCH_PSCCH_r17, err = extReader.ReadInteger(&uper.Constraint{Lb: -202, Ub: 24}, false); err != nil {
-					return utils.WrapError("Decode dl_P0_PSSCH_PSCCH_r17", err)
+			// decode Dl_P0_PSSCH_PSCCH_r17 optional
+			if Dl_P0_PSSCH_PSCCH_r17Present {
+				var tmp_int_Dl_P0_PSSCH_PSCCH_r17 int64
+				if tmp_int_Dl_P0_PSSCH_PSCCH_r17, err = extReader.ReadInteger(&uper.Constraint{Lb: -202, Ub: 24}, false); err != nil {
+					return utils.WrapError("Decode Dl_P0_PSSCH_PSCCH_r17", err)
 				}
-				ie.dl_P0_PSSCH_PSCCH_r17 = &tmp_int_dl_P0_PSSCH_PSCCH_r17
+				ie.Dl_P0_PSSCH_PSCCH_r17 = &tmp_int_Dl_P0_PSSCH_PSCCH_r17
 			}
-			// decode sl_P0_PSSCH_PSCCH_r17 optional
-			if sl_P0_PSSCH_PSCCH_r17Present {
-				var tmp_int_sl_P0_PSSCH_PSCCH_r17 int64
-				if tmp_int_sl_P0_PSSCH_PSCCH_r17, err = extReader.ReadInteger(&uper.Constraint{Lb: -202, Ub: 24}, false); err != nil {
-					return utils.WrapError("Decode sl_P0_PSSCH_PSCCH_r17", err)
+			// decode Sl_P0_PSSCH_PSCCH_r17 optional
+			if Sl_P0_PSSCH_PSCCH_r17Present {
+				var tmp_int_Sl_P0_PSSCH_PSCCH_r17 int64
+				if tmp_int_Sl_P0_PSSCH_PSCCH_r17, err = extReader.ReadInteger(&uper.Constraint{Lb: -202, Ub: 24}, false); err != nil {
+					return utils.WrapError("Decode Sl_P0_PSSCH_PSCCH_r17", err)
 				}
-				ie.sl_P0_PSSCH_PSCCH_r17 = &tmp_int_sl_P0_PSSCH_PSCCH_r17
+				ie.Sl_P0_PSSCH_PSCCH_r17 = &tmp_int_Sl_P0_PSSCH_PSCCH_r17
 			}
-			// decode dl_P0_PSFCH_r17 optional
-			if dl_P0_PSFCH_r17Present {
-				var tmp_int_dl_P0_PSFCH_r17 int64
-				if tmp_int_dl_P0_PSFCH_r17, err = extReader.ReadInteger(&uper.Constraint{Lb: -202, Ub: 24}, false); err != nil {
-					return utils.WrapError("Decode dl_P0_PSFCH_r17", err)
+			// decode Dl_P0_PSFCH_r17 optional
+			if Dl_P0_PSFCH_r17Present {
+				var tmp_int_Dl_P0_PSFCH_r17 int64
+				if tmp_int_Dl_P0_PSFCH_r17, err = extReader.ReadInteger(&uper.Constraint{Lb: -202, Ub: 24}, false); err != nil {
+					return utils.WrapError("Decode Dl_P0_PSFCH_r17", err)
 				}
-				ie.dl_P0_PSFCH_r17 = &tmp_int_dl_P0_PSFCH_r17
+				ie.Dl_P0_PSFCH_r17 = &tmp_int_Dl_P0_PSFCH_r17
 			}
 		}
 	}

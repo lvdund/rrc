@@ -8,29 +8,29 @@ import (
 )
 
 type CSI_AperiodicTriggerState struct {
-	associatedReportConfigInfoList []CSI_AssociatedReportConfigInfo                       `lb:1,ub:maxNrofReportConfigPerAperiodicTrigger,madatory`
-	ap_CSI_MultiplexingMode_r17    *CSI_AperiodicTriggerState_ap_CSI_MultiplexingMode_r17 `optional,ext-1`
+	AssociatedReportConfigInfoList []CSI_AssociatedReportConfigInfo                       `lb:1,ub:maxNrofReportConfigPerAperiodicTrigger,madatory`
+	Ap_CSI_MultiplexingMode_r17    *CSI_AperiodicTriggerState_ap_CSI_MultiplexingMode_r17 `optional,ext-1`
 }
 
 func (ie *CSI_AperiodicTriggerState) Encode(w *uper.UperWriter) error {
 	var err error
-	hasExtensions := ie.ap_CSI_MultiplexingMode_r17 != nil
+	hasExtensions := ie.Ap_CSI_MultiplexingMode_r17 != nil
 	preambleBits := []bool{hasExtensions}
 	for _, bit := range preambleBits {
 		if err = w.WriteBool(bit); err != nil {
 			return err
 		}
 	}
-	tmp_associatedReportConfigInfoList := utils.NewSequence[*CSI_AssociatedReportConfigInfo]([]*CSI_AssociatedReportConfigInfo{}, uper.Constraint{Lb: 1, Ub: maxNrofReportConfigPerAperiodicTrigger}, false)
-	for _, i := range ie.associatedReportConfigInfoList {
-		tmp_associatedReportConfigInfoList.Value = append(tmp_associatedReportConfigInfoList.Value, &i)
+	tmp_AssociatedReportConfigInfoList := utils.NewSequence[*CSI_AssociatedReportConfigInfo]([]*CSI_AssociatedReportConfigInfo{}, uper.Constraint{Lb: 1, Ub: maxNrofReportConfigPerAperiodicTrigger}, false)
+	for _, i := range ie.AssociatedReportConfigInfoList {
+		tmp_AssociatedReportConfigInfoList.Value = append(tmp_AssociatedReportConfigInfoList.Value, &i)
 	}
-	if err = tmp_associatedReportConfigInfoList.Encode(w); err != nil {
-		return utils.WrapError("Encode associatedReportConfigInfoList", err)
+	if err = tmp_AssociatedReportConfigInfoList.Encode(w); err != nil {
+		return utils.WrapError("Encode AssociatedReportConfigInfoList", err)
 	}
 	if hasExtensions {
 		// Extension bitmap: 1 bits for 1 extension groups
-		extBitmap := []bool{ie.ap_CSI_MultiplexingMode_r17 != nil}
+		extBitmap := []bool{ie.Ap_CSI_MultiplexingMode_r17 != nil}
 		if err := w.WriteExtBitMap(extBitmap); err != nil {
 			return utils.WrapError("WriteExtBitMap CSI_AperiodicTriggerState", err)
 		}
@@ -41,17 +41,17 @@ func (ie *CSI_AperiodicTriggerState) Encode(w *uper.UperWriter) error {
 			extWriter := uper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 1
-			optionals_ext_1 := []bool{ie.ap_CSI_MultiplexingMode_r17 != nil}
+			optionals_ext_1 := []bool{ie.Ap_CSI_MultiplexingMode_r17 != nil}
 			for _, bit := range optionals_ext_1 {
 				if err := extWriter.WriteBool(bit); err != nil {
 					return err
 				}
 			}
 
-			// encode ap_CSI_MultiplexingMode_r17 optional
-			if ie.ap_CSI_MultiplexingMode_r17 != nil {
-				if err = ie.ap_CSI_MultiplexingMode_r17.Encode(extWriter); err != nil {
-					return utils.WrapError("Encode ap_CSI_MultiplexingMode_r17", err)
+			// encode Ap_CSI_MultiplexingMode_r17 optional
+			if ie.Ap_CSI_MultiplexingMode_r17 != nil {
+				if err = ie.Ap_CSI_MultiplexingMode_r17.Encode(extWriter); err != nil {
+					return utils.WrapError("Encode Ap_CSI_MultiplexingMode_r17", err)
 				}
 			}
 
@@ -73,16 +73,16 @@ func (ie *CSI_AperiodicTriggerState) Decode(r *uper.UperReader) error {
 	if extensionBit, err = r.ReadBool(); err != nil {
 		return err
 	}
-	tmp_associatedReportConfigInfoList := utils.NewSequence[*CSI_AssociatedReportConfigInfo]([]*CSI_AssociatedReportConfigInfo{}, uper.Constraint{Lb: 1, Ub: maxNrofReportConfigPerAperiodicTrigger}, false)
-	fn_associatedReportConfigInfoList := func() *CSI_AssociatedReportConfigInfo {
+	tmp_AssociatedReportConfigInfoList := utils.NewSequence[*CSI_AssociatedReportConfigInfo]([]*CSI_AssociatedReportConfigInfo{}, uper.Constraint{Lb: 1, Ub: maxNrofReportConfigPerAperiodicTrigger}, false)
+	fn_AssociatedReportConfigInfoList := func() *CSI_AssociatedReportConfigInfo {
 		return new(CSI_AssociatedReportConfigInfo)
 	}
-	if err = tmp_associatedReportConfigInfoList.Decode(r, fn_associatedReportConfigInfoList); err != nil {
-		return utils.WrapError("Decode associatedReportConfigInfoList", err)
+	if err = tmp_AssociatedReportConfigInfoList.Decode(r, fn_AssociatedReportConfigInfoList); err != nil {
+		return utils.WrapError("Decode AssociatedReportConfigInfoList", err)
 	}
-	ie.associatedReportConfigInfoList = []CSI_AssociatedReportConfigInfo{}
-	for _, i := range tmp_associatedReportConfigInfoList.Value {
-		ie.associatedReportConfigInfoList = append(ie.associatedReportConfigInfoList, *i)
+	ie.AssociatedReportConfigInfoList = []CSI_AssociatedReportConfigInfo{}
+	for _, i := range tmp_AssociatedReportConfigInfoList.Value {
+		ie.AssociatedReportConfigInfoList = append(ie.AssociatedReportConfigInfoList, *i)
 	}
 
 	if extensionBit {
@@ -101,15 +101,15 @@ func (ie *CSI_AperiodicTriggerState) Decode(r *uper.UperReader) error {
 
 			extReader := uper.NewReader(bytes.NewReader(extBytes))
 
-			ap_CSI_MultiplexingMode_r17Present, err := extReader.ReadBool()
+			Ap_CSI_MultiplexingMode_r17Present, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			// decode ap_CSI_MultiplexingMode_r17 optional
-			if ap_CSI_MultiplexingMode_r17Present {
-				ie.ap_CSI_MultiplexingMode_r17 = new(CSI_AperiodicTriggerState_ap_CSI_MultiplexingMode_r17)
-				if err = ie.ap_CSI_MultiplexingMode_r17.Decode(extReader); err != nil {
-					return utils.WrapError("Decode ap_CSI_MultiplexingMode_r17", err)
+			// decode Ap_CSI_MultiplexingMode_r17 optional
+			if Ap_CSI_MultiplexingMode_r17Present {
+				ie.Ap_CSI_MultiplexingMode_r17 = new(CSI_AperiodicTriggerState_ap_CSI_MultiplexingMode_r17)
+				if err = ie.Ap_CSI_MultiplexingMode_r17.Decode(extReader); err != nil {
+					return utils.WrapError("Decode Ap_CSI_MultiplexingMode_r17", err)
 				}
 			}
 		}

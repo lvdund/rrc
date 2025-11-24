@@ -6,34 +6,34 @@ import (
 )
 
 type SchedulingRequestConfig struct {
-	schedulingRequestToAddModList  []SchedulingRequestToAddMod `lb:1,ub:maxNrofSR_ConfigPerCellGroup,optional`
-	schedulingRequestToReleaseList []SchedulingRequestId       `lb:1,ub:maxNrofSR_ConfigPerCellGroup,optional`
+	SchedulingRequestToAddModList  []SchedulingRequestToAddMod `lb:1,ub:maxNrofSR_ConfigPerCellGroup,optional`
+	SchedulingRequestToReleaseList []SchedulingRequestId       `lb:1,ub:maxNrofSR_ConfigPerCellGroup,optional`
 }
 
 func (ie *SchedulingRequestConfig) Encode(w *uper.UperWriter) error {
 	var err error
-	preambleBits := []bool{len(ie.schedulingRequestToAddModList) > 0, len(ie.schedulingRequestToReleaseList) > 0}
+	preambleBits := []bool{len(ie.SchedulingRequestToAddModList) > 0, len(ie.SchedulingRequestToReleaseList) > 0}
 	for _, bit := range preambleBits {
 		if err = w.WriteBool(bit); err != nil {
 			return err
 		}
 	}
-	if len(ie.schedulingRequestToAddModList) > 0 {
-		tmp_schedulingRequestToAddModList := utils.NewSequence[*SchedulingRequestToAddMod]([]*SchedulingRequestToAddMod{}, uper.Constraint{Lb: 1, Ub: maxNrofSR_ConfigPerCellGroup}, false)
-		for _, i := range ie.schedulingRequestToAddModList {
-			tmp_schedulingRequestToAddModList.Value = append(tmp_schedulingRequestToAddModList.Value, &i)
+	if len(ie.SchedulingRequestToAddModList) > 0 {
+		tmp_SchedulingRequestToAddModList := utils.NewSequence[*SchedulingRequestToAddMod]([]*SchedulingRequestToAddMod{}, uper.Constraint{Lb: 1, Ub: maxNrofSR_ConfigPerCellGroup}, false)
+		for _, i := range ie.SchedulingRequestToAddModList {
+			tmp_SchedulingRequestToAddModList.Value = append(tmp_SchedulingRequestToAddModList.Value, &i)
 		}
-		if err = tmp_schedulingRequestToAddModList.Encode(w); err != nil {
-			return utils.WrapError("Encode schedulingRequestToAddModList", err)
+		if err = tmp_SchedulingRequestToAddModList.Encode(w); err != nil {
+			return utils.WrapError("Encode SchedulingRequestToAddModList", err)
 		}
 	}
-	if len(ie.schedulingRequestToReleaseList) > 0 {
-		tmp_schedulingRequestToReleaseList := utils.NewSequence[*SchedulingRequestId]([]*SchedulingRequestId{}, uper.Constraint{Lb: 1, Ub: maxNrofSR_ConfigPerCellGroup}, false)
-		for _, i := range ie.schedulingRequestToReleaseList {
-			tmp_schedulingRequestToReleaseList.Value = append(tmp_schedulingRequestToReleaseList.Value, &i)
+	if len(ie.SchedulingRequestToReleaseList) > 0 {
+		tmp_SchedulingRequestToReleaseList := utils.NewSequence[*SchedulingRequestId]([]*SchedulingRequestId{}, uper.Constraint{Lb: 1, Ub: maxNrofSR_ConfigPerCellGroup}, false)
+		for _, i := range ie.SchedulingRequestToReleaseList {
+			tmp_SchedulingRequestToReleaseList.Value = append(tmp_SchedulingRequestToReleaseList.Value, &i)
 		}
-		if err = tmp_schedulingRequestToReleaseList.Encode(w); err != nil {
-			return utils.WrapError("Encode schedulingRequestToReleaseList", err)
+		if err = tmp_SchedulingRequestToReleaseList.Encode(w); err != nil {
+			return utils.WrapError("Encode SchedulingRequestToReleaseList", err)
 		}
 	}
 	return nil
@@ -41,38 +41,38 @@ func (ie *SchedulingRequestConfig) Encode(w *uper.UperWriter) error {
 
 func (ie *SchedulingRequestConfig) Decode(r *uper.UperReader) error {
 	var err error
-	var schedulingRequestToAddModListPresent bool
-	if schedulingRequestToAddModListPresent, err = r.ReadBool(); err != nil {
+	var SchedulingRequestToAddModListPresent bool
+	if SchedulingRequestToAddModListPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var schedulingRequestToReleaseListPresent bool
-	if schedulingRequestToReleaseListPresent, err = r.ReadBool(); err != nil {
+	var SchedulingRequestToReleaseListPresent bool
+	if SchedulingRequestToReleaseListPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	if schedulingRequestToAddModListPresent {
-		tmp_schedulingRequestToAddModList := utils.NewSequence[*SchedulingRequestToAddMod]([]*SchedulingRequestToAddMod{}, uper.Constraint{Lb: 1, Ub: maxNrofSR_ConfigPerCellGroup}, false)
-		fn_schedulingRequestToAddModList := func() *SchedulingRequestToAddMod {
+	if SchedulingRequestToAddModListPresent {
+		tmp_SchedulingRequestToAddModList := utils.NewSequence[*SchedulingRequestToAddMod]([]*SchedulingRequestToAddMod{}, uper.Constraint{Lb: 1, Ub: maxNrofSR_ConfigPerCellGroup}, false)
+		fn_SchedulingRequestToAddModList := func() *SchedulingRequestToAddMod {
 			return new(SchedulingRequestToAddMod)
 		}
-		if err = tmp_schedulingRequestToAddModList.Decode(r, fn_schedulingRequestToAddModList); err != nil {
-			return utils.WrapError("Decode schedulingRequestToAddModList", err)
+		if err = tmp_SchedulingRequestToAddModList.Decode(r, fn_SchedulingRequestToAddModList); err != nil {
+			return utils.WrapError("Decode SchedulingRequestToAddModList", err)
 		}
-		ie.schedulingRequestToAddModList = []SchedulingRequestToAddMod{}
-		for _, i := range tmp_schedulingRequestToAddModList.Value {
-			ie.schedulingRequestToAddModList = append(ie.schedulingRequestToAddModList, *i)
+		ie.SchedulingRequestToAddModList = []SchedulingRequestToAddMod{}
+		for _, i := range tmp_SchedulingRequestToAddModList.Value {
+			ie.SchedulingRequestToAddModList = append(ie.SchedulingRequestToAddModList, *i)
 		}
 	}
-	if schedulingRequestToReleaseListPresent {
-		tmp_schedulingRequestToReleaseList := utils.NewSequence[*SchedulingRequestId]([]*SchedulingRequestId{}, uper.Constraint{Lb: 1, Ub: maxNrofSR_ConfigPerCellGroup}, false)
-		fn_schedulingRequestToReleaseList := func() *SchedulingRequestId {
+	if SchedulingRequestToReleaseListPresent {
+		tmp_SchedulingRequestToReleaseList := utils.NewSequence[*SchedulingRequestId]([]*SchedulingRequestId{}, uper.Constraint{Lb: 1, Ub: maxNrofSR_ConfigPerCellGroup}, false)
+		fn_SchedulingRequestToReleaseList := func() *SchedulingRequestId {
 			return new(SchedulingRequestId)
 		}
-		if err = tmp_schedulingRequestToReleaseList.Decode(r, fn_schedulingRequestToReleaseList); err != nil {
-			return utils.WrapError("Decode schedulingRequestToReleaseList", err)
+		if err = tmp_SchedulingRequestToReleaseList.Decode(r, fn_SchedulingRequestToReleaseList); err != nil {
+			return utils.WrapError("Decode SchedulingRequestToReleaseList", err)
 		}
-		ie.schedulingRequestToReleaseList = []SchedulingRequestId{}
-		for _, i := range tmp_schedulingRequestToReleaseList.Value {
-			ie.schedulingRequestToReleaseList = append(ie.schedulingRequestToReleaseList, *i)
+		ie.SchedulingRequestToReleaseList = []SchedulingRequestId{}
+		for _, i := range tmp_SchedulingRequestToReleaseList.Value {
+			ie.SchedulingRequestToReleaseList = append(ie.SchedulingRequestToReleaseList, *i)
 		}
 	}
 	return nil

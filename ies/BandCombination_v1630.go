@@ -6,64 +6,64 @@ import (
 )
 
 type BandCombination_v1630 struct {
-	ca_ParametersNR_v1630                     *CA_ParametersNR_v1630      `optional`
-	ca_ParametersNRDC_v1630                   *CA_ParametersNRDC_v1630    `optional`
-	mrdc_Parameters_v1630                     *MRDC_Parameters_v1630      `optional`
-	supportedTxBandCombListPerBC_Sidelink_r16 *uper.BitString             `lb:1,ub:maxBandComb,optional`
-	supportedRxBandCombListPerBC_Sidelink_r16 *uper.BitString             `lb:1,ub:maxBandComb,optional`
-	scalingFactorTxSidelink_r16               []ScalingFactorSidelink_r16 `lb:1,ub:maxBandComb,optional`
-	scalingFactorRxSidelink_r16               []ScalingFactorSidelink_r16 `lb:1,ub:maxBandComb,optional`
+	Ca_ParametersNR_v1630                     *CA_ParametersNR_v1630      `optional`
+	Ca_ParametersNRDC_v1630                   *CA_ParametersNRDC_v1630    `optional`
+	Mrdc_Parameters_v1630                     *MRDC_Parameters_v1630      `optional`
+	SupportedTxBandCombListPerBC_Sidelink_r16 *uper.BitString             `lb:1,ub:maxBandComb,optional`
+	SupportedRxBandCombListPerBC_Sidelink_r16 *uper.BitString             `lb:1,ub:maxBandComb,optional`
+	ScalingFactorTxSidelink_r16               []ScalingFactorSidelink_r16 `lb:1,ub:maxBandComb,optional`
+	ScalingFactorRxSidelink_r16               []ScalingFactorSidelink_r16 `lb:1,ub:maxBandComb,optional`
 }
 
 func (ie *BandCombination_v1630) Encode(w *uper.UperWriter) error {
 	var err error
-	preambleBits := []bool{ie.ca_ParametersNR_v1630 != nil, ie.ca_ParametersNRDC_v1630 != nil, ie.mrdc_Parameters_v1630 != nil, ie.supportedTxBandCombListPerBC_Sidelink_r16 != nil, ie.supportedRxBandCombListPerBC_Sidelink_r16 != nil, len(ie.scalingFactorTxSidelink_r16) > 0, len(ie.scalingFactorRxSidelink_r16) > 0}
+	preambleBits := []bool{ie.Ca_ParametersNR_v1630 != nil, ie.Ca_ParametersNRDC_v1630 != nil, ie.Mrdc_Parameters_v1630 != nil, ie.SupportedTxBandCombListPerBC_Sidelink_r16 != nil, ie.SupportedRxBandCombListPerBC_Sidelink_r16 != nil, len(ie.ScalingFactorTxSidelink_r16) > 0, len(ie.ScalingFactorRxSidelink_r16) > 0}
 	for _, bit := range preambleBits {
 		if err = w.WriteBool(bit); err != nil {
 			return err
 		}
 	}
-	if ie.ca_ParametersNR_v1630 != nil {
-		if err = ie.ca_ParametersNR_v1630.Encode(w); err != nil {
-			return utils.WrapError("Encode ca_ParametersNR_v1630", err)
+	if ie.Ca_ParametersNR_v1630 != nil {
+		if err = ie.Ca_ParametersNR_v1630.Encode(w); err != nil {
+			return utils.WrapError("Encode Ca_ParametersNR_v1630", err)
 		}
 	}
-	if ie.ca_ParametersNRDC_v1630 != nil {
-		if err = ie.ca_ParametersNRDC_v1630.Encode(w); err != nil {
-			return utils.WrapError("Encode ca_ParametersNRDC_v1630", err)
+	if ie.Ca_ParametersNRDC_v1630 != nil {
+		if err = ie.Ca_ParametersNRDC_v1630.Encode(w); err != nil {
+			return utils.WrapError("Encode Ca_ParametersNRDC_v1630", err)
 		}
 	}
-	if ie.mrdc_Parameters_v1630 != nil {
-		if err = ie.mrdc_Parameters_v1630.Encode(w); err != nil {
-			return utils.WrapError("Encode mrdc_Parameters_v1630", err)
+	if ie.Mrdc_Parameters_v1630 != nil {
+		if err = ie.Mrdc_Parameters_v1630.Encode(w); err != nil {
+			return utils.WrapError("Encode Mrdc_Parameters_v1630", err)
 		}
 	}
-	if ie.supportedTxBandCombListPerBC_Sidelink_r16 != nil {
-		if err = w.WriteBitString(ie.supportedTxBandCombListPerBC_Sidelink_r16.Bytes, uint(ie.supportedTxBandCombListPerBC_Sidelink_r16.NumBits), &uper.Constraint{Lb: 1, Ub: maxBandComb}, false); err != nil {
-			return utils.WrapError("Encode supportedTxBandCombListPerBC_Sidelink_r16", err)
+	if ie.SupportedTxBandCombListPerBC_Sidelink_r16 != nil {
+		if err = w.WriteBitString(ie.SupportedTxBandCombListPerBC_Sidelink_r16.Bytes, uint(ie.SupportedTxBandCombListPerBC_Sidelink_r16.NumBits), &uper.Constraint{Lb: 1, Ub: maxBandComb}, false); err != nil {
+			return utils.WrapError("Encode SupportedTxBandCombListPerBC_Sidelink_r16", err)
 		}
 	}
-	if ie.supportedRxBandCombListPerBC_Sidelink_r16 != nil {
-		if err = w.WriteBitString(ie.supportedRxBandCombListPerBC_Sidelink_r16.Bytes, uint(ie.supportedRxBandCombListPerBC_Sidelink_r16.NumBits), &uper.Constraint{Lb: 1, Ub: maxBandComb}, false); err != nil {
-			return utils.WrapError("Encode supportedRxBandCombListPerBC_Sidelink_r16", err)
+	if ie.SupportedRxBandCombListPerBC_Sidelink_r16 != nil {
+		if err = w.WriteBitString(ie.SupportedRxBandCombListPerBC_Sidelink_r16.Bytes, uint(ie.SupportedRxBandCombListPerBC_Sidelink_r16.NumBits), &uper.Constraint{Lb: 1, Ub: maxBandComb}, false); err != nil {
+			return utils.WrapError("Encode SupportedRxBandCombListPerBC_Sidelink_r16", err)
 		}
 	}
-	if len(ie.scalingFactorTxSidelink_r16) > 0 {
-		tmp_scalingFactorTxSidelink_r16 := utils.NewSequence[*ScalingFactorSidelink_r16]([]*ScalingFactorSidelink_r16{}, uper.Constraint{Lb: 1, Ub: maxBandComb}, false)
-		for _, i := range ie.scalingFactorTxSidelink_r16 {
-			tmp_scalingFactorTxSidelink_r16.Value = append(tmp_scalingFactorTxSidelink_r16.Value, &i)
+	if len(ie.ScalingFactorTxSidelink_r16) > 0 {
+		tmp_ScalingFactorTxSidelink_r16 := utils.NewSequence[*ScalingFactorSidelink_r16]([]*ScalingFactorSidelink_r16{}, uper.Constraint{Lb: 1, Ub: maxBandComb}, false)
+		for _, i := range ie.ScalingFactorTxSidelink_r16 {
+			tmp_ScalingFactorTxSidelink_r16.Value = append(tmp_ScalingFactorTxSidelink_r16.Value, &i)
 		}
-		if err = tmp_scalingFactorTxSidelink_r16.Encode(w); err != nil {
-			return utils.WrapError("Encode scalingFactorTxSidelink_r16", err)
+		if err = tmp_ScalingFactorTxSidelink_r16.Encode(w); err != nil {
+			return utils.WrapError("Encode ScalingFactorTxSidelink_r16", err)
 		}
 	}
-	if len(ie.scalingFactorRxSidelink_r16) > 0 {
-		tmp_scalingFactorRxSidelink_r16 := utils.NewSequence[*ScalingFactorSidelink_r16]([]*ScalingFactorSidelink_r16{}, uper.Constraint{Lb: 1, Ub: maxBandComb}, false)
-		for _, i := range ie.scalingFactorRxSidelink_r16 {
-			tmp_scalingFactorRxSidelink_r16.Value = append(tmp_scalingFactorRxSidelink_r16.Value, &i)
+	if len(ie.ScalingFactorRxSidelink_r16) > 0 {
+		tmp_ScalingFactorRxSidelink_r16 := utils.NewSequence[*ScalingFactorSidelink_r16]([]*ScalingFactorSidelink_r16{}, uper.Constraint{Lb: 1, Ub: maxBandComb}, false)
+		for _, i := range ie.ScalingFactorRxSidelink_r16 {
+			tmp_ScalingFactorRxSidelink_r16.Value = append(tmp_ScalingFactorRxSidelink_r16.Value, &i)
 		}
-		if err = tmp_scalingFactorRxSidelink_r16.Encode(w); err != nil {
-			return utils.WrapError("Encode scalingFactorRxSidelink_r16", err)
+		if err = tmp_ScalingFactorRxSidelink_r16.Encode(w); err != nil {
+			return utils.WrapError("Encode ScalingFactorRxSidelink_r16", err)
 		}
 	}
 	return nil
@@ -71,100 +71,100 @@ func (ie *BandCombination_v1630) Encode(w *uper.UperWriter) error {
 
 func (ie *BandCombination_v1630) Decode(r *uper.UperReader) error {
 	var err error
-	var ca_ParametersNR_v1630Present bool
-	if ca_ParametersNR_v1630Present, err = r.ReadBool(); err != nil {
+	var Ca_ParametersNR_v1630Present bool
+	if Ca_ParametersNR_v1630Present, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var ca_ParametersNRDC_v1630Present bool
-	if ca_ParametersNRDC_v1630Present, err = r.ReadBool(); err != nil {
+	var Ca_ParametersNRDC_v1630Present bool
+	if Ca_ParametersNRDC_v1630Present, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var mrdc_Parameters_v1630Present bool
-	if mrdc_Parameters_v1630Present, err = r.ReadBool(); err != nil {
+	var Mrdc_Parameters_v1630Present bool
+	if Mrdc_Parameters_v1630Present, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var supportedTxBandCombListPerBC_Sidelink_r16Present bool
-	if supportedTxBandCombListPerBC_Sidelink_r16Present, err = r.ReadBool(); err != nil {
+	var SupportedTxBandCombListPerBC_Sidelink_r16Present bool
+	if SupportedTxBandCombListPerBC_Sidelink_r16Present, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var supportedRxBandCombListPerBC_Sidelink_r16Present bool
-	if supportedRxBandCombListPerBC_Sidelink_r16Present, err = r.ReadBool(); err != nil {
+	var SupportedRxBandCombListPerBC_Sidelink_r16Present bool
+	if SupportedRxBandCombListPerBC_Sidelink_r16Present, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var scalingFactorTxSidelink_r16Present bool
-	if scalingFactorTxSidelink_r16Present, err = r.ReadBool(); err != nil {
+	var ScalingFactorTxSidelink_r16Present bool
+	if ScalingFactorTxSidelink_r16Present, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var scalingFactorRxSidelink_r16Present bool
-	if scalingFactorRxSidelink_r16Present, err = r.ReadBool(); err != nil {
+	var ScalingFactorRxSidelink_r16Present bool
+	if ScalingFactorRxSidelink_r16Present, err = r.ReadBool(); err != nil {
 		return err
 	}
-	if ca_ParametersNR_v1630Present {
-		ie.ca_ParametersNR_v1630 = new(CA_ParametersNR_v1630)
-		if err = ie.ca_ParametersNR_v1630.Decode(r); err != nil {
-			return utils.WrapError("Decode ca_ParametersNR_v1630", err)
+	if Ca_ParametersNR_v1630Present {
+		ie.Ca_ParametersNR_v1630 = new(CA_ParametersNR_v1630)
+		if err = ie.Ca_ParametersNR_v1630.Decode(r); err != nil {
+			return utils.WrapError("Decode Ca_ParametersNR_v1630", err)
 		}
 	}
-	if ca_ParametersNRDC_v1630Present {
-		ie.ca_ParametersNRDC_v1630 = new(CA_ParametersNRDC_v1630)
-		if err = ie.ca_ParametersNRDC_v1630.Decode(r); err != nil {
-			return utils.WrapError("Decode ca_ParametersNRDC_v1630", err)
+	if Ca_ParametersNRDC_v1630Present {
+		ie.Ca_ParametersNRDC_v1630 = new(CA_ParametersNRDC_v1630)
+		if err = ie.Ca_ParametersNRDC_v1630.Decode(r); err != nil {
+			return utils.WrapError("Decode Ca_ParametersNRDC_v1630", err)
 		}
 	}
-	if mrdc_Parameters_v1630Present {
-		ie.mrdc_Parameters_v1630 = new(MRDC_Parameters_v1630)
-		if err = ie.mrdc_Parameters_v1630.Decode(r); err != nil {
-			return utils.WrapError("Decode mrdc_Parameters_v1630", err)
+	if Mrdc_Parameters_v1630Present {
+		ie.Mrdc_Parameters_v1630 = new(MRDC_Parameters_v1630)
+		if err = ie.Mrdc_Parameters_v1630.Decode(r); err != nil {
+			return utils.WrapError("Decode Mrdc_Parameters_v1630", err)
 		}
 	}
-	if supportedTxBandCombListPerBC_Sidelink_r16Present {
-		var tmp_bs_supportedTxBandCombListPerBC_Sidelink_r16 []byte
-		var n_supportedTxBandCombListPerBC_Sidelink_r16 uint
-		if tmp_bs_supportedTxBandCombListPerBC_Sidelink_r16, n_supportedTxBandCombListPerBC_Sidelink_r16, err = r.ReadBitString(&uper.Constraint{Lb: 1, Ub: maxBandComb}, false); err != nil {
-			return utils.WrapError("Decode supportedTxBandCombListPerBC_Sidelink_r16", err)
+	if SupportedTxBandCombListPerBC_Sidelink_r16Present {
+		var tmp_bs_SupportedTxBandCombListPerBC_Sidelink_r16 []byte
+		var n_SupportedTxBandCombListPerBC_Sidelink_r16 uint
+		if tmp_bs_SupportedTxBandCombListPerBC_Sidelink_r16, n_SupportedTxBandCombListPerBC_Sidelink_r16, err = r.ReadBitString(&uper.Constraint{Lb: 1, Ub: maxBandComb}, false); err != nil {
+			return utils.WrapError("Decode SupportedTxBandCombListPerBC_Sidelink_r16", err)
 		}
 		tmp_bitstring := uper.BitString{
-			Bytes:   tmp_bs_supportedTxBandCombListPerBC_Sidelink_r16,
-			NumBits: uint64(n_supportedTxBandCombListPerBC_Sidelink_r16),
+			Bytes:   tmp_bs_SupportedTxBandCombListPerBC_Sidelink_r16,
+			NumBits: uint64(n_SupportedTxBandCombListPerBC_Sidelink_r16),
 		}
-		ie.supportedTxBandCombListPerBC_Sidelink_r16 = &tmp_bitstring
+		ie.SupportedTxBandCombListPerBC_Sidelink_r16 = &tmp_bitstring
 	}
-	if supportedRxBandCombListPerBC_Sidelink_r16Present {
-		var tmp_bs_supportedRxBandCombListPerBC_Sidelink_r16 []byte
-		var n_supportedRxBandCombListPerBC_Sidelink_r16 uint
-		if tmp_bs_supportedRxBandCombListPerBC_Sidelink_r16, n_supportedRxBandCombListPerBC_Sidelink_r16, err = r.ReadBitString(&uper.Constraint{Lb: 1, Ub: maxBandComb}, false); err != nil {
-			return utils.WrapError("Decode supportedRxBandCombListPerBC_Sidelink_r16", err)
+	if SupportedRxBandCombListPerBC_Sidelink_r16Present {
+		var tmp_bs_SupportedRxBandCombListPerBC_Sidelink_r16 []byte
+		var n_SupportedRxBandCombListPerBC_Sidelink_r16 uint
+		if tmp_bs_SupportedRxBandCombListPerBC_Sidelink_r16, n_SupportedRxBandCombListPerBC_Sidelink_r16, err = r.ReadBitString(&uper.Constraint{Lb: 1, Ub: maxBandComb}, false); err != nil {
+			return utils.WrapError("Decode SupportedRxBandCombListPerBC_Sidelink_r16", err)
 		}
 		tmp_bitstring := uper.BitString{
-			Bytes:   tmp_bs_supportedRxBandCombListPerBC_Sidelink_r16,
-			NumBits: uint64(n_supportedRxBandCombListPerBC_Sidelink_r16),
+			Bytes:   tmp_bs_SupportedRxBandCombListPerBC_Sidelink_r16,
+			NumBits: uint64(n_SupportedRxBandCombListPerBC_Sidelink_r16),
 		}
-		ie.supportedRxBandCombListPerBC_Sidelink_r16 = &tmp_bitstring
+		ie.SupportedRxBandCombListPerBC_Sidelink_r16 = &tmp_bitstring
 	}
-	if scalingFactorTxSidelink_r16Present {
-		tmp_scalingFactorTxSidelink_r16 := utils.NewSequence[*ScalingFactorSidelink_r16]([]*ScalingFactorSidelink_r16{}, uper.Constraint{Lb: 1, Ub: maxBandComb}, false)
-		fn_scalingFactorTxSidelink_r16 := func() *ScalingFactorSidelink_r16 {
+	if ScalingFactorTxSidelink_r16Present {
+		tmp_ScalingFactorTxSidelink_r16 := utils.NewSequence[*ScalingFactorSidelink_r16]([]*ScalingFactorSidelink_r16{}, uper.Constraint{Lb: 1, Ub: maxBandComb}, false)
+		fn_ScalingFactorTxSidelink_r16 := func() *ScalingFactorSidelink_r16 {
 			return new(ScalingFactorSidelink_r16)
 		}
-		if err = tmp_scalingFactorTxSidelink_r16.Decode(r, fn_scalingFactorTxSidelink_r16); err != nil {
-			return utils.WrapError("Decode scalingFactorTxSidelink_r16", err)
+		if err = tmp_ScalingFactorTxSidelink_r16.Decode(r, fn_ScalingFactorTxSidelink_r16); err != nil {
+			return utils.WrapError("Decode ScalingFactorTxSidelink_r16", err)
 		}
-		ie.scalingFactorTxSidelink_r16 = []ScalingFactorSidelink_r16{}
-		for _, i := range tmp_scalingFactorTxSidelink_r16.Value {
-			ie.scalingFactorTxSidelink_r16 = append(ie.scalingFactorTxSidelink_r16, *i)
+		ie.ScalingFactorTxSidelink_r16 = []ScalingFactorSidelink_r16{}
+		for _, i := range tmp_ScalingFactorTxSidelink_r16.Value {
+			ie.ScalingFactorTxSidelink_r16 = append(ie.ScalingFactorTxSidelink_r16, *i)
 		}
 	}
-	if scalingFactorRxSidelink_r16Present {
-		tmp_scalingFactorRxSidelink_r16 := utils.NewSequence[*ScalingFactorSidelink_r16]([]*ScalingFactorSidelink_r16{}, uper.Constraint{Lb: 1, Ub: maxBandComb}, false)
-		fn_scalingFactorRxSidelink_r16 := func() *ScalingFactorSidelink_r16 {
+	if ScalingFactorRxSidelink_r16Present {
+		tmp_ScalingFactorRxSidelink_r16 := utils.NewSequence[*ScalingFactorSidelink_r16]([]*ScalingFactorSidelink_r16{}, uper.Constraint{Lb: 1, Ub: maxBandComb}, false)
+		fn_ScalingFactorRxSidelink_r16 := func() *ScalingFactorSidelink_r16 {
 			return new(ScalingFactorSidelink_r16)
 		}
-		if err = tmp_scalingFactorRxSidelink_r16.Decode(r, fn_scalingFactorRxSidelink_r16); err != nil {
-			return utils.WrapError("Decode scalingFactorRxSidelink_r16", err)
+		if err = tmp_ScalingFactorRxSidelink_r16.Decode(r, fn_ScalingFactorRxSidelink_r16); err != nil {
+			return utils.WrapError("Decode ScalingFactorRxSidelink_r16", err)
 		}
-		ie.scalingFactorRxSidelink_r16 = []ScalingFactorSidelink_r16{}
-		for _, i := range tmp_scalingFactorRxSidelink_r16.Value {
-			ie.scalingFactorRxSidelink_r16 = append(ie.scalingFactorRxSidelink_r16, *i)
+		ie.ScalingFactorRxSidelink_r16 = []ScalingFactorSidelink_r16{}
+		for _, i := range tmp_ScalingFactorRxSidelink_r16.Value {
+			ie.ScalingFactorRxSidelink_r16 = append(ie.ScalingFactorRxSidelink_r16, *i)
 		}
 	}
 	return nil

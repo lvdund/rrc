@@ -9,14 +9,14 @@ import (
 
 const (
 	SRS_CarrierSwitching_srs_TPC_PDCCH_Group_Choice_nothing uint64 = iota
-	SRS_CarrierSwitching_srs_TPC_PDCCH_Group_Choice_typeA
-	SRS_CarrierSwitching_srs_TPC_PDCCH_Group_Choice_typeB
+	SRS_CarrierSwitching_srs_TPC_PDCCH_Group_Choice_TypeA
+	SRS_CarrierSwitching_srs_TPC_PDCCH_Group_Choice_TypeB
 )
 
 type SRS_CarrierSwitching_srs_TPC_PDCCH_Group struct {
 	Choice uint64
-	typeA  []SRS_TPC_PDCCH_Config `lb:1,ub:32,madatory`
-	typeB  *SRS_TPC_PDCCH_Config
+	TypeA  []SRS_TPC_PDCCH_Config `lb:1,ub:32,madatory`
+	TypeB  *SRS_TPC_PDCCH_Config
 }
 
 func (ie *SRS_CarrierSwitching_srs_TPC_PDCCH_Group) Encode(w *uper.UperWriter) error {
@@ -25,17 +25,17 @@ func (ie *SRS_CarrierSwitching_srs_TPC_PDCCH_Group) Encode(w *uper.UperWriter) e
 		return err
 	}
 	switch ie.Choice {
-	case SRS_CarrierSwitching_srs_TPC_PDCCH_Group_Choice_typeA:
+	case SRS_CarrierSwitching_srs_TPC_PDCCH_Group_Choice_TypeA:
 		tmp := utils.NewSequence[*SRS_TPC_PDCCH_Config]([]*SRS_TPC_PDCCH_Config{}, uper.Constraint{Lb: 1, Ub: 32}, false)
-		for _, i := range ie.typeA {
+		for _, i := range ie.TypeA {
 			tmp.Value = append(tmp.Value, &i)
 		}
 		if err = tmp.Encode(w); err != nil {
-			err = utils.WrapError("Encode typeA", err)
+			err = utils.WrapError("Encode TypeA", err)
 		}
-	case SRS_CarrierSwitching_srs_TPC_PDCCH_Group_Choice_typeB:
-		if err = ie.typeB.Encode(w); err != nil {
-			err = utils.WrapError("Encode typeB", err)
+	case SRS_CarrierSwitching_srs_TPC_PDCCH_Group_Choice_TypeB:
+		if err = ie.TypeB.Encode(w); err != nil {
+			err = utils.WrapError("Encode TypeB", err)
 		}
 	default:
 		err = fmt.Errorf("invalid choice: %d", ie.Choice)
@@ -49,22 +49,22 @@ func (ie *SRS_CarrierSwitching_srs_TPC_PDCCH_Group) Decode(r *uper.UperReader) e
 		return err
 	}
 	switch ie.Choice {
-	case SRS_CarrierSwitching_srs_TPC_PDCCH_Group_Choice_typeA:
+	case SRS_CarrierSwitching_srs_TPC_PDCCH_Group_Choice_TypeA:
 		tmp := utils.NewSequence[*SRS_TPC_PDCCH_Config]([]*SRS_TPC_PDCCH_Config{}, uper.Constraint{Lb: 1, Ub: 32}, false)
 		fn := func() *SRS_TPC_PDCCH_Config {
 			return new(SRS_TPC_PDCCH_Config)
 		}
 		if err = tmp.Decode(r, fn); err != nil {
-			return utils.WrapError("Decode typeA", err)
+			return utils.WrapError("Decode TypeA", err)
 		}
-		ie.typeA = []SRS_TPC_PDCCH_Config{}
+		ie.TypeA = []SRS_TPC_PDCCH_Config{}
 		for _, i := range tmp.Value {
-			ie.typeA = append(ie.typeA, *i)
+			ie.TypeA = append(ie.TypeA, *i)
 		}
-	case SRS_CarrierSwitching_srs_TPC_PDCCH_Group_Choice_typeB:
-		ie.typeB = new(SRS_TPC_PDCCH_Config)
-		if err = ie.typeB.Decode(r); err != nil {
-			return utils.WrapError("Decode typeB", err)
+	case SRS_CarrierSwitching_srs_TPC_PDCCH_Group_Choice_TypeB:
+		ie.TypeB = new(SRS_TPC_PDCCH_Config)
+		if err = ie.TypeB.Decode(r); err != nil {
+			return utils.WrapError("Decode TypeB", err)
 		}
 	default:
 		return fmt.Errorf("invalid choice: %d", ie.Choice)

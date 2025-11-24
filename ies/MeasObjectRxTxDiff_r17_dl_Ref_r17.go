@@ -9,14 +9,14 @@ import (
 
 const (
 	MeasObjectRxTxDiff_r17_dl_Ref_r17_Choice_nothing uint64 = iota
-	MeasObjectRxTxDiff_r17_dl_Ref_r17_Choice_prs_Ref_r17
-	MeasObjectRxTxDiff_r17_dl_Ref_r17_Choice_csi_RS_Ref_r17
+	MeasObjectRxTxDiff_r17_dl_Ref_r17_Choice_Prs_Ref_r17
+	MeasObjectRxTxDiff_r17_dl_Ref_r17_Choice_Csi_RS_Ref_r17
 )
 
 type MeasObjectRxTxDiff_r17_dl_Ref_r17 struct {
 	Choice         uint64
-	prs_Ref_r17    uper.NULL `madatory`
-	csi_RS_Ref_r17 uper.NULL `madatory`
+	Prs_Ref_r17    uper.NULL `madatory`
+	Csi_RS_Ref_r17 uper.NULL `madatory`
 }
 
 func (ie *MeasObjectRxTxDiff_r17_dl_Ref_r17) Encode(w *uper.UperWriter) error {
@@ -25,13 +25,13 @@ func (ie *MeasObjectRxTxDiff_r17_dl_Ref_r17) Encode(w *uper.UperWriter) error {
 		return err
 	}
 	switch ie.Choice {
-	case MeasObjectRxTxDiff_r17_dl_Ref_r17_Choice_prs_Ref_r17:
+	case MeasObjectRxTxDiff_r17_dl_Ref_r17_Choice_Prs_Ref_r17:
 		if err := w.WriteNull(); err != nil {
-			err = utils.WrapError("Encode prs_Ref_r17", err)
+			err = utils.WrapError("Encode Prs_Ref_r17", err)
 		}
-	case MeasObjectRxTxDiff_r17_dl_Ref_r17_Choice_csi_RS_Ref_r17:
+	case MeasObjectRxTxDiff_r17_dl_Ref_r17_Choice_Csi_RS_Ref_r17:
 		if err := w.WriteNull(); err != nil {
-			err = utils.WrapError("Encode csi_RS_Ref_r17", err)
+			err = utils.WrapError("Encode Csi_RS_Ref_r17", err)
 		}
 	default:
 		err = fmt.Errorf("invalid choice: %d", ie.Choice)
@@ -45,13 +45,13 @@ func (ie *MeasObjectRxTxDiff_r17_dl_Ref_r17) Decode(r *uper.UperReader) error {
 		return err
 	}
 	switch ie.Choice {
-	case MeasObjectRxTxDiff_r17_dl_Ref_r17_Choice_prs_Ref_r17:
+	case MeasObjectRxTxDiff_r17_dl_Ref_r17_Choice_Prs_Ref_r17:
 		if err := r.ReadNull(); err != nil {
-			return utils.WrapError("Decode prs_Ref_r17", err)
+			return utils.WrapError("Decode Prs_Ref_r17", err)
 		}
-	case MeasObjectRxTxDiff_r17_dl_Ref_r17_Choice_csi_RS_Ref_r17:
+	case MeasObjectRxTxDiff_r17_dl_Ref_r17_Choice_Csi_RS_Ref_r17:
 		if err := r.ReadNull(); err != nil {
-			return utils.WrapError("Decode csi_RS_Ref_r17", err)
+			return utils.WrapError("Decode Csi_RS_Ref_r17", err)
 		}
 	default:
 		return fmt.Errorf("invalid choice: %d", ie.Choice)

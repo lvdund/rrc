@@ -9,50 +9,50 @@ import (
 
 const (
 	DRX_ConfigPTM_r17_drx_LongCycleStartOffsetPTM_r17_Choice_nothing uint64 = iota
-	DRX_ConfigPTM_r17_drx_LongCycleStartOffsetPTM_r17_Choice_ms10
-	DRX_ConfigPTM_r17_drx_LongCycleStartOffsetPTM_r17_Choice_ms20
-	DRX_ConfigPTM_r17_drx_LongCycleStartOffsetPTM_r17_Choice_ms32
-	DRX_ConfigPTM_r17_drx_LongCycleStartOffsetPTM_r17_Choice_ms40
-	DRX_ConfigPTM_r17_drx_LongCycleStartOffsetPTM_r17_Choice_ms60
-	DRX_ConfigPTM_r17_drx_LongCycleStartOffsetPTM_r17_Choice_ms64
-	DRX_ConfigPTM_r17_drx_LongCycleStartOffsetPTM_r17_Choice_ms70
-	DRX_ConfigPTM_r17_drx_LongCycleStartOffsetPTM_r17_Choice_ms80
-	DRX_ConfigPTM_r17_drx_LongCycleStartOffsetPTM_r17_Choice_ms128
-	DRX_ConfigPTM_r17_drx_LongCycleStartOffsetPTM_r17_Choice_ms160
-	DRX_ConfigPTM_r17_drx_LongCycleStartOffsetPTM_r17_Choice_ms256
-	DRX_ConfigPTM_r17_drx_LongCycleStartOffsetPTM_r17_Choice_ms320
-	DRX_ConfigPTM_r17_drx_LongCycleStartOffsetPTM_r17_Choice_ms512
-	DRX_ConfigPTM_r17_drx_LongCycleStartOffsetPTM_r17_Choice_ms640
-	DRX_ConfigPTM_r17_drx_LongCycleStartOffsetPTM_r17_Choice_ms1024
-	DRX_ConfigPTM_r17_drx_LongCycleStartOffsetPTM_r17_Choice_ms1280
-	DRX_ConfigPTM_r17_drx_LongCycleStartOffsetPTM_r17_Choice_ms2048
-	DRX_ConfigPTM_r17_drx_LongCycleStartOffsetPTM_r17_Choice_ms2560
-	DRX_ConfigPTM_r17_drx_LongCycleStartOffsetPTM_r17_Choice_ms5120
-	DRX_ConfigPTM_r17_drx_LongCycleStartOffsetPTM_r17_Choice_ms10240
+	DRX_ConfigPTM_r17_drx_LongCycleStartOffsetPTM_r17_Choice_Ms10
+	DRX_ConfigPTM_r17_drx_LongCycleStartOffsetPTM_r17_Choice_Ms20
+	DRX_ConfigPTM_r17_drx_LongCycleStartOffsetPTM_r17_Choice_Ms32
+	DRX_ConfigPTM_r17_drx_LongCycleStartOffsetPTM_r17_Choice_Ms40
+	DRX_ConfigPTM_r17_drx_LongCycleStartOffsetPTM_r17_Choice_Ms60
+	DRX_ConfigPTM_r17_drx_LongCycleStartOffsetPTM_r17_Choice_Ms64
+	DRX_ConfigPTM_r17_drx_LongCycleStartOffsetPTM_r17_Choice_Ms70
+	DRX_ConfigPTM_r17_drx_LongCycleStartOffsetPTM_r17_Choice_Ms80
+	DRX_ConfigPTM_r17_drx_LongCycleStartOffsetPTM_r17_Choice_Ms128
+	DRX_ConfigPTM_r17_drx_LongCycleStartOffsetPTM_r17_Choice_Ms160
+	DRX_ConfigPTM_r17_drx_LongCycleStartOffsetPTM_r17_Choice_Ms256
+	DRX_ConfigPTM_r17_drx_LongCycleStartOffsetPTM_r17_Choice_Ms320
+	DRX_ConfigPTM_r17_drx_LongCycleStartOffsetPTM_r17_Choice_Ms512
+	DRX_ConfigPTM_r17_drx_LongCycleStartOffsetPTM_r17_Choice_Ms640
+	DRX_ConfigPTM_r17_drx_LongCycleStartOffsetPTM_r17_Choice_Ms1024
+	DRX_ConfigPTM_r17_drx_LongCycleStartOffsetPTM_r17_Choice_Ms1280
+	DRX_ConfigPTM_r17_drx_LongCycleStartOffsetPTM_r17_Choice_Ms2048
+	DRX_ConfigPTM_r17_drx_LongCycleStartOffsetPTM_r17_Choice_Ms2560
+	DRX_ConfigPTM_r17_drx_LongCycleStartOffsetPTM_r17_Choice_Ms5120
+	DRX_ConfigPTM_r17_drx_LongCycleStartOffsetPTM_r17_Choice_Ms10240
 )
 
 type DRX_ConfigPTM_r17_drx_LongCycleStartOffsetPTM_r17 struct {
 	Choice  uint64
-	ms10    int64 `lb:0,ub:9,madatory`
-	ms20    int64 `lb:0,ub:19,madatory`
-	ms32    int64 `lb:0,ub:31,madatory`
-	ms40    int64 `lb:0,ub:39,madatory`
-	ms60    int64 `lb:0,ub:59,madatory`
-	ms64    int64 `lb:0,ub:63,madatory`
-	ms70    int64 `lb:0,ub:69,madatory`
-	ms80    int64 `lb:0,ub:79,madatory`
-	ms128   int64 `lb:0,ub:127,madatory`
-	ms160   int64 `lb:0,ub:159,madatory`
-	ms256   int64 `lb:0,ub:255,madatory`
-	ms320   int64 `lb:0,ub:319,madatory`
-	ms512   int64 `lb:0,ub:511,madatory`
-	ms640   int64 `lb:0,ub:639,madatory`
-	ms1024  int64 `lb:0,ub:1023,madatory`
-	ms1280  int64 `lb:0,ub:1279,madatory`
-	ms2048  int64 `lb:0,ub:2047,madatory`
-	ms2560  int64 `lb:0,ub:2559,madatory`
-	ms5120  int64 `lb:0,ub:5119,madatory`
-	ms10240 int64 `lb:0,ub:10239,madatory`
+	Ms10    int64 `lb:0,ub:9,madatory`
+	Ms20    int64 `lb:0,ub:19,madatory`
+	Ms32    int64 `lb:0,ub:31,madatory`
+	Ms40    int64 `lb:0,ub:39,madatory`
+	Ms60    int64 `lb:0,ub:59,madatory`
+	Ms64    int64 `lb:0,ub:63,madatory`
+	Ms70    int64 `lb:0,ub:69,madatory`
+	Ms80    int64 `lb:0,ub:79,madatory`
+	Ms128   int64 `lb:0,ub:127,madatory`
+	Ms160   int64 `lb:0,ub:159,madatory`
+	Ms256   int64 `lb:0,ub:255,madatory`
+	Ms320   int64 `lb:0,ub:319,madatory`
+	Ms512   int64 `lb:0,ub:511,madatory`
+	Ms640   int64 `lb:0,ub:639,madatory`
+	Ms1024  int64 `lb:0,ub:1023,madatory`
+	Ms1280  int64 `lb:0,ub:1279,madatory`
+	Ms2048  int64 `lb:0,ub:2047,madatory`
+	Ms2560  int64 `lb:0,ub:2559,madatory`
+	Ms5120  int64 `lb:0,ub:5119,madatory`
+	Ms10240 int64 `lb:0,ub:10239,madatory`
 }
 
 func (ie *DRX_ConfigPTM_r17_drx_LongCycleStartOffsetPTM_r17) Encode(w *uper.UperWriter) error {
@@ -61,85 +61,85 @@ func (ie *DRX_ConfigPTM_r17_drx_LongCycleStartOffsetPTM_r17) Encode(w *uper.Uper
 		return err
 	}
 	switch ie.Choice {
-	case DRX_ConfigPTM_r17_drx_LongCycleStartOffsetPTM_r17_Choice_ms10:
-		if err = w.WriteInteger(int64(ie.ms10), &uper.Constraint{Lb: 0, Ub: 9}, false); err != nil {
-			err = utils.WrapError("Encode ms10", err)
+	case DRX_ConfigPTM_r17_drx_LongCycleStartOffsetPTM_r17_Choice_Ms10:
+		if err = w.WriteInteger(int64(ie.Ms10), &uper.Constraint{Lb: 0, Ub: 9}, false); err != nil {
+			err = utils.WrapError("Encode Ms10", err)
 		}
-	case DRX_ConfigPTM_r17_drx_LongCycleStartOffsetPTM_r17_Choice_ms20:
-		if err = w.WriteInteger(int64(ie.ms20), &uper.Constraint{Lb: 0, Ub: 19}, false); err != nil {
-			err = utils.WrapError("Encode ms20", err)
+	case DRX_ConfigPTM_r17_drx_LongCycleStartOffsetPTM_r17_Choice_Ms20:
+		if err = w.WriteInteger(int64(ie.Ms20), &uper.Constraint{Lb: 0, Ub: 19}, false); err != nil {
+			err = utils.WrapError("Encode Ms20", err)
 		}
-	case DRX_ConfigPTM_r17_drx_LongCycleStartOffsetPTM_r17_Choice_ms32:
-		if err = w.WriteInteger(int64(ie.ms32), &uper.Constraint{Lb: 0, Ub: 31}, false); err != nil {
-			err = utils.WrapError("Encode ms32", err)
+	case DRX_ConfigPTM_r17_drx_LongCycleStartOffsetPTM_r17_Choice_Ms32:
+		if err = w.WriteInteger(int64(ie.Ms32), &uper.Constraint{Lb: 0, Ub: 31}, false); err != nil {
+			err = utils.WrapError("Encode Ms32", err)
 		}
-	case DRX_ConfigPTM_r17_drx_LongCycleStartOffsetPTM_r17_Choice_ms40:
-		if err = w.WriteInteger(int64(ie.ms40), &uper.Constraint{Lb: 0, Ub: 39}, false); err != nil {
-			err = utils.WrapError("Encode ms40", err)
+	case DRX_ConfigPTM_r17_drx_LongCycleStartOffsetPTM_r17_Choice_Ms40:
+		if err = w.WriteInteger(int64(ie.Ms40), &uper.Constraint{Lb: 0, Ub: 39}, false); err != nil {
+			err = utils.WrapError("Encode Ms40", err)
 		}
-	case DRX_ConfigPTM_r17_drx_LongCycleStartOffsetPTM_r17_Choice_ms60:
-		if err = w.WriteInteger(int64(ie.ms60), &uper.Constraint{Lb: 0, Ub: 59}, false); err != nil {
-			err = utils.WrapError("Encode ms60", err)
+	case DRX_ConfigPTM_r17_drx_LongCycleStartOffsetPTM_r17_Choice_Ms60:
+		if err = w.WriteInteger(int64(ie.Ms60), &uper.Constraint{Lb: 0, Ub: 59}, false); err != nil {
+			err = utils.WrapError("Encode Ms60", err)
 		}
-	case DRX_ConfigPTM_r17_drx_LongCycleStartOffsetPTM_r17_Choice_ms64:
-		if err = w.WriteInteger(int64(ie.ms64), &uper.Constraint{Lb: 0, Ub: 63}, false); err != nil {
-			err = utils.WrapError("Encode ms64", err)
+	case DRX_ConfigPTM_r17_drx_LongCycleStartOffsetPTM_r17_Choice_Ms64:
+		if err = w.WriteInteger(int64(ie.Ms64), &uper.Constraint{Lb: 0, Ub: 63}, false); err != nil {
+			err = utils.WrapError("Encode Ms64", err)
 		}
-	case DRX_ConfigPTM_r17_drx_LongCycleStartOffsetPTM_r17_Choice_ms70:
-		if err = w.WriteInteger(int64(ie.ms70), &uper.Constraint{Lb: 0, Ub: 69}, false); err != nil {
-			err = utils.WrapError("Encode ms70", err)
+	case DRX_ConfigPTM_r17_drx_LongCycleStartOffsetPTM_r17_Choice_Ms70:
+		if err = w.WriteInteger(int64(ie.Ms70), &uper.Constraint{Lb: 0, Ub: 69}, false); err != nil {
+			err = utils.WrapError("Encode Ms70", err)
 		}
-	case DRX_ConfigPTM_r17_drx_LongCycleStartOffsetPTM_r17_Choice_ms80:
-		if err = w.WriteInteger(int64(ie.ms80), &uper.Constraint{Lb: 0, Ub: 79}, false); err != nil {
-			err = utils.WrapError("Encode ms80", err)
+	case DRX_ConfigPTM_r17_drx_LongCycleStartOffsetPTM_r17_Choice_Ms80:
+		if err = w.WriteInteger(int64(ie.Ms80), &uper.Constraint{Lb: 0, Ub: 79}, false); err != nil {
+			err = utils.WrapError("Encode Ms80", err)
 		}
-	case DRX_ConfigPTM_r17_drx_LongCycleStartOffsetPTM_r17_Choice_ms128:
-		if err = w.WriteInteger(int64(ie.ms128), &uper.Constraint{Lb: 0, Ub: 127}, false); err != nil {
-			err = utils.WrapError("Encode ms128", err)
+	case DRX_ConfigPTM_r17_drx_LongCycleStartOffsetPTM_r17_Choice_Ms128:
+		if err = w.WriteInteger(int64(ie.Ms128), &uper.Constraint{Lb: 0, Ub: 127}, false); err != nil {
+			err = utils.WrapError("Encode Ms128", err)
 		}
-	case DRX_ConfigPTM_r17_drx_LongCycleStartOffsetPTM_r17_Choice_ms160:
-		if err = w.WriteInteger(int64(ie.ms160), &uper.Constraint{Lb: 0, Ub: 159}, false); err != nil {
-			err = utils.WrapError("Encode ms160", err)
+	case DRX_ConfigPTM_r17_drx_LongCycleStartOffsetPTM_r17_Choice_Ms160:
+		if err = w.WriteInteger(int64(ie.Ms160), &uper.Constraint{Lb: 0, Ub: 159}, false); err != nil {
+			err = utils.WrapError("Encode Ms160", err)
 		}
-	case DRX_ConfigPTM_r17_drx_LongCycleStartOffsetPTM_r17_Choice_ms256:
-		if err = w.WriteInteger(int64(ie.ms256), &uper.Constraint{Lb: 0, Ub: 255}, false); err != nil {
-			err = utils.WrapError("Encode ms256", err)
+	case DRX_ConfigPTM_r17_drx_LongCycleStartOffsetPTM_r17_Choice_Ms256:
+		if err = w.WriteInteger(int64(ie.Ms256), &uper.Constraint{Lb: 0, Ub: 255}, false); err != nil {
+			err = utils.WrapError("Encode Ms256", err)
 		}
-	case DRX_ConfigPTM_r17_drx_LongCycleStartOffsetPTM_r17_Choice_ms320:
-		if err = w.WriteInteger(int64(ie.ms320), &uper.Constraint{Lb: 0, Ub: 319}, false); err != nil {
-			err = utils.WrapError("Encode ms320", err)
+	case DRX_ConfigPTM_r17_drx_LongCycleStartOffsetPTM_r17_Choice_Ms320:
+		if err = w.WriteInteger(int64(ie.Ms320), &uper.Constraint{Lb: 0, Ub: 319}, false); err != nil {
+			err = utils.WrapError("Encode Ms320", err)
 		}
-	case DRX_ConfigPTM_r17_drx_LongCycleStartOffsetPTM_r17_Choice_ms512:
-		if err = w.WriteInteger(int64(ie.ms512), &uper.Constraint{Lb: 0, Ub: 511}, false); err != nil {
-			err = utils.WrapError("Encode ms512", err)
+	case DRX_ConfigPTM_r17_drx_LongCycleStartOffsetPTM_r17_Choice_Ms512:
+		if err = w.WriteInteger(int64(ie.Ms512), &uper.Constraint{Lb: 0, Ub: 511}, false); err != nil {
+			err = utils.WrapError("Encode Ms512", err)
 		}
-	case DRX_ConfigPTM_r17_drx_LongCycleStartOffsetPTM_r17_Choice_ms640:
-		if err = w.WriteInteger(int64(ie.ms640), &uper.Constraint{Lb: 0, Ub: 639}, false); err != nil {
-			err = utils.WrapError("Encode ms640", err)
+	case DRX_ConfigPTM_r17_drx_LongCycleStartOffsetPTM_r17_Choice_Ms640:
+		if err = w.WriteInteger(int64(ie.Ms640), &uper.Constraint{Lb: 0, Ub: 639}, false); err != nil {
+			err = utils.WrapError("Encode Ms640", err)
 		}
-	case DRX_ConfigPTM_r17_drx_LongCycleStartOffsetPTM_r17_Choice_ms1024:
-		if err = w.WriteInteger(int64(ie.ms1024), &uper.Constraint{Lb: 0, Ub: 1023}, false); err != nil {
-			err = utils.WrapError("Encode ms1024", err)
+	case DRX_ConfigPTM_r17_drx_LongCycleStartOffsetPTM_r17_Choice_Ms1024:
+		if err = w.WriteInteger(int64(ie.Ms1024), &uper.Constraint{Lb: 0, Ub: 1023}, false); err != nil {
+			err = utils.WrapError("Encode Ms1024", err)
 		}
-	case DRX_ConfigPTM_r17_drx_LongCycleStartOffsetPTM_r17_Choice_ms1280:
-		if err = w.WriteInteger(int64(ie.ms1280), &uper.Constraint{Lb: 0, Ub: 1279}, false); err != nil {
-			err = utils.WrapError("Encode ms1280", err)
+	case DRX_ConfigPTM_r17_drx_LongCycleStartOffsetPTM_r17_Choice_Ms1280:
+		if err = w.WriteInteger(int64(ie.Ms1280), &uper.Constraint{Lb: 0, Ub: 1279}, false); err != nil {
+			err = utils.WrapError("Encode Ms1280", err)
 		}
-	case DRX_ConfigPTM_r17_drx_LongCycleStartOffsetPTM_r17_Choice_ms2048:
-		if err = w.WriteInteger(int64(ie.ms2048), &uper.Constraint{Lb: 0, Ub: 2047}, false); err != nil {
-			err = utils.WrapError("Encode ms2048", err)
+	case DRX_ConfigPTM_r17_drx_LongCycleStartOffsetPTM_r17_Choice_Ms2048:
+		if err = w.WriteInteger(int64(ie.Ms2048), &uper.Constraint{Lb: 0, Ub: 2047}, false); err != nil {
+			err = utils.WrapError("Encode Ms2048", err)
 		}
-	case DRX_ConfigPTM_r17_drx_LongCycleStartOffsetPTM_r17_Choice_ms2560:
-		if err = w.WriteInteger(int64(ie.ms2560), &uper.Constraint{Lb: 0, Ub: 2559}, false); err != nil {
-			err = utils.WrapError("Encode ms2560", err)
+	case DRX_ConfigPTM_r17_drx_LongCycleStartOffsetPTM_r17_Choice_Ms2560:
+		if err = w.WriteInteger(int64(ie.Ms2560), &uper.Constraint{Lb: 0, Ub: 2559}, false); err != nil {
+			err = utils.WrapError("Encode Ms2560", err)
 		}
-	case DRX_ConfigPTM_r17_drx_LongCycleStartOffsetPTM_r17_Choice_ms5120:
-		if err = w.WriteInteger(int64(ie.ms5120), &uper.Constraint{Lb: 0, Ub: 5119}, false); err != nil {
-			err = utils.WrapError("Encode ms5120", err)
+	case DRX_ConfigPTM_r17_drx_LongCycleStartOffsetPTM_r17_Choice_Ms5120:
+		if err = w.WriteInteger(int64(ie.Ms5120), &uper.Constraint{Lb: 0, Ub: 5119}, false); err != nil {
+			err = utils.WrapError("Encode Ms5120", err)
 		}
-	case DRX_ConfigPTM_r17_drx_LongCycleStartOffsetPTM_r17_Choice_ms10240:
-		if err = w.WriteInteger(int64(ie.ms10240), &uper.Constraint{Lb: 0, Ub: 10239}, false); err != nil {
-			err = utils.WrapError("Encode ms10240", err)
+	case DRX_ConfigPTM_r17_drx_LongCycleStartOffsetPTM_r17_Choice_Ms10240:
+		if err = w.WriteInteger(int64(ie.Ms10240), &uper.Constraint{Lb: 0, Ub: 10239}, false); err != nil {
+			err = utils.WrapError("Encode Ms10240", err)
 		}
 	default:
 		err = fmt.Errorf("invalid choice: %d", ie.Choice)
@@ -153,126 +153,126 @@ func (ie *DRX_ConfigPTM_r17_drx_LongCycleStartOffsetPTM_r17) Decode(r *uper.Uper
 		return err
 	}
 	switch ie.Choice {
-	case DRX_ConfigPTM_r17_drx_LongCycleStartOffsetPTM_r17_Choice_ms10:
-		var tmp_int_ms10 int64
-		if tmp_int_ms10, err = r.ReadInteger(&uper.Constraint{Lb: 0, Ub: 9}, false); err != nil {
-			return utils.WrapError("Decode ms10", err)
+	case DRX_ConfigPTM_r17_drx_LongCycleStartOffsetPTM_r17_Choice_Ms10:
+		var tmp_int_Ms10 int64
+		if tmp_int_Ms10, err = r.ReadInteger(&uper.Constraint{Lb: 0, Ub: 9}, false); err != nil {
+			return utils.WrapError("Decode Ms10", err)
 		}
-		ie.ms10 = tmp_int_ms10
-	case DRX_ConfigPTM_r17_drx_LongCycleStartOffsetPTM_r17_Choice_ms20:
-		var tmp_int_ms20 int64
-		if tmp_int_ms20, err = r.ReadInteger(&uper.Constraint{Lb: 0, Ub: 19}, false); err != nil {
-			return utils.WrapError("Decode ms20", err)
+		ie.Ms10 = tmp_int_Ms10
+	case DRX_ConfigPTM_r17_drx_LongCycleStartOffsetPTM_r17_Choice_Ms20:
+		var tmp_int_Ms20 int64
+		if tmp_int_Ms20, err = r.ReadInteger(&uper.Constraint{Lb: 0, Ub: 19}, false); err != nil {
+			return utils.WrapError("Decode Ms20", err)
 		}
-		ie.ms20 = tmp_int_ms20
-	case DRX_ConfigPTM_r17_drx_LongCycleStartOffsetPTM_r17_Choice_ms32:
-		var tmp_int_ms32 int64
-		if tmp_int_ms32, err = r.ReadInteger(&uper.Constraint{Lb: 0, Ub: 31}, false); err != nil {
-			return utils.WrapError("Decode ms32", err)
+		ie.Ms20 = tmp_int_Ms20
+	case DRX_ConfigPTM_r17_drx_LongCycleStartOffsetPTM_r17_Choice_Ms32:
+		var tmp_int_Ms32 int64
+		if tmp_int_Ms32, err = r.ReadInteger(&uper.Constraint{Lb: 0, Ub: 31}, false); err != nil {
+			return utils.WrapError("Decode Ms32", err)
 		}
-		ie.ms32 = tmp_int_ms32
-	case DRX_ConfigPTM_r17_drx_LongCycleStartOffsetPTM_r17_Choice_ms40:
-		var tmp_int_ms40 int64
-		if tmp_int_ms40, err = r.ReadInteger(&uper.Constraint{Lb: 0, Ub: 39}, false); err != nil {
-			return utils.WrapError("Decode ms40", err)
+		ie.Ms32 = tmp_int_Ms32
+	case DRX_ConfigPTM_r17_drx_LongCycleStartOffsetPTM_r17_Choice_Ms40:
+		var tmp_int_Ms40 int64
+		if tmp_int_Ms40, err = r.ReadInteger(&uper.Constraint{Lb: 0, Ub: 39}, false); err != nil {
+			return utils.WrapError("Decode Ms40", err)
 		}
-		ie.ms40 = tmp_int_ms40
-	case DRX_ConfigPTM_r17_drx_LongCycleStartOffsetPTM_r17_Choice_ms60:
-		var tmp_int_ms60 int64
-		if tmp_int_ms60, err = r.ReadInteger(&uper.Constraint{Lb: 0, Ub: 59}, false); err != nil {
-			return utils.WrapError("Decode ms60", err)
+		ie.Ms40 = tmp_int_Ms40
+	case DRX_ConfigPTM_r17_drx_LongCycleStartOffsetPTM_r17_Choice_Ms60:
+		var tmp_int_Ms60 int64
+		if tmp_int_Ms60, err = r.ReadInteger(&uper.Constraint{Lb: 0, Ub: 59}, false); err != nil {
+			return utils.WrapError("Decode Ms60", err)
 		}
-		ie.ms60 = tmp_int_ms60
-	case DRX_ConfigPTM_r17_drx_LongCycleStartOffsetPTM_r17_Choice_ms64:
-		var tmp_int_ms64 int64
-		if tmp_int_ms64, err = r.ReadInteger(&uper.Constraint{Lb: 0, Ub: 63}, false); err != nil {
-			return utils.WrapError("Decode ms64", err)
+		ie.Ms60 = tmp_int_Ms60
+	case DRX_ConfigPTM_r17_drx_LongCycleStartOffsetPTM_r17_Choice_Ms64:
+		var tmp_int_Ms64 int64
+		if tmp_int_Ms64, err = r.ReadInteger(&uper.Constraint{Lb: 0, Ub: 63}, false); err != nil {
+			return utils.WrapError("Decode Ms64", err)
 		}
-		ie.ms64 = tmp_int_ms64
-	case DRX_ConfigPTM_r17_drx_LongCycleStartOffsetPTM_r17_Choice_ms70:
-		var tmp_int_ms70 int64
-		if tmp_int_ms70, err = r.ReadInteger(&uper.Constraint{Lb: 0, Ub: 69}, false); err != nil {
-			return utils.WrapError("Decode ms70", err)
+		ie.Ms64 = tmp_int_Ms64
+	case DRX_ConfigPTM_r17_drx_LongCycleStartOffsetPTM_r17_Choice_Ms70:
+		var tmp_int_Ms70 int64
+		if tmp_int_Ms70, err = r.ReadInteger(&uper.Constraint{Lb: 0, Ub: 69}, false); err != nil {
+			return utils.WrapError("Decode Ms70", err)
 		}
-		ie.ms70 = tmp_int_ms70
-	case DRX_ConfigPTM_r17_drx_LongCycleStartOffsetPTM_r17_Choice_ms80:
-		var tmp_int_ms80 int64
-		if tmp_int_ms80, err = r.ReadInteger(&uper.Constraint{Lb: 0, Ub: 79}, false); err != nil {
-			return utils.WrapError("Decode ms80", err)
+		ie.Ms70 = tmp_int_Ms70
+	case DRX_ConfigPTM_r17_drx_LongCycleStartOffsetPTM_r17_Choice_Ms80:
+		var tmp_int_Ms80 int64
+		if tmp_int_Ms80, err = r.ReadInteger(&uper.Constraint{Lb: 0, Ub: 79}, false); err != nil {
+			return utils.WrapError("Decode Ms80", err)
 		}
-		ie.ms80 = tmp_int_ms80
-	case DRX_ConfigPTM_r17_drx_LongCycleStartOffsetPTM_r17_Choice_ms128:
-		var tmp_int_ms128 int64
-		if tmp_int_ms128, err = r.ReadInteger(&uper.Constraint{Lb: 0, Ub: 127}, false); err != nil {
-			return utils.WrapError("Decode ms128", err)
+		ie.Ms80 = tmp_int_Ms80
+	case DRX_ConfigPTM_r17_drx_LongCycleStartOffsetPTM_r17_Choice_Ms128:
+		var tmp_int_Ms128 int64
+		if tmp_int_Ms128, err = r.ReadInteger(&uper.Constraint{Lb: 0, Ub: 127}, false); err != nil {
+			return utils.WrapError("Decode Ms128", err)
 		}
-		ie.ms128 = tmp_int_ms128
-	case DRX_ConfigPTM_r17_drx_LongCycleStartOffsetPTM_r17_Choice_ms160:
-		var tmp_int_ms160 int64
-		if tmp_int_ms160, err = r.ReadInteger(&uper.Constraint{Lb: 0, Ub: 159}, false); err != nil {
-			return utils.WrapError("Decode ms160", err)
+		ie.Ms128 = tmp_int_Ms128
+	case DRX_ConfigPTM_r17_drx_LongCycleStartOffsetPTM_r17_Choice_Ms160:
+		var tmp_int_Ms160 int64
+		if tmp_int_Ms160, err = r.ReadInteger(&uper.Constraint{Lb: 0, Ub: 159}, false); err != nil {
+			return utils.WrapError("Decode Ms160", err)
 		}
-		ie.ms160 = tmp_int_ms160
-	case DRX_ConfigPTM_r17_drx_LongCycleStartOffsetPTM_r17_Choice_ms256:
-		var tmp_int_ms256 int64
-		if tmp_int_ms256, err = r.ReadInteger(&uper.Constraint{Lb: 0, Ub: 255}, false); err != nil {
-			return utils.WrapError("Decode ms256", err)
+		ie.Ms160 = tmp_int_Ms160
+	case DRX_ConfigPTM_r17_drx_LongCycleStartOffsetPTM_r17_Choice_Ms256:
+		var tmp_int_Ms256 int64
+		if tmp_int_Ms256, err = r.ReadInteger(&uper.Constraint{Lb: 0, Ub: 255}, false); err != nil {
+			return utils.WrapError("Decode Ms256", err)
 		}
-		ie.ms256 = tmp_int_ms256
-	case DRX_ConfigPTM_r17_drx_LongCycleStartOffsetPTM_r17_Choice_ms320:
-		var tmp_int_ms320 int64
-		if tmp_int_ms320, err = r.ReadInteger(&uper.Constraint{Lb: 0, Ub: 319}, false); err != nil {
-			return utils.WrapError("Decode ms320", err)
+		ie.Ms256 = tmp_int_Ms256
+	case DRX_ConfigPTM_r17_drx_LongCycleStartOffsetPTM_r17_Choice_Ms320:
+		var tmp_int_Ms320 int64
+		if tmp_int_Ms320, err = r.ReadInteger(&uper.Constraint{Lb: 0, Ub: 319}, false); err != nil {
+			return utils.WrapError("Decode Ms320", err)
 		}
-		ie.ms320 = tmp_int_ms320
-	case DRX_ConfigPTM_r17_drx_LongCycleStartOffsetPTM_r17_Choice_ms512:
-		var tmp_int_ms512 int64
-		if tmp_int_ms512, err = r.ReadInteger(&uper.Constraint{Lb: 0, Ub: 511}, false); err != nil {
-			return utils.WrapError("Decode ms512", err)
+		ie.Ms320 = tmp_int_Ms320
+	case DRX_ConfigPTM_r17_drx_LongCycleStartOffsetPTM_r17_Choice_Ms512:
+		var tmp_int_Ms512 int64
+		if tmp_int_Ms512, err = r.ReadInteger(&uper.Constraint{Lb: 0, Ub: 511}, false); err != nil {
+			return utils.WrapError("Decode Ms512", err)
 		}
-		ie.ms512 = tmp_int_ms512
-	case DRX_ConfigPTM_r17_drx_LongCycleStartOffsetPTM_r17_Choice_ms640:
-		var tmp_int_ms640 int64
-		if tmp_int_ms640, err = r.ReadInteger(&uper.Constraint{Lb: 0, Ub: 639}, false); err != nil {
-			return utils.WrapError("Decode ms640", err)
+		ie.Ms512 = tmp_int_Ms512
+	case DRX_ConfigPTM_r17_drx_LongCycleStartOffsetPTM_r17_Choice_Ms640:
+		var tmp_int_Ms640 int64
+		if tmp_int_Ms640, err = r.ReadInteger(&uper.Constraint{Lb: 0, Ub: 639}, false); err != nil {
+			return utils.WrapError("Decode Ms640", err)
 		}
-		ie.ms640 = tmp_int_ms640
-	case DRX_ConfigPTM_r17_drx_LongCycleStartOffsetPTM_r17_Choice_ms1024:
-		var tmp_int_ms1024 int64
-		if tmp_int_ms1024, err = r.ReadInteger(&uper.Constraint{Lb: 0, Ub: 1023}, false); err != nil {
-			return utils.WrapError("Decode ms1024", err)
+		ie.Ms640 = tmp_int_Ms640
+	case DRX_ConfigPTM_r17_drx_LongCycleStartOffsetPTM_r17_Choice_Ms1024:
+		var tmp_int_Ms1024 int64
+		if tmp_int_Ms1024, err = r.ReadInteger(&uper.Constraint{Lb: 0, Ub: 1023}, false); err != nil {
+			return utils.WrapError("Decode Ms1024", err)
 		}
-		ie.ms1024 = tmp_int_ms1024
-	case DRX_ConfigPTM_r17_drx_LongCycleStartOffsetPTM_r17_Choice_ms1280:
-		var tmp_int_ms1280 int64
-		if tmp_int_ms1280, err = r.ReadInteger(&uper.Constraint{Lb: 0, Ub: 1279}, false); err != nil {
-			return utils.WrapError("Decode ms1280", err)
+		ie.Ms1024 = tmp_int_Ms1024
+	case DRX_ConfigPTM_r17_drx_LongCycleStartOffsetPTM_r17_Choice_Ms1280:
+		var tmp_int_Ms1280 int64
+		if tmp_int_Ms1280, err = r.ReadInteger(&uper.Constraint{Lb: 0, Ub: 1279}, false); err != nil {
+			return utils.WrapError("Decode Ms1280", err)
 		}
-		ie.ms1280 = tmp_int_ms1280
-	case DRX_ConfigPTM_r17_drx_LongCycleStartOffsetPTM_r17_Choice_ms2048:
-		var tmp_int_ms2048 int64
-		if tmp_int_ms2048, err = r.ReadInteger(&uper.Constraint{Lb: 0, Ub: 2047}, false); err != nil {
-			return utils.WrapError("Decode ms2048", err)
+		ie.Ms1280 = tmp_int_Ms1280
+	case DRX_ConfigPTM_r17_drx_LongCycleStartOffsetPTM_r17_Choice_Ms2048:
+		var tmp_int_Ms2048 int64
+		if tmp_int_Ms2048, err = r.ReadInteger(&uper.Constraint{Lb: 0, Ub: 2047}, false); err != nil {
+			return utils.WrapError("Decode Ms2048", err)
 		}
-		ie.ms2048 = tmp_int_ms2048
-	case DRX_ConfigPTM_r17_drx_LongCycleStartOffsetPTM_r17_Choice_ms2560:
-		var tmp_int_ms2560 int64
-		if tmp_int_ms2560, err = r.ReadInteger(&uper.Constraint{Lb: 0, Ub: 2559}, false); err != nil {
-			return utils.WrapError("Decode ms2560", err)
+		ie.Ms2048 = tmp_int_Ms2048
+	case DRX_ConfigPTM_r17_drx_LongCycleStartOffsetPTM_r17_Choice_Ms2560:
+		var tmp_int_Ms2560 int64
+		if tmp_int_Ms2560, err = r.ReadInteger(&uper.Constraint{Lb: 0, Ub: 2559}, false); err != nil {
+			return utils.WrapError("Decode Ms2560", err)
 		}
-		ie.ms2560 = tmp_int_ms2560
-	case DRX_ConfigPTM_r17_drx_LongCycleStartOffsetPTM_r17_Choice_ms5120:
-		var tmp_int_ms5120 int64
-		if tmp_int_ms5120, err = r.ReadInteger(&uper.Constraint{Lb: 0, Ub: 5119}, false); err != nil {
-			return utils.WrapError("Decode ms5120", err)
+		ie.Ms2560 = tmp_int_Ms2560
+	case DRX_ConfigPTM_r17_drx_LongCycleStartOffsetPTM_r17_Choice_Ms5120:
+		var tmp_int_Ms5120 int64
+		if tmp_int_Ms5120, err = r.ReadInteger(&uper.Constraint{Lb: 0, Ub: 5119}, false); err != nil {
+			return utils.WrapError("Decode Ms5120", err)
 		}
-		ie.ms5120 = tmp_int_ms5120
-	case DRX_ConfigPTM_r17_drx_LongCycleStartOffsetPTM_r17_Choice_ms10240:
-		var tmp_int_ms10240 int64
-		if tmp_int_ms10240, err = r.ReadInteger(&uper.Constraint{Lb: 0, Ub: 10239}, false); err != nil {
-			return utils.WrapError("Decode ms10240", err)
+		ie.Ms5120 = tmp_int_Ms5120
+	case DRX_ConfigPTM_r17_drx_LongCycleStartOffsetPTM_r17_Choice_Ms10240:
+		var tmp_int_Ms10240 int64
+		if tmp_int_Ms10240, err = r.ReadInteger(&uper.Constraint{Lb: 0, Ub: 10239}, false); err != nil {
+			return utils.WrapError("Decode Ms10240", err)
 		}
-		ie.ms10240 = tmp_int_ms10240
+		ie.Ms10240 = tmp_int_Ms10240
 	default:
 		return fmt.Errorf("invalid choice: %d", ie.Choice)
 	}

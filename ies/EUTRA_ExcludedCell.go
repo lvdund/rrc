@@ -6,28 +6,28 @@ import (
 )
 
 type EUTRA_ExcludedCell struct {
-	cellIndexEUTRA  EUTRA_CellIndex       `madatory`
-	physCellIdRange EUTRA_PhysCellIdRange `madatory`
+	CellIndexEUTRA  EUTRA_CellIndex       `madatory`
+	PhysCellIdRange EUTRA_PhysCellIdRange `madatory`
 }
 
 func (ie *EUTRA_ExcludedCell) Encode(w *uper.UperWriter) error {
 	var err error
-	if err = ie.cellIndexEUTRA.Encode(w); err != nil {
-		return utils.WrapError("Encode cellIndexEUTRA", err)
+	if err = ie.CellIndexEUTRA.Encode(w); err != nil {
+		return utils.WrapError("Encode CellIndexEUTRA", err)
 	}
-	if err = ie.physCellIdRange.Encode(w); err != nil {
-		return utils.WrapError("Encode physCellIdRange", err)
+	if err = ie.PhysCellIdRange.Encode(w); err != nil {
+		return utils.WrapError("Encode PhysCellIdRange", err)
 	}
 	return nil
 }
 
 func (ie *EUTRA_ExcludedCell) Decode(r *uper.UperReader) error {
 	var err error
-	if err = ie.cellIndexEUTRA.Decode(r); err != nil {
-		return utils.WrapError("Decode cellIndexEUTRA", err)
+	if err = ie.CellIndexEUTRA.Decode(r); err != nil {
+		return utils.WrapError("Decode CellIndexEUTRA", err)
 	}
-	if err = ie.physCellIdRange.Decode(r); err != nil {
-		return utils.WrapError("Decode physCellIdRange", err)
+	if err = ie.PhysCellIdRange.Decode(r); err != nil {
+		return utils.WrapError("Decode PhysCellIdRange", err)
 	}
 	return nil
 }

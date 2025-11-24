@@ -9,14 +9,14 @@ import (
 
 const (
 	UCI_OnPUSCH_betaOffsets_Choice_nothing uint64 = iota
-	UCI_OnPUSCH_betaOffsets_Choice_dynamic
-	UCI_OnPUSCH_betaOffsets_Choice_semiStatic
+	UCI_OnPUSCH_betaOffsets_Choice_Dynamic
+	UCI_OnPUSCH_betaOffsets_Choice_SemiStatic
 )
 
 type UCI_OnPUSCH_betaOffsets struct {
 	Choice     uint64
-	dynamic    []BetaOffsets `lb:4,ub:4,madatory`
-	semiStatic *BetaOffsets
+	Dynamic    []BetaOffsets `lb:4,ub:4,madatory`
+	SemiStatic *BetaOffsets
 }
 
 func (ie *UCI_OnPUSCH_betaOffsets) Encode(w *uper.UperWriter) error {
@@ -25,17 +25,17 @@ func (ie *UCI_OnPUSCH_betaOffsets) Encode(w *uper.UperWriter) error {
 		return err
 	}
 	switch ie.Choice {
-	case UCI_OnPUSCH_betaOffsets_Choice_dynamic:
+	case UCI_OnPUSCH_betaOffsets_Choice_Dynamic:
 		tmp := utils.NewSequence[*BetaOffsets]([]*BetaOffsets{}, uper.Constraint{Lb: 4, Ub: 4}, false)
-		for _, i := range ie.dynamic {
+		for _, i := range ie.Dynamic {
 			tmp.Value = append(tmp.Value, &i)
 		}
 		if err = tmp.Encode(w); err != nil {
-			err = utils.WrapError("Encode dynamic", err)
+			err = utils.WrapError("Encode Dynamic", err)
 		}
-	case UCI_OnPUSCH_betaOffsets_Choice_semiStatic:
-		if err = ie.semiStatic.Encode(w); err != nil {
-			err = utils.WrapError("Encode semiStatic", err)
+	case UCI_OnPUSCH_betaOffsets_Choice_SemiStatic:
+		if err = ie.SemiStatic.Encode(w); err != nil {
+			err = utils.WrapError("Encode SemiStatic", err)
 		}
 	default:
 		err = fmt.Errorf("invalid choice: %d", ie.Choice)
@@ -49,22 +49,22 @@ func (ie *UCI_OnPUSCH_betaOffsets) Decode(r *uper.UperReader) error {
 		return err
 	}
 	switch ie.Choice {
-	case UCI_OnPUSCH_betaOffsets_Choice_dynamic:
+	case UCI_OnPUSCH_betaOffsets_Choice_Dynamic:
 		tmp := utils.NewSequence[*BetaOffsets]([]*BetaOffsets{}, uper.Constraint{Lb: 4, Ub: 4}, false)
 		fn := func() *BetaOffsets {
 			return new(BetaOffsets)
 		}
 		if err = tmp.Decode(r, fn); err != nil {
-			return utils.WrapError("Decode dynamic", err)
+			return utils.WrapError("Decode Dynamic", err)
 		}
-		ie.dynamic = []BetaOffsets{}
+		ie.Dynamic = []BetaOffsets{}
 		for _, i := range tmp.Value {
-			ie.dynamic = append(ie.dynamic, *i)
+			ie.Dynamic = append(ie.Dynamic, *i)
 		}
-	case UCI_OnPUSCH_betaOffsets_Choice_semiStatic:
-		ie.semiStatic = new(BetaOffsets)
-		if err = ie.semiStatic.Decode(r); err != nil {
-			return utils.WrapError("Decode semiStatic", err)
+	case UCI_OnPUSCH_betaOffsets_Choice_SemiStatic:
+		ie.SemiStatic = new(BetaOffsets)
+		if err = ie.SemiStatic.Decode(r); err != nil {
+			return utils.WrapError("Decode SemiStatic", err)
 		}
 	default:
 		return fmt.Errorf("invalid choice: %d", ie.Choice)

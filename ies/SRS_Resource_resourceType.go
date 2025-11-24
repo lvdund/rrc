@@ -9,16 +9,16 @@ import (
 
 const (
 	SRS_Resource_resourceType_Choice_nothing uint64 = iota
-	SRS_Resource_resourceType_Choice_aperiodic
-	SRS_Resource_resourceType_Choice_semi_persistent
-	SRS_Resource_resourceType_Choice_periodic
+	SRS_Resource_resourceType_Choice_Aperiodic
+	SRS_Resource_resourceType_Choice_Semi_persistent
+	SRS_Resource_resourceType_Choice_Periodic
 )
 
 type SRS_Resource_resourceType struct {
 	Choice          uint64
-	aperiodic       interface{} `madatory`
-	semi_persistent *SRS_Resource_resourceType_semi_persistent
-	periodic        *SRS_Resource_resourceType_periodic
+	Aperiodic       interface{} `madatory`
+	Semi_persistent *SRS_Resource_resourceType_semi_persistent
+	Periodic        *SRS_Resource_resourceType_periodic
 }
 
 func (ie *SRS_Resource_resourceType) Encode(w *uper.UperWriter) error {
@@ -27,15 +27,15 @@ func (ie *SRS_Resource_resourceType) Encode(w *uper.UperWriter) error {
 		return err
 	}
 	switch ie.Choice {
-	case SRS_Resource_resourceType_Choice_aperiodic:
+	case SRS_Resource_resourceType_Choice_Aperiodic:
 		// interface{} field of choice - nothing to encode
-	case SRS_Resource_resourceType_Choice_semi_persistent:
-		if err = ie.semi_persistent.Encode(w); err != nil {
-			err = utils.WrapError("Encode semi_persistent", err)
+	case SRS_Resource_resourceType_Choice_Semi_persistent:
+		if err = ie.Semi_persistent.Encode(w); err != nil {
+			err = utils.WrapError("Encode Semi_persistent", err)
 		}
-	case SRS_Resource_resourceType_Choice_periodic:
-		if err = ie.periodic.Encode(w); err != nil {
-			err = utils.WrapError("Encode periodic", err)
+	case SRS_Resource_resourceType_Choice_Periodic:
+		if err = ie.Periodic.Encode(w); err != nil {
+			err = utils.WrapError("Encode Periodic", err)
 		}
 	default:
 		err = fmt.Errorf("invalid choice: %d", ie.Choice)
@@ -49,17 +49,17 @@ func (ie *SRS_Resource_resourceType) Decode(r *uper.UperReader) error {
 		return err
 	}
 	switch ie.Choice {
-	case SRS_Resource_resourceType_Choice_aperiodic:
+	case SRS_Resource_resourceType_Choice_Aperiodic:
 		// interface{} field of choice - nothing to decode
-	case SRS_Resource_resourceType_Choice_semi_persistent:
-		ie.semi_persistent = new(SRS_Resource_resourceType_semi_persistent)
-		if err = ie.semi_persistent.Decode(r); err != nil {
-			return utils.WrapError("Decode semi_persistent", err)
+	case SRS_Resource_resourceType_Choice_Semi_persistent:
+		ie.Semi_persistent = new(SRS_Resource_resourceType_semi_persistent)
+		if err = ie.Semi_persistent.Decode(r); err != nil {
+			return utils.WrapError("Decode Semi_persistent", err)
 		}
-	case SRS_Resource_resourceType_Choice_periodic:
-		ie.periodic = new(SRS_Resource_resourceType_periodic)
-		if err = ie.periodic.Decode(r); err != nil {
-			return utils.WrapError("Decode periodic", err)
+	case SRS_Resource_resourceType_Choice_Periodic:
+		ie.Periodic = new(SRS_Resource_resourceType_periodic)
+		if err = ie.Periodic.Decode(r); err != nil {
+			return utils.WrapError("Decode Periodic", err)
 		}
 	default:
 		return fmt.Errorf("invalid choice: %d", ie.Choice)

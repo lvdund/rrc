@@ -8,41 +8,41 @@ import (
 )
 
 type EventTriggerConfig struct {
-	eventId                       EventTriggerConfig_eventId                        `lb:1,ub:65525,madatory`
-	rsType                        NR_RS_Type                                        `madatory,ext`
-	reportInterval                ReportInterval                                    `madatory,ext`
-	reportAmount                  EventTriggerConfig_reportAmount                   `madatory,ext`
-	reportQuantityCell            MeasReportQuantity                                `madatory,ext`
-	maxReportCells                int64                                             `lb:1,ub:maxCellReport,madatory,ext`
-	reportQuantityRS_Indexes      *MeasReportQuantity                               `optional,ext`
-	maxNrofRS_IndexesToReport     *int64                                            `lb:1,ub:maxNrofIndexesToReport,optional,ext`
-	includeBeamMeasurements       bool                                              `madatory,ext`
-	reportAddNeighMeas            *EventTriggerConfig_reportAddNeighMeas            `optional,ext`
-	measRSSI_ReportConfig_r16     *MeasRSSI_ReportConfig_r16                        `optional,ext-2`
-	useT312_r16                   *bool                                             `optional,ext-2`
-	includeCommonLocationInfo_r16 *EventTriggerConfig_includeCommonLocationInfo_r16 `optional,ext-2`
-	includeBT_Meas_r16            *BT_NameList_r16                                  `optional,ext-2,setuprelease`
-	includeWLAN_Meas_r16          *WLAN_NameList_r16                                `optional,ext-2,setuprelease`
-	includeSensor_Meas_r16        *Sensor_NameList_r16                              `optional,ext-2,setuprelease`
-	coarseLocationRequest_r17     *EventTriggerConfig_coarseLocationRequest_r17     `optional,ext-3`
-	reportQuantityRelay_r17       *SL_MeasReportQuantity_r16                        `optional,ext-3`
+	EventId                       EventTriggerConfig_eventId                        `lb:1,ub:65525,madatory`
+	RsType                        NR_RS_Type                                        `madatory,ext`
+	ReportInterval                ReportInterval                                    `madatory,ext`
+	ReportAmount                  EventTriggerConfig_reportAmount                   `madatory,ext`
+	ReportQuantityCell            MeasReportQuantity                                `madatory,ext`
+	MaxReportCells                int64                                             `lb:1,ub:maxCellReport,madatory,ext`
+	ReportQuantityRS_Indexes      *MeasReportQuantity                               `optional,ext`
+	MaxNrofRS_IndexesToReport     *int64                                            `lb:1,ub:maxNrofIndexesToReport,optional,ext`
+	IncludeBeamMeasurements       bool                                              `madatory,ext`
+	ReportAddNeighMeas            *EventTriggerConfig_reportAddNeighMeas            `optional,ext`
+	MeasRSSI_ReportConfig_r16     *MeasRSSI_ReportConfig_r16                        `optional,ext-2`
+	UseT312_r16                   *bool                                             `optional,ext-2`
+	IncludeCommonLocationInfo_r16 *EventTriggerConfig_includeCommonLocationInfo_r16 `optional,ext-2`
+	IncludeBT_Meas_r16            *BT_NameList_r16                                  `optional,ext-2,setuprelease`
+	IncludeWLAN_Meas_r16          *WLAN_NameList_r16                                `optional,ext-2,setuprelease`
+	IncludeSensor_Meas_r16        *Sensor_NameList_r16                              `optional,ext-2,setuprelease`
+	CoarseLocationRequest_r17     *EventTriggerConfig_coarseLocationRequest_r17     `optional,ext-3`
+	ReportQuantityRelay_r17       *SL_MeasReportQuantity_r16                        `optional,ext-3`
 }
 
 func (ie *EventTriggerConfig) Encode(w *uper.UperWriter) error {
 	var err error
-	hasExtensions := ie.measRSSI_ReportConfig_r16 != nil || ie.useT312_r16 != nil || ie.includeCommonLocationInfo_r16 != nil || ie.includeBT_Meas_r16 != nil || ie.includeWLAN_Meas_r16 != nil || ie.includeSensor_Meas_r16 != nil || ie.coarseLocationRequest_r17 != nil || ie.reportQuantityRelay_r17 != nil
+	hasExtensions := ie.MeasRSSI_ReportConfig_r16 != nil || ie.UseT312_r16 != nil || ie.IncludeCommonLocationInfo_r16 != nil || ie.IncludeBT_Meas_r16 != nil || ie.IncludeWLAN_Meas_r16 != nil || ie.IncludeSensor_Meas_r16 != nil || ie.CoarseLocationRequest_r17 != nil || ie.ReportQuantityRelay_r17 != nil
 	preambleBits := []bool{hasExtensions}
 	for _, bit := range preambleBits {
 		if err = w.WriteBool(bit); err != nil {
 			return err
 		}
 	}
-	if err = ie.eventId.Encode(w); err != nil {
-		return utils.WrapError("Encode eventId", err)
+	if err = ie.EventId.Encode(w); err != nil {
+		return utils.WrapError("Encode EventId", err)
 	}
 	if hasExtensions {
 		// Extension bitmap: 2 bits for 2 extension groups
-		extBitmap := []bool{ie.measRSSI_ReportConfig_r16 != nil || ie.useT312_r16 != nil || ie.includeCommonLocationInfo_r16 != nil || ie.includeBT_Meas_r16 != nil || ie.includeWLAN_Meas_r16 != nil || ie.includeSensor_Meas_r16 != nil, ie.coarseLocationRequest_r17 != nil || ie.reportQuantityRelay_r17 != nil}
+		extBitmap := []bool{ie.MeasRSSI_ReportConfig_r16 != nil || ie.UseT312_r16 != nil || ie.IncludeCommonLocationInfo_r16 != nil || ie.IncludeBT_Meas_r16 != nil || ie.IncludeWLAN_Meas_r16 != nil || ie.IncludeSensor_Meas_r16 != nil, ie.CoarseLocationRequest_r17 != nil || ie.ReportQuantityRelay_r17 != nil}
 		if err := w.WriteExtBitMap(extBitmap); err != nil {
 			return utils.WrapError("WriteExtBitMap EventTriggerConfig", err)
 		}
@@ -53,56 +53,56 @@ func (ie *EventTriggerConfig) Encode(w *uper.UperWriter) error {
 			extWriter := uper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 2
-			optionals_ext_2 := []bool{ie.measRSSI_ReportConfig_r16 != nil, ie.useT312_r16 != nil, ie.includeCommonLocationInfo_r16 != nil, ie.includeBT_Meas_r16 != nil, ie.includeWLAN_Meas_r16 != nil, ie.includeSensor_Meas_r16 != nil}
+			optionals_ext_2 := []bool{ie.MeasRSSI_ReportConfig_r16 != nil, ie.UseT312_r16 != nil, ie.IncludeCommonLocationInfo_r16 != nil, ie.IncludeBT_Meas_r16 != nil, ie.IncludeWLAN_Meas_r16 != nil, ie.IncludeSensor_Meas_r16 != nil}
 			for _, bit := range optionals_ext_2 {
 				if err := extWriter.WriteBool(bit); err != nil {
 					return err
 				}
 			}
 
-			// encode measRSSI_ReportConfig_r16 optional
-			if ie.measRSSI_ReportConfig_r16 != nil {
-				if err = ie.measRSSI_ReportConfig_r16.Encode(extWriter); err != nil {
-					return utils.WrapError("Encode measRSSI_ReportConfig_r16", err)
+			// encode MeasRSSI_ReportConfig_r16 optional
+			if ie.MeasRSSI_ReportConfig_r16 != nil {
+				if err = ie.MeasRSSI_ReportConfig_r16.Encode(extWriter); err != nil {
+					return utils.WrapError("Encode MeasRSSI_ReportConfig_r16", err)
 				}
 			}
-			// encode useT312_r16 optional
-			if ie.useT312_r16 != nil {
-				if err = extWriter.WriteBoolean(*ie.useT312_r16); err != nil {
-					return utils.WrapError("Encode useT312_r16", err)
+			// encode UseT312_r16 optional
+			if ie.UseT312_r16 != nil {
+				if err = extWriter.WriteBoolean(*ie.UseT312_r16); err != nil {
+					return utils.WrapError("Encode UseT312_r16", err)
 				}
 			}
-			// encode includeCommonLocationInfo_r16 optional
-			if ie.includeCommonLocationInfo_r16 != nil {
-				if err = ie.includeCommonLocationInfo_r16.Encode(extWriter); err != nil {
-					return utils.WrapError("Encode includeCommonLocationInfo_r16", err)
+			// encode IncludeCommonLocationInfo_r16 optional
+			if ie.IncludeCommonLocationInfo_r16 != nil {
+				if err = ie.IncludeCommonLocationInfo_r16.Encode(extWriter); err != nil {
+					return utils.WrapError("Encode IncludeCommonLocationInfo_r16", err)
 				}
 			}
-			// encode includeBT_Meas_r16 optional
-			if ie.includeBT_Meas_r16 != nil {
-				tmp_includeBT_Meas_r16 := utils.SetupRelease[*BT_NameList_r16]{
-					Setup: ie.includeBT_Meas_r16,
+			// encode IncludeBT_Meas_r16 optional
+			if ie.IncludeBT_Meas_r16 != nil {
+				tmp_IncludeBT_Meas_r16 := utils.SetupRelease[*BT_NameList_r16]{
+					Setup: ie.IncludeBT_Meas_r16,
 				}
-				if err = tmp_includeBT_Meas_r16.Encode(extWriter); err != nil {
-					return utils.WrapError("Encode includeBT_Meas_r16", err)
-				}
-			}
-			// encode includeWLAN_Meas_r16 optional
-			if ie.includeWLAN_Meas_r16 != nil {
-				tmp_includeWLAN_Meas_r16 := utils.SetupRelease[*WLAN_NameList_r16]{
-					Setup: ie.includeWLAN_Meas_r16,
-				}
-				if err = tmp_includeWLAN_Meas_r16.Encode(extWriter); err != nil {
-					return utils.WrapError("Encode includeWLAN_Meas_r16", err)
+				if err = tmp_IncludeBT_Meas_r16.Encode(extWriter); err != nil {
+					return utils.WrapError("Encode IncludeBT_Meas_r16", err)
 				}
 			}
-			// encode includeSensor_Meas_r16 optional
-			if ie.includeSensor_Meas_r16 != nil {
-				tmp_includeSensor_Meas_r16 := utils.SetupRelease[*Sensor_NameList_r16]{
-					Setup: ie.includeSensor_Meas_r16,
+			// encode IncludeWLAN_Meas_r16 optional
+			if ie.IncludeWLAN_Meas_r16 != nil {
+				tmp_IncludeWLAN_Meas_r16 := utils.SetupRelease[*WLAN_NameList_r16]{
+					Setup: ie.IncludeWLAN_Meas_r16,
 				}
-				if err = tmp_includeSensor_Meas_r16.Encode(extWriter); err != nil {
-					return utils.WrapError("Encode includeSensor_Meas_r16", err)
+				if err = tmp_IncludeWLAN_Meas_r16.Encode(extWriter); err != nil {
+					return utils.WrapError("Encode IncludeWLAN_Meas_r16", err)
+				}
+			}
+			// encode IncludeSensor_Meas_r16 optional
+			if ie.IncludeSensor_Meas_r16 != nil {
+				tmp_IncludeSensor_Meas_r16 := utils.SetupRelease[*Sensor_NameList_r16]{
+					Setup: ie.IncludeSensor_Meas_r16,
+				}
+				if err = tmp_IncludeSensor_Meas_r16.Encode(extWriter); err != nil {
+					return utils.WrapError("Encode IncludeSensor_Meas_r16", err)
 				}
 			}
 
@@ -121,23 +121,23 @@ func (ie *EventTriggerConfig) Encode(w *uper.UperWriter) error {
 			extWriter := uper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 3
-			optionals_ext_3 := []bool{ie.coarseLocationRequest_r17 != nil, ie.reportQuantityRelay_r17 != nil}
+			optionals_ext_3 := []bool{ie.CoarseLocationRequest_r17 != nil, ie.ReportQuantityRelay_r17 != nil}
 			for _, bit := range optionals_ext_3 {
 				if err := extWriter.WriteBool(bit); err != nil {
 					return err
 				}
 			}
 
-			// encode coarseLocationRequest_r17 optional
-			if ie.coarseLocationRequest_r17 != nil {
-				if err = ie.coarseLocationRequest_r17.Encode(extWriter); err != nil {
-					return utils.WrapError("Encode coarseLocationRequest_r17", err)
+			// encode CoarseLocationRequest_r17 optional
+			if ie.CoarseLocationRequest_r17 != nil {
+				if err = ie.CoarseLocationRequest_r17.Encode(extWriter); err != nil {
+					return utils.WrapError("Encode CoarseLocationRequest_r17", err)
 				}
 			}
-			// encode reportQuantityRelay_r17 optional
-			if ie.reportQuantityRelay_r17 != nil {
-				if err = ie.reportQuantityRelay_r17.Encode(extWriter); err != nil {
-					return utils.WrapError("Encode reportQuantityRelay_r17", err)
+			// encode ReportQuantityRelay_r17 optional
+			if ie.ReportQuantityRelay_r17 != nil {
+				if err = ie.ReportQuantityRelay_r17.Encode(extWriter); err != nil {
+					return utils.WrapError("Encode ReportQuantityRelay_r17", err)
 				}
 			}
 
@@ -159,8 +159,8 @@ func (ie *EventTriggerConfig) Decode(r *uper.UperReader) error {
 	if extensionBit, err = r.ReadBool(); err != nil {
 		return err
 	}
-	if err = ie.eventId.Decode(r); err != nil {
-		return utils.WrapError("Decode eventId", err)
+	if err = ie.EventId.Decode(r); err != nil {
+		return utils.WrapError("Decode EventId", err)
 	}
 
 	if extensionBit {
@@ -179,75 +179,75 @@ func (ie *EventTriggerConfig) Decode(r *uper.UperReader) error {
 
 			extReader := uper.NewReader(bytes.NewReader(extBytes))
 
-			measRSSI_ReportConfig_r16Present, err := extReader.ReadBool()
+			MeasRSSI_ReportConfig_r16Present, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			useT312_r16Present, err := extReader.ReadBool()
+			UseT312_r16Present, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			includeCommonLocationInfo_r16Present, err := extReader.ReadBool()
+			IncludeCommonLocationInfo_r16Present, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			includeBT_Meas_r16Present, err := extReader.ReadBool()
+			IncludeBT_Meas_r16Present, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			includeWLAN_Meas_r16Present, err := extReader.ReadBool()
+			IncludeWLAN_Meas_r16Present, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			includeSensor_Meas_r16Present, err := extReader.ReadBool()
+			IncludeSensor_Meas_r16Present, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			// decode measRSSI_ReportConfig_r16 optional
-			if measRSSI_ReportConfig_r16Present {
-				ie.measRSSI_ReportConfig_r16 = new(MeasRSSI_ReportConfig_r16)
-				if err = ie.measRSSI_ReportConfig_r16.Decode(extReader); err != nil {
-					return utils.WrapError("Decode measRSSI_ReportConfig_r16", err)
+			// decode MeasRSSI_ReportConfig_r16 optional
+			if MeasRSSI_ReportConfig_r16Present {
+				ie.MeasRSSI_ReportConfig_r16 = new(MeasRSSI_ReportConfig_r16)
+				if err = ie.MeasRSSI_ReportConfig_r16.Decode(extReader); err != nil {
+					return utils.WrapError("Decode MeasRSSI_ReportConfig_r16", err)
 				}
 			}
-			// decode useT312_r16 optional
-			if useT312_r16Present {
-				var tmp_bool_useT312_r16 bool
-				if tmp_bool_useT312_r16, err = extReader.ReadBoolean(); err != nil {
-					return utils.WrapError("Decode useT312_r16", err)
+			// decode UseT312_r16 optional
+			if UseT312_r16Present {
+				var tmp_bool_UseT312_r16 bool
+				if tmp_bool_UseT312_r16, err = extReader.ReadBoolean(); err != nil {
+					return utils.WrapError("Decode UseT312_r16", err)
 				}
-				ie.useT312_r16 = &tmp_bool_useT312_r16
+				ie.UseT312_r16 = &tmp_bool_UseT312_r16
 			}
-			// decode includeCommonLocationInfo_r16 optional
-			if includeCommonLocationInfo_r16Present {
-				ie.includeCommonLocationInfo_r16 = new(EventTriggerConfig_includeCommonLocationInfo_r16)
-				if err = ie.includeCommonLocationInfo_r16.Decode(extReader); err != nil {
-					return utils.WrapError("Decode includeCommonLocationInfo_r16", err)
+			// decode IncludeCommonLocationInfo_r16 optional
+			if IncludeCommonLocationInfo_r16Present {
+				ie.IncludeCommonLocationInfo_r16 = new(EventTriggerConfig_includeCommonLocationInfo_r16)
+				if err = ie.IncludeCommonLocationInfo_r16.Decode(extReader); err != nil {
+					return utils.WrapError("Decode IncludeCommonLocationInfo_r16", err)
 				}
 			}
-			// decode includeBT_Meas_r16 optional
-			if includeBT_Meas_r16Present {
-				tmp_includeBT_Meas_r16 := utils.SetupRelease[*BT_NameList_r16]{}
-				if err = tmp_includeBT_Meas_r16.Decode(extReader); err != nil {
-					return utils.WrapError("Decode includeBT_Meas_r16", err)
+			// decode IncludeBT_Meas_r16 optional
+			if IncludeBT_Meas_r16Present {
+				tmp_IncludeBT_Meas_r16 := utils.SetupRelease[*BT_NameList_r16]{}
+				if err = tmp_IncludeBT_Meas_r16.Decode(extReader); err != nil {
+					return utils.WrapError("Decode IncludeBT_Meas_r16", err)
 				}
-				ie.includeBT_Meas_r16 = tmp_includeBT_Meas_r16.Setup
+				ie.IncludeBT_Meas_r16 = tmp_IncludeBT_Meas_r16.Setup
 			}
-			// decode includeWLAN_Meas_r16 optional
-			if includeWLAN_Meas_r16Present {
-				tmp_includeWLAN_Meas_r16 := utils.SetupRelease[*WLAN_NameList_r16]{}
-				if err = tmp_includeWLAN_Meas_r16.Decode(extReader); err != nil {
-					return utils.WrapError("Decode includeWLAN_Meas_r16", err)
+			// decode IncludeWLAN_Meas_r16 optional
+			if IncludeWLAN_Meas_r16Present {
+				tmp_IncludeWLAN_Meas_r16 := utils.SetupRelease[*WLAN_NameList_r16]{}
+				if err = tmp_IncludeWLAN_Meas_r16.Decode(extReader); err != nil {
+					return utils.WrapError("Decode IncludeWLAN_Meas_r16", err)
 				}
-				ie.includeWLAN_Meas_r16 = tmp_includeWLAN_Meas_r16.Setup
+				ie.IncludeWLAN_Meas_r16 = tmp_IncludeWLAN_Meas_r16.Setup
 			}
-			// decode includeSensor_Meas_r16 optional
-			if includeSensor_Meas_r16Present {
-				tmp_includeSensor_Meas_r16 := utils.SetupRelease[*Sensor_NameList_r16]{}
-				if err = tmp_includeSensor_Meas_r16.Decode(extReader); err != nil {
-					return utils.WrapError("Decode includeSensor_Meas_r16", err)
+			// decode IncludeSensor_Meas_r16 optional
+			if IncludeSensor_Meas_r16Present {
+				tmp_IncludeSensor_Meas_r16 := utils.SetupRelease[*Sensor_NameList_r16]{}
+				if err = tmp_IncludeSensor_Meas_r16.Decode(extReader); err != nil {
+					return utils.WrapError("Decode IncludeSensor_Meas_r16", err)
 				}
-				ie.includeSensor_Meas_r16 = tmp_includeSensor_Meas_r16.Setup
+				ie.IncludeSensor_Meas_r16 = tmp_IncludeSensor_Meas_r16.Setup
 			}
 		}
 		// decode extension group 3
@@ -259,26 +259,26 @@ func (ie *EventTriggerConfig) Decode(r *uper.UperReader) error {
 
 			extReader := uper.NewReader(bytes.NewReader(extBytes))
 
-			coarseLocationRequest_r17Present, err := extReader.ReadBool()
+			CoarseLocationRequest_r17Present, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			reportQuantityRelay_r17Present, err := extReader.ReadBool()
+			ReportQuantityRelay_r17Present, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			// decode coarseLocationRequest_r17 optional
-			if coarseLocationRequest_r17Present {
-				ie.coarseLocationRequest_r17 = new(EventTriggerConfig_coarseLocationRequest_r17)
-				if err = ie.coarseLocationRequest_r17.Decode(extReader); err != nil {
-					return utils.WrapError("Decode coarseLocationRequest_r17", err)
+			// decode CoarseLocationRequest_r17 optional
+			if CoarseLocationRequest_r17Present {
+				ie.CoarseLocationRequest_r17 = new(EventTriggerConfig_coarseLocationRequest_r17)
+				if err = ie.CoarseLocationRequest_r17.Decode(extReader); err != nil {
+					return utils.WrapError("Decode CoarseLocationRequest_r17", err)
 				}
 			}
-			// decode reportQuantityRelay_r17 optional
-			if reportQuantityRelay_r17Present {
-				ie.reportQuantityRelay_r17 = new(SL_MeasReportQuantity_r16)
-				if err = ie.reportQuantityRelay_r17.Decode(extReader); err != nil {
-					return utils.WrapError("Decode reportQuantityRelay_r17", err)
+			// decode ReportQuantityRelay_r17 optional
+			if ReportQuantityRelay_r17Present {
+				ie.ReportQuantityRelay_r17 = new(SL_MeasReportQuantity_r16)
+				if err = ie.ReportQuantityRelay_r17.Decode(extReader); err != nil {
+					return utils.WrapError("Decode ReportQuantityRelay_r17", err)
 				}
 			}
 		}

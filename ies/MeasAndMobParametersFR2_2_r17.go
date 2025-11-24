@@ -6,38 +6,38 @@ import (
 )
 
 type MeasAndMobParametersFR2_2_r17 struct {
-	handoverInterF_r17            *MeasAndMobParametersFR2_2_r17_handoverInterF_r17            `optional`
-	handoverLTE_EPC_r17           *MeasAndMobParametersFR2_2_r17_handoverLTE_EPC_r17           `optional`
-	handoverLTE_5GC_r17           *MeasAndMobParametersFR2_2_r17_handoverLTE_5GC_r17           `optional`
-	idleInactiveNR_MeasReport_r17 *MeasAndMobParametersFR2_2_r17_idleInactiveNR_MeasReport_r17 `optional`
+	HandoverInterF_r17            *MeasAndMobParametersFR2_2_r17_handoverInterF_r17            `optional`
+	HandoverLTE_EPC_r17           *MeasAndMobParametersFR2_2_r17_handoverLTE_EPC_r17           `optional`
+	HandoverLTE_5GC_r17           *MeasAndMobParametersFR2_2_r17_handoverLTE_5GC_r17           `optional`
+	IdleInactiveNR_MeasReport_r17 *MeasAndMobParametersFR2_2_r17_idleInactiveNR_MeasReport_r17 `optional`
 }
 
 func (ie *MeasAndMobParametersFR2_2_r17) Encode(w *uper.UperWriter) error {
 	var err error
-	preambleBits := []bool{ie.handoverInterF_r17 != nil, ie.handoverLTE_EPC_r17 != nil, ie.handoverLTE_5GC_r17 != nil, ie.idleInactiveNR_MeasReport_r17 != nil}
+	preambleBits := []bool{ie.HandoverInterF_r17 != nil, ie.HandoverLTE_EPC_r17 != nil, ie.HandoverLTE_5GC_r17 != nil, ie.IdleInactiveNR_MeasReport_r17 != nil}
 	for _, bit := range preambleBits {
 		if err = w.WriteBool(bit); err != nil {
 			return err
 		}
 	}
-	if ie.handoverInterF_r17 != nil {
-		if err = ie.handoverInterF_r17.Encode(w); err != nil {
-			return utils.WrapError("Encode handoverInterF_r17", err)
+	if ie.HandoverInterF_r17 != nil {
+		if err = ie.HandoverInterF_r17.Encode(w); err != nil {
+			return utils.WrapError("Encode HandoverInterF_r17", err)
 		}
 	}
-	if ie.handoverLTE_EPC_r17 != nil {
-		if err = ie.handoverLTE_EPC_r17.Encode(w); err != nil {
-			return utils.WrapError("Encode handoverLTE_EPC_r17", err)
+	if ie.HandoverLTE_EPC_r17 != nil {
+		if err = ie.HandoverLTE_EPC_r17.Encode(w); err != nil {
+			return utils.WrapError("Encode HandoverLTE_EPC_r17", err)
 		}
 	}
-	if ie.handoverLTE_5GC_r17 != nil {
-		if err = ie.handoverLTE_5GC_r17.Encode(w); err != nil {
-			return utils.WrapError("Encode handoverLTE_5GC_r17", err)
+	if ie.HandoverLTE_5GC_r17 != nil {
+		if err = ie.HandoverLTE_5GC_r17.Encode(w); err != nil {
+			return utils.WrapError("Encode HandoverLTE_5GC_r17", err)
 		}
 	}
-	if ie.idleInactiveNR_MeasReport_r17 != nil {
-		if err = ie.idleInactiveNR_MeasReport_r17.Encode(w); err != nil {
-			return utils.WrapError("Encode idleInactiveNR_MeasReport_r17", err)
+	if ie.IdleInactiveNR_MeasReport_r17 != nil {
+		if err = ie.IdleInactiveNR_MeasReport_r17.Encode(w); err != nil {
+			return utils.WrapError("Encode IdleInactiveNR_MeasReport_r17", err)
 		}
 	}
 	return nil
@@ -45,44 +45,44 @@ func (ie *MeasAndMobParametersFR2_2_r17) Encode(w *uper.UperWriter) error {
 
 func (ie *MeasAndMobParametersFR2_2_r17) Decode(r *uper.UperReader) error {
 	var err error
-	var handoverInterF_r17Present bool
-	if handoverInterF_r17Present, err = r.ReadBool(); err != nil {
+	var HandoverInterF_r17Present bool
+	if HandoverInterF_r17Present, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var handoverLTE_EPC_r17Present bool
-	if handoverLTE_EPC_r17Present, err = r.ReadBool(); err != nil {
+	var HandoverLTE_EPC_r17Present bool
+	if HandoverLTE_EPC_r17Present, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var handoverLTE_5GC_r17Present bool
-	if handoverLTE_5GC_r17Present, err = r.ReadBool(); err != nil {
+	var HandoverLTE_5GC_r17Present bool
+	if HandoverLTE_5GC_r17Present, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var idleInactiveNR_MeasReport_r17Present bool
-	if idleInactiveNR_MeasReport_r17Present, err = r.ReadBool(); err != nil {
+	var IdleInactiveNR_MeasReport_r17Present bool
+	if IdleInactiveNR_MeasReport_r17Present, err = r.ReadBool(); err != nil {
 		return err
 	}
-	if handoverInterF_r17Present {
-		ie.handoverInterF_r17 = new(MeasAndMobParametersFR2_2_r17_handoverInterF_r17)
-		if err = ie.handoverInterF_r17.Decode(r); err != nil {
-			return utils.WrapError("Decode handoverInterF_r17", err)
+	if HandoverInterF_r17Present {
+		ie.HandoverInterF_r17 = new(MeasAndMobParametersFR2_2_r17_handoverInterF_r17)
+		if err = ie.HandoverInterF_r17.Decode(r); err != nil {
+			return utils.WrapError("Decode HandoverInterF_r17", err)
 		}
 	}
-	if handoverLTE_EPC_r17Present {
-		ie.handoverLTE_EPC_r17 = new(MeasAndMobParametersFR2_2_r17_handoverLTE_EPC_r17)
-		if err = ie.handoverLTE_EPC_r17.Decode(r); err != nil {
-			return utils.WrapError("Decode handoverLTE_EPC_r17", err)
+	if HandoverLTE_EPC_r17Present {
+		ie.HandoverLTE_EPC_r17 = new(MeasAndMobParametersFR2_2_r17_handoverLTE_EPC_r17)
+		if err = ie.HandoverLTE_EPC_r17.Decode(r); err != nil {
+			return utils.WrapError("Decode HandoverLTE_EPC_r17", err)
 		}
 	}
-	if handoverLTE_5GC_r17Present {
-		ie.handoverLTE_5GC_r17 = new(MeasAndMobParametersFR2_2_r17_handoverLTE_5GC_r17)
-		if err = ie.handoverLTE_5GC_r17.Decode(r); err != nil {
-			return utils.WrapError("Decode handoverLTE_5GC_r17", err)
+	if HandoverLTE_5GC_r17Present {
+		ie.HandoverLTE_5GC_r17 = new(MeasAndMobParametersFR2_2_r17_handoverLTE_5GC_r17)
+		if err = ie.HandoverLTE_5GC_r17.Decode(r); err != nil {
+			return utils.WrapError("Decode HandoverLTE_5GC_r17", err)
 		}
 	}
-	if idleInactiveNR_MeasReport_r17Present {
-		ie.idleInactiveNR_MeasReport_r17 = new(MeasAndMobParametersFR2_2_r17_idleInactiveNR_MeasReport_r17)
-		if err = ie.idleInactiveNR_MeasReport_r17.Decode(r); err != nil {
-			return utils.WrapError("Decode idleInactiveNR_MeasReport_r17", err)
+	if IdleInactiveNR_MeasReport_r17Present {
+		ie.IdleInactiveNR_MeasReport_r17 = new(MeasAndMobParametersFR2_2_r17_idleInactiveNR_MeasReport_r17)
+		if err = ie.IdleInactiveNR_MeasReport_r17.Decode(r); err != nil {
+			return utils.WrapError("Decode IdleInactiveNR_MeasReport_r17", err)
 		}
 	}
 	return nil

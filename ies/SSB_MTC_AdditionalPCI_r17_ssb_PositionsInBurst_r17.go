@@ -9,16 +9,16 @@ import (
 
 const (
 	SSB_MTC_AdditionalPCI_r17_ssb_PositionsInBurst_r17_Choice_nothing uint64 = iota
-	SSB_MTC_AdditionalPCI_r17_ssb_PositionsInBurst_r17_Choice_shortBitmap
-	SSB_MTC_AdditionalPCI_r17_ssb_PositionsInBurst_r17_Choice_mediumBitmap
-	SSB_MTC_AdditionalPCI_r17_ssb_PositionsInBurst_r17_Choice_longBitmap
+	SSB_MTC_AdditionalPCI_r17_ssb_PositionsInBurst_r17_Choice_ShortBitmap
+	SSB_MTC_AdditionalPCI_r17_ssb_PositionsInBurst_r17_Choice_MediumBitmap
+	SSB_MTC_AdditionalPCI_r17_ssb_PositionsInBurst_r17_Choice_LongBitmap
 )
 
 type SSB_MTC_AdditionalPCI_r17_ssb_PositionsInBurst_r17 struct {
 	Choice       uint64
-	shortBitmap  uper.BitString `lb:4,ub:4,madatory`
-	mediumBitmap uper.BitString `lb:8,ub:8,madatory`
-	longBitmap   uper.BitString `lb:64,ub:64,madatory`
+	ShortBitmap  uper.BitString `lb:4,ub:4,madatory`
+	MediumBitmap uper.BitString `lb:8,ub:8,madatory`
+	LongBitmap   uper.BitString `lb:64,ub:64,madatory`
 }
 
 func (ie *SSB_MTC_AdditionalPCI_r17_ssb_PositionsInBurst_r17) Encode(w *uper.UperWriter) error {
@@ -27,17 +27,17 @@ func (ie *SSB_MTC_AdditionalPCI_r17_ssb_PositionsInBurst_r17) Encode(w *uper.Upe
 		return err
 	}
 	switch ie.Choice {
-	case SSB_MTC_AdditionalPCI_r17_ssb_PositionsInBurst_r17_Choice_shortBitmap:
-		if err = w.WriteBitString(ie.shortBitmap.Bytes, uint(ie.shortBitmap.NumBits), &uper.Constraint{Lb: 4, Ub: 4}, false); err != nil {
-			err = utils.WrapError("Encode shortBitmap", err)
+	case SSB_MTC_AdditionalPCI_r17_ssb_PositionsInBurst_r17_Choice_ShortBitmap:
+		if err = w.WriteBitString(ie.ShortBitmap.Bytes, uint(ie.ShortBitmap.NumBits), &uper.Constraint{Lb: 4, Ub: 4}, false); err != nil {
+			err = utils.WrapError("Encode ShortBitmap", err)
 		}
-	case SSB_MTC_AdditionalPCI_r17_ssb_PositionsInBurst_r17_Choice_mediumBitmap:
-		if err = w.WriteBitString(ie.mediumBitmap.Bytes, uint(ie.mediumBitmap.NumBits), &uper.Constraint{Lb: 8, Ub: 8}, false); err != nil {
-			err = utils.WrapError("Encode mediumBitmap", err)
+	case SSB_MTC_AdditionalPCI_r17_ssb_PositionsInBurst_r17_Choice_MediumBitmap:
+		if err = w.WriteBitString(ie.MediumBitmap.Bytes, uint(ie.MediumBitmap.NumBits), &uper.Constraint{Lb: 8, Ub: 8}, false); err != nil {
+			err = utils.WrapError("Encode MediumBitmap", err)
 		}
-	case SSB_MTC_AdditionalPCI_r17_ssb_PositionsInBurst_r17_Choice_longBitmap:
-		if err = w.WriteBitString(ie.longBitmap.Bytes, uint(ie.longBitmap.NumBits), &uper.Constraint{Lb: 64, Ub: 64}, false); err != nil {
-			err = utils.WrapError("Encode longBitmap", err)
+	case SSB_MTC_AdditionalPCI_r17_ssb_PositionsInBurst_r17_Choice_LongBitmap:
+		if err = w.WriteBitString(ie.LongBitmap.Bytes, uint(ie.LongBitmap.NumBits), &uper.Constraint{Lb: 64, Ub: 64}, false); err != nil {
+			err = utils.WrapError("Encode LongBitmap", err)
 		}
 	default:
 		err = fmt.Errorf("invalid choice: %d", ie.Choice)
@@ -51,35 +51,35 @@ func (ie *SSB_MTC_AdditionalPCI_r17_ssb_PositionsInBurst_r17) Decode(r *uper.Upe
 		return err
 	}
 	switch ie.Choice {
-	case SSB_MTC_AdditionalPCI_r17_ssb_PositionsInBurst_r17_Choice_shortBitmap:
-		var tmp_bs_shortBitmap []byte
-		var n_shortBitmap uint
-		if tmp_bs_shortBitmap, n_shortBitmap, err = r.ReadBitString(&uper.Constraint{Lb: 4, Ub: 4}, false); err != nil {
-			return utils.WrapError("Decode shortBitmap", err)
+	case SSB_MTC_AdditionalPCI_r17_ssb_PositionsInBurst_r17_Choice_ShortBitmap:
+		var tmp_bs_ShortBitmap []byte
+		var n_ShortBitmap uint
+		if tmp_bs_ShortBitmap, n_ShortBitmap, err = r.ReadBitString(&uper.Constraint{Lb: 4, Ub: 4}, false); err != nil {
+			return utils.WrapError("Decode ShortBitmap", err)
 		}
-		ie.shortBitmap = uper.BitString{
-			Bytes:   tmp_bs_shortBitmap,
-			NumBits: uint64(n_shortBitmap),
+		ie.ShortBitmap = uper.BitString{
+			Bytes:   tmp_bs_ShortBitmap,
+			NumBits: uint64(n_ShortBitmap),
 		}
-	case SSB_MTC_AdditionalPCI_r17_ssb_PositionsInBurst_r17_Choice_mediumBitmap:
-		var tmp_bs_mediumBitmap []byte
-		var n_mediumBitmap uint
-		if tmp_bs_mediumBitmap, n_mediumBitmap, err = r.ReadBitString(&uper.Constraint{Lb: 8, Ub: 8}, false); err != nil {
-			return utils.WrapError("Decode mediumBitmap", err)
+	case SSB_MTC_AdditionalPCI_r17_ssb_PositionsInBurst_r17_Choice_MediumBitmap:
+		var tmp_bs_MediumBitmap []byte
+		var n_MediumBitmap uint
+		if tmp_bs_MediumBitmap, n_MediumBitmap, err = r.ReadBitString(&uper.Constraint{Lb: 8, Ub: 8}, false); err != nil {
+			return utils.WrapError("Decode MediumBitmap", err)
 		}
-		ie.mediumBitmap = uper.BitString{
-			Bytes:   tmp_bs_mediumBitmap,
-			NumBits: uint64(n_mediumBitmap),
+		ie.MediumBitmap = uper.BitString{
+			Bytes:   tmp_bs_MediumBitmap,
+			NumBits: uint64(n_MediumBitmap),
 		}
-	case SSB_MTC_AdditionalPCI_r17_ssb_PositionsInBurst_r17_Choice_longBitmap:
-		var tmp_bs_longBitmap []byte
-		var n_longBitmap uint
-		if tmp_bs_longBitmap, n_longBitmap, err = r.ReadBitString(&uper.Constraint{Lb: 64, Ub: 64}, false); err != nil {
-			return utils.WrapError("Decode longBitmap", err)
+	case SSB_MTC_AdditionalPCI_r17_ssb_PositionsInBurst_r17_Choice_LongBitmap:
+		var tmp_bs_LongBitmap []byte
+		var n_LongBitmap uint
+		if tmp_bs_LongBitmap, n_LongBitmap, err = r.ReadBitString(&uper.Constraint{Lb: 64, Ub: 64}, false); err != nil {
+			return utils.WrapError("Decode LongBitmap", err)
 		}
-		ie.longBitmap = uper.BitString{
-			Bytes:   tmp_bs_longBitmap,
-			NumBits: uint64(n_longBitmap),
+		ie.LongBitmap = uper.BitString{
+			Bytes:   tmp_bs_LongBitmap,
+			NumBits: uint64(n_LongBitmap),
 		}
 	default:
 		return fmt.Errorf("invalid choice: %d", ie.Choice)

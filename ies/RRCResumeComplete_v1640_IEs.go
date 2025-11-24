@@ -6,26 +6,26 @@ import (
 )
 
 type RRCResumeComplete_v1640_IEs struct {
-	uplinkTxDirectCurrentTwoCarrierList_r16 *UplinkTxDirectCurrentTwoCarrierList_r16 `optional`
-	nonCriticalExtension                    *RRCResumeComplete_v1700_IEs             `optional`
+	UplinkTxDirectCurrentTwoCarrierList_r16 *UplinkTxDirectCurrentTwoCarrierList_r16 `optional`
+	NonCriticalExtension                    *RRCResumeComplete_v1700_IEs             `optional`
 }
 
 func (ie *RRCResumeComplete_v1640_IEs) Encode(w *uper.UperWriter) error {
 	var err error
-	preambleBits := []bool{ie.uplinkTxDirectCurrentTwoCarrierList_r16 != nil, ie.nonCriticalExtension != nil}
+	preambleBits := []bool{ie.UplinkTxDirectCurrentTwoCarrierList_r16 != nil, ie.NonCriticalExtension != nil}
 	for _, bit := range preambleBits {
 		if err = w.WriteBool(bit); err != nil {
 			return err
 		}
 	}
-	if ie.uplinkTxDirectCurrentTwoCarrierList_r16 != nil {
-		if err = ie.uplinkTxDirectCurrentTwoCarrierList_r16.Encode(w); err != nil {
-			return utils.WrapError("Encode uplinkTxDirectCurrentTwoCarrierList_r16", err)
+	if ie.UplinkTxDirectCurrentTwoCarrierList_r16 != nil {
+		if err = ie.UplinkTxDirectCurrentTwoCarrierList_r16.Encode(w); err != nil {
+			return utils.WrapError("Encode UplinkTxDirectCurrentTwoCarrierList_r16", err)
 		}
 	}
-	if ie.nonCriticalExtension != nil {
-		if err = ie.nonCriticalExtension.Encode(w); err != nil {
-			return utils.WrapError("Encode nonCriticalExtension", err)
+	if ie.NonCriticalExtension != nil {
+		if err = ie.NonCriticalExtension.Encode(w); err != nil {
+			return utils.WrapError("Encode NonCriticalExtension", err)
 		}
 	}
 	return nil
@@ -33,24 +33,24 @@ func (ie *RRCResumeComplete_v1640_IEs) Encode(w *uper.UperWriter) error {
 
 func (ie *RRCResumeComplete_v1640_IEs) Decode(r *uper.UperReader) error {
 	var err error
-	var uplinkTxDirectCurrentTwoCarrierList_r16Present bool
-	if uplinkTxDirectCurrentTwoCarrierList_r16Present, err = r.ReadBool(); err != nil {
+	var UplinkTxDirectCurrentTwoCarrierList_r16Present bool
+	if UplinkTxDirectCurrentTwoCarrierList_r16Present, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var nonCriticalExtensionPresent bool
-	if nonCriticalExtensionPresent, err = r.ReadBool(); err != nil {
+	var NonCriticalExtensionPresent bool
+	if NonCriticalExtensionPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	if uplinkTxDirectCurrentTwoCarrierList_r16Present {
-		ie.uplinkTxDirectCurrentTwoCarrierList_r16 = new(UplinkTxDirectCurrentTwoCarrierList_r16)
-		if err = ie.uplinkTxDirectCurrentTwoCarrierList_r16.Decode(r); err != nil {
-			return utils.WrapError("Decode uplinkTxDirectCurrentTwoCarrierList_r16", err)
+	if UplinkTxDirectCurrentTwoCarrierList_r16Present {
+		ie.UplinkTxDirectCurrentTwoCarrierList_r16 = new(UplinkTxDirectCurrentTwoCarrierList_r16)
+		if err = ie.UplinkTxDirectCurrentTwoCarrierList_r16.Decode(r); err != nil {
+			return utils.WrapError("Decode UplinkTxDirectCurrentTwoCarrierList_r16", err)
 		}
 	}
-	if nonCriticalExtensionPresent {
-		ie.nonCriticalExtension = new(RRCResumeComplete_v1700_IEs)
-		if err = ie.nonCriticalExtension.Decode(r); err != nil {
-			return utils.WrapError("Decode nonCriticalExtension", err)
+	if NonCriticalExtensionPresent {
+		ie.NonCriticalExtension = new(RRCResumeComplete_v1700_IEs)
+		if err = ie.NonCriticalExtension.Decode(r); err != nil {
+			return utils.WrapError("Decode NonCriticalExtension", err)
 		}
 	}
 	return nil

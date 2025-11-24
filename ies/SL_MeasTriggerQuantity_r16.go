@@ -9,12 +9,12 @@ import (
 
 const (
 	SL_MeasTriggerQuantity_r16_Choice_nothing uint64 = iota
-	SL_MeasTriggerQuantity_r16_Choice_sl_RSRP_r16
+	SL_MeasTriggerQuantity_r16_Choice_Sl_RSRP_r16
 )
 
 type SL_MeasTriggerQuantity_r16 struct {
 	Choice      uint64
-	sl_RSRP_r16 *RSRP_Range
+	Sl_RSRP_r16 *RSRP_Range
 }
 
 func (ie *SL_MeasTriggerQuantity_r16) Encode(w *uper.UperWriter) error {
@@ -23,9 +23,9 @@ func (ie *SL_MeasTriggerQuantity_r16) Encode(w *uper.UperWriter) error {
 		return err
 	}
 	switch ie.Choice {
-	case SL_MeasTriggerQuantity_r16_Choice_sl_RSRP_r16:
-		if err = ie.sl_RSRP_r16.Encode(w); err != nil {
-			err = utils.WrapError("Encode sl_RSRP_r16", err)
+	case SL_MeasTriggerQuantity_r16_Choice_Sl_RSRP_r16:
+		if err = ie.Sl_RSRP_r16.Encode(w); err != nil {
+			err = utils.WrapError("Encode Sl_RSRP_r16", err)
 		}
 	default:
 		err = fmt.Errorf("invalid choice: %d", ie.Choice)
@@ -39,10 +39,10 @@ func (ie *SL_MeasTriggerQuantity_r16) Decode(r *uper.UperReader) error {
 		return err
 	}
 	switch ie.Choice {
-	case SL_MeasTriggerQuantity_r16_Choice_sl_RSRP_r16:
-		ie.sl_RSRP_r16 = new(RSRP_Range)
-		if err = ie.sl_RSRP_r16.Decode(r); err != nil {
-			return utils.WrapError("Decode sl_RSRP_r16", err)
+	case SL_MeasTriggerQuantity_r16_Choice_Sl_RSRP_r16:
+		ie.Sl_RSRP_r16 = new(RSRP_Range)
+		if err = ie.Sl_RSRP_r16.Decode(r); err != nil {
+			return utils.WrapError("Decode Sl_RSRP_r16", err)
 		}
 	default:
 		return fmt.Errorf("invalid choice: %d", ie.Choice)

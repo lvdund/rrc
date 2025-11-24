@@ -6,26 +6,26 @@ import (
 )
 
 type UEAssistanceInformation_v1540_IEs struct {
-	overheatingAssistance *OverheatingAssistance             `optional`
-	nonCriticalExtension  *UEAssistanceInformation_v1610_IEs `optional`
+	OverheatingAssistance *OverheatingAssistance             `optional`
+	NonCriticalExtension  *UEAssistanceInformation_v1610_IEs `optional`
 }
 
 func (ie *UEAssistanceInformation_v1540_IEs) Encode(w *uper.UperWriter) error {
 	var err error
-	preambleBits := []bool{ie.overheatingAssistance != nil, ie.nonCriticalExtension != nil}
+	preambleBits := []bool{ie.OverheatingAssistance != nil, ie.NonCriticalExtension != nil}
 	for _, bit := range preambleBits {
 		if err = w.WriteBool(bit); err != nil {
 			return err
 		}
 	}
-	if ie.overheatingAssistance != nil {
-		if err = ie.overheatingAssistance.Encode(w); err != nil {
-			return utils.WrapError("Encode overheatingAssistance", err)
+	if ie.OverheatingAssistance != nil {
+		if err = ie.OverheatingAssistance.Encode(w); err != nil {
+			return utils.WrapError("Encode OverheatingAssistance", err)
 		}
 	}
-	if ie.nonCriticalExtension != nil {
-		if err = ie.nonCriticalExtension.Encode(w); err != nil {
-			return utils.WrapError("Encode nonCriticalExtension", err)
+	if ie.NonCriticalExtension != nil {
+		if err = ie.NonCriticalExtension.Encode(w); err != nil {
+			return utils.WrapError("Encode NonCriticalExtension", err)
 		}
 	}
 	return nil
@@ -33,24 +33,24 @@ func (ie *UEAssistanceInformation_v1540_IEs) Encode(w *uper.UperWriter) error {
 
 func (ie *UEAssistanceInformation_v1540_IEs) Decode(r *uper.UperReader) error {
 	var err error
-	var overheatingAssistancePresent bool
-	if overheatingAssistancePresent, err = r.ReadBool(); err != nil {
+	var OverheatingAssistancePresent bool
+	if OverheatingAssistancePresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var nonCriticalExtensionPresent bool
-	if nonCriticalExtensionPresent, err = r.ReadBool(); err != nil {
+	var NonCriticalExtensionPresent bool
+	if NonCriticalExtensionPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	if overheatingAssistancePresent {
-		ie.overheatingAssistance = new(OverheatingAssistance)
-		if err = ie.overheatingAssistance.Decode(r); err != nil {
-			return utils.WrapError("Decode overheatingAssistance", err)
+	if OverheatingAssistancePresent {
+		ie.OverheatingAssistance = new(OverheatingAssistance)
+		if err = ie.OverheatingAssistance.Decode(r); err != nil {
+			return utils.WrapError("Decode OverheatingAssistance", err)
 		}
 	}
-	if nonCriticalExtensionPresent {
-		ie.nonCriticalExtension = new(UEAssistanceInformation_v1610_IEs)
-		if err = ie.nonCriticalExtension.Decode(r); err != nil {
-			return utils.WrapError("Decode nonCriticalExtension", err)
+	if NonCriticalExtensionPresent {
+		ie.NonCriticalExtension = new(UEAssistanceInformation_v1610_IEs)
+		if err = ie.NonCriticalExtension.Decode(r); err != nil {
+			return utils.WrapError("Decode NonCriticalExtension", err)
 		}
 	}
 	return nil

@@ -6,30 +6,30 @@ import (
 )
 
 type UERadioPagingInformation_IEs struct {
-	supportedBandListNRForPaging []FreqBandIndicatorNR               `lb:1,ub:maxBands,optional`
-	nonCriticalExtension         *UERadioPagingInformation_v15e0_IEs `optional`
+	SupportedBandListNRForPaging []FreqBandIndicatorNR               `lb:1,ub:maxBands,optional`
+	NonCriticalExtension         *UERadioPagingInformation_v15e0_IEs `optional`
 }
 
 func (ie *UERadioPagingInformation_IEs) Encode(w *uper.UperWriter) error {
 	var err error
-	preambleBits := []bool{len(ie.supportedBandListNRForPaging) > 0, ie.nonCriticalExtension != nil}
+	preambleBits := []bool{len(ie.SupportedBandListNRForPaging) > 0, ie.NonCriticalExtension != nil}
 	for _, bit := range preambleBits {
 		if err = w.WriteBool(bit); err != nil {
 			return err
 		}
 	}
-	if len(ie.supportedBandListNRForPaging) > 0 {
-		tmp_supportedBandListNRForPaging := utils.NewSequence[*FreqBandIndicatorNR]([]*FreqBandIndicatorNR{}, uper.Constraint{Lb: 1, Ub: maxBands}, false)
-		for _, i := range ie.supportedBandListNRForPaging {
-			tmp_supportedBandListNRForPaging.Value = append(tmp_supportedBandListNRForPaging.Value, &i)
+	if len(ie.SupportedBandListNRForPaging) > 0 {
+		tmp_SupportedBandListNRForPaging := utils.NewSequence[*FreqBandIndicatorNR]([]*FreqBandIndicatorNR{}, uper.Constraint{Lb: 1, Ub: maxBands}, false)
+		for _, i := range ie.SupportedBandListNRForPaging {
+			tmp_SupportedBandListNRForPaging.Value = append(tmp_SupportedBandListNRForPaging.Value, &i)
 		}
-		if err = tmp_supportedBandListNRForPaging.Encode(w); err != nil {
-			return utils.WrapError("Encode supportedBandListNRForPaging", err)
+		if err = tmp_SupportedBandListNRForPaging.Encode(w); err != nil {
+			return utils.WrapError("Encode SupportedBandListNRForPaging", err)
 		}
 	}
-	if ie.nonCriticalExtension != nil {
-		if err = ie.nonCriticalExtension.Encode(w); err != nil {
-			return utils.WrapError("Encode nonCriticalExtension", err)
+	if ie.NonCriticalExtension != nil {
+		if err = ie.NonCriticalExtension.Encode(w); err != nil {
+			return utils.WrapError("Encode NonCriticalExtension", err)
 		}
 	}
 	return nil
@@ -37,31 +37,31 @@ func (ie *UERadioPagingInformation_IEs) Encode(w *uper.UperWriter) error {
 
 func (ie *UERadioPagingInformation_IEs) Decode(r *uper.UperReader) error {
 	var err error
-	var supportedBandListNRForPagingPresent bool
-	if supportedBandListNRForPagingPresent, err = r.ReadBool(); err != nil {
+	var SupportedBandListNRForPagingPresent bool
+	if SupportedBandListNRForPagingPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var nonCriticalExtensionPresent bool
-	if nonCriticalExtensionPresent, err = r.ReadBool(); err != nil {
+	var NonCriticalExtensionPresent bool
+	if NonCriticalExtensionPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	if supportedBandListNRForPagingPresent {
-		tmp_supportedBandListNRForPaging := utils.NewSequence[*FreqBandIndicatorNR]([]*FreqBandIndicatorNR{}, uper.Constraint{Lb: 1, Ub: maxBands}, false)
-		fn_supportedBandListNRForPaging := func() *FreqBandIndicatorNR {
+	if SupportedBandListNRForPagingPresent {
+		tmp_SupportedBandListNRForPaging := utils.NewSequence[*FreqBandIndicatorNR]([]*FreqBandIndicatorNR{}, uper.Constraint{Lb: 1, Ub: maxBands}, false)
+		fn_SupportedBandListNRForPaging := func() *FreqBandIndicatorNR {
 			return new(FreqBandIndicatorNR)
 		}
-		if err = tmp_supportedBandListNRForPaging.Decode(r, fn_supportedBandListNRForPaging); err != nil {
-			return utils.WrapError("Decode supportedBandListNRForPaging", err)
+		if err = tmp_SupportedBandListNRForPaging.Decode(r, fn_SupportedBandListNRForPaging); err != nil {
+			return utils.WrapError("Decode SupportedBandListNRForPaging", err)
 		}
-		ie.supportedBandListNRForPaging = []FreqBandIndicatorNR{}
-		for _, i := range tmp_supportedBandListNRForPaging.Value {
-			ie.supportedBandListNRForPaging = append(ie.supportedBandListNRForPaging, *i)
+		ie.SupportedBandListNRForPaging = []FreqBandIndicatorNR{}
+		for _, i := range tmp_SupportedBandListNRForPaging.Value {
+			ie.SupportedBandListNRForPaging = append(ie.SupportedBandListNRForPaging, *i)
 		}
 	}
-	if nonCriticalExtensionPresent {
-		ie.nonCriticalExtension = new(UERadioPagingInformation_v15e0_IEs)
-		if err = ie.nonCriticalExtension.Decode(r); err != nil {
-			return utils.WrapError("Decode nonCriticalExtension", err)
+	if NonCriticalExtensionPresent {
+		ie.NonCriticalExtension = new(UERadioPagingInformation_v15e0_IEs)
+		if err = ie.NonCriticalExtension.Decode(r); err != nil {
+			return utils.WrapError("Decode NonCriticalExtension", err)
 		}
 	}
 	return nil

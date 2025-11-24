@@ -6,26 +6,26 @@ import (
 )
 
 type MeasurementTimingConfiguration_IEs struct {
-	measTiming           *MeasTimingList                           `optional`
-	nonCriticalExtension *MeasurementTimingConfiguration_v1550_IEs `optional`
+	MeasTiming           *MeasTimingList                           `optional`
+	NonCriticalExtension *MeasurementTimingConfiguration_v1550_IEs `optional`
 }
 
 func (ie *MeasurementTimingConfiguration_IEs) Encode(w *uper.UperWriter) error {
 	var err error
-	preambleBits := []bool{ie.measTiming != nil, ie.nonCriticalExtension != nil}
+	preambleBits := []bool{ie.MeasTiming != nil, ie.NonCriticalExtension != nil}
 	for _, bit := range preambleBits {
 		if err = w.WriteBool(bit); err != nil {
 			return err
 		}
 	}
-	if ie.measTiming != nil {
-		if err = ie.measTiming.Encode(w); err != nil {
-			return utils.WrapError("Encode measTiming", err)
+	if ie.MeasTiming != nil {
+		if err = ie.MeasTiming.Encode(w); err != nil {
+			return utils.WrapError("Encode MeasTiming", err)
 		}
 	}
-	if ie.nonCriticalExtension != nil {
-		if err = ie.nonCriticalExtension.Encode(w); err != nil {
-			return utils.WrapError("Encode nonCriticalExtension", err)
+	if ie.NonCriticalExtension != nil {
+		if err = ie.NonCriticalExtension.Encode(w); err != nil {
+			return utils.WrapError("Encode NonCriticalExtension", err)
 		}
 	}
 	return nil
@@ -33,24 +33,24 @@ func (ie *MeasurementTimingConfiguration_IEs) Encode(w *uper.UperWriter) error {
 
 func (ie *MeasurementTimingConfiguration_IEs) Decode(r *uper.UperReader) error {
 	var err error
-	var measTimingPresent bool
-	if measTimingPresent, err = r.ReadBool(); err != nil {
+	var MeasTimingPresent bool
+	if MeasTimingPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var nonCriticalExtensionPresent bool
-	if nonCriticalExtensionPresent, err = r.ReadBool(); err != nil {
+	var NonCriticalExtensionPresent bool
+	if NonCriticalExtensionPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	if measTimingPresent {
-		ie.measTiming = new(MeasTimingList)
-		if err = ie.measTiming.Decode(r); err != nil {
-			return utils.WrapError("Decode measTiming", err)
+	if MeasTimingPresent {
+		ie.MeasTiming = new(MeasTimingList)
+		if err = ie.MeasTiming.Decode(r); err != nil {
+			return utils.WrapError("Decode MeasTiming", err)
 		}
 	}
-	if nonCriticalExtensionPresent {
-		ie.nonCriticalExtension = new(MeasurementTimingConfiguration_v1550_IEs)
-		if err = ie.nonCriticalExtension.Decode(r); err != nil {
-			return utils.WrapError("Decode nonCriticalExtension", err)
+	if NonCriticalExtensionPresent {
+		ie.NonCriticalExtension = new(MeasurementTimingConfiguration_v1550_IEs)
+		if err = ie.NonCriticalExtension.Decode(r); err != nil {
+			return utils.WrapError("Decode NonCriticalExtension", err)
 		}
 	}
 	return nil

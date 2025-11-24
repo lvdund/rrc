@@ -6,49 +6,49 @@ import (
 )
 
 type FrequencyInfoDL_SIB struct {
-	frequencyBandList       MultiFrequencyBandListNR_SIB `madatory`
-	offsetToPointA          int64                        `lb:0,ub:2199,madatory`
-	scs_SpecificCarrierList []SCS_SpecificCarrier        `lb:1,ub:maxSCSs,madatory`
+	FrequencyBandList       MultiFrequencyBandListNR_SIB `madatory`
+	OffsetToPointA          int64                        `lb:0,ub:2199,madatory`
+	Scs_SpecificCarrierList []SCS_SpecificCarrier        `lb:1,ub:maxSCSs,madatory`
 }
 
 func (ie *FrequencyInfoDL_SIB) Encode(w *uper.UperWriter) error {
 	var err error
-	if err = ie.frequencyBandList.Encode(w); err != nil {
-		return utils.WrapError("Encode frequencyBandList", err)
+	if err = ie.FrequencyBandList.Encode(w); err != nil {
+		return utils.WrapError("Encode FrequencyBandList", err)
 	}
-	if err = w.WriteInteger(ie.offsetToPointA, &uper.Constraint{Lb: 0, Ub: 2199}, false); err != nil {
-		return utils.WrapError("WriteInteger offsetToPointA", err)
+	if err = w.WriteInteger(ie.OffsetToPointA, &uper.Constraint{Lb: 0, Ub: 2199}, false); err != nil {
+		return utils.WrapError("WriteInteger OffsetToPointA", err)
 	}
-	tmp_scs_SpecificCarrierList := utils.NewSequence[*SCS_SpecificCarrier]([]*SCS_SpecificCarrier{}, uper.Constraint{Lb: 1, Ub: maxSCSs}, false)
-	for _, i := range ie.scs_SpecificCarrierList {
-		tmp_scs_SpecificCarrierList.Value = append(tmp_scs_SpecificCarrierList.Value, &i)
+	tmp_Scs_SpecificCarrierList := utils.NewSequence[*SCS_SpecificCarrier]([]*SCS_SpecificCarrier{}, uper.Constraint{Lb: 1, Ub: maxSCSs}, false)
+	for _, i := range ie.Scs_SpecificCarrierList {
+		tmp_Scs_SpecificCarrierList.Value = append(tmp_Scs_SpecificCarrierList.Value, &i)
 	}
-	if err = tmp_scs_SpecificCarrierList.Encode(w); err != nil {
-		return utils.WrapError("Encode scs_SpecificCarrierList", err)
+	if err = tmp_Scs_SpecificCarrierList.Encode(w); err != nil {
+		return utils.WrapError("Encode Scs_SpecificCarrierList", err)
 	}
 	return nil
 }
 
 func (ie *FrequencyInfoDL_SIB) Decode(r *uper.UperReader) error {
 	var err error
-	if err = ie.frequencyBandList.Decode(r); err != nil {
-		return utils.WrapError("Decode frequencyBandList", err)
+	if err = ie.FrequencyBandList.Decode(r); err != nil {
+		return utils.WrapError("Decode FrequencyBandList", err)
 	}
-	var tmp_int_offsetToPointA int64
-	if tmp_int_offsetToPointA, err = r.ReadInteger(&uper.Constraint{Lb: 0, Ub: 2199}, false); err != nil {
-		return utils.WrapError("ReadInteger offsetToPointA", err)
+	var tmp_int_OffsetToPointA int64
+	if tmp_int_OffsetToPointA, err = r.ReadInteger(&uper.Constraint{Lb: 0, Ub: 2199}, false); err != nil {
+		return utils.WrapError("ReadInteger OffsetToPointA", err)
 	}
-	ie.offsetToPointA = tmp_int_offsetToPointA
-	tmp_scs_SpecificCarrierList := utils.NewSequence[*SCS_SpecificCarrier]([]*SCS_SpecificCarrier{}, uper.Constraint{Lb: 1, Ub: maxSCSs}, false)
-	fn_scs_SpecificCarrierList := func() *SCS_SpecificCarrier {
+	ie.OffsetToPointA = tmp_int_OffsetToPointA
+	tmp_Scs_SpecificCarrierList := utils.NewSequence[*SCS_SpecificCarrier]([]*SCS_SpecificCarrier{}, uper.Constraint{Lb: 1, Ub: maxSCSs}, false)
+	fn_Scs_SpecificCarrierList := func() *SCS_SpecificCarrier {
 		return new(SCS_SpecificCarrier)
 	}
-	if err = tmp_scs_SpecificCarrierList.Decode(r, fn_scs_SpecificCarrierList); err != nil {
-		return utils.WrapError("Decode scs_SpecificCarrierList", err)
+	if err = tmp_Scs_SpecificCarrierList.Decode(r, fn_Scs_SpecificCarrierList); err != nil {
+		return utils.WrapError("Decode Scs_SpecificCarrierList", err)
 	}
-	ie.scs_SpecificCarrierList = []SCS_SpecificCarrier{}
-	for _, i := range tmp_scs_SpecificCarrierList.Value {
-		ie.scs_SpecificCarrierList = append(ie.scs_SpecificCarrierList, *i)
+	ie.Scs_SpecificCarrierList = []SCS_SpecificCarrier{}
+	for _, i := range tmp_Scs_SpecificCarrierList.Value {
+		ie.Scs_SpecificCarrierList = append(ie.Scs_SpecificCarrierList, *i)
 	}
 	return nil
 }

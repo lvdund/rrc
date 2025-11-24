@@ -8,38 +8,38 @@ import (
 )
 
 type SL_BWP_Config_r16 struct {
-	sl_BWP_Id                 BWP_Id                     `madatory`
-	sl_BWP_Generic_r16        *SL_BWP_Generic_r16        `optional`
-	sl_BWP_PoolConfig_r16     *SL_BWP_PoolConfig_r16     `optional`
-	sl_BWP_PoolConfigPS_r17   *SL_BWP_PoolConfig_r16     `optional,ext-1,setuprelease`
-	sl_BWP_DiscPoolConfig_r17 *SL_BWP_DiscPoolConfig_r17 `optional,ext-1,setuprelease`
+	Sl_BWP_Id                 BWP_Id                     `madatory`
+	Sl_BWP_Generic_r16        *SL_BWP_Generic_r16        `optional`
+	Sl_BWP_PoolConfig_r16     *SL_BWP_PoolConfig_r16     `optional`
+	Sl_BWP_PoolConfigPS_r17   *SL_BWP_PoolConfig_r16     `optional,ext-1,setuprelease`
+	Sl_BWP_DiscPoolConfig_r17 *SL_BWP_DiscPoolConfig_r17 `optional,ext-1,setuprelease`
 }
 
 func (ie *SL_BWP_Config_r16) Encode(w *uper.UperWriter) error {
 	var err error
-	hasExtensions := ie.sl_BWP_PoolConfigPS_r17 != nil || ie.sl_BWP_DiscPoolConfig_r17 != nil
-	preambleBits := []bool{hasExtensions, ie.sl_BWP_Generic_r16 != nil, ie.sl_BWP_PoolConfig_r16 != nil}
+	hasExtensions := ie.Sl_BWP_PoolConfigPS_r17 != nil || ie.Sl_BWP_DiscPoolConfig_r17 != nil
+	preambleBits := []bool{hasExtensions, ie.Sl_BWP_Generic_r16 != nil, ie.Sl_BWP_PoolConfig_r16 != nil}
 	for _, bit := range preambleBits {
 		if err = w.WriteBool(bit); err != nil {
 			return err
 		}
 	}
-	if err = ie.sl_BWP_Id.Encode(w); err != nil {
-		return utils.WrapError("Encode sl_BWP_Id", err)
+	if err = ie.Sl_BWP_Id.Encode(w); err != nil {
+		return utils.WrapError("Encode Sl_BWP_Id", err)
 	}
-	if ie.sl_BWP_Generic_r16 != nil {
-		if err = ie.sl_BWP_Generic_r16.Encode(w); err != nil {
-			return utils.WrapError("Encode sl_BWP_Generic_r16", err)
+	if ie.Sl_BWP_Generic_r16 != nil {
+		if err = ie.Sl_BWP_Generic_r16.Encode(w); err != nil {
+			return utils.WrapError("Encode Sl_BWP_Generic_r16", err)
 		}
 	}
-	if ie.sl_BWP_PoolConfig_r16 != nil {
-		if err = ie.sl_BWP_PoolConfig_r16.Encode(w); err != nil {
-			return utils.WrapError("Encode sl_BWP_PoolConfig_r16", err)
+	if ie.Sl_BWP_PoolConfig_r16 != nil {
+		if err = ie.Sl_BWP_PoolConfig_r16.Encode(w); err != nil {
+			return utils.WrapError("Encode Sl_BWP_PoolConfig_r16", err)
 		}
 	}
 	if hasExtensions {
 		// Extension bitmap: 1 bits for 1 extension groups
-		extBitmap := []bool{ie.sl_BWP_PoolConfigPS_r17 != nil || ie.sl_BWP_DiscPoolConfig_r17 != nil}
+		extBitmap := []bool{ie.Sl_BWP_PoolConfigPS_r17 != nil || ie.Sl_BWP_DiscPoolConfig_r17 != nil}
 		if err := w.WriteExtBitMap(extBitmap); err != nil {
 			return utils.WrapError("WriteExtBitMap SL_BWP_Config_r16", err)
 		}
@@ -50,29 +50,29 @@ func (ie *SL_BWP_Config_r16) Encode(w *uper.UperWriter) error {
 			extWriter := uper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 1
-			optionals_ext_1 := []bool{ie.sl_BWP_PoolConfigPS_r17 != nil, ie.sl_BWP_DiscPoolConfig_r17 != nil}
+			optionals_ext_1 := []bool{ie.Sl_BWP_PoolConfigPS_r17 != nil, ie.Sl_BWP_DiscPoolConfig_r17 != nil}
 			for _, bit := range optionals_ext_1 {
 				if err := extWriter.WriteBool(bit); err != nil {
 					return err
 				}
 			}
 
-			// encode sl_BWP_PoolConfigPS_r17 optional
-			if ie.sl_BWP_PoolConfigPS_r17 != nil {
-				tmp_sl_BWP_PoolConfigPS_r17 := utils.SetupRelease[*SL_BWP_PoolConfig_r16]{
-					Setup: ie.sl_BWP_PoolConfigPS_r17,
+			// encode Sl_BWP_PoolConfigPS_r17 optional
+			if ie.Sl_BWP_PoolConfigPS_r17 != nil {
+				tmp_Sl_BWP_PoolConfigPS_r17 := utils.SetupRelease[*SL_BWP_PoolConfig_r16]{
+					Setup: ie.Sl_BWP_PoolConfigPS_r17,
 				}
-				if err = tmp_sl_BWP_PoolConfigPS_r17.Encode(extWriter); err != nil {
-					return utils.WrapError("Encode sl_BWP_PoolConfigPS_r17", err)
+				if err = tmp_Sl_BWP_PoolConfigPS_r17.Encode(extWriter); err != nil {
+					return utils.WrapError("Encode Sl_BWP_PoolConfigPS_r17", err)
 				}
 			}
-			// encode sl_BWP_DiscPoolConfig_r17 optional
-			if ie.sl_BWP_DiscPoolConfig_r17 != nil {
-				tmp_sl_BWP_DiscPoolConfig_r17 := utils.SetupRelease[*SL_BWP_DiscPoolConfig_r17]{
-					Setup: ie.sl_BWP_DiscPoolConfig_r17,
+			// encode Sl_BWP_DiscPoolConfig_r17 optional
+			if ie.Sl_BWP_DiscPoolConfig_r17 != nil {
+				tmp_Sl_BWP_DiscPoolConfig_r17 := utils.SetupRelease[*SL_BWP_DiscPoolConfig_r17]{
+					Setup: ie.Sl_BWP_DiscPoolConfig_r17,
 				}
-				if err = tmp_sl_BWP_DiscPoolConfig_r17.Encode(extWriter); err != nil {
-					return utils.WrapError("Encode sl_BWP_DiscPoolConfig_r17", err)
+				if err = tmp_Sl_BWP_DiscPoolConfig_r17.Encode(extWriter); err != nil {
+					return utils.WrapError("Encode Sl_BWP_DiscPoolConfig_r17", err)
 				}
 			}
 
@@ -94,27 +94,27 @@ func (ie *SL_BWP_Config_r16) Decode(r *uper.UperReader) error {
 	if extensionBit, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var sl_BWP_Generic_r16Present bool
-	if sl_BWP_Generic_r16Present, err = r.ReadBool(); err != nil {
+	var Sl_BWP_Generic_r16Present bool
+	if Sl_BWP_Generic_r16Present, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var sl_BWP_PoolConfig_r16Present bool
-	if sl_BWP_PoolConfig_r16Present, err = r.ReadBool(); err != nil {
+	var Sl_BWP_PoolConfig_r16Present bool
+	if Sl_BWP_PoolConfig_r16Present, err = r.ReadBool(); err != nil {
 		return err
 	}
-	if err = ie.sl_BWP_Id.Decode(r); err != nil {
-		return utils.WrapError("Decode sl_BWP_Id", err)
+	if err = ie.Sl_BWP_Id.Decode(r); err != nil {
+		return utils.WrapError("Decode Sl_BWP_Id", err)
 	}
-	if sl_BWP_Generic_r16Present {
-		ie.sl_BWP_Generic_r16 = new(SL_BWP_Generic_r16)
-		if err = ie.sl_BWP_Generic_r16.Decode(r); err != nil {
-			return utils.WrapError("Decode sl_BWP_Generic_r16", err)
+	if Sl_BWP_Generic_r16Present {
+		ie.Sl_BWP_Generic_r16 = new(SL_BWP_Generic_r16)
+		if err = ie.Sl_BWP_Generic_r16.Decode(r); err != nil {
+			return utils.WrapError("Decode Sl_BWP_Generic_r16", err)
 		}
 	}
-	if sl_BWP_PoolConfig_r16Present {
-		ie.sl_BWP_PoolConfig_r16 = new(SL_BWP_PoolConfig_r16)
-		if err = ie.sl_BWP_PoolConfig_r16.Decode(r); err != nil {
-			return utils.WrapError("Decode sl_BWP_PoolConfig_r16", err)
+	if Sl_BWP_PoolConfig_r16Present {
+		ie.Sl_BWP_PoolConfig_r16 = new(SL_BWP_PoolConfig_r16)
+		if err = ie.Sl_BWP_PoolConfig_r16.Decode(r); err != nil {
+			return utils.WrapError("Decode Sl_BWP_PoolConfig_r16", err)
 		}
 	}
 
@@ -134,29 +134,29 @@ func (ie *SL_BWP_Config_r16) Decode(r *uper.UperReader) error {
 
 			extReader := uper.NewReader(bytes.NewReader(extBytes))
 
-			sl_BWP_PoolConfigPS_r17Present, err := extReader.ReadBool()
+			Sl_BWP_PoolConfigPS_r17Present, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			sl_BWP_DiscPoolConfig_r17Present, err := extReader.ReadBool()
+			Sl_BWP_DiscPoolConfig_r17Present, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			// decode sl_BWP_PoolConfigPS_r17 optional
-			if sl_BWP_PoolConfigPS_r17Present {
-				tmp_sl_BWP_PoolConfigPS_r17 := utils.SetupRelease[*SL_BWP_PoolConfig_r16]{}
-				if err = tmp_sl_BWP_PoolConfigPS_r17.Decode(extReader); err != nil {
-					return utils.WrapError("Decode sl_BWP_PoolConfigPS_r17", err)
+			// decode Sl_BWP_PoolConfigPS_r17 optional
+			if Sl_BWP_PoolConfigPS_r17Present {
+				tmp_Sl_BWP_PoolConfigPS_r17 := utils.SetupRelease[*SL_BWP_PoolConfig_r16]{}
+				if err = tmp_Sl_BWP_PoolConfigPS_r17.Decode(extReader); err != nil {
+					return utils.WrapError("Decode Sl_BWP_PoolConfigPS_r17", err)
 				}
-				ie.sl_BWP_PoolConfigPS_r17 = tmp_sl_BWP_PoolConfigPS_r17.Setup
+				ie.Sl_BWP_PoolConfigPS_r17 = tmp_Sl_BWP_PoolConfigPS_r17.Setup
 			}
-			// decode sl_BWP_DiscPoolConfig_r17 optional
-			if sl_BWP_DiscPoolConfig_r17Present {
-				tmp_sl_BWP_DiscPoolConfig_r17 := utils.SetupRelease[*SL_BWP_DiscPoolConfig_r17]{}
-				if err = tmp_sl_BWP_DiscPoolConfig_r17.Decode(extReader); err != nil {
-					return utils.WrapError("Decode sl_BWP_DiscPoolConfig_r17", err)
+			// decode Sl_BWP_DiscPoolConfig_r17 optional
+			if Sl_BWP_DiscPoolConfig_r17Present {
+				tmp_Sl_BWP_DiscPoolConfig_r17 := utils.SetupRelease[*SL_BWP_DiscPoolConfig_r17]{}
+				if err = tmp_Sl_BWP_DiscPoolConfig_r17.Decode(extReader); err != nil {
+					return utils.WrapError("Decode Sl_BWP_DiscPoolConfig_r17", err)
 				}
-				ie.sl_BWP_DiscPoolConfig_r17 = tmp_sl_BWP_DiscPoolConfig_r17.Setup
+				ie.Sl_BWP_DiscPoolConfig_r17 = tmp_Sl_BWP_DiscPoolConfig_r17.Setup
 			}
 		}
 	}

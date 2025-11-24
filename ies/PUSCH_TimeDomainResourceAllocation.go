@@ -6,53 +6,53 @@ import (
 )
 
 type PUSCH_TimeDomainResourceAllocation struct {
-	k2                   *int64                                         `lb:0,ub:32,optional`
-	mappingType          PUSCH_TimeDomainResourceAllocation_mappingType `madatory`
-	startSymbolAndLength int64                                          `lb:0,ub:127,madatory`
+	K2                   *int64                                         `lb:0,ub:32,optional`
+	MappingType          PUSCH_TimeDomainResourceAllocation_mappingType `madatory`
+	StartSymbolAndLength int64                                          `lb:0,ub:127,madatory`
 }
 
 func (ie *PUSCH_TimeDomainResourceAllocation) Encode(w *uper.UperWriter) error {
 	var err error
-	preambleBits := []bool{ie.k2 != nil}
+	preambleBits := []bool{ie.K2 != nil}
 	for _, bit := range preambleBits {
 		if err = w.WriteBool(bit); err != nil {
 			return err
 		}
 	}
-	if ie.k2 != nil {
-		if err = w.WriteInteger(*ie.k2, &uper.Constraint{Lb: 0, Ub: 32}, false); err != nil {
-			return utils.WrapError("Encode k2", err)
+	if ie.K2 != nil {
+		if err = w.WriteInteger(*ie.K2, &uper.Constraint{Lb: 0, Ub: 32}, false); err != nil {
+			return utils.WrapError("Encode K2", err)
 		}
 	}
-	if err = ie.mappingType.Encode(w); err != nil {
-		return utils.WrapError("Encode mappingType", err)
+	if err = ie.MappingType.Encode(w); err != nil {
+		return utils.WrapError("Encode MappingType", err)
 	}
-	if err = w.WriteInteger(ie.startSymbolAndLength, &uper.Constraint{Lb: 0, Ub: 127}, false); err != nil {
-		return utils.WrapError("WriteInteger startSymbolAndLength", err)
+	if err = w.WriteInteger(ie.StartSymbolAndLength, &uper.Constraint{Lb: 0, Ub: 127}, false); err != nil {
+		return utils.WrapError("WriteInteger StartSymbolAndLength", err)
 	}
 	return nil
 }
 
 func (ie *PUSCH_TimeDomainResourceAllocation) Decode(r *uper.UperReader) error {
 	var err error
-	var k2Present bool
-	if k2Present, err = r.ReadBool(); err != nil {
+	var K2Present bool
+	if K2Present, err = r.ReadBool(); err != nil {
 		return err
 	}
-	if k2Present {
-		var tmp_int_k2 int64
-		if tmp_int_k2, err = r.ReadInteger(&uper.Constraint{Lb: 0, Ub: 32}, false); err != nil {
-			return utils.WrapError("Decode k2", err)
+	if K2Present {
+		var tmp_int_K2 int64
+		if tmp_int_K2, err = r.ReadInteger(&uper.Constraint{Lb: 0, Ub: 32}, false); err != nil {
+			return utils.WrapError("Decode K2", err)
 		}
-		ie.k2 = &tmp_int_k2
+		ie.K2 = &tmp_int_K2
 	}
-	if err = ie.mappingType.Decode(r); err != nil {
-		return utils.WrapError("Decode mappingType", err)
+	if err = ie.MappingType.Decode(r); err != nil {
+		return utils.WrapError("Decode MappingType", err)
 	}
-	var tmp_int_startSymbolAndLength int64
-	if tmp_int_startSymbolAndLength, err = r.ReadInteger(&uper.Constraint{Lb: 0, Ub: 127}, false); err != nil {
-		return utils.WrapError("ReadInteger startSymbolAndLength", err)
+	var tmp_int_StartSymbolAndLength int64
+	if tmp_int_StartSymbolAndLength, err = r.ReadInteger(&uper.Constraint{Lb: 0, Ub: 127}, false); err != nil {
+		return utils.WrapError("ReadInteger StartSymbolAndLength", err)
 	}
-	ie.startSymbolAndLength = tmp_int_startSymbolAndLength
+	ie.StartSymbolAndLength = tmp_int_StartSymbolAndLength
 	return nil
 }

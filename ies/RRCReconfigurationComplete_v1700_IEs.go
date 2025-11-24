@@ -6,38 +6,38 @@ import (
 )
 
 type RRCReconfigurationComplete_v1700_IEs struct {
-	needForGapNCSG_InfoNR_r17    *NeedForGapNCSG_InfoNR_r17            `optional`
-	needForGapNCSG_InfoEUTRA_r17 *NeedForGapNCSG_InfoEUTRA_r17         `optional`
-	selectedCondRRCReconfig_r17  *CondReconfigId_r16                   `optional`
-	nonCriticalExtension         *RRCReconfigurationComplete_v1720_IEs `optional`
+	NeedForGapNCSG_InfoNR_r17    *NeedForGapNCSG_InfoNR_r17            `optional`
+	NeedForGapNCSG_InfoEUTRA_r17 *NeedForGapNCSG_InfoEUTRA_r17         `optional`
+	SelectedCondRRCReconfig_r17  *CondReconfigId_r16                   `optional`
+	NonCriticalExtension         *RRCReconfigurationComplete_v1720_IEs `optional`
 }
 
 func (ie *RRCReconfigurationComplete_v1700_IEs) Encode(w *uper.UperWriter) error {
 	var err error
-	preambleBits := []bool{ie.needForGapNCSG_InfoNR_r17 != nil, ie.needForGapNCSG_InfoEUTRA_r17 != nil, ie.selectedCondRRCReconfig_r17 != nil, ie.nonCriticalExtension != nil}
+	preambleBits := []bool{ie.NeedForGapNCSG_InfoNR_r17 != nil, ie.NeedForGapNCSG_InfoEUTRA_r17 != nil, ie.SelectedCondRRCReconfig_r17 != nil, ie.NonCriticalExtension != nil}
 	for _, bit := range preambleBits {
 		if err = w.WriteBool(bit); err != nil {
 			return err
 		}
 	}
-	if ie.needForGapNCSG_InfoNR_r17 != nil {
-		if err = ie.needForGapNCSG_InfoNR_r17.Encode(w); err != nil {
-			return utils.WrapError("Encode needForGapNCSG_InfoNR_r17", err)
+	if ie.NeedForGapNCSG_InfoNR_r17 != nil {
+		if err = ie.NeedForGapNCSG_InfoNR_r17.Encode(w); err != nil {
+			return utils.WrapError("Encode NeedForGapNCSG_InfoNR_r17", err)
 		}
 	}
-	if ie.needForGapNCSG_InfoEUTRA_r17 != nil {
-		if err = ie.needForGapNCSG_InfoEUTRA_r17.Encode(w); err != nil {
-			return utils.WrapError("Encode needForGapNCSG_InfoEUTRA_r17", err)
+	if ie.NeedForGapNCSG_InfoEUTRA_r17 != nil {
+		if err = ie.NeedForGapNCSG_InfoEUTRA_r17.Encode(w); err != nil {
+			return utils.WrapError("Encode NeedForGapNCSG_InfoEUTRA_r17", err)
 		}
 	}
-	if ie.selectedCondRRCReconfig_r17 != nil {
-		if err = ie.selectedCondRRCReconfig_r17.Encode(w); err != nil {
-			return utils.WrapError("Encode selectedCondRRCReconfig_r17", err)
+	if ie.SelectedCondRRCReconfig_r17 != nil {
+		if err = ie.SelectedCondRRCReconfig_r17.Encode(w); err != nil {
+			return utils.WrapError("Encode SelectedCondRRCReconfig_r17", err)
 		}
 	}
-	if ie.nonCriticalExtension != nil {
-		if err = ie.nonCriticalExtension.Encode(w); err != nil {
-			return utils.WrapError("Encode nonCriticalExtension", err)
+	if ie.NonCriticalExtension != nil {
+		if err = ie.NonCriticalExtension.Encode(w); err != nil {
+			return utils.WrapError("Encode NonCriticalExtension", err)
 		}
 	}
 	return nil
@@ -45,44 +45,44 @@ func (ie *RRCReconfigurationComplete_v1700_IEs) Encode(w *uper.UperWriter) error
 
 func (ie *RRCReconfigurationComplete_v1700_IEs) Decode(r *uper.UperReader) error {
 	var err error
-	var needForGapNCSG_InfoNR_r17Present bool
-	if needForGapNCSG_InfoNR_r17Present, err = r.ReadBool(); err != nil {
+	var NeedForGapNCSG_InfoNR_r17Present bool
+	if NeedForGapNCSG_InfoNR_r17Present, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var needForGapNCSG_InfoEUTRA_r17Present bool
-	if needForGapNCSG_InfoEUTRA_r17Present, err = r.ReadBool(); err != nil {
+	var NeedForGapNCSG_InfoEUTRA_r17Present bool
+	if NeedForGapNCSG_InfoEUTRA_r17Present, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var selectedCondRRCReconfig_r17Present bool
-	if selectedCondRRCReconfig_r17Present, err = r.ReadBool(); err != nil {
+	var SelectedCondRRCReconfig_r17Present bool
+	if SelectedCondRRCReconfig_r17Present, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var nonCriticalExtensionPresent bool
-	if nonCriticalExtensionPresent, err = r.ReadBool(); err != nil {
+	var NonCriticalExtensionPresent bool
+	if NonCriticalExtensionPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	if needForGapNCSG_InfoNR_r17Present {
-		ie.needForGapNCSG_InfoNR_r17 = new(NeedForGapNCSG_InfoNR_r17)
-		if err = ie.needForGapNCSG_InfoNR_r17.Decode(r); err != nil {
-			return utils.WrapError("Decode needForGapNCSG_InfoNR_r17", err)
+	if NeedForGapNCSG_InfoNR_r17Present {
+		ie.NeedForGapNCSG_InfoNR_r17 = new(NeedForGapNCSG_InfoNR_r17)
+		if err = ie.NeedForGapNCSG_InfoNR_r17.Decode(r); err != nil {
+			return utils.WrapError("Decode NeedForGapNCSG_InfoNR_r17", err)
 		}
 	}
-	if needForGapNCSG_InfoEUTRA_r17Present {
-		ie.needForGapNCSG_InfoEUTRA_r17 = new(NeedForGapNCSG_InfoEUTRA_r17)
-		if err = ie.needForGapNCSG_InfoEUTRA_r17.Decode(r); err != nil {
-			return utils.WrapError("Decode needForGapNCSG_InfoEUTRA_r17", err)
+	if NeedForGapNCSG_InfoEUTRA_r17Present {
+		ie.NeedForGapNCSG_InfoEUTRA_r17 = new(NeedForGapNCSG_InfoEUTRA_r17)
+		if err = ie.NeedForGapNCSG_InfoEUTRA_r17.Decode(r); err != nil {
+			return utils.WrapError("Decode NeedForGapNCSG_InfoEUTRA_r17", err)
 		}
 	}
-	if selectedCondRRCReconfig_r17Present {
-		ie.selectedCondRRCReconfig_r17 = new(CondReconfigId_r16)
-		if err = ie.selectedCondRRCReconfig_r17.Decode(r); err != nil {
-			return utils.WrapError("Decode selectedCondRRCReconfig_r17", err)
+	if SelectedCondRRCReconfig_r17Present {
+		ie.SelectedCondRRCReconfig_r17 = new(CondReconfigId_r16)
+		if err = ie.SelectedCondRRCReconfig_r17.Decode(r); err != nil {
+			return utils.WrapError("Decode SelectedCondRRCReconfig_r17", err)
 		}
 	}
-	if nonCriticalExtensionPresent {
-		ie.nonCriticalExtension = new(RRCReconfigurationComplete_v1720_IEs)
-		if err = ie.nonCriticalExtension.Decode(r); err != nil {
-			return utils.WrapError("Decode nonCriticalExtension", err)
+	if NonCriticalExtensionPresent {
+		ie.NonCriticalExtension = new(RRCReconfigurationComplete_v1720_IEs)
+		if err = ie.NonCriticalExtension.Decode(r); err != nil {
+			return utils.WrapError("Decode NonCriticalExtension", err)
 		}
 	}
 	return nil

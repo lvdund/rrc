@@ -6,50 +6,50 @@ import (
 )
 
 type VictimSystemType struct {
-	gps       *VictimSystemType_gps       `optional`
-	glonass   *VictimSystemType_glonass   `optional`
-	bds       *VictimSystemType_bds       `optional`
-	galileo   *VictimSystemType_galileo   `optional`
-	wlan      *VictimSystemType_wlan      `optional`
-	bluetooth *VictimSystemType_bluetooth `optional`
+	Gps       *VictimSystemType_gps       `optional`
+	Glonass   *VictimSystemType_glonass   `optional`
+	Bds       *VictimSystemType_bds       `optional`
+	Galileo   *VictimSystemType_galileo   `optional`
+	Wlan      *VictimSystemType_wlan      `optional`
+	Bluetooth *VictimSystemType_bluetooth `optional`
 }
 
 func (ie *VictimSystemType) Encode(w *uper.UperWriter) error {
 	var err error
-	preambleBits := []bool{ie.gps != nil, ie.glonass != nil, ie.bds != nil, ie.galileo != nil, ie.wlan != nil, ie.bluetooth != nil}
+	preambleBits := []bool{ie.Gps != nil, ie.Glonass != nil, ie.Bds != nil, ie.Galileo != nil, ie.Wlan != nil, ie.Bluetooth != nil}
 	for _, bit := range preambleBits {
 		if err = w.WriteBool(bit); err != nil {
 			return err
 		}
 	}
-	if ie.gps != nil {
-		if err = ie.gps.Encode(w); err != nil {
-			return utils.WrapError("Encode gps", err)
+	if ie.Gps != nil {
+		if err = ie.Gps.Encode(w); err != nil {
+			return utils.WrapError("Encode Gps", err)
 		}
 	}
-	if ie.glonass != nil {
-		if err = ie.glonass.Encode(w); err != nil {
-			return utils.WrapError("Encode glonass", err)
+	if ie.Glonass != nil {
+		if err = ie.Glonass.Encode(w); err != nil {
+			return utils.WrapError("Encode Glonass", err)
 		}
 	}
-	if ie.bds != nil {
-		if err = ie.bds.Encode(w); err != nil {
-			return utils.WrapError("Encode bds", err)
+	if ie.Bds != nil {
+		if err = ie.Bds.Encode(w); err != nil {
+			return utils.WrapError("Encode Bds", err)
 		}
 	}
-	if ie.galileo != nil {
-		if err = ie.galileo.Encode(w); err != nil {
-			return utils.WrapError("Encode galileo", err)
+	if ie.Galileo != nil {
+		if err = ie.Galileo.Encode(w); err != nil {
+			return utils.WrapError("Encode Galileo", err)
 		}
 	}
-	if ie.wlan != nil {
-		if err = ie.wlan.Encode(w); err != nil {
-			return utils.WrapError("Encode wlan", err)
+	if ie.Wlan != nil {
+		if err = ie.Wlan.Encode(w); err != nil {
+			return utils.WrapError("Encode Wlan", err)
 		}
 	}
-	if ie.bluetooth != nil {
-		if err = ie.bluetooth.Encode(w); err != nil {
-			return utils.WrapError("Encode bluetooth", err)
+	if ie.Bluetooth != nil {
+		if err = ie.Bluetooth.Encode(w); err != nil {
+			return utils.WrapError("Encode Bluetooth", err)
 		}
 	}
 	return nil
@@ -57,64 +57,64 @@ func (ie *VictimSystemType) Encode(w *uper.UperWriter) error {
 
 func (ie *VictimSystemType) Decode(r *uper.UperReader) error {
 	var err error
-	var gpsPresent bool
-	if gpsPresent, err = r.ReadBool(); err != nil {
+	var GpsPresent bool
+	if GpsPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var glonassPresent bool
-	if glonassPresent, err = r.ReadBool(); err != nil {
+	var GlonassPresent bool
+	if GlonassPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var bdsPresent bool
-	if bdsPresent, err = r.ReadBool(); err != nil {
+	var BdsPresent bool
+	if BdsPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var galileoPresent bool
-	if galileoPresent, err = r.ReadBool(); err != nil {
+	var GalileoPresent bool
+	if GalileoPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var wlanPresent bool
-	if wlanPresent, err = r.ReadBool(); err != nil {
+	var WlanPresent bool
+	if WlanPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var bluetoothPresent bool
-	if bluetoothPresent, err = r.ReadBool(); err != nil {
+	var BluetoothPresent bool
+	if BluetoothPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	if gpsPresent {
-		ie.gps = new(VictimSystemType_gps)
-		if err = ie.gps.Decode(r); err != nil {
-			return utils.WrapError("Decode gps", err)
+	if GpsPresent {
+		ie.Gps = new(VictimSystemType_gps)
+		if err = ie.Gps.Decode(r); err != nil {
+			return utils.WrapError("Decode Gps", err)
 		}
 	}
-	if glonassPresent {
-		ie.glonass = new(VictimSystemType_glonass)
-		if err = ie.glonass.Decode(r); err != nil {
-			return utils.WrapError("Decode glonass", err)
+	if GlonassPresent {
+		ie.Glonass = new(VictimSystemType_glonass)
+		if err = ie.Glonass.Decode(r); err != nil {
+			return utils.WrapError("Decode Glonass", err)
 		}
 	}
-	if bdsPresent {
-		ie.bds = new(VictimSystemType_bds)
-		if err = ie.bds.Decode(r); err != nil {
-			return utils.WrapError("Decode bds", err)
+	if BdsPresent {
+		ie.Bds = new(VictimSystemType_bds)
+		if err = ie.Bds.Decode(r); err != nil {
+			return utils.WrapError("Decode Bds", err)
 		}
 	}
-	if galileoPresent {
-		ie.galileo = new(VictimSystemType_galileo)
-		if err = ie.galileo.Decode(r); err != nil {
-			return utils.WrapError("Decode galileo", err)
+	if GalileoPresent {
+		ie.Galileo = new(VictimSystemType_galileo)
+		if err = ie.Galileo.Decode(r); err != nil {
+			return utils.WrapError("Decode Galileo", err)
 		}
 	}
-	if wlanPresent {
-		ie.wlan = new(VictimSystemType_wlan)
-		if err = ie.wlan.Decode(r); err != nil {
-			return utils.WrapError("Decode wlan", err)
+	if WlanPresent {
+		ie.Wlan = new(VictimSystemType_wlan)
+		if err = ie.Wlan.Decode(r); err != nil {
+			return utils.WrapError("Decode Wlan", err)
 		}
 	}
-	if bluetoothPresent {
-		ie.bluetooth = new(VictimSystemType_bluetooth)
-		if err = ie.bluetooth.Decode(r); err != nil {
-			return utils.WrapError("Decode bluetooth", err)
+	if BluetoothPresent {
+		ie.Bluetooth = new(VictimSystemType_bluetooth)
+		if err = ie.Bluetooth.Decode(r); err != nil {
+			return utils.WrapError("Decode Bluetooth", err)
 		}
 	}
 	return nil

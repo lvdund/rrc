@@ -9,18 +9,18 @@ import (
 
 const (
 	DL_PPW_PeriodicityAndStartSlot_r17_Choice_nothing uint64 = iota
-	DL_PPW_PeriodicityAndStartSlot_r17_Choice_scs15
-	DL_PPW_PeriodicityAndStartSlot_r17_Choice_scs30
-	DL_PPW_PeriodicityAndStartSlot_r17_Choice_scs60
-	DL_PPW_PeriodicityAndStartSlot_r17_Choice_scs120
+	DL_PPW_PeriodicityAndStartSlot_r17_Choice_Scs15
+	DL_PPW_PeriodicityAndStartSlot_r17_Choice_Scs30
+	DL_PPW_PeriodicityAndStartSlot_r17_Choice_Scs60
+	DL_PPW_PeriodicityAndStartSlot_r17_Choice_Scs120
 )
 
 type DL_PPW_PeriodicityAndStartSlot_r17 struct {
 	Choice uint64
-	scs15  *DL_PPW_PeriodicityAndStartSlot_r17_scs15
-	scs30  *DL_PPW_PeriodicityAndStartSlot_r17_scs30
-	scs60  *DL_PPW_PeriodicityAndStartSlot_r17_scs60
-	scs120 *DL_PPW_PeriodicityAndStartSlot_r17_scs120
+	Scs15  *DL_PPW_PeriodicityAndStartSlot_r17_scs15
+	Scs30  *DL_PPW_PeriodicityAndStartSlot_r17_scs30
+	Scs60  *DL_PPW_PeriodicityAndStartSlot_r17_scs60
+	Scs120 *DL_PPW_PeriodicityAndStartSlot_r17_scs120
 }
 
 func (ie *DL_PPW_PeriodicityAndStartSlot_r17) Encode(w *uper.UperWriter) error {
@@ -29,21 +29,21 @@ func (ie *DL_PPW_PeriodicityAndStartSlot_r17) Encode(w *uper.UperWriter) error {
 		return err
 	}
 	switch ie.Choice {
-	case DL_PPW_PeriodicityAndStartSlot_r17_Choice_scs15:
-		if err = ie.scs15.Encode(w); err != nil {
-			err = utils.WrapError("Encode scs15", err)
+	case DL_PPW_PeriodicityAndStartSlot_r17_Choice_Scs15:
+		if err = ie.Scs15.Encode(w); err != nil {
+			err = utils.WrapError("Encode Scs15", err)
 		}
-	case DL_PPW_PeriodicityAndStartSlot_r17_Choice_scs30:
-		if err = ie.scs30.Encode(w); err != nil {
-			err = utils.WrapError("Encode scs30", err)
+	case DL_PPW_PeriodicityAndStartSlot_r17_Choice_Scs30:
+		if err = ie.Scs30.Encode(w); err != nil {
+			err = utils.WrapError("Encode Scs30", err)
 		}
-	case DL_PPW_PeriodicityAndStartSlot_r17_Choice_scs60:
-		if err = ie.scs60.Encode(w); err != nil {
-			err = utils.WrapError("Encode scs60", err)
+	case DL_PPW_PeriodicityAndStartSlot_r17_Choice_Scs60:
+		if err = ie.Scs60.Encode(w); err != nil {
+			err = utils.WrapError("Encode Scs60", err)
 		}
-	case DL_PPW_PeriodicityAndStartSlot_r17_Choice_scs120:
-		if err = ie.scs120.Encode(w); err != nil {
-			err = utils.WrapError("Encode scs120", err)
+	case DL_PPW_PeriodicityAndStartSlot_r17_Choice_Scs120:
+		if err = ie.Scs120.Encode(w); err != nil {
+			err = utils.WrapError("Encode Scs120", err)
 		}
 	default:
 		err = fmt.Errorf("invalid choice: %d", ie.Choice)
@@ -57,25 +57,25 @@ func (ie *DL_PPW_PeriodicityAndStartSlot_r17) Decode(r *uper.UperReader) error {
 		return err
 	}
 	switch ie.Choice {
-	case DL_PPW_PeriodicityAndStartSlot_r17_Choice_scs15:
-		ie.scs15 = new(DL_PPW_PeriodicityAndStartSlot_r17_scs15)
-		if err = ie.scs15.Decode(r); err != nil {
-			return utils.WrapError("Decode scs15", err)
+	case DL_PPW_PeriodicityAndStartSlot_r17_Choice_Scs15:
+		ie.Scs15 = new(DL_PPW_PeriodicityAndStartSlot_r17_scs15)
+		if err = ie.Scs15.Decode(r); err != nil {
+			return utils.WrapError("Decode Scs15", err)
 		}
-	case DL_PPW_PeriodicityAndStartSlot_r17_Choice_scs30:
-		ie.scs30 = new(DL_PPW_PeriodicityAndStartSlot_r17_scs30)
-		if err = ie.scs30.Decode(r); err != nil {
-			return utils.WrapError("Decode scs30", err)
+	case DL_PPW_PeriodicityAndStartSlot_r17_Choice_Scs30:
+		ie.Scs30 = new(DL_PPW_PeriodicityAndStartSlot_r17_scs30)
+		if err = ie.Scs30.Decode(r); err != nil {
+			return utils.WrapError("Decode Scs30", err)
 		}
-	case DL_PPW_PeriodicityAndStartSlot_r17_Choice_scs60:
-		ie.scs60 = new(DL_PPW_PeriodicityAndStartSlot_r17_scs60)
-		if err = ie.scs60.Decode(r); err != nil {
-			return utils.WrapError("Decode scs60", err)
+	case DL_PPW_PeriodicityAndStartSlot_r17_Choice_Scs60:
+		ie.Scs60 = new(DL_PPW_PeriodicityAndStartSlot_r17_scs60)
+		if err = ie.Scs60.Decode(r); err != nil {
+			return utils.WrapError("Decode Scs60", err)
 		}
-	case DL_PPW_PeriodicityAndStartSlot_r17_Choice_scs120:
-		ie.scs120 = new(DL_PPW_PeriodicityAndStartSlot_r17_scs120)
-		if err = ie.scs120.Decode(r); err != nil {
-			return utils.WrapError("Decode scs120", err)
+	case DL_PPW_PeriodicityAndStartSlot_r17_Choice_Scs120:
+		ie.Scs120 = new(DL_PPW_PeriodicityAndStartSlot_r17_scs120)
+		if err = ie.Scs120.Decode(r); err != nil {
+			return utils.WrapError("Decode Scs120", err)
 		}
 	default:
 		return fmt.Errorf("invalid choice: %d", ie.Choice)

@@ -6,24 +6,24 @@ import (
 )
 
 type RRCReestablishment_v1700_IEs struct {
-	sl_L2RemoteUE_Config_r17 *SL_L2RemoteUE_Config_r17 `optional,setuprelease`
-	nonCriticalExtension     interface{}               `optional`
+	Sl_L2RemoteUE_Config_r17 *SL_L2RemoteUE_Config_r17 `optional,setuprelease`
+	NonCriticalExtension     interface{}               `optional`
 }
 
 func (ie *RRCReestablishment_v1700_IEs) Encode(w *uper.UperWriter) error {
 	var err error
-	preambleBits := []bool{ie.sl_L2RemoteUE_Config_r17 != nil}
+	preambleBits := []bool{ie.Sl_L2RemoteUE_Config_r17 != nil}
 	for _, bit := range preambleBits {
 		if err = w.WriteBool(bit); err != nil {
 			return err
 		}
 	}
-	if ie.sl_L2RemoteUE_Config_r17 != nil {
-		tmp_sl_L2RemoteUE_Config_r17 := utils.SetupRelease[*SL_L2RemoteUE_Config_r17]{
-			Setup: ie.sl_L2RemoteUE_Config_r17,
+	if ie.Sl_L2RemoteUE_Config_r17 != nil {
+		tmp_Sl_L2RemoteUE_Config_r17 := utils.SetupRelease[*SL_L2RemoteUE_Config_r17]{
+			Setup: ie.Sl_L2RemoteUE_Config_r17,
 		}
-		if err = tmp_sl_L2RemoteUE_Config_r17.Encode(w); err != nil {
-			return utils.WrapError("Encode sl_L2RemoteUE_Config_r17", err)
+		if err = tmp_Sl_L2RemoteUE_Config_r17.Encode(w); err != nil {
+			return utils.WrapError("Encode Sl_L2RemoteUE_Config_r17", err)
 		}
 	}
 	return nil
@@ -31,16 +31,16 @@ func (ie *RRCReestablishment_v1700_IEs) Encode(w *uper.UperWriter) error {
 
 func (ie *RRCReestablishment_v1700_IEs) Decode(r *uper.UperReader) error {
 	var err error
-	var sl_L2RemoteUE_Config_r17Present bool
-	if sl_L2RemoteUE_Config_r17Present, err = r.ReadBool(); err != nil {
+	var Sl_L2RemoteUE_Config_r17Present bool
+	if Sl_L2RemoteUE_Config_r17Present, err = r.ReadBool(); err != nil {
 		return err
 	}
-	if sl_L2RemoteUE_Config_r17Present {
-		tmp_sl_L2RemoteUE_Config_r17 := utils.SetupRelease[*SL_L2RemoteUE_Config_r17]{}
-		if err = tmp_sl_L2RemoteUE_Config_r17.Decode(r); err != nil {
-			return utils.WrapError("Decode sl_L2RemoteUE_Config_r17", err)
+	if Sl_L2RemoteUE_Config_r17Present {
+		tmp_Sl_L2RemoteUE_Config_r17 := utils.SetupRelease[*SL_L2RemoteUE_Config_r17]{}
+		if err = tmp_Sl_L2RemoteUE_Config_r17.Decode(r); err != nil {
+			return utils.WrapError("Decode Sl_L2RemoteUE_Config_r17", err)
 		}
-		ie.sl_L2RemoteUE_Config_r17 = tmp_sl_L2RemoteUE_Config_r17.Setup
+		ie.Sl_L2RemoteUE_Config_r17 = tmp_Sl_L2RemoteUE_Config_r17.Setup
 	}
 	return nil
 }

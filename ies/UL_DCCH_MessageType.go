@@ -9,14 +9,14 @@ import (
 
 const (
 	UL_DCCH_MessageType_Choice_nothing uint64 = iota
-	UL_DCCH_MessageType_Choice_c1
-	UL_DCCH_MessageType_Choice_messageClassExtension
+	UL_DCCH_MessageType_Choice_C1
+	UL_DCCH_MessageType_Choice_MessageClassExtension
 )
 
 type UL_DCCH_MessageType struct {
 	Choice                uint64
-	c1                    *UL_DCCH_MessageType_C1
-	messageClassExtension *UL_DCCH_MessageType_MessageClassExtension
+	C1                    *UL_DCCH_MessageType_C1
+	MessageClassExtension *UL_DCCH_MessageType_MessageClassExtension
 }
 
 func (ie *UL_DCCH_MessageType) Encode(w *uper.UperWriter) error {
@@ -25,13 +25,13 @@ func (ie *UL_DCCH_MessageType) Encode(w *uper.UperWriter) error {
 		return err
 	}
 	switch ie.Choice {
-	case UL_DCCH_MessageType_Choice_c1:
-		if err = ie.c1.Encode(w); err != nil {
-			err = utils.WrapError("Encode c1", err)
+	case UL_DCCH_MessageType_Choice_C1:
+		if err = ie.C1.Encode(w); err != nil {
+			err = utils.WrapError("Encode C1", err)
 		}
-	case UL_DCCH_MessageType_Choice_messageClassExtension:
-		if err = ie.messageClassExtension.Encode(w); err != nil {
-			err = utils.WrapError("Encode messageClassExtension", err)
+	case UL_DCCH_MessageType_Choice_MessageClassExtension:
+		if err = ie.MessageClassExtension.Encode(w); err != nil {
+			err = utils.WrapError("Encode MessageClassExtension", err)
 		}
 	default:
 		err = fmt.Errorf("invalid choice: %d", ie.Choice)
@@ -45,15 +45,15 @@ func (ie *UL_DCCH_MessageType) Decode(r *uper.UperReader) error {
 		return err
 	}
 	switch ie.Choice {
-	case UL_DCCH_MessageType_Choice_c1:
-		ie.c1 = new(UL_DCCH_MessageType_C1)
-		if err = ie.c1.Decode(r); err != nil {
-			return utils.WrapError("Decode c1", err)
+	case UL_DCCH_MessageType_Choice_C1:
+		ie.C1 = new(UL_DCCH_MessageType_C1)
+		if err = ie.C1.Decode(r); err != nil {
+			return utils.WrapError("Decode C1", err)
 		}
-	case UL_DCCH_MessageType_Choice_messageClassExtension:
-		ie.messageClassExtension = new(UL_DCCH_MessageType_MessageClassExtension)
-		if err = ie.messageClassExtension.Decode(r); err != nil {
-			return utils.WrapError("Decode messageClassExtension", err)
+	case UL_DCCH_MessageType_Choice_MessageClassExtension:
+		ie.MessageClassExtension = new(UL_DCCH_MessageType_MessageClassExtension)
+		if err = ie.MessageClassExtension.Decode(r); err != nil {
+			return utils.WrapError("Decode MessageClassExtension", err)
 		}
 	default:
 		return fmt.Errorf("invalid choice: %d", ie.Choice)

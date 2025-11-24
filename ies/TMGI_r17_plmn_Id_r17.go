@@ -9,14 +9,14 @@ import (
 
 const (
 	TMGI_r17_plmn_Id_r17_Choice_nothing uint64 = iota
-	TMGI_r17_plmn_Id_r17_Choice_plmn_Index
-	TMGI_r17_plmn_Id_r17_Choice_explicitValue
+	TMGI_r17_plmn_Id_r17_Choice_Plmn_Index
+	TMGI_r17_plmn_Id_r17_Choice_ExplicitValue
 )
 
 type TMGI_r17_plmn_Id_r17 struct {
 	Choice        uint64
-	plmn_Index    int64 `lb:1,ub:maxPLMN,madatory`
-	explicitValue *PLMN_Identity
+	Plmn_Index    int64 `lb:1,ub:maxPLMN,madatory`
+	ExplicitValue *PLMN_Identity
 }
 
 func (ie *TMGI_r17_plmn_Id_r17) Encode(w *uper.UperWriter) error {
@@ -25,13 +25,13 @@ func (ie *TMGI_r17_plmn_Id_r17) Encode(w *uper.UperWriter) error {
 		return err
 	}
 	switch ie.Choice {
-	case TMGI_r17_plmn_Id_r17_Choice_plmn_Index:
-		if err = w.WriteInteger(int64(ie.plmn_Index), &uper.Constraint{Lb: 1, Ub: maxPLMN}, false); err != nil {
-			err = utils.WrapError("Encode plmn_Index", err)
+	case TMGI_r17_plmn_Id_r17_Choice_Plmn_Index:
+		if err = w.WriteInteger(int64(ie.Plmn_Index), &uper.Constraint{Lb: 1, Ub: maxPLMN}, false); err != nil {
+			err = utils.WrapError("Encode Plmn_Index", err)
 		}
-	case TMGI_r17_plmn_Id_r17_Choice_explicitValue:
-		if err = ie.explicitValue.Encode(w); err != nil {
-			err = utils.WrapError("Encode explicitValue", err)
+	case TMGI_r17_plmn_Id_r17_Choice_ExplicitValue:
+		if err = ie.ExplicitValue.Encode(w); err != nil {
+			err = utils.WrapError("Encode ExplicitValue", err)
 		}
 	default:
 		err = fmt.Errorf("invalid choice: %d", ie.Choice)
@@ -45,16 +45,16 @@ func (ie *TMGI_r17_plmn_Id_r17) Decode(r *uper.UperReader) error {
 		return err
 	}
 	switch ie.Choice {
-	case TMGI_r17_plmn_Id_r17_Choice_plmn_Index:
-		var tmp_int_plmn_Index int64
-		if tmp_int_plmn_Index, err = r.ReadInteger(&uper.Constraint{Lb: 1, Ub: maxPLMN}, false); err != nil {
-			return utils.WrapError("Decode plmn_Index", err)
+	case TMGI_r17_plmn_Id_r17_Choice_Plmn_Index:
+		var tmp_int_Plmn_Index int64
+		if tmp_int_Plmn_Index, err = r.ReadInteger(&uper.Constraint{Lb: 1, Ub: maxPLMN}, false); err != nil {
+			return utils.WrapError("Decode Plmn_Index", err)
 		}
-		ie.plmn_Index = tmp_int_plmn_Index
-	case TMGI_r17_plmn_Id_r17_Choice_explicitValue:
-		ie.explicitValue = new(PLMN_Identity)
-		if err = ie.explicitValue.Decode(r); err != nil {
-			return utils.WrapError("Decode explicitValue", err)
+		ie.Plmn_Index = tmp_int_Plmn_Index
+	case TMGI_r17_plmn_Id_r17_Choice_ExplicitValue:
+		ie.ExplicitValue = new(PLMN_Identity)
+		if err = ie.ExplicitValue.Decode(r); err != nil {
+			return utils.WrapError("Decode ExplicitValue", err)
 		}
 	default:
 		return fmt.Errorf("invalid choice: %d", ie.Choice)

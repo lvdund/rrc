@@ -6,38 +6,38 @@ import (
 )
 
 type MIMO_ParametersPerBand_ptrs_DensityRecommendationSetDL struct {
-	scs_15kHz  *PTRS_DensityRecommendationDL `optional`
-	scs_30kHz  *PTRS_DensityRecommendationDL `optional`
-	scs_60kHz  *PTRS_DensityRecommendationDL `optional`
-	scs_120kHz *PTRS_DensityRecommendationDL `optional`
+	Scs_15kHz  *PTRS_DensityRecommendationDL `optional`
+	Scs_30kHz  *PTRS_DensityRecommendationDL `optional`
+	Scs_60kHz  *PTRS_DensityRecommendationDL `optional`
+	Scs_120kHz *PTRS_DensityRecommendationDL `optional`
 }
 
 func (ie *MIMO_ParametersPerBand_ptrs_DensityRecommendationSetDL) Encode(w *uper.UperWriter) error {
 	var err error
-	preambleBits := []bool{ie.scs_15kHz != nil, ie.scs_30kHz != nil, ie.scs_60kHz != nil, ie.scs_120kHz != nil}
+	preambleBits := []bool{ie.Scs_15kHz != nil, ie.Scs_30kHz != nil, ie.Scs_60kHz != nil, ie.Scs_120kHz != nil}
 	for _, bit := range preambleBits {
 		if err = w.WriteBool(bit); err != nil {
 			return err
 		}
 	}
-	if ie.scs_15kHz != nil {
-		if err = ie.scs_15kHz.Encode(w); err != nil {
-			return utils.WrapError("Encode scs_15kHz", err)
+	if ie.Scs_15kHz != nil {
+		if err = ie.Scs_15kHz.Encode(w); err != nil {
+			return utils.WrapError("Encode Scs_15kHz", err)
 		}
 	}
-	if ie.scs_30kHz != nil {
-		if err = ie.scs_30kHz.Encode(w); err != nil {
-			return utils.WrapError("Encode scs_30kHz", err)
+	if ie.Scs_30kHz != nil {
+		if err = ie.Scs_30kHz.Encode(w); err != nil {
+			return utils.WrapError("Encode Scs_30kHz", err)
 		}
 	}
-	if ie.scs_60kHz != nil {
-		if err = ie.scs_60kHz.Encode(w); err != nil {
-			return utils.WrapError("Encode scs_60kHz", err)
+	if ie.Scs_60kHz != nil {
+		if err = ie.Scs_60kHz.Encode(w); err != nil {
+			return utils.WrapError("Encode Scs_60kHz", err)
 		}
 	}
-	if ie.scs_120kHz != nil {
-		if err = ie.scs_120kHz.Encode(w); err != nil {
-			return utils.WrapError("Encode scs_120kHz", err)
+	if ie.Scs_120kHz != nil {
+		if err = ie.Scs_120kHz.Encode(w); err != nil {
+			return utils.WrapError("Encode Scs_120kHz", err)
 		}
 	}
 	return nil
@@ -45,44 +45,44 @@ func (ie *MIMO_ParametersPerBand_ptrs_DensityRecommendationSetDL) Encode(w *uper
 
 func (ie *MIMO_ParametersPerBand_ptrs_DensityRecommendationSetDL) Decode(r *uper.UperReader) error {
 	var err error
-	var scs_15kHzPresent bool
-	if scs_15kHzPresent, err = r.ReadBool(); err != nil {
+	var Scs_15kHzPresent bool
+	if Scs_15kHzPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var scs_30kHzPresent bool
-	if scs_30kHzPresent, err = r.ReadBool(); err != nil {
+	var Scs_30kHzPresent bool
+	if Scs_30kHzPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var scs_60kHzPresent bool
-	if scs_60kHzPresent, err = r.ReadBool(); err != nil {
+	var Scs_60kHzPresent bool
+	if Scs_60kHzPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var scs_120kHzPresent bool
-	if scs_120kHzPresent, err = r.ReadBool(); err != nil {
+	var Scs_120kHzPresent bool
+	if Scs_120kHzPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	if scs_15kHzPresent {
-		ie.scs_15kHz = new(PTRS_DensityRecommendationDL)
-		if err = ie.scs_15kHz.Decode(r); err != nil {
-			return utils.WrapError("Decode scs_15kHz", err)
+	if Scs_15kHzPresent {
+		ie.Scs_15kHz = new(PTRS_DensityRecommendationDL)
+		if err = ie.Scs_15kHz.Decode(r); err != nil {
+			return utils.WrapError("Decode Scs_15kHz", err)
 		}
 	}
-	if scs_30kHzPresent {
-		ie.scs_30kHz = new(PTRS_DensityRecommendationDL)
-		if err = ie.scs_30kHz.Decode(r); err != nil {
-			return utils.WrapError("Decode scs_30kHz", err)
+	if Scs_30kHzPresent {
+		ie.Scs_30kHz = new(PTRS_DensityRecommendationDL)
+		if err = ie.Scs_30kHz.Decode(r); err != nil {
+			return utils.WrapError("Decode Scs_30kHz", err)
 		}
 	}
-	if scs_60kHzPresent {
-		ie.scs_60kHz = new(PTRS_DensityRecommendationDL)
-		if err = ie.scs_60kHz.Decode(r); err != nil {
-			return utils.WrapError("Decode scs_60kHz", err)
+	if Scs_60kHzPresent {
+		ie.Scs_60kHz = new(PTRS_DensityRecommendationDL)
+		if err = ie.Scs_60kHz.Decode(r); err != nil {
+			return utils.WrapError("Decode Scs_60kHz", err)
 		}
 	}
-	if scs_120kHzPresent {
-		ie.scs_120kHz = new(PTRS_DensityRecommendationDL)
-		if err = ie.scs_120kHz.Decode(r); err != nil {
-			return utils.WrapError("Decode scs_120kHz", err)
+	if Scs_120kHzPresent {
+		ie.Scs_120kHz = new(PTRS_DensityRecommendationDL)
+		if err = ie.Scs_120kHz.Decode(r); err != nil {
+			return utils.WrapError("Decode Scs_120kHz", err)
 		}
 	}
 	return nil

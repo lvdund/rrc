@@ -6,30 +6,30 @@ import (
 )
 
 type CrossCarrierSchedulingConfig_schedulingCellInfo_other struct {
-	schedulingCellId     ServCellIndex `madatory`
-	cif_InSchedulingCell int64         `lb:1,ub:7,madatory`
+	SchedulingCellId     ServCellIndex `madatory`
+	Cif_InSchedulingCell int64         `lb:1,ub:7,madatory`
 }
 
 func (ie *CrossCarrierSchedulingConfig_schedulingCellInfo_other) Encode(w *uper.UperWriter) error {
 	var err error
-	if err = ie.schedulingCellId.Encode(w); err != nil {
-		return utils.WrapError("Encode schedulingCellId", err)
+	if err = ie.SchedulingCellId.Encode(w); err != nil {
+		return utils.WrapError("Encode SchedulingCellId", err)
 	}
-	if err = w.WriteInteger(ie.cif_InSchedulingCell, &uper.Constraint{Lb: 1, Ub: 7}, false); err != nil {
-		return utils.WrapError("WriteInteger cif_InSchedulingCell", err)
+	if err = w.WriteInteger(ie.Cif_InSchedulingCell, &uper.Constraint{Lb: 1, Ub: 7}, false); err != nil {
+		return utils.WrapError("WriteInteger Cif_InSchedulingCell", err)
 	}
 	return nil
 }
 
 func (ie *CrossCarrierSchedulingConfig_schedulingCellInfo_other) Decode(r *uper.UperReader) error {
 	var err error
-	if err = ie.schedulingCellId.Decode(r); err != nil {
-		return utils.WrapError("Decode schedulingCellId", err)
+	if err = ie.SchedulingCellId.Decode(r); err != nil {
+		return utils.WrapError("Decode SchedulingCellId", err)
 	}
-	var tmp_int_cif_InSchedulingCell int64
-	if tmp_int_cif_InSchedulingCell, err = r.ReadInteger(&uper.Constraint{Lb: 1, Ub: 7}, false); err != nil {
-		return utils.WrapError("ReadInteger cif_InSchedulingCell", err)
+	var tmp_int_Cif_InSchedulingCell int64
+	if tmp_int_Cif_InSchedulingCell, err = r.ReadInteger(&uper.Constraint{Lb: 1, Ub: 7}, false); err != nil {
+		return utils.WrapError("ReadInteger Cif_InSchedulingCell", err)
 	}
-	ie.cif_InSchedulingCell = tmp_int_cif_InSchedulingCell
+	ie.Cif_InSchedulingCell = tmp_int_Cif_InSchedulingCell
 	return nil
 }

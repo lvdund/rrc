@@ -6,21 +6,21 @@ import (
 )
 
 type SecurityConfigSMC struct {
-	securityAlgorithmConfig SecurityAlgorithmConfig `madatory`
+	SecurityAlgorithmConfig SecurityAlgorithmConfig `madatory`
 }
 
 func (ie *SecurityConfigSMC) Encode(w *uper.UperWriter) error {
 	var err error
-	if err = ie.securityAlgorithmConfig.Encode(w); err != nil {
-		return utils.WrapError("Encode securityAlgorithmConfig", err)
+	if err = ie.SecurityAlgorithmConfig.Encode(w); err != nil {
+		return utils.WrapError("Encode SecurityAlgorithmConfig", err)
 	}
 	return nil
 }
 
 func (ie *SecurityConfigSMC) Decode(r *uper.UperReader) error {
 	var err error
-	if err = ie.securityAlgorithmConfig.Decode(r); err != nil {
-		return utils.WrapError("Decode securityAlgorithmConfig", err)
+	if err = ie.SecurityAlgorithmConfig.Decode(r); err != nil {
+		return utils.WrapError("Decode SecurityAlgorithmConfig", err)
 	}
 	return nil
 }

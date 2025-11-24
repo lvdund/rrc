@@ -8,55 +8,55 @@ import (
 )
 
 type SL_ConfiguredGrantConfig_r16 struct {
-	sl_ConfigIndexCG_r16            SL_ConfigIndexCG_r16                                          `madatory`
-	sl_PeriodCG_r16                 *SL_PeriodCG_r16                                              `optional`
-	sl_NrOfHARQ_Processes_r16       *int64                                                        `lb:1,ub:16,optional`
-	sl_HARQ_ProcID_offset_r16       *int64                                                        `lb:0,ub:15,optional`
-	sl_CG_MaxTransNumList_r16       *SL_CG_MaxTransNumList_r16                                    `optional`
-	rrc_ConfiguredSidelinkGrant_r16 *SL_ConfiguredGrantConfig_r16_rrc_ConfiguredSidelinkGrant_r16 `lb:0,ub:496,optional`
-	sl_N1PUCCH_AN_Type2_r16         *PUCCH_ResourceId                                             `optional,ext-1`
+	Sl_ConfigIndexCG_r16            SL_ConfigIndexCG_r16                                          `madatory`
+	Sl_PeriodCG_r16                 *SL_PeriodCG_r16                                              `optional`
+	Sl_NrOfHARQ_Processes_r16       *int64                                                        `lb:1,ub:16,optional`
+	Sl_HARQ_ProcID_offset_r16       *int64                                                        `lb:0,ub:15,optional`
+	Sl_CG_MaxTransNumList_r16       *SL_CG_MaxTransNumList_r16                                    `optional`
+	Rrc_ConfiguredSidelinkGrant_r16 *SL_ConfiguredGrantConfig_r16_rrc_ConfiguredSidelinkGrant_r16 `lb:0,ub:496,optional`
+	Sl_N1PUCCH_AN_Type2_r16         *PUCCH_ResourceId                                             `optional,ext-1`
 }
 
 func (ie *SL_ConfiguredGrantConfig_r16) Encode(w *uper.UperWriter) error {
 	var err error
-	hasExtensions := ie.sl_N1PUCCH_AN_Type2_r16 != nil
-	preambleBits := []bool{hasExtensions, ie.sl_PeriodCG_r16 != nil, ie.sl_NrOfHARQ_Processes_r16 != nil, ie.sl_HARQ_ProcID_offset_r16 != nil, ie.sl_CG_MaxTransNumList_r16 != nil, ie.rrc_ConfiguredSidelinkGrant_r16 != nil}
+	hasExtensions := ie.Sl_N1PUCCH_AN_Type2_r16 != nil
+	preambleBits := []bool{hasExtensions, ie.Sl_PeriodCG_r16 != nil, ie.Sl_NrOfHARQ_Processes_r16 != nil, ie.Sl_HARQ_ProcID_offset_r16 != nil, ie.Sl_CG_MaxTransNumList_r16 != nil, ie.Rrc_ConfiguredSidelinkGrant_r16 != nil}
 	for _, bit := range preambleBits {
 		if err = w.WriteBool(bit); err != nil {
 			return err
 		}
 	}
-	if err = ie.sl_ConfigIndexCG_r16.Encode(w); err != nil {
-		return utils.WrapError("Encode sl_ConfigIndexCG_r16", err)
+	if err = ie.Sl_ConfigIndexCG_r16.Encode(w); err != nil {
+		return utils.WrapError("Encode Sl_ConfigIndexCG_r16", err)
 	}
-	if ie.sl_PeriodCG_r16 != nil {
-		if err = ie.sl_PeriodCG_r16.Encode(w); err != nil {
-			return utils.WrapError("Encode sl_PeriodCG_r16", err)
+	if ie.Sl_PeriodCG_r16 != nil {
+		if err = ie.Sl_PeriodCG_r16.Encode(w); err != nil {
+			return utils.WrapError("Encode Sl_PeriodCG_r16", err)
 		}
 	}
-	if ie.sl_NrOfHARQ_Processes_r16 != nil {
-		if err = w.WriteInteger(*ie.sl_NrOfHARQ_Processes_r16, &uper.Constraint{Lb: 1, Ub: 16}, false); err != nil {
-			return utils.WrapError("Encode sl_NrOfHARQ_Processes_r16", err)
+	if ie.Sl_NrOfHARQ_Processes_r16 != nil {
+		if err = w.WriteInteger(*ie.Sl_NrOfHARQ_Processes_r16, &uper.Constraint{Lb: 1, Ub: 16}, false); err != nil {
+			return utils.WrapError("Encode Sl_NrOfHARQ_Processes_r16", err)
 		}
 	}
-	if ie.sl_HARQ_ProcID_offset_r16 != nil {
-		if err = w.WriteInteger(*ie.sl_HARQ_ProcID_offset_r16, &uper.Constraint{Lb: 0, Ub: 15}, false); err != nil {
-			return utils.WrapError("Encode sl_HARQ_ProcID_offset_r16", err)
+	if ie.Sl_HARQ_ProcID_offset_r16 != nil {
+		if err = w.WriteInteger(*ie.Sl_HARQ_ProcID_offset_r16, &uper.Constraint{Lb: 0, Ub: 15}, false); err != nil {
+			return utils.WrapError("Encode Sl_HARQ_ProcID_offset_r16", err)
 		}
 	}
-	if ie.sl_CG_MaxTransNumList_r16 != nil {
-		if err = ie.sl_CG_MaxTransNumList_r16.Encode(w); err != nil {
-			return utils.WrapError("Encode sl_CG_MaxTransNumList_r16", err)
+	if ie.Sl_CG_MaxTransNumList_r16 != nil {
+		if err = ie.Sl_CG_MaxTransNumList_r16.Encode(w); err != nil {
+			return utils.WrapError("Encode Sl_CG_MaxTransNumList_r16", err)
 		}
 	}
-	if ie.rrc_ConfiguredSidelinkGrant_r16 != nil {
-		if err = ie.rrc_ConfiguredSidelinkGrant_r16.Encode(w); err != nil {
-			return utils.WrapError("Encode rrc_ConfiguredSidelinkGrant_r16", err)
+	if ie.Rrc_ConfiguredSidelinkGrant_r16 != nil {
+		if err = ie.Rrc_ConfiguredSidelinkGrant_r16.Encode(w); err != nil {
+			return utils.WrapError("Encode Rrc_ConfiguredSidelinkGrant_r16", err)
 		}
 	}
 	if hasExtensions {
 		// Extension bitmap: 1 bits for 1 extension groups
-		extBitmap := []bool{ie.sl_N1PUCCH_AN_Type2_r16 != nil}
+		extBitmap := []bool{ie.Sl_N1PUCCH_AN_Type2_r16 != nil}
 		if err := w.WriteExtBitMap(extBitmap); err != nil {
 			return utils.WrapError("WriteExtBitMap SL_ConfiguredGrantConfig_r16", err)
 		}
@@ -67,17 +67,17 @@ func (ie *SL_ConfiguredGrantConfig_r16) Encode(w *uper.UperWriter) error {
 			extWriter := uper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 1
-			optionals_ext_1 := []bool{ie.sl_N1PUCCH_AN_Type2_r16 != nil}
+			optionals_ext_1 := []bool{ie.Sl_N1PUCCH_AN_Type2_r16 != nil}
 			for _, bit := range optionals_ext_1 {
 				if err := extWriter.WriteBool(bit); err != nil {
 					return err
 				}
 			}
 
-			// encode sl_N1PUCCH_AN_Type2_r16 optional
-			if ie.sl_N1PUCCH_AN_Type2_r16 != nil {
-				if err = ie.sl_N1PUCCH_AN_Type2_r16.Encode(extWriter); err != nil {
-					return utils.WrapError("Encode sl_N1PUCCH_AN_Type2_r16", err)
+			// encode Sl_N1PUCCH_AN_Type2_r16 optional
+			if ie.Sl_N1PUCCH_AN_Type2_r16 != nil {
+				if err = ie.Sl_N1PUCCH_AN_Type2_r16.Encode(extWriter); err != nil {
+					return utils.WrapError("Encode Sl_N1PUCCH_AN_Type2_r16", err)
 				}
 			}
 
@@ -99,59 +99,59 @@ func (ie *SL_ConfiguredGrantConfig_r16) Decode(r *uper.UperReader) error {
 	if extensionBit, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var sl_PeriodCG_r16Present bool
-	if sl_PeriodCG_r16Present, err = r.ReadBool(); err != nil {
+	var Sl_PeriodCG_r16Present bool
+	if Sl_PeriodCG_r16Present, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var sl_NrOfHARQ_Processes_r16Present bool
-	if sl_NrOfHARQ_Processes_r16Present, err = r.ReadBool(); err != nil {
+	var Sl_NrOfHARQ_Processes_r16Present bool
+	if Sl_NrOfHARQ_Processes_r16Present, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var sl_HARQ_ProcID_offset_r16Present bool
-	if sl_HARQ_ProcID_offset_r16Present, err = r.ReadBool(); err != nil {
+	var Sl_HARQ_ProcID_offset_r16Present bool
+	if Sl_HARQ_ProcID_offset_r16Present, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var sl_CG_MaxTransNumList_r16Present bool
-	if sl_CG_MaxTransNumList_r16Present, err = r.ReadBool(); err != nil {
+	var Sl_CG_MaxTransNumList_r16Present bool
+	if Sl_CG_MaxTransNumList_r16Present, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var rrc_ConfiguredSidelinkGrant_r16Present bool
-	if rrc_ConfiguredSidelinkGrant_r16Present, err = r.ReadBool(); err != nil {
+	var Rrc_ConfiguredSidelinkGrant_r16Present bool
+	if Rrc_ConfiguredSidelinkGrant_r16Present, err = r.ReadBool(); err != nil {
 		return err
 	}
-	if err = ie.sl_ConfigIndexCG_r16.Decode(r); err != nil {
-		return utils.WrapError("Decode sl_ConfigIndexCG_r16", err)
+	if err = ie.Sl_ConfigIndexCG_r16.Decode(r); err != nil {
+		return utils.WrapError("Decode Sl_ConfigIndexCG_r16", err)
 	}
-	if sl_PeriodCG_r16Present {
-		ie.sl_PeriodCG_r16 = new(SL_PeriodCG_r16)
-		if err = ie.sl_PeriodCG_r16.Decode(r); err != nil {
-			return utils.WrapError("Decode sl_PeriodCG_r16", err)
+	if Sl_PeriodCG_r16Present {
+		ie.Sl_PeriodCG_r16 = new(SL_PeriodCG_r16)
+		if err = ie.Sl_PeriodCG_r16.Decode(r); err != nil {
+			return utils.WrapError("Decode Sl_PeriodCG_r16", err)
 		}
 	}
-	if sl_NrOfHARQ_Processes_r16Present {
-		var tmp_int_sl_NrOfHARQ_Processes_r16 int64
-		if tmp_int_sl_NrOfHARQ_Processes_r16, err = r.ReadInteger(&uper.Constraint{Lb: 1, Ub: 16}, false); err != nil {
-			return utils.WrapError("Decode sl_NrOfHARQ_Processes_r16", err)
+	if Sl_NrOfHARQ_Processes_r16Present {
+		var tmp_int_Sl_NrOfHARQ_Processes_r16 int64
+		if tmp_int_Sl_NrOfHARQ_Processes_r16, err = r.ReadInteger(&uper.Constraint{Lb: 1, Ub: 16}, false); err != nil {
+			return utils.WrapError("Decode Sl_NrOfHARQ_Processes_r16", err)
 		}
-		ie.sl_NrOfHARQ_Processes_r16 = &tmp_int_sl_NrOfHARQ_Processes_r16
+		ie.Sl_NrOfHARQ_Processes_r16 = &tmp_int_Sl_NrOfHARQ_Processes_r16
 	}
-	if sl_HARQ_ProcID_offset_r16Present {
-		var tmp_int_sl_HARQ_ProcID_offset_r16 int64
-		if tmp_int_sl_HARQ_ProcID_offset_r16, err = r.ReadInteger(&uper.Constraint{Lb: 0, Ub: 15}, false); err != nil {
-			return utils.WrapError("Decode sl_HARQ_ProcID_offset_r16", err)
+	if Sl_HARQ_ProcID_offset_r16Present {
+		var tmp_int_Sl_HARQ_ProcID_offset_r16 int64
+		if tmp_int_Sl_HARQ_ProcID_offset_r16, err = r.ReadInteger(&uper.Constraint{Lb: 0, Ub: 15}, false); err != nil {
+			return utils.WrapError("Decode Sl_HARQ_ProcID_offset_r16", err)
 		}
-		ie.sl_HARQ_ProcID_offset_r16 = &tmp_int_sl_HARQ_ProcID_offset_r16
+		ie.Sl_HARQ_ProcID_offset_r16 = &tmp_int_Sl_HARQ_ProcID_offset_r16
 	}
-	if sl_CG_MaxTransNumList_r16Present {
-		ie.sl_CG_MaxTransNumList_r16 = new(SL_CG_MaxTransNumList_r16)
-		if err = ie.sl_CG_MaxTransNumList_r16.Decode(r); err != nil {
-			return utils.WrapError("Decode sl_CG_MaxTransNumList_r16", err)
+	if Sl_CG_MaxTransNumList_r16Present {
+		ie.Sl_CG_MaxTransNumList_r16 = new(SL_CG_MaxTransNumList_r16)
+		if err = ie.Sl_CG_MaxTransNumList_r16.Decode(r); err != nil {
+			return utils.WrapError("Decode Sl_CG_MaxTransNumList_r16", err)
 		}
 	}
-	if rrc_ConfiguredSidelinkGrant_r16Present {
-		ie.rrc_ConfiguredSidelinkGrant_r16 = new(SL_ConfiguredGrantConfig_r16_rrc_ConfiguredSidelinkGrant_r16)
-		if err = ie.rrc_ConfiguredSidelinkGrant_r16.Decode(r); err != nil {
-			return utils.WrapError("Decode rrc_ConfiguredSidelinkGrant_r16", err)
+	if Rrc_ConfiguredSidelinkGrant_r16Present {
+		ie.Rrc_ConfiguredSidelinkGrant_r16 = new(SL_ConfiguredGrantConfig_r16_rrc_ConfiguredSidelinkGrant_r16)
+		if err = ie.Rrc_ConfiguredSidelinkGrant_r16.Decode(r); err != nil {
+			return utils.WrapError("Decode Rrc_ConfiguredSidelinkGrant_r16", err)
 		}
 	}
 
@@ -171,15 +171,15 @@ func (ie *SL_ConfiguredGrantConfig_r16) Decode(r *uper.UperReader) error {
 
 			extReader := uper.NewReader(bytes.NewReader(extBytes))
 
-			sl_N1PUCCH_AN_Type2_r16Present, err := extReader.ReadBool()
+			Sl_N1PUCCH_AN_Type2_r16Present, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			// decode sl_N1PUCCH_AN_Type2_r16 optional
-			if sl_N1PUCCH_AN_Type2_r16Present {
-				ie.sl_N1PUCCH_AN_Type2_r16 = new(PUCCH_ResourceId)
-				if err = ie.sl_N1PUCCH_AN_Type2_r16.Decode(extReader); err != nil {
-					return utils.WrapError("Decode sl_N1PUCCH_AN_Type2_r16", err)
+			// decode Sl_N1PUCCH_AN_Type2_r16 optional
+			if Sl_N1PUCCH_AN_Type2_r16Present {
+				ie.Sl_N1PUCCH_AN_Type2_r16 = new(PUCCH_ResourceId)
+				if err = ie.Sl_N1PUCCH_AN_Type2_r16.Decode(extReader); err != nil {
+					return utils.WrapError("Decode Sl_N1PUCCH_AN_Type2_r16", err)
 				}
 			}
 		}

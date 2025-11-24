@@ -9,18 +9,18 @@ import (
 
 const (
 	NR_TimeStamp_r17_nr_Slot_r17_Choice_nothing uint64 = iota
-	NR_TimeStamp_r17_nr_Slot_r17_Choice_scs15_r17
-	NR_TimeStamp_r17_nr_Slot_r17_Choice_scs30_r17
-	NR_TimeStamp_r17_nr_Slot_r17_Choice_scs60_r17
-	NR_TimeStamp_r17_nr_Slot_r17_Choice_scs120_r17
+	NR_TimeStamp_r17_nr_Slot_r17_Choice_Scs15_r17
+	NR_TimeStamp_r17_nr_Slot_r17_Choice_Scs30_r17
+	NR_TimeStamp_r17_nr_Slot_r17_Choice_Scs60_r17
+	NR_TimeStamp_r17_nr_Slot_r17_Choice_Scs120_r17
 )
 
 type NR_TimeStamp_r17_nr_Slot_r17 struct {
 	Choice     uint64
-	scs15_r17  int64 `lb:0,ub:9,madatory`
-	scs30_r17  int64 `lb:0,ub:19,madatory`
-	scs60_r17  int64 `lb:0,ub:39,madatory`
-	scs120_r17 int64 `lb:0,ub:79,madatory`
+	Scs15_r17  int64 `lb:0,ub:9,madatory`
+	Scs30_r17  int64 `lb:0,ub:19,madatory`
+	Scs60_r17  int64 `lb:0,ub:39,madatory`
+	Scs120_r17 int64 `lb:0,ub:79,madatory`
 }
 
 func (ie *NR_TimeStamp_r17_nr_Slot_r17) Encode(w *uper.UperWriter) error {
@@ -29,21 +29,21 @@ func (ie *NR_TimeStamp_r17_nr_Slot_r17) Encode(w *uper.UperWriter) error {
 		return err
 	}
 	switch ie.Choice {
-	case NR_TimeStamp_r17_nr_Slot_r17_Choice_scs15_r17:
-		if err = w.WriteInteger(int64(ie.scs15_r17), &uper.Constraint{Lb: 0, Ub: 9}, false); err != nil {
-			err = utils.WrapError("Encode scs15_r17", err)
+	case NR_TimeStamp_r17_nr_Slot_r17_Choice_Scs15_r17:
+		if err = w.WriteInteger(int64(ie.Scs15_r17), &uper.Constraint{Lb: 0, Ub: 9}, false); err != nil {
+			err = utils.WrapError("Encode Scs15_r17", err)
 		}
-	case NR_TimeStamp_r17_nr_Slot_r17_Choice_scs30_r17:
-		if err = w.WriteInteger(int64(ie.scs30_r17), &uper.Constraint{Lb: 0, Ub: 19}, false); err != nil {
-			err = utils.WrapError("Encode scs30_r17", err)
+	case NR_TimeStamp_r17_nr_Slot_r17_Choice_Scs30_r17:
+		if err = w.WriteInteger(int64(ie.Scs30_r17), &uper.Constraint{Lb: 0, Ub: 19}, false); err != nil {
+			err = utils.WrapError("Encode Scs30_r17", err)
 		}
-	case NR_TimeStamp_r17_nr_Slot_r17_Choice_scs60_r17:
-		if err = w.WriteInteger(int64(ie.scs60_r17), &uper.Constraint{Lb: 0, Ub: 39}, false); err != nil {
-			err = utils.WrapError("Encode scs60_r17", err)
+	case NR_TimeStamp_r17_nr_Slot_r17_Choice_Scs60_r17:
+		if err = w.WriteInteger(int64(ie.Scs60_r17), &uper.Constraint{Lb: 0, Ub: 39}, false); err != nil {
+			err = utils.WrapError("Encode Scs60_r17", err)
 		}
-	case NR_TimeStamp_r17_nr_Slot_r17_Choice_scs120_r17:
-		if err = w.WriteInteger(int64(ie.scs120_r17), &uper.Constraint{Lb: 0, Ub: 79}, false); err != nil {
-			err = utils.WrapError("Encode scs120_r17", err)
+	case NR_TimeStamp_r17_nr_Slot_r17_Choice_Scs120_r17:
+		if err = w.WriteInteger(int64(ie.Scs120_r17), &uper.Constraint{Lb: 0, Ub: 79}, false); err != nil {
+			err = utils.WrapError("Encode Scs120_r17", err)
 		}
 	default:
 		err = fmt.Errorf("invalid choice: %d", ie.Choice)
@@ -57,30 +57,30 @@ func (ie *NR_TimeStamp_r17_nr_Slot_r17) Decode(r *uper.UperReader) error {
 		return err
 	}
 	switch ie.Choice {
-	case NR_TimeStamp_r17_nr_Slot_r17_Choice_scs15_r17:
-		var tmp_int_scs15_r17 int64
-		if tmp_int_scs15_r17, err = r.ReadInteger(&uper.Constraint{Lb: 0, Ub: 9}, false); err != nil {
-			return utils.WrapError("Decode scs15_r17", err)
+	case NR_TimeStamp_r17_nr_Slot_r17_Choice_Scs15_r17:
+		var tmp_int_Scs15_r17 int64
+		if tmp_int_Scs15_r17, err = r.ReadInteger(&uper.Constraint{Lb: 0, Ub: 9}, false); err != nil {
+			return utils.WrapError("Decode Scs15_r17", err)
 		}
-		ie.scs15_r17 = tmp_int_scs15_r17
-	case NR_TimeStamp_r17_nr_Slot_r17_Choice_scs30_r17:
-		var tmp_int_scs30_r17 int64
-		if tmp_int_scs30_r17, err = r.ReadInteger(&uper.Constraint{Lb: 0, Ub: 19}, false); err != nil {
-			return utils.WrapError("Decode scs30_r17", err)
+		ie.Scs15_r17 = tmp_int_Scs15_r17
+	case NR_TimeStamp_r17_nr_Slot_r17_Choice_Scs30_r17:
+		var tmp_int_Scs30_r17 int64
+		if tmp_int_Scs30_r17, err = r.ReadInteger(&uper.Constraint{Lb: 0, Ub: 19}, false); err != nil {
+			return utils.WrapError("Decode Scs30_r17", err)
 		}
-		ie.scs30_r17 = tmp_int_scs30_r17
-	case NR_TimeStamp_r17_nr_Slot_r17_Choice_scs60_r17:
-		var tmp_int_scs60_r17 int64
-		if tmp_int_scs60_r17, err = r.ReadInteger(&uper.Constraint{Lb: 0, Ub: 39}, false); err != nil {
-			return utils.WrapError("Decode scs60_r17", err)
+		ie.Scs30_r17 = tmp_int_Scs30_r17
+	case NR_TimeStamp_r17_nr_Slot_r17_Choice_Scs60_r17:
+		var tmp_int_Scs60_r17 int64
+		if tmp_int_Scs60_r17, err = r.ReadInteger(&uper.Constraint{Lb: 0, Ub: 39}, false); err != nil {
+			return utils.WrapError("Decode Scs60_r17", err)
 		}
-		ie.scs60_r17 = tmp_int_scs60_r17
-	case NR_TimeStamp_r17_nr_Slot_r17_Choice_scs120_r17:
-		var tmp_int_scs120_r17 int64
-		if tmp_int_scs120_r17, err = r.ReadInteger(&uper.Constraint{Lb: 0, Ub: 79}, false); err != nil {
-			return utils.WrapError("Decode scs120_r17", err)
+		ie.Scs60_r17 = tmp_int_Scs60_r17
+	case NR_TimeStamp_r17_nr_Slot_r17_Choice_Scs120_r17:
+		var tmp_int_Scs120_r17 int64
+		if tmp_int_Scs120_r17, err = r.ReadInteger(&uper.Constraint{Lb: 0, Ub: 79}, false); err != nil {
+			return utils.WrapError("Decode Scs120_r17", err)
 		}
-		ie.scs120_r17 = tmp_int_scs120_r17
+		ie.Scs120_r17 = tmp_int_Scs120_r17
 	default:
 		return fmt.Errorf("invalid choice: %d", ie.Choice)
 	}

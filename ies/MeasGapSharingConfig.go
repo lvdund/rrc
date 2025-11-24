@@ -8,31 +8,31 @@ import (
 )
 
 type MeasGapSharingConfig struct {
-	gapSharingFR2 *MeasGapSharingScheme `optional,setuprelease`
-	gapSharingFR1 *MeasGapSharingScheme `optional,ext-1,setuprelease`
-	gapSharingUE  *MeasGapSharingScheme `optional,ext-1,setuprelease`
+	GapSharingFR2 *MeasGapSharingScheme `optional,setuprelease`
+	GapSharingFR1 *MeasGapSharingScheme `optional,ext-1,setuprelease`
+	GapSharingUE  *MeasGapSharingScheme `optional,ext-1,setuprelease`
 }
 
 func (ie *MeasGapSharingConfig) Encode(w *uper.UperWriter) error {
 	var err error
-	hasExtensions := ie.gapSharingFR1 != nil || ie.gapSharingUE != nil
-	preambleBits := []bool{hasExtensions, ie.gapSharingFR2 != nil}
+	hasExtensions := ie.GapSharingFR1 != nil || ie.GapSharingUE != nil
+	preambleBits := []bool{hasExtensions, ie.GapSharingFR2 != nil}
 	for _, bit := range preambleBits {
 		if err = w.WriteBool(bit); err != nil {
 			return err
 		}
 	}
-	if ie.gapSharingFR2 != nil {
-		tmp_gapSharingFR2 := utils.SetupRelease[*MeasGapSharingScheme]{
-			Setup: ie.gapSharingFR2,
+	if ie.GapSharingFR2 != nil {
+		tmp_GapSharingFR2 := utils.SetupRelease[*MeasGapSharingScheme]{
+			Setup: ie.GapSharingFR2,
 		}
-		if err = tmp_gapSharingFR2.Encode(w); err != nil {
-			return utils.WrapError("Encode gapSharingFR2", err)
+		if err = tmp_GapSharingFR2.Encode(w); err != nil {
+			return utils.WrapError("Encode GapSharingFR2", err)
 		}
 	}
 	if hasExtensions {
 		// Extension bitmap: 1 bits for 1 extension groups
-		extBitmap := []bool{ie.gapSharingFR1 != nil || ie.gapSharingUE != nil}
+		extBitmap := []bool{ie.GapSharingFR1 != nil || ie.GapSharingUE != nil}
 		if err := w.WriteExtBitMap(extBitmap); err != nil {
 			return utils.WrapError("WriteExtBitMap MeasGapSharingConfig", err)
 		}
@@ -43,29 +43,29 @@ func (ie *MeasGapSharingConfig) Encode(w *uper.UperWriter) error {
 			extWriter := uper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 1
-			optionals_ext_1 := []bool{ie.gapSharingFR1 != nil, ie.gapSharingUE != nil}
+			optionals_ext_1 := []bool{ie.GapSharingFR1 != nil, ie.GapSharingUE != nil}
 			for _, bit := range optionals_ext_1 {
 				if err := extWriter.WriteBool(bit); err != nil {
 					return err
 				}
 			}
 
-			// encode gapSharingFR1 optional
-			if ie.gapSharingFR1 != nil {
-				tmp_gapSharingFR1 := utils.SetupRelease[*MeasGapSharingScheme]{
-					Setup: ie.gapSharingFR1,
+			// encode GapSharingFR1 optional
+			if ie.GapSharingFR1 != nil {
+				tmp_GapSharingFR1 := utils.SetupRelease[*MeasGapSharingScheme]{
+					Setup: ie.GapSharingFR1,
 				}
-				if err = tmp_gapSharingFR1.Encode(extWriter); err != nil {
-					return utils.WrapError("Encode gapSharingFR1", err)
+				if err = tmp_GapSharingFR1.Encode(extWriter); err != nil {
+					return utils.WrapError("Encode GapSharingFR1", err)
 				}
 			}
-			// encode gapSharingUE optional
-			if ie.gapSharingUE != nil {
-				tmp_gapSharingUE := utils.SetupRelease[*MeasGapSharingScheme]{
-					Setup: ie.gapSharingUE,
+			// encode GapSharingUE optional
+			if ie.GapSharingUE != nil {
+				tmp_GapSharingUE := utils.SetupRelease[*MeasGapSharingScheme]{
+					Setup: ie.GapSharingUE,
 				}
-				if err = tmp_gapSharingUE.Encode(extWriter); err != nil {
-					return utils.WrapError("Encode gapSharingUE", err)
+				if err = tmp_GapSharingUE.Encode(extWriter); err != nil {
+					return utils.WrapError("Encode GapSharingUE", err)
 				}
 			}
 
@@ -87,16 +87,16 @@ func (ie *MeasGapSharingConfig) Decode(r *uper.UperReader) error {
 	if extensionBit, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var gapSharingFR2Present bool
-	if gapSharingFR2Present, err = r.ReadBool(); err != nil {
+	var GapSharingFR2Present bool
+	if GapSharingFR2Present, err = r.ReadBool(); err != nil {
 		return err
 	}
-	if gapSharingFR2Present {
-		tmp_gapSharingFR2 := utils.SetupRelease[*MeasGapSharingScheme]{}
-		if err = tmp_gapSharingFR2.Decode(r); err != nil {
-			return utils.WrapError("Decode gapSharingFR2", err)
+	if GapSharingFR2Present {
+		tmp_GapSharingFR2 := utils.SetupRelease[*MeasGapSharingScheme]{}
+		if err = tmp_GapSharingFR2.Decode(r); err != nil {
+			return utils.WrapError("Decode GapSharingFR2", err)
 		}
-		ie.gapSharingFR2 = tmp_gapSharingFR2.Setup
+		ie.GapSharingFR2 = tmp_GapSharingFR2.Setup
 	}
 
 	if extensionBit {
@@ -115,29 +115,29 @@ func (ie *MeasGapSharingConfig) Decode(r *uper.UperReader) error {
 
 			extReader := uper.NewReader(bytes.NewReader(extBytes))
 
-			gapSharingFR1Present, err := extReader.ReadBool()
+			GapSharingFR1Present, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			gapSharingUEPresent, err := extReader.ReadBool()
+			GapSharingUEPresent, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			// decode gapSharingFR1 optional
-			if gapSharingFR1Present {
-				tmp_gapSharingFR1 := utils.SetupRelease[*MeasGapSharingScheme]{}
-				if err = tmp_gapSharingFR1.Decode(extReader); err != nil {
-					return utils.WrapError("Decode gapSharingFR1", err)
+			// decode GapSharingFR1 optional
+			if GapSharingFR1Present {
+				tmp_GapSharingFR1 := utils.SetupRelease[*MeasGapSharingScheme]{}
+				if err = tmp_GapSharingFR1.Decode(extReader); err != nil {
+					return utils.WrapError("Decode GapSharingFR1", err)
 				}
-				ie.gapSharingFR1 = tmp_gapSharingFR1.Setup
+				ie.GapSharingFR1 = tmp_GapSharingFR1.Setup
 			}
-			// decode gapSharingUE optional
-			if gapSharingUEPresent {
-				tmp_gapSharingUE := utils.SetupRelease[*MeasGapSharingScheme]{}
-				if err = tmp_gapSharingUE.Decode(extReader); err != nil {
-					return utils.WrapError("Decode gapSharingUE", err)
+			// decode GapSharingUE optional
+			if GapSharingUEPresent {
+				tmp_GapSharingUE := utils.SetupRelease[*MeasGapSharingScheme]{}
+				if err = tmp_GapSharingUE.Decode(extReader); err != nil {
+					return utils.WrapError("Decode GapSharingUE", err)
 				}
-				ie.gapSharingUE = tmp_gapSharingUE.Setup
+				ie.GapSharingUE = tmp_GapSharingUE.Setup
 			}
 		}
 	}

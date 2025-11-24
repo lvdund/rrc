@@ -9,14 +9,14 @@ import (
 
 const (
 	PUSCH_Config_frequencyHoppingDCI_0_2_r16_Choice_nothing uint64 = iota
-	PUSCH_Config_frequencyHoppingDCI_0_2_r16_Choice_pusch_RepTypeA
-	PUSCH_Config_frequencyHoppingDCI_0_2_r16_Choice_pusch_RepTypeB
+	PUSCH_Config_frequencyHoppingDCI_0_2_r16_Choice_Pusch_RepTypeA
+	PUSCH_Config_frequencyHoppingDCI_0_2_r16_Choice_Pusch_RepTypeB
 )
 
 type PUSCH_Config_frequencyHoppingDCI_0_2_r16 struct {
 	Choice         uint64
-	pusch_RepTypeA *PUSCH_Config_frequencyHoppingDCI_0_2_r16_pusch_RepTypeA
-	pusch_RepTypeB *PUSCH_Config_frequencyHoppingDCI_0_2_r16_pusch_RepTypeB
+	Pusch_RepTypeA *PUSCH_Config_frequencyHoppingDCI_0_2_r16_pusch_RepTypeA
+	Pusch_RepTypeB *PUSCH_Config_frequencyHoppingDCI_0_2_r16_pusch_RepTypeB
 }
 
 func (ie *PUSCH_Config_frequencyHoppingDCI_0_2_r16) Encode(w *uper.UperWriter) error {
@@ -25,13 +25,13 @@ func (ie *PUSCH_Config_frequencyHoppingDCI_0_2_r16) Encode(w *uper.UperWriter) e
 		return err
 	}
 	switch ie.Choice {
-	case PUSCH_Config_frequencyHoppingDCI_0_2_r16_Choice_pusch_RepTypeA:
-		if err = ie.pusch_RepTypeA.Encode(w); err != nil {
-			err = utils.WrapError("Encode pusch_RepTypeA", err)
+	case PUSCH_Config_frequencyHoppingDCI_0_2_r16_Choice_Pusch_RepTypeA:
+		if err = ie.Pusch_RepTypeA.Encode(w); err != nil {
+			err = utils.WrapError("Encode Pusch_RepTypeA", err)
 		}
-	case PUSCH_Config_frequencyHoppingDCI_0_2_r16_Choice_pusch_RepTypeB:
-		if err = ie.pusch_RepTypeB.Encode(w); err != nil {
-			err = utils.WrapError("Encode pusch_RepTypeB", err)
+	case PUSCH_Config_frequencyHoppingDCI_0_2_r16_Choice_Pusch_RepTypeB:
+		if err = ie.Pusch_RepTypeB.Encode(w); err != nil {
+			err = utils.WrapError("Encode Pusch_RepTypeB", err)
 		}
 	default:
 		err = fmt.Errorf("invalid choice: %d", ie.Choice)
@@ -45,15 +45,15 @@ func (ie *PUSCH_Config_frequencyHoppingDCI_0_2_r16) Decode(r *uper.UperReader) e
 		return err
 	}
 	switch ie.Choice {
-	case PUSCH_Config_frequencyHoppingDCI_0_2_r16_Choice_pusch_RepTypeA:
-		ie.pusch_RepTypeA = new(PUSCH_Config_frequencyHoppingDCI_0_2_r16_pusch_RepTypeA)
-		if err = ie.pusch_RepTypeA.Decode(r); err != nil {
-			return utils.WrapError("Decode pusch_RepTypeA", err)
+	case PUSCH_Config_frequencyHoppingDCI_0_2_r16_Choice_Pusch_RepTypeA:
+		ie.Pusch_RepTypeA = new(PUSCH_Config_frequencyHoppingDCI_0_2_r16_pusch_RepTypeA)
+		if err = ie.Pusch_RepTypeA.Decode(r); err != nil {
+			return utils.WrapError("Decode Pusch_RepTypeA", err)
 		}
-	case PUSCH_Config_frequencyHoppingDCI_0_2_r16_Choice_pusch_RepTypeB:
-		ie.pusch_RepTypeB = new(PUSCH_Config_frequencyHoppingDCI_0_2_r16_pusch_RepTypeB)
-		if err = ie.pusch_RepTypeB.Decode(r); err != nil {
-			return utils.WrapError("Decode pusch_RepTypeB", err)
+	case PUSCH_Config_frequencyHoppingDCI_0_2_r16_Choice_Pusch_RepTypeB:
+		ie.Pusch_RepTypeB = new(PUSCH_Config_frequencyHoppingDCI_0_2_r16_pusch_RepTypeB)
+		if err = ie.Pusch_RepTypeB.Decode(r); err != nil {
+			return utils.WrapError("Decode Pusch_RepTypeB", err)
 		}
 	default:
 		return fmt.Errorf("invalid choice: %d", ie.Choice)

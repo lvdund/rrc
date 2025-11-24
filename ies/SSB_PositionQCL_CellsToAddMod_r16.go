@@ -6,28 +6,28 @@ import (
 )
 
 type SSB_PositionQCL_CellsToAddMod_r16 struct {
-	physCellId_r16      PhysCellId                   `madatory`
-	ssb_PositionQCL_r16 SSB_PositionQCL_Relation_r16 `madatory`
+	PhysCellId_r16      PhysCellId                   `madatory`
+	Ssb_PositionQCL_r16 SSB_PositionQCL_Relation_r16 `madatory`
 }
 
 func (ie *SSB_PositionQCL_CellsToAddMod_r16) Encode(w *uper.UperWriter) error {
 	var err error
-	if err = ie.physCellId_r16.Encode(w); err != nil {
-		return utils.WrapError("Encode physCellId_r16", err)
+	if err = ie.PhysCellId_r16.Encode(w); err != nil {
+		return utils.WrapError("Encode PhysCellId_r16", err)
 	}
-	if err = ie.ssb_PositionQCL_r16.Encode(w); err != nil {
-		return utils.WrapError("Encode ssb_PositionQCL_r16", err)
+	if err = ie.Ssb_PositionQCL_r16.Encode(w); err != nil {
+		return utils.WrapError("Encode Ssb_PositionQCL_r16", err)
 	}
 	return nil
 }
 
 func (ie *SSB_PositionQCL_CellsToAddMod_r16) Decode(r *uper.UperReader) error {
 	var err error
-	if err = ie.physCellId_r16.Decode(r); err != nil {
-		return utils.WrapError("Decode physCellId_r16", err)
+	if err = ie.PhysCellId_r16.Decode(r); err != nil {
+		return utils.WrapError("Decode PhysCellId_r16", err)
 	}
-	if err = ie.ssb_PositionQCL_r16.Decode(r); err != nil {
-		return utils.WrapError("Decode ssb_PositionQCL_r16", err)
+	if err = ie.Ssb_PositionQCL_r16.Decode(r); err != nil {
+		return utils.WrapError("Decode Ssb_PositionQCL_r16", err)
 	}
 	return nil
 }

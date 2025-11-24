@@ -6,26 +6,26 @@ import (
 )
 
 type CG_ConfigInfo_v1620_IEs struct {
-	ueAssistanceInformationSourceSCG_r16 *[]byte                  `optional`
-	nonCriticalExtension                 *CG_ConfigInfo_v1640_IEs `optional`
+	UeAssistanceInformationSourceSCG_r16 *[]byte                  `optional`
+	NonCriticalExtension                 *CG_ConfigInfo_v1640_IEs `optional`
 }
 
 func (ie *CG_ConfigInfo_v1620_IEs) Encode(w *uper.UperWriter) error {
 	var err error
-	preambleBits := []bool{ie.ueAssistanceInformationSourceSCG_r16 != nil, ie.nonCriticalExtension != nil}
+	preambleBits := []bool{ie.UeAssistanceInformationSourceSCG_r16 != nil, ie.NonCriticalExtension != nil}
 	for _, bit := range preambleBits {
 		if err = w.WriteBool(bit); err != nil {
 			return err
 		}
 	}
-	if ie.ueAssistanceInformationSourceSCG_r16 != nil {
-		if err = w.WriteOctetString(*ie.ueAssistanceInformationSourceSCG_r16, &uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
-			return utils.WrapError("Encode ueAssistanceInformationSourceSCG_r16", err)
+	if ie.UeAssistanceInformationSourceSCG_r16 != nil {
+		if err = w.WriteOctetString(*ie.UeAssistanceInformationSourceSCG_r16, &uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+			return utils.WrapError("Encode UeAssistanceInformationSourceSCG_r16", err)
 		}
 	}
-	if ie.nonCriticalExtension != nil {
-		if err = ie.nonCriticalExtension.Encode(w); err != nil {
-			return utils.WrapError("Encode nonCriticalExtension", err)
+	if ie.NonCriticalExtension != nil {
+		if err = ie.NonCriticalExtension.Encode(w); err != nil {
+			return utils.WrapError("Encode NonCriticalExtension", err)
 		}
 	}
 	return nil
@@ -33,25 +33,25 @@ func (ie *CG_ConfigInfo_v1620_IEs) Encode(w *uper.UperWriter) error {
 
 func (ie *CG_ConfigInfo_v1620_IEs) Decode(r *uper.UperReader) error {
 	var err error
-	var ueAssistanceInformationSourceSCG_r16Present bool
-	if ueAssistanceInformationSourceSCG_r16Present, err = r.ReadBool(); err != nil {
+	var UeAssistanceInformationSourceSCG_r16Present bool
+	if UeAssistanceInformationSourceSCG_r16Present, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var nonCriticalExtensionPresent bool
-	if nonCriticalExtensionPresent, err = r.ReadBool(); err != nil {
+	var NonCriticalExtensionPresent bool
+	if NonCriticalExtensionPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	if ueAssistanceInformationSourceSCG_r16Present {
-		var tmp_os_ueAssistanceInformationSourceSCG_r16 []byte
-		if tmp_os_ueAssistanceInformationSourceSCG_r16, err = r.ReadOctetString(&uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
-			return utils.WrapError("Decode ueAssistanceInformationSourceSCG_r16", err)
+	if UeAssistanceInformationSourceSCG_r16Present {
+		var tmp_os_UeAssistanceInformationSourceSCG_r16 []byte
+		if tmp_os_UeAssistanceInformationSourceSCG_r16, err = r.ReadOctetString(&uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+			return utils.WrapError("Decode UeAssistanceInformationSourceSCG_r16", err)
 		}
-		ie.ueAssistanceInformationSourceSCG_r16 = &tmp_os_ueAssistanceInformationSourceSCG_r16
+		ie.UeAssistanceInformationSourceSCG_r16 = &tmp_os_UeAssistanceInformationSourceSCG_r16
 	}
-	if nonCriticalExtensionPresent {
-		ie.nonCriticalExtension = new(CG_ConfigInfo_v1640_IEs)
-		if err = ie.nonCriticalExtension.Decode(r); err != nil {
-			return utils.WrapError("Decode nonCriticalExtension", err)
+	if NonCriticalExtensionPresent {
+		ie.NonCriticalExtension = new(CG_ConfigInfo_v1640_IEs)
+		if err = ie.NonCriticalExtension.Decode(r); err != nil {
+			return utils.WrapError("Decode NonCriticalExtension", err)
 		}
 	}
 	return nil

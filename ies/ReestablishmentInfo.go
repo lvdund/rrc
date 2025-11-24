@@ -6,28 +6,28 @@ import (
 )
 
 type ReestablishmentInfo struct {
-	sourcePhysCellId          PhysCellId            `madatory`
-	targetCellShortMAC_I      ShortMAC_I            `madatory`
-	additionalReestabInfoList *ReestabNCellInfoList `optional`
+	SourcePhysCellId          PhysCellId            `madatory`
+	TargetCellShortMAC_I      ShortMAC_I            `madatory`
+	AdditionalReestabInfoList *ReestabNCellInfoList `optional`
 }
 
 func (ie *ReestablishmentInfo) Encode(w *uper.UperWriter) error {
 	var err error
-	preambleBits := []bool{ie.additionalReestabInfoList != nil}
+	preambleBits := []bool{ie.AdditionalReestabInfoList != nil}
 	for _, bit := range preambleBits {
 		if err = w.WriteBool(bit); err != nil {
 			return err
 		}
 	}
-	if err = ie.sourcePhysCellId.Encode(w); err != nil {
-		return utils.WrapError("Encode sourcePhysCellId", err)
+	if err = ie.SourcePhysCellId.Encode(w); err != nil {
+		return utils.WrapError("Encode SourcePhysCellId", err)
 	}
-	if err = ie.targetCellShortMAC_I.Encode(w); err != nil {
-		return utils.WrapError("Encode targetCellShortMAC_I", err)
+	if err = ie.TargetCellShortMAC_I.Encode(w); err != nil {
+		return utils.WrapError("Encode TargetCellShortMAC_I", err)
 	}
-	if ie.additionalReestabInfoList != nil {
-		if err = ie.additionalReestabInfoList.Encode(w); err != nil {
-			return utils.WrapError("Encode additionalReestabInfoList", err)
+	if ie.AdditionalReestabInfoList != nil {
+		if err = ie.AdditionalReestabInfoList.Encode(w); err != nil {
+			return utils.WrapError("Encode AdditionalReestabInfoList", err)
 		}
 	}
 	return nil
@@ -35,20 +35,20 @@ func (ie *ReestablishmentInfo) Encode(w *uper.UperWriter) error {
 
 func (ie *ReestablishmentInfo) Decode(r *uper.UperReader) error {
 	var err error
-	var additionalReestabInfoListPresent bool
-	if additionalReestabInfoListPresent, err = r.ReadBool(); err != nil {
+	var AdditionalReestabInfoListPresent bool
+	if AdditionalReestabInfoListPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	if err = ie.sourcePhysCellId.Decode(r); err != nil {
-		return utils.WrapError("Decode sourcePhysCellId", err)
+	if err = ie.SourcePhysCellId.Decode(r); err != nil {
+		return utils.WrapError("Decode SourcePhysCellId", err)
 	}
-	if err = ie.targetCellShortMAC_I.Decode(r); err != nil {
-		return utils.WrapError("Decode targetCellShortMAC_I", err)
+	if err = ie.TargetCellShortMAC_I.Decode(r); err != nil {
+		return utils.WrapError("Decode TargetCellShortMAC_I", err)
 	}
-	if additionalReestabInfoListPresent {
-		ie.additionalReestabInfoList = new(ReestabNCellInfoList)
-		if err = ie.additionalReestabInfoList.Decode(r); err != nil {
-			return utils.WrapError("Decode additionalReestabInfoList", err)
+	if AdditionalReestabInfoListPresent {
+		ie.AdditionalReestabInfoList = new(ReestabNCellInfoList)
+		if err = ie.AdditionalReestabInfoList.Decode(r); err != nil {
+			return utils.WrapError("Decode AdditionalReestabInfoList", err)
 		}
 	}
 	return nil

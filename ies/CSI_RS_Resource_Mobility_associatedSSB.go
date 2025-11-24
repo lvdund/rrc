@@ -6,30 +6,30 @@ import (
 )
 
 type CSI_RS_Resource_Mobility_associatedSSB struct {
-	ssb_Index        SSB_Index `madatory`
-	isQuasiColocated bool      `madatory`
+	Ssb_Index        SSB_Index `madatory`
+	IsQuasiColocated bool      `madatory`
 }
 
 func (ie *CSI_RS_Resource_Mobility_associatedSSB) Encode(w *uper.UperWriter) error {
 	var err error
-	if err = ie.ssb_Index.Encode(w); err != nil {
-		return utils.WrapError("Encode ssb_Index", err)
+	if err = ie.Ssb_Index.Encode(w); err != nil {
+		return utils.WrapError("Encode Ssb_Index", err)
 	}
-	if err = w.WriteBoolean(ie.isQuasiColocated); err != nil {
-		return utils.WrapError("WriteBoolean isQuasiColocated", err)
+	if err = w.WriteBoolean(ie.IsQuasiColocated); err != nil {
+		return utils.WrapError("WriteBoolean IsQuasiColocated", err)
 	}
 	return nil
 }
 
 func (ie *CSI_RS_Resource_Mobility_associatedSSB) Decode(r *uper.UperReader) error {
 	var err error
-	if err = ie.ssb_Index.Decode(r); err != nil {
-		return utils.WrapError("Decode ssb_Index", err)
+	if err = ie.Ssb_Index.Decode(r); err != nil {
+		return utils.WrapError("Decode Ssb_Index", err)
 	}
-	var tmp_bool_isQuasiColocated bool
-	if tmp_bool_isQuasiColocated, err = r.ReadBoolean(); err != nil {
-		return utils.WrapError("ReadBoolean isQuasiColocated", err)
+	var tmp_bool_IsQuasiColocated bool
+	if tmp_bool_IsQuasiColocated, err = r.ReadBoolean(); err != nil {
+		return utils.WrapError("ReadBoolean IsQuasiColocated", err)
 	}
-	ie.isQuasiColocated = tmp_bool_isQuasiColocated
+	ie.IsQuasiColocated = tmp_bool_IsQuasiColocated
 	return nil
 }

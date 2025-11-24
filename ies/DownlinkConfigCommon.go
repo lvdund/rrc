@@ -8,33 +8,33 @@ import (
 )
 
 type DownlinkConfigCommon struct {
-	frequencyInfoDL               *FrequencyInfoDL    `optional`
-	initialDownlinkBWP            *BWP_DownlinkCommon `optional`
-	initialDownlinkBWP_RedCap_r17 *BWP_DownlinkCommon `optional,ext-1`
+	FrequencyInfoDL               *FrequencyInfoDL    `optional`
+	InitialDownlinkBWP            *BWP_DownlinkCommon `optional`
+	InitialDownlinkBWP_RedCap_r17 *BWP_DownlinkCommon `optional,ext-1`
 }
 
 func (ie *DownlinkConfigCommon) Encode(w *uper.UperWriter) error {
 	var err error
-	hasExtensions := ie.initialDownlinkBWP_RedCap_r17 != nil
-	preambleBits := []bool{hasExtensions, ie.frequencyInfoDL != nil, ie.initialDownlinkBWP != nil}
+	hasExtensions := ie.InitialDownlinkBWP_RedCap_r17 != nil
+	preambleBits := []bool{hasExtensions, ie.FrequencyInfoDL != nil, ie.InitialDownlinkBWP != nil}
 	for _, bit := range preambleBits {
 		if err = w.WriteBool(bit); err != nil {
 			return err
 		}
 	}
-	if ie.frequencyInfoDL != nil {
-		if err = ie.frequencyInfoDL.Encode(w); err != nil {
-			return utils.WrapError("Encode frequencyInfoDL", err)
+	if ie.FrequencyInfoDL != nil {
+		if err = ie.FrequencyInfoDL.Encode(w); err != nil {
+			return utils.WrapError("Encode FrequencyInfoDL", err)
 		}
 	}
-	if ie.initialDownlinkBWP != nil {
-		if err = ie.initialDownlinkBWP.Encode(w); err != nil {
-			return utils.WrapError("Encode initialDownlinkBWP", err)
+	if ie.InitialDownlinkBWP != nil {
+		if err = ie.InitialDownlinkBWP.Encode(w); err != nil {
+			return utils.WrapError("Encode InitialDownlinkBWP", err)
 		}
 	}
 	if hasExtensions {
 		// Extension bitmap: 1 bits for 1 extension groups
-		extBitmap := []bool{ie.initialDownlinkBWP_RedCap_r17 != nil}
+		extBitmap := []bool{ie.InitialDownlinkBWP_RedCap_r17 != nil}
 		if err := w.WriteExtBitMap(extBitmap); err != nil {
 			return utils.WrapError("WriteExtBitMap DownlinkConfigCommon", err)
 		}
@@ -45,17 +45,17 @@ func (ie *DownlinkConfigCommon) Encode(w *uper.UperWriter) error {
 			extWriter := uper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 1
-			optionals_ext_1 := []bool{ie.initialDownlinkBWP_RedCap_r17 != nil}
+			optionals_ext_1 := []bool{ie.InitialDownlinkBWP_RedCap_r17 != nil}
 			for _, bit := range optionals_ext_1 {
 				if err := extWriter.WriteBool(bit); err != nil {
 					return err
 				}
 			}
 
-			// encode initialDownlinkBWP_RedCap_r17 optional
-			if ie.initialDownlinkBWP_RedCap_r17 != nil {
-				if err = ie.initialDownlinkBWP_RedCap_r17.Encode(extWriter); err != nil {
-					return utils.WrapError("Encode initialDownlinkBWP_RedCap_r17", err)
+			// encode InitialDownlinkBWP_RedCap_r17 optional
+			if ie.InitialDownlinkBWP_RedCap_r17 != nil {
+				if err = ie.InitialDownlinkBWP_RedCap_r17.Encode(extWriter); err != nil {
+					return utils.WrapError("Encode InitialDownlinkBWP_RedCap_r17", err)
 				}
 			}
 
@@ -77,24 +77,24 @@ func (ie *DownlinkConfigCommon) Decode(r *uper.UperReader) error {
 	if extensionBit, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var frequencyInfoDLPresent bool
-	if frequencyInfoDLPresent, err = r.ReadBool(); err != nil {
+	var FrequencyInfoDLPresent bool
+	if FrequencyInfoDLPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var initialDownlinkBWPPresent bool
-	if initialDownlinkBWPPresent, err = r.ReadBool(); err != nil {
+	var InitialDownlinkBWPPresent bool
+	if InitialDownlinkBWPPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	if frequencyInfoDLPresent {
-		ie.frequencyInfoDL = new(FrequencyInfoDL)
-		if err = ie.frequencyInfoDL.Decode(r); err != nil {
-			return utils.WrapError("Decode frequencyInfoDL", err)
+	if FrequencyInfoDLPresent {
+		ie.FrequencyInfoDL = new(FrequencyInfoDL)
+		if err = ie.FrequencyInfoDL.Decode(r); err != nil {
+			return utils.WrapError("Decode FrequencyInfoDL", err)
 		}
 	}
-	if initialDownlinkBWPPresent {
-		ie.initialDownlinkBWP = new(BWP_DownlinkCommon)
-		if err = ie.initialDownlinkBWP.Decode(r); err != nil {
-			return utils.WrapError("Decode initialDownlinkBWP", err)
+	if InitialDownlinkBWPPresent {
+		ie.InitialDownlinkBWP = new(BWP_DownlinkCommon)
+		if err = ie.InitialDownlinkBWP.Decode(r); err != nil {
+			return utils.WrapError("Decode InitialDownlinkBWP", err)
 		}
 	}
 
@@ -114,15 +114,15 @@ func (ie *DownlinkConfigCommon) Decode(r *uper.UperReader) error {
 
 			extReader := uper.NewReader(bytes.NewReader(extBytes))
 
-			initialDownlinkBWP_RedCap_r17Present, err := extReader.ReadBool()
+			InitialDownlinkBWP_RedCap_r17Present, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			// decode initialDownlinkBWP_RedCap_r17 optional
-			if initialDownlinkBWP_RedCap_r17Present {
-				ie.initialDownlinkBWP_RedCap_r17 = new(BWP_DownlinkCommon)
-				if err = ie.initialDownlinkBWP_RedCap_r17.Decode(extReader); err != nil {
-					return utils.WrapError("Decode initialDownlinkBWP_RedCap_r17", err)
+			// decode InitialDownlinkBWP_RedCap_r17 optional
+			if InitialDownlinkBWP_RedCap_r17Present {
+				ie.InitialDownlinkBWP_RedCap_r17 = new(BWP_DownlinkCommon)
+				if err = ie.InitialDownlinkBWP_RedCap_r17.Decode(extReader); err != nil {
+					return utils.WrapError("Decode InitialDownlinkBWP_RedCap_r17", err)
 				}
 			}
 		}

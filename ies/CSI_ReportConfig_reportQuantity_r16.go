@@ -9,14 +9,14 @@ import (
 
 const (
 	CSI_ReportConfig_reportQuantity_r16_Choice_nothing uint64 = iota
-	CSI_ReportConfig_reportQuantity_r16_Choice_cri_SINR_r16
-	CSI_ReportConfig_reportQuantity_r16_Choice_ssb_Index_SINR_r16
+	CSI_ReportConfig_reportQuantity_r16_Choice_Cri_SINR_r16
+	CSI_ReportConfig_reportQuantity_r16_Choice_Ssb_Index_SINR_r16
 )
 
 type CSI_ReportConfig_reportQuantity_r16 struct {
 	Choice             uint64
-	cri_SINR_r16       uper.NULL `madatory`
-	ssb_Index_SINR_r16 uper.NULL `madatory`
+	Cri_SINR_r16       uper.NULL `madatory`
+	Ssb_Index_SINR_r16 uper.NULL `madatory`
 }
 
 func (ie *CSI_ReportConfig_reportQuantity_r16) Encode(w *uper.UperWriter) error {
@@ -25,13 +25,13 @@ func (ie *CSI_ReportConfig_reportQuantity_r16) Encode(w *uper.UperWriter) error 
 		return err
 	}
 	switch ie.Choice {
-	case CSI_ReportConfig_reportQuantity_r16_Choice_cri_SINR_r16:
+	case CSI_ReportConfig_reportQuantity_r16_Choice_Cri_SINR_r16:
 		if err := w.WriteNull(); err != nil {
-			err = utils.WrapError("Encode cri_SINR_r16", err)
+			err = utils.WrapError("Encode Cri_SINR_r16", err)
 		}
-	case CSI_ReportConfig_reportQuantity_r16_Choice_ssb_Index_SINR_r16:
+	case CSI_ReportConfig_reportQuantity_r16_Choice_Ssb_Index_SINR_r16:
 		if err := w.WriteNull(); err != nil {
-			err = utils.WrapError("Encode ssb_Index_SINR_r16", err)
+			err = utils.WrapError("Encode Ssb_Index_SINR_r16", err)
 		}
 	default:
 		err = fmt.Errorf("invalid choice: %d", ie.Choice)
@@ -45,13 +45,13 @@ func (ie *CSI_ReportConfig_reportQuantity_r16) Decode(r *uper.UperReader) error 
 		return err
 	}
 	switch ie.Choice {
-	case CSI_ReportConfig_reportQuantity_r16_Choice_cri_SINR_r16:
+	case CSI_ReportConfig_reportQuantity_r16_Choice_Cri_SINR_r16:
 		if err := r.ReadNull(); err != nil {
-			return utils.WrapError("Decode cri_SINR_r16", err)
+			return utils.WrapError("Decode Cri_SINR_r16", err)
 		}
-	case CSI_ReportConfig_reportQuantity_r16_Choice_ssb_Index_SINR_r16:
+	case CSI_ReportConfig_reportQuantity_r16_Choice_Ssb_Index_SINR_r16:
 		if err := r.ReadNull(); err != nil {
-			return utils.WrapError("Decode ssb_Index_SINR_r16", err)
+			return utils.WrapError("Decode Ssb_Index_SINR_r16", err)
 		}
 	default:
 		return fmt.Errorf("invalid choice: %d", ie.Choice)

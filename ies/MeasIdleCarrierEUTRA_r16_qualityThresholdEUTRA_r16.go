@@ -6,26 +6,26 @@ import (
 )
 
 type MeasIdleCarrierEUTRA_r16_qualityThresholdEUTRA_r16 struct {
-	idleRSRP_Threshold_EUTRA_r16 *RSRP_RangeEUTRA     `optional`
-	idleRSRQ_Threshold_EUTRA_r16 *RSRQ_RangeEUTRA_r16 `optional`
+	IdleRSRP_Threshold_EUTRA_r16 *RSRP_RangeEUTRA     `optional`
+	IdleRSRQ_Threshold_EUTRA_r16 *RSRQ_RangeEUTRA_r16 `optional`
 }
 
 func (ie *MeasIdleCarrierEUTRA_r16_qualityThresholdEUTRA_r16) Encode(w *uper.UperWriter) error {
 	var err error
-	preambleBits := []bool{ie.idleRSRP_Threshold_EUTRA_r16 != nil, ie.idleRSRQ_Threshold_EUTRA_r16 != nil}
+	preambleBits := []bool{ie.IdleRSRP_Threshold_EUTRA_r16 != nil, ie.IdleRSRQ_Threshold_EUTRA_r16 != nil}
 	for _, bit := range preambleBits {
 		if err = w.WriteBool(bit); err != nil {
 			return err
 		}
 	}
-	if ie.idleRSRP_Threshold_EUTRA_r16 != nil {
-		if err = ie.idleRSRP_Threshold_EUTRA_r16.Encode(w); err != nil {
-			return utils.WrapError("Encode idleRSRP_Threshold_EUTRA_r16", err)
+	if ie.IdleRSRP_Threshold_EUTRA_r16 != nil {
+		if err = ie.IdleRSRP_Threshold_EUTRA_r16.Encode(w); err != nil {
+			return utils.WrapError("Encode IdleRSRP_Threshold_EUTRA_r16", err)
 		}
 	}
-	if ie.idleRSRQ_Threshold_EUTRA_r16 != nil {
-		if err = ie.idleRSRQ_Threshold_EUTRA_r16.Encode(w); err != nil {
-			return utils.WrapError("Encode idleRSRQ_Threshold_EUTRA_r16", err)
+	if ie.IdleRSRQ_Threshold_EUTRA_r16 != nil {
+		if err = ie.IdleRSRQ_Threshold_EUTRA_r16.Encode(w); err != nil {
+			return utils.WrapError("Encode IdleRSRQ_Threshold_EUTRA_r16", err)
 		}
 	}
 	return nil
@@ -33,24 +33,24 @@ func (ie *MeasIdleCarrierEUTRA_r16_qualityThresholdEUTRA_r16) Encode(w *uper.Upe
 
 func (ie *MeasIdleCarrierEUTRA_r16_qualityThresholdEUTRA_r16) Decode(r *uper.UperReader) error {
 	var err error
-	var idleRSRP_Threshold_EUTRA_r16Present bool
-	if idleRSRP_Threshold_EUTRA_r16Present, err = r.ReadBool(); err != nil {
+	var IdleRSRP_Threshold_EUTRA_r16Present bool
+	if IdleRSRP_Threshold_EUTRA_r16Present, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var idleRSRQ_Threshold_EUTRA_r16Present bool
-	if idleRSRQ_Threshold_EUTRA_r16Present, err = r.ReadBool(); err != nil {
+	var IdleRSRQ_Threshold_EUTRA_r16Present bool
+	if IdleRSRQ_Threshold_EUTRA_r16Present, err = r.ReadBool(); err != nil {
 		return err
 	}
-	if idleRSRP_Threshold_EUTRA_r16Present {
-		ie.idleRSRP_Threshold_EUTRA_r16 = new(RSRP_RangeEUTRA)
-		if err = ie.idleRSRP_Threshold_EUTRA_r16.Decode(r); err != nil {
-			return utils.WrapError("Decode idleRSRP_Threshold_EUTRA_r16", err)
+	if IdleRSRP_Threshold_EUTRA_r16Present {
+		ie.IdleRSRP_Threshold_EUTRA_r16 = new(RSRP_RangeEUTRA)
+		if err = ie.IdleRSRP_Threshold_EUTRA_r16.Decode(r); err != nil {
+			return utils.WrapError("Decode IdleRSRP_Threshold_EUTRA_r16", err)
 		}
 	}
-	if idleRSRQ_Threshold_EUTRA_r16Present {
-		ie.idleRSRQ_Threshold_EUTRA_r16 = new(RSRQ_RangeEUTRA_r16)
-		if err = ie.idleRSRQ_Threshold_EUTRA_r16.Decode(r); err != nil {
-			return utils.WrapError("Decode idleRSRQ_Threshold_EUTRA_r16", err)
+	if IdleRSRQ_Threshold_EUTRA_r16Present {
+		ie.IdleRSRQ_Threshold_EUTRA_r16 = new(RSRQ_RangeEUTRA_r16)
+		if err = ie.IdleRSRQ_Threshold_EUTRA_r16.Decode(r); err != nil {
+			return utils.WrapError("Decode IdleRSRQ_Threshold_EUTRA_r16", err)
 		}
 	}
 	return nil

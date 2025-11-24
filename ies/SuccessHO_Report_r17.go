@@ -6,68 +6,68 @@ import (
 )
 
 type SuccessHO_Report_r17 struct {
-	sourceCellInfo_r17         *SuccessHO_Report_r17_sourceCellInfo_r17       `optional`
-	targetCellInfo_r17         *SuccessHO_Report_r17_targetCellInfo_r17       `optional`
-	measResultNeighCells_r17   *SuccessHO_Report_r17_measResultNeighCells_r17 `optional`
-	locationInfo_r17           *LocationInfo_r16                              `optional`
-	timeSinceCHO_Reconfig_r17  *TimeSinceCHO_Reconfig_r17                     `optional`
-	shr_Cause_r17              *SHR_Cause_r17                                 `optional`
-	ra_InformationCommon_r17   *RA_InformationCommon_r16                      `optional`
-	upInterruptionTimeAtHO_r17 *UPInterruptionTimeAtHO_r17                    `optional`
-	c_RNTI_r17                 *RNTI_Value                                    `optional`
+	SourceCellInfo_r17         *SuccessHO_Report_r17_sourceCellInfo_r17       `optional`
+	TargetCellInfo_r17         *SuccessHO_Report_r17_targetCellInfo_r17       `optional`
+	MeasResultNeighCells_r17   *SuccessHO_Report_r17_measResultNeighCells_r17 `optional`
+	LocationInfo_r17           *LocationInfo_r16                              `optional`
+	TimeSinceCHO_Reconfig_r17  *TimeSinceCHO_Reconfig_r17                     `optional`
+	Shr_Cause_r17              *SHR_Cause_r17                                 `optional`
+	Ra_InformationCommon_r17   *RA_InformationCommon_r16                      `optional`
+	UpInterruptionTimeAtHO_r17 *UPInterruptionTimeAtHO_r17                    `optional`
+	C_RNTI_r17                 *RNTI_Value                                    `optional`
 }
 
 func (ie *SuccessHO_Report_r17) Encode(w *uper.UperWriter) error {
 	var err error
-	preambleBits := []bool{ie.sourceCellInfo_r17 != nil, ie.targetCellInfo_r17 != nil, ie.measResultNeighCells_r17 != nil, ie.locationInfo_r17 != nil, ie.timeSinceCHO_Reconfig_r17 != nil, ie.shr_Cause_r17 != nil, ie.ra_InformationCommon_r17 != nil, ie.upInterruptionTimeAtHO_r17 != nil, ie.c_RNTI_r17 != nil}
+	preambleBits := []bool{ie.SourceCellInfo_r17 != nil, ie.TargetCellInfo_r17 != nil, ie.MeasResultNeighCells_r17 != nil, ie.LocationInfo_r17 != nil, ie.TimeSinceCHO_Reconfig_r17 != nil, ie.Shr_Cause_r17 != nil, ie.Ra_InformationCommon_r17 != nil, ie.UpInterruptionTimeAtHO_r17 != nil, ie.C_RNTI_r17 != nil}
 	for _, bit := range preambleBits {
 		if err = w.WriteBool(bit); err != nil {
 			return err
 		}
 	}
-	if ie.sourceCellInfo_r17 != nil {
-		if err = ie.sourceCellInfo_r17.Encode(w); err != nil {
-			return utils.WrapError("Encode sourceCellInfo_r17", err)
+	if ie.SourceCellInfo_r17 != nil {
+		if err = ie.SourceCellInfo_r17.Encode(w); err != nil {
+			return utils.WrapError("Encode SourceCellInfo_r17", err)
 		}
 	}
-	if ie.targetCellInfo_r17 != nil {
-		if err = ie.targetCellInfo_r17.Encode(w); err != nil {
-			return utils.WrapError("Encode targetCellInfo_r17", err)
+	if ie.TargetCellInfo_r17 != nil {
+		if err = ie.TargetCellInfo_r17.Encode(w); err != nil {
+			return utils.WrapError("Encode TargetCellInfo_r17", err)
 		}
 	}
-	if ie.measResultNeighCells_r17 != nil {
-		if err = ie.measResultNeighCells_r17.Encode(w); err != nil {
-			return utils.WrapError("Encode measResultNeighCells_r17", err)
+	if ie.MeasResultNeighCells_r17 != nil {
+		if err = ie.MeasResultNeighCells_r17.Encode(w); err != nil {
+			return utils.WrapError("Encode MeasResultNeighCells_r17", err)
 		}
 	}
-	if ie.locationInfo_r17 != nil {
-		if err = ie.locationInfo_r17.Encode(w); err != nil {
-			return utils.WrapError("Encode locationInfo_r17", err)
+	if ie.LocationInfo_r17 != nil {
+		if err = ie.LocationInfo_r17.Encode(w); err != nil {
+			return utils.WrapError("Encode LocationInfo_r17", err)
 		}
 	}
-	if ie.timeSinceCHO_Reconfig_r17 != nil {
-		if err = ie.timeSinceCHO_Reconfig_r17.Encode(w); err != nil {
-			return utils.WrapError("Encode timeSinceCHO_Reconfig_r17", err)
+	if ie.TimeSinceCHO_Reconfig_r17 != nil {
+		if err = ie.TimeSinceCHO_Reconfig_r17.Encode(w); err != nil {
+			return utils.WrapError("Encode TimeSinceCHO_Reconfig_r17", err)
 		}
 	}
-	if ie.shr_Cause_r17 != nil {
-		if err = ie.shr_Cause_r17.Encode(w); err != nil {
-			return utils.WrapError("Encode shr_Cause_r17", err)
+	if ie.Shr_Cause_r17 != nil {
+		if err = ie.Shr_Cause_r17.Encode(w); err != nil {
+			return utils.WrapError("Encode Shr_Cause_r17", err)
 		}
 	}
-	if ie.ra_InformationCommon_r17 != nil {
-		if err = ie.ra_InformationCommon_r17.Encode(w); err != nil {
-			return utils.WrapError("Encode ra_InformationCommon_r17", err)
+	if ie.Ra_InformationCommon_r17 != nil {
+		if err = ie.Ra_InformationCommon_r17.Encode(w); err != nil {
+			return utils.WrapError("Encode Ra_InformationCommon_r17", err)
 		}
 	}
-	if ie.upInterruptionTimeAtHO_r17 != nil {
-		if err = ie.upInterruptionTimeAtHO_r17.Encode(w); err != nil {
-			return utils.WrapError("Encode upInterruptionTimeAtHO_r17", err)
+	if ie.UpInterruptionTimeAtHO_r17 != nil {
+		if err = ie.UpInterruptionTimeAtHO_r17.Encode(w); err != nil {
+			return utils.WrapError("Encode UpInterruptionTimeAtHO_r17", err)
 		}
 	}
-	if ie.c_RNTI_r17 != nil {
-		if err = ie.c_RNTI_r17.Encode(w); err != nil {
-			return utils.WrapError("Encode c_RNTI_r17", err)
+	if ie.C_RNTI_r17 != nil {
+		if err = ie.C_RNTI_r17.Encode(w); err != nil {
+			return utils.WrapError("Encode C_RNTI_r17", err)
 		}
 	}
 	return nil
@@ -75,94 +75,94 @@ func (ie *SuccessHO_Report_r17) Encode(w *uper.UperWriter) error {
 
 func (ie *SuccessHO_Report_r17) Decode(r *uper.UperReader) error {
 	var err error
-	var sourceCellInfo_r17Present bool
-	if sourceCellInfo_r17Present, err = r.ReadBool(); err != nil {
+	var SourceCellInfo_r17Present bool
+	if SourceCellInfo_r17Present, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var targetCellInfo_r17Present bool
-	if targetCellInfo_r17Present, err = r.ReadBool(); err != nil {
+	var TargetCellInfo_r17Present bool
+	if TargetCellInfo_r17Present, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var measResultNeighCells_r17Present bool
-	if measResultNeighCells_r17Present, err = r.ReadBool(); err != nil {
+	var MeasResultNeighCells_r17Present bool
+	if MeasResultNeighCells_r17Present, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var locationInfo_r17Present bool
-	if locationInfo_r17Present, err = r.ReadBool(); err != nil {
+	var LocationInfo_r17Present bool
+	if LocationInfo_r17Present, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var timeSinceCHO_Reconfig_r17Present bool
-	if timeSinceCHO_Reconfig_r17Present, err = r.ReadBool(); err != nil {
+	var TimeSinceCHO_Reconfig_r17Present bool
+	if TimeSinceCHO_Reconfig_r17Present, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var shr_Cause_r17Present bool
-	if shr_Cause_r17Present, err = r.ReadBool(); err != nil {
+	var Shr_Cause_r17Present bool
+	if Shr_Cause_r17Present, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var ra_InformationCommon_r17Present bool
-	if ra_InformationCommon_r17Present, err = r.ReadBool(); err != nil {
+	var Ra_InformationCommon_r17Present bool
+	if Ra_InformationCommon_r17Present, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var upInterruptionTimeAtHO_r17Present bool
-	if upInterruptionTimeAtHO_r17Present, err = r.ReadBool(); err != nil {
+	var UpInterruptionTimeAtHO_r17Present bool
+	if UpInterruptionTimeAtHO_r17Present, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var c_RNTI_r17Present bool
-	if c_RNTI_r17Present, err = r.ReadBool(); err != nil {
+	var C_RNTI_r17Present bool
+	if C_RNTI_r17Present, err = r.ReadBool(); err != nil {
 		return err
 	}
-	if sourceCellInfo_r17Present {
-		ie.sourceCellInfo_r17 = new(SuccessHO_Report_r17_sourceCellInfo_r17)
-		if err = ie.sourceCellInfo_r17.Decode(r); err != nil {
-			return utils.WrapError("Decode sourceCellInfo_r17", err)
+	if SourceCellInfo_r17Present {
+		ie.SourceCellInfo_r17 = new(SuccessHO_Report_r17_sourceCellInfo_r17)
+		if err = ie.SourceCellInfo_r17.Decode(r); err != nil {
+			return utils.WrapError("Decode SourceCellInfo_r17", err)
 		}
 	}
-	if targetCellInfo_r17Present {
-		ie.targetCellInfo_r17 = new(SuccessHO_Report_r17_targetCellInfo_r17)
-		if err = ie.targetCellInfo_r17.Decode(r); err != nil {
-			return utils.WrapError("Decode targetCellInfo_r17", err)
+	if TargetCellInfo_r17Present {
+		ie.TargetCellInfo_r17 = new(SuccessHO_Report_r17_targetCellInfo_r17)
+		if err = ie.TargetCellInfo_r17.Decode(r); err != nil {
+			return utils.WrapError("Decode TargetCellInfo_r17", err)
 		}
 	}
-	if measResultNeighCells_r17Present {
-		ie.measResultNeighCells_r17 = new(SuccessHO_Report_r17_measResultNeighCells_r17)
-		if err = ie.measResultNeighCells_r17.Decode(r); err != nil {
-			return utils.WrapError("Decode measResultNeighCells_r17", err)
+	if MeasResultNeighCells_r17Present {
+		ie.MeasResultNeighCells_r17 = new(SuccessHO_Report_r17_measResultNeighCells_r17)
+		if err = ie.MeasResultNeighCells_r17.Decode(r); err != nil {
+			return utils.WrapError("Decode MeasResultNeighCells_r17", err)
 		}
 	}
-	if locationInfo_r17Present {
-		ie.locationInfo_r17 = new(LocationInfo_r16)
-		if err = ie.locationInfo_r17.Decode(r); err != nil {
-			return utils.WrapError("Decode locationInfo_r17", err)
+	if LocationInfo_r17Present {
+		ie.LocationInfo_r17 = new(LocationInfo_r16)
+		if err = ie.LocationInfo_r17.Decode(r); err != nil {
+			return utils.WrapError("Decode LocationInfo_r17", err)
 		}
 	}
-	if timeSinceCHO_Reconfig_r17Present {
-		ie.timeSinceCHO_Reconfig_r17 = new(TimeSinceCHO_Reconfig_r17)
-		if err = ie.timeSinceCHO_Reconfig_r17.Decode(r); err != nil {
-			return utils.WrapError("Decode timeSinceCHO_Reconfig_r17", err)
+	if TimeSinceCHO_Reconfig_r17Present {
+		ie.TimeSinceCHO_Reconfig_r17 = new(TimeSinceCHO_Reconfig_r17)
+		if err = ie.TimeSinceCHO_Reconfig_r17.Decode(r); err != nil {
+			return utils.WrapError("Decode TimeSinceCHO_Reconfig_r17", err)
 		}
 	}
-	if shr_Cause_r17Present {
-		ie.shr_Cause_r17 = new(SHR_Cause_r17)
-		if err = ie.shr_Cause_r17.Decode(r); err != nil {
-			return utils.WrapError("Decode shr_Cause_r17", err)
+	if Shr_Cause_r17Present {
+		ie.Shr_Cause_r17 = new(SHR_Cause_r17)
+		if err = ie.Shr_Cause_r17.Decode(r); err != nil {
+			return utils.WrapError("Decode Shr_Cause_r17", err)
 		}
 	}
-	if ra_InformationCommon_r17Present {
-		ie.ra_InformationCommon_r17 = new(RA_InformationCommon_r16)
-		if err = ie.ra_InformationCommon_r17.Decode(r); err != nil {
-			return utils.WrapError("Decode ra_InformationCommon_r17", err)
+	if Ra_InformationCommon_r17Present {
+		ie.Ra_InformationCommon_r17 = new(RA_InformationCommon_r16)
+		if err = ie.Ra_InformationCommon_r17.Decode(r); err != nil {
+			return utils.WrapError("Decode Ra_InformationCommon_r17", err)
 		}
 	}
-	if upInterruptionTimeAtHO_r17Present {
-		ie.upInterruptionTimeAtHO_r17 = new(UPInterruptionTimeAtHO_r17)
-		if err = ie.upInterruptionTimeAtHO_r17.Decode(r); err != nil {
-			return utils.WrapError("Decode upInterruptionTimeAtHO_r17", err)
+	if UpInterruptionTimeAtHO_r17Present {
+		ie.UpInterruptionTimeAtHO_r17 = new(UPInterruptionTimeAtHO_r17)
+		if err = ie.UpInterruptionTimeAtHO_r17.Decode(r); err != nil {
+			return utils.WrapError("Decode UpInterruptionTimeAtHO_r17", err)
 		}
 	}
-	if c_RNTI_r17Present {
-		ie.c_RNTI_r17 = new(RNTI_Value)
-		if err = ie.c_RNTI_r17.Decode(r); err != nil {
-			return utils.WrapError("Decode c_RNTI_r17", err)
+	if C_RNTI_r17Present {
+		ie.C_RNTI_r17 = new(RNTI_Value)
+		if err = ie.C_RNTI_r17.Decode(r); err != nil {
+			return utils.WrapError("Decode C_RNTI_r17", err)
 		}
 	}
 	return nil

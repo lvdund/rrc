@@ -6,46 +6,46 @@ import (
 )
 
 type VarMeasReport struct {
-	measId                        MeasId                   `madatory`
-	cellsTriggeredList            *CellsTriggeredList      `optional`
-	numberOfReportsSent           int64                    `madatory`
-	cli_TriggeredList_r16         *CLI_TriggeredList_r16   `optional`
-	tx_PoolMeasToAddModListNR_r16 *Tx_PoolMeasList_r16     `optional`
-	relaysTriggeredList_r17       *RelaysTriggeredList_r17 `optional`
+	MeasId                        MeasId                   `madatory`
+	CellsTriggeredList            *CellsTriggeredList      `optional`
+	NumberOfReportsSent           int64                    `madatory`
+	Cli_TriggeredList_r16         *CLI_TriggeredList_r16   `optional`
+	Tx_PoolMeasToAddModListNR_r16 *Tx_PoolMeasList_r16     `optional`
+	RelaysTriggeredList_r17       *RelaysTriggeredList_r17 `optional`
 }
 
 func (ie *VarMeasReport) Encode(w *uper.UperWriter) error {
 	var err error
-	preambleBits := []bool{ie.cellsTriggeredList != nil, ie.cli_TriggeredList_r16 != nil, ie.tx_PoolMeasToAddModListNR_r16 != nil, ie.relaysTriggeredList_r17 != nil}
+	preambleBits := []bool{ie.CellsTriggeredList != nil, ie.Cli_TriggeredList_r16 != nil, ie.Tx_PoolMeasToAddModListNR_r16 != nil, ie.RelaysTriggeredList_r17 != nil}
 	for _, bit := range preambleBits {
 		if err = w.WriteBool(bit); err != nil {
 			return err
 		}
 	}
-	if err = ie.measId.Encode(w); err != nil {
-		return utils.WrapError("Encode measId", err)
+	if err = ie.MeasId.Encode(w); err != nil {
+		return utils.WrapError("Encode MeasId", err)
 	}
-	if ie.cellsTriggeredList != nil {
-		if err = ie.cellsTriggeredList.Encode(w); err != nil {
-			return utils.WrapError("Encode cellsTriggeredList", err)
+	if ie.CellsTriggeredList != nil {
+		if err = ie.CellsTriggeredList.Encode(w); err != nil {
+			return utils.WrapError("Encode CellsTriggeredList", err)
 		}
 	}
-	if err = w.WriteInteger(ie.numberOfReportsSent, &uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
-		return utils.WrapError("WriteInteger numberOfReportsSent", err)
+	if err = w.WriteInteger(ie.NumberOfReportsSent, &uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+		return utils.WrapError("WriteInteger NumberOfReportsSent", err)
 	}
-	if ie.cli_TriggeredList_r16 != nil {
-		if err = ie.cli_TriggeredList_r16.Encode(w); err != nil {
-			return utils.WrapError("Encode cli_TriggeredList_r16", err)
+	if ie.Cli_TriggeredList_r16 != nil {
+		if err = ie.Cli_TriggeredList_r16.Encode(w); err != nil {
+			return utils.WrapError("Encode Cli_TriggeredList_r16", err)
 		}
 	}
-	if ie.tx_PoolMeasToAddModListNR_r16 != nil {
-		if err = ie.tx_PoolMeasToAddModListNR_r16.Encode(w); err != nil {
-			return utils.WrapError("Encode tx_PoolMeasToAddModListNR_r16", err)
+	if ie.Tx_PoolMeasToAddModListNR_r16 != nil {
+		if err = ie.Tx_PoolMeasToAddModListNR_r16.Encode(w); err != nil {
+			return utils.WrapError("Encode Tx_PoolMeasToAddModListNR_r16", err)
 		}
 	}
-	if ie.relaysTriggeredList_r17 != nil {
-		if err = ie.relaysTriggeredList_r17.Encode(w); err != nil {
-			return utils.WrapError("Encode relaysTriggeredList_r17", err)
+	if ie.RelaysTriggeredList_r17 != nil {
+		if err = ie.RelaysTriggeredList_r17.Encode(w); err != nil {
+			return utils.WrapError("Encode RelaysTriggeredList_r17", err)
 		}
 	}
 	return nil
@@ -53,52 +53,52 @@ func (ie *VarMeasReport) Encode(w *uper.UperWriter) error {
 
 func (ie *VarMeasReport) Decode(r *uper.UperReader) error {
 	var err error
-	var cellsTriggeredListPresent bool
-	if cellsTriggeredListPresent, err = r.ReadBool(); err != nil {
+	var CellsTriggeredListPresent bool
+	if CellsTriggeredListPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var cli_TriggeredList_r16Present bool
-	if cli_TriggeredList_r16Present, err = r.ReadBool(); err != nil {
+	var Cli_TriggeredList_r16Present bool
+	if Cli_TriggeredList_r16Present, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var tx_PoolMeasToAddModListNR_r16Present bool
-	if tx_PoolMeasToAddModListNR_r16Present, err = r.ReadBool(); err != nil {
+	var Tx_PoolMeasToAddModListNR_r16Present bool
+	if Tx_PoolMeasToAddModListNR_r16Present, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var relaysTriggeredList_r17Present bool
-	if relaysTriggeredList_r17Present, err = r.ReadBool(); err != nil {
+	var RelaysTriggeredList_r17Present bool
+	if RelaysTriggeredList_r17Present, err = r.ReadBool(); err != nil {
 		return err
 	}
-	if err = ie.measId.Decode(r); err != nil {
-		return utils.WrapError("Decode measId", err)
+	if err = ie.MeasId.Decode(r); err != nil {
+		return utils.WrapError("Decode MeasId", err)
 	}
-	if cellsTriggeredListPresent {
-		ie.cellsTriggeredList = new(CellsTriggeredList)
-		if err = ie.cellsTriggeredList.Decode(r); err != nil {
-			return utils.WrapError("Decode cellsTriggeredList", err)
+	if CellsTriggeredListPresent {
+		ie.CellsTriggeredList = new(CellsTriggeredList)
+		if err = ie.CellsTriggeredList.Decode(r); err != nil {
+			return utils.WrapError("Decode CellsTriggeredList", err)
 		}
 	}
-	var tmp_int_numberOfReportsSent int64
-	if tmp_int_numberOfReportsSent, err = r.ReadInteger(&uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
-		return utils.WrapError("ReadInteger numberOfReportsSent", err)
+	var tmp_int_NumberOfReportsSent int64
+	if tmp_int_NumberOfReportsSent, err = r.ReadInteger(&uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+		return utils.WrapError("ReadInteger NumberOfReportsSent", err)
 	}
-	ie.numberOfReportsSent = tmp_int_numberOfReportsSent
-	if cli_TriggeredList_r16Present {
-		ie.cli_TriggeredList_r16 = new(CLI_TriggeredList_r16)
-		if err = ie.cli_TriggeredList_r16.Decode(r); err != nil {
-			return utils.WrapError("Decode cli_TriggeredList_r16", err)
+	ie.NumberOfReportsSent = tmp_int_NumberOfReportsSent
+	if Cli_TriggeredList_r16Present {
+		ie.Cli_TriggeredList_r16 = new(CLI_TriggeredList_r16)
+		if err = ie.Cli_TriggeredList_r16.Decode(r); err != nil {
+			return utils.WrapError("Decode Cli_TriggeredList_r16", err)
 		}
 	}
-	if tx_PoolMeasToAddModListNR_r16Present {
-		ie.tx_PoolMeasToAddModListNR_r16 = new(Tx_PoolMeasList_r16)
-		if err = ie.tx_PoolMeasToAddModListNR_r16.Decode(r); err != nil {
-			return utils.WrapError("Decode tx_PoolMeasToAddModListNR_r16", err)
+	if Tx_PoolMeasToAddModListNR_r16Present {
+		ie.Tx_PoolMeasToAddModListNR_r16 = new(Tx_PoolMeasList_r16)
+		if err = ie.Tx_PoolMeasToAddModListNR_r16.Decode(r); err != nil {
+			return utils.WrapError("Decode Tx_PoolMeasToAddModListNR_r16", err)
 		}
 	}
-	if relaysTriggeredList_r17Present {
-		ie.relaysTriggeredList_r17 = new(RelaysTriggeredList_r17)
-		if err = ie.relaysTriggeredList_r17.Decode(r); err != nil {
-			return utils.WrapError("Decode relaysTriggeredList_r17", err)
+	if RelaysTriggeredList_r17Present {
+		ie.RelaysTriggeredList_r17 = new(RelaysTriggeredList_r17)
+		if err = ie.RelaysTriggeredList_r17.Decode(r); err != nil {
+			return utils.WrapError("Decode RelaysTriggeredList_r17", err)
 		}
 	}
 	return nil

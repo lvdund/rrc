@@ -9,16 +9,16 @@ import (
 
 const (
 	MeasTriggerQuantityOffset_Choice_nothing uint64 = iota
-	MeasTriggerQuantityOffset_Choice_rsrp
-	MeasTriggerQuantityOffset_Choice_rsrq
-	MeasTriggerQuantityOffset_Choice_sinr
+	MeasTriggerQuantityOffset_Choice_Rsrp
+	MeasTriggerQuantityOffset_Choice_Rsrq
+	MeasTriggerQuantityOffset_Choice_Sinr
 )
 
 type MeasTriggerQuantityOffset struct {
 	Choice uint64
-	rsrp   int64 `lb:-30,ub:30,madatory`
-	rsrq   int64 `lb:-30,ub:30,madatory`
-	sinr   int64 `lb:-30,ub:30,madatory`
+	Rsrp   int64 `lb:-30,ub:30,madatory`
+	Rsrq   int64 `lb:-30,ub:30,madatory`
+	Sinr   int64 `lb:-30,ub:30,madatory`
 }
 
 func (ie *MeasTriggerQuantityOffset) Encode(w *uper.UperWriter) error {
@@ -27,17 +27,17 @@ func (ie *MeasTriggerQuantityOffset) Encode(w *uper.UperWriter) error {
 		return err
 	}
 	switch ie.Choice {
-	case MeasTriggerQuantityOffset_Choice_rsrp:
-		if err = w.WriteInteger(int64(ie.rsrp), &uper.Constraint{Lb: -30, Ub: 30}, false); err != nil {
-			err = utils.WrapError("Encode rsrp", err)
+	case MeasTriggerQuantityOffset_Choice_Rsrp:
+		if err = w.WriteInteger(int64(ie.Rsrp), &uper.Constraint{Lb: -30, Ub: 30}, false); err != nil {
+			err = utils.WrapError("Encode Rsrp", err)
 		}
-	case MeasTriggerQuantityOffset_Choice_rsrq:
-		if err = w.WriteInteger(int64(ie.rsrq), &uper.Constraint{Lb: -30, Ub: 30}, false); err != nil {
-			err = utils.WrapError("Encode rsrq", err)
+	case MeasTriggerQuantityOffset_Choice_Rsrq:
+		if err = w.WriteInteger(int64(ie.Rsrq), &uper.Constraint{Lb: -30, Ub: 30}, false); err != nil {
+			err = utils.WrapError("Encode Rsrq", err)
 		}
-	case MeasTriggerQuantityOffset_Choice_sinr:
-		if err = w.WriteInteger(int64(ie.sinr), &uper.Constraint{Lb: -30, Ub: 30}, false); err != nil {
-			err = utils.WrapError("Encode sinr", err)
+	case MeasTriggerQuantityOffset_Choice_Sinr:
+		if err = w.WriteInteger(int64(ie.Sinr), &uper.Constraint{Lb: -30, Ub: 30}, false); err != nil {
+			err = utils.WrapError("Encode Sinr", err)
 		}
 	default:
 		err = fmt.Errorf("invalid choice: %d", ie.Choice)
@@ -51,24 +51,24 @@ func (ie *MeasTriggerQuantityOffset) Decode(r *uper.UperReader) error {
 		return err
 	}
 	switch ie.Choice {
-	case MeasTriggerQuantityOffset_Choice_rsrp:
-		var tmp_int_rsrp int64
-		if tmp_int_rsrp, err = r.ReadInteger(&uper.Constraint{Lb: -30, Ub: 30}, false); err != nil {
-			return utils.WrapError("Decode rsrp", err)
+	case MeasTriggerQuantityOffset_Choice_Rsrp:
+		var tmp_int_Rsrp int64
+		if tmp_int_Rsrp, err = r.ReadInteger(&uper.Constraint{Lb: -30, Ub: 30}, false); err != nil {
+			return utils.WrapError("Decode Rsrp", err)
 		}
-		ie.rsrp = tmp_int_rsrp
-	case MeasTriggerQuantityOffset_Choice_rsrq:
-		var tmp_int_rsrq int64
-		if tmp_int_rsrq, err = r.ReadInteger(&uper.Constraint{Lb: -30, Ub: 30}, false); err != nil {
-			return utils.WrapError("Decode rsrq", err)
+		ie.Rsrp = tmp_int_Rsrp
+	case MeasTriggerQuantityOffset_Choice_Rsrq:
+		var tmp_int_Rsrq int64
+		if tmp_int_Rsrq, err = r.ReadInteger(&uper.Constraint{Lb: -30, Ub: 30}, false); err != nil {
+			return utils.WrapError("Decode Rsrq", err)
 		}
-		ie.rsrq = tmp_int_rsrq
-	case MeasTriggerQuantityOffset_Choice_sinr:
-		var tmp_int_sinr int64
-		if tmp_int_sinr, err = r.ReadInteger(&uper.Constraint{Lb: -30, Ub: 30}, false); err != nil {
-			return utils.WrapError("Decode sinr", err)
+		ie.Rsrq = tmp_int_Rsrq
+	case MeasTriggerQuantityOffset_Choice_Sinr:
+		var tmp_int_Sinr int64
+		if tmp_int_Sinr, err = r.ReadInteger(&uper.Constraint{Lb: -30, Ub: 30}, false); err != nil {
+			return utils.WrapError("Decode Sinr", err)
 		}
-		ie.sinr = tmp_int_sinr
+		ie.Sinr = tmp_int_Sinr
 	default:
 		return fmt.Errorf("invalid choice: %d", ie.Choice)
 	}

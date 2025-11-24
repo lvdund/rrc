@@ -6,32 +6,32 @@ import (
 )
 
 type HARQ_ProcessPerSCS_r17 struct {
-	scs_120kHz_r17 *HARQ_ProcessPerSCS_r17_scs_120kHz_r17 `optional`
-	scs_480kHz_r17 *HARQ_ProcessPerSCS_r17_scs_480kHz_r17 `optional`
-	scs_960kHz_r17 *HARQ_ProcessPerSCS_r17_scs_960kHz_r17 `optional`
+	Scs_120kHz_r17 *HARQ_ProcessPerSCS_r17_scs_120kHz_r17 `optional`
+	Scs_480kHz_r17 *HARQ_ProcessPerSCS_r17_scs_480kHz_r17 `optional`
+	Scs_960kHz_r17 *HARQ_ProcessPerSCS_r17_scs_960kHz_r17 `optional`
 }
 
 func (ie *HARQ_ProcessPerSCS_r17) Encode(w *uper.UperWriter) error {
 	var err error
-	preambleBits := []bool{ie.scs_120kHz_r17 != nil, ie.scs_480kHz_r17 != nil, ie.scs_960kHz_r17 != nil}
+	preambleBits := []bool{ie.Scs_120kHz_r17 != nil, ie.Scs_480kHz_r17 != nil, ie.Scs_960kHz_r17 != nil}
 	for _, bit := range preambleBits {
 		if err = w.WriteBool(bit); err != nil {
 			return err
 		}
 	}
-	if ie.scs_120kHz_r17 != nil {
-		if err = ie.scs_120kHz_r17.Encode(w); err != nil {
-			return utils.WrapError("Encode scs_120kHz_r17", err)
+	if ie.Scs_120kHz_r17 != nil {
+		if err = ie.Scs_120kHz_r17.Encode(w); err != nil {
+			return utils.WrapError("Encode Scs_120kHz_r17", err)
 		}
 	}
-	if ie.scs_480kHz_r17 != nil {
-		if err = ie.scs_480kHz_r17.Encode(w); err != nil {
-			return utils.WrapError("Encode scs_480kHz_r17", err)
+	if ie.Scs_480kHz_r17 != nil {
+		if err = ie.Scs_480kHz_r17.Encode(w); err != nil {
+			return utils.WrapError("Encode Scs_480kHz_r17", err)
 		}
 	}
-	if ie.scs_960kHz_r17 != nil {
-		if err = ie.scs_960kHz_r17.Encode(w); err != nil {
-			return utils.WrapError("Encode scs_960kHz_r17", err)
+	if ie.Scs_960kHz_r17 != nil {
+		if err = ie.Scs_960kHz_r17.Encode(w); err != nil {
+			return utils.WrapError("Encode Scs_960kHz_r17", err)
 		}
 	}
 	return nil
@@ -39,34 +39,34 @@ func (ie *HARQ_ProcessPerSCS_r17) Encode(w *uper.UperWriter) error {
 
 func (ie *HARQ_ProcessPerSCS_r17) Decode(r *uper.UperReader) error {
 	var err error
-	var scs_120kHz_r17Present bool
-	if scs_120kHz_r17Present, err = r.ReadBool(); err != nil {
+	var Scs_120kHz_r17Present bool
+	if Scs_120kHz_r17Present, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var scs_480kHz_r17Present bool
-	if scs_480kHz_r17Present, err = r.ReadBool(); err != nil {
+	var Scs_480kHz_r17Present bool
+	if Scs_480kHz_r17Present, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var scs_960kHz_r17Present bool
-	if scs_960kHz_r17Present, err = r.ReadBool(); err != nil {
+	var Scs_960kHz_r17Present bool
+	if Scs_960kHz_r17Present, err = r.ReadBool(); err != nil {
 		return err
 	}
-	if scs_120kHz_r17Present {
-		ie.scs_120kHz_r17 = new(HARQ_ProcessPerSCS_r17_scs_120kHz_r17)
-		if err = ie.scs_120kHz_r17.Decode(r); err != nil {
-			return utils.WrapError("Decode scs_120kHz_r17", err)
+	if Scs_120kHz_r17Present {
+		ie.Scs_120kHz_r17 = new(HARQ_ProcessPerSCS_r17_scs_120kHz_r17)
+		if err = ie.Scs_120kHz_r17.Decode(r); err != nil {
+			return utils.WrapError("Decode Scs_120kHz_r17", err)
 		}
 	}
-	if scs_480kHz_r17Present {
-		ie.scs_480kHz_r17 = new(HARQ_ProcessPerSCS_r17_scs_480kHz_r17)
-		if err = ie.scs_480kHz_r17.Decode(r); err != nil {
-			return utils.WrapError("Decode scs_480kHz_r17", err)
+	if Scs_480kHz_r17Present {
+		ie.Scs_480kHz_r17 = new(HARQ_ProcessPerSCS_r17_scs_480kHz_r17)
+		if err = ie.Scs_480kHz_r17.Decode(r); err != nil {
+			return utils.WrapError("Decode Scs_480kHz_r17", err)
 		}
 	}
-	if scs_960kHz_r17Present {
-		ie.scs_960kHz_r17 = new(HARQ_ProcessPerSCS_r17_scs_960kHz_r17)
-		if err = ie.scs_960kHz_r17.Decode(r); err != nil {
-			return utils.WrapError("Decode scs_960kHz_r17", err)
+	if Scs_960kHz_r17Present {
+		ie.Scs_960kHz_r17 = new(HARQ_ProcessPerSCS_r17_scs_960kHz_r17)
+		if err = ie.Scs_960kHz_r17.Decode(r); err != nil {
+			return utils.WrapError("Decode Scs_960kHz_r17", err)
 		}
 	}
 	return nil

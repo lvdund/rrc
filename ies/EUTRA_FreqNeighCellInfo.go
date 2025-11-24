@@ -6,34 +6,34 @@ import (
 )
 
 type EUTRA_FreqNeighCellInfo struct {
-	physCellId           EUTRA_PhysCellId    `madatory`
-	dummy                EUTRA_Q_OffsetRange `madatory`
-	q_RxLevMinOffsetCell *int64              `lb:1,ub:8,optional`
-	q_QualMinOffsetCell  *int64              `lb:1,ub:8,optional`
+	PhysCellId           EUTRA_PhysCellId    `madatory`
+	Dummy                EUTRA_Q_OffsetRange `madatory`
+	Q_RxLevMinOffsetCell *int64              `lb:1,ub:8,optional`
+	Q_QualMinOffsetCell  *int64              `lb:1,ub:8,optional`
 }
 
 func (ie *EUTRA_FreqNeighCellInfo) Encode(w *uper.UperWriter) error {
 	var err error
-	preambleBits := []bool{ie.q_RxLevMinOffsetCell != nil, ie.q_QualMinOffsetCell != nil}
+	preambleBits := []bool{ie.Q_RxLevMinOffsetCell != nil, ie.Q_QualMinOffsetCell != nil}
 	for _, bit := range preambleBits {
 		if err = w.WriteBool(bit); err != nil {
 			return err
 		}
 	}
-	if err = ie.physCellId.Encode(w); err != nil {
-		return utils.WrapError("Encode physCellId", err)
+	if err = ie.PhysCellId.Encode(w); err != nil {
+		return utils.WrapError("Encode PhysCellId", err)
 	}
-	if err = ie.dummy.Encode(w); err != nil {
-		return utils.WrapError("Encode dummy", err)
+	if err = ie.Dummy.Encode(w); err != nil {
+		return utils.WrapError("Encode Dummy", err)
 	}
-	if ie.q_RxLevMinOffsetCell != nil {
-		if err = w.WriteInteger(*ie.q_RxLevMinOffsetCell, &uper.Constraint{Lb: 1, Ub: 8}, false); err != nil {
-			return utils.WrapError("Encode q_RxLevMinOffsetCell", err)
+	if ie.Q_RxLevMinOffsetCell != nil {
+		if err = w.WriteInteger(*ie.Q_RxLevMinOffsetCell, &uper.Constraint{Lb: 1, Ub: 8}, false); err != nil {
+			return utils.WrapError("Encode Q_RxLevMinOffsetCell", err)
 		}
 	}
-	if ie.q_QualMinOffsetCell != nil {
-		if err = w.WriteInteger(*ie.q_QualMinOffsetCell, &uper.Constraint{Lb: 1, Ub: 8}, false); err != nil {
-			return utils.WrapError("Encode q_QualMinOffsetCell", err)
+	if ie.Q_QualMinOffsetCell != nil {
+		if err = w.WriteInteger(*ie.Q_QualMinOffsetCell, &uper.Constraint{Lb: 1, Ub: 8}, false); err != nil {
+			return utils.WrapError("Encode Q_QualMinOffsetCell", err)
 		}
 	}
 	return nil
@@ -41,33 +41,33 @@ func (ie *EUTRA_FreqNeighCellInfo) Encode(w *uper.UperWriter) error {
 
 func (ie *EUTRA_FreqNeighCellInfo) Decode(r *uper.UperReader) error {
 	var err error
-	var q_RxLevMinOffsetCellPresent bool
-	if q_RxLevMinOffsetCellPresent, err = r.ReadBool(); err != nil {
+	var Q_RxLevMinOffsetCellPresent bool
+	if Q_RxLevMinOffsetCellPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var q_QualMinOffsetCellPresent bool
-	if q_QualMinOffsetCellPresent, err = r.ReadBool(); err != nil {
+	var Q_QualMinOffsetCellPresent bool
+	if Q_QualMinOffsetCellPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	if err = ie.physCellId.Decode(r); err != nil {
-		return utils.WrapError("Decode physCellId", err)
+	if err = ie.PhysCellId.Decode(r); err != nil {
+		return utils.WrapError("Decode PhysCellId", err)
 	}
-	if err = ie.dummy.Decode(r); err != nil {
-		return utils.WrapError("Decode dummy", err)
+	if err = ie.Dummy.Decode(r); err != nil {
+		return utils.WrapError("Decode Dummy", err)
 	}
-	if q_RxLevMinOffsetCellPresent {
-		var tmp_int_q_RxLevMinOffsetCell int64
-		if tmp_int_q_RxLevMinOffsetCell, err = r.ReadInteger(&uper.Constraint{Lb: 1, Ub: 8}, false); err != nil {
-			return utils.WrapError("Decode q_RxLevMinOffsetCell", err)
+	if Q_RxLevMinOffsetCellPresent {
+		var tmp_int_Q_RxLevMinOffsetCell int64
+		if tmp_int_Q_RxLevMinOffsetCell, err = r.ReadInteger(&uper.Constraint{Lb: 1, Ub: 8}, false); err != nil {
+			return utils.WrapError("Decode Q_RxLevMinOffsetCell", err)
 		}
-		ie.q_RxLevMinOffsetCell = &tmp_int_q_RxLevMinOffsetCell
+		ie.Q_RxLevMinOffsetCell = &tmp_int_Q_RxLevMinOffsetCell
 	}
-	if q_QualMinOffsetCellPresent {
-		var tmp_int_q_QualMinOffsetCell int64
-		if tmp_int_q_QualMinOffsetCell, err = r.ReadInteger(&uper.Constraint{Lb: 1, Ub: 8}, false); err != nil {
-			return utils.WrapError("Decode q_QualMinOffsetCell", err)
+	if Q_QualMinOffsetCellPresent {
+		var tmp_int_Q_QualMinOffsetCell int64
+		if tmp_int_Q_QualMinOffsetCell, err = r.ReadInteger(&uper.Constraint{Lb: 1, Ub: 8}, false); err != nil {
+			return utils.WrapError("Decode Q_QualMinOffsetCell", err)
 		}
-		ie.q_QualMinOffsetCell = &tmp_int_q_QualMinOffsetCell
+		ie.Q_QualMinOffsetCell = &tmp_int_Q_QualMinOffsetCell
 	}
 	return nil
 }

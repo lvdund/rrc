@@ -6,36 +6,36 @@ import (
 )
 
 type BandParametersSidelinkDiscovery_r17_sl_TransmissionMode2_PartialSensing_r17 struct {
-	harq_TxProcessModeTwoSidelink_r17   BandParametersSidelinkDiscovery_r17_sl_TransmissionMode2_PartialSensing_r17_harq_TxProcessModeTwoSidelink_r17    `madatory`
-	scs_CP_PatternTxSidelinkModeTwo_r17 *BandParametersSidelinkDiscovery_r17_sl_TransmissionMode2_PartialSensing_r17_scs_CP_PatternTxSidelinkModeTwo_r17 `optional`
-	extendedCP_Mode2PartialSensing_r17  *BandParametersSidelinkDiscovery_r17_sl_TransmissionMode2_PartialSensing_r17_extendedCP_Mode2PartialSensing_r17  `optional`
-	dl_openLoopPC_Sidelink_r17          *BandParametersSidelinkDiscovery_r17_sl_TransmissionMode2_PartialSensing_r17_dl_openLoopPC_Sidelink_r17          `optional`
+	Harq_TxProcessModeTwoSidelink_r17   BandParametersSidelinkDiscovery_r17_sl_TransmissionMode2_PartialSensing_r17_harq_TxProcessModeTwoSidelink_r17    `madatory`
+	Scs_CP_PatternTxSidelinkModeTwo_r17 *BandParametersSidelinkDiscovery_r17_sl_TransmissionMode2_PartialSensing_r17_scs_CP_PatternTxSidelinkModeTwo_r17 `optional`
+	ExtendedCP_Mode2PartialSensing_r17  *BandParametersSidelinkDiscovery_r17_sl_TransmissionMode2_PartialSensing_r17_extendedCP_Mode2PartialSensing_r17  `optional`
+	Dl_openLoopPC_Sidelink_r17          *BandParametersSidelinkDiscovery_r17_sl_TransmissionMode2_PartialSensing_r17_dl_openLoopPC_Sidelink_r17          `optional`
 }
 
 func (ie *BandParametersSidelinkDiscovery_r17_sl_TransmissionMode2_PartialSensing_r17) Encode(w *uper.UperWriter) error {
 	var err error
-	preambleBits := []bool{ie.scs_CP_PatternTxSidelinkModeTwo_r17 != nil, ie.extendedCP_Mode2PartialSensing_r17 != nil, ie.dl_openLoopPC_Sidelink_r17 != nil}
+	preambleBits := []bool{ie.Scs_CP_PatternTxSidelinkModeTwo_r17 != nil, ie.ExtendedCP_Mode2PartialSensing_r17 != nil, ie.Dl_openLoopPC_Sidelink_r17 != nil}
 	for _, bit := range preambleBits {
 		if err = w.WriteBool(bit); err != nil {
 			return err
 		}
 	}
-	if err = ie.harq_TxProcessModeTwoSidelink_r17.Encode(w); err != nil {
-		return utils.WrapError("Encode harq_TxProcessModeTwoSidelink_r17", err)
+	if err = ie.Harq_TxProcessModeTwoSidelink_r17.Encode(w); err != nil {
+		return utils.WrapError("Encode Harq_TxProcessModeTwoSidelink_r17", err)
 	}
-	if ie.scs_CP_PatternTxSidelinkModeTwo_r17 != nil {
-		if err = ie.scs_CP_PatternTxSidelinkModeTwo_r17.Encode(w); err != nil {
-			return utils.WrapError("Encode scs_CP_PatternTxSidelinkModeTwo_r17", err)
+	if ie.Scs_CP_PatternTxSidelinkModeTwo_r17 != nil {
+		if err = ie.Scs_CP_PatternTxSidelinkModeTwo_r17.Encode(w); err != nil {
+			return utils.WrapError("Encode Scs_CP_PatternTxSidelinkModeTwo_r17", err)
 		}
 	}
-	if ie.extendedCP_Mode2PartialSensing_r17 != nil {
-		if err = ie.extendedCP_Mode2PartialSensing_r17.Encode(w); err != nil {
-			return utils.WrapError("Encode extendedCP_Mode2PartialSensing_r17", err)
+	if ie.ExtendedCP_Mode2PartialSensing_r17 != nil {
+		if err = ie.ExtendedCP_Mode2PartialSensing_r17.Encode(w); err != nil {
+			return utils.WrapError("Encode ExtendedCP_Mode2PartialSensing_r17", err)
 		}
 	}
-	if ie.dl_openLoopPC_Sidelink_r17 != nil {
-		if err = ie.dl_openLoopPC_Sidelink_r17.Encode(w); err != nil {
-			return utils.WrapError("Encode dl_openLoopPC_Sidelink_r17", err)
+	if ie.Dl_openLoopPC_Sidelink_r17 != nil {
+		if err = ie.Dl_openLoopPC_Sidelink_r17.Encode(w); err != nil {
+			return utils.WrapError("Encode Dl_openLoopPC_Sidelink_r17", err)
 		}
 	}
 	return nil
@@ -43,37 +43,37 @@ func (ie *BandParametersSidelinkDiscovery_r17_sl_TransmissionMode2_PartialSensin
 
 func (ie *BandParametersSidelinkDiscovery_r17_sl_TransmissionMode2_PartialSensing_r17) Decode(r *uper.UperReader) error {
 	var err error
-	var scs_CP_PatternTxSidelinkModeTwo_r17Present bool
-	if scs_CP_PatternTxSidelinkModeTwo_r17Present, err = r.ReadBool(); err != nil {
+	var Scs_CP_PatternTxSidelinkModeTwo_r17Present bool
+	if Scs_CP_PatternTxSidelinkModeTwo_r17Present, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var extendedCP_Mode2PartialSensing_r17Present bool
-	if extendedCP_Mode2PartialSensing_r17Present, err = r.ReadBool(); err != nil {
+	var ExtendedCP_Mode2PartialSensing_r17Present bool
+	if ExtendedCP_Mode2PartialSensing_r17Present, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var dl_openLoopPC_Sidelink_r17Present bool
-	if dl_openLoopPC_Sidelink_r17Present, err = r.ReadBool(); err != nil {
+	var Dl_openLoopPC_Sidelink_r17Present bool
+	if Dl_openLoopPC_Sidelink_r17Present, err = r.ReadBool(); err != nil {
 		return err
 	}
-	if err = ie.harq_TxProcessModeTwoSidelink_r17.Decode(r); err != nil {
-		return utils.WrapError("Decode harq_TxProcessModeTwoSidelink_r17", err)
+	if err = ie.Harq_TxProcessModeTwoSidelink_r17.Decode(r); err != nil {
+		return utils.WrapError("Decode Harq_TxProcessModeTwoSidelink_r17", err)
 	}
-	if scs_CP_PatternTxSidelinkModeTwo_r17Present {
-		ie.scs_CP_PatternTxSidelinkModeTwo_r17 = new(BandParametersSidelinkDiscovery_r17_sl_TransmissionMode2_PartialSensing_r17_scs_CP_PatternTxSidelinkModeTwo_r17)
-		if err = ie.scs_CP_PatternTxSidelinkModeTwo_r17.Decode(r); err != nil {
-			return utils.WrapError("Decode scs_CP_PatternTxSidelinkModeTwo_r17", err)
+	if Scs_CP_PatternTxSidelinkModeTwo_r17Present {
+		ie.Scs_CP_PatternTxSidelinkModeTwo_r17 = new(BandParametersSidelinkDiscovery_r17_sl_TransmissionMode2_PartialSensing_r17_scs_CP_PatternTxSidelinkModeTwo_r17)
+		if err = ie.Scs_CP_PatternTxSidelinkModeTwo_r17.Decode(r); err != nil {
+			return utils.WrapError("Decode Scs_CP_PatternTxSidelinkModeTwo_r17", err)
 		}
 	}
-	if extendedCP_Mode2PartialSensing_r17Present {
-		ie.extendedCP_Mode2PartialSensing_r17 = new(BandParametersSidelinkDiscovery_r17_sl_TransmissionMode2_PartialSensing_r17_extendedCP_Mode2PartialSensing_r17)
-		if err = ie.extendedCP_Mode2PartialSensing_r17.Decode(r); err != nil {
-			return utils.WrapError("Decode extendedCP_Mode2PartialSensing_r17", err)
+	if ExtendedCP_Mode2PartialSensing_r17Present {
+		ie.ExtendedCP_Mode2PartialSensing_r17 = new(BandParametersSidelinkDiscovery_r17_sl_TransmissionMode2_PartialSensing_r17_extendedCP_Mode2PartialSensing_r17)
+		if err = ie.ExtendedCP_Mode2PartialSensing_r17.Decode(r); err != nil {
+			return utils.WrapError("Decode ExtendedCP_Mode2PartialSensing_r17", err)
 		}
 	}
-	if dl_openLoopPC_Sidelink_r17Present {
-		ie.dl_openLoopPC_Sidelink_r17 = new(BandParametersSidelinkDiscovery_r17_sl_TransmissionMode2_PartialSensing_r17_dl_openLoopPC_Sidelink_r17)
-		if err = ie.dl_openLoopPC_Sidelink_r17.Decode(r); err != nil {
-			return utils.WrapError("Decode dl_openLoopPC_Sidelink_r17", err)
+	if Dl_openLoopPC_Sidelink_r17Present {
+		ie.Dl_openLoopPC_Sidelink_r17 = new(BandParametersSidelinkDiscovery_r17_sl_TransmissionMode2_PartialSensing_r17_dl_openLoopPC_Sidelink_r17)
+		if err = ie.Dl_openLoopPC_Sidelink_r17.Decode(r); err != nil {
+			return utils.WrapError("Decode Dl_openLoopPC_Sidelink_r17", err)
 		}
 	}
 	return nil

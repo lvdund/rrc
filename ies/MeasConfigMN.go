@@ -8,47 +8,47 @@ import (
 )
 
 type MeasConfigMN struct {
-	measuredFrequenciesMN []NR_FreqInfo                    `lb:1,ub:maxMeasFreqsMN,optional`
-	measGapConfig         *GapConfig                       `optional,setuprelease`
-	gapPurpose            *MeasConfigMN_gapPurpose         `optional`
-	measGapConfigFR2      *GapConfig                       `optional,ext-1,setuprelease`
-	interFreqNoGap_r16    *MeasConfigMN_interFreqNoGap_r16 `optional,ext-2`
+	MeasuredFrequenciesMN []NR_FreqInfo                    `lb:1,ub:maxMeasFreqsMN,optional`
+	MeasGapConfig         *GapConfig                       `optional,setuprelease`
+	GapPurpose            *MeasConfigMN_gapPurpose         `optional`
+	MeasGapConfigFR2      *GapConfig                       `optional,ext-1,setuprelease`
+	InterFreqNoGap_r16    *MeasConfigMN_interFreqNoGap_r16 `optional,ext-2`
 }
 
 func (ie *MeasConfigMN) Encode(w *uper.UperWriter) error {
 	var err error
-	hasExtensions := ie.measGapConfigFR2 != nil || ie.interFreqNoGap_r16 != nil
-	preambleBits := []bool{hasExtensions, len(ie.measuredFrequenciesMN) > 0, ie.measGapConfig != nil, ie.gapPurpose != nil}
+	hasExtensions := ie.MeasGapConfigFR2 != nil || ie.InterFreqNoGap_r16 != nil
+	preambleBits := []bool{hasExtensions, len(ie.MeasuredFrequenciesMN) > 0, ie.MeasGapConfig != nil, ie.GapPurpose != nil}
 	for _, bit := range preambleBits {
 		if err = w.WriteBool(bit); err != nil {
 			return err
 		}
 	}
-	if len(ie.measuredFrequenciesMN) > 0 {
-		tmp_measuredFrequenciesMN := utils.NewSequence[*NR_FreqInfo]([]*NR_FreqInfo{}, uper.Constraint{Lb: 1, Ub: maxMeasFreqsMN}, false)
-		for _, i := range ie.measuredFrequenciesMN {
-			tmp_measuredFrequenciesMN.Value = append(tmp_measuredFrequenciesMN.Value, &i)
+	if len(ie.MeasuredFrequenciesMN) > 0 {
+		tmp_MeasuredFrequenciesMN := utils.NewSequence[*NR_FreqInfo]([]*NR_FreqInfo{}, uper.Constraint{Lb: 1, Ub: maxMeasFreqsMN}, false)
+		for _, i := range ie.MeasuredFrequenciesMN {
+			tmp_MeasuredFrequenciesMN.Value = append(tmp_MeasuredFrequenciesMN.Value, &i)
 		}
-		if err = tmp_measuredFrequenciesMN.Encode(w); err != nil {
-			return utils.WrapError("Encode measuredFrequenciesMN", err)
-		}
-	}
-	if ie.measGapConfig != nil {
-		tmp_measGapConfig := utils.SetupRelease[*GapConfig]{
-			Setup: ie.measGapConfig,
-		}
-		if err = tmp_measGapConfig.Encode(w); err != nil {
-			return utils.WrapError("Encode measGapConfig", err)
+		if err = tmp_MeasuredFrequenciesMN.Encode(w); err != nil {
+			return utils.WrapError("Encode MeasuredFrequenciesMN", err)
 		}
 	}
-	if ie.gapPurpose != nil {
-		if err = ie.gapPurpose.Encode(w); err != nil {
-			return utils.WrapError("Encode gapPurpose", err)
+	if ie.MeasGapConfig != nil {
+		tmp_MeasGapConfig := utils.SetupRelease[*GapConfig]{
+			Setup: ie.MeasGapConfig,
+		}
+		if err = tmp_MeasGapConfig.Encode(w); err != nil {
+			return utils.WrapError("Encode MeasGapConfig", err)
+		}
+	}
+	if ie.GapPurpose != nil {
+		if err = ie.GapPurpose.Encode(w); err != nil {
+			return utils.WrapError("Encode GapPurpose", err)
 		}
 	}
 	if hasExtensions {
 		// Extension bitmap: 2 bits for 2 extension groups
-		extBitmap := []bool{ie.measGapConfigFR2 != nil, ie.interFreqNoGap_r16 != nil}
+		extBitmap := []bool{ie.MeasGapConfigFR2 != nil, ie.InterFreqNoGap_r16 != nil}
 		if err := w.WriteExtBitMap(extBitmap); err != nil {
 			return utils.WrapError("WriteExtBitMap MeasConfigMN", err)
 		}
@@ -59,20 +59,20 @@ func (ie *MeasConfigMN) Encode(w *uper.UperWriter) error {
 			extWriter := uper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 1
-			optionals_ext_1 := []bool{ie.measGapConfigFR2 != nil}
+			optionals_ext_1 := []bool{ie.MeasGapConfigFR2 != nil}
 			for _, bit := range optionals_ext_1 {
 				if err := extWriter.WriteBool(bit); err != nil {
 					return err
 				}
 			}
 
-			// encode measGapConfigFR2 optional
-			if ie.measGapConfigFR2 != nil {
-				tmp_measGapConfigFR2 := utils.SetupRelease[*GapConfig]{
-					Setup: ie.measGapConfigFR2,
+			// encode MeasGapConfigFR2 optional
+			if ie.MeasGapConfigFR2 != nil {
+				tmp_MeasGapConfigFR2 := utils.SetupRelease[*GapConfig]{
+					Setup: ie.MeasGapConfigFR2,
 				}
-				if err = tmp_measGapConfigFR2.Encode(extWriter); err != nil {
-					return utils.WrapError("Encode measGapConfigFR2", err)
+				if err = tmp_MeasGapConfigFR2.Encode(extWriter); err != nil {
+					return utils.WrapError("Encode MeasGapConfigFR2", err)
 				}
 			}
 
@@ -91,17 +91,17 @@ func (ie *MeasConfigMN) Encode(w *uper.UperWriter) error {
 			extWriter := uper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 2
-			optionals_ext_2 := []bool{ie.interFreqNoGap_r16 != nil}
+			optionals_ext_2 := []bool{ie.InterFreqNoGap_r16 != nil}
 			for _, bit := range optionals_ext_2 {
 				if err := extWriter.WriteBool(bit); err != nil {
 					return err
 				}
 			}
 
-			// encode interFreqNoGap_r16 optional
-			if ie.interFreqNoGap_r16 != nil {
-				if err = ie.interFreqNoGap_r16.Encode(extWriter); err != nil {
-					return utils.WrapError("Encode interFreqNoGap_r16", err)
+			// encode InterFreqNoGap_r16 optional
+			if ie.InterFreqNoGap_r16 != nil {
+				if err = ie.InterFreqNoGap_r16.Encode(extWriter); err != nil {
+					return utils.WrapError("Encode InterFreqNoGap_r16", err)
 				}
 			}
 
@@ -123,42 +123,42 @@ func (ie *MeasConfigMN) Decode(r *uper.UperReader) error {
 	if extensionBit, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var measuredFrequenciesMNPresent bool
-	if measuredFrequenciesMNPresent, err = r.ReadBool(); err != nil {
+	var MeasuredFrequenciesMNPresent bool
+	if MeasuredFrequenciesMNPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var measGapConfigPresent bool
-	if measGapConfigPresent, err = r.ReadBool(); err != nil {
+	var MeasGapConfigPresent bool
+	if MeasGapConfigPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var gapPurposePresent bool
-	if gapPurposePresent, err = r.ReadBool(); err != nil {
+	var GapPurposePresent bool
+	if GapPurposePresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	if measuredFrequenciesMNPresent {
-		tmp_measuredFrequenciesMN := utils.NewSequence[*NR_FreqInfo]([]*NR_FreqInfo{}, uper.Constraint{Lb: 1, Ub: maxMeasFreqsMN}, false)
-		fn_measuredFrequenciesMN := func() *NR_FreqInfo {
+	if MeasuredFrequenciesMNPresent {
+		tmp_MeasuredFrequenciesMN := utils.NewSequence[*NR_FreqInfo]([]*NR_FreqInfo{}, uper.Constraint{Lb: 1, Ub: maxMeasFreqsMN}, false)
+		fn_MeasuredFrequenciesMN := func() *NR_FreqInfo {
 			return new(NR_FreqInfo)
 		}
-		if err = tmp_measuredFrequenciesMN.Decode(r, fn_measuredFrequenciesMN); err != nil {
-			return utils.WrapError("Decode measuredFrequenciesMN", err)
+		if err = tmp_MeasuredFrequenciesMN.Decode(r, fn_MeasuredFrequenciesMN); err != nil {
+			return utils.WrapError("Decode MeasuredFrequenciesMN", err)
 		}
-		ie.measuredFrequenciesMN = []NR_FreqInfo{}
-		for _, i := range tmp_measuredFrequenciesMN.Value {
-			ie.measuredFrequenciesMN = append(ie.measuredFrequenciesMN, *i)
+		ie.MeasuredFrequenciesMN = []NR_FreqInfo{}
+		for _, i := range tmp_MeasuredFrequenciesMN.Value {
+			ie.MeasuredFrequenciesMN = append(ie.MeasuredFrequenciesMN, *i)
 		}
 	}
-	if measGapConfigPresent {
-		tmp_measGapConfig := utils.SetupRelease[*GapConfig]{}
-		if err = tmp_measGapConfig.Decode(r); err != nil {
-			return utils.WrapError("Decode measGapConfig", err)
+	if MeasGapConfigPresent {
+		tmp_MeasGapConfig := utils.SetupRelease[*GapConfig]{}
+		if err = tmp_MeasGapConfig.Decode(r); err != nil {
+			return utils.WrapError("Decode MeasGapConfig", err)
 		}
-		ie.measGapConfig = tmp_measGapConfig.Setup
+		ie.MeasGapConfig = tmp_MeasGapConfig.Setup
 	}
-	if gapPurposePresent {
-		ie.gapPurpose = new(MeasConfigMN_gapPurpose)
-		if err = ie.gapPurpose.Decode(r); err != nil {
-			return utils.WrapError("Decode gapPurpose", err)
+	if GapPurposePresent {
+		ie.GapPurpose = new(MeasConfigMN_gapPurpose)
+		if err = ie.GapPurpose.Decode(r); err != nil {
+			return utils.WrapError("Decode GapPurpose", err)
 		}
 	}
 
@@ -178,17 +178,17 @@ func (ie *MeasConfigMN) Decode(r *uper.UperReader) error {
 
 			extReader := uper.NewReader(bytes.NewReader(extBytes))
 
-			measGapConfigFR2Present, err := extReader.ReadBool()
+			MeasGapConfigFR2Present, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			// decode measGapConfigFR2 optional
-			if measGapConfigFR2Present {
-				tmp_measGapConfigFR2 := utils.SetupRelease[*GapConfig]{}
-				if err = tmp_measGapConfigFR2.Decode(extReader); err != nil {
-					return utils.WrapError("Decode measGapConfigFR2", err)
+			// decode MeasGapConfigFR2 optional
+			if MeasGapConfigFR2Present {
+				tmp_MeasGapConfigFR2 := utils.SetupRelease[*GapConfig]{}
+				if err = tmp_MeasGapConfigFR2.Decode(extReader); err != nil {
+					return utils.WrapError("Decode MeasGapConfigFR2", err)
 				}
-				ie.measGapConfigFR2 = tmp_measGapConfigFR2.Setup
+				ie.MeasGapConfigFR2 = tmp_MeasGapConfigFR2.Setup
 			}
 		}
 		// decode extension group 2
@@ -200,15 +200,15 @@ func (ie *MeasConfigMN) Decode(r *uper.UperReader) error {
 
 			extReader := uper.NewReader(bytes.NewReader(extBytes))
 
-			interFreqNoGap_r16Present, err := extReader.ReadBool()
+			InterFreqNoGap_r16Present, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			// decode interFreqNoGap_r16 optional
-			if interFreqNoGap_r16Present {
-				ie.interFreqNoGap_r16 = new(MeasConfigMN_interFreqNoGap_r16)
-				if err = ie.interFreqNoGap_r16.Decode(extReader); err != nil {
-					return utils.WrapError("Decode interFreqNoGap_r16", err)
+			// decode InterFreqNoGap_r16 optional
+			if InterFreqNoGap_r16Present {
+				ie.InterFreqNoGap_r16 = new(MeasConfigMN_interFreqNoGap_r16)
+				if err = ie.InterFreqNoGap_r16.Decode(extReader); err != nil {
+					return utils.WrapError("Decode InterFreqNoGap_r16", err)
 				}
 			}
 		}

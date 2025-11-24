@@ -9,14 +9,14 @@ import (
 
 const (
 	MBSBroadcastConfiguration_r17_CriticalExtensions_Choice_nothing uint64 = iota
-	MBSBroadcastConfiguration_r17_CriticalExtensions_Choice_mbsBroadcastConfiguration_r17
-	MBSBroadcastConfiguration_r17_CriticalExtensions_Choice_criticalExtensionsFuture
+	MBSBroadcastConfiguration_r17_CriticalExtensions_Choice_MbsBroadcastConfiguration_r17
+	MBSBroadcastConfiguration_r17_CriticalExtensions_Choice_CriticalExtensionsFuture
 )
 
 type MBSBroadcastConfiguration_r17_CriticalExtensions struct {
 	Choice                        uint64
-	mbsBroadcastConfiguration_r17 *MBSBroadcastConfiguration_r17_IEs
-	criticalExtensionsFuture      interface{} `madatory`
+	MbsBroadcastConfiguration_r17 *MBSBroadcastConfiguration_r17_IEs
+	CriticalExtensionsFuture      interface{} `madatory`
 }
 
 func (ie *MBSBroadcastConfiguration_r17_CriticalExtensions) Encode(w *uper.UperWriter) error {
@@ -25,11 +25,11 @@ func (ie *MBSBroadcastConfiguration_r17_CriticalExtensions) Encode(w *uper.UperW
 		return err
 	}
 	switch ie.Choice {
-	case MBSBroadcastConfiguration_r17_CriticalExtensions_Choice_mbsBroadcastConfiguration_r17:
-		if err = ie.mbsBroadcastConfiguration_r17.Encode(w); err != nil {
-			err = utils.WrapError("Encode mbsBroadcastConfiguration_r17", err)
+	case MBSBroadcastConfiguration_r17_CriticalExtensions_Choice_MbsBroadcastConfiguration_r17:
+		if err = ie.MbsBroadcastConfiguration_r17.Encode(w); err != nil {
+			err = utils.WrapError("Encode MbsBroadcastConfiguration_r17", err)
 		}
-	case MBSBroadcastConfiguration_r17_CriticalExtensions_Choice_criticalExtensionsFuture:
+	case MBSBroadcastConfiguration_r17_CriticalExtensions_Choice_CriticalExtensionsFuture:
 		// interface{} field of choice - nothing to encode
 	default:
 		err = fmt.Errorf("invalid choice: %d", ie.Choice)
@@ -43,12 +43,12 @@ func (ie *MBSBroadcastConfiguration_r17_CriticalExtensions) Decode(r *uper.UperR
 		return err
 	}
 	switch ie.Choice {
-	case MBSBroadcastConfiguration_r17_CriticalExtensions_Choice_mbsBroadcastConfiguration_r17:
-		ie.mbsBroadcastConfiguration_r17 = new(MBSBroadcastConfiguration_r17_IEs)
-		if err = ie.mbsBroadcastConfiguration_r17.Decode(r); err != nil {
-			return utils.WrapError("Decode mbsBroadcastConfiguration_r17", err)
+	case MBSBroadcastConfiguration_r17_CriticalExtensions_Choice_MbsBroadcastConfiguration_r17:
+		ie.MbsBroadcastConfiguration_r17 = new(MBSBroadcastConfiguration_r17_IEs)
+		if err = ie.MbsBroadcastConfiguration_r17.Decode(r); err != nil {
+			return utils.WrapError("Decode MbsBroadcastConfiguration_r17", err)
 		}
-	case MBSBroadcastConfiguration_r17_CriticalExtensions_Choice_criticalExtensionsFuture:
+	case MBSBroadcastConfiguration_r17_CriticalExtensions_Choice_CriticalExtensionsFuture:
 		// interface{} field of choice - nothing to decode
 	default:
 		return fmt.Errorf("invalid choice: %d", ie.Choice)

@@ -9,14 +9,14 @@ import (
 
 const (
 	DL_PRS_QCL_Info_r17_Choice_nothing uint64 = iota
-	DL_PRS_QCL_Info_r17_Choice_ssb_r17
-	DL_PRS_QCL_Info_r17_Choice_dl_PRS_r17
+	DL_PRS_QCL_Info_r17_Choice_Ssb_r17
+	DL_PRS_QCL_Info_r17_Choice_Dl_PRS_r17
 )
 
 type DL_PRS_QCL_Info_r17 struct {
 	Choice     uint64
-	ssb_r17    *DL_PRS_QCL_Info_r17_ssb_r17
-	dl_PRS_r17 *DL_PRS_QCL_Info_r17_dl_PRS_r17
+	Ssb_r17    *DL_PRS_QCL_Info_r17_ssb_r17
+	Dl_PRS_r17 *DL_PRS_QCL_Info_r17_dl_PRS_r17
 }
 
 func (ie *DL_PRS_QCL_Info_r17) Encode(w *uper.UperWriter) error {
@@ -25,13 +25,13 @@ func (ie *DL_PRS_QCL_Info_r17) Encode(w *uper.UperWriter) error {
 		return err
 	}
 	switch ie.Choice {
-	case DL_PRS_QCL_Info_r17_Choice_ssb_r17:
-		if err = ie.ssb_r17.Encode(w); err != nil {
-			err = utils.WrapError("Encode ssb_r17", err)
+	case DL_PRS_QCL_Info_r17_Choice_Ssb_r17:
+		if err = ie.Ssb_r17.Encode(w); err != nil {
+			err = utils.WrapError("Encode Ssb_r17", err)
 		}
-	case DL_PRS_QCL_Info_r17_Choice_dl_PRS_r17:
-		if err = ie.dl_PRS_r17.Encode(w); err != nil {
-			err = utils.WrapError("Encode dl_PRS_r17", err)
+	case DL_PRS_QCL_Info_r17_Choice_Dl_PRS_r17:
+		if err = ie.Dl_PRS_r17.Encode(w); err != nil {
+			err = utils.WrapError("Encode Dl_PRS_r17", err)
 		}
 	default:
 		err = fmt.Errorf("invalid choice: %d", ie.Choice)
@@ -45,15 +45,15 @@ func (ie *DL_PRS_QCL_Info_r17) Decode(r *uper.UperReader) error {
 		return err
 	}
 	switch ie.Choice {
-	case DL_PRS_QCL_Info_r17_Choice_ssb_r17:
-		ie.ssb_r17 = new(DL_PRS_QCL_Info_r17_ssb_r17)
-		if err = ie.ssb_r17.Decode(r); err != nil {
-			return utils.WrapError("Decode ssb_r17", err)
+	case DL_PRS_QCL_Info_r17_Choice_Ssb_r17:
+		ie.Ssb_r17 = new(DL_PRS_QCL_Info_r17_ssb_r17)
+		if err = ie.Ssb_r17.Decode(r); err != nil {
+			return utils.WrapError("Decode Ssb_r17", err)
 		}
-	case DL_PRS_QCL_Info_r17_Choice_dl_PRS_r17:
-		ie.dl_PRS_r17 = new(DL_PRS_QCL_Info_r17_dl_PRS_r17)
-		if err = ie.dl_PRS_r17.Decode(r); err != nil {
-			return utils.WrapError("Decode dl_PRS_r17", err)
+	case DL_PRS_QCL_Info_r17_Choice_Dl_PRS_r17:
+		ie.Dl_PRS_r17 = new(DL_PRS_QCL_Info_r17_dl_PRS_r17)
+		if err = ie.Dl_PRS_r17.Decode(r); err != nil {
+			return utils.WrapError("Decode Dl_PRS_r17", err)
 		}
 	default:
 		return fmt.Errorf("invalid choice: %d", ie.Choice)

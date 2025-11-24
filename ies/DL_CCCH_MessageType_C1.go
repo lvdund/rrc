@@ -9,18 +9,18 @@ import (
 
 const (
 	DL_CCCH_MessageType_C1_Choice_nothing uint64 = iota
-	DL_CCCH_MessageType_C1_Choice_rrcReject
-	DL_CCCH_MessageType_C1_Choice_rrcSetup
-	DL_CCCH_MessageType_C1_Choice_spare2
-	DL_CCCH_MessageType_C1_Choice_spare1
+	DL_CCCH_MessageType_C1_Choice_RrcReject
+	DL_CCCH_MessageType_C1_Choice_RrcSetup
+	DL_CCCH_MessageType_C1_Choice_Spare2
+	DL_CCCH_MessageType_C1_Choice_Spare1
 )
 
 type DL_CCCH_MessageType_C1 struct {
 	Choice    uint64
-	rrcReject *RRCReject
-	rrcSetup  *RRCSetup
-	spare2    uper.NULL `madatory`
-	spare1    uper.NULL `madatory`
+	RrcReject *RRCReject
+	RrcSetup  *RRCSetup
+	Spare2    uper.NULL `madatory`
+	Spare1    uper.NULL `madatory`
 }
 
 func (ie *DL_CCCH_MessageType_C1) Encode(w *uper.UperWriter) error {
@@ -29,21 +29,21 @@ func (ie *DL_CCCH_MessageType_C1) Encode(w *uper.UperWriter) error {
 		return err
 	}
 	switch ie.Choice {
-	case DL_CCCH_MessageType_C1_Choice_rrcReject:
-		if err = ie.rrcReject.Encode(w); err != nil {
-			err = utils.WrapError("Encode rrcReject", err)
+	case DL_CCCH_MessageType_C1_Choice_RrcReject:
+		if err = ie.RrcReject.Encode(w); err != nil {
+			err = utils.WrapError("Encode RrcReject", err)
 		}
-	case DL_CCCH_MessageType_C1_Choice_rrcSetup:
-		if err = ie.rrcSetup.Encode(w); err != nil {
-			err = utils.WrapError("Encode rrcSetup", err)
+	case DL_CCCH_MessageType_C1_Choice_RrcSetup:
+		if err = ie.RrcSetup.Encode(w); err != nil {
+			err = utils.WrapError("Encode RrcSetup", err)
 		}
-	case DL_CCCH_MessageType_C1_Choice_spare2:
+	case DL_CCCH_MessageType_C1_Choice_Spare2:
 		if err := w.WriteNull(); err != nil {
-			err = utils.WrapError("Encode spare2", err)
+			err = utils.WrapError("Encode Spare2", err)
 		}
-	case DL_CCCH_MessageType_C1_Choice_spare1:
+	case DL_CCCH_MessageType_C1_Choice_Spare1:
 		if err := w.WriteNull(); err != nil {
-			err = utils.WrapError("Encode spare1", err)
+			err = utils.WrapError("Encode Spare1", err)
 		}
 	default:
 		err = fmt.Errorf("invalid choice: %d", ie.Choice)
@@ -57,23 +57,23 @@ func (ie *DL_CCCH_MessageType_C1) Decode(r *uper.UperReader) error {
 		return err
 	}
 	switch ie.Choice {
-	case DL_CCCH_MessageType_C1_Choice_rrcReject:
-		ie.rrcReject = new(RRCReject)
-		if err = ie.rrcReject.Decode(r); err != nil {
-			return utils.WrapError("Decode rrcReject", err)
+	case DL_CCCH_MessageType_C1_Choice_RrcReject:
+		ie.RrcReject = new(RRCReject)
+		if err = ie.RrcReject.Decode(r); err != nil {
+			return utils.WrapError("Decode RrcReject", err)
 		}
-	case DL_CCCH_MessageType_C1_Choice_rrcSetup:
-		ie.rrcSetup = new(RRCSetup)
-		if err = ie.rrcSetup.Decode(r); err != nil {
-			return utils.WrapError("Decode rrcSetup", err)
+	case DL_CCCH_MessageType_C1_Choice_RrcSetup:
+		ie.RrcSetup = new(RRCSetup)
+		if err = ie.RrcSetup.Decode(r); err != nil {
+			return utils.WrapError("Decode RrcSetup", err)
 		}
-	case DL_CCCH_MessageType_C1_Choice_spare2:
+	case DL_CCCH_MessageType_C1_Choice_Spare2:
 		if err := r.ReadNull(); err != nil {
-			return utils.WrapError("Decode spare2", err)
+			return utils.WrapError("Decode Spare2", err)
 		}
-	case DL_CCCH_MessageType_C1_Choice_spare1:
+	case DL_CCCH_MessageType_C1_Choice_Spare1:
 		if err := r.ReadNull(); err != nil {
-			return utils.WrapError("Decode spare1", err)
+			return utils.WrapError("Decode Spare1", err)
 		}
 	default:
 		return fmt.Errorf("invalid choice: %d", ie.Choice)

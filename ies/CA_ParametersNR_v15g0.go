@@ -6,26 +6,26 @@ import (
 )
 
 type CA_ParametersNR_v15g0 struct {
-	simultaneousRxTxInterBandCAPerBandPair *SimultaneousRxTxPerBandPair `optional`
-	simultaneousRxTxSULPerBandPair         *SimultaneousRxTxPerBandPair `optional`
+	SimultaneousRxTxInterBandCAPerBandPair *SimultaneousRxTxPerBandPair `optional`
+	SimultaneousRxTxSULPerBandPair         *SimultaneousRxTxPerBandPair `optional`
 }
 
 func (ie *CA_ParametersNR_v15g0) Encode(w *uper.UperWriter) error {
 	var err error
-	preambleBits := []bool{ie.simultaneousRxTxInterBandCAPerBandPair != nil, ie.simultaneousRxTxSULPerBandPair != nil}
+	preambleBits := []bool{ie.SimultaneousRxTxInterBandCAPerBandPair != nil, ie.SimultaneousRxTxSULPerBandPair != nil}
 	for _, bit := range preambleBits {
 		if err = w.WriteBool(bit); err != nil {
 			return err
 		}
 	}
-	if ie.simultaneousRxTxInterBandCAPerBandPair != nil {
-		if err = ie.simultaneousRxTxInterBandCAPerBandPair.Encode(w); err != nil {
-			return utils.WrapError("Encode simultaneousRxTxInterBandCAPerBandPair", err)
+	if ie.SimultaneousRxTxInterBandCAPerBandPair != nil {
+		if err = ie.SimultaneousRxTxInterBandCAPerBandPair.Encode(w); err != nil {
+			return utils.WrapError("Encode SimultaneousRxTxInterBandCAPerBandPair", err)
 		}
 	}
-	if ie.simultaneousRxTxSULPerBandPair != nil {
-		if err = ie.simultaneousRxTxSULPerBandPair.Encode(w); err != nil {
-			return utils.WrapError("Encode simultaneousRxTxSULPerBandPair", err)
+	if ie.SimultaneousRxTxSULPerBandPair != nil {
+		if err = ie.SimultaneousRxTxSULPerBandPair.Encode(w); err != nil {
+			return utils.WrapError("Encode SimultaneousRxTxSULPerBandPair", err)
 		}
 	}
 	return nil
@@ -33,24 +33,24 @@ func (ie *CA_ParametersNR_v15g0) Encode(w *uper.UperWriter) error {
 
 func (ie *CA_ParametersNR_v15g0) Decode(r *uper.UperReader) error {
 	var err error
-	var simultaneousRxTxInterBandCAPerBandPairPresent bool
-	if simultaneousRxTxInterBandCAPerBandPairPresent, err = r.ReadBool(); err != nil {
+	var SimultaneousRxTxInterBandCAPerBandPairPresent bool
+	if SimultaneousRxTxInterBandCAPerBandPairPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var simultaneousRxTxSULPerBandPairPresent bool
-	if simultaneousRxTxSULPerBandPairPresent, err = r.ReadBool(); err != nil {
+	var SimultaneousRxTxSULPerBandPairPresent bool
+	if SimultaneousRxTxSULPerBandPairPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	if simultaneousRxTxInterBandCAPerBandPairPresent {
-		ie.simultaneousRxTxInterBandCAPerBandPair = new(SimultaneousRxTxPerBandPair)
-		if err = ie.simultaneousRxTxInterBandCAPerBandPair.Decode(r); err != nil {
-			return utils.WrapError("Decode simultaneousRxTxInterBandCAPerBandPair", err)
+	if SimultaneousRxTxInterBandCAPerBandPairPresent {
+		ie.SimultaneousRxTxInterBandCAPerBandPair = new(SimultaneousRxTxPerBandPair)
+		if err = ie.SimultaneousRxTxInterBandCAPerBandPair.Decode(r); err != nil {
+			return utils.WrapError("Decode SimultaneousRxTxInterBandCAPerBandPair", err)
 		}
 	}
-	if simultaneousRxTxSULPerBandPairPresent {
-		ie.simultaneousRxTxSULPerBandPair = new(SimultaneousRxTxPerBandPair)
-		if err = ie.simultaneousRxTxSULPerBandPair.Decode(r); err != nil {
-			return utils.WrapError("Decode simultaneousRxTxSULPerBandPair", err)
+	if SimultaneousRxTxSULPerBandPairPresent {
+		ie.SimultaneousRxTxSULPerBandPair = new(SimultaneousRxTxPerBandPair)
+		if err = ie.SimultaneousRxTxSULPerBandPair.Decode(r); err != nil {
+			return utils.WrapError("Decode SimultaneousRxTxSULPerBandPair", err)
 		}
 	}
 	return nil

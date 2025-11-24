@@ -6,21 +6,21 @@ import (
 )
 
 type LocationMeasurementIndication struct {
-	criticalExtensions LocationMeasurementIndication_CriticalExtensions `madatory`
+	CriticalExtensions LocationMeasurementIndication_CriticalExtensions `madatory`
 }
 
 func (ie *LocationMeasurementIndication) Encode(w *uper.UperWriter) error {
 	var err error
-	if err = ie.criticalExtensions.Encode(w); err != nil {
-		return utils.WrapError("Encode criticalExtensions", err)
+	if err = ie.CriticalExtensions.Encode(w); err != nil {
+		return utils.WrapError("Encode CriticalExtensions", err)
 	}
 	return nil
 }
 
 func (ie *LocationMeasurementIndication) Decode(r *uper.UperReader) error {
 	var err error
-	if err = ie.criticalExtensions.Decode(r); err != nil {
-		return utils.WrapError("Decode criticalExtensions", err)
+	if err = ie.CriticalExtensions.Decode(r); err != nil {
+		return utils.WrapError("Decode CriticalExtensions", err)
 	}
 	return nil
 }

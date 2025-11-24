@@ -8,53 +8,53 @@ import (
 )
 
 type RLC_BearerConfig struct {
-	logicalChannelIdentity        LogicalChannelIdentity              `madatory`
-	servedRadioBearer             *RLC_BearerConfig_servedRadioBearer `optional`
-	reestablishRLC                *RLC_BearerConfig_reestablishRLC    `optional`
-	rlc_Config                    *RLC_Config                         `optional`
-	mac_LogicalChannelConfig      *LogicalChannelConfig               `optional`
-	rlc_Config_v1610              *RLC_Config_v1610                   `optional,ext-1`
-	rlc_Config_v1700              *RLC_Config_v1700                   `optional,ext-2`
-	logicalChannelIdentityExt_r17 *LogicalChannelIdentityExt_r17      `optional,ext-2`
-	multicastRLC_BearerConfig_r17 *MulticastRLC_BearerConfig_r17      `optional,ext-2`
-	servedRadioBearerSRB4_r17     *SRB_Identity_v1700                 `optional,ext-2`
+	LogicalChannelIdentity        LogicalChannelIdentity              `madatory`
+	ServedRadioBearer             *RLC_BearerConfig_servedRadioBearer `optional`
+	ReestablishRLC                *RLC_BearerConfig_reestablishRLC    `optional`
+	Rlc_Config                    *RLC_Config                         `optional`
+	Mac_LogicalChannelConfig      *LogicalChannelConfig               `optional`
+	Rlc_Config_v1610              *RLC_Config_v1610                   `optional,ext-1`
+	Rlc_Config_v1700              *RLC_Config_v1700                   `optional,ext-2`
+	LogicalChannelIdentityExt_r17 *LogicalChannelIdentityExt_r17      `optional,ext-2`
+	MulticastRLC_BearerConfig_r17 *MulticastRLC_BearerConfig_r17      `optional,ext-2`
+	ServedRadioBearerSRB4_r17     *SRB_Identity_v1700                 `optional,ext-2`
 }
 
 func (ie *RLC_BearerConfig) Encode(w *uper.UperWriter) error {
 	var err error
-	hasExtensions := ie.rlc_Config_v1610 != nil || ie.rlc_Config_v1700 != nil || ie.logicalChannelIdentityExt_r17 != nil || ie.multicastRLC_BearerConfig_r17 != nil || ie.servedRadioBearerSRB4_r17 != nil
-	preambleBits := []bool{hasExtensions, ie.servedRadioBearer != nil, ie.reestablishRLC != nil, ie.rlc_Config != nil, ie.mac_LogicalChannelConfig != nil}
+	hasExtensions := ie.Rlc_Config_v1610 != nil || ie.Rlc_Config_v1700 != nil || ie.LogicalChannelIdentityExt_r17 != nil || ie.MulticastRLC_BearerConfig_r17 != nil || ie.ServedRadioBearerSRB4_r17 != nil
+	preambleBits := []bool{hasExtensions, ie.ServedRadioBearer != nil, ie.ReestablishRLC != nil, ie.Rlc_Config != nil, ie.Mac_LogicalChannelConfig != nil}
 	for _, bit := range preambleBits {
 		if err = w.WriteBool(bit); err != nil {
 			return err
 		}
 	}
-	if err = ie.logicalChannelIdentity.Encode(w); err != nil {
-		return utils.WrapError("Encode logicalChannelIdentity", err)
+	if err = ie.LogicalChannelIdentity.Encode(w); err != nil {
+		return utils.WrapError("Encode LogicalChannelIdentity", err)
 	}
-	if ie.servedRadioBearer != nil {
-		if err = ie.servedRadioBearer.Encode(w); err != nil {
-			return utils.WrapError("Encode servedRadioBearer", err)
+	if ie.ServedRadioBearer != nil {
+		if err = ie.ServedRadioBearer.Encode(w); err != nil {
+			return utils.WrapError("Encode ServedRadioBearer", err)
 		}
 	}
-	if ie.reestablishRLC != nil {
-		if err = ie.reestablishRLC.Encode(w); err != nil {
-			return utils.WrapError("Encode reestablishRLC", err)
+	if ie.ReestablishRLC != nil {
+		if err = ie.ReestablishRLC.Encode(w); err != nil {
+			return utils.WrapError("Encode ReestablishRLC", err)
 		}
 	}
-	if ie.rlc_Config != nil {
-		if err = ie.rlc_Config.Encode(w); err != nil {
-			return utils.WrapError("Encode rlc_Config", err)
+	if ie.Rlc_Config != nil {
+		if err = ie.Rlc_Config.Encode(w); err != nil {
+			return utils.WrapError("Encode Rlc_Config", err)
 		}
 	}
-	if ie.mac_LogicalChannelConfig != nil {
-		if err = ie.mac_LogicalChannelConfig.Encode(w); err != nil {
-			return utils.WrapError("Encode mac_LogicalChannelConfig", err)
+	if ie.Mac_LogicalChannelConfig != nil {
+		if err = ie.Mac_LogicalChannelConfig.Encode(w); err != nil {
+			return utils.WrapError("Encode Mac_LogicalChannelConfig", err)
 		}
 	}
 	if hasExtensions {
 		// Extension bitmap: 2 bits for 2 extension groups
-		extBitmap := []bool{ie.rlc_Config_v1610 != nil, ie.rlc_Config_v1700 != nil || ie.logicalChannelIdentityExt_r17 != nil || ie.multicastRLC_BearerConfig_r17 != nil || ie.servedRadioBearerSRB4_r17 != nil}
+		extBitmap := []bool{ie.Rlc_Config_v1610 != nil, ie.Rlc_Config_v1700 != nil || ie.LogicalChannelIdentityExt_r17 != nil || ie.MulticastRLC_BearerConfig_r17 != nil || ie.ServedRadioBearerSRB4_r17 != nil}
 		if err := w.WriteExtBitMap(extBitmap); err != nil {
 			return utils.WrapError("WriteExtBitMap RLC_BearerConfig", err)
 		}
@@ -65,17 +65,17 @@ func (ie *RLC_BearerConfig) Encode(w *uper.UperWriter) error {
 			extWriter := uper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 1
-			optionals_ext_1 := []bool{ie.rlc_Config_v1610 != nil}
+			optionals_ext_1 := []bool{ie.Rlc_Config_v1610 != nil}
 			for _, bit := range optionals_ext_1 {
 				if err := extWriter.WriteBool(bit); err != nil {
 					return err
 				}
 			}
 
-			// encode rlc_Config_v1610 optional
-			if ie.rlc_Config_v1610 != nil {
-				if err = ie.rlc_Config_v1610.Encode(extWriter); err != nil {
-					return utils.WrapError("Encode rlc_Config_v1610", err)
+			// encode Rlc_Config_v1610 optional
+			if ie.Rlc_Config_v1610 != nil {
+				if err = ie.Rlc_Config_v1610.Encode(extWriter); err != nil {
+					return utils.WrapError("Encode Rlc_Config_v1610", err)
 				}
 			}
 
@@ -94,35 +94,35 @@ func (ie *RLC_BearerConfig) Encode(w *uper.UperWriter) error {
 			extWriter := uper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 2
-			optionals_ext_2 := []bool{ie.rlc_Config_v1700 != nil, ie.logicalChannelIdentityExt_r17 != nil, ie.multicastRLC_BearerConfig_r17 != nil, ie.servedRadioBearerSRB4_r17 != nil}
+			optionals_ext_2 := []bool{ie.Rlc_Config_v1700 != nil, ie.LogicalChannelIdentityExt_r17 != nil, ie.MulticastRLC_BearerConfig_r17 != nil, ie.ServedRadioBearerSRB4_r17 != nil}
 			for _, bit := range optionals_ext_2 {
 				if err := extWriter.WriteBool(bit); err != nil {
 					return err
 				}
 			}
 
-			// encode rlc_Config_v1700 optional
-			if ie.rlc_Config_v1700 != nil {
-				if err = ie.rlc_Config_v1700.Encode(extWriter); err != nil {
-					return utils.WrapError("Encode rlc_Config_v1700", err)
+			// encode Rlc_Config_v1700 optional
+			if ie.Rlc_Config_v1700 != nil {
+				if err = ie.Rlc_Config_v1700.Encode(extWriter); err != nil {
+					return utils.WrapError("Encode Rlc_Config_v1700", err)
 				}
 			}
-			// encode logicalChannelIdentityExt_r17 optional
-			if ie.logicalChannelIdentityExt_r17 != nil {
-				if err = ie.logicalChannelIdentityExt_r17.Encode(extWriter); err != nil {
-					return utils.WrapError("Encode logicalChannelIdentityExt_r17", err)
+			// encode LogicalChannelIdentityExt_r17 optional
+			if ie.LogicalChannelIdentityExt_r17 != nil {
+				if err = ie.LogicalChannelIdentityExt_r17.Encode(extWriter); err != nil {
+					return utils.WrapError("Encode LogicalChannelIdentityExt_r17", err)
 				}
 			}
-			// encode multicastRLC_BearerConfig_r17 optional
-			if ie.multicastRLC_BearerConfig_r17 != nil {
-				if err = ie.multicastRLC_BearerConfig_r17.Encode(extWriter); err != nil {
-					return utils.WrapError("Encode multicastRLC_BearerConfig_r17", err)
+			// encode MulticastRLC_BearerConfig_r17 optional
+			if ie.MulticastRLC_BearerConfig_r17 != nil {
+				if err = ie.MulticastRLC_BearerConfig_r17.Encode(extWriter); err != nil {
+					return utils.WrapError("Encode MulticastRLC_BearerConfig_r17", err)
 				}
 			}
-			// encode servedRadioBearerSRB4_r17 optional
-			if ie.servedRadioBearerSRB4_r17 != nil {
-				if err = ie.servedRadioBearerSRB4_r17.Encode(extWriter); err != nil {
-					return utils.WrapError("Encode servedRadioBearerSRB4_r17", err)
+			// encode ServedRadioBearerSRB4_r17 optional
+			if ie.ServedRadioBearerSRB4_r17 != nil {
+				if err = ie.ServedRadioBearerSRB4_r17.Encode(extWriter); err != nil {
+					return utils.WrapError("Encode ServedRadioBearerSRB4_r17", err)
 				}
 			}
 
@@ -144,47 +144,47 @@ func (ie *RLC_BearerConfig) Decode(r *uper.UperReader) error {
 	if extensionBit, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var servedRadioBearerPresent bool
-	if servedRadioBearerPresent, err = r.ReadBool(); err != nil {
+	var ServedRadioBearerPresent bool
+	if ServedRadioBearerPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var reestablishRLCPresent bool
-	if reestablishRLCPresent, err = r.ReadBool(); err != nil {
+	var ReestablishRLCPresent bool
+	if ReestablishRLCPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var rlc_ConfigPresent bool
-	if rlc_ConfigPresent, err = r.ReadBool(); err != nil {
+	var Rlc_ConfigPresent bool
+	if Rlc_ConfigPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var mac_LogicalChannelConfigPresent bool
-	if mac_LogicalChannelConfigPresent, err = r.ReadBool(); err != nil {
+	var Mac_LogicalChannelConfigPresent bool
+	if Mac_LogicalChannelConfigPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	if err = ie.logicalChannelIdentity.Decode(r); err != nil {
-		return utils.WrapError("Decode logicalChannelIdentity", err)
+	if err = ie.LogicalChannelIdentity.Decode(r); err != nil {
+		return utils.WrapError("Decode LogicalChannelIdentity", err)
 	}
-	if servedRadioBearerPresent {
-		ie.servedRadioBearer = new(RLC_BearerConfig_servedRadioBearer)
-		if err = ie.servedRadioBearer.Decode(r); err != nil {
-			return utils.WrapError("Decode servedRadioBearer", err)
+	if ServedRadioBearerPresent {
+		ie.ServedRadioBearer = new(RLC_BearerConfig_servedRadioBearer)
+		if err = ie.ServedRadioBearer.Decode(r); err != nil {
+			return utils.WrapError("Decode ServedRadioBearer", err)
 		}
 	}
-	if reestablishRLCPresent {
-		ie.reestablishRLC = new(RLC_BearerConfig_reestablishRLC)
-		if err = ie.reestablishRLC.Decode(r); err != nil {
-			return utils.WrapError("Decode reestablishRLC", err)
+	if ReestablishRLCPresent {
+		ie.ReestablishRLC = new(RLC_BearerConfig_reestablishRLC)
+		if err = ie.ReestablishRLC.Decode(r); err != nil {
+			return utils.WrapError("Decode ReestablishRLC", err)
 		}
 	}
-	if rlc_ConfigPresent {
-		ie.rlc_Config = new(RLC_Config)
-		if err = ie.rlc_Config.Decode(r); err != nil {
-			return utils.WrapError("Decode rlc_Config", err)
+	if Rlc_ConfigPresent {
+		ie.Rlc_Config = new(RLC_Config)
+		if err = ie.Rlc_Config.Decode(r); err != nil {
+			return utils.WrapError("Decode Rlc_Config", err)
 		}
 	}
-	if mac_LogicalChannelConfigPresent {
-		ie.mac_LogicalChannelConfig = new(LogicalChannelConfig)
-		if err = ie.mac_LogicalChannelConfig.Decode(r); err != nil {
-			return utils.WrapError("Decode mac_LogicalChannelConfig", err)
+	if Mac_LogicalChannelConfigPresent {
+		ie.Mac_LogicalChannelConfig = new(LogicalChannelConfig)
+		if err = ie.Mac_LogicalChannelConfig.Decode(r); err != nil {
+			return utils.WrapError("Decode Mac_LogicalChannelConfig", err)
 		}
 	}
 
@@ -204,15 +204,15 @@ func (ie *RLC_BearerConfig) Decode(r *uper.UperReader) error {
 
 			extReader := uper.NewReader(bytes.NewReader(extBytes))
 
-			rlc_Config_v1610Present, err := extReader.ReadBool()
+			Rlc_Config_v1610Present, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			// decode rlc_Config_v1610 optional
-			if rlc_Config_v1610Present {
-				ie.rlc_Config_v1610 = new(RLC_Config_v1610)
-				if err = ie.rlc_Config_v1610.Decode(extReader); err != nil {
-					return utils.WrapError("Decode rlc_Config_v1610", err)
+			// decode Rlc_Config_v1610 optional
+			if Rlc_Config_v1610Present {
+				ie.Rlc_Config_v1610 = new(RLC_Config_v1610)
+				if err = ie.Rlc_Config_v1610.Decode(extReader); err != nil {
+					return utils.WrapError("Decode Rlc_Config_v1610", err)
 				}
 			}
 		}
@@ -225,48 +225,48 @@ func (ie *RLC_BearerConfig) Decode(r *uper.UperReader) error {
 
 			extReader := uper.NewReader(bytes.NewReader(extBytes))
 
-			rlc_Config_v1700Present, err := extReader.ReadBool()
+			Rlc_Config_v1700Present, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			logicalChannelIdentityExt_r17Present, err := extReader.ReadBool()
+			LogicalChannelIdentityExt_r17Present, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			multicastRLC_BearerConfig_r17Present, err := extReader.ReadBool()
+			MulticastRLC_BearerConfig_r17Present, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			servedRadioBearerSRB4_r17Present, err := extReader.ReadBool()
+			ServedRadioBearerSRB4_r17Present, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			// decode rlc_Config_v1700 optional
-			if rlc_Config_v1700Present {
-				ie.rlc_Config_v1700 = new(RLC_Config_v1700)
-				if err = ie.rlc_Config_v1700.Decode(extReader); err != nil {
-					return utils.WrapError("Decode rlc_Config_v1700", err)
+			// decode Rlc_Config_v1700 optional
+			if Rlc_Config_v1700Present {
+				ie.Rlc_Config_v1700 = new(RLC_Config_v1700)
+				if err = ie.Rlc_Config_v1700.Decode(extReader); err != nil {
+					return utils.WrapError("Decode Rlc_Config_v1700", err)
 				}
 			}
-			// decode logicalChannelIdentityExt_r17 optional
-			if logicalChannelIdentityExt_r17Present {
-				ie.logicalChannelIdentityExt_r17 = new(LogicalChannelIdentityExt_r17)
-				if err = ie.logicalChannelIdentityExt_r17.Decode(extReader); err != nil {
-					return utils.WrapError("Decode logicalChannelIdentityExt_r17", err)
+			// decode LogicalChannelIdentityExt_r17 optional
+			if LogicalChannelIdentityExt_r17Present {
+				ie.LogicalChannelIdentityExt_r17 = new(LogicalChannelIdentityExt_r17)
+				if err = ie.LogicalChannelIdentityExt_r17.Decode(extReader); err != nil {
+					return utils.WrapError("Decode LogicalChannelIdentityExt_r17", err)
 				}
 			}
-			// decode multicastRLC_BearerConfig_r17 optional
-			if multicastRLC_BearerConfig_r17Present {
-				ie.multicastRLC_BearerConfig_r17 = new(MulticastRLC_BearerConfig_r17)
-				if err = ie.multicastRLC_BearerConfig_r17.Decode(extReader); err != nil {
-					return utils.WrapError("Decode multicastRLC_BearerConfig_r17", err)
+			// decode MulticastRLC_BearerConfig_r17 optional
+			if MulticastRLC_BearerConfig_r17Present {
+				ie.MulticastRLC_BearerConfig_r17 = new(MulticastRLC_BearerConfig_r17)
+				if err = ie.MulticastRLC_BearerConfig_r17.Decode(extReader); err != nil {
+					return utils.WrapError("Decode MulticastRLC_BearerConfig_r17", err)
 				}
 			}
-			// decode servedRadioBearerSRB4_r17 optional
-			if servedRadioBearerSRB4_r17Present {
-				ie.servedRadioBearerSRB4_r17 = new(SRB_Identity_v1700)
-				if err = ie.servedRadioBearerSRB4_r17.Decode(extReader); err != nil {
-					return utils.WrapError("Decode servedRadioBearerSRB4_r17", err)
+			// decode ServedRadioBearerSRB4_r17 optional
+			if ServedRadioBearerSRB4_r17Present {
+				ie.ServedRadioBearerSRB4_r17 = new(SRB_Identity_v1700)
+				if err = ie.ServedRadioBearerSRB4_r17.Decode(extReader); err != nil {
+					return utils.WrapError("Decode ServedRadioBearerSRB4_r17", err)
 				}
 			}
 		}

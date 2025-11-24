@@ -8,25 +8,25 @@ import (
 )
 
 type MeasResultSCG_Failure struct {
-	measResultPerMOList MeasResultList2NR `madatory`
-	locationInfo_r16    *LocationInfo_r16 `optional,ext-1`
+	MeasResultPerMOList MeasResultList2NR `madatory`
+	LocationInfo_r16    *LocationInfo_r16 `optional,ext-1`
 }
 
 func (ie *MeasResultSCG_Failure) Encode(w *uper.UperWriter) error {
 	var err error
-	hasExtensions := ie.locationInfo_r16 != nil
+	hasExtensions := ie.LocationInfo_r16 != nil
 	preambleBits := []bool{hasExtensions}
 	for _, bit := range preambleBits {
 		if err = w.WriteBool(bit); err != nil {
 			return err
 		}
 	}
-	if err = ie.measResultPerMOList.Encode(w); err != nil {
-		return utils.WrapError("Encode measResultPerMOList", err)
+	if err = ie.MeasResultPerMOList.Encode(w); err != nil {
+		return utils.WrapError("Encode MeasResultPerMOList", err)
 	}
 	if hasExtensions {
 		// Extension bitmap: 1 bits for 1 extension groups
-		extBitmap := []bool{ie.locationInfo_r16 != nil}
+		extBitmap := []bool{ie.LocationInfo_r16 != nil}
 		if err := w.WriteExtBitMap(extBitmap); err != nil {
 			return utils.WrapError("WriteExtBitMap MeasResultSCG_Failure", err)
 		}
@@ -37,17 +37,17 @@ func (ie *MeasResultSCG_Failure) Encode(w *uper.UperWriter) error {
 			extWriter := uper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 1
-			optionals_ext_1 := []bool{ie.locationInfo_r16 != nil}
+			optionals_ext_1 := []bool{ie.LocationInfo_r16 != nil}
 			for _, bit := range optionals_ext_1 {
 				if err := extWriter.WriteBool(bit); err != nil {
 					return err
 				}
 			}
 
-			// encode locationInfo_r16 optional
-			if ie.locationInfo_r16 != nil {
-				if err = ie.locationInfo_r16.Encode(extWriter); err != nil {
-					return utils.WrapError("Encode locationInfo_r16", err)
+			// encode LocationInfo_r16 optional
+			if ie.LocationInfo_r16 != nil {
+				if err = ie.LocationInfo_r16.Encode(extWriter); err != nil {
+					return utils.WrapError("Encode LocationInfo_r16", err)
 				}
 			}
 
@@ -69,8 +69,8 @@ func (ie *MeasResultSCG_Failure) Decode(r *uper.UperReader) error {
 	if extensionBit, err = r.ReadBool(); err != nil {
 		return err
 	}
-	if err = ie.measResultPerMOList.Decode(r); err != nil {
-		return utils.WrapError("Decode measResultPerMOList", err)
+	if err = ie.MeasResultPerMOList.Decode(r); err != nil {
+		return utils.WrapError("Decode MeasResultPerMOList", err)
 	}
 
 	if extensionBit {
@@ -89,15 +89,15 @@ func (ie *MeasResultSCG_Failure) Decode(r *uper.UperReader) error {
 
 			extReader := uper.NewReader(bytes.NewReader(extBytes))
 
-			locationInfo_r16Present, err := extReader.ReadBool()
+			LocationInfo_r16Present, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			// decode locationInfo_r16 optional
-			if locationInfo_r16Present {
-				ie.locationInfo_r16 = new(LocationInfo_r16)
-				if err = ie.locationInfo_r16.Decode(extReader); err != nil {
-					return utils.WrapError("Decode locationInfo_r16", err)
+			// decode LocationInfo_r16 optional
+			if LocationInfo_r16Present {
+				ie.LocationInfo_r16 = new(LocationInfo_r16)
+				if err = ie.LocationInfo_r16.Decode(extReader); err != nil {
+					return utils.WrapError("Decode LocationInfo_r16", err)
 				}
 			}
 		}

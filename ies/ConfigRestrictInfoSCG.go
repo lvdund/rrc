@@ -8,67 +8,67 @@ import (
 )
 
 type ConfigRestrictInfoSCG struct {
-	allowedBC_ListMRDC                     *BandCombinationInfoList                         `optional`
-	powerCoordination_FR1                  *ConfigRestrictInfoSCG_powerCoordination_FR1     `optional`
-	servCellIndexRangeSCG                  *ConfigRestrictInfoSCG_servCellIndexRangeSCG     `optional`
-	maxMeasFreqsSCG                        *int64                                           `lb:1,ub:maxMeasFreqsMN,optional`
-	dummy                                  *int64                                           `lb:1,ub:maxMeasIdentitiesMN,optional`
-	selectedBandEntriesMNList              []SelectedBandEntriesMN                          `lb:1,ub:maxBandComb,optional,ext-1`
-	pdcch_BlindDetectionSCG                *int64                                           `lb:1,ub:15,optional,ext-1`
-	maxNumberROHC_ContextSessionsSN        *int64                                           `lb:0,ub:16384,optional,ext-1`
-	maxIntraFreqMeasIdentitiesSCG          *int64                                           `lb:1,ub:maxMeasIdentitiesMN,optional,ext-2`
-	maxInterFreqMeasIdentitiesSCG          *int64                                           `lb:1,ub:maxMeasIdentitiesMN,optional,ext-2`
-	p_maxNR_FR1_MCG_r16                    *P_Max                                           `optional,ext-3`
-	powerCoordination_FR2_r16              *ConfigRestrictInfoSCG_powerCoordination_FR2_r16 `optional,ext-3`
-	nrdc_PC_mode_FR1_r16                   *ConfigRestrictInfoSCG_nrdc_PC_mode_FR1_r16      `optional,ext-3`
-	nrdc_PC_mode_FR2_r16                   *ConfigRestrictInfoSCG_nrdc_PC_mode_FR2_r16      `optional,ext-3`
-	maxMeasSRS_ResourceSCG_r16             *int64                                           `lb:0,ub:maxNrofCLI_SRS_Resources_r16,optional,ext-3`
-	maxMeasCLI_ResourceSCG_r16             *int64                                           `lb:0,ub:maxNrofCLI_RSSI_Resources_r16,optional,ext-3`
-	maxNumberEHC_ContextsSN_r16            *int64                                           `lb:0,ub:65536,optional,ext-3`
-	allowedReducedConfigForOverheating_r16 *OverheatingAssistance                           `optional,ext-3`
-	maxToffset_r16                         *T_Offset_r16                                    `optional,ext-3`
-	allowedReducedConfigForOverheating_r17 *OverheatingAssistance_r17                       `optional,ext-4`
-	maxNumberUDC_DRB_r17                   *int64                                           `lb:0,ub:2,optional,ext-4`
-	maxNumberCPCCandidates_r17             *int64                                           `lb:0,ub:maxNrofCondCells_1_r17,optional,ext-4`
+	AllowedBC_ListMRDC                     *BandCombinationInfoList                         `optional`
+	PowerCoordination_FR1                  *ConfigRestrictInfoSCG_powerCoordination_FR1     `optional`
+	ServCellIndexRangeSCG                  *ConfigRestrictInfoSCG_servCellIndexRangeSCG     `optional`
+	MaxMeasFreqsSCG                        *int64                                           `lb:1,ub:maxMeasFreqsMN,optional`
+	Dummy                                  *int64                                           `lb:1,ub:maxMeasIdentitiesMN,optional`
+	SelectedBandEntriesMNList              []SelectedBandEntriesMN                          `lb:1,ub:maxBandComb,optional,ext-1`
+	Pdcch_BlindDetectionSCG                *int64                                           `lb:1,ub:15,optional,ext-1`
+	MaxNumberROHC_ContextSessionsSN        *int64                                           `lb:0,ub:16384,optional,ext-1`
+	MaxIntraFreqMeasIdentitiesSCG          *int64                                           `lb:1,ub:maxMeasIdentitiesMN,optional,ext-2`
+	MaxInterFreqMeasIdentitiesSCG          *int64                                           `lb:1,ub:maxMeasIdentitiesMN,optional,ext-2`
+	P_maxNR_FR1_MCG_r16                    *P_Max                                           `optional,ext-3`
+	PowerCoordination_FR2_r16              *ConfigRestrictInfoSCG_powerCoordination_FR2_r16 `optional,ext-3`
+	Nrdc_PC_mode_FR1_r16                   *ConfigRestrictInfoSCG_nrdc_PC_mode_FR1_r16      `optional,ext-3`
+	Nrdc_PC_mode_FR2_r16                   *ConfigRestrictInfoSCG_nrdc_PC_mode_FR2_r16      `optional,ext-3`
+	MaxMeasSRS_ResourceSCG_r16             *int64                                           `lb:0,ub:maxNrofCLI_SRS_Resources_r16,optional,ext-3`
+	MaxMeasCLI_ResourceSCG_r16             *int64                                           `lb:0,ub:maxNrofCLI_RSSI_Resources_r16,optional,ext-3`
+	MaxNumberEHC_ContextsSN_r16            *int64                                           `lb:0,ub:65536,optional,ext-3`
+	AllowedReducedConfigForOverheating_r16 *OverheatingAssistance                           `optional,ext-3`
+	MaxToffset_r16                         *T_Offset_r16                                    `optional,ext-3`
+	AllowedReducedConfigForOverheating_r17 *OverheatingAssistance_r17                       `optional,ext-4`
+	MaxNumberUDC_DRB_r17                   *int64                                           `lb:0,ub:2,optional,ext-4`
+	MaxNumberCPCCandidates_r17             *int64                                           `lb:0,ub:maxNrofCondCells_1_r17,optional,ext-4`
 }
 
 func (ie *ConfigRestrictInfoSCG) Encode(w *uper.UperWriter) error {
 	var err error
-	hasExtensions := len(ie.selectedBandEntriesMNList) > 0 || ie.pdcch_BlindDetectionSCG != nil || ie.maxNumberROHC_ContextSessionsSN != nil || ie.maxIntraFreqMeasIdentitiesSCG != nil || ie.maxInterFreqMeasIdentitiesSCG != nil || ie.p_maxNR_FR1_MCG_r16 != nil || ie.powerCoordination_FR2_r16 != nil || ie.nrdc_PC_mode_FR1_r16 != nil || ie.nrdc_PC_mode_FR2_r16 != nil || ie.maxMeasSRS_ResourceSCG_r16 != nil || ie.maxMeasCLI_ResourceSCG_r16 != nil || ie.maxNumberEHC_ContextsSN_r16 != nil || ie.allowedReducedConfigForOverheating_r16 != nil || ie.maxToffset_r16 != nil || ie.allowedReducedConfigForOverheating_r17 != nil || ie.maxNumberUDC_DRB_r17 != nil || ie.maxNumberCPCCandidates_r17 != nil
-	preambleBits := []bool{hasExtensions, ie.allowedBC_ListMRDC != nil, ie.powerCoordination_FR1 != nil, ie.servCellIndexRangeSCG != nil, ie.maxMeasFreqsSCG != nil, ie.dummy != nil}
+	hasExtensions := len(ie.SelectedBandEntriesMNList) > 0 || ie.Pdcch_BlindDetectionSCG != nil || ie.MaxNumberROHC_ContextSessionsSN != nil || ie.MaxIntraFreqMeasIdentitiesSCG != nil || ie.MaxInterFreqMeasIdentitiesSCG != nil || ie.P_maxNR_FR1_MCG_r16 != nil || ie.PowerCoordination_FR2_r16 != nil || ie.Nrdc_PC_mode_FR1_r16 != nil || ie.Nrdc_PC_mode_FR2_r16 != nil || ie.MaxMeasSRS_ResourceSCG_r16 != nil || ie.MaxMeasCLI_ResourceSCG_r16 != nil || ie.MaxNumberEHC_ContextsSN_r16 != nil || ie.AllowedReducedConfigForOverheating_r16 != nil || ie.MaxToffset_r16 != nil || ie.AllowedReducedConfigForOverheating_r17 != nil || ie.MaxNumberUDC_DRB_r17 != nil || ie.MaxNumberCPCCandidates_r17 != nil
+	preambleBits := []bool{hasExtensions, ie.AllowedBC_ListMRDC != nil, ie.PowerCoordination_FR1 != nil, ie.ServCellIndexRangeSCG != nil, ie.MaxMeasFreqsSCG != nil, ie.Dummy != nil}
 	for _, bit := range preambleBits {
 		if err = w.WriteBool(bit); err != nil {
 			return err
 		}
 	}
-	if ie.allowedBC_ListMRDC != nil {
-		if err = ie.allowedBC_ListMRDC.Encode(w); err != nil {
-			return utils.WrapError("Encode allowedBC_ListMRDC", err)
+	if ie.AllowedBC_ListMRDC != nil {
+		if err = ie.AllowedBC_ListMRDC.Encode(w); err != nil {
+			return utils.WrapError("Encode AllowedBC_ListMRDC", err)
 		}
 	}
-	if ie.powerCoordination_FR1 != nil {
-		if err = ie.powerCoordination_FR1.Encode(w); err != nil {
-			return utils.WrapError("Encode powerCoordination_FR1", err)
+	if ie.PowerCoordination_FR1 != nil {
+		if err = ie.PowerCoordination_FR1.Encode(w); err != nil {
+			return utils.WrapError("Encode PowerCoordination_FR1", err)
 		}
 	}
-	if ie.servCellIndexRangeSCG != nil {
-		if err = ie.servCellIndexRangeSCG.Encode(w); err != nil {
-			return utils.WrapError("Encode servCellIndexRangeSCG", err)
+	if ie.ServCellIndexRangeSCG != nil {
+		if err = ie.ServCellIndexRangeSCG.Encode(w); err != nil {
+			return utils.WrapError("Encode ServCellIndexRangeSCG", err)
 		}
 	}
-	if ie.maxMeasFreqsSCG != nil {
-		if err = w.WriteInteger(*ie.maxMeasFreqsSCG, &uper.Constraint{Lb: 1, Ub: maxMeasFreqsMN}, false); err != nil {
-			return utils.WrapError("Encode maxMeasFreqsSCG", err)
+	if ie.MaxMeasFreqsSCG != nil {
+		if err = w.WriteInteger(*ie.MaxMeasFreqsSCG, &uper.Constraint{Lb: 1, Ub: maxMeasFreqsMN}, false); err != nil {
+			return utils.WrapError("Encode MaxMeasFreqsSCG", err)
 		}
 	}
-	if ie.dummy != nil {
-		if err = w.WriteInteger(*ie.dummy, &uper.Constraint{Lb: 1, Ub: maxMeasIdentitiesMN}, false); err != nil {
-			return utils.WrapError("Encode dummy", err)
+	if ie.Dummy != nil {
+		if err = w.WriteInteger(*ie.Dummy, &uper.Constraint{Lb: 1, Ub: maxMeasIdentitiesMN}, false); err != nil {
+			return utils.WrapError("Encode Dummy", err)
 		}
 	}
 	if hasExtensions {
 		// Extension bitmap: 4 bits for 4 extension groups
-		extBitmap := []bool{len(ie.selectedBandEntriesMNList) > 0 || ie.pdcch_BlindDetectionSCG != nil || ie.maxNumberROHC_ContextSessionsSN != nil, ie.maxIntraFreqMeasIdentitiesSCG != nil || ie.maxInterFreqMeasIdentitiesSCG != nil, ie.p_maxNR_FR1_MCG_r16 != nil || ie.powerCoordination_FR2_r16 != nil || ie.nrdc_PC_mode_FR1_r16 != nil || ie.nrdc_PC_mode_FR2_r16 != nil || ie.maxMeasSRS_ResourceSCG_r16 != nil || ie.maxMeasCLI_ResourceSCG_r16 != nil || ie.maxNumberEHC_ContextsSN_r16 != nil || ie.allowedReducedConfigForOverheating_r16 != nil || ie.maxToffset_r16 != nil, ie.allowedReducedConfigForOverheating_r17 != nil || ie.maxNumberUDC_DRB_r17 != nil || ie.maxNumberCPCCandidates_r17 != nil}
+		extBitmap := []bool{len(ie.SelectedBandEntriesMNList) > 0 || ie.Pdcch_BlindDetectionSCG != nil || ie.MaxNumberROHC_ContextSessionsSN != nil, ie.MaxIntraFreqMeasIdentitiesSCG != nil || ie.MaxInterFreqMeasIdentitiesSCG != nil, ie.P_maxNR_FR1_MCG_r16 != nil || ie.PowerCoordination_FR2_r16 != nil || ie.Nrdc_PC_mode_FR1_r16 != nil || ie.Nrdc_PC_mode_FR2_r16 != nil || ie.MaxMeasSRS_ResourceSCG_r16 != nil || ie.MaxMeasCLI_ResourceSCG_r16 != nil || ie.MaxNumberEHC_ContextsSN_r16 != nil || ie.AllowedReducedConfigForOverheating_r16 != nil || ie.MaxToffset_r16 != nil, ie.AllowedReducedConfigForOverheating_r17 != nil || ie.MaxNumberUDC_DRB_r17 != nil || ie.MaxNumberCPCCandidates_r17 != nil}
 		if err := w.WriteExtBitMap(extBitmap); err != nil {
 			return utils.WrapError("WriteExtBitMap ConfigRestrictInfoSCG", err)
 		}
@@ -79,33 +79,33 @@ func (ie *ConfigRestrictInfoSCG) Encode(w *uper.UperWriter) error {
 			extWriter := uper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 1
-			optionals_ext_1 := []bool{len(ie.selectedBandEntriesMNList) > 0, ie.pdcch_BlindDetectionSCG != nil, ie.maxNumberROHC_ContextSessionsSN != nil}
+			optionals_ext_1 := []bool{len(ie.SelectedBandEntriesMNList) > 0, ie.Pdcch_BlindDetectionSCG != nil, ie.MaxNumberROHC_ContextSessionsSN != nil}
 			for _, bit := range optionals_ext_1 {
 				if err := extWriter.WriteBool(bit); err != nil {
 					return err
 				}
 			}
 
-			// encode selectedBandEntriesMNList optional
-			if len(ie.selectedBandEntriesMNList) > 0 {
-				tmp_selectedBandEntriesMNList := utils.NewSequence[*SelectedBandEntriesMN]([]*SelectedBandEntriesMN{}, uper.Constraint{Lb: 1, Ub: maxBandComb}, false)
-				for _, i := range ie.selectedBandEntriesMNList {
-					tmp_selectedBandEntriesMNList.Value = append(tmp_selectedBandEntriesMNList.Value, &i)
+			// encode SelectedBandEntriesMNList optional
+			if len(ie.SelectedBandEntriesMNList) > 0 {
+				tmp_SelectedBandEntriesMNList := utils.NewSequence[*SelectedBandEntriesMN]([]*SelectedBandEntriesMN{}, uper.Constraint{Lb: 1, Ub: maxBandComb}, false)
+				for _, i := range ie.SelectedBandEntriesMNList {
+					tmp_SelectedBandEntriesMNList.Value = append(tmp_SelectedBandEntriesMNList.Value, &i)
 				}
-				if err = tmp_selectedBandEntriesMNList.Encode(extWriter); err != nil {
-					return utils.WrapError("Encode selectedBandEntriesMNList", err)
-				}
-			}
-			// encode pdcch_BlindDetectionSCG optional
-			if ie.pdcch_BlindDetectionSCG != nil {
-				if err = extWriter.WriteInteger(*ie.pdcch_BlindDetectionSCG, &uper.Constraint{Lb: 1, Ub: 15}, false); err != nil {
-					return utils.WrapError("Encode pdcch_BlindDetectionSCG", err)
+				if err = tmp_SelectedBandEntriesMNList.Encode(extWriter); err != nil {
+					return utils.WrapError("Encode SelectedBandEntriesMNList", err)
 				}
 			}
-			// encode maxNumberROHC_ContextSessionsSN optional
-			if ie.maxNumberROHC_ContextSessionsSN != nil {
-				if err = extWriter.WriteInteger(*ie.maxNumberROHC_ContextSessionsSN, &uper.Constraint{Lb: 0, Ub: 16384}, false); err != nil {
-					return utils.WrapError("Encode maxNumberROHC_ContextSessionsSN", err)
+			// encode Pdcch_BlindDetectionSCG optional
+			if ie.Pdcch_BlindDetectionSCG != nil {
+				if err = extWriter.WriteInteger(*ie.Pdcch_BlindDetectionSCG, &uper.Constraint{Lb: 1, Ub: 15}, false); err != nil {
+					return utils.WrapError("Encode Pdcch_BlindDetectionSCG", err)
+				}
+			}
+			// encode MaxNumberROHC_ContextSessionsSN optional
+			if ie.MaxNumberROHC_ContextSessionsSN != nil {
+				if err = extWriter.WriteInteger(*ie.MaxNumberROHC_ContextSessionsSN, &uper.Constraint{Lb: 0, Ub: 16384}, false); err != nil {
+					return utils.WrapError("Encode MaxNumberROHC_ContextSessionsSN", err)
 				}
 			}
 
@@ -124,23 +124,23 @@ func (ie *ConfigRestrictInfoSCG) Encode(w *uper.UperWriter) error {
 			extWriter := uper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 2
-			optionals_ext_2 := []bool{ie.maxIntraFreqMeasIdentitiesSCG != nil, ie.maxInterFreqMeasIdentitiesSCG != nil}
+			optionals_ext_2 := []bool{ie.MaxIntraFreqMeasIdentitiesSCG != nil, ie.MaxInterFreqMeasIdentitiesSCG != nil}
 			for _, bit := range optionals_ext_2 {
 				if err := extWriter.WriteBool(bit); err != nil {
 					return err
 				}
 			}
 
-			// encode maxIntraFreqMeasIdentitiesSCG optional
-			if ie.maxIntraFreqMeasIdentitiesSCG != nil {
-				if err = extWriter.WriteInteger(*ie.maxIntraFreqMeasIdentitiesSCG, &uper.Constraint{Lb: 1, Ub: maxMeasIdentitiesMN}, false); err != nil {
-					return utils.WrapError("Encode maxIntraFreqMeasIdentitiesSCG", err)
+			// encode MaxIntraFreqMeasIdentitiesSCG optional
+			if ie.MaxIntraFreqMeasIdentitiesSCG != nil {
+				if err = extWriter.WriteInteger(*ie.MaxIntraFreqMeasIdentitiesSCG, &uper.Constraint{Lb: 1, Ub: maxMeasIdentitiesMN}, false); err != nil {
+					return utils.WrapError("Encode MaxIntraFreqMeasIdentitiesSCG", err)
 				}
 			}
-			// encode maxInterFreqMeasIdentitiesSCG optional
-			if ie.maxInterFreqMeasIdentitiesSCG != nil {
-				if err = extWriter.WriteInteger(*ie.maxInterFreqMeasIdentitiesSCG, &uper.Constraint{Lb: 1, Ub: maxMeasIdentitiesMN}, false); err != nil {
-					return utils.WrapError("Encode maxInterFreqMeasIdentitiesSCG", err)
+			// encode MaxInterFreqMeasIdentitiesSCG optional
+			if ie.MaxInterFreqMeasIdentitiesSCG != nil {
+				if err = extWriter.WriteInteger(*ie.MaxInterFreqMeasIdentitiesSCG, &uper.Constraint{Lb: 1, Ub: maxMeasIdentitiesMN}, false); err != nil {
+					return utils.WrapError("Encode MaxInterFreqMeasIdentitiesSCG", err)
 				}
 			}
 
@@ -159,65 +159,65 @@ func (ie *ConfigRestrictInfoSCG) Encode(w *uper.UperWriter) error {
 			extWriter := uper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 3
-			optionals_ext_3 := []bool{ie.p_maxNR_FR1_MCG_r16 != nil, ie.powerCoordination_FR2_r16 != nil, ie.nrdc_PC_mode_FR1_r16 != nil, ie.nrdc_PC_mode_FR2_r16 != nil, ie.maxMeasSRS_ResourceSCG_r16 != nil, ie.maxMeasCLI_ResourceSCG_r16 != nil, ie.maxNumberEHC_ContextsSN_r16 != nil, ie.allowedReducedConfigForOverheating_r16 != nil, ie.maxToffset_r16 != nil}
+			optionals_ext_3 := []bool{ie.P_maxNR_FR1_MCG_r16 != nil, ie.PowerCoordination_FR2_r16 != nil, ie.Nrdc_PC_mode_FR1_r16 != nil, ie.Nrdc_PC_mode_FR2_r16 != nil, ie.MaxMeasSRS_ResourceSCG_r16 != nil, ie.MaxMeasCLI_ResourceSCG_r16 != nil, ie.MaxNumberEHC_ContextsSN_r16 != nil, ie.AllowedReducedConfigForOverheating_r16 != nil, ie.MaxToffset_r16 != nil}
 			for _, bit := range optionals_ext_3 {
 				if err := extWriter.WriteBool(bit); err != nil {
 					return err
 				}
 			}
 
-			// encode p_maxNR_FR1_MCG_r16 optional
-			if ie.p_maxNR_FR1_MCG_r16 != nil {
-				if err = ie.p_maxNR_FR1_MCG_r16.Encode(extWriter); err != nil {
-					return utils.WrapError("Encode p_maxNR_FR1_MCG_r16", err)
+			// encode P_maxNR_FR1_MCG_r16 optional
+			if ie.P_maxNR_FR1_MCG_r16 != nil {
+				if err = ie.P_maxNR_FR1_MCG_r16.Encode(extWriter); err != nil {
+					return utils.WrapError("Encode P_maxNR_FR1_MCG_r16", err)
 				}
 			}
-			// encode powerCoordination_FR2_r16 optional
-			if ie.powerCoordination_FR2_r16 != nil {
-				if err = ie.powerCoordination_FR2_r16.Encode(extWriter); err != nil {
-					return utils.WrapError("Encode powerCoordination_FR2_r16", err)
+			// encode PowerCoordination_FR2_r16 optional
+			if ie.PowerCoordination_FR2_r16 != nil {
+				if err = ie.PowerCoordination_FR2_r16.Encode(extWriter); err != nil {
+					return utils.WrapError("Encode PowerCoordination_FR2_r16", err)
 				}
 			}
-			// encode nrdc_PC_mode_FR1_r16 optional
-			if ie.nrdc_PC_mode_FR1_r16 != nil {
-				if err = ie.nrdc_PC_mode_FR1_r16.Encode(extWriter); err != nil {
-					return utils.WrapError("Encode nrdc_PC_mode_FR1_r16", err)
+			// encode Nrdc_PC_mode_FR1_r16 optional
+			if ie.Nrdc_PC_mode_FR1_r16 != nil {
+				if err = ie.Nrdc_PC_mode_FR1_r16.Encode(extWriter); err != nil {
+					return utils.WrapError("Encode Nrdc_PC_mode_FR1_r16", err)
 				}
 			}
-			// encode nrdc_PC_mode_FR2_r16 optional
-			if ie.nrdc_PC_mode_FR2_r16 != nil {
-				if err = ie.nrdc_PC_mode_FR2_r16.Encode(extWriter); err != nil {
-					return utils.WrapError("Encode nrdc_PC_mode_FR2_r16", err)
+			// encode Nrdc_PC_mode_FR2_r16 optional
+			if ie.Nrdc_PC_mode_FR2_r16 != nil {
+				if err = ie.Nrdc_PC_mode_FR2_r16.Encode(extWriter); err != nil {
+					return utils.WrapError("Encode Nrdc_PC_mode_FR2_r16", err)
 				}
 			}
-			// encode maxMeasSRS_ResourceSCG_r16 optional
-			if ie.maxMeasSRS_ResourceSCG_r16 != nil {
-				if err = extWriter.WriteInteger(*ie.maxMeasSRS_ResourceSCG_r16, &uper.Constraint{Lb: 0, Ub: maxNrofCLI_SRS_Resources_r16}, false); err != nil {
-					return utils.WrapError("Encode maxMeasSRS_ResourceSCG_r16", err)
+			// encode MaxMeasSRS_ResourceSCG_r16 optional
+			if ie.MaxMeasSRS_ResourceSCG_r16 != nil {
+				if err = extWriter.WriteInteger(*ie.MaxMeasSRS_ResourceSCG_r16, &uper.Constraint{Lb: 0, Ub: maxNrofCLI_SRS_Resources_r16}, false); err != nil {
+					return utils.WrapError("Encode MaxMeasSRS_ResourceSCG_r16", err)
 				}
 			}
-			// encode maxMeasCLI_ResourceSCG_r16 optional
-			if ie.maxMeasCLI_ResourceSCG_r16 != nil {
-				if err = extWriter.WriteInteger(*ie.maxMeasCLI_ResourceSCG_r16, &uper.Constraint{Lb: 0, Ub: maxNrofCLI_RSSI_Resources_r16}, false); err != nil {
-					return utils.WrapError("Encode maxMeasCLI_ResourceSCG_r16", err)
+			// encode MaxMeasCLI_ResourceSCG_r16 optional
+			if ie.MaxMeasCLI_ResourceSCG_r16 != nil {
+				if err = extWriter.WriteInteger(*ie.MaxMeasCLI_ResourceSCG_r16, &uper.Constraint{Lb: 0, Ub: maxNrofCLI_RSSI_Resources_r16}, false); err != nil {
+					return utils.WrapError("Encode MaxMeasCLI_ResourceSCG_r16", err)
 				}
 			}
-			// encode maxNumberEHC_ContextsSN_r16 optional
-			if ie.maxNumberEHC_ContextsSN_r16 != nil {
-				if err = extWriter.WriteInteger(*ie.maxNumberEHC_ContextsSN_r16, &uper.Constraint{Lb: 0, Ub: 65536}, false); err != nil {
-					return utils.WrapError("Encode maxNumberEHC_ContextsSN_r16", err)
+			// encode MaxNumberEHC_ContextsSN_r16 optional
+			if ie.MaxNumberEHC_ContextsSN_r16 != nil {
+				if err = extWriter.WriteInteger(*ie.MaxNumberEHC_ContextsSN_r16, &uper.Constraint{Lb: 0, Ub: 65536}, false); err != nil {
+					return utils.WrapError("Encode MaxNumberEHC_ContextsSN_r16", err)
 				}
 			}
-			// encode allowedReducedConfigForOverheating_r16 optional
-			if ie.allowedReducedConfigForOverheating_r16 != nil {
-				if err = ie.allowedReducedConfigForOverheating_r16.Encode(extWriter); err != nil {
-					return utils.WrapError("Encode allowedReducedConfigForOverheating_r16", err)
+			// encode AllowedReducedConfigForOverheating_r16 optional
+			if ie.AllowedReducedConfigForOverheating_r16 != nil {
+				if err = ie.AllowedReducedConfigForOverheating_r16.Encode(extWriter); err != nil {
+					return utils.WrapError("Encode AllowedReducedConfigForOverheating_r16", err)
 				}
 			}
-			// encode maxToffset_r16 optional
-			if ie.maxToffset_r16 != nil {
-				if err = ie.maxToffset_r16.Encode(extWriter); err != nil {
-					return utils.WrapError("Encode maxToffset_r16", err)
+			// encode MaxToffset_r16 optional
+			if ie.MaxToffset_r16 != nil {
+				if err = ie.MaxToffset_r16.Encode(extWriter); err != nil {
+					return utils.WrapError("Encode MaxToffset_r16", err)
 				}
 			}
 
@@ -236,29 +236,29 @@ func (ie *ConfigRestrictInfoSCG) Encode(w *uper.UperWriter) error {
 			extWriter := uper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 4
-			optionals_ext_4 := []bool{ie.allowedReducedConfigForOverheating_r17 != nil, ie.maxNumberUDC_DRB_r17 != nil, ie.maxNumberCPCCandidates_r17 != nil}
+			optionals_ext_4 := []bool{ie.AllowedReducedConfigForOverheating_r17 != nil, ie.MaxNumberUDC_DRB_r17 != nil, ie.MaxNumberCPCCandidates_r17 != nil}
 			for _, bit := range optionals_ext_4 {
 				if err := extWriter.WriteBool(bit); err != nil {
 					return err
 				}
 			}
 
-			// encode allowedReducedConfigForOverheating_r17 optional
-			if ie.allowedReducedConfigForOverheating_r17 != nil {
-				if err = ie.allowedReducedConfigForOverheating_r17.Encode(extWriter); err != nil {
-					return utils.WrapError("Encode allowedReducedConfigForOverheating_r17", err)
+			// encode AllowedReducedConfigForOverheating_r17 optional
+			if ie.AllowedReducedConfigForOverheating_r17 != nil {
+				if err = ie.AllowedReducedConfigForOverheating_r17.Encode(extWriter); err != nil {
+					return utils.WrapError("Encode AllowedReducedConfigForOverheating_r17", err)
 				}
 			}
-			// encode maxNumberUDC_DRB_r17 optional
-			if ie.maxNumberUDC_DRB_r17 != nil {
-				if err = extWriter.WriteInteger(*ie.maxNumberUDC_DRB_r17, &uper.Constraint{Lb: 0, Ub: 2}, false); err != nil {
-					return utils.WrapError("Encode maxNumberUDC_DRB_r17", err)
+			// encode MaxNumberUDC_DRB_r17 optional
+			if ie.MaxNumberUDC_DRB_r17 != nil {
+				if err = extWriter.WriteInteger(*ie.MaxNumberUDC_DRB_r17, &uper.Constraint{Lb: 0, Ub: 2}, false); err != nil {
+					return utils.WrapError("Encode MaxNumberUDC_DRB_r17", err)
 				}
 			}
-			// encode maxNumberCPCCandidates_r17 optional
-			if ie.maxNumberCPCCandidates_r17 != nil {
-				if err = extWriter.WriteInteger(*ie.maxNumberCPCCandidates_r17, &uper.Constraint{Lb: 0, Ub: maxNrofCondCells_1_r17}, false); err != nil {
-					return utils.WrapError("Encode maxNumberCPCCandidates_r17", err)
+			// encode MaxNumberCPCCandidates_r17 optional
+			if ie.MaxNumberCPCCandidates_r17 != nil {
+				if err = extWriter.WriteInteger(*ie.MaxNumberCPCCandidates_r17, &uper.Constraint{Lb: 0, Ub: maxNrofCondCells_1_r17}, false); err != nil {
+					return utils.WrapError("Encode MaxNumberCPCCandidates_r17", err)
 				}
 			}
 
@@ -280,57 +280,57 @@ func (ie *ConfigRestrictInfoSCG) Decode(r *uper.UperReader) error {
 	if extensionBit, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var allowedBC_ListMRDCPresent bool
-	if allowedBC_ListMRDCPresent, err = r.ReadBool(); err != nil {
+	var AllowedBC_ListMRDCPresent bool
+	if AllowedBC_ListMRDCPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var powerCoordination_FR1Present bool
-	if powerCoordination_FR1Present, err = r.ReadBool(); err != nil {
+	var PowerCoordination_FR1Present bool
+	if PowerCoordination_FR1Present, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var servCellIndexRangeSCGPresent bool
-	if servCellIndexRangeSCGPresent, err = r.ReadBool(); err != nil {
+	var ServCellIndexRangeSCGPresent bool
+	if ServCellIndexRangeSCGPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var maxMeasFreqsSCGPresent bool
-	if maxMeasFreqsSCGPresent, err = r.ReadBool(); err != nil {
+	var MaxMeasFreqsSCGPresent bool
+	if MaxMeasFreqsSCGPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var dummyPresent bool
-	if dummyPresent, err = r.ReadBool(); err != nil {
+	var DummyPresent bool
+	if DummyPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	if allowedBC_ListMRDCPresent {
-		ie.allowedBC_ListMRDC = new(BandCombinationInfoList)
-		if err = ie.allowedBC_ListMRDC.Decode(r); err != nil {
-			return utils.WrapError("Decode allowedBC_ListMRDC", err)
+	if AllowedBC_ListMRDCPresent {
+		ie.AllowedBC_ListMRDC = new(BandCombinationInfoList)
+		if err = ie.AllowedBC_ListMRDC.Decode(r); err != nil {
+			return utils.WrapError("Decode AllowedBC_ListMRDC", err)
 		}
 	}
-	if powerCoordination_FR1Present {
-		ie.powerCoordination_FR1 = new(ConfigRestrictInfoSCG_powerCoordination_FR1)
-		if err = ie.powerCoordination_FR1.Decode(r); err != nil {
-			return utils.WrapError("Decode powerCoordination_FR1", err)
+	if PowerCoordination_FR1Present {
+		ie.PowerCoordination_FR1 = new(ConfigRestrictInfoSCG_powerCoordination_FR1)
+		if err = ie.PowerCoordination_FR1.Decode(r); err != nil {
+			return utils.WrapError("Decode PowerCoordination_FR1", err)
 		}
 	}
-	if servCellIndexRangeSCGPresent {
-		ie.servCellIndexRangeSCG = new(ConfigRestrictInfoSCG_servCellIndexRangeSCG)
-		if err = ie.servCellIndexRangeSCG.Decode(r); err != nil {
-			return utils.WrapError("Decode servCellIndexRangeSCG", err)
+	if ServCellIndexRangeSCGPresent {
+		ie.ServCellIndexRangeSCG = new(ConfigRestrictInfoSCG_servCellIndexRangeSCG)
+		if err = ie.ServCellIndexRangeSCG.Decode(r); err != nil {
+			return utils.WrapError("Decode ServCellIndexRangeSCG", err)
 		}
 	}
-	if maxMeasFreqsSCGPresent {
-		var tmp_int_maxMeasFreqsSCG int64
-		if tmp_int_maxMeasFreqsSCG, err = r.ReadInteger(&uper.Constraint{Lb: 1, Ub: maxMeasFreqsMN}, false); err != nil {
-			return utils.WrapError("Decode maxMeasFreqsSCG", err)
+	if MaxMeasFreqsSCGPresent {
+		var tmp_int_MaxMeasFreqsSCG int64
+		if tmp_int_MaxMeasFreqsSCG, err = r.ReadInteger(&uper.Constraint{Lb: 1, Ub: maxMeasFreqsMN}, false); err != nil {
+			return utils.WrapError("Decode MaxMeasFreqsSCG", err)
 		}
-		ie.maxMeasFreqsSCG = &tmp_int_maxMeasFreqsSCG
+		ie.MaxMeasFreqsSCG = &tmp_int_MaxMeasFreqsSCG
 	}
-	if dummyPresent {
-		var tmp_int_dummy int64
-		if tmp_int_dummy, err = r.ReadInteger(&uper.Constraint{Lb: 1, Ub: maxMeasIdentitiesMN}, false); err != nil {
-			return utils.WrapError("Decode dummy", err)
+	if DummyPresent {
+		var tmp_int_Dummy int64
+		if tmp_int_Dummy, err = r.ReadInteger(&uper.Constraint{Lb: 1, Ub: maxMeasIdentitiesMN}, false); err != nil {
+			return utils.WrapError("Decode Dummy", err)
 		}
-		ie.dummy = &tmp_int_dummy
+		ie.Dummy = &tmp_int_Dummy
 	}
 
 	if extensionBit {
@@ -349,47 +349,47 @@ func (ie *ConfigRestrictInfoSCG) Decode(r *uper.UperReader) error {
 
 			extReader := uper.NewReader(bytes.NewReader(extBytes))
 
-			selectedBandEntriesMNListPresent, err := extReader.ReadBool()
+			SelectedBandEntriesMNListPresent, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			pdcch_BlindDetectionSCGPresent, err := extReader.ReadBool()
+			Pdcch_BlindDetectionSCGPresent, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			maxNumberROHC_ContextSessionsSNPresent, err := extReader.ReadBool()
+			MaxNumberROHC_ContextSessionsSNPresent, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			// decode selectedBandEntriesMNList optional
-			if selectedBandEntriesMNListPresent {
-				tmp_selectedBandEntriesMNList := utils.NewSequence[*SelectedBandEntriesMN]([]*SelectedBandEntriesMN{}, uper.Constraint{Lb: 1, Ub: maxBandComb}, false)
-				fn_selectedBandEntriesMNList := func() *SelectedBandEntriesMN {
+			// decode SelectedBandEntriesMNList optional
+			if SelectedBandEntriesMNListPresent {
+				tmp_SelectedBandEntriesMNList := utils.NewSequence[*SelectedBandEntriesMN]([]*SelectedBandEntriesMN{}, uper.Constraint{Lb: 1, Ub: maxBandComb}, false)
+				fn_SelectedBandEntriesMNList := func() *SelectedBandEntriesMN {
 					return new(SelectedBandEntriesMN)
 				}
-				if err = tmp_selectedBandEntriesMNList.Decode(extReader, fn_selectedBandEntriesMNList); err != nil {
-					return utils.WrapError("Decode selectedBandEntriesMNList", err)
+				if err = tmp_SelectedBandEntriesMNList.Decode(extReader, fn_SelectedBandEntriesMNList); err != nil {
+					return utils.WrapError("Decode SelectedBandEntriesMNList", err)
 				}
-				ie.selectedBandEntriesMNList = []SelectedBandEntriesMN{}
-				for _, i := range tmp_selectedBandEntriesMNList.Value {
-					ie.selectedBandEntriesMNList = append(ie.selectedBandEntriesMNList, *i)
+				ie.SelectedBandEntriesMNList = []SelectedBandEntriesMN{}
+				for _, i := range tmp_SelectedBandEntriesMNList.Value {
+					ie.SelectedBandEntriesMNList = append(ie.SelectedBandEntriesMNList, *i)
 				}
 			}
-			// decode pdcch_BlindDetectionSCG optional
-			if pdcch_BlindDetectionSCGPresent {
-				var tmp_int_pdcch_BlindDetectionSCG int64
-				if tmp_int_pdcch_BlindDetectionSCG, err = extReader.ReadInteger(&uper.Constraint{Lb: 1, Ub: 15}, false); err != nil {
-					return utils.WrapError("Decode pdcch_BlindDetectionSCG", err)
+			// decode Pdcch_BlindDetectionSCG optional
+			if Pdcch_BlindDetectionSCGPresent {
+				var tmp_int_Pdcch_BlindDetectionSCG int64
+				if tmp_int_Pdcch_BlindDetectionSCG, err = extReader.ReadInteger(&uper.Constraint{Lb: 1, Ub: 15}, false); err != nil {
+					return utils.WrapError("Decode Pdcch_BlindDetectionSCG", err)
 				}
-				ie.pdcch_BlindDetectionSCG = &tmp_int_pdcch_BlindDetectionSCG
+				ie.Pdcch_BlindDetectionSCG = &tmp_int_Pdcch_BlindDetectionSCG
 			}
-			// decode maxNumberROHC_ContextSessionsSN optional
-			if maxNumberROHC_ContextSessionsSNPresent {
-				var tmp_int_maxNumberROHC_ContextSessionsSN int64
-				if tmp_int_maxNumberROHC_ContextSessionsSN, err = extReader.ReadInteger(&uper.Constraint{Lb: 0, Ub: 16384}, false); err != nil {
-					return utils.WrapError("Decode maxNumberROHC_ContextSessionsSN", err)
+			// decode MaxNumberROHC_ContextSessionsSN optional
+			if MaxNumberROHC_ContextSessionsSNPresent {
+				var tmp_int_MaxNumberROHC_ContextSessionsSN int64
+				if tmp_int_MaxNumberROHC_ContextSessionsSN, err = extReader.ReadInteger(&uper.Constraint{Lb: 0, Ub: 16384}, false); err != nil {
+					return utils.WrapError("Decode MaxNumberROHC_ContextSessionsSN", err)
 				}
-				ie.maxNumberROHC_ContextSessionsSN = &tmp_int_maxNumberROHC_ContextSessionsSN
+				ie.MaxNumberROHC_ContextSessionsSN = &tmp_int_MaxNumberROHC_ContextSessionsSN
 			}
 		}
 		// decode extension group 2
@@ -401,29 +401,29 @@ func (ie *ConfigRestrictInfoSCG) Decode(r *uper.UperReader) error {
 
 			extReader := uper.NewReader(bytes.NewReader(extBytes))
 
-			maxIntraFreqMeasIdentitiesSCGPresent, err := extReader.ReadBool()
+			MaxIntraFreqMeasIdentitiesSCGPresent, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			maxInterFreqMeasIdentitiesSCGPresent, err := extReader.ReadBool()
+			MaxInterFreqMeasIdentitiesSCGPresent, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			// decode maxIntraFreqMeasIdentitiesSCG optional
-			if maxIntraFreqMeasIdentitiesSCGPresent {
-				var tmp_int_maxIntraFreqMeasIdentitiesSCG int64
-				if tmp_int_maxIntraFreqMeasIdentitiesSCG, err = extReader.ReadInteger(&uper.Constraint{Lb: 1, Ub: maxMeasIdentitiesMN}, false); err != nil {
-					return utils.WrapError("Decode maxIntraFreqMeasIdentitiesSCG", err)
+			// decode MaxIntraFreqMeasIdentitiesSCG optional
+			if MaxIntraFreqMeasIdentitiesSCGPresent {
+				var tmp_int_MaxIntraFreqMeasIdentitiesSCG int64
+				if tmp_int_MaxIntraFreqMeasIdentitiesSCG, err = extReader.ReadInteger(&uper.Constraint{Lb: 1, Ub: maxMeasIdentitiesMN}, false); err != nil {
+					return utils.WrapError("Decode MaxIntraFreqMeasIdentitiesSCG", err)
 				}
-				ie.maxIntraFreqMeasIdentitiesSCG = &tmp_int_maxIntraFreqMeasIdentitiesSCG
+				ie.MaxIntraFreqMeasIdentitiesSCG = &tmp_int_MaxIntraFreqMeasIdentitiesSCG
 			}
-			// decode maxInterFreqMeasIdentitiesSCG optional
-			if maxInterFreqMeasIdentitiesSCGPresent {
-				var tmp_int_maxInterFreqMeasIdentitiesSCG int64
-				if tmp_int_maxInterFreqMeasIdentitiesSCG, err = extReader.ReadInteger(&uper.Constraint{Lb: 1, Ub: maxMeasIdentitiesMN}, false); err != nil {
-					return utils.WrapError("Decode maxInterFreqMeasIdentitiesSCG", err)
+			// decode MaxInterFreqMeasIdentitiesSCG optional
+			if MaxInterFreqMeasIdentitiesSCGPresent {
+				var tmp_int_MaxInterFreqMeasIdentitiesSCG int64
+				if tmp_int_MaxInterFreqMeasIdentitiesSCG, err = extReader.ReadInteger(&uper.Constraint{Lb: 1, Ub: maxMeasIdentitiesMN}, false); err != nil {
+					return utils.WrapError("Decode MaxInterFreqMeasIdentitiesSCG", err)
 				}
-				ie.maxInterFreqMeasIdentitiesSCG = &tmp_int_maxInterFreqMeasIdentitiesSCG
+				ie.MaxInterFreqMeasIdentitiesSCG = &tmp_int_MaxInterFreqMeasIdentitiesSCG
 			}
 		}
 		// decode extension group 3
@@ -435,106 +435,106 @@ func (ie *ConfigRestrictInfoSCG) Decode(r *uper.UperReader) error {
 
 			extReader := uper.NewReader(bytes.NewReader(extBytes))
 
-			p_maxNR_FR1_MCG_r16Present, err := extReader.ReadBool()
+			P_maxNR_FR1_MCG_r16Present, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			powerCoordination_FR2_r16Present, err := extReader.ReadBool()
+			PowerCoordination_FR2_r16Present, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			nrdc_PC_mode_FR1_r16Present, err := extReader.ReadBool()
+			Nrdc_PC_mode_FR1_r16Present, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			nrdc_PC_mode_FR2_r16Present, err := extReader.ReadBool()
+			Nrdc_PC_mode_FR2_r16Present, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			maxMeasSRS_ResourceSCG_r16Present, err := extReader.ReadBool()
+			MaxMeasSRS_ResourceSCG_r16Present, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			maxMeasCLI_ResourceSCG_r16Present, err := extReader.ReadBool()
+			MaxMeasCLI_ResourceSCG_r16Present, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			maxNumberEHC_ContextsSN_r16Present, err := extReader.ReadBool()
+			MaxNumberEHC_ContextsSN_r16Present, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			allowedReducedConfigForOverheating_r16Present, err := extReader.ReadBool()
+			AllowedReducedConfigForOverheating_r16Present, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			maxToffset_r16Present, err := extReader.ReadBool()
+			MaxToffset_r16Present, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			// decode p_maxNR_FR1_MCG_r16 optional
-			if p_maxNR_FR1_MCG_r16Present {
-				ie.p_maxNR_FR1_MCG_r16 = new(P_Max)
-				if err = ie.p_maxNR_FR1_MCG_r16.Decode(extReader); err != nil {
-					return utils.WrapError("Decode p_maxNR_FR1_MCG_r16", err)
+			// decode P_maxNR_FR1_MCG_r16 optional
+			if P_maxNR_FR1_MCG_r16Present {
+				ie.P_maxNR_FR1_MCG_r16 = new(P_Max)
+				if err = ie.P_maxNR_FR1_MCG_r16.Decode(extReader); err != nil {
+					return utils.WrapError("Decode P_maxNR_FR1_MCG_r16", err)
 				}
 			}
-			// decode powerCoordination_FR2_r16 optional
-			if powerCoordination_FR2_r16Present {
-				ie.powerCoordination_FR2_r16 = new(ConfigRestrictInfoSCG_powerCoordination_FR2_r16)
-				if err = ie.powerCoordination_FR2_r16.Decode(extReader); err != nil {
-					return utils.WrapError("Decode powerCoordination_FR2_r16", err)
+			// decode PowerCoordination_FR2_r16 optional
+			if PowerCoordination_FR2_r16Present {
+				ie.PowerCoordination_FR2_r16 = new(ConfigRestrictInfoSCG_powerCoordination_FR2_r16)
+				if err = ie.PowerCoordination_FR2_r16.Decode(extReader); err != nil {
+					return utils.WrapError("Decode PowerCoordination_FR2_r16", err)
 				}
 			}
-			// decode nrdc_PC_mode_FR1_r16 optional
-			if nrdc_PC_mode_FR1_r16Present {
-				ie.nrdc_PC_mode_FR1_r16 = new(ConfigRestrictInfoSCG_nrdc_PC_mode_FR1_r16)
-				if err = ie.nrdc_PC_mode_FR1_r16.Decode(extReader); err != nil {
-					return utils.WrapError("Decode nrdc_PC_mode_FR1_r16", err)
+			// decode Nrdc_PC_mode_FR1_r16 optional
+			if Nrdc_PC_mode_FR1_r16Present {
+				ie.Nrdc_PC_mode_FR1_r16 = new(ConfigRestrictInfoSCG_nrdc_PC_mode_FR1_r16)
+				if err = ie.Nrdc_PC_mode_FR1_r16.Decode(extReader); err != nil {
+					return utils.WrapError("Decode Nrdc_PC_mode_FR1_r16", err)
 				}
 			}
-			// decode nrdc_PC_mode_FR2_r16 optional
-			if nrdc_PC_mode_FR2_r16Present {
-				ie.nrdc_PC_mode_FR2_r16 = new(ConfigRestrictInfoSCG_nrdc_PC_mode_FR2_r16)
-				if err = ie.nrdc_PC_mode_FR2_r16.Decode(extReader); err != nil {
-					return utils.WrapError("Decode nrdc_PC_mode_FR2_r16", err)
+			// decode Nrdc_PC_mode_FR2_r16 optional
+			if Nrdc_PC_mode_FR2_r16Present {
+				ie.Nrdc_PC_mode_FR2_r16 = new(ConfigRestrictInfoSCG_nrdc_PC_mode_FR2_r16)
+				if err = ie.Nrdc_PC_mode_FR2_r16.Decode(extReader); err != nil {
+					return utils.WrapError("Decode Nrdc_PC_mode_FR2_r16", err)
 				}
 			}
-			// decode maxMeasSRS_ResourceSCG_r16 optional
-			if maxMeasSRS_ResourceSCG_r16Present {
-				var tmp_int_maxMeasSRS_ResourceSCG_r16 int64
-				if tmp_int_maxMeasSRS_ResourceSCG_r16, err = extReader.ReadInteger(&uper.Constraint{Lb: 0, Ub: maxNrofCLI_SRS_Resources_r16}, false); err != nil {
-					return utils.WrapError("Decode maxMeasSRS_ResourceSCG_r16", err)
+			// decode MaxMeasSRS_ResourceSCG_r16 optional
+			if MaxMeasSRS_ResourceSCG_r16Present {
+				var tmp_int_MaxMeasSRS_ResourceSCG_r16 int64
+				if tmp_int_MaxMeasSRS_ResourceSCG_r16, err = extReader.ReadInteger(&uper.Constraint{Lb: 0, Ub: maxNrofCLI_SRS_Resources_r16}, false); err != nil {
+					return utils.WrapError("Decode MaxMeasSRS_ResourceSCG_r16", err)
 				}
-				ie.maxMeasSRS_ResourceSCG_r16 = &tmp_int_maxMeasSRS_ResourceSCG_r16
+				ie.MaxMeasSRS_ResourceSCG_r16 = &tmp_int_MaxMeasSRS_ResourceSCG_r16
 			}
-			// decode maxMeasCLI_ResourceSCG_r16 optional
-			if maxMeasCLI_ResourceSCG_r16Present {
-				var tmp_int_maxMeasCLI_ResourceSCG_r16 int64
-				if tmp_int_maxMeasCLI_ResourceSCG_r16, err = extReader.ReadInteger(&uper.Constraint{Lb: 0, Ub: maxNrofCLI_RSSI_Resources_r16}, false); err != nil {
-					return utils.WrapError("Decode maxMeasCLI_ResourceSCG_r16", err)
+			// decode MaxMeasCLI_ResourceSCG_r16 optional
+			if MaxMeasCLI_ResourceSCG_r16Present {
+				var tmp_int_MaxMeasCLI_ResourceSCG_r16 int64
+				if tmp_int_MaxMeasCLI_ResourceSCG_r16, err = extReader.ReadInteger(&uper.Constraint{Lb: 0, Ub: maxNrofCLI_RSSI_Resources_r16}, false); err != nil {
+					return utils.WrapError("Decode MaxMeasCLI_ResourceSCG_r16", err)
 				}
-				ie.maxMeasCLI_ResourceSCG_r16 = &tmp_int_maxMeasCLI_ResourceSCG_r16
+				ie.MaxMeasCLI_ResourceSCG_r16 = &tmp_int_MaxMeasCLI_ResourceSCG_r16
 			}
-			// decode maxNumberEHC_ContextsSN_r16 optional
-			if maxNumberEHC_ContextsSN_r16Present {
-				var tmp_int_maxNumberEHC_ContextsSN_r16 int64
-				if tmp_int_maxNumberEHC_ContextsSN_r16, err = extReader.ReadInteger(&uper.Constraint{Lb: 0, Ub: 65536}, false); err != nil {
-					return utils.WrapError("Decode maxNumberEHC_ContextsSN_r16", err)
+			// decode MaxNumberEHC_ContextsSN_r16 optional
+			if MaxNumberEHC_ContextsSN_r16Present {
+				var tmp_int_MaxNumberEHC_ContextsSN_r16 int64
+				if tmp_int_MaxNumberEHC_ContextsSN_r16, err = extReader.ReadInteger(&uper.Constraint{Lb: 0, Ub: 65536}, false); err != nil {
+					return utils.WrapError("Decode MaxNumberEHC_ContextsSN_r16", err)
 				}
-				ie.maxNumberEHC_ContextsSN_r16 = &tmp_int_maxNumberEHC_ContextsSN_r16
+				ie.MaxNumberEHC_ContextsSN_r16 = &tmp_int_MaxNumberEHC_ContextsSN_r16
 			}
-			// decode allowedReducedConfigForOverheating_r16 optional
-			if allowedReducedConfigForOverheating_r16Present {
-				ie.allowedReducedConfigForOverheating_r16 = new(OverheatingAssistance)
-				if err = ie.allowedReducedConfigForOverheating_r16.Decode(extReader); err != nil {
-					return utils.WrapError("Decode allowedReducedConfigForOverheating_r16", err)
+			// decode AllowedReducedConfigForOverheating_r16 optional
+			if AllowedReducedConfigForOverheating_r16Present {
+				ie.AllowedReducedConfigForOverheating_r16 = new(OverheatingAssistance)
+				if err = ie.AllowedReducedConfigForOverheating_r16.Decode(extReader); err != nil {
+					return utils.WrapError("Decode AllowedReducedConfigForOverheating_r16", err)
 				}
 			}
-			// decode maxToffset_r16 optional
-			if maxToffset_r16Present {
-				ie.maxToffset_r16 = new(T_Offset_r16)
-				if err = ie.maxToffset_r16.Decode(extReader); err != nil {
-					return utils.WrapError("Decode maxToffset_r16", err)
+			// decode MaxToffset_r16 optional
+			if MaxToffset_r16Present {
+				ie.MaxToffset_r16 = new(T_Offset_r16)
+				if err = ie.MaxToffset_r16.Decode(extReader); err != nil {
+					return utils.WrapError("Decode MaxToffset_r16", err)
 				}
 			}
 		}
@@ -547,40 +547,40 @@ func (ie *ConfigRestrictInfoSCG) Decode(r *uper.UperReader) error {
 
 			extReader := uper.NewReader(bytes.NewReader(extBytes))
 
-			allowedReducedConfigForOverheating_r17Present, err := extReader.ReadBool()
+			AllowedReducedConfigForOverheating_r17Present, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			maxNumberUDC_DRB_r17Present, err := extReader.ReadBool()
+			MaxNumberUDC_DRB_r17Present, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			maxNumberCPCCandidates_r17Present, err := extReader.ReadBool()
+			MaxNumberCPCCandidates_r17Present, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			// decode allowedReducedConfigForOverheating_r17 optional
-			if allowedReducedConfigForOverheating_r17Present {
-				ie.allowedReducedConfigForOverheating_r17 = new(OverheatingAssistance_r17)
-				if err = ie.allowedReducedConfigForOverheating_r17.Decode(extReader); err != nil {
-					return utils.WrapError("Decode allowedReducedConfigForOverheating_r17", err)
+			// decode AllowedReducedConfigForOverheating_r17 optional
+			if AllowedReducedConfigForOverheating_r17Present {
+				ie.AllowedReducedConfigForOverheating_r17 = new(OverheatingAssistance_r17)
+				if err = ie.AllowedReducedConfigForOverheating_r17.Decode(extReader); err != nil {
+					return utils.WrapError("Decode AllowedReducedConfigForOverheating_r17", err)
 				}
 			}
-			// decode maxNumberUDC_DRB_r17 optional
-			if maxNumberUDC_DRB_r17Present {
-				var tmp_int_maxNumberUDC_DRB_r17 int64
-				if tmp_int_maxNumberUDC_DRB_r17, err = extReader.ReadInteger(&uper.Constraint{Lb: 0, Ub: 2}, false); err != nil {
-					return utils.WrapError("Decode maxNumberUDC_DRB_r17", err)
+			// decode MaxNumberUDC_DRB_r17 optional
+			if MaxNumberUDC_DRB_r17Present {
+				var tmp_int_MaxNumberUDC_DRB_r17 int64
+				if tmp_int_MaxNumberUDC_DRB_r17, err = extReader.ReadInteger(&uper.Constraint{Lb: 0, Ub: 2}, false); err != nil {
+					return utils.WrapError("Decode MaxNumberUDC_DRB_r17", err)
 				}
-				ie.maxNumberUDC_DRB_r17 = &tmp_int_maxNumberUDC_DRB_r17
+				ie.MaxNumberUDC_DRB_r17 = &tmp_int_MaxNumberUDC_DRB_r17
 			}
-			// decode maxNumberCPCCandidates_r17 optional
-			if maxNumberCPCCandidates_r17Present {
-				var tmp_int_maxNumberCPCCandidates_r17 int64
-				if tmp_int_maxNumberCPCCandidates_r17, err = extReader.ReadInteger(&uper.Constraint{Lb: 0, Ub: maxNrofCondCells_1_r17}, false); err != nil {
-					return utils.WrapError("Decode maxNumberCPCCandidates_r17", err)
+			// decode MaxNumberCPCCandidates_r17 optional
+			if MaxNumberCPCCandidates_r17Present {
+				var tmp_int_MaxNumberCPCCandidates_r17 int64
+				if tmp_int_MaxNumberCPCCandidates_r17, err = extReader.ReadInteger(&uper.Constraint{Lb: 0, Ub: maxNrofCondCells_1_r17}, false); err != nil {
+					return utils.WrapError("Decode MaxNumberCPCCandidates_r17", err)
 				}
-				ie.maxNumberCPCCandidates_r17 = &tmp_int_maxNumberCPCCandidates_r17
+				ie.MaxNumberCPCCandidates_r17 = &tmp_int_MaxNumberCPCCandidates_r17
 			}
 		}
 	}

@@ -6,44 +6,44 @@ import (
 )
 
 type SI_SchedulingInfo struct {
-	schedulingInfoList      []SchedulingInfo                  `lb:1,ub:maxSI_Message,madatory`
-	si_WindowLength         SI_SchedulingInfo_si_WindowLength `madatory`
-	si_RequestConfig        *SI_RequestConfig                 `optional`
-	si_RequestConfigSUL     *SI_RequestConfig                 `optional`
-	systemInformationAreaID *uper.BitString                   `lb:24,ub:24,optional`
+	SchedulingInfoList      []SchedulingInfo                  `lb:1,ub:maxSI_Message,madatory`
+	Si_WindowLength         SI_SchedulingInfo_si_WindowLength `madatory`
+	Si_RequestConfig        *SI_RequestConfig                 `optional`
+	Si_RequestConfigSUL     *SI_RequestConfig                 `optional`
+	SystemInformationAreaID *uper.BitString                   `lb:24,ub:24,optional`
 }
 
 func (ie *SI_SchedulingInfo) Encode(w *uper.UperWriter) error {
 	var err error
-	preambleBits := []bool{ie.si_RequestConfig != nil, ie.si_RequestConfigSUL != nil, ie.systemInformationAreaID != nil}
+	preambleBits := []bool{ie.Si_RequestConfig != nil, ie.Si_RequestConfigSUL != nil, ie.SystemInformationAreaID != nil}
 	for _, bit := range preambleBits {
 		if err = w.WriteBool(bit); err != nil {
 			return err
 		}
 	}
-	tmp_schedulingInfoList := utils.NewSequence[*SchedulingInfo]([]*SchedulingInfo{}, uper.Constraint{Lb: 1, Ub: maxSI_Message}, false)
-	for _, i := range ie.schedulingInfoList {
-		tmp_schedulingInfoList.Value = append(tmp_schedulingInfoList.Value, &i)
+	tmp_SchedulingInfoList := utils.NewSequence[*SchedulingInfo]([]*SchedulingInfo{}, uper.Constraint{Lb: 1, Ub: maxSI_Message}, false)
+	for _, i := range ie.SchedulingInfoList {
+		tmp_SchedulingInfoList.Value = append(tmp_SchedulingInfoList.Value, &i)
 	}
-	if err = tmp_schedulingInfoList.Encode(w); err != nil {
-		return utils.WrapError("Encode schedulingInfoList", err)
+	if err = tmp_SchedulingInfoList.Encode(w); err != nil {
+		return utils.WrapError("Encode SchedulingInfoList", err)
 	}
-	if err = ie.si_WindowLength.Encode(w); err != nil {
-		return utils.WrapError("Encode si_WindowLength", err)
+	if err = ie.Si_WindowLength.Encode(w); err != nil {
+		return utils.WrapError("Encode Si_WindowLength", err)
 	}
-	if ie.si_RequestConfig != nil {
-		if err = ie.si_RequestConfig.Encode(w); err != nil {
-			return utils.WrapError("Encode si_RequestConfig", err)
+	if ie.Si_RequestConfig != nil {
+		if err = ie.Si_RequestConfig.Encode(w); err != nil {
+			return utils.WrapError("Encode Si_RequestConfig", err)
 		}
 	}
-	if ie.si_RequestConfigSUL != nil {
-		if err = ie.si_RequestConfigSUL.Encode(w); err != nil {
-			return utils.WrapError("Encode si_RequestConfigSUL", err)
+	if ie.Si_RequestConfigSUL != nil {
+		if err = ie.Si_RequestConfigSUL.Encode(w); err != nil {
+			return utils.WrapError("Encode Si_RequestConfigSUL", err)
 		}
 	}
-	if ie.systemInformationAreaID != nil {
-		if err = w.WriteBitString(ie.systemInformationAreaID.Bytes, uint(ie.systemInformationAreaID.NumBits), &uper.Constraint{Lb: 24, Ub: 24}, false); err != nil {
-			return utils.WrapError("Encode systemInformationAreaID", err)
+	if ie.SystemInformationAreaID != nil {
+		if err = w.WriteBitString(ie.SystemInformationAreaID.Bytes, uint(ie.SystemInformationAreaID.NumBits), &uper.Constraint{Lb: 24, Ub: 24}, false); err != nil {
+			return utils.WrapError("Encode SystemInformationAreaID", err)
 		}
 	}
 	return nil
@@ -51,55 +51,55 @@ func (ie *SI_SchedulingInfo) Encode(w *uper.UperWriter) error {
 
 func (ie *SI_SchedulingInfo) Decode(r *uper.UperReader) error {
 	var err error
-	var si_RequestConfigPresent bool
-	if si_RequestConfigPresent, err = r.ReadBool(); err != nil {
+	var Si_RequestConfigPresent bool
+	if Si_RequestConfigPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var si_RequestConfigSULPresent bool
-	if si_RequestConfigSULPresent, err = r.ReadBool(); err != nil {
+	var Si_RequestConfigSULPresent bool
+	if Si_RequestConfigSULPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var systemInformationAreaIDPresent bool
-	if systemInformationAreaIDPresent, err = r.ReadBool(); err != nil {
+	var SystemInformationAreaIDPresent bool
+	if SystemInformationAreaIDPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	tmp_schedulingInfoList := utils.NewSequence[*SchedulingInfo]([]*SchedulingInfo{}, uper.Constraint{Lb: 1, Ub: maxSI_Message}, false)
-	fn_schedulingInfoList := func() *SchedulingInfo {
+	tmp_SchedulingInfoList := utils.NewSequence[*SchedulingInfo]([]*SchedulingInfo{}, uper.Constraint{Lb: 1, Ub: maxSI_Message}, false)
+	fn_SchedulingInfoList := func() *SchedulingInfo {
 		return new(SchedulingInfo)
 	}
-	if err = tmp_schedulingInfoList.Decode(r, fn_schedulingInfoList); err != nil {
-		return utils.WrapError("Decode schedulingInfoList", err)
+	if err = tmp_SchedulingInfoList.Decode(r, fn_SchedulingInfoList); err != nil {
+		return utils.WrapError("Decode SchedulingInfoList", err)
 	}
-	ie.schedulingInfoList = []SchedulingInfo{}
-	for _, i := range tmp_schedulingInfoList.Value {
-		ie.schedulingInfoList = append(ie.schedulingInfoList, *i)
+	ie.SchedulingInfoList = []SchedulingInfo{}
+	for _, i := range tmp_SchedulingInfoList.Value {
+		ie.SchedulingInfoList = append(ie.SchedulingInfoList, *i)
 	}
-	if err = ie.si_WindowLength.Decode(r); err != nil {
-		return utils.WrapError("Decode si_WindowLength", err)
+	if err = ie.Si_WindowLength.Decode(r); err != nil {
+		return utils.WrapError("Decode Si_WindowLength", err)
 	}
-	if si_RequestConfigPresent {
-		ie.si_RequestConfig = new(SI_RequestConfig)
-		if err = ie.si_RequestConfig.Decode(r); err != nil {
-			return utils.WrapError("Decode si_RequestConfig", err)
+	if Si_RequestConfigPresent {
+		ie.Si_RequestConfig = new(SI_RequestConfig)
+		if err = ie.Si_RequestConfig.Decode(r); err != nil {
+			return utils.WrapError("Decode Si_RequestConfig", err)
 		}
 	}
-	if si_RequestConfigSULPresent {
-		ie.si_RequestConfigSUL = new(SI_RequestConfig)
-		if err = ie.si_RequestConfigSUL.Decode(r); err != nil {
-			return utils.WrapError("Decode si_RequestConfigSUL", err)
+	if Si_RequestConfigSULPresent {
+		ie.Si_RequestConfigSUL = new(SI_RequestConfig)
+		if err = ie.Si_RequestConfigSUL.Decode(r); err != nil {
+			return utils.WrapError("Decode Si_RequestConfigSUL", err)
 		}
 	}
-	if systemInformationAreaIDPresent {
-		var tmp_bs_systemInformationAreaID []byte
-		var n_systemInformationAreaID uint
-		if tmp_bs_systemInformationAreaID, n_systemInformationAreaID, err = r.ReadBitString(&uper.Constraint{Lb: 24, Ub: 24}, false); err != nil {
-			return utils.WrapError("Decode systemInformationAreaID", err)
+	if SystemInformationAreaIDPresent {
+		var tmp_bs_SystemInformationAreaID []byte
+		var n_SystemInformationAreaID uint
+		if tmp_bs_SystemInformationAreaID, n_SystemInformationAreaID, err = r.ReadBitString(&uper.Constraint{Lb: 24, Ub: 24}, false); err != nil {
+			return utils.WrapError("Decode SystemInformationAreaID", err)
 		}
 		tmp_bitstring := uper.BitString{
-			Bytes:   tmp_bs_systemInformationAreaID,
-			NumBits: uint64(n_systemInformationAreaID),
+			Bytes:   tmp_bs_SystemInformationAreaID,
+			NumBits: uint64(n_SystemInformationAreaID),
 		}
-		ie.systemInformationAreaID = &tmp_bitstring
+		ie.SystemInformationAreaID = &tmp_bitstring
 	}
 	return nil
 }

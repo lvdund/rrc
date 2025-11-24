@@ -6,21 +6,21 @@ import (
 )
 
 type ULInformationTransfer_v1700_IEs struct {
-	dedicatedInfoF1c_r17 *DedicatedInfoF1c_r17 `optional`
-	nonCriticalExtension interface{}           `optional`
+	DedicatedInfoF1c_r17 *DedicatedInfoF1c_r17 `optional`
+	NonCriticalExtension interface{}           `optional`
 }
 
 func (ie *ULInformationTransfer_v1700_IEs) Encode(w *uper.UperWriter) error {
 	var err error
-	preambleBits := []bool{ie.dedicatedInfoF1c_r17 != nil}
+	preambleBits := []bool{ie.DedicatedInfoF1c_r17 != nil}
 	for _, bit := range preambleBits {
 		if err = w.WriteBool(bit); err != nil {
 			return err
 		}
 	}
-	if ie.dedicatedInfoF1c_r17 != nil {
-		if err = ie.dedicatedInfoF1c_r17.Encode(w); err != nil {
-			return utils.WrapError("Encode dedicatedInfoF1c_r17", err)
+	if ie.DedicatedInfoF1c_r17 != nil {
+		if err = ie.DedicatedInfoF1c_r17.Encode(w); err != nil {
+			return utils.WrapError("Encode DedicatedInfoF1c_r17", err)
 		}
 	}
 	return nil
@@ -28,14 +28,14 @@ func (ie *ULInformationTransfer_v1700_IEs) Encode(w *uper.UperWriter) error {
 
 func (ie *ULInformationTransfer_v1700_IEs) Decode(r *uper.UperReader) error {
 	var err error
-	var dedicatedInfoF1c_r17Present bool
-	if dedicatedInfoF1c_r17Present, err = r.ReadBool(); err != nil {
+	var DedicatedInfoF1c_r17Present bool
+	if DedicatedInfoF1c_r17Present, err = r.ReadBool(); err != nil {
 		return err
 	}
-	if dedicatedInfoF1c_r17Present {
-		ie.dedicatedInfoF1c_r17 = new(DedicatedInfoF1c_r17)
-		if err = ie.dedicatedInfoF1c_r17.Decode(r); err != nil {
-			return utils.WrapError("Decode dedicatedInfoF1c_r17", err)
+	if DedicatedInfoF1c_r17Present {
+		ie.DedicatedInfoF1c_r17 = new(DedicatedInfoF1c_r17)
+		if err = ie.DedicatedInfoF1c_r17.Decode(r); err != nil {
+			return utils.WrapError("Decode DedicatedInfoF1c_r17", err)
 		}
 	}
 	return nil

@@ -9,14 +9,14 @@ import (
 
 const (
 	CLI_TriggeredList_r16_Choice_nothing uint64 = iota
-	CLI_TriggeredList_r16_Choice_srs_RSRP_TriggeredList_r16
-	CLI_TriggeredList_r16_Choice_cli_RSSI_TriggeredList_r16
+	CLI_TriggeredList_r16_Choice_Srs_RSRP_TriggeredList_r16
+	CLI_TriggeredList_r16_Choice_Cli_RSSI_TriggeredList_r16
 )
 
 type CLI_TriggeredList_r16 struct {
 	Choice                     uint64
-	srs_RSRP_TriggeredList_r16 *SRS_RSRP_TriggeredList_r16
-	cli_RSSI_TriggeredList_r16 *CLI_RSSI_TriggeredList_r16
+	Srs_RSRP_TriggeredList_r16 *SRS_RSRP_TriggeredList_r16
+	Cli_RSSI_TriggeredList_r16 *CLI_RSSI_TriggeredList_r16
 }
 
 func (ie *CLI_TriggeredList_r16) Encode(w *uper.UperWriter) error {
@@ -25,13 +25,13 @@ func (ie *CLI_TriggeredList_r16) Encode(w *uper.UperWriter) error {
 		return err
 	}
 	switch ie.Choice {
-	case CLI_TriggeredList_r16_Choice_srs_RSRP_TriggeredList_r16:
-		if err = ie.srs_RSRP_TriggeredList_r16.Encode(w); err != nil {
-			err = utils.WrapError("Encode srs_RSRP_TriggeredList_r16", err)
+	case CLI_TriggeredList_r16_Choice_Srs_RSRP_TriggeredList_r16:
+		if err = ie.Srs_RSRP_TriggeredList_r16.Encode(w); err != nil {
+			err = utils.WrapError("Encode Srs_RSRP_TriggeredList_r16", err)
 		}
-	case CLI_TriggeredList_r16_Choice_cli_RSSI_TriggeredList_r16:
-		if err = ie.cli_RSSI_TriggeredList_r16.Encode(w); err != nil {
-			err = utils.WrapError("Encode cli_RSSI_TriggeredList_r16", err)
+	case CLI_TriggeredList_r16_Choice_Cli_RSSI_TriggeredList_r16:
+		if err = ie.Cli_RSSI_TriggeredList_r16.Encode(w); err != nil {
+			err = utils.WrapError("Encode Cli_RSSI_TriggeredList_r16", err)
 		}
 	default:
 		err = fmt.Errorf("invalid choice: %d", ie.Choice)
@@ -45,15 +45,15 @@ func (ie *CLI_TriggeredList_r16) Decode(r *uper.UperReader) error {
 		return err
 	}
 	switch ie.Choice {
-	case CLI_TriggeredList_r16_Choice_srs_RSRP_TriggeredList_r16:
-		ie.srs_RSRP_TriggeredList_r16 = new(SRS_RSRP_TriggeredList_r16)
-		if err = ie.srs_RSRP_TriggeredList_r16.Decode(r); err != nil {
-			return utils.WrapError("Decode srs_RSRP_TriggeredList_r16", err)
+	case CLI_TriggeredList_r16_Choice_Srs_RSRP_TriggeredList_r16:
+		ie.Srs_RSRP_TriggeredList_r16 = new(SRS_RSRP_TriggeredList_r16)
+		if err = ie.Srs_RSRP_TriggeredList_r16.Decode(r); err != nil {
+			return utils.WrapError("Decode Srs_RSRP_TriggeredList_r16", err)
 		}
-	case CLI_TriggeredList_r16_Choice_cli_RSSI_TriggeredList_r16:
-		ie.cli_RSSI_TriggeredList_r16 = new(CLI_RSSI_TriggeredList_r16)
-		if err = ie.cli_RSSI_TriggeredList_r16.Decode(r); err != nil {
-			return utils.WrapError("Decode cli_RSSI_TriggeredList_r16", err)
+	case CLI_TriggeredList_r16_Choice_Cli_RSSI_TriggeredList_r16:
+		ie.Cli_RSSI_TriggeredList_r16 = new(CLI_RSSI_TriggeredList_r16)
+		if err = ie.Cli_RSSI_TriggeredList_r16.Decode(r); err != nil {
+			return utils.WrapError("Decode Cli_RSSI_TriggeredList_r16", err)
 		}
 	default:
 		return fmt.Errorf("invalid choice: %d", ie.Choice)

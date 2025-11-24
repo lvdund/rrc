@@ -6,73 +6,73 @@ import (
 )
 
 type PUCCH_Resource struct {
-	pucch_ResourceId          PUCCH_ResourceId                          `madatory`
-	startingPRB               PRB_Id                                    `madatory`
-	intraSlotFrequencyHopping *PUCCH_Resource_intraSlotFrequencyHopping `optional`
-	secondHopPRB              *PRB_Id                                   `optional`
-	format                    PUCCH_Resource_format                     `madatory`
+	Pucch_ResourceId          PUCCH_ResourceId                          `madatory`
+	StartingPRB               PRB_Id                                    `madatory`
+	IntraSlotFrequencyHopping *PUCCH_Resource_intraSlotFrequencyHopping `optional`
+	SecondHopPRB              *PRB_Id                                   `optional`
+	Format                    PUCCH_Resource_format                     `madatory`
 }
 
 func (ie *PUCCH_Resource) Encode(w *uper.UperWriter) error {
 	var err error
-	preambleBits := []bool{ie.intraSlotFrequencyHopping != nil, ie.secondHopPRB != nil}
+	preambleBits := []bool{ie.IntraSlotFrequencyHopping != nil, ie.SecondHopPRB != nil}
 	for _, bit := range preambleBits {
 		if err = w.WriteBool(bit); err != nil {
 			return err
 		}
 	}
-	if err = ie.pucch_ResourceId.Encode(w); err != nil {
-		return utils.WrapError("Encode pucch_ResourceId", err)
+	if err = ie.Pucch_ResourceId.Encode(w); err != nil {
+		return utils.WrapError("Encode Pucch_ResourceId", err)
 	}
-	if err = ie.startingPRB.Encode(w); err != nil {
-		return utils.WrapError("Encode startingPRB", err)
+	if err = ie.StartingPRB.Encode(w); err != nil {
+		return utils.WrapError("Encode StartingPRB", err)
 	}
-	if ie.intraSlotFrequencyHopping != nil {
-		if err = ie.intraSlotFrequencyHopping.Encode(w); err != nil {
-			return utils.WrapError("Encode intraSlotFrequencyHopping", err)
+	if ie.IntraSlotFrequencyHopping != nil {
+		if err = ie.IntraSlotFrequencyHopping.Encode(w); err != nil {
+			return utils.WrapError("Encode IntraSlotFrequencyHopping", err)
 		}
 	}
-	if ie.secondHopPRB != nil {
-		if err = ie.secondHopPRB.Encode(w); err != nil {
-			return utils.WrapError("Encode secondHopPRB", err)
+	if ie.SecondHopPRB != nil {
+		if err = ie.SecondHopPRB.Encode(w); err != nil {
+			return utils.WrapError("Encode SecondHopPRB", err)
 		}
 	}
-	if err = ie.format.Encode(w); err != nil {
-		return utils.WrapError("Encode format", err)
+	if err = ie.Format.Encode(w); err != nil {
+		return utils.WrapError("Encode Format", err)
 	}
 	return nil
 }
 
 func (ie *PUCCH_Resource) Decode(r *uper.UperReader) error {
 	var err error
-	var intraSlotFrequencyHoppingPresent bool
-	if intraSlotFrequencyHoppingPresent, err = r.ReadBool(); err != nil {
+	var IntraSlotFrequencyHoppingPresent bool
+	if IntraSlotFrequencyHoppingPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var secondHopPRBPresent bool
-	if secondHopPRBPresent, err = r.ReadBool(); err != nil {
+	var SecondHopPRBPresent bool
+	if SecondHopPRBPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	if err = ie.pucch_ResourceId.Decode(r); err != nil {
-		return utils.WrapError("Decode pucch_ResourceId", err)
+	if err = ie.Pucch_ResourceId.Decode(r); err != nil {
+		return utils.WrapError("Decode Pucch_ResourceId", err)
 	}
-	if err = ie.startingPRB.Decode(r); err != nil {
-		return utils.WrapError("Decode startingPRB", err)
+	if err = ie.StartingPRB.Decode(r); err != nil {
+		return utils.WrapError("Decode StartingPRB", err)
 	}
-	if intraSlotFrequencyHoppingPresent {
-		ie.intraSlotFrequencyHopping = new(PUCCH_Resource_intraSlotFrequencyHopping)
-		if err = ie.intraSlotFrequencyHopping.Decode(r); err != nil {
-			return utils.WrapError("Decode intraSlotFrequencyHopping", err)
+	if IntraSlotFrequencyHoppingPresent {
+		ie.IntraSlotFrequencyHopping = new(PUCCH_Resource_intraSlotFrequencyHopping)
+		if err = ie.IntraSlotFrequencyHopping.Decode(r); err != nil {
+			return utils.WrapError("Decode IntraSlotFrequencyHopping", err)
 		}
 	}
-	if secondHopPRBPresent {
-		ie.secondHopPRB = new(PRB_Id)
-		if err = ie.secondHopPRB.Decode(r); err != nil {
-			return utils.WrapError("Decode secondHopPRB", err)
+	if SecondHopPRBPresent {
+		ie.SecondHopPRB = new(PRB_Id)
+		if err = ie.SecondHopPRB.Decode(r); err != nil {
+			return utils.WrapError("Decode SecondHopPRB", err)
 		}
 	}
-	if err = ie.format.Decode(r); err != nil {
-		return utils.WrapError("Decode format", err)
+	if err = ie.Format.Decode(r); err != nil {
+		return utils.WrapError("Decode Format", err)
 	}
 	return nil
 }

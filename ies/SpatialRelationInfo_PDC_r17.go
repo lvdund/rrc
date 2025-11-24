@@ -6,21 +6,21 @@ import (
 )
 
 type SpatialRelationInfo_PDC_r17 struct {
-	referenceSignal SpatialRelationInfo_PDC_r17_referenceSignal `madatory`
+	ReferenceSignal SpatialRelationInfo_PDC_r17_referenceSignal `madatory`
 }
 
 func (ie *SpatialRelationInfo_PDC_r17) Encode(w *uper.UperWriter) error {
 	var err error
-	if err = ie.referenceSignal.Encode(w); err != nil {
-		return utils.WrapError("Encode referenceSignal", err)
+	if err = ie.ReferenceSignal.Encode(w); err != nil {
+		return utils.WrapError("Encode ReferenceSignal", err)
 	}
 	return nil
 }
 
 func (ie *SpatialRelationInfo_PDC_r17) Decode(r *uper.UperReader) error {
 	var err error
-	if err = ie.referenceSignal.Decode(r); err != nil {
-		return utils.WrapError("Decode referenceSignal", err)
+	if err = ie.ReferenceSignal.Decode(r); err != nil {
+		return utils.WrapError("Decode ReferenceSignal", err)
 	}
 	return nil
 }

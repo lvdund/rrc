@@ -6,42 +6,42 @@ import (
 )
 
 type CondTriggerConfig_r16_condEventId_condEventA5 struct {
-	a5_Threshold1 MeasTriggerQuantity `madatory`
-	a5_Threshold2 MeasTriggerQuantity `madatory`
-	hysteresis    Hysteresis          `madatory`
-	timeToTrigger TimeToTrigger       `madatory`
+	A5_Threshold1 MeasTriggerQuantity `madatory`
+	A5_Threshold2 MeasTriggerQuantity `madatory`
+	Hysteresis    Hysteresis          `madatory`
+	TimeToTrigger TimeToTrigger       `madatory`
 }
 
 func (ie *CondTriggerConfig_r16_condEventId_condEventA5) Encode(w *uper.UperWriter) error {
 	var err error
-	if err = ie.a5_Threshold1.Encode(w); err != nil {
-		return utils.WrapError("Encode a5_Threshold1", err)
+	if err = ie.A5_Threshold1.Encode(w); err != nil {
+		return utils.WrapError("Encode A5_Threshold1", err)
 	}
-	if err = ie.a5_Threshold2.Encode(w); err != nil {
-		return utils.WrapError("Encode a5_Threshold2", err)
+	if err = ie.A5_Threshold2.Encode(w); err != nil {
+		return utils.WrapError("Encode A5_Threshold2", err)
 	}
-	if err = ie.hysteresis.Encode(w); err != nil {
-		return utils.WrapError("Encode hysteresis", err)
+	if err = ie.Hysteresis.Encode(w); err != nil {
+		return utils.WrapError("Encode Hysteresis", err)
 	}
-	if err = ie.timeToTrigger.Encode(w); err != nil {
-		return utils.WrapError("Encode timeToTrigger", err)
+	if err = ie.TimeToTrigger.Encode(w); err != nil {
+		return utils.WrapError("Encode TimeToTrigger", err)
 	}
 	return nil
 }
 
 func (ie *CondTriggerConfig_r16_condEventId_condEventA5) Decode(r *uper.UperReader) error {
 	var err error
-	if err = ie.a5_Threshold1.Decode(r); err != nil {
-		return utils.WrapError("Decode a5_Threshold1", err)
+	if err = ie.A5_Threshold1.Decode(r); err != nil {
+		return utils.WrapError("Decode A5_Threshold1", err)
 	}
-	if err = ie.a5_Threshold2.Decode(r); err != nil {
-		return utils.WrapError("Decode a5_Threshold2", err)
+	if err = ie.A5_Threshold2.Decode(r); err != nil {
+		return utils.WrapError("Decode A5_Threshold2", err)
 	}
-	if err = ie.hysteresis.Decode(r); err != nil {
-		return utils.WrapError("Decode hysteresis", err)
+	if err = ie.Hysteresis.Decode(r); err != nil {
+		return utils.WrapError("Decode Hysteresis", err)
 	}
-	if err = ie.timeToTrigger.Decode(r); err != nil {
-		return utils.WrapError("Decode timeToTrigger", err)
+	if err = ie.TimeToTrigger.Decode(r); err != nil {
+		return utils.WrapError("Decode TimeToTrigger", err)
 	}
 	return nil
 }

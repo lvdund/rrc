@@ -6,30 +6,30 @@ import (
 )
 
 type MeasResult2EUTRA struct {
-	carrierFreq             ARFCN_ValueEUTRA `madatory`
-	measResultServingCell   *MeasResultEUTRA `optional`
-	measResultBestNeighCell *MeasResultEUTRA `optional`
+	CarrierFreq             ARFCN_ValueEUTRA `madatory`
+	MeasResultServingCell   *MeasResultEUTRA `optional`
+	MeasResultBestNeighCell *MeasResultEUTRA `optional`
 }
 
 func (ie *MeasResult2EUTRA) Encode(w *uper.UperWriter) error {
 	var err error
-	preambleBits := []bool{ie.measResultServingCell != nil, ie.measResultBestNeighCell != nil}
+	preambleBits := []bool{ie.MeasResultServingCell != nil, ie.MeasResultBestNeighCell != nil}
 	for _, bit := range preambleBits {
 		if err = w.WriteBool(bit); err != nil {
 			return err
 		}
 	}
-	if err = ie.carrierFreq.Encode(w); err != nil {
-		return utils.WrapError("Encode carrierFreq", err)
+	if err = ie.CarrierFreq.Encode(w); err != nil {
+		return utils.WrapError("Encode CarrierFreq", err)
 	}
-	if ie.measResultServingCell != nil {
-		if err = ie.measResultServingCell.Encode(w); err != nil {
-			return utils.WrapError("Encode measResultServingCell", err)
+	if ie.MeasResultServingCell != nil {
+		if err = ie.MeasResultServingCell.Encode(w); err != nil {
+			return utils.WrapError("Encode MeasResultServingCell", err)
 		}
 	}
-	if ie.measResultBestNeighCell != nil {
-		if err = ie.measResultBestNeighCell.Encode(w); err != nil {
-			return utils.WrapError("Encode measResultBestNeighCell", err)
+	if ie.MeasResultBestNeighCell != nil {
+		if err = ie.MeasResultBestNeighCell.Encode(w); err != nil {
+			return utils.WrapError("Encode MeasResultBestNeighCell", err)
 		}
 	}
 	return nil
@@ -37,27 +37,27 @@ func (ie *MeasResult2EUTRA) Encode(w *uper.UperWriter) error {
 
 func (ie *MeasResult2EUTRA) Decode(r *uper.UperReader) error {
 	var err error
-	var measResultServingCellPresent bool
-	if measResultServingCellPresent, err = r.ReadBool(); err != nil {
+	var MeasResultServingCellPresent bool
+	if MeasResultServingCellPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var measResultBestNeighCellPresent bool
-	if measResultBestNeighCellPresent, err = r.ReadBool(); err != nil {
+	var MeasResultBestNeighCellPresent bool
+	if MeasResultBestNeighCellPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	if err = ie.carrierFreq.Decode(r); err != nil {
-		return utils.WrapError("Decode carrierFreq", err)
+	if err = ie.CarrierFreq.Decode(r); err != nil {
+		return utils.WrapError("Decode CarrierFreq", err)
 	}
-	if measResultServingCellPresent {
-		ie.measResultServingCell = new(MeasResultEUTRA)
-		if err = ie.measResultServingCell.Decode(r); err != nil {
-			return utils.WrapError("Decode measResultServingCell", err)
+	if MeasResultServingCellPresent {
+		ie.MeasResultServingCell = new(MeasResultEUTRA)
+		if err = ie.MeasResultServingCell.Decode(r); err != nil {
+			return utils.WrapError("Decode MeasResultServingCell", err)
 		}
 	}
-	if measResultBestNeighCellPresent {
-		ie.measResultBestNeighCell = new(MeasResultEUTRA)
-		if err = ie.measResultBestNeighCell.Decode(r); err != nil {
-			return utils.WrapError("Decode measResultBestNeighCell", err)
+	if MeasResultBestNeighCellPresent {
+		ie.MeasResultBestNeighCell = new(MeasResultEUTRA)
+		if err = ie.MeasResultBestNeighCell.Decode(r); err != nil {
+			return utils.WrapError("Decode MeasResultBestNeighCell", err)
 		}
 	}
 	return nil

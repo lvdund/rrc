@@ -8,25 +8,25 @@ import (
 )
 
 type CSI_SemiPersistentOnPUSCH_TriggerState struct {
-	associatedReportConfigInfo  CSI_ReportConfigId                                                  `madatory`
-	sp_CSI_MultiplexingMode_r17 *CSI_SemiPersistentOnPUSCH_TriggerState_sp_CSI_MultiplexingMode_r17 `optional,ext-1`
+	AssociatedReportConfigInfo  CSI_ReportConfigId                                                  `madatory`
+	Sp_CSI_MultiplexingMode_r17 *CSI_SemiPersistentOnPUSCH_TriggerState_sp_CSI_MultiplexingMode_r17 `optional,ext-1`
 }
 
 func (ie *CSI_SemiPersistentOnPUSCH_TriggerState) Encode(w *uper.UperWriter) error {
 	var err error
-	hasExtensions := ie.sp_CSI_MultiplexingMode_r17 != nil
+	hasExtensions := ie.Sp_CSI_MultiplexingMode_r17 != nil
 	preambleBits := []bool{hasExtensions}
 	for _, bit := range preambleBits {
 		if err = w.WriteBool(bit); err != nil {
 			return err
 		}
 	}
-	if err = ie.associatedReportConfigInfo.Encode(w); err != nil {
-		return utils.WrapError("Encode associatedReportConfigInfo", err)
+	if err = ie.AssociatedReportConfigInfo.Encode(w); err != nil {
+		return utils.WrapError("Encode AssociatedReportConfigInfo", err)
 	}
 	if hasExtensions {
 		// Extension bitmap: 1 bits for 1 extension groups
-		extBitmap := []bool{ie.sp_CSI_MultiplexingMode_r17 != nil}
+		extBitmap := []bool{ie.Sp_CSI_MultiplexingMode_r17 != nil}
 		if err := w.WriteExtBitMap(extBitmap); err != nil {
 			return utils.WrapError("WriteExtBitMap CSI_SemiPersistentOnPUSCH_TriggerState", err)
 		}
@@ -37,17 +37,17 @@ func (ie *CSI_SemiPersistentOnPUSCH_TriggerState) Encode(w *uper.UperWriter) err
 			extWriter := uper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 1
-			optionals_ext_1 := []bool{ie.sp_CSI_MultiplexingMode_r17 != nil}
+			optionals_ext_1 := []bool{ie.Sp_CSI_MultiplexingMode_r17 != nil}
 			for _, bit := range optionals_ext_1 {
 				if err := extWriter.WriteBool(bit); err != nil {
 					return err
 				}
 			}
 
-			// encode sp_CSI_MultiplexingMode_r17 optional
-			if ie.sp_CSI_MultiplexingMode_r17 != nil {
-				if err = ie.sp_CSI_MultiplexingMode_r17.Encode(extWriter); err != nil {
-					return utils.WrapError("Encode sp_CSI_MultiplexingMode_r17", err)
+			// encode Sp_CSI_MultiplexingMode_r17 optional
+			if ie.Sp_CSI_MultiplexingMode_r17 != nil {
+				if err = ie.Sp_CSI_MultiplexingMode_r17.Encode(extWriter); err != nil {
+					return utils.WrapError("Encode Sp_CSI_MultiplexingMode_r17", err)
 				}
 			}
 
@@ -69,8 +69,8 @@ func (ie *CSI_SemiPersistentOnPUSCH_TriggerState) Decode(r *uper.UperReader) err
 	if extensionBit, err = r.ReadBool(); err != nil {
 		return err
 	}
-	if err = ie.associatedReportConfigInfo.Decode(r); err != nil {
-		return utils.WrapError("Decode associatedReportConfigInfo", err)
+	if err = ie.AssociatedReportConfigInfo.Decode(r); err != nil {
+		return utils.WrapError("Decode AssociatedReportConfigInfo", err)
 	}
 
 	if extensionBit {
@@ -89,15 +89,15 @@ func (ie *CSI_SemiPersistentOnPUSCH_TriggerState) Decode(r *uper.UperReader) err
 
 			extReader := uper.NewReader(bytes.NewReader(extBytes))
 
-			sp_CSI_MultiplexingMode_r17Present, err := extReader.ReadBool()
+			Sp_CSI_MultiplexingMode_r17Present, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			// decode sp_CSI_MultiplexingMode_r17 optional
-			if sp_CSI_MultiplexingMode_r17Present {
-				ie.sp_CSI_MultiplexingMode_r17 = new(CSI_SemiPersistentOnPUSCH_TriggerState_sp_CSI_MultiplexingMode_r17)
-				if err = ie.sp_CSI_MultiplexingMode_r17.Decode(extReader); err != nil {
-					return utils.WrapError("Decode sp_CSI_MultiplexingMode_r17", err)
+			// decode Sp_CSI_MultiplexingMode_r17 optional
+			if Sp_CSI_MultiplexingMode_r17Present {
+				ie.Sp_CSI_MultiplexingMode_r17 = new(CSI_SemiPersistentOnPUSCH_TriggerState_sp_CSI_MultiplexingMode_r17)
+				if err = ie.Sp_CSI_MultiplexingMode_r17.Decode(extReader); err != nil {
+					return utils.WrapError("Decode Sp_CSI_MultiplexingMode_r17", err)
 				}
 			}
 		}

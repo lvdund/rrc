@@ -9,14 +9,14 @@ import (
 
 const (
 	ServingCellConfigCommonSIB_channelAccessMode_r16_Choice_nothing uint64 = iota
-	ServingCellConfigCommonSIB_channelAccessMode_r16_Choice_dynamic
-	ServingCellConfigCommonSIB_channelAccessMode_r16_Choice_semiStatic
+	ServingCellConfigCommonSIB_channelAccessMode_r16_Choice_Dynamic
+	ServingCellConfigCommonSIB_channelAccessMode_r16_Choice_SemiStatic
 )
 
 type ServingCellConfigCommonSIB_channelAccessMode_r16 struct {
 	Choice     uint64
-	dynamic    uper.NULL `madatory`
-	semiStatic *SemiStaticChannelAccessConfig_r16
+	Dynamic    uper.NULL `madatory`
+	SemiStatic *SemiStaticChannelAccessConfig_r16
 }
 
 func (ie *ServingCellConfigCommonSIB_channelAccessMode_r16) Encode(w *uper.UperWriter) error {
@@ -25,13 +25,13 @@ func (ie *ServingCellConfigCommonSIB_channelAccessMode_r16) Encode(w *uper.UperW
 		return err
 	}
 	switch ie.Choice {
-	case ServingCellConfigCommonSIB_channelAccessMode_r16_Choice_dynamic:
+	case ServingCellConfigCommonSIB_channelAccessMode_r16_Choice_Dynamic:
 		if err := w.WriteNull(); err != nil {
-			err = utils.WrapError("Encode dynamic", err)
+			err = utils.WrapError("Encode Dynamic", err)
 		}
-	case ServingCellConfigCommonSIB_channelAccessMode_r16_Choice_semiStatic:
-		if err = ie.semiStatic.Encode(w); err != nil {
-			err = utils.WrapError("Encode semiStatic", err)
+	case ServingCellConfigCommonSIB_channelAccessMode_r16_Choice_SemiStatic:
+		if err = ie.SemiStatic.Encode(w); err != nil {
+			err = utils.WrapError("Encode SemiStatic", err)
 		}
 	default:
 		err = fmt.Errorf("invalid choice: %d", ie.Choice)
@@ -45,14 +45,14 @@ func (ie *ServingCellConfigCommonSIB_channelAccessMode_r16) Decode(r *uper.UperR
 		return err
 	}
 	switch ie.Choice {
-	case ServingCellConfigCommonSIB_channelAccessMode_r16_Choice_dynamic:
+	case ServingCellConfigCommonSIB_channelAccessMode_r16_Choice_Dynamic:
 		if err := r.ReadNull(); err != nil {
-			return utils.WrapError("Decode dynamic", err)
+			return utils.WrapError("Decode Dynamic", err)
 		}
-	case ServingCellConfigCommonSIB_channelAccessMode_r16_Choice_semiStatic:
-		ie.semiStatic = new(SemiStaticChannelAccessConfig_r16)
-		if err = ie.semiStatic.Decode(r); err != nil {
-			return utils.WrapError("Decode semiStatic", err)
+	case ServingCellConfigCommonSIB_channelAccessMode_r16_Choice_SemiStatic:
+		ie.SemiStatic = new(SemiStaticChannelAccessConfig_r16)
+		if err = ie.SemiStatic.Decode(r); err != nil {
+			return utils.WrapError("Decode SemiStatic", err)
 		}
 	default:
 		return fmt.Errorf("invalid choice: %d", ie.Choice)

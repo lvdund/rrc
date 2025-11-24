@@ -9,14 +9,14 @@ import (
 
 const (
 	FreqBandInformation_Choice_nothing uint64 = iota
-	FreqBandInformation_Choice_bandInformationEUTRA
-	FreqBandInformation_Choice_bandInformationNR
+	FreqBandInformation_Choice_BandInformationEUTRA
+	FreqBandInformation_Choice_BandInformationNR
 )
 
 type FreqBandInformation struct {
 	Choice               uint64
-	bandInformationEUTRA *FreqBandInformationEUTRA
-	bandInformationNR    *FreqBandInformationNR
+	BandInformationEUTRA *FreqBandInformationEUTRA
+	BandInformationNR    *FreqBandInformationNR
 }
 
 func (ie *FreqBandInformation) Encode(w *uper.UperWriter) error {
@@ -25,13 +25,13 @@ func (ie *FreqBandInformation) Encode(w *uper.UperWriter) error {
 		return err
 	}
 	switch ie.Choice {
-	case FreqBandInformation_Choice_bandInformationEUTRA:
-		if err = ie.bandInformationEUTRA.Encode(w); err != nil {
-			err = utils.WrapError("Encode bandInformationEUTRA", err)
+	case FreqBandInformation_Choice_BandInformationEUTRA:
+		if err = ie.BandInformationEUTRA.Encode(w); err != nil {
+			err = utils.WrapError("Encode BandInformationEUTRA", err)
 		}
-	case FreqBandInformation_Choice_bandInformationNR:
-		if err = ie.bandInformationNR.Encode(w); err != nil {
-			err = utils.WrapError("Encode bandInformationNR", err)
+	case FreqBandInformation_Choice_BandInformationNR:
+		if err = ie.BandInformationNR.Encode(w); err != nil {
+			err = utils.WrapError("Encode BandInformationNR", err)
 		}
 	default:
 		err = fmt.Errorf("invalid choice: %d", ie.Choice)
@@ -45,15 +45,15 @@ func (ie *FreqBandInformation) Decode(r *uper.UperReader) error {
 		return err
 	}
 	switch ie.Choice {
-	case FreqBandInformation_Choice_bandInformationEUTRA:
-		ie.bandInformationEUTRA = new(FreqBandInformationEUTRA)
-		if err = ie.bandInformationEUTRA.Decode(r); err != nil {
-			return utils.WrapError("Decode bandInformationEUTRA", err)
+	case FreqBandInformation_Choice_BandInformationEUTRA:
+		ie.BandInformationEUTRA = new(FreqBandInformationEUTRA)
+		if err = ie.BandInformationEUTRA.Decode(r); err != nil {
+			return utils.WrapError("Decode BandInformationEUTRA", err)
 		}
-	case FreqBandInformation_Choice_bandInformationNR:
-		ie.bandInformationNR = new(FreqBandInformationNR)
-		if err = ie.bandInformationNR.Decode(r); err != nil {
-			return utils.WrapError("Decode bandInformationNR", err)
+	case FreqBandInformation_Choice_BandInformationNR:
+		ie.BandInformationNR = new(FreqBandInformationNR)
+		if err = ie.BandInformationNR.Decode(r); err != nil {
+			return utils.WrapError("Decode BandInformationNR", err)
 		}
 	default:
 		return fmt.Errorf("invalid choice: %d", ie.Choice)

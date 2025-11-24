@@ -6,24 +6,24 @@ import (
 )
 
 type UE_MRDC_Capability_v1700 struct {
-	measAndMobParametersMRDC_v1700 MeasAndMobParametersMRDC_v1700 `madatory`
-	nonCriticalExtension           *UE_MRDC_Capability_v1730      `optional`
+	MeasAndMobParametersMRDC_v1700 MeasAndMobParametersMRDC_v1700 `madatory`
+	NonCriticalExtension           *UE_MRDC_Capability_v1730      `optional`
 }
 
 func (ie *UE_MRDC_Capability_v1700) Encode(w *uper.UperWriter) error {
 	var err error
-	preambleBits := []bool{ie.nonCriticalExtension != nil}
+	preambleBits := []bool{ie.NonCriticalExtension != nil}
 	for _, bit := range preambleBits {
 		if err = w.WriteBool(bit); err != nil {
 			return err
 		}
 	}
-	if err = ie.measAndMobParametersMRDC_v1700.Encode(w); err != nil {
-		return utils.WrapError("Encode measAndMobParametersMRDC_v1700", err)
+	if err = ie.MeasAndMobParametersMRDC_v1700.Encode(w); err != nil {
+		return utils.WrapError("Encode MeasAndMobParametersMRDC_v1700", err)
 	}
-	if ie.nonCriticalExtension != nil {
-		if err = ie.nonCriticalExtension.Encode(w); err != nil {
-			return utils.WrapError("Encode nonCriticalExtension", err)
+	if ie.NonCriticalExtension != nil {
+		if err = ie.NonCriticalExtension.Encode(w); err != nil {
+			return utils.WrapError("Encode NonCriticalExtension", err)
 		}
 	}
 	return nil
@@ -31,17 +31,17 @@ func (ie *UE_MRDC_Capability_v1700) Encode(w *uper.UperWriter) error {
 
 func (ie *UE_MRDC_Capability_v1700) Decode(r *uper.UperReader) error {
 	var err error
-	var nonCriticalExtensionPresent bool
-	if nonCriticalExtensionPresent, err = r.ReadBool(); err != nil {
+	var NonCriticalExtensionPresent bool
+	if NonCriticalExtensionPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	if err = ie.measAndMobParametersMRDC_v1700.Decode(r); err != nil {
-		return utils.WrapError("Decode measAndMobParametersMRDC_v1700", err)
+	if err = ie.MeasAndMobParametersMRDC_v1700.Decode(r); err != nil {
+		return utils.WrapError("Decode MeasAndMobParametersMRDC_v1700", err)
 	}
-	if nonCriticalExtensionPresent {
-		ie.nonCriticalExtension = new(UE_MRDC_Capability_v1730)
-		if err = ie.nonCriticalExtension.Decode(r); err != nil {
-			return utils.WrapError("Decode nonCriticalExtension", err)
+	if NonCriticalExtensionPresent {
+		ie.NonCriticalExtension = new(UE_MRDC_Capability_v1730)
+		if err = ie.NonCriticalExtension.Decode(r); err != nil {
+			return utils.WrapError("Decode NonCriticalExtension", err)
 		}
 	}
 	return nil

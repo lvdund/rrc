@@ -6,56 +6,56 @@ import (
 )
 
 type PositionVelocity_r17 struct {
-	positionX_r17  PositionStateVector_r17 `madatory`
-	positionY_r17  PositionStateVector_r17 `madatory`
-	positionZ_r17  PositionStateVector_r17 `madatory`
-	velocityVX_r17 VelocityStateVector_r17 `madatory`
-	velocityVY_r17 VelocityStateVector_r17 `madatory`
-	velocityVZ_r17 VelocityStateVector_r17 `madatory`
+	PositionX_r17  PositionStateVector_r17 `madatory`
+	PositionY_r17  PositionStateVector_r17 `madatory`
+	PositionZ_r17  PositionStateVector_r17 `madatory`
+	VelocityVX_r17 VelocityStateVector_r17 `madatory`
+	VelocityVY_r17 VelocityStateVector_r17 `madatory`
+	VelocityVZ_r17 VelocityStateVector_r17 `madatory`
 }
 
 func (ie *PositionVelocity_r17) Encode(w *uper.UperWriter) error {
 	var err error
-	if err = ie.positionX_r17.Encode(w); err != nil {
-		return utils.WrapError("Encode positionX_r17", err)
+	if err = ie.PositionX_r17.Encode(w); err != nil {
+		return utils.WrapError("Encode PositionX_r17", err)
 	}
-	if err = ie.positionY_r17.Encode(w); err != nil {
-		return utils.WrapError("Encode positionY_r17", err)
+	if err = ie.PositionY_r17.Encode(w); err != nil {
+		return utils.WrapError("Encode PositionY_r17", err)
 	}
-	if err = ie.positionZ_r17.Encode(w); err != nil {
-		return utils.WrapError("Encode positionZ_r17", err)
+	if err = ie.PositionZ_r17.Encode(w); err != nil {
+		return utils.WrapError("Encode PositionZ_r17", err)
 	}
-	if err = ie.velocityVX_r17.Encode(w); err != nil {
-		return utils.WrapError("Encode velocityVX_r17", err)
+	if err = ie.VelocityVX_r17.Encode(w); err != nil {
+		return utils.WrapError("Encode VelocityVX_r17", err)
 	}
-	if err = ie.velocityVY_r17.Encode(w); err != nil {
-		return utils.WrapError("Encode velocityVY_r17", err)
+	if err = ie.VelocityVY_r17.Encode(w); err != nil {
+		return utils.WrapError("Encode VelocityVY_r17", err)
 	}
-	if err = ie.velocityVZ_r17.Encode(w); err != nil {
-		return utils.WrapError("Encode velocityVZ_r17", err)
+	if err = ie.VelocityVZ_r17.Encode(w); err != nil {
+		return utils.WrapError("Encode VelocityVZ_r17", err)
 	}
 	return nil
 }
 
 func (ie *PositionVelocity_r17) Decode(r *uper.UperReader) error {
 	var err error
-	if err = ie.positionX_r17.Decode(r); err != nil {
-		return utils.WrapError("Decode positionX_r17", err)
+	if err = ie.PositionX_r17.Decode(r); err != nil {
+		return utils.WrapError("Decode PositionX_r17", err)
 	}
-	if err = ie.positionY_r17.Decode(r); err != nil {
-		return utils.WrapError("Decode positionY_r17", err)
+	if err = ie.PositionY_r17.Decode(r); err != nil {
+		return utils.WrapError("Decode PositionY_r17", err)
 	}
-	if err = ie.positionZ_r17.Decode(r); err != nil {
-		return utils.WrapError("Decode positionZ_r17", err)
+	if err = ie.PositionZ_r17.Decode(r); err != nil {
+		return utils.WrapError("Decode PositionZ_r17", err)
 	}
-	if err = ie.velocityVX_r17.Decode(r); err != nil {
-		return utils.WrapError("Decode velocityVX_r17", err)
+	if err = ie.VelocityVX_r17.Decode(r); err != nil {
+		return utils.WrapError("Decode VelocityVX_r17", err)
 	}
-	if err = ie.velocityVY_r17.Decode(r); err != nil {
-		return utils.WrapError("Decode velocityVY_r17", err)
+	if err = ie.VelocityVY_r17.Decode(r); err != nil {
+		return utils.WrapError("Decode VelocityVY_r17", err)
 	}
-	if err = ie.velocityVZ_r17.Decode(r); err != nil {
-		return utils.WrapError("Decode velocityVZ_r17", err)
+	if err = ie.VelocityVZ_r17.Decode(r); err != nil {
+		return utils.WrapError("Decode VelocityVZ_r17", err)
 	}
 	return nil
 }

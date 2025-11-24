@@ -6,24 +6,24 @@ import (
 )
 
 type DummyI struct {
-	supportedSRS_TxPortSwitch DummyI_supportedSRS_TxPortSwitch `madatory`
-	txSwitchImpactToRx        *DummyI_txSwitchImpactToRx       `optional`
+	SupportedSRS_TxPortSwitch DummyI_supportedSRS_TxPortSwitch `madatory`
+	TxSwitchImpactToRx        *DummyI_txSwitchImpactToRx       `optional`
 }
 
 func (ie *DummyI) Encode(w *uper.UperWriter) error {
 	var err error
-	preambleBits := []bool{ie.txSwitchImpactToRx != nil}
+	preambleBits := []bool{ie.TxSwitchImpactToRx != nil}
 	for _, bit := range preambleBits {
 		if err = w.WriteBool(bit); err != nil {
 			return err
 		}
 	}
-	if err = ie.supportedSRS_TxPortSwitch.Encode(w); err != nil {
-		return utils.WrapError("Encode supportedSRS_TxPortSwitch", err)
+	if err = ie.SupportedSRS_TxPortSwitch.Encode(w); err != nil {
+		return utils.WrapError("Encode SupportedSRS_TxPortSwitch", err)
 	}
-	if ie.txSwitchImpactToRx != nil {
-		if err = ie.txSwitchImpactToRx.Encode(w); err != nil {
-			return utils.WrapError("Encode txSwitchImpactToRx", err)
+	if ie.TxSwitchImpactToRx != nil {
+		if err = ie.TxSwitchImpactToRx.Encode(w); err != nil {
+			return utils.WrapError("Encode TxSwitchImpactToRx", err)
 		}
 	}
 	return nil
@@ -31,17 +31,17 @@ func (ie *DummyI) Encode(w *uper.UperWriter) error {
 
 func (ie *DummyI) Decode(r *uper.UperReader) error {
 	var err error
-	var txSwitchImpactToRxPresent bool
-	if txSwitchImpactToRxPresent, err = r.ReadBool(); err != nil {
+	var TxSwitchImpactToRxPresent bool
+	if TxSwitchImpactToRxPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	if err = ie.supportedSRS_TxPortSwitch.Decode(r); err != nil {
-		return utils.WrapError("Decode supportedSRS_TxPortSwitch", err)
+	if err = ie.SupportedSRS_TxPortSwitch.Decode(r); err != nil {
+		return utils.WrapError("Decode SupportedSRS_TxPortSwitch", err)
 	}
-	if txSwitchImpactToRxPresent {
-		ie.txSwitchImpactToRx = new(DummyI_txSwitchImpactToRx)
-		if err = ie.txSwitchImpactToRx.Decode(r); err != nil {
-			return utils.WrapError("Decode txSwitchImpactToRx", err)
+	if TxSwitchImpactToRxPresent {
+		ie.TxSwitchImpactToRx = new(DummyI_txSwitchImpactToRx)
+		if err = ie.TxSwitchImpactToRx.Decode(r); err != nil {
+			return utils.WrapError("Decode TxSwitchImpactToRx", err)
 		}
 	}
 	return nil

@@ -6,20 +6,20 @@ import (
 )
 
 type NR_FreqInfo struct {
-	measuredFrequency *ARFCN_ValueNR `optional`
+	MeasuredFrequency *ARFCN_ValueNR `optional`
 }
 
 func (ie *NR_FreqInfo) Encode(w *uper.UperWriter) error {
 	var err error
-	preambleBits := []bool{ie.measuredFrequency != nil}
+	preambleBits := []bool{ie.MeasuredFrequency != nil}
 	for _, bit := range preambleBits {
 		if err = w.WriteBool(bit); err != nil {
 			return err
 		}
 	}
-	if ie.measuredFrequency != nil {
-		if err = ie.measuredFrequency.Encode(w); err != nil {
-			return utils.WrapError("Encode measuredFrequency", err)
+	if ie.MeasuredFrequency != nil {
+		if err = ie.MeasuredFrequency.Encode(w); err != nil {
+			return utils.WrapError("Encode MeasuredFrequency", err)
 		}
 	}
 	return nil
@@ -27,14 +27,14 @@ func (ie *NR_FreqInfo) Encode(w *uper.UperWriter) error {
 
 func (ie *NR_FreqInfo) Decode(r *uper.UperReader) error {
 	var err error
-	var measuredFrequencyPresent bool
-	if measuredFrequencyPresent, err = r.ReadBool(); err != nil {
+	var MeasuredFrequencyPresent bool
+	if MeasuredFrequencyPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	if measuredFrequencyPresent {
-		ie.measuredFrequency = new(ARFCN_ValueNR)
-		if err = ie.measuredFrequency.Decode(r); err != nil {
-			return utils.WrapError("Decode measuredFrequency", err)
+	if MeasuredFrequencyPresent {
+		ie.MeasuredFrequency = new(ARFCN_ValueNR)
+		if err = ie.MeasuredFrequency.Decode(r); err != nil {
+			return utils.WrapError("Decode MeasuredFrequency", err)
 		}
 	}
 	return nil

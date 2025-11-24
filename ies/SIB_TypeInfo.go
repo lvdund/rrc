@@ -6,30 +6,30 @@ import (
 )
 
 type SIB_TypeInfo struct {
-	type_sib  SIB_TypeInfo_type_sib   `madatory`
-	valueTag  *int64                  `lb:0,ub:31,optional`
-	areaScope *SIB_TypeInfo_areaScope `optional`
+	Type_sib  SIB_TypeInfo_type_sib   `madatory`
+	ValueTag  *int64                  `lb:0,ub:31,optional`
+	AreaScope *SIB_TypeInfo_areaScope `optional`
 }
 
 func (ie *SIB_TypeInfo) Encode(w *uper.UperWriter) error {
 	var err error
-	preambleBits := []bool{ie.valueTag != nil, ie.areaScope != nil}
+	preambleBits := []bool{ie.ValueTag != nil, ie.AreaScope != nil}
 	for _, bit := range preambleBits {
 		if err = w.WriteBool(bit); err != nil {
 			return err
 		}
 	}
-	if err = ie.type_sib.Encode(w); err != nil {
-		return utils.WrapError("Encode type_sib", err)
+	if err = ie.Type_sib.Encode(w); err != nil {
+		return utils.WrapError("Encode Type_sib", err)
 	}
-	if ie.valueTag != nil {
-		if err = w.WriteInteger(*ie.valueTag, &uper.Constraint{Lb: 0, Ub: 31}, false); err != nil {
-			return utils.WrapError("Encode valueTag", err)
+	if ie.ValueTag != nil {
+		if err = w.WriteInteger(*ie.ValueTag, &uper.Constraint{Lb: 0, Ub: 31}, false); err != nil {
+			return utils.WrapError("Encode ValueTag", err)
 		}
 	}
-	if ie.areaScope != nil {
-		if err = ie.areaScope.Encode(w); err != nil {
-			return utils.WrapError("Encode areaScope", err)
+	if ie.AreaScope != nil {
+		if err = ie.AreaScope.Encode(w); err != nil {
+			return utils.WrapError("Encode AreaScope", err)
 		}
 	}
 	return nil
@@ -37,28 +37,28 @@ func (ie *SIB_TypeInfo) Encode(w *uper.UperWriter) error {
 
 func (ie *SIB_TypeInfo) Decode(r *uper.UperReader) error {
 	var err error
-	var valueTagPresent bool
-	if valueTagPresent, err = r.ReadBool(); err != nil {
+	var ValueTagPresent bool
+	if ValueTagPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var areaScopePresent bool
-	if areaScopePresent, err = r.ReadBool(); err != nil {
+	var AreaScopePresent bool
+	if AreaScopePresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	if err = ie.type_sib.Decode(r); err != nil {
-		return utils.WrapError("Decode type_sib", err)
+	if err = ie.Type_sib.Decode(r); err != nil {
+		return utils.WrapError("Decode Type_sib", err)
 	}
-	if valueTagPresent {
-		var tmp_int_valueTag int64
-		if tmp_int_valueTag, err = r.ReadInteger(&uper.Constraint{Lb: 0, Ub: 31}, false); err != nil {
-			return utils.WrapError("Decode valueTag", err)
+	if ValueTagPresent {
+		var tmp_int_ValueTag int64
+		if tmp_int_ValueTag, err = r.ReadInteger(&uper.Constraint{Lb: 0, Ub: 31}, false); err != nil {
+			return utils.WrapError("Decode ValueTag", err)
 		}
-		ie.valueTag = &tmp_int_valueTag
+		ie.ValueTag = &tmp_int_ValueTag
 	}
-	if areaScopePresent {
-		ie.areaScope = new(SIB_TypeInfo_areaScope)
-		if err = ie.areaScope.Decode(r); err != nil {
-			return utils.WrapError("Decode areaScope", err)
+	if AreaScopePresent {
+		ie.AreaScope = new(SIB_TypeInfo_areaScope)
+		if err = ie.AreaScope.Decode(r); err != nil {
+			return utils.WrapError("Decode AreaScope", err)
 		}
 	}
 	return nil

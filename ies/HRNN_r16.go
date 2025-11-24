@@ -6,20 +6,20 @@ import (
 )
 
 type HRNN_r16 struct {
-	hrnn_r16 *[]byte `lb:1,ub:maxHRNN_Len_r16,optional`
+	Hrnn_r16 *[]byte `lb:1,ub:maxHRNN_Len_r16,optional`
 }
 
 func (ie *HRNN_r16) Encode(w *uper.UperWriter) error {
 	var err error
-	preambleBits := []bool{ie.hrnn_r16 != nil}
+	preambleBits := []bool{ie.Hrnn_r16 != nil}
 	for _, bit := range preambleBits {
 		if err = w.WriteBool(bit); err != nil {
 			return err
 		}
 	}
-	if ie.hrnn_r16 != nil {
-		if err = w.WriteOctetString(*ie.hrnn_r16, &uper.Constraint{Lb: 1, Ub: maxHRNN_Len_r16}, false); err != nil {
-			return utils.WrapError("Encode hrnn_r16", err)
+	if ie.Hrnn_r16 != nil {
+		if err = w.WriteOctetString(*ie.Hrnn_r16, &uper.Constraint{Lb: 1, Ub: maxHRNN_Len_r16}, false); err != nil {
+			return utils.WrapError("Encode Hrnn_r16", err)
 		}
 	}
 	return nil
@@ -27,16 +27,16 @@ func (ie *HRNN_r16) Encode(w *uper.UperWriter) error {
 
 func (ie *HRNN_r16) Decode(r *uper.UperReader) error {
 	var err error
-	var hrnn_r16Present bool
-	if hrnn_r16Present, err = r.ReadBool(); err != nil {
+	var Hrnn_r16Present bool
+	if Hrnn_r16Present, err = r.ReadBool(); err != nil {
 		return err
 	}
-	if hrnn_r16Present {
-		var tmp_os_hrnn_r16 []byte
-		if tmp_os_hrnn_r16, err = r.ReadOctetString(&uper.Constraint{Lb: 1, Ub: maxHRNN_Len_r16}, false); err != nil {
-			return utils.WrapError("Decode hrnn_r16", err)
+	if Hrnn_r16Present {
+		var tmp_os_Hrnn_r16 []byte
+		if tmp_os_Hrnn_r16, err = r.ReadOctetString(&uper.Constraint{Lb: 1, Ub: maxHRNN_Len_r16}, false); err != nil {
+			return utils.WrapError("Decode Hrnn_r16", err)
 		}
-		ie.hrnn_r16 = &tmp_os_hrnn_r16
+		ie.Hrnn_r16 = &tmp_os_Hrnn_r16
 	}
 	return nil
 }

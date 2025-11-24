@@ -9,14 +9,14 @@ import (
 
 const (
 	HandoverPreparationInformation_CriticalExtensions_Choice_nothing uint64 = iota
-	HandoverPreparationInformation_CriticalExtensions_Choice_c1
-	HandoverPreparationInformation_CriticalExtensions_Choice_criticalExtensionsFuture
+	HandoverPreparationInformation_CriticalExtensions_Choice_C1
+	HandoverPreparationInformation_CriticalExtensions_Choice_CriticalExtensionsFuture
 )
 
 type HandoverPreparationInformation_CriticalExtensions struct {
 	Choice                   uint64
-	c1                       *HandoverPreparationInformation_CriticalExtensions_C1
-	criticalExtensionsFuture interface{} `madatory`
+	C1                       *HandoverPreparationInformation_CriticalExtensions_C1
+	CriticalExtensionsFuture interface{} `madatory`
 }
 
 func (ie *HandoverPreparationInformation_CriticalExtensions) Encode(w *uper.UperWriter) error {
@@ -25,11 +25,11 @@ func (ie *HandoverPreparationInformation_CriticalExtensions) Encode(w *uper.Uper
 		return err
 	}
 	switch ie.Choice {
-	case HandoverPreparationInformation_CriticalExtensions_Choice_c1:
-		if err = ie.c1.Encode(w); err != nil {
-			err = utils.WrapError("Encode c1", err)
+	case HandoverPreparationInformation_CriticalExtensions_Choice_C1:
+		if err = ie.C1.Encode(w); err != nil {
+			err = utils.WrapError("Encode C1", err)
 		}
-	case HandoverPreparationInformation_CriticalExtensions_Choice_criticalExtensionsFuture:
+	case HandoverPreparationInformation_CriticalExtensions_Choice_CriticalExtensionsFuture:
 		// interface{} field of choice - nothing to encode
 	default:
 		err = fmt.Errorf("invalid choice: %d", ie.Choice)
@@ -43,12 +43,12 @@ func (ie *HandoverPreparationInformation_CriticalExtensions) Decode(r *uper.Uper
 		return err
 	}
 	switch ie.Choice {
-	case HandoverPreparationInformation_CriticalExtensions_Choice_c1:
-		ie.c1 = new(HandoverPreparationInformation_CriticalExtensions_C1)
-		if err = ie.c1.Decode(r); err != nil {
-			return utils.WrapError("Decode c1", err)
+	case HandoverPreparationInformation_CriticalExtensions_Choice_C1:
+		ie.C1 = new(HandoverPreparationInformation_CriticalExtensions_C1)
+		if err = ie.C1.Decode(r); err != nil {
+			return utils.WrapError("Decode C1", err)
 		}
-	case HandoverPreparationInformation_CriticalExtensions_Choice_criticalExtensionsFuture:
+	case HandoverPreparationInformation_CriticalExtensions_Choice_CriticalExtensionsFuture:
 		// interface{} field of choice - nothing to decode
 	default:
 		return fmt.Errorf("invalid choice: %d", ie.Choice)

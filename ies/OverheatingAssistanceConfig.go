@@ -6,21 +6,21 @@ import (
 )
 
 type OverheatingAssistanceConfig struct {
-	overheatingIndicationProhibitTimer OverheatingAssistanceConfig_overheatingIndicationProhibitTimer `madatory`
+	OverheatingIndicationProhibitTimer OverheatingAssistanceConfig_overheatingIndicationProhibitTimer `madatory`
 }
 
 func (ie *OverheatingAssistanceConfig) Encode(w *uper.UperWriter) error {
 	var err error
-	if err = ie.overheatingIndicationProhibitTimer.Encode(w); err != nil {
-		return utils.WrapError("Encode overheatingIndicationProhibitTimer", err)
+	if err = ie.OverheatingIndicationProhibitTimer.Encode(w); err != nil {
+		return utils.WrapError("Encode OverheatingIndicationProhibitTimer", err)
 	}
 	return nil
 }
 
 func (ie *OverheatingAssistanceConfig) Decode(r *uper.UperReader) error {
 	var err error
-	if err = ie.overheatingIndicationProhibitTimer.Decode(r); err != nil {
-		return utils.WrapError("Decode overheatingIndicationProhibitTimer", err)
+	if err = ie.OverheatingIndicationProhibitTimer.Decode(r); err != nil {
+		return utils.WrapError("Decode OverheatingIndicationProhibitTimer", err)
 	}
 	return nil
 }

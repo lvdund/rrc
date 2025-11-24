@@ -9,14 +9,14 @@ import (
 
 const (
 	RRCRelease_CriticalExtensions_Choice_nothing uint64 = iota
-	RRCRelease_CriticalExtensions_Choice_rrcRelease
-	RRCRelease_CriticalExtensions_Choice_criticalExtensionsFuture
+	RRCRelease_CriticalExtensions_Choice_RrcRelease
+	RRCRelease_CriticalExtensions_Choice_CriticalExtensionsFuture
 )
 
 type RRCRelease_CriticalExtensions struct {
 	Choice                   uint64
-	rrcRelease               *RRCRelease_IEs
-	criticalExtensionsFuture interface{} `madatory`
+	RrcRelease               *RRCRelease_IEs
+	CriticalExtensionsFuture interface{} `madatory`
 }
 
 func (ie *RRCRelease_CriticalExtensions) Encode(w *uper.UperWriter) error {
@@ -25,11 +25,11 @@ func (ie *RRCRelease_CriticalExtensions) Encode(w *uper.UperWriter) error {
 		return err
 	}
 	switch ie.Choice {
-	case RRCRelease_CriticalExtensions_Choice_rrcRelease:
-		if err = ie.rrcRelease.Encode(w); err != nil {
-			err = utils.WrapError("Encode rrcRelease", err)
+	case RRCRelease_CriticalExtensions_Choice_RrcRelease:
+		if err = ie.RrcRelease.Encode(w); err != nil {
+			err = utils.WrapError("Encode RrcRelease", err)
 		}
-	case RRCRelease_CriticalExtensions_Choice_criticalExtensionsFuture:
+	case RRCRelease_CriticalExtensions_Choice_CriticalExtensionsFuture:
 		// interface{} field of choice - nothing to encode
 	default:
 		err = fmt.Errorf("invalid choice: %d", ie.Choice)
@@ -43,12 +43,12 @@ func (ie *RRCRelease_CriticalExtensions) Decode(r *uper.UperReader) error {
 		return err
 	}
 	switch ie.Choice {
-	case RRCRelease_CriticalExtensions_Choice_rrcRelease:
-		ie.rrcRelease = new(RRCRelease_IEs)
-		if err = ie.rrcRelease.Decode(r); err != nil {
-			return utils.WrapError("Decode rrcRelease", err)
+	case RRCRelease_CriticalExtensions_Choice_RrcRelease:
+		ie.RrcRelease = new(RRCRelease_IEs)
+		if err = ie.RrcRelease.Decode(r); err != nil {
+			return utils.WrapError("Decode RrcRelease", err)
 		}
-	case RRCRelease_CriticalExtensions_Choice_criticalExtensionsFuture:
+	case RRCRelease_CriticalExtensions_Choice_CriticalExtensionsFuture:
 		// interface{} field of choice - nothing to decode
 	default:
 		return fmt.Errorf("invalid choice: %d", ie.Choice)

@@ -8,75 +8,75 @@ import (
 )
 
 type MeasObjectEUTRA struct {
-	carrierFreq                     ARFCN_ValueEUTRA           `madatory`
-	allowedMeasBandwidth            EUTRA_AllowedMeasBandwidth `madatory`
-	cellsToRemoveListEUTRAN         *EUTRA_CellIndexList       `optional`
-	cellsToAddModListEUTRAN         []EUTRA_Cell               `lb:1,ub:maxCellMeasEUTRA,optional`
-	excludedCellsToRemoveListEUTRAN *EUTRA_CellIndexList       `optional`
-	excludedCellsToAddModListEUTRAN []EUTRA_ExcludedCell       `lb:1,ub:maxCellMeasEUTRA,optional`
-	eutra_PresenceAntennaPort1      EUTRA_PresenceAntennaPort1 `madatory`
-	eutra_Q_OffsetRange             *EUTRA_Q_OffsetRange       `optional`
-	widebandRSRQ_Meas               bool                       `madatory`
-	associatedMeasGap_r17           *MeasGapId_r17             `optional,ext-1`
+	CarrierFreq                     ARFCN_ValueEUTRA           `madatory`
+	AllowedMeasBandwidth            EUTRA_AllowedMeasBandwidth `madatory`
+	CellsToRemoveListEUTRAN         *EUTRA_CellIndexList       `optional`
+	CellsToAddModListEUTRAN         []EUTRA_Cell               `lb:1,ub:maxCellMeasEUTRA,optional`
+	ExcludedCellsToRemoveListEUTRAN *EUTRA_CellIndexList       `optional`
+	ExcludedCellsToAddModListEUTRAN []EUTRA_ExcludedCell       `lb:1,ub:maxCellMeasEUTRA,optional`
+	Eutra_PresenceAntennaPort1      EUTRA_PresenceAntennaPort1 `madatory`
+	Eutra_Q_OffsetRange             *EUTRA_Q_OffsetRange       `optional`
+	WidebandRSRQ_Meas               bool                       `madatory`
+	AssociatedMeasGap_r17           *MeasGapId_r17             `optional,ext-1`
 }
 
 func (ie *MeasObjectEUTRA) Encode(w *uper.UperWriter) error {
 	var err error
-	hasExtensions := ie.associatedMeasGap_r17 != nil
-	preambleBits := []bool{hasExtensions, ie.cellsToRemoveListEUTRAN != nil, len(ie.cellsToAddModListEUTRAN) > 0, ie.excludedCellsToRemoveListEUTRAN != nil, len(ie.excludedCellsToAddModListEUTRAN) > 0, ie.eutra_Q_OffsetRange != nil}
+	hasExtensions := ie.AssociatedMeasGap_r17 != nil
+	preambleBits := []bool{hasExtensions, ie.CellsToRemoveListEUTRAN != nil, len(ie.CellsToAddModListEUTRAN) > 0, ie.ExcludedCellsToRemoveListEUTRAN != nil, len(ie.ExcludedCellsToAddModListEUTRAN) > 0, ie.Eutra_Q_OffsetRange != nil}
 	for _, bit := range preambleBits {
 		if err = w.WriteBool(bit); err != nil {
 			return err
 		}
 	}
-	if err = ie.carrierFreq.Encode(w); err != nil {
-		return utils.WrapError("Encode carrierFreq", err)
+	if err = ie.CarrierFreq.Encode(w); err != nil {
+		return utils.WrapError("Encode CarrierFreq", err)
 	}
-	if err = ie.allowedMeasBandwidth.Encode(w); err != nil {
-		return utils.WrapError("Encode allowedMeasBandwidth", err)
+	if err = ie.AllowedMeasBandwidth.Encode(w); err != nil {
+		return utils.WrapError("Encode AllowedMeasBandwidth", err)
 	}
-	if ie.cellsToRemoveListEUTRAN != nil {
-		if err = ie.cellsToRemoveListEUTRAN.Encode(w); err != nil {
-			return utils.WrapError("Encode cellsToRemoveListEUTRAN", err)
+	if ie.CellsToRemoveListEUTRAN != nil {
+		if err = ie.CellsToRemoveListEUTRAN.Encode(w); err != nil {
+			return utils.WrapError("Encode CellsToRemoveListEUTRAN", err)
 		}
 	}
-	if len(ie.cellsToAddModListEUTRAN) > 0 {
-		tmp_cellsToAddModListEUTRAN := utils.NewSequence[*EUTRA_Cell]([]*EUTRA_Cell{}, uper.Constraint{Lb: 1, Ub: maxCellMeasEUTRA}, false)
-		for _, i := range ie.cellsToAddModListEUTRAN {
-			tmp_cellsToAddModListEUTRAN.Value = append(tmp_cellsToAddModListEUTRAN.Value, &i)
+	if len(ie.CellsToAddModListEUTRAN) > 0 {
+		tmp_CellsToAddModListEUTRAN := utils.NewSequence[*EUTRA_Cell]([]*EUTRA_Cell{}, uper.Constraint{Lb: 1, Ub: maxCellMeasEUTRA}, false)
+		for _, i := range ie.CellsToAddModListEUTRAN {
+			tmp_CellsToAddModListEUTRAN.Value = append(tmp_CellsToAddModListEUTRAN.Value, &i)
 		}
-		if err = tmp_cellsToAddModListEUTRAN.Encode(w); err != nil {
-			return utils.WrapError("Encode cellsToAddModListEUTRAN", err)
-		}
-	}
-	if ie.excludedCellsToRemoveListEUTRAN != nil {
-		if err = ie.excludedCellsToRemoveListEUTRAN.Encode(w); err != nil {
-			return utils.WrapError("Encode excludedCellsToRemoveListEUTRAN", err)
+		if err = tmp_CellsToAddModListEUTRAN.Encode(w); err != nil {
+			return utils.WrapError("Encode CellsToAddModListEUTRAN", err)
 		}
 	}
-	if len(ie.excludedCellsToAddModListEUTRAN) > 0 {
-		tmp_excludedCellsToAddModListEUTRAN := utils.NewSequence[*EUTRA_ExcludedCell]([]*EUTRA_ExcludedCell{}, uper.Constraint{Lb: 1, Ub: maxCellMeasEUTRA}, false)
-		for _, i := range ie.excludedCellsToAddModListEUTRAN {
-			tmp_excludedCellsToAddModListEUTRAN.Value = append(tmp_excludedCellsToAddModListEUTRAN.Value, &i)
-		}
-		if err = tmp_excludedCellsToAddModListEUTRAN.Encode(w); err != nil {
-			return utils.WrapError("Encode excludedCellsToAddModListEUTRAN", err)
+	if ie.ExcludedCellsToRemoveListEUTRAN != nil {
+		if err = ie.ExcludedCellsToRemoveListEUTRAN.Encode(w); err != nil {
+			return utils.WrapError("Encode ExcludedCellsToRemoveListEUTRAN", err)
 		}
 	}
-	if err = ie.eutra_PresenceAntennaPort1.Encode(w); err != nil {
-		return utils.WrapError("Encode eutra_PresenceAntennaPort1", err)
-	}
-	if ie.eutra_Q_OffsetRange != nil {
-		if err = ie.eutra_Q_OffsetRange.Encode(w); err != nil {
-			return utils.WrapError("Encode eutra_Q_OffsetRange", err)
+	if len(ie.ExcludedCellsToAddModListEUTRAN) > 0 {
+		tmp_ExcludedCellsToAddModListEUTRAN := utils.NewSequence[*EUTRA_ExcludedCell]([]*EUTRA_ExcludedCell{}, uper.Constraint{Lb: 1, Ub: maxCellMeasEUTRA}, false)
+		for _, i := range ie.ExcludedCellsToAddModListEUTRAN {
+			tmp_ExcludedCellsToAddModListEUTRAN.Value = append(tmp_ExcludedCellsToAddModListEUTRAN.Value, &i)
+		}
+		if err = tmp_ExcludedCellsToAddModListEUTRAN.Encode(w); err != nil {
+			return utils.WrapError("Encode ExcludedCellsToAddModListEUTRAN", err)
 		}
 	}
-	if err = w.WriteBoolean(ie.widebandRSRQ_Meas); err != nil {
-		return utils.WrapError("WriteBoolean widebandRSRQ_Meas", err)
+	if err = ie.Eutra_PresenceAntennaPort1.Encode(w); err != nil {
+		return utils.WrapError("Encode Eutra_PresenceAntennaPort1", err)
+	}
+	if ie.Eutra_Q_OffsetRange != nil {
+		if err = ie.Eutra_Q_OffsetRange.Encode(w); err != nil {
+			return utils.WrapError("Encode Eutra_Q_OffsetRange", err)
+		}
+	}
+	if err = w.WriteBoolean(ie.WidebandRSRQ_Meas); err != nil {
+		return utils.WrapError("WriteBoolean WidebandRSRQ_Meas", err)
 	}
 	if hasExtensions {
 		// Extension bitmap: 1 bits for 1 extension groups
-		extBitmap := []bool{ie.associatedMeasGap_r17 != nil}
+		extBitmap := []bool{ie.AssociatedMeasGap_r17 != nil}
 		if err := w.WriteExtBitMap(extBitmap); err != nil {
 			return utils.WrapError("WriteExtBitMap MeasObjectEUTRA", err)
 		}
@@ -87,17 +87,17 @@ func (ie *MeasObjectEUTRA) Encode(w *uper.UperWriter) error {
 			extWriter := uper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 1
-			optionals_ext_1 := []bool{ie.associatedMeasGap_r17 != nil}
+			optionals_ext_1 := []bool{ie.AssociatedMeasGap_r17 != nil}
 			for _, bit := range optionals_ext_1 {
 				if err := extWriter.WriteBool(bit); err != nil {
 					return err
 				}
 			}
 
-			// encode associatedMeasGap_r17 optional
-			if ie.associatedMeasGap_r17 != nil {
-				if err = ie.associatedMeasGap_r17.Encode(extWriter); err != nil {
-					return utils.WrapError("Encode associatedMeasGap_r17", err)
+			// encode AssociatedMeasGap_r17 optional
+			if ie.AssociatedMeasGap_r17 != nil {
+				if err = ie.AssociatedMeasGap_r17.Encode(extWriter); err != nil {
+					return utils.WrapError("Encode AssociatedMeasGap_r17", err)
 				}
 			}
 
@@ -119,84 +119,84 @@ func (ie *MeasObjectEUTRA) Decode(r *uper.UperReader) error {
 	if extensionBit, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var cellsToRemoveListEUTRANPresent bool
-	if cellsToRemoveListEUTRANPresent, err = r.ReadBool(); err != nil {
+	var CellsToRemoveListEUTRANPresent bool
+	if CellsToRemoveListEUTRANPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var cellsToAddModListEUTRANPresent bool
-	if cellsToAddModListEUTRANPresent, err = r.ReadBool(); err != nil {
+	var CellsToAddModListEUTRANPresent bool
+	if CellsToAddModListEUTRANPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var excludedCellsToRemoveListEUTRANPresent bool
-	if excludedCellsToRemoveListEUTRANPresent, err = r.ReadBool(); err != nil {
+	var ExcludedCellsToRemoveListEUTRANPresent bool
+	if ExcludedCellsToRemoveListEUTRANPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var excludedCellsToAddModListEUTRANPresent bool
-	if excludedCellsToAddModListEUTRANPresent, err = r.ReadBool(); err != nil {
+	var ExcludedCellsToAddModListEUTRANPresent bool
+	if ExcludedCellsToAddModListEUTRANPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var eutra_Q_OffsetRangePresent bool
-	if eutra_Q_OffsetRangePresent, err = r.ReadBool(); err != nil {
+	var Eutra_Q_OffsetRangePresent bool
+	if Eutra_Q_OffsetRangePresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	if err = ie.carrierFreq.Decode(r); err != nil {
-		return utils.WrapError("Decode carrierFreq", err)
+	if err = ie.CarrierFreq.Decode(r); err != nil {
+		return utils.WrapError("Decode CarrierFreq", err)
 	}
-	if err = ie.allowedMeasBandwidth.Decode(r); err != nil {
-		return utils.WrapError("Decode allowedMeasBandwidth", err)
+	if err = ie.AllowedMeasBandwidth.Decode(r); err != nil {
+		return utils.WrapError("Decode AllowedMeasBandwidth", err)
 	}
-	if cellsToRemoveListEUTRANPresent {
-		ie.cellsToRemoveListEUTRAN = new(EUTRA_CellIndexList)
-		if err = ie.cellsToRemoveListEUTRAN.Decode(r); err != nil {
-			return utils.WrapError("Decode cellsToRemoveListEUTRAN", err)
+	if CellsToRemoveListEUTRANPresent {
+		ie.CellsToRemoveListEUTRAN = new(EUTRA_CellIndexList)
+		if err = ie.CellsToRemoveListEUTRAN.Decode(r); err != nil {
+			return utils.WrapError("Decode CellsToRemoveListEUTRAN", err)
 		}
 	}
-	if cellsToAddModListEUTRANPresent {
-		tmp_cellsToAddModListEUTRAN := utils.NewSequence[*EUTRA_Cell]([]*EUTRA_Cell{}, uper.Constraint{Lb: 1, Ub: maxCellMeasEUTRA}, false)
-		fn_cellsToAddModListEUTRAN := func() *EUTRA_Cell {
+	if CellsToAddModListEUTRANPresent {
+		tmp_CellsToAddModListEUTRAN := utils.NewSequence[*EUTRA_Cell]([]*EUTRA_Cell{}, uper.Constraint{Lb: 1, Ub: maxCellMeasEUTRA}, false)
+		fn_CellsToAddModListEUTRAN := func() *EUTRA_Cell {
 			return new(EUTRA_Cell)
 		}
-		if err = tmp_cellsToAddModListEUTRAN.Decode(r, fn_cellsToAddModListEUTRAN); err != nil {
-			return utils.WrapError("Decode cellsToAddModListEUTRAN", err)
+		if err = tmp_CellsToAddModListEUTRAN.Decode(r, fn_CellsToAddModListEUTRAN); err != nil {
+			return utils.WrapError("Decode CellsToAddModListEUTRAN", err)
 		}
-		ie.cellsToAddModListEUTRAN = []EUTRA_Cell{}
-		for _, i := range tmp_cellsToAddModListEUTRAN.Value {
-			ie.cellsToAddModListEUTRAN = append(ie.cellsToAddModListEUTRAN, *i)
-		}
-	}
-	if excludedCellsToRemoveListEUTRANPresent {
-		ie.excludedCellsToRemoveListEUTRAN = new(EUTRA_CellIndexList)
-		if err = ie.excludedCellsToRemoveListEUTRAN.Decode(r); err != nil {
-			return utils.WrapError("Decode excludedCellsToRemoveListEUTRAN", err)
+		ie.CellsToAddModListEUTRAN = []EUTRA_Cell{}
+		for _, i := range tmp_CellsToAddModListEUTRAN.Value {
+			ie.CellsToAddModListEUTRAN = append(ie.CellsToAddModListEUTRAN, *i)
 		}
 	}
-	if excludedCellsToAddModListEUTRANPresent {
-		tmp_excludedCellsToAddModListEUTRAN := utils.NewSequence[*EUTRA_ExcludedCell]([]*EUTRA_ExcludedCell{}, uper.Constraint{Lb: 1, Ub: maxCellMeasEUTRA}, false)
-		fn_excludedCellsToAddModListEUTRAN := func() *EUTRA_ExcludedCell {
+	if ExcludedCellsToRemoveListEUTRANPresent {
+		ie.ExcludedCellsToRemoveListEUTRAN = new(EUTRA_CellIndexList)
+		if err = ie.ExcludedCellsToRemoveListEUTRAN.Decode(r); err != nil {
+			return utils.WrapError("Decode ExcludedCellsToRemoveListEUTRAN", err)
+		}
+	}
+	if ExcludedCellsToAddModListEUTRANPresent {
+		tmp_ExcludedCellsToAddModListEUTRAN := utils.NewSequence[*EUTRA_ExcludedCell]([]*EUTRA_ExcludedCell{}, uper.Constraint{Lb: 1, Ub: maxCellMeasEUTRA}, false)
+		fn_ExcludedCellsToAddModListEUTRAN := func() *EUTRA_ExcludedCell {
 			return new(EUTRA_ExcludedCell)
 		}
-		if err = tmp_excludedCellsToAddModListEUTRAN.Decode(r, fn_excludedCellsToAddModListEUTRAN); err != nil {
-			return utils.WrapError("Decode excludedCellsToAddModListEUTRAN", err)
+		if err = tmp_ExcludedCellsToAddModListEUTRAN.Decode(r, fn_ExcludedCellsToAddModListEUTRAN); err != nil {
+			return utils.WrapError("Decode ExcludedCellsToAddModListEUTRAN", err)
 		}
-		ie.excludedCellsToAddModListEUTRAN = []EUTRA_ExcludedCell{}
-		for _, i := range tmp_excludedCellsToAddModListEUTRAN.Value {
-			ie.excludedCellsToAddModListEUTRAN = append(ie.excludedCellsToAddModListEUTRAN, *i)
-		}
-	}
-	if err = ie.eutra_PresenceAntennaPort1.Decode(r); err != nil {
-		return utils.WrapError("Decode eutra_PresenceAntennaPort1", err)
-	}
-	if eutra_Q_OffsetRangePresent {
-		ie.eutra_Q_OffsetRange = new(EUTRA_Q_OffsetRange)
-		if err = ie.eutra_Q_OffsetRange.Decode(r); err != nil {
-			return utils.WrapError("Decode eutra_Q_OffsetRange", err)
+		ie.ExcludedCellsToAddModListEUTRAN = []EUTRA_ExcludedCell{}
+		for _, i := range tmp_ExcludedCellsToAddModListEUTRAN.Value {
+			ie.ExcludedCellsToAddModListEUTRAN = append(ie.ExcludedCellsToAddModListEUTRAN, *i)
 		}
 	}
-	var tmp_bool_widebandRSRQ_Meas bool
-	if tmp_bool_widebandRSRQ_Meas, err = r.ReadBoolean(); err != nil {
-		return utils.WrapError("ReadBoolean widebandRSRQ_Meas", err)
+	if err = ie.Eutra_PresenceAntennaPort1.Decode(r); err != nil {
+		return utils.WrapError("Decode Eutra_PresenceAntennaPort1", err)
 	}
-	ie.widebandRSRQ_Meas = tmp_bool_widebandRSRQ_Meas
+	if Eutra_Q_OffsetRangePresent {
+		ie.Eutra_Q_OffsetRange = new(EUTRA_Q_OffsetRange)
+		if err = ie.Eutra_Q_OffsetRange.Decode(r); err != nil {
+			return utils.WrapError("Decode Eutra_Q_OffsetRange", err)
+		}
+	}
+	var tmp_bool_WidebandRSRQ_Meas bool
+	if tmp_bool_WidebandRSRQ_Meas, err = r.ReadBoolean(); err != nil {
+		return utils.WrapError("ReadBoolean WidebandRSRQ_Meas", err)
+	}
+	ie.WidebandRSRQ_Meas = tmp_bool_WidebandRSRQ_Meas
 
 	if extensionBit {
 		// Read extension bitmap: 1 bits for 1 extension groups
@@ -214,15 +214,15 @@ func (ie *MeasObjectEUTRA) Decode(r *uper.UperReader) error {
 
 			extReader := uper.NewReader(bytes.NewReader(extBytes))
 
-			associatedMeasGap_r17Present, err := extReader.ReadBool()
+			AssociatedMeasGap_r17Present, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			// decode associatedMeasGap_r17 optional
-			if associatedMeasGap_r17Present {
-				ie.associatedMeasGap_r17 = new(MeasGapId_r17)
-				if err = ie.associatedMeasGap_r17.Decode(extReader); err != nil {
-					return utils.WrapError("Decode associatedMeasGap_r17", err)
+			// decode AssociatedMeasGap_r17 optional
+			if AssociatedMeasGap_r17Present {
+				ie.AssociatedMeasGap_r17 = new(MeasGapId_r17)
+				if err = ie.AssociatedMeasGap_r17.Decode(extReader); err != nil {
+					return utils.WrapError("Decode AssociatedMeasGap_r17", err)
 				}
 			}
 		}

@@ -6,62 +6,62 @@ import (
 )
 
 type FeatureSetUplink_v1710 struct {
-	mTRP_PUSCH_TypeA_CB_r17               *FeatureSetUplink_v1710_mTRP_PUSCH_TypeA_CB_r17               `optional`
-	mTRP_PUSCH_RepetitionTypeA_r17        *FeatureSetUplink_v1710_mTRP_PUSCH_RepetitionTypeA_r17        `optional`
-	mTRP_PUCCH_IntraSlot_r17              *FeatureSetUplink_v1710_mTRP_PUCCH_IntraSlot_r17              `optional`
-	srs_AntennaSwitching2SP_1Periodic_r17 *FeatureSetUplink_v1710_srs_AntennaSwitching2SP_1Periodic_r17 `optional`
-	srs_ExtensionAperiodicSRS_r17         *FeatureSetUplink_v1710_srs_ExtensionAperiodicSRS_r17         `optional`
-	srs_OneAP_SRS_r17                     *FeatureSetUplink_v1710_srs_OneAP_SRS_r17                     `optional`
-	ue_PowerClassPerBandPerBC_r17         *FeatureSetUplink_v1710_ue_PowerClassPerBandPerBC_r17         `optional`
-	tx_Support_UL_GapFR2_r17              *FeatureSetUplink_v1710_tx_Support_UL_GapFR2_r17              `optional`
+	MTRP_PUSCH_TypeA_CB_r17               *FeatureSetUplink_v1710_mTRP_PUSCH_TypeA_CB_r17               `optional`
+	MTRP_PUSCH_RepetitionTypeA_r17        *FeatureSetUplink_v1710_mTRP_PUSCH_RepetitionTypeA_r17        `optional`
+	MTRP_PUCCH_IntraSlot_r17              *FeatureSetUplink_v1710_mTRP_PUCCH_IntraSlot_r17              `optional`
+	Srs_AntennaSwitching2SP_1Periodic_r17 *FeatureSetUplink_v1710_srs_AntennaSwitching2SP_1Periodic_r17 `optional`
+	Srs_ExtensionAperiodicSRS_r17         *FeatureSetUplink_v1710_srs_ExtensionAperiodicSRS_r17         `optional`
+	Srs_OneAP_SRS_r17                     *FeatureSetUplink_v1710_srs_OneAP_SRS_r17                     `optional`
+	Ue_PowerClassPerBandPerBC_r17         *FeatureSetUplink_v1710_ue_PowerClassPerBandPerBC_r17         `optional`
+	Tx_Support_UL_GapFR2_r17              *FeatureSetUplink_v1710_tx_Support_UL_GapFR2_r17              `optional`
 }
 
 func (ie *FeatureSetUplink_v1710) Encode(w *uper.UperWriter) error {
 	var err error
-	preambleBits := []bool{ie.mTRP_PUSCH_TypeA_CB_r17 != nil, ie.mTRP_PUSCH_RepetitionTypeA_r17 != nil, ie.mTRP_PUCCH_IntraSlot_r17 != nil, ie.srs_AntennaSwitching2SP_1Periodic_r17 != nil, ie.srs_ExtensionAperiodicSRS_r17 != nil, ie.srs_OneAP_SRS_r17 != nil, ie.ue_PowerClassPerBandPerBC_r17 != nil, ie.tx_Support_UL_GapFR2_r17 != nil}
+	preambleBits := []bool{ie.MTRP_PUSCH_TypeA_CB_r17 != nil, ie.MTRP_PUSCH_RepetitionTypeA_r17 != nil, ie.MTRP_PUCCH_IntraSlot_r17 != nil, ie.Srs_AntennaSwitching2SP_1Periodic_r17 != nil, ie.Srs_ExtensionAperiodicSRS_r17 != nil, ie.Srs_OneAP_SRS_r17 != nil, ie.Ue_PowerClassPerBandPerBC_r17 != nil, ie.Tx_Support_UL_GapFR2_r17 != nil}
 	for _, bit := range preambleBits {
 		if err = w.WriteBool(bit); err != nil {
 			return err
 		}
 	}
-	if ie.mTRP_PUSCH_TypeA_CB_r17 != nil {
-		if err = ie.mTRP_PUSCH_TypeA_CB_r17.Encode(w); err != nil {
-			return utils.WrapError("Encode mTRP_PUSCH_TypeA_CB_r17", err)
+	if ie.MTRP_PUSCH_TypeA_CB_r17 != nil {
+		if err = ie.MTRP_PUSCH_TypeA_CB_r17.Encode(w); err != nil {
+			return utils.WrapError("Encode MTRP_PUSCH_TypeA_CB_r17", err)
 		}
 	}
-	if ie.mTRP_PUSCH_RepetitionTypeA_r17 != nil {
-		if err = ie.mTRP_PUSCH_RepetitionTypeA_r17.Encode(w); err != nil {
-			return utils.WrapError("Encode mTRP_PUSCH_RepetitionTypeA_r17", err)
+	if ie.MTRP_PUSCH_RepetitionTypeA_r17 != nil {
+		if err = ie.MTRP_PUSCH_RepetitionTypeA_r17.Encode(w); err != nil {
+			return utils.WrapError("Encode MTRP_PUSCH_RepetitionTypeA_r17", err)
 		}
 	}
-	if ie.mTRP_PUCCH_IntraSlot_r17 != nil {
-		if err = ie.mTRP_PUCCH_IntraSlot_r17.Encode(w); err != nil {
-			return utils.WrapError("Encode mTRP_PUCCH_IntraSlot_r17", err)
+	if ie.MTRP_PUCCH_IntraSlot_r17 != nil {
+		if err = ie.MTRP_PUCCH_IntraSlot_r17.Encode(w); err != nil {
+			return utils.WrapError("Encode MTRP_PUCCH_IntraSlot_r17", err)
 		}
 	}
-	if ie.srs_AntennaSwitching2SP_1Periodic_r17 != nil {
-		if err = ie.srs_AntennaSwitching2SP_1Periodic_r17.Encode(w); err != nil {
-			return utils.WrapError("Encode srs_AntennaSwitching2SP_1Periodic_r17", err)
+	if ie.Srs_AntennaSwitching2SP_1Periodic_r17 != nil {
+		if err = ie.Srs_AntennaSwitching2SP_1Periodic_r17.Encode(w); err != nil {
+			return utils.WrapError("Encode Srs_AntennaSwitching2SP_1Periodic_r17", err)
 		}
 	}
-	if ie.srs_ExtensionAperiodicSRS_r17 != nil {
-		if err = ie.srs_ExtensionAperiodicSRS_r17.Encode(w); err != nil {
-			return utils.WrapError("Encode srs_ExtensionAperiodicSRS_r17", err)
+	if ie.Srs_ExtensionAperiodicSRS_r17 != nil {
+		if err = ie.Srs_ExtensionAperiodicSRS_r17.Encode(w); err != nil {
+			return utils.WrapError("Encode Srs_ExtensionAperiodicSRS_r17", err)
 		}
 	}
-	if ie.srs_OneAP_SRS_r17 != nil {
-		if err = ie.srs_OneAP_SRS_r17.Encode(w); err != nil {
-			return utils.WrapError("Encode srs_OneAP_SRS_r17", err)
+	if ie.Srs_OneAP_SRS_r17 != nil {
+		if err = ie.Srs_OneAP_SRS_r17.Encode(w); err != nil {
+			return utils.WrapError("Encode Srs_OneAP_SRS_r17", err)
 		}
 	}
-	if ie.ue_PowerClassPerBandPerBC_r17 != nil {
-		if err = ie.ue_PowerClassPerBandPerBC_r17.Encode(w); err != nil {
-			return utils.WrapError("Encode ue_PowerClassPerBandPerBC_r17", err)
+	if ie.Ue_PowerClassPerBandPerBC_r17 != nil {
+		if err = ie.Ue_PowerClassPerBandPerBC_r17.Encode(w); err != nil {
+			return utils.WrapError("Encode Ue_PowerClassPerBandPerBC_r17", err)
 		}
 	}
-	if ie.tx_Support_UL_GapFR2_r17 != nil {
-		if err = ie.tx_Support_UL_GapFR2_r17.Encode(w); err != nil {
-			return utils.WrapError("Encode tx_Support_UL_GapFR2_r17", err)
+	if ie.Tx_Support_UL_GapFR2_r17 != nil {
+		if err = ie.Tx_Support_UL_GapFR2_r17.Encode(w); err != nil {
+			return utils.WrapError("Encode Tx_Support_UL_GapFR2_r17", err)
 		}
 	}
 	return nil
@@ -69,84 +69,84 @@ func (ie *FeatureSetUplink_v1710) Encode(w *uper.UperWriter) error {
 
 func (ie *FeatureSetUplink_v1710) Decode(r *uper.UperReader) error {
 	var err error
-	var mTRP_PUSCH_TypeA_CB_r17Present bool
-	if mTRP_PUSCH_TypeA_CB_r17Present, err = r.ReadBool(); err != nil {
+	var MTRP_PUSCH_TypeA_CB_r17Present bool
+	if MTRP_PUSCH_TypeA_CB_r17Present, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var mTRP_PUSCH_RepetitionTypeA_r17Present bool
-	if mTRP_PUSCH_RepetitionTypeA_r17Present, err = r.ReadBool(); err != nil {
+	var MTRP_PUSCH_RepetitionTypeA_r17Present bool
+	if MTRP_PUSCH_RepetitionTypeA_r17Present, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var mTRP_PUCCH_IntraSlot_r17Present bool
-	if mTRP_PUCCH_IntraSlot_r17Present, err = r.ReadBool(); err != nil {
+	var MTRP_PUCCH_IntraSlot_r17Present bool
+	if MTRP_PUCCH_IntraSlot_r17Present, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var srs_AntennaSwitching2SP_1Periodic_r17Present bool
-	if srs_AntennaSwitching2SP_1Periodic_r17Present, err = r.ReadBool(); err != nil {
+	var Srs_AntennaSwitching2SP_1Periodic_r17Present bool
+	if Srs_AntennaSwitching2SP_1Periodic_r17Present, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var srs_ExtensionAperiodicSRS_r17Present bool
-	if srs_ExtensionAperiodicSRS_r17Present, err = r.ReadBool(); err != nil {
+	var Srs_ExtensionAperiodicSRS_r17Present bool
+	if Srs_ExtensionAperiodicSRS_r17Present, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var srs_OneAP_SRS_r17Present bool
-	if srs_OneAP_SRS_r17Present, err = r.ReadBool(); err != nil {
+	var Srs_OneAP_SRS_r17Present bool
+	if Srs_OneAP_SRS_r17Present, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var ue_PowerClassPerBandPerBC_r17Present bool
-	if ue_PowerClassPerBandPerBC_r17Present, err = r.ReadBool(); err != nil {
+	var Ue_PowerClassPerBandPerBC_r17Present bool
+	if Ue_PowerClassPerBandPerBC_r17Present, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var tx_Support_UL_GapFR2_r17Present bool
-	if tx_Support_UL_GapFR2_r17Present, err = r.ReadBool(); err != nil {
+	var Tx_Support_UL_GapFR2_r17Present bool
+	if Tx_Support_UL_GapFR2_r17Present, err = r.ReadBool(); err != nil {
 		return err
 	}
-	if mTRP_PUSCH_TypeA_CB_r17Present {
-		ie.mTRP_PUSCH_TypeA_CB_r17 = new(FeatureSetUplink_v1710_mTRP_PUSCH_TypeA_CB_r17)
-		if err = ie.mTRP_PUSCH_TypeA_CB_r17.Decode(r); err != nil {
-			return utils.WrapError("Decode mTRP_PUSCH_TypeA_CB_r17", err)
+	if MTRP_PUSCH_TypeA_CB_r17Present {
+		ie.MTRP_PUSCH_TypeA_CB_r17 = new(FeatureSetUplink_v1710_mTRP_PUSCH_TypeA_CB_r17)
+		if err = ie.MTRP_PUSCH_TypeA_CB_r17.Decode(r); err != nil {
+			return utils.WrapError("Decode MTRP_PUSCH_TypeA_CB_r17", err)
 		}
 	}
-	if mTRP_PUSCH_RepetitionTypeA_r17Present {
-		ie.mTRP_PUSCH_RepetitionTypeA_r17 = new(FeatureSetUplink_v1710_mTRP_PUSCH_RepetitionTypeA_r17)
-		if err = ie.mTRP_PUSCH_RepetitionTypeA_r17.Decode(r); err != nil {
-			return utils.WrapError("Decode mTRP_PUSCH_RepetitionTypeA_r17", err)
+	if MTRP_PUSCH_RepetitionTypeA_r17Present {
+		ie.MTRP_PUSCH_RepetitionTypeA_r17 = new(FeatureSetUplink_v1710_mTRP_PUSCH_RepetitionTypeA_r17)
+		if err = ie.MTRP_PUSCH_RepetitionTypeA_r17.Decode(r); err != nil {
+			return utils.WrapError("Decode MTRP_PUSCH_RepetitionTypeA_r17", err)
 		}
 	}
-	if mTRP_PUCCH_IntraSlot_r17Present {
-		ie.mTRP_PUCCH_IntraSlot_r17 = new(FeatureSetUplink_v1710_mTRP_PUCCH_IntraSlot_r17)
-		if err = ie.mTRP_PUCCH_IntraSlot_r17.Decode(r); err != nil {
-			return utils.WrapError("Decode mTRP_PUCCH_IntraSlot_r17", err)
+	if MTRP_PUCCH_IntraSlot_r17Present {
+		ie.MTRP_PUCCH_IntraSlot_r17 = new(FeatureSetUplink_v1710_mTRP_PUCCH_IntraSlot_r17)
+		if err = ie.MTRP_PUCCH_IntraSlot_r17.Decode(r); err != nil {
+			return utils.WrapError("Decode MTRP_PUCCH_IntraSlot_r17", err)
 		}
 	}
-	if srs_AntennaSwitching2SP_1Periodic_r17Present {
-		ie.srs_AntennaSwitching2SP_1Periodic_r17 = new(FeatureSetUplink_v1710_srs_AntennaSwitching2SP_1Periodic_r17)
-		if err = ie.srs_AntennaSwitching2SP_1Periodic_r17.Decode(r); err != nil {
-			return utils.WrapError("Decode srs_AntennaSwitching2SP_1Periodic_r17", err)
+	if Srs_AntennaSwitching2SP_1Periodic_r17Present {
+		ie.Srs_AntennaSwitching2SP_1Periodic_r17 = new(FeatureSetUplink_v1710_srs_AntennaSwitching2SP_1Periodic_r17)
+		if err = ie.Srs_AntennaSwitching2SP_1Periodic_r17.Decode(r); err != nil {
+			return utils.WrapError("Decode Srs_AntennaSwitching2SP_1Periodic_r17", err)
 		}
 	}
-	if srs_ExtensionAperiodicSRS_r17Present {
-		ie.srs_ExtensionAperiodicSRS_r17 = new(FeatureSetUplink_v1710_srs_ExtensionAperiodicSRS_r17)
-		if err = ie.srs_ExtensionAperiodicSRS_r17.Decode(r); err != nil {
-			return utils.WrapError("Decode srs_ExtensionAperiodicSRS_r17", err)
+	if Srs_ExtensionAperiodicSRS_r17Present {
+		ie.Srs_ExtensionAperiodicSRS_r17 = new(FeatureSetUplink_v1710_srs_ExtensionAperiodicSRS_r17)
+		if err = ie.Srs_ExtensionAperiodicSRS_r17.Decode(r); err != nil {
+			return utils.WrapError("Decode Srs_ExtensionAperiodicSRS_r17", err)
 		}
 	}
-	if srs_OneAP_SRS_r17Present {
-		ie.srs_OneAP_SRS_r17 = new(FeatureSetUplink_v1710_srs_OneAP_SRS_r17)
-		if err = ie.srs_OneAP_SRS_r17.Decode(r); err != nil {
-			return utils.WrapError("Decode srs_OneAP_SRS_r17", err)
+	if Srs_OneAP_SRS_r17Present {
+		ie.Srs_OneAP_SRS_r17 = new(FeatureSetUplink_v1710_srs_OneAP_SRS_r17)
+		if err = ie.Srs_OneAP_SRS_r17.Decode(r); err != nil {
+			return utils.WrapError("Decode Srs_OneAP_SRS_r17", err)
 		}
 	}
-	if ue_PowerClassPerBandPerBC_r17Present {
-		ie.ue_PowerClassPerBandPerBC_r17 = new(FeatureSetUplink_v1710_ue_PowerClassPerBandPerBC_r17)
-		if err = ie.ue_PowerClassPerBandPerBC_r17.Decode(r); err != nil {
-			return utils.WrapError("Decode ue_PowerClassPerBandPerBC_r17", err)
+	if Ue_PowerClassPerBandPerBC_r17Present {
+		ie.Ue_PowerClassPerBandPerBC_r17 = new(FeatureSetUplink_v1710_ue_PowerClassPerBandPerBC_r17)
+		if err = ie.Ue_PowerClassPerBandPerBC_r17.Decode(r); err != nil {
+			return utils.WrapError("Decode Ue_PowerClassPerBandPerBC_r17", err)
 		}
 	}
-	if tx_Support_UL_GapFR2_r17Present {
-		ie.tx_Support_UL_GapFR2_r17 = new(FeatureSetUplink_v1710_tx_Support_UL_GapFR2_r17)
-		if err = ie.tx_Support_UL_GapFR2_r17.Decode(r); err != nil {
-			return utils.WrapError("Decode tx_Support_UL_GapFR2_r17", err)
+	if Tx_Support_UL_GapFR2_r17Present {
+		ie.Tx_Support_UL_GapFR2_r17 = new(FeatureSetUplink_v1710_tx_Support_UL_GapFR2_r17)
+		if err = ie.Tx_Support_UL_GapFR2_r17.Decode(r); err != nil {
+			return utils.WrapError("Decode Tx_Support_UL_GapFR2_r17", err)
 		}
 	}
 	return nil

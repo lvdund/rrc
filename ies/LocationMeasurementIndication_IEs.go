@@ -6,28 +6,28 @@ import (
 )
 
 type LocationMeasurementIndication_IEs struct {
-	measurementIndication    *LocationMeasurementInfo `madatory,setuprelease`
-	lateNonCriticalExtension *[]byte                  `optional`
-	nonCriticalExtension     interface{}              `optional`
+	MeasurementIndication    *LocationMeasurementInfo `madatory,setuprelease`
+	LateNonCriticalExtension *[]byte                  `optional`
+	NonCriticalExtension     interface{}              `optional`
 }
 
 func (ie *LocationMeasurementIndication_IEs) Encode(w *uper.UperWriter) error {
 	var err error
-	preambleBits := []bool{ie.lateNonCriticalExtension != nil}
+	preambleBits := []bool{ie.LateNonCriticalExtension != nil}
 	for _, bit := range preambleBits {
 		if err = w.WriteBool(bit); err != nil {
 			return err
 		}
 	}
-	tmp_measurementIndication := utils.SetupRelease[*LocationMeasurementInfo]{
-		Setup: ie.measurementIndication,
+	tmp_MeasurementIndication := utils.SetupRelease[*LocationMeasurementInfo]{
+		Setup: ie.MeasurementIndication,
 	}
-	if err = tmp_measurementIndication.Encode(w); err != nil {
-		return utils.WrapError("Encode measurementIndication", err)
+	if err = tmp_MeasurementIndication.Encode(w); err != nil {
+		return utils.WrapError("Encode MeasurementIndication", err)
 	}
-	if ie.lateNonCriticalExtension != nil {
-		if err = w.WriteOctetString(*ie.lateNonCriticalExtension, &uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
-			return utils.WrapError("Encode lateNonCriticalExtension", err)
+	if ie.LateNonCriticalExtension != nil {
+		if err = w.WriteOctetString(*ie.LateNonCriticalExtension, &uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+			return utils.WrapError("Encode LateNonCriticalExtension", err)
 		}
 	}
 	return nil
@@ -35,21 +35,21 @@ func (ie *LocationMeasurementIndication_IEs) Encode(w *uper.UperWriter) error {
 
 func (ie *LocationMeasurementIndication_IEs) Decode(r *uper.UperReader) error {
 	var err error
-	var lateNonCriticalExtensionPresent bool
-	if lateNonCriticalExtensionPresent, err = r.ReadBool(); err != nil {
+	var LateNonCriticalExtensionPresent bool
+	if LateNonCriticalExtensionPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	tmp_measurementIndication := utils.SetupRelease[*LocationMeasurementInfo]{}
-	if err = tmp_measurementIndication.Decode(r); err != nil {
-		return utils.WrapError("Decode measurementIndication", err)
+	tmp_MeasurementIndication := utils.SetupRelease[*LocationMeasurementInfo]{}
+	if err = tmp_MeasurementIndication.Decode(r); err != nil {
+		return utils.WrapError("Decode MeasurementIndication", err)
 	}
-	ie.measurementIndication = tmp_measurementIndication.Setup
-	if lateNonCriticalExtensionPresent {
-		var tmp_os_lateNonCriticalExtension []byte
-		if tmp_os_lateNonCriticalExtension, err = r.ReadOctetString(&uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
-			return utils.WrapError("Decode lateNonCriticalExtension", err)
+	ie.MeasurementIndication = tmp_MeasurementIndication.Setup
+	if LateNonCriticalExtensionPresent {
+		var tmp_os_LateNonCriticalExtension []byte
+		if tmp_os_LateNonCriticalExtension, err = r.ReadOctetString(&uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+			return utils.WrapError("Decode LateNonCriticalExtension", err)
 		}
-		ie.lateNonCriticalExtension = &tmp_os_lateNonCriticalExtension
+		ie.LateNonCriticalExtension = &tmp_os_LateNonCriticalExtension
 	}
 	return nil
 }

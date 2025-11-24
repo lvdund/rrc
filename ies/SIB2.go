@@ -8,31 +8,31 @@ import (
 )
 
 type SIB2 struct {
-	cellReselectionInfoCommon      *SIB2_cellReselectionInfoCommon      `lb:2,ub:maxNrofSS_BlocksToAverage,optional`
-	cellReselectionServingFreqInfo *SIB2_cellReselectionServingFreqInfo `optional,ext`
-	intraFreqCellReselectionInfo   *SIB2_intraFreqCellReselectionInfo   `optional,ext`
-	relaxedMeasurement_r16         *SIB2_relaxedMeasurement_r16         `optional,ext-5`
-	cellEquivalentSize_r17         *int64                               `lb:2,ub:16,optional,ext-6`
-	relaxedMeasurement_r17         *SIB2_relaxedMeasurement_r17         `optional,ext-6`
+	CellReselectionInfoCommon      *SIB2_cellReselectionInfoCommon      `lb:2,ub:maxNrofSS_BlocksToAverage,optional`
+	CellReselectionServingFreqInfo *SIB2_cellReselectionServingFreqInfo `optional,ext`
+	IntraFreqCellReselectionInfo   *SIB2_intraFreqCellReselectionInfo   `optional,ext`
+	RelaxedMeasurement_r16         *SIB2_relaxedMeasurement_r16         `optional,ext-5`
+	CellEquivalentSize_r17         *int64                               `lb:2,ub:16,optional,ext-6`
+	RelaxedMeasurement_r17         *SIB2_relaxedMeasurement_r17         `optional,ext-6`
 }
 
 func (ie *SIB2) Encode(w *uper.UperWriter) error {
 	var err error
-	hasExtensions := ie.relaxedMeasurement_r16 != nil || ie.cellEquivalentSize_r17 != nil || ie.relaxedMeasurement_r17 != nil
-	preambleBits := []bool{hasExtensions, ie.cellReselectionInfoCommon != nil}
+	hasExtensions := ie.RelaxedMeasurement_r16 != nil || ie.CellEquivalentSize_r17 != nil || ie.RelaxedMeasurement_r17 != nil
+	preambleBits := []bool{hasExtensions, ie.CellReselectionInfoCommon != nil}
 	for _, bit := range preambleBits {
 		if err = w.WriteBool(bit); err != nil {
 			return err
 		}
 	}
-	if ie.cellReselectionInfoCommon != nil {
-		if err = ie.cellReselectionInfoCommon.Encode(w); err != nil {
-			return utils.WrapError("Encode cellReselectionInfoCommon", err)
+	if ie.CellReselectionInfoCommon != nil {
+		if err = ie.CellReselectionInfoCommon.Encode(w); err != nil {
+			return utils.WrapError("Encode CellReselectionInfoCommon", err)
 		}
 	}
 	if hasExtensions {
 		// Extension bitmap: 2 bits for 2 extension groups
-		extBitmap := []bool{ie.relaxedMeasurement_r16 != nil, ie.cellEquivalentSize_r17 != nil || ie.relaxedMeasurement_r17 != nil}
+		extBitmap := []bool{ie.RelaxedMeasurement_r16 != nil, ie.CellEquivalentSize_r17 != nil || ie.RelaxedMeasurement_r17 != nil}
 		if err := w.WriteExtBitMap(extBitmap); err != nil {
 			return utils.WrapError("WriteExtBitMap SIB2", err)
 		}
@@ -43,17 +43,17 @@ func (ie *SIB2) Encode(w *uper.UperWriter) error {
 			extWriter := uper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 5
-			optionals_ext_5 := []bool{ie.relaxedMeasurement_r16 != nil}
+			optionals_ext_5 := []bool{ie.RelaxedMeasurement_r16 != nil}
 			for _, bit := range optionals_ext_5 {
 				if err := extWriter.WriteBool(bit); err != nil {
 					return err
 				}
 			}
 
-			// encode relaxedMeasurement_r16 optional
-			if ie.relaxedMeasurement_r16 != nil {
-				if err = ie.relaxedMeasurement_r16.Encode(extWriter); err != nil {
-					return utils.WrapError("Encode relaxedMeasurement_r16", err)
+			// encode RelaxedMeasurement_r16 optional
+			if ie.RelaxedMeasurement_r16 != nil {
+				if err = ie.RelaxedMeasurement_r16.Encode(extWriter); err != nil {
+					return utils.WrapError("Encode RelaxedMeasurement_r16", err)
 				}
 			}
 
@@ -72,23 +72,23 @@ func (ie *SIB2) Encode(w *uper.UperWriter) error {
 			extWriter := uper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 6
-			optionals_ext_6 := []bool{ie.cellEquivalentSize_r17 != nil, ie.relaxedMeasurement_r17 != nil}
+			optionals_ext_6 := []bool{ie.CellEquivalentSize_r17 != nil, ie.RelaxedMeasurement_r17 != nil}
 			for _, bit := range optionals_ext_6 {
 				if err := extWriter.WriteBool(bit); err != nil {
 					return err
 				}
 			}
 
-			// encode cellEquivalentSize_r17 optional
-			if ie.cellEquivalentSize_r17 != nil {
-				if err = extWriter.WriteInteger(*ie.cellEquivalentSize_r17, &uper.Constraint{Lb: 2, Ub: 16}, false); err != nil {
-					return utils.WrapError("Encode cellEquivalentSize_r17", err)
+			// encode CellEquivalentSize_r17 optional
+			if ie.CellEquivalentSize_r17 != nil {
+				if err = extWriter.WriteInteger(*ie.CellEquivalentSize_r17, &uper.Constraint{Lb: 2, Ub: 16}, false); err != nil {
+					return utils.WrapError("Encode CellEquivalentSize_r17", err)
 				}
 			}
-			// encode relaxedMeasurement_r17 optional
-			if ie.relaxedMeasurement_r17 != nil {
-				if err = ie.relaxedMeasurement_r17.Encode(extWriter); err != nil {
-					return utils.WrapError("Encode relaxedMeasurement_r17", err)
+			// encode RelaxedMeasurement_r17 optional
+			if ie.RelaxedMeasurement_r17 != nil {
+				if err = ie.RelaxedMeasurement_r17.Encode(extWriter); err != nil {
+					return utils.WrapError("Encode RelaxedMeasurement_r17", err)
 				}
 			}
 
@@ -110,14 +110,14 @@ func (ie *SIB2) Decode(r *uper.UperReader) error {
 	if extensionBit, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var cellReselectionInfoCommonPresent bool
-	if cellReselectionInfoCommonPresent, err = r.ReadBool(); err != nil {
+	var CellReselectionInfoCommonPresent bool
+	if CellReselectionInfoCommonPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	if cellReselectionInfoCommonPresent {
-		ie.cellReselectionInfoCommon = new(SIB2_cellReselectionInfoCommon)
-		if err = ie.cellReselectionInfoCommon.Decode(r); err != nil {
-			return utils.WrapError("Decode cellReselectionInfoCommon", err)
+	if CellReselectionInfoCommonPresent {
+		ie.CellReselectionInfoCommon = new(SIB2_cellReselectionInfoCommon)
+		if err = ie.CellReselectionInfoCommon.Decode(r); err != nil {
+			return utils.WrapError("Decode CellReselectionInfoCommon", err)
 		}
 	}
 
@@ -137,15 +137,15 @@ func (ie *SIB2) Decode(r *uper.UperReader) error {
 
 			extReader := uper.NewReader(bytes.NewReader(extBytes))
 
-			relaxedMeasurement_r16Present, err := extReader.ReadBool()
+			RelaxedMeasurement_r16Present, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			// decode relaxedMeasurement_r16 optional
-			if relaxedMeasurement_r16Present {
-				ie.relaxedMeasurement_r16 = new(SIB2_relaxedMeasurement_r16)
-				if err = ie.relaxedMeasurement_r16.Decode(extReader); err != nil {
-					return utils.WrapError("Decode relaxedMeasurement_r16", err)
+			// decode RelaxedMeasurement_r16 optional
+			if RelaxedMeasurement_r16Present {
+				ie.RelaxedMeasurement_r16 = new(SIB2_relaxedMeasurement_r16)
+				if err = ie.RelaxedMeasurement_r16.Decode(extReader); err != nil {
+					return utils.WrapError("Decode RelaxedMeasurement_r16", err)
 				}
 			}
 		}
@@ -158,27 +158,27 @@ func (ie *SIB2) Decode(r *uper.UperReader) error {
 
 			extReader := uper.NewReader(bytes.NewReader(extBytes))
 
-			cellEquivalentSize_r17Present, err := extReader.ReadBool()
+			CellEquivalentSize_r17Present, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			relaxedMeasurement_r17Present, err := extReader.ReadBool()
+			RelaxedMeasurement_r17Present, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			// decode cellEquivalentSize_r17 optional
-			if cellEquivalentSize_r17Present {
-				var tmp_int_cellEquivalentSize_r17 int64
-				if tmp_int_cellEquivalentSize_r17, err = extReader.ReadInteger(&uper.Constraint{Lb: 2, Ub: 16}, false); err != nil {
-					return utils.WrapError("Decode cellEquivalentSize_r17", err)
+			// decode CellEquivalentSize_r17 optional
+			if CellEquivalentSize_r17Present {
+				var tmp_int_CellEquivalentSize_r17 int64
+				if tmp_int_CellEquivalentSize_r17, err = extReader.ReadInteger(&uper.Constraint{Lb: 2, Ub: 16}, false); err != nil {
+					return utils.WrapError("Decode CellEquivalentSize_r17", err)
 				}
-				ie.cellEquivalentSize_r17 = &tmp_int_cellEquivalentSize_r17
+				ie.CellEquivalentSize_r17 = &tmp_int_CellEquivalentSize_r17
 			}
-			// decode relaxedMeasurement_r17 optional
-			if relaxedMeasurement_r17Present {
-				ie.relaxedMeasurement_r17 = new(SIB2_relaxedMeasurement_r17)
-				if err = ie.relaxedMeasurement_r17.Decode(extReader); err != nil {
-					return utils.WrapError("Decode relaxedMeasurement_r17", err)
+			// decode RelaxedMeasurement_r17 optional
+			if RelaxedMeasurement_r17Present {
+				ie.RelaxedMeasurement_r17 = new(SIB2_relaxedMeasurement_r17)
+				if err = ie.RelaxedMeasurement_r17.Decode(extReader); err != nil {
+					return utils.WrapError("Decode RelaxedMeasurement_r17", err)
 				}
 			}
 		}

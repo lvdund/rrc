@@ -9,18 +9,18 @@ import (
 
 const (
 	UL_CCCH_MessageType_C1_Choice_nothing uint64 = iota
-	UL_CCCH_MessageType_C1_Choice_rrcSetupRequest
-	UL_CCCH_MessageType_C1_Choice_rrcResumeRequest
-	UL_CCCH_MessageType_C1_Choice_rrcReestablishmentRequest
-	UL_CCCH_MessageType_C1_Choice_rrcSystemInfoRequest
+	UL_CCCH_MessageType_C1_Choice_RrcSetupRequest
+	UL_CCCH_MessageType_C1_Choice_RrcResumeRequest
+	UL_CCCH_MessageType_C1_Choice_RrcReestablishmentRequest
+	UL_CCCH_MessageType_C1_Choice_RrcSystemInfoRequest
 )
 
 type UL_CCCH_MessageType_C1 struct {
 	Choice                    uint64
-	rrcSetupRequest           *RRCSetupRequest
-	rrcResumeRequest          *RRCResumeRequest
-	rrcReestablishmentRequest *RRCReestablishmentRequest
-	rrcSystemInfoRequest      *RRCSystemInfoRequest
+	RrcSetupRequest           *RRCSetupRequest
+	RrcResumeRequest          *RRCResumeRequest
+	RrcReestablishmentRequest *RRCReestablishmentRequest
+	RrcSystemInfoRequest      *RRCSystemInfoRequest
 }
 
 func (ie *UL_CCCH_MessageType_C1) Encode(w *uper.UperWriter) error {
@@ -29,21 +29,21 @@ func (ie *UL_CCCH_MessageType_C1) Encode(w *uper.UperWriter) error {
 		return err
 	}
 	switch ie.Choice {
-	case UL_CCCH_MessageType_C1_Choice_rrcSetupRequest:
-		if err = ie.rrcSetupRequest.Encode(w); err != nil {
-			err = utils.WrapError("Encode rrcSetupRequest", err)
+	case UL_CCCH_MessageType_C1_Choice_RrcSetupRequest:
+		if err = ie.RrcSetupRequest.Encode(w); err != nil {
+			err = utils.WrapError("Encode RrcSetupRequest", err)
 		}
-	case UL_CCCH_MessageType_C1_Choice_rrcResumeRequest:
-		if err = ie.rrcResumeRequest.Encode(w); err != nil {
-			err = utils.WrapError("Encode rrcResumeRequest", err)
+	case UL_CCCH_MessageType_C1_Choice_RrcResumeRequest:
+		if err = ie.RrcResumeRequest.Encode(w); err != nil {
+			err = utils.WrapError("Encode RrcResumeRequest", err)
 		}
-	case UL_CCCH_MessageType_C1_Choice_rrcReestablishmentRequest:
-		if err = ie.rrcReestablishmentRequest.Encode(w); err != nil {
-			err = utils.WrapError("Encode rrcReestablishmentRequest", err)
+	case UL_CCCH_MessageType_C1_Choice_RrcReestablishmentRequest:
+		if err = ie.RrcReestablishmentRequest.Encode(w); err != nil {
+			err = utils.WrapError("Encode RrcReestablishmentRequest", err)
 		}
-	case UL_CCCH_MessageType_C1_Choice_rrcSystemInfoRequest:
-		if err = ie.rrcSystemInfoRequest.Encode(w); err != nil {
-			err = utils.WrapError("Encode rrcSystemInfoRequest", err)
+	case UL_CCCH_MessageType_C1_Choice_RrcSystemInfoRequest:
+		if err = ie.RrcSystemInfoRequest.Encode(w); err != nil {
+			err = utils.WrapError("Encode RrcSystemInfoRequest", err)
 		}
 	default:
 		err = fmt.Errorf("invalid choice: %d", ie.Choice)
@@ -57,25 +57,25 @@ func (ie *UL_CCCH_MessageType_C1) Decode(r *uper.UperReader) error {
 		return err
 	}
 	switch ie.Choice {
-	case UL_CCCH_MessageType_C1_Choice_rrcSetupRequest:
-		ie.rrcSetupRequest = new(RRCSetupRequest)
-		if err = ie.rrcSetupRequest.Decode(r); err != nil {
-			return utils.WrapError("Decode rrcSetupRequest", err)
+	case UL_CCCH_MessageType_C1_Choice_RrcSetupRequest:
+		ie.RrcSetupRequest = new(RRCSetupRequest)
+		if err = ie.RrcSetupRequest.Decode(r); err != nil {
+			return utils.WrapError("Decode RrcSetupRequest", err)
 		}
-	case UL_CCCH_MessageType_C1_Choice_rrcResumeRequest:
-		ie.rrcResumeRequest = new(RRCResumeRequest)
-		if err = ie.rrcResumeRequest.Decode(r); err != nil {
-			return utils.WrapError("Decode rrcResumeRequest", err)
+	case UL_CCCH_MessageType_C1_Choice_RrcResumeRequest:
+		ie.RrcResumeRequest = new(RRCResumeRequest)
+		if err = ie.RrcResumeRequest.Decode(r); err != nil {
+			return utils.WrapError("Decode RrcResumeRequest", err)
 		}
-	case UL_CCCH_MessageType_C1_Choice_rrcReestablishmentRequest:
-		ie.rrcReestablishmentRequest = new(RRCReestablishmentRequest)
-		if err = ie.rrcReestablishmentRequest.Decode(r); err != nil {
-			return utils.WrapError("Decode rrcReestablishmentRequest", err)
+	case UL_CCCH_MessageType_C1_Choice_RrcReestablishmentRequest:
+		ie.RrcReestablishmentRequest = new(RRCReestablishmentRequest)
+		if err = ie.RrcReestablishmentRequest.Decode(r); err != nil {
+			return utils.WrapError("Decode RrcReestablishmentRequest", err)
 		}
-	case UL_CCCH_MessageType_C1_Choice_rrcSystemInfoRequest:
-		ie.rrcSystemInfoRequest = new(RRCSystemInfoRequest)
-		if err = ie.rrcSystemInfoRequest.Decode(r); err != nil {
-			return utils.WrapError("Decode rrcSystemInfoRequest", err)
+	case UL_CCCH_MessageType_C1_Choice_RrcSystemInfoRequest:
+		ie.RrcSystemInfoRequest = new(RRCSystemInfoRequest)
+		if err = ie.RrcSystemInfoRequest.Decode(r); err != nil {
+			return utils.WrapError("Decode RrcSystemInfoRequest", err)
 		}
 	default:
 		return fmt.Errorf("invalid choice: %d", ie.Choice)

@@ -8,35 +8,35 @@ import (
 )
 
 type EventTriggerConfigInterRAT struct {
-	eventId                       EventTriggerConfigInterRAT_eventId                        `madatory`
-	rsType                        NR_RS_Type                                                `madatory,ext`
-	reportInterval                ReportInterval                                            `madatory,ext`
-	reportAmount                  EventTriggerConfigInterRAT_reportAmount                   `madatory,ext`
-	reportQuantity                MeasReportQuantity                                        `madatory,ext`
-	maxReportCells                int64                                                     `lb:1,ub:maxCellReport,madatory,ext`
-	reportQuantityUTRA_FDD_r16    *MeasReportQuantityUTRA_FDD_r16                           `optional,ext-3`
-	includeCommonLocationInfo_r16 *EventTriggerConfigInterRAT_includeCommonLocationInfo_r16 `optional,ext-4`
-	includeBT_Meas_r16            *BT_NameList_r16                                          `optional,ext-4,setuprelease`
-	includeWLAN_Meas_r16          *WLAN_NameList_r16                                        `optional,ext-4,setuprelease`
-	includeSensor_Meas_r16        *Sensor_NameList_r16                                      `optional,ext-4,setuprelease`
-	reportQuantityRelay_r17       *SL_MeasReportQuantity_r16                                `optional,ext-5`
+	EventId                       EventTriggerConfigInterRAT_eventId                        `madatory`
+	RsType                        NR_RS_Type                                                `madatory,ext`
+	ReportInterval                ReportInterval                                            `madatory,ext`
+	ReportAmount                  EventTriggerConfigInterRAT_reportAmount                   `madatory,ext`
+	ReportQuantity                MeasReportQuantity                                        `madatory,ext`
+	MaxReportCells                int64                                                     `lb:1,ub:maxCellReport,madatory,ext`
+	ReportQuantityUTRA_FDD_r16    *MeasReportQuantityUTRA_FDD_r16                           `optional,ext-3`
+	IncludeCommonLocationInfo_r16 *EventTriggerConfigInterRAT_includeCommonLocationInfo_r16 `optional,ext-4`
+	IncludeBT_Meas_r16            *BT_NameList_r16                                          `optional,ext-4,setuprelease`
+	IncludeWLAN_Meas_r16          *WLAN_NameList_r16                                        `optional,ext-4,setuprelease`
+	IncludeSensor_Meas_r16        *Sensor_NameList_r16                                      `optional,ext-4,setuprelease`
+	ReportQuantityRelay_r17       *SL_MeasReportQuantity_r16                                `optional,ext-5`
 }
 
 func (ie *EventTriggerConfigInterRAT) Encode(w *uper.UperWriter) error {
 	var err error
-	hasExtensions := ie.reportQuantityUTRA_FDD_r16 != nil || ie.includeCommonLocationInfo_r16 != nil || ie.includeBT_Meas_r16 != nil || ie.includeWLAN_Meas_r16 != nil || ie.includeSensor_Meas_r16 != nil || ie.reportQuantityRelay_r17 != nil
+	hasExtensions := ie.ReportQuantityUTRA_FDD_r16 != nil || ie.IncludeCommonLocationInfo_r16 != nil || ie.IncludeBT_Meas_r16 != nil || ie.IncludeWLAN_Meas_r16 != nil || ie.IncludeSensor_Meas_r16 != nil || ie.ReportQuantityRelay_r17 != nil
 	preambleBits := []bool{hasExtensions}
 	for _, bit := range preambleBits {
 		if err = w.WriteBool(bit); err != nil {
 			return err
 		}
 	}
-	if err = ie.eventId.Encode(w); err != nil {
-		return utils.WrapError("Encode eventId", err)
+	if err = ie.EventId.Encode(w); err != nil {
+		return utils.WrapError("Encode EventId", err)
 	}
 	if hasExtensions {
 		// Extension bitmap: 3 bits for 3 extension groups
-		extBitmap := []bool{ie.reportQuantityUTRA_FDD_r16 != nil, ie.includeCommonLocationInfo_r16 != nil || ie.includeBT_Meas_r16 != nil || ie.includeWLAN_Meas_r16 != nil || ie.includeSensor_Meas_r16 != nil, ie.reportQuantityRelay_r17 != nil}
+		extBitmap := []bool{ie.ReportQuantityUTRA_FDD_r16 != nil, ie.IncludeCommonLocationInfo_r16 != nil || ie.IncludeBT_Meas_r16 != nil || ie.IncludeWLAN_Meas_r16 != nil || ie.IncludeSensor_Meas_r16 != nil, ie.ReportQuantityRelay_r17 != nil}
 		if err := w.WriteExtBitMap(extBitmap); err != nil {
 			return utils.WrapError("WriteExtBitMap EventTriggerConfigInterRAT", err)
 		}
@@ -47,17 +47,17 @@ func (ie *EventTriggerConfigInterRAT) Encode(w *uper.UperWriter) error {
 			extWriter := uper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 3
-			optionals_ext_3 := []bool{ie.reportQuantityUTRA_FDD_r16 != nil}
+			optionals_ext_3 := []bool{ie.ReportQuantityUTRA_FDD_r16 != nil}
 			for _, bit := range optionals_ext_3 {
 				if err := extWriter.WriteBool(bit); err != nil {
 					return err
 				}
 			}
 
-			// encode reportQuantityUTRA_FDD_r16 optional
-			if ie.reportQuantityUTRA_FDD_r16 != nil {
-				if err = ie.reportQuantityUTRA_FDD_r16.Encode(extWriter); err != nil {
-					return utils.WrapError("Encode reportQuantityUTRA_FDD_r16", err)
+			// encode ReportQuantityUTRA_FDD_r16 optional
+			if ie.ReportQuantityUTRA_FDD_r16 != nil {
+				if err = ie.ReportQuantityUTRA_FDD_r16.Encode(extWriter); err != nil {
+					return utils.WrapError("Encode ReportQuantityUTRA_FDD_r16", err)
 				}
 			}
 
@@ -76,44 +76,44 @@ func (ie *EventTriggerConfigInterRAT) Encode(w *uper.UperWriter) error {
 			extWriter := uper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 4
-			optionals_ext_4 := []bool{ie.includeCommonLocationInfo_r16 != nil, ie.includeBT_Meas_r16 != nil, ie.includeWLAN_Meas_r16 != nil, ie.includeSensor_Meas_r16 != nil}
+			optionals_ext_4 := []bool{ie.IncludeCommonLocationInfo_r16 != nil, ie.IncludeBT_Meas_r16 != nil, ie.IncludeWLAN_Meas_r16 != nil, ie.IncludeSensor_Meas_r16 != nil}
 			for _, bit := range optionals_ext_4 {
 				if err := extWriter.WriteBool(bit); err != nil {
 					return err
 				}
 			}
 
-			// encode includeCommonLocationInfo_r16 optional
-			if ie.includeCommonLocationInfo_r16 != nil {
-				if err = ie.includeCommonLocationInfo_r16.Encode(extWriter); err != nil {
-					return utils.WrapError("Encode includeCommonLocationInfo_r16", err)
+			// encode IncludeCommonLocationInfo_r16 optional
+			if ie.IncludeCommonLocationInfo_r16 != nil {
+				if err = ie.IncludeCommonLocationInfo_r16.Encode(extWriter); err != nil {
+					return utils.WrapError("Encode IncludeCommonLocationInfo_r16", err)
 				}
 			}
-			// encode includeBT_Meas_r16 optional
-			if ie.includeBT_Meas_r16 != nil {
-				tmp_includeBT_Meas_r16 := utils.SetupRelease[*BT_NameList_r16]{
-					Setup: ie.includeBT_Meas_r16,
+			// encode IncludeBT_Meas_r16 optional
+			if ie.IncludeBT_Meas_r16 != nil {
+				tmp_IncludeBT_Meas_r16 := utils.SetupRelease[*BT_NameList_r16]{
+					Setup: ie.IncludeBT_Meas_r16,
 				}
-				if err = tmp_includeBT_Meas_r16.Encode(extWriter); err != nil {
-					return utils.WrapError("Encode includeBT_Meas_r16", err)
-				}
-			}
-			// encode includeWLAN_Meas_r16 optional
-			if ie.includeWLAN_Meas_r16 != nil {
-				tmp_includeWLAN_Meas_r16 := utils.SetupRelease[*WLAN_NameList_r16]{
-					Setup: ie.includeWLAN_Meas_r16,
-				}
-				if err = tmp_includeWLAN_Meas_r16.Encode(extWriter); err != nil {
-					return utils.WrapError("Encode includeWLAN_Meas_r16", err)
+				if err = tmp_IncludeBT_Meas_r16.Encode(extWriter); err != nil {
+					return utils.WrapError("Encode IncludeBT_Meas_r16", err)
 				}
 			}
-			// encode includeSensor_Meas_r16 optional
-			if ie.includeSensor_Meas_r16 != nil {
-				tmp_includeSensor_Meas_r16 := utils.SetupRelease[*Sensor_NameList_r16]{
-					Setup: ie.includeSensor_Meas_r16,
+			// encode IncludeWLAN_Meas_r16 optional
+			if ie.IncludeWLAN_Meas_r16 != nil {
+				tmp_IncludeWLAN_Meas_r16 := utils.SetupRelease[*WLAN_NameList_r16]{
+					Setup: ie.IncludeWLAN_Meas_r16,
 				}
-				if err = tmp_includeSensor_Meas_r16.Encode(extWriter); err != nil {
-					return utils.WrapError("Encode includeSensor_Meas_r16", err)
+				if err = tmp_IncludeWLAN_Meas_r16.Encode(extWriter); err != nil {
+					return utils.WrapError("Encode IncludeWLAN_Meas_r16", err)
+				}
+			}
+			// encode IncludeSensor_Meas_r16 optional
+			if ie.IncludeSensor_Meas_r16 != nil {
+				tmp_IncludeSensor_Meas_r16 := utils.SetupRelease[*Sensor_NameList_r16]{
+					Setup: ie.IncludeSensor_Meas_r16,
+				}
+				if err = tmp_IncludeSensor_Meas_r16.Encode(extWriter); err != nil {
+					return utils.WrapError("Encode IncludeSensor_Meas_r16", err)
 				}
 			}
 
@@ -132,17 +132,17 @@ func (ie *EventTriggerConfigInterRAT) Encode(w *uper.UperWriter) error {
 			extWriter := uper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 5
-			optionals_ext_5 := []bool{ie.reportQuantityRelay_r17 != nil}
+			optionals_ext_5 := []bool{ie.ReportQuantityRelay_r17 != nil}
 			for _, bit := range optionals_ext_5 {
 				if err := extWriter.WriteBool(bit); err != nil {
 					return err
 				}
 			}
 
-			// encode reportQuantityRelay_r17 optional
-			if ie.reportQuantityRelay_r17 != nil {
-				if err = ie.reportQuantityRelay_r17.Encode(extWriter); err != nil {
-					return utils.WrapError("Encode reportQuantityRelay_r17", err)
+			// encode ReportQuantityRelay_r17 optional
+			if ie.ReportQuantityRelay_r17 != nil {
+				if err = ie.ReportQuantityRelay_r17.Encode(extWriter); err != nil {
+					return utils.WrapError("Encode ReportQuantityRelay_r17", err)
 				}
 			}
 
@@ -164,8 +164,8 @@ func (ie *EventTriggerConfigInterRAT) Decode(r *uper.UperReader) error {
 	if extensionBit, err = r.ReadBool(); err != nil {
 		return err
 	}
-	if err = ie.eventId.Decode(r); err != nil {
-		return utils.WrapError("Decode eventId", err)
+	if err = ie.EventId.Decode(r); err != nil {
+		return utils.WrapError("Decode EventId", err)
 	}
 
 	if extensionBit {
@@ -184,15 +184,15 @@ func (ie *EventTriggerConfigInterRAT) Decode(r *uper.UperReader) error {
 
 			extReader := uper.NewReader(bytes.NewReader(extBytes))
 
-			reportQuantityUTRA_FDD_r16Present, err := extReader.ReadBool()
+			ReportQuantityUTRA_FDD_r16Present, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			// decode reportQuantityUTRA_FDD_r16 optional
-			if reportQuantityUTRA_FDD_r16Present {
-				ie.reportQuantityUTRA_FDD_r16 = new(MeasReportQuantityUTRA_FDD_r16)
-				if err = ie.reportQuantityUTRA_FDD_r16.Decode(extReader); err != nil {
-					return utils.WrapError("Decode reportQuantityUTRA_FDD_r16", err)
+			// decode ReportQuantityUTRA_FDD_r16 optional
+			if ReportQuantityUTRA_FDD_r16Present {
+				ie.ReportQuantityUTRA_FDD_r16 = new(MeasReportQuantityUTRA_FDD_r16)
+				if err = ie.ReportQuantityUTRA_FDD_r16.Decode(extReader); err != nil {
+					return utils.WrapError("Decode ReportQuantityUTRA_FDD_r16", err)
 				}
 			}
 		}
@@ -205,52 +205,52 @@ func (ie *EventTriggerConfigInterRAT) Decode(r *uper.UperReader) error {
 
 			extReader := uper.NewReader(bytes.NewReader(extBytes))
 
-			includeCommonLocationInfo_r16Present, err := extReader.ReadBool()
+			IncludeCommonLocationInfo_r16Present, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			includeBT_Meas_r16Present, err := extReader.ReadBool()
+			IncludeBT_Meas_r16Present, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			includeWLAN_Meas_r16Present, err := extReader.ReadBool()
+			IncludeWLAN_Meas_r16Present, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			includeSensor_Meas_r16Present, err := extReader.ReadBool()
+			IncludeSensor_Meas_r16Present, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			// decode includeCommonLocationInfo_r16 optional
-			if includeCommonLocationInfo_r16Present {
-				ie.includeCommonLocationInfo_r16 = new(EventTriggerConfigInterRAT_includeCommonLocationInfo_r16)
-				if err = ie.includeCommonLocationInfo_r16.Decode(extReader); err != nil {
-					return utils.WrapError("Decode includeCommonLocationInfo_r16", err)
+			// decode IncludeCommonLocationInfo_r16 optional
+			if IncludeCommonLocationInfo_r16Present {
+				ie.IncludeCommonLocationInfo_r16 = new(EventTriggerConfigInterRAT_includeCommonLocationInfo_r16)
+				if err = ie.IncludeCommonLocationInfo_r16.Decode(extReader); err != nil {
+					return utils.WrapError("Decode IncludeCommonLocationInfo_r16", err)
 				}
 			}
-			// decode includeBT_Meas_r16 optional
-			if includeBT_Meas_r16Present {
-				tmp_includeBT_Meas_r16 := utils.SetupRelease[*BT_NameList_r16]{}
-				if err = tmp_includeBT_Meas_r16.Decode(extReader); err != nil {
-					return utils.WrapError("Decode includeBT_Meas_r16", err)
+			// decode IncludeBT_Meas_r16 optional
+			if IncludeBT_Meas_r16Present {
+				tmp_IncludeBT_Meas_r16 := utils.SetupRelease[*BT_NameList_r16]{}
+				if err = tmp_IncludeBT_Meas_r16.Decode(extReader); err != nil {
+					return utils.WrapError("Decode IncludeBT_Meas_r16", err)
 				}
-				ie.includeBT_Meas_r16 = tmp_includeBT_Meas_r16.Setup
+				ie.IncludeBT_Meas_r16 = tmp_IncludeBT_Meas_r16.Setup
 			}
-			// decode includeWLAN_Meas_r16 optional
-			if includeWLAN_Meas_r16Present {
-				tmp_includeWLAN_Meas_r16 := utils.SetupRelease[*WLAN_NameList_r16]{}
-				if err = tmp_includeWLAN_Meas_r16.Decode(extReader); err != nil {
-					return utils.WrapError("Decode includeWLAN_Meas_r16", err)
+			// decode IncludeWLAN_Meas_r16 optional
+			if IncludeWLAN_Meas_r16Present {
+				tmp_IncludeWLAN_Meas_r16 := utils.SetupRelease[*WLAN_NameList_r16]{}
+				if err = tmp_IncludeWLAN_Meas_r16.Decode(extReader); err != nil {
+					return utils.WrapError("Decode IncludeWLAN_Meas_r16", err)
 				}
-				ie.includeWLAN_Meas_r16 = tmp_includeWLAN_Meas_r16.Setup
+				ie.IncludeWLAN_Meas_r16 = tmp_IncludeWLAN_Meas_r16.Setup
 			}
-			// decode includeSensor_Meas_r16 optional
-			if includeSensor_Meas_r16Present {
-				tmp_includeSensor_Meas_r16 := utils.SetupRelease[*Sensor_NameList_r16]{}
-				if err = tmp_includeSensor_Meas_r16.Decode(extReader); err != nil {
-					return utils.WrapError("Decode includeSensor_Meas_r16", err)
+			// decode IncludeSensor_Meas_r16 optional
+			if IncludeSensor_Meas_r16Present {
+				tmp_IncludeSensor_Meas_r16 := utils.SetupRelease[*Sensor_NameList_r16]{}
+				if err = tmp_IncludeSensor_Meas_r16.Decode(extReader); err != nil {
+					return utils.WrapError("Decode IncludeSensor_Meas_r16", err)
 				}
-				ie.includeSensor_Meas_r16 = tmp_includeSensor_Meas_r16.Setup
+				ie.IncludeSensor_Meas_r16 = tmp_IncludeSensor_Meas_r16.Setup
 			}
 		}
 		// decode extension group 5
@@ -262,15 +262,15 @@ func (ie *EventTriggerConfigInterRAT) Decode(r *uper.UperReader) error {
 
 			extReader := uper.NewReader(bytes.NewReader(extBytes))
 
-			reportQuantityRelay_r17Present, err := extReader.ReadBool()
+			ReportQuantityRelay_r17Present, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			// decode reportQuantityRelay_r17 optional
-			if reportQuantityRelay_r17Present {
-				ie.reportQuantityRelay_r17 = new(SL_MeasReportQuantity_r16)
-				if err = ie.reportQuantityRelay_r17.Decode(extReader); err != nil {
-					return utils.WrapError("Decode reportQuantityRelay_r17", err)
+			// decode ReportQuantityRelay_r17 optional
+			if ReportQuantityRelay_r17Present {
+				ie.ReportQuantityRelay_r17 = new(SL_MeasReportQuantity_r16)
+				if err = ie.ReportQuantityRelay_r17.Decode(extReader); err != nil {
+					return utils.WrapError("Decode ReportQuantityRelay_r17", err)
 				}
 			}
 		}

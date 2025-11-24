@@ -6,28 +6,28 @@ import (
 )
 
 type MasterKeyUpdate struct {
-	keySetChangeIndicator bool                 `madatory`
-	nextHopChainingCount  NextHopChainingCount `madatory`
-	nas_Container         *[]byte              `optional`
+	KeySetChangeIndicator bool                 `madatory`
+	NextHopChainingCount  NextHopChainingCount `madatory`
+	Nas_Container         *[]byte              `optional`
 }
 
 func (ie *MasterKeyUpdate) Encode(w *uper.UperWriter) error {
 	var err error
-	preambleBits := []bool{ie.nas_Container != nil}
+	preambleBits := []bool{ie.Nas_Container != nil}
 	for _, bit := range preambleBits {
 		if err = w.WriteBool(bit); err != nil {
 			return err
 		}
 	}
-	if err = w.WriteBoolean(ie.keySetChangeIndicator); err != nil {
-		return utils.WrapError("WriteBoolean keySetChangeIndicator", err)
+	if err = w.WriteBoolean(ie.KeySetChangeIndicator); err != nil {
+		return utils.WrapError("WriteBoolean KeySetChangeIndicator", err)
 	}
-	if err = ie.nextHopChainingCount.Encode(w); err != nil {
-		return utils.WrapError("Encode nextHopChainingCount", err)
+	if err = ie.NextHopChainingCount.Encode(w); err != nil {
+		return utils.WrapError("Encode NextHopChainingCount", err)
 	}
-	if ie.nas_Container != nil {
-		if err = w.WriteOctetString(*ie.nas_Container, &uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
-			return utils.WrapError("Encode nas_Container", err)
+	if ie.Nas_Container != nil {
+		if err = w.WriteOctetString(*ie.Nas_Container, &uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+			return utils.WrapError("Encode Nas_Container", err)
 		}
 	}
 	return nil
@@ -35,24 +35,24 @@ func (ie *MasterKeyUpdate) Encode(w *uper.UperWriter) error {
 
 func (ie *MasterKeyUpdate) Decode(r *uper.UperReader) error {
 	var err error
-	var nas_ContainerPresent bool
-	if nas_ContainerPresent, err = r.ReadBool(); err != nil {
+	var Nas_ContainerPresent bool
+	if Nas_ContainerPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var tmp_bool_keySetChangeIndicator bool
-	if tmp_bool_keySetChangeIndicator, err = r.ReadBoolean(); err != nil {
-		return utils.WrapError("ReadBoolean keySetChangeIndicator", err)
+	var tmp_bool_KeySetChangeIndicator bool
+	if tmp_bool_KeySetChangeIndicator, err = r.ReadBoolean(); err != nil {
+		return utils.WrapError("ReadBoolean KeySetChangeIndicator", err)
 	}
-	ie.keySetChangeIndicator = tmp_bool_keySetChangeIndicator
-	if err = ie.nextHopChainingCount.Decode(r); err != nil {
-		return utils.WrapError("Decode nextHopChainingCount", err)
+	ie.KeySetChangeIndicator = tmp_bool_KeySetChangeIndicator
+	if err = ie.NextHopChainingCount.Decode(r); err != nil {
+		return utils.WrapError("Decode NextHopChainingCount", err)
 	}
-	if nas_ContainerPresent {
-		var tmp_os_nas_Container []byte
-		if tmp_os_nas_Container, err = r.ReadOctetString(&uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
-			return utils.WrapError("Decode nas_Container", err)
+	if Nas_ContainerPresent {
+		var tmp_os_Nas_Container []byte
+		if tmp_os_Nas_Container, err = r.ReadOctetString(&uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+			return utils.WrapError("Decode Nas_Container", err)
 		}
-		ie.nas_Container = &tmp_os_nas_Container
+		ie.Nas_Container = &tmp_os_Nas_Container
 	}
 	return nil
 }

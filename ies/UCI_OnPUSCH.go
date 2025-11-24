@@ -6,43 +6,43 @@ import (
 )
 
 type UCI_OnPUSCH struct {
-	betaOffsets *UCI_OnPUSCH_betaOffsets `lb:4,ub:4,optional`
-	scaling     UCI_OnPUSCH_scaling      `madatory`
+	BetaOffsets *UCI_OnPUSCH_betaOffsets `lb:4,ub:4,optional`
+	Scaling     UCI_OnPUSCH_scaling      `madatory`
 }
 
 func (ie *UCI_OnPUSCH) Encode(w *uper.UperWriter) error {
 	var err error
-	preambleBits := []bool{ie.betaOffsets != nil}
+	preambleBits := []bool{ie.BetaOffsets != nil}
 	for _, bit := range preambleBits {
 		if err = w.WriteBool(bit); err != nil {
 			return err
 		}
 	}
-	if ie.betaOffsets != nil {
-		if err = ie.betaOffsets.Encode(w); err != nil {
-			return utils.WrapError("Encode betaOffsets", err)
+	if ie.BetaOffsets != nil {
+		if err = ie.BetaOffsets.Encode(w); err != nil {
+			return utils.WrapError("Encode BetaOffsets", err)
 		}
 	}
-	if err = ie.scaling.Encode(w); err != nil {
-		return utils.WrapError("Encode scaling", err)
+	if err = ie.Scaling.Encode(w); err != nil {
+		return utils.WrapError("Encode Scaling", err)
 	}
 	return nil
 }
 
 func (ie *UCI_OnPUSCH) Decode(r *uper.UperReader) error {
 	var err error
-	var betaOffsetsPresent bool
-	if betaOffsetsPresent, err = r.ReadBool(); err != nil {
+	var BetaOffsetsPresent bool
+	if BetaOffsetsPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	if betaOffsetsPresent {
-		ie.betaOffsets = new(UCI_OnPUSCH_betaOffsets)
-		if err = ie.betaOffsets.Decode(r); err != nil {
-			return utils.WrapError("Decode betaOffsets", err)
+	if BetaOffsetsPresent {
+		ie.BetaOffsets = new(UCI_OnPUSCH_betaOffsets)
+		if err = ie.BetaOffsets.Decode(r); err != nil {
+			return utils.WrapError("Decode BetaOffsets", err)
 		}
 	}
-	if err = ie.scaling.Decode(r); err != nil {
-		return utils.WrapError("Decode scaling", err)
+	if err = ie.Scaling.Decode(r); err != nil {
+		return utils.WrapError("Decode Scaling", err)
 	}
 	return nil
 }

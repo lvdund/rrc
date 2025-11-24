@@ -8,33 +8,33 @@ import (
 )
 
 type SCS_SpecificCarrier struct {
-	offsetToCarrier         int64             `lb:0,ub:2199,madatory`
-	subcarrierSpacing       SubcarrierSpacing `madatory`
-	carrierBandwidth        int64             `lb:1,ub:maxNrofPhysicalResourceBlocks,madatory`
-	txDirectCurrentLocation *int64            `lb:0,ub:4095,optional,ext-1`
+	OffsetToCarrier         int64             `lb:0,ub:2199,madatory`
+	SubcarrierSpacing       SubcarrierSpacing `madatory`
+	CarrierBandwidth        int64             `lb:1,ub:maxNrofPhysicalResourceBlocks,madatory`
+	TxDirectCurrentLocation *int64            `lb:0,ub:4095,optional,ext-1`
 }
 
 func (ie *SCS_SpecificCarrier) Encode(w *uper.UperWriter) error {
 	var err error
-	hasExtensions := ie.txDirectCurrentLocation != nil
+	hasExtensions := ie.TxDirectCurrentLocation != nil
 	preambleBits := []bool{hasExtensions}
 	for _, bit := range preambleBits {
 		if err = w.WriteBool(bit); err != nil {
 			return err
 		}
 	}
-	if err = w.WriteInteger(ie.offsetToCarrier, &uper.Constraint{Lb: 0, Ub: 2199}, false); err != nil {
-		return utils.WrapError("WriteInteger offsetToCarrier", err)
+	if err = w.WriteInteger(ie.OffsetToCarrier, &uper.Constraint{Lb: 0, Ub: 2199}, false); err != nil {
+		return utils.WrapError("WriteInteger OffsetToCarrier", err)
 	}
-	if err = ie.subcarrierSpacing.Encode(w); err != nil {
-		return utils.WrapError("Encode subcarrierSpacing", err)
+	if err = ie.SubcarrierSpacing.Encode(w); err != nil {
+		return utils.WrapError("Encode SubcarrierSpacing", err)
 	}
-	if err = w.WriteInteger(ie.carrierBandwidth, &uper.Constraint{Lb: 1, Ub: maxNrofPhysicalResourceBlocks}, false); err != nil {
-		return utils.WrapError("WriteInteger carrierBandwidth", err)
+	if err = w.WriteInteger(ie.CarrierBandwidth, &uper.Constraint{Lb: 1, Ub: maxNrofPhysicalResourceBlocks}, false); err != nil {
+		return utils.WrapError("WriteInteger CarrierBandwidth", err)
 	}
 	if hasExtensions {
 		// Extension bitmap: 1 bits for 1 extension groups
-		extBitmap := []bool{ie.txDirectCurrentLocation != nil}
+		extBitmap := []bool{ie.TxDirectCurrentLocation != nil}
 		if err := w.WriteExtBitMap(extBitmap); err != nil {
 			return utils.WrapError("WriteExtBitMap SCS_SpecificCarrier", err)
 		}
@@ -45,17 +45,17 @@ func (ie *SCS_SpecificCarrier) Encode(w *uper.UperWriter) error {
 			extWriter := uper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 1
-			optionals_ext_1 := []bool{ie.txDirectCurrentLocation != nil}
+			optionals_ext_1 := []bool{ie.TxDirectCurrentLocation != nil}
 			for _, bit := range optionals_ext_1 {
 				if err := extWriter.WriteBool(bit); err != nil {
 					return err
 				}
 			}
 
-			// encode txDirectCurrentLocation optional
-			if ie.txDirectCurrentLocation != nil {
-				if err = extWriter.WriteInteger(*ie.txDirectCurrentLocation, &uper.Constraint{Lb: 0, Ub: 4095}, false); err != nil {
-					return utils.WrapError("Encode txDirectCurrentLocation", err)
+			// encode TxDirectCurrentLocation optional
+			if ie.TxDirectCurrentLocation != nil {
+				if err = extWriter.WriteInteger(*ie.TxDirectCurrentLocation, &uper.Constraint{Lb: 0, Ub: 4095}, false); err != nil {
+					return utils.WrapError("Encode TxDirectCurrentLocation", err)
 				}
 			}
 
@@ -77,19 +77,19 @@ func (ie *SCS_SpecificCarrier) Decode(r *uper.UperReader) error {
 	if extensionBit, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var tmp_int_offsetToCarrier int64
-	if tmp_int_offsetToCarrier, err = r.ReadInteger(&uper.Constraint{Lb: 0, Ub: 2199}, false); err != nil {
-		return utils.WrapError("ReadInteger offsetToCarrier", err)
+	var tmp_int_OffsetToCarrier int64
+	if tmp_int_OffsetToCarrier, err = r.ReadInteger(&uper.Constraint{Lb: 0, Ub: 2199}, false); err != nil {
+		return utils.WrapError("ReadInteger OffsetToCarrier", err)
 	}
-	ie.offsetToCarrier = tmp_int_offsetToCarrier
-	if err = ie.subcarrierSpacing.Decode(r); err != nil {
-		return utils.WrapError("Decode subcarrierSpacing", err)
+	ie.OffsetToCarrier = tmp_int_OffsetToCarrier
+	if err = ie.SubcarrierSpacing.Decode(r); err != nil {
+		return utils.WrapError("Decode SubcarrierSpacing", err)
 	}
-	var tmp_int_carrierBandwidth int64
-	if tmp_int_carrierBandwidth, err = r.ReadInteger(&uper.Constraint{Lb: 1, Ub: maxNrofPhysicalResourceBlocks}, false); err != nil {
-		return utils.WrapError("ReadInteger carrierBandwidth", err)
+	var tmp_int_CarrierBandwidth int64
+	if tmp_int_CarrierBandwidth, err = r.ReadInteger(&uper.Constraint{Lb: 1, Ub: maxNrofPhysicalResourceBlocks}, false); err != nil {
+		return utils.WrapError("ReadInteger CarrierBandwidth", err)
 	}
-	ie.carrierBandwidth = tmp_int_carrierBandwidth
+	ie.CarrierBandwidth = tmp_int_CarrierBandwidth
 
 	if extensionBit {
 		// Read extension bitmap: 1 bits for 1 extension groups
@@ -107,17 +107,17 @@ func (ie *SCS_SpecificCarrier) Decode(r *uper.UperReader) error {
 
 			extReader := uper.NewReader(bytes.NewReader(extBytes))
 
-			txDirectCurrentLocationPresent, err := extReader.ReadBool()
+			TxDirectCurrentLocationPresent, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			// decode txDirectCurrentLocation optional
-			if txDirectCurrentLocationPresent {
-				var tmp_int_txDirectCurrentLocation int64
-				if tmp_int_txDirectCurrentLocation, err = extReader.ReadInteger(&uper.Constraint{Lb: 0, Ub: 4095}, false); err != nil {
-					return utils.WrapError("Decode txDirectCurrentLocation", err)
+			// decode TxDirectCurrentLocation optional
+			if TxDirectCurrentLocationPresent {
+				var tmp_int_TxDirectCurrentLocation int64
+				if tmp_int_TxDirectCurrentLocation, err = extReader.ReadInteger(&uper.Constraint{Lb: 0, Ub: 4095}, false); err != nil {
+					return utils.WrapError("Decode TxDirectCurrentLocation", err)
 				}
-				ie.txDirectCurrentLocation = &tmp_int_txDirectCurrentLocation
+				ie.TxDirectCurrentLocation = &tmp_int_TxDirectCurrentLocation
 			}
 		}
 	}

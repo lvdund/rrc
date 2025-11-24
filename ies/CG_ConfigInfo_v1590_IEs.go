@@ -6,30 +6,30 @@ import (
 )
 
 type CG_ConfigInfo_v1590_IEs struct {
-	servFrequenciesMN_NR []ARFCN_ValueNR          `lb:1,ub:maxNrofServingCells_1,optional`
-	nonCriticalExtension *CG_ConfigInfo_v1610_IEs `optional`
+	ServFrequenciesMN_NR []ARFCN_ValueNR          `lb:1,ub:maxNrofServingCells_1,optional`
+	NonCriticalExtension *CG_ConfigInfo_v1610_IEs `optional`
 }
 
 func (ie *CG_ConfigInfo_v1590_IEs) Encode(w *uper.UperWriter) error {
 	var err error
-	preambleBits := []bool{len(ie.servFrequenciesMN_NR) > 0, ie.nonCriticalExtension != nil}
+	preambleBits := []bool{len(ie.ServFrequenciesMN_NR) > 0, ie.NonCriticalExtension != nil}
 	for _, bit := range preambleBits {
 		if err = w.WriteBool(bit); err != nil {
 			return err
 		}
 	}
-	if len(ie.servFrequenciesMN_NR) > 0 {
-		tmp_servFrequenciesMN_NR := utils.NewSequence[*ARFCN_ValueNR]([]*ARFCN_ValueNR{}, uper.Constraint{Lb: 1, Ub: maxNrofServingCells_1}, false)
-		for _, i := range ie.servFrequenciesMN_NR {
-			tmp_servFrequenciesMN_NR.Value = append(tmp_servFrequenciesMN_NR.Value, &i)
+	if len(ie.ServFrequenciesMN_NR) > 0 {
+		tmp_ServFrequenciesMN_NR := utils.NewSequence[*ARFCN_ValueNR]([]*ARFCN_ValueNR{}, uper.Constraint{Lb: 1, Ub: maxNrofServingCells_1}, false)
+		for _, i := range ie.ServFrequenciesMN_NR {
+			tmp_ServFrequenciesMN_NR.Value = append(tmp_ServFrequenciesMN_NR.Value, &i)
 		}
-		if err = tmp_servFrequenciesMN_NR.Encode(w); err != nil {
-			return utils.WrapError("Encode servFrequenciesMN_NR", err)
+		if err = tmp_ServFrequenciesMN_NR.Encode(w); err != nil {
+			return utils.WrapError("Encode ServFrequenciesMN_NR", err)
 		}
 	}
-	if ie.nonCriticalExtension != nil {
-		if err = ie.nonCriticalExtension.Encode(w); err != nil {
-			return utils.WrapError("Encode nonCriticalExtension", err)
+	if ie.NonCriticalExtension != nil {
+		if err = ie.NonCriticalExtension.Encode(w); err != nil {
+			return utils.WrapError("Encode NonCriticalExtension", err)
 		}
 	}
 	return nil
@@ -37,31 +37,31 @@ func (ie *CG_ConfigInfo_v1590_IEs) Encode(w *uper.UperWriter) error {
 
 func (ie *CG_ConfigInfo_v1590_IEs) Decode(r *uper.UperReader) error {
 	var err error
-	var servFrequenciesMN_NRPresent bool
-	if servFrequenciesMN_NRPresent, err = r.ReadBool(); err != nil {
+	var ServFrequenciesMN_NRPresent bool
+	if ServFrequenciesMN_NRPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var nonCriticalExtensionPresent bool
-	if nonCriticalExtensionPresent, err = r.ReadBool(); err != nil {
+	var NonCriticalExtensionPresent bool
+	if NonCriticalExtensionPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	if servFrequenciesMN_NRPresent {
-		tmp_servFrequenciesMN_NR := utils.NewSequence[*ARFCN_ValueNR]([]*ARFCN_ValueNR{}, uper.Constraint{Lb: 1, Ub: maxNrofServingCells_1}, false)
-		fn_servFrequenciesMN_NR := func() *ARFCN_ValueNR {
+	if ServFrequenciesMN_NRPresent {
+		tmp_ServFrequenciesMN_NR := utils.NewSequence[*ARFCN_ValueNR]([]*ARFCN_ValueNR{}, uper.Constraint{Lb: 1, Ub: maxNrofServingCells_1}, false)
+		fn_ServFrequenciesMN_NR := func() *ARFCN_ValueNR {
 			return new(ARFCN_ValueNR)
 		}
-		if err = tmp_servFrequenciesMN_NR.Decode(r, fn_servFrequenciesMN_NR); err != nil {
-			return utils.WrapError("Decode servFrequenciesMN_NR", err)
+		if err = tmp_ServFrequenciesMN_NR.Decode(r, fn_ServFrequenciesMN_NR); err != nil {
+			return utils.WrapError("Decode ServFrequenciesMN_NR", err)
 		}
-		ie.servFrequenciesMN_NR = []ARFCN_ValueNR{}
-		for _, i := range tmp_servFrequenciesMN_NR.Value {
-			ie.servFrequenciesMN_NR = append(ie.servFrequenciesMN_NR, *i)
+		ie.ServFrequenciesMN_NR = []ARFCN_ValueNR{}
+		for _, i := range tmp_ServFrequenciesMN_NR.Value {
+			ie.ServFrequenciesMN_NR = append(ie.ServFrequenciesMN_NR, *i)
 		}
 	}
-	if nonCriticalExtensionPresent {
-		ie.nonCriticalExtension = new(CG_ConfigInfo_v1610_IEs)
-		if err = ie.nonCriticalExtension.Decode(r); err != nil {
-			return utils.WrapError("Decode nonCriticalExtension", err)
+	if NonCriticalExtensionPresent {
+		ie.NonCriticalExtension = new(CG_ConfigInfo_v1610_IEs)
+		if err = ie.NonCriticalExtension.Decode(r); err != nil {
+			return utils.WrapError("Decode NonCriticalExtension", err)
 		}
 	}
 	return nil

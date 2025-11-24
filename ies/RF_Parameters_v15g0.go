@@ -6,20 +6,20 @@ import (
 )
 
 type RF_Parameters_v15g0 struct {
-	supportedBandCombinationList_v15g0 *BandCombinationList_v15g0 `optional`
+	SupportedBandCombinationList_v15g0 *BandCombinationList_v15g0 `optional`
 }
 
 func (ie *RF_Parameters_v15g0) Encode(w *uper.UperWriter) error {
 	var err error
-	preambleBits := []bool{ie.supportedBandCombinationList_v15g0 != nil}
+	preambleBits := []bool{ie.SupportedBandCombinationList_v15g0 != nil}
 	for _, bit := range preambleBits {
 		if err = w.WriteBool(bit); err != nil {
 			return err
 		}
 	}
-	if ie.supportedBandCombinationList_v15g0 != nil {
-		if err = ie.supportedBandCombinationList_v15g0.Encode(w); err != nil {
-			return utils.WrapError("Encode supportedBandCombinationList_v15g0", err)
+	if ie.SupportedBandCombinationList_v15g0 != nil {
+		if err = ie.SupportedBandCombinationList_v15g0.Encode(w); err != nil {
+			return utils.WrapError("Encode SupportedBandCombinationList_v15g0", err)
 		}
 	}
 	return nil
@@ -27,14 +27,14 @@ func (ie *RF_Parameters_v15g0) Encode(w *uper.UperWriter) error {
 
 func (ie *RF_Parameters_v15g0) Decode(r *uper.UperReader) error {
 	var err error
-	var supportedBandCombinationList_v15g0Present bool
-	if supportedBandCombinationList_v15g0Present, err = r.ReadBool(); err != nil {
+	var SupportedBandCombinationList_v15g0Present bool
+	if SupportedBandCombinationList_v15g0Present, err = r.ReadBool(); err != nil {
 		return err
 	}
-	if supportedBandCombinationList_v15g0Present {
-		ie.supportedBandCombinationList_v15g0 = new(BandCombinationList_v15g0)
-		if err = ie.supportedBandCombinationList_v15g0.Decode(r); err != nil {
-			return utils.WrapError("Decode supportedBandCombinationList_v15g0", err)
+	if SupportedBandCombinationList_v15g0Present {
+		ie.SupportedBandCombinationList_v15g0 = new(BandCombinationList_v15g0)
+		if err = ie.SupportedBandCombinationList_v15g0.Decode(r); err != nil {
+			return utils.WrapError("Decode SupportedBandCombinationList_v15g0", err)
 		}
 	}
 	return nil

@@ -6,56 +6,56 @@ import (
 )
 
 type CG_ConfigInfo_v1610_IEs struct {
-	drx_InfoMCG2                   *DRX_Info2                                     `optional`
-	alignedDRX_Indication          *CG_ConfigInfo_v1610_IEs_alignedDRX_Indication `optional`
-	scgFailureInfo_r16             *CG_ConfigInfo_v1610_IEs_scgFailureInfo_r16    `optional`
-	dummy1                         *CG_ConfigInfo_v1610_IEs_dummy1                `optional`
-	sidelinkUEInformationNR_r16    *[]byte                                        `optional`
-	sidelinkUEInformationEUTRA_r16 *[]byte                                        `optional`
-	nonCriticalExtension           *CG_ConfigInfo_v1620_IEs                       `optional`
+	Drx_InfoMCG2                   *DRX_Info2                                     `optional`
+	AlignedDRX_Indication          *CG_ConfigInfo_v1610_IEs_alignedDRX_Indication `optional`
+	ScgFailureInfo_r16             *CG_ConfigInfo_v1610_IEs_scgFailureInfo_r16    `optional`
+	Dummy1                         *CG_ConfigInfo_v1610_IEs_dummy1                `optional`
+	SidelinkUEInformationNR_r16    *[]byte                                        `optional`
+	SidelinkUEInformationEUTRA_r16 *[]byte                                        `optional`
+	NonCriticalExtension           *CG_ConfigInfo_v1620_IEs                       `optional`
 }
 
 func (ie *CG_ConfigInfo_v1610_IEs) Encode(w *uper.UperWriter) error {
 	var err error
-	preambleBits := []bool{ie.drx_InfoMCG2 != nil, ie.alignedDRX_Indication != nil, ie.scgFailureInfo_r16 != nil, ie.dummy1 != nil, ie.sidelinkUEInformationNR_r16 != nil, ie.sidelinkUEInformationEUTRA_r16 != nil, ie.nonCriticalExtension != nil}
+	preambleBits := []bool{ie.Drx_InfoMCG2 != nil, ie.AlignedDRX_Indication != nil, ie.ScgFailureInfo_r16 != nil, ie.Dummy1 != nil, ie.SidelinkUEInformationNR_r16 != nil, ie.SidelinkUEInformationEUTRA_r16 != nil, ie.NonCriticalExtension != nil}
 	for _, bit := range preambleBits {
 		if err = w.WriteBool(bit); err != nil {
 			return err
 		}
 	}
-	if ie.drx_InfoMCG2 != nil {
-		if err = ie.drx_InfoMCG2.Encode(w); err != nil {
-			return utils.WrapError("Encode drx_InfoMCG2", err)
+	if ie.Drx_InfoMCG2 != nil {
+		if err = ie.Drx_InfoMCG2.Encode(w); err != nil {
+			return utils.WrapError("Encode Drx_InfoMCG2", err)
 		}
 	}
-	if ie.alignedDRX_Indication != nil {
-		if err = ie.alignedDRX_Indication.Encode(w); err != nil {
-			return utils.WrapError("Encode alignedDRX_Indication", err)
+	if ie.AlignedDRX_Indication != nil {
+		if err = ie.AlignedDRX_Indication.Encode(w); err != nil {
+			return utils.WrapError("Encode AlignedDRX_Indication", err)
 		}
 	}
-	if ie.scgFailureInfo_r16 != nil {
-		if err = ie.scgFailureInfo_r16.Encode(w); err != nil {
-			return utils.WrapError("Encode scgFailureInfo_r16", err)
+	if ie.ScgFailureInfo_r16 != nil {
+		if err = ie.ScgFailureInfo_r16.Encode(w); err != nil {
+			return utils.WrapError("Encode ScgFailureInfo_r16", err)
 		}
 	}
-	if ie.dummy1 != nil {
-		if err = ie.dummy1.Encode(w); err != nil {
-			return utils.WrapError("Encode dummy1", err)
+	if ie.Dummy1 != nil {
+		if err = ie.Dummy1.Encode(w); err != nil {
+			return utils.WrapError("Encode Dummy1", err)
 		}
 	}
-	if ie.sidelinkUEInformationNR_r16 != nil {
-		if err = w.WriteOctetString(*ie.sidelinkUEInformationNR_r16, &uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
-			return utils.WrapError("Encode sidelinkUEInformationNR_r16", err)
+	if ie.SidelinkUEInformationNR_r16 != nil {
+		if err = w.WriteOctetString(*ie.SidelinkUEInformationNR_r16, &uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+			return utils.WrapError("Encode SidelinkUEInformationNR_r16", err)
 		}
 	}
-	if ie.sidelinkUEInformationEUTRA_r16 != nil {
-		if err = w.WriteOctetString(*ie.sidelinkUEInformationEUTRA_r16, &uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
-			return utils.WrapError("Encode sidelinkUEInformationEUTRA_r16", err)
+	if ie.SidelinkUEInformationEUTRA_r16 != nil {
+		if err = w.WriteOctetString(*ie.SidelinkUEInformationEUTRA_r16, &uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+			return utils.WrapError("Encode SidelinkUEInformationEUTRA_r16", err)
 		}
 	}
-	if ie.nonCriticalExtension != nil {
-		if err = ie.nonCriticalExtension.Encode(w); err != nil {
-			return utils.WrapError("Encode nonCriticalExtension", err)
+	if ie.NonCriticalExtension != nil {
+		if err = ie.NonCriticalExtension.Encode(w); err != nil {
+			return utils.WrapError("Encode NonCriticalExtension", err)
 		}
 	}
 	return nil
@@ -63,76 +63,76 @@ func (ie *CG_ConfigInfo_v1610_IEs) Encode(w *uper.UperWriter) error {
 
 func (ie *CG_ConfigInfo_v1610_IEs) Decode(r *uper.UperReader) error {
 	var err error
-	var drx_InfoMCG2Present bool
-	if drx_InfoMCG2Present, err = r.ReadBool(); err != nil {
+	var Drx_InfoMCG2Present bool
+	if Drx_InfoMCG2Present, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var alignedDRX_IndicationPresent bool
-	if alignedDRX_IndicationPresent, err = r.ReadBool(); err != nil {
+	var AlignedDRX_IndicationPresent bool
+	if AlignedDRX_IndicationPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var scgFailureInfo_r16Present bool
-	if scgFailureInfo_r16Present, err = r.ReadBool(); err != nil {
+	var ScgFailureInfo_r16Present bool
+	if ScgFailureInfo_r16Present, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var dummy1Present bool
-	if dummy1Present, err = r.ReadBool(); err != nil {
+	var Dummy1Present bool
+	if Dummy1Present, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var sidelinkUEInformationNR_r16Present bool
-	if sidelinkUEInformationNR_r16Present, err = r.ReadBool(); err != nil {
+	var SidelinkUEInformationNR_r16Present bool
+	if SidelinkUEInformationNR_r16Present, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var sidelinkUEInformationEUTRA_r16Present bool
-	if sidelinkUEInformationEUTRA_r16Present, err = r.ReadBool(); err != nil {
+	var SidelinkUEInformationEUTRA_r16Present bool
+	if SidelinkUEInformationEUTRA_r16Present, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var nonCriticalExtensionPresent bool
-	if nonCriticalExtensionPresent, err = r.ReadBool(); err != nil {
+	var NonCriticalExtensionPresent bool
+	if NonCriticalExtensionPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	if drx_InfoMCG2Present {
-		ie.drx_InfoMCG2 = new(DRX_Info2)
-		if err = ie.drx_InfoMCG2.Decode(r); err != nil {
-			return utils.WrapError("Decode drx_InfoMCG2", err)
+	if Drx_InfoMCG2Present {
+		ie.Drx_InfoMCG2 = new(DRX_Info2)
+		if err = ie.Drx_InfoMCG2.Decode(r); err != nil {
+			return utils.WrapError("Decode Drx_InfoMCG2", err)
 		}
 	}
-	if alignedDRX_IndicationPresent {
-		ie.alignedDRX_Indication = new(CG_ConfigInfo_v1610_IEs_alignedDRX_Indication)
-		if err = ie.alignedDRX_Indication.Decode(r); err != nil {
-			return utils.WrapError("Decode alignedDRX_Indication", err)
+	if AlignedDRX_IndicationPresent {
+		ie.AlignedDRX_Indication = new(CG_ConfigInfo_v1610_IEs_alignedDRX_Indication)
+		if err = ie.AlignedDRX_Indication.Decode(r); err != nil {
+			return utils.WrapError("Decode AlignedDRX_Indication", err)
 		}
 	}
-	if scgFailureInfo_r16Present {
-		ie.scgFailureInfo_r16 = new(CG_ConfigInfo_v1610_IEs_scgFailureInfo_r16)
-		if err = ie.scgFailureInfo_r16.Decode(r); err != nil {
-			return utils.WrapError("Decode scgFailureInfo_r16", err)
+	if ScgFailureInfo_r16Present {
+		ie.ScgFailureInfo_r16 = new(CG_ConfigInfo_v1610_IEs_scgFailureInfo_r16)
+		if err = ie.ScgFailureInfo_r16.Decode(r); err != nil {
+			return utils.WrapError("Decode ScgFailureInfo_r16", err)
 		}
 	}
-	if dummy1Present {
-		ie.dummy1 = new(CG_ConfigInfo_v1610_IEs_dummy1)
-		if err = ie.dummy1.Decode(r); err != nil {
-			return utils.WrapError("Decode dummy1", err)
+	if Dummy1Present {
+		ie.Dummy1 = new(CG_ConfigInfo_v1610_IEs_dummy1)
+		if err = ie.Dummy1.Decode(r); err != nil {
+			return utils.WrapError("Decode Dummy1", err)
 		}
 	}
-	if sidelinkUEInformationNR_r16Present {
-		var tmp_os_sidelinkUEInformationNR_r16 []byte
-		if tmp_os_sidelinkUEInformationNR_r16, err = r.ReadOctetString(&uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
-			return utils.WrapError("Decode sidelinkUEInformationNR_r16", err)
+	if SidelinkUEInformationNR_r16Present {
+		var tmp_os_SidelinkUEInformationNR_r16 []byte
+		if tmp_os_SidelinkUEInformationNR_r16, err = r.ReadOctetString(&uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+			return utils.WrapError("Decode SidelinkUEInformationNR_r16", err)
 		}
-		ie.sidelinkUEInformationNR_r16 = &tmp_os_sidelinkUEInformationNR_r16
+		ie.SidelinkUEInformationNR_r16 = &tmp_os_SidelinkUEInformationNR_r16
 	}
-	if sidelinkUEInformationEUTRA_r16Present {
-		var tmp_os_sidelinkUEInformationEUTRA_r16 []byte
-		if tmp_os_sidelinkUEInformationEUTRA_r16, err = r.ReadOctetString(&uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
-			return utils.WrapError("Decode sidelinkUEInformationEUTRA_r16", err)
+	if SidelinkUEInformationEUTRA_r16Present {
+		var tmp_os_SidelinkUEInformationEUTRA_r16 []byte
+		if tmp_os_SidelinkUEInformationEUTRA_r16, err = r.ReadOctetString(&uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+			return utils.WrapError("Decode SidelinkUEInformationEUTRA_r16", err)
 		}
-		ie.sidelinkUEInformationEUTRA_r16 = &tmp_os_sidelinkUEInformationEUTRA_r16
+		ie.SidelinkUEInformationEUTRA_r16 = &tmp_os_SidelinkUEInformationEUTRA_r16
 	}
-	if nonCriticalExtensionPresent {
-		ie.nonCriticalExtension = new(CG_ConfigInfo_v1620_IEs)
-		if err = ie.nonCriticalExtension.Decode(r); err != nil {
-			return utils.WrapError("Decode nonCriticalExtension", err)
+	if NonCriticalExtensionPresent {
+		ie.NonCriticalExtension = new(CG_ConfigInfo_v1620_IEs)
+		if err = ie.NonCriticalExtension.Decode(r); err != nil {
+			return utils.WrapError("Decode NonCriticalExtension", err)
 		}
 	}
 	return nil

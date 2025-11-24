@@ -6,26 +6,26 @@ import (
 )
 
 type UE_NR_Capability_v1570 struct {
-	nrdc_Parameters_v1570 *NRDC_Parameters_v1570  `optional`
-	nonCriticalExtension  *UE_NR_Capability_v1610 `optional`
+	Nrdc_Parameters_v1570 *NRDC_Parameters_v1570  `optional`
+	NonCriticalExtension  *UE_NR_Capability_v1610 `optional`
 }
 
 func (ie *UE_NR_Capability_v1570) Encode(w *uper.UperWriter) error {
 	var err error
-	preambleBits := []bool{ie.nrdc_Parameters_v1570 != nil, ie.nonCriticalExtension != nil}
+	preambleBits := []bool{ie.Nrdc_Parameters_v1570 != nil, ie.NonCriticalExtension != nil}
 	for _, bit := range preambleBits {
 		if err = w.WriteBool(bit); err != nil {
 			return err
 		}
 	}
-	if ie.nrdc_Parameters_v1570 != nil {
-		if err = ie.nrdc_Parameters_v1570.Encode(w); err != nil {
-			return utils.WrapError("Encode nrdc_Parameters_v1570", err)
+	if ie.Nrdc_Parameters_v1570 != nil {
+		if err = ie.Nrdc_Parameters_v1570.Encode(w); err != nil {
+			return utils.WrapError("Encode Nrdc_Parameters_v1570", err)
 		}
 	}
-	if ie.nonCriticalExtension != nil {
-		if err = ie.nonCriticalExtension.Encode(w); err != nil {
-			return utils.WrapError("Encode nonCriticalExtension", err)
+	if ie.NonCriticalExtension != nil {
+		if err = ie.NonCriticalExtension.Encode(w); err != nil {
+			return utils.WrapError("Encode NonCriticalExtension", err)
 		}
 	}
 	return nil
@@ -33,24 +33,24 @@ func (ie *UE_NR_Capability_v1570) Encode(w *uper.UperWriter) error {
 
 func (ie *UE_NR_Capability_v1570) Decode(r *uper.UperReader) error {
 	var err error
-	var nrdc_Parameters_v1570Present bool
-	if nrdc_Parameters_v1570Present, err = r.ReadBool(); err != nil {
+	var Nrdc_Parameters_v1570Present bool
+	if Nrdc_Parameters_v1570Present, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var nonCriticalExtensionPresent bool
-	if nonCriticalExtensionPresent, err = r.ReadBool(); err != nil {
+	var NonCriticalExtensionPresent bool
+	if NonCriticalExtensionPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	if nrdc_Parameters_v1570Present {
-		ie.nrdc_Parameters_v1570 = new(NRDC_Parameters_v1570)
-		if err = ie.nrdc_Parameters_v1570.Decode(r); err != nil {
-			return utils.WrapError("Decode nrdc_Parameters_v1570", err)
+	if Nrdc_Parameters_v1570Present {
+		ie.Nrdc_Parameters_v1570 = new(NRDC_Parameters_v1570)
+		if err = ie.Nrdc_Parameters_v1570.Decode(r); err != nil {
+			return utils.WrapError("Decode Nrdc_Parameters_v1570", err)
 		}
 	}
-	if nonCriticalExtensionPresent {
-		ie.nonCriticalExtension = new(UE_NR_Capability_v1610)
-		if err = ie.nonCriticalExtension.Decode(r); err != nil {
-			return utils.WrapError("Decode nonCriticalExtension", err)
+	if NonCriticalExtensionPresent {
+		ie.NonCriticalExtension = new(UE_NR_Capability_v1610)
+		if err = ie.NonCriticalExtension.Decode(r); err != nil {
+			return utils.WrapError("Decode NonCriticalExtension", err)
 		}
 	}
 	return nil

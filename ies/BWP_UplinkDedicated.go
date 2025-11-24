@@ -8,82 +8,82 @@ import (
 )
 
 type BWP_UplinkDedicated struct {
-	pucch_Config                                        *PUCCH_Config                                        `optional,setuprelease`
-	pusch_Config                                        *PUSCH_Config                                        `optional,setuprelease`
-	configuredGrantConfig                               *ConfiguredGrantConfig                               `optional,setuprelease`
-	srs_Config                                          *SRS_Config                                          `optional,setuprelease`
-	beamFailureRecoveryConfig                           *BeamFailureRecoveryConfig                           `optional,setuprelease`
-	sl_PUCCH_Config_r16                                 *PUCCH_Config                                        `optional,ext-1,setuprelease`
-	cp_ExtensionC2_r16                                  *int64                                               `lb:1,ub:28,optional,ext-1`
-	cp_ExtensionC3_r16                                  *int64                                               `lb:1,ub:28,optional,ext-1`
-	useInterlacePUCCH_PUSCH_r16                         *BWP_UplinkDedicated_useInterlacePUCCH_PUSCH_r16     `optional,ext-1`
-	pucch_ConfigurationList_r16                         *PUCCH_ConfigurationList_r16                         `optional,ext-1,setuprelease`
-	lbt_FailureRecoveryConfig_r16                       *LBT_FailureRecoveryConfig_r16                       `optional,ext-1,setuprelease`
-	configuredGrantConfigToAddModList_r16               *ConfiguredGrantConfigToAddModList_r16               `optional,ext-1`
-	configuredGrantConfigToReleaseList_r16              *ConfiguredGrantConfigToReleaseList_r16              `optional,ext-1`
-	configuredGrantConfigType2DeactivationStateList_r16 *ConfiguredGrantConfigType2DeactivationStateList_r16 `optional,ext-1`
-	ul_TCI_StateList_r17                                *BWP_UplinkDedicated_ul_TCI_StateList_r17            `lb:1,ub:maxUL_TCI_r17,optional,ext-2`
-	ul_powerControl_r17                                 *Uplink_powerControlId_r17                           `optional,ext-2`
-	pucch_ConfigurationListMulticast1_r17               *PUCCH_ConfigurationList_r16                         `optional,ext-2,setuprelease`
-	pucch_ConfigurationListMulticast2_r17               *PUCCH_ConfigurationList_r16                         `optional,ext-2,setuprelease`
-	pucch_ConfigMulticast1_r17                          *PUCCH_Config                                        `optional,ext-3,setuprelease`
-	pucch_ConfigMulticast2_r17                          *PUCCH_Config                                        `optional,ext-3,setuprelease`
-	pathlossReferenceRSToAddModList_r17                 []PathlossReferenceRS_r17                            `lb:1,ub:maxNrofPathlossReferenceRSs_r17,optional,ext-4`
-	pathlossReferenceRSToReleaseList_r17                []PathlossReferenceRS_Id_r17                         `lb:1,ub:maxNrofPathlossReferenceRSs_r17,optional,ext-4`
+	Pucch_Config                                        *PUCCH_Config                                        `optional,setuprelease`
+	Pusch_Config                                        *PUSCH_Config                                        `optional,setuprelease`
+	ConfiguredGrantConfig                               *ConfiguredGrantConfig                               `optional,setuprelease`
+	Srs_Config                                          *SRS_Config                                          `optional,setuprelease`
+	BeamFailureRecoveryConfig                           *BeamFailureRecoveryConfig                           `optional,setuprelease`
+	Sl_PUCCH_Config_r16                                 *PUCCH_Config                                        `optional,ext-1,setuprelease`
+	Cp_ExtensionC2_r16                                  *int64                                               `lb:1,ub:28,optional,ext-1`
+	Cp_ExtensionC3_r16                                  *int64                                               `lb:1,ub:28,optional,ext-1`
+	UseInterlacePUCCH_PUSCH_r16                         *BWP_UplinkDedicated_useInterlacePUCCH_PUSCH_r16     `optional,ext-1`
+	Pucch_ConfigurationList_r16                         *PUCCH_ConfigurationList_r16                         `optional,ext-1,setuprelease`
+	Lbt_FailureRecoveryConfig_r16                       *LBT_FailureRecoveryConfig_r16                       `optional,ext-1,setuprelease`
+	ConfiguredGrantConfigToAddModList_r16               *ConfiguredGrantConfigToAddModList_r16               `optional,ext-1`
+	ConfiguredGrantConfigToReleaseList_r16              *ConfiguredGrantConfigToReleaseList_r16              `optional,ext-1`
+	ConfiguredGrantConfigType2DeactivationStateList_r16 *ConfiguredGrantConfigType2DeactivationStateList_r16 `optional,ext-1`
+	Ul_TCI_StateList_r17                                *BWP_UplinkDedicated_ul_TCI_StateList_r17            `lb:1,ub:maxUL_TCI_r17,optional,ext-2`
+	Ul_powerControl_r17                                 *Uplink_powerControlId_r17                           `optional,ext-2`
+	Pucch_ConfigurationListMulticast1_r17               *PUCCH_ConfigurationList_r16                         `optional,ext-2,setuprelease`
+	Pucch_ConfigurationListMulticast2_r17               *PUCCH_ConfigurationList_r16                         `optional,ext-2,setuprelease`
+	Pucch_ConfigMulticast1_r17                          *PUCCH_Config                                        `optional,ext-3,setuprelease`
+	Pucch_ConfigMulticast2_r17                          *PUCCH_Config                                        `optional,ext-3,setuprelease`
+	PathlossReferenceRSToAddModList_r17                 []PathlossReferenceRS_r17                            `lb:1,ub:maxNrofPathlossReferenceRSs_r17,optional,ext-4`
+	PathlossReferenceRSToReleaseList_r17                []PathlossReferenceRS_Id_r17                         `lb:1,ub:maxNrofPathlossReferenceRSs_r17,optional,ext-4`
 }
 
 func (ie *BWP_UplinkDedicated) Encode(w *uper.UperWriter) error {
 	var err error
-	hasExtensions := ie.sl_PUCCH_Config_r16 != nil || ie.cp_ExtensionC2_r16 != nil || ie.cp_ExtensionC3_r16 != nil || ie.useInterlacePUCCH_PUSCH_r16 != nil || ie.pucch_ConfigurationList_r16 != nil || ie.lbt_FailureRecoveryConfig_r16 != nil || ie.configuredGrantConfigToAddModList_r16 != nil || ie.configuredGrantConfigToReleaseList_r16 != nil || ie.configuredGrantConfigType2DeactivationStateList_r16 != nil || ie.ul_TCI_StateList_r17 != nil || ie.ul_powerControl_r17 != nil || ie.pucch_ConfigurationListMulticast1_r17 != nil || ie.pucch_ConfigurationListMulticast2_r17 != nil || ie.pucch_ConfigMulticast1_r17 != nil || ie.pucch_ConfigMulticast2_r17 != nil || len(ie.pathlossReferenceRSToAddModList_r17) > 0 || len(ie.pathlossReferenceRSToReleaseList_r17) > 0
-	preambleBits := []bool{hasExtensions, ie.pucch_Config != nil, ie.pusch_Config != nil, ie.configuredGrantConfig != nil, ie.srs_Config != nil, ie.beamFailureRecoveryConfig != nil}
+	hasExtensions := ie.Sl_PUCCH_Config_r16 != nil || ie.Cp_ExtensionC2_r16 != nil || ie.Cp_ExtensionC3_r16 != nil || ie.UseInterlacePUCCH_PUSCH_r16 != nil || ie.Pucch_ConfigurationList_r16 != nil || ie.Lbt_FailureRecoveryConfig_r16 != nil || ie.ConfiguredGrantConfigToAddModList_r16 != nil || ie.ConfiguredGrantConfigToReleaseList_r16 != nil || ie.ConfiguredGrantConfigType2DeactivationStateList_r16 != nil || ie.Ul_TCI_StateList_r17 != nil || ie.Ul_powerControl_r17 != nil || ie.Pucch_ConfigurationListMulticast1_r17 != nil || ie.Pucch_ConfigurationListMulticast2_r17 != nil || ie.Pucch_ConfigMulticast1_r17 != nil || ie.Pucch_ConfigMulticast2_r17 != nil || len(ie.PathlossReferenceRSToAddModList_r17) > 0 || len(ie.PathlossReferenceRSToReleaseList_r17) > 0
+	preambleBits := []bool{hasExtensions, ie.Pucch_Config != nil, ie.Pusch_Config != nil, ie.ConfiguredGrantConfig != nil, ie.Srs_Config != nil, ie.BeamFailureRecoveryConfig != nil}
 	for _, bit := range preambleBits {
 		if err = w.WriteBool(bit); err != nil {
 			return err
 		}
 	}
-	if ie.pucch_Config != nil {
-		tmp_pucch_Config := utils.SetupRelease[*PUCCH_Config]{
-			Setup: ie.pucch_Config,
+	if ie.Pucch_Config != nil {
+		tmp_Pucch_Config := utils.SetupRelease[*PUCCH_Config]{
+			Setup: ie.Pucch_Config,
 		}
-		if err = tmp_pucch_Config.Encode(w); err != nil {
-			return utils.WrapError("Encode pucch_Config", err)
-		}
-	}
-	if ie.pusch_Config != nil {
-		tmp_pusch_Config := utils.SetupRelease[*PUSCH_Config]{
-			Setup: ie.pusch_Config,
-		}
-		if err = tmp_pusch_Config.Encode(w); err != nil {
-			return utils.WrapError("Encode pusch_Config", err)
+		if err = tmp_Pucch_Config.Encode(w); err != nil {
+			return utils.WrapError("Encode Pucch_Config", err)
 		}
 	}
-	if ie.configuredGrantConfig != nil {
-		tmp_configuredGrantConfig := utils.SetupRelease[*ConfiguredGrantConfig]{
-			Setup: ie.configuredGrantConfig,
+	if ie.Pusch_Config != nil {
+		tmp_Pusch_Config := utils.SetupRelease[*PUSCH_Config]{
+			Setup: ie.Pusch_Config,
 		}
-		if err = tmp_configuredGrantConfig.Encode(w); err != nil {
-			return utils.WrapError("Encode configuredGrantConfig", err)
-		}
-	}
-	if ie.srs_Config != nil {
-		tmp_srs_Config := utils.SetupRelease[*SRS_Config]{
-			Setup: ie.srs_Config,
-		}
-		if err = tmp_srs_Config.Encode(w); err != nil {
-			return utils.WrapError("Encode srs_Config", err)
+		if err = tmp_Pusch_Config.Encode(w); err != nil {
+			return utils.WrapError("Encode Pusch_Config", err)
 		}
 	}
-	if ie.beamFailureRecoveryConfig != nil {
-		tmp_beamFailureRecoveryConfig := utils.SetupRelease[*BeamFailureRecoveryConfig]{
-			Setup: ie.beamFailureRecoveryConfig,
+	if ie.ConfiguredGrantConfig != nil {
+		tmp_ConfiguredGrantConfig := utils.SetupRelease[*ConfiguredGrantConfig]{
+			Setup: ie.ConfiguredGrantConfig,
 		}
-		if err = tmp_beamFailureRecoveryConfig.Encode(w); err != nil {
-			return utils.WrapError("Encode beamFailureRecoveryConfig", err)
+		if err = tmp_ConfiguredGrantConfig.Encode(w); err != nil {
+			return utils.WrapError("Encode ConfiguredGrantConfig", err)
+		}
+	}
+	if ie.Srs_Config != nil {
+		tmp_Srs_Config := utils.SetupRelease[*SRS_Config]{
+			Setup: ie.Srs_Config,
+		}
+		if err = tmp_Srs_Config.Encode(w); err != nil {
+			return utils.WrapError("Encode Srs_Config", err)
+		}
+	}
+	if ie.BeamFailureRecoveryConfig != nil {
+		tmp_BeamFailureRecoveryConfig := utils.SetupRelease[*BeamFailureRecoveryConfig]{
+			Setup: ie.BeamFailureRecoveryConfig,
+		}
+		if err = tmp_BeamFailureRecoveryConfig.Encode(w); err != nil {
+			return utils.WrapError("Encode BeamFailureRecoveryConfig", err)
 		}
 	}
 	if hasExtensions {
 		// Extension bitmap: 4 bits for 4 extension groups
-		extBitmap := []bool{ie.sl_PUCCH_Config_r16 != nil || ie.cp_ExtensionC2_r16 != nil || ie.cp_ExtensionC3_r16 != nil || ie.useInterlacePUCCH_PUSCH_r16 != nil || ie.pucch_ConfigurationList_r16 != nil || ie.lbt_FailureRecoveryConfig_r16 != nil || ie.configuredGrantConfigToAddModList_r16 != nil || ie.configuredGrantConfigToReleaseList_r16 != nil || ie.configuredGrantConfigType2DeactivationStateList_r16 != nil, ie.ul_TCI_StateList_r17 != nil || ie.ul_powerControl_r17 != nil || ie.pucch_ConfigurationListMulticast1_r17 != nil || ie.pucch_ConfigurationListMulticast2_r17 != nil, ie.pucch_ConfigMulticast1_r17 != nil || ie.pucch_ConfigMulticast2_r17 != nil, len(ie.pathlossReferenceRSToAddModList_r17) > 0 || len(ie.pathlossReferenceRSToReleaseList_r17) > 0}
+		extBitmap := []bool{ie.Sl_PUCCH_Config_r16 != nil || ie.Cp_ExtensionC2_r16 != nil || ie.Cp_ExtensionC3_r16 != nil || ie.UseInterlacePUCCH_PUSCH_r16 != nil || ie.Pucch_ConfigurationList_r16 != nil || ie.Lbt_FailureRecoveryConfig_r16 != nil || ie.ConfiguredGrantConfigToAddModList_r16 != nil || ie.ConfiguredGrantConfigToReleaseList_r16 != nil || ie.ConfiguredGrantConfigType2DeactivationStateList_r16 != nil, ie.Ul_TCI_StateList_r17 != nil || ie.Ul_powerControl_r17 != nil || ie.Pucch_ConfigurationListMulticast1_r17 != nil || ie.Pucch_ConfigurationListMulticast2_r17 != nil, ie.Pucch_ConfigMulticast1_r17 != nil || ie.Pucch_ConfigMulticast2_r17 != nil, len(ie.PathlossReferenceRSToAddModList_r17) > 0 || len(ie.PathlossReferenceRSToReleaseList_r17) > 0}
 		if err := w.WriteExtBitMap(extBitmap); err != nil {
 			return utils.WrapError("WriteExtBitMap BWP_UplinkDedicated", err)
 		}
@@ -94,74 +94,74 @@ func (ie *BWP_UplinkDedicated) Encode(w *uper.UperWriter) error {
 			extWriter := uper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 1
-			optionals_ext_1 := []bool{ie.sl_PUCCH_Config_r16 != nil, ie.cp_ExtensionC2_r16 != nil, ie.cp_ExtensionC3_r16 != nil, ie.useInterlacePUCCH_PUSCH_r16 != nil, ie.pucch_ConfigurationList_r16 != nil, ie.lbt_FailureRecoveryConfig_r16 != nil, ie.configuredGrantConfigToAddModList_r16 != nil, ie.configuredGrantConfigToReleaseList_r16 != nil, ie.configuredGrantConfigType2DeactivationStateList_r16 != nil}
+			optionals_ext_1 := []bool{ie.Sl_PUCCH_Config_r16 != nil, ie.Cp_ExtensionC2_r16 != nil, ie.Cp_ExtensionC3_r16 != nil, ie.UseInterlacePUCCH_PUSCH_r16 != nil, ie.Pucch_ConfigurationList_r16 != nil, ie.Lbt_FailureRecoveryConfig_r16 != nil, ie.ConfiguredGrantConfigToAddModList_r16 != nil, ie.ConfiguredGrantConfigToReleaseList_r16 != nil, ie.ConfiguredGrantConfigType2DeactivationStateList_r16 != nil}
 			for _, bit := range optionals_ext_1 {
 				if err := extWriter.WriteBool(bit); err != nil {
 					return err
 				}
 			}
 
-			// encode sl_PUCCH_Config_r16 optional
-			if ie.sl_PUCCH_Config_r16 != nil {
-				tmp_sl_PUCCH_Config_r16 := utils.SetupRelease[*PUCCH_Config]{
-					Setup: ie.sl_PUCCH_Config_r16,
+			// encode Sl_PUCCH_Config_r16 optional
+			if ie.Sl_PUCCH_Config_r16 != nil {
+				tmp_Sl_PUCCH_Config_r16 := utils.SetupRelease[*PUCCH_Config]{
+					Setup: ie.Sl_PUCCH_Config_r16,
 				}
-				if err = tmp_sl_PUCCH_Config_r16.Encode(extWriter); err != nil {
-					return utils.WrapError("Encode sl_PUCCH_Config_r16", err)
-				}
-			}
-			// encode cp_ExtensionC2_r16 optional
-			if ie.cp_ExtensionC2_r16 != nil {
-				if err = extWriter.WriteInteger(*ie.cp_ExtensionC2_r16, &uper.Constraint{Lb: 1, Ub: 28}, false); err != nil {
-					return utils.WrapError("Encode cp_ExtensionC2_r16", err)
+				if err = tmp_Sl_PUCCH_Config_r16.Encode(extWriter); err != nil {
+					return utils.WrapError("Encode Sl_PUCCH_Config_r16", err)
 				}
 			}
-			// encode cp_ExtensionC3_r16 optional
-			if ie.cp_ExtensionC3_r16 != nil {
-				if err = extWriter.WriteInteger(*ie.cp_ExtensionC3_r16, &uper.Constraint{Lb: 1, Ub: 28}, false); err != nil {
-					return utils.WrapError("Encode cp_ExtensionC3_r16", err)
+			// encode Cp_ExtensionC2_r16 optional
+			if ie.Cp_ExtensionC2_r16 != nil {
+				if err = extWriter.WriteInteger(*ie.Cp_ExtensionC2_r16, &uper.Constraint{Lb: 1, Ub: 28}, false); err != nil {
+					return utils.WrapError("Encode Cp_ExtensionC2_r16", err)
 				}
 			}
-			// encode useInterlacePUCCH_PUSCH_r16 optional
-			if ie.useInterlacePUCCH_PUSCH_r16 != nil {
-				if err = ie.useInterlacePUCCH_PUSCH_r16.Encode(extWriter); err != nil {
-					return utils.WrapError("Encode useInterlacePUCCH_PUSCH_r16", err)
+			// encode Cp_ExtensionC3_r16 optional
+			if ie.Cp_ExtensionC3_r16 != nil {
+				if err = extWriter.WriteInteger(*ie.Cp_ExtensionC3_r16, &uper.Constraint{Lb: 1, Ub: 28}, false); err != nil {
+					return utils.WrapError("Encode Cp_ExtensionC3_r16", err)
 				}
 			}
-			// encode pucch_ConfigurationList_r16 optional
-			if ie.pucch_ConfigurationList_r16 != nil {
-				tmp_pucch_ConfigurationList_r16 := utils.SetupRelease[*PUCCH_ConfigurationList_r16]{
-					Setup: ie.pucch_ConfigurationList_r16,
-				}
-				if err = tmp_pucch_ConfigurationList_r16.Encode(extWriter); err != nil {
-					return utils.WrapError("Encode pucch_ConfigurationList_r16", err)
+			// encode UseInterlacePUCCH_PUSCH_r16 optional
+			if ie.UseInterlacePUCCH_PUSCH_r16 != nil {
+				if err = ie.UseInterlacePUCCH_PUSCH_r16.Encode(extWriter); err != nil {
+					return utils.WrapError("Encode UseInterlacePUCCH_PUSCH_r16", err)
 				}
 			}
-			// encode lbt_FailureRecoveryConfig_r16 optional
-			if ie.lbt_FailureRecoveryConfig_r16 != nil {
-				tmp_lbt_FailureRecoveryConfig_r16 := utils.SetupRelease[*LBT_FailureRecoveryConfig_r16]{
-					Setup: ie.lbt_FailureRecoveryConfig_r16,
+			// encode Pucch_ConfigurationList_r16 optional
+			if ie.Pucch_ConfigurationList_r16 != nil {
+				tmp_Pucch_ConfigurationList_r16 := utils.SetupRelease[*PUCCH_ConfigurationList_r16]{
+					Setup: ie.Pucch_ConfigurationList_r16,
 				}
-				if err = tmp_lbt_FailureRecoveryConfig_r16.Encode(extWriter); err != nil {
-					return utils.WrapError("Encode lbt_FailureRecoveryConfig_r16", err)
-				}
-			}
-			// encode configuredGrantConfigToAddModList_r16 optional
-			if ie.configuredGrantConfigToAddModList_r16 != nil {
-				if err = ie.configuredGrantConfigToAddModList_r16.Encode(extWriter); err != nil {
-					return utils.WrapError("Encode configuredGrantConfigToAddModList_r16", err)
+				if err = tmp_Pucch_ConfigurationList_r16.Encode(extWriter); err != nil {
+					return utils.WrapError("Encode Pucch_ConfigurationList_r16", err)
 				}
 			}
-			// encode configuredGrantConfigToReleaseList_r16 optional
-			if ie.configuredGrantConfigToReleaseList_r16 != nil {
-				if err = ie.configuredGrantConfigToReleaseList_r16.Encode(extWriter); err != nil {
-					return utils.WrapError("Encode configuredGrantConfigToReleaseList_r16", err)
+			// encode Lbt_FailureRecoveryConfig_r16 optional
+			if ie.Lbt_FailureRecoveryConfig_r16 != nil {
+				tmp_Lbt_FailureRecoveryConfig_r16 := utils.SetupRelease[*LBT_FailureRecoveryConfig_r16]{
+					Setup: ie.Lbt_FailureRecoveryConfig_r16,
+				}
+				if err = tmp_Lbt_FailureRecoveryConfig_r16.Encode(extWriter); err != nil {
+					return utils.WrapError("Encode Lbt_FailureRecoveryConfig_r16", err)
 				}
 			}
-			// encode configuredGrantConfigType2DeactivationStateList_r16 optional
-			if ie.configuredGrantConfigType2DeactivationStateList_r16 != nil {
-				if err = ie.configuredGrantConfigType2DeactivationStateList_r16.Encode(extWriter); err != nil {
-					return utils.WrapError("Encode configuredGrantConfigType2DeactivationStateList_r16", err)
+			// encode ConfiguredGrantConfigToAddModList_r16 optional
+			if ie.ConfiguredGrantConfigToAddModList_r16 != nil {
+				if err = ie.ConfiguredGrantConfigToAddModList_r16.Encode(extWriter); err != nil {
+					return utils.WrapError("Encode ConfiguredGrantConfigToAddModList_r16", err)
+				}
+			}
+			// encode ConfiguredGrantConfigToReleaseList_r16 optional
+			if ie.ConfiguredGrantConfigToReleaseList_r16 != nil {
+				if err = ie.ConfiguredGrantConfigToReleaseList_r16.Encode(extWriter); err != nil {
+					return utils.WrapError("Encode ConfiguredGrantConfigToReleaseList_r16", err)
+				}
+			}
+			// encode ConfiguredGrantConfigType2DeactivationStateList_r16 optional
+			if ie.ConfiguredGrantConfigType2DeactivationStateList_r16 != nil {
+				if err = ie.ConfiguredGrantConfigType2DeactivationStateList_r16.Encode(extWriter); err != nil {
+					return utils.WrapError("Encode ConfiguredGrantConfigType2DeactivationStateList_r16", err)
 				}
 			}
 
@@ -180,41 +180,41 @@ func (ie *BWP_UplinkDedicated) Encode(w *uper.UperWriter) error {
 			extWriter := uper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 2
-			optionals_ext_2 := []bool{ie.ul_TCI_StateList_r17 != nil, ie.ul_powerControl_r17 != nil, ie.pucch_ConfigurationListMulticast1_r17 != nil, ie.pucch_ConfigurationListMulticast2_r17 != nil}
+			optionals_ext_2 := []bool{ie.Ul_TCI_StateList_r17 != nil, ie.Ul_powerControl_r17 != nil, ie.Pucch_ConfigurationListMulticast1_r17 != nil, ie.Pucch_ConfigurationListMulticast2_r17 != nil}
 			for _, bit := range optionals_ext_2 {
 				if err := extWriter.WriteBool(bit); err != nil {
 					return err
 				}
 			}
 
-			// encode ul_TCI_StateList_r17 optional
-			if ie.ul_TCI_StateList_r17 != nil {
-				if err = ie.ul_TCI_StateList_r17.Encode(extWriter); err != nil {
-					return utils.WrapError("Encode ul_TCI_StateList_r17", err)
+			// encode Ul_TCI_StateList_r17 optional
+			if ie.Ul_TCI_StateList_r17 != nil {
+				if err = ie.Ul_TCI_StateList_r17.Encode(extWriter); err != nil {
+					return utils.WrapError("Encode Ul_TCI_StateList_r17", err)
 				}
 			}
-			// encode ul_powerControl_r17 optional
-			if ie.ul_powerControl_r17 != nil {
-				if err = ie.ul_powerControl_r17.Encode(extWriter); err != nil {
-					return utils.WrapError("Encode ul_powerControl_r17", err)
+			// encode Ul_powerControl_r17 optional
+			if ie.Ul_powerControl_r17 != nil {
+				if err = ie.Ul_powerControl_r17.Encode(extWriter); err != nil {
+					return utils.WrapError("Encode Ul_powerControl_r17", err)
 				}
 			}
-			// encode pucch_ConfigurationListMulticast1_r17 optional
-			if ie.pucch_ConfigurationListMulticast1_r17 != nil {
-				tmp_pucch_ConfigurationListMulticast1_r17 := utils.SetupRelease[*PUCCH_ConfigurationList_r16]{
-					Setup: ie.pucch_ConfigurationListMulticast1_r17,
+			// encode Pucch_ConfigurationListMulticast1_r17 optional
+			if ie.Pucch_ConfigurationListMulticast1_r17 != nil {
+				tmp_Pucch_ConfigurationListMulticast1_r17 := utils.SetupRelease[*PUCCH_ConfigurationList_r16]{
+					Setup: ie.Pucch_ConfigurationListMulticast1_r17,
 				}
-				if err = tmp_pucch_ConfigurationListMulticast1_r17.Encode(extWriter); err != nil {
-					return utils.WrapError("Encode pucch_ConfigurationListMulticast1_r17", err)
+				if err = tmp_Pucch_ConfigurationListMulticast1_r17.Encode(extWriter); err != nil {
+					return utils.WrapError("Encode Pucch_ConfigurationListMulticast1_r17", err)
 				}
 			}
-			// encode pucch_ConfigurationListMulticast2_r17 optional
-			if ie.pucch_ConfigurationListMulticast2_r17 != nil {
-				tmp_pucch_ConfigurationListMulticast2_r17 := utils.SetupRelease[*PUCCH_ConfigurationList_r16]{
-					Setup: ie.pucch_ConfigurationListMulticast2_r17,
+			// encode Pucch_ConfigurationListMulticast2_r17 optional
+			if ie.Pucch_ConfigurationListMulticast2_r17 != nil {
+				tmp_Pucch_ConfigurationListMulticast2_r17 := utils.SetupRelease[*PUCCH_ConfigurationList_r16]{
+					Setup: ie.Pucch_ConfigurationListMulticast2_r17,
 				}
-				if err = tmp_pucch_ConfigurationListMulticast2_r17.Encode(extWriter); err != nil {
-					return utils.WrapError("Encode pucch_ConfigurationListMulticast2_r17", err)
+				if err = tmp_Pucch_ConfigurationListMulticast2_r17.Encode(extWriter); err != nil {
+					return utils.WrapError("Encode Pucch_ConfigurationListMulticast2_r17", err)
 				}
 			}
 
@@ -233,29 +233,29 @@ func (ie *BWP_UplinkDedicated) Encode(w *uper.UperWriter) error {
 			extWriter := uper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 3
-			optionals_ext_3 := []bool{ie.pucch_ConfigMulticast1_r17 != nil, ie.pucch_ConfigMulticast2_r17 != nil}
+			optionals_ext_3 := []bool{ie.Pucch_ConfigMulticast1_r17 != nil, ie.Pucch_ConfigMulticast2_r17 != nil}
 			for _, bit := range optionals_ext_3 {
 				if err := extWriter.WriteBool(bit); err != nil {
 					return err
 				}
 			}
 
-			// encode pucch_ConfigMulticast1_r17 optional
-			if ie.pucch_ConfigMulticast1_r17 != nil {
-				tmp_pucch_ConfigMulticast1_r17 := utils.SetupRelease[*PUCCH_Config]{
-					Setup: ie.pucch_ConfigMulticast1_r17,
+			// encode Pucch_ConfigMulticast1_r17 optional
+			if ie.Pucch_ConfigMulticast1_r17 != nil {
+				tmp_Pucch_ConfigMulticast1_r17 := utils.SetupRelease[*PUCCH_Config]{
+					Setup: ie.Pucch_ConfigMulticast1_r17,
 				}
-				if err = tmp_pucch_ConfigMulticast1_r17.Encode(extWriter); err != nil {
-					return utils.WrapError("Encode pucch_ConfigMulticast1_r17", err)
+				if err = tmp_Pucch_ConfigMulticast1_r17.Encode(extWriter); err != nil {
+					return utils.WrapError("Encode Pucch_ConfigMulticast1_r17", err)
 				}
 			}
-			// encode pucch_ConfigMulticast2_r17 optional
-			if ie.pucch_ConfigMulticast2_r17 != nil {
-				tmp_pucch_ConfigMulticast2_r17 := utils.SetupRelease[*PUCCH_Config]{
-					Setup: ie.pucch_ConfigMulticast2_r17,
+			// encode Pucch_ConfigMulticast2_r17 optional
+			if ie.Pucch_ConfigMulticast2_r17 != nil {
+				tmp_Pucch_ConfigMulticast2_r17 := utils.SetupRelease[*PUCCH_Config]{
+					Setup: ie.Pucch_ConfigMulticast2_r17,
 				}
-				if err = tmp_pucch_ConfigMulticast2_r17.Encode(extWriter); err != nil {
-					return utils.WrapError("Encode pucch_ConfigMulticast2_r17", err)
+				if err = tmp_Pucch_ConfigMulticast2_r17.Encode(extWriter); err != nil {
+					return utils.WrapError("Encode Pucch_ConfigMulticast2_r17", err)
 				}
 			}
 
@@ -274,31 +274,31 @@ func (ie *BWP_UplinkDedicated) Encode(w *uper.UperWriter) error {
 			extWriter := uper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 4
-			optionals_ext_4 := []bool{len(ie.pathlossReferenceRSToAddModList_r17) > 0, len(ie.pathlossReferenceRSToReleaseList_r17) > 0}
+			optionals_ext_4 := []bool{len(ie.PathlossReferenceRSToAddModList_r17) > 0, len(ie.PathlossReferenceRSToReleaseList_r17) > 0}
 			for _, bit := range optionals_ext_4 {
 				if err := extWriter.WriteBool(bit); err != nil {
 					return err
 				}
 			}
 
-			// encode pathlossReferenceRSToAddModList_r17 optional
-			if len(ie.pathlossReferenceRSToAddModList_r17) > 0 {
-				tmp_pathlossReferenceRSToAddModList_r17 := utils.NewSequence[*PathlossReferenceRS_r17]([]*PathlossReferenceRS_r17{}, uper.Constraint{Lb: 1, Ub: maxNrofPathlossReferenceRSs_r17}, false)
-				for _, i := range ie.pathlossReferenceRSToAddModList_r17 {
-					tmp_pathlossReferenceRSToAddModList_r17.Value = append(tmp_pathlossReferenceRSToAddModList_r17.Value, &i)
+			// encode PathlossReferenceRSToAddModList_r17 optional
+			if len(ie.PathlossReferenceRSToAddModList_r17) > 0 {
+				tmp_PathlossReferenceRSToAddModList_r17 := utils.NewSequence[*PathlossReferenceRS_r17]([]*PathlossReferenceRS_r17{}, uper.Constraint{Lb: 1, Ub: maxNrofPathlossReferenceRSs_r17}, false)
+				for _, i := range ie.PathlossReferenceRSToAddModList_r17 {
+					tmp_PathlossReferenceRSToAddModList_r17.Value = append(tmp_PathlossReferenceRSToAddModList_r17.Value, &i)
 				}
-				if err = tmp_pathlossReferenceRSToAddModList_r17.Encode(extWriter); err != nil {
-					return utils.WrapError("Encode pathlossReferenceRSToAddModList_r17", err)
+				if err = tmp_PathlossReferenceRSToAddModList_r17.Encode(extWriter); err != nil {
+					return utils.WrapError("Encode PathlossReferenceRSToAddModList_r17", err)
 				}
 			}
-			// encode pathlossReferenceRSToReleaseList_r17 optional
-			if len(ie.pathlossReferenceRSToReleaseList_r17) > 0 {
-				tmp_pathlossReferenceRSToReleaseList_r17 := utils.NewSequence[*PathlossReferenceRS_Id_r17]([]*PathlossReferenceRS_Id_r17{}, uper.Constraint{Lb: 1, Ub: maxNrofPathlossReferenceRSs_r17}, false)
-				for _, i := range ie.pathlossReferenceRSToReleaseList_r17 {
-					tmp_pathlossReferenceRSToReleaseList_r17.Value = append(tmp_pathlossReferenceRSToReleaseList_r17.Value, &i)
+			// encode PathlossReferenceRSToReleaseList_r17 optional
+			if len(ie.PathlossReferenceRSToReleaseList_r17) > 0 {
+				tmp_PathlossReferenceRSToReleaseList_r17 := utils.NewSequence[*PathlossReferenceRS_Id_r17]([]*PathlossReferenceRS_Id_r17{}, uper.Constraint{Lb: 1, Ub: maxNrofPathlossReferenceRSs_r17}, false)
+				for _, i := range ie.PathlossReferenceRSToReleaseList_r17 {
+					tmp_PathlossReferenceRSToReleaseList_r17.Value = append(tmp_PathlossReferenceRSToReleaseList_r17.Value, &i)
 				}
-				if err = tmp_pathlossReferenceRSToReleaseList_r17.Encode(extWriter); err != nil {
-					return utils.WrapError("Encode pathlossReferenceRSToReleaseList_r17", err)
+				if err = tmp_PathlossReferenceRSToReleaseList_r17.Encode(extWriter); err != nil {
+					return utils.WrapError("Encode PathlossReferenceRSToReleaseList_r17", err)
 				}
 			}
 
@@ -320,60 +320,60 @@ func (ie *BWP_UplinkDedicated) Decode(r *uper.UperReader) error {
 	if extensionBit, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var pucch_ConfigPresent bool
-	if pucch_ConfigPresent, err = r.ReadBool(); err != nil {
+	var Pucch_ConfigPresent bool
+	if Pucch_ConfigPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var pusch_ConfigPresent bool
-	if pusch_ConfigPresent, err = r.ReadBool(); err != nil {
+	var Pusch_ConfigPresent bool
+	if Pusch_ConfigPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var configuredGrantConfigPresent bool
-	if configuredGrantConfigPresent, err = r.ReadBool(); err != nil {
+	var ConfiguredGrantConfigPresent bool
+	if ConfiguredGrantConfigPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var srs_ConfigPresent bool
-	if srs_ConfigPresent, err = r.ReadBool(); err != nil {
+	var Srs_ConfigPresent bool
+	if Srs_ConfigPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var beamFailureRecoveryConfigPresent bool
-	if beamFailureRecoveryConfigPresent, err = r.ReadBool(); err != nil {
+	var BeamFailureRecoveryConfigPresent bool
+	if BeamFailureRecoveryConfigPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	if pucch_ConfigPresent {
-		tmp_pucch_Config := utils.SetupRelease[*PUCCH_Config]{}
-		if err = tmp_pucch_Config.Decode(r); err != nil {
-			return utils.WrapError("Decode pucch_Config", err)
+	if Pucch_ConfigPresent {
+		tmp_Pucch_Config := utils.SetupRelease[*PUCCH_Config]{}
+		if err = tmp_Pucch_Config.Decode(r); err != nil {
+			return utils.WrapError("Decode Pucch_Config", err)
 		}
-		ie.pucch_Config = tmp_pucch_Config.Setup
+		ie.Pucch_Config = tmp_Pucch_Config.Setup
 	}
-	if pusch_ConfigPresent {
-		tmp_pusch_Config := utils.SetupRelease[*PUSCH_Config]{}
-		if err = tmp_pusch_Config.Decode(r); err != nil {
-			return utils.WrapError("Decode pusch_Config", err)
+	if Pusch_ConfigPresent {
+		tmp_Pusch_Config := utils.SetupRelease[*PUSCH_Config]{}
+		if err = tmp_Pusch_Config.Decode(r); err != nil {
+			return utils.WrapError("Decode Pusch_Config", err)
 		}
-		ie.pusch_Config = tmp_pusch_Config.Setup
+		ie.Pusch_Config = tmp_Pusch_Config.Setup
 	}
-	if configuredGrantConfigPresent {
-		tmp_configuredGrantConfig := utils.SetupRelease[*ConfiguredGrantConfig]{}
-		if err = tmp_configuredGrantConfig.Decode(r); err != nil {
-			return utils.WrapError("Decode configuredGrantConfig", err)
+	if ConfiguredGrantConfigPresent {
+		tmp_ConfiguredGrantConfig := utils.SetupRelease[*ConfiguredGrantConfig]{}
+		if err = tmp_ConfiguredGrantConfig.Decode(r); err != nil {
+			return utils.WrapError("Decode ConfiguredGrantConfig", err)
 		}
-		ie.configuredGrantConfig = tmp_configuredGrantConfig.Setup
+		ie.ConfiguredGrantConfig = tmp_ConfiguredGrantConfig.Setup
 	}
-	if srs_ConfigPresent {
-		tmp_srs_Config := utils.SetupRelease[*SRS_Config]{}
-		if err = tmp_srs_Config.Decode(r); err != nil {
-			return utils.WrapError("Decode srs_Config", err)
+	if Srs_ConfigPresent {
+		tmp_Srs_Config := utils.SetupRelease[*SRS_Config]{}
+		if err = tmp_Srs_Config.Decode(r); err != nil {
+			return utils.WrapError("Decode Srs_Config", err)
 		}
-		ie.srs_Config = tmp_srs_Config.Setup
+		ie.Srs_Config = tmp_Srs_Config.Setup
 	}
-	if beamFailureRecoveryConfigPresent {
-		tmp_beamFailureRecoveryConfig := utils.SetupRelease[*BeamFailureRecoveryConfig]{}
-		if err = tmp_beamFailureRecoveryConfig.Decode(r); err != nil {
-			return utils.WrapError("Decode beamFailureRecoveryConfig", err)
+	if BeamFailureRecoveryConfigPresent {
+		tmp_BeamFailureRecoveryConfig := utils.SetupRelease[*BeamFailureRecoveryConfig]{}
+		if err = tmp_BeamFailureRecoveryConfig.Decode(r); err != nil {
+			return utils.WrapError("Decode BeamFailureRecoveryConfig", err)
 		}
-		ie.beamFailureRecoveryConfig = tmp_beamFailureRecoveryConfig.Setup
+		ie.BeamFailureRecoveryConfig = tmp_BeamFailureRecoveryConfig.Setup
 	}
 
 	if extensionBit {
@@ -392,108 +392,108 @@ func (ie *BWP_UplinkDedicated) Decode(r *uper.UperReader) error {
 
 			extReader := uper.NewReader(bytes.NewReader(extBytes))
 
-			sl_PUCCH_Config_r16Present, err := extReader.ReadBool()
+			Sl_PUCCH_Config_r16Present, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			cp_ExtensionC2_r16Present, err := extReader.ReadBool()
+			Cp_ExtensionC2_r16Present, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			cp_ExtensionC3_r16Present, err := extReader.ReadBool()
+			Cp_ExtensionC3_r16Present, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			useInterlacePUCCH_PUSCH_r16Present, err := extReader.ReadBool()
+			UseInterlacePUCCH_PUSCH_r16Present, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			pucch_ConfigurationList_r16Present, err := extReader.ReadBool()
+			Pucch_ConfigurationList_r16Present, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			lbt_FailureRecoveryConfig_r16Present, err := extReader.ReadBool()
+			Lbt_FailureRecoveryConfig_r16Present, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			configuredGrantConfigToAddModList_r16Present, err := extReader.ReadBool()
+			ConfiguredGrantConfigToAddModList_r16Present, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			configuredGrantConfigToReleaseList_r16Present, err := extReader.ReadBool()
+			ConfiguredGrantConfigToReleaseList_r16Present, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			configuredGrantConfigType2DeactivationStateList_r16Present, err := extReader.ReadBool()
+			ConfiguredGrantConfigType2DeactivationStateList_r16Present, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			// decode sl_PUCCH_Config_r16 optional
-			if sl_PUCCH_Config_r16Present {
-				tmp_sl_PUCCH_Config_r16 := utils.SetupRelease[*PUCCH_Config]{}
-				if err = tmp_sl_PUCCH_Config_r16.Decode(extReader); err != nil {
-					return utils.WrapError("Decode sl_PUCCH_Config_r16", err)
+			// decode Sl_PUCCH_Config_r16 optional
+			if Sl_PUCCH_Config_r16Present {
+				tmp_Sl_PUCCH_Config_r16 := utils.SetupRelease[*PUCCH_Config]{}
+				if err = tmp_Sl_PUCCH_Config_r16.Decode(extReader); err != nil {
+					return utils.WrapError("Decode Sl_PUCCH_Config_r16", err)
 				}
-				ie.sl_PUCCH_Config_r16 = tmp_sl_PUCCH_Config_r16.Setup
+				ie.Sl_PUCCH_Config_r16 = tmp_Sl_PUCCH_Config_r16.Setup
 			}
-			// decode cp_ExtensionC2_r16 optional
-			if cp_ExtensionC2_r16Present {
-				var tmp_int_cp_ExtensionC2_r16 int64
-				if tmp_int_cp_ExtensionC2_r16, err = extReader.ReadInteger(&uper.Constraint{Lb: 1, Ub: 28}, false); err != nil {
-					return utils.WrapError("Decode cp_ExtensionC2_r16", err)
+			// decode Cp_ExtensionC2_r16 optional
+			if Cp_ExtensionC2_r16Present {
+				var tmp_int_Cp_ExtensionC2_r16 int64
+				if tmp_int_Cp_ExtensionC2_r16, err = extReader.ReadInteger(&uper.Constraint{Lb: 1, Ub: 28}, false); err != nil {
+					return utils.WrapError("Decode Cp_ExtensionC2_r16", err)
 				}
-				ie.cp_ExtensionC2_r16 = &tmp_int_cp_ExtensionC2_r16
+				ie.Cp_ExtensionC2_r16 = &tmp_int_Cp_ExtensionC2_r16
 			}
-			// decode cp_ExtensionC3_r16 optional
-			if cp_ExtensionC3_r16Present {
-				var tmp_int_cp_ExtensionC3_r16 int64
-				if tmp_int_cp_ExtensionC3_r16, err = extReader.ReadInteger(&uper.Constraint{Lb: 1, Ub: 28}, false); err != nil {
-					return utils.WrapError("Decode cp_ExtensionC3_r16", err)
+			// decode Cp_ExtensionC3_r16 optional
+			if Cp_ExtensionC3_r16Present {
+				var tmp_int_Cp_ExtensionC3_r16 int64
+				if tmp_int_Cp_ExtensionC3_r16, err = extReader.ReadInteger(&uper.Constraint{Lb: 1, Ub: 28}, false); err != nil {
+					return utils.WrapError("Decode Cp_ExtensionC3_r16", err)
 				}
-				ie.cp_ExtensionC3_r16 = &tmp_int_cp_ExtensionC3_r16
+				ie.Cp_ExtensionC3_r16 = &tmp_int_Cp_ExtensionC3_r16
 			}
-			// decode useInterlacePUCCH_PUSCH_r16 optional
-			if useInterlacePUCCH_PUSCH_r16Present {
-				ie.useInterlacePUCCH_PUSCH_r16 = new(BWP_UplinkDedicated_useInterlacePUCCH_PUSCH_r16)
-				if err = ie.useInterlacePUCCH_PUSCH_r16.Decode(extReader); err != nil {
-					return utils.WrapError("Decode useInterlacePUCCH_PUSCH_r16", err)
-				}
-			}
-			// decode pucch_ConfigurationList_r16 optional
-			if pucch_ConfigurationList_r16Present {
-				tmp_pucch_ConfigurationList_r16 := utils.SetupRelease[*PUCCH_ConfigurationList_r16]{}
-				if err = tmp_pucch_ConfigurationList_r16.Decode(extReader); err != nil {
-					return utils.WrapError("Decode pucch_ConfigurationList_r16", err)
-				}
-				ie.pucch_ConfigurationList_r16 = tmp_pucch_ConfigurationList_r16.Setup
-			}
-			// decode lbt_FailureRecoveryConfig_r16 optional
-			if lbt_FailureRecoveryConfig_r16Present {
-				tmp_lbt_FailureRecoveryConfig_r16 := utils.SetupRelease[*LBT_FailureRecoveryConfig_r16]{}
-				if err = tmp_lbt_FailureRecoveryConfig_r16.Decode(extReader); err != nil {
-					return utils.WrapError("Decode lbt_FailureRecoveryConfig_r16", err)
-				}
-				ie.lbt_FailureRecoveryConfig_r16 = tmp_lbt_FailureRecoveryConfig_r16.Setup
-			}
-			// decode configuredGrantConfigToAddModList_r16 optional
-			if configuredGrantConfigToAddModList_r16Present {
-				ie.configuredGrantConfigToAddModList_r16 = new(ConfiguredGrantConfigToAddModList_r16)
-				if err = ie.configuredGrantConfigToAddModList_r16.Decode(extReader); err != nil {
-					return utils.WrapError("Decode configuredGrantConfigToAddModList_r16", err)
+			// decode UseInterlacePUCCH_PUSCH_r16 optional
+			if UseInterlacePUCCH_PUSCH_r16Present {
+				ie.UseInterlacePUCCH_PUSCH_r16 = new(BWP_UplinkDedicated_useInterlacePUCCH_PUSCH_r16)
+				if err = ie.UseInterlacePUCCH_PUSCH_r16.Decode(extReader); err != nil {
+					return utils.WrapError("Decode UseInterlacePUCCH_PUSCH_r16", err)
 				}
 			}
-			// decode configuredGrantConfigToReleaseList_r16 optional
-			if configuredGrantConfigToReleaseList_r16Present {
-				ie.configuredGrantConfigToReleaseList_r16 = new(ConfiguredGrantConfigToReleaseList_r16)
-				if err = ie.configuredGrantConfigToReleaseList_r16.Decode(extReader); err != nil {
-					return utils.WrapError("Decode configuredGrantConfigToReleaseList_r16", err)
+			// decode Pucch_ConfigurationList_r16 optional
+			if Pucch_ConfigurationList_r16Present {
+				tmp_Pucch_ConfigurationList_r16 := utils.SetupRelease[*PUCCH_ConfigurationList_r16]{}
+				if err = tmp_Pucch_ConfigurationList_r16.Decode(extReader); err != nil {
+					return utils.WrapError("Decode Pucch_ConfigurationList_r16", err)
+				}
+				ie.Pucch_ConfigurationList_r16 = tmp_Pucch_ConfigurationList_r16.Setup
+			}
+			// decode Lbt_FailureRecoveryConfig_r16 optional
+			if Lbt_FailureRecoveryConfig_r16Present {
+				tmp_Lbt_FailureRecoveryConfig_r16 := utils.SetupRelease[*LBT_FailureRecoveryConfig_r16]{}
+				if err = tmp_Lbt_FailureRecoveryConfig_r16.Decode(extReader); err != nil {
+					return utils.WrapError("Decode Lbt_FailureRecoveryConfig_r16", err)
+				}
+				ie.Lbt_FailureRecoveryConfig_r16 = tmp_Lbt_FailureRecoveryConfig_r16.Setup
+			}
+			// decode ConfiguredGrantConfigToAddModList_r16 optional
+			if ConfiguredGrantConfigToAddModList_r16Present {
+				ie.ConfiguredGrantConfigToAddModList_r16 = new(ConfiguredGrantConfigToAddModList_r16)
+				if err = ie.ConfiguredGrantConfigToAddModList_r16.Decode(extReader); err != nil {
+					return utils.WrapError("Decode ConfiguredGrantConfigToAddModList_r16", err)
 				}
 			}
-			// decode configuredGrantConfigType2DeactivationStateList_r16 optional
-			if configuredGrantConfigType2DeactivationStateList_r16Present {
-				ie.configuredGrantConfigType2DeactivationStateList_r16 = new(ConfiguredGrantConfigType2DeactivationStateList_r16)
-				if err = ie.configuredGrantConfigType2DeactivationStateList_r16.Decode(extReader); err != nil {
-					return utils.WrapError("Decode configuredGrantConfigType2DeactivationStateList_r16", err)
+			// decode ConfiguredGrantConfigToReleaseList_r16 optional
+			if ConfiguredGrantConfigToReleaseList_r16Present {
+				ie.ConfiguredGrantConfigToReleaseList_r16 = new(ConfiguredGrantConfigToReleaseList_r16)
+				if err = ie.ConfiguredGrantConfigToReleaseList_r16.Decode(extReader); err != nil {
+					return utils.WrapError("Decode ConfiguredGrantConfigToReleaseList_r16", err)
+				}
+			}
+			// decode ConfiguredGrantConfigType2DeactivationStateList_r16 optional
+			if ConfiguredGrantConfigType2DeactivationStateList_r16Present {
+				ie.ConfiguredGrantConfigType2DeactivationStateList_r16 = new(ConfiguredGrantConfigType2DeactivationStateList_r16)
+				if err = ie.ConfiguredGrantConfigType2DeactivationStateList_r16.Decode(extReader); err != nil {
+					return utils.WrapError("Decode ConfiguredGrantConfigType2DeactivationStateList_r16", err)
 				}
 			}
 		}
@@ -506,51 +506,51 @@ func (ie *BWP_UplinkDedicated) Decode(r *uper.UperReader) error {
 
 			extReader := uper.NewReader(bytes.NewReader(extBytes))
 
-			ul_TCI_StateList_r17Present, err := extReader.ReadBool()
+			Ul_TCI_StateList_r17Present, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			ul_powerControl_r17Present, err := extReader.ReadBool()
+			Ul_powerControl_r17Present, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			pucch_ConfigurationListMulticast1_r17Present, err := extReader.ReadBool()
+			Pucch_ConfigurationListMulticast1_r17Present, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			pucch_ConfigurationListMulticast2_r17Present, err := extReader.ReadBool()
+			Pucch_ConfigurationListMulticast2_r17Present, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			// decode ul_TCI_StateList_r17 optional
-			if ul_TCI_StateList_r17Present {
-				ie.ul_TCI_StateList_r17 = new(BWP_UplinkDedicated_ul_TCI_StateList_r17)
-				if err = ie.ul_TCI_StateList_r17.Decode(extReader); err != nil {
-					return utils.WrapError("Decode ul_TCI_StateList_r17", err)
+			// decode Ul_TCI_StateList_r17 optional
+			if Ul_TCI_StateList_r17Present {
+				ie.Ul_TCI_StateList_r17 = new(BWP_UplinkDedicated_ul_TCI_StateList_r17)
+				if err = ie.Ul_TCI_StateList_r17.Decode(extReader); err != nil {
+					return utils.WrapError("Decode Ul_TCI_StateList_r17", err)
 				}
 			}
-			// decode ul_powerControl_r17 optional
-			if ul_powerControl_r17Present {
-				ie.ul_powerControl_r17 = new(Uplink_powerControlId_r17)
-				if err = ie.ul_powerControl_r17.Decode(extReader); err != nil {
-					return utils.WrapError("Decode ul_powerControl_r17", err)
+			// decode Ul_powerControl_r17 optional
+			if Ul_powerControl_r17Present {
+				ie.Ul_powerControl_r17 = new(Uplink_powerControlId_r17)
+				if err = ie.Ul_powerControl_r17.Decode(extReader); err != nil {
+					return utils.WrapError("Decode Ul_powerControl_r17", err)
 				}
 			}
-			// decode pucch_ConfigurationListMulticast1_r17 optional
-			if pucch_ConfigurationListMulticast1_r17Present {
-				tmp_pucch_ConfigurationListMulticast1_r17 := utils.SetupRelease[*PUCCH_ConfigurationList_r16]{}
-				if err = tmp_pucch_ConfigurationListMulticast1_r17.Decode(extReader); err != nil {
-					return utils.WrapError("Decode pucch_ConfigurationListMulticast1_r17", err)
+			// decode Pucch_ConfigurationListMulticast1_r17 optional
+			if Pucch_ConfigurationListMulticast1_r17Present {
+				tmp_Pucch_ConfigurationListMulticast1_r17 := utils.SetupRelease[*PUCCH_ConfigurationList_r16]{}
+				if err = tmp_Pucch_ConfigurationListMulticast1_r17.Decode(extReader); err != nil {
+					return utils.WrapError("Decode Pucch_ConfigurationListMulticast1_r17", err)
 				}
-				ie.pucch_ConfigurationListMulticast1_r17 = tmp_pucch_ConfigurationListMulticast1_r17.Setup
+				ie.Pucch_ConfigurationListMulticast1_r17 = tmp_Pucch_ConfigurationListMulticast1_r17.Setup
 			}
-			// decode pucch_ConfigurationListMulticast2_r17 optional
-			if pucch_ConfigurationListMulticast2_r17Present {
-				tmp_pucch_ConfigurationListMulticast2_r17 := utils.SetupRelease[*PUCCH_ConfigurationList_r16]{}
-				if err = tmp_pucch_ConfigurationListMulticast2_r17.Decode(extReader); err != nil {
-					return utils.WrapError("Decode pucch_ConfigurationListMulticast2_r17", err)
+			// decode Pucch_ConfigurationListMulticast2_r17 optional
+			if Pucch_ConfigurationListMulticast2_r17Present {
+				tmp_Pucch_ConfigurationListMulticast2_r17 := utils.SetupRelease[*PUCCH_ConfigurationList_r16]{}
+				if err = tmp_Pucch_ConfigurationListMulticast2_r17.Decode(extReader); err != nil {
+					return utils.WrapError("Decode Pucch_ConfigurationListMulticast2_r17", err)
 				}
-				ie.pucch_ConfigurationListMulticast2_r17 = tmp_pucch_ConfigurationListMulticast2_r17.Setup
+				ie.Pucch_ConfigurationListMulticast2_r17 = tmp_Pucch_ConfigurationListMulticast2_r17.Setup
 			}
 		}
 		// decode extension group 3
@@ -562,29 +562,29 @@ func (ie *BWP_UplinkDedicated) Decode(r *uper.UperReader) error {
 
 			extReader := uper.NewReader(bytes.NewReader(extBytes))
 
-			pucch_ConfigMulticast1_r17Present, err := extReader.ReadBool()
+			Pucch_ConfigMulticast1_r17Present, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			pucch_ConfigMulticast2_r17Present, err := extReader.ReadBool()
+			Pucch_ConfigMulticast2_r17Present, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			// decode pucch_ConfigMulticast1_r17 optional
-			if pucch_ConfigMulticast1_r17Present {
-				tmp_pucch_ConfigMulticast1_r17 := utils.SetupRelease[*PUCCH_Config]{}
-				if err = tmp_pucch_ConfigMulticast1_r17.Decode(extReader); err != nil {
-					return utils.WrapError("Decode pucch_ConfigMulticast1_r17", err)
+			// decode Pucch_ConfigMulticast1_r17 optional
+			if Pucch_ConfigMulticast1_r17Present {
+				tmp_Pucch_ConfigMulticast1_r17 := utils.SetupRelease[*PUCCH_Config]{}
+				if err = tmp_Pucch_ConfigMulticast1_r17.Decode(extReader); err != nil {
+					return utils.WrapError("Decode Pucch_ConfigMulticast1_r17", err)
 				}
-				ie.pucch_ConfigMulticast1_r17 = tmp_pucch_ConfigMulticast1_r17.Setup
+				ie.Pucch_ConfigMulticast1_r17 = tmp_Pucch_ConfigMulticast1_r17.Setup
 			}
-			// decode pucch_ConfigMulticast2_r17 optional
-			if pucch_ConfigMulticast2_r17Present {
-				tmp_pucch_ConfigMulticast2_r17 := utils.SetupRelease[*PUCCH_Config]{}
-				if err = tmp_pucch_ConfigMulticast2_r17.Decode(extReader); err != nil {
-					return utils.WrapError("Decode pucch_ConfigMulticast2_r17", err)
+			// decode Pucch_ConfigMulticast2_r17 optional
+			if Pucch_ConfigMulticast2_r17Present {
+				tmp_Pucch_ConfigMulticast2_r17 := utils.SetupRelease[*PUCCH_Config]{}
+				if err = tmp_Pucch_ConfigMulticast2_r17.Decode(extReader); err != nil {
+					return utils.WrapError("Decode Pucch_ConfigMulticast2_r17", err)
 				}
-				ie.pucch_ConfigMulticast2_r17 = tmp_pucch_ConfigMulticast2_r17.Setup
+				ie.Pucch_ConfigMulticast2_r17 = tmp_Pucch_ConfigMulticast2_r17.Setup
 			}
 		}
 		// decode extension group 4
@@ -596,40 +596,40 @@ func (ie *BWP_UplinkDedicated) Decode(r *uper.UperReader) error {
 
 			extReader := uper.NewReader(bytes.NewReader(extBytes))
 
-			pathlossReferenceRSToAddModList_r17Present, err := extReader.ReadBool()
+			PathlossReferenceRSToAddModList_r17Present, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			pathlossReferenceRSToReleaseList_r17Present, err := extReader.ReadBool()
+			PathlossReferenceRSToReleaseList_r17Present, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			// decode pathlossReferenceRSToAddModList_r17 optional
-			if pathlossReferenceRSToAddModList_r17Present {
-				tmp_pathlossReferenceRSToAddModList_r17 := utils.NewSequence[*PathlossReferenceRS_r17]([]*PathlossReferenceRS_r17{}, uper.Constraint{Lb: 1, Ub: maxNrofPathlossReferenceRSs_r17}, false)
-				fn_pathlossReferenceRSToAddModList_r17 := func() *PathlossReferenceRS_r17 {
+			// decode PathlossReferenceRSToAddModList_r17 optional
+			if PathlossReferenceRSToAddModList_r17Present {
+				tmp_PathlossReferenceRSToAddModList_r17 := utils.NewSequence[*PathlossReferenceRS_r17]([]*PathlossReferenceRS_r17{}, uper.Constraint{Lb: 1, Ub: maxNrofPathlossReferenceRSs_r17}, false)
+				fn_PathlossReferenceRSToAddModList_r17 := func() *PathlossReferenceRS_r17 {
 					return new(PathlossReferenceRS_r17)
 				}
-				if err = tmp_pathlossReferenceRSToAddModList_r17.Decode(extReader, fn_pathlossReferenceRSToAddModList_r17); err != nil {
-					return utils.WrapError("Decode pathlossReferenceRSToAddModList_r17", err)
+				if err = tmp_PathlossReferenceRSToAddModList_r17.Decode(extReader, fn_PathlossReferenceRSToAddModList_r17); err != nil {
+					return utils.WrapError("Decode PathlossReferenceRSToAddModList_r17", err)
 				}
-				ie.pathlossReferenceRSToAddModList_r17 = []PathlossReferenceRS_r17{}
-				for _, i := range tmp_pathlossReferenceRSToAddModList_r17.Value {
-					ie.pathlossReferenceRSToAddModList_r17 = append(ie.pathlossReferenceRSToAddModList_r17, *i)
+				ie.PathlossReferenceRSToAddModList_r17 = []PathlossReferenceRS_r17{}
+				for _, i := range tmp_PathlossReferenceRSToAddModList_r17.Value {
+					ie.PathlossReferenceRSToAddModList_r17 = append(ie.PathlossReferenceRSToAddModList_r17, *i)
 				}
 			}
-			// decode pathlossReferenceRSToReleaseList_r17 optional
-			if pathlossReferenceRSToReleaseList_r17Present {
-				tmp_pathlossReferenceRSToReleaseList_r17 := utils.NewSequence[*PathlossReferenceRS_Id_r17]([]*PathlossReferenceRS_Id_r17{}, uper.Constraint{Lb: 1, Ub: maxNrofPathlossReferenceRSs_r17}, false)
-				fn_pathlossReferenceRSToReleaseList_r17 := func() *PathlossReferenceRS_Id_r17 {
+			// decode PathlossReferenceRSToReleaseList_r17 optional
+			if PathlossReferenceRSToReleaseList_r17Present {
+				tmp_PathlossReferenceRSToReleaseList_r17 := utils.NewSequence[*PathlossReferenceRS_Id_r17]([]*PathlossReferenceRS_Id_r17{}, uper.Constraint{Lb: 1, Ub: maxNrofPathlossReferenceRSs_r17}, false)
+				fn_PathlossReferenceRSToReleaseList_r17 := func() *PathlossReferenceRS_Id_r17 {
 					return new(PathlossReferenceRS_Id_r17)
 				}
-				if err = tmp_pathlossReferenceRSToReleaseList_r17.Decode(extReader, fn_pathlossReferenceRSToReleaseList_r17); err != nil {
-					return utils.WrapError("Decode pathlossReferenceRSToReleaseList_r17", err)
+				if err = tmp_PathlossReferenceRSToReleaseList_r17.Decode(extReader, fn_PathlossReferenceRSToReleaseList_r17); err != nil {
+					return utils.WrapError("Decode PathlossReferenceRSToReleaseList_r17", err)
 				}
-				ie.pathlossReferenceRSToReleaseList_r17 = []PathlossReferenceRS_Id_r17{}
-				for _, i := range tmp_pathlossReferenceRSToReleaseList_r17.Value {
-					ie.pathlossReferenceRSToReleaseList_r17 = append(ie.pathlossReferenceRSToReleaseList_r17, *i)
+				ie.PathlossReferenceRSToReleaseList_r17 = []PathlossReferenceRS_Id_r17{}
+				for _, i := range tmp_PathlossReferenceRSToReleaseList_r17.Value {
+					ie.PathlossReferenceRSToReleaseList_r17 = append(ie.PathlossReferenceRSToReleaseList_r17, *i)
 				}
 			}
 		}

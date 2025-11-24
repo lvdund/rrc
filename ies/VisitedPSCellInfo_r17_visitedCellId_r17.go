@@ -9,14 +9,14 @@ import (
 
 const (
 	VisitedPSCellInfo_r17_visitedCellId_r17_Choice_nothing uint64 = iota
-	VisitedPSCellInfo_r17_visitedCellId_r17_Choice_nr_CellId_r17
-	VisitedPSCellInfo_r17_visitedCellId_r17_Choice_eutra_CellId_r17
+	VisitedPSCellInfo_r17_visitedCellId_r17_Choice_Nr_CellId_r17
+	VisitedPSCellInfo_r17_visitedCellId_r17_Choice_Eutra_CellId_r17
 )
 
 type VisitedPSCellInfo_r17_visitedCellId_r17 struct {
 	Choice           uint64
-	nr_CellId_r17    *VisitedPSCellInfo_r17_visitedCellId_r17_nr_CellId_r17
-	eutra_CellId_r17 *VisitedPSCellInfo_r17_visitedCellId_r17_eutra_CellId_r17
+	Nr_CellId_r17    *VisitedPSCellInfo_r17_visitedCellId_r17_nr_CellId_r17
+	Eutra_CellId_r17 *VisitedPSCellInfo_r17_visitedCellId_r17_eutra_CellId_r17
 }
 
 func (ie *VisitedPSCellInfo_r17_visitedCellId_r17) Encode(w *uper.UperWriter) error {
@@ -25,13 +25,13 @@ func (ie *VisitedPSCellInfo_r17_visitedCellId_r17) Encode(w *uper.UperWriter) er
 		return err
 	}
 	switch ie.Choice {
-	case VisitedPSCellInfo_r17_visitedCellId_r17_Choice_nr_CellId_r17:
-		if err = ie.nr_CellId_r17.Encode(w); err != nil {
-			err = utils.WrapError("Encode nr_CellId_r17", err)
+	case VisitedPSCellInfo_r17_visitedCellId_r17_Choice_Nr_CellId_r17:
+		if err = ie.Nr_CellId_r17.Encode(w); err != nil {
+			err = utils.WrapError("Encode Nr_CellId_r17", err)
 		}
-	case VisitedPSCellInfo_r17_visitedCellId_r17_Choice_eutra_CellId_r17:
-		if err = ie.eutra_CellId_r17.Encode(w); err != nil {
-			err = utils.WrapError("Encode eutra_CellId_r17", err)
+	case VisitedPSCellInfo_r17_visitedCellId_r17_Choice_Eutra_CellId_r17:
+		if err = ie.Eutra_CellId_r17.Encode(w); err != nil {
+			err = utils.WrapError("Encode Eutra_CellId_r17", err)
 		}
 	default:
 		err = fmt.Errorf("invalid choice: %d", ie.Choice)
@@ -45,15 +45,15 @@ func (ie *VisitedPSCellInfo_r17_visitedCellId_r17) Decode(r *uper.UperReader) er
 		return err
 	}
 	switch ie.Choice {
-	case VisitedPSCellInfo_r17_visitedCellId_r17_Choice_nr_CellId_r17:
-		ie.nr_CellId_r17 = new(VisitedPSCellInfo_r17_visitedCellId_r17_nr_CellId_r17)
-		if err = ie.nr_CellId_r17.Decode(r); err != nil {
-			return utils.WrapError("Decode nr_CellId_r17", err)
+	case VisitedPSCellInfo_r17_visitedCellId_r17_Choice_Nr_CellId_r17:
+		ie.Nr_CellId_r17 = new(VisitedPSCellInfo_r17_visitedCellId_r17_nr_CellId_r17)
+		if err = ie.Nr_CellId_r17.Decode(r); err != nil {
+			return utils.WrapError("Decode Nr_CellId_r17", err)
 		}
-	case VisitedPSCellInfo_r17_visitedCellId_r17_Choice_eutra_CellId_r17:
-		ie.eutra_CellId_r17 = new(VisitedPSCellInfo_r17_visitedCellId_r17_eutra_CellId_r17)
-		if err = ie.eutra_CellId_r17.Decode(r); err != nil {
-			return utils.WrapError("Decode eutra_CellId_r17", err)
+	case VisitedPSCellInfo_r17_visitedCellId_r17_Choice_Eutra_CellId_r17:
+		ie.Eutra_CellId_r17 = new(VisitedPSCellInfo_r17_visitedCellId_r17_eutra_CellId_r17)
+		if err = ie.Eutra_CellId_r17.Decode(r); err != nil {
+			return utils.WrapError("Decode Eutra_CellId_r17", err)
 		}
 	default:
 		return fmt.Errorf("invalid choice: %d", ie.Choice)

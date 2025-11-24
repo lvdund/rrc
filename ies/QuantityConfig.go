@@ -8,33 +8,33 @@ import (
 )
 
 type QuantityConfig struct {
-	quantityConfigNR_List      []QuantityConfigNR          `lb:1,ub:maxNrofQuantityConfig,optional`
-	quantityConfigEUTRA        *FilterConfig               `optional,ext-1`
-	quantityConfigUTRA_FDD_r16 *QuantityConfigUTRA_FDD_r16 `optional,ext-2`
-	quantityConfigCLI_r16      *FilterConfigCLI_r16        `optional,ext-2`
+	QuantityConfigNR_List      []QuantityConfigNR          `lb:1,ub:maxNrofQuantityConfig,optional`
+	QuantityConfigEUTRA        *FilterConfig               `optional,ext-1`
+	QuantityConfigUTRA_FDD_r16 *QuantityConfigUTRA_FDD_r16 `optional,ext-2`
+	QuantityConfigCLI_r16      *FilterConfigCLI_r16        `optional,ext-2`
 }
 
 func (ie *QuantityConfig) Encode(w *uper.UperWriter) error {
 	var err error
-	hasExtensions := ie.quantityConfigEUTRA != nil || ie.quantityConfigUTRA_FDD_r16 != nil || ie.quantityConfigCLI_r16 != nil
-	preambleBits := []bool{hasExtensions, len(ie.quantityConfigNR_List) > 0}
+	hasExtensions := ie.QuantityConfigEUTRA != nil || ie.QuantityConfigUTRA_FDD_r16 != nil || ie.QuantityConfigCLI_r16 != nil
+	preambleBits := []bool{hasExtensions, len(ie.QuantityConfigNR_List) > 0}
 	for _, bit := range preambleBits {
 		if err = w.WriteBool(bit); err != nil {
 			return err
 		}
 	}
-	if len(ie.quantityConfigNR_List) > 0 {
-		tmp_quantityConfigNR_List := utils.NewSequence[*QuantityConfigNR]([]*QuantityConfigNR{}, uper.Constraint{Lb: 1, Ub: maxNrofQuantityConfig}, false)
-		for _, i := range ie.quantityConfigNR_List {
-			tmp_quantityConfigNR_List.Value = append(tmp_quantityConfigNR_List.Value, &i)
+	if len(ie.QuantityConfigNR_List) > 0 {
+		tmp_QuantityConfigNR_List := utils.NewSequence[*QuantityConfigNR]([]*QuantityConfigNR{}, uper.Constraint{Lb: 1, Ub: maxNrofQuantityConfig}, false)
+		for _, i := range ie.QuantityConfigNR_List {
+			tmp_QuantityConfigNR_List.Value = append(tmp_QuantityConfigNR_List.Value, &i)
 		}
-		if err = tmp_quantityConfigNR_List.Encode(w); err != nil {
-			return utils.WrapError("Encode quantityConfigNR_List", err)
+		if err = tmp_QuantityConfigNR_List.Encode(w); err != nil {
+			return utils.WrapError("Encode QuantityConfigNR_List", err)
 		}
 	}
 	if hasExtensions {
 		// Extension bitmap: 2 bits for 2 extension groups
-		extBitmap := []bool{ie.quantityConfigEUTRA != nil, ie.quantityConfigUTRA_FDD_r16 != nil || ie.quantityConfigCLI_r16 != nil}
+		extBitmap := []bool{ie.QuantityConfigEUTRA != nil, ie.QuantityConfigUTRA_FDD_r16 != nil || ie.QuantityConfigCLI_r16 != nil}
 		if err := w.WriteExtBitMap(extBitmap); err != nil {
 			return utils.WrapError("WriteExtBitMap QuantityConfig", err)
 		}
@@ -45,17 +45,17 @@ func (ie *QuantityConfig) Encode(w *uper.UperWriter) error {
 			extWriter := uper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 1
-			optionals_ext_1 := []bool{ie.quantityConfigEUTRA != nil}
+			optionals_ext_1 := []bool{ie.QuantityConfigEUTRA != nil}
 			for _, bit := range optionals_ext_1 {
 				if err := extWriter.WriteBool(bit); err != nil {
 					return err
 				}
 			}
 
-			// encode quantityConfigEUTRA optional
-			if ie.quantityConfigEUTRA != nil {
-				if err = ie.quantityConfigEUTRA.Encode(extWriter); err != nil {
-					return utils.WrapError("Encode quantityConfigEUTRA", err)
+			// encode QuantityConfigEUTRA optional
+			if ie.QuantityConfigEUTRA != nil {
+				if err = ie.QuantityConfigEUTRA.Encode(extWriter); err != nil {
+					return utils.WrapError("Encode QuantityConfigEUTRA", err)
 				}
 			}
 
@@ -74,23 +74,23 @@ func (ie *QuantityConfig) Encode(w *uper.UperWriter) error {
 			extWriter := uper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 2
-			optionals_ext_2 := []bool{ie.quantityConfigUTRA_FDD_r16 != nil, ie.quantityConfigCLI_r16 != nil}
+			optionals_ext_2 := []bool{ie.QuantityConfigUTRA_FDD_r16 != nil, ie.QuantityConfigCLI_r16 != nil}
 			for _, bit := range optionals_ext_2 {
 				if err := extWriter.WriteBool(bit); err != nil {
 					return err
 				}
 			}
 
-			// encode quantityConfigUTRA_FDD_r16 optional
-			if ie.quantityConfigUTRA_FDD_r16 != nil {
-				if err = ie.quantityConfigUTRA_FDD_r16.Encode(extWriter); err != nil {
-					return utils.WrapError("Encode quantityConfigUTRA_FDD_r16", err)
+			// encode QuantityConfigUTRA_FDD_r16 optional
+			if ie.QuantityConfigUTRA_FDD_r16 != nil {
+				if err = ie.QuantityConfigUTRA_FDD_r16.Encode(extWriter); err != nil {
+					return utils.WrapError("Encode QuantityConfigUTRA_FDD_r16", err)
 				}
 			}
-			// encode quantityConfigCLI_r16 optional
-			if ie.quantityConfigCLI_r16 != nil {
-				if err = ie.quantityConfigCLI_r16.Encode(extWriter); err != nil {
-					return utils.WrapError("Encode quantityConfigCLI_r16", err)
+			// encode QuantityConfigCLI_r16 optional
+			if ie.QuantityConfigCLI_r16 != nil {
+				if err = ie.QuantityConfigCLI_r16.Encode(extWriter); err != nil {
+					return utils.WrapError("Encode QuantityConfigCLI_r16", err)
 				}
 			}
 
@@ -112,21 +112,21 @@ func (ie *QuantityConfig) Decode(r *uper.UperReader) error {
 	if extensionBit, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var quantityConfigNR_ListPresent bool
-	if quantityConfigNR_ListPresent, err = r.ReadBool(); err != nil {
+	var QuantityConfigNR_ListPresent bool
+	if QuantityConfigNR_ListPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	if quantityConfigNR_ListPresent {
-		tmp_quantityConfigNR_List := utils.NewSequence[*QuantityConfigNR]([]*QuantityConfigNR{}, uper.Constraint{Lb: 1, Ub: maxNrofQuantityConfig}, false)
-		fn_quantityConfigNR_List := func() *QuantityConfigNR {
+	if QuantityConfigNR_ListPresent {
+		tmp_QuantityConfigNR_List := utils.NewSequence[*QuantityConfigNR]([]*QuantityConfigNR{}, uper.Constraint{Lb: 1, Ub: maxNrofQuantityConfig}, false)
+		fn_QuantityConfigNR_List := func() *QuantityConfigNR {
 			return new(QuantityConfigNR)
 		}
-		if err = tmp_quantityConfigNR_List.Decode(r, fn_quantityConfigNR_List); err != nil {
-			return utils.WrapError("Decode quantityConfigNR_List", err)
+		if err = tmp_QuantityConfigNR_List.Decode(r, fn_QuantityConfigNR_List); err != nil {
+			return utils.WrapError("Decode QuantityConfigNR_List", err)
 		}
-		ie.quantityConfigNR_List = []QuantityConfigNR{}
-		for _, i := range tmp_quantityConfigNR_List.Value {
-			ie.quantityConfigNR_List = append(ie.quantityConfigNR_List, *i)
+		ie.QuantityConfigNR_List = []QuantityConfigNR{}
+		for _, i := range tmp_QuantityConfigNR_List.Value {
+			ie.QuantityConfigNR_List = append(ie.QuantityConfigNR_List, *i)
 		}
 	}
 
@@ -146,15 +146,15 @@ func (ie *QuantityConfig) Decode(r *uper.UperReader) error {
 
 			extReader := uper.NewReader(bytes.NewReader(extBytes))
 
-			quantityConfigEUTRAPresent, err := extReader.ReadBool()
+			QuantityConfigEUTRAPresent, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			// decode quantityConfigEUTRA optional
-			if quantityConfigEUTRAPresent {
-				ie.quantityConfigEUTRA = new(FilterConfig)
-				if err = ie.quantityConfigEUTRA.Decode(extReader); err != nil {
-					return utils.WrapError("Decode quantityConfigEUTRA", err)
+			// decode QuantityConfigEUTRA optional
+			if QuantityConfigEUTRAPresent {
+				ie.QuantityConfigEUTRA = new(FilterConfig)
+				if err = ie.QuantityConfigEUTRA.Decode(extReader); err != nil {
+					return utils.WrapError("Decode QuantityConfigEUTRA", err)
 				}
 			}
 		}
@@ -167,26 +167,26 @@ func (ie *QuantityConfig) Decode(r *uper.UperReader) error {
 
 			extReader := uper.NewReader(bytes.NewReader(extBytes))
 
-			quantityConfigUTRA_FDD_r16Present, err := extReader.ReadBool()
+			QuantityConfigUTRA_FDD_r16Present, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			quantityConfigCLI_r16Present, err := extReader.ReadBool()
+			QuantityConfigCLI_r16Present, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			// decode quantityConfigUTRA_FDD_r16 optional
-			if quantityConfigUTRA_FDD_r16Present {
-				ie.quantityConfigUTRA_FDD_r16 = new(QuantityConfigUTRA_FDD_r16)
-				if err = ie.quantityConfigUTRA_FDD_r16.Decode(extReader); err != nil {
-					return utils.WrapError("Decode quantityConfigUTRA_FDD_r16", err)
+			// decode QuantityConfigUTRA_FDD_r16 optional
+			if QuantityConfigUTRA_FDD_r16Present {
+				ie.QuantityConfigUTRA_FDD_r16 = new(QuantityConfigUTRA_FDD_r16)
+				if err = ie.QuantityConfigUTRA_FDD_r16.Decode(extReader); err != nil {
+					return utils.WrapError("Decode QuantityConfigUTRA_FDD_r16", err)
 				}
 			}
-			// decode quantityConfigCLI_r16 optional
-			if quantityConfigCLI_r16Present {
-				ie.quantityConfigCLI_r16 = new(FilterConfigCLI_r16)
-				if err = ie.quantityConfigCLI_r16.Decode(extReader); err != nil {
-					return utils.WrapError("Decode quantityConfigCLI_r16", err)
+			// decode QuantityConfigCLI_r16 optional
+			if QuantityConfigCLI_r16Present {
+				ie.QuantityConfigCLI_r16 = new(FilterConfigCLI_r16)
+				if err = ie.QuantityConfigCLI_r16.Decode(extReader); err != nil {
+					return utils.WrapError("Decode QuantityConfigCLI_r16", err)
 				}
 			}
 		}

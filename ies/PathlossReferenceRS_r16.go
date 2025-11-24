@@ -6,28 +6,28 @@ import (
 )
 
 type PathlossReferenceRS_r16 struct {
-	srs_PathlossReferenceRS_Id_r16 SRS_PathlossReferenceRS_Id_r16 `madatory`
-	pathlossReferenceRS_r16        PathlossReferenceRS_Config     `madatory`
+	Srs_PathlossReferenceRS_Id_r16 SRS_PathlossReferenceRS_Id_r16 `madatory`
+	PathlossReferenceRS_r16        PathlossReferenceRS_Config     `madatory`
 }
 
 func (ie *PathlossReferenceRS_r16) Encode(w *uper.UperWriter) error {
 	var err error
-	if err = ie.srs_PathlossReferenceRS_Id_r16.Encode(w); err != nil {
-		return utils.WrapError("Encode srs_PathlossReferenceRS_Id_r16", err)
+	if err = ie.Srs_PathlossReferenceRS_Id_r16.Encode(w); err != nil {
+		return utils.WrapError("Encode Srs_PathlossReferenceRS_Id_r16", err)
 	}
-	if err = ie.pathlossReferenceRS_r16.Encode(w); err != nil {
-		return utils.WrapError("Encode pathlossReferenceRS_r16", err)
+	if err = ie.PathlossReferenceRS_r16.Encode(w); err != nil {
+		return utils.WrapError("Encode PathlossReferenceRS_r16", err)
 	}
 	return nil
 }
 
 func (ie *PathlossReferenceRS_r16) Decode(r *uper.UperReader) error {
 	var err error
-	if err = ie.srs_PathlossReferenceRS_Id_r16.Decode(r); err != nil {
-		return utils.WrapError("Decode srs_PathlossReferenceRS_Id_r16", err)
+	if err = ie.Srs_PathlossReferenceRS_Id_r16.Decode(r); err != nil {
+		return utils.WrapError("Decode Srs_PathlossReferenceRS_Id_r16", err)
 	}
-	if err = ie.pathlossReferenceRS_r16.Decode(r); err != nil {
-		return utils.WrapError("Decode pathlossReferenceRS_r16", err)
+	if err = ie.PathlossReferenceRS_r16.Decode(r); err != nil {
+		return utils.WrapError("Decode PathlossReferenceRS_r16", err)
 	}
 	return nil
 }

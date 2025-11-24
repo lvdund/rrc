@@ -6,24 +6,24 @@ import (
 )
 
 type SecurityAlgorithmConfig struct {
-	cipheringAlgorithm     CipheringAlgorithm      `madatory`
-	integrityProtAlgorithm *IntegrityProtAlgorithm `optional`
+	CipheringAlgorithm     CipheringAlgorithm      `madatory`
+	IntegrityProtAlgorithm *IntegrityProtAlgorithm `optional`
 }
 
 func (ie *SecurityAlgorithmConfig) Encode(w *uper.UperWriter) error {
 	var err error
-	preambleBits := []bool{ie.integrityProtAlgorithm != nil}
+	preambleBits := []bool{ie.IntegrityProtAlgorithm != nil}
 	for _, bit := range preambleBits {
 		if err = w.WriteBool(bit); err != nil {
 			return err
 		}
 	}
-	if err = ie.cipheringAlgorithm.Encode(w); err != nil {
-		return utils.WrapError("Encode cipheringAlgorithm", err)
+	if err = ie.CipheringAlgorithm.Encode(w); err != nil {
+		return utils.WrapError("Encode CipheringAlgorithm", err)
 	}
-	if ie.integrityProtAlgorithm != nil {
-		if err = ie.integrityProtAlgorithm.Encode(w); err != nil {
-			return utils.WrapError("Encode integrityProtAlgorithm", err)
+	if ie.IntegrityProtAlgorithm != nil {
+		if err = ie.IntegrityProtAlgorithm.Encode(w); err != nil {
+			return utils.WrapError("Encode IntegrityProtAlgorithm", err)
 		}
 	}
 	return nil
@@ -31,17 +31,17 @@ func (ie *SecurityAlgorithmConfig) Encode(w *uper.UperWriter) error {
 
 func (ie *SecurityAlgorithmConfig) Decode(r *uper.UperReader) error {
 	var err error
-	var integrityProtAlgorithmPresent bool
-	if integrityProtAlgorithmPresent, err = r.ReadBool(); err != nil {
+	var IntegrityProtAlgorithmPresent bool
+	if IntegrityProtAlgorithmPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	if err = ie.cipheringAlgorithm.Decode(r); err != nil {
-		return utils.WrapError("Decode cipheringAlgorithm", err)
+	if err = ie.CipheringAlgorithm.Decode(r); err != nil {
+		return utils.WrapError("Decode CipheringAlgorithm", err)
 	}
-	if integrityProtAlgorithmPresent {
-		ie.integrityProtAlgorithm = new(IntegrityProtAlgorithm)
-		if err = ie.integrityProtAlgorithm.Decode(r); err != nil {
-			return utils.WrapError("Decode integrityProtAlgorithm", err)
+	if IntegrityProtAlgorithmPresent {
+		ie.IntegrityProtAlgorithm = new(IntegrityProtAlgorithm)
+		if err = ie.IntegrityProtAlgorithm.Decode(r); err != nil {
+			return utils.WrapError("Decode IntegrityProtAlgorithm", err)
 		}
 	}
 	return nil

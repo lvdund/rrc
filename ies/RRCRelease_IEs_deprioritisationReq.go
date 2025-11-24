@@ -6,28 +6,28 @@ import (
 )
 
 type RRCRelease_IEs_deprioritisationReq struct {
-	deprioritisationType  RRCRelease_IEs_deprioritisationReq_deprioritisationType  `madatory`
-	deprioritisationTimer RRCRelease_IEs_deprioritisationReq_deprioritisationTimer `madatory`
+	DeprioritisationType  RRCRelease_IEs_deprioritisationReq_deprioritisationType  `madatory`
+	DeprioritisationTimer RRCRelease_IEs_deprioritisationReq_deprioritisationTimer `madatory`
 }
 
 func (ie *RRCRelease_IEs_deprioritisationReq) Encode(w *uper.UperWriter) error {
 	var err error
-	if err = ie.deprioritisationType.Encode(w); err != nil {
-		return utils.WrapError("Encode deprioritisationType", err)
+	if err = ie.DeprioritisationType.Encode(w); err != nil {
+		return utils.WrapError("Encode DeprioritisationType", err)
 	}
-	if err = ie.deprioritisationTimer.Encode(w); err != nil {
-		return utils.WrapError("Encode deprioritisationTimer", err)
+	if err = ie.DeprioritisationTimer.Encode(w); err != nil {
+		return utils.WrapError("Encode DeprioritisationTimer", err)
 	}
 	return nil
 }
 
 func (ie *RRCRelease_IEs_deprioritisationReq) Decode(r *uper.UperReader) error {
 	var err error
-	if err = ie.deprioritisationType.Decode(r); err != nil {
-		return utils.WrapError("Decode deprioritisationType", err)
+	if err = ie.DeprioritisationType.Decode(r); err != nil {
+		return utils.WrapError("Decode DeprioritisationType", err)
 	}
-	if err = ie.deprioritisationTimer.Decode(r); err != nil {
-		return utils.WrapError("Decode deprioritisationTimer", err)
+	if err = ie.DeprioritisationTimer.Decode(r); err != nil {
+		return utils.WrapError("Decode DeprioritisationTimer", err)
 	}
 	return nil
 }

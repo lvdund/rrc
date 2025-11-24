@@ -9,14 +9,14 @@ import (
 
 const (
 	CSI_ReportConfig_groupBasedBeamReporting_Choice_nothing uint64 = iota
-	CSI_ReportConfig_groupBasedBeamReporting_Choice_enabled
-	CSI_ReportConfig_groupBasedBeamReporting_Choice_disabled
+	CSI_ReportConfig_groupBasedBeamReporting_Choice_Enabled
+	CSI_ReportConfig_groupBasedBeamReporting_Choice_Disabled
 )
 
 type CSI_ReportConfig_groupBasedBeamReporting struct {
 	Choice   uint64
-	enabled  uper.NULL `madatory`
-	disabled *CSI_ReportConfig_groupBasedBeamReporting_disabled
+	Enabled  uper.NULL `madatory`
+	Disabled *CSI_ReportConfig_groupBasedBeamReporting_disabled
 }
 
 func (ie *CSI_ReportConfig_groupBasedBeamReporting) Encode(w *uper.UperWriter) error {
@@ -25,13 +25,13 @@ func (ie *CSI_ReportConfig_groupBasedBeamReporting) Encode(w *uper.UperWriter) e
 		return err
 	}
 	switch ie.Choice {
-	case CSI_ReportConfig_groupBasedBeamReporting_Choice_enabled:
+	case CSI_ReportConfig_groupBasedBeamReporting_Choice_Enabled:
 		if err := w.WriteNull(); err != nil {
-			err = utils.WrapError("Encode enabled", err)
+			err = utils.WrapError("Encode Enabled", err)
 		}
-	case CSI_ReportConfig_groupBasedBeamReporting_Choice_disabled:
-		if err = ie.disabled.Encode(w); err != nil {
-			err = utils.WrapError("Encode disabled", err)
+	case CSI_ReportConfig_groupBasedBeamReporting_Choice_Disabled:
+		if err = ie.Disabled.Encode(w); err != nil {
+			err = utils.WrapError("Encode Disabled", err)
 		}
 	default:
 		err = fmt.Errorf("invalid choice: %d", ie.Choice)
@@ -45,14 +45,14 @@ func (ie *CSI_ReportConfig_groupBasedBeamReporting) Decode(r *uper.UperReader) e
 		return err
 	}
 	switch ie.Choice {
-	case CSI_ReportConfig_groupBasedBeamReporting_Choice_enabled:
+	case CSI_ReportConfig_groupBasedBeamReporting_Choice_Enabled:
 		if err := r.ReadNull(); err != nil {
-			return utils.WrapError("Decode enabled", err)
+			return utils.WrapError("Decode Enabled", err)
 		}
-	case CSI_ReportConfig_groupBasedBeamReporting_Choice_disabled:
-		ie.disabled = new(CSI_ReportConfig_groupBasedBeamReporting_disabled)
-		if err = ie.disabled.Decode(r); err != nil {
-			return utils.WrapError("Decode disabled", err)
+	case CSI_ReportConfig_groupBasedBeamReporting_Choice_Disabled:
+		ie.Disabled = new(CSI_ReportConfig_groupBasedBeamReporting_disabled)
+		if err = ie.Disabled.Decode(r); err != nil {
+			return utils.WrapError("Decode Disabled", err)
 		}
 	default:
 		return fmt.Errorf("invalid choice: %d", ie.Choice)

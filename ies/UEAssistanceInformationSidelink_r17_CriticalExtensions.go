@@ -9,14 +9,14 @@ import (
 
 const (
 	UEAssistanceInformationSidelink_r17_CriticalExtensions_Choice_nothing uint64 = iota
-	UEAssistanceInformationSidelink_r17_CriticalExtensions_Choice_ueAssistanceInformationSidelink_r17
-	UEAssistanceInformationSidelink_r17_CriticalExtensions_Choice_criticalExtensionsFuture
+	UEAssistanceInformationSidelink_r17_CriticalExtensions_Choice_UeAssistanceInformationSidelink_r17
+	UEAssistanceInformationSidelink_r17_CriticalExtensions_Choice_CriticalExtensionsFuture
 )
 
 type UEAssistanceInformationSidelink_r17_CriticalExtensions struct {
 	Choice                              uint64
-	ueAssistanceInformationSidelink_r17 *UEAssistanceInformationSidelink_r17_IEs
-	criticalExtensionsFuture            interface{} `madatory`
+	UeAssistanceInformationSidelink_r17 *UEAssistanceInformationSidelink_r17_IEs
+	CriticalExtensionsFuture            interface{} `madatory`
 }
 
 func (ie *UEAssistanceInformationSidelink_r17_CriticalExtensions) Encode(w *uper.UperWriter) error {
@@ -25,11 +25,11 @@ func (ie *UEAssistanceInformationSidelink_r17_CriticalExtensions) Encode(w *uper
 		return err
 	}
 	switch ie.Choice {
-	case UEAssistanceInformationSidelink_r17_CriticalExtensions_Choice_ueAssistanceInformationSidelink_r17:
-		if err = ie.ueAssistanceInformationSidelink_r17.Encode(w); err != nil {
-			err = utils.WrapError("Encode ueAssistanceInformationSidelink_r17", err)
+	case UEAssistanceInformationSidelink_r17_CriticalExtensions_Choice_UeAssistanceInformationSidelink_r17:
+		if err = ie.UeAssistanceInformationSidelink_r17.Encode(w); err != nil {
+			err = utils.WrapError("Encode UeAssistanceInformationSidelink_r17", err)
 		}
-	case UEAssistanceInformationSidelink_r17_CriticalExtensions_Choice_criticalExtensionsFuture:
+	case UEAssistanceInformationSidelink_r17_CriticalExtensions_Choice_CriticalExtensionsFuture:
 		// interface{} field of choice - nothing to encode
 	default:
 		err = fmt.Errorf("invalid choice: %d", ie.Choice)
@@ -43,12 +43,12 @@ func (ie *UEAssistanceInformationSidelink_r17_CriticalExtensions) Decode(r *uper
 		return err
 	}
 	switch ie.Choice {
-	case UEAssistanceInformationSidelink_r17_CriticalExtensions_Choice_ueAssistanceInformationSidelink_r17:
-		ie.ueAssistanceInformationSidelink_r17 = new(UEAssistanceInformationSidelink_r17_IEs)
-		if err = ie.ueAssistanceInformationSidelink_r17.Decode(r); err != nil {
-			return utils.WrapError("Decode ueAssistanceInformationSidelink_r17", err)
+	case UEAssistanceInformationSidelink_r17_CriticalExtensions_Choice_UeAssistanceInformationSidelink_r17:
+		ie.UeAssistanceInformationSidelink_r17 = new(UEAssistanceInformationSidelink_r17_IEs)
+		if err = ie.UeAssistanceInformationSidelink_r17.Decode(r); err != nil {
+			return utils.WrapError("Decode UeAssistanceInformationSidelink_r17", err)
 		}
-	case UEAssistanceInformationSidelink_r17_CriticalExtensions_Choice_criticalExtensionsFuture:
+	case UEAssistanceInformationSidelink_r17_CriticalExtensions_Choice_CriticalExtensionsFuture:
 		// interface{} field of choice - nothing to decode
 	default:
 		return fmt.Errorf("invalid choice: %d", ie.Choice)

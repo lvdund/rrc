@@ -9,16 +9,16 @@ import (
 
 const (
 	MeasTriggerQuantity_Choice_nothing uint64 = iota
-	MeasTriggerQuantity_Choice_rsrp
-	MeasTriggerQuantity_Choice_rsrq
-	MeasTriggerQuantity_Choice_sinr
+	MeasTriggerQuantity_Choice_Rsrp
+	MeasTriggerQuantity_Choice_Rsrq
+	MeasTriggerQuantity_Choice_Sinr
 )
 
 type MeasTriggerQuantity struct {
 	Choice uint64
-	rsrp   *RSRP_Range
-	rsrq   *RSRQ_Range
-	sinr   *SINR_Range
+	Rsrp   *RSRP_Range
+	Rsrq   *RSRQ_Range
+	Sinr   *SINR_Range
 }
 
 func (ie *MeasTriggerQuantity) Encode(w *uper.UperWriter) error {
@@ -27,17 +27,17 @@ func (ie *MeasTriggerQuantity) Encode(w *uper.UperWriter) error {
 		return err
 	}
 	switch ie.Choice {
-	case MeasTriggerQuantity_Choice_rsrp:
-		if err = ie.rsrp.Encode(w); err != nil {
-			err = utils.WrapError("Encode rsrp", err)
+	case MeasTriggerQuantity_Choice_Rsrp:
+		if err = ie.Rsrp.Encode(w); err != nil {
+			err = utils.WrapError("Encode Rsrp", err)
 		}
-	case MeasTriggerQuantity_Choice_rsrq:
-		if err = ie.rsrq.Encode(w); err != nil {
-			err = utils.WrapError("Encode rsrq", err)
+	case MeasTriggerQuantity_Choice_Rsrq:
+		if err = ie.Rsrq.Encode(w); err != nil {
+			err = utils.WrapError("Encode Rsrq", err)
 		}
-	case MeasTriggerQuantity_Choice_sinr:
-		if err = ie.sinr.Encode(w); err != nil {
-			err = utils.WrapError("Encode sinr", err)
+	case MeasTriggerQuantity_Choice_Sinr:
+		if err = ie.Sinr.Encode(w); err != nil {
+			err = utils.WrapError("Encode Sinr", err)
 		}
 	default:
 		err = fmt.Errorf("invalid choice: %d", ie.Choice)
@@ -51,20 +51,20 @@ func (ie *MeasTriggerQuantity) Decode(r *uper.UperReader) error {
 		return err
 	}
 	switch ie.Choice {
-	case MeasTriggerQuantity_Choice_rsrp:
-		ie.rsrp = new(RSRP_Range)
-		if err = ie.rsrp.Decode(r); err != nil {
-			return utils.WrapError("Decode rsrp", err)
+	case MeasTriggerQuantity_Choice_Rsrp:
+		ie.Rsrp = new(RSRP_Range)
+		if err = ie.Rsrp.Decode(r); err != nil {
+			return utils.WrapError("Decode Rsrp", err)
 		}
-	case MeasTriggerQuantity_Choice_rsrq:
-		ie.rsrq = new(RSRQ_Range)
-		if err = ie.rsrq.Decode(r); err != nil {
-			return utils.WrapError("Decode rsrq", err)
+	case MeasTriggerQuantity_Choice_Rsrq:
+		ie.Rsrq = new(RSRQ_Range)
+		if err = ie.Rsrq.Decode(r); err != nil {
+			return utils.WrapError("Decode Rsrq", err)
 		}
-	case MeasTriggerQuantity_Choice_sinr:
-		ie.sinr = new(SINR_Range)
-		if err = ie.sinr.Decode(r); err != nil {
-			return utils.WrapError("Decode sinr", err)
+	case MeasTriggerQuantity_Choice_Sinr:
+		ie.Sinr = new(SINR_Range)
+		if err = ie.Sinr.Decode(r); err != nil {
+			return utils.WrapError("Decode Sinr", err)
 		}
 	default:
 		return fmt.Errorf("invalid choice: %d", ie.Choice)

@@ -6,68 +6,68 @@ import (
 )
 
 type RRCResumeComplete_v1610_IEs struct {
-	idleMeasAvailable_r16        *RRCResumeComplete_v1610_IEs_idleMeasAvailable_r16    `optional`
-	measResultIdleEUTRA_r16      *MeasResultIdleEUTRA_r16                              `optional`
-	measResultIdleNR_r16         *MeasResultIdleNR_r16                                 `optional`
-	scg_Response_r16             *RRCResumeComplete_v1610_IEs_scg_Response_r16         `optional`
-	ue_MeasurementsAvailable_r16 *UE_MeasurementsAvailable_r16                         `optional`
-	mobilityHistoryAvail_r16     *RRCResumeComplete_v1610_IEs_mobilityHistoryAvail_r16 `optional`
-	mobilityState_r16            *RRCResumeComplete_v1610_IEs_mobilityState_r16        `optional`
-	needForGapsInfoNR_r16        *NeedForGapsInfoNR_r16                                `optional`
-	nonCriticalExtension         *RRCResumeComplete_v1640_IEs                          `optional`
+	IdleMeasAvailable_r16        *RRCResumeComplete_v1610_IEs_idleMeasAvailable_r16    `optional`
+	MeasResultIdleEUTRA_r16      *MeasResultIdleEUTRA_r16                              `optional`
+	MeasResultIdleNR_r16         *MeasResultIdleNR_r16                                 `optional`
+	Scg_Response_r16             *RRCResumeComplete_v1610_IEs_scg_Response_r16         `optional`
+	Ue_MeasurementsAvailable_r16 *UE_MeasurementsAvailable_r16                         `optional`
+	MobilityHistoryAvail_r16     *RRCResumeComplete_v1610_IEs_mobilityHistoryAvail_r16 `optional`
+	MobilityState_r16            *RRCResumeComplete_v1610_IEs_mobilityState_r16        `optional`
+	NeedForGapsInfoNR_r16        *NeedForGapsInfoNR_r16                                `optional`
+	NonCriticalExtension         *RRCResumeComplete_v1640_IEs                          `optional`
 }
 
 func (ie *RRCResumeComplete_v1610_IEs) Encode(w *uper.UperWriter) error {
 	var err error
-	preambleBits := []bool{ie.idleMeasAvailable_r16 != nil, ie.measResultIdleEUTRA_r16 != nil, ie.measResultIdleNR_r16 != nil, ie.scg_Response_r16 != nil, ie.ue_MeasurementsAvailable_r16 != nil, ie.mobilityHistoryAvail_r16 != nil, ie.mobilityState_r16 != nil, ie.needForGapsInfoNR_r16 != nil, ie.nonCriticalExtension != nil}
+	preambleBits := []bool{ie.IdleMeasAvailable_r16 != nil, ie.MeasResultIdleEUTRA_r16 != nil, ie.MeasResultIdleNR_r16 != nil, ie.Scg_Response_r16 != nil, ie.Ue_MeasurementsAvailable_r16 != nil, ie.MobilityHistoryAvail_r16 != nil, ie.MobilityState_r16 != nil, ie.NeedForGapsInfoNR_r16 != nil, ie.NonCriticalExtension != nil}
 	for _, bit := range preambleBits {
 		if err = w.WriteBool(bit); err != nil {
 			return err
 		}
 	}
-	if ie.idleMeasAvailable_r16 != nil {
-		if err = ie.idleMeasAvailable_r16.Encode(w); err != nil {
-			return utils.WrapError("Encode idleMeasAvailable_r16", err)
+	if ie.IdleMeasAvailable_r16 != nil {
+		if err = ie.IdleMeasAvailable_r16.Encode(w); err != nil {
+			return utils.WrapError("Encode IdleMeasAvailable_r16", err)
 		}
 	}
-	if ie.measResultIdleEUTRA_r16 != nil {
-		if err = ie.measResultIdleEUTRA_r16.Encode(w); err != nil {
-			return utils.WrapError("Encode measResultIdleEUTRA_r16", err)
+	if ie.MeasResultIdleEUTRA_r16 != nil {
+		if err = ie.MeasResultIdleEUTRA_r16.Encode(w); err != nil {
+			return utils.WrapError("Encode MeasResultIdleEUTRA_r16", err)
 		}
 	}
-	if ie.measResultIdleNR_r16 != nil {
-		if err = ie.measResultIdleNR_r16.Encode(w); err != nil {
-			return utils.WrapError("Encode measResultIdleNR_r16", err)
+	if ie.MeasResultIdleNR_r16 != nil {
+		if err = ie.MeasResultIdleNR_r16.Encode(w); err != nil {
+			return utils.WrapError("Encode MeasResultIdleNR_r16", err)
 		}
 	}
-	if ie.scg_Response_r16 != nil {
-		if err = ie.scg_Response_r16.Encode(w); err != nil {
-			return utils.WrapError("Encode scg_Response_r16", err)
+	if ie.Scg_Response_r16 != nil {
+		if err = ie.Scg_Response_r16.Encode(w); err != nil {
+			return utils.WrapError("Encode Scg_Response_r16", err)
 		}
 	}
-	if ie.ue_MeasurementsAvailable_r16 != nil {
-		if err = ie.ue_MeasurementsAvailable_r16.Encode(w); err != nil {
-			return utils.WrapError("Encode ue_MeasurementsAvailable_r16", err)
+	if ie.Ue_MeasurementsAvailable_r16 != nil {
+		if err = ie.Ue_MeasurementsAvailable_r16.Encode(w); err != nil {
+			return utils.WrapError("Encode Ue_MeasurementsAvailable_r16", err)
 		}
 	}
-	if ie.mobilityHistoryAvail_r16 != nil {
-		if err = ie.mobilityHistoryAvail_r16.Encode(w); err != nil {
-			return utils.WrapError("Encode mobilityHistoryAvail_r16", err)
+	if ie.MobilityHistoryAvail_r16 != nil {
+		if err = ie.MobilityHistoryAvail_r16.Encode(w); err != nil {
+			return utils.WrapError("Encode MobilityHistoryAvail_r16", err)
 		}
 	}
-	if ie.mobilityState_r16 != nil {
-		if err = ie.mobilityState_r16.Encode(w); err != nil {
-			return utils.WrapError("Encode mobilityState_r16", err)
+	if ie.MobilityState_r16 != nil {
+		if err = ie.MobilityState_r16.Encode(w); err != nil {
+			return utils.WrapError("Encode MobilityState_r16", err)
 		}
 	}
-	if ie.needForGapsInfoNR_r16 != nil {
-		if err = ie.needForGapsInfoNR_r16.Encode(w); err != nil {
-			return utils.WrapError("Encode needForGapsInfoNR_r16", err)
+	if ie.NeedForGapsInfoNR_r16 != nil {
+		if err = ie.NeedForGapsInfoNR_r16.Encode(w); err != nil {
+			return utils.WrapError("Encode NeedForGapsInfoNR_r16", err)
 		}
 	}
-	if ie.nonCriticalExtension != nil {
-		if err = ie.nonCriticalExtension.Encode(w); err != nil {
-			return utils.WrapError("Encode nonCriticalExtension", err)
+	if ie.NonCriticalExtension != nil {
+		if err = ie.NonCriticalExtension.Encode(w); err != nil {
+			return utils.WrapError("Encode NonCriticalExtension", err)
 		}
 	}
 	return nil
@@ -75,94 +75,94 @@ func (ie *RRCResumeComplete_v1610_IEs) Encode(w *uper.UperWriter) error {
 
 func (ie *RRCResumeComplete_v1610_IEs) Decode(r *uper.UperReader) error {
 	var err error
-	var idleMeasAvailable_r16Present bool
-	if idleMeasAvailable_r16Present, err = r.ReadBool(); err != nil {
+	var IdleMeasAvailable_r16Present bool
+	if IdleMeasAvailable_r16Present, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var measResultIdleEUTRA_r16Present bool
-	if measResultIdleEUTRA_r16Present, err = r.ReadBool(); err != nil {
+	var MeasResultIdleEUTRA_r16Present bool
+	if MeasResultIdleEUTRA_r16Present, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var measResultIdleNR_r16Present bool
-	if measResultIdleNR_r16Present, err = r.ReadBool(); err != nil {
+	var MeasResultIdleNR_r16Present bool
+	if MeasResultIdleNR_r16Present, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var scg_Response_r16Present bool
-	if scg_Response_r16Present, err = r.ReadBool(); err != nil {
+	var Scg_Response_r16Present bool
+	if Scg_Response_r16Present, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var ue_MeasurementsAvailable_r16Present bool
-	if ue_MeasurementsAvailable_r16Present, err = r.ReadBool(); err != nil {
+	var Ue_MeasurementsAvailable_r16Present bool
+	if Ue_MeasurementsAvailable_r16Present, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var mobilityHistoryAvail_r16Present bool
-	if mobilityHistoryAvail_r16Present, err = r.ReadBool(); err != nil {
+	var MobilityHistoryAvail_r16Present bool
+	if MobilityHistoryAvail_r16Present, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var mobilityState_r16Present bool
-	if mobilityState_r16Present, err = r.ReadBool(); err != nil {
+	var MobilityState_r16Present bool
+	if MobilityState_r16Present, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var needForGapsInfoNR_r16Present bool
-	if needForGapsInfoNR_r16Present, err = r.ReadBool(); err != nil {
+	var NeedForGapsInfoNR_r16Present bool
+	if NeedForGapsInfoNR_r16Present, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var nonCriticalExtensionPresent bool
-	if nonCriticalExtensionPresent, err = r.ReadBool(); err != nil {
+	var NonCriticalExtensionPresent bool
+	if NonCriticalExtensionPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	if idleMeasAvailable_r16Present {
-		ie.idleMeasAvailable_r16 = new(RRCResumeComplete_v1610_IEs_idleMeasAvailable_r16)
-		if err = ie.idleMeasAvailable_r16.Decode(r); err != nil {
-			return utils.WrapError("Decode idleMeasAvailable_r16", err)
+	if IdleMeasAvailable_r16Present {
+		ie.IdleMeasAvailable_r16 = new(RRCResumeComplete_v1610_IEs_idleMeasAvailable_r16)
+		if err = ie.IdleMeasAvailable_r16.Decode(r); err != nil {
+			return utils.WrapError("Decode IdleMeasAvailable_r16", err)
 		}
 	}
-	if measResultIdleEUTRA_r16Present {
-		ie.measResultIdleEUTRA_r16 = new(MeasResultIdleEUTRA_r16)
-		if err = ie.measResultIdleEUTRA_r16.Decode(r); err != nil {
-			return utils.WrapError("Decode measResultIdleEUTRA_r16", err)
+	if MeasResultIdleEUTRA_r16Present {
+		ie.MeasResultIdleEUTRA_r16 = new(MeasResultIdleEUTRA_r16)
+		if err = ie.MeasResultIdleEUTRA_r16.Decode(r); err != nil {
+			return utils.WrapError("Decode MeasResultIdleEUTRA_r16", err)
 		}
 	}
-	if measResultIdleNR_r16Present {
-		ie.measResultIdleNR_r16 = new(MeasResultIdleNR_r16)
-		if err = ie.measResultIdleNR_r16.Decode(r); err != nil {
-			return utils.WrapError("Decode measResultIdleNR_r16", err)
+	if MeasResultIdleNR_r16Present {
+		ie.MeasResultIdleNR_r16 = new(MeasResultIdleNR_r16)
+		if err = ie.MeasResultIdleNR_r16.Decode(r); err != nil {
+			return utils.WrapError("Decode MeasResultIdleNR_r16", err)
 		}
 	}
-	if scg_Response_r16Present {
-		ie.scg_Response_r16 = new(RRCResumeComplete_v1610_IEs_scg_Response_r16)
-		if err = ie.scg_Response_r16.Decode(r); err != nil {
-			return utils.WrapError("Decode scg_Response_r16", err)
+	if Scg_Response_r16Present {
+		ie.Scg_Response_r16 = new(RRCResumeComplete_v1610_IEs_scg_Response_r16)
+		if err = ie.Scg_Response_r16.Decode(r); err != nil {
+			return utils.WrapError("Decode Scg_Response_r16", err)
 		}
 	}
-	if ue_MeasurementsAvailable_r16Present {
-		ie.ue_MeasurementsAvailable_r16 = new(UE_MeasurementsAvailable_r16)
-		if err = ie.ue_MeasurementsAvailable_r16.Decode(r); err != nil {
-			return utils.WrapError("Decode ue_MeasurementsAvailable_r16", err)
+	if Ue_MeasurementsAvailable_r16Present {
+		ie.Ue_MeasurementsAvailable_r16 = new(UE_MeasurementsAvailable_r16)
+		if err = ie.Ue_MeasurementsAvailable_r16.Decode(r); err != nil {
+			return utils.WrapError("Decode Ue_MeasurementsAvailable_r16", err)
 		}
 	}
-	if mobilityHistoryAvail_r16Present {
-		ie.mobilityHistoryAvail_r16 = new(RRCResumeComplete_v1610_IEs_mobilityHistoryAvail_r16)
-		if err = ie.mobilityHistoryAvail_r16.Decode(r); err != nil {
-			return utils.WrapError("Decode mobilityHistoryAvail_r16", err)
+	if MobilityHistoryAvail_r16Present {
+		ie.MobilityHistoryAvail_r16 = new(RRCResumeComplete_v1610_IEs_mobilityHistoryAvail_r16)
+		if err = ie.MobilityHistoryAvail_r16.Decode(r); err != nil {
+			return utils.WrapError("Decode MobilityHistoryAvail_r16", err)
 		}
 	}
-	if mobilityState_r16Present {
-		ie.mobilityState_r16 = new(RRCResumeComplete_v1610_IEs_mobilityState_r16)
-		if err = ie.mobilityState_r16.Decode(r); err != nil {
-			return utils.WrapError("Decode mobilityState_r16", err)
+	if MobilityState_r16Present {
+		ie.MobilityState_r16 = new(RRCResumeComplete_v1610_IEs_mobilityState_r16)
+		if err = ie.MobilityState_r16.Decode(r); err != nil {
+			return utils.WrapError("Decode MobilityState_r16", err)
 		}
 	}
-	if needForGapsInfoNR_r16Present {
-		ie.needForGapsInfoNR_r16 = new(NeedForGapsInfoNR_r16)
-		if err = ie.needForGapsInfoNR_r16.Decode(r); err != nil {
-			return utils.WrapError("Decode needForGapsInfoNR_r16", err)
+	if NeedForGapsInfoNR_r16Present {
+		ie.NeedForGapsInfoNR_r16 = new(NeedForGapsInfoNR_r16)
+		if err = ie.NeedForGapsInfoNR_r16.Decode(r); err != nil {
+			return utils.WrapError("Decode NeedForGapsInfoNR_r16", err)
 		}
 	}
-	if nonCriticalExtensionPresent {
-		ie.nonCriticalExtension = new(RRCResumeComplete_v1640_IEs)
-		if err = ie.nonCriticalExtension.Decode(r); err != nil {
-			return utils.WrapError("Decode nonCriticalExtension", err)
+	if NonCriticalExtensionPresent {
+		ie.NonCriticalExtension = new(RRCResumeComplete_v1640_IEs)
+		if err = ie.NonCriticalExtension.Decode(r); err != nil {
+			return utils.WrapError("Decode NonCriticalExtension", err)
 		}
 	}
 	return nil

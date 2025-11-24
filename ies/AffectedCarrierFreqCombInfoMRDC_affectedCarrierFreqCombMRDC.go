@@ -6,43 +6,43 @@ import (
 )
 
 type AffectedCarrierFreqCombInfoMRDC_affectedCarrierFreqCombMRDC struct {
-	affectedCarrierFreqCombEUTRA *AffectedCarrierFreqCombEUTRA `optional`
-	affectedCarrierFreqCombNR    AffectedCarrierFreqCombNR     `madatory`
+	AffectedCarrierFreqCombEUTRA *AffectedCarrierFreqCombEUTRA `optional`
+	AffectedCarrierFreqCombNR    AffectedCarrierFreqCombNR     `madatory`
 }
 
 func (ie *AffectedCarrierFreqCombInfoMRDC_affectedCarrierFreqCombMRDC) Encode(w *uper.UperWriter) error {
 	var err error
-	preambleBits := []bool{ie.affectedCarrierFreqCombEUTRA != nil}
+	preambleBits := []bool{ie.AffectedCarrierFreqCombEUTRA != nil}
 	for _, bit := range preambleBits {
 		if err = w.WriteBool(bit); err != nil {
 			return err
 		}
 	}
-	if ie.affectedCarrierFreqCombEUTRA != nil {
-		if err = ie.affectedCarrierFreqCombEUTRA.Encode(w); err != nil {
-			return utils.WrapError("Encode affectedCarrierFreqCombEUTRA", err)
+	if ie.AffectedCarrierFreqCombEUTRA != nil {
+		if err = ie.AffectedCarrierFreqCombEUTRA.Encode(w); err != nil {
+			return utils.WrapError("Encode AffectedCarrierFreqCombEUTRA", err)
 		}
 	}
-	if err = ie.affectedCarrierFreqCombNR.Encode(w); err != nil {
-		return utils.WrapError("Encode affectedCarrierFreqCombNR", err)
+	if err = ie.AffectedCarrierFreqCombNR.Encode(w); err != nil {
+		return utils.WrapError("Encode AffectedCarrierFreqCombNR", err)
 	}
 	return nil
 }
 
 func (ie *AffectedCarrierFreqCombInfoMRDC_affectedCarrierFreqCombMRDC) Decode(r *uper.UperReader) error {
 	var err error
-	var affectedCarrierFreqCombEUTRAPresent bool
-	if affectedCarrierFreqCombEUTRAPresent, err = r.ReadBool(); err != nil {
+	var AffectedCarrierFreqCombEUTRAPresent bool
+	if AffectedCarrierFreqCombEUTRAPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	if affectedCarrierFreqCombEUTRAPresent {
-		ie.affectedCarrierFreqCombEUTRA = new(AffectedCarrierFreqCombEUTRA)
-		if err = ie.affectedCarrierFreqCombEUTRA.Decode(r); err != nil {
-			return utils.WrapError("Decode affectedCarrierFreqCombEUTRA", err)
+	if AffectedCarrierFreqCombEUTRAPresent {
+		ie.AffectedCarrierFreqCombEUTRA = new(AffectedCarrierFreqCombEUTRA)
+		if err = ie.AffectedCarrierFreqCombEUTRA.Decode(r); err != nil {
+			return utils.WrapError("Decode AffectedCarrierFreqCombEUTRA", err)
 		}
 	}
-	if err = ie.affectedCarrierFreqCombNR.Decode(r); err != nil {
-		return utils.WrapError("Decode affectedCarrierFreqCombNR", err)
+	if err = ie.AffectedCarrierFreqCombNR.Decode(r); err != nil {
+		return utils.WrapError("Decode AffectedCarrierFreqCombNR", err)
 	}
 	return nil
 }

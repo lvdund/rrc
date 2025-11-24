@@ -9,42 +9,42 @@ import (
 
 const (
 	UL_DCCH_MessageType_MessageClassExtension_C2_Choice_nothing uint64 = iota
-	UL_DCCH_MessageType_MessageClassExtension_C2_Choice_ulDedicatedMessageSegment_r16
-	UL_DCCH_MessageType_MessageClassExtension_C2_Choice_dedicatedSIBRequest_r16
-	UL_DCCH_MessageType_MessageClassExtension_C2_Choice_mcgFailureInformation_r16
-	UL_DCCH_MessageType_MessageClassExtension_C2_Choice_ueInformationResponse_r16
-	UL_DCCH_MessageType_MessageClassExtension_C2_Choice_sidelinkUEInformationNR_r16
-	UL_DCCH_MessageType_MessageClassExtension_C2_Choice_ulInformationTransferIRAT_r16
-	UL_DCCH_MessageType_MessageClassExtension_C2_Choice_iabOtherInformation_r16
-	UL_DCCH_MessageType_MessageClassExtension_C2_Choice_mbsInterestIndication_r17
-	UL_DCCH_MessageType_MessageClassExtension_C2_Choice_uePositioningAssistanceInfo_r17
-	UL_DCCH_MessageType_MessageClassExtension_C2_Choice_measurementReportAppLayer_r17
-	UL_DCCH_MessageType_MessageClassExtension_C2_Choice_spare6
-	UL_DCCH_MessageType_MessageClassExtension_C2_Choice_spare5
-	UL_DCCH_MessageType_MessageClassExtension_C2_Choice_spare4
-	UL_DCCH_MessageType_MessageClassExtension_C2_Choice_spare3
-	UL_DCCH_MessageType_MessageClassExtension_C2_Choice_spare2
-	UL_DCCH_MessageType_MessageClassExtension_C2_Choice_spare1
+	UL_DCCH_MessageType_MessageClassExtension_C2_Choice_UlDedicatedMessageSegment_r16
+	UL_DCCH_MessageType_MessageClassExtension_C2_Choice_DedicatedSIBRequest_r16
+	UL_DCCH_MessageType_MessageClassExtension_C2_Choice_McgFailureInformation_r16
+	UL_DCCH_MessageType_MessageClassExtension_C2_Choice_UeInformationResponse_r16
+	UL_DCCH_MessageType_MessageClassExtension_C2_Choice_SidelinkUEInformationNR_r16
+	UL_DCCH_MessageType_MessageClassExtension_C2_Choice_UlInformationTransferIRAT_r16
+	UL_DCCH_MessageType_MessageClassExtension_C2_Choice_IabOtherInformation_r16
+	UL_DCCH_MessageType_MessageClassExtension_C2_Choice_MbsInterestIndication_r17
+	UL_DCCH_MessageType_MessageClassExtension_C2_Choice_UePositioningAssistanceInfo_r17
+	UL_DCCH_MessageType_MessageClassExtension_C2_Choice_MeasurementReportAppLayer_r17
+	UL_DCCH_MessageType_MessageClassExtension_C2_Choice_Spare6
+	UL_DCCH_MessageType_MessageClassExtension_C2_Choice_Spare5
+	UL_DCCH_MessageType_MessageClassExtension_C2_Choice_Spare4
+	UL_DCCH_MessageType_MessageClassExtension_C2_Choice_Spare3
+	UL_DCCH_MessageType_MessageClassExtension_C2_Choice_Spare2
+	UL_DCCH_MessageType_MessageClassExtension_C2_Choice_Spare1
 )
 
 type UL_DCCH_MessageType_MessageClassExtension_C2 struct {
 	Choice                          uint64
-	ulDedicatedMessageSegment_r16   *ULDedicatedMessageSegment_r16
-	dedicatedSIBRequest_r16         *DedicatedSIBRequest_r16
-	mcgFailureInformation_r16       *MCGFailureInformation_r16
-	ueInformationResponse_r16       *UEInformationResponse_r16
-	sidelinkUEInformationNR_r16     *SidelinkUEInformationNR_r16
-	ulInformationTransferIRAT_r16   *ULInformationTransferIRAT_r16
-	iabOtherInformation_r16         *IABOtherInformation_r16
-	mbsInterestIndication_r17       *MBSInterestIndication_r17
-	uePositioningAssistanceInfo_r17 *UEPositioningAssistanceInfo_r17
-	measurementReportAppLayer_r17   *MeasurementReportAppLayer_r17
-	spare6                          uper.NULL `madatory`
-	spare5                          uper.NULL `madatory`
-	spare4                          uper.NULL `madatory`
-	spare3                          uper.NULL `madatory`
-	spare2                          uper.NULL `madatory`
-	spare1                          uper.NULL `madatory`
+	UlDedicatedMessageSegment_r16   *ULDedicatedMessageSegment_r16
+	DedicatedSIBRequest_r16         *DedicatedSIBRequest_r16
+	McgFailureInformation_r16       *MCGFailureInformation_r16
+	UeInformationResponse_r16       *UEInformationResponse_r16
+	SidelinkUEInformationNR_r16     *SidelinkUEInformationNR_r16
+	UlInformationTransferIRAT_r16   *ULInformationTransferIRAT_r16
+	IabOtherInformation_r16         *IABOtherInformation_r16
+	MbsInterestIndication_r17       *MBSInterestIndication_r17
+	UePositioningAssistanceInfo_r17 *UEPositioningAssistanceInfo_r17
+	MeasurementReportAppLayer_r17   *MeasurementReportAppLayer_r17
+	Spare6                          uper.NULL `madatory`
+	Spare5                          uper.NULL `madatory`
+	Spare4                          uper.NULL `madatory`
+	Spare3                          uper.NULL `madatory`
+	Spare2                          uper.NULL `madatory`
+	Spare1                          uper.NULL `madatory`
 }
 
 func (ie *UL_DCCH_MessageType_MessageClassExtension_C2) Encode(w *uper.UperWriter) error {
@@ -53,69 +53,69 @@ func (ie *UL_DCCH_MessageType_MessageClassExtension_C2) Encode(w *uper.UperWrite
 		return err
 	}
 	switch ie.Choice {
-	case UL_DCCH_MessageType_MessageClassExtension_C2_Choice_ulDedicatedMessageSegment_r16:
-		if err = ie.ulDedicatedMessageSegment_r16.Encode(w); err != nil {
-			err = utils.WrapError("Encode ulDedicatedMessageSegment_r16", err)
+	case UL_DCCH_MessageType_MessageClassExtension_C2_Choice_UlDedicatedMessageSegment_r16:
+		if err = ie.UlDedicatedMessageSegment_r16.Encode(w); err != nil {
+			err = utils.WrapError("Encode UlDedicatedMessageSegment_r16", err)
 		}
-	case UL_DCCH_MessageType_MessageClassExtension_C2_Choice_dedicatedSIBRequest_r16:
-		if err = ie.dedicatedSIBRequest_r16.Encode(w); err != nil {
-			err = utils.WrapError("Encode dedicatedSIBRequest_r16", err)
+	case UL_DCCH_MessageType_MessageClassExtension_C2_Choice_DedicatedSIBRequest_r16:
+		if err = ie.DedicatedSIBRequest_r16.Encode(w); err != nil {
+			err = utils.WrapError("Encode DedicatedSIBRequest_r16", err)
 		}
-	case UL_DCCH_MessageType_MessageClassExtension_C2_Choice_mcgFailureInformation_r16:
-		if err = ie.mcgFailureInformation_r16.Encode(w); err != nil {
-			err = utils.WrapError("Encode mcgFailureInformation_r16", err)
+	case UL_DCCH_MessageType_MessageClassExtension_C2_Choice_McgFailureInformation_r16:
+		if err = ie.McgFailureInformation_r16.Encode(w); err != nil {
+			err = utils.WrapError("Encode McgFailureInformation_r16", err)
 		}
-	case UL_DCCH_MessageType_MessageClassExtension_C2_Choice_ueInformationResponse_r16:
-		if err = ie.ueInformationResponse_r16.Encode(w); err != nil {
-			err = utils.WrapError("Encode ueInformationResponse_r16", err)
+	case UL_DCCH_MessageType_MessageClassExtension_C2_Choice_UeInformationResponse_r16:
+		if err = ie.UeInformationResponse_r16.Encode(w); err != nil {
+			err = utils.WrapError("Encode UeInformationResponse_r16", err)
 		}
-	case UL_DCCH_MessageType_MessageClassExtension_C2_Choice_sidelinkUEInformationNR_r16:
-		if err = ie.sidelinkUEInformationNR_r16.Encode(w); err != nil {
-			err = utils.WrapError("Encode sidelinkUEInformationNR_r16", err)
+	case UL_DCCH_MessageType_MessageClassExtension_C2_Choice_SidelinkUEInformationNR_r16:
+		if err = ie.SidelinkUEInformationNR_r16.Encode(w); err != nil {
+			err = utils.WrapError("Encode SidelinkUEInformationNR_r16", err)
 		}
-	case UL_DCCH_MessageType_MessageClassExtension_C2_Choice_ulInformationTransferIRAT_r16:
-		if err = ie.ulInformationTransferIRAT_r16.Encode(w); err != nil {
-			err = utils.WrapError("Encode ulInformationTransferIRAT_r16", err)
+	case UL_DCCH_MessageType_MessageClassExtension_C2_Choice_UlInformationTransferIRAT_r16:
+		if err = ie.UlInformationTransferIRAT_r16.Encode(w); err != nil {
+			err = utils.WrapError("Encode UlInformationTransferIRAT_r16", err)
 		}
-	case UL_DCCH_MessageType_MessageClassExtension_C2_Choice_iabOtherInformation_r16:
-		if err = ie.iabOtherInformation_r16.Encode(w); err != nil {
-			err = utils.WrapError("Encode iabOtherInformation_r16", err)
+	case UL_DCCH_MessageType_MessageClassExtension_C2_Choice_IabOtherInformation_r16:
+		if err = ie.IabOtherInformation_r16.Encode(w); err != nil {
+			err = utils.WrapError("Encode IabOtherInformation_r16", err)
 		}
-	case UL_DCCH_MessageType_MessageClassExtension_C2_Choice_mbsInterestIndication_r17:
-		if err = ie.mbsInterestIndication_r17.Encode(w); err != nil {
-			err = utils.WrapError("Encode mbsInterestIndication_r17", err)
+	case UL_DCCH_MessageType_MessageClassExtension_C2_Choice_MbsInterestIndication_r17:
+		if err = ie.MbsInterestIndication_r17.Encode(w); err != nil {
+			err = utils.WrapError("Encode MbsInterestIndication_r17", err)
 		}
-	case UL_DCCH_MessageType_MessageClassExtension_C2_Choice_uePositioningAssistanceInfo_r17:
-		if err = ie.uePositioningAssistanceInfo_r17.Encode(w); err != nil {
-			err = utils.WrapError("Encode uePositioningAssistanceInfo_r17", err)
+	case UL_DCCH_MessageType_MessageClassExtension_C2_Choice_UePositioningAssistanceInfo_r17:
+		if err = ie.UePositioningAssistanceInfo_r17.Encode(w); err != nil {
+			err = utils.WrapError("Encode UePositioningAssistanceInfo_r17", err)
 		}
-	case UL_DCCH_MessageType_MessageClassExtension_C2_Choice_measurementReportAppLayer_r17:
-		if err = ie.measurementReportAppLayer_r17.Encode(w); err != nil {
-			err = utils.WrapError("Encode measurementReportAppLayer_r17", err)
+	case UL_DCCH_MessageType_MessageClassExtension_C2_Choice_MeasurementReportAppLayer_r17:
+		if err = ie.MeasurementReportAppLayer_r17.Encode(w); err != nil {
+			err = utils.WrapError("Encode MeasurementReportAppLayer_r17", err)
 		}
-	case UL_DCCH_MessageType_MessageClassExtension_C2_Choice_spare6:
+	case UL_DCCH_MessageType_MessageClassExtension_C2_Choice_Spare6:
 		if err := w.WriteNull(); err != nil {
-			err = utils.WrapError("Encode spare6", err)
+			err = utils.WrapError("Encode Spare6", err)
 		}
-	case UL_DCCH_MessageType_MessageClassExtension_C2_Choice_spare5:
+	case UL_DCCH_MessageType_MessageClassExtension_C2_Choice_Spare5:
 		if err := w.WriteNull(); err != nil {
-			err = utils.WrapError("Encode spare5", err)
+			err = utils.WrapError("Encode Spare5", err)
 		}
-	case UL_DCCH_MessageType_MessageClassExtension_C2_Choice_spare4:
+	case UL_DCCH_MessageType_MessageClassExtension_C2_Choice_Spare4:
 		if err := w.WriteNull(); err != nil {
-			err = utils.WrapError("Encode spare4", err)
+			err = utils.WrapError("Encode Spare4", err)
 		}
-	case UL_DCCH_MessageType_MessageClassExtension_C2_Choice_spare3:
+	case UL_DCCH_MessageType_MessageClassExtension_C2_Choice_Spare3:
 		if err := w.WriteNull(); err != nil {
-			err = utils.WrapError("Encode spare3", err)
+			err = utils.WrapError("Encode Spare3", err)
 		}
-	case UL_DCCH_MessageType_MessageClassExtension_C2_Choice_spare2:
+	case UL_DCCH_MessageType_MessageClassExtension_C2_Choice_Spare2:
 		if err := w.WriteNull(); err != nil {
-			err = utils.WrapError("Encode spare2", err)
+			err = utils.WrapError("Encode Spare2", err)
 		}
-	case UL_DCCH_MessageType_MessageClassExtension_C2_Choice_spare1:
+	case UL_DCCH_MessageType_MessageClassExtension_C2_Choice_Spare1:
 		if err := w.WriteNull(); err != nil {
-			err = utils.WrapError("Encode spare1", err)
+			err = utils.WrapError("Encode Spare1", err)
 		}
 	default:
 		err = fmt.Errorf("invalid choice: %d", ie.Choice)
@@ -129,79 +129,79 @@ func (ie *UL_DCCH_MessageType_MessageClassExtension_C2) Decode(r *uper.UperReade
 		return err
 	}
 	switch ie.Choice {
-	case UL_DCCH_MessageType_MessageClassExtension_C2_Choice_ulDedicatedMessageSegment_r16:
-		ie.ulDedicatedMessageSegment_r16 = new(ULDedicatedMessageSegment_r16)
-		if err = ie.ulDedicatedMessageSegment_r16.Decode(r); err != nil {
-			return utils.WrapError("Decode ulDedicatedMessageSegment_r16", err)
+	case UL_DCCH_MessageType_MessageClassExtension_C2_Choice_UlDedicatedMessageSegment_r16:
+		ie.UlDedicatedMessageSegment_r16 = new(ULDedicatedMessageSegment_r16)
+		if err = ie.UlDedicatedMessageSegment_r16.Decode(r); err != nil {
+			return utils.WrapError("Decode UlDedicatedMessageSegment_r16", err)
 		}
-	case UL_DCCH_MessageType_MessageClassExtension_C2_Choice_dedicatedSIBRequest_r16:
-		ie.dedicatedSIBRequest_r16 = new(DedicatedSIBRequest_r16)
-		if err = ie.dedicatedSIBRequest_r16.Decode(r); err != nil {
-			return utils.WrapError("Decode dedicatedSIBRequest_r16", err)
+	case UL_DCCH_MessageType_MessageClassExtension_C2_Choice_DedicatedSIBRequest_r16:
+		ie.DedicatedSIBRequest_r16 = new(DedicatedSIBRequest_r16)
+		if err = ie.DedicatedSIBRequest_r16.Decode(r); err != nil {
+			return utils.WrapError("Decode DedicatedSIBRequest_r16", err)
 		}
-	case UL_DCCH_MessageType_MessageClassExtension_C2_Choice_mcgFailureInformation_r16:
-		ie.mcgFailureInformation_r16 = new(MCGFailureInformation_r16)
-		if err = ie.mcgFailureInformation_r16.Decode(r); err != nil {
-			return utils.WrapError("Decode mcgFailureInformation_r16", err)
+	case UL_DCCH_MessageType_MessageClassExtension_C2_Choice_McgFailureInformation_r16:
+		ie.McgFailureInformation_r16 = new(MCGFailureInformation_r16)
+		if err = ie.McgFailureInformation_r16.Decode(r); err != nil {
+			return utils.WrapError("Decode McgFailureInformation_r16", err)
 		}
-	case UL_DCCH_MessageType_MessageClassExtension_C2_Choice_ueInformationResponse_r16:
-		ie.ueInformationResponse_r16 = new(UEInformationResponse_r16)
-		if err = ie.ueInformationResponse_r16.Decode(r); err != nil {
-			return utils.WrapError("Decode ueInformationResponse_r16", err)
+	case UL_DCCH_MessageType_MessageClassExtension_C2_Choice_UeInformationResponse_r16:
+		ie.UeInformationResponse_r16 = new(UEInformationResponse_r16)
+		if err = ie.UeInformationResponse_r16.Decode(r); err != nil {
+			return utils.WrapError("Decode UeInformationResponse_r16", err)
 		}
-	case UL_DCCH_MessageType_MessageClassExtension_C2_Choice_sidelinkUEInformationNR_r16:
-		ie.sidelinkUEInformationNR_r16 = new(SidelinkUEInformationNR_r16)
-		if err = ie.sidelinkUEInformationNR_r16.Decode(r); err != nil {
-			return utils.WrapError("Decode sidelinkUEInformationNR_r16", err)
+	case UL_DCCH_MessageType_MessageClassExtension_C2_Choice_SidelinkUEInformationNR_r16:
+		ie.SidelinkUEInformationNR_r16 = new(SidelinkUEInformationNR_r16)
+		if err = ie.SidelinkUEInformationNR_r16.Decode(r); err != nil {
+			return utils.WrapError("Decode SidelinkUEInformationNR_r16", err)
 		}
-	case UL_DCCH_MessageType_MessageClassExtension_C2_Choice_ulInformationTransferIRAT_r16:
-		ie.ulInformationTransferIRAT_r16 = new(ULInformationTransferIRAT_r16)
-		if err = ie.ulInformationTransferIRAT_r16.Decode(r); err != nil {
-			return utils.WrapError("Decode ulInformationTransferIRAT_r16", err)
+	case UL_DCCH_MessageType_MessageClassExtension_C2_Choice_UlInformationTransferIRAT_r16:
+		ie.UlInformationTransferIRAT_r16 = new(ULInformationTransferIRAT_r16)
+		if err = ie.UlInformationTransferIRAT_r16.Decode(r); err != nil {
+			return utils.WrapError("Decode UlInformationTransferIRAT_r16", err)
 		}
-	case UL_DCCH_MessageType_MessageClassExtension_C2_Choice_iabOtherInformation_r16:
-		ie.iabOtherInformation_r16 = new(IABOtherInformation_r16)
-		if err = ie.iabOtherInformation_r16.Decode(r); err != nil {
-			return utils.WrapError("Decode iabOtherInformation_r16", err)
+	case UL_DCCH_MessageType_MessageClassExtension_C2_Choice_IabOtherInformation_r16:
+		ie.IabOtherInformation_r16 = new(IABOtherInformation_r16)
+		if err = ie.IabOtherInformation_r16.Decode(r); err != nil {
+			return utils.WrapError("Decode IabOtherInformation_r16", err)
 		}
-	case UL_DCCH_MessageType_MessageClassExtension_C2_Choice_mbsInterestIndication_r17:
-		ie.mbsInterestIndication_r17 = new(MBSInterestIndication_r17)
-		if err = ie.mbsInterestIndication_r17.Decode(r); err != nil {
-			return utils.WrapError("Decode mbsInterestIndication_r17", err)
+	case UL_DCCH_MessageType_MessageClassExtension_C2_Choice_MbsInterestIndication_r17:
+		ie.MbsInterestIndication_r17 = new(MBSInterestIndication_r17)
+		if err = ie.MbsInterestIndication_r17.Decode(r); err != nil {
+			return utils.WrapError("Decode MbsInterestIndication_r17", err)
 		}
-	case UL_DCCH_MessageType_MessageClassExtension_C2_Choice_uePositioningAssistanceInfo_r17:
-		ie.uePositioningAssistanceInfo_r17 = new(UEPositioningAssistanceInfo_r17)
-		if err = ie.uePositioningAssistanceInfo_r17.Decode(r); err != nil {
-			return utils.WrapError("Decode uePositioningAssistanceInfo_r17", err)
+	case UL_DCCH_MessageType_MessageClassExtension_C2_Choice_UePositioningAssistanceInfo_r17:
+		ie.UePositioningAssistanceInfo_r17 = new(UEPositioningAssistanceInfo_r17)
+		if err = ie.UePositioningAssistanceInfo_r17.Decode(r); err != nil {
+			return utils.WrapError("Decode UePositioningAssistanceInfo_r17", err)
 		}
-	case UL_DCCH_MessageType_MessageClassExtension_C2_Choice_measurementReportAppLayer_r17:
-		ie.measurementReportAppLayer_r17 = new(MeasurementReportAppLayer_r17)
-		if err = ie.measurementReportAppLayer_r17.Decode(r); err != nil {
-			return utils.WrapError("Decode measurementReportAppLayer_r17", err)
+	case UL_DCCH_MessageType_MessageClassExtension_C2_Choice_MeasurementReportAppLayer_r17:
+		ie.MeasurementReportAppLayer_r17 = new(MeasurementReportAppLayer_r17)
+		if err = ie.MeasurementReportAppLayer_r17.Decode(r); err != nil {
+			return utils.WrapError("Decode MeasurementReportAppLayer_r17", err)
 		}
-	case UL_DCCH_MessageType_MessageClassExtension_C2_Choice_spare6:
+	case UL_DCCH_MessageType_MessageClassExtension_C2_Choice_Spare6:
 		if err := r.ReadNull(); err != nil {
-			return utils.WrapError("Decode spare6", err)
+			return utils.WrapError("Decode Spare6", err)
 		}
-	case UL_DCCH_MessageType_MessageClassExtension_C2_Choice_spare5:
+	case UL_DCCH_MessageType_MessageClassExtension_C2_Choice_Spare5:
 		if err := r.ReadNull(); err != nil {
-			return utils.WrapError("Decode spare5", err)
+			return utils.WrapError("Decode Spare5", err)
 		}
-	case UL_DCCH_MessageType_MessageClassExtension_C2_Choice_spare4:
+	case UL_DCCH_MessageType_MessageClassExtension_C2_Choice_Spare4:
 		if err := r.ReadNull(); err != nil {
-			return utils.WrapError("Decode spare4", err)
+			return utils.WrapError("Decode Spare4", err)
 		}
-	case UL_DCCH_MessageType_MessageClassExtension_C2_Choice_spare3:
+	case UL_DCCH_MessageType_MessageClassExtension_C2_Choice_Spare3:
 		if err := r.ReadNull(); err != nil {
-			return utils.WrapError("Decode spare3", err)
+			return utils.WrapError("Decode Spare3", err)
 		}
-	case UL_DCCH_MessageType_MessageClassExtension_C2_Choice_spare2:
+	case UL_DCCH_MessageType_MessageClassExtension_C2_Choice_Spare2:
 		if err := r.ReadNull(); err != nil {
-			return utils.WrapError("Decode spare2", err)
+			return utils.WrapError("Decode Spare2", err)
 		}
-	case UL_DCCH_MessageType_MessageClassExtension_C2_Choice_spare1:
+	case UL_DCCH_MessageType_MessageClassExtension_C2_Choice_Spare1:
 		if err := r.ReadNull(); err != nil {
-			return utils.WrapError("Decode spare1", err)
+			return utils.WrapError("Decode Spare1", err)
 		}
 	default:
 		return fmt.Errorf("invalid choice: %d", ie.Choice)

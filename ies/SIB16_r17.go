@@ -6,26 +6,26 @@ import (
 )
 
 type SIB16_r17 struct {
-	freqPriorityListSlicing_r17 *FreqPriorityListSlicing_r17 `optional`
-	lateNonCriticalExtension    *[]byte                      `optional`
+	FreqPriorityListSlicing_r17 *FreqPriorityListSlicing_r17 `optional`
+	LateNonCriticalExtension    *[]byte                      `optional`
 }
 
 func (ie *SIB16_r17) Encode(w *uper.UperWriter) error {
 	var err error
-	preambleBits := []bool{ie.freqPriorityListSlicing_r17 != nil, ie.lateNonCriticalExtension != nil}
+	preambleBits := []bool{ie.FreqPriorityListSlicing_r17 != nil, ie.LateNonCriticalExtension != nil}
 	for _, bit := range preambleBits {
 		if err = w.WriteBool(bit); err != nil {
 			return err
 		}
 	}
-	if ie.freqPriorityListSlicing_r17 != nil {
-		if err = ie.freqPriorityListSlicing_r17.Encode(w); err != nil {
-			return utils.WrapError("Encode freqPriorityListSlicing_r17", err)
+	if ie.FreqPriorityListSlicing_r17 != nil {
+		if err = ie.FreqPriorityListSlicing_r17.Encode(w); err != nil {
+			return utils.WrapError("Encode FreqPriorityListSlicing_r17", err)
 		}
 	}
-	if ie.lateNonCriticalExtension != nil {
-		if err = w.WriteOctetString(*ie.lateNonCriticalExtension, &uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
-			return utils.WrapError("Encode lateNonCriticalExtension", err)
+	if ie.LateNonCriticalExtension != nil {
+		if err = w.WriteOctetString(*ie.LateNonCriticalExtension, &uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+			return utils.WrapError("Encode LateNonCriticalExtension", err)
 		}
 	}
 	return nil
@@ -33,26 +33,26 @@ func (ie *SIB16_r17) Encode(w *uper.UperWriter) error {
 
 func (ie *SIB16_r17) Decode(r *uper.UperReader) error {
 	var err error
-	var freqPriorityListSlicing_r17Present bool
-	if freqPriorityListSlicing_r17Present, err = r.ReadBool(); err != nil {
+	var FreqPriorityListSlicing_r17Present bool
+	if FreqPriorityListSlicing_r17Present, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var lateNonCriticalExtensionPresent bool
-	if lateNonCriticalExtensionPresent, err = r.ReadBool(); err != nil {
+	var LateNonCriticalExtensionPresent bool
+	if LateNonCriticalExtensionPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	if freqPriorityListSlicing_r17Present {
-		ie.freqPriorityListSlicing_r17 = new(FreqPriorityListSlicing_r17)
-		if err = ie.freqPriorityListSlicing_r17.Decode(r); err != nil {
-			return utils.WrapError("Decode freqPriorityListSlicing_r17", err)
+	if FreqPriorityListSlicing_r17Present {
+		ie.FreqPriorityListSlicing_r17 = new(FreqPriorityListSlicing_r17)
+		if err = ie.FreqPriorityListSlicing_r17.Decode(r); err != nil {
+			return utils.WrapError("Decode FreqPriorityListSlicing_r17", err)
 		}
 	}
-	if lateNonCriticalExtensionPresent {
-		var tmp_os_lateNonCriticalExtension []byte
-		if tmp_os_lateNonCriticalExtension, err = r.ReadOctetString(&uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
-			return utils.WrapError("Decode lateNonCriticalExtension", err)
+	if LateNonCriticalExtensionPresent {
+		var tmp_os_LateNonCriticalExtension []byte
+		if tmp_os_LateNonCriticalExtension, err = r.ReadOctetString(&uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+			return utils.WrapError("Decode LateNonCriticalExtension", err)
 		}
-		ie.lateNonCriticalExtension = &tmp_os_lateNonCriticalExtension
+		ie.LateNonCriticalExtension = &tmp_os_LateNonCriticalExtension
 	}
 	return nil
 }

@@ -6,41 +6,41 @@ import (
 )
 
 type DMRS_UplinkConfig_transformPrecodingEnabled struct {
-	nPUSCH_Identity                   *int64                                                            `lb:0,ub:1007,optional`
-	sequenceGroupHopping              *DMRS_UplinkConfig_transformPrecodingEnabled_sequenceGroupHopping `optional`
-	sequenceHopping                   *DMRS_UplinkConfig_transformPrecodingEnabled_sequenceHopping      `optional`
-	dmrs_UplinkTransformPrecoding_r16 *DMRS_UplinkTransformPrecoding_r16                                `optional,setuprelease`
+	NPUSCH_Identity                   *int64                                                            `lb:0,ub:1007,optional`
+	SequenceGroupHopping              *DMRS_UplinkConfig_transformPrecodingEnabled_sequenceGroupHopping `optional`
+	SequenceHopping                   *DMRS_UplinkConfig_transformPrecodingEnabled_sequenceHopping      `optional`
+	Dmrs_UplinkTransformPrecoding_r16 *DMRS_UplinkTransformPrecoding_r16                                `optional,setuprelease`
 }
 
 func (ie *DMRS_UplinkConfig_transformPrecodingEnabled) Encode(w *uper.UperWriter) error {
 	var err error
-	preambleBits := []bool{ie.nPUSCH_Identity != nil, ie.sequenceGroupHopping != nil, ie.sequenceHopping != nil, ie.dmrs_UplinkTransformPrecoding_r16 != nil}
+	preambleBits := []bool{ie.NPUSCH_Identity != nil, ie.SequenceGroupHopping != nil, ie.SequenceHopping != nil, ie.Dmrs_UplinkTransformPrecoding_r16 != nil}
 	for _, bit := range preambleBits {
 		if err = w.WriteBool(bit); err != nil {
 			return err
 		}
 	}
-	if ie.nPUSCH_Identity != nil {
-		if err = w.WriteInteger(*ie.nPUSCH_Identity, &uper.Constraint{Lb: 0, Ub: 1007}, false); err != nil {
-			return utils.WrapError("Encode nPUSCH_Identity", err)
+	if ie.NPUSCH_Identity != nil {
+		if err = w.WriteInteger(*ie.NPUSCH_Identity, &uper.Constraint{Lb: 0, Ub: 1007}, false); err != nil {
+			return utils.WrapError("Encode NPUSCH_Identity", err)
 		}
 	}
-	if ie.sequenceGroupHopping != nil {
-		if err = ie.sequenceGroupHopping.Encode(w); err != nil {
-			return utils.WrapError("Encode sequenceGroupHopping", err)
+	if ie.SequenceGroupHopping != nil {
+		if err = ie.SequenceGroupHopping.Encode(w); err != nil {
+			return utils.WrapError("Encode SequenceGroupHopping", err)
 		}
 	}
-	if ie.sequenceHopping != nil {
-		if err = ie.sequenceHopping.Encode(w); err != nil {
-			return utils.WrapError("Encode sequenceHopping", err)
+	if ie.SequenceHopping != nil {
+		if err = ie.SequenceHopping.Encode(w); err != nil {
+			return utils.WrapError("Encode SequenceHopping", err)
 		}
 	}
-	if ie.dmrs_UplinkTransformPrecoding_r16 != nil {
-		tmp_dmrs_UplinkTransformPrecoding_r16 := utils.SetupRelease[*DMRS_UplinkTransformPrecoding_r16]{
-			Setup: ie.dmrs_UplinkTransformPrecoding_r16,
+	if ie.Dmrs_UplinkTransformPrecoding_r16 != nil {
+		tmp_Dmrs_UplinkTransformPrecoding_r16 := utils.SetupRelease[*DMRS_UplinkTransformPrecoding_r16]{
+			Setup: ie.Dmrs_UplinkTransformPrecoding_r16,
 		}
-		if err = tmp_dmrs_UplinkTransformPrecoding_r16.Encode(w); err != nil {
-			return utils.WrapError("Encode dmrs_UplinkTransformPrecoding_r16", err)
+		if err = tmp_Dmrs_UplinkTransformPrecoding_r16.Encode(w); err != nil {
+			return utils.WrapError("Encode Dmrs_UplinkTransformPrecoding_r16", err)
 		}
 	}
 	return nil
@@ -48,47 +48,47 @@ func (ie *DMRS_UplinkConfig_transformPrecodingEnabled) Encode(w *uper.UperWriter
 
 func (ie *DMRS_UplinkConfig_transformPrecodingEnabled) Decode(r *uper.UperReader) error {
 	var err error
-	var nPUSCH_IdentityPresent bool
-	if nPUSCH_IdentityPresent, err = r.ReadBool(); err != nil {
+	var NPUSCH_IdentityPresent bool
+	if NPUSCH_IdentityPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var sequenceGroupHoppingPresent bool
-	if sequenceGroupHoppingPresent, err = r.ReadBool(); err != nil {
+	var SequenceGroupHoppingPresent bool
+	if SequenceGroupHoppingPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var sequenceHoppingPresent bool
-	if sequenceHoppingPresent, err = r.ReadBool(); err != nil {
+	var SequenceHoppingPresent bool
+	if SequenceHoppingPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var dmrs_UplinkTransformPrecoding_r16Present bool
-	if dmrs_UplinkTransformPrecoding_r16Present, err = r.ReadBool(); err != nil {
+	var Dmrs_UplinkTransformPrecoding_r16Present bool
+	if Dmrs_UplinkTransformPrecoding_r16Present, err = r.ReadBool(); err != nil {
 		return err
 	}
-	if nPUSCH_IdentityPresent {
-		var tmp_int_nPUSCH_Identity int64
-		if tmp_int_nPUSCH_Identity, err = r.ReadInteger(&uper.Constraint{Lb: 0, Ub: 1007}, false); err != nil {
-			return utils.WrapError("Decode nPUSCH_Identity", err)
+	if NPUSCH_IdentityPresent {
+		var tmp_int_NPUSCH_Identity int64
+		if tmp_int_NPUSCH_Identity, err = r.ReadInteger(&uper.Constraint{Lb: 0, Ub: 1007}, false); err != nil {
+			return utils.WrapError("Decode NPUSCH_Identity", err)
 		}
-		ie.nPUSCH_Identity = &tmp_int_nPUSCH_Identity
+		ie.NPUSCH_Identity = &tmp_int_NPUSCH_Identity
 	}
-	if sequenceGroupHoppingPresent {
-		ie.sequenceGroupHopping = new(DMRS_UplinkConfig_transformPrecodingEnabled_sequenceGroupHopping)
-		if err = ie.sequenceGroupHopping.Decode(r); err != nil {
-			return utils.WrapError("Decode sequenceGroupHopping", err)
-		}
-	}
-	if sequenceHoppingPresent {
-		ie.sequenceHopping = new(DMRS_UplinkConfig_transformPrecodingEnabled_sequenceHopping)
-		if err = ie.sequenceHopping.Decode(r); err != nil {
-			return utils.WrapError("Decode sequenceHopping", err)
+	if SequenceGroupHoppingPresent {
+		ie.SequenceGroupHopping = new(DMRS_UplinkConfig_transformPrecodingEnabled_sequenceGroupHopping)
+		if err = ie.SequenceGroupHopping.Decode(r); err != nil {
+			return utils.WrapError("Decode SequenceGroupHopping", err)
 		}
 	}
-	if dmrs_UplinkTransformPrecoding_r16Present {
-		tmp_dmrs_UplinkTransformPrecoding_r16 := utils.SetupRelease[*DMRS_UplinkTransformPrecoding_r16]{}
-		if err = tmp_dmrs_UplinkTransformPrecoding_r16.Decode(r); err != nil {
-			return utils.WrapError("Decode dmrs_UplinkTransformPrecoding_r16", err)
+	if SequenceHoppingPresent {
+		ie.SequenceHopping = new(DMRS_UplinkConfig_transformPrecodingEnabled_sequenceHopping)
+		if err = ie.SequenceHopping.Decode(r); err != nil {
+			return utils.WrapError("Decode SequenceHopping", err)
 		}
-		ie.dmrs_UplinkTransformPrecoding_r16 = tmp_dmrs_UplinkTransformPrecoding_r16.Setup
+	}
+	if Dmrs_UplinkTransformPrecoding_r16Present {
+		tmp_Dmrs_UplinkTransformPrecoding_r16 := utils.SetupRelease[*DMRS_UplinkTransformPrecoding_r16]{}
+		if err = tmp_Dmrs_UplinkTransformPrecoding_r16.Decode(r); err != nil {
+			return utils.WrapError("Decode Dmrs_UplinkTransformPrecoding_r16", err)
+		}
+		ie.Dmrs_UplinkTransformPrecoding_r16 = tmp_Dmrs_UplinkTransformPrecoding_r16.Setup
 	}
 	return nil
 }

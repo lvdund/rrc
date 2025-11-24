@@ -6,92 +6,92 @@ import (
 )
 
 type CG_ConfigInfo_IEs struct {
-	ue_CapabilityInfo         *[]byte                           `optional`
-	candidateCellInfoListMN   *MeasResultList2NR                `optional`
-	candidateCellInfoListSN   *[]byte                           `optional`
-	measResultCellListSFTD_NR *MeasResultCellListSFTD_NR        `optional`
-	scgFailureInfo            *CG_ConfigInfo_IEs_scgFailureInfo `optional`
-	configRestrictInfo        *ConfigRestrictInfoSCG            `optional`
-	drx_InfoMCG               *DRX_Info                         `optional`
-	measConfigMN              *MeasConfigMN                     `optional`
-	sourceConfigSCG           *[]byte                           `optional`
-	scg_RB_Config             *[]byte                           `optional`
-	mcg_RB_Config             *[]byte                           `optional`
-	mrdc_AssistanceInfo       *MRDC_AssistanceInfo              `optional`
-	nonCriticalExtension      *CG_ConfigInfo_v1540_IEs          `optional`
+	Ue_CapabilityInfo         *[]byte                           `optional`
+	CandidateCellInfoListMN   *MeasResultList2NR                `optional`
+	CandidateCellInfoListSN   *[]byte                           `optional`
+	MeasResultCellListSFTD_NR *MeasResultCellListSFTD_NR        `optional`
+	ScgFailureInfo            *CG_ConfigInfo_IEs_scgFailureInfo `optional`
+	ConfigRestrictInfo        *ConfigRestrictInfoSCG            `optional`
+	Drx_InfoMCG               *DRX_Info                         `optional`
+	MeasConfigMN              *MeasConfigMN                     `optional`
+	SourceConfigSCG           *[]byte                           `optional`
+	Scg_RB_Config             *[]byte                           `optional`
+	Mcg_RB_Config             *[]byte                           `optional`
+	Mrdc_AssistanceInfo       *MRDC_AssistanceInfo              `optional`
+	NonCriticalExtension      *CG_ConfigInfo_v1540_IEs          `optional`
 }
 
 func (ie *CG_ConfigInfo_IEs) Encode(w *uper.UperWriter) error {
 	var err error
-	preambleBits := []bool{ie.ue_CapabilityInfo != nil, ie.candidateCellInfoListMN != nil, ie.candidateCellInfoListSN != nil, ie.measResultCellListSFTD_NR != nil, ie.scgFailureInfo != nil, ie.configRestrictInfo != nil, ie.drx_InfoMCG != nil, ie.measConfigMN != nil, ie.sourceConfigSCG != nil, ie.scg_RB_Config != nil, ie.mcg_RB_Config != nil, ie.mrdc_AssistanceInfo != nil, ie.nonCriticalExtension != nil}
+	preambleBits := []bool{ie.Ue_CapabilityInfo != nil, ie.CandidateCellInfoListMN != nil, ie.CandidateCellInfoListSN != nil, ie.MeasResultCellListSFTD_NR != nil, ie.ScgFailureInfo != nil, ie.ConfigRestrictInfo != nil, ie.Drx_InfoMCG != nil, ie.MeasConfigMN != nil, ie.SourceConfigSCG != nil, ie.Scg_RB_Config != nil, ie.Mcg_RB_Config != nil, ie.Mrdc_AssistanceInfo != nil, ie.NonCriticalExtension != nil}
 	for _, bit := range preambleBits {
 		if err = w.WriteBool(bit); err != nil {
 			return err
 		}
 	}
-	if ie.ue_CapabilityInfo != nil {
-		if err = w.WriteOctetString(*ie.ue_CapabilityInfo, &uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
-			return utils.WrapError("Encode ue_CapabilityInfo", err)
+	if ie.Ue_CapabilityInfo != nil {
+		if err = w.WriteOctetString(*ie.Ue_CapabilityInfo, &uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+			return utils.WrapError("Encode Ue_CapabilityInfo", err)
 		}
 	}
-	if ie.candidateCellInfoListMN != nil {
-		if err = ie.candidateCellInfoListMN.Encode(w); err != nil {
-			return utils.WrapError("Encode candidateCellInfoListMN", err)
+	if ie.CandidateCellInfoListMN != nil {
+		if err = ie.CandidateCellInfoListMN.Encode(w); err != nil {
+			return utils.WrapError("Encode CandidateCellInfoListMN", err)
 		}
 	}
-	if ie.candidateCellInfoListSN != nil {
-		if err = w.WriteOctetString(*ie.candidateCellInfoListSN, &uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
-			return utils.WrapError("Encode candidateCellInfoListSN", err)
+	if ie.CandidateCellInfoListSN != nil {
+		if err = w.WriteOctetString(*ie.CandidateCellInfoListSN, &uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+			return utils.WrapError("Encode CandidateCellInfoListSN", err)
 		}
 	}
-	if ie.measResultCellListSFTD_NR != nil {
-		if err = ie.measResultCellListSFTD_NR.Encode(w); err != nil {
-			return utils.WrapError("Encode measResultCellListSFTD_NR", err)
+	if ie.MeasResultCellListSFTD_NR != nil {
+		if err = ie.MeasResultCellListSFTD_NR.Encode(w); err != nil {
+			return utils.WrapError("Encode MeasResultCellListSFTD_NR", err)
 		}
 	}
-	if ie.scgFailureInfo != nil {
-		if err = ie.scgFailureInfo.Encode(w); err != nil {
-			return utils.WrapError("Encode scgFailureInfo", err)
+	if ie.ScgFailureInfo != nil {
+		if err = ie.ScgFailureInfo.Encode(w); err != nil {
+			return utils.WrapError("Encode ScgFailureInfo", err)
 		}
 	}
-	if ie.configRestrictInfo != nil {
-		if err = ie.configRestrictInfo.Encode(w); err != nil {
-			return utils.WrapError("Encode configRestrictInfo", err)
+	if ie.ConfigRestrictInfo != nil {
+		if err = ie.ConfigRestrictInfo.Encode(w); err != nil {
+			return utils.WrapError("Encode ConfigRestrictInfo", err)
 		}
 	}
-	if ie.drx_InfoMCG != nil {
-		if err = ie.drx_InfoMCG.Encode(w); err != nil {
-			return utils.WrapError("Encode drx_InfoMCG", err)
+	if ie.Drx_InfoMCG != nil {
+		if err = ie.Drx_InfoMCG.Encode(w); err != nil {
+			return utils.WrapError("Encode Drx_InfoMCG", err)
 		}
 	}
-	if ie.measConfigMN != nil {
-		if err = ie.measConfigMN.Encode(w); err != nil {
-			return utils.WrapError("Encode measConfigMN", err)
+	if ie.MeasConfigMN != nil {
+		if err = ie.MeasConfigMN.Encode(w); err != nil {
+			return utils.WrapError("Encode MeasConfigMN", err)
 		}
 	}
-	if ie.sourceConfigSCG != nil {
-		if err = w.WriteOctetString(*ie.sourceConfigSCG, &uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
-			return utils.WrapError("Encode sourceConfigSCG", err)
+	if ie.SourceConfigSCG != nil {
+		if err = w.WriteOctetString(*ie.SourceConfigSCG, &uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+			return utils.WrapError("Encode SourceConfigSCG", err)
 		}
 	}
-	if ie.scg_RB_Config != nil {
-		if err = w.WriteOctetString(*ie.scg_RB_Config, &uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
-			return utils.WrapError("Encode scg_RB_Config", err)
+	if ie.Scg_RB_Config != nil {
+		if err = w.WriteOctetString(*ie.Scg_RB_Config, &uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+			return utils.WrapError("Encode Scg_RB_Config", err)
 		}
 	}
-	if ie.mcg_RB_Config != nil {
-		if err = w.WriteOctetString(*ie.mcg_RB_Config, &uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
-			return utils.WrapError("Encode mcg_RB_Config", err)
+	if ie.Mcg_RB_Config != nil {
+		if err = w.WriteOctetString(*ie.Mcg_RB_Config, &uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+			return utils.WrapError("Encode Mcg_RB_Config", err)
 		}
 	}
-	if ie.mrdc_AssistanceInfo != nil {
-		if err = ie.mrdc_AssistanceInfo.Encode(w); err != nil {
-			return utils.WrapError("Encode mrdc_AssistanceInfo", err)
+	if ie.Mrdc_AssistanceInfo != nil {
+		if err = ie.Mrdc_AssistanceInfo.Encode(w); err != nil {
+			return utils.WrapError("Encode Mrdc_AssistanceInfo", err)
 		}
 	}
-	if ie.nonCriticalExtension != nil {
-		if err = ie.nonCriticalExtension.Encode(w); err != nil {
-			return utils.WrapError("Encode nonCriticalExtension", err)
+	if ie.NonCriticalExtension != nil {
+		if err = ie.NonCriticalExtension.Encode(w); err != nil {
+			return utils.WrapError("Encode NonCriticalExtension", err)
 		}
 	}
 	return nil
@@ -99,139 +99,139 @@ func (ie *CG_ConfigInfo_IEs) Encode(w *uper.UperWriter) error {
 
 func (ie *CG_ConfigInfo_IEs) Decode(r *uper.UperReader) error {
 	var err error
-	var ue_CapabilityInfoPresent bool
-	if ue_CapabilityInfoPresent, err = r.ReadBool(); err != nil {
+	var Ue_CapabilityInfoPresent bool
+	if Ue_CapabilityInfoPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var candidateCellInfoListMNPresent bool
-	if candidateCellInfoListMNPresent, err = r.ReadBool(); err != nil {
+	var CandidateCellInfoListMNPresent bool
+	if CandidateCellInfoListMNPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var candidateCellInfoListSNPresent bool
-	if candidateCellInfoListSNPresent, err = r.ReadBool(); err != nil {
+	var CandidateCellInfoListSNPresent bool
+	if CandidateCellInfoListSNPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var measResultCellListSFTD_NRPresent bool
-	if measResultCellListSFTD_NRPresent, err = r.ReadBool(); err != nil {
+	var MeasResultCellListSFTD_NRPresent bool
+	if MeasResultCellListSFTD_NRPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var scgFailureInfoPresent bool
-	if scgFailureInfoPresent, err = r.ReadBool(); err != nil {
+	var ScgFailureInfoPresent bool
+	if ScgFailureInfoPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var configRestrictInfoPresent bool
-	if configRestrictInfoPresent, err = r.ReadBool(); err != nil {
+	var ConfigRestrictInfoPresent bool
+	if ConfigRestrictInfoPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var drx_InfoMCGPresent bool
-	if drx_InfoMCGPresent, err = r.ReadBool(); err != nil {
+	var Drx_InfoMCGPresent bool
+	if Drx_InfoMCGPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var measConfigMNPresent bool
-	if measConfigMNPresent, err = r.ReadBool(); err != nil {
+	var MeasConfigMNPresent bool
+	if MeasConfigMNPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var sourceConfigSCGPresent bool
-	if sourceConfigSCGPresent, err = r.ReadBool(); err != nil {
+	var SourceConfigSCGPresent bool
+	if SourceConfigSCGPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var scg_RB_ConfigPresent bool
-	if scg_RB_ConfigPresent, err = r.ReadBool(); err != nil {
+	var Scg_RB_ConfigPresent bool
+	if Scg_RB_ConfigPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var mcg_RB_ConfigPresent bool
-	if mcg_RB_ConfigPresent, err = r.ReadBool(); err != nil {
+	var Mcg_RB_ConfigPresent bool
+	if Mcg_RB_ConfigPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var mrdc_AssistanceInfoPresent bool
-	if mrdc_AssistanceInfoPresent, err = r.ReadBool(); err != nil {
+	var Mrdc_AssistanceInfoPresent bool
+	if Mrdc_AssistanceInfoPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var nonCriticalExtensionPresent bool
-	if nonCriticalExtensionPresent, err = r.ReadBool(); err != nil {
+	var NonCriticalExtensionPresent bool
+	if NonCriticalExtensionPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	if ue_CapabilityInfoPresent {
-		var tmp_os_ue_CapabilityInfo []byte
-		if tmp_os_ue_CapabilityInfo, err = r.ReadOctetString(&uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
-			return utils.WrapError("Decode ue_CapabilityInfo", err)
+	if Ue_CapabilityInfoPresent {
+		var tmp_os_Ue_CapabilityInfo []byte
+		if tmp_os_Ue_CapabilityInfo, err = r.ReadOctetString(&uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+			return utils.WrapError("Decode Ue_CapabilityInfo", err)
 		}
-		ie.ue_CapabilityInfo = &tmp_os_ue_CapabilityInfo
+		ie.Ue_CapabilityInfo = &tmp_os_Ue_CapabilityInfo
 	}
-	if candidateCellInfoListMNPresent {
-		ie.candidateCellInfoListMN = new(MeasResultList2NR)
-		if err = ie.candidateCellInfoListMN.Decode(r); err != nil {
-			return utils.WrapError("Decode candidateCellInfoListMN", err)
-		}
-	}
-	if candidateCellInfoListSNPresent {
-		var tmp_os_candidateCellInfoListSN []byte
-		if tmp_os_candidateCellInfoListSN, err = r.ReadOctetString(&uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
-			return utils.WrapError("Decode candidateCellInfoListSN", err)
-		}
-		ie.candidateCellInfoListSN = &tmp_os_candidateCellInfoListSN
-	}
-	if measResultCellListSFTD_NRPresent {
-		ie.measResultCellListSFTD_NR = new(MeasResultCellListSFTD_NR)
-		if err = ie.measResultCellListSFTD_NR.Decode(r); err != nil {
-			return utils.WrapError("Decode measResultCellListSFTD_NR", err)
+	if CandidateCellInfoListMNPresent {
+		ie.CandidateCellInfoListMN = new(MeasResultList2NR)
+		if err = ie.CandidateCellInfoListMN.Decode(r); err != nil {
+			return utils.WrapError("Decode CandidateCellInfoListMN", err)
 		}
 	}
-	if scgFailureInfoPresent {
-		ie.scgFailureInfo = new(CG_ConfigInfo_IEs_scgFailureInfo)
-		if err = ie.scgFailureInfo.Decode(r); err != nil {
-			return utils.WrapError("Decode scgFailureInfo", err)
+	if CandidateCellInfoListSNPresent {
+		var tmp_os_CandidateCellInfoListSN []byte
+		if tmp_os_CandidateCellInfoListSN, err = r.ReadOctetString(&uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+			return utils.WrapError("Decode CandidateCellInfoListSN", err)
+		}
+		ie.CandidateCellInfoListSN = &tmp_os_CandidateCellInfoListSN
+	}
+	if MeasResultCellListSFTD_NRPresent {
+		ie.MeasResultCellListSFTD_NR = new(MeasResultCellListSFTD_NR)
+		if err = ie.MeasResultCellListSFTD_NR.Decode(r); err != nil {
+			return utils.WrapError("Decode MeasResultCellListSFTD_NR", err)
 		}
 	}
-	if configRestrictInfoPresent {
-		ie.configRestrictInfo = new(ConfigRestrictInfoSCG)
-		if err = ie.configRestrictInfo.Decode(r); err != nil {
-			return utils.WrapError("Decode configRestrictInfo", err)
+	if ScgFailureInfoPresent {
+		ie.ScgFailureInfo = new(CG_ConfigInfo_IEs_scgFailureInfo)
+		if err = ie.ScgFailureInfo.Decode(r); err != nil {
+			return utils.WrapError("Decode ScgFailureInfo", err)
 		}
 	}
-	if drx_InfoMCGPresent {
-		ie.drx_InfoMCG = new(DRX_Info)
-		if err = ie.drx_InfoMCG.Decode(r); err != nil {
-			return utils.WrapError("Decode drx_InfoMCG", err)
+	if ConfigRestrictInfoPresent {
+		ie.ConfigRestrictInfo = new(ConfigRestrictInfoSCG)
+		if err = ie.ConfigRestrictInfo.Decode(r); err != nil {
+			return utils.WrapError("Decode ConfigRestrictInfo", err)
 		}
 	}
-	if measConfigMNPresent {
-		ie.measConfigMN = new(MeasConfigMN)
-		if err = ie.measConfigMN.Decode(r); err != nil {
-			return utils.WrapError("Decode measConfigMN", err)
+	if Drx_InfoMCGPresent {
+		ie.Drx_InfoMCG = new(DRX_Info)
+		if err = ie.Drx_InfoMCG.Decode(r); err != nil {
+			return utils.WrapError("Decode Drx_InfoMCG", err)
 		}
 	}
-	if sourceConfigSCGPresent {
-		var tmp_os_sourceConfigSCG []byte
-		if tmp_os_sourceConfigSCG, err = r.ReadOctetString(&uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
-			return utils.WrapError("Decode sourceConfigSCG", err)
-		}
-		ie.sourceConfigSCG = &tmp_os_sourceConfigSCG
-	}
-	if scg_RB_ConfigPresent {
-		var tmp_os_scg_RB_Config []byte
-		if tmp_os_scg_RB_Config, err = r.ReadOctetString(&uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
-			return utils.WrapError("Decode scg_RB_Config", err)
-		}
-		ie.scg_RB_Config = &tmp_os_scg_RB_Config
-	}
-	if mcg_RB_ConfigPresent {
-		var tmp_os_mcg_RB_Config []byte
-		if tmp_os_mcg_RB_Config, err = r.ReadOctetString(&uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
-			return utils.WrapError("Decode mcg_RB_Config", err)
-		}
-		ie.mcg_RB_Config = &tmp_os_mcg_RB_Config
-	}
-	if mrdc_AssistanceInfoPresent {
-		ie.mrdc_AssistanceInfo = new(MRDC_AssistanceInfo)
-		if err = ie.mrdc_AssistanceInfo.Decode(r); err != nil {
-			return utils.WrapError("Decode mrdc_AssistanceInfo", err)
+	if MeasConfigMNPresent {
+		ie.MeasConfigMN = new(MeasConfigMN)
+		if err = ie.MeasConfigMN.Decode(r); err != nil {
+			return utils.WrapError("Decode MeasConfigMN", err)
 		}
 	}
-	if nonCriticalExtensionPresent {
-		ie.nonCriticalExtension = new(CG_ConfigInfo_v1540_IEs)
-		if err = ie.nonCriticalExtension.Decode(r); err != nil {
-			return utils.WrapError("Decode nonCriticalExtension", err)
+	if SourceConfigSCGPresent {
+		var tmp_os_SourceConfigSCG []byte
+		if tmp_os_SourceConfigSCG, err = r.ReadOctetString(&uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+			return utils.WrapError("Decode SourceConfigSCG", err)
+		}
+		ie.SourceConfigSCG = &tmp_os_SourceConfigSCG
+	}
+	if Scg_RB_ConfigPresent {
+		var tmp_os_Scg_RB_Config []byte
+		if tmp_os_Scg_RB_Config, err = r.ReadOctetString(&uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+			return utils.WrapError("Decode Scg_RB_Config", err)
+		}
+		ie.Scg_RB_Config = &tmp_os_Scg_RB_Config
+	}
+	if Mcg_RB_ConfigPresent {
+		var tmp_os_Mcg_RB_Config []byte
+		if tmp_os_Mcg_RB_Config, err = r.ReadOctetString(&uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+			return utils.WrapError("Decode Mcg_RB_Config", err)
+		}
+		ie.Mcg_RB_Config = &tmp_os_Mcg_RB_Config
+	}
+	if Mrdc_AssistanceInfoPresent {
+		ie.Mrdc_AssistanceInfo = new(MRDC_AssistanceInfo)
+		if err = ie.Mrdc_AssistanceInfo.Decode(r); err != nil {
+			return utils.WrapError("Decode Mrdc_AssistanceInfo", err)
+		}
+	}
+	if NonCriticalExtensionPresent {
+		ie.NonCriticalExtension = new(CG_ConfigInfo_v1540_IEs)
+		if err = ie.NonCriticalExtension.Decode(r); err != nil {
+			return utils.WrapError("Decode NonCriticalExtension", err)
 		}
 	}
 	return nil

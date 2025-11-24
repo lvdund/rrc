@@ -6,27 +6,27 @@ import (
 )
 
 type RRCReject_IEs struct {
-	waitTime                 *RejectWaitTime `optional`
-	lateNonCriticalExtension *[]byte         `optional`
-	nonCriticalExtension     interface{}     `optional`
+	WaitTime                 *RejectWaitTime `optional`
+	LateNonCriticalExtension *[]byte         `optional`
+	NonCriticalExtension     interface{}     `optional`
 }
 
 func (ie *RRCReject_IEs) Encode(w *uper.UperWriter) error {
 	var err error
-	preambleBits := []bool{ie.waitTime != nil, ie.lateNonCriticalExtension != nil}
+	preambleBits := []bool{ie.WaitTime != nil, ie.LateNonCriticalExtension != nil}
 	for _, bit := range preambleBits {
 		if err = w.WriteBool(bit); err != nil {
 			return err
 		}
 	}
-	if ie.waitTime != nil {
-		if err = ie.waitTime.Encode(w); err != nil {
-			return utils.WrapError("Encode waitTime", err)
+	if ie.WaitTime != nil {
+		if err = ie.WaitTime.Encode(w); err != nil {
+			return utils.WrapError("Encode WaitTime", err)
 		}
 	}
-	if ie.lateNonCriticalExtension != nil {
-		if err = w.WriteOctetString(*ie.lateNonCriticalExtension, &uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
-			return utils.WrapError("Encode lateNonCriticalExtension", err)
+	if ie.LateNonCriticalExtension != nil {
+		if err = w.WriteOctetString(*ie.LateNonCriticalExtension, &uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+			return utils.WrapError("Encode LateNonCriticalExtension", err)
 		}
 	}
 	return nil
@@ -34,26 +34,26 @@ func (ie *RRCReject_IEs) Encode(w *uper.UperWriter) error {
 
 func (ie *RRCReject_IEs) Decode(r *uper.UperReader) error {
 	var err error
-	var waitTimePresent bool
-	if waitTimePresent, err = r.ReadBool(); err != nil {
+	var WaitTimePresent bool
+	if WaitTimePresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var lateNonCriticalExtensionPresent bool
-	if lateNonCriticalExtensionPresent, err = r.ReadBool(); err != nil {
+	var LateNonCriticalExtensionPresent bool
+	if LateNonCriticalExtensionPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	if waitTimePresent {
-		ie.waitTime = new(RejectWaitTime)
-		if err = ie.waitTime.Decode(r); err != nil {
-			return utils.WrapError("Decode waitTime", err)
+	if WaitTimePresent {
+		ie.WaitTime = new(RejectWaitTime)
+		if err = ie.WaitTime.Decode(r); err != nil {
+			return utils.WrapError("Decode WaitTime", err)
 		}
 	}
-	if lateNonCriticalExtensionPresent {
-		var tmp_os_lateNonCriticalExtension []byte
-		if tmp_os_lateNonCriticalExtension, err = r.ReadOctetString(&uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
-			return utils.WrapError("Decode lateNonCriticalExtension", err)
+	if LateNonCriticalExtensionPresent {
+		var tmp_os_LateNonCriticalExtension []byte
+		if tmp_os_LateNonCriticalExtension, err = r.ReadOctetString(&uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+			return utils.WrapError("Decode LateNonCriticalExtension", err)
 		}
-		ie.lateNonCriticalExtension = &tmp_os_lateNonCriticalExtension
+		ie.LateNonCriticalExtension = &tmp_os_LateNonCriticalExtension
 	}
 	return nil
 }

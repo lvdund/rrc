@@ -9,16 +9,16 @@ import (
 
 const (
 	SRS_SpatialRelationInfoPos_r16_Choice_nothing uint64 = iota
-	SRS_SpatialRelationInfoPos_r16_Choice_servingRS_r16
-	SRS_SpatialRelationInfoPos_r16_Choice_ssb_Ncell_r16
-	SRS_SpatialRelationInfoPos_r16_Choice_dl_PRS_r16
+	SRS_SpatialRelationInfoPos_r16_Choice_ServingRS_r16
+	SRS_SpatialRelationInfoPos_r16_Choice_Ssb_Ncell_r16
+	SRS_SpatialRelationInfoPos_r16_Choice_Dl_PRS_r16
 )
 
 type SRS_SpatialRelationInfoPos_r16 struct {
 	Choice        uint64
-	servingRS_r16 *SRS_SpatialRelationInfoPos_r16_servingRS_r16
-	ssb_Ncell_r16 *SSB_InfoNcell_r16
-	dl_PRS_r16    *DL_PRS_Info_r16
+	ServingRS_r16 *SRS_SpatialRelationInfoPos_r16_servingRS_r16
+	Ssb_Ncell_r16 *SSB_InfoNcell_r16
+	Dl_PRS_r16    *DL_PRS_Info_r16
 }
 
 func (ie *SRS_SpatialRelationInfoPos_r16) Encode(w *uper.UperWriter) error {
@@ -27,17 +27,17 @@ func (ie *SRS_SpatialRelationInfoPos_r16) Encode(w *uper.UperWriter) error {
 		return err
 	}
 	switch ie.Choice {
-	case SRS_SpatialRelationInfoPos_r16_Choice_servingRS_r16:
-		if err = ie.servingRS_r16.Encode(w); err != nil {
-			err = utils.WrapError("Encode servingRS_r16", err)
+	case SRS_SpatialRelationInfoPos_r16_Choice_ServingRS_r16:
+		if err = ie.ServingRS_r16.Encode(w); err != nil {
+			err = utils.WrapError("Encode ServingRS_r16", err)
 		}
-	case SRS_SpatialRelationInfoPos_r16_Choice_ssb_Ncell_r16:
-		if err = ie.ssb_Ncell_r16.Encode(w); err != nil {
-			err = utils.WrapError("Encode ssb_Ncell_r16", err)
+	case SRS_SpatialRelationInfoPos_r16_Choice_Ssb_Ncell_r16:
+		if err = ie.Ssb_Ncell_r16.Encode(w); err != nil {
+			err = utils.WrapError("Encode Ssb_Ncell_r16", err)
 		}
-	case SRS_SpatialRelationInfoPos_r16_Choice_dl_PRS_r16:
-		if err = ie.dl_PRS_r16.Encode(w); err != nil {
-			err = utils.WrapError("Encode dl_PRS_r16", err)
+	case SRS_SpatialRelationInfoPos_r16_Choice_Dl_PRS_r16:
+		if err = ie.Dl_PRS_r16.Encode(w); err != nil {
+			err = utils.WrapError("Encode Dl_PRS_r16", err)
 		}
 	default:
 		err = fmt.Errorf("invalid choice: %d", ie.Choice)
@@ -51,20 +51,20 @@ func (ie *SRS_SpatialRelationInfoPos_r16) Decode(r *uper.UperReader) error {
 		return err
 	}
 	switch ie.Choice {
-	case SRS_SpatialRelationInfoPos_r16_Choice_servingRS_r16:
-		ie.servingRS_r16 = new(SRS_SpatialRelationInfoPos_r16_servingRS_r16)
-		if err = ie.servingRS_r16.Decode(r); err != nil {
-			return utils.WrapError("Decode servingRS_r16", err)
+	case SRS_SpatialRelationInfoPos_r16_Choice_ServingRS_r16:
+		ie.ServingRS_r16 = new(SRS_SpatialRelationInfoPos_r16_servingRS_r16)
+		if err = ie.ServingRS_r16.Decode(r); err != nil {
+			return utils.WrapError("Decode ServingRS_r16", err)
 		}
-	case SRS_SpatialRelationInfoPos_r16_Choice_ssb_Ncell_r16:
-		ie.ssb_Ncell_r16 = new(SSB_InfoNcell_r16)
-		if err = ie.ssb_Ncell_r16.Decode(r); err != nil {
-			return utils.WrapError("Decode ssb_Ncell_r16", err)
+	case SRS_SpatialRelationInfoPos_r16_Choice_Ssb_Ncell_r16:
+		ie.Ssb_Ncell_r16 = new(SSB_InfoNcell_r16)
+		if err = ie.Ssb_Ncell_r16.Decode(r); err != nil {
+			return utils.WrapError("Decode Ssb_Ncell_r16", err)
 		}
-	case SRS_SpatialRelationInfoPos_r16_Choice_dl_PRS_r16:
-		ie.dl_PRS_r16 = new(DL_PRS_Info_r16)
-		if err = ie.dl_PRS_r16.Decode(r); err != nil {
-			return utils.WrapError("Decode dl_PRS_r16", err)
+	case SRS_SpatialRelationInfoPos_r16_Choice_Dl_PRS_r16:
+		ie.Dl_PRS_r16 = new(DL_PRS_Info_r16)
+		if err = ie.Dl_PRS_r16.Decode(r); err != nil {
+			return utils.WrapError("Decode Dl_PRS_r16", err)
 		}
 	default:
 		return fmt.Errorf("invalid choice: %d", ie.Choice)

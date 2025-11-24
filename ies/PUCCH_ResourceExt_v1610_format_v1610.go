@@ -9,14 +9,14 @@ import (
 
 const (
 	PUCCH_ResourceExt_v1610_format_v1610_Choice_nothing uint64 = iota
-	PUCCH_ResourceExt_v1610_format_v1610_Choice_interlace1_v1610
-	PUCCH_ResourceExt_v1610_format_v1610_Choice_occ_v1610
+	PUCCH_ResourceExt_v1610_format_v1610_Choice_Interlace1_v1610
+	PUCCH_ResourceExt_v1610_format_v1610_Choice_Occ_v1610
 )
 
 type PUCCH_ResourceExt_v1610_format_v1610 struct {
 	Choice           uint64
-	interlace1_v1610 int64 `lb:0,ub:9,madatory`
-	occ_v1610        *PUCCH_ResourceExt_v1610_format_v1610_occ_v1610
+	Interlace1_v1610 int64 `lb:0,ub:9,madatory`
+	Occ_v1610        *PUCCH_ResourceExt_v1610_format_v1610_occ_v1610
 }
 
 func (ie *PUCCH_ResourceExt_v1610_format_v1610) Encode(w *uper.UperWriter) error {
@@ -25,13 +25,13 @@ func (ie *PUCCH_ResourceExt_v1610_format_v1610) Encode(w *uper.UperWriter) error
 		return err
 	}
 	switch ie.Choice {
-	case PUCCH_ResourceExt_v1610_format_v1610_Choice_interlace1_v1610:
-		if err = w.WriteInteger(int64(ie.interlace1_v1610), &uper.Constraint{Lb: 0, Ub: 9}, false); err != nil {
-			err = utils.WrapError("Encode interlace1_v1610", err)
+	case PUCCH_ResourceExt_v1610_format_v1610_Choice_Interlace1_v1610:
+		if err = w.WriteInteger(int64(ie.Interlace1_v1610), &uper.Constraint{Lb: 0, Ub: 9}, false); err != nil {
+			err = utils.WrapError("Encode Interlace1_v1610", err)
 		}
-	case PUCCH_ResourceExt_v1610_format_v1610_Choice_occ_v1610:
-		if err = ie.occ_v1610.Encode(w); err != nil {
-			err = utils.WrapError("Encode occ_v1610", err)
+	case PUCCH_ResourceExt_v1610_format_v1610_Choice_Occ_v1610:
+		if err = ie.Occ_v1610.Encode(w); err != nil {
+			err = utils.WrapError("Encode Occ_v1610", err)
 		}
 	default:
 		err = fmt.Errorf("invalid choice: %d", ie.Choice)
@@ -45,16 +45,16 @@ func (ie *PUCCH_ResourceExt_v1610_format_v1610) Decode(r *uper.UperReader) error
 		return err
 	}
 	switch ie.Choice {
-	case PUCCH_ResourceExt_v1610_format_v1610_Choice_interlace1_v1610:
-		var tmp_int_interlace1_v1610 int64
-		if tmp_int_interlace1_v1610, err = r.ReadInteger(&uper.Constraint{Lb: 0, Ub: 9}, false); err != nil {
-			return utils.WrapError("Decode interlace1_v1610", err)
+	case PUCCH_ResourceExt_v1610_format_v1610_Choice_Interlace1_v1610:
+		var tmp_int_Interlace1_v1610 int64
+		if tmp_int_Interlace1_v1610, err = r.ReadInteger(&uper.Constraint{Lb: 0, Ub: 9}, false); err != nil {
+			return utils.WrapError("Decode Interlace1_v1610", err)
 		}
-		ie.interlace1_v1610 = tmp_int_interlace1_v1610
-	case PUCCH_ResourceExt_v1610_format_v1610_Choice_occ_v1610:
-		ie.occ_v1610 = new(PUCCH_ResourceExt_v1610_format_v1610_occ_v1610)
-		if err = ie.occ_v1610.Decode(r); err != nil {
-			return utils.WrapError("Decode occ_v1610", err)
+		ie.Interlace1_v1610 = tmp_int_Interlace1_v1610
+	case PUCCH_ResourceExt_v1610_format_v1610_Choice_Occ_v1610:
+		ie.Occ_v1610 = new(PUCCH_ResourceExt_v1610_format_v1610_occ_v1610)
+		if err = ie.Occ_v1610.Decode(r); err != nil {
+			return utils.WrapError("Decode Occ_v1610", err)
 		}
 	default:
 		return fmt.Errorf("invalid choice: %d", ie.Choice)

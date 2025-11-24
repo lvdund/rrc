@@ -6,34 +6,34 @@ import (
 )
 
 type SIB17_IEs_r17 struct {
-	trs_ResourceSetConfig_r17 []TRS_ResourceSet_r17               `lb:1,ub:maxNrofTRS_ResourceSets_r17,madatory`
-	validityDuration_r17      *SIB17_IEs_r17_validityDuration_r17 `optional`
-	lateNonCriticalExtension  *[]byte                             `optional`
+	Trs_ResourceSetConfig_r17 []TRS_ResourceSet_r17               `lb:1,ub:maxNrofTRS_ResourceSets_r17,madatory`
+	ValidityDuration_r17      *SIB17_IEs_r17_validityDuration_r17 `optional`
+	LateNonCriticalExtension  *[]byte                             `optional`
 }
 
 func (ie *SIB17_IEs_r17) Encode(w *uper.UperWriter) error {
 	var err error
-	preambleBits := []bool{ie.validityDuration_r17 != nil, ie.lateNonCriticalExtension != nil}
+	preambleBits := []bool{ie.ValidityDuration_r17 != nil, ie.LateNonCriticalExtension != nil}
 	for _, bit := range preambleBits {
 		if err = w.WriteBool(bit); err != nil {
 			return err
 		}
 	}
-	tmp_trs_ResourceSetConfig_r17 := utils.NewSequence[*TRS_ResourceSet_r17]([]*TRS_ResourceSet_r17{}, uper.Constraint{Lb: 1, Ub: maxNrofTRS_ResourceSets_r17}, false)
-	for _, i := range ie.trs_ResourceSetConfig_r17 {
-		tmp_trs_ResourceSetConfig_r17.Value = append(tmp_trs_ResourceSetConfig_r17.Value, &i)
+	tmp_Trs_ResourceSetConfig_r17 := utils.NewSequence[*TRS_ResourceSet_r17]([]*TRS_ResourceSet_r17{}, uper.Constraint{Lb: 1, Ub: maxNrofTRS_ResourceSets_r17}, false)
+	for _, i := range ie.Trs_ResourceSetConfig_r17 {
+		tmp_Trs_ResourceSetConfig_r17.Value = append(tmp_Trs_ResourceSetConfig_r17.Value, &i)
 	}
-	if err = tmp_trs_ResourceSetConfig_r17.Encode(w); err != nil {
-		return utils.WrapError("Encode trs_ResourceSetConfig_r17", err)
+	if err = tmp_Trs_ResourceSetConfig_r17.Encode(w); err != nil {
+		return utils.WrapError("Encode Trs_ResourceSetConfig_r17", err)
 	}
-	if ie.validityDuration_r17 != nil {
-		if err = ie.validityDuration_r17.Encode(w); err != nil {
-			return utils.WrapError("Encode validityDuration_r17", err)
+	if ie.ValidityDuration_r17 != nil {
+		if err = ie.ValidityDuration_r17.Encode(w); err != nil {
+			return utils.WrapError("Encode ValidityDuration_r17", err)
 		}
 	}
-	if ie.lateNonCriticalExtension != nil {
-		if err = w.WriteOctetString(*ie.lateNonCriticalExtension, &uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
-			return utils.WrapError("Encode lateNonCriticalExtension", err)
+	if ie.LateNonCriticalExtension != nil {
+		if err = w.WriteOctetString(*ie.LateNonCriticalExtension, &uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+			return utils.WrapError("Encode LateNonCriticalExtension", err)
 		}
 	}
 	return nil
@@ -41,37 +41,37 @@ func (ie *SIB17_IEs_r17) Encode(w *uper.UperWriter) error {
 
 func (ie *SIB17_IEs_r17) Decode(r *uper.UperReader) error {
 	var err error
-	var validityDuration_r17Present bool
-	if validityDuration_r17Present, err = r.ReadBool(); err != nil {
+	var ValidityDuration_r17Present bool
+	if ValidityDuration_r17Present, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var lateNonCriticalExtensionPresent bool
-	if lateNonCriticalExtensionPresent, err = r.ReadBool(); err != nil {
+	var LateNonCriticalExtensionPresent bool
+	if LateNonCriticalExtensionPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	tmp_trs_ResourceSetConfig_r17 := utils.NewSequence[*TRS_ResourceSet_r17]([]*TRS_ResourceSet_r17{}, uper.Constraint{Lb: 1, Ub: maxNrofTRS_ResourceSets_r17}, false)
-	fn_trs_ResourceSetConfig_r17 := func() *TRS_ResourceSet_r17 {
+	tmp_Trs_ResourceSetConfig_r17 := utils.NewSequence[*TRS_ResourceSet_r17]([]*TRS_ResourceSet_r17{}, uper.Constraint{Lb: 1, Ub: maxNrofTRS_ResourceSets_r17}, false)
+	fn_Trs_ResourceSetConfig_r17 := func() *TRS_ResourceSet_r17 {
 		return new(TRS_ResourceSet_r17)
 	}
-	if err = tmp_trs_ResourceSetConfig_r17.Decode(r, fn_trs_ResourceSetConfig_r17); err != nil {
-		return utils.WrapError("Decode trs_ResourceSetConfig_r17", err)
+	if err = tmp_Trs_ResourceSetConfig_r17.Decode(r, fn_Trs_ResourceSetConfig_r17); err != nil {
+		return utils.WrapError("Decode Trs_ResourceSetConfig_r17", err)
 	}
-	ie.trs_ResourceSetConfig_r17 = []TRS_ResourceSet_r17{}
-	for _, i := range tmp_trs_ResourceSetConfig_r17.Value {
-		ie.trs_ResourceSetConfig_r17 = append(ie.trs_ResourceSetConfig_r17, *i)
+	ie.Trs_ResourceSetConfig_r17 = []TRS_ResourceSet_r17{}
+	for _, i := range tmp_Trs_ResourceSetConfig_r17.Value {
+		ie.Trs_ResourceSetConfig_r17 = append(ie.Trs_ResourceSetConfig_r17, *i)
 	}
-	if validityDuration_r17Present {
-		ie.validityDuration_r17 = new(SIB17_IEs_r17_validityDuration_r17)
-		if err = ie.validityDuration_r17.Decode(r); err != nil {
-			return utils.WrapError("Decode validityDuration_r17", err)
+	if ValidityDuration_r17Present {
+		ie.ValidityDuration_r17 = new(SIB17_IEs_r17_validityDuration_r17)
+		if err = ie.ValidityDuration_r17.Decode(r); err != nil {
+			return utils.WrapError("Decode ValidityDuration_r17", err)
 		}
 	}
-	if lateNonCriticalExtensionPresent {
-		var tmp_os_lateNonCriticalExtension []byte
-		if tmp_os_lateNonCriticalExtension, err = r.ReadOctetString(&uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
-			return utils.WrapError("Decode lateNonCriticalExtension", err)
+	if LateNonCriticalExtensionPresent {
+		var tmp_os_LateNonCriticalExtension []byte
+		if tmp_os_LateNonCriticalExtension, err = r.ReadOctetString(&uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+			return utils.WrapError("Decode LateNonCriticalExtension", err)
 		}
-		ie.lateNonCriticalExtension = &tmp_os_lateNonCriticalExtension
+		ie.LateNonCriticalExtension = &tmp_os_LateNonCriticalExtension
 	}
 	return nil
 }

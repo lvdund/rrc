@@ -8,32 +8,32 @@ import (
 )
 
 type SON_Parameters_r16 struct {
-	rach_Report_r16        *SON_Parameters_r16_rach_Report_r16        `optional`
-	rlfReportCHO_r17       *SON_Parameters_r16_rlfReportCHO_r17       `optional,ext-1`
-	rlfReportDAPS_r17      *SON_Parameters_r16_rlfReportDAPS_r17      `optional,ext-1`
-	success_HO_Report_r17  *SON_Parameters_r16_success_HO_Report_r17  `optional,ext-1`
-	twoStepRACH_Report_r17 *SON_Parameters_r16_twoStepRACH_Report_r17 `optional,ext-1`
-	pscell_MHI_Report_r17  *SON_Parameters_r16_pscell_MHI_Report_r17  `optional,ext-1`
-	onDemandSI_Report_r17  *SON_Parameters_r16_onDemandSI_Report_r17  `optional,ext-1`
+	Rach_Report_r16        *SON_Parameters_r16_rach_Report_r16        `optional`
+	RlfReportCHO_r17       *SON_Parameters_r16_rlfReportCHO_r17       `optional,ext-1`
+	RlfReportDAPS_r17      *SON_Parameters_r16_rlfReportDAPS_r17      `optional,ext-1`
+	Success_HO_Report_r17  *SON_Parameters_r16_success_HO_Report_r17  `optional,ext-1`
+	TwoStepRACH_Report_r17 *SON_Parameters_r16_twoStepRACH_Report_r17 `optional,ext-1`
+	Pscell_MHI_Report_r17  *SON_Parameters_r16_pscell_MHI_Report_r17  `optional,ext-1`
+	OnDemandSI_Report_r17  *SON_Parameters_r16_onDemandSI_Report_r17  `optional,ext-1`
 }
 
 func (ie *SON_Parameters_r16) Encode(w *uper.UperWriter) error {
 	var err error
-	hasExtensions := ie.rlfReportCHO_r17 != nil || ie.rlfReportDAPS_r17 != nil || ie.success_HO_Report_r17 != nil || ie.twoStepRACH_Report_r17 != nil || ie.pscell_MHI_Report_r17 != nil || ie.onDemandSI_Report_r17 != nil
-	preambleBits := []bool{hasExtensions, ie.rach_Report_r16 != nil}
+	hasExtensions := ie.RlfReportCHO_r17 != nil || ie.RlfReportDAPS_r17 != nil || ie.Success_HO_Report_r17 != nil || ie.TwoStepRACH_Report_r17 != nil || ie.Pscell_MHI_Report_r17 != nil || ie.OnDemandSI_Report_r17 != nil
+	preambleBits := []bool{hasExtensions, ie.Rach_Report_r16 != nil}
 	for _, bit := range preambleBits {
 		if err = w.WriteBool(bit); err != nil {
 			return err
 		}
 	}
-	if ie.rach_Report_r16 != nil {
-		if err = ie.rach_Report_r16.Encode(w); err != nil {
-			return utils.WrapError("Encode rach_Report_r16", err)
+	if ie.Rach_Report_r16 != nil {
+		if err = ie.Rach_Report_r16.Encode(w); err != nil {
+			return utils.WrapError("Encode Rach_Report_r16", err)
 		}
 	}
 	if hasExtensions {
 		// Extension bitmap: 1 bits for 1 extension groups
-		extBitmap := []bool{ie.rlfReportCHO_r17 != nil || ie.rlfReportDAPS_r17 != nil || ie.success_HO_Report_r17 != nil || ie.twoStepRACH_Report_r17 != nil || ie.pscell_MHI_Report_r17 != nil || ie.onDemandSI_Report_r17 != nil}
+		extBitmap := []bool{ie.RlfReportCHO_r17 != nil || ie.RlfReportDAPS_r17 != nil || ie.Success_HO_Report_r17 != nil || ie.TwoStepRACH_Report_r17 != nil || ie.Pscell_MHI_Report_r17 != nil || ie.OnDemandSI_Report_r17 != nil}
 		if err := w.WriteExtBitMap(extBitmap); err != nil {
 			return utils.WrapError("WriteExtBitMap SON_Parameters_r16", err)
 		}
@@ -44,47 +44,47 @@ func (ie *SON_Parameters_r16) Encode(w *uper.UperWriter) error {
 			extWriter := uper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 1
-			optionals_ext_1 := []bool{ie.rlfReportCHO_r17 != nil, ie.rlfReportDAPS_r17 != nil, ie.success_HO_Report_r17 != nil, ie.twoStepRACH_Report_r17 != nil, ie.pscell_MHI_Report_r17 != nil, ie.onDemandSI_Report_r17 != nil}
+			optionals_ext_1 := []bool{ie.RlfReportCHO_r17 != nil, ie.RlfReportDAPS_r17 != nil, ie.Success_HO_Report_r17 != nil, ie.TwoStepRACH_Report_r17 != nil, ie.Pscell_MHI_Report_r17 != nil, ie.OnDemandSI_Report_r17 != nil}
 			for _, bit := range optionals_ext_1 {
 				if err := extWriter.WriteBool(bit); err != nil {
 					return err
 				}
 			}
 
-			// encode rlfReportCHO_r17 optional
-			if ie.rlfReportCHO_r17 != nil {
-				if err = ie.rlfReportCHO_r17.Encode(extWriter); err != nil {
-					return utils.WrapError("Encode rlfReportCHO_r17", err)
+			// encode RlfReportCHO_r17 optional
+			if ie.RlfReportCHO_r17 != nil {
+				if err = ie.RlfReportCHO_r17.Encode(extWriter); err != nil {
+					return utils.WrapError("Encode RlfReportCHO_r17", err)
 				}
 			}
-			// encode rlfReportDAPS_r17 optional
-			if ie.rlfReportDAPS_r17 != nil {
-				if err = ie.rlfReportDAPS_r17.Encode(extWriter); err != nil {
-					return utils.WrapError("Encode rlfReportDAPS_r17", err)
+			// encode RlfReportDAPS_r17 optional
+			if ie.RlfReportDAPS_r17 != nil {
+				if err = ie.RlfReportDAPS_r17.Encode(extWriter); err != nil {
+					return utils.WrapError("Encode RlfReportDAPS_r17", err)
 				}
 			}
-			// encode success_HO_Report_r17 optional
-			if ie.success_HO_Report_r17 != nil {
-				if err = ie.success_HO_Report_r17.Encode(extWriter); err != nil {
-					return utils.WrapError("Encode success_HO_Report_r17", err)
+			// encode Success_HO_Report_r17 optional
+			if ie.Success_HO_Report_r17 != nil {
+				if err = ie.Success_HO_Report_r17.Encode(extWriter); err != nil {
+					return utils.WrapError("Encode Success_HO_Report_r17", err)
 				}
 			}
-			// encode twoStepRACH_Report_r17 optional
-			if ie.twoStepRACH_Report_r17 != nil {
-				if err = ie.twoStepRACH_Report_r17.Encode(extWriter); err != nil {
-					return utils.WrapError("Encode twoStepRACH_Report_r17", err)
+			// encode TwoStepRACH_Report_r17 optional
+			if ie.TwoStepRACH_Report_r17 != nil {
+				if err = ie.TwoStepRACH_Report_r17.Encode(extWriter); err != nil {
+					return utils.WrapError("Encode TwoStepRACH_Report_r17", err)
 				}
 			}
-			// encode pscell_MHI_Report_r17 optional
-			if ie.pscell_MHI_Report_r17 != nil {
-				if err = ie.pscell_MHI_Report_r17.Encode(extWriter); err != nil {
-					return utils.WrapError("Encode pscell_MHI_Report_r17", err)
+			// encode Pscell_MHI_Report_r17 optional
+			if ie.Pscell_MHI_Report_r17 != nil {
+				if err = ie.Pscell_MHI_Report_r17.Encode(extWriter); err != nil {
+					return utils.WrapError("Encode Pscell_MHI_Report_r17", err)
 				}
 			}
-			// encode onDemandSI_Report_r17 optional
-			if ie.onDemandSI_Report_r17 != nil {
-				if err = ie.onDemandSI_Report_r17.Encode(extWriter); err != nil {
-					return utils.WrapError("Encode onDemandSI_Report_r17", err)
+			// encode OnDemandSI_Report_r17 optional
+			if ie.OnDemandSI_Report_r17 != nil {
+				if err = ie.OnDemandSI_Report_r17.Encode(extWriter); err != nil {
+					return utils.WrapError("Encode OnDemandSI_Report_r17", err)
 				}
 			}
 
@@ -106,14 +106,14 @@ func (ie *SON_Parameters_r16) Decode(r *uper.UperReader) error {
 	if extensionBit, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var rach_Report_r16Present bool
-	if rach_Report_r16Present, err = r.ReadBool(); err != nil {
+	var Rach_Report_r16Present bool
+	if Rach_Report_r16Present, err = r.ReadBool(); err != nil {
 		return err
 	}
-	if rach_Report_r16Present {
-		ie.rach_Report_r16 = new(SON_Parameters_r16_rach_Report_r16)
-		if err = ie.rach_Report_r16.Decode(r); err != nil {
-			return utils.WrapError("Decode rach_Report_r16", err)
+	if Rach_Report_r16Present {
+		ie.Rach_Report_r16 = new(SON_Parameters_r16_rach_Report_r16)
+		if err = ie.Rach_Report_r16.Decode(r); err != nil {
+			return utils.WrapError("Decode Rach_Report_r16", err)
 		}
 	}
 
@@ -133,70 +133,70 @@ func (ie *SON_Parameters_r16) Decode(r *uper.UperReader) error {
 
 			extReader := uper.NewReader(bytes.NewReader(extBytes))
 
-			rlfReportCHO_r17Present, err := extReader.ReadBool()
+			RlfReportCHO_r17Present, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			rlfReportDAPS_r17Present, err := extReader.ReadBool()
+			RlfReportDAPS_r17Present, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			success_HO_Report_r17Present, err := extReader.ReadBool()
+			Success_HO_Report_r17Present, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			twoStepRACH_Report_r17Present, err := extReader.ReadBool()
+			TwoStepRACH_Report_r17Present, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			pscell_MHI_Report_r17Present, err := extReader.ReadBool()
+			Pscell_MHI_Report_r17Present, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			onDemandSI_Report_r17Present, err := extReader.ReadBool()
+			OnDemandSI_Report_r17Present, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			// decode rlfReportCHO_r17 optional
-			if rlfReportCHO_r17Present {
-				ie.rlfReportCHO_r17 = new(SON_Parameters_r16_rlfReportCHO_r17)
-				if err = ie.rlfReportCHO_r17.Decode(extReader); err != nil {
-					return utils.WrapError("Decode rlfReportCHO_r17", err)
+			// decode RlfReportCHO_r17 optional
+			if RlfReportCHO_r17Present {
+				ie.RlfReportCHO_r17 = new(SON_Parameters_r16_rlfReportCHO_r17)
+				if err = ie.RlfReportCHO_r17.Decode(extReader); err != nil {
+					return utils.WrapError("Decode RlfReportCHO_r17", err)
 				}
 			}
-			// decode rlfReportDAPS_r17 optional
-			if rlfReportDAPS_r17Present {
-				ie.rlfReportDAPS_r17 = new(SON_Parameters_r16_rlfReportDAPS_r17)
-				if err = ie.rlfReportDAPS_r17.Decode(extReader); err != nil {
-					return utils.WrapError("Decode rlfReportDAPS_r17", err)
+			// decode RlfReportDAPS_r17 optional
+			if RlfReportDAPS_r17Present {
+				ie.RlfReportDAPS_r17 = new(SON_Parameters_r16_rlfReportDAPS_r17)
+				if err = ie.RlfReportDAPS_r17.Decode(extReader); err != nil {
+					return utils.WrapError("Decode RlfReportDAPS_r17", err)
 				}
 			}
-			// decode success_HO_Report_r17 optional
-			if success_HO_Report_r17Present {
-				ie.success_HO_Report_r17 = new(SON_Parameters_r16_success_HO_Report_r17)
-				if err = ie.success_HO_Report_r17.Decode(extReader); err != nil {
-					return utils.WrapError("Decode success_HO_Report_r17", err)
+			// decode Success_HO_Report_r17 optional
+			if Success_HO_Report_r17Present {
+				ie.Success_HO_Report_r17 = new(SON_Parameters_r16_success_HO_Report_r17)
+				if err = ie.Success_HO_Report_r17.Decode(extReader); err != nil {
+					return utils.WrapError("Decode Success_HO_Report_r17", err)
 				}
 			}
-			// decode twoStepRACH_Report_r17 optional
-			if twoStepRACH_Report_r17Present {
-				ie.twoStepRACH_Report_r17 = new(SON_Parameters_r16_twoStepRACH_Report_r17)
-				if err = ie.twoStepRACH_Report_r17.Decode(extReader); err != nil {
-					return utils.WrapError("Decode twoStepRACH_Report_r17", err)
+			// decode TwoStepRACH_Report_r17 optional
+			if TwoStepRACH_Report_r17Present {
+				ie.TwoStepRACH_Report_r17 = new(SON_Parameters_r16_twoStepRACH_Report_r17)
+				if err = ie.TwoStepRACH_Report_r17.Decode(extReader); err != nil {
+					return utils.WrapError("Decode TwoStepRACH_Report_r17", err)
 				}
 			}
-			// decode pscell_MHI_Report_r17 optional
-			if pscell_MHI_Report_r17Present {
-				ie.pscell_MHI_Report_r17 = new(SON_Parameters_r16_pscell_MHI_Report_r17)
-				if err = ie.pscell_MHI_Report_r17.Decode(extReader); err != nil {
-					return utils.WrapError("Decode pscell_MHI_Report_r17", err)
+			// decode Pscell_MHI_Report_r17 optional
+			if Pscell_MHI_Report_r17Present {
+				ie.Pscell_MHI_Report_r17 = new(SON_Parameters_r16_pscell_MHI_Report_r17)
+				if err = ie.Pscell_MHI_Report_r17.Decode(extReader); err != nil {
+					return utils.WrapError("Decode Pscell_MHI_Report_r17", err)
 				}
 			}
-			// decode onDemandSI_Report_r17 optional
-			if onDemandSI_Report_r17Present {
-				ie.onDemandSI_Report_r17 = new(SON_Parameters_r16_onDemandSI_Report_r17)
-				if err = ie.onDemandSI_Report_r17.Decode(extReader); err != nil {
-					return utils.WrapError("Decode onDemandSI_Report_r17", err)
+			// decode OnDemandSI_Report_r17 optional
+			if OnDemandSI_Report_r17Present {
+				ie.OnDemandSI_Report_r17 = new(SON_Parameters_r16_onDemandSI_Report_r17)
+				if err = ie.OnDemandSI_Report_r17.Decode(extReader); err != nil {
+					return utils.WrapError("Decode OnDemandSI_Report_r17", err)
 				}
 			}
 		}

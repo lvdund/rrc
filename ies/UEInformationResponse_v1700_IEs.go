@@ -6,33 +6,33 @@ import (
 )
 
 type UEInformationResponse_v1700_IEs struct {
-	successHO_Report_r17      *SuccessHO_Report_r17      `optional`
-	connEstFailReportList_r17 *ConnEstFailReportList_r17 `optional`
-	coarseLocationInfo_r17    *[]byte                    `optional`
-	nonCriticalExtension      interface{}                `optional`
+	SuccessHO_Report_r17      *SuccessHO_Report_r17      `optional`
+	ConnEstFailReportList_r17 *ConnEstFailReportList_r17 `optional`
+	CoarseLocationInfo_r17    *[]byte                    `optional`
+	NonCriticalExtension      interface{}                `optional`
 }
 
 func (ie *UEInformationResponse_v1700_IEs) Encode(w *uper.UperWriter) error {
 	var err error
-	preambleBits := []bool{ie.successHO_Report_r17 != nil, ie.connEstFailReportList_r17 != nil, ie.coarseLocationInfo_r17 != nil}
+	preambleBits := []bool{ie.SuccessHO_Report_r17 != nil, ie.ConnEstFailReportList_r17 != nil, ie.CoarseLocationInfo_r17 != nil}
 	for _, bit := range preambleBits {
 		if err = w.WriteBool(bit); err != nil {
 			return err
 		}
 	}
-	if ie.successHO_Report_r17 != nil {
-		if err = ie.successHO_Report_r17.Encode(w); err != nil {
-			return utils.WrapError("Encode successHO_Report_r17", err)
+	if ie.SuccessHO_Report_r17 != nil {
+		if err = ie.SuccessHO_Report_r17.Encode(w); err != nil {
+			return utils.WrapError("Encode SuccessHO_Report_r17", err)
 		}
 	}
-	if ie.connEstFailReportList_r17 != nil {
-		if err = ie.connEstFailReportList_r17.Encode(w); err != nil {
-			return utils.WrapError("Encode connEstFailReportList_r17", err)
+	if ie.ConnEstFailReportList_r17 != nil {
+		if err = ie.ConnEstFailReportList_r17.Encode(w); err != nil {
+			return utils.WrapError("Encode ConnEstFailReportList_r17", err)
 		}
 	}
-	if ie.coarseLocationInfo_r17 != nil {
-		if err = w.WriteOctetString(*ie.coarseLocationInfo_r17, &uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
-			return utils.WrapError("Encode coarseLocationInfo_r17", err)
+	if ie.CoarseLocationInfo_r17 != nil {
+		if err = w.WriteOctetString(*ie.CoarseLocationInfo_r17, &uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+			return utils.WrapError("Encode CoarseLocationInfo_r17", err)
 		}
 	}
 	return nil
@@ -40,36 +40,36 @@ func (ie *UEInformationResponse_v1700_IEs) Encode(w *uper.UperWriter) error {
 
 func (ie *UEInformationResponse_v1700_IEs) Decode(r *uper.UperReader) error {
 	var err error
-	var successHO_Report_r17Present bool
-	if successHO_Report_r17Present, err = r.ReadBool(); err != nil {
+	var SuccessHO_Report_r17Present bool
+	if SuccessHO_Report_r17Present, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var connEstFailReportList_r17Present bool
-	if connEstFailReportList_r17Present, err = r.ReadBool(); err != nil {
+	var ConnEstFailReportList_r17Present bool
+	if ConnEstFailReportList_r17Present, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var coarseLocationInfo_r17Present bool
-	if coarseLocationInfo_r17Present, err = r.ReadBool(); err != nil {
+	var CoarseLocationInfo_r17Present bool
+	if CoarseLocationInfo_r17Present, err = r.ReadBool(); err != nil {
 		return err
 	}
-	if successHO_Report_r17Present {
-		ie.successHO_Report_r17 = new(SuccessHO_Report_r17)
-		if err = ie.successHO_Report_r17.Decode(r); err != nil {
-			return utils.WrapError("Decode successHO_Report_r17", err)
+	if SuccessHO_Report_r17Present {
+		ie.SuccessHO_Report_r17 = new(SuccessHO_Report_r17)
+		if err = ie.SuccessHO_Report_r17.Decode(r); err != nil {
+			return utils.WrapError("Decode SuccessHO_Report_r17", err)
 		}
 	}
-	if connEstFailReportList_r17Present {
-		ie.connEstFailReportList_r17 = new(ConnEstFailReportList_r17)
-		if err = ie.connEstFailReportList_r17.Decode(r); err != nil {
-			return utils.WrapError("Decode connEstFailReportList_r17", err)
+	if ConnEstFailReportList_r17Present {
+		ie.ConnEstFailReportList_r17 = new(ConnEstFailReportList_r17)
+		if err = ie.ConnEstFailReportList_r17.Decode(r); err != nil {
+			return utils.WrapError("Decode ConnEstFailReportList_r17", err)
 		}
 	}
-	if coarseLocationInfo_r17Present {
-		var tmp_os_coarseLocationInfo_r17 []byte
-		if tmp_os_coarseLocationInfo_r17, err = r.ReadOctetString(&uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
-			return utils.WrapError("Decode coarseLocationInfo_r17", err)
+	if CoarseLocationInfo_r17Present {
+		var tmp_os_CoarseLocationInfo_r17 []byte
+		if tmp_os_CoarseLocationInfo_r17, err = r.ReadOctetString(&uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+			return utils.WrapError("Decode CoarseLocationInfo_r17", err)
 		}
-		ie.coarseLocationInfo_r17 = &tmp_os_coarseLocationInfo_r17
+		ie.CoarseLocationInfo_r17 = &tmp_os_CoarseLocationInfo_r17
 	}
 	return nil
 }

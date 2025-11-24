@@ -8,33 +8,33 @@ import (
 )
 
 type UplinkTxDirectCurrentCell struct {
-	servCellIndex              ServCellIndex              `madatory`
-	uplinkDirectCurrentBWP     []UplinkTxDirectCurrentBWP `lb:1,ub:maxNrofBWPs,madatory`
-	uplinkDirectCurrentBWP_SUL []UplinkTxDirectCurrentBWP `lb:1,ub:maxNrofBWPs,optional,ext-1`
+	ServCellIndex              ServCellIndex              `madatory`
+	UplinkDirectCurrentBWP     []UplinkTxDirectCurrentBWP `lb:1,ub:maxNrofBWPs,madatory`
+	UplinkDirectCurrentBWP_SUL []UplinkTxDirectCurrentBWP `lb:1,ub:maxNrofBWPs,optional,ext-1`
 }
 
 func (ie *UplinkTxDirectCurrentCell) Encode(w *uper.UperWriter) error {
 	var err error
-	hasExtensions := len(ie.uplinkDirectCurrentBWP_SUL) > 0
+	hasExtensions := len(ie.UplinkDirectCurrentBWP_SUL) > 0
 	preambleBits := []bool{hasExtensions}
 	for _, bit := range preambleBits {
 		if err = w.WriteBool(bit); err != nil {
 			return err
 		}
 	}
-	if err = ie.servCellIndex.Encode(w); err != nil {
-		return utils.WrapError("Encode servCellIndex", err)
+	if err = ie.ServCellIndex.Encode(w); err != nil {
+		return utils.WrapError("Encode ServCellIndex", err)
 	}
-	tmp_uplinkDirectCurrentBWP := utils.NewSequence[*UplinkTxDirectCurrentBWP]([]*UplinkTxDirectCurrentBWP{}, uper.Constraint{Lb: 1, Ub: maxNrofBWPs}, false)
-	for _, i := range ie.uplinkDirectCurrentBWP {
-		tmp_uplinkDirectCurrentBWP.Value = append(tmp_uplinkDirectCurrentBWP.Value, &i)
+	tmp_UplinkDirectCurrentBWP := utils.NewSequence[*UplinkTxDirectCurrentBWP]([]*UplinkTxDirectCurrentBWP{}, uper.Constraint{Lb: 1, Ub: maxNrofBWPs}, false)
+	for _, i := range ie.UplinkDirectCurrentBWP {
+		tmp_UplinkDirectCurrentBWP.Value = append(tmp_UplinkDirectCurrentBWP.Value, &i)
 	}
-	if err = tmp_uplinkDirectCurrentBWP.Encode(w); err != nil {
-		return utils.WrapError("Encode uplinkDirectCurrentBWP", err)
+	if err = tmp_UplinkDirectCurrentBWP.Encode(w); err != nil {
+		return utils.WrapError("Encode UplinkDirectCurrentBWP", err)
 	}
 	if hasExtensions {
 		// Extension bitmap: 1 bits for 1 extension groups
-		extBitmap := []bool{len(ie.uplinkDirectCurrentBWP_SUL) > 0}
+		extBitmap := []bool{len(ie.UplinkDirectCurrentBWP_SUL) > 0}
 		if err := w.WriteExtBitMap(extBitmap); err != nil {
 			return utils.WrapError("WriteExtBitMap UplinkTxDirectCurrentCell", err)
 		}
@@ -45,21 +45,21 @@ func (ie *UplinkTxDirectCurrentCell) Encode(w *uper.UperWriter) error {
 			extWriter := uper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 1
-			optionals_ext_1 := []bool{len(ie.uplinkDirectCurrentBWP_SUL) > 0}
+			optionals_ext_1 := []bool{len(ie.UplinkDirectCurrentBWP_SUL) > 0}
 			for _, bit := range optionals_ext_1 {
 				if err := extWriter.WriteBool(bit); err != nil {
 					return err
 				}
 			}
 
-			// encode uplinkDirectCurrentBWP_SUL optional
-			if len(ie.uplinkDirectCurrentBWP_SUL) > 0 {
-				tmp_uplinkDirectCurrentBWP_SUL := utils.NewSequence[*UplinkTxDirectCurrentBWP]([]*UplinkTxDirectCurrentBWP{}, uper.Constraint{Lb: 1, Ub: maxNrofBWPs}, false)
-				for _, i := range ie.uplinkDirectCurrentBWP_SUL {
-					tmp_uplinkDirectCurrentBWP_SUL.Value = append(tmp_uplinkDirectCurrentBWP_SUL.Value, &i)
+			// encode UplinkDirectCurrentBWP_SUL optional
+			if len(ie.UplinkDirectCurrentBWP_SUL) > 0 {
+				tmp_UplinkDirectCurrentBWP_SUL := utils.NewSequence[*UplinkTxDirectCurrentBWP]([]*UplinkTxDirectCurrentBWP{}, uper.Constraint{Lb: 1, Ub: maxNrofBWPs}, false)
+				for _, i := range ie.UplinkDirectCurrentBWP_SUL {
+					tmp_UplinkDirectCurrentBWP_SUL.Value = append(tmp_UplinkDirectCurrentBWP_SUL.Value, &i)
 				}
-				if err = tmp_uplinkDirectCurrentBWP_SUL.Encode(extWriter); err != nil {
-					return utils.WrapError("Encode uplinkDirectCurrentBWP_SUL", err)
+				if err = tmp_UplinkDirectCurrentBWP_SUL.Encode(extWriter); err != nil {
+					return utils.WrapError("Encode UplinkDirectCurrentBWP_SUL", err)
 				}
 			}
 
@@ -81,19 +81,19 @@ func (ie *UplinkTxDirectCurrentCell) Decode(r *uper.UperReader) error {
 	if extensionBit, err = r.ReadBool(); err != nil {
 		return err
 	}
-	if err = ie.servCellIndex.Decode(r); err != nil {
-		return utils.WrapError("Decode servCellIndex", err)
+	if err = ie.ServCellIndex.Decode(r); err != nil {
+		return utils.WrapError("Decode ServCellIndex", err)
 	}
-	tmp_uplinkDirectCurrentBWP := utils.NewSequence[*UplinkTxDirectCurrentBWP]([]*UplinkTxDirectCurrentBWP{}, uper.Constraint{Lb: 1, Ub: maxNrofBWPs}, false)
-	fn_uplinkDirectCurrentBWP := func() *UplinkTxDirectCurrentBWP {
+	tmp_UplinkDirectCurrentBWP := utils.NewSequence[*UplinkTxDirectCurrentBWP]([]*UplinkTxDirectCurrentBWP{}, uper.Constraint{Lb: 1, Ub: maxNrofBWPs}, false)
+	fn_UplinkDirectCurrentBWP := func() *UplinkTxDirectCurrentBWP {
 		return new(UplinkTxDirectCurrentBWP)
 	}
-	if err = tmp_uplinkDirectCurrentBWP.Decode(r, fn_uplinkDirectCurrentBWP); err != nil {
-		return utils.WrapError("Decode uplinkDirectCurrentBWP", err)
+	if err = tmp_UplinkDirectCurrentBWP.Decode(r, fn_UplinkDirectCurrentBWP); err != nil {
+		return utils.WrapError("Decode UplinkDirectCurrentBWP", err)
 	}
-	ie.uplinkDirectCurrentBWP = []UplinkTxDirectCurrentBWP{}
-	for _, i := range tmp_uplinkDirectCurrentBWP.Value {
-		ie.uplinkDirectCurrentBWP = append(ie.uplinkDirectCurrentBWP, *i)
+	ie.UplinkDirectCurrentBWP = []UplinkTxDirectCurrentBWP{}
+	for _, i := range tmp_UplinkDirectCurrentBWP.Value {
+		ie.UplinkDirectCurrentBWP = append(ie.UplinkDirectCurrentBWP, *i)
 	}
 
 	if extensionBit {
@@ -112,22 +112,22 @@ func (ie *UplinkTxDirectCurrentCell) Decode(r *uper.UperReader) error {
 
 			extReader := uper.NewReader(bytes.NewReader(extBytes))
 
-			uplinkDirectCurrentBWP_SULPresent, err := extReader.ReadBool()
+			UplinkDirectCurrentBWP_SULPresent, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			// decode uplinkDirectCurrentBWP_SUL optional
-			if uplinkDirectCurrentBWP_SULPresent {
-				tmp_uplinkDirectCurrentBWP_SUL := utils.NewSequence[*UplinkTxDirectCurrentBWP]([]*UplinkTxDirectCurrentBWP{}, uper.Constraint{Lb: 1, Ub: maxNrofBWPs}, false)
-				fn_uplinkDirectCurrentBWP_SUL := func() *UplinkTxDirectCurrentBWP {
+			// decode UplinkDirectCurrentBWP_SUL optional
+			if UplinkDirectCurrentBWP_SULPresent {
+				tmp_UplinkDirectCurrentBWP_SUL := utils.NewSequence[*UplinkTxDirectCurrentBWP]([]*UplinkTxDirectCurrentBWP{}, uper.Constraint{Lb: 1, Ub: maxNrofBWPs}, false)
+				fn_UplinkDirectCurrentBWP_SUL := func() *UplinkTxDirectCurrentBWP {
 					return new(UplinkTxDirectCurrentBWP)
 				}
-				if err = tmp_uplinkDirectCurrentBWP_SUL.Decode(extReader, fn_uplinkDirectCurrentBWP_SUL); err != nil {
-					return utils.WrapError("Decode uplinkDirectCurrentBWP_SUL", err)
+				if err = tmp_UplinkDirectCurrentBWP_SUL.Decode(extReader, fn_UplinkDirectCurrentBWP_SUL); err != nil {
+					return utils.WrapError("Decode UplinkDirectCurrentBWP_SUL", err)
 				}
-				ie.uplinkDirectCurrentBWP_SUL = []UplinkTxDirectCurrentBWP{}
-				for _, i := range tmp_uplinkDirectCurrentBWP_SUL.Value {
-					ie.uplinkDirectCurrentBWP_SUL = append(ie.uplinkDirectCurrentBWP_SUL, *i)
+				ie.UplinkDirectCurrentBWP_SUL = []UplinkTxDirectCurrentBWP{}
+				for _, i := range tmp_UplinkDirectCurrentBWP_SUL.Value {
+					ie.UplinkDirectCurrentBWP_SUL = append(ie.UplinkDirectCurrentBWP_SUL, *i)
 				}
 			}
 		}

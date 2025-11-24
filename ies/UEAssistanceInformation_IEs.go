@@ -6,32 +6,32 @@ import (
 )
 
 type UEAssistanceInformation_IEs struct {
-	delayBudgetReport        *DelayBudgetReport                 `optional`
-	lateNonCriticalExtension *[]byte                            `optional`
-	nonCriticalExtension     *UEAssistanceInformation_v1540_IEs `optional`
+	DelayBudgetReport        *DelayBudgetReport                 `optional`
+	LateNonCriticalExtension *[]byte                            `optional`
+	NonCriticalExtension     *UEAssistanceInformation_v1540_IEs `optional`
 }
 
 func (ie *UEAssistanceInformation_IEs) Encode(w *uper.UperWriter) error {
 	var err error
-	preambleBits := []bool{ie.delayBudgetReport != nil, ie.lateNonCriticalExtension != nil, ie.nonCriticalExtension != nil}
+	preambleBits := []bool{ie.DelayBudgetReport != nil, ie.LateNonCriticalExtension != nil, ie.NonCriticalExtension != nil}
 	for _, bit := range preambleBits {
 		if err = w.WriteBool(bit); err != nil {
 			return err
 		}
 	}
-	if ie.delayBudgetReport != nil {
-		if err = ie.delayBudgetReport.Encode(w); err != nil {
-			return utils.WrapError("Encode delayBudgetReport", err)
+	if ie.DelayBudgetReport != nil {
+		if err = ie.DelayBudgetReport.Encode(w); err != nil {
+			return utils.WrapError("Encode DelayBudgetReport", err)
 		}
 	}
-	if ie.lateNonCriticalExtension != nil {
-		if err = w.WriteOctetString(*ie.lateNonCriticalExtension, &uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
-			return utils.WrapError("Encode lateNonCriticalExtension", err)
+	if ie.LateNonCriticalExtension != nil {
+		if err = w.WriteOctetString(*ie.LateNonCriticalExtension, &uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+			return utils.WrapError("Encode LateNonCriticalExtension", err)
 		}
 	}
-	if ie.nonCriticalExtension != nil {
-		if err = ie.nonCriticalExtension.Encode(w); err != nil {
-			return utils.WrapError("Encode nonCriticalExtension", err)
+	if ie.NonCriticalExtension != nil {
+		if err = ie.NonCriticalExtension.Encode(w); err != nil {
+			return utils.WrapError("Encode NonCriticalExtension", err)
 		}
 	}
 	return nil
@@ -39,35 +39,35 @@ func (ie *UEAssistanceInformation_IEs) Encode(w *uper.UperWriter) error {
 
 func (ie *UEAssistanceInformation_IEs) Decode(r *uper.UperReader) error {
 	var err error
-	var delayBudgetReportPresent bool
-	if delayBudgetReportPresent, err = r.ReadBool(); err != nil {
+	var DelayBudgetReportPresent bool
+	if DelayBudgetReportPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var lateNonCriticalExtensionPresent bool
-	if lateNonCriticalExtensionPresent, err = r.ReadBool(); err != nil {
+	var LateNonCriticalExtensionPresent bool
+	if LateNonCriticalExtensionPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var nonCriticalExtensionPresent bool
-	if nonCriticalExtensionPresent, err = r.ReadBool(); err != nil {
+	var NonCriticalExtensionPresent bool
+	if NonCriticalExtensionPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	if delayBudgetReportPresent {
-		ie.delayBudgetReport = new(DelayBudgetReport)
-		if err = ie.delayBudgetReport.Decode(r); err != nil {
-			return utils.WrapError("Decode delayBudgetReport", err)
+	if DelayBudgetReportPresent {
+		ie.DelayBudgetReport = new(DelayBudgetReport)
+		if err = ie.DelayBudgetReport.Decode(r); err != nil {
+			return utils.WrapError("Decode DelayBudgetReport", err)
 		}
 	}
-	if lateNonCriticalExtensionPresent {
-		var tmp_os_lateNonCriticalExtension []byte
-		if tmp_os_lateNonCriticalExtension, err = r.ReadOctetString(&uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
-			return utils.WrapError("Decode lateNonCriticalExtension", err)
+	if LateNonCriticalExtensionPresent {
+		var tmp_os_LateNonCriticalExtension []byte
+		if tmp_os_LateNonCriticalExtension, err = r.ReadOctetString(&uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+			return utils.WrapError("Decode LateNonCriticalExtension", err)
 		}
-		ie.lateNonCriticalExtension = &tmp_os_lateNonCriticalExtension
+		ie.LateNonCriticalExtension = &tmp_os_LateNonCriticalExtension
 	}
-	if nonCriticalExtensionPresent {
-		ie.nonCriticalExtension = new(UEAssistanceInformation_v1540_IEs)
-		if err = ie.nonCriticalExtension.Decode(r); err != nil {
-			return utils.WrapError("Decode nonCriticalExtension", err)
+	if NonCriticalExtensionPresent {
+		ie.NonCriticalExtension = new(UEAssistanceInformation_v1540_IEs)
+		if err = ie.NonCriticalExtension.Decode(r); err != nil {
+			return utils.WrapError("Decode NonCriticalExtension", err)
 		}
 	}
 	return nil

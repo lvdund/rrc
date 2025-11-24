@@ -8,38 +8,38 @@ import (
 )
 
 type MeasAndMobParametersXDD_Diff struct {
-	intraAndInterF_MeasAndReport *MeasAndMobParametersXDD_Diff_intraAndInterF_MeasAndReport `optional`
-	eventA_MeasAndReport         *MeasAndMobParametersXDD_Diff_eventA_MeasAndReport         `optional`
-	handoverInterF               *MeasAndMobParametersXDD_Diff_handoverInterF               `optional,ext-1`
-	handoverLTE_EPC              *MeasAndMobParametersXDD_Diff_handoverLTE_EPC              `optional,ext-1`
-	handoverLTE_5GC              *MeasAndMobParametersXDD_Diff_handoverLTE_5GC              `optional,ext-1`
-	sftd_MeasNR_Neigh            *MeasAndMobParametersXDD_Diff_sftd_MeasNR_Neigh            `optional,ext-2`
-	sftd_MeasNR_Neigh_DRX        *MeasAndMobParametersXDD_Diff_sftd_MeasNR_Neigh_DRX        `optional,ext-2`
-	dummy                        *MeasAndMobParametersXDD_Diff_dummy                        `optional,ext-3`
+	IntraAndInterF_MeasAndReport *MeasAndMobParametersXDD_Diff_intraAndInterF_MeasAndReport `optional`
+	EventA_MeasAndReport         *MeasAndMobParametersXDD_Diff_eventA_MeasAndReport         `optional`
+	HandoverInterF               *MeasAndMobParametersXDD_Diff_handoverInterF               `optional,ext-1`
+	HandoverLTE_EPC              *MeasAndMobParametersXDD_Diff_handoverLTE_EPC              `optional,ext-1`
+	HandoverLTE_5GC              *MeasAndMobParametersXDD_Diff_handoverLTE_5GC              `optional,ext-1`
+	Sftd_MeasNR_Neigh            *MeasAndMobParametersXDD_Diff_sftd_MeasNR_Neigh            `optional,ext-2`
+	Sftd_MeasNR_Neigh_DRX        *MeasAndMobParametersXDD_Diff_sftd_MeasNR_Neigh_DRX        `optional,ext-2`
+	Dummy                        *MeasAndMobParametersXDD_Diff_dummy                        `optional,ext-3`
 }
 
 func (ie *MeasAndMobParametersXDD_Diff) Encode(w *uper.UperWriter) error {
 	var err error
-	hasExtensions := ie.handoverInterF != nil || ie.handoverLTE_EPC != nil || ie.handoverLTE_5GC != nil || ie.sftd_MeasNR_Neigh != nil || ie.sftd_MeasNR_Neigh_DRX != nil || ie.dummy != nil
-	preambleBits := []bool{hasExtensions, ie.intraAndInterF_MeasAndReport != nil, ie.eventA_MeasAndReport != nil}
+	hasExtensions := ie.HandoverInterF != nil || ie.HandoverLTE_EPC != nil || ie.HandoverLTE_5GC != nil || ie.Sftd_MeasNR_Neigh != nil || ie.Sftd_MeasNR_Neigh_DRX != nil || ie.Dummy != nil
+	preambleBits := []bool{hasExtensions, ie.IntraAndInterF_MeasAndReport != nil, ie.EventA_MeasAndReport != nil}
 	for _, bit := range preambleBits {
 		if err = w.WriteBool(bit); err != nil {
 			return err
 		}
 	}
-	if ie.intraAndInterF_MeasAndReport != nil {
-		if err = ie.intraAndInterF_MeasAndReport.Encode(w); err != nil {
-			return utils.WrapError("Encode intraAndInterF_MeasAndReport", err)
+	if ie.IntraAndInterF_MeasAndReport != nil {
+		if err = ie.IntraAndInterF_MeasAndReport.Encode(w); err != nil {
+			return utils.WrapError("Encode IntraAndInterF_MeasAndReport", err)
 		}
 	}
-	if ie.eventA_MeasAndReport != nil {
-		if err = ie.eventA_MeasAndReport.Encode(w); err != nil {
-			return utils.WrapError("Encode eventA_MeasAndReport", err)
+	if ie.EventA_MeasAndReport != nil {
+		if err = ie.EventA_MeasAndReport.Encode(w); err != nil {
+			return utils.WrapError("Encode EventA_MeasAndReport", err)
 		}
 	}
 	if hasExtensions {
 		// Extension bitmap: 3 bits for 3 extension groups
-		extBitmap := []bool{ie.handoverInterF != nil || ie.handoverLTE_EPC != nil || ie.handoverLTE_5GC != nil, ie.sftd_MeasNR_Neigh != nil || ie.sftd_MeasNR_Neigh_DRX != nil, ie.dummy != nil}
+		extBitmap := []bool{ie.HandoverInterF != nil || ie.HandoverLTE_EPC != nil || ie.HandoverLTE_5GC != nil, ie.Sftd_MeasNR_Neigh != nil || ie.Sftd_MeasNR_Neigh_DRX != nil, ie.Dummy != nil}
 		if err := w.WriteExtBitMap(extBitmap); err != nil {
 			return utils.WrapError("WriteExtBitMap MeasAndMobParametersXDD_Diff", err)
 		}
@@ -50,29 +50,29 @@ func (ie *MeasAndMobParametersXDD_Diff) Encode(w *uper.UperWriter) error {
 			extWriter := uper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 1
-			optionals_ext_1 := []bool{ie.handoverInterF != nil, ie.handoverLTE_EPC != nil, ie.handoverLTE_5GC != nil}
+			optionals_ext_1 := []bool{ie.HandoverInterF != nil, ie.HandoverLTE_EPC != nil, ie.HandoverLTE_5GC != nil}
 			for _, bit := range optionals_ext_1 {
 				if err := extWriter.WriteBool(bit); err != nil {
 					return err
 				}
 			}
 
-			// encode handoverInterF optional
-			if ie.handoverInterF != nil {
-				if err = ie.handoverInterF.Encode(extWriter); err != nil {
-					return utils.WrapError("Encode handoverInterF", err)
+			// encode HandoverInterF optional
+			if ie.HandoverInterF != nil {
+				if err = ie.HandoverInterF.Encode(extWriter); err != nil {
+					return utils.WrapError("Encode HandoverInterF", err)
 				}
 			}
-			// encode handoverLTE_EPC optional
-			if ie.handoverLTE_EPC != nil {
-				if err = ie.handoverLTE_EPC.Encode(extWriter); err != nil {
-					return utils.WrapError("Encode handoverLTE_EPC", err)
+			// encode HandoverLTE_EPC optional
+			if ie.HandoverLTE_EPC != nil {
+				if err = ie.HandoverLTE_EPC.Encode(extWriter); err != nil {
+					return utils.WrapError("Encode HandoverLTE_EPC", err)
 				}
 			}
-			// encode handoverLTE_5GC optional
-			if ie.handoverLTE_5GC != nil {
-				if err = ie.handoverLTE_5GC.Encode(extWriter); err != nil {
-					return utils.WrapError("Encode handoverLTE_5GC", err)
+			// encode HandoverLTE_5GC optional
+			if ie.HandoverLTE_5GC != nil {
+				if err = ie.HandoverLTE_5GC.Encode(extWriter); err != nil {
+					return utils.WrapError("Encode HandoverLTE_5GC", err)
 				}
 			}
 
@@ -91,23 +91,23 @@ func (ie *MeasAndMobParametersXDD_Diff) Encode(w *uper.UperWriter) error {
 			extWriter := uper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 2
-			optionals_ext_2 := []bool{ie.sftd_MeasNR_Neigh != nil, ie.sftd_MeasNR_Neigh_DRX != nil}
+			optionals_ext_2 := []bool{ie.Sftd_MeasNR_Neigh != nil, ie.Sftd_MeasNR_Neigh_DRX != nil}
 			for _, bit := range optionals_ext_2 {
 				if err := extWriter.WriteBool(bit); err != nil {
 					return err
 				}
 			}
 
-			// encode sftd_MeasNR_Neigh optional
-			if ie.sftd_MeasNR_Neigh != nil {
-				if err = ie.sftd_MeasNR_Neigh.Encode(extWriter); err != nil {
-					return utils.WrapError("Encode sftd_MeasNR_Neigh", err)
+			// encode Sftd_MeasNR_Neigh optional
+			if ie.Sftd_MeasNR_Neigh != nil {
+				if err = ie.Sftd_MeasNR_Neigh.Encode(extWriter); err != nil {
+					return utils.WrapError("Encode Sftd_MeasNR_Neigh", err)
 				}
 			}
-			// encode sftd_MeasNR_Neigh_DRX optional
-			if ie.sftd_MeasNR_Neigh_DRX != nil {
-				if err = ie.sftd_MeasNR_Neigh_DRX.Encode(extWriter); err != nil {
-					return utils.WrapError("Encode sftd_MeasNR_Neigh_DRX", err)
+			// encode Sftd_MeasNR_Neigh_DRX optional
+			if ie.Sftd_MeasNR_Neigh_DRX != nil {
+				if err = ie.Sftd_MeasNR_Neigh_DRX.Encode(extWriter); err != nil {
+					return utils.WrapError("Encode Sftd_MeasNR_Neigh_DRX", err)
 				}
 			}
 
@@ -126,17 +126,17 @@ func (ie *MeasAndMobParametersXDD_Diff) Encode(w *uper.UperWriter) error {
 			extWriter := uper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 3
-			optionals_ext_3 := []bool{ie.dummy != nil}
+			optionals_ext_3 := []bool{ie.Dummy != nil}
 			for _, bit := range optionals_ext_3 {
 				if err := extWriter.WriteBool(bit); err != nil {
 					return err
 				}
 			}
 
-			// encode dummy optional
-			if ie.dummy != nil {
-				if err = ie.dummy.Encode(extWriter); err != nil {
-					return utils.WrapError("Encode dummy", err)
+			// encode Dummy optional
+			if ie.Dummy != nil {
+				if err = ie.Dummy.Encode(extWriter); err != nil {
+					return utils.WrapError("Encode Dummy", err)
 				}
 			}
 
@@ -158,24 +158,24 @@ func (ie *MeasAndMobParametersXDD_Diff) Decode(r *uper.UperReader) error {
 	if extensionBit, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var intraAndInterF_MeasAndReportPresent bool
-	if intraAndInterF_MeasAndReportPresent, err = r.ReadBool(); err != nil {
+	var IntraAndInterF_MeasAndReportPresent bool
+	if IntraAndInterF_MeasAndReportPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var eventA_MeasAndReportPresent bool
-	if eventA_MeasAndReportPresent, err = r.ReadBool(); err != nil {
+	var EventA_MeasAndReportPresent bool
+	if EventA_MeasAndReportPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	if intraAndInterF_MeasAndReportPresent {
-		ie.intraAndInterF_MeasAndReport = new(MeasAndMobParametersXDD_Diff_intraAndInterF_MeasAndReport)
-		if err = ie.intraAndInterF_MeasAndReport.Decode(r); err != nil {
-			return utils.WrapError("Decode intraAndInterF_MeasAndReport", err)
+	if IntraAndInterF_MeasAndReportPresent {
+		ie.IntraAndInterF_MeasAndReport = new(MeasAndMobParametersXDD_Diff_intraAndInterF_MeasAndReport)
+		if err = ie.IntraAndInterF_MeasAndReport.Decode(r); err != nil {
+			return utils.WrapError("Decode IntraAndInterF_MeasAndReport", err)
 		}
 	}
-	if eventA_MeasAndReportPresent {
-		ie.eventA_MeasAndReport = new(MeasAndMobParametersXDD_Diff_eventA_MeasAndReport)
-		if err = ie.eventA_MeasAndReport.Decode(r); err != nil {
-			return utils.WrapError("Decode eventA_MeasAndReport", err)
+	if EventA_MeasAndReportPresent {
+		ie.EventA_MeasAndReport = new(MeasAndMobParametersXDD_Diff_eventA_MeasAndReport)
+		if err = ie.EventA_MeasAndReport.Decode(r); err != nil {
+			return utils.WrapError("Decode EventA_MeasAndReport", err)
 		}
 	}
 
@@ -195,37 +195,37 @@ func (ie *MeasAndMobParametersXDD_Diff) Decode(r *uper.UperReader) error {
 
 			extReader := uper.NewReader(bytes.NewReader(extBytes))
 
-			handoverInterFPresent, err := extReader.ReadBool()
+			HandoverInterFPresent, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			handoverLTE_EPCPresent, err := extReader.ReadBool()
+			HandoverLTE_EPCPresent, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			handoverLTE_5GCPresent, err := extReader.ReadBool()
+			HandoverLTE_5GCPresent, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			// decode handoverInterF optional
-			if handoverInterFPresent {
-				ie.handoverInterF = new(MeasAndMobParametersXDD_Diff_handoverInterF)
-				if err = ie.handoverInterF.Decode(extReader); err != nil {
-					return utils.WrapError("Decode handoverInterF", err)
+			// decode HandoverInterF optional
+			if HandoverInterFPresent {
+				ie.HandoverInterF = new(MeasAndMobParametersXDD_Diff_handoverInterF)
+				if err = ie.HandoverInterF.Decode(extReader); err != nil {
+					return utils.WrapError("Decode HandoverInterF", err)
 				}
 			}
-			// decode handoverLTE_EPC optional
-			if handoverLTE_EPCPresent {
-				ie.handoverLTE_EPC = new(MeasAndMobParametersXDD_Diff_handoverLTE_EPC)
-				if err = ie.handoverLTE_EPC.Decode(extReader); err != nil {
-					return utils.WrapError("Decode handoverLTE_EPC", err)
+			// decode HandoverLTE_EPC optional
+			if HandoverLTE_EPCPresent {
+				ie.HandoverLTE_EPC = new(MeasAndMobParametersXDD_Diff_handoverLTE_EPC)
+				if err = ie.HandoverLTE_EPC.Decode(extReader); err != nil {
+					return utils.WrapError("Decode HandoverLTE_EPC", err)
 				}
 			}
-			// decode handoverLTE_5GC optional
-			if handoverLTE_5GCPresent {
-				ie.handoverLTE_5GC = new(MeasAndMobParametersXDD_Diff_handoverLTE_5GC)
-				if err = ie.handoverLTE_5GC.Decode(extReader); err != nil {
-					return utils.WrapError("Decode handoverLTE_5GC", err)
+			// decode HandoverLTE_5GC optional
+			if HandoverLTE_5GCPresent {
+				ie.HandoverLTE_5GC = new(MeasAndMobParametersXDD_Diff_handoverLTE_5GC)
+				if err = ie.HandoverLTE_5GC.Decode(extReader); err != nil {
+					return utils.WrapError("Decode HandoverLTE_5GC", err)
 				}
 			}
 		}
@@ -238,26 +238,26 @@ func (ie *MeasAndMobParametersXDD_Diff) Decode(r *uper.UperReader) error {
 
 			extReader := uper.NewReader(bytes.NewReader(extBytes))
 
-			sftd_MeasNR_NeighPresent, err := extReader.ReadBool()
+			Sftd_MeasNR_NeighPresent, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			sftd_MeasNR_Neigh_DRXPresent, err := extReader.ReadBool()
+			Sftd_MeasNR_Neigh_DRXPresent, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			// decode sftd_MeasNR_Neigh optional
-			if sftd_MeasNR_NeighPresent {
-				ie.sftd_MeasNR_Neigh = new(MeasAndMobParametersXDD_Diff_sftd_MeasNR_Neigh)
-				if err = ie.sftd_MeasNR_Neigh.Decode(extReader); err != nil {
-					return utils.WrapError("Decode sftd_MeasNR_Neigh", err)
+			// decode Sftd_MeasNR_Neigh optional
+			if Sftd_MeasNR_NeighPresent {
+				ie.Sftd_MeasNR_Neigh = new(MeasAndMobParametersXDD_Diff_sftd_MeasNR_Neigh)
+				if err = ie.Sftd_MeasNR_Neigh.Decode(extReader); err != nil {
+					return utils.WrapError("Decode Sftd_MeasNR_Neigh", err)
 				}
 			}
-			// decode sftd_MeasNR_Neigh_DRX optional
-			if sftd_MeasNR_Neigh_DRXPresent {
-				ie.sftd_MeasNR_Neigh_DRX = new(MeasAndMobParametersXDD_Diff_sftd_MeasNR_Neigh_DRX)
-				if err = ie.sftd_MeasNR_Neigh_DRX.Decode(extReader); err != nil {
-					return utils.WrapError("Decode sftd_MeasNR_Neigh_DRX", err)
+			// decode Sftd_MeasNR_Neigh_DRX optional
+			if Sftd_MeasNR_Neigh_DRXPresent {
+				ie.Sftd_MeasNR_Neigh_DRX = new(MeasAndMobParametersXDD_Diff_sftd_MeasNR_Neigh_DRX)
+				if err = ie.Sftd_MeasNR_Neigh_DRX.Decode(extReader); err != nil {
+					return utils.WrapError("Decode Sftd_MeasNR_Neigh_DRX", err)
 				}
 			}
 		}
@@ -270,15 +270,15 @@ func (ie *MeasAndMobParametersXDD_Diff) Decode(r *uper.UperReader) error {
 
 			extReader := uper.NewReader(bytes.NewReader(extBytes))
 
-			dummyPresent, err := extReader.ReadBool()
+			DummyPresent, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			// decode dummy optional
-			if dummyPresent {
-				ie.dummy = new(MeasAndMobParametersXDD_Diff_dummy)
-				if err = ie.dummy.Decode(extReader); err != nil {
-					return utils.WrapError("Decode dummy", err)
+			// decode Dummy optional
+			if DummyPresent {
+				ie.Dummy = new(MeasAndMobParametersXDD_Diff_dummy)
+				if err = ie.Dummy.Decode(extReader); err != nil {
+					return utils.WrapError("Decode Dummy", err)
 				}
 			}
 		}

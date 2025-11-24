@@ -6,56 +6,56 @@ import (
 )
 
 type MIMO_ParametersPerBand_multiDCI_multiTRP_Parameters_r16 struct {
-	overlapPDSCHsFullyFreqTime_r16       *int64                                                                                        `lb:1,ub:2,optional`
-	overlapPDSCHsInTimePartiallyFreq_r16 *MIMO_ParametersPerBand_multiDCI_multiTRP_Parameters_r16_overlapPDSCHsInTimePartiallyFreq_r16 `optional`
-	outOfOrderOperationDL_r16            *MIMO_ParametersPerBand_multiDCI_multiTRP_Parameters_r16_outOfOrderOperationDL_r16            `optional`
-	outOfOrderOperationUL_r16            *MIMO_ParametersPerBand_multiDCI_multiTRP_Parameters_r16_outOfOrderOperationUL_r16            `optional`
-	separateCRS_RateMatching_r16         *MIMO_ParametersPerBand_multiDCI_multiTRP_Parameters_r16_separateCRS_RateMatching_r16         `optional`
-	defaultQCL_PerCORESETPoolIndex_r16   *MIMO_ParametersPerBand_multiDCI_multiTRP_Parameters_r16_defaultQCL_PerCORESETPoolIndex_r16   `optional`
-	maxNumberActivatedTCI_States_r16     *MIMO_ParametersPerBand_multiDCI_multiTRP_Parameters_r16_maxNumberActivatedTCI_States_r16     `optional`
+	OverlapPDSCHsFullyFreqTime_r16       *int64                                                                                        `lb:1,ub:2,optional`
+	OverlapPDSCHsInTimePartiallyFreq_r16 *MIMO_ParametersPerBand_multiDCI_multiTRP_Parameters_r16_overlapPDSCHsInTimePartiallyFreq_r16 `optional`
+	OutOfOrderOperationDL_r16            *MIMO_ParametersPerBand_multiDCI_multiTRP_Parameters_r16_outOfOrderOperationDL_r16            `optional`
+	OutOfOrderOperationUL_r16            *MIMO_ParametersPerBand_multiDCI_multiTRP_Parameters_r16_outOfOrderOperationUL_r16            `optional`
+	SeparateCRS_RateMatching_r16         *MIMO_ParametersPerBand_multiDCI_multiTRP_Parameters_r16_separateCRS_RateMatching_r16         `optional`
+	DefaultQCL_PerCORESETPoolIndex_r16   *MIMO_ParametersPerBand_multiDCI_multiTRP_Parameters_r16_defaultQCL_PerCORESETPoolIndex_r16   `optional`
+	MaxNumberActivatedTCI_States_r16     *MIMO_ParametersPerBand_multiDCI_multiTRP_Parameters_r16_maxNumberActivatedTCI_States_r16     `optional`
 }
 
 func (ie *MIMO_ParametersPerBand_multiDCI_multiTRP_Parameters_r16) Encode(w *uper.UperWriter) error {
 	var err error
-	preambleBits := []bool{ie.overlapPDSCHsFullyFreqTime_r16 != nil, ie.overlapPDSCHsInTimePartiallyFreq_r16 != nil, ie.outOfOrderOperationDL_r16 != nil, ie.outOfOrderOperationUL_r16 != nil, ie.separateCRS_RateMatching_r16 != nil, ie.defaultQCL_PerCORESETPoolIndex_r16 != nil, ie.maxNumberActivatedTCI_States_r16 != nil}
+	preambleBits := []bool{ie.OverlapPDSCHsFullyFreqTime_r16 != nil, ie.OverlapPDSCHsInTimePartiallyFreq_r16 != nil, ie.OutOfOrderOperationDL_r16 != nil, ie.OutOfOrderOperationUL_r16 != nil, ie.SeparateCRS_RateMatching_r16 != nil, ie.DefaultQCL_PerCORESETPoolIndex_r16 != nil, ie.MaxNumberActivatedTCI_States_r16 != nil}
 	for _, bit := range preambleBits {
 		if err = w.WriteBool(bit); err != nil {
 			return err
 		}
 	}
-	if ie.overlapPDSCHsFullyFreqTime_r16 != nil {
-		if err = w.WriteInteger(*ie.overlapPDSCHsFullyFreqTime_r16, &uper.Constraint{Lb: 1, Ub: 2}, false); err != nil {
-			return utils.WrapError("Encode overlapPDSCHsFullyFreqTime_r16", err)
+	if ie.OverlapPDSCHsFullyFreqTime_r16 != nil {
+		if err = w.WriteInteger(*ie.OverlapPDSCHsFullyFreqTime_r16, &uper.Constraint{Lb: 1, Ub: 2}, false); err != nil {
+			return utils.WrapError("Encode OverlapPDSCHsFullyFreqTime_r16", err)
 		}
 	}
-	if ie.overlapPDSCHsInTimePartiallyFreq_r16 != nil {
-		if err = ie.overlapPDSCHsInTimePartiallyFreq_r16.Encode(w); err != nil {
-			return utils.WrapError("Encode overlapPDSCHsInTimePartiallyFreq_r16", err)
+	if ie.OverlapPDSCHsInTimePartiallyFreq_r16 != nil {
+		if err = ie.OverlapPDSCHsInTimePartiallyFreq_r16.Encode(w); err != nil {
+			return utils.WrapError("Encode OverlapPDSCHsInTimePartiallyFreq_r16", err)
 		}
 	}
-	if ie.outOfOrderOperationDL_r16 != nil {
-		if err = ie.outOfOrderOperationDL_r16.Encode(w); err != nil {
-			return utils.WrapError("Encode outOfOrderOperationDL_r16", err)
+	if ie.OutOfOrderOperationDL_r16 != nil {
+		if err = ie.OutOfOrderOperationDL_r16.Encode(w); err != nil {
+			return utils.WrapError("Encode OutOfOrderOperationDL_r16", err)
 		}
 	}
-	if ie.outOfOrderOperationUL_r16 != nil {
-		if err = ie.outOfOrderOperationUL_r16.Encode(w); err != nil {
-			return utils.WrapError("Encode outOfOrderOperationUL_r16", err)
+	if ie.OutOfOrderOperationUL_r16 != nil {
+		if err = ie.OutOfOrderOperationUL_r16.Encode(w); err != nil {
+			return utils.WrapError("Encode OutOfOrderOperationUL_r16", err)
 		}
 	}
-	if ie.separateCRS_RateMatching_r16 != nil {
-		if err = ie.separateCRS_RateMatching_r16.Encode(w); err != nil {
-			return utils.WrapError("Encode separateCRS_RateMatching_r16", err)
+	if ie.SeparateCRS_RateMatching_r16 != nil {
+		if err = ie.SeparateCRS_RateMatching_r16.Encode(w); err != nil {
+			return utils.WrapError("Encode SeparateCRS_RateMatching_r16", err)
 		}
 	}
-	if ie.defaultQCL_PerCORESETPoolIndex_r16 != nil {
-		if err = ie.defaultQCL_PerCORESETPoolIndex_r16.Encode(w); err != nil {
-			return utils.WrapError("Encode defaultQCL_PerCORESETPoolIndex_r16", err)
+	if ie.DefaultQCL_PerCORESETPoolIndex_r16 != nil {
+		if err = ie.DefaultQCL_PerCORESETPoolIndex_r16.Encode(w); err != nil {
+			return utils.WrapError("Encode DefaultQCL_PerCORESETPoolIndex_r16", err)
 		}
 	}
-	if ie.maxNumberActivatedTCI_States_r16 != nil {
-		if err = ie.maxNumberActivatedTCI_States_r16.Encode(w); err != nil {
-			return utils.WrapError("Encode maxNumberActivatedTCI_States_r16", err)
+	if ie.MaxNumberActivatedTCI_States_r16 != nil {
+		if err = ie.MaxNumberActivatedTCI_States_r16.Encode(w); err != nil {
+			return utils.WrapError("Encode MaxNumberActivatedTCI_States_r16", err)
 		}
 	}
 	return nil
@@ -63,75 +63,75 @@ func (ie *MIMO_ParametersPerBand_multiDCI_multiTRP_Parameters_r16) Encode(w *upe
 
 func (ie *MIMO_ParametersPerBand_multiDCI_multiTRP_Parameters_r16) Decode(r *uper.UperReader) error {
 	var err error
-	var overlapPDSCHsFullyFreqTime_r16Present bool
-	if overlapPDSCHsFullyFreqTime_r16Present, err = r.ReadBool(); err != nil {
+	var OverlapPDSCHsFullyFreqTime_r16Present bool
+	if OverlapPDSCHsFullyFreqTime_r16Present, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var overlapPDSCHsInTimePartiallyFreq_r16Present bool
-	if overlapPDSCHsInTimePartiallyFreq_r16Present, err = r.ReadBool(); err != nil {
+	var OverlapPDSCHsInTimePartiallyFreq_r16Present bool
+	if OverlapPDSCHsInTimePartiallyFreq_r16Present, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var outOfOrderOperationDL_r16Present bool
-	if outOfOrderOperationDL_r16Present, err = r.ReadBool(); err != nil {
+	var OutOfOrderOperationDL_r16Present bool
+	if OutOfOrderOperationDL_r16Present, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var outOfOrderOperationUL_r16Present bool
-	if outOfOrderOperationUL_r16Present, err = r.ReadBool(); err != nil {
+	var OutOfOrderOperationUL_r16Present bool
+	if OutOfOrderOperationUL_r16Present, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var separateCRS_RateMatching_r16Present bool
-	if separateCRS_RateMatching_r16Present, err = r.ReadBool(); err != nil {
+	var SeparateCRS_RateMatching_r16Present bool
+	if SeparateCRS_RateMatching_r16Present, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var defaultQCL_PerCORESETPoolIndex_r16Present bool
-	if defaultQCL_PerCORESETPoolIndex_r16Present, err = r.ReadBool(); err != nil {
+	var DefaultQCL_PerCORESETPoolIndex_r16Present bool
+	if DefaultQCL_PerCORESETPoolIndex_r16Present, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var maxNumberActivatedTCI_States_r16Present bool
-	if maxNumberActivatedTCI_States_r16Present, err = r.ReadBool(); err != nil {
+	var MaxNumberActivatedTCI_States_r16Present bool
+	if MaxNumberActivatedTCI_States_r16Present, err = r.ReadBool(); err != nil {
 		return err
 	}
-	if overlapPDSCHsFullyFreqTime_r16Present {
-		var tmp_int_overlapPDSCHsFullyFreqTime_r16 int64
-		if tmp_int_overlapPDSCHsFullyFreqTime_r16, err = r.ReadInteger(&uper.Constraint{Lb: 1, Ub: 2}, false); err != nil {
-			return utils.WrapError("Decode overlapPDSCHsFullyFreqTime_r16", err)
+	if OverlapPDSCHsFullyFreqTime_r16Present {
+		var tmp_int_OverlapPDSCHsFullyFreqTime_r16 int64
+		if tmp_int_OverlapPDSCHsFullyFreqTime_r16, err = r.ReadInteger(&uper.Constraint{Lb: 1, Ub: 2}, false); err != nil {
+			return utils.WrapError("Decode OverlapPDSCHsFullyFreqTime_r16", err)
 		}
-		ie.overlapPDSCHsFullyFreqTime_r16 = &tmp_int_overlapPDSCHsFullyFreqTime_r16
+		ie.OverlapPDSCHsFullyFreqTime_r16 = &tmp_int_OverlapPDSCHsFullyFreqTime_r16
 	}
-	if overlapPDSCHsInTimePartiallyFreq_r16Present {
-		ie.overlapPDSCHsInTimePartiallyFreq_r16 = new(MIMO_ParametersPerBand_multiDCI_multiTRP_Parameters_r16_overlapPDSCHsInTimePartiallyFreq_r16)
-		if err = ie.overlapPDSCHsInTimePartiallyFreq_r16.Decode(r); err != nil {
-			return utils.WrapError("Decode overlapPDSCHsInTimePartiallyFreq_r16", err)
-		}
-	}
-	if outOfOrderOperationDL_r16Present {
-		ie.outOfOrderOperationDL_r16 = new(MIMO_ParametersPerBand_multiDCI_multiTRP_Parameters_r16_outOfOrderOperationDL_r16)
-		if err = ie.outOfOrderOperationDL_r16.Decode(r); err != nil {
-			return utils.WrapError("Decode outOfOrderOperationDL_r16", err)
+	if OverlapPDSCHsInTimePartiallyFreq_r16Present {
+		ie.OverlapPDSCHsInTimePartiallyFreq_r16 = new(MIMO_ParametersPerBand_multiDCI_multiTRP_Parameters_r16_overlapPDSCHsInTimePartiallyFreq_r16)
+		if err = ie.OverlapPDSCHsInTimePartiallyFreq_r16.Decode(r); err != nil {
+			return utils.WrapError("Decode OverlapPDSCHsInTimePartiallyFreq_r16", err)
 		}
 	}
-	if outOfOrderOperationUL_r16Present {
-		ie.outOfOrderOperationUL_r16 = new(MIMO_ParametersPerBand_multiDCI_multiTRP_Parameters_r16_outOfOrderOperationUL_r16)
-		if err = ie.outOfOrderOperationUL_r16.Decode(r); err != nil {
-			return utils.WrapError("Decode outOfOrderOperationUL_r16", err)
+	if OutOfOrderOperationDL_r16Present {
+		ie.OutOfOrderOperationDL_r16 = new(MIMO_ParametersPerBand_multiDCI_multiTRP_Parameters_r16_outOfOrderOperationDL_r16)
+		if err = ie.OutOfOrderOperationDL_r16.Decode(r); err != nil {
+			return utils.WrapError("Decode OutOfOrderOperationDL_r16", err)
 		}
 	}
-	if separateCRS_RateMatching_r16Present {
-		ie.separateCRS_RateMatching_r16 = new(MIMO_ParametersPerBand_multiDCI_multiTRP_Parameters_r16_separateCRS_RateMatching_r16)
-		if err = ie.separateCRS_RateMatching_r16.Decode(r); err != nil {
-			return utils.WrapError("Decode separateCRS_RateMatching_r16", err)
+	if OutOfOrderOperationUL_r16Present {
+		ie.OutOfOrderOperationUL_r16 = new(MIMO_ParametersPerBand_multiDCI_multiTRP_Parameters_r16_outOfOrderOperationUL_r16)
+		if err = ie.OutOfOrderOperationUL_r16.Decode(r); err != nil {
+			return utils.WrapError("Decode OutOfOrderOperationUL_r16", err)
 		}
 	}
-	if defaultQCL_PerCORESETPoolIndex_r16Present {
-		ie.defaultQCL_PerCORESETPoolIndex_r16 = new(MIMO_ParametersPerBand_multiDCI_multiTRP_Parameters_r16_defaultQCL_PerCORESETPoolIndex_r16)
-		if err = ie.defaultQCL_PerCORESETPoolIndex_r16.Decode(r); err != nil {
-			return utils.WrapError("Decode defaultQCL_PerCORESETPoolIndex_r16", err)
+	if SeparateCRS_RateMatching_r16Present {
+		ie.SeparateCRS_RateMatching_r16 = new(MIMO_ParametersPerBand_multiDCI_multiTRP_Parameters_r16_separateCRS_RateMatching_r16)
+		if err = ie.SeparateCRS_RateMatching_r16.Decode(r); err != nil {
+			return utils.WrapError("Decode SeparateCRS_RateMatching_r16", err)
 		}
 	}
-	if maxNumberActivatedTCI_States_r16Present {
-		ie.maxNumberActivatedTCI_States_r16 = new(MIMO_ParametersPerBand_multiDCI_multiTRP_Parameters_r16_maxNumberActivatedTCI_States_r16)
-		if err = ie.maxNumberActivatedTCI_States_r16.Decode(r); err != nil {
-			return utils.WrapError("Decode maxNumberActivatedTCI_States_r16", err)
+	if DefaultQCL_PerCORESETPoolIndex_r16Present {
+		ie.DefaultQCL_PerCORESETPoolIndex_r16 = new(MIMO_ParametersPerBand_multiDCI_multiTRP_Parameters_r16_defaultQCL_PerCORESETPoolIndex_r16)
+		if err = ie.DefaultQCL_PerCORESETPoolIndex_r16.Decode(r); err != nil {
+			return utils.WrapError("Decode DefaultQCL_PerCORESETPoolIndex_r16", err)
+		}
+	}
+	if MaxNumberActivatedTCI_States_r16Present {
+		ie.MaxNumberActivatedTCI_States_r16 = new(MIMO_ParametersPerBand_multiDCI_multiTRP_Parameters_r16_maxNumberActivatedTCI_States_r16)
+		if err = ie.MaxNumberActivatedTCI_States_r16.Decode(r); err != nil {
+			return utils.WrapError("Decode MaxNumberActivatedTCI_States_r16", err)
 		}
 	}
 	return nil

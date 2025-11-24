@@ -6,108 +6,108 @@ import (
 )
 
 type PTRS_UplinkConfig_transformPrecoderDisabled struct {
-	frequencyDensity      []int64                                                            `lb:2,ub:2,e_lb:0,e_ub:0,optional`
-	timeDensity           []int64                                                            `lb:3,ub:3,e_lb:0,e_ub:0,optional`
-	maxNrofPorts          PTRS_UplinkConfig_transformPrecoderDisabled_maxNrofPorts           `madatory`
-	resourceElementOffset *PTRS_UplinkConfig_transformPrecoderDisabled_resourceElementOffset `optional`
-	ptrs_Power            PTRS_UplinkConfig_transformPrecoderDisabled_ptrs_Power             `madatory`
+	FrequencyDensity      []int64                                                            `lb:2,ub:2,e_lb:0,e_ub:0,optional`
+	TimeDensity           []int64                                                            `lb:3,ub:3,e_lb:0,e_ub:0,optional`
+	MaxNrofPorts          PTRS_UplinkConfig_transformPrecoderDisabled_maxNrofPorts           `madatory`
+	ResourceElementOffset *PTRS_UplinkConfig_transformPrecoderDisabled_resourceElementOffset `optional`
+	Ptrs_Power            PTRS_UplinkConfig_transformPrecoderDisabled_ptrs_Power             `madatory`
 }
 
 func (ie *PTRS_UplinkConfig_transformPrecoderDisabled) Encode(w *uper.UperWriter) error {
 	var err error
-	preambleBits := []bool{len(ie.frequencyDensity) > 0, len(ie.timeDensity) > 0, ie.resourceElementOffset != nil}
+	preambleBits := []bool{len(ie.FrequencyDensity) > 0, len(ie.TimeDensity) > 0, ie.ResourceElementOffset != nil}
 	for _, bit := range preambleBits {
 		if err = w.WriteBool(bit); err != nil {
 			return err
 		}
 	}
-	if len(ie.frequencyDensity) > 0 {
-		tmp_frequencyDensity := utils.NewSequence[*utils.INTEGER]([]*utils.INTEGER{}, uper.Constraint{Lb: 2, Ub: 2}, false)
-		for _, i := range ie.frequencyDensity {
+	if len(ie.FrequencyDensity) > 0 {
+		tmp_FrequencyDensity := utils.NewSequence[*utils.INTEGER]([]*utils.INTEGER{}, uper.Constraint{Lb: 2, Ub: 2}, false)
+		for _, i := range ie.FrequencyDensity {
 			tmp_ie := utils.NewINTEGER(int64(i), uper.Constraint{Lb: 0, Ub: 0}, false)
-			tmp_frequencyDensity.Value = append(tmp_frequencyDensity.Value, &tmp_ie)
+			tmp_FrequencyDensity.Value = append(tmp_FrequencyDensity.Value, &tmp_ie)
 		}
-		if err = tmp_frequencyDensity.Encode(w); err != nil {
-			return utils.WrapError("Encode frequencyDensity", err)
+		if err = tmp_FrequencyDensity.Encode(w); err != nil {
+			return utils.WrapError("Encode FrequencyDensity", err)
 		}
 	}
-	if len(ie.timeDensity) > 0 {
-		tmp_timeDensity := utils.NewSequence[*utils.INTEGER]([]*utils.INTEGER{}, uper.Constraint{Lb: 3, Ub: 3}, false)
-		for _, i := range ie.timeDensity {
+	if len(ie.TimeDensity) > 0 {
+		tmp_TimeDensity := utils.NewSequence[*utils.INTEGER]([]*utils.INTEGER{}, uper.Constraint{Lb: 3, Ub: 3}, false)
+		for _, i := range ie.TimeDensity {
 			tmp_ie := utils.NewINTEGER(int64(i), uper.Constraint{Lb: 0, Ub: 0}, false)
-			tmp_timeDensity.Value = append(tmp_timeDensity.Value, &tmp_ie)
+			tmp_TimeDensity.Value = append(tmp_TimeDensity.Value, &tmp_ie)
 		}
-		if err = tmp_timeDensity.Encode(w); err != nil {
-			return utils.WrapError("Encode timeDensity", err)
-		}
-	}
-	if err = ie.maxNrofPorts.Encode(w); err != nil {
-		return utils.WrapError("Encode maxNrofPorts", err)
-	}
-	if ie.resourceElementOffset != nil {
-		if err = ie.resourceElementOffset.Encode(w); err != nil {
-			return utils.WrapError("Encode resourceElementOffset", err)
+		if err = tmp_TimeDensity.Encode(w); err != nil {
+			return utils.WrapError("Encode TimeDensity", err)
 		}
 	}
-	if err = ie.ptrs_Power.Encode(w); err != nil {
-		return utils.WrapError("Encode ptrs_Power", err)
+	if err = ie.MaxNrofPorts.Encode(w); err != nil {
+		return utils.WrapError("Encode MaxNrofPorts", err)
+	}
+	if ie.ResourceElementOffset != nil {
+		if err = ie.ResourceElementOffset.Encode(w); err != nil {
+			return utils.WrapError("Encode ResourceElementOffset", err)
+		}
+	}
+	if err = ie.Ptrs_Power.Encode(w); err != nil {
+		return utils.WrapError("Encode Ptrs_Power", err)
 	}
 	return nil
 }
 
 func (ie *PTRS_UplinkConfig_transformPrecoderDisabled) Decode(r *uper.UperReader) error {
 	var err error
-	var frequencyDensityPresent bool
-	if frequencyDensityPresent, err = r.ReadBool(); err != nil {
+	var FrequencyDensityPresent bool
+	if FrequencyDensityPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var timeDensityPresent bool
-	if timeDensityPresent, err = r.ReadBool(); err != nil {
+	var TimeDensityPresent bool
+	if TimeDensityPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var resourceElementOffsetPresent bool
-	if resourceElementOffsetPresent, err = r.ReadBool(); err != nil {
+	var ResourceElementOffsetPresent bool
+	if ResourceElementOffsetPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	if frequencyDensityPresent {
-		tmp_frequencyDensity := utils.NewSequence[*utils.INTEGER]([]*utils.INTEGER{}, uper.Constraint{Lb: 2, Ub: 2}, false)
-		fn_frequencyDensity := func() *utils.INTEGER {
+	if FrequencyDensityPresent {
+		tmp_FrequencyDensity := utils.NewSequence[*utils.INTEGER]([]*utils.INTEGER{}, uper.Constraint{Lb: 2, Ub: 2}, false)
+		fn_FrequencyDensity := func() *utils.INTEGER {
 			ie := utils.NewINTEGER(0, uper.Constraint{Lb: 0, Ub: 0}, false)
 			return &ie
 		}
-		if err = tmp_frequencyDensity.Decode(r, fn_frequencyDensity); err != nil {
-			return utils.WrapError("Decode frequencyDensity", err)
+		if err = tmp_FrequencyDensity.Decode(r, fn_FrequencyDensity); err != nil {
+			return utils.WrapError("Decode FrequencyDensity", err)
 		}
-		ie.frequencyDensity = []int64{}
-		for _, i := range tmp_frequencyDensity.Value {
-			ie.frequencyDensity = append(ie.frequencyDensity, int64(i.Value))
+		ie.FrequencyDensity = []int64{}
+		for _, i := range tmp_FrequencyDensity.Value {
+			ie.FrequencyDensity = append(ie.FrequencyDensity, int64(i.Value))
 		}
 	}
-	if timeDensityPresent {
-		tmp_timeDensity := utils.NewSequence[*utils.INTEGER]([]*utils.INTEGER{}, uper.Constraint{Lb: 3, Ub: 3}, false)
-		fn_timeDensity := func() *utils.INTEGER {
+	if TimeDensityPresent {
+		tmp_TimeDensity := utils.NewSequence[*utils.INTEGER]([]*utils.INTEGER{}, uper.Constraint{Lb: 3, Ub: 3}, false)
+		fn_TimeDensity := func() *utils.INTEGER {
 			ie := utils.NewINTEGER(0, uper.Constraint{Lb: 0, Ub: 0}, false)
 			return &ie
 		}
-		if err = tmp_timeDensity.Decode(r, fn_timeDensity); err != nil {
-			return utils.WrapError("Decode timeDensity", err)
+		if err = tmp_TimeDensity.Decode(r, fn_TimeDensity); err != nil {
+			return utils.WrapError("Decode TimeDensity", err)
 		}
-		ie.timeDensity = []int64{}
-		for _, i := range tmp_timeDensity.Value {
-			ie.timeDensity = append(ie.timeDensity, int64(i.Value))
-		}
-	}
-	if err = ie.maxNrofPorts.Decode(r); err != nil {
-		return utils.WrapError("Decode maxNrofPorts", err)
-	}
-	if resourceElementOffsetPresent {
-		ie.resourceElementOffset = new(PTRS_UplinkConfig_transformPrecoderDisabled_resourceElementOffset)
-		if err = ie.resourceElementOffset.Decode(r); err != nil {
-			return utils.WrapError("Decode resourceElementOffset", err)
+		ie.TimeDensity = []int64{}
+		for _, i := range tmp_TimeDensity.Value {
+			ie.TimeDensity = append(ie.TimeDensity, int64(i.Value))
 		}
 	}
-	if err = ie.ptrs_Power.Decode(r); err != nil {
-		return utils.WrapError("Decode ptrs_Power", err)
+	if err = ie.MaxNrofPorts.Decode(r); err != nil {
+		return utils.WrapError("Decode MaxNrofPorts", err)
+	}
+	if ResourceElementOffsetPresent {
+		ie.ResourceElementOffset = new(PTRS_UplinkConfig_transformPrecoderDisabled_resourceElementOffset)
+		if err = ie.ResourceElementOffset.Decode(r); err != nil {
+			return utils.WrapError("Decode ResourceElementOffset", err)
+		}
+	}
+	if err = ie.Ptrs_Power.Decode(r); err != nil {
+		return utils.WrapError("Decode Ptrs_Power", err)
 	}
 	return nil
 }

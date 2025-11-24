@@ -8,47 +8,47 @@ import (
 )
 
 type CSI_RS_Resource_Mobility struct {
-	csi_RS_Index                CSI_RS_Index                                       `madatory`
-	slotConfig                  CSI_RS_Resource_Mobility_slotConfig                `lb:0,ub:31,madatory`
-	associatedSSB               *CSI_RS_Resource_Mobility_associatedSSB            `optional`
-	frequencyDomainAllocation   CSI_RS_Resource_Mobility_frequencyDomainAllocation `lb:4,ub:4,madatory`
-	firstOFDMSymbolInTimeDomain int64                                              `lb:0,ub:13,madatory`
-	sequenceGenerationConfig    int64                                              `lb:0,ub:1023,madatory`
-	slotConfig_r17              *CSI_RS_Resource_Mobility_slotConfig_r17           `lb:0,ub:255,optional,ext-1`
+	Csi_RS_Index                CSI_RS_Index                                       `madatory`
+	SlotConfig                  CSI_RS_Resource_Mobility_slotConfig                `lb:0,ub:31,madatory`
+	AssociatedSSB               *CSI_RS_Resource_Mobility_associatedSSB            `optional`
+	FrequencyDomainAllocation   CSI_RS_Resource_Mobility_frequencyDomainAllocation `lb:4,ub:4,madatory`
+	FirstOFDMSymbolInTimeDomain int64                                              `lb:0,ub:13,madatory`
+	SequenceGenerationConfig    int64                                              `lb:0,ub:1023,madatory`
+	SlotConfig_r17              *CSI_RS_Resource_Mobility_slotConfig_r17           `lb:0,ub:255,optional,ext-1`
 }
 
 func (ie *CSI_RS_Resource_Mobility) Encode(w *uper.UperWriter) error {
 	var err error
-	hasExtensions := ie.slotConfig_r17 != nil
-	preambleBits := []bool{hasExtensions, ie.associatedSSB != nil}
+	hasExtensions := ie.SlotConfig_r17 != nil
+	preambleBits := []bool{hasExtensions, ie.AssociatedSSB != nil}
 	for _, bit := range preambleBits {
 		if err = w.WriteBool(bit); err != nil {
 			return err
 		}
 	}
-	if err = ie.csi_RS_Index.Encode(w); err != nil {
-		return utils.WrapError("Encode csi_RS_Index", err)
+	if err = ie.Csi_RS_Index.Encode(w); err != nil {
+		return utils.WrapError("Encode Csi_RS_Index", err)
 	}
-	if err = ie.slotConfig.Encode(w); err != nil {
-		return utils.WrapError("Encode slotConfig", err)
+	if err = ie.SlotConfig.Encode(w); err != nil {
+		return utils.WrapError("Encode SlotConfig", err)
 	}
-	if ie.associatedSSB != nil {
-		if err = ie.associatedSSB.Encode(w); err != nil {
-			return utils.WrapError("Encode associatedSSB", err)
+	if ie.AssociatedSSB != nil {
+		if err = ie.AssociatedSSB.Encode(w); err != nil {
+			return utils.WrapError("Encode AssociatedSSB", err)
 		}
 	}
-	if err = ie.frequencyDomainAllocation.Encode(w); err != nil {
-		return utils.WrapError("Encode frequencyDomainAllocation", err)
+	if err = ie.FrequencyDomainAllocation.Encode(w); err != nil {
+		return utils.WrapError("Encode FrequencyDomainAllocation", err)
 	}
-	if err = w.WriteInteger(ie.firstOFDMSymbolInTimeDomain, &uper.Constraint{Lb: 0, Ub: 13}, false); err != nil {
-		return utils.WrapError("WriteInteger firstOFDMSymbolInTimeDomain", err)
+	if err = w.WriteInteger(ie.FirstOFDMSymbolInTimeDomain, &uper.Constraint{Lb: 0, Ub: 13}, false); err != nil {
+		return utils.WrapError("WriteInteger FirstOFDMSymbolInTimeDomain", err)
 	}
-	if err = w.WriteInteger(ie.sequenceGenerationConfig, &uper.Constraint{Lb: 0, Ub: 1023}, false); err != nil {
-		return utils.WrapError("WriteInteger sequenceGenerationConfig", err)
+	if err = w.WriteInteger(ie.SequenceGenerationConfig, &uper.Constraint{Lb: 0, Ub: 1023}, false); err != nil {
+		return utils.WrapError("WriteInteger SequenceGenerationConfig", err)
 	}
 	if hasExtensions {
 		// Extension bitmap: 1 bits for 1 extension groups
-		extBitmap := []bool{ie.slotConfig_r17 != nil}
+		extBitmap := []bool{ie.SlotConfig_r17 != nil}
 		if err := w.WriteExtBitMap(extBitmap); err != nil {
 			return utils.WrapError("WriteExtBitMap CSI_RS_Resource_Mobility", err)
 		}
@@ -59,17 +59,17 @@ func (ie *CSI_RS_Resource_Mobility) Encode(w *uper.UperWriter) error {
 			extWriter := uper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 1
-			optionals_ext_1 := []bool{ie.slotConfig_r17 != nil}
+			optionals_ext_1 := []bool{ie.SlotConfig_r17 != nil}
 			for _, bit := range optionals_ext_1 {
 				if err := extWriter.WriteBool(bit); err != nil {
 					return err
 				}
 			}
 
-			// encode slotConfig_r17 optional
-			if ie.slotConfig_r17 != nil {
-				if err = ie.slotConfig_r17.Encode(extWriter); err != nil {
-					return utils.WrapError("Encode slotConfig_r17", err)
+			// encode SlotConfig_r17 optional
+			if ie.SlotConfig_r17 != nil {
+				if err = ie.SlotConfig_r17.Encode(extWriter); err != nil {
+					return utils.WrapError("Encode SlotConfig_r17", err)
 				}
 			}
 
@@ -91,35 +91,35 @@ func (ie *CSI_RS_Resource_Mobility) Decode(r *uper.UperReader) error {
 	if extensionBit, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var associatedSSBPresent bool
-	if associatedSSBPresent, err = r.ReadBool(); err != nil {
+	var AssociatedSSBPresent bool
+	if AssociatedSSBPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	if err = ie.csi_RS_Index.Decode(r); err != nil {
-		return utils.WrapError("Decode csi_RS_Index", err)
+	if err = ie.Csi_RS_Index.Decode(r); err != nil {
+		return utils.WrapError("Decode Csi_RS_Index", err)
 	}
-	if err = ie.slotConfig.Decode(r); err != nil {
-		return utils.WrapError("Decode slotConfig", err)
+	if err = ie.SlotConfig.Decode(r); err != nil {
+		return utils.WrapError("Decode SlotConfig", err)
 	}
-	if associatedSSBPresent {
-		ie.associatedSSB = new(CSI_RS_Resource_Mobility_associatedSSB)
-		if err = ie.associatedSSB.Decode(r); err != nil {
-			return utils.WrapError("Decode associatedSSB", err)
+	if AssociatedSSBPresent {
+		ie.AssociatedSSB = new(CSI_RS_Resource_Mobility_associatedSSB)
+		if err = ie.AssociatedSSB.Decode(r); err != nil {
+			return utils.WrapError("Decode AssociatedSSB", err)
 		}
 	}
-	if err = ie.frequencyDomainAllocation.Decode(r); err != nil {
-		return utils.WrapError("Decode frequencyDomainAllocation", err)
+	if err = ie.FrequencyDomainAllocation.Decode(r); err != nil {
+		return utils.WrapError("Decode FrequencyDomainAllocation", err)
 	}
-	var tmp_int_firstOFDMSymbolInTimeDomain int64
-	if tmp_int_firstOFDMSymbolInTimeDomain, err = r.ReadInteger(&uper.Constraint{Lb: 0, Ub: 13}, false); err != nil {
-		return utils.WrapError("ReadInteger firstOFDMSymbolInTimeDomain", err)
+	var tmp_int_FirstOFDMSymbolInTimeDomain int64
+	if tmp_int_FirstOFDMSymbolInTimeDomain, err = r.ReadInteger(&uper.Constraint{Lb: 0, Ub: 13}, false); err != nil {
+		return utils.WrapError("ReadInteger FirstOFDMSymbolInTimeDomain", err)
 	}
-	ie.firstOFDMSymbolInTimeDomain = tmp_int_firstOFDMSymbolInTimeDomain
-	var tmp_int_sequenceGenerationConfig int64
-	if tmp_int_sequenceGenerationConfig, err = r.ReadInteger(&uper.Constraint{Lb: 0, Ub: 1023}, false); err != nil {
-		return utils.WrapError("ReadInteger sequenceGenerationConfig", err)
+	ie.FirstOFDMSymbolInTimeDomain = tmp_int_FirstOFDMSymbolInTimeDomain
+	var tmp_int_SequenceGenerationConfig int64
+	if tmp_int_SequenceGenerationConfig, err = r.ReadInteger(&uper.Constraint{Lb: 0, Ub: 1023}, false); err != nil {
+		return utils.WrapError("ReadInteger SequenceGenerationConfig", err)
 	}
-	ie.sequenceGenerationConfig = tmp_int_sequenceGenerationConfig
+	ie.SequenceGenerationConfig = tmp_int_SequenceGenerationConfig
 
 	if extensionBit {
 		// Read extension bitmap: 1 bits for 1 extension groups
@@ -137,15 +137,15 @@ func (ie *CSI_RS_Resource_Mobility) Decode(r *uper.UperReader) error {
 
 			extReader := uper.NewReader(bytes.NewReader(extBytes))
 
-			slotConfig_r17Present, err := extReader.ReadBool()
+			SlotConfig_r17Present, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			// decode slotConfig_r17 optional
-			if slotConfig_r17Present {
-				ie.slotConfig_r17 = new(CSI_RS_Resource_Mobility_slotConfig_r17)
-				if err = ie.slotConfig_r17.Decode(extReader); err != nil {
-					return utils.WrapError("Decode slotConfig_r17", err)
+			// decode SlotConfig_r17 optional
+			if SlotConfig_r17Present {
+				ie.SlotConfig_r17 = new(CSI_RS_Resource_Mobility_slotConfig_r17)
+				if err = ie.SlotConfig_r17.Decode(extReader); err != nil {
+					return utils.WrapError("Decode SlotConfig_r17", err)
 				}
 			}
 		}

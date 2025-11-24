@@ -8,42 +8,42 @@ import (
 )
 
 type SCellConfig struct {
-	sCellIndex                       SCellIndex                                `madatory`
-	sCellConfigCommon                *ServingCellConfigCommon                  `optional`
-	sCellConfigDedicated             *ServingCellConfig                        `optional`
-	smtc                             *SSB_MTC                                  `optional,ext-1`
-	sCellState_r16                   *SCellConfig_sCellState_r16               `optional,ext-2`
-	secondaryDRX_GroupConfig_r16     *SCellConfig_secondaryDRX_GroupConfig_r16 `optional,ext-2`
-	preConfGapStatus_r17             *uper.BitString                           `lb:maxNrofGapId_r17,ub:maxNrofGapId_r17,optional,ext-3`
-	goodServingCellEvaluationBFD_r17 *GoodServingCellEvaluation_r17            `optional,ext-3`
-	sCellSIB20_r17                   *SCellSIB20_r17                           `optional,ext-3,setuprelease`
+	SCellIndex                       SCellIndex                                `madatory`
+	SCellConfigCommon                *ServingCellConfigCommon                  `optional`
+	SCellConfigDedicated             *ServingCellConfig                        `optional`
+	Smtc                             *SSB_MTC                                  `optional,ext-1`
+	SCellState_r16                   *SCellConfig_sCellState_r16               `optional,ext-2`
+	SecondaryDRX_GroupConfig_r16     *SCellConfig_secondaryDRX_GroupConfig_r16 `optional,ext-2`
+	PreConfGapStatus_r17             *uper.BitString                           `lb:maxNrofGapId_r17,ub:maxNrofGapId_r17,optional,ext-3`
+	GoodServingCellEvaluationBFD_r17 *GoodServingCellEvaluation_r17            `optional,ext-3`
+	SCellSIB20_r17                   *SCellSIB20_r17                           `optional,ext-3,setuprelease`
 }
 
 func (ie *SCellConfig) Encode(w *uper.UperWriter) error {
 	var err error
-	hasExtensions := ie.smtc != nil || ie.sCellState_r16 != nil || ie.secondaryDRX_GroupConfig_r16 != nil || ie.preConfGapStatus_r17 != nil || ie.goodServingCellEvaluationBFD_r17 != nil || ie.sCellSIB20_r17 != nil
-	preambleBits := []bool{hasExtensions, ie.sCellConfigCommon != nil, ie.sCellConfigDedicated != nil}
+	hasExtensions := ie.Smtc != nil || ie.SCellState_r16 != nil || ie.SecondaryDRX_GroupConfig_r16 != nil || ie.PreConfGapStatus_r17 != nil || ie.GoodServingCellEvaluationBFD_r17 != nil || ie.SCellSIB20_r17 != nil
+	preambleBits := []bool{hasExtensions, ie.SCellConfigCommon != nil, ie.SCellConfigDedicated != nil}
 	for _, bit := range preambleBits {
 		if err = w.WriteBool(bit); err != nil {
 			return err
 		}
 	}
-	if err = ie.sCellIndex.Encode(w); err != nil {
-		return utils.WrapError("Encode sCellIndex", err)
+	if err = ie.SCellIndex.Encode(w); err != nil {
+		return utils.WrapError("Encode SCellIndex", err)
 	}
-	if ie.sCellConfigCommon != nil {
-		if err = ie.sCellConfigCommon.Encode(w); err != nil {
-			return utils.WrapError("Encode sCellConfigCommon", err)
+	if ie.SCellConfigCommon != nil {
+		if err = ie.SCellConfigCommon.Encode(w); err != nil {
+			return utils.WrapError("Encode SCellConfigCommon", err)
 		}
 	}
-	if ie.sCellConfigDedicated != nil {
-		if err = ie.sCellConfigDedicated.Encode(w); err != nil {
-			return utils.WrapError("Encode sCellConfigDedicated", err)
+	if ie.SCellConfigDedicated != nil {
+		if err = ie.SCellConfigDedicated.Encode(w); err != nil {
+			return utils.WrapError("Encode SCellConfigDedicated", err)
 		}
 	}
 	if hasExtensions {
 		// Extension bitmap: 3 bits for 3 extension groups
-		extBitmap := []bool{ie.smtc != nil, ie.sCellState_r16 != nil || ie.secondaryDRX_GroupConfig_r16 != nil, ie.preConfGapStatus_r17 != nil || ie.goodServingCellEvaluationBFD_r17 != nil || ie.sCellSIB20_r17 != nil}
+		extBitmap := []bool{ie.Smtc != nil, ie.SCellState_r16 != nil || ie.SecondaryDRX_GroupConfig_r16 != nil, ie.PreConfGapStatus_r17 != nil || ie.GoodServingCellEvaluationBFD_r17 != nil || ie.SCellSIB20_r17 != nil}
 		if err := w.WriteExtBitMap(extBitmap); err != nil {
 			return utils.WrapError("WriteExtBitMap SCellConfig", err)
 		}
@@ -54,17 +54,17 @@ func (ie *SCellConfig) Encode(w *uper.UperWriter) error {
 			extWriter := uper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 1
-			optionals_ext_1 := []bool{ie.smtc != nil}
+			optionals_ext_1 := []bool{ie.Smtc != nil}
 			for _, bit := range optionals_ext_1 {
 				if err := extWriter.WriteBool(bit); err != nil {
 					return err
 				}
 			}
 
-			// encode smtc optional
-			if ie.smtc != nil {
-				if err = ie.smtc.Encode(extWriter); err != nil {
-					return utils.WrapError("Encode smtc", err)
+			// encode Smtc optional
+			if ie.Smtc != nil {
+				if err = ie.Smtc.Encode(extWriter); err != nil {
+					return utils.WrapError("Encode Smtc", err)
 				}
 			}
 
@@ -83,23 +83,23 @@ func (ie *SCellConfig) Encode(w *uper.UperWriter) error {
 			extWriter := uper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 2
-			optionals_ext_2 := []bool{ie.sCellState_r16 != nil, ie.secondaryDRX_GroupConfig_r16 != nil}
+			optionals_ext_2 := []bool{ie.SCellState_r16 != nil, ie.SecondaryDRX_GroupConfig_r16 != nil}
 			for _, bit := range optionals_ext_2 {
 				if err := extWriter.WriteBool(bit); err != nil {
 					return err
 				}
 			}
 
-			// encode sCellState_r16 optional
-			if ie.sCellState_r16 != nil {
-				if err = ie.sCellState_r16.Encode(extWriter); err != nil {
-					return utils.WrapError("Encode sCellState_r16", err)
+			// encode SCellState_r16 optional
+			if ie.SCellState_r16 != nil {
+				if err = ie.SCellState_r16.Encode(extWriter); err != nil {
+					return utils.WrapError("Encode SCellState_r16", err)
 				}
 			}
-			// encode secondaryDRX_GroupConfig_r16 optional
-			if ie.secondaryDRX_GroupConfig_r16 != nil {
-				if err = ie.secondaryDRX_GroupConfig_r16.Encode(extWriter); err != nil {
-					return utils.WrapError("Encode secondaryDRX_GroupConfig_r16", err)
+			// encode SecondaryDRX_GroupConfig_r16 optional
+			if ie.SecondaryDRX_GroupConfig_r16 != nil {
+				if err = ie.SecondaryDRX_GroupConfig_r16.Encode(extWriter); err != nil {
+					return utils.WrapError("Encode SecondaryDRX_GroupConfig_r16", err)
 				}
 			}
 
@@ -118,32 +118,32 @@ func (ie *SCellConfig) Encode(w *uper.UperWriter) error {
 			extWriter := uper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 3
-			optionals_ext_3 := []bool{ie.preConfGapStatus_r17 != nil, ie.goodServingCellEvaluationBFD_r17 != nil, ie.sCellSIB20_r17 != nil}
+			optionals_ext_3 := []bool{ie.PreConfGapStatus_r17 != nil, ie.GoodServingCellEvaluationBFD_r17 != nil, ie.SCellSIB20_r17 != nil}
 			for _, bit := range optionals_ext_3 {
 				if err := extWriter.WriteBool(bit); err != nil {
 					return err
 				}
 			}
 
-			// encode preConfGapStatus_r17 optional
-			if ie.preConfGapStatus_r17 != nil {
-				if err = extWriter.WriteBitString(ie.preConfGapStatus_r17.Bytes, uint(ie.preConfGapStatus_r17.NumBits), &uper.Constraint{Lb: maxNrofGapId_r17, Ub: maxNrofGapId_r17}, false); err != nil {
-					return utils.WrapError("Encode preConfGapStatus_r17", err)
+			// encode PreConfGapStatus_r17 optional
+			if ie.PreConfGapStatus_r17 != nil {
+				if err = extWriter.WriteBitString(ie.PreConfGapStatus_r17.Bytes, uint(ie.PreConfGapStatus_r17.NumBits), &uper.Constraint{Lb: maxNrofGapId_r17, Ub: maxNrofGapId_r17}, false); err != nil {
+					return utils.WrapError("Encode PreConfGapStatus_r17", err)
 				}
 			}
-			// encode goodServingCellEvaluationBFD_r17 optional
-			if ie.goodServingCellEvaluationBFD_r17 != nil {
-				if err = ie.goodServingCellEvaluationBFD_r17.Encode(extWriter); err != nil {
-					return utils.WrapError("Encode goodServingCellEvaluationBFD_r17", err)
+			// encode GoodServingCellEvaluationBFD_r17 optional
+			if ie.GoodServingCellEvaluationBFD_r17 != nil {
+				if err = ie.GoodServingCellEvaluationBFD_r17.Encode(extWriter); err != nil {
+					return utils.WrapError("Encode GoodServingCellEvaluationBFD_r17", err)
 				}
 			}
-			// encode sCellSIB20_r17 optional
-			if ie.sCellSIB20_r17 != nil {
-				tmp_sCellSIB20_r17 := utils.SetupRelease[*SCellSIB20_r17]{
-					Setup: ie.sCellSIB20_r17,
+			// encode SCellSIB20_r17 optional
+			if ie.SCellSIB20_r17 != nil {
+				tmp_SCellSIB20_r17 := utils.SetupRelease[*SCellSIB20_r17]{
+					Setup: ie.SCellSIB20_r17,
 				}
-				if err = tmp_sCellSIB20_r17.Encode(extWriter); err != nil {
-					return utils.WrapError("Encode sCellSIB20_r17", err)
+				if err = tmp_SCellSIB20_r17.Encode(extWriter); err != nil {
+					return utils.WrapError("Encode SCellSIB20_r17", err)
 				}
 			}
 
@@ -165,27 +165,27 @@ func (ie *SCellConfig) Decode(r *uper.UperReader) error {
 	if extensionBit, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var sCellConfigCommonPresent bool
-	if sCellConfigCommonPresent, err = r.ReadBool(); err != nil {
+	var SCellConfigCommonPresent bool
+	if SCellConfigCommonPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var sCellConfigDedicatedPresent bool
-	if sCellConfigDedicatedPresent, err = r.ReadBool(); err != nil {
+	var SCellConfigDedicatedPresent bool
+	if SCellConfigDedicatedPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	if err = ie.sCellIndex.Decode(r); err != nil {
-		return utils.WrapError("Decode sCellIndex", err)
+	if err = ie.SCellIndex.Decode(r); err != nil {
+		return utils.WrapError("Decode SCellIndex", err)
 	}
-	if sCellConfigCommonPresent {
-		ie.sCellConfigCommon = new(ServingCellConfigCommon)
-		if err = ie.sCellConfigCommon.Decode(r); err != nil {
-			return utils.WrapError("Decode sCellConfigCommon", err)
+	if SCellConfigCommonPresent {
+		ie.SCellConfigCommon = new(ServingCellConfigCommon)
+		if err = ie.SCellConfigCommon.Decode(r); err != nil {
+			return utils.WrapError("Decode SCellConfigCommon", err)
 		}
 	}
-	if sCellConfigDedicatedPresent {
-		ie.sCellConfigDedicated = new(ServingCellConfig)
-		if err = ie.sCellConfigDedicated.Decode(r); err != nil {
-			return utils.WrapError("Decode sCellConfigDedicated", err)
+	if SCellConfigDedicatedPresent {
+		ie.SCellConfigDedicated = new(ServingCellConfig)
+		if err = ie.SCellConfigDedicated.Decode(r); err != nil {
+			return utils.WrapError("Decode SCellConfigDedicated", err)
 		}
 	}
 
@@ -205,15 +205,15 @@ func (ie *SCellConfig) Decode(r *uper.UperReader) error {
 
 			extReader := uper.NewReader(bytes.NewReader(extBytes))
 
-			smtcPresent, err := extReader.ReadBool()
+			SmtcPresent, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			// decode smtc optional
-			if smtcPresent {
-				ie.smtc = new(SSB_MTC)
-				if err = ie.smtc.Decode(extReader); err != nil {
-					return utils.WrapError("Decode smtc", err)
+			// decode Smtc optional
+			if SmtcPresent {
+				ie.Smtc = new(SSB_MTC)
+				if err = ie.Smtc.Decode(extReader); err != nil {
+					return utils.WrapError("Decode Smtc", err)
 				}
 			}
 		}
@@ -226,26 +226,26 @@ func (ie *SCellConfig) Decode(r *uper.UperReader) error {
 
 			extReader := uper.NewReader(bytes.NewReader(extBytes))
 
-			sCellState_r16Present, err := extReader.ReadBool()
+			SCellState_r16Present, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			secondaryDRX_GroupConfig_r16Present, err := extReader.ReadBool()
+			SecondaryDRX_GroupConfig_r16Present, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			// decode sCellState_r16 optional
-			if sCellState_r16Present {
-				ie.sCellState_r16 = new(SCellConfig_sCellState_r16)
-				if err = ie.sCellState_r16.Decode(extReader); err != nil {
-					return utils.WrapError("Decode sCellState_r16", err)
+			// decode SCellState_r16 optional
+			if SCellState_r16Present {
+				ie.SCellState_r16 = new(SCellConfig_sCellState_r16)
+				if err = ie.SCellState_r16.Decode(extReader); err != nil {
+					return utils.WrapError("Decode SCellState_r16", err)
 				}
 			}
-			// decode secondaryDRX_GroupConfig_r16 optional
-			if secondaryDRX_GroupConfig_r16Present {
-				ie.secondaryDRX_GroupConfig_r16 = new(SCellConfig_secondaryDRX_GroupConfig_r16)
-				if err = ie.secondaryDRX_GroupConfig_r16.Decode(extReader); err != nil {
-					return utils.WrapError("Decode secondaryDRX_GroupConfig_r16", err)
+			// decode SecondaryDRX_GroupConfig_r16 optional
+			if SecondaryDRX_GroupConfig_r16Present {
+				ie.SecondaryDRX_GroupConfig_r16 = new(SCellConfig_secondaryDRX_GroupConfig_r16)
+				if err = ie.SecondaryDRX_GroupConfig_r16.Decode(extReader); err != nil {
+					return utils.WrapError("Decode SecondaryDRX_GroupConfig_r16", err)
 				}
 			}
 		}
@@ -258,45 +258,45 @@ func (ie *SCellConfig) Decode(r *uper.UperReader) error {
 
 			extReader := uper.NewReader(bytes.NewReader(extBytes))
 
-			preConfGapStatus_r17Present, err := extReader.ReadBool()
+			PreConfGapStatus_r17Present, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			goodServingCellEvaluationBFD_r17Present, err := extReader.ReadBool()
+			GoodServingCellEvaluationBFD_r17Present, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			sCellSIB20_r17Present, err := extReader.ReadBool()
+			SCellSIB20_r17Present, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			// decode preConfGapStatus_r17 optional
-			if preConfGapStatus_r17Present {
-				var tmp_bs_preConfGapStatus_r17 []byte
-				var n_preConfGapStatus_r17 uint
-				if tmp_bs_preConfGapStatus_r17, n_preConfGapStatus_r17, err = extReader.ReadBitString(&uper.Constraint{Lb: maxNrofGapId_r17, Ub: maxNrofGapId_r17}, false); err != nil {
-					return utils.WrapError("Decode preConfGapStatus_r17", err)
+			// decode PreConfGapStatus_r17 optional
+			if PreConfGapStatus_r17Present {
+				var tmp_bs_PreConfGapStatus_r17 []byte
+				var n_PreConfGapStatus_r17 uint
+				if tmp_bs_PreConfGapStatus_r17, n_PreConfGapStatus_r17, err = extReader.ReadBitString(&uper.Constraint{Lb: maxNrofGapId_r17, Ub: maxNrofGapId_r17}, false); err != nil {
+					return utils.WrapError("Decode PreConfGapStatus_r17", err)
 				}
 				tmp_bitstring := uper.BitString{
-					Bytes:   tmp_bs_preConfGapStatus_r17,
-					NumBits: uint64(n_preConfGapStatus_r17),
+					Bytes:   tmp_bs_PreConfGapStatus_r17,
+					NumBits: uint64(n_PreConfGapStatus_r17),
 				}
-				ie.preConfGapStatus_r17 = &tmp_bitstring
+				ie.PreConfGapStatus_r17 = &tmp_bitstring
 			}
-			// decode goodServingCellEvaluationBFD_r17 optional
-			if goodServingCellEvaluationBFD_r17Present {
-				ie.goodServingCellEvaluationBFD_r17 = new(GoodServingCellEvaluation_r17)
-				if err = ie.goodServingCellEvaluationBFD_r17.Decode(extReader); err != nil {
-					return utils.WrapError("Decode goodServingCellEvaluationBFD_r17", err)
+			// decode GoodServingCellEvaluationBFD_r17 optional
+			if GoodServingCellEvaluationBFD_r17Present {
+				ie.GoodServingCellEvaluationBFD_r17 = new(GoodServingCellEvaluation_r17)
+				if err = ie.GoodServingCellEvaluationBFD_r17.Decode(extReader); err != nil {
+					return utils.WrapError("Decode GoodServingCellEvaluationBFD_r17", err)
 				}
 			}
-			// decode sCellSIB20_r17 optional
-			if sCellSIB20_r17Present {
-				tmp_sCellSIB20_r17 := utils.SetupRelease[*SCellSIB20_r17]{}
-				if err = tmp_sCellSIB20_r17.Decode(extReader); err != nil {
-					return utils.WrapError("Decode sCellSIB20_r17", err)
+			// decode SCellSIB20_r17 optional
+			if SCellSIB20_r17Present {
+				tmp_SCellSIB20_r17 := utils.SetupRelease[*SCellSIB20_r17]{}
+				if err = tmp_SCellSIB20_r17.Decode(extReader); err != nil {
+					return utils.WrapError("Decode SCellSIB20_r17", err)
 				}
-				ie.sCellSIB20_r17 = tmp_sCellSIB20_r17.Setup
+				ie.SCellSIB20_r17 = tmp_SCellSIB20_r17.Setup
 			}
 		}
 	}

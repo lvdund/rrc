@@ -8,255 +8,255 @@ import (
 )
 
 type PDSCH_Config struct {
-	dataScramblingIdentityPDSCH                             *int64                                                      `lb:0,ub:1023,optional`
-	dmrs_DownlinkForPDSCH_MappingTypeA                      *DMRS_DownlinkConfig                                        `optional,setuprelease`
-	dmrs_DownlinkForPDSCH_MappingTypeB                      *DMRS_DownlinkConfig                                        `optional,setuprelease`
-	tci_StatesToAddModList                                  []TCI_State                                                 `lb:1,ub:maxNrofTCI_States,optional`
-	tci_StatesToReleaseList                                 []TCI_StateId                                               `lb:1,ub:maxNrofTCI_States,optional`
-	vrb_ToPRB_Interleaver                                   *PDSCH_Config_vrb_ToPRB_Interleaver                         `optional`
-	resourceAllocation                                      PDSCH_Config_resourceAllocation                             `madatory`
-	pdsch_TimeDomainAllocationList                          *PDSCH_TimeDomainResourceAllocationList                     `optional,setuprelease`
-	pdsch_AggregationFactor                                 *PDSCH_Config_pdsch_AggregationFactor                       `optional`
-	rateMatchPatternToAddModList                            []RateMatchPattern                                          `lb:1,ub:maxNrofRateMatchPatterns,optional`
-	rateMatchPatternToReleaseList                           []RateMatchPatternId                                        `lb:1,ub:maxNrofRateMatchPatterns,optional`
-	rateMatchPatternGroup1                                  *RateMatchPatternGroup                                      `optional`
-	rateMatchPatternGroup2                                  *RateMatchPatternGroup                                      `optional`
-	rbg_Size                                                PDSCH_Config_rbg_Size                                       `madatory`
-	mcs_Table                                               *PDSCH_Config_mcs_Table                                     `optional`
-	maxNrofCodeWordsScheduledByDCI                          *PDSCH_Config_maxNrofCodeWordsScheduledByDCI                `optional`
-	prb_BundlingType                                        *PDSCH_Config_prb_BundlingType                              `optional`
-	zp_CSI_RS_ResourceToAddModList                          []ZP_CSI_RS_Resource                                        `lb:1,ub:maxNrofZP_CSI_RS_Resources,optional`
-	zp_CSI_RS_ResourceToReleaseList                         []ZP_CSI_RS_ResourceId                                      `lb:1,ub:maxNrofZP_CSI_RS_Resources,optional`
-	aperiodic_ZP_CSI_RS_ResourceSetsToAddModList            []ZP_CSI_RS_ResourceSet                                     `lb:1,ub:maxNrofZP_CSI_RS_ResourceSets,optional`
-	aperiodic_ZP_CSI_RS_ResourceSetsToReleaseList           []ZP_CSI_RS_ResourceSetId                                   `lb:1,ub:maxNrofZP_CSI_RS_ResourceSets,optional`
-	sp_ZP_CSI_RS_ResourceSetsToAddModList                   []ZP_CSI_RS_ResourceSet                                     `lb:1,ub:maxNrofZP_CSI_RS_ResourceSets,optional`
-	sp_ZP_CSI_RS_ResourceSetsToReleaseList                  []ZP_CSI_RS_ResourceSetId                                   `lb:1,ub:maxNrofZP_CSI_RS_ResourceSets,optional`
-	p_ZP_CSI_RS_ResourceSet                                 *ZP_CSI_RS_ResourceSet                                      `optional,setuprelease`
-	maxMIMO_Layers_r16                                      *MaxMIMO_LayersDL_r16                                       `optional,ext-1,setuprelease`
-	minimumSchedulingOffsetK0_r16                           *MinSchedulingOffsetK0_Values_r16                           `optional,ext-1,setuprelease`
-	antennaPortsFieldPresenceDCI_1_2_r16                    *PDSCH_Config_antennaPortsFieldPresenceDCI_1_2_r16          `optional,ext-1`
-	aperiodicZP_CSI_RS_ResourceSetsToAddModListDCI_1_2_r16  []ZP_CSI_RS_ResourceSet                                     `lb:1,ub:maxNrofZP_CSI_RS_ResourceSets,optional,ext-1`
-	aperiodicZP_CSI_RS_ResourceSetsToReleaseListDCI_1_2_r16 []ZP_CSI_RS_ResourceSetId                                   `lb:1,ub:maxNrofZP_CSI_RS_ResourceSets,optional,ext-1`
-	dmrs_DownlinkForPDSCH_MappingTypeA_DCI_1_2_r16          *DMRS_DownlinkConfig                                        `optional,ext-1,setuprelease`
-	dmrs_DownlinkForPDSCH_MappingTypeB_DCI_1_2_r16          *DMRS_DownlinkConfig                                        `optional,ext-1,setuprelease`
-	dmrs_SequenceInitializationDCI_1_2_r16                  *PDSCH_Config_dmrs_SequenceInitializationDCI_1_2_r16        `optional,ext-1`
-	harq_ProcessNumberSizeDCI_1_2_r16                       *int64                                                      `lb:0,ub:4,optional,ext-1`
-	mcs_TableDCI_1_2_r16                                    *PDSCH_Config_mcs_TableDCI_1_2_r16                          `optional,ext-1`
-	numberOfBitsForRV_DCI_1_2_r16                           *int64                                                      `lb:0,ub:2,optional,ext-1`
-	pdsch_TimeDomainAllocationListDCI_1_2_r16               *PDSCH_TimeDomainResourceAllocationList_r16                 `optional,ext-1,setuprelease`
-	prb_BundlingTypeDCI_1_2_r16                             *PDSCH_Config_prb_BundlingTypeDCI_1_2_r16                   `optional,ext-1`
-	priorityIndicatorDCI_1_2_r16                            *PDSCH_Config_priorityIndicatorDCI_1_2_r16                  `optional,ext-1`
-	rateMatchPatternGroup1DCI_1_2_r16                       *RateMatchPatternGroup                                      `optional,ext-1`
-	rateMatchPatternGroup2DCI_1_2_r16                       *RateMatchPatternGroup                                      `optional,ext-1`
-	resourceAllocationType1GranularityDCI_1_2_r16           *PDSCH_Config_resourceAllocationType1GranularityDCI_1_2_r16 `optional,ext-1`
-	vrb_ToPRB_InterleaverDCI_1_2_r16                        *PDSCH_Config_vrb_ToPRB_InterleaverDCI_1_2_r16              `optional,ext-1`
-	referenceOfSLIVDCI_1_2_r16                              *PDSCH_Config_referenceOfSLIVDCI_1_2_r16                    `optional,ext-1`
-	resourceAllocationDCI_1_2_r16                           *PDSCH_Config_resourceAllocationDCI_1_2_r16                 `optional,ext-1`
-	priorityIndicatorDCI_1_1_r16                            *PDSCH_Config_priorityIndicatorDCI_1_1_r16                  `optional,ext-1`
-	dataScramblingIdentityPDSCH2_r16                        *int64                                                      `lb:0,ub:1023,optional,ext-1`
-	pdsch_TimeDomainAllocationList_r16                      *PDSCH_TimeDomainResourceAllocationList_r16                 `optional,ext-1,setuprelease`
-	repetitionSchemeConfig_r16                              *RepetitionSchemeConfig_r16                                 `optional,ext-1,setuprelease`
-	repetitionSchemeConfig_v1630                            *RepetitionSchemeConfig_v1630                               `optional,ext-2,setuprelease`
-	pdsch_HARQ_ACK_OneShotFeedbackDCI_1_2_r17               *PDSCH_Config_pdsch_HARQ_ACK_OneShotFeedbackDCI_1_2_r17     `optional,ext-3`
-	pdsch_HARQ_ACK_EnhType3DCI_1_2_r17                      *PDSCH_Config_pdsch_HARQ_ACK_EnhType3DCI_1_2_r17            `optional,ext-3`
-	pdsch_HARQ_ACK_EnhType3DCI_Field_1_2_r17                *PDSCH_Config_pdsch_HARQ_ACK_EnhType3DCI_Field_1_2_r17      `optional,ext-3`
-	pdsch_HARQ_ACK_RetxDCI_1_2_r17                          *PDSCH_Config_pdsch_HARQ_ACK_RetxDCI_1_2_r17                `optional,ext-3`
-	pucch_sSCellDynDCI_1_2_r17                              *PDSCH_Config_pucch_sSCellDynDCI_1_2_r17                    `optional,ext-3`
-	dl_OrJointTCI_StateList_r17                             *PDSCH_Config_dl_OrJointTCI_StateList_r17                   `lb:1,ub:maxNrofTCI_States,optional,ext-3`
-	beamAppTime_r17                                         *PDSCH_Config_beamAppTime_r17                               `optional,ext-3`
-	dummy                                                   *Dummy_TDRA_List                                            `optional,ext-3,setuprelease`
-	dmrs_FD_OCC_DisabledForRank1_PDSCH_r17                  *PDSCH_Config_dmrs_FD_OCC_DisabledForRank1_PDSCH_r17        `optional,ext-3`
-	minimumSchedulingOffsetK0_r17                           *MinSchedulingOffsetK0_Values_r17                           `optional,ext-3,setuprelease`
-	harq_ProcessNumberSizeDCI_1_2_v1700                     *int64                                                      `lb:0,ub:5,optional,ext-3`
-	harq_ProcessNumberSizeDCI_1_1_r17                       *int64                                                      `lb:5,ub:5,optional,ext-3`
-	mcs_Table_r17                                           *PDSCH_Config_mcs_Table_r17                                 `optional,ext-3`
-	mcs_TableDCI_1_2_r17                                    *PDSCH_Config_mcs_TableDCI_1_2_r17                          `optional,ext-3`
-	xOverheadMulticast_r17                                  *PDSCH_Config_xOverheadMulticast_r17                        `optional,ext-3`
-	priorityIndicatorDCI_4_2_r17                            *PDSCH_Config_priorityIndicatorDCI_4_2_r17                  `optional,ext-3`
-	sizeDCI_4_2_r17                                         *int64                                                      `lb:20,ub:maxDCI_4_2_Size_r17,optional,ext-3`
-	pdsch_TimeDomainAllocationListForMultiPDSCH_r17         *MultiPDSCH_TDRA_List_r17                                   `optional,ext-4,setuprelease`
+	DataScramblingIdentityPDSCH                             *int64                                                      `lb:0,ub:1023,optional`
+	Dmrs_DownlinkForPDSCH_MappingTypeA                      *DMRS_DownlinkConfig                                        `optional,setuprelease`
+	Dmrs_DownlinkForPDSCH_MappingTypeB                      *DMRS_DownlinkConfig                                        `optional,setuprelease`
+	Tci_StatesToAddModList                                  []TCI_State                                                 `lb:1,ub:maxNrofTCI_States,optional`
+	Tci_StatesToReleaseList                                 []TCI_StateId                                               `lb:1,ub:maxNrofTCI_States,optional`
+	Vrb_ToPRB_Interleaver                                   *PDSCH_Config_vrb_ToPRB_Interleaver                         `optional`
+	ResourceAllocation                                      PDSCH_Config_resourceAllocation                             `madatory`
+	Pdsch_TimeDomainAllocationList                          *PDSCH_TimeDomainResourceAllocationList                     `optional,setuprelease`
+	Pdsch_AggregationFactor                                 *PDSCH_Config_pdsch_AggregationFactor                       `optional`
+	RateMatchPatternToAddModList                            []RateMatchPattern                                          `lb:1,ub:maxNrofRateMatchPatterns,optional`
+	RateMatchPatternToReleaseList                           []RateMatchPatternId                                        `lb:1,ub:maxNrofRateMatchPatterns,optional`
+	RateMatchPatternGroup1                                  *RateMatchPatternGroup                                      `optional`
+	RateMatchPatternGroup2                                  *RateMatchPatternGroup                                      `optional`
+	Rbg_Size                                                PDSCH_Config_rbg_Size                                       `madatory`
+	Mcs_Table                                               *PDSCH_Config_mcs_Table                                     `optional`
+	MaxNrofCodeWordsScheduledByDCI                          *PDSCH_Config_maxNrofCodeWordsScheduledByDCI                `optional`
+	Prb_BundlingType                                        *PDSCH_Config_prb_BundlingType                              `optional`
+	Zp_CSI_RS_ResourceToAddModList                          []ZP_CSI_RS_Resource                                        `lb:1,ub:maxNrofZP_CSI_RS_Resources,optional`
+	Zp_CSI_RS_ResourceToReleaseList                         []ZP_CSI_RS_ResourceId                                      `lb:1,ub:maxNrofZP_CSI_RS_Resources,optional`
+	Aperiodic_ZP_CSI_RS_ResourceSetsToAddModList            []ZP_CSI_RS_ResourceSet                                     `lb:1,ub:maxNrofZP_CSI_RS_ResourceSets,optional`
+	Aperiodic_ZP_CSI_RS_ResourceSetsToReleaseList           []ZP_CSI_RS_ResourceSetId                                   `lb:1,ub:maxNrofZP_CSI_RS_ResourceSets,optional`
+	Sp_ZP_CSI_RS_ResourceSetsToAddModList                   []ZP_CSI_RS_ResourceSet                                     `lb:1,ub:maxNrofZP_CSI_RS_ResourceSets,optional`
+	Sp_ZP_CSI_RS_ResourceSetsToReleaseList                  []ZP_CSI_RS_ResourceSetId                                   `lb:1,ub:maxNrofZP_CSI_RS_ResourceSets,optional`
+	P_ZP_CSI_RS_ResourceSet                                 *ZP_CSI_RS_ResourceSet                                      `optional,setuprelease`
+	MaxMIMO_Layers_r16                                      *MaxMIMO_LayersDL_r16                                       `optional,ext-1,setuprelease`
+	MinimumSchedulingOffsetK0_r16                           *MinSchedulingOffsetK0_Values_r16                           `optional,ext-1,setuprelease`
+	AntennaPortsFieldPresenceDCI_1_2_r16                    *PDSCH_Config_antennaPortsFieldPresenceDCI_1_2_r16          `optional,ext-1`
+	AperiodicZP_CSI_RS_ResourceSetsToAddModListDCI_1_2_r16  []ZP_CSI_RS_ResourceSet                                     `lb:1,ub:maxNrofZP_CSI_RS_ResourceSets,optional,ext-1`
+	AperiodicZP_CSI_RS_ResourceSetsToReleaseListDCI_1_2_r16 []ZP_CSI_RS_ResourceSetId                                   `lb:1,ub:maxNrofZP_CSI_RS_ResourceSets,optional,ext-1`
+	Dmrs_DownlinkForPDSCH_MappingTypeA_DCI_1_2_r16          *DMRS_DownlinkConfig                                        `optional,ext-1,setuprelease`
+	Dmrs_DownlinkForPDSCH_MappingTypeB_DCI_1_2_r16          *DMRS_DownlinkConfig                                        `optional,ext-1,setuprelease`
+	Dmrs_SequenceInitializationDCI_1_2_r16                  *PDSCH_Config_dmrs_SequenceInitializationDCI_1_2_r16        `optional,ext-1`
+	Harq_ProcessNumberSizeDCI_1_2_r16                       *int64                                                      `lb:0,ub:4,optional,ext-1`
+	Mcs_TableDCI_1_2_r16                                    *PDSCH_Config_mcs_TableDCI_1_2_r16                          `optional,ext-1`
+	NumberOfBitsForRV_DCI_1_2_r16                           *int64                                                      `lb:0,ub:2,optional,ext-1`
+	Pdsch_TimeDomainAllocationListDCI_1_2_r16               *PDSCH_TimeDomainResourceAllocationList_r16                 `optional,ext-1,setuprelease`
+	Prb_BundlingTypeDCI_1_2_r16                             *PDSCH_Config_prb_BundlingTypeDCI_1_2_r16                   `optional,ext-1`
+	PriorityIndicatorDCI_1_2_r16                            *PDSCH_Config_priorityIndicatorDCI_1_2_r16                  `optional,ext-1`
+	RateMatchPatternGroup1DCI_1_2_r16                       *RateMatchPatternGroup                                      `optional,ext-1`
+	RateMatchPatternGroup2DCI_1_2_r16                       *RateMatchPatternGroup                                      `optional,ext-1`
+	ResourceAllocationType1GranularityDCI_1_2_r16           *PDSCH_Config_resourceAllocationType1GranularityDCI_1_2_r16 `optional,ext-1`
+	Vrb_ToPRB_InterleaverDCI_1_2_r16                        *PDSCH_Config_vrb_ToPRB_InterleaverDCI_1_2_r16              `optional,ext-1`
+	ReferenceOfSLIVDCI_1_2_r16                              *PDSCH_Config_referenceOfSLIVDCI_1_2_r16                    `optional,ext-1`
+	ResourceAllocationDCI_1_2_r16                           *PDSCH_Config_resourceAllocationDCI_1_2_r16                 `optional,ext-1`
+	PriorityIndicatorDCI_1_1_r16                            *PDSCH_Config_priorityIndicatorDCI_1_1_r16                  `optional,ext-1`
+	DataScramblingIdentityPDSCH2_r16                        *int64                                                      `lb:0,ub:1023,optional,ext-1`
+	Pdsch_TimeDomainAllocationList_r16                      *PDSCH_TimeDomainResourceAllocationList_r16                 `optional,ext-1,setuprelease`
+	RepetitionSchemeConfig_r16                              *RepetitionSchemeConfig_r16                                 `optional,ext-1,setuprelease`
+	RepetitionSchemeConfig_v1630                            *RepetitionSchemeConfig_v1630                               `optional,ext-2,setuprelease`
+	Pdsch_HARQ_ACK_OneShotFeedbackDCI_1_2_r17               *PDSCH_Config_pdsch_HARQ_ACK_OneShotFeedbackDCI_1_2_r17     `optional,ext-3`
+	Pdsch_HARQ_ACK_EnhType3DCI_1_2_r17                      *PDSCH_Config_pdsch_HARQ_ACK_EnhType3DCI_1_2_r17            `optional,ext-3`
+	Pdsch_HARQ_ACK_EnhType3DCI_Field_1_2_r17                *PDSCH_Config_pdsch_HARQ_ACK_EnhType3DCI_Field_1_2_r17      `optional,ext-3`
+	Pdsch_HARQ_ACK_RetxDCI_1_2_r17                          *PDSCH_Config_pdsch_HARQ_ACK_RetxDCI_1_2_r17                `optional,ext-3`
+	Pucch_sSCellDynDCI_1_2_r17                              *PDSCH_Config_pucch_sSCellDynDCI_1_2_r17                    `optional,ext-3`
+	Dl_OrJointTCI_StateList_r17                             *PDSCH_Config_dl_OrJointTCI_StateList_r17                   `lb:1,ub:maxNrofTCI_States,optional,ext-3`
+	BeamAppTime_r17                                         *PDSCH_Config_beamAppTime_r17                               `optional,ext-3`
+	Dummy                                                   *Dummy_TDRA_List                                            `optional,ext-3,setuprelease`
+	Dmrs_FD_OCC_DisabledForRank1_PDSCH_r17                  *PDSCH_Config_dmrs_FD_OCC_DisabledForRank1_PDSCH_r17        `optional,ext-3`
+	MinimumSchedulingOffsetK0_r17                           *MinSchedulingOffsetK0_Values_r17                           `optional,ext-3,setuprelease`
+	Harq_ProcessNumberSizeDCI_1_2_v1700                     *int64                                                      `lb:0,ub:5,optional,ext-3`
+	Harq_ProcessNumberSizeDCI_1_1_r17                       *int64                                                      `lb:5,ub:5,optional,ext-3`
+	Mcs_Table_r17                                           *PDSCH_Config_mcs_Table_r17                                 `optional,ext-3`
+	Mcs_TableDCI_1_2_r17                                    *PDSCH_Config_mcs_TableDCI_1_2_r17                          `optional,ext-3`
+	XOverheadMulticast_r17                                  *PDSCH_Config_xOverheadMulticast_r17                        `optional,ext-3`
+	PriorityIndicatorDCI_4_2_r17                            *PDSCH_Config_priorityIndicatorDCI_4_2_r17                  `optional,ext-3`
+	SizeDCI_4_2_r17                                         *int64                                                      `lb:20,ub:maxDCI_4_2_Size_r17,optional,ext-3`
+	Pdsch_TimeDomainAllocationListForMultiPDSCH_r17         *MultiPDSCH_TDRA_List_r17                                   `optional,ext-4,setuprelease`
 }
 
 func (ie *PDSCH_Config) Encode(w *uper.UperWriter) error {
 	var err error
-	hasExtensions := ie.maxMIMO_Layers_r16 != nil || ie.minimumSchedulingOffsetK0_r16 != nil || ie.antennaPortsFieldPresenceDCI_1_2_r16 != nil || len(ie.aperiodicZP_CSI_RS_ResourceSetsToAddModListDCI_1_2_r16) > 0 || len(ie.aperiodicZP_CSI_RS_ResourceSetsToReleaseListDCI_1_2_r16) > 0 || ie.dmrs_DownlinkForPDSCH_MappingTypeA_DCI_1_2_r16 != nil || ie.dmrs_DownlinkForPDSCH_MappingTypeB_DCI_1_2_r16 != nil || ie.dmrs_SequenceInitializationDCI_1_2_r16 != nil || ie.harq_ProcessNumberSizeDCI_1_2_r16 != nil || ie.mcs_TableDCI_1_2_r16 != nil || ie.numberOfBitsForRV_DCI_1_2_r16 != nil || ie.pdsch_TimeDomainAllocationListDCI_1_2_r16 != nil || ie.prb_BundlingTypeDCI_1_2_r16 != nil || ie.priorityIndicatorDCI_1_2_r16 != nil || ie.rateMatchPatternGroup1DCI_1_2_r16 != nil || ie.rateMatchPatternGroup2DCI_1_2_r16 != nil || ie.resourceAllocationType1GranularityDCI_1_2_r16 != nil || ie.vrb_ToPRB_InterleaverDCI_1_2_r16 != nil || ie.referenceOfSLIVDCI_1_2_r16 != nil || ie.resourceAllocationDCI_1_2_r16 != nil || ie.priorityIndicatorDCI_1_1_r16 != nil || ie.dataScramblingIdentityPDSCH2_r16 != nil || ie.pdsch_TimeDomainAllocationList_r16 != nil || ie.repetitionSchemeConfig_r16 != nil || ie.repetitionSchemeConfig_v1630 != nil || ie.pdsch_HARQ_ACK_OneShotFeedbackDCI_1_2_r17 != nil || ie.pdsch_HARQ_ACK_EnhType3DCI_1_2_r17 != nil || ie.pdsch_HARQ_ACK_EnhType3DCI_Field_1_2_r17 != nil || ie.pdsch_HARQ_ACK_RetxDCI_1_2_r17 != nil || ie.pucch_sSCellDynDCI_1_2_r17 != nil || ie.dl_OrJointTCI_StateList_r17 != nil || ie.beamAppTime_r17 != nil || ie.dummy != nil || ie.dmrs_FD_OCC_DisabledForRank1_PDSCH_r17 != nil || ie.minimumSchedulingOffsetK0_r17 != nil || ie.harq_ProcessNumberSizeDCI_1_2_v1700 != nil || ie.harq_ProcessNumberSizeDCI_1_1_r17 != nil || ie.mcs_Table_r17 != nil || ie.mcs_TableDCI_1_2_r17 != nil || ie.xOverheadMulticast_r17 != nil || ie.priorityIndicatorDCI_4_2_r17 != nil || ie.sizeDCI_4_2_r17 != nil || ie.pdsch_TimeDomainAllocationListForMultiPDSCH_r17 != nil
-	preambleBits := []bool{hasExtensions, ie.dataScramblingIdentityPDSCH != nil, ie.dmrs_DownlinkForPDSCH_MappingTypeA != nil, ie.dmrs_DownlinkForPDSCH_MappingTypeB != nil, len(ie.tci_StatesToAddModList) > 0, len(ie.tci_StatesToReleaseList) > 0, ie.vrb_ToPRB_Interleaver != nil, ie.pdsch_TimeDomainAllocationList != nil, ie.pdsch_AggregationFactor != nil, len(ie.rateMatchPatternToAddModList) > 0, len(ie.rateMatchPatternToReleaseList) > 0, ie.rateMatchPatternGroup1 != nil, ie.rateMatchPatternGroup2 != nil, ie.mcs_Table != nil, ie.maxNrofCodeWordsScheduledByDCI != nil, ie.prb_BundlingType != nil, len(ie.zp_CSI_RS_ResourceToAddModList) > 0, len(ie.zp_CSI_RS_ResourceToReleaseList) > 0, len(ie.aperiodic_ZP_CSI_RS_ResourceSetsToAddModList) > 0, len(ie.aperiodic_ZP_CSI_RS_ResourceSetsToReleaseList) > 0, len(ie.sp_ZP_CSI_RS_ResourceSetsToAddModList) > 0, len(ie.sp_ZP_CSI_RS_ResourceSetsToReleaseList) > 0, ie.p_ZP_CSI_RS_ResourceSet != nil}
+	hasExtensions := ie.MaxMIMO_Layers_r16 != nil || ie.MinimumSchedulingOffsetK0_r16 != nil || ie.AntennaPortsFieldPresenceDCI_1_2_r16 != nil || len(ie.AperiodicZP_CSI_RS_ResourceSetsToAddModListDCI_1_2_r16) > 0 || len(ie.AperiodicZP_CSI_RS_ResourceSetsToReleaseListDCI_1_2_r16) > 0 || ie.Dmrs_DownlinkForPDSCH_MappingTypeA_DCI_1_2_r16 != nil || ie.Dmrs_DownlinkForPDSCH_MappingTypeB_DCI_1_2_r16 != nil || ie.Dmrs_SequenceInitializationDCI_1_2_r16 != nil || ie.Harq_ProcessNumberSizeDCI_1_2_r16 != nil || ie.Mcs_TableDCI_1_2_r16 != nil || ie.NumberOfBitsForRV_DCI_1_2_r16 != nil || ie.Pdsch_TimeDomainAllocationListDCI_1_2_r16 != nil || ie.Prb_BundlingTypeDCI_1_2_r16 != nil || ie.PriorityIndicatorDCI_1_2_r16 != nil || ie.RateMatchPatternGroup1DCI_1_2_r16 != nil || ie.RateMatchPatternGroup2DCI_1_2_r16 != nil || ie.ResourceAllocationType1GranularityDCI_1_2_r16 != nil || ie.Vrb_ToPRB_InterleaverDCI_1_2_r16 != nil || ie.ReferenceOfSLIVDCI_1_2_r16 != nil || ie.ResourceAllocationDCI_1_2_r16 != nil || ie.PriorityIndicatorDCI_1_1_r16 != nil || ie.DataScramblingIdentityPDSCH2_r16 != nil || ie.Pdsch_TimeDomainAllocationList_r16 != nil || ie.RepetitionSchemeConfig_r16 != nil || ie.RepetitionSchemeConfig_v1630 != nil || ie.Pdsch_HARQ_ACK_OneShotFeedbackDCI_1_2_r17 != nil || ie.Pdsch_HARQ_ACK_EnhType3DCI_1_2_r17 != nil || ie.Pdsch_HARQ_ACK_EnhType3DCI_Field_1_2_r17 != nil || ie.Pdsch_HARQ_ACK_RetxDCI_1_2_r17 != nil || ie.Pucch_sSCellDynDCI_1_2_r17 != nil || ie.Dl_OrJointTCI_StateList_r17 != nil || ie.BeamAppTime_r17 != nil || ie.Dummy != nil || ie.Dmrs_FD_OCC_DisabledForRank1_PDSCH_r17 != nil || ie.MinimumSchedulingOffsetK0_r17 != nil || ie.Harq_ProcessNumberSizeDCI_1_2_v1700 != nil || ie.Harq_ProcessNumberSizeDCI_1_1_r17 != nil || ie.Mcs_Table_r17 != nil || ie.Mcs_TableDCI_1_2_r17 != nil || ie.XOverheadMulticast_r17 != nil || ie.PriorityIndicatorDCI_4_2_r17 != nil || ie.SizeDCI_4_2_r17 != nil || ie.Pdsch_TimeDomainAllocationListForMultiPDSCH_r17 != nil
+	preambleBits := []bool{hasExtensions, ie.DataScramblingIdentityPDSCH != nil, ie.Dmrs_DownlinkForPDSCH_MappingTypeA != nil, ie.Dmrs_DownlinkForPDSCH_MappingTypeB != nil, len(ie.Tci_StatesToAddModList) > 0, len(ie.Tci_StatesToReleaseList) > 0, ie.Vrb_ToPRB_Interleaver != nil, ie.Pdsch_TimeDomainAllocationList != nil, ie.Pdsch_AggregationFactor != nil, len(ie.RateMatchPatternToAddModList) > 0, len(ie.RateMatchPatternToReleaseList) > 0, ie.RateMatchPatternGroup1 != nil, ie.RateMatchPatternGroup2 != nil, ie.Mcs_Table != nil, ie.MaxNrofCodeWordsScheduledByDCI != nil, ie.Prb_BundlingType != nil, len(ie.Zp_CSI_RS_ResourceToAddModList) > 0, len(ie.Zp_CSI_RS_ResourceToReleaseList) > 0, len(ie.Aperiodic_ZP_CSI_RS_ResourceSetsToAddModList) > 0, len(ie.Aperiodic_ZP_CSI_RS_ResourceSetsToReleaseList) > 0, len(ie.Sp_ZP_CSI_RS_ResourceSetsToAddModList) > 0, len(ie.Sp_ZP_CSI_RS_ResourceSetsToReleaseList) > 0, ie.P_ZP_CSI_RS_ResourceSet != nil}
 	for _, bit := range preambleBits {
 		if err = w.WriteBool(bit); err != nil {
 			return err
 		}
 	}
-	if ie.dataScramblingIdentityPDSCH != nil {
-		if err = w.WriteInteger(*ie.dataScramblingIdentityPDSCH, &uper.Constraint{Lb: 0, Ub: 1023}, false); err != nil {
-			return utils.WrapError("Encode dataScramblingIdentityPDSCH", err)
+	if ie.DataScramblingIdentityPDSCH != nil {
+		if err = w.WriteInteger(*ie.DataScramblingIdentityPDSCH, &uper.Constraint{Lb: 0, Ub: 1023}, false); err != nil {
+			return utils.WrapError("Encode DataScramblingIdentityPDSCH", err)
 		}
 	}
-	if ie.dmrs_DownlinkForPDSCH_MappingTypeA != nil {
-		tmp_dmrs_DownlinkForPDSCH_MappingTypeA := utils.SetupRelease[*DMRS_DownlinkConfig]{
-			Setup: ie.dmrs_DownlinkForPDSCH_MappingTypeA,
+	if ie.Dmrs_DownlinkForPDSCH_MappingTypeA != nil {
+		tmp_Dmrs_DownlinkForPDSCH_MappingTypeA := utils.SetupRelease[*DMRS_DownlinkConfig]{
+			Setup: ie.Dmrs_DownlinkForPDSCH_MappingTypeA,
 		}
-		if err = tmp_dmrs_DownlinkForPDSCH_MappingTypeA.Encode(w); err != nil {
-			return utils.WrapError("Encode dmrs_DownlinkForPDSCH_MappingTypeA", err)
-		}
-	}
-	if ie.dmrs_DownlinkForPDSCH_MappingTypeB != nil {
-		tmp_dmrs_DownlinkForPDSCH_MappingTypeB := utils.SetupRelease[*DMRS_DownlinkConfig]{
-			Setup: ie.dmrs_DownlinkForPDSCH_MappingTypeB,
-		}
-		if err = tmp_dmrs_DownlinkForPDSCH_MappingTypeB.Encode(w); err != nil {
-			return utils.WrapError("Encode dmrs_DownlinkForPDSCH_MappingTypeB", err)
+		if err = tmp_Dmrs_DownlinkForPDSCH_MappingTypeA.Encode(w); err != nil {
+			return utils.WrapError("Encode Dmrs_DownlinkForPDSCH_MappingTypeA", err)
 		}
 	}
-	if len(ie.tci_StatesToAddModList) > 0 {
-		tmp_tci_StatesToAddModList := utils.NewSequence[*TCI_State]([]*TCI_State{}, uper.Constraint{Lb: 1, Ub: maxNrofTCI_States}, false)
-		for _, i := range ie.tci_StatesToAddModList {
-			tmp_tci_StatesToAddModList.Value = append(tmp_tci_StatesToAddModList.Value, &i)
+	if ie.Dmrs_DownlinkForPDSCH_MappingTypeB != nil {
+		tmp_Dmrs_DownlinkForPDSCH_MappingTypeB := utils.SetupRelease[*DMRS_DownlinkConfig]{
+			Setup: ie.Dmrs_DownlinkForPDSCH_MappingTypeB,
 		}
-		if err = tmp_tci_StatesToAddModList.Encode(w); err != nil {
-			return utils.WrapError("Encode tci_StatesToAddModList", err)
-		}
-	}
-	if len(ie.tci_StatesToReleaseList) > 0 {
-		tmp_tci_StatesToReleaseList := utils.NewSequence[*TCI_StateId]([]*TCI_StateId{}, uper.Constraint{Lb: 1, Ub: maxNrofTCI_States}, false)
-		for _, i := range ie.tci_StatesToReleaseList {
-			tmp_tci_StatesToReleaseList.Value = append(tmp_tci_StatesToReleaseList.Value, &i)
-		}
-		if err = tmp_tci_StatesToReleaseList.Encode(w); err != nil {
-			return utils.WrapError("Encode tci_StatesToReleaseList", err)
+		if err = tmp_Dmrs_DownlinkForPDSCH_MappingTypeB.Encode(w); err != nil {
+			return utils.WrapError("Encode Dmrs_DownlinkForPDSCH_MappingTypeB", err)
 		}
 	}
-	if ie.vrb_ToPRB_Interleaver != nil {
-		if err = ie.vrb_ToPRB_Interleaver.Encode(w); err != nil {
-			return utils.WrapError("Encode vrb_ToPRB_Interleaver", err)
+	if len(ie.Tci_StatesToAddModList) > 0 {
+		tmp_Tci_StatesToAddModList := utils.NewSequence[*TCI_State]([]*TCI_State{}, uper.Constraint{Lb: 1, Ub: maxNrofTCI_States}, false)
+		for _, i := range ie.Tci_StatesToAddModList {
+			tmp_Tci_StatesToAddModList.Value = append(tmp_Tci_StatesToAddModList.Value, &i)
+		}
+		if err = tmp_Tci_StatesToAddModList.Encode(w); err != nil {
+			return utils.WrapError("Encode Tci_StatesToAddModList", err)
 		}
 	}
-	if err = ie.resourceAllocation.Encode(w); err != nil {
-		return utils.WrapError("Encode resourceAllocation", err)
-	}
-	if ie.pdsch_TimeDomainAllocationList != nil {
-		tmp_pdsch_TimeDomainAllocationList := utils.SetupRelease[*PDSCH_TimeDomainResourceAllocationList]{
-			Setup: ie.pdsch_TimeDomainAllocationList,
+	if len(ie.Tci_StatesToReleaseList) > 0 {
+		tmp_Tci_StatesToReleaseList := utils.NewSequence[*TCI_StateId]([]*TCI_StateId{}, uper.Constraint{Lb: 1, Ub: maxNrofTCI_States}, false)
+		for _, i := range ie.Tci_StatesToReleaseList {
+			tmp_Tci_StatesToReleaseList.Value = append(tmp_Tci_StatesToReleaseList.Value, &i)
 		}
-		if err = tmp_pdsch_TimeDomainAllocationList.Encode(w); err != nil {
-			return utils.WrapError("Encode pdsch_TimeDomainAllocationList", err)
+		if err = tmp_Tci_StatesToReleaseList.Encode(w); err != nil {
+			return utils.WrapError("Encode Tci_StatesToReleaseList", err)
 		}
 	}
-	if ie.pdsch_AggregationFactor != nil {
-		if err = ie.pdsch_AggregationFactor.Encode(w); err != nil {
-			return utils.WrapError("Encode pdsch_AggregationFactor", err)
+	if ie.Vrb_ToPRB_Interleaver != nil {
+		if err = ie.Vrb_ToPRB_Interleaver.Encode(w); err != nil {
+			return utils.WrapError("Encode Vrb_ToPRB_Interleaver", err)
 		}
 	}
-	if len(ie.rateMatchPatternToAddModList) > 0 {
-		tmp_rateMatchPatternToAddModList := utils.NewSequence[*RateMatchPattern]([]*RateMatchPattern{}, uper.Constraint{Lb: 1, Ub: maxNrofRateMatchPatterns}, false)
-		for _, i := range ie.rateMatchPatternToAddModList {
-			tmp_rateMatchPatternToAddModList.Value = append(tmp_rateMatchPatternToAddModList.Value, &i)
+	if err = ie.ResourceAllocation.Encode(w); err != nil {
+		return utils.WrapError("Encode ResourceAllocation", err)
+	}
+	if ie.Pdsch_TimeDomainAllocationList != nil {
+		tmp_Pdsch_TimeDomainAllocationList := utils.SetupRelease[*PDSCH_TimeDomainResourceAllocationList]{
+			Setup: ie.Pdsch_TimeDomainAllocationList,
 		}
-		if err = tmp_rateMatchPatternToAddModList.Encode(w); err != nil {
-			return utils.WrapError("Encode rateMatchPatternToAddModList", err)
+		if err = tmp_Pdsch_TimeDomainAllocationList.Encode(w); err != nil {
+			return utils.WrapError("Encode Pdsch_TimeDomainAllocationList", err)
 		}
 	}
-	if len(ie.rateMatchPatternToReleaseList) > 0 {
-		tmp_rateMatchPatternToReleaseList := utils.NewSequence[*RateMatchPatternId]([]*RateMatchPatternId{}, uper.Constraint{Lb: 1, Ub: maxNrofRateMatchPatterns}, false)
-		for _, i := range ie.rateMatchPatternToReleaseList {
-			tmp_rateMatchPatternToReleaseList.Value = append(tmp_rateMatchPatternToReleaseList.Value, &i)
-		}
-		if err = tmp_rateMatchPatternToReleaseList.Encode(w); err != nil {
-			return utils.WrapError("Encode rateMatchPatternToReleaseList", err)
+	if ie.Pdsch_AggregationFactor != nil {
+		if err = ie.Pdsch_AggregationFactor.Encode(w); err != nil {
+			return utils.WrapError("Encode Pdsch_AggregationFactor", err)
 		}
 	}
-	if ie.rateMatchPatternGroup1 != nil {
-		if err = ie.rateMatchPatternGroup1.Encode(w); err != nil {
-			return utils.WrapError("Encode rateMatchPatternGroup1", err)
+	if len(ie.RateMatchPatternToAddModList) > 0 {
+		tmp_RateMatchPatternToAddModList := utils.NewSequence[*RateMatchPattern]([]*RateMatchPattern{}, uper.Constraint{Lb: 1, Ub: maxNrofRateMatchPatterns}, false)
+		for _, i := range ie.RateMatchPatternToAddModList {
+			tmp_RateMatchPatternToAddModList.Value = append(tmp_RateMatchPatternToAddModList.Value, &i)
+		}
+		if err = tmp_RateMatchPatternToAddModList.Encode(w); err != nil {
+			return utils.WrapError("Encode RateMatchPatternToAddModList", err)
 		}
 	}
-	if ie.rateMatchPatternGroup2 != nil {
-		if err = ie.rateMatchPatternGroup2.Encode(w); err != nil {
-			return utils.WrapError("Encode rateMatchPatternGroup2", err)
+	if len(ie.RateMatchPatternToReleaseList) > 0 {
+		tmp_RateMatchPatternToReleaseList := utils.NewSequence[*RateMatchPatternId]([]*RateMatchPatternId{}, uper.Constraint{Lb: 1, Ub: maxNrofRateMatchPatterns}, false)
+		for _, i := range ie.RateMatchPatternToReleaseList {
+			tmp_RateMatchPatternToReleaseList.Value = append(tmp_RateMatchPatternToReleaseList.Value, &i)
+		}
+		if err = tmp_RateMatchPatternToReleaseList.Encode(w); err != nil {
+			return utils.WrapError("Encode RateMatchPatternToReleaseList", err)
 		}
 	}
-	if err = ie.rbg_Size.Encode(w); err != nil {
-		return utils.WrapError("Encode rbg_Size", err)
-	}
-	if ie.mcs_Table != nil {
-		if err = ie.mcs_Table.Encode(w); err != nil {
-			return utils.WrapError("Encode mcs_Table", err)
+	if ie.RateMatchPatternGroup1 != nil {
+		if err = ie.RateMatchPatternGroup1.Encode(w); err != nil {
+			return utils.WrapError("Encode RateMatchPatternGroup1", err)
 		}
 	}
-	if ie.maxNrofCodeWordsScheduledByDCI != nil {
-		if err = ie.maxNrofCodeWordsScheduledByDCI.Encode(w); err != nil {
-			return utils.WrapError("Encode maxNrofCodeWordsScheduledByDCI", err)
+	if ie.RateMatchPatternGroup2 != nil {
+		if err = ie.RateMatchPatternGroup2.Encode(w); err != nil {
+			return utils.WrapError("Encode RateMatchPatternGroup2", err)
 		}
 	}
-	if ie.prb_BundlingType != nil {
-		if err = ie.prb_BundlingType.Encode(w); err != nil {
-			return utils.WrapError("Encode prb_BundlingType", err)
+	if err = ie.Rbg_Size.Encode(w); err != nil {
+		return utils.WrapError("Encode Rbg_Size", err)
+	}
+	if ie.Mcs_Table != nil {
+		if err = ie.Mcs_Table.Encode(w); err != nil {
+			return utils.WrapError("Encode Mcs_Table", err)
 		}
 	}
-	if len(ie.zp_CSI_RS_ResourceToAddModList) > 0 {
-		tmp_zp_CSI_RS_ResourceToAddModList := utils.NewSequence[*ZP_CSI_RS_Resource]([]*ZP_CSI_RS_Resource{}, uper.Constraint{Lb: 1, Ub: maxNrofZP_CSI_RS_Resources}, false)
-		for _, i := range ie.zp_CSI_RS_ResourceToAddModList {
-			tmp_zp_CSI_RS_ResourceToAddModList.Value = append(tmp_zp_CSI_RS_ResourceToAddModList.Value, &i)
-		}
-		if err = tmp_zp_CSI_RS_ResourceToAddModList.Encode(w); err != nil {
-			return utils.WrapError("Encode zp_CSI_RS_ResourceToAddModList", err)
+	if ie.MaxNrofCodeWordsScheduledByDCI != nil {
+		if err = ie.MaxNrofCodeWordsScheduledByDCI.Encode(w); err != nil {
+			return utils.WrapError("Encode MaxNrofCodeWordsScheduledByDCI", err)
 		}
 	}
-	if len(ie.zp_CSI_RS_ResourceToReleaseList) > 0 {
-		tmp_zp_CSI_RS_ResourceToReleaseList := utils.NewSequence[*ZP_CSI_RS_ResourceId]([]*ZP_CSI_RS_ResourceId{}, uper.Constraint{Lb: 1, Ub: maxNrofZP_CSI_RS_Resources}, false)
-		for _, i := range ie.zp_CSI_RS_ResourceToReleaseList {
-			tmp_zp_CSI_RS_ResourceToReleaseList.Value = append(tmp_zp_CSI_RS_ResourceToReleaseList.Value, &i)
-		}
-		if err = tmp_zp_CSI_RS_ResourceToReleaseList.Encode(w); err != nil {
-			return utils.WrapError("Encode zp_CSI_RS_ResourceToReleaseList", err)
+	if ie.Prb_BundlingType != nil {
+		if err = ie.Prb_BundlingType.Encode(w); err != nil {
+			return utils.WrapError("Encode Prb_BundlingType", err)
 		}
 	}
-	if len(ie.aperiodic_ZP_CSI_RS_ResourceSetsToAddModList) > 0 {
-		tmp_aperiodic_ZP_CSI_RS_ResourceSetsToAddModList := utils.NewSequence[*ZP_CSI_RS_ResourceSet]([]*ZP_CSI_RS_ResourceSet{}, uper.Constraint{Lb: 1, Ub: maxNrofZP_CSI_RS_ResourceSets}, false)
-		for _, i := range ie.aperiodic_ZP_CSI_RS_ResourceSetsToAddModList {
-			tmp_aperiodic_ZP_CSI_RS_ResourceSetsToAddModList.Value = append(tmp_aperiodic_ZP_CSI_RS_ResourceSetsToAddModList.Value, &i)
+	if len(ie.Zp_CSI_RS_ResourceToAddModList) > 0 {
+		tmp_Zp_CSI_RS_ResourceToAddModList := utils.NewSequence[*ZP_CSI_RS_Resource]([]*ZP_CSI_RS_Resource{}, uper.Constraint{Lb: 1, Ub: maxNrofZP_CSI_RS_Resources}, false)
+		for _, i := range ie.Zp_CSI_RS_ResourceToAddModList {
+			tmp_Zp_CSI_RS_ResourceToAddModList.Value = append(tmp_Zp_CSI_RS_ResourceToAddModList.Value, &i)
 		}
-		if err = tmp_aperiodic_ZP_CSI_RS_ResourceSetsToAddModList.Encode(w); err != nil {
-			return utils.WrapError("Encode aperiodic_ZP_CSI_RS_ResourceSetsToAddModList", err)
-		}
-	}
-	if len(ie.aperiodic_ZP_CSI_RS_ResourceSetsToReleaseList) > 0 {
-		tmp_aperiodic_ZP_CSI_RS_ResourceSetsToReleaseList := utils.NewSequence[*ZP_CSI_RS_ResourceSetId]([]*ZP_CSI_RS_ResourceSetId{}, uper.Constraint{Lb: 1, Ub: maxNrofZP_CSI_RS_ResourceSets}, false)
-		for _, i := range ie.aperiodic_ZP_CSI_RS_ResourceSetsToReleaseList {
-			tmp_aperiodic_ZP_CSI_RS_ResourceSetsToReleaseList.Value = append(tmp_aperiodic_ZP_CSI_RS_ResourceSetsToReleaseList.Value, &i)
-		}
-		if err = tmp_aperiodic_ZP_CSI_RS_ResourceSetsToReleaseList.Encode(w); err != nil {
-			return utils.WrapError("Encode aperiodic_ZP_CSI_RS_ResourceSetsToReleaseList", err)
+		if err = tmp_Zp_CSI_RS_ResourceToAddModList.Encode(w); err != nil {
+			return utils.WrapError("Encode Zp_CSI_RS_ResourceToAddModList", err)
 		}
 	}
-	if len(ie.sp_ZP_CSI_RS_ResourceSetsToAddModList) > 0 {
-		tmp_sp_ZP_CSI_RS_ResourceSetsToAddModList := utils.NewSequence[*ZP_CSI_RS_ResourceSet]([]*ZP_CSI_RS_ResourceSet{}, uper.Constraint{Lb: 1, Ub: maxNrofZP_CSI_RS_ResourceSets}, false)
-		for _, i := range ie.sp_ZP_CSI_RS_ResourceSetsToAddModList {
-			tmp_sp_ZP_CSI_RS_ResourceSetsToAddModList.Value = append(tmp_sp_ZP_CSI_RS_ResourceSetsToAddModList.Value, &i)
+	if len(ie.Zp_CSI_RS_ResourceToReleaseList) > 0 {
+		tmp_Zp_CSI_RS_ResourceToReleaseList := utils.NewSequence[*ZP_CSI_RS_ResourceId]([]*ZP_CSI_RS_ResourceId{}, uper.Constraint{Lb: 1, Ub: maxNrofZP_CSI_RS_Resources}, false)
+		for _, i := range ie.Zp_CSI_RS_ResourceToReleaseList {
+			tmp_Zp_CSI_RS_ResourceToReleaseList.Value = append(tmp_Zp_CSI_RS_ResourceToReleaseList.Value, &i)
 		}
-		if err = tmp_sp_ZP_CSI_RS_ResourceSetsToAddModList.Encode(w); err != nil {
-			return utils.WrapError("Encode sp_ZP_CSI_RS_ResourceSetsToAddModList", err)
-		}
-	}
-	if len(ie.sp_ZP_CSI_RS_ResourceSetsToReleaseList) > 0 {
-		tmp_sp_ZP_CSI_RS_ResourceSetsToReleaseList := utils.NewSequence[*ZP_CSI_RS_ResourceSetId]([]*ZP_CSI_RS_ResourceSetId{}, uper.Constraint{Lb: 1, Ub: maxNrofZP_CSI_RS_ResourceSets}, false)
-		for _, i := range ie.sp_ZP_CSI_RS_ResourceSetsToReleaseList {
-			tmp_sp_ZP_CSI_RS_ResourceSetsToReleaseList.Value = append(tmp_sp_ZP_CSI_RS_ResourceSetsToReleaseList.Value, &i)
-		}
-		if err = tmp_sp_ZP_CSI_RS_ResourceSetsToReleaseList.Encode(w); err != nil {
-			return utils.WrapError("Encode sp_ZP_CSI_RS_ResourceSetsToReleaseList", err)
+		if err = tmp_Zp_CSI_RS_ResourceToReleaseList.Encode(w); err != nil {
+			return utils.WrapError("Encode Zp_CSI_RS_ResourceToReleaseList", err)
 		}
 	}
-	if ie.p_ZP_CSI_RS_ResourceSet != nil {
-		tmp_p_ZP_CSI_RS_ResourceSet := utils.SetupRelease[*ZP_CSI_RS_ResourceSet]{
-			Setup: ie.p_ZP_CSI_RS_ResourceSet,
+	if len(ie.Aperiodic_ZP_CSI_RS_ResourceSetsToAddModList) > 0 {
+		tmp_Aperiodic_ZP_CSI_RS_ResourceSetsToAddModList := utils.NewSequence[*ZP_CSI_RS_ResourceSet]([]*ZP_CSI_RS_ResourceSet{}, uper.Constraint{Lb: 1, Ub: maxNrofZP_CSI_RS_ResourceSets}, false)
+		for _, i := range ie.Aperiodic_ZP_CSI_RS_ResourceSetsToAddModList {
+			tmp_Aperiodic_ZP_CSI_RS_ResourceSetsToAddModList.Value = append(tmp_Aperiodic_ZP_CSI_RS_ResourceSetsToAddModList.Value, &i)
 		}
-		if err = tmp_p_ZP_CSI_RS_ResourceSet.Encode(w); err != nil {
-			return utils.WrapError("Encode p_ZP_CSI_RS_ResourceSet", err)
+		if err = tmp_Aperiodic_ZP_CSI_RS_ResourceSetsToAddModList.Encode(w); err != nil {
+			return utils.WrapError("Encode Aperiodic_ZP_CSI_RS_ResourceSetsToAddModList", err)
+		}
+	}
+	if len(ie.Aperiodic_ZP_CSI_RS_ResourceSetsToReleaseList) > 0 {
+		tmp_Aperiodic_ZP_CSI_RS_ResourceSetsToReleaseList := utils.NewSequence[*ZP_CSI_RS_ResourceSetId]([]*ZP_CSI_RS_ResourceSetId{}, uper.Constraint{Lb: 1, Ub: maxNrofZP_CSI_RS_ResourceSets}, false)
+		for _, i := range ie.Aperiodic_ZP_CSI_RS_ResourceSetsToReleaseList {
+			tmp_Aperiodic_ZP_CSI_RS_ResourceSetsToReleaseList.Value = append(tmp_Aperiodic_ZP_CSI_RS_ResourceSetsToReleaseList.Value, &i)
+		}
+		if err = tmp_Aperiodic_ZP_CSI_RS_ResourceSetsToReleaseList.Encode(w); err != nil {
+			return utils.WrapError("Encode Aperiodic_ZP_CSI_RS_ResourceSetsToReleaseList", err)
+		}
+	}
+	if len(ie.Sp_ZP_CSI_RS_ResourceSetsToAddModList) > 0 {
+		tmp_Sp_ZP_CSI_RS_ResourceSetsToAddModList := utils.NewSequence[*ZP_CSI_RS_ResourceSet]([]*ZP_CSI_RS_ResourceSet{}, uper.Constraint{Lb: 1, Ub: maxNrofZP_CSI_RS_ResourceSets}, false)
+		for _, i := range ie.Sp_ZP_CSI_RS_ResourceSetsToAddModList {
+			tmp_Sp_ZP_CSI_RS_ResourceSetsToAddModList.Value = append(tmp_Sp_ZP_CSI_RS_ResourceSetsToAddModList.Value, &i)
+		}
+		if err = tmp_Sp_ZP_CSI_RS_ResourceSetsToAddModList.Encode(w); err != nil {
+			return utils.WrapError("Encode Sp_ZP_CSI_RS_ResourceSetsToAddModList", err)
+		}
+	}
+	if len(ie.Sp_ZP_CSI_RS_ResourceSetsToReleaseList) > 0 {
+		tmp_Sp_ZP_CSI_RS_ResourceSetsToReleaseList := utils.NewSequence[*ZP_CSI_RS_ResourceSetId]([]*ZP_CSI_RS_ResourceSetId{}, uper.Constraint{Lb: 1, Ub: maxNrofZP_CSI_RS_ResourceSets}, false)
+		for _, i := range ie.Sp_ZP_CSI_RS_ResourceSetsToReleaseList {
+			tmp_Sp_ZP_CSI_RS_ResourceSetsToReleaseList.Value = append(tmp_Sp_ZP_CSI_RS_ResourceSetsToReleaseList.Value, &i)
+		}
+		if err = tmp_Sp_ZP_CSI_RS_ResourceSetsToReleaseList.Encode(w); err != nil {
+			return utils.WrapError("Encode Sp_ZP_CSI_RS_ResourceSetsToReleaseList", err)
+		}
+	}
+	if ie.P_ZP_CSI_RS_ResourceSet != nil {
+		tmp_P_ZP_CSI_RS_ResourceSet := utils.SetupRelease[*ZP_CSI_RS_ResourceSet]{
+			Setup: ie.P_ZP_CSI_RS_ResourceSet,
+		}
+		if err = tmp_P_ZP_CSI_RS_ResourceSet.Encode(w); err != nil {
+			return utils.WrapError("Encode P_ZP_CSI_RS_ResourceSet", err)
 		}
 	}
 	if hasExtensions {
 		// Extension bitmap: 4 bits for 4 extension groups
-		extBitmap := []bool{ie.maxMIMO_Layers_r16 != nil || ie.minimumSchedulingOffsetK0_r16 != nil || ie.antennaPortsFieldPresenceDCI_1_2_r16 != nil || len(ie.aperiodicZP_CSI_RS_ResourceSetsToAddModListDCI_1_2_r16) > 0 || len(ie.aperiodicZP_CSI_RS_ResourceSetsToReleaseListDCI_1_2_r16) > 0 || ie.dmrs_DownlinkForPDSCH_MappingTypeA_DCI_1_2_r16 != nil || ie.dmrs_DownlinkForPDSCH_MappingTypeB_DCI_1_2_r16 != nil || ie.dmrs_SequenceInitializationDCI_1_2_r16 != nil || ie.harq_ProcessNumberSizeDCI_1_2_r16 != nil || ie.mcs_TableDCI_1_2_r16 != nil || ie.numberOfBitsForRV_DCI_1_2_r16 != nil || ie.pdsch_TimeDomainAllocationListDCI_1_2_r16 != nil || ie.prb_BundlingTypeDCI_1_2_r16 != nil || ie.priorityIndicatorDCI_1_2_r16 != nil || ie.rateMatchPatternGroup1DCI_1_2_r16 != nil || ie.rateMatchPatternGroup2DCI_1_2_r16 != nil || ie.resourceAllocationType1GranularityDCI_1_2_r16 != nil || ie.vrb_ToPRB_InterleaverDCI_1_2_r16 != nil || ie.referenceOfSLIVDCI_1_2_r16 != nil || ie.resourceAllocationDCI_1_2_r16 != nil || ie.priorityIndicatorDCI_1_1_r16 != nil || ie.dataScramblingIdentityPDSCH2_r16 != nil || ie.pdsch_TimeDomainAllocationList_r16 != nil || ie.repetitionSchemeConfig_r16 != nil, ie.repetitionSchemeConfig_v1630 != nil, ie.pdsch_HARQ_ACK_OneShotFeedbackDCI_1_2_r17 != nil || ie.pdsch_HARQ_ACK_EnhType3DCI_1_2_r17 != nil || ie.pdsch_HARQ_ACK_EnhType3DCI_Field_1_2_r17 != nil || ie.pdsch_HARQ_ACK_RetxDCI_1_2_r17 != nil || ie.pucch_sSCellDynDCI_1_2_r17 != nil || ie.dl_OrJointTCI_StateList_r17 != nil || ie.beamAppTime_r17 != nil || ie.dummy != nil || ie.dmrs_FD_OCC_DisabledForRank1_PDSCH_r17 != nil || ie.minimumSchedulingOffsetK0_r17 != nil || ie.harq_ProcessNumberSizeDCI_1_2_v1700 != nil || ie.harq_ProcessNumberSizeDCI_1_1_r17 != nil || ie.mcs_Table_r17 != nil || ie.mcs_TableDCI_1_2_r17 != nil || ie.xOverheadMulticast_r17 != nil || ie.priorityIndicatorDCI_4_2_r17 != nil || ie.sizeDCI_4_2_r17 != nil, ie.pdsch_TimeDomainAllocationListForMultiPDSCH_r17 != nil}
+		extBitmap := []bool{ie.MaxMIMO_Layers_r16 != nil || ie.MinimumSchedulingOffsetK0_r16 != nil || ie.AntennaPortsFieldPresenceDCI_1_2_r16 != nil || len(ie.AperiodicZP_CSI_RS_ResourceSetsToAddModListDCI_1_2_r16) > 0 || len(ie.AperiodicZP_CSI_RS_ResourceSetsToReleaseListDCI_1_2_r16) > 0 || ie.Dmrs_DownlinkForPDSCH_MappingTypeA_DCI_1_2_r16 != nil || ie.Dmrs_DownlinkForPDSCH_MappingTypeB_DCI_1_2_r16 != nil || ie.Dmrs_SequenceInitializationDCI_1_2_r16 != nil || ie.Harq_ProcessNumberSizeDCI_1_2_r16 != nil || ie.Mcs_TableDCI_1_2_r16 != nil || ie.NumberOfBitsForRV_DCI_1_2_r16 != nil || ie.Pdsch_TimeDomainAllocationListDCI_1_2_r16 != nil || ie.Prb_BundlingTypeDCI_1_2_r16 != nil || ie.PriorityIndicatorDCI_1_2_r16 != nil || ie.RateMatchPatternGroup1DCI_1_2_r16 != nil || ie.RateMatchPatternGroup2DCI_1_2_r16 != nil || ie.ResourceAllocationType1GranularityDCI_1_2_r16 != nil || ie.Vrb_ToPRB_InterleaverDCI_1_2_r16 != nil || ie.ReferenceOfSLIVDCI_1_2_r16 != nil || ie.ResourceAllocationDCI_1_2_r16 != nil || ie.PriorityIndicatorDCI_1_1_r16 != nil || ie.DataScramblingIdentityPDSCH2_r16 != nil || ie.Pdsch_TimeDomainAllocationList_r16 != nil || ie.RepetitionSchemeConfig_r16 != nil, ie.RepetitionSchemeConfig_v1630 != nil, ie.Pdsch_HARQ_ACK_OneShotFeedbackDCI_1_2_r17 != nil || ie.Pdsch_HARQ_ACK_EnhType3DCI_1_2_r17 != nil || ie.Pdsch_HARQ_ACK_EnhType3DCI_Field_1_2_r17 != nil || ie.Pdsch_HARQ_ACK_RetxDCI_1_2_r17 != nil || ie.Pucch_sSCellDynDCI_1_2_r17 != nil || ie.Dl_OrJointTCI_StateList_r17 != nil || ie.BeamAppTime_r17 != nil || ie.Dummy != nil || ie.Dmrs_FD_OCC_DisabledForRank1_PDSCH_r17 != nil || ie.MinimumSchedulingOffsetK0_r17 != nil || ie.Harq_ProcessNumberSizeDCI_1_2_v1700 != nil || ie.Harq_ProcessNumberSizeDCI_1_1_r17 != nil || ie.Mcs_Table_r17 != nil || ie.Mcs_TableDCI_1_2_r17 != nil || ie.XOverheadMulticast_r17 != nil || ie.PriorityIndicatorDCI_4_2_r17 != nil || ie.SizeDCI_4_2_r17 != nil, ie.Pdsch_TimeDomainAllocationListForMultiPDSCH_r17 != nil}
 		if err := w.WriteExtBitMap(extBitmap); err != nil {
 			return utils.WrapError("WriteExtBitMap PDSCH_Config", err)
 		}
@@ -267,184 +267,184 @@ func (ie *PDSCH_Config) Encode(w *uper.UperWriter) error {
 			extWriter := uper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 1
-			optionals_ext_1 := []bool{ie.maxMIMO_Layers_r16 != nil, ie.minimumSchedulingOffsetK0_r16 != nil, ie.antennaPortsFieldPresenceDCI_1_2_r16 != nil, len(ie.aperiodicZP_CSI_RS_ResourceSetsToAddModListDCI_1_2_r16) > 0, len(ie.aperiodicZP_CSI_RS_ResourceSetsToReleaseListDCI_1_2_r16) > 0, ie.dmrs_DownlinkForPDSCH_MappingTypeA_DCI_1_2_r16 != nil, ie.dmrs_DownlinkForPDSCH_MappingTypeB_DCI_1_2_r16 != nil, ie.dmrs_SequenceInitializationDCI_1_2_r16 != nil, ie.harq_ProcessNumberSizeDCI_1_2_r16 != nil, ie.mcs_TableDCI_1_2_r16 != nil, ie.numberOfBitsForRV_DCI_1_2_r16 != nil, ie.pdsch_TimeDomainAllocationListDCI_1_2_r16 != nil, ie.prb_BundlingTypeDCI_1_2_r16 != nil, ie.priorityIndicatorDCI_1_2_r16 != nil, ie.rateMatchPatternGroup1DCI_1_2_r16 != nil, ie.rateMatchPatternGroup2DCI_1_2_r16 != nil, ie.resourceAllocationType1GranularityDCI_1_2_r16 != nil, ie.vrb_ToPRB_InterleaverDCI_1_2_r16 != nil, ie.referenceOfSLIVDCI_1_2_r16 != nil, ie.resourceAllocationDCI_1_2_r16 != nil, ie.priorityIndicatorDCI_1_1_r16 != nil, ie.dataScramblingIdentityPDSCH2_r16 != nil, ie.pdsch_TimeDomainAllocationList_r16 != nil, ie.repetitionSchemeConfig_r16 != nil}
+			optionals_ext_1 := []bool{ie.MaxMIMO_Layers_r16 != nil, ie.MinimumSchedulingOffsetK0_r16 != nil, ie.AntennaPortsFieldPresenceDCI_1_2_r16 != nil, len(ie.AperiodicZP_CSI_RS_ResourceSetsToAddModListDCI_1_2_r16) > 0, len(ie.AperiodicZP_CSI_RS_ResourceSetsToReleaseListDCI_1_2_r16) > 0, ie.Dmrs_DownlinkForPDSCH_MappingTypeA_DCI_1_2_r16 != nil, ie.Dmrs_DownlinkForPDSCH_MappingTypeB_DCI_1_2_r16 != nil, ie.Dmrs_SequenceInitializationDCI_1_2_r16 != nil, ie.Harq_ProcessNumberSizeDCI_1_2_r16 != nil, ie.Mcs_TableDCI_1_2_r16 != nil, ie.NumberOfBitsForRV_DCI_1_2_r16 != nil, ie.Pdsch_TimeDomainAllocationListDCI_1_2_r16 != nil, ie.Prb_BundlingTypeDCI_1_2_r16 != nil, ie.PriorityIndicatorDCI_1_2_r16 != nil, ie.RateMatchPatternGroup1DCI_1_2_r16 != nil, ie.RateMatchPatternGroup2DCI_1_2_r16 != nil, ie.ResourceAllocationType1GranularityDCI_1_2_r16 != nil, ie.Vrb_ToPRB_InterleaverDCI_1_2_r16 != nil, ie.ReferenceOfSLIVDCI_1_2_r16 != nil, ie.ResourceAllocationDCI_1_2_r16 != nil, ie.PriorityIndicatorDCI_1_1_r16 != nil, ie.DataScramblingIdentityPDSCH2_r16 != nil, ie.Pdsch_TimeDomainAllocationList_r16 != nil, ie.RepetitionSchemeConfig_r16 != nil}
 			for _, bit := range optionals_ext_1 {
 				if err := extWriter.WriteBool(bit); err != nil {
 					return err
 				}
 			}
 
-			// encode maxMIMO_Layers_r16 optional
-			if ie.maxMIMO_Layers_r16 != nil {
-				tmp_maxMIMO_Layers_r16 := utils.SetupRelease[*MaxMIMO_LayersDL_r16]{
-					Setup: ie.maxMIMO_Layers_r16,
+			// encode MaxMIMO_Layers_r16 optional
+			if ie.MaxMIMO_Layers_r16 != nil {
+				tmp_MaxMIMO_Layers_r16 := utils.SetupRelease[*MaxMIMO_LayersDL_r16]{
+					Setup: ie.MaxMIMO_Layers_r16,
 				}
-				if err = tmp_maxMIMO_Layers_r16.Encode(extWriter); err != nil {
-					return utils.WrapError("Encode maxMIMO_Layers_r16", err)
-				}
-			}
-			// encode minimumSchedulingOffsetK0_r16 optional
-			if ie.minimumSchedulingOffsetK0_r16 != nil {
-				tmp_minimumSchedulingOffsetK0_r16 := utils.SetupRelease[*MinSchedulingOffsetK0_Values_r16]{
-					Setup: ie.minimumSchedulingOffsetK0_r16,
-				}
-				if err = tmp_minimumSchedulingOffsetK0_r16.Encode(extWriter); err != nil {
-					return utils.WrapError("Encode minimumSchedulingOffsetK0_r16", err)
+				if err = tmp_MaxMIMO_Layers_r16.Encode(extWriter); err != nil {
+					return utils.WrapError("Encode MaxMIMO_Layers_r16", err)
 				}
 			}
-			// encode antennaPortsFieldPresenceDCI_1_2_r16 optional
-			if ie.antennaPortsFieldPresenceDCI_1_2_r16 != nil {
-				if err = ie.antennaPortsFieldPresenceDCI_1_2_r16.Encode(extWriter); err != nil {
-					return utils.WrapError("Encode antennaPortsFieldPresenceDCI_1_2_r16", err)
+			// encode MinimumSchedulingOffsetK0_r16 optional
+			if ie.MinimumSchedulingOffsetK0_r16 != nil {
+				tmp_MinimumSchedulingOffsetK0_r16 := utils.SetupRelease[*MinSchedulingOffsetK0_Values_r16]{
+					Setup: ie.MinimumSchedulingOffsetK0_r16,
+				}
+				if err = tmp_MinimumSchedulingOffsetK0_r16.Encode(extWriter); err != nil {
+					return utils.WrapError("Encode MinimumSchedulingOffsetK0_r16", err)
 				}
 			}
-			// encode aperiodicZP_CSI_RS_ResourceSetsToAddModListDCI_1_2_r16 optional
-			if len(ie.aperiodicZP_CSI_RS_ResourceSetsToAddModListDCI_1_2_r16) > 0 {
-				tmp_aperiodicZP_CSI_RS_ResourceSetsToAddModListDCI_1_2_r16 := utils.NewSequence[*ZP_CSI_RS_ResourceSet]([]*ZP_CSI_RS_ResourceSet{}, uper.Constraint{Lb: 1, Ub: maxNrofZP_CSI_RS_ResourceSets}, false)
-				for _, i := range ie.aperiodicZP_CSI_RS_ResourceSetsToAddModListDCI_1_2_r16 {
-					tmp_aperiodicZP_CSI_RS_ResourceSetsToAddModListDCI_1_2_r16.Value = append(tmp_aperiodicZP_CSI_RS_ResourceSetsToAddModListDCI_1_2_r16.Value, &i)
-				}
-				if err = tmp_aperiodicZP_CSI_RS_ResourceSetsToAddModListDCI_1_2_r16.Encode(extWriter); err != nil {
-					return utils.WrapError("Encode aperiodicZP_CSI_RS_ResourceSetsToAddModListDCI_1_2_r16", err)
+			// encode AntennaPortsFieldPresenceDCI_1_2_r16 optional
+			if ie.AntennaPortsFieldPresenceDCI_1_2_r16 != nil {
+				if err = ie.AntennaPortsFieldPresenceDCI_1_2_r16.Encode(extWriter); err != nil {
+					return utils.WrapError("Encode AntennaPortsFieldPresenceDCI_1_2_r16", err)
 				}
 			}
-			// encode aperiodicZP_CSI_RS_ResourceSetsToReleaseListDCI_1_2_r16 optional
-			if len(ie.aperiodicZP_CSI_RS_ResourceSetsToReleaseListDCI_1_2_r16) > 0 {
-				tmp_aperiodicZP_CSI_RS_ResourceSetsToReleaseListDCI_1_2_r16 := utils.NewSequence[*ZP_CSI_RS_ResourceSetId]([]*ZP_CSI_RS_ResourceSetId{}, uper.Constraint{Lb: 1, Ub: maxNrofZP_CSI_RS_ResourceSets}, false)
-				for _, i := range ie.aperiodicZP_CSI_RS_ResourceSetsToReleaseListDCI_1_2_r16 {
-					tmp_aperiodicZP_CSI_RS_ResourceSetsToReleaseListDCI_1_2_r16.Value = append(tmp_aperiodicZP_CSI_RS_ResourceSetsToReleaseListDCI_1_2_r16.Value, &i)
+			// encode AperiodicZP_CSI_RS_ResourceSetsToAddModListDCI_1_2_r16 optional
+			if len(ie.AperiodicZP_CSI_RS_ResourceSetsToAddModListDCI_1_2_r16) > 0 {
+				tmp_AperiodicZP_CSI_RS_ResourceSetsToAddModListDCI_1_2_r16 := utils.NewSequence[*ZP_CSI_RS_ResourceSet]([]*ZP_CSI_RS_ResourceSet{}, uper.Constraint{Lb: 1, Ub: maxNrofZP_CSI_RS_ResourceSets}, false)
+				for _, i := range ie.AperiodicZP_CSI_RS_ResourceSetsToAddModListDCI_1_2_r16 {
+					tmp_AperiodicZP_CSI_RS_ResourceSetsToAddModListDCI_1_2_r16.Value = append(tmp_AperiodicZP_CSI_RS_ResourceSetsToAddModListDCI_1_2_r16.Value, &i)
 				}
-				if err = tmp_aperiodicZP_CSI_RS_ResourceSetsToReleaseListDCI_1_2_r16.Encode(extWriter); err != nil {
-					return utils.WrapError("Encode aperiodicZP_CSI_RS_ResourceSetsToReleaseListDCI_1_2_r16", err)
-				}
-			}
-			// encode dmrs_DownlinkForPDSCH_MappingTypeA_DCI_1_2_r16 optional
-			if ie.dmrs_DownlinkForPDSCH_MappingTypeA_DCI_1_2_r16 != nil {
-				tmp_dmrs_DownlinkForPDSCH_MappingTypeA_DCI_1_2_r16 := utils.SetupRelease[*DMRS_DownlinkConfig]{
-					Setup: ie.dmrs_DownlinkForPDSCH_MappingTypeA_DCI_1_2_r16,
-				}
-				if err = tmp_dmrs_DownlinkForPDSCH_MappingTypeA_DCI_1_2_r16.Encode(extWriter); err != nil {
-					return utils.WrapError("Encode dmrs_DownlinkForPDSCH_MappingTypeA_DCI_1_2_r16", err)
+				if err = tmp_AperiodicZP_CSI_RS_ResourceSetsToAddModListDCI_1_2_r16.Encode(extWriter); err != nil {
+					return utils.WrapError("Encode AperiodicZP_CSI_RS_ResourceSetsToAddModListDCI_1_2_r16", err)
 				}
 			}
-			// encode dmrs_DownlinkForPDSCH_MappingTypeB_DCI_1_2_r16 optional
-			if ie.dmrs_DownlinkForPDSCH_MappingTypeB_DCI_1_2_r16 != nil {
-				tmp_dmrs_DownlinkForPDSCH_MappingTypeB_DCI_1_2_r16 := utils.SetupRelease[*DMRS_DownlinkConfig]{
-					Setup: ie.dmrs_DownlinkForPDSCH_MappingTypeB_DCI_1_2_r16,
+			// encode AperiodicZP_CSI_RS_ResourceSetsToReleaseListDCI_1_2_r16 optional
+			if len(ie.AperiodicZP_CSI_RS_ResourceSetsToReleaseListDCI_1_2_r16) > 0 {
+				tmp_AperiodicZP_CSI_RS_ResourceSetsToReleaseListDCI_1_2_r16 := utils.NewSequence[*ZP_CSI_RS_ResourceSetId]([]*ZP_CSI_RS_ResourceSetId{}, uper.Constraint{Lb: 1, Ub: maxNrofZP_CSI_RS_ResourceSets}, false)
+				for _, i := range ie.AperiodicZP_CSI_RS_ResourceSetsToReleaseListDCI_1_2_r16 {
+					tmp_AperiodicZP_CSI_RS_ResourceSetsToReleaseListDCI_1_2_r16.Value = append(tmp_AperiodicZP_CSI_RS_ResourceSetsToReleaseListDCI_1_2_r16.Value, &i)
 				}
-				if err = tmp_dmrs_DownlinkForPDSCH_MappingTypeB_DCI_1_2_r16.Encode(extWriter); err != nil {
-					return utils.WrapError("Encode dmrs_DownlinkForPDSCH_MappingTypeB_DCI_1_2_r16", err)
-				}
-			}
-			// encode dmrs_SequenceInitializationDCI_1_2_r16 optional
-			if ie.dmrs_SequenceInitializationDCI_1_2_r16 != nil {
-				if err = ie.dmrs_SequenceInitializationDCI_1_2_r16.Encode(extWriter); err != nil {
-					return utils.WrapError("Encode dmrs_SequenceInitializationDCI_1_2_r16", err)
+				if err = tmp_AperiodicZP_CSI_RS_ResourceSetsToReleaseListDCI_1_2_r16.Encode(extWriter); err != nil {
+					return utils.WrapError("Encode AperiodicZP_CSI_RS_ResourceSetsToReleaseListDCI_1_2_r16", err)
 				}
 			}
-			// encode harq_ProcessNumberSizeDCI_1_2_r16 optional
-			if ie.harq_ProcessNumberSizeDCI_1_2_r16 != nil {
-				if err = extWriter.WriteInteger(*ie.harq_ProcessNumberSizeDCI_1_2_r16, &uper.Constraint{Lb: 0, Ub: 4}, false); err != nil {
-					return utils.WrapError("Encode harq_ProcessNumberSizeDCI_1_2_r16", err)
+			// encode Dmrs_DownlinkForPDSCH_MappingTypeA_DCI_1_2_r16 optional
+			if ie.Dmrs_DownlinkForPDSCH_MappingTypeA_DCI_1_2_r16 != nil {
+				tmp_Dmrs_DownlinkForPDSCH_MappingTypeA_DCI_1_2_r16 := utils.SetupRelease[*DMRS_DownlinkConfig]{
+					Setup: ie.Dmrs_DownlinkForPDSCH_MappingTypeA_DCI_1_2_r16,
+				}
+				if err = tmp_Dmrs_DownlinkForPDSCH_MappingTypeA_DCI_1_2_r16.Encode(extWriter); err != nil {
+					return utils.WrapError("Encode Dmrs_DownlinkForPDSCH_MappingTypeA_DCI_1_2_r16", err)
 				}
 			}
-			// encode mcs_TableDCI_1_2_r16 optional
-			if ie.mcs_TableDCI_1_2_r16 != nil {
-				if err = ie.mcs_TableDCI_1_2_r16.Encode(extWriter); err != nil {
-					return utils.WrapError("Encode mcs_TableDCI_1_2_r16", err)
+			// encode Dmrs_DownlinkForPDSCH_MappingTypeB_DCI_1_2_r16 optional
+			if ie.Dmrs_DownlinkForPDSCH_MappingTypeB_DCI_1_2_r16 != nil {
+				tmp_Dmrs_DownlinkForPDSCH_MappingTypeB_DCI_1_2_r16 := utils.SetupRelease[*DMRS_DownlinkConfig]{
+					Setup: ie.Dmrs_DownlinkForPDSCH_MappingTypeB_DCI_1_2_r16,
+				}
+				if err = tmp_Dmrs_DownlinkForPDSCH_MappingTypeB_DCI_1_2_r16.Encode(extWriter); err != nil {
+					return utils.WrapError("Encode Dmrs_DownlinkForPDSCH_MappingTypeB_DCI_1_2_r16", err)
 				}
 			}
-			// encode numberOfBitsForRV_DCI_1_2_r16 optional
-			if ie.numberOfBitsForRV_DCI_1_2_r16 != nil {
-				if err = extWriter.WriteInteger(*ie.numberOfBitsForRV_DCI_1_2_r16, &uper.Constraint{Lb: 0, Ub: 2}, false); err != nil {
-					return utils.WrapError("Encode numberOfBitsForRV_DCI_1_2_r16", err)
+			// encode Dmrs_SequenceInitializationDCI_1_2_r16 optional
+			if ie.Dmrs_SequenceInitializationDCI_1_2_r16 != nil {
+				if err = ie.Dmrs_SequenceInitializationDCI_1_2_r16.Encode(extWriter); err != nil {
+					return utils.WrapError("Encode Dmrs_SequenceInitializationDCI_1_2_r16", err)
 				}
 			}
-			// encode pdsch_TimeDomainAllocationListDCI_1_2_r16 optional
-			if ie.pdsch_TimeDomainAllocationListDCI_1_2_r16 != nil {
-				tmp_pdsch_TimeDomainAllocationListDCI_1_2_r16 := utils.SetupRelease[*PDSCH_TimeDomainResourceAllocationList_r16]{
-					Setup: ie.pdsch_TimeDomainAllocationListDCI_1_2_r16,
-				}
-				if err = tmp_pdsch_TimeDomainAllocationListDCI_1_2_r16.Encode(extWriter); err != nil {
-					return utils.WrapError("Encode pdsch_TimeDomainAllocationListDCI_1_2_r16", err)
+			// encode Harq_ProcessNumberSizeDCI_1_2_r16 optional
+			if ie.Harq_ProcessNumberSizeDCI_1_2_r16 != nil {
+				if err = extWriter.WriteInteger(*ie.Harq_ProcessNumberSizeDCI_1_2_r16, &uper.Constraint{Lb: 0, Ub: 4}, false); err != nil {
+					return utils.WrapError("Encode Harq_ProcessNumberSizeDCI_1_2_r16", err)
 				}
 			}
-			// encode prb_BundlingTypeDCI_1_2_r16 optional
-			if ie.prb_BundlingTypeDCI_1_2_r16 != nil {
-				if err = ie.prb_BundlingTypeDCI_1_2_r16.Encode(extWriter); err != nil {
-					return utils.WrapError("Encode prb_BundlingTypeDCI_1_2_r16", err)
+			// encode Mcs_TableDCI_1_2_r16 optional
+			if ie.Mcs_TableDCI_1_2_r16 != nil {
+				if err = ie.Mcs_TableDCI_1_2_r16.Encode(extWriter); err != nil {
+					return utils.WrapError("Encode Mcs_TableDCI_1_2_r16", err)
 				}
 			}
-			// encode priorityIndicatorDCI_1_2_r16 optional
-			if ie.priorityIndicatorDCI_1_2_r16 != nil {
-				if err = ie.priorityIndicatorDCI_1_2_r16.Encode(extWriter); err != nil {
-					return utils.WrapError("Encode priorityIndicatorDCI_1_2_r16", err)
+			// encode NumberOfBitsForRV_DCI_1_2_r16 optional
+			if ie.NumberOfBitsForRV_DCI_1_2_r16 != nil {
+				if err = extWriter.WriteInteger(*ie.NumberOfBitsForRV_DCI_1_2_r16, &uper.Constraint{Lb: 0, Ub: 2}, false); err != nil {
+					return utils.WrapError("Encode NumberOfBitsForRV_DCI_1_2_r16", err)
 				}
 			}
-			// encode rateMatchPatternGroup1DCI_1_2_r16 optional
-			if ie.rateMatchPatternGroup1DCI_1_2_r16 != nil {
-				if err = ie.rateMatchPatternGroup1DCI_1_2_r16.Encode(extWriter); err != nil {
-					return utils.WrapError("Encode rateMatchPatternGroup1DCI_1_2_r16", err)
+			// encode Pdsch_TimeDomainAllocationListDCI_1_2_r16 optional
+			if ie.Pdsch_TimeDomainAllocationListDCI_1_2_r16 != nil {
+				tmp_Pdsch_TimeDomainAllocationListDCI_1_2_r16 := utils.SetupRelease[*PDSCH_TimeDomainResourceAllocationList_r16]{
+					Setup: ie.Pdsch_TimeDomainAllocationListDCI_1_2_r16,
+				}
+				if err = tmp_Pdsch_TimeDomainAllocationListDCI_1_2_r16.Encode(extWriter); err != nil {
+					return utils.WrapError("Encode Pdsch_TimeDomainAllocationListDCI_1_2_r16", err)
 				}
 			}
-			// encode rateMatchPatternGroup2DCI_1_2_r16 optional
-			if ie.rateMatchPatternGroup2DCI_1_2_r16 != nil {
-				if err = ie.rateMatchPatternGroup2DCI_1_2_r16.Encode(extWriter); err != nil {
-					return utils.WrapError("Encode rateMatchPatternGroup2DCI_1_2_r16", err)
+			// encode Prb_BundlingTypeDCI_1_2_r16 optional
+			if ie.Prb_BundlingTypeDCI_1_2_r16 != nil {
+				if err = ie.Prb_BundlingTypeDCI_1_2_r16.Encode(extWriter); err != nil {
+					return utils.WrapError("Encode Prb_BundlingTypeDCI_1_2_r16", err)
 				}
 			}
-			// encode resourceAllocationType1GranularityDCI_1_2_r16 optional
-			if ie.resourceAllocationType1GranularityDCI_1_2_r16 != nil {
-				if err = ie.resourceAllocationType1GranularityDCI_1_2_r16.Encode(extWriter); err != nil {
-					return utils.WrapError("Encode resourceAllocationType1GranularityDCI_1_2_r16", err)
+			// encode PriorityIndicatorDCI_1_2_r16 optional
+			if ie.PriorityIndicatorDCI_1_2_r16 != nil {
+				if err = ie.PriorityIndicatorDCI_1_2_r16.Encode(extWriter); err != nil {
+					return utils.WrapError("Encode PriorityIndicatorDCI_1_2_r16", err)
 				}
 			}
-			// encode vrb_ToPRB_InterleaverDCI_1_2_r16 optional
-			if ie.vrb_ToPRB_InterleaverDCI_1_2_r16 != nil {
-				if err = ie.vrb_ToPRB_InterleaverDCI_1_2_r16.Encode(extWriter); err != nil {
-					return utils.WrapError("Encode vrb_ToPRB_InterleaverDCI_1_2_r16", err)
+			// encode RateMatchPatternGroup1DCI_1_2_r16 optional
+			if ie.RateMatchPatternGroup1DCI_1_2_r16 != nil {
+				if err = ie.RateMatchPatternGroup1DCI_1_2_r16.Encode(extWriter); err != nil {
+					return utils.WrapError("Encode RateMatchPatternGroup1DCI_1_2_r16", err)
 				}
 			}
-			// encode referenceOfSLIVDCI_1_2_r16 optional
-			if ie.referenceOfSLIVDCI_1_2_r16 != nil {
-				if err = ie.referenceOfSLIVDCI_1_2_r16.Encode(extWriter); err != nil {
-					return utils.WrapError("Encode referenceOfSLIVDCI_1_2_r16", err)
+			// encode RateMatchPatternGroup2DCI_1_2_r16 optional
+			if ie.RateMatchPatternGroup2DCI_1_2_r16 != nil {
+				if err = ie.RateMatchPatternGroup2DCI_1_2_r16.Encode(extWriter); err != nil {
+					return utils.WrapError("Encode RateMatchPatternGroup2DCI_1_2_r16", err)
 				}
 			}
-			// encode resourceAllocationDCI_1_2_r16 optional
-			if ie.resourceAllocationDCI_1_2_r16 != nil {
-				if err = ie.resourceAllocationDCI_1_2_r16.Encode(extWriter); err != nil {
-					return utils.WrapError("Encode resourceAllocationDCI_1_2_r16", err)
+			// encode ResourceAllocationType1GranularityDCI_1_2_r16 optional
+			if ie.ResourceAllocationType1GranularityDCI_1_2_r16 != nil {
+				if err = ie.ResourceAllocationType1GranularityDCI_1_2_r16.Encode(extWriter); err != nil {
+					return utils.WrapError("Encode ResourceAllocationType1GranularityDCI_1_2_r16", err)
 				}
 			}
-			// encode priorityIndicatorDCI_1_1_r16 optional
-			if ie.priorityIndicatorDCI_1_1_r16 != nil {
-				if err = ie.priorityIndicatorDCI_1_1_r16.Encode(extWriter); err != nil {
-					return utils.WrapError("Encode priorityIndicatorDCI_1_1_r16", err)
+			// encode Vrb_ToPRB_InterleaverDCI_1_2_r16 optional
+			if ie.Vrb_ToPRB_InterleaverDCI_1_2_r16 != nil {
+				if err = ie.Vrb_ToPRB_InterleaverDCI_1_2_r16.Encode(extWriter); err != nil {
+					return utils.WrapError("Encode Vrb_ToPRB_InterleaverDCI_1_2_r16", err)
 				}
 			}
-			// encode dataScramblingIdentityPDSCH2_r16 optional
-			if ie.dataScramblingIdentityPDSCH2_r16 != nil {
-				if err = extWriter.WriteInteger(*ie.dataScramblingIdentityPDSCH2_r16, &uper.Constraint{Lb: 0, Ub: 1023}, false); err != nil {
-					return utils.WrapError("Encode dataScramblingIdentityPDSCH2_r16", err)
+			// encode ReferenceOfSLIVDCI_1_2_r16 optional
+			if ie.ReferenceOfSLIVDCI_1_2_r16 != nil {
+				if err = ie.ReferenceOfSLIVDCI_1_2_r16.Encode(extWriter); err != nil {
+					return utils.WrapError("Encode ReferenceOfSLIVDCI_1_2_r16", err)
 				}
 			}
-			// encode pdsch_TimeDomainAllocationList_r16 optional
-			if ie.pdsch_TimeDomainAllocationList_r16 != nil {
-				tmp_pdsch_TimeDomainAllocationList_r16 := utils.SetupRelease[*PDSCH_TimeDomainResourceAllocationList_r16]{
-					Setup: ie.pdsch_TimeDomainAllocationList_r16,
-				}
-				if err = tmp_pdsch_TimeDomainAllocationList_r16.Encode(extWriter); err != nil {
-					return utils.WrapError("Encode pdsch_TimeDomainAllocationList_r16", err)
+			// encode ResourceAllocationDCI_1_2_r16 optional
+			if ie.ResourceAllocationDCI_1_2_r16 != nil {
+				if err = ie.ResourceAllocationDCI_1_2_r16.Encode(extWriter); err != nil {
+					return utils.WrapError("Encode ResourceAllocationDCI_1_2_r16", err)
 				}
 			}
-			// encode repetitionSchemeConfig_r16 optional
-			if ie.repetitionSchemeConfig_r16 != nil {
-				tmp_repetitionSchemeConfig_r16 := utils.SetupRelease[*RepetitionSchemeConfig_r16]{
-					Setup: ie.repetitionSchemeConfig_r16,
+			// encode PriorityIndicatorDCI_1_1_r16 optional
+			if ie.PriorityIndicatorDCI_1_1_r16 != nil {
+				if err = ie.PriorityIndicatorDCI_1_1_r16.Encode(extWriter); err != nil {
+					return utils.WrapError("Encode PriorityIndicatorDCI_1_1_r16", err)
 				}
-				if err = tmp_repetitionSchemeConfig_r16.Encode(extWriter); err != nil {
-					return utils.WrapError("Encode repetitionSchemeConfig_r16", err)
+			}
+			// encode DataScramblingIdentityPDSCH2_r16 optional
+			if ie.DataScramblingIdentityPDSCH2_r16 != nil {
+				if err = extWriter.WriteInteger(*ie.DataScramblingIdentityPDSCH2_r16, &uper.Constraint{Lb: 0, Ub: 1023}, false); err != nil {
+					return utils.WrapError("Encode DataScramblingIdentityPDSCH2_r16", err)
+				}
+			}
+			// encode Pdsch_TimeDomainAllocationList_r16 optional
+			if ie.Pdsch_TimeDomainAllocationList_r16 != nil {
+				tmp_Pdsch_TimeDomainAllocationList_r16 := utils.SetupRelease[*PDSCH_TimeDomainResourceAllocationList_r16]{
+					Setup: ie.Pdsch_TimeDomainAllocationList_r16,
+				}
+				if err = tmp_Pdsch_TimeDomainAllocationList_r16.Encode(extWriter); err != nil {
+					return utils.WrapError("Encode Pdsch_TimeDomainAllocationList_r16", err)
+				}
+			}
+			// encode RepetitionSchemeConfig_r16 optional
+			if ie.RepetitionSchemeConfig_r16 != nil {
+				tmp_RepetitionSchemeConfig_r16 := utils.SetupRelease[*RepetitionSchemeConfig_r16]{
+					Setup: ie.RepetitionSchemeConfig_r16,
+				}
+				if err = tmp_RepetitionSchemeConfig_r16.Encode(extWriter); err != nil {
+					return utils.WrapError("Encode RepetitionSchemeConfig_r16", err)
 				}
 			}
 
@@ -463,20 +463,20 @@ func (ie *PDSCH_Config) Encode(w *uper.UperWriter) error {
 			extWriter := uper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 2
-			optionals_ext_2 := []bool{ie.repetitionSchemeConfig_v1630 != nil}
+			optionals_ext_2 := []bool{ie.RepetitionSchemeConfig_v1630 != nil}
 			for _, bit := range optionals_ext_2 {
 				if err := extWriter.WriteBool(bit); err != nil {
 					return err
 				}
 			}
 
-			// encode repetitionSchemeConfig_v1630 optional
-			if ie.repetitionSchemeConfig_v1630 != nil {
-				tmp_repetitionSchemeConfig_v1630 := utils.SetupRelease[*RepetitionSchemeConfig_v1630]{
-					Setup: ie.repetitionSchemeConfig_v1630,
+			// encode RepetitionSchemeConfig_v1630 optional
+			if ie.RepetitionSchemeConfig_v1630 != nil {
+				tmp_RepetitionSchemeConfig_v1630 := utils.SetupRelease[*RepetitionSchemeConfig_v1630]{
+					Setup: ie.RepetitionSchemeConfig_v1630,
 				}
-				if err = tmp_repetitionSchemeConfig_v1630.Encode(extWriter); err != nil {
-					return utils.WrapError("Encode repetitionSchemeConfig_v1630", err)
+				if err = tmp_RepetitionSchemeConfig_v1630.Encode(extWriter); err != nil {
+					return utils.WrapError("Encode RepetitionSchemeConfig_v1630", err)
 				}
 			}
 
@@ -495,119 +495,119 @@ func (ie *PDSCH_Config) Encode(w *uper.UperWriter) error {
 			extWriter := uper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 3
-			optionals_ext_3 := []bool{ie.pdsch_HARQ_ACK_OneShotFeedbackDCI_1_2_r17 != nil, ie.pdsch_HARQ_ACK_EnhType3DCI_1_2_r17 != nil, ie.pdsch_HARQ_ACK_EnhType3DCI_Field_1_2_r17 != nil, ie.pdsch_HARQ_ACK_RetxDCI_1_2_r17 != nil, ie.pucch_sSCellDynDCI_1_2_r17 != nil, ie.dl_OrJointTCI_StateList_r17 != nil, ie.beamAppTime_r17 != nil, ie.dummy != nil, ie.dmrs_FD_OCC_DisabledForRank1_PDSCH_r17 != nil, ie.minimumSchedulingOffsetK0_r17 != nil, ie.harq_ProcessNumberSizeDCI_1_2_v1700 != nil, ie.harq_ProcessNumberSizeDCI_1_1_r17 != nil, ie.mcs_Table_r17 != nil, ie.mcs_TableDCI_1_2_r17 != nil, ie.xOverheadMulticast_r17 != nil, ie.priorityIndicatorDCI_4_2_r17 != nil, ie.sizeDCI_4_2_r17 != nil}
+			optionals_ext_3 := []bool{ie.Pdsch_HARQ_ACK_OneShotFeedbackDCI_1_2_r17 != nil, ie.Pdsch_HARQ_ACK_EnhType3DCI_1_2_r17 != nil, ie.Pdsch_HARQ_ACK_EnhType3DCI_Field_1_2_r17 != nil, ie.Pdsch_HARQ_ACK_RetxDCI_1_2_r17 != nil, ie.Pucch_sSCellDynDCI_1_2_r17 != nil, ie.Dl_OrJointTCI_StateList_r17 != nil, ie.BeamAppTime_r17 != nil, ie.Dummy != nil, ie.Dmrs_FD_OCC_DisabledForRank1_PDSCH_r17 != nil, ie.MinimumSchedulingOffsetK0_r17 != nil, ie.Harq_ProcessNumberSizeDCI_1_2_v1700 != nil, ie.Harq_ProcessNumberSizeDCI_1_1_r17 != nil, ie.Mcs_Table_r17 != nil, ie.Mcs_TableDCI_1_2_r17 != nil, ie.XOverheadMulticast_r17 != nil, ie.PriorityIndicatorDCI_4_2_r17 != nil, ie.SizeDCI_4_2_r17 != nil}
 			for _, bit := range optionals_ext_3 {
 				if err := extWriter.WriteBool(bit); err != nil {
 					return err
 				}
 			}
 
-			// encode pdsch_HARQ_ACK_OneShotFeedbackDCI_1_2_r17 optional
-			if ie.pdsch_HARQ_ACK_OneShotFeedbackDCI_1_2_r17 != nil {
-				if err = ie.pdsch_HARQ_ACK_OneShotFeedbackDCI_1_2_r17.Encode(extWriter); err != nil {
-					return utils.WrapError("Encode pdsch_HARQ_ACK_OneShotFeedbackDCI_1_2_r17", err)
+			// encode Pdsch_HARQ_ACK_OneShotFeedbackDCI_1_2_r17 optional
+			if ie.Pdsch_HARQ_ACK_OneShotFeedbackDCI_1_2_r17 != nil {
+				if err = ie.Pdsch_HARQ_ACK_OneShotFeedbackDCI_1_2_r17.Encode(extWriter); err != nil {
+					return utils.WrapError("Encode Pdsch_HARQ_ACK_OneShotFeedbackDCI_1_2_r17", err)
 				}
 			}
-			// encode pdsch_HARQ_ACK_EnhType3DCI_1_2_r17 optional
-			if ie.pdsch_HARQ_ACK_EnhType3DCI_1_2_r17 != nil {
-				if err = ie.pdsch_HARQ_ACK_EnhType3DCI_1_2_r17.Encode(extWriter); err != nil {
-					return utils.WrapError("Encode pdsch_HARQ_ACK_EnhType3DCI_1_2_r17", err)
+			// encode Pdsch_HARQ_ACK_EnhType3DCI_1_2_r17 optional
+			if ie.Pdsch_HARQ_ACK_EnhType3DCI_1_2_r17 != nil {
+				if err = ie.Pdsch_HARQ_ACK_EnhType3DCI_1_2_r17.Encode(extWriter); err != nil {
+					return utils.WrapError("Encode Pdsch_HARQ_ACK_EnhType3DCI_1_2_r17", err)
 				}
 			}
-			// encode pdsch_HARQ_ACK_EnhType3DCI_Field_1_2_r17 optional
-			if ie.pdsch_HARQ_ACK_EnhType3DCI_Field_1_2_r17 != nil {
-				if err = ie.pdsch_HARQ_ACK_EnhType3DCI_Field_1_2_r17.Encode(extWriter); err != nil {
-					return utils.WrapError("Encode pdsch_HARQ_ACK_EnhType3DCI_Field_1_2_r17", err)
+			// encode Pdsch_HARQ_ACK_EnhType3DCI_Field_1_2_r17 optional
+			if ie.Pdsch_HARQ_ACK_EnhType3DCI_Field_1_2_r17 != nil {
+				if err = ie.Pdsch_HARQ_ACK_EnhType3DCI_Field_1_2_r17.Encode(extWriter); err != nil {
+					return utils.WrapError("Encode Pdsch_HARQ_ACK_EnhType3DCI_Field_1_2_r17", err)
 				}
 			}
-			// encode pdsch_HARQ_ACK_RetxDCI_1_2_r17 optional
-			if ie.pdsch_HARQ_ACK_RetxDCI_1_2_r17 != nil {
-				if err = ie.pdsch_HARQ_ACK_RetxDCI_1_2_r17.Encode(extWriter); err != nil {
-					return utils.WrapError("Encode pdsch_HARQ_ACK_RetxDCI_1_2_r17", err)
+			// encode Pdsch_HARQ_ACK_RetxDCI_1_2_r17 optional
+			if ie.Pdsch_HARQ_ACK_RetxDCI_1_2_r17 != nil {
+				if err = ie.Pdsch_HARQ_ACK_RetxDCI_1_2_r17.Encode(extWriter); err != nil {
+					return utils.WrapError("Encode Pdsch_HARQ_ACK_RetxDCI_1_2_r17", err)
 				}
 			}
-			// encode pucch_sSCellDynDCI_1_2_r17 optional
-			if ie.pucch_sSCellDynDCI_1_2_r17 != nil {
-				if err = ie.pucch_sSCellDynDCI_1_2_r17.Encode(extWriter); err != nil {
-					return utils.WrapError("Encode pucch_sSCellDynDCI_1_2_r17", err)
+			// encode Pucch_sSCellDynDCI_1_2_r17 optional
+			if ie.Pucch_sSCellDynDCI_1_2_r17 != nil {
+				if err = ie.Pucch_sSCellDynDCI_1_2_r17.Encode(extWriter); err != nil {
+					return utils.WrapError("Encode Pucch_sSCellDynDCI_1_2_r17", err)
 				}
 			}
-			// encode dl_OrJointTCI_StateList_r17 optional
-			if ie.dl_OrJointTCI_StateList_r17 != nil {
-				if err = ie.dl_OrJointTCI_StateList_r17.Encode(extWriter); err != nil {
-					return utils.WrapError("Encode dl_OrJointTCI_StateList_r17", err)
+			// encode Dl_OrJointTCI_StateList_r17 optional
+			if ie.Dl_OrJointTCI_StateList_r17 != nil {
+				if err = ie.Dl_OrJointTCI_StateList_r17.Encode(extWriter); err != nil {
+					return utils.WrapError("Encode Dl_OrJointTCI_StateList_r17", err)
 				}
 			}
-			// encode beamAppTime_r17 optional
-			if ie.beamAppTime_r17 != nil {
-				if err = ie.beamAppTime_r17.Encode(extWriter); err != nil {
-					return utils.WrapError("Encode beamAppTime_r17", err)
+			// encode BeamAppTime_r17 optional
+			if ie.BeamAppTime_r17 != nil {
+				if err = ie.BeamAppTime_r17.Encode(extWriter); err != nil {
+					return utils.WrapError("Encode BeamAppTime_r17", err)
 				}
 			}
-			// encode dummy optional
-			if ie.dummy != nil {
-				tmp_dummy := utils.SetupRelease[*Dummy_TDRA_List]{
-					Setup: ie.dummy,
+			// encode Dummy optional
+			if ie.Dummy != nil {
+				tmp_Dummy := utils.SetupRelease[*Dummy_TDRA_List]{
+					Setup: ie.Dummy,
 				}
-				if err = tmp_dummy.Encode(extWriter); err != nil {
-					return utils.WrapError("Encode dummy", err)
-				}
-			}
-			// encode dmrs_FD_OCC_DisabledForRank1_PDSCH_r17 optional
-			if ie.dmrs_FD_OCC_DisabledForRank1_PDSCH_r17 != nil {
-				if err = ie.dmrs_FD_OCC_DisabledForRank1_PDSCH_r17.Encode(extWriter); err != nil {
-					return utils.WrapError("Encode dmrs_FD_OCC_DisabledForRank1_PDSCH_r17", err)
+				if err = tmp_Dummy.Encode(extWriter); err != nil {
+					return utils.WrapError("Encode Dummy", err)
 				}
 			}
-			// encode minimumSchedulingOffsetK0_r17 optional
-			if ie.minimumSchedulingOffsetK0_r17 != nil {
-				tmp_minimumSchedulingOffsetK0_r17 := utils.SetupRelease[*MinSchedulingOffsetK0_Values_r17]{
-					Setup: ie.minimumSchedulingOffsetK0_r17,
-				}
-				if err = tmp_minimumSchedulingOffsetK0_r17.Encode(extWriter); err != nil {
-					return utils.WrapError("Encode minimumSchedulingOffsetK0_r17", err)
+			// encode Dmrs_FD_OCC_DisabledForRank1_PDSCH_r17 optional
+			if ie.Dmrs_FD_OCC_DisabledForRank1_PDSCH_r17 != nil {
+				if err = ie.Dmrs_FD_OCC_DisabledForRank1_PDSCH_r17.Encode(extWriter); err != nil {
+					return utils.WrapError("Encode Dmrs_FD_OCC_DisabledForRank1_PDSCH_r17", err)
 				}
 			}
-			// encode harq_ProcessNumberSizeDCI_1_2_v1700 optional
-			if ie.harq_ProcessNumberSizeDCI_1_2_v1700 != nil {
-				if err = extWriter.WriteInteger(*ie.harq_ProcessNumberSizeDCI_1_2_v1700, &uper.Constraint{Lb: 0, Ub: 5}, false); err != nil {
-					return utils.WrapError("Encode harq_ProcessNumberSizeDCI_1_2_v1700", err)
+			// encode MinimumSchedulingOffsetK0_r17 optional
+			if ie.MinimumSchedulingOffsetK0_r17 != nil {
+				tmp_MinimumSchedulingOffsetK0_r17 := utils.SetupRelease[*MinSchedulingOffsetK0_Values_r17]{
+					Setup: ie.MinimumSchedulingOffsetK0_r17,
+				}
+				if err = tmp_MinimumSchedulingOffsetK0_r17.Encode(extWriter); err != nil {
+					return utils.WrapError("Encode MinimumSchedulingOffsetK0_r17", err)
 				}
 			}
-			// encode harq_ProcessNumberSizeDCI_1_1_r17 optional
-			if ie.harq_ProcessNumberSizeDCI_1_1_r17 != nil {
-				if err = extWriter.WriteInteger(*ie.harq_ProcessNumberSizeDCI_1_1_r17, &uper.Constraint{Lb: 5, Ub: 5}, false); err != nil {
-					return utils.WrapError("Encode harq_ProcessNumberSizeDCI_1_1_r17", err)
+			// encode Harq_ProcessNumberSizeDCI_1_2_v1700 optional
+			if ie.Harq_ProcessNumberSizeDCI_1_2_v1700 != nil {
+				if err = extWriter.WriteInteger(*ie.Harq_ProcessNumberSizeDCI_1_2_v1700, &uper.Constraint{Lb: 0, Ub: 5}, false); err != nil {
+					return utils.WrapError("Encode Harq_ProcessNumberSizeDCI_1_2_v1700", err)
 				}
 			}
-			// encode mcs_Table_r17 optional
-			if ie.mcs_Table_r17 != nil {
-				if err = ie.mcs_Table_r17.Encode(extWriter); err != nil {
-					return utils.WrapError("Encode mcs_Table_r17", err)
+			// encode Harq_ProcessNumberSizeDCI_1_1_r17 optional
+			if ie.Harq_ProcessNumberSizeDCI_1_1_r17 != nil {
+				if err = extWriter.WriteInteger(*ie.Harq_ProcessNumberSizeDCI_1_1_r17, &uper.Constraint{Lb: 5, Ub: 5}, false); err != nil {
+					return utils.WrapError("Encode Harq_ProcessNumberSizeDCI_1_1_r17", err)
 				}
 			}
-			// encode mcs_TableDCI_1_2_r17 optional
-			if ie.mcs_TableDCI_1_2_r17 != nil {
-				if err = ie.mcs_TableDCI_1_2_r17.Encode(extWriter); err != nil {
-					return utils.WrapError("Encode mcs_TableDCI_1_2_r17", err)
+			// encode Mcs_Table_r17 optional
+			if ie.Mcs_Table_r17 != nil {
+				if err = ie.Mcs_Table_r17.Encode(extWriter); err != nil {
+					return utils.WrapError("Encode Mcs_Table_r17", err)
 				}
 			}
-			// encode xOverheadMulticast_r17 optional
-			if ie.xOverheadMulticast_r17 != nil {
-				if err = ie.xOverheadMulticast_r17.Encode(extWriter); err != nil {
-					return utils.WrapError("Encode xOverheadMulticast_r17", err)
+			// encode Mcs_TableDCI_1_2_r17 optional
+			if ie.Mcs_TableDCI_1_2_r17 != nil {
+				if err = ie.Mcs_TableDCI_1_2_r17.Encode(extWriter); err != nil {
+					return utils.WrapError("Encode Mcs_TableDCI_1_2_r17", err)
 				}
 			}
-			// encode priorityIndicatorDCI_4_2_r17 optional
-			if ie.priorityIndicatorDCI_4_2_r17 != nil {
-				if err = ie.priorityIndicatorDCI_4_2_r17.Encode(extWriter); err != nil {
-					return utils.WrapError("Encode priorityIndicatorDCI_4_2_r17", err)
+			// encode XOverheadMulticast_r17 optional
+			if ie.XOverheadMulticast_r17 != nil {
+				if err = ie.XOverheadMulticast_r17.Encode(extWriter); err != nil {
+					return utils.WrapError("Encode XOverheadMulticast_r17", err)
 				}
 			}
-			// encode sizeDCI_4_2_r17 optional
-			if ie.sizeDCI_4_2_r17 != nil {
-				if err = extWriter.WriteInteger(*ie.sizeDCI_4_2_r17, &uper.Constraint{Lb: 20, Ub: maxDCI_4_2_Size_r17}, false); err != nil {
-					return utils.WrapError("Encode sizeDCI_4_2_r17", err)
+			// encode PriorityIndicatorDCI_4_2_r17 optional
+			if ie.PriorityIndicatorDCI_4_2_r17 != nil {
+				if err = ie.PriorityIndicatorDCI_4_2_r17.Encode(extWriter); err != nil {
+					return utils.WrapError("Encode PriorityIndicatorDCI_4_2_r17", err)
+				}
+			}
+			// encode SizeDCI_4_2_r17 optional
+			if ie.SizeDCI_4_2_r17 != nil {
+				if err = extWriter.WriteInteger(*ie.SizeDCI_4_2_r17, &uper.Constraint{Lb: 20, Ub: maxDCI_4_2_Size_r17}, false); err != nil {
+					return utils.WrapError("Encode SizeDCI_4_2_r17", err)
 				}
 			}
 
@@ -626,20 +626,20 @@ func (ie *PDSCH_Config) Encode(w *uper.UperWriter) error {
 			extWriter := uper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 4
-			optionals_ext_4 := []bool{ie.pdsch_TimeDomainAllocationListForMultiPDSCH_r17 != nil}
+			optionals_ext_4 := []bool{ie.Pdsch_TimeDomainAllocationListForMultiPDSCH_r17 != nil}
 			for _, bit := range optionals_ext_4 {
 				if err := extWriter.WriteBool(bit); err != nil {
 					return err
 				}
 			}
 
-			// encode pdsch_TimeDomainAllocationListForMultiPDSCH_r17 optional
-			if ie.pdsch_TimeDomainAllocationListForMultiPDSCH_r17 != nil {
-				tmp_pdsch_TimeDomainAllocationListForMultiPDSCH_r17 := utils.SetupRelease[*MultiPDSCH_TDRA_List_r17]{
-					Setup: ie.pdsch_TimeDomainAllocationListForMultiPDSCH_r17,
+			// encode Pdsch_TimeDomainAllocationListForMultiPDSCH_r17 optional
+			if ie.Pdsch_TimeDomainAllocationListForMultiPDSCH_r17 != nil {
+				tmp_Pdsch_TimeDomainAllocationListForMultiPDSCH_r17 := utils.SetupRelease[*MultiPDSCH_TDRA_List_r17]{
+					Setup: ie.Pdsch_TimeDomainAllocationListForMultiPDSCH_r17,
 				}
-				if err = tmp_pdsch_TimeDomainAllocationListForMultiPDSCH_r17.Encode(extWriter); err != nil {
-					return utils.WrapError("Encode pdsch_TimeDomainAllocationListForMultiPDSCH_r17", err)
+				if err = tmp_Pdsch_TimeDomainAllocationListForMultiPDSCH_r17.Encode(extWriter); err != nil {
+					return utils.WrapError("Encode Pdsch_TimeDomainAllocationListForMultiPDSCH_r17", err)
 				}
 			}
 
@@ -661,306 +661,306 @@ func (ie *PDSCH_Config) Decode(r *uper.UperReader) error {
 	if extensionBit, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var dataScramblingIdentityPDSCHPresent bool
-	if dataScramblingIdentityPDSCHPresent, err = r.ReadBool(); err != nil {
+	var DataScramblingIdentityPDSCHPresent bool
+	if DataScramblingIdentityPDSCHPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var dmrs_DownlinkForPDSCH_MappingTypeAPresent bool
-	if dmrs_DownlinkForPDSCH_MappingTypeAPresent, err = r.ReadBool(); err != nil {
+	var Dmrs_DownlinkForPDSCH_MappingTypeAPresent bool
+	if Dmrs_DownlinkForPDSCH_MappingTypeAPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var dmrs_DownlinkForPDSCH_MappingTypeBPresent bool
-	if dmrs_DownlinkForPDSCH_MappingTypeBPresent, err = r.ReadBool(); err != nil {
+	var Dmrs_DownlinkForPDSCH_MappingTypeBPresent bool
+	if Dmrs_DownlinkForPDSCH_MappingTypeBPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var tci_StatesToAddModListPresent bool
-	if tci_StatesToAddModListPresent, err = r.ReadBool(); err != nil {
+	var Tci_StatesToAddModListPresent bool
+	if Tci_StatesToAddModListPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var tci_StatesToReleaseListPresent bool
-	if tci_StatesToReleaseListPresent, err = r.ReadBool(); err != nil {
+	var Tci_StatesToReleaseListPresent bool
+	if Tci_StatesToReleaseListPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var vrb_ToPRB_InterleaverPresent bool
-	if vrb_ToPRB_InterleaverPresent, err = r.ReadBool(); err != nil {
+	var Vrb_ToPRB_InterleaverPresent bool
+	if Vrb_ToPRB_InterleaverPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var pdsch_TimeDomainAllocationListPresent bool
-	if pdsch_TimeDomainAllocationListPresent, err = r.ReadBool(); err != nil {
+	var Pdsch_TimeDomainAllocationListPresent bool
+	if Pdsch_TimeDomainAllocationListPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var pdsch_AggregationFactorPresent bool
-	if pdsch_AggregationFactorPresent, err = r.ReadBool(); err != nil {
+	var Pdsch_AggregationFactorPresent bool
+	if Pdsch_AggregationFactorPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var rateMatchPatternToAddModListPresent bool
-	if rateMatchPatternToAddModListPresent, err = r.ReadBool(); err != nil {
+	var RateMatchPatternToAddModListPresent bool
+	if RateMatchPatternToAddModListPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var rateMatchPatternToReleaseListPresent bool
-	if rateMatchPatternToReleaseListPresent, err = r.ReadBool(); err != nil {
+	var RateMatchPatternToReleaseListPresent bool
+	if RateMatchPatternToReleaseListPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var rateMatchPatternGroup1Present bool
-	if rateMatchPatternGroup1Present, err = r.ReadBool(); err != nil {
+	var RateMatchPatternGroup1Present bool
+	if RateMatchPatternGroup1Present, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var rateMatchPatternGroup2Present bool
-	if rateMatchPatternGroup2Present, err = r.ReadBool(); err != nil {
+	var RateMatchPatternGroup2Present bool
+	if RateMatchPatternGroup2Present, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var mcs_TablePresent bool
-	if mcs_TablePresent, err = r.ReadBool(); err != nil {
+	var Mcs_TablePresent bool
+	if Mcs_TablePresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var maxNrofCodeWordsScheduledByDCIPresent bool
-	if maxNrofCodeWordsScheduledByDCIPresent, err = r.ReadBool(); err != nil {
+	var MaxNrofCodeWordsScheduledByDCIPresent bool
+	if MaxNrofCodeWordsScheduledByDCIPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var prb_BundlingTypePresent bool
-	if prb_BundlingTypePresent, err = r.ReadBool(); err != nil {
+	var Prb_BundlingTypePresent bool
+	if Prb_BundlingTypePresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var zp_CSI_RS_ResourceToAddModListPresent bool
-	if zp_CSI_RS_ResourceToAddModListPresent, err = r.ReadBool(); err != nil {
+	var Zp_CSI_RS_ResourceToAddModListPresent bool
+	if Zp_CSI_RS_ResourceToAddModListPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var zp_CSI_RS_ResourceToReleaseListPresent bool
-	if zp_CSI_RS_ResourceToReleaseListPresent, err = r.ReadBool(); err != nil {
+	var Zp_CSI_RS_ResourceToReleaseListPresent bool
+	if Zp_CSI_RS_ResourceToReleaseListPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var aperiodic_ZP_CSI_RS_ResourceSetsToAddModListPresent bool
-	if aperiodic_ZP_CSI_RS_ResourceSetsToAddModListPresent, err = r.ReadBool(); err != nil {
+	var Aperiodic_ZP_CSI_RS_ResourceSetsToAddModListPresent bool
+	if Aperiodic_ZP_CSI_RS_ResourceSetsToAddModListPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var aperiodic_ZP_CSI_RS_ResourceSetsToReleaseListPresent bool
-	if aperiodic_ZP_CSI_RS_ResourceSetsToReleaseListPresent, err = r.ReadBool(); err != nil {
+	var Aperiodic_ZP_CSI_RS_ResourceSetsToReleaseListPresent bool
+	if Aperiodic_ZP_CSI_RS_ResourceSetsToReleaseListPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var sp_ZP_CSI_RS_ResourceSetsToAddModListPresent bool
-	if sp_ZP_CSI_RS_ResourceSetsToAddModListPresent, err = r.ReadBool(); err != nil {
+	var Sp_ZP_CSI_RS_ResourceSetsToAddModListPresent bool
+	if Sp_ZP_CSI_RS_ResourceSetsToAddModListPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var sp_ZP_CSI_RS_ResourceSetsToReleaseListPresent bool
-	if sp_ZP_CSI_RS_ResourceSetsToReleaseListPresent, err = r.ReadBool(); err != nil {
+	var Sp_ZP_CSI_RS_ResourceSetsToReleaseListPresent bool
+	if Sp_ZP_CSI_RS_ResourceSetsToReleaseListPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var p_ZP_CSI_RS_ResourceSetPresent bool
-	if p_ZP_CSI_RS_ResourceSetPresent, err = r.ReadBool(); err != nil {
+	var P_ZP_CSI_RS_ResourceSetPresent bool
+	if P_ZP_CSI_RS_ResourceSetPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	if dataScramblingIdentityPDSCHPresent {
-		var tmp_int_dataScramblingIdentityPDSCH int64
-		if tmp_int_dataScramblingIdentityPDSCH, err = r.ReadInteger(&uper.Constraint{Lb: 0, Ub: 1023}, false); err != nil {
-			return utils.WrapError("Decode dataScramblingIdentityPDSCH", err)
+	if DataScramblingIdentityPDSCHPresent {
+		var tmp_int_DataScramblingIdentityPDSCH int64
+		if tmp_int_DataScramblingIdentityPDSCH, err = r.ReadInteger(&uper.Constraint{Lb: 0, Ub: 1023}, false); err != nil {
+			return utils.WrapError("Decode DataScramblingIdentityPDSCH", err)
 		}
-		ie.dataScramblingIdentityPDSCH = &tmp_int_dataScramblingIdentityPDSCH
+		ie.DataScramblingIdentityPDSCH = &tmp_int_DataScramblingIdentityPDSCH
 	}
-	if dmrs_DownlinkForPDSCH_MappingTypeAPresent {
-		tmp_dmrs_DownlinkForPDSCH_MappingTypeA := utils.SetupRelease[*DMRS_DownlinkConfig]{}
-		if err = tmp_dmrs_DownlinkForPDSCH_MappingTypeA.Decode(r); err != nil {
-			return utils.WrapError("Decode dmrs_DownlinkForPDSCH_MappingTypeA", err)
+	if Dmrs_DownlinkForPDSCH_MappingTypeAPresent {
+		tmp_Dmrs_DownlinkForPDSCH_MappingTypeA := utils.SetupRelease[*DMRS_DownlinkConfig]{}
+		if err = tmp_Dmrs_DownlinkForPDSCH_MappingTypeA.Decode(r); err != nil {
+			return utils.WrapError("Decode Dmrs_DownlinkForPDSCH_MappingTypeA", err)
 		}
-		ie.dmrs_DownlinkForPDSCH_MappingTypeA = tmp_dmrs_DownlinkForPDSCH_MappingTypeA.Setup
+		ie.Dmrs_DownlinkForPDSCH_MappingTypeA = tmp_Dmrs_DownlinkForPDSCH_MappingTypeA.Setup
 	}
-	if dmrs_DownlinkForPDSCH_MappingTypeBPresent {
-		tmp_dmrs_DownlinkForPDSCH_MappingTypeB := utils.SetupRelease[*DMRS_DownlinkConfig]{}
-		if err = tmp_dmrs_DownlinkForPDSCH_MappingTypeB.Decode(r); err != nil {
-			return utils.WrapError("Decode dmrs_DownlinkForPDSCH_MappingTypeB", err)
+	if Dmrs_DownlinkForPDSCH_MappingTypeBPresent {
+		tmp_Dmrs_DownlinkForPDSCH_MappingTypeB := utils.SetupRelease[*DMRS_DownlinkConfig]{}
+		if err = tmp_Dmrs_DownlinkForPDSCH_MappingTypeB.Decode(r); err != nil {
+			return utils.WrapError("Decode Dmrs_DownlinkForPDSCH_MappingTypeB", err)
 		}
-		ie.dmrs_DownlinkForPDSCH_MappingTypeB = tmp_dmrs_DownlinkForPDSCH_MappingTypeB.Setup
+		ie.Dmrs_DownlinkForPDSCH_MappingTypeB = tmp_Dmrs_DownlinkForPDSCH_MappingTypeB.Setup
 	}
-	if tci_StatesToAddModListPresent {
-		tmp_tci_StatesToAddModList := utils.NewSequence[*TCI_State]([]*TCI_State{}, uper.Constraint{Lb: 1, Ub: maxNrofTCI_States}, false)
-		fn_tci_StatesToAddModList := func() *TCI_State {
+	if Tci_StatesToAddModListPresent {
+		tmp_Tci_StatesToAddModList := utils.NewSequence[*TCI_State]([]*TCI_State{}, uper.Constraint{Lb: 1, Ub: maxNrofTCI_States}, false)
+		fn_Tci_StatesToAddModList := func() *TCI_State {
 			return new(TCI_State)
 		}
-		if err = tmp_tci_StatesToAddModList.Decode(r, fn_tci_StatesToAddModList); err != nil {
-			return utils.WrapError("Decode tci_StatesToAddModList", err)
+		if err = tmp_Tci_StatesToAddModList.Decode(r, fn_Tci_StatesToAddModList); err != nil {
+			return utils.WrapError("Decode Tci_StatesToAddModList", err)
 		}
-		ie.tci_StatesToAddModList = []TCI_State{}
-		for _, i := range tmp_tci_StatesToAddModList.Value {
-			ie.tci_StatesToAddModList = append(ie.tci_StatesToAddModList, *i)
+		ie.Tci_StatesToAddModList = []TCI_State{}
+		for _, i := range tmp_Tci_StatesToAddModList.Value {
+			ie.Tci_StatesToAddModList = append(ie.Tci_StatesToAddModList, *i)
 		}
 	}
-	if tci_StatesToReleaseListPresent {
-		tmp_tci_StatesToReleaseList := utils.NewSequence[*TCI_StateId]([]*TCI_StateId{}, uper.Constraint{Lb: 1, Ub: maxNrofTCI_States}, false)
-		fn_tci_StatesToReleaseList := func() *TCI_StateId {
+	if Tci_StatesToReleaseListPresent {
+		tmp_Tci_StatesToReleaseList := utils.NewSequence[*TCI_StateId]([]*TCI_StateId{}, uper.Constraint{Lb: 1, Ub: maxNrofTCI_States}, false)
+		fn_Tci_StatesToReleaseList := func() *TCI_StateId {
 			return new(TCI_StateId)
 		}
-		if err = tmp_tci_StatesToReleaseList.Decode(r, fn_tci_StatesToReleaseList); err != nil {
-			return utils.WrapError("Decode tci_StatesToReleaseList", err)
+		if err = tmp_Tci_StatesToReleaseList.Decode(r, fn_Tci_StatesToReleaseList); err != nil {
+			return utils.WrapError("Decode Tci_StatesToReleaseList", err)
 		}
-		ie.tci_StatesToReleaseList = []TCI_StateId{}
-		for _, i := range tmp_tci_StatesToReleaseList.Value {
-			ie.tci_StatesToReleaseList = append(ie.tci_StatesToReleaseList, *i)
-		}
-	}
-	if vrb_ToPRB_InterleaverPresent {
-		ie.vrb_ToPRB_Interleaver = new(PDSCH_Config_vrb_ToPRB_Interleaver)
-		if err = ie.vrb_ToPRB_Interleaver.Decode(r); err != nil {
-			return utils.WrapError("Decode vrb_ToPRB_Interleaver", err)
+		ie.Tci_StatesToReleaseList = []TCI_StateId{}
+		for _, i := range tmp_Tci_StatesToReleaseList.Value {
+			ie.Tci_StatesToReleaseList = append(ie.Tci_StatesToReleaseList, *i)
 		}
 	}
-	if err = ie.resourceAllocation.Decode(r); err != nil {
-		return utils.WrapError("Decode resourceAllocation", err)
-	}
-	if pdsch_TimeDomainAllocationListPresent {
-		tmp_pdsch_TimeDomainAllocationList := utils.SetupRelease[*PDSCH_TimeDomainResourceAllocationList]{}
-		if err = tmp_pdsch_TimeDomainAllocationList.Decode(r); err != nil {
-			return utils.WrapError("Decode pdsch_TimeDomainAllocationList", err)
-		}
-		ie.pdsch_TimeDomainAllocationList = tmp_pdsch_TimeDomainAllocationList.Setup
-	}
-	if pdsch_AggregationFactorPresent {
-		ie.pdsch_AggregationFactor = new(PDSCH_Config_pdsch_AggregationFactor)
-		if err = ie.pdsch_AggregationFactor.Decode(r); err != nil {
-			return utils.WrapError("Decode pdsch_AggregationFactor", err)
+	if Vrb_ToPRB_InterleaverPresent {
+		ie.Vrb_ToPRB_Interleaver = new(PDSCH_Config_vrb_ToPRB_Interleaver)
+		if err = ie.Vrb_ToPRB_Interleaver.Decode(r); err != nil {
+			return utils.WrapError("Decode Vrb_ToPRB_Interleaver", err)
 		}
 	}
-	if rateMatchPatternToAddModListPresent {
-		tmp_rateMatchPatternToAddModList := utils.NewSequence[*RateMatchPattern]([]*RateMatchPattern{}, uper.Constraint{Lb: 1, Ub: maxNrofRateMatchPatterns}, false)
-		fn_rateMatchPatternToAddModList := func() *RateMatchPattern {
+	if err = ie.ResourceAllocation.Decode(r); err != nil {
+		return utils.WrapError("Decode ResourceAllocation", err)
+	}
+	if Pdsch_TimeDomainAllocationListPresent {
+		tmp_Pdsch_TimeDomainAllocationList := utils.SetupRelease[*PDSCH_TimeDomainResourceAllocationList]{}
+		if err = tmp_Pdsch_TimeDomainAllocationList.Decode(r); err != nil {
+			return utils.WrapError("Decode Pdsch_TimeDomainAllocationList", err)
+		}
+		ie.Pdsch_TimeDomainAllocationList = tmp_Pdsch_TimeDomainAllocationList.Setup
+	}
+	if Pdsch_AggregationFactorPresent {
+		ie.Pdsch_AggregationFactor = new(PDSCH_Config_pdsch_AggregationFactor)
+		if err = ie.Pdsch_AggregationFactor.Decode(r); err != nil {
+			return utils.WrapError("Decode Pdsch_AggregationFactor", err)
+		}
+	}
+	if RateMatchPatternToAddModListPresent {
+		tmp_RateMatchPatternToAddModList := utils.NewSequence[*RateMatchPattern]([]*RateMatchPattern{}, uper.Constraint{Lb: 1, Ub: maxNrofRateMatchPatterns}, false)
+		fn_RateMatchPatternToAddModList := func() *RateMatchPattern {
 			return new(RateMatchPattern)
 		}
-		if err = tmp_rateMatchPatternToAddModList.Decode(r, fn_rateMatchPatternToAddModList); err != nil {
-			return utils.WrapError("Decode rateMatchPatternToAddModList", err)
+		if err = tmp_RateMatchPatternToAddModList.Decode(r, fn_RateMatchPatternToAddModList); err != nil {
+			return utils.WrapError("Decode RateMatchPatternToAddModList", err)
 		}
-		ie.rateMatchPatternToAddModList = []RateMatchPattern{}
-		for _, i := range tmp_rateMatchPatternToAddModList.Value {
-			ie.rateMatchPatternToAddModList = append(ie.rateMatchPatternToAddModList, *i)
+		ie.RateMatchPatternToAddModList = []RateMatchPattern{}
+		for _, i := range tmp_RateMatchPatternToAddModList.Value {
+			ie.RateMatchPatternToAddModList = append(ie.RateMatchPatternToAddModList, *i)
 		}
 	}
-	if rateMatchPatternToReleaseListPresent {
-		tmp_rateMatchPatternToReleaseList := utils.NewSequence[*RateMatchPatternId]([]*RateMatchPatternId{}, uper.Constraint{Lb: 1, Ub: maxNrofRateMatchPatterns}, false)
-		fn_rateMatchPatternToReleaseList := func() *RateMatchPatternId {
+	if RateMatchPatternToReleaseListPresent {
+		tmp_RateMatchPatternToReleaseList := utils.NewSequence[*RateMatchPatternId]([]*RateMatchPatternId{}, uper.Constraint{Lb: 1, Ub: maxNrofRateMatchPatterns}, false)
+		fn_RateMatchPatternToReleaseList := func() *RateMatchPatternId {
 			return new(RateMatchPatternId)
 		}
-		if err = tmp_rateMatchPatternToReleaseList.Decode(r, fn_rateMatchPatternToReleaseList); err != nil {
-			return utils.WrapError("Decode rateMatchPatternToReleaseList", err)
+		if err = tmp_RateMatchPatternToReleaseList.Decode(r, fn_RateMatchPatternToReleaseList); err != nil {
+			return utils.WrapError("Decode RateMatchPatternToReleaseList", err)
 		}
-		ie.rateMatchPatternToReleaseList = []RateMatchPatternId{}
-		for _, i := range tmp_rateMatchPatternToReleaseList.Value {
-			ie.rateMatchPatternToReleaseList = append(ie.rateMatchPatternToReleaseList, *i)
-		}
-	}
-	if rateMatchPatternGroup1Present {
-		ie.rateMatchPatternGroup1 = new(RateMatchPatternGroup)
-		if err = ie.rateMatchPatternGroup1.Decode(r); err != nil {
-			return utils.WrapError("Decode rateMatchPatternGroup1", err)
+		ie.RateMatchPatternToReleaseList = []RateMatchPatternId{}
+		for _, i := range tmp_RateMatchPatternToReleaseList.Value {
+			ie.RateMatchPatternToReleaseList = append(ie.RateMatchPatternToReleaseList, *i)
 		}
 	}
-	if rateMatchPatternGroup2Present {
-		ie.rateMatchPatternGroup2 = new(RateMatchPatternGroup)
-		if err = ie.rateMatchPatternGroup2.Decode(r); err != nil {
-			return utils.WrapError("Decode rateMatchPatternGroup2", err)
+	if RateMatchPatternGroup1Present {
+		ie.RateMatchPatternGroup1 = new(RateMatchPatternGroup)
+		if err = ie.RateMatchPatternGroup1.Decode(r); err != nil {
+			return utils.WrapError("Decode RateMatchPatternGroup1", err)
 		}
 	}
-	if err = ie.rbg_Size.Decode(r); err != nil {
-		return utils.WrapError("Decode rbg_Size", err)
-	}
-	if mcs_TablePresent {
-		ie.mcs_Table = new(PDSCH_Config_mcs_Table)
-		if err = ie.mcs_Table.Decode(r); err != nil {
-			return utils.WrapError("Decode mcs_Table", err)
+	if RateMatchPatternGroup2Present {
+		ie.RateMatchPatternGroup2 = new(RateMatchPatternGroup)
+		if err = ie.RateMatchPatternGroup2.Decode(r); err != nil {
+			return utils.WrapError("Decode RateMatchPatternGroup2", err)
 		}
 	}
-	if maxNrofCodeWordsScheduledByDCIPresent {
-		ie.maxNrofCodeWordsScheduledByDCI = new(PDSCH_Config_maxNrofCodeWordsScheduledByDCI)
-		if err = ie.maxNrofCodeWordsScheduledByDCI.Decode(r); err != nil {
-			return utils.WrapError("Decode maxNrofCodeWordsScheduledByDCI", err)
+	if err = ie.Rbg_Size.Decode(r); err != nil {
+		return utils.WrapError("Decode Rbg_Size", err)
+	}
+	if Mcs_TablePresent {
+		ie.Mcs_Table = new(PDSCH_Config_mcs_Table)
+		if err = ie.Mcs_Table.Decode(r); err != nil {
+			return utils.WrapError("Decode Mcs_Table", err)
 		}
 	}
-	if prb_BundlingTypePresent {
-		ie.prb_BundlingType = new(PDSCH_Config_prb_BundlingType)
-		if err = ie.prb_BundlingType.Decode(r); err != nil {
-			return utils.WrapError("Decode prb_BundlingType", err)
+	if MaxNrofCodeWordsScheduledByDCIPresent {
+		ie.MaxNrofCodeWordsScheduledByDCI = new(PDSCH_Config_maxNrofCodeWordsScheduledByDCI)
+		if err = ie.MaxNrofCodeWordsScheduledByDCI.Decode(r); err != nil {
+			return utils.WrapError("Decode MaxNrofCodeWordsScheduledByDCI", err)
 		}
 	}
-	if zp_CSI_RS_ResourceToAddModListPresent {
-		tmp_zp_CSI_RS_ResourceToAddModList := utils.NewSequence[*ZP_CSI_RS_Resource]([]*ZP_CSI_RS_Resource{}, uper.Constraint{Lb: 1, Ub: maxNrofZP_CSI_RS_Resources}, false)
-		fn_zp_CSI_RS_ResourceToAddModList := func() *ZP_CSI_RS_Resource {
+	if Prb_BundlingTypePresent {
+		ie.Prb_BundlingType = new(PDSCH_Config_prb_BundlingType)
+		if err = ie.Prb_BundlingType.Decode(r); err != nil {
+			return utils.WrapError("Decode Prb_BundlingType", err)
+		}
+	}
+	if Zp_CSI_RS_ResourceToAddModListPresent {
+		tmp_Zp_CSI_RS_ResourceToAddModList := utils.NewSequence[*ZP_CSI_RS_Resource]([]*ZP_CSI_RS_Resource{}, uper.Constraint{Lb: 1, Ub: maxNrofZP_CSI_RS_Resources}, false)
+		fn_Zp_CSI_RS_ResourceToAddModList := func() *ZP_CSI_RS_Resource {
 			return new(ZP_CSI_RS_Resource)
 		}
-		if err = tmp_zp_CSI_RS_ResourceToAddModList.Decode(r, fn_zp_CSI_RS_ResourceToAddModList); err != nil {
-			return utils.WrapError("Decode zp_CSI_RS_ResourceToAddModList", err)
+		if err = tmp_Zp_CSI_RS_ResourceToAddModList.Decode(r, fn_Zp_CSI_RS_ResourceToAddModList); err != nil {
+			return utils.WrapError("Decode Zp_CSI_RS_ResourceToAddModList", err)
 		}
-		ie.zp_CSI_RS_ResourceToAddModList = []ZP_CSI_RS_Resource{}
-		for _, i := range tmp_zp_CSI_RS_ResourceToAddModList.Value {
-			ie.zp_CSI_RS_ResourceToAddModList = append(ie.zp_CSI_RS_ResourceToAddModList, *i)
+		ie.Zp_CSI_RS_ResourceToAddModList = []ZP_CSI_RS_Resource{}
+		for _, i := range tmp_Zp_CSI_RS_ResourceToAddModList.Value {
+			ie.Zp_CSI_RS_ResourceToAddModList = append(ie.Zp_CSI_RS_ResourceToAddModList, *i)
 		}
 	}
-	if zp_CSI_RS_ResourceToReleaseListPresent {
-		tmp_zp_CSI_RS_ResourceToReleaseList := utils.NewSequence[*ZP_CSI_RS_ResourceId]([]*ZP_CSI_RS_ResourceId{}, uper.Constraint{Lb: 1, Ub: maxNrofZP_CSI_RS_Resources}, false)
-		fn_zp_CSI_RS_ResourceToReleaseList := func() *ZP_CSI_RS_ResourceId {
+	if Zp_CSI_RS_ResourceToReleaseListPresent {
+		tmp_Zp_CSI_RS_ResourceToReleaseList := utils.NewSequence[*ZP_CSI_RS_ResourceId]([]*ZP_CSI_RS_ResourceId{}, uper.Constraint{Lb: 1, Ub: maxNrofZP_CSI_RS_Resources}, false)
+		fn_Zp_CSI_RS_ResourceToReleaseList := func() *ZP_CSI_RS_ResourceId {
 			return new(ZP_CSI_RS_ResourceId)
 		}
-		if err = tmp_zp_CSI_RS_ResourceToReleaseList.Decode(r, fn_zp_CSI_RS_ResourceToReleaseList); err != nil {
-			return utils.WrapError("Decode zp_CSI_RS_ResourceToReleaseList", err)
+		if err = tmp_Zp_CSI_RS_ResourceToReleaseList.Decode(r, fn_Zp_CSI_RS_ResourceToReleaseList); err != nil {
+			return utils.WrapError("Decode Zp_CSI_RS_ResourceToReleaseList", err)
 		}
-		ie.zp_CSI_RS_ResourceToReleaseList = []ZP_CSI_RS_ResourceId{}
-		for _, i := range tmp_zp_CSI_RS_ResourceToReleaseList.Value {
-			ie.zp_CSI_RS_ResourceToReleaseList = append(ie.zp_CSI_RS_ResourceToReleaseList, *i)
+		ie.Zp_CSI_RS_ResourceToReleaseList = []ZP_CSI_RS_ResourceId{}
+		for _, i := range tmp_Zp_CSI_RS_ResourceToReleaseList.Value {
+			ie.Zp_CSI_RS_ResourceToReleaseList = append(ie.Zp_CSI_RS_ResourceToReleaseList, *i)
 		}
 	}
-	if aperiodic_ZP_CSI_RS_ResourceSetsToAddModListPresent {
-		tmp_aperiodic_ZP_CSI_RS_ResourceSetsToAddModList := utils.NewSequence[*ZP_CSI_RS_ResourceSet]([]*ZP_CSI_RS_ResourceSet{}, uper.Constraint{Lb: 1, Ub: maxNrofZP_CSI_RS_ResourceSets}, false)
-		fn_aperiodic_ZP_CSI_RS_ResourceSetsToAddModList := func() *ZP_CSI_RS_ResourceSet {
+	if Aperiodic_ZP_CSI_RS_ResourceSetsToAddModListPresent {
+		tmp_Aperiodic_ZP_CSI_RS_ResourceSetsToAddModList := utils.NewSequence[*ZP_CSI_RS_ResourceSet]([]*ZP_CSI_RS_ResourceSet{}, uper.Constraint{Lb: 1, Ub: maxNrofZP_CSI_RS_ResourceSets}, false)
+		fn_Aperiodic_ZP_CSI_RS_ResourceSetsToAddModList := func() *ZP_CSI_RS_ResourceSet {
 			return new(ZP_CSI_RS_ResourceSet)
 		}
-		if err = tmp_aperiodic_ZP_CSI_RS_ResourceSetsToAddModList.Decode(r, fn_aperiodic_ZP_CSI_RS_ResourceSetsToAddModList); err != nil {
-			return utils.WrapError("Decode aperiodic_ZP_CSI_RS_ResourceSetsToAddModList", err)
+		if err = tmp_Aperiodic_ZP_CSI_RS_ResourceSetsToAddModList.Decode(r, fn_Aperiodic_ZP_CSI_RS_ResourceSetsToAddModList); err != nil {
+			return utils.WrapError("Decode Aperiodic_ZP_CSI_RS_ResourceSetsToAddModList", err)
 		}
-		ie.aperiodic_ZP_CSI_RS_ResourceSetsToAddModList = []ZP_CSI_RS_ResourceSet{}
-		for _, i := range tmp_aperiodic_ZP_CSI_RS_ResourceSetsToAddModList.Value {
-			ie.aperiodic_ZP_CSI_RS_ResourceSetsToAddModList = append(ie.aperiodic_ZP_CSI_RS_ResourceSetsToAddModList, *i)
+		ie.Aperiodic_ZP_CSI_RS_ResourceSetsToAddModList = []ZP_CSI_RS_ResourceSet{}
+		for _, i := range tmp_Aperiodic_ZP_CSI_RS_ResourceSetsToAddModList.Value {
+			ie.Aperiodic_ZP_CSI_RS_ResourceSetsToAddModList = append(ie.Aperiodic_ZP_CSI_RS_ResourceSetsToAddModList, *i)
 		}
 	}
-	if aperiodic_ZP_CSI_RS_ResourceSetsToReleaseListPresent {
-		tmp_aperiodic_ZP_CSI_RS_ResourceSetsToReleaseList := utils.NewSequence[*ZP_CSI_RS_ResourceSetId]([]*ZP_CSI_RS_ResourceSetId{}, uper.Constraint{Lb: 1, Ub: maxNrofZP_CSI_RS_ResourceSets}, false)
-		fn_aperiodic_ZP_CSI_RS_ResourceSetsToReleaseList := func() *ZP_CSI_RS_ResourceSetId {
+	if Aperiodic_ZP_CSI_RS_ResourceSetsToReleaseListPresent {
+		tmp_Aperiodic_ZP_CSI_RS_ResourceSetsToReleaseList := utils.NewSequence[*ZP_CSI_RS_ResourceSetId]([]*ZP_CSI_RS_ResourceSetId{}, uper.Constraint{Lb: 1, Ub: maxNrofZP_CSI_RS_ResourceSets}, false)
+		fn_Aperiodic_ZP_CSI_RS_ResourceSetsToReleaseList := func() *ZP_CSI_RS_ResourceSetId {
 			return new(ZP_CSI_RS_ResourceSetId)
 		}
-		if err = tmp_aperiodic_ZP_CSI_RS_ResourceSetsToReleaseList.Decode(r, fn_aperiodic_ZP_CSI_RS_ResourceSetsToReleaseList); err != nil {
-			return utils.WrapError("Decode aperiodic_ZP_CSI_RS_ResourceSetsToReleaseList", err)
+		if err = tmp_Aperiodic_ZP_CSI_RS_ResourceSetsToReleaseList.Decode(r, fn_Aperiodic_ZP_CSI_RS_ResourceSetsToReleaseList); err != nil {
+			return utils.WrapError("Decode Aperiodic_ZP_CSI_RS_ResourceSetsToReleaseList", err)
 		}
-		ie.aperiodic_ZP_CSI_RS_ResourceSetsToReleaseList = []ZP_CSI_RS_ResourceSetId{}
-		for _, i := range tmp_aperiodic_ZP_CSI_RS_ResourceSetsToReleaseList.Value {
-			ie.aperiodic_ZP_CSI_RS_ResourceSetsToReleaseList = append(ie.aperiodic_ZP_CSI_RS_ResourceSetsToReleaseList, *i)
+		ie.Aperiodic_ZP_CSI_RS_ResourceSetsToReleaseList = []ZP_CSI_RS_ResourceSetId{}
+		for _, i := range tmp_Aperiodic_ZP_CSI_RS_ResourceSetsToReleaseList.Value {
+			ie.Aperiodic_ZP_CSI_RS_ResourceSetsToReleaseList = append(ie.Aperiodic_ZP_CSI_RS_ResourceSetsToReleaseList, *i)
 		}
 	}
-	if sp_ZP_CSI_RS_ResourceSetsToAddModListPresent {
-		tmp_sp_ZP_CSI_RS_ResourceSetsToAddModList := utils.NewSequence[*ZP_CSI_RS_ResourceSet]([]*ZP_CSI_RS_ResourceSet{}, uper.Constraint{Lb: 1, Ub: maxNrofZP_CSI_RS_ResourceSets}, false)
-		fn_sp_ZP_CSI_RS_ResourceSetsToAddModList := func() *ZP_CSI_RS_ResourceSet {
+	if Sp_ZP_CSI_RS_ResourceSetsToAddModListPresent {
+		tmp_Sp_ZP_CSI_RS_ResourceSetsToAddModList := utils.NewSequence[*ZP_CSI_RS_ResourceSet]([]*ZP_CSI_RS_ResourceSet{}, uper.Constraint{Lb: 1, Ub: maxNrofZP_CSI_RS_ResourceSets}, false)
+		fn_Sp_ZP_CSI_RS_ResourceSetsToAddModList := func() *ZP_CSI_RS_ResourceSet {
 			return new(ZP_CSI_RS_ResourceSet)
 		}
-		if err = tmp_sp_ZP_CSI_RS_ResourceSetsToAddModList.Decode(r, fn_sp_ZP_CSI_RS_ResourceSetsToAddModList); err != nil {
-			return utils.WrapError("Decode sp_ZP_CSI_RS_ResourceSetsToAddModList", err)
+		if err = tmp_Sp_ZP_CSI_RS_ResourceSetsToAddModList.Decode(r, fn_Sp_ZP_CSI_RS_ResourceSetsToAddModList); err != nil {
+			return utils.WrapError("Decode Sp_ZP_CSI_RS_ResourceSetsToAddModList", err)
 		}
-		ie.sp_ZP_CSI_RS_ResourceSetsToAddModList = []ZP_CSI_RS_ResourceSet{}
-		for _, i := range tmp_sp_ZP_CSI_RS_ResourceSetsToAddModList.Value {
-			ie.sp_ZP_CSI_RS_ResourceSetsToAddModList = append(ie.sp_ZP_CSI_RS_ResourceSetsToAddModList, *i)
+		ie.Sp_ZP_CSI_RS_ResourceSetsToAddModList = []ZP_CSI_RS_ResourceSet{}
+		for _, i := range tmp_Sp_ZP_CSI_RS_ResourceSetsToAddModList.Value {
+			ie.Sp_ZP_CSI_RS_ResourceSetsToAddModList = append(ie.Sp_ZP_CSI_RS_ResourceSetsToAddModList, *i)
 		}
 	}
-	if sp_ZP_CSI_RS_ResourceSetsToReleaseListPresent {
-		tmp_sp_ZP_CSI_RS_ResourceSetsToReleaseList := utils.NewSequence[*ZP_CSI_RS_ResourceSetId]([]*ZP_CSI_RS_ResourceSetId{}, uper.Constraint{Lb: 1, Ub: maxNrofZP_CSI_RS_ResourceSets}, false)
-		fn_sp_ZP_CSI_RS_ResourceSetsToReleaseList := func() *ZP_CSI_RS_ResourceSetId {
+	if Sp_ZP_CSI_RS_ResourceSetsToReleaseListPresent {
+		tmp_Sp_ZP_CSI_RS_ResourceSetsToReleaseList := utils.NewSequence[*ZP_CSI_RS_ResourceSetId]([]*ZP_CSI_RS_ResourceSetId{}, uper.Constraint{Lb: 1, Ub: maxNrofZP_CSI_RS_ResourceSets}, false)
+		fn_Sp_ZP_CSI_RS_ResourceSetsToReleaseList := func() *ZP_CSI_RS_ResourceSetId {
 			return new(ZP_CSI_RS_ResourceSetId)
 		}
-		if err = tmp_sp_ZP_CSI_RS_ResourceSetsToReleaseList.Decode(r, fn_sp_ZP_CSI_RS_ResourceSetsToReleaseList); err != nil {
-			return utils.WrapError("Decode sp_ZP_CSI_RS_ResourceSetsToReleaseList", err)
+		if err = tmp_Sp_ZP_CSI_RS_ResourceSetsToReleaseList.Decode(r, fn_Sp_ZP_CSI_RS_ResourceSetsToReleaseList); err != nil {
+			return utils.WrapError("Decode Sp_ZP_CSI_RS_ResourceSetsToReleaseList", err)
 		}
-		ie.sp_ZP_CSI_RS_ResourceSetsToReleaseList = []ZP_CSI_RS_ResourceSetId{}
-		for _, i := range tmp_sp_ZP_CSI_RS_ResourceSetsToReleaseList.Value {
-			ie.sp_ZP_CSI_RS_ResourceSetsToReleaseList = append(ie.sp_ZP_CSI_RS_ResourceSetsToReleaseList, *i)
+		ie.Sp_ZP_CSI_RS_ResourceSetsToReleaseList = []ZP_CSI_RS_ResourceSetId{}
+		for _, i := range tmp_Sp_ZP_CSI_RS_ResourceSetsToReleaseList.Value {
+			ie.Sp_ZP_CSI_RS_ResourceSetsToReleaseList = append(ie.Sp_ZP_CSI_RS_ResourceSetsToReleaseList, *i)
 		}
 	}
-	if p_ZP_CSI_RS_ResourceSetPresent {
-		tmp_p_ZP_CSI_RS_ResourceSet := utils.SetupRelease[*ZP_CSI_RS_ResourceSet]{}
-		if err = tmp_p_ZP_CSI_RS_ResourceSet.Decode(r); err != nil {
-			return utils.WrapError("Decode p_ZP_CSI_RS_ResourceSet", err)
+	if P_ZP_CSI_RS_ResourceSetPresent {
+		tmp_P_ZP_CSI_RS_ResourceSet := utils.SetupRelease[*ZP_CSI_RS_ResourceSet]{}
+		if err = tmp_P_ZP_CSI_RS_ResourceSet.Decode(r); err != nil {
+			return utils.WrapError("Decode P_ZP_CSI_RS_ResourceSet", err)
 		}
-		ie.p_ZP_CSI_RS_ResourceSet = tmp_p_ZP_CSI_RS_ResourceSet.Setup
+		ie.P_ZP_CSI_RS_ResourceSet = tmp_P_ZP_CSI_RS_ResourceSet.Setup
 	}
 
 	if extensionBit {
@@ -979,293 +979,293 @@ func (ie *PDSCH_Config) Decode(r *uper.UperReader) error {
 
 			extReader := uper.NewReader(bytes.NewReader(extBytes))
 
-			maxMIMO_Layers_r16Present, err := extReader.ReadBool()
+			MaxMIMO_Layers_r16Present, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			minimumSchedulingOffsetK0_r16Present, err := extReader.ReadBool()
+			MinimumSchedulingOffsetK0_r16Present, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			antennaPortsFieldPresenceDCI_1_2_r16Present, err := extReader.ReadBool()
+			AntennaPortsFieldPresenceDCI_1_2_r16Present, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			aperiodicZP_CSI_RS_ResourceSetsToAddModListDCI_1_2_r16Present, err := extReader.ReadBool()
+			AperiodicZP_CSI_RS_ResourceSetsToAddModListDCI_1_2_r16Present, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			aperiodicZP_CSI_RS_ResourceSetsToReleaseListDCI_1_2_r16Present, err := extReader.ReadBool()
+			AperiodicZP_CSI_RS_ResourceSetsToReleaseListDCI_1_2_r16Present, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			dmrs_DownlinkForPDSCH_MappingTypeA_DCI_1_2_r16Present, err := extReader.ReadBool()
+			Dmrs_DownlinkForPDSCH_MappingTypeA_DCI_1_2_r16Present, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			dmrs_DownlinkForPDSCH_MappingTypeB_DCI_1_2_r16Present, err := extReader.ReadBool()
+			Dmrs_DownlinkForPDSCH_MappingTypeB_DCI_1_2_r16Present, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			dmrs_SequenceInitializationDCI_1_2_r16Present, err := extReader.ReadBool()
+			Dmrs_SequenceInitializationDCI_1_2_r16Present, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			harq_ProcessNumberSizeDCI_1_2_r16Present, err := extReader.ReadBool()
+			Harq_ProcessNumberSizeDCI_1_2_r16Present, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			mcs_TableDCI_1_2_r16Present, err := extReader.ReadBool()
+			Mcs_TableDCI_1_2_r16Present, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			numberOfBitsForRV_DCI_1_2_r16Present, err := extReader.ReadBool()
+			NumberOfBitsForRV_DCI_1_2_r16Present, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			pdsch_TimeDomainAllocationListDCI_1_2_r16Present, err := extReader.ReadBool()
+			Pdsch_TimeDomainAllocationListDCI_1_2_r16Present, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			prb_BundlingTypeDCI_1_2_r16Present, err := extReader.ReadBool()
+			Prb_BundlingTypeDCI_1_2_r16Present, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			priorityIndicatorDCI_1_2_r16Present, err := extReader.ReadBool()
+			PriorityIndicatorDCI_1_2_r16Present, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			rateMatchPatternGroup1DCI_1_2_r16Present, err := extReader.ReadBool()
+			RateMatchPatternGroup1DCI_1_2_r16Present, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			rateMatchPatternGroup2DCI_1_2_r16Present, err := extReader.ReadBool()
+			RateMatchPatternGroup2DCI_1_2_r16Present, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			resourceAllocationType1GranularityDCI_1_2_r16Present, err := extReader.ReadBool()
+			ResourceAllocationType1GranularityDCI_1_2_r16Present, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			vrb_ToPRB_InterleaverDCI_1_2_r16Present, err := extReader.ReadBool()
+			Vrb_ToPRB_InterleaverDCI_1_2_r16Present, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			referenceOfSLIVDCI_1_2_r16Present, err := extReader.ReadBool()
+			ReferenceOfSLIVDCI_1_2_r16Present, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			resourceAllocationDCI_1_2_r16Present, err := extReader.ReadBool()
+			ResourceAllocationDCI_1_2_r16Present, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			priorityIndicatorDCI_1_1_r16Present, err := extReader.ReadBool()
+			PriorityIndicatorDCI_1_1_r16Present, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			dataScramblingIdentityPDSCH2_r16Present, err := extReader.ReadBool()
+			DataScramblingIdentityPDSCH2_r16Present, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			pdsch_TimeDomainAllocationList_r16Present, err := extReader.ReadBool()
+			Pdsch_TimeDomainAllocationList_r16Present, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			repetitionSchemeConfig_r16Present, err := extReader.ReadBool()
+			RepetitionSchemeConfig_r16Present, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			// decode maxMIMO_Layers_r16 optional
-			if maxMIMO_Layers_r16Present {
-				tmp_maxMIMO_Layers_r16 := utils.SetupRelease[*MaxMIMO_LayersDL_r16]{}
-				if err = tmp_maxMIMO_Layers_r16.Decode(extReader); err != nil {
-					return utils.WrapError("Decode maxMIMO_Layers_r16", err)
+			// decode MaxMIMO_Layers_r16 optional
+			if MaxMIMO_Layers_r16Present {
+				tmp_MaxMIMO_Layers_r16 := utils.SetupRelease[*MaxMIMO_LayersDL_r16]{}
+				if err = tmp_MaxMIMO_Layers_r16.Decode(extReader); err != nil {
+					return utils.WrapError("Decode MaxMIMO_Layers_r16", err)
 				}
-				ie.maxMIMO_Layers_r16 = tmp_maxMIMO_Layers_r16.Setup
+				ie.MaxMIMO_Layers_r16 = tmp_MaxMIMO_Layers_r16.Setup
 			}
-			// decode minimumSchedulingOffsetK0_r16 optional
-			if minimumSchedulingOffsetK0_r16Present {
-				tmp_minimumSchedulingOffsetK0_r16 := utils.SetupRelease[*MinSchedulingOffsetK0_Values_r16]{}
-				if err = tmp_minimumSchedulingOffsetK0_r16.Decode(extReader); err != nil {
-					return utils.WrapError("Decode minimumSchedulingOffsetK0_r16", err)
+			// decode MinimumSchedulingOffsetK0_r16 optional
+			if MinimumSchedulingOffsetK0_r16Present {
+				tmp_MinimumSchedulingOffsetK0_r16 := utils.SetupRelease[*MinSchedulingOffsetK0_Values_r16]{}
+				if err = tmp_MinimumSchedulingOffsetK0_r16.Decode(extReader); err != nil {
+					return utils.WrapError("Decode MinimumSchedulingOffsetK0_r16", err)
 				}
-				ie.minimumSchedulingOffsetK0_r16 = tmp_minimumSchedulingOffsetK0_r16.Setup
+				ie.MinimumSchedulingOffsetK0_r16 = tmp_MinimumSchedulingOffsetK0_r16.Setup
 			}
-			// decode antennaPortsFieldPresenceDCI_1_2_r16 optional
-			if antennaPortsFieldPresenceDCI_1_2_r16Present {
-				ie.antennaPortsFieldPresenceDCI_1_2_r16 = new(PDSCH_Config_antennaPortsFieldPresenceDCI_1_2_r16)
-				if err = ie.antennaPortsFieldPresenceDCI_1_2_r16.Decode(extReader); err != nil {
-					return utils.WrapError("Decode antennaPortsFieldPresenceDCI_1_2_r16", err)
+			// decode AntennaPortsFieldPresenceDCI_1_2_r16 optional
+			if AntennaPortsFieldPresenceDCI_1_2_r16Present {
+				ie.AntennaPortsFieldPresenceDCI_1_2_r16 = new(PDSCH_Config_antennaPortsFieldPresenceDCI_1_2_r16)
+				if err = ie.AntennaPortsFieldPresenceDCI_1_2_r16.Decode(extReader); err != nil {
+					return utils.WrapError("Decode AntennaPortsFieldPresenceDCI_1_2_r16", err)
 				}
 			}
-			// decode aperiodicZP_CSI_RS_ResourceSetsToAddModListDCI_1_2_r16 optional
-			if aperiodicZP_CSI_RS_ResourceSetsToAddModListDCI_1_2_r16Present {
-				tmp_aperiodicZP_CSI_RS_ResourceSetsToAddModListDCI_1_2_r16 := utils.NewSequence[*ZP_CSI_RS_ResourceSet]([]*ZP_CSI_RS_ResourceSet{}, uper.Constraint{Lb: 1, Ub: maxNrofZP_CSI_RS_ResourceSets}, false)
-				fn_aperiodicZP_CSI_RS_ResourceSetsToAddModListDCI_1_2_r16 := func() *ZP_CSI_RS_ResourceSet {
+			// decode AperiodicZP_CSI_RS_ResourceSetsToAddModListDCI_1_2_r16 optional
+			if AperiodicZP_CSI_RS_ResourceSetsToAddModListDCI_1_2_r16Present {
+				tmp_AperiodicZP_CSI_RS_ResourceSetsToAddModListDCI_1_2_r16 := utils.NewSequence[*ZP_CSI_RS_ResourceSet]([]*ZP_CSI_RS_ResourceSet{}, uper.Constraint{Lb: 1, Ub: maxNrofZP_CSI_RS_ResourceSets}, false)
+				fn_AperiodicZP_CSI_RS_ResourceSetsToAddModListDCI_1_2_r16 := func() *ZP_CSI_RS_ResourceSet {
 					return new(ZP_CSI_RS_ResourceSet)
 				}
-				if err = tmp_aperiodicZP_CSI_RS_ResourceSetsToAddModListDCI_1_2_r16.Decode(extReader, fn_aperiodicZP_CSI_RS_ResourceSetsToAddModListDCI_1_2_r16); err != nil {
-					return utils.WrapError("Decode aperiodicZP_CSI_RS_ResourceSetsToAddModListDCI_1_2_r16", err)
+				if err = tmp_AperiodicZP_CSI_RS_ResourceSetsToAddModListDCI_1_2_r16.Decode(extReader, fn_AperiodicZP_CSI_RS_ResourceSetsToAddModListDCI_1_2_r16); err != nil {
+					return utils.WrapError("Decode AperiodicZP_CSI_RS_ResourceSetsToAddModListDCI_1_2_r16", err)
 				}
-				ie.aperiodicZP_CSI_RS_ResourceSetsToAddModListDCI_1_2_r16 = []ZP_CSI_RS_ResourceSet{}
-				for _, i := range tmp_aperiodicZP_CSI_RS_ResourceSetsToAddModListDCI_1_2_r16.Value {
-					ie.aperiodicZP_CSI_RS_ResourceSetsToAddModListDCI_1_2_r16 = append(ie.aperiodicZP_CSI_RS_ResourceSetsToAddModListDCI_1_2_r16, *i)
+				ie.AperiodicZP_CSI_RS_ResourceSetsToAddModListDCI_1_2_r16 = []ZP_CSI_RS_ResourceSet{}
+				for _, i := range tmp_AperiodicZP_CSI_RS_ResourceSetsToAddModListDCI_1_2_r16.Value {
+					ie.AperiodicZP_CSI_RS_ResourceSetsToAddModListDCI_1_2_r16 = append(ie.AperiodicZP_CSI_RS_ResourceSetsToAddModListDCI_1_2_r16, *i)
 				}
 			}
-			// decode aperiodicZP_CSI_RS_ResourceSetsToReleaseListDCI_1_2_r16 optional
-			if aperiodicZP_CSI_RS_ResourceSetsToReleaseListDCI_1_2_r16Present {
-				tmp_aperiodicZP_CSI_RS_ResourceSetsToReleaseListDCI_1_2_r16 := utils.NewSequence[*ZP_CSI_RS_ResourceSetId]([]*ZP_CSI_RS_ResourceSetId{}, uper.Constraint{Lb: 1, Ub: maxNrofZP_CSI_RS_ResourceSets}, false)
-				fn_aperiodicZP_CSI_RS_ResourceSetsToReleaseListDCI_1_2_r16 := func() *ZP_CSI_RS_ResourceSetId {
+			// decode AperiodicZP_CSI_RS_ResourceSetsToReleaseListDCI_1_2_r16 optional
+			if AperiodicZP_CSI_RS_ResourceSetsToReleaseListDCI_1_2_r16Present {
+				tmp_AperiodicZP_CSI_RS_ResourceSetsToReleaseListDCI_1_2_r16 := utils.NewSequence[*ZP_CSI_RS_ResourceSetId]([]*ZP_CSI_RS_ResourceSetId{}, uper.Constraint{Lb: 1, Ub: maxNrofZP_CSI_RS_ResourceSets}, false)
+				fn_AperiodicZP_CSI_RS_ResourceSetsToReleaseListDCI_1_2_r16 := func() *ZP_CSI_RS_ResourceSetId {
 					return new(ZP_CSI_RS_ResourceSetId)
 				}
-				if err = tmp_aperiodicZP_CSI_RS_ResourceSetsToReleaseListDCI_1_2_r16.Decode(extReader, fn_aperiodicZP_CSI_RS_ResourceSetsToReleaseListDCI_1_2_r16); err != nil {
-					return utils.WrapError("Decode aperiodicZP_CSI_RS_ResourceSetsToReleaseListDCI_1_2_r16", err)
+				if err = tmp_AperiodicZP_CSI_RS_ResourceSetsToReleaseListDCI_1_2_r16.Decode(extReader, fn_AperiodicZP_CSI_RS_ResourceSetsToReleaseListDCI_1_2_r16); err != nil {
+					return utils.WrapError("Decode AperiodicZP_CSI_RS_ResourceSetsToReleaseListDCI_1_2_r16", err)
 				}
-				ie.aperiodicZP_CSI_RS_ResourceSetsToReleaseListDCI_1_2_r16 = []ZP_CSI_RS_ResourceSetId{}
-				for _, i := range tmp_aperiodicZP_CSI_RS_ResourceSetsToReleaseListDCI_1_2_r16.Value {
-					ie.aperiodicZP_CSI_RS_ResourceSetsToReleaseListDCI_1_2_r16 = append(ie.aperiodicZP_CSI_RS_ResourceSetsToReleaseListDCI_1_2_r16, *i)
-				}
-			}
-			// decode dmrs_DownlinkForPDSCH_MappingTypeA_DCI_1_2_r16 optional
-			if dmrs_DownlinkForPDSCH_MappingTypeA_DCI_1_2_r16Present {
-				tmp_dmrs_DownlinkForPDSCH_MappingTypeA_DCI_1_2_r16 := utils.SetupRelease[*DMRS_DownlinkConfig]{}
-				if err = tmp_dmrs_DownlinkForPDSCH_MappingTypeA_DCI_1_2_r16.Decode(extReader); err != nil {
-					return utils.WrapError("Decode dmrs_DownlinkForPDSCH_MappingTypeA_DCI_1_2_r16", err)
-				}
-				ie.dmrs_DownlinkForPDSCH_MappingTypeA_DCI_1_2_r16 = tmp_dmrs_DownlinkForPDSCH_MappingTypeA_DCI_1_2_r16.Setup
-			}
-			// decode dmrs_DownlinkForPDSCH_MappingTypeB_DCI_1_2_r16 optional
-			if dmrs_DownlinkForPDSCH_MappingTypeB_DCI_1_2_r16Present {
-				tmp_dmrs_DownlinkForPDSCH_MappingTypeB_DCI_1_2_r16 := utils.SetupRelease[*DMRS_DownlinkConfig]{}
-				if err = tmp_dmrs_DownlinkForPDSCH_MappingTypeB_DCI_1_2_r16.Decode(extReader); err != nil {
-					return utils.WrapError("Decode dmrs_DownlinkForPDSCH_MappingTypeB_DCI_1_2_r16", err)
-				}
-				ie.dmrs_DownlinkForPDSCH_MappingTypeB_DCI_1_2_r16 = tmp_dmrs_DownlinkForPDSCH_MappingTypeB_DCI_1_2_r16.Setup
-			}
-			// decode dmrs_SequenceInitializationDCI_1_2_r16 optional
-			if dmrs_SequenceInitializationDCI_1_2_r16Present {
-				ie.dmrs_SequenceInitializationDCI_1_2_r16 = new(PDSCH_Config_dmrs_SequenceInitializationDCI_1_2_r16)
-				if err = ie.dmrs_SequenceInitializationDCI_1_2_r16.Decode(extReader); err != nil {
-					return utils.WrapError("Decode dmrs_SequenceInitializationDCI_1_2_r16", err)
+				ie.AperiodicZP_CSI_RS_ResourceSetsToReleaseListDCI_1_2_r16 = []ZP_CSI_RS_ResourceSetId{}
+				for _, i := range tmp_AperiodicZP_CSI_RS_ResourceSetsToReleaseListDCI_1_2_r16.Value {
+					ie.AperiodicZP_CSI_RS_ResourceSetsToReleaseListDCI_1_2_r16 = append(ie.AperiodicZP_CSI_RS_ResourceSetsToReleaseListDCI_1_2_r16, *i)
 				}
 			}
-			// decode harq_ProcessNumberSizeDCI_1_2_r16 optional
-			if harq_ProcessNumberSizeDCI_1_2_r16Present {
-				var tmp_int_harq_ProcessNumberSizeDCI_1_2_r16 int64
-				if tmp_int_harq_ProcessNumberSizeDCI_1_2_r16, err = extReader.ReadInteger(&uper.Constraint{Lb: 0, Ub: 4}, false); err != nil {
-					return utils.WrapError("Decode harq_ProcessNumberSizeDCI_1_2_r16", err)
+			// decode Dmrs_DownlinkForPDSCH_MappingTypeA_DCI_1_2_r16 optional
+			if Dmrs_DownlinkForPDSCH_MappingTypeA_DCI_1_2_r16Present {
+				tmp_Dmrs_DownlinkForPDSCH_MappingTypeA_DCI_1_2_r16 := utils.SetupRelease[*DMRS_DownlinkConfig]{}
+				if err = tmp_Dmrs_DownlinkForPDSCH_MappingTypeA_DCI_1_2_r16.Decode(extReader); err != nil {
+					return utils.WrapError("Decode Dmrs_DownlinkForPDSCH_MappingTypeA_DCI_1_2_r16", err)
 				}
-				ie.harq_ProcessNumberSizeDCI_1_2_r16 = &tmp_int_harq_ProcessNumberSizeDCI_1_2_r16
+				ie.Dmrs_DownlinkForPDSCH_MappingTypeA_DCI_1_2_r16 = tmp_Dmrs_DownlinkForPDSCH_MappingTypeA_DCI_1_2_r16.Setup
 			}
-			// decode mcs_TableDCI_1_2_r16 optional
-			if mcs_TableDCI_1_2_r16Present {
-				ie.mcs_TableDCI_1_2_r16 = new(PDSCH_Config_mcs_TableDCI_1_2_r16)
-				if err = ie.mcs_TableDCI_1_2_r16.Decode(extReader); err != nil {
-					return utils.WrapError("Decode mcs_TableDCI_1_2_r16", err)
+			// decode Dmrs_DownlinkForPDSCH_MappingTypeB_DCI_1_2_r16 optional
+			if Dmrs_DownlinkForPDSCH_MappingTypeB_DCI_1_2_r16Present {
+				tmp_Dmrs_DownlinkForPDSCH_MappingTypeB_DCI_1_2_r16 := utils.SetupRelease[*DMRS_DownlinkConfig]{}
+				if err = tmp_Dmrs_DownlinkForPDSCH_MappingTypeB_DCI_1_2_r16.Decode(extReader); err != nil {
+					return utils.WrapError("Decode Dmrs_DownlinkForPDSCH_MappingTypeB_DCI_1_2_r16", err)
 				}
+				ie.Dmrs_DownlinkForPDSCH_MappingTypeB_DCI_1_2_r16 = tmp_Dmrs_DownlinkForPDSCH_MappingTypeB_DCI_1_2_r16.Setup
 			}
-			// decode numberOfBitsForRV_DCI_1_2_r16 optional
-			if numberOfBitsForRV_DCI_1_2_r16Present {
-				var tmp_int_numberOfBitsForRV_DCI_1_2_r16 int64
-				if tmp_int_numberOfBitsForRV_DCI_1_2_r16, err = extReader.ReadInteger(&uper.Constraint{Lb: 0, Ub: 2}, false); err != nil {
-					return utils.WrapError("Decode numberOfBitsForRV_DCI_1_2_r16", err)
-				}
-				ie.numberOfBitsForRV_DCI_1_2_r16 = &tmp_int_numberOfBitsForRV_DCI_1_2_r16
-			}
-			// decode pdsch_TimeDomainAllocationListDCI_1_2_r16 optional
-			if pdsch_TimeDomainAllocationListDCI_1_2_r16Present {
-				tmp_pdsch_TimeDomainAllocationListDCI_1_2_r16 := utils.SetupRelease[*PDSCH_TimeDomainResourceAllocationList_r16]{}
-				if err = tmp_pdsch_TimeDomainAllocationListDCI_1_2_r16.Decode(extReader); err != nil {
-					return utils.WrapError("Decode pdsch_TimeDomainAllocationListDCI_1_2_r16", err)
-				}
-				ie.pdsch_TimeDomainAllocationListDCI_1_2_r16 = tmp_pdsch_TimeDomainAllocationListDCI_1_2_r16.Setup
-			}
-			// decode prb_BundlingTypeDCI_1_2_r16 optional
-			if prb_BundlingTypeDCI_1_2_r16Present {
-				ie.prb_BundlingTypeDCI_1_2_r16 = new(PDSCH_Config_prb_BundlingTypeDCI_1_2_r16)
-				if err = ie.prb_BundlingTypeDCI_1_2_r16.Decode(extReader); err != nil {
-					return utils.WrapError("Decode prb_BundlingTypeDCI_1_2_r16", err)
+			// decode Dmrs_SequenceInitializationDCI_1_2_r16 optional
+			if Dmrs_SequenceInitializationDCI_1_2_r16Present {
+				ie.Dmrs_SequenceInitializationDCI_1_2_r16 = new(PDSCH_Config_dmrs_SequenceInitializationDCI_1_2_r16)
+				if err = ie.Dmrs_SequenceInitializationDCI_1_2_r16.Decode(extReader); err != nil {
+					return utils.WrapError("Decode Dmrs_SequenceInitializationDCI_1_2_r16", err)
 				}
 			}
-			// decode priorityIndicatorDCI_1_2_r16 optional
-			if priorityIndicatorDCI_1_2_r16Present {
-				ie.priorityIndicatorDCI_1_2_r16 = new(PDSCH_Config_priorityIndicatorDCI_1_2_r16)
-				if err = ie.priorityIndicatorDCI_1_2_r16.Decode(extReader); err != nil {
-					return utils.WrapError("Decode priorityIndicatorDCI_1_2_r16", err)
+			// decode Harq_ProcessNumberSizeDCI_1_2_r16 optional
+			if Harq_ProcessNumberSizeDCI_1_2_r16Present {
+				var tmp_int_Harq_ProcessNumberSizeDCI_1_2_r16 int64
+				if tmp_int_Harq_ProcessNumberSizeDCI_1_2_r16, err = extReader.ReadInteger(&uper.Constraint{Lb: 0, Ub: 4}, false); err != nil {
+					return utils.WrapError("Decode Harq_ProcessNumberSizeDCI_1_2_r16", err)
+				}
+				ie.Harq_ProcessNumberSizeDCI_1_2_r16 = &tmp_int_Harq_ProcessNumberSizeDCI_1_2_r16
+			}
+			// decode Mcs_TableDCI_1_2_r16 optional
+			if Mcs_TableDCI_1_2_r16Present {
+				ie.Mcs_TableDCI_1_2_r16 = new(PDSCH_Config_mcs_TableDCI_1_2_r16)
+				if err = ie.Mcs_TableDCI_1_2_r16.Decode(extReader); err != nil {
+					return utils.WrapError("Decode Mcs_TableDCI_1_2_r16", err)
 				}
 			}
-			// decode rateMatchPatternGroup1DCI_1_2_r16 optional
-			if rateMatchPatternGroup1DCI_1_2_r16Present {
-				ie.rateMatchPatternGroup1DCI_1_2_r16 = new(RateMatchPatternGroup)
-				if err = ie.rateMatchPatternGroup1DCI_1_2_r16.Decode(extReader); err != nil {
-					return utils.WrapError("Decode rateMatchPatternGroup1DCI_1_2_r16", err)
+			// decode NumberOfBitsForRV_DCI_1_2_r16 optional
+			if NumberOfBitsForRV_DCI_1_2_r16Present {
+				var tmp_int_NumberOfBitsForRV_DCI_1_2_r16 int64
+				if tmp_int_NumberOfBitsForRV_DCI_1_2_r16, err = extReader.ReadInteger(&uper.Constraint{Lb: 0, Ub: 2}, false); err != nil {
+					return utils.WrapError("Decode NumberOfBitsForRV_DCI_1_2_r16", err)
+				}
+				ie.NumberOfBitsForRV_DCI_1_2_r16 = &tmp_int_NumberOfBitsForRV_DCI_1_2_r16
+			}
+			// decode Pdsch_TimeDomainAllocationListDCI_1_2_r16 optional
+			if Pdsch_TimeDomainAllocationListDCI_1_2_r16Present {
+				tmp_Pdsch_TimeDomainAllocationListDCI_1_2_r16 := utils.SetupRelease[*PDSCH_TimeDomainResourceAllocationList_r16]{}
+				if err = tmp_Pdsch_TimeDomainAllocationListDCI_1_2_r16.Decode(extReader); err != nil {
+					return utils.WrapError("Decode Pdsch_TimeDomainAllocationListDCI_1_2_r16", err)
+				}
+				ie.Pdsch_TimeDomainAllocationListDCI_1_2_r16 = tmp_Pdsch_TimeDomainAllocationListDCI_1_2_r16.Setup
+			}
+			// decode Prb_BundlingTypeDCI_1_2_r16 optional
+			if Prb_BundlingTypeDCI_1_2_r16Present {
+				ie.Prb_BundlingTypeDCI_1_2_r16 = new(PDSCH_Config_prb_BundlingTypeDCI_1_2_r16)
+				if err = ie.Prb_BundlingTypeDCI_1_2_r16.Decode(extReader); err != nil {
+					return utils.WrapError("Decode Prb_BundlingTypeDCI_1_2_r16", err)
 				}
 			}
-			// decode rateMatchPatternGroup2DCI_1_2_r16 optional
-			if rateMatchPatternGroup2DCI_1_2_r16Present {
-				ie.rateMatchPatternGroup2DCI_1_2_r16 = new(RateMatchPatternGroup)
-				if err = ie.rateMatchPatternGroup2DCI_1_2_r16.Decode(extReader); err != nil {
-					return utils.WrapError("Decode rateMatchPatternGroup2DCI_1_2_r16", err)
+			// decode PriorityIndicatorDCI_1_2_r16 optional
+			if PriorityIndicatorDCI_1_2_r16Present {
+				ie.PriorityIndicatorDCI_1_2_r16 = new(PDSCH_Config_priorityIndicatorDCI_1_2_r16)
+				if err = ie.PriorityIndicatorDCI_1_2_r16.Decode(extReader); err != nil {
+					return utils.WrapError("Decode PriorityIndicatorDCI_1_2_r16", err)
 				}
 			}
-			// decode resourceAllocationType1GranularityDCI_1_2_r16 optional
-			if resourceAllocationType1GranularityDCI_1_2_r16Present {
-				ie.resourceAllocationType1GranularityDCI_1_2_r16 = new(PDSCH_Config_resourceAllocationType1GranularityDCI_1_2_r16)
-				if err = ie.resourceAllocationType1GranularityDCI_1_2_r16.Decode(extReader); err != nil {
-					return utils.WrapError("Decode resourceAllocationType1GranularityDCI_1_2_r16", err)
+			// decode RateMatchPatternGroup1DCI_1_2_r16 optional
+			if RateMatchPatternGroup1DCI_1_2_r16Present {
+				ie.RateMatchPatternGroup1DCI_1_2_r16 = new(RateMatchPatternGroup)
+				if err = ie.RateMatchPatternGroup1DCI_1_2_r16.Decode(extReader); err != nil {
+					return utils.WrapError("Decode RateMatchPatternGroup1DCI_1_2_r16", err)
 				}
 			}
-			// decode vrb_ToPRB_InterleaverDCI_1_2_r16 optional
-			if vrb_ToPRB_InterleaverDCI_1_2_r16Present {
-				ie.vrb_ToPRB_InterleaverDCI_1_2_r16 = new(PDSCH_Config_vrb_ToPRB_InterleaverDCI_1_2_r16)
-				if err = ie.vrb_ToPRB_InterleaverDCI_1_2_r16.Decode(extReader); err != nil {
-					return utils.WrapError("Decode vrb_ToPRB_InterleaverDCI_1_2_r16", err)
+			// decode RateMatchPatternGroup2DCI_1_2_r16 optional
+			if RateMatchPatternGroup2DCI_1_2_r16Present {
+				ie.RateMatchPatternGroup2DCI_1_2_r16 = new(RateMatchPatternGroup)
+				if err = ie.RateMatchPatternGroup2DCI_1_2_r16.Decode(extReader); err != nil {
+					return utils.WrapError("Decode RateMatchPatternGroup2DCI_1_2_r16", err)
 				}
 			}
-			// decode referenceOfSLIVDCI_1_2_r16 optional
-			if referenceOfSLIVDCI_1_2_r16Present {
-				ie.referenceOfSLIVDCI_1_2_r16 = new(PDSCH_Config_referenceOfSLIVDCI_1_2_r16)
-				if err = ie.referenceOfSLIVDCI_1_2_r16.Decode(extReader); err != nil {
-					return utils.WrapError("Decode referenceOfSLIVDCI_1_2_r16", err)
+			// decode ResourceAllocationType1GranularityDCI_1_2_r16 optional
+			if ResourceAllocationType1GranularityDCI_1_2_r16Present {
+				ie.ResourceAllocationType1GranularityDCI_1_2_r16 = new(PDSCH_Config_resourceAllocationType1GranularityDCI_1_2_r16)
+				if err = ie.ResourceAllocationType1GranularityDCI_1_2_r16.Decode(extReader); err != nil {
+					return utils.WrapError("Decode ResourceAllocationType1GranularityDCI_1_2_r16", err)
 				}
 			}
-			// decode resourceAllocationDCI_1_2_r16 optional
-			if resourceAllocationDCI_1_2_r16Present {
-				ie.resourceAllocationDCI_1_2_r16 = new(PDSCH_Config_resourceAllocationDCI_1_2_r16)
-				if err = ie.resourceAllocationDCI_1_2_r16.Decode(extReader); err != nil {
-					return utils.WrapError("Decode resourceAllocationDCI_1_2_r16", err)
+			// decode Vrb_ToPRB_InterleaverDCI_1_2_r16 optional
+			if Vrb_ToPRB_InterleaverDCI_1_2_r16Present {
+				ie.Vrb_ToPRB_InterleaverDCI_1_2_r16 = new(PDSCH_Config_vrb_ToPRB_InterleaverDCI_1_2_r16)
+				if err = ie.Vrb_ToPRB_InterleaverDCI_1_2_r16.Decode(extReader); err != nil {
+					return utils.WrapError("Decode Vrb_ToPRB_InterleaverDCI_1_2_r16", err)
 				}
 			}
-			// decode priorityIndicatorDCI_1_1_r16 optional
-			if priorityIndicatorDCI_1_1_r16Present {
-				ie.priorityIndicatorDCI_1_1_r16 = new(PDSCH_Config_priorityIndicatorDCI_1_1_r16)
-				if err = ie.priorityIndicatorDCI_1_1_r16.Decode(extReader); err != nil {
-					return utils.WrapError("Decode priorityIndicatorDCI_1_1_r16", err)
+			// decode ReferenceOfSLIVDCI_1_2_r16 optional
+			if ReferenceOfSLIVDCI_1_2_r16Present {
+				ie.ReferenceOfSLIVDCI_1_2_r16 = new(PDSCH_Config_referenceOfSLIVDCI_1_2_r16)
+				if err = ie.ReferenceOfSLIVDCI_1_2_r16.Decode(extReader); err != nil {
+					return utils.WrapError("Decode ReferenceOfSLIVDCI_1_2_r16", err)
 				}
 			}
-			// decode dataScramblingIdentityPDSCH2_r16 optional
-			if dataScramblingIdentityPDSCH2_r16Present {
-				var tmp_int_dataScramblingIdentityPDSCH2_r16 int64
-				if tmp_int_dataScramblingIdentityPDSCH2_r16, err = extReader.ReadInteger(&uper.Constraint{Lb: 0, Ub: 1023}, false); err != nil {
-					return utils.WrapError("Decode dataScramblingIdentityPDSCH2_r16", err)
+			// decode ResourceAllocationDCI_1_2_r16 optional
+			if ResourceAllocationDCI_1_2_r16Present {
+				ie.ResourceAllocationDCI_1_2_r16 = new(PDSCH_Config_resourceAllocationDCI_1_2_r16)
+				if err = ie.ResourceAllocationDCI_1_2_r16.Decode(extReader); err != nil {
+					return utils.WrapError("Decode ResourceAllocationDCI_1_2_r16", err)
 				}
-				ie.dataScramblingIdentityPDSCH2_r16 = &tmp_int_dataScramblingIdentityPDSCH2_r16
 			}
-			// decode pdsch_TimeDomainAllocationList_r16 optional
-			if pdsch_TimeDomainAllocationList_r16Present {
-				tmp_pdsch_TimeDomainAllocationList_r16 := utils.SetupRelease[*PDSCH_TimeDomainResourceAllocationList_r16]{}
-				if err = tmp_pdsch_TimeDomainAllocationList_r16.Decode(extReader); err != nil {
-					return utils.WrapError("Decode pdsch_TimeDomainAllocationList_r16", err)
+			// decode PriorityIndicatorDCI_1_1_r16 optional
+			if PriorityIndicatorDCI_1_1_r16Present {
+				ie.PriorityIndicatorDCI_1_1_r16 = new(PDSCH_Config_priorityIndicatorDCI_1_1_r16)
+				if err = ie.PriorityIndicatorDCI_1_1_r16.Decode(extReader); err != nil {
+					return utils.WrapError("Decode PriorityIndicatorDCI_1_1_r16", err)
 				}
-				ie.pdsch_TimeDomainAllocationList_r16 = tmp_pdsch_TimeDomainAllocationList_r16.Setup
 			}
-			// decode repetitionSchemeConfig_r16 optional
-			if repetitionSchemeConfig_r16Present {
-				tmp_repetitionSchemeConfig_r16 := utils.SetupRelease[*RepetitionSchemeConfig_r16]{}
-				if err = tmp_repetitionSchemeConfig_r16.Decode(extReader); err != nil {
-					return utils.WrapError("Decode repetitionSchemeConfig_r16", err)
+			// decode DataScramblingIdentityPDSCH2_r16 optional
+			if DataScramblingIdentityPDSCH2_r16Present {
+				var tmp_int_DataScramblingIdentityPDSCH2_r16 int64
+				if tmp_int_DataScramblingIdentityPDSCH2_r16, err = extReader.ReadInteger(&uper.Constraint{Lb: 0, Ub: 1023}, false); err != nil {
+					return utils.WrapError("Decode DataScramblingIdentityPDSCH2_r16", err)
 				}
-				ie.repetitionSchemeConfig_r16 = tmp_repetitionSchemeConfig_r16.Setup
+				ie.DataScramblingIdentityPDSCH2_r16 = &tmp_int_DataScramblingIdentityPDSCH2_r16
+			}
+			// decode Pdsch_TimeDomainAllocationList_r16 optional
+			if Pdsch_TimeDomainAllocationList_r16Present {
+				tmp_Pdsch_TimeDomainAllocationList_r16 := utils.SetupRelease[*PDSCH_TimeDomainResourceAllocationList_r16]{}
+				if err = tmp_Pdsch_TimeDomainAllocationList_r16.Decode(extReader); err != nil {
+					return utils.WrapError("Decode Pdsch_TimeDomainAllocationList_r16", err)
+				}
+				ie.Pdsch_TimeDomainAllocationList_r16 = tmp_Pdsch_TimeDomainAllocationList_r16.Setup
+			}
+			// decode RepetitionSchemeConfig_r16 optional
+			if RepetitionSchemeConfig_r16Present {
+				tmp_RepetitionSchemeConfig_r16 := utils.SetupRelease[*RepetitionSchemeConfig_r16]{}
+				if err = tmp_RepetitionSchemeConfig_r16.Decode(extReader); err != nil {
+					return utils.WrapError("Decode RepetitionSchemeConfig_r16", err)
+				}
+				ie.RepetitionSchemeConfig_r16 = tmp_RepetitionSchemeConfig_r16.Setup
 			}
 		}
 		// decode extension group 2
@@ -1277,17 +1277,17 @@ func (ie *PDSCH_Config) Decode(r *uper.UperReader) error {
 
 			extReader := uper.NewReader(bytes.NewReader(extBytes))
 
-			repetitionSchemeConfig_v1630Present, err := extReader.ReadBool()
+			RepetitionSchemeConfig_v1630Present, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			// decode repetitionSchemeConfig_v1630 optional
-			if repetitionSchemeConfig_v1630Present {
-				tmp_repetitionSchemeConfig_v1630 := utils.SetupRelease[*RepetitionSchemeConfig_v1630]{}
-				if err = tmp_repetitionSchemeConfig_v1630.Decode(extReader); err != nil {
-					return utils.WrapError("Decode repetitionSchemeConfig_v1630", err)
+			// decode RepetitionSchemeConfig_v1630 optional
+			if RepetitionSchemeConfig_v1630Present {
+				tmp_RepetitionSchemeConfig_v1630 := utils.SetupRelease[*RepetitionSchemeConfig_v1630]{}
+				if err = tmp_RepetitionSchemeConfig_v1630.Decode(extReader); err != nil {
+					return utils.WrapError("Decode RepetitionSchemeConfig_v1630", err)
 				}
-				ie.repetitionSchemeConfig_v1630 = tmp_repetitionSchemeConfig_v1630.Setup
+				ie.RepetitionSchemeConfig_v1630 = tmp_RepetitionSchemeConfig_v1630.Setup
 			}
 		}
 		// decode extension group 3
@@ -1299,197 +1299,197 @@ func (ie *PDSCH_Config) Decode(r *uper.UperReader) error {
 
 			extReader := uper.NewReader(bytes.NewReader(extBytes))
 
-			pdsch_HARQ_ACK_OneShotFeedbackDCI_1_2_r17Present, err := extReader.ReadBool()
+			Pdsch_HARQ_ACK_OneShotFeedbackDCI_1_2_r17Present, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			pdsch_HARQ_ACK_EnhType3DCI_1_2_r17Present, err := extReader.ReadBool()
+			Pdsch_HARQ_ACK_EnhType3DCI_1_2_r17Present, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			pdsch_HARQ_ACK_EnhType3DCI_Field_1_2_r17Present, err := extReader.ReadBool()
+			Pdsch_HARQ_ACK_EnhType3DCI_Field_1_2_r17Present, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			pdsch_HARQ_ACK_RetxDCI_1_2_r17Present, err := extReader.ReadBool()
+			Pdsch_HARQ_ACK_RetxDCI_1_2_r17Present, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			pucch_sSCellDynDCI_1_2_r17Present, err := extReader.ReadBool()
+			Pucch_sSCellDynDCI_1_2_r17Present, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			dl_OrJointTCI_StateList_r17Present, err := extReader.ReadBool()
+			Dl_OrJointTCI_StateList_r17Present, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			beamAppTime_r17Present, err := extReader.ReadBool()
+			BeamAppTime_r17Present, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			dummyPresent, err := extReader.ReadBool()
+			DummyPresent, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			dmrs_FD_OCC_DisabledForRank1_PDSCH_r17Present, err := extReader.ReadBool()
+			Dmrs_FD_OCC_DisabledForRank1_PDSCH_r17Present, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			minimumSchedulingOffsetK0_r17Present, err := extReader.ReadBool()
+			MinimumSchedulingOffsetK0_r17Present, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			harq_ProcessNumberSizeDCI_1_2_v1700Present, err := extReader.ReadBool()
+			Harq_ProcessNumberSizeDCI_1_2_v1700Present, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			harq_ProcessNumberSizeDCI_1_1_r17Present, err := extReader.ReadBool()
+			Harq_ProcessNumberSizeDCI_1_1_r17Present, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			mcs_Table_r17Present, err := extReader.ReadBool()
+			Mcs_Table_r17Present, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			mcs_TableDCI_1_2_r17Present, err := extReader.ReadBool()
+			Mcs_TableDCI_1_2_r17Present, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			xOverheadMulticast_r17Present, err := extReader.ReadBool()
+			XOverheadMulticast_r17Present, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			priorityIndicatorDCI_4_2_r17Present, err := extReader.ReadBool()
+			PriorityIndicatorDCI_4_2_r17Present, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			sizeDCI_4_2_r17Present, err := extReader.ReadBool()
+			SizeDCI_4_2_r17Present, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			// decode pdsch_HARQ_ACK_OneShotFeedbackDCI_1_2_r17 optional
-			if pdsch_HARQ_ACK_OneShotFeedbackDCI_1_2_r17Present {
-				ie.pdsch_HARQ_ACK_OneShotFeedbackDCI_1_2_r17 = new(PDSCH_Config_pdsch_HARQ_ACK_OneShotFeedbackDCI_1_2_r17)
-				if err = ie.pdsch_HARQ_ACK_OneShotFeedbackDCI_1_2_r17.Decode(extReader); err != nil {
-					return utils.WrapError("Decode pdsch_HARQ_ACK_OneShotFeedbackDCI_1_2_r17", err)
+			// decode Pdsch_HARQ_ACK_OneShotFeedbackDCI_1_2_r17 optional
+			if Pdsch_HARQ_ACK_OneShotFeedbackDCI_1_2_r17Present {
+				ie.Pdsch_HARQ_ACK_OneShotFeedbackDCI_1_2_r17 = new(PDSCH_Config_pdsch_HARQ_ACK_OneShotFeedbackDCI_1_2_r17)
+				if err = ie.Pdsch_HARQ_ACK_OneShotFeedbackDCI_1_2_r17.Decode(extReader); err != nil {
+					return utils.WrapError("Decode Pdsch_HARQ_ACK_OneShotFeedbackDCI_1_2_r17", err)
 				}
 			}
-			// decode pdsch_HARQ_ACK_EnhType3DCI_1_2_r17 optional
-			if pdsch_HARQ_ACK_EnhType3DCI_1_2_r17Present {
-				ie.pdsch_HARQ_ACK_EnhType3DCI_1_2_r17 = new(PDSCH_Config_pdsch_HARQ_ACK_EnhType3DCI_1_2_r17)
-				if err = ie.pdsch_HARQ_ACK_EnhType3DCI_1_2_r17.Decode(extReader); err != nil {
-					return utils.WrapError("Decode pdsch_HARQ_ACK_EnhType3DCI_1_2_r17", err)
+			// decode Pdsch_HARQ_ACK_EnhType3DCI_1_2_r17 optional
+			if Pdsch_HARQ_ACK_EnhType3DCI_1_2_r17Present {
+				ie.Pdsch_HARQ_ACK_EnhType3DCI_1_2_r17 = new(PDSCH_Config_pdsch_HARQ_ACK_EnhType3DCI_1_2_r17)
+				if err = ie.Pdsch_HARQ_ACK_EnhType3DCI_1_2_r17.Decode(extReader); err != nil {
+					return utils.WrapError("Decode Pdsch_HARQ_ACK_EnhType3DCI_1_2_r17", err)
 				}
 			}
-			// decode pdsch_HARQ_ACK_EnhType3DCI_Field_1_2_r17 optional
-			if pdsch_HARQ_ACK_EnhType3DCI_Field_1_2_r17Present {
-				ie.pdsch_HARQ_ACK_EnhType3DCI_Field_1_2_r17 = new(PDSCH_Config_pdsch_HARQ_ACK_EnhType3DCI_Field_1_2_r17)
-				if err = ie.pdsch_HARQ_ACK_EnhType3DCI_Field_1_2_r17.Decode(extReader); err != nil {
-					return utils.WrapError("Decode pdsch_HARQ_ACK_EnhType3DCI_Field_1_2_r17", err)
+			// decode Pdsch_HARQ_ACK_EnhType3DCI_Field_1_2_r17 optional
+			if Pdsch_HARQ_ACK_EnhType3DCI_Field_1_2_r17Present {
+				ie.Pdsch_HARQ_ACK_EnhType3DCI_Field_1_2_r17 = new(PDSCH_Config_pdsch_HARQ_ACK_EnhType3DCI_Field_1_2_r17)
+				if err = ie.Pdsch_HARQ_ACK_EnhType3DCI_Field_1_2_r17.Decode(extReader); err != nil {
+					return utils.WrapError("Decode Pdsch_HARQ_ACK_EnhType3DCI_Field_1_2_r17", err)
 				}
 			}
-			// decode pdsch_HARQ_ACK_RetxDCI_1_2_r17 optional
-			if pdsch_HARQ_ACK_RetxDCI_1_2_r17Present {
-				ie.pdsch_HARQ_ACK_RetxDCI_1_2_r17 = new(PDSCH_Config_pdsch_HARQ_ACK_RetxDCI_1_2_r17)
-				if err = ie.pdsch_HARQ_ACK_RetxDCI_1_2_r17.Decode(extReader); err != nil {
-					return utils.WrapError("Decode pdsch_HARQ_ACK_RetxDCI_1_2_r17", err)
+			// decode Pdsch_HARQ_ACK_RetxDCI_1_2_r17 optional
+			if Pdsch_HARQ_ACK_RetxDCI_1_2_r17Present {
+				ie.Pdsch_HARQ_ACK_RetxDCI_1_2_r17 = new(PDSCH_Config_pdsch_HARQ_ACK_RetxDCI_1_2_r17)
+				if err = ie.Pdsch_HARQ_ACK_RetxDCI_1_2_r17.Decode(extReader); err != nil {
+					return utils.WrapError("Decode Pdsch_HARQ_ACK_RetxDCI_1_2_r17", err)
 				}
 			}
-			// decode pucch_sSCellDynDCI_1_2_r17 optional
-			if pucch_sSCellDynDCI_1_2_r17Present {
-				ie.pucch_sSCellDynDCI_1_2_r17 = new(PDSCH_Config_pucch_sSCellDynDCI_1_2_r17)
-				if err = ie.pucch_sSCellDynDCI_1_2_r17.Decode(extReader); err != nil {
-					return utils.WrapError("Decode pucch_sSCellDynDCI_1_2_r17", err)
+			// decode Pucch_sSCellDynDCI_1_2_r17 optional
+			if Pucch_sSCellDynDCI_1_2_r17Present {
+				ie.Pucch_sSCellDynDCI_1_2_r17 = new(PDSCH_Config_pucch_sSCellDynDCI_1_2_r17)
+				if err = ie.Pucch_sSCellDynDCI_1_2_r17.Decode(extReader); err != nil {
+					return utils.WrapError("Decode Pucch_sSCellDynDCI_1_2_r17", err)
 				}
 			}
-			// decode dl_OrJointTCI_StateList_r17 optional
-			if dl_OrJointTCI_StateList_r17Present {
-				ie.dl_OrJointTCI_StateList_r17 = new(PDSCH_Config_dl_OrJointTCI_StateList_r17)
-				if err = ie.dl_OrJointTCI_StateList_r17.Decode(extReader); err != nil {
-					return utils.WrapError("Decode dl_OrJointTCI_StateList_r17", err)
+			// decode Dl_OrJointTCI_StateList_r17 optional
+			if Dl_OrJointTCI_StateList_r17Present {
+				ie.Dl_OrJointTCI_StateList_r17 = new(PDSCH_Config_dl_OrJointTCI_StateList_r17)
+				if err = ie.Dl_OrJointTCI_StateList_r17.Decode(extReader); err != nil {
+					return utils.WrapError("Decode Dl_OrJointTCI_StateList_r17", err)
 				}
 			}
-			// decode beamAppTime_r17 optional
-			if beamAppTime_r17Present {
-				ie.beamAppTime_r17 = new(PDSCH_Config_beamAppTime_r17)
-				if err = ie.beamAppTime_r17.Decode(extReader); err != nil {
-					return utils.WrapError("Decode beamAppTime_r17", err)
+			// decode BeamAppTime_r17 optional
+			if BeamAppTime_r17Present {
+				ie.BeamAppTime_r17 = new(PDSCH_Config_beamAppTime_r17)
+				if err = ie.BeamAppTime_r17.Decode(extReader); err != nil {
+					return utils.WrapError("Decode BeamAppTime_r17", err)
 				}
 			}
-			// decode dummy optional
-			if dummyPresent {
-				tmp_dummy := utils.SetupRelease[*Dummy_TDRA_List]{}
-				if err = tmp_dummy.Decode(extReader); err != nil {
-					return utils.WrapError("Decode dummy", err)
+			// decode Dummy optional
+			if DummyPresent {
+				tmp_Dummy := utils.SetupRelease[*Dummy_TDRA_List]{}
+				if err = tmp_Dummy.Decode(extReader); err != nil {
+					return utils.WrapError("Decode Dummy", err)
 				}
-				ie.dummy = tmp_dummy.Setup
+				ie.Dummy = tmp_Dummy.Setup
 			}
-			// decode dmrs_FD_OCC_DisabledForRank1_PDSCH_r17 optional
-			if dmrs_FD_OCC_DisabledForRank1_PDSCH_r17Present {
-				ie.dmrs_FD_OCC_DisabledForRank1_PDSCH_r17 = new(PDSCH_Config_dmrs_FD_OCC_DisabledForRank1_PDSCH_r17)
-				if err = ie.dmrs_FD_OCC_DisabledForRank1_PDSCH_r17.Decode(extReader); err != nil {
-					return utils.WrapError("Decode dmrs_FD_OCC_DisabledForRank1_PDSCH_r17", err)
-				}
-			}
-			// decode minimumSchedulingOffsetK0_r17 optional
-			if minimumSchedulingOffsetK0_r17Present {
-				tmp_minimumSchedulingOffsetK0_r17 := utils.SetupRelease[*MinSchedulingOffsetK0_Values_r17]{}
-				if err = tmp_minimumSchedulingOffsetK0_r17.Decode(extReader); err != nil {
-					return utils.WrapError("Decode minimumSchedulingOffsetK0_r17", err)
-				}
-				ie.minimumSchedulingOffsetK0_r17 = tmp_minimumSchedulingOffsetK0_r17.Setup
-			}
-			// decode harq_ProcessNumberSizeDCI_1_2_v1700 optional
-			if harq_ProcessNumberSizeDCI_1_2_v1700Present {
-				var tmp_int_harq_ProcessNumberSizeDCI_1_2_v1700 int64
-				if tmp_int_harq_ProcessNumberSizeDCI_1_2_v1700, err = extReader.ReadInteger(&uper.Constraint{Lb: 0, Ub: 5}, false); err != nil {
-					return utils.WrapError("Decode harq_ProcessNumberSizeDCI_1_2_v1700", err)
-				}
-				ie.harq_ProcessNumberSizeDCI_1_2_v1700 = &tmp_int_harq_ProcessNumberSizeDCI_1_2_v1700
-			}
-			// decode harq_ProcessNumberSizeDCI_1_1_r17 optional
-			if harq_ProcessNumberSizeDCI_1_1_r17Present {
-				var tmp_int_harq_ProcessNumberSizeDCI_1_1_r17 int64
-				if tmp_int_harq_ProcessNumberSizeDCI_1_1_r17, err = extReader.ReadInteger(&uper.Constraint{Lb: 5, Ub: 5}, false); err != nil {
-					return utils.WrapError("Decode harq_ProcessNumberSizeDCI_1_1_r17", err)
-				}
-				ie.harq_ProcessNumberSizeDCI_1_1_r17 = &tmp_int_harq_ProcessNumberSizeDCI_1_1_r17
-			}
-			// decode mcs_Table_r17 optional
-			if mcs_Table_r17Present {
-				ie.mcs_Table_r17 = new(PDSCH_Config_mcs_Table_r17)
-				if err = ie.mcs_Table_r17.Decode(extReader); err != nil {
-					return utils.WrapError("Decode mcs_Table_r17", err)
+			// decode Dmrs_FD_OCC_DisabledForRank1_PDSCH_r17 optional
+			if Dmrs_FD_OCC_DisabledForRank1_PDSCH_r17Present {
+				ie.Dmrs_FD_OCC_DisabledForRank1_PDSCH_r17 = new(PDSCH_Config_dmrs_FD_OCC_DisabledForRank1_PDSCH_r17)
+				if err = ie.Dmrs_FD_OCC_DisabledForRank1_PDSCH_r17.Decode(extReader); err != nil {
+					return utils.WrapError("Decode Dmrs_FD_OCC_DisabledForRank1_PDSCH_r17", err)
 				}
 			}
-			// decode mcs_TableDCI_1_2_r17 optional
-			if mcs_TableDCI_1_2_r17Present {
-				ie.mcs_TableDCI_1_2_r17 = new(PDSCH_Config_mcs_TableDCI_1_2_r17)
-				if err = ie.mcs_TableDCI_1_2_r17.Decode(extReader); err != nil {
-					return utils.WrapError("Decode mcs_TableDCI_1_2_r17", err)
+			// decode MinimumSchedulingOffsetK0_r17 optional
+			if MinimumSchedulingOffsetK0_r17Present {
+				tmp_MinimumSchedulingOffsetK0_r17 := utils.SetupRelease[*MinSchedulingOffsetK0_Values_r17]{}
+				if err = tmp_MinimumSchedulingOffsetK0_r17.Decode(extReader); err != nil {
+					return utils.WrapError("Decode MinimumSchedulingOffsetK0_r17", err)
+				}
+				ie.MinimumSchedulingOffsetK0_r17 = tmp_MinimumSchedulingOffsetK0_r17.Setup
+			}
+			// decode Harq_ProcessNumberSizeDCI_1_2_v1700 optional
+			if Harq_ProcessNumberSizeDCI_1_2_v1700Present {
+				var tmp_int_Harq_ProcessNumberSizeDCI_1_2_v1700 int64
+				if tmp_int_Harq_ProcessNumberSizeDCI_1_2_v1700, err = extReader.ReadInteger(&uper.Constraint{Lb: 0, Ub: 5}, false); err != nil {
+					return utils.WrapError("Decode Harq_ProcessNumberSizeDCI_1_2_v1700", err)
+				}
+				ie.Harq_ProcessNumberSizeDCI_1_2_v1700 = &tmp_int_Harq_ProcessNumberSizeDCI_1_2_v1700
+			}
+			// decode Harq_ProcessNumberSizeDCI_1_1_r17 optional
+			if Harq_ProcessNumberSizeDCI_1_1_r17Present {
+				var tmp_int_Harq_ProcessNumberSizeDCI_1_1_r17 int64
+				if tmp_int_Harq_ProcessNumberSizeDCI_1_1_r17, err = extReader.ReadInteger(&uper.Constraint{Lb: 5, Ub: 5}, false); err != nil {
+					return utils.WrapError("Decode Harq_ProcessNumberSizeDCI_1_1_r17", err)
+				}
+				ie.Harq_ProcessNumberSizeDCI_1_1_r17 = &tmp_int_Harq_ProcessNumberSizeDCI_1_1_r17
+			}
+			// decode Mcs_Table_r17 optional
+			if Mcs_Table_r17Present {
+				ie.Mcs_Table_r17 = new(PDSCH_Config_mcs_Table_r17)
+				if err = ie.Mcs_Table_r17.Decode(extReader); err != nil {
+					return utils.WrapError("Decode Mcs_Table_r17", err)
 				}
 			}
-			// decode xOverheadMulticast_r17 optional
-			if xOverheadMulticast_r17Present {
-				ie.xOverheadMulticast_r17 = new(PDSCH_Config_xOverheadMulticast_r17)
-				if err = ie.xOverheadMulticast_r17.Decode(extReader); err != nil {
-					return utils.WrapError("Decode xOverheadMulticast_r17", err)
+			// decode Mcs_TableDCI_1_2_r17 optional
+			if Mcs_TableDCI_1_2_r17Present {
+				ie.Mcs_TableDCI_1_2_r17 = new(PDSCH_Config_mcs_TableDCI_1_2_r17)
+				if err = ie.Mcs_TableDCI_1_2_r17.Decode(extReader); err != nil {
+					return utils.WrapError("Decode Mcs_TableDCI_1_2_r17", err)
 				}
 			}
-			// decode priorityIndicatorDCI_4_2_r17 optional
-			if priorityIndicatorDCI_4_2_r17Present {
-				ie.priorityIndicatorDCI_4_2_r17 = new(PDSCH_Config_priorityIndicatorDCI_4_2_r17)
-				if err = ie.priorityIndicatorDCI_4_2_r17.Decode(extReader); err != nil {
-					return utils.WrapError("Decode priorityIndicatorDCI_4_2_r17", err)
+			// decode XOverheadMulticast_r17 optional
+			if XOverheadMulticast_r17Present {
+				ie.XOverheadMulticast_r17 = new(PDSCH_Config_xOverheadMulticast_r17)
+				if err = ie.XOverheadMulticast_r17.Decode(extReader); err != nil {
+					return utils.WrapError("Decode XOverheadMulticast_r17", err)
 				}
 			}
-			// decode sizeDCI_4_2_r17 optional
-			if sizeDCI_4_2_r17Present {
-				var tmp_int_sizeDCI_4_2_r17 int64
-				if tmp_int_sizeDCI_4_2_r17, err = extReader.ReadInteger(&uper.Constraint{Lb: 20, Ub: maxDCI_4_2_Size_r17}, false); err != nil {
-					return utils.WrapError("Decode sizeDCI_4_2_r17", err)
+			// decode PriorityIndicatorDCI_4_2_r17 optional
+			if PriorityIndicatorDCI_4_2_r17Present {
+				ie.PriorityIndicatorDCI_4_2_r17 = new(PDSCH_Config_priorityIndicatorDCI_4_2_r17)
+				if err = ie.PriorityIndicatorDCI_4_2_r17.Decode(extReader); err != nil {
+					return utils.WrapError("Decode PriorityIndicatorDCI_4_2_r17", err)
 				}
-				ie.sizeDCI_4_2_r17 = &tmp_int_sizeDCI_4_2_r17
+			}
+			// decode SizeDCI_4_2_r17 optional
+			if SizeDCI_4_2_r17Present {
+				var tmp_int_SizeDCI_4_2_r17 int64
+				if tmp_int_SizeDCI_4_2_r17, err = extReader.ReadInteger(&uper.Constraint{Lb: 20, Ub: maxDCI_4_2_Size_r17}, false); err != nil {
+					return utils.WrapError("Decode SizeDCI_4_2_r17", err)
+				}
+				ie.SizeDCI_4_2_r17 = &tmp_int_SizeDCI_4_2_r17
 			}
 		}
 		// decode extension group 4
@@ -1501,17 +1501,17 @@ func (ie *PDSCH_Config) Decode(r *uper.UperReader) error {
 
 			extReader := uper.NewReader(bytes.NewReader(extBytes))
 
-			pdsch_TimeDomainAllocationListForMultiPDSCH_r17Present, err := extReader.ReadBool()
+			Pdsch_TimeDomainAllocationListForMultiPDSCH_r17Present, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			// decode pdsch_TimeDomainAllocationListForMultiPDSCH_r17 optional
-			if pdsch_TimeDomainAllocationListForMultiPDSCH_r17Present {
-				tmp_pdsch_TimeDomainAllocationListForMultiPDSCH_r17 := utils.SetupRelease[*MultiPDSCH_TDRA_List_r17]{}
-				if err = tmp_pdsch_TimeDomainAllocationListForMultiPDSCH_r17.Decode(extReader); err != nil {
-					return utils.WrapError("Decode pdsch_TimeDomainAllocationListForMultiPDSCH_r17", err)
+			// decode Pdsch_TimeDomainAllocationListForMultiPDSCH_r17 optional
+			if Pdsch_TimeDomainAllocationListForMultiPDSCH_r17Present {
+				tmp_Pdsch_TimeDomainAllocationListForMultiPDSCH_r17 := utils.SetupRelease[*MultiPDSCH_TDRA_List_r17]{}
+				if err = tmp_Pdsch_TimeDomainAllocationListForMultiPDSCH_r17.Decode(extReader); err != nil {
+					return utils.WrapError("Decode Pdsch_TimeDomainAllocationListForMultiPDSCH_r17", err)
 				}
-				ie.pdsch_TimeDomainAllocationListForMultiPDSCH_r17 = tmp_pdsch_TimeDomainAllocationListForMultiPDSCH_r17.Setup
+				ie.Pdsch_TimeDomainAllocationListForMultiPDSCH_r17 = tmp_Pdsch_TimeDomainAllocationListForMultiPDSCH_r17.Setup
 			}
 		}
 	}

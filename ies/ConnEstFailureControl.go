@@ -6,28 +6,28 @@ import (
 )
 
 type ConnEstFailureControl struct {
-	connEstFailCount          ConnEstFailureControl_connEstFailCount          `madatory`
-	connEstFailOffsetValidity ConnEstFailureControl_connEstFailOffsetValidity `madatory`
-	connEstFailOffset         *int64                                          `lb:0,ub:15,optional`
+	ConnEstFailCount          ConnEstFailureControl_connEstFailCount          `madatory`
+	ConnEstFailOffsetValidity ConnEstFailureControl_connEstFailOffsetValidity `madatory`
+	ConnEstFailOffset         *int64                                          `lb:0,ub:15,optional`
 }
 
 func (ie *ConnEstFailureControl) Encode(w *uper.UperWriter) error {
 	var err error
-	preambleBits := []bool{ie.connEstFailOffset != nil}
+	preambleBits := []bool{ie.ConnEstFailOffset != nil}
 	for _, bit := range preambleBits {
 		if err = w.WriteBool(bit); err != nil {
 			return err
 		}
 	}
-	if err = ie.connEstFailCount.Encode(w); err != nil {
-		return utils.WrapError("Encode connEstFailCount", err)
+	if err = ie.ConnEstFailCount.Encode(w); err != nil {
+		return utils.WrapError("Encode ConnEstFailCount", err)
 	}
-	if err = ie.connEstFailOffsetValidity.Encode(w); err != nil {
-		return utils.WrapError("Encode connEstFailOffsetValidity", err)
+	if err = ie.ConnEstFailOffsetValidity.Encode(w); err != nil {
+		return utils.WrapError("Encode ConnEstFailOffsetValidity", err)
 	}
-	if ie.connEstFailOffset != nil {
-		if err = w.WriteInteger(*ie.connEstFailOffset, &uper.Constraint{Lb: 0, Ub: 15}, false); err != nil {
-			return utils.WrapError("Encode connEstFailOffset", err)
+	if ie.ConnEstFailOffset != nil {
+		if err = w.WriteInteger(*ie.ConnEstFailOffset, &uper.Constraint{Lb: 0, Ub: 15}, false); err != nil {
+			return utils.WrapError("Encode ConnEstFailOffset", err)
 		}
 	}
 	return nil
@@ -35,22 +35,22 @@ func (ie *ConnEstFailureControl) Encode(w *uper.UperWriter) error {
 
 func (ie *ConnEstFailureControl) Decode(r *uper.UperReader) error {
 	var err error
-	var connEstFailOffsetPresent bool
-	if connEstFailOffsetPresent, err = r.ReadBool(); err != nil {
+	var ConnEstFailOffsetPresent bool
+	if ConnEstFailOffsetPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	if err = ie.connEstFailCount.Decode(r); err != nil {
-		return utils.WrapError("Decode connEstFailCount", err)
+	if err = ie.ConnEstFailCount.Decode(r); err != nil {
+		return utils.WrapError("Decode ConnEstFailCount", err)
 	}
-	if err = ie.connEstFailOffsetValidity.Decode(r); err != nil {
-		return utils.WrapError("Decode connEstFailOffsetValidity", err)
+	if err = ie.ConnEstFailOffsetValidity.Decode(r); err != nil {
+		return utils.WrapError("Decode ConnEstFailOffsetValidity", err)
 	}
-	if connEstFailOffsetPresent {
-		var tmp_int_connEstFailOffset int64
-		if tmp_int_connEstFailOffset, err = r.ReadInteger(&uper.Constraint{Lb: 0, Ub: 15}, false); err != nil {
-			return utils.WrapError("Decode connEstFailOffset", err)
+	if ConnEstFailOffsetPresent {
+		var tmp_int_ConnEstFailOffset int64
+		if tmp_int_ConnEstFailOffset, err = r.ReadInteger(&uper.Constraint{Lb: 0, Ub: 15}, false); err != nil {
+			return utils.WrapError("Decode ConnEstFailOffset", err)
 		}
-		ie.connEstFailOffset = &tmp_int_connEstFailOffset
+		ie.ConnEstFailOffset = &tmp_int_ConnEstFailOffset
 	}
 	return nil
 }

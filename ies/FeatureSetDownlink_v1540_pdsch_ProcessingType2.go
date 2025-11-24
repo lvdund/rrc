@@ -6,32 +6,32 @@ import (
 )
 
 type FeatureSetDownlink_v1540_pdsch_ProcessingType2 struct {
-	scs_15kHz *ProcessingParameters `optional`
-	scs_30kHz *ProcessingParameters `optional`
-	scs_60kHz *ProcessingParameters `optional`
+	Scs_15kHz *ProcessingParameters `optional`
+	Scs_30kHz *ProcessingParameters `optional`
+	Scs_60kHz *ProcessingParameters `optional`
 }
 
 func (ie *FeatureSetDownlink_v1540_pdsch_ProcessingType2) Encode(w *uper.UperWriter) error {
 	var err error
-	preambleBits := []bool{ie.scs_15kHz != nil, ie.scs_30kHz != nil, ie.scs_60kHz != nil}
+	preambleBits := []bool{ie.Scs_15kHz != nil, ie.Scs_30kHz != nil, ie.Scs_60kHz != nil}
 	for _, bit := range preambleBits {
 		if err = w.WriteBool(bit); err != nil {
 			return err
 		}
 	}
-	if ie.scs_15kHz != nil {
-		if err = ie.scs_15kHz.Encode(w); err != nil {
-			return utils.WrapError("Encode scs_15kHz", err)
+	if ie.Scs_15kHz != nil {
+		if err = ie.Scs_15kHz.Encode(w); err != nil {
+			return utils.WrapError("Encode Scs_15kHz", err)
 		}
 	}
-	if ie.scs_30kHz != nil {
-		if err = ie.scs_30kHz.Encode(w); err != nil {
-			return utils.WrapError("Encode scs_30kHz", err)
+	if ie.Scs_30kHz != nil {
+		if err = ie.Scs_30kHz.Encode(w); err != nil {
+			return utils.WrapError("Encode Scs_30kHz", err)
 		}
 	}
-	if ie.scs_60kHz != nil {
-		if err = ie.scs_60kHz.Encode(w); err != nil {
-			return utils.WrapError("Encode scs_60kHz", err)
+	if ie.Scs_60kHz != nil {
+		if err = ie.Scs_60kHz.Encode(w); err != nil {
+			return utils.WrapError("Encode Scs_60kHz", err)
 		}
 	}
 	return nil
@@ -39,34 +39,34 @@ func (ie *FeatureSetDownlink_v1540_pdsch_ProcessingType2) Encode(w *uper.UperWri
 
 func (ie *FeatureSetDownlink_v1540_pdsch_ProcessingType2) Decode(r *uper.UperReader) error {
 	var err error
-	var scs_15kHzPresent bool
-	if scs_15kHzPresent, err = r.ReadBool(); err != nil {
+	var Scs_15kHzPresent bool
+	if Scs_15kHzPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var scs_30kHzPresent bool
-	if scs_30kHzPresent, err = r.ReadBool(); err != nil {
+	var Scs_30kHzPresent bool
+	if Scs_30kHzPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var scs_60kHzPresent bool
-	if scs_60kHzPresent, err = r.ReadBool(); err != nil {
+	var Scs_60kHzPresent bool
+	if Scs_60kHzPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	if scs_15kHzPresent {
-		ie.scs_15kHz = new(ProcessingParameters)
-		if err = ie.scs_15kHz.Decode(r); err != nil {
-			return utils.WrapError("Decode scs_15kHz", err)
+	if Scs_15kHzPresent {
+		ie.Scs_15kHz = new(ProcessingParameters)
+		if err = ie.Scs_15kHz.Decode(r); err != nil {
+			return utils.WrapError("Decode Scs_15kHz", err)
 		}
 	}
-	if scs_30kHzPresent {
-		ie.scs_30kHz = new(ProcessingParameters)
-		if err = ie.scs_30kHz.Decode(r); err != nil {
-			return utils.WrapError("Decode scs_30kHz", err)
+	if Scs_30kHzPresent {
+		ie.Scs_30kHz = new(ProcessingParameters)
+		if err = ie.Scs_30kHz.Decode(r); err != nil {
+			return utils.WrapError("Decode Scs_30kHz", err)
 		}
 	}
-	if scs_60kHzPresent {
-		ie.scs_60kHz = new(ProcessingParameters)
-		if err = ie.scs_60kHz.Decode(r); err != nil {
-			return utils.WrapError("Decode scs_60kHz", err)
+	if Scs_60kHzPresent {
+		ie.Scs_60kHz = new(ProcessingParameters)
+		if err = ie.Scs_60kHz.Decode(r); err != nil {
+			return utils.WrapError("Decode Scs_60kHz", err)
 		}
 	}
 	return nil

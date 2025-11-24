@@ -9,14 +9,14 @@ import (
 
 const (
 	ULDedicatedMessageSegment_r16_CriticalExtensions_Choice_nothing uint64 = iota
-	ULDedicatedMessageSegment_r16_CriticalExtensions_Choice_ulDedicatedMessageSegment_r16
-	ULDedicatedMessageSegment_r16_CriticalExtensions_Choice_criticalExtensionsFuture
+	ULDedicatedMessageSegment_r16_CriticalExtensions_Choice_UlDedicatedMessageSegment_r16
+	ULDedicatedMessageSegment_r16_CriticalExtensions_Choice_CriticalExtensionsFuture
 )
 
 type ULDedicatedMessageSegment_r16_CriticalExtensions struct {
 	Choice                        uint64
-	ulDedicatedMessageSegment_r16 *ULDedicatedMessageSegment_r16_IEs
-	criticalExtensionsFuture      interface{} `madatory`
+	UlDedicatedMessageSegment_r16 *ULDedicatedMessageSegment_r16_IEs
+	CriticalExtensionsFuture      interface{} `madatory`
 }
 
 func (ie *ULDedicatedMessageSegment_r16_CriticalExtensions) Encode(w *uper.UperWriter) error {
@@ -25,11 +25,11 @@ func (ie *ULDedicatedMessageSegment_r16_CriticalExtensions) Encode(w *uper.UperW
 		return err
 	}
 	switch ie.Choice {
-	case ULDedicatedMessageSegment_r16_CriticalExtensions_Choice_ulDedicatedMessageSegment_r16:
-		if err = ie.ulDedicatedMessageSegment_r16.Encode(w); err != nil {
-			err = utils.WrapError("Encode ulDedicatedMessageSegment_r16", err)
+	case ULDedicatedMessageSegment_r16_CriticalExtensions_Choice_UlDedicatedMessageSegment_r16:
+		if err = ie.UlDedicatedMessageSegment_r16.Encode(w); err != nil {
+			err = utils.WrapError("Encode UlDedicatedMessageSegment_r16", err)
 		}
-	case ULDedicatedMessageSegment_r16_CriticalExtensions_Choice_criticalExtensionsFuture:
+	case ULDedicatedMessageSegment_r16_CriticalExtensions_Choice_CriticalExtensionsFuture:
 		// interface{} field of choice - nothing to encode
 	default:
 		err = fmt.Errorf("invalid choice: %d", ie.Choice)
@@ -43,12 +43,12 @@ func (ie *ULDedicatedMessageSegment_r16_CriticalExtensions) Decode(r *uper.UperR
 		return err
 	}
 	switch ie.Choice {
-	case ULDedicatedMessageSegment_r16_CriticalExtensions_Choice_ulDedicatedMessageSegment_r16:
-		ie.ulDedicatedMessageSegment_r16 = new(ULDedicatedMessageSegment_r16_IEs)
-		if err = ie.ulDedicatedMessageSegment_r16.Decode(r); err != nil {
-			return utils.WrapError("Decode ulDedicatedMessageSegment_r16", err)
+	case ULDedicatedMessageSegment_r16_CriticalExtensions_Choice_UlDedicatedMessageSegment_r16:
+		ie.UlDedicatedMessageSegment_r16 = new(ULDedicatedMessageSegment_r16_IEs)
+		if err = ie.UlDedicatedMessageSegment_r16.Decode(r); err != nil {
+			return utils.WrapError("Decode UlDedicatedMessageSegment_r16", err)
 		}
-	case ULDedicatedMessageSegment_r16_CriticalExtensions_Choice_criticalExtensionsFuture:
+	case ULDedicatedMessageSegment_r16_CriticalExtensions_Choice_CriticalExtensionsFuture:
 		// interface{} field of choice - nothing to decode
 	default:
 		return fmt.Errorf("invalid choice: %d", ie.Choice)

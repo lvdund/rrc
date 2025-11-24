@@ -6,32 +6,32 @@ import (
 )
 
 type RRCReconfigurationComplete_v1610_IEs struct {
-	ue_MeasurementsAvailable_r16 *UE_MeasurementsAvailable_r16         `optional`
-	needForGapsInfoNR_r16        *NeedForGapsInfoNR_r16                `optional`
-	nonCriticalExtension         *RRCReconfigurationComplete_v1640_IEs `optional`
+	Ue_MeasurementsAvailable_r16 *UE_MeasurementsAvailable_r16         `optional`
+	NeedForGapsInfoNR_r16        *NeedForGapsInfoNR_r16                `optional`
+	NonCriticalExtension         *RRCReconfigurationComplete_v1640_IEs `optional`
 }
 
 func (ie *RRCReconfigurationComplete_v1610_IEs) Encode(w *uper.UperWriter) error {
 	var err error
-	preambleBits := []bool{ie.ue_MeasurementsAvailable_r16 != nil, ie.needForGapsInfoNR_r16 != nil, ie.nonCriticalExtension != nil}
+	preambleBits := []bool{ie.Ue_MeasurementsAvailable_r16 != nil, ie.NeedForGapsInfoNR_r16 != nil, ie.NonCriticalExtension != nil}
 	for _, bit := range preambleBits {
 		if err = w.WriteBool(bit); err != nil {
 			return err
 		}
 	}
-	if ie.ue_MeasurementsAvailable_r16 != nil {
-		if err = ie.ue_MeasurementsAvailable_r16.Encode(w); err != nil {
-			return utils.WrapError("Encode ue_MeasurementsAvailable_r16", err)
+	if ie.Ue_MeasurementsAvailable_r16 != nil {
+		if err = ie.Ue_MeasurementsAvailable_r16.Encode(w); err != nil {
+			return utils.WrapError("Encode Ue_MeasurementsAvailable_r16", err)
 		}
 	}
-	if ie.needForGapsInfoNR_r16 != nil {
-		if err = ie.needForGapsInfoNR_r16.Encode(w); err != nil {
-			return utils.WrapError("Encode needForGapsInfoNR_r16", err)
+	if ie.NeedForGapsInfoNR_r16 != nil {
+		if err = ie.NeedForGapsInfoNR_r16.Encode(w); err != nil {
+			return utils.WrapError("Encode NeedForGapsInfoNR_r16", err)
 		}
 	}
-	if ie.nonCriticalExtension != nil {
-		if err = ie.nonCriticalExtension.Encode(w); err != nil {
-			return utils.WrapError("Encode nonCriticalExtension", err)
+	if ie.NonCriticalExtension != nil {
+		if err = ie.NonCriticalExtension.Encode(w); err != nil {
+			return utils.WrapError("Encode NonCriticalExtension", err)
 		}
 	}
 	return nil
@@ -39,34 +39,34 @@ func (ie *RRCReconfigurationComplete_v1610_IEs) Encode(w *uper.UperWriter) error
 
 func (ie *RRCReconfigurationComplete_v1610_IEs) Decode(r *uper.UperReader) error {
 	var err error
-	var ue_MeasurementsAvailable_r16Present bool
-	if ue_MeasurementsAvailable_r16Present, err = r.ReadBool(); err != nil {
+	var Ue_MeasurementsAvailable_r16Present bool
+	if Ue_MeasurementsAvailable_r16Present, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var needForGapsInfoNR_r16Present bool
-	if needForGapsInfoNR_r16Present, err = r.ReadBool(); err != nil {
+	var NeedForGapsInfoNR_r16Present bool
+	if NeedForGapsInfoNR_r16Present, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var nonCriticalExtensionPresent bool
-	if nonCriticalExtensionPresent, err = r.ReadBool(); err != nil {
+	var NonCriticalExtensionPresent bool
+	if NonCriticalExtensionPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	if ue_MeasurementsAvailable_r16Present {
-		ie.ue_MeasurementsAvailable_r16 = new(UE_MeasurementsAvailable_r16)
-		if err = ie.ue_MeasurementsAvailable_r16.Decode(r); err != nil {
-			return utils.WrapError("Decode ue_MeasurementsAvailable_r16", err)
+	if Ue_MeasurementsAvailable_r16Present {
+		ie.Ue_MeasurementsAvailable_r16 = new(UE_MeasurementsAvailable_r16)
+		if err = ie.Ue_MeasurementsAvailable_r16.Decode(r); err != nil {
+			return utils.WrapError("Decode Ue_MeasurementsAvailable_r16", err)
 		}
 	}
-	if needForGapsInfoNR_r16Present {
-		ie.needForGapsInfoNR_r16 = new(NeedForGapsInfoNR_r16)
-		if err = ie.needForGapsInfoNR_r16.Decode(r); err != nil {
-			return utils.WrapError("Decode needForGapsInfoNR_r16", err)
+	if NeedForGapsInfoNR_r16Present {
+		ie.NeedForGapsInfoNR_r16 = new(NeedForGapsInfoNR_r16)
+		if err = ie.NeedForGapsInfoNR_r16.Decode(r); err != nil {
+			return utils.WrapError("Decode NeedForGapsInfoNR_r16", err)
 		}
 	}
-	if nonCriticalExtensionPresent {
-		ie.nonCriticalExtension = new(RRCReconfigurationComplete_v1640_IEs)
-		if err = ie.nonCriticalExtension.Decode(r); err != nil {
-			return utils.WrapError("Decode nonCriticalExtension", err)
+	if NonCriticalExtensionPresent {
+		ie.NonCriticalExtension = new(RRCReconfigurationComplete_v1640_IEs)
+		if err = ie.NonCriticalExtension.Decode(r); err != nil {
+			return utils.WrapError("Decode NonCriticalExtension", err)
 		}
 	}
 	return nil

@@ -6,21 +6,21 @@ import (
 )
 
 type ReportConfigInterRAT struct {
-	reportType ReportConfigInterRAT_reportType `madatory`
+	ReportType ReportConfigInterRAT_reportType `madatory`
 }
 
 func (ie *ReportConfigInterRAT) Encode(w *uper.UperWriter) error {
 	var err error
-	if err = ie.reportType.Encode(w); err != nil {
-		return utils.WrapError("Encode reportType", err)
+	if err = ie.ReportType.Encode(w); err != nil {
+		return utils.WrapError("Encode ReportType", err)
 	}
 	return nil
 }
 
 func (ie *ReportConfigInterRAT) Decode(r *uper.UperReader) error {
 	var err error
-	if err = ie.reportType.Decode(r); err != nil {
-		return utils.WrapError("Decode reportType", err)
+	if err = ie.ReportType.Decode(r); err != nil {
+		return utils.WrapError("Decode ReportType", err)
 	}
 	return nil
 }

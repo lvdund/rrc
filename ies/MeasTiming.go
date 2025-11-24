@@ -8,28 +8,28 @@ import (
 )
 
 type MeasTiming struct {
-	frequencyAndTiming *MeasTiming_frequencyAndTiming `optional`
-	ssb_ToMeasure      *SSB_ToMeasure                 `optional,ext-1`
-	physCellId         *PhysCellId                    `optional,ext-1`
+	FrequencyAndTiming *MeasTiming_frequencyAndTiming `optional`
+	Ssb_ToMeasure      *SSB_ToMeasure                 `optional,ext-1`
+	PhysCellId         *PhysCellId                    `optional,ext-1`
 }
 
 func (ie *MeasTiming) Encode(w *uper.UperWriter) error {
 	var err error
-	hasExtensions := ie.ssb_ToMeasure != nil || ie.physCellId != nil
-	preambleBits := []bool{hasExtensions, ie.frequencyAndTiming != nil}
+	hasExtensions := ie.Ssb_ToMeasure != nil || ie.PhysCellId != nil
+	preambleBits := []bool{hasExtensions, ie.FrequencyAndTiming != nil}
 	for _, bit := range preambleBits {
 		if err = w.WriteBool(bit); err != nil {
 			return err
 		}
 	}
-	if ie.frequencyAndTiming != nil {
-		if err = ie.frequencyAndTiming.Encode(w); err != nil {
-			return utils.WrapError("Encode frequencyAndTiming", err)
+	if ie.FrequencyAndTiming != nil {
+		if err = ie.FrequencyAndTiming.Encode(w); err != nil {
+			return utils.WrapError("Encode FrequencyAndTiming", err)
 		}
 	}
 	if hasExtensions {
 		// Extension bitmap: 1 bits for 1 extension groups
-		extBitmap := []bool{ie.ssb_ToMeasure != nil || ie.physCellId != nil}
+		extBitmap := []bool{ie.Ssb_ToMeasure != nil || ie.PhysCellId != nil}
 		if err := w.WriteExtBitMap(extBitmap); err != nil {
 			return utils.WrapError("WriteExtBitMap MeasTiming", err)
 		}
@@ -40,23 +40,23 @@ func (ie *MeasTiming) Encode(w *uper.UperWriter) error {
 			extWriter := uper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 1
-			optionals_ext_1 := []bool{ie.ssb_ToMeasure != nil, ie.physCellId != nil}
+			optionals_ext_1 := []bool{ie.Ssb_ToMeasure != nil, ie.PhysCellId != nil}
 			for _, bit := range optionals_ext_1 {
 				if err := extWriter.WriteBool(bit); err != nil {
 					return err
 				}
 			}
 
-			// encode ssb_ToMeasure optional
-			if ie.ssb_ToMeasure != nil {
-				if err = ie.ssb_ToMeasure.Encode(extWriter); err != nil {
-					return utils.WrapError("Encode ssb_ToMeasure", err)
+			// encode Ssb_ToMeasure optional
+			if ie.Ssb_ToMeasure != nil {
+				if err = ie.Ssb_ToMeasure.Encode(extWriter); err != nil {
+					return utils.WrapError("Encode Ssb_ToMeasure", err)
 				}
 			}
-			// encode physCellId optional
-			if ie.physCellId != nil {
-				if err = ie.physCellId.Encode(extWriter); err != nil {
-					return utils.WrapError("Encode physCellId", err)
+			// encode PhysCellId optional
+			if ie.PhysCellId != nil {
+				if err = ie.PhysCellId.Encode(extWriter); err != nil {
+					return utils.WrapError("Encode PhysCellId", err)
 				}
 			}
 
@@ -78,14 +78,14 @@ func (ie *MeasTiming) Decode(r *uper.UperReader) error {
 	if extensionBit, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var frequencyAndTimingPresent bool
-	if frequencyAndTimingPresent, err = r.ReadBool(); err != nil {
+	var FrequencyAndTimingPresent bool
+	if FrequencyAndTimingPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	if frequencyAndTimingPresent {
-		ie.frequencyAndTiming = new(MeasTiming_frequencyAndTiming)
-		if err = ie.frequencyAndTiming.Decode(r); err != nil {
-			return utils.WrapError("Decode frequencyAndTiming", err)
+	if FrequencyAndTimingPresent {
+		ie.FrequencyAndTiming = new(MeasTiming_frequencyAndTiming)
+		if err = ie.FrequencyAndTiming.Decode(r); err != nil {
+			return utils.WrapError("Decode FrequencyAndTiming", err)
 		}
 	}
 
@@ -105,26 +105,26 @@ func (ie *MeasTiming) Decode(r *uper.UperReader) error {
 
 			extReader := uper.NewReader(bytes.NewReader(extBytes))
 
-			ssb_ToMeasurePresent, err := extReader.ReadBool()
+			Ssb_ToMeasurePresent, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			physCellIdPresent, err := extReader.ReadBool()
+			PhysCellIdPresent, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			// decode ssb_ToMeasure optional
-			if ssb_ToMeasurePresent {
-				ie.ssb_ToMeasure = new(SSB_ToMeasure)
-				if err = ie.ssb_ToMeasure.Decode(extReader); err != nil {
-					return utils.WrapError("Decode ssb_ToMeasure", err)
+			// decode Ssb_ToMeasure optional
+			if Ssb_ToMeasurePresent {
+				ie.Ssb_ToMeasure = new(SSB_ToMeasure)
+				if err = ie.Ssb_ToMeasure.Decode(extReader); err != nil {
+					return utils.WrapError("Decode Ssb_ToMeasure", err)
 				}
 			}
-			// decode physCellId optional
-			if physCellIdPresent {
-				ie.physCellId = new(PhysCellId)
-				if err = ie.physCellId.Decode(extReader); err != nil {
-					return utils.WrapError("Decode physCellId", err)
+			// decode PhysCellId optional
+			if PhysCellIdPresent {
+				ie.PhysCellId = new(PhysCellId)
+				if err = ie.PhysCellId.Decode(extReader); err != nil {
+					return utils.WrapError("Decode PhysCellId", err)
 				}
 			}
 		}

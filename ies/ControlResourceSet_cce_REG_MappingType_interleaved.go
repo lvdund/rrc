@@ -6,28 +6,28 @@ import (
 )
 
 type ControlResourceSet_cce_REG_MappingType_interleaved struct {
-	reg_BundleSize  ControlResourceSet_cce_REG_MappingType_interleaved_reg_BundleSize  `madatory`
-	interleaverSize ControlResourceSet_cce_REG_MappingType_interleaved_interleaverSize `madatory`
-	shiftIndex      *int64                                                             `lb:0,ub:maxNrofPhysicalResourceBlocks_1,optional`
+	Reg_BundleSize  ControlResourceSet_cce_REG_MappingType_interleaved_reg_BundleSize  `madatory`
+	InterleaverSize ControlResourceSet_cce_REG_MappingType_interleaved_interleaverSize `madatory`
+	ShiftIndex      *int64                                                             `lb:0,ub:maxNrofPhysicalResourceBlocks_1,optional`
 }
 
 func (ie *ControlResourceSet_cce_REG_MappingType_interleaved) Encode(w *uper.UperWriter) error {
 	var err error
-	preambleBits := []bool{ie.shiftIndex != nil}
+	preambleBits := []bool{ie.ShiftIndex != nil}
 	for _, bit := range preambleBits {
 		if err = w.WriteBool(bit); err != nil {
 			return err
 		}
 	}
-	if err = ie.reg_BundleSize.Encode(w); err != nil {
-		return utils.WrapError("Encode reg_BundleSize", err)
+	if err = ie.Reg_BundleSize.Encode(w); err != nil {
+		return utils.WrapError("Encode Reg_BundleSize", err)
 	}
-	if err = ie.interleaverSize.Encode(w); err != nil {
-		return utils.WrapError("Encode interleaverSize", err)
+	if err = ie.InterleaverSize.Encode(w); err != nil {
+		return utils.WrapError("Encode InterleaverSize", err)
 	}
-	if ie.shiftIndex != nil {
-		if err = w.WriteInteger(*ie.shiftIndex, &uper.Constraint{Lb: 0, Ub: maxNrofPhysicalResourceBlocks_1}, false); err != nil {
-			return utils.WrapError("Encode shiftIndex", err)
+	if ie.ShiftIndex != nil {
+		if err = w.WriteInteger(*ie.ShiftIndex, &uper.Constraint{Lb: 0, Ub: maxNrofPhysicalResourceBlocks_1}, false); err != nil {
+			return utils.WrapError("Encode ShiftIndex", err)
 		}
 	}
 	return nil
@@ -35,22 +35,22 @@ func (ie *ControlResourceSet_cce_REG_MappingType_interleaved) Encode(w *uper.Upe
 
 func (ie *ControlResourceSet_cce_REG_MappingType_interleaved) Decode(r *uper.UperReader) error {
 	var err error
-	var shiftIndexPresent bool
-	if shiftIndexPresent, err = r.ReadBool(); err != nil {
+	var ShiftIndexPresent bool
+	if ShiftIndexPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	if err = ie.reg_BundleSize.Decode(r); err != nil {
-		return utils.WrapError("Decode reg_BundleSize", err)
+	if err = ie.Reg_BundleSize.Decode(r); err != nil {
+		return utils.WrapError("Decode Reg_BundleSize", err)
 	}
-	if err = ie.interleaverSize.Decode(r); err != nil {
-		return utils.WrapError("Decode interleaverSize", err)
+	if err = ie.InterleaverSize.Decode(r); err != nil {
+		return utils.WrapError("Decode InterleaverSize", err)
 	}
-	if shiftIndexPresent {
-		var tmp_int_shiftIndex int64
-		if tmp_int_shiftIndex, err = r.ReadInteger(&uper.Constraint{Lb: 0, Ub: maxNrofPhysicalResourceBlocks_1}, false); err != nil {
-			return utils.WrapError("Decode shiftIndex", err)
+	if ShiftIndexPresent {
+		var tmp_int_ShiftIndex int64
+		if tmp_int_ShiftIndex, err = r.ReadInteger(&uper.Constraint{Lb: 0, Ub: maxNrofPhysicalResourceBlocks_1}, false); err != nil {
+			return utils.WrapError("Decode ShiftIndex", err)
 		}
-		ie.shiftIndex = &tmp_int_shiftIndex
+		ie.ShiftIndex = &tmp_int_ShiftIndex
 	}
 	return nil
 }

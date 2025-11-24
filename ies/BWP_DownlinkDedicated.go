@@ -8,70 +8,70 @@ import (
 )
 
 type BWP_DownlinkDedicated struct {
-	pdcch_Config                          *PDCCH_Config                        `optional,setuprelease`
-	pdsch_Config                          *PDSCH_Config                        `optional,setuprelease`
-	sps_Config                            *SPS_Config                          `optional,setuprelease`
-	radioLinkMonitoringConfig             *RadioLinkMonitoringConfig           `optional,setuprelease`
-	sps_ConfigToAddModList_r16            *SPS_ConfigToAddModList_r16          `optional,ext-1`
-	sps_ConfigToReleaseList_r16           *SPS_ConfigToReleaseList_r16         `optional,ext-1`
-	sps_ConfigDeactivationStateList_r16   *SPS_ConfigDeactivationStateList_r16 `optional,ext-1`
-	beamFailureRecoverySCellConfig_r16    *BeamFailureRecoveryRSConfig_r16     `optional,ext-1,setuprelease`
-	sl_PDCCH_Config_r16                   *PDCCH_Config                        `optional,ext-1,setuprelease`
-	sl_V2X_PDCCH_Config_r16               *PDCCH_Config                        `optional,ext-1,setuprelease`
-	preConfGapStatus_r17                  *uper.BitString                      `lb:maxNrofGapId_r17,ub:maxNrofGapId_r17,optional,ext-2`
-	beamFailureRecoverySpCellConfig_r17   *BeamFailureRecoveryRSConfig_r16     `optional,ext-2,setuprelease`
-	harq_FeedbackEnablingforSPSactive_r17 *bool                                `optional,ext-2`
-	cfr_ConfigMulticast_r17               *CFR_ConfigMulticast_r17             `optional,ext-2,setuprelease`
-	dl_PPW_PreConfigToAddModList_r17      *DL_PPW_PreConfigToAddModList_r17    `optional,ext-2`
-	dl_PPW_PreConfigToReleaseList_r17     *DL_PPW_PreConfigToReleaseList_r17   `optional,ext-2`
-	nonCellDefiningSSB_r17                *NonCellDefiningSSB_r17              `optional,ext-2`
-	servingCellMO_r17                     *MeasObjectId                        `optional,ext-2`
+	Pdcch_Config                          *PDCCH_Config                        `optional,setuprelease`
+	Pdsch_Config                          *PDSCH_Config                        `optional,setuprelease`
+	Sps_Config                            *SPS_Config                          `optional,setuprelease`
+	RadioLinkMonitoringConfig             *RadioLinkMonitoringConfig           `optional,setuprelease`
+	Sps_ConfigToAddModList_r16            *SPS_ConfigToAddModList_r16          `optional,ext-1`
+	Sps_ConfigToReleaseList_r16           *SPS_ConfigToReleaseList_r16         `optional,ext-1`
+	Sps_ConfigDeactivationStateList_r16   *SPS_ConfigDeactivationStateList_r16 `optional,ext-1`
+	BeamFailureRecoverySCellConfig_r16    *BeamFailureRecoveryRSConfig_r16     `optional,ext-1,setuprelease`
+	Sl_PDCCH_Config_r16                   *PDCCH_Config                        `optional,ext-1,setuprelease`
+	Sl_V2X_PDCCH_Config_r16               *PDCCH_Config                        `optional,ext-1,setuprelease`
+	PreConfGapStatus_r17                  *uper.BitString                      `lb:maxNrofGapId_r17,ub:maxNrofGapId_r17,optional,ext-2`
+	BeamFailureRecoverySpCellConfig_r17   *BeamFailureRecoveryRSConfig_r16     `optional,ext-2,setuprelease`
+	Harq_FeedbackEnablingforSPSactive_r17 *bool                                `optional,ext-2`
+	Cfr_ConfigMulticast_r17               *CFR_ConfigMulticast_r17             `optional,ext-2,setuprelease`
+	Dl_PPW_PreConfigToAddModList_r17      *DL_PPW_PreConfigToAddModList_r17    `optional,ext-2`
+	Dl_PPW_PreConfigToReleaseList_r17     *DL_PPW_PreConfigToReleaseList_r17   `optional,ext-2`
+	NonCellDefiningSSB_r17                *NonCellDefiningSSB_r17              `optional,ext-2`
+	ServingCellMO_r17                     *MeasObjectId                        `optional,ext-2`
 }
 
 func (ie *BWP_DownlinkDedicated) Encode(w *uper.UperWriter) error {
 	var err error
-	hasExtensions := ie.sps_ConfigToAddModList_r16 != nil || ie.sps_ConfigToReleaseList_r16 != nil || ie.sps_ConfigDeactivationStateList_r16 != nil || ie.beamFailureRecoverySCellConfig_r16 != nil || ie.sl_PDCCH_Config_r16 != nil || ie.sl_V2X_PDCCH_Config_r16 != nil || ie.preConfGapStatus_r17 != nil || ie.beamFailureRecoverySpCellConfig_r17 != nil || ie.harq_FeedbackEnablingforSPSactive_r17 != nil || ie.cfr_ConfigMulticast_r17 != nil || ie.dl_PPW_PreConfigToAddModList_r17 != nil || ie.dl_PPW_PreConfigToReleaseList_r17 != nil || ie.nonCellDefiningSSB_r17 != nil || ie.servingCellMO_r17 != nil
-	preambleBits := []bool{hasExtensions, ie.pdcch_Config != nil, ie.pdsch_Config != nil, ie.sps_Config != nil, ie.radioLinkMonitoringConfig != nil}
+	hasExtensions := ie.Sps_ConfigToAddModList_r16 != nil || ie.Sps_ConfigToReleaseList_r16 != nil || ie.Sps_ConfigDeactivationStateList_r16 != nil || ie.BeamFailureRecoverySCellConfig_r16 != nil || ie.Sl_PDCCH_Config_r16 != nil || ie.Sl_V2X_PDCCH_Config_r16 != nil || ie.PreConfGapStatus_r17 != nil || ie.BeamFailureRecoverySpCellConfig_r17 != nil || ie.Harq_FeedbackEnablingforSPSactive_r17 != nil || ie.Cfr_ConfigMulticast_r17 != nil || ie.Dl_PPW_PreConfigToAddModList_r17 != nil || ie.Dl_PPW_PreConfigToReleaseList_r17 != nil || ie.NonCellDefiningSSB_r17 != nil || ie.ServingCellMO_r17 != nil
+	preambleBits := []bool{hasExtensions, ie.Pdcch_Config != nil, ie.Pdsch_Config != nil, ie.Sps_Config != nil, ie.RadioLinkMonitoringConfig != nil}
 	for _, bit := range preambleBits {
 		if err = w.WriteBool(bit); err != nil {
 			return err
 		}
 	}
-	if ie.pdcch_Config != nil {
-		tmp_pdcch_Config := utils.SetupRelease[*PDCCH_Config]{
-			Setup: ie.pdcch_Config,
+	if ie.Pdcch_Config != nil {
+		tmp_Pdcch_Config := utils.SetupRelease[*PDCCH_Config]{
+			Setup: ie.Pdcch_Config,
 		}
-		if err = tmp_pdcch_Config.Encode(w); err != nil {
-			return utils.WrapError("Encode pdcch_Config", err)
-		}
-	}
-	if ie.pdsch_Config != nil {
-		tmp_pdsch_Config := utils.SetupRelease[*PDSCH_Config]{
-			Setup: ie.pdsch_Config,
-		}
-		if err = tmp_pdsch_Config.Encode(w); err != nil {
-			return utils.WrapError("Encode pdsch_Config", err)
+		if err = tmp_Pdcch_Config.Encode(w); err != nil {
+			return utils.WrapError("Encode Pdcch_Config", err)
 		}
 	}
-	if ie.sps_Config != nil {
-		tmp_sps_Config := utils.SetupRelease[*SPS_Config]{
-			Setup: ie.sps_Config,
+	if ie.Pdsch_Config != nil {
+		tmp_Pdsch_Config := utils.SetupRelease[*PDSCH_Config]{
+			Setup: ie.Pdsch_Config,
 		}
-		if err = tmp_sps_Config.Encode(w); err != nil {
-			return utils.WrapError("Encode sps_Config", err)
+		if err = tmp_Pdsch_Config.Encode(w); err != nil {
+			return utils.WrapError("Encode Pdsch_Config", err)
 		}
 	}
-	if ie.radioLinkMonitoringConfig != nil {
-		tmp_radioLinkMonitoringConfig := utils.SetupRelease[*RadioLinkMonitoringConfig]{
-			Setup: ie.radioLinkMonitoringConfig,
+	if ie.Sps_Config != nil {
+		tmp_Sps_Config := utils.SetupRelease[*SPS_Config]{
+			Setup: ie.Sps_Config,
 		}
-		if err = tmp_radioLinkMonitoringConfig.Encode(w); err != nil {
-			return utils.WrapError("Encode radioLinkMonitoringConfig", err)
+		if err = tmp_Sps_Config.Encode(w); err != nil {
+			return utils.WrapError("Encode Sps_Config", err)
+		}
+	}
+	if ie.RadioLinkMonitoringConfig != nil {
+		tmp_RadioLinkMonitoringConfig := utils.SetupRelease[*RadioLinkMonitoringConfig]{
+			Setup: ie.RadioLinkMonitoringConfig,
+		}
+		if err = tmp_RadioLinkMonitoringConfig.Encode(w); err != nil {
+			return utils.WrapError("Encode RadioLinkMonitoringConfig", err)
 		}
 	}
 	if hasExtensions {
 		// Extension bitmap: 2 bits for 2 extension groups
-		extBitmap := []bool{ie.sps_ConfigToAddModList_r16 != nil || ie.sps_ConfigToReleaseList_r16 != nil || ie.sps_ConfigDeactivationStateList_r16 != nil || ie.beamFailureRecoverySCellConfig_r16 != nil || ie.sl_PDCCH_Config_r16 != nil || ie.sl_V2X_PDCCH_Config_r16 != nil, ie.preConfGapStatus_r17 != nil || ie.beamFailureRecoverySpCellConfig_r17 != nil || ie.harq_FeedbackEnablingforSPSactive_r17 != nil || ie.cfr_ConfigMulticast_r17 != nil || ie.dl_PPW_PreConfigToAddModList_r17 != nil || ie.dl_PPW_PreConfigToReleaseList_r17 != nil || ie.nonCellDefiningSSB_r17 != nil || ie.servingCellMO_r17 != nil}
+		extBitmap := []bool{ie.Sps_ConfigToAddModList_r16 != nil || ie.Sps_ConfigToReleaseList_r16 != nil || ie.Sps_ConfigDeactivationStateList_r16 != nil || ie.BeamFailureRecoverySCellConfig_r16 != nil || ie.Sl_PDCCH_Config_r16 != nil || ie.Sl_V2X_PDCCH_Config_r16 != nil, ie.PreConfGapStatus_r17 != nil || ie.BeamFailureRecoverySpCellConfig_r17 != nil || ie.Harq_FeedbackEnablingforSPSactive_r17 != nil || ie.Cfr_ConfigMulticast_r17 != nil || ie.Dl_PPW_PreConfigToAddModList_r17 != nil || ie.Dl_PPW_PreConfigToReleaseList_r17 != nil || ie.NonCellDefiningSSB_r17 != nil || ie.ServingCellMO_r17 != nil}
 		if err := w.WriteExtBitMap(extBitmap); err != nil {
 			return utils.WrapError("WriteExtBitMap BWP_DownlinkDedicated", err)
 		}
@@ -82,56 +82,56 @@ func (ie *BWP_DownlinkDedicated) Encode(w *uper.UperWriter) error {
 			extWriter := uper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 1
-			optionals_ext_1 := []bool{ie.sps_ConfigToAddModList_r16 != nil, ie.sps_ConfigToReleaseList_r16 != nil, ie.sps_ConfigDeactivationStateList_r16 != nil, ie.beamFailureRecoverySCellConfig_r16 != nil, ie.sl_PDCCH_Config_r16 != nil, ie.sl_V2X_PDCCH_Config_r16 != nil}
+			optionals_ext_1 := []bool{ie.Sps_ConfigToAddModList_r16 != nil, ie.Sps_ConfigToReleaseList_r16 != nil, ie.Sps_ConfigDeactivationStateList_r16 != nil, ie.BeamFailureRecoverySCellConfig_r16 != nil, ie.Sl_PDCCH_Config_r16 != nil, ie.Sl_V2X_PDCCH_Config_r16 != nil}
 			for _, bit := range optionals_ext_1 {
 				if err := extWriter.WriteBool(bit); err != nil {
 					return err
 				}
 			}
 
-			// encode sps_ConfigToAddModList_r16 optional
-			if ie.sps_ConfigToAddModList_r16 != nil {
-				if err = ie.sps_ConfigToAddModList_r16.Encode(extWriter); err != nil {
-					return utils.WrapError("Encode sps_ConfigToAddModList_r16", err)
+			// encode Sps_ConfigToAddModList_r16 optional
+			if ie.Sps_ConfigToAddModList_r16 != nil {
+				if err = ie.Sps_ConfigToAddModList_r16.Encode(extWriter); err != nil {
+					return utils.WrapError("Encode Sps_ConfigToAddModList_r16", err)
 				}
 			}
-			// encode sps_ConfigToReleaseList_r16 optional
-			if ie.sps_ConfigToReleaseList_r16 != nil {
-				if err = ie.sps_ConfigToReleaseList_r16.Encode(extWriter); err != nil {
-					return utils.WrapError("Encode sps_ConfigToReleaseList_r16", err)
+			// encode Sps_ConfigToReleaseList_r16 optional
+			if ie.Sps_ConfigToReleaseList_r16 != nil {
+				if err = ie.Sps_ConfigToReleaseList_r16.Encode(extWriter); err != nil {
+					return utils.WrapError("Encode Sps_ConfigToReleaseList_r16", err)
 				}
 			}
-			// encode sps_ConfigDeactivationStateList_r16 optional
-			if ie.sps_ConfigDeactivationStateList_r16 != nil {
-				if err = ie.sps_ConfigDeactivationStateList_r16.Encode(extWriter); err != nil {
-					return utils.WrapError("Encode sps_ConfigDeactivationStateList_r16", err)
+			// encode Sps_ConfigDeactivationStateList_r16 optional
+			if ie.Sps_ConfigDeactivationStateList_r16 != nil {
+				if err = ie.Sps_ConfigDeactivationStateList_r16.Encode(extWriter); err != nil {
+					return utils.WrapError("Encode Sps_ConfigDeactivationStateList_r16", err)
 				}
 			}
-			// encode beamFailureRecoverySCellConfig_r16 optional
-			if ie.beamFailureRecoverySCellConfig_r16 != nil {
-				tmp_beamFailureRecoverySCellConfig_r16 := utils.SetupRelease[*BeamFailureRecoveryRSConfig_r16]{
-					Setup: ie.beamFailureRecoverySCellConfig_r16,
+			// encode BeamFailureRecoverySCellConfig_r16 optional
+			if ie.BeamFailureRecoverySCellConfig_r16 != nil {
+				tmp_BeamFailureRecoverySCellConfig_r16 := utils.SetupRelease[*BeamFailureRecoveryRSConfig_r16]{
+					Setup: ie.BeamFailureRecoverySCellConfig_r16,
 				}
-				if err = tmp_beamFailureRecoverySCellConfig_r16.Encode(extWriter); err != nil {
-					return utils.WrapError("Encode beamFailureRecoverySCellConfig_r16", err)
-				}
-			}
-			// encode sl_PDCCH_Config_r16 optional
-			if ie.sl_PDCCH_Config_r16 != nil {
-				tmp_sl_PDCCH_Config_r16 := utils.SetupRelease[*PDCCH_Config]{
-					Setup: ie.sl_PDCCH_Config_r16,
-				}
-				if err = tmp_sl_PDCCH_Config_r16.Encode(extWriter); err != nil {
-					return utils.WrapError("Encode sl_PDCCH_Config_r16", err)
+				if err = tmp_BeamFailureRecoverySCellConfig_r16.Encode(extWriter); err != nil {
+					return utils.WrapError("Encode BeamFailureRecoverySCellConfig_r16", err)
 				}
 			}
-			// encode sl_V2X_PDCCH_Config_r16 optional
-			if ie.sl_V2X_PDCCH_Config_r16 != nil {
-				tmp_sl_V2X_PDCCH_Config_r16 := utils.SetupRelease[*PDCCH_Config]{
-					Setup: ie.sl_V2X_PDCCH_Config_r16,
+			// encode Sl_PDCCH_Config_r16 optional
+			if ie.Sl_PDCCH_Config_r16 != nil {
+				tmp_Sl_PDCCH_Config_r16 := utils.SetupRelease[*PDCCH_Config]{
+					Setup: ie.Sl_PDCCH_Config_r16,
 				}
-				if err = tmp_sl_V2X_PDCCH_Config_r16.Encode(extWriter); err != nil {
-					return utils.WrapError("Encode sl_V2X_PDCCH_Config_r16", err)
+				if err = tmp_Sl_PDCCH_Config_r16.Encode(extWriter); err != nil {
+					return utils.WrapError("Encode Sl_PDCCH_Config_r16", err)
+				}
+			}
+			// encode Sl_V2X_PDCCH_Config_r16 optional
+			if ie.Sl_V2X_PDCCH_Config_r16 != nil {
+				tmp_Sl_V2X_PDCCH_Config_r16 := utils.SetupRelease[*PDCCH_Config]{
+					Setup: ie.Sl_V2X_PDCCH_Config_r16,
+				}
+				if err = tmp_Sl_V2X_PDCCH_Config_r16.Encode(extWriter); err != nil {
+					return utils.WrapError("Encode Sl_V2X_PDCCH_Config_r16", err)
 				}
 			}
 
@@ -150,65 +150,65 @@ func (ie *BWP_DownlinkDedicated) Encode(w *uper.UperWriter) error {
 			extWriter := uper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 2
-			optionals_ext_2 := []bool{ie.preConfGapStatus_r17 != nil, ie.beamFailureRecoverySpCellConfig_r17 != nil, ie.harq_FeedbackEnablingforSPSactive_r17 != nil, ie.cfr_ConfigMulticast_r17 != nil, ie.dl_PPW_PreConfigToAddModList_r17 != nil, ie.dl_PPW_PreConfigToReleaseList_r17 != nil, ie.nonCellDefiningSSB_r17 != nil, ie.servingCellMO_r17 != nil}
+			optionals_ext_2 := []bool{ie.PreConfGapStatus_r17 != nil, ie.BeamFailureRecoverySpCellConfig_r17 != nil, ie.Harq_FeedbackEnablingforSPSactive_r17 != nil, ie.Cfr_ConfigMulticast_r17 != nil, ie.Dl_PPW_PreConfigToAddModList_r17 != nil, ie.Dl_PPW_PreConfigToReleaseList_r17 != nil, ie.NonCellDefiningSSB_r17 != nil, ie.ServingCellMO_r17 != nil}
 			for _, bit := range optionals_ext_2 {
 				if err := extWriter.WriteBool(bit); err != nil {
 					return err
 				}
 			}
 
-			// encode preConfGapStatus_r17 optional
-			if ie.preConfGapStatus_r17 != nil {
-				if err = extWriter.WriteBitString(ie.preConfGapStatus_r17.Bytes, uint(ie.preConfGapStatus_r17.NumBits), &uper.Constraint{Lb: maxNrofGapId_r17, Ub: maxNrofGapId_r17}, false); err != nil {
-					return utils.WrapError("Encode preConfGapStatus_r17", err)
+			// encode PreConfGapStatus_r17 optional
+			if ie.PreConfGapStatus_r17 != nil {
+				if err = extWriter.WriteBitString(ie.PreConfGapStatus_r17.Bytes, uint(ie.PreConfGapStatus_r17.NumBits), &uper.Constraint{Lb: maxNrofGapId_r17, Ub: maxNrofGapId_r17}, false); err != nil {
+					return utils.WrapError("Encode PreConfGapStatus_r17", err)
 				}
 			}
-			// encode beamFailureRecoverySpCellConfig_r17 optional
-			if ie.beamFailureRecoverySpCellConfig_r17 != nil {
-				tmp_beamFailureRecoverySpCellConfig_r17 := utils.SetupRelease[*BeamFailureRecoveryRSConfig_r16]{
-					Setup: ie.beamFailureRecoverySpCellConfig_r17,
+			// encode BeamFailureRecoverySpCellConfig_r17 optional
+			if ie.BeamFailureRecoverySpCellConfig_r17 != nil {
+				tmp_BeamFailureRecoverySpCellConfig_r17 := utils.SetupRelease[*BeamFailureRecoveryRSConfig_r16]{
+					Setup: ie.BeamFailureRecoverySpCellConfig_r17,
 				}
-				if err = tmp_beamFailureRecoverySpCellConfig_r17.Encode(extWriter); err != nil {
-					return utils.WrapError("Encode beamFailureRecoverySpCellConfig_r17", err)
-				}
-			}
-			// encode harq_FeedbackEnablingforSPSactive_r17 optional
-			if ie.harq_FeedbackEnablingforSPSactive_r17 != nil {
-				if err = extWriter.WriteBoolean(*ie.harq_FeedbackEnablingforSPSactive_r17); err != nil {
-					return utils.WrapError("Encode harq_FeedbackEnablingforSPSactive_r17", err)
+				if err = tmp_BeamFailureRecoverySpCellConfig_r17.Encode(extWriter); err != nil {
+					return utils.WrapError("Encode BeamFailureRecoverySpCellConfig_r17", err)
 				}
 			}
-			// encode cfr_ConfigMulticast_r17 optional
-			if ie.cfr_ConfigMulticast_r17 != nil {
-				tmp_cfr_ConfigMulticast_r17 := utils.SetupRelease[*CFR_ConfigMulticast_r17]{
-					Setup: ie.cfr_ConfigMulticast_r17,
-				}
-				if err = tmp_cfr_ConfigMulticast_r17.Encode(extWriter); err != nil {
-					return utils.WrapError("Encode cfr_ConfigMulticast_r17", err)
+			// encode Harq_FeedbackEnablingforSPSactive_r17 optional
+			if ie.Harq_FeedbackEnablingforSPSactive_r17 != nil {
+				if err = extWriter.WriteBoolean(*ie.Harq_FeedbackEnablingforSPSactive_r17); err != nil {
+					return utils.WrapError("Encode Harq_FeedbackEnablingforSPSactive_r17", err)
 				}
 			}
-			// encode dl_PPW_PreConfigToAddModList_r17 optional
-			if ie.dl_PPW_PreConfigToAddModList_r17 != nil {
-				if err = ie.dl_PPW_PreConfigToAddModList_r17.Encode(extWriter); err != nil {
-					return utils.WrapError("Encode dl_PPW_PreConfigToAddModList_r17", err)
+			// encode Cfr_ConfigMulticast_r17 optional
+			if ie.Cfr_ConfigMulticast_r17 != nil {
+				tmp_Cfr_ConfigMulticast_r17 := utils.SetupRelease[*CFR_ConfigMulticast_r17]{
+					Setup: ie.Cfr_ConfigMulticast_r17,
+				}
+				if err = tmp_Cfr_ConfigMulticast_r17.Encode(extWriter); err != nil {
+					return utils.WrapError("Encode Cfr_ConfigMulticast_r17", err)
 				}
 			}
-			// encode dl_PPW_PreConfigToReleaseList_r17 optional
-			if ie.dl_PPW_PreConfigToReleaseList_r17 != nil {
-				if err = ie.dl_PPW_PreConfigToReleaseList_r17.Encode(extWriter); err != nil {
-					return utils.WrapError("Encode dl_PPW_PreConfigToReleaseList_r17", err)
+			// encode Dl_PPW_PreConfigToAddModList_r17 optional
+			if ie.Dl_PPW_PreConfigToAddModList_r17 != nil {
+				if err = ie.Dl_PPW_PreConfigToAddModList_r17.Encode(extWriter); err != nil {
+					return utils.WrapError("Encode Dl_PPW_PreConfigToAddModList_r17", err)
 				}
 			}
-			// encode nonCellDefiningSSB_r17 optional
-			if ie.nonCellDefiningSSB_r17 != nil {
-				if err = ie.nonCellDefiningSSB_r17.Encode(extWriter); err != nil {
-					return utils.WrapError("Encode nonCellDefiningSSB_r17", err)
+			// encode Dl_PPW_PreConfigToReleaseList_r17 optional
+			if ie.Dl_PPW_PreConfigToReleaseList_r17 != nil {
+				if err = ie.Dl_PPW_PreConfigToReleaseList_r17.Encode(extWriter); err != nil {
+					return utils.WrapError("Encode Dl_PPW_PreConfigToReleaseList_r17", err)
 				}
 			}
-			// encode servingCellMO_r17 optional
-			if ie.servingCellMO_r17 != nil {
-				if err = ie.servingCellMO_r17.Encode(extWriter); err != nil {
-					return utils.WrapError("Encode servingCellMO_r17", err)
+			// encode NonCellDefiningSSB_r17 optional
+			if ie.NonCellDefiningSSB_r17 != nil {
+				if err = ie.NonCellDefiningSSB_r17.Encode(extWriter); err != nil {
+					return utils.WrapError("Encode NonCellDefiningSSB_r17", err)
+				}
+			}
+			// encode ServingCellMO_r17 optional
+			if ie.ServingCellMO_r17 != nil {
+				if err = ie.ServingCellMO_r17.Encode(extWriter); err != nil {
+					return utils.WrapError("Encode ServingCellMO_r17", err)
 				}
 			}
 
@@ -230,49 +230,49 @@ func (ie *BWP_DownlinkDedicated) Decode(r *uper.UperReader) error {
 	if extensionBit, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var pdcch_ConfigPresent bool
-	if pdcch_ConfigPresent, err = r.ReadBool(); err != nil {
+	var Pdcch_ConfigPresent bool
+	if Pdcch_ConfigPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var pdsch_ConfigPresent bool
-	if pdsch_ConfigPresent, err = r.ReadBool(); err != nil {
+	var Pdsch_ConfigPresent bool
+	if Pdsch_ConfigPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var sps_ConfigPresent bool
-	if sps_ConfigPresent, err = r.ReadBool(); err != nil {
+	var Sps_ConfigPresent bool
+	if Sps_ConfigPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var radioLinkMonitoringConfigPresent bool
-	if radioLinkMonitoringConfigPresent, err = r.ReadBool(); err != nil {
+	var RadioLinkMonitoringConfigPresent bool
+	if RadioLinkMonitoringConfigPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	if pdcch_ConfigPresent {
-		tmp_pdcch_Config := utils.SetupRelease[*PDCCH_Config]{}
-		if err = tmp_pdcch_Config.Decode(r); err != nil {
-			return utils.WrapError("Decode pdcch_Config", err)
+	if Pdcch_ConfigPresent {
+		tmp_Pdcch_Config := utils.SetupRelease[*PDCCH_Config]{}
+		if err = tmp_Pdcch_Config.Decode(r); err != nil {
+			return utils.WrapError("Decode Pdcch_Config", err)
 		}
-		ie.pdcch_Config = tmp_pdcch_Config.Setup
+		ie.Pdcch_Config = tmp_Pdcch_Config.Setup
 	}
-	if pdsch_ConfigPresent {
-		tmp_pdsch_Config := utils.SetupRelease[*PDSCH_Config]{}
-		if err = tmp_pdsch_Config.Decode(r); err != nil {
-			return utils.WrapError("Decode pdsch_Config", err)
+	if Pdsch_ConfigPresent {
+		tmp_Pdsch_Config := utils.SetupRelease[*PDSCH_Config]{}
+		if err = tmp_Pdsch_Config.Decode(r); err != nil {
+			return utils.WrapError("Decode Pdsch_Config", err)
 		}
-		ie.pdsch_Config = tmp_pdsch_Config.Setup
+		ie.Pdsch_Config = tmp_Pdsch_Config.Setup
 	}
-	if sps_ConfigPresent {
-		tmp_sps_Config := utils.SetupRelease[*SPS_Config]{}
-		if err = tmp_sps_Config.Decode(r); err != nil {
-			return utils.WrapError("Decode sps_Config", err)
+	if Sps_ConfigPresent {
+		tmp_Sps_Config := utils.SetupRelease[*SPS_Config]{}
+		if err = tmp_Sps_Config.Decode(r); err != nil {
+			return utils.WrapError("Decode Sps_Config", err)
 		}
-		ie.sps_Config = tmp_sps_Config.Setup
+		ie.Sps_Config = tmp_Sps_Config.Setup
 	}
-	if radioLinkMonitoringConfigPresent {
-		tmp_radioLinkMonitoringConfig := utils.SetupRelease[*RadioLinkMonitoringConfig]{}
-		if err = tmp_radioLinkMonitoringConfig.Decode(r); err != nil {
-			return utils.WrapError("Decode radioLinkMonitoringConfig", err)
+	if RadioLinkMonitoringConfigPresent {
+		tmp_RadioLinkMonitoringConfig := utils.SetupRelease[*RadioLinkMonitoringConfig]{}
+		if err = tmp_RadioLinkMonitoringConfig.Decode(r); err != nil {
+			return utils.WrapError("Decode RadioLinkMonitoringConfig", err)
 		}
-		ie.radioLinkMonitoringConfig = tmp_radioLinkMonitoringConfig.Setup
+		ie.RadioLinkMonitoringConfig = tmp_RadioLinkMonitoringConfig.Setup
 	}
 
 	if extensionBit {
@@ -291,74 +291,74 @@ func (ie *BWP_DownlinkDedicated) Decode(r *uper.UperReader) error {
 
 			extReader := uper.NewReader(bytes.NewReader(extBytes))
 
-			sps_ConfigToAddModList_r16Present, err := extReader.ReadBool()
+			Sps_ConfigToAddModList_r16Present, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			sps_ConfigToReleaseList_r16Present, err := extReader.ReadBool()
+			Sps_ConfigToReleaseList_r16Present, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			sps_ConfigDeactivationStateList_r16Present, err := extReader.ReadBool()
+			Sps_ConfigDeactivationStateList_r16Present, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			beamFailureRecoverySCellConfig_r16Present, err := extReader.ReadBool()
+			BeamFailureRecoverySCellConfig_r16Present, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			sl_PDCCH_Config_r16Present, err := extReader.ReadBool()
+			Sl_PDCCH_Config_r16Present, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			sl_V2X_PDCCH_Config_r16Present, err := extReader.ReadBool()
+			Sl_V2X_PDCCH_Config_r16Present, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			// decode sps_ConfigToAddModList_r16 optional
-			if sps_ConfigToAddModList_r16Present {
-				ie.sps_ConfigToAddModList_r16 = new(SPS_ConfigToAddModList_r16)
-				if err = ie.sps_ConfigToAddModList_r16.Decode(extReader); err != nil {
-					return utils.WrapError("Decode sps_ConfigToAddModList_r16", err)
+			// decode Sps_ConfigToAddModList_r16 optional
+			if Sps_ConfigToAddModList_r16Present {
+				ie.Sps_ConfigToAddModList_r16 = new(SPS_ConfigToAddModList_r16)
+				if err = ie.Sps_ConfigToAddModList_r16.Decode(extReader); err != nil {
+					return utils.WrapError("Decode Sps_ConfigToAddModList_r16", err)
 				}
 			}
-			// decode sps_ConfigToReleaseList_r16 optional
-			if sps_ConfigToReleaseList_r16Present {
-				ie.sps_ConfigToReleaseList_r16 = new(SPS_ConfigToReleaseList_r16)
-				if err = ie.sps_ConfigToReleaseList_r16.Decode(extReader); err != nil {
-					return utils.WrapError("Decode sps_ConfigToReleaseList_r16", err)
+			// decode Sps_ConfigToReleaseList_r16 optional
+			if Sps_ConfigToReleaseList_r16Present {
+				ie.Sps_ConfigToReleaseList_r16 = new(SPS_ConfigToReleaseList_r16)
+				if err = ie.Sps_ConfigToReleaseList_r16.Decode(extReader); err != nil {
+					return utils.WrapError("Decode Sps_ConfigToReleaseList_r16", err)
 				}
 			}
-			// decode sps_ConfigDeactivationStateList_r16 optional
-			if sps_ConfigDeactivationStateList_r16Present {
-				ie.sps_ConfigDeactivationStateList_r16 = new(SPS_ConfigDeactivationStateList_r16)
-				if err = ie.sps_ConfigDeactivationStateList_r16.Decode(extReader); err != nil {
-					return utils.WrapError("Decode sps_ConfigDeactivationStateList_r16", err)
+			// decode Sps_ConfigDeactivationStateList_r16 optional
+			if Sps_ConfigDeactivationStateList_r16Present {
+				ie.Sps_ConfigDeactivationStateList_r16 = new(SPS_ConfigDeactivationStateList_r16)
+				if err = ie.Sps_ConfigDeactivationStateList_r16.Decode(extReader); err != nil {
+					return utils.WrapError("Decode Sps_ConfigDeactivationStateList_r16", err)
 				}
 			}
-			// decode beamFailureRecoverySCellConfig_r16 optional
-			if beamFailureRecoverySCellConfig_r16Present {
-				tmp_beamFailureRecoverySCellConfig_r16 := utils.SetupRelease[*BeamFailureRecoveryRSConfig_r16]{}
-				if err = tmp_beamFailureRecoverySCellConfig_r16.Decode(extReader); err != nil {
-					return utils.WrapError("Decode beamFailureRecoverySCellConfig_r16", err)
+			// decode BeamFailureRecoverySCellConfig_r16 optional
+			if BeamFailureRecoverySCellConfig_r16Present {
+				tmp_BeamFailureRecoverySCellConfig_r16 := utils.SetupRelease[*BeamFailureRecoveryRSConfig_r16]{}
+				if err = tmp_BeamFailureRecoverySCellConfig_r16.Decode(extReader); err != nil {
+					return utils.WrapError("Decode BeamFailureRecoverySCellConfig_r16", err)
 				}
-				ie.beamFailureRecoverySCellConfig_r16 = tmp_beamFailureRecoverySCellConfig_r16.Setup
+				ie.BeamFailureRecoverySCellConfig_r16 = tmp_BeamFailureRecoverySCellConfig_r16.Setup
 			}
-			// decode sl_PDCCH_Config_r16 optional
-			if sl_PDCCH_Config_r16Present {
-				tmp_sl_PDCCH_Config_r16 := utils.SetupRelease[*PDCCH_Config]{}
-				if err = tmp_sl_PDCCH_Config_r16.Decode(extReader); err != nil {
-					return utils.WrapError("Decode sl_PDCCH_Config_r16", err)
+			// decode Sl_PDCCH_Config_r16 optional
+			if Sl_PDCCH_Config_r16Present {
+				tmp_Sl_PDCCH_Config_r16 := utils.SetupRelease[*PDCCH_Config]{}
+				if err = tmp_Sl_PDCCH_Config_r16.Decode(extReader); err != nil {
+					return utils.WrapError("Decode Sl_PDCCH_Config_r16", err)
 				}
-				ie.sl_PDCCH_Config_r16 = tmp_sl_PDCCH_Config_r16.Setup
+				ie.Sl_PDCCH_Config_r16 = tmp_Sl_PDCCH_Config_r16.Setup
 			}
-			// decode sl_V2X_PDCCH_Config_r16 optional
-			if sl_V2X_PDCCH_Config_r16Present {
-				tmp_sl_V2X_PDCCH_Config_r16 := utils.SetupRelease[*PDCCH_Config]{}
-				if err = tmp_sl_V2X_PDCCH_Config_r16.Decode(extReader); err != nil {
-					return utils.WrapError("Decode sl_V2X_PDCCH_Config_r16", err)
+			// decode Sl_V2X_PDCCH_Config_r16 optional
+			if Sl_V2X_PDCCH_Config_r16Present {
+				tmp_Sl_V2X_PDCCH_Config_r16 := utils.SetupRelease[*PDCCH_Config]{}
+				if err = tmp_Sl_V2X_PDCCH_Config_r16.Decode(extReader); err != nil {
+					return utils.WrapError("Decode Sl_V2X_PDCCH_Config_r16", err)
 				}
-				ie.sl_V2X_PDCCH_Config_r16 = tmp_sl_V2X_PDCCH_Config_r16.Setup
+				ie.Sl_V2X_PDCCH_Config_r16 = tmp_Sl_V2X_PDCCH_Config_r16.Setup
 			}
 		}
 		// decode extension group 2
@@ -370,101 +370,101 @@ func (ie *BWP_DownlinkDedicated) Decode(r *uper.UperReader) error {
 
 			extReader := uper.NewReader(bytes.NewReader(extBytes))
 
-			preConfGapStatus_r17Present, err := extReader.ReadBool()
+			PreConfGapStatus_r17Present, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			beamFailureRecoverySpCellConfig_r17Present, err := extReader.ReadBool()
+			BeamFailureRecoverySpCellConfig_r17Present, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			harq_FeedbackEnablingforSPSactive_r17Present, err := extReader.ReadBool()
+			Harq_FeedbackEnablingforSPSactive_r17Present, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			cfr_ConfigMulticast_r17Present, err := extReader.ReadBool()
+			Cfr_ConfigMulticast_r17Present, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			dl_PPW_PreConfigToAddModList_r17Present, err := extReader.ReadBool()
+			Dl_PPW_PreConfigToAddModList_r17Present, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			dl_PPW_PreConfigToReleaseList_r17Present, err := extReader.ReadBool()
+			Dl_PPW_PreConfigToReleaseList_r17Present, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			nonCellDefiningSSB_r17Present, err := extReader.ReadBool()
+			NonCellDefiningSSB_r17Present, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			servingCellMO_r17Present, err := extReader.ReadBool()
+			ServingCellMO_r17Present, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			// decode preConfGapStatus_r17 optional
-			if preConfGapStatus_r17Present {
-				var tmp_bs_preConfGapStatus_r17 []byte
-				var n_preConfGapStatus_r17 uint
-				if tmp_bs_preConfGapStatus_r17, n_preConfGapStatus_r17, err = extReader.ReadBitString(&uper.Constraint{Lb: maxNrofGapId_r17, Ub: maxNrofGapId_r17}, false); err != nil {
-					return utils.WrapError("Decode preConfGapStatus_r17", err)
+			// decode PreConfGapStatus_r17 optional
+			if PreConfGapStatus_r17Present {
+				var tmp_bs_PreConfGapStatus_r17 []byte
+				var n_PreConfGapStatus_r17 uint
+				if tmp_bs_PreConfGapStatus_r17, n_PreConfGapStatus_r17, err = extReader.ReadBitString(&uper.Constraint{Lb: maxNrofGapId_r17, Ub: maxNrofGapId_r17}, false); err != nil {
+					return utils.WrapError("Decode PreConfGapStatus_r17", err)
 				}
 				tmp_bitstring := uper.BitString{
-					Bytes:   tmp_bs_preConfGapStatus_r17,
-					NumBits: uint64(n_preConfGapStatus_r17),
+					Bytes:   tmp_bs_PreConfGapStatus_r17,
+					NumBits: uint64(n_PreConfGapStatus_r17),
 				}
-				ie.preConfGapStatus_r17 = &tmp_bitstring
+				ie.PreConfGapStatus_r17 = &tmp_bitstring
 			}
-			// decode beamFailureRecoverySpCellConfig_r17 optional
-			if beamFailureRecoverySpCellConfig_r17Present {
-				tmp_beamFailureRecoverySpCellConfig_r17 := utils.SetupRelease[*BeamFailureRecoveryRSConfig_r16]{}
-				if err = tmp_beamFailureRecoverySpCellConfig_r17.Decode(extReader); err != nil {
-					return utils.WrapError("Decode beamFailureRecoverySpCellConfig_r17", err)
+			// decode BeamFailureRecoverySpCellConfig_r17 optional
+			if BeamFailureRecoverySpCellConfig_r17Present {
+				tmp_BeamFailureRecoverySpCellConfig_r17 := utils.SetupRelease[*BeamFailureRecoveryRSConfig_r16]{}
+				if err = tmp_BeamFailureRecoverySpCellConfig_r17.Decode(extReader); err != nil {
+					return utils.WrapError("Decode BeamFailureRecoverySpCellConfig_r17", err)
 				}
-				ie.beamFailureRecoverySpCellConfig_r17 = tmp_beamFailureRecoverySpCellConfig_r17.Setup
+				ie.BeamFailureRecoverySpCellConfig_r17 = tmp_BeamFailureRecoverySpCellConfig_r17.Setup
 			}
-			// decode harq_FeedbackEnablingforSPSactive_r17 optional
-			if harq_FeedbackEnablingforSPSactive_r17Present {
-				var tmp_bool_harq_FeedbackEnablingforSPSactive_r17 bool
-				if tmp_bool_harq_FeedbackEnablingforSPSactive_r17, err = extReader.ReadBoolean(); err != nil {
-					return utils.WrapError("Decode harq_FeedbackEnablingforSPSactive_r17", err)
+			// decode Harq_FeedbackEnablingforSPSactive_r17 optional
+			if Harq_FeedbackEnablingforSPSactive_r17Present {
+				var tmp_bool_Harq_FeedbackEnablingforSPSactive_r17 bool
+				if tmp_bool_Harq_FeedbackEnablingforSPSactive_r17, err = extReader.ReadBoolean(); err != nil {
+					return utils.WrapError("Decode Harq_FeedbackEnablingforSPSactive_r17", err)
 				}
-				ie.harq_FeedbackEnablingforSPSactive_r17 = &tmp_bool_harq_FeedbackEnablingforSPSactive_r17
+				ie.Harq_FeedbackEnablingforSPSactive_r17 = &tmp_bool_Harq_FeedbackEnablingforSPSactive_r17
 			}
-			// decode cfr_ConfigMulticast_r17 optional
-			if cfr_ConfigMulticast_r17Present {
-				tmp_cfr_ConfigMulticast_r17 := utils.SetupRelease[*CFR_ConfigMulticast_r17]{}
-				if err = tmp_cfr_ConfigMulticast_r17.Decode(extReader); err != nil {
-					return utils.WrapError("Decode cfr_ConfigMulticast_r17", err)
+			// decode Cfr_ConfigMulticast_r17 optional
+			if Cfr_ConfigMulticast_r17Present {
+				tmp_Cfr_ConfigMulticast_r17 := utils.SetupRelease[*CFR_ConfigMulticast_r17]{}
+				if err = tmp_Cfr_ConfigMulticast_r17.Decode(extReader); err != nil {
+					return utils.WrapError("Decode Cfr_ConfigMulticast_r17", err)
 				}
-				ie.cfr_ConfigMulticast_r17 = tmp_cfr_ConfigMulticast_r17.Setup
+				ie.Cfr_ConfigMulticast_r17 = tmp_Cfr_ConfigMulticast_r17.Setup
 			}
-			// decode dl_PPW_PreConfigToAddModList_r17 optional
-			if dl_PPW_PreConfigToAddModList_r17Present {
-				ie.dl_PPW_PreConfigToAddModList_r17 = new(DL_PPW_PreConfigToAddModList_r17)
-				if err = ie.dl_PPW_PreConfigToAddModList_r17.Decode(extReader); err != nil {
-					return utils.WrapError("Decode dl_PPW_PreConfigToAddModList_r17", err)
-				}
-			}
-			// decode dl_PPW_PreConfigToReleaseList_r17 optional
-			if dl_PPW_PreConfigToReleaseList_r17Present {
-				ie.dl_PPW_PreConfigToReleaseList_r17 = new(DL_PPW_PreConfigToReleaseList_r17)
-				if err = ie.dl_PPW_PreConfigToReleaseList_r17.Decode(extReader); err != nil {
-					return utils.WrapError("Decode dl_PPW_PreConfigToReleaseList_r17", err)
+			// decode Dl_PPW_PreConfigToAddModList_r17 optional
+			if Dl_PPW_PreConfigToAddModList_r17Present {
+				ie.Dl_PPW_PreConfigToAddModList_r17 = new(DL_PPW_PreConfigToAddModList_r17)
+				if err = ie.Dl_PPW_PreConfigToAddModList_r17.Decode(extReader); err != nil {
+					return utils.WrapError("Decode Dl_PPW_PreConfigToAddModList_r17", err)
 				}
 			}
-			// decode nonCellDefiningSSB_r17 optional
-			if nonCellDefiningSSB_r17Present {
-				ie.nonCellDefiningSSB_r17 = new(NonCellDefiningSSB_r17)
-				if err = ie.nonCellDefiningSSB_r17.Decode(extReader); err != nil {
-					return utils.WrapError("Decode nonCellDefiningSSB_r17", err)
+			// decode Dl_PPW_PreConfigToReleaseList_r17 optional
+			if Dl_PPW_PreConfigToReleaseList_r17Present {
+				ie.Dl_PPW_PreConfigToReleaseList_r17 = new(DL_PPW_PreConfigToReleaseList_r17)
+				if err = ie.Dl_PPW_PreConfigToReleaseList_r17.Decode(extReader); err != nil {
+					return utils.WrapError("Decode Dl_PPW_PreConfigToReleaseList_r17", err)
 				}
 			}
-			// decode servingCellMO_r17 optional
-			if servingCellMO_r17Present {
-				ie.servingCellMO_r17 = new(MeasObjectId)
-				if err = ie.servingCellMO_r17.Decode(extReader); err != nil {
-					return utils.WrapError("Decode servingCellMO_r17", err)
+			// decode NonCellDefiningSSB_r17 optional
+			if NonCellDefiningSSB_r17Present {
+				ie.NonCellDefiningSSB_r17 = new(NonCellDefiningSSB_r17)
+				if err = ie.NonCellDefiningSSB_r17.Decode(extReader); err != nil {
+					return utils.WrapError("Decode NonCellDefiningSSB_r17", err)
+				}
+			}
+			// decode ServingCellMO_r17 optional
+			if ServingCellMO_r17Present {
+				ie.ServingCellMO_r17 = new(MeasObjectId)
+				if err = ie.ServingCellMO_r17.Decode(extReader); err != nil {
+					return utils.WrapError("Decode ServingCellMO_r17", err)
 				}
 			}
 		}

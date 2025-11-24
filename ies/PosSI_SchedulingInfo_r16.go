@@ -8,41 +8,41 @@ import (
 )
 
 type PosSI_SchedulingInfo_r16 struct {
-	posSchedulingInfoList_r16     []PosSchedulingInfo_r16 `lb:1,ub:maxSI_Message,madatory`
-	posSI_RequestConfig_r16       *SI_RequestConfig       `optional`
-	posSI_RequestConfigSUL_r16    *SI_RequestConfig       `optional`
-	posSI_RequestConfigRedCap_r17 *SI_RequestConfig       `optional,ext-1`
+	PosSchedulingInfoList_r16     []PosSchedulingInfo_r16 `lb:1,ub:maxSI_Message,madatory`
+	PosSI_RequestConfig_r16       *SI_RequestConfig       `optional`
+	PosSI_RequestConfigSUL_r16    *SI_RequestConfig       `optional`
+	PosSI_RequestConfigRedCap_r17 *SI_RequestConfig       `optional,ext-1`
 }
 
 func (ie *PosSI_SchedulingInfo_r16) Encode(w *uper.UperWriter) error {
 	var err error
-	hasExtensions := ie.posSI_RequestConfigRedCap_r17 != nil
-	preambleBits := []bool{hasExtensions, ie.posSI_RequestConfig_r16 != nil, ie.posSI_RequestConfigSUL_r16 != nil}
+	hasExtensions := ie.PosSI_RequestConfigRedCap_r17 != nil
+	preambleBits := []bool{hasExtensions, ie.PosSI_RequestConfig_r16 != nil, ie.PosSI_RequestConfigSUL_r16 != nil}
 	for _, bit := range preambleBits {
 		if err = w.WriteBool(bit); err != nil {
 			return err
 		}
 	}
-	tmp_posSchedulingInfoList_r16 := utils.NewSequence[*PosSchedulingInfo_r16]([]*PosSchedulingInfo_r16{}, uper.Constraint{Lb: 1, Ub: maxSI_Message}, false)
-	for _, i := range ie.posSchedulingInfoList_r16 {
-		tmp_posSchedulingInfoList_r16.Value = append(tmp_posSchedulingInfoList_r16.Value, &i)
+	tmp_PosSchedulingInfoList_r16 := utils.NewSequence[*PosSchedulingInfo_r16]([]*PosSchedulingInfo_r16{}, uper.Constraint{Lb: 1, Ub: maxSI_Message}, false)
+	for _, i := range ie.PosSchedulingInfoList_r16 {
+		tmp_PosSchedulingInfoList_r16.Value = append(tmp_PosSchedulingInfoList_r16.Value, &i)
 	}
-	if err = tmp_posSchedulingInfoList_r16.Encode(w); err != nil {
-		return utils.WrapError("Encode posSchedulingInfoList_r16", err)
+	if err = tmp_PosSchedulingInfoList_r16.Encode(w); err != nil {
+		return utils.WrapError("Encode PosSchedulingInfoList_r16", err)
 	}
-	if ie.posSI_RequestConfig_r16 != nil {
-		if err = ie.posSI_RequestConfig_r16.Encode(w); err != nil {
-			return utils.WrapError("Encode posSI_RequestConfig_r16", err)
+	if ie.PosSI_RequestConfig_r16 != nil {
+		if err = ie.PosSI_RequestConfig_r16.Encode(w); err != nil {
+			return utils.WrapError("Encode PosSI_RequestConfig_r16", err)
 		}
 	}
-	if ie.posSI_RequestConfigSUL_r16 != nil {
-		if err = ie.posSI_RequestConfigSUL_r16.Encode(w); err != nil {
-			return utils.WrapError("Encode posSI_RequestConfigSUL_r16", err)
+	if ie.PosSI_RequestConfigSUL_r16 != nil {
+		if err = ie.PosSI_RequestConfigSUL_r16.Encode(w); err != nil {
+			return utils.WrapError("Encode PosSI_RequestConfigSUL_r16", err)
 		}
 	}
 	if hasExtensions {
 		// Extension bitmap: 1 bits for 1 extension groups
-		extBitmap := []bool{ie.posSI_RequestConfigRedCap_r17 != nil}
+		extBitmap := []bool{ie.PosSI_RequestConfigRedCap_r17 != nil}
 		if err := w.WriteExtBitMap(extBitmap); err != nil {
 			return utils.WrapError("WriteExtBitMap PosSI_SchedulingInfo_r16", err)
 		}
@@ -53,17 +53,17 @@ func (ie *PosSI_SchedulingInfo_r16) Encode(w *uper.UperWriter) error {
 			extWriter := uper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 1
-			optionals_ext_1 := []bool{ie.posSI_RequestConfigRedCap_r17 != nil}
+			optionals_ext_1 := []bool{ie.PosSI_RequestConfigRedCap_r17 != nil}
 			for _, bit := range optionals_ext_1 {
 				if err := extWriter.WriteBool(bit); err != nil {
 					return err
 				}
 			}
 
-			// encode posSI_RequestConfigRedCap_r17 optional
-			if ie.posSI_RequestConfigRedCap_r17 != nil {
-				if err = ie.posSI_RequestConfigRedCap_r17.Encode(extWriter); err != nil {
-					return utils.WrapError("Encode posSI_RequestConfigRedCap_r17", err)
+			// encode PosSI_RequestConfigRedCap_r17 optional
+			if ie.PosSI_RequestConfigRedCap_r17 != nil {
+				if err = ie.PosSI_RequestConfigRedCap_r17.Encode(extWriter); err != nil {
+					return utils.WrapError("Encode PosSI_RequestConfigRedCap_r17", err)
 				}
 			}
 
@@ -85,35 +85,35 @@ func (ie *PosSI_SchedulingInfo_r16) Decode(r *uper.UperReader) error {
 	if extensionBit, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var posSI_RequestConfig_r16Present bool
-	if posSI_RequestConfig_r16Present, err = r.ReadBool(); err != nil {
+	var PosSI_RequestConfig_r16Present bool
+	if PosSI_RequestConfig_r16Present, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var posSI_RequestConfigSUL_r16Present bool
-	if posSI_RequestConfigSUL_r16Present, err = r.ReadBool(); err != nil {
+	var PosSI_RequestConfigSUL_r16Present bool
+	if PosSI_RequestConfigSUL_r16Present, err = r.ReadBool(); err != nil {
 		return err
 	}
-	tmp_posSchedulingInfoList_r16 := utils.NewSequence[*PosSchedulingInfo_r16]([]*PosSchedulingInfo_r16{}, uper.Constraint{Lb: 1, Ub: maxSI_Message}, false)
-	fn_posSchedulingInfoList_r16 := func() *PosSchedulingInfo_r16 {
+	tmp_PosSchedulingInfoList_r16 := utils.NewSequence[*PosSchedulingInfo_r16]([]*PosSchedulingInfo_r16{}, uper.Constraint{Lb: 1, Ub: maxSI_Message}, false)
+	fn_PosSchedulingInfoList_r16 := func() *PosSchedulingInfo_r16 {
 		return new(PosSchedulingInfo_r16)
 	}
-	if err = tmp_posSchedulingInfoList_r16.Decode(r, fn_posSchedulingInfoList_r16); err != nil {
-		return utils.WrapError("Decode posSchedulingInfoList_r16", err)
+	if err = tmp_PosSchedulingInfoList_r16.Decode(r, fn_PosSchedulingInfoList_r16); err != nil {
+		return utils.WrapError("Decode PosSchedulingInfoList_r16", err)
 	}
-	ie.posSchedulingInfoList_r16 = []PosSchedulingInfo_r16{}
-	for _, i := range tmp_posSchedulingInfoList_r16.Value {
-		ie.posSchedulingInfoList_r16 = append(ie.posSchedulingInfoList_r16, *i)
+	ie.PosSchedulingInfoList_r16 = []PosSchedulingInfo_r16{}
+	for _, i := range tmp_PosSchedulingInfoList_r16.Value {
+		ie.PosSchedulingInfoList_r16 = append(ie.PosSchedulingInfoList_r16, *i)
 	}
-	if posSI_RequestConfig_r16Present {
-		ie.posSI_RequestConfig_r16 = new(SI_RequestConfig)
-		if err = ie.posSI_RequestConfig_r16.Decode(r); err != nil {
-			return utils.WrapError("Decode posSI_RequestConfig_r16", err)
+	if PosSI_RequestConfig_r16Present {
+		ie.PosSI_RequestConfig_r16 = new(SI_RequestConfig)
+		if err = ie.PosSI_RequestConfig_r16.Decode(r); err != nil {
+			return utils.WrapError("Decode PosSI_RequestConfig_r16", err)
 		}
 	}
-	if posSI_RequestConfigSUL_r16Present {
-		ie.posSI_RequestConfigSUL_r16 = new(SI_RequestConfig)
-		if err = ie.posSI_RequestConfigSUL_r16.Decode(r); err != nil {
-			return utils.WrapError("Decode posSI_RequestConfigSUL_r16", err)
+	if PosSI_RequestConfigSUL_r16Present {
+		ie.PosSI_RequestConfigSUL_r16 = new(SI_RequestConfig)
+		if err = ie.PosSI_RequestConfigSUL_r16.Decode(r); err != nil {
+			return utils.WrapError("Decode PosSI_RequestConfigSUL_r16", err)
 		}
 	}
 
@@ -133,15 +133,15 @@ func (ie *PosSI_SchedulingInfo_r16) Decode(r *uper.UperReader) error {
 
 			extReader := uper.NewReader(bytes.NewReader(extBytes))
 
-			posSI_RequestConfigRedCap_r17Present, err := extReader.ReadBool()
+			PosSI_RequestConfigRedCap_r17Present, err := extReader.ReadBool()
 			if err != nil {
 				return err
 			}
-			// decode posSI_RequestConfigRedCap_r17 optional
-			if posSI_RequestConfigRedCap_r17Present {
-				ie.posSI_RequestConfigRedCap_r17 = new(SI_RequestConfig)
-				if err = ie.posSI_RequestConfigRedCap_r17.Decode(extReader); err != nil {
-					return utils.WrapError("Decode posSI_RequestConfigRedCap_r17", err)
+			// decode PosSI_RequestConfigRedCap_r17 optional
+			if PosSI_RequestConfigRedCap_r17Present {
+				ie.PosSI_RequestConfigRedCap_r17 = new(SI_RequestConfig)
+				if err = ie.PosSI_RequestConfigRedCap_r17.Decode(extReader); err != nil {
+					return utils.WrapError("Decode PosSI_RequestConfigRedCap_r17", err)
 				}
 			}
 		}

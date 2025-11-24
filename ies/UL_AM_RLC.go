@@ -6,64 +6,64 @@ import (
 )
 
 type UL_AM_RLC struct {
-	sn_FieldLength   *SN_FieldLengthAM          `optional`
-	t_PollRetransmit T_PollRetransmit           `madatory`
-	pollPDU          PollPDU                    `madatory`
-	pollByte         PollByte                   `madatory`
-	maxRetxThreshold UL_AM_RLC_maxRetxThreshold `madatory`
+	Sn_FieldLength   *SN_FieldLengthAM          `optional`
+	T_PollRetransmit T_PollRetransmit           `madatory`
+	PollPDU          PollPDU                    `madatory`
+	PollByte         PollByte                   `madatory`
+	MaxRetxThreshold UL_AM_RLC_maxRetxThreshold `madatory`
 }
 
 func (ie *UL_AM_RLC) Encode(w *uper.UperWriter) error {
 	var err error
-	preambleBits := []bool{ie.sn_FieldLength != nil}
+	preambleBits := []bool{ie.Sn_FieldLength != nil}
 	for _, bit := range preambleBits {
 		if err = w.WriteBool(bit); err != nil {
 			return err
 		}
 	}
-	if ie.sn_FieldLength != nil {
-		if err = ie.sn_FieldLength.Encode(w); err != nil {
-			return utils.WrapError("Encode sn_FieldLength", err)
+	if ie.Sn_FieldLength != nil {
+		if err = ie.Sn_FieldLength.Encode(w); err != nil {
+			return utils.WrapError("Encode Sn_FieldLength", err)
 		}
 	}
-	if err = ie.t_PollRetransmit.Encode(w); err != nil {
-		return utils.WrapError("Encode t_PollRetransmit", err)
+	if err = ie.T_PollRetransmit.Encode(w); err != nil {
+		return utils.WrapError("Encode T_PollRetransmit", err)
 	}
-	if err = ie.pollPDU.Encode(w); err != nil {
-		return utils.WrapError("Encode pollPDU", err)
+	if err = ie.PollPDU.Encode(w); err != nil {
+		return utils.WrapError("Encode PollPDU", err)
 	}
-	if err = ie.pollByte.Encode(w); err != nil {
-		return utils.WrapError("Encode pollByte", err)
+	if err = ie.PollByte.Encode(w); err != nil {
+		return utils.WrapError("Encode PollByte", err)
 	}
-	if err = ie.maxRetxThreshold.Encode(w); err != nil {
-		return utils.WrapError("Encode maxRetxThreshold", err)
+	if err = ie.MaxRetxThreshold.Encode(w); err != nil {
+		return utils.WrapError("Encode MaxRetxThreshold", err)
 	}
 	return nil
 }
 
 func (ie *UL_AM_RLC) Decode(r *uper.UperReader) error {
 	var err error
-	var sn_FieldLengthPresent bool
-	if sn_FieldLengthPresent, err = r.ReadBool(); err != nil {
+	var Sn_FieldLengthPresent bool
+	if Sn_FieldLengthPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	if sn_FieldLengthPresent {
-		ie.sn_FieldLength = new(SN_FieldLengthAM)
-		if err = ie.sn_FieldLength.Decode(r); err != nil {
-			return utils.WrapError("Decode sn_FieldLength", err)
+	if Sn_FieldLengthPresent {
+		ie.Sn_FieldLength = new(SN_FieldLengthAM)
+		if err = ie.Sn_FieldLength.Decode(r); err != nil {
+			return utils.WrapError("Decode Sn_FieldLength", err)
 		}
 	}
-	if err = ie.t_PollRetransmit.Decode(r); err != nil {
-		return utils.WrapError("Decode t_PollRetransmit", err)
+	if err = ie.T_PollRetransmit.Decode(r); err != nil {
+		return utils.WrapError("Decode T_PollRetransmit", err)
 	}
-	if err = ie.pollPDU.Decode(r); err != nil {
-		return utils.WrapError("Decode pollPDU", err)
+	if err = ie.PollPDU.Decode(r); err != nil {
+		return utils.WrapError("Decode PollPDU", err)
 	}
-	if err = ie.pollByte.Decode(r); err != nil {
-		return utils.WrapError("Decode pollByte", err)
+	if err = ie.PollByte.Decode(r); err != nil {
+		return utils.WrapError("Decode PollByte", err)
 	}
-	if err = ie.maxRetxThreshold.Decode(r); err != nil {
-		return utils.WrapError("Decode maxRetxThreshold", err)
+	if err = ie.MaxRetxThreshold.Decode(r); err != nil {
+		return utils.WrapError("Decode MaxRetxThreshold", err)
 	}
 	return nil
 }

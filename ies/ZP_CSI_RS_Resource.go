@@ -6,28 +6,28 @@ import (
 )
 
 type ZP_CSI_RS_Resource struct {
-	zp_CSI_RS_ResourceId ZP_CSI_RS_ResourceId              `madatory`
-	resourceMapping      CSI_RS_ResourceMapping            `madatory`
-	periodicityAndOffset *CSI_ResourcePeriodicityAndOffset `optional`
+	Zp_CSI_RS_ResourceId ZP_CSI_RS_ResourceId              `madatory`
+	ResourceMapping      CSI_RS_ResourceMapping            `madatory`
+	PeriodicityAndOffset *CSI_ResourcePeriodicityAndOffset `optional`
 }
 
 func (ie *ZP_CSI_RS_Resource) Encode(w *uper.UperWriter) error {
 	var err error
-	preambleBits := []bool{ie.periodicityAndOffset != nil}
+	preambleBits := []bool{ie.PeriodicityAndOffset != nil}
 	for _, bit := range preambleBits {
 		if err = w.WriteBool(bit); err != nil {
 			return err
 		}
 	}
-	if err = ie.zp_CSI_RS_ResourceId.Encode(w); err != nil {
-		return utils.WrapError("Encode zp_CSI_RS_ResourceId", err)
+	if err = ie.Zp_CSI_RS_ResourceId.Encode(w); err != nil {
+		return utils.WrapError("Encode Zp_CSI_RS_ResourceId", err)
 	}
-	if err = ie.resourceMapping.Encode(w); err != nil {
-		return utils.WrapError("Encode resourceMapping", err)
+	if err = ie.ResourceMapping.Encode(w); err != nil {
+		return utils.WrapError("Encode ResourceMapping", err)
 	}
-	if ie.periodicityAndOffset != nil {
-		if err = ie.periodicityAndOffset.Encode(w); err != nil {
-			return utils.WrapError("Encode periodicityAndOffset", err)
+	if ie.PeriodicityAndOffset != nil {
+		if err = ie.PeriodicityAndOffset.Encode(w); err != nil {
+			return utils.WrapError("Encode PeriodicityAndOffset", err)
 		}
 	}
 	return nil
@@ -35,20 +35,20 @@ func (ie *ZP_CSI_RS_Resource) Encode(w *uper.UperWriter) error {
 
 func (ie *ZP_CSI_RS_Resource) Decode(r *uper.UperReader) error {
 	var err error
-	var periodicityAndOffsetPresent bool
-	if periodicityAndOffsetPresent, err = r.ReadBool(); err != nil {
+	var PeriodicityAndOffsetPresent bool
+	if PeriodicityAndOffsetPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	if err = ie.zp_CSI_RS_ResourceId.Decode(r); err != nil {
-		return utils.WrapError("Decode zp_CSI_RS_ResourceId", err)
+	if err = ie.Zp_CSI_RS_ResourceId.Decode(r); err != nil {
+		return utils.WrapError("Decode Zp_CSI_RS_ResourceId", err)
 	}
-	if err = ie.resourceMapping.Decode(r); err != nil {
-		return utils.WrapError("Decode resourceMapping", err)
+	if err = ie.ResourceMapping.Decode(r); err != nil {
+		return utils.WrapError("Decode ResourceMapping", err)
 	}
-	if periodicityAndOffsetPresent {
-		ie.periodicityAndOffset = new(CSI_ResourcePeriodicityAndOffset)
-		if err = ie.periodicityAndOffset.Decode(r); err != nil {
-			return utils.WrapError("Decode periodicityAndOffset", err)
+	if PeriodicityAndOffsetPresent {
+		ie.PeriodicityAndOffset = new(CSI_ResourcePeriodicityAndOffset)
+		if err = ie.PeriodicityAndOffset.Decode(r); err != nil {
+			return utils.WrapError("Decode PeriodicityAndOffset", err)
 		}
 	}
 	return nil

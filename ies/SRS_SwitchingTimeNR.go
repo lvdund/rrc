@@ -6,26 +6,26 @@ import (
 )
 
 type SRS_SwitchingTimeNR struct {
-	switchingTimeDL *SRS_SwitchingTimeNR_switchingTimeDL `optional`
-	switchingTimeUL *SRS_SwitchingTimeNR_switchingTimeUL `optional`
+	SwitchingTimeDL *SRS_SwitchingTimeNR_switchingTimeDL `optional`
+	SwitchingTimeUL *SRS_SwitchingTimeNR_switchingTimeUL `optional`
 }
 
 func (ie *SRS_SwitchingTimeNR) Encode(w *uper.UperWriter) error {
 	var err error
-	preambleBits := []bool{ie.switchingTimeDL != nil, ie.switchingTimeUL != nil}
+	preambleBits := []bool{ie.SwitchingTimeDL != nil, ie.SwitchingTimeUL != nil}
 	for _, bit := range preambleBits {
 		if err = w.WriteBool(bit); err != nil {
 			return err
 		}
 	}
-	if ie.switchingTimeDL != nil {
-		if err = ie.switchingTimeDL.Encode(w); err != nil {
-			return utils.WrapError("Encode switchingTimeDL", err)
+	if ie.SwitchingTimeDL != nil {
+		if err = ie.SwitchingTimeDL.Encode(w); err != nil {
+			return utils.WrapError("Encode SwitchingTimeDL", err)
 		}
 	}
-	if ie.switchingTimeUL != nil {
-		if err = ie.switchingTimeUL.Encode(w); err != nil {
-			return utils.WrapError("Encode switchingTimeUL", err)
+	if ie.SwitchingTimeUL != nil {
+		if err = ie.SwitchingTimeUL.Encode(w); err != nil {
+			return utils.WrapError("Encode SwitchingTimeUL", err)
 		}
 	}
 	return nil
@@ -33,24 +33,24 @@ func (ie *SRS_SwitchingTimeNR) Encode(w *uper.UperWriter) error {
 
 func (ie *SRS_SwitchingTimeNR) Decode(r *uper.UperReader) error {
 	var err error
-	var switchingTimeDLPresent bool
-	if switchingTimeDLPresent, err = r.ReadBool(); err != nil {
+	var SwitchingTimeDLPresent bool
+	if SwitchingTimeDLPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var switchingTimeULPresent bool
-	if switchingTimeULPresent, err = r.ReadBool(); err != nil {
+	var SwitchingTimeULPresent bool
+	if SwitchingTimeULPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	if switchingTimeDLPresent {
-		ie.switchingTimeDL = new(SRS_SwitchingTimeNR_switchingTimeDL)
-		if err = ie.switchingTimeDL.Decode(r); err != nil {
-			return utils.WrapError("Decode switchingTimeDL", err)
+	if SwitchingTimeDLPresent {
+		ie.SwitchingTimeDL = new(SRS_SwitchingTimeNR_switchingTimeDL)
+		if err = ie.SwitchingTimeDL.Decode(r); err != nil {
+			return utils.WrapError("Decode SwitchingTimeDL", err)
 		}
 	}
-	if switchingTimeULPresent {
-		ie.switchingTimeUL = new(SRS_SwitchingTimeNR_switchingTimeUL)
-		if err = ie.switchingTimeUL.Decode(r); err != nil {
-			return utils.WrapError("Decode switchingTimeUL", err)
+	if SwitchingTimeULPresent {
+		ie.SwitchingTimeUL = new(SRS_SwitchingTimeNR_switchingTimeUL)
+		if err = ie.SwitchingTimeUL.Decode(r); err != nil {
+			return utils.WrapError("Decode SwitchingTimeUL", err)
 		}
 	}
 	return nil

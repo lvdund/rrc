@@ -6,51 +6,51 @@ import (
 )
 
 type CodebookParametersfetype2_r17 struct {
-	fetype2basic_r17      []int64                                              `lb:1,ub:maxNrofCSI_RS_ResourcesExt_r16,e_lb:0,e_ub:maxNrofCSI_RS_ResourcesAlt_1_r16,madatory`
-	fetype2R1_r17         []int64                                              `lb:1,ub:maxNrofCSI_RS_ResourcesExt_r17,e_lb:0,e_ub:maxNrofCSI_RS_ResourcesAlt_1_r16,optional`
-	fetype2R2_r17         []int64                                              `lb:1,ub:maxNrofCSI_RS_ResourcesExt_r17,e_lb:0,e_ub:maxNrofCSI_RS_ResourcesAlt_1_r16,optional`
-	fetype2Rank3Rank4_r17 *CodebookParametersfetype2_r17_fetype2Rank3Rank4_r17 `optional`
+	Fetype2basic_r17      []int64                                              `lb:1,ub:maxNrofCSI_RS_ResourcesExt_r16,e_lb:0,e_ub:maxNrofCSI_RS_ResourcesAlt_1_r16,madatory`
+	Fetype2R1_r17         []int64                                              `lb:1,ub:maxNrofCSI_RS_ResourcesExt_r17,e_lb:0,e_ub:maxNrofCSI_RS_ResourcesAlt_1_r16,optional`
+	Fetype2R2_r17         []int64                                              `lb:1,ub:maxNrofCSI_RS_ResourcesExt_r17,e_lb:0,e_ub:maxNrofCSI_RS_ResourcesAlt_1_r16,optional`
+	Fetype2Rank3Rank4_r17 *CodebookParametersfetype2_r17_fetype2Rank3Rank4_r17 `optional`
 }
 
 func (ie *CodebookParametersfetype2_r17) Encode(w *uper.UperWriter) error {
 	var err error
-	preambleBits := []bool{len(ie.fetype2R1_r17) > 0, len(ie.fetype2R2_r17) > 0, ie.fetype2Rank3Rank4_r17 != nil}
+	preambleBits := []bool{len(ie.Fetype2R1_r17) > 0, len(ie.Fetype2R2_r17) > 0, ie.Fetype2Rank3Rank4_r17 != nil}
 	for _, bit := range preambleBits {
 		if err = w.WriteBool(bit); err != nil {
 			return err
 		}
 	}
-	tmp_fetype2basic_r17 := utils.NewSequence[*utils.INTEGER]([]*utils.INTEGER{}, uper.Constraint{Lb: 1, Ub: maxNrofCSI_RS_ResourcesExt_r16}, false)
-	for _, i := range ie.fetype2basic_r17 {
+	tmp_Fetype2basic_r17 := utils.NewSequence[*utils.INTEGER]([]*utils.INTEGER{}, uper.Constraint{Lb: 1, Ub: maxNrofCSI_RS_ResourcesExt_r16}, false)
+	for _, i := range ie.Fetype2basic_r17 {
 		tmp_ie := utils.NewINTEGER(int64(i), uper.Constraint{Lb: 0, Ub: maxNrofCSI_RS_ResourcesAlt_1_r16}, false)
-		tmp_fetype2basic_r17.Value = append(tmp_fetype2basic_r17.Value, &tmp_ie)
+		tmp_Fetype2basic_r17.Value = append(tmp_Fetype2basic_r17.Value, &tmp_ie)
 	}
-	if err = tmp_fetype2basic_r17.Encode(w); err != nil {
-		return utils.WrapError("Encode fetype2basic_r17", err)
+	if err = tmp_Fetype2basic_r17.Encode(w); err != nil {
+		return utils.WrapError("Encode Fetype2basic_r17", err)
 	}
-	if len(ie.fetype2R1_r17) > 0 {
-		tmp_fetype2R1_r17 := utils.NewSequence[*utils.INTEGER]([]*utils.INTEGER{}, uper.Constraint{Lb: 1, Ub: maxNrofCSI_RS_ResourcesExt_r17}, false)
-		for _, i := range ie.fetype2R1_r17 {
+	if len(ie.Fetype2R1_r17) > 0 {
+		tmp_Fetype2R1_r17 := utils.NewSequence[*utils.INTEGER]([]*utils.INTEGER{}, uper.Constraint{Lb: 1, Ub: maxNrofCSI_RS_ResourcesExt_r17}, false)
+		for _, i := range ie.Fetype2R1_r17 {
 			tmp_ie := utils.NewINTEGER(int64(i), uper.Constraint{Lb: 0, Ub: maxNrofCSI_RS_ResourcesAlt_1_r16}, false)
-			tmp_fetype2R1_r17.Value = append(tmp_fetype2R1_r17.Value, &tmp_ie)
+			tmp_Fetype2R1_r17.Value = append(tmp_Fetype2R1_r17.Value, &tmp_ie)
 		}
-		if err = tmp_fetype2R1_r17.Encode(w); err != nil {
-			return utils.WrapError("Encode fetype2R1_r17", err)
+		if err = tmp_Fetype2R1_r17.Encode(w); err != nil {
+			return utils.WrapError("Encode Fetype2R1_r17", err)
 		}
 	}
-	if len(ie.fetype2R2_r17) > 0 {
-		tmp_fetype2R2_r17 := utils.NewSequence[*utils.INTEGER]([]*utils.INTEGER{}, uper.Constraint{Lb: 1, Ub: maxNrofCSI_RS_ResourcesExt_r17}, false)
-		for _, i := range ie.fetype2R2_r17 {
+	if len(ie.Fetype2R2_r17) > 0 {
+		tmp_Fetype2R2_r17 := utils.NewSequence[*utils.INTEGER]([]*utils.INTEGER{}, uper.Constraint{Lb: 1, Ub: maxNrofCSI_RS_ResourcesExt_r17}, false)
+		for _, i := range ie.Fetype2R2_r17 {
 			tmp_ie := utils.NewINTEGER(int64(i), uper.Constraint{Lb: 0, Ub: maxNrofCSI_RS_ResourcesAlt_1_r16}, false)
-			tmp_fetype2R2_r17.Value = append(tmp_fetype2R2_r17.Value, &tmp_ie)
+			tmp_Fetype2R2_r17.Value = append(tmp_Fetype2R2_r17.Value, &tmp_ie)
 		}
-		if err = tmp_fetype2R2_r17.Encode(w); err != nil {
-			return utils.WrapError("Encode fetype2R2_r17", err)
+		if err = tmp_Fetype2R2_r17.Encode(w); err != nil {
+			return utils.WrapError("Encode Fetype2R2_r17", err)
 		}
 	}
-	if ie.fetype2Rank3Rank4_r17 != nil {
-		if err = ie.fetype2Rank3Rank4_r17.Encode(w); err != nil {
-			return utils.WrapError("Encode fetype2Rank3Rank4_r17", err)
+	if ie.Fetype2Rank3Rank4_r17 != nil {
+		if err = ie.Fetype2Rank3Rank4_r17.Encode(w); err != nil {
+			return utils.WrapError("Encode Fetype2Rank3Rank4_r17", err)
 		}
 	}
 	return nil
@@ -58,62 +58,62 @@ func (ie *CodebookParametersfetype2_r17) Encode(w *uper.UperWriter) error {
 
 func (ie *CodebookParametersfetype2_r17) Decode(r *uper.UperReader) error {
 	var err error
-	var fetype2R1_r17Present bool
-	if fetype2R1_r17Present, err = r.ReadBool(); err != nil {
+	var Fetype2R1_r17Present bool
+	if Fetype2R1_r17Present, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var fetype2R2_r17Present bool
-	if fetype2R2_r17Present, err = r.ReadBool(); err != nil {
+	var Fetype2R2_r17Present bool
+	if Fetype2R2_r17Present, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var fetype2Rank3Rank4_r17Present bool
-	if fetype2Rank3Rank4_r17Present, err = r.ReadBool(); err != nil {
+	var Fetype2Rank3Rank4_r17Present bool
+	if Fetype2Rank3Rank4_r17Present, err = r.ReadBool(); err != nil {
 		return err
 	}
-	tmp_fetype2basic_r17 := utils.NewSequence[*utils.INTEGER]([]*utils.INTEGER{}, uper.Constraint{Lb: 1, Ub: maxNrofCSI_RS_ResourcesExt_r16}, false)
-	fn_fetype2basic_r17 := func() *utils.INTEGER {
+	tmp_Fetype2basic_r17 := utils.NewSequence[*utils.INTEGER]([]*utils.INTEGER{}, uper.Constraint{Lb: 1, Ub: maxNrofCSI_RS_ResourcesExt_r16}, false)
+	fn_Fetype2basic_r17 := func() *utils.INTEGER {
 		ie := utils.NewINTEGER(0, uper.Constraint{Lb: 0, Ub: maxNrofCSI_RS_ResourcesAlt_1_r16}, false)
 		return &ie
 	}
-	if err = tmp_fetype2basic_r17.Decode(r, fn_fetype2basic_r17); err != nil {
-		return utils.WrapError("Decode fetype2basic_r17", err)
+	if err = tmp_Fetype2basic_r17.Decode(r, fn_Fetype2basic_r17); err != nil {
+		return utils.WrapError("Decode Fetype2basic_r17", err)
 	}
-	ie.fetype2basic_r17 = []int64{}
-	for _, i := range tmp_fetype2basic_r17.Value {
-		ie.fetype2basic_r17 = append(ie.fetype2basic_r17, int64(i.Value))
+	ie.Fetype2basic_r17 = []int64{}
+	for _, i := range tmp_Fetype2basic_r17.Value {
+		ie.Fetype2basic_r17 = append(ie.Fetype2basic_r17, int64(i.Value))
 	}
-	if fetype2R1_r17Present {
-		tmp_fetype2R1_r17 := utils.NewSequence[*utils.INTEGER]([]*utils.INTEGER{}, uper.Constraint{Lb: 1, Ub: maxNrofCSI_RS_ResourcesExt_r17}, false)
-		fn_fetype2R1_r17 := func() *utils.INTEGER {
+	if Fetype2R1_r17Present {
+		tmp_Fetype2R1_r17 := utils.NewSequence[*utils.INTEGER]([]*utils.INTEGER{}, uper.Constraint{Lb: 1, Ub: maxNrofCSI_RS_ResourcesExt_r17}, false)
+		fn_Fetype2R1_r17 := func() *utils.INTEGER {
 			ie := utils.NewINTEGER(0, uper.Constraint{Lb: 0, Ub: maxNrofCSI_RS_ResourcesAlt_1_r16}, false)
 			return &ie
 		}
-		if err = tmp_fetype2R1_r17.Decode(r, fn_fetype2R1_r17); err != nil {
-			return utils.WrapError("Decode fetype2R1_r17", err)
+		if err = tmp_Fetype2R1_r17.Decode(r, fn_Fetype2R1_r17); err != nil {
+			return utils.WrapError("Decode Fetype2R1_r17", err)
 		}
-		ie.fetype2R1_r17 = []int64{}
-		for _, i := range tmp_fetype2R1_r17.Value {
-			ie.fetype2R1_r17 = append(ie.fetype2R1_r17, int64(i.Value))
+		ie.Fetype2R1_r17 = []int64{}
+		for _, i := range tmp_Fetype2R1_r17.Value {
+			ie.Fetype2R1_r17 = append(ie.Fetype2R1_r17, int64(i.Value))
 		}
 	}
-	if fetype2R2_r17Present {
-		tmp_fetype2R2_r17 := utils.NewSequence[*utils.INTEGER]([]*utils.INTEGER{}, uper.Constraint{Lb: 1, Ub: maxNrofCSI_RS_ResourcesExt_r17}, false)
-		fn_fetype2R2_r17 := func() *utils.INTEGER {
+	if Fetype2R2_r17Present {
+		tmp_Fetype2R2_r17 := utils.NewSequence[*utils.INTEGER]([]*utils.INTEGER{}, uper.Constraint{Lb: 1, Ub: maxNrofCSI_RS_ResourcesExt_r17}, false)
+		fn_Fetype2R2_r17 := func() *utils.INTEGER {
 			ie := utils.NewINTEGER(0, uper.Constraint{Lb: 0, Ub: maxNrofCSI_RS_ResourcesAlt_1_r16}, false)
 			return &ie
 		}
-		if err = tmp_fetype2R2_r17.Decode(r, fn_fetype2R2_r17); err != nil {
-			return utils.WrapError("Decode fetype2R2_r17", err)
+		if err = tmp_Fetype2R2_r17.Decode(r, fn_Fetype2R2_r17); err != nil {
+			return utils.WrapError("Decode Fetype2R2_r17", err)
 		}
-		ie.fetype2R2_r17 = []int64{}
-		for _, i := range tmp_fetype2R2_r17.Value {
-			ie.fetype2R2_r17 = append(ie.fetype2R2_r17, int64(i.Value))
+		ie.Fetype2R2_r17 = []int64{}
+		for _, i := range tmp_Fetype2R2_r17.Value {
+			ie.Fetype2R2_r17 = append(ie.Fetype2R2_r17, int64(i.Value))
 		}
 	}
-	if fetype2Rank3Rank4_r17Present {
-		ie.fetype2Rank3Rank4_r17 = new(CodebookParametersfetype2_r17_fetype2Rank3Rank4_r17)
-		if err = ie.fetype2Rank3Rank4_r17.Decode(r); err != nil {
-			return utils.WrapError("Decode fetype2Rank3Rank4_r17", err)
+	if Fetype2Rank3Rank4_r17Present {
+		ie.Fetype2Rank3Rank4_r17 = new(CodebookParametersfetype2_r17_fetype2Rank3Rank4_r17)
+		if err = ie.Fetype2Rank3Rank4_r17.Decode(r); err != nil {
+			return utils.WrapError("Decode Fetype2Rank3Rank4_r17", err)
 		}
 	}
 	return nil

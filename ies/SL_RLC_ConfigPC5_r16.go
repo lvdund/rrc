@@ -9,16 +9,16 @@ import (
 
 const (
 	SL_RLC_ConfigPC5_r16_Choice_nothing uint64 = iota
-	SL_RLC_ConfigPC5_r16_Choice_sl_AM_RLC_r16
-	SL_RLC_ConfigPC5_r16_Choice_sl_UM_Bi_Directional_RLC_r16
-	SL_RLC_ConfigPC5_r16_Choice_sl_UM_Uni_Directional_RLC_r16
+	SL_RLC_ConfigPC5_r16_Choice_Sl_AM_RLC_r16
+	SL_RLC_ConfigPC5_r16_Choice_Sl_UM_Bi_Directional_RLC_r16
+	SL_RLC_ConfigPC5_r16_Choice_Sl_UM_Uni_Directional_RLC_r16
 )
 
 type SL_RLC_ConfigPC5_r16 struct {
 	Choice                        uint64
-	sl_AM_RLC_r16                 *SL_RLC_ConfigPC5_r16_sl_AM_RLC_r16
-	sl_UM_Bi_Directional_RLC_r16  *SL_RLC_ConfigPC5_r16_sl_UM_Bi_Directional_RLC_r16
-	sl_UM_Uni_Directional_RLC_r16 *SL_RLC_ConfigPC5_r16_sl_UM_Uni_Directional_RLC_r16
+	Sl_AM_RLC_r16                 *SL_RLC_ConfigPC5_r16_sl_AM_RLC_r16
+	Sl_UM_Bi_Directional_RLC_r16  *SL_RLC_ConfigPC5_r16_sl_UM_Bi_Directional_RLC_r16
+	Sl_UM_Uni_Directional_RLC_r16 *SL_RLC_ConfigPC5_r16_sl_UM_Uni_Directional_RLC_r16
 }
 
 func (ie *SL_RLC_ConfigPC5_r16) Encode(w *uper.UperWriter) error {
@@ -27,17 +27,17 @@ func (ie *SL_RLC_ConfigPC5_r16) Encode(w *uper.UperWriter) error {
 		return err
 	}
 	switch ie.Choice {
-	case SL_RLC_ConfigPC5_r16_Choice_sl_AM_RLC_r16:
-		if err = ie.sl_AM_RLC_r16.Encode(w); err != nil {
-			err = utils.WrapError("Encode sl_AM_RLC_r16", err)
+	case SL_RLC_ConfigPC5_r16_Choice_Sl_AM_RLC_r16:
+		if err = ie.Sl_AM_RLC_r16.Encode(w); err != nil {
+			err = utils.WrapError("Encode Sl_AM_RLC_r16", err)
 		}
-	case SL_RLC_ConfigPC5_r16_Choice_sl_UM_Bi_Directional_RLC_r16:
-		if err = ie.sl_UM_Bi_Directional_RLC_r16.Encode(w); err != nil {
-			err = utils.WrapError("Encode sl_UM_Bi_Directional_RLC_r16", err)
+	case SL_RLC_ConfigPC5_r16_Choice_Sl_UM_Bi_Directional_RLC_r16:
+		if err = ie.Sl_UM_Bi_Directional_RLC_r16.Encode(w); err != nil {
+			err = utils.WrapError("Encode Sl_UM_Bi_Directional_RLC_r16", err)
 		}
-	case SL_RLC_ConfigPC5_r16_Choice_sl_UM_Uni_Directional_RLC_r16:
-		if err = ie.sl_UM_Uni_Directional_RLC_r16.Encode(w); err != nil {
-			err = utils.WrapError("Encode sl_UM_Uni_Directional_RLC_r16", err)
+	case SL_RLC_ConfigPC5_r16_Choice_Sl_UM_Uni_Directional_RLC_r16:
+		if err = ie.Sl_UM_Uni_Directional_RLC_r16.Encode(w); err != nil {
+			err = utils.WrapError("Encode Sl_UM_Uni_Directional_RLC_r16", err)
 		}
 	default:
 		err = fmt.Errorf("invalid choice: %d", ie.Choice)
@@ -51,20 +51,20 @@ func (ie *SL_RLC_ConfigPC5_r16) Decode(r *uper.UperReader) error {
 		return err
 	}
 	switch ie.Choice {
-	case SL_RLC_ConfigPC5_r16_Choice_sl_AM_RLC_r16:
-		ie.sl_AM_RLC_r16 = new(SL_RLC_ConfigPC5_r16_sl_AM_RLC_r16)
-		if err = ie.sl_AM_RLC_r16.Decode(r); err != nil {
-			return utils.WrapError("Decode sl_AM_RLC_r16", err)
+	case SL_RLC_ConfigPC5_r16_Choice_Sl_AM_RLC_r16:
+		ie.Sl_AM_RLC_r16 = new(SL_RLC_ConfigPC5_r16_sl_AM_RLC_r16)
+		if err = ie.Sl_AM_RLC_r16.Decode(r); err != nil {
+			return utils.WrapError("Decode Sl_AM_RLC_r16", err)
 		}
-	case SL_RLC_ConfigPC5_r16_Choice_sl_UM_Bi_Directional_RLC_r16:
-		ie.sl_UM_Bi_Directional_RLC_r16 = new(SL_RLC_ConfigPC5_r16_sl_UM_Bi_Directional_RLC_r16)
-		if err = ie.sl_UM_Bi_Directional_RLC_r16.Decode(r); err != nil {
-			return utils.WrapError("Decode sl_UM_Bi_Directional_RLC_r16", err)
+	case SL_RLC_ConfigPC5_r16_Choice_Sl_UM_Bi_Directional_RLC_r16:
+		ie.Sl_UM_Bi_Directional_RLC_r16 = new(SL_RLC_ConfigPC5_r16_sl_UM_Bi_Directional_RLC_r16)
+		if err = ie.Sl_UM_Bi_Directional_RLC_r16.Decode(r); err != nil {
+			return utils.WrapError("Decode Sl_UM_Bi_Directional_RLC_r16", err)
 		}
-	case SL_RLC_ConfigPC5_r16_Choice_sl_UM_Uni_Directional_RLC_r16:
-		ie.sl_UM_Uni_Directional_RLC_r16 = new(SL_RLC_ConfigPC5_r16_sl_UM_Uni_Directional_RLC_r16)
-		if err = ie.sl_UM_Uni_Directional_RLC_r16.Decode(r); err != nil {
-			return utils.WrapError("Decode sl_UM_Uni_Directional_RLC_r16", err)
+	case SL_RLC_ConfigPC5_r16_Choice_Sl_UM_Uni_Directional_RLC_r16:
+		ie.Sl_UM_Uni_Directional_RLC_r16 = new(SL_RLC_ConfigPC5_r16_sl_UM_Uni_Directional_RLC_r16)
+		if err = ie.Sl_UM_Uni_Directional_RLC_r16.Decode(r); err != nil {
+			return utils.WrapError("Decode Sl_UM_Uni_Directional_RLC_r16", err)
 		}
 	default:
 		return fmt.Errorf("invalid choice: %d", ie.Choice)

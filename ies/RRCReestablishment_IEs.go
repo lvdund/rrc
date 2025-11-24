@@ -6,30 +6,30 @@ import (
 )
 
 type RRCReestablishment_IEs struct {
-	nextHopChainingCount     NextHopChainingCount          `madatory`
-	lateNonCriticalExtension *[]byte                       `optional`
-	nonCriticalExtension     *RRCReestablishment_v1700_IEs `optional`
+	NextHopChainingCount     NextHopChainingCount          `madatory`
+	LateNonCriticalExtension *[]byte                       `optional`
+	NonCriticalExtension     *RRCReestablishment_v1700_IEs `optional`
 }
 
 func (ie *RRCReestablishment_IEs) Encode(w *uper.UperWriter) error {
 	var err error
-	preambleBits := []bool{ie.lateNonCriticalExtension != nil, ie.nonCriticalExtension != nil}
+	preambleBits := []bool{ie.LateNonCriticalExtension != nil, ie.NonCriticalExtension != nil}
 	for _, bit := range preambleBits {
 		if err = w.WriteBool(bit); err != nil {
 			return err
 		}
 	}
-	if err = ie.nextHopChainingCount.Encode(w); err != nil {
-		return utils.WrapError("Encode nextHopChainingCount", err)
+	if err = ie.NextHopChainingCount.Encode(w); err != nil {
+		return utils.WrapError("Encode NextHopChainingCount", err)
 	}
-	if ie.lateNonCriticalExtension != nil {
-		if err = w.WriteOctetString(*ie.lateNonCriticalExtension, &uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
-			return utils.WrapError("Encode lateNonCriticalExtension", err)
+	if ie.LateNonCriticalExtension != nil {
+		if err = w.WriteOctetString(*ie.LateNonCriticalExtension, &uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+			return utils.WrapError("Encode LateNonCriticalExtension", err)
 		}
 	}
-	if ie.nonCriticalExtension != nil {
-		if err = ie.nonCriticalExtension.Encode(w); err != nil {
-			return utils.WrapError("Encode nonCriticalExtension", err)
+	if ie.NonCriticalExtension != nil {
+		if err = ie.NonCriticalExtension.Encode(w); err != nil {
+			return utils.WrapError("Encode NonCriticalExtension", err)
 		}
 	}
 	return nil
@@ -37,28 +37,28 @@ func (ie *RRCReestablishment_IEs) Encode(w *uper.UperWriter) error {
 
 func (ie *RRCReestablishment_IEs) Decode(r *uper.UperReader) error {
 	var err error
-	var lateNonCriticalExtensionPresent bool
-	if lateNonCriticalExtensionPresent, err = r.ReadBool(); err != nil {
+	var LateNonCriticalExtensionPresent bool
+	if LateNonCriticalExtensionPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var nonCriticalExtensionPresent bool
-	if nonCriticalExtensionPresent, err = r.ReadBool(); err != nil {
+	var NonCriticalExtensionPresent bool
+	if NonCriticalExtensionPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	if err = ie.nextHopChainingCount.Decode(r); err != nil {
-		return utils.WrapError("Decode nextHopChainingCount", err)
+	if err = ie.NextHopChainingCount.Decode(r); err != nil {
+		return utils.WrapError("Decode NextHopChainingCount", err)
 	}
-	if lateNonCriticalExtensionPresent {
-		var tmp_os_lateNonCriticalExtension []byte
-		if tmp_os_lateNonCriticalExtension, err = r.ReadOctetString(&uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
-			return utils.WrapError("Decode lateNonCriticalExtension", err)
+	if LateNonCriticalExtensionPresent {
+		var tmp_os_LateNonCriticalExtension []byte
+		if tmp_os_LateNonCriticalExtension, err = r.ReadOctetString(&uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+			return utils.WrapError("Decode LateNonCriticalExtension", err)
 		}
-		ie.lateNonCriticalExtension = &tmp_os_lateNonCriticalExtension
+		ie.LateNonCriticalExtension = &tmp_os_LateNonCriticalExtension
 	}
-	if nonCriticalExtensionPresent {
-		ie.nonCriticalExtension = new(RRCReestablishment_v1700_IEs)
-		if err = ie.nonCriticalExtension.Decode(r); err != nil {
-			return utils.WrapError("Decode nonCriticalExtension", err)
+	if NonCriticalExtensionPresent {
+		ie.NonCriticalExtension = new(RRCReestablishment_v1700_IEs)
+		if err = ie.NonCriticalExtension.Decode(r); err != nil {
+			return utils.WrapError("Decode NonCriticalExtension", err)
 		}
 	}
 	return nil

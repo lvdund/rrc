@@ -6,56 +6,56 @@ import (
 )
 
 type UERadioPagingInformation_v15e0_IEs struct {
-	dl_SchedulingOffset_PDSCH_TypeA_FDD_FR1 *UERadioPagingInformation_v15e0_IEs_dl_SchedulingOffset_PDSCH_TypeA_FDD_FR1 `optional`
-	dl_SchedulingOffset_PDSCH_TypeA_TDD_FR1 *UERadioPagingInformation_v15e0_IEs_dl_SchedulingOffset_PDSCH_TypeA_TDD_FR1 `optional`
-	dl_SchedulingOffset_PDSCH_TypeA_TDD_FR2 *UERadioPagingInformation_v15e0_IEs_dl_SchedulingOffset_PDSCH_TypeA_TDD_FR2 `optional`
-	dl_SchedulingOffset_PDSCH_TypeB_FDD_FR1 *UERadioPagingInformation_v15e0_IEs_dl_SchedulingOffset_PDSCH_TypeB_FDD_FR1 `optional`
-	dl_SchedulingOffset_PDSCH_TypeB_TDD_FR1 *UERadioPagingInformation_v15e0_IEs_dl_SchedulingOffset_PDSCH_TypeB_TDD_FR1 `optional`
-	dl_SchedulingOffset_PDSCH_TypeB_TDD_FR2 *UERadioPagingInformation_v15e0_IEs_dl_SchedulingOffset_PDSCH_TypeB_TDD_FR2 `optional`
-	nonCriticalExtension                    *UERadioPagingInformation_v1700_IEs                                         `optional`
+	Dl_SchedulingOffset_PDSCH_TypeA_FDD_FR1 *UERadioPagingInformation_v15e0_IEs_dl_SchedulingOffset_PDSCH_TypeA_FDD_FR1 `optional`
+	Dl_SchedulingOffset_PDSCH_TypeA_TDD_FR1 *UERadioPagingInformation_v15e0_IEs_dl_SchedulingOffset_PDSCH_TypeA_TDD_FR1 `optional`
+	Dl_SchedulingOffset_PDSCH_TypeA_TDD_FR2 *UERadioPagingInformation_v15e0_IEs_dl_SchedulingOffset_PDSCH_TypeA_TDD_FR2 `optional`
+	Dl_SchedulingOffset_PDSCH_TypeB_FDD_FR1 *UERadioPagingInformation_v15e0_IEs_dl_SchedulingOffset_PDSCH_TypeB_FDD_FR1 `optional`
+	Dl_SchedulingOffset_PDSCH_TypeB_TDD_FR1 *UERadioPagingInformation_v15e0_IEs_dl_SchedulingOffset_PDSCH_TypeB_TDD_FR1 `optional`
+	Dl_SchedulingOffset_PDSCH_TypeB_TDD_FR2 *UERadioPagingInformation_v15e0_IEs_dl_SchedulingOffset_PDSCH_TypeB_TDD_FR2 `optional`
+	NonCriticalExtension                    *UERadioPagingInformation_v1700_IEs                                         `optional`
 }
 
 func (ie *UERadioPagingInformation_v15e0_IEs) Encode(w *uper.UperWriter) error {
 	var err error
-	preambleBits := []bool{ie.dl_SchedulingOffset_PDSCH_TypeA_FDD_FR1 != nil, ie.dl_SchedulingOffset_PDSCH_TypeA_TDD_FR1 != nil, ie.dl_SchedulingOffset_PDSCH_TypeA_TDD_FR2 != nil, ie.dl_SchedulingOffset_PDSCH_TypeB_FDD_FR1 != nil, ie.dl_SchedulingOffset_PDSCH_TypeB_TDD_FR1 != nil, ie.dl_SchedulingOffset_PDSCH_TypeB_TDD_FR2 != nil, ie.nonCriticalExtension != nil}
+	preambleBits := []bool{ie.Dl_SchedulingOffset_PDSCH_TypeA_FDD_FR1 != nil, ie.Dl_SchedulingOffset_PDSCH_TypeA_TDD_FR1 != nil, ie.Dl_SchedulingOffset_PDSCH_TypeA_TDD_FR2 != nil, ie.Dl_SchedulingOffset_PDSCH_TypeB_FDD_FR1 != nil, ie.Dl_SchedulingOffset_PDSCH_TypeB_TDD_FR1 != nil, ie.Dl_SchedulingOffset_PDSCH_TypeB_TDD_FR2 != nil, ie.NonCriticalExtension != nil}
 	for _, bit := range preambleBits {
 		if err = w.WriteBool(bit); err != nil {
 			return err
 		}
 	}
-	if ie.dl_SchedulingOffset_PDSCH_TypeA_FDD_FR1 != nil {
-		if err = ie.dl_SchedulingOffset_PDSCH_TypeA_FDD_FR1.Encode(w); err != nil {
-			return utils.WrapError("Encode dl_SchedulingOffset_PDSCH_TypeA_FDD_FR1", err)
+	if ie.Dl_SchedulingOffset_PDSCH_TypeA_FDD_FR1 != nil {
+		if err = ie.Dl_SchedulingOffset_PDSCH_TypeA_FDD_FR1.Encode(w); err != nil {
+			return utils.WrapError("Encode Dl_SchedulingOffset_PDSCH_TypeA_FDD_FR1", err)
 		}
 	}
-	if ie.dl_SchedulingOffset_PDSCH_TypeA_TDD_FR1 != nil {
-		if err = ie.dl_SchedulingOffset_PDSCH_TypeA_TDD_FR1.Encode(w); err != nil {
-			return utils.WrapError("Encode dl_SchedulingOffset_PDSCH_TypeA_TDD_FR1", err)
+	if ie.Dl_SchedulingOffset_PDSCH_TypeA_TDD_FR1 != nil {
+		if err = ie.Dl_SchedulingOffset_PDSCH_TypeA_TDD_FR1.Encode(w); err != nil {
+			return utils.WrapError("Encode Dl_SchedulingOffset_PDSCH_TypeA_TDD_FR1", err)
 		}
 	}
-	if ie.dl_SchedulingOffset_PDSCH_TypeA_TDD_FR2 != nil {
-		if err = ie.dl_SchedulingOffset_PDSCH_TypeA_TDD_FR2.Encode(w); err != nil {
-			return utils.WrapError("Encode dl_SchedulingOffset_PDSCH_TypeA_TDD_FR2", err)
+	if ie.Dl_SchedulingOffset_PDSCH_TypeA_TDD_FR2 != nil {
+		if err = ie.Dl_SchedulingOffset_PDSCH_TypeA_TDD_FR2.Encode(w); err != nil {
+			return utils.WrapError("Encode Dl_SchedulingOffset_PDSCH_TypeA_TDD_FR2", err)
 		}
 	}
-	if ie.dl_SchedulingOffset_PDSCH_TypeB_FDD_FR1 != nil {
-		if err = ie.dl_SchedulingOffset_PDSCH_TypeB_FDD_FR1.Encode(w); err != nil {
-			return utils.WrapError("Encode dl_SchedulingOffset_PDSCH_TypeB_FDD_FR1", err)
+	if ie.Dl_SchedulingOffset_PDSCH_TypeB_FDD_FR1 != nil {
+		if err = ie.Dl_SchedulingOffset_PDSCH_TypeB_FDD_FR1.Encode(w); err != nil {
+			return utils.WrapError("Encode Dl_SchedulingOffset_PDSCH_TypeB_FDD_FR1", err)
 		}
 	}
-	if ie.dl_SchedulingOffset_PDSCH_TypeB_TDD_FR1 != nil {
-		if err = ie.dl_SchedulingOffset_PDSCH_TypeB_TDD_FR1.Encode(w); err != nil {
-			return utils.WrapError("Encode dl_SchedulingOffset_PDSCH_TypeB_TDD_FR1", err)
+	if ie.Dl_SchedulingOffset_PDSCH_TypeB_TDD_FR1 != nil {
+		if err = ie.Dl_SchedulingOffset_PDSCH_TypeB_TDD_FR1.Encode(w); err != nil {
+			return utils.WrapError("Encode Dl_SchedulingOffset_PDSCH_TypeB_TDD_FR1", err)
 		}
 	}
-	if ie.dl_SchedulingOffset_PDSCH_TypeB_TDD_FR2 != nil {
-		if err = ie.dl_SchedulingOffset_PDSCH_TypeB_TDD_FR2.Encode(w); err != nil {
-			return utils.WrapError("Encode dl_SchedulingOffset_PDSCH_TypeB_TDD_FR2", err)
+	if ie.Dl_SchedulingOffset_PDSCH_TypeB_TDD_FR2 != nil {
+		if err = ie.Dl_SchedulingOffset_PDSCH_TypeB_TDD_FR2.Encode(w); err != nil {
+			return utils.WrapError("Encode Dl_SchedulingOffset_PDSCH_TypeB_TDD_FR2", err)
 		}
 	}
-	if ie.nonCriticalExtension != nil {
-		if err = ie.nonCriticalExtension.Encode(w); err != nil {
-			return utils.WrapError("Encode nonCriticalExtension", err)
+	if ie.NonCriticalExtension != nil {
+		if err = ie.NonCriticalExtension.Encode(w); err != nil {
+			return utils.WrapError("Encode NonCriticalExtension", err)
 		}
 	}
 	return nil
@@ -63,74 +63,74 @@ func (ie *UERadioPagingInformation_v15e0_IEs) Encode(w *uper.UperWriter) error {
 
 func (ie *UERadioPagingInformation_v15e0_IEs) Decode(r *uper.UperReader) error {
 	var err error
-	var dl_SchedulingOffset_PDSCH_TypeA_FDD_FR1Present bool
-	if dl_SchedulingOffset_PDSCH_TypeA_FDD_FR1Present, err = r.ReadBool(); err != nil {
+	var Dl_SchedulingOffset_PDSCH_TypeA_FDD_FR1Present bool
+	if Dl_SchedulingOffset_PDSCH_TypeA_FDD_FR1Present, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var dl_SchedulingOffset_PDSCH_TypeA_TDD_FR1Present bool
-	if dl_SchedulingOffset_PDSCH_TypeA_TDD_FR1Present, err = r.ReadBool(); err != nil {
+	var Dl_SchedulingOffset_PDSCH_TypeA_TDD_FR1Present bool
+	if Dl_SchedulingOffset_PDSCH_TypeA_TDD_FR1Present, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var dl_SchedulingOffset_PDSCH_TypeA_TDD_FR2Present bool
-	if dl_SchedulingOffset_PDSCH_TypeA_TDD_FR2Present, err = r.ReadBool(); err != nil {
+	var Dl_SchedulingOffset_PDSCH_TypeA_TDD_FR2Present bool
+	if Dl_SchedulingOffset_PDSCH_TypeA_TDD_FR2Present, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var dl_SchedulingOffset_PDSCH_TypeB_FDD_FR1Present bool
-	if dl_SchedulingOffset_PDSCH_TypeB_FDD_FR1Present, err = r.ReadBool(); err != nil {
+	var Dl_SchedulingOffset_PDSCH_TypeB_FDD_FR1Present bool
+	if Dl_SchedulingOffset_PDSCH_TypeB_FDD_FR1Present, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var dl_SchedulingOffset_PDSCH_TypeB_TDD_FR1Present bool
-	if dl_SchedulingOffset_PDSCH_TypeB_TDD_FR1Present, err = r.ReadBool(); err != nil {
+	var Dl_SchedulingOffset_PDSCH_TypeB_TDD_FR1Present bool
+	if Dl_SchedulingOffset_PDSCH_TypeB_TDD_FR1Present, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var dl_SchedulingOffset_PDSCH_TypeB_TDD_FR2Present bool
-	if dl_SchedulingOffset_PDSCH_TypeB_TDD_FR2Present, err = r.ReadBool(); err != nil {
+	var Dl_SchedulingOffset_PDSCH_TypeB_TDD_FR2Present bool
+	if Dl_SchedulingOffset_PDSCH_TypeB_TDD_FR2Present, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var nonCriticalExtensionPresent bool
-	if nonCriticalExtensionPresent, err = r.ReadBool(); err != nil {
+	var NonCriticalExtensionPresent bool
+	if NonCriticalExtensionPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	if dl_SchedulingOffset_PDSCH_TypeA_FDD_FR1Present {
-		ie.dl_SchedulingOffset_PDSCH_TypeA_FDD_FR1 = new(UERadioPagingInformation_v15e0_IEs_dl_SchedulingOffset_PDSCH_TypeA_FDD_FR1)
-		if err = ie.dl_SchedulingOffset_PDSCH_TypeA_FDD_FR1.Decode(r); err != nil {
-			return utils.WrapError("Decode dl_SchedulingOffset_PDSCH_TypeA_FDD_FR1", err)
+	if Dl_SchedulingOffset_PDSCH_TypeA_FDD_FR1Present {
+		ie.Dl_SchedulingOffset_PDSCH_TypeA_FDD_FR1 = new(UERadioPagingInformation_v15e0_IEs_dl_SchedulingOffset_PDSCH_TypeA_FDD_FR1)
+		if err = ie.Dl_SchedulingOffset_PDSCH_TypeA_FDD_FR1.Decode(r); err != nil {
+			return utils.WrapError("Decode Dl_SchedulingOffset_PDSCH_TypeA_FDD_FR1", err)
 		}
 	}
-	if dl_SchedulingOffset_PDSCH_TypeA_TDD_FR1Present {
-		ie.dl_SchedulingOffset_PDSCH_TypeA_TDD_FR1 = new(UERadioPagingInformation_v15e0_IEs_dl_SchedulingOffset_PDSCH_TypeA_TDD_FR1)
-		if err = ie.dl_SchedulingOffset_PDSCH_TypeA_TDD_FR1.Decode(r); err != nil {
-			return utils.WrapError("Decode dl_SchedulingOffset_PDSCH_TypeA_TDD_FR1", err)
+	if Dl_SchedulingOffset_PDSCH_TypeA_TDD_FR1Present {
+		ie.Dl_SchedulingOffset_PDSCH_TypeA_TDD_FR1 = new(UERadioPagingInformation_v15e0_IEs_dl_SchedulingOffset_PDSCH_TypeA_TDD_FR1)
+		if err = ie.Dl_SchedulingOffset_PDSCH_TypeA_TDD_FR1.Decode(r); err != nil {
+			return utils.WrapError("Decode Dl_SchedulingOffset_PDSCH_TypeA_TDD_FR1", err)
 		}
 	}
-	if dl_SchedulingOffset_PDSCH_TypeA_TDD_FR2Present {
-		ie.dl_SchedulingOffset_PDSCH_TypeA_TDD_FR2 = new(UERadioPagingInformation_v15e0_IEs_dl_SchedulingOffset_PDSCH_TypeA_TDD_FR2)
-		if err = ie.dl_SchedulingOffset_PDSCH_TypeA_TDD_FR2.Decode(r); err != nil {
-			return utils.WrapError("Decode dl_SchedulingOffset_PDSCH_TypeA_TDD_FR2", err)
+	if Dl_SchedulingOffset_PDSCH_TypeA_TDD_FR2Present {
+		ie.Dl_SchedulingOffset_PDSCH_TypeA_TDD_FR2 = new(UERadioPagingInformation_v15e0_IEs_dl_SchedulingOffset_PDSCH_TypeA_TDD_FR2)
+		if err = ie.Dl_SchedulingOffset_PDSCH_TypeA_TDD_FR2.Decode(r); err != nil {
+			return utils.WrapError("Decode Dl_SchedulingOffset_PDSCH_TypeA_TDD_FR2", err)
 		}
 	}
-	if dl_SchedulingOffset_PDSCH_TypeB_FDD_FR1Present {
-		ie.dl_SchedulingOffset_PDSCH_TypeB_FDD_FR1 = new(UERadioPagingInformation_v15e0_IEs_dl_SchedulingOffset_PDSCH_TypeB_FDD_FR1)
-		if err = ie.dl_SchedulingOffset_PDSCH_TypeB_FDD_FR1.Decode(r); err != nil {
-			return utils.WrapError("Decode dl_SchedulingOffset_PDSCH_TypeB_FDD_FR1", err)
+	if Dl_SchedulingOffset_PDSCH_TypeB_FDD_FR1Present {
+		ie.Dl_SchedulingOffset_PDSCH_TypeB_FDD_FR1 = new(UERadioPagingInformation_v15e0_IEs_dl_SchedulingOffset_PDSCH_TypeB_FDD_FR1)
+		if err = ie.Dl_SchedulingOffset_PDSCH_TypeB_FDD_FR1.Decode(r); err != nil {
+			return utils.WrapError("Decode Dl_SchedulingOffset_PDSCH_TypeB_FDD_FR1", err)
 		}
 	}
-	if dl_SchedulingOffset_PDSCH_TypeB_TDD_FR1Present {
-		ie.dl_SchedulingOffset_PDSCH_TypeB_TDD_FR1 = new(UERadioPagingInformation_v15e0_IEs_dl_SchedulingOffset_PDSCH_TypeB_TDD_FR1)
-		if err = ie.dl_SchedulingOffset_PDSCH_TypeB_TDD_FR1.Decode(r); err != nil {
-			return utils.WrapError("Decode dl_SchedulingOffset_PDSCH_TypeB_TDD_FR1", err)
+	if Dl_SchedulingOffset_PDSCH_TypeB_TDD_FR1Present {
+		ie.Dl_SchedulingOffset_PDSCH_TypeB_TDD_FR1 = new(UERadioPagingInformation_v15e0_IEs_dl_SchedulingOffset_PDSCH_TypeB_TDD_FR1)
+		if err = ie.Dl_SchedulingOffset_PDSCH_TypeB_TDD_FR1.Decode(r); err != nil {
+			return utils.WrapError("Decode Dl_SchedulingOffset_PDSCH_TypeB_TDD_FR1", err)
 		}
 	}
-	if dl_SchedulingOffset_PDSCH_TypeB_TDD_FR2Present {
-		ie.dl_SchedulingOffset_PDSCH_TypeB_TDD_FR2 = new(UERadioPagingInformation_v15e0_IEs_dl_SchedulingOffset_PDSCH_TypeB_TDD_FR2)
-		if err = ie.dl_SchedulingOffset_PDSCH_TypeB_TDD_FR2.Decode(r); err != nil {
-			return utils.WrapError("Decode dl_SchedulingOffset_PDSCH_TypeB_TDD_FR2", err)
+	if Dl_SchedulingOffset_PDSCH_TypeB_TDD_FR2Present {
+		ie.Dl_SchedulingOffset_PDSCH_TypeB_TDD_FR2 = new(UERadioPagingInformation_v15e0_IEs_dl_SchedulingOffset_PDSCH_TypeB_TDD_FR2)
+		if err = ie.Dl_SchedulingOffset_PDSCH_TypeB_TDD_FR2.Decode(r); err != nil {
+			return utils.WrapError("Decode Dl_SchedulingOffset_PDSCH_TypeB_TDD_FR2", err)
 		}
 	}
-	if nonCriticalExtensionPresent {
-		ie.nonCriticalExtension = new(UERadioPagingInformation_v1700_IEs)
-		if err = ie.nonCriticalExtension.Decode(r); err != nil {
-			return utils.WrapError("Decode nonCriticalExtension", err)
+	if NonCriticalExtensionPresent {
+		ie.NonCriticalExtension = new(UERadioPagingInformation_v1700_IEs)
+		if err = ie.NonCriticalExtension.Decode(r); err != nil {
+			return utils.WrapError("Decode NonCriticalExtension", err)
 		}
 	}
 	return nil

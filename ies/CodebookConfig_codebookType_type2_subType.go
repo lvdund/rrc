@@ -9,14 +9,14 @@ import (
 
 const (
 	CodebookConfig_codebookType_type2_subType_Choice_nothing uint64 = iota
-	CodebookConfig_codebookType_type2_subType_Choice_typeII
-	CodebookConfig_codebookType_type2_subType_Choice_typeII_PortSelection
+	CodebookConfig_codebookType_type2_subType_Choice_TypeII
+	CodebookConfig_codebookType_type2_subType_Choice_TypeII_PortSelection
 )
 
 type CodebookConfig_codebookType_type2_subType struct {
 	Choice               uint64
-	typeII               *CodebookConfig_codebookType_type2_subType_typeII
-	typeII_PortSelection *CodebookConfig_codebookType_type2_subType_typeII_PortSelection
+	TypeII               *CodebookConfig_codebookType_type2_subType_typeII
+	TypeII_PortSelection *CodebookConfig_codebookType_type2_subType_typeII_PortSelection
 }
 
 func (ie *CodebookConfig_codebookType_type2_subType) Encode(w *uper.UperWriter) error {
@@ -25,13 +25,13 @@ func (ie *CodebookConfig_codebookType_type2_subType) Encode(w *uper.UperWriter) 
 		return err
 	}
 	switch ie.Choice {
-	case CodebookConfig_codebookType_type2_subType_Choice_typeII:
-		if err = ie.typeII.Encode(w); err != nil {
-			err = utils.WrapError("Encode typeII", err)
+	case CodebookConfig_codebookType_type2_subType_Choice_TypeII:
+		if err = ie.TypeII.Encode(w); err != nil {
+			err = utils.WrapError("Encode TypeII", err)
 		}
-	case CodebookConfig_codebookType_type2_subType_Choice_typeII_PortSelection:
-		if err = ie.typeII_PortSelection.Encode(w); err != nil {
-			err = utils.WrapError("Encode typeII_PortSelection", err)
+	case CodebookConfig_codebookType_type2_subType_Choice_TypeII_PortSelection:
+		if err = ie.TypeII_PortSelection.Encode(w); err != nil {
+			err = utils.WrapError("Encode TypeII_PortSelection", err)
 		}
 	default:
 		err = fmt.Errorf("invalid choice: %d", ie.Choice)
@@ -45,15 +45,15 @@ func (ie *CodebookConfig_codebookType_type2_subType) Decode(r *uper.UperReader) 
 		return err
 	}
 	switch ie.Choice {
-	case CodebookConfig_codebookType_type2_subType_Choice_typeII:
-		ie.typeII = new(CodebookConfig_codebookType_type2_subType_typeII)
-		if err = ie.typeII.Decode(r); err != nil {
-			return utils.WrapError("Decode typeII", err)
+	case CodebookConfig_codebookType_type2_subType_Choice_TypeII:
+		ie.TypeII = new(CodebookConfig_codebookType_type2_subType_typeII)
+		if err = ie.TypeII.Decode(r); err != nil {
+			return utils.WrapError("Decode TypeII", err)
 		}
-	case CodebookConfig_codebookType_type2_subType_Choice_typeII_PortSelection:
-		ie.typeII_PortSelection = new(CodebookConfig_codebookType_type2_subType_typeII_PortSelection)
-		if err = ie.typeII_PortSelection.Decode(r); err != nil {
-			return utils.WrapError("Decode typeII_PortSelection", err)
+	case CodebookConfig_codebookType_type2_subType_Choice_TypeII_PortSelection:
+		ie.TypeII_PortSelection = new(CodebookConfig_codebookType_type2_subType_typeII_PortSelection)
+		if err = ie.TypeII_PortSelection.Decode(r); err != nil {
+			return utils.WrapError("Decode TypeII_PortSelection", err)
 		}
 	default:
 		return fmt.Errorf("invalid choice: %d", ie.Choice)

@@ -6,88 +6,88 @@ import (
 )
 
 type UE_MRDC_Capability struct {
-	measAndMobParametersMRDC     *MeasAndMobParametersMRDC       `optional`
-	phy_ParametersMRDC_v1530     *Phy_ParametersMRDC             `optional`
-	rf_ParametersMRDC            RF_ParametersMRDC               `madatory`
-	generalParametersMRDC        *GeneralParametersMRDC_XDD_Diff `optional`
-	fdd_Add_UE_MRDC_Capabilities *UE_MRDC_CapabilityAddXDD_Mode  `optional`
-	tdd_Add_UE_MRDC_Capabilities *UE_MRDC_CapabilityAddXDD_Mode  `optional`
-	fr1_Add_UE_MRDC_Capabilities *UE_MRDC_CapabilityAddFRX_Mode  `optional`
-	fr2_Add_UE_MRDC_Capabilities *UE_MRDC_CapabilityAddFRX_Mode  `optional`
-	featureSetCombinations       []FeatureSetCombination         `lb:1,ub:maxFeatureSetCombinations,optional`
-	pdcp_ParametersMRDC_v1530    *PDCP_ParametersMRDC            `optional`
-	lateNonCriticalExtension     *[]byte                         `optional`
-	nonCriticalExtension         *UE_MRDC_Capability_v1560       `optional`
+	MeasAndMobParametersMRDC     *MeasAndMobParametersMRDC       `optional`
+	Phy_ParametersMRDC_v1530     *Phy_ParametersMRDC             `optional`
+	Rf_ParametersMRDC            RF_ParametersMRDC               `madatory`
+	GeneralParametersMRDC        *GeneralParametersMRDC_XDD_Diff `optional`
+	Fdd_Add_UE_MRDC_Capabilities *UE_MRDC_CapabilityAddXDD_Mode  `optional`
+	Tdd_Add_UE_MRDC_Capabilities *UE_MRDC_CapabilityAddXDD_Mode  `optional`
+	Fr1_Add_UE_MRDC_Capabilities *UE_MRDC_CapabilityAddFRX_Mode  `optional`
+	Fr2_Add_UE_MRDC_Capabilities *UE_MRDC_CapabilityAddFRX_Mode  `optional`
+	FeatureSetCombinations       []FeatureSetCombination         `lb:1,ub:maxFeatureSetCombinations,optional`
+	Pdcp_ParametersMRDC_v1530    *PDCP_ParametersMRDC            `optional`
+	LateNonCriticalExtension     *[]byte                         `optional`
+	NonCriticalExtension         *UE_MRDC_Capability_v1560       `optional`
 }
 
 func (ie *UE_MRDC_Capability) Encode(w *uper.UperWriter) error {
 	var err error
-	preambleBits := []bool{ie.measAndMobParametersMRDC != nil, ie.phy_ParametersMRDC_v1530 != nil, ie.generalParametersMRDC != nil, ie.fdd_Add_UE_MRDC_Capabilities != nil, ie.tdd_Add_UE_MRDC_Capabilities != nil, ie.fr1_Add_UE_MRDC_Capabilities != nil, ie.fr2_Add_UE_MRDC_Capabilities != nil, len(ie.featureSetCombinations) > 0, ie.pdcp_ParametersMRDC_v1530 != nil, ie.lateNonCriticalExtension != nil, ie.nonCriticalExtension != nil}
+	preambleBits := []bool{ie.MeasAndMobParametersMRDC != nil, ie.Phy_ParametersMRDC_v1530 != nil, ie.GeneralParametersMRDC != nil, ie.Fdd_Add_UE_MRDC_Capabilities != nil, ie.Tdd_Add_UE_MRDC_Capabilities != nil, ie.Fr1_Add_UE_MRDC_Capabilities != nil, ie.Fr2_Add_UE_MRDC_Capabilities != nil, len(ie.FeatureSetCombinations) > 0, ie.Pdcp_ParametersMRDC_v1530 != nil, ie.LateNonCriticalExtension != nil, ie.NonCriticalExtension != nil}
 	for _, bit := range preambleBits {
 		if err = w.WriteBool(bit); err != nil {
 			return err
 		}
 	}
-	if ie.measAndMobParametersMRDC != nil {
-		if err = ie.measAndMobParametersMRDC.Encode(w); err != nil {
-			return utils.WrapError("Encode measAndMobParametersMRDC", err)
+	if ie.MeasAndMobParametersMRDC != nil {
+		if err = ie.MeasAndMobParametersMRDC.Encode(w); err != nil {
+			return utils.WrapError("Encode MeasAndMobParametersMRDC", err)
 		}
 	}
-	if ie.phy_ParametersMRDC_v1530 != nil {
-		if err = ie.phy_ParametersMRDC_v1530.Encode(w); err != nil {
-			return utils.WrapError("Encode phy_ParametersMRDC_v1530", err)
+	if ie.Phy_ParametersMRDC_v1530 != nil {
+		if err = ie.Phy_ParametersMRDC_v1530.Encode(w); err != nil {
+			return utils.WrapError("Encode Phy_ParametersMRDC_v1530", err)
 		}
 	}
-	if err = ie.rf_ParametersMRDC.Encode(w); err != nil {
-		return utils.WrapError("Encode rf_ParametersMRDC", err)
+	if err = ie.Rf_ParametersMRDC.Encode(w); err != nil {
+		return utils.WrapError("Encode Rf_ParametersMRDC", err)
 	}
-	if ie.generalParametersMRDC != nil {
-		if err = ie.generalParametersMRDC.Encode(w); err != nil {
-			return utils.WrapError("Encode generalParametersMRDC", err)
+	if ie.GeneralParametersMRDC != nil {
+		if err = ie.GeneralParametersMRDC.Encode(w); err != nil {
+			return utils.WrapError("Encode GeneralParametersMRDC", err)
 		}
 	}
-	if ie.fdd_Add_UE_MRDC_Capabilities != nil {
-		if err = ie.fdd_Add_UE_MRDC_Capabilities.Encode(w); err != nil {
-			return utils.WrapError("Encode fdd_Add_UE_MRDC_Capabilities", err)
+	if ie.Fdd_Add_UE_MRDC_Capabilities != nil {
+		if err = ie.Fdd_Add_UE_MRDC_Capabilities.Encode(w); err != nil {
+			return utils.WrapError("Encode Fdd_Add_UE_MRDC_Capabilities", err)
 		}
 	}
-	if ie.tdd_Add_UE_MRDC_Capabilities != nil {
-		if err = ie.tdd_Add_UE_MRDC_Capabilities.Encode(w); err != nil {
-			return utils.WrapError("Encode tdd_Add_UE_MRDC_Capabilities", err)
+	if ie.Tdd_Add_UE_MRDC_Capabilities != nil {
+		if err = ie.Tdd_Add_UE_MRDC_Capabilities.Encode(w); err != nil {
+			return utils.WrapError("Encode Tdd_Add_UE_MRDC_Capabilities", err)
 		}
 	}
-	if ie.fr1_Add_UE_MRDC_Capabilities != nil {
-		if err = ie.fr1_Add_UE_MRDC_Capabilities.Encode(w); err != nil {
-			return utils.WrapError("Encode fr1_Add_UE_MRDC_Capabilities", err)
+	if ie.Fr1_Add_UE_MRDC_Capabilities != nil {
+		if err = ie.Fr1_Add_UE_MRDC_Capabilities.Encode(w); err != nil {
+			return utils.WrapError("Encode Fr1_Add_UE_MRDC_Capabilities", err)
 		}
 	}
-	if ie.fr2_Add_UE_MRDC_Capabilities != nil {
-		if err = ie.fr2_Add_UE_MRDC_Capabilities.Encode(w); err != nil {
-			return utils.WrapError("Encode fr2_Add_UE_MRDC_Capabilities", err)
+	if ie.Fr2_Add_UE_MRDC_Capabilities != nil {
+		if err = ie.Fr2_Add_UE_MRDC_Capabilities.Encode(w); err != nil {
+			return utils.WrapError("Encode Fr2_Add_UE_MRDC_Capabilities", err)
 		}
 	}
-	if len(ie.featureSetCombinations) > 0 {
-		tmp_featureSetCombinations := utils.NewSequence[*FeatureSetCombination]([]*FeatureSetCombination{}, uper.Constraint{Lb: 1, Ub: maxFeatureSetCombinations}, false)
-		for _, i := range ie.featureSetCombinations {
-			tmp_featureSetCombinations.Value = append(tmp_featureSetCombinations.Value, &i)
+	if len(ie.FeatureSetCombinations) > 0 {
+		tmp_FeatureSetCombinations := utils.NewSequence[*FeatureSetCombination]([]*FeatureSetCombination{}, uper.Constraint{Lb: 1, Ub: maxFeatureSetCombinations}, false)
+		for _, i := range ie.FeatureSetCombinations {
+			tmp_FeatureSetCombinations.Value = append(tmp_FeatureSetCombinations.Value, &i)
 		}
-		if err = tmp_featureSetCombinations.Encode(w); err != nil {
-			return utils.WrapError("Encode featureSetCombinations", err)
-		}
-	}
-	if ie.pdcp_ParametersMRDC_v1530 != nil {
-		if err = ie.pdcp_ParametersMRDC_v1530.Encode(w); err != nil {
-			return utils.WrapError("Encode pdcp_ParametersMRDC_v1530", err)
+		if err = tmp_FeatureSetCombinations.Encode(w); err != nil {
+			return utils.WrapError("Encode FeatureSetCombinations", err)
 		}
 	}
-	if ie.lateNonCriticalExtension != nil {
-		if err = w.WriteOctetString(*ie.lateNonCriticalExtension, &uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
-			return utils.WrapError("Encode lateNonCriticalExtension", err)
+	if ie.Pdcp_ParametersMRDC_v1530 != nil {
+		if err = ie.Pdcp_ParametersMRDC_v1530.Encode(w); err != nil {
+			return utils.WrapError("Encode Pdcp_ParametersMRDC_v1530", err)
 		}
 	}
-	if ie.nonCriticalExtension != nil {
-		if err = ie.nonCriticalExtension.Encode(w); err != nil {
-			return utils.WrapError("Encode nonCriticalExtension", err)
+	if ie.LateNonCriticalExtension != nil {
+		if err = w.WriteOctetString(*ie.LateNonCriticalExtension, &uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+			return utils.WrapError("Encode LateNonCriticalExtension", err)
+		}
+	}
+	if ie.NonCriticalExtension != nil {
+		if err = ie.NonCriticalExtension.Encode(w); err != nil {
+			return utils.WrapError("Encode NonCriticalExtension", err)
 		}
 	}
 	return nil
@@ -95,125 +95,125 @@ func (ie *UE_MRDC_Capability) Encode(w *uper.UperWriter) error {
 
 func (ie *UE_MRDC_Capability) Decode(r *uper.UperReader) error {
 	var err error
-	var measAndMobParametersMRDCPresent bool
-	if measAndMobParametersMRDCPresent, err = r.ReadBool(); err != nil {
+	var MeasAndMobParametersMRDCPresent bool
+	if MeasAndMobParametersMRDCPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var phy_ParametersMRDC_v1530Present bool
-	if phy_ParametersMRDC_v1530Present, err = r.ReadBool(); err != nil {
+	var Phy_ParametersMRDC_v1530Present bool
+	if Phy_ParametersMRDC_v1530Present, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var generalParametersMRDCPresent bool
-	if generalParametersMRDCPresent, err = r.ReadBool(); err != nil {
+	var GeneralParametersMRDCPresent bool
+	if GeneralParametersMRDCPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var fdd_Add_UE_MRDC_CapabilitiesPresent bool
-	if fdd_Add_UE_MRDC_CapabilitiesPresent, err = r.ReadBool(); err != nil {
+	var Fdd_Add_UE_MRDC_CapabilitiesPresent bool
+	if Fdd_Add_UE_MRDC_CapabilitiesPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var tdd_Add_UE_MRDC_CapabilitiesPresent bool
-	if tdd_Add_UE_MRDC_CapabilitiesPresent, err = r.ReadBool(); err != nil {
+	var Tdd_Add_UE_MRDC_CapabilitiesPresent bool
+	if Tdd_Add_UE_MRDC_CapabilitiesPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var fr1_Add_UE_MRDC_CapabilitiesPresent bool
-	if fr1_Add_UE_MRDC_CapabilitiesPresent, err = r.ReadBool(); err != nil {
+	var Fr1_Add_UE_MRDC_CapabilitiesPresent bool
+	if Fr1_Add_UE_MRDC_CapabilitiesPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var fr2_Add_UE_MRDC_CapabilitiesPresent bool
-	if fr2_Add_UE_MRDC_CapabilitiesPresent, err = r.ReadBool(); err != nil {
+	var Fr2_Add_UE_MRDC_CapabilitiesPresent bool
+	if Fr2_Add_UE_MRDC_CapabilitiesPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var featureSetCombinationsPresent bool
-	if featureSetCombinationsPresent, err = r.ReadBool(); err != nil {
+	var FeatureSetCombinationsPresent bool
+	if FeatureSetCombinationsPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var pdcp_ParametersMRDC_v1530Present bool
-	if pdcp_ParametersMRDC_v1530Present, err = r.ReadBool(); err != nil {
+	var Pdcp_ParametersMRDC_v1530Present bool
+	if Pdcp_ParametersMRDC_v1530Present, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var lateNonCriticalExtensionPresent bool
-	if lateNonCriticalExtensionPresent, err = r.ReadBool(); err != nil {
+	var LateNonCriticalExtensionPresent bool
+	if LateNonCriticalExtensionPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var nonCriticalExtensionPresent bool
-	if nonCriticalExtensionPresent, err = r.ReadBool(); err != nil {
+	var NonCriticalExtensionPresent bool
+	if NonCriticalExtensionPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	if measAndMobParametersMRDCPresent {
-		ie.measAndMobParametersMRDC = new(MeasAndMobParametersMRDC)
-		if err = ie.measAndMobParametersMRDC.Decode(r); err != nil {
-			return utils.WrapError("Decode measAndMobParametersMRDC", err)
+	if MeasAndMobParametersMRDCPresent {
+		ie.MeasAndMobParametersMRDC = new(MeasAndMobParametersMRDC)
+		if err = ie.MeasAndMobParametersMRDC.Decode(r); err != nil {
+			return utils.WrapError("Decode MeasAndMobParametersMRDC", err)
 		}
 	}
-	if phy_ParametersMRDC_v1530Present {
-		ie.phy_ParametersMRDC_v1530 = new(Phy_ParametersMRDC)
-		if err = ie.phy_ParametersMRDC_v1530.Decode(r); err != nil {
-			return utils.WrapError("Decode phy_ParametersMRDC_v1530", err)
+	if Phy_ParametersMRDC_v1530Present {
+		ie.Phy_ParametersMRDC_v1530 = new(Phy_ParametersMRDC)
+		if err = ie.Phy_ParametersMRDC_v1530.Decode(r); err != nil {
+			return utils.WrapError("Decode Phy_ParametersMRDC_v1530", err)
 		}
 	}
-	if err = ie.rf_ParametersMRDC.Decode(r); err != nil {
-		return utils.WrapError("Decode rf_ParametersMRDC", err)
+	if err = ie.Rf_ParametersMRDC.Decode(r); err != nil {
+		return utils.WrapError("Decode Rf_ParametersMRDC", err)
 	}
-	if generalParametersMRDCPresent {
-		ie.generalParametersMRDC = new(GeneralParametersMRDC_XDD_Diff)
-		if err = ie.generalParametersMRDC.Decode(r); err != nil {
-			return utils.WrapError("Decode generalParametersMRDC", err)
+	if GeneralParametersMRDCPresent {
+		ie.GeneralParametersMRDC = new(GeneralParametersMRDC_XDD_Diff)
+		if err = ie.GeneralParametersMRDC.Decode(r); err != nil {
+			return utils.WrapError("Decode GeneralParametersMRDC", err)
 		}
 	}
-	if fdd_Add_UE_MRDC_CapabilitiesPresent {
-		ie.fdd_Add_UE_MRDC_Capabilities = new(UE_MRDC_CapabilityAddXDD_Mode)
-		if err = ie.fdd_Add_UE_MRDC_Capabilities.Decode(r); err != nil {
-			return utils.WrapError("Decode fdd_Add_UE_MRDC_Capabilities", err)
+	if Fdd_Add_UE_MRDC_CapabilitiesPresent {
+		ie.Fdd_Add_UE_MRDC_Capabilities = new(UE_MRDC_CapabilityAddXDD_Mode)
+		if err = ie.Fdd_Add_UE_MRDC_Capabilities.Decode(r); err != nil {
+			return utils.WrapError("Decode Fdd_Add_UE_MRDC_Capabilities", err)
 		}
 	}
-	if tdd_Add_UE_MRDC_CapabilitiesPresent {
-		ie.tdd_Add_UE_MRDC_Capabilities = new(UE_MRDC_CapabilityAddXDD_Mode)
-		if err = ie.tdd_Add_UE_MRDC_Capabilities.Decode(r); err != nil {
-			return utils.WrapError("Decode tdd_Add_UE_MRDC_Capabilities", err)
+	if Tdd_Add_UE_MRDC_CapabilitiesPresent {
+		ie.Tdd_Add_UE_MRDC_Capabilities = new(UE_MRDC_CapabilityAddXDD_Mode)
+		if err = ie.Tdd_Add_UE_MRDC_Capabilities.Decode(r); err != nil {
+			return utils.WrapError("Decode Tdd_Add_UE_MRDC_Capabilities", err)
 		}
 	}
-	if fr1_Add_UE_MRDC_CapabilitiesPresent {
-		ie.fr1_Add_UE_MRDC_Capabilities = new(UE_MRDC_CapabilityAddFRX_Mode)
-		if err = ie.fr1_Add_UE_MRDC_Capabilities.Decode(r); err != nil {
-			return utils.WrapError("Decode fr1_Add_UE_MRDC_Capabilities", err)
+	if Fr1_Add_UE_MRDC_CapabilitiesPresent {
+		ie.Fr1_Add_UE_MRDC_Capabilities = new(UE_MRDC_CapabilityAddFRX_Mode)
+		if err = ie.Fr1_Add_UE_MRDC_Capabilities.Decode(r); err != nil {
+			return utils.WrapError("Decode Fr1_Add_UE_MRDC_Capabilities", err)
 		}
 	}
-	if fr2_Add_UE_MRDC_CapabilitiesPresent {
-		ie.fr2_Add_UE_MRDC_Capabilities = new(UE_MRDC_CapabilityAddFRX_Mode)
-		if err = ie.fr2_Add_UE_MRDC_Capabilities.Decode(r); err != nil {
-			return utils.WrapError("Decode fr2_Add_UE_MRDC_Capabilities", err)
+	if Fr2_Add_UE_MRDC_CapabilitiesPresent {
+		ie.Fr2_Add_UE_MRDC_Capabilities = new(UE_MRDC_CapabilityAddFRX_Mode)
+		if err = ie.Fr2_Add_UE_MRDC_Capabilities.Decode(r); err != nil {
+			return utils.WrapError("Decode Fr2_Add_UE_MRDC_Capabilities", err)
 		}
 	}
-	if featureSetCombinationsPresent {
-		tmp_featureSetCombinations := utils.NewSequence[*FeatureSetCombination]([]*FeatureSetCombination{}, uper.Constraint{Lb: 1, Ub: maxFeatureSetCombinations}, false)
-		fn_featureSetCombinations := func() *FeatureSetCombination {
+	if FeatureSetCombinationsPresent {
+		tmp_FeatureSetCombinations := utils.NewSequence[*FeatureSetCombination]([]*FeatureSetCombination{}, uper.Constraint{Lb: 1, Ub: maxFeatureSetCombinations}, false)
+		fn_FeatureSetCombinations := func() *FeatureSetCombination {
 			return new(FeatureSetCombination)
 		}
-		if err = tmp_featureSetCombinations.Decode(r, fn_featureSetCombinations); err != nil {
-			return utils.WrapError("Decode featureSetCombinations", err)
+		if err = tmp_FeatureSetCombinations.Decode(r, fn_FeatureSetCombinations); err != nil {
+			return utils.WrapError("Decode FeatureSetCombinations", err)
 		}
-		ie.featureSetCombinations = []FeatureSetCombination{}
-		for _, i := range tmp_featureSetCombinations.Value {
-			ie.featureSetCombinations = append(ie.featureSetCombinations, *i)
-		}
-	}
-	if pdcp_ParametersMRDC_v1530Present {
-		ie.pdcp_ParametersMRDC_v1530 = new(PDCP_ParametersMRDC)
-		if err = ie.pdcp_ParametersMRDC_v1530.Decode(r); err != nil {
-			return utils.WrapError("Decode pdcp_ParametersMRDC_v1530", err)
+		ie.FeatureSetCombinations = []FeatureSetCombination{}
+		for _, i := range tmp_FeatureSetCombinations.Value {
+			ie.FeatureSetCombinations = append(ie.FeatureSetCombinations, *i)
 		}
 	}
-	if lateNonCriticalExtensionPresent {
-		var tmp_os_lateNonCriticalExtension []byte
-		if tmp_os_lateNonCriticalExtension, err = r.ReadOctetString(&uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
-			return utils.WrapError("Decode lateNonCriticalExtension", err)
+	if Pdcp_ParametersMRDC_v1530Present {
+		ie.Pdcp_ParametersMRDC_v1530 = new(PDCP_ParametersMRDC)
+		if err = ie.Pdcp_ParametersMRDC_v1530.Decode(r); err != nil {
+			return utils.WrapError("Decode Pdcp_ParametersMRDC_v1530", err)
 		}
-		ie.lateNonCriticalExtension = &tmp_os_lateNonCriticalExtension
 	}
-	if nonCriticalExtensionPresent {
-		ie.nonCriticalExtension = new(UE_MRDC_Capability_v1560)
-		if err = ie.nonCriticalExtension.Decode(r); err != nil {
-			return utils.WrapError("Decode nonCriticalExtension", err)
+	if LateNonCriticalExtensionPresent {
+		var tmp_os_LateNonCriticalExtension []byte
+		if tmp_os_LateNonCriticalExtension, err = r.ReadOctetString(&uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+			return utils.WrapError("Decode LateNonCriticalExtension", err)
+		}
+		ie.LateNonCriticalExtension = &tmp_os_LateNonCriticalExtension
+	}
+	if NonCriticalExtensionPresent {
+		ie.NonCriticalExtension = new(UE_MRDC_Capability_v1560)
+		if err = ie.NonCriticalExtension.Decode(r); err != nil {
+			return utils.WrapError("Decode NonCriticalExtension", err)
 		}
 	}
 	return nil

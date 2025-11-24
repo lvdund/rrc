@@ -9,14 +9,14 @@ import (
 
 const (
 	FeatureSet_Choice_nothing uint64 = iota
-	FeatureSet_Choice_eutra
-	FeatureSet_Choice_nr
+	FeatureSet_Choice_Eutra
+	FeatureSet_Choice_Nr
 )
 
 type FeatureSet struct {
 	Choice uint64
-	eutra  *FeatureSet_eutra
-	nr     *FeatureSet_nr
+	Eutra  *FeatureSet_eutra
+	Nr     *FeatureSet_nr
 }
 
 func (ie *FeatureSet) Encode(w *uper.UperWriter) error {
@@ -25,13 +25,13 @@ func (ie *FeatureSet) Encode(w *uper.UperWriter) error {
 		return err
 	}
 	switch ie.Choice {
-	case FeatureSet_Choice_eutra:
-		if err = ie.eutra.Encode(w); err != nil {
-			err = utils.WrapError("Encode eutra", err)
+	case FeatureSet_Choice_Eutra:
+		if err = ie.Eutra.Encode(w); err != nil {
+			err = utils.WrapError("Encode Eutra", err)
 		}
-	case FeatureSet_Choice_nr:
-		if err = ie.nr.Encode(w); err != nil {
-			err = utils.WrapError("Encode nr", err)
+	case FeatureSet_Choice_Nr:
+		if err = ie.Nr.Encode(w); err != nil {
+			err = utils.WrapError("Encode Nr", err)
 		}
 	default:
 		err = fmt.Errorf("invalid choice: %d", ie.Choice)
@@ -45,15 +45,15 @@ func (ie *FeatureSet) Decode(r *uper.UperReader) error {
 		return err
 	}
 	switch ie.Choice {
-	case FeatureSet_Choice_eutra:
-		ie.eutra = new(FeatureSet_eutra)
-		if err = ie.eutra.Decode(r); err != nil {
-			return utils.WrapError("Decode eutra", err)
+	case FeatureSet_Choice_Eutra:
+		ie.Eutra = new(FeatureSet_eutra)
+		if err = ie.Eutra.Decode(r); err != nil {
+			return utils.WrapError("Decode Eutra", err)
 		}
-	case FeatureSet_Choice_nr:
-		ie.nr = new(FeatureSet_nr)
-		if err = ie.nr.Decode(r); err != nil {
-			return utils.WrapError("Decode nr", err)
+	case FeatureSet_Choice_Nr:
+		ie.Nr = new(FeatureSet_nr)
+		if err = ie.Nr.Decode(r); err != nil {
+			return utils.WrapError("Decode Nr", err)
 		}
 	default:
 		return fmt.Errorf("invalid choice: %d", ie.Choice)

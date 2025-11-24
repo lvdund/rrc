@@ -9,18 +9,18 @@ import (
 
 const (
 	NR_DL_PRS_Periodicity_and_ResourceSetSlotOffset_r17_Choice_nothing uint64 = iota
-	NR_DL_PRS_Periodicity_and_ResourceSetSlotOffset_r17_Choice_scs15_r17
-	NR_DL_PRS_Periodicity_and_ResourceSetSlotOffset_r17_Choice_scs30_r17
-	NR_DL_PRS_Periodicity_and_ResourceSetSlotOffset_r17_Choice_scs60_r17
-	NR_DL_PRS_Periodicity_and_ResourceSetSlotOffset_r17_Choice_scs120_r17
+	NR_DL_PRS_Periodicity_and_ResourceSetSlotOffset_r17_Choice_Scs15_r17
+	NR_DL_PRS_Periodicity_and_ResourceSetSlotOffset_r17_Choice_Scs30_r17
+	NR_DL_PRS_Periodicity_and_ResourceSetSlotOffset_r17_Choice_Scs60_r17
+	NR_DL_PRS_Periodicity_and_ResourceSetSlotOffset_r17_Choice_Scs120_r17
 )
 
 type NR_DL_PRS_Periodicity_and_ResourceSetSlotOffset_r17 struct {
 	Choice     uint64
-	scs15_r17  *NR_DL_PRS_Periodicity_and_ResourceSetSlotOffset_r17_scs15_r17
-	scs30_r17  *NR_DL_PRS_Periodicity_and_ResourceSetSlotOffset_r17_scs30_r17
-	scs60_r17  *NR_DL_PRS_Periodicity_and_ResourceSetSlotOffset_r17_scs60_r17
-	scs120_r17 *NR_DL_PRS_Periodicity_and_ResourceSetSlotOffset_r17_scs120_r17
+	Scs15_r17  *NR_DL_PRS_Periodicity_and_ResourceSetSlotOffset_r17_scs15_r17
+	Scs30_r17  *NR_DL_PRS_Periodicity_and_ResourceSetSlotOffset_r17_scs30_r17
+	Scs60_r17  *NR_DL_PRS_Periodicity_and_ResourceSetSlotOffset_r17_scs60_r17
+	Scs120_r17 *NR_DL_PRS_Periodicity_and_ResourceSetSlotOffset_r17_scs120_r17
 }
 
 func (ie *NR_DL_PRS_Periodicity_and_ResourceSetSlotOffset_r17) Encode(w *uper.UperWriter) error {
@@ -29,21 +29,21 @@ func (ie *NR_DL_PRS_Periodicity_and_ResourceSetSlotOffset_r17) Encode(w *uper.Up
 		return err
 	}
 	switch ie.Choice {
-	case NR_DL_PRS_Periodicity_and_ResourceSetSlotOffset_r17_Choice_scs15_r17:
-		if err = ie.scs15_r17.Encode(w); err != nil {
-			err = utils.WrapError("Encode scs15_r17", err)
+	case NR_DL_PRS_Periodicity_and_ResourceSetSlotOffset_r17_Choice_Scs15_r17:
+		if err = ie.Scs15_r17.Encode(w); err != nil {
+			err = utils.WrapError("Encode Scs15_r17", err)
 		}
-	case NR_DL_PRS_Periodicity_and_ResourceSetSlotOffset_r17_Choice_scs30_r17:
-		if err = ie.scs30_r17.Encode(w); err != nil {
-			err = utils.WrapError("Encode scs30_r17", err)
+	case NR_DL_PRS_Periodicity_and_ResourceSetSlotOffset_r17_Choice_Scs30_r17:
+		if err = ie.Scs30_r17.Encode(w); err != nil {
+			err = utils.WrapError("Encode Scs30_r17", err)
 		}
-	case NR_DL_PRS_Periodicity_and_ResourceSetSlotOffset_r17_Choice_scs60_r17:
-		if err = ie.scs60_r17.Encode(w); err != nil {
-			err = utils.WrapError("Encode scs60_r17", err)
+	case NR_DL_PRS_Periodicity_and_ResourceSetSlotOffset_r17_Choice_Scs60_r17:
+		if err = ie.Scs60_r17.Encode(w); err != nil {
+			err = utils.WrapError("Encode Scs60_r17", err)
 		}
-	case NR_DL_PRS_Periodicity_and_ResourceSetSlotOffset_r17_Choice_scs120_r17:
-		if err = ie.scs120_r17.Encode(w); err != nil {
-			err = utils.WrapError("Encode scs120_r17", err)
+	case NR_DL_PRS_Periodicity_and_ResourceSetSlotOffset_r17_Choice_Scs120_r17:
+		if err = ie.Scs120_r17.Encode(w); err != nil {
+			err = utils.WrapError("Encode Scs120_r17", err)
 		}
 	default:
 		err = fmt.Errorf("invalid choice: %d", ie.Choice)
@@ -57,25 +57,25 @@ func (ie *NR_DL_PRS_Periodicity_and_ResourceSetSlotOffset_r17) Decode(r *uper.Up
 		return err
 	}
 	switch ie.Choice {
-	case NR_DL_PRS_Periodicity_and_ResourceSetSlotOffset_r17_Choice_scs15_r17:
-		ie.scs15_r17 = new(NR_DL_PRS_Periodicity_and_ResourceSetSlotOffset_r17_scs15_r17)
-		if err = ie.scs15_r17.Decode(r); err != nil {
-			return utils.WrapError("Decode scs15_r17", err)
+	case NR_DL_PRS_Periodicity_and_ResourceSetSlotOffset_r17_Choice_Scs15_r17:
+		ie.Scs15_r17 = new(NR_DL_PRS_Periodicity_and_ResourceSetSlotOffset_r17_scs15_r17)
+		if err = ie.Scs15_r17.Decode(r); err != nil {
+			return utils.WrapError("Decode Scs15_r17", err)
 		}
-	case NR_DL_PRS_Periodicity_and_ResourceSetSlotOffset_r17_Choice_scs30_r17:
-		ie.scs30_r17 = new(NR_DL_PRS_Periodicity_and_ResourceSetSlotOffset_r17_scs30_r17)
-		if err = ie.scs30_r17.Decode(r); err != nil {
-			return utils.WrapError("Decode scs30_r17", err)
+	case NR_DL_PRS_Periodicity_and_ResourceSetSlotOffset_r17_Choice_Scs30_r17:
+		ie.Scs30_r17 = new(NR_DL_PRS_Periodicity_and_ResourceSetSlotOffset_r17_scs30_r17)
+		if err = ie.Scs30_r17.Decode(r); err != nil {
+			return utils.WrapError("Decode Scs30_r17", err)
 		}
-	case NR_DL_PRS_Periodicity_and_ResourceSetSlotOffset_r17_Choice_scs60_r17:
-		ie.scs60_r17 = new(NR_DL_PRS_Periodicity_and_ResourceSetSlotOffset_r17_scs60_r17)
-		if err = ie.scs60_r17.Decode(r); err != nil {
-			return utils.WrapError("Decode scs60_r17", err)
+	case NR_DL_PRS_Periodicity_and_ResourceSetSlotOffset_r17_Choice_Scs60_r17:
+		ie.Scs60_r17 = new(NR_DL_PRS_Periodicity_and_ResourceSetSlotOffset_r17_scs60_r17)
+		if err = ie.Scs60_r17.Decode(r); err != nil {
+			return utils.WrapError("Decode Scs60_r17", err)
 		}
-	case NR_DL_PRS_Periodicity_and_ResourceSetSlotOffset_r17_Choice_scs120_r17:
-		ie.scs120_r17 = new(NR_DL_PRS_Periodicity_and_ResourceSetSlotOffset_r17_scs120_r17)
-		if err = ie.scs120_r17.Decode(r); err != nil {
-			return utils.WrapError("Decode scs120_r17", err)
+	case NR_DL_PRS_Periodicity_and_ResourceSetSlotOffset_r17_Choice_Scs120_r17:
+		ie.Scs120_r17 = new(NR_DL_PRS_Periodicity_and_ResourceSetSlotOffset_r17_scs120_r17)
+		if err = ie.Scs120_r17.Decode(r); err != nil {
+			return utils.WrapError("Decode Scs120_r17", err)
 		}
 	default:
 		return fmt.Errorf("invalid choice: %d", ie.Choice)

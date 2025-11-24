@@ -6,32 +6,32 @@ import (
 )
 
 type UE_NR_Capability_v1560 struct {
-	nrdc_Parameters      *NRDC_Parameters        `optional`
-	receivedFilters      *[]byte                 `optional`
-	nonCriticalExtension *UE_NR_Capability_v1570 `optional`
+	Nrdc_Parameters      *NRDC_Parameters        `optional`
+	ReceivedFilters      *[]byte                 `optional`
+	NonCriticalExtension *UE_NR_Capability_v1570 `optional`
 }
 
 func (ie *UE_NR_Capability_v1560) Encode(w *uper.UperWriter) error {
 	var err error
-	preambleBits := []bool{ie.nrdc_Parameters != nil, ie.receivedFilters != nil, ie.nonCriticalExtension != nil}
+	preambleBits := []bool{ie.Nrdc_Parameters != nil, ie.ReceivedFilters != nil, ie.NonCriticalExtension != nil}
 	for _, bit := range preambleBits {
 		if err = w.WriteBool(bit); err != nil {
 			return err
 		}
 	}
-	if ie.nrdc_Parameters != nil {
-		if err = ie.nrdc_Parameters.Encode(w); err != nil {
-			return utils.WrapError("Encode nrdc_Parameters", err)
+	if ie.Nrdc_Parameters != nil {
+		if err = ie.Nrdc_Parameters.Encode(w); err != nil {
+			return utils.WrapError("Encode Nrdc_Parameters", err)
 		}
 	}
-	if ie.receivedFilters != nil {
-		if err = w.WriteOctetString(*ie.receivedFilters, &uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
-			return utils.WrapError("Encode receivedFilters", err)
+	if ie.ReceivedFilters != nil {
+		if err = w.WriteOctetString(*ie.ReceivedFilters, &uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+			return utils.WrapError("Encode ReceivedFilters", err)
 		}
 	}
-	if ie.nonCriticalExtension != nil {
-		if err = ie.nonCriticalExtension.Encode(w); err != nil {
-			return utils.WrapError("Encode nonCriticalExtension", err)
+	if ie.NonCriticalExtension != nil {
+		if err = ie.NonCriticalExtension.Encode(w); err != nil {
+			return utils.WrapError("Encode NonCriticalExtension", err)
 		}
 	}
 	return nil
@@ -39,35 +39,35 @@ func (ie *UE_NR_Capability_v1560) Encode(w *uper.UperWriter) error {
 
 func (ie *UE_NR_Capability_v1560) Decode(r *uper.UperReader) error {
 	var err error
-	var nrdc_ParametersPresent bool
-	if nrdc_ParametersPresent, err = r.ReadBool(); err != nil {
+	var Nrdc_ParametersPresent bool
+	if Nrdc_ParametersPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var receivedFiltersPresent bool
-	if receivedFiltersPresent, err = r.ReadBool(); err != nil {
+	var ReceivedFiltersPresent bool
+	if ReceivedFiltersPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var nonCriticalExtensionPresent bool
-	if nonCriticalExtensionPresent, err = r.ReadBool(); err != nil {
+	var NonCriticalExtensionPresent bool
+	if NonCriticalExtensionPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	if nrdc_ParametersPresent {
-		ie.nrdc_Parameters = new(NRDC_Parameters)
-		if err = ie.nrdc_Parameters.Decode(r); err != nil {
-			return utils.WrapError("Decode nrdc_Parameters", err)
+	if Nrdc_ParametersPresent {
+		ie.Nrdc_Parameters = new(NRDC_Parameters)
+		if err = ie.Nrdc_Parameters.Decode(r); err != nil {
+			return utils.WrapError("Decode Nrdc_Parameters", err)
 		}
 	}
-	if receivedFiltersPresent {
-		var tmp_os_receivedFilters []byte
-		if tmp_os_receivedFilters, err = r.ReadOctetString(&uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
-			return utils.WrapError("Decode receivedFilters", err)
+	if ReceivedFiltersPresent {
+		var tmp_os_ReceivedFilters []byte
+		if tmp_os_ReceivedFilters, err = r.ReadOctetString(&uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+			return utils.WrapError("Decode ReceivedFilters", err)
 		}
-		ie.receivedFilters = &tmp_os_receivedFilters
+		ie.ReceivedFilters = &tmp_os_ReceivedFilters
 	}
-	if nonCriticalExtensionPresent {
-		ie.nonCriticalExtension = new(UE_NR_Capability_v1570)
-		if err = ie.nonCriticalExtension.Decode(r); err != nil {
-			return utils.WrapError("Decode nonCriticalExtension", err)
+	if NonCriticalExtensionPresent {
+		ie.NonCriticalExtension = new(UE_NR_Capability_v1570)
+		if err = ie.NonCriticalExtension.Decode(r); err != nil {
+			return utils.WrapError("Decode NonCriticalExtension", err)
 		}
 	}
 	return nil

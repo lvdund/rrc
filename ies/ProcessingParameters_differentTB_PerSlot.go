@@ -6,38 +6,38 @@ import (
 )
 
 type ProcessingParameters_differentTB_PerSlot struct {
-	upto1 *NumberOfCarriers `optional`
-	upto2 *NumberOfCarriers `optional`
-	upto4 *NumberOfCarriers `optional`
-	upto7 *NumberOfCarriers `optional`
+	Upto1 *NumberOfCarriers `optional`
+	Upto2 *NumberOfCarriers `optional`
+	Upto4 *NumberOfCarriers `optional`
+	Upto7 *NumberOfCarriers `optional`
 }
 
 func (ie *ProcessingParameters_differentTB_PerSlot) Encode(w *uper.UperWriter) error {
 	var err error
-	preambleBits := []bool{ie.upto1 != nil, ie.upto2 != nil, ie.upto4 != nil, ie.upto7 != nil}
+	preambleBits := []bool{ie.Upto1 != nil, ie.Upto2 != nil, ie.Upto4 != nil, ie.Upto7 != nil}
 	for _, bit := range preambleBits {
 		if err = w.WriteBool(bit); err != nil {
 			return err
 		}
 	}
-	if ie.upto1 != nil {
-		if err = ie.upto1.Encode(w); err != nil {
-			return utils.WrapError("Encode upto1", err)
+	if ie.Upto1 != nil {
+		if err = ie.Upto1.Encode(w); err != nil {
+			return utils.WrapError("Encode Upto1", err)
 		}
 	}
-	if ie.upto2 != nil {
-		if err = ie.upto2.Encode(w); err != nil {
-			return utils.WrapError("Encode upto2", err)
+	if ie.Upto2 != nil {
+		if err = ie.Upto2.Encode(w); err != nil {
+			return utils.WrapError("Encode Upto2", err)
 		}
 	}
-	if ie.upto4 != nil {
-		if err = ie.upto4.Encode(w); err != nil {
-			return utils.WrapError("Encode upto4", err)
+	if ie.Upto4 != nil {
+		if err = ie.Upto4.Encode(w); err != nil {
+			return utils.WrapError("Encode Upto4", err)
 		}
 	}
-	if ie.upto7 != nil {
-		if err = ie.upto7.Encode(w); err != nil {
-			return utils.WrapError("Encode upto7", err)
+	if ie.Upto7 != nil {
+		if err = ie.Upto7.Encode(w); err != nil {
+			return utils.WrapError("Encode Upto7", err)
 		}
 	}
 	return nil
@@ -45,44 +45,44 @@ func (ie *ProcessingParameters_differentTB_PerSlot) Encode(w *uper.UperWriter) e
 
 func (ie *ProcessingParameters_differentTB_PerSlot) Decode(r *uper.UperReader) error {
 	var err error
-	var upto1Present bool
-	if upto1Present, err = r.ReadBool(); err != nil {
+	var Upto1Present bool
+	if Upto1Present, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var upto2Present bool
-	if upto2Present, err = r.ReadBool(); err != nil {
+	var Upto2Present bool
+	if Upto2Present, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var upto4Present bool
-	if upto4Present, err = r.ReadBool(); err != nil {
+	var Upto4Present bool
+	if Upto4Present, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var upto7Present bool
-	if upto7Present, err = r.ReadBool(); err != nil {
+	var Upto7Present bool
+	if Upto7Present, err = r.ReadBool(); err != nil {
 		return err
 	}
-	if upto1Present {
-		ie.upto1 = new(NumberOfCarriers)
-		if err = ie.upto1.Decode(r); err != nil {
-			return utils.WrapError("Decode upto1", err)
+	if Upto1Present {
+		ie.Upto1 = new(NumberOfCarriers)
+		if err = ie.Upto1.Decode(r); err != nil {
+			return utils.WrapError("Decode Upto1", err)
 		}
 	}
-	if upto2Present {
-		ie.upto2 = new(NumberOfCarriers)
-		if err = ie.upto2.Decode(r); err != nil {
-			return utils.WrapError("Decode upto2", err)
+	if Upto2Present {
+		ie.Upto2 = new(NumberOfCarriers)
+		if err = ie.Upto2.Decode(r); err != nil {
+			return utils.WrapError("Decode Upto2", err)
 		}
 	}
-	if upto4Present {
-		ie.upto4 = new(NumberOfCarriers)
-		if err = ie.upto4.Decode(r); err != nil {
-			return utils.WrapError("Decode upto4", err)
+	if Upto4Present {
+		ie.Upto4 = new(NumberOfCarriers)
+		if err = ie.Upto4.Decode(r); err != nil {
+			return utils.WrapError("Decode Upto4", err)
 		}
 	}
-	if upto7Present {
-		ie.upto7 = new(NumberOfCarriers)
-		if err = ie.upto7.Decode(r); err != nil {
-			return utils.WrapError("Decode upto7", err)
+	if Upto7Present {
+		ie.Upto7 = new(NumberOfCarriers)
+		if err = ie.Upto7.Decode(r); err != nil {
+			return utils.WrapError("Decode Upto7", err)
 		}
 	}
 	return nil

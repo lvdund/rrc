@@ -9,14 +9,14 @@ import (
 
 const (
 	UplinkDataCompression_r17_Choice_nothing uint64 = iota
-	UplinkDataCompression_r17_Choice_newSetup
-	UplinkDataCompression_r17_Choice_drb_ContinueUDC
+	UplinkDataCompression_r17_Choice_NewSetup
+	UplinkDataCompression_r17_Choice_Drb_ContinueUDC
 )
 
 type UplinkDataCompression_r17 struct {
 	Choice          uint64
-	newSetup        *UplinkDataCompression_r17_newSetup
-	drb_ContinueUDC uper.NULL `madatory`
+	NewSetup        *UplinkDataCompression_r17_newSetup
+	Drb_ContinueUDC uper.NULL `madatory`
 }
 
 func (ie *UplinkDataCompression_r17) Encode(w *uper.UperWriter) error {
@@ -25,13 +25,13 @@ func (ie *UplinkDataCompression_r17) Encode(w *uper.UperWriter) error {
 		return err
 	}
 	switch ie.Choice {
-	case UplinkDataCompression_r17_Choice_newSetup:
-		if err = ie.newSetup.Encode(w); err != nil {
-			err = utils.WrapError("Encode newSetup", err)
+	case UplinkDataCompression_r17_Choice_NewSetup:
+		if err = ie.NewSetup.Encode(w); err != nil {
+			err = utils.WrapError("Encode NewSetup", err)
 		}
-	case UplinkDataCompression_r17_Choice_drb_ContinueUDC:
+	case UplinkDataCompression_r17_Choice_Drb_ContinueUDC:
 		if err := w.WriteNull(); err != nil {
-			err = utils.WrapError("Encode drb_ContinueUDC", err)
+			err = utils.WrapError("Encode Drb_ContinueUDC", err)
 		}
 	default:
 		err = fmt.Errorf("invalid choice: %d", ie.Choice)
@@ -45,14 +45,14 @@ func (ie *UplinkDataCompression_r17) Decode(r *uper.UperReader) error {
 		return err
 	}
 	switch ie.Choice {
-	case UplinkDataCompression_r17_Choice_newSetup:
-		ie.newSetup = new(UplinkDataCompression_r17_newSetup)
-		if err = ie.newSetup.Decode(r); err != nil {
-			return utils.WrapError("Decode newSetup", err)
+	case UplinkDataCompression_r17_Choice_NewSetup:
+		ie.NewSetup = new(UplinkDataCompression_r17_newSetup)
+		if err = ie.NewSetup.Decode(r); err != nil {
+			return utils.WrapError("Decode NewSetup", err)
 		}
-	case UplinkDataCompression_r17_Choice_drb_ContinueUDC:
+	case UplinkDataCompression_r17_Choice_Drb_ContinueUDC:
 		if err := r.ReadNull(); err != nil {
-			return utils.WrapError("Decode drb_ContinueUDC", err)
+			return utils.WrapError("Decode Drb_ContinueUDC", err)
 		}
 	default:
 		return fmt.Errorf("invalid choice: %d", ie.Choice)

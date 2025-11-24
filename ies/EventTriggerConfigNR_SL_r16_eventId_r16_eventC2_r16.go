@@ -6,35 +6,35 @@ import (
 )
 
 type EventTriggerConfigNR_SL_r16_eventId_r16_eventC2_r16 struct {
-	c2_Threshold_r16  SL_CBR_r16    `madatory`
-	hysteresis_r16    Hysteresis    `madatory`
-	timeToTrigger_r16 TimeToTrigger `madatory`
+	C2_Threshold_r16  SL_CBR_r16    `madatory`
+	Hysteresis_r16    Hysteresis    `madatory`
+	TimeToTrigger_r16 TimeToTrigger `madatory`
 }
 
 func (ie *EventTriggerConfigNR_SL_r16_eventId_r16_eventC2_r16) Encode(w *uper.UperWriter) error {
 	var err error
-	if err = ie.c2_Threshold_r16.Encode(w); err != nil {
-		return utils.WrapError("Encode c2_Threshold_r16", err)
+	if err = ie.C2_Threshold_r16.Encode(w); err != nil {
+		return utils.WrapError("Encode C2_Threshold_r16", err)
 	}
-	if err = ie.hysteresis_r16.Encode(w); err != nil {
-		return utils.WrapError("Encode hysteresis_r16", err)
+	if err = ie.Hysteresis_r16.Encode(w); err != nil {
+		return utils.WrapError("Encode Hysteresis_r16", err)
 	}
-	if err = ie.timeToTrigger_r16.Encode(w); err != nil {
-		return utils.WrapError("Encode timeToTrigger_r16", err)
+	if err = ie.TimeToTrigger_r16.Encode(w); err != nil {
+		return utils.WrapError("Encode TimeToTrigger_r16", err)
 	}
 	return nil
 }
 
 func (ie *EventTriggerConfigNR_SL_r16_eventId_r16_eventC2_r16) Decode(r *uper.UperReader) error {
 	var err error
-	if err = ie.c2_Threshold_r16.Decode(r); err != nil {
-		return utils.WrapError("Decode c2_Threshold_r16", err)
+	if err = ie.C2_Threshold_r16.Decode(r); err != nil {
+		return utils.WrapError("Decode C2_Threshold_r16", err)
 	}
-	if err = ie.hysteresis_r16.Decode(r); err != nil {
-		return utils.WrapError("Decode hysteresis_r16", err)
+	if err = ie.Hysteresis_r16.Decode(r); err != nil {
+		return utils.WrapError("Decode Hysteresis_r16", err)
 	}
-	if err = ie.timeToTrigger_r16.Decode(r); err != nil {
-		return utils.WrapError("Decode timeToTrigger_r16", err)
+	if err = ie.TimeToTrigger_r16.Decode(r); err != nil {
+		return utils.WrapError("Decode TimeToTrigger_r16", err)
 	}
 	return nil
 }

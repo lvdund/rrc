@@ -9,18 +9,18 @@ import (
 
 const (
 	TRS_ResourceSet_r17_periodicityAndOffset_r17_Choice_nothing uint64 = iota
-	TRS_ResourceSet_r17_periodicityAndOffset_r17_Choice_slots10
-	TRS_ResourceSet_r17_periodicityAndOffset_r17_Choice_slots20
-	TRS_ResourceSet_r17_periodicityAndOffset_r17_Choice_slots40
-	TRS_ResourceSet_r17_periodicityAndOffset_r17_Choice_slots80
+	TRS_ResourceSet_r17_periodicityAndOffset_r17_Choice_Slots10
+	TRS_ResourceSet_r17_periodicityAndOffset_r17_Choice_Slots20
+	TRS_ResourceSet_r17_periodicityAndOffset_r17_Choice_Slots40
+	TRS_ResourceSet_r17_periodicityAndOffset_r17_Choice_Slots80
 )
 
 type TRS_ResourceSet_r17_periodicityAndOffset_r17 struct {
 	Choice  uint64
-	slots10 int64 `lb:0,ub:9,madatory`
-	slots20 int64 `lb:0,ub:19,madatory`
-	slots40 int64 `lb:0,ub:39,madatory`
-	slots80 int64 `lb:0,ub:79,madatory`
+	Slots10 int64 `lb:0,ub:9,madatory`
+	Slots20 int64 `lb:0,ub:19,madatory`
+	Slots40 int64 `lb:0,ub:39,madatory`
+	Slots80 int64 `lb:0,ub:79,madatory`
 }
 
 func (ie *TRS_ResourceSet_r17_periodicityAndOffset_r17) Encode(w *uper.UperWriter) error {
@@ -29,21 +29,21 @@ func (ie *TRS_ResourceSet_r17_periodicityAndOffset_r17) Encode(w *uper.UperWrite
 		return err
 	}
 	switch ie.Choice {
-	case TRS_ResourceSet_r17_periodicityAndOffset_r17_Choice_slots10:
-		if err = w.WriteInteger(int64(ie.slots10), &uper.Constraint{Lb: 0, Ub: 9}, false); err != nil {
-			err = utils.WrapError("Encode slots10", err)
+	case TRS_ResourceSet_r17_periodicityAndOffset_r17_Choice_Slots10:
+		if err = w.WriteInteger(int64(ie.Slots10), &uper.Constraint{Lb: 0, Ub: 9}, false); err != nil {
+			err = utils.WrapError("Encode Slots10", err)
 		}
-	case TRS_ResourceSet_r17_periodicityAndOffset_r17_Choice_slots20:
-		if err = w.WriteInteger(int64(ie.slots20), &uper.Constraint{Lb: 0, Ub: 19}, false); err != nil {
-			err = utils.WrapError("Encode slots20", err)
+	case TRS_ResourceSet_r17_periodicityAndOffset_r17_Choice_Slots20:
+		if err = w.WriteInteger(int64(ie.Slots20), &uper.Constraint{Lb: 0, Ub: 19}, false); err != nil {
+			err = utils.WrapError("Encode Slots20", err)
 		}
-	case TRS_ResourceSet_r17_periodicityAndOffset_r17_Choice_slots40:
-		if err = w.WriteInteger(int64(ie.slots40), &uper.Constraint{Lb: 0, Ub: 39}, false); err != nil {
-			err = utils.WrapError("Encode slots40", err)
+	case TRS_ResourceSet_r17_periodicityAndOffset_r17_Choice_Slots40:
+		if err = w.WriteInteger(int64(ie.Slots40), &uper.Constraint{Lb: 0, Ub: 39}, false); err != nil {
+			err = utils.WrapError("Encode Slots40", err)
 		}
-	case TRS_ResourceSet_r17_periodicityAndOffset_r17_Choice_slots80:
-		if err = w.WriteInteger(int64(ie.slots80), &uper.Constraint{Lb: 0, Ub: 79}, false); err != nil {
-			err = utils.WrapError("Encode slots80", err)
+	case TRS_ResourceSet_r17_periodicityAndOffset_r17_Choice_Slots80:
+		if err = w.WriteInteger(int64(ie.Slots80), &uper.Constraint{Lb: 0, Ub: 79}, false); err != nil {
+			err = utils.WrapError("Encode Slots80", err)
 		}
 	default:
 		err = fmt.Errorf("invalid choice: %d", ie.Choice)
@@ -57,30 +57,30 @@ func (ie *TRS_ResourceSet_r17_periodicityAndOffset_r17) Decode(r *uper.UperReade
 		return err
 	}
 	switch ie.Choice {
-	case TRS_ResourceSet_r17_periodicityAndOffset_r17_Choice_slots10:
-		var tmp_int_slots10 int64
-		if tmp_int_slots10, err = r.ReadInteger(&uper.Constraint{Lb: 0, Ub: 9}, false); err != nil {
-			return utils.WrapError("Decode slots10", err)
+	case TRS_ResourceSet_r17_periodicityAndOffset_r17_Choice_Slots10:
+		var tmp_int_Slots10 int64
+		if tmp_int_Slots10, err = r.ReadInteger(&uper.Constraint{Lb: 0, Ub: 9}, false); err != nil {
+			return utils.WrapError("Decode Slots10", err)
 		}
-		ie.slots10 = tmp_int_slots10
-	case TRS_ResourceSet_r17_periodicityAndOffset_r17_Choice_slots20:
-		var tmp_int_slots20 int64
-		if tmp_int_slots20, err = r.ReadInteger(&uper.Constraint{Lb: 0, Ub: 19}, false); err != nil {
-			return utils.WrapError("Decode slots20", err)
+		ie.Slots10 = tmp_int_Slots10
+	case TRS_ResourceSet_r17_periodicityAndOffset_r17_Choice_Slots20:
+		var tmp_int_Slots20 int64
+		if tmp_int_Slots20, err = r.ReadInteger(&uper.Constraint{Lb: 0, Ub: 19}, false); err != nil {
+			return utils.WrapError("Decode Slots20", err)
 		}
-		ie.slots20 = tmp_int_slots20
-	case TRS_ResourceSet_r17_periodicityAndOffset_r17_Choice_slots40:
-		var tmp_int_slots40 int64
-		if tmp_int_slots40, err = r.ReadInteger(&uper.Constraint{Lb: 0, Ub: 39}, false); err != nil {
-			return utils.WrapError("Decode slots40", err)
+		ie.Slots20 = tmp_int_Slots20
+	case TRS_ResourceSet_r17_periodicityAndOffset_r17_Choice_Slots40:
+		var tmp_int_Slots40 int64
+		if tmp_int_Slots40, err = r.ReadInteger(&uper.Constraint{Lb: 0, Ub: 39}, false); err != nil {
+			return utils.WrapError("Decode Slots40", err)
 		}
-		ie.slots40 = tmp_int_slots40
-	case TRS_ResourceSet_r17_periodicityAndOffset_r17_Choice_slots80:
-		var tmp_int_slots80 int64
-		if tmp_int_slots80, err = r.ReadInteger(&uper.Constraint{Lb: 0, Ub: 79}, false); err != nil {
-			return utils.WrapError("Decode slots80", err)
+		ie.Slots40 = tmp_int_Slots40
+	case TRS_ResourceSet_r17_periodicityAndOffset_r17_Choice_Slots80:
+		var tmp_int_Slots80 int64
+		if tmp_int_Slots80, err = r.ReadInteger(&uper.Constraint{Lb: 0, Ub: 79}, false); err != nil {
+			return utils.WrapError("Decode Slots80", err)
 		}
-		ie.slots80 = tmp_int_slots80
+		ie.Slots80 = tmp_int_Slots80
 	default:
 		return fmt.Errorf("invalid choice: %d", ie.Choice)
 	}

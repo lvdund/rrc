@@ -6,74 +6,74 @@ import (
 )
 
 type CG_Config_IEs struct {
-	scg_CellGroupConfig        *[]byte                     `optional`
-	scg_RB_Config              *[]byte                     `optional`
-	configRestrictModReq       *ConfigRestrictModReqSCG    `optional`
-	drx_InfoSCG                *DRX_Info                   `optional`
-	candidateCellInfoListSN    *[]byte                     `optional`
-	measConfigSN               *MeasConfigSN               `optional`
-	selectedBandCombination    *BandCombinationInfoSN      `optional`
-	fr_InfoListSCG             *FR_InfoList                `optional`
-	candidateServingFreqListNR *CandidateServingFreqListNR `optional`
-	nonCriticalExtension       *CG_Config_v1540_IEs        `optional`
+	Scg_CellGroupConfig        *[]byte                     `optional`
+	Scg_RB_Config              *[]byte                     `optional`
+	ConfigRestrictModReq       *ConfigRestrictModReqSCG    `optional`
+	Drx_InfoSCG                *DRX_Info                   `optional`
+	CandidateCellInfoListSN    *[]byte                     `optional`
+	MeasConfigSN               *MeasConfigSN               `optional`
+	SelectedBandCombination    *BandCombinationInfoSN      `optional`
+	Fr_InfoListSCG             *FR_InfoList                `optional`
+	CandidateServingFreqListNR *CandidateServingFreqListNR `optional`
+	NonCriticalExtension       *CG_Config_v1540_IEs        `optional`
 }
 
 func (ie *CG_Config_IEs) Encode(w *uper.UperWriter) error {
 	var err error
-	preambleBits := []bool{ie.scg_CellGroupConfig != nil, ie.scg_RB_Config != nil, ie.configRestrictModReq != nil, ie.drx_InfoSCG != nil, ie.candidateCellInfoListSN != nil, ie.measConfigSN != nil, ie.selectedBandCombination != nil, ie.fr_InfoListSCG != nil, ie.candidateServingFreqListNR != nil, ie.nonCriticalExtension != nil}
+	preambleBits := []bool{ie.Scg_CellGroupConfig != nil, ie.Scg_RB_Config != nil, ie.ConfigRestrictModReq != nil, ie.Drx_InfoSCG != nil, ie.CandidateCellInfoListSN != nil, ie.MeasConfigSN != nil, ie.SelectedBandCombination != nil, ie.Fr_InfoListSCG != nil, ie.CandidateServingFreqListNR != nil, ie.NonCriticalExtension != nil}
 	for _, bit := range preambleBits {
 		if err = w.WriteBool(bit); err != nil {
 			return err
 		}
 	}
-	if ie.scg_CellGroupConfig != nil {
-		if err = w.WriteOctetString(*ie.scg_CellGroupConfig, &uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
-			return utils.WrapError("Encode scg_CellGroupConfig", err)
+	if ie.Scg_CellGroupConfig != nil {
+		if err = w.WriteOctetString(*ie.Scg_CellGroupConfig, &uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+			return utils.WrapError("Encode Scg_CellGroupConfig", err)
 		}
 	}
-	if ie.scg_RB_Config != nil {
-		if err = w.WriteOctetString(*ie.scg_RB_Config, &uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
-			return utils.WrapError("Encode scg_RB_Config", err)
+	if ie.Scg_RB_Config != nil {
+		if err = w.WriteOctetString(*ie.Scg_RB_Config, &uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+			return utils.WrapError("Encode Scg_RB_Config", err)
 		}
 	}
-	if ie.configRestrictModReq != nil {
-		if err = ie.configRestrictModReq.Encode(w); err != nil {
-			return utils.WrapError("Encode configRestrictModReq", err)
+	if ie.ConfigRestrictModReq != nil {
+		if err = ie.ConfigRestrictModReq.Encode(w); err != nil {
+			return utils.WrapError("Encode ConfigRestrictModReq", err)
 		}
 	}
-	if ie.drx_InfoSCG != nil {
-		if err = ie.drx_InfoSCG.Encode(w); err != nil {
-			return utils.WrapError("Encode drx_InfoSCG", err)
+	if ie.Drx_InfoSCG != nil {
+		if err = ie.Drx_InfoSCG.Encode(w); err != nil {
+			return utils.WrapError("Encode Drx_InfoSCG", err)
 		}
 	}
-	if ie.candidateCellInfoListSN != nil {
-		if err = w.WriteOctetString(*ie.candidateCellInfoListSN, &uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
-			return utils.WrapError("Encode candidateCellInfoListSN", err)
+	if ie.CandidateCellInfoListSN != nil {
+		if err = w.WriteOctetString(*ie.CandidateCellInfoListSN, &uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+			return utils.WrapError("Encode CandidateCellInfoListSN", err)
 		}
 	}
-	if ie.measConfigSN != nil {
-		if err = ie.measConfigSN.Encode(w); err != nil {
-			return utils.WrapError("Encode measConfigSN", err)
+	if ie.MeasConfigSN != nil {
+		if err = ie.MeasConfigSN.Encode(w); err != nil {
+			return utils.WrapError("Encode MeasConfigSN", err)
 		}
 	}
-	if ie.selectedBandCombination != nil {
-		if err = ie.selectedBandCombination.Encode(w); err != nil {
-			return utils.WrapError("Encode selectedBandCombination", err)
+	if ie.SelectedBandCombination != nil {
+		if err = ie.SelectedBandCombination.Encode(w); err != nil {
+			return utils.WrapError("Encode SelectedBandCombination", err)
 		}
 	}
-	if ie.fr_InfoListSCG != nil {
-		if err = ie.fr_InfoListSCG.Encode(w); err != nil {
-			return utils.WrapError("Encode fr_InfoListSCG", err)
+	if ie.Fr_InfoListSCG != nil {
+		if err = ie.Fr_InfoListSCG.Encode(w); err != nil {
+			return utils.WrapError("Encode Fr_InfoListSCG", err)
 		}
 	}
-	if ie.candidateServingFreqListNR != nil {
-		if err = ie.candidateServingFreqListNR.Encode(w); err != nil {
-			return utils.WrapError("Encode candidateServingFreqListNR", err)
+	if ie.CandidateServingFreqListNR != nil {
+		if err = ie.CandidateServingFreqListNR.Encode(w); err != nil {
+			return utils.WrapError("Encode CandidateServingFreqListNR", err)
 		}
 	}
-	if ie.nonCriticalExtension != nil {
-		if err = ie.nonCriticalExtension.Encode(w); err != nil {
-			return utils.WrapError("Encode nonCriticalExtension", err)
+	if ie.NonCriticalExtension != nil {
+		if err = ie.NonCriticalExtension.Encode(w); err != nil {
+			return utils.WrapError("Encode NonCriticalExtension", err)
 		}
 	}
 	return nil
@@ -81,107 +81,107 @@ func (ie *CG_Config_IEs) Encode(w *uper.UperWriter) error {
 
 func (ie *CG_Config_IEs) Decode(r *uper.UperReader) error {
 	var err error
-	var scg_CellGroupConfigPresent bool
-	if scg_CellGroupConfigPresent, err = r.ReadBool(); err != nil {
+	var Scg_CellGroupConfigPresent bool
+	if Scg_CellGroupConfigPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var scg_RB_ConfigPresent bool
-	if scg_RB_ConfigPresent, err = r.ReadBool(); err != nil {
+	var Scg_RB_ConfigPresent bool
+	if Scg_RB_ConfigPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var configRestrictModReqPresent bool
-	if configRestrictModReqPresent, err = r.ReadBool(); err != nil {
+	var ConfigRestrictModReqPresent bool
+	if ConfigRestrictModReqPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var drx_InfoSCGPresent bool
-	if drx_InfoSCGPresent, err = r.ReadBool(); err != nil {
+	var Drx_InfoSCGPresent bool
+	if Drx_InfoSCGPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var candidateCellInfoListSNPresent bool
-	if candidateCellInfoListSNPresent, err = r.ReadBool(); err != nil {
+	var CandidateCellInfoListSNPresent bool
+	if CandidateCellInfoListSNPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var measConfigSNPresent bool
-	if measConfigSNPresent, err = r.ReadBool(); err != nil {
+	var MeasConfigSNPresent bool
+	if MeasConfigSNPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var selectedBandCombinationPresent bool
-	if selectedBandCombinationPresent, err = r.ReadBool(); err != nil {
+	var SelectedBandCombinationPresent bool
+	if SelectedBandCombinationPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var fr_InfoListSCGPresent bool
-	if fr_InfoListSCGPresent, err = r.ReadBool(); err != nil {
+	var Fr_InfoListSCGPresent bool
+	if Fr_InfoListSCGPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var candidateServingFreqListNRPresent bool
-	if candidateServingFreqListNRPresent, err = r.ReadBool(); err != nil {
+	var CandidateServingFreqListNRPresent bool
+	if CandidateServingFreqListNRPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var nonCriticalExtensionPresent bool
-	if nonCriticalExtensionPresent, err = r.ReadBool(); err != nil {
+	var NonCriticalExtensionPresent bool
+	if NonCriticalExtensionPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	if scg_CellGroupConfigPresent {
-		var tmp_os_scg_CellGroupConfig []byte
-		if tmp_os_scg_CellGroupConfig, err = r.ReadOctetString(&uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
-			return utils.WrapError("Decode scg_CellGroupConfig", err)
+	if Scg_CellGroupConfigPresent {
+		var tmp_os_Scg_CellGroupConfig []byte
+		if tmp_os_Scg_CellGroupConfig, err = r.ReadOctetString(&uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+			return utils.WrapError("Decode Scg_CellGroupConfig", err)
 		}
-		ie.scg_CellGroupConfig = &tmp_os_scg_CellGroupConfig
+		ie.Scg_CellGroupConfig = &tmp_os_Scg_CellGroupConfig
 	}
-	if scg_RB_ConfigPresent {
-		var tmp_os_scg_RB_Config []byte
-		if tmp_os_scg_RB_Config, err = r.ReadOctetString(&uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
-			return utils.WrapError("Decode scg_RB_Config", err)
+	if Scg_RB_ConfigPresent {
+		var tmp_os_Scg_RB_Config []byte
+		if tmp_os_Scg_RB_Config, err = r.ReadOctetString(&uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+			return utils.WrapError("Decode Scg_RB_Config", err)
 		}
-		ie.scg_RB_Config = &tmp_os_scg_RB_Config
+		ie.Scg_RB_Config = &tmp_os_Scg_RB_Config
 	}
-	if configRestrictModReqPresent {
-		ie.configRestrictModReq = new(ConfigRestrictModReqSCG)
-		if err = ie.configRestrictModReq.Decode(r); err != nil {
-			return utils.WrapError("Decode configRestrictModReq", err)
-		}
-	}
-	if drx_InfoSCGPresent {
-		ie.drx_InfoSCG = new(DRX_Info)
-		if err = ie.drx_InfoSCG.Decode(r); err != nil {
-			return utils.WrapError("Decode drx_InfoSCG", err)
+	if ConfigRestrictModReqPresent {
+		ie.ConfigRestrictModReq = new(ConfigRestrictModReqSCG)
+		if err = ie.ConfigRestrictModReq.Decode(r); err != nil {
+			return utils.WrapError("Decode ConfigRestrictModReq", err)
 		}
 	}
-	if candidateCellInfoListSNPresent {
-		var tmp_os_candidateCellInfoListSN []byte
-		if tmp_os_candidateCellInfoListSN, err = r.ReadOctetString(&uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
-			return utils.WrapError("Decode candidateCellInfoListSN", err)
-		}
-		ie.candidateCellInfoListSN = &tmp_os_candidateCellInfoListSN
-	}
-	if measConfigSNPresent {
-		ie.measConfigSN = new(MeasConfigSN)
-		if err = ie.measConfigSN.Decode(r); err != nil {
-			return utils.WrapError("Decode measConfigSN", err)
+	if Drx_InfoSCGPresent {
+		ie.Drx_InfoSCG = new(DRX_Info)
+		if err = ie.Drx_InfoSCG.Decode(r); err != nil {
+			return utils.WrapError("Decode Drx_InfoSCG", err)
 		}
 	}
-	if selectedBandCombinationPresent {
-		ie.selectedBandCombination = new(BandCombinationInfoSN)
-		if err = ie.selectedBandCombination.Decode(r); err != nil {
-			return utils.WrapError("Decode selectedBandCombination", err)
+	if CandidateCellInfoListSNPresent {
+		var tmp_os_CandidateCellInfoListSN []byte
+		if tmp_os_CandidateCellInfoListSN, err = r.ReadOctetString(&uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+			return utils.WrapError("Decode CandidateCellInfoListSN", err)
+		}
+		ie.CandidateCellInfoListSN = &tmp_os_CandidateCellInfoListSN
+	}
+	if MeasConfigSNPresent {
+		ie.MeasConfigSN = new(MeasConfigSN)
+		if err = ie.MeasConfigSN.Decode(r); err != nil {
+			return utils.WrapError("Decode MeasConfigSN", err)
 		}
 	}
-	if fr_InfoListSCGPresent {
-		ie.fr_InfoListSCG = new(FR_InfoList)
-		if err = ie.fr_InfoListSCG.Decode(r); err != nil {
-			return utils.WrapError("Decode fr_InfoListSCG", err)
+	if SelectedBandCombinationPresent {
+		ie.SelectedBandCombination = new(BandCombinationInfoSN)
+		if err = ie.SelectedBandCombination.Decode(r); err != nil {
+			return utils.WrapError("Decode SelectedBandCombination", err)
 		}
 	}
-	if candidateServingFreqListNRPresent {
-		ie.candidateServingFreqListNR = new(CandidateServingFreqListNR)
-		if err = ie.candidateServingFreqListNR.Decode(r); err != nil {
-			return utils.WrapError("Decode candidateServingFreqListNR", err)
+	if Fr_InfoListSCGPresent {
+		ie.Fr_InfoListSCG = new(FR_InfoList)
+		if err = ie.Fr_InfoListSCG.Decode(r); err != nil {
+			return utils.WrapError("Decode Fr_InfoListSCG", err)
 		}
 	}
-	if nonCriticalExtensionPresent {
-		ie.nonCriticalExtension = new(CG_Config_v1540_IEs)
-		if err = ie.nonCriticalExtension.Decode(r); err != nil {
-			return utils.WrapError("Decode nonCriticalExtension", err)
+	if CandidateServingFreqListNRPresent {
+		ie.CandidateServingFreqListNR = new(CandidateServingFreqListNR)
+		if err = ie.CandidateServingFreqListNR.Decode(r); err != nil {
+			return utils.WrapError("Decode CandidateServingFreqListNR", err)
+		}
+	}
+	if NonCriticalExtensionPresent {
+		ie.NonCriticalExtension = new(CG_Config_v1540_IEs)
+		if err = ie.NonCriticalExtension.Decode(r); err != nil {
+			return utils.WrapError("Decode NonCriticalExtension", err)
 		}
 	}
 	return nil

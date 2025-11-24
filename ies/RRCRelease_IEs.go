@@ -6,50 +6,50 @@ import (
 )
 
 type RRCRelease_IEs struct {
-	redirectedCarrierInfo     *RedirectedCarrierInfo              `optional`
-	cellReselectionPriorities *CellReselectionPriorities          `optional`
-	suspendConfig             *SuspendConfig                      `optional`
-	deprioritisationReq       *RRCRelease_IEs_deprioritisationReq `optional`
-	lateNonCriticalExtension  *[]byte                             `optional`
-	nonCriticalExtension      *RRCRelease_v1540_IEs               `optional`
+	RedirectedCarrierInfo     *RedirectedCarrierInfo              `optional`
+	CellReselectionPriorities *CellReselectionPriorities          `optional`
+	SuspendConfig             *SuspendConfig                      `optional`
+	DeprioritisationReq       *RRCRelease_IEs_deprioritisationReq `optional`
+	LateNonCriticalExtension  *[]byte                             `optional`
+	NonCriticalExtension      *RRCRelease_v1540_IEs               `optional`
 }
 
 func (ie *RRCRelease_IEs) Encode(w *uper.UperWriter) error {
 	var err error
-	preambleBits := []bool{ie.redirectedCarrierInfo != nil, ie.cellReselectionPriorities != nil, ie.suspendConfig != nil, ie.deprioritisationReq != nil, ie.lateNonCriticalExtension != nil, ie.nonCriticalExtension != nil}
+	preambleBits := []bool{ie.RedirectedCarrierInfo != nil, ie.CellReselectionPriorities != nil, ie.SuspendConfig != nil, ie.DeprioritisationReq != nil, ie.LateNonCriticalExtension != nil, ie.NonCriticalExtension != nil}
 	for _, bit := range preambleBits {
 		if err = w.WriteBool(bit); err != nil {
 			return err
 		}
 	}
-	if ie.redirectedCarrierInfo != nil {
-		if err = ie.redirectedCarrierInfo.Encode(w); err != nil {
-			return utils.WrapError("Encode redirectedCarrierInfo", err)
+	if ie.RedirectedCarrierInfo != nil {
+		if err = ie.RedirectedCarrierInfo.Encode(w); err != nil {
+			return utils.WrapError("Encode RedirectedCarrierInfo", err)
 		}
 	}
-	if ie.cellReselectionPriorities != nil {
-		if err = ie.cellReselectionPriorities.Encode(w); err != nil {
-			return utils.WrapError("Encode cellReselectionPriorities", err)
+	if ie.CellReselectionPriorities != nil {
+		if err = ie.CellReselectionPriorities.Encode(w); err != nil {
+			return utils.WrapError("Encode CellReselectionPriorities", err)
 		}
 	}
-	if ie.suspendConfig != nil {
-		if err = ie.suspendConfig.Encode(w); err != nil {
-			return utils.WrapError("Encode suspendConfig", err)
+	if ie.SuspendConfig != nil {
+		if err = ie.SuspendConfig.Encode(w); err != nil {
+			return utils.WrapError("Encode SuspendConfig", err)
 		}
 	}
-	if ie.deprioritisationReq != nil {
-		if err = ie.deprioritisationReq.Encode(w); err != nil {
-			return utils.WrapError("Encode deprioritisationReq", err)
+	if ie.DeprioritisationReq != nil {
+		if err = ie.DeprioritisationReq.Encode(w); err != nil {
+			return utils.WrapError("Encode DeprioritisationReq", err)
 		}
 	}
-	if ie.lateNonCriticalExtension != nil {
-		if err = w.WriteOctetString(*ie.lateNonCriticalExtension, &uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
-			return utils.WrapError("Encode lateNonCriticalExtension", err)
+	if ie.LateNonCriticalExtension != nil {
+		if err = w.WriteOctetString(*ie.LateNonCriticalExtension, &uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+			return utils.WrapError("Encode LateNonCriticalExtension", err)
 		}
 	}
-	if ie.nonCriticalExtension != nil {
-		if err = ie.nonCriticalExtension.Encode(w); err != nil {
-			return utils.WrapError("Encode nonCriticalExtension", err)
+	if ie.NonCriticalExtension != nil {
+		if err = ie.NonCriticalExtension.Encode(w); err != nil {
+			return utils.WrapError("Encode NonCriticalExtension", err)
 		}
 	}
 	return nil
@@ -57,65 +57,65 @@ func (ie *RRCRelease_IEs) Encode(w *uper.UperWriter) error {
 
 func (ie *RRCRelease_IEs) Decode(r *uper.UperReader) error {
 	var err error
-	var redirectedCarrierInfoPresent bool
-	if redirectedCarrierInfoPresent, err = r.ReadBool(); err != nil {
+	var RedirectedCarrierInfoPresent bool
+	if RedirectedCarrierInfoPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var cellReselectionPrioritiesPresent bool
-	if cellReselectionPrioritiesPresent, err = r.ReadBool(); err != nil {
+	var CellReselectionPrioritiesPresent bool
+	if CellReselectionPrioritiesPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var suspendConfigPresent bool
-	if suspendConfigPresent, err = r.ReadBool(); err != nil {
+	var SuspendConfigPresent bool
+	if SuspendConfigPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var deprioritisationReqPresent bool
-	if deprioritisationReqPresent, err = r.ReadBool(); err != nil {
+	var DeprioritisationReqPresent bool
+	if DeprioritisationReqPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var lateNonCriticalExtensionPresent bool
-	if lateNonCriticalExtensionPresent, err = r.ReadBool(); err != nil {
+	var LateNonCriticalExtensionPresent bool
+	if LateNonCriticalExtensionPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var nonCriticalExtensionPresent bool
-	if nonCriticalExtensionPresent, err = r.ReadBool(); err != nil {
+	var NonCriticalExtensionPresent bool
+	if NonCriticalExtensionPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	if redirectedCarrierInfoPresent {
-		ie.redirectedCarrierInfo = new(RedirectedCarrierInfo)
-		if err = ie.redirectedCarrierInfo.Decode(r); err != nil {
-			return utils.WrapError("Decode redirectedCarrierInfo", err)
+	if RedirectedCarrierInfoPresent {
+		ie.RedirectedCarrierInfo = new(RedirectedCarrierInfo)
+		if err = ie.RedirectedCarrierInfo.Decode(r); err != nil {
+			return utils.WrapError("Decode RedirectedCarrierInfo", err)
 		}
 	}
-	if cellReselectionPrioritiesPresent {
-		ie.cellReselectionPriorities = new(CellReselectionPriorities)
-		if err = ie.cellReselectionPriorities.Decode(r); err != nil {
-			return utils.WrapError("Decode cellReselectionPriorities", err)
+	if CellReselectionPrioritiesPresent {
+		ie.CellReselectionPriorities = new(CellReselectionPriorities)
+		if err = ie.CellReselectionPriorities.Decode(r); err != nil {
+			return utils.WrapError("Decode CellReselectionPriorities", err)
 		}
 	}
-	if suspendConfigPresent {
-		ie.suspendConfig = new(SuspendConfig)
-		if err = ie.suspendConfig.Decode(r); err != nil {
-			return utils.WrapError("Decode suspendConfig", err)
+	if SuspendConfigPresent {
+		ie.SuspendConfig = new(SuspendConfig)
+		if err = ie.SuspendConfig.Decode(r); err != nil {
+			return utils.WrapError("Decode SuspendConfig", err)
 		}
 	}
-	if deprioritisationReqPresent {
-		ie.deprioritisationReq = new(RRCRelease_IEs_deprioritisationReq)
-		if err = ie.deprioritisationReq.Decode(r); err != nil {
-			return utils.WrapError("Decode deprioritisationReq", err)
+	if DeprioritisationReqPresent {
+		ie.DeprioritisationReq = new(RRCRelease_IEs_deprioritisationReq)
+		if err = ie.DeprioritisationReq.Decode(r); err != nil {
+			return utils.WrapError("Decode DeprioritisationReq", err)
 		}
 	}
-	if lateNonCriticalExtensionPresent {
-		var tmp_os_lateNonCriticalExtension []byte
-		if tmp_os_lateNonCriticalExtension, err = r.ReadOctetString(&uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
-			return utils.WrapError("Decode lateNonCriticalExtension", err)
+	if LateNonCriticalExtensionPresent {
+		var tmp_os_LateNonCriticalExtension []byte
+		if tmp_os_LateNonCriticalExtension, err = r.ReadOctetString(&uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+			return utils.WrapError("Decode LateNonCriticalExtension", err)
 		}
-		ie.lateNonCriticalExtension = &tmp_os_lateNonCriticalExtension
+		ie.LateNonCriticalExtension = &tmp_os_LateNonCriticalExtension
 	}
-	if nonCriticalExtensionPresent {
-		ie.nonCriticalExtension = new(RRCRelease_v1540_IEs)
-		if err = ie.nonCriticalExtension.Decode(r); err != nil {
-			return utils.WrapError("Decode nonCriticalExtension", err)
+	if NonCriticalExtensionPresent {
+		ie.NonCriticalExtension = new(RRCRelease_v1540_IEs)
+		if err = ie.NonCriticalExtension.Decode(r); err != nil {
+			return utils.WrapError("Decode NonCriticalExtension", err)
 		}
 	}
 	return nil

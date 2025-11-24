@@ -6,30 +6,30 @@ import (
 )
 
 type BWP_Downlink struct {
-	bwp_Id        BWP_Id                 `madatory`
-	bwp_Common    *BWP_DownlinkCommon    `optional`
-	bwp_Dedicated *BWP_DownlinkDedicated `optional`
+	Bwp_Id        BWP_Id                 `madatory`
+	Bwp_Common    *BWP_DownlinkCommon    `optional`
+	Bwp_Dedicated *BWP_DownlinkDedicated `optional`
 }
 
 func (ie *BWP_Downlink) Encode(w *uper.UperWriter) error {
 	var err error
-	preambleBits := []bool{ie.bwp_Common != nil, ie.bwp_Dedicated != nil}
+	preambleBits := []bool{ie.Bwp_Common != nil, ie.Bwp_Dedicated != nil}
 	for _, bit := range preambleBits {
 		if err = w.WriteBool(bit); err != nil {
 			return err
 		}
 	}
-	if err = ie.bwp_Id.Encode(w); err != nil {
-		return utils.WrapError("Encode bwp_Id", err)
+	if err = ie.Bwp_Id.Encode(w); err != nil {
+		return utils.WrapError("Encode Bwp_Id", err)
 	}
-	if ie.bwp_Common != nil {
-		if err = ie.bwp_Common.Encode(w); err != nil {
-			return utils.WrapError("Encode bwp_Common", err)
+	if ie.Bwp_Common != nil {
+		if err = ie.Bwp_Common.Encode(w); err != nil {
+			return utils.WrapError("Encode Bwp_Common", err)
 		}
 	}
-	if ie.bwp_Dedicated != nil {
-		if err = ie.bwp_Dedicated.Encode(w); err != nil {
-			return utils.WrapError("Encode bwp_Dedicated", err)
+	if ie.Bwp_Dedicated != nil {
+		if err = ie.Bwp_Dedicated.Encode(w); err != nil {
+			return utils.WrapError("Encode Bwp_Dedicated", err)
 		}
 	}
 	return nil
@@ -37,27 +37,27 @@ func (ie *BWP_Downlink) Encode(w *uper.UperWriter) error {
 
 func (ie *BWP_Downlink) Decode(r *uper.UperReader) error {
 	var err error
-	var bwp_CommonPresent bool
-	if bwp_CommonPresent, err = r.ReadBool(); err != nil {
+	var Bwp_CommonPresent bool
+	if Bwp_CommonPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var bwp_DedicatedPresent bool
-	if bwp_DedicatedPresent, err = r.ReadBool(); err != nil {
+	var Bwp_DedicatedPresent bool
+	if Bwp_DedicatedPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	if err = ie.bwp_Id.Decode(r); err != nil {
-		return utils.WrapError("Decode bwp_Id", err)
+	if err = ie.Bwp_Id.Decode(r); err != nil {
+		return utils.WrapError("Decode Bwp_Id", err)
 	}
-	if bwp_CommonPresent {
-		ie.bwp_Common = new(BWP_DownlinkCommon)
-		if err = ie.bwp_Common.Decode(r); err != nil {
-			return utils.WrapError("Decode bwp_Common", err)
+	if Bwp_CommonPresent {
+		ie.Bwp_Common = new(BWP_DownlinkCommon)
+		if err = ie.Bwp_Common.Decode(r); err != nil {
+			return utils.WrapError("Decode Bwp_Common", err)
 		}
 	}
-	if bwp_DedicatedPresent {
-		ie.bwp_Dedicated = new(BWP_DownlinkDedicated)
-		if err = ie.bwp_Dedicated.Decode(r); err != nil {
-			return utils.WrapError("Decode bwp_Dedicated", err)
+	if Bwp_DedicatedPresent {
+		ie.Bwp_Dedicated = new(BWP_DownlinkDedicated)
+		if err = ie.Bwp_Dedicated.Decode(r); err != nil {
+			return utils.WrapError("Decode Bwp_Dedicated", err)
 		}
 	}
 	return nil

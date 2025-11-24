@@ -6,28 +6,28 @@ import (
 )
 
 type FreqPriorityNR struct {
-	carrierFreq                ARFCN_ValueNR               `madatory`
-	cellReselectionPriority    CellReselectionPriority     `madatory`
-	cellReselectionSubPriority *CellReselectionSubPriority `optional`
+	CarrierFreq                ARFCN_ValueNR               `madatory`
+	CellReselectionPriority    CellReselectionPriority     `madatory`
+	CellReselectionSubPriority *CellReselectionSubPriority `optional`
 }
 
 func (ie *FreqPriorityNR) Encode(w *uper.UperWriter) error {
 	var err error
-	preambleBits := []bool{ie.cellReselectionSubPriority != nil}
+	preambleBits := []bool{ie.CellReselectionSubPriority != nil}
 	for _, bit := range preambleBits {
 		if err = w.WriteBool(bit); err != nil {
 			return err
 		}
 	}
-	if err = ie.carrierFreq.Encode(w); err != nil {
-		return utils.WrapError("Encode carrierFreq", err)
+	if err = ie.CarrierFreq.Encode(w); err != nil {
+		return utils.WrapError("Encode CarrierFreq", err)
 	}
-	if err = ie.cellReselectionPriority.Encode(w); err != nil {
-		return utils.WrapError("Encode cellReselectionPriority", err)
+	if err = ie.CellReselectionPriority.Encode(w); err != nil {
+		return utils.WrapError("Encode CellReselectionPriority", err)
 	}
-	if ie.cellReselectionSubPriority != nil {
-		if err = ie.cellReselectionSubPriority.Encode(w); err != nil {
-			return utils.WrapError("Encode cellReselectionSubPriority", err)
+	if ie.CellReselectionSubPriority != nil {
+		if err = ie.CellReselectionSubPriority.Encode(w); err != nil {
+			return utils.WrapError("Encode CellReselectionSubPriority", err)
 		}
 	}
 	return nil
@@ -35,20 +35,20 @@ func (ie *FreqPriorityNR) Encode(w *uper.UperWriter) error {
 
 func (ie *FreqPriorityNR) Decode(r *uper.UperReader) error {
 	var err error
-	var cellReselectionSubPriorityPresent bool
-	if cellReselectionSubPriorityPresent, err = r.ReadBool(); err != nil {
+	var CellReselectionSubPriorityPresent bool
+	if CellReselectionSubPriorityPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	if err = ie.carrierFreq.Decode(r); err != nil {
-		return utils.WrapError("Decode carrierFreq", err)
+	if err = ie.CarrierFreq.Decode(r); err != nil {
+		return utils.WrapError("Decode CarrierFreq", err)
 	}
-	if err = ie.cellReselectionPriority.Decode(r); err != nil {
-		return utils.WrapError("Decode cellReselectionPriority", err)
+	if err = ie.CellReselectionPriority.Decode(r); err != nil {
+		return utils.WrapError("Decode CellReselectionPriority", err)
 	}
-	if cellReselectionSubPriorityPresent {
-		ie.cellReselectionSubPriority = new(CellReselectionSubPriority)
-		if err = ie.cellReselectionSubPriority.Decode(r); err != nil {
-			return utils.WrapError("Decode cellReselectionSubPriority", err)
+	if CellReselectionSubPriorityPresent {
+		ie.CellReselectionSubPriority = new(CellReselectionSubPriority)
+		if err = ie.CellReselectionSubPriority.Decode(r); err != nil {
+			return utils.WrapError("Decode CellReselectionSubPriority", err)
 		}
 	}
 	return nil

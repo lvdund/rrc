@@ -9,14 +9,14 @@ import (
 
 const (
 	RLC_BearerConfig_servedRadioBearer_Choice_nothing uint64 = iota
-	RLC_BearerConfig_servedRadioBearer_Choice_srb_Identity
-	RLC_BearerConfig_servedRadioBearer_Choice_drb_Identity
+	RLC_BearerConfig_servedRadioBearer_Choice_Srb_Identity
+	RLC_BearerConfig_servedRadioBearer_Choice_Drb_Identity
 )
 
 type RLC_BearerConfig_servedRadioBearer struct {
 	Choice       uint64
-	srb_Identity *SRB_Identity
-	drb_Identity *DRB_Identity
+	Srb_Identity *SRB_Identity
+	Drb_Identity *DRB_Identity
 }
 
 func (ie *RLC_BearerConfig_servedRadioBearer) Encode(w *uper.UperWriter) error {
@@ -25,13 +25,13 @@ func (ie *RLC_BearerConfig_servedRadioBearer) Encode(w *uper.UperWriter) error {
 		return err
 	}
 	switch ie.Choice {
-	case RLC_BearerConfig_servedRadioBearer_Choice_srb_Identity:
-		if err = ie.srb_Identity.Encode(w); err != nil {
-			err = utils.WrapError("Encode srb_Identity", err)
+	case RLC_BearerConfig_servedRadioBearer_Choice_Srb_Identity:
+		if err = ie.Srb_Identity.Encode(w); err != nil {
+			err = utils.WrapError("Encode Srb_Identity", err)
 		}
-	case RLC_BearerConfig_servedRadioBearer_Choice_drb_Identity:
-		if err = ie.drb_Identity.Encode(w); err != nil {
-			err = utils.WrapError("Encode drb_Identity", err)
+	case RLC_BearerConfig_servedRadioBearer_Choice_Drb_Identity:
+		if err = ie.Drb_Identity.Encode(w); err != nil {
+			err = utils.WrapError("Encode Drb_Identity", err)
 		}
 	default:
 		err = fmt.Errorf("invalid choice: %d", ie.Choice)
@@ -45,15 +45,15 @@ func (ie *RLC_BearerConfig_servedRadioBearer) Decode(r *uper.UperReader) error {
 		return err
 	}
 	switch ie.Choice {
-	case RLC_BearerConfig_servedRadioBearer_Choice_srb_Identity:
-		ie.srb_Identity = new(SRB_Identity)
-		if err = ie.srb_Identity.Decode(r); err != nil {
-			return utils.WrapError("Decode srb_Identity", err)
+	case RLC_BearerConfig_servedRadioBearer_Choice_Srb_Identity:
+		ie.Srb_Identity = new(SRB_Identity)
+		if err = ie.Srb_Identity.Decode(r); err != nil {
+			return utils.WrapError("Decode Srb_Identity", err)
 		}
-	case RLC_BearerConfig_servedRadioBearer_Choice_drb_Identity:
-		ie.drb_Identity = new(DRB_Identity)
-		if err = ie.drb_Identity.Decode(r); err != nil {
-			return utils.WrapError("Decode drb_Identity", err)
+	case RLC_BearerConfig_servedRadioBearer_Choice_Drb_Identity:
+		ie.Drb_Identity = new(DRB_Identity)
+		if err = ie.Drb_Identity.Decode(r); err != nil {
+			return utils.WrapError("Decode Drb_Identity", err)
 		}
 	default:
 		return fmt.Errorf("invalid choice: %d", ie.Choice)

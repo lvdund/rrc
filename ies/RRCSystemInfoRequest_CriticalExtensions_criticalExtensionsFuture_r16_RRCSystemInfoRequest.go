@@ -9,14 +9,14 @@ import (
 
 const (
 	RRCSystemInfoRequest_CriticalExtensions_criticalExtensionsFuture_r16_RRCSystemInfoRequest_Choice_nothing uint64 = iota
-	RRCSystemInfoRequest_CriticalExtensions_criticalExtensionsFuture_r16_RRCSystemInfoRequest_Choice_rrcPosSystemInfoRequest_r16
-	RRCSystemInfoRequest_CriticalExtensions_criticalExtensionsFuture_r16_RRCSystemInfoRequest_Choice_criticalExtensionsFuture
+	RRCSystemInfoRequest_CriticalExtensions_criticalExtensionsFuture_r16_RRCSystemInfoRequest_Choice_RrcPosSystemInfoRequest_r16
+	RRCSystemInfoRequest_CriticalExtensions_criticalExtensionsFuture_r16_RRCSystemInfoRequest_Choice_CriticalExtensionsFuture
 )
 
 type RRCSystemInfoRequest_CriticalExtensions_criticalExtensionsFuture_r16_RRCSystemInfoRequest struct {
 	Choice                      uint64
-	rrcPosSystemInfoRequest_r16 *RRC_PosSystemInfoRequest_r16_IEs
-	criticalExtensionsFuture    interface{} `madatory`
+	RrcPosSystemInfoRequest_r16 *RRC_PosSystemInfoRequest_r16_IEs
+	CriticalExtensionsFuture    interface{} `madatory`
 }
 
 func (ie *RRCSystemInfoRequest_CriticalExtensions_criticalExtensionsFuture_r16_RRCSystemInfoRequest) Encode(w *uper.UperWriter) error {
@@ -25,11 +25,11 @@ func (ie *RRCSystemInfoRequest_CriticalExtensions_criticalExtensionsFuture_r16_R
 		return err
 	}
 	switch ie.Choice {
-	case RRCSystemInfoRequest_CriticalExtensions_criticalExtensionsFuture_r16_RRCSystemInfoRequest_Choice_rrcPosSystemInfoRequest_r16:
-		if err = ie.rrcPosSystemInfoRequest_r16.Encode(w); err != nil {
-			err = utils.WrapError("Encode rrcPosSystemInfoRequest_r16", err)
+	case RRCSystemInfoRequest_CriticalExtensions_criticalExtensionsFuture_r16_RRCSystemInfoRequest_Choice_RrcPosSystemInfoRequest_r16:
+		if err = ie.RrcPosSystemInfoRequest_r16.Encode(w); err != nil {
+			err = utils.WrapError("Encode RrcPosSystemInfoRequest_r16", err)
 		}
-	case RRCSystemInfoRequest_CriticalExtensions_criticalExtensionsFuture_r16_RRCSystemInfoRequest_Choice_criticalExtensionsFuture:
+	case RRCSystemInfoRequest_CriticalExtensions_criticalExtensionsFuture_r16_RRCSystemInfoRequest_Choice_CriticalExtensionsFuture:
 		// interface{} field of choice - nothing to encode
 	default:
 		err = fmt.Errorf("invalid choice: %d", ie.Choice)
@@ -43,12 +43,12 @@ func (ie *RRCSystemInfoRequest_CriticalExtensions_criticalExtensionsFuture_r16_R
 		return err
 	}
 	switch ie.Choice {
-	case RRCSystemInfoRequest_CriticalExtensions_criticalExtensionsFuture_r16_RRCSystemInfoRequest_Choice_rrcPosSystemInfoRequest_r16:
-		ie.rrcPosSystemInfoRequest_r16 = new(RRC_PosSystemInfoRequest_r16_IEs)
-		if err = ie.rrcPosSystemInfoRequest_r16.Decode(r); err != nil {
-			return utils.WrapError("Decode rrcPosSystemInfoRequest_r16", err)
+	case RRCSystemInfoRequest_CriticalExtensions_criticalExtensionsFuture_r16_RRCSystemInfoRequest_Choice_RrcPosSystemInfoRequest_r16:
+		ie.RrcPosSystemInfoRequest_r16 = new(RRC_PosSystemInfoRequest_r16_IEs)
+		if err = ie.RrcPosSystemInfoRequest_r16.Decode(r); err != nil {
+			return utils.WrapError("Decode RrcPosSystemInfoRequest_r16", err)
 		}
-	case RRCSystemInfoRequest_CriticalExtensions_criticalExtensionsFuture_r16_RRCSystemInfoRequest_Choice_criticalExtensionsFuture:
+	case RRCSystemInfoRequest_CriticalExtensions_criticalExtensionsFuture_r16_RRCSystemInfoRequest_Choice_CriticalExtensionsFuture:
 		// interface{} field of choice - nothing to decode
 	default:
 		return fmt.Errorf("invalid choice: %d", ie.Choice)

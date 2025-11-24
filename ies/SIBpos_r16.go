@@ -6,24 +6,24 @@ import (
 )
 
 type SIBpos_r16 struct {
-	assistanceDataSIB_Element_r16 []byte  `madatory`
-	lateNonCriticalExtension      *[]byte `optional`
+	AssistanceDataSIB_Element_r16 []byte  `madatory`
+	LateNonCriticalExtension      *[]byte `optional`
 }
 
 func (ie *SIBpos_r16) Encode(w *uper.UperWriter) error {
 	var err error
-	preambleBits := []bool{ie.lateNonCriticalExtension != nil}
+	preambleBits := []bool{ie.LateNonCriticalExtension != nil}
 	for _, bit := range preambleBits {
 		if err = w.WriteBool(bit); err != nil {
 			return err
 		}
 	}
-	if err = w.WriteOctetString(ie.assistanceDataSIB_Element_r16, &uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
-		return utils.WrapError("WriteOctetString assistanceDataSIB_Element_r16", err)
+	if err = w.WriteOctetString(ie.AssistanceDataSIB_Element_r16, &uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+		return utils.WrapError("WriteOctetString AssistanceDataSIB_Element_r16", err)
 	}
-	if ie.lateNonCriticalExtension != nil {
-		if err = w.WriteOctetString(*ie.lateNonCriticalExtension, &uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
-			return utils.WrapError("Encode lateNonCriticalExtension", err)
+	if ie.LateNonCriticalExtension != nil {
+		if err = w.WriteOctetString(*ie.LateNonCriticalExtension, &uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+			return utils.WrapError("Encode LateNonCriticalExtension", err)
 		}
 	}
 	return nil
@@ -31,21 +31,21 @@ func (ie *SIBpos_r16) Encode(w *uper.UperWriter) error {
 
 func (ie *SIBpos_r16) Decode(r *uper.UperReader) error {
 	var err error
-	var lateNonCriticalExtensionPresent bool
-	if lateNonCriticalExtensionPresent, err = r.ReadBool(); err != nil {
+	var LateNonCriticalExtensionPresent bool
+	if LateNonCriticalExtensionPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var tmp_os_assistanceDataSIB_Element_r16 []byte
-	if tmp_os_assistanceDataSIB_Element_r16, err = r.ReadOctetString(&uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
-		return utils.WrapError("ReadOctetString assistanceDataSIB_Element_r16", err)
+	var tmp_os_AssistanceDataSIB_Element_r16 []byte
+	if tmp_os_AssistanceDataSIB_Element_r16, err = r.ReadOctetString(&uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+		return utils.WrapError("ReadOctetString AssistanceDataSIB_Element_r16", err)
 	}
-	ie.assistanceDataSIB_Element_r16 = tmp_os_assistanceDataSIB_Element_r16
-	if lateNonCriticalExtensionPresent {
-		var tmp_os_lateNonCriticalExtension []byte
-		if tmp_os_lateNonCriticalExtension, err = r.ReadOctetString(&uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
-			return utils.WrapError("Decode lateNonCriticalExtension", err)
+	ie.AssistanceDataSIB_Element_r16 = tmp_os_AssistanceDataSIB_Element_r16
+	if LateNonCriticalExtensionPresent {
+		var tmp_os_LateNonCriticalExtension []byte
+		if tmp_os_LateNonCriticalExtension, err = r.ReadOctetString(&uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+			return utils.WrapError("Decode LateNonCriticalExtension", err)
 		}
-		ie.lateNonCriticalExtension = &tmp_os_lateNonCriticalExtension
+		ie.LateNonCriticalExtension = &tmp_os_LateNonCriticalExtension
 	}
 	return nil
 }

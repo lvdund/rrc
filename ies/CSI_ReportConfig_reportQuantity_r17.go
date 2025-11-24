@@ -9,18 +9,18 @@ import (
 
 const (
 	CSI_ReportConfig_reportQuantity_r17_Choice_nothing uint64 = iota
-	CSI_ReportConfig_reportQuantity_r17_Choice_cri_RSRP_Index_r17
-	CSI_ReportConfig_reportQuantity_r17_Choice_ssb_Index_RSRP_Index_r17
-	CSI_ReportConfig_reportQuantity_r17_Choice_cri_SINR_Index_r17
-	CSI_ReportConfig_reportQuantity_r17_Choice_ssb_Index_SINR_Index_r17
+	CSI_ReportConfig_reportQuantity_r17_Choice_Cri_RSRP_Index_r17
+	CSI_ReportConfig_reportQuantity_r17_Choice_Ssb_Index_RSRP_Index_r17
+	CSI_ReportConfig_reportQuantity_r17_Choice_Cri_SINR_Index_r17
+	CSI_ReportConfig_reportQuantity_r17_Choice_Ssb_Index_SINR_Index_r17
 )
 
 type CSI_ReportConfig_reportQuantity_r17 struct {
 	Choice                   uint64
-	cri_RSRP_Index_r17       uper.NULL `madatory`
-	ssb_Index_RSRP_Index_r17 uper.NULL `madatory`
-	cri_SINR_Index_r17       uper.NULL `madatory`
-	ssb_Index_SINR_Index_r17 uper.NULL `madatory`
+	Cri_RSRP_Index_r17       uper.NULL `madatory`
+	Ssb_Index_RSRP_Index_r17 uper.NULL `madatory`
+	Cri_SINR_Index_r17       uper.NULL `madatory`
+	Ssb_Index_SINR_Index_r17 uper.NULL `madatory`
 }
 
 func (ie *CSI_ReportConfig_reportQuantity_r17) Encode(w *uper.UperWriter) error {
@@ -29,21 +29,21 @@ func (ie *CSI_ReportConfig_reportQuantity_r17) Encode(w *uper.UperWriter) error 
 		return err
 	}
 	switch ie.Choice {
-	case CSI_ReportConfig_reportQuantity_r17_Choice_cri_RSRP_Index_r17:
+	case CSI_ReportConfig_reportQuantity_r17_Choice_Cri_RSRP_Index_r17:
 		if err := w.WriteNull(); err != nil {
-			err = utils.WrapError("Encode cri_RSRP_Index_r17", err)
+			err = utils.WrapError("Encode Cri_RSRP_Index_r17", err)
 		}
-	case CSI_ReportConfig_reportQuantity_r17_Choice_ssb_Index_RSRP_Index_r17:
+	case CSI_ReportConfig_reportQuantity_r17_Choice_Ssb_Index_RSRP_Index_r17:
 		if err := w.WriteNull(); err != nil {
-			err = utils.WrapError("Encode ssb_Index_RSRP_Index_r17", err)
+			err = utils.WrapError("Encode Ssb_Index_RSRP_Index_r17", err)
 		}
-	case CSI_ReportConfig_reportQuantity_r17_Choice_cri_SINR_Index_r17:
+	case CSI_ReportConfig_reportQuantity_r17_Choice_Cri_SINR_Index_r17:
 		if err := w.WriteNull(); err != nil {
-			err = utils.WrapError("Encode cri_SINR_Index_r17", err)
+			err = utils.WrapError("Encode Cri_SINR_Index_r17", err)
 		}
-	case CSI_ReportConfig_reportQuantity_r17_Choice_ssb_Index_SINR_Index_r17:
+	case CSI_ReportConfig_reportQuantity_r17_Choice_Ssb_Index_SINR_Index_r17:
 		if err := w.WriteNull(); err != nil {
-			err = utils.WrapError("Encode ssb_Index_SINR_Index_r17", err)
+			err = utils.WrapError("Encode Ssb_Index_SINR_Index_r17", err)
 		}
 	default:
 		err = fmt.Errorf("invalid choice: %d", ie.Choice)
@@ -57,21 +57,21 @@ func (ie *CSI_ReportConfig_reportQuantity_r17) Decode(r *uper.UperReader) error 
 		return err
 	}
 	switch ie.Choice {
-	case CSI_ReportConfig_reportQuantity_r17_Choice_cri_RSRP_Index_r17:
+	case CSI_ReportConfig_reportQuantity_r17_Choice_Cri_RSRP_Index_r17:
 		if err := r.ReadNull(); err != nil {
-			return utils.WrapError("Decode cri_RSRP_Index_r17", err)
+			return utils.WrapError("Decode Cri_RSRP_Index_r17", err)
 		}
-	case CSI_ReportConfig_reportQuantity_r17_Choice_ssb_Index_RSRP_Index_r17:
+	case CSI_ReportConfig_reportQuantity_r17_Choice_Ssb_Index_RSRP_Index_r17:
 		if err := r.ReadNull(); err != nil {
-			return utils.WrapError("Decode ssb_Index_RSRP_Index_r17", err)
+			return utils.WrapError("Decode Ssb_Index_RSRP_Index_r17", err)
 		}
-	case CSI_ReportConfig_reportQuantity_r17_Choice_cri_SINR_Index_r17:
+	case CSI_ReportConfig_reportQuantity_r17_Choice_Cri_SINR_Index_r17:
 		if err := r.ReadNull(); err != nil {
-			return utils.WrapError("Decode cri_SINR_Index_r17", err)
+			return utils.WrapError("Decode Cri_SINR_Index_r17", err)
 		}
-	case CSI_ReportConfig_reportQuantity_r17_Choice_ssb_Index_SINR_Index_r17:
+	case CSI_ReportConfig_reportQuantity_r17_Choice_Ssb_Index_SINR_Index_r17:
 		if err := r.ReadNull(); err != nil {
-			return utils.WrapError("Decode ssb_Index_SINR_Index_r17", err)
+			return utils.WrapError("Decode Ssb_Index_SINR_Index_r17", err)
 		}
 	default:
 		return fmt.Errorf("invalid choice: %d", ie.Choice)

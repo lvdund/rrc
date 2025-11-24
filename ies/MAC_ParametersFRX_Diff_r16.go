@@ -6,44 +6,44 @@ import (
 )
 
 type MAC_ParametersFRX_Diff_r16 struct {
-	directMCG_SCellActivation_r16       *MAC_ParametersFRX_Diff_r16_directMCG_SCellActivation_r16       `optional`
-	directMCG_SCellActivationResume_r16 *MAC_ParametersFRX_Diff_r16_directMCG_SCellActivationResume_r16 `optional`
-	directSCG_SCellActivation_r16       *MAC_ParametersFRX_Diff_r16_directSCG_SCellActivation_r16       `optional`
-	directSCG_SCellActivationResume_r16 *MAC_ParametersFRX_Diff_r16_directSCG_SCellActivationResume_r16 `optional`
-	drx_Adaptation_r16                  *MAC_ParametersFRX_Diff_r16_drx_Adaptation_r16                  `optional`
+	DirectMCG_SCellActivation_r16       *MAC_ParametersFRX_Diff_r16_directMCG_SCellActivation_r16       `optional`
+	DirectMCG_SCellActivationResume_r16 *MAC_ParametersFRX_Diff_r16_directMCG_SCellActivationResume_r16 `optional`
+	DirectSCG_SCellActivation_r16       *MAC_ParametersFRX_Diff_r16_directSCG_SCellActivation_r16       `optional`
+	DirectSCG_SCellActivationResume_r16 *MAC_ParametersFRX_Diff_r16_directSCG_SCellActivationResume_r16 `optional`
+	Drx_Adaptation_r16                  *MAC_ParametersFRX_Diff_r16_drx_Adaptation_r16                  `optional`
 }
 
 func (ie *MAC_ParametersFRX_Diff_r16) Encode(w *uper.UperWriter) error {
 	var err error
-	preambleBits := []bool{ie.directMCG_SCellActivation_r16 != nil, ie.directMCG_SCellActivationResume_r16 != nil, ie.directSCG_SCellActivation_r16 != nil, ie.directSCG_SCellActivationResume_r16 != nil, ie.drx_Adaptation_r16 != nil}
+	preambleBits := []bool{ie.DirectMCG_SCellActivation_r16 != nil, ie.DirectMCG_SCellActivationResume_r16 != nil, ie.DirectSCG_SCellActivation_r16 != nil, ie.DirectSCG_SCellActivationResume_r16 != nil, ie.Drx_Adaptation_r16 != nil}
 	for _, bit := range preambleBits {
 		if err = w.WriteBool(bit); err != nil {
 			return err
 		}
 	}
-	if ie.directMCG_SCellActivation_r16 != nil {
-		if err = ie.directMCG_SCellActivation_r16.Encode(w); err != nil {
-			return utils.WrapError("Encode directMCG_SCellActivation_r16", err)
+	if ie.DirectMCG_SCellActivation_r16 != nil {
+		if err = ie.DirectMCG_SCellActivation_r16.Encode(w); err != nil {
+			return utils.WrapError("Encode DirectMCG_SCellActivation_r16", err)
 		}
 	}
-	if ie.directMCG_SCellActivationResume_r16 != nil {
-		if err = ie.directMCG_SCellActivationResume_r16.Encode(w); err != nil {
-			return utils.WrapError("Encode directMCG_SCellActivationResume_r16", err)
+	if ie.DirectMCG_SCellActivationResume_r16 != nil {
+		if err = ie.DirectMCG_SCellActivationResume_r16.Encode(w); err != nil {
+			return utils.WrapError("Encode DirectMCG_SCellActivationResume_r16", err)
 		}
 	}
-	if ie.directSCG_SCellActivation_r16 != nil {
-		if err = ie.directSCG_SCellActivation_r16.Encode(w); err != nil {
-			return utils.WrapError("Encode directSCG_SCellActivation_r16", err)
+	if ie.DirectSCG_SCellActivation_r16 != nil {
+		if err = ie.DirectSCG_SCellActivation_r16.Encode(w); err != nil {
+			return utils.WrapError("Encode DirectSCG_SCellActivation_r16", err)
 		}
 	}
-	if ie.directSCG_SCellActivationResume_r16 != nil {
-		if err = ie.directSCG_SCellActivationResume_r16.Encode(w); err != nil {
-			return utils.WrapError("Encode directSCG_SCellActivationResume_r16", err)
+	if ie.DirectSCG_SCellActivationResume_r16 != nil {
+		if err = ie.DirectSCG_SCellActivationResume_r16.Encode(w); err != nil {
+			return utils.WrapError("Encode DirectSCG_SCellActivationResume_r16", err)
 		}
 	}
-	if ie.drx_Adaptation_r16 != nil {
-		if err = ie.drx_Adaptation_r16.Encode(w); err != nil {
-			return utils.WrapError("Encode drx_Adaptation_r16", err)
+	if ie.Drx_Adaptation_r16 != nil {
+		if err = ie.Drx_Adaptation_r16.Encode(w); err != nil {
+			return utils.WrapError("Encode Drx_Adaptation_r16", err)
 		}
 	}
 	return nil
@@ -51,54 +51,54 @@ func (ie *MAC_ParametersFRX_Diff_r16) Encode(w *uper.UperWriter) error {
 
 func (ie *MAC_ParametersFRX_Diff_r16) Decode(r *uper.UperReader) error {
 	var err error
-	var directMCG_SCellActivation_r16Present bool
-	if directMCG_SCellActivation_r16Present, err = r.ReadBool(); err != nil {
+	var DirectMCG_SCellActivation_r16Present bool
+	if DirectMCG_SCellActivation_r16Present, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var directMCG_SCellActivationResume_r16Present bool
-	if directMCG_SCellActivationResume_r16Present, err = r.ReadBool(); err != nil {
+	var DirectMCG_SCellActivationResume_r16Present bool
+	if DirectMCG_SCellActivationResume_r16Present, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var directSCG_SCellActivation_r16Present bool
-	if directSCG_SCellActivation_r16Present, err = r.ReadBool(); err != nil {
+	var DirectSCG_SCellActivation_r16Present bool
+	if DirectSCG_SCellActivation_r16Present, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var directSCG_SCellActivationResume_r16Present bool
-	if directSCG_SCellActivationResume_r16Present, err = r.ReadBool(); err != nil {
+	var DirectSCG_SCellActivationResume_r16Present bool
+	if DirectSCG_SCellActivationResume_r16Present, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var drx_Adaptation_r16Present bool
-	if drx_Adaptation_r16Present, err = r.ReadBool(); err != nil {
+	var Drx_Adaptation_r16Present bool
+	if Drx_Adaptation_r16Present, err = r.ReadBool(); err != nil {
 		return err
 	}
-	if directMCG_SCellActivation_r16Present {
-		ie.directMCG_SCellActivation_r16 = new(MAC_ParametersFRX_Diff_r16_directMCG_SCellActivation_r16)
-		if err = ie.directMCG_SCellActivation_r16.Decode(r); err != nil {
-			return utils.WrapError("Decode directMCG_SCellActivation_r16", err)
+	if DirectMCG_SCellActivation_r16Present {
+		ie.DirectMCG_SCellActivation_r16 = new(MAC_ParametersFRX_Diff_r16_directMCG_SCellActivation_r16)
+		if err = ie.DirectMCG_SCellActivation_r16.Decode(r); err != nil {
+			return utils.WrapError("Decode DirectMCG_SCellActivation_r16", err)
 		}
 	}
-	if directMCG_SCellActivationResume_r16Present {
-		ie.directMCG_SCellActivationResume_r16 = new(MAC_ParametersFRX_Diff_r16_directMCG_SCellActivationResume_r16)
-		if err = ie.directMCG_SCellActivationResume_r16.Decode(r); err != nil {
-			return utils.WrapError("Decode directMCG_SCellActivationResume_r16", err)
+	if DirectMCG_SCellActivationResume_r16Present {
+		ie.DirectMCG_SCellActivationResume_r16 = new(MAC_ParametersFRX_Diff_r16_directMCG_SCellActivationResume_r16)
+		if err = ie.DirectMCG_SCellActivationResume_r16.Decode(r); err != nil {
+			return utils.WrapError("Decode DirectMCG_SCellActivationResume_r16", err)
 		}
 	}
-	if directSCG_SCellActivation_r16Present {
-		ie.directSCG_SCellActivation_r16 = new(MAC_ParametersFRX_Diff_r16_directSCG_SCellActivation_r16)
-		if err = ie.directSCG_SCellActivation_r16.Decode(r); err != nil {
-			return utils.WrapError("Decode directSCG_SCellActivation_r16", err)
+	if DirectSCG_SCellActivation_r16Present {
+		ie.DirectSCG_SCellActivation_r16 = new(MAC_ParametersFRX_Diff_r16_directSCG_SCellActivation_r16)
+		if err = ie.DirectSCG_SCellActivation_r16.Decode(r); err != nil {
+			return utils.WrapError("Decode DirectSCG_SCellActivation_r16", err)
 		}
 	}
-	if directSCG_SCellActivationResume_r16Present {
-		ie.directSCG_SCellActivationResume_r16 = new(MAC_ParametersFRX_Diff_r16_directSCG_SCellActivationResume_r16)
-		if err = ie.directSCG_SCellActivationResume_r16.Decode(r); err != nil {
-			return utils.WrapError("Decode directSCG_SCellActivationResume_r16", err)
+	if DirectSCG_SCellActivationResume_r16Present {
+		ie.DirectSCG_SCellActivationResume_r16 = new(MAC_ParametersFRX_Diff_r16_directSCG_SCellActivationResume_r16)
+		if err = ie.DirectSCG_SCellActivationResume_r16.Decode(r); err != nil {
+			return utils.WrapError("Decode DirectSCG_SCellActivationResume_r16", err)
 		}
 	}
-	if drx_Adaptation_r16Present {
-		ie.drx_Adaptation_r16 = new(MAC_ParametersFRX_Diff_r16_drx_Adaptation_r16)
-		if err = ie.drx_Adaptation_r16.Decode(r); err != nil {
-			return utils.WrapError("Decode drx_Adaptation_r16", err)
+	if Drx_Adaptation_r16Present {
+		ie.Drx_Adaptation_r16 = new(MAC_ParametersFRX_Diff_r16_drx_Adaptation_r16)
+		if err = ie.Drx_Adaptation_r16.Decode(r); err != nil {
+			return utils.WrapError("Decode Drx_Adaptation_r16", err)
 		}
 	}
 	return nil

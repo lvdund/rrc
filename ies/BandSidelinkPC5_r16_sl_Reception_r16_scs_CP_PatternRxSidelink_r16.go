@@ -9,14 +9,14 @@ import (
 
 const (
 	BandSidelinkPC5_r16_sl_Reception_r16_scs_CP_PatternRxSidelink_r16_Choice_nothing uint64 = iota
-	BandSidelinkPC5_r16_sl_Reception_r16_scs_CP_PatternRxSidelink_r16_Choice_fr1_r16
-	BandSidelinkPC5_r16_sl_Reception_r16_scs_CP_PatternRxSidelink_r16_Choice_fr2_r16
+	BandSidelinkPC5_r16_sl_Reception_r16_scs_CP_PatternRxSidelink_r16_Choice_Fr1_r16
+	BandSidelinkPC5_r16_sl_Reception_r16_scs_CP_PatternRxSidelink_r16_Choice_Fr2_r16
 )
 
 type BandSidelinkPC5_r16_sl_Reception_r16_scs_CP_PatternRxSidelink_r16 struct {
 	Choice  uint64
-	fr1_r16 *Fr1_r16
-	fr2_r16 *Fr2_r16
+	Fr1_r16 *Fr1_r16
+	Fr2_r16 *Fr2_r16
 }
 
 func (ie *BandSidelinkPC5_r16_sl_Reception_r16_scs_CP_PatternRxSidelink_r16) Encode(w *uper.UperWriter) error {
@@ -25,13 +25,13 @@ func (ie *BandSidelinkPC5_r16_sl_Reception_r16_scs_CP_PatternRxSidelink_r16) Enc
 		return err
 	}
 	switch ie.Choice {
-	case BandSidelinkPC5_r16_sl_Reception_r16_scs_CP_PatternRxSidelink_r16_Choice_fr1_r16:
-		if err = ie.fr1_r16.Encode(w); err != nil {
-			err = utils.WrapError("Encode fr1_r16", err)
+	case BandSidelinkPC5_r16_sl_Reception_r16_scs_CP_PatternRxSidelink_r16_Choice_Fr1_r16:
+		if err = ie.Fr1_r16.Encode(w); err != nil {
+			err = utils.WrapError("Encode Fr1_r16", err)
 		}
-	case BandSidelinkPC5_r16_sl_Reception_r16_scs_CP_PatternRxSidelink_r16_Choice_fr2_r16:
-		if err = ie.fr2_r16.Encode(w); err != nil {
-			err = utils.WrapError("Encode fr2_r16", err)
+	case BandSidelinkPC5_r16_sl_Reception_r16_scs_CP_PatternRxSidelink_r16_Choice_Fr2_r16:
+		if err = ie.Fr2_r16.Encode(w); err != nil {
+			err = utils.WrapError("Encode Fr2_r16", err)
 		}
 	default:
 		err = fmt.Errorf("invalid choice: %d", ie.Choice)
@@ -45,15 +45,15 @@ func (ie *BandSidelinkPC5_r16_sl_Reception_r16_scs_CP_PatternRxSidelink_r16) Dec
 		return err
 	}
 	switch ie.Choice {
-	case BandSidelinkPC5_r16_sl_Reception_r16_scs_CP_PatternRxSidelink_r16_Choice_fr1_r16:
-		ie.fr1_r16 = new(Fr1_r16)
-		if err = ie.fr1_r16.Decode(r); err != nil {
-			return utils.WrapError("Decode fr1_r16", err)
+	case BandSidelinkPC5_r16_sl_Reception_r16_scs_CP_PatternRxSidelink_r16_Choice_Fr1_r16:
+		ie.Fr1_r16 = new(Fr1_r16)
+		if err = ie.Fr1_r16.Decode(r); err != nil {
+			return utils.WrapError("Decode Fr1_r16", err)
 		}
-	case BandSidelinkPC5_r16_sl_Reception_r16_scs_CP_PatternRxSidelink_r16_Choice_fr2_r16:
-		ie.fr2_r16 = new(Fr2_r16)
-		if err = ie.fr2_r16.Decode(r); err != nil {
-			return utils.WrapError("Decode fr2_r16", err)
+	case BandSidelinkPC5_r16_sl_Reception_r16_scs_CP_PatternRxSidelink_r16_Choice_Fr2_r16:
+		ie.Fr2_r16 = new(Fr2_r16)
+		if err = ie.Fr2_r16.Decode(r); err != nil {
+			return utils.WrapError("Decode Fr2_r16", err)
 		}
 	default:
 		return fmt.Errorf("invalid choice: %d", ie.Choice)

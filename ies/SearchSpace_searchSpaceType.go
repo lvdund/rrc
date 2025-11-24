@@ -9,14 +9,14 @@ import (
 
 const (
 	SearchSpace_searchSpaceType_Choice_nothing uint64 = iota
-	SearchSpace_searchSpaceType_Choice_common
-	SearchSpace_searchSpaceType_Choice_ue_Specific
+	SearchSpace_searchSpaceType_Choice_Common
+	SearchSpace_searchSpaceType_Choice_Ue_Specific
 )
 
 type SearchSpace_searchSpaceType struct {
 	Choice      uint64
-	common      *SearchSpace_searchSpaceType_common
-	ue_Specific *SearchSpace_searchSpaceType_ue_Specific
+	Common      *SearchSpace_searchSpaceType_common
+	Ue_Specific *SearchSpace_searchSpaceType_ue_Specific
 }
 
 func (ie *SearchSpace_searchSpaceType) Encode(w *uper.UperWriter) error {
@@ -25,13 +25,13 @@ func (ie *SearchSpace_searchSpaceType) Encode(w *uper.UperWriter) error {
 		return err
 	}
 	switch ie.Choice {
-	case SearchSpace_searchSpaceType_Choice_common:
-		if err = ie.common.Encode(w); err != nil {
-			err = utils.WrapError("Encode common", err)
+	case SearchSpace_searchSpaceType_Choice_Common:
+		if err = ie.Common.Encode(w); err != nil {
+			err = utils.WrapError("Encode Common", err)
 		}
-	case SearchSpace_searchSpaceType_Choice_ue_Specific:
-		if err = ie.ue_Specific.Encode(w); err != nil {
-			err = utils.WrapError("Encode ue_Specific", err)
+	case SearchSpace_searchSpaceType_Choice_Ue_Specific:
+		if err = ie.Ue_Specific.Encode(w); err != nil {
+			err = utils.WrapError("Encode Ue_Specific", err)
 		}
 	default:
 		err = fmt.Errorf("invalid choice: %d", ie.Choice)
@@ -45,15 +45,15 @@ func (ie *SearchSpace_searchSpaceType) Decode(r *uper.UperReader) error {
 		return err
 	}
 	switch ie.Choice {
-	case SearchSpace_searchSpaceType_Choice_common:
-		ie.common = new(SearchSpace_searchSpaceType_common)
-		if err = ie.common.Decode(r); err != nil {
-			return utils.WrapError("Decode common", err)
+	case SearchSpace_searchSpaceType_Choice_Common:
+		ie.Common = new(SearchSpace_searchSpaceType_common)
+		if err = ie.Common.Decode(r); err != nil {
+			return utils.WrapError("Decode Common", err)
 		}
-	case SearchSpace_searchSpaceType_Choice_ue_Specific:
-		ie.ue_Specific = new(SearchSpace_searchSpaceType_ue_Specific)
-		if err = ie.ue_Specific.Decode(r); err != nil {
-			return utils.WrapError("Decode ue_Specific", err)
+	case SearchSpace_searchSpaceType_Choice_Ue_Specific:
+		ie.Ue_Specific = new(SearchSpace_searchSpaceType_ue_Specific)
+		if err = ie.Ue_Specific.Decode(r); err != nil {
+			return utils.WrapError("Decode Ue_Specific", err)
 		}
 	default:
 		return fmt.Errorf("invalid choice: %d", ie.Choice)

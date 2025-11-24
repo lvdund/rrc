@@ -6,56 +6,56 @@ import (
 )
 
 type UE_NR_Capability_v1530 struct {
-	fdd_Add_UE_NR_Capabilities_v1530 *UE_NR_CapabilityAddXDD_Mode_v1530           `optional`
-	tdd_Add_UE_NR_Capabilities_v1530 *UE_NR_CapabilityAddXDD_Mode_v1530           `optional`
-	dummy                            *UE_NR_Capability_v1530_dummy                `optional`
-	interRAT_Parameters              *InterRAT_Parameters                         `optional`
-	inactiveState                    *UE_NR_Capability_v1530_inactiveState        `optional`
-	delayBudgetReporting             *UE_NR_Capability_v1530_delayBudgetReporting `optional`
-	nonCriticalExtension             *UE_NR_Capability_v1540                      `optional`
+	Fdd_Add_UE_NR_Capabilities_v1530 *UE_NR_CapabilityAddXDD_Mode_v1530           `optional`
+	Tdd_Add_UE_NR_Capabilities_v1530 *UE_NR_CapabilityAddXDD_Mode_v1530           `optional`
+	Dummy                            *UE_NR_Capability_v1530_dummy                `optional`
+	InterRAT_Parameters              *InterRAT_Parameters                         `optional`
+	InactiveState                    *UE_NR_Capability_v1530_inactiveState        `optional`
+	DelayBudgetReporting             *UE_NR_Capability_v1530_delayBudgetReporting `optional`
+	NonCriticalExtension             *UE_NR_Capability_v1540                      `optional`
 }
 
 func (ie *UE_NR_Capability_v1530) Encode(w *uper.UperWriter) error {
 	var err error
-	preambleBits := []bool{ie.fdd_Add_UE_NR_Capabilities_v1530 != nil, ie.tdd_Add_UE_NR_Capabilities_v1530 != nil, ie.dummy != nil, ie.interRAT_Parameters != nil, ie.inactiveState != nil, ie.delayBudgetReporting != nil, ie.nonCriticalExtension != nil}
+	preambleBits := []bool{ie.Fdd_Add_UE_NR_Capabilities_v1530 != nil, ie.Tdd_Add_UE_NR_Capabilities_v1530 != nil, ie.Dummy != nil, ie.InterRAT_Parameters != nil, ie.InactiveState != nil, ie.DelayBudgetReporting != nil, ie.NonCriticalExtension != nil}
 	for _, bit := range preambleBits {
 		if err = w.WriteBool(bit); err != nil {
 			return err
 		}
 	}
-	if ie.fdd_Add_UE_NR_Capabilities_v1530 != nil {
-		if err = ie.fdd_Add_UE_NR_Capabilities_v1530.Encode(w); err != nil {
-			return utils.WrapError("Encode fdd_Add_UE_NR_Capabilities_v1530", err)
+	if ie.Fdd_Add_UE_NR_Capabilities_v1530 != nil {
+		if err = ie.Fdd_Add_UE_NR_Capabilities_v1530.Encode(w); err != nil {
+			return utils.WrapError("Encode Fdd_Add_UE_NR_Capabilities_v1530", err)
 		}
 	}
-	if ie.tdd_Add_UE_NR_Capabilities_v1530 != nil {
-		if err = ie.tdd_Add_UE_NR_Capabilities_v1530.Encode(w); err != nil {
-			return utils.WrapError("Encode tdd_Add_UE_NR_Capabilities_v1530", err)
+	if ie.Tdd_Add_UE_NR_Capabilities_v1530 != nil {
+		if err = ie.Tdd_Add_UE_NR_Capabilities_v1530.Encode(w); err != nil {
+			return utils.WrapError("Encode Tdd_Add_UE_NR_Capabilities_v1530", err)
 		}
 	}
-	if ie.dummy != nil {
-		if err = ie.dummy.Encode(w); err != nil {
-			return utils.WrapError("Encode dummy", err)
+	if ie.Dummy != nil {
+		if err = ie.Dummy.Encode(w); err != nil {
+			return utils.WrapError("Encode Dummy", err)
 		}
 	}
-	if ie.interRAT_Parameters != nil {
-		if err = ie.interRAT_Parameters.Encode(w); err != nil {
-			return utils.WrapError("Encode interRAT_Parameters", err)
+	if ie.InterRAT_Parameters != nil {
+		if err = ie.InterRAT_Parameters.Encode(w); err != nil {
+			return utils.WrapError("Encode InterRAT_Parameters", err)
 		}
 	}
-	if ie.inactiveState != nil {
-		if err = ie.inactiveState.Encode(w); err != nil {
-			return utils.WrapError("Encode inactiveState", err)
+	if ie.InactiveState != nil {
+		if err = ie.InactiveState.Encode(w); err != nil {
+			return utils.WrapError("Encode InactiveState", err)
 		}
 	}
-	if ie.delayBudgetReporting != nil {
-		if err = ie.delayBudgetReporting.Encode(w); err != nil {
-			return utils.WrapError("Encode delayBudgetReporting", err)
+	if ie.DelayBudgetReporting != nil {
+		if err = ie.DelayBudgetReporting.Encode(w); err != nil {
+			return utils.WrapError("Encode DelayBudgetReporting", err)
 		}
 	}
-	if ie.nonCriticalExtension != nil {
-		if err = ie.nonCriticalExtension.Encode(w); err != nil {
-			return utils.WrapError("Encode nonCriticalExtension", err)
+	if ie.NonCriticalExtension != nil {
+		if err = ie.NonCriticalExtension.Encode(w); err != nil {
+			return utils.WrapError("Encode NonCriticalExtension", err)
 		}
 	}
 	return nil
@@ -63,74 +63,74 @@ func (ie *UE_NR_Capability_v1530) Encode(w *uper.UperWriter) error {
 
 func (ie *UE_NR_Capability_v1530) Decode(r *uper.UperReader) error {
 	var err error
-	var fdd_Add_UE_NR_Capabilities_v1530Present bool
-	if fdd_Add_UE_NR_Capabilities_v1530Present, err = r.ReadBool(); err != nil {
+	var Fdd_Add_UE_NR_Capabilities_v1530Present bool
+	if Fdd_Add_UE_NR_Capabilities_v1530Present, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var tdd_Add_UE_NR_Capabilities_v1530Present bool
-	if tdd_Add_UE_NR_Capabilities_v1530Present, err = r.ReadBool(); err != nil {
+	var Tdd_Add_UE_NR_Capabilities_v1530Present bool
+	if Tdd_Add_UE_NR_Capabilities_v1530Present, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var dummyPresent bool
-	if dummyPresent, err = r.ReadBool(); err != nil {
+	var DummyPresent bool
+	if DummyPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var interRAT_ParametersPresent bool
-	if interRAT_ParametersPresent, err = r.ReadBool(); err != nil {
+	var InterRAT_ParametersPresent bool
+	if InterRAT_ParametersPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var inactiveStatePresent bool
-	if inactiveStatePresent, err = r.ReadBool(); err != nil {
+	var InactiveStatePresent bool
+	if InactiveStatePresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var delayBudgetReportingPresent bool
-	if delayBudgetReportingPresent, err = r.ReadBool(); err != nil {
+	var DelayBudgetReportingPresent bool
+	if DelayBudgetReportingPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	var nonCriticalExtensionPresent bool
-	if nonCriticalExtensionPresent, err = r.ReadBool(); err != nil {
+	var NonCriticalExtensionPresent bool
+	if NonCriticalExtensionPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	if fdd_Add_UE_NR_Capabilities_v1530Present {
-		ie.fdd_Add_UE_NR_Capabilities_v1530 = new(UE_NR_CapabilityAddXDD_Mode_v1530)
-		if err = ie.fdd_Add_UE_NR_Capabilities_v1530.Decode(r); err != nil {
-			return utils.WrapError("Decode fdd_Add_UE_NR_Capabilities_v1530", err)
+	if Fdd_Add_UE_NR_Capabilities_v1530Present {
+		ie.Fdd_Add_UE_NR_Capabilities_v1530 = new(UE_NR_CapabilityAddXDD_Mode_v1530)
+		if err = ie.Fdd_Add_UE_NR_Capabilities_v1530.Decode(r); err != nil {
+			return utils.WrapError("Decode Fdd_Add_UE_NR_Capabilities_v1530", err)
 		}
 	}
-	if tdd_Add_UE_NR_Capabilities_v1530Present {
-		ie.tdd_Add_UE_NR_Capabilities_v1530 = new(UE_NR_CapabilityAddXDD_Mode_v1530)
-		if err = ie.tdd_Add_UE_NR_Capabilities_v1530.Decode(r); err != nil {
-			return utils.WrapError("Decode tdd_Add_UE_NR_Capabilities_v1530", err)
+	if Tdd_Add_UE_NR_Capabilities_v1530Present {
+		ie.Tdd_Add_UE_NR_Capabilities_v1530 = new(UE_NR_CapabilityAddXDD_Mode_v1530)
+		if err = ie.Tdd_Add_UE_NR_Capabilities_v1530.Decode(r); err != nil {
+			return utils.WrapError("Decode Tdd_Add_UE_NR_Capabilities_v1530", err)
 		}
 	}
-	if dummyPresent {
-		ie.dummy = new(UE_NR_Capability_v1530_dummy)
-		if err = ie.dummy.Decode(r); err != nil {
-			return utils.WrapError("Decode dummy", err)
+	if DummyPresent {
+		ie.Dummy = new(UE_NR_Capability_v1530_dummy)
+		if err = ie.Dummy.Decode(r); err != nil {
+			return utils.WrapError("Decode Dummy", err)
 		}
 	}
-	if interRAT_ParametersPresent {
-		ie.interRAT_Parameters = new(InterRAT_Parameters)
-		if err = ie.interRAT_Parameters.Decode(r); err != nil {
-			return utils.WrapError("Decode interRAT_Parameters", err)
+	if InterRAT_ParametersPresent {
+		ie.InterRAT_Parameters = new(InterRAT_Parameters)
+		if err = ie.InterRAT_Parameters.Decode(r); err != nil {
+			return utils.WrapError("Decode InterRAT_Parameters", err)
 		}
 	}
-	if inactiveStatePresent {
-		ie.inactiveState = new(UE_NR_Capability_v1530_inactiveState)
-		if err = ie.inactiveState.Decode(r); err != nil {
-			return utils.WrapError("Decode inactiveState", err)
+	if InactiveStatePresent {
+		ie.InactiveState = new(UE_NR_Capability_v1530_inactiveState)
+		if err = ie.InactiveState.Decode(r); err != nil {
+			return utils.WrapError("Decode InactiveState", err)
 		}
 	}
-	if delayBudgetReportingPresent {
-		ie.delayBudgetReporting = new(UE_NR_Capability_v1530_delayBudgetReporting)
-		if err = ie.delayBudgetReporting.Decode(r); err != nil {
-			return utils.WrapError("Decode delayBudgetReporting", err)
+	if DelayBudgetReportingPresent {
+		ie.DelayBudgetReporting = new(UE_NR_Capability_v1530_delayBudgetReporting)
+		if err = ie.DelayBudgetReporting.Decode(r); err != nil {
+			return utils.WrapError("Decode DelayBudgetReporting", err)
 		}
 	}
-	if nonCriticalExtensionPresent {
-		ie.nonCriticalExtension = new(UE_NR_Capability_v1540)
-		if err = ie.nonCriticalExtension.Decode(r); err != nil {
-			return utils.WrapError("Decode nonCriticalExtension", err)
+	if NonCriticalExtensionPresent {
+		ie.NonCriticalExtension = new(UE_NR_Capability_v1540)
+		if err = ie.NonCriticalExtension.Decode(r); err != nil {
+			return utils.WrapError("Decode NonCriticalExtension", err)
 		}
 	}
 	return nil
