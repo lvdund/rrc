@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -16,7 +16,7 @@ type CA_ParametersNR struct {
 	SupportedNumberTAG                        *CA_ParametersNR_supportedNumberTAG                        `optional`
 }
 
-func (ie *CA_ParametersNR) Encode(w *uper.UperWriter) error {
+func (ie *CA_ParametersNR) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.Dummy != nil, ie.ParallelTxSRS_PUCCH_PUSCH != nil, ie.ParallelTxPRACH_SRS_PUCCH_PUSCH != nil, ie.SimultaneousRxTxInterBandCA != nil, ie.SimultaneousRxTxSUL != nil, ie.DiffNumerologyAcrossPUCCH_Group != nil, ie.DiffNumerologyWithinPUCCH_GroupSmallerSCS != nil, ie.SupportedNumberTAG != nil}
 	for _, bit := range preambleBits {
@@ -67,7 +67,7 @@ func (ie *CA_ParametersNR) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *CA_ParametersNR) Decode(r *uper.UperReader) error {
+func (ie *CA_ParametersNR) Decode(r *aper.AperReader) error {
 	var err error
 	var DummyPresent bool
 	if DummyPresent, err = r.ReadBool(); err != nil {

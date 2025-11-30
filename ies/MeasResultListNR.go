@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -9,9 +9,9 @@ type MeasResultListNR struct {
 	Value []MeasResultNR `lb:1,ub:maxCellReport,madatory`
 }
 
-func (ie *MeasResultListNR) Encode(w *uper.UperWriter) error {
+func (ie *MeasResultListNR) Encode(w *aper.AperWriter) error {
 	var err error
-	tmp := utils.NewSequence[*MeasResultNR]([]*MeasResultNR{}, uper.Constraint{Lb: 1, Ub: maxCellReport}, false)
+	tmp := utils.NewSequence[*MeasResultNR]([]*MeasResultNR{}, aper.Constraint{Lb: 1, Ub: maxCellReport}, false)
 	for _, i := range ie.Value {
 		tmp.Value = append(tmp.Value, &i)
 	}
@@ -21,9 +21,9 @@ func (ie *MeasResultListNR) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *MeasResultListNR) Decode(r *uper.UperReader) error {
+func (ie *MeasResultListNR) Decode(r *aper.AperReader) error {
 	var err error
-	tmp := utils.NewSequence[*MeasResultNR]([]*MeasResultNR{}, uper.Constraint{Lb: 1, Ub: maxCellReport}, false)
+	tmp := utils.NewSequence[*MeasResultNR]([]*MeasResultNR{}, aper.Constraint{Lb: 1, Ub: maxCellReport}, false)
 	fn := func() *MeasResultNR {
 		return new(MeasResultNR)
 	}

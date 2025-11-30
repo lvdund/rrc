@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -24,7 +24,7 @@ type LogicalChannelConfig_ul_SpecificParameters struct {
 	AllowedHARQ_mode_r17               *LogicalChannelConfig_ul_SpecificParameters_allowedHARQ_mode_r17         `optional`
 }
 
-func (ie *LogicalChannelConfig_ul_SpecificParameters) Encode(w *uper.UperWriter) error {
+func (ie *LogicalChannelConfig_ul_SpecificParameters) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{len(ie.AllowedServingCells) > 0, len(ie.AllowedSCS_List) > 0, ie.MaxPUSCH_Duration != nil, ie.ConfiguredGrantType1Allowed != nil, ie.LogicalChannelGroup != nil, ie.SchedulingRequestID != nil, ie.BitRateQueryProhibitTimer != nil, len(ie.AllowedCG_List_r16) > 0, ie.AllowedPHY_PriorityIndex_r16 != nil, ie.LogicalChannelGroupIAB_Ext_r17 != nil, ie.AllowedHARQ_mode_r17 != nil}
 	for _, bit := range preambleBits {
@@ -32,7 +32,7 @@ func (ie *LogicalChannelConfig_ul_SpecificParameters) Encode(w *uper.UperWriter)
 			return err
 		}
 	}
-	if err = w.WriteInteger(ie.Priority, &uper.Constraint{Lb: 1, Ub: 16}, false); err != nil {
+	if err = w.WriteInteger(ie.Priority, &aper.Constraint{Lb: 1, Ub: 16}, false); err != nil {
 		return utils.WrapError("WriteInteger Priority", err)
 	}
 	if err = ie.PrioritisedBitRate.Encode(w); err != nil {
@@ -42,7 +42,7 @@ func (ie *LogicalChannelConfig_ul_SpecificParameters) Encode(w *uper.UperWriter)
 		return utils.WrapError("Encode BucketSizeDuration", err)
 	}
 	if len(ie.AllowedServingCells) > 0 {
-		tmp_AllowedServingCells := utils.NewSequence[*ServCellIndex]([]*ServCellIndex{}, uper.Constraint{Lb: 1, Ub: maxNrofServingCells_1}, false)
+		tmp_AllowedServingCells := utils.NewSequence[*ServCellIndex]([]*ServCellIndex{}, aper.Constraint{Lb: 1, Ub: maxNrofServingCells_1}, false)
 		for _, i := range ie.AllowedServingCells {
 			tmp_AllowedServingCells.Value = append(tmp_AllowedServingCells.Value, &i)
 		}
@@ -51,7 +51,7 @@ func (ie *LogicalChannelConfig_ul_SpecificParameters) Encode(w *uper.UperWriter)
 		}
 	}
 	if len(ie.AllowedSCS_List) > 0 {
-		tmp_AllowedSCS_List := utils.NewSequence[*SubcarrierSpacing]([]*SubcarrierSpacing{}, uper.Constraint{Lb: 1, Ub: maxSCSs}, false)
+		tmp_AllowedSCS_List := utils.NewSequence[*SubcarrierSpacing]([]*SubcarrierSpacing{}, aper.Constraint{Lb: 1, Ub: maxSCSs}, false)
 		for _, i := range ie.AllowedSCS_List {
 			tmp_AllowedSCS_List.Value = append(tmp_AllowedSCS_List.Value, &i)
 		}
@@ -70,7 +70,7 @@ func (ie *LogicalChannelConfig_ul_SpecificParameters) Encode(w *uper.UperWriter)
 		}
 	}
 	if ie.LogicalChannelGroup != nil {
-		if err = w.WriteInteger(*ie.LogicalChannelGroup, &uper.Constraint{Lb: 0, Ub: maxLCG_ID}, false); err != nil {
+		if err = w.WriteInteger(*ie.LogicalChannelGroup, &aper.Constraint{Lb: 0, Ub: maxLCG_ID}, false); err != nil {
 			return utils.WrapError("Encode LogicalChannelGroup", err)
 		}
 	}
@@ -91,7 +91,7 @@ func (ie *LogicalChannelConfig_ul_SpecificParameters) Encode(w *uper.UperWriter)
 		}
 	}
 	if len(ie.AllowedCG_List_r16) > 0 {
-		tmp_AllowedCG_List_r16 := utils.NewSequence[*ConfiguredGrantConfigIndexMAC_r16]([]*ConfiguredGrantConfigIndexMAC_r16{}, uper.Constraint{Lb: 0, Ub: maxNrofConfiguredGrantConfigMAC_1_r16}, false)
+		tmp_AllowedCG_List_r16 := utils.NewSequence[*ConfiguredGrantConfigIndexMAC_r16]([]*ConfiguredGrantConfigIndexMAC_r16{}, aper.Constraint{Lb: 0, Ub: maxNrofConfiguredGrantConfigMAC_1_r16}, false)
 		for _, i := range ie.AllowedCG_List_r16 {
 			tmp_AllowedCG_List_r16.Value = append(tmp_AllowedCG_List_r16.Value, &i)
 		}
@@ -105,7 +105,7 @@ func (ie *LogicalChannelConfig_ul_SpecificParameters) Encode(w *uper.UperWriter)
 		}
 	}
 	if ie.LogicalChannelGroupIAB_Ext_r17 != nil {
-		if err = w.WriteInteger(*ie.LogicalChannelGroupIAB_Ext_r17, &uper.Constraint{Lb: 0, Ub: maxLCG_ID_IAB_r17}, false); err != nil {
+		if err = w.WriteInteger(*ie.LogicalChannelGroupIAB_Ext_r17, &aper.Constraint{Lb: 0, Ub: maxLCG_ID_IAB_r17}, false); err != nil {
 			return utils.WrapError("Encode LogicalChannelGroupIAB_Ext_r17", err)
 		}
 	}
@@ -117,7 +117,7 @@ func (ie *LogicalChannelConfig_ul_SpecificParameters) Encode(w *uper.UperWriter)
 	return nil
 }
 
-func (ie *LogicalChannelConfig_ul_SpecificParameters) Decode(r *uper.UperReader) error {
+func (ie *LogicalChannelConfig_ul_SpecificParameters) Decode(r *aper.AperReader) error {
 	var err error
 	var AllowedServingCellsPresent bool
 	if AllowedServingCellsPresent, err = r.ReadBool(); err != nil {
@@ -164,7 +164,7 @@ func (ie *LogicalChannelConfig_ul_SpecificParameters) Decode(r *uper.UperReader)
 		return err
 	}
 	var tmp_int_Priority int64
-	if tmp_int_Priority, err = r.ReadInteger(&uper.Constraint{Lb: 1, Ub: 16}, false); err != nil {
+	if tmp_int_Priority, err = r.ReadInteger(&aper.Constraint{Lb: 1, Ub: 16}, false); err != nil {
 		return utils.WrapError("ReadInteger Priority", err)
 	}
 	ie.Priority = tmp_int_Priority
@@ -175,7 +175,7 @@ func (ie *LogicalChannelConfig_ul_SpecificParameters) Decode(r *uper.UperReader)
 		return utils.WrapError("Decode BucketSizeDuration", err)
 	}
 	if AllowedServingCellsPresent {
-		tmp_AllowedServingCells := utils.NewSequence[*ServCellIndex]([]*ServCellIndex{}, uper.Constraint{Lb: 1, Ub: maxNrofServingCells_1}, false)
+		tmp_AllowedServingCells := utils.NewSequence[*ServCellIndex]([]*ServCellIndex{}, aper.Constraint{Lb: 1, Ub: maxNrofServingCells_1}, false)
 		fn_AllowedServingCells := func() *ServCellIndex {
 			return new(ServCellIndex)
 		}
@@ -188,7 +188,7 @@ func (ie *LogicalChannelConfig_ul_SpecificParameters) Decode(r *uper.UperReader)
 		}
 	}
 	if AllowedSCS_ListPresent {
-		tmp_AllowedSCS_List := utils.NewSequence[*SubcarrierSpacing]([]*SubcarrierSpacing{}, uper.Constraint{Lb: 1, Ub: maxSCSs}, false)
+		tmp_AllowedSCS_List := utils.NewSequence[*SubcarrierSpacing]([]*SubcarrierSpacing{}, aper.Constraint{Lb: 1, Ub: maxSCSs}, false)
 		fn_AllowedSCS_List := func() *SubcarrierSpacing {
 			return new(SubcarrierSpacing)
 		}
@@ -214,7 +214,7 @@ func (ie *LogicalChannelConfig_ul_SpecificParameters) Decode(r *uper.UperReader)
 	}
 	if LogicalChannelGroupPresent {
 		var tmp_int_LogicalChannelGroup int64
-		if tmp_int_LogicalChannelGroup, err = r.ReadInteger(&uper.Constraint{Lb: 0, Ub: maxLCG_ID}, false); err != nil {
+		if tmp_int_LogicalChannelGroup, err = r.ReadInteger(&aper.Constraint{Lb: 0, Ub: maxLCG_ID}, false); err != nil {
 			return utils.WrapError("Decode LogicalChannelGroup", err)
 		}
 		ie.LogicalChannelGroup = &tmp_int_LogicalChannelGroup
@@ -242,7 +242,7 @@ func (ie *LogicalChannelConfig_ul_SpecificParameters) Decode(r *uper.UperReader)
 		}
 	}
 	if AllowedCG_List_r16Present {
-		tmp_AllowedCG_List_r16 := utils.NewSequence[*ConfiguredGrantConfigIndexMAC_r16]([]*ConfiguredGrantConfigIndexMAC_r16{}, uper.Constraint{Lb: 0, Ub: maxNrofConfiguredGrantConfigMAC_1_r16}, false)
+		tmp_AllowedCG_List_r16 := utils.NewSequence[*ConfiguredGrantConfigIndexMAC_r16]([]*ConfiguredGrantConfigIndexMAC_r16{}, aper.Constraint{Lb: 0, Ub: maxNrofConfiguredGrantConfigMAC_1_r16}, false)
 		fn_AllowedCG_List_r16 := func() *ConfiguredGrantConfigIndexMAC_r16 {
 			return new(ConfiguredGrantConfigIndexMAC_r16)
 		}
@@ -262,7 +262,7 @@ func (ie *LogicalChannelConfig_ul_SpecificParameters) Decode(r *uper.UperReader)
 	}
 	if LogicalChannelGroupIAB_Ext_r17Present {
 		var tmp_int_LogicalChannelGroupIAB_Ext_r17 int64
-		if tmp_int_LogicalChannelGroupIAB_Ext_r17, err = r.ReadInteger(&uper.Constraint{Lb: 0, Ub: maxLCG_ID_IAB_r17}, false); err != nil {
+		if tmp_int_LogicalChannelGroupIAB_Ext_r17, err = r.ReadInteger(&aper.Constraint{Lb: 0, Ub: maxLCG_ID_IAB_r17}, false); err != nil {
 			return utils.WrapError("Decode LogicalChannelGroupIAB_Ext_r17", err)
 		}
 		ie.LogicalChannelGroupIAB_Ext_r17 = &tmp_int_LogicalChannelGroupIAB_Ext_r17

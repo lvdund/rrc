@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -16,7 +16,7 @@ type NRDC_Parameters struct {
 	Dummy                        interface{}                     `optional`
 }
 
-func (ie *NRDC_Parameters) Encode(w *uper.UperWriter) error {
+func (ie *NRDC_Parameters) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.MeasAndMobParametersNRDC != nil, ie.GeneralParametersNRDC != nil, ie.Fdd_Add_UE_NRDC_Capabilities != nil, ie.Tdd_Add_UE_NRDC_Capabilities != nil, ie.Fr1_Add_UE_NRDC_Capabilities != nil, ie.Fr2_Add_UE_NRDC_Capabilities != nil, ie.Dummy2 != nil}
 	for _, bit := range preambleBits {
@@ -55,14 +55,14 @@ func (ie *NRDC_Parameters) Encode(w *uper.UperWriter) error {
 		}
 	}
 	if ie.Dummy2 != nil {
-		if err = w.WriteOctetString(*ie.Dummy2, &uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+		if err = w.WriteOctetString(*ie.Dummy2, &aper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
 			return utils.WrapError("Encode Dummy2", err)
 		}
 	}
 	return nil
 }
 
-func (ie *NRDC_Parameters) Decode(r *uper.UperReader) error {
+func (ie *NRDC_Parameters) Decode(r *aper.AperReader) error {
 	var err error
 	var MeasAndMobParametersNRDCPresent bool
 	if MeasAndMobParametersNRDCPresent, err = r.ReadBool(); err != nil {
@@ -130,7 +130,7 @@ func (ie *NRDC_Parameters) Decode(r *uper.UperReader) error {
 	}
 	if Dummy2Present {
 		var tmp_os_Dummy2 []byte
-		if tmp_os_Dummy2, err = r.ReadOctetString(&uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+		if tmp_os_Dummy2, err = r.ReadOctetString(&aper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
 			return utils.WrapError("Decode Dummy2", err)
 		}
 		ie.Dummy2 = &tmp_os_Dummy2

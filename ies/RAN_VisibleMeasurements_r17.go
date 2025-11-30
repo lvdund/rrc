@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -11,7 +11,7 @@ type RAN_VisibleMeasurements_r17 struct {
 	Pdu_SessionIdList_r17           []PDU_SessionID           `lb:1,ub:maxNrofPDU_Sessions_r17,optional`
 }
 
-func (ie *RAN_VisibleMeasurements_r17) Encode(w *uper.UperWriter) error {
+func (ie *RAN_VisibleMeasurements_r17) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{len(ie.AppLayerBufferLevelList_r17) > 0, ie.PlayoutDelayForMediaStartup_r17 != nil, len(ie.Pdu_SessionIdList_r17) > 0}
 	for _, bit := range preambleBits {
@@ -20,7 +20,7 @@ func (ie *RAN_VisibleMeasurements_r17) Encode(w *uper.UperWriter) error {
 		}
 	}
 	if len(ie.AppLayerBufferLevelList_r17) > 0 {
-		tmp_AppLayerBufferLevelList_r17 := utils.NewSequence[*AppLayerBufferLevel_r17]([]*AppLayerBufferLevel_r17{}, uper.Constraint{Lb: 1, Ub: 8}, false)
+		tmp_AppLayerBufferLevelList_r17 := utils.NewSequence[*AppLayerBufferLevel_r17]([]*AppLayerBufferLevel_r17{}, aper.Constraint{Lb: 1, Ub: 8}, false)
 		for _, i := range ie.AppLayerBufferLevelList_r17 {
 			tmp_AppLayerBufferLevelList_r17.Value = append(tmp_AppLayerBufferLevelList_r17.Value, &i)
 		}
@@ -29,12 +29,12 @@ func (ie *RAN_VisibleMeasurements_r17) Encode(w *uper.UperWriter) error {
 		}
 	}
 	if ie.PlayoutDelayForMediaStartup_r17 != nil {
-		if err = w.WriteInteger(*ie.PlayoutDelayForMediaStartup_r17, &uper.Constraint{Lb: 0, Ub: 30000}, false); err != nil {
+		if err = w.WriteInteger(*ie.PlayoutDelayForMediaStartup_r17, &aper.Constraint{Lb: 0, Ub: 30000}, false); err != nil {
 			return utils.WrapError("Encode PlayoutDelayForMediaStartup_r17", err)
 		}
 	}
 	if len(ie.Pdu_SessionIdList_r17) > 0 {
-		tmp_Pdu_SessionIdList_r17 := utils.NewSequence[*PDU_SessionID]([]*PDU_SessionID{}, uper.Constraint{Lb: 1, Ub: maxNrofPDU_Sessions_r17}, false)
+		tmp_Pdu_SessionIdList_r17 := utils.NewSequence[*PDU_SessionID]([]*PDU_SessionID{}, aper.Constraint{Lb: 1, Ub: maxNrofPDU_Sessions_r17}, false)
 		for _, i := range ie.Pdu_SessionIdList_r17 {
 			tmp_Pdu_SessionIdList_r17.Value = append(tmp_Pdu_SessionIdList_r17.Value, &i)
 		}
@@ -45,7 +45,7 @@ func (ie *RAN_VisibleMeasurements_r17) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *RAN_VisibleMeasurements_r17) Decode(r *uper.UperReader) error {
+func (ie *RAN_VisibleMeasurements_r17) Decode(r *aper.AperReader) error {
 	var err error
 	var AppLayerBufferLevelList_r17Present bool
 	if AppLayerBufferLevelList_r17Present, err = r.ReadBool(); err != nil {
@@ -60,7 +60,7 @@ func (ie *RAN_VisibleMeasurements_r17) Decode(r *uper.UperReader) error {
 		return err
 	}
 	if AppLayerBufferLevelList_r17Present {
-		tmp_AppLayerBufferLevelList_r17 := utils.NewSequence[*AppLayerBufferLevel_r17]([]*AppLayerBufferLevel_r17{}, uper.Constraint{Lb: 1, Ub: 8}, false)
+		tmp_AppLayerBufferLevelList_r17 := utils.NewSequence[*AppLayerBufferLevel_r17]([]*AppLayerBufferLevel_r17{}, aper.Constraint{Lb: 1, Ub: 8}, false)
 		fn_AppLayerBufferLevelList_r17 := func() *AppLayerBufferLevel_r17 {
 			return new(AppLayerBufferLevel_r17)
 		}
@@ -74,13 +74,13 @@ func (ie *RAN_VisibleMeasurements_r17) Decode(r *uper.UperReader) error {
 	}
 	if PlayoutDelayForMediaStartup_r17Present {
 		var tmp_int_PlayoutDelayForMediaStartup_r17 int64
-		if tmp_int_PlayoutDelayForMediaStartup_r17, err = r.ReadInteger(&uper.Constraint{Lb: 0, Ub: 30000}, false); err != nil {
+		if tmp_int_PlayoutDelayForMediaStartup_r17, err = r.ReadInteger(&aper.Constraint{Lb: 0, Ub: 30000}, false); err != nil {
 			return utils.WrapError("Decode PlayoutDelayForMediaStartup_r17", err)
 		}
 		ie.PlayoutDelayForMediaStartup_r17 = &tmp_int_PlayoutDelayForMediaStartup_r17
 	}
 	if Pdu_SessionIdList_r17Present {
-		tmp_Pdu_SessionIdList_r17 := utils.NewSequence[*PDU_SessionID]([]*PDU_SessionID{}, uper.Constraint{Lb: 1, Ub: maxNrofPDU_Sessions_r17}, false)
+		tmp_Pdu_SessionIdList_r17 := utils.NewSequence[*PDU_SessionID]([]*PDU_SessionID{}, aper.Constraint{Lb: 1, Ub: maxNrofPDU_Sessions_r17}, false)
 		fn_Pdu_SessionIdList_r17 := func() *PDU_SessionID {
 			return new(PDU_SessionID)
 		}

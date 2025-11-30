@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -9,9 +9,9 @@ type MNC struct {
 	Value []MCC_MNC_Digit `lb:2,ub:3,madatory`
 }
 
-func (ie *MNC) Encode(w *uper.UperWriter) error {
+func (ie *MNC) Encode(w *aper.AperWriter) error {
 	var err error
-	tmp := utils.NewSequence[*MCC_MNC_Digit]([]*MCC_MNC_Digit{}, uper.Constraint{Lb: 2, Ub: 3}, false)
+	tmp := utils.NewSequence[*MCC_MNC_Digit]([]*MCC_MNC_Digit{}, aper.Constraint{Lb: 2, Ub: 3}, false)
 	for _, i := range ie.Value {
 		tmp.Value = append(tmp.Value, &i)
 	}
@@ -21,9 +21,9 @@ func (ie *MNC) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *MNC) Decode(r *uper.UperReader) error {
+func (ie *MNC) Decode(r *aper.AperReader) error {
 	var err error
-	tmp := utils.NewSequence[*MCC_MNC_Digit]([]*MCC_MNC_Digit{}, uper.Constraint{Lb: 2, Ub: 3}, false)
+	tmp := utils.NewSequence[*MCC_MNC_Digit]([]*MCC_MNC_Digit{}, aper.Constraint{Lb: 2, Ub: 3}, false)
 	fn := func() *MCC_MNC_Digit {
 		return new(MCC_MNC_Digit)
 	}

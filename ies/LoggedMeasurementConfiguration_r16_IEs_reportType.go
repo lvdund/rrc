@@ -3,7 +3,7 @@ package ies
 import (
 	"fmt"
 
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -19,7 +19,7 @@ type LoggedMeasurementConfiguration_r16_IEs_reportType struct {
 	EventTriggered *LoggedEventTriggerConfig_r16
 }
 
-func (ie *LoggedMeasurementConfiguration_r16_IEs_reportType) Encode(w *uper.UperWriter) error {
+func (ie *LoggedMeasurementConfiguration_r16_IEs_reportType) Encode(w *aper.AperWriter) error {
 	var err error
 	if err = w.WriteChoice(ie.Choice, 2, false); err != nil {
 		return err
@@ -39,7 +39,7 @@ func (ie *LoggedMeasurementConfiguration_r16_IEs_reportType) Encode(w *uper.Uper
 	return err
 }
 
-func (ie *LoggedMeasurementConfiguration_r16_IEs_reportType) Decode(r *uper.UperReader) error {
+func (ie *LoggedMeasurementConfiguration_r16_IEs_reportType) Decode(r *aper.AperReader) error {
 	var err error
 	if ie.Choice, err = r.ReadChoice(2, false); err != nil {
 		return err

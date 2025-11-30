@@ -3,7 +3,7 @@ package ies
 import (
 	"bytes"
 
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -39,7 +39,7 @@ type RF_ParametersMRDC struct {
 	SupportedBandCombinationList_UplinkTxSwitch_v1730 *BandCombinationList_UplinkTxSwitch_v1730                      `optional,ext-14`
 }
 
-func (ie *RF_ParametersMRDC) Encode(w *uper.UperWriter) error {
+func (ie *RF_ParametersMRDC) Encode(w *aper.AperWriter) error {
 	var err error
 	hasExtensions := ie.Srs_SwitchingTimeRequested != nil || ie.SupportedBandCombinationList_v1550 != nil || ie.SupportedBandCombinationListNEDC_Only != nil || ie.SupportedBandCombinationList_v1540 != nil || ie.SupportedBandCombinationList_v1560 != nil || ie.SupportedBandCombinationList_v1570 != nil || ie.SupportedBandCombinationList_v1580 != nil || ie.SupportedBandCombinationList_v1590 != nil || ie.SupportedBandCombinationListNEDC_Only_v15a0 != nil || ie.SupportedBandCombinationList_v1610 != nil || ie.SupportedBandCombinationListNEDC_Only_v1610 != nil || ie.SupportedBandCombinationList_UplinkTxSwitch_r16 != nil || ie.SupportedBandCombinationList_v1630 != nil || ie.SupportedBandCombinationListNEDC_Only_v1630 != nil || ie.SupportedBandCombinationList_UplinkTxSwitch_v1630 != nil || ie.SupportedBandCombinationList_v1640 != nil || ie.SupportedBandCombinationListNEDC_Only_v1640 != nil || ie.SupportedBandCombinationList_UplinkTxSwitch_v1640 != nil || ie.SupportedBandCombinationList_UplinkTxSwitch_v1670 != nil || ie.SupportedBandCombinationList_UplinkTxSwitch_v1700 != nil || ie.SupportedBandCombinationList_v1700 != nil || ie.SupportedBandCombinationList_v1720 != nil || ie.SupportedBandCombinationListNEDC_Only_v1720 != nil || ie.SupportedBandCombinationList_UplinkTxSwitch_v1720 != nil || ie.SupportedBandCombinationList_v1730 != nil || ie.SupportedBandCombinationListNEDC_Only_v1730 != nil || ie.SupportedBandCombinationList_UplinkTxSwitch_v1730 != nil
 	preambleBits := []bool{hasExtensions, ie.SupportedBandCombinationList != nil, ie.AppliedFreqBandListFilter != nil}
@@ -68,7 +68,7 @@ func (ie *RF_ParametersMRDC) Encode(w *uper.UperWriter) error {
 		// encode extension group 1
 		if extBitmap[0] {
 			extBuf := new(bytes.Buffer)
-			extWriter := uper.NewWriter(extBuf)
+			extWriter := aper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 1
 			optionals_ext_1 := []bool{ie.Srs_SwitchingTimeRequested != nil}
@@ -97,7 +97,7 @@ func (ie *RF_ParametersMRDC) Encode(w *uper.UperWriter) error {
 		// encode extension group 2
 		if extBitmap[1] {
 			extBuf := new(bytes.Buffer)
-			extWriter := uper.NewWriter(extBuf)
+			extWriter := aper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 2
 			optionals_ext_2 := []bool{ie.SupportedBandCombinationList_v1550 != nil}
@@ -126,7 +126,7 @@ func (ie *RF_ParametersMRDC) Encode(w *uper.UperWriter) error {
 		// encode extension group 3
 		if extBitmap[2] {
 			extBuf := new(bytes.Buffer)
-			extWriter := uper.NewWriter(extBuf)
+			extWriter := aper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 3
 			optionals_ext_3 := []bool{ie.SupportedBandCombinationListNEDC_Only != nil}
@@ -155,7 +155,7 @@ func (ie *RF_ParametersMRDC) Encode(w *uper.UperWriter) error {
 		// encode extension group 7
 		if extBitmap[6] {
 			extBuf := new(bytes.Buffer)
-			extWriter := uper.NewWriter(extBuf)
+			extWriter := aper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 7
 			optionals_ext_7 := []bool{ie.SupportedBandCombinationList_v1540 != nil, ie.SupportedBandCombinationList_v1560 != nil, ie.SupportedBandCombinationList_v1570 != nil, ie.SupportedBandCombinationList_v1580 != nil, ie.SupportedBandCombinationList_v1590 != nil, ie.SupportedBandCombinationListNEDC_Only_v15a0 != nil}
@@ -214,7 +214,7 @@ func (ie *RF_ParametersMRDC) Encode(w *uper.UperWriter) error {
 		// encode extension group 8
 		if extBitmap[7] {
 			extBuf := new(bytes.Buffer)
-			extWriter := uper.NewWriter(extBuf)
+			extWriter := aper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 8
 			optionals_ext_8 := []bool{ie.SupportedBandCombinationList_v1610 != nil, ie.SupportedBandCombinationListNEDC_Only_v1610 != nil, ie.SupportedBandCombinationList_UplinkTxSwitch_r16 != nil}
@@ -255,7 +255,7 @@ func (ie *RF_ParametersMRDC) Encode(w *uper.UperWriter) error {
 		// encode extension group 9
 		if extBitmap[8] {
 			extBuf := new(bytes.Buffer)
-			extWriter := uper.NewWriter(extBuf)
+			extWriter := aper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 9
 			optionals_ext_9 := []bool{ie.SupportedBandCombinationList_v1630 != nil, ie.SupportedBandCombinationListNEDC_Only_v1630 != nil, ie.SupportedBandCombinationList_UplinkTxSwitch_v1630 != nil}
@@ -296,7 +296,7 @@ func (ie *RF_ParametersMRDC) Encode(w *uper.UperWriter) error {
 		// encode extension group 10
 		if extBitmap[9] {
 			extBuf := new(bytes.Buffer)
-			extWriter := uper.NewWriter(extBuf)
+			extWriter := aper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 10
 			optionals_ext_10 := []bool{ie.SupportedBandCombinationList_v1640 != nil, ie.SupportedBandCombinationListNEDC_Only_v1640 != nil, ie.SupportedBandCombinationList_UplinkTxSwitch_v1640 != nil}
@@ -337,7 +337,7 @@ func (ie *RF_ParametersMRDC) Encode(w *uper.UperWriter) error {
 		// encode extension group 11
 		if extBitmap[10] {
 			extBuf := new(bytes.Buffer)
-			extWriter := uper.NewWriter(extBuf)
+			extWriter := aper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 11
 			optionals_ext_11 := []bool{ie.SupportedBandCombinationList_UplinkTxSwitch_v1670 != nil}
@@ -366,7 +366,7 @@ func (ie *RF_ParametersMRDC) Encode(w *uper.UperWriter) error {
 		// encode extension group 12
 		if extBitmap[11] {
 			extBuf := new(bytes.Buffer)
-			extWriter := uper.NewWriter(extBuf)
+			extWriter := aper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 12
 			optionals_ext_12 := []bool{ie.SupportedBandCombinationList_UplinkTxSwitch_v1700 != nil}
@@ -395,7 +395,7 @@ func (ie *RF_ParametersMRDC) Encode(w *uper.UperWriter) error {
 		// encode extension group 13
 		if extBitmap[12] {
 			extBuf := new(bytes.Buffer)
-			extWriter := uper.NewWriter(extBuf)
+			extWriter := aper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 13
 			optionals_ext_13 := []bool{ie.SupportedBandCombinationList_v1700 != nil, ie.SupportedBandCombinationList_v1720 != nil, ie.SupportedBandCombinationListNEDC_Only_v1720 != nil, ie.SupportedBandCombinationList_UplinkTxSwitch_v1720 != nil}
@@ -442,7 +442,7 @@ func (ie *RF_ParametersMRDC) Encode(w *uper.UperWriter) error {
 		// encode extension group 14
 		if extBitmap[13] {
 			extBuf := new(bytes.Buffer)
-			extWriter := uper.NewWriter(extBuf)
+			extWriter := aper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 14
 			optionals_ext_14 := []bool{ie.SupportedBandCombinationList_v1730 != nil, ie.SupportedBandCombinationListNEDC_Only_v1730 != nil, ie.SupportedBandCombinationList_UplinkTxSwitch_v1730 != nil}
@@ -483,7 +483,7 @@ func (ie *RF_ParametersMRDC) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *RF_ParametersMRDC) Decode(r *uper.UperReader) error {
+func (ie *RF_ParametersMRDC) Decode(r *aper.AperReader) error {
 	var err error
 	var extensionBit bool
 	if extensionBit, err = r.ReadBool(); err != nil {
@@ -524,7 +524,7 @@ func (ie *RF_ParametersMRDC) Decode(r *uper.UperReader) error {
 				return err
 			}
 
-			extReader := uper.NewReader(bytes.NewReader(extBytes))
+			extReader := aper.NewReader(bytes.NewReader(extBytes))
 
 			Srs_SwitchingTimeRequestedPresent, err := extReader.ReadBool()
 			if err != nil {
@@ -545,7 +545,7 @@ func (ie *RF_ParametersMRDC) Decode(r *uper.UperReader) error {
 				return err
 			}
 
-			extReader := uper.NewReader(bytes.NewReader(extBytes))
+			extReader := aper.NewReader(bytes.NewReader(extBytes))
 
 			SupportedBandCombinationList_v1550Present, err := extReader.ReadBool()
 			if err != nil {
@@ -566,7 +566,7 @@ func (ie *RF_ParametersMRDC) Decode(r *uper.UperReader) error {
 				return err
 			}
 
-			extReader := uper.NewReader(bytes.NewReader(extBytes))
+			extReader := aper.NewReader(bytes.NewReader(extBytes))
 
 			SupportedBandCombinationListNEDC_OnlyPresent, err := extReader.ReadBool()
 			if err != nil {
@@ -587,7 +587,7 @@ func (ie *RF_ParametersMRDC) Decode(r *uper.UperReader) error {
 				return err
 			}
 
-			extReader := uper.NewReader(bytes.NewReader(extBytes))
+			extReader := aper.NewReader(bytes.NewReader(extBytes))
 
 			SupportedBandCombinationList_v1540Present, err := extReader.ReadBool()
 			if err != nil {
@@ -663,7 +663,7 @@ func (ie *RF_ParametersMRDC) Decode(r *uper.UperReader) error {
 				return err
 			}
 
-			extReader := uper.NewReader(bytes.NewReader(extBytes))
+			extReader := aper.NewReader(bytes.NewReader(extBytes))
 
 			SupportedBandCombinationList_v1610Present, err := extReader.ReadBool()
 			if err != nil {
@@ -706,7 +706,7 @@ func (ie *RF_ParametersMRDC) Decode(r *uper.UperReader) error {
 				return err
 			}
 
-			extReader := uper.NewReader(bytes.NewReader(extBytes))
+			extReader := aper.NewReader(bytes.NewReader(extBytes))
 
 			SupportedBandCombinationList_v1630Present, err := extReader.ReadBool()
 			if err != nil {
@@ -749,7 +749,7 @@ func (ie *RF_ParametersMRDC) Decode(r *uper.UperReader) error {
 				return err
 			}
 
-			extReader := uper.NewReader(bytes.NewReader(extBytes))
+			extReader := aper.NewReader(bytes.NewReader(extBytes))
 
 			SupportedBandCombinationList_v1640Present, err := extReader.ReadBool()
 			if err != nil {
@@ -792,7 +792,7 @@ func (ie *RF_ParametersMRDC) Decode(r *uper.UperReader) error {
 				return err
 			}
 
-			extReader := uper.NewReader(bytes.NewReader(extBytes))
+			extReader := aper.NewReader(bytes.NewReader(extBytes))
 
 			SupportedBandCombinationList_UplinkTxSwitch_v1670Present, err := extReader.ReadBool()
 			if err != nil {
@@ -813,7 +813,7 @@ func (ie *RF_ParametersMRDC) Decode(r *uper.UperReader) error {
 				return err
 			}
 
-			extReader := uper.NewReader(bytes.NewReader(extBytes))
+			extReader := aper.NewReader(bytes.NewReader(extBytes))
 
 			SupportedBandCombinationList_UplinkTxSwitch_v1700Present, err := extReader.ReadBool()
 			if err != nil {
@@ -834,7 +834,7 @@ func (ie *RF_ParametersMRDC) Decode(r *uper.UperReader) error {
 				return err
 			}
 
-			extReader := uper.NewReader(bytes.NewReader(extBytes))
+			extReader := aper.NewReader(bytes.NewReader(extBytes))
 
 			SupportedBandCombinationList_v1700Present, err := extReader.ReadBool()
 			if err != nil {
@@ -888,7 +888,7 @@ func (ie *RF_ParametersMRDC) Decode(r *uper.UperReader) error {
 				return err
 			}
 
-			extReader := uper.NewReader(bytes.NewReader(extBytes))
+			extReader := aper.NewReader(bytes.NewReader(extBytes))
 
 			SupportedBandCombinationList_v1730Present, err := extReader.ReadBool()
 			if err != nil {

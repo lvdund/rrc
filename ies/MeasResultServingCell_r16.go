@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -10,7 +10,7 @@ type MeasResultServingCell_r16 struct {
 	ResultsSSB      *MeasResultServingCell_r16_resultsSSB `lb:1,ub:maxNrofSSBs_r16,optional`
 }
 
-func (ie *MeasResultServingCell_r16) Encode(w *uper.UperWriter) error {
+func (ie *MeasResultServingCell_r16) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.ResultsSSB != nil}
 	for _, bit := range preambleBits {
@@ -29,7 +29,7 @@ func (ie *MeasResultServingCell_r16) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *MeasResultServingCell_r16) Decode(r *uper.UperReader) error {
+func (ie *MeasResultServingCell_r16) Decode(r *aper.AperReader) error {
 	var err error
 	var ResultsSSBPresent bool
 	if ResultsSSBPresent, err = r.ReadBool(); err != nil {

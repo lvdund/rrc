@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -12,7 +12,7 @@ type FrequencyInfoDL struct {
 	Scs_SpecificCarrierList []SCS_SpecificCarrier    `lb:1,ub:maxSCSs,madatory`
 }
 
-func (ie *FrequencyInfoDL) Encode(w *uper.UperWriter) error {
+func (ie *FrequencyInfoDL) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.AbsoluteFrequencySSB != nil}
 	for _, bit := range preambleBits {
@@ -31,7 +31,7 @@ func (ie *FrequencyInfoDL) Encode(w *uper.UperWriter) error {
 	if err = ie.AbsoluteFrequencyPointA.Encode(w); err != nil {
 		return utils.WrapError("Encode AbsoluteFrequencyPointA", err)
 	}
-	tmp_Scs_SpecificCarrierList := utils.NewSequence[*SCS_SpecificCarrier]([]*SCS_SpecificCarrier{}, uper.Constraint{Lb: 1, Ub: maxSCSs}, false)
+	tmp_Scs_SpecificCarrierList := utils.NewSequence[*SCS_SpecificCarrier]([]*SCS_SpecificCarrier{}, aper.Constraint{Lb: 1, Ub: maxSCSs}, false)
 	for _, i := range ie.Scs_SpecificCarrierList {
 		tmp_Scs_SpecificCarrierList.Value = append(tmp_Scs_SpecificCarrierList.Value, &i)
 	}
@@ -41,7 +41,7 @@ func (ie *FrequencyInfoDL) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *FrequencyInfoDL) Decode(r *uper.UperReader) error {
+func (ie *FrequencyInfoDL) Decode(r *aper.AperReader) error {
 	var err error
 	var AbsoluteFrequencySSBPresent bool
 	if AbsoluteFrequencySSBPresent, err = r.ReadBool(); err != nil {
@@ -59,7 +59,7 @@ func (ie *FrequencyInfoDL) Decode(r *uper.UperReader) error {
 	if err = ie.AbsoluteFrequencyPointA.Decode(r); err != nil {
 		return utils.WrapError("Decode AbsoluteFrequencyPointA", err)
 	}
-	tmp_Scs_SpecificCarrierList := utils.NewSequence[*SCS_SpecificCarrier]([]*SCS_SpecificCarrier{}, uper.Constraint{Lb: 1, Ub: maxSCSs}, false)
+	tmp_Scs_SpecificCarrierList := utils.NewSequence[*SCS_SpecificCarrier]([]*SCS_SpecificCarrier{}, aper.Constraint{Lb: 1, Ub: maxSCSs}, false)
 	fn_Scs_SpecificCarrierList := func() *SCS_SpecificCarrier {
 		return new(SCS_SpecificCarrier)
 	}

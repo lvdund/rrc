@@ -3,7 +3,7 @@ package ies
 import (
 	"bytes"
 
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -13,7 +13,7 @@ type CFRA struct {
 	TotalNumberOfRA_Preambles *int64          `lb:1,ub:63,optional,ext-1`
 }
 
-func (ie *CFRA) Encode(w *uper.UperWriter) error {
+func (ie *CFRA) Encode(w *aper.AperWriter) error {
 	var err error
 	hasExtensions := ie.TotalNumberOfRA_Preambles != nil
 	preambleBits := []bool{hasExtensions, ie.Occasions != nil}
@@ -40,7 +40,7 @@ func (ie *CFRA) Encode(w *uper.UperWriter) error {
 		// encode extension group 1
 		if extBitmap[0] {
 			extBuf := new(bytes.Buffer)
-			extWriter := uper.NewWriter(extBuf)
+			extWriter := aper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 1
 			optionals_ext_1 := []bool{ie.TotalNumberOfRA_Preambles != nil}
@@ -52,7 +52,7 @@ func (ie *CFRA) Encode(w *uper.UperWriter) error {
 
 			// encode TotalNumberOfRA_Preambles optional
 			if ie.TotalNumberOfRA_Preambles != nil {
-				if err = extWriter.WriteInteger(*ie.TotalNumberOfRA_Preambles, &uper.Constraint{Lb: 1, Ub: 63}, false); err != nil {
+				if err = extWriter.WriteInteger(*ie.TotalNumberOfRA_Preambles, &aper.Constraint{Lb: 1, Ub: 63}, false); err != nil {
 					return utils.WrapError("Encode TotalNumberOfRA_Preambles", err)
 				}
 			}
@@ -69,7 +69,7 @@ func (ie *CFRA) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *CFRA) Decode(r *uper.UperReader) error {
+func (ie *CFRA) Decode(r *aper.AperReader) error {
 	var err error
 	var extensionBit bool
 	if extensionBit, err = r.ReadBool(); err != nil {
@@ -103,7 +103,7 @@ func (ie *CFRA) Decode(r *uper.UperReader) error {
 				return err
 			}
 
-			extReader := uper.NewReader(bytes.NewReader(extBytes))
+			extReader := aper.NewReader(bytes.NewReader(extBytes))
 
 			TotalNumberOfRA_PreamblesPresent, err := extReader.ReadBool()
 			if err != nil {
@@ -112,7 +112,7 @@ func (ie *CFRA) Decode(r *uper.UperReader) error {
 			// decode TotalNumberOfRA_Preambles optional
 			if TotalNumberOfRA_PreamblesPresent {
 				var tmp_int_TotalNumberOfRA_Preambles int64
-				if tmp_int_TotalNumberOfRA_Preambles, err = extReader.ReadInteger(&uper.Constraint{Lb: 1, Ub: 63}, false); err != nil {
+				if tmp_int_TotalNumberOfRA_Preambles, err = extReader.ReadInteger(&aper.Constraint{Lb: 1, Ub: 63}, false); err != nil {
 					return utils.WrapError("Decode TotalNumberOfRA_Preambles", err)
 				}
 				ie.TotalNumberOfRA_Preambles = &tmp_int_TotalNumberOfRA_Preambles

@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -13,7 +13,7 @@ type SSB_MTC_AdditionalPCI_r17 struct {
 	Ss_PBCH_BlockPower_r17   int64                                              `lb:-60,ub:50,madatory`
 }
 
-func (ie *SSB_MTC_AdditionalPCI_r17) Encode(w *uper.UperWriter) error {
+func (ie *SSB_MTC_AdditionalPCI_r17) Encode(w *aper.AperWriter) error {
 	var err error
 	if err = ie.AdditionalPCIIndex_r17.Encode(w); err != nil {
 		return utils.WrapError("Encode AdditionalPCIIndex_r17", err)
@@ -27,13 +27,13 @@ func (ie *SSB_MTC_AdditionalPCI_r17) Encode(w *uper.UperWriter) error {
 	if err = ie.Ssb_PositionsInBurst_r17.Encode(w); err != nil {
 		return utils.WrapError("Encode Ssb_PositionsInBurst_r17", err)
 	}
-	if err = w.WriteInteger(ie.Ss_PBCH_BlockPower_r17, &uper.Constraint{Lb: -60, Ub: 50}, false); err != nil {
+	if err = w.WriteInteger(ie.Ss_PBCH_BlockPower_r17, &aper.Constraint{Lb: -60, Ub: 50}, false); err != nil {
 		return utils.WrapError("WriteInteger Ss_PBCH_BlockPower_r17", err)
 	}
 	return nil
 }
 
-func (ie *SSB_MTC_AdditionalPCI_r17) Decode(r *uper.UperReader) error {
+func (ie *SSB_MTC_AdditionalPCI_r17) Decode(r *aper.AperReader) error {
 	var err error
 	if err = ie.AdditionalPCIIndex_r17.Decode(r); err != nil {
 		return utils.WrapError("Decode AdditionalPCIIndex_r17", err)
@@ -48,7 +48,7 @@ func (ie *SSB_MTC_AdditionalPCI_r17) Decode(r *uper.UperReader) error {
 		return utils.WrapError("Decode Ssb_PositionsInBurst_r17", err)
 	}
 	var tmp_int_Ss_PBCH_BlockPower_r17 int64
-	if tmp_int_Ss_PBCH_BlockPower_r17, err = r.ReadInteger(&uper.Constraint{Lb: -60, Ub: 50}, false); err != nil {
+	if tmp_int_Ss_PBCH_BlockPower_r17, err = r.ReadInteger(&aper.Constraint{Lb: -60, Ub: 50}, false); err != nil {
 		return utils.WrapError("ReadInteger Ss_PBCH_BlockPower_r17", err)
 	}
 	ie.Ss_PBCH_BlockPower_r17 = tmp_int_Ss_PBCH_BlockPower_r17

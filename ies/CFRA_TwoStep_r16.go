@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -12,7 +12,7 @@ type CFRA_TwoStep_r16 struct {
 	ResourcesTwoStep_r16   CFRA_TwoStep_r16_resourcesTwoStep_r16    `lb:1,ub:maxRA_SSB_Resources,madatory`
 }
 
-func (ie *CFRA_TwoStep_r16) Encode(w *uper.UperWriter) error {
+func (ie *CFRA_TwoStep_r16) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.OccasionsTwoStepRA_r16 != nil, ie.MsgA_TransMax_r16 != nil}
 	for _, bit := range preambleBits {
@@ -39,7 +39,7 @@ func (ie *CFRA_TwoStep_r16) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *CFRA_TwoStep_r16) Decode(r *uper.UperReader) error {
+func (ie *CFRA_TwoStep_r16) Decode(r *aper.AperReader) error {
 	var err error
 	var OccasionsTwoStepRA_r16Present bool
 	if OccasionsTwoStepRA_r16Present, err = r.ReadBool(); err != nil {

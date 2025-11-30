@@ -3,7 +3,7 @@ package ies
 import (
 	"bytes"
 
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -32,7 +32,7 @@ type FeatureSets struct {
 	FeatureSetsDownlinkPerCC_v1730 []FeatureSetDownlinkPerCC_v1730 `lb:1,ub:maxPerCC_FeatureSets,optional,ext-8`
 }
 
-func (ie *FeatureSets) Encode(w *uper.UperWriter) error {
+func (ie *FeatureSets) Encode(w *aper.AperWriter) error {
 	var err error
 	hasExtensions := len(ie.FeatureSetsDownlink_v1540) > 0 || len(ie.FeatureSetsUplink_v1540) > 0 || len(ie.FeatureSetsUplinkPerCC_v1540) > 0 || len(ie.FeatureSetsDownlink_v15a0) > 0 || len(ie.FeatureSetsDownlink_v1610) > 0 || len(ie.FeatureSetsUplink_v1610) > 0 || len(ie.FeatureSetDownlinkPerCC_v1620) > 0 || len(ie.FeatureSetsUplink_v1630) > 0 || len(ie.FeatureSetsUplink_v1640) > 0 || len(ie.FeatureSetsDownlink_v1700) > 0 || len(ie.FeatureSetsDownlinkPerCC_v1700) > 0 || len(ie.FeatureSetsUplink_v1710) > 0 || len(ie.FeatureSetsUplinkPerCC_v1700) > 0 || len(ie.FeatureSetsDownlink_v1720) > 0 || len(ie.FeatureSetsDownlinkPerCC_v1720) > 0 || len(ie.FeatureSetsUplink_v1720) > 0 || len(ie.FeatureSetsDownlink_v1730) > 0 || len(ie.FeatureSetsDownlinkPerCC_v1730) > 0
 	preambleBits := []bool{hasExtensions, len(ie.FeatureSetsDownlink) > 0, len(ie.FeatureSetsDownlinkPerCC) > 0, len(ie.FeatureSetsUplink) > 0, len(ie.FeatureSetsUplinkPerCC) > 0}
@@ -42,7 +42,7 @@ func (ie *FeatureSets) Encode(w *uper.UperWriter) error {
 		}
 	}
 	if len(ie.FeatureSetsDownlink) > 0 {
-		tmp_FeatureSetsDownlink := utils.NewSequence[*FeatureSetDownlink]([]*FeatureSetDownlink{}, uper.Constraint{Lb: 1, Ub: maxDownlinkFeatureSets}, false)
+		tmp_FeatureSetsDownlink := utils.NewSequence[*FeatureSetDownlink]([]*FeatureSetDownlink{}, aper.Constraint{Lb: 1, Ub: maxDownlinkFeatureSets}, false)
 		for _, i := range ie.FeatureSetsDownlink {
 			tmp_FeatureSetsDownlink.Value = append(tmp_FeatureSetsDownlink.Value, &i)
 		}
@@ -51,7 +51,7 @@ func (ie *FeatureSets) Encode(w *uper.UperWriter) error {
 		}
 	}
 	if len(ie.FeatureSetsDownlinkPerCC) > 0 {
-		tmp_FeatureSetsDownlinkPerCC := utils.NewSequence[*FeatureSetDownlinkPerCC]([]*FeatureSetDownlinkPerCC{}, uper.Constraint{Lb: 1, Ub: maxPerCC_FeatureSets}, false)
+		tmp_FeatureSetsDownlinkPerCC := utils.NewSequence[*FeatureSetDownlinkPerCC]([]*FeatureSetDownlinkPerCC{}, aper.Constraint{Lb: 1, Ub: maxPerCC_FeatureSets}, false)
 		for _, i := range ie.FeatureSetsDownlinkPerCC {
 			tmp_FeatureSetsDownlinkPerCC.Value = append(tmp_FeatureSetsDownlinkPerCC.Value, &i)
 		}
@@ -60,7 +60,7 @@ func (ie *FeatureSets) Encode(w *uper.UperWriter) error {
 		}
 	}
 	if len(ie.FeatureSetsUplink) > 0 {
-		tmp_FeatureSetsUplink := utils.NewSequence[*FeatureSetUplink]([]*FeatureSetUplink{}, uper.Constraint{Lb: 1, Ub: maxUplinkFeatureSets}, false)
+		tmp_FeatureSetsUplink := utils.NewSequence[*FeatureSetUplink]([]*FeatureSetUplink{}, aper.Constraint{Lb: 1, Ub: maxUplinkFeatureSets}, false)
 		for _, i := range ie.FeatureSetsUplink {
 			tmp_FeatureSetsUplink.Value = append(tmp_FeatureSetsUplink.Value, &i)
 		}
@@ -69,7 +69,7 @@ func (ie *FeatureSets) Encode(w *uper.UperWriter) error {
 		}
 	}
 	if len(ie.FeatureSetsUplinkPerCC) > 0 {
-		tmp_FeatureSetsUplinkPerCC := utils.NewSequence[*FeatureSetUplinkPerCC]([]*FeatureSetUplinkPerCC{}, uper.Constraint{Lb: 1, Ub: maxPerCC_FeatureSets}, false)
+		tmp_FeatureSetsUplinkPerCC := utils.NewSequence[*FeatureSetUplinkPerCC]([]*FeatureSetUplinkPerCC{}, aper.Constraint{Lb: 1, Ub: maxPerCC_FeatureSets}, false)
 		for _, i := range ie.FeatureSetsUplinkPerCC {
 			tmp_FeatureSetsUplinkPerCC.Value = append(tmp_FeatureSetsUplinkPerCC.Value, &i)
 		}
@@ -87,7 +87,7 @@ func (ie *FeatureSets) Encode(w *uper.UperWriter) error {
 		// encode extension group 1
 		if extBitmap[0] {
 			extBuf := new(bytes.Buffer)
-			extWriter := uper.NewWriter(extBuf)
+			extWriter := aper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 1
 			optionals_ext_1 := []bool{len(ie.FeatureSetsDownlink_v1540) > 0, len(ie.FeatureSetsUplink_v1540) > 0, len(ie.FeatureSetsUplinkPerCC_v1540) > 0}
@@ -99,7 +99,7 @@ func (ie *FeatureSets) Encode(w *uper.UperWriter) error {
 
 			// encode FeatureSetsDownlink_v1540 optional
 			if len(ie.FeatureSetsDownlink_v1540) > 0 {
-				tmp_FeatureSetsDownlink_v1540 := utils.NewSequence[*FeatureSetDownlink_v1540]([]*FeatureSetDownlink_v1540{}, uper.Constraint{Lb: 1, Ub: maxDownlinkFeatureSets}, false)
+				tmp_FeatureSetsDownlink_v1540 := utils.NewSequence[*FeatureSetDownlink_v1540]([]*FeatureSetDownlink_v1540{}, aper.Constraint{Lb: 1, Ub: maxDownlinkFeatureSets}, false)
 				for _, i := range ie.FeatureSetsDownlink_v1540 {
 					tmp_FeatureSetsDownlink_v1540.Value = append(tmp_FeatureSetsDownlink_v1540.Value, &i)
 				}
@@ -109,7 +109,7 @@ func (ie *FeatureSets) Encode(w *uper.UperWriter) error {
 			}
 			// encode FeatureSetsUplink_v1540 optional
 			if len(ie.FeatureSetsUplink_v1540) > 0 {
-				tmp_FeatureSetsUplink_v1540 := utils.NewSequence[*FeatureSetUplink_v1540]([]*FeatureSetUplink_v1540{}, uper.Constraint{Lb: 1, Ub: maxUplinkFeatureSets}, false)
+				tmp_FeatureSetsUplink_v1540 := utils.NewSequence[*FeatureSetUplink_v1540]([]*FeatureSetUplink_v1540{}, aper.Constraint{Lb: 1, Ub: maxUplinkFeatureSets}, false)
 				for _, i := range ie.FeatureSetsUplink_v1540 {
 					tmp_FeatureSetsUplink_v1540.Value = append(tmp_FeatureSetsUplink_v1540.Value, &i)
 				}
@@ -119,7 +119,7 @@ func (ie *FeatureSets) Encode(w *uper.UperWriter) error {
 			}
 			// encode FeatureSetsUplinkPerCC_v1540 optional
 			if len(ie.FeatureSetsUplinkPerCC_v1540) > 0 {
-				tmp_FeatureSetsUplinkPerCC_v1540 := utils.NewSequence[*FeatureSetUplinkPerCC_v1540]([]*FeatureSetUplinkPerCC_v1540{}, uper.Constraint{Lb: 1, Ub: maxPerCC_FeatureSets}, false)
+				tmp_FeatureSetsUplinkPerCC_v1540 := utils.NewSequence[*FeatureSetUplinkPerCC_v1540]([]*FeatureSetUplinkPerCC_v1540{}, aper.Constraint{Lb: 1, Ub: maxPerCC_FeatureSets}, false)
 				for _, i := range ie.FeatureSetsUplinkPerCC_v1540 {
 					tmp_FeatureSetsUplinkPerCC_v1540.Value = append(tmp_FeatureSetsUplinkPerCC_v1540.Value, &i)
 				}
@@ -140,7 +140,7 @@ func (ie *FeatureSets) Encode(w *uper.UperWriter) error {
 		// encode extension group 2
 		if extBitmap[1] {
 			extBuf := new(bytes.Buffer)
-			extWriter := uper.NewWriter(extBuf)
+			extWriter := aper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 2
 			optionals_ext_2 := []bool{len(ie.FeatureSetsDownlink_v15a0) > 0}
@@ -152,7 +152,7 @@ func (ie *FeatureSets) Encode(w *uper.UperWriter) error {
 
 			// encode FeatureSetsDownlink_v15a0 optional
 			if len(ie.FeatureSetsDownlink_v15a0) > 0 {
-				tmp_FeatureSetsDownlink_v15a0 := utils.NewSequence[*FeatureSetDownlink_v15a0]([]*FeatureSetDownlink_v15a0{}, uper.Constraint{Lb: 1, Ub: maxDownlinkFeatureSets}, false)
+				tmp_FeatureSetsDownlink_v15a0 := utils.NewSequence[*FeatureSetDownlink_v15a0]([]*FeatureSetDownlink_v15a0{}, aper.Constraint{Lb: 1, Ub: maxDownlinkFeatureSets}, false)
 				for _, i := range ie.FeatureSetsDownlink_v15a0 {
 					tmp_FeatureSetsDownlink_v15a0.Value = append(tmp_FeatureSetsDownlink_v15a0.Value, &i)
 				}
@@ -173,7 +173,7 @@ func (ie *FeatureSets) Encode(w *uper.UperWriter) error {
 		// encode extension group 3
 		if extBitmap[2] {
 			extBuf := new(bytes.Buffer)
-			extWriter := uper.NewWriter(extBuf)
+			extWriter := aper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 3
 			optionals_ext_3 := []bool{len(ie.FeatureSetsDownlink_v1610) > 0, len(ie.FeatureSetsUplink_v1610) > 0, len(ie.FeatureSetDownlinkPerCC_v1620) > 0}
@@ -185,7 +185,7 @@ func (ie *FeatureSets) Encode(w *uper.UperWriter) error {
 
 			// encode FeatureSetsDownlink_v1610 optional
 			if len(ie.FeatureSetsDownlink_v1610) > 0 {
-				tmp_FeatureSetsDownlink_v1610 := utils.NewSequence[*FeatureSetDownlink_v1610]([]*FeatureSetDownlink_v1610{}, uper.Constraint{Lb: 1, Ub: maxDownlinkFeatureSets}, false)
+				tmp_FeatureSetsDownlink_v1610 := utils.NewSequence[*FeatureSetDownlink_v1610]([]*FeatureSetDownlink_v1610{}, aper.Constraint{Lb: 1, Ub: maxDownlinkFeatureSets}, false)
 				for _, i := range ie.FeatureSetsDownlink_v1610 {
 					tmp_FeatureSetsDownlink_v1610.Value = append(tmp_FeatureSetsDownlink_v1610.Value, &i)
 				}
@@ -195,7 +195,7 @@ func (ie *FeatureSets) Encode(w *uper.UperWriter) error {
 			}
 			// encode FeatureSetsUplink_v1610 optional
 			if len(ie.FeatureSetsUplink_v1610) > 0 {
-				tmp_FeatureSetsUplink_v1610 := utils.NewSequence[*FeatureSetUplink_v1610]([]*FeatureSetUplink_v1610{}, uper.Constraint{Lb: 1, Ub: maxUplinkFeatureSets}, false)
+				tmp_FeatureSetsUplink_v1610 := utils.NewSequence[*FeatureSetUplink_v1610]([]*FeatureSetUplink_v1610{}, aper.Constraint{Lb: 1, Ub: maxUplinkFeatureSets}, false)
 				for _, i := range ie.FeatureSetsUplink_v1610 {
 					tmp_FeatureSetsUplink_v1610.Value = append(tmp_FeatureSetsUplink_v1610.Value, &i)
 				}
@@ -205,7 +205,7 @@ func (ie *FeatureSets) Encode(w *uper.UperWriter) error {
 			}
 			// encode FeatureSetDownlinkPerCC_v1620 optional
 			if len(ie.FeatureSetDownlinkPerCC_v1620) > 0 {
-				tmp_FeatureSetDownlinkPerCC_v1620 := utils.NewSequence[*FeatureSetDownlinkPerCC_v1620]([]*FeatureSetDownlinkPerCC_v1620{}, uper.Constraint{Lb: 1, Ub: maxPerCC_FeatureSets}, false)
+				tmp_FeatureSetDownlinkPerCC_v1620 := utils.NewSequence[*FeatureSetDownlinkPerCC_v1620]([]*FeatureSetDownlinkPerCC_v1620{}, aper.Constraint{Lb: 1, Ub: maxPerCC_FeatureSets}, false)
 				for _, i := range ie.FeatureSetDownlinkPerCC_v1620 {
 					tmp_FeatureSetDownlinkPerCC_v1620.Value = append(tmp_FeatureSetDownlinkPerCC_v1620.Value, &i)
 				}
@@ -226,7 +226,7 @@ func (ie *FeatureSets) Encode(w *uper.UperWriter) error {
 		// encode extension group 4
 		if extBitmap[3] {
 			extBuf := new(bytes.Buffer)
-			extWriter := uper.NewWriter(extBuf)
+			extWriter := aper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 4
 			optionals_ext_4 := []bool{len(ie.FeatureSetsUplink_v1630) > 0}
@@ -238,7 +238,7 @@ func (ie *FeatureSets) Encode(w *uper.UperWriter) error {
 
 			// encode FeatureSetsUplink_v1630 optional
 			if len(ie.FeatureSetsUplink_v1630) > 0 {
-				tmp_FeatureSetsUplink_v1630 := utils.NewSequence[*FeatureSetUplink_v1630]([]*FeatureSetUplink_v1630{}, uper.Constraint{Lb: 1, Ub: maxUplinkFeatureSets}, false)
+				tmp_FeatureSetsUplink_v1630 := utils.NewSequence[*FeatureSetUplink_v1630]([]*FeatureSetUplink_v1630{}, aper.Constraint{Lb: 1, Ub: maxUplinkFeatureSets}, false)
 				for _, i := range ie.FeatureSetsUplink_v1630 {
 					tmp_FeatureSetsUplink_v1630.Value = append(tmp_FeatureSetsUplink_v1630.Value, &i)
 				}
@@ -259,7 +259,7 @@ func (ie *FeatureSets) Encode(w *uper.UperWriter) error {
 		// encode extension group 5
 		if extBitmap[4] {
 			extBuf := new(bytes.Buffer)
-			extWriter := uper.NewWriter(extBuf)
+			extWriter := aper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 5
 			optionals_ext_5 := []bool{len(ie.FeatureSetsUplink_v1640) > 0}
@@ -271,7 +271,7 @@ func (ie *FeatureSets) Encode(w *uper.UperWriter) error {
 
 			// encode FeatureSetsUplink_v1640 optional
 			if len(ie.FeatureSetsUplink_v1640) > 0 {
-				tmp_FeatureSetsUplink_v1640 := utils.NewSequence[*FeatureSetUplink_v1640]([]*FeatureSetUplink_v1640{}, uper.Constraint{Lb: 1, Ub: maxUplinkFeatureSets}, false)
+				tmp_FeatureSetsUplink_v1640 := utils.NewSequence[*FeatureSetUplink_v1640]([]*FeatureSetUplink_v1640{}, aper.Constraint{Lb: 1, Ub: maxUplinkFeatureSets}, false)
 				for _, i := range ie.FeatureSetsUplink_v1640 {
 					tmp_FeatureSetsUplink_v1640.Value = append(tmp_FeatureSetsUplink_v1640.Value, &i)
 				}
@@ -292,7 +292,7 @@ func (ie *FeatureSets) Encode(w *uper.UperWriter) error {
 		// encode extension group 6
 		if extBitmap[5] {
 			extBuf := new(bytes.Buffer)
-			extWriter := uper.NewWriter(extBuf)
+			extWriter := aper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 6
 			optionals_ext_6 := []bool{len(ie.FeatureSetsDownlink_v1700) > 0, len(ie.FeatureSetsDownlinkPerCC_v1700) > 0, len(ie.FeatureSetsUplink_v1710) > 0, len(ie.FeatureSetsUplinkPerCC_v1700) > 0}
@@ -304,7 +304,7 @@ func (ie *FeatureSets) Encode(w *uper.UperWriter) error {
 
 			// encode FeatureSetsDownlink_v1700 optional
 			if len(ie.FeatureSetsDownlink_v1700) > 0 {
-				tmp_FeatureSetsDownlink_v1700 := utils.NewSequence[*FeatureSetDownlink_v1700]([]*FeatureSetDownlink_v1700{}, uper.Constraint{Lb: 1, Ub: maxDownlinkFeatureSets}, false)
+				tmp_FeatureSetsDownlink_v1700 := utils.NewSequence[*FeatureSetDownlink_v1700]([]*FeatureSetDownlink_v1700{}, aper.Constraint{Lb: 1, Ub: maxDownlinkFeatureSets}, false)
 				for _, i := range ie.FeatureSetsDownlink_v1700 {
 					tmp_FeatureSetsDownlink_v1700.Value = append(tmp_FeatureSetsDownlink_v1700.Value, &i)
 				}
@@ -314,7 +314,7 @@ func (ie *FeatureSets) Encode(w *uper.UperWriter) error {
 			}
 			// encode FeatureSetsDownlinkPerCC_v1700 optional
 			if len(ie.FeatureSetsDownlinkPerCC_v1700) > 0 {
-				tmp_FeatureSetsDownlinkPerCC_v1700 := utils.NewSequence[*FeatureSetDownlinkPerCC_v1700]([]*FeatureSetDownlinkPerCC_v1700{}, uper.Constraint{Lb: 1, Ub: maxPerCC_FeatureSets}, false)
+				tmp_FeatureSetsDownlinkPerCC_v1700 := utils.NewSequence[*FeatureSetDownlinkPerCC_v1700]([]*FeatureSetDownlinkPerCC_v1700{}, aper.Constraint{Lb: 1, Ub: maxPerCC_FeatureSets}, false)
 				for _, i := range ie.FeatureSetsDownlinkPerCC_v1700 {
 					tmp_FeatureSetsDownlinkPerCC_v1700.Value = append(tmp_FeatureSetsDownlinkPerCC_v1700.Value, &i)
 				}
@@ -324,7 +324,7 @@ func (ie *FeatureSets) Encode(w *uper.UperWriter) error {
 			}
 			// encode FeatureSetsUplink_v1710 optional
 			if len(ie.FeatureSetsUplink_v1710) > 0 {
-				tmp_FeatureSetsUplink_v1710 := utils.NewSequence[*FeatureSetUplink_v1710]([]*FeatureSetUplink_v1710{}, uper.Constraint{Lb: 1, Ub: maxUplinkFeatureSets}, false)
+				tmp_FeatureSetsUplink_v1710 := utils.NewSequence[*FeatureSetUplink_v1710]([]*FeatureSetUplink_v1710{}, aper.Constraint{Lb: 1, Ub: maxUplinkFeatureSets}, false)
 				for _, i := range ie.FeatureSetsUplink_v1710 {
 					tmp_FeatureSetsUplink_v1710.Value = append(tmp_FeatureSetsUplink_v1710.Value, &i)
 				}
@@ -334,7 +334,7 @@ func (ie *FeatureSets) Encode(w *uper.UperWriter) error {
 			}
 			// encode FeatureSetsUplinkPerCC_v1700 optional
 			if len(ie.FeatureSetsUplinkPerCC_v1700) > 0 {
-				tmp_FeatureSetsUplinkPerCC_v1700 := utils.NewSequence[*FeatureSetUplinkPerCC_v1700]([]*FeatureSetUplinkPerCC_v1700{}, uper.Constraint{Lb: 1, Ub: maxPerCC_FeatureSets}, false)
+				tmp_FeatureSetsUplinkPerCC_v1700 := utils.NewSequence[*FeatureSetUplinkPerCC_v1700]([]*FeatureSetUplinkPerCC_v1700{}, aper.Constraint{Lb: 1, Ub: maxPerCC_FeatureSets}, false)
 				for _, i := range ie.FeatureSetsUplinkPerCC_v1700 {
 					tmp_FeatureSetsUplinkPerCC_v1700.Value = append(tmp_FeatureSetsUplinkPerCC_v1700.Value, &i)
 				}
@@ -355,7 +355,7 @@ func (ie *FeatureSets) Encode(w *uper.UperWriter) error {
 		// encode extension group 7
 		if extBitmap[6] {
 			extBuf := new(bytes.Buffer)
-			extWriter := uper.NewWriter(extBuf)
+			extWriter := aper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 7
 			optionals_ext_7 := []bool{len(ie.FeatureSetsDownlink_v1720) > 0, len(ie.FeatureSetsDownlinkPerCC_v1720) > 0, len(ie.FeatureSetsUplink_v1720) > 0}
@@ -367,7 +367,7 @@ func (ie *FeatureSets) Encode(w *uper.UperWriter) error {
 
 			// encode FeatureSetsDownlink_v1720 optional
 			if len(ie.FeatureSetsDownlink_v1720) > 0 {
-				tmp_FeatureSetsDownlink_v1720 := utils.NewSequence[*FeatureSetDownlink_v1720]([]*FeatureSetDownlink_v1720{}, uper.Constraint{Lb: 1, Ub: maxDownlinkFeatureSets}, false)
+				tmp_FeatureSetsDownlink_v1720 := utils.NewSequence[*FeatureSetDownlink_v1720]([]*FeatureSetDownlink_v1720{}, aper.Constraint{Lb: 1, Ub: maxDownlinkFeatureSets}, false)
 				for _, i := range ie.FeatureSetsDownlink_v1720 {
 					tmp_FeatureSetsDownlink_v1720.Value = append(tmp_FeatureSetsDownlink_v1720.Value, &i)
 				}
@@ -377,7 +377,7 @@ func (ie *FeatureSets) Encode(w *uper.UperWriter) error {
 			}
 			// encode FeatureSetsDownlinkPerCC_v1720 optional
 			if len(ie.FeatureSetsDownlinkPerCC_v1720) > 0 {
-				tmp_FeatureSetsDownlinkPerCC_v1720 := utils.NewSequence[*FeatureSetDownlinkPerCC_v1720]([]*FeatureSetDownlinkPerCC_v1720{}, uper.Constraint{Lb: 1, Ub: maxPerCC_FeatureSets}, false)
+				tmp_FeatureSetsDownlinkPerCC_v1720 := utils.NewSequence[*FeatureSetDownlinkPerCC_v1720]([]*FeatureSetDownlinkPerCC_v1720{}, aper.Constraint{Lb: 1, Ub: maxPerCC_FeatureSets}, false)
 				for _, i := range ie.FeatureSetsDownlinkPerCC_v1720 {
 					tmp_FeatureSetsDownlinkPerCC_v1720.Value = append(tmp_FeatureSetsDownlinkPerCC_v1720.Value, &i)
 				}
@@ -387,7 +387,7 @@ func (ie *FeatureSets) Encode(w *uper.UperWriter) error {
 			}
 			// encode FeatureSetsUplink_v1720 optional
 			if len(ie.FeatureSetsUplink_v1720) > 0 {
-				tmp_FeatureSetsUplink_v1720 := utils.NewSequence[*FeatureSetUplink_v1720]([]*FeatureSetUplink_v1720{}, uper.Constraint{Lb: 1, Ub: maxUplinkFeatureSets}, false)
+				tmp_FeatureSetsUplink_v1720 := utils.NewSequence[*FeatureSetUplink_v1720]([]*FeatureSetUplink_v1720{}, aper.Constraint{Lb: 1, Ub: maxUplinkFeatureSets}, false)
 				for _, i := range ie.FeatureSetsUplink_v1720 {
 					tmp_FeatureSetsUplink_v1720.Value = append(tmp_FeatureSetsUplink_v1720.Value, &i)
 				}
@@ -408,7 +408,7 @@ func (ie *FeatureSets) Encode(w *uper.UperWriter) error {
 		// encode extension group 8
 		if extBitmap[7] {
 			extBuf := new(bytes.Buffer)
-			extWriter := uper.NewWriter(extBuf)
+			extWriter := aper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 8
 			optionals_ext_8 := []bool{len(ie.FeatureSetsDownlink_v1730) > 0, len(ie.FeatureSetsDownlinkPerCC_v1730) > 0}
@@ -420,7 +420,7 @@ func (ie *FeatureSets) Encode(w *uper.UperWriter) error {
 
 			// encode FeatureSetsDownlink_v1730 optional
 			if len(ie.FeatureSetsDownlink_v1730) > 0 {
-				tmp_FeatureSetsDownlink_v1730 := utils.NewSequence[*FeatureSetDownlink_v1730]([]*FeatureSetDownlink_v1730{}, uper.Constraint{Lb: 1, Ub: maxDownlinkFeatureSets}, false)
+				tmp_FeatureSetsDownlink_v1730 := utils.NewSequence[*FeatureSetDownlink_v1730]([]*FeatureSetDownlink_v1730{}, aper.Constraint{Lb: 1, Ub: maxDownlinkFeatureSets}, false)
 				for _, i := range ie.FeatureSetsDownlink_v1730 {
 					tmp_FeatureSetsDownlink_v1730.Value = append(tmp_FeatureSetsDownlink_v1730.Value, &i)
 				}
@@ -430,7 +430,7 @@ func (ie *FeatureSets) Encode(w *uper.UperWriter) error {
 			}
 			// encode FeatureSetsDownlinkPerCC_v1730 optional
 			if len(ie.FeatureSetsDownlinkPerCC_v1730) > 0 {
-				tmp_FeatureSetsDownlinkPerCC_v1730 := utils.NewSequence[*FeatureSetDownlinkPerCC_v1730]([]*FeatureSetDownlinkPerCC_v1730{}, uper.Constraint{Lb: 1, Ub: maxPerCC_FeatureSets}, false)
+				tmp_FeatureSetsDownlinkPerCC_v1730 := utils.NewSequence[*FeatureSetDownlinkPerCC_v1730]([]*FeatureSetDownlinkPerCC_v1730{}, aper.Constraint{Lb: 1, Ub: maxPerCC_FeatureSets}, false)
 				for _, i := range ie.FeatureSetsDownlinkPerCC_v1730 {
 					tmp_FeatureSetsDownlinkPerCC_v1730.Value = append(tmp_FeatureSetsDownlinkPerCC_v1730.Value, &i)
 				}
@@ -451,7 +451,7 @@ func (ie *FeatureSets) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *FeatureSets) Decode(r *uper.UperReader) error {
+func (ie *FeatureSets) Decode(r *aper.AperReader) error {
 	var err error
 	var extensionBit bool
 	if extensionBit, err = r.ReadBool(); err != nil {
@@ -474,7 +474,7 @@ func (ie *FeatureSets) Decode(r *uper.UperReader) error {
 		return err
 	}
 	if FeatureSetsDownlinkPresent {
-		tmp_FeatureSetsDownlink := utils.NewSequence[*FeatureSetDownlink]([]*FeatureSetDownlink{}, uper.Constraint{Lb: 1, Ub: maxDownlinkFeatureSets}, false)
+		tmp_FeatureSetsDownlink := utils.NewSequence[*FeatureSetDownlink]([]*FeatureSetDownlink{}, aper.Constraint{Lb: 1, Ub: maxDownlinkFeatureSets}, false)
 		fn_FeatureSetsDownlink := func() *FeatureSetDownlink {
 			return new(FeatureSetDownlink)
 		}
@@ -487,7 +487,7 @@ func (ie *FeatureSets) Decode(r *uper.UperReader) error {
 		}
 	}
 	if FeatureSetsDownlinkPerCCPresent {
-		tmp_FeatureSetsDownlinkPerCC := utils.NewSequence[*FeatureSetDownlinkPerCC]([]*FeatureSetDownlinkPerCC{}, uper.Constraint{Lb: 1, Ub: maxPerCC_FeatureSets}, false)
+		tmp_FeatureSetsDownlinkPerCC := utils.NewSequence[*FeatureSetDownlinkPerCC]([]*FeatureSetDownlinkPerCC{}, aper.Constraint{Lb: 1, Ub: maxPerCC_FeatureSets}, false)
 		fn_FeatureSetsDownlinkPerCC := func() *FeatureSetDownlinkPerCC {
 			return new(FeatureSetDownlinkPerCC)
 		}
@@ -500,7 +500,7 @@ func (ie *FeatureSets) Decode(r *uper.UperReader) error {
 		}
 	}
 	if FeatureSetsUplinkPresent {
-		tmp_FeatureSetsUplink := utils.NewSequence[*FeatureSetUplink]([]*FeatureSetUplink{}, uper.Constraint{Lb: 1, Ub: maxUplinkFeatureSets}, false)
+		tmp_FeatureSetsUplink := utils.NewSequence[*FeatureSetUplink]([]*FeatureSetUplink{}, aper.Constraint{Lb: 1, Ub: maxUplinkFeatureSets}, false)
 		fn_FeatureSetsUplink := func() *FeatureSetUplink {
 			return new(FeatureSetUplink)
 		}
@@ -513,7 +513,7 @@ func (ie *FeatureSets) Decode(r *uper.UperReader) error {
 		}
 	}
 	if FeatureSetsUplinkPerCCPresent {
-		tmp_FeatureSetsUplinkPerCC := utils.NewSequence[*FeatureSetUplinkPerCC]([]*FeatureSetUplinkPerCC{}, uper.Constraint{Lb: 1, Ub: maxPerCC_FeatureSets}, false)
+		tmp_FeatureSetsUplinkPerCC := utils.NewSequence[*FeatureSetUplinkPerCC]([]*FeatureSetUplinkPerCC{}, aper.Constraint{Lb: 1, Ub: maxPerCC_FeatureSets}, false)
 		fn_FeatureSetsUplinkPerCC := func() *FeatureSetUplinkPerCC {
 			return new(FeatureSetUplinkPerCC)
 		}
@@ -540,7 +540,7 @@ func (ie *FeatureSets) Decode(r *uper.UperReader) error {
 				return err
 			}
 
-			extReader := uper.NewReader(bytes.NewReader(extBytes))
+			extReader := aper.NewReader(bytes.NewReader(extBytes))
 
 			FeatureSetsDownlink_v1540Present, err := extReader.ReadBool()
 			if err != nil {
@@ -556,7 +556,7 @@ func (ie *FeatureSets) Decode(r *uper.UperReader) error {
 			}
 			// decode FeatureSetsDownlink_v1540 optional
 			if FeatureSetsDownlink_v1540Present {
-				tmp_FeatureSetsDownlink_v1540 := utils.NewSequence[*FeatureSetDownlink_v1540]([]*FeatureSetDownlink_v1540{}, uper.Constraint{Lb: 1, Ub: maxDownlinkFeatureSets}, false)
+				tmp_FeatureSetsDownlink_v1540 := utils.NewSequence[*FeatureSetDownlink_v1540]([]*FeatureSetDownlink_v1540{}, aper.Constraint{Lb: 1, Ub: maxDownlinkFeatureSets}, false)
 				fn_FeatureSetsDownlink_v1540 := func() *FeatureSetDownlink_v1540 {
 					return new(FeatureSetDownlink_v1540)
 				}
@@ -570,7 +570,7 @@ func (ie *FeatureSets) Decode(r *uper.UperReader) error {
 			}
 			// decode FeatureSetsUplink_v1540 optional
 			if FeatureSetsUplink_v1540Present {
-				tmp_FeatureSetsUplink_v1540 := utils.NewSequence[*FeatureSetUplink_v1540]([]*FeatureSetUplink_v1540{}, uper.Constraint{Lb: 1, Ub: maxUplinkFeatureSets}, false)
+				tmp_FeatureSetsUplink_v1540 := utils.NewSequence[*FeatureSetUplink_v1540]([]*FeatureSetUplink_v1540{}, aper.Constraint{Lb: 1, Ub: maxUplinkFeatureSets}, false)
 				fn_FeatureSetsUplink_v1540 := func() *FeatureSetUplink_v1540 {
 					return new(FeatureSetUplink_v1540)
 				}
@@ -584,7 +584,7 @@ func (ie *FeatureSets) Decode(r *uper.UperReader) error {
 			}
 			// decode FeatureSetsUplinkPerCC_v1540 optional
 			if FeatureSetsUplinkPerCC_v1540Present {
-				tmp_FeatureSetsUplinkPerCC_v1540 := utils.NewSequence[*FeatureSetUplinkPerCC_v1540]([]*FeatureSetUplinkPerCC_v1540{}, uper.Constraint{Lb: 1, Ub: maxPerCC_FeatureSets}, false)
+				tmp_FeatureSetsUplinkPerCC_v1540 := utils.NewSequence[*FeatureSetUplinkPerCC_v1540]([]*FeatureSetUplinkPerCC_v1540{}, aper.Constraint{Lb: 1, Ub: maxPerCC_FeatureSets}, false)
 				fn_FeatureSetsUplinkPerCC_v1540 := func() *FeatureSetUplinkPerCC_v1540 {
 					return new(FeatureSetUplinkPerCC_v1540)
 				}
@@ -604,7 +604,7 @@ func (ie *FeatureSets) Decode(r *uper.UperReader) error {
 				return err
 			}
 
-			extReader := uper.NewReader(bytes.NewReader(extBytes))
+			extReader := aper.NewReader(bytes.NewReader(extBytes))
 
 			FeatureSetsDownlink_v15a0Present, err := extReader.ReadBool()
 			if err != nil {
@@ -612,7 +612,7 @@ func (ie *FeatureSets) Decode(r *uper.UperReader) error {
 			}
 			// decode FeatureSetsDownlink_v15a0 optional
 			if FeatureSetsDownlink_v15a0Present {
-				tmp_FeatureSetsDownlink_v15a0 := utils.NewSequence[*FeatureSetDownlink_v15a0]([]*FeatureSetDownlink_v15a0{}, uper.Constraint{Lb: 1, Ub: maxDownlinkFeatureSets}, false)
+				tmp_FeatureSetsDownlink_v15a0 := utils.NewSequence[*FeatureSetDownlink_v15a0]([]*FeatureSetDownlink_v15a0{}, aper.Constraint{Lb: 1, Ub: maxDownlinkFeatureSets}, false)
 				fn_FeatureSetsDownlink_v15a0 := func() *FeatureSetDownlink_v15a0 {
 					return new(FeatureSetDownlink_v15a0)
 				}
@@ -632,7 +632,7 @@ func (ie *FeatureSets) Decode(r *uper.UperReader) error {
 				return err
 			}
 
-			extReader := uper.NewReader(bytes.NewReader(extBytes))
+			extReader := aper.NewReader(bytes.NewReader(extBytes))
 
 			FeatureSetsDownlink_v1610Present, err := extReader.ReadBool()
 			if err != nil {
@@ -648,7 +648,7 @@ func (ie *FeatureSets) Decode(r *uper.UperReader) error {
 			}
 			// decode FeatureSetsDownlink_v1610 optional
 			if FeatureSetsDownlink_v1610Present {
-				tmp_FeatureSetsDownlink_v1610 := utils.NewSequence[*FeatureSetDownlink_v1610]([]*FeatureSetDownlink_v1610{}, uper.Constraint{Lb: 1, Ub: maxDownlinkFeatureSets}, false)
+				tmp_FeatureSetsDownlink_v1610 := utils.NewSequence[*FeatureSetDownlink_v1610]([]*FeatureSetDownlink_v1610{}, aper.Constraint{Lb: 1, Ub: maxDownlinkFeatureSets}, false)
 				fn_FeatureSetsDownlink_v1610 := func() *FeatureSetDownlink_v1610 {
 					return new(FeatureSetDownlink_v1610)
 				}
@@ -662,7 +662,7 @@ func (ie *FeatureSets) Decode(r *uper.UperReader) error {
 			}
 			// decode FeatureSetsUplink_v1610 optional
 			if FeatureSetsUplink_v1610Present {
-				tmp_FeatureSetsUplink_v1610 := utils.NewSequence[*FeatureSetUplink_v1610]([]*FeatureSetUplink_v1610{}, uper.Constraint{Lb: 1, Ub: maxUplinkFeatureSets}, false)
+				tmp_FeatureSetsUplink_v1610 := utils.NewSequence[*FeatureSetUplink_v1610]([]*FeatureSetUplink_v1610{}, aper.Constraint{Lb: 1, Ub: maxUplinkFeatureSets}, false)
 				fn_FeatureSetsUplink_v1610 := func() *FeatureSetUplink_v1610 {
 					return new(FeatureSetUplink_v1610)
 				}
@@ -676,7 +676,7 @@ func (ie *FeatureSets) Decode(r *uper.UperReader) error {
 			}
 			// decode FeatureSetDownlinkPerCC_v1620 optional
 			if FeatureSetDownlinkPerCC_v1620Present {
-				tmp_FeatureSetDownlinkPerCC_v1620 := utils.NewSequence[*FeatureSetDownlinkPerCC_v1620]([]*FeatureSetDownlinkPerCC_v1620{}, uper.Constraint{Lb: 1, Ub: maxPerCC_FeatureSets}, false)
+				tmp_FeatureSetDownlinkPerCC_v1620 := utils.NewSequence[*FeatureSetDownlinkPerCC_v1620]([]*FeatureSetDownlinkPerCC_v1620{}, aper.Constraint{Lb: 1, Ub: maxPerCC_FeatureSets}, false)
 				fn_FeatureSetDownlinkPerCC_v1620 := func() *FeatureSetDownlinkPerCC_v1620 {
 					return new(FeatureSetDownlinkPerCC_v1620)
 				}
@@ -696,7 +696,7 @@ func (ie *FeatureSets) Decode(r *uper.UperReader) error {
 				return err
 			}
 
-			extReader := uper.NewReader(bytes.NewReader(extBytes))
+			extReader := aper.NewReader(bytes.NewReader(extBytes))
 
 			FeatureSetsUplink_v1630Present, err := extReader.ReadBool()
 			if err != nil {
@@ -704,7 +704,7 @@ func (ie *FeatureSets) Decode(r *uper.UperReader) error {
 			}
 			// decode FeatureSetsUplink_v1630 optional
 			if FeatureSetsUplink_v1630Present {
-				tmp_FeatureSetsUplink_v1630 := utils.NewSequence[*FeatureSetUplink_v1630]([]*FeatureSetUplink_v1630{}, uper.Constraint{Lb: 1, Ub: maxUplinkFeatureSets}, false)
+				tmp_FeatureSetsUplink_v1630 := utils.NewSequence[*FeatureSetUplink_v1630]([]*FeatureSetUplink_v1630{}, aper.Constraint{Lb: 1, Ub: maxUplinkFeatureSets}, false)
 				fn_FeatureSetsUplink_v1630 := func() *FeatureSetUplink_v1630 {
 					return new(FeatureSetUplink_v1630)
 				}
@@ -724,7 +724,7 @@ func (ie *FeatureSets) Decode(r *uper.UperReader) error {
 				return err
 			}
 
-			extReader := uper.NewReader(bytes.NewReader(extBytes))
+			extReader := aper.NewReader(bytes.NewReader(extBytes))
 
 			FeatureSetsUplink_v1640Present, err := extReader.ReadBool()
 			if err != nil {
@@ -732,7 +732,7 @@ func (ie *FeatureSets) Decode(r *uper.UperReader) error {
 			}
 			// decode FeatureSetsUplink_v1640 optional
 			if FeatureSetsUplink_v1640Present {
-				tmp_FeatureSetsUplink_v1640 := utils.NewSequence[*FeatureSetUplink_v1640]([]*FeatureSetUplink_v1640{}, uper.Constraint{Lb: 1, Ub: maxUplinkFeatureSets}, false)
+				tmp_FeatureSetsUplink_v1640 := utils.NewSequence[*FeatureSetUplink_v1640]([]*FeatureSetUplink_v1640{}, aper.Constraint{Lb: 1, Ub: maxUplinkFeatureSets}, false)
 				fn_FeatureSetsUplink_v1640 := func() *FeatureSetUplink_v1640 {
 					return new(FeatureSetUplink_v1640)
 				}
@@ -752,7 +752,7 @@ func (ie *FeatureSets) Decode(r *uper.UperReader) error {
 				return err
 			}
 
-			extReader := uper.NewReader(bytes.NewReader(extBytes))
+			extReader := aper.NewReader(bytes.NewReader(extBytes))
 
 			FeatureSetsDownlink_v1700Present, err := extReader.ReadBool()
 			if err != nil {
@@ -772,7 +772,7 @@ func (ie *FeatureSets) Decode(r *uper.UperReader) error {
 			}
 			// decode FeatureSetsDownlink_v1700 optional
 			if FeatureSetsDownlink_v1700Present {
-				tmp_FeatureSetsDownlink_v1700 := utils.NewSequence[*FeatureSetDownlink_v1700]([]*FeatureSetDownlink_v1700{}, uper.Constraint{Lb: 1, Ub: maxDownlinkFeatureSets}, false)
+				tmp_FeatureSetsDownlink_v1700 := utils.NewSequence[*FeatureSetDownlink_v1700]([]*FeatureSetDownlink_v1700{}, aper.Constraint{Lb: 1, Ub: maxDownlinkFeatureSets}, false)
 				fn_FeatureSetsDownlink_v1700 := func() *FeatureSetDownlink_v1700 {
 					return new(FeatureSetDownlink_v1700)
 				}
@@ -786,7 +786,7 @@ func (ie *FeatureSets) Decode(r *uper.UperReader) error {
 			}
 			// decode FeatureSetsDownlinkPerCC_v1700 optional
 			if FeatureSetsDownlinkPerCC_v1700Present {
-				tmp_FeatureSetsDownlinkPerCC_v1700 := utils.NewSequence[*FeatureSetDownlinkPerCC_v1700]([]*FeatureSetDownlinkPerCC_v1700{}, uper.Constraint{Lb: 1, Ub: maxPerCC_FeatureSets}, false)
+				tmp_FeatureSetsDownlinkPerCC_v1700 := utils.NewSequence[*FeatureSetDownlinkPerCC_v1700]([]*FeatureSetDownlinkPerCC_v1700{}, aper.Constraint{Lb: 1, Ub: maxPerCC_FeatureSets}, false)
 				fn_FeatureSetsDownlinkPerCC_v1700 := func() *FeatureSetDownlinkPerCC_v1700 {
 					return new(FeatureSetDownlinkPerCC_v1700)
 				}
@@ -800,7 +800,7 @@ func (ie *FeatureSets) Decode(r *uper.UperReader) error {
 			}
 			// decode FeatureSetsUplink_v1710 optional
 			if FeatureSetsUplink_v1710Present {
-				tmp_FeatureSetsUplink_v1710 := utils.NewSequence[*FeatureSetUplink_v1710]([]*FeatureSetUplink_v1710{}, uper.Constraint{Lb: 1, Ub: maxUplinkFeatureSets}, false)
+				tmp_FeatureSetsUplink_v1710 := utils.NewSequence[*FeatureSetUplink_v1710]([]*FeatureSetUplink_v1710{}, aper.Constraint{Lb: 1, Ub: maxUplinkFeatureSets}, false)
 				fn_FeatureSetsUplink_v1710 := func() *FeatureSetUplink_v1710 {
 					return new(FeatureSetUplink_v1710)
 				}
@@ -814,7 +814,7 @@ func (ie *FeatureSets) Decode(r *uper.UperReader) error {
 			}
 			// decode FeatureSetsUplinkPerCC_v1700 optional
 			if FeatureSetsUplinkPerCC_v1700Present {
-				tmp_FeatureSetsUplinkPerCC_v1700 := utils.NewSequence[*FeatureSetUplinkPerCC_v1700]([]*FeatureSetUplinkPerCC_v1700{}, uper.Constraint{Lb: 1, Ub: maxPerCC_FeatureSets}, false)
+				tmp_FeatureSetsUplinkPerCC_v1700 := utils.NewSequence[*FeatureSetUplinkPerCC_v1700]([]*FeatureSetUplinkPerCC_v1700{}, aper.Constraint{Lb: 1, Ub: maxPerCC_FeatureSets}, false)
 				fn_FeatureSetsUplinkPerCC_v1700 := func() *FeatureSetUplinkPerCC_v1700 {
 					return new(FeatureSetUplinkPerCC_v1700)
 				}
@@ -834,7 +834,7 @@ func (ie *FeatureSets) Decode(r *uper.UperReader) error {
 				return err
 			}
 
-			extReader := uper.NewReader(bytes.NewReader(extBytes))
+			extReader := aper.NewReader(bytes.NewReader(extBytes))
 
 			FeatureSetsDownlink_v1720Present, err := extReader.ReadBool()
 			if err != nil {
@@ -850,7 +850,7 @@ func (ie *FeatureSets) Decode(r *uper.UperReader) error {
 			}
 			// decode FeatureSetsDownlink_v1720 optional
 			if FeatureSetsDownlink_v1720Present {
-				tmp_FeatureSetsDownlink_v1720 := utils.NewSequence[*FeatureSetDownlink_v1720]([]*FeatureSetDownlink_v1720{}, uper.Constraint{Lb: 1, Ub: maxDownlinkFeatureSets}, false)
+				tmp_FeatureSetsDownlink_v1720 := utils.NewSequence[*FeatureSetDownlink_v1720]([]*FeatureSetDownlink_v1720{}, aper.Constraint{Lb: 1, Ub: maxDownlinkFeatureSets}, false)
 				fn_FeatureSetsDownlink_v1720 := func() *FeatureSetDownlink_v1720 {
 					return new(FeatureSetDownlink_v1720)
 				}
@@ -864,7 +864,7 @@ func (ie *FeatureSets) Decode(r *uper.UperReader) error {
 			}
 			// decode FeatureSetsDownlinkPerCC_v1720 optional
 			if FeatureSetsDownlinkPerCC_v1720Present {
-				tmp_FeatureSetsDownlinkPerCC_v1720 := utils.NewSequence[*FeatureSetDownlinkPerCC_v1720]([]*FeatureSetDownlinkPerCC_v1720{}, uper.Constraint{Lb: 1, Ub: maxPerCC_FeatureSets}, false)
+				tmp_FeatureSetsDownlinkPerCC_v1720 := utils.NewSequence[*FeatureSetDownlinkPerCC_v1720]([]*FeatureSetDownlinkPerCC_v1720{}, aper.Constraint{Lb: 1, Ub: maxPerCC_FeatureSets}, false)
 				fn_FeatureSetsDownlinkPerCC_v1720 := func() *FeatureSetDownlinkPerCC_v1720 {
 					return new(FeatureSetDownlinkPerCC_v1720)
 				}
@@ -878,7 +878,7 @@ func (ie *FeatureSets) Decode(r *uper.UperReader) error {
 			}
 			// decode FeatureSetsUplink_v1720 optional
 			if FeatureSetsUplink_v1720Present {
-				tmp_FeatureSetsUplink_v1720 := utils.NewSequence[*FeatureSetUplink_v1720]([]*FeatureSetUplink_v1720{}, uper.Constraint{Lb: 1, Ub: maxUplinkFeatureSets}, false)
+				tmp_FeatureSetsUplink_v1720 := utils.NewSequence[*FeatureSetUplink_v1720]([]*FeatureSetUplink_v1720{}, aper.Constraint{Lb: 1, Ub: maxUplinkFeatureSets}, false)
 				fn_FeatureSetsUplink_v1720 := func() *FeatureSetUplink_v1720 {
 					return new(FeatureSetUplink_v1720)
 				}
@@ -898,7 +898,7 @@ func (ie *FeatureSets) Decode(r *uper.UperReader) error {
 				return err
 			}
 
-			extReader := uper.NewReader(bytes.NewReader(extBytes))
+			extReader := aper.NewReader(bytes.NewReader(extBytes))
 
 			FeatureSetsDownlink_v1730Present, err := extReader.ReadBool()
 			if err != nil {
@@ -910,7 +910,7 @@ func (ie *FeatureSets) Decode(r *uper.UperReader) error {
 			}
 			// decode FeatureSetsDownlink_v1730 optional
 			if FeatureSetsDownlink_v1730Present {
-				tmp_FeatureSetsDownlink_v1730 := utils.NewSequence[*FeatureSetDownlink_v1730]([]*FeatureSetDownlink_v1730{}, uper.Constraint{Lb: 1, Ub: maxDownlinkFeatureSets}, false)
+				tmp_FeatureSetsDownlink_v1730 := utils.NewSequence[*FeatureSetDownlink_v1730]([]*FeatureSetDownlink_v1730{}, aper.Constraint{Lb: 1, Ub: maxDownlinkFeatureSets}, false)
 				fn_FeatureSetsDownlink_v1730 := func() *FeatureSetDownlink_v1730 {
 					return new(FeatureSetDownlink_v1730)
 				}
@@ -924,7 +924,7 @@ func (ie *FeatureSets) Decode(r *uper.UperReader) error {
 			}
 			// decode FeatureSetsDownlinkPerCC_v1730 optional
 			if FeatureSetsDownlinkPerCC_v1730Present {
-				tmp_FeatureSetsDownlinkPerCC_v1730 := utils.NewSequence[*FeatureSetDownlinkPerCC_v1730]([]*FeatureSetDownlinkPerCC_v1730{}, uper.Constraint{Lb: 1, Ub: maxPerCC_FeatureSets}, false)
+				tmp_FeatureSetsDownlinkPerCC_v1730 := utils.NewSequence[*FeatureSetDownlinkPerCC_v1730]([]*FeatureSetDownlinkPerCC_v1730{}, aper.Constraint{Lb: 1, Ub: maxPerCC_FeatureSets}, false)
 				fn_FeatureSetsDownlinkPerCC_v1730 := func() *FeatureSetDownlinkPerCC_v1730 {
 					return new(FeatureSetDownlinkPerCC_v1730)
 				}

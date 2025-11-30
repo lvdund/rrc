@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -18,7 +18,7 @@ type NTN_Parameters_r17 struct {
 	Son_ParametersNTN_r17              *SON_Parameters_r16                      `optional`
 }
 
-func (ie *NTN_Parameters_r17) Encode(w *uper.UperWriter) error {
+func (ie *NTN_Parameters_r17) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.InactiveStateNTN_r17 != nil, ie.Ra_SDT_NTN_r17 != nil, ie.Srb_SDT_NTN_r17 != nil, ie.MeasAndMobParametersNTN_r17 != nil, ie.Mac_ParametersNTN_r17 != nil, ie.Phy_ParametersNTN_r17 != nil, ie.Fdd_Add_UE_NR_CapabilitiesNTN_r17 != nil, ie.Fr1_Add_UE_NR_CapabilitiesNTN_r17 != nil, ie.Ue_BasedPerfMeas_ParametersNTN_r17 != nil, ie.Son_ParametersNTN_r17 != nil}
 	for _, bit := range preambleBits {
@@ -79,7 +79,7 @@ func (ie *NTN_Parameters_r17) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *NTN_Parameters_r17) Decode(r *uper.UperReader) error {
+func (ie *NTN_Parameters_r17) Decode(r *aper.AperReader) error {
 	var err error
 	var InactiveStateNTN_r17Present bool
 	if InactiveStateNTN_r17Present, err = r.ReadBool(); err != nil {

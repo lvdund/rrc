@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -10,7 +10,7 @@ type BandCombinationInfoSN struct {
 	RequestedFeatureSets FeatureSetEntryIndex `madatory`
 }
 
-func (ie *BandCombinationInfoSN) Encode(w *uper.UperWriter) error {
+func (ie *BandCombinationInfoSN) Encode(w *aper.AperWriter) error {
 	var err error
 	if err = ie.BandCombinationIndex.Encode(w); err != nil {
 		return utils.WrapError("Encode BandCombinationIndex", err)
@@ -21,7 +21,7 @@ func (ie *BandCombinationInfoSN) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *BandCombinationInfoSN) Decode(r *uper.UperReader) error {
+func (ie *BandCombinationInfoSN) Decode(r *aper.AperReader) error {
 	var err error
 	if err = ie.BandCombinationIndex.Decode(r); err != nil {
 		return utils.WrapError("Decode BandCombinationIndex", err)

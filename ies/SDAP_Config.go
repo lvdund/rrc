@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -14,7 +14,7 @@ type SDAP_Config struct {
 	MappedQoS_FlowsToRelease []QFI                     `lb:1,ub:maxNrofQFIs,optional`
 }
 
-func (ie *SDAP_Config) Encode(w *uper.UperWriter) error {
+func (ie *SDAP_Config) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{len(ie.MappedQoS_FlowsToAdd) > 0, len(ie.MappedQoS_FlowsToRelease) > 0}
 	for _, bit := range preambleBits {
@@ -35,7 +35,7 @@ func (ie *SDAP_Config) Encode(w *uper.UperWriter) error {
 		return utils.WrapError("WriteBoolean DefaultDRB", err)
 	}
 	if len(ie.MappedQoS_FlowsToAdd) > 0 {
-		tmp_MappedQoS_FlowsToAdd := utils.NewSequence[*QFI]([]*QFI{}, uper.Constraint{Lb: 1, Ub: maxNrofQFIs}, false)
+		tmp_MappedQoS_FlowsToAdd := utils.NewSequence[*QFI]([]*QFI{}, aper.Constraint{Lb: 1, Ub: maxNrofQFIs}, false)
 		for _, i := range ie.MappedQoS_FlowsToAdd {
 			tmp_MappedQoS_FlowsToAdd.Value = append(tmp_MappedQoS_FlowsToAdd.Value, &i)
 		}
@@ -44,7 +44,7 @@ func (ie *SDAP_Config) Encode(w *uper.UperWriter) error {
 		}
 	}
 	if len(ie.MappedQoS_FlowsToRelease) > 0 {
-		tmp_MappedQoS_FlowsToRelease := utils.NewSequence[*QFI]([]*QFI{}, uper.Constraint{Lb: 1, Ub: maxNrofQFIs}, false)
+		tmp_MappedQoS_FlowsToRelease := utils.NewSequence[*QFI]([]*QFI{}, aper.Constraint{Lb: 1, Ub: maxNrofQFIs}, false)
 		for _, i := range ie.MappedQoS_FlowsToRelease {
 			tmp_MappedQoS_FlowsToRelease.Value = append(tmp_MappedQoS_FlowsToRelease.Value, &i)
 		}
@@ -55,7 +55,7 @@ func (ie *SDAP_Config) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *SDAP_Config) Decode(r *uper.UperReader) error {
+func (ie *SDAP_Config) Decode(r *aper.AperReader) error {
 	var err error
 	var MappedQoS_FlowsToAddPresent bool
 	if MappedQoS_FlowsToAddPresent, err = r.ReadBool(); err != nil {
@@ -80,7 +80,7 @@ func (ie *SDAP_Config) Decode(r *uper.UperReader) error {
 	}
 	ie.DefaultDRB = tmp_bool_DefaultDRB
 	if MappedQoS_FlowsToAddPresent {
-		tmp_MappedQoS_FlowsToAdd := utils.NewSequence[*QFI]([]*QFI{}, uper.Constraint{Lb: 1, Ub: maxNrofQFIs}, false)
+		tmp_MappedQoS_FlowsToAdd := utils.NewSequence[*QFI]([]*QFI{}, aper.Constraint{Lb: 1, Ub: maxNrofQFIs}, false)
 		fn_MappedQoS_FlowsToAdd := func() *QFI {
 			return new(QFI)
 		}
@@ -93,7 +93,7 @@ func (ie *SDAP_Config) Decode(r *uper.UperReader) error {
 		}
 	}
 	if MappedQoS_FlowsToReleasePresent {
-		tmp_MappedQoS_FlowsToRelease := utils.NewSequence[*QFI]([]*QFI{}, uper.Constraint{Lb: 1, Ub: maxNrofQFIs}, false)
+		tmp_MappedQoS_FlowsToRelease := utils.NewSequence[*QFI]([]*QFI{}, aper.Constraint{Lb: 1, Ub: maxNrofQFIs}, false)
 		fn_MappedQoS_FlowsToRelease := func() *QFI {
 			return new(QFI)
 		}

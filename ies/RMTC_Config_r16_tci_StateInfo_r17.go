@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -10,7 +10,7 @@ type RMTC_Config_r16_tci_StateInfo_r17 struct {
 	Ref_ServCellId_r17 *ServCellIndex `optional`
 }
 
-func (ie *RMTC_Config_r16_tci_StateInfo_r17) Encode(w *uper.UperWriter) error {
+func (ie *RMTC_Config_r16_tci_StateInfo_r17) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.Ref_ServCellId_r17 != nil}
 	for _, bit := range preambleBits {
@@ -29,7 +29,7 @@ func (ie *RMTC_Config_r16_tci_StateInfo_r17) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *RMTC_Config_r16_tci_StateInfo_r17) Decode(r *uper.UperReader) error {
+func (ie *RMTC_Config_r16_tci_StateInfo_r17) Decode(r *aper.AperReader) error {
 	var err error
 	var Ref_ServCellId_r17Present bool
 	if Ref_ServCellId_r17Present, err = r.ReadBool(); err != nil {

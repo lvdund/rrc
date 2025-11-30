@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -12,7 +12,7 @@ type CA_ParametersNR_v1630 struct {
 	InterCA_NonAlignedFrame_B_r16              *CA_ParametersNR_v1630_interCA_NonAlignedFrame_B_r16             `optional`
 }
 
-func (ie *CA_ParametersNR_v1630) Encode(w *uper.UperWriter) error {
+func (ie *CA_ParametersNR_v1630) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.SimulTX_SRS_AntSwitchingInterBandUL_CA_r16 != nil, ie.BeamManagementType_r16 != nil, ie.IntraBandFreqSeparationUL_AggBW_GapBW_r16 != nil, ie.InterCA_NonAlignedFrame_B_r16 != nil}
 	for _, bit := range preambleBits {
@@ -43,7 +43,7 @@ func (ie *CA_ParametersNR_v1630) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *CA_ParametersNR_v1630) Decode(r *uper.UperReader) error {
+func (ie *CA_ParametersNR_v1630) Decode(r *aper.AperReader) error {
 	var err error
 	var SimulTX_SRS_AntSwitchingInterBandUL_CA_r16Present bool
 	if SimulTX_SRS_AntSwitchingInterBandUL_CA_r16Present, err = r.ReadBool(); err != nil {

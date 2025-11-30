@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -10,7 +10,7 @@ type DedicatedSIBRequest_r16_IEs_onDemandSIB_RequestList_r16 struct {
 	RequestedPosSIB_List_r16 []PosSIB_ReqInfo_r16 `lb:1,ub:maxOnDemandPosSIB_r16,optional`
 }
 
-func (ie *DedicatedSIBRequest_r16_IEs_onDemandSIB_RequestList_r16) Encode(w *uper.UperWriter) error {
+func (ie *DedicatedSIBRequest_r16_IEs_onDemandSIB_RequestList_r16) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{len(ie.RequestedSIB_List_r16) > 0, len(ie.RequestedPosSIB_List_r16) > 0}
 	for _, bit := range preambleBits {
@@ -19,7 +19,7 @@ func (ie *DedicatedSIBRequest_r16_IEs_onDemandSIB_RequestList_r16) Encode(w *upe
 		}
 	}
 	if len(ie.RequestedSIB_List_r16) > 0 {
-		tmp_RequestedSIB_List_r16 := utils.NewSequence[*SIB_ReqInfo_r16]([]*SIB_ReqInfo_r16{}, uper.Constraint{Lb: 1, Ub: maxOnDemandSIB_r16}, false)
+		tmp_RequestedSIB_List_r16 := utils.NewSequence[*SIB_ReqInfo_r16]([]*SIB_ReqInfo_r16{}, aper.Constraint{Lb: 1, Ub: maxOnDemandSIB_r16}, false)
 		for _, i := range ie.RequestedSIB_List_r16 {
 			tmp_RequestedSIB_List_r16.Value = append(tmp_RequestedSIB_List_r16.Value, &i)
 		}
@@ -28,7 +28,7 @@ func (ie *DedicatedSIBRequest_r16_IEs_onDemandSIB_RequestList_r16) Encode(w *upe
 		}
 	}
 	if len(ie.RequestedPosSIB_List_r16) > 0 {
-		tmp_RequestedPosSIB_List_r16 := utils.NewSequence[*PosSIB_ReqInfo_r16]([]*PosSIB_ReqInfo_r16{}, uper.Constraint{Lb: 1, Ub: maxOnDemandPosSIB_r16}, false)
+		tmp_RequestedPosSIB_List_r16 := utils.NewSequence[*PosSIB_ReqInfo_r16]([]*PosSIB_ReqInfo_r16{}, aper.Constraint{Lb: 1, Ub: maxOnDemandPosSIB_r16}, false)
 		for _, i := range ie.RequestedPosSIB_List_r16 {
 			tmp_RequestedPosSIB_List_r16.Value = append(tmp_RequestedPosSIB_List_r16.Value, &i)
 		}
@@ -39,7 +39,7 @@ func (ie *DedicatedSIBRequest_r16_IEs_onDemandSIB_RequestList_r16) Encode(w *upe
 	return nil
 }
 
-func (ie *DedicatedSIBRequest_r16_IEs_onDemandSIB_RequestList_r16) Decode(r *uper.UperReader) error {
+func (ie *DedicatedSIBRequest_r16_IEs_onDemandSIB_RequestList_r16) Decode(r *aper.AperReader) error {
 	var err error
 	var RequestedSIB_List_r16Present bool
 	if RequestedSIB_List_r16Present, err = r.ReadBool(); err != nil {
@@ -50,7 +50,7 @@ func (ie *DedicatedSIBRequest_r16_IEs_onDemandSIB_RequestList_r16) Decode(r *upe
 		return err
 	}
 	if RequestedSIB_List_r16Present {
-		tmp_RequestedSIB_List_r16 := utils.NewSequence[*SIB_ReqInfo_r16]([]*SIB_ReqInfo_r16{}, uper.Constraint{Lb: 1, Ub: maxOnDemandSIB_r16}, false)
+		tmp_RequestedSIB_List_r16 := utils.NewSequence[*SIB_ReqInfo_r16]([]*SIB_ReqInfo_r16{}, aper.Constraint{Lb: 1, Ub: maxOnDemandSIB_r16}, false)
 		fn_RequestedSIB_List_r16 := func() *SIB_ReqInfo_r16 {
 			return new(SIB_ReqInfo_r16)
 		}
@@ -63,7 +63,7 @@ func (ie *DedicatedSIBRequest_r16_IEs_onDemandSIB_RequestList_r16) Decode(r *upe
 		}
 	}
 	if RequestedPosSIB_List_r16Present {
-		tmp_RequestedPosSIB_List_r16 := utils.NewSequence[*PosSIB_ReqInfo_r16]([]*PosSIB_ReqInfo_r16{}, uper.Constraint{Lb: 1, Ub: maxOnDemandPosSIB_r16}, false)
+		tmp_RequestedPosSIB_List_r16 := utils.NewSequence[*PosSIB_ReqInfo_r16]([]*PosSIB_ReqInfo_r16{}, aper.Constraint{Lb: 1, Ub: maxOnDemandPosSIB_r16}, false)
 		fn_RequestedPosSIB_List_r16 := func() *PosSIB_ReqInfo_r16 {
 			return new(PosSIB_ReqInfo_r16)
 		}

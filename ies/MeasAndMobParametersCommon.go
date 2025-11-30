@@ -3,12 +3,12 @@ package ies
 import (
 	"bytes"
 
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
 type MeasAndMobParametersCommon struct {
-	SupportedGapPattern                          *uper.BitString                                                          `lb:22,ub:22,optional`
+	SupportedGapPattern                          *aper.BitString                                                          `lb:22,ub:22,optional`
 	Ssb_RLM                                      *MeasAndMobParametersCommon_ssb_RLM                                      `optional`
 	Ssb_AndCSI_RS_RLM                            *MeasAndMobParametersCommon_ssb_AndCSI_RS_RLM                            `optional`
 	EventB_MeasAndReport                         *MeasAndMobParametersCommon_eventB_MeasAndReport                         `optional,ext-1`
@@ -27,7 +27,7 @@ type MeasAndMobParametersCommon struct {
 	ReportAddNeighMeasForPeriodic_r16            *MeasAndMobParametersCommon_reportAddNeighMeasForPeriodic_r16            `optional,ext-5`
 	CondHandoverParametersCommon_r16             *MeasAndMobParametersCommon_condHandoverParametersCommon_r16             `optional,ext-5`
 	Nr_NeedForGap_Reporting_r16                  *MeasAndMobParametersCommon_nr_NeedForGap_Reporting_r16                  `optional,ext-5`
-	SupportedGapPattern_NRonly_r16               *uper.BitString                                                          `lb:10,ub:10,optional,ext-5`
+	SupportedGapPattern_NRonly_r16               *aper.BitString                                                          `lb:10,ub:10,optional,ext-5`
 	SupportedGapPattern_NRonly_NEDC_r16          *MeasAndMobParametersCommon_supportedGapPattern_NRonly_NEDC_r16          `optional,ext-5`
 	MaxNumberCLI_RSSI_r16                        *MeasAndMobParametersCommon_maxNumberCLI_RSSI_r16                        `optional,ext-5`
 	MaxNumberCLI_SRS_RSRP_r16                    *MeasAndMobParametersCommon_maxNumberCLI_SRS_RSRP_r16                    `optional,ext-5`
@@ -41,13 +41,13 @@ type MeasAndMobParametersCommon struct {
 	Eutra_AutonomousGaps_NEDC_r16                *MeasAndMobParametersCommon_eutra_AutonomousGaps_NEDC_r16                `optional,ext-5`
 	Eutra_AutonomousGaps_NRDC_r16                *MeasAndMobParametersCommon_eutra_AutonomousGaps_NRDC_r16                `optional,ext-5`
 	PcellT312_r16                                *MeasAndMobParametersCommon_pcellT312_r16                                `optional,ext-5`
-	SupportedGapPattern_r16                      *uper.BitString                                                          `lb:2,ub:2,optional,ext-5`
+	SupportedGapPattern_r16                      *aper.BitString                                                          `lb:2,ub:2,optional,ext-5`
 	ConcurrentMeasGap_r17                        *MeasAndMobParametersCommon_concurrentMeasGap_r17                        `optional,ext-6`
 	Nr_NeedForGapNCSG_Reporting_r17              *MeasAndMobParametersCommon_nr_NeedForGapNCSG_Reporting_r17              `optional,ext-6`
 	Eutra_NeedForGapNCSG_Reporting_r17           *MeasAndMobParametersCommon_eutra_NeedForGapNCSG_Reporting_r17           `optional,ext-6`
 	Ncsg_MeasGapPerFR_r17                        *MeasAndMobParametersCommon_ncsg_MeasGapPerFR_r17                        `optional,ext-6`
-	Ncsg_MeasGapPatterns_r17                     *uper.BitString                                                          `lb:24,ub:24,optional,ext-6`
-	Ncsg_MeasGapNR_Patterns_r17                  *uper.BitString                                                          `lb:24,ub:24,optional,ext-6`
+	Ncsg_MeasGapPatterns_r17                     *aper.BitString                                                          `lb:24,ub:24,optional,ext-6`
+	Ncsg_MeasGapNR_Patterns_r17                  *aper.BitString                                                          `lb:24,ub:24,optional,ext-6`
 	PreconfiguredUE_AutonomousMeasGap_r17        *MeasAndMobParametersCommon_preconfiguredUE_AutonomousMeasGap_r17        `optional,ext-6`
 	PreconfiguredNW_ControlledMeasGap_r17        *MeasAndMobParametersCommon_preconfiguredNW_ControlledMeasGap_r17        `optional,ext-6`
 	HandoverFR1_FR2_2_r17                        *MeasAndMobParametersCommon_handoverFR1_FR2_2_r17                        `optional,ext-6`
@@ -69,7 +69,7 @@ type MeasAndMobParametersCommon struct {
 	IndependentGapConfig_maxCC_r17               *MeasAndMobParametersCommon_independentGapConfig_maxCC_r17               `lb:1,ub:32,optional,ext-8`
 }
 
-func (ie *MeasAndMobParametersCommon) Encode(w *uper.UperWriter) error {
+func (ie *MeasAndMobParametersCommon) Encode(w *aper.AperWriter) error {
 	var err error
 	hasExtensions := ie.EventB_MeasAndReport != nil || ie.HandoverFDD_TDD != nil || ie.Eutra_CGI_Reporting != nil || ie.Nr_CGI_Reporting != nil || ie.IndependentGapConfig != nil || ie.PeriodicEUTRA_MeasAndReport != nil || ie.HandoverFR1_FR2 != nil || ie.MaxNumberCSI_RS_RRM_RS_SINR != nil || ie.Nr_CGI_Reporting_ENDC != nil || ie.Eutra_CGI_Reporting_NEDC != nil || ie.Eutra_CGI_Reporting_NRDC != nil || ie.Nr_CGI_Reporting_NEDC != nil || ie.Nr_CGI_Reporting_NRDC != nil || ie.ReportAddNeighMeasForPeriodic_r16 != nil || ie.CondHandoverParametersCommon_r16 != nil || ie.Nr_NeedForGap_Reporting_r16 != nil || ie.SupportedGapPattern_NRonly_r16 != nil || ie.SupportedGapPattern_NRonly_NEDC_r16 != nil || ie.MaxNumberCLI_RSSI_r16 != nil || ie.MaxNumberCLI_SRS_RSRP_r16 != nil || ie.MaxNumberPerSlotCLI_SRS_RSRP_r16 != nil || ie.Mfbi_IAB_r16 != nil || ie.Dummy != nil || ie.Nr_CGI_Reporting_NPN_r16 != nil || ie.IdleInactiveEUTRA_MeasReport_r16 != nil || ie.IdleInactive_ValidityArea_r16 != nil || ie.Eutra_AutonomousGaps_r16 != nil || ie.Eutra_AutonomousGaps_NEDC_r16 != nil || ie.Eutra_AutonomousGaps_NRDC_r16 != nil || ie.PcellT312_r16 != nil || ie.SupportedGapPattern_r16 != nil || ie.ConcurrentMeasGap_r17 != nil || ie.Nr_NeedForGapNCSG_Reporting_r17 != nil || ie.Eutra_NeedForGapNCSG_Reporting_r17 != nil || ie.Ncsg_MeasGapPerFR_r17 != nil || ie.Ncsg_MeasGapPatterns_r17 != nil || ie.Ncsg_MeasGapNR_Patterns_r17 != nil || ie.PreconfiguredUE_AutonomousMeasGap_r17 != nil || ie.PreconfiguredNW_ControlledMeasGap_r17 != nil || ie.HandoverFR1_FR2_2_r17 != nil || ie.HandoverFR2_1_FR2_2_r17 != nil || ie.IndependentGapConfigPRS_r17 != nil || ie.Rrm_RelaxationRRC_ConnectedRedCap_r17 != nil || ie.ParallelMeasurementGap_r17 != nil || ie.CondHandoverWithSCG_NRDC_r17 != nil || ie.GNB_ID_LengthReporting_r17 != nil || ie.GNB_ID_LengthReporting_ENDC_r17 != nil || ie.GNB_ID_LengthReporting_NEDC_r17 != nil || ie.GNB_ID_LengthReporting_NRDC_r17 != nil || ie.GNB_ID_LengthReporting_NPN_r17 != nil || ie.ParallelSMTC_r17 != nil || ie.ConcurrentMeasGapEUTRA_r17 != nil || ie.ServiceLinkPropDelayDiffReporting_r17 != nil || ie.Ncsg_SymbolLevelScheduleRestrictionInter_r17 != nil || ie.EventD1_MeasReportTrigger_r17 != nil || ie.IndependentGapConfig_maxCC_r17 != nil
 	preambleBits := []bool{hasExtensions, ie.SupportedGapPattern != nil, ie.Ssb_RLM != nil, ie.Ssb_AndCSI_RS_RLM != nil}
@@ -79,7 +79,7 @@ func (ie *MeasAndMobParametersCommon) Encode(w *uper.UperWriter) error {
 		}
 	}
 	if ie.SupportedGapPattern != nil {
-		if err = w.WriteBitString(ie.SupportedGapPattern.Bytes, uint(ie.SupportedGapPattern.NumBits), &uper.Constraint{Lb: 22, Ub: 22}, false); err != nil {
+		if err = w.WriteBitString(ie.SupportedGapPattern.Bytes, uint(ie.SupportedGapPattern.NumBits), &aper.Constraint{Lb: 22, Ub: 22}, false); err != nil {
 			return utils.WrapError("Encode SupportedGapPattern", err)
 		}
 	}
@@ -103,7 +103,7 @@ func (ie *MeasAndMobParametersCommon) Encode(w *uper.UperWriter) error {
 		// encode extension group 1
 		if extBitmap[0] {
 			extBuf := new(bytes.Buffer)
-			extWriter := uper.NewWriter(extBuf)
+			extWriter := aper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 1
 			optionals_ext_1 := []bool{ie.EventB_MeasAndReport != nil, ie.HandoverFDD_TDD != nil, ie.Eutra_CGI_Reporting != nil, ie.Nr_CGI_Reporting != nil}
@@ -150,7 +150,7 @@ func (ie *MeasAndMobParametersCommon) Encode(w *uper.UperWriter) error {
 		// encode extension group 2
 		if extBitmap[1] {
 			extBuf := new(bytes.Buffer)
-			extWriter := uper.NewWriter(extBuf)
+			extWriter := aper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 2
 			optionals_ext_2 := []bool{ie.IndependentGapConfig != nil, ie.PeriodicEUTRA_MeasAndReport != nil, ie.HandoverFR1_FR2 != nil, ie.MaxNumberCSI_RS_RRM_RS_SINR != nil}
@@ -197,7 +197,7 @@ func (ie *MeasAndMobParametersCommon) Encode(w *uper.UperWriter) error {
 		// encode extension group 3
 		if extBitmap[2] {
 			extBuf := new(bytes.Buffer)
-			extWriter := uper.NewWriter(extBuf)
+			extWriter := aper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 3
 			optionals_ext_3 := []bool{ie.Nr_CGI_Reporting_ENDC != nil}
@@ -226,7 +226,7 @@ func (ie *MeasAndMobParametersCommon) Encode(w *uper.UperWriter) error {
 		// encode extension group 4
 		if extBitmap[3] {
 			extBuf := new(bytes.Buffer)
-			extWriter := uper.NewWriter(extBuf)
+			extWriter := aper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 4
 			optionals_ext_4 := []bool{ie.Eutra_CGI_Reporting_NEDC != nil, ie.Eutra_CGI_Reporting_NRDC != nil, ie.Nr_CGI_Reporting_NEDC != nil, ie.Nr_CGI_Reporting_NRDC != nil}
@@ -273,7 +273,7 @@ func (ie *MeasAndMobParametersCommon) Encode(w *uper.UperWriter) error {
 		// encode extension group 5
 		if extBitmap[4] {
 			extBuf := new(bytes.Buffer)
-			extWriter := uper.NewWriter(extBuf)
+			extWriter := aper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 5
 			optionals_ext_5 := []bool{ie.ReportAddNeighMeasForPeriodic_r16 != nil, ie.CondHandoverParametersCommon_r16 != nil, ie.Nr_NeedForGap_Reporting_r16 != nil, ie.SupportedGapPattern_NRonly_r16 != nil, ie.SupportedGapPattern_NRonly_NEDC_r16 != nil, ie.MaxNumberCLI_RSSI_r16 != nil, ie.MaxNumberCLI_SRS_RSRP_r16 != nil, ie.MaxNumberPerSlotCLI_SRS_RSRP_r16 != nil, ie.Mfbi_IAB_r16 != nil, ie.Dummy != nil, ie.Nr_CGI_Reporting_NPN_r16 != nil, ie.IdleInactiveEUTRA_MeasReport_r16 != nil, ie.IdleInactive_ValidityArea_r16 != nil, ie.Eutra_AutonomousGaps_r16 != nil, ie.Eutra_AutonomousGaps_NEDC_r16 != nil, ie.Eutra_AutonomousGaps_NRDC_r16 != nil, ie.PcellT312_r16 != nil, ie.SupportedGapPattern_r16 != nil}
@@ -303,7 +303,7 @@ func (ie *MeasAndMobParametersCommon) Encode(w *uper.UperWriter) error {
 			}
 			// encode SupportedGapPattern_NRonly_r16 optional
 			if ie.SupportedGapPattern_NRonly_r16 != nil {
-				if err = extWriter.WriteBitString(ie.SupportedGapPattern_NRonly_r16.Bytes, uint(ie.SupportedGapPattern_NRonly_r16.NumBits), &uper.Constraint{Lb: 10, Ub: 10}, false); err != nil {
+				if err = extWriter.WriteBitString(ie.SupportedGapPattern_NRonly_r16.Bytes, uint(ie.SupportedGapPattern_NRonly_r16.NumBits), &aper.Constraint{Lb: 10, Ub: 10}, false); err != nil {
 					return utils.WrapError("Encode SupportedGapPattern_NRonly_r16", err)
 				}
 			}
@@ -387,7 +387,7 @@ func (ie *MeasAndMobParametersCommon) Encode(w *uper.UperWriter) error {
 			}
 			// encode SupportedGapPattern_r16 optional
 			if ie.SupportedGapPattern_r16 != nil {
-				if err = extWriter.WriteBitString(ie.SupportedGapPattern_r16.Bytes, uint(ie.SupportedGapPattern_r16.NumBits), &uper.Constraint{Lb: 2, Ub: 2}, false); err != nil {
+				if err = extWriter.WriteBitString(ie.SupportedGapPattern_r16.Bytes, uint(ie.SupportedGapPattern_r16.NumBits), &aper.Constraint{Lb: 2, Ub: 2}, false); err != nil {
 					return utils.WrapError("Encode SupportedGapPattern_r16", err)
 				}
 			}
@@ -404,7 +404,7 @@ func (ie *MeasAndMobParametersCommon) Encode(w *uper.UperWriter) error {
 		// encode extension group 6
 		if extBitmap[5] {
 			extBuf := new(bytes.Buffer)
-			extWriter := uper.NewWriter(extBuf)
+			extWriter := aper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 6
 			optionals_ext_6 := []bool{ie.ConcurrentMeasGap_r17 != nil, ie.Nr_NeedForGapNCSG_Reporting_r17 != nil, ie.Eutra_NeedForGapNCSG_Reporting_r17 != nil, ie.Ncsg_MeasGapPerFR_r17 != nil, ie.Ncsg_MeasGapPatterns_r17 != nil, ie.Ncsg_MeasGapNR_Patterns_r17 != nil, ie.PreconfiguredUE_AutonomousMeasGap_r17 != nil, ie.PreconfiguredNW_ControlledMeasGap_r17 != nil, ie.HandoverFR1_FR2_2_r17 != nil, ie.HandoverFR2_1_FR2_2_r17 != nil, ie.IndependentGapConfigPRS_r17 != nil, ie.Rrm_RelaxationRRC_ConnectedRedCap_r17 != nil, ie.ParallelMeasurementGap_r17 != nil, ie.CondHandoverWithSCG_NRDC_r17 != nil, ie.GNB_ID_LengthReporting_r17 != nil, ie.GNB_ID_LengthReporting_ENDC_r17 != nil, ie.GNB_ID_LengthReporting_NEDC_r17 != nil, ie.GNB_ID_LengthReporting_NRDC_r17 != nil, ie.GNB_ID_LengthReporting_NPN_r17 != nil}
@@ -440,13 +440,13 @@ func (ie *MeasAndMobParametersCommon) Encode(w *uper.UperWriter) error {
 			}
 			// encode Ncsg_MeasGapPatterns_r17 optional
 			if ie.Ncsg_MeasGapPatterns_r17 != nil {
-				if err = extWriter.WriteBitString(ie.Ncsg_MeasGapPatterns_r17.Bytes, uint(ie.Ncsg_MeasGapPatterns_r17.NumBits), &uper.Constraint{Lb: 24, Ub: 24}, false); err != nil {
+				if err = extWriter.WriteBitString(ie.Ncsg_MeasGapPatterns_r17.Bytes, uint(ie.Ncsg_MeasGapPatterns_r17.NumBits), &aper.Constraint{Lb: 24, Ub: 24}, false); err != nil {
 					return utils.WrapError("Encode Ncsg_MeasGapPatterns_r17", err)
 				}
 			}
 			// encode Ncsg_MeasGapNR_Patterns_r17 optional
 			if ie.Ncsg_MeasGapNR_Patterns_r17 != nil {
-				if err = extWriter.WriteBitString(ie.Ncsg_MeasGapNR_Patterns_r17.Bytes, uint(ie.Ncsg_MeasGapNR_Patterns_r17.NumBits), &uper.Constraint{Lb: 24, Ub: 24}, false); err != nil {
+				if err = extWriter.WriteBitString(ie.Ncsg_MeasGapNR_Patterns_r17.Bytes, uint(ie.Ncsg_MeasGapNR_Patterns_r17.NumBits), &aper.Constraint{Lb: 24, Ub: 24}, false); err != nil {
 					return utils.WrapError("Encode Ncsg_MeasGapNR_Patterns_r17", err)
 				}
 			}
@@ -541,7 +541,7 @@ func (ie *MeasAndMobParametersCommon) Encode(w *uper.UperWriter) error {
 		// encode extension group 7
 		if extBitmap[6] {
 			extBuf := new(bytes.Buffer)
-			extWriter := uper.NewWriter(extBuf)
+			extWriter := aper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 7
 			optionals_ext_7 := []bool{ie.ParallelSMTC_r17 != nil, ie.ConcurrentMeasGapEUTRA_r17 != nil, ie.ServiceLinkPropDelayDiffReporting_r17 != nil, ie.Ncsg_SymbolLevelScheduleRestrictionInter_r17 != nil}
@@ -588,7 +588,7 @@ func (ie *MeasAndMobParametersCommon) Encode(w *uper.UperWriter) error {
 		// encode extension group 8
 		if extBitmap[7] {
 			extBuf := new(bytes.Buffer)
-			extWriter := uper.NewWriter(extBuf)
+			extWriter := aper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 8
 			optionals_ext_8 := []bool{ie.EventD1_MeasReportTrigger_r17 != nil, ie.IndependentGapConfig_maxCC_r17 != nil}
@@ -623,7 +623,7 @@ func (ie *MeasAndMobParametersCommon) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *MeasAndMobParametersCommon) Decode(r *uper.UperReader) error {
+func (ie *MeasAndMobParametersCommon) Decode(r *aper.AperReader) error {
 	var err error
 	var extensionBit bool
 	if extensionBit, err = r.ReadBool(); err != nil {
@@ -644,10 +644,10 @@ func (ie *MeasAndMobParametersCommon) Decode(r *uper.UperReader) error {
 	if SupportedGapPatternPresent {
 		var tmp_bs_SupportedGapPattern []byte
 		var n_SupportedGapPattern uint
-		if tmp_bs_SupportedGapPattern, n_SupportedGapPattern, err = r.ReadBitString(&uper.Constraint{Lb: 22, Ub: 22}, false); err != nil {
+		if tmp_bs_SupportedGapPattern, n_SupportedGapPattern, err = r.ReadBitString(&aper.Constraint{Lb: 22, Ub: 22}, false); err != nil {
 			return utils.WrapError("Decode SupportedGapPattern", err)
 		}
-		tmp_bitstring := uper.BitString{
+		tmp_bitstring := aper.BitString{
 			Bytes:   tmp_bs_SupportedGapPattern,
 			NumBits: uint64(n_SupportedGapPattern),
 		}
@@ -680,7 +680,7 @@ func (ie *MeasAndMobParametersCommon) Decode(r *uper.UperReader) error {
 				return err
 			}
 
-			extReader := uper.NewReader(bytes.NewReader(extBytes))
+			extReader := aper.NewReader(bytes.NewReader(extBytes))
 
 			EventB_MeasAndReportPresent, err := extReader.ReadBool()
 			if err != nil {
@@ -734,7 +734,7 @@ func (ie *MeasAndMobParametersCommon) Decode(r *uper.UperReader) error {
 				return err
 			}
 
-			extReader := uper.NewReader(bytes.NewReader(extBytes))
+			extReader := aper.NewReader(bytes.NewReader(extBytes))
 
 			IndependentGapConfigPresent, err := extReader.ReadBool()
 			if err != nil {
@@ -788,7 +788,7 @@ func (ie *MeasAndMobParametersCommon) Decode(r *uper.UperReader) error {
 				return err
 			}
 
-			extReader := uper.NewReader(bytes.NewReader(extBytes))
+			extReader := aper.NewReader(bytes.NewReader(extBytes))
 
 			Nr_CGI_Reporting_ENDCPresent, err := extReader.ReadBool()
 			if err != nil {
@@ -809,7 +809,7 @@ func (ie *MeasAndMobParametersCommon) Decode(r *uper.UperReader) error {
 				return err
 			}
 
-			extReader := uper.NewReader(bytes.NewReader(extBytes))
+			extReader := aper.NewReader(bytes.NewReader(extBytes))
 
 			Eutra_CGI_Reporting_NEDCPresent, err := extReader.ReadBool()
 			if err != nil {
@@ -863,7 +863,7 @@ func (ie *MeasAndMobParametersCommon) Decode(r *uper.UperReader) error {
 				return err
 			}
 
-			extReader := uper.NewReader(bytes.NewReader(extBytes))
+			extReader := aper.NewReader(bytes.NewReader(extBytes))
 
 			ReportAddNeighMeasForPeriodic_r16Present, err := extReader.ReadBool()
 			if err != nil {
@@ -962,10 +962,10 @@ func (ie *MeasAndMobParametersCommon) Decode(r *uper.UperReader) error {
 			if SupportedGapPattern_NRonly_r16Present {
 				var tmp_bs_SupportedGapPattern_NRonly_r16 []byte
 				var n_SupportedGapPattern_NRonly_r16 uint
-				if tmp_bs_SupportedGapPattern_NRonly_r16, n_SupportedGapPattern_NRonly_r16, err = extReader.ReadBitString(&uper.Constraint{Lb: 10, Ub: 10}, false); err != nil {
+				if tmp_bs_SupportedGapPattern_NRonly_r16, n_SupportedGapPattern_NRonly_r16, err = extReader.ReadBitString(&aper.Constraint{Lb: 10, Ub: 10}, false); err != nil {
 					return utils.WrapError("Decode SupportedGapPattern_NRonly_r16", err)
 				}
-				tmp_bitstring := uper.BitString{
+				tmp_bitstring := aper.BitString{
 					Bytes:   tmp_bs_SupportedGapPattern_NRonly_r16,
 					NumBits: uint64(n_SupportedGapPattern_NRonly_r16),
 				}
@@ -1066,10 +1066,10 @@ func (ie *MeasAndMobParametersCommon) Decode(r *uper.UperReader) error {
 			if SupportedGapPattern_r16Present {
 				var tmp_bs_SupportedGapPattern_r16 []byte
 				var n_SupportedGapPattern_r16 uint
-				if tmp_bs_SupportedGapPattern_r16, n_SupportedGapPattern_r16, err = extReader.ReadBitString(&uper.Constraint{Lb: 2, Ub: 2}, false); err != nil {
+				if tmp_bs_SupportedGapPattern_r16, n_SupportedGapPattern_r16, err = extReader.ReadBitString(&aper.Constraint{Lb: 2, Ub: 2}, false); err != nil {
 					return utils.WrapError("Decode SupportedGapPattern_r16", err)
 				}
-				tmp_bitstring := uper.BitString{
+				tmp_bitstring := aper.BitString{
 					Bytes:   tmp_bs_SupportedGapPattern_r16,
 					NumBits: uint64(n_SupportedGapPattern_r16),
 				}
@@ -1083,7 +1083,7 @@ func (ie *MeasAndMobParametersCommon) Decode(r *uper.UperReader) error {
 				return err
 			}
 
-			extReader := uper.NewReader(bytes.NewReader(extBytes))
+			extReader := aper.NewReader(bytes.NewReader(extBytes))
 
 			ConcurrentMeasGap_r17Present, err := extReader.ReadBool()
 			if err != nil {
@@ -1193,10 +1193,10 @@ func (ie *MeasAndMobParametersCommon) Decode(r *uper.UperReader) error {
 			if Ncsg_MeasGapPatterns_r17Present {
 				var tmp_bs_Ncsg_MeasGapPatterns_r17 []byte
 				var n_Ncsg_MeasGapPatterns_r17 uint
-				if tmp_bs_Ncsg_MeasGapPatterns_r17, n_Ncsg_MeasGapPatterns_r17, err = extReader.ReadBitString(&uper.Constraint{Lb: 24, Ub: 24}, false); err != nil {
+				if tmp_bs_Ncsg_MeasGapPatterns_r17, n_Ncsg_MeasGapPatterns_r17, err = extReader.ReadBitString(&aper.Constraint{Lb: 24, Ub: 24}, false); err != nil {
 					return utils.WrapError("Decode Ncsg_MeasGapPatterns_r17", err)
 				}
-				tmp_bitstring := uper.BitString{
+				tmp_bitstring := aper.BitString{
 					Bytes:   tmp_bs_Ncsg_MeasGapPatterns_r17,
 					NumBits: uint64(n_Ncsg_MeasGapPatterns_r17),
 				}
@@ -1206,10 +1206,10 @@ func (ie *MeasAndMobParametersCommon) Decode(r *uper.UperReader) error {
 			if Ncsg_MeasGapNR_Patterns_r17Present {
 				var tmp_bs_Ncsg_MeasGapNR_Patterns_r17 []byte
 				var n_Ncsg_MeasGapNR_Patterns_r17 uint
-				if tmp_bs_Ncsg_MeasGapNR_Patterns_r17, n_Ncsg_MeasGapNR_Patterns_r17, err = extReader.ReadBitString(&uper.Constraint{Lb: 24, Ub: 24}, false); err != nil {
+				if tmp_bs_Ncsg_MeasGapNR_Patterns_r17, n_Ncsg_MeasGapNR_Patterns_r17, err = extReader.ReadBitString(&aper.Constraint{Lb: 24, Ub: 24}, false); err != nil {
 					return utils.WrapError("Decode Ncsg_MeasGapNR_Patterns_r17", err)
 				}
-				tmp_bitstring := uper.BitString{
+				tmp_bitstring := aper.BitString{
 					Bytes:   tmp_bs_Ncsg_MeasGapNR_Patterns_r17,
 					NumBits: uint64(n_Ncsg_MeasGapNR_Patterns_r17),
 				}
@@ -1314,7 +1314,7 @@ func (ie *MeasAndMobParametersCommon) Decode(r *uper.UperReader) error {
 				return err
 			}
 
-			extReader := uper.NewReader(bytes.NewReader(extBytes))
+			extReader := aper.NewReader(bytes.NewReader(extBytes))
 
 			ParallelSMTC_r17Present, err := extReader.ReadBool()
 			if err != nil {
@@ -1368,7 +1368,7 @@ func (ie *MeasAndMobParametersCommon) Decode(r *uper.UperReader) error {
 				return err
 			}
 
-			extReader := uper.NewReader(bytes.NewReader(extBytes))
+			extReader := aper.NewReader(bytes.NewReader(extBytes))
 
 			EventD1_MeasReportTrigger_r17Present, err := extReader.ReadBool()
 			if err != nil {

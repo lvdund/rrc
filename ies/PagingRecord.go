@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -10,7 +10,7 @@ type PagingRecord struct {
 	AccessType  *PagingRecord_accessType `optional`
 }
 
-func (ie *PagingRecord) Encode(w *uper.UperWriter) error {
+func (ie *PagingRecord) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.AccessType != nil}
 	for _, bit := range preambleBits {
@@ -29,7 +29,7 @@ func (ie *PagingRecord) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *PagingRecord) Decode(r *uper.UperReader) error {
+func (ie *PagingRecord) Decode(r *aper.AperReader) error {
 	var err error
 	var AccessTypePresent bool
 	if AccessTypePresent, err = r.ReadBool(); err != nil {

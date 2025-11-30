@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -10,7 +10,7 @@ type SIB2_cellReselectionInfoCommon_speedStateReselectionPars struct {
 	Q_HystSF                SIB2_cellReselectionInfoCommon_speedStateReselectionPars_q_HystSF `madatory`
 }
 
-func (ie *SIB2_cellReselectionInfoCommon_speedStateReselectionPars) Encode(w *uper.UperWriter) error {
+func (ie *SIB2_cellReselectionInfoCommon_speedStateReselectionPars) Encode(w *aper.AperWriter) error {
 	var err error
 	if err = ie.MobilityStateParameters.Encode(w); err != nil {
 		return utils.WrapError("Encode MobilityStateParameters", err)
@@ -21,7 +21,7 @@ func (ie *SIB2_cellReselectionInfoCommon_speedStateReselectionPars) Encode(w *up
 	return nil
 }
 
-func (ie *SIB2_cellReselectionInfoCommon_speedStateReselectionPars) Decode(r *uper.UperReader) error {
+func (ie *SIB2_cellReselectionInfoCommon_speedStateReselectionPars) Decode(r *aper.AperReader) error {
 	var err error
 	if err = ie.MobilityStateParameters.Decode(r); err != nil {
 		return utils.WrapError("Decode MobilityStateParameters", err)

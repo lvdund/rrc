@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -15,7 +15,7 @@ type UE_NR_Capability_v1530 struct {
 	NonCriticalExtension             *UE_NR_Capability_v1540                      `optional`
 }
 
-func (ie *UE_NR_Capability_v1530) Encode(w *uper.UperWriter) error {
+func (ie *UE_NR_Capability_v1530) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.Fdd_Add_UE_NR_Capabilities_v1530 != nil, ie.Tdd_Add_UE_NR_Capabilities_v1530 != nil, ie.Dummy != nil, ie.InterRAT_Parameters != nil, ie.InactiveState != nil, ie.DelayBudgetReporting != nil, ie.NonCriticalExtension != nil}
 	for _, bit := range preambleBits {
@@ -61,7 +61,7 @@ func (ie *UE_NR_Capability_v1530) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *UE_NR_Capability_v1530) Decode(r *uper.UperReader) error {
+func (ie *UE_NR_Capability_v1530) Decode(r *aper.AperReader) error {
 	var err error
 	var Fdd_Add_UE_NR_Capabilities_v1530Present bool
 	if Fdd_Add_UE_NR_Capabilities_v1530Present, err = r.ReadBool(); err != nil {

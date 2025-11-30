@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -15,7 +15,7 @@ type SSB_Configuration_r16 struct {
 	Ss_PBCH_BlockPower_r16   *int64                                     `lb:-60,ub:50,optional`
 }
 
-func (ie *SSB_Configuration_r16) Encode(w *uper.UperWriter) error {
+func (ie *SSB_Configuration_r16) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.Ssb_Periodicity_r16 != nil, ie.Sfn0_Offset_r16 != nil, ie.Ss_PBCH_BlockPower_r16 != nil}
 	for _, bit := range preambleBits {
@@ -42,18 +42,18 @@ func (ie *SSB_Configuration_r16) Encode(w *uper.UperWriter) error {
 			return utils.WrapError("Encode Sfn0_Offset_r16", err)
 		}
 	}
-	if err = w.WriteInteger(ie.Sfn_SSB_Offset_r16, &uper.Constraint{Lb: 0, Ub: 15}, false); err != nil {
+	if err = w.WriteInteger(ie.Sfn_SSB_Offset_r16, &aper.Constraint{Lb: 0, Ub: 15}, false); err != nil {
 		return utils.WrapError("WriteInteger Sfn_SSB_Offset_r16", err)
 	}
 	if ie.Ss_PBCH_BlockPower_r16 != nil {
-		if err = w.WriteInteger(*ie.Ss_PBCH_BlockPower_r16, &uper.Constraint{Lb: -60, Ub: 50}, false); err != nil {
+		if err = w.WriteInteger(*ie.Ss_PBCH_BlockPower_r16, &aper.Constraint{Lb: -60, Ub: 50}, false); err != nil {
 			return utils.WrapError("Encode Ss_PBCH_BlockPower_r16", err)
 		}
 	}
 	return nil
 }
 
-func (ie *SSB_Configuration_r16) Decode(r *uper.UperReader) error {
+func (ie *SSB_Configuration_r16) Decode(r *aper.AperReader) error {
 	var err error
 	var Ssb_Periodicity_r16Present bool
 	if Ssb_Periodicity_r16Present, err = r.ReadBool(); err != nil {
@@ -89,13 +89,13 @@ func (ie *SSB_Configuration_r16) Decode(r *uper.UperReader) error {
 		}
 	}
 	var tmp_int_Sfn_SSB_Offset_r16 int64
-	if tmp_int_Sfn_SSB_Offset_r16, err = r.ReadInteger(&uper.Constraint{Lb: 0, Ub: 15}, false); err != nil {
+	if tmp_int_Sfn_SSB_Offset_r16, err = r.ReadInteger(&aper.Constraint{Lb: 0, Ub: 15}, false); err != nil {
 		return utils.WrapError("ReadInteger Sfn_SSB_Offset_r16", err)
 	}
 	ie.Sfn_SSB_Offset_r16 = tmp_int_Sfn_SSB_Offset_r16
 	if Ss_PBCH_BlockPower_r16Present {
 		var tmp_int_Ss_PBCH_BlockPower_r16 int64
-		if tmp_int_Ss_PBCH_BlockPower_r16, err = r.ReadInteger(&uper.Constraint{Lb: -60, Ub: 50}, false); err != nil {
+		if tmp_int_Ss_PBCH_BlockPower_r16, err = r.ReadInteger(&aper.Constraint{Lb: -60, Ub: 50}, false); err != nil {
 			return utils.WrapError("Decode Ss_PBCH_BlockPower_r16", err)
 		}
 		ie.Ss_PBCH_BlockPower_r16 = &tmp_int_Ss_PBCH_BlockPower_r16

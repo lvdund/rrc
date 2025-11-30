@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -10,7 +10,7 @@ type UE_MRDC_Capability_v1730 struct {
 	NonCriticalExtension           interface{}                     `optional`
 }
 
-func (ie *UE_MRDC_Capability_v1730) Encode(w *uper.UperWriter) error {
+func (ie *UE_MRDC_Capability_v1730) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.MeasAndMobParametersMRDC_v1730 != nil}
 	for _, bit := range preambleBits {
@@ -26,7 +26,7 @@ func (ie *UE_MRDC_Capability_v1730) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *UE_MRDC_Capability_v1730) Decode(r *uper.UperReader) error {
+func (ie *UE_MRDC_Capability_v1730) Decode(r *aper.AperReader) error {
 	var err error
 	var MeasAndMobParametersMRDC_v1730Present bool
 	if MeasAndMobParametersMRDC_v1730Present, err = r.ReadBool(); err != nil {

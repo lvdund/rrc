@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -20,7 +20,7 @@ type RRCReconfiguration_v1700_IEs struct {
 	NonCriticalExtension               interface{}                                 `optional`
 }
 
-func (ie *RRCReconfiguration_v1700_IEs) Encode(w *uper.UperWriter) error {
+func (ie *RRCReconfiguration_v1700_IEs) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.OtherConfig_v1700 != nil, ie.Sl_L2RelayUE_Config_r17 != nil, ie.Sl_L2RemoteUE_Config_r17 != nil, ie.DedicatedPagingDelivery_r17 != nil, ie.NeedForGapNCSG_ConfigNR_r17 != nil, ie.NeedForGapNCSG_ConfigEUTRA_r17 != nil, ie.Musim_GapConfig_r17 != nil, ie.Ul_GapFR2_Config_r17 != nil, ie.Scg_State_r17 != nil, ie.AppLayerMeasConfig_r17 != nil, ie.Ue_TxTEG_RequestUL_TDOA_Config_r17 != nil}
 	for _, bit := range preambleBits {
@@ -50,7 +50,7 @@ func (ie *RRCReconfiguration_v1700_IEs) Encode(w *uper.UperWriter) error {
 		}
 	}
 	if ie.DedicatedPagingDelivery_r17 != nil {
-		if err = w.WriteOctetString(*ie.DedicatedPagingDelivery_r17, &uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+		if err = w.WriteOctetString(*ie.DedicatedPagingDelivery_r17, &aper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
 			return utils.WrapError("Encode DedicatedPagingDelivery_r17", err)
 		}
 	}
@@ -107,7 +107,7 @@ func (ie *RRCReconfiguration_v1700_IEs) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *RRCReconfiguration_v1700_IEs) Decode(r *uper.UperReader) error {
+func (ie *RRCReconfiguration_v1700_IEs) Decode(r *aper.AperReader) error {
 	var err error
 	var OtherConfig_v1700Present bool
 	if OtherConfig_v1700Present, err = r.ReadBool(); err != nil {
@@ -175,7 +175,7 @@ func (ie *RRCReconfiguration_v1700_IEs) Decode(r *uper.UperReader) error {
 	}
 	if DedicatedPagingDelivery_r17Present {
 		var tmp_os_DedicatedPagingDelivery_r17 []byte
-		if tmp_os_DedicatedPagingDelivery_r17, err = r.ReadOctetString(&uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+		if tmp_os_DedicatedPagingDelivery_r17, err = r.ReadOctetString(&aper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
 			return utils.WrapError("Decode DedicatedPagingDelivery_r17", err)
 		}
 		ie.DedicatedPagingDelivery_r17 = &tmp_os_DedicatedPagingDelivery_r17

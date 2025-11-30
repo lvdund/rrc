@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -11,7 +11,7 @@ type UE_NR_CapabilityAddXDD_Mode struct {
 	MeasAndMobParametersXDD_Diff *MeasAndMobParametersXDD_Diff `optional`
 }
 
-func (ie *UE_NR_CapabilityAddXDD_Mode) Encode(w *uper.UperWriter) error {
+func (ie *UE_NR_CapabilityAddXDD_Mode) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.Phy_ParametersXDD_Diff != nil, ie.Mac_ParametersXDD_Diff != nil, ie.MeasAndMobParametersXDD_Diff != nil}
 	for _, bit := range preambleBits {
@@ -37,7 +37,7 @@ func (ie *UE_NR_CapabilityAddXDD_Mode) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *UE_NR_CapabilityAddXDD_Mode) Decode(r *uper.UperReader) error {
+func (ie *UE_NR_CapabilityAddXDD_Mode) Decode(r *aper.AperReader) error {
 	var err error
 	var Phy_ParametersXDD_DiffPresent bool
 	if Phy_ParametersXDD_DiffPresent, err = r.ReadBool(); err != nil {

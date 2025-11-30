@@ -3,7 +3,7 @@ package ies
 import (
 	"fmt"
 
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -19,14 +19,14 @@ type DRB_ToAddMod_cnAssociation struct {
 	Sdap_Config        *SDAP_Config
 }
 
-func (ie *DRB_ToAddMod_cnAssociation) Encode(w *uper.UperWriter) error {
+func (ie *DRB_ToAddMod_cnAssociation) Encode(w *aper.AperWriter) error {
 	var err error
 	if err = w.WriteChoice(ie.Choice, 2, false); err != nil {
 		return err
 	}
 	switch ie.Choice {
 	case DRB_ToAddMod_cnAssociation_Choice_Eps_BearerIdentity:
-		if err = w.WriteInteger(int64(ie.Eps_BearerIdentity), &uper.Constraint{Lb: 0, Ub: 15}, false); err != nil {
+		if err = w.WriteInteger(int64(ie.Eps_BearerIdentity), &aper.Constraint{Lb: 0, Ub: 15}, false); err != nil {
 			err = utils.WrapError("Encode Eps_BearerIdentity", err)
 		}
 	case DRB_ToAddMod_cnAssociation_Choice_Sdap_Config:
@@ -39,7 +39,7 @@ func (ie *DRB_ToAddMod_cnAssociation) Encode(w *uper.UperWriter) error {
 	return err
 }
 
-func (ie *DRB_ToAddMod_cnAssociation) Decode(r *uper.UperReader) error {
+func (ie *DRB_ToAddMod_cnAssociation) Decode(r *aper.AperReader) error {
 	var err error
 	if ie.Choice, err = r.ReadChoice(2, false); err != nil {
 		return err
@@ -47,7 +47,7 @@ func (ie *DRB_ToAddMod_cnAssociation) Decode(r *uper.UperReader) error {
 	switch ie.Choice {
 	case DRB_ToAddMod_cnAssociation_Choice_Eps_BearerIdentity:
 		var tmp_int_Eps_BearerIdentity int64
-		if tmp_int_Eps_BearerIdentity, err = r.ReadInteger(&uper.Constraint{Lb: 0, Ub: 15}, false); err != nil {
+		if tmp_int_Eps_BearerIdentity, err = r.ReadInteger(&aper.Constraint{Lb: 0, Ub: 15}, false); err != nil {
 			return utils.WrapError("Decode Eps_BearerIdentity", err)
 		}
 		ie.Eps_BearerIdentity = tmp_int_Eps_BearerIdentity

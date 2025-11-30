@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -16,7 +16,7 @@ type MeasIdleCarrierNR_r16 struct {
 	BeamMeasConfigIdle_r16   *BeamMeasConfigIdle_NR_r16                  `optional`
 }
 
-func (ie *MeasIdleCarrierNR_r16) Encode(w *uper.UperWriter) error {
+func (ie *MeasIdleCarrierNR_r16) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.FrequencyBandList != nil, ie.MeasCellListNR_r16 != nil, ie.QualityThreshold_r16 != nil, ie.Ssb_MeasConfig_r16 != nil, ie.BeamMeasConfigIdle_r16 != nil}
 	for _, bit := range preambleBits {
@@ -61,7 +61,7 @@ func (ie *MeasIdleCarrierNR_r16) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *MeasIdleCarrierNR_r16) Decode(r *uper.UperReader) error {
+func (ie *MeasIdleCarrierNR_r16) Decode(r *aper.AperReader) error {
 	var err error
 	var FrequencyBandListPresent bool
 	if FrequencyBandListPresent, err = r.ReadBool(); err != nil {

@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -13,7 +13,7 @@ type Phy_Parameters struct {
 	Phy_ParametersFR2      *Phy_ParametersFR2      `optional`
 }
 
-func (ie *Phy_Parameters) Encode(w *uper.UperWriter) error {
+func (ie *Phy_Parameters) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.Phy_ParametersCommon != nil, ie.Phy_ParametersXDD_Diff != nil, ie.Phy_ParametersFRX_Diff != nil, ie.Phy_ParametersFR1 != nil, ie.Phy_ParametersFR2 != nil}
 	for _, bit := range preambleBits {
@@ -49,7 +49,7 @@ func (ie *Phy_Parameters) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *Phy_Parameters) Decode(r *uper.UperReader) error {
+func (ie *Phy_Parameters) Decode(r *aper.AperReader) error {
 	var err error
 	var Phy_ParametersCommonPresent bool
 	if Phy_ParametersCommonPresent, err = r.ReadBool(); err != nil {

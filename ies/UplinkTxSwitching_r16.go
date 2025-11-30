@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -10,7 +10,7 @@ type UplinkTxSwitching_r16 struct {
 	UplinkTxSwitchingCarrier_r16        UplinkTxSwitching_r16_uplinkTxSwitchingCarrier_r16 `madatory`
 }
 
-func (ie *UplinkTxSwitching_r16) Encode(w *uper.UperWriter) error {
+func (ie *UplinkTxSwitching_r16) Encode(w *aper.AperWriter) error {
 	var err error
 	if err = w.WriteBoolean(ie.UplinkTxSwitchingPeriodLocation_r16); err != nil {
 		return utils.WrapError("WriteBoolean UplinkTxSwitchingPeriodLocation_r16", err)
@@ -21,7 +21,7 @@ func (ie *UplinkTxSwitching_r16) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *UplinkTxSwitching_r16) Decode(r *uper.UperReader) error {
+func (ie *UplinkTxSwitching_r16) Decode(r *aper.AperReader) error {
 	var err error
 	var tmp_bool_UplinkTxSwitchingPeriodLocation_r16 bool
 	if tmp_bool_UplinkTxSwitchingPeriodLocation_r16, err = r.ReadBoolean(); err != nil {

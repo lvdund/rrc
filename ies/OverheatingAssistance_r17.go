@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -10,7 +10,7 @@ type OverheatingAssistance_r17 struct {
 	ReducedMaxMIMO_LayersFR2_2 *OverheatingAssistance_r17_reducedMaxMIMO_LayersFR2_2 `optional`
 }
 
-func (ie *OverheatingAssistance_r17) Encode(w *uper.UperWriter) error {
+func (ie *OverheatingAssistance_r17) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.ReducedMaxBW_FR2_2_r17 != nil, ie.ReducedMaxMIMO_LayersFR2_2 != nil}
 	for _, bit := range preambleBits {
@@ -31,7 +31,7 @@ func (ie *OverheatingAssistance_r17) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *OverheatingAssistance_r17) Decode(r *uper.UperReader) error {
+func (ie *OverheatingAssistance_r17) Decode(r *aper.AperReader) error {
 	var err error
 	var ReducedMaxBW_FR2_2_r17Present bool
 	if ReducedMaxBW_FR2_2_r17Present, err = r.ReadBool(); err != nil {

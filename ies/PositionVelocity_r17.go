@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -14,7 +14,7 @@ type PositionVelocity_r17 struct {
 	VelocityVZ_r17 VelocityStateVector_r17 `madatory`
 }
 
-func (ie *PositionVelocity_r17) Encode(w *uper.UperWriter) error {
+func (ie *PositionVelocity_r17) Encode(w *aper.AperWriter) error {
 	var err error
 	if err = ie.PositionX_r17.Encode(w); err != nil {
 		return utils.WrapError("Encode PositionX_r17", err)
@@ -37,7 +37,7 @@ func (ie *PositionVelocity_r17) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *PositionVelocity_r17) Decode(r *uper.UperReader) error {
+func (ie *PositionVelocity_r17) Decode(r *aper.AperReader) error {
 	var err error
 	if err = ie.PositionX_r17.Decode(r); err != nil {
 		return utils.WrapError("Decode PositionX_r17", err)

@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -12,7 +12,7 @@ type EUTRA_MBSFN_SubframeConfig struct {
 	SubframeAllocation2        *EUTRA_MBSFN_SubframeConfig_subframeAllocation2       `lb:2,ub:2,optional`
 }
 
-func (ie *EUTRA_MBSFN_SubframeConfig) Encode(w *uper.UperWriter) error {
+func (ie *EUTRA_MBSFN_SubframeConfig) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.SubframeAllocation2 != nil}
 	for _, bit := range preambleBits {
@@ -23,7 +23,7 @@ func (ie *EUTRA_MBSFN_SubframeConfig) Encode(w *uper.UperWriter) error {
 	if err = ie.RadioframeAllocationPeriod.Encode(w); err != nil {
 		return utils.WrapError("Encode RadioframeAllocationPeriod", err)
 	}
-	if err = w.WriteInteger(ie.RadioframeAllocationOffset, &uper.Constraint{Lb: 0, Ub: 7}, false); err != nil {
+	if err = w.WriteInteger(ie.RadioframeAllocationOffset, &aper.Constraint{Lb: 0, Ub: 7}, false); err != nil {
 		return utils.WrapError("WriteInteger RadioframeAllocationOffset", err)
 	}
 	if err = ie.SubframeAllocation1.Encode(w); err != nil {
@@ -37,7 +37,7 @@ func (ie *EUTRA_MBSFN_SubframeConfig) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *EUTRA_MBSFN_SubframeConfig) Decode(r *uper.UperReader) error {
+func (ie *EUTRA_MBSFN_SubframeConfig) Decode(r *aper.AperReader) error {
 	var err error
 	var SubframeAllocation2Present bool
 	if SubframeAllocation2Present, err = r.ReadBool(); err != nil {
@@ -47,7 +47,7 @@ func (ie *EUTRA_MBSFN_SubframeConfig) Decode(r *uper.UperReader) error {
 		return utils.WrapError("Decode RadioframeAllocationPeriod", err)
 	}
 	var tmp_int_RadioframeAllocationOffset int64
-	if tmp_int_RadioframeAllocationOffset, err = r.ReadInteger(&uper.Constraint{Lb: 0, Ub: 7}, false); err != nil {
+	if tmp_int_RadioframeAllocationOffset, err = r.ReadInteger(&aper.Constraint{Lb: 0, Ub: 7}, false); err != nil {
 		return utils.WrapError("ReadInteger RadioframeAllocationOffset", err)
 	}
 	ie.RadioframeAllocationOffset = tmp_int_RadioframeAllocationOffset

@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -9,7 +9,7 @@ type RLC_Config_um_Uni_Directional_DL struct {
 	Dl_UM_RLC DL_UM_RLC `madatory`
 }
 
-func (ie *RLC_Config_um_Uni_Directional_DL) Encode(w *uper.UperWriter) error {
+func (ie *RLC_Config_um_Uni_Directional_DL) Encode(w *aper.AperWriter) error {
 	var err error
 	if err = ie.Dl_UM_RLC.Encode(w); err != nil {
 		return utils.WrapError("Encode Dl_UM_RLC", err)
@@ -17,7 +17,7 @@ func (ie *RLC_Config_um_Uni_Directional_DL) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *RLC_Config_um_Uni_Directional_DL) Decode(r *uper.UperReader) error {
+func (ie *RLC_Config_um_Uni_Directional_DL) Decode(r *aper.AperReader) error {
 	var err error
 	if err = ie.Dl_UM_RLC.Decode(r); err != nil {
 		return utils.WrapError("Decode Dl_UM_RLC", err)

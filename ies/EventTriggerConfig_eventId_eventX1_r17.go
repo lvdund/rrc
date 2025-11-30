@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -14,7 +14,7 @@ type EventTriggerConfig_eventId_eventX1_r17 struct {
 	UseAllowedCellList_r17  bool                       `madatory`
 }
 
-func (ie *EventTriggerConfig_eventId_eventX1_r17) Encode(w *uper.UperWriter) error {
+func (ie *EventTriggerConfig_eventId_eventX1_r17) Encode(w *aper.AperWriter) error {
 	var err error
 	if err = ie.X1_Threshold1_Relay_r17.Encode(w); err != nil {
 		return utils.WrapError("Encode X1_Threshold1_Relay_r17", err)
@@ -37,7 +37,7 @@ func (ie *EventTriggerConfig_eventId_eventX1_r17) Encode(w *uper.UperWriter) err
 	return nil
 }
 
-func (ie *EventTriggerConfig_eventId_eventX1_r17) Decode(r *uper.UperReader) error {
+func (ie *EventTriggerConfig_eventId_eventX1_r17) Decode(r *aper.AperReader) error {
 	var err error
 	if err = ie.X1_Threshold1_Relay_r17.Decode(r); err != nil {
 		return utils.WrapError("Decode X1_Threshold1_Relay_r17", err)

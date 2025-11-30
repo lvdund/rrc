@@ -3,7 +3,7 @@ package ies
 import (
 	"fmt"
 
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -18,12 +18,12 @@ const (
 type CSI_RS_ResourceMapping_density struct {
 	Choice uint64
 	Dot5   *CSI_RS_ResourceMapping_density_dot5
-	One    uper.NULL `madatory`
-	Three  uper.NULL `madatory`
-	Spare  uper.NULL `madatory`
+	One    aper.NULL `madatory`
+	Three  aper.NULL `madatory`
+	Spare  aper.NULL `madatory`
 }
 
-func (ie *CSI_RS_ResourceMapping_density) Encode(w *uper.UperWriter) error {
+func (ie *CSI_RS_ResourceMapping_density) Encode(w *aper.AperWriter) error {
 	var err error
 	if err = w.WriteChoice(ie.Choice, 4, false); err != nil {
 		return err
@@ -51,7 +51,7 @@ func (ie *CSI_RS_ResourceMapping_density) Encode(w *uper.UperWriter) error {
 	return err
 }
 
-func (ie *CSI_RS_ResourceMapping_density) Decode(r *uper.UperReader) error {
+func (ie *CSI_RS_ResourceMapping_density) Decode(r *aper.AperReader) error {
 	var err error
 	if ie.Choice, err = r.ReadChoice(4, false); err != nil {
 		return err

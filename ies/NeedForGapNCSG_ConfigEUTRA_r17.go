@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -9,7 +9,7 @@ type NeedForGapNCSG_ConfigEUTRA_r17 struct {
 	RequestedTargetBandFilterNCSG_EUTRA_r17 []FreqBandIndicatorEUTRA `lb:1,ub:maxBandsEUTRA,optional`
 }
 
-func (ie *NeedForGapNCSG_ConfigEUTRA_r17) Encode(w *uper.UperWriter) error {
+func (ie *NeedForGapNCSG_ConfigEUTRA_r17) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{len(ie.RequestedTargetBandFilterNCSG_EUTRA_r17) > 0}
 	for _, bit := range preambleBits {
@@ -18,7 +18,7 @@ func (ie *NeedForGapNCSG_ConfigEUTRA_r17) Encode(w *uper.UperWriter) error {
 		}
 	}
 	if len(ie.RequestedTargetBandFilterNCSG_EUTRA_r17) > 0 {
-		tmp_RequestedTargetBandFilterNCSG_EUTRA_r17 := utils.NewSequence[*FreqBandIndicatorEUTRA]([]*FreqBandIndicatorEUTRA{}, uper.Constraint{Lb: 1, Ub: maxBandsEUTRA}, false)
+		tmp_RequestedTargetBandFilterNCSG_EUTRA_r17 := utils.NewSequence[*FreqBandIndicatorEUTRA]([]*FreqBandIndicatorEUTRA{}, aper.Constraint{Lb: 1, Ub: maxBandsEUTRA}, false)
 		for _, i := range ie.RequestedTargetBandFilterNCSG_EUTRA_r17 {
 			tmp_RequestedTargetBandFilterNCSG_EUTRA_r17.Value = append(tmp_RequestedTargetBandFilterNCSG_EUTRA_r17.Value, &i)
 		}
@@ -29,14 +29,14 @@ func (ie *NeedForGapNCSG_ConfigEUTRA_r17) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *NeedForGapNCSG_ConfigEUTRA_r17) Decode(r *uper.UperReader) error {
+func (ie *NeedForGapNCSG_ConfigEUTRA_r17) Decode(r *aper.AperReader) error {
 	var err error
 	var RequestedTargetBandFilterNCSG_EUTRA_r17Present bool
 	if RequestedTargetBandFilterNCSG_EUTRA_r17Present, err = r.ReadBool(); err != nil {
 		return err
 	}
 	if RequestedTargetBandFilterNCSG_EUTRA_r17Present {
-		tmp_RequestedTargetBandFilterNCSG_EUTRA_r17 := utils.NewSequence[*FreqBandIndicatorEUTRA]([]*FreqBandIndicatorEUTRA{}, uper.Constraint{Lb: 1, Ub: maxBandsEUTRA}, false)
+		tmp_RequestedTargetBandFilterNCSG_EUTRA_r17 := utils.NewSequence[*FreqBandIndicatorEUTRA]([]*FreqBandIndicatorEUTRA{}, aper.Constraint{Lb: 1, Ub: maxBandsEUTRA}, false)
 		fn_RequestedTargetBandFilterNCSG_EUTRA_r17 := func() *FreqBandIndicatorEUTRA {
 			return new(FreqBandIndicatorEUTRA)
 		}

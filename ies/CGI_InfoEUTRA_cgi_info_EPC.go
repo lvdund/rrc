@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -10,7 +10,7 @@ type CGI_InfoEUTRA_cgi_info_EPC struct {
 	Cgi_info_EPC_list   []CellAccessRelatedInfo_EUTRA_EPC `lb:1,ub:maxPLMN,optional`
 }
 
-func (ie *CGI_InfoEUTRA_cgi_info_EPC) Encode(w *uper.UperWriter) error {
+func (ie *CGI_InfoEUTRA_cgi_info_EPC) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{len(ie.Cgi_info_EPC_list) > 0}
 	for _, bit := range preambleBits {
@@ -22,7 +22,7 @@ func (ie *CGI_InfoEUTRA_cgi_info_EPC) Encode(w *uper.UperWriter) error {
 		return utils.WrapError("Encode Cgi_info_EPC_legacy", err)
 	}
 	if len(ie.Cgi_info_EPC_list) > 0 {
-		tmp_Cgi_info_EPC_list := utils.NewSequence[*CellAccessRelatedInfo_EUTRA_EPC]([]*CellAccessRelatedInfo_EUTRA_EPC{}, uper.Constraint{Lb: 1, Ub: maxPLMN}, false)
+		tmp_Cgi_info_EPC_list := utils.NewSequence[*CellAccessRelatedInfo_EUTRA_EPC]([]*CellAccessRelatedInfo_EUTRA_EPC{}, aper.Constraint{Lb: 1, Ub: maxPLMN}, false)
 		for _, i := range ie.Cgi_info_EPC_list {
 			tmp_Cgi_info_EPC_list.Value = append(tmp_Cgi_info_EPC_list.Value, &i)
 		}
@@ -33,7 +33,7 @@ func (ie *CGI_InfoEUTRA_cgi_info_EPC) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *CGI_InfoEUTRA_cgi_info_EPC) Decode(r *uper.UperReader) error {
+func (ie *CGI_InfoEUTRA_cgi_info_EPC) Decode(r *aper.AperReader) error {
 	var err error
 	var Cgi_info_EPC_listPresent bool
 	if Cgi_info_EPC_listPresent, err = r.ReadBool(); err != nil {
@@ -43,7 +43,7 @@ func (ie *CGI_InfoEUTRA_cgi_info_EPC) Decode(r *uper.UperReader) error {
 		return utils.WrapError("Decode Cgi_info_EPC_legacy", err)
 	}
 	if Cgi_info_EPC_listPresent {
-		tmp_Cgi_info_EPC_list := utils.NewSequence[*CellAccessRelatedInfo_EUTRA_EPC]([]*CellAccessRelatedInfo_EUTRA_EPC{}, uper.Constraint{Lb: 1, Ub: maxPLMN}, false)
+		tmp_Cgi_info_EPC_list := utils.NewSequence[*CellAccessRelatedInfo_EUTRA_EPC]([]*CellAccessRelatedInfo_EUTRA_EPC{}, aper.Constraint{Lb: 1, Ub: maxPLMN}, false)
 		fn_Cgi_info_EPC_list := func() *CellAccessRelatedInfo_EUTRA_EPC {
 			return new(CellAccessRelatedInfo_EUTRA_EPC)
 		}

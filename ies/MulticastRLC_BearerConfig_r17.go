@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -10,7 +10,7 @@ type MulticastRLC_BearerConfig_r17 struct {
 	IsPTM_Entity_r17          *MulticastRLC_BearerConfig_r17_isPTM_Entity_r17 `optional`
 }
 
-func (ie *MulticastRLC_BearerConfig_r17) Encode(w *uper.UperWriter) error {
+func (ie *MulticastRLC_BearerConfig_r17) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.IsPTM_Entity_r17 != nil}
 	for _, bit := range preambleBits {
@@ -29,7 +29,7 @@ func (ie *MulticastRLC_BearerConfig_r17) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *MulticastRLC_BearerConfig_r17) Decode(r *uper.UperReader) error {
+func (ie *MulticastRLC_BearerConfig_r17) Decode(r *aper.AperReader) error {
 	var err error
 	var IsPTM_Entity_r17Present bool
 	if IsPTM_Entity_r17Present, err = r.ReadBool(); err != nil {

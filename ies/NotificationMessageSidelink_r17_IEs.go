@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -11,7 +11,7 @@ type NotificationMessageSidelink_r17_IEs struct {
 	NonCriticalExtension     interface{}                                             `optional`
 }
 
-func (ie *NotificationMessageSidelink_r17_IEs) Encode(w *uper.UperWriter) error {
+func (ie *NotificationMessageSidelink_r17_IEs) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.IndicationType_r17 != nil, ie.LateNonCriticalExtension != nil}
 	for _, bit := range preambleBits {
@@ -25,14 +25,14 @@ func (ie *NotificationMessageSidelink_r17_IEs) Encode(w *uper.UperWriter) error 
 		}
 	}
 	if ie.LateNonCriticalExtension != nil {
-		if err = w.WriteOctetString(*ie.LateNonCriticalExtension, &uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+		if err = w.WriteOctetString(*ie.LateNonCriticalExtension, &aper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
 			return utils.WrapError("Encode LateNonCriticalExtension", err)
 		}
 	}
 	return nil
 }
 
-func (ie *NotificationMessageSidelink_r17_IEs) Decode(r *uper.UperReader) error {
+func (ie *NotificationMessageSidelink_r17_IEs) Decode(r *aper.AperReader) error {
 	var err error
 	var IndicationType_r17Present bool
 	if IndicationType_r17Present, err = r.ReadBool(); err != nil {
@@ -50,7 +50,7 @@ func (ie *NotificationMessageSidelink_r17_IEs) Decode(r *uper.UperReader) error 
 	}
 	if LateNonCriticalExtensionPresent {
 		var tmp_os_LateNonCriticalExtension []byte
-		if tmp_os_LateNonCriticalExtension, err = r.ReadOctetString(&uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+		if tmp_os_LateNonCriticalExtension, err = r.ReadOctetString(&aper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
 			return utils.WrapError("Decode LateNonCriticalExtension", err)
 		}
 		ie.LateNonCriticalExtension = &tmp_os_LateNonCriticalExtension

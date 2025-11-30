@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -10,7 +10,7 @@ type RRCReconfigurationComplete_v1720_IEs struct {
 	NonCriticalExtension                     interface{}                               `optional`
 }
 
-func (ie *RRCReconfigurationComplete_v1720_IEs) Encode(w *uper.UperWriter) error {
+func (ie *RRCReconfigurationComplete_v1720_IEs) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.UplinkTxDirectCurrentMoreCarrierList_r17 != nil}
 	for _, bit := range preambleBits {
@@ -26,7 +26,7 @@ func (ie *RRCReconfigurationComplete_v1720_IEs) Encode(w *uper.UperWriter) error
 	return nil
 }
 
-func (ie *RRCReconfigurationComplete_v1720_IEs) Decode(r *uper.UperReader) error {
+func (ie *RRCReconfigurationComplete_v1720_IEs) Decode(r *aper.AperReader) error {
 	var err error
 	var UplinkTxDirectCurrentMoreCarrierList_r17Present bool
 	if UplinkTxDirectCurrentMoreCarrierList_r17Present, err = r.ReadBool(); err != nil {

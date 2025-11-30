@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -10,7 +10,7 @@ type PUCCH_SRS struct {
 	UplinkBWP BWP_Id         `madatory`
 }
 
-func (ie *PUCCH_SRS) Encode(w *uper.UperWriter) error {
+func (ie *PUCCH_SRS) Encode(w *aper.AperWriter) error {
 	var err error
 	if err = ie.Resource.Encode(w); err != nil {
 		return utils.WrapError("Encode Resource", err)
@@ -21,7 +21,7 @@ func (ie *PUCCH_SRS) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *PUCCH_SRS) Decode(r *uper.UperReader) error {
+func (ie *PUCCH_SRS) Decode(r *aper.AperReader) error {
 	var err error
 	if err = ie.Resource.Decode(r); err != nil {
 		return utils.WrapError("Decode Resource", err)

@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -11,7 +11,7 @@ type BandCombination_UplinkTxSwitch_v1700 struct {
 	UplinkTxSwitchingBandParametersList_v1700 []UplinkTxSwitchingBandParameters_v1700 `lb:1,ub:maxSimultaneousBands,optional`
 }
 
-func (ie *BandCombination_UplinkTxSwitch_v1700) Encode(w *uper.UperWriter) error {
+func (ie *BandCombination_UplinkTxSwitch_v1700) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.BandCombination_v1700 != nil, len(ie.SupportedBandPairListNR_v1700) > 0, len(ie.UplinkTxSwitchingBandParametersList_v1700) > 0}
 	for _, bit := range preambleBits {
@@ -25,7 +25,7 @@ func (ie *BandCombination_UplinkTxSwitch_v1700) Encode(w *uper.UperWriter) error
 		}
 	}
 	if len(ie.SupportedBandPairListNR_v1700) > 0 {
-		tmp_SupportedBandPairListNR_v1700 := utils.NewSequence[*ULTxSwitchingBandPair_v1700]([]*ULTxSwitchingBandPair_v1700{}, uper.Constraint{Lb: 1, Ub: maxULTxSwitchingBandPairs}, false)
+		tmp_SupportedBandPairListNR_v1700 := utils.NewSequence[*ULTxSwitchingBandPair_v1700]([]*ULTxSwitchingBandPair_v1700{}, aper.Constraint{Lb: 1, Ub: maxULTxSwitchingBandPairs}, false)
 		for _, i := range ie.SupportedBandPairListNR_v1700 {
 			tmp_SupportedBandPairListNR_v1700.Value = append(tmp_SupportedBandPairListNR_v1700.Value, &i)
 		}
@@ -34,7 +34,7 @@ func (ie *BandCombination_UplinkTxSwitch_v1700) Encode(w *uper.UperWriter) error
 		}
 	}
 	if len(ie.UplinkTxSwitchingBandParametersList_v1700) > 0 {
-		tmp_UplinkTxSwitchingBandParametersList_v1700 := utils.NewSequence[*UplinkTxSwitchingBandParameters_v1700]([]*UplinkTxSwitchingBandParameters_v1700{}, uper.Constraint{Lb: 1, Ub: maxSimultaneousBands}, false)
+		tmp_UplinkTxSwitchingBandParametersList_v1700 := utils.NewSequence[*UplinkTxSwitchingBandParameters_v1700]([]*UplinkTxSwitchingBandParameters_v1700{}, aper.Constraint{Lb: 1, Ub: maxSimultaneousBands}, false)
 		for _, i := range ie.UplinkTxSwitchingBandParametersList_v1700 {
 			tmp_UplinkTxSwitchingBandParametersList_v1700.Value = append(tmp_UplinkTxSwitchingBandParametersList_v1700.Value, &i)
 		}
@@ -45,7 +45,7 @@ func (ie *BandCombination_UplinkTxSwitch_v1700) Encode(w *uper.UperWriter) error
 	return nil
 }
 
-func (ie *BandCombination_UplinkTxSwitch_v1700) Decode(r *uper.UperReader) error {
+func (ie *BandCombination_UplinkTxSwitch_v1700) Decode(r *aper.AperReader) error {
 	var err error
 	var BandCombination_v1700Present bool
 	if BandCombination_v1700Present, err = r.ReadBool(); err != nil {
@@ -66,7 +66,7 @@ func (ie *BandCombination_UplinkTxSwitch_v1700) Decode(r *uper.UperReader) error
 		}
 	}
 	if SupportedBandPairListNR_v1700Present {
-		tmp_SupportedBandPairListNR_v1700 := utils.NewSequence[*ULTxSwitchingBandPair_v1700]([]*ULTxSwitchingBandPair_v1700{}, uper.Constraint{Lb: 1, Ub: maxULTxSwitchingBandPairs}, false)
+		tmp_SupportedBandPairListNR_v1700 := utils.NewSequence[*ULTxSwitchingBandPair_v1700]([]*ULTxSwitchingBandPair_v1700{}, aper.Constraint{Lb: 1, Ub: maxULTxSwitchingBandPairs}, false)
 		fn_SupportedBandPairListNR_v1700 := func() *ULTxSwitchingBandPair_v1700 {
 			return new(ULTxSwitchingBandPair_v1700)
 		}
@@ -79,7 +79,7 @@ func (ie *BandCombination_UplinkTxSwitch_v1700) Decode(r *uper.UperReader) error
 		}
 	}
 	if UplinkTxSwitchingBandParametersList_v1700Present {
-		tmp_UplinkTxSwitchingBandParametersList_v1700 := utils.NewSequence[*UplinkTxSwitchingBandParameters_v1700]([]*UplinkTxSwitchingBandParameters_v1700{}, uper.Constraint{Lb: 1, Ub: maxSimultaneousBands}, false)
+		tmp_UplinkTxSwitchingBandParametersList_v1700 := utils.NewSequence[*UplinkTxSwitchingBandParameters_v1700]([]*UplinkTxSwitchingBandParameters_v1700{}, aper.Constraint{Lb: 1, Ub: maxSimultaneousBands}, false)
 		fn_UplinkTxSwitchingBandParametersList_v1700 := func() *UplinkTxSwitchingBandParameters_v1700 {
 			return new(UplinkTxSwitchingBandParameters_v1700)
 		}

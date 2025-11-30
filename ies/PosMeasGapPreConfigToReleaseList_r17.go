@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -9,9 +9,9 @@ type PosMeasGapPreConfigToReleaseList_r17 struct {
 	Value []MeasPosPreConfigGapId_r17 `lb:1,ub:maxNrofPreConfigPosGapId_r17,madatory`
 }
 
-func (ie *PosMeasGapPreConfigToReleaseList_r17) Encode(w *uper.UperWriter) error {
+func (ie *PosMeasGapPreConfigToReleaseList_r17) Encode(w *aper.AperWriter) error {
 	var err error
-	tmp := utils.NewSequence[*MeasPosPreConfigGapId_r17]([]*MeasPosPreConfigGapId_r17{}, uper.Constraint{Lb: 1, Ub: maxNrofPreConfigPosGapId_r17}, false)
+	tmp := utils.NewSequence[*MeasPosPreConfigGapId_r17]([]*MeasPosPreConfigGapId_r17{}, aper.Constraint{Lb: 1, Ub: maxNrofPreConfigPosGapId_r17}, false)
 	for _, i := range ie.Value {
 		tmp.Value = append(tmp.Value, &i)
 	}
@@ -21,9 +21,9 @@ func (ie *PosMeasGapPreConfigToReleaseList_r17) Encode(w *uper.UperWriter) error
 	return nil
 }
 
-func (ie *PosMeasGapPreConfigToReleaseList_r17) Decode(r *uper.UperReader) error {
+func (ie *PosMeasGapPreConfigToReleaseList_r17) Decode(r *aper.AperReader) error {
 	var err error
-	tmp := utils.NewSequence[*MeasPosPreConfigGapId_r17]([]*MeasPosPreConfigGapId_r17{}, uper.Constraint{Lb: 1, Ub: maxNrofPreConfigPosGapId_r17}, false)
+	tmp := utils.NewSequence[*MeasPosPreConfigGapId_r17]([]*MeasPosPreConfigGapId_r17{}, aper.Constraint{Lb: 1, Ub: maxNrofPreConfigPosGapId_r17}, false)
 	fn := func() *MeasPosPreConfigGapId_r17 {
 		return new(MeasPosPreConfigGapId_r17)
 	}

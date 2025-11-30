@@ -3,7 +3,7 @@ package ies
 import (
 	"fmt"
 
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -21,7 +21,7 @@ type PUCCH_SpatialRelationInfo_referenceSignal struct {
 	Srs          *PUCCH_SRS
 }
 
-func (ie *PUCCH_SpatialRelationInfo_referenceSignal) Encode(w *uper.UperWriter) error {
+func (ie *PUCCH_SpatialRelationInfo_referenceSignal) Encode(w *aper.AperWriter) error {
 	var err error
 	if err = w.WriteChoice(ie.Choice, 3, false); err != nil {
 		return err
@@ -45,7 +45,7 @@ func (ie *PUCCH_SpatialRelationInfo_referenceSignal) Encode(w *uper.UperWriter) 
 	return err
 }
 
-func (ie *PUCCH_SpatialRelationInfo_referenceSignal) Decode(r *uper.UperReader) error {
+func (ie *PUCCH_SpatialRelationInfo_referenceSignal) Decode(r *aper.AperReader) error {
 	var err error
 	if ie.Choice, err = r.ReadChoice(3, false); err != nil {
 		return err

@@ -3,7 +3,7 @@ package ies
 import (
 	"bytes"
 
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -16,7 +16,7 @@ type CSI_AssociatedReportConfigInfo struct {
 	Csi_SSB_ResourceSetExt              *int64                                                   `lb:1,ub:maxNrofCSI_SSB_ResourceSetsPerConfigExt,optional,ext-1`
 }
 
-func (ie *CSI_AssociatedReportConfigInfo) Encode(w *uper.UperWriter) error {
+func (ie *CSI_AssociatedReportConfigInfo) Encode(w *aper.AperWriter) error {
 	var err error
 	hasExtensions := ie.ResourcesForChannel2_r17 != nil || ie.Csi_SSB_ResourceSetExt != nil
 	preambleBits := []bool{hasExtensions, ie.ResourcesForChannel != nil, ie.Csi_IM_ResourcesForInterference != nil, ie.Nzp_CSI_RS_ResourcesForInterference != nil}
@@ -34,12 +34,12 @@ func (ie *CSI_AssociatedReportConfigInfo) Encode(w *uper.UperWriter) error {
 		}
 	}
 	if ie.Csi_IM_ResourcesForInterference != nil {
-		if err = w.WriteInteger(*ie.Csi_IM_ResourcesForInterference, &uper.Constraint{Lb: 1, Ub: maxNrofCSI_IM_ResourceSetsPerConfig}, false); err != nil {
+		if err = w.WriteInteger(*ie.Csi_IM_ResourcesForInterference, &aper.Constraint{Lb: 1, Ub: maxNrofCSI_IM_ResourceSetsPerConfig}, false); err != nil {
 			return utils.WrapError("Encode Csi_IM_ResourcesForInterference", err)
 		}
 	}
 	if ie.Nzp_CSI_RS_ResourcesForInterference != nil {
-		if err = w.WriteInteger(*ie.Nzp_CSI_RS_ResourcesForInterference, &uper.Constraint{Lb: 1, Ub: maxNrofNZP_CSI_RS_ResourceSetsPerConfig}, false); err != nil {
+		if err = w.WriteInteger(*ie.Nzp_CSI_RS_ResourcesForInterference, &aper.Constraint{Lb: 1, Ub: maxNrofNZP_CSI_RS_ResourceSetsPerConfig}, false); err != nil {
 			return utils.WrapError("Encode Nzp_CSI_RS_ResourcesForInterference", err)
 		}
 	}
@@ -53,7 +53,7 @@ func (ie *CSI_AssociatedReportConfigInfo) Encode(w *uper.UperWriter) error {
 		// encode extension group 1
 		if extBitmap[0] {
 			extBuf := new(bytes.Buffer)
-			extWriter := uper.NewWriter(extBuf)
+			extWriter := aper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 1
 			optionals_ext_1 := []bool{ie.ResourcesForChannel2_r17 != nil, ie.Csi_SSB_ResourceSetExt != nil}
@@ -71,7 +71,7 @@ func (ie *CSI_AssociatedReportConfigInfo) Encode(w *uper.UperWriter) error {
 			}
 			// encode Csi_SSB_ResourceSetExt optional
 			if ie.Csi_SSB_ResourceSetExt != nil {
-				if err = extWriter.WriteInteger(*ie.Csi_SSB_ResourceSetExt, &uper.Constraint{Lb: 1, Ub: maxNrofCSI_SSB_ResourceSetsPerConfigExt}, false); err != nil {
+				if err = extWriter.WriteInteger(*ie.Csi_SSB_ResourceSetExt, &aper.Constraint{Lb: 1, Ub: maxNrofCSI_SSB_ResourceSetsPerConfigExt}, false); err != nil {
 					return utils.WrapError("Encode Csi_SSB_ResourceSetExt", err)
 				}
 			}
@@ -88,7 +88,7 @@ func (ie *CSI_AssociatedReportConfigInfo) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *CSI_AssociatedReportConfigInfo) Decode(r *uper.UperReader) error {
+func (ie *CSI_AssociatedReportConfigInfo) Decode(r *aper.AperReader) error {
 	var err error
 	var extensionBit bool
 	if extensionBit, err = r.ReadBool(); err != nil {
@@ -117,14 +117,14 @@ func (ie *CSI_AssociatedReportConfigInfo) Decode(r *uper.UperReader) error {
 	}
 	if Csi_IM_ResourcesForInterferencePresent {
 		var tmp_int_Csi_IM_ResourcesForInterference int64
-		if tmp_int_Csi_IM_ResourcesForInterference, err = r.ReadInteger(&uper.Constraint{Lb: 1, Ub: maxNrofCSI_IM_ResourceSetsPerConfig}, false); err != nil {
+		if tmp_int_Csi_IM_ResourcesForInterference, err = r.ReadInteger(&aper.Constraint{Lb: 1, Ub: maxNrofCSI_IM_ResourceSetsPerConfig}, false); err != nil {
 			return utils.WrapError("Decode Csi_IM_ResourcesForInterference", err)
 		}
 		ie.Csi_IM_ResourcesForInterference = &tmp_int_Csi_IM_ResourcesForInterference
 	}
 	if Nzp_CSI_RS_ResourcesForInterferencePresent {
 		var tmp_int_Nzp_CSI_RS_ResourcesForInterference int64
-		if tmp_int_Nzp_CSI_RS_ResourcesForInterference, err = r.ReadInteger(&uper.Constraint{Lb: 1, Ub: maxNrofNZP_CSI_RS_ResourceSetsPerConfig}, false); err != nil {
+		if tmp_int_Nzp_CSI_RS_ResourcesForInterference, err = r.ReadInteger(&aper.Constraint{Lb: 1, Ub: maxNrofNZP_CSI_RS_ResourceSetsPerConfig}, false); err != nil {
 			return utils.WrapError("Decode Nzp_CSI_RS_ResourcesForInterference", err)
 		}
 		ie.Nzp_CSI_RS_ResourcesForInterference = &tmp_int_Nzp_CSI_RS_ResourcesForInterference
@@ -144,7 +144,7 @@ func (ie *CSI_AssociatedReportConfigInfo) Decode(r *uper.UperReader) error {
 				return err
 			}
 
-			extReader := uper.NewReader(bytes.NewReader(extBytes))
+			extReader := aper.NewReader(bytes.NewReader(extBytes))
 
 			ResourcesForChannel2_r17Present, err := extReader.ReadBool()
 			if err != nil {
@@ -164,7 +164,7 @@ func (ie *CSI_AssociatedReportConfigInfo) Decode(r *uper.UperReader) error {
 			// decode Csi_SSB_ResourceSetExt optional
 			if Csi_SSB_ResourceSetExtPresent {
 				var tmp_int_Csi_SSB_ResourceSetExt int64
-				if tmp_int_Csi_SSB_ResourceSetExt, err = extReader.ReadInteger(&uper.Constraint{Lb: 1, Ub: maxNrofCSI_SSB_ResourceSetsPerConfigExt}, false); err != nil {
+				if tmp_int_Csi_SSB_ResourceSetExt, err = extReader.ReadInteger(&aper.Constraint{Lb: 1, Ub: maxNrofCSI_SSB_ResourceSetsPerConfigExt}, false); err != nil {
 					return utils.WrapError("Decode Csi_SSB_ResourceSetExt", err)
 				}
 				ie.Csi_SSB_ResourceSetExt = &tmp_int_Csi_SSB_ResourceSetExt

@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -9,9 +9,9 @@ type SPS_ConfigToAddModList_r16 struct {
 	Value []SPS_Config `lb:1,ub:maxNrofSPS_Config_r16,madatory`
 }
 
-func (ie *SPS_ConfigToAddModList_r16) Encode(w *uper.UperWriter) error {
+func (ie *SPS_ConfigToAddModList_r16) Encode(w *aper.AperWriter) error {
 	var err error
-	tmp := utils.NewSequence[*SPS_Config]([]*SPS_Config{}, uper.Constraint{Lb: 1, Ub: maxNrofSPS_Config_r16}, false)
+	tmp := utils.NewSequence[*SPS_Config]([]*SPS_Config{}, aper.Constraint{Lb: 1, Ub: maxNrofSPS_Config_r16}, false)
 	for _, i := range ie.Value {
 		tmp.Value = append(tmp.Value, &i)
 	}
@@ -21,9 +21,9 @@ func (ie *SPS_ConfigToAddModList_r16) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *SPS_ConfigToAddModList_r16) Decode(r *uper.UperReader) error {
+func (ie *SPS_ConfigToAddModList_r16) Decode(r *aper.AperReader) error {
 	var err error
-	tmp := utils.NewSequence[*SPS_Config]([]*SPS_Config{}, uper.Constraint{Lb: 1, Ub: maxNrofSPS_Config_r16}, false)
+	tmp := utils.NewSequence[*SPS_Config]([]*SPS_Config{}, aper.Constraint{Lb: 1, Ub: maxNrofSPS_Config_r16}, false)
 	fn := func() *SPS_Config {
 		return new(SPS_Config)
 	}

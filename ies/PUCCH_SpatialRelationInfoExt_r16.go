@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -10,7 +10,7 @@ type PUCCH_SpatialRelationInfoExt_r16 struct {
 	Pucch_PathlossReferenceRS_Id_v1610 *PUCCH_PathlossReferenceRS_Id_v1610 `optional`
 }
 
-func (ie *PUCCH_SpatialRelationInfoExt_r16) Encode(w *uper.UperWriter) error {
+func (ie *PUCCH_SpatialRelationInfoExt_r16) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.Pucch_SpatialRelationInfoId_v1610 != nil, ie.Pucch_PathlossReferenceRS_Id_v1610 != nil}
 	for _, bit := range preambleBits {
@@ -31,7 +31,7 @@ func (ie *PUCCH_SpatialRelationInfoExt_r16) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *PUCCH_SpatialRelationInfoExt_r16) Decode(r *uper.UperReader) error {
+func (ie *PUCCH_SpatialRelationInfoExt_r16) Decode(r *aper.AperReader) error {
 	var err error
 	var Pucch_SpatialRelationInfoId_v1610Present bool
 	if Pucch_SpatialRelationInfoId_v1610Present, err = r.ReadBool(); err != nil {

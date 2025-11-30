@@ -3,7 +3,7 @@ package ies
 import (
 	"bytes"
 
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -21,7 +21,7 @@ type BandCombination_UplinkTxSwitch_r16 struct {
 	UplinkTxSwitching_PUSCH_TransCoherence_r16 *BandCombination_UplinkTxSwitch_r16_uplinkTxSwitching_PUSCH_TransCoherence_r16 `optional,ext-1`
 }
 
-func (ie *BandCombination_UplinkTxSwitch_r16) Encode(w *uper.UperWriter) error {
+func (ie *BandCombination_UplinkTxSwitch_r16) Encode(w *aper.AperWriter) error {
 	var err error
 	hasExtensions := ie.UplinkTxSwitching_PUSCH_TransCoherence_r16 != nil
 	preambleBits := []bool{hasExtensions, ie.BandCombination_v1540 != nil, ie.BandCombination_v1560 != nil, ie.BandCombination_v1570 != nil, ie.BandCombination_v1580 != nil, ie.BandCombination_v1590 != nil, ie.BandCombination_v1610 != nil, ie.UplinkTxSwitching_OptionSupport_r16 != nil, ie.UplinkTxSwitching_PowerBoosting_r16 != nil}
@@ -63,7 +63,7 @@ func (ie *BandCombination_UplinkTxSwitch_r16) Encode(w *uper.UperWriter) error {
 			return utils.WrapError("Encode BandCombination_v1610", err)
 		}
 	}
-	tmp_SupportedBandPairListNR_r16 := utils.NewSequence[*ULTxSwitchingBandPair_r16]([]*ULTxSwitchingBandPair_r16{}, uper.Constraint{Lb: 1, Ub: maxULTxSwitchingBandPairs}, false)
+	tmp_SupportedBandPairListNR_r16 := utils.NewSequence[*ULTxSwitchingBandPair_r16]([]*ULTxSwitchingBandPair_r16{}, aper.Constraint{Lb: 1, Ub: maxULTxSwitchingBandPairs}, false)
 	for _, i := range ie.SupportedBandPairListNR_r16 {
 		tmp_SupportedBandPairListNR_r16.Value = append(tmp_SupportedBandPairListNR_r16.Value, &i)
 	}
@@ -90,7 +90,7 @@ func (ie *BandCombination_UplinkTxSwitch_r16) Encode(w *uper.UperWriter) error {
 		// encode extension group 1
 		if extBitmap[0] {
 			extBuf := new(bytes.Buffer)
-			extWriter := uper.NewWriter(extBuf)
+			extWriter := aper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 1
 			optionals_ext_1 := []bool{ie.UplinkTxSwitching_PUSCH_TransCoherence_r16 != nil}
@@ -119,7 +119,7 @@ func (ie *BandCombination_UplinkTxSwitch_r16) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *BandCombination_UplinkTxSwitch_r16) Decode(r *uper.UperReader) error {
+func (ie *BandCombination_UplinkTxSwitch_r16) Decode(r *aper.AperReader) error {
 	var err error
 	var extensionBit bool
 	if extensionBit, err = r.ReadBool(); err != nil {
@@ -196,7 +196,7 @@ func (ie *BandCombination_UplinkTxSwitch_r16) Decode(r *uper.UperReader) error {
 			return utils.WrapError("Decode BandCombination_v1610", err)
 		}
 	}
-	tmp_SupportedBandPairListNR_r16 := utils.NewSequence[*ULTxSwitchingBandPair_r16]([]*ULTxSwitchingBandPair_r16{}, uper.Constraint{Lb: 1, Ub: maxULTxSwitchingBandPairs}, false)
+	tmp_SupportedBandPairListNR_r16 := utils.NewSequence[*ULTxSwitchingBandPair_r16]([]*ULTxSwitchingBandPair_r16{}, aper.Constraint{Lb: 1, Ub: maxULTxSwitchingBandPairs}, false)
 	fn_SupportedBandPairListNR_r16 := func() *ULTxSwitchingBandPair_r16 {
 		return new(ULTxSwitchingBandPair_r16)
 	}
@@ -234,7 +234,7 @@ func (ie *BandCombination_UplinkTxSwitch_r16) Decode(r *uper.UperReader) error {
 				return err
 			}
 
-			extReader := uper.NewReader(bytes.NewReader(extBytes))
+			extReader := aper.NewReader(bytes.NewReader(extBytes))
 
 			UplinkTxSwitching_PUSCH_TransCoherence_r16Present, err := extReader.ReadBool()
 			if err != nil {

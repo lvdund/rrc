@@ -3,22 +3,22 @@ package ies
 import (
 	"bytes"
 
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
 type Phy_ParametersFRX_Diff struct {
 	DynamicSFI                                        *Phy_ParametersFRX_Diff_dynamicSFI                                        `optional`
-	Dummy1                                            *uper.BitString                                                           `lb:2,ub:2,optional`
-	TwoFL_DMRS                                        *uper.BitString                                                           `lb:2,ub:2,optional`
-	Dummy2                                            *uper.BitString                                                           `lb:2,ub:2,optional`
-	Dummy3                                            *uper.BitString                                                           `lb:2,ub:2,optional`
+	Dummy1                                            *aper.BitString                                                           `lb:2,ub:2,optional`
+	TwoFL_DMRS                                        *aper.BitString                                                           `lb:2,ub:2,optional`
+	Dummy2                                            *aper.BitString                                                           `lb:2,ub:2,optional`
+	Dummy3                                            *aper.BitString                                                           `lb:2,ub:2,optional`
 	SupportedDMRS_TypeDL                              *Phy_ParametersFRX_Diff_supportedDMRS_TypeDL                              `optional`
 	SupportedDMRS_TypeUL                              *Phy_ParametersFRX_Diff_supportedDMRS_TypeUL                              `optional`
 	SemiOpenLoopCSI                                   *Phy_ParametersFRX_Diff_semiOpenLoopCSI                                   `optional`
 	Csi_ReportWithoutPMI                              *Phy_ParametersFRX_Diff_csi_ReportWithoutPMI                              `optional`
 	Csi_ReportWithoutCQI                              *Phy_ParametersFRX_Diff_csi_ReportWithoutCQI                              `optional`
-	OnePortsPTRS                                      *uper.BitString                                                           `lb:2,ub:2,optional`
+	OnePortsPTRS                                      *aper.BitString                                                           `lb:2,ub:2,optional`
 	TwoPUCCH_F0_2_ConsecSymbols                       *Phy_ParametersFRX_Diff_twoPUCCH_F0_2_ConsecSymbols                       `optional`
 	Pucch_F2_WithFH                                   *Phy_ParametersFRX_Diff_pucch_F2_WithFH                                   `optional`
 	Pucch_F3_WithFH                                   *Phy_ParametersFRX_Diff_pucch_F3_WithFH                                   `optional`
@@ -77,7 +77,7 @@ type Phy_ParametersFRX_Diff struct {
 	Cqi_4_BitsSubbandTN_NonSharedSpectrumChAccess_r17 *Phy_ParametersFRX_Diff_cqi_4_BitsSubbandTN_NonSharedSpectrumChAccess_r17 `optional,ext-6`
 }
 
-func (ie *Phy_ParametersFRX_Diff) Encode(w *uper.UperWriter) error {
+func (ie *Phy_ParametersFRX_Diff) Encode(w *aper.AperWriter) error {
 	var err error
 	hasExtensions := ie.Csi_RS_IM_ReceptionForFeedback != nil || ie.Csi_RS_ProcFrameworkForSRS != nil || ie.Csi_ReportFramework != nil || ie.Mux_SR_HARQ_ACK_CSI_PUCCH_OncePerSlot != nil || ie.Mux_SR_HARQ_ACK_PUCCH != nil || ie.Mux_MultipleGroupCtrlCH_Overlap != nil || ie.Dl_SchedulingOffset_PDSCH_TypeA != nil || ie.Dl_SchedulingOffset_PDSCH_TypeB != nil || ie.Ul_SchedulingOffset != nil || ie.Dl_64QAM_MCS_TableAlt != nil || ie.Ul_64QAM_MCS_TableAlt != nil || ie.Cqi_TableAlt != nil || ie.OneFL_DMRS_TwoAdditionalDMRS_UL != nil || ie.TwoFL_DMRS_TwoAdditionalDMRS_UL != nil || ie.OneFL_DMRS_ThreeAdditionalDMRS_UL != nil || ie.Pdcch_BlindDetectionNRDC != nil || ie.Mux_HARQ_ACK_PUSCH_DiffSymbol != nil || ie.Type1_HARQ_ACK_Codebook_r16 != nil || ie.EnhancedPowerControl_r16 != nil || ie.SimultaneousTCI_ActMultipleCC_r16 != nil || ie.SimultaneousSpatialRelationMultipleCC_r16 != nil || ie.Cli_RSSI_FDM_DL_r16 != nil || ie.Cli_SRS_RSRP_FDM_DL_r16 != nil || ie.MaxLayersMIMO_Adaptation_r16 != nil || ie.AggregationFactorSPS_DL_r16 != nil || ie.MaxTotalResourcesForOneFreqRange_r16 != nil || ie.Csi_ReportFrameworkExt_r16 != nil || ie.TwoTCI_Act_servingCellInCC_List_r16 != nil || ie.Cri_RI_CQI_WithoutNon_PMI_PortInd_r16 != nil || ie.Cqi_4_BitsSubbandTN_NonSharedSpectrumChAccess_r17 != nil
 	preambleBits := []bool{hasExtensions, ie.DynamicSFI != nil, ie.Dummy1 != nil, ie.TwoFL_DMRS != nil, ie.Dummy2 != nil, ie.Dummy3 != nil, ie.SupportedDMRS_TypeDL != nil, ie.SupportedDMRS_TypeUL != nil, ie.SemiOpenLoopCSI != nil, ie.Csi_ReportWithoutPMI != nil, ie.Csi_ReportWithoutCQI != nil, ie.OnePortsPTRS != nil, ie.TwoPUCCH_F0_2_ConsecSymbols != nil, ie.Pucch_F2_WithFH != nil, ie.Pucch_F3_WithFH != nil, ie.Pucch_F4_WithFH != nil, ie.Pucch_F0_2WithoutFH != nil, ie.Pucch_F1_3_4WithoutFH != nil, ie.Mux_SR_HARQ_ACK_CSI_PUCCH_MultiPerSlot != nil, ie.Uci_CodeBlockSegmentation != nil, ie.OnePUCCH_LongAndShortFormat != nil, ie.TwoPUCCH_AnyOthersInSlot != nil, ie.IntraSlotFreqHopping_PUSCH != nil, ie.Pusch_LBRM != nil, ie.Pdcch_BlindDetectionCA != nil, ie.Tpc_PUSCH_RNTI != nil, ie.Tpc_PUCCH_RNTI != nil, ie.Tpc_SRS_RNTI != nil, ie.AbsoluteTPC_Command != nil, ie.TwoDifferentTPC_Loop_PUSCH != nil, ie.TwoDifferentTPC_Loop_PUCCH != nil, ie.Pusch_HalfPi_BPSK != nil, ie.Pucch_F3_4_HalfPi_BPSK != nil, ie.AlmostContiguousCP_OFDM_UL != nil, ie.Sp_CSI_RS != nil, ie.Sp_CSI_IM != nil, ie.Tdd_MultiDL_UL_SwitchPerSlot != nil, ie.MultipleCORESET != nil}
@@ -92,22 +92,22 @@ func (ie *Phy_ParametersFRX_Diff) Encode(w *uper.UperWriter) error {
 		}
 	}
 	if ie.Dummy1 != nil {
-		if err = w.WriteBitString(ie.Dummy1.Bytes, uint(ie.Dummy1.NumBits), &uper.Constraint{Lb: 2, Ub: 2}, false); err != nil {
+		if err = w.WriteBitString(ie.Dummy1.Bytes, uint(ie.Dummy1.NumBits), &aper.Constraint{Lb: 2, Ub: 2}, false); err != nil {
 			return utils.WrapError("Encode Dummy1", err)
 		}
 	}
 	if ie.TwoFL_DMRS != nil {
-		if err = w.WriteBitString(ie.TwoFL_DMRS.Bytes, uint(ie.TwoFL_DMRS.NumBits), &uper.Constraint{Lb: 2, Ub: 2}, false); err != nil {
+		if err = w.WriteBitString(ie.TwoFL_DMRS.Bytes, uint(ie.TwoFL_DMRS.NumBits), &aper.Constraint{Lb: 2, Ub: 2}, false); err != nil {
 			return utils.WrapError("Encode TwoFL_DMRS", err)
 		}
 	}
 	if ie.Dummy2 != nil {
-		if err = w.WriteBitString(ie.Dummy2.Bytes, uint(ie.Dummy2.NumBits), &uper.Constraint{Lb: 2, Ub: 2}, false); err != nil {
+		if err = w.WriteBitString(ie.Dummy2.Bytes, uint(ie.Dummy2.NumBits), &aper.Constraint{Lb: 2, Ub: 2}, false); err != nil {
 			return utils.WrapError("Encode Dummy2", err)
 		}
 	}
 	if ie.Dummy3 != nil {
-		if err = w.WriteBitString(ie.Dummy3.Bytes, uint(ie.Dummy3.NumBits), &uper.Constraint{Lb: 2, Ub: 2}, false); err != nil {
+		if err = w.WriteBitString(ie.Dummy3.Bytes, uint(ie.Dummy3.NumBits), &aper.Constraint{Lb: 2, Ub: 2}, false); err != nil {
 			return utils.WrapError("Encode Dummy3", err)
 		}
 	}
@@ -137,7 +137,7 @@ func (ie *Phy_ParametersFRX_Diff) Encode(w *uper.UperWriter) error {
 		}
 	}
 	if ie.OnePortsPTRS != nil {
-		if err = w.WriteBitString(ie.OnePortsPTRS.Bytes, uint(ie.OnePortsPTRS.NumBits), &uper.Constraint{Lb: 2, Ub: 2}, false); err != nil {
+		if err = w.WriteBitString(ie.OnePortsPTRS.Bytes, uint(ie.OnePortsPTRS.NumBits), &aper.Constraint{Lb: 2, Ub: 2}, false); err != nil {
 			return utils.WrapError("Encode OnePortsPTRS", err)
 		}
 	}
@@ -202,7 +202,7 @@ func (ie *Phy_ParametersFRX_Diff) Encode(w *uper.UperWriter) error {
 		}
 	}
 	if ie.Pdcch_BlindDetectionCA != nil {
-		if err = w.WriteInteger(*ie.Pdcch_BlindDetectionCA, &uper.Constraint{Lb: 4, Ub: 16}, false); err != nil {
+		if err = w.WriteInteger(*ie.Pdcch_BlindDetectionCA, &aper.Constraint{Lb: 4, Ub: 16}, false); err != nil {
 			return utils.WrapError("Encode Pdcch_BlindDetectionCA", err)
 		}
 	}
@@ -281,7 +281,7 @@ func (ie *Phy_ParametersFRX_Diff) Encode(w *uper.UperWriter) error {
 		// encode extension group 1
 		if extBitmap[0] {
 			extBuf := new(bytes.Buffer)
-			extWriter := uper.NewWriter(extBuf)
+			extWriter := aper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 1
 			optionals_ext_1 := []bool{ie.Csi_RS_IM_ReceptionForFeedback != nil, ie.Csi_RS_ProcFrameworkForSRS != nil, ie.Csi_ReportFramework != nil, ie.Mux_SR_HARQ_ACK_CSI_PUCCH_OncePerSlot != nil, ie.Mux_SR_HARQ_ACK_PUCCH != nil, ie.Mux_MultipleGroupCtrlCH_Overlap != nil, ie.Dl_SchedulingOffset_PDSCH_TypeA != nil, ie.Dl_SchedulingOffset_PDSCH_TypeB != nil, ie.Ul_SchedulingOffset != nil, ie.Dl_64QAM_MCS_TableAlt != nil, ie.Ul_64QAM_MCS_TableAlt != nil, ie.Cqi_TableAlt != nil, ie.OneFL_DMRS_TwoAdditionalDMRS_UL != nil, ie.TwoFL_DMRS_TwoAdditionalDMRS_UL != nil, ie.OneFL_DMRS_ThreeAdditionalDMRS_UL != nil}
@@ -394,7 +394,7 @@ func (ie *Phy_ParametersFRX_Diff) Encode(w *uper.UperWriter) error {
 		// encode extension group 2
 		if extBitmap[1] {
 			extBuf := new(bytes.Buffer)
-			extWriter := uper.NewWriter(extBuf)
+			extWriter := aper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 2
 			optionals_ext_2 := []bool{ie.Pdcch_BlindDetectionNRDC != nil, ie.Mux_HARQ_ACK_PUSCH_DiffSymbol != nil}
@@ -429,7 +429,7 @@ func (ie *Phy_ParametersFRX_Diff) Encode(w *uper.UperWriter) error {
 		// encode extension group 3
 		if extBitmap[2] {
 			extBuf := new(bytes.Buffer)
-			extWriter := uper.NewWriter(extBuf)
+			extWriter := aper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 3
 			optionals_ext_3 := []bool{ie.Type1_HARQ_ACK_Codebook_r16 != nil, ie.EnhancedPowerControl_r16 != nil, ie.SimultaneousTCI_ActMultipleCC_r16 != nil, ie.SimultaneousSpatialRelationMultipleCC_r16 != nil, ie.Cli_RSSI_FDM_DL_r16 != nil, ie.Cli_SRS_RSRP_FDM_DL_r16 != nil, ie.MaxLayersMIMO_Adaptation_r16 != nil, ie.AggregationFactorSPS_DL_r16 != nil, ie.MaxTotalResourcesForOneFreqRange_r16 != nil, ie.Csi_ReportFrameworkExt_r16 != nil}
@@ -512,7 +512,7 @@ func (ie *Phy_ParametersFRX_Diff) Encode(w *uper.UperWriter) error {
 		// encode extension group 4
 		if extBitmap[3] {
 			extBuf := new(bytes.Buffer)
-			extWriter := uper.NewWriter(extBuf)
+			extWriter := aper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 4
 			optionals_ext_4 := []bool{ie.TwoTCI_Act_servingCellInCC_List_r16 != nil}
@@ -541,7 +541,7 @@ func (ie *Phy_ParametersFRX_Diff) Encode(w *uper.UperWriter) error {
 		// encode extension group 5
 		if extBitmap[4] {
 			extBuf := new(bytes.Buffer)
-			extWriter := uper.NewWriter(extBuf)
+			extWriter := aper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 5
 			optionals_ext_5 := []bool{ie.Cri_RI_CQI_WithoutNon_PMI_PortInd_r16 != nil}
@@ -570,7 +570,7 @@ func (ie *Phy_ParametersFRX_Diff) Encode(w *uper.UperWriter) error {
 		// encode extension group 6
 		if extBitmap[5] {
 			extBuf := new(bytes.Buffer)
-			extWriter := uper.NewWriter(extBuf)
+			extWriter := aper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 6
 			optionals_ext_6 := []bool{ie.Cqi_4_BitsSubbandTN_NonSharedSpectrumChAccess_r17 != nil}
@@ -599,7 +599,7 @@ func (ie *Phy_ParametersFRX_Diff) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *Phy_ParametersFRX_Diff) Decode(r *uper.UperReader) error {
+func (ie *Phy_ParametersFRX_Diff) Decode(r *aper.AperReader) error {
 	var err error
 	var extensionBit bool
 	if extensionBit, err = r.ReadBool(); err != nil {
@@ -762,10 +762,10 @@ func (ie *Phy_ParametersFRX_Diff) Decode(r *uper.UperReader) error {
 	if Dummy1Present {
 		var tmp_bs_Dummy1 []byte
 		var n_Dummy1 uint
-		if tmp_bs_Dummy1, n_Dummy1, err = r.ReadBitString(&uper.Constraint{Lb: 2, Ub: 2}, false); err != nil {
+		if tmp_bs_Dummy1, n_Dummy1, err = r.ReadBitString(&aper.Constraint{Lb: 2, Ub: 2}, false); err != nil {
 			return utils.WrapError("Decode Dummy1", err)
 		}
-		tmp_bitstring := uper.BitString{
+		tmp_bitstring := aper.BitString{
 			Bytes:   tmp_bs_Dummy1,
 			NumBits: uint64(n_Dummy1),
 		}
@@ -774,10 +774,10 @@ func (ie *Phy_ParametersFRX_Diff) Decode(r *uper.UperReader) error {
 	if TwoFL_DMRSPresent {
 		var tmp_bs_TwoFL_DMRS []byte
 		var n_TwoFL_DMRS uint
-		if tmp_bs_TwoFL_DMRS, n_TwoFL_DMRS, err = r.ReadBitString(&uper.Constraint{Lb: 2, Ub: 2}, false); err != nil {
+		if tmp_bs_TwoFL_DMRS, n_TwoFL_DMRS, err = r.ReadBitString(&aper.Constraint{Lb: 2, Ub: 2}, false); err != nil {
 			return utils.WrapError("Decode TwoFL_DMRS", err)
 		}
-		tmp_bitstring := uper.BitString{
+		tmp_bitstring := aper.BitString{
 			Bytes:   tmp_bs_TwoFL_DMRS,
 			NumBits: uint64(n_TwoFL_DMRS),
 		}
@@ -786,10 +786,10 @@ func (ie *Phy_ParametersFRX_Diff) Decode(r *uper.UperReader) error {
 	if Dummy2Present {
 		var tmp_bs_Dummy2 []byte
 		var n_Dummy2 uint
-		if tmp_bs_Dummy2, n_Dummy2, err = r.ReadBitString(&uper.Constraint{Lb: 2, Ub: 2}, false); err != nil {
+		if tmp_bs_Dummy2, n_Dummy2, err = r.ReadBitString(&aper.Constraint{Lb: 2, Ub: 2}, false); err != nil {
 			return utils.WrapError("Decode Dummy2", err)
 		}
-		tmp_bitstring := uper.BitString{
+		tmp_bitstring := aper.BitString{
 			Bytes:   tmp_bs_Dummy2,
 			NumBits: uint64(n_Dummy2),
 		}
@@ -798,10 +798,10 @@ func (ie *Phy_ParametersFRX_Diff) Decode(r *uper.UperReader) error {
 	if Dummy3Present {
 		var tmp_bs_Dummy3 []byte
 		var n_Dummy3 uint
-		if tmp_bs_Dummy3, n_Dummy3, err = r.ReadBitString(&uper.Constraint{Lb: 2, Ub: 2}, false); err != nil {
+		if tmp_bs_Dummy3, n_Dummy3, err = r.ReadBitString(&aper.Constraint{Lb: 2, Ub: 2}, false); err != nil {
 			return utils.WrapError("Decode Dummy3", err)
 		}
-		tmp_bitstring := uper.BitString{
+		tmp_bitstring := aper.BitString{
 			Bytes:   tmp_bs_Dummy3,
 			NumBits: uint64(n_Dummy3),
 		}
@@ -840,10 +840,10 @@ func (ie *Phy_ParametersFRX_Diff) Decode(r *uper.UperReader) error {
 	if OnePortsPTRSPresent {
 		var tmp_bs_OnePortsPTRS []byte
 		var n_OnePortsPTRS uint
-		if tmp_bs_OnePortsPTRS, n_OnePortsPTRS, err = r.ReadBitString(&uper.Constraint{Lb: 2, Ub: 2}, false); err != nil {
+		if tmp_bs_OnePortsPTRS, n_OnePortsPTRS, err = r.ReadBitString(&aper.Constraint{Lb: 2, Ub: 2}, false); err != nil {
 			return utils.WrapError("Decode OnePortsPTRS", err)
 		}
-		tmp_bitstring := uper.BitString{
+		tmp_bitstring := aper.BitString{
 			Bytes:   tmp_bs_OnePortsPTRS,
 			NumBits: uint64(n_OnePortsPTRS),
 		}
@@ -923,7 +923,7 @@ func (ie *Phy_ParametersFRX_Diff) Decode(r *uper.UperReader) error {
 	}
 	if Pdcch_BlindDetectionCAPresent {
 		var tmp_int_Pdcch_BlindDetectionCA int64
-		if tmp_int_Pdcch_BlindDetectionCA, err = r.ReadInteger(&uper.Constraint{Lb: 4, Ub: 16}, false); err != nil {
+		if tmp_int_Pdcch_BlindDetectionCA, err = r.ReadInteger(&aper.Constraint{Lb: 4, Ub: 16}, false); err != nil {
 			return utils.WrapError("Decode Pdcch_BlindDetectionCA", err)
 		}
 		ie.Pdcch_BlindDetectionCA = &tmp_int_Pdcch_BlindDetectionCA
@@ -1021,7 +1021,7 @@ func (ie *Phy_ParametersFRX_Diff) Decode(r *uper.UperReader) error {
 				return err
 			}
 
-			extReader := uper.NewReader(bytes.NewReader(extBytes))
+			extReader := aper.NewReader(bytes.NewReader(extBytes))
 
 			Csi_RS_IM_ReceptionForFeedbackPresent, err := extReader.ReadBool()
 			if err != nil {
@@ -1196,7 +1196,7 @@ func (ie *Phy_ParametersFRX_Diff) Decode(r *uper.UperReader) error {
 				return err
 			}
 
-			extReader := uper.NewReader(bytes.NewReader(extBytes))
+			extReader := aper.NewReader(bytes.NewReader(extBytes))
 
 			Pdcch_BlindDetectionNRDCPresent, err := extReader.ReadBool()
 			if err != nil {
@@ -1228,7 +1228,7 @@ func (ie *Phy_ParametersFRX_Diff) Decode(r *uper.UperReader) error {
 				return err
 			}
 
-			extReader := uper.NewReader(bytes.NewReader(extBytes))
+			extReader := aper.NewReader(bytes.NewReader(extBytes))
 
 			Type1_HARQ_ACK_Codebook_r16Present, err := extReader.ReadBool()
 			if err != nil {
@@ -1348,7 +1348,7 @@ func (ie *Phy_ParametersFRX_Diff) Decode(r *uper.UperReader) error {
 				return err
 			}
 
-			extReader := uper.NewReader(bytes.NewReader(extBytes))
+			extReader := aper.NewReader(bytes.NewReader(extBytes))
 
 			TwoTCI_Act_servingCellInCC_List_r16Present, err := extReader.ReadBool()
 			if err != nil {
@@ -1369,7 +1369,7 @@ func (ie *Phy_ParametersFRX_Diff) Decode(r *uper.UperReader) error {
 				return err
 			}
 
-			extReader := uper.NewReader(bytes.NewReader(extBytes))
+			extReader := aper.NewReader(bytes.NewReader(extBytes))
 
 			Cri_RI_CQI_WithoutNon_PMI_PortInd_r16Present, err := extReader.ReadBool()
 			if err != nil {
@@ -1390,7 +1390,7 @@ func (ie *Phy_ParametersFRX_Diff) Decode(r *uper.UperReader) error {
 				return err
 			}
 
-			extReader := uper.NewReader(bytes.NewReader(extBytes))
+			extReader := aper.NewReader(bytes.NewReader(extBytes))
 
 			Cqi_4_BitsSubbandTN_NonSharedSpectrumChAccess_r17Present, err := extReader.ReadBool()
 			if err != nil {

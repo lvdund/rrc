@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -11,7 +11,7 @@ type SL_DRX_ConfigGC_BC_r17 struct {
 	Sl_DefaultDRX_GC_BC_r17      *SL_DRX_GC_BC_QoS_r17  `optional`
 }
 
-func (ie *SL_DRX_ConfigGC_BC_r17) Encode(w *uper.UperWriter) error {
+func (ie *SL_DRX_ConfigGC_BC_r17) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{len(ie.Sl_DRX_GC_BC_PerQoS_List_r17) > 0, ie.Sl_DRX_GC_generic_r17 != nil, ie.Sl_DefaultDRX_GC_BC_r17 != nil}
 	for _, bit := range preambleBits {
@@ -20,7 +20,7 @@ func (ie *SL_DRX_ConfigGC_BC_r17) Encode(w *uper.UperWriter) error {
 		}
 	}
 	if len(ie.Sl_DRX_GC_BC_PerQoS_List_r17) > 0 {
-		tmp_Sl_DRX_GC_BC_PerQoS_List_r17 := utils.NewSequence[*SL_DRX_GC_BC_QoS_r17]([]*SL_DRX_GC_BC_QoS_r17{}, uper.Constraint{Lb: 1, Ub: maxSL_GC_BC_DRX_QoS_r17}, false)
+		tmp_Sl_DRX_GC_BC_PerQoS_List_r17 := utils.NewSequence[*SL_DRX_GC_BC_QoS_r17]([]*SL_DRX_GC_BC_QoS_r17{}, aper.Constraint{Lb: 1, Ub: maxSL_GC_BC_DRX_QoS_r17}, false)
 		for _, i := range ie.Sl_DRX_GC_BC_PerQoS_List_r17 {
 			tmp_Sl_DRX_GC_BC_PerQoS_List_r17.Value = append(tmp_Sl_DRX_GC_BC_PerQoS_List_r17.Value, &i)
 		}
@@ -41,7 +41,7 @@ func (ie *SL_DRX_ConfigGC_BC_r17) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *SL_DRX_ConfigGC_BC_r17) Decode(r *uper.UperReader) error {
+func (ie *SL_DRX_ConfigGC_BC_r17) Decode(r *aper.AperReader) error {
 	var err error
 	var Sl_DRX_GC_BC_PerQoS_List_r17Present bool
 	if Sl_DRX_GC_BC_PerQoS_List_r17Present, err = r.ReadBool(); err != nil {
@@ -56,7 +56,7 @@ func (ie *SL_DRX_ConfigGC_BC_r17) Decode(r *uper.UperReader) error {
 		return err
 	}
 	if Sl_DRX_GC_BC_PerQoS_List_r17Present {
-		tmp_Sl_DRX_GC_BC_PerQoS_List_r17 := utils.NewSequence[*SL_DRX_GC_BC_QoS_r17]([]*SL_DRX_GC_BC_QoS_r17{}, uper.Constraint{Lb: 1, Ub: maxSL_GC_BC_DRX_QoS_r17}, false)
+		tmp_Sl_DRX_GC_BC_PerQoS_List_r17 := utils.NewSequence[*SL_DRX_GC_BC_QoS_r17]([]*SL_DRX_GC_BC_QoS_r17{}, aper.Constraint{Lb: 1, Ub: maxSL_GC_BC_DRX_QoS_r17}, false)
 		fn_Sl_DRX_GC_BC_PerQoS_List_r17 := func() *SL_DRX_GC_BC_QoS_r17 {
 			return new(SL_DRX_GC_BC_QoS_r17)
 		}

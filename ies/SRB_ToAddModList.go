@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -9,9 +9,9 @@ type SRB_ToAddModList struct {
 	Value []SRB_ToAddMod `lb:1,ub:2,madatory`
 }
 
-func (ie *SRB_ToAddModList) Encode(w *uper.UperWriter) error {
+func (ie *SRB_ToAddModList) Encode(w *aper.AperWriter) error {
 	var err error
-	tmp := utils.NewSequence[*SRB_ToAddMod]([]*SRB_ToAddMod{}, uper.Constraint{Lb: 1, Ub: 2}, false)
+	tmp := utils.NewSequence[*SRB_ToAddMod]([]*SRB_ToAddMod{}, aper.Constraint{Lb: 1, Ub: 2}, false)
 	for _, i := range ie.Value {
 		tmp.Value = append(tmp.Value, &i)
 	}
@@ -21,9 +21,9 @@ func (ie *SRB_ToAddModList) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *SRB_ToAddModList) Decode(r *uper.UperReader) error {
+func (ie *SRB_ToAddModList) Decode(r *aper.AperReader) error {
 	var err error
-	tmp := utils.NewSequence[*SRB_ToAddMod]([]*SRB_ToAddMod{}, uper.Constraint{Lb: 1, Ub: 2}, false)
+	tmp := utils.NewSequence[*SRB_ToAddMod]([]*SRB_ToAddMod{}, aper.Constraint{Lb: 1, Ub: 2}, false)
 	fn := func() *SRB_ToAddMod {
 		return new(SRB_ToAddMod)
 	}

@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -11,7 +11,7 @@ type BeamFailureDetection_r17 struct {
 	AdditionalPCI_r17        *AdditionalPCIIndex_r17      `optional`
 }
 
-func (ie *BeamFailureDetection_r17) Encode(w *uper.UperWriter) error {
+func (ie *BeamFailureDetection_r17) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.FailureDetectionSet1_r17 != nil, ie.FailureDetectionSet2_r17 != nil, ie.AdditionalPCI_r17 != nil}
 	for _, bit := range preambleBits {
@@ -37,7 +37,7 @@ func (ie *BeamFailureDetection_r17) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *BeamFailureDetection_r17) Decode(r *uper.UperReader) error {
+func (ie *BeamFailureDetection_r17) Decode(r *aper.AperReader) error {
 	var err error
 	var FailureDetectionSet1_r17Present bool
 	if FailureDetectionSet1_r17Present, err = r.ReadBool(); err != nil {

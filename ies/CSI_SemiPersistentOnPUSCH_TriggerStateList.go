@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -9,9 +9,9 @@ type CSI_SemiPersistentOnPUSCH_TriggerStateList struct {
 	Value []CSI_SemiPersistentOnPUSCH_TriggerState `lb:1,ub:maxNrOfSemiPersistentPUSCH_Triggers,madatory`
 }
 
-func (ie *CSI_SemiPersistentOnPUSCH_TriggerStateList) Encode(w *uper.UperWriter) error {
+func (ie *CSI_SemiPersistentOnPUSCH_TriggerStateList) Encode(w *aper.AperWriter) error {
 	var err error
-	tmp := utils.NewSequence[*CSI_SemiPersistentOnPUSCH_TriggerState]([]*CSI_SemiPersistentOnPUSCH_TriggerState{}, uper.Constraint{Lb: 1, Ub: maxNrOfSemiPersistentPUSCH_Triggers}, false)
+	tmp := utils.NewSequence[*CSI_SemiPersistentOnPUSCH_TriggerState]([]*CSI_SemiPersistentOnPUSCH_TriggerState{}, aper.Constraint{Lb: 1, Ub: maxNrOfSemiPersistentPUSCH_Triggers}, false)
 	for _, i := range ie.Value {
 		tmp.Value = append(tmp.Value, &i)
 	}
@@ -21,9 +21,9 @@ func (ie *CSI_SemiPersistentOnPUSCH_TriggerStateList) Encode(w *uper.UperWriter)
 	return nil
 }
 
-func (ie *CSI_SemiPersistentOnPUSCH_TriggerStateList) Decode(r *uper.UperReader) error {
+func (ie *CSI_SemiPersistentOnPUSCH_TriggerStateList) Decode(r *aper.AperReader) error {
 	var err error
-	tmp := utils.NewSequence[*CSI_SemiPersistentOnPUSCH_TriggerState]([]*CSI_SemiPersistentOnPUSCH_TriggerState{}, uper.Constraint{Lb: 1, Ub: maxNrOfSemiPersistentPUSCH_Triggers}, false)
+	tmp := utils.NewSequence[*CSI_SemiPersistentOnPUSCH_TriggerState]([]*CSI_SemiPersistentOnPUSCH_TriggerState{}, aper.Constraint{Lb: 1, Ub: maxNrOfSemiPersistentPUSCH_Triggers}, false)
 	fn := func() *CSI_SemiPersistentOnPUSCH_TriggerState {
 		return new(CSI_SemiPersistentOnPUSCH_TriggerState)
 	}

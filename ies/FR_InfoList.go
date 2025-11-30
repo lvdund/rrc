@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -9,9 +9,9 @@ type FR_InfoList struct {
 	Value []FR_Info `lb:1,ub:maxNrofServingCells_1,madatory`
 }
 
-func (ie *FR_InfoList) Encode(w *uper.UperWriter) error {
+func (ie *FR_InfoList) Encode(w *aper.AperWriter) error {
 	var err error
-	tmp := utils.NewSequence[*FR_Info]([]*FR_Info{}, uper.Constraint{Lb: 1, Ub: maxNrofServingCells_1}, false)
+	tmp := utils.NewSequence[*FR_Info]([]*FR_Info{}, aper.Constraint{Lb: 1, Ub: maxNrofServingCells_1}, false)
 	for _, i := range ie.Value {
 		tmp.Value = append(tmp.Value, &i)
 	}
@@ -21,9 +21,9 @@ func (ie *FR_InfoList) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *FR_InfoList) Decode(r *uper.UperReader) error {
+func (ie *FR_InfoList) Decode(r *aper.AperReader) error {
 	var err error
-	tmp := utils.NewSequence[*FR_Info]([]*FR_Info{}, uper.Constraint{Lb: 1, Ub: maxNrofServingCells_1}, false)
+	tmp := utils.NewSequence[*FR_Info]([]*FR_Info{}, aper.Constraint{Lb: 1, Ub: maxNrofServingCells_1}, false)
 	fn := func() *FR_Info {
 		return new(FR_Info)
 	}

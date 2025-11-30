@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -13,7 +13,7 @@ type DLInformationTransfer_v1700_IEs struct {
 	NonCriticalExtension interface{}                                       `optional`
 }
 
-func (ie *DLInformationTransfer_v1700_IEs) Encode(w *uper.UperWriter) error {
+func (ie *DLInformationTransfer_v1700_IEs) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.DedicatedInfoF1c_r17 != nil, ie.RxTxTimeDiff_gNB_r17 != nil, ie.Ta_PDC_r17 != nil, ie.Sib9Fallback_r17 != nil}
 	for _, bit := range preambleBits {
@@ -44,7 +44,7 @@ func (ie *DLInformationTransfer_v1700_IEs) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *DLInformationTransfer_v1700_IEs) Decode(r *uper.UperReader) error {
+func (ie *DLInformationTransfer_v1700_IEs) Decode(r *aper.AperReader) error {
 	var err error
 	var DedicatedInfoF1c_r17Present bool
 	if DedicatedInfoF1c_r17Present, err = r.ReadBool(); err != nil {

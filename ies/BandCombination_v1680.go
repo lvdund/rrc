@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -9,7 +9,7 @@ type BandCombination_v1680 struct {
 	IntrabandConcurrentOperationPowerClass_r16 []IntraBandPowerClass_r16 `lb:1,ub:maxBandComb,optional`
 }
 
-func (ie *BandCombination_v1680) Encode(w *uper.UperWriter) error {
+func (ie *BandCombination_v1680) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{len(ie.IntrabandConcurrentOperationPowerClass_r16) > 0}
 	for _, bit := range preambleBits {
@@ -18,7 +18,7 @@ func (ie *BandCombination_v1680) Encode(w *uper.UperWriter) error {
 		}
 	}
 	if len(ie.IntrabandConcurrentOperationPowerClass_r16) > 0 {
-		tmp_IntrabandConcurrentOperationPowerClass_r16 := utils.NewSequence[*IntraBandPowerClass_r16]([]*IntraBandPowerClass_r16{}, uper.Constraint{Lb: 1, Ub: maxBandComb}, false)
+		tmp_IntrabandConcurrentOperationPowerClass_r16 := utils.NewSequence[*IntraBandPowerClass_r16]([]*IntraBandPowerClass_r16{}, aper.Constraint{Lb: 1, Ub: maxBandComb}, false)
 		for _, i := range ie.IntrabandConcurrentOperationPowerClass_r16 {
 			tmp_IntrabandConcurrentOperationPowerClass_r16.Value = append(tmp_IntrabandConcurrentOperationPowerClass_r16.Value, &i)
 		}
@@ -29,14 +29,14 @@ func (ie *BandCombination_v1680) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *BandCombination_v1680) Decode(r *uper.UperReader) error {
+func (ie *BandCombination_v1680) Decode(r *aper.AperReader) error {
 	var err error
 	var IntrabandConcurrentOperationPowerClass_r16Present bool
 	if IntrabandConcurrentOperationPowerClass_r16Present, err = r.ReadBool(); err != nil {
 		return err
 	}
 	if IntrabandConcurrentOperationPowerClass_r16Present {
-		tmp_IntrabandConcurrentOperationPowerClass_r16 := utils.NewSequence[*IntraBandPowerClass_r16]([]*IntraBandPowerClass_r16{}, uper.Constraint{Lb: 1, Ub: maxBandComb}, false)
+		tmp_IntrabandConcurrentOperationPowerClass_r16 := utils.NewSequence[*IntraBandPowerClass_r16]([]*IntraBandPowerClass_r16{}, aper.Constraint{Lb: 1, Ub: maxBandComb}, false)
 		fn_IntrabandConcurrentOperationPowerClass_r16 := func() *IntraBandPowerClass_r16 {
 			return new(IntraBandPowerClass_r16)
 		}

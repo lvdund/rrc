@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -11,7 +11,7 @@ type ReestabUE_Identity struct {
 	ShortMAC_I ShortMAC_I `madatory`
 }
 
-func (ie *ReestabUE_Identity) Encode(w *uper.UperWriter) error {
+func (ie *ReestabUE_Identity) Encode(w *aper.AperWriter) error {
 	var err error
 	if err = ie.C_RNTI.Encode(w); err != nil {
 		return utils.WrapError("Encode C_RNTI", err)
@@ -25,7 +25,7 @@ func (ie *ReestabUE_Identity) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *ReestabUE_Identity) Decode(r *uper.UperReader) error {
+func (ie *ReestabUE_Identity) Decode(r *aper.AperReader) error {
 	var err error
 	if err = ie.C_RNTI.Decode(r); err != nil {
 		return utils.WrapError("Decode C_RNTI", err)

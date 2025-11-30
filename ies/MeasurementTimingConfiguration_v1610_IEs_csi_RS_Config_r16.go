@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -11,7 +11,7 @@ type MeasurementTimingConfiguration_v1610_IEs_csi_RS_Config_r16 struct {
 	RefSSBFreq_r16               ARFCN_ValueNR       `madatory`
 }
 
-func (ie *MeasurementTimingConfiguration_v1610_IEs_csi_RS_Config_r16) Encode(w *uper.UperWriter) error {
+func (ie *MeasurementTimingConfiguration_v1610_IEs_csi_RS_Config_r16) Encode(w *aper.AperWriter) error {
 	var err error
 	if err = ie.Csi_RS_SubcarrierSpacing_r16.Encode(w); err != nil {
 		return utils.WrapError("Encode Csi_RS_SubcarrierSpacing_r16", err)
@@ -25,7 +25,7 @@ func (ie *MeasurementTimingConfiguration_v1610_IEs_csi_RS_Config_r16) Encode(w *
 	return nil
 }
 
-func (ie *MeasurementTimingConfiguration_v1610_IEs_csi_RS_Config_r16) Decode(r *uper.UperReader) error {
+func (ie *MeasurementTimingConfiguration_v1610_IEs_csi_RS_Config_r16) Decode(r *aper.AperReader) error {
 	var err error
 	if err = ie.Csi_RS_SubcarrierSpacing_r16.Decode(r); err != nil {
 		return utils.WrapError("Decode Csi_RS_SubcarrierSpacing_r16", err)

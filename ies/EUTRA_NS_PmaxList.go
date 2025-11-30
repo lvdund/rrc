@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -9,9 +9,9 @@ type EUTRA_NS_PmaxList struct {
 	Value []EUTRA_NS_PmaxValue `lb:1,ub:maxEUTRA_NS_Pmax,madatory`
 }
 
-func (ie *EUTRA_NS_PmaxList) Encode(w *uper.UperWriter) error {
+func (ie *EUTRA_NS_PmaxList) Encode(w *aper.AperWriter) error {
 	var err error
-	tmp := utils.NewSequence[*EUTRA_NS_PmaxValue]([]*EUTRA_NS_PmaxValue{}, uper.Constraint{Lb: 1, Ub: maxEUTRA_NS_Pmax}, false)
+	tmp := utils.NewSequence[*EUTRA_NS_PmaxValue]([]*EUTRA_NS_PmaxValue{}, aper.Constraint{Lb: 1, Ub: maxEUTRA_NS_Pmax}, false)
 	for _, i := range ie.Value {
 		tmp.Value = append(tmp.Value, &i)
 	}
@@ -21,9 +21,9 @@ func (ie *EUTRA_NS_PmaxList) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *EUTRA_NS_PmaxList) Decode(r *uper.UperReader) error {
+func (ie *EUTRA_NS_PmaxList) Decode(r *aper.AperReader) error {
 	var err error
-	tmp := utils.NewSequence[*EUTRA_NS_PmaxValue]([]*EUTRA_NS_PmaxValue{}, uper.Constraint{Lb: 1, Ub: maxEUTRA_NS_Pmax}, false)
+	tmp := utils.NewSequence[*EUTRA_NS_PmaxValue]([]*EUTRA_NS_PmaxValue{}, aper.Constraint{Lb: 1, Ub: maxEUTRA_NS_Pmax}, false)
 	fn := func() *EUTRA_NS_PmaxValue {
 		return new(EUTRA_NS_PmaxValue)
 	}

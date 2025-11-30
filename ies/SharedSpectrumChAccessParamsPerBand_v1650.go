@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -9,7 +9,7 @@ type SharedSpectrumChAccessParamsPerBand_v1650 struct {
 	ExtendedSearchSpaceSwitchWithDCI_r16 *SharedSpectrumChAccessParamsPerBand_v1650_extendedSearchSpaceSwitchWithDCI_r16 `optional`
 }
 
-func (ie *SharedSpectrumChAccessParamsPerBand_v1650) Encode(w *uper.UperWriter) error {
+func (ie *SharedSpectrumChAccessParamsPerBand_v1650) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.ExtendedSearchSpaceSwitchWithDCI_r16 != nil}
 	for _, bit := range preambleBits {
@@ -25,7 +25,7 @@ func (ie *SharedSpectrumChAccessParamsPerBand_v1650) Encode(w *uper.UperWriter) 
 	return nil
 }
 
-func (ie *SharedSpectrumChAccessParamsPerBand_v1650) Decode(r *uper.UperReader) error {
+func (ie *SharedSpectrumChAccessParamsPerBand_v1650) Decode(r *aper.AperReader) error {
 	var err error
 	var ExtendedSearchSpaceSwitchWithDCI_r16Present bool
 	if ExtendedSearchSpaceSwitchWithDCI_r16Present, err = r.ReadBool(); err != nil {

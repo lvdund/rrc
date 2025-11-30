@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -10,7 +10,7 @@ type CSI_AssociatedReportConfigInfo_resourcesForChannel2_r17_nzp_CSI_RS2_r17 str
 	Qcl_info2_r17    []TCI_StateId `lb:1,ub:maxNrofAP_CSI_RS_ResourcesPerSet,optional`
 }
 
-func (ie *CSI_AssociatedReportConfigInfo_resourcesForChannel2_r17_nzp_CSI_RS2_r17) Encode(w *uper.UperWriter) error {
+func (ie *CSI_AssociatedReportConfigInfo_resourcesForChannel2_r17_nzp_CSI_RS2_r17) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{len(ie.Qcl_info2_r17) > 0}
 	for _, bit := range preambleBits {
@@ -18,11 +18,11 @@ func (ie *CSI_AssociatedReportConfigInfo_resourcesForChannel2_r17_nzp_CSI_RS2_r1
 			return err
 		}
 	}
-	if err = w.WriteInteger(ie.ResourceSet2_r17, &uper.Constraint{Lb: 1, Ub: maxNrofNZP_CSI_RS_ResourceSetsPerConfig}, false); err != nil {
+	if err = w.WriteInteger(ie.ResourceSet2_r17, &aper.Constraint{Lb: 1, Ub: maxNrofNZP_CSI_RS_ResourceSetsPerConfig}, false); err != nil {
 		return utils.WrapError("WriteInteger ResourceSet2_r17", err)
 	}
 	if len(ie.Qcl_info2_r17) > 0 {
-		tmp_Qcl_info2_r17 := utils.NewSequence[*TCI_StateId]([]*TCI_StateId{}, uper.Constraint{Lb: 1, Ub: maxNrofAP_CSI_RS_ResourcesPerSet}, false)
+		tmp_Qcl_info2_r17 := utils.NewSequence[*TCI_StateId]([]*TCI_StateId{}, aper.Constraint{Lb: 1, Ub: maxNrofAP_CSI_RS_ResourcesPerSet}, false)
 		for _, i := range ie.Qcl_info2_r17 {
 			tmp_Qcl_info2_r17.Value = append(tmp_Qcl_info2_r17.Value, &i)
 		}
@@ -33,19 +33,19 @@ func (ie *CSI_AssociatedReportConfigInfo_resourcesForChannel2_r17_nzp_CSI_RS2_r1
 	return nil
 }
 
-func (ie *CSI_AssociatedReportConfigInfo_resourcesForChannel2_r17_nzp_CSI_RS2_r17) Decode(r *uper.UperReader) error {
+func (ie *CSI_AssociatedReportConfigInfo_resourcesForChannel2_r17_nzp_CSI_RS2_r17) Decode(r *aper.AperReader) error {
 	var err error
 	var Qcl_info2_r17Present bool
 	if Qcl_info2_r17Present, err = r.ReadBool(); err != nil {
 		return err
 	}
 	var tmp_int_ResourceSet2_r17 int64
-	if tmp_int_ResourceSet2_r17, err = r.ReadInteger(&uper.Constraint{Lb: 1, Ub: maxNrofNZP_CSI_RS_ResourceSetsPerConfig}, false); err != nil {
+	if tmp_int_ResourceSet2_r17, err = r.ReadInteger(&aper.Constraint{Lb: 1, Ub: maxNrofNZP_CSI_RS_ResourceSetsPerConfig}, false); err != nil {
 		return utils.WrapError("ReadInteger ResourceSet2_r17", err)
 	}
 	ie.ResourceSet2_r17 = tmp_int_ResourceSet2_r17
 	if Qcl_info2_r17Present {
-		tmp_Qcl_info2_r17 := utils.NewSequence[*TCI_StateId]([]*TCI_StateId{}, uper.Constraint{Lb: 1, Ub: maxNrofAP_CSI_RS_ResourcesPerSet}, false)
+		tmp_Qcl_info2_r17 := utils.NewSequence[*TCI_StateId]([]*TCI_StateId{}, aper.Constraint{Lb: 1, Ub: maxNrofAP_CSI_RS_ResourcesPerSet}, false)
 		fn_Qcl_info2_r17 := func() *TCI_StateId {
 			return new(TCI_StateId)
 		}

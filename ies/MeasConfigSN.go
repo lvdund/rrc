@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -9,7 +9,7 @@ type MeasConfigSN struct {
 	MeasuredFrequenciesSN []NR_FreqInfo `lb:1,ub:maxMeasFreqsSN,optional`
 }
 
-func (ie *MeasConfigSN) Encode(w *uper.UperWriter) error {
+func (ie *MeasConfigSN) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{len(ie.MeasuredFrequenciesSN) > 0}
 	for _, bit := range preambleBits {
@@ -18,7 +18,7 @@ func (ie *MeasConfigSN) Encode(w *uper.UperWriter) error {
 		}
 	}
 	if len(ie.MeasuredFrequenciesSN) > 0 {
-		tmp_MeasuredFrequenciesSN := utils.NewSequence[*NR_FreqInfo]([]*NR_FreqInfo{}, uper.Constraint{Lb: 1, Ub: maxMeasFreqsSN}, false)
+		tmp_MeasuredFrequenciesSN := utils.NewSequence[*NR_FreqInfo]([]*NR_FreqInfo{}, aper.Constraint{Lb: 1, Ub: maxMeasFreqsSN}, false)
 		for _, i := range ie.MeasuredFrequenciesSN {
 			tmp_MeasuredFrequenciesSN.Value = append(tmp_MeasuredFrequenciesSN.Value, &i)
 		}
@@ -29,14 +29,14 @@ func (ie *MeasConfigSN) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *MeasConfigSN) Decode(r *uper.UperReader) error {
+func (ie *MeasConfigSN) Decode(r *aper.AperReader) error {
 	var err error
 	var MeasuredFrequenciesSNPresent bool
 	if MeasuredFrequenciesSNPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
 	if MeasuredFrequenciesSNPresent {
-		tmp_MeasuredFrequenciesSN := utils.NewSequence[*NR_FreqInfo]([]*NR_FreqInfo{}, uper.Constraint{Lb: 1, Ub: maxMeasFreqsSN}, false)
+		tmp_MeasuredFrequenciesSN := utils.NewSequence[*NR_FreqInfo]([]*NR_FreqInfo{}, aper.Constraint{Lb: 1, Ub: maxMeasFreqsSN}, false)
 		fn_MeasuredFrequenciesSN := func() *NR_FreqInfo {
 			return new(NR_FreqInfo)
 		}

@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -9,9 +9,9 @@ type DRB_CountInfoList struct {
 	Value []DRB_CountInfo `lb:0,ub:maxDRB,madatory`
 }
 
-func (ie *DRB_CountInfoList) Encode(w *uper.UperWriter) error {
+func (ie *DRB_CountInfoList) Encode(w *aper.AperWriter) error {
 	var err error
-	tmp := utils.NewSequence[*DRB_CountInfo]([]*DRB_CountInfo{}, uper.Constraint{Lb: 0, Ub: maxDRB}, false)
+	tmp := utils.NewSequence[*DRB_CountInfo]([]*DRB_CountInfo{}, aper.Constraint{Lb: 0, Ub: maxDRB}, false)
 	for _, i := range ie.Value {
 		tmp.Value = append(tmp.Value, &i)
 	}
@@ -21,9 +21,9 @@ func (ie *DRB_CountInfoList) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *DRB_CountInfoList) Decode(r *uper.UperReader) error {
+func (ie *DRB_CountInfoList) Decode(r *aper.AperReader) error {
 	var err error
-	tmp := utils.NewSequence[*DRB_CountInfo]([]*DRB_CountInfo{}, uper.Constraint{Lb: 0, Ub: maxDRB}, false)
+	tmp := utils.NewSequence[*DRB_CountInfo]([]*DRB_CountInfo{}, aper.Constraint{Lb: 0, Ub: maxDRB}, false)
 	fn := func() *DRB_CountInfo {
 		return new(DRB_CountInfo)
 	}

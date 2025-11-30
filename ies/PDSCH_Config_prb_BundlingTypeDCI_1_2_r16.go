@@ -3,7 +3,7 @@ package ies
 import (
 	"fmt"
 
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -19,7 +19,7 @@ type PDSCH_Config_prb_BundlingTypeDCI_1_2_r16 struct {
 	DynamicBundling_r16 *PDSCH_Config_prb_BundlingTypeDCI_1_2_r16_dynamicBundling_r16
 }
 
-func (ie *PDSCH_Config_prb_BundlingTypeDCI_1_2_r16) Encode(w *uper.UperWriter) error {
+func (ie *PDSCH_Config_prb_BundlingTypeDCI_1_2_r16) Encode(w *aper.AperWriter) error {
 	var err error
 	if err = w.WriteChoice(ie.Choice, 2, false); err != nil {
 		return err
@@ -39,7 +39,7 @@ func (ie *PDSCH_Config_prb_BundlingTypeDCI_1_2_r16) Encode(w *uper.UperWriter) e
 	return err
 }
 
-func (ie *PDSCH_Config_prb_BundlingTypeDCI_1_2_r16) Decode(r *uper.UperReader) error {
+func (ie *PDSCH_Config_prb_BundlingTypeDCI_1_2_r16) Decode(r *aper.AperReader) error {
 	var err error
 	if ie.Choice, err = r.ReadChoice(2, false); err != nil {
 		return err

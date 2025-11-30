@@ -3,7 +3,7 @@ package ies
 import (
 	"bytes"
 
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -16,7 +16,7 @@ type Phy_ParametersFR1 struct {
 	Pdcch_MonitoringSingleSpanFirst4Sym_r16 *Phy_ParametersFR1_pdcch_MonitoringSingleSpanFirst4Sym_r16 `optional,ext-2`
 }
 
-func (ie *Phy_ParametersFR1) Encode(w *uper.UperWriter) error {
+func (ie *Phy_ParametersFR1) Encode(w *aper.AperWriter) error {
 	var err error
 	hasExtensions := ie.Pdsch_RE_MappingFR1_PerSlot != nil || ie.Pdcch_MonitoringSingleSpanFirst4Sym_r16 != nil
 	preambleBits := []bool{hasExtensions, ie.Pdcch_MonitoringSingleOccasion != nil, ie.Scs_60kHz != nil, ie.Pdsch_256QAM_FR1 != nil, ie.Pdsch_RE_MappingFR1_PerSymbol != nil}
@@ -55,7 +55,7 @@ func (ie *Phy_ParametersFR1) Encode(w *uper.UperWriter) error {
 		// encode extension group 1
 		if extBitmap[0] {
 			extBuf := new(bytes.Buffer)
-			extWriter := uper.NewWriter(extBuf)
+			extWriter := aper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 1
 			optionals_ext_1 := []bool{ie.Pdsch_RE_MappingFR1_PerSlot != nil}
@@ -84,7 +84,7 @@ func (ie *Phy_ParametersFR1) Encode(w *uper.UperWriter) error {
 		// encode extension group 2
 		if extBitmap[1] {
 			extBuf := new(bytes.Buffer)
-			extWriter := uper.NewWriter(extBuf)
+			extWriter := aper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 2
 			optionals_ext_2 := []bool{ie.Pdcch_MonitoringSingleSpanFirst4Sym_r16 != nil}
@@ -113,7 +113,7 @@ func (ie *Phy_ParametersFR1) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *Phy_ParametersFR1) Decode(r *uper.UperReader) error {
+func (ie *Phy_ParametersFR1) Decode(r *aper.AperReader) error {
 	var err error
 	var extensionBit bool
 	if extensionBit, err = r.ReadBool(); err != nil {
@@ -174,7 +174,7 @@ func (ie *Phy_ParametersFR1) Decode(r *uper.UperReader) error {
 				return err
 			}
 
-			extReader := uper.NewReader(bytes.NewReader(extBytes))
+			extReader := aper.NewReader(bytes.NewReader(extBytes))
 
 			Pdsch_RE_MappingFR1_PerSlotPresent, err := extReader.ReadBool()
 			if err != nil {
@@ -195,7 +195,7 @@ func (ie *Phy_ParametersFR1) Decode(r *uper.UperReader) error {
 				return err
 			}
 
-			extReader := uper.NewReader(bytes.NewReader(extBytes))
+			extReader := aper.NewReader(bytes.NewReader(extBytes))
 
 			Pdcch_MonitoringSingleSpanFirst4Sym_r16Present, err := extReader.ReadBool()
 			if err != nil {

@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -11,7 +11,7 @@ type CG_ConfigInfo_v1570_IEs struct {
 	NonCriticalExtension    *CG_ConfigInfo_v1590_IEs  `optional`
 }
 
-func (ie *CG_ConfigInfo_v1570_IEs) Encode(w *uper.UperWriter) error {
+func (ie *CG_ConfigInfo_v1570_IEs) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.SftdFrequencyList_NR != nil, ie.SftdFrequencyList_EUTRA != nil, ie.NonCriticalExtension != nil}
 	for _, bit := range preambleBits {
@@ -37,7 +37,7 @@ func (ie *CG_ConfigInfo_v1570_IEs) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *CG_ConfigInfo_v1570_IEs) Decode(r *uper.UperReader) error {
+func (ie *CG_ConfigInfo_v1570_IEs) Decode(r *aper.AperReader) error {
 	var err error
 	var SftdFrequencyList_NRPresent bool
 	if SftdFrequencyList_NRPresent, err = r.ReadBool(); err != nil {

@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -11,7 +11,7 @@ type BandSidelinkEUTRA_r16 struct {
 	Gnb_ScheduledMode4SidelinkEUTRA_r16 *BandSidelinkEUTRA_r16_gnb_ScheduledMode4SidelinkEUTRA_r16 `optional`
 }
 
-func (ie *BandSidelinkEUTRA_r16) Encode(w *uper.UperWriter) error {
+func (ie *BandSidelinkEUTRA_r16) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.Gnb_ScheduledMode3SidelinkEUTRA_r16 != nil, ie.Gnb_ScheduledMode4SidelinkEUTRA_r16 != nil}
 	for _, bit := range preambleBits {
@@ -35,7 +35,7 @@ func (ie *BandSidelinkEUTRA_r16) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *BandSidelinkEUTRA_r16) Decode(r *uper.UperReader) error {
+func (ie *BandSidelinkEUTRA_r16) Decode(r *aper.AperReader) error {
 	var err error
 	var Gnb_ScheduledMode3SidelinkEUTRA_r16Present bool
 	if Gnb_ScheduledMode3SidelinkEUTRA_r16Present, err = r.ReadBool(); err != nil {

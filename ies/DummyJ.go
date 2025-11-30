@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -12,7 +12,7 @@ type DummyJ struct {
 	AbsenceOfAnyOtherTechnology_r16     *DummyJ_absenceOfAnyOtherTechnology_r16 `optional`
 }
 
-func (ie *DummyJ) Encode(w *uper.UperWriter) error {
+func (ie *DummyJ) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.Ul_toDL_COT_SharingED_Threshold_r16 != nil, ie.AbsenceOfAnyOtherTechnology_r16 != nil}
 	for _, bit := range preambleBits {
@@ -20,14 +20,14 @@ func (ie *DummyJ) Encode(w *uper.UperWriter) error {
 			return err
 		}
 	}
-	if err = w.WriteInteger(ie.MaxEnergyDetectionThreshold_r16, &uper.Constraint{Lb: -85, Ub: -52}, false); err != nil {
+	if err = w.WriteInteger(ie.MaxEnergyDetectionThreshold_r16, &aper.Constraint{Lb: -85, Ub: -52}, false); err != nil {
 		return utils.WrapError("WriteInteger MaxEnergyDetectionThreshold_r16", err)
 	}
-	if err = w.WriteInteger(ie.EnergyDetectionThresholdOffset_r16, &uper.Constraint{Lb: -20, Ub: -13}, false); err != nil {
+	if err = w.WriteInteger(ie.EnergyDetectionThresholdOffset_r16, &aper.Constraint{Lb: -20, Ub: -13}, false); err != nil {
 		return utils.WrapError("WriteInteger EnergyDetectionThresholdOffset_r16", err)
 	}
 	if ie.Ul_toDL_COT_SharingED_Threshold_r16 != nil {
-		if err = w.WriteInteger(*ie.Ul_toDL_COT_SharingED_Threshold_r16, &uper.Constraint{Lb: -85, Ub: -52}, false); err != nil {
+		if err = w.WriteInteger(*ie.Ul_toDL_COT_SharingED_Threshold_r16, &aper.Constraint{Lb: -85, Ub: -52}, false); err != nil {
 			return utils.WrapError("Encode Ul_toDL_COT_SharingED_Threshold_r16", err)
 		}
 	}
@@ -39,7 +39,7 @@ func (ie *DummyJ) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *DummyJ) Decode(r *uper.UperReader) error {
+func (ie *DummyJ) Decode(r *aper.AperReader) error {
 	var err error
 	var Ul_toDL_COT_SharingED_Threshold_r16Present bool
 	if Ul_toDL_COT_SharingED_Threshold_r16Present, err = r.ReadBool(); err != nil {
@@ -50,18 +50,18 @@ func (ie *DummyJ) Decode(r *uper.UperReader) error {
 		return err
 	}
 	var tmp_int_MaxEnergyDetectionThreshold_r16 int64
-	if tmp_int_MaxEnergyDetectionThreshold_r16, err = r.ReadInteger(&uper.Constraint{Lb: -85, Ub: -52}, false); err != nil {
+	if tmp_int_MaxEnergyDetectionThreshold_r16, err = r.ReadInteger(&aper.Constraint{Lb: -85, Ub: -52}, false); err != nil {
 		return utils.WrapError("ReadInteger MaxEnergyDetectionThreshold_r16", err)
 	}
 	ie.MaxEnergyDetectionThreshold_r16 = tmp_int_MaxEnergyDetectionThreshold_r16
 	var tmp_int_EnergyDetectionThresholdOffset_r16 int64
-	if tmp_int_EnergyDetectionThresholdOffset_r16, err = r.ReadInteger(&uper.Constraint{Lb: -20, Ub: -13}, false); err != nil {
+	if tmp_int_EnergyDetectionThresholdOffset_r16, err = r.ReadInteger(&aper.Constraint{Lb: -20, Ub: -13}, false); err != nil {
 		return utils.WrapError("ReadInteger EnergyDetectionThresholdOffset_r16", err)
 	}
 	ie.EnergyDetectionThresholdOffset_r16 = tmp_int_EnergyDetectionThresholdOffset_r16
 	if Ul_toDL_COT_SharingED_Threshold_r16Present {
 		var tmp_int_Ul_toDL_COT_SharingED_Threshold_r16 int64
-		if tmp_int_Ul_toDL_COT_SharingED_Threshold_r16, err = r.ReadInteger(&uper.Constraint{Lb: -85, Ub: -52}, false); err != nil {
+		if tmp_int_Ul_toDL_COT_SharingED_Threshold_r16, err = r.ReadInteger(&aper.Constraint{Lb: -85, Ub: -52}, false); err != nil {
 			return utils.WrapError("Decode Ul_toDL_COT_SharingED_Threshold_r16", err)
 		}
 		ie.Ul_toDL_COT_SharingED_Threshold_r16 = &tmp_int_Ul_toDL_COT_SharingED_Threshold_r16

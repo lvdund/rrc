@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -11,7 +11,7 @@ type BandParametersSidelinkDiscovery_r17 struct {
 	Tx_IUC_Scheme1_Mode2Sidelink_r17        *BandParametersSidelinkDiscovery_r17_tx_IUC_Scheme1_Mode2Sidelink_r17        `optional`
 }
 
-func (ie *BandParametersSidelinkDiscovery_r17) Encode(w *uper.UperWriter) error {
+func (ie *BandParametersSidelinkDiscovery_r17) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.Sl_CrossCarrierScheduling_r17 != nil, ie.Sl_TransmissionMode2_PartialSensing_r17 != nil, ie.Tx_IUC_Scheme1_Mode2Sidelink_r17 != nil}
 	for _, bit := range preambleBits {
@@ -37,7 +37,7 @@ func (ie *BandParametersSidelinkDiscovery_r17) Encode(w *uper.UperWriter) error 
 	return nil
 }
 
-func (ie *BandParametersSidelinkDiscovery_r17) Decode(r *uper.UperReader) error {
+func (ie *BandParametersSidelinkDiscovery_r17) Decode(r *aper.AperReader) error {
 	var err error
 	var Sl_CrossCarrierScheduling_r17Present bool
 	if Sl_CrossCarrierScheduling_r17Present, err = r.ReadBool(); err != nil {

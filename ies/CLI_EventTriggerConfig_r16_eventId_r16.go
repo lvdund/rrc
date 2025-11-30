@@ -3,7 +3,7 @@ package ies
 import (
 	"fmt"
 
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -17,7 +17,7 @@ type CLI_EventTriggerConfig_r16_eventId_r16 struct {
 	EventI1_r16 *CLI_EventTriggerConfig_r16_eventId_r16_eventI1_r16
 }
 
-func (ie *CLI_EventTriggerConfig_r16_eventId_r16) Encode(w *uper.UperWriter) error {
+func (ie *CLI_EventTriggerConfig_r16_eventId_r16) Encode(w *aper.AperWriter) error {
 	var err error
 	if err = w.WriteChoice(ie.Choice, 1, false); err != nil {
 		return err
@@ -33,7 +33,7 @@ func (ie *CLI_EventTriggerConfig_r16_eventId_r16) Encode(w *uper.UperWriter) err
 	return err
 }
 
-func (ie *CLI_EventTriggerConfig_r16_eventId_r16) Decode(r *uper.UperReader) error {
+func (ie *CLI_EventTriggerConfig_r16_eventId_r16) Decode(r *aper.AperReader) error {
 	var err error
 	if ie.Choice, err = r.ReadChoice(1, false); err != nil {
 		return err

@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -10,7 +10,7 @@ type EUTRA_PhysCellIdRange struct {
 	Range_cell *EUTRA_PhysCellIdRange_range_cell `optional`
 }
 
-func (ie *EUTRA_PhysCellIdRange) Encode(w *uper.UperWriter) error {
+func (ie *EUTRA_PhysCellIdRange) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.Range_cell != nil}
 	for _, bit := range preambleBits {
@@ -29,7 +29,7 @@ func (ie *EUTRA_PhysCellIdRange) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *EUTRA_PhysCellIdRange) Decode(r *uper.UperReader) error {
+func (ie *EUTRA_PhysCellIdRange) Decode(r *aper.AperReader) error {
 	var err error
 	var Range_cellPresent bool
 	if Range_cellPresent, err = r.ReadBool(); err != nil {

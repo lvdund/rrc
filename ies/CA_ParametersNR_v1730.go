@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -23,7 +23,7 @@ type CA_ParametersNR_v1730 struct {
 	Mux_HARQ_ACK_UnicastMulticast_r17                     *CA_ParametersNR_v1730_mux_HARQ_ACK_UnicastMulticast_r17                     `optional`
 }
 
-func (ie *CA_ParametersNR_v1730) Encode(w *uper.UperWriter) error {
+func (ie *CA_ParametersNR_v1730) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.Dmrs_BundlingPUSCH_RepTypeAPerBC_r17 != nil, ie.Dmrs_BundlingPUSCH_RepTypeBPerBC_r17 != nil, ie.Dmrs_BundlingPUSCH_multiSlotPerBC_r17 != nil, ie.Dmrs_BundlingPUCCH_RepPerBC_r17 != nil, ie.Dmrs_BundlingRestartPerBC_r17 != nil, ie.Dmrs_BundlingNonBackToBackTX_PerBC_r17 != nil, ie.StayOnTargetCC_SRS_CarrierSwitch_r17 != nil, ie.Fdm_CodebookForMux_UnicastMulticastHARQ_ACK_r17 != nil, ie.Mode2_TDM_CodebookForMux_UnicastMulticastHARQ_ACK_r17 != nil, ie.Mode1_ForType1_CodebookGeneration_r17 != nil, ie.Nack_OnlyFeedbackSpecificResourceForSPS_Multicast_r17 != nil, ie.MultiPUCCH_ConfigForMulticast_r17 != nil, ie.Pucch_ConfigForSPS_Multicast_r17 != nil, ie.MaxNumberG_RNTI_HARQ_ACK_Codebook_r17 != nil, ie.Mux_HARQ_ACK_UnicastMulticast_r17 != nil}
 	for _, bit := range preambleBits {
@@ -97,7 +97,7 @@ func (ie *CA_ParametersNR_v1730) Encode(w *uper.UperWriter) error {
 		}
 	}
 	if ie.MaxNumberG_RNTI_HARQ_ACK_Codebook_r17 != nil {
-		if err = w.WriteInteger(*ie.MaxNumberG_RNTI_HARQ_ACK_Codebook_r17, &uper.Constraint{Lb: 1, Ub: 4}, false); err != nil {
+		if err = w.WriteInteger(*ie.MaxNumberG_RNTI_HARQ_ACK_Codebook_r17, &aper.Constraint{Lb: 1, Ub: 4}, false); err != nil {
 			return utils.WrapError("Encode MaxNumberG_RNTI_HARQ_ACK_Codebook_r17", err)
 		}
 	}
@@ -109,7 +109,7 @@ func (ie *CA_ParametersNR_v1730) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *CA_ParametersNR_v1730) Decode(r *uper.UperReader) error {
+func (ie *CA_ParametersNR_v1730) Decode(r *aper.AperReader) error {
 	var err error
 	var Dmrs_BundlingPUSCH_RepTypeAPerBC_r17Present bool
 	if Dmrs_BundlingPUSCH_RepTypeAPerBC_r17Present, err = r.ReadBool(); err != nil {
@@ -251,7 +251,7 @@ func (ie *CA_ParametersNR_v1730) Decode(r *uper.UperReader) error {
 	}
 	if MaxNumberG_RNTI_HARQ_ACK_Codebook_r17Present {
 		var tmp_int_MaxNumberG_RNTI_HARQ_ACK_Codebook_r17 int64
-		if tmp_int_MaxNumberG_RNTI_HARQ_ACK_Codebook_r17, err = r.ReadInteger(&uper.Constraint{Lb: 1, Ub: 4}, false); err != nil {
+		if tmp_int_MaxNumberG_RNTI_HARQ_ACK_Codebook_r17, err = r.ReadInteger(&aper.Constraint{Lb: 1, Ub: 4}, false); err != nil {
 			return utils.WrapError("Decode MaxNumberG_RNTI_HARQ_ACK_Codebook_r17", err)
 		}
 		ie.MaxNumberG_RNTI_HARQ_ACK_Codebook_r17 = &tmp_int_MaxNumberG_RNTI_HARQ_ACK_Codebook_r17

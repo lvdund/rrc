@@ -3,7 +3,7 @@ package ies
 import (
 	"bytes"
 
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -17,7 +17,7 @@ type NPN_IdentityInfo_r16 struct {
 	GNB_ID_Length_r17              *int64                                              `lb:22,ub:32,optional,ext-1`
 }
 
-func (ie *NPN_IdentityInfo_r16) Encode(w *uper.UperWriter) error {
+func (ie *NPN_IdentityInfo_r16) Encode(w *aper.AperWriter) error {
 	var err error
 	hasExtensions := ie.GNB_ID_Length_r17 != nil
 	preambleBits := []bool{hasExtensions, ie.Ranac_r16 != nil, ie.Iab_Support_r16 != nil}
@@ -26,7 +26,7 @@ func (ie *NPN_IdentityInfo_r16) Encode(w *uper.UperWriter) error {
 			return err
 		}
 	}
-	tmp_Npn_IdentityList_r16 := utils.NewSequence[*NPN_Identity_r16]([]*NPN_Identity_r16{}, uper.Constraint{Lb: 1, Ub: maxNPN_r16}, false)
+	tmp_Npn_IdentityList_r16 := utils.NewSequence[*NPN_Identity_r16]([]*NPN_Identity_r16{}, aper.Constraint{Lb: 1, Ub: maxNPN_r16}, false)
 	for _, i := range ie.Npn_IdentityList_r16 {
 		tmp_Npn_IdentityList_r16.Value = append(tmp_Npn_IdentityList_r16.Value, &i)
 	}
@@ -62,7 +62,7 @@ func (ie *NPN_IdentityInfo_r16) Encode(w *uper.UperWriter) error {
 		// encode extension group 1
 		if extBitmap[0] {
 			extBuf := new(bytes.Buffer)
-			extWriter := uper.NewWriter(extBuf)
+			extWriter := aper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 1
 			optionals_ext_1 := []bool{ie.GNB_ID_Length_r17 != nil}
@@ -74,7 +74,7 @@ func (ie *NPN_IdentityInfo_r16) Encode(w *uper.UperWriter) error {
 
 			// encode GNB_ID_Length_r17 optional
 			if ie.GNB_ID_Length_r17 != nil {
-				if err = extWriter.WriteInteger(*ie.GNB_ID_Length_r17, &uper.Constraint{Lb: 22, Ub: 32}, false); err != nil {
+				if err = extWriter.WriteInteger(*ie.GNB_ID_Length_r17, &aper.Constraint{Lb: 22, Ub: 32}, false); err != nil {
 					return utils.WrapError("Encode GNB_ID_Length_r17", err)
 				}
 			}
@@ -91,7 +91,7 @@ func (ie *NPN_IdentityInfo_r16) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *NPN_IdentityInfo_r16) Decode(r *uper.UperReader) error {
+func (ie *NPN_IdentityInfo_r16) Decode(r *aper.AperReader) error {
 	var err error
 	var extensionBit bool
 	if extensionBit, err = r.ReadBool(); err != nil {
@@ -105,7 +105,7 @@ func (ie *NPN_IdentityInfo_r16) Decode(r *uper.UperReader) error {
 	if Iab_Support_r16Present, err = r.ReadBool(); err != nil {
 		return err
 	}
-	tmp_Npn_IdentityList_r16 := utils.NewSequence[*NPN_Identity_r16]([]*NPN_Identity_r16{}, uper.Constraint{Lb: 1, Ub: maxNPN_r16}, false)
+	tmp_Npn_IdentityList_r16 := utils.NewSequence[*NPN_Identity_r16]([]*NPN_Identity_r16{}, aper.Constraint{Lb: 1, Ub: maxNPN_r16}, false)
 	fn_Npn_IdentityList_r16 := func() *NPN_Identity_r16 {
 		return new(NPN_Identity_r16)
 	}
@@ -152,7 +152,7 @@ func (ie *NPN_IdentityInfo_r16) Decode(r *uper.UperReader) error {
 				return err
 			}
 
-			extReader := uper.NewReader(bytes.NewReader(extBytes))
+			extReader := aper.NewReader(bytes.NewReader(extBytes))
 
 			GNB_ID_Length_r17Present, err := extReader.ReadBool()
 			if err != nil {
@@ -161,7 +161,7 @@ func (ie *NPN_IdentityInfo_r16) Decode(r *uper.UperReader) error {
 			// decode GNB_ID_Length_r17 optional
 			if GNB_ID_Length_r17Present {
 				var tmp_int_GNB_ID_Length_r17 int64
-				if tmp_int_GNB_ID_Length_r17, err = extReader.ReadInteger(&uper.Constraint{Lb: 22, Ub: 32}, false); err != nil {
+				if tmp_int_GNB_ID_Length_r17, err = extReader.ReadInteger(&aper.Constraint{Lb: 22, Ub: 32}, false); err != nil {
 					return utils.WrapError("Decode GNB_ID_Length_r17", err)
 				}
 				ie.GNB_ID_Length_r17 = &tmp_int_GNB_ID_Length_r17

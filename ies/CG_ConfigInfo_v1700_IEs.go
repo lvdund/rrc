@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -12,7 +12,7 @@ type CG_ConfigInfo_v1700_IEs struct {
 	NonCriticalExtension                      *CG_ConfigInfo_v1730_IEs                                           `optional`
 }
 
-func (ie *CG_ConfigInfo_v1700_IEs) Encode(w *uper.UperWriter) error {
+func (ie *CG_ConfigInfo_v1700_IEs) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.CandidateCellListCPC_r17 != nil, ie.TwoPHRModeMCG_r17 != nil, ie.LowMobilityEvaluationConnectedInPCell_r17 != nil, ie.NonCriticalExtension != nil}
 	for _, bit := range preambleBits {
@@ -43,7 +43,7 @@ func (ie *CG_ConfigInfo_v1700_IEs) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *CG_ConfigInfo_v1700_IEs) Decode(r *uper.UperReader) error {
+func (ie *CG_ConfigInfo_v1700_IEs) Decode(r *aper.AperReader) error {
 	var err error
 	var CandidateCellListCPC_r17Present bool
 	if CandidateCellListCPC_r17Present, err = r.ReadBool(); err != nil {

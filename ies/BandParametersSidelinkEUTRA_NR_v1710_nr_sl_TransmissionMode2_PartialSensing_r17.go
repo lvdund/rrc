@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -12,7 +12,7 @@ type BandParametersSidelinkEUTRA_NR_v1710_nr_sl_TransmissionMode2_PartialSensing
 	Dl_openLoopPC_Sidelink_r17          *BandParametersSidelinkEUTRA_NR_v1710_nr_sl_TransmissionMode2_PartialSensing_r17_dl_openLoopPC_Sidelink_r17          `optional`
 }
 
-func (ie *BandParametersSidelinkEUTRA_NR_v1710_nr_sl_TransmissionMode2_PartialSensing_r17) Encode(w *uper.UperWriter) error {
+func (ie *BandParametersSidelinkEUTRA_NR_v1710_nr_sl_TransmissionMode2_PartialSensing_r17) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.Scs_CP_PatternTxSidelinkModeTwo_r17 != nil, ie.ExtendedCP_Mode2PartialSensing_r17 != nil, ie.Dl_openLoopPC_Sidelink_r17 != nil}
 	for _, bit := range preambleBits {
@@ -41,7 +41,7 @@ func (ie *BandParametersSidelinkEUTRA_NR_v1710_nr_sl_TransmissionMode2_PartialSe
 	return nil
 }
 
-func (ie *BandParametersSidelinkEUTRA_NR_v1710_nr_sl_TransmissionMode2_PartialSensing_r17) Decode(r *uper.UperReader) error {
+func (ie *BandParametersSidelinkEUTRA_NR_v1710_nr_sl_TransmissionMode2_PartialSensing_r17) Decode(r *aper.AperReader) error {
 	var err error
 	var Scs_CP_PatternTxSidelinkModeTwo_r17Present bool
 	if Scs_CP_PatternTxSidelinkModeTwo_r17Present, err = r.ReadBool(); err != nil {

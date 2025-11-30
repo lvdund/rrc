@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -12,7 +12,7 @@ type CA_ParametersNRDC_v1610 struct {
 	AsyncNRDC_r16                       *CA_ParametersNRDC_v1610_asyncNRDC_r16                       `optional`
 }
 
-func (ie *CA_ParametersNRDC_v1610) Encode(w *uper.UperWriter) error {
+func (ie *CA_ParametersNRDC_v1610) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.IntraFR_NR_DC_PwrSharingMode1_r16 != nil, ie.IntraFR_NR_DC_PwrSharingMode2_r16 != nil, ie.IntraFR_NR_DC_DynamicPwrSharing_r16 != nil, ie.AsyncNRDC_r16 != nil}
 	for _, bit := range preambleBits {
@@ -43,7 +43,7 @@ func (ie *CA_ParametersNRDC_v1610) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *CA_ParametersNRDC_v1610) Decode(r *uper.UperReader) error {
+func (ie *CA_ParametersNRDC_v1610) Decode(r *aper.AperReader) error {
 	var err error
 	var IntraFR_NR_DC_PwrSharingMode1_r16Present bool
 	if IntraFR_NR_DC_PwrSharingMode1_r16Present, err = r.ReadBool(); err != nil {

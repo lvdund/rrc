@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -12,7 +12,7 @@ type SpatialRelations struct {
 	MaxNumberDL_RS_QCL_TypeD             SpatialRelations_maxNumberDL_RS_QCL_TypeD              `madatory`
 }
 
-func (ie *SpatialRelations) Encode(w *uper.UperWriter) error {
+func (ie *SpatialRelations) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.AdditionalActiveSpatialRelationPUCCH != nil}
 	for _, bit := range preambleBits {
@@ -37,7 +37,7 @@ func (ie *SpatialRelations) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *SpatialRelations) Decode(r *uper.UperReader) error {
+func (ie *SpatialRelations) Decode(r *aper.AperReader) error {
 	var err error
 	var AdditionalActiveSpatialRelationPUCCHPresent bool
 	if AdditionalActiveSpatialRelationPUCCHPresent, err = r.ReadBool(); err != nil {

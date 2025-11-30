@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -15,7 +15,7 @@ type CG_SDT_Configuration_r17 struct {
 	Sdt_NrofDMRS_Sequences_r17 *int64                                            `lb:1,ub:2,optional`
 }
 
-func (ie *CG_SDT_Configuration_r17) Encode(w *uper.UperWriter) error {
+func (ie *CG_SDT_Configuration_r17) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.Cg_SDT_RetransmissionTimer != nil, ie.Sdt_SSB_Subset_r17 != nil, ie.Sdt_SSB_PerCG_PUSCH_r17 != nil, ie.Sdt_P0_PUSCH_r17 != nil, ie.Sdt_Alpha_r17 != nil, ie.Sdt_DMRS_Ports_r17 != nil, ie.Sdt_NrofDMRS_Sequences_r17 != nil}
 	for _, bit := range preambleBits {
@@ -24,7 +24,7 @@ func (ie *CG_SDT_Configuration_r17) Encode(w *uper.UperWriter) error {
 		}
 	}
 	if ie.Cg_SDT_RetransmissionTimer != nil {
-		if err = w.WriteInteger(*ie.Cg_SDT_RetransmissionTimer, &uper.Constraint{Lb: 1, Ub: 64}, false); err != nil {
+		if err = w.WriteInteger(*ie.Cg_SDT_RetransmissionTimer, &aper.Constraint{Lb: 1, Ub: 64}, false); err != nil {
 			return utils.WrapError("Encode Cg_SDT_RetransmissionTimer", err)
 		}
 	}
@@ -39,7 +39,7 @@ func (ie *CG_SDT_Configuration_r17) Encode(w *uper.UperWriter) error {
 		}
 	}
 	if ie.Sdt_P0_PUSCH_r17 != nil {
-		if err = w.WriteInteger(*ie.Sdt_P0_PUSCH_r17, &uper.Constraint{Lb: -16, Ub: 15}, false); err != nil {
+		if err = w.WriteInteger(*ie.Sdt_P0_PUSCH_r17, &aper.Constraint{Lb: -16, Ub: 15}, false); err != nil {
 			return utils.WrapError("Encode Sdt_P0_PUSCH_r17", err)
 		}
 	}
@@ -54,14 +54,14 @@ func (ie *CG_SDT_Configuration_r17) Encode(w *uper.UperWriter) error {
 		}
 	}
 	if ie.Sdt_NrofDMRS_Sequences_r17 != nil {
-		if err = w.WriteInteger(*ie.Sdt_NrofDMRS_Sequences_r17, &uper.Constraint{Lb: 1, Ub: 2}, false); err != nil {
+		if err = w.WriteInteger(*ie.Sdt_NrofDMRS_Sequences_r17, &aper.Constraint{Lb: 1, Ub: 2}, false); err != nil {
 			return utils.WrapError("Encode Sdt_NrofDMRS_Sequences_r17", err)
 		}
 	}
 	return nil
 }
 
-func (ie *CG_SDT_Configuration_r17) Decode(r *uper.UperReader) error {
+func (ie *CG_SDT_Configuration_r17) Decode(r *aper.AperReader) error {
 	var err error
 	var Cg_SDT_RetransmissionTimerPresent bool
 	if Cg_SDT_RetransmissionTimerPresent, err = r.ReadBool(); err != nil {
@@ -93,7 +93,7 @@ func (ie *CG_SDT_Configuration_r17) Decode(r *uper.UperReader) error {
 	}
 	if Cg_SDT_RetransmissionTimerPresent {
 		var tmp_int_Cg_SDT_RetransmissionTimer int64
-		if tmp_int_Cg_SDT_RetransmissionTimer, err = r.ReadInteger(&uper.Constraint{Lb: 1, Ub: 64}, false); err != nil {
+		if tmp_int_Cg_SDT_RetransmissionTimer, err = r.ReadInteger(&aper.Constraint{Lb: 1, Ub: 64}, false); err != nil {
 			return utils.WrapError("Decode Cg_SDT_RetransmissionTimer", err)
 		}
 		ie.Cg_SDT_RetransmissionTimer = &tmp_int_Cg_SDT_RetransmissionTimer
@@ -112,7 +112,7 @@ func (ie *CG_SDT_Configuration_r17) Decode(r *uper.UperReader) error {
 	}
 	if Sdt_P0_PUSCH_r17Present {
 		var tmp_int_Sdt_P0_PUSCH_r17 int64
-		if tmp_int_Sdt_P0_PUSCH_r17, err = r.ReadInteger(&uper.Constraint{Lb: -16, Ub: 15}, false); err != nil {
+		if tmp_int_Sdt_P0_PUSCH_r17, err = r.ReadInteger(&aper.Constraint{Lb: -16, Ub: 15}, false); err != nil {
 			return utils.WrapError("Decode Sdt_P0_PUSCH_r17", err)
 		}
 		ie.Sdt_P0_PUSCH_r17 = &tmp_int_Sdt_P0_PUSCH_r17
@@ -131,7 +131,7 @@ func (ie *CG_SDT_Configuration_r17) Decode(r *uper.UperReader) error {
 	}
 	if Sdt_NrofDMRS_Sequences_r17Present {
 		var tmp_int_Sdt_NrofDMRS_Sequences_r17 int64
-		if tmp_int_Sdt_NrofDMRS_Sequences_r17, err = r.ReadInteger(&uper.Constraint{Lb: 1, Ub: 2}, false); err != nil {
+		if tmp_int_Sdt_NrofDMRS_Sequences_r17, err = r.ReadInteger(&aper.Constraint{Lb: 1, Ub: 2}, false); err != nil {
 			return utils.WrapError("Decode Sdt_NrofDMRS_Sequences_r17", err)
 		}
 		ie.Sdt_NrofDMRS_Sequences_r17 = &tmp_int_Sdt_NrofDMRS_Sequences_r17

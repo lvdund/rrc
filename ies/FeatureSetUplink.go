@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -20,7 +20,7 @@ type FeatureSetUplink struct {
 	Dummy2                                    *DummyF                                                     `optional`
 }
 
-func (ie *FeatureSetUplink) Encode(w *uper.UperWriter) error {
+func (ie *FeatureSetUplink) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.ScalingFactor != nil, ie.Dummy3 != nil, ie.IntraBandFreqSeparationUL != nil, ie.SearchSpaceSharingCA_UL != nil, ie.Dummy1 != nil, ie.SupportedSRS_Resources != nil, ie.TwoPUCCH_Group != nil, ie.DynamicSwitchSUL != nil, ie.SimultaneousTxSUL_NonSUL != nil, ie.Pusch_ProcessingType1_DifferentTB_PerSlot != nil, ie.Dummy2 != nil}
 	for _, bit := range preambleBits {
@@ -28,7 +28,7 @@ func (ie *FeatureSetUplink) Encode(w *uper.UperWriter) error {
 			return err
 		}
 	}
-	tmp_FeatureSetListPerUplinkCC := utils.NewSequence[*FeatureSetUplinkPerCC_Id]([]*FeatureSetUplinkPerCC_Id{}, uper.Constraint{Lb: 1, Ub: maxNrofServingCells}, false)
+	tmp_FeatureSetListPerUplinkCC := utils.NewSequence[*FeatureSetUplinkPerCC_Id]([]*FeatureSetUplinkPerCC_Id{}, aper.Constraint{Lb: 1, Ub: maxNrofServingCells}, false)
 	for _, i := range ie.FeatureSetListPerUplinkCC {
 		tmp_FeatureSetListPerUplinkCC.Value = append(tmp_FeatureSetListPerUplinkCC.Value, &i)
 	}
@@ -93,7 +93,7 @@ func (ie *FeatureSetUplink) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *FeatureSetUplink) Decode(r *uper.UperReader) error {
+func (ie *FeatureSetUplink) Decode(r *aper.AperReader) error {
 	var err error
 	var ScalingFactorPresent bool
 	if ScalingFactorPresent, err = r.ReadBool(); err != nil {
@@ -139,7 +139,7 @@ func (ie *FeatureSetUplink) Decode(r *uper.UperReader) error {
 	if Dummy2Present, err = r.ReadBool(); err != nil {
 		return err
 	}
-	tmp_FeatureSetListPerUplinkCC := utils.NewSequence[*FeatureSetUplinkPerCC_Id]([]*FeatureSetUplinkPerCC_Id{}, uper.Constraint{Lb: 1, Ub: maxNrofServingCells}, false)
+	tmp_FeatureSetListPerUplinkCC := utils.NewSequence[*FeatureSetUplinkPerCC_Id]([]*FeatureSetUplinkPerCC_Id{}, aper.Constraint{Lb: 1, Ub: maxNrofServingCells}, false)
 	fn_FeatureSetListPerUplinkCC := func() *FeatureSetUplinkPerCC_Id {
 		return new(FeatureSetUplinkPerCC_Id)
 	}

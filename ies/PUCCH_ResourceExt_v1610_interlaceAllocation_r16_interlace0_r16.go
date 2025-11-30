@@ -3,7 +3,7 @@ package ies
 import (
 	"fmt"
 
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -19,18 +19,18 @@ type PUCCH_ResourceExt_v1610_interlaceAllocation_r16_interlace0_r16 struct {
 	Scs30  int64 `lb:0,ub:4,madatory`
 }
 
-func (ie *PUCCH_ResourceExt_v1610_interlaceAllocation_r16_interlace0_r16) Encode(w *uper.UperWriter) error {
+func (ie *PUCCH_ResourceExt_v1610_interlaceAllocation_r16_interlace0_r16) Encode(w *aper.AperWriter) error {
 	var err error
 	if err = w.WriteChoice(ie.Choice, 2, false); err != nil {
 		return err
 	}
 	switch ie.Choice {
 	case PUCCH_ResourceExt_v1610_interlaceAllocation_r16_interlace0_r16_Choice_Scs15:
-		if err = w.WriteInteger(int64(ie.Scs15), &uper.Constraint{Lb: 0, Ub: 9}, false); err != nil {
+		if err = w.WriteInteger(int64(ie.Scs15), &aper.Constraint{Lb: 0, Ub: 9}, false); err != nil {
 			err = utils.WrapError("Encode Scs15", err)
 		}
 	case PUCCH_ResourceExt_v1610_interlaceAllocation_r16_interlace0_r16_Choice_Scs30:
-		if err = w.WriteInteger(int64(ie.Scs30), &uper.Constraint{Lb: 0, Ub: 4}, false); err != nil {
+		if err = w.WriteInteger(int64(ie.Scs30), &aper.Constraint{Lb: 0, Ub: 4}, false); err != nil {
 			err = utils.WrapError("Encode Scs30", err)
 		}
 	default:
@@ -39,7 +39,7 @@ func (ie *PUCCH_ResourceExt_v1610_interlaceAllocation_r16_interlace0_r16) Encode
 	return err
 }
 
-func (ie *PUCCH_ResourceExt_v1610_interlaceAllocation_r16_interlace0_r16) Decode(r *uper.UperReader) error {
+func (ie *PUCCH_ResourceExt_v1610_interlaceAllocation_r16_interlace0_r16) Decode(r *aper.AperReader) error {
 	var err error
 	if ie.Choice, err = r.ReadChoice(2, false); err != nil {
 		return err
@@ -47,13 +47,13 @@ func (ie *PUCCH_ResourceExt_v1610_interlaceAllocation_r16_interlace0_r16) Decode
 	switch ie.Choice {
 	case PUCCH_ResourceExt_v1610_interlaceAllocation_r16_interlace0_r16_Choice_Scs15:
 		var tmp_int_Scs15 int64
-		if tmp_int_Scs15, err = r.ReadInteger(&uper.Constraint{Lb: 0, Ub: 9}, false); err != nil {
+		if tmp_int_Scs15, err = r.ReadInteger(&aper.Constraint{Lb: 0, Ub: 9}, false); err != nil {
 			return utils.WrapError("Decode Scs15", err)
 		}
 		ie.Scs15 = tmp_int_Scs15
 	case PUCCH_ResourceExt_v1610_interlaceAllocation_r16_interlace0_r16_Choice_Scs30:
 		var tmp_int_Scs30 int64
-		if tmp_int_Scs30, err = r.ReadInteger(&uper.Constraint{Lb: 0, Ub: 4}, false); err != nil {
+		if tmp_int_Scs30, err = r.ReadInteger(&aper.Constraint{Lb: 0, Ub: 4}, false); err != nil {
 			return utils.WrapError("Decode Scs30", err)
 		}
 		ie.Scs30 = tmp_int_Scs30

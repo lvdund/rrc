@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -9,9 +9,9 @@ type UL_ExcessDelayConfig_r17 struct {
 	ExcessDelay_DRBlist_r17 []ExcessDelay_DRB_IdentityInfo_r17 `lb:1,ub:maxDRB,madatory`
 }
 
-func (ie *UL_ExcessDelayConfig_r17) Encode(w *uper.UperWriter) error {
+func (ie *UL_ExcessDelayConfig_r17) Encode(w *aper.AperWriter) error {
 	var err error
-	tmp_ExcessDelay_DRBlist_r17 := utils.NewSequence[*ExcessDelay_DRB_IdentityInfo_r17]([]*ExcessDelay_DRB_IdentityInfo_r17{}, uper.Constraint{Lb: 1, Ub: maxDRB}, false)
+	tmp_ExcessDelay_DRBlist_r17 := utils.NewSequence[*ExcessDelay_DRB_IdentityInfo_r17]([]*ExcessDelay_DRB_IdentityInfo_r17{}, aper.Constraint{Lb: 1, Ub: maxDRB}, false)
 	for _, i := range ie.ExcessDelay_DRBlist_r17 {
 		tmp_ExcessDelay_DRBlist_r17.Value = append(tmp_ExcessDelay_DRBlist_r17.Value, &i)
 	}
@@ -21,9 +21,9 @@ func (ie *UL_ExcessDelayConfig_r17) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *UL_ExcessDelayConfig_r17) Decode(r *uper.UperReader) error {
+func (ie *UL_ExcessDelayConfig_r17) Decode(r *aper.AperReader) error {
 	var err error
-	tmp_ExcessDelay_DRBlist_r17 := utils.NewSequence[*ExcessDelay_DRB_IdentityInfo_r17]([]*ExcessDelay_DRB_IdentityInfo_r17{}, uper.Constraint{Lb: 1, Ub: maxDRB}, false)
+	tmp_ExcessDelay_DRBlist_r17 := utils.NewSequence[*ExcessDelay_DRB_IdentityInfo_r17]([]*ExcessDelay_DRB_IdentityInfo_r17{}, aper.Constraint{Lb: 1, Ub: maxDRB}, false)
 	fn_ExcessDelay_DRBlist_r17 := func() *ExcessDelay_DRB_IdentityInfo_r17 {
 		return new(ExcessDelay_DRB_IdentityInfo_r17)
 	}

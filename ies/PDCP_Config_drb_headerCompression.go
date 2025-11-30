@@ -3,7 +3,7 @@ package ies
 import (
 	"fmt"
 
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -16,12 +16,12 @@ const (
 
 type PDCP_Config_drb_headerCompression struct {
 	Choice         uint64
-	NotUsed        uper.NULL `madatory`
+	NotUsed        aper.NULL `madatory`
 	Rohc           *PDCP_Config_drb_headerCompression_rohc
 	UplinkOnlyROHC *PDCP_Config_drb_headerCompression_uplinkOnlyROHC
 }
 
-func (ie *PDCP_Config_drb_headerCompression) Encode(w *uper.UperWriter) error {
+func (ie *PDCP_Config_drb_headerCompression) Encode(w *aper.AperWriter) error {
 	var err error
 	if err = w.WriteChoice(ie.Choice, 3, false); err != nil {
 		return err
@@ -45,7 +45,7 @@ func (ie *PDCP_Config_drb_headerCompression) Encode(w *uper.UperWriter) error {
 	return err
 }
 
-func (ie *PDCP_Config_drb_headerCompression) Decode(r *uper.UperReader) error {
+func (ie *PDCP_Config_drb_headerCompression) Decode(r *aper.AperReader) error {
 	var err error
 	if ie.Choice, err = r.ReadChoice(3, false); err != nil {
 		return err

@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -12,7 +12,7 @@ type UplinkTxDirectCurrentTwoCarrier_r16 struct {
 	SecondPA_TxDirectCurrent_r16 *UplinkTxDirectCurrentTwoCarrierInfo_r16 `optional`
 }
 
-func (ie *UplinkTxDirectCurrentTwoCarrier_r16) Encode(w *uper.UperWriter) error {
+func (ie *UplinkTxDirectCurrentTwoCarrier_r16) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.SecondPA_TxDirectCurrent_r16 != nil}
 	for _, bit := range preambleBits {
@@ -37,7 +37,7 @@ func (ie *UplinkTxDirectCurrentTwoCarrier_r16) Encode(w *uper.UperWriter) error 
 	return nil
 }
 
-func (ie *UplinkTxDirectCurrentTwoCarrier_r16) Decode(r *uper.UperReader) error {
+func (ie *UplinkTxDirectCurrentTwoCarrier_r16) Decode(r *aper.AperReader) error {
 	var err error
 	var SecondPA_TxDirectCurrent_r16Present bool
 	if SecondPA_TxDirectCurrent_r16Present, err = r.ReadBool(); err != nil {

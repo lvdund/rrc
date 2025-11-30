@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -14,7 +14,7 @@ type VictimSystemType struct {
 	Bluetooth *VictimSystemType_bluetooth `optional`
 }
 
-func (ie *VictimSystemType) Encode(w *uper.UperWriter) error {
+func (ie *VictimSystemType) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.Gps != nil, ie.Glonass != nil, ie.Bds != nil, ie.Galileo != nil, ie.Wlan != nil, ie.Bluetooth != nil}
 	for _, bit := range preambleBits {
@@ -55,7 +55,7 @@ func (ie *VictimSystemType) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *VictimSystemType) Decode(r *uper.UperReader) error {
+func (ie *VictimSystemType) Decode(r *aper.AperReader) error {
 	var err error
 	var GpsPresent bool
 	if GpsPresent, err = r.ReadBool(); err != nil {

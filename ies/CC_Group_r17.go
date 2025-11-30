@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -12,7 +12,7 @@ type CC_Group_r17 struct {
 	OffsetToDefault_r17     *CC_Group_r17_offsetToDefault_r17 `lb:1,ub:maxNrofReqComDC_Location_r17,optional`
 }
 
-func (ie *CC_Group_r17) Encode(w *uper.UperWriter) error {
+func (ie *CC_Group_r17) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.ServCellIndexHigher_r17 != nil, ie.OffsetToDefault_r17 != nil}
 	for _, bit := range preambleBits {
@@ -39,7 +39,7 @@ func (ie *CC_Group_r17) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *CC_Group_r17) Decode(r *uper.UperReader) error {
+func (ie *CC_Group_r17) Decode(r *aper.AperReader) error {
 	var err error
 	var ServCellIndexHigher_r17Present bool
 	if ServCellIndexHigher_r17Present, err = r.ReadBool(); err != nil {

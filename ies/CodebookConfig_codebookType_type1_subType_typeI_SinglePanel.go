@@ -1,16 +1,16 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
 type CodebookConfig_codebookType_type1_subType_typeI_SinglePanel struct {
 	NrOfAntennaPorts                 *CodebookConfig_codebookType_type1_subType_typeI_SinglePanel_nrOfAntennaPorts `lb:6,ub:6,optional`
-	TypeI_SinglePanel_ri_Restriction uper.BitString                                                                `lb:8,ub:8,madatory`
+	TypeI_SinglePanel_ri_Restriction aper.BitString                                                                `lb:8,ub:8,madatory`
 }
 
-func (ie *CodebookConfig_codebookType_type1_subType_typeI_SinglePanel) Encode(w *uper.UperWriter) error {
+func (ie *CodebookConfig_codebookType_type1_subType_typeI_SinglePanel) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.NrOfAntennaPorts != nil}
 	for _, bit := range preambleBits {
@@ -23,13 +23,13 @@ func (ie *CodebookConfig_codebookType_type1_subType_typeI_SinglePanel) Encode(w 
 			return utils.WrapError("Encode NrOfAntennaPorts", err)
 		}
 	}
-	if err = w.WriteBitString(ie.TypeI_SinglePanel_ri_Restriction.Bytes, uint(ie.TypeI_SinglePanel_ri_Restriction.NumBits), &uper.Constraint{Lb: 8, Ub: 8}, false); err != nil {
+	if err = w.WriteBitString(ie.TypeI_SinglePanel_ri_Restriction.Bytes, uint(ie.TypeI_SinglePanel_ri_Restriction.NumBits), &aper.Constraint{Lb: 8, Ub: 8}, false); err != nil {
 		return utils.WrapError("WriteBitString TypeI_SinglePanel_ri_Restriction", err)
 	}
 	return nil
 }
 
-func (ie *CodebookConfig_codebookType_type1_subType_typeI_SinglePanel) Decode(r *uper.UperReader) error {
+func (ie *CodebookConfig_codebookType_type1_subType_typeI_SinglePanel) Decode(r *aper.AperReader) error {
 	var err error
 	var NrOfAntennaPortsPresent bool
 	if NrOfAntennaPortsPresent, err = r.ReadBool(); err != nil {
@@ -43,10 +43,10 @@ func (ie *CodebookConfig_codebookType_type1_subType_typeI_SinglePanel) Decode(r 
 	}
 	var tmp_bs_TypeI_SinglePanel_ri_Restriction []byte
 	var n_TypeI_SinglePanel_ri_Restriction uint
-	if tmp_bs_TypeI_SinglePanel_ri_Restriction, n_TypeI_SinglePanel_ri_Restriction, err = r.ReadBitString(&uper.Constraint{Lb: 8, Ub: 8}, false); err != nil {
+	if tmp_bs_TypeI_SinglePanel_ri_Restriction, n_TypeI_SinglePanel_ri_Restriction, err = r.ReadBitString(&aper.Constraint{Lb: 8, Ub: 8}, false); err != nil {
 		return utils.WrapError("ReadBitString TypeI_SinglePanel_ri_Restriction", err)
 	}
-	ie.TypeI_SinglePanel_ri_Restriction = uper.BitString{
+	ie.TypeI_SinglePanel_ri_Restriction = aper.BitString{
 		Bytes:   tmp_bs_TypeI_SinglePanel_ri_Restriction,
 		NumBits: uint64(n_TypeI_SinglePanel_ri_Restriction),
 	}

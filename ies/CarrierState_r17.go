@@ -3,7 +3,7 @@ package ies
 import (
 	"fmt"
 
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -15,11 +15,11 @@ const (
 
 type CarrierState_r17 struct {
 	Choice          uint64
-	DeActivated_r17 uper.NULL `madatory`
+	DeActivated_r17 aper.NULL `madatory`
 	ActiveBWP_r17   int64     `lb:0,ub:maxNrofBWPs,madatory`
 }
 
-func (ie *CarrierState_r17) Encode(w *uper.UperWriter) error {
+func (ie *CarrierState_r17) Encode(w *aper.AperWriter) error {
 	var err error
 	if err = w.WriteChoice(ie.Choice, 2, false); err != nil {
 		return err
@@ -30,7 +30,7 @@ func (ie *CarrierState_r17) Encode(w *uper.UperWriter) error {
 			err = utils.WrapError("Encode DeActivated_r17", err)
 		}
 	case CarrierState_r17_Choice_ActiveBWP_r17:
-		if err = w.WriteInteger(int64(ie.ActiveBWP_r17), &uper.Constraint{Lb: 0, Ub: maxNrofBWPs}, false); err != nil {
+		if err = w.WriteInteger(int64(ie.ActiveBWP_r17), &aper.Constraint{Lb: 0, Ub: maxNrofBWPs}, false); err != nil {
 			err = utils.WrapError("Encode ActiveBWP_r17", err)
 		}
 	default:
@@ -39,7 +39,7 @@ func (ie *CarrierState_r17) Encode(w *uper.UperWriter) error {
 	return err
 }
 
-func (ie *CarrierState_r17) Decode(r *uper.UperReader) error {
+func (ie *CarrierState_r17) Decode(r *aper.AperReader) error {
 	var err error
 	if ie.Choice, err = r.ReadChoice(2, false); err != nil {
 		return err
@@ -51,7 +51,7 @@ func (ie *CarrierState_r17) Decode(r *uper.UperReader) error {
 		}
 	case CarrierState_r17_Choice_ActiveBWP_r17:
 		var tmp_int_ActiveBWP_r17 int64
-		if tmp_int_ActiveBWP_r17, err = r.ReadInteger(&uper.Constraint{Lb: 0, Ub: maxNrofBWPs}, false); err != nil {
+		if tmp_int_ActiveBWP_r17, err = r.ReadInteger(&aper.Constraint{Lb: 0, Ub: maxNrofBWPs}, false); err != nil {
 			return utils.WrapError("Decode ActiveBWP_r17", err)
 		}
 		ie.ActiveBWP_r17 = tmp_int_ActiveBWP_r17

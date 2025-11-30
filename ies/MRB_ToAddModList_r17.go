@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -9,9 +9,9 @@ type MRB_ToAddModList_r17 struct {
 	Value []MRB_ToAddMod_r17 `lb:1,ub:maxMRB_r17,madatory`
 }
 
-func (ie *MRB_ToAddModList_r17) Encode(w *uper.UperWriter) error {
+func (ie *MRB_ToAddModList_r17) Encode(w *aper.AperWriter) error {
 	var err error
-	tmp := utils.NewSequence[*MRB_ToAddMod_r17]([]*MRB_ToAddMod_r17{}, uper.Constraint{Lb: 1, Ub: maxMRB_r17}, false)
+	tmp := utils.NewSequence[*MRB_ToAddMod_r17]([]*MRB_ToAddMod_r17{}, aper.Constraint{Lb: 1, Ub: maxMRB_r17}, false)
 	for _, i := range ie.Value {
 		tmp.Value = append(tmp.Value, &i)
 	}
@@ -21,9 +21,9 @@ func (ie *MRB_ToAddModList_r17) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *MRB_ToAddModList_r17) Decode(r *uper.UperReader) error {
+func (ie *MRB_ToAddModList_r17) Decode(r *aper.AperReader) error {
 	var err error
-	tmp := utils.NewSequence[*MRB_ToAddMod_r17]([]*MRB_ToAddMod_r17{}, uper.Constraint{Lb: 1, Ub: maxMRB_r17}, false)
+	tmp := utils.NewSequence[*MRB_ToAddMod_r17]([]*MRB_ToAddMod_r17{}, aper.Constraint{Lb: 1, Ub: maxMRB_r17}, false)
 	fn := func() *MRB_ToAddMod_r17 {
 		return new(MRB_ToAddMod_r17)
 	}

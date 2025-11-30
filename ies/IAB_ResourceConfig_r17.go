@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -12,7 +12,7 @@ type IAB_ResourceConfig_r17 struct {
 	SlotListSubcarrierSpacing_r17 *SubcarrierSpacing                              `optional`
 }
 
-func (ie *IAB_ResourceConfig_r17) Encode(w *uper.UperWriter) error {
+func (ie *IAB_ResourceConfig_r17) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{len(ie.SlotList_r17) > 0, ie.PeriodicitySlotList_r17 != nil, ie.SlotListSubcarrierSpacing_r17 != nil}
 	for _, bit := range preambleBits {
@@ -24,9 +24,9 @@ func (ie *IAB_ResourceConfig_r17) Encode(w *uper.UperWriter) error {
 		return utils.WrapError("Encode Iab_ResourceConfigID_r17", err)
 	}
 	if len(ie.SlotList_r17) > 0 {
-		tmp_SlotList_r17 := utils.NewSequence[*utils.INTEGER]([]*utils.INTEGER{}, uper.Constraint{Lb: 1, Ub: 5120}, false)
+		tmp_SlotList_r17 := utils.NewSequence[*utils.INTEGER]([]*utils.INTEGER{}, aper.Constraint{Lb: 1, Ub: 5120}, false)
 		for _, i := range ie.SlotList_r17 {
-			tmp_ie := utils.NewINTEGER(int64(i), uper.Constraint{Lb: 0, Ub: 5119}, false)
+			tmp_ie := utils.NewINTEGER(int64(i), aper.Constraint{Lb: 0, Ub: 5119}, false)
 			tmp_SlotList_r17.Value = append(tmp_SlotList_r17.Value, &tmp_ie)
 		}
 		if err = tmp_SlotList_r17.Encode(w); err != nil {
@@ -46,7 +46,7 @@ func (ie *IAB_ResourceConfig_r17) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *IAB_ResourceConfig_r17) Decode(r *uper.UperReader) error {
+func (ie *IAB_ResourceConfig_r17) Decode(r *aper.AperReader) error {
 	var err error
 	var SlotList_r17Present bool
 	if SlotList_r17Present, err = r.ReadBool(); err != nil {
@@ -64,9 +64,9 @@ func (ie *IAB_ResourceConfig_r17) Decode(r *uper.UperReader) error {
 		return utils.WrapError("Decode Iab_ResourceConfigID_r17", err)
 	}
 	if SlotList_r17Present {
-		tmp_SlotList_r17 := utils.NewSequence[*utils.INTEGER]([]*utils.INTEGER{}, uper.Constraint{Lb: 1, Ub: 5120}, false)
+		tmp_SlotList_r17 := utils.NewSequence[*utils.INTEGER]([]*utils.INTEGER{}, aper.Constraint{Lb: 1, Ub: 5120}, false)
 		fn_SlotList_r17 := func() *utils.INTEGER {
-			ie := utils.NewINTEGER(0, uper.Constraint{Lb: 0, Ub: 5119}, false)
+			ie := utils.NewINTEGER(0, aper.Constraint{Lb: 0, Ub: 5119}, false)
 			return &ie
 		}
 		if err = tmp_SlotList_r17.Decode(r, fn_SlotList_r17); err != nil {

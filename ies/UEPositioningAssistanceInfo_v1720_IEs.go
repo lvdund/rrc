@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -10,7 +10,7 @@ type UEPositioningAssistanceInfo_v1720_IEs struct {
 	NonCriticalExtension                interface{}                                                                `optional`
 }
 
-func (ie *UEPositioningAssistanceInfo_v1720_IEs) Encode(w *uper.UperWriter) error {
+func (ie *UEPositioningAssistanceInfo_v1720_IEs) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.Ue_TxTEG_TimingErrorMarginValue_r17 != nil}
 	for _, bit := range preambleBits {
@@ -26,7 +26,7 @@ func (ie *UEPositioningAssistanceInfo_v1720_IEs) Encode(w *uper.UperWriter) erro
 	return nil
 }
 
-func (ie *UEPositioningAssistanceInfo_v1720_IEs) Decode(r *uper.UperReader) error {
+func (ie *UEPositioningAssistanceInfo_v1720_IEs) Decode(r *aper.AperReader) error {
 	var err error
 	var Ue_TxTEG_TimingErrorMarginValue_r17Present bool
 	if Ue_TxTEG_TimingErrorMarginValue_r17Present, err = r.ReadBool(); err != nil {

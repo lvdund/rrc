@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -17,7 +17,7 @@ type UEInformationResponse_r16_IEs struct {
 	NonCriticalExtension      *UEInformationResponse_v1700_IEs `optional`
 }
 
-func (ie *UEInformationResponse_r16_IEs) Encode(w *uper.UperWriter) error {
+func (ie *UEInformationResponse_r16_IEs) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.MeasResultIdleEUTRA_r16 != nil, ie.MeasResultIdleNR_r16 != nil, ie.LogMeasReport_r16 != nil, ie.ConnEstFailReport_r16 != nil, ie.Ra_ReportList_r16 != nil, ie.Rlf_Report_r16 != nil, ie.MobilityHistoryReport_r16 != nil, ie.LateNonCriticalExtension != nil, ie.NonCriticalExtension != nil}
 	for _, bit := range preambleBits {
@@ -61,7 +61,7 @@ func (ie *UEInformationResponse_r16_IEs) Encode(w *uper.UperWriter) error {
 		}
 	}
 	if ie.LateNonCriticalExtension != nil {
-		if err = w.WriteOctetString(*ie.LateNonCriticalExtension, &uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+		if err = w.WriteOctetString(*ie.LateNonCriticalExtension, &aper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
 			return utils.WrapError("Encode LateNonCriticalExtension", err)
 		}
 	}
@@ -73,7 +73,7 @@ func (ie *UEInformationResponse_r16_IEs) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *UEInformationResponse_r16_IEs) Decode(r *uper.UperReader) error {
+func (ie *UEInformationResponse_r16_IEs) Decode(r *aper.AperReader) error {
 	var err error
 	var MeasResultIdleEUTRA_r16Present bool
 	if MeasResultIdleEUTRA_r16Present, err = r.ReadBool(); err != nil {
@@ -155,7 +155,7 @@ func (ie *UEInformationResponse_r16_IEs) Decode(r *uper.UperReader) error {
 	}
 	if LateNonCriticalExtensionPresent {
 		var tmp_os_LateNonCriticalExtension []byte
-		if tmp_os_LateNonCriticalExtension, err = r.ReadOctetString(&uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+		if tmp_os_LateNonCriticalExtension, err = r.ReadOctetString(&aper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
 			return utils.WrapError("Decode LateNonCriticalExtension", err)
 		}
 		ie.LateNonCriticalExtension = &tmp_os_LateNonCriticalExtension

@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -17,7 +17,7 @@ type SL_RoHC_Profiles_r16 struct {
 	Profile0x0104_r16 bool `madatory`
 }
 
-func (ie *SL_RoHC_Profiles_r16) Encode(w *uper.UperWriter) error {
+func (ie *SL_RoHC_Profiles_r16) Encode(w *aper.AperWriter) error {
 	var err error
 	if err = w.WriteBoolean(ie.Profile0x0001_r16); err != nil {
 		return utils.WrapError("WriteBoolean Profile0x0001_r16", err)
@@ -49,7 +49,7 @@ func (ie *SL_RoHC_Profiles_r16) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *SL_RoHC_Profiles_r16) Decode(r *uper.UperReader) error {
+func (ie *SL_RoHC_Profiles_r16) Decode(r *aper.AperReader) error {
 	var err error
 	var tmp_bool_Profile0x0001_r16 bool
 	if tmp_bool_Profile0x0001_r16, err = r.ReadBoolean(); err != nil {

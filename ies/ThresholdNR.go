@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -11,7 +11,7 @@ type ThresholdNR struct {
 	ThresholdSINR *SINR_Range `optional`
 }
 
-func (ie *ThresholdNR) Encode(w *uper.UperWriter) error {
+func (ie *ThresholdNR) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.ThresholdRSRP != nil, ie.ThresholdRSRQ != nil, ie.ThresholdSINR != nil}
 	for _, bit := range preambleBits {
@@ -37,7 +37,7 @@ func (ie *ThresholdNR) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *ThresholdNR) Decode(r *uper.UperReader) error {
+func (ie *ThresholdNR) Decode(r *aper.AperReader) error {
 	var err error
 	var ThresholdRSRPPresent bool
 	if ThresholdRSRPPresent, err = r.ReadBool(); err != nil {

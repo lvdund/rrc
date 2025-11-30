@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -10,7 +10,7 @@ type PCI_Range struct {
 	Range_pci *PCI_Range_range_pci `optional`
 }
 
-func (ie *PCI_Range) Encode(w *uper.UperWriter) error {
+func (ie *PCI_Range) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.Range_pci != nil}
 	for _, bit := range preambleBits {
@@ -29,7 +29,7 @@ func (ie *PCI_Range) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *PCI_Range) Decode(r *uper.UperReader) error {
+func (ie *PCI_Range) Decode(r *aper.AperReader) error {
 	var err error
 	var Range_pciPresent bool
 	if Range_pciPresent, err = r.ReadBool(); err != nil {

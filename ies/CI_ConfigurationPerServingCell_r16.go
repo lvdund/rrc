@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -14,7 +14,7 @@ type CI_ConfigurationPerServingCell_r16 struct {
 	UplinkCancellationPriority_v1610 *CI_ConfigurationPerServingCell_r16_uplinkCancellationPriority_v1610 `optional,ext`
 }
 
-func (ie *CI_ConfigurationPerServingCell_r16) Encode(w *uper.UperWriter) error {
+func (ie *CI_ConfigurationPerServingCell_r16) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.PositionInDCI_ForSUL_r16 != nil, ie.TimeFrequencyRegion_r16 != nil}
 	for _, bit := range preambleBits {
@@ -25,11 +25,11 @@ func (ie *CI_ConfigurationPerServingCell_r16) Encode(w *uper.UperWriter) error {
 	if err = ie.ServingCellId.Encode(w); err != nil {
 		return utils.WrapError("Encode ServingCellId", err)
 	}
-	if err = w.WriteInteger(ie.PositionInDCI_r16, &uper.Constraint{Lb: 0, Ub: maxCI_DCI_PayloadSize_1_r16}, false); err != nil {
+	if err = w.WriteInteger(ie.PositionInDCI_r16, &aper.Constraint{Lb: 0, Ub: maxCI_DCI_PayloadSize_1_r16}, false); err != nil {
 		return utils.WrapError("WriteInteger PositionInDCI_r16", err)
 	}
 	if ie.PositionInDCI_ForSUL_r16 != nil {
-		if err = w.WriteInteger(*ie.PositionInDCI_ForSUL_r16, &uper.Constraint{Lb: 0, Ub: maxCI_DCI_PayloadSize_1_r16}, false); err != nil {
+		if err = w.WriteInteger(*ie.PositionInDCI_ForSUL_r16, &aper.Constraint{Lb: 0, Ub: maxCI_DCI_PayloadSize_1_r16}, false); err != nil {
 			return utils.WrapError("Encode PositionInDCI_ForSUL_r16", err)
 		}
 	}
@@ -44,7 +44,7 @@ func (ie *CI_ConfigurationPerServingCell_r16) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *CI_ConfigurationPerServingCell_r16) Decode(r *uper.UperReader) error {
+func (ie *CI_ConfigurationPerServingCell_r16) Decode(r *aper.AperReader) error {
 	var err error
 	var PositionInDCI_ForSUL_r16Present bool
 	if PositionInDCI_ForSUL_r16Present, err = r.ReadBool(); err != nil {
@@ -58,13 +58,13 @@ func (ie *CI_ConfigurationPerServingCell_r16) Decode(r *uper.UperReader) error {
 		return utils.WrapError("Decode ServingCellId", err)
 	}
 	var tmp_int_PositionInDCI_r16 int64
-	if tmp_int_PositionInDCI_r16, err = r.ReadInteger(&uper.Constraint{Lb: 0, Ub: maxCI_DCI_PayloadSize_1_r16}, false); err != nil {
+	if tmp_int_PositionInDCI_r16, err = r.ReadInteger(&aper.Constraint{Lb: 0, Ub: maxCI_DCI_PayloadSize_1_r16}, false); err != nil {
 		return utils.WrapError("ReadInteger PositionInDCI_r16", err)
 	}
 	ie.PositionInDCI_r16 = tmp_int_PositionInDCI_r16
 	if PositionInDCI_ForSUL_r16Present {
 		var tmp_int_PositionInDCI_ForSUL_r16 int64
-		if tmp_int_PositionInDCI_ForSUL_r16, err = r.ReadInteger(&uper.Constraint{Lb: 0, Ub: maxCI_DCI_PayloadSize_1_r16}, false); err != nil {
+		if tmp_int_PositionInDCI_ForSUL_r16, err = r.ReadInteger(&aper.Constraint{Lb: 0, Ub: maxCI_DCI_PayloadSize_1_r16}, false); err != nil {
 			return utils.WrapError("Decode PositionInDCI_ForSUL_r16", err)
 		}
 		ie.PositionInDCI_ForSUL_r16 = &tmp_int_PositionInDCI_ForSUL_r16

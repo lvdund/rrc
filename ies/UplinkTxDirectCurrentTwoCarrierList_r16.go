@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -9,9 +9,9 @@ type UplinkTxDirectCurrentTwoCarrierList_r16 struct {
 	Value []UplinkTxDirectCurrentTwoCarrier_r16 `lb:1,ub:maxNrofTxDC_TwoCarrier_r16,madatory`
 }
 
-func (ie *UplinkTxDirectCurrentTwoCarrierList_r16) Encode(w *uper.UperWriter) error {
+func (ie *UplinkTxDirectCurrentTwoCarrierList_r16) Encode(w *aper.AperWriter) error {
 	var err error
-	tmp := utils.NewSequence[*UplinkTxDirectCurrentTwoCarrier_r16]([]*UplinkTxDirectCurrentTwoCarrier_r16{}, uper.Constraint{Lb: 1, Ub: maxNrofTxDC_TwoCarrier_r16}, false)
+	tmp := utils.NewSequence[*UplinkTxDirectCurrentTwoCarrier_r16]([]*UplinkTxDirectCurrentTwoCarrier_r16{}, aper.Constraint{Lb: 1, Ub: maxNrofTxDC_TwoCarrier_r16}, false)
 	for _, i := range ie.Value {
 		tmp.Value = append(tmp.Value, &i)
 	}
@@ -21,9 +21,9 @@ func (ie *UplinkTxDirectCurrentTwoCarrierList_r16) Encode(w *uper.UperWriter) er
 	return nil
 }
 
-func (ie *UplinkTxDirectCurrentTwoCarrierList_r16) Decode(r *uper.UperReader) error {
+func (ie *UplinkTxDirectCurrentTwoCarrierList_r16) Decode(r *aper.AperReader) error {
 	var err error
-	tmp := utils.NewSequence[*UplinkTxDirectCurrentTwoCarrier_r16]([]*UplinkTxDirectCurrentTwoCarrier_r16{}, uper.Constraint{Lb: 1, Ub: maxNrofTxDC_TwoCarrier_r16}, false)
+	tmp := utils.NewSequence[*UplinkTxDirectCurrentTwoCarrier_r16]([]*UplinkTxDirectCurrentTwoCarrier_r16{}, aper.Constraint{Lb: 1, Ub: maxNrofTxDC_TwoCarrier_r16}, false)
 	fn := func() *UplinkTxDirectCurrentTwoCarrier_r16 {
 		return new(UplinkTxDirectCurrentTwoCarrier_r16)
 	}

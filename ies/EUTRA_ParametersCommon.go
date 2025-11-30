@@ -3,20 +3,20 @@ package ies
 import (
 	"bytes"
 
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
 type EUTRA_ParametersCommon struct {
 	Mfbi_EUTRA                *EUTRA_ParametersCommon_mfbi_EUTRA         `optional`
-	ModifiedMPR_BehaviorEUTRA *uper.BitString                            `lb:32,ub:32,optional`
+	ModifiedMPR_BehaviorEUTRA *aper.BitString                            `lb:32,ub:32,optional`
 	MultiNS_Pmax_EUTRA        *EUTRA_ParametersCommon_multiNS_Pmax_EUTRA `optional`
 	Rs_SINR_MeasEUTRA         *EUTRA_ParametersCommon_rs_SINR_MeasEUTRA  `optional`
 	Ne_DC                     *EUTRA_ParametersCommon_ne_DC              `optional,ext-1`
 	Nr_HO_ToEN_DC_r16         *EUTRA_ParametersCommon_nr_HO_ToEN_DC_r16  `optional,ext-2`
 }
 
-func (ie *EUTRA_ParametersCommon) Encode(w *uper.UperWriter) error {
+func (ie *EUTRA_ParametersCommon) Encode(w *aper.AperWriter) error {
 	var err error
 	hasExtensions := ie.Ne_DC != nil || ie.Nr_HO_ToEN_DC_r16 != nil
 	preambleBits := []bool{hasExtensions, ie.Mfbi_EUTRA != nil, ie.ModifiedMPR_BehaviorEUTRA != nil, ie.MultiNS_Pmax_EUTRA != nil, ie.Rs_SINR_MeasEUTRA != nil}
@@ -31,7 +31,7 @@ func (ie *EUTRA_ParametersCommon) Encode(w *uper.UperWriter) error {
 		}
 	}
 	if ie.ModifiedMPR_BehaviorEUTRA != nil {
-		if err = w.WriteBitString(ie.ModifiedMPR_BehaviorEUTRA.Bytes, uint(ie.ModifiedMPR_BehaviorEUTRA.NumBits), &uper.Constraint{Lb: 32, Ub: 32}, false); err != nil {
+		if err = w.WriteBitString(ie.ModifiedMPR_BehaviorEUTRA.Bytes, uint(ie.ModifiedMPR_BehaviorEUTRA.NumBits), &aper.Constraint{Lb: 32, Ub: 32}, false); err != nil {
 			return utils.WrapError("Encode ModifiedMPR_BehaviorEUTRA", err)
 		}
 	}
@@ -55,7 +55,7 @@ func (ie *EUTRA_ParametersCommon) Encode(w *uper.UperWriter) error {
 		// encode extension group 1
 		if extBitmap[0] {
 			extBuf := new(bytes.Buffer)
-			extWriter := uper.NewWriter(extBuf)
+			extWriter := aper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 1
 			optionals_ext_1 := []bool{ie.Ne_DC != nil}
@@ -84,7 +84,7 @@ func (ie *EUTRA_ParametersCommon) Encode(w *uper.UperWriter) error {
 		// encode extension group 2
 		if extBitmap[1] {
 			extBuf := new(bytes.Buffer)
-			extWriter := uper.NewWriter(extBuf)
+			extWriter := aper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 2
 			optionals_ext_2 := []bool{ie.Nr_HO_ToEN_DC_r16 != nil}
@@ -113,7 +113,7 @@ func (ie *EUTRA_ParametersCommon) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *EUTRA_ParametersCommon) Decode(r *uper.UperReader) error {
+func (ie *EUTRA_ParametersCommon) Decode(r *aper.AperReader) error {
 	var err error
 	var extensionBit bool
 	if extensionBit, err = r.ReadBool(); err != nil {
@@ -144,10 +144,10 @@ func (ie *EUTRA_ParametersCommon) Decode(r *uper.UperReader) error {
 	if ModifiedMPR_BehaviorEUTRAPresent {
 		var tmp_bs_ModifiedMPR_BehaviorEUTRA []byte
 		var n_ModifiedMPR_BehaviorEUTRA uint
-		if tmp_bs_ModifiedMPR_BehaviorEUTRA, n_ModifiedMPR_BehaviorEUTRA, err = r.ReadBitString(&uper.Constraint{Lb: 32, Ub: 32}, false); err != nil {
+		if tmp_bs_ModifiedMPR_BehaviorEUTRA, n_ModifiedMPR_BehaviorEUTRA, err = r.ReadBitString(&aper.Constraint{Lb: 32, Ub: 32}, false); err != nil {
 			return utils.WrapError("Decode ModifiedMPR_BehaviorEUTRA", err)
 		}
-		tmp_bitstring := uper.BitString{
+		tmp_bitstring := aper.BitString{
 			Bytes:   tmp_bs_ModifiedMPR_BehaviorEUTRA,
 			NumBits: uint64(n_ModifiedMPR_BehaviorEUTRA),
 		}
@@ -180,7 +180,7 @@ func (ie *EUTRA_ParametersCommon) Decode(r *uper.UperReader) error {
 				return err
 			}
 
-			extReader := uper.NewReader(bytes.NewReader(extBytes))
+			extReader := aper.NewReader(bytes.NewReader(extBytes))
 
 			Ne_DCPresent, err := extReader.ReadBool()
 			if err != nil {
@@ -201,7 +201,7 @@ func (ie *EUTRA_ParametersCommon) Decode(r *uper.UperReader) error {
 				return err
 			}
 
-			extReader := uper.NewReader(bytes.NewReader(extBytes))
+			extReader := aper.NewReader(bytes.NewReader(extBytes))
 
 			Nr_HO_ToEN_DC_r16Present, err := extReader.ReadBool()
 			if err != nil {

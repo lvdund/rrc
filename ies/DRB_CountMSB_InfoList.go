@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -9,9 +9,9 @@ type DRB_CountMSB_InfoList struct {
 	Value []DRB_CountMSB_Info `lb:1,ub:maxDRB,madatory`
 }
 
-func (ie *DRB_CountMSB_InfoList) Encode(w *uper.UperWriter) error {
+func (ie *DRB_CountMSB_InfoList) Encode(w *aper.AperWriter) error {
 	var err error
-	tmp := utils.NewSequence[*DRB_CountMSB_Info]([]*DRB_CountMSB_Info{}, uper.Constraint{Lb: 1, Ub: maxDRB}, false)
+	tmp := utils.NewSequence[*DRB_CountMSB_Info]([]*DRB_CountMSB_Info{}, aper.Constraint{Lb: 1, Ub: maxDRB}, false)
 	for _, i := range ie.Value {
 		tmp.Value = append(tmp.Value, &i)
 	}
@@ -21,9 +21,9 @@ func (ie *DRB_CountMSB_InfoList) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *DRB_CountMSB_InfoList) Decode(r *uper.UperReader) error {
+func (ie *DRB_CountMSB_InfoList) Decode(r *aper.AperReader) error {
 	var err error
-	tmp := utils.NewSequence[*DRB_CountMSB_Info]([]*DRB_CountMSB_Info{}, uper.Constraint{Lb: 1, Ub: maxDRB}, false)
+	tmp := utils.NewSequence[*DRB_CountMSB_Info]([]*DRB_CountMSB_Info{}, aper.Constraint{Lb: 1, Ub: maxDRB}, false)
 	fn := func() *DRB_CountMSB_Info {
 		return new(DRB_CountMSB_Info)
 	}

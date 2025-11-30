@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -12,7 +12,7 @@ type IAB_IP_PrefixAndTraffic_r16 struct {
 	Non_F1_Traffic_IP_Address_r16  *IAB_IP_Address_r16 `optional`
 }
 
-func (ie *IAB_IP_PrefixAndTraffic_r16) Encode(w *uper.UperWriter) error {
+func (ie *IAB_IP_PrefixAndTraffic_r16) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.All_Traffic_IAB_IP_Address_r16 != nil, ie.F1_C_Traffic_IP_Address_r16 != nil, ie.F1_U_Traffic_IP_Address_r16 != nil, ie.Non_F1_Traffic_IP_Address_r16 != nil}
 	for _, bit := range preambleBits {
@@ -43,7 +43,7 @@ func (ie *IAB_IP_PrefixAndTraffic_r16) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *IAB_IP_PrefixAndTraffic_r16) Decode(r *uper.UperReader) error {
+func (ie *IAB_IP_PrefixAndTraffic_r16) Decode(r *aper.AperReader) error {
 	var err error
 	var All_Traffic_IAB_IP_Address_r16Present bool
 	if All_Traffic_IAB_IP_Address_r16Present, err = r.ReadBool(); err != nil {

@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -32,7 +32,7 @@ type InterFreqCarrierFreqInfo struct {
 	InterFreqExcludedCellList       *InterFreqExcludedCellList    `optional`
 }
 
-func (ie *InterFreqCarrierFreqInfo) Encode(w *uper.UperWriter) error {
+func (ie *InterFreqCarrierFreqInfo) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.FrequencyBandList != nil, ie.FrequencyBandListSUL != nil, ie.NrofSS_BlocksToAverage != nil, ie.AbsThreshSS_BlocksConsolidation != nil, ie.Smtc != nil, ie.Ssb_ToMeasure != nil, ie.Ss_RSSI_Measurement != nil, ie.Q_RxLevMinSUL != nil, ie.Q_QualMin != nil, ie.P_Max != nil, ie.T_ReselectionNR_SF != nil, ie.ThreshX_Q != nil, ie.CellReselectionPriority != nil, ie.CellReselectionSubPriority != nil, ie.InterFreqNeighCellList != nil, ie.InterFreqExcludedCellList != nil}
 	for _, bit := range preambleBits {
@@ -54,7 +54,7 @@ func (ie *InterFreqCarrierFreqInfo) Encode(w *uper.UperWriter) error {
 		}
 	}
 	if ie.NrofSS_BlocksToAverage != nil {
-		if err = w.WriteInteger(*ie.NrofSS_BlocksToAverage, &uper.Constraint{Lb: 2, Ub: maxNrofSS_BlocksToAverage}, false); err != nil {
+		if err = w.WriteInteger(*ie.NrofSS_BlocksToAverage, &aper.Constraint{Lb: 2, Ub: maxNrofSS_BlocksToAverage}, false); err != nil {
 			return utils.WrapError("Encode NrofSS_BlocksToAverage", err)
 		}
 	}
@@ -147,7 +147,7 @@ func (ie *InterFreqCarrierFreqInfo) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *InterFreqCarrierFreqInfo) Decode(r *uper.UperReader) error {
+func (ie *InterFreqCarrierFreqInfo) Decode(r *aper.AperReader) error {
 	var err error
 	var FrequencyBandListPresent bool
 	if FrequencyBandListPresent, err = r.ReadBool(); err != nil {
@@ -230,7 +230,7 @@ func (ie *InterFreqCarrierFreqInfo) Decode(r *uper.UperReader) error {
 	}
 	if NrofSS_BlocksToAveragePresent {
 		var tmp_int_NrofSS_BlocksToAverage int64
-		if tmp_int_NrofSS_BlocksToAverage, err = r.ReadInteger(&uper.Constraint{Lb: 2, Ub: maxNrofSS_BlocksToAverage}, false); err != nil {
+		if tmp_int_NrofSS_BlocksToAverage, err = r.ReadInteger(&aper.Constraint{Lb: 2, Ub: maxNrofSS_BlocksToAverage}, false); err != nil {
 			return utils.WrapError("Decode NrofSS_BlocksToAverage", err)
 		}
 		ie.NrofSS_BlocksToAverage = &tmp_int_NrofSS_BlocksToAverage

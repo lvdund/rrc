@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -11,7 +11,7 @@ type CG_Config_v1590_IEs struct {
 	NonCriticalExtension     *CG_Config_v1610_IEs `optional`
 }
 
-func (ie *CG_Config_v1590_IEs) Encode(w *uper.UperWriter) error {
+func (ie *CG_Config_v1590_IEs) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{len(ie.ScellFrequenciesSN_NR) > 0, len(ie.ScellFrequenciesSN_EUTRA) > 0, ie.NonCriticalExtension != nil}
 	for _, bit := range preambleBits {
@@ -20,7 +20,7 @@ func (ie *CG_Config_v1590_IEs) Encode(w *uper.UperWriter) error {
 		}
 	}
 	if len(ie.ScellFrequenciesSN_NR) > 0 {
-		tmp_ScellFrequenciesSN_NR := utils.NewSequence[*ARFCN_ValueNR]([]*ARFCN_ValueNR{}, uper.Constraint{Lb: 1, Ub: maxNrofServingCells_1}, false)
+		tmp_ScellFrequenciesSN_NR := utils.NewSequence[*ARFCN_ValueNR]([]*ARFCN_ValueNR{}, aper.Constraint{Lb: 1, Ub: maxNrofServingCells_1}, false)
 		for _, i := range ie.ScellFrequenciesSN_NR {
 			tmp_ScellFrequenciesSN_NR.Value = append(tmp_ScellFrequenciesSN_NR.Value, &i)
 		}
@@ -29,7 +29,7 @@ func (ie *CG_Config_v1590_IEs) Encode(w *uper.UperWriter) error {
 		}
 	}
 	if len(ie.ScellFrequenciesSN_EUTRA) > 0 {
-		tmp_ScellFrequenciesSN_EUTRA := utils.NewSequence[*ARFCN_ValueEUTRA]([]*ARFCN_ValueEUTRA{}, uper.Constraint{Lb: 1, Ub: maxNrofServingCells_1}, false)
+		tmp_ScellFrequenciesSN_EUTRA := utils.NewSequence[*ARFCN_ValueEUTRA]([]*ARFCN_ValueEUTRA{}, aper.Constraint{Lb: 1, Ub: maxNrofServingCells_1}, false)
 		for _, i := range ie.ScellFrequenciesSN_EUTRA {
 			tmp_ScellFrequenciesSN_EUTRA.Value = append(tmp_ScellFrequenciesSN_EUTRA.Value, &i)
 		}
@@ -45,7 +45,7 @@ func (ie *CG_Config_v1590_IEs) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *CG_Config_v1590_IEs) Decode(r *uper.UperReader) error {
+func (ie *CG_Config_v1590_IEs) Decode(r *aper.AperReader) error {
 	var err error
 	var ScellFrequenciesSN_NRPresent bool
 	if ScellFrequenciesSN_NRPresent, err = r.ReadBool(); err != nil {
@@ -60,7 +60,7 @@ func (ie *CG_Config_v1590_IEs) Decode(r *uper.UperReader) error {
 		return err
 	}
 	if ScellFrequenciesSN_NRPresent {
-		tmp_ScellFrequenciesSN_NR := utils.NewSequence[*ARFCN_ValueNR]([]*ARFCN_ValueNR{}, uper.Constraint{Lb: 1, Ub: maxNrofServingCells_1}, false)
+		tmp_ScellFrequenciesSN_NR := utils.NewSequence[*ARFCN_ValueNR]([]*ARFCN_ValueNR{}, aper.Constraint{Lb: 1, Ub: maxNrofServingCells_1}, false)
 		fn_ScellFrequenciesSN_NR := func() *ARFCN_ValueNR {
 			return new(ARFCN_ValueNR)
 		}
@@ -73,7 +73,7 @@ func (ie *CG_Config_v1590_IEs) Decode(r *uper.UperReader) error {
 		}
 	}
 	if ScellFrequenciesSN_EUTRAPresent {
-		tmp_ScellFrequenciesSN_EUTRA := utils.NewSequence[*ARFCN_ValueEUTRA]([]*ARFCN_ValueEUTRA{}, uper.Constraint{Lb: 1, Ub: maxNrofServingCells_1}, false)
+		tmp_ScellFrequenciesSN_EUTRA := utils.NewSequence[*ARFCN_ValueEUTRA]([]*ARFCN_ValueEUTRA{}, aper.Constraint{Lb: 1, Ub: maxNrofServingCells_1}, false)
 		fn_ScellFrequenciesSN_EUTRA := func() *ARFCN_ValueEUTRA {
 			return new(ARFCN_ValueEUTRA)
 		}

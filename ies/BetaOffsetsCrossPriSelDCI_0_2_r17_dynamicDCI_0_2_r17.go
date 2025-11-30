@@ -3,7 +3,7 @@ package ies
 import (
 	"fmt"
 
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -19,14 +19,14 @@ type BetaOffsetsCrossPriSelDCI_0_2_r17_dynamicDCI_0_2_r17 struct {
 	TwoBits_r17 []BetaOffsetsCrossPri_r17 `lb:4,ub:4,madatory`
 }
 
-func (ie *BetaOffsetsCrossPriSelDCI_0_2_r17_dynamicDCI_0_2_r17) Encode(w *uper.UperWriter) error {
+func (ie *BetaOffsetsCrossPriSelDCI_0_2_r17_dynamicDCI_0_2_r17) Encode(w *aper.AperWriter) error {
 	var err error
 	if err = w.WriteChoice(ie.Choice, 2, false); err != nil {
 		return err
 	}
 	switch ie.Choice {
 	case BetaOffsetsCrossPriSelDCI_0_2_r17_dynamicDCI_0_2_r17_Choice_OneBit_r17:
-		tmp := utils.NewSequence[*BetaOffsetsCrossPri_r17]([]*BetaOffsetsCrossPri_r17{}, uper.Constraint{Lb: 2, Ub: 2}, false)
+		tmp := utils.NewSequence[*BetaOffsetsCrossPri_r17]([]*BetaOffsetsCrossPri_r17{}, aper.Constraint{Lb: 2, Ub: 2}, false)
 		for _, i := range ie.OneBit_r17 {
 			tmp.Value = append(tmp.Value, &i)
 		}
@@ -34,7 +34,7 @@ func (ie *BetaOffsetsCrossPriSelDCI_0_2_r17_dynamicDCI_0_2_r17) Encode(w *uper.U
 			err = utils.WrapError("Encode OneBit_r17", err)
 		}
 	case BetaOffsetsCrossPriSelDCI_0_2_r17_dynamicDCI_0_2_r17_Choice_TwoBits_r17:
-		tmp := utils.NewSequence[*BetaOffsetsCrossPri_r17]([]*BetaOffsetsCrossPri_r17{}, uper.Constraint{Lb: 4, Ub: 4}, false)
+		tmp := utils.NewSequence[*BetaOffsetsCrossPri_r17]([]*BetaOffsetsCrossPri_r17{}, aper.Constraint{Lb: 4, Ub: 4}, false)
 		for _, i := range ie.TwoBits_r17 {
 			tmp.Value = append(tmp.Value, &i)
 		}
@@ -47,14 +47,14 @@ func (ie *BetaOffsetsCrossPriSelDCI_0_2_r17_dynamicDCI_0_2_r17) Encode(w *uper.U
 	return err
 }
 
-func (ie *BetaOffsetsCrossPriSelDCI_0_2_r17_dynamicDCI_0_2_r17) Decode(r *uper.UperReader) error {
+func (ie *BetaOffsetsCrossPriSelDCI_0_2_r17_dynamicDCI_0_2_r17) Decode(r *aper.AperReader) error {
 	var err error
 	if ie.Choice, err = r.ReadChoice(2, false); err != nil {
 		return err
 	}
 	switch ie.Choice {
 	case BetaOffsetsCrossPriSelDCI_0_2_r17_dynamicDCI_0_2_r17_Choice_OneBit_r17:
-		tmp := utils.NewSequence[*BetaOffsetsCrossPri_r17]([]*BetaOffsetsCrossPri_r17{}, uper.Constraint{Lb: 2, Ub: 2}, false)
+		tmp := utils.NewSequence[*BetaOffsetsCrossPri_r17]([]*BetaOffsetsCrossPri_r17{}, aper.Constraint{Lb: 2, Ub: 2}, false)
 		fn := func() *BetaOffsetsCrossPri_r17 {
 			return new(BetaOffsetsCrossPri_r17)
 		}
@@ -66,7 +66,7 @@ func (ie *BetaOffsetsCrossPriSelDCI_0_2_r17_dynamicDCI_0_2_r17) Decode(r *uper.U
 			ie.OneBit_r17 = append(ie.OneBit_r17, *i)
 		}
 	case BetaOffsetsCrossPriSelDCI_0_2_r17_dynamicDCI_0_2_r17_Choice_TwoBits_r17:
-		tmp := utils.NewSequence[*BetaOffsetsCrossPri_r17]([]*BetaOffsetsCrossPri_r17{}, uper.Constraint{Lb: 4, Ub: 4}, false)
+		tmp := utils.NewSequence[*BetaOffsetsCrossPri_r17]([]*BetaOffsetsCrossPri_r17{}, aper.Constraint{Lb: 4, Ub: 4}, false)
 		fn := func() *BetaOffsetsCrossPri_r17 {
 			return new(BetaOffsetsCrossPri_r17)
 		}

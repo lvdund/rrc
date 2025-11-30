@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -13,7 +13,7 @@ type MeasIdleCarrierEUTRA_r16 struct {
 	QualityThresholdEUTRA_r16 *MeasIdleCarrierEUTRA_r16_qualityThresholdEUTRA_r16 `optional`
 }
 
-func (ie *MeasIdleCarrierEUTRA_r16) Encode(w *uper.UperWriter) error {
+func (ie *MeasIdleCarrierEUTRA_r16) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.MeasCellListEUTRA_r16 != nil, ie.QualityThresholdEUTRA_r16 != nil}
 	for _, bit := range preambleBits {
@@ -43,7 +43,7 @@ func (ie *MeasIdleCarrierEUTRA_r16) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *MeasIdleCarrierEUTRA_r16) Decode(r *uper.UperReader) error {
+func (ie *MeasIdleCarrierEUTRA_r16) Decode(r *aper.AperReader) error {
 	var err error
 	var MeasCellListEUTRA_r16Present bool
 	if MeasCellListEUTRA_r16Present, err = r.ReadBool(); err != nil {

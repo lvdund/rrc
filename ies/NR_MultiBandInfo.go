@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -10,7 +10,7 @@ type NR_MultiBandInfo struct {
 	Nr_NS_PmaxList      *NR_NS_PmaxList      `optional`
 }
 
-func (ie *NR_MultiBandInfo) Encode(w *uper.UperWriter) error {
+func (ie *NR_MultiBandInfo) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.FreqBandIndicatorNR != nil, ie.Nr_NS_PmaxList != nil}
 	for _, bit := range preambleBits {
@@ -31,7 +31,7 @@ func (ie *NR_MultiBandInfo) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *NR_MultiBandInfo) Decode(r *uper.UperReader) error {
+func (ie *NR_MultiBandInfo) Decode(r *aper.AperReader) error {
 	var err error
 	var FreqBandIndicatorNRPresent bool
 	if FreqBandIndicatorNRPresent, err = r.ReadBool(); err != nil {

@@ -3,7 +3,7 @@ package ies
 import (
 	"bytes"
 
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -70,7 +70,7 @@ type PhysicalCellGroupConfig struct {
 	IntraBandNC_PRACH_simulTx_r17                           *PhysicalCellGroupConfig_intraBandNC_PRACH_simulTx_r17                           `optional,ext-7`
 }
 
-func (ie *PhysicalCellGroupConfig) Encode(w *uper.UperWriter) error {
+func (ie *PhysicalCellGroupConfig) Encode(w *aper.AperWriter) error {
 	var err error
 	hasExtensions := ie.Mcs_C_RNTI != nil || ie.P_UE_FR1 != nil || ie.XScale != nil || ie.Pdcch_BlindDetection != nil || ie.Dcp_Config_r16 != nil || ie.Harq_ACK_SpatialBundlingPUCCH_secondaryPUCCHgroup_r16 != nil || ie.Harq_ACK_SpatialBundlingPUSCH_secondaryPUCCHgroup_r16 != nil || ie.Pdsch_HARQ_ACK_Codebook_secondaryPUCCHgroup_r16 != nil || ie.P_NR_FR2_r16 != nil || ie.P_UE_FR2_r16 != nil || ie.Nrdc_PCmode_FR1_r16 != nil || ie.Nrdc_PCmode_FR2_r16 != nil || ie.Pdsch_HARQ_ACK_Codebook_r16 != nil || ie.Nfi_TotalDAI_Included_r16 != nil || ie.Ul_TotalDAI_Included_r16 != nil || ie.Pdsch_HARQ_ACK_OneShotFeedback_r16 != nil || ie.Pdsch_HARQ_ACK_OneShotFeedbackNDI_r16 != nil || ie.Pdsch_HARQ_ACK_OneShotFeedbackCBG_r16 != nil || ie.DownlinkAssignmentIndexDCI_0_2_r16 != nil || ie.DownlinkAssignmentIndexDCI_1_2_r16 != nil || ie.Pdsch_HARQ_ACK_CodebookList_r16 != nil || ie.AckNackFeedbackMode_r16 != nil || ie.Pdcch_BlindDetectionCA_CombIndicator_r16 != nil || ie.Pdcch_BlindDetection2_r16 != nil || ie.Pdcch_BlindDetection3_r16 != nil || ie.BdFactorR_r16 != nil || len(ie.Pdsch_HARQ_ACK_EnhType3ToAddModList_r17) > 0 || len(ie.Pdsch_HARQ_ACK_EnhType3ToReleaseList_r17) > 0 || len(ie.Pdsch_HARQ_ACK_EnhType3SecondaryToAddModList_r17) > 0 || len(ie.Pdsch_HARQ_ACK_EnhType3SecondaryToReleaseList_r17) > 0 || ie.Pdsch_HARQ_ACK_EnhType3DCI_FieldSecondaryPUCCHgroup_r17 != nil || ie.Pdsch_HARQ_ACK_EnhType3DCI_Field_r17 != nil || ie.Pdsch_HARQ_ACK_Retx_r17 != nil || ie.Pdsch_HARQ_ACK_RetxSecondaryPUCCHgroup_r17 != nil || ie.Pucch_sSCell_r17 != nil || ie.Pucch_sSCellSecondaryPUCCHgroup_r17 != nil || ie.Pucch_sSCellDyn_r17 != nil || ie.Pucch_sSCellDynSecondaryPUCCHgroup_r17 != nil || len(ie.Pucch_sSCellPattern_r17) > 0 || len(ie.Pucch_sSCellPatternSecondaryPUCCHgroup_r17) > 0 || ie.Uci_MuxWithDiffPrio_r17 != nil || ie.Uci_MuxWithDiffPrioSecondaryPUCCHgroup_r17 != nil || ie.SimultaneousPUCCH_PUSCH_r17 != nil || ie.SimultaneousPUCCH_PUSCH_SecondaryPUCCHgroup_r17 != nil || ie.PrioLowDG_HighCG_r17 != nil || ie.PrioHighDG_LowCG_r17 != nil || ie.TwoQCLTypeDforPDCCHRepetition_r17 != nil || ie.MulticastConfig_r17 != nil || ie.Pdcch_BlindDetectionCA_CombIndicator_r17 != nil || ie.SimultaneousSR_PUSCH_diffPUCCH_Groups_r17 != nil || ie.IntraBandNC_PRACH_simulTx_r17 != nil
 	preambleBits := []bool{hasExtensions, ie.Harq_ACK_SpatialBundlingPUCCH != nil, ie.Harq_ACK_SpatialBundlingPUSCH != nil, ie.P_NR_FR1 != nil, ie.Tpc_SRS_RNTI != nil, ie.Tpc_PUCCH_RNTI != nil, ie.Tpc_PUSCH_RNTI != nil, ie.Sp_CSI_RNTI != nil, ie.Cs_RNTI != nil}
@@ -135,7 +135,7 @@ func (ie *PhysicalCellGroupConfig) Encode(w *uper.UperWriter) error {
 		// encode extension group 1
 		if extBitmap[0] {
 			extBuf := new(bytes.Buffer)
-			extWriter := uper.NewWriter(extBuf)
+			extWriter := aper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 1
 			optionals_ext_1 := []bool{ie.Mcs_C_RNTI != nil, ie.P_UE_FR1 != nil}
@@ -170,7 +170,7 @@ func (ie *PhysicalCellGroupConfig) Encode(w *uper.UperWriter) error {
 		// encode extension group 2
 		if extBitmap[1] {
 			extBuf := new(bytes.Buffer)
-			extWriter := uper.NewWriter(extBuf)
+			extWriter := aper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 2
 			optionals_ext_2 := []bool{ie.XScale != nil}
@@ -199,7 +199,7 @@ func (ie *PhysicalCellGroupConfig) Encode(w *uper.UperWriter) error {
 		// encode extension group 3
 		if extBitmap[2] {
 			extBuf := new(bytes.Buffer)
-			extWriter := uper.NewWriter(extBuf)
+			extWriter := aper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 3
 			optionals_ext_3 := []bool{ie.Pdcch_BlindDetection != nil}
@@ -231,7 +231,7 @@ func (ie *PhysicalCellGroupConfig) Encode(w *uper.UperWriter) error {
 		// encode extension group 4
 		if extBitmap[3] {
 			extBuf := new(bytes.Buffer)
-			extWriter := uper.NewWriter(extBuf)
+			extWriter := aper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 4
 			optionals_ext_4 := []bool{ie.Dcp_Config_r16 != nil, ie.Harq_ACK_SpatialBundlingPUCCH_secondaryPUCCHgroup_r16 != nil, ie.Harq_ACK_SpatialBundlingPUSCH_secondaryPUCCHgroup_r16 != nil, ie.Pdsch_HARQ_ACK_Codebook_secondaryPUCCHgroup_r16 != nil, ie.P_NR_FR2_r16 != nil, ie.P_UE_FR2_r16 != nil, ie.Nrdc_PCmode_FR1_r16 != nil, ie.Nrdc_PCmode_FR2_r16 != nil, ie.Pdsch_HARQ_ACK_Codebook_r16 != nil, ie.Nfi_TotalDAI_Included_r16 != nil, ie.Ul_TotalDAI_Included_r16 != nil, ie.Pdsch_HARQ_ACK_OneShotFeedback_r16 != nil, ie.Pdsch_HARQ_ACK_OneShotFeedbackNDI_r16 != nil, ie.Pdsch_HARQ_ACK_OneShotFeedbackCBG_r16 != nil, ie.DownlinkAssignmentIndexDCI_0_2_r16 != nil, ie.DownlinkAssignmentIndexDCI_1_2_r16 != nil, ie.Pdsch_HARQ_ACK_CodebookList_r16 != nil, ie.AckNackFeedbackMode_r16 != nil, ie.Pdcch_BlindDetectionCA_CombIndicator_r16 != nil, ie.Pdcch_BlindDetection2_r16 != nil, ie.Pdcch_BlindDetection3_r16 != nil, ie.BdFactorR_r16 != nil}
@@ -401,7 +401,7 @@ func (ie *PhysicalCellGroupConfig) Encode(w *uper.UperWriter) error {
 		// encode extension group 5
 		if extBitmap[4] {
 			extBuf := new(bytes.Buffer)
-			extWriter := uper.NewWriter(extBuf)
+			extWriter := aper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 5
 			optionals_ext_5 := []bool{len(ie.Pdsch_HARQ_ACK_EnhType3ToAddModList_r17) > 0, len(ie.Pdsch_HARQ_ACK_EnhType3ToReleaseList_r17) > 0, len(ie.Pdsch_HARQ_ACK_EnhType3SecondaryToAddModList_r17) > 0, len(ie.Pdsch_HARQ_ACK_EnhType3SecondaryToReleaseList_r17) > 0, ie.Pdsch_HARQ_ACK_EnhType3DCI_FieldSecondaryPUCCHgroup_r17 != nil, ie.Pdsch_HARQ_ACK_EnhType3DCI_Field_r17 != nil, ie.Pdsch_HARQ_ACK_Retx_r17 != nil, ie.Pdsch_HARQ_ACK_RetxSecondaryPUCCHgroup_r17 != nil, ie.Pucch_sSCell_r17 != nil, ie.Pucch_sSCellSecondaryPUCCHgroup_r17 != nil, ie.Pucch_sSCellDyn_r17 != nil, ie.Pucch_sSCellDynSecondaryPUCCHgroup_r17 != nil, len(ie.Pucch_sSCellPattern_r17) > 0, len(ie.Pucch_sSCellPatternSecondaryPUCCHgroup_r17) > 0, ie.Uci_MuxWithDiffPrio_r17 != nil, ie.Uci_MuxWithDiffPrioSecondaryPUCCHgroup_r17 != nil, ie.SimultaneousPUCCH_PUSCH_r17 != nil, ie.SimultaneousPUCCH_PUSCH_SecondaryPUCCHgroup_r17 != nil, ie.PrioLowDG_HighCG_r17 != nil, ie.PrioHighDG_LowCG_r17 != nil, ie.TwoQCLTypeDforPDCCHRepetition_r17 != nil, ie.MulticastConfig_r17 != nil, ie.Pdcch_BlindDetectionCA_CombIndicator_r17 != nil}
@@ -413,7 +413,7 @@ func (ie *PhysicalCellGroupConfig) Encode(w *uper.UperWriter) error {
 
 			// encode Pdsch_HARQ_ACK_EnhType3ToAddModList_r17 optional
 			if len(ie.Pdsch_HARQ_ACK_EnhType3ToAddModList_r17) > 0 {
-				tmp_Pdsch_HARQ_ACK_EnhType3ToAddModList_r17 := utils.NewSequence[*PDSCH_HARQ_ACK_EnhType3_r17]([]*PDSCH_HARQ_ACK_EnhType3_r17{}, uper.Constraint{Lb: 1, Ub: maxNrofEnhType3HARQ_ACK_r17}, false)
+				tmp_Pdsch_HARQ_ACK_EnhType3ToAddModList_r17 := utils.NewSequence[*PDSCH_HARQ_ACK_EnhType3_r17]([]*PDSCH_HARQ_ACK_EnhType3_r17{}, aper.Constraint{Lb: 1, Ub: maxNrofEnhType3HARQ_ACK_r17}, false)
 				for _, i := range ie.Pdsch_HARQ_ACK_EnhType3ToAddModList_r17 {
 					tmp_Pdsch_HARQ_ACK_EnhType3ToAddModList_r17.Value = append(tmp_Pdsch_HARQ_ACK_EnhType3ToAddModList_r17.Value, &i)
 				}
@@ -423,7 +423,7 @@ func (ie *PhysicalCellGroupConfig) Encode(w *uper.UperWriter) error {
 			}
 			// encode Pdsch_HARQ_ACK_EnhType3ToReleaseList_r17 optional
 			if len(ie.Pdsch_HARQ_ACK_EnhType3ToReleaseList_r17) > 0 {
-				tmp_Pdsch_HARQ_ACK_EnhType3ToReleaseList_r17 := utils.NewSequence[*PDSCH_HARQ_ACK_EnhType3Index_r17]([]*PDSCH_HARQ_ACK_EnhType3Index_r17{}, uper.Constraint{Lb: 1, Ub: maxNrofEnhType3HARQ_ACK_r17}, false)
+				tmp_Pdsch_HARQ_ACK_EnhType3ToReleaseList_r17 := utils.NewSequence[*PDSCH_HARQ_ACK_EnhType3Index_r17]([]*PDSCH_HARQ_ACK_EnhType3Index_r17{}, aper.Constraint{Lb: 1, Ub: maxNrofEnhType3HARQ_ACK_r17}, false)
 				for _, i := range ie.Pdsch_HARQ_ACK_EnhType3ToReleaseList_r17 {
 					tmp_Pdsch_HARQ_ACK_EnhType3ToReleaseList_r17.Value = append(tmp_Pdsch_HARQ_ACK_EnhType3ToReleaseList_r17.Value, &i)
 				}
@@ -433,7 +433,7 @@ func (ie *PhysicalCellGroupConfig) Encode(w *uper.UperWriter) error {
 			}
 			// encode Pdsch_HARQ_ACK_EnhType3SecondaryToAddModList_r17 optional
 			if len(ie.Pdsch_HARQ_ACK_EnhType3SecondaryToAddModList_r17) > 0 {
-				tmp_Pdsch_HARQ_ACK_EnhType3SecondaryToAddModList_r17 := utils.NewSequence[*PDSCH_HARQ_ACK_EnhType3_r17]([]*PDSCH_HARQ_ACK_EnhType3_r17{}, uper.Constraint{Lb: 1, Ub: maxNrofEnhType3HARQ_ACK_r17}, false)
+				tmp_Pdsch_HARQ_ACK_EnhType3SecondaryToAddModList_r17 := utils.NewSequence[*PDSCH_HARQ_ACK_EnhType3_r17]([]*PDSCH_HARQ_ACK_EnhType3_r17{}, aper.Constraint{Lb: 1, Ub: maxNrofEnhType3HARQ_ACK_r17}, false)
 				for _, i := range ie.Pdsch_HARQ_ACK_EnhType3SecondaryToAddModList_r17 {
 					tmp_Pdsch_HARQ_ACK_EnhType3SecondaryToAddModList_r17.Value = append(tmp_Pdsch_HARQ_ACK_EnhType3SecondaryToAddModList_r17.Value, &i)
 				}
@@ -443,7 +443,7 @@ func (ie *PhysicalCellGroupConfig) Encode(w *uper.UperWriter) error {
 			}
 			// encode Pdsch_HARQ_ACK_EnhType3SecondaryToReleaseList_r17 optional
 			if len(ie.Pdsch_HARQ_ACK_EnhType3SecondaryToReleaseList_r17) > 0 {
-				tmp_Pdsch_HARQ_ACK_EnhType3SecondaryToReleaseList_r17 := utils.NewSequence[*PDSCH_HARQ_ACK_EnhType3Index_r17]([]*PDSCH_HARQ_ACK_EnhType3Index_r17{}, uper.Constraint{Lb: 1, Ub: maxNrofEnhType3HARQ_ACK_r17}, false)
+				tmp_Pdsch_HARQ_ACK_EnhType3SecondaryToReleaseList_r17 := utils.NewSequence[*PDSCH_HARQ_ACK_EnhType3Index_r17]([]*PDSCH_HARQ_ACK_EnhType3Index_r17{}, aper.Constraint{Lb: 1, Ub: maxNrofEnhType3HARQ_ACK_r17}, false)
 				for _, i := range ie.Pdsch_HARQ_ACK_EnhType3SecondaryToReleaseList_r17 {
 					tmp_Pdsch_HARQ_ACK_EnhType3SecondaryToReleaseList_r17.Value = append(tmp_Pdsch_HARQ_ACK_EnhType3SecondaryToReleaseList_r17.Value, &i)
 				}
@@ -501,9 +501,9 @@ func (ie *PhysicalCellGroupConfig) Encode(w *uper.UperWriter) error {
 			}
 			// encode Pucch_sSCellPattern_r17 optional
 			if len(ie.Pucch_sSCellPattern_r17) > 0 {
-				tmp_Pucch_sSCellPattern_r17 := utils.NewSequence[*utils.INTEGER]([]*utils.INTEGER{}, uper.Constraint{Lb: 1, Ub: maxNrofSlots}, false)
+				tmp_Pucch_sSCellPattern_r17 := utils.NewSequence[*utils.INTEGER]([]*utils.INTEGER{}, aper.Constraint{Lb: 1, Ub: maxNrofSlots}, false)
 				for _, i := range ie.Pucch_sSCellPattern_r17 {
-					tmp_ie := utils.NewINTEGER(int64(i), uper.Constraint{Lb: 0, Ub: 1}, false)
+					tmp_ie := utils.NewINTEGER(int64(i), aper.Constraint{Lb: 0, Ub: 1}, false)
 					tmp_Pucch_sSCellPattern_r17.Value = append(tmp_Pucch_sSCellPattern_r17.Value, &tmp_ie)
 				}
 				if err = tmp_Pucch_sSCellPattern_r17.Encode(extWriter); err != nil {
@@ -512,9 +512,9 @@ func (ie *PhysicalCellGroupConfig) Encode(w *uper.UperWriter) error {
 			}
 			// encode Pucch_sSCellPatternSecondaryPUCCHgroup_r17 optional
 			if len(ie.Pucch_sSCellPatternSecondaryPUCCHgroup_r17) > 0 {
-				tmp_Pucch_sSCellPatternSecondaryPUCCHgroup_r17 := utils.NewSequence[*utils.INTEGER]([]*utils.INTEGER{}, uper.Constraint{Lb: 1, Ub: maxNrofSlots}, false)
+				tmp_Pucch_sSCellPatternSecondaryPUCCHgroup_r17 := utils.NewSequence[*utils.INTEGER]([]*utils.INTEGER{}, aper.Constraint{Lb: 1, Ub: maxNrofSlots}, false)
 				for _, i := range ie.Pucch_sSCellPatternSecondaryPUCCHgroup_r17 {
-					tmp_ie := utils.NewINTEGER(int64(i), uper.Constraint{Lb: 0, Ub: 1}, false)
+					tmp_ie := utils.NewINTEGER(int64(i), aper.Constraint{Lb: 0, Ub: 1}, false)
 					tmp_Pucch_sSCellPatternSecondaryPUCCHgroup_r17.Value = append(tmp_Pucch_sSCellPatternSecondaryPUCCHgroup_r17.Value, &tmp_ie)
 				}
 				if err = tmp_Pucch_sSCellPatternSecondaryPUCCHgroup_r17.Encode(extWriter); err != nil {
@@ -594,7 +594,7 @@ func (ie *PhysicalCellGroupConfig) Encode(w *uper.UperWriter) error {
 		// encode extension group 6
 		if extBitmap[5] {
 			extBuf := new(bytes.Buffer)
-			extWriter := uper.NewWriter(extBuf)
+			extWriter := aper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 6
 			optionals_ext_6 := []bool{ie.SimultaneousSR_PUSCH_diffPUCCH_Groups_r17 != nil}
@@ -623,7 +623,7 @@ func (ie *PhysicalCellGroupConfig) Encode(w *uper.UperWriter) error {
 		// encode extension group 7
 		if extBitmap[6] {
 			extBuf := new(bytes.Buffer)
-			extWriter := uper.NewWriter(extBuf)
+			extWriter := aper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 7
 			optionals_ext_7 := []bool{ie.IntraBandNC_PRACH_simulTx_r17 != nil}
@@ -652,7 +652,7 @@ func (ie *PhysicalCellGroupConfig) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *PhysicalCellGroupConfig) Decode(r *uper.UperReader) error {
+func (ie *PhysicalCellGroupConfig) Decode(r *aper.AperReader) error {
 	var err error
 	var extensionBit bool
 	if extensionBit, err = r.ReadBool(); err != nil {
@@ -757,7 +757,7 @@ func (ie *PhysicalCellGroupConfig) Decode(r *uper.UperReader) error {
 				return err
 			}
 
-			extReader := uper.NewReader(bytes.NewReader(extBytes))
+			extReader := aper.NewReader(bytes.NewReader(extBytes))
 
 			Mcs_C_RNTIPresent, err := extReader.ReadBool()
 			if err != nil {
@@ -789,7 +789,7 @@ func (ie *PhysicalCellGroupConfig) Decode(r *uper.UperReader) error {
 				return err
 			}
 
-			extReader := uper.NewReader(bytes.NewReader(extBytes))
+			extReader := aper.NewReader(bytes.NewReader(extBytes))
 
 			XScalePresent, err := extReader.ReadBool()
 			if err != nil {
@@ -810,7 +810,7 @@ func (ie *PhysicalCellGroupConfig) Decode(r *uper.UperReader) error {
 				return err
 			}
 
-			extReader := uper.NewReader(bytes.NewReader(extBytes))
+			extReader := aper.NewReader(bytes.NewReader(extBytes))
 
 			Pdcch_BlindDetectionPresent, err := extReader.ReadBool()
 			if err != nil {
@@ -832,7 +832,7 @@ func (ie *PhysicalCellGroupConfig) Decode(r *uper.UperReader) error {
 				return err
 			}
 
-			extReader := uper.NewReader(bytes.NewReader(extBytes))
+			extReader := aper.NewReader(bytes.NewReader(extBytes))
 
 			Dcp_Config_r16Present, err := extReader.ReadBool()
 			if err != nil {
@@ -1089,7 +1089,7 @@ func (ie *PhysicalCellGroupConfig) Decode(r *uper.UperReader) error {
 				return err
 			}
 
-			extReader := uper.NewReader(bytes.NewReader(extBytes))
+			extReader := aper.NewReader(bytes.NewReader(extBytes))
 
 			Pdsch_HARQ_ACK_EnhType3ToAddModList_r17Present, err := extReader.ReadBool()
 			if err != nil {
@@ -1185,7 +1185,7 @@ func (ie *PhysicalCellGroupConfig) Decode(r *uper.UperReader) error {
 			}
 			// decode Pdsch_HARQ_ACK_EnhType3ToAddModList_r17 optional
 			if Pdsch_HARQ_ACK_EnhType3ToAddModList_r17Present {
-				tmp_Pdsch_HARQ_ACK_EnhType3ToAddModList_r17 := utils.NewSequence[*PDSCH_HARQ_ACK_EnhType3_r17]([]*PDSCH_HARQ_ACK_EnhType3_r17{}, uper.Constraint{Lb: 1, Ub: maxNrofEnhType3HARQ_ACK_r17}, false)
+				tmp_Pdsch_HARQ_ACK_EnhType3ToAddModList_r17 := utils.NewSequence[*PDSCH_HARQ_ACK_EnhType3_r17]([]*PDSCH_HARQ_ACK_EnhType3_r17{}, aper.Constraint{Lb: 1, Ub: maxNrofEnhType3HARQ_ACK_r17}, false)
 				fn_Pdsch_HARQ_ACK_EnhType3ToAddModList_r17 := func() *PDSCH_HARQ_ACK_EnhType3_r17 {
 					return new(PDSCH_HARQ_ACK_EnhType3_r17)
 				}
@@ -1199,7 +1199,7 @@ func (ie *PhysicalCellGroupConfig) Decode(r *uper.UperReader) error {
 			}
 			// decode Pdsch_HARQ_ACK_EnhType3ToReleaseList_r17 optional
 			if Pdsch_HARQ_ACK_EnhType3ToReleaseList_r17Present {
-				tmp_Pdsch_HARQ_ACK_EnhType3ToReleaseList_r17 := utils.NewSequence[*PDSCH_HARQ_ACK_EnhType3Index_r17]([]*PDSCH_HARQ_ACK_EnhType3Index_r17{}, uper.Constraint{Lb: 1, Ub: maxNrofEnhType3HARQ_ACK_r17}, false)
+				tmp_Pdsch_HARQ_ACK_EnhType3ToReleaseList_r17 := utils.NewSequence[*PDSCH_HARQ_ACK_EnhType3Index_r17]([]*PDSCH_HARQ_ACK_EnhType3Index_r17{}, aper.Constraint{Lb: 1, Ub: maxNrofEnhType3HARQ_ACK_r17}, false)
 				fn_Pdsch_HARQ_ACK_EnhType3ToReleaseList_r17 := func() *PDSCH_HARQ_ACK_EnhType3Index_r17 {
 					return new(PDSCH_HARQ_ACK_EnhType3Index_r17)
 				}
@@ -1213,7 +1213,7 @@ func (ie *PhysicalCellGroupConfig) Decode(r *uper.UperReader) error {
 			}
 			// decode Pdsch_HARQ_ACK_EnhType3SecondaryToAddModList_r17 optional
 			if Pdsch_HARQ_ACK_EnhType3SecondaryToAddModList_r17Present {
-				tmp_Pdsch_HARQ_ACK_EnhType3SecondaryToAddModList_r17 := utils.NewSequence[*PDSCH_HARQ_ACK_EnhType3_r17]([]*PDSCH_HARQ_ACK_EnhType3_r17{}, uper.Constraint{Lb: 1, Ub: maxNrofEnhType3HARQ_ACK_r17}, false)
+				tmp_Pdsch_HARQ_ACK_EnhType3SecondaryToAddModList_r17 := utils.NewSequence[*PDSCH_HARQ_ACK_EnhType3_r17]([]*PDSCH_HARQ_ACK_EnhType3_r17{}, aper.Constraint{Lb: 1, Ub: maxNrofEnhType3HARQ_ACK_r17}, false)
 				fn_Pdsch_HARQ_ACK_EnhType3SecondaryToAddModList_r17 := func() *PDSCH_HARQ_ACK_EnhType3_r17 {
 					return new(PDSCH_HARQ_ACK_EnhType3_r17)
 				}
@@ -1227,7 +1227,7 @@ func (ie *PhysicalCellGroupConfig) Decode(r *uper.UperReader) error {
 			}
 			// decode Pdsch_HARQ_ACK_EnhType3SecondaryToReleaseList_r17 optional
 			if Pdsch_HARQ_ACK_EnhType3SecondaryToReleaseList_r17Present {
-				tmp_Pdsch_HARQ_ACK_EnhType3SecondaryToReleaseList_r17 := utils.NewSequence[*PDSCH_HARQ_ACK_EnhType3Index_r17]([]*PDSCH_HARQ_ACK_EnhType3Index_r17{}, uper.Constraint{Lb: 1, Ub: maxNrofEnhType3HARQ_ACK_r17}, false)
+				tmp_Pdsch_HARQ_ACK_EnhType3SecondaryToReleaseList_r17 := utils.NewSequence[*PDSCH_HARQ_ACK_EnhType3Index_r17]([]*PDSCH_HARQ_ACK_EnhType3Index_r17{}, aper.Constraint{Lb: 1, Ub: maxNrofEnhType3HARQ_ACK_r17}, false)
 				fn_Pdsch_HARQ_ACK_EnhType3SecondaryToReleaseList_r17 := func() *PDSCH_HARQ_ACK_EnhType3Index_r17 {
 					return new(PDSCH_HARQ_ACK_EnhType3Index_r17)
 				}
@@ -1297,9 +1297,9 @@ func (ie *PhysicalCellGroupConfig) Decode(r *uper.UperReader) error {
 			}
 			// decode Pucch_sSCellPattern_r17 optional
 			if Pucch_sSCellPattern_r17Present {
-				tmp_Pucch_sSCellPattern_r17 := utils.NewSequence[*utils.INTEGER]([]*utils.INTEGER{}, uper.Constraint{Lb: 1, Ub: maxNrofSlots}, false)
+				tmp_Pucch_sSCellPattern_r17 := utils.NewSequence[*utils.INTEGER]([]*utils.INTEGER{}, aper.Constraint{Lb: 1, Ub: maxNrofSlots}, false)
 				fn_Pucch_sSCellPattern_r17 := func() *utils.INTEGER {
-					ie := utils.NewINTEGER(0, uper.Constraint{Lb: 0, Ub: 1}, false)
+					ie := utils.NewINTEGER(0, aper.Constraint{Lb: 0, Ub: 1}, false)
 					return &ie
 				}
 				if err = tmp_Pucch_sSCellPattern_r17.Decode(extReader, fn_Pucch_sSCellPattern_r17); err != nil {
@@ -1312,9 +1312,9 @@ func (ie *PhysicalCellGroupConfig) Decode(r *uper.UperReader) error {
 			}
 			// decode Pucch_sSCellPatternSecondaryPUCCHgroup_r17 optional
 			if Pucch_sSCellPatternSecondaryPUCCHgroup_r17Present {
-				tmp_Pucch_sSCellPatternSecondaryPUCCHgroup_r17 := utils.NewSequence[*utils.INTEGER]([]*utils.INTEGER{}, uper.Constraint{Lb: 1, Ub: maxNrofSlots}, false)
+				tmp_Pucch_sSCellPatternSecondaryPUCCHgroup_r17 := utils.NewSequence[*utils.INTEGER]([]*utils.INTEGER{}, aper.Constraint{Lb: 1, Ub: maxNrofSlots}, false)
 				fn_Pucch_sSCellPatternSecondaryPUCCHgroup_r17 := func() *utils.INTEGER {
-					ie := utils.NewINTEGER(0, uper.Constraint{Lb: 0, Ub: 1}, false)
+					ie := utils.NewINTEGER(0, aper.Constraint{Lb: 0, Ub: 1}, false)
 					return &ie
 				}
 				if err = tmp_Pucch_sSCellPatternSecondaryPUCCHgroup_r17.Decode(extReader, fn_Pucch_sSCellPatternSecondaryPUCCHgroup_r17); err != nil {
@@ -1398,7 +1398,7 @@ func (ie *PhysicalCellGroupConfig) Decode(r *uper.UperReader) error {
 				return err
 			}
 
-			extReader := uper.NewReader(bytes.NewReader(extBytes))
+			extReader := aper.NewReader(bytes.NewReader(extBytes))
 
 			SimultaneousSR_PUSCH_diffPUCCH_Groups_r17Present, err := extReader.ReadBool()
 			if err != nil {
@@ -1419,7 +1419,7 @@ func (ie *PhysicalCellGroupConfig) Decode(r *uper.UperReader) error {
 				return err
 			}
 
-			extReader := uper.NewReader(bytes.NewReader(extBytes))
+			extReader := aper.NewReader(bytes.NewReader(extBytes))
 
 			IntraBandNC_PRACH_simulTx_r17Present, err := extReader.ReadBool()
 			if err != nil {

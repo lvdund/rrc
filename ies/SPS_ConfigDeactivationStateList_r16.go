@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -9,9 +9,9 @@ type SPS_ConfigDeactivationStateList_r16 struct {
 	Value []SPS_ConfigDeactivationState_r16 `lb:1,ub:maxNrofSPS_DeactivationState,madatory`
 }
 
-func (ie *SPS_ConfigDeactivationStateList_r16) Encode(w *uper.UperWriter) error {
+func (ie *SPS_ConfigDeactivationStateList_r16) Encode(w *aper.AperWriter) error {
 	var err error
-	tmp := utils.NewSequence[*SPS_ConfigDeactivationState_r16]([]*SPS_ConfigDeactivationState_r16{}, uper.Constraint{Lb: 1, Ub: maxNrofSPS_DeactivationState}, false)
+	tmp := utils.NewSequence[*SPS_ConfigDeactivationState_r16]([]*SPS_ConfigDeactivationState_r16{}, aper.Constraint{Lb: 1, Ub: maxNrofSPS_DeactivationState}, false)
 	for _, i := range ie.Value {
 		tmp.Value = append(tmp.Value, &i)
 	}
@@ -21,9 +21,9 @@ func (ie *SPS_ConfigDeactivationStateList_r16) Encode(w *uper.UperWriter) error 
 	return nil
 }
 
-func (ie *SPS_ConfigDeactivationStateList_r16) Decode(r *uper.UperReader) error {
+func (ie *SPS_ConfigDeactivationStateList_r16) Decode(r *aper.AperReader) error {
 	var err error
-	tmp := utils.NewSequence[*SPS_ConfigDeactivationState_r16]([]*SPS_ConfigDeactivationState_r16{}, uper.Constraint{Lb: 1, Ub: maxNrofSPS_DeactivationState}, false)
+	tmp := utils.NewSequence[*SPS_ConfigDeactivationState_r16]([]*SPS_ConfigDeactivationState_r16{}, aper.Constraint{Lb: 1, Ub: maxNrofSPS_DeactivationState}, false)
 	fn := func() *SPS_ConfigDeactivationState_r16 {
 		return new(SPS_ConfigDeactivationState_r16)
 	}

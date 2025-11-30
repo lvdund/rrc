@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -9,9 +9,9 @@ type PLMN_IdentityInfoList struct {
 	Value []PLMN_IdentityInfo `lb:1,ub:maxPLMN,madatory`
 }
 
-func (ie *PLMN_IdentityInfoList) Encode(w *uper.UperWriter) error {
+func (ie *PLMN_IdentityInfoList) Encode(w *aper.AperWriter) error {
 	var err error
-	tmp := utils.NewSequence[*PLMN_IdentityInfo]([]*PLMN_IdentityInfo{}, uper.Constraint{Lb: 1, Ub: maxPLMN}, false)
+	tmp := utils.NewSequence[*PLMN_IdentityInfo]([]*PLMN_IdentityInfo{}, aper.Constraint{Lb: 1, Ub: maxPLMN}, false)
 	for _, i := range ie.Value {
 		tmp.Value = append(tmp.Value, &i)
 	}
@@ -21,9 +21,9 @@ func (ie *PLMN_IdentityInfoList) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *PLMN_IdentityInfoList) Decode(r *uper.UperReader) error {
+func (ie *PLMN_IdentityInfoList) Decode(r *aper.AperReader) error {
 	var err error
-	tmp := utils.NewSequence[*PLMN_IdentityInfo]([]*PLMN_IdentityInfo{}, uper.Constraint{Lb: 1, Ub: maxPLMN}, false)
+	tmp := utils.NewSequence[*PLMN_IdentityInfo]([]*PLMN_IdentityInfo{}, aper.Constraint{Lb: 1, Ub: maxPLMN}, false)
 	fn := func() *PLMN_IdentityInfo {
 		return new(PLMN_IdentityInfo)
 	}

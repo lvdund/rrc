@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -10,7 +10,7 @@ type UE_CapabilityRAT_Request struct {
 	CapabilityRequestFilter *[]byte  `optional`
 }
 
-func (ie *UE_CapabilityRAT_Request) Encode(w *uper.UperWriter) error {
+func (ie *UE_CapabilityRAT_Request) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.CapabilityRequestFilter != nil}
 	for _, bit := range preambleBits {
@@ -22,14 +22,14 @@ func (ie *UE_CapabilityRAT_Request) Encode(w *uper.UperWriter) error {
 		return utils.WrapError("Encode Rat_Type", err)
 	}
 	if ie.CapabilityRequestFilter != nil {
-		if err = w.WriteOctetString(*ie.CapabilityRequestFilter, &uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+		if err = w.WriteOctetString(*ie.CapabilityRequestFilter, &aper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
 			return utils.WrapError("Encode CapabilityRequestFilter", err)
 		}
 	}
 	return nil
 }
 
-func (ie *UE_CapabilityRAT_Request) Decode(r *uper.UperReader) error {
+func (ie *UE_CapabilityRAT_Request) Decode(r *aper.AperReader) error {
 	var err error
 	var CapabilityRequestFilterPresent bool
 	if CapabilityRequestFilterPresent, err = r.ReadBool(); err != nil {
@@ -40,7 +40,7 @@ func (ie *UE_CapabilityRAT_Request) Decode(r *uper.UperReader) error {
 	}
 	if CapabilityRequestFilterPresent {
 		var tmp_os_CapabilityRequestFilter []byte
-		if tmp_os_CapabilityRequestFilter, err = r.ReadOctetString(&uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+		if tmp_os_CapabilityRequestFilter, err = r.ReadOctetString(&aper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
 			return utils.WrapError("Decode CapabilityRequestFilter", err)
 		}
 		ie.CapabilityRequestFilter = &tmp_os_CapabilityRequestFilter

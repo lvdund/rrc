@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -27,7 +27,7 @@ type FeatureSetDownlink struct {
 	Dummy7                                    []DummyE                                                      `lb:1,ub:maxNrofCodebooks,optional`
 }
 
-func (ie *FeatureSetDownlink) Encode(w *uper.UperWriter) error {
+func (ie *FeatureSetDownlink) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.IntraBandFreqSeparationDL != nil, ie.ScalingFactor != nil, ie.Dummy8 != nil, ie.ScellWithoutSSB != nil, ie.Csi_RS_MeasSCellWithoutSSB != nil, ie.Dummy1 != nil, ie.Type1_3_CSS != nil, ie.Pdcch_MonitoringAnyOccasions != nil, ie.Dummy2 != nil, ie.Ue_SpecificUL_DL_Assignment != nil, ie.SearchSpaceSharingCA_DL != nil, ie.TimeDurationForQCL != nil, ie.Pdsch_ProcessingType1_DifferentTB_PerSlot != nil, ie.Dummy3 != nil, len(ie.Dummy4) > 0, len(ie.Dummy5) > 0, len(ie.Dummy6) > 0, len(ie.Dummy7) > 0}
 	for _, bit := range preambleBits {
@@ -35,7 +35,7 @@ func (ie *FeatureSetDownlink) Encode(w *uper.UperWriter) error {
 			return err
 		}
 	}
-	tmp_FeatureSetListPerDownlinkCC := utils.NewSequence[*FeatureSetDownlinkPerCC_Id]([]*FeatureSetDownlinkPerCC_Id{}, uper.Constraint{Lb: 1, Ub: maxNrofServingCells}, false)
+	tmp_FeatureSetListPerDownlinkCC := utils.NewSequence[*FeatureSetDownlinkPerCC_Id]([]*FeatureSetDownlinkPerCC_Id{}, aper.Constraint{Lb: 1, Ub: maxNrofServingCells}, false)
 	for _, i := range ie.FeatureSetListPerDownlinkCC {
 		tmp_FeatureSetListPerDownlinkCC.Value = append(tmp_FeatureSetListPerDownlinkCC.Value, &i)
 	}
@@ -113,7 +113,7 @@ func (ie *FeatureSetDownlink) Encode(w *uper.UperWriter) error {
 		}
 	}
 	if len(ie.Dummy4) > 0 {
-		tmp_Dummy4 := utils.NewSequence[*DummyB]([]*DummyB{}, uper.Constraint{Lb: 1, Ub: maxNrofCodebooks}, false)
+		tmp_Dummy4 := utils.NewSequence[*DummyB]([]*DummyB{}, aper.Constraint{Lb: 1, Ub: maxNrofCodebooks}, false)
 		for _, i := range ie.Dummy4 {
 			tmp_Dummy4.Value = append(tmp_Dummy4.Value, &i)
 		}
@@ -122,7 +122,7 @@ func (ie *FeatureSetDownlink) Encode(w *uper.UperWriter) error {
 		}
 	}
 	if len(ie.Dummy5) > 0 {
-		tmp_Dummy5 := utils.NewSequence[*DummyC]([]*DummyC{}, uper.Constraint{Lb: 1, Ub: maxNrofCodebooks}, false)
+		tmp_Dummy5 := utils.NewSequence[*DummyC]([]*DummyC{}, aper.Constraint{Lb: 1, Ub: maxNrofCodebooks}, false)
 		for _, i := range ie.Dummy5 {
 			tmp_Dummy5.Value = append(tmp_Dummy5.Value, &i)
 		}
@@ -131,7 +131,7 @@ func (ie *FeatureSetDownlink) Encode(w *uper.UperWriter) error {
 		}
 	}
 	if len(ie.Dummy6) > 0 {
-		tmp_Dummy6 := utils.NewSequence[*DummyD]([]*DummyD{}, uper.Constraint{Lb: 1, Ub: maxNrofCodebooks}, false)
+		tmp_Dummy6 := utils.NewSequence[*DummyD]([]*DummyD{}, aper.Constraint{Lb: 1, Ub: maxNrofCodebooks}, false)
 		for _, i := range ie.Dummy6 {
 			tmp_Dummy6.Value = append(tmp_Dummy6.Value, &i)
 		}
@@ -140,7 +140,7 @@ func (ie *FeatureSetDownlink) Encode(w *uper.UperWriter) error {
 		}
 	}
 	if len(ie.Dummy7) > 0 {
-		tmp_Dummy7 := utils.NewSequence[*DummyE]([]*DummyE{}, uper.Constraint{Lb: 1, Ub: maxNrofCodebooks}, false)
+		tmp_Dummy7 := utils.NewSequence[*DummyE]([]*DummyE{}, aper.Constraint{Lb: 1, Ub: maxNrofCodebooks}, false)
 		for _, i := range ie.Dummy7 {
 			tmp_Dummy7.Value = append(tmp_Dummy7.Value, &i)
 		}
@@ -151,7 +151,7 @@ func (ie *FeatureSetDownlink) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *FeatureSetDownlink) Decode(r *uper.UperReader) error {
+func (ie *FeatureSetDownlink) Decode(r *aper.AperReader) error {
 	var err error
 	var IntraBandFreqSeparationDLPresent bool
 	if IntraBandFreqSeparationDLPresent, err = r.ReadBool(); err != nil {
@@ -225,7 +225,7 @@ func (ie *FeatureSetDownlink) Decode(r *uper.UperReader) error {
 	if Dummy7Present, err = r.ReadBool(); err != nil {
 		return err
 	}
-	tmp_FeatureSetListPerDownlinkCC := utils.NewSequence[*FeatureSetDownlinkPerCC_Id]([]*FeatureSetDownlinkPerCC_Id{}, uper.Constraint{Lb: 1, Ub: maxNrofServingCells}, false)
+	tmp_FeatureSetListPerDownlinkCC := utils.NewSequence[*FeatureSetDownlinkPerCC_Id]([]*FeatureSetDownlinkPerCC_Id{}, aper.Constraint{Lb: 1, Ub: maxNrofServingCells}, false)
 	fn_FeatureSetListPerDownlinkCC := func() *FeatureSetDownlinkPerCC_Id {
 		return new(FeatureSetDownlinkPerCC_Id)
 	}
@@ -321,7 +321,7 @@ func (ie *FeatureSetDownlink) Decode(r *uper.UperReader) error {
 		}
 	}
 	if Dummy4Present {
-		tmp_Dummy4 := utils.NewSequence[*DummyB]([]*DummyB{}, uper.Constraint{Lb: 1, Ub: maxNrofCodebooks}, false)
+		tmp_Dummy4 := utils.NewSequence[*DummyB]([]*DummyB{}, aper.Constraint{Lb: 1, Ub: maxNrofCodebooks}, false)
 		fn_Dummy4 := func() *DummyB {
 			return new(DummyB)
 		}
@@ -334,7 +334,7 @@ func (ie *FeatureSetDownlink) Decode(r *uper.UperReader) error {
 		}
 	}
 	if Dummy5Present {
-		tmp_Dummy5 := utils.NewSequence[*DummyC]([]*DummyC{}, uper.Constraint{Lb: 1, Ub: maxNrofCodebooks}, false)
+		tmp_Dummy5 := utils.NewSequence[*DummyC]([]*DummyC{}, aper.Constraint{Lb: 1, Ub: maxNrofCodebooks}, false)
 		fn_Dummy5 := func() *DummyC {
 			return new(DummyC)
 		}
@@ -347,7 +347,7 @@ func (ie *FeatureSetDownlink) Decode(r *uper.UperReader) error {
 		}
 	}
 	if Dummy6Present {
-		tmp_Dummy6 := utils.NewSequence[*DummyD]([]*DummyD{}, uper.Constraint{Lb: 1, Ub: maxNrofCodebooks}, false)
+		tmp_Dummy6 := utils.NewSequence[*DummyD]([]*DummyD{}, aper.Constraint{Lb: 1, Ub: maxNrofCodebooks}, false)
 		fn_Dummy6 := func() *DummyD {
 			return new(DummyD)
 		}
@@ -360,7 +360,7 @@ func (ie *FeatureSetDownlink) Decode(r *uper.UperReader) error {
 		}
 	}
 	if Dummy7Present {
-		tmp_Dummy7 := utils.NewSequence[*DummyE]([]*DummyE{}, uper.Constraint{Lb: 1, Ub: maxNrofCodebooks}, false)
+		tmp_Dummy7 := utils.NewSequence[*DummyE]([]*DummyE{}, aper.Constraint{Lb: 1, Ub: maxNrofCodebooks}, false)
 		fn_Dummy7 := func() *DummyE {
 			return new(DummyE)
 		}

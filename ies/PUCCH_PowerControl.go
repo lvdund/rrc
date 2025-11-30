@@ -3,7 +3,7 @@ package ies
 import (
 	"bytes"
 
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -19,7 +19,7 @@ type PUCCH_PowerControl struct {
 	PathlossReferenceRSs_v1610   *PathlossReferenceRSs_v1610                      `optional,ext-1,setuprelease`
 }
 
-func (ie *PUCCH_PowerControl) Encode(w *uper.UperWriter) error {
+func (ie *PUCCH_PowerControl) Encode(w *aper.AperWriter) error {
 	var err error
 	hasExtensions := ie.PathlossReferenceRSs_v1610 != nil
 	preambleBits := []bool{hasExtensions, ie.DeltaF_PUCCH_f0 != nil, ie.DeltaF_PUCCH_f1 != nil, ie.DeltaF_PUCCH_f2 != nil, ie.DeltaF_PUCCH_f3 != nil, ie.DeltaF_PUCCH_f4 != nil, len(ie.P0_Set) > 0, len(ie.PathlossReferenceRSs) > 0, ie.TwoPUCCH_PC_AdjustmentStates != nil}
@@ -29,32 +29,32 @@ func (ie *PUCCH_PowerControl) Encode(w *uper.UperWriter) error {
 		}
 	}
 	if ie.DeltaF_PUCCH_f0 != nil {
-		if err = w.WriteInteger(*ie.DeltaF_PUCCH_f0, &uper.Constraint{Lb: -16, Ub: 15}, false); err != nil {
+		if err = w.WriteInteger(*ie.DeltaF_PUCCH_f0, &aper.Constraint{Lb: -16, Ub: 15}, false); err != nil {
 			return utils.WrapError("Encode DeltaF_PUCCH_f0", err)
 		}
 	}
 	if ie.DeltaF_PUCCH_f1 != nil {
-		if err = w.WriteInteger(*ie.DeltaF_PUCCH_f1, &uper.Constraint{Lb: -16, Ub: 15}, false); err != nil {
+		if err = w.WriteInteger(*ie.DeltaF_PUCCH_f1, &aper.Constraint{Lb: -16, Ub: 15}, false); err != nil {
 			return utils.WrapError("Encode DeltaF_PUCCH_f1", err)
 		}
 	}
 	if ie.DeltaF_PUCCH_f2 != nil {
-		if err = w.WriteInteger(*ie.DeltaF_PUCCH_f2, &uper.Constraint{Lb: -16, Ub: 15}, false); err != nil {
+		if err = w.WriteInteger(*ie.DeltaF_PUCCH_f2, &aper.Constraint{Lb: -16, Ub: 15}, false); err != nil {
 			return utils.WrapError("Encode DeltaF_PUCCH_f2", err)
 		}
 	}
 	if ie.DeltaF_PUCCH_f3 != nil {
-		if err = w.WriteInteger(*ie.DeltaF_PUCCH_f3, &uper.Constraint{Lb: -16, Ub: 15}, false); err != nil {
+		if err = w.WriteInteger(*ie.DeltaF_PUCCH_f3, &aper.Constraint{Lb: -16, Ub: 15}, false); err != nil {
 			return utils.WrapError("Encode DeltaF_PUCCH_f3", err)
 		}
 	}
 	if ie.DeltaF_PUCCH_f4 != nil {
-		if err = w.WriteInteger(*ie.DeltaF_PUCCH_f4, &uper.Constraint{Lb: -16, Ub: 15}, false); err != nil {
+		if err = w.WriteInteger(*ie.DeltaF_PUCCH_f4, &aper.Constraint{Lb: -16, Ub: 15}, false); err != nil {
 			return utils.WrapError("Encode DeltaF_PUCCH_f4", err)
 		}
 	}
 	if len(ie.P0_Set) > 0 {
-		tmp_P0_Set := utils.NewSequence[*P0_PUCCH]([]*P0_PUCCH{}, uper.Constraint{Lb: 1, Ub: maxNrofPUCCH_P0_PerSet}, false)
+		tmp_P0_Set := utils.NewSequence[*P0_PUCCH]([]*P0_PUCCH{}, aper.Constraint{Lb: 1, Ub: maxNrofPUCCH_P0_PerSet}, false)
 		for _, i := range ie.P0_Set {
 			tmp_P0_Set.Value = append(tmp_P0_Set.Value, &i)
 		}
@@ -63,7 +63,7 @@ func (ie *PUCCH_PowerControl) Encode(w *uper.UperWriter) error {
 		}
 	}
 	if len(ie.PathlossReferenceRSs) > 0 {
-		tmp_PathlossReferenceRSs := utils.NewSequence[*PUCCH_PathlossReferenceRS]([]*PUCCH_PathlossReferenceRS{}, uper.Constraint{Lb: 1, Ub: maxNrofPUCCH_PathlossReferenceRSs}, false)
+		tmp_PathlossReferenceRSs := utils.NewSequence[*PUCCH_PathlossReferenceRS]([]*PUCCH_PathlossReferenceRS{}, aper.Constraint{Lb: 1, Ub: maxNrofPUCCH_PathlossReferenceRSs}, false)
 		for _, i := range ie.PathlossReferenceRSs {
 			tmp_PathlossReferenceRSs.Value = append(tmp_PathlossReferenceRSs.Value, &i)
 		}
@@ -86,7 +86,7 @@ func (ie *PUCCH_PowerControl) Encode(w *uper.UperWriter) error {
 		// encode extension group 1
 		if extBitmap[0] {
 			extBuf := new(bytes.Buffer)
-			extWriter := uper.NewWriter(extBuf)
+			extWriter := aper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 1
 			optionals_ext_1 := []bool{ie.PathlossReferenceRSs_v1610 != nil}
@@ -118,7 +118,7 @@ func (ie *PUCCH_PowerControl) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *PUCCH_PowerControl) Decode(r *uper.UperReader) error {
+func (ie *PUCCH_PowerControl) Decode(r *aper.AperReader) error {
 	var err error
 	var extensionBit bool
 	if extensionBit, err = r.ReadBool(); err != nil {
@@ -158,41 +158,41 @@ func (ie *PUCCH_PowerControl) Decode(r *uper.UperReader) error {
 	}
 	if DeltaF_PUCCH_f0Present {
 		var tmp_int_DeltaF_PUCCH_f0 int64
-		if tmp_int_DeltaF_PUCCH_f0, err = r.ReadInteger(&uper.Constraint{Lb: -16, Ub: 15}, false); err != nil {
+		if tmp_int_DeltaF_PUCCH_f0, err = r.ReadInteger(&aper.Constraint{Lb: -16, Ub: 15}, false); err != nil {
 			return utils.WrapError("Decode DeltaF_PUCCH_f0", err)
 		}
 		ie.DeltaF_PUCCH_f0 = &tmp_int_DeltaF_PUCCH_f0
 	}
 	if DeltaF_PUCCH_f1Present {
 		var tmp_int_DeltaF_PUCCH_f1 int64
-		if tmp_int_DeltaF_PUCCH_f1, err = r.ReadInteger(&uper.Constraint{Lb: -16, Ub: 15}, false); err != nil {
+		if tmp_int_DeltaF_PUCCH_f1, err = r.ReadInteger(&aper.Constraint{Lb: -16, Ub: 15}, false); err != nil {
 			return utils.WrapError("Decode DeltaF_PUCCH_f1", err)
 		}
 		ie.DeltaF_PUCCH_f1 = &tmp_int_DeltaF_PUCCH_f1
 	}
 	if DeltaF_PUCCH_f2Present {
 		var tmp_int_DeltaF_PUCCH_f2 int64
-		if tmp_int_DeltaF_PUCCH_f2, err = r.ReadInteger(&uper.Constraint{Lb: -16, Ub: 15}, false); err != nil {
+		if tmp_int_DeltaF_PUCCH_f2, err = r.ReadInteger(&aper.Constraint{Lb: -16, Ub: 15}, false); err != nil {
 			return utils.WrapError("Decode DeltaF_PUCCH_f2", err)
 		}
 		ie.DeltaF_PUCCH_f2 = &tmp_int_DeltaF_PUCCH_f2
 	}
 	if DeltaF_PUCCH_f3Present {
 		var tmp_int_DeltaF_PUCCH_f3 int64
-		if tmp_int_DeltaF_PUCCH_f3, err = r.ReadInteger(&uper.Constraint{Lb: -16, Ub: 15}, false); err != nil {
+		if tmp_int_DeltaF_PUCCH_f3, err = r.ReadInteger(&aper.Constraint{Lb: -16, Ub: 15}, false); err != nil {
 			return utils.WrapError("Decode DeltaF_PUCCH_f3", err)
 		}
 		ie.DeltaF_PUCCH_f3 = &tmp_int_DeltaF_PUCCH_f3
 	}
 	if DeltaF_PUCCH_f4Present {
 		var tmp_int_DeltaF_PUCCH_f4 int64
-		if tmp_int_DeltaF_PUCCH_f4, err = r.ReadInteger(&uper.Constraint{Lb: -16, Ub: 15}, false); err != nil {
+		if tmp_int_DeltaF_PUCCH_f4, err = r.ReadInteger(&aper.Constraint{Lb: -16, Ub: 15}, false); err != nil {
 			return utils.WrapError("Decode DeltaF_PUCCH_f4", err)
 		}
 		ie.DeltaF_PUCCH_f4 = &tmp_int_DeltaF_PUCCH_f4
 	}
 	if P0_SetPresent {
-		tmp_P0_Set := utils.NewSequence[*P0_PUCCH]([]*P0_PUCCH{}, uper.Constraint{Lb: 1, Ub: maxNrofPUCCH_P0_PerSet}, false)
+		tmp_P0_Set := utils.NewSequence[*P0_PUCCH]([]*P0_PUCCH{}, aper.Constraint{Lb: 1, Ub: maxNrofPUCCH_P0_PerSet}, false)
 		fn_P0_Set := func() *P0_PUCCH {
 			return new(P0_PUCCH)
 		}
@@ -205,7 +205,7 @@ func (ie *PUCCH_PowerControl) Decode(r *uper.UperReader) error {
 		}
 	}
 	if PathlossReferenceRSsPresent {
-		tmp_PathlossReferenceRSs := utils.NewSequence[*PUCCH_PathlossReferenceRS]([]*PUCCH_PathlossReferenceRS{}, uper.Constraint{Lb: 1, Ub: maxNrofPUCCH_PathlossReferenceRSs}, false)
+		tmp_PathlossReferenceRSs := utils.NewSequence[*PUCCH_PathlossReferenceRS]([]*PUCCH_PathlossReferenceRS{}, aper.Constraint{Lb: 1, Ub: maxNrofPUCCH_PathlossReferenceRSs}, false)
 		fn_PathlossReferenceRSs := func() *PUCCH_PathlossReferenceRS {
 			return new(PUCCH_PathlossReferenceRS)
 		}
@@ -238,7 +238,7 @@ func (ie *PUCCH_PowerControl) Decode(r *uper.UperReader) error {
 				return err
 			}
 
-			extReader := uper.NewReader(bytes.NewReader(extBytes))
+			extReader := aper.NewReader(bytes.NewReader(extBytes))
 
 			PathlossReferenceRSs_v1610Present, err := extReader.ReadBool()
 			if err != nil {

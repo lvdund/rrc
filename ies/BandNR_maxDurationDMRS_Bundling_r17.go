@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -10,7 +10,7 @@ type BandNR_maxDurationDMRS_Bundling_r17 struct {
 	Tdd_r17 *BandNR_maxDurationDMRS_Bundling_r17_tdd_r17 `optional`
 }
 
-func (ie *BandNR_maxDurationDMRS_Bundling_r17) Encode(w *uper.UperWriter) error {
+func (ie *BandNR_maxDurationDMRS_Bundling_r17) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.Fdd_r17 != nil, ie.Tdd_r17 != nil}
 	for _, bit := range preambleBits {
@@ -31,7 +31,7 @@ func (ie *BandNR_maxDurationDMRS_Bundling_r17) Encode(w *uper.UperWriter) error 
 	return nil
 }
 
-func (ie *BandNR_maxDurationDMRS_Bundling_r17) Decode(r *uper.UperReader) error {
+func (ie *BandNR_maxDurationDMRS_Bundling_r17) Decode(r *aper.AperReader) error {
 	var err error
 	var Fdd_r17Present bool
 	if Fdd_r17Present, err = r.ReadBool(); err != nil {

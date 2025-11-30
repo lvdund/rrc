@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -9,9 +9,9 @@ type RateMatchPatternGroup struct {
 	Value []RateMatchPatternGroupItem `lb:1,ub:maxNrofRateMatchPatternsPerGroup,madatory`
 }
 
-func (ie *RateMatchPatternGroup) Encode(w *uper.UperWriter) error {
+func (ie *RateMatchPatternGroup) Encode(w *aper.AperWriter) error {
 	var err error
-	tmp := utils.NewSequence[*RateMatchPatternGroupItem]([]*RateMatchPatternGroupItem{}, uper.Constraint{Lb: 1, Ub: maxNrofRateMatchPatternsPerGroup}, false)
+	tmp := utils.NewSequence[*RateMatchPatternGroupItem]([]*RateMatchPatternGroupItem{}, aper.Constraint{Lb: 1, Ub: maxNrofRateMatchPatternsPerGroup}, false)
 	for _, i := range ie.Value {
 		tmp.Value = append(tmp.Value, &i)
 	}
@@ -21,9 +21,9 @@ func (ie *RateMatchPatternGroup) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *RateMatchPatternGroup) Decode(r *uper.UperReader) error {
+func (ie *RateMatchPatternGroup) Decode(r *aper.AperReader) error {
 	var err error
-	tmp := utils.NewSequence[*RateMatchPatternGroupItem]([]*RateMatchPatternGroupItem{}, uper.Constraint{Lb: 1, Ub: maxNrofRateMatchPatternsPerGroup}, false)
+	tmp := utils.NewSequence[*RateMatchPatternGroupItem]([]*RateMatchPatternGroupItem{}, aper.Constraint{Lb: 1, Ub: maxNrofRateMatchPatternsPerGroup}, false)
 	fn := func() *RateMatchPatternGroupItem {
 		return new(RateMatchPatternGroupItem)
 	}

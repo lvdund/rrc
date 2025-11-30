@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -10,7 +10,7 @@ type ConfigRestrictInfoDAPS_v1640 struct {
 	SourceFeatureSetPerUplinkCC_r16   FeatureSetUplinkPerCC_Id   `madatory`
 }
 
-func (ie *ConfigRestrictInfoDAPS_v1640) Encode(w *uper.UperWriter) error {
+func (ie *ConfigRestrictInfoDAPS_v1640) Encode(w *aper.AperWriter) error {
 	var err error
 	if err = ie.SourceFeatureSetPerDownlinkCC_r16.Encode(w); err != nil {
 		return utils.WrapError("Encode SourceFeatureSetPerDownlinkCC_r16", err)
@@ -21,7 +21,7 @@ func (ie *ConfigRestrictInfoDAPS_v1640) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *ConfigRestrictInfoDAPS_v1640) Decode(r *uper.UperReader) error {
+func (ie *ConfigRestrictInfoDAPS_v1640) Decode(r *aper.AperReader) error {
 	var err error
 	if err = ie.SourceFeatureSetPerDownlinkCC_r16.Decode(r); err != nil {
 		return utils.WrapError("Decode SourceFeatureSetPerDownlinkCC_r16", err)

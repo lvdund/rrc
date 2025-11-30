@@ -3,7 +3,7 @@ package ies
 import (
 	"fmt"
 
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -17,7 +17,7 @@ type DelayBudgetReport struct {
 	Type1  *DelayBudgetReport_type1
 }
 
-func (ie *DelayBudgetReport) Encode(w *uper.UperWriter) error {
+func (ie *DelayBudgetReport) Encode(w *aper.AperWriter) error {
 	var err error
 	if err = w.WriteChoice(ie.Choice, 1, false); err != nil {
 		return err
@@ -33,7 +33,7 @@ func (ie *DelayBudgetReport) Encode(w *uper.UperWriter) error {
 	return err
 }
 
-func (ie *DelayBudgetReport) Decode(r *uper.UperReader) error {
+func (ie *DelayBudgetReport) Decode(r *aper.AperReader) error {
 	var err error
 	if ie.Choice, err = r.ReadChoice(1, false); err != nil {
 		return err

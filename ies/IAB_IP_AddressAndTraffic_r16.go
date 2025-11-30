@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -12,7 +12,7 @@ type IAB_IP_AddressAndTraffic_r16 struct {
 	Non_F1_Traffic_IP_Address_r16  []IAB_IP_Address_r16 `lb:1,ub:8,optional`
 }
 
-func (ie *IAB_IP_AddressAndTraffic_r16) Encode(w *uper.UperWriter) error {
+func (ie *IAB_IP_AddressAndTraffic_r16) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{len(ie.All_Traffic_IAB_IP_Address_r16) > 0, len(ie.F1_C_Traffic_IP_Address_r16) > 0, len(ie.F1_U_Traffic_IP_Address_r16) > 0, len(ie.Non_F1_Traffic_IP_Address_r16) > 0}
 	for _, bit := range preambleBits {
@@ -21,7 +21,7 @@ func (ie *IAB_IP_AddressAndTraffic_r16) Encode(w *uper.UperWriter) error {
 		}
 	}
 	if len(ie.All_Traffic_IAB_IP_Address_r16) > 0 {
-		tmp_All_Traffic_IAB_IP_Address_r16 := utils.NewSequence[*IAB_IP_Address_r16]([]*IAB_IP_Address_r16{}, uper.Constraint{Lb: 1, Ub: 8}, false)
+		tmp_All_Traffic_IAB_IP_Address_r16 := utils.NewSequence[*IAB_IP_Address_r16]([]*IAB_IP_Address_r16{}, aper.Constraint{Lb: 1, Ub: 8}, false)
 		for _, i := range ie.All_Traffic_IAB_IP_Address_r16 {
 			tmp_All_Traffic_IAB_IP_Address_r16.Value = append(tmp_All_Traffic_IAB_IP_Address_r16.Value, &i)
 		}
@@ -30,7 +30,7 @@ func (ie *IAB_IP_AddressAndTraffic_r16) Encode(w *uper.UperWriter) error {
 		}
 	}
 	if len(ie.F1_C_Traffic_IP_Address_r16) > 0 {
-		tmp_F1_C_Traffic_IP_Address_r16 := utils.NewSequence[*IAB_IP_Address_r16]([]*IAB_IP_Address_r16{}, uper.Constraint{Lb: 1, Ub: 8}, false)
+		tmp_F1_C_Traffic_IP_Address_r16 := utils.NewSequence[*IAB_IP_Address_r16]([]*IAB_IP_Address_r16{}, aper.Constraint{Lb: 1, Ub: 8}, false)
 		for _, i := range ie.F1_C_Traffic_IP_Address_r16 {
 			tmp_F1_C_Traffic_IP_Address_r16.Value = append(tmp_F1_C_Traffic_IP_Address_r16.Value, &i)
 		}
@@ -39,7 +39,7 @@ func (ie *IAB_IP_AddressAndTraffic_r16) Encode(w *uper.UperWriter) error {
 		}
 	}
 	if len(ie.F1_U_Traffic_IP_Address_r16) > 0 {
-		tmp_F1_U_Traffic_IP_Address_r16 := utils.NewSequence[*IAB_IP_Address_r16]([]*IAB_IP_Address_r16{}, uper.Constraint{Lb: 1, Ub: 8}, false)
+		tmp_F1_U_Traffic_IP_Address_r16 := utils.NewSequence[*IAB_IP_Address_r16]([]*IAB_IP_Address_r16{}, aper.Constraint{Lb: 1, Ub: 8}, false)
 		for _, i := range ie.F1_U_Traffic_IP_Address_r16 {
 			tmp_F1_U_Traffic_IP_Address_r16.Value = append(tmp_F1_U_Traffic_IP_Address_r16.Value, &i)
 		}
@@ -48,7 +48,7 @@ func (ie *IAB_IP_AddressAndTraffic_r16) Encode(w *uper.UperWriter) error {
 		}
 	}
 	if len(ie.Non_F1_Traffic_IP_Address_r16) > 0 {
-		tmp_Non_F1_Traffic_IP_Address_r16 := utils.NewSequence[*IAB_IP_Address_r16]([]*IAB_IP_Address_r16{}, uper.Constraint{Lb: 1, Ub: 8}, false)
+		tmp_Non_F1_Traffic_IP_Address_r16 := utils.NewSequence[*IAB_IP_Address_r16]([]*IAB_IP_Address_r16{}, aper.Constraint{Lb: 1, Ub: 8}, false)
 		for _, i := range ie.Non_F1_Traffic_IP_Address_r16 {
 			tmp_Non_F1_Traffic_IP_Address_r16.Value = append(tmp_Non_F1_Traffic_IP_Address_r16.Value, &i)
 		}
@@ -59,7 +59,7 @@ func (ie *IAB_IP_AddressAndTraffic_r16) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *IAB_IP_AddressAndTraffic_r16) Decode(r *uper.UperReader) error {
+func (ie *IAB_IP_AddressAndTraffic_r16) Decode(r *aper.AperReader) error {
 	var err error
 	var All_Traffic_IAB_IP_Address_r16Present bool
 	if All_Traffic_IAB_IP_Address_r16Present, err = r.ReadBool(); err != nil {
@@ -78,7 +78,7 @@ func (ie *IAB_IP_AddressAndTraffic_r16) Decode(r *uper.UperReader) error {
 		return err
 	}
 	if All_Traffic_IAB_IP_Address_r16Present {
-		tmp_All_Traffic_IAB_IP_Address_r16 := utils.NewSequence[*IAB_IP_Address_r16]([]*IAB_IP_Address_r16{}, uper.Constraint{Lb: 1, Ub: 8}, false)
+		tmp_All_Traffic_IAB_IP_Address_r16 := utils.NewSequence[*IAB_IP_Address_r16]([]*IAB_IP_Address_r16{}, aper.Constraint{Lb: 1, Ub: 8}, false)
 		fn_All_Traffic_IAB_IP_Address_r16 := func() *IAB_IP_Address_r16 {
 			return new(IAB_IP_Address_r16)
 		}
@@ -91,7 +91,7 @@ func (ie *IAB_IP_AddressAndTraffic_r16) Decode(r *uper.UperReader) error {
 		}
 	}
 	if F1_C_Traffic_IP_Address_r16Present {
-		tmp_F1_C_Traffic_IP_Address_r16 := utils.NewSequence[*IAB_IP_Address_r16]([]*IAB_IP_Address_r16{}, uper.Constraint{Lb: 1, Ub: 8}, false)
+		tmp_F1_C_Traffic_IP_Address_r16 := utils.NewSequence[*IAB_IP_Address_r16]([]*IAB_IP_Address_r16{}, aper.Constraint{Lb: 1, Ub: 8}, false)
 		fn_F1_C_Traffic_IP_Address_r16 := func() *IAB_IP_Address_r16 {
 			return new(IAB_IP_Address_r16)
 		}
@@ -104,7 +104,7 @@ func (ie *IAB_IP_AddressAndTraffic_r16) Decode(r *uper.UperReader) error {
 		}
 	}
 	if F1_U_Traffic_IP_Address_r16Present {
-		tmp_F1_U_Traffic_IP_Address_r16 := utils.NewSequence[*IAB_IP_Address_r16]([]*IAB_IP_Address_r16{}, uper.Constraint{Lb: 1, Ub: 8}, false)
+		tmp_F1_U_Traffic_IP_Address_r16 := utils.NewSequence[*IAB_IP_Address_r16]([]*IAB_IP_Address_r16{}, aper.Constraint{Lb: 1, Ub: 8}, false)
 		fn_F1_U_Traffic_IP_Address_r16 := func() *IAB_IP_Address_r16 {
 			return new(IAB_IP_Address_r16)
 		}
@@ -117,7 +117,7 @@ func (ie *IAB_IP_AddressAndTraffic_r16) Decode(r *uper.UperReader) error {
 		}
 	}
 	if Non_F1_Traffic_IP_Address_r16Present {
-		tmp_Non_F1_Traffic_IP_Address_r16 := utils.NewSequence[*IAB_IP_Address_r16]([]*IAB_IP_Address_r16{}, uper.Constraint{Lb: 1, Ub: 8}, false)
+		tmp_Non_F1_Traffic_IP_Address_r16 := utils.NewSequence[*IAB_IP_Address_r16]([]*IAB_IP_Address_r16{}, aper.Constraint{Lb: 1, Ub: 8}, false)
 		fn_Non_F1_Traffic_IP_Address_r16 := func() *IAB_IP_Address_r16 {
 			return new(IAB_IP_Address_r16)
 		}

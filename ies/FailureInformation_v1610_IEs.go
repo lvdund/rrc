@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -10,7 +10,7 @@ type FailureInformation_v1610_IEs struct {
 	NonCriticalExtension interface{}          `optional`
 }
 
-func (ie *FailureInformation_v1610_IEs) Encode(w *uper.UperWriter) error {
+func (ie *FailureInformation_v1610_IEs) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.FailureInfoDAPS_r16 != nil}
 	for _, bit := range preambleBits {
@@ -26,7 +26,7 @@ func (ie *FailureInformation_v1610_IEs) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *FailureInformation_v1610_IEs) Decode(r *uper.UperReader) error {
+func (ie *FailureInformation_v1610_IEs) Decode(r *aper.AperReader) error {
 	var err error
 	var FailureInfoDAPS_r16Present bool
 	if FailureInfoDAPS_r16Present, err = r.ReadBool(); err != nil {

@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -10,12 +10,12 @@ type CSI_IM_ResourceSet struct {
 	Csi_IM_Resources     []CSI_IM_ResourceId  `lb:1,ub:maxNrofCSI_IM_ResourcesPerSet,madatory`
 }
 
-func (ie *CSI_IM_ResourceSet) Encode(w *uper.UperWriter) error {
+func (ie *CSI_IM_ResourceSet) Encode(w *aper.AperWriter) error {
 	var err error
 	if err = ie.Csi_IM_ResourceSetId.Encode(w); err != nil {
 		return utils.WrapError("Encode Csi_IM_ResourceSetId", err)
 	}
-	tmp_Csi_IM_Resources := utils.NewSequence[*CSI_IM_ResourceId]([]*CSI_IM_ResourceId{}, uper.Constraint{Lb: 1, Ub: maxNrofCSI_IM_ResourcesPerSet}, false)
+	tmp_Csi_IM_Resources := utils.NewSequence[*CSI_IM_ResourceId]([]*CSI_IM_ResourceId{}, aper.Constraint{Lb: 1, Ub: maxNrofCSI_IM_ResourcesPerSet}, false)
 	for _, i := range ie.Csi_IM_Resources {
 		tmp_Csi_IM_Resources.Value = append(tmp_Csi_IM_Resources.Value, &i)
 	}
@@ -25,12 +25,12 @@ func (ie *CSI_IM_ResourceSet) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *CSI_IM_ResourceSet) Decode(r *uper.UperReader) error {
+func (ie *CSI_IM_ResourceSet) Decode(r *aper.AperReader) error {
 	var err error
 	if err = ie.Csi_IM_ResourceSetId.Decode(r); err != nil {
 		return utils.WrapError("Decode Csi_IM_ResourceSetId", err)
 	}
-	tmp_Csi_IM_Resources := utils.NewSequence[*CSI_IM_ResourceId]([]*CSI_IM_ResourceId{}, uper.Constraint{Lb: 1, Ub: maxNrofCSI_IM_ResourcesPerSet}, false)
+	tmp_Csi_IM_Resources := utils.NewSequence[*CSI_IM_ResourceId]([]*CSI_IM_ResourceId{}, aper.Constraint{Lb: 1, Ub: maxNrofCSI_IM_ResourcesPerSet}, false)
 	fn_Csi_IM_Resources := func() *CSI_IM_ResourceId {
 		return new(CSI_IM_ResourceId)
 	}

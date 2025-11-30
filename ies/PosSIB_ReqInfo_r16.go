@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -11,7 +11,7 @@ type PosSIB_ReqInfo_r16 struct {
 	PosSibType_r16 PosSIB_ReqInfo_r16_posSibType_r16 `madatory`
 }
 
-func (ie *PosSIB_ReqInfo_r16) Encode(w *uper.UperWriter) error {
+func (ie *PosSIB_ReqInfo_r16) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.Gnss_id_r16 != nil, ie.Sbas_id_r16 != nil}
 	for _, bit := range preambleBits {
@@ -35,7 +35,7 @@ func (ie *PosSIB_ReqInfo_r16) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *PosSIB_ReqInfo_r16) Decode(r *uper.UperReader) error {
+func (ie *PosSIB_ReqInfo_r16) Decode(r *aper.AperReader) error {
 	var err error
 	var Gnss_id_r16Present bool
 	if Gnss_id_r16Present, err = r.ReadBool(); err != nil {

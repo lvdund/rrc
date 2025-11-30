@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -10,7 +10,7 @@ type BWP_UplinkDedicated_ul_TCI_StateList_r17_explicitlist struct {
 	Ul_TCI_ToReleaseList_r17 []TCI_UL_State_Id_r17 `lb:1,ub:maxUL_TCI_r17,optional`
 }
 
-func (ie *BWP_UplinkDedicated_ul_TCI_StateList_r17_explicitlist) Encode(w *uper.UperWriter) error {
+func (ie *BWP_UplinkDedicated_ul_TCI_StateList_r17_explicitlist) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{len(ie.Ul_TCI_ToAddModList_r17) > 0, len(ie.Ul_TCI_ToReleaseList_r17) > 0}
 	for _, bit := range preambleBits {
@@ -19,7 +19,7 @@ func (ie *BWP_UplinkDedicated_ul_TCI_StateList_r17_explicitlist) Encode(w *uper.
 		}
 	}
 	if len(ie.Ul_TCI_ToAddModList_r17) > 0 {
-		tmp_Ul_TCI_ToAddModList_r17 := utils.NewSequence[*TCI_UL_State_r17]([]*TCI_UL_State_r17{}, uper.Constraint{Lb: 1, Ub: maxUL_TCI_r17}, false)
+		tmp_Ul_TCI_ToAddModList_r17 := utils.NewSequence[*TCI_UL_State_r17]([]*TCI_UL_State_r17{}, aper.Constraint{Lb: 1, Ub: maxUL_TCI_r17}, false)
 		for _, i := range ie.Ul_TCI_ToAddModList_r17 {
 			tmp_Ul_TCI_ToAddModList_r17.Value = append(tmp_Ul_TCI_ToAddModList_r17.Value, &i)
 		}
@@ -28,7 +28,7 @@ func (ie *BWP_UplinkDedicated_ul_TCI_StateList_r17_explicitlist) Encode(w *uper.
 		}
 	}
 	if len(ie.Ul_TCI_ToReleaseList_r17) > 0 {
-		tmp_Ul_TCI_ToReleaseList_r17 := utils.NewSequence[*TCI_UL_State_Id_r17]([]*TCI_UL_State_Id_r17{}, uper.Constraint{Lb: 1, Ub: maxUL_TCI_r17}, false)
+		tmp_Ul_TCI_ToReleaseList_r17 := utils.NewSequence[*TCI_UL_State_Id_r17]([]*TCI_UL_State_Id_r17{}, aper.Constraint{Lb: 1, Ub: maxUL_TCI_r17}, false)
 		for _, i := range ie.Ul_TCI_ToReleaseList_r17 {
 			tmp_Ul_TCI_ToReleaseList_r17.Value = append(tmp_Ul_TCI_ToReleaseList_r17.Value, &i)
 		}
@@ -39,7 +39,7 @@ func (ie *BWP_UplinkDedicated_ul_TCI_StateList_r17_explicitlist) Encode(w *uper.
 	return nil
 }
 
-func (ie *BWP_UplinkDedicated_ul_TCI_StateList_r17_explicitlist) Decode(r *uper.UperReader) error {
+func (ie *BWP_UplinkDedicated_ul_TCI_StateList_r17_explicitlist) Decode(r *aper.AperReader) error {
 	var err error
 	var Ul_TCI_ToAddModList_r17Present bool
 	if Ul_TCI_ToAddModList_r17Present, err = r.ReadBool(); err != nil {
@@ -50,7 +50,7 @@ func (ie *BWP_UplinkDedicated_ul_TCI_StateList_r17_explicitlist) Decode(r *uper.
 		return err
 	}
 	if Ul_TCI_ToAddModList_r17Present {
-		tmp_Ul_TCI_ToAddModList_r17 := utils.NewSequence[*TCI_UL_State_r17]([]*TCI_UL_State_r17{}, uper.Constraint{Lb: 1, Ub: maxUL_TCI_r17}, false)
+		tmp_Ul_TCI_ToAddModList_r17 := utils.NewSequence[*TCI_UL_State_r17]([]*TCI_UL_State_r17{}, aper.Constraint{Lb: 1, Ub: maxUL_TCI_r17}, false)
 		fn_Ul_TCI_ToAddModList_r17 := func() *TCI_UL_State_r17 {
 			return new(TCI_UL_State_r17)
 		}
@@ -63,7 +63,7 @@ func (ie *BWP_UplinkDedicated_ul_TCI_StateList_r17_explicitlist) Decode(r *uper.
 		}
 	}
 	if Ul_TCI_ToReleaseList_r17Present {
-		tmp_Ul_TCI_ToReleaseList_r17 := utils.NewSequence[*TCI_UL_State_Id_r17]([]*TCI_UL_State_Id_r17{}, uper.Constraint{Lb: 1, Ub: maxUL_TCI_r17}, false)
+		tmp_Ul_TCI_ToReleaseList_r17 := utils.NewSequence[*TCI_UL_State_Id_r17]([]*TCI_UL_State_Id_r17{}, aper.Constraint{Lb: 1, Ub: maxUL_TCI_r17}, false)
 		fn_Ul_TCI_ToReleaseList_r17 := func() *TCI_UL_State_Id_r17 {
 			return new(TCI_UL_State_Id_r17)
 		}

@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -11,7 +11,7 @@ type P0_PUSCH_AlphaSet struct {
 	Alpha               *Alpha              `optional`
 }
 
-func (ie *P0_PUSCH_AlphaSet) Encode(w *uper.UperWriter) error {
+func (ie *P0_PUSCH_AlphaSet) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.P0 != nil, ie.Alpha != nil}
 	for _, bit := range preambleBits {
@@ -23,7 +23,7 @@ func (ie *P0_PUSCH_AlphaSet) Encode(w *uper.UperWriter) error {
 		return utils.WrapError("Encode P0_PUSCH_AlphaSetId", err)
 	}
 	if ie.P0 != nil {
-		if err = w.WriteInteger(*ie.P0, &uper.Constraint{Lb: -16, Ub: 15}, false); err != nil {
+		if err = w.WriteInteger(*ie.P0, &aper.Constraint{Lb: -16, Ub: 15}, false); err != nil {
 			return utils.WrapError("Encode P0", err)
 		}
 	}
@@ -35,7 +35,7 @@ func (ie *P0_PUSCH_AlphaSet) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *P0_PUSCH_AlphaSet) Decode(r *uper.UperReader) error {
+func (ie *P0_PUSCH_AlphaSet) Decode(r *aper.AperReader) error {
 	var err error
 	var P0Present bool
 	if P0Present, err = r.ReadBool(); err != nil {
@@ -50,7 +50,7 @@ func (ie *P0_PUSCH_AlphaSet) Decode(r *uper.UperReader) error {
 	}
 	if P0Present {
 		var tmp_int_P0 int64
-		if tmp_int_P0, err = r.ReadInteger(&uper.Constraint{Lb: -16, Ub: 15}, false); err != nil {
+		if tmp_int_P0, err = r.ReadInteger(&aper.Constraint{Lb: -16, Ub: 15}, false); err != nil {
 			return utils.WrapError("Decode P0", err)
 		}
 		ie.P0 = &tmp_int_P0

@@ -3,7 +3,7 @@ package ies
 import (
 	"fmt"
 
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -17,13 +17,13 @@ const (
 
 type ApplicableDisasterInfo_r17 struct {
 	Choice                        uint64
-	NoDisasterRoaming_r17         uper.NULL       `madatory`
-	DisasterRelatedIndication_r17 uper.NULL       `madatory`
-	CommonPLMNs_r17               uper.NULL       `madatory`
+	NoDisasterRoaming_r17         aper.NULL       `madatory`
+	DisasterRelatedIndication_r17 aper.NULL       `madatory`
+	CommonPLMNs_r17               aper.NULL       `madatory`
 	DedicatedPLMNs_r17            []PLMN_Identity `lb:1,ub:maxPLMN,madatory`
 }
 
-func (ie *ApplicableDisasterInfo_r17) Encode(w *uper.UperWriter) error {
+func (ie *ApplicableDisasterInfo_r17) Encode(w *aper.AperWriter) error {
 	var err error
 	if err = w.WriteChoice(ie.Choice, 4, false); err != nil {
 		return err
@@ -42,7 +42,7 @@ func (ie *ApplicableDisasterInfo_r17) Encode(w *uper.UperWriter) error {
 			err = utils.WrapError("Encode CommonPLMNs_r17", err)
 		}
 	case ApplicableDisasterInfo_r17_Choice_DedicatedPLMNs_r17:
-		tmp := utils.NewSequence[*PLMN_Identity]([]*PLMN_Identity{}, uper.Constraint{Lb: 1, Ub: maxPLMN}, false)
+		tmp := utils.NewSequence[*PLMN_Identity]([]*PLMN_Identity{}, aper.Constraint{Lb: 1, Ub: maxPLMN}, false)
 		for _, i := range ie.DedicatedPLMNs_r17 {
 			tmp.Value = append(tmp.Value, &i)
 		}
@@ -55,7 +55,7 @@ func (ie *ApplicableDisasterInfo_r17) Encode(w *uper.UperWriter) error {
 	return err
 }
 
-func (ie *ApplicableDisasterInfo_r17) Decode(r *uper.UperReader) error {
+func (ie *ApplicableDisasterInfo_r17) Decode(r *aper.AperReader) error {
 	var err error
 	if ie.Choice, err = r.ReadChoice(4, false); err != nil {
 		return err
@@ -74,7 +74,7 @@ func (ie *ApplicableDisasterInfo_r17) Decode(r *uper.UperReader) error {
 			return utils.WrapError("Decode CommonPLMNs_r17", err)
 		}
 	case ApplicableDisasterInfo_r17_Choice_DedicatedPLMNs_r17:
-		tmp := utils.NewSequence[*PLMN_Identity]([]*PLMN_Identity{}, uper.Constraint{Lb: 1, Ub: maxPLMN}, false)
+		tmp := utils.NewSequence[*PLMN_Identity]([]*PLMN_Identity{}, aper.Constraint{Lb: 1, Ub: maxPLMN}, false)
 		fn := func() *PLMN_Identity {
 			return new(PLMN_Identity)
 		}

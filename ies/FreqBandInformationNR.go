@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -13,7 +13,7 @@ type FreqBandInformationNR struct {
 	MaxCarriersRequestedUL  *int64               `lb:1,ub:maxNrofServingCells,optional`
 }
 
-func (ie *FreqBandInformationNR) Encode(w *uper.UperWriter) error {
+func (ie *FreqBandInformationNR) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.MaxBandwidthRequestedDL != nil, ie.MaxBandwidthRequestedUL != nil, ie.MaxCarriersRequestedDL != nil, ie.MaxCarriersRequestedUL != nil}
 	for _, bit := range preambleBits {
@@ -35,19 +35,19 @@ func (ie *FreqBandInformationNR) Encode(w *uper.UperWriter) error {
 		}
 	}
 	if ie.MaxCarriersRequestedDL != nil {
-		if err = w.WriteInteger(*ie.MaxCarriersRequestedDL, &uper.Constraint{Lb: 1, Ub: maxNrofServingCells}, false); err != nil {
+		if err = w.WriteInteger(*ie.MaxCarriersRequestedDL, &aper.Constraint{Lb: 1, Ub: maxNrofServingCells}, false); err != nil {
 			return utils.WrapError("Encode MaxCarriersRequestedDL", err)
 		}
 	}
 	if ie.MaxCarriersRequestedUL != nil {
-		if err = w.WriteInteger(*ie.MaxCarriersRequestedUL, &uper.Constraint{Lb: 1, Ub: maxNrofServingCells}, false); err != nil {
+		if err = w.WriteInteger(*ie.MaxCarriersRequestedUL, &aper.Constraint{Lb: 1, Ub: maxNrofServingCells}, false); err != nil {
 			return utils.WrapError("Encode MaxCarriersRequestedUL", err)
 		}
 	}
 	return nil
 }
 
-func (ie *FreqBandInformationNR) Decode(r *uper.UperReader) error {
+func (ie *FreqBandInformationNR) Decode(r *aper.AperReader) error {
 	var err error
 	var MaxBandwidthRequestedDLPresent bool
 	if MaxBandwidthRequestedDLPresent, err = r.ReadBool(); err != nil {
@@ -82,14 +82,14 @@ func (ie *FreqBandInformationNR) Decode(r *uper.UperReader) error {
 	}
 	if MaxCarriersRequestedDLPresent {
 		var tmp_int_MaxCarriersRequestedDL int64
-		if tmp_int_MaxCarriersRequestedDL, err = r.ReadInteger(&uper.Constraint{Lb: 1, Ub: maxNrofServingCells}, false); err != nil {
+		if tmp_int_MaxCarriersRequestedDL, err = r.ReadInteger(&aper.Constraint{Lb: 1, Ub: maxNrofServingCells}, false); err != nil {
 			return utils.WrapError("Decode MaxCarriersRequestedDL", err)
 		}
 		ie.MaxCarriersRequestedDL = &tmp_int_MaxCarriersRequestedDL
 	}
 	if MaxCarriersRequestedULPresent {
 		var tmp_int_MaxCarriersRequestedUL int64
-		if tmp_int_MaxCarriersRequestedUL, err = r.ReadInteger(&uper.Constraint{Lb: 1, Ub: maxNrofServingCells}, false); err != nil {
+		if tmp_int_MaxCarriersRequestedUL, err = r.ReadInteger(&aper.Constraint{Lb: 1, Ub: maxNrofServingCells}, false); err != nil {
 			return utils.WrapError("Decode MaxCarriersRequestedUL", err)
 		}
 		ie.MaxCarriersRequestedUL = &tmp_int_MaxCarriersRequestedUL

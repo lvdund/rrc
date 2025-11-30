@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -9,7 +9,7 @@ type CG_Config_v1560_IEs_reportCGI_RequestEUTRA struct {
 	RequestedCellInfoEUTRA *CG_Config_v1560_IEs_reportCGI_RequestEUTRA_requestedCellInfoEUTRA `optional`
 }
 
-func (ie *CG_Config_v1560_IEs_reportCGI_RequestEUTRA) Encode(w *uper.UperWriter) error {
+func (ie *CG_Config_v1560_IEs_reportCGI_RequestEUTRA) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.RequestedCellInfoEUTRA != nil}
 	for _, bit := range preambleBits {
@@ -25,7 +25,7 @@ func (ie *CG_Config_v1560_IEs_reportCGI_RequestEUTRA) Encode(w *uper.UperWriter)
 	return nil
 }
 
-func (ie *CG_Config_v1560_IEs_reportCGI_RequestEUTRA) Decode(r *uper.UperReader) error {
+func (ie *CG_Config_v1560_IEs_reportCGI_RequestEUTRA) Decode(r *aper.AperReader) error {
 	var err error
 	var RequestedCellInfoEUTRAPresent bool
 	if RequestedCellInfoEUTRAPresent, err = r.ReadBool(); err != nil {

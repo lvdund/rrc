@@ -3,7 +3,7 @@ package ies
 import (
 	"fmt"
 
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -19,14 +19,14 @@ type BetaOffsetsCrossPriSelCG_r17 struct {
 	SemiStatic_r17 *BetaOffsetsCrossPri_r17
 }
 
-func (ie *BetaOffsetsCrossPriSelCG_r17) Encode(w *uper.UperWriter) error {
+func (ie *BetaOffsetsCrossPriSelCG_r17) Encode(w *aper.AperWriter) error {
 	var err error
 	if err = w.WriteChoice(ie.Choice, 2, false); err != nil {
 		return err
 	}
 	switch ie.Choice {
 	case BetaOffsetsCrossPriSelCG_r17_Choice_Dynamic_r17:
-		tmp := utils.NewSequence[*BetaOffsetsCrossPri_r17]([]*BetaOffsetsCrossPri_r17{}, uper.Constraint{Lb: 1, Ub: 4}, false)
+		tmp := utils.NewSequence[*BetaOffsetsCrossPri_r17]([]*BetaOffsetsCrossPri_r17{}, aper.Constraint{Lb: 1, Ub: 4}, false)
 		for _, i := range ie.Dynamic_r17 {
 			tmp.Value = append(tmp.Value, &i)
 		}
@@ -43,14 +43,14 @@ func (ie *BetaOffsetsCrossPriSelCG_r17) Encode(w *uper.UperWriter) error {
 	return err
 }
 
-func (ie *BetaOffsetsCrossPriSelCG_r17) Decode(r *uper.UperReader) error {
+func (ie *BetaOffsetsCrossPriSelCG_r17) Decode(r *aper.AperReader) error {
 	var err error
 	if ie.Choice, err = r.ReadChoice(2, false); err != nil {
 		return err
 	}
 	switch ie.Choice {
 	case BetaOffsetsCrossPriSelCG_r17_Choice_Dynamic_r17:
-		tmp := utils.NewSequence[*BetaOffsetsCrossPri_r17]([]*BetaOffsetsCrossPri_r17{}, uper.Constraint{Lb: 1, Ub: 4}, false)
+		tmp := utils.NewSequence[*BetaOffsetsCrossPri_r17]([]*BetaOffsetsCrossPri_r17{}, aper.Constraint{Lb: 1, Ub: 4}, false)
 		fn := func() *BetaOffsetsCrossPri_r17 {
 			return new(BetaOffsetsCrossPri_r17)
 		}

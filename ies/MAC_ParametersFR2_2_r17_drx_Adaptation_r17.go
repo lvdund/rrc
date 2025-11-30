@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -10,7 +10,7 @@ type MAC_ParametersFR2_2_r17_drx_Adaptation_r17 struct {
 	SharedSpectrumChAccess_r17     *MinTimeGapFR2_2_r17 `optional`
 }
 
-func (ie *MAC_ParametersFR2_2_r17_drx_Adaptation_r17) Encode(w *uper.UperWriter) error {
+func (ie *MAC_ParametersFR2_2_r17_drx_Adaptation_r17) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.Non_SharedSpectrumChAccess_r17 != nil, ie.SharedSpectrumChAccess_r17 != nil}
 	for _, bit := range preambleBits {
@@ -31,7 +31,7 @@ func (ie *MAC_ParametersFR2_2_r17_drx_Adaptation_r17) Encode(w *uper.UperWriter)
 	return nil
 }
 
-func (ie *MAC_ParametersFR2_2_r17_drx_Adaptation_r17) Decode(r *uper.UperReader) error {
+func (ie *MAC_ParametersFR2_2_r17_drx_Adaptation_r17) Decode(r *aper.AperReader) error {
 	var err error
 	var Non_SharedSpectrumChAccess_r17Present bool
 	if Non_SharedSpectrumChAccess_r17Present, err = r.ReadBool(); err != nil {

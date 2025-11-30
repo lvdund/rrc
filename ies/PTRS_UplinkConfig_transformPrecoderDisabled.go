@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -13,7 +13,7 @@ type PTRS_UplinkConfig_transformPrecoderDisabled struct {
 	Ptrs_Power            PTRS_UplinkConfig_transformPrecoderDisabled_ptrs_Power             `madatory`
 }
 
-func (ie *PTRS_UplinkConfig_transformPrecoderDisabled) Encode(w *uper.UperWriter) error {
+func (ie *PTRS_UplinkConfig_transformPrecoderDisabled) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{len(ie.FrequencyDensity) > 0, len(ie.TimeDensity) > 0, ie.ResourceElementOffset != nil}
 	for _, bit := range preambleBits {
@@ -22,9 +22,9 @@ func (ie *PTRS_UplinkConfig_transformPrecoderDisabled) Encode(w *uper.UperWriter
 		}
 	}
 	if len(ie.FrequencyDensity) > 0 {
-		tmp_FrequencyDensity := utils.NewSequence[*utils.INTEGER]([]*utils.INTEGER{}, uper.Constraint{Lb: 2, Ub: 2}, false)
+		tmp_FrequencyDensity := utils.NewSequence[*utils.INTEGER]([]*utils.INTEGER{}, aper.Constraint{Lb: 2, Ub: 2}, false)
 		for _, i := range ie.FrequencyDensity {
-			tmp_ie := utils.NewINTEGER(int64(i), uper.Constraint{Lb: 0, Ub: 0}, false)
+			tmp_ie := utils.NewINTEGER(int64(i), aper.Constraint{Lb: 0, Ub: 0}, false)
 			tmp_FrequencyDensity.Value = append(tmp_FrequencyDensity.Value, &tmp_ie)
 		}
 		if err = tmp_FrequencyDensity.Encode(w); err != nil {
@@ -32,9 +32,9 @@ func (ie *PTRS_UplinkConfig_transformPrecoderDisabled) Encode(w *uper.UperWriter
 		}
 	}
 	if len(ie.TimeDensity) > 0 {
-		tmp_TimeDensity := utils.NewSequence[*utils.INTEGER]([]*utils.INTEGER{}, uper.Constraint{Lb: 3, Ub: 3}, false)
+		tmp_TimeDensity := utils.NewSequence[*utils.INTEGER]([]*utils.INTEGER{}, aper.Constraint{Lb: 3, Ub: 3}, false)
 		for _, i := range ie.TimeDensity {
-			tmp_ie := utils.NewINTEGER(int64(i), uper.Constraint{Lb: 0, Ub: 0}, false)
+			tmp_ie := utils.NewINTEGER(int64(i), aper.Constraint{Lb: 0, Ub: 0}, false)
 			tmp_TimeDensity.Value = append(tmp_TimeDensity.Value, &tmp_ie)
 		}
 		if err = tmp_TimeDensity.Encode(w); err != nil {
@@ -55,7 +55,7 @@ func (ie *PTRS_UplinkConfig_transformPrecoderDisabled) Encode(w *uper.UperWriter
 	return nil
 }
 
-func (ie *PTRS_UplinkConfig_transformPrecoderDisabled) Decode(r *uper.UperReader) error {
+func (ie *PTRS_UplinkConfig_transformPrecoderDisabled) Decode(r *aper.AperReader) error {
 	var err error
 	var FrequencyDensityPresent bool
 	if FrequencyDensityPresent, err = r.ReadBool(); err != nil {
@@ -70,9 +70,9 @@ func (ie *PTRS_UplinkConfig_transformPrecoderDisabled) Decode(r *uper.UperReader
 		return err
 	}
 	if FrequencyDensityPresent {
-		tmp_FrequencyDensity := utils.NewSequence[*utils.INTEGER]([]*utils.INTEGER{}, uper.Constraint{Lb: 2, Ub: 2}, false)
+		tmp_FrequencyDensity := utils.NewSequence[*utils.INTEGER]([]*utils.INTEGER{}, aper.Constraint{Lb: 2, Ub: 2}, false)
 		fn_FrequencyDensity := func() *utils.INTEGER {
-			ie := utils.NewINTEGER(0, uper.Constraint{Lb: 0, Ub: 0}, false)
+			ie := utils.NewINTEGER(0, aper.Constraint{Lb: 0, Ub: 0}, false)
 			return &ie
 		}
 		if err = tmp_FrequencyDensity.Decode(r, fn_FrequencyDensity); err != nil {
@@ -84,9 +84,9 @@ func (ie *PTRS_UplinkConfig_transformPrecoderDisabled) Decode(r *uper.UperReader
 		}
 	}
 	if TimeDensityPresent {
-		tmp_TimeDensity := utils.NewSequence[*utils.INTEGER]([]*utils.INTEGER{}, uper.Constraint{Lb: 3, Ub: 3}, false)
+		tmp_TimeDensity := utils.NewSequence[*utils.INTEGER]([]*utils.INTEGER{}, aper.Constraint{Lb: 3, Ub: 3}, false)
 		fn_TimeDensity := func() *utils.INTEGER {
-			ie := utils.NewINTEGER(0, uper.Constraint{Lb: 0, Ub: 0}, false)
+			ie := utils.NewINTEGER(0, aper.Constraint{Lb: 0, Ub: 0}, false)
 			return &ie
 		}
 		if err = tmp_TimeDensity.Decode(r, fn_TimeDensity); err != nil {

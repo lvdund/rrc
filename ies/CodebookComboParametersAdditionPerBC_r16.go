@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -22,7 +22,7 @@ type CodebookComboParametersAdditionPerBC_r16 struct {
 	Type1MP_Type2_Type2PS_r16   []int64 `lb:1,ub:maxNrofCSI_RS_ResourcesExt_r16,e_lb:0,e_ub:maxNrofCSI_RS_ResourcesAlt_1_r16,optional`
 }
 
-func (ie *CodebookComboParametersAdditionPerBC_r16) Encode(w *uper.UperWriter) error {
+func (ie *CodebookComboParametersAdditionPerBC_r16) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{len(ie.Type1SP_Type2_null_r16) > 0, len(ie.Type1SP_Type2PS_null_r16) > 0, len(ie.Type1SP_eType2R1_null_r16) > 0, len(ie.Type1SP_eType2R2_null_r16) > 0, len(ie.Type1SP_eType2R1PS_null_r16) > 0, len(ie.Type1SP_eType2R2PS_null_r16) > 0, len(ie.Type1SP_Type2_Type2PS_r16) > 0, len(ie.Type1MP_Type2_null_r16) > 0, len(ie.Type1MP_Type2PS_null_r16) > 0, len(ie.Type1MP_eType2R1_null_r16) > 0, len(ie.Type1MP_eType2R2_null_r16) > 0, len(ie.Type1MP_eType2R1PS_null_r16) > 0, len(ie.Type1MP_eType2R2PS_null_r16) > 0, len(ie.Type1MP_Type2_Type2PS_r16) > 0}
 	for _, bit := range preambleBits {
@@ -31,9 +31,9 @@ func (ie *CodebookComboParametersAdditionPerBC_r16) Encode(w *uper.UperWriter) e
 		}
 	}
 	if len(ie.Type1SP_Type2_null_r16) > 0 {
-		tmp_Type1SP_Type2_null_r16 := utils.NewSequence[*utils.INTEGER]([]*utils.INTEGER{}, uper.Constraint{Lb: 1, Ub: maxNrofCSI_RS_ResourcesExt_r16}, false)
+		tmp_Type1SP_Type2_null_r16 := utils.NewSequence[*utils.INTEGER]([]*utils.INTEGER{}, aper.Constraint{Lb: 1, Ub: maxNrofCSI_RS_ResourcesExt_r16}, false)
 		for _, i := range ie.Type1SP_Type2_null_r16 {
-			tmp_ie := utils.NewINTEGER(int64(i), uper.Constraint{Lb: 0, Ub: maxNrofCSI_RS_ResourcesAlt_1_r16}, false)
+			tmp_ie := utils.NewINTEGER(int64(i), aper.Constraint{Lb: 0, Ub: maxNrofCSI_RS_ResourcesAlt_1_r16}, false)
 			tmp_Type1SP_Type2_null_r16.Value = append(tmp_Type1SP_Type2_null_r16.Value, &tmp_ie)
 		}
 		if err = tmp_Type1SP_Type2_null_r16.Encode(w); err != nil {
@@ -41,9 +41,9 @@ func (ie *CodebookComboParametersAdditionPerBC_r16) Encode(w *uper.UperWriter) e
 		}
 	}
 	if len(ie.Type1SP_Type2PS_null_r16) > 0 {
-		tmp_Type1SP_Type2PS_null_r16 := utils.NewSequence[*utils.INTEGER]([]*utils.INTEGER{}, uper.Constraint{Lb: 1, Ub: maxNrofCSI_RS_ResourcesExt_r16}, false)
+		tmp_Type1SP_Type2PS_null_r16 := utils.NewSequence[*utils.INTEGER]([]*utils.INTEGER{}, aper.Constraint{Lb: 1, Ub: maxNrofCSI_RS_ResourcesExt_r16}, false)
 		for _, i := range ie.Type1SP_Type2PS_null_r16 {
-			tmp_ie := utils.NewINTEGER(int64(i), uper.Constraint{Lb: 0, Ub: maxNrofCSI_RS_ResourcesAlt_1_r16}, false)
+			tmp_ie := utils.NewINTEGER(int64(i), aper.Constraint{Lb: 0, Ub: maxNrofCSI_RS_ResourcesAlt_1_r16}, false)
 			tmp_Type1SP_Type2PS_null_r16.Value = append(tmp_Type1SP_Type2PS_null_r16.Value, &tmp_ie)
 		}
 		if err = tmp_Type1SP_Type2PS_null_r16.Encode(w); err != nil {
@@ -51,9 +51,9 @@ func (ie *CodebookComboParametersAdditionPerBC_r16) Encode(w *uper.UperWriter) e
 		}
 	}
 	if len(ie.Type1SP_eType2R1_null_r16) > 0 {
-		tmp_Type1SP_eType2R1_null_r16 := utils.NewSequence[*utils.INTEGER]([]*utils.INTEGER{}, uper.Constraint{Lb: 1, Ub: maxNrofCSI_RS_ResourcesExt_r16}, false)
+		tmp_Type1SP_eType2R1_null_r16 := utils.NewSequence[*utils.INTEGER]([]*utils.INTEGER{}, aper.Constraint{Lb: 1, Ub: maxNrofCSI_RS_ResourcesExt_r16}, false)
 		for _, i := range ie.Type1SP_eType2R1_null_r16 {
-			tmp_ie := utils.NewINTEGER(int64(i), uper.Constraint{Lb: 0, Ub: maxNrofCSI_RS_ResourcesAlt_1_r16}, false)
+			tmp_ie := utils.NewINTEGER(int64(i), aper.Constraint{Lb: 0, Ub: maxNrofCSI_RS_ResourcesAlt_1_r16}, false)
 			tmp_Type1SP_eType2R1_null_r16.Value = append(tmp_Type1SP_eType2R1_null_r16.Value, &tmp_ie)
 		}
 		if err = tmp_Type1SP_eType2R1_null_r16.Encode(w); err != nil {
@@ -61,9 +61,9 @@ func (ie *CodebookComboParametersAdditionPerBC_r16) Encode(w *uper.UperWriter) e
 		}
 	}
 	if len(ie.Type1SP_eType2R2_null_r16) > 0 {
-		tmp_Type1SP_eType2R2_null_r16 := utils.NewSequence[*utils.INTEGER]([]*utils.INTEGER{}, uper.Constraint{Lb: 1, Ub: maxNrofCSI_RS_ResourcesExt_r16}, false)
+		tmp_Type1SP_eType2R2_null_r16 := utils.NewSequence[*utils.INTEGER]([]*utils.INTEGER{}, aper.Constraint{Lb: 1, Ub: maxNrofCSI_RS_ResourcesExt_r16}, false)
 		for _, i := range ie.Type1SP_eType2R2_null_r16 {
-			tmp_ie := utils.NewINTEGER(int64(i), uper.Constraint{Lb: 0, Ub: maxNrofCSI_RS_ResourcesAlt_1_r16}, false)
+			tmp_ie := utils.NewINTEGER(int64(i), aper.Constraint{Lb: 0, Ub: maxNrofCSI_RS_ResourcesAlt_1_r16}, false)
 			tmp_Type1SP_eType2R2_null_r16.Value = append(tmp_Type1SP_eType2R2_null_r16.Value, &tmp_ie)
 		}
 		if err = tmp_Type1SP_eType2R2_null_r16.Encode(w); err != nil {
@@ -71,9 +71,9 @@ func (ie *CodebookComboParametersAdditionPerBC_r16) Encode(w *uper.UperWriter) e
 		}
 	}
 	if len(ie.Type1SP_eType2R1PS_null_r16) > 0 {
-		tmp_Type1SP_eType2R1PS_null_r16 := utils.NewSequence[*utils.INTEGER]([]*utils.INTEGER{}, uper.Constraint{Lb: 1, Ub: maxNrofCSI_RS_ResourcesExt_r16}, false)
+		tmp_Type1SP_eType2R1PS_null_r16 := utils.NewSequence[*utils.INTEGER]([]*utils.INTEGER{}, aper.Constraint{Lb: 1, Ub: maxNrofCSI_RS_ResourcesExt_r16}, false)
 		for _, i := range ie.Type1SP_eType2R1PS_null_r16 {
-			tmp_ie := utils.NewINTEGER(int64(i), uper.Constraint{Lb: 0, Ub: maxNrofCSI_RS_ResourcesAlt_1_r16}, false)
+			tmp_ie := utils.NewINTEGER(int64(i), aper.Constraint{Lb: 0, Ub: maxNrofCSI_RS_ResourcesAlt_1_r16}, false)
 			tmp_Type1SP_eType2R1PS_null_r16.Value = append(tmp_Type1SP_eType2R1PS_null_r16.Value, &tmp_ie)
 		}
 		if err = tmp_Type1SP_eType2R1PS_null_r16.Encode(w); err != nil {
@@ -81,9 +81,9 @@ func (ie *CodebookComboParametersAdditionPerBC_r16) Encode(w *uper.UperWriter) e
 		}
 	}
 	if len(ie.Type1SP_eType2R2PS_null_r16) > 0 {
-		tmp_Type1SP_eType2R2PS_null_r16 := utils.NewSequence[*utils.INTEGER]([]*utils.INTEGER{}, uper.Constraint{Lb: 1, Ub: maxNrofCSI_RS_ResourcesExt_r16}, false)
+		tmp_Type1SP_eType2R2PS_null_r16 := utils.NewSequence[*utils.INTEGER]([]*utils.INTEGER{}, aper.Constraint{Lb: 1, Ub: maxNrofCSI_RS_ResourcesExt_r16}, false)
 		for _, i := range ie.Type1SP_eType2R2PS_null_r16 {
-			tmp_ie := utils.NewINTEGER(int64(i), uper.Constraint{Lb: 0, Ub: maxNrofCSI_RS_ResourcesAlt_1_r16}, false)
+			tmp_ie := utils.NewINTEGER(int64(i), aper.Constraint{Lb: 0, Ub: maxNrofCSI_RS_ResourcesAlt_1_r16}, false)
 			tmp_Type1SP_eType2R2PS_null_r16.Value = append(tmp_Type1SP_eType2R2PS_null_r16.Value, &tmp_ie)
 		}
 		if err = tmp_Type1SP_eType2R2PS_null_r16.Encode(w); err != nil {
@@ -91,9 +91,9 @@ func (ie *CodebookComboParametersAdditionPerBC_r16) Encode(w *uper.UperWriter) e
 		}
 	}
 	if len(ie.Type1SP_Type2_Type2PS_r16) > 0 {
-		tmp_Type1SP_Type2_Type2PS_r16 := utils.NewSequence[*utils.INTEGER]([]*utils.INTEGER{}, uper.Constraint{Lb: 1, Ub: maxNrofCSI_RS_ResourcesExt_r16}, false)
+		tmp_Type1SP_Type2_Type2PS_r16 := utils.NewSequence[*utils.INTEGER]([]*utils.INTEGER{}, aper.Constraint{Lb: 1, Ub: maxNrofCSI_RS_ResourcesExt_r16}, false)
 		for _, i := range ie.Type1SP_Type2_Type2PS_r16 {
-			tmp_ie := utils.NewINTEGER(int64(i), uper.Constraint{Lb: 0, Ub: maxNrofCSI_RS_ResourcesAlt_1_r16}, false)
+			tmp_ie := utils.NewINTEGER(int64(i), aper.Constraint{Lb: 0, Ub: maxNrofCSI_RS_ResourcesAlt_1_r16}, false)
 			tmp_Type1SP_Type2_Type2PS_r16.Value = append(tmp_Type1SP_Type2_Type2PS_r16.Value, &tmp_ie)
 		}
 		if err = tmp_Type1SP_Type2_Type2PS_r16.Encode(w); err != nil {
@@ -101,9 +101,9 @@ func (ie *CodebookComboParametersAdditionPerBC_r16) Encode(w *uper.UperWriter) e
 		}
 	}
 	if len(ie.Type1MP_Type2_null_r16) > 0 {
-		tmp_Type1MP_Type2_null_r16 := utils.NewSequence[*utils.INTEGER]([]*utils.INTEGER{}, uper.Constraint{Lb: 1, Ub: maxNrofCSI_RS_ResourcesExt_r16}, false)
+		tmp_Type1MP_Type2_null_r16 := utils.NewSequence[*utils.INTEGER]([]*utils.INTEGER{}, aper.Constraint{Lb: 1, Ub: maxNrofCSI_RS_ResourcesExt_r16}, false)
 		for _, i := range ie.Type1MP_Type2_null_r16 {
-			tmp_ie := utils.NewINTEGER(int64(i), uper.Constraint{Lb: 0, Ub: maxNrofCSI_RS_ResourcesAlt_1_r16}, false)
+			tmp_ie := utils.NewINTEGER(int64(i), aper.Constraint{Lb: 0, Ub: maxNrofCSI_RS_ResourcesAlt_1_r16}, false)
 			tmp_Type1MP_Type2_null_r16.Value = append(tmp_Type1MP_Type2_null_r16.Value, &tmp_ie)
 		}
 		if err = tmp_Type1MP_Type2_null_r16.Encode(w); err != nil {
@@ -111,9 +111,9 @@ func (ie *CodebookComboParametersAdditionPerBC_r16) Encode(w *uper.UperWriter) e
 		}
 	}
 	if len(ie.Type1MP_Type2PS_null_r16) > 0 {
-		tmp_Type1MP_Type2PS_null_r16 := utils.NewSequence[*utils.INTEGER]([]*utils.INTEGER{}, uper.Constraint{Lb: 1, Ub: maxNrofCSI_RS_ResourcesExt_r16}, false)
+		tmp_Type1MP_Type2PS_null_r16 := utils.NewSequence[*utils.INTEGER]([]*utils.INTEGER{}, aper.Constraint{Lb: 1, Ub: maxNrofCSI_RS_ResourcesExt_r16}, false)
 		for _, i := range ie.Type1MP_Type2PS_null_r16 {
-			tmp_ie := utils.NewINTEGER(int64(i), uper.Constraint{Lb: 0, Ub: maxNrofCSI_RS_ResourcesAlt_1_r16}, false)
+			tmp_ie := utils.NewINTEGER(int64(i), aper.Constraint{Lb: 0, Ub: maxNrofCSI_RS_ResourcesAlt_1_r16}, false)
 			tmp_Type1MP_Type2PS_null_r16.Value = append(tmp_Type1MP_Type2PS_null_r16.Value, &tmp_ie)
 		}
 		if err = tmp_Type1MP_Type2PS_null_r16.Encode(w); err != nil {
@@ -121,9 +121,9 @@ func (ie *CodebookComboParametersAdditionPerBC_r16) Encode(w *uper.UperWriter) e
 		}
 	}
 	if len(ie.Type1MP_eType2R1_null_r16) > 0 {
-		tmp_Type1MP_eType2R1_null_r16 := utils.NewSequence[*utils.INTEGER]([]*utils.INTEGER{}, uper.Constraint{Lb: 1, Ub: maxNrofCSI_RS_ResourcesExt_r16}, false)
+		tmp_Type1MP_eType2R1_null_r16 := utils.NewSequence[*utils.INTEGER]([]*utils.INTEGER{}, aper.Constraint{Lb: 1, Ub: maxNrofCSI_RS_ResourcesExt_r16}, false)
 		for _, i := range ie.Type1MP_eType2R1_null_r16 {
-			tmp_ie := utils.NewINTEGER(int64(i), uper.Constraint{Lb: 0, Ub: maxNrofCSI_RS_ResourcesAlt_1_r16}, false)
+			tmp_ie := utils.NewINTEGER(int64(i), aper.Constraint{Lb: 0, Ub: maxNrofCSI_RS_ResourcesAlt_1_r16}, false)
 			tmp_Type1MP_eType2R1_null_r16.Value = append(tmp_Type1MP_eType2R1_null_r16.Value, &tmp_ie)
 		}
 		if err = tmp_Type1MP_eType2R1_null_r16.Encode(w); err != nil {
@@ -131,9 +131,9 @@ func (ie *CodebookComboParametersAdditionPerBC_r16) Encode(w *uper.UperWriter) e
 		}
 	}
 	if len(ie.Type1MP_eType2R2_null_r16) > 0 {
-		tmp_Type1MP_eType2R2_null_r16 := utils.NewSequence[*utils.INTEGER]([]*utils.INTEGER{}, uper.Constraint{Lb: 1, Ub: maxNrofCSI_RS_ResourcesExt_r16}, false)
+		tmp_Type1MP_eType2R2_null_r16 := utils.NewSequence[*utils.INTEGER]([]*utils.INTEGER{}, aper.Constraint{Lb: 1, Ub: maxNrofCSI_RS_ResourcesExt_r16}, false)
 		for _, i := range ie.Type1MP_eType2R2_null_r16 {
-			tmp_ie := utils.NewINTEGER(int64(i), uper.Constraint{Lb: 0, Ub: maxNrofCSI_RS_ResourcesAlt_1_r16}, false)
+			tmp_ie := utils.NewINTEGER(int64(i), aper.Constraint{Lb: 0, Ub: maxNrofCSI_RS_ResourcesAlt_1_r16}, false)
 			tmp_Type1MP_eType2R2_null_r16.Value = append(tmp_Type1MP_eType2R2_null_r16.Value, &tmp_ie)
 		}
 		if err = tmp_Type1MP_eType2R2_null_r16.Encode(w); err != nil {
@@ -141,9 +141,9 @@ func (ie *CodebookComboParametersAdditionPerBC_r16) Encode(w *uper.UperWriter) e
 		}
 	}
 	if len(ie.Type1MP_eType2R1PS_null_r16) > 0 {
-		tmp_Type1MP_eType2R1PS_null_r16 := utils.NewSequence[*utils.INTEGER]([]*utils.INTEGER{}, uper.Constraint{Lb: 1, Ub: maxNrofCSI_RS_ResourcesExt_r16}, false)
+		tmp_Type1MP_eType2R1PS_null_r16 := utils.NewSequence[*utils.INTEGER]([]*utils.INTEGER{}, aper.Constraint{Lb: 1, Ub: maxNrofCSI_RS_ResourcesExt_r16}, false)
 		for _, i := range ie.Type1MP_eType2R1PS_null_r16 {
-			tmp_ie := utils.NewINTEGER(int64(i), uper.Constraint{Lb: 0, Ub: maxNrofCSI_RS_ResourcesAlt_1_r16}, false)
+			tmp_ie := utils.NewINTEGER(int64(i), aper.Constraint{Lb: 0, Ub: maxNrofCSI_RS_ResourcesAlt_1_r16}, false)
 			tmp_Type1MP_eType2R1PS_null_r16.Value = append(tmp_Type1MP_eType2R1PS_null_r16.Value, &tmp_ie)
 		}
 		if err = tmp_Type1MP_eType2R1PS_null_r16.Encode(w); err != nil {
@@ -151,9 +151,9 @@ func (ie *CodebookComboParametersAdditionPerBC_r16) Encode(w *uper.UperWriter) e
 		}
 	}
 	if len(ie.Type1MP_eType2R2PS_null_r16) > 0 {
-		tmp_Type1MP_eType2R2PS_null_r16 := utils.NewSequence[*utils.INTEGER]([]*utils.INTEGER{}, uper.Constraint{Lb: 1, Ub: maxNrofCSI_RS_ResourcesExt_r16}, false)
+		tmp_Type1MP_eType2R2PS_null_r16 := utils.NewSequence[*utils.INTEGER]([]*utils.INTEGER{}, aper.Constraint{Lb: 1, Ub: maxNrofCSI_RS_ResourcesExt_r16}, false)
 		for _, i := range ie.Type1MP_eType2R2PS_null_r16 {
-			tmp_ie := utils.NewINTEGER(int64(i), uper.Constraint{Lb: 0, Ub: maxNrofCSI_RS_ResourcesAlt_1_r16}, false)
+			tmp_ie := utils.NewINTEGER(int64(i), aper.Constraint{Lb: 0, Ub: maxNrofCSI_RS_ResourcesAlt_1_r16}, false)
 			tmp_Type1MP_eType2R2PS_null_r16.Value = append(tmp_Type1MP_eType2R2PS_null_r16.Value, &tmp_ie)
 		}
 		if err = tmp_Type1MP_eType2R2PS_null_r16.Encode(w); err != nil {
@@ -161,9 +161,9 @@ func (ie *CodebookComboParametersAdditionPerBC_r16) Encode(w *uper.UperWriter) e
 		}
 	}
 	if len(ie.Type1MP_Type2_Type2PS_r16) > 0 {
-		tmp_Type1MP_Type2_Type2PS_r16 := utils.NewSequence[*utils.INTEGER]([]*utils.INTEGER{}, uper.Constraint{Lb: 1, Ub: maxNrofCSI_RS_ResourcesExt_r16}, false)
+		tmp_Type1MP_Type2_Type2PS_r16 := utils.NewSequence[*utils.INTEGER]([]*utils.INTEGER{}, aper.Constraint{Lb: 1, Ub: maxNrofCSI_RS_ResourcesExt_r16}, false)
 		for _, i := range ie.Type1MP_Type2_Type2PS_r16 {
-			tmp_ie := utils.NewINTEGER(int64(i), uper.Constraint{Lb: 0, Ub: maxNrofCSI_RS_ResourcesAlt_1_r16}, false)
+			tmp_ie := utils.NewINTEGER(int64(i), aper.Constraint{Lb: 0, Ub: maxNrofCSI_RS_ResourcesAlt_1_r16}, false)
 			tmp_Type1MP_Type2_Type2PS_r16.Value = append(tmp_Type1MP_Type2_Type2PS_r16.Value, &tmp_ie)
 		}
 		if err = tmp_Type1MP_Type2_Type2PS_r16.Encode(w); err != nil {
@@ -173,7 +173,7 @@ func (ie *CodebookComboParametersAdditionPerBC_r16) Encode(w *uper.UperWriter) e
 	return nil
 }
 
-func (ie *CodebookComboParametersAdditionPerBC_r16) Decode(r *uper.UperReader) error {
+func (ie *CodebookComboParametersAdditionPerBC_r16) Decode(r *aper.AperReader) error {
 	var err error
 	var Type1SP_Type2_null_r16Present bool
 	if Type1SP_Type2_null_r16Present, err = r.ReadBool(); err != nil {
@@ -232,9 +232,9 @@ func (ie *CodebookComboParametersAdditionPerBC_r16) Decode(r *uper.UperReader) e
 		return err
 	}
 	if Type1SP_Type2_null_r16Present {
-		tmp_Type1SP_Type2_null_r16 := utils.NewSequence[*utils.INTEGER]([]*utils.INTEGER{}, uper.Constraint{Lb: 1, Ub: maxNrofCSI_RS_ResourcesExt_r16}, false)
+		tmp_Type1SP_Type2_null_r16 := utils.NewSequence[*utils.INTEGER]([]*utils.INTEGER{}, aper.Constraint{Lb: 1, Ub: maxNrofCSI_RS_ResourcesExt_r16}, false)
 		fn_Type1SP_Type2_null_r16 := func() *utils.INTEGER {
-			ie := utils.NewINTEGER(0, uper.Constraint{Lb: 0, Ub: maxNrofCSI_RS_ResourcesAlt_1_r16}, false)
+			ie := utils.NewINTEGER(0, aper.Constraint{Lb: 0, Ub: maxNrofCSI_RS_ResourcesAlt_1_r16}, false)
 			return &ie
 		}
 		if err = tmp_Type1SP_Type2_null_r16.Decode(r, fn_Type1SP_Type2_null_r16); err != nil {
@@ -246,9 +246,9 @@ func (ie *CodebookComboParametersAdditionPerBC_r16) Decode(r *uper.UperReader) e
 		}
 	}
 	if Type1SP_Type2PS_null_r16Present {
-		tmp_Type1SP_Type2PS_null_r16 := utils.NewSequence[*utils.INTEGER]([]*utils.INTEGER{}, uper.Constraint{Lb: 1, Ub: maxNrofCSI_RS_ResourcesExt_r16}, false)
+		tmp_Type1SP_Type2PS_null_r16 := utils.NewSequence[*utils.INTEGER]([]*utils.INTEGER{}, aper.Constraint{Lb: 1, Ub: maxNrofCSI_RS_ResourcesExt_r16}, false)
 		fn_Type1SP_Type2PS_null_r16 := func() *utils.INTEGER {
-			ie := utils.NewINTEGER(0, uper.Constraint{Lb: 0, Ub: maxNrofCSI_RS_ResourcesAlt_1_r16}, false)
+			ie := utils.NewINTEGER(0, aper.Constraint{Lb: 0, Ub: maxNrofCSI_RS_ResourcesAlt_1_r16}, false)
 			return &ie
 		}
 		if err = tmp_Type1SP_Type2PS_null_r16.Decode(r, fn_Type1SP_Type2PS_null_r16); err != nil {
@@ -260,9 +260,9 @@ func (ie *CodebookComboParametersAdditionPerBC_r16) Decode(r *uper.UperReader) e
 		}
 	}
 	if Type1SP_eType2R1_null_r16Present {
-		tmp_Type1SP_eType2R1_null_r16 := utils.NewSequence[*utils.INTEGER]([]*utils.INTEGER{}, uper.Constraint{Lb: 1, Ub: maxNrofCSI_RS_ResourcesExt_r16}, false)
+		tmp_Type1SP_eType2R1_null_r16 := utils.NewSequence[*utils.INTEGER]([]*utils.INTEGER{}, aper.Constraint{Lb: 1, Ub: maxNrofCSI_RS_ResourcesExt_r16}, false)
 		fn_Type1SP_eType2R1_null_r16 := func() *utils.INTEGER {
-			ie := utils.NewINTEGER(0, uper.Constraint{Lb: 0, Ub: maxNrofCSI_RS_ResourcesAlt_1_r16}, false)
+			ie := utils.NewINTEGER(0, aper.Constraint{Lb: 0, Ub: maxNrofCSI_RS_ResourcesAlt_1_r16}, false)
 			return &ie
 		}
 		if err = tmp_Type1SP_eType2R1_null_r16.Decode(r, fn_Type1SP_eType2R1_null_r16); err != nil {
@@ -274,9 +274,9 @@ func (ie *CodebookComboParametersAdditionPerBC_r16) Decode(r *uper.UperReader) e
 		}
 	}
 	if Type1SP_eType2R2_null_r16Present {
-		tmp_Type1SP_eType2R2_null_r16 := utils.NewSequence[*utils.INTEGER]([]*utils.INTEGER{}, uper.Constraint{Lb: 1, Ub: maxNrofCSI_RS_ResourcesExt_r16}, false)
+		tmp_Type1SP_eType2R2_null_r16 := utils.NewSequence[*utils.INTEGER]([]*utils.INTEGER{}, aper.Constraint{Lb: 1, Ub: maxNrofCSI_RS_ResourcesExt_r16}, false)
 		fn_Type1SP_eType2R2_null_r16 := func() *utils.INTEGER {
-			ie := utils.NewINTEGER(0, uper.Constraint{Lb: 0, Ub: maxNrofCSI_RS_ResourcesAlt_1_r16}, false)
+			ie := utils.NewINTEGER(0, aper.Constraint{Lb: 0, Ub: maxNrofCSI_RS_ResourcesAlt_1_r16}, false)
 			return &ie
 		}
 		if err = tmp_Type1SP_eType2R2_null_r16.Decode(r, fn_Type1SP_eType2R2_null_r16); err != nil {
@@ -288,9 +288,9 @@ func (ie *CodebookComboParametersAdditionPerBC_r16) Decode(r *uper.UperReader) e
 		}
 	}
 	if Type1SP_eType2R1PS_null_r16Present {
-		tmp_Type1SP_eType2R1PS_null_r16 := utils.NewSequence[*utils.INTEGER]([]*utils.INTEGER{}, uper.Constraint{Lb: 1, Ub: maxNrofCSI_RS_ResourcesExt_r16}, false)
+		tmp_Type1SP_eType2R1PS_null_r16 := utils.NewSequence[*utils.INTEGER]([]*utils.INTEGER{}, aper.Constraint{Lb: 1, Ub: maxNrofCSI_RS_ResourcesExt_r16}, false)
 		fn_Type1SP_eType2R1PS_null_r16 := func() *utils.INTEGER {
-			ie := utils.NewINTEGER(0, uper.Constraint{Lb: 0, Ub: maxNrofCSI_RS_ResourcesAlt_1_r16}, false)
+			ie := utils.NewINTEGER(0, aper.Constraint{Lb: 0, Ub: maxNrofCSI_RS_ResourcesAlt_1_r16}, false)
 			return &ie
 		}
 		if err = tmp_Type1SP_eType2R1PS_null_r16.Decode(r, fn_Type1SP_eType2R1PS_null_r16); err != nil {
@@ -302,9 +302,9 @@ func (ie *CodebookComboParametersAdditionPerBC_r16) Decode(r *uper.UperReader) e
 		}
 	}
 	if Type1SP_eType2R2PS_null_r16Present {
-		tmp_Type1SP_eType2R2PS_null_r16 := utils.NewSequence[*utils.INTEGER]([]*utils.INTEGER{}, uper.Constraint{Lb: 1, Ub: maxNrofCSI_RS_ResourcesExt_r16}, false)
+		tmp_Type1SP_eType2R2PS_null_r16 := utils.NewSequence[*utils.INTEGER]([]*utils.INTEGER{}, aper.Constraint{Lb: 1, Ub: maxNrofCSI_RS_ResourcesExt_r16}, false)
 		fn_Type1SP_eType2R2PS_null_r16 := func() *utils.INTEGER {
-			ie := utils.NewINTEGER(0, uper.Constraint{Lb: 0, Ub: maxNrofCSI_RS_ResourcesAlt_1_r16}, false)
+			ie := utils.NewINTEGER(0, aper.Constraint{Lb: 0, Ub: maxNrofCSI_RS_ResourcesAlt_1_r16}, false)
 			return &ie
 		}
 		if err = tmp_Type1SP_eType2R2PS_null_r16.Decode(r, fn_Type1SP_eType2R2PS_null_r16); err != nil {
@@ -316,9 +316,9 @@ func (ie *CodebookComboParametersAdditionPerBC_r16) Decode(r *uper.UperReader) e
 		}
 	}
 	if Type1SP_Type2_Type2PS_r16Present {
-		tmp_Type1SP_Type2_Type2PS_r16 := utils.NewSequence[*utils.INTEGER]([]*utils.INTEGER{}, uper.Constraint{Lb: 1, Ub: maxNrofCSI_RS_ResourcesExt_r16}, false)
+		tmp_Type1SP_Type2_Type2PS_r16 := utils.NewSequence[*utils.INTEGER]([]*utils.INTEGER{}, aper.Constraint{Lb: 1, Ub: maxNrofCSI_RS_ResourcesExt_r16}, false)
 		fn_Type1SP_Type2_Type2PS_r16 := func() *utils.INTEGER {
-			ie := utils.NewINTEGER(0, uper.Constraint{Lb: 0, Ub: maxNrofCSI_RS_ResourcesAlt_1_r16}, false)
+			ie := utils.NewINTEGER(0, aper.Constraint{Lb: 0, Ub: maxNrofCSI_RS_ResourcesAlt_1_r16}, false)
 			return &ie
 		}
 		if err = tmp_Type1SP_Type2_Type2PS_r16.Decode(r, fn_Type1SP_Type2_Type2PS_r16); err != nil {
@@ -330,9 +330,9 @@ func (ie *CodebookComboParametersAdditionPerBC_r16) Decode(r *uper.UperReader) e
 		}
 	}
 	if Type1MP_Type2_null_r16Present {
-		tmp_Type1MP_Type2_null_r16 := utils.NewSequence[*utils.INTEGER]([]*utils.INTEGER{}, uper.Constraint{Lb: 1, Ub: maxNrofCSI_RS_ResourcesExt_r16}, false)
+		tmp_Type1MP_Type2_null_r16 := utils.NewSequence[*utils.INTEGER]([]*utils.INTEGER{}, aper.Constraint{Lb: 1, Ub: maxNrofCSI_RS_ResourcesExt_r16}, false)
 		fn_Type1MP_Type2_null_r16 := func() *utils.INTEGER {
-			ie := utils.NewINTEGER(0, uper.Constraint{Lb: 0, Ub: maxNrofCSI_RS_ResourcesAlt_1_r16}, false)
+			ie := utils.NewINTEGER(0, aper.Constraint{Lb: 0, Ub: maxNrofCSI_RS_ResourcesAlt_1_r16}, false)
 			return &ie
 		}
 		if err = tmp_Type1MP_Type2_null_r16.Decode(r, fn_Type1MP_Type2_null_r16); err != nil {
@@ -344,9 +344,9 @@ func (ie *CodebookComboParametersAdditionPerBC_r16) Decode(r *uper.UperReader) e
 		}
 	}
 	if Type1MP_Type2PS_null_r16Present {
-		tmp_Type1MP_Type2PS_null_r16 := utils.NewSequence[*utils.INTEGER]([]*utils.INTEGER{}, uper.Constraint{Lb: 1, Ub: maxNrofCSI_RS_ResourcesExt_r16}, false)
+		tmp_Type1MP_Type2PS_null_r16 := utils.NewSequence[*utils.INTEGER]([]*utils.INTEGER{}, aper.Constraint{Lb: 1, Ub: maxNrofCSI_RS_ResourcesExt_r16}, false)
 		fn_Type1MP_Type2PS_null_r16 := func() *utils.INTEGER {
-			ie := utils.NewINTEGER(0, uper.Constraint{Lb: 0, Ub: maxNrofCSI_RS_ResourcesAlt_1_r16}, false)
+			ie := utils.NewINTEGER(0, aper.Constraint{Lb: 0, Ub: maxNrofCSI_RS_ResourcesAlt_1_r16}, false)
 			return &ie
 		}
 		if err = tmp_Type1MP_Type2PS_null_r16.Decode(r, fn_Type1MP_Type2PS_null_r16); err != nil {
@@ -358,9 +358,9 @@ func (ie *CodebookComboParametersAdditionPerBC_r16) Decode(r *uper.UperReader) e
 		}
 	}
 	if Type1MP_eType2R1_null_r16Present {
-		tmp_Type1MP_eType2R1_null_r16 := utils.NewSequence[*utils.INTEGER]([]*utils.INTEGER{}, uper.Constraint{Lb: 1, Ub: maxNrofCSI_RS_ResourcesExt_r16}, false)
+		tmp_Type1MP_eType2R1_null_r16 := utils.NewSequence[*utils.INTEGER]([]*utils.INTEGER{}, aper.Constraint{Lb: 1, Ub: maxNrofCSI_RS_ResourcesExt_r16}, false)
 		fn_Type1MP_eType2R1_null_r16 := func() *utils.INTEGER {
-			ie := utils.NewINTEGER(0, uper.Constraint{Lb: 0, Ub: maxNrofCSI_RS_ResourcesAlt_1_r16}, false)
+			ie := utils.NewINTEGER(0, aper.Constraint{Lb: 0, Ub: maxNrofCSI_RS_ResourcesAlt_1_r16}, false)
 			return &ie
 		}
 		if err = tmp_Type1MP_eType2R1_null_r16.Decode(r, fn_Type1MP_eType2R1_null_r16); err != nil {
@@ -372,9 +372,9 @@ func (ie *CodebookComboParametersAdditionPerBC_r16) Decode(r *uper.UperReader) e
 		}
 	}
 	if Type1MP_eType2R2_null_r16Present {
-		tmp_Type1MP_eType2R2_null_r16 := utils.NewSequence[*utils.INTEGER]([]*utils.INTEGER{}, uper.Constraint{Lb: 1, Ub: maxNrofCSI_RS_ResourcesExt_r16}, false)
+		tmp_Type1MP_eType2R2_null_r16 := utils.NewSequence[*utils.INTEGER]([]*utils.INTEGER{}, aper.Constraint{Lb: 1, Ub: maxNrofCSI_RS_ResourcesExt_r16}, false)
 		fn_Type1MP_eType2R2_null_r16 := func() *utils.INTEGER {
-			ie := utils.NewINTEGER(0, uper.Constraint{Lb: 0, Ub: maxNrofCSI_RS_ResourcesAlt_1_r16}, false)
+			ie := utils.NewINTEGER(0, aper.Constraint{Lb: 0, Ub: maxNrofCSI_RS_ResourcesAlt_1_r16}, false)
 			return &ie
 		}
 		if err = tmp_Type1MP_eType2R2_null_r16.Decode(r, fn_Type1MP_eType2R2_null_r16); err != nil {
@@ -386,9 +386,9 @@ func (ie *CodebookComboParametersAdditionPerBC_r16) Decode(r *uper.UperReader) e
 		}
 	}
 	if Type1MP_eType2R1PS_null_r16Present {
-		tmp_Type1MP_eType2R1PS_null_r16 := utils.NewSequence[*utils.INTEGER]([]*utils.INTEGER{}, uper.Constraint{Lb: 1, Ub: maxNrofCSI_RS_ResourcesExt_r16}, false)
+		tmp_Type1MP_eType2R1PS_null_r16 := utils.NewSequence[*utils.INTEGER]([]*utils.INTEGER{}, aper.Constraint{Lb: 1, Ub: maxNrofCSI_RS_ResourcesExt_r16}, false)
 		fn_Type1MP_eType2R1PS_null_r16 := func() *utils.INTEGER {
-			ie := utils.NewINTEGER(0, uper.Constraint{Lb: 0, Ub: maxNrofCSI_RS_ResourcesAlt_1_r16}, false)
+			ie := utils.NewINTEGER(0, aper.Constraint{Lb: 0, Ub: maxNrofCSI_RS_ResourcesAlt_1_r16}, false)
 			return &ie
 		}
 		if err = tmp_Type1MP_eType2R1PS_null_r16.Decode(r, fn_Type1MP_eType2R1PS_null_r16); err != nil {
@@ -400,9 +400,9 @@ func (ie *CodebookComboParametersAdditionPerBC_r16) Decode(r *uper.UperReader) e
 		}
 	}
 	if Type1MP_eType2R2PS_null_r16Present {
-		tmp_Type1MP_eType2R2PS_null_r16 := utils.NewSequence[*utils.INTEGER]([]*utils.INTEGER{}, uper.Constraint{Lb: 1, Ub: maxNrofCSI_RS_ResourcesExt_r16}, false)
+		tmp_Type1MP_eType2R2PS_null_r16 := utils.NewSequence[*utils.INTEGER]([]*utils.INTEGER{}, aper.Constraint{Lb: 1, Ub: maxNrofCSI_RS_ResourcesExt_r16}, false)
 		fn_Type1MP_eType2R2PS_null_r16 := func() *utils.INTEGER {
-			ie := utils.NewINTEGER(0, uper.Constraint{Lb: 0, Ub: maxNrofCSI_RS_ResourcesAlt_1_r16}, false)
+			ie := utils.NewINTEGER(0, aper.Constraint{Lb: 0, Ub: maxNrofCSI_RS_ResourcesAlt_1_r16}, false)
 			return &ie
 		}
 		if err = tmp_Type1MP_eType2R2PS_null_r16.Decode(r, fn_Type1MP_eType2R2PS_null_r16); err != nil {
@@ -414,9 +414,9 @@ func (ie *CodebookComboParametersAdditionPerBC_r16) Decode(r *uper.UperReader) e
 		}
 	}
 	if Type1MP_Type2_Type2PS_r16Present {
-		tmp_Type1MP_Type2_Type2PS_r16 := utils.NewSequence[*utils.INTEGER]([]*utils.INTEGER{}, uper.Constraint{Lb: 1, Ub: maxNrofCSI_RS_ResourcesExt_r16}, false)
+		tmp_Type1MP_Type2_Type2PS_r16 := utils.NewSequence[*utils.INTEGER]([]*utils.INTEGER{}, aper.Constraint{Lb: 1, Ub: maxNrofCSI_RS_ResourcesExt_r16}, false)
 		fn_Type1MP_Type2_Type2PS_r16 := func() *utils.INTEGER {
-			ie := utils.NewINTEGER(0, uper.Constraint{Lb: 0, Ub: maxNrofCSI_RS_ResourcesAlt_1_r16}, false)
+			ie := utils.NewINTEGER(0, aper.Constraint{Lb: 0, Ub: maxNrofCSI_RS_ResourcesAlt_1_r16}, false)
 			return &ie
 		}
 		if err = tmp_Type1MP_Type2_Type2PS_r16.Decode(r, fn_Type1MP_Type2_Type2PS_r16); err != nil {

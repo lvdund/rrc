@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -9,7 +9,7 @@ type VarPendingRNA_Update struct {
 	PendingRNA_Update *bool `optional`
 }
 
-func (ie *VarPendingRNA_Update) Encode(w *uper.UperWriter) error {
+func (ie *VarPendingRNA_Update) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.PendingRNA_Update != nil}
 	for _, bit := range preambleBits {
@@ -25,7 +25,7 @@ func (ie *VarPendingRNA_Update) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *VarPendingRNA_Update) Decode(r *uper.UperReader) error {
+func (ie *VarPendingRNA_Update) Decode(r *aper.AperReader) error {
 	var err error
 	var PendingRNA_UpdatePresent bool
 	if PendingRNA_UpdatePresent, err = r.ReadBool(); err != nil {

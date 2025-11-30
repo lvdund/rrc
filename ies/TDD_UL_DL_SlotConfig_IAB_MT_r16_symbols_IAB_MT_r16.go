@@ -3,7 +3,7 @@ package ies
 import (
 	"fmt"
 
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -17,13 +17,13 @@ const (
 
 type TDD_UL_DL_SlotConfig_IAB_MT_r16_symbols_IAB_MT_r16 struct {
 	Choice              uint64
-	AllDownlink_r16     uper.NULL `madatory`
-	AllUplink_r16       uper.NULL `madatory`
+	AllDownlink_r16     aper.NULL `madatory`
+	AllUplink_r16       aper.NULL `madatory`
 	Explicit_r16        *TDD_UL_DL_SlotConfig_IAB_MT_r16_symbols_IAB_MT_r16_explicit_r16
 	Explicit_IAB_MT_r16 *TDD_UL_DL_SlotConfig_IAB_MT_r16_symbols_IAB_MT_r16_explicit_IAB_MT_r16
 }
 
-func (ie *TDD_UL_DL_SlotConfig_IAB_MT_r16_symbols_IAB_MT_r16) Encode(w *uper.UperWriter) error {
+func (ie *TDD_UL_DL_SlotConfig_IAB_MT_r16_symbols_IAB_MT_r16) Encode(w *aper.AperWriter) error {
 	var err error
 	if err = w.WriteChoice(ie.Choice, 4, false); err != nil {
 		return err
@@ -51,7 +51,7 @@ func (ie *TDD_UL_DL_SlotConfig_IAB_MT_r16_symbols_IAB_MT_r16) Encode(w *uper.Upe
 	return err
 }
 
-func (ie *TDD_UL_DL_SlotConfig_IAB_MT_r16_symbols_IAB_MT_r16) Decode(r *uper.UperReader) error {
+func (ie *TDD_UL_DL_SlotConfig_IAB_MT_r16_symbols_IAB_MT_r16) Decode(r *aper.AperReader) error {
 	var err error
 	if ie.Choice, err = r.ReadChoice(4, false); err != nil {
 		return err

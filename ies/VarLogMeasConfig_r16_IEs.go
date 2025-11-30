@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -16,7 +16,7 @@ type VarLogMeasConfig_r16_IEs struct {
 	AreaConfiguration_v1700 *AreaConfiguration_v1700                          `optional`
 }
 
-func (ie *VarLogMeasConfig_r16_IEs) Encode(w *uper.UperWriter) error {
+func (ie *VarLogMeasConfig_r16_IEs) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.AreaConfiguration_r16 != nil, ie.Bt_NameList_r16 != nil, ie.Wlan_NameList_r16 != nil, ie.Sensor_NameList_r16 != nil, ie.EarlyMeasIndication_r17 != nil, ie.AreaConfiguration_v1700 != nil}
 	for _, bit := range preambleBits {
@@ -63,7 +63,7 @@ func (ie *VarLogMeasConfig_r16_IEs) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *VarLogMeasConfig_r16_IEs) Decode(r *uper.UperReader) error {
+func (ie *VarLogMeasConfig_r16_IEs) Decode(r *aper.AperReader) error {
 	var err error
 	var AreaConfiguration_r16Present bool
 	if AreaConfiguration_r16Present, err = r.ReadBool(); err != nil {

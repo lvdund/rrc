@@ -3,7 +3,7 @@ package ies
 import (
 	"bytes"
 
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -20,7 +20,7 @@ type NZP_CSI_RS_ResourceSet struct {
 	AperiodicTriggeringOffsetL2_r17 *int64                               `lb:0,ub:31,optional,ext-2`
 }
 
-func (ie *NZP_CSI_RS_ResourceSet) Encode(w *uper.UperWriter) error {
+func (ie *NZP_CSI_RS_ResourceSet) Encode(w *aper.AperWriter) error {
 	var err error
 	hasExtensions := ie.AperiodicTriggeringOffset_r16 != nil || ie.Pdc_Info_r17 != nil || ie.CmrGroupingAndPairing_r17 != nil || ie.AperiodicTriggeringOffset_r17 != nil || ie.AperiodicTriggeringOffsetL2_r17 != nil
 	preambleBits := []bool{hasExtensions, ie.Repetition != nil, ie.AperiodicTriggeringOffset != nil, ie.Trs_Info != nil}
@@ -32,7 +32,7 @@ func (ie *NZP_CSI_RS_ResourceSet) Encode(w *uper.UperWriter) error {
 	if err = ie.Nzp_CSI_ResourceSetId.Encode(w); err != nil {
 		return utils.WrapError("Encode Nzp_CSI_ResourceSetId", err)
 	}
-	tmp_Nzp_CSI_RS_Resources := utils.NewSequence[*NZP_CSI_RS_ResourceId]([]*NZP_CSI_RS_ResourceId{}, uper.Constraint{Lb: 1, Ub: maxNrofNZP_CSI_RS_ResourcesPerSet}, false)
+	tmp_Nzp_CSI_RS_Resources := utils.NewSequence[*NZP_CSI_RS_ResourceId]([]*NZP_CSI_RS_ResourceId{}, aper.Constraint{Lb: 1, Ub: maxNrofNZP_CSI_RS_ResourcesPerSet}, false)
 	for _, i := range ie.Nzp_CSI_RS_Resources {
 		tmp_Nzp_CSI_RS_Resources.Value = append(tmp_Nzp_CSI_RS_Resources.Value, &i)
 	}
@@ -45,7 +45,7 @@ func (ie *NZP_CSI_RS_ResourceSet) Encode(w *uper.UperWriter) error {
 		}
 	}
 	if ie.AperiodicTriggeringOffset != nil {
-		if err = w.WriteInteger(*ie.AperiodicTriggeringOffset, &uper.Constraint{Lb: 0, Ub: 6}, false); err != nil {
+		if err = w.WriteInteger(*ie.AperiodicTriggeringOffset, &aper.Constraint{Lb: 0, Ub: 6}, false); err != nil {
 			return utils.WrapError("Encode AperiodicTriggeringOffset", err)
 		}
 	}
@@ -64,7 +64,7 @@ func (ie *NZP_CSI_RS_ResourceSet) Encode(w *uper.UperWriter) error {
 		// encode extension group 1
 		if extBitmap[0] {
 			extBuf := new(bytes.Buffer)
-			extWriter := uper.NewWriter(extBuf)
+			extWriter := aper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 1
 			optionals_ext_1 := []bool{ie.AperiodicTriggeringOffset_r16 != nil}
@@ -76,7 +76,7 @@ func (ie *NZP_CSI_RS_ResourceSet) Encode(w *uper.UperWriter) error {
 
 			// encode AperiodicTriggeringOffset_r16 optional
 			if ie.AperiodicTriggeringOffset_r16 != nil {
-				if err = extWriter.WriteInteger(*ie.AperiodicTriggeringOffset_r16, &uper.Constraint{Lb: 0, Ub: 31}, false); err != nil {
+				if err = extWriter.WriteInteger(*ie.AperiodicTriggeringOffset_r16, &aper.Constraint{Lb: 0, Ub: 31}, false); err != nil {
 					return utils.WrapError("Encode AperiodicTriggeringOffset_r16", err)
 				}
 			}
@@ -93,7 +93,7 @@ func (ie *NZP_CSI_RS_ResourceSet) Encode(w *uper.UperWriter) error {
 		// encode extension group 2
 		if extBitmap[1] {
 			extBuf := new(bytes.Buffer)
-			extWriter := uper.NewWriter(extBuf)
+			extWriter := aper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 2
 			optionals_ext_2 := []bool{ie.Pdc_Info_r17 != nil, ie.CmrGroupingAndPairing_r17 != nil, ie.AperiodicTriggeringOffset_r17 != nil, ie.AperiodicTriggeringOffsetL2_r17 != nil}
@@ -117,13 +117,13 @@ func (ie *NZP_CSI_RS_ResourceSet) Encode(w *uper.UperWriter) error {
 			}
 			// encode AperiodicTriggeringOffset_r17 optional
 			if ie.AperiodicTriggeringOffset_r17 != nil {
-				if err = extWriter.WriteInteger(*ie.AperiodicTriggeringOffset_r17, &uper.Constraint{Lb: 0, Ub: 124}, false); err != nil {
+				if err = extWriter.WriteInteger(*ie.AperiodicTriggeringOffset_r17, &aper.Constraint{Lb: 0, Ub: 124}, false); err != nil {
 					return utils.WrapError("Encode AperiodicTriggeringOffset_r17", err)
 				}
 			}
 			// encode AperiodicTriggeringOffsetL2_r17 optional
 			if ie.AperiodicTriggeringOffsetL2_r17 != nil {
-				if err = extWriter.WriteInteger(*ie.AperiodicTriggeringOffsetL2_r17, &uper.Constraint{Lb: 0, Ub: 31}, false); err != nil {
+				if err = extWriter.WriteInteger(*ie.AperiodicTriggeringOffsetL2_r17, &aper.Constraint{Lb: 0, Ub: 31}, false); err != nil {
 					return utils.WrapError("Encode AperiodicTriggeringOffsetL2_r17", err)
 				}
 			}
@@ -140,7 +140,7 @@ func (ie *NZP_CSI_RS_ResourceSet) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *NZP_CSI_RS_ResourceSet) Decode(r *uper.UperReader) error {
+func (ie *NZP_CSI_RS_ResourceSet) Decode(r *aper.AperReader) error {
 	var err error
 	var extensionBit bool
 	if extensionBit, err = r.ReadBool(); err != nil {
@@ -161,7 +161,7 @@ func (ie *NZP_CSI_RS_ResourceSet) Decode(r *uper.UperReader) error {
 	if err = ie.Nzp_CSI_ResourceSetId.Decode(r); err != nil {
 		return utils.WrapError("Decode Nzp_CSI_ResourceSetId", err)
 	}
-	tmp_Nzp_CSI_RS_Resources := utils.NewSequence[*NZP_CSI_RS_ResourceId]([]*NZP_CSI_RS_ResourceId{}, uper.Constraint{Lb: 1, Ub: maxNrofNZP_CSI_RS_ResourcesPerSet}, false)
+	tmp_Nzp_CSI_RS_Resources := utils.NewSequence[*NZP_CSI_RS_ResourceId]([]*NZP_CSI_RS_ResourceId{}, aper.Constraint{Lb: 1, Ub: maxNrofNZP_CSI_RS_ResourcesPerSet}, false)
 	fn_Nzp_CSI_RS_Resources := func() *NZP_CSI_RS_ResourceId {
 		return new(NZP_CSI_RS_ResourceId)
 	}
@@ -180,7 +180,7 @@ func (ie *NZP_CSI_RS_ResourceSet) Decode(r *uper.UperReader) error {
 	}
 	if AperiodicTriggeringOffsetPresent {
 		var tmp_int_AperiodicTriggeringOffset int64
-		if tmp_int_AperiodicTriggeringOffset, err = r.ReadInteger(&uper.Constraint{Lb: 0, Ub: 6}, false); err != nil {
+		if tmp_int_AperiodicTriggeringOffset, err = r.ReadInteger(&aper.Constraint{Lb: 0, Ub: 6}, false); err != nil {
 			return utils.WrapError("Decode AperiodicTriggeringOffset", err)
 		}
 		ie.AperiodicTriggeringOffset = &tmp_int_AperiodicTriggeringOffset
@@ -206,7 +206,7 @@ func (ie *NZP_CSI_RS_ResourceSet) Decode(r *uper.UperReader) error {
 				return err
 			}
 
-			extReader := uper.NewReader(bytes.NewReader(extBytes))
+			extReader := aper.NewReader(bytes.NewReader(extBytes))
 
 			AperiodicTriggeringOffset_r16Present, err := extReader.ReadBool()
 			if err != nil {
@@ -215,7 +215,7 @@ func (ie *NZP_CSI_RS_ResourceSet) Decode(r *uper.UperReader) error {
 			// decode AperiodicTriggeringOffset_r16 optional
 			if AperiodicTriggeringOffset_r16Present {
 				var tmp_int_AperiodicTriggeringOffset_r16 int64
-				if tmp_int_AperiodicTriggeringOffset_r16, err = extReader.ReadInteger(&uper.Constraint{Lb: 0, Ub: 31}, false); err != nil {
+				if tmp_int_AperiodicTriggeringOffset_r16, err = extReader.ReadInteger(&aper.Constraint{Lb: 0, Ub: 31}, false); err != nil {
 					return utils.WrapError("Decode AperiodicTriggeringOffset_r16", err)
 				}
 				ie.AperiodicTriggeringOffset_r16 = &tmp_int_AperiodicTriggeringOffset_r16
@@ -228,7 +228,7 @@ func (ie *NZP_CSI_RS_ResourceSet) Decode(r *uper.UperReader) error {
 				return err
 			}
 
-			extReader := uper.NewReader(bytes.NewReader(extBytes))
+			extReader := aper.NewReader(bytes.NewReader(extBytes))
 
 			Pdc_Info_r17Present, err := extReader.ReadBool()
 			if err != nil {
@@ -263,7 +263,7 @@ func (ie *NZP_CSI_RS_ResourceSet) Decode(r *uper.UperReader) error {
 			// decode AperiodicTriggeringOffset_r17 optional
 			if AperiodicTriggeringOffset_r17Present {
 				var tmp_int_AperiodicTriggeringOffset_r17 int64
-				if tmp_int_AperiodicTriggeringOffset_r17, err = extReader.ReadInteger(&uper.Constraint{Lb: 0, Ub: 124}, false); err != nil {
+				if tmp_int_AperiodicTriggeringOffset_r17, err = extReader.ReadInteger(&aper.Constraint{Lb: 0, Ub: 124}, false); err != nil {
 					return utils.WrapError("Decode AperiodicTriggeringOffset_r17", err)
 				}
 				ie.AperiodicTriggeringOffset_r17 = &tmp_int_AperiodicTriggeringOffset_r17
@@ -271,7 +271,7 @@ func (ie *NZP_CSI_RS_ResourceSet) Decode(r *uper.UperReader) error {
 			// decode AperiodicTriggeringOffsetL2_r17 optional
 			if AperiodicTriggeringOffsetL2_r17Present {
 				var tmp_int_AperiodicTriggeringOffsetL2_r17 int64
-				if tmp_int_AperiodicTriggeringOffsetL2_r17, err = extReader.ReadInteger(&uper.Constraint{Lb: 0, Ub: 31}, false); err != nil {
+				if tmp_int_AperiodicTriggeringOffsetL2_r17, err = extReader.ReadInteger(&aper.Constraint{Lb: 0, Ub: 31}, false); err != nil {
 					return utils.WrapError("Decode AperiodicTriggeringOffsetL2_r17", err)
 				}
 				ie.AperiodicTriggeringOffsetL2_r17 = &tmp_int_AperiodicTriggeringOffsetL2_r17

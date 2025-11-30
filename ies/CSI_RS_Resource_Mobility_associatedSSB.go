@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -10,7 +10,7 @@ type CSI_RS_Resource_Mobility_associatedSSB struct {
 	IsQuasiColocated bool      `madatory`
 }
 
-func (ie *CSI_RS_Resource_Mobility_associatedSSB) Encode(w *uper.UperWriter) error {
+func (ie *CSI_RS_Resource_Mobility_associatedSSB) Encode(w *aper.AperWriter) error {
 	var err error
 	if err = ie.Ssb_Index.Encode(w); err != nil {
 		return utils.WrapError("Encode Ssb_Index", err)
@@ -21,7 +21,7 @@ func (ie *CSI_RS_Resource_Mobility_associatedSSB) Encode(w *uper.UperWriter) err
 	return nil
 }
 
-func (ie *CSI_RS_Resource_Mobility_associatedSSB) Decode(r *uper.UperReader) error {
+func (ie *CSI_RS_Resource_Mobility_associatedSSB) Decode(r *aper.AperReader) error {
 	var err error
 	if err = ie.Ssb_Index.Decode(r); err != nil {
 		return utils.WrapError("Decode Ssb_Index", err)

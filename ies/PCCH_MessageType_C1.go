@@ -3,7 +3,7 @@ package ies
 import (
 	"fmt"
 
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -16,10 +16,10 @@ const (
 type PCCH_MessageType_C1 struct {
 	Choice uint64
 	Paging *Paging
-	Spare1 uper.NULL `madatory`
+	Spare1 aper.NULL `madatory`
 }
 
-func (ie *PCCH_MessageType_C1) Encode(w *uper.UperWriter) error {
+func (ie *PCCH_MessageType_C1) Encode(w *aper.AperWriter) error {
 	var err error
 	if err = w.WriteChoice(ie.Choice, 2, false); err != nil {
 		return err
@@ -39,7 +39,7 @@ func (ie *PCCH_MessageType_C1) Encode(w *uper.UperWriter) error {
 	return err
 }
 
-func (ie *PCCH_MessageType_C1) Decode(r *uper.UperReader) error {
+func (ie *PCCH_MessageType_C1) Decode(r *aper.AperReader) error {
 	var err error
 	if ie.Choice, err = r.ReadChoice(2, false); err != nil {
 		return err

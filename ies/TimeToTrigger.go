@@ -1,47 +1,47 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
 const (
-	TimeToTrigger_Enum_ms0    uper.Enumerated = 0
-	TimeToTrigger_Enum_ms40   uper.Enumerated = 1
-	TimeToTrigger_Enum_ms64   uper.Enumerated = 2
-	TimeToTrigger_Enum_ms80   uper.Enumerated = 3
-	TimeToTrigger_Enum_ms100  uper.Enumerated = 4
-	TimeToTrigger_Enum_ms128  uper.Enumerated = 5
-	TimeToTrigger_Enum_ms160  uper.Enumerated = 6
-	TimeToTrigger_Enum_ms256  uper.Enumerated = 7
-	TimeToTrigger_Enum_ms320  uper.Enumerated = 8
-	TimeToTrigger_Enum_ms480  uper.Enumerated = 9
-	TimeToTrigger_Enum_ms512  uper.Enumerated = 10
-	TimeToTrigger_Enum_ms640  uper.Enumerated = 11
-	TimeToTrigger_Enum_ms1024 uper.Enumerated = 12
-	TimeToTrigger_Enum_ms1280 uper.Enumerated = 13
-	TimeToTrigger_Enum_ms2560 uper.Enumerated = 14
-	TimeToTrigger_Enum_ms5120 uper.Enumerated = 15
+	TimeToTrigger_Enum_ms0    aper.Enumerated = 0
+	TimeToTrigger_Enum_ms40   aper.Enumerated = 1
+	TimeToTrigger_Enum_ms64   aper.Enumerated = 2
+	TimeToTrigger_Enum_ms80   aper.Enumerated = 3
+	TimeToTrigger_Enum_ms100  aper.Enumerated = 4
+	TimeToTrigger_Enum_ms128  aper.Enumerated = 5
+	TimeToTrigger_Enum_ms160  aper.Enumerated = 6
+	TimeToTrigger_Enum_ms256  aper.Enumerated = 7
+	TimeToTrigger_Enum_ms320  aper.Enumerated = 8
+	TimeToTrigger_Enum_ms480  aper.Enumerated = 9
+	TimeToTrigger_Enum_ms512  aper.Enumerated = 10
+	TimeToTrigger_Enum_ms640  aper.Enumerated = 11
+	TimeToTrigger_Enum_ms1024 aper.Enumerated = 12
+	TimeToTrigger_Enum_ms1280 aper.Enumerated = 13
+	TimeToTrigger_Enum_ms2560 aper.Enumerated = 14
+	TimeToTrigger_Enum_ms5120 aper.Enumerated = 15
 )
 
 type TimeToTrigger struct {
-	Value uper.Enumerated `lb:0,ub:15,madatory`
+	Value aper.Enumerated `lb:0,ub:15,madatory`
 }
 
-func (ie *TimeToTrigger) Encode(w *uper.UperWriter) error {
+func (ie *TimeToTrigger) Encode(w *aper.AperWriter) error {
 	var err error
-	if err = w.WriteEnumerate(uint64(ie.Value), uper.Constraint{Lb: 0, Ub: 15}, false); err != nil {
+	if err = w.WriteEnumerate(uint64(ie.Value), aper.Constraint{Lb: 0, Ub: 15}, false); err != nil {
 		return utils.WrapError("Encode TimeToTrigger", err)
 	}
 	return nil
 }
 
-func (ie *TimeToTrigger) Decode(r *uper.UperReader) error {
+func (ie *TimeToTrigger) Decode(r *aper.AperReader) error {
 	var err error
 	var v uint64
-	if v, err = r.ReadEnumerate(uper.Constraint{Lb: 0, Ub: 15}, false); err != nil {
+	if v, err = r.ReadEnumerate(aper.Constraint{Lb: 0, Ub: 15}, false); err != nil {
 		return utils.WrapError("Decode TimeToTrigger", err)
 	}
-	ie.Value = uper.Enumerated(v)
+	ie.Value = aper.Enumerated(v)
 	return nil
 }

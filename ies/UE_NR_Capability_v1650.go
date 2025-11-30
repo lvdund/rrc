@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -11,7 +11,7 @@ type UE_NR_Capability_v1650 struct {
 	NonCriticalExtension      *UE_NR_Capability_v1690                           `optional`
 }
 
-func (ie *UE_NR_Capability_v1650) Encode(w *uper.UperWriter) error {
+func (ie *UE_NR_Capability_v1650) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.MpsPriorityIndication_r16 != nil, ie.HighSpeedParameters_v1650 != nil, ie.NonCriticalExtension != nil}
 	for _, bit := range preambleBits {
@@ -37,7 +37,7 @@ func (ie *UE_NR_Capability_v1650) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *UE_NR_Capability_v1650) Decode(r *uper.UperReader) error {
+func (ie *UE_NR_Capability_v1650) Decode(r *aper.AperReader) error {
 	var err error
 	var MpsPriorityIndication_r16Present bool
 	if MpsPriorityIndication_r16Present, err = r.ReadBool(); err != nil {

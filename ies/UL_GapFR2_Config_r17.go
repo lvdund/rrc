@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -12,7 +12,7 @@ type UL_GapFR2_Config_r17 struct {
 	RefFR2_ServCellAsyncCA_r17 *ServCellIndex                `optional`
 }
 
-func (ie *UL_GapFR2_Config_r17) Encode(w *uper.UperWriter) error {
+func (ie *UL_GapFR2_Config_r17) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.RefFR2_ServCellAsyncCA_r17 != nil}
 	for _, bit := range preambleBits {
@@ -20,7 +20,7 @@ func (ie *UL_GapFR2_Config_r17) Encode(w *uper.UperWriter) error {
 			return err
 		}
 	}
-	if err = w.WriteInteger(ie.GapOffset_r17, &uper.Constraint{Lb: 0, Ub: 159}, false); err != nil {
+	if err = w.WriteInteger(ie.GapOffset_r17, &aper.Constraint{Lb: 0, Ub: 159}, false); err != nil {
 		return utils.WrapError("WriteInteger GapOffset_r17", err)
 	}
 	if err = ie.Ugl_r17.Encode(w); err != nil {
@@ -37,14 +37,14 @@ func (ie *UL_GapFR2_Config_r17) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *UL_GapFR2_Config_r17) Decode(r *uper.UperReader) error {
+func (ie *UL_GapFR2_Config_r17) Decode(r *aper.AperReader) error {
 	var err error
 	var RefFR2_ServCellAsyncCA_r17Present bool
 	if RefFR2_ServCellAsyncCA_r17Present, err = r.ReadBool(); err != nil {
 		return err
 	}
 	var tmp_int_GapOffset_r17 int64
-	if tmp_int_GapOffset_r17, err = r.ReadInteger(&uper.Constraint{Lb: 0, Ub: 159}, false); err != nil {
+	if tmp_int_GapOffset_r17, err = r.ReadInteger(&aper.Constraint{Lb: 0, Ub: 159}, false); err != nil {
 		return utils.WrapError("ReadInteger GapOffset_r17", err)
 	}
 	ie.GapOffset_r17 = tmp_int_GapOffset_r17

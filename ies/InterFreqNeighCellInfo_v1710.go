@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -9,7 +9,7 @@ type InterFreqNeighCellInfo_v1710 struct {
 	Ssb_PositionQCL_r17 *SSB_PositionQCL_Relation_r17 `optional`
 }
 
-func (ie *InterFreqNeighCellInfo_v1710) Encode(w *uper.UperWriter) error {
+func (ie *InterFreqNeighCellInfo_v1710) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.Ssb_PositionQCL_r17 != nil}
 	for _, bit := range preambleBits {
@@ -25,7 +25,7 @@ func (ie *InterFreqNeighCellInfo_v1710) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *InterFreqNeighCellInfo_v1710) Decode(r *uper.UperReader) error {
+func (ie *InterFreqNeighCellInfo_v1710) Decode(r *aper.AperReader) error {
 	var err error
 	var Ssb_PositionQCL_r17Present bool
 	if Ssb_PositionQCL_r17Present, err = r.ReadBool(); err != nil {

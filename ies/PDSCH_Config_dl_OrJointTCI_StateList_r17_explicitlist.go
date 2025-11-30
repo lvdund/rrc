@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -10,7 +10,7 @@ type PDSCH_Config_dl_OrJointTCI_StateList_r17_explicitlist struct {
 	Dl_OrJointTCI_StateToReleaseList_r17 []TCI_StateId `lb:1,ub:maxNrofTCI_States,optional`
 }
 
-func (ie *PDSCH_Config_dl_OrJointTCI_StateList_r17_explicitlist) Encode(w *uper.UperWriter) error {
+func (ie *PDSCH_Config_dl_OrJointTCI_StateList_r17_explicitlist) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{len(ie.Dl_OrJointTCI_StateToAddModList_r17) > 0, len(ie.Dl_OrJointTCI_StateToReleaseList_r17) > 0}
 	for _, bit := range preambleBits {
@@ -19,7 +19,7 @@ func (ie *PDSCH_Config_dl_OrJointTCI_StateList_r17_explicitlist) Encode(w *uper.
 		}
 	}
 	if len(ie.Dl_OrJointTCI_StateToAddModList_r17) > 0 {
-		tmp_Dl_OrJointTCI_StateToAddModList_r17 := utils.NewSequence[*TCI_State]([]*TCI_State{}, uper.Constraint{Lb: 1, Ub: maxNrofTCI_States}, false)
+		tmp_Dl_OrJointTCI_StateToAddModList_r17 := utils.NewSequence[*TCI_State]([]*TCI_State{}, aper.Constraint{Lb: 1, Ub: maxNrofTCI_States}, false)
 		for _, i := range ie.Dl_OrJointTCI_StateToAddModList_r17 {
 			tmp_Dl_OrJointTCI_StateToAddModList_r17.Value = append(tmp_Dl_OrJointTCI_StateToAddModList_r17.Value, &i)
 		}
@@ -28,7 +28,7 @@ func (ie *PDSCH_Config_dl_OrJointTCI_StateList_r17_explicitlist) Encode(w *uper.
 		}
 	}
 	if len(ie.Dl_OrJointTCI_StateToReleaseList_r17) > 0 {
-		tmp_Dl_OrJointTCI_StateToReleaseList_r17 := utils.NewSequence[*TCI_StateId]([]*TCI_StateId{}, uper.Constraint{Lb: 1, Ub: maxNrofTCI_States}, false)
+		tmp_Dl_OrJointTCI_StateToReleaseList_r17 := utils.NewSequence[*TCI_StateId]([]*TCI_StateId{}, aper.Constraint{Lb: 1, Ub: maxNrofTCI_States}, false)
 		for _, i := range ie.Dl_OrJointTCI_StateToReleaseList_r17 {
 			tmp_Dl_OrJointTCI_StateToReleaseList_r17.Value = append(tmp_Dl_OrJointTCI_StateToReleaseList_r17.Value, &i)
 		}
@@ -39,7 +39,7 @@ func (ie *PDSCH_Config_dl_OrJointTCI_StateList_r17_explicitlist) Encode(w *uper.
 	return nil
 }
 
-func (ie *PDSCH_Config_dl_OrJointTCI_StateList_r17_explicitlist) Decode(r *uper.UperReader) error {
+func (ie *PDSCH_Config_dl_OrJointTCI_StateList_r17_explicitlist) Decode(r *aper.AperReader) error {
 	var err error
 	var Dl_OrJointTCI_StateToAddModList_r17Present bool
 	if Dl_OrJointTCI_StateToAddModList_r17Present, err = r.ReadBool(); err != nil {
@@ -50,7 +50,7 @@ func (ie *PDSCH_Config_dl_OrJointTCI_StateList_r17_explicitlist) Decode(r *uper.
 		return err
 	}
 	if Dl_OrJointTCI_StateToAddModList_r17Present {
-		tmp_Dl_OrJointTCI_StateToAddModList_r17 := utils.NewSequence[*TCI_State]([]*TCI_State{}, uper.Constraint{Lb: 1, Ub: maxNrofTCI_States}, false)
+		tmp_Dl_OrJointTCI_StateToAddModList_r17 := utils.NewSequence[*TCI_State]([]*TCI_State{}, aper.Constraint{Lb: 1, Ub: maxNrofTCI_States}, false)
 		fn_Dl_OrJointTCI_StateToAddModList_r17 := func() *TCI_State {
 			return new(TCI_State)
 		}
@@ -63,7 +63,7 @@ func (ie *PDSCH_Config_dl_OrJointTCI_StateList_r17_explicitlist) Decode(r *uper.
 		}
 	}
 	if Dl_OrJointTCI_StateToReleaseList_r17Present {
-		tmp_Dl_OrJointTCI_StateToReleaseList_r17 := utils.NewSequence[*TCI_StateId]([]*TCI_StateId{}, uper.Constraint{Lb: 1, Ub: maxNrofTCI_States}, false)
+		tmp_Dl_OrJointTCI_StateToReleaseList_r17 := utils.NewSequence[*TCI_StateId]([]*TCI_StateId{}, aper.Constraint{Lb: 1, Ub: maxNrofTCI_States}, false)
 		fn_Dl_OrJointTCI_StateToReleaseList_r17 := func() *TCI_StateId {
 			return new(TCI_StateId)
 		}

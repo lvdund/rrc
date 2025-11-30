@@ -3,7 +3,7 @@ package ies
 import (
 	"bytes"
 
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -19,7 +19,7 @@ type SL_UE_SelectedConfigRP_r16 struct {
 	Sl_CBR_PriorityTxConfigList_v1650 *SL_CBR_PriorityTxConfigList_v1650                      `optional,ext-1`
 }
 
-func (ie *SL_UE_SelectedConfigRP_r16) Encode(w *uper.UperWriter) error {
+func (ie *SL_UE_SelectedConfigRP_r16) Encode(w *aper.AperWriter) error {
 	var err error
 	hasExtensions := ie.Sl_CBR_PriorityTxConfigList_v1650 != nil
 	preambleBits := []bool{hasExtensions, ie.Sl_CBR_PriorityTxConfigList_r16 != nil, ie.Sl_Thres_RSRP_List_r16 != nil, ie.Sl_MultiReserveResource_r16 != nil, ie.Sl_MaxNumPerReserve_r16 != nil, ie.Sl_SensingWindow_r16 != nil, ie.Sl_SelectionWindowList_r16 != nil, len(ie.Sl_ResourceReservePeriodList_r16) > 0}
@@ -59,7 +59,7 @@ func (ie *SL_UE_SelectedConfigRP_r16) Encode(w *uper.UperWriter) error {
 		}
 	}
 	if len(ie.Sl_ResourceReservePeriodList_r16) > 0 {
-		tmp_Sl_ResourceReservePeriodList_r16 := utils.NewSequence[*SL_ResourceReservePeriod_r16]([]*SL_ResourceReservePeriod_r16{}, uper.Constraint{Lb: 1, Ub: 16}, false)
+		tmp_Sl_ResourceReservePeriodList_r16 := utils.NewSequence[*SL_ResourceReservePeriod_r16]([]*SL_ResourceReservePeriod_r16{}, aper.Constraint{Lb: 1, Ub: 16}, false)
 		for _, i := range ie.Sl_ResourceReservePeriodList_r16 {
 			tmp_Sl_ResourceReservePeriodList_r16.Value = append(tmp_Sl_ResourceReservePeriodList_r16.Value, &i)
 		}
@@ -80,7 +80,7 @@ func (ie *SL_UE_SelectedConfigRP_r16) Encode(w *uper.UperWriter) error {
 		// encode extension group 1
 		if extBitmap[0] {
 			extBuf := new(bytes.Buffer)
-			extWriter := uper.NewWriter(extBuf)
+			extWriter := aper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 1
 			optionals_ext_1 := []bool{ie.Sl_CBR_PriorityTxConfigList_v1650 != nil}
@@ -109,7 +109,7 @@ func (ie *SL_UE_SelectedConfigRP_r16) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *SL_UE_SelectedConfigRP_r16) Decode(r *uper.UperReader) error {
+func (ie *SL_UE_SelectedConfigRP_r16) Decode(r *aper.AperReader) error {
 	var err error
 	var extensionBit bool
 	if extensionBit, err = r.ReadBool(); err != nil {
@@ -180,7 +180,7 @@ func (ie *SL_UE_SelectedConfigRP_r16) Decode(r *uper.UperReader) error {
 		}
 	}
 	if Sl_ResourceReservePeriodList_r16Present {
-		tmp_Sl_ResourceReservePeriodList_r16 := utils.NewSequence[*SL_ResourceReservePeriod_r16]([]*SL_ResourceReservePeriod_r16{}, uper.Constraint{Lb: 1, Ub: 16}, false)
+		tmp_Sl_ResourceReservePeriodList_r16 := utils.NewSequence[*SL_ResourceReservePeriod_r16]([]*SL_ResourceReservePeriod_r16{}, aper.Constraint{Lb: 1, Ub: 16}, false)
 		fn_Sl_ResourceReservePeriodList_r16 := func() *SL_ResourceReservePeriod_r16 {
 			return new(SL_ResourceReservePeriod_r16)
 		}
@@ -210,7 +210,7 @@ func (ie *SL_UE_SelectedConfigRP_r16) Decode(r *uper.UperReader) error {
 				return err
 			}
 
-			extReader := uper.NewReader(bytes.NewReader(extBytes))
+			extReader := aper.NewReader(bytes.NewReader(extBytes))
 
 			Sl_CBR_PriorityTxConfigList_v1650Present, err := extReader.ReadBool()
 			if err != nil {

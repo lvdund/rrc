@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -11,7 +11,7 @@ type CG_Config_v1730_IEs struct {
 	NonCriticalExtension interface{} `optional`
 }
 
-func (ie *CG_Config_v1730_IEs) Encode(w *uper.UperWriter) error {
+func (ie *CG_Config_v1730_IEs) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.Fr1_Carriers_SCG_r17 != nil, ie.Fr2_Carriers_SCG_r17 != nil}
 	for _, bit := range preambleBits {
@@ -20,19 +20,19 @@ func (ie *CG_Config_v1730_IEs) Encode(w *uper.UperWriter) error {
 		}
 	}
 	if ie.Fr1_Carriers_SCG_r17 != nil {
-		if err = w.WriteInteger(*ie.Fr1_Carriers_SCG_r17, &uper.Constraint{Lb: 1, Ub: 32}, false); err != nil {
+		if err = w.WriteInteger(*ie.Fr1_Carriers_SCG_r17, &aper.Constraint{Lb: 1, Ub: 32}, false); err != nil {
 			return utils.WrapError("Encode Fr1_Carriers_SCG_r17", err)
 		}
 	}
 	if ie.Fr2_Carriers_SCG_r17 != nil {
-		if err = w.WriteInteger(*ie.Fr2_Carriers_SCG_r17, &uper.Constraint{Lb: 1, Ub: 32}, false); err != nil {
+		if err = w.WriteInteger(*ie.Fr2_Carriers_SCG_r17, &aper.Constraint{Lb: 1, Ub: 32}, false); err != nil {
 			return utils.WrapError("Encode Fr2_Carriers_SCG_r17", err)
 		}
 	}
 	return nil
 }
 
-func (ie *CG_Config_v1730_IEs) Decode(r *uper.UperReader) error {
+func (ie *CG_Config_v1730_IEs) Decode(r *aper.AperReader) error {
 	var err error
 	var Fr1_Carriers_SCG_r17Present bool
 	if Fr1_Carriers_SCG_r17Present, err = r.ReadBool(); err != nil {
@@ -44,14 +44,14 @@ func (ie *CG_Config_v1730_IEs) Decode(r *uper.UperReader) error {
 	}
 	if Fr1_Carriers_SCG_r17Present {
 		var tmp_int_Fr1_Carriers_SCG_r17 int64
-		if tmp_int_Fr1_Carriers_SCG_r17, err = r.ReadInteger(&uper.Constraint{Lb: 1, Ub: 32}, false); err != nil {
+		if tmp_int_Fr1_Carriers_SCG_r17, err = r.ReadInteger(&aper.Constraint{Lb: 1, Ub: 32}, false); err != nil {
 			return utils.WrapError("Decode Fr1_Carriers_SCG_r17", err)
 		}
 		ie.Fr1_Carriers_SCG_r17 = &tmp_int_Fr1_Carriers_SCG_r17
 	}
 	if Fr2_Carriers_SCG_r17Present {
 		var tmp_int_Fr2_Carriers_SCG_r17 int64
-		if tmp_int_Fr2_Carriers_SCG_r17, err = r.ReadInteger(&uper.Constraint{Lb: 1, Ub: 32}, false); err != nil {
+		if tmp_int_Fr2_Carriers_SCG_r17, err = r.ReadInteger(&aper.Constraint{Lb: 1, Ub: 32}, false); err != nil {
 			return utils.WrapError("Decode Fr2_Carriers_SCG_r17", err)
 		}
 		ie.Fr2_Carriers_SCG_r17 = &tmp_int_Fr2_Carriers_SCG_r17

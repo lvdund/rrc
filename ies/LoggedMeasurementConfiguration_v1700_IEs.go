@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -12,7 +12,7 @@ type LoggedMeasurementConfiguration_v1700_IEs struct {
 	NonCriticalExtension    interface{}                                                       `optional`
 }
 
-func (ie *LoggedMeasurementConfiguration_v1700_IEs) Encode(w *uper.UperWriter) error {
+func (ie *LoggedMeasurementConfiguration_v1700_IEs) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.SigLoggedMeasType_r17 != nil, ie.EarlyMeasIndication_r17 != nil, ie.AreaConfiguration_v1700 != nil}
 	for _, bit := range preambleBits {
@@ -38,7 +38,7 @@ func (ie *LoggedMeasurementConfiguration_v1700_IEs) Encode(w *uper.UperWriter) e
 	return nil
 }
 
-func (ie *LoggedMeasurementConfiguration_v1700_IEs) Decode(r *uper.UperReader) error {
+func (ie *LoggedMeasurementConfiguration_v1700_IEs) Decode(r *aper.AperReader) error {
 	var err error
 	var SigLoggedMeasType_r17Present bool
 	if SigLoggedMeasType_r17Present, err = r.ReadBool(); err != nil {

@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -12,7 +12,7 @@ type SHR_Cause_r17 struct {
 	SourceDAPS_Failure_r17 *SHR_Cause_r17_sourceDAPS_Failure_r17 `optional`
 }
 
-func (ie *SHR_Cause_r17) Encode(w *uper.UperWriter) error {
+func (ie *SHR_Cause_r17) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.T304_cause_r17 != nil, ie.T310_cause_r17 != nil, ie.T312_cause_r17 != nil, ie.SourceDAPS_Failure_r17 != nil}
 	for _, bit := range preambleBits {
@@ -43,7 +43,7 @@ func (ie *SHR_Cause_r17) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *SHR_Cause_r17) Decode(r *uper.UperReader) error {
+func (ie *SHR_Cause_r17) Decode(r *aper.AperReader) error {
 	var err error
 	var T304_cause_r17Present bool
 	if T304_cause_r17Present, err = r.ReadBool(); err != nil {

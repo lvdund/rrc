@@ -3,7 +3,7 @@ package ies
 import (
 	"fmt"
 
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -19,14 +19,14 @@ type UCI_OnPUSCH_betaOffsets struct {
 	SemiStatic *BetaOffsets
 }
 
-func (ie *UCI_OnPUSCH_betaOffsets) Encode(w *uper.UperWriter) error {
+func (ie *UCI_OnPUSCH_betaOffsets) Encode(w *aper.AperWriter) error {
 	var err error
 	if err = w.WriteChoice(ie.Choice, 2, false); err != nil {
 		return err
 	}
 	switch ie.Choice {
 	case UCI_OnPUSCH_betaOffsets_Choice_Dynamic:
-		tmp := utils.NewSequence[*BetaOffsets]([]*BetaOffsets{}, uper.Constraint{Lb: 4, Ub: 4}, false)
+		tmp := utils.NewSequence[*BetaOffsets]([]*BetaOffsets{}, aper.Constraint{Lb: 4, Ub: 4}, false)
 		for _, i := range ie.Dynamic {
 			tmp.Value = append(tmp.Value, &i)
 		}
@@ -43,14 +43,14 @@ func (ie *UCI_OnPUSCH_betaOffsets) Encode(w *uper.UperWriter) error {
 	return err
 }
 
-func (ie *UCI_OnPUSCH_betaOffsets) Decode(r *uper.UperReader) error {
+func (ie *UCI_OnPUSCH_betaOffsets) Decode(r *aper.AperReader) error {
 	var err error
 	if ie.Choice, err = r.ReadChoice(2, false); err != nil {
 		return err
 	}
 	switch ie.Choice {
 	case UCI_OnPUSCH_betaOffsets_Choice_Dynamic:
-		tmp := utils.NewSequence[*BetaOffsets]([]*BetaOffsets{}, uper.Constraint{Lb: 4, Ub: 4}, false)
+		tmp := utils.NewSequence[*BetaOffsets]([]*BetaOffsets{}, aper.Constraint{Lb: 4, Ub: 4}, false)
 		fn := func() *BetaOffsets {
 			return new(BetaOffsets)
 		}

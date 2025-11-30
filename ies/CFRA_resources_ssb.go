@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -10,24 +10,24 @@ type CFRA_resources_ssb struct {
 	Ra_ssb_OccasionMaskIndex int64               `lb:0,ub:15,madatory`
 }
 
-func (ie *CFRA_resources_ssb) Encode(w *uper.UperWriter) error {
+func (ie *CFRA_resources_ssb) Encode(w *aper.AperWriter) error {
 	var err error
-	tmp_Ssb_ResourceList := utils.NewSequence[*CFRA_SSB_Resource]([]*CFRA_SSB_Resource{}, uper.Constraint{Lb: 1, Ub: maxRA_SSB_Resources}, false)
+	tmp_Ssb_ResourceList := utils.NewSequence[*CFRA_SSB_Resource]([]*CFRA_SSB_Resource{}, aper.Constraint{Lb: 1, Ub: maxRA_SSB_Resources}, false)
 	for _, i := range ie.Ssb_ResourceList {
 		tmp_Ssb_ResourceList.Value = append(tmp_Ssb_ResourceList.Value, &i)
 	}
 	if err = tmp_Ssb_ResourceList.Encode(w); err != nil {
 		return utils.WrapError("Encode Ssb_ResourceList", err)
 	}
-	if err = w.WriteInteger(ie.Ra_ssb_OccasionMaskIndex, &uper.Constraint{Lb: 0, Ub: 15}, false); err != nil {
+	if err = w.WriteInteger(ie.Ra_ssb_OccasionMaskIndex, &aper.Constraint{Lb: 0, Ub: 15}, false); err != nil {
 		return utils.WrapError("WriteInteger Ra_ssb_OccasionMaskIndex", err)
 	}
 	return nil
 }
 
-func (ie *CFRA_resources_ssb) Decode(r *uper.UperReader) error {
+func (ie *CFRA_resources_ssb) Decode(r *aper.AperReader) error {
 	var err error
-	tmp_Ssb_ResourceList := utils.NewSequence[*CFRA_SSB_Resource]([]*CFRA_SSB_Resource{}, uper.Constraint{Lb: 1, Ub: maxRA_SSB_Resources}, false)
+	tmp_Ssb_ResourceList := utils.NewSequence[*CFRA_SSB_Resource]([]*CFRA_SSB_Resource{}, aper.Constraint{Lb: 1, Ub: maxRA_SSB_Resources}, false)
 	fn_Ssb_ResourceList := func() *CFRA_SSB_Resource {
 		return new(CFRA_SSB_Resource)
 	}
@@ -39,7 +39,7 @@ func (ie *CFRA_resources_ssb) Decode(r *uper.UperReader) error {
 		ie.Ssb_ResourceList = append(ie.Ssb_ResourceList, *i)
 	}
 	var tmp_int_Ra_ssb_OccasionMaskIndex int64
-	if tmp_int_Ra_ssb_OccasionMaskIndex, err = r.ReadInteger(&uper.Constraint{Lb: 0, Ub: 15}, false); err != nil {
+	if tmp_int_Ra_ssb_OccasionMaskIndex, err = r.ReadInteger(&aper.Constraint{Lb: 0, Ub: 15}, false); err != nil {
 		return utils.WrapError("ReadInteger Ra_ssb_OccasionMaskIndex", err)
 	}
 	ie.Ra_ssb_OccasionMaskIndex = tmp_int_Ra_ssb_OccasionMaskIndex

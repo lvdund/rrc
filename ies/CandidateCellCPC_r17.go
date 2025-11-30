@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -10,12 +10,12 @@ type CandidateCellCPC_r17 struct {
 	CandidateCellList_r17 []PhysCellId  `lb:1,ub:maxNrofCondCells_r16,madatory`
 }
 
-func (ie *CandidateCellCPC_r17) Encode(w *uper.UperWriter) error {
+func (ie *CandidateCellCPC_r17) Encode(w *aper.AperWriter) error {
 	var err error
 	if err = ie.SsbFrequency_r17.Encode(w); err != nil {
 		return utils.WrapError("Encode SsbFrequency_r17", err)
 	}
-	tmp_CandidateCellList_r17 := utils.NewSequence[*PhysCellId]([]*PhysCellId{}, uper.Constraint{Lb: 1, Ub: maxNrofCondCells_r16}, false)
+	tmp_CandidateCellList_r17 := utils.NewSequence[*PhysCellId]([]*PhysCellId{}, aper.Constraint{Lb: 1, Ub: maxNrofCondCells_r16}, false)
 	for _, i := range ie.CandidateCellList_r17 {
 		tmp_CandidateCellList_r17.Value = append(tmp_CandidateCellList_r17.Value, &i)
 	}
@@ -25,12 +25,12 @@ func (ie *CandidateCellCPC_r17) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *CandidateCellCPC_r17) Decode(r *uper.UperReader) error {
+func (ie *CandidateCellCPC_r17) Decode(r *aper.AperReader) error {
 	var err error
 	if err = ie.SsbFrequency_r17.Decode(r); err != nil {
 		return utils.WrapError("Decode SsbFrequency_r17", err)
 	}
-	tmp_CandidateCellList_r17 := utils.NewSequence[*PhysCellId]([]*PhysCellId{}, uper.Constraint{Lb: 1, Ub: maxNrofCondCells_r16}, false)
+	tmp_CandidateCellList_r17 := utils.NewSequence[*PhysCellId]([]*PhysCellId{}, aper.Constraint{Lb: 1, Ub: maxNrofCondCells_r16}, false)
 	fn_CandidateCellList_r17 := func() *PhysCellId {
 		return new(PhysCellId)
 	}

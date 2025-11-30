@@ -3,7 +3,7 @@ package ies
 import (
 	"fmt"
 
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -19,7 +19,7 @@ type HighSpeedParameters_v1650 struct {
 	InterRAT_MeasurementEnhancement_r16 *HighSpeedParameters_v1650_interRAT_MeasurementEnhancement_r16
 }
 
-func (ie *HighSpeedParameters_v1650) Encode(w *uper.UperWriter) error {
+func (ie *HighSpeedParameters_v1650) Encode(w *aper.AperWriter) error {
 	var err error
 	if err = w.WriteChoice(ie.Choice, 2, false); err != nil {
 		return err
@@ -39,7 +39,7 @@ func (ie *HighSpeedParameters_v1650) Encode(w *uper.UperWriter) error {
 	return err
 }
 
-func (ie *HighSpeedParameters_v1650) Decode(r *uper.UperReader) error {
+func (ie *HighSpeedParameters_v1650) Decode(r *aper.AperReader) error {
 	var err error
 	if ie.Choice, err = r.ReadChoice(2, false); err != nil {
 		return err

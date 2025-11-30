@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -11,7 +11,7 @@ type RRCResume_v1560_IEs struct {
 	NonCriticalExtension *RRCResume_v1610_IEs `optional`
 }
 
-func (ie *RRCResume_v1560_IEs) Encode(w *uper.UperWriter) error {
+func (ie *RRCResume_v1560_IEs) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.RadioBearerConfig2 != nil, ie.Sk_Counter != nil, ie.NonCriticalExtension != nil}
 	for _, bit := range preambleBits {
@@ -20,7 +20,7 @@ func (ie *RRCResume_v1560_IEs) Encode(w *uper.UperWriter) error {
 		}
 	}
 	if ie.RadioBearerConfig2 != nil {
-		if err = w.WriteOctetString(*ie.RadioBearerConfig2, &uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+		if err = w.WriteOctetString(*ie.RadioBearerConfig2, &aper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
 			return utils.WrapError("Encode RadioBearerConfig2", err)
 		}
 	}
@@ -37,7 +37,7 @@ func (ie *RRCResume_v1560_IEs) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *RRCResume_v1560_IEs) Decode(r *uper.UperReader) error {
+func (ie *RRCResume_v1560_IEs) Decode(r *aper.AperReader) error {
 	var err error
 	var RadioBearerConfig2Present bool
 	if RadioBearerConfig2Present, err = r.ReadBool(); err != nil {
@@ -53,7 +53,7 @@ func (ie *RRCResume_v1560_IEs) Decode(r *uper.UperReader) error {
 	}
 	if RadioBearerConfig2Present {
 		var tmp_os_RadioBearerConfig2 []byte
-		if tmp_os_RadioBearerConfig2, err = r.ReadOctetString(&uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+		if tmp_os_RadioBearerConfig2, err = r.ReadOctetString(&aper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
 			return utils.WrapError("Decode RadioBearerConfig2", err)
 		}
 		ie.RadioBearerConfig2 = &tmp_os_RadioBearerConfig2

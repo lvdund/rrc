@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -11,7 +11,7 @@ type MeasurementTimingConfiguration_v1550_IEs struct {
 	NonCriticalExtension *MeasurementTimingConfiguration_v1610_IEs `optional`
 }
 
-func (ie *MeasurementTimingConfiguration_v1550_IEs) Encode(w *uper.UperWriter) error {
+func (ie *MeasurementTimingConfiguration_v1550_IEs) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.NonCriticalExtension != nil}
 	for _, bit := range preambleBits {
@@ -33,7 +33,7 @@ func (ie *MeasurementTimingConfiguration_v1550_IEs) Encode(w *uper.UperWriter) e
 	return nil
 }
 
-func (ie *MeasurementTimingConfiguration_v1550_IEs) Decode(r *uper.UperReader) error {
+func (ie *MeasurementTimingConfiguration_v1550_IEs) Decode(r *aper.AperReader) error {
 	var err error
 	var NonCriticalExtensionPresent bool
 	if NonCriticalExtensionPresent, err = r.ReadBool(); err != nil {

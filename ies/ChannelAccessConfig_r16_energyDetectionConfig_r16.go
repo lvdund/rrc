@@ -3,7 +3,7 @@ package ies
 import (
 	"fmt"
 
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -19,18 +19,18 @@ type ChannelAccessConfig_r16_energyDetectionConfig_r16 struct {
 	EnergyDetectionThresholdOffset_r16 int64 `lb:-13,ub:20,madatory`
 }
 
-func (ie *ChannelAccessConfig_r16_energyDetectionConfig_r16) Encode(w *uper.UperWriter) error {
+func (ie *ChannelAccessConfig_r16_energyDetectionConfig_r16) Encode(w *aper.AperWriter) error {
 	var err error
 	if err = w.WriteChoice(ie.Choice, 2, false); err != nil {
 		return err
 	}
 	switch ie.Choice {
 	case ChannelAccessConfig_r16_energyDetectionConfig_r16_Choice_MaxEnergyDetectionThreshold_r16:
-		if err = w.WriteInteger(int64(ie.MaxEnergyDetectionThreshold_r16), &uper.Constraint{Lb: -85, Ub: -52}, false); err != nil {
+		if err = w.WriteInteger(int64(ie.MaxEnergyDetectionThreshold_r16), &aper.Constraint{Lb: -85, Ub: -52}, false); err != nil {
 			err = utils.WrapError("Encode MaxEnergyDetectionThreshold_r16", err)
 		}
 	case ChannelAccessConfig_r16_energyDetectionConfig_r16_Choice_EnergyDetectionThresholdOffset_r16:
-		if err = w.WriteInteger(int64(ie.EnergyDetectionThresholdOffset_r16), &uper.Constraint{Lb: -13, Ub: 20}, false); err != nil {
+		if err = w.WriteInteger(int64(ie.EnergyDetectionThresholdOffset_r16), &aper.Constraint{Lb: -13, Ub: 20}, false); err != nil {
 			err = utils.WrapError("Encode EnergyDetectionThresholdOffset_r16", err)
 		}
 	default:
@@ -39,7 +39,7 @@ func (ie *ChannelAccessConfig_r16_energyDetectionConfig_r16) Encode(w *uper.Uper
 	return err
 }
 
-func (ie *ChannelAccessConfig_r16_energyDetectionConfig_r16) Decode(r *uper.UperReader) error {
+func (ie *ChannelAccessConfig_r16_energyDetectionConfig_r16) Decode(r *aper.AperReader) error {
 	var err error
 	if ie.Choice, err = r.ReadChoice(2, false); err != nil {
 		return err
@@ -47,13 +47,13 @@ func (ie *ChannelAccessConfig_r16_energyDetectionConfig_r16) Decode(r *uper.Uper
 	switch ie.Choice {
 	case ChannelAccessConfig_r16_energyDetectionConfig_r16_Choice_MaxEnergyDetectionThreshold_r16:
 		var tmp_int_MaxEnergyDetectionThreshold_r16 int64
-		if tmp_int_MaxEnergyDetectionThreshold_r16, err = r.ReadInteger(&uper.Constraint{Lb: -85, Ub: -52}, false); err != nil {
+		if tmp_int_MaxEnergyDetectionThreshold_r16, err = r.ReadInteger(&aper.Constraint{Lb: -85, Ub: -52}, false); err != nil {
 			return utils.WrapError("Decode MaxEnergyDetectionThreshold_r16", err)
 		}
 		ie.MaxEnergyDetectionThreshold_r16 = tmp_int_MaxEnergyDetectionThreshold_r16
 	case ChannelAccessConfig_r16_energyDetectionConfig_r16_Choice_EnergyDetectionThresholdOffset_r16:
 		var tmp_int_EnergyDetectionThresholdOffset_r16 int64
-		if tmp_int_EnergyDetectionThresholdOffset_r16, err = r.ReadInteger(&uper.Constraint{Lb: -13, Ub: 20}, false); err != nil {
+		if tmp_int_EnergyDetectionThresholdOffset_r16, err = r.ReadInteger(&aper.Constraint{Lb: -13, Ub: 20}, false); err != nil {
 			return utils.WrapError("Decode EnergyDetectionThresholdOffset_r16", err)
 		}
 		ie.EnergyDetectionThresholdOffset_r16 = tmp_int_EnergyDetectionThresholdOffset_r16

@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -11,7 +11,7 @@ type MUSIM_GapConfig_r17 struct {
 	Musim_AperiodicGap_r17     *MUSIM_GapInfo_r17 `optional`
 }
 
-func (ie *MUSIM_GapConfig_r17) Encode(w *uper.UperWriter) error {
+func (ie *MUSIM_GapConfig_r17) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{len(ie.Musim_GapToReleaseList_r17) > 0, len(ie.Musim_GapToAddModList_r17) > 0, ie.Musim_AperiodicGap_r17 != nil}
 	for _, bit := range preambleBits {
@@ -20,7 +20,7 @@ func (ie *MUSIM_GapConfig_r17) Encode(w *uper.UperWriter) error {
 		}
 	}
 	if len(ie.Musim_GapToReleaseList_r17) > 0 {
-		tmp_Musim_GapToReleaseList_r17 := utils.NewSequence[*MUSIM_GapId_r17]([]*MUSIM_GapId_r17{}, uper.Constraint{Lb: 1, Ub: 3}, false)
+		tmp_Musim_GapToReleaseList_r17 := utils.NewSequence[*MUSIM_GapId_r17]([]*MUSIM_GapId_r17{}, aper.Constraint{Lb: 1, Ub: 3}, false)
 		for _, i := range ie.Musim_GapToReleaseList_r17 {
 			tmp_Musim_GapToReleaseList_r17.Value = append(tmp_Musim_GapToReleaseList_r17.Value, &i)
 		}
@@ -29,7 +29,7 @@ func (ie *MUSIM_GapConfig_r17) Encode(w *uper.UperWriter) error {
 		}
 	}
 	if len(ie.Musim_GapToAddModList_r17) > 0 {
-		tmp_Musim_GapToAddModList_r17 := utils.NewSequence[*MUSIM_Gap_r17]([]*MUSIM_Gap_r17{}, uper.Constraint{Lb: 1, Ub: 3}, false)
+		tmp_Musim_GapToAddModList_r17 := utils.NewSequence[*MUSIM_Gap_r17]([]*MUSIM_Gap_r17{}, aper.Constraint{Lb: 1, Ub: 3}, false)
 		for _, i := range ie.Musim_GapToAddModList_r17 {
 			tmp_Musim_GapToAddModList_r17.Value = append(tmp_Musim_GapToAddModList_r17.Value, &i)
 		}
@@ -45,7 +45,7 @@ func (ie *MUSIM_GapConfig_r17) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *MUSIM_GapConfig_r17) Decode(r *uper.UperReader) error {
+func (ie *MUSIM_GapConfig_r17) Decode(r *aper.AperReader) error {
 	var err error
 	var Musim_GapToReleaseList_r17Present bool
 	if Musim_GapToReleaseList_r17Present, err = r.ReadBool(); err != nil {
@@ -60,7 +60,7 @@ func (ie *MUSIM_GapConfig_r17) Decode(r *uper.UperReader) error {
 		return err
 	}
 	if Musim_GapToReleaseList_r17Present {
-		tmp_Musim_GapToReleaseList_r17 := utils.NewSequence[*MUSIM_GapId_r17]([]*MUSIM_GapId_r17{}, uper.Constraint{Lb: 1, Ub: 3}, false)
+		tmp_Musim_GapToReleaseList_r17 := utils.NewSequence[*MUSIM_GapId_r17]([]*MUSIM_GapId_r17{}, aper.Constraint{Lb: 1, Ub: 3}, false)
 		fn_Musim_GapToReleaseList_r17 := func() *MUSIM_GapId_r17 {
 			return new(MUSIM_GapId_r17)
 		}
@@ -73,7 +73,7 @@ func (ie *MUSIM_GapConfig_r17) Decode(r *uper.UperReader) error {
 		}
 	}
 	if Musim_GapToAddModList_r17Present {
-		tmp_Musim_GapToAddModList_r17 := utils.NewSequence[*MUSIM_Gap_r17]([]*MUSIM_Gap_r17{}, uper.Constraint{Lb: 1, Ub: 3}, false)
+		tmp_Musim_GapToAddModList_r17 := utils.NewSequence[*MUSIM_Gap_r17]([]*MUSIM_Gap_r17{}, aper.Constraint{Lb: 1, Ub: 3}, false)
 		fn_Musim_GapToAddModList_r17 := func() *MUSIM_Gap_r17 {
 			return new(MUSIM_Gap_r17)
 		}

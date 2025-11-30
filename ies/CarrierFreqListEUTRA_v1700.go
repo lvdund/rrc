@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -9,9 +9,9 @@ type CarrierFreqListEUTRA_v1700 struct {
 	Value []CarrierFreqEUTRA_v1700 `lb:1,ub:maxEUTRA_Carrier,madatory`
 }
 
-func (ie *CarrierFreqListEUTRA_v1700) Encode(w *uper.UperWriter) error {
+func (ie *CarrierFreqListEUTRA_v1700) Encode(w *aper.AperWriter) error {
 	var err error
-	tmp := utils.NewSequence[*CarrierFreqEUTRA_v1700]([]*CarrierFreqEUTRA_v1700{}, uper.Constraint{Lb: 1, Ub: maxEUTRA_Carrier}, false)
+	tmp := utils.NewSequence[*CarrierFreqEUTRA_v1700]([]*CarrierFreqEUTRA_v1700{}, aper.Constraint{Lb: 1, Ub: maxEUTRA_Carrier}, false)
 	for _, i := range ie.Value {
 		tmp.Value = append(tmp.Value, &i)
 	}
@@ -21,9 +21,9 @@ func (ie *CarrierFreqListEUTRA_v1700) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *CarrierFreqListEUTRA_v1700) Decode(r *uper.UperReader) error {
+func (ie *CarrierFreqListEUTRA_v1700) Decode(r *aper.AperReader) error {
 	var err error
-	tmp := utils.NewSequence[*CarrierFreqEUTRA_v1700]([]*CarrierFreqEUTRA_v1700{}, uper.Constraint{Lb: 1, Ub: maxEUTRA_Carrier}, false)
+	tmp := utils.NewSequence[*CarrierFreqEUTRA_v1700]([]*CarrierFreqEUTRA_v1700{}, aper.Constraint{Lb: 1, Ub: maxEUTRA_Carrier}, false)
 	fn := func() *CarrierFreqEUTRA_v1700 {
 		return new(CarrierFreqEUTRA_v1700)
 	}

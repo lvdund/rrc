@@ -3,7 +3,7 @@ package ies
 import (
 	"bytes"
 
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -19,7 +19,7 @@ type MAC_ParametersXDD_Diff struct {
 	EnhancedSkipUplinkTxConfigured_r16 *MAC_ParametersXDD_Diff_enhancedSkipUplinkTxConfigured_r16 `optional,ext-2`
 }
 
-func (ie *MAC_ParametersXDD_Diff) Encode(w *uper.UperWriter) error {
+func (ie *MAC_ParametersXDD_Diff) Encode(w *aper.AperWriter) error {
 	var err error
 	hasExtensions := ie.SecondaryDRX_Group_r16 != nil || ie.EnhancedSkipUplinkTxDynamic_r16 != nil || ie.EnhancedSkipUplinkTxConfigured_r16 != nil
 	preambleBits := []bool{hasExtensions, ie.SkipUplinkTxDynamic != nil, ie.LogicalChannelSR_DelayTimer != nil, ie.LongDRX_Cycle != nil, ie.ShortDRX_Cycle != nil, ie.MultipleSR_Configurations != nil, ie.MultipleConfiguredGrants != nil}
@@ -68,7 +68,7 @@ func (ie *MAC_ParametersXDD_Diff) Encode(w *uper.UperWriter) error {
 		// encode extension group 1
 		if extBitmap[0] {
 			extBuf := new(bytes.Buffer)
-			extWriter := uper.NewWriter(extBuf)
+			extWriter := aper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 1
 			optionals_ext_1 := []bool{ie.SecondaryDRX_Group_r16 != nil}
@@ -97,7 +97,7 @@ func (ie *MAC_ParametersXDD_Diff) Encode(w *uper.UperWriter) error {
 		// encode extension group 2
 		if extBitmap[1] {
 			extBuf := new(bytes.Buffer)
-			extWriter := uper.NewWriter(extBuf)
+			extWriter := aper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 2
 			optionals_ext_2 := []bool{ie.EnhancedSkipUplinkTxDynamic_r16 != nil, ie.EnhancedSkipUplinkTxConfigured_r16 != nil}
@@ -132,7 +132,7 @@ func (ie *MAC_ParametersXDD_Diff) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *MAC_ParametersXDD_Diff) Decode(r *uper.UperReader) error {
+func (ie *MAC_ParametersXDD_Diff) Decode(r *aper.AperReader) error {
 	var err error
 	var extensionBit bool
 	if extensionBit, err = r.ReadBool(); err != nil {
@@ -213,7 +213,7 @@ func (ie *MAC_ParametersXDD_Diff) Decode(r *uper.UperReader) error {
 				return err
 			}
 
-			extReader := uper.NewReader(bytes.NewReader(extBytes))
+			extReader := aper.NewReader(bytes.NewReader(extBytes))
 
 			SecondaryDRX_Group_r16Present, err := extReader.ReadBool()
 			if err != nil {
@@ -234,7 +234,7 @@ func (ie *MAC_ParametersXDD_Diff) Decode(r *uper.UperReader) error {
 				return err
 			}
 
-			extReader := uper.NewReader(bytes.NewReader(extBytes))
+			extReader := aper.NewReader(bytes.NewReader(extBytes))
 
 			EnhancedSkipUplinkTxDynamic_r16Present, err := extReader.ReadBool()
 			if err != nil {

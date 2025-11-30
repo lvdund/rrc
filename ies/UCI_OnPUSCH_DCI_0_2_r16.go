@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -10,7 +10,7 @@ type UCI_OnPUSCH_DCI_0_2_r16 struct {
 	ScalingDCI_0_2_r16     UCI_OnPUSCH_DCI_0_2_r16_scalingDCI_0_2_r16      `madatory`
 }
 
-func (ie *UCI_OnPUSCH_DCI_0_2_r16) Encode(w *uper.UperWriter) error {
+func (ie *UCI_OnPUSCH_DCI_0_2_r16) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.BetaOffsetsDCI_0_2_r16 != nil}
 	for _, bit := range preambleBits {
@@ -29,7 +29,7 @@ func (ie *UCI_OnPUSCH_DCI_0_2_r16) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *UCI_OnPUSCH_DCI_0_2_r16) Decode(r *uper.UperReader) error {
+func (ie *UCI_OnPUSCH_DCI_0_2_r16) Decode(r *aper.AperReader) error {
 	var err error
 	var BetaOffsetsDCI_0_2_r16Present bool
 	if BetaOffsetsDCI_0_2_r16Present, err = r.ReadBool(); err != nil {

@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -10,7 +10,7 @@ type BandParameters_v1540 struct {
 	Srs_TxSwitch      *BandParameters_v1540_srs_TxSwitch      `lb:1,ub:32,optional`
 }
 
-func (ie *BandParameters_v1540) Encode(w *uper.UperWriter) error {
+func (ie *BandParameters_v1540) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.Srs_CarrierSwitch != nil, ie.Srs_TxSwitch != nil}
 	for _, bit := range preambleBits {
@@ -31,7 +31,7 @@ func (ie *BandParameters_v1540) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *BandParameters_v1540) Decode(r *uper.UperReader) error {
+func (ie *BandParameters_v1540) Decode(r *aper.AperReader) error {
 	var err error
 	var Srs_CarrierSwitchPresent bool
 	if Srs_CarrierSwitchPresent, err = r.ReadBool(); err != nil {

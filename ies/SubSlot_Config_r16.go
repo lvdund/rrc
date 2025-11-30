@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -10,7 +10,7 @@ type SubSlot_Config_r16 struct {
 	Sub_SlotConfig_ECP_r16 *SubSlot_Config_r16_sub_SlotConfig_ECP_r16 `optional`
 }
 
-func (ie *SubSlot_Config_r16) Encode(w *uper.UperWriter) error {
+func (ie *SubSlot_Config_r16) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.Sub_SlotConfig_NCP_r16 != nil, ie.Sub_SlotConfig_ECP_r16 != nil}
 	for _, bit := range preambleBits {
@@ -31,7 +31,7 @@ func (ie *SubSlot_Config_r16) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *SubSlot_Config_r16) Decode(r *uper.UperReader) error {
+func (ie *SubSlot_Config_r16) Decode(r *aper.AperReader) error {
 	var err error
 	var Sub_SlotConfig_NCP_r16Present bool
 	if Sub_SlotConfig_NCP_r16Present, err = r.ReadBool(); err != nil {

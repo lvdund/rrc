@@ -3,7 +3,7 @@ package ies
 import (
 	"fmt"
 
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -103,7 +103,7 @@ type PosSIB_TypeAndInfo_r16 struct {
 	PosSib6_6_v1700  *SIBpos_r16
 }
 
-func (ie *PosSIB_TypeAndInfo_r16) Encode(w *uper.UperWriter) error {
+func (ie *PosSIB_TypeAndInfo_r16) Encode(w *aper.AperWriter) error {
 	var err error
 	if err = w.WriteChoice(ie.Choice, 44, false); err != nil {
 		return err
@@ -291,7 +291,7 @@ func (ie *PosSIB_TypeAndInfo_r16) Encode(w *uper.UperWriter) error {
 	return err
 }
 
-func (ie *PosSIB_TypeAndInfo_r16) Decode(r *uper.UperReader) error {
+func (ie *PosSIB_TypeAndInfo_r16) Decode(r *aper.AperReader) error {
 	var err error
 	if ie.Choice, err = r.ReadChoice(44, false); err != nil {
 		return err

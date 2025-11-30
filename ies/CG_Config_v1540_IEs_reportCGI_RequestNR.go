@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -9,7 +9,7 @@ type CG_Config_v1540_IEs_reportCGI_RequestNR struct {
 	RequestedCellInfo *CG_Config_v1540_IEs_reportCGI_RequestNR_requestedCellInfo `optional`
 }
 
-func (ie *CG_Config_v1540_IEs_reportCGI_RequestNR) Encode(w *uper.UperWriter) error {
+func (ie *CG_Config_v1540_IEs_reportCGI_RequestNR) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.RequestedCellInfo != nil}
 	for _, bit := range preambleBits {
@@ -25,7 +25,7 @@ func (ie *CG_Config_v1540_IEs_reportCGI_RequestNR) Encode(w *uper.UperWriter) er
 	return nil
 }
 
-func (ie *CG_Config_v1540_IEs_reportCGI_RequestNR) Decode(r *uper.UperReader) error {
+func (ie *CG_Config_v1540_IEs_reportCGI_RequestNR) Decode(r *aper.AperReader) error {
 	var err error
 	var RequestedCellInfoPresent bool
 	if RequestedCellInfoPresent, err = r.ReadBool(); err != nil {

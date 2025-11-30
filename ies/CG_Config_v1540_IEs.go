@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -12,7 +12,7 @@ type CG_Config_v1540_IEs struct {
 	NonCriticalExtension *CG_Config_v1560_IEs                     `optional`
 }
 
-func (ie *CG_Config_v1540_IEs) Encode(w *uper.UperWriter) error {
+func (ie *CG_Config_v1540_IEs) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.PSCellFrequency != nil, ie.ReportCGI_RequestNR != nil, ie.Ph_InfoSCG != nil, ie.NonCriticalExtension != nil}
 	for _, bit := range preambleBits {
@@ -43,7 +43,7 @@ func (ie *CG_Config_v1540_IEs) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *CG_Config_v1540_IEs) Decode(r *uper.UperReader) error {
+func (ie *CG_Config_v1540_IEs) Decode(r *aper.AperReader) error {
 	var err error
 	var PSCellFrequencyPresent bool
 	if PSCellFrequencyPresent, err = r.ReadBool(); err != nil {

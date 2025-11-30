@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -12,7 +12,7 @@ type FeatureSetUplink_v1720_phy_PrioritizationHighPriorityDG_LowPriorityCG_r17_a
 	Scs_120kHz_r17 *FeatureSetUplink_v1720_phy_PrioritizationHighPriorityDG_LowPriorityCG_r17_additionalCancellationTime_r17_scs_120kHz_r17 `optional`
 }
 
-func (ie *FeatureSetUplink_v1720_phy_PrioritizationHighPriorityDG_LowPriorityCG_r17_additionalCancellationTime_r17) Encode(w *uper.UperWriter) error {
+func (ie *FeatureSetUplink_v1720_phy_PrioritizationHighPriorityDG_LowPriorityCG_r17_additionalCancellationTime_r17) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.Scs_15kHz_r17 != nil, ie.Scs_30kHz_r17 != nil, ie.Scs_60kHz_r17 != nil, ie.Scs_120kHz_r17 != nil}
 	for _, bit := range preambleBits {
@@ -43,7 +43,7 @@ func (ie *FeatureSetUplink_v1720_phy_PrioritizationHighPriorityDG_LowPriorityCG_
 	return nil
 }
 
-func (ie *FeatureSetUplink_v1720_phy_PrioritizationHighPriorityDG_LowPriorityCG_r17_additionalCancellationTime_r17) Decode(r *uper.UperReader) error {
+func (ie *FeatureSetUplink_v1720_phy_PrioritizationHighPriorityDG_LowPriorityCG_r17_additionalCancellationTime_r17) Decode(r *aper.AperReader) error {
 	var err error
 	var Scs_15kHz_r17Present bool
 	if Scs_15kHz_r17Present, err = r.ReadBool(); err != nil {

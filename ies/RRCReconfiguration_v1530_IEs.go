@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -16,7 +16,7 @@ type RRCReconfiguration_v1530_IEs struct {
 	NonCriticalExtension               *RRCReconfiguration_v1540_IEs            `optional`
 }
 
-func (ie *RRCReconfiguration_v1530_IEs) Encode(w *uper.UperWriter) error {
+func (ie *RRCReconfiguration_v1530_IEs) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.MasterCellGroup != nil, ie.FullConfig != nil, len(ie.DedicatedNAS_MessageList) > 0, ie.MasterKeyUpdate != nil, ie.DedicatedSIB1_Delivery != nil, ie.DedicatedSystemInformationDelivery != nil, ie.OtherConfig != nil, ie.NonCriticalExtension != nil}
 	for _, bit := range preambleBits {
@@ -25,7 +25,7 @@ func (ie *RRCReconfiguration_v1530_IEs) Encode(w *uper.UperWriter) error {
 		}
 	}
 	if ie.MasterCellGroup != nil {
-		if err = w.WriteOctetString(*ie.MasterCellGroup, &uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+		if err = w.WriteOctetString(*ie.MasterCellGroup, &aper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
 			return utils.WrapError("Encode MasterCellGroup", err)
 		}
 	}
@@ -35,7 +35,7 @@ func (ie *RRCReconfiguration_v1530_IEs) Encode(w *uper.UperWriter) error {
 		}
 	}
 	if len(ie.DedicatedNAS_MessageList) > 0 {
-		tmp_DedicatedNAS_MessageList := utils.NewSequence[*DedicatedNAS_Message]([]*DedicatedNAS_Message{}, uper.Constraint{Lb: 1, Ub: maxDRB}, false)
+		tmp_DedicatedNAS_MessageList := utils.NewSequence[*DedicatedNAS_Message]([]*DedicatedNAS_Message{}, aper.Constraint{Lb: 1, Ub: maxDRB}, false)
 		for _, i := range ie.DedicatedNAS_MessageList {
 			tmp_DedicatedNAS_MessageList.Value = append(tmp_DedicatedNAS_MessageList.Value, &i)
 		}
@@ -49,12 +49,12 @@ func (ie *RRCReconfiguration_v1530_IEs) Encode(w *uper.UperWriter) error {
 		}
 	}
 	if ie.DedicatedSIB1_Delivery != nil {
-		if err = w.WriteOctetString(*ie.DedicatedSIB1_Delivery, &uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+		if err = w.WriteOctetString(*ie.DedicatedSIB1_Delivery, &aper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
 			return utils.WrapError("Encode DedicatedSIB1_Delivery", err)
 		}
 	}
 	if ie.DedicatedSystemInformationDelivery != nil {
-		if err = w.WriteOctetString(*ie.DedicatedSystemInformationDelivery, &uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+		if err = w.WriteOctetString(*ie.DedicatedSystemInformationDelivery, &aper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
 			return utils.WrapError("Encode DedicatedSystemInformationDelivery", err)
 		}
 	}
@@ -71,7 +71,7 @@ func (ie *RRCReconfiguration_v1530_IEs) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *RRCReconfiguration_v1530_IEs) Decode(r *uper.UperReader) error {
+func (ie *RRCReconfiguration_v1530_IEs) Decode(r *aper.AperReader) error {
 	var err error
 	var MasterCellGroupPresent bool
 	if MasterCellGroupPresent, err = r.ReadBool(); err != nil {
@@ -107,7 +107,7 @@ func (ie *RRCReconfiguration_v1530_IEs) Decode(r *uper.UperReader) error {
 	}
 	if MasterCellGroupPresent {
 		var tmp_os_MasterCellGroup []byte
-		if tmp_os_MasterCellGroup, err = r.ReadOctetString(&uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+		if tmp_os_MasterCellGroup, err = r.ReadOctetString(&aper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
 			return utils.WrapError("Decode MasterCellGroup", err)
 		}
 		ie.MasterCellGroup = &tmp_os_MasterCellGroup
@@ -119,7 +119,7 @@ func (ie *RRCReconfiguration_v1530_IEs) Decode(r *uper.UperReader) error {
 		}
 	}
 	if DedicatedNAS_MessageListPresent {
-		tmp_DedicatedNAS_MessageList := utils.NewSequence[*DedicatedNAS_Message]([]*DedicatedNAS_Message{}, uper.Constraint{Lb: 1, Ub: maxDRB}, false)
+		tmp_DedicatedNAS_MessageList := utils.NewSequence[*DedicatedNAS_Message]([]*DedicatedNAS_Message{}, aper.Constraint{Lb: 1, Ub: maxDRB}, false)
 		fn_DedicatedNAS_MessageList := func() *DedicatedNAS_Message {
 			return new(DedicatedNAS_Message)
 		}
@@ -139,14 +139,14 @@ func (ie *RRCReconfiguration_v1530_IEs) Decode(r *uper.UperReader) error {
 	}
 	if DedicatedSIB1_DeliveryPresent {
 		var tmp_os_DedicatedSIB1_Delivery []byte
-		if tmp_os_DedicatedSIB1_Delivery, err = r.ReadOctetString(&uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+		if tmp_os_DedicatedSIB1_Delivery, err = r.ReadOctetString(&aper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
 			return utils.WrapError("Decode DedicatedSIB1_Delivery", err)
 		}
 		ie.DedicatedSIB1_Delivery = &tmp_os_DedicatedSIB1_Delivery
 	}
 	if DedicatedSystemInformationDeliveryPresent {
 		var tmp_os_DedicatedSystemInformationDelivery []byte
-		if tmp_os_DedicatedSystemInformationDelivery, err = r.ReadOctetString(&uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+		if tmp_os_DedicatedSystemInformationDelivery, err = r.ReadOctetString(&aper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
 			return utils.WrapError("Decode DedicatedSystemInformationDelivery", err)
 		}
 		ie.DedicatedSystemInformationDelivery = &tmp_os_DedicatedSystemInformationDelivery

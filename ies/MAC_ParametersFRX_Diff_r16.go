@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -13,7 +13,7 @@ type MAC_ParametersFRX_Diff_r16 struct {
 	Drx_Adaptation_r16                  *MAC_ParametersFRX_Diff_r16_drx_Adaptation_r16                  `optional`
 }
 
-func (ie *MAC_ParametersFRX_Diff_r16) Encode(w *uper.UperWriter) error {
+func (ie *MAC_ParametersFRX_Diff_r16) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.DirectMCG_SCellActivation_r16 != nil, ie.DirectMCG_SCellActivationResume_r16 != nil, ie.DirectSCG_SCellActivation_r16 != nil, ie.DirectSCG_SCellActivationResume_r16 != nil, ie.Drx_Adaptation_r16 != nil}
 	for _, bit := range preambleBits {
@@ -49,7 +49,7 @@ func (ie *MAC_ParametersFRX_Diff_r16) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *MAC_ParametersFRX_Diff_r16) Decode(r *uper.UperReader) error {
+func (ie *MAC_ParametersFRX_Diff_r16) Decode(r *aper.AperReader) error {
 	var err error
 	var DirectMCG_SCellActivation_r16Present bool
 	if DirectMCG_SCellActivation_r16Present, err = r.ReadBool(); err != nil {

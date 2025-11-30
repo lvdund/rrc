@@ -3,7 +3,7 @@ package ies
 import (
 	"bytes"
 
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -13,7 +13,7 @@ type SIB9 struct {
 	ReferenceTimeInfo_r16    *ReferenceTimeInfo_r16 `optional,ext-1`
 }
 
-func (ie *SIB9) Encode(w *uper.UperWriter) error {
+func (ie *SIB9) Encode(w *aper.AperWriter) error {
 	var err error
 	hasExtensions := ie.ReferenceTimeInfo_r16 != nil
 	preambleBits := []bool{hasExtensions, ie.TimeInfo != nil, ie.LateNonCriticalExtension != nil}
@@ -28,7 +28,7 @@ func (ie *SIB9) Encode(w *uper.UperWriter) error {
 		}
 	}
 	if ie.LateNonCriticalExtension != nil {
-		if err = w.WriteOctetString(*ie.LateNonCriticalExtension, &uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+		if err = w.WriteOctetString(*ie.LateNonCriticalExtension, &aper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
 			return utils.WrapError("Encode LateNonCriticalExtension", err)
 		}
 	}
@@ -42,7 +42,7 @@ func (ie *SIB9) Encode(w *uper.UperWriter) error {
 		// encode extension group 1
 		if extBitmap[0] {
 			extBuf := new(bytes.Buffer)
-			extWriter := uper.NewWriter(extBuf)
+			extWriter := aper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 1
 			optionals_ext_1 := []bool{ie.ReferenceTimeInfo_r16 != nil}
@@ -71,7 +71,7 @@ func (ie *SIB9) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *SIB9) Decode(r *uper.UperReader) error {
+func (ie *SIB9) Decode(r *aper.AperReader) error {
 	var err error
 	var extensionBit bool
 	if extensionBit, err = r.ReadBool(); err != nil {
@@ -93,7 +93,7 @@ func (ie *SIB9) Decode(r *uper.UperReader) error {
 	}
 	if LateNonCriticalExtensionPresent {
 		var tmp_os_LateNonCriticalExtension []byte
-		if tmp_os_LateNonCriticalExtension, err = r.ReadOctetString(&uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+		if tmp_os_LateNonCriticalExtension, err = r.ReadOctetString(&aper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
 			return utils.WrapError("Decode LateNonCriticalExtension", err)
 		}
 		ie.LateNonCriticalExtension = &tmp_os_LateNonCriticalExtension
@@ -113,7 +113,7 @@ func (ie *SIB9) Decode(r *uper.UperReader) error {
 				return err
 			}
 
-			extReader := uper.NewReader(bytes.NewReader(extBytes))
+			extReader := aper.NewReader(bytes.NewReader(extBytes))
 
 			ReferenceTimeInfo_r16Present, err := extReader.ReadBool()
 			if err != nil {

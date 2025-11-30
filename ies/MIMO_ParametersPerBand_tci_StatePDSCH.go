@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -10,7 +10,7 @@ type MIMO_ParametersPerBand_tci_StatePDSCH struct {
 	MaxNumberActiveTCI_PerBWP          *MIMO_ParametersPerBand_tci_StatePDSCH_maxNumberActiveTCI_PerBWP          `optional`
 }
 
-func (ie *MIMO_ParametersPerBand_tci_StatePDSCH) Encode(w *uper.UperWriter) error {
+func (ie *MIMO_ParametersPerBand_tci_StatePDSCH) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.MaxNumberConfiguredTCI_StatesPerCC != nil, ie.MaxNumberActiveTCI_PerBWP != nil}
 	for _, bit := range preambleBits {
@@ -31,7 +31,7 @@ func (ie *MIMO_ParametersPerBand_tci_StatePDSCH) Encode(w *uper.UperWriter) erro
 	return nil
 }
 
-func (ie *MIMO_ParametersPerBand_tci_StatePDSCH) Decode(r *uper.UperReader) error {
+func (ie *MIMO_ParametersPerBand_tci_StatePDSCH) Decode(r *aper.AperReader) error {
 	var err error
 	var MaxNumberConfiguredTCI_StatesPerCCPresent bool
 	if MaxNumberConfiguredTCI_StatesPerCCPresent, err = r.ReadBool(); err != nil {

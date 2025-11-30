@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -15,7 +15,7 @@ type MIMO_ParametersPerBand_multiDCI_multiTRP_Parameters_r16 struct {
 	MaxNumberActivatedTCI_States_r16     *MIMO_ParametersPerBand_multiDCI_multiTRP_Parameters_r16_maxNumberActivatedTCI_States_r16     `optional`
 }
 
-func (ie *MIMO_ParametersPerBand_multiDCI_multiTRP_Parameters_r16) Encode(w *uper.UperWriter) error {
+func (ie *MIMO_ParametersPerBand_multiDCI_multiTRP_Parameters_r16) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.OverlapPDSCHsFullyFreqTime_r16 != nil, ie.OverlapPDSCHsInTimePartiallyFreq_r16 != nil, ie.OutOfOrderOperationDL_r16 != nil, ie.OutOfOrderOperationUL_r16 != nil, ie.SeparateCRS_RateMatching_r16 != nil, ie.DefaultQCL_PerCORESETPoolIndex_r16 != nil, ie.MaxNumberActivatedTCI_States_r16 != nil}
 	for _, bit := range preambleBits {
@@ -24,7 +24,7 @@ func (ie *MIMO_ParametersPerBand_multiDCI_multiTRP_Parameters_r16) Encode(w *upe
 		}
 	}
 	if ie.OverlapPDSCHsFullyFreqTime_r16 != nil {
-		if err = w.WriteInteger(*ie.OverlapPDSCHsFullyFreqTime_r16, &uper.Constraint{Lb: 1, Ub: 2}, false); err != nil {
+		if err = w.WriteInteger(*ie.OverlapPDSCHsFullyFreqTime_r16, &aper.Constraint{Lb: 1, Ub: 2}, false); err != nil {
 			return utils.WrapError("Encode OverlapPDSCHsFullyFreqTime_r16", err)
 		}
 	}
@@ -61,7 +61,7 @@ func (ie *MIMO_ParametersPerBand_multiDCI_multiTRP_Parameters_r16) Encode(w *upe
 	return nil
 }
 
-func (ie *MIMO_ParametersPerBand_multiDCI_multiTRP_Parameters_r16) Decode(r *uper.UperReader) error {
+func (ie *MIMO_ParametersPerBand_multiDCI_multiTRP_Parameters_r16) Decode(r *aper.AperReader) error {
 	var err error
 	var OverlapPDSCHsFullyFreqTime_r16Present bool
 	if OverlapPDSCHsFullyFreqTime_r16Present, err = r.ReadBool(); err != nil {
@@ -93,7 +93,7 @@ func (ie *MIMO_ParametersPerBand_multiDCI_multiTRP_Parameters_r16) Decode(r *upe
 	}
 	if OverlapPDSCHsFullyFreqTime_r16Present {
 		var tmp_int_OverlapPDSCHsFullyFreqTime_r16 int64
-		if tmp_int_OverlapPDSCHsFullyFreqTime_r16, err = r.ReadInteger(&uper.Constraint{Lb: 1, Ub: 2}, false); err != nil {
+		if tmp_int_OverlapPDSCHsFullyFreqTime_r16, err = r.ReadInteger(&aper.Constraint{Lb: 1, Ub: 2}, false); err != nil {
 			return utils.WrapError("Decode OverlapPDSCHsFullyFreqTime_r16", err)
 		}
 		ie.OverlapPDSCHsFullyFreqTime_r16 = &tmp_int_OverlapPDSCHsFullyFreqTime_r16

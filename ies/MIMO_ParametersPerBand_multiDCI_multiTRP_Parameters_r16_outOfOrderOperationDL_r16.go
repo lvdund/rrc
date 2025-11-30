@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -10,7 +10,7 @@ type MIMO_ParametersPerBand_multiDCI_multiTRP_Parameters_r16_outOfOrderOperation
 	SupportPDSCH_ToHARQ_ACK_r16 *MIMO_ParametersPerBand_multiDCI_multiTRP_Parameters_r16_outOfOrderOperationDL_r16_supportPDSCH_ToHARQ_ACK_r16 `optional`
 }
 
-func (ie *MIMO_ParametersPerBand_multiDCI_multiTRP_Parameters_r16_outOfOrderOperationDL_r16) Encode(w *uper.UperWriter) error {
+func (ie *MIMO_ParametersPerBand_multiDCI_multiTRP_Parameters_r16_outOfOrderOperationDL_r16) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.SupportPDCCH_ToPDSCH_r16 != nil, ie.SupportPDSCH_ToHARQ_ACK_r16 != nil}
 	for _, bit := range preambleBits {
@@ -31,7 +31,7 @@ func (ie *MIMO_ParametersPerBand_multiDCI_multiTRP_Parameters_r16_outOfOrderOper
 	return nil
 }
 
-func (ie *MIMO_ParametersPerBand_multiDCI_multiTRP_Parameters_r16_outOfOrderOperationDL_r16) Decode(r *uper.UperReader) error {
+func (ie *MIMO_ParametersPerBand_multiDCI_multiTRP_Parameters_r16_outOfOrderOperationDL_r16) Decode(r *aper.AperReader) error {
 	var err error
 	var SupportPDCCH_ToPDSCH_r16Present bool
 	if SupportPDCCH_ToPDSCH_r16Present, err = r.ReadBool(); err != nil {

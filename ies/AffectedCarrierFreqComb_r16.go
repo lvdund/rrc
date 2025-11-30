@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -10,7 +10,7 @@ type AffectedCarrierFreqComb_r16 struct {
 	VictimSystemType_r16        VictimSystemType_r16 `madatory`
 }
 
-func (ie *AffectedCarrierFreqComb_r16) Encode(w *uper.UperWriter) error {
+func (ie *AffectedCarrierFreqComb_r16) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{len(ie.AffectedCarrierFreqComb_r16) > 0}
 	for _, bit := range preambleBits {
@@ -19,7 +19,7 @@ func (ie *AffectedCarrierFreqComb_r16) Encode(w *uper.UperWriter) error {
 		}
 	}
 	if len(ie.AffectedCarrierFreqComb_r16) > 0 {
-		tmp_AffectedCarrierFreqComb_r16 := utils.NewSequence[*ARFCN_ValueNR]([]*ARFCN_ValueNR{}, uper.Constraint{Lb: 2, Ub: maxNrofServingCells}, false)
+		tmp_AffectedCarrierFreqComb_r16 := utils.NewSequence[*ARFCN_ValueNR]([]*ARFCN_ValueNR{}, aper.Constraint{Lb: 2, Ub: maxNrofServingCells}, false)
 		for _, i := range ie.AffectedCarrierFreqComb_r16 {
 			tmp_AffectedCarrierFreqComb_r16.Value = append(tmp_AffectedCarrierFreqComb_r16.Value, &i)
 		}
@@ -33,14 +33,14 @@ func (ie *AffectedCarrierFreqComb_r16) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *AffectedCarrierFreqComb_r16) Decode(r *uper.UperReader) error {
+func (ie *AffectedCarrierFreqComb_r16) Decode(r *aper.AperReader) error {
 	var err error
 	var AffectedCarrierFreqComb_r16Present bool
 	if AffectedCarrierFreqComb_r16Present, err = r.ReadBool(); err != nil {
 		return err
 	}
 	if AffectedCarrierFreqComb_r16Present {
-		tmp_AffectedCarrierFreqComb_r16 := utils.NewSequence[*ARFCN_ValueNR]([]*ARFCN_ValueNR{}, uper.Constraint{Lb: 2, Ub: maxNrofServingCells}, false)
+		tmp_AffectedCarrierFreqComb_r16 := utils.NewSequence[*ARFCN_ValueNR]([]*ARFCN_ValueNR{}, aper.Constraint{Lb: 2, Ub: maxNrofServingCells}, false)
 		fn_AffectedCarrierFreqComb_r16 := func() *ARFCN_ValueNR {
 			return new(ARFCN_ValueNR)
 		}

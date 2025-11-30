@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -11,7 +11,7 @@ type MUSIM_GapInfo_r17 struct {
 	Musim_GapRepetitionAndOffset_r17   *MUSIM_GapInfo_r17_musim_GapRepetitionAndOffset_r17 `lb:0,ub:19,optional`
 }
 
-func (ie *MUSIM_GapInfo_r17) Encode(w *uper.UperWriter) error {
+func (ie *MUSIM_GapInfo_r17) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.Musim_Starting_SFN_AndSubframe_r17 != nil, ie.Musim_GapLength_r17 != nil, ie.Musim_GapRepetitionAndOffset_r17 != nil}
 	for _, bit := range preambleBits {
@@ -37,7 +37,7 @@ func (ie *MUSIM_GapInfo_r17) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *MUSIM_GapInfo_r17) Decode(r *uper.UperReader) error {
+func (ie *MUSIM_GapInfo_r17) Decode(r *aper.AperReader) error {
 	var err error
 	var Musim_Starting_SFN_AndSubframe_r17Present bool
 	if Musim_Starting_SFN_AndSubframe_r17Present, err = r.ReadBool(); err != nil {

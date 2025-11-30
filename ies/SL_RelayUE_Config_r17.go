@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -12,7 +12,7 @@ type SL_RelayUE_Config_r17 struct {
 	HystMinRelay_r17    *Hysteresis `optional`
 }
 
-func (ie *SL_RelayUE_Config_r17) Encode(w *uper.UperWriter) error {
+func (ie *SL_RelayUE_Config_r17) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.ThreshHighRelay_r17 != nil, ie.ThreshLowRelay_r17 != nil, ie.HystMaxRelay_r17 != nil, ie.HystMinRelay_r17 != nil}
 	for _, bit := range preambleBits {
@@ -43,7 +43,7 @@ func (ie *SL_RelayUE_Config_r17) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *SL_RelayUE_Config_r17) Decode(r *uper.UperReader) error {
+func (ie *SL_RelayUE_Config_r17) Decode(r *aper.AperReader) error {
 	var err error
 	var ThreshHighRelay_r17Present bool
 	if ThreshHighRelay_r17Present, err = r.ReadBool(); err != nil {

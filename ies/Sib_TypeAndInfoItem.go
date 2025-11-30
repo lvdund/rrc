@@ -3,7 +3,7 @@ package ies
 import (
 	"fmt"
 
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -55,7 +55,7 @@ type Sib_TypeAndInfoItem struct {
 	Sib21_v1700 *SIB21_r17
 }
 
-func (ie *Sib_TypeAndInfoItem) Encode(w *uper.UperWriter) error {
+func (ie *Sib_TypeAndInfoItem) Encode(w *aper.AperWriter) error {
 	var err error
 	if err = w.WriteChoice(ie.Choice, 20, false); err != nil {
 		return err
@@ -147,7 +147,7 @@ func (ie *Sib_TypeAndInfoItem) Encode(w *uper.UperWriter) error {
 	return err
 }
 
-func (ie *Sib_TypeAndInfoItem) Decode(r *uper.UperReader) error {
+func (ie *Sib_TypeAndInfoItem) Decode(r *aper.AperReader) error {
 	var err error
 	if ie.Choice, err = r.ReadChoice(20, false); err != nil {
 		return err

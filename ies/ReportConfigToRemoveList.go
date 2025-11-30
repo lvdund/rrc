@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -9,9 +9,9 @@ type ReportConfigToRemoveList struct {
 	Value []ReportConfigId `lb:1,ub:maxReportConfigId,madatory`
 }
 
-func (ie *ReportConfigToRemoveList) Encode(w *uper.UperWriter) error {
+func (ie *ReportConfigToRemoveList) Encode(w *aper.AperWriter) error {
 	var err error
-	tmp := utils.NewSequence[*ReportConfigId]([]*ReportConfigId{}, uper.Constraint{Lb: 1, Ub: maxReportConfigId}, false)
+	tmp := utils.NewSequence[*ReportConfigId]([]*ReportConfigId{}, aper.Constraint{Lb: 1, Ub: maxReportConfigId}, false)
 	for _, i := range ie.Value {
 		tmp.Value = append(tmp.Value, &i)
 	}
@@ -21,9 +21,9 @@ func (ie *ReportConfigToRemoveList) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *ReportConfigToRemoveList) Decode(r *uper.UperReader) error {
+func (ie *ReportConfigToRemoveList) Decode(r *aper.AperReader) error {
 	var err error
-	tmp := utils.NewSequence[*ReportConfigId]([]*ReportConfigId{}, uper.Constraint{Lb: 1, Ub: maxReportConfigId}, false)
+	tmp := utils.NewSequence[*ReportConfigId]([]*ReportConfigId{}, aper.Constraint{Lb: 1, Ub: maxReportConfigId}, false)
 	fn := func() *ReportConfigId {
 		return new(ReportConfigId)
 	}

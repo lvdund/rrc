@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -13,7 +13,7 @@ type FeatureSetUplink_v1540 struct {
 	Ul_MCS_TableAlt_DynamicIndication *FeatureSetUplink_v1540_ul_MCS_TableAlt_DynamicIndication `optional`
 }
 
-func (ie *FeatureSetUplink_v1540) Encode(w *uper.UperWriter) error {
+func (ie *FeatureSetUplink_v1540) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.ZeroSlotOffsetAperiodicSRS != nil, ie.Pa_PhaseDiscontinuityImpacts != nil, ie.Pusch_SeparationWithGap != nil, ie.Pusch_ProcessingType2 != nil, ie.Ul_MCS_TableAlt_DynamicIndication != nil}
 	for _, bit := range preambleBits {
@@ -49,7 +49,7 @@ func (ie *FeatureSetUplink_v1540) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *FeatureSetUplink_v1540) Decode(r *uper.UperReader) error {
+func (ie *FeatureSetUplink_v1540) Decode(r *aper.AperReader) error {
 	var err error
 	var ZeroSlotOffsetAperiodicSRSPresent bool
 	if ZeroSlotOffsetAperiodicSRSPresent, err = r.ReadBool(); err != nil {

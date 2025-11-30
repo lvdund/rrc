@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -12,7 +12,7 @@ type SchedulingRequestResourceConfig struct {
 	Resource                    *PUCCH_ResourceId                                     `optional`
 }
 
-func (ie *SchedulingRequestResourceConfig) Encode(w *uper.UperWriter) error {
+func (ie *SchedulingRequestResourceConfig) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.PeriodicityAndOffset != nil, ie.Resource != nil}
 	for _, bit := range preambleBits {
@@ -39,7 +39,7 @@ func (ie *SchedulingRequestResourceConfig) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *SchedulingRequestResourceConfig) Decode(r *uper.UperReader) error {
+func (ie *SchedulingRequestResourceConfig) Decode(r *aper.AperReader) error {
 	var err error
 	var PeriodicityAndOffsetPresent bool
 	if PeriodicityAndOffsetPresent, err = r.ReadBool(); err != nil {

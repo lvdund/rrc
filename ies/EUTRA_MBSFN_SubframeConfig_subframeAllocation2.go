@@ -3,7 +3,7 @@ package ies
 import (
 	"fmt"
 
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -15,22 +15,22 @@ const (
 
 type EUTRA_MBSFN_SubframeConfig_subframeAllocation2 struct {
 	Choice     uint64
-	OneFrame   uper.BitString `lb:2,ub:2,madatory`
-	FourFrames uper.BitString `lb:8,ub:8,madatory`
+	OneFrame   aper.BitString `lb:2,ub:2,madatory`
+	FourFrames aper.BitString `lb:8,ub:8,madatory`
 }
 
-func (ie *EUTRA_MBSFN_SubframeConfig_subframeAllocation2) Encode(w *uper.UperWriter) error {
+func (ie *EUTRA_MBSFN_SubframeConfig_subframeAllocation2) Encode(w *aper.AperWriter) error {
 	var err error
 	if err = w.WriteChoice(ie.Choice, 2, false); err != nil {
 		return err
 	}
 	switch ie.Choice {
 	case EUTRA_MBSFN_SubframeConfig_subframeAllocation2_Choice_OneFrame:
-		if err = w.WriteBitString(ie.OneFrame.Bytes, uint(ie.OneFrame.NumBits), &uper.Constraint{Lb: 2, Ub: 2}, false); err != nil {
+		if err = w.WriteBitString(ie.OneFrame.Bytes, uint(ie.OneFrame.NumBits), &aper.Constraint{Lb: 2, Ub: 2}, false); err != nil {
 			err = utils.WrapError("Encode OneFrame", err)
 		}
 	case EUTRA_MBSFN_SubframeConfig_subframeAllocation2_Choice_FourFrames:
-		if err = w.WriteBitString(ie.FourFrames.Bytes, uint(ie.FourFrames.NumBits), &uper.Constraint{Lb: 8, Ub: 8}, false); err != nil {
+		if err = w.WriteBitString(ie.FourFrames.Bytes, uint(ie.FourFrames.NumBits), &aper.Constraint{Lb: 8, Ub: 8}, false); err != nil {
 			err = utils.WrapError("Encode FourFrames", err)
 		}
 	default:
@@ -39,7 +39,7 @@ func (ie *EUTRA_MBSFN_SubframeConfig_subframeAllocation2) Encode(w *uper.UperWri
 	return err
 }
 
-func (ie *EUTRA_MBSFN_SubframeConfig_subframeAllocation2) Decode(r *uper.UperReader) error {
+func (ie *EUTRA_MBSFN_SubframeConfig_subframeAllocation2) Decode(r *aper.AperReader) error {
 	var err error
 	if ie.Choice, err = r.ReadChoice(2, false); err != nil {
 		return err
@@ -48,20 +48,20 @@ func (ie *EUTRA_MBSFN_SubframeConfig_subframeAllocation2) Decode(r *uper.UperRea
 	case EUTRA_MBSFN_SubframeConfig_subframeAllocation2_Choice_OneFrame:
 		var tmp_bs_OneFrame []byte
 		var n_OneFrame uint
-		if tmp_bs_OneFrame, n_OneFrame, err = r.ReadBitString(&uper.Constraint{Lb: 2, Ub: 2}, false); err != nil {
+		if tmp_bs_OneFrame, n_OneFrame, err = r.ReadBitString(&aper.Constraint{Lb: 2, Ub: 2}, false); err != nil {
 			return utils.WrapError("Decode OneFrame", err)
 		}
-		ie.OneFrame = uper.BitString{
+		ie.OneFrame = aper.BitString{
 			Bytes:   tmp_bs_OneFrame,
 			NumBits: uint64(n_OneFrame),
 		}
 	case EUTRA_MBSFN_SubframeConfig_subframeAllocation2_Choice_FourFrames:
 		var tmp_bs_FourFrames []byte
 		var n_FourFrames uint
-		if tmp_bs_FourFrames, n_FourFrames, err = r.ReadBitString(&uper.Constraint{Lb: 8, Ub: 8}, false); err != nil {
+		if tmp_bs_FourFrames, n_FourFrames, err = r.ReadBitString(&aper.Constraint{Lb: 8, Ub: 8}, false); err != nil {
 			return utils.WrapError("Decode FourFrames", err)
 		}
-		ie.FourFrames = uper.BitString{
+		ie.FourFrames = aper.BitString{
 			Bytes:   tmp_bs_FourFrames,
 			NumBits: uint64(n_FourFrames),
 		}

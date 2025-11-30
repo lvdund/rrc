@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -10,7 +10,7 @@ type FreqPrioritySlicing_r17 struct {
 	SliceInfoList_r17          *SliceInfoList_r17 `optional`
 }
 
-func (ie *FreqPrioritySlicing_r17) Encode(w *uper.UperWriter) error {
+func (ie *FreqPrioritySlicing_r17) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.SliceInfoList_r17 != nil}
 	for _, bit := range preambleBits {
@@ -18,7 +18,7 @@ func (ie *FreqPrioritySlicing_r17) Encode(w *uper.UperWriter) error {
 			return err
 		}
 	}
-	if err = w.WriteInteger(ie.Dl_ImplicitCarrierFreq_r17, &uper.Constraint{Lb: 0, Ub: maxFreq}, false); err != nil {
+	if err = w.WriteInteger(ie.Dl_ImplicitCarrierFreq_r17, &aper.Constraint{Lb: 0, Ub: maxFreq}, false); err != nil {
 		return utils.WrapError("WriteInteger Dl_ImplicitCarrierFreq_r17", err)
 	}
 	if ie.SliceInfoList_r17 != nil {
@@ -29,14 +29,14 @@ func (ie *FreqPrioritySlicing_r17) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *FreqPrioritySlicing_r17) Decode(r *uper.UperReader) error {
+func (ie *FreqPrioritySlicing_r17) Decode(r *aper.AperReader) error {
 	var err error
 	var SliceInfoList_r17Present bool
 	if SliceInfoList_r17Present, err = r.ReadBool(); err != nil {
 		return err
 	}
 	var tmp_int_Dl_ImplicitCarrierFreq_r17 int64
-	if tmp_int_Dl_ImplicitCarrierFreq_r17, err = r.ReadInteger(&uper.Constraint{Lb: 0, Ub: maxFreq}, false); err != nil {
+	if tmp_int_Dl_ImplicitCarrierFreq_r17, err = r.ReadInteger(&aper.Constraint{Lb: 0, Ub: maxFreq}, false); err != nil {
 		return utils.WrapError("ReadInteger Dl_ImplicitCarrierFreq_r17", err)
 	}
 	ie.Dl_ImplicitCarrierFreq_r17 = tmp_int_Dl_ImplicitCarrierFreq_r17

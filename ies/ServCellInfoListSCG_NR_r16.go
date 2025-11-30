@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -9,9 +9,9 @@ type ServCellInfoListSCG_NR_r16 struct {
 	Value []ServCellInfoXCG_NR_r16 `lb:1,ub:maxNrofServingCells,madatory`
 }
 
-func (ie *ServCellInfoListSCG_NR_r16) Encode(w *uper.UperWriter) error {
+func (ie *ServCellInfoListSCG_NR_r16) Encode(w *aper.AperWriter) error {
 	var err error
-	tmp := utils.NewSequence[*ServCellInfoXCG_NR_r16]([]*ServCellInfoXCG_NR_r16{}, uper.Constraint{Lb: 1, Ub: maxNrofServingCells}, false)
+	tmp := utils.NewSequence[*ServCellInfoXCG_NR_r16]([]*ServCellInfoXCG_NR_r16{}, aper.Constraint{Lb: 1, Ub: maxNrofServingCells}, false)
 	for _, i := range ie.Value {
 		tmp.Value = append(tmp.Value, &i)
 	}
@@ -21,9 +21,9 @@ func (ie *ServCellInfoListSCG_NR_r16) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *ServCellInfoListSCG_NR_r16) Decode(r *uper.UperReader) error {
+func (ie *ServCellInfoListSCG_NR_r16) Decode(r *aper.AperReader) error {
 	var err error
-	tmp := utils.NewSequence[*ServCellInfoXCG_NR_r16]([]*ServCellInfoXCG_NR_r16{}, uper.Constraint{Lb: 1, Ub: maxNrofServingCells}, false)
+	tmp := utils.NewSequence[*ServCellInfoXCG_NR_r16]([]*ServCellInfoXCG_NR_r16{}, aper.Constraint{Lb: 1, Ub: maxNrofServingCells}, false)
 	fn := func() *ServCellInfoXCG_NR_r16 {
 		return new(ServCellInfoXCG_NR_r16)
 	}

@@ -3,7 +3,7 @@ package ies
 import (
 	"bytes"
 
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -15,7 +15,7 @@ type UE_CapabilityRequestFilterCommon struct {
 	FallbackGroupFiveRequest_r17 *UE_CapabilityRequestFilterCommon_fallbackGroupFiveRequest_r17 `optional,ext-3`
 }
 
-func (ie *UE_CapabilityRequestFilterCommon) Encode(w *uper.UperWriter) error {
+func (ie *UE_CapabilityRequestFilterCommon) Encode(w *aper.AperWriter) error {
 	var err error
 	hasExtensions := ie.CodebookTypeRequest_r16 != nil || ie.UplinkTxSwitchRequest_r16 != nil || len(ie.RequestedCellGrouping_r16) > 0 || ie.FallbackGroupFiveRequest_r17 != nil
 	preambleBits := []bool{hasExtensions, ie.Mrdc_Request != nil}
@@ -39,7 +39,7 @@ func (ie *UE_CapabilityRequestFilterCommon) Encode(w *uper.UperWriter) error {
 		// encode extension group 1
 		if extBitmap[0] {
 			extBuf := new(bytes.Buffer)
-			extWriter := uper.NewWriter(extBuf)
+			extWriter := aper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 1
 			optionals_ext_1 := []bool{ie.CodebookTypeRequest_r16 != nil, ie.UplinkTxSwitchRequest_r16 != nil}
@@ -74,7 +74,7 @@ func (ie *UE_CapabilityRequestFilterCommon) Encode(w *uper.UperWriter) error {
 		// encode extension group 2
 		if extBitmap[1] {
 			extBuf := new(bytes.Buffer)
-			extWriter := uper.NewWriter(extBuf)
+			extWriter := aper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 2
 			optionals_ext_2 := []bool{len(ie.RequestedCellGrouping_r16) > 0}
@@ -86,7 +86,7 @@ func (ie *UE_CapabilityRequestFilterCommon) Encode(w *uper.UperWriter) error {
 
 			// encode RequestedCellGrouping_r16 optional
 			if len(ie.RequestedCellGrouping_r16) > 0 {
-				tmp_RequestedCellGrouping_r16 := utils.NewSequence[*CellGrouping_r16]([]*CellGrouping_r16{}, uper.Constraint{Lb: 1, Ub: maxCellGroupings_r16}, false)
+				tmp_RequestedCellGrouping_r16 := utils.NewSequence[*CellGrouping_r16]([]*CellGrouping_r16{}, aper.Constraint{Lb: 1, Ub: maxCellGroupings_r16}, false)
 				for _, i := range ie.RequestedCellGrouping_r16 {
 					tmp_RequestedCellGrouping_r16.Value = append(tmp_RequestedCellGrouping_r16.Value, &i)
 				}
@@ -107,7 +107,7 @@ func (ie *UE_CapabilityRequestFilterCommon) Encode(w *uper.UperWriter) error {
 		// encode extension group 3
 		if extBitmap[2] {
 			extBuf := new(bytes.Buffer)
-			extWriter := uper.NewWriter(extBuf)
+			extWriter := aper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 3
 			optionals_ext_3 := []bool{ie.FallbackGroupFiveRequest_r17 != nil}
@@ -136,7 +136,7 @@ func (ie *UE_CapabilityRequestFilterCommon) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *UE_CapabilityRequestFilterCommon) Decode(r *uper.UperReader) error {
+func (ie *UE_CapabilityRequestFilterCommon) Decode(r *aper.AperReader) error {
 	var err error
 	var extensionBit bool
 	if extensionBit, err = r.ReadBool(); err != nil {
@@ -167,7 +167,7 @@ func (ie *UE_CapabilityRequestFilterCommon) Decode(r *uper.UperReader) error {
 				return err
 			}
 
-			extReader := uper.NewReader(bytes.NewReader(extBytes))
+			extReader := aper.NewReader(bytes.NewReader(extBytes))
 
 			CodebookTypeRequest_r16Present, err := extReader.ReadBool()
 			if err != nil {
@@ -199,7 +199,7 @@ func (ie *UE_CapabilityRequestFilterCommon) Decode(r *uper.UperReader) error {
 				return err
 			}
 
-			extReader := uper.NewReader(bytes.NewReader(extBytes))
+			extReader := aper.NewReader(bytes.NewReader(extBytes))
 
 			RequestedCellGrouping_r16Present, err := extReader.ReadBool()
 			if err != nil {
@@ -207,7 +207,7 @@ func (ie *UE_CapabilityRequestFilterCommon) Decode(r *uper.UperReader) error {
 			}
 			// decode RequestedCellGrouping_r16 optional
 			if RequestedCellGrouping_r16Present {
-				tmp_RequestedCellGrouping_r16 := utils.NewSequence[*CellGrouping_r16]([]*CellGrouping_r16{}, uper.Constraint{Lb: 1, Ub: maxCellGroupings_r16}, false)
+				tmp_RequestedCellGrouping_r16 := utils.NewSequence[*CellGrouping_r16]([]*CellGrouping_r16{}, aper.Constraint{Lb: 1, Ub: maxCellGroupings_r16}, false)
 				fn_RequestedCellGrouping_r16 := func() *CellGrouping_r16 {
 					return new(CellGrouping_r16)
 				}
@@ -227,7 +227,7 @@ func (ie *UE_CapabilityRequestFilterCommon) Decode(r *uper.UperReader) error {
 				return err
 			}
 
-			extReader := uper.NewReader(bytes.NewReader(extBytes))
+			extReader := aper.NewReader(bytes.NewReader(extBytes))
 
 			FallbackGroupFiveRequest_r17Present, err := extReader.ReadBool()
 			if err != nil {

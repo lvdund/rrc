@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -10,7 +10,7 @@ type MeasResultIdleNR_r16 struct {
 	MeasResultsPerCarrierListIdleNR_r16 []MeasResultsPerCarrierIdleNR_r16               `lb:1,ub:maxFreqIdle_r16,optional`
 }
 
-func (ie *MeasResultIdleNR_r16) Encode(w *uper.UperWriter) error {
+func (ie *MeasResultIdleNR_r16) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.MeasResultServingCell_r16 != nil, len(ie.MeasResultsPerCarrierListIdleNR_r16) > 0}
 	for _, bit := range preambleBits {
@@ -24,7 +24,7 @@ func (ie *MeasResultIdleNR_r16) Encode(w *uper.UperWriter) error {
 		}
 	}
 	if len(ie.MeasResultsPerCarrierListIdleNR_r16) > 0 {
-		tmp_MeasResultsPerCarrierListIdleNR_r16 := utils.NewSequence[*MeasResultsPerCarrierIdleNR_r16]([]*MeasResultsPerCarrierIdleNR_r16{}, uper.Constraint{Lb: 1, Ub: maxFreqIdle_r16}, false)
+		tmp_MeasResultsPerCarrierListIdleNR_r16 := utils.NewSequence[*MeasResultsPerCarrierIdleNR_r16]([]*MeasResultsPerCarrierIdleNR_r16{}, aper.Constraint{Lb: 1, Ub: maxFreqIdle_r16}, false)
 		for _, i := range ie.MeasResultsPerCarrierListIdleNR_r16 {
 			tmp_MeasResultsPerCarrierListIdleNR_r16.Value = append(tmp_MeasResultsPerCarrierListIdleNR_r16.Value, &i)
 		}
@@ -35,7 +35,7 @@ func (ie *MeasResultIdleNR_r16) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *MeasResultIdleNR_r16) Decode(r *uper.UperReader) error {
+func (ie *MeasResultIdleNR_r16) Decode(r *aper.AperReader) error {
 	var err error
 	var MeasResultServingCell_r16Present bool
 	if MeasResultServingCell_r16Present, err = r.ReadBool(); err != nil {
@@ -52,7 +52,7 @@ func (ie *MeasResultIdleNR_r16) Decode(r *uper.UperReader) error {
 		}
 	}
 	if MeasResultsPerCarrierListIdleNR_r16Present {
-		tmp_MeasResultsPerCarrierListIdleNR_r16 := utils.NewSequence[*MeasResultsPerCarrierIdleNR_r16]([]*MeasResultsPerCarrierIdleNR_r16{}, uper.Constraint{Lb: 1, Ub: maxFreqIdle_r16}, false)
+		tmp_MeasResultsPerCarrierListIdleNR_r16 := utils.NewSequence[*MeasResultsPerCarrierIdleNR_r16]([]*MeasResultsPerCarrierIdleNR_r16{}, aper.Constraint{Lb: 1, Ub: maxFreqIdle_r16}, false)
 		fn_MeasResultsPerCarrierListIdleNR_r16 := func() *MeasResultsPerCarrierIdleNR_r16 {
 			return new(MeasResultsPerCarrierIdleNR_r16)
 		}

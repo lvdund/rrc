@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -9,9 +9,9 @@ type PDSCH_TimeDomainResourceAllocationList struct {
 	Value []PDSCH_TimeDomainResourceAllocation `lb:1,ub:maxNrofDL_Allocations,madatory`
 }
 
-func (ie *PDSCH_TimeDomainResourceAllocationList) Encode(w *uper.UperWriter) error {
+func (ie *PDSCH_TimeDomainResourceAllocationList) Encode(w *aper.AperWriter) error {
 	var err error
-	tmp := utils.NewSequence[*PDSCH_TimeDomainResourceAllocation]([]*PDSCH_TimeDomainResourceAllocation{}, uper.Constraint{Lb: 1, Ub: maxNrofDL_Allocations}, false)
+	tmp := utils.NewSequence[*PDSCH_TimeDomainResourceAllocation]([]*PDSCH_TimeDomainResourceAllocation{}, aper.Constraint{Lb: 1, Ub: maxNrofDL_Allocations}, false)
 	for _, i := range ie.Value {
 		tmp.Value = append(tmp.Value, &i)
 	}
@@ -21,9 +21,9 @@ func (ie *PDSCH_TimeDomainResourceAllocationList) Encode(w *uper.UperWriter) err
 	return nil
 }
 
-func (ie *PDSCH_TimeDomainResourceAllocationList) Decode(r *uper.UperReader) error {
+func (ie *PDSCH_TimeDomainResourceAllocationList) Decode(r *aper.AperReader) error {
 	var err error
-	tmp := utils.NewSequence[*PDSCH_TimeDomainResourceAllocation]([]*PDSCH_TimeDomainResourceAllocation{}, uper.Constraint{Lb: 1, Ub: maxNrofDL_Allocations}, false)
+	tmp := utils.NewSequence[*PDSCH_TimeDomainResourceAllocation]([]*PDSCH_TimeDomainResourceAllocation{}, aper.Constraint{Lb: 1, Ub: maxNrofDL_Allocations}, false)
 	fn := func() *PDSCH_TimeDomainResourceAllocation {
 		return new(PDSCH_TimeDomainResourceAllocation)
 	}

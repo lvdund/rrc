@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -9,7 +9,7 @@ type SearchSpaceExt_r16_searchSpaceType_r16_common_r16_dci_Format2_4_r16 struct 
 	NrofCandidates_CI_r16 *SearchSpaceExt_r16_searchSpaceType_r16_common_r16_dci_Format2_4_r16_nrofCandidates_CI_r16 `optional`
 }
 
-func (ie *SearchSpaceExt_r16_searchSpaceType_r16_common_r16_dci_Format2_4_r16) Encode(w *uper.UperWriter) error {
+func (ie *SearchSpaceExt_r16_searchSpaceType_r16_common_r16_dci_Format2_4_r16) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.NrofCandidates_CI_r16 != nil}
 	for _, bit := range preambleBits {
@@ -25,7 +25,7 @@ func (ie *SearchSpaceExt_r16_searchSpaceType_r16_common_r16_dci_Format2_4_r16) E
 	return nil
 }
 
-func (ie *SearchSpaceExt_r16_searchSpaceType_r16_common_r16_dci_Format2_4_r16) Decode(r *uper.UperReader) error {
+func (ie *SearchSpaceExt_r16_searchSpaceType_r16_common_r16_dci_Format2_4_r16) Decode(r *aper.AperReader) error {
 	var err error
 	var NrofCandidates_CI_r16Present bool
 	if NrofCandidates_CI_r16Present, err = r.ReadBool(); err != nil {

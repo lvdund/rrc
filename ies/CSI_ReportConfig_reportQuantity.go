@@ -3,7 +3,7 @@ package ies
 import (
 	"fmt"
 
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -21,17 +21,17 @@ const (
 
 type CSI_ReportConfig_reportQuantity struct {
 	Choice            uint64
-	None              uper.NULL `madatory`
-	Cri_RI_PMI_CQI    uper.NULL `madatory`
-	Cri_RI_i1         uper.NULL `madatory`
+	None              aper.NULL `madatory`
+	Cri_RI_PMI_CQI    aper.NULL `madatory`
+	Cri_RI_i1         aper.NULL `madatory`
 	Cri_RI_i1_CQI     *CSI_ReportConfig_reportQuantity_cri_RI_i1_CQI
-	Cri_RI_CQI        uper.NULL `madatory`
-	Cri_RSRP          uper.NULL `madatory`
-	Ssb_Index_RSRP    uper.NULL `madatory`
-	Cri_RI_LI_PMI_CQI uper.NULL `madatory`
+	Cri_RI_CQI        aper.NULL `madatory`
+	Cri_RSRP          aper.NULL `madatory`
+	Ssb_Index_RSRP    aper.NULL `madatory`
+	Cri_RI_LI_PMI_CQI aper.NULL `madatory`
 }
 
-func (ie *CSI_ReportConfig_reportQuantity) Encode(w *uper.UperWriter) error {
+func (ie *CSI_ReportConfig_reportQuantity) Encode(w *aper.AperWriter) error {
 	var err error
 	if err = w.WriteChoice(ie.Choice, 8, false); err != nil {
 		return err
@@ -75,7 +75,7 @@ func (ie *CSI_ReportConfig_reportQuantity) Encode(w *uper.UperWriter) error {
 	return err
 }
 
-func (ie *CSI_ReportConfig_reportQuantity) Decode(r *uper.UperReader) error {
+func (ie *CSI_ReportConfig_reportQuantity) Decode(r *aper.AperReader) error {
 	var err error
 	if ie.Choice, err = r.ReadChoice(8, false); err != nil {
 		return err

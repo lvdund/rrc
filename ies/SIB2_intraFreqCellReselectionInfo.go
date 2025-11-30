@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -26,7 +26,7 @@ type SIB2_intraFreqCellReselectionInfo struct {
 	Smtc4list_r17              *SSB_MTC4List_r17             `optional`
 }
 
-func (ie *SIB2_intraFreqCellReselectionInfo) Encode(w *uper.UperWriter) error {
+func (ie *SIB2_intraFreqCellReselectionInfo) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.Q_RxLevMinSUL != nil, ie.Q_QualMin != nil, ie.S_IntraSearchQ != nil, ie.FrequencyBandList != nil, ie.FrequencyBandListSUL != nil, ie.P_Max != nil, ie.Smtc != nil, ie.Ss_RSSI_Measurement != nil, ie.Ssb_ToMeasure != nil, ie.T_ReselectionNR_SF != nil, ie.Smtc2_LP_r16 != nil, ie.Ssb_PositionQCL_Common_r16 != nil, ie.Ssb_PositionQCL_Common_r17 != nil, ie.Smtc4list_r17 != nil}
 	for _, bit := range preambleBits {
@@ -119,7 +119,7 @@ func (ie *SIB2_intraFreqCellReselectionInfo) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *SIB2_intraFreqCellReselectionInfo) Decode(r *uper.UperReader) error {
+func (ie *SIB2_intraFreqCellReselectionInfo) Decode(r *aper.AperReader) error {
 	var err error
 	var Q_RxLevMinSULPresent bool
 	if Q_RxLevMinSULPresent, err = r.ReadBool(); err != nil {

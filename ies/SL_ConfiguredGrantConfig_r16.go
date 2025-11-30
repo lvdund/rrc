@@ -3,7 +3,7 @@ package ies
 import (
 	"bytes"
 
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -17,7 +17,7 @@ type SL_ConfiguredGrantConfig_r16 struct {
 	Sl_N1PUCCH_AN_Type2_r16         *PUCCH_ResourceId                                             `optional,ext-1`
 }
 
-func (ie *SL_ConfiguredGrantConfig_r16) Encode(w *uper.UperWriter) error {
+func (ie *SL_ConfiguredGrantConfig_r16) Encode(w *aper.AperWriter) error {
 	var err error
 	hasExtensions := ie.Sl_N1PUCCH_AN_Type2_r16 != nil
 	preambleBits := []bool{hasExtensions, ie.Sl_PeriodCG_r16 != nil, ie.Sl_NrOfHARQ_Processes_r16 != nil, ie.Sl_HARQ_ProcID_offset_r16 != nil, ie.Sl_CG_MaxTransNumList_r16 != nil, ie.Rrc_ConfiguredSidelinkGrant_r16 != nil}
@@ -35,12 +35,12 @@ func (ie *SL_ConfiguredGrantConfig_r16) Encode(w *uper.UperWriter) error {
 		}
 	}
 	if ie.Sl_NrOfHARQ_Processes_r16 != nil {
-		if err = w.WriteInteger(*ie.Sl_NrOfHARQ_Processes_r16, &uper.Constraint{Lb: 1, Ub: 16}, false); err != nil {
+		if err = w.WriteInteger(*ie.Sl_NrOfHARQ_Processes_r16, &aper.Constraint{Lb: 1, Ub: 16}, false); err != nil {
 			return utils.WrapError("Encode Sl_NrOfHARQ_Processes_r16", err)
 		}
 	}
 	if ie.Sl_HARQ_ProcID_offset_r16 != nil {
-		if err = w.WriteInteger(*ie.Sl_HARQ_ProcID_offset_r16, &uper.Constraint{Lb: 0, Ub: 15}, false); err != nil {
+		if err = w.WriteInteger(*ie.Sl_HARQ_ProcID_offset_r16, &aper.Constraint{Lb: 0, Ub: 15}, false); err != nil {
 			return utils.WrapError("Encode Sl_HARQ_ProcID_offset_r16", err)
 		}
 	}
@@ -64,7 +64,7 @@ func (ie *SL_ConfiguredGrantConfig_r16) Encode(w *uper.UperWriter) error {
 		// encode extension group 1
 		if extBitmap[0] {
 			extBuf := new(bytes.Buffer)
-			extWriter := uper.NewWriter(extBuf)
+			extWriter := aper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 1
 			optionals_ext_1 := []bool{ie.Sl_N1PUCCH_AN_Type2_r16 != nil}
@@ -93,7 +93,7 @@ func (ie *SL_ConfiguredGrantConfig_r16) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *SL_ConfiguredGrantConfig_r16) Decode(r *uper.UperReader) error {
+func (ie *SL_ConfiguredGrantConfig_r16) Decode(r *aper.AperReader) error {
 	var err error
 	var extensionBit bool
 	if extensionBit, err = r.ReadBool(); err != nil {
@@ -130,14 +130,14 @@ func (ie *SL_ConfiguredGrantConfig_r16) Decode(r *uper.UperReader) error {
 	}
 	if Sl_NrOfHARQ_Processes_r16Present {
 		var tmp_int_Sl_NrOfHARQ_Processes_r16 int64
-		if tmp_int_Sl_NrOfHARQ_Processes_r16, err = r.ReadInteger(&uper.Constraint{Lb: 1, Ub: 16}, false); err != nil {
+		if tmp_int_Sl_NrOfHARQ_Processes_r16, err = r.ReadInteger(&aper.Constraint{Lb: 1, Ub: 16}, false); err != nil {
 			return utils.WrapError("Decode Sl_NrOfHARQ_Processes_r16", err)
 		}
 		ie.Sl_NrOfHARQ_Processes_r16 = &tmp_int_Sl_NrOfHARQ_Processes_r16
 	}
 	if Sl_HARQ_ProcID_offset_r16Present {
 		var tmp_int_Sl_HARQ_ProcID_offset_r16 int64
-		if tmp_int_Sl_HARQ_ProcID_offset_r16, err = r.ReadInteger(&uper.Constraint{Lb: 0, Ub: 15}, false); err != nil {
+		if tmp_int_Sl_HARQ_ProcID_offset_r16, err = r.ReadInteger(&aper.Constraint{Lb: 0, Ub: 15}, false); err != nil {
 			return utils.WrapError("Decode Sl_HARQ_ProcID_offset_r16", err)
 		}
 		ie.Sl_HARQ_ProcID_offset_r16 = &tmp_int_Sl_HARQ_ProcID_offset_r16
@@ -169,7 +169,7 @@ func (ie *SL_ConfiguredGrantConfig_r16) Decode(r *uper.UperReader) error {
 				return err
 			}
 
-			extReader := uper.NewReader(bytes.NewReader(extBytes))
+			extReader := aper.NewReader(bytes.NewReader(extBytes))
 
 			Sl_N1PUCCH_AN_Type2_r16Present, err := extReader.ReadBool()
 			if err != nil {

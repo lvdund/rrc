@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -9,9 +9,9 @@ type EUTRA_RSTD_InfoList struct {
 	Value []EUTRA_RSTD_Info `lb:1,ub:maxInterRAT_RSTD_Freq,madatory`
 }
 
-func (ie *EUTRA_RSTD_InfoList) Encode(w *uper.UperWriter) error {
+func (ie *EUTRA_RSTD_InfoList) Encode(w *aper.AperWriter) error {
 	var err error
-	tmp := utils.NewSequence[*EUTRA_RSTD_Info]([]*EUTRA_RSTD_Info{}, uper.Constraint{Lb: 1, Ub: maxInterRAT_RSTD_Freq}, false)
+	tmp := utils.NewSequence[*EUTRA_RSTD_Info]([]*EUTRA_RSTD_Info{}, aper.Constraint{Lb: 1, Ub: maxInterRAT_RSTD_Freq}, false)
 	for _, i := range ie.Value {
 		tmp.Value = append(tmp.Value, &i)
 	}
@@ -21,9 +21,9 @@ func (ie *EUTRA_RSTD_InfoList) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *EUTRA_RSTD_InfoList) Decode(r *uper.UperReader) error {
+func (ie *EUTRA_RSTD_InfoList) Decode(r *aper.AperReader) error {
 	var err error
-	tmp := utils.NewSequence[*EUTRA_RSTD_Info]([]*EUTRA_RSTD_Info{}, uper.Constraint{Lb: 1, Ub: maxInterRAT_RSTD_Freq}, false)
+	tmp := utils.NewSequence[*EUTRA_RSTD_Info]([]*EUTRA_RSTD_Info{}, aper.Constraint{Lb: 1, Ub: maxInterRAT_RSTD_Freq}, false)
 	fn := func() *EUTRA_RSTD_Info {
 		return new(EUTRA_RSTD_Info)
 	}

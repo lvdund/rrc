@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -13,7 +13,7 @@ type SearchSpace_searchSpaceType_common_dci_Format2_0_nrofCandidates_SFI struct 
 	AggregationLevel16 *SearchSpace_searchSpaceType_common_dci_Format2_0_nrofCandidates_SFI_aggregationLevel16 `optional`
 }
 
-func (ie *SearchSpace_searchSpaceType_common_dci_Format2_0_nrofCandidates_SFI) Encode(w *uper.UperWriter) error {
+func (ie *SearchSpace_searchSpaceType_common_dci_Format2_0_nrofCandidates_SFI) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.AggregationLevel1 != nil, ie.AggregationLevel2 != nil, ie.AggregationLevel4 != nil, ie.AggregationLevel8 != nil, ie.AggregationLevel16 != nil}
 	for _, bit := range preambleBits {
@@ -49,7 +49,7 @@ func (ie *SearchSpace_searchSpaceType_common_dci_Format2_0_nrofCandidates_SFI) E
 	return nil
 }
 
-func (ie *SearchSpace_searchSpaceType_common_dci_Format2_0_nrofCandidates_SFI) Decode(r *uper.UperReader) error {
+func (ie *SearchSpace_searchSpaceType_common_dci_Format2_0_nrofCandidates_SFI) Decode(r *aper.AperReader) error {
 	var err error
 	var AggregationLevel1Present bool
 	if AggregationLevel1Present, err = r.ReadBool(); err != nil {

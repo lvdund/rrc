@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -10,7 +10,7 @@ type SIB2_relaxedMeasurement_r16_cellEdgeEvaluation_r16 struct {
 	S_SearchThresholdQ_r16 *ReselectionThresholdQ `optional`
 }
 
-func (ie *SIB2_relaxedMeasurement_r16_cellEdgeEvaluation_r16) Encode(w *uper.UperWriter) error {
+func (ie *SIB2_relaxedMeasurement_r16_cellEdgeEvaluation_r16) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.S_SearchThresholdQ_r16 != nil}
 	for _, bit := range preambleBits {
@@ -29,7 +29,7 @@ func (ie *SIB2_relaxedMeasurement_r16_cellEdgeEvaluation_r16) Encode(w *uper.Upe
 	return nil
 }
 
-func (ie *SIB2_relaxedMeasurement_r16_cellEdgeEvaluation_r16) Decode(r *uper.UperReader) error {
+func (ie *SIB2_relaxedMeasurement_r16_cellEdgeEvaluation_r16) Decode(r *aper.AperReader) error {
 	var err error
 	var S_SearchThresholdQ_r16Present bool
 	if S_SearchThresholdQ_r16Present, err = r.ReadBool(); err != nil {

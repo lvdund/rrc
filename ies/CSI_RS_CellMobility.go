@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -12,7 +12,7 @@ type CSI_RS_CellMobility struct {
 	Csi_rs_ResourceList_Mobility []CSI_RS_Resource_Mobility               `lb:1,ub:maxNrofCSI_RS_ResourcesRRM,madatory`
 }
 
-func (ie *CSI_RS_CellMobility) Encode(w *uper.UperWriter) error {
+func (ie *CSI_RS_CellMobility) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.Density != nil}
 	for _, bit := range preambleBits {
@@ -31,7 +31,7 @@ func (ie *CSI_RS_CellMobility) Encode(w *uper.UperWriter) error {
 			return utils.WrapError("Encode Density", err)
 		}
 	}
-	tmp_Csi_rs_ResourceList_Mobility := utils.NewSequence[*CSI_RS_Resource_Mobility]([]*CSI_RS_Resource_Mobility{}, uper.Constraint{Lb: 1, Ub: maxNrofCSI_RS_ResourcesRRM}, false)
+	tmp_Csi_rs_ResourceList_Mobility := utils.NewSequence[*CSI_RS_Resource_Mobility]([]*CSI_RS_Resource_Mobility{}, aper.Constraint{Lb: 1, Ub: maxNrofCSI_RS_ResourcesRRM}, false)
 	for _, i := range ie.Csi_rs_ResourceList_Mobility {
 		tmp_Csi_rs_ResourceList_Mobility.Value = append(tmp_Csi_rs_ResourceList_Mobility.Value, &i)
 	}
@@ -41,7 +41,7 @@ func (ie *CSI_RS_CellMobility) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *CSI_RS_CellMobility) Decode(r *uper.UperReader) error {
+func (ie *CSI_RS_CellMobility) Decode(r *aper.AperReader) error {
 	var err error
 	var DensityPresent bool
 	if DensityPresent, err = r.ReadBool(); err != nil {
@@ -59,7 +59,7 @@ func (ie *CSI_RS_CellMobility) Decode(r *uper.UperReader) error {
 			return utils.WrapError("Decode Density", err)
 		}
 	}
-	tmp_Csi_rs_ResourceList_Mobility := utils.NewSequence[*CSI_RS_Resource_Mobility]([]*CSI_RS_Resource_Mobility{}, uper.Constraint{Lb: 1, Ub: maxNrofCSI_RS_ResourcesRRM}, false)
+	tmp_Csi_rs_ResourceList_Mobility := utils.NewSequence[*CSI_RS_Resource_Mobility]([]*CSI_RS_Resource_Mobility{}, aper.Constraint{Lb: 1, Ub: maxNrofCSI_RS_ResourcesRRM}, false)
 	fn_Csi_rs_ResourceList_Mobility := func() *CSI_RS_Resource_Mobility {
 		return new(CSI_RS_Resource_Mobility)
 	}

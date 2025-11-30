@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -10,7 +10,7 @@ type UERadioPagingInformation_IEs struct {
 	NonCriticalExtension         *UERadioPagingInformation_v15e0_IEs `optional`
 }
 
-func (ie *UERadioPagingInformation_IEs) Encode(w *uper.UperWriter) error {
+func (ie *UERadioPagingInformation_IEs) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{len(ie.SupportedBandListNRForPaging) > 0, ie.NonCriticalExtension != nil}
 	for _, bit := range preambleBits {
@@ -19,7 +19,7 @@ func (ie *UERadioPagingInformation_IEs) Encode(w *uper.UperWriter) error {
 		}
 	}
 	if len(ie.SupportedBandListNRForPaging) > 0 {
-		tmp_SupportedBandListNRForPaging := utils.NewSequence[*FreqBandIndicatorNR]([]*FreqBandIndicatorNR{}, uper.Constraint{Lb: 1, Ub: maxBands}, false)
+		tmp_SupportedBandListNRForPaging := utils.NewSequence[*FreqBandIndicatorNR]([]*FreqBandIndicatorNR{}, aper.Constraint{Lb: 1, Ub: maxBands}, false)
 		for _, i := range ie.SupportedBandListNRForPaging {
 			tmp_SupportedBandListNRForPaging.Value = append(tmp_SupportedBandListNRForPaging.Value, &i)
 		}
@@ -35,7 +35,7 @@ func (ie *UERadioPagingInformation_IEs) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *UERadioPagingInformation_IEs) Decode(r *uper.UperReader) error {
+func (ie *UERadioPagingInformation_IEs) Decode(r *aper.AperReader) error {
 	var err error
 	var SupportedBandListNRForPagingPresent bool
 	if SupportedBandListNRForPagingPresent, err = r.ReadBool(); err != nil {
@@ -46,7 +46,7 @@ func (ie *UERadioPagingInformation_IEs) Decode(r *uper.UperReader) error {
 		return err
 	}
 	if SupportedBandListNRForPagingPresent {
-		tmp_SupportedBandListNRForPaging := utils.NewSequence[*FreqBandIndicatorNR]([]*FreqBandIndicatorNR{}, uper.Constraint{Lb: 1, Ub: maxBands}, false)
+		tmp_SupportedBandListNRForPaging := utils.NewSequence[*FreqBandIndicatorNR]([]*FreqBandIndicatorNR{}, aper.Constraint{Lb: 1, Ub: maxBands}, false)
 		fn_SupportedBandListNRForPaging := func() *FreqBandIndicatorNR {
 			return new(FreqBandIndicatorNR)
 		}

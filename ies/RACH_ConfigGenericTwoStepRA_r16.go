@@ -3,7 +3,7 @@ package ies
 import (
 	"bytes"
 
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -19,7 +19,7 @@ type RACH_ConfigGenericTwoStepRA_r16 struct {
 	MsgB_ResponseWindow_v1700            *RACH_ConfigGenericTwoStepRA_r16_msgB_ResponseWindow_v1700         `optional,ext-1`
 }
 
-func (ie *RACH_ConfigGenericTwoStepRA_r16) Encode(w *uper.UperWriter) error {
+func (ie *RACH_ConfigGenericTwoStepRA_r16) Encode(w *aper.AperWriter) error {
 	var err error
 	hasExtensions := ie.MsgB_ResponseWindow_v1700 != nil
 	preambleBits := []bool{hasExtensions, ie.MsgA_PRACH_ConfigurationIndex_r16 != nil, ie.MsgA_RO_FDM_r16 != nil, ie.MsgA_RO_FrequencyStart_r16 != nil, ie.MsgA_ZeroCorrelationZoneConfig_r16 != nil, ie.MsgA_PreamblePowerRampingStep_r16 != nil, ie.MsgA_PreambleReceivedTargetPower_r16 != nil, ie.MsgB_ResponseWindow_r16 != nil, ie.PreambleTransMax_r16 != nil}
@@ -29,7 +29,7 @@ func (ie *RACH_ConfigGenericTwoStepRA_r16) Encode(w *uper.UperWriter) error {
 		}
 	}
 	if ie.MsgA_PRACH_ConfigurationIndex_r16 != nil {
-		if err = w.WriteInteger(*ie.MsgA_PRACH_ConfigurationIndex_r16, &uper.Constraint{Lb: 0, Ub: 262}, false); err != nil {
+		if err = w.WriteInteger(*ie.MsgA_PRACH_ConfigurationIndex_r16, &aper.Constraint{Lb: 0, Ub: 262}, false); err != nil {
 			return utils.WrapError("Encode MsgA_PRACH_ConfigurationIndex_r16", err)
 		}
 	}
@@ -39,12 +39,12 @@ func (ie *RACH_ConfigGenericTwoStepRA_r16) Encode(w *uper.UperWriter) error {
 		}
 	}
 	if ie.MsgA_RO_FrequencyStart_r16 != nil {
-		if err = w.WriteInteger(*ie.MsgA_RO_FrequencyStart_r16, &uper.Constraint{Lb: 0, Ub: maxNrofPhysicalResourceBlocks_1}, false); err != nil {
+		if err = w.WriteInteger(*ie.MsgA_RO_FrequencyStart_r16, &aper.Constraint{Lb: 0, Ub: maxNrofPhysicalResourceBlocks_1}, false); err != nil {
 			return utils.WrapError("Encode MsgA_RO_FrequencyStart_r16", err)
 		}
 	}
 	if ie.MsgA_ZeroCorrelationZoneConfig_r16 != nil {
-		if err = w.WriteInteger(*ie.MsgA_ZeroCorrelationZoneConfig_r16, &uper.Constraint{Lb: 0, Ub: 15}, false); err != nil {
+		if err = w.WriteInteger(*ie.MsgA_ZeroCorrelationZoneConfig_r16, &aper.Constraint{Lb: 0, Ub: 15}, false); err != nil {
 			return utils.WrapError("Encode MsgA_ZeroCorrelationZoneConfig_r16", err)
 		}
 	}
@@ -54,7 +54,7 @@ func (ie *RACH_ConfigGenericTwoStepRA_r16) Encode(w *uper.UperWriter) error {
 		}
 	}
 	if ie.MsgA_PreambleReceivedTargetPower_r16 != nil {
-		if err = w.WriteInteger(*ie.MsgA_PreambleReceivedTargetPower_r16, &uper.Constraint{Lb: -202, Ub: -60}, false); err != nil {
+		if err = w.WriteInteger(*ie.MsgA_PreambleReceivedTargetPower_r16, &aper.Constraint{Lb: -202, Ub: -60}, false); err != nil {
 			return utils.WrapError("Encode MsgA_PreambleReceivedTargetPower_r16", err)
 		}
 	}
@@ -78,7 +78,7 @@ func (ie *RACH_ConfigGenericTwoStepRA_r16) Encode(w *uper.UperWriter) error {
 		// encode extension group 1
 		if extBitmap[0] {
 			extBuf := new(bytes.Buffer)
-			extWriter := uper.NewWriter(extBuf)
+			extWriter := aper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 1
 			optionals_ext_1 := []bool{ie.MsgB_ResponseWindow_v1700 != nil}
@@ -107,7 +107,7 @@ func (ie *RACH_ConfigGenericTwoStepRA_r16) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *RACH_ConfigGenericTwoStepRA_r16) Decode(r *uper.UperReader) error {
+func (ie *RACH_ConfigGenericTwoStepRA_r16) Decode(r *aper.AperReader) error {
 	var err error
 	var extensionBit bool
 	if extensionBit, err = r.ReadBool(); err != nil {
@@ -147,7 +147,7 @@ func (ie *RACH_ConfigGenericTwoStepRA_r16) Decode(r *uper.UperReader) error {
 	}
 	if MsgA_PRACH_ConfigurationIndex_r16Present {
 		var tmp_int_MsgA_PRACH_ConfigurationIndex_r16 int64
-		if tmp_int_MsgA_PRACH_ConfigurationIndex_r16, err = r.ReadInteger(&uper.Constraint{Lb: 0, Ub: 262}, false); err != nil {
+		if tmp_int_MsgA_PRACH_ConfigurationIndex_r16, err = r.ReadInteger(&aper.Constraint{Lb: 0, Ub: 262}, false); err != nil {
 			return utils.WrapError("Decode MsgA_PRACH_ConfigurationIndex_r16", err)
 		}
 		ie.MsgA_PRACH_ConfigurationIndex_r16 = &tmp_int_MsgA_PRACH_ConfigurationIndex_r16
@@ -160,14 +160,14 @@ func (ie *RACH_ConfigGenericTwoStepRA_r16) Decode(r *uper.UperReader) error {
 	}
 	if MsgA_RO_FrequencyStart_r16Present {
 		var tmp_int_MsgA_RO_FrequencyStart_r16 int64
-		if tmp_int_MsgA_RO_FrequencyStart_r16, err = r.ReadInteger(&uper.Constraint{Lb: 0, Ub: maxNrofPhysicalResourceBlocks_1}, false); err != nil {
+		if tmp_int_MsgA_RO_FrequencyStart_r16, err = r.ReadInteger(&aper.Constraint{Lb: 0, Ub: maxNrofPhysicalResourceBlocks_1}, false); err != nil {
 			return utils.WrapError("Decode MsgA_RO_FrequencyStart_r16", err)
 		}
 		ie.MsgA_RO_FrequencyStart_r16 = &tmp_int_MsgA_RO_FrequencyStart_r16
 	}
 	if MsgA_ZeroCorrelationZoneConfig_r16Present {
 		var tmp_int_MsgA_ZeroCorrelationZoneConfig_r16 int64
-		if tmp_int_MsgA_ZeroCorrelationZoneConfig_r16, err = r.ReadInteger(&uper.Constraint{Lb: 0, Ub: 15}, false); err != nil {
+		if tmp_int_MsgA_ZeroCorrelationZoneConfig_r16, err = r.ReadInteger(&aper.Constraint{Lb: 0, Ub: 15}, false); err != nil {
 			return utils.WrapError("Decode MsgA_ZeroCorrelationZoneConfig_r16", err)
 		}
 		ie.MsgA_ZeroCorrelationZoneConfig_r16 = &tmp_int_MsgA_ZeroCorrelationZoneConfig_r16
@@ -180,7 +180,7 @@ func (ie *RACH_ConfigGenericTwoStepRA_r16) Decode(r *uper.UperReader) error {
 	}
 	if MsgA_PreambleReceivedTargetPower_r16Present {
 		var tmp_int_MsgA_PreambleReceivedTargetPower_r16 int64
-		if tmp_int_MsgA_PreambleReceivedTargetPower_r16, err = r.ReadInteger(&uper.Constraint{Lb: -202, Ub: -60}, false); err != nil {
+		if tmp_int_MsgA_PreambleReceivedTargetPower_r16, err = r.ReadInteger(&aper.Constraint{Lb: -202, Ub: -60}, false); err != nil {
 			return utils.WrapError("Decode MsgA_PreambleReceivedTargetPower_r16", err)
 		}
 		ie.MsgA_PreambleReceivedTargetPower_r16 = &tmp_int_MsgA_PreambleReceivedTargetPower_r16
@@ -212,7 +212,7 @@ func (ie *RACH_ConfigGenericTwoStepRA_r16) Decode(r *uper.UperReader) error {
 				return err
 			}
 
-			extReader := uper.NewReader(bytes.NewReader(extBytes))
+			extReader := aper.NewReader(bytes.NewReader(extBytes))
 
 			MsgB_ResponseWindow_v1700Present, err := extReader.ReadBool()
 			if err != nil {

@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -10,7 +10,7 @@ type TwoPUCCH_Grp_ConfigParams_r16 struct {
 	Pucch_TX_r16           PUCCH_Grp_CarrierTypes_r16 `madatory`
 }
 
-func (ie *TwoPUCCH_Grp_ConfigParams_r16) Encode(w *uper.UperWriter) error {
+func (ie *TwoPUCCH_Grp_ConfigParams_r16) Encode(w *aper.AperWriter) error {
 	var err error
 	if err = ie.Pucch_GroupMapping_r16.Encode(w); err != nil {
 		return utils.WrapError("Encode Pucch_GroupMapping_r16", err)
@@ -21,7 +21,7 @@ func (ie *TwoPUCCH_Grp_ConfigParams_r16) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *TwoPUCCH_Grp_ConfigParams_r16) Decode(r *uper.UperReader) error {
+func (ie *TwoPUCCH_Grp_ConfigParams_r16) Decode(r *aper.AperReader) error {
 	var err error
 	if err = ie.Pucch_GroupMapping_r16.Decode(r); err != nil {
 		return utils.WrapError("Decode Pucch_GroupMapping_r16", err)

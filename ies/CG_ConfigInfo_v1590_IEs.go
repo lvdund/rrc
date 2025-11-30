@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -10,7 +10,7 @@ type CG_ConfigInfo_v1590_IEs struct {
 	NonCriticalExtension *CG_ConfigInfo_v1610_IEs `optional`
 }
 
-func (ie *CG_ConfigInfo_v1590_IEs) Encode(w *uper.UperWriter) error {
+func (ie *CG_ConfigInfo_v1590_IEs) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{len(ie.ServFrequenciesMN_NR) > 0, ie.NonCriticalExtension != nil}
 	for _, bit := range preambleBits {
@@ -19,7 +19,7 @@ func (ie *CG_ConfigInfo_v1590_IEs) Encode(w *uper.UperWriter) error {
 		}
 	}
 	if len(ie.ServFrequenciesMN_NR) > 0 {
-		tmp_ServFrequenciesMN_NR := utils.NewSequence[*ARFCN_ValueNR]([]*ARFCN_ValueNR{}, uper.Constraint{Lb: 1, Ub: maxNrofServingCells_1}, false)
+		tmp_ServFrequenciesMN_NR := utils.NewSequence[*ARFCN_ValueNR]([]*ARFCN_ValueNR{}, aper.Constraint{Lb: 1, Ub: maxNrofServingCells_1}, false)
 		for _, i := range ie.ServFrequenciesMN_NR {
 			tmp_ServFrequenciesMN_NR.Value = append(tmp_ServFrequenciesMN_NR.Value, &i)
 		}
@@ -35,7 +35,7 @@ func (ie *CG_ConfigInfo_v1590_IEs) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *CG_ConfigInfo_v1590_IEs) Decode(r *uper.UperReader) error {
+func (ie *CG_ConfigInfo_v1590_IEs) Decode(r *aper.AperReader) error {
 	var err error
 	var ServFrequenciesMN_NRPresent bool
 	if ServFrequenciesMN_NRPresent, err = r.ReadBool(); err != nil {
@@ -46,7 +46,7 @@ func (ie *CG_ConfigInfo_v1590_IEs) Decode(r *uper.UperReader) error {
 		return err
 	}
 	if ServFrequenciesMN_NRPresent {
-		tmp_ServFrequenciesMN_NR := utils.NewSequence[*ARFCN_ValueNR]([]*ARFCN_ValueNR{}, uper.Constraint{Lb: 1, Ub: maxNrofServingCells_1}, false)
+		tmp_ServFrequenciesMN_NR := utils.NewSequence[*ARFCN_ValueNR]([]*ARFCN_ValueNR{}, aper.Constraint{Lb: 1, Ub: maxNrofServingCells_1}, false)
 		fn_ServFrequenciesMN_NR := func() *ARFCN_ValueNR {
 			return new(ARFCN_ValueNR)
 		}

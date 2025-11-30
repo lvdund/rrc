@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -10,7 +10,7 @@ type WithinActiveTimeConfig_r16 struct {
 	DormancyGroupWithinActiveTime_r16 *DormancyGroupID_r16 `optional`
 }
 
-func (ie *WithinActiveTimeConfig_r16) Encode(w *uper.UperWriter) error {
+func (ie *WithinActiveTimeConfig_r16) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.FirstWithinActiveTimeBWP_Id_r16 != nil, ie.DormancyGroupWithinActiveTime_r16 != nil}
 	for _, bit := range preambleBits {
@@ -31,7 +31,7 @@ func (ie *WithinActiveTimeConfig_r16) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *WithinActiveTimeConfig_r16) Decode(r *uper.UperReader) error {
+func (ie *WithinActiveTimeConfig_r16) Decode(r *aper.AperReader) error {
 	var err error
 	var FirstWithinActiveTimeBWP_Id_r16Present bool
 	if FirstWithinActiveTimeBWP_Id_r16Present, err = r.ReadBool(); err != nil {

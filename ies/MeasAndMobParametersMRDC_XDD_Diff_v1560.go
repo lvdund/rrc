@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -9,7 +9,7 @@ type MeasAndMobParametersMRDC_XDD_Diff_v1560 struct {
 	Sftd_MeasPSCell_NEDC *MeasAndMobParametersMRDC_XDD_Diff_v1560_sftd_MeasPSCell_NEDC `optional`
 }
 
-func (ie *MeasAndMobParametersMRDC_XDD_Diff_v1560) Encode(w *uper.UperWriter) error {
+func (ie *MeasAndMobParametersMRDC_XDD_Diff_v1560) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.Sftd_MeasPSCell_NEDC != nil}
 	for _, bit := range preambleBits {
@@ -25,7 +25,7 @@ func (ie *MeasAndMobParametersMRDC_XDD_Diff_v1560) Encode(w *uper.UperWriter) er
 	return nil
 }
 
-func (ie *MeasAndMobParametersMRDC_XDD_Diff_v1560) Decode(r *uper.UperReader) error {
+func (ie *MeasAndMobParametersMRDC_XDD_Diff_v1560) Decode(r *aper.AperReader) error {
 	var err error
 	var Sftd_MeasPSCell_NEDCPresent bool
 	if Sftd_MeasPSCell_NEDCPresent, err = r.ReadBool(); err != nil {

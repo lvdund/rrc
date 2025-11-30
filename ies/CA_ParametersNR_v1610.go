@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -33,7 +33,7 @@ type CA_ParametersNR_v1610 struct {
 	CodebookComboParametersAdditionPerBC_r16 *CodebookComboParametersAdditionPerBC_r16                    `optional`
 }
 
-func (ie *CA_ParametersNR_v1610) Encode(w *uper.UperWriter) error {
+func (ie *CA_ParametersNR_v1610) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.ParallelTxMsgA_SRS_PUCCH_PUSCH_r16 != nil, ie.MsgA_SUL_r16 != nil, ie.JointSearchSpaceSwitchAcrossCells_r16 != nil, ie.Half_DuplexTDD_CA_SameSCS_r16 != nil, ie.ScellDormancyWithinActiveTime_r16 != nil, ie.ScellDormancyOutsideActiveTime_r16 != nil, ie.CrossCarrierA_CSI_trigDiffSCS_r16 != nil, ie.DefaultQCL_CrossCarrierA_CSI_Trig_r16 != nil, ie.InterCA_NonAlignedFrame_r16 != nil, ie.Simul_SRS_Trans_BC_r16 != nil, ie.InterFreqDAPS_r16 != nil, ie.CodebookParametersPerBC_r16 != nil, ie.BlindDetectFactor_r16 != nil, ie.Pdcch_MonitoringCA_r16 != nil, ie.Pdcch_BlindDetectionCA_Mixed_r16 != nil, ie.Pdcch_BlindDetectionMCG_UE_r16 != nil, ie.Pdcch_BlindDetectionSCG_UE_r16 != nil, ie.Pdcch_BlindDetectionMCG_UE_Mixed_r16 != nil, ie.Pdcch_BlindDetectionSCG_UE_Mixed_r16 != nil, ie.CrossCarrierSchedulingDL_DiffSCS_r16 != nil, ie.CrossCarrierSchedulingDefaultQCL_r16 != nil, ie.CrossCarrierSchedulingUL_DiffSCS_r16 != nil, ie.Simul_SRS_MIMO_Trans_BC_r16 != nil, ie.CodebookParametersAdditionPerBC_r16 != nil, ie.CodebookComboParametersAdditionPerBC_r16 != nil}
 	for _, bit := range preambleBits {
@@ -102,7 +102,7 @@ func (ie *CA_ParametersNR_v1610) Encode(w *uper.UperWriter) error {
 		}
 	}
 	if ie.BlindDetectFactor_r16 != nil {
-		if err = w.WriteInteger(*ie.BlindDetectFactor_r16, &uper.Constraint{Lb: 1, Ub: 2}, false); err != nil {
+		if err = w.WriteInteger(*ie.BlindDetectFactor_r16, &aper.Constraint{Lb: 1, Ub: 2}, false); err != nil {
 			return utils.WrapError("Encode BlindDetectFactor_r16", err)
 		}
 	}
@@ -117,12 +117,12 @@ func (ie *CA_ParametersNR_v1610) Encode(w *uper.UperWriter) error {
 		}
 	}
 	if ie.Pdcch_BlindDetectionMCG_UE_r16 != nil {
-		if err = w.WriteInteger(*ie.Pdcch_BlindDetectionMCG_UE_r16, &uper.Constraint{Lb: 1, Ub: 14}, false); err != nil {
+		if err = w.WriteInteger(*ie.Pdcch_BlindDetectionMCG_UE_r16, &aper.Constraint{Lb: 1, Ub: 14}, false); err != nil {
 			return utils.WrapError("Encode Pdcch_BlindDetectionMCG_UE_r16", err)
 		}
 	}
 	if ie.Pdcch_BlindDetectionSCG_UE_r16 != nil {
-		if err = w.WriteInteger(*ie.Pdcch_BlindDetectionSCG_UE_r16, &uper.Constraint{Lb: 1, Ub: 14}, false); err != nil {
+		if err = w.WriteInteger(*ie.Pdcch_BlindDetectionSCG_UE_r16, &aper.Constraint{Lb: 1, Ub: 14}, false); err != nil {
 			return utils.WrapError("Encode Pdcch_BlindDetectionSCG_UE_r16", err)
 		}
 	}
@@ -169,7 +169,7 @@ func (ie *CA_ParametersNR_v1610) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *CA_ParametersNR_v1610) Decode(r *uper.UperReader) error {
+func (ie *CA_ParametersNR_v1610) Decode(r *aper.AperReader) error {
 	var err error
 	var ParallelTxMsgA_SRS_PUCCH_PUSCH_r16Present bool
 	if ParallelTxMsgA_SRS_PUCCH_PUSCH_r16Present, err = r.ReadBool(); err != nil {
@@ -345,7 +345,7 @@ func (ie *CA_ParametersNR_v1610) Decode(r *uper.UperReader) error {
 	}
 	if BlindDetectFactor_r16Present {
 		var tmp_int_BlindDetectFactor_r16 int64
-		if tmp_int_BlindDetectFactor_r16, err = r.ReadInteger(&uper.Constraint{Lb: 1, Ub: 2}, false); err != nil {
+		if tmp_int_BlindDetectFactor_r16, err = r.ReadInteger(&aper.Constraint{Lb: 1, Ub: 2}, false); err != nil {
 			return utils.WrapError("Decode BlindDetectFactor_r16", err)
 		}
 		ie.BlindDetectFactor_r16 = &tmp_int_BlindDetectFactor_r16
@@ -364,14 +364,14 @@ func (ie *CA_ParametersNR_v1610) Decode(r *uper.UperReader) error {
 	}
 	if Pdcch_BlindDetectionMCG_UE_r16Present {
 		var tmp_int_Pdcch_BlindDetectionMCG_UE_r16 int64
-		if tmp_int_Pdcch_BlindDetectionMCG_UE_r16, err = r.ReadInteger(&uper.Constraint{Lb: 1, Ub: 14}, false); err != nil {
+		if tmp_int_Pdcch_BlindDetectionMCG_UE_r16, err = r.ReadInteger(&aper.Constraint{Lb: 1, Ub: 14}, false); err != nil {
 			return utils.WrapError("Decode Pdcch_BlindDetectionMCG_UE_r16", err)
 		}
 		ie.Pdcch_BlindDetectionMCG_UE_r16 = &tmp_int_Pdcch_BlindDetectionMCG_UE_r16
 	}
 	if Pdcch_BlindDetectionSCG_UE_r16Present {
 		var tmp_int_Pdcch_BlindDetectionSCG_UE_r16 int64
-		if tmp_int_Pdcch_BlindDetectionSCG_UE_r16, err = r.ReadInteger(&uper.Constraint{Lb: 1, Ub: 14}, false); err != nil {
+		if tmp_int_Pdcch_BlindDetectionSCG_UE_r16, err = r.ReadInteger(&aper.Constraint{Lb: 1, Ub: 14}, false); err != nil {
 			return utils.WrapError("Decode Pdcch_BlindDetectionSCG_UE_r16", err)
 		}
 		ie.Pdcch_BlindDetectionSCG_UE_r16 = &tmp_int_Pdcch_BlindDetectionSCG_UE_r16

@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -9,9 +9,9 @@ type MeasTimingList struct {
 	Value []MeasTiming `lb:1,ub:maxMeasFreqsMN,madatory`
 }
 
-func (ie *MeasTimingList) Encode(w *uper.UperWriter) error {
+func (ie *MeasTimingList) Encode(w *aper.AperWriter) error {
 	var err error
-	tmp := utils.NewSequence[*MeasTiming]([]*MeasTiming{}, uper.Constraint{Lb: 1, Ub: maxMeasFreqsMN}, false)
+	tmp := utils.NewSequence[*MeasTiming]([]*MeasTiming{}, aper.Constraint{Lb: 1, Ub: maxMeasFreqsMN}, false)
 	for _, i := range ie.Value {
 		tmp.Value = append(tmp.Value, &i)
 	}
@@ -21,9 +21,9 @@ func (ie *MeasTimingList) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *MeasTimingList) Decode(r *uper.UperReader) error {
+func (ie *MeasTimingList) Decode(r *aper.AperReader) error {
 	var err error
-	tmp := utils.NewSequence[*MeasTiming]([]*MeasTiming{}, uper.Constraint{Lb: 1, Ub: maxMeasFreqsMN}, false)
+	tmp := utils.NewSequence[*MeasTiming]([]*MeasTiming{}, aper.Constraint{Lb: 1, Ub: maxMeasFreqsMN}, false)
 	fn := func() *MeasTiming {
 		return new(MeasTiming)
 	}

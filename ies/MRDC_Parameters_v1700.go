@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -11,7 +11,7 @@ type MRDC_Parameters_v1700 struct {
 	Scg_ActivationDeactivationResumeENDC_r17 *MRDC_Parameters_v1700_scg_ActivationDeactivationResumeENDC_r17 `optional`
 }
 
-func (ie *MRDC_Parameters_v1700) Encode(w *uper.UperWriter) error {
+func (ie *MRDC_Parameters_v1700) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.CondPSCellAdditionENDC_r17 != nil, ie.Scg_ActivationDeactivationENDC_r17 != nil, ie.Scg_ActivationDeactivationResumeENDC_r17 != nil}
 	for _, bit := range preambleBits {
@@ -37,7 +37,7 @@ func (ie *MRDC_Parameters_v1700) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *MRDC_Parameters_v1700) Decode(r *uper.UperReader) error {
+func (ie *MRDC_Parameters_v1700) Decode(r *aper.AperReader) error {
 	var err error
 	var CondPSCellAdditionENDC_r17Present bool
 	if CondPSCellAdditionENDC_r17Present, err = r.ReadBool(); err != nil {

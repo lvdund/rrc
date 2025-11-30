@@ -1,47 +1,47 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
 const (
-	BSR_Config_retxBSR_Timer_Enum_sf10    uper.Enumerated = 0
-	BSR_Config_retxBSR_Timer_Enum_sf20    uper.Enumerated = 1
-	BSR_Config_retxBSR_Timer_Enum_sf40    uper.Enumerated = 2
-	BSR_Config_retxBSR_Timer_Enum_sf80    uper.Enumerated = 3
-	BSR_Config_retxBSR_Timer_Enum_sf160   uper.Enumerated = 4
-	BSR_Config_retxBSR_Timer_Enum_sf320   uper.Enumerated = 5
-	BSR_Config_retxBSR_Timer_Enum_sf640   uper.Enumerated = 6
-	BSR_Config_retxBSR_Timer_Enum_sf1280  uper.Enumerated = 7
-	BSR_Config_retxBSR_Timer_Enum_sf2560  uper.Enumerated = 8
-	BSR_Config_retxBSR_Timer_Enum_sf5120  uper.Enumerated = 9
-	BSR_Config_retxBSR_Timer_Enum_sf10240 uper.Enumerated = 10
-	BSR_Config_retxBSR_Timer_Enum_spare5  uper.Enumerated = 11
-	BSR_Config_retxBSR_Timer_Enum_spare4  uper.Enumerated = 12
-	BSR_Config_retxBSR_Timer_Enum_spare3  uper.Enumerated = 13
-	BSR_Config_retxBSR_Timer_Enum_spare2  uper.Enumerated = 14
-	BSR_Config_retxBSR_Timer_Enum_spare1  uper.Enumerated = 15
+	BSR_Config_retxBSR_Timer_Enum_sf10    aper.Enumerated = 0
+	BSR_Config_retxBSR_Timer_Enum_sf20    aper.Enumerated = 1
+	BSR_Config_retxBSR_Timer_Enum_sf40    aper.Enumerated = 2
+	BSR_Config_retxBSR_Timer_Enum_sf80    aper.Enumerated = 3
+	BSR_Config_retxBSR_Timer_Enum_sf160   aper.Enumerated = 4
+	BSR_Config_retxBSR_Timer_Enum_sf320   aper.Enumerated = 5
+	BSR_Config_retxBSR_Timer_Enum_sf640   aper.Enumerated = 6
+	BSR_Config_retxBSR_Timer_Enum_sf1280  aper.Enumerated = 7
+	BSR_Config_retxBSR_Timer_Enum_sf2560  aper.Enumerated = 8
+	BSR_Config_retxBSR_Timer_Enum_sf5120  aper.Enumerated = 9
+	BSR_Config_retxBSR_Timer_Enum_sf10240 aper.Enumerated = 10
+	BSR_Config_retxBSR_Timer_Enum_spare5  aper.Enumerated = 11
+	BSR_Config_retxBSR_Timer_Enum_spare4  aper.Enumerated = 12
+	BSR_Config_retxBSR_Timer_Enum_spare3  aper.Enumerated = 13
+	BSR_Config_retxBSR_Timer_Enum_spare2  aper.Enumerated = 14
+	BSR_Config_retxBSR_Timer_Enum_spare1  aper.Enumerated = 15
 )
 
 type BSR_Config_retxBSR_Timer struct {
-	Value uper.Enumerated `lb:0,ub:15,madatory`
+	Value aper.Enumerated `lb:0,ub:15,madatory`
 }
 
-func (ie *BSR_Config_retxBSR_Timer) Encode(w *uper.UperWriter) error {
+func (ie *BSR_Config_retxBSR_Timer) Encode(w *aper.AperWriter) error {
 	var err error
-	if err = w.WriteEnumerate(uint64(ie.Value), uper.Constraint{Lb: 0, Ub: 15}, false); err != nil {
+	if err = w.WriteEnumerate(uint64(ie.Value), aper.Constraint{Lb: 0, Ub: 15}, false); err != nil {
 		return utils.WrapError("Encode BSR_Config_retxBSR_Timer", err)
 	}
 	return nil
 }
 
-func (ie *BSR_Config_retxBSR_Timer) Decode(r *uper.UperReader) error {
+func (ie *BSR_Config_retxBSR_Timer) Decode(r *aper.AperReader) error {
 	var err error
 	var v uint64
-	if v, err = r.ReadEnumerate(uper.Constraint{Lb: 0, Ub: 15}, false); err != nil {
+	if v, err = r.ReadEnumerate(aper.Constraint{Lb: 0, Ub: 15}, false); err != nil {
 		return utils.WrapError("Decode BSR_Config_retxBSR_Timer", err)
 	}
-	ie.Value = uper.Enumerated(v)
+	ie.Value = aper.Enumerated(v)
 	return nil
 }

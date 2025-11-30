@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -11,7 +11,7 @@ type ConfigRestrictInfoDAPS_r16_powerCoordination_r16 struct {
 	UplinkPowerSharingDAPS_Mode_r16 ConfigRestrictInfoDAPS_r16_powerCoordination_r16_uplinkPowerSharingDAPS_Mode_r16 `madatory`
 }
 
-func (ie *ConfigRestrictInfoDAPS_r16_powerCoordination_r16) Encode(w *uper.UperWriter) error {
+func (ie *ConfigRestrictInfoDAPS_r16_powerCoordination_r16) Encode(w *aper.AperWriter) error {
 	var err error
 	if err = ie.P_DAPS_Source_r16.Encode(w); err != nil {
 		return utils.WrapError("Encode P_DAPS_Source_r16", err)
@@ -25,7 +25,7 @@ func (ie *ConfigRestrictInfoDAPS_r16_powerCoordination_r16) Encode(w *uper.UperW
 	return nil
 }
 
-func (ie *ConfigRestrictInfoDAPS_r16_powerCoordination_r16) Decode(r *uper.UperReader) error {
+func (ie *ConfigRestrictInfoDAPS_r16_powerCoordination_r16) Decode(r *aper.AperReader) error {
 	var err error
 	if err = ie.P_DAPS_Source_r16.Decode(r); err != nil {
 		return utils.WrapError("Decode P_DAPS_Source_r16", err)

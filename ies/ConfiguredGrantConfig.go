@@ -3,7 +3,7 @@ package ies
 import (
 	"bytes"
 
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -58,7 +58,7 @@ type ConfiguredGrantConfig struct {
 	Cg_nrofSlots_r17                  *int64                                            `lb:1,ub:320,optional,ext-5`
 }
 
-func (ie *ConfiguredGrantConfig) Encode(w *uper.UperWriter) error {
+func (ie *ConfiguredGrantConfig) Encode(w *aper.AperWriter) error {
 	var err error
 	hasExtensions := ie.Cg_RetransmissionTimer_r16 != nil || ie.Cg_minDFI_Delay_r16 != nil || ie.Cg_nrofPUSCH_InSlot_r16 != nil || ie.Cg_nrofSlots_r16 != nil || ie.Cg_StartingOffsets_r16 != nil || ie.Cg_UCI_Multiplexing_r16 != nil || ie.Cg_COT_SharingOffset_r16 != nil || ie.BetaOffsetCG_UCI_r16 != nil || len(ie.Cg_COT_SharingList_r16) > 0 || ie.Harq_ProcID_Offset_r16 != nil || ie.Harq_ProcID_Offset2_r16 != nil || ie.ConfiguredGrantConfigIndex_r16 != nil || ie.ConfiguredGrantConfigIndexMAC_r16 != nil || ie.PeriodicityExt_r16 != nil || ie.StartingFromRV0_r16 != nil || ie.Phy_PriorityIndex_r16 != nil || ie.AutonomousTx_r16 != nil || ie.Cg_betaOffsetsCrossPri0_r17 != nil || ie.Cg_betaOffsetsCrossPri1_r17 != nil || ie.MappingPattern_r17 != nil || ie.SequenceOffsetForRV_r17 != nil || ie.P0_PUSCH_Alpha2_r17 != nil || ie.PowerControlLoopToUse2_r17 != nil || len(ie.Cg_COT_SharingList_r17) > 0 || ie.PeriodicityExt_r17 != nil || ie.RepK_v1710 != nil || ie.NrofHARQ_Processes_v1700 != nil || ie.Harq_ProcID_Offset2_v1700 != nil || ie.ConfiguredGrantTimer_v1700 != nil || ie.Cg_minDFI_Delay_v1710 != nil || ie.Harq_ProcID_Offset_v1730 != nil || ie.Cg_nrofSlots_r17 != nil
 	preambleBits := []bool{hasExtensions, ie.FrequencyHopping != nil, ie.Mcs_Table != nil, ie.Mcs_TableTransformPrecoder != nil, ie.Uci_OnPUSCH != nil, ie.Rbg_Size != nil, ie.TransformPrecoder != nil, ie.RepK_RV != nil, ie.ConfiguredGrantTimer != nil, ie.Rrc_ConfiguredUplinkGrant != nil}
@@ -112,7 +112,7 @@ func (ie *ConfiguredGrantConfig) Encode(w *uper.UperWriter) error {
 			return utils.WrapError("Encode TransformPrecoder", err)
 		}
 	}
-	if err = w.WriteInteger(ie.NrofHARQ_Processes, &uper.Constraint{Lb: 1, Ub: 16}, false); err != nil {
+	if err = w.WriteInteger(ie.NrofHARQ_Processes, &aper.Constraint{Lb: 1, Ub: 16}, false); err != nil {
 		return utils.WrapError("WriteInteger NrofHARQ_Processes", err)
 	}
 	if err = ie.RepK.Encode(w); err != nil {
@@ -127,7 +127,7 @@ func (ie *ConfiguredGrantConfig) Encode(w *uper.UperWriter) error {
 		return utils.WrapError("Encode Periodicity", err)
 	}
 	if ie.ConfiguredGrantTimer != nil {
-		if err = w.WriteInteger(*ie.ConfiguredGrantTimer, &uper.Constraint{Lb: 1, Ub: 64}, false); err != nil {
+		if err = w.WriteInteger(*ie.ConfiguredGrantTimer, &aper.Constraint{Lb: 1, Ub: 64}, false); err != nil {
 			return utils.WrapError("Encode ConfiguredGrantTimer", err)
 		}
 	}
@@ -146,7 +146,7 @@ func (ie *ConfiguredGrantConfig) Encode(w *uper.UperWriter) error {
 		// encode extension group 3
 		if extBitmap[2] {
 			extBuf := new(bytes.Buffer)
-			extWriter := uper.NewWriter(extBuf)
+			extWriter := aper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 3
 			optionals_ext_3 := []bool{ie.Cg_RetransmissionTimer_r16 != nil, ie.Cg_minDFI_Delay_r16 != nil, ie.Cg_nrofPUSCH_InSlot_r16 != nil, ie.Cg_nrofSlots_r16 != nil, ie.Cg_StartingOffsets_r16 != nil, ie.Cg_UCI_Multiplexing_r16 != nil, ie.Cg_COT_SharingOffset_r16 != nil, ie.BetaOffsetCG_UCI_r16 != nil, len(ie.Cg_COT_SharingList_r16) > 0, ie.Harq_ProcID_Offset_r16 != nil, ie.Harq_ProcID_Offset2_r16 != nil, ie.ConfiguredGrantConfigIndex_r16 != nil, ie.ConfiguredGrantConfigIndexMAC_r16 != nil, ie.PeriodicityExt_r16 != nil, ie.StartingFromRV0_r16 != nil, ie.Phy_PriorityIndex_r16 != nil, ie.AutonomousTx_r16 != nil}
@@ -158,7 +158,7 @@ func (ie *ConfiguredGrantConfig) Encode(w *uper.UperWriter) error {
 
 			// encode Cg_RetransmissionTimer_r16 optional
 			if ie.Cg_RetransmissionTimer_r16 != nil {
-				if err = extWriter.WriteInteger(*ie.Cg_RetransmissionTimer_r16, &uper.Constraint{Lb: 1, Ub: 64}, false); err != nil {
+				if err = extWriter.WriteInteger(*ie.Cg_RetransmissionTimer_r16, &aper.Constraint{Lb: 1, Ub: 64}, false); err != nil {
 					return utils.WrapError("Encode Cg_RetransmissionTimer_r16", err)
 				}
 			}
@@ -170,13 +170,13 @@ func (ie *ConfiguredGrantConfig) Encode(w *uper.UperWriter) error {
 			}
 			// encode Cg_nrofPUSCH_InSlot_r16 optional
 			if ie.Cg_nrofPUSCH_InSlot_r16 != nil {
-				if err = extWriter.WriteInteger(*ie.Cg_nrofPUSCH_InSlot_r16, &uper.Constraint{Lb: 1, Ub: 7}, false); err != nil {
+				if err = extWriter.WriteInteger(*ie.Cg_nrofPUSCH_InSlot_r16, &aper.Constraint{Lb: 1, Ub: 7}, false); err != nil {
 					return utils.WrapError("Encode Cg_nrofPUSCH_InSlot_r16", err)
 				}
 			}
 			// encode Cg_nrofSlots_r16 optional
 			if ie.Cg_nrofSlots_r16 != nil {
-				if err = extWriter.WriteInteger(*ie.Cg_nrofSlots_r16, &uper.Constraint{Lb: 1, Ub: 40}, false); err != nil {
+				if err = extWriter.WriteInteger(*ie.Cg_nrofSlots_r16, &aper.Constraint{Lb: 1, Ub: 40}, false); err != nil {
 					return utils.WrapError("Encode Cg_nrofSlots_r16", err)
 				}
 			}
@@ -194,19 +194,19 @@ func (ie *ConfiguredGrantConfig) Encode(w *uper.UperWriter) error {
 			}
 			// encode Cg_COT_SharingOffset_r16 optional
 			if ie.Cg_COT_SharingOffset_r16 != nil {
-				if err = extWriter.WriteInteger(*ie.Cg_COT_SharingOffset_r16, &uper.Constraint{Lb: 1, Ub: 39}, false); err != nil {
+				if err = extWriter.WriteInteger(*ie.Cg_COT_SharingOffset_r16, &aper.Constraint{Lb: 1, Ub: 39}, false); err != nil {
 					return utils.WrapError("Encode Cg_COT_SharingOffset_r16", err)
 				}
 			}
 			// encode BetaOffsetCG_UCI_r16 optional
 			if ie.BetaOffsetCG_UCI_r16 != nil {
-				if err = extWriter.WriteInteger(*ie.BetaOffsetCG_UCI_r16, &uper.Constraint{Lb: 0, Ub: 31}, false); err != nil {
+				if err = extWriter.WriteInteger(*ie.BetaOffsetCG_UCI_r16, &aper.Constraint{Lb: 0, Ub: 31}, false); err != nil {
 					return utils.WrapError("Encode BetaOffsetCG_UCI_r16", err)
 				}
 			}
 			// encode Cg_COT_SharingList_r16 optional
 			if len(ie.Cg_COT_SharingList_r16) > 0 {
-				tmp_Cg_COT_SharingList_r16 := utils.NewSequence[*CG_COT_Sharing_r16]([]*CG_COT_Sharing_r16{}, uper.Constraint{Lb: 1, Ub: 1709}, false)
+				tmp_Cg_COT_SharingList_r16 := utils.NewSequence[*CG_COT_Sharing_r16]([]*CG_COT_Sharing_r16{}, aper.Constraint{Lb: 1, Ub: 1709}, false)
 				for _, i := range ie.Cg_COT_SharingList_r16 {
 					tmp_Cg_COT_SharingList_r16.Value = append(tmp_Cg_COT_SharingList_r16.Value, &i)
 				}
@@ -216,13 +216,13 @@ func (ie *ConfiguredGrantConfig) Encode(w *uper.UperWriter) error {
 			}
 			// encode Harq_ProcID_Offset_r16 optional
 			if ie.Harq_ProcID_Offset_r16 != nil {
-				if err = extWriter.WriteInteger(*ie.Harq_ProcID_Offset_r16, &uper.Constraint{Lb: 0, Ub: 15}, false); err != nil {
+				if err = extWriter.WriteInteger(*ie.Harq_ProcID_Offset_r16, &aper.Constraint{Lb: 0, Ub: 15}, false); err != nil {
 					return utils.WrapError("Encode Harq_ProcID_Offset_r16", err)
 				}
 			}
 			// encode Harq_ProcID_Offset2_r16 optional
 			if ie.Harq_ProcID_Offset2_r16 != nil {
-				if err = extWriter.WriteInteger(*ie.Harq_ProcID_Offset2_r16, &uper.Constraint{Lb: 0, Ub: 15}, false); err != nil {
+				if err = extWriter.WriteInteger(*ie.Harq_ProcID_Offset2_r16, &aper.Constraint{Lb: 0, Ub: 15}, false); err != nil {
 					return utils.WrapError("Encode Harq_ProcID_Offset2_r16", err)
 				}
 			}
@@ -240,7 +240,7 @@ func (ie *ConfiguredGrantConfig) Encode(w *uper.UperWriter) error {
 			}
 			// encode PeriodicityExt_r16 optional
 			if ie.PeriodicityExt_r16 != nil {
-				if err = extWriter.WriteInteger(*ie.PeriodicityExt_r16, &uper.Constraint{Lb: 1, Ub: 5120}, false); err != nil {
+				if err = extWriter.WriteInteger(*ie.PeriodicityExt_r16, &aper.Constraint{Lb: 1, Ub: 5120}, false); err != nil {
 					return utils.WrapError("Encode PeriodicityExt_r16", err)
 				}
 			}
@@ -275,7 +275,7 @@ func (ie *ConfiguredGrantConfig) Encode(w *uper.UperWriter) error {
 		// encode extension group 4
 		if extBitmap[3] {
 			extBuf := new(bytes.Buffer)
-			extWriter := uper.NewWriter(extBuf)
+			extWriter := aper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 4
 			optionals_ext_4 := []bool{ie.Cg_betaOffsetsCrossPri0_r17 != nil, ie.Cg_betaOffsetsCrossPri1_r17 != nil, ie.MappingPattern_r17 != nil, ie.SequenceOffsetForRV_r17 != nil, ie.P0_PUSCH_Alpha2_r17 != nil, ie.PowerControlLoopToUse2_r17 != nil, len(ie.Cg_COT_SharingList_r17) > 0, ie.PeriodicityExt_r17 != nil, ie.RepK_v1710 != nil, ie.NrofHARQ_Processes_v1700 != nil, ie.Harq_ProcID_Offset2_v1700 != nil, ie.ConfiguredGrantTimer_v1700 != nil, ie.Cg_minDFI_Delay_v1710 != nil}
@@ -311,7 +311,7 @@ func (ie *ConfiguredGrantConfig) Encode(w *uper.UperWriter) error {
 			}
 			// encode SequenceOffsetForRV_r17 optional
 			if ie.SequenceOffsetForRV_r17 != nil {
-				if err = extWriter.WriteInteger(*ie.SequenceOffsetForRV_r17, &uper.Constraint{Lb: 0, Ub: 3}, false); err != nil {
+				if err = extWriter.WriteInteger(*ie.SequenceOffsetForRV_r17, &aper.Constraint{Lb: 0, Ub: 3}, false); err != nil {
 					return utils.WrapError("Encode SequenceOffsetForRV_r17", err)
 				}
 			}
@@ -329,7 +329,7 @@ func (ie *ConfiguredGrantConfig) Encode(w *uper.UperWriter) error {
 			}
 			// encode Cg_COT_SharingList_r17 optional
 			if len(ie.Cg_COT_SharingList_r17) > 0 {
-				tmp_Cg_COT_SharingList_r17 := utils.NewSequence[*CG_COT_Sharing_r17]([]*CG_COT_Sharing_r17{}, uper.Constraint{Lb: 1, Ub: 50722}, false)
+				tmp_Cg_COT_SharingList_r17 := utils.NewSequence[*CG_COT_Sharing_r17]([]*CG_COT_Sharing_r17{}, aper.Constraint{Lb: 1, Ub: 50722}, false)
 				for _, i := range ie.Cg_COT_SharingList_r17 {
 					tmp_Cg_COT_SharingList_r17.Value = append(tmp_Cg_COT_SharingList_r17.Value, &i)
 				}
@@ -339,7 +339,7 @@ func (ie *ConfiguredGrantConfig) Encode(w *uper.UperWriter) error {
 			}
 			// encode PeriodicityExt_r17 optional
 			if ie.PeriodicityExt_r17 != nil {
-				if err = extWriter.WriteInteger(*ie.PeriodicityExt_r17, &uper.Constraint{Lb: 1, Ub: 40960}, false); err != nil {
+				if err = extWriter.WriteInteger(*ie.PeriodicityExt_r17, &aper.Constraint{Lb: 1, Ub: 40960}, false); err != nil {
 					return utils.WrapError("Encode PeriodicityExt_r17", err)
 				}
 			}
@@ -351,25 +351,25 @@ func (ie *ConfiguredGrantConfig) Encode(w *uper.UperWriter) error {
 			}
 			// encode NrofHARQ_Processes_v1700 optional
 			if ie.NrofHARQ_Processes_v1700 != nil {
-				if err = extWriter.WriteInteger(*ie.NrofHARQ_Processes_v1700, &uper.Constraint{Lb: 17, Ub: 32}, false); err != nil {
+				if err = extWriter.WriteInteger(*ie.NrofHARQ_Processes_v1700, &aper.Constraint{Lb: 17, Ub: 32}, false); err != nil {
 					return utils.WrapError("Encode NrofHARQ_Processes_v1700", err)
 				}
 			}
 			// encode Harq_ProcID_Offset2_v1700 optional
 			if ie.Harq_ProcID_Offset2_v1700 != nil {
-				if err = extWriter.WriteInteger(*ie.Harq_ProcID_Offset2_v1700, &uper.Constraint{Lb: 16, Ub: 31}, false); err != nil {
+				if err = extWriter.WriteInteger(*ie.Harq_ProcID_Offset2_v1700, &aper.Constraint{Lb: 16, Ub: 31}, false); err != nil {
 					return utils.WrapError("Encode Harq_ProcID_Offset2_v1700", err)
 				}
 			}
 			// encode ConfiguredGrantTimer_v1700 optional
 			if ie.ConfiguredGrantTimer_v1700 != nil {
-				if err = extWriter.WriteInteger(*ie.ConfiguredGrantTimer_v1700, &uper.Constraint{Lb: 33, Ub: 288}, false); err != nil {
+				if err = extWriter.WriteInteger(*ie.ConfiguredGrantTimer_v1700, &aper.Constraint{Lb: 33, Ub: 288}, false); err != nil {
 					return utils.WrapError("Encode ConfiguredGrantTimer_v1700", err)
 				}
 			}
 			// encode Cg_minDFI_Delay_v1710 optional
 			if ie.Cg_minDFI_Delay_v1710 != nil {
-				if err = extWriter.WriteInteger(*ie.Cg_minDFI_Delay_v1710, &uper.Constraint{Lb: 238, Ub: 3584}, false); err != nil {
+				if err = extWriter.WriteInteger(*ie.Cg_minDFI_Delay_v1710, &aper.Constraint{Lb: 238, Ub: 3584}, false); err != nil {
 					return utils.WrapError("Encode Cg_minDFI_Delay_v1710", err)
 				}
 			}
@@ -386,7 +386,7 @@ func (ie *ConfiguredGrantConfig) Encode(w *uper.UperWriter) error {
 		// encode extension group 5
 		if extBitmap[4] {
 			extBuf := new(bytes.Buffer)
-			extWriter := uper.NewWriter(extBuf)
+			extWriter := aper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 5
 			optionals_ext_5 := []bool{ie.Harq_ProcID_Offset_v1730 != nil, ie.Cg_nrofSlots_r17 != nil}
@@ -398,13 +398,13 @@ func (ie *ConfiguredGrantConfig) Encode(w *uper.UperWriter) error {
 
 			// encode Harq_ProcID_Offset_v1730 optional
 			if ie.Harq_ProcID_Offset_v1730 != nil {
-				if err = extWriter.WriteInteger(*ie.Harq_ProcID_Offset_v1730, &uper.Constraint{Lb: 16, Ub: 31}, false); err != nil {
+				if err = extWriter.WriteInteger(*ie.Harq_ProcID_Offset_v1730, &aper.Constraint{Lb: 16, Ub: 31}, false); err != nil {
 					return utils.WrapError("Encode Harq_ProcID_Offset_v1730", err)
 				}
 			}
 			// encode Cg_nrofSlots_r17 optional
 			if ie.Cg_nrofSlots_r17 != nil {
-				if err = extWriter.WriteInteger(*ie.Cg_nrofSlots_r17, &uper.Constraint{Lb: 1, Ub: 320}, false); err != nil {
+				if err = extWriter.WriteInteger(*ie.Cg_nrofSlots_r17, &aper.Constraint{Lb: 1, Ub: 320}, false); err != nil {
 					return utils.WrapError("Encode Cg_nrofSlots_r17", err)
 				}
 			}
@@ -421,7 +421,7 @@ func (ie *ConfiguredGrantConfig) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *ConfiguredGrantConfig) Decode(r *uper.UperReader) error {
+func (ie *ConfiguredGrantConfig) Decode(r *aper.AperReader) error {
 	var err error
 	var extensionBit bool
 	if extensionBit, err = r.ReadBool(); err != nil {
@@ -513,7 +513,7 @@ func (ie *ConfiguredGrantConfig) Decode(r *uper.UperReader) error {
 		}
 	}
 	var tmp_int_NrofHARQ_Processes int64
-	if tmp_int_NrofHARQ_Processes, err = r.ReadInteger(&uper.Constraint{Lb: 1, Ub: 16}, false); err != nil {
+	if tmp_int_NrofHARQ_Processes, err = r.ReadInteger(&aper.Constraint{Lb: 1, Ub: 16}, false); err != nil {
 		return utils.WrapError("ReadInteger NrofHARQ_Processes", err)
 	}
 	ie.NrofHARQ_Processes = tmp_int_NrofHARQ_Processes
@@ -531,7 +531,7 @@ func (ie *ConfiguredGrantConfig) Decode(r *uper.UperReader) error {
 	}
 	if ConfiguredGrantTimerPresent {
 		var tmp_int_ConfiguredGrantTimer int64
-		if tmp_int_ConfiguredGrantTimer, err = r.ReadInteger(&uper.Constraint{Lb: 1, Ub: 64}, false); err != nil {
+		if tmp_int_ConfiguredGrantTimer, err = r.ReadInteger(&aper.Constraint{Lb: 1, Ub: 64}, false); err != nil {
 			return utils.WrapError("Decode ConfiguredGrantTimer", err)
 		}
 		ie.ConfiguredGrantTimer = &tmp_int_ConfiguredGrantTimer
@@ -557,7 +557,7 @@ func (ie *ConfiguredGrantConfig) Decode(r *uper.UperReader) error {
 				return err
 			}
 
-			extReader := uper.NewReader(bytes.NewReader(extBytes))
+			extReader := aper.NewReader(bytes.NewReader(extBytes))
 
 			Cg_RetransmissionTimer_r16Present, err := extReader.ReadBool()
 			if err != nil {
@@ -630,7 +630,7 @@ func (ie *ConfiguredGrantConfig) Decode(r *uper.UperReader) error {
 			// decode Cg_RetransmissionTimer_r16 optional
 			if Cg_RetransmissionTimer_r16Present {
 				var tmp_int_Cg_RetransmissionTimer_r16 int64
-				if tmp_int_Cg_RetransmissionTimer_r16, err = extReader.ReadInteger(&uper.Constraint{Lb: 1, Ub: 64}, false); err != nil {
+				if tmp_int_Cg_RetransmissionTimer_r16, err = extReader.ReadInteger(&aper.Constraint{Lb: 1, Ub: 64}, false); err != nil {
 					return utils.WrapError("Decode Cg_RetransmissionTimer_r16", err)
 				}
 				ie.Cg_RetransmissionTimer_r16 = &tmp_int_Cg_RetransmissionTimer_r16
@@ -645,7 +645,7 @@ func (ie *ConfiguredGrantConfig) Decode(r *uper.UperReader) error {
 			// decode Cg_nrofPUSCH_InSlot_r16 optional
 			if Cg_nrofPUSCH_InSlot_r16Present {
 				var tmp_int_Cg_nrofPUSCH_InSlot_r16 int64
-				if tmp_int_Cg_nrofPUSCH_InSlot_r16, err = extReader.ReadInteger(&uper.Constraint{Lb: 1, Ub: 7}, false); err != nil {
+				if tmp_int_Cg_nrofPUSCH_InSlot_r16, err = extReader.ReadInteger(&aper.Constraint{Lb: 1, Ub: 7}, false); err != nil {
 					return utils.WrapError("Decode Cg_nrofPUSCH_InSlot_r16", err)
 				}
 				ie.Cg_nrofPUSCH_InSlot_r16 = &tmp_int_Cg_nrofPUSCH_InSlot_r16
@@ -653,7 +653,7 @@ func (ie *ConfiguredGrantConfig) Decode(r *uper.UperReader) error {
 			// decode Cg_nrofSlots_r16 optional
 			if Cg_nrofSlots_r16Present {
 				var tmp_int_Cg_nrofSlots_r16 int64
-				if tmp_int_Cg_nrofSlots_r16, err = extReader.ReadInteger(&uper.Constraint{Lb: 1, Ub: 40}, false); err != nil {
+				if tmp_int_Cg_nrofSlots_r16, err = extReader.ReadInteger(&aper.Constraint{Lb: 1, Ub: 40}, false); err != nil {
 					return utils.WrapError("Decode Cg_nrofSlots_r16", err)
 				}
 				ie.Cg_nrofSlots_r16 = &tmp_int_Cg_nrofSlots_r16
@@ -675,7 +675,7 @@ func (ie *ConfiguredGrantConfig) Decode(r *uper.UperReader) error {
 			// decode Cg_COT_SharingOffset_r16 optional
 			if Cg_COT_SharingOffset_r16Present {
 				var tmp_int_Cg_COT_SharingOffset_r16 int64
-				if tmp_int_Cg_COT_SharingOffset_r16, err = extReader.ReadInteger(&uper.Constraint{Lb: 1, Ub: 39}, false); err != nil {
+				if tmp_int_Cg_COT_SharingOffset_r16, err = extReader.ReadInteger(&aper.Constraint{Lb: 1, Ub: 39}, false); err != nil {
 					return utils.WrapError("Decode Cg_COT_SharingOffset_r16", err)
 				}
 				ie.Cg_COT_SharingOffset_r16 = &tmp_int_Cg_COT_SharingOffset_r16
@@ -683,14 +683,14 @@ func (ie *ConfiguredGrantConfig) Decode(r *uper.UperReader) error {
 			// decode BetaOffsetCG_UCI_r16 optional
 			if BetaOffsetCG_UCI_r16Present {
 				var tmp_int_BetaOffsetCG_UCI_r16 int64
-				if tmp_int_BetaOffsetCG_UCI_r16, err = extReader.ReadInteger(&uper.Constraint{Lb: 0, Ub: 31}, false); err != nil {
+				if tmp_int_BetaOffsetCG_UCI_r16, err = extReader.ReadInteger(&aper.Constraint{Lb: 0, Ub: 31}, false); err != nil {
 					return utils.WrapError("Decode BetaOffsetCG_UCI_r16", err)
 				}
 				ie.BetaOffsetCG_UCI_r16 = &tmp_int_BetaOffsetCG_UCI_r16
 			}
 			// decode Cg_COT_SharingList_r16 optional
 			if Cg_COT_SharingList_r16Present {
-				tmp_Cg_COT_SharingList_r16 := utils.NewSequence[*CG_COT_Sharing_r16]([]*CG_COT_Sharing_r16{}, uper.Constraint{Lb: 1, Ub: 1709}, false)
+				tmp_Cg_COT_SharingList_r16 := utils.NewSequence[*CG_COT_Sharing_r16]([]*CG_COT_Sharing_r16{}, aper.Constraint{Lb: 1, Ub: 1709}, false)
 				fn_Cg_COT_SharingList_r16 := func() *CG_COT_Sharing_r16 {
 					return new(CG_COT_Sharing_r16)
 				}
@@ -705,7 +705,7 @@ func (ie *ConfiguredGrantConfig) Decode(r *uper.UperReader) error {
 			// decode Harq_ProcID_Offset_r16 optional
 			if Harq_ProcID_Offset_r16Present {
 				var tmp_int_Harq_ProcID_Offset_r16 int64
-				if tmp_int_Harq_ProcID_Offset_r16, err = extReader.ReadInteger(&uper.Constraint{Lb: 0, Ub: 15}, false); err != nil {
+				if tmp_int_Harq_ProcID_Offset_r16, err = extReader.ReadInteger(&aper.Constraint{Lb: 0, Ub: 15}, false); err != nil {
 					return utils.WrapError("Decode Harq_ProcID_Offset_r16", err)
 				}
 				ie.Harq_ProcID_Offset_r16 = &tmp_int_Harq_ProcID_Offset_r16
@@ -713,7 +713,7 @@ func (ie *ConfiguredGrantConfig) Decode(r *uper.UperReader) error {
 			// decode Harq_ProcID_Offset2_r16 optional
 			if Harq_ProcID_Offset2_r16Present {
 				var tmp_int_Harq_ProcID_Offset2_r16 int64
-				if tmp_int_Harq_ProcID_Offset2_r16, err = extReader.ReadInteger(&uper.Constraint{Lb: 0, Ub: 15}, false); err != nil {
+				if tmp_int_Harq_ProcID_Offset2_r16, err = extReader.ReadInteger(&aper.Constraint{Lb: 0, Ub: 15}, false); err != nil {
 					return utils.WrapError("Decode Harq_ProcID_Offset2_r16", err)
 				}
 				ie.Harq_ProcID_Offset2_r16 = &tmp_int_Harq_ProcID_Offset2_r16
@@ -735,7 +735,7 @@ func (ie *ConfiguredGrantConfig) Decode(r *uper.UperReader) error {
 			// decode PeriodicityExt_r16 optional
 			if PeriodicityExt_r16Present {
 				var tmp_int_PeriodicityExt_r16 int64
-				if tmp_int_PeriodicityExt_r16, err = extReader.ReadInteger(&uper.Constraint{Lb: 1, Ub: 5120}, false); err != nil {
+				if tmp_int_PeriodicityExt_r16, err = extReader.ReadInteger(&aper.Constraint{Lb: 1, Ub: 5120}, false); err != nil {
 					return utils.WrapError("Decode PeriodicityExt_r16", err)
 				}
 				ie.PeriodicityExt_r16 = &tmp_int_PeriodicityExt_r16
@@ -769,7 +769,7 @@ func (ie *ConfiguredGrantConfig) Decode(r *uper.UperReader) error {
 				return err
 			}
 
-			extReader := uper.NewReader(bytes.NewReader(extBytes))
+			extReader := aper.NewReader(bytes.NewReader(extBytes))
 
 			Cg_betaOffsetsCrossPri0_r17Present, err := extReader.ReadBool()
 			if err != nil {
@@ -849,7 +849,7 @@ func (ie *ConfiguredGrantConfig) Decode(r *uper.UperReader) error {
 			// decode SequenceOffsetForRV_r17 optional
 			if SequenceOffsetForRV_r17Present {
 				var tmp_int_SequenceOffsetForRV_r17 int64
-				if tmp_int_SequenceOffsetForRV_r17, err = extReader.ReadInteger(&uper.Constraint{Lb: 0, Ub: 3}, false); err != nil {
+				if tmp_int_SequenceOffsetForRV_r17, err = extReader.ReadInteger(&aper.Constraint{Lb: 0, Ub: 3}, false); err != nil {
 					return utils.WrapError("Decode SequenceOffsetForRV_r17", err)
 				}
 				ie.SequenceOffsetForRV_r17 = &tmp_int_SequenceOffsetForRV_r17
@@ -870,7 +870,7 @@ func (ie *ConfiguredGrantConfig) Decode(r *uper.UperReader) error {
 			}
 			// decode Cg_COT_SharingList_r17 optional
 			if Cg_COT_SharingList_r17Present {
-				tmp_Cg_COT_SharingList_r17 := utils.NewSequence[*CG_COT_Sharing_r17]([]*CG_COT_Sharing_r17{}, uper.Constraint{Lb: 1, Ub: 50722}, false)
+				tmp_Cg_COT_SharingList_r17 := utils.NewSequence[*CG_COT_Sharing_r17]([]*CG_COT_Sharing_r17{}, aper.Constraint{Lb: 1, Ub: 50722}, false)
 				fn_Cg_COT_SharingList_r17 := func() *CG_COT_Sharing_r17 {
 					return new(CG_COT_Sharing_r17)
 				}
@@ -885,7 +885,7 @@ func (ie *ConfiguredGrantConfig) Decode(r *uper.UperReader) error {
 			// decode PeriodicityExt_r17 optional
 			if PeriodicityExt_r17Present {
 				var tmp_int_PeriodicityExt_r17 int64
-				if tmp_int_PeriodicityExt_r17, err = extReader.ReadInteger(&uper.Constraint{Lb: 1, Ub: 40960}, false); err != nil {
+				if tmp_int_PeriodicityExt_r17, err = extReader.ReadInteger(&aper.Constraint{Lb: 1, Ub: 40960}, false); err != nil {
 					return utils.WrapError("Decode PeriodicityExt_r17", err)
 				}
 				ie.PeriodicityExt_r17 = &tmp_int_PeriodicityExt_r17
@@ -900,7 +900,7 @@ func (ie *ConfiguredGrantConfig) Decode(r *uper.UperReader) error {
 			// decode NrofHARQ_Processes_v1700 optional
 			if NrofHARQ_Processes_v1700Present {
 				var tmp_int_NrofHARQ_Processes_v1700 int64
-				if tmp_int_NrofHARQ_Processes_v1700, err = extReader.ReadInteger(&uper.Constraint{Lb: 17, Ub: 32}, false); err != nil {
+				if tmp_int_NrofHARQ_Processes_v1700, err = extReader.ReadInteger(&aper.Constraint{Lb: 17, Ub: 32}, false); err != nil {
 					return utils.WrapError("Decode NrofHARQ_Processes_v1700", err)
 				}
 				ie.NrofHARQ_Processes_v1700 = &tmp_int_NrofHARQ_Processes_v1700
@@ -908,7 +908,7 @@ func (ie *ConfiguredGrantConfig) Decode(r *uper.UperReader) error {
 			// decode Harq_ProcID_Offset2_v1700 optional
 			if Harq_ProcID_Offset2_v1700Present {
 				var tmp_int_Harq_ProcID_Offset2_v1700 int64
-				if tmp_int_Harq_ProcID_Offset2_v1700, err = extReader.ReadInteger(&uper.Constraint{Lb: 16, Ub: 31}, false); err != nil {
+				if tmp_int_Harq_ProcID_Offset2_v1700, err = extReader.ReadInteger(&aper.Constraint{Lb: 16, Ub: 31}, false); err != nil {
 					return utils.WrapError("Decode Harq_ProcID_Offset2_v1700", err)
 				}
 				ie.Harq_ProcID_Offset2_v1700 = &tmp_int_Harq_ProcID_Offset2_v1700
@@ -916,7 +916,7 @@ func (ie *ConfiguredGrantConfig) Decode(r *uper.UperReader) error {
 			// decode ConfiguredGrantTimer_v1700 optional
 			if ConfiguredGrantTimer_v1700Present {
 				var tmp_int_ConfiguredGrantTimer_v1700 int64
-				if tmp_int_ConfiguredGrantTimer_v1700, err = extReader.ReadInteger(&uper.Constraint{Lb: 33, Ub: 288}, false); err != nil {
+				if tmp_int_ConfiguredGrantTimer_v1700, err = extReader.ReadInteger(&aper.Constraint{Lb: 33, Ub: 288}, false); err != nil {
 					return utils.WrapError("Decode ConfiguredGrantTimer_v1700", err)
 				}
 				ie.ConfiguredGrantTimer_v1700 = &tmp_int_ConfiguredGrantTimer_v1700
@@ -924,7 +924,7 @@ func (ie *ConfiguredGrantConfig) Decode(r *uper.UperReader) error {
 			// decode Cg_minDFI_Delay_v1710 optional
 			if Cg_minDFI_Delay_v1710Present {
 				var tmp_int_Cg_minDFI_Delay_v1710 int64
-				if tmp_int_Cg_minDFI_Delay_v1710, err = extReader.ReadInteger(&uper.Constraint{Lb: 238, Ub: 3584}, false); err != nil {
+				if tmp_int_Cg_minDFI_Delay_v1710, err = extReader.ReadInteger(&aper.Constraint{Lb: 238, Ub: 3584}, false); err != nil {
 					return utils.WrapError("Decode Cg_minDFI_Delay_v1710", err)
 				}
 				ie.Cg_minDFI_Delay_v1710 = &tmp_int_Cg_minDFI_Delay_v1710
@@ -937,7 +937,7 @@ func (ie *ConfiguredGrantConfig) Decode(r *uper.UperReader) error {
 				return err
 			}
 
-			extReader := uper.NewReader(bytes.NewReader(extBytes))
+			extReader := aper.NewReader(bytes.NewReader(extBytes))
 
 			Harq_ProcID_Offset_v1730Present, err := extReader.ReadBool()
 			if err != nil {
@@ -950,7 +950,7 @@ func (ie *ConfiguredGrantConfig) Decode(r *uper.UperReader) error {
 			// decode Harq_ProcID_Offset_v1730 optional
 			if Harq_ProcID_Offset_v1730Present {
 				var tmp_int_Harq_ProcID_Offset_v1730 int64
-				if tmp_int_Harq_ProcID_Offset_v1730, err = extReader.ReadInteger(&uper.Constraint{Lb: 16, Ub: 31}, false); err != nil {
+				if tmp_int_Harq_ProcID_Offset_v1730, err = extReader.ReadInteger(&aper.Constraint{Lb: 16, Ub: 31}, false); err != nil {
 					return utils.WrapError("Decode Harq_ProcID_Offset_v1730", err)
 				}
 				ie.Harq_ProcID_Offset_v1730 = &tmp_int_Harq_ProcID_Offset_v1730
@@ -958,7 +958,7 @@ func (ie *ConfiguredGrantConfig) Decode(r *uper.UperReader) error {
 			// decode Cg_nrofSlots_r17 optional
 			if Cg_nrofSlots_r17Present {
 				var tmp_int_Cg_nrofSlots_r17 int64
-				if tmp_int_Cg_nrofSlots_r17, err = extReader.ReadInteger(&uper.Constraint{Lb: 1, Ub: 320}, false); err != nil {
+				if tmp_int_Cg_nrofSlots_r17, err = extReader.ReadInteger(&aper.Constraint{Lb: 1, Ub: 320}, false); err != nil {
 					return utils.WrapError("Decode Cg_nrofSlots_r17", err)
 				}
 				ie.Cg_nrofSlots_r17 = &tmp_int_Cg_nrofSlots_r17

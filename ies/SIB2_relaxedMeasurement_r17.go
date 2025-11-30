@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -11,7 +11,7 @@ type SIB2_relaxedMeasurement_r17 struct {
 	CombineRelaxedMeasCondition2_r17      *SIB2_relaxedMeasurement_r17_combineRelaxedMeasCondition2_r17      `optional`
 }
 
-func (ie *SIB2_relaxedMeasurement_r17) Encode(w *uper.UperWriter) error {
+func (ie *SIB2_relaxedMeasurement_r17) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.CellEdgeEvaluationWhileStationary_r17 != nil, ie.CombineRelaxedMeasCondition2_r17 != nil}
 	for _, bit := range preambleBits {
@@ -35,7 +35,7 @@ func (ie *SIB2_relaxedMeasurement_r17) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *SIB2_relaxedMeasurement_r17) Decode(r *uper.UperReader) error {
+func (ie *SIB2_relaxedMeasurement_r17) Decode(r *aper.AperReader) error {
 	var err error
 	var CellEdgeEvaluationWhileStationary_r17Present bool
 	if CellEdgeEvaluationWhileStationary_r17Present, err = r.ReadBool(); err != nil {

@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -11,7 +11,7 @@ type FeatureSetUplink_v1640 struct {
 	OffsetSRS_CB_PUSCH_PDCCH_MonitorAnyOccWithSpanGap_fr1_r16 *FeatureSetUplink_v1640_offsetSRS_CB_PUSCH_PDCCH_MonitorAnyOccWithSpanGap_fr1_r16 `optional`
 }
 
-func (ie *FeatureSetUplink_v1640) Encode(w *uper.UperWriter) error {
+func (ie *FeatureSetUplink_v1640) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.TwoHARQ_ACK_Codebook_type1_r16 != nil, ie.TwoHARQ_ACK_Codebook_type2_r16 != nil, ie.OffsetSRS_CB_PUSCH_PDCCH_MonitorAnyOccWithSpanGap_fr1_r16 != nil}
 	for _, bit := range preambleBits {
@@ -37,7 +37,7 @@ func (ie *FeatureSetUplink_v1640) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *FeatureSetUplink_v1640) Decode(r *uper.UperReader) error {
+func (ie *FeatureSetUplink_v1640) Decode(r *aper.AperReader) error {
 	var err error
 	var TwoHARQ_ACK_Codebook_type1_r16Present bool
 	if TwoHARQ_ACK_Codebook_type1_r16Present, err = r.ReadBool(); err != nil {

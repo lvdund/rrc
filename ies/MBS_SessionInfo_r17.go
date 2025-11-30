@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -10,12 +10,12 @@ type MBS_SessionInfo_r17 struct {
 	G_RNTI_r17                      RNTI_Value                       `madatory`
 	Mrb_ListBroadcast_r17           MRB_ListBroadcast_r17            `madatory`
 	Mtch_SchedulingInfo_r17         *DRX_ConfigPTM_Index_r17         `optional`
-	Mtch_NeighbourCell_r17          *uper.BitString                  `lb:maxNeighCellMBS_r17,ub:maxNeighCellMBS_r17,optional`
+	Mtch_NeighbourCell_r17          *aper.BitString                  `lb:maxNeighCellMBS_r17,ub:maxNeighCellMBS_r17,optional`
 	Pdsch_ConfigIndex_r17           *PDSCH_ConfigIndex_r17           `optional`
 	Mtch_SSB_MappingWindowIndex_r17 *MTCH_SSB_MappingWindowIndex_r17 `optional`
 }
 
-func (ie *MBS_SessionInfo_r17) Encode(w *uper.UperWriter) error {
+func (ie *MBS_SessionInfo_r17) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.Mtch_SchedulingInfo_r17 != nil, ie.Mtch_NeighbourCell_r17 != nil, ie.Pdsch_ConfigIndex_r17 != nil, ie.Mtch_SSB_MappingWindowIndex_r17 != nil}
 	for _, bit := range preambleBits {
@@ -38,7 +38,7 @@ func (ie *MBS_SessionInfo_r17) Encode(w *uper.UperWriter) error {
 		}
 	}
 	if ie.Mtch_NeighbourCell_r17 != nil {
-		if err = w.WriteBitString(ie.Mtch_NeighbourCell_r17.Bytes, uint(ie.Mtch_NeighbourCell_r17.NumBits), &uper.Constraint{Lb: maxNeighCellMBS_r17, Ub: maxNeighCellMBS_r17}, false); err != nil {
+		if err = w.WriteBitString(ie.Mtch_NeighbourCell_r17.Bytes, uint(ie.Mtch_NeighbourCell_r17.NumBits), &aper.Constraint{Lb: maxNeighCellMBS_r17, Ub: maxNeighCellMBS_r17}, false); err != nil {
 			return utils.WrapError("Encode Mtch_NeighbourCell_r17", err)
 		}
 	}
@@ -55,7 +55,7 @@ func (ie *MBS_SessionInfo_r17) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *MBS_SessionInfo_r17) Decode(r *uper.UperReader) error {
+func (ie *MBS_SessionInfo_r17) Decode(r *aper.AperReader) error {
 	var err error
 	var Mtch_SchedulingInfo_r17Present bool
 	if Mtch_SchedulingInfo_r17Present, err = r.ReadBool(); err != nil {
@@ -91,10 +91,10 @@ func (ie *MBS_SessionInfo_r17) Decode(r *uper.UperReader) error {
 	if Mtch_NeighbourCell_r17Present {
 		var tmp_bs_Mtch_NeighbourCell_r17 []byte
 		var n_Mtch_NeighbourCell_r17 uint
-		if tmp_bs_Mtch_NeighbourCell_r17, n_Mtch_NeighbourCell_r17, err = r.ReadBitString(&uper.Constraint{Lb: maxNeighCellMBS_r17, Ub: maxNeighCellMBS_r17}, false); err != nil {
+		if tmp_bs_Mtch_NeighbourCell_r17, n_Mtch_NeighbourCell_r17, err = r.ReadBitString(&aper.Constraint{Lb: maxNeighCellMBS_r17, Ub: maxNeighCellMBS_r17}, false); err != nil {
 			return utils.WrapError("Decode Mtch_NeighbourCell_r17", err)
 		}
-		tmp_bitstring := uper.BitString{
+		tmp_bitstring := aper.BitString{
 			Bytes:   tmp_bs_Mtch_NeighbourCell_r17,
 			NumBits: uint64(n_Mtch_NeighbourCell_r17),
 		}

@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -12,7 +12,7 @@ type BeamFailureDetectionSet_r17 struct {
 	BeamFailureDetectionTimer_r17   *BeamFailureDetectionSet_r17_beamFailureDetectionTimer_r17   `optional`
 }
 
-func (ie *BeamFailureDetectionSet_r17) Encode(w *uper.UperWriter) error {
+func (ie *BeamFailureDetectionSet_r17) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{len(ie.BfdResourcesToAddModList_r17) > 0, len(ie.BfdResourcesToReleaseList_r17) > 0, ie.BeamFailureInstanceMaxCount_r17 != nil, ie.BeamFailureDetectionTimer_r17 != nil}
 	for _, bit := range preambleBits {
@@ -21,7 +21,7 @@ func (ie *BeamFailureDetectionSet_r17) Encode(w *uper.UperWriter) error {
 		}
 	}
 	if len(ie.BfdResourcesToAddModList_r17) > 0 {
-		tmp_BfdResourcesToAddModList_r17 := utils.NewSequence[*BeamLinkMonitoringRS_r17]([]*BeamLinkMonitoringRS_r17{}, uper.Constraint{Lb: 1, Ub: maxNrofBFDResourcePerSet_r17}, false)
+		tmp_BfdResourcesToAddModList_r17 := utils.NewSequence[*BeamLinkMonitoringRS_r17]([]*BeamLinkMonitoringRS_r17{}, aper.Constraint{Lb: 1, Ub: maxNrofBFDResourcePerSet_r17}, false)
 		for _, i := range ie.BfdResourcesToAddModList_r17 {
 			tmp_BfdResourcesToAddModList_r17.Value = append(tmp_BfdResourcesToAddModList_r17.Value, &i)
 		}
@@ -30,7 +30,7 @@ func (ie *BeamFailureDetectionSet_r17) Encode(w *uper.UperWriter) error {
 		}
 	}
 	if len(ie.BfdResourcesToReleaseList_r17) > 0 {
-		tmp_BfdResourcesToReleaseList_r17 := utils.NewSequence[*BeamLinkMonitoringRS_Id_r17]([]*BeamLinkMonitoringRS_Id_r17{}, uper.Constraint{Lb: 1, Ub: maxNrofBFDResourcePerSet_r17}, false)
+		tmp_BfdResourcesToReleaseList_r17 := utils.NewSequence[*BeamLinkMonitoringRS_Id_r17]([]*BeamLinkMonitoringRS_Id_r17{}, aper.Constraint{Lb: 1, Ub: maxNrofBFDResourcePerSet_r17}, false)
 		for _, i := range ie.BfdResourcesToReleaseList_r17 {
 			tmp_BfdResourcesToReleaseList_r17.Value = append(tmp_BfdResourcesToReleaseList_r17.Value, &i)
 		}
@@ -51,7 +51,7 @@ func (ie *BeamFailureDetectionSet_r17) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *BeamFailureDetectionSet_r17) Decode(r *uper.UperReader) error {
+func (ie *BeamFailureDetectionSet_r17) Decode(r *aper.AperReader) error {
 	var err error
 	var BfdResourcesToAddModList_r17Present bool
 	if BfdResourcesToAddModList_r17Present, err = r.ReadBool(); err != nil {
@@ -70,7 +70,7 @@ func (ie *BeamFailureDetectionSet_r17) Decode(r *uper.UperReader) error {
 		return err
 	}
 	if BfdResourcesToAddModList_r17Present {
-		tmp_BfdResourcesToAddModList_r17 := utils.NewSequence[*BeamLinkMonitoringRS_r17]([]*BeamLinkMonitoringRS_r17{}, uper.Constraint{Lb: 1, Ub: maxNrofBFDResourcePerSet_r17}, false)
+		tmp_BfdResourcesToAddModList_r17 := utils.NewSequence[*BeamLinkMonitoringRS_r17]([]*BeamLinkMonitoringRS_r17{}, aper.Constraint{Lb: 1, Ub: maxNrofBFDResourcePerSet_r17}, false)
 		fn_BfdResourcesToAddModList_r17 := func() *BeamLinkMonitoringRS_r17 {
 			return new(BeamLinkMonitoringRS_r17)
 		}
@@ -83,7 +83,7 @@ func (ie *BeamFailureDetectionSet_r17) Decode(r *uper.UperReader) error {
 		}
 	}
 	if BfdResourcesToReleaseList_r17Present {
-		tmp_BfdResourcesToReleaseList_r17 := utils.NewSequence[*BeamLinkMonitoringRS_Id_r17]([]*BeamLinkMonitoringRS_Id_r17{}, uper.Constraint{Lb: 1, Ub: maxNrofBFDResourcePerSet_r17}, false)
+		tmp_BfdResourcesToReleaseList_r17 := utils.NewSequence[*BeamLinkMonitoringRS_Id_r17]([]*BeamLinkMonitoringRS_Id_r17{}, aper.Constraint{Lb: 1, Ub: maxNrofBFDResourcePerSet_r17}, false)
 		fn_BfdResourcesToReleaseList_r17 := func() *BeamLinkMonitoringRS_Id_r17 {
 			return new(BeamLinkMonitoringRS_Id_r17)
 		}

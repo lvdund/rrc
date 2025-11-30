@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -10,7 +10,7 @@ type NR_NS_PmaxValue struct {
 	AdditionalSpectrumEmission AdditionalSpectrumEmission `madatory`
 }
 
-func (ie *NR_NS_PmaxValue) Encode(w *uper.UperWriter) error {
+func (ie *NR_NS_PmaxValue) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.AdditionalPmax != nil}
 	for _, bit := range preambleBits {
@@ -29,7 +29,7 @@ func (ie *NR_NS_PmaxValue) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *NR_NS_PmaxValue) Decode(r *uper.UperReader) error {
+func (ie *NR_NS_PmaxValue) Decode(r *aper.AperReader) error {
 	var err error
 	var AdditionalPmaxPresent bool
 	if AdditionalPmaxPresent, err = r.ReadBool(); err != nil {

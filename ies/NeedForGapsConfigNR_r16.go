@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -9,7 +9,7 @@ type NeedForGapsConfigNR_r16 struct {
 	RequestedTargetBandFilterNR_r16 []FreqBandIndicatorNR `lb:1,ub:maxBands,optional`
 }
 
-func (ie *NeedForGapsConfigNR_r16) Encode(w *uper.UperWriter) error {
+func (ie *NeedForGapsConfigNR_r16) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{len(ie.RequestedTargetBandFilterNR_r16) > 0}
 	for _, bit := range preambleBits {
@@ -18,7 +18,7 @@ func (ie *NeedForGapsConfigNR_r16) Encode(w *uper.UperWriter) error {
 		}
 	}
 	if len(ie.RequestedTargetBandFilterNR_r16) > 0 {
-		tmp_RequestedTargetBandFilterNR_r16 := utils.NewSequence[*FreqBandIndicatorNR]([]*FreqBandIndicatorNR{}, uper.Constraint{Lb: 1, Ub: maxBands}, false)
+		tmp_RequestedTargetBandFilterNR_r16 := utils.NewSequence[*FreqBandIndicatorNR]([]*FreqBandIndicatorNR{}, aper.Constraint{Lb: 1, Ub: maxBands}, false)
 		for _, i := range ie.RequestedTargetBandFilterNR_r16 {
 			tmp_RequestedTargetBandFilterNR_r16.Value = append(tmp_RequestedTargetBandFilterNR_r16.Value, &i)
 		}
@@ -29,14 +29,14 @@ func (ie *NeedForGapsConfigNR_r16) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *NeedForGapsConfigNR_r16) Decode(r *uper.UperReader) error {
+func (ie *NeedForGapsConfigNR_r16) Decode(r *aper.AperReader) error {
 	var err error
 	var RequestedTargetBandFilterNR_r16Present bool
 	if RequestedTargetBandFilterNR_r16Present, err = r.ReadBool(); err != nil {
 		return err
 	}
 	if RequestedTargetBandFilterNR_r16Present {
-		tmp_RequestedTargetBandFilterNR_r16 := utils.NewSequence[*FreqBandIndicatorNR]([]*FreqBandIndicatorNR{}, uper.Constraint{Lb: 1, Ub: maxBands}, false)
+		tmp_RequestedTargetBandFilterNR_r16 := utils.NewSequence[*FreqBandIndicatorNR]([]*FreqBandIndicatorNR{}, aper.Constraint{Lb: 1, Ub: maxBands}, false)
 		fn_RequestedTargetBandFilterNR_r16 := func() *FreqBandIndicatorNR {
 			return new(FreqBandIndicatorNR)
 		}

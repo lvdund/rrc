@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -12,7 +12,7 @@ type PowSav_ParametersCommon_r16 struct {
 	MinSchedulingOffsetPreference_r16 *PowSav_ParametersCommon_r16_minSchedulingOffsetPreference_r16 `optional`
 }
 
-func (ie *PowSav_ParametersCommon_r16) Encode(w *uper.UperWriter) error {
+func (ie *PowSav_ParametersCommon_r16) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.Drx_Preference_r16 != nil, ie.MaxCC_Preference_r16 != nil, ie.ReleasePreference_r16 != nil, ie.MinSchedulingOffsetPreference_r16 != nil}
 	for _, bit := range preambleBits {
@@ -43,7 +43,7 @@ func (ie *PowSav_ParametersCommon_r16) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *PowSav_ParametersCommon_r16) Decode(r *uper.UperReader) error {
+func (ie *PowSav_ParametersCommon_r16) Decode(r *aper.AperReader) error {
 	var err error
 	var Drx_Preference_r16Present bool
 	if Drx_Preference_r16Present, err = r.ReadBool(); err != nil {

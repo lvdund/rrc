@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -17,7 +17,7 @@ type DRX_Config struct {
 	Drx_SlotOffset            int64                                `lb:0,ub:31,madatory`
 }
 
-func (ie *DRX_Config) Encode(w *uper.UperWriter) error {
+func (ie *DRX_Config) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.ShortDRX != nil}
 	for _, bit := range preambleBits {
@@ -31,10 +31,10 @@ func (ie *DRX_Config) Encode(w *uper.UperWriter) error {
 	if err = ie.Drx_InactivityTimer.Encode(w); err != nil {
 		return utils.WrapError("Encode Drx_InactivityTimer", err)
 	}
-	if err = w.WriteInteger(ie.Drx_HARQ_RTT_TimerDL, &uper.Constraint{Lb: 0, Ub: 56}, false); err != nil {
+	if err = w.WriteInteger(ie.Drx_HARQ_RTT_TimerDL, &aper.Constraint{Lb: 0, Ub: 56}, false); err != nil {
 		return utils.WrapError("WriteInteger Drx_HARQ_RTT_TimerDL", err)
 	}
-	if err = w.WriteInteger(ie.Drx_HARQ_RTT_TimerUL, &uper.Constraint{Lb: 0, Ub: 56}, false); err != nil {
+	if err = w.WriteInteger(ie.Drx_HARQ_RTT_TimerUL, &aper.Constraint{Lb: 0, Ub: 56}, false); err != nil {
 		return utils.WrapError("WriteInteger Drx_HARQ_RTT_TimerUL", err)
 	}
 	if err = ie.Drx_RetransmissionTimerDL.Encode(w); err != nil {
@@ -51,13 +51,13 @@ func (ie *DRX_Config) Encode(w *uper.UperWriter) error {
 			return utils.WrapError("Encode ShortDRX", err)
 		}
 	}
-	if err = w.WriteInteger(ie.Drx_SlotOffset, &uper.Constraint{Lb: 0, Ub: 31}, false); err != nil {
+	if err = w.WriteInteger(ie.Drx_SlotOffset, &aper.Constraint{Lb: 0, Ub: 31}, false); err != nil {
 		return utils.WrapError("WriteInteger Drx_SlotOffset", err)
 	}
 	return nil
 }
 
-func (ie *DRX_Config) Decode(r *uper.UperReader) error {
+func (ie *DRX_Config) Decode(r *aper.AperReader) error {
 	var err error
 	var ShortDRXPresent bool
 	if ShortDRXPresent, err = r.ReadBool(); err != nil {
@@ -70,12 +70,12 @@ func (ie *DRX_Config) Decode(r *uper.UperReader) error {
 		return utils.WrapError("Decode Drx_InactivityTimer", err)
 	}
 	var tmp_int_Drx_HARQ_RTT_TimerDL int64
-	if tmp_int_Drx_HARQ_RTT_TimerDL, err = r.ReadInteger(&uper.Constraint{Lb: 0, Ub: 56}, false); err != nil {
+	if tmp_int_Drx_HARQ_RTT_TimerDL, err = r.ReadInteger(&aper.Constraint{Lb: 0, Ub: 56}, false); err != nil {
 		return utils.WrapError("ReadInteger Drx_HARQ_RTT_TimerDL", err)
 	}
 	ie.Drx_HARQ_RTT_TimerDL = tmp_int_Drx_HARQ_RTT_TimerDL
 	var tmp_int_Drx_HARQ_RTT_TimerUL int64
-	if tmp_int_Drx_HARQ_RTT_TimerUL, err = r.ReadInteger(&uper.Constraint{Lb: 0, Ub: 56}, false); err != nil {
+	if tmp_int_Drx_HARQ_RTT_TimerUL, err = r.ReadInteger(&aper.Constraint{Lb: 0, Ub: 56}, false); err != nil {
 		return utils.WrapError("ReadInteger Drx_HARQ_RTT_TimerUL", err)
 	}
 	ie.Drx_HARQ_RTT_TimerUL = tmp_int_Drx_HARQ_RTT_TimerUL
@@ -95,7 +95,7 @@ func (ie *DRX_Config) Decode(r *uper.UperReader) error {
 		}
 	}
 	var tmp_int_Drx_SlotOffset int64
-	if tmp_int_Drx_SlotOffset, err = r.ReadInteger(&uper.Constraint{Lb: 0, Ub: 31}, false); err != nil {
+	if tmp_int_Drx_SlotOffset, err = r.ReadInteger(&aper.Constraint{Lb: 0, Ub: 31}, false); err != nil {
 		return utils.WrapError("ReadInteger Drx_SlotOffset", err)
 	}
 	ie.Drx_SlotOffset = tmp_int_Drx_SlotOffset

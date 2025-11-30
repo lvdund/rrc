@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -12,7 +12,7 @@ type SRS_CarrierSwitching struct {
 	MonitoringCells             []ServCellIndex                            `lb:1,ub:maxNrofServingCells,optional`
 }
 
-func (ie *SRS_CarrierSwitching) Encode(w *uper.UperWriter) error {
+func (ie *SRS_CarrierSwitching) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.Srs_SwitchFromServCellIndex != nil, ie.Srs_TPC_PDCCH_Group != nil, len(ie.MonitoringCells) > 0}
 	for _, bit := range preambleBits {
@@ -21,7 +21,7 @@ func (ie *SRS_CarrierSwitching) Encode(w *uper.UperWriter) error {
 		}
 	}
 	if ie.Srs_SwitchFromServCellIndex != nil {
-		if err = w.WriteInteger(*ie.Srs_SwitchFromServCellIndex, &uper.Constraint{Lb: 0, Ub: 31}, false); err != nil {
+		if err = w.WriteInteger(*ie.Srs_SwitchFromServCellIndex, &aper.Constraint{Lb: 0, Ub: 31}, false); err != nil {
 			return utils.WrapError("Encode Srs_SwitchFromServCellIndex", err)
 		}
 	}
@@ -34,7 +34,7 @@ func (ie *SRS_CarrierSwitching) Encode(w *uper.UperWriter) error {
 		}
 	}
 	if len(ie.MonitoringCells) > 0 {
-		tmp_MonitoringCells := utils.NewSequence[*ServCellIndex]([]*ServCellIndex{}, uper.Constraint{Lb: 1, Ub: maxNrofServingCells}, false)
+		tmp_MonitoringCells := utils.NewSequence[*ServCellIndex]([]*ServCellIndex{}, aper.Constraint{Lb: 1, Ub: maxNrofServingCells}, false)
 		for _, i := range ie.MonitoringCells {
 			tmp_MonitoringCells.Value = append(tmp_MonitoringCells.Value, &i)
 		}
@@ -45,7 +45,7 @@ func (ie *SRS_CarrierSwitching) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *SRS_CarrierSwitching) Decode(r *uper.UperReader) error {
+func (ie *SRS_CarrierSwitching) Decode(r *aper.AperReader) error {
 	var err error
 	var Srs_SwitchFromServCellIndexPresent bool
 	if Srs_SwitchFromServCellIndexPresent, err = r.ReadBool(); err != nil {
@@ -61,7 +61,7 @@ func (ie *SRS_CarrierSwitching) Decode(r *uper.UperReader) error {
 	}
 	if Srs_SwitchFromServCellIndexPresent {
 		var tmp_int_Srs_SwitchFromServCellIndex int64
-		if tmp_int_Srs_SwitchFromServCellIndex, err = r.ReadInteger(&uper.Constraint{Lb: 0, Ub: 31}, false); err != nil {
+		if tmp_int_Srs_SwitchFromServCellIndex, err = r.ReadInteger(&aper.Constraint{Lb: 0, Ub: 31}, false); err != nil {
 			return utils.WrapError("Decode Srs_SwitchFromServCellIndex", err)
 		}
 		ie.Srs_SwitchFromServCellIndex = &tmp_int_Srs_SwitchFromServCellIndex
@@ -76,7 +76,7 @@ func (ie *SRS_CarrierSwitching) Decode(r *uper.UperReader) error {
 		}
 	}
 	if MonitoringCellsPresent {
-		tmp_MonitoringCells := utils.NewSequence[*ServCellIndex]([]*ServCellIndex{}, uper.Constraint{Lb: 1, Ub: maxNrofServingCells}, false)
+		tmp_MonitoringCells := utils.NewSequence[*ServCellIndex]([]*ServCellIndex{}, aper.Constraint{Lb: 1, Ub: maxNrofServingCells}, false)
 		fn_MonitoringCells := func() *ServCellIndex {
 			return new(ServCellIndex)
 		}

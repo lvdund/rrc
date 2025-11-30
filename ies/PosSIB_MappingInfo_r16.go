@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -9,9 +9,9 @@ type PosSIB_MappingInfo_r16 struct {
 	Value []PosSIB_Type_r16 `lb:1,ub:maxSIB,madatory`
 }
 
-func (ie *PosSIB_MappingInfo_r16) Encode(w *uper.UperWriter) error {
+func (ie *PosSIB_MappingInfo_r16) Encode(w *aper.AperWriter) error {
 	var err error
-	tmp := utils.NewSequence[*PosSIB_Type_r16]([]*PosSIB_Type_r16{}, uper.Constraint{Lb: 1, Ub: maxSIB}, false)
+	tmp := utils.NewSequence[*PosSIB_Type_r16]([]*PosSIB_Type_r16{}, aper.Constraint{Lb: 1, Ub: maxSIB}, false)
 	for _, i := range ie.Value {
 		tmp.Value = append(tmp.Value, &i)
 	}
@@ -21,9 +21,9 @@ func (ie *PosSIB_MappingInfo_r16) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *PosSIB_MappingInfo_r16) Decode(r *uper.UperReader) error {
+func (ie *PosSIB_MappingInfo_r16) Decode(r *aper.AperReader) error {
 	var err error
-	tmp := utils.NewSequence[*PosSIB_Type_r16]([]*PosSIB_Type_r16{}, uper.Constraint{Lb: 1, Ub: maxSIB}, false)
+	tmp := utils.NewSequence[*PosSIB_Type_r16]([]*PosSIB_Type_r16{}, aper.Constraint{Lb: 1, Ub: maxSIB}, false)
 	fn := func() *PosSIB_Type_r16 {
 		return new(PosSIB_Type_r16)
 	}

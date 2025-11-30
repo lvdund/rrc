@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -9,7 +9,7 @@ type EthernetHeaderCompression_r16_ehc_Downlink_r16 struct {
 	Drb_ContinueEHC_DL_r16 *EthernetHeaderCompression_r16_ehc_Downlink_r16_drb_ContinueEHC_DL_r16 `optional`
 }
 
-func (ie *EthernetHeaderCompression_r16_ehc_Downlink_r16) Encode(w *uper.UperWriter) error {
+func (ie *EthernetHeaderCompression_r16_ehc_Downlink_r16) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.Drb_ContinueEHC_DL_r16 != nil}
 	for _, bit := range preambleBits {
@@ -25,7 +25,7 @@ func (ie *EthernetHeaderCompression_r16_ehc_Downlink_r16) Encode(w *uper.UperWri
 	return nil
 }
 
-func (ie *EthernetHeaderCompression_r16_ehc_Downlink_r16) Decode(r *uper.UperReader) error {
+func (ie *EthernetHeaderCompression_r16_ehc_Downlink_r16) Decode(r *aper.AperReader) error {
 	var err error
 	var Drb_ContinueEHC_DL_r16Present bool
 	if Drb_ContinueEHC_DL_r16Present, err = r.ReadBool(); err != nil {

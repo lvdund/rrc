@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -18,7 +18,7 @@ type MeasAndMobParametersMRDC_Common_v1700_condPSCellChangeParameters_r17 struct
 	Sn_InitiatedCondPSCellChange_FR2TDD_ENDC_r17 *MeasAndMobParametersMRDC_Common_v1700_condPSCellChangeParameters_r17_sn_InitiatedCondPSCellChange_FR2TDD_ENDC_r17 `optional`
 }
 
-func (ie *MeasAndMobParametersMRDC_Common_v1700_condPSCellChangeParameters_r17) Encode(w *uper.UperWriter) error {
+func (ie *MeasAndMobParametersMRDC_Common_v1700_condPSCellChangeParameters_r17) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.Inter_SN_condPSCellChangeFDD_TDD_NRDC_r17 != nil, ie.Inter_SN_condPSCellChangeFR1_FR2_NRDC_r17 != nil, ie.Inter_SN_condPSCellChangeFDD_TDD_ENDC_r17 != nil, ie.Inter_SN_condPSCellChangeFR1_FR2_ENDC_r17 != nil, ie.Mn_InitiatedCondPSCellChange_FR1FDD_ENDC_r17 != nil, ie.Mn_InitiatedCondPSCellChange_FR1TDD_ENDC_r17 != nil, ie.Mn_InitiatedCondPSCellChange_FR2TDD_ENDC_r17 != nil, ie.Sn_InitiatedCondPSCellChange_FR1FDD_ENDC_r17 != nil, ie.Sn_InitiatedCondPSCellChange_FR1TDD_ENDC_r17 != nil, ie.Sn_InitiatedCondPSCellChange_FR2TDD_ENDC_r17 != nil}
 	for _, bit := range preambleBits {
@@ -79,7 +79,7 @@ func (ie *MeasAndMobParametersMRDC_Common_v1700_condPSCellChangeParameters_r17) 
 	return nil
 }
 
-func (ie *MeasAndMobParametersMRDC_Common_v1700_condPSCellChangeParameters_r17) Decode(r *uper.UperReader) error {
+func (ie *MeasAndMobParametersMRDC_Common_v1700_condPSCellChangeParameters_r17) Decode(r *aper.AperReader) error {
 	var err error
 	var Inter_SN_condPSCellChangeFDD_TDD_NRDC_r17Present bool
 	if Inter_SN_condPSCellChangeFDD_TDD_NRDC_r17Present, err = r.ReadBool(); err != nil {

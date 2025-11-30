@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -10,7 +10,7 @@ type UE_CapabilityRequestFilterNR struct {
 	NonCriticalExtension    *UE_CapabilityRequestFilterNR_v1540 `optional`
 }
 
-func (ie *UE_CapabilityRequestFilterNR) Encode(w *uper.UperWriter) error {
+func (ie *UE_CapabilityRequestFilterNR) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.FrequencyBandListFilter != nil, ie.NonCriticalExtension != nil}
 	for _, bit := range preambleBits {
@@ -31,7 +31,7 @@ func (ie *UE_CapabilityRequestFilterNR) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *UE_CapabilityRequestFilterNR) Decode(r *uper.UperReader) error {
+func (ie *UE_CapabilityRequestFilterNR) Decode(r *aper.AperReader) error {
 	var err error
 	var FrequencyBandListFilterPresent bool
 	if FrequencyBandListFilterPresent, err = r.ReadBool(); err != nil {

@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -9,9 +9,9 @@ type FreqPriorityListNR struct {
 	Value []FreqPriorityNR `lb:1,ub:maxFreq,madatory`
 }
 
-func (ie *FreqPriorityListNR) Encode(w *uper.UperWriter) error {
+func (ie *FreqPriorityListNR) Encode(w *aper.AperWriter) error {
 	var err error
-	tmp := utils.NewSequence[*FreqPriorityNR]([]*FreqPriorityNR{}, uper.Constraint{Lb: 1, Ub: maxFreq}, false)
+	tmp := utils.NewSequence[*FreqPriorityNR]([]*FreqPriorityNR{}, aper.Constraint{Lb: 1, Ub: maxFreq}, false)
 	for _, i := range ie.Value {
 		tmp.Value = append(tmp.Value, &i)
 	}
@@ -21,9 +21,9 @@ func (ie *FreqPriorityListNR) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *FreqPriorityListNR) Decode(r *uper.UperReader) error {
+func (ie *FreqPriorityListNR) Decode(r *aper.AperReader) error {
 	var err error
-	tmp := utils.NewSequence[*FreqPriorityNR]([]*FreqPriorityNR{}, uper.Constraint{Lb: 1, Ub: maxFreq}, false)
+	tmp := utils.NewSequence[*FreqPriorityNR]([]*FreqPriorityNR{}, aper.Constraint{Lb: 1, Ub: maxFreq}, false)
 	fn := func() *FreqPriorityNR {
 		return new(FreqPriorityNR)
 	}

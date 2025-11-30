@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -17,7 +17,7 @@ type CA_ParametersNR_v1640 struct {
 	Pdcch_BlindDetectionCA_Mixed_NonAlignedSpan_r16            *CA_ParametersNR_v1640_pdcch_BlindDetectionCA_Mixed_NonAlignedSpan_r16            `lb:1,ub:15,optional`
 }
 
-func (ie *CA_ParametersNR_v1640) Encode(w *uper.UperWriter) error {
+func (ie *CA_ParametersNR_v1640) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.UplinkTxDC_TwoCarrierReport_r16 != nil, ie.MaxUpTo3Diff_NumerologiesConfigSinglePUCCH_grp_r16 != nil, ie.MaxUpTo4Diff_NumerologiesConfigSinglePUCCH_grp_r16 != nil, len(ie.TwoPUCCH_Grp_ConfigurationsList_r16) > 0, ie.DiffNumerologyAcrossPUCCH_Group_CarrierTypes_r16 != nil, ie.DiffNumerologyWithinPUCCH_GroupSmallerSCS_CarrierTypes_r16 != nil, ie.DiffNumerologyWithinPUCCH_GroupLargerSCS_CarrierTypes_r16 != nil, ie.Pdcch_MonitoringCA_NonAlignedSpan_r16 != nil, ie.Pdcch_BlindDetectionCA_Mixed_NonAlignedSpan_r16 != nil}
 	for _, bit := range preambleBits {
@@ -41,7 +41,7 @@ func (ie *CA_ParametersNR_v1640) Encode(w *uper.UperWriter) error {
 		}
 	}
 	if len(ie.TwoPUCCH_Grp_ConfigurationsList_r16) > 0 {
-		tmp_TwoPUCCH_Grp_ConfigurationsList_r16 := utils.NewSequence[*TwoPUCCH_Grp_Configurations_r16]([]*TwoPUCCH_Grp_Configurations_r16{}, uper.Constraint{Lb: 1, Ub: maxTwoPUCCH_Grp_ConfigList_r16}, false)
+		tmp_TwoPUCCH_Grp_ConfigurationsList_r16 := utils.NewSequence[*TwoPUCCH_Grp_Configurations_r16]([]*TwoPUCCH_Grp_Configurations_r16{}, aper.Constraint{Lb: 1, Ub: maxTwoPUCCH_Grp_ConfigList_r16}, false)
 		for _, i := range ie.TwoPUCCH_Grp_ConfigurationsList_r16 {
 			tmp_TwoPUCCH_Grp_ConfigurationsList_r16.Value = append(tmp_TwoPUCCH_Grp_ConfigurationsList_r16.Value, &i)
 		}
@@ -65,7 +65,7 @@ func (ie *CA_ParametersNR_v1640) Encode(w *uper.UperWriter) error {
 		}
 	}
 	if ie.Pdcch_MonitoringCA_NonAlignedSpan_r16 != nil {
-		if err = w.WriteInteger(*ie.Pdcch_MonitoringCA_NonAlignedSpan_r16, &uper.Constraint{Lb: 2, Ub: 16}, false); err != nil {
+		if err = w.WriteInteger(*ie.Pdcch_MonitoringCA_NonAlignedSpan_r16, &aper.Constraint{Lb: 2, Ub: 16}, false); err != nil {
 			return utils.WrapError("Encode Pdcch_MonitoringCA_NonAlignedSpan_r16", err)
 		}
 	}
@@ -77,7 +77,7 @@ func (ie *CA_ParametersNR_v1640) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *CA_ParametersNR_v1640) Decode(r *uper.UperReader) error {
+func (ie *CA_ParametersNR_v1640) Decode(r *aper.AperReader) error {
 	var err error
 	var UplinkTxDC_TwoCarrierReport_r16Present bool
 	if UplinkTxDC_TwoCarrierReport_r16Present, err = r.ReadBool(); err != nil {
@@ -134,7 +134,7 @@ func (ie *CA_ParametersNR_v1640) Decode(r *uper.UperReader) error {
 		}
 	}
 	if TwoPUCCH_Grp_ConfigurationsList_r16Present {
-		tmp_TwoPUCCH_Grp_ConfigurationsList_r16 := utils.NewSequence[*TwoPUCCH_Grp_Configurations_r16]([]*TwoPUCCH_Grp_Configurations_r16{}, uper.Constraint{Lb: 1, Ub: maxTwoPUCCH_Grp_ConfigList_r16}, false)
+		tmp_TwoPUCCH_Grp_ConfigurationsList_r16 := utils.NewSequence[*TwoPUCCH_Grp_Configurations_r16]([]*TwoPUCCH_Grp_Configurations_r16{}, aper.Constraint{Lb: 1, Ub: maxTwoPUCCH_Grp_ConfigList_r16}, false)
 		fn_TwoPUCCH_Grp_ConfigurationsList_r16 := func() *TwoPUCCH_Grp_Configurations_r16 {
 			return new(TwoPUCCH_Grp_Configurations_r16)
 		}
@@ -166,7 +166,7 @@ func (ie *CA_ParametersNR_v1640) Decode(r *uper.UperReader) error {
 	}
 	if Pdcch_MonitoringCA_NonAlignedSpan_r16Present {
 		var tmp_int_Pdcch_MonitoringCA_NonAlignedSpan_r16 int64
-		if tmp_int_Pdcch_MonitoringCA_NonAlignedSpan_r16, err = r.ReadInteger(&uper.Constraint{Lb: 2, Ub: 16}, false); err != nil {
+		if tmp_int_Pdcch_MonitoringCA_NonAlignedSpan_r16, err = r.ReadInteger(&aper.Constraint{Lb: 2, Ub: 16}, false); err != nil {
 			return utils.WrapError("Decode Pdcch_MonitoringCA_NonAlignedSpan_r16", err)
 		}
 		ie.Pdcch_MonitoringCA_NonAlignedSpan_r16 = &tmp_int_Pdcch_MonitoringCA_NonAlignedSpan_r16

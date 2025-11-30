@@ -3,7 +3,7 @@ package ies
 import (
 	"bytes"
 
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -77,7 +77,7 @@ type PDSCH_Config struct {
 	Pdsch_TimeDomainAllocationListForMultiPDSCH_r17         *MultiPDSCH_TDRA_List_r17                                   `optional,ext-4,setuprelease`
 }
 
-func (ie *PDSCH_Config) Encode(w *uper.UperWriter) error {
+func (ie *PDSCH_Config) Encode(w *aper.AperWriter) error {
 	var err error
 	hasExtensions := ie.MaxMIMO_Layers_r16 != nil || ie.MinimumSchedulingOffsetK0_r16 != nil || ie.AntennaPortsFieldPresenceDCI_1_2_r16 != nil || len(ie.AperiodicZP_CSI_RS_ResourceSetsToAddModListDCI_1_2_r16) > 0 || len(ie.AperiodicZP_CSI_RS_ResourceSetsToReleaseListDCI_1_2_r16) > 0 || ie.Dmrs_DownlinkForPDSCH_MappingTypeA_DCI_1_2_r16 != nil || ie.Dmrs_DownlinkForPDSCH_MappingTypeB_DCI_1_2_r16 != nil || ie.Dmrs_SequenceInitializationDCI_1_2_r16 != nil || ie.Harq_ProcessNumberSizeDCI_1_2_r16 != nil || ie.Mcs_TableDCI_1_2_r16 != nil || ie.NumberOfBitsForRV_DCI_1_2_r16 != nil || ie.Pdsch_TimeDomainAllocationListDCI_1_2_r16 != nil || ie.Prb_BundlingTypeDCI_1_2_r16 != nil || ie.PriorityIndicatorDCI_1_2_r16 != nil || ie.RateMatchPatternGroup1DCI_1_2_r16 != nil || ie.RateMatchPatternGroup2DCI_1_2_r16 != nil || ie.ResourceAllocationType1GranularityDCI_1_2_r16 != nil || ie.Vrb_ToPRB_InterleaverDCI_1_2_r16 != nil || ie.ReferenceOfSLIVDCI_1_2_r16 != nil || ie.ResourceAllocationDCI_1_2_r16 != nil || ie.PriorityIndicatorDCI_1_1_r16 != nil || ie.DataScramblingIdentityPDSCH2_r16 != nil || ie.Pdsch_TimeDomainAllocationList_r16 != nil || ie.RepetitionSchemeConfig_r16 != nil || ie.RepetitionSchemeConfig_v1630 != nil || ie.Pdsch_HARQ_ACK_OneShotFeedbackDCI_1_2_r17 != nil || ie.Pdsch_HARQ_ACK_EnhType3DCI_1_2_r17 != nil || ie.Pdsch_HARQ_ACK_EnhType3DCI_Field_1_2_r17 != nil || ie.Pdsch_HARQ_ACK_RetxDCI_1_2_r17 != nil || ie.Pucch_sSCellDynDCI_1_2_r17 != nil || ie.Dl_OrJointTCI_StateList_r17 != nil || ie.BeamAppTime_r17 != nil || ie.Dummy != nil || ie.Dmrs_FD_OCC_DisabledForRank1_PDSCH_r17 != nil || ie.MinimumSchedulingOffsetK0_r17 != nil || ie.Harq_ProcessNumberSizeDCI_1_2_v1700 != nil || ie.Harq_ProcessNumberSizeDCI_1_1_r17 != nil || ie.Mcs_Table_r17 != nil || ie.Mcs_TableDCI_1_2_r17 != nil || ie.XOverheadMulticast_r17 != nil || ie.PriorityIndicatorDCI_4_2_r17 != nil || ie.SizeDCI_4_2_r17 != nil || ie.Pdsch_TimeDomainAllocationListForMultiPDSCH_r17 != nil
 	preambleBits := []bool{hasExtensions, ie.DataScramblingIdentityPDSCH != nil, ie.Dmrs_DownlinkForPDSCH_MappingTypeA != nil, ie.Dmrs_DownlinkForPDSCH_MappingTypeB != nil, len(ie.Tci_StatesToAddModList) > 0, len(ie.Tci_StatesToReleaseList) > 0, ie.Vrb_ToPRB_Interleaver != nil, ie.Pdsch_TimeDomainAllocationList != nil, ie.Pdsch_AggregationFactor != nil, len(ie.RateMatchPatternToAddModList) > 0, len(ie.RateMatchPatternToReleaseList) > 0, ie.RateMatchPatternGroup1 != nil, ie.RateMatchPatternGroup2 != nil, ie.Mcs_Table != nil, ie.MaxNrofCodeWordsScheduledByDCI != nil, ie.Prb_BundlingType != nil, len(ie.Zp_CSI_RS_ResourceToAddModList) > 0, len(ie.Zp_CSI_RS_ResourceToReleaseList) > 0, len(ie.Aperiodic_ZP_CSI_RS_ResourceSetsToAddModList) > 0, len(ie.Aperiodic_ZP_CSI_RS_ResourceSetsToReleaseList) > 0, len(ie.Sp_ZP_CSI_RS_ResourceSetsToAddModList) > 0, len(ie.Sp_ZP_CSI_RS_ResourceSetsToReleaseList) > 0, ie.P_ZP_CSI_RS_ResourceSet != nil}
@@ -87,7 +87,7 @@ func (ie *PDSCH_Config) Encode(w *uper.UperWriter) error {
 		}
 	}
 	if ie.DataScramblingIdentityPDSCH != nil {
-		if err = w.WriteInteger(*ie.DataScramblingIdentityPDSCH, &uper.Constraint{Lb: 0, Ub: 1023}, false); err != nil {
+		if err = w.WriteInteger(*ie.DataScramblingIdentityPDSCH, &aper.Constraint{Lb: 0, Ub: 1023}, false); err != nil {
 			return utils.WrapError("Encode DataScramblingIdentityPDSCH", err)
 		}
 	}
@@ -108,7 +108,7 @@ func (ie *PDSCH_Config) Encode(w *uper.UperWriter) error {
 		}
 	}
 	if len(ie.Tci_StatesToAddModList) > 0 {
-		tmp_Tci_StatesToAddModList := utils.NewSequence[*TCI_State]([]*TCI_State{}, uper.Constraint{Lb: 1, Ub: maxNrofTCI_States}, false)
+		tmp_Tci_StatesToAddModList := utils.NewSequence[*TCI_State]([]*TCI_State{}, aper.Constraint{Lb: 1, Ub: maxNrofTCI_States}, false)
 		for _, i := range ie.Tci_StatesToAddModList {
 			tmp_Tci_StatesToAddModList.Value = append(tmp_Tci_StatesToAddModList.Value, &i)
 		}
@@ -117,7 +117,7 @@ func (ie *PDSCH_Config) Encode(w *uper.UperWriter) error {
 		}
 	}
 	if len(ie.Tci_StatesToReleaseList) > 0 {
-		tmp_Tci_StatesToReleaseList := utils.NewSequence[*TCI_StateId]([]*TCI_StateId{}, uper.Constraint{Lb: 1, Ub: maxNrofTCI_States}, false)
+		tmp_Tci_StatesToReleaseList := utils.NewSequence[*TCI_StateId]([]*TCI_StateId{}, aper.Constraint{Lb: 1, Ub: maxNrofTCI_States}, false)
 		for _, i := range ie.Tci_StatesToReleaseList {
 			tmp_Tci_StatesToReleaseList.Value = append(tmp_Tci_StatesToReleaseList.Value, &i)
 		}
@@ -147,7 +147,7 @@ func (ie *PDSCH_Config) Encode(w *uper.UperWriter) error {
 		}
 	}
 	if len(ie.RateMatchPatternToAddModList) > 0 {
-		tmp_RateMatchPatternToAddModList := utils.NewSequence[*RateMatchPattern]([]*RateMatchPattern{}, uper.Constraint{Lb: 1, Ub: maxNrofRateMatchPatterns}, false)
+		tmp_RateMatchPatternToAddModList := utils.NewSequence[*RateMatchPattern]([]*RateMatchPattern{}, aper.Constraint{Lb: 1, Ub: maxNrofRateMatchPatterns}, false)
 		for _, i := range ie.RateMatchPatternToAddModList {
 			tmp_RateMatchPatternToAddModList.Value = append(tmp_RateMatchPatternToAddModList.Value, &i)
 		}
@@ -156,7 +156,7 @@ func (ie *PDSCH_Config) Encode(w *uper.UperWriter) error {
 		}
 	}
 	if len(ie.RateMatchPatternToReleaseList) > 0 {
-		tmp_RateMatchPatternToReleaseList := utils.NewSequence[*RateMatchPatternId]([]*RateMatchPatternId{}, uper.Constraint{Lb: 1, Ub: maxNrofRateMatchPatterns}, false)
+		tmp_RateMatchPatternToReleaseList := utils.NewSequence[*RateMatchPatternId]([]*RateMatchPatternId{}, aper.Constraint{Lb: 1, Ub: maxNrofRateMatchPatterns}, false)
 		for _, i := range ie.RateMatchPatternToReleaseList {
 			tmp_RateMatchPatternToReleaseList.Value = append(tmp_RateMatchPatternToReleaseList.Value, &i)
 		}
@@ -193,7 +193,7 @@ func (ie *PDSCH_Config) Encode(w *uper.UperWriter) error {
 		}
 	}
 	if len(ie.Zp_CSI_RS_ResourceToAddModList) > 0 {
-		tmp_Zp_CSI_RS_ResourceToAddModList := utils.NewSequence[*ZP_CSI_RS_Resource]([]*ZP_CSI_RS_Resource{}, uper.Constraint{Lb: 1, Ub: maxNrofZP_CSI_RS_Resources}, false)
+		tmp_Zp_CSI_RS_ResourceToAddModList := utils.NewSequence[*ZP_CSI_RS_Resource]([]*ZP_CSI_RS_Resource{}, aper.Constraint{Lb: 1, Ub: maxNrofZP_CSI_RS_Resources}, false)
 		for _, i := range ie.Zp_CSI_RS_ResourceToAddModList {
 			tmp_Zp_CSI_RS_ResourceToAddModList.Value = append(tmp_Zp_CSI_RS_ResourceToAddModList.Value, &i)
 		}
@@ -202,7 +202,7 @@ func (ie *PDSCH_Config) Encode(w *uper.UperWriter) error {
 		}
 	}
 	if len(ie.Zp_CSI_RS_ResourceToReleaseList) > 0 {
-		tmp_Zp_CSI_RS_ResourceToReleaseList := utils.NewSequence[*ZP_CSI_RS_ResourceId]([]*ZP_CSI_RS_ResourceId{}, uper.Constraint{Lb: 1, Ub: maxNrofZP_CSI_RS_Resources}, false)
+		tmp_Zp_CSI_RS_ResourceToReleaseList := utils.NewSequence[*ZP_CSI_RS_ResourceId]([]*ZP_CSI_RS_ResourceId{}, aper.Constraint{Lb: 1, Ub: maxNrofZP_CSI_RS_Resources}, false)
 		for _, i := range ie.Zp_CSI_RS_ResourceToReleaseList {
 			tmp_Zp_CSI_RS_ResourceToReleaseList.Value = append(tmp_Zp_CSI_RS_ResourceToReleaseList.Value, &i)
 		}
@@ -211,7 +211,7 @@ func (ie *PDSCH_Config) Encode(w *uper.UperWriter) error {
 		}
 	}
 	if len(ie.Aperiodic_ZP_CSI_RS_ResourceSetsToAddModList) > 0 {
-		tmp_Aperiodic_ZP_CSI_RS_ResourceSetsToAddModList := utils.NewSequence[*ZP_CSI_RS_ResourceSet]([]*ZP_CSI_RS_ResourceSet{}, uper.Constraint{Lb: 1, Ub: maxNrofZP_CSI_RS_ResourceSets}, false)
+		tmp_Aperiodic_ZP_CSI_RS_ResourceSetsToAddModList := utils.NewSequence[*ZP_CSI_RS_ResourceSet]([]*ZP_CSI_RS_ResourceSet{}, aper.Constraint{Lb: 1, Ub: maxNrofZP_CSI_RS_ResourceSets}, false)
 		for _, i := range ie.Aperiodic_ZP_CSI_RS_ResourceSetsToAddModList {
 			tmp_Aperiodic_ZP_CSI_RS_ResourceSetsToAddModList.Value = append(tmp_Aperiodic_ZP_CSI_RS_ResourceSetsToAddModList.Value, &i)
 		}
@@ -220,7 +220,7 @@ func (ie *PDSCH_Config) Encode(w *uper.UperWriter) error {
 		}
 	}
 	if len(ie.Aperiodic_ZP_CSI_RS_ResourceSetsToReleaseList) > 0 {
-		tmp_Aperiodic_ZP_CSI_RS_ResourceSetsToReleaseList := utils.NewSequence[*ZP_CSI_RS_ResourceSetId]([]*ZP_CSI_RS_ResourceSetId{}, uper.Constraint{Lb: 1, Ub: maxNrofZP_CSI_RS_ResourceSets}, false)
+		tmp_Aperiodic_ZP_CSI_RS_ResourceSetsToReleaseList := utils.NewSequence[*ZP_CSI_RS_ResourceSetId]([]*ZP_CSI_RS_ResourceSetId{}, aper.Constraint{Lb: 1, Ub: maxNrofZP_CSI_RS_ResourceSets}, false)
 		for _, i := range ie.Aperiodic_ZP_CSI_RS_ResourceSetsToReleaseList {
 			tmp_Aperiodic_ZP_CSI_RS_ResourceSetsToReleaseList.Value = append(tmp_Aperiodic_ZP_CSI_RS_ResourceSetsToReleaseList.Value, &i)
 		}
@@ -229,7 +229,7 @@ func (ie *PDSCH_Config) Encode(w *uper.UperWriter) error {
 		}
 	}
 	if len(ie.Sp_ZP_CSI_RS_ResourceSetsToAddModList) > 0 {
-		tmp_Sp_ZP_CSI_RS_ResourceSetsToAddModList := utils.NewSequence[*ZP_CSI_RS_ResourceSet]([]*ZP_CSI_RS_ResourceSet{}, uper.Constraint{Lb: 1, Ub: maxNrofZP_CSI_RS_ResourceSets}, false)
+		tmp_Sp_ZP_CSI_RS_ResourceSetsToAddModList := utils.NewSequence[*ZP_CSI_RS_ResourceSet]([]*ZP_CSI_RS_ResourceSet{}, aper.Constraint{Lb: 1, Ub: maxNrofZP_CSI_RS_ResourceSets}, false)
 		for _, i := range ie.Sp_ZP_CSI_RS_ResourceSetsToAddModList {
 			tmp_Sp_ZP_CSI_RS_ResourceSetsToAddModList.Value = append(tmp_Sp_ZP_CSI_RS_ResourceSetsToAddModList.Value, &i)
 		}
@@ -238,7 +238,7 @@ func (ie *PDSCH_Config) Encode(w *uper.UperWriter) error {
 		}
 	}
 	if len(ie.Sp_ZP_CSI_RS_ResourceSetsToReleaseList) > 0 {
-		tmp_Sp_ZP_CSI_RS_ResourceSetsToReleaseList := utils.NewSequence[*ZP_CSI_RS_ResourceSetId]([]*ZP_CSI_RS_ResourceSetId{}, uper.Constraint{Lb: 1, Ub: maxNrofZP_CSI_RS_ResourceSets}, false)
+		tmp_Sp_ZP_CSI_RS_ResourceSetsToReleaseList := utils.NewSequence[*ZP_CSI_RS_ResourceSetId]([]*ZP_CSI_RS_ResourceSetId{}, aper.Constraint{Lb: 1, Ub: maxNrofZP_CSI_RS_ResourceSets}, false)
 		for _, i := range ie.Sp_ZP_CSI_RS_ResourceSetsToReleaseList {
 			tmp_Sp_ZP_CSI_RS_ResourceSetsToReleaseList.Value = append(tmp_Sp_ZP_CSI_RS_ResourceSetsToReleaseList.Value, &i)
 		}
@@ -264,7 +264,7 @@ func (ie *PDSCH_Config) Encode(w *uper.UperWriter) error {
 		// encode extension group 1
 		if extBitmap[0] {
 			extBuf := new(bytes.Buffer)
-			extWriter := uper.NewWriter(extBuf)
+			extWriter := aper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 1
 			optionals_ext_1 := []bool{ie.MaxMIMO_Layers_r16 != nil, ie.MinimumSchedulingOffsetK0_r16 != nil, ie.AntennaPortsFieldPresenceDCI_1_2_r16 != nil, len(ie.AperiodicZP_CSI_RS_ResourceSetsToAddModListDCI_1_2_r16) > 0, len(ie.AperiodicZP_CSI_RS_ResourceSetsToReleaseListDCI_1_2_r16) > 0, ie.Dmrs_DownlinkForPDSCH_MappingTypeA_DCI_1_2_r16 != nil, ie.Dmrs_DownlinkForPDSCH_MappingTypeB_DCI_1_2_r16 != nil, ie.Dmrs_SequenceInitializationDCI_1_2_r16 != nil, ie.Harq_ProcessNumberSizeDCI_1_2_r16 != nil, ie.Mcs_TableDCI_1_2_r16 != nil, ie.NumberOfBitsForRV_DCI_1_2_r16 != nil, ie.Pdsch_TimeDomainAllocationListDCI_1_2_r16 != nil, ie.Prb_BundlingTypeDCI_1_2_r16 != nil, ie.PriorityIndicatorDCI_1_2_r16 != nil, ie.RateMatchPatternGroup1DCI_1_2_r16 != nil, ie.RateMatchPatternGroup2DCI_1_2_r16 != nil, ie.ResourceAllocationType1GranularityDCI_1_2_r16 != nil, ie.Vrb_ToPRB_InterleaverDCI_1_2_r16 != nil, ie.ReferenceOfSLIVDCI_1_2_r16 != nil, ie.ResourceAllocationDCI_1_2_r16 != nil, ie.PriorityIndicatorDCI_1_1_r16 != nil, ie.DataScramblingIdentityPDSCH2_r16 != nil, ie.Pdsch_TimeDomainAllocationList_r16 != nil, ie.RepetitionSchemeConfig_r16 != nil}
@@ -300,7 +300,7 @@ func (ie *PDSCH_Config) Encode(w *uper.UperWriter) error {
 			}
 			// encode AperiodicZP_CSI_RS_ResourceSetsToAddModListDCI_1_2_r16 optional
 			if len(ie.AperiodicZP_CSI_RS_ResourceSetsToAddModListDCI_1_2_r16) > 0 {
-				tmp_AperiodicZP_CSI_RS_ResourceSetsToAddModListDCI_1_2_r16 := utils.NewSequence[*ZP_CSI_RS_ResourceSet]([]*ZP_CSI_RS_ResourceSet{}, uper.Constraint{Lb: 1, Ub: maxNrofZP_CSI_RS_ResourceSets}, false)
+				tmp_AperiodicZP_CSI_RS_ResourceSetsToAddModListDCI_1_2_r16 := utils.NewSequence[*ZP_CSI_RS_ResourceSet]([]*ZP_CSI_RS_ResourceSet{}, aper.Constraint{Lb: 1, Ub: maxNrofZP_CSI_RS_ResourceSets}, false)
 				for _, i := range ie.AperiodicZP_CSI_RS_ResourceSetsToAddModListDCI_1_2_r16 {
 					tmp_AperiodicZP_CSI_RS_ResourceSetsToAddModListDCI_1_2_r16.Value = append(tmp_AperiodicZP_CSI_RS_ResourceSetsToAddModListDCI_1_2_r16.Value, &i)
 				}
@@ -310,7 +310,7 @@ func (ie *PDSCH_Config) Encode(w *uper.UperWriter) error {
 			}
 			// encode AperiodicZP_CSI_RS_ResourceSetsToReleaseListDCI_1_2_r16 optional
 			if len(ie.AperiodicZP_CSI_RS_ResourceSetsToReleaseListDCI_1_2_r16) > 0 {
-				tmp_AperiodicZP_CSI_RS_ResourceSetsToReleaseListDCI_1_2_r16 := utils.NewSequence[*ZP_CSI_RS_ResourceSetId]([]*ZP_CSI_RS_ResourceSetId{}, uper.Constraint{Lb: 1, Ub: maxNrofZP_CSI_RS_ResourceSets}, false)
+				tmp_AperiodicZP_CSI_RS_ResourceSetsToReleaseListDCI_1_2_r16 := utils.NewSequence[*ZP_CSI_RS_ResourceSetId]([]*ZP_CSI_RS_ResourceSetId{}, aper.Constraint{Lb: 1, Ub: maxNrofZP_CSI_RS_ResourceSets}, false)
 				for _, i := range ie.AperiodicZP_CSI_RS_ResourceSetsToReleaseListDCI_1_2_r16 {
 					tmp_AperiodicZP_CSI_RS_ResourceSetsToReleaseListDCI_1_2_r16.Value = append(tmp_AperiodicZP_CSI_RS_ResourceSetsToReleaseListDCI_1_2_r16.Value, &i)
 				}
@@ -344,7 +344,7 @@ func (ie *PDSCH_Config) Encode(w *uper.UperWriter) error {
 			}
 			// encode Harq_ProcessNumberSizeDCI_1_2_r16 optional
 			if ie.Harq_ProcessNumberSizeDCI_1_2_r16 != nil {
-				if err = extWriter.WriteInteger(*ie.Harq_ProcessNumberSizeDCI_1_2_r16, &uper.Constraint{Lb: 0, Ub: 4}, false); err != nil {
+				if err = extWriter.WriteInteger(*ie.Harq_ProcessNumberSizeDCI_1_2_r16, &aper.Constraint{Lb: 0, Ub: 4}, false); err != nil {
 					return utils.WrapError("Encode Harq_ProcessNumberSizeDCI_1_2_r16", err)
 				}
 			}
@@ -356,7 +356,7 @@ func (ie *PDSCH_Config) Encode(w *uper.UperWriter) error {
 			}
 			// encode NumberOfBitsForRV_DCI_1_2_r16 optional
 			if ie.NumberOfBitsForRV_DCI_1_2_r16 != nil {
-				if err = extWriter.WriteInteger(*ie.NumberOfBitsForRV_DCI_1_2_r16, &uper.Constraint{Lb: 0, Ub: 2}, false); err != nil {
+				if err = extWriter.WriteInteger(*ie.NumberOfBitsForRV_DCI_1_2_r16, &aper.Constraint{Lb: 0, Ub: 2}, false); err != nil {
 					return utils.WrapError("Encode NumberOfBitsForRV_DCI_1_2_r16", err)
 				}
 			}
@@ -425,7 +425,7 @@ func (ie *PDSCH_Config) Encode(w *uper.UperWriter) error {
 			}
 			// encode DataScramblingIdentityPDSCH2_r16 optional
 			if ie.DataScramblingIdentityPDSCH2_r16 != nil {
-				if err = extWriter.WriteInteger(*ie.DataScramblingIdentityPDSCH2_r16, &uper.Constraint{Lb: 0, Ub: 1023}, false); err != nil {
+				if err = extWriter.WriteInteger(*ie.DataScramblingIdentityPDSCH2_r16, &aper.Constraint{Lb: 0, Ub: 1023}, false); err != nil {
 					return utils.WrapError("Encode DataScramblingIdentityPDSCH2_r16", err)
 				}
 			}
@@ -460,7 +460,7 @@ func (ie *PDSCH_Config) Encode(w *uper.UperWriter) error {
 		// encode extension group 2
 		if extBitmap[1] {
 			extBuf := new(bytes.Buffer)
-			extWriter := uper.NewWriter(extBuf)
+			extWriter := aper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 2
 			optionals_ext_2 := []bool{ie.RepetitionSchemeConfig_v1630 != nil}
@@ -492,7 +492,7 @@ func (ie *PDSCH_Config) Encode(w *uper.UperWriter) error {
 		// encode extension group 3
 		if extBitmap[2] {
 			extBuf := new(bytes.Buffer)
-			extWriter := uper.NewWriter(extBuf)
+			extWriter := aper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 3
 			optionals_ext_3 := []bool{ie.Pdsch_HARQ_ACK_OneShotFeedbackDCI_1_2_r17 != nil, ie.Pdsch_HARQ_ACK_EnhType3DCI_1_2_r17 != nil, ie.Pdsch_HARQ_ACK_EnhType3DCI_Field_1_2_r17 != nil, ie.Pdsch_HARQ_ACK_RetxDCI_1_2_r17 != nil, ie.Pucch_sSCellDynDCI_1_2_r17 != nil, ie.Dl_OrJointTCI_StateList_r17 != nil, ie.BeamAppTime_r17 != nil, ie.Dummy != nil, ie.Dmrs_FD_OCC_DisabledForRank1_PDSCH_r17 != nil, ie.MinimumSchedulingOffsetK0_r17 != nil, ie.Harq_ProcessNumberSizeDCI_1_2_v1700 != nil, ie.Harq_ProcessNumberSizeDCI_1_1_r17 != nil, ie.Mcs_Table_r17 != nil, ie.Mcs_TableDCI_1_2_r17 != nil, ie.XOverheadMulticast_r17 != nil, ie.PriorityIndicatorDCI_4_2_r17 != nil, ie.SizeDCI_4_2_r17 != nil}
@@ -570,13 +570,13 @@ func (ie *PDSCH_Config) Encode(w *uper.UperWriter) error {
 			}
 			// encode Harq_ProcessNumberSizeDCI_1_2_v1700 optional
 			if ie.Harq_ProcessNumberSizeDCI_1_2_v1700 != nil {
-				if err = extWriter.WriteInteger(*ie.Harq_ProcessNumberSizeDCI_1_2_v1700, &uper.Constraint{Lb: 0, Ub: 5}, false); err != nil {
+				if err = extWriter.WriteInteger(*ie.Harq_ProcessNumberSizeDCI_1_2_v1700, &aper.Constraint{Lb: 0, Ub: 5}, false); err != nil {
 					return utils.WrapError("Encode Harq_ProcessNumberSizeDCI_1_2_v1700", err)
 				}
 			}
 			// encode Harq_ProcessNumberSizeDCI_1_1_r17 optional
 			if ie.Harq_ProcessNumberSizeDCI_1_1_r17 != nil {
-				if err = extWriter.WriteInteger(*ie.Harq_ProcessNumberSizeDCI_1_1_r17, &uper.Constraint{Lb: 5, Ub: 5}, false); err != nil {
+				if err = extWriter.WriteInteger(*ie.Harq_ProcessNumberSizeDCI_1_1_r17, &aper.Constraint{Lb: 5, Ub: 5}, false); err != nil {
 					return utils.WrapError("Encode Harq_ProcessNumberSizeDCI_1_1_r17", err)
 				}
 			}
@@ -606,7 +606,7 @@ func (ie *PDSCH_Config) Encode(w *uper.UperWriter) error {
 			}
 			// encode SizeDCI_4_2_r17 optional
 			if ie.SizeDCI_4_2_r17 != nil {
-				if err = extWriter.WriteInteger(*ie.SizeDCI_4_2_r17, &uper.Constraint{Lb: 20, Ub: maxDCI_4_2_Size_r17}, false); err != nil {
+				if err = extWriter.WriteInteger(*ie.SizeDCI_4_2_r17, &aper.Constraint{Lb: 20, Ub: maxDCI_4_2_Size_r17}, false); err != nil {
 					return utils.WrapError("Encode SizeDCI_4_2_r17", err)
 				}
 			}
@@ -623,7 +623,7 @@ func (ie *PDSCH_Config) Encode(w *uper.UperWriter) error {
 		// encode extension group 4
 		if extBitmap[3] {
 			extBuf := new(bytes.Buffer)
-			extWriter := uper.NewWriter(extBuf)
+			extWriter := aper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 4
 			optionals_ext_4 := []bool{ie.Pdsch_TimeDomainAllocationListForMultiPDSCH_r17 != nil}
@@ -655,7 +655,7 @@ func (ie *PDSCH_Config) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *PDSCH_Config) Decode(r *uper.UperReader) error {
+func (ie *PDSCH_Config) Decode(r *aper.AperReader) error {
 	var err error
 	var extensionBit bool
 	if extensionBit, err = r.ReadBool(); err != nil {
@@ -751,7 +751,7 @@ func (ie *PDSCH_Config) Decode(r *uper.UperReader) error {
 	}
 	if DataScramblingIdentityPDSCHPresent {
 		var tmp_int_DataScramblingIdentityPDSCH int64
-		if tmp_int_DataScramblingIdentityPDSCH, err = r.ReadInteger(&uper.Constraint{Lb: 0, Ub: 1023}, false); err != nil {
+		if tmp_int_DataScramblingIdentityPDSCH, err = r.ReadInteger(&aper.Constraint{Lb: 0, Ub: 1023}, false); err != nil {
 			return utils.WrapError("Decode DataScramblingIdentityPDSCH", err)
 		}
 		ie.DataScramblingIdentityPDSCH = &tmp_int_DataScramblingIdentityPDSCH
@@ -771,7 +771,7 @@ func (ie *PDSCH_Config) Decode(r *uper.UperReader) error {
 		ie.Dmrs_DownlinkForPDSCH_MappingTypeB = tmp_Dmrs_DownlinkForPDSCH_MappingTypeB.Setup
 	}
 	if Tci_StatesToAddModListPresent {
-		tmp_Tci_StatesToAddModList := utils.NewSequence[*TCI_State]([]*TCI_State{}, uper.Constraint{Lb: 1, Ub: maxNrofTCI_States}, false)
+		tmp_Tci_StatesToAddModList := utils.NewSequence[*TCI_State]([]*TCI_State{}, aper.Constraint{Lb: 1, Ub: maxNrofTCI_States}, false)
 		fn_Tci_StatesToAddModList := func() *TCI_State {
 			return new(TCI_State)
 		}
@@ -784,7 +784,7 @@ func (ie *PDSCH_Config) Decode(r *uper.UperReader) error {
 		}
 	}
 	if Tci_StatesToReleaseListPresent {
-		tmp_Tci_StatesToReleaseList := utils.NewSequence[*TCI_StateId]([]*TCI_StateId{}, uper.Constraint{Lb: 1, Ub: maxNrofTCI_States}, false)
+		tmp_Tci_StatesToReleaseList := utils.NewSequence[*TCI_StateId]([]*TCI_StateId{}, aper.Constraint{Lb: 1, Ub: maxNrofTCI_States}, false)
 		fn_Tci_StatesToReleaseList := func() *TCI_StateId {
 			return new(TCI_StateId)
 		}
@@ -819,7 +819,7 @@ func (ie *PDSCH_Config) Decode(r *uper.UperReader) error {
 		}
 	}
 	if RateMatchPatternToAddModListPresent {
-		tmp_RateMatchPatternToAddModList := utils.NewSequence[*RateMatchPattern]([]*RateMatchPattern{}, uper.Constraint{Lb: 1, Ub: maxNrofRateMatchPatterns}, false)
+		tmp_RateMatchPatternToAddModList := utils.NewSequence[*RateMatchPattern]([]*RateMatchPattern{}, aper.Constraint{Lb: 1, Ub: maxNrofRateMatchPatterns}, false)
 		fn_RateMatchPatternToAddModList := func() *RateMatchPattern {
 			return new(RateMatchPattern)
 		}
@@ -832,7 +832,7 @@ func (ie *PDSCH_Config) Decode(r *uper.UperReader) error {
 		}
 	}
 	if RateMatchPatternToReleaseListPresent {
-		tmp_RateMatchPatternToReleaseList := utils.NewSequence[*RateMatchPatternId]([]*RateMatchPatternId{}, uper.Constraint{Lb: 1, Ub: maxNrofRateMatchPatterns}, false)
+		tmp_RateMatchPatternToReleaseList := utils.NewSequence[*RateMatchPatternId]([]*RateMatchPatternId{}, aper.Constraint{Lb: 1, Ub: maxNrofRateMatchPatterns}, false)
 		fn_RateMatchPatternToReleaseList := func() *RateMatchPatternId {
 			return new(RateMatchPatternId)
 		}
@@ -878,7 +878,7 @@ func (ie *PDSCH_Config) Decode(r *uper.UperReader) error {
 		}
 	}
 	if Zp_CSI_RS_ResourceToAddModListPresent {
-		tmp_Zp_CSI_RS_ResourceToAddModList := utils.NewSequence[*ZP_CSI_RS_Resource]([]*ZP_CSI_RS_Resource{}, uper.Constraint{Lb: 1, Ub: maxNrofZP_CSI_RS_Resources}, false)
+		tmp_Zp_CSI_RS_ResourceToAddModList := utils.NewSequence[*ZP_CSI_RS_Resource]([]*ZP_CSI_RS_Resource{}, aper.Constraint{Lb: 1, Ub: maxNrofZP_CSI_RS_Resources}, false)
 		fn_Zp_CSI_RS_ResourceToAddModList := func() *ZP_CSI_RS_Resource {
 			return new(ZP_CSI_RS_Resource)
 		}
@@ -891,7 +891,7 @@ func (ie *PDSCH_Config) Decode(r *uper.UperReader) error {
 		}
 	}
 	if Zp_CSI_RS_ResourceToReleaseListPresent {
-		tmp_Zp_CSI_RS_ResourceToReleaseList := utils.NewSequence[*ZP_CSI_RS_ResourceId]([]*ZP_CSI_RS_ResourceId{}, uper.Constraint{Lb: 1, Ub: maxNrofZP_CSI_RS_Resources}, false)
+		tmp_Zp_CSI_RS_ResourceToReleaseList := utils.NewSequence[*ZP_CSI_RS_ResourceId]([]*ZP_CSI_RS_ResourceId{}, aper.Constraint{Lb: 1, Ub: maxNrofZP_CSI_RS_Resources}, false)
 		fn_Zp_CSI_RS_ResourceToReleaseList := func() *ZP_CSI_RS_ResourceId {
 			return new(ZP_CSI_RS_ResourceId)
 		}
@@ -904,7 +904,7 @@ func (ie *PDSCH_Config) Decode(r *uper.UperReader) error {
 		}
 	}
 	if Aperiodic_ZP_CSI_RS_ResourceSetsToAddModListPresent {
-		tmp_Aperiodic_ZP_CSI_RS_ResourceSetsToAddModList := utils.NewSequence[*ZP_CSI_RS_ResourceSet]([]*ZP_CSI_RS_ResourceSet{}, uper.Constraint{Lb: 1, Ub: maxNrofZP_CSI_RS_ResourceSets}, false)
+		tmp_Aperiodic_ZP_CSI_RS_ResourceSetsToAddModList := utils.NewSequence[*ZP_CSI_RS_ResourceSet]([]*ZP_CSI_RS_ResourceSet{}, aper.Constraint{Lb: 1, Ub: maxNrofZP_CSI_RS_ResourceSets}, false)
 		fn_Aperiodic_ZP_CSI_RS_ResourceSetsToAddModList := func() *ZP_CSI_RS_ResourceSet {
 			return new(ZP_CSI_RS_ResourceSet)
 		}
@@ -917,7 +917,7 @@ func (ie *PDSCH_Config) Decode(r *uper.UperReader) error {
 		}
 	}
 	if Aperiodic_ZP_CSI_RS_ResourceSetsToReleaseListPresent {
-		tmp_Aperiodic_ZP_CSI_RS_ResourceSetsToReleaseList := utils.NewSequence[*ZP_CSI_RS_ResourceSetId]([]*ZP_CSI_RS_ResourceSetId{}, uper.Constraint{Lb: 1, Ub: maxNrofZP_CSI_RS_ResourceSets}, false)
+		tmp_Aperiodic_ZP_CSI_RS_ResourceSetsToReleaseList := utils.NewSequence[*ZP_CSI_RS_ResourceSetId]([]*ZP_CSI_RS_ResourceSetId{}, aper.Constraint{Lb: 1, Ub: maxNrofZP_CSI_RS_ResourceSets}, false)
 		fn_Aperiodic_ZP_CSI_RS_ResourceSetsToReleaseList := func() *ZP_CSI_RS_ResourceSetId {
 			return new(ZP_CSI_RS_ResourceSetId)
 		}
@@ -930,7 +930,7 @@ func (ie *PDSCH_Config) Decode(r *uper.UperReader) error {
 		}
 	}
 	if Sp_ZP_CSI_RS_ResourceSetsToAddModListPresent {
-		tmp_Sp_ZP_CSI_RS_ResourceSetsToAddModList := utils.NewSequence[*ZP_CSI_RS_ResourceSet]([]*ZP_CSI_RS_ResourceSet{}, uper.Constraint{Lb: 1, Ub: maxNrofZP_CSI_RS_ResourceSets}, false)
+		tmp_Sp_ZP_CSI_RS_ResourceSetsToAddModList := utils.NewSequence[*ZP_CSI_RS_ResourceSet]([]*ZP_CSI_RS_ResourceSet{}, aper.Constraint{Lb: 1, Ub: maxNrofZP_CSI_RS_ResourceSets}, false)
 		fn_Sp_ZP_CSI_RS_ResourceSetsToAddModList := func() *ZP_CSI_RS_ResourceSet {
 			return new(ZP_CSI_RS_ResourceSet)
 		}
@@ -943,7 +943,7 @@ func (ie *PDSCH_Config) Decode(r *uper.UperReader) error {
 		}
 	}
 	if Sp_ZP_CSI_RS_ResourceSetsToReleaseListPresent {
-		tmp_Sp_ZP_CSI_RS_ResourceSetsToReleaseList := utils.NewSequence[*ZP_CSI_RS_ResourceSetId]([]*ZP_CSI_RS_ResourceSetId{}, uper.Constraint{Lb: 1, Ub: maxNrofZP_CSI_RS_ResourceSets}, false)
+		tmp_Sp_ZP_CSI_RS_ResourceSetsToReleaseList := utils.NewSequence[*ZP_CSI_RS_ResourceSetId]([]*ZP_CSI_RS_ResourceSetId{}, aper.Constraint{Lb: 1, Ub: maxNrofZP_CSI_RS_ResourceSets}, false)
 		fn_Sp_ZP_CSI_RS_ResourceSetsToReleaseList := func() *ZP_CSI_RS_ResourceSetId {
 			return new(ZP_CSI_RS_ResourceSetId)
 		}
@@ -977,7 +977,7 @@ func (ie *PDSCH_Config) Decode(r *uper.UperReader) error {
 				return err
 			}
 
-			extReader := uper.NewReader(bytes.NewReader(extBytes))
+			extReader := aper.NewReader(bytes.NewReader(extBytes))
 
 			MaxMIMO_Layers_r16Present, err := extReader.ReadBool()
 			if err != nil {
@@ -1100,7 +1100,7 @@ func (ie *PDSCH_Config) Decode(r *uper.UperReader) error {
 			}
 			// decode AperiodicZP_CSI_RS_ResourceSetsToAddModListDCI_1_2_r16 optional
 			if AperiodicZP_CSI_RS_ResourceSetsToAddModListDCI_1_2_r16Present {
-				tmp_AperiodicZP_CSI_RS_ResourceSetsToAddModListDCI_1_2_r16 := utils.NewSequence[*ZP_CSI_RS_ResourceSet]([]*ZP_CSI_RS_ResourceSet{}, uper.Constraint{Lb: 1, Ub: maxNrofZP_CSI_RS_ResourceSets}, false)
+				tmp_AperiodicZP_CSI_RS_ResourceSetsToAddModListDCI_1_2_r16 := utils.NewSequence[*ZP_CSI_RS_ResourceSet]([]*ZP_CSI_RS_ResourceSet{}, aper.Constraint{Lb: 1, Ub: maxNrofZP_CSI_RS_ResourceSets}, false)
 				fn_AperiodicZP_CSI_RS_ResourceSetsToAddModListDCI_1_2_r16 := func() *ZP_CSI_RS_ResourceSet {
 					return new(ZP_CSI_RS_ResourceSet)
 				}
@@ -1114,7 +1114,7 @@ func (ie *PDSCH_Config) Decode(r *uper.UperReader) error {
 			}
 			// decode AperiodicZP_CSI_RS_ResourceSetsToReleaseListDCI_1_2_r16 optional
 			if AperiodicZP_CSI_RS_ResourceSetsToReleaseListDCI_1_2_r16Present {
-				tmp_AperiodicZP_CSI_RS_ResourceSetsToReleaseListDCI_1_2_r16 := utils.NewSequence[*ZP_CSI_RS_ResourceSetId]([]*ZP_CSI_RS_ResourceSetId{}, uper.Constraint{Lb: 1, Ub: maxNrofZP_CSI_RS_ResourceSets}, false)
+				tmp_AperiodicZP_CSI_RS_ResourceSetsToReleaseListDCI_1_2_r16 := utils.NewSequence[*ZP_CSI_RS_ResourceSetId]([]*ZP_CSI_RS_ResourceSetId{}, aper.Constraint{Lb: 1, Ub: maxNrofZP_CSI_RS_ResourceSets}, false)
 				fn_AperiodicZP_CSI_RS_ResourceSetsToReleaseListDCI_1_2_r16 := func() *ZP_CSI_RS_ResourceSetId {
 					return new(ZP_CSI_RS_ResourceSetId)
 				}
@@ -1152,7 +1152,7 @@ func (ie *PDSCH_Config) Decode(r *uper.UperReader) error {
 			// decode Harq_ProcessNumberSizeDCI_1_2_r16 optional
 			if Harq_ProcessNumberSizeDCI_1_2_r16Present {
 				var tmp_int_Harq_ProcessNumberSizeDCI_1_2_r16 int64
-				if tmp_int_Harq_ProcessNumberSizeDCI_1_2_r16, err = extReader.ReadInteger(&uper.Constraint{Lb: 0, Ub: 4}, false); err != nil {
+				if tmp_int_Harq_ProcessNumberSizeDCI_1_2_r16, err = extReader.ReadInteger(&aper.Constraint{Lb: 0, Ub: 4}, false); err != nil {
 					return utils.WrapError("Decode Harq_ProcessNumberSizeDCI_1_2_r16", err)
 				}
 				ie.Harq_ProcessNumberSizeDCI_1_2_r16 = &tmp_int_Harq_ProcessNumberSizeDCI_1_2_r16
@@ -1167,7 +1167,7 @@ func (ie *PDSCH_Config) Decode(r *uper.UperReader) error {
 			// decode NumberOfBitsForRV_DCI_1_2_r16 optional
 			if NumberOfBitsForRV_DCI_1_2_r16Present {
 				var tmp_int_NumberOfBitsForRV_DCI_1_2_r16 int64
-				if tmp_int_NumberOfBitsForRV_DCI_1_2_r16, err = extReader.ReadInteger(&uper.Constraint{Lb: 0, Ub: 2}, false); err != nil {
+				if tmp_int_NumberOfBitsForRV_DCI_1_2_r16, err = extReader.ReadInteger(&aper.Constraint{Lb: 0, Ub: 2}, false); err != nil {
 					return utils.WrapError("Decode NumberOfBitsForRV_DCI_1_2_r16", err)
 				}
 				ie.NumberOfBitsForRV_DCI_1_2_r16 = &tmp_int_NumberOfBitsForRV_DCI_1_2_r16
@@ -1246,7 +1246,7 @@ func (ie *PDSCH_Config) Decode(r *uper.UperReader) error {
 			// decode DataScramblingIdentityPDSCH2_r16 optional
 			if DataScramblingIdentityPDSCH2_r16Present {
 				var tmp_int_DataScramblingIdentityPDSCH2_r16 int64
-				if tmp_int_DataScramblingIdentityPDSCH2_r16, err = extReader.ReadInteger(&uper.Constraint{Lb: 0, Ub: 1023}, false); err != nil {
+				if tmp_int_DataScramblingIdentityPDSCH2_r16, err = extReader.ReadInteger(&aper.Constraint{Lb: 0, Ub: 1023}, false); err != nil {
 					return utils.WrapError("Decode DataScramblingIdentityPDSCH2_r16", err)
 				}
 				ie.DataScramblingIdentityPDSCH2_r16 = &tmp_int_DataScramblingIdentityPDSCH2_r16
@@ -1275,7 +1275,7 @@ func (ie *PDSCH_Config) Decode(r *uper.UperReader) error {
 				return err
 			}
 
-			extReader := uper.NewReader(bytes.NewReader(extBytes))
+			extReader := aper.NewReader(bytes.NewReader(extBytes))
 
 			RepetitionSchemeConfig_v1630Present, err := extReader.ReadBool()
 			if err != nil {
@@ -1297,7 +1297,7 @@ func (ie *PDSCH_Config) Decode(r *uper.UperReader) error {
 				return err
 			}
 
-			extReader := uper.NewReader(bytes.NewReader(extBytes))
+			extReader := aper.NewReader(bytes.NewReader(extBytes))
 
 			Pdsch_HARQ_ACK_OneShotFeedbackDCI_1_2_r17Present, err := extReader.ReadBool()
 			if err != nil {
@@ -1442,7 +1442,7 @@ func (ie *PDSCH_Config) Decode(r *uper.UperReader) error {
 			// decode Harq_ProcessNumberSizeDCI_1_2_v1700 optional
 			if Harq_ProcessNumberSizeDCI_1_2_v1700Present {
 				var tmp_int_Harq_ProcessNumberSizeDCI_1_2_v1700 int64
-				if tmp_int_Harq_ProcessNumberSizeDCI_1_2_v1700, err = extReader.ReadInteger(&uper.Constraint{Lb: 0, Ub: 5}, false); err != nil {
+				if tmp_int_Harq_ProcessNumberSizeDCI_1_2_v1700, err = extReader.ReadInteger(&aper.Constraint{Lb: 0, Ub: 5}, false); err != nil {
 					return utils.WrapError("Decode Harq_ProcessNumberSizeDCI_1_2_v1700", err)
 				}
 				ie.Harq_ProcessNumberSizeDCI_1_2_v1700 = &tmp_int_Harq_ProcessNumberSizeDCI_1_2_v1700
@@ -1450,7 +1450,7 @@ func (ie *PDSCH_Config) Decode(r *uper.UperReader) error {
 			// decode Harq_ProcessNumberSizeDCI_1_1_r17 optional
 			if Harq_ProcessNumberSizeDCI_1_1_r17Present {
 				var tmp_int_Harq_ProcessNumberSizeDCI_1_1_r17 int64
-				if tmp_int_Harq_ProcessNumberSizeDCI_1_1_r17, err = extReader.ReadInteger(&uper.Constraint{Lb: 5, Ub: 5}, false); err != nil {
+				if tmp_int_Harq_ProcessNumberSizeDCI_1_1_r17, err = extReader.ReadInteger(&aper.Constraint{Lb: 5, Ub: 5}, false); err != nil {
 					return utils.WrapError("Decode Harq_ProcessNumberSizeDCI_1_1_r17", err)
 				}
 				ie.Harq_ProcessNumberSizeDCI_1_1_r17 = &tmp_int_Harq_ProcessNumberSizeDCI_1_1_r17
@@ -1486,7 +1486,7 @@ func (ie *PDSCH_Config) Decode(r *uper.UperReader) error {
 			// decode SizeDCI_4_2_r17 optional
 			if SizeDCI_4_2_r17Present {
 				var tmp_int_SizeDCI_4_2_r17 int64
-				if tmp_int_SizeDCI_4_2_r17, err = extReader.ReadInteger(&uper.Constraint{Lb: 20, Ub: maxDCI_4_2_Size_r17}, false); err != nil {
+				if tmp_int_SizeDCI_4_2_r17, err = extReader.ReadInteger(&aper.Constraint{Lb: 20, Ub: maxDCI_4_2_Size_r17}, false); err != nil {
 					return utils.WrapError("Decode SizeDCI_4_2_r17", err)
 				}
 				ie.SizeDCI_4_2_r17 = &tmp_int_SizeDCI_4_2_r17
@@ -1499,7 +1499,7 @@ func (ie *PDSCH_Config) Decode(r *uper.UperReader) error {
 				return err
 			}
 
-			extReader := uper.NewReader(bytes.NewReader(extBytes))
+			extReader := aper.NewReader(bytes.NewReader(extBytes))
 
 			Pdsch_TimeDomainAllocationListForMultiPDSCH_r17Present, err := extReader.ReadBool()
 			if err != nil {

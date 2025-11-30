@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -10,7 +10,7 @@ type EUTRA_ExcludedCell struct {
 	PhysCellIdRange EUTRA_PhysCellIdRange `madatory`
 }
 
-func (ie *EUTRA_ExcludedCell) Encode(w *uper.UperWriter) error {
+func (ie *EUTRA_ExcludedCell) Encode(w *aper.AperWriter) error {
 	var err error
 	if err = ie.CellIndexEUTRA.Encode(w); err != nil {
 		return utils.WrapError("Encode CellIndexEUTRA", err)
@@ -21,7 +21,7 @@ func (ie *EUTRA_ExcludedCell) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *EUTRA_ExcludedCell) Decode(r *uper.UperReader) error {
+func (ie *EUTRA_ExcludedCell) Decode(r *aper.AperReader) error {
 	var err error
 	if err = ie.CellIndexEUTRA.Decode(r); err != nil {
 		return utils.WrapError("Decode CellIndexEUTRA", err)

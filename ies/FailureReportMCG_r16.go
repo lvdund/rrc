@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -14,7 +14,7 @@ type FailureReportMCG_r16 struct {
 	MeasResultFreqListUTRA_FDD_r16 *MeasResultList2UTRA                  `optional`
 }
 
-func (ie *FailureReportMCG_r16) Encode(w *uper.UperWriter) error {
+func (ie *FailureReportMCG_r16) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.FailureType_r16 != nil, ie.MeasResultFreqList_r16 != nil, ie.MeasResultFreqListEUTRA_r16 != nil, ie.MeasResultSCG_r16 != nil, ie.MeasResultSCG_EUTRA_r16 != nil, ie.MeasResultFreqListUTRA_FDD_r16 != nil}
 	for _, bit := range preambleBits {
@@ -38,12 +38,12 @@ func (ie *FailureReportMCG_r16) Encode(w *uper.UperWriter) error {
 		}
 	}
 	if ie.MeasResultSCG_r16 != nil {
-		if err = w.WriteOctetString(*ie.MeasResultSCG_r16, &uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+		if err = w.WriteOctetString(*ie.MeasResultSCG_r16, &aper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
 			return utils.WrapError("Encode MeasResultSCG_r16", err)
 		}
 	}
 	if ie.MeasResultSCG_EUTRA_r16 != nil {
-		if err = w.WriteOctetString(*ie.MeasResultSCG_EUTRA_r16, &uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+		if err = w.WriteOctetString(*ie.MeasResultSCG_EUTRA_r16, &aper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
 			return utils.WrapError("Encode MeasResultSCG_EUTRA_r16", err)
 		}
 	}
@@ -55,7 +55,7 @@ func (ie *FailureReportMCG_r16) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *FailureReportMCG_r16) Decode(r *uper.UperReader) error {
+func (ie *FailureReportMCG_r16) Decode(r *aper.AperReader) error {
 	var err error
 	var FailureType_r16Present bool
 	if FailureType_r16Present, err = r.ReadBool(); err != nil {
@@ -101,14 +101,14 @@ func (ie *FailureReportMCG_r16) Decode(r *uper.UperReader) error {
 	}
 	if MeasResultSCG_r16Present {
 		var tmp_os_MeasResultSCG_r16 []byte
-		if tmp_os_MeasResultSCG_r16, err = r.ReadOctetString(&uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+		if tmp_os_MeasResultSCG_r16, err = r.ReadOctetString(&aper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
 			return utils.WrapError("Decode MeasResultSCG_r16", err)
 		}
 		ie.MeasResultSCG_r16 = &tmp_os_MeasResultSCG_r16
 	}
 	if MeasResultSCG_EUTRA_r16Present {
 		var tmp_os_MeasResultSCG_EUTRA_r16 []byte
-		if tmp_os_MeasResultSCG_EUTRA_r16, err = r.ReadOctetString(&uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+		if tmp_os_MeasResultSCG_EUTRA_r16, err = r.ReadOctetString(&aper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
 			return utils.WrapError("Decode MeasResultSCG_EUTRA_r16", err)
 		}
 		ie.MeasResultSCG_EUTRA_r16 = &tmp_os_MeasResultSCG_EUTRA_r16

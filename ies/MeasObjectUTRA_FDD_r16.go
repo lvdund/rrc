@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -12,7 +12,7 @@ type MeasObjectUTRA_FDD_r16 struct {
 	CellsToAddModList_r16      *CellsToAddModListUTRA_FDD_r16 `optional`
 }
 
-func (ie *MeasObjectUTRA_FDD_r16) Encode(w *uper.UperWriter) error {
+func (ie *MeasObjectUTRA_FDD_r16) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.Utra_FDD_Q_OffsetRange_r16 != nil, ie.CellsToRemoveList_r16 != nil, ie.CellsToAddModList_r16 != nil}
 	for _, bit := range preambleBits {
@@ -41,7 +41,7 @@ func (ie *MeasObjectUTRA_FDD_r16) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *MeasObjectUTRA_FDD_r16) Decode(r *uper.UperReader) error {
+func (ie *MeasObjectUTRA_FDD_r16) Decode(r *aper.AperReader) error {
 	var err error
 	var Utra_FDD_Q_OffsetRange_r16Present bool
 	if Utra_FDD_Q_OffsetRange_r16Present, err = r.ReadBool(); err != nil {

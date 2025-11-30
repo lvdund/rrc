@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -10,7 +10,7 @@ type MulticastConfig_r17 struct {
 	Type1_Codebook_GenerationMode_r17        *MulticastConfig_r17_type1_Codebook_GenerationMode_r17 `optional`
 }
 
-func (ie *MulticastConfig_r17) Encode(w *uper.UperWriter) error {
+func (ie *MulticastConfig_r17) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.Pdsch_HARQ_ACK_CodebookListMulticast_r17 != nil, ie.Type1_Codebook_GenerationMode_r17 != nil}
 	for _, bit := range preambleBits {
@@ -34,7 +34,7 @@ func (ie *MulticastConfig_r17) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *MulticastConfig_r17) Decode(r *uper.UperReader) error {
+func (ie *MulticastConfig_r17) Decode(r *aper.AperReader) error {
 	var err error
 	var Pdsch_HARQ_ACK_CodebookListMulticast_r17Present bool
 	if Pdsch_HARQ_ACK_CodebookListMulticast_r17Present, err = r.ReadBool(); err != nil {

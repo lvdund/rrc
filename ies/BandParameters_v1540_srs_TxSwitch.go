@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -11,7 +11,7 @@ type BandParameters_v1540_srs_TxSwitch struct {
 	TxSwitchWithAnotherBand   *int64                                                      `lb:1,ub:32,optional`
 }
 
-func (ie *BandParameters_v1540_srs_TxSwitch) Encode(w *uper.UperWriter) error {
+func (ie *BandParameters_v1540_srs_TxSwitch) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.TxSwitchImpactToRx != nil, ie.TxSwitchWithAnotherBand != nil}
 	for _, bit := range preambleBits {
@@ -23,19 +23,19 @@ func (ie *BandParameters_v1540_srs_TxSwitch) Encode(w *uper.UperWriter) error {
 		return utils.WrapError("Encode SupportedSRS_TxPortSwitch", err)
 	}
 	if ie.TxSwitchImpactToRx != nil {
-		if err = w.WriteInteger(*ie.TxSwitchImpactToRx, &uper.Constraint{Lb: 1, Ub: 32}, false); err != nil {
+		if err = w.WriteInteger(*ie.TxSwitchImpactToRx, &aper.Constraint{Lb: 1, Ub: 32}, false); err != nil {
 			return utils.WrapError("Encode TxSwitchImpactToRx", err)
 		}
 	}
 	if ie.TxSwitchWithAnotherBand != nil {
-		if err = w.WriteInteger(*ie.TxSwitchWithAnotherBand, &uper.Constraint{Lb: 1, Ub: 32}, false); err != nil {
+		if err = w.WriteInteger(*ie.TxSwitchWithAnotherBand, &aper.Constraint{Lb: 1, Ub: 32}, false); err != nil {
 			return utils.WrapError("Encode TxSwitchWithAnotherBand", err)
 		}
 	}
 	return nil
 }
 
-func (ie *BandParameters_v1540_srs_TxSwitch) Decode(r *uper.UperReader) error {
+func (ie *BandParameters_v1540_srs_TxSwitch) Decode(r *aper.AperReader) error {
 	var err error
 	var TxSwitchImpactToRxPresent bool
 	if TxSwitchImpactToRxPresent, err = r.ReadBool(); err != nil {
@@ -50,14 +50,14 @@ func (ie *BandParameters_v1540_srs_TxSwitch) Decode(r *uper.UperReader) error {
 	}
 	if TxSwitchImpactToRxPresent {
 		var tmp_int_TxSwitchImpactToRx int64
-		if tmp_int_TxSwitchImpactToRx, err = r.ReadInteger(&uper.Constraint{Lb: 1, Ub: 32}, false); err != nil {
+		if tmp_int_TxSwitchImpactToRx, err = r.ReadInteger(&aper.Constraint{Lb: 1, Ub: 32}, false); err != nil {
 			return utils.WrapError("Decode TxSwitchImpactToRx", err)
 		}
 		ie.TxSwitchImpactToRx = &tmp_int_TxSwitchImpactToRx
 	}
 	if TxSwitchWithAnotherBandPresent {
 		var tmp_int_TxSwitchWithAnotherBand int64
-		if tmp_int_TxSwitchWithAnotherBand, err = r.ReadInteger(&uper.Constraint{Lb: 1, Ub: 32}, false); err != nil {
+		if tmp_int_TxSwitchWithAnotherBand, err = r.ReadInteger(&aper.Constraint{Lb: 1, Ub: 32}, false); err != nil {
 			return utils.WrapError("Decode TxSwitchWithAnotherBand", err)
 		}
 		ie.TxSwitchWithAnotherBand = &tmp_int_TxSwitchWithAnotherBand

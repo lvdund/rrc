@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -10,7 +10,7 @@ type ConnEstFailReport_r16_measResultNeighCells_r16 struct {
 	MeasResultNeighCellListEUTRA *MeasResultList2EUTRA_r16 `optional`
 }
 
-func (ie *ConnEstFailReport_r16_measResultNeighCells_r16) Encode(w *uper.UperWriter) error {
+func (ie *ConnEstFailReport_r16_measResultNeighCells_r16) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.MeasResultNeighCellListNR != nil, ie.MeasResultNeighCellListEUTRA != nil}
 	for _, bit := range preambleBits {
@@ -31,7 +31,7 @@ func (ie *ConnEstFailReport_r16_measResultNeighCells_r16) Encode(w *uper.UperWri
 	return nil
 }
 
-func (ie *ConnEstFailReport_r16_measResultNeighCells_r16) Decode(r *uper.UperReader) error {
+func (ie *ConnEstFailReport_r16_measResultNeighCells_r16) Decode(r *aper.AperReader) error {
 	var err error
 	var MeasResultNeighCellListNRPresent bool
 	if MeasResultNeighCellListNRPresent, err = r.ReadBool(); err != nil {

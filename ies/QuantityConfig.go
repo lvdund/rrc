@@ -3,7 +3,7 @@ package ies
 import (
 	"bytes"
 
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -14,7 +14,7 @@ type QuantityConfig struct {
 	QuantityConfigCLI_r16      *FilterConfigCLI_r16        `optional,ext-2`
 }
 
-func (ie *QuantityConfig) Encode(w *uper.UperWriter) error {
+func (ie *QuantityConfig) Encode(w *aper.AperWriter) error {
 	var err error
 	hasExtensions := ie.QuantityConfigEUTRA != nil || ie.QuantityConfigUTRA_FDD_r16 != nil || ie.QuantityConfigCLI_r16 != nil
 	preambleBits := []bool{hasExtensions, len(ie.QuantityConfigNR_List) > 0}
@@ -24,7 +24,7 @@ func (ie *QuantityConfig) Encode(w *uper.UperWriter) error {
 		}
 	}
 	if len(ie.QuantityConfigNR_List) > 0 {
-		tmp_QuantityConfigNR_List := utils.NewSequence[*QuantityConfigNR]([]*QuantityConfigNR{}, uper.Constraint{Lb: 1, Ub: maxNrofQuantityConfig}, false)
+		tmp_QuantityConfigNR_List := utils.NewSequence[*QuantityConfigNR]([]*QuantityConfigNR{}, aper.Constraint{Lb: 1, Ub: maxNrofQuantityConfig}, false)
 		for _, i := range ie.QuantityConfigNR_List {
 			tmp_QuantityConfigNR_List.Value = append(tmp_QuantityConfigNR_List.Value, &i)
 		}
@@ -42,7 +42,7 @@ func (ie *QuantityConfig) Encode(w *uper.UperWriter) error {
 		// encode extension group 1
 		if extBitmap[0] {
 			extBuf := new(bytes.Buffer)
-			extWriter := uper.NewWriter(extBuf)
+			extWriter := aper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 1
 			optionals_ext_1 := []bool{ie.QuantityConfigEUTRA != nil}
@@ -71,7 +71,7 @@ func (ie *QuantityConfig) Encode(w *uper.UperWriter) error {
 		// encode extension group 2
 		if extBitmap[1] {
 			extBuf := new(bytes.Buffer)
-			extWriter := uper.NewWriter(extBuf)
+			extWriter := aper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 2
 			optionals_ext_2 := []bool{ie.QuantityConfigUTRA_FDD_r16 != nil, ie.QuantityConfigCLI_r16 != nil}
@@ -106,7 +106,7 @@ func (ie *QuantityConfig) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *QuantityConfig) Decode(r *uper.UperReader) error {
+func (ie *QuantityConfig) Decode(r *aper.AperReader) error {
 	var err error
 	var extensionBit bool
 	if extensionBit, err = r.ReadBool(); err != nil {
@@ -117,7 +117,7 @@ func (ie *QuantityConfig) Decode(r *uper.UperReader) error {
 		return err
 	}
 	if QuantityConfigNR_ListPresent {
-		tmp_QuantityConfigNR_List := utils.NewSequence[*QuantityConfigNR]([]*QuantityConfigNR{}, uper.Constraint{Lb: 1, Ub: maxNrofQuantityConfig}, false)
+		tmp_QuantityConfigNR_List := utils.NewSequence[*QuantityConfigNR]([]*QuantityConfigNR{}, aper.Constraint{Lb: 1, Ub: maxNrofQuantityConfig}, false)
 		fn_QuantityConfigNR_List := func() *QuantityConfigNR {
 			return new(QuantityConfigNR)
 		}
@@ -144,7 +144,7 @@ func (ie *QuantityConfig) Decode(r *uper.UperReader) error {
 				return err
 			}
 
-			extReader := uper.NewReader(bytes.NewReader(extBytes))
+			extReader := aper.NewReader(bytes.NewReader(extBytes))
 
 			QuantityConfigEUTRAPresent, err := extReader.ReadBool()
 			if err != nil {
@@ -165,7 +165,7 @@ func (ie *QuantityConfig) Decode(r *uper.UperReader) error {
 				return err
 			}
 
-			extReader := uper.NewReader(bytes.NewReader(extBytes))
+			extReader := aper.NewReader(bytes.NewReader(extBytes))
 
 			QuantityConfigUTRA_FDD_r16Present, err := extReader.ReadBool()
 			if err != nil {

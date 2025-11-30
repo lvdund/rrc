@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -9,7 +9,7 @@ type MRDC_Parameters_v1590 struct {
 	InterBandContiguousMRDC *MRDC_Parameters_v1590_interBandContiguousMRDC `optional`
 }
 
-func (ie *MRDC_Parameters_v1590) Encode(w *uper.UperWriter) error {
+func (ie *MRDC_Parameters_v1590) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.InterBandContiguousMRDC != nil}
 	for _, bit := range preambleBits {
@@ -25,7 +25,7 @@ func (ie *MRDC_Parameters_v1590) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *MRDC_Parameters_v1590) Decode(r *uper.UperReader) error {
+func (ie *MRDC_Parameters_v1590) Decode(r *aper.AperReader) error {
 	var err error
 	var InterBandContiguousMRDCPresent bool
 	if InterBandContiguousMRDCPresent, err = r.ReadBool(); err != nil {

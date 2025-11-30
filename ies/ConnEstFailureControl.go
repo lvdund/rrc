@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -11,7 +11,7 @@ type ConnEstFailureControl struct {
 	ConnEstFailOffset         *int64                                          `lb:0,ub:15,optional`
 }
 
-func (ie *ConnEstFailureControl) Encode(w *uper.UperWriter) error {
+func (ie *ConnEstFailureControl) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.ConnEstFailOffset != nil}
 	for _, bit := range preambleBits {
@@ -26,14 +26,14 @@ func (ie *ConnEstFailureControl) Encode(w *uper.UperWriter) error {
 		return utils.WrapError("Encode ConnEstFailOffsetValidity", err)
 	}
 	if ie.ConnEstFailOffset != nil {
-		if err = w.WriteInteger(*ie.ConnEstFailOffset, &uper.Constraint{Lb: 0, Ub: 15}, false); err != nil {
+		if err = w.WriteInteger(*ie.ConnEstFailOffset, &aper.Constraint{Lb: 0, Ub: 15}, false); err != nil {
 			return utils.WrapError("Encode ConnEstFailOffset", err)
 		}
 	}
 	return nil
 }
 
-func (ie *ConnEstFailureControl) Decode(r *uper.UperReader) error {
+func (ie *ConnEstFailureControl) Decode(r *aper.AperReader) error {
 	var err error
 	var ConnEstFailOffsetPresent bool
 	if ConnEstFailOffsetPresent, err = r.ReadBool(); err != nil {
@@ -47,7 +47,7 @@ func (ie *ConnEstFailureControl) Decode(r *uper.UperReader) error {
 	}
 	if ConnEstFailOffsetPresent {
 		var tmp_int_ConnEstFailOffset int64
-		if tmp_int_ConnEstFailOffset, err = r.ReadInteger(&uper.Constraint{Lb: 0, Ub: 15}, false); err != nil {
+		if tmp_int_ConnEstFailOffset, err = r.ReadInteger(&aper.Constraint{Lb: 0, Ub: 15}, false); err != nil {
 			return utils.WrapError("Decode ConnEstFailOffset", err)
 		}
 		ie.ConnEstFailOffset = &tmp_int_ConnEstFailOffset

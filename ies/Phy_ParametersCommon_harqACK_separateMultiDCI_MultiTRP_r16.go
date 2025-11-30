@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -9,7 +9,7 @@ type Phy_ParametersCommon_harqACK_separateMultiDCI_MultiTRP_r16 struct {
 	MaxNumberLongPUCCHs_r16 *Phy_ParametersCommon_harqACK_separateMultiDCI_MultiTRP_r16_maxNumberLongPUCCHs_r16 `optional`
 }
 
-func (ie *Phy_ParametersCommon_harqACK_separateMultiDCI_MultiTRP_r16) Encode(w *uper.UperWriter) error {
+func (ie *Phy_ParametersCommon_harqACK_separateMultiDCI_MultiTRP_r16) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.MaxNumberLongPUCCHs_r16 != nil}
 	for _, bit := range preambleBits {
@@ -25,7 +25,7 @@ func (ie *Phy_ParametersCommon_harqACK_separateMultiDCI_MultiTRP_r16) Encode(w *
 	return nil
 }
 
-func (ie *Phy_ParametersCommon_harqACK_separateMultiDCI_MultiTRP_r16) Decode(r *uper.UperReader) error {
+func (ie *Phy_ParametersCommon_harqACK_separateMultiDCI_MultiTRP_r16) Decode(r *aper.AperReader) error {
 	var err error
 	var MaxNumberLongPUCCHs_r16Present bool
 	if MaxNumberLongPUCCHs_r16Present, err = r.ReadBool(); err != nil {

@@ -1,18 +1,18 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
 type BAP_Config_r16 struct {
-	Bap_Address_r16              *uper.BitString                             `lb:10,ub:10,optional`
+	Bap_Address_r16              *aper.BitString                             `lb:10,ub:10,optional`
 	DefaultUL_BAP_RoutingID_r16  *BAP_RoutingID_r16                          `optional`
 	DefaultUL_BH_RLC_Channel_r16 *BH_RLC_ChannelID_r16                       `optional`
 	FlowControlFeedbackType_r16  *BAP_Config_r16_flowControlFeedbackType_r16 `optional`
 }
 
-func (ie *BAP_Config_r16) Encode(w *uper.UperWriter) error {
+func (ie *BAP_Config_r16) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.Bap_Address_r16 != nil, ie.DefaultUL_BAP_RoutingID_r16 != nil, ie.DefaultUL_BH_RLC_Channel_r16 != nil, ie.FlowControlFeedbackType_r16 != nil}
 	for _, bit := range preambleBits {
@@ -21,7 +21,7 @@ func (ie *BAP_Config_r16) Encode(w *uper.UperWriter) error {
 		}
 	}
 	if ie.Bap_Address_r16 != nil {
-		if err = w.WriteBitString(ie.Bap_Address_r16.Bytes, uint(ie.Bap_Address_r16.NumBits), &uper.Constraint{Lb: 10, Ub: 10}, false); err != nil {
+		if err = w.WriteBitString(ie.Bap_Address_r16.Bytes, uint(ie.Bap_Address_r16.NumBits), &aper.Constraint{Lb: 10, Ub: 10}, false); err != nil {
 			return utils.WrapError("Encode Bap_Address_r16", err)
 		}
 	}
@@ -43,7 +43,7 @@ func (ie *BAP_Config_r16) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *BAP_Config_r16) Decode(r *uper.UperReader) error {
+func (ie *BAP_Config_r16) Decode(r *aper.AperReader) error {
 	var err error
 	var Bap_Address_r16Present bool
 	if Bap_Address_r16Present, err = r.ReadBool(); err != nil {
@@ -64,10 +64,10 @@ func (ie *BAP_Config_r16) Decode(r *uper.UperReader) error {
 	if Bap_Address_r16Present {
 		var tmp_bs_Bap_Address_r16 []byte
 		var n_Bap_Address_r16 uint
-		if tmp_bs_Bap_Address_r16, n_Bap_Address_r16, err = r.ReadBitString(&uper.Constraint{Lb: 10, Ub: 10}, false); err != nil {
+		if tmp_bs_Bap_Address_r16, n_Bap_Address_r16, err = r.ReadBitString(&aper.Constraint{Lb: 10, Ub: 10}, false); err != nil {
 			return utils.WrapError("Decode Bap_Address_r16", err)
 		}
-		tmp_bitstring := uper.BitString{
+		tmp_bitstring := aper.BitString{
 			Bytes:   tmp_bs_Bap_Address_r16,
 			NumBits: uint64(n_Bap_Address_r16),
 		}

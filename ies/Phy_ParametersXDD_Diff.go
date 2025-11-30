@@ -3,7 +3,7 @@ package ies
 import (
 	"bytes"
 
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -17,7 +17,7 @@ type Phy_ParametersXDD_Diff struct {
 	Ul_SchedulingOffset             *Phy_ParametersXDD_Diff_ul_SchedulingOffset             `optional,ext-1`
 }
 
-func (ie *Phy_ParametersXDD_Diff) Encode(w *uper.UperWriter) error {
+func (ie *Phy_ParametersXDD_Diff) Encode(w *aper.AperWriter) error {
 	var err error
 	hasExtensions := ie.Dl_SchedulingOffset_PDSCH_TypeA != nil || ie.Dl_SchedulingOffset_PDSCH_TypeB != nil || ie.Ul_SchedulingOffset != nil
 	preambleBits := []bool{hasExtensions, ie.DynamicSFI != nil, ie.TwoPUCCH_F0_2_ConsecSymbols != nil, ie.TwoDifferentTPC_Loop_PUSCH != nil, ie.TwoDifferentTPC_Loop_PUCCH != nil}
@@ -56,7 +56,7 @@ func (ie *Phy_ParametersXDD_Diff) Encode(w *uper.UperWriter) error {
 		// encode extension group 1
 		if extBitmap[0] {
 			extBuf := new(bytes.Buffer)
-			extWriter := uper.NewWriter(extBuf)
+			extWriter := aper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 1
 			optionals_ext_1 := []bool{ie.Dl_SchedulingOffset_PDSCH_TypeA != nil, ie.Dl_SchedulingOffset_PDSCH_TypeB != nil, ie.Ul_SchedulingOffset != nil}
@@ -97,7 +97,7 @@ func (ie *Phy_ParametersXDD_Diff) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *Phy_ParametersXDD_Diff) Decode(r *uper.UperReader) error {
+func (ie *Phy_ParametersXDD_Diff) Decode(r *aper.AperReader) error {
 	var err error
 	var extensionBit bool
 	if extensionBit, err = r.ReadBool(); err != nil {
@@ -158,7 +158,7 @@ func (ie *Phy_ParametersXDD_Diff) Decode(r *uper.UperReader) error {
 				return err
 			}
 
-			extReader := uper.NewReader(bytes.NewReader(extBytes))
+			extReader := aper.NewReader(bytes.NewReader(extBytes))
 
 			Dl_SchedulingOffset_PDSCH_TypeAPresent, err := extReader.ReadBool()
 			if err != nil {

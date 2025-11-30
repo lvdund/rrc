@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -22,7 +22,7 @@ type FeatureSetDownlink_v1700 struct {
 	MTRP_PDCCH_Repetition_r17        *FeatureSetDownlink_v1700_mTRP_PDCCH_Repetition_r17        `lb:2,ub:3,optional`
 }
 
-func (ie *FeatureSetDownlink_v1700) Encode(w *uper.UperWriter) error {
+func (ie *FeatureSetDownlink_v1700) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.ScalingFactor_1024QAM_FR1_r17 != nil, ie.TimeDurationForQCL_v1710 != nil, ie.Sfn_SchemeA_r17 != nil, ie.Sfn_SchemeA_PDCCH_only_r17 != nil, ie.Sfn_SchemeA_DynamicSwitching_r17 != nil, ie.Sfn_SchemeA_PDSCH_only_r17 != nil, ie.Sfn_SchemeB_r17 != nil, ie.Sfn_SchemeB_DynamicSwitching_r17 != nil, ie.Sfn_SchemeB_PDSCH_only_r17 != nil, ie.MTRP_PDCCH_Case2_1SpanGap_r17 != nil, ie.MTRP_PDCCH_legacyMonitoring_r17 != nil, ie.MTRP_PDCCH_multiDCI_multiTRP_r17 != nil, ie.DynamicMulticastPCell_r17 != nil, ie.MTRP_PDCCH_Repetition_r17 != nil}
 	for _, bit := range preambleBits {
@@ -103,7 +103,7 @@ func (ie *FeatureSetDownlink_v1700) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *FeatureSetDownlink_v1700) Decode(r *uper.UperReader) error {
+func (ie *FeatureSetDownlink_v1700) Decode(r *aper.AperReader) error {
 	var err error
 	var ScalingFactor_1024QAM_FR1_r17Present bool
 	if ScalingFactor_1024QAM_FR1_r17Present, err = r.ReadBool(); err != nil {

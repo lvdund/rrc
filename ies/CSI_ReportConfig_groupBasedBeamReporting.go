@@ -3,7 +3,7 @@ package ies
 import (
 	"fmt"
 
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -15,11 +15,11 @@ const (
 
 type CSI_ReportConfig_groupBasedBeamReporting struct {
 	Choice   uint64
-	Enabled  uper.NULL `madatory`
+	Enabled  aper.NULL `madatory`
 	Disabled *CSI_ReportConfig_groupBasedBeamReporting_disabled
 }
 
-func (ie *CSI_ReportConfig_groupBasedBeamReporting) Encode(w *uper.UperWriter) error {
+func (ie *CSI_ReportConfig_groupBasedBeamReporting) Encode(w *aper.AperWriter) error {
 	var err error
 	if err = w.WriteChoice(ie.Choice, 2, false); err != nil {
 		return err
@@ -39,7 +39,7 @@ func (ie *CSI_ReportConfig_groupBasedBeamReporting) Encode(w *uper.UperWriter) e
 	return err
 }
 
-func (ie *CSI_ReportConfig_groupBasedBeamReporting) Decode(r *uper.UperReader) error {
+func (ie *CSI_ReportConfig_groupBasedBeamReporting) Decode(r *aper.AperReader) error {
 	var err error
 	if ie.Choice, err = r.ReadChoice(2, false); err != nil {
 		return err

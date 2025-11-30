@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -16,7 +16,7 @@ type MIMO_ParametersPerBand_ssb_csirs_SINR_measurement_r16 struct {
 	SupportedSINR_meas_r16              *MIMO_ParametersPerBand_ssb_csirs_SINR_measurement_r16_supportedSINR_meas_r16             `optional`
 }
 
-func (ie *MIMO_ParametersPerBand_ssb_csirs_SINR_measurement_r16) Encode(w *uper.UperWriter) error {
+func (ie *MIMO_ParametersPerBand_ssb_csirs_SINR_measurement_r16) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.SupportedSINR_meas_r16 != nil}
 	for _, bit := range preambleBits {
@@ -53,7 +53,7 @@ func (ie *MIMO_ParametersPerBand_ssb_csirs_SINR_measurement_r16) Encode(w *uper.
 	return nil
 }
 
-func (ie *MIMO_ParametersPerBand_ssb_csirs_SINR_measurement_r16) Decode(r *uper.UperReader) error {
+func (ie *MIMO_ParametersPerBand_ssb_csirs_SINR_measurement_r16) Decode(r *aper.AperReader) error {
 	var err error
 	var SupportedSINR_meas_r16Present bool
 	if SupportedSINR_meas_r16Present, err = r.ReadBool(); err != nil {

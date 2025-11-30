@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -11,7 +11,7 @@ type UECapabilityInformationSidelink_v1700_IEs struct {
 	NonCriticalExtension                         interface{}                          `optional`
 }
 
-func (ie *UECapabilityInformationSidelink_v1700_IEs) Encode(w *uper.UperWriter) error {
+func (ie *UECapabilityInformationSidelink_v1700_IEs) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.Mac_ParametersSidelink_r17 != nil, ie.SupportedBandCombinationListSidelinkNR_v1710 != nil}
 	for _, bit := range preambleBits {
@@ -32,7 +32,7 @@ func (ie *UECapabilityInformationSidelink_v1700_IEs) Encode(w *uper.UperWriter) 
 	return nil
 }
 
-func (ie *UECapabilityInformationSidelink_v1700_IEs) Decode(r *uper.UperReader) error {
+func (ie *UECapabilityInformationSidelink_v1700_IEs) Decode(r *aper.AperReader) error {
 	var err error
 	var Mac_ParametersSidelink_r17Present bool
 	if Mac_ParametersSidelink_r17Present, err = r.ReadBool(); err != nil {

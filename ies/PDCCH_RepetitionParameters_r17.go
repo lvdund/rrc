@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -11,7 +11,7 @@ type PDCCH_RepetitionParameters_r17 struct {
 	LimitX_AcrossCC_r17 *PDCCH_RepetitionParameters_r17_limitX_AcrossCC_r17 `optional`
 }
 
-func (ie *PDCCH_RepetitionParameters_r17) Encode(w *uper.UperWriter) error {
+func (ie *PDCCH_RepetitionParameters_r17) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.LimitX_PerCC_r17 != nil, ie.LimitX_AcrossCC_r17 != nil}
 	for _, bit := range preambleBits {
@@ -35,7 +35,7 @@ func (ie *PDCCH_RepetitionParameters_r17) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *PDCCH_RepetitionParameters_r17) Decode(r *uper.UperReader) error {
+func (ie *PDCCH_RepetitionParameters_r17) Decode(r *aper.AperReader) error {
 	var err error
 	var LimitX_PerCC_r17Present bool
 	if LimitX_PerCC_r17Present, err = r.ReadBool(); err != nil {

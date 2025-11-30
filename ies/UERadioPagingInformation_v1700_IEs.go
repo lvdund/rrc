@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -13,7 +13,7 @@ type UERadioPagingInformation_v1700_IEs struct {
 	NonCriticalExtension              interface{}                                                           `optional`
 }
 
-func (ie *UERadioPagingInformation_v1700_IEs) Encode(w *uper.UperWriter) error {
+func (ie *UERadioPagingInformation_v1700_IEs) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.Ue_RadioPagingInfo_r17 != nil, ie.InactiveStatePO_Determination_r17 != nil, ie.NumberOfRxRedCap_r17 != nil, len(ie.HalfDuplexFDD_TypeA_RedCap_r17) > 0}
 	for _, bit := range preambleBits {
@@ -22,7 +22,7 @@ func (ie *UERadioPagingInformation_v1700_IEs) Encode(w *uper.UperWriter) error {
 		}
 	}
 	if ie.Ue_RadioPagingInfo_r17 != nil {
-		if err = w.WriteOctetString(*ie.Ue_RadioPagingInfo_r17, &uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+		if err = w.WriteOctetString(*ie.Ue_RadioPagingInfo_r17, &aper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
 			return utils.WrapError("Encode Ue_RadioPagingInfo_r17", err)
 		}
 	}
@@ -37,7 +37,7 @@ func (ie *UERadioPagingInformation_v1700_IEs) Encode(w *uper.UperWriter) error {
 		}
 	}
 	if len(ie.HalfDuplexFDD_TypeA_RedCap_r17) > 0 {
-		tmp_HalfDuplexFDD_TypeA_RedCap_r17 := utils.NewSequence[*FreqBandIndicatorNR]([]*FreqBandIndicatorNR{}, uper.Constraint{Lb: 1, Ub: maxBands}, false)
+		tmp_HalfDuplexFDD_TypeA_RedCap_r17 := utils.NewSequence[*FreqBandIndicatorNR]([]*FreqBandIndicatorNR{}, aper.Constraint{Lb: 1, Ub: maxBands}, false)
 		for _, i := range ie.HalfDuplexFDD_TypeA_RedCap_r17 {
 			tmp_HalfDuplexFDD_TypeA_RedCap_r17.Value = append(tmp_HalfDuplexFDD_TypeA_RedCap_r17.Value, &i)
 		}
@@ -48,7 +48,7 @@ func (ie *UERadioPagingInformation_v1700_IEs) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *UERadioPagingInformation_v1700_IEs) Decode(r *uper.UperReader) error {
+func (ie *UERadioPagingInformation_v1700_IEs) Decode(r *aper.AperReader) error {
 	var err error
 	var Ue_RadioPagingInfo_r17Present bool
 	if Ue_RadioPagingInfo_r17Present, err = r.ReadBool(); err != nil {
@@ -68,7 +68,7 @@ func (ie *UERadioPagingInformation_v1700_IEs) Decode(r *uper.UperReader) error {
 	}
 	if Ue_RadioPagingInfo_r17Present {
 		var tmp_os_Ue_RadioPagingInfo_r17 []byte
-		if tmp_os_Ue_RadioPagingInfo_r17, err = r.ReadOctetString(&uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+		if tmp_os_Ue_RadioPagingInfo_r17, err = r.ReadOctetString(&aper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
 			return utils.WrapError("Decode Ue_RadioPagingInfo_r17", err)
 		}
 		ie.Ue_RadioPagingInfo_r17 = &tmp_os_Ue_RadioPagingInfo_r17
@@ -86,7 +86,7 @@ func (ie *UERadioPagingInformation_v1700_IEs) Decode(r *uper.UperReader) error {
 		}
 	}
 	if HalfDuplexFDD_TypeA_RedCap_r17Present {
-		tmp_HalfDuplexFDD_TypeA_RedCap_r17 := utils.NewSequence[*FreqBandIndicatorNR]([]*FreqBandIndicatorNR{}, uper.Constraint{Lb: 1, Ub: maxBands}, false)
+		tmp_HalfDuplexFDD_TypeA_RedCap_r17 := utils.NewSequence[*FreqBandIndicatorNR]([]*FreqBandIndicatorNR{}, aper.Constraint{Lb: 1, Ub: maxBands}, false)
 		fn_HalfDuplexFDD_TypeA_RedCap_r17 := func() *FreqBandIndicatorNR {
 			return new(FreqBandIndicatorNR)
 		}

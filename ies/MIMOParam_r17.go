@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -15,7 +15,7 @@ type MIMOParam_r17 struct {
 	SfnSchemePDSCH_r17                   *MIMOParam_r17_sfnSchemePDSCH_r17       `optional`
 }
 
-func (ie *MIMOParam_r17) Encode(w *uper.UperWriter) error {
+func (ie *MIMOParam_r17) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{len(ie.AdditionalPCI_ToAddModList_r17) > 0, len(ie.AdditionalPCI_ToReleaseList_r17) > 0, ie.UnifiedTCI_StateType_r17 != nil, len(ie.Uplink_PowerControlToAddModList_r17) > 0, len(ie.Uplink_PowerControlToReleaseList_r17) > 0, ie.SfnSchemePDCCH_r17 != nil, ie.SfnSchemePDSCH_r17 != nil}
 	for _, bit := range preambleBits {
@@ -24,7 +24,7 @@ func (ie *MIMOParam_r17) Encode(w *uper.UperWriter) error {
 		}
 	}
 	if len(ie.AdditionalPCI_ToAddModList_r17) > 0 {
-		tmp_AdditionalPCI_ToAddModList_r17 := utils.NewSequence[*SSB_MTC_AdditionalPCI_r17]([]*SSB_MTC_AdditionalPCI_r17{}, uper.Constraint{Lb: 1, Ub: maxNrofAdditionalPCI_r17}, false)
+		tmp_AdditionalPCI_ToAddModList_r17 := utils.NewSequence[*SSB_MTC_AdditionalPCI_r17]([]*SSB_MTC_AdditionalPCI_r17{}, aper.Constraint{Lb: 1, Ub: maxNrofAdditionalPCI_r17}, false)
 		for _, i := range ie.AdditionalPCI_ToAddModList_r17 {
 			tmp_AdditionalPCI_ToAddModList_r17.Value = append(tmp_AdditionalPCI_ToAddModList_r17.Value, &i)
 		}
@@ -33,7 +33,7 @@ func (ie *MIMOParam_r17) Encode(w *uper.UperWriter) error {
 		}
 	}
 	if len(ie.AdditionalPCI_ToReleaseList_r17) > 0 {
-		tmp_AdditionalPCI_ToReleaseList_r17 := utils.NewSequence[*AdditionalPCIIndex_r17]([]*AdditionalPCIIndex_r17{}, uper.Constraint{Lb: 1, Ub: maxNrofAdditionalPCI_r17}, false)
+		tmp_AdditionalPCI_ToReleaseList_r17 := utils.NewSequence[*AdditionalPCIIndex_r17]([]*AdditionalPCIIndex_r17{}, aper.Constraint{Lb: 1, Ub: maxNrofAdditionalPCI_r17}, false)
 		for _, i := range ie.AdditionalPCI_ToReleaseList_r17 {
 			tmp_AdditionalPCI_ToReleaseList_r17.Value = append(tmp_AdditionalPCI_ToReleaseList_r17.Value, &i)
 		}
@@ -47,7 +47,7 @@ func (ie *MIMOParam_r17) Encode(w *uper.UperWriter) error {
 		}
 	}
 	if len(ie.Uplink_PowerControlToAddModList_r17) > 0 {
-		tmp_Uplink_PowerControlToAddModList_r17 := utils.NewSequence[*Uplink_powerControl_r17]([]*Uplink_powerControl_r17{}, uper.Constraint{Lb: 1, Ub: maxUL_TCI_r17}, false)
+		tmp_Uplink_PowerControlToAddModList_r17 := utils.NewSequence[*Uplink_powerControl_r17]([]*Uplink_powerControl_r17{}, aper.Constraint{Lb: 1, Ub: maxUL_TCI_r17}, false)
 		for _, i := range ie.Uplink_PowerControlToAddModList_r17 {
 			tmp_Uplink_PowerControlToAddModList_r17.Value = append(tmp_Uplink_PowerControlToAddModList_r17.Value, &i)
 		}
@@ -56,7 +56,7 @@ func (ie *MIMOParam_r17) Encode(w *uper.UperWriter) error {
 		}
 	}
 	if len(ie.Uplink_PowerControlToReleaseList_r17) > 0 {
-		tmp_Uplink_PowerControlToReleaseList_r17 := utils.NewSequence[*Uplink_powerControlId_r17]([]*Uplink_powerControlId_r17{}, uper.Constraint{Lb: 1, Ub: maxUL_TCI_r17}, false)
+		tmp_Uplink_PowerControlToReleaseList_r17 := utils.NewSequence[*Uplink_powerControlId_r17]([]*Uplink_powerControlId_r17{}, aper.Constraint{Lb: 1, Ub: maxUL_TCI_r17}, false)
 		for _, i := range ie.Uplink_PowerControlToReleaseList_r17 {
 			tmp_Uplink_PowerControlToReleaseList_r17.Value = append(tmp_Uplink_PowerControlToReleaseList_r17.Value, &i)
 		}
@@ -77,7 +77,7 @@ func (ie *MIMOParam_r17) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *MIMOParam_r17) Decode(r *uper.UperReader) error {
+func (ie *MIMOParam_r17) Decode(r *aper.AperReader) error {
 	var err error
 	var AdditionalPCI_ToAddModList_r17Present bool
 	if AdditionalPCI_ToAddModList_r17Present, err = r.ReadBool(); err != nil {
@@ -108,7 +108,7 @@ func (ie *MIMOParam_r17) Decode(r *uper.UperReader) error {
 		return err
 	}
 	if AdditionalPCI_ToAddModList_r17Present {
-		tmp_AdditionalPCI_ToAddModList_r17 := utils.NewSequence[*SSB_MTC_AdditionalPCI_r17]([]*SSB_MTC_AdditionalPCI_r17{}, uper.Constraint{Lb: 1, Ub: maxNrofAdditionalPCI_r17}, false)
+		tmp_AdditionalPCI_ToAddModList_r17 := utils.NewSequence[*SSB_MTC_AdditionalPCI_r17]([]*SSB_MTC_AdditionalPCI_r17{}, aper.Constraint{Lb: 1, Ub: maxNrofAdditionalPCI_r17}, false)
 		fn_AdditionalPCI_ToAddModList_r17 := func() *SSB_MTC_AdditionalPCI_r17 {
 			return new(SSB_MTC_AdditionalPCI_r17)
 		}
@@ -121,7 +121,7 @@ func (ie *MIMOParam_r17) Decode(r *uper.UperReader) error {
 		}
 	}
 	if AdditionalPCI_ToReleaseList_r17Present {
-		tmp_AdditionalPCI_ToReleaseList_r17 := utils.NewSequence[*AdditionalPCIIndex_r17]([]*AdditionalPCIIndex_r17{}, uper.Constraint{Lb: 1, Ub: maxNrofAdditionalPCI_r17}, false)
+		tmp_AdditionalPCI_ToReleaseList_r17 := utils.NewSequence[*AdditionalPCIIndex_r17]([]*AdditionalPCIIndex_r17{}, aper.Constraint{Lb: 1, Ub: maxNrofAdditionalPCI_r17}, false)
 		fn_AdditionalPCI_ToReleaseList_r17 := func() *AdditionalPCIIndex_r17 {
 			return new(AdditionalPCIIndex_r17)
 		}
@@ -140,7 +140,7 @@ func (ie *MIMOParam_r17) Decode(r *uper.UperReader) error {
 		}
 	}
 	if Uplink_PowerControlToAddModList_r17Present {
-		tmp_Uplink_PowerControlToAddModList_r17 := utils.NewSequence[*Uplink_powerControl_r17]([]*Uplink_powerControl_r17{}, uper.Constraint{Lb: 1, Ub: maxUL_TCI_r17}, false)
+		tmp_Uplink_PowerControlToAddModList_r17 := utils.NewSequence[*Uplink_powerControl_r17]([]*Uplink_powerControl_r17{}, aper.Constraint{Lb: 1, Ub: maxUL_TCI_r17}, false)
 		fn_Uplink_PowerControlToAddModList_r17 := func() *Uplink_powerControl_r17 {
 			return new(Uplink_powerControl_r17)
 		}
@@ -153,7 +153,7 @@ func (ie *MIMOParam_r17) Decode(r *uper.UperReader) error {
 		}
 	}
 	if Uplink_PowerControlToReleaseList_r17Present {
-		tmp_Uplink_PowerControlToReleaseList_r17 := utils.NewSequence[*Uplink_powerControlId_r17]([]*Uplink_powerControlId_r17{}, uper.Constraint{Lb: 1, Ub: maxUL_TCI_r17}, false)
+		tmp_Uplink_PowerControlToReleaseList_r17 := utils.NewSequence[*Uplink_powerControlId_r17]([]*Uplink_powerControlId_r17{}, aper.Constraint{Lb: 1, Ub: maxUL_TCI_r17}, false)
 		fn_Uplink_PowerControlToReleaseList_r17 := func() *Uplink_powerControlId_r17 {
 			return new(Uplink_powerControlId_r17)
 		}

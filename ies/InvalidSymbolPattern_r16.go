@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -10,7 +10,7 @@ type InvalidSymbolPattern_r16 struct {
 	PeriodicityAndPattern_r16 *InvalidSymbolPattern_r16_periodicityAndPattern_r16 `lb:2,ub:2,optional`
 }
 
-func (ie *InvalidSymbolPattern_r16) Encode(w *uper.UperWriter) error {
+func (ie *InvalidSymbolPattern_r16) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.PeriodicityAndPattern_r16 != nil}
 	for _, bit := range preambleBits {
@@ -29,7 +29,7 @@ func (ie *InvalidSymbolPattern_r16) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *InvalidSymbolPattern_r16) Decode(r *uper.UperReader) error {
+func (ie *InvalidSymbolPattern_r16) Decode(r *aper.AperReader) error {
 	var err error
 	var PeriodicityAndPattern_r16Present bool
 	if PeriodicityAndPattern_r16Present, err = r.ReadBool(); err != nil {

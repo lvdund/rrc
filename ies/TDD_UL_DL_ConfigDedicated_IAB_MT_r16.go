@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -10,7 +10,7 @@ type TDD_UL_DL_ConfigDedicated_IAB_MT_r16 struct {
 	SlotSpecificConfigurationsToReleaseList_IAB_MT_r16 []TDD_UL_DL_SlotIndex             `lb:1,ub:maxNrofSlots,optional`
 }
 
-func (ie *TDD_UL_DL_ConfigDedicated_IAB_MT_r16) Encode(w *uper.UperWriter) error {
+func (ie *TDD_UL_DL_ConfigDedicated_IAB_MT_r16) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{len(ie.SlotSpecificConfigurationsToAddModList_IAB_MT_r16) > 0, len(ie.SlotSpecificConfigurationsToReleaseList_IAB_MT_r16) > 0}
 	for _, bit := range preambleBits {
@@ -19,7 +19,7 @@ func (ie *TDD_UL_DL_ConfigDedicated_IAB_MT_r16) Encode(w *uper.UperWriter) error
 		}
 	}
 	if len(ie.SlotSpecificConfigurationsToAddModList_IAB_MT_r16) > 0 {
-		tmp_SlotSpecificConfigurationsToAddModList_IAB_MT_r16 := utils.NewSequence[*TDD_UL_DL_SlotConfig_IAB_MT_r16]([]*TDD_UL_DL_SlotConfig_IAB_MT_r16{}, uper.Constraint{Lb: 1, Ub: maxNrofSlots}, false)
+		tmp_SlotSpecificConfigurationsToAddModList_IAB_MT_r16 := utils.NewSequence[*TDD_UL_DL_SlotConfig_IAB_MT_r16]([]*TDD_UL_DL_SlotConfig_IAB_MT_r16{}, aper.Constraint{Lb: 1, Ub: maxNrofSlots}, false)
 		for _, i := range ie.SlotSpecificConfigurationsToAddModList_IAB_MT_r16 {
 			tmp_SlotSpecificConfigurationsToAddModList_IAB_MT_r16.Value = append(tmp_SlotSpecificConfigurationsToAddModList_IAB_MT_r16.Value, &i)
 		}
@@ -28,7 +28,7 @@ func (ie *TDD_UL_DL_ConfigDedicated_IAB_MT_r16) Encode(w *uper.UperWriter) error
 		}
 	}
 	if len(ie.SlotSpecificConfigurationsToReleaseList_IAB_MT_r16) > 0 {
-		tmp_SlotSpecificConfigurationsToReleaseList_IAB_MT_r16 := utils.NewSequence[*TDD_UL_DL_SlotIndex]([]*TDD_UL_DL_SlotIndex{}, uper.Constraint{Lb: 1, Ub: maxNrofSlots}, false)
+		tmp_SlotSpecificConfigurationsToReleaseList_IAB_MT_r16 := utils.NewSequence[*TDD_UL_DL_SlotIndex]([]*TDD_UL_DL_SlotIndex{}, aper.Constraint{Lb: 1, Ub: maxNrofSlots}, false)
 		for _, i := range ie.SlotSpecificConfigurationsToReleaseList_IAB_MT_r16 {
 			tmp_SlotSpecificConfigurationsToReleaseList_IAB_MT_r16.Value = append(tmp_SlotSpecificConfigurationsToReleaseList_IAB_MT_r16.Value, &i)
 		}
@@ -39,7 +39,7 @@ func (ie *TDD_UL_DL_ConfigDedicated_IAB_MT_r16) Encode(w *uper.UperWriter) error
 	return nil
 }
 
-func (ie *TDD_UL_DL_ConfigDedicated_IAB_MT_r16) Decode(r *uper.UperReader) error {
+func (ie *TDD_UL_DL_ConfigDedicated_IAB_MT_r16) Decode(r *aper.AperReader) error {
 	var err error
 	var SlotSpecificConfigurationsToAddModList_IAB_MT_r16Present bool
 	if SlotSpecificConfigurationsToAddModList_IAB_MT_r16Present, err = r.ReadBool(); err != nil {
@@ -50,7 +50,7 @@ func (ie *TDD_UL_DL_ConfigDedicated_IAB_MT_r16) Decode(r *uper.UperReader) error
 		return err
 	}
 	if SlotSpecificConfigurationsToAddModList_IAB_MT_r16Present {
-		tmp_SlotSpecificConfigurationsToAddModList_IAB_MT_r16 := utils.NewSequence[*TDD_UL_DL_SlotConfig_IAB_MT_r16]([]*TDD_UL_DL_SlotConfig_IAB_MT_r16{}, uper.Constraint{Lb: 1, Ub: maxNrofSlots}, false)
+		tmp_SlotSpecificConfigurationsToAddModList_IAB_MT_r16 := utils.NewSequence[*TDD_UL_DL_SlotConfig_IAB_MT_r16]([]*TDD_UL_DL_SlotConfig_IAB_MT_r16{}, aper.Constraint{Lb: 1, Ub: maxNrofSlots}, false)
 		fn_SlotSpecificConfigurationsToAddModList_IAB_MT_r16 := func() *TDD_UL_DL_SlotConfig_IAB_MT_r16 {
 			return new(TDD_UL_DL_SlotConfig_IAB_MT_r16)
 		}
@@ -63,7 +63,7 @@ func (ie *TDD_UL_DL_ConfigDedicated_IAB_MT_r16) Decode(r *uper.UperReader) error
 		}
 	}
 	if SlotSpecificConfigurationsToReleaseList_IAB_MT_r16Present {
-		tmp_SlotSpecificConfigurationsToReleaseList_IAB_MT_r16 := utils.NewSequence[*TDD_UL_DL_SlotIndex]([]*TDD_UL_DL_SlotIndex{}, uper.Constraint{Lb: 1, Ub: maxNrofSlots}, false)
+		tmp_SlotSpecificConfigurationsToReleaseList_IAB_MT_r16 := utils.NewSequence[*TDD_UL_DL_SlotIndex]([]*TDD_UL_DL_SlotIndex{}, aper.Constraint{Lb: 1, Ub: maxNrofSlots}, false)
 		fn_SlotSpecificConfigurationsToReleaseList_IAB_MT_r16 := func() *TDD_UL_DL_SlotIndex {
 			return new(TDD_UL_DL_SlotIndex)
 		}

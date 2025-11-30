@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -10,7 +10,7 @@ type RRCReconfigurationCompleteSidelink_v1710_IEs struct {
 	NonCriticalExtension *RRCReconfigurationCompleteSidelink_v1720_IEs      `optional`
 }
 
-func (ie *RRCReconfigurationCompleteSidelink_v1710_IEs) Encode(w *uper.UperWriter) error {
+func (ie *RRCReconfigurationCompleteSidelink_v1710_IEs) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.NonCriticalExtension != nil}
 	for _, bit := range preambleBits {
@@ -29,7 +29,7 @@ func (ie *RRCReconfigurationCompleteSidelink_v1710_IEs) Encode(w *uper.UperWrite
 	return nil
 }
 
-func (ie *RRCReconfigurationCompleteSidelink_v1710_IEs) Decode(r *uper.UperReader) error {
+func (ie *RRCReconfigurationCompleteSidelink_v1710_IEs) Decode(r *aper.AperReader) error {
 	var err error
 	var NonCriticalExtensionPresent bool
 	if NonCriticalExtensionPresent, err = r.ReadBool(); err != nil {

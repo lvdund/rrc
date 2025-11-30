@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -11,7 +11,7 @@ type CG_ConfigInfo_v1560_IEs_measResultReportCGI_EUTRA struct {
 	Cgi_InfoEUTRA                 CGI_InfoEUTRA    `madatory`
 }
 
-func (ie *CG_ConfigInfo_v1560_IEs_measResultReportCGI_EUTRA) Encode(w *uper.UperWriter) error {
+func (ie *CG_ConfigInfo_v1560_IEs_measResultReportCGI_EUTRA) Encode(w *aper.AperWriter) error {
 	var err error
 	if err = ie.EutraFrequency.Encode(w); err != nil {
 		return utils.WrapError("Encode EutraFrequency", err)
@@ -25,7 +25,7 @@ func (ie *CG_ConfigInfo_v1560_IEs_measResultReportCGI_EUTRA) Encode(w *uper.Uper
 	return nil
 }
 
-func (ie *CG_ConfigInfo_v1560_IEs_measResultReportCGI_EUTRA) Decode(r *uper.UperReader) error {
+func (ie *CG_ConfigInfo_v1560_IEs_measResultReportCGI_EUTRA) Decode(r *aper.AperReader) error {
 	var err error
 	if err = ie.EutraFrequency.Decode(r); err != nil {
 		return utils.WrapError("Decode EutraFrequency", err)

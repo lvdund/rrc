@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -10,7 +10,7 @@ type SearchSpace_searchSpaceType_common_dci_Format2_3 struct {
 	Dummy2 SearchSpace_searchSpaceType_common_dci_Format2_3_dummy2  `madatory`
 }
 
-func (ie *SearchSpace_searchSpaceType_common_dci_Format2_3) Encode(w *uper.UperWriter) error {
+func (ie *SearchSpace_searchSpaceType_common_dci_Format2_3) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.Dummy1 != nil}
 	for _, bit := range preambleBits {
@@ -29,7 +29,7 @@ func (ie *SearchSpace_searchSpaceType_common_dci_Format2_3) Encode(w *uper.UperW
 	return nil
 }
 
-func (ie *SearchSpace_searchSpaceType_common_dci_Format2_3) Decode(r *uper.UperReader) error {
+func (ie *SearchSpace_searchSpaceType_common_dci_Format2_3) Decode(r *aper.AperReader) error {
 	var err error
 	var Dummy1Present bool
 	if Dummy1Present, err = r.ReadBool(); err != nil {

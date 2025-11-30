@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -10,7 +10,7 @@ type TAG_Config struct {
 	Tag_ToAddModList  []TAG    `lb:1,ub:maxNrofTAGs,optional`
 }
 
-func (ie *TAG_Config) Encode(w *uper.UperWriter) error {
+func (ie *TAG_Config) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{len(ie.Tag_ToReleaseList) > 0, len(ie.Tag_ToAddModList) > 0}
 	for _, bit := range preambleBits {
@@ -19,7 +19,7 @@ func (ie *TAG_Config) Encode(w *uper.UperWriter) error {
 		}
 	}
 	if len(ie.Tag_ToReleaseList) > 0 {
-		tmp_Tag_ToReleaseList := utils.NewSequence[*TAG_Id]([]*TAG_Id{}, uper.Constraint{Lb: 1, Ub: maxNrofTAGs}, false)
+		tmp_Tag_ToReleaseList := utils.NewSequence[*TAG_Id]([]*TAG_Id{}, aper.Constraint{Lb: 1, Ub: maxNrofTAGs}, false)
 		for _, i := range ie.Tag_ToReleaseList {
 			tmp_Tag_ToReleaseList.Value = append(tmp_Tag_ToReleaseList.Value, &i)
 		}
@@ -28,7 +28,7 @@ func (ie *TAG_Config) Encode(w *uper.UperWriter) error {
 		}
 	}
 	if len(ie.Tag_ToAddModList) > 0 {
-		tmp_Tag_ToAddModList := utils.NewSequence[*TAG]([]*TAG{}, uper.Constraint{Lb: 1, Ub: maxNrofTAGs}, false)
+		tmp_Tag_ToAddModList := utils.NewSequence[*TAG]([]*TAG{}, aper.Constraint{Lb: 1, Ub: maxNrofTAGs}, false)
 		for _, i := range ie.Tag_ToAddModList {
 			tmp_Tag_ToAddModList.Value = append(tmp_Tag_ToAddModList.Value, &i)
 		}
@@ -39,7 +39,7 @@ func (ie *TAG_Config) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *TAG_Config) Decode(r *uper.UperReader) error {
+func (ie *TAG_Config) Decode(r *aper.AperReader) error {
 	var err error
 	var Tag_ToReleaseListPresent bool
 	if Tag_ToReleaseListPresent, err = r.ReadBool(); err != nil {
@@ -50,7 +50,7 @@ func (ie *TAG_Config) Decode(r *uper.UperReader) error {
 		return err
 	}
 	if Tag_ToReleaseListPresent {
-		tmp_Tag_ToReleaseList := utils.NewSequence[*TAG_Id]([]*TAG_Id{}, uper.Constraint{Lb: 1, Ub: maxNrofTAGs}, false)
+		tmp_Tag_ToReleaseList := utils.NewSequence[*TAG_Id]([]*TAG_Id{}, aper.Constraint{Lb: 1, Ub: maxNrofTAGs}, false)
 		fn_Tag_ToReleaseList := func() *TAG_Id {
 			return new(TAG_Id)
 		}
@@ -63,7 +63,7 @@ func (ie *TAG_Config) Decode(r *uper.UperReader) error {
 		}
 	}
 	if Tag_ToAddModListPresent {
-		tmp_Tag_ToAddModList := utils.NewSequence[*TAG]([]*TAG{}, uper.Constraint{Lb: 1, Ub: maxNrofTAGs}, false)
+		tmp_Tag_ToAddModList := utils.NewSequence[*TAG]([]*TAG{}, aper.Constraint{Lb: 1, Ub: maxNrofTAGs}, false)
 		fn_Tag_ToAddModList := func() *TAG {
 			return new(TAG)
 		}

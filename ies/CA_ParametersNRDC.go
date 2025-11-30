@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -13,7 +13,7 @@ type CA_ParametersNRDC struct {
 	FeatureSetCombinationDC     *FeatureSetCombinationId `optional`
 }
 
-func (ie *CA_ParametersNRDC) Encode(w *uper.UperWriter) error {
+func (ie *CA_ParametersNRDC) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.Ca_ParametersNR_ForDC != nil, ie.Ca_ParametersNR_ForDC_v1540 != nil, ie.Ca_ParametersNR_ForDC_v1550 != nil, ie.Ca_ParametersNR_ForDC_v1560 != nil, ie.FeatureSetCombinationDC != nil}
 	for _, bit := range preambleBits {
@@ -49,7 +49,7 @@ func (ie *CA_ParametersNRDC) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *CA_ParametersNRDC) Decode(r *uper.UperReader) error {
+func (ie *CA_ParametersNRDC) Decode(r *aper.AperReader) error {
 	var err error
 	var Ca_ParametersNR_ForDCPresent bool
 	if Ca_ParametersNR_ForDCPresent, err = r.ReadBool(); err != nil {

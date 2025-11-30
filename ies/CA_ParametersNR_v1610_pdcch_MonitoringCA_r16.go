@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -10,9 +10,9 @@ type CA_ParametersNR_v1610_pdcch_MonitoringCA_r16 struct {
 	SupportedSpanArrangement_r16 CA_ParametersNR_v1610_pdcch_MonitoringCA_r16_supportedSpanArrangement_r16 `madatory`
 }
 
-func (ie *CA_ParametersNR_v1610_pdcch_MonitoringCA_r16) Encode(w *uper.UperWriter) error {
+func (ie *CA_ParametersNR_v1610_pdcch_MonitoringCA_r16) Encode(w *aper.AperWriter) error {
 	var err error
-	if err = w.WriteInteger(ie.MaxNumberOfMonitoringCC_r16, &uper.Constraint{Lb: 2, Ub: 16}, false); err != nil {
+	if err = w.WriteInteger(ie.MaxNumberOfMonitoringCC_r16, &aper.Constraint{Lb: 2, Ub: 16}, false); err != nil {
 		return utils.WrapError("WriteInteger MaxNumberOfMonitoringCC_r16", err)
 	}
 	if err = ie.SupportedSpanArrangement_r16.Encode(w); err != nil {
@@ -21,10 +21,10 @@ func (ie *CA_ParametersNR_v1610_pdcch_MonitoringCA_r16) Encode(w *uper.UperWrite
 	return nil
 }
 
-func (ie *CA_ParametersNR_v1610_pdcch_MonitoringCA_r16) Decode(r *uper.UperReader) error {
+func (ie *CA_ParametersNR_v1610_pdcch_MonitoringCA_r16) Decode(r *aper.AperReader) error {
 	var err error
 	var tmp_int_MaxNumberOfMonitoringCC_r16 int64
-	if tmp_int_MaxNumberOfMonitoringCC_r16, err = r.ReadInteger(&uper.Constraint{Lb: 2, Ub: 16}, false); err != nil {
+	if tmp_int_MaxNumberOfMonitoringCC_r16, err = r.ReadInteger(&aper.Constraint{Lb: 2, Ub: 16}, false); err != nil {
 		return utils.WrapError("ReadInteger MaxNumberOfMonitoringCC_r16", err)
 	}
 	ie.MaxNumberOfMonitoringCC_r16 = tmp_int_MaxNumberOfMonitoringCC_r16

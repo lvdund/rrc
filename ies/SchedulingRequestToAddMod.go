@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -11,7 +11,7 @@ type SchedulingRequestToAddMod struct {
 	Sr_TransMax         SchedulingRequestToAddMod_sr_TransMax       `madatory`
 }
 
-func (ie *SchedulingRequestToAddMod) Encode(w *uper.UperWriter) error {
+func (ie *SchedulingRequestToAddMod) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.Sr_ProhibitTimer != nil}
 	for _, bit := range preambleBits {
@@ -33,7 +33,7 @@ func (ie *SchedulingRequestToAddMod) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *SchedulingRequestToAddMod) Decode(r *uper.UperReader) error {
+func (ie *SchedulingRequestToAddMod) Decode(r *aper.AperReader) error {
 	var err error
 	var Sr_ProhibitTimerPresent bool
 	if Sr_ProhibitTimerPresent, err = r.ReadBool(); err != nil {

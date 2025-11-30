@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -9,9 +9,9 @@ type EUTRA_FreqExcludedCellList struct {
 	Value []EUTRA_PhysCellIdRange `lb:1,ub:maxEUTRA_CellExcluded,madatory`
 }
 
-func (ie *EUTRA_FreqExcludedCellList) Encode(w *uper.UperWriter) error {
+func (ie *EUTRA_FreqExcludedCellList) Encode(w *aper.AperWriter) error {
 	var err error
-	tmp := utils.NewSequence[*EUTRA_PhysCellIdRange]([]*EUTRA_PhysCellIdRange{}, uper.Constraint{Lb: 1, Ub: maxEUTRA_CellExcluded}, false)
+	tmp := utils.NewSequence[*EUTRA_PhysCellIdRange]([]*EUTRA_PhysCellIdRange{}, aper.Constraint{Lb: 1, Ub: maxEUTRA_CellExcluded}, false)
 	for _, i := range ie.Value {
 		tmp.Value = append(tmp.Value, &i)
 	}
@@ -21,9 +21,9 @@ func (ie *EUTRA_FreqExcludedCellList) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *EUTRA_FreqExcludedCellList) Decode(r *uper.UperReader) error {
+func (ie *EUTRA_FreqExcludedCellList) Decode(r *aper.AperReader) error {
 	var err error
-	tmp := utils.NewSequence[*EUTRA_PhysCellIdRange]([]*EUTRA_PhysCellIdRange{}, uper.Constraint{Lb: 1, Ub: maxEUTRA_CellExcluded}, false)
+	tmp := utils.NewSequence[*EUTRA_PhysCellIdRange]([]*EUTRA_PhysCellIdRange{}, aper.Constraint{Lb: 1, Ub: maxEUTRA_CellExcluded}, false)
 	fn := func() *EUTRA_PhysCellIdRange {
 		return new(EUTRA_PhysCellIdRange)
 	}

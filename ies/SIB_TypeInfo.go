@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -11,7 +11,7 @@ type SIB_TypeInfo struct {
 	AreaScope *SIB_TypeInfo_areaScope `optional`
 }
 
-func (ie *SIB_TypeInfo) Encode(w *uper.UperWriter) error {
+func (ie *SIB_TypeInfo) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.ValueTag != nil, ie.AreaScope != nil}
 	for _, bit := range preambleBits {
@@ -23,7 +23,7 @@ func (ie *SIB_TypeInfo) Encode(w *uper.UperWriter) error {
 		return utils.WrapError("Encode Type_sib", err)
 	}
 	if ie.ValueTag != nil {
-		if err = w.WriteInteger(*ie.ValueTag, &uper.Constraint{Lb: 0, Ub: 31}, false); err != nil {
+		if err = w.WriteInteger(*ie.ValueTag, &aper.Constraint{Lb: 0, Ub: 31}, false); err != nil {
 			return utils.WrapError("Encode ValueTag", err)
 		}
 	}
@@ -35,7 +35,7 @@ func (ie *SIB_TypeInfo) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *SIB_TypeInfo) Decode(r *uper.UperReader) error {
+func (ie *SIB_TypeInfo) Decode(r *aper.AperReader) error {
 	var err error
 	var ValueTagPresent bool
 	if ValueTagPresent, err = r.ReadBool(); err != nil {
@@ -50,7 +50,7 @@ func (ie *SIB_TypeInfo) Decode(r *uper.UperReader) error {
 	}
 	if ValueTagPresent {
 		var tmp_int_ValueTag int64
-		if tmp_int_ValueTag, err = r.ReadInteger(&uper.Constraint{Lb: 0, Ub: 31}, false); err != nil {
+		if tmp_int_ValueTag, err = r.ReadInteger(&aper.Constraint{Lb: 0, Ub: 31}, false); err != nil {
 			return utils.WrapError("Decode ValueTag", err)
 		}
 		ie.ValueTag = &tmp_int_ValueTag

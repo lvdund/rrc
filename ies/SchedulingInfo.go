@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -11,7 +11,7 @@ type SchedulingInfo struct {
 	Sib_MappingInfo    SIB_Mapping                       `madatory`
 }
 
-func (ie *SchedulingInfo) Encode(w *uper.UperWriter) error {
+func (ie *SchedulingInfo) Encode(w *aper.AperWriter) error {
 	var err error
 	if err = ie.Si_BroadcastStatus.Encode(w); err != nil {
 		return utils.WrapError("Encode Si_BroadcastStatus", err)
@@ -25,7 +25,7 @@ func (ie *SchedulingInfo) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *SchedulingInfo) Decode(r *uper.UperReader) error {
+func (ie *SchedulingInfo) Decode(r *aper.AperReader) error {
 	var err error
 	if err = ie.Si_BroadcastStatus.Decode(r); err != nil {
 		return utils.WrapError("Decode Si_BroadcastStatus", err)

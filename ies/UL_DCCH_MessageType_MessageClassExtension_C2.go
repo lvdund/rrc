@@ -3,7 +3,7 @@ package ies
 import (
 	"fmt"
 
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -39,15 +39,15 @@ type UL_DCCH_MessageType_MessageClassExtension_C2 struct {
 	MbsInterestIndication_r17       *MBSInterestIndication_r17
 	UePositioningAssistanceInfo_r17 *UEPositioningAssistanceInfo_r17
 	MeasurementReportAppLayer_r17   *MeasurementReportAppLayer_r17
-	Spare6                          uper.NULL `madatory`
-	Spare5                          uper.NULL `madatory`
-	Spare4                          uper.NULL `madatory`
-	Spare3                          uper.NULL `madatory`
-	Spare2                          uper.NULL `madatory`
-	Spare1                          uper.NULL `madatory`
+	Spare6                          aper.NULL `madatory`
+	Spare5                          aper.NULL `madatory`
+	Spare4                          aper.NULL `madatory`
+	Spare3                          aper.NULL `madatory`
+	Spare2                          aper.NULL `madatory`
+	Spare1                          aper.NULL `madatory`
 }
 
-func (ie *UL_DCCH_MessageType_MessageClassExtension_C2) Encode(w *uper.UperWriter) error {
+func (ie *UL_DCCH_MessageType_MessageClassExtension_C2) Encode(w *aper.AperWriter) error {
 	var err error
 	if err = w.WriteChoice(ie.Choice, 16, false); err != nil {
 		return err
@@ -123,7 +123,7 @@ func (ie *UL_DCCH_MessageType_MessageClassExtension_C2) Encode(w *uper.UperWrite
 	return err
 }
 
-func (ie *UL_DCCH_MessageType_MessageClassExtension_C2) Decode(r *uper.UperReader) error {
+func (ie *UL_DCCH_MessageType_MessageClassExtension_C2) Decode(r *aper.AperReader) error {
 	var err error
 	if ie.Choice, err = r.ReadChoice(16, false); err != nil {
 		return err

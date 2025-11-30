@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -9,7 +9,7 @@ type OtherConfig_v1540 struct {
 	OverheatingAssistanceConfig *OverheatingAssistanceConfig `optional,setuprelease`
 }
 
-func (ie *OtherConfig_v1540) Encode(w *uper.UperWriter) error {
+func (ie *OtherConfig_v1540) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.OverheatingAssistanceConfig != nil}
 	for _, bit := range preambleBits {
@@ -28,7 +28,7 @@ func (ie *OtherConfig_v1540) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *OtherConfig_v1540) Decode(r *uper.UperReader) error {
+func (ie *OtherConfig_v1540) Decode(r *aper.AperReader) error {
 	var err error
 	var OverheatingAssistanceConfigPresent bool
 	if OverheatingAssistanceConfigPresent, err = r.ReadBool(); err != nil {

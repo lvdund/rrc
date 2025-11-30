@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -11,7 +11,7 @@ type CG_SDT_ConfigLCH_Restriction_r17 struct {
 	AllowedCG_List_r17              []ConfiguredGrantConfigIndexMAC_r16                               `lb:0,ub:maxNrofConfiguredGrantConfigMAC_1_r16,optional`
 }
 
-func (ie *CG_SDT_ConfigLCH_Restriction_r17) Encode(w *uper.UperWriter) error {
+func (ie *CG_SDT_ConfigLCH_Restriction_r17) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.ConfiguredGrantType1Allowed_r17 != nil, len(ie.AllowedCG_List_r17) > 0}
 	for _, bit := range preambleBits {
@@ -28,7 +28,7 @@ func (ie *CG_SDT_ConfigLCH_Restriction_r17) Encode(w *uper.UperWriter) error {
 		}
 	}
 	if len(ie.AllowedCG_List_r17) > 0 {
-		tmp_AllowedCG_List_r17 := utils.NewSequence[*ConfiguredGrantConfigIndexMAC_r16]([]*ConfiguredGrantConfigIndexMAC_r16{}, uper.Constraint{Lb: 0, Ub: maxNrofConfiguredGrantConfigMAC_1_r16}, false)
+		tmp_AllowedCG_List_r17 := utils.NewSequence[*ConfiguredGrantConfigIndexMAC_r16]([]*ConfiguredGrantConfigIndexMAC_r16{}, aper.Constraint{Lb: 0, Ub: maxNrofConfiguredGrantConfigMAC_1_r16}, false)
 		for _, i := range ie.AllowedCG_List_r17 {
 			tmp_AllowedCG_List_r17.Value = append(tmp_AllowedCG_List_r17.Value, &i)
 		}
@@ -39,7 +39,7 @@ func (ie *CG_SDT_ConfigLCH_Restriction_r17) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *CG_SDT_ConfigLCH_Restriction_r17) Decode(r *uper.UperReader) error {
+func (ie *CG_SDT_ConfigLCH_Restriction_r17) Decode(r *aper.AperReader) error {
 	var err error
 	var ConfiguredGrantType1Allowed_r17Present bool
 	if ConfiguredGrantType1Allowed_r17Present, err = r.ReadBool(); err != nil {
@@ -59,7 +59,7 @@ func (ie *CG_SDT_ConfigLCH_Restriction_r17) Decode(r *uper.UperReader) error {
 		}
 	}
 	if AllowedCG_List_r17Present {
-		tmp_AllowedCG_List_r17 := utils.NewSequence[*ConfiguredGrantConfigIndexMAC_r16]([]*ConfiguredGrantConfigIndexMAC_r16{}, uper.Constraint{Lb: 0, Ub: maxNrofConfiguredGrantConfigMAC_1_r16}, false)
+		tmp_AllowedCG_List_r17 := utils.NewSequence[*ConfiguredGrantConfigIndexMAC_r16]([]*ConfiguredGrantConfigIndexMAC_r16{}, aper.Constraint{Lb: 0, Ub: maxNrofConfiguredGrantConfigMAC_1_r16}, false)
 		fn_AllowedCG_List_r17 := func() *ConfiguredGrantConfigIndexMAC_r16 {
 			return new(ConfiguredGrantConfigIndexMAC_r16)
 		}

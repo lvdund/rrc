@@ -3,7 +3,7 @@ package ies
 import (
 	"fmt"
 
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -19,14 +19,14 @@ type UAC_BarringPerPLMN_uac_ACBarringListType struct {
 	Uac_ExplicitACBarringList *UAC_BarringPerCatList
 }
 
-func (ie *UAC_BarringPerPLMN_uac_ACBarringListType) Encode(w *uper.UperWriter) error {
+func (ie *UAC_BarringPerPLMN_uac_ACBarringListType) Encode(w *aper.AperWriter) error {
 	var err error
 	if err = w.WriteChoice(ie.Choice, 2, false); err != nil {
 		return err
 	}
 	switch ie.Choice {
 	case UAC_BarringPerPLMN_uac_ACBarringListType_Choice_Uac_ImplicitACBarringList:
-		tmp := utils.NewSequence[*UAC_BarringInfoSetIndex]([]*UAC_BarringInfoSetIndex{}, uper.Constraint{Lb: maxAccessCat_1, Ub: maxAccessCat_1}, false)
+		tmp := utils.NewSequence[*UAC_BarringInfoSetIndex]([]*UAC_BarringInfoSetIndex{}, aper.Constraint{Lb: maxAccessCat_1, Ub: maxAccessCat_1}, false)
 		for _, i := range ie.Uac_ImplicitACBarringList {
 			tmp.Value = append(tmp.Value, &i)
 		}
@@ -43,14 +43,14 @@ func (ie *UAC_BarringPerPLMN_uac_ACBarringListType) Encode(w *uper.UperWriter) e
 	return err
 }
 
-func (ie *UAC_BarringPerPLMN_uac_ACBarringListType) Decode(r *uper.UperReader) error {
+func (ie *UAC_BarringPerPLMN_uac_ACBarringListType) Decode(r *aper.AperReader) error {
 	var err error
 	if ie.Choice, err = r.ReadChoice(2, false); err != nil {
 		return err
 	}
 	switch ie.Choice {
 	case UAC_BarringPerPLMN_uac_ACBarringListType_Choice_Uac_ImplicitACBarringList:
-		tmp := utils.NewSequence[*UAC_BarringInfoSetIndex]([]*UAC_BarringInfoSetIndex{}, uper.Constraint{Lb: maxAccessCat_1, Ub: maxAccessCat_1}, false)
+		tmp := utils.NewSequence[*UAC_BarringInfoSetIndex]([]*UAC_BarringInfoSetIndex{}, aper.Constraint{Lb: maxAccessCat_1, Ub: maxAccessCat_1}, false)
 		fn := func() *UAC_BarringInfoSetIndex {
 			return new(UAC_BarringInfoSetIndex)
 		}

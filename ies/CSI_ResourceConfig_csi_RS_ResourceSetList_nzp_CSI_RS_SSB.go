@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -10,7 +10,7 @@ type CSI_ResourceConfig_csi_RS_ResourceSetList_nzp_CSI_RS_SSB struct {
 	Csi_SSB_ResourceSetList    []CSI_SSB_ResourceSetId    `lb:1,ub:maxNrofCSI_SSB_ResourceSetsPerConfig,optional`
 }
 
-func (ie *CSI_ResourceConfig_csi_RS_ResourceSetList_nzp_CSI_RS_SSB) Encode(w *uper.UperWriter) error {
+func (ie *CSI_ResourceConfig_csi_RS_ResourceSetList_nzp_CSI_RS_SSB) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{len(ie.Nzp_CSI_RS_ResourceSetList) > 0, len(ie.Csi_SSB_ResourceSetList) > 0}
 	for _, bit := range preambleBits {
@@ -19,7 +19,7 @@ func (ie *CSI_ResourceConfig_csi_RS_ResourceSetList_nzp_CSI_RS_SSB) Encode(w *up
 		}
 	}
 	if len(ie.Nzp_CSI_RS_ResourceSetList) > 0 {
-		tmp_Nzp_CSI_RS_ResourceSetList := utils.NewSequence[*NZP_CSI_RS_ResourceSetId]([]*NZP_CSI_RS_ResourceSetId{}, uper.Constraint{Lb: 1, Ub: maxNrofNZP_CSI_RS_ResourceSetsPerConfig}, false)
+		tmp_Nzp_CSI_RS_ResourceSetList := utils.NewSequence[*NZP_CSI_RS_ResourceSetId]([]*NZP_CSI_RS_ResourceSetId{}, aper.Constraint{Lb: 1, Ub: maxNrofNZP_CSI_RS_ResourceSetsPerConfig}, false)
 		for _, i := range ie.Nzp_CSI_RS_ResourceSetList {
 			tmp_Nzp_CSI_RS_ResourceSetList.Value = append(tmp_Nzp_CSI_RS_ResourceSetList.Value, &i)
 		}
@@ -28,7 +28,7 @@ func (ie *CSI_ResourceConfig_csi_RS_ResourceSetList_nzp_CSI_RS_SSB) Encode(w *up
 		}
 	}
 	if len(ie.Csi_SSB_ResourceSetList) > 0 {
-		tmp_Csi_SSB_ResourceSetList := utils.NewSequence[*CSI_SSB_ResourceSetId]([]*CSI_SSB_ResourceSetId{}, uper.Constraint{Lb: 1, Ub: maxNrofCSI_SSB_ResourceSetsPerConfig}, false)
+		tmp_Csi_SSB_ResourceSetList := utils.NewSequence[*CSI_SSB_ResourceSetId]([]*CSI_SSB_ResourceSetId{}, aper.Constraint{Lb: 1, Ub: maxNrofCSI_SSB_ResourceSetsPerConfig}, false)
 		for _, i := range ie.Csi_SSB_ResourceSetList {
 			tmp_Csi_SSB_ResourceSetList.Value = append(tmp_Csi_SSB_ResourceSetList.Value, &i)
 		}
@@ -39,7 +39,7 @@ func (ie *CSI_ResourceConfig_csi_RS_ResourceSetList_nzp_CSI_RS_SSB) Encode(w *up
 	return nil
 }
 
-func (ie *CSI_ResourceConfig_csi_RS_ResourceSetList_nzp_CSI_RS_SSB) Decode(r *uper.UperReader) error {
+func (ie *CSI_ResourceConfig_csi_RS_ResourceSetList_nzp_CSI_RS_SSB) Decode(r *aper.AperReader) error {
 	var err error
 	var Nzp_CSI_RS_ResourceSetListPresent bool
 	if Nzp_CSI_RS_ResourceSetListPresent, err = r.ReadBool(); err != nil {
@@ -50,7 +50,7 @@ func (ie *CSI_ResourceConfig_csi_RS_ResourceSetList_nzp_CSI_RS_SSB) Decode(r *up
 		return err
 	}
 	if Nzp_CSI_RS_ResourceSetListPresent {
-		tmp_Nzp_CSI_RS_ResourceSetList := utils.NewSequence[*NZP_CSI_RS_ResourceSetId]([]*NZP_CSI_RS_ResourceSetId{}, uper.Constraint{Lb: 1, Ub: maxNrofNZP_CSI_RS_ResourceSetsPerConfig}, false)
+		tmp_Nzp_CSI_RS_ResourceSetList := utils.NewSequence[*NZP_CSI_RS_ResourceSetId]([]*NZP_CSI_RS_ResourceSetId{}, aper.Constraint{Lb: 1, Ub: maxNrofNZP_CSI_RS_ResourceSetsPerConfig}, false)
 		fn_Nzp_CSI_RS_ResourceSetList := func() *NZP_CSI_RS_ResourceSetId {
 			return new(NZP_CSI_RS_ResourceSetId)
 		}
@@ -63,7 +63,7 @@ func (ie *CSI_ResourceConfig_csi_RS_ResourceSetList_nzp_CSI_RS_SSB) Decode(r *up
 		}
 	}
 	if Csi_SSB_ResourceSetListPresent {
-		tmp_Csi_SSB_ResourceSetList := utils.NewSequence[*CSI_SSB_ResourceSetId]([]*CSI_SSB_ResourceSetId{}, uper.Constraint{Lb: 1, Ub: maxNrofCSI_SSB_ResourceSetsPerConfig}, false)
+		tmp_Csi_SSB_ResourceSetList := utils.NewSequence[*CSI_SSB_ResourceSetId]([]*CSI_SSB_ResourceSetId{}, aper.Constraint{Lb: 1, Ub: maxNrofCSI_SSB_ResourceSetsPerConfig}, false)
 		fn_Csi_SSB_ResourceSetList := func() *CSI_SSB_ResourceSetId {
 			return new(CSI_SSB_ResourceSetId)
 		}

@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -14,7 +14,7 @@ type CrossCarrierSchedulingProcessing_DiffSCS_r16 struct {
 	Scs_60kHz_120kHz_r16 *CrossCarrierSchedulingProcessing_DiffSCS_r16_scs_60kHz_120kHz_r16 `optional`
 }
 
-func (ie *CrossCarrierSchedulingProcessing_DiffSCS_r16) Encode(w *uper.UperWriter) error {
+func (ie *CrossCarrierSchedulingProcessing_DiffSCS_r16) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.Scs_15kHz_120kHz_r16 != nil, ie.Scs_15kHz_60kHz_r16 != nil, ie.Scs_30kHz_120kHz_r16 != nil, ie.Scs_15kHz_30kHz_r16 != nil, ie.Scs_30kHz_60kHz_r16 != nil, ie.Scs_60kHz_120kHz_r16 != nil}
 	for _, bit := range preambleBits {
@@ -55,7 +55,7 @@ func (ie *CrossCarrierSchedulingProcessing_DiffSCS_r16) Encode(w *uper.UperWrite
 	return nil
 }
 
-func (ie *CrossCarrierSchedulingProcessing_DiffSCS_r16) Decode(r *uper.UperReader) error {
+func (ie *CrossCarrierSchedulingProcessing_DiffSCS_r16) Decode(r *aper.AperReader) error {
 	var err error
 	var Scs_15kHz_120kHz_r16Present bool
 	if Scs_15kHz_120kHz_r16Present, err = r.ReadBool(); err != nil {

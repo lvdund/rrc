@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -13,7 +13,7 @@ type SharedSpectrumChAccessParamsPerBand_v1640 struct {
 	Csi_RS_CFRA_ForHO_r16               *SharedSpectrumChAccessParamsPerBand_v1640_csi_RS_CFRA_ForHO_r16               `optional`
 }
 
-func (ie *SharedSpectrumChAccessParamsPerBand_v1640) Encode(w *uper.UperWriter) error {
+func (ie *SharedSpectrumChAccessParamsPerBand_v1640) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.Csi_RSRP_AndRSRQ_MeasWithSSB_r16 != nil, ie.Csi_RSRP_AndRSRQ_MeasWithoutSSB_r16 != nil, ie.Csi_SINR_Meas_r16 != nil, ie.Ssb_AndCSI_RS_RLM_r16 != nil, ie.Csi_RS_CFRA_ForHO_r16 != nil}
 	for _, bit := range preambleBits {
@@ -49,7 +49,7 @@ func (ie *SharedSpectrumChAccessParamsPerBand_v1640) Encode(w *uper.UperWriter) 
 	return nil
 }
 
-func (ie *SharedSpectrumChAccessParamsPerBand_v1640) Decode(r *uper.UperReader) error {
+func (ie *SharedSpectrumChAccessParamsPerBand_v1640) Decode(r *aper.AperReader) error {
 	var err error
 	var Csi_RSRP_AndRSRQ_MeasWithSSB_r16Present bool
 	if Csi_RSRP_AndRSRQ_MeasWithSSB_r16Present, err = r.ReadBool(); err != nil {

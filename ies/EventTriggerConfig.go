@@ -3,7 +3,7 @@ package ies
 import (
 	"bytes"
 
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -28,7 +28,7 @@ type EventTriggerConfig struct {
 	ReportQuantityRelay_r17       *SL_MeasReportQuantity_r16                        `optional,ext-3`
 }
 
-func (ie *EventTriggerConfig) Encode(w *uper.UperWriter) error {
+func (ie *EventTriggerConfig) Encode(w *aper.AperWriter) error {
 	var err error
 	hasExtensions := ie.MeasRSSI_ReportConfig_r16 != nil || ie.UseT312_r16 != nil || ie.IncludeCommonLocationInfo_r16 != nil || ie.IncludeBT_Meas_r16 != nil || ie.IncludeWLAN_Meas_r16 != nil || ie.IncludeSensor_Meas_r16 != nil || ie.CoarseLocationRequest_r17 != nil || ie.ReportQuantityRelay_r17 != nil
 	preambleBits := []bool{hasExtensions}
@@ -50,7 +50,7 @@ func (ie *EventTriggerConfig) Encode(w *uper.UperWriter) error {
 		// encode extension group 2
 		if extBitmap[1] {
 			extBuf := new(bytes.Buffer)
-			extWriter := uper.NewWriter(extBuf)
+			extWriter := aper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 2
 			optionals_ext_2 := []bool{ie.MeasRSSI_ReportConfig_r16 != nil, ie.UseT312_r16 != nil, ie.IncludeCommonLocationInfo_r16 != nil, ie.IncludeBT_Meas_r16 != nil, ie.IncludeWLAN_Meas_r16 != nil, ie.IncludeSensor_Meas_r16 != nil}
@@ -118,7 +118,7 @@ func (ie *EventTriggerConfig) Encode(w *uper.UperWriter) error {
 		// encode extension group 3
 		if extBitmap[2] {
 			extBuf := new(bytes.Buffer)
-			extWriter := uper.NewWriter(extBuf)
+			extWriter := aper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 3
 			optionals_ext_3 := []bool{ie.CoarseLocationRequest_r17 != nil, ie.ReportQuantityRelay_r17 != nil}
@@ -153,7 +153,7 @@ func (ie *EventTriggerConfig) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *EventTriggerConfig) Decode(r *uper.UperReader) error {
+func (ie *EventTriggerConfig) Decode(r *aper.AperReader) error {
 	var err error
 	var extensionBit bool
 	if extensionBit, err = r.ReadBool(); err != nil {
@@ -177,7 +177,7 @@ func (ie *EventTriggerConfig) Decode(r *uper.UperReader) error {
 				return err
 			}
 
-			extReader := uper.NewReader(bytes.NewReader(extBytes))
+			extReader := aper.NewReader(bytes.NewReader(extBytes))
 
 			MeasRSSI_ReportConfig_r16Present, err := extReader.ReadBool()
 			if err != nil {
@@ -257,7 +257,7 @@ func (ie *EventTriggerConfig) Decode(r *uper.UperReader) error {
 				return err
 			}
 
-			extReader := uper.NewReader(bytes.NewReader(extBytes))
+			extReader := aper.NewReader(bytes.NewReader(extBytes))
 
 			CoarseLocationRequest_r17Present, err := extReader.ReadBool()
 			if err != nil {

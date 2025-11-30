@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -11,7 +11,7 @@ type SuccessHO_Report_r17_sourceCellInfo_r17 struct {
 	Rlf_InSourceDAPS_r17 *SuccessHO_Report_r17_sourceCellInfo_r17_rlf_InSourceDAPS_r17 `optional`
 }
 
-func (ie *SuccessHO_Report_r17_sourceCellInfo_r17) Encode(w *uper.UperWriter) error {
+func (ie *SuccessHO_Report_r17_sourceCellInfo_r17) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.SourceCellMeas_r17 != nil, ie.Rlf_InSourceDAPS_r17 != nil}
 	for _, bit := range preambleBits {
@@ -35,7 +35,7 @@ func (ie *SuccessHO_Report_r17_sourceCellInfo_r17) Encode(w *uper.UperWriter) er
 	return nil
 }
 
-func (ie *SuccessHO_Report_r17_sourceCellInfo_r17) Decode(r *uper.UperReader) error {
+func (ie *SuccessHO_Report_r17_sourceCellInfo_r17) Decode(r *aper.AperReader) error {
 	var err error
 	var SourceCellMeas_r17Present bool
 	if SourceCellMeas_r17Present, err = r.ReadBool(); err != nil {

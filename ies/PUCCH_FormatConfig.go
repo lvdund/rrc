@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -14,7 +14,7 @@ type PUCCH_FormatConfig struct {
 	SimultaneousHARQ_ACK_CSI  *PUCCH_FormatConfig_simultaneousHARQ_ACK_CSI  `optional`
 }
 
-func (ie *PUCCH_FormatConfig) Encode(w *uper.UperWriter) error {
+func (ie *PUCCH_FormatConfig) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.InterslotFrequencyHopping != nil, ie.AdditionalDMRS != nil, ie.MaxCodeRate != nil, ie.NrofSlots != nil, ie.Pi2BPSK != nil, ie.SimultaneousHARQ_ACK_CSI != nil}
 	for _, bit := range preambleBits {
@@ -55,7 +55,7 @@ func (ie *PUCCH_FormatConfig) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *PUCCH_FormatConfig) Decode(r *uper.UperReader) error {
+func (ie *PUCCH_FormatConfig) Decode(r *aper.AperReader) error {
 	var err error
 	var InterslotFrequencyHoppingPresent bool
 	if InterslotFrequencyHoppingPresent, err = r.ReadBool(); err != nil {

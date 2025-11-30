@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -11,7 +11,7 @@ type PUSCH_TPC_CommandConfig struct {
 	TargetCell   *ServCellIndex `optional`
 }
 
-func (ie *PUSCH_TPC_CommandConfig) Encode(w *uper.UperWriter) error {
+func (ie *PUSCH_TPC_CommandConfig) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.Tpc_Index != nil, ie.Tpc_IndexSUL != nil, ie.TargetCell != nil}
 	for _, bit := range preambleBits {
@@ -20,12 +20,12 @@ func (ie *PUSCH_TPC_CommandConfig) Encode(w *uper.UperWriter) error {
 		}
 	}
 	if ie.Tpc_Index != nil {
-		if err = w.WriteInteger(*ie.Tpc_Index, &uper.Constraint{Lb: 1, Ub: 15}, false); err != nil {
+		if err = w.WriteInteger(*ie.Tpc_Index, &aper.Constraint{Lb: 1, Ub: 15}, false); err != nil {
 			return utils.WrapError("Encode Tpc_Index", err)
 		}
 	}
 	if ie.Tpc_IndexSUL != nil {
-		if err = w.WriteInteger(*ie.Tpc_IndexSUL, &uper.Constraint{Lb: 1, Ub: 15}, false); err != nil {
+		if err = w.WriteInteger(*ie.Tpc_IndexSUL, &aper.Constraint{Lb: 1, Ub: 15}, false); err != nil {
 			return utils.WrapError("Encode Tpc_IndexSUL", err)
 		}
 	}
@@ -37,7 +37,7 @@ func (ie *PUSCH_TPC_CommandConfig) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *PUSCH_TPC_CommandConfig) Decode(r *uper.UperReader) error {
+func (ie *PUSCH_TPC_CommandConfig) Decode(r *aper.AperReader) error {
 	var err error
 	var Tpc_IndexPresent bool
 	if Tpc_IndexPresent, err = r.ReadBool(); err != nil {
@@ -53,14 +53,14 @@ func (ie *PUSCH_TPC_CommandConfig) Decode(r *uper.UperReader) error {
 	}
 	if Tpc_IndexPresent {
 		var tmp_int_Tpc_Index int64
-		if tmp_int_Tpc_Index, err = r.ReadInteger(&uper.Constraint{Lb: 1, Ub: 15}, false); err != nil {
+		if tmp_int_Tpc_Index, err = r.ReadInteger(&aper.Constraint{Lb: 1, Ub: 15}, false); err != nil {
 			return utils.WrapError("Decode Tpc_Index", err)
 		}
 		ie.Tpc_Index = &tmp_int_Tpc_Index
 	}
 	if Tpc_IndexSULPresent {
 		var tmp_int_Tpc_IndexSUL int64
-		if tmp_int_Tpc_IndexSUL, err = r.ReadInteger(&uper.Constraint{Lb: 1, Ub: 15}, false); err != nil {
+		if tmp_int_Tpc_IndexSUL, err = r.ReadInteger(&aper.Constraint{Lb: 1, Ub: 15}, false); err != nil {
 			return utils.WrapError("Decode Tpc_IndexSUL", err)
 		}
 		ie.Tpc_IndexSUL = &tmp_int_Tpc_IndexSUL

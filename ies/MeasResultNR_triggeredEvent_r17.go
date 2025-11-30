@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -10,7 +10,7 @@ type MeasResultNR_triggeredEvent_r17 struct {
 	FirstTriggeredEvent   *MeasResultNR_triggeredEvent_r17_firstTriggeredEvent `optional`
 }
 
-func (ie *MeasResultNR_triggeredEvent_r17) Encode(w *uper.UperWriter) error {
+func (ie *MeasResultNR_triggeredEvent_r17) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.TimeBetweenEvents_r17 != nil, ie.FirstTriggeredEvent != nil}
 	for _, bit := range preambleBits {
@@ -31,7 +31,7 @@ func (ie *MeasResultNR_triggeredEvent_r17) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *MeasResultNR_triggeredEvent_r17) Decode(r *uper.UperReader) error {
+func (ie *MeasResultNR_triggeredEvent_r17) Decode(r *aper.AperReader) error {
 	var err error
 	var TimeBetweenEvents_r17Present bool
 	if TimeBetweenEvents_r17Present, err = r.ReadBool(); err != nil {

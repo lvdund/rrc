@@ -3,7 +3,7 @@ package ies
 import (
 	"fmt"
 
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -20,10 +20,10 @@ type PortIndexFor8Ranks struct {
 	PortIndex8 *PortIndexFor8Ranks_portIndex8
 	PortIndex4 *PortIndexFor8Ranks_portIndex4
 	PortIndex2 *PortIndexFor8Ranks_portIndex2
-	PortIndex1 uper.NULL `madatory`
+	PortIndex1 aper.NULL `madatory`
 }
 
-func (ie *PortIndexFor8Ranks) Encode(w *uper.UperWriter) error {
+func (ie *PortIndexFor8Ranks) Encode(w *aper.AperWriter) error {
 	var err error
 	if err = w.WriteChoice(ie.Choice, 4, false); err != nil {
 		return err
@@ -51,7 +51,7 @@ func (ie *PortIndexFor8Ranks) Encode(w *uper.UperWriter) error {
 	return err
 }
 
-func (ie *PortIndexFor8Ranks) Decode(r *uper.UperReader) error {
+func (ie *PortIndexFor8Ranks) Decode(r *aper.AperReader) error {
 	var err error
 	if ie.Choice, err = r.ReadChoice(4, false); err != nil {
 		return err

@@ -3,7 +3,7 @@ package ies
 import (
 	"bytes"
 
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -112,7 +112,7 @@ type Phy_ParametersCommon struct {
 	Pusch_Repetition_CG_SDT_r17                                *Phy_ParametersCommon_pusch_Repetition_CG_SDT_r17                                `optional,ext-11`
 }
 
-func (ie *Phy_ParametersCommon) Encode(w *uper.UperWriter) error {
+func (ie *Phy_ParametersCommon) Encode(w *aper.AperWriter) error {
 	var err error
 	hasExtensions := ie.Dummy != nil || ie.MaxNumberSearchSpaces != nil || ie.RateMatchingCtrlResrcSetDynamic != nil || ie.MaxLayersMIMO_Indication != nil || ie.SpCellPlacement != nil || ie.TwoStepRACH_r16 != nil || ie.Dci_Format1_2And0_2_r16 != nil || ie.MonitoringDCI_SameSearchSpace_r16 != nil || ie.Type2_CG_ReleaseDCI_0_1_r16 != nil || ie.Type2_CG_ReleaseDCI_0_2_r16 != nil || ie.Sps_ReleaseDCI_1_1_r16 != nil || ie.Sps_ReleaseDCI_1_2_r16 != nil || ie.Csi_TriggerStateNon_ActiveBWP_r16 != nil || ie.SeparateSMTC_InterIAB_Support_r16 != nil || ie.SeparateRACH_IAB_Support_r16 != nil || ie.Ul_flexibleDL_SlotFormatSemiStatic_IAB_r16 != nil || ie.Ul_flexibleDL_SlotFormatDynamics_IAB_r16 != nil || ie.Dft_S_OFDM_WaveformUL_IAB_r16 != nil || ie.Dci_25_AI_RNTI_Support_IAB_r16 != nil || ie.T_DeltaReceptionSupport_IAB_r16 != nil || ie.GuardSymbolReportReception_IAB_r16 != nil || ie.HarqACK_CB_SpatialBundlingPUCCH_Group_r16 != nil || ie.CrossSlotScheduling_r16 != nil || ie.MaxNumberSRS_PosPathLossEstimateAllServingCells_r16 != nil || ie.ExtendedCG_Periodicities_r16 != nil || ie.ExtendedSPS_Periodicities_r16 != nil || ie.CodebookVariantsList_r16 != nil || ie.Pusch_RepetitionTypeA_r16 != nil || ie.Dci_DL_PriorityIndicator_r16 != nil || ie.Dci_UL_PriorityIndicator_r16 != nil || ie.MaxNumberPathlossRS_Update_r16 != nil || ie.Type2_HARQ_ACK_Codebook_r16 != nil || ie.MaxTotalResourcesForAcrossFreqRanges_r16 != nil || ie.HarqACK_separateMultiDCI_MultiTRP_r16 != nil || ie.HarqACK_jointMultiDCI_MultiTRP_r16 != nil || ie.Bwp_SwitchingMultiCCs_r16 != nil || ie.TargetSMTC_SCG_r16 != nil || ie.SupportRepetitionZeroOffsetRV_r16 != nil || ie.Cbg_TransInOrderPUSCH_UL_r16 != nil || ie.Bwp_SwitchingMultiDormancyCCs_r16 != nil || ie.SupportRetx_Diff_CoresetPool_Multi_DCI_TRP_r16 != nil || ie.Pdcch_MonitoringAnyOccasionsWithSpanGapCrossCarrierSch_r16 != nil || ie.NewBeamIdentifications2PortCSI_RS_r16 != nil || ie.PathlossEstimation2PortCSI_RS_r16 != nil || ie.Mux_HARQ_ACK_withoutPUCCH_onPUSCH_r16 != nil || ie.GuardSymbolReportReception_IAB_r17 != nil || ie.Restricted_IAB_DU_BeamReception_r17 != nil || ie.Recommended_IAB_MT_BeamTransmission_r17 != nil || ie.Case6_TimingAlignmentReception_IAB_r17 != nil || ie.Case7_TimingAlignmentReception_IAB_r17 != nil || ie.Dl_tx_PowerAdjustment_IAB_r17 != nil || ie.Desired_ul_tx_PowerAdjustment_r17 != nil || ie.Fdm_SoftResourceAvailability_DynamicIndication_r17 != nil || ie.Updated_T_DeltaRangeRecption_r17 != nil || ie.SlotBasedDynamicPUCCH_Rep_r17 != nil || ie.Sps_HARQ_ACK_Deferral_r17 != nil || ie.UnifiedJointTCI_commonUpdate_r17 != nil || ie.MTRP_PDCCH_singleSpan_r17 != nil || ie.SupportedActivatedPRS_ProcessingWindow_r17 != nil || ie.Cg_TimeDomainAllocationExtension_r17 != nil || ie.Ta_BasedPDC_TN_NonSharedSpectrumChAccess_r17 != nil || ie.DirectionalCollisionDC_IAB_r17 != nil || ie.PriorityIndicatorInDCI_Multicast_r17 != nil || ie.PriorityIndicatorInDCI_SPS_Multicast_r17 != nil || ie.TwoHARQ_ACK_CodebookForUnicastAndMulticast_r17 != nil || ie.MultiPUCCH_HARQ_ACK_ForMulticastUnicast_r17 != nil || ie.Srs_AdditionalRepetition_r17 != nil || ie.Pusch_Repetition_CG_SDT_r17 != nil
 	preambleBits := []bool{hasExtensions, ie.Csi_RS_CFRA_ForHO != nil, ie.DynamicPRB_BundlingDL != nil, ie.Sp_CSI_ReportPUCCH != nil, ie.Sp_CSI_ReportPUSCH != nil, ie.Nzp_CSI_RS_IntefMgmt != nil, ie.Type2_SP_CSI_Feedback_LongPUCCH != nil, ie.PrecoderGranularityCORESET != nil, ie.DynamicHARQ_ACK_Codebook != nil, ie.SemiStaticHARQ_ACK_Codebook != nil, ie.SpatialBundlingHARQ_ACK != nil, ie.DynamicBetaOffsetInd_HARQ_ACK_CSI != nil, ie.Pucch_Repetition_F1_3_4 != nil, ie.Ra_Type0_PUSCH != nil, ie.DynamicSwitchRA_Type0_1_PDSCH != nil, ie.DynamicSwitchRA_Type0_1_PUSCH != nil, ie.Pdsch_MappingTypeA != nil, ie.Pdsch_MappingTypeB != nil, ie.InterleavingVRB_ToPRB_PDSCH != nil, ie.InterSlotFreqHopping_PUSCH != nil, ie.Type1_PUSCH_RepetitionMultiSlots != nil, ie.Type2_PUSCH_RepetitionMultiSlots != nil, ie.Pusch_RepetitionMultiSlots != nil, ie.Pdsch_RepetitionMultiSlots != nil, ie.DownlinkSPS != nil, ie.ConfiguredUL_GrantType1 != nil, ie.ConfiguredUL_GrantType2 != nil, ie.Pre_EmptIndication_DL != nil, ie.Cbg_TransIndication_DL != nil, ie.Cbg_TransIndication_UL != nil, ie.Cbg_FlushIndication_DL != nil, ie.DynamicHARQ_ACK_CodeB_CBG_Retx_DL != nil, ie.RateMatchingResrcSetSemi_Static != nil, ie.RateMatchingResrcSetDynamic != nil, ie.Bwp_SwitchingDelay != nil}
@@ -301,7 +301,7 @@ func (ie *Phy_ParametersCommon) Encode(w *uper.UperWriter) error {
 		// encode extension group 1
 		if extBitmap[0] {
 			extBuf := new(bytes.Buffer)
-			extWriter := uper.NewWriter(extBuf)
+			extWriter := aper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 1
 			optionals_ext_1 := []bool{ie.Dummy != nil}
@@ -330,7 +330,7 @@ func (ie *Phy_ParametersCommon) Encode(w *uper.UperWriter) error {
 		// encode extension group 2
 		if extBitmap[1] {
 			extBuf := new(bytes.Buffer)
-			extWriter := uper.NewWriter(extBuf)
+			extWriter := aper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 2
 			optionals_ext_2 := []bool{ie.MaxNumberSearchSpaces != nil, ie.RateMatchingCtrlResrcSetDynamic != nil, ie.MaxLayersMIMO_Indication != nil}
@@ -371,7 +371,7 @@ func (ie *Phy_ParametersCommon) Encode(w *uper.UperWriter) error {
 		// encode extension group 3
 		if extBitmap[2] {
 			extBuf := new(bytes.Buffer)
-			extWriter := uper.NewWriter(extBuf)
+			extWriter := aper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 3
 			optionals_ext_3 := []bool{ie.SpCellPlacement != nil}
@@ -400,7 +400,7 @@ func (ie *Phy_ParametersCommon) Encode(w *uper.UperWriter) error {
 		// encode extension group 4
 		if extBitmap[3] {
 			extBuf := new(bytes.Buffer)
-			extWriter := uper.NewWriter(extBuf)
+			extWriter := aper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 4
 			optionals_ext_4 := []bool{ie.TwoStepRACH_r16 != nil, ie.Dci_Format1_2And0_2_r16 != nil, ie.MonitoringDCI_SameSearchSpace_r16 != nil, ie.Type2_CG_ReleaseDCI_0_1_r16 != nil, ie.Type2_CG_ReleaseDCI_0_2_r16 != nil, ie.Sps_ReleaseDCI_1_1_r16 != nil, ie.Sps_ReleaseDCI_1_2_r16 != nil, ie.Csi_TriggerStateNon_ActiveBWP_r16 != nil, ie.SeparateSMTC_InterIAB_Support_r16 != nil, ie.SeparateRACH_IAB_Support_r16 != nil, ie.Ul_flexibleDL_SlotFormatSemiStatic_IAB_r16 != nil, ie.Ul_flexibleDL_SlotFormatDynamics_IAB_r16 != nil, ie.Dft_S_OFDM_WaveformUL_IAB_r16 != nil, ie.Dci_25_AI_RNTI_Support_IAB_r16 != nil, ie.T_DeltaReceptionSupport_IAB_r16 != nil, ie.GuardSymbolReportReception_IAB_r16 != nil, ie.HarqACK_CB_SpatialBundlingPUCCH_Group_r16 != nil, ie.CrossSlotScheduling_r16 != nil, ie.MaxNumberSRS_PosPathLossEstimateAllServingCells_r16 != nil, ie.ExtendedCG_Periodicities_r16 != nil, ie.ExtendedSPS_Periodicities_r16 != nil, ie.CodebookVariantsList_r16 != nil, ie.Pusch_RepetitionTypeA_r16 != nil, ie.Dci_DL_PriorityIndicator_r16 != nil, ie.Dci_UL_PriorityIndicator_r16 != nil, ie.MaxNumberPathlossRS_Update_r16 != nil, ie.Type2_HARQ_ACK_Codebook_r16 != nil, ie.MaxTotalResourcesForAcrossFreqRanges_r16 != nil, ie.HarqACK_separateMultiDCI_MultiTRP_r16 != nil, ie.HarqACK_jointMultiDCI_MultiTRP_r16 != nil, ie.Bwp_SwitchingMultiCCs_r16 != nil}
@@ -609,7 +609,7 @@ func (ie *Phy_ParametersCommon) Encode(w *uper.UperWriter) error {
 		// encode extension group 5
 		if extBitmap[4] {
 			extBuf := new(bytes.Buffer)
-			extWriter := uper.NewWriter(extBuf)
+			extWriter := aper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 5
 			optionals_ext_5 := []bool{ie.TargetSMTC_SCG_r16 != nil, ie.SupportRepetitionZeroOffsetRV_r16 != nil, ie.Cbg_TransInOrderPUSCH_UL_r16 != nil}
@@ -650,7 +650,7 @@ func (ie *Phy_ParametersCommon) Encode(w *uper.UperWriter) error {
 		// encode extension group 6
 		if extBitmap[5] {
 			extBuf := new(bytes.Buffer)
-			extWriter := uper.NewWriter(extBuf)
+			extWriter := aper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 6
 			optionals_ext_6 := []bool{ie.Bwp_SwitchingMultiDormancyCCs_r16 != nil, ie.SupportRetx_Diff_CoresetPool_Multi_DCI_TRP_r16 != nil, ie.Pdcch_MonitoringAnyOccasionsWithSpanGapCrossCarrierSch_r16 != nil}
@@ -691,7 +691,7 @@ func (ie *Phy_ParametersCommon) Encode(w *uper.UperWriter) error {
 		// encode extension group 7
 		if extBitmap[6] {
 			extBuf := new(bytes.Buffer)
-			extWriter := uper.NewWriter(extBuf)
+			extWriter := aper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 7
 			optionals_ext_7 := []bool{ie.NewBeamIdentifications2PortCSI_RS_r16 != nil, ie.PathlossEstimation2PortCSI_RS_r16 != nil}
@@ -726,7 +726,7 @@ func (ie *Phy_ParametersCommon) Encode(w *uper.UperWriter) error {
 		// encode extension group 8
 		if extBitmap[7] {
 			extBuf := new(bytes.Buffer)
-			extWriter := uper.NewWriter(extBuf)
+			extWriter := aper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 8
 			optionals_ext_8 := []bool{ie.Mux_HARQ_ACK_withoutPUCCH_onPUSCH_r16 != nil}
@@ -755,7 +755,7 @@ func (ie *Phy_ParametersCommon) Encode(w *uper.UperWriter) error {
 		// encode extension group 9
 		if extBitmap[8] {
 			extBuf := new(bytes.Buffer)
-			extWriter := uper.NewWriter(extBuf)
+			extWriter := aper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 9
 			optionals_ext_9 := []bool{ie.GuardSymbolReportReception_IAB_r17 != nil, ie.Restricted_IAB_DU_BeamReception_r17 != nil, ie.Recommended_IAB_MT_BeamTransmission_r17 != nil, ie.Case6_TimingAlignmentReception_IAB_r17 != nil, ie.Case7_TimingAlignmentReception_IAB_r17 != nil, ie.Dl_tx_PowerAdjustment_IAB_r17 != nil, ie.Desired_ul_tx_PowerAdjustment_r17 != nil, ie.Fdm_SoftResourceAvailability_DynamicIndication_r17 != nil, ie.Updated_T_DeltaRangeRecption_r17 != nil, ie.SlotBasedDynamicPUCCH_Rep_r17 != nil, ie.Sps_HARQ_ACK_Deferral_r17 != nil, ie.UnifiedJointTCI_commonUpdate_r17 != nil, ie.MTRP_PDCCH_singleSpan_r17 != nil, ie.SupportedActivatedPRS_ProcessingWindow_r17 != nil, ie.Cg_TimeDomainAllocationExtension_r17 != nil}
@@ -833,7 +833,7 @@ func (ie *Phy_ParametersCommon) Encode(w *uper.UperWriter) error {
 			}
 			// encode UnifiedJointTCI_commonUpdate_r17 optional
 			if ie.UnifiedJointTCI_commonUpdate_r17 != nil {
-				if err = extWriter.WriteInteger(*ie.UnifiedJointTCI_commonUpdate_r17, &uper.Constraint{Lb: 1, Ub: 4}, false); err != nil {
+				if err = extWriter.WriteInteger(*ie.UnifiedJointTCI_commonUpdate_r17, &aper.Constraint{Lb: 1, Ub: 4}, false); err != nil {
 					return utils.WrapError("Encode UnifiedJointTCI_commonUpdate_r17", err)
 				}
 			}
@@ -868,7 +868,7 @@ func (ie *Phy_ParametersCommon) Encode(w *uper.UperWriter) error {
 		// encode extension group 10
 		if extBitmap[9] {
 			extBuf := new(bytes.Buffer)
-			extWriter := uper.NewWriter(extBuf)
+			extWriter := aper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 10
 			optionals_ext_10 := []bool{ie.Ta_BasedPDC_TN_NonSharedSpectrumChAccess_r17 != nil, ie.DirectionalCollisionDC_IAB_r17 != nil}
@@ -903,7 +903,7 @@ func (ie *Phy_ParametersCommon) Encode(w *uper.UperWriter) error {
 		// encode extension group 11
 		if extBitmap[10] {
 			extBuf := new(bytes.Buffer)
-			extWriter := uper.NewWriter(extBuf)
+			extWriter := aper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 11
 			optionals_ext_11 := []bool{ie.PriorityIndicatorInDCI_Multicast_r17 != nil, ie.PriorityIndicatorInDCI_SPS_Multicast_r17 != nil, ie.TwoHARQ_ACK_CodebookForUnicastAndMulticast_r17 != nil, ie.MultiPUCCH_HARQ_ACK_ForMulticastUnicast_r17 != nil, ie.Srs_AdditionalRepetition_r17 != nil, ie.Pusch_Repetition_CG_SDT_r17 != nil}
@@ -962,7 +962,7 @@ func (ie *Phy_ParametersCommon) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *Phy_ParametersCommon) Decode(r *uper.UperReader) error {
+func (ie *Phy_ParametersCommon) Decode(r *aper.AperReader) error {
 	var err error
 	var extensionBit bool
 	if extensionBit, err = r.ReadBool(); err != nil {
@@ -1323,7 +1323,7 @@ func (ie *Phy_ParametersCommon) Decode(r *uper.UperReader) error {
 				return err
 			}
 
-			extReader := uper.NewReader(bytes.NewReader(extBytes))
+			extReader := aper.NewReader(bytes.NewReader(extBytes))
 
 			DummyPresent, err := extReader.ReadBool()
 			if err != nil {
@@ -1344,7 +1344,7 @@ func (ie *Phy_ParametersCommon) Decode(r *uper.UperReader) error {
 				return err
 			}
 
-			extReader := uper.NewReader(bytes.NewReader(extBytes))
+			extReader := aper.NewReader(bytes.NewReader(extBytes))
 
 			MaxNumberSearchSpacesPresent, err := extReader.ReadBool()
 			if err != nil {
@@ -1387,7 +1387,7 @@ func (ie *Phy_ParametersCommon) Decode(r *uper.UperReader) error {
 				return err
 			}
 
-			extReader := uper.NewReader(bytes.NewReader(extBytes))
+			extReader := aper.NewReader(bytes.NewReader(extBytes))
 
 			SpCellPlacementPresent, err := extReader.ReadBool()
 			if err != nil {
@@ -1408,7 +1408,7 @@ func (ie *Phy_ParametersCommon) Decode(r *uper.UperReader) error {
 				return err
 			}
 
-			extReader := uper.NewReader(bytes.NewReader(extBytes))
+			extReader := aper.NewReader(bytes.NewReader(extBytes))
 
 			TwoStepRACH_r16Present, err := extReader.ReadBool()
 			if err != nil {
@@ -1759,7 +1759,7 @@ func (ie *Phy_ParametersCommon) Decode(r *uper.UperReader) error {
 				return err
 			}
 
-			extReader := uper.NewReader(bytes.NewReader(extBytes))
+			extReader := aper.NewReader(bytes.NewReader(extBytes))
 
 			TargetSMTC_SCG_r16Present, err := extReader.ReadBool()
 			if err != nil {
@@ -1802,7 +1802,7 @@ func (ie *Phy_ParametersCommon) Decode(r *uper.UperReader) error {
 				return err
 			}
 
-			extReader := uper.NewReader(bytes.NewReader(extBytes))
+			extReader := aper.NewReader(bytes.NewReader(extBytes))
 
 			Bwp_SwitchingMultiDormancyCCs_r16Present, err := extReader.ReadBool()
 			if err != nil {
@@ -1845,7 +1845,7 @@ func (ie *Phy_ParametersCommon) Decode(r *uper.UperReader) error {
 				return err
 			}
 
-			extReader := uper.NewReader(bytes.NewReader(extBytes))
+			extReader := aper.NewReader(bytes.NewReader(extBytes))
 
 			NewBeamIdentifications2PortCSI_RS_r16Present, err := extReader.ReadBool()
 			if err != nil {
@@ -1877,7 +1877,7 @@ func (ie *Phy_ParametersCommon) Decode(r *uper.UperReader) error {
 				return err
 			}
 
-			extReader := uper.NewReader(bytes.NewReader(extBytes))
+			extReader := aper.NewReader(bytes.NewReader(extBytes))
 
 			Mux_HARQ_ACK_withoutPUCCH_onPUSCH_r16Present, err := extReader.ReadBool()
 			if err != nil {
@@ -1898,7 +1898,7 @@ func (ie *Phy_ParametersCommon) Decode(r *uper.UperReader) error {
 				return err
 			}
 
-			extReader := uper.NewReader(bytes.NewReader(extBytes))
+			extReader := aper.NewReader(bytes.NewReader(extBytes))
 
 			GuardSymbolReportReception_IAB_r17Present, err := extReader.ReadBool()
 			if err != nil {
@@ -2040,7 +2040,7 @@ func (ie *Phy_ParametersCommon) Decode(r *uper.UperReader) error {
 			// decode UnifiedJointTCI_commonUpdate_r17 optional
 			if UnifiedJointTCI_commonUpdate_r17Present {
 				var tmp_int_UnifiedJointTCI_commonUpdate_r17 int64
-				if tmp_int_UnifiedJointTCI_commonUpdate_r17, err = extReader.ReadInteger(&uper.Constraint{Lb: 1, Ub: 4}, false); err != nil {
+				if tmp_int_UnifiedJointTCI_commonUpdate_r17, err = extReader.ReadInteger(&aper.Constraint{Lb: 1, Ub: 4}, false); err != nil {
 					return utils.WrapError("Decode UnifiedJointTCI_commonUpdate_r17", err)
 				}
 				ie.UnifiedJointTCI_commonUpdate_r17 = &tmp_int_UnifiedJointTCI_commonUpdate_r17
@@ -2074,7 +2074,7 @@ func (ie *Phy_ParametersCommon) Decode(r *uper.UperReader) error {
 				return err
 			}
 
-			extReader := uper.NewReader(bytes.NewReader(extBytes))
+			extReader := aper.NewReader(bytes.NewReader(extBytes))
 
 			Ta_BasedPDC_TN_NonSharedSpectrumChAccess_r17Present, err := extReader.ReadBool()
 			if err != nil {
@@ -2106,7 +2106,7 @@ func (ie *Phy_ParametersCommon) Decode(r *uper.UperReader) error {
 				return err
 			}
 
-			extReader := uper.NewReader(bytes.NewReader(extBytes))
+			extReader := aper.NewReader(bytes.NewReader(extBytes))
 
 			PriorityIndicatorInDCI_Multicast_r17Present, err := extReader.ReadBool()
 			if err != nil {

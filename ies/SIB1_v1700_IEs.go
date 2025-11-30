@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -12,7 +12,7 @@ type SIB1_v1700_IEs struct {
 	RedCap_ConfigCommon_r17        *RedCap_ConfigCommonSIB_r17                    `optional`
 	FeaturePriorities_r17          *FeaturePriorities_r17                         `optional`
 	Si_SchedulingInfo_v1700        *SI_SchedulingInfo_v1700                       `optional`
-	HyperSFN_r17                   *uper.BitString                                `lb:10,ub:10,optional`
+	HyperSFN_r17                   *aper.BitString                                `lb:10,ub:10,optional`
 	EDRX_AllowedIdle_r17           *SIB1_v1700_IEs_eDRX_AllowedIdle_r17           `optional`
 	EDRX_AllowedInactive_r17       *SIB1_v1700_IEs_eDRX_AllowedInactive_r17       `optional`
 	IntraFreqReselectionRedCap_r17 *SIB1_v1700_IEs_intraFreqReselectionRedCap_r17 `optional`
@@ -20,7 +20,7 @@ type SIB1_v1700_IEs struct {
 	NonCriticalExtension           interface{}                                    `optional`
 }
 
-func (ie *SIB1_v1700_IEs) Encode(w *uper.UperWriter) error {
+func (ie *SIB1_v1700_IEs) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.Hsdn_Cell_r17 != nil, ie.Uac_BarringInfo_v1700 != nil, ie.Sdt_ConfigCommon_r17 != nil, ie.RedCap_ConfigCommon_r17 != nil, ie.FeaturePriorities_r17 != nil, ie.Si_SchedulingInfo_v1700 != nil, ie.HyperSFN_r17 != nil, ie.EDRX_AllowedIdle_r17 != nil, ie.EDRX_AllowedInactive_r17 != nil, ie.IntraFreqReselectionRedCap_r17 != nil, ie.CellBarredNTN_r17 != nil}
 	for _, bit := range preambleBits {
@@ -59,7 +59,7 @@ func (ie *SIB1_v1700_IEs) Encode(w *uper.UperWriter) error {
 		}
 	}
 	if ie.HyperSFN_r17 != nil {
-		if err = w.WriteBitString(ie.HyperSFN_r17.Bytes, uint(ie.HyperSFN_r17.NumBits), &uper.Constraint{Lb: 10, Ub: 10}, false); err != nil {
+		if err = w.WriteBitString(ie.HyperSFN_r17.Bytes, uint(ie.HyperSFN_r17.NumBits), &aper.Constraint{Lb: 10, Ub: 10}, false); err != nil {
 			return utils.WrapError("Encode HyperSFN_r17", err)
 		}
 	}
@@ -86,7 +86,7 @@ func (ie *SIB1_v1700_IEs) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *SIB1_v1700_IEs) Decode(r *uper.UperReader) error {
+func (ie *SIB1_v1700_IEs) Decode(r *aper.AperReader) error {
 	var err error
 	var Hsdn_Cell_r17Present bool
 	if Hsdn_Cell_r17Present, err = r.ReadBool(); err != nil {
@@ -171,10 +171,10 @@ func (ie *SIB1_v1700_IEs) Decode(r *uper.UperReader) error {
 	if HyperSFN_r17Present {
 		var tmp_bs_HyperSFN_r17 []byte
 		var n_HyperSFN_r17 uint
-		if tmp_bs_HyperSFN_r17, n_HyperSFN_r17, err = r.ReadBitString(&uper.Constraint{Lb: 10, Ub: 10}, false); err != nil {
+		if tmp_bs_HyperSFN_r17, n_HyperSFN_r17, err = r.ReadBitString(&aper.Constraint{Lb: 10, Ub: 10}, false); err != nil {
 			return utils.WrapError("Decode HyperSFN_r17", err)
 		}
-		tmp_bitstring := uper.BitString{
+		tmp_bitstring := aper.BitString{
 			Bytes:   tmp_bs_HyperSFN_r17,
 			NumBits: uint64(n_HyperSFN_r17),
 		}

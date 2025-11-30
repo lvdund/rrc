@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -11,9 +11,9 @@ type SRS_Resource_resourceMapping_r17 struct {
 	RepetitionFactor_r17 SRS_Resource_resourceMapping_r17_repetitionFactor_r17 `madatory`
 }
 
-func (ie *SRS_Resource_resourceMapping_r17) Encode(w *uper.UperWriter) error {
+func (ie *SRS_Resource_resourceMapping_r17) Encode(w *aper.AperWriter) error {
 	var err error
-	if err = w.WriteInteger(ie.StartPosition_r17, &uper.Constraint{Lb: 0, Ub: 13}, false); err != nil {
+	if err = w.WriteInteger(ie.StartPosition_r17, &aper.Constraint{Lb: 0, Ub: 13}, false); err != nil {
 		return utils.WrapError("WriteInteger StartPosition_r17", err)
 	}
 	if err = ie.NrofSymbols_r17.Encode(w); err != nil {
@@ -25,10 +25,10 @@ func (ie *SRS_Resource_resourceMapping_r17) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *SRS_Resource_resourceMapping_r17) Decode(r *uper.UperReader) error {
+func (ie *SRS_Resource_resourceMapping_r17) Decode(r *aper.AperReader) error {
 	var err error
 	var tmp_int_StartPosition_r17 int64
-	if tmp_int_StartPosition_r17, err = r.ReadInteger(&uper.Constraint{Lb: 0, Ub: 13}, false); err != nil {
+	if tmp_int_StartPosition_r17, err = r.ReadInteger(&aper.Constraint{Lb: 0, Ub: 13}, false); err != nil {
 		return utils.WrapError("ReadInteger StartPosition_r17", err)
 	}
 	ie.StartPosition_r17 = tmp_int_StartPosition_r17

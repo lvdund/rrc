@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -10,7 +10,7 @@ type MRDC_Parameters_v1630 struct {
 	InterBandMRDC_WithOverlapDL_Bands_r16            *MRDC_Parameters_v1630_interBandMRDC_WithOverlapDL_Bands_r16            `optional`
 }
 
-func (ie *MRDC_Parameters_v1630) Encode(w *uper.UperWriter) error {
+func (ie *MRDC_Parameters_v1630) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.MaxUplinkDutyCycle_interBandENDC_FDD_TDD_PC2_r16 != nil, ie.InterBandMRDC_WithOverlapDL_Bands_r16 != nil}
 	for _, bit := range preambleBits {
@@ -31,7 +31,7 @@ func (ie *MRDC_Parameters_v1630) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *MRDC_Parameters_v1630) Decode(r *uper.UperReader) error {
+func (ie *MRDC_Parameters_v1630) Decode(r *aper.AperReader) error {
 	var err error
 	var MaxUplinkDutyCycle_interBandENDC_FDD_TDD_PC2_r16Present bool
 	if MaxUplinkDutyCycle_interBandENDC_FDD_TDD_PC2_r16Present, err = r.ReadBool(); err != nil {

@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -10,7 +10,7 @@ type DRX_Info struct {
 	ShortDRX                 *DRX_Info_shortDRX                `lb:1,ub:16,optional`
 }
 
-func (ie *DRX_Info) Encode(w *uper.UperWriter) error {
+func (ie *DRX_Info) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.ShortDRX != nil}
 	for _, bit := range preambleBits {
@@ -29,7 +29,7 @@ func (ie *DRX_Info) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *DRX_Info) Decode(r *uper.UperReader) error {
+func (ie *DRX_Info) Decode(r *aper.AperReader) error {
 	var err error
 	var ShortDRXPresent bool
 	if ShortDRXPresent, err = r.ReadBool(); err != nil {

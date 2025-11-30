@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -10,7 +10,7 @@ type FeatureSetDownlink_v1610_pdcch_Monitoring_r16 struct {
 	Pdsch_ProcessingType2_r16 *Pdsch_ProcessingType_r16 `optional`
 }
 
-func (ie *FeatureSetDownlink_v1610_pdcch_Monitoring_r16) Encode(w *uper.UperWriter) error {
+func (ie *FeatureSetDownlink_v1610_pdcch_Monitoring_r16) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.Pdsch_ProcessingType1_r16 != nil, ie.Pdsch_ProcessingType2_r16 != nil}
 	for _, bit := range preambleBits {
@@ -31,7 +31,7 @@ func (ie *FeatureSetDownlink_v1610_pdcch_Monitoring_r16) Encode(w *uper.UperWrit
 	return nil
 }
 
-func (ie *FeatureSetDownlink_v1610_pdcch_Monitoring_r16) Decode(r *uper.UperReader) error {
+func (ie *FeatureSetDownlink_v1610_pdcch_Monitoring_r16) Decode(r *aper.AperReader) error {
 	var err error
 	var Pdsch_ProcessingType1_r16Present bool
 	if Pdsch_ProcessingType1_r16Present, err = r.ReadBool(); err != nil {

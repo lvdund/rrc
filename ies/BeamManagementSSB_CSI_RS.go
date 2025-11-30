@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -13,7 +13,7 @@ type BeamManagementSSB_CSI_RS struct {
 	MaxNumberAperiodicCSI_RS_Resource BeamManagementSSB_CSI_RS_maxNumberAperiodicCSI_RS_Resource `madatory`
 }
 
-func (ie *BeamManagementSSB_CSI_RS) Encode(w *uper.UperWriter) error {
+func (ie *BeamManagementSSB_CSI_RS) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.SupportedCSI_RS_Density != nil}
 	for _, bit := range preambleBits {
@@ -41,7 +41,7 @@ func (ie *BeamManagementSSB_CSI_RS) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *BeamManagementSSB_CSI_RS) Decode(r *uper.UperReader) error {
+func (ie *BeamManagementSSB_CSI_RS) Decode(r *aper.AperReader) error {
 	var err error
 	var SupportedCSI_RS_DensityPresent bool
 	if SupportedCSI_RS_DensityPresent, err = r.ReadBool(); err != nil {

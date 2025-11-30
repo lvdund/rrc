@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -9,7 +9,7 @@ type MeasAndMobParametersMRDC_Common_v1730 struct {
 	IndependentGapConfig_maxCC_r17 *MeasAndMobParametersMRDC_Common_v1730_independentGapConfig_maxCC_r17 `lb:1,ub:32,optional`
 }
 
-func (ie *MeasAndMobParametersMRDC_Common_v1730) Encode(w *uper.UperWriter) error {
+func (ie *MeasAndMobParametersMRDC_Common_v1730) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.IndependentGapConfig_maxCC_r17 != nil}
 	for _, bit := range preambleBits {
@@ -25,7 +25,7 @@ func (ie *MeasAndMobParametersMRDC_Common_v1730) Encode(w *uper.UperWriter) erro
 	return nil
 }
 
-func (ie *MeasAndMobParametersMRDC_Common_v1730) Decode(r *uper.UperReader) error {
+func (ie *MeasAndMobParametersMRDC_Common_v1730) Decode(r *aper.AperReader) error {
 	var err error
 	var IndependentGapConfig_maxCC_r17Present bool
 	if IndependentGapConfig_maxCC_r17Present, err = r.ReadBool(); err != nil {

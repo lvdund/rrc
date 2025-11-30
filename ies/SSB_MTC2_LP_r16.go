@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -10,7 +10,7 @@ type SSB_MTC2_LP_r16 struct {
 	Periodicity SSB_MTC2_LP_r16_periodicity `madatory`
 }
 
-func (ie *SSB_MTC2_LP_r16) Encode(w *uper.UperWriter) error {
+func (ie *SSB_MTC2_LP_r16) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{len(ie.Pci_List) > 0}
 	for _, bit := range preambleBits {
@@ -19,7 +19,7 @@ func (ie *SSB_MTC2_LP_r16) Encode(w *uper.UperWriter) error {
 		}
 	}
 	if len(ie.Pci_List) > 0 {
-		tmp_Pci_List := utils.NewSequence[*PhysCellId]([]*PhysCellId{}, uper.Constraint{Lb: 1, Ub: maxNrofPCIsPerSMTC}, false)
+		tmp_Pci_List := utils.NewSequence[*PhysCellId]([]*PhysCellId{}, aper.Constraint{Lb: 1, Ub: maxNrofPCIsPerSMTC}, false)
 		for _, i := range ie.Pci_List {
 			tmp_Pci_List.Value = append(tmp_Pci_List.Value, &i)
 		}
@@ -33,14 +33,14 @@ func (ie *SSB_MTC2_LP_r16) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *SSB_MTC2_LP_r16) Decode(r *uper.UperReader) error {
+func (ie *SSB_MTC2_LP_r16) Decode(r *aper.AperReader) error {
 	var err error
 	var Pci_ListPresent bool
 	if Pci_ListPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
 	if Pci_ListPresent {
-		tmp_Pci_List := utils.NewSequence[*PhysCellId]([]*PhysCellId{}, uper.Constraint{Lb: 1, Ub: maxNrofPCIsPerSMTC}, false)
+		tmp_Pci_List := utils.NewSequence[*PhysCellId]([]*PhysCellId{}, aper.Constraint{Lb: 1, Ub: maxNrofPCIsPerSMTC}, false)
 		fn_Pci_List := func() *PhysCellId {
 			return new(PhysCellId)
 		}

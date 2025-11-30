@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -11,7 +11,7 @@ type BSR_Config struct {
 	LogicalChannelSR_DelayTimer *BSR_Config_logicalChannelSR_DelayTimer `optional`
 }
 
-func (ie *BSR_Config) Encode(w *uper.UperWriter) error {
+func (ie *BSR_Config) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.LogicalChannelSR_DelayTimer != nil}
 	for _, bit := range preambleBits {
@@ -33,7 +33,7 @@ func (ie *BSR_Config) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *BSR_Config) Decode(r *uper.UperReader) error {
+func (ie *BSR_Config) Decode(r *aper.AperReader) error {
 	var err error
 	var LogicalChannelSR_DelayTimerPresent bool
 	if LogicalChannelSR_DelayTimerPresent, err = r.ReadBool(); err != nil {

@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -15,7 +15,7 @@ type CSI_RS_ResourceMapping struct {
 	FreqBand                     CSI_FrequencyOccupation                          `madatory`
 }
 
-func (ie *CSI_RS_ResourceMapping) Encode(w *uper.UperWriter) error {
+func (ie *CSI_RS_ResourceMapping) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.FirstOFDMSymbolInTimeDomain2 != nil}
 	for _, bit := range preambleBits {
@@ -29,11 +29,11 @@ func (ie *CSI_RS_ResourceMapping) Encode(w *uper.UperWriter) error {
 	if err = ie.NrofPorts.Encode(w); err != nil {
 		return utils.WrapError("Encode NrofPorts", err)
 	}
-	if err = w.WriteInteger(ie.FirstOFDMSymbolInTimeDomain, &uper.Constraint{Lb: 0, Ub: 13}, false); err != nil {
+	if err = w.WriteInteger(ie.FirstOFDMSymbolInTimeDomain, &aper.Constraint{Lb: 0, Ub: 13}, false); err != nil {
 		return utils.WrapError("WriteInteger FirstOFDMSymbolInTimeDomain", err)
 	}
 	if ie.FirstOFDMSymbolInTimeDomain2 != nil {
-		if err = w.WriteInteger(*ie.FirstOFDMSymbolInTimeDomain2, &uper.Constraint{Lb: 2, Ub: 12}, false); err != nil {
+		if err = w.WriteInteger(*ie.FirstOFDMSymbolInTimeDomain2, &aper.Constraint{Lb: 2, Ub: 12}, false); err != nil {
 			return utils.WrapError("Encode FirstOFDMSymbolInTimeDomain2", err)
 		}
 	}
@@ -49,7 +49,7 @@ func (ie *CSI_RS_ResourceMapping) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *CSI_RS_ResourceMapping) Decode(r *uper.UperReader) error {
+func (ie *CSI_RS_ResourceMapping) Decode(r *aper.AperReader) error {
 	var err error
 	var FirstOFDMSymbolInTimeDomain2Present bool
 	if FirstOFDMSymbolInTimeDomain2Present, err = r.ReadBool(); err != nil {
@@ -62,13 +62,13 @@ func (ie *CSI_RS_ResourceMapping) Decode(r *uper.UperReader) error {
 		return utils.WrapError("Decode NrofPorts", err)
 	}
 	var tmp_int_FirstOFDMSymbolInTimeDomain int64
-	if tmp_int_FirstOFDMSymbolInTimeDomain, err = r.ReadInteger(&uper.Constraint{Lb: 0, Ub: 13}, false); err != nil {
+	if tmp_int_FirstOFDMSymbolInTimeDomain, err = r.ReadInteger(&aper.Constraint{Lb: 0, Ub: 13}, false); err != nil {
 		return utils.WrapError("ReadInteger FirstOFDMSymbolInTimeDomain", err)
 	}
 	ie.FirstOFDMSymbolInTimeDomain = tmp_int_FirstOFDMSymbolInTimeDomain
 	if FirstOFDMSymbolInTimeDomain2Present {
 		var tmp_int_FirstOFDMSymbolInTimeDomain2 int64
-		if tmp_int_FirstOFDMSymbolInTimeDomain2, err = r.ReadInteger(&uper.Constraint{Lb: 2, Ub: 12}, false); err != nil {
+		if tmp_int_FirstOFDMSymbolInTimeDomain2, err = r.ReadInteger(&aper.Constraint{Lb: 2, Ub: 12}, false); err != nil {
 			return utils.WrapError("Decode FirstOFDMSymbolInTimeDomain2", err)
 		}
 		ie.FirstOFDMSymbolInTimeDomain2 = &tmp_int_FirstOFDMSymbolInTimeDomain2

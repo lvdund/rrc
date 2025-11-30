@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -9,9 +9,9 @@ type UE_CapabilityRAT_RequestList struct {
 	Value []UE_CapabilityRAT_Request `lb:1,ub:maxRAT_CapabilityContainers,madatory`
 }
 
-func (ie *UE_CapabilityRAT_RequestList) Encode(w *uper.UperWriter) error {
+func (ie *UE_CapabilityRAT_RequestList) Encode(w *aper.AperWriter) error {
 	var err error
-	tmp := utils.NewSequence[*UE_CapabilityRAT_Request]([]*UE_CapabilityRAT_Request{}, uper.Constraint{Lb: 1, Ub: maxRAT_CapabilityContainers}, false)
+	tmp := utils.NewSequence[*UE_CapabilityRAT_Request]([]*UE_CapabilityRAT_Request{}, aper.Constraint{Lb: 1, Ub: maxRAT_CapabilityContainers}, false)
 	for _, i := range ie.Value {
 		tmp.Value = append(tmp.Value, &i)
 	}
@@ -21,9 +21,9 @@ func (ie *UE_CapabilityRAT_RequestList) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *UE_CapabilityRAT_RequestList) Decode(r *uper.UperReader) error {
+func (ie *UE_CapabilityRAT_RequestList) Decode(r *aper.AperReader) error {
 	var err error
-	tmp := utils.NewSequence[*UE_CapabilityRAT_Request]([]*UE_CapabilityRAT_Request{}, uper.Constraint{Lb: 1, Ub: maxRAT_CapabilityContainers}, false)
+	tmp := utils.NewSequence[*UE_CapabilityRAT_Request]([]*UE_CapabilityRAT_Request{}, aper.Constraint{Lb: 1, Ub: maxRAT_CapabilityContainers}, false)
 	fn := func() *UE_CapabilityRAT_Request {
 		return new(UE_CapabilityRAT_Request)
 	}

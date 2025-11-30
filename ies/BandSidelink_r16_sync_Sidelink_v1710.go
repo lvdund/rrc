@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -12,7 +12,7 @@ type BandSidelink_r16_sync_Sidelink_v1710 struct {
 	GNB_GNSS_UE_SyncWithPriorityOnGNSS_r17    *BandSidelink_r16_sync_Sidelink_v1710_gNB_GNSS_UE_SyncWithPriorityOnGNSS_r17    `optional`
 }
 
-func (ie *BandSidelink_r16_sync_Sidelink_v1710) Encode(w *uper.UperWriter) error {
+func (ie *BandSidelink_r16_sync_Sidelink_v1710) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.Sync_GNSS_r17 != nil, ie.GNB_Sync_r17 != nil, ie.GNB_GNSS_UE_SyncWithPriorityOnGNB_ENB_r17 != nil, ie.GNB_GNSS_UE_SyncWithPriorityOnGNSS_r17 != nil}
 	for _, bit := range preambleBits {
@@ -43,7 +43,7 @@ func (ie *BandSidelink_r16_sync_Sidelink_v1710) Encode(w *uper.UperWriter) error
 	return nil
 }
 
-func (ie *BandSidelink_r16_sync_Sidelink_v1710) Decode(r *uper.UperReader) error {
+func (ie *BandSidelink_r16_sync_Sidelink_v1710) Decode(r *aper.AperReader) error {
 	var err error
 	var Sync_GNSS_r17Present bool
 	if Sync_GNSS_r17Present, err = r.ReadBool(); err != nil {

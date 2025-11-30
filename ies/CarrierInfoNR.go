@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -11,7 +11,7 @@ type CarrierInfoNR struct {
 	Smtc                 *SSB_MTC          `optional`
 }
 
-func (ie *CarrierInfoNR) Encode(w *uper.UperWriter) error {
+func (ie *CarrierInfoNR) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.Smtc != nil}
 	for _, bit := range preambleBits {
@@ -33,7 +33,7 @@ func (ie *CarrierInfoNR) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *CarrierInfoNR) Decode(r *uper.UperReader) error {
+func (ie *CarrierInfoNR) Decode(r *aper.AperReader) error {
 	var err error
 	var SmtcPresent bool
 	if SmtcPresent, err = r.ReadBool(); err != nil {

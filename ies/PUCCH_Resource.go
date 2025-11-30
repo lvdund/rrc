@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -13,7 +13,7 @@ type PUCCH_Resource struct {
 	Format                    PUCCH_Resource_format                     `madatory`
 }
 
-func (ie *PUCCH_Resource) Encode(w *uper.UperWriter) error {
+func (ie *PUCCH_Resource) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.IntraSlotFrequencyHopping != nil, ie.SecondHopPRB != nil}
 	for _, bit := range preambleBits {
@@ -43,7 +43,7 @@ func (ie *PUCCH_Resource) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *PUCCH_Resource) Decode(r *uper.UperReader) error {
+func (ie *PUCCH_Resource) Decode(r *aper.AperReader) error {
 	var err error
 	var IntraSlotFrequencyHoppingPresent bool
 	if IntraSlotFrequencyHoppingPresent, err = r.ReadBool(); err != nil {

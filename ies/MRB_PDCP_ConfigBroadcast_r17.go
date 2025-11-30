@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -11,7 +11,7 @@ type MRB_PDCP_ConfigBroadcast_r17 struct {
 	T_Reordering_r17      *MRB_PDCP_ConfigBroadcast_r17_t_Reordering_r17     `optional`
 }
 
-func (ie *MRB_PDCP_ConfigBroadcast_r17) Encode(w *uper.UperWriter) error {
+func (ie *MRB_PDCP_ConfigBroadcast_r17) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.Pdcp_SN_SizeDL_r17 != nil, ie.T_Reordering_r17 != nil}
 	for _, bit := range preambleBits {
@@ -35,7 +35,7 @@ func (ie *MRB_PDCP_ConfigBroadcast_r17) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *MRB_PDCP_ConfigBroadcast_r17) Decode(r *uper.UperReader) error {
+func (ie *MRB_PDCP_ConfigBroadcast_r17) Decode(r *aper.AperReader) error {
 	var err error
 	var Pdcp_SN_SizeDL_r17Present bool
 	if Pdcp_SN_SizeDL_r17Present, err = r.ReadBool(); err != nil {

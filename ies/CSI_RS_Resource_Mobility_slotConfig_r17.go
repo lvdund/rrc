@@ -3,7 +3,7 @@ package ies
 import (
 	"fmt"
 
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -25,30 +25,30 @@ type CSI_RS_Resource_Mobility_slotConfig_r17 struct {
 	Ms40   int64 `lb:0,ub:2559,madatory`
 }
 
-func (ie *CSI_RS_Resource_Mobility_slotConfig_r17) Encode(w *uper.UperWriter) error {
+func (ie *CSI_RS_Resource_Mobility_slotConfig_r17) Encode(w *aper.AperWriter) error {
 	var err error
 	if err = w.WriteChoice(ie.Choice, 5, false); err != nil {
 		return err
 	}
 	switch ie.Choice {
 	case CSI_RS_Resource_Mobility_slotConfig_r17_Choice_Ms4:
-		if err = w.WriteInteger(int64(ie.Ms4), &uper.Constraint{Lb: 0, Ub: 255}, false); err != nil {
+		if err = w.WriteInteger(int64(ie.Ms4), &aper.Constraint{Lb: 0, Ub: 255}, false); err != nil {
 			err = utils.WrapError("Encode Ms4", err)
 		}
 	case CSI_RS_Resource_Mobility_slotConfig_r17_Choice_Ms5:
-		if err = w.WriteInteger(int64(ie.Ms5), &uper.Constraint{Lb: 0, Ub: 319}, false); err != nil {
+		if err = w.WriteInteger(int64(ie.Ms5), &aper.Constraint{Lb: 0, Ub: 319}, false); err != nil {
 			err = utils.WrapError("Encode Ms5", err)
 		}
 	case CSI_RS_Resource_Mobility_slotConfig_r17_Choice_Ms10:
-		if err = w.WriteInteger(int64(ie.Ms10), &uper.Constraint{Lb: 0, Ub: 639}, false); err != nil {
+		if err = w.WriteInteger(int64(ie.Ms10), &aper.Constraint{Lb: 0, Ub: 639}, false); err != nil {
 			err = utils.WrapError("Encode Ms10", err)
 		}
 	case CSI_RS_Resource_Mobility_slotConfig_r17_Choice_Ms20:
-		if err = w.WriteInteger(int64(ie.Ms20), &uper.Constraint{Lb: 0, Ub: 1279}, false); err != nil {
+		if err = w.WriteInteger(int64(ie.Ms20), &aper.Constraint{Lb: 0, Ub: 1279}, false); err != nil {
 			err = utils.WrapError("Encode Ms20", err)
 		}
 	case CSI_RS_Resource_Mobility_slotConfig_r17_Choice_Ms40:
-		if err = w.WriteInteger(int64(ie.Ms40), &uper.Constraint{Lb: 0, Ub: 2559}, false); err != nil {
+		if err = w.WriteInteger(int64(ie.Ms40), &aper.Constraint{Lb: 0, Ub: 2559}, false); err != nil {
 			err = utils.WrapError("Encode Ms40", err)
 		}
 	default:
@@ -57,7 +57,7 @@ func (ie *CSI_RS_Resource_Mobility_slotConfig_r17) Encode(w *uper.UperWriter) er
 	return err
 }
 
-func (ie *CSI_RS_Resource_Mobility_slotConfig_r17) Decode(r *uper.UperReader) error {
+func (ie *CSI_RS_Resource_Mobility_slotConfig_r17) Decode(r *aper.AperReader) error {
 	var err error
 	if ie.Choice, err = r.ReadChoice(5, false); err != nil {
 		return err
@@ -65,31 +65,31 @@ func (ie *CSI_RS_Resource_Mobility_slotConfig_r17) Decode(r *uper.UperReader) er
 	switch ie.Choice {
 	case CSI_RS_Resource_Mobility_slotConfig_r17_Choice_Ms4:
 		var tmp_int_Ms4 int64
-		if tmp_int_Ms4, err = r.ReadInteger(&uper.Constraint{Lb: 0, Ub: 255}, false); err != nil {
+		if tmp_int_Ms4, err = r.ReadInteger(&aper.Constraint{Lb: 0, Ub: 255}, false); err != nil {
 			return utils.WrapError("Decode Ms4", err)
 		}
 		ie.Ms4 = tmp_int_Ms4
 	case CSI_RS_Resource_Mobility_slotConfig_r17_Choice_Ms5:
 		var tmp_int_Ms5 int64
-		if tmp_int_Ms5, err = r.ReadInteger(&uper.Constraint{Lb: 0, Ub: 319}, false); err != nil {
+		if tmp_int_Ms5, err = r.ReadInteger(&aper.Constraint{Lb: 0, Ub: 319}, false); err != nil {
 			return utils.WrapError("Decode Ms5", err)
 		}
 		ie.Ms5 = tmp_int_Ms5
 	case CSI_RS_Resource_Mobility_slotConfig_r17_Choice_Ms10:
 		var tmp_int_Ms10 int64
-		if tmp_int_Ms10, err = r.ReadInteger(&uper.Constraint{Lb: 0, Ub: 639}, false); err != nil {
+		if tmp_int_Ms10, err = r.ReadInteger(&aper.Constraint{Lb: 0, Ub: 639}, false); err != nil {
 			return utils.WrapError("Decode Ms10", err)
 		}
 		ie.Ms10 = tmp_int_Ms10
 	case CSI_RS_Resource_Mobility_slotConfig_r17_Choice_Ms20:
 		var tmp_int_Ms20 int64
-		if tmp_int_Ms20, err = r.ReadInteger(&uper.Constraint{Lb: 0, Ub: 1279}, false); err != nil {
+		if tmp_int_Ms20, err = r.ReadInteger(&aper.Constraint{Lb: 0, Ub: 1279}, false); err != nil {
 			return utils.WrapError("Decode Ms20", err)
 		}
 		ie.Ms20 = tmp_int_Ms20
 	case CSI_RS_Resource_Mobility_slotConfig_r17_Choice_Ms40:
 		var tmp_int_Ms40 int64
-		if tmp_int_Ms40, err = r.ReadInteger(&uper.Constraint{Lb: 0, Ub: 2559}, false); err != nil {
+		if tmp_int_Ms40, err = r.ReadInteger(&aper.Constraint{Lb: 0, Ub: 2559}, false); err != nil {
 			return utils.WrapError("Decode Ms40", err)
 		}
 		ie.Ms40 = tmp_int_Ms40

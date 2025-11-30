@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -19,7 +19,7 @@ type SL_PHY_MAC_RLC_Config_r16 struct {
 	NetworkControlledSyncTx_r16    *SL_PHY_MAC_RLC_Config_r16_networkControlledSyncTx_r16 `optional`
 }
 
-func (ie *SL_PHY_MAC_RLC_Config_r16) Encode(w *uper.UperWriter) error {
+func (ie *SL_PHY_MAC_RLC_Config_r16) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.Sl_ScheduledConfig_r16 != nil, ie.Sl_UE_SelectedConfig_r16 != nil, len(ie.Sl_FreqInfoToReleaseList_r16) > 0, len(ie.Sl_FreqInfoToAddModList_r16) > 0, len(ie.Sl_RLC_BearerToReleaseList_r16) > 0, len(ie.Sl_RLC_BearerToAddModList_r16) > 0, ie.Sl_MaxNumConsecutiveDTX_r16 != nil, ie.Sl_CSI_Acquisition_r16 != nil, ie.Sl_CSI_SchedulingRequestId_r16 != nil, ie.Sl_SSB_PriorityNR_r16 != nil, ie.NetworkControlledSyncTx_r16 != nil}
 	for _, bit := range preambleBits {
@@ -44,7 +44,7 @@ func (ie *SL_PHY_MAC_RLC_Config_r16) Encode(w *uper.UperWriter) error {
 		}
 	}
 	if len(ie.Sl_FreqInfoToReleaseList_r16) > 0 {
-		tmp_Sl_FreqInfoToReleaseList_r16 := utils.NewSequence[*SL_Freq_Id_r16]([]*SL_Freq_Id_r16{}, uper.Constraint{Lb: 1, Ub: maxNrofFreqSL_r16}, false)
+		tmp_Sl_FreqInfoToReleaseList_r16 := utils.NewSequence[*SL_Freq_Id_r16]([]*SL_Freq_Id_r16{}, aper.Constraint{Lb: 1, Ub: maxNrofFreqSL_r16}, false)
 		for _, i := range ie.Sl_FreqInfoToReleaseList_r16 {
 			tmp_Sl_FreqInfoToReleaseList_r16.Value = append(tmp_Sl_FreqInfoToReleaseList_r16.Value, &i)
 		}
@@ -53,7 +53,7 @@ func (ie *SL_PHY_MAC_RLC_Config_r16) Encode(w *uper.UperWriter) error {
 		}
 	}
 	if len(ie.Sl_FreqInfoToAddModList_r16) > 0 {
-		tmp_Sl_FreqInfoToAddModList_r16 := utils.NewSequence[*SL_FreqConfig_r16]([]*SL_FreqConfig_r16{}, uper.Constraint{Lb: 1, Ub: maxNrofFreqSL_r16}, false)
+		tmp_Sl_FreqInfoToAddModList_r16 := utils.NewSequence[*SL_FreqConfig_r16]([]*SL_FreqConfig_r16{}, aper.Constraint{Lb: 1, Ub: maxNrofFreqSL_r16}, false)
 		for _, i := range ie.Sl_FreqInfoToAddModList_r16 {
 			tmp_Sl_FreqInfoToAddModList_r16.Value = append(tmp_Sl_FreqInfoToAddModList_r16.Value, &i)
 		}
@@ -62,7 +62,7 @@ func (ie *SL_PHY_MAC_RLC_Config_r16) Encode(w *uper.UperWriter) error {
 		}
 	}
 	if len(ie.Sl_RLC_BearerToReleaseList_r16) > 0 {
-		tmp_Sl_RLC_BearerToReleaseList_r16 := utils.NewSequence[*SL_RLC_BearerConfigIndex_r16]([]*SL_RLC_BearerConfigIndex_r16{}, uper.Constraint{Lb: 1, Ub: maxSL_LCID_r16}, false)
+		tmp_Sl_RLC_BearerToReleaseList_r16 := utils.NewSequence[*SL_RLC_BearerConfigIndex_r16]([]*SL_RLC_BearerConfigIndex_r16{}, aper.Constraint{Lb: 1, Ub: maxSL_LCID_r16}, false)
 		for _, i := range ie.Sl_RLC_BearerToReleaseList_r16 {
 			tmp_Sl_RLC_BearerToReleaseList_r16.Value = append(tmp_Sl_RLC_BearerToReleaseList_r16.Value, &i)
 		}
@@ -71,7 +71,7 @@ func (ie *SL_PHY_MAC_RLC_Config_r16) Encode(w *uper.UperWriter) error {
 		}
 	}
 	if len(ie.Sl_RLC_BearerToAddModList_r16) > 0 {
-		tmp_Sl_RLC_BearerToAddModList_r16 := utils.NewSequence[*SL_RLC_BearerConfig_r16]([]*SL_RLC_BearerConfig_r16{}, uper.Constraint{Lb: 1, Ub: maxSL_LCID_r16}, false)
+		tmp_Sl_RLC_BearerToAddModList_r16 := utils.NewSequence[*SL_RLC_BearerConfig_r16]([]*SL_RLC_BearerConfig_r16{}, aper.Constraint{Lb: 1, Ub: maxSL_LCID_r16}, false)
 		for _, i := range ie.Sl_RLC_BearerToAddModList_r16 {
 			tmp_Sl_RLC_BearerToAddModList_r16.Value = append(tmp_Sl_RLC_BearerToAddModList_r16.Value, &i)
 		}
@@ -98,7 +98,7 @@ func (ie *SL_PHY_MAC_RLC_Config_r16) Encode(w *uper.UperWriter) error {
 		}
 	}
 	if ie.Sl_SSB_PriorityNR_r16 != nil {
-		if err = w.WriteInteger(*ie.Sl_SSB_PriorityNR_r16, &uper.Constraint{Lb: 1, Ub: 8}, false); err != nil {
+		if err = w.WriteInteger(*ie.Sl_SSB_PriorityNR_r16, &aper.Constraint{Lb: 1, Ub: 8}, false); err != nil {
 			return utils.WrapError("Encode Sl_SSB_PriorityNR_r16", err)
 		}
 	}
@@ -110,7 +110,7 @@ func (ie *SL_PHY_MAC_RLC_Config_r16) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *SL_PHY_MAC_RLC_Config_r16) Decode(r *uper.UperReader) error {
+func (ie *SL_PHY_MAC_RLC_Config_r16) Decode(r *aper.AperReader) error {
 	var err error
 	var Sl_ScheduledConfig_r16Present bool
 	if Sl_ScheduledConfig_r16Present, err = r.ReadBool(); err != nil {
@@ -171,7 +171,7 @@ func (ie *SL_PHY_MAC_RLC_Config_r16) Decode(r *uper.UperReader) error {
 		ie.Sl_UE_SelectedConfig_r16 = tmp_Sl_UE_SelectedConfig_r16.Setup
 	}
 	if Sl_FreqInfoToReleaseList_r16Present {
-		tmp_Sl_FreqInfoToReleaseList_r16 := utils.NewSequence[*SL_Freq_Id_r16]([]*SL_Freq_Id_r16{}, uper.Constraint{Lb: 1, Ub: maxNrofFreqSL_r16}, false)
+		tmp_Sl_FreqInfoToReleaseList_r16 := utils.NewSequence[*SL_Freq_Id_r16]([]*SL_Freq_Id_r16{}, aper.Constraint{Lb: 1, Ub: maxNrofFreqSL_r16}, false)
 		fn_Sl_FreqInfoToReleaseList_r16 := func() *SL_Freq_Id_r16 {
 			return new(SL_Freq_Id_r16)
 		}
@@ -184,7 +184,7 @@ func (ie *SL_PHY_MAC_RLC_Config_r16) Decode(r *uper.UperReader) error {
 		}
 	}
 	if Sl_FreqInfoToAddModList_r16Present {
-		tmp_Sl_FreqInfoToAddModList_r16 := utils.NewSequence[*SL_FreqConfig_r16]([]*SL_FreqConfig_r16{}, uper.Constraint{Lb: 1, Ub: maxNrofFreqSL_r16}, false)
+		tmp_Sl_FreqInfoToAddModList_r16 := utils.NewSequence[*SL_FreqConfig_r16]([]*SL_FreqConfig_r16{}, aper.Constraint{Lb: 1, Ub: maxNrofFreqSL_r16}, false)
 		fn_Sl_FreqInfoToAddModList_r16 := func() *SL_FreqConfig_r16 {
 			return new(SL_FreqConfig_r16)
 		}
@@ -197,7 +197,7 @@ func (ie *SL_PHY_MAC_RLC_Config_r16) Decode(r *uper.UperReader) error {
 		}
 	}
 	if Sl_RLC_BearerToReleaseList_r16Present {
-		tmp_Sl_RLC_BearerToReleaseList_r16 := utils.NewSequence[*SL_RLC_BearerConfigIndex_r16]([]*SL_RLC_BearerConfigIndex_r16{}, uper.Constraint{Lb: 1, Ub: maxSL_LCID_r16}, false)
+		tmp_Sl_RLC_BearerToReleaseList_r16 := utils.NewSequence[*SL_RLC_BearerConfigIndex_r16]([]*SL_RLC_BearerConfigIndex_r16{}, aper.Constraint{Lb: 1, Ub: maxSL_LCID_r16}, false)
 		fn_Sl_RLC_BearerToReleaseList_r16 := func() *SL_RLC_BearerConfigIndex_r16 {
 			return new(SL_RLC_BearerConfigIndex_r16)
 		}
@@ -210,7 +210,7 @@ func (ie *SL_PHY_MAC_RLC_Config_r16) Decode(r *uper.UperReader) error {
 		}
 	}
 	if Sl_RLC_BearerToAddModList_r16Present {
-		tmp_Sl_RLC_BearerToAddModList_r16 := utils.NewSequence[*SL_RLC_BearerConfig_r16]([]*SL_RLC_BearerConfig_r16{}, uper.Constraint{Lb: 1, Ub: maxSL_LCID_r16}, false)
+		tmp_Sl_RLC_BearerToAddModList_r16 := utils.NewSequence[*SL_RLC_BearerConfig_r16]([]*SL_RLC_BearerConfig_r16{}, aper.Constraint{Lb: 1, Ub: maxSL_LCID_r16}, false)
 		fn_Sl_RLC_BearerToAddModList_r16 := func() *SL_RLC_BearerConfig_r16 {
 			return new(SL_RLC_BearerConfig_r16)
 		}
@@ -243,7 +243,7 @@ func (ie *SL_PHY_MAC_RLC_Config_r16) Decode(r *uper.UperReader) error {
 	}
 	if Sl_SSB_PriorityNR_r16Present {
 		var tmp_int_Sl_SSB_PriorityNR_r16 int64
-		if tmp_int_Sl_SSB_PriorityNR_r16, err = r.ReadInteger(&uper.Constraint{Lb: 1, Ub: 8}, false); err != nil {
+		if tmp_int_Sl_SSB_PriorityNR_r16, err = r.ReadInteger(&aper.Constraint{Lb: 1, Ub: 8}, false); err != nil {
 			return utils.WrapError("Decode Sl_SSB_PriorityNR_r16", err)
 		}
 		ie.Sl_SSB_PriorityNR_r16 = &tmp_int_Sl_SSB_PriorityNR_r16

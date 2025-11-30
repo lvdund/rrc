@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -10,7 +10,7 @@ type SL_CBR_PSSCH_TxConfig_r16 struct {
 	Sl_TxParameters_r16 *SL_PSSCH_TxParameters_r16 `optional`
 }
 
-func (ie *SL_CBR_PSSCH_TxConfig_r16) Encode(w *uper.UperWriter) error {
+func (ie *SL_CBR_PSSCH_TxConfig_r16) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.Sl_CR_Limit_r16 != nil, ie.Sl_TxParameters_r16 != nil}
 	for _, bit := range preambleBits {
@@ -19,7 +19,7 @@ func (ie *SL_CBR_PSSCH_TxConfig_r16) Encode(w *uper.UperWriter) error {
 		}
 	}
 	if ie.Sl_CR_Limit_r16 != nil {
-		if err = w.WriteInteger(*ie.Sl_CR_Limit_r16, &uper.Constraint{Lb: 0, Ub: 10000}, false); err != nil {
+		if err = w.WriteInteger(*ie.Sl_CR_Limit_r16, &aper.Constraint{Lb: 0, Ub: 10000}, false); err != nil {
 			return utils.WrapError("Encode Sl_CR_Limit_r16", err)
 		}
 	}
@@ -31,7 +31,7 @@ func (ie *SL_CBR_PSSCH_TxConfig_r16) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *SL_CBR_PSSCH_TxConfig_r16) Decode(r *uper.UperReader) error {
+func (ie *SL_CBR_PSSCH_TxConfig_r16) Decode(r *aper.AperReader) error {
 	var err error
 	var Sl_CR_Limit_r16Present bool
 	if Sl_CR_Limit_r16Present, err = r.ReadBool(); err != nil {
@@ -43,7 +43,7 @@ func (ie *SL_CBR_PSSCH_TxConfig_r16) Decode(r *uper.UperReader) error {
 	}
 	if Sl_CR_Limit_r16Present {
 		var tmp_int_Sl_CR_Limit_r16 int64
-		if tmp_int_Sl_CR_Limit_r16, err = r.ReadInteger(&uper.Constraint{Lb: 0, Ub: 10000}, false); err != nil {
+		if tmp_int_Sl_CR_Limit_r16, err = r.ReadInteger(&aper.Constraint{Lb: 0, Ub: 10000}, false); err != nil {
 			return utils.WrapError("Decode Sl_CR_Limit_r16", err)
 		}
 		ie.Sl_CR_Limit_r16 = &tmp_int_Sl_CR_Limit_r16

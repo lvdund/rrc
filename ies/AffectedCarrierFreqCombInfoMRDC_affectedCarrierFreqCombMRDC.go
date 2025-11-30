@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -10,7 +10,7 @@ type AffectedCarrierFreqCombInfoMRDC_affectedCarrierFreqCombMRDC struct {
 	AffectedCarrierFreqCombNR    AffectedCarrierFreqCombNR     `madatory`
 }
 
-func (ie *AffectedCarrierFreqCombInfoMRDC_affectedCarrierFreqCombMRDC) Encode(w *uper.UperWriter) error {
+func (ie *AffectedCarrierFreqCombInfoMRDC_affectedCarrierFreqCombMRDC) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.AffectedCarrierFreqCombEUTRA != nil}
 	for _, bit := range preambleBits {
@@ -29,7 +29,7 @@ func (ie *AffectedCarrierFreqCombInfoMRDC_affectedCarrierFreqCombMRDC) Encode(w 
 	return nil
 }
 
-func (ie *AffectedCarrierFreqCombInfoMRDC_affectedCarrierFreqCombMRDC) Decode(r *uper.UperReader) error {
+func (ie *AffectedCarrierFreqCombInfoMRDC_affectedCarrierFreqCombMRDC) Decode(r *aper.AperReader) error {
 	var err error
 	var AffectedCarrierFreqCombEUTRAPresent bool
 	if AffectedCarrierFreqCombEUTRAPresent, err = r.ReadBool(); err != nil {

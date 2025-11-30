@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -17,7 +17,7 @@ type SidelinkUEInformationNR_v1700_IEs struct {
 	NonCriticalExtension              interface{}                                    `optional`
 }
 
-func (ie *SidelinkUEInformationNR_v1700_IEs) Encode(w *uper.UperWriter) error {
+func (ie *SidelinkUEInformationNR_v1700_IEs) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.Sl_TxResourceReqList_v1700 != nil, ie.Sl_RxDRX_ReportList_v1700 != nil, ie.Sl_RxInterestedGC_BC_DestList_r17 != nil, ie.Sl_RxInterestedFreqListDisc_r17 != nil, ie.Sl_TxResourceReqListDisc_r17 != nil, ie.Sl_TxResourceReqListCommRelay_r17 != nil, ie.Ue_Type_r17 != nil, ie.Sl_SourceIdentityRemoteUE_r17 != nil}
 	for _, bit := range preambleBits {
@@ -68,7 +68,7 @@ func (ie *SidelinkUEInformationNR_v1700_IEs) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *SidelinkUEInformationNR_v1700_IEs) Decode(r *uper.UperReader) error {
+func (ie *SidelinkUEInformationNR_v1700_IEs) Decode(r *aper.AperReader) error {
 	var err error
 	var Sl_TxResourceReqList_v1700Present bool
 	if Sl_TxResourceReqList_v1700Present, err = r.ReadBool(); err != nil {

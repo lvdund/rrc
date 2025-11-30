@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -21,7 +21,7 @@ type OtherConfig_v1610 struct {
 	Sl_AssistanceConfigNR_r16               *OtherConfig_v1610_sl_AssistanceConfigNR_r16            `optional`
 }
 
-func (ie *OtherConfig_v1610) Encode(w *uper.UperWriter) error {
+func (ie *OtherConfig_v1610) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.Idc_AssistanceConfig_r16 != nil, ie.Drx_PreferenceConfig_r16 != nil, ie.MaxBW_PreferenceConfig_r16 != nil, ie.MaxCC_PreferenceConfig_r16 != nil, ie.MaxMIMO_LayerPreferenceConfig_r16 != nil, ie.MinSchedulingOffsetPreferenceConfig_r16 != nil, ie.ReleasePreferenceConfig_r16 != nil, ie.ReferenceTimePreferenceReporting_r16 != nil, ie.BtNameList_r16 != nil, ie.WlanNameList_r16 != nil, ie.SensorNameList_r16 != nil, ie.ObtainCommonLocation_r16 != nil, ie.Sl_AssistanceConfigNR_r16 != nil}
 	for _, bit := range preambleBits {
@@ -127,7 +127,7 @@ func (ie *OtherConfig_v1610) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *OtherConfig_v1610) Decode(r *uper.UperReader) error {
+func (ie *OtherConfig_v1610) Decode(r *aper.AperReader) error {
 	var err error
 	var Idc_AssistanceConfig_r16Present bool
 	if Idc_AssistanceConfig_r16Present, err = r.ReadBool(); err != nil {

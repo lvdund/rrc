@@ -3,7 +3,7 @@ package ies
 import (
 	"bytes"
 
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -25,7 +25,7 @@ type AS_Context struct {
 	MbsInterestIndication_r17        *[]byte                       `optional,ext-6`
 }
 
-func (ie *AS_Context) Encode(w *uper.UperWriter) error {
+func (ie *AS_Context) Encode(w *aper.AperWriter) error {
 	var err error
 	hasExtensions := ie.Ran_NotificationAreaInfo != nil || ie.UeAssistanceInformation != nil || ie.SelectedBandCombinationSN != nil || ie.ConfigRestrictInfoDAPS_r16 != nil || ie.SidelinkUEInformationNR_r16 != nil || ie.SidelinkUEInformationEUTRA_r16 != nil || ie.UeAssistanceInformationEUTRA_r16 != nil || ie.UeAssistanceInformationSCG_r16 != nil || ie.NeedForGapsInfoNR_r16 != nil || ie.ConfigRestrictInfoDAPS_v1640 != nil || ie.NeedForGapNCSG_InfoNR_r17 != nil || ie.NeedForGapNCSG_InfoEUTRA_r17 != nil || ie.MbsInterestIndication_r17 != nil
 	preambleBits := []bool{hasExtensions, ie.ReestablishmentInfo != nil, ie.ConfigRestrictInfo != nil}
@@ -54,7 +54,7 @@ func (ie *AS_Context) Encode(w *uper.UperWriter) error {
 		// encode extension group 1
 		if extBitmap[0] {
 			extBuf := new(bytes.Buffer)
-			extWriter := uper.NewWriter(extBuf)
+			extWriter := aper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 1
 			optionals_ext_1 := []bool{ie.Ran_NotificationAreaInfo != nil}
@@ -83,7 +83,7 @@ func (ie *AS_Context) Encode(w *uper.UperWriter) error {
 		// encode extension group 2
 		if extBitmap[1] {
 			extBuf := new(bytes.Buffer)
-			extWriter := uper.NewWriter(extBuf)
+			extWriter := aper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 2
 			optionals_ext_2 := []bool{ie.UeAssistanceInformation != nil}
@@ -95,7 +95,7 @@ func (ie *AS_Context) Encode(w *uper.UperWriter) error {
 
 			// encode UeAssistanceInformation optional
 			if ie.UeAssistanceInformation != nil {
-				if err = extWriter.WriteOctetString(*ie.UeAssistanceInformation, &uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+				if err = extWriter.WriteOctetString(*ie.UeAssistanceInformation, &aper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
 					return utils.WrapError("Encode UeAssistanceInformation", err)
 				}
 			}
@@ -112,7 +112,7 @@ func (ie *AS_Context) Encode(w *uper.UperWriter) error {
 		// encode extension group 3
 		if extBitmap[2] {
 			extBuf := new(bytes.Buffer)
-			extWriter := uper.NewWriter(extBuf)
+			extWriter := aper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 3
 			optionals_ext_3 := []bool{ie.SelectedBandCombinationSN != nil}
@@ -141,7 +141,7 @@ func (ie *AS_Context) Encode(w *uper.UperWriter) error {
 		// encode extension group 4
 		if extBitmap[3] {
 			extBuf := new(bytes.Buffer)
-			extWriter := uper.NewWriter(extBuf)
+			extWriter := aper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 4
 			optionals_ext_4 := []bool{ie.ConfigRestrictInfoDAPS_r16 != nil, ie.SidelinkUEInformationNR_r16 != nil, ie.SidelinkUEInformationEUTRA_r16 != nil, ie.UeAssistanceInformationEUTRA_r16 != nil, ie.UeAssistanceInformationSCG_r16 != nil, ie.NeedForGapsInfoNR_r16 != nil}
@@ -159,25 +159,25 @@ func (ie *AS_Context) Encode(w *uper.UperWriter) error {
 			}
 			// encode SidelinkUEInformationNR_r16 optional
 			if ie.SidelinkUEInformationNR_r16 != nil {
-				if err = extWriter.WriteOctetString(*ie.SidelinkUEInformationNR_r16, &uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+				if err = extWriter.WriteOctetString(*ie.SidelinkUEInformationNR_r16, &aper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
 					return utils.WrapError("Encode SidelinkUEInformationNR_r16", err)
 				}
 			}
 			// encode SidelinkUEInformationEUTRA_r16 optional
 			if ie.SidelinkUEInformationEUTRA_r16 != nil {
-				if err = extWriter.WriteOctetString(*ie.SidelinkUEInformationEUTRA_r16, &uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+				if err = extWriter.WriteOctetString(*ie.SidelinkUEInformationEUTRA_r16, &aper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
 					return utils.WrapError("Encode SidelinkUEInformationEUTRA_r16", err)
 				}
 			}
 			// encode UeAssistanceInformationEUTRA_r16 optional
 			if ie.UeAssistanceInformationEUTRA_r16 != nil {
-				if err = extWriter.WriteOctetString(*ie.UeAssistanceInformationEUTRA_r16, &uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+				if err = extWriter.WriteOctetString(*ie.UeAssistanceInformationEUTRA_r16, &aper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
 					return utils.WrapError("Encode UeAssistanceInformationEUTRA_r16", err)
 				}
 			}
 			// encode UeAssistanceInformationSCG_r16 optional
 			if ie.UeAssistanceInformationSCG_r16 != nil {
-				if err = extWriter.WriteOctetString(*ie.UeAssistanceInformationSCG_r16, &uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+				if err = extWriter.WriteOctetString(*ie.UeAssistanceInformationSCG_r16, &aper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
 					return utils.WrapError("Encode UeAssistanceInformationSCG_r16", err)
 				}
 			}
@@ -200,7 +200,7 @@ func (ie *AS_Context) Encode(w *uper.UperWriter) error {
 		// encode extension group 5
 		if extBitmap[4] {
 			extBuf := new(bytes.Buffer)
-			extWriter := uper.NewWriter(extBuf)
+			extWriter := aper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 5
 			optionals_ext_5 := []bool{ie.ConfigRestrictInfoDAPS_v1640 != nil}
@@ -229,7 +229,7 @@ func (ie *AS_Context) Encode(w *uper.UperWriter) error {
 		// encode extension group 6
 		if extBitmap[5] {
 			extBuf := new(bytes.Buffer)
-			extWriter := uper.NewWriter(extBuf)
+			extWriter := aper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 6
 			optionals_ext_6 := []bool{ie.NeedForGapNCSG_InfoNR_r17 != nil, ie.NeedForGapNCSG_InfoEUTRA_r17 != nil, ie.MbsInterestIndication_r17 != nil}
@@ -253,7 +253,7 @@ func (ie *AS_Context) Encode(w *uper.UperWriter) error {
 			}
 			// encode MbsInterestIndication_r17 optional
 			if ie.MbsInterestIndication_r17 != nil {
-				if err = extWriter.WriteOctetString(*ie.MbsInterestIndication_r17, &uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+				if err = extWriter.WriteOctetString(*ie.MbsInterestIndication_r17, &aper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
 					return utils.WrapError("Encode MbsInterestIndication_r17", err)
 				}
 			}
@@ -270,7 +270,7 @@ func (ie *AS_Context) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *AS_Context) Decode(r *uper.UperReader) error {
+func (ie *AS_Context) Decode(r *aper.AperReader) error {
 	var err error
 	var extensionBit bool
 	if extensionBit, err = r.ReadBool(); err != nil {
@@ -311,7 +311,7 @@ func (ie *AS_Context) Decode(r *uper.UperReader) error {
 				return err
 			}
 
-			extReader := uper.NewReader(bytes.NewReader(extBytes))
+			extReader := aper.NewReader(bytes.NewReader(extBytes))
 
 			Ran_NotificationAreaInfoPresent, err := extReader.ReadBool()
 			if err != nil {
@@ -332,7 +332,7 @@ func (ie *AS_Context) Decode(r *uper.UperReader) error {
 				return err
 			}
 
-			extReader := uper.NewReader(bytes.NewReader(extBytes))
+			extReader := aper.NewReader(bytes.NewReader(extBytes))
 
 			UeAssistanceInformationPresent, err := extReader.ReadBool()
 			if err != nil {
@@ -341,7 +341,7 @@ func (ie *AS_Context) Decode(r *uper.UperReader) error {
 			// decode UeAssistanceInformation optional
 			if UeAssistanceInformationPresent {
 				var tmp_os_UeAssistanceInformation []byte
-				if tmp_os_UeAssistanceInformation, err = extReader.ReadOctetString(&uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+				if tmp_os_UeAssistanceInformation, err = extReader.ReadOctetString(&aper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
 					return utils.WrapError("Decode UeAssistanceInformation", err)
 				}
 				ie.UeAssistanceInformation = &tmp_os_UeAssistanceInformation
@@ -354,7 +354,7 @@ func (ie *AS_Context) Decode(r *uper.UperReader) error {
 				return err
 			}
 
-			extReader := uper.NewReader(bytes.NewReader(extBytes))
+			extReader := aper.NewReader(bytes.NewReader(extBytes))
 
 			SelectedBandCombinationSNPresent, err := extReader.ReadBool()
 			if err != nil {
@@ -375,7 +375,7 @@ func (ie *AS_Context) Decode(r *uper.UperReader) error {
 				return err
 			}
 
-			extReader := uper.NewReader(bytes.NewReader(extBytes))
+			extReader := aper.NewReader(bytes.NewReader(extBytes))
 
 			ConfigRestrictInfoDAPS_r16Present, err := extReader.ReadBool()
 			if err != nil {
@@ -411,7 +411,7 @@ func (ie *AS_Context) Decode(r *uper.UperReader) error {
 			// decode SidelinkUEInformationNR_r16 optional
 			if SidelinkUEInformationNR_r16Present {
 				var tmp_os_SidelinkUEInformationNR_r16 []byte
-				if tmp_os_SidelinkUEInformationNR_r16, err = extReader.ReadOctetString(&uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+				if tmp_os_SidelinkUEInformationNR_r16, err = extReader.ReadOctetString(&aper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
 					return utils.WrapError("Decode SidelinkUEInformationNR_r16", err)
 				}
 				ie.SidelinkUEInformationNR_r16 = &tmp_os_SidelinkUEInformationNR_r16
@@ -419,7 +419,7 @@ func (ie *AS_Context) Decode(r *uper.UperReader) error {
 			// decode SidelinkUEInformationEUTRA_r16 optional
 			if SidelinkUEInformationEUTRA_r16Present {
 				var tmp_os_SidelinkUEInformationEUTRA_r16 []byte
-				if tmp_os_SidelinkUEInformationEUTRA_r16, err = extReader.ReadOctetString(&uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+				if tmp_os_SidelinkUEInformationEUTRA_r16, err = extReader.ReadOctetString(&aper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
 					return utils.WrapError("Decode SidelinkUEInformationEUTRA_r16", err)
 				}
 				ie.SidelinkUEInformationEUTRA_r16 = &tmp_os_SidelinkUEInformationEUTRA_r16
@@ -427,7 +427,7 @@ func (ie *AS_Context) Decode(r *uper.UperReader) error {
 			// decode UeAssistanceInformationEUTRA_r16 optional
 			if UeAssistanceInformationEUTRA_r16Present {
 				var tmp_os_UeAssistanceInformationEUTRA_r16 []byte
-				if tmp_os_UeAssistanceInformationEUTRA_r16, err = extReader.ReadOctetString(&uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+				if tmp_os_UeAssistanceInformationEUTRA_r16, err = extReader.ReadOctetString(&aper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
 					return utils.WrapError("Decode UeAssistanceInformationEUTRA_r16", err)
 				}
 				ie.UeAssistanceInformationEUTRA_r16 = &tmp_os_UeAssistanceInformationEUTRA_r16
@@ -435,7 +435,7 @@ func (ie *AS_Context) Decode(r *uper.UperReader) error {
 			// decode UeAssistanceInformationSCG_r16 optional
 			if UeAssistanceInformationSCG_r16Present {
 				var tmp_os_UeAssistanceInformationSCG_r16 []byte
-				if tmp_os_UeAssistanceInformationSCG_r16, err = extReader.ReadOctetString(&uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+				if tmp_os_UeAssistanceInformationSCG_r16, err = extReader.ReadOctetString(&aper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
 					return utils.WrapError("Decode UeAssistanceInformationSCG_r16", err)
 				}
 				ie.UeAssistanceInformationSCG_r16 = &tmp_os_UeAssistanceInformationSCG_r16
@@ -455,7 +455,7 @@ func (ie *AS_Context) Decode(r *uper.UperReader) error {
 				return err
 			}
 
-			extReader := uper.NewReader(bytes.NewReader(extBytes))
+			extReader := aper.NewReader(bytes.NewReader(extBytes))
 
 			ConfigRestrictInfoDAPS_v1640Present, err := extReader.ReadBool()
 			if err != nil {
@@ -476,7 +476,7 @@ func (ie *AS_Context) Decode(r *uper.UperReader) error {
 				return err
 			}
 
-			extReader := uper.NewReader(bytes.NewReader(extBytes))
+			extReader := aper.NewReader(bytes.NewReader(extBytes))
 
 			NeedForGapNCSG_InfoNR_r17Present, err := extReader.ReadBool()
 			if err != nil {
@@ -507,7 +507,7 @@ func (ie *AS_Context) Decode(r *uper.UperReader) error {
 			// decode MbsInterestIndication_r17 optional
 			if MbsInterestIndication_r17Present {
 				var tmp_os_MbsInterestIndication_r17 []byte
-				if tmp_os_MbsInterestIndication_r17, err = extReader.ReadOctetString(&uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+				if tmp_os_MbsInterestIndication_r17, err = extReader.ReadOctetString(&aper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
 					return utils.WrapError("Decode MbsInterestIndication_r17", err)
 				}
 				ie.MbsInterestIndication_r17 = &tmp_os_MbsInterestIndication_r17

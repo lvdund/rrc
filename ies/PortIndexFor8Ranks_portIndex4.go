@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -12,7 +12,7 @@ type PortIndexFor8Ranks_portIndex4 struct {
 	Rank4_4 []PortIndex4 `lb:4,ub:4,optional`
 }
 
-func (ie *PortIndexFor8Ranks_portIndex4) Encode(w *uper.UperWriter) error {
+func (ie *PortIndexFor8Ranks_portIndex4) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.Rank1_4 != nil, len(ie.Rank2_4) > 0, len(ie.Rank3_4) > 0, len(ie.Rank4_4) > 0}
 	for _, bit := range preambleBits {
@@ -26,7 +26,7 @@ func (ie *PortIndexFor8Ranks_portIndex4) Encode(w *uper.UperWriter) error {
 		}
 	}
 	if len(ie.Rank2_4) > 0 {
-		tmp_Rank2_4 := utils.NewSequence[*PortIndex4]([]*PortIndex4{}, uper.Constraint{Lb: 2, Ub: 2}, false)
+		tmp_Rank2_4 := utils.NewSequence[*PortIndex4]([]*PortIndex4{}, aper.Constraint{Lb: 2, Ub: 2}, false)
 		for _, i := range ie.Rank2_4 {
 			tmp_Rank2_4.Value = append(tmp_Rank2_4.Value, &i)
 		}
@@ -35,7 +35,7 @@ func (ie *PortIndexFor8Ranks_portIndex4) Encode(w *uper.UperWriter) error {
 		}
 	}
 	if len(ie.Rank3_4) > 0 {
-		tmp_Rank3_4 := utils.NewSequence[*PortIndex4]([]*PortIndex4{}, uper.Constraint{Lb: 3, Ub: 3}, false)
+		tmp_Rank3_4 := utils.NewSequence[*PortIndex4]([]*PortIndex4{}, aper.Constraint{Lb: 3, Ub: 3}, false)
 		for _, i := range ie.Rank3_4 {
 			tmp_Rank3_4.Value = append(tmp_Rank3_4.Value, &i)
 		}
@@ -44,7 +44,7 @@ func (ie *PortIndexFor8Ranks_portIndex4) Encode(w *uper.UperWriter) error {
 		}
 	}
 	if len(ie.Rank4_4) > 0 {
-		tmp_Rank4_4 := utils.NewSequence[*PortIndex4]([]*PortIndex4{}, uper.Constraint{Lb: 4, Ub: 4}, false)
+		tmp_Rank4_4 := utils.NewSequence[*PortIndex4]([]*PortIndex4{}, aper.Constraint{Lb: 4, Ub: 4}, false)
 		for _, i := range ie.Rank4_4 {
 			tmp_Rank4_4.Value = append(tmp_Rank4_4.Value, &i)
 		}
@@ -55,7 +55,7 @@ func (ie *PortIndexFor8Ranks_portIndex4) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *PortIndexFor8Ranks_portIndex4) Decode(r *uper.UperReader) error {
+func (ie *PortIndexFor8Ranks_portIndex4) Decode(r *aper.AperReader) error {
 	var err error
 	var Rank1_4Present bool
 	if Rank1_4Present, err = r.ReadBool(); err != nil {
@@ -80,7 +80,7 @@ func (ie *PortIndexFor8Ranks_portIndex4) Decode(r *uper.UperReader) error {
 		}
 	}
 	if Rank2_4Present {
-		tmp_Rank2_4 := utils.NewSequence[*PortIndex4]([]*PortIndex4{}, uper.Constraint{Lb: 2, Ub: 2}, false)
+		tmp_Rank2_4 := utils.NewSequence[*PortIndex4]([]*PortIndex4{}, aper.Constraint{Lb: 2, Ub: 2}, false)
 		fn_Rank2_4 := func() *PortIndex4 {
 			return new(PortIndex4)
 		}
@@ -93,7 +93,7 @@ func (ie *PortIndexFor8Ranks_portIndex4) Decode(r *uper.UperReader) error {
 		}
 	}
 	if Rank3_4Present {
-		tmp_Rank3_4 := utils.NewSequence[*PortIndex4]([]*PortIndex4{}, uper.Constraint{Lb: 3, Ub: 3}, false)
+		tmp_Rank3_4 := utils.NewSequence[*PortIndex4]([]*PortIndex4{}, aper.Constraint{Lb: 3, Ub: 3}, false)
 		fn_Rank3_4 := func() *PortIndex4 {
 			return new(PortIndex4)
 		}
@@ -106,7 +106,7 @@ func (ie *PortIndexFor8Ranks_portIndex4) Decode(r *uper.UperReader) error {
 		}
 	}
 	if Rank4_4Present {
-		tmp_Rank4_4 := utils.NewSequence[*PortIndex4]([]*PortIndex4{}, uper.Constraint{Lb: 4, Ub: 4}, false)
+		tmp_Rank4_4 := utils.NewSequence[*PortIndex4]([]*PortIndex4{}, aper.Constraint{Lb: 4, Ub: 4}, false)
 		fn_Rank4_4 := func() *PortIndex4 {
 			return new(PortIndex4)
 		}

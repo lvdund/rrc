@@ -3,7 +3,7 @@ package ies
 import (
 	"bytes"
 
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -62,7 +62,7 @@ type ServingCellConfig struct {
 	Lte_NeighCellsCRS_Assumptions_r17             *ServingCellConfig_lte_NeighCellsCRS_Assumptions_r17             `optional,ext-5`
 }
 
-func (ie *ServingCellConfig) Encode(w *uper.UperWriter) error {
+func (ie *ServingCellConfig) Encode(w *aper.AperWriter) error {
 	var err error
 	hasExtensions := ie.Lte_CRS_ToMatchAround != nil || len(ie.RateMatchPatternToAddModList) > 0 || len(ie.RateMatchPatternToReleaseList) > 0 || len(ie.DownlinkChannelBW_PerSCS_List) > 0 || ie.SupplementaryUplinkRelease_r16 != nil || ie.Tdd_UL_DL_ConfigurationDedicated_IAB_MT_r16 != nil || ie.DormantBWP_Config_r16 != nil || ie.Ca_SlotOffset_r16 != nil || ie.Dummy2 != nil || len(ie.IntraCellGuardBandsDL_List_r16) > 0 || len(ie.IntraCellGuardBandsUL_List_r16) > 0 || ie.Csi_RS_ValidationWithDCI_r16 != nil || ie.Lte_CRS_PatternList1_r16 != nil || ie.Lte_CRS_PatternList2_r16 != nil || ie.Crs_RateMatch_PerCORESETPoolIndex_r16 != nil || ie.EnableTwoDefaultTCI_States_r16 != nil || ie.EnableDefaultTCI_StatePerCoresetPoolIndex_r16 != nil || ie.EnableBeamSwitchTiming_r16 != nil || ie.Cbg_TxDiffTBsProcessingType1_r16 != nil || ie.Cbg_TxDiffTBsProcessingType2_r16 != nil || ie.DirectionalCollisionHandling_r16 != nil || ie.ChannelAccessConfig_r16 != nil || ie.Nr_dl_PRS_PDC_Info_r17 != nil || ie.SemiStaticChannelAccessConfigUE_r17 != nil || ie.MimoParam_r17 != nil || ie.ChannelAccessMode2_r17 != nil || ie.TimeDomainHARQ_BundlingType1_r17 != nil || ie.NrofHARQ_BundlingGroups_r17 != nil || ie.Fdmed_ReceptionMulticast_r17 != nil || ie.MoreThanOneNackOnlyMode_r17 != nil || ie.Tci_ActivatedConfig_r17 != nil || ie.DirectionalCollisionHandling_DC_r17 != nil || ie.Lte_NeighCellsCRS_AssistInfoList_r17 != nil || ie.Lte_NeighCellsCRS_Assumptions_r17 != nil
 	preambleBits := []bool{hasExtensions, ie.Tdd_UL_DL_ConfigurationDedicated != nil, ie.InitialDownlinkBWP != nil, len(ie.DownlinkBWP_ToReleaseList) > 0, len(ie.DownlinkBWP_ToAddModList) > 0, ie.FirstActiveDownlinkBWP_Id != nil, ie.Bwp_InactivityTimer != nil, ie.DefaultDownlinkBWP_Id != nil, ie.UplinkConfig != nil, ie.SupplementaryUplink != nil, ie.Pdcch_ServingCellConfig != nil, ie.Pdsch_ServingCellConfig != nil, ie.Csi_MeasConfig != nil, ie.SCellDeactivationTimer != nil, ie.CrossCarrierSchedulingConfig != nil, ie.Dummy1 != nil, ie.PathlossReferenceLinking != nil, ie.ServingCellMO != nil}
@@ -82,7 +82,7 @@ func (ie *ServingCellConfig) Encode(w *uper.UperWriter) error {
 		}
 	}
 	if len(ie.DownlinkBWP_ToReleaseList) > 0 {
-		tmp_DownlinkBWP_ToReleaseList := utils.NewSequence[*BWP_Id]([]*BWP_Id{}, uper.Constraint{Lb: 1, Ub: maxNrofBWPs}, false)
+		tmp_DownlinkBWP_ToReleaseList := utils.NewSequence[*BWP_Id]([]*BWP_Id{}, aper.Constraint{Lb: 1, Ub: maxNrofBWPs}, false)
 		for _, i := range ie.DownlinkBWP_ToReleaseList {
 			tmp_DownlinkBWP_ToReleaseList.Value = append(tmp_DownlinkBWP_ToReleaseList.Value, &i)
 		}
@@ -91,7 +91,7 @@ func (ie *ServingCellConfig) Encode(w *uper.UperWriter) error {
 		}
 	}
 	if len(ie.DownlinkBWP_ToAddModList) > 0 {
-		tmp_DownlinkBWP_ToAddModList := utils.NewSequence[*BWP_Downlink]([]*BWP_Downlink{}, uper.Constraint{Lb: 1, Ub: maxNrofBWPs}, false)
+		tmp_DownlinkBWP_ToAddModList := utils.NewSequence[*BWP_Downlink]([]*BWP_Downlink{}, aper.Constraint{Lb: 1, Ub: maxNrofBWPs}, false)
 		for _, i := range ie.DownlinkBWP_ToAddModList {
 			tmp_DownlinkBWP_ToAddModList.Value = append(tmp_DownlinkBWP_ToAddModList.Value, &i)
 		}
@@ -186,7 +186,7 @@ func (ie *ServingCellConfig) Encode(w *uper.UperWriter) error {
 		// encode extension group 1
 		if extBitmap[0] {
 			extBuf := new(bytes.Buffer)
-			extWriter := uper.NewWriter(extBuf)
+			extWriter := aper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 1
 			optionals_ext_1 := []bool{ie.Lte_CRS_ToMatchAround != nil, len(ie.RateMatchPatternToAddModList) > 0, len(ie.RateMatchPatternToReleaseList) > 0, len(ie.DownlinkChannelBW_PerSCS_List) > 0}
@@ -207,7 +207,7 @@ func (ie *ServingCellConfig) Encode(w *uper.UperWriter) error {
 			}
 			// encode RateMatchPatternToAddModList optional
 			if len(ie.RateMatchPatternToAddModList) > 0 {
-				tmp_RateMatchPatternToAddModList := utils.NewSequence[*RateMatchPattern]([]*RateMatchPattern{}, uper.Constraint{Lb: 1, Ub: maxNrofRateMatchPatterns}, false)
+				tmp_RateMatchPatternToAddModList := utils.NewSequence[*RateMatchPattern]([]*RateMatchPattern{}, aper.Constraint{Lb: 1, Ub: maxNrofRateMatchPatterns}, false)
 				for _, i := range ie.RateMatchPatternToAddModList {
 					tmp_RateMatchPatternToAddModList.Value = append(tmp_RateMatchPatternToAddModList.Value, &i)
 				}
@@ -217,7 +217,7 @@ func (ie *ServingCellConfig) Encode(w *uper.UperWriter) error {
 			}
 			// encode RateMatchPatternToReleaseList optional
 			if len(ie.RateMatchPatternToReleaseList) > 0 {
-				tmp_RateMatchPatternToReleaseList := utils.NewSequence[*RateMatchPatternId]([]*RateMatchPatternId{}, uper.Constraint{Lb: 1, Ub: maxNrofRateMatchPatterns}, false)
+				tmp_RateMatchPatternToReleaseList := utils.NewSequence[*RateMatchPatternId]([]*RateMatchPatternId{}, aper.Constraint{Lb: 1, Ub: maxNrofRateMatchPatterns}, false)
 				for _, i := range ie.RateMatchPatternToReleaseList {
 					tmp_RateMatchPatternToReleaseList.Value = append(tmp_RateMatchPatternToReleaseList.Value, &i)
 				}
@@ -227,7 +227,7 @@ func (ie *ServingCellConfig) Encode(w *uper.UperWriter) error {
 			}
 			// encode DownlinkChannelBW_PerSCS_List optional
 			if len(ie.DownlinkChannelBW_PerSCS_List) > 0 {
-				tmp_DownlinkChannelBW_PerSCS_List := utils.NewSequence[*SCS_SpecificCarrier]([]*SCS_SpecificCarrier{}, uper.Constraint{Lb: 1, Ub: maxSCSs}, false)
+				tmp_DownlinkChannelBW_PerSCS_List := utils.NewSequence[*SCS_SpecificCarrier]([]*SCS_SpecificCarrier{}, aper.Constraint{Lb: 1, Ub: maxSCSs}, false)
 				for _, i := range ie.DownlinkChannelBW_PerSCS_List {
 					tmp_DownlinkChannelBW_PerSCS_List.Value = append(tmp_DownlinkChannelBW_PerSCS_List.Value, &i)
 				}
@@ -248,7 +248,7 @@ func (ie *ServingCellConfig) Encode(w *uper.UperWriter) error {
 		// encode extension group 2
 		if extBitmap[1] {
 			extBuf := new(bytes.Buffer)
-			extWriter := uper.NewWriter(extBuf)
+			extWriter := aper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 2
 			optionals_ext_2 := []bool{ie.SupplementaryUplinkRelease_r16 != nil, ie.Tdd_UL_DL_ConfigurationDedicated_IAB_MT_r16 != nil, ie.DormantBWP_Config_r16 != nil, ie.Ca_SlotOffset_r16 != nil, ie.Dummy2 != nil, len(ie.IntraCellGuardBandsDL_List_r16) > 0, len(ie.IntraCellGuardBandsUL_List_r16) > 0, ie.Csi_RS_ValidationWithDCI_r16 != nil, ie.Lte_CRS_PatternList1_r16 != nil, ie.Lte_CRS_PatternList2_r16 != nil, ie.Crs_RateMatch_PerCORESETPoolIndex_r16 != nil, ie.EnableTwoDefaultTCI_States_r16 != nil, ie.EnableDefaultTCI_StatePerCoresetPoolIndex_r16 != nil, ie.EnableBeamSwitchTiming_r16 != nil, ie.Cbg_TxDiffTBsProcessingType1_r16 != nil, ie.Cbg_TxDiffTBsProcessingType2_r16 != nil}
@@ -296,7 +296,7 @@ func (ie *ServingCellConfig) Encode(w *uper.UperWriter) error {
 			}
 			// encode IntraCellGuardBandsDL_List_r16 optional
 			if len(ie.IntraCellGuardBandsDL_List_r16) > 0 {
-				tmp_IntraCellGuardBandsDL_List_r16 := utils.NewSequence[*IntraCellGuardBandsPerSCS_r16]([]*IntraCellGuardBandsPerSCS_r16{}, uper.Constraint{Lb: 1, Ub: maxSCSs}, false)
+				tmp_IntraCellGuardBandsDL_List_r16 := utils.NewSequence[*IntraCellGuardBandsPerSCS_r16]([]*IntraCellGuardBandsPerSCS_r16{}, aper.Constraint{Lb: 1, Ub: maxSCSs}, false)
 				for _, i := range ie.IntraCellGuardBandsDL_List_r16 {
 					tmp_IntraCellGuardBandsDL_List_r16.Value = append(tmp_IntraCellGuardBandsDL_List_r16.Value, &i)
 				}
@@ -306,7 +306,7 @@ func (ie *ServingCellConfig) Encode(w *uper.UperWriter) error {
 			}
 			// encode IntraCellGuardBandsUL_List_r16 optional
 			if len(ie.IntraCellGuardBandsUL_List_r16) > 0 {
-				tmp_IntraCellGuardBandsUL_List_r16 := utils.NewSequence[*IntraCellGuardBandsPerSCS_r16]([]*IntraCellGuardBandsPerSCS_r16{}, uper.Constraint{Lb: 1, Ub: maxSCSs}, false)
+				tmp_IntraCellGuardBandsUL_List_r16 := utils.NewSequence[*IntraCellGuardBandsPerSCS_r16]([]*IntraCellGuardBandsPerSCS_r16{}, aper.Constraint{Lb: 1, Ub: maxSCSs}, false)
 				for _, i := range ie.IntraCellGuardBandsUL_List_r16 {
 					tmp_IntraCellGuardBandsUL_List_r16.Value = append(tmp_IntraCellGuardBandsUL_List_r16.Value, &i)
 				}
@@ -387,7 +387,7 @@ func (ie *ServingCellConfig) Encode(w *uper.UperWriter) error {
 		// encode extension group 3
 		if extBitmap[2] {
 			extBuf := new(bytes.Buffer)
-			extWriter := uper.NewWriter(extBuf)
+			extWriter := aper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 3
 			optionals_ext_3 := []bool{ie.DirectionalCollisionHandling_r16 != nil, ie.ChannelAccessConfig_r16 != nil}
@@ -425,7 +425,7 @@ func (ie *ServingCellConfig) Encode(w *uper.UperWriter) error {
 		// encode extension group 4
 		if extBitmap[3] {
 			extBuf := new(bytes.Buffer)
-			extWriter := uper.NewWriter(extBuf)
+			extWriter := aper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 4
 			optionals_ext_4 := []bool{ie.Nr_dl_PRS_PDC_Info_r17 != nil, ie.SemiStaticChannelAccessConfigUE_r17 != nil, ie.MimoParam_r17 != nil, ie.ChannelAccessMode2_r17 != nil, ie.TimeDomainHARQ_BundlingType1_r17 != nil, ie.NrofHARQ_BundlingGroups_r17 != nil, ie.Fdmed_ReceptionMulticast_r17 != nil, ie.MoreThanOneNackOnlyMode_r17 != nil, ie.Tci_ActivatedConfig_r17 != nil, ie.DirectionalCollisionHandling_DC_r17 != nil, ie.Lte_NeighCellsCRS_AssistInfoList_r17 != nil}
@@ -526,7 +526,7 @@ func (ie *ServingCellConfig) Encode(w *uper.UperWriter) error {
 		// encode extension group 5
 		if extBitmap[4] {
 			extBuf := new(bytes.Buffer)
-			extWriter := uper.NewWriter(extBuf)
+			extWriter := aper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 5
 			optionals_ext_5 := []bool{ie.Lte_NeighCellsCRS_Assumptions_r17 != nil}
@@ -555,7 +555,7 @@ func (ie *ServingCellConfig) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *ServingCellConfig) Decode(r *uper.UperReader) error {
+func (ie *ServingCellConfig) Decode(r *aper.AperReader) error {
 	var err error
 	var extensionBit bool
 	if extensionBit, err = r.ReadBool(); err != nil {
@@ -642,7 +642,7 @@ func (ie *ServingCellConfig) Decode(r *uper.UperReader) error {
 		}
 	}
 	if DownlinkBWP_ToReleaseListPresent {
-		tmp_DownlinkBWP_ToReleaseList := utils.NewSequence[*BWP_Id]([]*BWP_Id{}, uper.Constraint{Lb: 1, Ub: maxNrofBWPs}, false)
+		tmp_DownlinkBWP_ToReleaseList := utils.NewSequence[*BWP_Id]([]*BWP_Id{}, aper.Constraint{Lb: 1, Ub: maxNrofBWPs}, false)
 		fn_DownlinkBWP_ToReleaseList := func() *BWP_Id {
 			return new(BWP_Id)
 		}
@@ -655,7 +655,7 @@ func (ie *ServingCellConfig) Decode(r *uper.UperReader) error {
 		}
 	}
 	if DownlinkBWP_ToAddModListPresent {
-		tmp_DownlinkBWP_ToAddModList := utils.NewSequence[*BWP_Downlink]([]*BWP_Downlink{}, uper.Constraint{Lb: 1, Ub: maxNrofBWPs}, false)
+		tmp_DownlinkBWP_ToAddModList := utils.NewSequence[*BWP_Downlink]([]*BWP_Downlink{}, aper.Constraint{Lb: 1, Ub: maxNrofBWPs}, false)
 		fn_DownlinkBWP_ToAddModList := func() *BWP_Downlink {
 			return new(BWP_Downlink)
 		}
@@ -766,7 +766,7 @@ func (ie *ServingCellConfig) Decode(r *uper.UperReader) error {
 				return err
 			}
 
-			extReader := uper.NewReader(bytes.NewReader(extBytes))
+			extReader := aper.NewReader(bytes.NewReader(extBytes))
 
 			Lte_CRS_ToMatchAroundPresent, err := extReader.ReadBool()
 			if err != nil {
@@ -794,7 +794,7 @@ func (ie *ServingCellConfig) Decode(r *uper.UperReader) error {
 			}
 			// decode RateMatchPatternToAddModList optional
 			if RateMatchPatternToAddModListPresent {
-				tmp_RateMatchPatternToAddModList := utils.NewSequence[*RateMatchPattern]([]*RateMatchPattern{}, uper.Constraint{Lb: 1, Ub: maxNrofRateMatchPatterns}, false)
+				tmp_RateMatchPatternToAddModList := utils.NewSequence[*RateMatchPattern]([]*RateMatchPattern{}, aper.Constraint{Lb: 1, Ub: maxNrofRateMatchPatterns}, false)
 				fn_RateMatchPatternToAddModList := func() *RateMatchPattern {
 					return new(RateMatchPattern)
 				}
@@ -808,7 +808,7 @@ func (ie *ServingCellConfig) Decode(r *uper.UperReader) error {
 			}
 			// decode RateMatchPatternToReleaseList optional
 			if RateMatchPatternToReleaseListPresent {
-				tmp_RateMatchPatternToReleaseList := utils.NewSequence[*RateMatchPatternId]([]*RateMatchPatternId{}, uper.Constraint{Lb: 1, Ub: maxNrofRateMatchPatterns}, false)
+				tmp_RateMatchPatternToReleaseList := utils.NewSequence[*RateMatchPatternId]([]*RateMatchPatternId{}, aper.Constraint{Lb: 1, Ub: maxNrofRateMatchPatterns}, false)
 				fn_RateMatchPatternToReleaseList := func() *RateMatchPatternId {
 					return new(RateMatchPatternId)
 				}
@@ -822,7 +822,7 @@ func (ie *ServingCellConfig) Decode(r *uper.UperReader) error {
 			}
 			// decode DownlinkChannelBW_PerSCS_List optional
 			if DownlinkChannelBW_PerSCS_ListPresent {
-				tmp_DownlinkChannelBW_PerSCS_List := utils.NewSequence[*SCS_SpecificCarrier]([]*SCS_SpecificCarrier{}, uper.Constraint{Lb: 1, Ub: maxSCSs}, false)
+				tmp_DownlinkChannelBW_PerSCS_List := utils.NewSequence[*SCS_SpecificCarrier]([]*SCS_SpecificCarrier{}, aper.Constraint{Lb: 1, Ub: maxSCSs}, false)
 				fn_DownlinkChannelBW_PerSCS_List := func() *SCS_SpecificCarrier {
 					return new(SCS_SpecificCarrier)
 				}
@@ -842,7 +842,7 @@ func (ie *ServingCellConfig) Decode(r *uper.UperReader) error {
 				return err
 			}
 
-			extReader := uper.NewReader(bytes.NewReader(extBytes))
+			extReader := aper.NewReader(bytes.NewReader(extBytes))
 
 			SupplementaryUplinkRelease_r16Present, err := extReader.ReadBool()
 			if err != nil {
@@ -947,7 +947,7 @@ func (ie *ServingCellConfig) Decode(r *uper.UperReader) error {
 			}
 			// decode IntraCellGuardBandsDL_List_r16 optional
 			if IntraCellGuardBandsDL_List_r16Present {
-				tmp_IntraCellGuardBandsDL_List_r16 := utils.NewSequence[*IntraCellGuardBandsPerSCS_r16]([]*IntraCellGuardBandsPerSCS_r16{}, uper.Constraint{Lb: 1, Ub: maxSCSs}, false)
+				tmp_IntraCellGuardBandsDL_List_r16 := utils.NewSequence[*IntraCellGuardBandsPerSCS_r16]([]*IntraCellGuardBandsPerSCS_r16{}, aper.Constraint{Lb: 1, Ub: maxSCSs}, false)
 				fn_IntraCellGuardBandsDL_List_r16 := func() *IntraCellGuardBandsPerSCS_r16 {
 					return new(IntraCellGuardBandsPerSCS_r16)
 				}
@@ -961,7 +961,7 @@ func (ie *ServingCellConfig) Decode(r *uper.UperReader) error {
 			}
 			// decode IntraCellGuardBandsUL_List_r16 optional
 			if IntraCellGuardBandsUL_List_r16Present {
-				tmp_IntraCellGuardBandsUL_List_r16 := utils.NewSequence[*IntraCellGuardBandsPerSCS_r16]([]*IntraCellGuardBandsPerSCS_r16{}, uper.Constraint{Lb: 1, Ub: maxSCSs}, false)
+				tmp_IntraCellGuardBandsUL_List_r16 := utils.NewSequence[*IntraCellGuardBandsPerSCS_r16]([]*IntraCellGuardBandsPerSCS_r16{}, aper.Constraint{Lb: 1, Ub: maxSCSs}, false)
 				fn_IntraCellGuardBandsUL_List_r16 := func() *IntraCellGuardBandsPerSCS_r16 {
 					return new(IntraCellGuardBandsPerSCS_r16)
 				}
@@ -1046,7 +1046,7 @@ func (ie *ServingCellConfig) Decode(r *uper.UperReader) error {
 				return err
 			}
 
-			extReader := uper.NewReader(bytes.NewReader(extBytes))
+			extReader := aper.NewReader(bytes.NewReader(extBytes))
 
 			DirectionalCollisionHandling_r16Present, err := extReader.ReadBool()
 			if err != nil {
@@ -1079,7 +1079,7 @@ func (ie *ServingCellConfig) Decode(r *uper.UperReader) error {
 				return err
 			}
 
-			extReader := uper.NewReader(bytes.NewReader(extBytes))
+			extReader := aper.NewReader(bytes.NewReader(extBytes))
 
 			Nr_dl_PRS_PDC_Info_r17Present, err := extReader.ReadBool()
 			if err != nil {
@@ -1214,7 +1214,7 @@ func (ie *ServingCellConfig) Decode(r *uper.UperReader) error {
 				return err
 			}
 
-			extReader := uper.NewReader(bytes.NewReader(extBytes))
+			extReader := aper.NewReader(bytes.NewReader(extBytes))
 
 			Lte_NeighCellsCRS_Assumptions_r17Present, err := extReader.ReadBool()
 			if err != nil {

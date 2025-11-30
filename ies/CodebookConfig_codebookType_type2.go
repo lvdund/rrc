@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -12,7 +12,7 @@ type CodebookConfig_codebookType_type2 struct {
 	NumberOfBeams     CodebookConfig_codebookType_type2_numberOfBeams     `madatory`
 }
 
-func (ie *CodebookConfig_codebookType_type2) Encode(w *uper.UperWriter) error {
+func (ie *CodebookConfig_codebookType_type2) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.SubType != nil}
 	for _, bit := range preambleBits {
@@ -37,7 +37,7 @@ func (ie *CodebookConfig_codebookType_type2) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *CodebookConfig_codebookType_type2) Decode(r *uper.UperReader) error {
+func (ie *CodebookConfig_codebookType_type2) Decode(r *aper.AperReader) error {
 	var err error
 	var SubTypePresent bool
 	if SubTypePresent, err = r.ReadBool(); err != nil {

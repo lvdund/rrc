@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -12,7 +12,7 @@ type UE_CapabilityRequestFilterCommon_codebookTypeRequest_r16 struct {
 	Type2_PortSelection_r16 *UE_CapabilityRequestFilterCommon_codebookTypeRequest_r16_type2_PortSelection_r16 `optional`
 }
 
-func (ie *UE_CapabilityRequestFilterCommon_codebookTypeRequest_r16) Encode(w *uper.UperWriter) error {
+func (ie *UE_CapabilityRequestFilterCommon_codebookTypeRequest_r16) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.Type1_SinglePanel_r16 != nil, ie.Type1_MultiPanel_r16 != nil, ie.Type2_r16 != nil, ie.Type2_PortSelection_r16 != nil}
 	for _, bit := range preambleBits {
@@ -43,7 +43,7 @@ func (ie *UE_CapabilityRequestFilterCommon_codebookTypeRequest_r16) Encode(w *up
 	return nil
 }
 
-func (ie *UE_CapabilityRequestFilterCommon_codebookTypeRequest_r16) Decode(r *uper.UperReader) error {
+func (ie *UE_CapabilityRequestFilterCommon_codebookTypeRequest_r16) Decode(r *aper.AperReader) error {
 	var err error
 	var Type1_SinglePanel_r16Present bool
 	if Type1_SinglePanel_r16Present, err = r.ReadBool(); err != nil {

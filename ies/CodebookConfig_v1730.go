@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -9,7 +9,7 @@ type CodebookConfig_v1730 struct {
 	CodebookType *CodebookConfig_v1730_codebookType `lb:1,ub:2,optional`
 }
 
-func (ie *CodebookConfig_v1730) Encode(w *uper.UperWriter) error {
+func (ie *CodebookConfig_v1730) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.CodebookType != nil}
 	for _, bit := range preambleBits {
@@ -25,7 +25,7 @@ func (ie *CodebookConfig_v1730) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *CodebookConfig_v1730) Decode(r *uper.UperReader) error {
+func (ie *CodebookConfig_v1730) Decode(r *aper.AperReader) error {
 	var err error
 	var CodebookTypePresent bool
 	if CodebookTypePresent, err = r.ReadBool(); err != nil {

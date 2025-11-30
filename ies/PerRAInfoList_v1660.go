@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -9,9 +9,9 @@ type PerRAInfoList_v1660 struct {
 	Value []PerRACSI_RSInfo_v1660 `lb:1,ub:200,madatory`
 }
 
-func (ie *PerRAInfoList_v1660) Encode(w *uper.UperWriter) error {
+func (ie *PerRAInfoList_v1660) Encode(w *aper.AperWriter) error {
 	var err error
-	tmp := utils.NewSequence[*PerRACSI_RSInfo_v1660]([]*PerRACSI_RSInfo_v1660{}, uper.Constraint{Lb: 1, Ub: 200}, false)
+	tmp := utils.NewSequence[*PerRACSI_RSInfo_v1660]([]*PerRACSI_RSInfo_v1660{}, aper.Constraint{Lb: 1, Ub: 200}, false)
 	for _, i := range ie.Value {
 		tmp.Value = append(tmp.Value, &i)
 	}
@@ -21,9 +21,9 @@ func (ie *PerRAInfoList_v1660) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *PerRAInfoList_v1660) Decode(r *uper.UperReader) error {
+func (ie *PerRAInfoList_v1660) Decode(r *aper.AperReader) error {
 	var err error
-	tmp := utils.NewSequence[*PerRACSI_RSInfo_v1660]([]*PerRACSI_RSInfo_v1660{}, uper.Constraint{Lb: 1, Ub: 200}, false)
+	tmp := utils.NewSequence[*PerRACSI_RSInfo_v1660]([]*PerRACSI_RSInfo_v1660{}, aper.Constraint{Lb: 1, Ub: 200}, false)
 	fn := func() *PerRACSI_RSInfo_v1660 {
 		return new(PerRACSI_RSInfo_v1660)
 	}

@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -11,7 +11,7 @@ type DummyG struct {
 	SupportedCSI_RS_Density           DummyG_supportedCSI_RS_Density           `madatory`
 }
 
-func (ie *DummyG) Encode(w *uper.UperWriter) error {
+func (ie *DummyG) Encode(w *aper.AperWriter) error {
 	var err error
 	if err = ie.MaxNumberSSB_CSI_RS_ResourceOneTx.Encode(w); err != nil {
 		return utils.WrapError("Encode MaxNumberSSB_CSI_RS_ResourceOneTx", err)
@@ -25,7 +25,7 @@ func (ie *DummyG) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *DummyG) Decode(r *uper.UperReader) error {
+func (ie *DummyG) Decode(r *aper.AperReader) error {
 	var err error
 	if err = ie.MaxNumberSSB_CSI_RS_ResourceOneTx.Decode(r); err != nil {
 		return utils.WrapError("Decode MaxNumberSSB_CSI_RS_ResourceOneTx", err)

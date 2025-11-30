@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -18,7 +18,7 @@ type UEAssistanceInformation_v1610_IEs struct {
 	NonCriticalExtension              *UEAssistanceInformation_v1700_IEs `optional`
 }
 
-func (ie *UEAssistanceInformation_v1610_IEs) Encode(w *uper.UperWriter) error {
+func (ie *UEAssistanceInformation_v1610_IEs) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.Idc_Assistance_r16 != nil, ie.Drx_Preference_r16 != nil, ie.MaxBW_Preference_r16 != nil, ie.MaxCC_Preference_r16 != nil, ie.MaxMIMO_LayerPreference_r16 != nil, ie.MinSchedulingOffsetPreference_r16 != nil, ie.ReleasePreference_r16 != nil, ie.Sl_UE_AssistanceInformationNR_r16 != nil, ie.ReferenceTimeInfoPreference_r16 != nil, ie.NonCriticalExtension != nil}
 	for _, bit := range preambleBits {
@@ -79,7 +79,7 @@ func (ie *UEAssistanceInformation_v1610_IEs) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *UEAssistanceInformation_v1610_IEs) Decode(r *uper.UperReader) error {
+func (ie *UEAssistanceInformation_v1610_IEs) Decode(r *aper.AperReader) error {
 	var err error
 	var Idc_Assistance_r16Present bool
 	if Idc_Assistance_r16Present, err = r.ReadBool(); err != nil {

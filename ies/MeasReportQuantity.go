@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -11,7 +11,7 @@ type MeasReportQuantity struct {
 	Sinr bool `madatory`
 }
 
-func (ie *MeasReportQuantity) Encode(w *uper.UperWriter) error {
+func (ie *MeasReportQuantity) Encode(w *aper.AperWriter) error {
 	var err error
 	if err = w.WriteBoolean(ie.Rsrp); err != nil {
 		return utils.WrapError("WriteBoolean Rsrp", err)
@@ -25,7 +25,7 @@ func (ie *MeasReportQuantity) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *MeasReportQuantity) Decode(r *uper.UperReader) error {
+func (ie *MeasReportQuantity) Decode(r *aper.AperReader) error {
 	var err error
 	var tmp_bool_Rsrp bool
 	if tmp_bool_Rsrp, err = r.ReadBoolean(); err != nil {

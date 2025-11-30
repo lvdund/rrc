@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -15,7 +15,7 @@ type NZP_CSI_RS_Resource struct {
 	Qcl_InfoPeriodicCSI_RS *TCI_StateId                              `optional`
 }
 
-func (ie *NZP_CSI_RS_Resource) Encode(w *uper.UperWriter) error {
+func (ie *NZP_CSI_RS_Resource) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.PowerControlOffsetSS != nil, ie.PeriodicityAndOffset != nil, ie.Qcl_InfoPeriodicCSI_RS != nil}
 	for _, bit := range preambleBits {
@@ -29,7 +29,7 @@ func (ie *NZP_CSI_RS_Resource) Encode(w *uper.UperWriter) error {
 	if err = ie.ResourceMapping.Encode(w); err != nil {
 		return utils.WrapError("Encode ResourceMapping", err)
 	}
-	if err = w.WriteInteger(ie.PowerControlOffset, &uper.Constraint{Lb: -8, Ub: 15}, false); err != nil {
+	if err = w.WriteInteger(ie.PowerControlOffset, &aper.Constraint{Lb: -8, Ub: 15}, false); err != nil {
 		return utils.WrapError("WriteInteger PowerControlOffset", err)
 	}
 	if ie.PowerControlOffsetSS != nil {
@@ -53,7 +53,7 @@ func (ie *NZP_CSI_RS_Resource) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *NZP_CSI_RS_Resource) Decode(r *uper.UperReader) error {
+func (ie *NZP_CSI_RS_Resource) Decode(r *aper.AperReader) error {
 	var err error
 	var PowerControlOffsetSSPresent bool
 	if PowerControlOffsetSSPresent, err = r.ReadBool(); err != nil {
@@ -74,7 +74,7 @@ func (ie *NZP_CSI_RS_Resource) Decode(r *uper.UperReader) error {
 		return utils.WrapError("Decode ResourceMapping", err)
 	}
 	var tmp_int_PowerControlOffset int64
-	if tmp_int_PowerControlOffset, err = r.ReadInteger(&uper.Constraint{Lb: -8, Ub: 15}, false); err != nil {
+	if tmp_int_PowerControlOffset, err = r.ReadInteger(&aper.Constraint{Lb: -8, Ub: 15}, false); err != nil {
 		return utils.WrapError("ReadInteger PowerControlOffset", err)
 	}
 	ie.PowerControlOffset = tmp_int_PowerControlOffset

@@ -1,16 +1,16 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
 type Fr2_r16 struct {
-	Scs_60kHz_r16  *uper.BitString `lb:16,ub:16,optional`
-	Scs_120kHz_r16 *uper.BitString `lb:16,ub:16,optional`
+	Scs_60kHz_r16  *aper.BitString `lb:16,ub:16,optional`
+	Scs_120kHz_r16 *aper.BitString `lb:16,ub:16,optional`
 }
 
-func (ie *Fr2_r16) Encode(w *uper.UperWriter) error {
+func (ie *Fr2_r16) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.Scs_60kHz_r16 != nil, ie.Scs_120kHz_r16 != nil}
 	for _, bit := range preambleBits {
@@ -19,19 +19,19 @@ func (ie *Fr2_r16) Encode(w *uper.UperWriter) error {
 		}
 	}
 	if ie.Scs_60kHz_r16 != nil {
-		if err = w.WriteBitString(ie.Scs_60kHz_r16.Bytes, uint(ie.Scs_60kHz_r16.NumBits), &uper.Constraint{Lb: 16, Ub: 16}, false); err != nil {
+		if err = w.WriteBitString(ie.Scs_60kHz_r16.Bytes, uint(ie.Scs_60kHz_r16.NumBits), &aper.Constraint{Lb: 16, Ub: 16}, false); err != nil {
 			return utils.WrapError("Encode Scs_60kHz_r16", err)
 		}
 	}
 	if ie.Scs_120kHz_r16 != nil {
-		if err = w.WriteBitString(ie.Scs_120kHz_r16.Bytes, uint(ie.Scs_120kHz_r16.NumBits), &uper.Constraint{Lb: 16, Ub: 16}, false); err != nil {
+		if err = w.WriteBitString(ie.Scs_120kHz_r16.Bytes, uint(ie.Scs_120kHz_r16.NumBits), &aper.Constraint{Lb: 16, Ub: 16}, false); err != nil {
 			return utils.WrapError("Encode Scs_120kHz_r16", err)
 		}
 	}
 	return nil
 }
 
-func (ie *Fr2_r16) Decode(r *uper.UperReader) error {
+func (ie *Fr2_r16) Decode(r *aper.AperReader) error {
 	var err error
 	var Scs_60kHz_r16Present bool
 	if Scs_60kHz_r16Present, err = r.ReadBool(); err != nil {
@@ -44,10 +44,10 @@ func (ie *Fr2_r16) Decode(r *uper.UperReader) error {
 	if Scs_60kHz_r16Present {
 		var tmp_bs_Scs_60kHz_r16 []byte
 		var n_Scs_60kHz_r16 uint
-		if tmp_bs_Scs_60kHz_r16, n_Scs_60kHz_r16, err = r.ReadBitString(&uper.Constraint{Lb: 16, Ub: 16}, false); err != nil {
+		if tmp_bs_Scs_60kHz_r16, n_Scs_60kHz_r16, err = r.ReadBitString(&aper.Constraint{Lb: 16, Ub: 16}, false); err != nil {
 			return utils.WrapError("Decode Scs_60kHz_r16", err)
 		}
-		tmp_bitstring := uper.BitString{
+		tmp_bitstring := aper.BitString{
 			Bytes:   tmp_bs_Scs_60kHz_r16,
 			NumBits: uint64(n_Scs_60kHz_r16),
 		}
@@ -56,10 +56,10 @@ func (ie *Fr2_r16) Decode(r *uper.UperReader) error {
 	if Scs_120kHz_r16Present {
 		var tmp_bs_Scs_120kHz_r16 []byte
 		var n_Scs_120kHz_r16 uint
-		if tmp_bs_Scs_120kHz_r16, n_Scs_120kHz_r16, err = r.ReadBitString(&uper.Constraint{Lb: 16, Ub: 16}, false); err != nil {
+		if tmp_bs_Scs_120kHz_r16, n_Scs_120kHz_r16, err = r.ReadBitString(&aper.Constraint{Lb: 16, Ub: 16}, false); err != nil {
 			return utils.WrapError("Decode Scs_120kHz_r16", err)
 		}
-		tmp_bitstring := uper.BitString{
+		tmp_bitstring := aper.BitString{
 			Bytes:   tmp_bs_Scs_120kHz_r16,
 			NumBits: uint64(n_Scs_120kHz_r16),
 		}

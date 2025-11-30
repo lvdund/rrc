@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -14,7 +14,7 @@ type MeasIdleCarrierNR_r16_ssb_MeasConfig_r16 struct {
 	Ss_RSSI_Measurement_r16             *SS_RSSI_Measurement `optional`
 }
 
-func (ie *MeasIdleCarrierNR_r16_ssb_MeasConfig_r16) Encode(w *uper.UperWriter) error {
+func (ie *MeasIdleCarrierNR_r16_ssb_MeasConfig_r16) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.NrofSS_BlocksToAverage_r16 != nil, ie.AbsThreshSS_BlocksConsolidation_r16 != nil, ie.Smtc_r16 != nil, ie.Ssb_ToMeasure_r16 != nil, ie.Ss_RSSI_Measurement_r16 != nil}
 	for _, bit := range preambleBits {
@@ -23,7 +23,7 @@ func (ie *MeasIdleCarrierNR_r16_ssb_MeasConfig_r16) Encode(w *uper.UperWriter) e
 		}
 	}
 	if ie.NrofSS_BlocksToAverage_r16 != nil {
-		if err = w.WriteInteger(*ie.NrofSS_BlocksToAverage_r16, &uper.Constraint{Lb: 2, Ub: maxNrofSS_BlocksToAverage}, false); err != nil {
+		if err = w.WriteInteger(*ie.NrofSS_BlocksToAverage_r16, &aper.Constraint{Lb: 2, Ub: maxNrofSS_BlocksToAverage}, false); err != nil {
 			return utils.WrapError("Encode NrofSS_BlocksToAverage_r16", err)
 		}
 	}
@@ -53,7 +53,7 @@ func (ie *MeasIdleCarrierNR_r16_ssb_MeasConfig_r16) Encode(w *uper.UperWriter) e
 	return nil
 }
 
-func (ie *MeasIdleCarrierNR_r16_ssb_MeasConfig_r16) Decode(r *uper.UperReader) error {
+func (ie *MeasIdleCarrierNR_r16_ssb_MeasConfig_r16) Decode(r *aper.AperReader) error {
 	var err error
 	var NrofSS_BlocksToAverage_r16Present bool
 	if NrofSS_BlocksToAverage_r16Present, err = r.ReadBool(); err != nil {
@@ -77,7 +77,7 @@ func (ie *MeasIdleCarrierNR_r16_ssb_MeasConfig_r16) Decode(r *uper.UperReader) e
 	}
 	if NrofSS_BlocksToAverage_r16Present {
 		var tmp_int_NrofSS_BlocksToAverage_r16 int64
-		if tmp_int_NrofSS_BlocksToAverage_r16, err = r.ReadInteger(&uper.Constraint{Lb: 2, Ub: maxNrofSS_BlocksToAverage}, false); err != nil {
+		if tmp_int_NrofSS_BlocksToAverage_r16, err = r.ReadInteger(&aper.Constraint{Lb: 2, Ub: maxNrofSS_BlocksToAverage}, false); err != nil {
 			return utils.WrapError("Decode NrofSS_BlocksToAverage_r16", err)
 		}
 		ie.NrofSS_BlocksToAverage_r16 = &tmp_int_NrofSS_BlocksToAverage_r16

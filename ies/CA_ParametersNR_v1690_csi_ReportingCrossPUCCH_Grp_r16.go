@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -13,7 +13,7 @@ type CA_ParametersNR_v1690_csi_ReportingCrossPUCCH_Grp_r16 struct {
 	CarrierTypePairList_r16     []CarrierTypePair_r16                                                              `lb:1,ub:maxCarrierTypePairList_r16,madatory`
 }
 
-func (ie *CA_ParametersNR_v1690_csi_ReportingCrossPUCCH_Grp_r16) Encode(w *uper.UperWriter) error {
+func (ie *CA_ParametersNR_v1690_csi_ReportingCrossPUCCH_Grp_r16) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.AdditionalSymbols_r16 != nil, ie.Sp_CSI_ReportingOnPUCCH_r16 != nil, ie.Sp_CSI_ReportingOnPUSCH_r16 != nil}
 	for _, bit := range preambleBits {
@@ -39,7 +39,7 @@ func (ie *CA_ParametersNR_v1690_csi_ReportingCrossPUCCH_Grp_r16) Encode(w *uper.
 			return utils.WrapError("Encode Sp_CSI_ReportingOnPUSCH_r16", err)
 		}
 	}
-	tmp_CarrierTypePairList_r16 := utils.NewSequence[*CarrierTypePair_r16]([]*CarrierTypePair_r16{}, uper.Constraint{Lb: 1, Ub: maxCarrierTypePairList_r16}, false)
+	tmp_CarrierTypePairList_r16 := utils.NewSequence[*CarrierTypePair_r16]([]*CarrierTypePair_r16{}, aper.Constraint{Lb: 1, Ub: maxCarrierTypePairList_r16}, false)
 	for _, i := range ie.CarrierTypePairList_r16 {
 		tmp_CarrierTypePairList_r16.Value = append(tmp_CarrierTypePairList_r16.Value, &i)
 	}
@@ -49,7 +49,7 @@ func (ie *CA_ParametersNR_v1690_csi_ReportingCrossPUCCH_Grp_r16) Encode(w *uper.
 	return nil
 }
 
-func (ie *CA_ParametersNR_v1690_csi_ReportingCrossPUCCH_Grp_r16) Decode(r *uper.UperReader) error {
+func (ie *CA_ParametersNR_v1690_csi_ReportingCrossPUCCH_Grp_r16) Decode(r *aper.AperReader) error {
 	var err error
 	var AdditionalSymbols_r16Present bool
 	if AdditionalSymbols_r16Present, err = r.ReadBool(); err != nil {
@@ -84,7 +84,7 @@ func (ie *CA_ParametersNR_v1690_csi_ReportingCrossPUCCH_Grp_r16) Decode(r *uper.
 			return utils.WrapError("Decode Sp_CSI_ReportingOnPUSCH_r16", err)
 		}
 	}
-	tmp_CarrierTypePairList_r16 := utils.NewSequence[*CarrierTypePair_r16]([]*CarrierTypePair_r16{}, uper.Constraint{Lb: 1, Ub: maxCarrierTypePairList_r16}, false)
+	tmp_CarrierTypePairList_r16 := utils.NewSequence[*CarrierTypePair_r16]([]*CarrierTypePair_r16{}, aper.Constraint{Lb: 1, Ub: maxCarrierTypePairList_r16}, false)
 	fn_CarrierTypePairList_r16 := func() *CarrierTypePair_r16 {
 		return new(CarrierTypePair_r16)
 	}

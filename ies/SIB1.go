@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -20,7 +20,7 @@ type SIB1 struct {
 	NonCriticalExtension     *SIB1_v1610_IEs             `optional`
 }
 
-func (ie *SIB1) Encode(w *uper.UperWriter) error {
+func (ie *SIB1) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.CellSelectionInfo != nil, ie.ConnEstFailureControl != nil, ie.Si_SchedulingInfo != nil, ie.ServingCellConfigCommon != nil, ie.Ims_EmergencySupport != nil, ie.ECallOverIMS_Support != nil, ie.Ue_TimersAndConstants != nil, ie.Uac_BarringInfo != nil, ie.UseFullResumeID != nil, ie.LateNonCriticalExtension != nil, ie.NonCriticalExtension != nil}
 	for _, bit := range preambleBits {
@@ -77,7 +77,7 @@ func (ie *SIB1) Encode(w *uper.UperWriter) error {
 		}
 	}
 	if ie.LateNonCriticalExtension != nil {
-		if err = w.WriteOctetString(*ie.LateNonCriticalExtension, &uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+		if err = w.WriteOctetString(*ie.LateNonCriticalExtension, &aper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
 			return utils.WrapError("Encode LateNonCriticalExtension", err)
 		}
 	}
@@ -89,7 +89,7 @@ func (ie *SIB1) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *SIB1) Decode(r *uper.UperReader) error {
+func (ie *SIB1) Decode(r *aper.AperReader) error {
 	var err error
 	var CellSelectionInfoPresent bool
 	if CellSelectionInfoPresent, err = r.ReadBool(); err != nil {
@@ -194,7 +194,7 @@ func (ie *SIB1) Decode(r *uper.UperReader) error {
 	}
 	if LateNonCriticalExtensionPresent {
 		var tmp_os_LateNonCriticalExtension []byte
-		if tmp_os_LateNonCriticalExtension, err = r.ReadOctetString(&uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+		if tmp_os_LateNonCriticalExtension, err = r.ReadOctetString(&aper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
 			return utils.WrapError("Decode LateNonCriticalExtension", err)
 		}
 		ie.LateNonCriticalExtension = &tmp_os_LateNonCriticalExtension

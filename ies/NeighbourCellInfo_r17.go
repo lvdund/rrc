@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -10,7 +10,7 @@ type NeighbourCellInfo_r17 struct {
 	EphemerisInfo_r17 EphemerisInfo_r17 `madatory`
 }
 
-func (ie *NeighbourCellInfo_r17) Encode(w *uper.UperWriter) error {
+func (ie *NeighbourCellInfo_r17) Encode(w *aper.AperWriter) error {
 	var err error
 	if err = ie.EpochTime_r17.Encode(w); err != nil {
 		return utils.WrapError("Encode EpochTime_r17", err)
@@ -21,7 +21,7 @@ func (ie *NeighbourCellInfo_r17) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *NeighbourCellInfo_r17) Decode(r *uper.UperReader) error {
+func (ie *NeighbourCellInfo_r17) Decode(r *aper.AperReader) error {
 	var err error
 	if err = ie.EpochTime_r17.Decode(r); err != nil {
 		return utils.WrapError("Decode EpochTime_r17", err)

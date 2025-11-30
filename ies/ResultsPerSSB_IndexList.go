@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -9,9 +9,9 @@ type ResultsPerSSB_IndexList struct {
 	Value []ResultsPerSSB_Index `lb:1,ub:maxNrofIndexesToReport2,madatory`
 }
 
-func (ie *ResultsPerSSB_IndexList) Encode(w *uper.UperWriter) error {
+func (ie *ResultsPerSSB_IndexList) Encode(w *aper.AperWriter) error {
 	var err error
-	tmp := utils.NewSequence[*ResultsPerSSB_Index]([]*ResultsPerSSB_Index{}, uper.Constraint{Lb: 1, Ub: maxNrofIndexesToReport2}, false)
+	tmp := utils.NewSequence[*ResultsPerSSB_Index]([]*ResultsPerSSB_Index{}, aper.Constraint{Lb: 1, Ub: maxNrofIndexesToReport2}, false)
 	for _, i := range ie.Value {
 		tmp.Value = append(tmp.Value, &i)
 	}
@@ -21,9 +21,9 @@ func (ie *ResultsPerSSB_IndexList) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *ResultsPerSSB_IndexList) Decode(r *uper.UperReader) error {
+func (ie *ResultsPerSSB_IndexList) Decode(r *aper.AperReader) error {
 	var err error
-	tmp := utils.NewSequence[*ResultsPerSSB_Index]([]*ResultsPerSSB_Index{}, uper.Constraint{Lb: 1, Ub: maxNrofIndexesToReport2}, false)
+	tmp := utils.NewSequence[*ResultsPerSSB_Index]([]*ResultsPerSSB_Index{}, aper.Constraint{Lb: 1, Ub: maxNrofIndexesToReport2}, false)
 	fn := func() *ResultsPerSSB_Index {
 		return new(ResultsPerSSB_Index)
 	}

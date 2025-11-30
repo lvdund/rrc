@@ -3,7 +3,7 @@ package ies
 import (
 	"bytes"
 
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -14,7 +14,7 @@ type Phy_ParametersMRDC struct {
 	Fdd_PCellUL_TX_AllUL_Subframe_r16 *Phy_ParametersMRDC_fdd_PCellUL_TX_AllUL_Subframe_r16 `optional,ext-2`
 }
 
-func (ie *Phy_ParametersMRDC) Encode(w *uper.UperWriter) error {
+func (ie *Phy_ParametersMRDC) Encode(w *aper.AperWriter) error {
 	var err error
 	hasExtensions := ie.SpCellPlacement != nil || ie.Tdd_PCellUL_TX_AllUL_Subframe_r16 != nil || ie.Fdd_PCellUL_TX_AllUL_Subframe_r16 != nil
 	preambleBits := []bool{hasExtensions, len(ie.Naics_Capability_List) > 0}
@@ -24,7 +24,7 @@ func (ie *Phy_ParametersMRDC) Encode(w *uper.UperWriter) error {
 		}
 	}
 	if len(ie.Naics_Capability_List) > 0 {
-		tmp_Naics_Capability_List := utils.NewSequence[*NAICS_Capability_Entry]([]*NAICS_Capability_Entry{}, uper.Constraint{Lb: 1, Ub: maxNrofNAICS_Entries}, false)
+		tmp_Naics_Capability_List := utils.NewSequence[*NAICS_Capability_Entry]([]*NAICS_Capability_Entry{}, aper.Constraint{Lb: 1, Ub: maxNrofNAICS_Entries}, false)
 		for _, i := range ie.Naics_Capability_List {
 			tmp_Naics_Capability_List.Value = append(tmp_Naics_Capability_List.Value, &i)
 		}
@@ -42,7 +42,7 @@ func (ie *Phy_ParametersMRDC) Encode(w *uper.UperWriter) error {
 		// encode extension group 1
 		if extBitmap[0] {
 			extBuf := new(bytes.Buffer)
-			extWriter := uper.NewWriter(extBuf)
+			extWriter := aper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 1
 			optionals_ext_1 := []bool{ie.SpCellPlacement != nil}
@@ -71,7 +71,7 @@ func (ie *Phy_ParametersMRDC) Encode(w *uper.UperWriter) error {
 		// encode extension group 2
 		if extBitmap[1] {
 			extBuf := new(bytes.Buffer)
-			extWriter := uper.NewWriter(extBuf)
+			extWriter := aper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 2
 			optionals_ext_2 := []bool{ie.Tdd_PCellUL_TX_AllUL_Subframe_r16 != nil, ie.Fdd_PCellUL_TX_AllUL_Subframe_r16 != nil}
@@ -106,7 +106,7 @@ func (ie *Phy_ParametersMRDC) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *Phy_ParametersMRDC) Decode(r *uper.UperReader) error {
+func (ie *Phy_ParametersMRDC) Decode(r *aper.AperReader) error {
 	var err error
 	var extensionBit bool
 	if extensionBit, err = r.ReadBool(); err != nil {
@@ -117,7 +117,7 @@ func (ie *Phy_ParametersMRDC) Decode(r *uper.UperReader) error {
 		return err
 	}
 	if Naics_Capability_ListPresent {
-		tmp_Naics_Capability_List := utils.NewSequence[*NAICS_Capability_Entry]([]*NAICS_Capability_Entry{}, uper.Constraint{Lb: 1, Ub: maxNrofNAICS_Entries}, false)
+		tmp_Naics_Capability_List := utils.NewSequence[*NAICS_Capability_Entry]([]*NAICS_Capability_Entry{}, aper.Constraint{Lb: 1, Ub: maxNrofNAICS_Entries}, false)
 		fn_Naics_Capability_List := func() *NAICS_Capability_Entry {
 			return new(NAICS_Capability_Entry)
 		}
@@ -144,7 +144,7 @@ func (ie *Phy_ParametersMRDC) Decode(r *uper.UperReader) error {
 				return err
 			}
 
-			extReader := uper.NewReader(bytes.NewReader(extBytes))
+			extReader := aper.NewReader(bytes.NewReader(extBytes))
 
 			SpCellPlacementPresent, err := extReader.ReadBool()
 			if err != nil {
@@ -165,7 +165,7 @@ func (ie *Phy_ParametersMRDC) Decode(r *uper.UperReader) error {
 				return err
 			}
 
-			extReader := uper.NewReader(bytes.NewReader(extBytes))
+			extReader := aper.NewReader(bytes.NewReader(extBytes))
 
 			Tdd_PCellUL_TX_AllUL_Subframe_r16Present, err := extReader.ReadBool()
 			if err != nil {

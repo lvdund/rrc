@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -12,7 +12,7 @@ type MeasTiming_frequencyAndTiming struct {
 	Ss_RSSI_Measurement                *SS_RSSI_Measurement `optional`
 }
 
-func (ie *MeasTiming_frequencyAndTiming) Encode(w *uper.UperWriter) error {
+func (ie *MeasTiming_frequencyAndTiming) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.Ss_RSSI_Measurement != nil}
 	for _, bit := range preambleBits {
@@ -37,7 +37,7 @@ func (ie *MeasTiming_frequencyAndTiming) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *MeasTiming_frequencyAndTiming) Decode(r *uper.UperReader) error {
+func (ie *MeasTiming_frequencyAndTiming) Decode(r *aper.AperReader) error {
 	var err error
 	var Ss_RSSI_MeasurementPresent bool
 	if Ss_RSSI_MeasurementPresent, err = r.ReadBool(); err != nil {

@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -11,7 +11,7 @@ type SL_PHY_MAC_RLC_Config_v1700 struct {
 	Sl_RLC_ChannelToAddModList_r17  []SL_RLC_ChannelConfig_r17 `lb:1,ub:maxSL_LCID_r16,optional`
 }
 
-func (ie *SL_PHY_MAC_RLC_Config_v1700) Encode(w *uper.UperWriter) error {
+func (ie *SL_PHY_MAC_RLC_Config_v1700) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.Sl_DRX_Config_r17 != nil, len(ie.Sl_RLC_ChannelToReleaseList_r17) > 0, len(ie.Sl_RLC_ChannelToAddModList_r17) > 0}
 	for _, bit := range preambleBits {
@@ -25,7 +25,7 @@ func (ie *SL_PHY_MAC_RLC_Config_v1700) Encode(w *uper.UperWriter) error {
 		}
 	}
 	if len(ie.Sl_RLC_ChannelToReleaseList_r17) > 0 {
-		tmp_Sl_RLC_ChannelToReleaseList_r17 := utils.NewSequence[*SL_RLC_ChannelID_r17]([]*SL_RLC_ChannelID_r17{}, uper.Constraint{Lb: 1, Ub: maxSL_LCID_r16}, false)
+		tmp_Sl_RLC_ChannelToReleaseList_r17 := utils.NewSequence[*SL_RLC_ChannelID_r17]([]*SL_RLC_ChannelID_r17{}, aper.Constraint{Lb: 1, Ub: maxSL_LCID_r16}, false)
 		for _, i := range ie.Sl_RLC_ChannelToReleaseList_r17 {
 			tmp_Sl_RLC_ChannelToReleaseList_r17.Value = append(tmp_Sl_RLC_ChannelToReleaseList_r17.Value, &i)
 		}
@@ -34,7 +34,7 @@ func (ie *SL_PHY_MAC_RLC_Config_v1700) Encode(w *uper.UperWriter) error {
 		}
 	}
 	if len(ie.Sl_RLC_ChannelToAddModList_r17) > 0 {
-		tmp_Sl_RLC_ChannelToAddModList_r17 := utils.NewSequence[*SL_RLC_ChannelConfig_r17]([]*SL_RLC_ChannelConfig_r17{}, uper.Constraint{Lb: 1, Ub: maxSL_LCID_r16}, false)
+		tmp_Sl_RLC_ChannelToAddModList_r17 := utils.NewSequence[*SL_RLC_ChannelConfig_r17]([]*SL_RLC_ChannelConfig_r17{}, aper.Constraint{Lb: 1, Ub: maxSL_LCID_r16}, false)
 		for _, i := range ie.Sl_RLC_ChannelToAddModList_r17 {
 			tmp_Sl_RLC_ChannelToAddModList_r17.Value = append(tmp_Sl_RLC_ChannelToAddModList_r17.Value, &i)
 		}
@@ -45,7 +45,7 @@ func (ie *SL_PHY_MAC_RLC_Config_v1700) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *SL_PHY_MAC_RLC_Config_v1700) Decode(r *uper.UperReader) error {
+func (ie *SL_PHY_MAC_RLC_Config_v1700) Decode(r *aper.AperReader) error {
 	var err error
 	var Sl_DRX_Config_r17Present bool
 	if Sl_DRX_Config_r17Present, err = r.ReadBool(); err != nil {
@@ -66,7 +66,7 @@ func (ie *SL_PHY_MAC_RLC_Config_v1700) Decode(r *uper.UperReader) error {
 		}
 	}
 	if Sl_RLC_ChannelToReleaseList_r17Present {
-		tmp_Sl_RLC_ChannelToReleaseList_r17 := utils.NewSequence[*SL_RLC_ChannelID_r17]([]*SL_RLC_ChannelID_r17{}, uper.Constraint{Lb: 1, Ub: maxSL_LCID_r16}, false)
+		tmp_Sl_RLC_ChannelToReleaseList_r17 := utils.NewSequence[*SL_RLC_ChannelID_r17]([]*SL_RLC_ChannelID_r17{}, aper.Constraint{Lb: 1, Ub: maxSL_LCID_r16}, false)
 		fn_Sl_RLC_ChannelToReleaseList_r17 := func() *SL_RLC_ChannelID_r17 {
 			return new(SL_RLC_ChannelID_r17)
 		}
@@ -79,7 +79,7 @@ func (ie *SL_PHY_MAC_RLC_Config_v1700) Decode(r *uper.UperReader) error {
 		}
 	}
 	if Sl_RLC_ChannelToAddModList_r17Present {
-		tmp_Sl_RLC_ChannelToAddModList_r17 := utils.NewSequence[*SL_RLC_ChannelConfig_r17]([]*SL_RLC_ChannelConfig_r17{}, uper.Constraint{Lb: 1, Ub: maxSL_LCID_r16}, false)
+		tmp_Sl_RLC_ChannelToAddModList_r17 := utils.NewSequence[*SL_RLC_ChannelConfig_r17]([]*SL_RLC_ChannelConfig_r17{}, aper.Constraint{Lb: 1, Ub: maxSL_LCID_r16}, false)
 		fn_Sl_RLC_ChannelToAddModList_r17 := func() *SL_RLC_ChannelConfig_r17 {
 			return new(SL_RLC_ChannelConfig_r17)
 		}

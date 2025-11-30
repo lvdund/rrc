@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -10,7 +10,7 @@ type FeatureSetUplinkPerCC_mimo_CB_PUSCH struct {
 	MaxNumberSRS_ResourcePerSet  int64          `lb:1,ub:2,madatory`
 }
 
-func (ie *FeatureSetUplinkPerCC_mimo_CB_PUSCH) Encode(w *uper.UperWriter) error {
+func (ie *FeatureSetUplinkPerCC_mimo_CB_PUSCH) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.MaxNumberMIMO_LayersCB_PUSCH != nil}
 	for _, bit := range preambleBits {
@@ -23,13 +23,13 @@ func (ie *FeatureSetUplinkPerCC_mimo_CB_PUSCH) Encode(w *uper.UperWriter) error 
 			return utils.WrapError("Encode MaxNumberMIMO_LayersCB_PUSCH", err)
 		}
 	}
-	if err = w.WriteInteger(ie.MaxNumberSRS_ResourcePerSet, &uper.Constraint{Lb: 1, Ub: 2}, false); err != nil {
+	if err = w.WriteInteger(ie.MaxNumberSRS_ResourcePerSet, &aper.Constraint{Lb: 1, Ub: 2}, false); err != nil {
 		return utils.WrapError("WriteInteger MaxNumberSRS_ResourcePerSet", err)
 	}
 	return nil
 }
 
-func (ie *FeatureSetUplinkPerCC_mimo_CB_PUSCH) Decode(r *uper.UperReader) error {
+func (ie *FeatureSetUplinkPerCC_mimo_CB_PUSCH) Decode(r *aper.AperReader) error {
 	var err error
 	var MaxNumberMIMO_LayersCB_PUSCHPresent bool
 	if MaxNumberMIMO_LayersCB_PUSCHPresent, err = r.ReadBool(); err != nil {
@@ -42,7 +42,7 @@ func (ie *FeatureSetUplinkPerCC_mimo_CB_PUSCH) Decode(r *uper.UperReader) error 
 		}
 	}
 	var tmp_int_MaxNumberSRS_ResourcePerSet int64
-	if tmp_int_MaxNumberSRS_ResourcePerSet, err = r.ReadInteger(&uper.Constraint{Lb: 1, Ub: 2}, false); err != nil {
+	if tmp_int_MaxNumberSRS_ResourcePerSet, err = r.ReadInteger(&aper.Constraint{Lb: 1, Ub: 2}, false); err != nil {
 		return utils.WrapError("ReadInteger MaxNumberSRS_ResourcePerSet", err)
 	}
 	ie.MaxNumberSRS_ResourcePerSet = tmp_int_MaxNumberSRS_ResourcePerSet

@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -13,7 +13,7 @@ type SIB2_cellReselectionInfoCommon struct {
 	SpeedStateReselectionPars       *SIB2_cellReselectionInfoCommon_speedStateReselectionPars `optional`
 }
 
-func (ie *SIB2_cellReselectionInfoCommon) Encode(w *uper.UperWriter) error {
+func (ie *SIB2_cellReselectionInfoCommon) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.NrofSS_BlocksToAverage != nil, ie.AbsThreshSS_BlocksConsolidation != nil, ie.RangeToBestCell != nil, ie.SpeedStateReselectionPars != nil}
 	for _, bit := range preambleBits {
@@ -22,7 +22,7 @@ func (ie *SIB2_cellReselectionInfoCommon) Encode(w *uper.UperWriter) error {
 		}
 	}
 	if ie.NrofSS_BlocksToAverage != nil {
-		if err = w.WriteInteger(*ie.NrofSS_BlocksToAverage, &uper.Constraint{Lb: 2, Ub: maxNrofSS_BlocksToAverage}, false); err != nil {
+		if err = w.WriteInteger(*ie.NrofSS_BlocksToAverage, &aper.Constraint{Lb: 2, Ub: maxNrofSS_BlocksToAverage}, false); err != nil {
 			return utils.WrapError("Encode NrofSS_BlocksToAverage", err)
 		}
 	}
@@ -47,7 +47,7 @@ func (ie *SIB2_cellReselectionInfoCommon) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *SIB2_cellReselectionInfoCommon) Decode(r *uper.UperReader) error {
+func (ie *SIB2_cellReselectionInfoCommon) Decode(r *aper.AperReader) error {
 	var err error
 	var NrofSS_BlocksToAveragePresent bool
 	if NrofSS_BlocksToAveragePresent, err = r.ReadBool(); err != nil {
@@ -67,7 +67,7 @@ func (ie *SIB2_cellReselectionInfoCommon) Decode(r *uper.UperReader) error {
 	}
 	if NrofSS_BlocksToAveragePresent {
 		var tmp_int_NrofSS_BlocksToAverage int64
-		if tmp_int_NrofSS_BlocksToAverage, err = r.ReadInteger(&uper.Constraint{Lb: 2, Ub: maxNrofSS_BlocksToAverage}, false); err != nil {
+		if tmp_int_NrofSS_BlocksToAverage, err = r.ReadInteger(&aper.Constraint{Lb: 2, Ub: maxNrofSS_BlocksToAverage}, false); err != nil {
 			return utils.WrapError("Decode NrofSS_BlocksToAverage", err)
 		}
 		ie.NrofSS_BlocksToAverage = &tmp_int_NrofSS_BlocksToAverage

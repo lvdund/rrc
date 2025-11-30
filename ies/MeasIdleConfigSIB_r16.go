@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -10,7 +10,7 @@ type MeasIdleConfigSIB_r16 struct {
 	MeasIdleCarrierListEUTRA_r16 []MeasIdleCarrierEUTRA_r16 `lb:1,ub:maxFreqIdle_r16,optional`
 }
 
-func (ie *MeasIdleConfigSIB_r16) Encode(w *uper.UperWriter) error {
+func (ie *MeasIdleConfigSIB_r16) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{len(ie.MeasIdleCarrierListNR_r16) > 0, len(ie.MeasIdleCarrierListEUTRA_r16) > 0}
 	for _, bit := range preambleBits {
@@ -19,7 +19,7 @@ func (ie *MeasIdleConfigSIB_r16) Encode(w *uper.UperWriter) error {
 		}
 	}
 	if len(ie.MeasIdleCarrierListNR_r16) > 0 {
-		tmp_MeasIdleCarrierListNR_r16 := utils.NewSequence[*MeasIdleCarrierNR_r16]([]*MeasIdleCarrierNR_r16{}, uper.Constraint{Lb: 1, Ub: maxFreqIdle_r16}, false)
+		tmp_MeasIdleCarrierListNR_r16 := utils.NewSequence[*MeasIdleCarrierNR_r16]([]*MeasIdleCarrierNR_r16{}, aper.Constraint{Lb: 1, Ub: maxFreqIdle_r16}, false)
 		for _, i := range ie.MeasIdleCarrierListNR_r16 {
 			tmp_MeasIdleCarrierListNR_r16.Value = append(tmp_MeasIdleCarrierListNR_r16.Value, &i)
 		}
@@ -28,7 +28,7 @@ func (ie *MeasIdleConfigSIB_r16) Encode(w *uper.UperWriter) error {
 		}
 	}
 	if len(ie.MeasIdleCarrierListEUTRA_r16) > 0 {
-		tmp_MeasIdleCarrierListEUTRA_r16 := utils.NewSequence[*MeasIdleCarrierEUTRA_r16]([]*MeasIdleCarrierEUTRA_r16{}, uper.Constraint{Lb: 1, Ub: maxFreqIdle_r16}, false)
+		tmp_MeasIdleCarrierListEUTRA_r16 := utils.NewSequence[*MeasIdleCarrierEUTRA_r16]([]*MeasIdleCarrierEUTRA_r16{}, aper.Constraint{Lb: 1, Ub: maxFreqIdle_r16}, false)
 		for _, i := range ie.MeasIdleCarrierListEUTRA_r16 {
 			tmp_MeasIdleCarrierListEUTRA_r16.Value = append(tmp_MeasIdleCarrierListEUTRA_r16.Value, &i)
 		}
@@ -39,7 +39,7 @@ func (ie *MeasIdleConfigSIB_r16) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *MeasIdleConfigSIB_r16) Decode(r *uper.UperReader) error {
+func (ie *MeasIdleConfigSIB_r16) Decode(r *aper.AperReader) error {
 	var err error
 	var MeasIdleCarrierListNR_r16Present bool
 	if MeasIdleCarrierListNR_r16Present, err = r.ReadBool(); err != nil {
@@ -50,7 +50,7 @@ func (ie *MeasIdleConfigSIB_r16) Decode(r *uper.UperReader) error {
 		return err
 	}
 	if MeasIdleCarrierListNR_r16Present {
-		tmp_MeasIdleCarrierListNR_r16 := utils.NewSequence[*MeasIdleCarrierNR_r16]([]*MeasIdleCarrierNR_r16{}, uper.Constraint{Lb: 1, Ub: maxFreqIdle_r16}, false)
+		tmp_MeasIdleCarrierListNR_r16 := utils.NewSequence[*MeasIdleCarrierNR_r16]([]*MeasIdleCarrierNR_r16{}, aper.Constraint{Lb: 1, Ub: maxFreqIdle_r16}, false)
 		fn_MeasIdleCarrierListNR_r16 := func() *MeasIdleCarrierNR_r16 {
 			return new(MeasIdleCarrierNR_r16)
 		}
@@ -63,7 +63,7 @@ func (ie *MeasIdleConfigSIB_r16) Decode(r *uper.UperReader) error {
 		}
 	}
 	if MeasIdleCarrierListEUTRA_r16Present {
-		tmp_MeasIdleCarrierListEUTRA_r16 := utils.NewSequence[*MeasIdleCarrierEUTRA_r16]([]*MeasIdleCarrierEUTRA_r16{}, uper.Constraint{Lb: 1, Ub: maxFreqIdle_r16}, false)
+		tmp_MeasIdleCarrierListEUTRA_r16 := utils.NewSequence[*MeasIdleCarrierEUTRA_r16]([]*MeasIdleCarrierEUTRA_r16{}, aper.Constraint{Lb: 1, Ub: maxFreqIdle_r16}, false)
 		fn_MeasIdleCarrierListEUTRA_r16 := func() *MeasIdleCarrierEUTRA_r16 {
 			return new(MeasIdleCarrierEUTRA_r16)
 		}

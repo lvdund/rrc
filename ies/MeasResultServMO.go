@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -11,7 +11,7 @@ type MeasResultServMO struct {
 	MeasResultBestNeighCell *MeasResultNR `optional`
 }
 
-func (ie *MeasResultServMO) Encode(w *uper.UperWriter) error {
+func (ie *MeasResultServMO) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.MeasResultBestNeighCell != nil}
 	for _, bit := range preambleBits {
@@ -33,7 +33,7 @@ func (ie *MeasResultServMO) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *MeasResultServMO) Decode(r *uper.UperReader) error {
+func (ie *MeasResultServMO) Decode(r *aper.AperReader) error {
 	var err error
 	var MeasResultBestNeighCellPresent bool
 	if MeasResultBestNeighCellPresent, err = r.ReadBool(); err != nil {

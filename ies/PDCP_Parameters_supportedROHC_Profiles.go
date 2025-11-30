@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -18,7 +18,7 @@ type PDCP_Parameters_supportedROHC_Profiles struct {
 	Profile0x0104 bool `madatory`
 }
 
-func (ie *PDCP_Parameters_supportedROHC_Profiles) Encode(w *uper.UperWriter) error {
+func (ie *PDCP_Parameters_supportedROHC_Profiles) Encode(w *aper.AperWriter) error {
 	var err error
 	if err = w.WriteBoolean(ie.Profile0x0000); err != nil {
 		return utils.WrapError("WriteBoolean Profile0x0000", err)
@@ -53,7 +53,7 @@ func (ie *PDCP_Parameters_supportedROHC_Profiles) Encode(w *uper.UperWriter) err
 	return nil
 }
 
-func (ie *PDCP_Parameters_supportedROHC_Profiles) Decode(r *uper.UperReader) error {
+func (ie *PDCP_Parameters_supportedROHC_Profiles) Decode(r *aper.AperReader) error {
 	var err error
 	var tmp_bool_Profile0x0000 bool
 	if tmp_bool_Profile0x0000, err = r.ReadBoolean(); err != nil {

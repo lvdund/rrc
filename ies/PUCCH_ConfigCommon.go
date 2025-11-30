@@ -3,7 +3,7 @@ package ies
 import (
 	"bytes"
 
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -18,7 +18,7 @@ type PUCCH_ConfigCommon struct {
 	AdditionalPRBOffset_r17        *PUCCH_ConfigCommon_additionalPRBOffset_r17 `optional,ext-1`
 }
 
-func (ie *PUCCH_ConfigCommon) Encode(w *uper.UperWriter) error {
+func (ie *PUCCH_ConfigCommon) Encode(w *aper.AperWriter) error {
 	var err error
 	hasExtensions := ie.NrofPRBs != nil || ie.Intra_SlotFH_r17 != nil || ie.Pucch_ResourceCommonRedCap_r17 != nil || ie.AdditionalPRBOffset_r17 != nil
 	preambleBits := []bool{hasExtensions, ie.Pucch_ResourceCommon != nil, ie.HoppingId != nil, ie.P0_nominal != nil}
@@ -28,7 +28,7 @@ func (ie *PUCCH_ConfigCommon) Encode(w *uper.UperWriter) error {
 		}
 	}
 	if ie.Pucch_ResourceCommon != nil {
-		if err = w.WriteInteger(*ie.Pucch_ResourceCommon, &uper.Constraint{Lb: 0, Ub: 15}, false); err != nil {
+		if err = w.WriteInteger(*ie.Pucch_ResourceCommon, &aper.Constraint{Lb: 0, Ub: 15}, false); err != nil {
 			return utils.WrapError("Encode Pucch_ResourceCommon", err)
 		}
 	}
@@ -36,12 +36,12 @@ func (ie *PUCCH_ConfigCommon) Encode(w *uper.UperWriter) error {
 		return utils.WrapError("Encode Pucch_GroupHopping", err)
 	}
 	if ie.HoppingId != nil {
-		if err = w.WriteInteger(*ie.HoppingId, &uper.Constraint{Lb: 0, Ub: 1023}, false); err != nil {
+		if err = w.WriteInteger(*ie.HoppingId, &aper.Constraint{Lb: 0, Ub: 1023}, false); err != nil {
 			return utils.WrapError("Encode HoppingId", err)
 		}
 	}
 	if ie.P0_nominal != nil {
-		if err = w.WriteInteger(*ie.P0_nominal, &uper.Constraint{Lb: -202, Ub: 24}, false); err != nil {
+		if err = w.WriteInteger(*ie.P0_nominal, &aper.Constraint{Lb: -202, Ub: 24}, false); err != nil {
 			return utils.WrapError("Encode P0_nominal", err)
 		}
 	}
@@ -55,7 +55,7 @@ func (ie *PUCCH_ConfigCommon) Encode(w *uper.UperWriter) error {
 		// encode extension group 1
 		if extBitmap[0] {
 			extBuf := new(bytes.Buffer)
-			extWriter := uper.NewWriter(extBuf)
+			extWriter := aper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 1
 			optionals_ext_1 := []bool{ie.NrofPRBs != nil, ie.Intra_SlotFH_r17 != nil, ie.Pucch_ResourceCommonRedCap_r17 != nil, ie.AdditionalPRBOffset_r17 != nil}
@@ -67,7 +67,7 @@ func (ie *PUCCH_ConfigCommon) Encode(w *uper.UperWriter) error {
 
 			// encode NrofPRBs optional
 			if ie.NrofPRBs != nil {
-				if err = extWriter.WriteInteger(*ie.NrofPRBs, &uper.Constraint{Lb: 1, Ub: 16}, false); err != nil {
+				if err = extWriter.WriteInteger(*ie.NrofPRBs, &aper.Constraint{Lb: 1, Ub: 16}, false); err != nil {
 					return utils.WrapError("Encode NrofPRBs", err)
 				}
 			}
@@ -79,7 +79,7 @@ func (ie *PUCCH_ConfigCommon) Encode(w *uper.UperWriter) error {
 			}
 			// encode Pucch_ResourceCommonRedCap_r17 optional
 			if ie.Pucch_ResourceCommonRedCap_r17 != nil {
-				if err = extWriter.WriteInteger(*ie.Pucch_ResourceCommonRedCap_r17, &uper.Constraint{Lb: 0, Ub: 15}, false); err != nil {
+				if err = extWriter.WriteInteger(*ie.Pucch_ResourceCommonRedCap_r17, &aper.Constraint{Lb: 0, Ub: 15}, false); err != nil {
 					return utils.WrapError("Encode Pucch_ResourceCommonRedCap_r17", err)
 				}
 			}
@@ -102,7 +102,7 @@ func (ie *PUCCH_ConfigCommon) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *PUCCH_ConfigCommon) Decode(r *uper.UperReader) error {
+func (ie *PUCCH_ConfigCommon) Decode(r *aper.AperReader) error {
 	var err error
 	var extensionBit bool
 	if extensionBit, err = r.ReadBool(); err != nil {
@@ -122,7 +122,7 @@ func (ie *PUCCH_ConfigCommon) Decode(r *uper.UperReader) error {
 	}
 	if Pucch_ResourceCommonPresent {
 		var tmp_int_Pucch_ResourceCommon int64
-		if tmp_int_Pucch_ResourceCommon, err = r.ReadInteger(&uper.Constraint{Lb: 0, Ub: 15}, false); err != nil {
+		if tmp_int_Pucch_ResourceCommon, err = r.ReadInteger(&aper.Constraint{Lb: 0, Ub: 15}, false); err != nil {
 			return utils.WrapError("Decode Pucch_ResourceCommon", err)
 		}
 		ie.Pucch_ResourceCommon = &tmp_int_Pucch_ResourceCommon
@@ -132,14 +132,14 @@ func (ie *PUCCH_ConfigCommon) Decode(r *uper.UperReader) error {
 	}
 	if HoppingIdPresent {
 		var tmp_int_HoppingId int64
-		if tmp_int_HoppingId, err = r.ReadInteger(&uper.Constraint{Lb: 0, Ub: 1023}, false); err != nil {
+		if tmp_int_HoppingId, err = r.ReadInteger(&aper.Constraint{Lb: 0, Ub: 1023}, false); err != nil {
 			return utils.WrapError("Decode HoppingId", err)
 		}
 		ie.HoppingId = &tmp_int_HoppingId
 	}
 	if P0_nominalPresent {
 		var tmp_int_P0_nominal int64
-		if tmp_int_P0_nominal, err = r.ReadInteger(&uper.Constraint{Lb: -202, Ub: 24}, false); err != nil {
+		if tmp_int_P0_nominal, err = r.ReadInteger(&aper.Constraint{Lb: -202, Ub: 24}, false); err != nil {
 			return utils.WrapError("Decode P0_nominal", err)
 		}
 		ie.P0_nominal = &tmp_int_P0_nominal
@@ -159,7 +159,7 @@ func (ie *PUCCH_ConfigCommon) Decode(r *uper.UperReader) error {
 				return err
 			}
 
-			extReader := uper.NewReader(bytes.NewReader(extBytes))
+			extReader := aper.NewReader(bytes.NewReader(extBytes))
 
 			NrofPRBsPresent, err := extReader.ReadBool()
 			if err != nil {
@@ -180,7 +180,7 @@ func (ie *PUCCH_ConfigCommon) Decode(r *uper.UperReader) error {
 			// decode NrofPRBs optional
 			if NrofPRBsPresent {
 				var tmp_int_NrofPRBs int64
-				if tmp_int_NrofPRBs, err = extReader.ReadInteger(&uper.Constraint{Lb: 1, Ub: 16}, false); err != nil {
+				if tmp_int_NrofPRBs, err = extReader.ReadInteger(&aper.Constraint{Lb: 1, Ub: 16}, false); err != nil {
 					return utils.WrapError("Decode NrofPRBs", err)
 				}
 				ie.NrofPRBs = &tmp_int_NrofPRBs
@@ -195,7 +195,7 @@ func (ie *PUCCH_ConfigCommon) Decode(r *uper.UperReader) error {
 			// decode Pucch_ResourceCommonRedCap_r17 optional
 			if Pucch_ResourceCommonRedCap_r17Present {
 				var tmp_int_Pucch_ResourceCommonRedCap_r17 int64
-				if tmp_int_Pucch_ResourceCommonRedCap_r17, err = extReader.ReadInteger(&uper.Constraint{Lb: 0, Ub: 15}, false); err != nil {
+				if tmp_int_Pucch_ResourceCommonRedCap_r17, err = extReader.ReadInteger(&aper.Constraint{Lb: 0, Ub: 15}, false); err != nil {
 					return utils.WrapError("Decode Pucch_ResourceCommonRedCap_r17", err)
 				}
 				ie.Pucch_ResourceCommonRedCap_r17 = &tmp_int_Pucch_ResourceCommonRedCap_r17

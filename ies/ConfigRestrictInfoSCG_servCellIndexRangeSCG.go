@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -10,7 +10,7 @@ type ConfigRestrictInfoSCG_servCellIndexRangeSCG struct {
 	UpBound  ServCellIndex `madatory`
 }
 
-func (ie *ConfigRestrictInfoSCG_servCellIndexRangeSCG) Encode(w *uper.UperWriter) error {
+func (ie *ConfigRestrictInfoSCG_servCellIndexRangeSCG) Encode(w *aper.AperWriter) error {
 	var err error
 	if err = ie.LowBound.Encode(w); err != nil {
 		return utils.WrapError("Encode LowBound", err)
@@ -21,7 +21,7 @@ func (ie *ConfigRestrictInfoSCG_servCellIndexRangeSCG) Encode(w *uper.UperWriter
 	return nil
 }
 
-func (ie *ConfigRestrictInfoSCG_servCellIndexRangeSCG) Decode(r *uper.UperReader) error {
+func (ie *ConfigRestrictInfoSCG_servCellIndexRangeSCG) Decode(r *aper.AperReader) error {
 	var err error
 	if err = ie.LowBound.Decode(r); err != nil {
 		return utils.WrapError("Decode LowBound", err)

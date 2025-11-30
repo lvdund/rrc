@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -9,7 +9,7 @@ type FeatureSetDownlink_v15a0 struct {
 	SupportedSRS_Resources *SRS_Resources `optional`
 }
 
-func (ie *FeatureSetDownlink_v15a0) Encode(w *uper.UperWriter) error {
+func (ie *FeatureSetDownlink_v15a0) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.SupportedSRS_Resources != nil}
 	for _, bit := range preambleBits {
@@ -25,7 +25,7 @@ func (ie *FeatureSetDownlink_v15a0) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *FeatureSetDownlink_v15a0) Decode(r *uper.UperReader) error {
+func (ie *FeatureSetDownlink_v15a0) Decode(r *aper.AperReader) error {
 	var err error
 	var SupportedSRS_ResourcesPresent bool
 	if SupportedSRS_ResourcesPresent, err = r.ReadBool(); err != nil {

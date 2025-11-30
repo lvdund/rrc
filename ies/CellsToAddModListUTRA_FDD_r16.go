@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -9,9 +9,9 @@ type CellsToAddModListUTRA_FDD_r16 struct {
 	Value []CellsToAddModUTRA_FDD_r16 `lb:1,ub:maxCellMeasUTRA_FDD_r16,madatory`
 }
 
-func (ie *CellsToAddModListUTRA_FDD_r16) Encode(w *uper.UperWriter) error {
+func (ie *CellsToAddModListUTRA_FDD_r16) Encode(w *aper.AperWriter) error {
 	var err error
-	tmp := utils.NewSequence[*CellsToAddModUTRA_FDD_r16]([]*CellsToAddModUTRA_FDD_r16{}, uper.Constraint{Lb: 1, Ub: maxCellMeasUTRA_FDD_r16}, false)
+	tmp := utils.NewSequence[*CellsToAddModUTRA_FDD_r16]([]*CellsToAddModUTRA_FDD_r16{}, aper.Constraint{Lb: 1, Ub: maxCellMeasUTRA_FDD_r16}, false)
 	for _, i := range ie.Value {
 		tmp.Value = append(tmp.Value, &i)
 	}
@@ -21,9 +21,9 @@ func (ie *CellsToAddModListUTRA_FDD_r16) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *CellsToAddModListUTRA_FDD_r16) Decode(r *uper.UperReader) error {
+func (ie *CellsToAddModListUTRA_FDD_r16) Decode(r *aper.AperReader) error {
 	var err error
-	tmp := utils.NewSequence[*CellsToAddModUTRA_FDD_r16]([]*CellsToAddModUTRA_FDD_r16{}, uper.Constraint{Lb: 1, Ub: maxCellMeasUTRA_FDD_r16}, false)
+	tmp := utils.NewSequence[*CellsToAddModUTRA_FDD_r16]([]*CellsToAddModUTRA_FDD_r16{}, aper.Constraint{Lb: 1, Ub: maxCellMeasUTRA_FDD_r16}, false)
 	fn := func() *CellsToAddModUTRA_FDD_r16 {
 		return new(CellsToAddModUTRA_FDD_r16)
 	}

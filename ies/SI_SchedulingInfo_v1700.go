@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -10,7 +10,7 @@ type SI_SchedulingInfo_v1700 struct {
 	Si_RequestConfigRedCap_r17 *SI_RequestConfig     `optional`
 }
 
-func (ie *SI_SchedulingInfo_v1700) Encode(w *uper.UperWriter) error {
+func (ie *SI_SchedulingInfo_v1700) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.Si_RequestConfigRedCap_r17 != nil}
 	for _, bit := range preambleBits {
@@ -18,7 +18,7 @@ func (ie *SI_SchedulingInfo_v1700) Encode(w *uper.UperWriter) error {
 			return err
 		}
 	}
-	tmp_SchedulingInfoList2_r17 := utils.NewSequence[*SchedulingInfo2_r17]([]*SchedulingInfo2_r17{}, uper.Constraint{Lb: 1, Ub: maxSI_Message}, false)
+	tmp_SchedulingInfoList2_r17 := utils.NewSequence[*SchedulingInfo2_r17]([]*SchedulingInfo2_r17{}, aper.Constraint{Lb: 1, Ub: maxSI_Message}, false)
 	for _, i := range ie.SchedulingInfoList2_r17 {
 		tmp_SchedulingInfoList2_r17.Value = append(tmp_SchedulingInfoList2_r17.Value, &i)
 	}
@@ -33,13 +33,13 @@ func (ie *SI_SchedulingInfo_v1700) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *SI_SchedulingInfo_v1700) Decode(r *uper.UperReader) error {
+func (ie *SI_SchedulingInfo_v1700) Decode(r *aper.AperReader) error {
 	var err error
 	var Si_RequestConfigRedCap_r17Present bool
 	if Si_RequestConfigRedCap_r17Present, err = r.ReadBool(); err != nil {
 		return err
 	}
-	tmp_SchedulingInfoList2_r17 := utils.NewSequence[*SchedulingInfo2_r17]([]*SchedulingInfo2_r17{}, uper.Constraint{Lb: 1, Ub: maxSI_Message}, false)
+	tmp_SchedulingInfoList2_r17 := utils.NewSequence[*SchedulingInfo2_r17]([]*SchedulingInfo2_r17{}, aper.Constraint{Lb: 1, Ub: maxSI_Message}, false)
 	fn_SchedulingInfoList2_r17 := func() *SchedulingInfo2_r17 {
 		return new(SchedulingInfo2_r17)
 	}

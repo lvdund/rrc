@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -10,24 +10,24 @@ type CG_ConfigInfo_v1610_IEs_dummy1 struct {
 	MeasResultSCG_EUTRA_r16 []byte                                              `madatory`
 }
 
-func (ie *CG_ConfigInfo_v1610_IEs_dummy1) Encode(w *uper.UperWriter) error {
+func (ie *CG_ConfigInfo_v1610_IEs_dummy1) Encode(w *aper.AperWriter) error {
 	var err error
 	if err = ie.FailureTypeEUTRA_r16.Encode(w); err != nil {
 		return utils.WrapError("Encode FailureTypeEUTRA_r16", err)
 	}
-	if err = w.WriteOctetString(ie.MeasResultSCG_EUTRA_r16, &uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+	if err = w.WriteOctetString(ie.MeasResultSCG_EUTRA_r16, &aper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
 		return utils.WrapError("WriteOctetString MeasResultSCG_EUTRA_r16", err)
 	}
 	return nil
 }
 
-func (ie *CG_ConfigInfo_v1610_IEs_dummy1) Decode(r *uper.UperReader) error {
+func (ie *CG_ConfigInfo_v1610_IEs_dummy1) Decode(r *aper.AperReader) error {
 	var err error
 	if err = ie.FailureTypeEUTRA_r16.Decode(r); err != nil {
 		return utils.WrapError("Decode FailureTypeEUTRA_r16", err)
 	}
 	var tmp_os_MeasResultSCG_EUTRA_r16 []byte
-	if tmp_os_MeasResultSCG_EUTRA_r16, err = r.ReadOctetString(&uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+	if tmp_os_MeasResultSCG_EUTRA_r16, err = r.ReadOctetString(&aper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
 		return utils.WrapError("ReadOctetString MeasResultSCG_EUTRA_r16", err)
 	}
 	ie.MeasResultSCG_EUTRA_r16 = tmp_os_MeasResultSCG_EUTRA_r16

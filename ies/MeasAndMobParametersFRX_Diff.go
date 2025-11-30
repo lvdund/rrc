@@ -3,7 +3,7 @@ package ies
 import (
 	"bytes"
 
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -32,7 +32,7 @@ type MeasAndMobParametersFRX_Diff struct {
 	IncreasedNumberofCSIRSPerMO_r16                *MeasAndMobParametersFRX_Diff_increasedNumberofCSIRSPerMO_r16                `optional,ext-5`
 }
 
-func (ie *MeasAndMobParametersFRX_Diff) Encode(w *uper.UperWriter) error {
+func (ie *MeasAndMobParametersFRX_Diff) Encode(w *aper.AperWriter) error {
 	var err error
 	hasExtensions := ie.HandoverInterF != nil || ie.HandoverLTE_EPC != nil || ie.HandoverLTE_5GC != nil || ie.MaxNumberResource_CSI_RS_RLM != nil || ie.SimultaneousRxDataSSB_DiffNumerology != nil || ie.Nr_AutonomousGaps_r16 != nil || ie.Nr_AutonomousGaps_ENDC_r16 != nil || ie.Nr_AutonomousGaps_NEDC_r16 != nil || ie.Nr_AutonomousGaps_NRDC_r16 != nil || ie.Dummy != nil || ie.Cli_RSSI_Meas_r16 != nil || ie.Cli_SRS_RSRP_Meas_r16 != nil || ie.InterFrequencyMeas_NoGap_r16 != nil || ie.SimultaneousRxDataSSB_DiffNumerology_Inter_r16 != nil || ie.IdleInactiveNR_MeasReport_r16 != nil || ie.IdleInactiveNR_MeasBeamReport_r16 != nil || ie.IncreasedNumberofCSIRSPerMO_r16 != nil
 	preambleBits := []bool{hasExtensions, ie.Ss_SINR_Meas != nil, ie.Csi_RSRP_AndRSRQ_MeasWithSSB != nil, ie.Csi_RSRP_AndRSRQ_MeasWithoutSSB != nil, ie.Csi_SINR_Meas != nil, ie.Csi_RS_RLM != nil}
@@ -76,7 +76,7 @@ func (ie *MeasAndMobParametersFRX_Diff) Encode(w *uper.UperWriter) error {
 		// encode extension group 1
 		if extBitmap[0] {
 			extBuf := new(bytes.Buffer)
-			extWriter := uper.NewWriter(extBuf)
+			extWriter := aper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 1
 			optionals_ext_1 := []bool{ie.HandoverInterF != nil, ie.HandoverLTE_EPC != nil, ie.HandoverLTE_5GC != nil}
@@ -117,7 +117,7 @@ func (ie *MeasAndMobParametersFRX_Diff) Encode(w *uper.UperWriter) error {
 		// encode extension group 2
 		if extBitmap[1] {
 			extBuf := new(bytes.Buffer)
-			extWriter := uper.NewWriter(extBuf)
+			extWriter := aper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 2
 			optionals_ext_2 := []bool{ie.MaxNumberResource_CSI_RS_RLM != nil}
@@ -146,7 +146,7 @@ func (ie *MeasAndMobParametersFRX_Diff) Encode(w *uper.UperWriter) error {
 		// encode extension group 3
 		if extBitmap[2] {
 			extBuf := new(bytes.Buffer)
-			extWriter := uper.NewWriter(extBuf)
+			extWriter := aper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 3
 			optionals_ext_3 := []bool{ie.SimultaneousRxDataSSB_DiffNumerology != nil}
@@ -175,7 +175,7 @@ func (ie *MeasAndMobParametersFRX_Diff) Encode(w *uper.UperWriter) error {
 		// encode extension group 4
 		if extBitmap[3] {
 			extBuf := new(bytes.Buffer)
-			extWriter := uper.NewWriter(extBuf)
+			extWriter := aper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 4
 			optionals_ext_4 := []bool{ie.Nr_AutonomousGaps_r16 != nil, ie.Nr_AutonomousGaps_ENDC_r16 != nil, ie.Nr_AutonomousGaps_NEDC_r16 != nil, ie.Nr_AutonomousGaps_NRDC_r16 != nil, ie.Dummy != nil, ie.Cli_RSSI_Meas_r16 != nil, ie.Cli_SRS_RSRP_Meas_r16 != nil, ie.InterFrequencyMeas_NoGap_r16 != nil, ie.SimultaneousRxDataSSB_DiffNumerology_Inter_r16 != nil, ie.IdleInactiveNR_MeasReport_r16 != nil, ie.IdleInactiveNR_MeasBeamReport_r16 != nil}
@@ -264,7 +264,7 @@ func (ie *MeasAndMobParametersFRX_Diff) Encode(w *uper.UperWriter) error {
 		// encode extension group 5
 		if extBitmap[4] {
 			extBuf := new(bytes.Buffer)
-			extWriter := uper.NewWriter(extBuf)
+			extWriter := aper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 5
 			optionals_ext_5 := []bool{ie.IncreasedNumberofCSIRSPerMO_r16 != nil}
@@ -293,7 +293,7 @@ func (ie *MeasAndMobParametersFRX_Diff) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *MeasAndMobParametersFRX_Diff) Decode(r *uper.UperReader) error {
+func (ie *MeasAndMobParametersFRX_Diff) Decode(r *aper.AperReader) error {
 	var err error
 	var extensionBit bool
 	if extensionBit, err = r.ReadBool(); err != nil {
@@ -364,7 +364,7 @@ func (ie *MeasAndMobParametersFRX_Diff) Decode(r *uper.UperReader) error {
 				return err
 			}
 
-			extReader := uper.NewReader(bytes.NewReader(extBytes))
+			extReader := aper.NewReader(bytes.NewReader(extBytes))
 
 			HandoverInterFPresent, err := extReader.ReadBool()
 			if err != nil {
@@ -407,7 +407,7 @@ func (ie *MeasAndMobParametersFRX_Diff) Decode(r *uper.UperReader) error {
 				return err
 			}
 
-			extReader := uper.NewReader(bytes.NewReader(extBytes))
+			extReader := aper.NewReader(bytes.NewReader(extBytes))
 
 			MaxNumberResource_CSI_RS_RLMPresent, err := extReader.ReadBool()
 			if err != nil {
@@ -428,7 +428,7 @@ func (ie *MeasAndMobParametersFRX_Diff) Decode(r *uper.UperReader) error {
 				return err
 			}
 
-			extReader := uper.NewReader(bytes.NewReader(extBytes))
+			extReader := aper.NewReader(bytes.NewReader(extBytes))
 
 			SimultaneousRxDataSSB_DiffNumerologyPresent, err := extReader.ReadBool()
 			if err != nil {
@@ -449,7 +449,7 @@ func (ie *MeasAndMobParametersFRX_Diff) Decode(r *uper.UperReader) error {
 				return err
 			}
 
-			extReader := uper.NewReader(bytes.NewReader(extBytes))
+			extReader := aper.NewReader(bytes.NewReader(extBytes))
 
 			Nr_AutonomousGaps_r16Present, err := extReader.ReadBool()
 			if err != nil {
@@ -580,7 +580,7 @@ func (ie *MeasAndMobParametersFRX_Diff) Decode(r *uper.UperReader) error {
 				return err
 			}
 
-			extReader := uper.NewReader(bytes.NewReader(extBytes))
+			extReader := aper.NewReader(bytes.NewReader(extBytes))
 
 			IncreasedNumberofCSIRSPerMO_r16Present, err := extReader.ReadBool()
 			if err != nil {

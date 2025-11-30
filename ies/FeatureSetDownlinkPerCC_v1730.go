@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -12,7 +12,7 @@ type FeatureSetDownlinkPerCC_v1730 struct {
 	Dci_BroadcastWith16Repetitions_r17       *FeatureSetDownlinkPerCC_v1730_dci_BroadcastWith16Repetitions_r17       `optional`
 }
 
-func (ie *FeatureSetDownlinkPerCC_v1730) Encode(w *uper.UperWriter) error {
+func (ie *FeatureSetDownlinkPerCC_v1730) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.IntraSlotTDM_UnicastGroupCommonPDSCH_r17 != nil, ie.Sps_MulticastSCell_r17 != nil, ie.Sps_MulticastSCellMultiConfig_r17 != nil, ie.Dci_BroadcastWith16Repetitions_r17 != nil}
 	for _, bit := range preambleBits {
@@ -31,7 +31,7 @@ func (ie *FeatureSetDownlinkPerCC_v1730) Encode(w *uper.UperWriter) error {
 		}
 	}
 	if ie.Sps_MulticastSCellMultiConfig_r17 != nil {
-		if err = w.WriteInteger(*ie.Sps_MulticastSCellMultiConfig_r17, &uper.Constraint{Lb: 1, Ub: 8}, false); err != nil {
+		if err = w.WriteInteger(*ie.Sps_MulticastSCellMultiConfig_r17, &aper.Constraint{Lb: 1, Ub: 8}, false); err != nil {
 			return utils.WrapError("Encode Sps_MulticastSCellMultiConfig_r17", err)
 		}
 	}
@@ -43,7 +43,7 @@ func (ie *FeatureSetDownlinkPerCC_v1730) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *FeatureSetDownlinkPerCC_v1730) Decode(r *uper.UperReader) error {
+func (ie *FeatureSetDownlinkPerCC_v1730) Decode(r *aper.AperReader) error {
 	var err error
 	var IntraSlotTDM_UnicastGroupCommonPDSCH_r17Present bool
 	if IntraSlotTDM_UnicastGroupCommonPDSCH_r17Present, err = r.ReadBool(); err != nil {
@@ -75,7 +75,7 @@ func (ie *FeatureSetDownlinkPerCC_v1730) Decode(r *uper.UperReader) error {
 	}
 	if Sps_MulticastSCellMultiConfig_r17Present {
 		var tmp_int_Sps_MulticastSCellMultiConfig_r17 int64
-		if tmp_int_Sps_MulticastSCellMultiConfig_r17, err = r.ReadInteger(&uper.Constraint{Lb: 1, Ub: 8}, false); err != nil {
+		if tmp_int_Sps_MulticastSCellMultiConfig_r17, err = r.ReadInteger(&aper.Constraint{Lb: 1, Ub: 8}, false); err != nil {
 			return utils.WrapError("Decode Sps_MulticastSCellMultiConfig_r17", err)
 		}
 		ie.Sps_MulticastSCellMultiConfig_r17 = &tmp_int_Sps_MulticastSCellMultiConfig_r17

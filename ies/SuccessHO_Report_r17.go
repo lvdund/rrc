@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -17,7 +17,7 @@ type SuccessHO_Report_r17 struct {
 	C_RNTI_r17                 *RNTI_Value                                    `optional`
 }
 
-func (ie *SuccessHO_Report_r17) Encode(w *uper.UperWriter) error {
+func (ie *SuccessHO_Report_r17) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.SourceCellInfo_r17 != nil, ie.TargetCellInfo_r17 != nil, ie.MeasResultNeighCells_r17 != nil, ie.LocationInfo_r17 != nil, ie.TimeSinceCHO_Reconfig_r17 != nil, ie.Shr_Cause_r17 != nil, ie.Ra_InformationCommon_r17 != nil, ie.UpInterruptionTimeAtHO_r17 != nil, ie.C_RNTI_r17 != nil}
 	for _, bit := range preambleBits {
@@ -73,7 +73,7 @@ func (ie *SuccessHO_Report_r17) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *SuccessHO_Report_r17) Decode(r *uper.UperReader) error {
+func (ie *SuccessHO_Report_r17) Decode(r *aper.AperReader) error {
 	var err error
 	var SourceCellInfo_r17Present bool
 	if SourceCellInfo_r17Present, err = r.ReadBool(); err != nil {

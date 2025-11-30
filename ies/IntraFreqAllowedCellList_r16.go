@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -9,9 +9,9 @@ type IntraFreqAllowedCellList_r16 struct {
 	Value []PCI_Range `lb:1,ub:maxCellAllowed,madatory`
 }
 
-func (ie *IntraFreqAllowedCellList_r16) Encode(w *uper.UperWriter) error {
+func (ie *IntraFreqAllowedCellList_r16) Encode(w *aper.AperWriter) error {
 	var err error
-	tmp := utils.NewSequence[*PCI_Range]([]*PCI_Range{}, uper.Constraint{Lb: 1, Ub: maxCellAllowed}, false)
+	tmp := utils.NewSequence[*PCI_Range]([]*PCI_Range{}, aper.Constraint{Lb: 1, Ub: maxCellAllowed}, false)
 	for _, i := range ie.Value {
 		tmp.Value = append(tmp.Value, &i)
 	}
@@ -21,9 +21,9 @@ func (ie *IntraFreqAllowedCellList_r16) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *IntraFreqAllowedCellList_r16) Decode(r *uper.UperReader) error {
+func (ie *IntraFreqAllowedCellList_r16) Decode(r *aper.AperReader) error {
 	var err error
-	tmp := utils.NewSequence[*PCI_Range]([]*PCI_Range{}, uper.Constraint{Lb: 1, Ub: maxCellAllowed}, false)
+	tmp := utils.NewSequence[*PCI_Range]([]*PCI_Range{}, aper.Constraint{Lb: 1, Ub: maxCellAllowed}, false)
 	fn := func() *PCI_Range {
 		return new(PCI_Range)
 	}

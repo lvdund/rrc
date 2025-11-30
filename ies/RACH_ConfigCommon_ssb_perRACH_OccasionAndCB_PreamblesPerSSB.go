@@ -3,7 +3,7 @@ package ies
 import (
 	"fmt"
 
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -31,7 +31,7 @@ type RACH_ConfigCommon_ssb_perRACH_OccasionAndCB_PreamblesPerSSB struct {
 	Sixteen   int64 `lb:1,ub:4,madatory`
 }
 
-func (ie *RACH_ConfigCommon_ssb_perRACH_OccasionAndCB_PreamblesPerSSB) Encode(w *uper.UperWriter) error {
+func (ie *RACH_ConfigCommon_ssb_perRACH_OccasionAndCB_PreamblesPerSSB) Encode(w *aper.AperWriter) error {
 	var err error
 	if err = w.WriteChoice(ie.Choice, 8, false); err != nil {
 		return err
@@ -58,15 +58,15 @@ func (ie *RACH_ConfigCommon_ssb_perRACH_OccasionAndCB_PreamblesPerSSB) Encode(w 
 			err = utils.WrapError("Encode Two", err)
 		}
 	case RACH_ConfigCommon_ssb_perRACH_OccasionAndCB_PreamblesPerSSB_Choice_Four:
-		if err = w.WriteInteger(int64(ie.Four), &uper.Constraint{Lb: 1, Ub: 16}, false); err != nil {
+		if err = w.WriteInteger(int64(ie.Four), &aper.Constraint{Lb: 1, Ub: 16}, false); err != nil {
 			err = utils.WrapError("Encode Four", err)
 		}
 	case RACH_ConfigCommon_ssb_perRACH_OccasionAndCB_PreamblesPerSSB_Choice_Eight:
-		if err = w.WriteInteger(int64(ie.Eight), &uper.Constraint{Lb: 1, Ub: 8}, false); err != nil {
+		if err = w.WriteInteger(int64(ie.Eight), &aper.Constraint{Lb: 1, Ub: 8}, false); err != nil {
 			err = utils.WrapError("Encode Eight", err)
 		}
 	case RACH_ConfigCommon_ssb_perRACH_OccasionAndCB_PreamblesPerSSB_Choice_Sixteen:
-		if err = w.WriteInteger(int64(ie.Sixteen), &uper.Constraint{Lb: 1, Ub: 4}, false); err != nil {
+		if err = w.WriteInteger(int64(ie.Sixteen), &aper.Constraint{Lb: 1, Ub: 4}, false); err != nil {
 			err = utils.WrapError("Encode Sixteen", err)
 		}
 	default:
@@ -75,7 +75,7 @@ func (ie *RACH_ConfigCommon_ssb_perRACH_OccasionAndCB_PreamblesPerSSB) Encode(w 
 	return err
 }
 
-func (ie *RACH_ConfigCommon_ssb_perRACH_OccasionAndCB_PreamblesPerSSB) Decode(r *uper.UperReader) error {
+func (ie *RACH_ConfigCommon_ssb_perRACH_OccasionAndCB_PreamblesPerSSB) Decode(r *aper.AperReader) error {
 	var err error
 	if ie.Choice, err = r.ReadChoice(8, false); err != nil {
 		return err
@@ -108,19 +108,19 @@ func (ie *RACH_ConfigCommon_ssb_perRACH_OccasionAndCB_PreamblesPerSSB) Decode(r 
 		}
 	case RACH_ConfigCommon_ssb_perRACH_OccasionAndCB_PreamblesPerSSB_Choice_Four:
 		var tmp_int_Four int64
-		if tmp_int_Four, err = r.ReadInteger(&uper.Constraint{Lb: 1, Ub: 16}, false); err != nil {
+		if tmp_int_Four, err = r.ReadInteger(&aper.Constraint{Lb: 1, Ub: 16}, false); err != nil {
 			return utils.WrapError("Decode Four", err)
 		}
 		ie.Four = tmp_int_Four
 	case RACH_ConfigCommon_ssb_perRACH_OccasionAndCB_PreamblesPerSSB_Choice_Eight:
 		var tmp_int_Eight int64
-		if tmp_int_Eight, err = r.ReadInteger(&uper.Constraint{Lb: 1, Ub: 8}, false); err != nil {
+		if tmp_int_Eight, err = r.ReadInteger(&aper.Constraint{Lb: 1, Ub: 8}, false); err != nil {
 			return utils.WrapError("Decode Eight", err)
 		}
 		ie.Eight = tmp_int_Eight
 	case RACH_ConfigCommon_ssb_perRACH_OccasionAndCB_PreamblesPerSSB_Choice_Sixteen:
 		var tmp_int_Sixteen int64
-		if tmp_int_Sixteen, err = r.ReadInteger(&uper.Constraint{Lb: 1, Ub: 4}, false); err != nil {
+		if tmp_int_Sixteen, err = r.ReadInteger(&aper.Constraint{Lb: 1, Ub: 4}, false); err != nil {
 			return utils.WrapError("Decode Sixteen", err)
 		}
 		ie.Sixteen = tmp_int_Sixteen

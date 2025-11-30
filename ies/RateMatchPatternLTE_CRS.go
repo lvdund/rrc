@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -13,7 +13,7 @@ type RateMatchPatternLTE_CRS struct {
 	V_Shift                  RateMatchPatternLTE_CRS_v_Shift            `madatory`
 }
 
-func (ie *RateMatchPatternLTE_CRS) Encode(w *uper.UperWriter) error {
+func (ie *RateMatchPatternLTE_CRS) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.Mbsfn_SubframeConfigList != nil}
 	for _, bit := range preambleBits {
@@ -21,7 +21,7 @@ func (ie *RateMatchPatternLTE_CRS) Encode(w *uper.UperWriter) error {
 			return err
 		}
 	}
-	if err = w.WriteInteger(ie.CarrierFreqDL, &uper.Constraint{Lb: 0, Ub: 16383}, false); err != nil {
+	if err = w.WriteInteger(ie.CarrierFreqDL, &aper.Constraint{Lb: 0, Ub: 16383}, false); err != nil {
 		return utils.WrapError("WriteInteger CarrierFreqDL", err)
 	}
 	if err = ie.CarrierBandwidthDL.Encode(w); err != nil {
@@ -41,14 +41,14 @@ func (ie *RateMatchPatternLTE_CRS) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *RateMatchPatternLTE_CRS) Decode(r *uper.UperReader) error {
+func (ie *RateMatchPatternLTE_CRS) Decode(r *aper.AperReader) error {
 	var err error
 	var Mbsfn_SubframeConfigListPresent bool
 	if Mbsfn_SubframeConfigListPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
 	var tmp_int_CarrierFreqDL int64
-	if tmp_int_CarrierFreqDL, err = r.ReadInteger(&uper.Constraint{Lb: 0, Ub: 16383}, false); err != nil {
+	if tmp_int_CarrierFreqDL, err = r.ReadInteger(&aper.Constraint{Lb: 0, Ub: 16383}, false); err != nil {
 		return utils.WrapError("ReadInteger CarrierFreqDL", err)
 	}
 	ie.CarrierFreqDL = tmp_int_CarrierFreqDL

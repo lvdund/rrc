@@ -3,7 +3,7 @@ package ies
 import (
 	"bytes"
 
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -13,7 +13,7 @@ type LogicalChannelConfig struct {
 	BitRateMultiplier_r16     *LogicalChannelConfig_bitRateMultiplier_r16 `optional,ext-3`
 }
 
-func (ie *LogicalChannelConfig) Encode(w *uper.UperWriter) error {
+func (ie *LogicalChannelConfig) Encode(w *aper.AperWriter) error {
 	var err error
 	hasExtensions := ie.ChannelAccessPriority_r16 != nil || ie.BitRateMultiplier_r16 != nil
 	preambleBits := []bool{hasExtensions, ie.Ul_SpecificParameters != nil}
@@ -37,7 +37,7 @@ func (ie *LogicalChannelConfig) Encode(w *uper.UperWriter) error {
 		// encode extension group 3
 		if extBitmap[2] {
 			extBuf := new(bytes.Buffer)
-			extWriter := uper.NewWriter(extBuf)
+			extWriter := aper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 3
 			optionals_ext_3 := []bool{ie.ChannelAccessPriority_r16 != nil, ie.BitRateMultiplier_r16 != nil}
@@ -49,7 +49,7 @@ func (ie *LogicalChannelConfig) Encode(w *uper.UperWriter) error {
 
 			// encode ChannelAccessPriority_r16 optional
 			if ie.ChannelAccessPriority_r16 != nil {
-				if err = extWriter.WriteInteger(*ie.ChannelAccessPriority_r16, &uper.Constraint{Lb: 1, Ub: 4}, false); err != nil {
+				if err = extWriter.WriteInteger(*ie.ChannelAccessPriority_r16, &aper.Constraint{Lb: 1, Ub: 4}, false); err != nil {
 					return utils.WrapError("Encode ChannelAccessPriority_r16", err)
 				}
 			}
@@ -72,7 +72,7 @@ func (ie *LogicalChannelConfig) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *LogicalChannelConfig) Decode(r *uper.UperReader) error {
+func (ie *LogicalChannelConfig) Decode(r *aper.AperReader) error {
 	var err error
 	var extensionBit bool
 	if extensionBit, err = r.ReadBool(); err != nil {
@@ -103,7 +103,7 @@ func (ie *LogicalChannelConfig) Decode(r *uper.UperReader) error {
 				return err
 			}
 
-			extReader := uper.NewReader(bytes.NewReader(extBytes))
+			extReader := aper.NewReader(bytes.NewReader(extBytes))
 
 			ChannelAccessPriority_r16Present, err := extReader.ReadBool()
 			if err != nil {
@@ -116,7 +116,7 @@ func (ie *LogicalChannelConfig) Decode(r *uper.UperReader) error {
 			// decode ChannelAccessPriority_r16 optional
 			if ChannelAccessPriority_r16Present {
 				var tmp_int_ChannelAccessPriority_r16 int64
-				if tmp_int_ChannelAccessPriority_r16, err = extReader.ReadInteger(&uper.Constraint{Lb: 1, Ub: 4}, false); err != nil {
+				if tmp_int_ChannelAccessPriority_r16, err = extReader.ReadInteger(&aper.Constraint{Lb: 1, Ub: 4}, false); err != nil {
 					return utils.WrapError("Decode ChannelAccessPriority_r16", err)
 				}
 				ie.ChannelAccessPriority_r16 = &tmp_int_ChannelAccessPriority_r16

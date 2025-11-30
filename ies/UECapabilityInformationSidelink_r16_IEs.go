@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -16,7 +16,7 @@ type UECapabilityInformationSidelink_r16_IEs struct {
 	NonCriticalExtension                       *UECapabilityInformationSidelink_v1700_IEs `optional`
 }
 
-func (ie *UECapabilityInformationSidelink_r16_IEs) Encode(w *uper.UperWriter) error {
+func (ie *UECapabilityInformationSidelink_r16_IEs) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.Pdcp_ParametersSidelink_r16 != nil, ie.Rlc_ParametersSidelink_r16 != nil, ie.SupportedBandCombinationListSidelinkNR_r16 != nil, len(ie.SupportedBandListSidelink_r16) > 0, ie.AppliedFreqBandListFilter_r16 != nil, ie.LateNonCriticalExtension != nil, ie.NonCriticalExtension != nil}
 	for _, bit := range preambleBits {
@@ -43,7 +43,7 @@ func (ie *UECapabilityInformationSidelink_r16_IEs) Encode(w *uper.UperWriter) er
 		}
 	}
 	if len(ie.SupportedBandListSidelink_r16) > 0 {
-		tmp_SupportedBandListSidelink_r16 := utils.NewSequence[*BandSidelinkPC5_r16]([]*BandSidelinkPC5_r16{}, uper.Constraint{Lb: 1, Ub: maxBands}, false)
+		tmp_SupportedBandListSidelink_r16 := utils.NewSequence[*BandSidelinkPC5_r16]([]*BandSidelinkPC5_r16{}, aper.Constraint{Lb: 1, Ub: maxBands}, false)
 		for _, i := range ie.SupportedBandListSidelink_r16 {
 			tmp_SupportedBandListSidelink_r16.Value = append(tmp_SupportedBandListSidelink_r16.Value, &i)
 		}
@@ -57,7 +57,7 @@ func (ie *UECapabilityInformationSidelink_r16_IEs) Encode(w *uper.UperWriter) er
 		}
 	}
 	if ie.LateNonCriticalExtension != nil {
-		if err = w.WriteOctetString(*ie.LateNonCriticalExtension, &uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+		if err = w.WriteOctetString(*ie.LateNonCriticalExtension, &aper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
 			return utils.WrapError("Encode LateNonCriticalExtension", err)
 		}
 	}
@@ -69,7 +69,7 @@ func (ie *UECapabilityInformationSidelink_r16_IEs) Encode(w *uper.UperWriter) er
 	return nil
 }
 
-func (ie *UECapabilityInformationSidelink_r16_IEs) Decode(r *uper.UperReader) error {
+func (ie *UECapabilityInformationSidelink_r16_IEs) Decode(r *aper.AperReader) error {
 	var err error
 	var Pdcp_ParametersSidelink_r16Present bool
 	if Pdcp_ParametersSidelink_r16Present, err = r.ReadBool(); err != nil {
@@ -121,7 +121,7 @@ func (ie *UECapabilityInformationSidelink_r16_IEs) Decode(r *uper.UperReader) er
 		}
 	}
 	if SupportedBandListSidelink_r16Present {
-		tmp_SupportedBandListSidelink_r16 := utils.NewSequence[*BandSidelinkPC5_r16]([]*BandSidelinkPC5_r16{}, uper.Constraint{Lb: 1, Ub: maxBands}, false)
+		tmp_SupportedBandListSidelink_r16 := utils.NewSequence[*BandSidelinkPC5_r16]([]*BandSidelinkPC5_r16{}, aper.Constraint{Lb: 1, Ub: maxBands}, false)
 		fn_SupportedBandListSidelink_r16 := func() *BandSidelinkPC5_r16 {
 			return new(BandSidelinkPC5_r16)
 		}
@@ -141,7 +141,7 @@ func (ie *UECapabilityInformationSidelink_r16_IEs) Decode(r *uper.UperReader) er
 	}
 	if LateNonCriticalExtensionPresent {
 		var tmp_os_LateNonCriticalExtension []byte
-		if tmp_os_LateNonCriticalExtension, err = r.ReadOctetString(&uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+		if tmp_os_LateNonCriticalExtension, err = r.ReadOctetString(&aper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
 			return utils.WrapError("Decode LateNonCriticalExtension", err)
 		}
 		ie.LateNonCriticalExtension = &tmp_os_LateNonCriticalExtension

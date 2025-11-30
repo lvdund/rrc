@@ -3,7 +3,7 @@ package ies
 import (
 	"fmt"
 
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -23,7 +23,7 @@ type ReportConfigInterRAT_reportType struct {
 	ReportSFTD     *ReportSFTD_EUTRA
 }
 
-func (ie *ReportConfigInterRAT_reportType) Encode(w *uper.UperWriter) error {
+func (ie *ReportConfigInterRAT_reportType) Encode(w *aper.AperWriter) error {
 	var err error
 	if err = w.WriteChoice(ie.Choice, 4, false); err != nil {
 		return err
@@ -51,7 +51,7 @@ func (ie *ReportConfigInterRAT_reportType) Encode(w *uper.UperWriter) error {
 	return err
 }
 
-func (ie *ReportConfigInterRAT_reportType) Decode(r *uper.UperReader) error {
+func (ie *ReportConfigInterRAT_reportType) Decode(r *aper.AperReader) error {
 	var err error
 	if ie.Choice, err = r.ReadChoice(4, false); err != nil {
 		return err

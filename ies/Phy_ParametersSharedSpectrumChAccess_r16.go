@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -25,7 +25,7 @@ type Phy_ParametersSharedSpectrumChAccess_r16 struct {
 	Pre_EmptIndication_DL_r16                  *Phy_ParametersSharedSpectrumChAccess_r16_pre_EmptIndication_DL_r16                  `optional`
 }
 
-func (ie *Phy_ParametersSharedSpectrumChAccess_r16) Encode(w *uper.UperWriter) error {
+func (ie *Phy_ParametersSharedSpectrumChAccess_r16) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.Ss_SINR_Meas_r16 != nil, ie.Sp_CSI_ReportPUCCH_r16 != nil, ie.Sp_CSI_ReportPUSCH_r16 != nil, ie.DynamicSFI_r16 != nil, ie.Mux_SR_HARQ_ACK_CSI_PUCCH_OncePerSlot_r16 != nil, ie.Mux_SR_HARQ_ACK_PUCCH_r16 != nil, ie.Mux_SR_HARQ_ACK_CSI_PUCCH_MultiPerSlot_r16 != nil, ie.Mux_HARQ_ACK_PUSCH_DiffSymbol_r16 != nil, ie.Pucch_Repetition_F1_3_4_r16 != nil, ie.Type1_PUSCH_RepetitionMultiSlots_r16 != nil, ie.Type2_PUSCH_RepetitionMultiSlots_r16 != nil, ie.Pusch_RepetitionMultiSlots_r16 != nil, ie.Pdsch_RepetitionMultiSlots_r16 != nil, ie.DownlinkSPS_r16 != nil, ie.ConfiguredUL_GrantType1_r16 != nil, ie.ConfiguredUL_GrantType2_r16 != nil, ie.Pre_EmptIndication_DL_r16 != nil}
 	for _, bit := range preambleBits {
@@ -121,7 +121,7 @@ func (ie *Phy_ParametersSharedSpectrumChAccess_r16) Encode(w *uper.UperWriter) e
 	return nil
 }
 
-func (ie *Phy_ParametersSharedSpectrumChAccess_r16) Decode(r *uper.UperReader) error {
+func (ie *Phy_ParametersSharedSpectrumChAccess_r16) Decode(r *aper.AperReader) error {
 	var err error
 	var Ss_SINR_Meas_r16Present bool
 	if Ss_SINR_Meas_r16Present, err = r.ReadBool(); err != nil {

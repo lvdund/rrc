@@ -3,7 +3,7 @@ package ies
 import (
 	"bytes"
 
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -18,7 +18,7 @@ type PUSCH_ServingCellConfig struct {
 	UplinkHARQ_mode_r17            *UplinkHARQ_mode_r17                                    `optional,ext-3,setuprelease`
 }
 
-func (ie *PUSCH_ServingCellConfig) Encode(w *uper.UperWriter) error {
+func (ie *PUSCH_ServingCellConfig) Encode(w *aper.AperWriter) error {
 	var err error
 	hasExtensions := ie.MaxMIMO_Layers != nil || ie.ProcessingType2Enabled != nil || ie.MaxMIMO_LayersDCI_0_2_r16 != nil || ie.NrofHARQ_ProcessesForPUSCH_r17 != nil || ie.UplinkHARQ_mode_r17 != nil
 	preambleBits := []bool{hasExtensions, ie.CodeBlockGroupTransmission != nil, ie.RateMatching != nil, ie.XOverhead != nil}
@@ -55,7 +55,7 @@ func (ie *PUSCH_ServingCellConfig) Encode(w *uper.UperWriter) error {
 		// encode extension group 1
 		if extBitmap[0] {
 			extBuf := new(bytes.Buffer)
-			extWriter := uper.NewWriter(extBuf)
+			extWriter := aper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 1
 			optionals_ext_1 := []bool{ie.MaxMIMO_Layers != nil, ie.ProcessingType2Enabled != nil}
@@ -67,7 +67,7 @@ func (ie *PUSCH_ServingCellConfig) Encode(w *uper.UperWriter) error {
 
 			// encode MaxMIMO_Layers optional
 			if ie.MaxMIMO_Layers != nil {
-				if err = extWriter.WriteInteger(*ie.MaxMIMO_Layers, &uper.Constraint{Lb: 1, Ub: 4}, false); err != nil {
+				if err = extWriter.WriteInteger(*ie.MaxMIMO_Layers, &aper.Constraint{Lb: 1, Ub: 4}, false); err != nil {
 					return utils.WrapError("Encode MaxMIMO_Layers", err)
 				}
 			}
@@ -90,7 +90,7 @@ func (ie *PUSCH_ServingCellConfig) Encode(w *uper.UperWriter) error {
 		// encode extension group 2
 		if extBitmap[1] {
 			extBuf := new(bytes.Buffer)
-			extWriter := uper.NewWriter(extBuf)
+			extWriter := aper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 2
 			optionals_ext_2 := []bool{ie.MaxMIMO_LayersDCI_0_2_r16 != nil}
@@ -122,7 +122,7 @@ func (ie *PUSCH_ServingCellConfig) Encode(w *uper.UperWriter) error {
 		// encode extension group 3
 		if extBitmap[2] {
 			extBuf := new(bytes.Buffer)
-			extWriter := uper.NewWriter(extBuf)
+			extWriter := aper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 3
 			optionals_ext_3 := []bool{ie.NrofHARQ_ProcessesForPUSCH_r17 != nil, ie.UplinkHARQ_mode_r17 != nil}
@@ -160,7 +160,7 @@ func (ie *PUSCH_ServingCellConfig) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *PUSCH_ServingCellConfig) Decode(r *uper.UperReader) error {
+func (ie *PUSCH_ServingCellConfig) Decode(r *aper.AperReader) error {
 	var err error
 	var extensionBit bool
 	if extensionBit, err = r.ReadBool(); err != nil {
@@ -212,7 +212,7 @@ func (ie *PUSCH_ServingCellConfig) Decode(r *uper.UperReader) error {
 				return err
 			}
 
-			extReader := uper.NewReader(bytes.NewReader(extBytes))
+			extReader := aper.NewReader(bytes.NewReader(extBytes))
 
 			MaxMIMO_LayersPresent, err := extReader.ReadBool()
 			if err != nil {
@@ -225,7 +225,7 @@ func (ie *PUSCH_ServingCellConfig) Decode(r *uper.UperReader) error {
 			// decode MaxMIMO_Layers optional
 			if MaxMIMO_LayersPresent {
 				var tmp_int_MaxMIMO_Layers int64
-				if tmp_int_MaxMIMO_Layers, err = extReader.ReadInteger(&uper.Constraint{Lb: 1, Ub: 4}, false); err != nil {
+				if tmp_int_MaxMIMO_Layers, err = extReader.ReadInteger(&aper.Constraint{Lb: 1, Ub: 4}, false); err != nil {
 					return utils.WrapError("Decode MaxMIMO_Layers", err)
 				}
 				ie.MaxMIMO_Layers = &tmp_int_MaxMIMO_Layers
@@ -246,7 +246,7 @@ func (ie *PUSCH_ServingCellConfig) Decode(r *uper.UperReader) error {
 				return err
 			}
 
-			extReader := uper.NewReader(bytes.NewReader(extBytes))
+			extReader := aper.NewReader(bytes.NewReader(extBytes))
 
 			MaxMIMO_LayersDCI_0_2_r16Present, err := extReader.ReadBool()
 			if err != nil {
@@ -268,7 +268,7 @@ func (ie *PUSCH_ServingCellConfig) Decode(r *uper.UperReader) error {
 				return err
 			}
 
-			extReader := uper.NewReader(bytes.NewReader(extBytes))
+			extReader := aper.NewReader(bytes.NewReader(extBytes))
 
 			NrofHARQ_ProcessesForPUSCH_r17Present, err := extReader.ReadBool()
 			if err != nil {

@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -10,7 +10,7 @@ type AreaConfiguration_v1700 struct {
 	InterFreqTargetList_r17 []InterFreqTargetInfo_r16 `lb:1,ub:maxFreq,optional`
 }
 
-func (ie *AreaConfiguration_v1700) Encode(w *uper.UperWriter) error {
+func (ie *AreaConfiguration_v1700) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.AreaConfig_r17 != nil, len(ie.InterFreqTargetList_r17) > 0}
 	for _, bit := range preambleBits {
@@ -24,7 +24,7 @@ func (ie *AreaConfiguration_v1700) Encode(w *uper.UperWriter) error {
 		}
 	}
 	if len(ie.InterFreqTargetList_r17) > 0 {
-		tmp_InterFreqTargetList_r17 := utils.NewSequence[*InterFreqTargetInfo_r16]([]*InterFreqTargetInfo_r16{}, uper.Constraint{Lb: 1, Ub: maxFreq}, false)
+		tmp_InterFreqTargetList_r17 := utils.NewSequence[*InterFreqTargetInfo_r16]([]*InterFreqTargetInfo_r16{}, aper.Constraint{Lb: 1, Ub: maxFreq}, false)
 		for _, i := range ie.InterFreqTargetList_r17 {
 			tmp_InterFreqTargetList_r17.Value = append(tmp_InterFreqTargetList_r17.Value, &i)
 		}
@@ -35,7 +35,7 @@ func (ie *AreaConfiguration_v1700) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *AreaConfiguration_v1700) Decode(r *uper.UperReader) error {
+func (ie *AreaConfiguration_v1700) Decode(r *aper.AperReader) error {
 	var err error
 	var AreaConfig_r17Present bool
 	if AreaConfig_r17Present, err = r.ReadBool(); err != nil {
@@ -52,7 +52,7 @@ func (ie *AreaConfiguration_v1700) Decode(r *uper.UperReader) error {
 		}
 	}
 	if InterFreqTargetList_r17Present {
-		tmp_InterFreqTargetList_r17 := utils.NewSequence[*InterFreqTargetInfo_r16]([]*InterFreqTargetInfo_r16{}, uper.Constraint{Lb: 1, Ub: maxFreq}, false)
+		tmp_InterFreqTargetList_r17 := utils.NewSequence[*InterFreqTargetInfo_r16]([]*InterFreqTargetInfo_r16{}, aper.Constraint{Lb: 1, Ub: maxFreq}, false)
 		fn_InterFreqTargetList_r17 := func() *InterFreqTargetInfo_r16 {
 			return new(InterFreqTargetInfo_r16)
 		}

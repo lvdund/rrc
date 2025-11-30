@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -11,7 +11,7 @@ type Fr1_100mhz struct {
 	Scs_60kHz *Fr1_100mhz_scs_60kHz `optional`
 }
 
-func (ie *Fr1_100mhz) Encode(w *uper.UperWriter) error {
+func (ie *Fr1_100mhz) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.Scs_15kHz != nil, ie.Scs_30kHz != nil, ie.Scs_60kHz != nil}
 	for _, bit := range preambleBits {
@@ -37,7 +37,7 @@ func (ie *Fr1_100mhz) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *Fr1_100mhz) Decode(r *uper.UperReader) error {
+func (ie *Fr1_100mhz) Decode(r *aper.AperReader) error {
 	var err error
 	var Scs_15kHzPresent bool
 	if Scs_15kHzPresent, err = r.ReadBool(); err != nil {

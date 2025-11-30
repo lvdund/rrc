@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -21,7 +21,7 @@ type RLF_Report_r16_nr_RLF_Report_r16 struct {
 	LocationInfo_r16               *LocationInfo_r16                                          `optional`
 	NoSuitableCellFound_r16        *RLF_Report_r16_nr_RLF_Report_r16_noSuitableCellFound_r16  `optional`
 	Ra_InformationCommon_r16       *RA_InformationCommon_r16                                  `optional`
-	Csi_rsRLMConfigBitmap_v1650    *uper.BitString                                            `lb:96,ub:96,optional`
+	Csi_rsRLMConfigBitmap_v1650    *aper.BitString                                            `lb:96,ub:96,optional`
 	LastHO_Type_r17                *RLF_Report_r16_nr_RLF_Report_r16_lastHO_Type_r17          `optional`
 	TimeConnSourceDAPS_Failure_r17 *TimeConnSourceDAPS_Failure_r17                            `optional`
 	TimeSinceCHO_Reconfig_r17      *TimeSinceCHO_Reconfig_r17                                 `optional`
@@ -29,7 +29,7 @@ type RLF_Report_r16_nr_RLF_Report_r16 struct {
 	ChoCandidateCellList_r17       *ChoCandidateCellList_r17                                  `optional`
 }
 
-func (ie *RLF_Report_r16_nr_RLF_Report_r16) Encode(w *uper.UperWriter) error {
+func (ie *RLF_Report_r16_nr_RLF_Report_r16) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.MeasResultNeighCells_r16 != nil, ie.PreviousPCellId_r16 != nil, ie.ReconnectCellId_r16 != nil, ie.TimeUntilReconnection_r16 != nil, ie.ReestablishmentCellId_r16 != nil, ie.TimeConnFailure_r16 != nil, ie.LocationInfo_r16 != nil, ie.NoSuitableCellFound_r16 != nil, ie.Ra_InformationCommon_r16 != nil, ie.Csi_rsRLMConfigBitmap_v1650 != nil, ie.LastHO_Type_r17 != nil, ie.TimeConnSourceDAPS_Failure_r17 != nil, ie.TimeSinceCHO_Reconfig_r17 != nil, ie.ChoCellId_r17 != nil, ie.ChoCandidateCellList_r17 != nil}
 	for _, bit := range preambleBits {
@@ -72,7 +72,7 @@ func (ie *RLF_Report_r16_nr_RLF_Report_r16) Encode(w *uper.UperWriter) error {
 		}
 	}
 	if ie.TimeConnFailure_r16 != nil {
-		if err = w.WriteInteger(*ie.TimeConnFailure_r16, &uper.Constraint{Lb: 0, Ub: 1023}, false); err != nil {
+		if err = w.WriteInteger(*ie.TimeConnFailure_r16, &aper.Constraint{Lb: 0, Ub: 1023}, false); err != nil {
 			return utils.WrapError("Encode TimeConnFailure_r16", err)
 		}
 	}
@@ -101,7 +101,7 @@ func (ie *RLF_Report_r16_nr_RLF_Report_r16) Encode(w *uper.UperWriter) error {
 		}
 	}
 	if ie.Csi_rsRLMConfigBitmap_v1650 != nil {
-		if err = w.WriteBitString(ie.Csi_rsRLMConfigBitmap_v1650.Bytes, uint(ie.Csi_rsRLMConfigBitmap_v1650.NumBits), &uper.Constraint{Lb: 96, Ub: 96}, false); err != nil {
+		if err = w.WriteBitString(ie.Csi_rsRLMConfigBitmap_v1650.Bytes, uint(ie.Csi_rsRLMConfigBitmap_v1650.NumBits), &aper.Constraint{Lb: 96, Ub: 96}, false); err != nil {
 			return utils.WrapError("Encode Csi_rsRLMConfigBitmap_v1650", err)
 		}
 	}
@@ -133,7 +133,7 @@ func (ie *RLF_Report_r16_nr_RLF_Report_r16) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *RLF_Report_r16_nr_RLF_Report_r16) Decode(r *uper.UperReader) error {
+func (ie *RLF_Report_r16_nr_RLF_Report_r16) Decode(r *aper.AperReader) error {
 	var err error
 	var MeasResultNeighCells_r16Present bool
 	if MeasResultNeighCells_r16Present, err = r.ReadBool(); err != nil {
@@ -236,7 +236,7 @@ func (ie *RLF_Report_r16_nr_RLF_Report_r16) Decode(r *uper.UperReader) error {
 	}
 	if TimeConnFailure_r16Present {
 		var tmp_int_TimeConnFailure_r16 int64
-		if tmp_int_TimeConnFailure_r16, err = r.ReadInteger(&uper.Constraint{Lb: 0, Ub: 1023}, false); err != nil {
+		if tmp_int_TimeConnFailure_r16, err = r.ReadInteger(&aper.Constraint{Lb: 0, Ub: 1023}, false); err != nil {
 			return utils.WrapError("Decode TimeConnFailure_r16", err)
 		}
 		ie.TimeConnFailure_r16 = &tmp_int_TimeConnFailure_r16
@@ -271,10 +271,10 @@ func (ie *RLF_Report_r16_nr_RLF_Report_r16) Decode(r *uper.UperReader) error {
 	if Csi_rsRLMConfigBitmap_v1650Present {
 		var tmp_bs_Csi_rsRLMConfigBitmap_v1650 []byte
 		var n_Csi_rsRLMConfigBitmap_v1650 uint
-		if tmp_bs_Csi_rsRLMConfigBitmap_v1650, n_Csi_rsRLMConfigBitmap_v1650, err = r.ReadBitString(&uper.Constraint{Lb: 96, Ub: 96}, false); err != nil {
+		if tmp_bs_Csi_rsRLMConfigBitmap_v1650, n_Csi_rsRLMConfigBitmap_v1650, err = r.ReadBitString(&aper.Constraint{Lb: 96, Ub: 96}, false); err != nil {
 			return utils.WrapError("Decode Csi_rsRLMConfigBitmap_v1650", err)
 		}
-		tmp_bitstring := uper.BitString{
+		tmp_bitstring := aper.BitString{
 			Bytes:   tmp_bs_Csi_rsRLMConfigBitmap_v1650,
 			NumBits: uint64(n_Csi_rsRLMConfigBitmap_v1650),
 		}

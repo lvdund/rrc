@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -9,7 +9,7 @@ type DL_AM_RLC_v1700 struct {
 	T_ReassemblyExt_r17 *T_ReassemblyExt_r17 `optional`
 }
 
-func (ie *DL_AM_RLC_v1700) Encode(w *uper.UperWriter) error {
+func (ie *DL_AM_RLC_v1700) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.T_ReassemblyExt_r17 != nil}
 	for _, bit := range preambleBits {
@@ -25,7 +25,7 @@ func (ie *DL_AM_RLC_v1700) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *DL_AM_RLC_v1700) Decode(r *uper.UperReader) error {
+func (ie *DL_AM_RLC_v1700) Decode(r *aper.AperReader) error {
 	var err error
 	var T_ReassemblyExt_r17Present bool
 	if T_ReassemblyExt_r17Present, err = r.ReadBool(); err != nil {

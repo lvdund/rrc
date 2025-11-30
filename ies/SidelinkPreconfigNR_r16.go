@@ -3,7 +3,7 @@ package ies
 import (
 	"bytes"
 
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -28,7 +28,7 @@ type SidelinkPreconfigNR_r16 struct {
 	Sl_PreconfigDiscConfig_r17                  *SL_RemoteUE_Config_r17                              `optional,ext-1`
 }
 
-func (ie *SidelinkPreconfigNR_r16) Encode(w *uper.UperWriter) error {
+func (ie *SidelinkPreconfigNR_r16) Encode(w *aper.AperWriter) error {
 	var err error
 	hasExtensions := ie.Sl_DRX_PreConfigGC_BC_r17 != nil || ie.Sl_TxProfileList_r17 != nil || ie.Sl_PreconfigDiscConfig_r17 != nil
 	preambleBits := []bool{hasExtensions, len(ie.Sl_PreconfigFreqInfoList_r16) > 0, ie.Sl_PreconfigNR_AnchorCarrierFreqList_r16 != nil, ie.Sl_PreconfigEUTRA_AnchorCarrierFreqList_r16 != nil, len(ie.Sl_RadioBearerPreConfigList_r16) > 0, len(ie.Sl_RLC_BearerPreConfigList_r16) > 0, ie.Sl_MeasPreConfig_r16 != nil, ie.Sl_OffsetDFN_r16 != nil, ie.T400_r16 != nil, ie.Sl_MaxNumConsecutiveDTX_r16 != nil, ie.Sl_SSB_PriorityNR_r16 != nil, ie.Sl_PreconfigGeneral_r16 != nil, ie.Sl_UE_SelectedPreConfig_r16 != nil, ie.Sl_CSI_Acquisition_r16 != nil, ie.Sl_RoHC_Profiles_r16 != nil}
@@ -38,7 +38,7 @@ func (ie *SidelinkPreconfigNR_r16) Encode(w *uper.UperWriter) error {
 		}
 	}
 	if len(ie.Sl_PreconfigFreqInfoList_r16) > 0 {
-		tmp_Sl_PreconfigFreqInfoList_r16 := utils.NewSequence[*SL_FreqConfigCommon_r16]([]*SL_FreqConfigCommon_r16{}, uper.Constraint{Lb: 1, Ub: maxNrofFreqSL_r16}, false)
+		tmp_Sl_PreconfigFreqInfoList_r16 := utils.NewSequence[*SL_FreqConfigCommon_r16]([]*SL_FreqConfigCommon_r16{}, aper.Constraint{Lb: 1, Ub: maxNrofFreqSL_r16}, false)
 		for _, i := range ie.Sl_PreconfigFreqInfoList_r16 {
 			tmp_Sl_PreconfigFreqInfoList_r16.Value = append(tmp_Sl_PreconfigFreqInfoList_r16.Value, &i)
 		}
@@ -57,7 +57,7 @@ func (ie *SidelinkPreconfigNR_r16) Encode(w *uper.UperWriter) error {
 		}
 	}
 	if len(ie.Sl_RadioBearerPreConfigList_r16) > 0 {
-		tmp_Sl_RadioBearerPreConfigList_r16 := utils.NewSequence[*SL_RadioBearerConfig_r16]([]*SL_RadioBearerConfig_r16{}, uper.Constraint{Lb: 1, Ub: maxNrofSLRB_r16}, false)
+		tmp_Sl_RadioBearerPreConfigList_r16 := utils.NewSequence[*SL_RadioBearerConfig_r16]([]*SL_RadioBearerConfig_r16{}, aper.Constraint{Lb: 1, Ub: maxNrofSLRB_r16}, false)
 		for _, i := range ie.Sl_RadioBearerPreConfigList_r16 {
 			tmp_Sl_RadioBearerPreConfigList_r16.Value = append(tmp_Sl_RadioBearerPreConfigList_r16.Value, &i)
 		}
@@ -66,7 +66,7 @@ func (ie *SidelinkPreconfigNR_r16) Encode(w *uper.UperWriter) error {
 		}
 	}
 	if len(ie.Sl_RLC_BearerPreConfigList_r16) > 0 {
-		tmp_Sl_RLC_BearerPreConfigList_r16 := utils.NewSequence[*SL_RLC_BearerConfig_r16]([]*SL_RLC_BearerConfig_r16{}, uper.Constraint{Lb: 1, Ub: maxSL_LCID_r16}, false)
+		tmp_Sl_RLC_BearerPreConfigList_r16 := utils.NewSequence[*SL_RLC_BearerConfig_r16]([]*SL_RLC_BearerConfig_r16{}, aper.Constraint{Lb: 1, Ub: maxSL_LCID_r16}, false)
 		for _, i := range ie.Sl_RLC_BearerPreConfigList_r16 {
 			tmp_Sl_RLC_BearerPreConfigList_r16.Value = append(tmp_Sl_RLC_BearerPreConfigList_r16.Value, &i)
 		}
@@ -80,7 +80,7 @@ func (ie *SidelinkPreconfigNR_r16) Encode(w *uper.UperWriter) error {
 		}
 	}
 	if ie.Sl_OffsetDFN_r16 != nil {
-		if err = w.WriteInteger(*ie.Sl_OffsetDFN_r16, &uper.Constraint{Lb: 1, Ub: 1000}, false); err != nil {
+		if err = w.WriteInteger(*ie.Sl_OffsetDFN_r16, &aper.Constraint{Lb: 1, Ub: 1000}, false); err != nil {
 			return utils.WrapError("Encode Sl_OffsetDFN_r16", err)
 		}
 	}
@@ -95,7 +95,7 @@ func (ie *SidelinkPreconfigNR_r16) Encode(w *uper.UperWriter) error {
 		}
 	}
 	if ie.Sl_SSB_PriorityNR_r16 != nil {
-		if err = w.WriteInteger(*ie.Sl_SSB_PriorityNR_r16, &uper.Constraint{Lb: 1, Ub: 8}, false); err != nil {
+		if err = w.WriteInteger(*ie.Sl_SSB_PriorityNR_r16, &aper.Constraint{Lb: 1, Ub: 8}, false); err != nil {
 			return utils.WrapError("Encode Sl_SSB_PriorityNR_r16", err)
 		}
 	}
@@ -119,7 +119,7 @@ func (ie *SidelinkPreconfigNR_r16) Encode(w *uper.UperWriter) error {
 			return utils.WrapError("Encode Sl_RoHC_Profiles_r16", err)
 		}
 	}
-	if err = w.WriteInteger(ie.Sl_MaxCID_r16, &uper.Constraint{Lb: 1, Ub: 16383}, false); err != nil {
+	if err = w.WriteInteger(ie.Sl_MaxCID_r16, &aper.Constraint{Lb: 1, Ub: 16383}, false); err != nil {
 		return utils.WrapError("WriteInteger Sl_MaxCID_r16", err)
 	}
 	if hasExtensions {
@@ -132,7 +132,7 @@ func (ie *SidelinkPreconfigNR_r16) Encode(w *uper.UperWriter) error {
 		// encode extension group 1
 		if extBitmap[0] {
 			extBuf := new(bytes.Buffer)
-			extWriter := uper.NewWriter(extBuf)
+			extWriter := aper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 1
 			optionals_ext_1 := []bool{ie.Sl_DRX_PreConfigGC_BC_r17 != nil, ie.Sl_TxProfileList_r17 != nil, ie.Sl_PreconfigDiscConfig_r17 != nil}
@@ -173,7 +173,7 @@ func (ie *SidelinkPreconfigNR_r16) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *SidelinkPreconfigNR_r16) Decode(r *uper.UperReader) error {
+func (ie *SidelinkPreconfigNR_r16) Decode(r *aper.AperReader) error {
 	var err error
 	var extensionBit bool
 	if extensionBit, err = r.ReadBool(); err != nil {
@@ -236,7 +236,7 @@ func (ie *SidelinkPreconfigNR_r16) Decode(r *uper.UperReader) error {
 		return err
 	}
 	if Sl_PreconfigFreqInfoList_r16Present {
-		tmp_Sl_PreconfigFreqInfoList_r16 := utils.NewSequence[*SL_FreqConfigCommon_r16]([]*SL_FreqConfigCommon_r16{}, uper.Constraint{Lb: 1, Ub: maxNrofFreqSL_r16}, false)
+		tmp_Sl_PreconfigFreqInfoList_r16 := utils.NewSequence[*SL_FreqConfigCommon_r16]([]*SL_FreqConfigCommon_r16{}, aper.Constraint{Lb: 1, Ub: maxNrofFreqSL_r16}, false)
 		fn_Sl_PreconfigFreqInfoList_r16 := func() *SL_FreqConfigCommon_r16 {
 			return new(SL_FreqConfigCommon_r16)
 		}
@@ -261,7 +261,7 @@ func (ie *SidelinkPreconfigNR_r16) Decode(r *uper.UperReader) error {
 		}
 	}
 	if Sl_RadioBearerPreConfigList_r16Present {
-		tmp_Sl_RadioBearerPreConfigList_r16 := utils.NewSequence[*SL_RadioBearerConfig_r16]([]*SL_RadioBearerConfig_r16{}, uper.Constraint{Lb: 1, Ub: maxNrofSLRB_r16}, false)
+		tmp_Sl_RadioBearerPreConfigList_r16 := utils.NewSequence[*SL_RadioBearerConfig_r16]([]*SL_RadioBearerConfig_r16{}, aper.Constraint{Lb: 1, Ub: maxNrofSLRB_r16}, false)
 		fn_Sl_RadioBearerPreConfigList_r16 := func() *SL_RadioBearerConfig_r16 {
 			return new(SL_RadioBearerConfig_r16)
 		}
@@ -274,7 +274,7 @@ func (ie *SidelinkPreconfigNR_r16) Decode(r *uper.UperReader) error {
 		}
 	}
 	if Sl_RLC_BearerPreConfigList_r16Present {
-		tmp_Sl_RLC_BearerPreConfigList_r16 := utils.NewSequence[*SL_RLC_BearerConfig_r16]([]*SL_RLC_BearerConfig_r16{}, uper.Constraint{Lb: 1, Ub: maxSL_LCID_r16}, false)
+		tmp_Sl_RLC_BearerPreConfigList_r16 := utils.NewSequence[*SL_RLC_BearerConfig_r16]([]*SL_RLC_BearerConfig_r16{}, aper.Constraint{Lb: 1, Ub: maxSL_LCID_r16}, false)
 		fn_Sl_RLC_BearerPreConfigList_r16 := func() *SL_RLC_BearerConfig_r16 {
 			return new(SL_RLC_BearerConfig_r16)
 		}
@@ -294,7 +294,7 @@ func (ie *SidelinkPreconfigNR_r16) Decode(r *uper.UperReader) error {
 	}
 	if Sl_OffsetDFN_r16Present {
 		var tmp_int_Sl_OffsetDFN_r16 int64
-		if tmp_int_Sl_OffsetDFN_r16, err = r.ReadInteger(&uper.Constraint{Lb: 1, Ub: 1000}, false); err != nil {
+		if tmp_int_Sl_OffsetDFN_r16, err = r.ReadInteger(&aper.Constraint{Lb: 1, Ub: 1000}, false); err != nil {
 			return utils.WrapError("Decode Sl_OffsetDFN_r16", err)
 		}
 		ie.Sl_OffsetDFN_r16 = &tmp_int_Sl_OffsetDFN_r16
@@ -313,7 +313,7 @@ func (ie *SidelinkPreconfigNR_r16) Decode(r *uper.UperReader) error {
 	}
 	if Sl_SSB_PriorityNR_r16Present {
 		var tmp_int_Sl_SSB_PriorityNR_r16 int64
-		if tmp_int_Sl_SSB_PriorityNR_r16, err = r.ReadInteger(&uper.Constraint{Lb: 1, Ub: 8}, false); err != nil {
+		if tmp_int_Sl_SSB_PriorityNR_r16, err = r.ReadInteger(&aper.Constraint{Lb: 1, Ub: 8}, false); err != nil {
 			return utils.WrapError("Decode Sl_SSB_PriorityNR_r16", err)
 		}
 		ie.Sl_SSB_PriorityNR_r16 = &tmp_int_Sl_SSB_PriorityNR_r16
@@ -343,7 +343,7 @@ func (ie *SidelinkPreconfigNR_r16) Decode(r *uper.UperReader) error {
 		}
 	}
 	var tmp_int_Sl_MaxCID_r16 int64
-	if tmp_int_Sl_MaxCID_r16, err = r.ReadInteger(&uper.Constraint{Lb: 1, Ub: 16383}, false); err != nil {
+	if tmp_int_Sl_MaxCID_r16, err = r.ReadInteger(&aper.Constraint{Lb: 1, Ub: 16383}, false); err != nil {
 		return utils.WrapError("ReadInteger Sl_MaxCID_r16", err)
 	}
 	ie.Sl_MaxCID_r16 = tmp_int_Sl_MaxCID_r16
@@ -362,7 +362,7 @@ func (ie *SidelinkPreconfigNR_r16) Decode(r *uper.UperReader) error {
 				return err
 			}
 
-			extReader := uper.NewReader(bytes.NewReader(extBytes))
+			extReader := aper.NewReader(bytes.NewReader(extBytes))
 
 			Sl_DRX_PreConfigGC_BC_r17Present, err := extReader.ReadBool()
 			if err != nil {

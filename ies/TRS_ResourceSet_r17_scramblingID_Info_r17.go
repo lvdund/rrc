@@ -3,7 +3,7 @@ package ies
 import (
 	"fmt"
 
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -21,7 +21,7 @@ type TRS_ResourceSet_r17_scramblingID_Info_r17 struct {
 	ScramblingIDperResourceListWith4_r17 []ScramblingId `lb:4,ub:4,madatory`
 }
 
-func (ie *TRS_ResourceSet_r17_scramblingID_Info_r17) Encode(w *uper.UperWriter) error {
+func (ie *TRS_ResourceSet_r17_scramblingID_Info_r17) Encode(w *aper.AperWriter) error {
 	var err error
 	if err = w.WriteChoice(ie.Choice, 3, false); err != nil {
 		return err
@@ -32,7 +32,7 @@ func (ie *TRS_ResourceSet_r17_scramblingID_Info_r17) Encode(w *uper.UperWriter) 
 			err = utils.WrapError("Encode ScramblingIDforCommon_r17", err)
 		}
 	case TRS_ResourceSet_r17_scramblingID_Info_r17_Choice_ScramblingIDperResourceListWith2_r17:
-		tmp := utils.NewSequence[*ScramblingId]([]*ScramblingId{}, uper.Constraint{Lb: 2, Ub: 2}, false)
+		tmp := utils.NewSequence[*ScramblingId]([]*ScramblingId{}, aper.Constraint{Lb: 2, Ub: 2}, false)
 		for _, i := range ie.ScramblingIDperResourceListWith2_r17 {
 			tmp.Value = append(tmp.Value, &i)
 		}
@@ -40,7 +40,7 @@ func (ie *TRS_ResourceSet_r17_scramblingID_Info_r17) Encode(w *uper.UperWriter) 
 			err = utils.WrapError("Encode ScramblingIDperResourceListWith2_r17", err)
 		}
 	case TRS_ResourceSet_r17_scramblingID_Info_r17_Choice_ScramblingIDperResourceListWith4_r17:
-		tmp := utils.NewSequence[*ScramblingId]([]*ScramblingId{}, uper.Constraint{Lb: 4, Ub: 4}, false)
+		tmp := utils.NewSequence[*ScramblingId]([]*ScramblingId{}, aper.Constraint{Lb: 4, Ub: 4}, false)
 		for _, i := range ie.ScramblingIDperResourceListWith4_r17 {
 			tmp.Value = append(tmp.Value, &i)
 		}
@@ -53,7 +53,7 @@ func (ie *TRS_ResourceSet_r17_scramblingID_Info_r17) Encode(w *uper.UperWriter) 
 	return err
 }
 
-func (ie *TRS_ResourceSet_r17_scramblingID_Info_r17) Decode(r *uper.UperReader) error {
+func (ie *TRS_ResourceSet_r17_scramblingID_Info_r17) Decode(r *aper.AperReader) error {
 	var err error
 	if ie.Choice, err = r.ReadChoice(3, false); err != nil {
 		return err
@@ -65,7 +65,7 @@ func (ie *TRS_ResourceSet_r17_scramblingID_Info_r17) Decode(r *uper.UperReader) 
 			return utils.WrapError("Decode ScramblingIDforCommon_r17", err)
 		}
 	case TRS_ResourceSet_r17_scramblingID_Info_r17_Choice_ScramblingIDperResourceListWith2_r17:
-		tmp := utils.NewSequence[*ScramblingId]([]*ScramblingId{}, uper.Constraint{Lb: 2, Ub: 2}, false)
+		tmp := utils.NewSequence[*ScramblingId]([]*ScramblingId{}, aper.Constraint{Lb: 2, Ub: 2}, false)
 		fn := func() *ScramblingId {
 			return new(ScramblingId)
 		}
@@ -77,7 +77,7 @@ func (ie *TRS_ResourceSet_r17_scramblingID_Info_r17) Decode(r *uper.UperReader) 
 			ie.ScramblingIDperResourceListWith2_r17 = append(ie.ScramblingIDperResourceListWith2_r17, *i)
 		}
 	case TRS_ResourceSet_r17_scramblingID_Info_r17_Choice_ScramblingIDperResourceListWith4_r17:
-		tmp := utils.NewSequence[*ScramblingId]([]*ScramblingId{}, uper.Constraint{Lb: 4, Ub: 4}, false)
+		tmp := utils.NewSequence[*ScramblingId]([]*ScramblingId{}, aper.Constraint{Lb: 4, Ub: 4}, false)
 		fn := func() *ScramblingId {
 			return new(ScramblingId)
 		}

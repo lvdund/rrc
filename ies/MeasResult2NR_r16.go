@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -11,7 +11,7 @@ type MeasResult2NR_r16 struct {
 	MeasResultList_r16 MeasResultListNR `madatory`
 }
 
-func (ie *MeasResult2NR_r16) Encode(w *uper.UperWriter) error {
+func (ie *MeasResult2NR_r16) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.SsbFrequency_r16 != nil, ie.RefFreqCSI_RS_r16 != nil}
 	for _, bit := range preambleBits {
@@ -35,7 +35,7 @@ func (ie *MeasResult2NR_r16) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *MeasResult2NR_r16) Decode(r *uper.UperReader) error {
+func (ie *MeasResult2NR_r16) Decode(r *aper.AperReader) error {
 	var err error
 	var SsbFrequency_r16Present bool
 	if SsbFrequency_r16Present, err = r.ReadBool(); err != nil {

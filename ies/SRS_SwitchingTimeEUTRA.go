@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -10,7 +10,7 @@ type SRS_SwitchingTimeEUTRA struct {
 	SwitchingTimeUL *SRS_SwitchingTimeEUTRA_switchingTimeUL `optional`
 }
 
-func (ie *SRS_SwitchingTimeEUTRA) Encode(w *uper.UperWriter) error {
+func (ie *SRS_SwitchingTimeEUTRA) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.SwitchingTimeDL != nil, ie.SwitchingTimeUL != nil}
 	for _, bit := range preambleBits {
@@ -31,7 +31,7 @@ func (ie *SRS_SwitchingTimeEUTRA) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *SRS_SwitchingTimeEUTRA) Decode(r *uper.UperReader) error {
+func (ie *SRS_SwitchingTimeEUTRA) Decode(r *aper.AperReader) error {
 	var err error
 	var SwitchingTimeDLPresent bool
 	if SwitchingTimeDLPresent, err = r.ReadBool(); err != nil {

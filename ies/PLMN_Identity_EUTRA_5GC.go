@@ -3,7 +3,7 @@ package ies
 import (
 	"fmt"
 
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -19,7 +19,7 @@ type PLMN_Identity_EUTRA_5GC struct {
 	Plmn_index              int64 `lb:1,ub:maxPLMN,madatory`
 }
 
-func (ie *PLMN_Identity_EUTRA_5GC) Encode(w *uper.UperWriter) error {
+func (ie *PLMN_Identity_EUTRA_5GC) Encode(w *aper.AperWriter) error {
 	var err error
 	if err = w.WriteChoice(ie.Choice, 2, false); err != nil {
 		return err
@@ -30,7 +30,7 @@ func (ie *PLMN_Identity_EUTRA_5GC) Encode(w *uper.UperWriter) error {
 			err = utils.WrapError("Encode Plmn_Identity_EUTRA_5GC", err)
 		}
 	case PLMN_Identity_EUTRA_5GC_Choice_Plmn_index:
-		if err = w.WriteInteger(int64(ie.Plmn_index), &uper.Constraint{Lb: 1, Ub: maxPLMN}, false); err != nil {
+		if err = w.WriteInteger(int64(ie.Plmn_index), &aper.Constraint{Lb: 1, Ub: maxPLMN}, false); err != nil {
 			err = utils.WrapError("Encode Plmn_index", err)
 		}
 	default:
@@ -39,7 +39,7 @@ func (ie *PLMN_Identity_EUTRA_5GC) Encode(w *uper.UperWriter) error {
 	return err
 }
 
-func (ie *PLMN_Identity_EUTRA_5GC) Decode(r *uper.UperReader) error {
+func (ie *PLMN_Identity_EUTRA_5GC) Decode(r *aper.AperReader) error {
 	var err error
 	if ie.Choice, err = r.ReadChoice(2, false); err != nil {
 		return err
@@ -52,7 +52,7 @@ func (ie *PLMN_Identity_EUTRA_5GC) Decode(r *uper.UperReader) error {
 		}
 	case PLMN_Identity_EUTRA_5GC_Choice_Plmn_index:
 		var tmp_int_Plmn_index int64
-		if tmp_int_Plmn_index, err = r.ReadInteger(&uper.Constraint{Lb: 1, Ub: maxPLMN}, false); err != nil {
+		if tmp_int_Plmn_index, err = r.ReadInteger(&aper.Constraint{Lb: 1, Ub: maxPLMN}, false); err != nil {
 			return utils.WrapError("Decode Plmn_index", err)
 		}
 		ie.Plmn_index = tmp_int_Plmn_index

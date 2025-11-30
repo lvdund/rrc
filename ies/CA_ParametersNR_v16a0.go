@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -9,9 +9,9 @@ type CA_ParametersNR_v16a0 struct {
 	Pdcch_BlindDetectionMixedList_r16 []PDCCH_BlindDetectionMixedList_r16 `lb:1,ub:maxNrofPdcch_BlindDetectionMixed_1_r16,madatory`
 }
 
-func (ie *CA_ParametersNR_v16a0) Encode(w *uper.UperWriter) error {
+func (ie *CA_ParametersNR_v16a0) Encode(w *aper.AperWriter) error {
 	var err error
-	tmp_Pdcch_BlindDetectionMixedList_r16 := utils.NewSequence[*PDCCH_BlindDetectionMixedList_r16]([]*PDCCH_BlindDetectionMixedList_r16{}, uper.Constraint{Lb: 1, Ub: maxNrofPdcch_BlindDetectionMixed_1_r16}, false)
+	tmp_Pdcch_BlindDetectionMixedList_r16 := utils.NewSequence[*PDCCH_BlindDetectionMixedList_r16]([]*PDCCH_BlindDetectionMixedList_r16{}, aper.Constraint{Lb: 1, Ub: maxNrofPdcch_BlindDetectionMixed_1_r16}, false)
 	for _, i := range ie.Pdcch_BlindDetectionMixedList_r16 {
 		tmp_Pdcch_BlindDetectionMixedList_r16.Value = append(tmp_Pdcch_BlindDetectionMixedList_r16.Value, &i)
 	}
@@ -21,9 +21,9 @@ func (ie *CA_ParametersNR_v16a0) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *CA_ParametersNR_v16a0) Decode(r *uper.UperReader) error {
+func (ie *CA_ParametersNR_v16a0) Decode(r *aper.AperReader) error {
 	var err error
-	tmp_Pdcch_BlindDetectionMixedList_r16 := utils.NewSequence[*PDCCH_BlindDetectionMixedList_r16]([]*PDCCH_BlindDetectionMixedList_r16{}, uper.Constraint{Lb: 1, Ub: maxNrofPdcch_BlindDetectionMixed_1_r16}, false)
+	tmp_Pdcch_BlindDetectionMixedList_r16 := utils.NewSequence[*PDCCH_BlindDetectionMixedList_r16]([]*PDCCH_BlindDetectionMixedList_r16{}, aper.Constraint{Lb: 1, Ub: maxNrofPdcch_BlindDetectionMixed_1_r16}, false)
 	fn_Pdcch_BlindDetectionMixedList_r16 := func() *PDCCH_BlindDetectionMixedList_r16 {
 		return new(PDCCH_BlindDetectionMixedList_r16)
 	}

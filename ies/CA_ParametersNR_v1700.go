@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -25,7 +25,7 @@ type CA_ParametersNR_v1700 struct {
 	Non_AlignedFrameBoundaries_r17              *CA_ParametersNR_v1700_non_AlignedFrameBoundaries_r17            `lb:1,ub:496,optional`
 }
 
-func (ie *CA_ParametersNR_v1700) Encode(w *uper.UperWriter) error {
+func (ie *CA_ParametersNR_v1700) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.CodebookParametersfetype2PerBC_r17 != nil, ie.DemodulationEnhancementCA_r17 != nil, ie.MaxUplinkDutyCycle_interBandCA_PC2_r17 != nil, ie.MaxUplinkDutyCycle_SULcombination_PC2_r17 != nil, ie.BeamManagementType_CBM_r17 != nil, ie.ParallelTxPUCCH_PUSCH_r17 != nil, ie.CodebookComboParameterMixedTypePerBC_r17 != nil, ie.MTRP_CSI_EnhancementPerBC_r17 != nil, ie.CodebookComboParameterMultiTRP_PerBC_r17 != nil, ie.MaxCC_32_DL_HARQ_ProcessFR2_2_r17 != nil, ie.MaxCC_32_UL_HARQ_ProcessFR2_2_r17 != nil, ie.CrossCarrierSchedulingSCell_SpCellTypeB_r17 != nil, ie.CrossCarrierSchedulingSCell_SpCellTypeA_r17 != nil, ie.Dci_FormatsPCellPSCellUSS_Sets_r17 != nil, ie.DisablingScalingFactorDeactSCell_r17 != nil, ie.DisablingScalingFactorDormantSCell_r17 != nil, ie.Non_AlignedFrameBoundaries_r17 != nil}
 	for _, bit := range preambleBits {
@@ -121,7 +121,7 @@ func (ie *CA_ParametersNR_v1700) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *CA_ParametersNR_v1700) Decode(r *uper.UperReader) error {
+func (ie *CA_ParametersNR_v1700) Decode(r *aper.AperReader) error {
 	var err error
 	var CodebookParametersfetype2PerBC_r17Present bool
 	if CodebookParametersfetype2PerBC_r17Present, err = r.ReadBool(); err != nil {

@@ -2,12 +2,12 @@ package utils
 
 import (
 	"fmt"
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 )
 
 type GenericSetuprelease interface {
-	Encode(w *uper.UperWriter) error
-	Decode(r *uper.UperReader) error
+	Encode(w *aper.AperWriter) error
+	Decode(r *aper.AperReader) error
 }
 
 type SetupRelease[T GenericSetuprelease] struct {
@@ -15,7 +15,7 @@ type SetupRelease[T GenericSetuprelease] struct {
 	Setup   T
 }
 
-func (ie *SetupRelease[T]) Encode(w *uper.UperWriter) error {
+func (ie *SetupRelease[T]) Encode(w *aper.AperWriter) error {
 	var err error
 	if err = w.WriteChoice(2, 2, false); err != nil {
 		return err
@@ -26,7 +26,7 @@ func (ie *SetupRelease[T]) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *SetupRelease[T]) Decode(r *uper.UperReader) error {
+func (ie *SetupRelease[T]) Decode(r *aper.AperReader) error {
 	var err error
 	var v uint64
 	if v, err = r.ReadChoice(2, false); err != nil {

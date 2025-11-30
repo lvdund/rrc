@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -12,7 +12,7 @@ type MobilityStateParameters struct {
 	N_CellChangeHigh   int64                                `lb:1,ub:16,madatory`
 }
 
-func (ie *MobilityStateParameters) Encode(w *uper.UperWriter) error {
+func (ie *MobilityStateParameters) Encode(w *aper.AperWriter) error {
 	var err error
 	if err = ie.T_Evaluation.Encode(w); err != nil {
 		return utils.WrapError("Encode T_Evaluation", err)
@@ -20,16 +20,16 @@ func (ie *MobilityStateParameters) Encode(w *uper.UperWriter) error {
 	if err = ie.T_HystNormal.Encode(w); err != nil {
 		return utils.WrapError("Encode T_HystNormal", err)
 	}
-	if err = w.WriteInteger(ie.N_CellChangeMedium, &uper.Constraint{Lb: 1, Ub: 16}, false); err != nil {
+	if err = w.WriteInteger(ie.N_CellChangeMedium, &aper.Constraint{Lb: 1, Ub: 16}, false); err != nil {
 		return utils.WrapError("WriteInteger N_CellChangeMedium", err)
 	}
-	if err = w.WriteInteger(ie.N_CellChangeHigh, &uper.Constraint{Lb: 1, Ub: 16}, false); err != nil {
+	if err = w.WriteInteger(ie.N_CellChangeHigh, &aper.Constraint{Lb: 1, Ub: 16}, false); err != nil {
 		return utils.WrapError("WriteInteger N_CellChangeHigh", err)
 	}
 	return nil
 }
 
-func (ie *MobilityStateParameters) Decode(r *uper.UperReader) error {
+func (ie *MobilityStateParameters) Decode(r *aper.AperReader) error {
 	var err error
 	if err = ie.T_Evaluation.Decode(r); err != nil {
 		return utils.WrapError("Decode T_Evaluation", err)
@@ -38,12 +38,12 @@ func (ie *MobilityStateParameters) Decode(r *uper.UperReader) error {
 		return utils.WrapError("Decode T_HystNormal", err)
 	}
 	var tmp_int_N_CellChangeMedium int64
-	if tmp_int_N_CellChangeMedium, err = r.ReadInteger(&uper.Constraint{Lb: 1, Ub: 16}, false); err != nil {
+	if tmp_int_N_CellChangeMedium, err = r.ReadInteger(&aper.Constraint{Lb: 1, Ub: 16}, false); err != nil {
 		return utils.WrapError("ReadInteger N_CellChangeMedium", err)
 	}
 	ie.N_CellChangeMedium = tmp_int_N_CellChangeMedium
 	var tmp_int_N_CellChangeHigh int64
-	if tmp_int_N_CellChangeHigh, err = r.ReadInteger(&uper.Constraint{Lb: 1, Ub: 16}, false); err != nil {
+	if tmp_int_N_CellChangeHigh, err = r.ReadInteger(&aper.Constraint{Lb: 1, Ub: 16}, false); err != nil {
 		return utils.WrapError("ReadInteger N_CellChangeHigh", err)
 	}
 	ie.N_CellChangeHigh = tmp_int_N_CellChangeHigh

@@ -1,18 +1,18 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
 type MeasResultRLFNR_r16_measResult_r16_rsIndexResults_r16 struct {
 	ResultsSSB_Indexes_r16    *ResultsPerSSB_IndexList    `optional`
-	SsbRLMConfigBitmap_r16    *uper.BitString             `lb:64,ub:64,optional`
+	SsbRLMConfigBitmap_r16    *aper.BitString             `lb:64,ub:64,optional`
 	ResultsCSI_RS_Indexes_r16 *ResultsPerCSI_RS_IndexList `optional`
-	Csi_rsRLMConfigBitmap_r16 *uper.BitString             `lb:96,ub:96,optional`
+	Csi_rsRLMConfigBitmap_r16 *aper.BitString             `lb:96,ub:96,optional`
 }
 
-func (ie *MeasResultRLFNR_r16_measResult_r16_rsIndexResults_r16) Encode(w *uper.UperWriter) error {
+func (ie *MeasResultRLFNR_r16_measResult_r16_rsIndexResults_r16) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.ResultsSSB_Indexes_r16 != nil, ie.SsbRLMConfigBitmap_r16 != nil, ie.ResultsCSI_RS_Indexes_r16 != nil, ie.Csi_rsRLMConfigBitmap_r16 != nil}
 	for _, bit := range preambleBits {
@@ -26,7 +26,7 @@ func (ie *MeasResultRLFNR_r16_measResult_r16_rsIndexResults_r16) Encode(w *uper.
 		}
 	}
 	if ie.SsbRLMConfigBitmap_r16 != nil {
-		if err = w.WriteBitString(ie.SsbRLMConfigBitmap_r16.Bytes, uint(ie.SsbRLMConfigBitmap_r16.NumBits), &uper.Constraint{Lb: 64, Ub: 64}, false); err != nil {
+		if err = w.WriteBitString(ie.SsbRLMConfigBitmap_r16.Bytes, uint(ie.SsbRLMConfigBitmap_r16.NumBits), &aper.Constraint{Lb: 64, Ub: 64}, false); err != nil {
 			return utils.WrapError("Encode SsbRLMConfigBitmap_r16", err)
 		}
 	}
@@ -36,14 +36,14 @@ func (ie *MeasResultRLFNR_r16_measResult_r16_rsIndexResults_r16) Encode(w *uper.
 		}
 	}
 	if ie.Csi_rsRLMConfigBitmap_r16 != nil {
-		if err = w.WriteBitString(ie.Csi_rsRLMConfigBitmap_r16.Bytes, uint(ie.Csi_rsRLMConfigBitmap_r16.NumBits), &uper.Constraint{Lb: 96, Ub: 96}, false); err != nil {
+		if err = w.WriteBitString(ie.Csi_rsRLMConfigBitmap_r16.Bytes, uint(ie.Csi_rsRLMConfigBitmap_r16.NumBits), &aper.Constraint{Lb: 96, Ub: 96}, false); err != nil {
 			return utils.WrapError("Encode Csi_rsRLMConfigBitmap_r16", err)
 		}
 	}
 	return nil
 }
 
-func (ie *MeasResultRLFNR_r16_measResult_r16_rsIndexResults_r16) Decode(r *uper.UperReader) error {
+func (ie *MeasResultRLFNR_r16_measResult_r16_rsIndexResults_r16) Decode(r *aper.AperReader) error {
 	var err error
 	var ResultsSSB_Indexes_r16Present bool
 	if ResultsSSB_Indexes_r16Present, err = r.ReadBool(); err != nil {
@@ -70,10 +70,10 @@ func (ie *MeasResultRLFNR_r16_measResult_r16_rsIndexResults_r16) Decode(r *uper.
 	if SsbRLMConfigBitmap_r16Present {
 		var tmp_bs_SsbRLMConfigBitmap_r16 []byte
 		var n_SsbRLMConfigBitmap_r16 uint
-		if tmp_bs_SsbRLMConfigBitmap_r16, n_SsbRLMConfigBitmap_r16, err = r.ReadBitString(&uper.Constraint{Lb: 64, Ub: 64}, false); err != nil {
+		if tmp_bs_SsbRLMConfigBitmap_r16, n_SsbRLMConfigBitmap_r16, err = r.ReadBitString(&aper.Constraint{Lb: 64, Ub: 64}, false); err != nil {
 			return utils.WrapError("Decode SsbRLMConfigBitmap_r16", err)
 		}
-		tmp_bitstring := uper.BitString{
+		tmp_bitstring := aper.BitString{
 			Bytes:   tmp_bs_SsbRLMConfigBitmap_r16,
 			NumBits: uint64(n_SsbRLMConfigBitmap_r16),
 		}
@@ -88,10 +88,10 @@ func (ie *MeasResultRLFNR_r16_measResult_r16_rsIndexResults_r16) Decode(r *uper.
 	if Csi_rsRLMConfigBitmap_r16Present {
 		var tmp_bs_Csi_rsRLMConfigBitmap_r16 []byte
 		var n_Csi_rsRLMConfigBitmap_r16 uint
-		if tmp_bs_Csi_rsRLMConfigBitmap_r16, n_Csi_rsRLMConfigBitmap_r16, err = r.ReadBitString(&uper.Constraint{Lb: 96, Ub: 96}, false); err != nil {
+		if tmp_bs_Csi_rsRLMConfigBitmap_r16, n_Csi_rsRLMConfigBitmap_r16, err = r.ReadBitString(&aper.Constraint{Lb: 96, Ub: 96}, false); err != nil {
 			return utils.WrapError("Decode Csi_rsRLMConfigBitmap_r16", err)
 		}
-		tmp_bitstring := uper.BitString{
+		tmp_bitstring := aper.BitString{
 			Bytes:   tmp_bs_Csi_rsRLMConfigBitmap_r16,
 			NumBits: uint64(n_Csi_rsRLMConfigBitmap_r16),
 		}

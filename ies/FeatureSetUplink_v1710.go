@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -16,7 +16,7 @@ type FeatureSetUplink_v1710 struct {
 	Tx_Support_UL_GapFR2_r17              *FeatureSetUplink_v1710_tx_Support_UL_GapFR2_r17              `optional`
 }
 
-func (ie *FeatureSetUplink_v1710) Encode(w *uper.UperWriter) error {
+func (ie *FeatureSetUplink_v1710) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.MTRP_PUSCH_TypeA_CB_r17 != nil, ie.MTRP_PUSCH_RepetitionTypeA_r17 != nil, ie.MTRP_PUCCH_IntraSlot_r17 != nil, ie.Srs_AntennaSwitching2SP_1Periodic_r17 != nil, ie.Srs_ExtensionAperiodicSRS_r17 != nil, ie.Srs_OneAP_SRS_r17 != nil, ie.Ue_PowerClassPerBandPerBC_r17 != nil, ie.Tx_Support_UL_GapFR2_r17 != nil}
 	for _, bit := range preambleBits {
@@ -67,7 +67,7 @@ func (ie *FeatureSetUplink_v1710) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *FeatureSetUplink_v1710) Decode(r *uper.UperReader) error {
+func (ie *FeatureSetUplink_v1710) Decode(r *aper.AperReader) error {
 	var err error
 	var MTRP_PUSCH_TypeA_CB_r17Present bool
 	if MTRP_PUSCH_TypeA_CB_r17Present, err = r.ReadBool(); err != nil {

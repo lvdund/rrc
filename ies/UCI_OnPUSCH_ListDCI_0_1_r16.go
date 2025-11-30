@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -9,9 +9,9 @@ type UCI_OnPUSCH_ListDCI_0_1_r16 struct {
 	Value []UCI_OnPUSCH `lb:1,ub:2,madatory`
 }
 
-func (ie *UCI_OnPUSCH_ListDCI_0_1_r16) Encode(w *uper.UperWriter) error {
+func (ie *UCI_OnPUSCH_ListDCI_0_1_r16) Encode(w *aper.AperWriter) error {
 	var err error
-	tmp := utils.NewSequence[*UCI_OnPUSCH]([]*UCI_OnPUSCH{}, uper.Constraint{Lb: 1, Ub: 2}, false)
+	tmp := utils.NewSequence[*UCI_OnPUSCH]([]*UCI_OnPUSCH{}, aper.Constraint{Lb: 1, Ub: 2}, false)
 	for _, i := range ie.Value {
 		tmp.Value = append(tmp.Value, &i)
 	}
@@ -21,9 +21,9 @@ func (ie *UCI_OnPUSCH_ListDCI_0_1_r16) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *UCI_OnPUSCH_ListDCI_0_1_r16) Decode(r *uper.UperReader) error {
+func (ie *UCI_OnPUSCH_ListDCI_0_1_r16) Decode(r *aper.AperReader) error {
 	var err error
-	tmp := utils.NewSequence[*UCI_OnPUSCH]([]*UCI_OnPUSCH{}, uper.Constraint{Lb: 1, Ub: 2}, false)
+	tmp := utils.NewSequence[*UCI_OnPUSCH]([]*UCI_OnPUSCH{}, aper.Constraint{Lb: 1, Ub: 2}, false)
 	fn := func() *UCI_OnPUSCH {
 		return new(UCI_OnPUSCH)
 	}

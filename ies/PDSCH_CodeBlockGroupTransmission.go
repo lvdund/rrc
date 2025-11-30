@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -10,7 +10,7 @@ type PDSCH_CodeBlockGroupTransmission struct {
 	CodeBlockGroupFlushIndicator        bool                                                                 `madatory`
 }
 
-func (ie *PDSCH_CodeBlockGroupTransmission) Encode(w *uper.UperWriter) error {
+func (ie *PDSCH_CodeBlockGroupTransmission) Encode(w *aper.AperWriter) error {
 	var err error
 	if err = ie.MaxCodeBlockGroupsPerTransportBlock.Encode(w); err != nil {
 		return utils.WrapError("Encode MaxCodeBlockGroupsPerTransportBlock", err)
@@ -21,7 +21,7 @@ func (ie *PDSCH_CodeBlockGroupTransmission) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *PDSCH_CodeBlockGroupTransmission) Decode(r *uper.UperReader) error {
+func (ie *PDSCH_CodeBlockGroupTransmission) Decode(r *aper.AperReader) error {
 	var err error
 	if err = ie.MaxCodeBlockGroupsPerTransportBlock.Decode(r); err != nil {
 		return utils.WrapError("Decode MaxCodeBlockGroupsPerTransportBlock", err)

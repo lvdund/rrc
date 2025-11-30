@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -13,7 +13,7 @@ type SIB1_cellSelectionInfo struct {
 	Q_QualMinOffset  *int64      `lb:1,ub:8,optional`
 }
 
-func (ie *SIB1_cellSelectionInfo) Encode(w *uper.UperWriter) error {
+func (ie *SIB1_cellSelectionInfo) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.Q_RxLevMinOffset != nil, ie.Q_RxLevMinSUL != nil, ie.Q_QualMin != nil, ie.Q_QualMinOffset != nil}
 	for _, bit := range preambleBits {
@@ -25,7 +25,7 @@ func (ie *SIB1_cellSelectionInfo) Encode(w *uper.UperWriter) error {
 		return utils.WrapError("Encode Q_RxLevMin", err)
 	}
 	if ie.Q_RxLevMinOffset != nil {
-		if err = w.WriteInteger(*ie.Q_RxLevMinOffset, &uper.Constraint{Lb: 1, Ub: 8}, false); err != nil {
+		if err = w.WriteInteger(*ie.Q_RxLevMinOffset, &aper.Constraint{Lb: 1, Ub: 8}, false); err != nil {
 			return utils.WrapError("Encode Q_RxLevMinOffset", err)
 		}
 	}
@@ -40,14 +40,14 @@ func (ie *SIB1_cellSelectionInfo) Encode(w *uper.UperWriter) error {
 		}
 	}
 	if ie.Q_QualMinOffset != nil {
-		if err = w.WriteInteger(*ie.Q_QualMinOffset, &uper.Constraint{Lb: 1, Ub: 8}, false); err != nil {
+		if err = w.WriteInteger(*ie.Q_QualMinOffset, &aper.Constraint{Lb: 1, Ub: 8}, false); err != nil {
 			return utils.WrapError("Encode Q_QualMinOffset", err)
 		}
 	}
 	return nil
 }
 
-func (ie *SIB1_cellSelectionInfo) Decode(r *uper.UperReader) error {
+func (ie *SIB1_cellSelectionInfo) Decode(r *aper.AperReader) error {
 	var err error
 	var Q_RxLevMinOffsetPresent bool
 	if Q_RxLevMinOffsetPresent, err = r.ReadBool(); err != nil {
@@ -70,7 +70,7 @@ func (ie *SIB1_cellSelectionInfo) Decode(r *uper.UperReader) error {
 	}
 	if Q_RxLevMinOffsetPresent {
 		var tmp_int_Q_RxLevMinOffset int64
-		if tmp_int_Q_RxLevMinOffset, err = r.ReadInteger(&uper.Constraint{Lb: 1, Ub: 8}, false); err != nil {
+		if tmp_int_Q_RxLevMinOffset, err = r.ReadInteger(&aper.Constraint{Lb: 1, Ub: 8}, false); err != nil {
 			return utils.WrapError("Decode Q_RxLevMinOffset", err)
 		}
 		ie.Q_RxLevMinOffset = &tmp_int_Q_RxLevMinOffset
@@ -89,7 +89,7 @@ func (ie *SIB1_cellSelectionInfo) Decode(r *uper.UperReader) error {
 	}
 	if Q_QualMinOffsetPresent {
 		var tmp_int_Q_QualMinOffset int64
-		if tmp_int_Q_QualMinOffset, err = r.ReadInteger(&uper.Constraint{Lb: 1, Ub: 8}, false); err != nil {
+		if tmp_int_Q_QualMinOffset, err = r.ReadInteger(&aper.Constraint{Lb: 1, Ub: 8}, false); err != nil {
 			return utils.WrapError("Decode Q_QualMinOffset", err)
 		}
 		ie.Q_QualMinOffset = &tmp_int_Q_QualMinOffset

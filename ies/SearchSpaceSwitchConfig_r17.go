@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -10,7 +10,7 @@ type SearchSpaceSwitchConfig_r17 struct {
 	SearchSpaceSwitchDelay_r17 *int64                    `lb:10,ub:52,optional`
 }
 
-func (ie *SearchSpaceSwitchConfig_r17) Encode(w *uper.UperWriter) error {
+func (ie *SearchSpaceSwitchConfig_r17) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.SearchSpaceSwitchTimer_r17 != nil, ie.SearchSpaceSwitchDelay_r17 != nil}
 	for _, bit := range preambleBits {
@@ -24,14 +24,14 @@ func (ie *SearchSpaceSwitchConfig_r17) Encode(w *uper.UperWriter) error {
 		}
 	}
 	if ie.SearchSpaceSwitchDelay_r17 != nil {
-		if err = w.WriteInteger(*ie.SearchSpaceSwitchDelay_r17, &uper.Constraint{Lb: 10, Ub: 52}, false); err != nil {
+		if err = w.WriteInteger(*ie.SearchSpaceSwitchDelay_r17, &aper.Constraint{Lb: 10, Ub: 52}, false); err != nil {
 			return utils.WrapError("Encode SearchSpaceSwitchDelay_r17", err)
 		}
 	}
 	return nil
 }
 
-func (ie *SearchSpaceSwitchConfig_r17) Decode(r *uper.UperReader) error {
+func (ie *SearchSpaceSwitchConfig_r17) Decode(r *aper.AperReader) error {
 	var err error
 	var SearchSpaceSwitchTimer_r17Present bool
 	if SearchSpaceSwitchTimer_r17Present, err = r.ReadBool(); err != nil {
@@ -49,7 +49,7 @@ func (ie *SearchSpaceSwitchConfig_r17) Decode(r *uper.UperReader) error {
 	}
 	if SearchSpaceSwitchDelay_r17Present {
 		var tmp_int_SearchSpaceSwitchDelay_r17 int64
-		if tmp_int_SearchSpaceSwitchDelay_r17, err = r.ReadInteger(&uper.Constraint{Lb: 10, Ub: 52}, false); err != nil {
+		if tmp_int_SearchSpaceSwitchDelay_r17, err = r.ReadInteger(&aper.Constraint{Lb: 10, Ub: 52}, false); err != nil {
 			return utils.WrapError("Decode SearchSpaceSwitchDelay_r17", err)
 		}
 		ie.SearchSpaceSwitchDelay_r17 = &tmp_int_SearchSpaceSwitchDelay_r17

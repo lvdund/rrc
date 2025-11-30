@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -11,7 +11,7 @@ type SIB_TypeInfo_v1700 struct {
 	AreaScope_r17 *SIB_TypeInfo_v1700_areaScope_r17 `optional`
 }
 
-func (ie *SIB_TypeInfo_v1700) Encode(w *uper.UperWriter) error {
+func (ie *SIB_TypeInfo_v1700) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.SibType_r17 != nil, ie.ValueTag_r17 != nil, ie.AreaScope_r17 != nil}
 	for _, bit := range preambleBits {
@@ -25,7 +25,7 @@ func (ie *SIB_TypeInfo_v1700) Encode(w *uper.UperWriter) error {
 		}
 	}
 	if ie.ValueTag_r17 != nil {
-		if err = w.WriteInteger(*ie.ValueTag_r17, &uper.Constraint{Lb: 0, Ub: 31}, false); err != nil {
+		if err = w.WriteInteger(*ie.ValueTag_r17, &aper.Constraint{Lb: 0, Ub: 31}, false); err != nil {
 			return utils.WrapError("Encode ValueTag_r17", err)
 		}
 	}
@@ -37,7 +37,7 @@ func (ie *SIB_TypeInfo_v1700) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *SIB_TypeInfo_v1700) Decode(r *uper.UperReader) error {
+func (ie *SIB_TypeInfo_v1700) Decode(r *aper.AperReader) error {
 	var err error
 	var SibType_r17Present bool
 	if SibType_r17Present, err = r.ReadBool(); err != nil {
@@ -59,7 +59,7 @@ func (ie *SIB_TypeInfo_v1700) Decode(r *uper.UperReader) error {
 	}
 	if ValueTag_r17Present {
 		var tmp_int_ValueTag_r17 int64
-		if tmp_int_ValueTag_r17, err = r.ReadInteger(&uper.Constraint{Lb: 0, Ub: 31}, false); err != nil {
+		if tmp_int_ValueTag_r17, err = r.ReadInteger(&aper.Constraint{Lb: 0, Ub: 31}, false); err != nil {
 			return utils.WrapError("Decode ValueTag_r17", err)
 		}
 		ie.ValueTag_r17 = &tmp_int_ValueTag_r17

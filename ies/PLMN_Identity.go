@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -10,7 +10,7 @@ type PLMN_Identity struct {
 	Mnc MNC  `madatory`
 }
 
-func (ie *PLMN_Identity) Encode(w *uper.UperWriter) error {
+func (ie *PLMN_Identity) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.Mcc != nil}
 	for _, bit := range preambleBits {
@@ -29,7 +29,7 @@ func (ie *PLMN_Identity) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *PLMN_Identity) Decode(r *uper.UperReader) error {
+func (ie *PLMN_Identity) Decode(r *aper.AperReader) error {
 	var err error
 	var MccPresent bool
 	if MccPresent, err = r.ReadBool(); err != nil {

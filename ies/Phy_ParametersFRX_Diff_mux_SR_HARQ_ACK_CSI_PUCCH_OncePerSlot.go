@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -10,7 +10,7 @@ type Phy_ParametersFRX_Diff_mux_SR_HARQ_ACK_CSI_PUCCH_OncePerSlot struct {
 	DiffSymbol *Phy_ParametersFRX_Diff_mux_SR_HARQ_ACK_CSI_PUCCH_OncePerSlot_diffSymbol `optional`
 }
 
-func (ie *Phy_ParametersFRX_Diff_mux_SR_HARQ_ACK_CSI_PUCCH_OncePerSlot) Encode(w *uper.UperWriter) error {
+func (ie *Phy_ParametersFRX_Diff_mux_SR_HARQ_ACK_CSI_PUCCH_OncePerSlot) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.SameSymbol != nil, ie.DiffSymbol != nil}
 	for _, bit := range preambleBits {
@@ -31,7 +31,7 @@ func (ie *Phy_ParametersFRX_Diff_mux_SR_HARQ_ACK_CSI_PUCCH_OncePerSlot) Encode(w
 	return nil
 }
 
-func (ie *Phy_ParametersFRX_Diff_mux_SR_HARQ_ACK_CSI_PUCCH_OncePerSlot) Decode(r *uper.UperReader) error {
+func (ie *Phy_ParametersFRX_Diff_mux_SR_HARQ_ACK_CSI_PUCCH_OncePerSlot) Decode(r *aper.AperReader) error {
 	var err error
 	var SameSymbolPresent bool
 	if SameSymbolPresent, err = r.ReadBool(); err != nil {

@@ -3,7 +3,7 @@ package ies
 import (
 	"bytes"
 
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -21,7 +21,7 @@ type SSB_ConfigMobility struct {
 	Cca_CellsToRemoveList_r17             *PCI_List                              `optional,ext-3`
 }
 
-func (ie *SSB_ConfigMobility) Encode(w *uper.UperWriter) error {
+func (ie *SSB_ConfigMobility) Encode(w *aper.AperWriter) error {
 	var err error
 	hasExtensions := ie.Ssb_PositionQCL_Common_r16 != nil || ie.Ssb_PositionQCL_CellsToAddModList_r16 != nil || ie.Ssb_PositionQCL_CellsToRemoveList_r16 != nil || ie.DeriveSSB_IndexFromCellInter_r17 != nil || ie.Ssb_PositionQCL_Common_r17 != nil || ie.Ssb_PositionQCL_Cells_r17 != nil || ie.Cca_CellsToAddModList_r17 != nil || ie.Cca_CellsToRemoveList_r17 != nil
 	preambleBits := []bool{hasExtensions, ie.Ssb_ToMeasure != nil, ie.Ss_RSSI_Measurement != nil}
@@ -56,7 +56,7 @@ func (ie *SSB_ConfigMobility) Encode(w *uper.UperWriter) error {
 		// encode extension group 1
 		if extBitmap[0] {
 			extBuf := new(bytes.Buffer)
-			extWriter := uper.NewWriter(extBuf)
+			extWriter := aper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 1
 			optionals_ext_1 := []bool{ie.Ssb_PositionQCL_Common_r16 != nil, ie.Ssb_PositionQCL_CellsToAddModList_r16 != nil, ie.Ssb_PositionQCL_CellsToRemoveList_r16 != nil}
@@ -97,7 +97,7 @@ func (ie *SSB_ConfigMobility) Encode(w *uper.UperWriter) error {
 		// encode extension group 2
 		if extBitmap[1] {
 			extBuf := new(bytes.Buffer)
-			extWriter := uper.NewWriter(extBuf)
+			extWriter := aper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 2
 			optionals_ext_2 := []bool{ie.DeriveSSB_IndexFromCellInter_r17 != nil, ie.Ssb_PositionQCL_Common_r17 != nil, ie.Ssb_PositionQCL_Cells_r17 != nil}
@@ -141,7 +141,7 @@ func (ie *SSB_ConfigMobility) Encode(w *uper.UperWriter) error {
 		// encode extension group 3
 		if extBitmap[2] {
 			extBuf := new(bytes.Buffer)
-			extWriter := uper.NewWriter(extBuf)
+			extWriter := aper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 3
 			optionals_ext_3 := []bool{ie.Cca_CellsToAddModList_r17 != nil, ie.Cca_CellsToRemoveList_r17 != nil}
@@ -176,7 +176,7 @@ func (ie *SSB_ConfigMobility) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *SSB_ConfigMobility) Decode(r *uper.UperReader) error {
+func (ie *SSB_ConfigMobility) Decode(r *aper.AperReader) error {
 	var err error
 	var extensionBit bool
 	if extensionBit, err = r.ReadBool(); err != nil {
@@ -223,7 +223,7 @@ func (ie *SSB_ConfigMobility) Decode(r *uper.UperReader) error {
 				return err
 			}
 
-			extReader := uper.NewReader(bytes.NewReader(extBytes))
+			extReader := aper.NewReader(bytes.NewReader(extBytes))
 
 			Ssb_PositionQCL_Common_r16Present, err := extReader.ReadBool()
 			if err != nil {
@@ -266,7 +266,7 @@ func (ie *SSB_ConfigMobility) Decode(r *uper.UperReader) error {
 				return err
 			}
 
-			extReader := uper.NewReader(bytes.NewReader(extBytes))
+			extReader := aper.NewReader(bytes.NewReader(extBytes))
 
 			DeriveSSB_IndexFromCellInter_r17Present, err := extReader.ReadBool()
 			if err != nil {
@@ -310,7 +310,7 @@ func (ie *SSB_ConfigMobility) Decode(r *uper.UperReader) error {
 				return err
 			}
 
-			extReader := uper.NewReader(bytes.NewReader(extBytes))
+			extReader := aper.NewReader(bytes.NewReader(extBytes))
 
 			Cca_CellsToAddModList_r17Present, err := extReader.ReadBool()
 			if err != nil {

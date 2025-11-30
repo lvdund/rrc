@@ -3,7 +3,7 @@ package ies
 import (
 	"bytes"
 
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -17,7 +17,7 @@ type PCCH_Config struct {
 	FirstPDCCH_MonitoringOccasionOfPO_v1710     []int64                            `lb:1,ub:maxPO_perPF,e_lb:0,e_ub:35839,optional,ext-2`
 }
 
-func (ie *PCCH_Config) Encode(w *uper.UperWriter) error {
+func (ie *PCCH_Config) Encode(w *aper.AperWriter) error {
 	var err error
 	hasExtensions := ie.NrofPDCCH_MonitoringOccasionPerSSB_InPO_r16 != nil || ie.RanPagingInIdlePO_r17 != nil || len(ie.FirstPDCCH_MonitoringOccasionOfPO_v1710) > 0
 	preambleBits := []bool{hasExtensions, len(ie.FirstPDCCH_MonitoringOccasionOfPO) > 0}
@@ -36,9 +36,9 @@ func (ie *PCCH_Config) Encode(w *uper.UperWriter) error {
 		return utils.WrapError("Encode Ns", err)
 	}
 	if len(ie.FirstPDCCH_MonitoringOccasionOfPO) > 0 {
-		tmp_FirstPDCCH_MonitoringOccasionOfPO := utils.NewSequence[*utils.INTEGER]([]*utils.INTEGER{}, uper.Constraint{Lb: 1, Ub: maxPO_perPF}, false)
+		tmp_FirstPDCCH_MonitoringOccasionOfPO := utils.NewSequence[*utils.INTEGER]([]*utils.INTEGER{}, aper.Constraint{Lb: 1, Ub: maxPO_perPF}, false)
 		for _, i := range ie.FirstPDCCH_MonitoringOccasionOfPO {
-			tmp_ie := utils.NewINTEGER(int64(i), uper.Constraint{Lb: 0, Ub: 139}, false)
+			tmp_ie := utils.NewINTEGER(int64(i), aper.Constraint{Lb: 0, Ub: 139}, false)
 			tmp_FirstPDCCH_MonitoringOccasionOfPO.Value = append(tmp_FirstPDCCH_MonitoringOccasionOfPO.Value, &tmp_ie)
 		}
 		if err = tmp_FirstPDCCH_MonitoringOccasionOfPO.Encode(w); err != nil {
@@ -55,7 +55,7 @@ func (ie *PCCH_Config) Encode(w *uper.UperWriter) error {
 		// encode extension group 1
 		if extBitmap[0] {
 			extBuf := new(bytes.Buffer)
-			extWriter := uper.NewWriter(extBuf)
+			extWriter := aper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 1
 			optionals_ext_1 := []bool{ie.NrofPDCCH_MonitoringOccasionPerSSB_InPO_r16 != nil}
@@ -67,7 +67,7 @@ func (ie *PCCH_Config) Encode(w *uper.UperWriter) error {
 
 			// encode NrofPDCCH_MonitoringOccasionPerSSB_InPO_r16 optional
 			if ie.NrofPDCCH_MonitoringOccasionPerSSB_InPO_r16 != nil {
-				if err = extWriter.WriteInteger(*ie.NrofPDCCH_MonitoringOccasionPerSSB_InPO_r16, &uper.Constraint{Lb: 2, Ub: 4}, false); err != nil {
+				if err = extWriter.WriteInteger(*ie.NrofPDCCH_MonitoringOccasionPerSSB_InPO_r16, &aper.Constraint{Lb: 2, Ub: 4}, false); err != nil {
 					return utils.WrapError("Encode NrofPDCCH_MonitoringOccasionPerSSB_InPO_r16", err)
 				}
 			}
@@ -84,7 +84,7 @@ func (ie *PCCH_Config) Encode(w *uper.UperWriter) error {
 		// encode extension group 2
 		if extBitmap[1] {
 			extBuf := new(bytes.Buffer)
-			extWriter := uper.NewWriter(extBuf)
+			extWriter := aper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 2
 			optionals_ext_2 := []bool{ie.RanPagingInIdlePO_r17 != nil, len(ie.FirstPDCCH_MonitoringOccasionOfPO_v1710) > 0}
@@ -102,9 +102,9 @@ func (ie *PCCH_Config) Encode(w *uper.UperWriter) error {
 			}
 			// encode FirstPDCCH_MonitoringOccasionOfPO_v1710 optional
 			if len(ie.FirstPDCCH_MonitoringOccasionOfPO_v1710) > 0 {
-				tmp_FirstPDCCH_MonitoringOccasionOfPO_v1710 := utils.NewSequence[*utils.INTEGER]([]*utils.INTEGER{}, uper.Constraint{Lb: 1, Ub: maxPO_perPF}, false)
+				tmp_FirstPDCCH_MonitoringOccasionOfPO_v1710 := utils.NewSequence[*utils.INTEGER]([]*utils.INTEGER{}, aper.Constraint{Lb: 1, Ub: maxPO_perPF}, false)
 				for _, i := range ie.FirstPDCCH_MonitoringOccasionOfPO_v1710 {
-					tmp_ie := utils.NewINTEGER(int64(i), uper.Constraint{Lb: 0, Ub: 35839}, false)
+					tmp_ie := utils.NewINTEGER(int64(i), aper.Constraint{Lb: 0, Ub: 35839}, false)
 					tmp_FirstPDCCH_MonitoringOccasionOfPO_v1710.Value = append(tmp_FirstPDCCH_MonitoringOccasionOfPO_v1710.Value, &tmp_ie)
 				}
 				if err = tmp_FirstPDCCH_MonitoringOccasionOfPO_v1710.Encode(extWriter); err != nil {
@@ -124,7 +124,7 @@ func (ie *PCCH_Config) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *PCCH_Config) Decode(r *uper.UperReader) error {
+func (ie *PCCH_Config) Decode(r *aper.AperReader) error {
 	var err error
 	var extensionBit bool
 	if extensionBit, err = r.ReadBool(); err != nil {
@@ -144,9 +144,9 @@ func (ie *PCCH_Config) Decode(r *uper.UperReader) error {
 		return utils.WrapError("Decode Ns", err)
 	}
 	if FirstPDCCH_MonitoringOccasionOfPOPresent {
-		tmp_FirstPDCCH_MonitoringOccasionOfPO := utils.NewSequence[*utils.INTEGER]([]*utils.INTEGER{}, uper.Constraint{Lb: 1, Ub: maxPO_perPF}, false)
+		tmp_FirstPDCCH_MonitoringOccasionOfPO := utils.NewSequence[*utils.INTEGER]([]*utils.INTEGER{}, aper.Constraint{Lb: 1, Ub: maxPO_perPF}, false)
 		fn_FirstPDCCH_MonitoringOccasionOfPO := func() *utils.INTEGER {
-			ie := utils.NewINTEGER(0, uper.Constraint{Lb: 0, Ub: 139}, false)
+			ie := utils.NewINTEGER(0, aper.Constraint{Lb: 0, Ub: 139}, false)
 			return &ie
 		}
 		if err = tmp_FirstPDCCH_MonitoringOccasionOfPO.Decode(r, fn_FirstPDCCH_MonitoringOccasionOfPO); err != nil {
@@ -172,7 +172,7 @@ func (ie *PCCH_Config) Decode(r *uper.UperReader) error {
 				return err
 			}
 
-			extReader := uper.NewReader(bytes.NewReader(extBytes))
+			extReader := aper.NewReader(bytes.NewReader(extBytes))
 
 			NrofPDCCH_MonitoringOccasionPerSSB_InPO_r16Present, err := extReader.ReadBool()
 			if err != nil {
@@ -181,7 +181,7 @@ func (ie *PCCH_Config) Decode(r *uper.UperReader) error {
 			// decode NrofPDCCH_MonitoringOccasionPerSSB_InPO_r16 optional
 			if NrofPDCCH_MonitoringOccasionPerSSB_InPO_r16Present {
 				var tmp_int_NrofPDCCH_MonitoringOccasionPerSSB_InPO_r16 int64
-				if tmp_int_NrofPDCCH_MonitoringOccasionPerSSB_InPO_r16, err = extReader.ReadInteger(&uper.Constraint{Lb: 2, Ub: 4}, false); err != nil {
+				if tmp_int_NrofPDCCH_MonitoringOccasionPerSSB_InPO_r16, err = extReader.ReadInteger(&aper.Constraint{Lb: 2, Ub: 4}, false); err != nil {
 					return utils.WrapError("Decode NrofPDCCH_MonitoringOccasionPerSSB_InPO_r16", err)
 				}
 				ie.NrofPDCCH_MonitoringOccasionPerSSB_InPO_r16 = &tmp_int_NrofPDCCH_MonitoringOccasionPerSSB_InPO_r16
@@ -194,7 +194,7 @@ func (ie *PCCH_Config) Decode(r *uper.UperReader) error {
 				return err
 			}
 
-			extReader := uper.NewReader(bytes.NewReader(extBytes))
+			extReader := aper.NewReader(bytes.NewReader(extBytes))
 
 			RanPagingInIdlePO_r17Present, err := extReader.ReadBool()
 			if err != nil {
@@ -213,9 +213,9 @@ func (ie *PCCH_Config) Decode(r *uper.UperReader) error {
 			}
 			// decode FirstPDCCH_MonitoringOccasionOfPO_v1710 optional
 			if FirstPDCCH_MonitoringOccasionOfPO_v1710Present {
-				tmp_FirstPDCCH_MonitoringOccasionOfPO_v1710 := utils.NewSequence[*utils.INTEGER]([]*utils.INTEGER{}, uper.Constraint{Lb: 1, Ub: maxPO_perPF}, false)
+				tmp_FirstPDCCH_MonitoringOccasionOfPO_v1710 := utils.NewSequence[*utils.INTEGER]([]*utils.INTEGER{}, aper.Constraint{Lb: 1, Ub: maxPO_perPF}, false)
 				fn_FirstPDCCH_MonitoringOccasionOfPO_v1710 := func() *utils.INTEGER {
-					ie := utils.NewINTEGER(0, uper.Constraint{Lb: 0, Ub: 35839}, false)
+					ie := utils.NewINTEGER(0, aper.Constraint{Lb: 0, Ub: 35839}, false)
 					return &ie
 				}
 				if err = tmp_FirstPDCCH_MonitoringOccasionOfPO_v1710.Decode(extReader, fn_FirstPDCCH_MonitoringOccasionOfPO_v1710); err != nil {

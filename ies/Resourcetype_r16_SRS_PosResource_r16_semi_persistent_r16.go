@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -10,7 +10,7 @@ type Resourcetype_r16_SRS_PosResource_r16_semi_persistent_r16 struct {
 	PeriodicityAndOffset_sp_Ext_r16 *SRS_PeriodicityAndOffsetExt_r16 `optional`
 }
 
-func (ie *Resourcetype_r16_SRS_PosResource_r16_semi_persistent_r16) Encode(w *uper.UperWriter) error {
+func (ie *Resourcetype_r16_SRS_PosResource_r16_semi_persistent_r16) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.PeriodicityAndOffset_sp_Ext_r16 != nil}
 	for _, bit := range preambleBits {
@@ -29,7 +29,7 @@ func (ie *Resourcetype_r16_SRS_PosResource_r16_semi_persistent_r16) Encode(w *up
 	return nil
 }
 
-func (ie *Resourcetype_r16_SRS_PosResource_r16_semi_persistent_r16) Decode(r *uper.UperReader) error {
+func (ie *Resourcetype_r16_SRS_PosResource_r16_semi_persistent_r16) Decode(r *aper.AperReader) error {
 	var err error
 	var PeriodicityAndOffset_sp_Ext_r16Present bool
 	if PeriodicityAndOffset_sp_Ext_r16Present, err = r.ReadBool(); err != nil {

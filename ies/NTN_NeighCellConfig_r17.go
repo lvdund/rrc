@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -11,7 +11,7 @@ type NTN_NeighCellConfig_r17 struct {
 	PhysCellId_r17  *PhysCellId     `optional`
 }
 
-func (ie *NTN_NeighCellConfig_r17) Encode(w *uper.UperWriter) error {
+func (ie *NTN_NeighCellConfig_r17) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.Ntn_Config_r17 != nil, ie.CarrierFreq_r17 != nil, ie.PhysCellId_r17 != nil}
 	for _, bit := range preambleBits {
@@ -37,7 +37,7 @@ func (ie *NTN_NeighCellConfig_r17) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *NTN_NeighCellConfig_r17) Decode(r *uper.UperReader) error {
+func (ie *NTN_NeighCellConfig_r17) Decode(r *aper.AperReader) error {
 	var err error
 	var Ntn_Config_r17Present bool
 	if Ntn_Config_r17Present, err = r.ReadBool(); err != nil {

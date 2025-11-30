@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -10,7 +10,7 @@ type Phy_ParametersSharedSpectrumChAccess_r16_mux_SR_HARQ_ACK_CSI_PUCCH_OncePerS
 	DiffSymbol_r16 *Phy_ParametersSharedSpectrumChAccess_r16_mux_SR_HARQ_ACK_CSI_PUCCH_OncePerSlot_r16_diffSymbol_r16 `optional`
 }
 
-func (ie *Phy_ParametersSharedSpectrumChAccess_r16_mux_SR_HARQ_ACK_CSI_PUCCH_OncePerSlot_r16) Encode(w *uper.UperWriter) error {
+func (ie *Phy_ParametersSharedSpectrumChAccess_r16_mux_SR_HARQ_ACK_CSI_PUCCH_OncePerSlot_r16) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.SameSymbol_r16 != nil, ie.DiffSymbol_r16 != nil}
 	for _, bit := range preambleBits {
@@ -31,7 +31,7 @@ func (ie *Phy_ParametersSharedSpectrumChAccess_r16_mux_SR_HARQ_ACK_CSI_PUCCH_Onc
 	return nil
 }
 
-func (ie *Phy_ParametersSharedSpectrumChAccess_r16_mux_SR_HARQ_ACK_CSI_PUCCH_OncePerSlot_r16) Decode(r *uper.UperReader) error {
+func (ie *Phy_ParametersSharedSpectrumChAccess_r16_mux_SR_HARQ_ACK_CSI_PUCCH_OncePerSlot_r16) Decode(r *aper.AperReader) error {
 	var err error
 	var SameSymbol_r16Present bool
 	if SameSymbol_r16Present, err = r.ReadBool(); err != nil {

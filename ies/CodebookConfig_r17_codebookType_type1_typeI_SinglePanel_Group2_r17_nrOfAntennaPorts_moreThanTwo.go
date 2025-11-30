@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -9,7 +9,7 @@ type CodebookConfig_r17_codebookType_type1_typeI_SinglePanel_Group2_r17_nrOfAnte
 	N1_n2 CodebookConfig_r17_codebookType_type1_typeI_SinglePanel_Group2_r17_nrOfAntennaPorts_moreThanTwo_n1_n2 `lb:8,ub:8,madatory`
 }
 
-func (ie *CodebookConfig_r17_codebookType_type1_typeI_SinglePanel_Group2_r17_nrOfAntennaPorts_moreThanTwo) Encode(w *uper.UperWriter) error {
+func (ie *CodebookConfig_r17_codebookType_type1_typeI_SinglePanel_Group2_r17_nrOfAntennaPorts_moreThanTwo) Encode(w *aper.AperWriter) error {
 	var err error
 	if err = ie.N1_n2.Encode(w); err != nil {
 		return utils.WrapError("Encode N1_n2", err)
@@ -17,7 +17,7 @@ func (ie *CodebookConfig_r17_codebookType_type1_typeI_SinglePanel_Group2_r17_nrO
 	return nil
 }
 
-func (ie *CodebookConfig_r17_codebookType_type1_typeI_SinglePanel_Group2_r17_nrOfAntennaPorts_moreThanTwo) Decode(r *uper.UperReader) error {
+func (ie *CodebookConfig_r17_codebookType_type1_typeI_SinglePanel_Group2_r17_nrOfAntennaPorts_moreThanTwo) Decode(r *aper.AperReader) error {
 	var err error
 	if err = ie.N1_n2.Decode(r); err != nil {
 		return utils.WrapError("Decode N1_n2", err)

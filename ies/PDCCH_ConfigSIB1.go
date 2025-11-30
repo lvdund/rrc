@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -10,7 +10,7 @@ type PDCCH_ConfigSIB1 struct {
 	SearchSpaceZero        SearchSpaceZero        `madatory`
 }
 
-func (ie *PDCCH_ConfigSIB1) Encode(w *uper.UperWriter) error {
+func (ie *PDCCH_ConfigSIB1) Encode(w *aper.AperWriter) error {
 	var err error
 	if err = ie.ControlResourceSetZero.Encode(w); err != nil {
 		return utils.WrapError("Encode ControlResourceSetZero", err)
@@ -21,7 +21,7 @@ func (ie *PDCCH_ConfigSIB1) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *PDCCH_ConfigSIB1) Decode(r *uper.UperReader) error {
+func (ie *PDCCH_ConfigSIB1) Decode(r *aper.AperReader) error {
 	var err error
 	if err = ie.ControlResourceSetZero.Decode(r); err != nil {
 		return utils.WrapError("Decode ControlResourceSetZero", err)

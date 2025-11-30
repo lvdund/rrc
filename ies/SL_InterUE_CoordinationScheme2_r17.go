@@ -3,13 +3,13 @@ package ies
 import (
 	"bytes"
 
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
 type SL_InterUE_CoordinationScheme2_r17 struct {
 	Sl_IUC_Scheme2_r17                *SL_InterUE_CoordinationScheme2_r17_sl_IUC_Scheme2_r17                `optional`
-	Sl_RB_SetPSFCH_r17                *uper.BitString                                                       `lb:10,ub:275,optional`
+	Sl_RB_SetPSFCH_r17                *aper.BitString                                                       `lb:10,ub:275,optional`
 	Sl_TypeUE_A_r17                   *SL_InterUE_CoordinationScheme2_r17_sl_TypeUE_A_r17                   `optional`
 	Sl_PSFCH_Occasion_r17             *int64                                                                `lb:0,ub:1,optional`
 	Sl_SlotLevelResourceExclusion_r17 *SL_InterUE_CoordinationScheme2_r17_sl_SlotLevelResourceExclusion_r17 `optional`
@@ -18,7 +18,7 @@ type SL_InterUE_CoordinationScheme2_r17 struct {
 	Sl_DeltaRSRP_Thresh_v1720         *int64                                                                `lb:-30,ub:30,optional,ext-1`
 }
 
-func (ie *SL_InterUE_CoordinationScheme2_r17) Encode(w *uper.UperWriter) error {
+func (ie *SL_InterUE_CoordinationScheme2_r17) Encode(w *aper.AperWriter) error {
 	var err error
 	hasExtensions := ie.Sl_DeltaRSRP_Thresh_v1720 != nil
 	preambleBits := []bool{hasExtensions, ie.Sl_IUC_Scheme2_r17 != nil, ie.Sl_RB_SetPSFCH_r17 != nil, ie.Sl_TypeUE_A_r17 != nil, ie.Sl_PSFCH_Occasion_r17 != nil, ie.Sl_SlotLevelResourceExclusion_r17 != nil, ie.Sl_OptionForCondition2_A_1_r17 != nil, ie.Sl_IndicationUE_B_r17 != nil}
@@ -33,7 +33,7 @@ func (ie *SL_InterUE_CoordinationScheme2_r17) Encode(w *uper.UperWriter) error {
 		}
 	}
 	if ie.Sl_RB_SetPSFCH_r17 != nil {
-		if err = w.WriteBitString(ie.Sl_RB_SetPSFCH_r17.Bytes, uint(ie.Sl_RB_SetPSFCH_r17.NumBits), &uper.Constraint{Lb: 10, Ub: 275}, false); err != nil {
+		if err = w.WriteBitString(ie.Sl_RB_SetPSFCH_r17.Bytes, uint(ie.Sl_RB_SetPSFCH_r17.NumBits), &aper.Constraint{Lb: 10, Ub: 275}, false); err != nil {
 			return utils.WrapError("Encode Sl_RB_SetPSFCH_r17", err)
 		}
 	}
@@ -43,7 +43,7 @@ func (ie *SL_InterUE_CoordinationScheme2_r17) Encode(w *uper.UperWriter) error {
 		}
 	}
 	if ie.Sl_PSFCH_Occasion_r17 != nil {
-		if err = w.WriteInteger(*ie.Sl_PSFCH_Occasion_r17, &uper.Constraint{Lb: 0, Ub: 1}, false); err != nil {
+		if err = w.WriteInteger(*ie.Sl_PSFCH_Occasion_r17, &aper.Constraint{Lb: 0, Ub: 1}, false); err != nil {
 			return utils.WrapError("Encode Sl_PSFCH_Occasion_r17", err)
 		}
 	}
@@ -53,7 +53,7 @@ func (ie *SL_InterUE_CoordinationScheme2_r17) Encode(w *uper.UperWriter) error {
 		}
 	}
 	if ie.Sl_OptionForCondition2_A_1_r17 != nil {
-		if err = w.WriteInteger(*ie.Sl_OptionForCondition2_A_1_r17, &uper.Constraint{Lb: 0, Ub: 1}, false); err != nil {
+		if err = w.WriteInteger(*ie.Sl_OptionForCondition2_A_1_r17, &aper.Constraint{Lb: 0, Ub: 1}, false); err != nil {
 			return utils.WrapError("Encode Sl_OptionForCondition2_A_1_r17", err)
 		}
 	}
@@ -72,7 +72,7 @@ func (ie *SL_InterUE_CoordinationScheme2_r17) Encode(w *uper.UperWriter) error {
 		// encode extension group 1
 		if extBitmap[0] {
 			extBuf := new(bytes.Buffer)
-			extWriter := uper.NewWriter(extBuf)
+			extWriter := aper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 1
 			optionals_ext_1 := []bool{ie.Sl_DeltaRSRP_Thresh_v1720 != nil}
@@ -84,7 +84,7 @@ func (ie *SL_InterUE_CoordinationScheme2_r17) Encode(w *uper.UperWriter) error {
 
 			// encode Sl_DeltaRSRP_Thresh_v1720 optional
 			if ie.Sl_DeltaRSRP_Thresh_v1720 != nil {
-				if err = extWriter.WriteInteger(*ie.Sl_DeltaRSRP_Thresh_v1720, &uper.Constraint{Lb: -30, Ub: 30}, false); err != nil {
+				if err = extWriter.WriteInteger(*ie.Sl_DeltaRSRP_Thresh_v1720, &aper.Constraint{Lb: -30, Ub: 30}, false); err != nil {
 					return utils.WrapError("Encode Sl_DeltaRSRP_Thresh_v1720", err)
 				}
 			}
@@ -101,7 +101,7 @@ func (ie *SL_InterUE_CoordinationScheme2_r17) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *SL_InterUE_CoordinationScheme2_r17) Decode(r *uper.UperReader) error {
+func (ie *SL_InterUE_CoordinationScheme2_r17) Decode(r *aper.AperReader) error {
 	var err error
 	var extensionBit bool
 	if extensionBit, err = r.ReadBool(); err != nil {
@@ -144,10 +144,10 @@ func (ie *SL_InterUE_CoordinationScheme2_r17) Decode(r *uper.UperReader) error {
 	if Sl_RB_SetPSFCH_r17Present {
 		var tmp_bs_Sl_RB_SetPSFCH_r17 []byte
 		var n_Sl_RB_SetPSFCH_r17 uint
-		if tmp_bs_Sl_RB_SetPSFCH_r17, n_Sl_RB_SetPSFCH_r17, err = r.ReadBitString(&uper.Constraint{Lb: 10, Ub: 275}, false); err != nil {
+		if tmp_bs_Sl_RB_SetPSFCH_r17, n_Sl_RB_SetPSFCH_r17, err = r.ReadBitString(&aper.Constraint{Lb: 10, Ub: 275}, false); err != nil {
 			return utils.WrapError("Decode Sl_RB_SetPSFCH_r17", err)
 		}
-		tmp_bitstring := uper.BitString{
+		tmp_bitstring := aper.BitString{
 			Bytes:   tmp_bs_Sl_RB_SetPSFCH_r17,
 			NumBits: uint64(n_Sl_RB_SetPSFCH_r17),
 		}
@@ -161,7 +161,7 @@ func (ie *SL_InterUE_CoordinationScheme2_r17) Decode(r *uper.UperReader) error {
 	}
 	if Sl_PSFCH_Occasion_r17Present {
 		var tmp_int_Sl_PSFCH_Occasion_r17 int64
-		if tmp_int_Sl_PSFCH_Occasion_r17, err = r.ReadInteger(&uper.Constraint{Lb: 0, Ub: 1}, false); err != nil {
+		if tmp_int_Sl_PSFCH_Occasion_r17, err = r.ReadInteger(&aper.Constraint{Lb: 0, Ub: 1}, false); err != nil {
 			return utils.WrapError("Decode Sl_PSFCH_Occasion_r17", err)
 		}
 		ie.Sl_PSFCH_Occasion_r17 = &tmp_int_Sl_PSFCH_Occasion_r17
@@ -174,7 +174,7 @@ func (ie *SL_InterUE_CoordinationScheme2_r17) Decode(r *uper.UperReader) error {
 	}
 	if Sl_OptionForCondition2_A_1_r17Present {
 		var tmp_int_Sl_OptionForCondition2_A_1_r17 int64
-		if tmp_int_Sl_OptionForCondition2_A_1_r17, err = r.ReadInteger(&uper.Constraint{Lb: 0, Ub: 1}, false); err != nil {
+		if tmp_int_Sl_OptionForCondition2_A_1_r17, err = r.ReadInteger(&aper.Constraint{Lb: 0, Ub: 1}, false); err != nil {
 			return utils.WrapError("Decode Sl_OptionForCondition2_A_1_r17", err)
 		}
 		ie.Sl_OptionForCondition2_A_1_r17 = &tmp_int_Sl_OptionForCondition2_A_1_r17
@@ -200,7 +200,7 @@ func (ie *SL_InterUE_CoordinationScheme2_r17) Decode(r *uper.UperReader) error {
 				return err
 			}
 
-			extReader := uper.NewReader(bytes.NewReader(extBytes))
+			extReader := aper.NewReader(bytes.NewReader(extBytes))
 
 			Sl_DeltaRSRP_Thresh_v1720Present, err := extReader.ReadBool()
 			if err != nil {
@@ -209,7 +209,7 @@ func (ie *SL_InterUE_CoordinationScheme2_r17) Decode(r *uper.UperReader) error {
 			// decode Sl_DeltaRSRP_Thresh_v1720 optional
 			if Sl_DeltaRSRP_Thresh_v1720Present {
 				var tmp_int_Sl_DeltaRSRP_Thresh_v1720 int64
-				if tmp_int_Sl_DeltaRSRP_Thresh_v1720, err = extReader.ReadInteger(&uper.Constraint{Lb: -30, Ub: 30}, false); err != nil {
+				if tmp_int_Sl_DeltaRSRP_Thresh_v1720, err = extReader.ReadInteger(&aper.Constraint{Lb: -30, Ub: 30}, false); err != nil {
 					return utils.WrapError("Decode Sl_DeltaRSRP_Thresh_v1720", err)
 				}
 				ie.Sl_DeltaRSRP_Thresh_v1720 = &tmp_int_Sl_DeltaRSRP_Thresh_v1720

@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -9,9 +9,9 @@ type InterFreqNeighCellList_v1710 struct {
 	Value []InterFreqNeighCellInfo_v1710 `lb:1,ub:maxCellInter,madatory`
 }
 
-func (ie *InterFreqNeighCellList_v1710) Encode(w *uper.UperWriter) error {
+func (ie *InterFreqNeighCellList_v1710) Encode(w *aper.AperWriter) error {
 	var err error
-	tmp := utils.NewSequence[*InterFreqNeighCellInfo_v1710]([]*InterFreqNeighCellInfo_v1710{}, uper.Constraint{Lb: 1, Ub: maxCellInter}, false)
+	tmp := utils.NewSequence[*InterFreqNeighCellInfo_v1710]([]*InterFreqNeighCellInfo_v1710{}, aper.Constraint{Lb: 1, Ub: maxCellInter}, false)
 	for _, i := range ie.Value {
 		tmp.Value = append(tmp.Value, &i)
 	}
@@ -21,9 +21,9 @@ func (ie *InterFreqNeighCellList_v1710) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *InterFreqNeighCellList_v1710) Decode(r *uper.UperReader) error {
+func (ie *InterFreqNeighCellList_v1710) Decode(r *aper.AperReader) error {
 	var err error
-	tmp := utils.NewSequence[*InterFreqNeighCellInfo_v1710]([]*InterFreqNeighCellInfo_v1710{}, uper.Constraint{Lb: 1, Ub: maxCellInter}, false)
+	tmp := utils.NewSequence[*InterFreqNeighCellInfo_v1710]([]*InterFreqNeighCellInfo_v1710{}, aper.Constraint{Lb: 1, Ub: maxCellInter}, false)
 	fn := func() *InterFreqNeighCellInfo_v1710 {
 		return new(InterFreqNeighCellInfo_v1710)
 	}

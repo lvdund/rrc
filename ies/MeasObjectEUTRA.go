@@ -3,7 +3,7 @@ package ies
 import (
 	"bytes"
 
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -20,7 +20,7 @@ type MeasObjectEUTRA struct {
 	AssociatedMeasGap_r17           *MeasGapId_r17             `optional,ext-1`
 }
 
-func (ie *MeasObjectEUTRA) Encode(w *uper.UperWriter) error {
+func (ie *MeasObjectEUTRA) Encode(w *aper.AperWriter) error {
 	var err error
 	hasExtensions := ie.AssociatedMeasGap_r17 != nil
 	preambleBits := []bool{hasExtensions, ie.CellsToRemoveListEUTRAN != nil, len(ie.CellsToAddModListEUTRAN) > 0, ie.ExcludedCellsToRemoveListEUTRAN != nil, len(ie.ExcludedCellsToAddModListEUTRAN) > 0, ie.Eutra_Q_OffsetRange != nil}
@@ -41,7 +41,7 @@ func (ie *MeasObjectEUTRA) Encode(w *uper.UperWriter) error {
 		}
 	}
 	if len(ie.CellsToAddModListEUTRAN) > 0 {
-		tmp_CellsToAddModListEUTRAN := utils.NewSequence[*EUTRA_Cell]([]*EUTRA_Cell{}, uper.Constraint{Lb: 1, Ub: maxCellMeasEUTRA}, false)
+		tmp_CellsToAddModListEUTRAN := utils.NewSequence[*EUTRA_Cell]([]*EUTRA_Cell{}, aper.Constraint{Lb: 1, Ub: maxCellMeasEUTRA}, false)
 		for _, i := range ie.CellsToAddModListEUTRAN {
 			tmp_CellsToAddModListEUTRAN.Value = append(tmp_CellsToAddModListEUTRAN.Value, &i)
 		}
@@ -55,7 +55,7 @@ func (ie *MeasObjectEUTRA) Encode(w *uper.UperWriter) error {
 		}
 	}
 	if len(ie.ExcludedCellsToAddModListEUTRAN) > 0 {
-		tmp_ExcludedCellsToAddModListEUTRAN := utils.NewSequence[*EUTRA_ExcludedCell]([]*EUTRA_ExcludedCell{}, uper.Constraint{Lb: 1, Ub: maxCellMeasEUTRA}, false)
+		tmp_ExcludedCellsToAddModListEUTRAN := utils.NewSequence[*EUTRA_ExcludedCell]([]*EUTRA_ExcludedCell{}, aper.Constraint{Lb: 1, Ub: maxCellMeasEUTRA}, false)
 		for _, i := range ie.ExcludedCellsToAddModListEUTRAN {
 			tmp_ExcludedCellsToAddModListEUTRAN.Value = append(tmp_ExcludedCellsToAddModListEUTRAN.Value, &i)
 		}
@@ -84,7 +84,7 @@ func (ie *MeasObjectEUTRA) Encode(w *uper.UperWriter) error {
 		// encode extension group 1
 		if extBitmap[0] {
 			extBuf := new(bytes.Buffer)
-			extWriter := uper.NewWriter(extBuf)
+			extWriter := aper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 1
 			optionals_ext_1 := []bool{ie.AssociatedMeasGap_r17 != nil}
@@ -113,7 +113,7 @@ func (ie *MeasObjectEUTRA) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *MeasObjectEUTRA) Decode(r *uper.UperReader) error {
+func (ie *MeasObjectEUTRA) Decode(r *aper.AperReader) error {
 	var err error
 	var extensionBit bool
 	if extensionBit, err = r.ReadBool(); err != nil {
@@ -152,7 +152,7 @@ func (ie *MeasObjectEUTRA) Decode(r *uper.UperReader) error {
 		}
 	}
 	if CellsToAddModListEUTRANPresent {
-		tmp_CellsToAddModListEUTRAN := utils.NewSequence[*EUTRA_Cell]([]*EUTRA_Cell{}, uper.Constraint{Lb: 1, Ub: maxCellMeasEUTRA}, false)
+		tmp_CellsToAddModListEUTRAN := utils.NewSequence[*EUTRA_Cell]([]*EUTRA_Cell{}, aper.Constraint{Lb: 1, Ub: maxCellMeasEUTRA}, false)
 		fn_CellsToAddModListEUTRAN := func() *EUTRA_Cell {
 			return new(EUTRA_Cell)
 		}
@@ -171,7 +171,7 @@ func (ie *MeasObjectEUTRA) Decode(r *uper.UperReader) error {
 		}
 	}
 	if ExcludedCellsToAddModListEUTRANPresent {
-		tmp_ExcludedCellsToAddModListEUTRAN := utils.NewSequence[*EUTRA_ExcludedCell]([]*EUTRA_ExcludedCell{}, uper.Constraint{Lb: 1, Ub: maxCellMeasEUTRA}, false)
+		tmp_ExcludedCellsToAddModListEUTRAN := utils.NewSequence[*EUTRA_ExcludedCell]([]*EUTRA_ExcludedCell{}, aper.Constraint{Lb: 1, Ub: maxCellMeasEUTRA}, false)
 		fn_ExcludedCellsToAddModListEUTRAN := func() *EUTRA_ExcludedCell {
 			return new(EUTRA_ExcludedCell)
 		}
@@ -212,7 +212,7 @@ func (ie *MeasObjectEUTRA) Decode(r *uper.UperReader) error {
 				return err
 			}
 
-			extReader := uper.NewReader(bytes.NewReader(extBytes))
+			extReader := aper.NewReader(bytes.NewReader(extBytes))
 
 			AssociatedMeasGap_r17Present, err := extReader.ReadBool()
 			if err != nil {

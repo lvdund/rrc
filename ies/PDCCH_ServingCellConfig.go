@@ -3,7 +3,7 @@ package ies
 import (
 	"bytes"
 
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -14,7 +14,7 @@ type PDCCH_ServingCellConfig struct {
 	SearchSpaceSwitchTimer_v1710 *int64                     `lb:81,ub:1280,optional,ext-2`
 }
 
-func (ie *PDCCH_ServingCellConfig) Encode(w *uper.UperWriter) error {
+func (ie *PDCCH_ServingCellConfig) Encode(w *aper.AperWriter) error {
 	var err error
 	hasExtensions := ie.AvailabilityIndicator_r16 != nil || ie.SearchSpaceSwitchTimer_r16 != nil || ie.SearchSpaceSwitchTimer_v1710 != nil
 	preambleBits := []bool{hasExtensions, ie.SlotFormatIndicator != nil}
@@ -41,7 +41,7 @@ func (ie *PDCCH_ServingCellConfig) Encode(w *uper.UperWriter) error {
 		// encode extension group 1
 		if extBitmap[0] {
 			extBuf := new(bytes.Buffer)
-			extWriter := uper.NewWriter(extBuf)
+			extWriter := aper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 1
 			optionals_ext_1 := []bool{ie.AvailabilityIndicator_r16 != nil, ie.SearchSpaceSwitchTimer_r16 != nil}
@@ -62,7 +62,7 @@ func (ie *PDCCH_ServingCellConfig) Encode(w *uper.UperWriter) error {
 			}
 			// encode SearchSpaceSwitchTimer_r16 optional
 			if ie.SearchSpaceSwitchTimer_r16 != nil {
-				if err = extWriter.WriteInteger(*ie.SearchSpaceSwitchTimer_r16, &uper.Constraint{Lb: 1, Ub: 80}, false); err != nil {
+				if err = extWriter.WriteInteger(*ie.SearchSpaceSwitchTimer_r16, &aper.Constraint{Lb: 1, Ub: 80}, false); err != nil {
 					return utils.WrapError("Encode SearchSpaceSwitchTimer_r16", err)
 				}
 			}
@@ -79,7 +79,7 @@ func (ie *PDCCH_ServingCellConfig) Encode(w *uper.UperWriter) error {
 		// encode extension group 2
 		if extBitmap[1] {
 			extBuf := new(bytes.Buffer)
-			extWriter := uper.NewWriter(extBuf)
+			extWriter := aper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 2
 			optionals_ext_2 := []bool{ie.SearchSpaceSwitchTimer_v1710 != nil}
@@ -91,7 +91,7 @@ func (ie *PDCCH_ServingCellConfig) Encode(w *uper.UperWriter) error {
 
 			// encode SearchSpaceSwitchTimer_v1710 optional
 			if ie.SearchSpaceSwitchTimer_v1710 != nil {
-				if err = extWriter.WriteInteger(*ie.SearchSpaceSwitchTimer_v1710, &uper.Constraint{Lb: 81, Ub: 1280}, false); err != nil {
+				if err = extWriter.WriteInteger(*ie.SearchSpaceSwitchTimer_v1710, &aper.Constraint{Lb: 81, Ub: 1280}, false); err != nil {
 					return utils.WrapError("Encode SearchSpaceSwitchTimer_v1710", err)
 				}
 			}
@@ -108,7 +108,7 @@ func (ie *PDCCH_ServingCellConfig) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *PDCCH_ServingCellConfig) Decode(r *uper.UperReader) error {
+func (ie *PDCCH_ServingCellConfig) Decode(r *aper.AperReader) error {
 	var err error
 	var extensionBit bool
 	if extensionBit, err = r.ReadBool(); err != nil {
@@ -140,7 +140,7 @@ func (ie *PDCCH_ServingCellConfig) Decode(r *uper.UperReader) error {
 				return err
 			}
 
-			extReader := uper.NewReader(bytes.NewReader(extBytes))
+			extReader := aper.NewReader(bytes.NewReader(extBytes))
 
 			AvailabilityIndicator_r16Present, err := extReader.ReadBool()
 			if err != nil {
@@ -161,7 +161,7 @@ func (ie *PDCCH_ServingCellConfig) Decode(r *uper.UperReader) error {
 			// decode SearchSpaceSwitchTimer_r16 optional
 			if SearchSpaceSwitchTimer_r16Present {
 				var tmp_int_SearchSpaceSwitchTimer_r16 int64
-				if tmp_int_SearchSpaceSwitchTimer_r16, err = extReader.ReadInteger(&uper.Constraint{Lb: 1, Ub: 80}, false); err != nil {
+				if tmp_int_SearchSpaceSwitchTimer_r16, err = extReader.ReadInteger(&aper.Constraint{Lb: 1, Ub: 80}, false); err != nil {
 					return utils.WrapError("Decode SearchSpaceSwitchTimer_r16", err)
 				}
 				ie.SearchSpaceSwitchTimer_r16 = &tmp_int_SearchSpaceSwitchTimer_r16
@@ -174,7 +174,7 @@ func (ie *PDCCH_ServingCellConfig) Decode(r *uper.UperReader) error {
 				return err
 			}
 
-			extReader := uper.NewReader(bytes.NewReader(extBytes))
+			extReader := aper.NewReader(bytes.NewReader(extBytes))
 
 			SearchSpaceSwitchTimer_v1710Present, err := extReader.ReadBool()
 			if err != nil {
@@ -183,7 +183,7 @@ func (ie *PDCCH_ServingCellConfig) Decode(r *uper.UperReader) error {
 			// decode SearchSpaceSwitchTimer_v1710 optional
 			if SearchSpaceSwitchTimer_v1710Present {
 				var tmp_int_SearchSpaceSwitchTimer_v1710 int64
-				if tmp_int_SearchSpaceSwitchTimer_v1710, err = extReader.ReadInteger(&uper.Constraint{Lb: 81, Ub: 1280}, false); err != nil {
+				if tmp_int_SearchSpaceSwitchTimer_v1710, err = extReader.ReadInteger(&aper.Constraint{Lb: 81, Ub: 1280}, false); err != nil {
 					return utils.WrapError("Decode SearchSpaceSwitchTimer_v1710", err)
 				}
 				ie.SearchSpaceSwitchTimer_v1710 = &tmp_int_SearchSpaceSwitchTimer_v1710

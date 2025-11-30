@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -10,7 +10,7 @@ type RA_Prioritization struct {
 	ScalingFactorBI              *RA_Prioritization_scalingFactorBI             `optional`
 }
 
-func (ie *RA_Prioritization) Encode(w *uper.UperWriter) error {
+func (ie *RA_Prioritization) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.ScalingFactorBI != nil}
 	for _, bit := range preambleBits {
@@ -29,7 +29,7 @@ func (ie *RA_Prioritization) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *RA_Prioritization) Decode(r *uper.UperReader) error {
+func (ie *RA_Prioritization) Decode(r *aper.AperReader) error {
 	var err error
 	var ScalingFactorBIPresent bool
 	if ScalingFactorBIPresent, err = r.ReadBool(); err != nil {

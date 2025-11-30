@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -9,7 +9,7 @@ type DL_AM_RLC_v1610 struct {
 	T_StatusProhibit_v1610 *T_StatusProhibit_v1610 `optional`
 }
 
-func (ie *DL_AM_RLC_v1610) Encode(w *uper.UperWriter) error {
+func (ie *DL_AM_RLC_v1610) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.T_StatusProhibit_v1610 != nil}
 	for _, bit := range preambleBits {
@@ -25,7 +25,7 @@ func (ie *DL_AM_RLC_v1610) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *DL_AM_RLC_v1610) Decode(r *uper.UperReader) error {
+func (ie *DL_AM_RLC_v1610) Decode(r *aper.AperReader) error {
 	var err error
 	var T_StatusProhibit_v1610Present bool
 	if T_StatusProhibit_v1610Present, err = r.ReadBool(); err != nil {

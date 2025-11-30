@@ -3,7 +3,7 @@ package ies
 import (
 	"fmt"
 
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -15,11 +15,11 @@ const (
 
 type BandParametersSidelinkEUTRA_NR_v1630 struct {
 	Choice uint64
-	Eutra  uper.NULL `madatory`
+	Eutra  aper.NULL `madatory`
 	Nr     *BandParametersSidelinkEUTRA_NR_v1630_nr
 }
 
-func (ie *BandParametersSidelinkEUTRA_NR_v1630) Encode(w *uper.UperWriter) error {
+func (ie *BandParametersSidelinkEUTRA_NR_v1630) Encode(w *aper.AperWriter) error {
 	var err error
 	if err = w.WriteChoice(ie.Choice, 2, false); err != nil {
 		return err
@@ -39,7 +39,7 @@ func (ie *BandParametersSidelinkEUTRA_NR_v1630) Encode(w *uper.UperWriter) error
 	return err
 }
 
-func (ie *BandParametersSidelinkEUTRA_NR_v1630) Decode(r *uper.UperReader) error {
+func (ie *BandParametersSidelinkEUTRA_NR_v1630) Decode(r *aper.AperReader) error {
 	var err error
 	if ie.Choice, err = r.ReadChoice(2, false); err != nil {
 		return err

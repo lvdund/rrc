@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -12,7 +12,7 @@ type EventTriggerConfigInterRAT_eventId_eventY2_Relay_r17 struct {
 	TimeToTrigger_r17      TimeToTrigger              `madatory`
 }
 
-func (ie *EventTriggerConfigInterRAT_eventId_eventY2_Relay_r17) Encode(w *uper.UperWriter) error {
+func (ie *EventTriggerConfigInterRAT_eventId_eventY2_Relay_r17) Encode(w *aper.AperWriter) error {
 	var err error
 	if err = ie.Y2_Threshold_Relay_r17.Encode(w); err != nil {
 		return utils.WrapError("Encode Y2_Threshold_Relay_r17", err)
@@ -29,7 +29,7 @@ func (ie *EventTriggerConfigInterRAT_eventId_eventY2_Relay_r17) Encode(w *uper.U
 	return nil
 }
 
-func (ie *EventTriggerConfigInterRAT_eventId_eventY2_Relay_r17) Decode(r *uper.UperReader) error {
+func (ie *EventTriggerConfigInterRAT_eventId_eventY2_Relay_r17) Decode(r *aper.AperReader) error {
 	var err error
 	if err = ie.Y2_Threshold_Relay_r17.Decode(r); err != nil {
 		return utils.WrapError("Decode Y2_Threshold_Relay_r17", err)

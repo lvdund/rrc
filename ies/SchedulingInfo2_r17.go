@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -12,12 +12,12 @@ type SchedulingInfo2_r17 struct {
 	Sib_MappingInfo_r17    SIB_Mapping_v1700                          `madatory`
 }
 
-func (ie *SchedulingInfo2_r17) Encode(w *uper.UperWriter) error {
+func (ie *SchedulingInfo2_r17) Encode(w *aper.AperWriter) error {
 	var err error
 	if err = ie.Si_BroadcastStatus_r17.Encode(w); err != nil {
 		return utils.WrapError("Encode Si_BroadcastStatus_r17", err)
 	}
-	if err = w.WriteInteger(ie.Si_WindowPosition_r17, &uper.Constraint{Lb: 1, Ub: 256}, false); err != nil {
+	if err = w.WriteInteger(ie.Si_WindowPosition_r17, &aper.Constraint{Lb: 1, Ub: 256}, false); err != nil {
 		return utils.WrapError("WriteInteger Si_WindowPosition_r17", err)
 	}
 	if err = ie.Si_Periodicity_r17.Encode(w); err != nil {
@@ -29,13 +29,13 @@ func (ie *SchedulingInfo2_r17) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *SchedulingInfo2_r17) Decode(r *uper.UperReader) error {
+func (ie *SchedulingInfo2_r17) Decode(r *aper.AperReader) error {
 	var err error
 	if err = ie.Si_BroadcastStatus_r17.Decode(r); err != nil {
 		return utils.WrapError("Decode Si_BroadcastStatus_r17", err)
 	}
 	var tmp_int_Si_WindowPosition_r17 int64
-	if tmp_int_Si_WindowPosition_r17, err = r.ReadInteger(&uper.Constraint{Lb: 1, Ub: 256}, false); err != nil {
+	if tmp_int_Si_WindowPosition_r17, err = r.ReadInteger(&aper.Constraint{Lb: 1, Ub: 256}, false); err != nil {
 		return utils.WrapError("ReadInteger Si_WindowPosition_r17", err)
 	}
 	ie.Si_WindowPosition_r17 = tmp_int_Si_WindowPosition_r17

@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -9,7 +9,7 @@ type EUTRA_ParametersXDD_Diff struct {
 	RsrqMeasWidebandEUTRA *EUTRA_ParametersXDD_Diff_rsrqMeasWidebandEUTRA `optional`
 }
 
-func (ie *EUTRA_ParametersXDD_Diff) Encode(w *uper.UperWriter) error {
+func (ie *EUTRA_ParametersXDD_Diff) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.RsrqMeasWidebandEUTRA != nil}
 	for _, bit := range preambleBits {
@@ -25,7 +25,7 @@ func (ie *EUTRA_ParametersXDD_Diff) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *EUTRA_ParametersXDD_Diff) Decode(r *uper.UperReader) error {
+func (ie *EUTRA_ParametersXDD_Diff) Decode(r *aper.AperReader) error {
 	var err error
 	var RsrqMeasWidebandEUTRAPresent bool
 	if RsrqMeasWidebandEUTRAPresent, err = r.ReadBool(); err != nil {

@@ -3,7 +3,7 @@ package ies
 import (
 	"bytes"
 
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -16,7 +16,7 @@ type SIB4 struct {
 	InterFreqCarrierFreqList_v1730 *InterFreqCarrierFreqList_v1730 `optional,ext-4`
 }
 
-func (ie *SIB4) Encode(w *uper.UperWriter) error {
+func (ie *SIB4) Encode(w *aper.AperWriter) error {
 	var err error
 	hasExtensions := ie.InterFreqCarrierFreqList_v1610 != nil || ie.InterFreqCarrierFreqList_v1700 != nil || ie.InterFreqCarrierFreqList_v1720 != nil || ie.InterFreqCarrierFreqList_v1730 != nil
 	preambleBits := []bool{hasExtensions, ie.LateNonCriticalExtension != nil}
@@ -29,7 +29,7 @@ func (ie *SIB4) Encode(w *uper.UperWriter) error {
 		return utils.WrapError("Encode InterFreqCarrierFreqList", err)
 	}
 	if ie.LateNonCriticalExtension != nil {
-		if err = w.WriteOctetString(*ie.LateNonCriticalExtension, &uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+		if err = w.WriteOctetString(*ie.LateNonCriticalExtension, &aper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
 			return utils.WrapError("Encode LateNonCriticalExtension", err)
 		}
 	}
@@ -43,7 +43,7 @@ func (ie *SIB4) Encode(w *uper.UperWriter) error {
 		// encode extension group 1
 		if extBitmap[0] {
 			extBuf := new(bytes.Buffer)
-			extWriter := uper.NewWriter(extBuf)
+			extWriter := aper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 1
 			optionals_ext_1 := []bool{ie.InterFreqCarrierFreqList_v1610 != nil}
@@ -72,7 +72,7 @@ func (ie *SIB4) Encode(w *uper.UperWriter) error {
 		// encode extension group 2
 		if extBitmap[1] {
 			extBuf := new(bytes.Buffer)
-			extWriter := uper.NewWriter(extBuf)
+			extWriter := aper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 2
 			optionals_ext_2 := []bool{ie.InterFreqCarrierFreqList_v1700 != nil}
@@ -101,7 +101,7 @@ func (ie *SIB4) Encode(w *uper.UperWriter) error {
 		// encode extension group 3
 		if extBitmap[2] {
 			extBuf := new(bytes.Buffer)
-			extWriter := uper.NewWriter(extBuf)
+			extWriter := aper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 3
 			optionals_ext_3 := []bool{ie.InterFreqCarrierFreqList_v1720 != nil}
@@ -130,7 +130,7 @@ func (ie *SIB4) Encode(w *uper.UperWriter) error {
 		// encode extension group 4
 		if extBitmap[3] {
 			extBuf := new(bytes.Buffer)
-			extWriter := uper.NewWriter(extBuf)
+			extWriter := aper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 4
 			optionals_ext_4 := []bool{ie.InterFreqCarrierFreqList_v1730 != nil}
@@ -159,7 +159,7 @@ func (ie *SIB4) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *SIB4) Decode(r *uper.UperReader) error {
+func (ie *SIB4) Decode(r *aper.AperReader) error {
 	var err error
 	var extensionBit bool
 	if extensionBit, err = r.ReadBool(); err != nil {
@@ -174,7 +174,7 @@ func (ie *SIB4) Decode(r *uper.UperReader) error {
 	}
 	if LateNonCriticalExtensionPresent {
 		var tmp_os_LateNonCriticalExtension []byte
-		if tmp_os_LateNonCriticalExtension, err = r.ReadOctetString(&uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+		if tmp_os_LateNonCriticalExtension, err = r.ReadOctetString(&aper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
 			return utils.WrapError("Decode LateNonCriticalExtension", err)
 		}
 		ie.LateNonCriticalExtension = &tmp_os_LateNonCriticalExtension
@@ -194,7 +194,7 @@ func (ie *SIB4) Decode(r *uper.UperReader) error {
 				return err
 			}
 
-			extReader := uper.NewReader(bytes.NewReader(extBytes))
+			extReader := aper.NewReader(bytes.NewReader(extBytes))
 
 			InterFreqCarrierFreqList_v1610Present, err := extReader.ReadBool()
 			if err != nil {
@@ -215,7 +215,7 @@ func (ie *SIB4) Decode(r *uper.UperReader) error {
 				return err
 			}
 
-			extReader := uper.NewReader(bytes.NewReader(extBytes))
+			extReader := aper.NewReader(bytes.NewReader(extBytes))
 
 			InterFreqCarrierFreqList_v1700Present, err := extReader.ReadBool()
 			if err != nil {
@@ -236,7 +236,7 @@ func (ie *SIB4) Decode(r *uper.UperReader) error {
 				return err
 			}
 
-			extReader := uper.NewReader(bytes.NewReader(extBytes))
+			extReader := aper.NewReader(bytes.NewReader(extBytes))
 
 			InterFreqCarrierFreqList_v1720Present, err := extReader.ReadBool()
 			if err != nil {
@@ -257,7 +257,7 @@ func (ie *SIB4) Decode(r *uper.UperReader) error {
 				return err
 			}
 
-			extReader := uper.NewReader(bytes.NewReader(extBytes))
+			extReader := aper.NewReader(bytes.NewReader(extBytes))
 
 			InterFreqCarrierFreqList_v1730Present, err := extReader.ReadBool()
 			if err != nil {

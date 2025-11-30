@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -14,7 +14,7 @@ type SIB2_cellReselectionServingFreqInfo struct {
 	CellReselectionSubPriority *CellReselectionSubPriority `optional`
 }
 
-func (ie *SIB2_cellReselectionServingFreqInfo) Encode(w *uper.UperWriter) error {
+func (ie *SIB2_cellReselectionServingFreqInfo) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.S_NonIntraSearchP != nil, ie.S_NonIntraSearchQ != nil, ie.ThreshServingLowQ != nil, ie.CellReselectionSubPriority != nil}
 	for _, bit := range preambleBits {
@@ -51,7 +51,7 @@ func (ie *SIB2_cellReselectionServingFreqInfo) Encode(w *uper.UperWriter) error 
 	return nil
 }
 
-func (ie *SIB2_cellReselectionServingFreqInfo) Decode(r *uper.UperReader) error {
+func (ie *SIB2_cellReselectionServingFreqInfo) Decode(r *aper.AperReader) error {
 	var err error
 	var S_NonIntraSearchPPresent bool
 	if S_NonIntraSearchPPresent, err = r.ReadBool(); err != nil {

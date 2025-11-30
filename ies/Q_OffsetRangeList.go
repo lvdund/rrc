@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -14,7 +14,7 @@ type Q_OffsetRangeList struct {
 	SinrOffsetCSI_RS Q_OffsetRange `madatory`
 }
 
-func (ie *Q_OffsetRangeList) Encode(w *uper.UperWriter) error {
+func (ie *Q_OffsetRangeList) Encode(w *aper.AperWriter) error {
 	var err error
 	if err = ie.RsrpOffsetSSB.Encode(w); err != nil {
 		return utils.WrapError("Encode RsrpOffsetSSB", err)
@@ -37,7 +37,7 @@ func (ie *Q_OffsetRangeList) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *Q_OffsetRangeList) Decode(r *uper.UperReader) error {
+func (ie *Q_OffsetRangeList) Decode(r *aper.AperReader) error {
 	var err error
 	if err = ie.RsrpOffsetSSB.Decode(r); err != nil {
 		return utils.WrapError("Decode RsrpOffsetSSB", err)

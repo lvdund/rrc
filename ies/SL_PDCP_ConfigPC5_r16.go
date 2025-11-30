@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -10,7 +10,7 @@ type SL_PDCP_ConfigPC5_r16 struct {
 	Sl_OutOfOrderDelivery_r16 *SL_PDCP_ConfigPC5_r16_sl_OutOfOrderDelivery_r16 `optional`
 }
 
-func (ie *SL_PDCP_ConfigPC5_r16) Encode(w *uper.UperWriter) error {
+func (ie *SL_PDCP_ConfigPC5_r16) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.Sl_PDCP_SN_Size_r16 != nil, ie.Sl_OutOfOrderDelivery_r16 != nil}
 	for _, bit := range preambleBits {
@@ -31,7 +31,7 @@ func (ie *SL_PDCP_ConfigPC5_r16) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *SL_PDCP_ConfigPC5_r16) Decode(r *uper.UperReader) error {
+func (ie *SL_PDCP_ConfigPC5_r16) Decode(r *aper.AperReader) error {
 	var err error
 	var Sl_PDCP_SN_Size_r16Present bool
 	if Sl_PDCP_SN_Size_r16Present, err = r.ReadBool(); err != nil {

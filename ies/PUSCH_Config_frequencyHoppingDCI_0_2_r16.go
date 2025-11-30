@@ -3,7 +3,7 @@ package ies
 import (
 	"fmt"
 
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -19,7 +19,7 @@ type PUSCH_Config_frequencyHoppingDCI_0_2_r16 struct {
 	Pusch_RepTypeB *PUSCH_Config_frequencyHoppingDCI_0_2_r16_pusch_RepTypeB
 }
 
-func (ie *PUSCH_Config_frequencyHoppingDCI_0_2_r16) Encode(w *uper.UperWriter) error {
+func (ie *PUSCH_Config_frequencyHoppingDCI_0_2_r16) Encode(w *aper.AperWriter) error {
 	var err error
 	if err = w.WriteChoice(ie.Choice, 2, false); err != nil {
 		return err
@@ -39,7 +39,7 @@ func (ie *PUSCH_Config_frequencyHoppingDCI_0_2_r16) Encode(w *uper.UperWriter) e
 	return err
 }
 
-func (ie *PUSCH_Config_frequencyHoppingDCI_0_2_r16) Decode(r *uper.UperReader) error {
+func (ie *PUSCH_Config_frequencyHoppingDCI_0_2_r16) Decode(r *aper.AperReader) error {
 	var err error
 	if ie.Choice, err = r.ReadChoice(2, false); err != nil {
 		return err

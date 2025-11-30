@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -11,7 +11,7 @@ type ReestablishmentInfo struct {
 	AdditionalReestabInfoList *ReestabNCellInfoList `optional`
 }
 
-func (ie *ReestablishmentInfo) Encode(w *uper.UperWriter) error {
+func (ie *ReestablishmentInfo) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.AdditionalReestabInfoList != nil}
 	for _, bit := range preambleBits {
@@ -33,7 +33,7 @@ func (ie *ReestablishmentInfo) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *ReestablishmentInfo) Decode(r *uper.UperReader) error {
+func (ie *ReestablishmentInfo) Decode(r *aper.AperReader) error {
 	var err error
 	var AdditionalReestabInfoListPresent bool
 	if AdditionalReestabInfoListPresent, err = r.ReadBool(); err != nil {

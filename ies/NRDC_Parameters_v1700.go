@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -10,7 +10,7 @@ type NRDC_Parameters_v1700 struct {
 	MeasAndMobParametersNRDC_v1700 MeasAndMobParametersMRDC_v1700            `madatory`
 }
 
-func (ie *NRDC_Parameters_v1700) Encode(w *uper.UperWriter) error {
+func (ie *NRDC_Parameters_v1700) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.F1c_OverNR_RRC_r17 != nil}
 	for _, bit := range preambleBits {
@@ -29,7 +29,7 @@ func (ie *NRDC_Parameters_v1700) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *NRDC_Parameters_v1700) Decode(r *uper.UperReader) error {
+func (ie *NRDC_Parameters_v1700) Decode(r *aper.AperReader) error {
 	var err error
 	var F1c_OverNR_RRC_r17Present bool
 	if F1c_OverNR_RRC_r17Present, err = r.ReadBool(); err != nil {

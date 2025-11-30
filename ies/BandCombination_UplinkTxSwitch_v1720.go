@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -10,7 +10,7 @@ type BandCombination_UplinkTxSwitch_v1720 struct {
 	UplinkTxSwitching_OptionSupport2T2T_r17 *BandCombination_UplinkTxSwitch_v1720_uplinkTxSwitching_OptionSupport2T2T_r17 `optional`
 }
 
-func (ie *BandCombination_UplinkTxSwitch_v1720) Encode(w *uper.UperWriter) error {
+func (ie *BandCombination_UplinkTxSwitch_v1720) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.BandCombination_v1720 != nil, ie.UplinkTxSwitching_OptionSupport2T2T_r17 != nil}
 	for _, bit := range preambleBits {
@@ -31,7 +31,7 @@ func (ie *BandCombination_UplinkTxSwitch_v1720) Encode(w *uper.UperWriter) error
 	return nil
 }
 
-func (ie *BandCombination_UplinkTxSwitch_v1720) Decode(r *uper.UperReader) error {
+func (ie *BandCombination_UplinkTxSwitch_v1720) Decode(r *aper.AperReader) error {
 	var err error
 	var BandCombination_v1720Present bool
 	if BandCombination_v1720Present, err = r.ReadBool(); err != nil {

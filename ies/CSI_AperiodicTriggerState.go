@@ -3,7 +3,7 @@ package ies
 import (
 	"bytes"
 
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -12,7 +12,7 @@ type CSI_AperiodicTriggerState struct {
 	Ap_CSI_MultiplexingMode_r17    *CSI_AperiodicTriggerState_ap_CSI_MultiplexingMode_r17 `optional,ext-1`
 }
 
-func (ie *CSI_AperiodicTriggerState) Encode(w *uper.UperWriter) error {
+func (ie *CSI_AperiodicTriggerState) Encode(w *aper.AperWriter) error {
 	var err error
 	hasExtensions := ie.Ap_CSI_MultiplexingMode_r17 != nil
 	preambleBits := []bool{hasExtensions}
@@ -21,7 +21,7 @@ func (ie *CSI_AperiodicTriggerState) Encode(w *uper.UperWriter) error {
 			return err
 		}
 	}
-	tmp_AssociatedReportConfigInfoList := utils.NewSequence[*CSI_AssociatedReportConfigInfo]([]*CSI_AssociatedReportConfigInfo{}, uper.Constraint{Lb: 1, Ub: maxNrofReportConfigPerAperiodicTrigger}, false)
+	tmp_AssociatedReportConfigInfoList := utils.NewSequence[*CSI_AssociatedReportConfigInfo]([]*CSI_AssociatedReportConfigInfo{}, aper.Constraint{Lb: 1, Ub: maxNrofReportConfigPerAperiodicTrigger}, false)
 	for _, i := range ie.AssociatedReportConfigInfoList {
 		tmp_AssociatedReportConfigInfoList.Value = append(tmp_AssociatedReportConfigInfoList.Value, &i)
 	}
@@ -38,7 +38,7 @@ func (ie *CSI_AperiodicTriggerState) Encode(w *uper.UperWriter) error {
 		// encode extension group 1
 		if extBitmap[0] {
 			extBuf := new(bytes.Buffer)
-			extWriter := uper.NewWriter(extBuf)
+			extWriter := aper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 1
 			optionals_ext_1 := []bool{ie.Ap_CSI_MultiplexingMode_r17 != nil}
@@ -67,13 +67,13 @@ func (ie *CSI_AperiodicTriggerState) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *CSI_AperiodicTriggerState) Decode(r *uper.UperReader) error {
+func (ie *CSI_AperiodicTriggerState) Decode(r *aper.AperReader) error {
 	var err error
 	var extensionBit bool
 	if extensionBit, err = r.ReadBool(); err != nil {
 		return err
 	}
-	tmp_AssociatedReportConfigInfoList := utils.NewSequence[*CSI_AssociatedReportConfigInfo]([]*CSI_AssociatedReportConfigInfo{}, uper.Constraint{Lb: 1, Ub: maxNrofReportConfigPerAperiodicTrigger}, false)
+	tmp_AssociatedReportConfigInfoList := utils.NewSequence[*CSI_AssociatedReportConfigInfo]([]*CSI_AssociatedReportConfigInfo{}, aper.Constraint{Lb: 1, Ub: maxNrofReportConfigPerAperiodicTrigger}, false)
 	fn_AssociatedReportConfigInfoList := func() *CSI_AssociatedReportConfigInfo {
 		return new(CSI_AssociatedReportConfigInfo)
 	}
@@ -99,7 +99,7 @@ func (ie *CSI_AperiodicTriggerState) Decode(r *uper.UperReader) error {
 				return err
 			}
 
-			extReader := uper.NewReader(bytes.NewReader(extBytes))
+			extReader := aper.NewReader(bytes.NewReader(extBytes))
 
 			Ap_CSI_MultiplexingMode_r17Present, err := extReader.ReadBool()
 			if err != nil {

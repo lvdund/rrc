@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -10,7 +10,7 @@ type RLC_ParametersSidelink_r16 struct {
 	Um_WithLongSN_Sidelink_r16 *RLC_ParametersSidelink_r16_um_WithLongSN_Sidelink_r16 `optional`
 }
 
-func (ie *RLC_ParametersSidelink_r16) Encode(w *uper.UperWriter) error {
+func (ie *RLC_ParametersSidelink_r16) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.Am_WithLongSN_Sidelink_r16 != nil, ie.Um_WithLongSN_Sidelink_r16 != nil}
 	for _, bit := range preambleBits {
@@ -31,7 +31,7 @@ func (ie *RLC_ParametersSidelink_r16) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *RLC_ParametersSidelink_r16) Decode(r *uper.UperReader) error {
+func (ie *RLC_ParametersSidelink_r16) Decode(r *aper.AperReader) error {
 	var err error
 	var Am_WithLongSN_Sidelink_r16Present bool
 	if Am_WithLongSN_Sidelink_r16Present, err = r.ReadBool(); err != nil {

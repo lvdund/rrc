@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -10,7 +10,7 @@ type MaxMIMO_LayerPreference_r16 struct {
 	ReducedMaxMIMO_LayersFR2_r16 *MaxMIMO_LayerPreference_r16_reducedMaxMIMO_LayersFR2_r16 `lb:1,ub:8,optional`
 }
 
-func (ie *MaxMIMO_LayerPreference_r16) Encode(w *uper.UperWriter) error {
+func (ie *MaxMIMO_LayerPreference_r16) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.ReducedMaxMIMO_LayersFR1_r16 != nil, ie.ReducedMaxMIMO_LayersFR2_r16 != nil}
 	for _, bit := range preambleBits {
@@ -31,7 +31,7 @@ func (ie *MaxMIMO_LayerPreference_r16) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *MaxMIMO_LayerPreference_r16) Decode(r *uper.UperReader) error {
+func (ie *MaxMIMO_LayerPreference_r16) Decode(r *aper.AperReader) error {
 	var err error
 	var ReducedMaxMIMO_LayersFR1_r16Present bool
 	if ReducedMaxMIMO_LayersFR1_r16Present, err = r.ReadBool(); err != nil {

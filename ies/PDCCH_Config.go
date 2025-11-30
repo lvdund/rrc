@@ -3,7 +3,7 @@ package ies
 import (
 	"bytes"
 
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -28,7 +28,7 @@ type PDCCH_Config struct {
 	Pdcch_SkippingDurationList_r17              []SCS_SpecificDuration_r17                     `lb:1,ub:3,optional,ext-2`
 }
 
-func (ie *PDCCH_Config) Encode(w *uper.UperWriter) error {
+func (ie *PDCCH_Config) Encode(w *aper.AperWriter) error {
 	var err error
 	hasExtensions := len(ie.ControlResourceSetToAddModListSizeExt_v1610) > 0 || len(ie.ControlResourceSetToReleaseListSizeExt_r16) > 0 || len(ie.SearchSpacesToAddModListExt_r16) > 0 || ie.UplinkCancellation_r16 != nil || ie.MonitoringCapabilityConfig_r16 != nil || ie.SearchSpaceSwitchConfig_r16 != nil || len(ie.SearchSpacesToAddModListExt_v1700) > 0 || ie.MonitoringCapabilityConfig_v1710 != nil || ie.SearchSpaceSwitchConfig_r17 != nil || len(ie.Pdcch_SkippingDurationList_r17) > 0
 	preambleBits := []bool{hasExtensions, len(ie.ControlResourceSetToAddModList) > 0, len(ie.ControlResourceSetToReleaseList) > 0, len(ie.SearchSpacesToAddModList) > 0, len(ie.SearchSpacesToReleaseList) > 0, ie.DownlinkPreemption != nil, ie.Tpc_PUSCH != nil, ie.Tpc_PUCCH != nil, ie.Tpc_SRS != nil}
@@ -38,7 +38,7 @@ func (ie *PDCCH_Config) Encode(w *uper.UperWriter) error {
 		}
 	}
 	if len(ie.ControlResourceSetToAddModList) > 0 {
-		tmp_ControlResourceSetToAddModList := utils.NewSequence[*ControlResourceSet]([]*ControlResourceSet{}, uper.Constraint{Lb: 1, Ub: 3}, false)
+		tmp_ControlResourceSetToAddModList := utils.NewSequence[*ControlResourceSet]([]*ControlResourceSet{}, aper.Constraint{Lb: 1, Ub: 3}, false)
 		for _, i := range ie.ControlResourceSetToAddModList {
 			tmp_ControlResourceSetToAddModList.Value = append(tmp_ControlResourceSetToAddModList.Value, &i)
 		}
@@ -47,7 +47,7 @@ func (ie *PDCCH_Config) Encode(w *uper.UperWriter) error {
 		}
 	}
 	if len(ie.ControlResourceSetToReleaseList) > 0 {
-		tmp_ControlResourceSetToReleaseList := utils.NewSequence[*ControlResourceSetId]([]*ControlResourceSetId{}, uper.Constraint{Lb: 1, Ub: 3}, false)
+		tmp_ControlResourceSetToReleaseList := utils.NewSequence[*ControlResourceSetId]([]*ControlResourceSetId{}, aper.Constraint{Lb: 1, Ub: 3}, false)
 		for _, i := range ie.ControlResourceSetToReleaseList {
 			tmp_ControlResourceSetToReleaseList.Value = append(tmp_ControlResourceSetToReleaseList.Value, &i)
 		}
@@ -56,7 +56,7 @@ func (ie *PDCCH_Config) Encode(w *uper.UperWriter) error {
 		}
 	}
 	if len(ie.SearchSpacesToAddModList) > 0 {
-		tmp_SearchSpacesToAddModList := utils.NewSequence[*SearchSpace]([]*SearchSpace{}, uper.Constraint{Lb: 1, Ub: 10}, false)
+		tmp_SearchSpacesToAddModList := utils.NewSequence[*SearchSpace]([]*SearchSpace{}, aper.Constraint{Lb: 1, Ub: 10}, false)
 		for _, i := range ie.SearchSpacesToAddModList {
 			tmp_SearchSpacesToAddModList.Value = append(tmp_SearchSpacesToAddModList.Value, &i)
 		}
@@ -65,7 +65,7 @@ func (ie *PDCCH_Config) Encode(w *uper.UperWriter) error {
 		}
 	}
 	if len(ie.SearchSpacesToReleaseList) > 0 {
-		tmp_SearchSpacesToReleaseList := utils.NewSequence[*SearchSpaceId]([]*SearchSpaceId{}, uper.Constraint{Lb: 1, Ub: 10}, false)
+		tmp_SearchSpacesToReleaseList := utils.NewSequence[*SearchSpaceId]([]*SearchSpaceId{}, aper.Constraint{Lb: 1, Ub: 10}, false)
 		for _, i := range ie.SearchSpacesToReleaseList {
 			tmp_SearchSpacesToReleaseList.Value = append(tmp_SearchSpacesToReleaseList.Value, &i)
 		}
@@ -115,7 +115,7 @@ func (ie *PDCCH_Config) Encode(w *uper.UperWriter) error {
 		// encode extension group 1
 		if extBitmap[0] {
 			extBuf := new(bytes.Buffer)
-			extWriter := uper.NewWriter(extBuf)
+			extWriter := aper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 1
 			optionals_ext_1 := []bool{len(ie.ControlResourceSetToAddModListSizeExt_v1610) > 0, len(ie.ControlResourceSetToReleaseListSizeExt_r16) > 0, len(ie.SearchSpacesToAddModListExt_r16) > 0, ie.UplinkCancellation_r16 != nil, ie.MonitoringCapabilityConfig_r16 != nil, ie.SearchSpaceSwitchConfig_r16 != nil}
@@ -127,7 +127,7 @@ func (ie *PDCCH_Config) Encode(w *uper.UperWriter) error {
 
 			// encode ControlResourceSetToAddModListSizeExt_v1610 optional
 			if len(ie.ControlResourceSetToAddModListSizeExt_v1610) > 0 {
-				tmp_ControlResourceSetToAddModListSizeExt_v1610 := utils.NewSequence[*ControlResourceSet]([]*ControlResourceSet{}, uper.Constraint{Lb: 1, Ub: 2}, false)
+				tmp_ControlResourceSetToAddModListSizeExt_v1610 := utils.NewSequence[*ControlResourceSet]([]*ControlResourceSet{}, aper.Constraint{Lb: 1, Ub: 2}, false)
 				for _, i := range ie.ControlResourceSetToAddModListSizeExt_v1610 {
 					tmp_ControlResourceSetToAddModListSizeExt_v1610.Value = append(tmp_ControlResourceSetToAddModListSizeExt_v1610.Value, &i)
 				}
@@ -137,7 +137,7 @@ func (ie *PDCCH_Config) Encode(w *uper.UperWriter) error {
 			}
 			// encode ControlResourceSetToReleaseListSizeExt_r16 optional
 			if len(ie.ControlResourceSetToReleaseListSizeExt_r16) > 0 {
-				tmp_ControlResourceSetToReleaseListSizeExt_r16 := utils.NewSequence[*ControlResourceSetId_r16]([]*ControlResourceSetId_r16{}, uper.Constraint{Lb: 1, Ub: 5}, false)
+				tmp_ControlResourceSetToReleaseListSizeExt_r16 := utils.NewSequence[*ControlResourceSetId_r16]([]*ControlResourceSetId_r16{}, aper.Constraint{Lb: 1, Ub: 5}, false)
 				for _, i := range ie.ControlResourceSetToReleaseListSizeExt_r16 {
 					tmp_ControlResourceSetToReleaseListSizeExt_r16.Value = append(tmp_ControlResourceSetToReleaseListSizeExt_r16.Value, &i)
 				}
@@ -147,7 +147,7 @@ func (ie *PDCCH_Config) Encode(w *uper.UperWriter) error {
 			}
 			// encode SearchSpacesToAddModListExt_r16 optional
 			if len(ie.SearchSpacesToAddModListExt_r16) > 0 {
-				tmp_SearchSpacesToAddModListExt_r16 := utils.NewSequence[*SearchSpaceExt_r16]([]*SearchSpaceExt_r16{}, uper.Constraint{Lb: 1, Ub: 10}, false)
+				tmp_SearchSpacesToAddModListExt_r16 := utils.NewSequence[*SearchSpaceExt_r16]([]*SearchSpaceExt_r16{}, aper.Constraint{Lb: 1, Ub: 10}, false)
 				for _, i := range ie.SearchSpacesToAddModListExt_r16 {
 					tmp_SearchSpacesToAddModListExt_r16.Value = append(tmp_SearchSpacesToAddModListExt_r16.Value, &i)
 				}
@@ -189,7 +189,7 @@ func (ie *PDCCH_Config) Encode(w *uper.UperWriter) error {
 		// encode extension group 2
 		if extBitmap[1] {
 			extBuf := new(bytes.Buffer)
-			extWriter := uper.NewWriter(extBuf)
+			extWriter := aper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 2
 			optionals_ext_2 := []bool{len(ie.SearchSpacesToAddModListExt_v1700) > 0, ie.MonitoringCapabilityConfig_v1710 != nil, ie.SearchSpaceSwitchConfig_r17 != nil, len(ie.Pdcch_SkippingDurationList_r17) > 0}
@@ -201,7 +201,7 @@ func (ie *PDCCH_Config) Encode(w *uper.UperWriter) error {
 
 			// encode SearchSpacesToAddModListExt_v1700 optional
 			if len(ie.SearchSpacesToAddModListExt_v1700) > 0 {
-				tmp_SearchSpacesToAddModListExt_v1700 := utils.NewSequence[*SearchSpaceExt_v1700]([]*SearchSpaceExt_v1700{}, uper.Constraint{Lb: 1, Ub: 10}, false)
+				tmp_SearchSpacesToAddModListExt_v1700 := utils.NewSequence[*SearchSpaceExt_v1700]([]*SearchSpaceExt_v1700{}, aper.Constraint{Lb: 1, Ub: 10}, false)
 				for _, i := range ie.SearchSpacesToAddModListExt_v1700 {
 					tmp_SearchSpacesToAddModListExt_v1700.Value = append(tmp_SearchSpacesToAddModListExt_v1700.Value, &i)
 				}
@@ -223,7 +223,7 @@ func (ie *PDCCH_Config) Encode(w *uper.UperWriter) error {
 			}
 			// encode Pdcch_SkippingDurationList_r17 optional
 			if len(ie.Pdcch_SkippingDurationList_r17) > 0 {
-				tmp_Pdcch_SkippingDurationList_r17 := utils.NewSequence[*SCS_SpecificDuration_r17]([]*SCS_SpecificDuration_r17{}, uper.Constraint{Lb: 1, Ub: 3}, false)
+				tmp_Pdcch_SkippingDurationList_r17 := utils.NewSequence[*SCS_SpecificDuration_r17]([]*SCS_SpecificDuration_r17{}, aper.Constraint{Lb: 1, Ub: 3}, false)
 				for _, i := range ie.Pdcch_SkippingDurationList_r17 {
 					tmp_Pdcch_SkippingDurationList_r17.Value = append(tmp_Pdcch_SkippingDurationList_r17.Value, &i)
 				}
@@ -244,7 +244,7 @@ func (ie *PDCCH_Config) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *PDCCH_Config) Decode(r *uper.UperReader) error {
+func (ie *PDCCH_Config) Decode(r *aper.AperReader) error {
 	var err error
 	var extensionBit bool
 	if extensionBit, err = r.ReadBool(); err != nil {
@@ -283,7 +283,7 @@ func (ie *PDCCH_Config) Decode(r *uper.UperReader) error {
 		return err
 	}
 	if ControlResourceSetToAddModListPresent {
-		tmp_ControlResourceSetToAddModList := utils.NewSequence[*ControlResourceSet]([]*ControlResourceSet{}, uper.Constraint{Lb: 1, Ub: 3}, false)
+		tmp_ControlResourceSetToAddModList := utils.NewSequence[*ControlResourceSet]([]*ControlResourceSet{}, aper.Constraint{Lb: 1, Ub: 3}, false)
 		fn_ControlResourceSetToAddModList := func() *ControlResourceSet {
 			return new(ControlResourceSet)
 		}
@@ -296,7 +296,7 @@ func (ie *PDCCH_Config) Decode(r *uper.UperReader) error {
 		}
 	}
 	if ControlResourceSetToReleaseListPresent {
-		tmp_ControlResourceSetToReleaseList := utils.NewSequence[*ControlResourceSetId]([]*ControlResourceSetId{}, uper.Constraint{Lb: 1, Ub: 3}, false)
+		tmp_ControlResourceSetToReleaseList := utils.NewSequence[*ControlResourceSetId]([]*ControlResourceSetId{}, aper.Constraint{Lb: 1, Ub: 3}, false)
 		fn_ControlResourceSetToReleaseList := func() *ControlResourceSetId {
 			return new(ControlResourceSetId)
 		}
@@ -309,7 +309,7 @@ func (ie *PDCCH_Config) Decode(r *uper.UperReader) error {
 		}
 	}
 	if SearchSpacesToAddModListPresent {
-		tmp_SearchSpacesToAddModList := utils.NewSequence[*SearchSpace]([]*SearchSpace{}, uper.Constraint{Lb: 1, Ub: 10}, false)
+		tmp_SearchSpacesToAddModList := utils.NewSequence[*SearchSpace]([]*SearchSpace{}, aper.Constraint{Lb: 1, Ub: 10}, false)
 		fn_SearchSpacesToAddModList := func() *SearchSpace {
 			return new(SearchSpace)
 		}
@@ -322,7 +322,7 @@ func (ie *PDCCH_Config) Decode(r *uper.UperReader) error {
 		}
 	}
 	if SearchSpacesToReleaseListPresent {
-		tmp_SearchSpacesToReleaseList := utils.NewSequence[*SearchSpaceId]([]*SearchSpaceId{}, uper.Constraint{Lb: 1, Ub: 10}, false)
+		tmp_SearchSpacesToReleaseList := utils.NewSequence[*SearchSpaceId]([]*SearchSpaceId{}, aper.Constraint{Lb: 1, Ub: 10}, false)
 		fn_SearchSpacesToReleaseList := func() *SearchSpaceId {
 			return new(SearchSpaceId)
 		}
@@ -377,7 +377,7 @@ func (ie *PDCCH_Config) Decode(r *uper.UperReader) error {
 				return err
 			}
 
-			extReader := uper.NewReader(bytes.NewReader(extBytes))
+			extReader := aper.NewReader(bytes.NewReader(extBytes))
 
 			ControlResourceSetToAddModListSizeExt_v1610Present, err := extReader.ReadBool()
 			if err != nil {
@@ -405,7 +405,7 @@ func (ie *PDCCH_Config) Decode(r *uper.UperReader) error {
 			}
 			// decode ControlResourceSetToAddModListSizeExt_v1610 optional
 			if ControlResourceSetToAddModListSizeExt_v1610Present {
-				tmp_ControlResourceSetToAddModListSizeExt_v1610 := utils.NewSequence[*ControlResourceSet]([]*ControlResourceSet{}, uper.Constraint{Lb: 1, Ub: 2}, false)
+				tmp_ControlResourceSetToAddModListSizeExt_v1610 := utils.NewSequence[*ControlResourceSet]([]*ControlResourceSet{}, aper.Constraint{Lb: 1, Ub: 2}, false)
 				fn_ControlResourceSetToAddModListSizeExt_v1610 := func() *ControlResourceSet {
 					return new(ControlResourceSet)
 				}
@@ -419,7 +419,7 @@ func (ie *PDCCH_Config) Decode(r *uper.UperReader) error {
 			}
 			// decode ControlResourceSetToReleaseListSizeExt_r16 optional
 			if ControlResourceSetToReleaseListSizeExt_r16Present {
-				tmp_ControlResourceSetToReleaseListSizeExt_r16 := utils.NewSequence[*ControlResourceSetId_r16]([]*ControlResourceSetId_r16{}, uper.Constraint{Lb: 1, Ub: 5}, false)
+				tmp_ControlResourceSetToReleaseListSizeExt_r16 := utils.NewSequence[*ControlResourceSetId_r16]([]*ControlResourceSetId_r16{}, aper.Constraint{Lb: 1, Ub: 5}, false)
 				fn_ControlResourceSetToReleaseListSizeExt_r16 := func() *ControlResourceSetId_r16 {
 					return new(ControlResourceSetId_r16)
 				}
@@ -433,7 +433,7 @@ func (ie *PDCCH_Config) Decode(r *uper.UperReader) error {
 			}
 			// decode SearchSpacesToAddModListExt_r16 optional
 			if SearchSpacesToAddModListExt_r16Present {
-				tmp_SearchSpacesToAddModListExt_r16 := utils.NewSequence[*SearchSpaceExt_r16]([]*SearchSpaceExt_r16{}, uper.Constraint{Lb: 1, Ub: 10}, false)
+				tmp_SearchSpacesToAddModListExt_r16 := utils.NewSequence[*SearchSpaceExt_r16]([]*SearchSpaceExt_r16{}, aper.Constraint{Lb: 1, Ub: 10}, false)
 				fn_SearchSpacesToAddModListExt_r16 := func() *SearchSpaceExt_r16 {
 					return new(SearchSpaceExt_r16)
 				}
@@ -475,7 +475,7 @@ func (ie *PDCCH_Config) Decode(r *uper.UperReader) error {
 				return err
 			}
 
-			extReader := uper.NewReader(bytes.NewReader(extBytes))
+			extReader := aper.NewReader(bytes.NewReader(extBytes))
 
 			SearchSpacesToAddModListExt_v1700Present, err := extReader.ReadBool()
 			if err != nil {
@@ -495,7 +495,7 @@ func (ie *PDCCH_Config) Decode(r *uper.UperReader) error {
 			}
 			// decode SearchSpacesToAddModListExt_v1700 optional
 			if SearchSpacesToAddModListExt_v1700Present {
-				tmp_SearchSpacesToAddModListExt_v1700 := utils.NewSequence[*SearchSpaceExt_v1700]([]*SearchSpaceExt_v1700{}, uper.Constraint{Lb: 1, Ub: 10}, false)
+				tmp_SearchSpacesToAddModListExt_v1700 := utils.NewSequence[*SearchSpaceExt_v1700]([]*SearchSpaceExt_v1700{}, aper.Constraint{Lb: 1, Ub: 10}, false)
 				fn_SearchSpacesToAddModListExt_v1700 := func() *SearchSpaceExt_v1700 {
 					return new(SearchSpaceExt_v1700)
 				}
@@ -523,7 +523,7 @@ func (ie *PDCCH_Config) Decode(r *uper.UperReader) error {
 			}
 			// decode Pdcch_SkippingDurationList_r17 optional
 			if Pdcch_SkippingDurationList_r17Present {
-				tmp_Pdcch_SkippingDurationList_r17 := utils.NewSequence[*SCS_SpecificDuration_r17]([]*SCS_SpecificDuration_r17{}, uper.Constraint{Lb: 1, Ub: 3}, false)
+				tmp_Pdcch_SkippingDurationList_r17 := utils.NewSequence[*SCS_SpecificDuration_r17]([]*SCS_SpecificDuration_r17{}, aper.Constraint{Lb: 1, Ub: 3}, false)
 				fn_Pdcch_SkippingDurationList_r17 := func() *SCS_SpecificDuration_r17 {
 					return new(SCS_SpecificDuration_r17)
 				}

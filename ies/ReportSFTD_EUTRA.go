@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -10,7 +10,7 @@ type ReportSFTD_EUTRA struct {
 	ReportRSRP      bool `madatory`
 }
 
-func (ie *ReportSFTD_EUTRA) Encode(w *uper.UperWriter) error {
+func (ie *ReportSFTD_EUTRA) Encode(w *aper.AperWriter) error {
 	var err error
 	if err = w.WriteBoolean(ie.ReportSFTD_Meas); err != nil {
 		return utils.WrapError("WriteBoolean ReportSFTD_Meas", err)
@@ -21,7 +21,7 @@ func (ie *ReportSFTD_EUTRA) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *ReportSFTD_EUTRA) Decode(r *uper.UperReader) error {
+func (ie *ReportSFTD_EUTRA) Decode(r *aper.AperReader) error {
 	var err error
 	var tmp_bool_ReportSFTD_Meas bool
 	if tmp_bool_ReportSFTD_Meas, err = r.ReadBoolean(); err != nil {

@@ -3,7 +3,7 @@ package ies
 import (
 	"bytes"
 
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -14,7 +14,7 @@ type PUCCH_ResourceExt_v1610 struct {
 	Pucch_RepetitionNrofSlots_r17 *PUCCH_ResourceExt_v1610_pucch_RepetitionNrofSlots_r17 `optional,ext-1`
 }
 
-func (ie *PUCCH_ResourceExt_v1610) Encode(w *uper.UperWriter) error {
+func (ie *PUCCH_ResourceExt_v1610) Encode(w *aper.AperWriter) error {
 	var err error
 	hasExtensions := ie.FormatExt_v1700 != nil || ie.Pucch_RepetitionNrofSlots_r17 != nil
 	preambleBits := []bool{hasExtensions, ie.InterlaceAllocation_r16 != nil, ie.Format_v1610 != nil}
@@ -43,7 +43,7 @@ func (ie *PUCCH_ResourceExt_v1610) Encode(w *uper.UperWriter) error {
 		// encode extension group 1
 		if extBitmap[0] {
 			extBuf := new(bytes.Buffer)
-			extWriter := uper.NewWriter(extBuf)
+			extWriter := aper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 1
 			optionals_ext_1 := []bool{ie.FormatExt_v1700 != nil, ie.Pucch_RepetitionNrofSlots_r17 != nil}
@@ -78,7 +78,7 @@ func (ie *PUCCH_ResourceExt_v1610) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *PUCCH_ResourceExt_v1610) Decode(r *uper.UperReader) error {
+func (ie *PUCCH_ResourceExt_v1610) Decode(r *aper.AperReader) error {
 	var err error
 	var extensionBit bool
 	if extensionBit, err = r.ReadBool(); err != nil {
@@ -119,7 +119,7 @@ func (ie *PUCCH_ResourceExt_v1610) Decode(r *uper.UperReader) error {
 				return err
 			}
 
-			extReader := uper.NewReader(bytes.NewReader(extBytes))
+			extReader := aper.NewReader(bytes.NewReader(extBytes))
 
 			FormatExt_v1700Present, err := extReader.ReadBool()
 			if err != nil {

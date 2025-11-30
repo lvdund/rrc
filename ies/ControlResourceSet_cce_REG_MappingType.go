@@ -3,7 +3,7 @@ package ies
 import (
 	"fmt"
 
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -16,10 +16,10 @@ const (
 type ControlResourceSet_cce_REG_MappingType struct {
 	Choice         uint64
 	Interleaved    *ControlResourceSet_cce_REG_MappingType_interleaved
-	NonInterleaved uper.NULL `madatory`
+	NonInterleaved aper.NULL `madatory`
 }
 
-func (ie *ControlResourceSet_cce_REG_MappingType) Encode(w *uper.UperWriter) error {
+func (ie *ControlResourceSet_cce_REG_MappingType) Encode(w *aper.AperWriter) error {
 	var err error
 	if err = w.WriteChoice(ie.Choice, 2, false); err != nil {
 		return err
@@ -39,7 +39,7 @@ func (ie *ControlResourceSet_cce_REG_MappingType) Encode(w *uper.UperWriter) err
 	return err
 }
 
-func (ie *ControlResourceSet_cce_REG_MappingType) Decode(r *uper.UperReader) error {
+func (ie *ControlResourceSet_cce_REG_MappingType) Decode(r *aper.AperReader) error {
 	var err error
 	if ie.Choice, err = r.ReadChoice(2, false); err != nil {
 		return err

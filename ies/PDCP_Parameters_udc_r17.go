@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -12,7 +12,7 @@ type PDCP_Parameters_udc_r17 struct {
 	SupportOfBufferSize_r17 *PDCP_Parameters_udc_r17_supportOfBufferSize_r17 `optional`
 }
 
-func (ie *PDCP_Parameters_udc_r17) Encode(w *uper.UperWriter) error {
+func (ie *PDCP_Parameters_udc_r17) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.StandardDictionary_r17 != nil, ie.OperatorDictionary_r17 != nil, ie.ContinueUDC_r17 != nil, ie.SupportOfBufferSize_r17 != nil}
 	for _, bit := range preambleBits {
@@ -43,7 +43,7 @@ func (ie *PDCP_Parameters_udc_r17) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *PDCP_Parameters_udc_r17) Decode(r *uper.UperReader) error {
+func (ie *PDCP_Parameters_udc_r17) Decode(r *aper.AperReader) error {
 	var err error
 	var StandardDictionary_r17Present bool
 	if StandardDictionary_r17Present, err = r.ReadBool(); err != nil {

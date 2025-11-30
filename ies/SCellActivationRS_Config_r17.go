@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -12,7 +12,7 @@ type SCellActivationRS_Config_r17 struct {
 	Qcl_Info_r17             TCI_StateId                    `madatory`
 }
 
-func (ie *SCellActivationRS_Config_r17) Encode(w *uper.UperWriter) error {
+func (ie *SCellActivationRS_Config_r17) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.GapBetweenBursts_r17 != nil}
 	for _, bit := range preambleBits {
@@ -27,7 +27,7 @@ func (ie *SCellActivationRS_Config_r17) Encode(w *uper.UperWriter) error {
 		return utils.WrapError("Encode ResourceSet_r17", err)
 	}
 	if ie.GapBetweenBursts_r17 != nil {
-		if err = w.WriteInteger(*ie.GapBetweenBursts_r17, &uper.Constraint{Lb: 2, Ub: 31}, false); err != nil {
+		if err = w.WriteInteger(*ie.GapBetweenBursts_r17, &aper.Constraint{Lb: 2, Ub: 31}, false); err != nil {
 			return utils.WrapError("Encode GapBetweenBursts_r17", err)
 		}
 	}
@@ -37,7 +37,7 @@ func (ie *SCellActivationRS_Config_r17) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *SCellActivationRS_Config_r17) Decode(r *uper.UperReader) error {
+func (ie *SCellActivationRS_Config_r17) Decode(r *aper.AperReader) error {
 	var err error
 	var GapBetweenBursts_r17Present bool
 	if GapBetweenBursts_r17Present, err = r.ReadBool(); err != nil {
@@ -51,7 +51,7 @@ func (ie *SCellActivationRS_Config_r17) Decode(r *uper.UperReader) error {
 	}
 	if GapBetweenBursts_r17Present {
 		var tmp_int_GapBetweenBursts_r17 int64
-		if tmp_int_GapBetweenBursts_r17, err = r.ReadInteger(&uper.Constraint{Lb: 2, Ub: 31}, false); err != nil {
+		if tmp_int_GapBetweenBursts_r17, err = r.ReadInteger(&aper.Constraint{Lb: 2, Ub: 31}, false); err != nil {
 			return utils.WrapError("Decode GapBetweenBursts_r17", err)
 		}
 		ie.GapBetweenBursts_r17 = &tmp_int_GapBetweenBursts_r17

@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -11,7 +11,7 @@ type Paging_v1700_IEs struct {
 	NonCriticalExtension   interface{}             `optional`
 }
 
-func (ie *Paging_v1700_IEs) Encode(w *uper.UperWriter) error {
+func (ie *Paging_v1700_IEs) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.PagingRecordList_v1700 != nil, ie.PagingGroupList_r17 != nil}
 	for _, bit := range preambleBits {
@@ -32,7 +32,7 @@ func (ie *Paging_v1700_IEs) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *Paging_v1700_IEs) Decode(r *uper.UperReader) error {
+func (ie *Paging_v1700_IEs) Decode(r *aper.AperReader) error {
 	var err error
 	var PagingRecordList_v1700Present bool
 	if PagingRecordList_v1700Present, err = r.ReadBool(); err != nil {

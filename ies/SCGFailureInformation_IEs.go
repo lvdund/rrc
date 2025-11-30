@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -10,7 +10,7 @@ type SCGFailureInformation_IEs struct {
 	NonCriticalExtension *SCGFailureInformation_v1590_IEs `optional`
 }
 
-func (ie *SCGFailureInformation_IEs) Encode(w *uper.UperWriter) error {
+func (ie *SCGFailureInformation_IEs) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.FailureReportSCG != nil, ie.NonCriticalExtension != nil}
 	for _, bit := range preambleBits {
@@ -31,7 +31,7 @@ func (ie *SCGFailureInformation_IEs) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *SCGFailureInformation_IEs) Decode(r *uper.UperReader) error {
+func (ie *SCGFailureInformation_IEs) Decode(r *aper.AperReader) error {
 	var err error
 	var FailureReportSCGPresent bool
 	if FailureReportSCGPresent, err = r.ReadBool(); err != nil {

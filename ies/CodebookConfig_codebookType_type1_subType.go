@@ -3,7 +3,7 @@ package ies
 import (
 	"fmt"
 
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -19,7 +19,7 @@ type CodebookConfig_codebookType_type1_subType struct {
 	TypeI_MultiPanel  *CodebookConfig_codebookType_type1_subType_typeI_MultiPanel
 }
 
-func (ie *CodebookConfig_codebookType_type1_subType) Encode(w *uper.UperWriter) error {
+func (ie *CodebookConfig_codebookType_type1_subType) Encode(w *aper.AperWriter) error {
 	var err error
 	if err = w.WriteChoice(ie.Choice, 2, false); err != nil {
 		return err
@@ -39,7 +39,7 @@ func (ie *CodebookConfig_codebookType_type1_subType) Encode(w *uper.UperWriter) 
 	return err
 }
 
-func (ie *CodebookConfig_codebookType_type1_subType) Decode(r *uper.UperReader) error {
+func (ie *CodebookConfig_codebookType_type1_subType) Decode(r *aper.AperReader) error {
 	var err error
 	if ie.Choice, err = r.ReadChoice(2, false); err != nil {
 		return err

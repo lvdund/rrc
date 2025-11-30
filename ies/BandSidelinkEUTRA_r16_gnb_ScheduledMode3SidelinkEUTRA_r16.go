@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -9,7 +9,7 @@ type BandSidelinkEUTRA_r16_gnb_ScheduledMode3SidelinkEUTRA_r16 struct {
 	Gnb_ScheduledMode3DelaySidelinkEUTRA_r16 BandSidelinkEUTRA_r16_gnb_ScheduledMode3SidelinkEUTRA_r16_gnb_ScheduledMode3DelaySidelinkEUTRA_r16 `madatory`
 }
 
-func (ie *BandSidelinkEUTRA_r16_gnb_ScheduledMode3SidelinkEUTRA_r16) Encode(w *uper.UperWriter) error {
+func (ie *BandSidelinkEUTRA_r16_gnb_ScheduledMode3SidelinkEUTRA_r16) Encode(w *aper.AperWriter) error {
 	var err error
 	if err = ie.Gnb_ScheduledMode3DelaySidelinkEUTRA_r16.Encode(w); err != nil {
 		return utils.WrapError("Encode Gnb_ScheduledMode3DelaySidelinkEUTRA_r16", err)
@@ -17,7 +17,7 @@ func (ie *BandSidelinkEUTRA_r16_gnb_ScheduledMode3SidelinkEUTRA_r16) Encode(w *u
 	return nil
 }
 
-func (ie *BandSidelinkEUTRA_r16_gnb_ScheduledMode3SidelinkEUTRA_r16) Decode(r *uper.UperReader) error {
+func (ie *BandSidelinkEUTRA_r16_gnb_ScheduledMode3SidelinkEUTRA_r16) Decode(r *aper.AperReader) error {
 	var err error
 	if err = ie.Gnb_ScheduledMode3DelaySidelinkEUTRA_r16.Decode(r); err != nil {
 		return utils.WrapError("Decode Gnb_ScheduledMode3DelaySidelinkEUTRA_r16", err)

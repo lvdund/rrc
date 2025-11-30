@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -11,7 +11,7 @@ type SL_BWP_DiscPoolConfig_r17 struct {
 	Sl_DiscTxPoolScheduling_r17 *SL_TxPoolDedicated_r16 `optional`
 }
 
-func (ie *SL_BWP_DiscPoolConfig_r17) Encode(w *uper.UperWriter) error {
+func (ie *SL_BWP_DiscPoolConfig_r17) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{len(ie.Sl_DiscRxPool_r17) > 0, ie.Sl_DiscTxPoolSelected_r17 != nil, ie.Sl_DiscTxPoolScheduling_r17 != nil}
 	for _, bit := range preambleBits {
@@ -20,7 +20,7 @@ func (ie *SL_BWP_DiscPoolConfig_r17) Encode(w *uper.UperWriter) error {
 		}
 	}
 	if len(ie.Sl_DiscRxPool_r17) > 0 {
-		tmp_Sl_DiscRxPool_r17 := utils.NewSequence[*SL_ResourcePool_r16]([]*SL_ResourcePool_r16{}, uper.Constraint{Lb: 1, Ub: maxNrofRXPool_r16}, false)
+		tmp_Sl_DiscRxPool_r17 := utils.NewSequence[*SL_ResourcePool_r16]([]*SL_ResourcePool_r16{}, aper.Constraint{Lb: 1, Ub: maxNrofRXPool_r16}, false)
 		for _, i := range ie.Sl_DiscRxPool_r17 {
 			tmp_Sl_DiscRxPool_r17.Value = append(tmp_Sl_DiscRxPool_r17.Value, &i)
 		}
@@ -41,7 +41,7 @@ func (ie *SL_BWP_DiscPoolConfig_r17) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *SL_BWP_DiscPoolConfig_r17) Decode(r *uper.UperReader) error {
+func (ie *SL_BWP_DiscPoolConfig_r17) Decode(r *aper.AperReader) error {
 	var err error
 	var Sl_DiscRxPool_r17Present bool
 	if Sl_DiscRxPool_r17Present, err = r.ReadBool(); err != nil {
@@ -56,7 +56,7 @@ func (ie *SL_BWP_DiscPoolConfig_r17) Decode(r *uper.UperReader) error {
 		return err
 	}
 	if Sl_DiscRxPool_r17Present {
-		tmp_Sl_DiscRxPool_r17 := utils.NewSequence[*SL_ResourcePool_r16]([]*SL_ResourcePool_r16{}, uper.Constraint{Lb: 1, Ub: maxNrofRXPool_r16}, false)
+		tmp_Sl_DiscRxPool_r17 := utils.NewSequence[*SL_ResourcePool_r16]([]*SL_ResourcePool_r16{}, aper.Constraint{Lb: 1, Ub: maxNrofRXPool_r16}, false)
 		fn_Sl_DiscRxPool_r17 := func() *SL_ResourcePool_r16 {
 			return new(SL_ResourcePool_r16)
 		}

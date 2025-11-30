@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -50,7 +50,7 @@ type SharedSpectrumChAccessParamsPerBand_r16 struct {
 	Cg_resourceConfig_r16                    *SharedSpectrumChAccessParamsPerBand_r16_cg_resourceConfig_r16                    `optional`
 }
 
-func (ie *SharedSpectrumChAccessParamsPerBand_r16) Encode(w *uper.UperWriter) error {
+func (ie *SharedSpectrumChAccessParamsPerBand_r16) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.Ul_DynamicChAccess_r16 != nil, ie.Ul_Semi_StaticChAccess_r16 != nil, ie.Ssb_RRM_DynamicChAccess_r16 != nil, ie.Ssb_RRM_Semi_StaticChAccess_r16 != nil, ie.Mib_Acquisition_r16 != nil, ie.Ssb_RLM_DynamicChAccess_r16 != nil, ie.Ssb_RLM_Semi_StaticChAccess_r16 != nil, ie.Sib1_Acquisition_r16 != nil, ie.ExtRA_ResponseWindow_r16 != nil, ie.Ssb_BFD_CBD_dynamicChannelAccess_r16 != nil, ie.Ssb_BFD_CBD_semi_staticChannelAccess_r16 != nil, ie.Csi_RS_BFD_CBD_r16 != nil, ie.Ul_ChannelBW_SCell_10mhz_r16 != nil, ie.Rssi_ChannelOccupancyReporting_r16 != nil, ie.Srs_StartAnyOFDM_Symbol_r16 != nil, ie.SearchSpaceFreqMonitorLocation_r16 != nil, ie.Coreset_RB_Offset_r16 != nil, ie.Cgi_Acquisition_r16 != nil, ie.ConfiguredUL_Tx_r16 != nil, ie.Prach_Wideband_r16 != nil, ie.Dci_AvailableRB_Set_r16 != nil, ie.Dci_ChOccupancyDuration_r16 != nil, ie.TypeB_PDSCH_length_r16 != nil, ie.SearchSpaceSwitchWithDCI_r16 != nil, ie.SearchSpaceSwitchWithoutDCI_r16 != nil, ie.SearchSpaceSwitchCapability2_r16 != nil, ie.Non_numericalPDSCH_HARQ_timing_r16 != nil, ie.EnhancedDynamicHARQ_codebook_r16 != nil, ie.OneShotHARQ_feedback_r16 != nil, ie.MultiPUSCH_UL_grant_r16 != nil, ie.Csi_RS_RLM_r16 != nil, ie.Dummy != nil, ie.PeriodicAndSemi_PersistentCSI_RS_r16 != nil, ie.Pusch_PRB_interlace_r16 != nil, ie.Pucch_F0_F1_PRB_Interlace_r16 != nil, ie.Occ_PRB_PF2_PF3_r16 != nil, ie.ExtCP_rangeCG_PUSCH_r16 != nil, ie.ConfiguredGrantWithReTx_r16 != nil, ie.Ed_Threshold_r16 != nil, ie.Ul_DL_COT_Sharing_r16 != nil, ie.Mux_CG_UCI_HARQ_ACK_r16 != nil, ie.Cg_resourceConfig_r16 != nil}
 	for _, bit := range preambleBits {
@@ -134,7 +134,7 @@ func (ie *SharedSpectrumChAccessParamsPerBand_r16) Encode(w *uper.UperWriter) er
 		}
 	}
 	if ie.SearchSpaceFreqMonitorLocation_r16 != nil {
-		if err = w.WriteInteger(*ie.SearchSpaceFreqMonitorLocation_r16, &uper.Constraint{Lb: 1, Ub: 5}, false); err != nil {
+		if err = w.WriteInteger(*ie.SearchSpaceFreqMonitorLocation_r16, &aper.Constraint{Lb: 1, Ub: 5}, false); err != nil {
 			return utils.WrapError("Encode SearchSpaceFreqMonitorLocation_r16", err)
 		}
 	}
@@ -271,7 +271,7 @@ func (ie *SharedSpectrumChAccessParamsPerBand_r16) Encode(w *uper.UperWriter) er
 	return nil
 }
 
-func (ie *SharedSpectrumChAccessParamsPerBand_r16) Decode(r *uper.UperReader) error {
+func (ie *SharedSpectrumChAccessParamsPerBand_r16) Decode(r *aper.AperReader) error {
 	var err error
 	var Ul_DynamicChAccess_r16Present bool
 	if Ul_DynamicChAccess_r16Present, err = r.ReadBool(); err != nil {
@@ -533,7 +533,7 @@ func (ie *SharedSpectrumChAccessParamsPerBand_r16) Decode(r *uper.UperReader) er
 	}
 	if SearchSpaceFreqMonitorLocation_r16Present {
 		var tmp_int_SearchSpaceFreqMonitorLocation_r16 int64
-		if tmp_int_SearchSpaceFreqMonitorLocation_r16, err = r.ReadInteger(&uper.Constraint{Lb: 1, Ub: 5}, false); err != nil {
+		if tmp_int_SearchSpaceFreqMonitorLocation_r16, err = r.ReadInteger(&aper.Constraint{Lb: 1, Ub: 5}, false); err != nil {
 			return utils.WrapError("Decode SearchSpaceFreqMonitorLocation_r16", err)
 		}
 		ie.SearchSpaceFreqMonitorLocation_r16 = &tmp_int_SearchSpaceFreqMonitorLocation_r16

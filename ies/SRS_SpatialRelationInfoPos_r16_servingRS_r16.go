@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -10,7 +10,7 @@ type SRS_SpatialRelationInfoPos_r16_servingRS_r16 struct {
 	ReferenceSignal_r16 SRS_SpatialRelationInfoPos_r16_servingRS_r16_referenceSignal_r16 `madatory`
 }
 
-func (ie *SRS_SpatialRelationInfoPos_r16_servingRS_r16) Encode(w *uper.UperWriter) error {
+func (ie *SRS_SpatialRelationInfoPos_r16_servingRS_r16) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.ServingCellId != nil}
 	for _, bit := range preambleBits {
@@ -29,7 +29,7 @@ func (ie *SRS_SpatialRelationInfoPos_r16_servingRS_r16) Encode(w *uper.UperWrite
 	return nil
 }
 
-func (ie *SRS_SpatialRelationInfoPos_r16_servingRS_r16) Decode(r *uper.UperReader) error {
+func (ie *SRS_SpatialRelationInfoPos_r16_servingRS_r16) Decode(r *aper.AperReader) error {
 	var err error
 	var ServingCellIdPresent bool
 	if ServingCellIdPresent, err = r.ReadBool(); err != nil {

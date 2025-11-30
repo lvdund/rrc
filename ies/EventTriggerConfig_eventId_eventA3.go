@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -13,7 +13,7 @@ type EventTriggerConfig_eventId_eventA3 struct {
 	UseAllowedCellList bool                      `madatory`
 }
 
-func (ie *EventTriggerConfig_eventId_eventA3) Encode(w *uper.UperWriter) error {
+func (ie *EventTriggerConfig_eventId_eventA3) Encode(w *aper.AperWriter) error {
 	var err error
 	if err = ie.A3_Offset.Encode(w); err != nil {
 		return utils.WrapError("Encode A3_Offset", err)
@@ -33,7 +33,7 @@ func (ie *EventTriggerConfig_eventId_eventA3) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *EventTriggerConfig_eventId_eventA3) Decode(r *uper.UperReader) error {
+func (ie *EventTriggerConfig_eventId_eventA3) Decode(r *aper.AperReader) error {
 	var err error
 	if err = ie.A3_Offset.Decode(r); err != nil {
 		return utils.WrapError("Decode A3_Offset", err)

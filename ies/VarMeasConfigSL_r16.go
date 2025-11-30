@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -12,7 +12,7 @@ type VarMeasConfigSL_r16 struct {
 	Sl_QuantityConfig_r16   *SL_QuantityConfig_r16   `optional`
 }
 
-func (ie *VarMeasConfigSL_r16) Encode(w *uper.UperWriter) error {
+func (ie *VarMeasConfigSL_r16) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.Sl_MeasIdList_r16 != nil, ie.Sl_MeasObjectList_r16 != nil, ie.Sl_reportConfigList_r16 != nil, ie.Sl_QuantityConfig_r16 != nil}
 	for _, bit := range preambleBits {
@@ -43,7 +43,7 @@ func (ie *VarMeasConfigSL_r16) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *VarMeasConfigSL_r16) Decode(r *uper.UperReader) error {
+func (ie *VarMeasConfigSL_r16) Decode(r *aper.AperReader) error {
 	var err error
 	var Sl_MeasIdList_r16Present bool
 	if Sl_MeasIdList_r16Present, err = r.ReadBool(); err != nil {

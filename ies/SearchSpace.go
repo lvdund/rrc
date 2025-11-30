@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -10,12 +10,12 @@ type SearchSpace struct {
 	ControlResourceSetId               *ControlResourceSetId                           `optional`
 	MonitoringSlotPeriodicityAndOffset *SearchSpace_monitoringSlotPeriodicityAndOffset `lb:0,ub:1,optional`
 	Duration                           *int64                                          `lb:2,ub:2559,optional`
-	MonitoringSymbolsWithinSlot        *uper.BitString                                 `lb:14,ub:14,optional`
+	MonitoringSymbolsWithinSlot        *aper.BitString                                 `lb:14,ub:14,optional`
 	NrofCandidates                     *SearchSpace_nrofCandidates                     `optional`
 	SearchSpaceType                    *SearchSpace_searchSpaceType                    `optional`
 }
 
-func (ie *SearchSpace) Encode(w *uper.UperWriter) error {
+func (ie *SearchSpace) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.ControlResourceSetId != nil, ie.MonitoringSlotPeriodicityAndOffset != nil, ie.Duration != nil, ie.MonitoringSymbolsWithinSlot != nil, ie.NrofCandidates != nil, ie.SearchSpaceType != nil}
 	for _, bit := range preambleBits {
@@ -37,12 +37,12 @@ func (ie *SearchSpace) Encode(w *uper.UperWriter) error {
 		}
 	}
 	if ie.Duration != nil {
-		if err = w.WriteInteger(*ie.Duration, &uper.Constraint{Lb: 2, Ub: 2559}, false); err != nil {
+		if err = w.WriteInteger(*ie.Duration, &aper.Constraint{Lb: 2, Ub: 2559}, false); err != nil {
 			return utils.WrapError("Encode Duration", err)
 		}
 	}
 	if ie.MonitoringSymbolsWithinSlot != nil {
-		if err = w.WriteBitString(ie.MonitoringSymbolsWithinSlot.Bytes, uint(ie.MonitoringSymbolsWithinSlot.NumBits), &uper.Constraint{Lb: 14, Ub: 14}, false); err != nil {
+		if err = w.WriteBitString(ie.MonitoringSymbolsWithinSlot.Bytes, uint(ie.MonitoringSymbolsWithinSlot.NumBits), &aper.Constraint{Lb: 14, Ub: 14}, false); err != nil {
 			return utils.WrapError("Encode MonitoringSymbolsWithinSlot", err)
 		}
 	}
@@ -59,7 +59,7 @@ func (ie *SearchSpace) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *SearchSpace) Decode(r *uper.UperReader) error {
+func (ie *SearchSpace) Decode(r *aper.AperReader) error {
 	var err error
 	var ControlResourceSetIdPresent bool
 	if ControlResourceSetIdPresent, err = r.ReadBool(); err != nil {
@@ -102,7 +102,7 @@ func (ie *SearchSpace) Decode(r *uper.UperReader) error {
 	}
 	if DurationPresent {
 		var tmp_int_Duration int64
-		if tmp_int_Duration, err = r.ReadInteger(&uper.Constraint{Lb: 2, Ub: 2559}, false); err != nil {
+		if tmp_int_Duration, err = r.ReadInteger(&aper.Constraint{Lb: 2, Ub: 2559}, false); err != nil {
 			return utils.WrapError("Decode Duration", err)
 		}
 		ie.Duration = &tmp_int_Duration
@@ -110,10 +110,10 @@ func (ie *SearchSpace) Decode(r *uper.UperReader) error {
 	if MonitoringSymbolsWithinSlotPresent {
 		var tmp_bs_MonitoringSymbolsWithinSlot []byte
 		var n_MonitoringSymbolsWithinSlot uint
-		if tmp_bs_MonitoringSymbolsWithinSlot, n_MonitoringSymbolsWithinSlot, err = r.ReadBitString(&uper.Constraint{Lb: 14, Ub: 14}, false); err != nil {
+		if tmp_bs_MonitoringSymbolsWithinSlot, n_MonitoringSymbolsWithinSlot, err = r.ReadBitString(&aper.Constraint{Lb: 14, Ub: 14}, false); err != nil {
 			return utils.WrapError("Decode MonitoringSymbolsWithinSlot", err)
 		}
-		tmp_bitstring := uper.BitString{
+		tmp_bitstring := aper.BitString{
 			Bytes:   tmp_bs_MonitoringSymbolsWithinSlot,
 			NumBits: uint64(n_MonitoringSymbolsWithinSlot),
 		}

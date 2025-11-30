@@ -3,7 +3,7 @@ package ies
 import (
 	"bytes"
 
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -40,7 +40,7 @@ type MeasObjectNR struct {
 	AssociatedMeasGapCSIRS2_v1720   *MeasGapId_r17                    `optional,ext-4`
 }
 
-func (ie *MeasObjectNR) Encode(w *uper.UperWriter) error {
+func (ie *MeasObjectNR) Encode(w *aper.AperWriter) error {
 	var err error
 	hasExtensions := ie.FreqBandIndicatorNR != nil || ie.MeasCycleSCell != nil || ie.Smtc3list_r16 != nil || ie.Rmtc_Config_r16 != nil || ie.T312_r16 != nil || ie.AssociatedMeasGapSSB_r17 != nil || ie.AssociatedMeasGapCSIRS_r17 != nil || ie.Smtc4list_r17 != nil || ie.MeasCyclePSCell_r17 != nil || ie.CellsToAddModListExt_v1710 != nil || ie.AssociatedMeasGapSSB2_v1720 != nil || ie.AssociatedMeasGapCSIRS2_v1720 != nil
 	preambleBits := []bool{hasExtensions, ie.SsbFrequency != nil, ie.SsbSubcarrierSpacing != nil, ie.Smtc1 != nil, ie.Smtc2 != nil, ie.RefFreqCSI_RS != nil, ie.AbsThreshSS_BlocksConsolidation != nil, ie.AbsThreshCSI_RS_Consolidation != nil, ie.NrofSS_BlocksToAverage != nil, ie.NrofCSI_RS_ResourcesToAverage != nil, ie.CellsToRemoveList != nil, ie.CellsToAddModList != nil, ie.ExcludedCellsToRemoveList != nil, len(ie.ExcludedCellsToAddModList) > 0, ie.AllowedCellsToRemoveList != nil, len(ie.AllowedCellsToAddModList) > 0}
@@ -88,16 +88,16 @@ func (ie *MeasObjectNR) Encode(w *uper.UperWriter) error {
 		}
 	}
 	if ie.NrofSS_BlocksToAverage != nil {
-		if err = w.WriteInteger(*ie.NrofSS_BlocksToAverage, &uper.Constraint{Lb: 2, Ub: maxNrofSS_BlocksToAverage}, false); err != nil {
+		if err = w.WriteInteger(*ie.NrofSS_BlocksToAverage, &aper.Constraint{Lb: 2, Ub: maxNrofSS_BlocksToAverage}, false); err != nil {
 			return utils.WrapError("Encode NrofSS_BlocksToAverage", err)
 		}
 	}
 	if ie.NrofCSI_RS_ResourcesToAverage != nil {
-		if err = w.WriteInteger(*ie.NrofCSI_RS_ResourcesToAverage, &uper.Constraint{Lb: 2, Ub: maxNrofCSI_RS_ResourcesToAverage}, false); err != nil {
+		if err = w.WriteInteger(*ie.NrofCSI_RS_ResourcesToAverage, &aper.Constraint{Lb: 2, Ub: maxNrofCSI_RS_ResourcesToAverage}, false); err != nil {
 			return utils.WrapError("Encode NrofCSI_RS_ResourcesToAverage", err)
 		}
 	}
-	if err = w.WriteInteger(ie.QuantityConfigIndex, &uper.Constraint{Lb: 1, Ub: maxNrofQuantityConfig}, false); err != nil {
+	if err = w.WriteInteger(ie.QuantityConfigIndex, &aper.Constraint{Lb: 1, Ub: maxNrofQuantityConfig}, false); err != nil {
 		return utils.WrapError("WriteInteger QuantityConfigIndex", err)
 	}
 	if err = ie.OffsetMO.Encode(w); err != nil {
@@ -119,7 +119,7 @@ func (ie *MeasObjectNR) Encode(w *uper.UperWriter) error {
 		}
 	}
 	if len(ie.ExcludedCellsToAddModList) > 0 {
-		tmp_ExcludedCellsToAddModList := utils.NewSequence[*PCI_RangeElement]([]*PCI_RangeElement{}, uper.Constraint{Lb: 1, Ub: maxNrofPCI_Ranges}, false)
+		tmp_ExcludedCellsToAddModList := utils.NewSequence[*PCI_RangeElement]([]*PCI_RangeElement{}, aper.Constraint{Lb: 1, Ub: maxNrofPCI_Ranges}, false)
 		for _, i := range ie.ExcludedCellsToAddModList {
 			tmp_ExcludedCellsToAddModList.Value = append(tmp_ExcludedCellsToAddModList.Value, &i)
 		}
@@ -133,7 +133,7 @@ func (ie *MeasObjectNR) Encode(w *uper.UperWriter) error {
 		}
 	}
 	if len(ie.AllowedCellsToAddModList) > 0 {
-		tmp_AllowedCellsToAddModList := utils.NewSequence[*PCI_RangeElement]([]*PCI_RangeElement{}, uper.Constraint{Lb: 1, Ub: maxNrofPCI_Ranges}, false)
+		tmp_AllowedCellsToAddModList := utils.NewSequence[*PCI_RangeElement]([]*PCI_RangeElement{}, aper.Constraint{Lb: 1, Ub: maxNrofPCI_Ranges}, false)
 		for _, i := range ie.AllowedCellsToAddModList {
 			tmp_AllowedCellsToAddModList.Value = append(tmp_AllowedCellsToAddModList.Value, &i)
 		}
@@ -151,7 +151,7 @@ func (ie *MeasObjectNR) Encode(w *uper.UperWriter) error {
 		// encode extension group 1
 		if extBitmap[0] {
 			extBuf := new(bytes.Buffer)
-			extWriter := uper.NewWriter(extBuf)
+			extWriter := aper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 1
 			optionals_ext_1 := []bool{ie.FreqBandIndicatorNR != nil, ie.MeasCycleSCell != nil}
@@ -186,7 +186,7 @@ func (ie *MeasObjectNR) Encode(w *uper.UperWriter) error {
 		// encode extension group 2
 		if extBitmap[1] {
 			extBuf := new(bytes.Buffer)
-			extWriter := uper.NewWriter(extBuf)
+			extWriter := aper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 2
 			optionals_ext_2 := []bool{ie.Smtc3list_r16 != nil, ie.Rmtc_Config_r16 != nil, ie.T312_r16 != nil}
@@ -233,7 +233,7 @@ func (ie *MeasObjectNR) Encode(w *uper.UperWriter) error {
 		// encode extension group 3
 		if extBitmap[2] {
 			extBuf := new(bytes.Buffer)
-			extWriter := uper.NewWriter(extBuf)
+			extWriter := aper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 3
 			optionals_ext_3 := []bool{ie.AssociatedMeasGapSSB_r17 != nil, ie.AssociatedMeasGapCSIRS_r17 != nil, ie.Smtc4list_r17 != nil, ie.MeasCyclePSCell_r17 != nil, ie.CellsToAddModListExt_v1710 != nil}
@@ -286,7 +286,7 @@ func (ie *MeasObjectNR) Encode(w *uper.UperWriter) error {
 		// encode extension group 4
 		if extBitmap[3] {
 			extBuf := new(bytes.Buffer)
-			extWriter := uper.NewWriter(extBuf)
+			extWriter := aper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 4
 			optionals_ext_4 := []bool{ie.AssociatedMeasGapSSB2_v1720 != nil, ie.AssociatedMeasGapCSIRS2_v1720 != nil}
@@ -321,7 +321,7 @@ func (ie *MeasObjectNR) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *MeasObjectNR) Decode(r *uper.UperReader) error {
+func (ie *MeasObjectNR) Decode(r *aper.AperReader) error {
 	var err error
 	var extensionBit bool
 	if extensionBit, err = r.ReadBool(); err != nil {
@@ -434,20 +434,20 @@ func (ie *MeasObjectNR) Decode(r *uper.UperReader) error {
 	}
 	if NrofSS_BlocksToAveragePresent {
 		var tmp_int_NrofSS_BlocksToAverage int64
-		if tmp_int_NrofSS_BlocksToAverage, err = r.ReadInteger(&uper.Constraint{Lb: 2, Ub: maxNrofSS_BlocksToAverage}, false); err != nil {
+		if tmp_int_NrofSS_BlocksToAverage, err = r.ReadInteger(&aper.Constraint{Lb: 2, Ub: maxNrofSS_BlocksToAverage}, false); err != nil {
 			return utils.WrapError("Decode NrofSS_BlocksToAverage", err)
 		}
 		ie.NrofSS_BlocksToAverage = &tmp_int_NrofSS_BlocksToAverage
 	}
 	if NrofCSI_RS_ResourcesToAveragePresent {
 		var tmp_int_NrofCSI_RS_ResourcesToAverage int64
-		if tmp_int_NrofCSI_RS_ResourcesToAverage, err = r.ReadInteger(&uper.Constraint{Lb: 2, Ub: maxNrofCSI_RS_ResourcesToAverage}, false); err != nil {
+		if tmp_int_NrofCSI_RS_ResourcesToAverage, err = r.ReadInteger(&aper.Constraint{Lb: 2, Ub: maxNrofCSI_RS_ResourcesToAverage}, false); err != nil {
 			return utils.WrapError("Decode NrofCSI_RS_ResourcesToAverage", err)
 		}
 		ie.NrofCSI_RS_ResourcesToAverage = &tmp_int_NrofCSI_RS_ResourcesToAverage
 	}
 	var tmp_int_QuantityConfigIndex int64
-	if tmp_int_QuantityConfigIndex, err = r.ReadInteger(&uper.Constraint{Lb: 1, Ub: maxNrofQuantityConfig}, false); err != nil {
+	if tmp_int_QuantityConfigIndex, err = r.ReadInteger(&aper.Constraint{Lb: 1, Ub: maxNrofQuantityConfig}, false); err != nil {
 		return utils.WrapError("ReadInteger QuantityConfigIndex", err)
 	}
 	ie.QuantityConfigIndex = tmp_int_QuantityConfigIndex
@@ -473,7 +473,7 @@ func (ie *MeasObjectNR) Decode(r *uper.UperReader) error {
 		}
 	}
 	if ExcludedCellsToAddModListPresent {
-		tmp_ExcludedCellsToAddModList := utils.NewSequence[*PCI_RangeElement]([]*PCI_RangeElement{}, uper.Constraint{Lb: 1, Ub: maxNrofPCI_Ranges}, false)
+		tmp_ExcludedCellsToAddModList := utils.NewSequence[*PCI_RangeElement]([]*PCI_RangeElement{}, aper.Constraint{Lb: 1, Ub: maxNrofPCI_Ranges}, false)
 		fn_ExcludedCellsToAddModList := func() *PCI_RangeElement {
 			return new(PCI_RangeElement)
 		}
@@ -492,7 +492,7 @@ func (ie *MeasObjectNR) Decode(r *uper.UperReader) error {
 		}
 	}
 	if AllowedCellsToAddModListPresent {
-		tmp_AllowedCellsToAddModList := utils.NewSequence[*PCI_RangeElement]([]*PCI_RangeElement{}, uper.Constraint{Lb: 1, Ub: maxNrofPCI_Ranges}, false)
+		tmp_AllowedCellsToAddModList := utils.NewSequence[*PCI_RangeElement]([]*PCI_RangeElement{}, aper.Constraint{Lb: 1, Ub: maxNrofPCI_Ranges}, false)
 		fn_AllowedCellsToAddModList := func() *PCI_RangeElement {
 			return new(PCI_RangeElement)
 		}
@@ -519,7 +519,7 @@ func (ie *MeasObjectNR) Decode(r *uper.UperReader) error {
 				return err
 			}
 
-			extReader := uper.NewReader(bytes.NewReader(extBytes))
+			extReader := aper.NewReader(bytes.NewReader(extBytes))
 
 			FreqBandIndicatorNRPresent, err := extReader.ReadBool()
 			if err != nil {
@@ -551,7 +551,7 @@ func (ie *MeasObjectNR) Decode(r *uper.UperReader) error {
 				return err
 			}
 
-			extReader := uper.NewReader(bytes.NewReader(extBytes))
+			extReader := aper.NewReader(bytes.NewReader(extBytes))
 
 			Smtc3list_r16Present, err := extReader.ReadBool()
 			if err != nil {
@@ -596,7 +596,7 @@ func (ie *MeasObjectNR) Decode(r *uper.UperReader) error {
 				return err
 			}
 
-			extReader := uper.NewReader(bytes.NewReader(extBytes))
+			extReader := aper.NewReader(bytes.NewReader(extBytes))
 
 			AssociatedMeasGapSSB_r17Present, err := extReader.ReadBool()
 			if err != nil {
@@ -661,7 +661,7 @@ func (ie *MeasObjectNR) Decode(r *uper.UperReader) error {
 				return err
 			}
 
-			extReader := uper.NewReader(bytes.NewReader(extBytes))
+			extReader := aper.NewReader(bytes.NewReader(extBytes))
 
 			AssociatedMeasGapSSB2_v1720Present, err := extReader.ReadBool()
 			if err != nil {

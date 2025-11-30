@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -15,7 +15,7 @@ type UE_TimersAndConstants struct {
 	T319 UE_TimersAndConstants_t319 `madatory`
 }
 
-func (ie *UE_TimersAndConstants) Encode(w *uper.UperWriter) error {
+func (ie *UE_TimersAndConstants) Encode(w *aper.AperWriter) error {
 	var err error
 	if err = ie.T300.Encode(w); err != nil {
 		return utils.WrapError("Encode T300", err)
@@ -41,7 +41,7 @@ func (ie *UE_TimersAndConstants) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *UE_TimersAndConstants) Decode(r *uper.UperReader) error {
+func (ie *UE_TimersAndConstants) Decode(r *aper.AperReader) error {
 	var err error
 	if err = ie.T300.Decode(r); err != nil {
 		return utils.WrapError("Decode T300", err)

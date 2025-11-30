@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -11,7 +11,7 @@ type SL_BWP_PoolConfigCommon_r16 struct {
 	Sl_TxPoolExceptional_r16    *SL_ResourcePoolConfig_r16  `optional`
 }
 
-func (ie *SL_BWP_PoolConfigCommon_r16) Encode(w *uper.UperWriter) error {
+func (ie *SL_BWP_PoolConfigCommon_r16) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{len(ie.Sl_RxPool_r16) > 0, len(ie.Sl_TxPoolSelectedNormal_r16) > 0, ie.Sl_TxPoolExceptional_r16 != nil}
 	for _, bit := range preambleBits {
@@ -20,7 +20,7 @@ func (ie *SL_BWP_PoolConfigCommon_r16) Encode(w *uper.UperWriter) error {
 		}
 	}
 	if len(ie.Sl_RxPool_r16) > 0 {
-		tmp_Sl_RxPool_r16 := utils.NewSequence[*SL_ResourcePool_r16]([]*SL_ResourcePool_r16{}, uper.Constraint{Lb: 1, Ub: maxNrofRXPool_r16}, false)
+		tmp_Sl_RxPool_r16 := utils.NewSequence[*SL_ResourcePool_r16]([]*SL_ResourcePool_r16{}, aper.Constraint{Lb: 1, Ub: maxNrofRXPool_r16}, false)
 		for _, i := range ie.Sl_RxPool_r16 {
 			tmp_Sl_RxPool_r16.Value = append(tmp_Sl_RxPool_r16.Value, &i)
 		}
@@ -29,7 +29,7 @@ func (ie *SL_BWP_PoolConfigCommon_r16) Encode(w *uper.UperWriter) error {
 		}
 	}
 	if len(ie.Sl_TxPoolSelectedNormal_r16) > 0 {
-		tmp_Sl_TxPoolSelectedNormal_r16 := utils.NewSequence[*SL_ResourcePoolConfig_r16]([]*SL_ResourcePoolConfig_r16{}, uper.Constraint{Lb: 1, Ub: maxNrofTXPool_r16}, false)
+		tmp_Sl_TxPoolSelectedNormal_r16 := utils.NewSequence[*SL_ResourcePoolConfig_r16]([]*SL_ResourcePoolConfig_r16{}, aper.Constraint{Lb: 1, Ub: maxNrofTXPool_r16}, false)
 		for _, i := range ie.Sl_TxPoolSelectedNormal_r16 {
 			tmp_Sl_TxPoolSelectedNormal_r16.Value = append(tmp_Sl_TxPoolSelectedNormal_r16.Value, &i)
 		}
@@ -45,7 +45,7 @@ func (ie *SL_BWP_PoolConfigCommon_r16) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *SL_BWP_PoolConfigCommon_r16) Decode(r *uper.UperReader) error {
+func (ie *SL_BWP_PoolConfigCommon_r16) Decode(r *aper.AperReader) error {
 	var err error
 	var Sl_RxPool_r16Present bool
 	if Sl_RxPool_r16Present, err = r.ReadBool(); err != nil {
@@ -60,7 +60,7 @@ func (ie *SL_BWP_PoolConfigCommon_r16) Decode(r *uper.UperReader) error {
 		return err
 	}
 	if Sl_RxPool_r16Present {
-		tmp_Sl_RxPool_r16 := utils.NewSequence[*SL_ResourcePool_r16]([]*SL_ResourcePool_r16{}, uper.Constraint{Lb: 1, Ub: maxNrofRXPool_r16}, false)
+		tmp_Sl_RxPool_r16 := utils.NewSequence[*SL_ResourcePool_r16]([]*SL_ResourcePool_r16{}, aper.Constraint{Lb: 1, Ub: maxNrofRXPool_r16}, false)
 		fn_Sl_RxPool_r16 := func() *SL_ResourcePool_r16 {
 			return new(SL_ResourcePool_r16)
 		}
@@ -73,7 +73,7 @@ func (ie *SL_BWP_PoolConfigCommon_r16) Decode(r *uper.UperReader) error {
 		}
 	}
 	if Sl_TxPoolSelectedNormal_r16Present {
-		tmp_Sl_TxPoolSelectedNormal_r16 := utils.NewSequence[*SL_ResourcePoolConfig_r16]([]*SL_ResourcePoolConfig_r16{}, uper.Constraint{Lb: 1, Ub: maxNrofTXPool_r16}, false)
+		tmp_Sl_TxPoolSelectedNormal_r16 := utils.NewSequence[*SL_ResourcePoolConfig_r16]([]*SL_ResourcePoolConfig_r16{}, aper.Constraint{Lb: 1, Ub: maxNrofTXPool_r16}, false)
 		fn_Sl_TxPoolSelectedNormal_r16 := func() *SL_ResourcePoolConfig_r16 {
 			return new(SL_ResourcePoolConfig_r16)
 		}

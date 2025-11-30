@@ -3,7 +3,7 @@ package ies
 import (
 	"fmt"
 
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -21,7 +21,7 @@ type SRS_Resource_resourceType struct {
 	Periodic        *SRS_Resource_resourceType_periodic
 }
 
-func (ie *SRS_Resource_resourceType) Encode(w *uper.UperWriter) error {
+func (ie *SRS_Resource_resourceType) Encode(w *aper.AperWriter) error {
 	var err error
 	if err = w.WriteChoice(ie.Choice, 3, false); err != nil {
 		return err
@@ -43,7 +43,7 @@ func (ie *SRS_Resource_resourceType) Encode(w *uper.UperWriter) error {
 	return err
 }
 
-func (ie *SRS_Resource_resourceType) Decode(r *uper.UperReader) error {
+func (ie *SRS_Resource_resourceType) Decode(r *aper.AperReader) error {
 	var err error
 	if ie.Choice, err = r.ReadChoice(3, false); err != nil {
 		return err

@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -12,7 +12,7 @@ type GeneralParametersMRDC_XDD_Diff struct {
 	Dummy                        *GeneralParametersMRDC_XDD_Diff_dummy                        `optional`
 }
 
-func (ie *GeneralParametersMRDC_XDD_Diff) Encode(w *uper.UperWriter) error {
+func (ie *GeneralParametersMRDC_XDD_Diff) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.SplitSRB_WithOneUL_Path != nil, ie.SplitDRB_withUL_Both_MCG_SCG != nil, ie.Srb3 != nil, ie.Dummy != nil}
 	for _, bit := range preambleBits {
@@ -43,7 +43,7 @@ func (ie *GeneralParametersMRDC_XDD_Diff) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *GeneralParametersMRDC_XDD_Diff) Decode(r *uper.UperReader) error {
+func (ie *GeneralParametersMRDC_XDD_Diff) Decode(r *aper.AperReader) error {
 	var err error
 	var SplitSRB_WithOneUL_PathPresent bool
 	if SplitSRB_WithOneUL_PathPresent, err = r.ReadBool(); err != nil {

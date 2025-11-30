@@ -3,7 +3,7 @@ package ies
 import (
 	"fmt"
 
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -19,7 +19,7 @@ type RRCSystemInfoRequest_CriticalExtensions_criticalExtensionsFuture_r16_RRCSys
 	CriticalExtensionsFuture    interface{} `madatory`
 }
 
-func (ie *RRCSystemInfoRequest_CriticalExtensions_criticalExtensionsFuture_r16_RRCSystemInfoRequest) Encode(w *uper.UperWriter) error {
+func (ie *RRCSystemInfoRequest_CriticalExtensions_criticalExtensionsFuture_r16_RRCSystemInfoRequest) Encode(w *aper.AperWriter) error {
 	var err error
 	if err = w.WriteChoice(ie.Choice, 2, false); err != nil {
 		return err
@@ -37,7 +37,7 @@ func (ie *RRCSystemInfoRequest_CriticalExtensions_criticalExtensionsFuture_r16_R
 	return err
 }
 
-func (ie *RRCSystemInfoRequest_CriticalExtensions_criticalExtensionsFuture_r16_RRCSystemInfoRequest) Decode(r *uper.UperReader) error {
+func (ie *RRCSystemInfoRequest_CriticalExtensions_criticalExtensionsFuture_r16_RRCSystemInfoRequest) Decode(r *aper.AperReader) error {
 	var err error
 	if ie.Choice, err = r.ReadChoice(2, false); err != nil {
 		return err

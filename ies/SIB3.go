@@ -3,7 +3,7 @@ package ies
 import (
 	"bytes"
 
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -19,7 +19,7 @@ type SIB3 struct {
 	ChannelAccessMode2_r17          *SIB3_channelAccessMode2_r17       `optional,ext-3`
 }
 
-func (ie *SIB3) Encode(w *uper.UperWriter) error {
+func (ie *SIB3) Encode(w *aper.AperWriter) error {
 	var err error
 	hasExtensions := ie.IntraFreqNeighCellList_v1610 != nil || ie.IntraFreqAllowedCellList_r16 != nil || len(ie.IntraFreqCAG_CellList_r16) > 0 || ie.IntraFreqNeighHSDN_CellList_r17 != nil || ie.IntraFreqNeighCellList_v1710 != nil || ie.ChannelAccessMode2_r17 != nil
 	preambleBits := []bool{hasExtensions, ie.IntraFreqNeighCellList != nil, ie.IntraFreqExcludedCellList != nil, ie.LateNonCriticalExtension != nil}
@@ -39,7 +39,7 @@ func (ie *SIB3) Encode(w *uper.UperWriter) error {
 		}
 	}
 	if ie.LateNonCriticalExtension != nil {
-		if err = w.WriteOctetString(*ie.LateNonCriticalExtension, &uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+		if err = w.WriteOctetString(*ie.LateNonCriticalExtension, &aper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
 			return utils.WrapError("Encode LateNonCriticalExtension", err)
 		}
 	}
@@ -53,7 +53,7 @@ func (ie *SIB3) Encode(w *uper.UperWriter) error {
 		// encode extension group 1
 		if extBitmap[0] {
 			extBuf := new(bytes.Buffer)
-			extWriter := uper.NewWriter(extBuf)
+			extWriter := aper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 1
 			optionals_ext_1 := []bool{ie.IntraFreqNeighCellList_v1610 != nil, ie.IntraFreqAllowedCellList_r16 != nil, len(ie.IntraFreqCAG_CellList_r16) > 0}
@@ -77,7 +77,7 @@ func (ie *SIB3) Encode(w *uper.UperWriter) error {
 			}
 			// encode IntraFreqCAG_CellList_r16 optional
 			if len(ie.IntraFreqCAG_CellList_r16) > 0 {
-				tmp_IntraFreqCAG_CellList_r16 := utils.NewSequence[*IntraFreqCAG_CellListPerPLMN_r16]([]*IntraFreqCAG_CellListPerPLMN_r16{}, uper.Constraint{Lb: 1, Ub: maxPLMN}, false)
+				tmp_IntraFreqCAG_CellList_r16 := utils.NewSequence[*IntraFreqCAG_CellListPerPLMN_r16]([]*IntraFreqCAG_CellListPerPLMN_r16{}, aper.Constraint{Lb: 1, Ub: maxPLMN}, false)
 				for _, i := range ie.IntraFreqCAG_CellList_r16 {
 					tmp_IntraFreqCAG_CellList_r16.Value = append(tmp_IntraFreqCAG_CellList_r16.Value, &i)
 				}
@@ -98,7 +98,7 @@ func (ie *SIB3) Encode(w *uper.UperWriter) error {
 		// encode extension group 2
 		if extBitmap[1] {
 			extBuf := new(bytes.Buffer)
-			extWriter := uper.NewWriter(extBuf)
+			extWriter := aper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 2
 			optionals_ext_2 := []bool{ie.IntraFreqNeighHSDN_CellList_r17 != nil, ie.IntraFreqNeighCellList_v1710 != nil}
@@ -133,7 +133,7 @@ func (ie *SIB3) Encode(w *uper.UperWriter) error {
 		// encode extension group 3
 		if extBitmap[2] {
 			extBuf := new(bytes.Buffer)
-			extWriter := uper.NewWriter(extBuf)
+			extWriter := aper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 3
 			optionals_ext_3 := []bool{ie.ChannelAccessMode2_r17 != nil}
@@ -162,7 +162,7 @@ func (ie *SIB3) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *SIB3) Decode(r *uper.UperReader) error {
+func (ie *SIB3) Decode(r *aper.AperReader) error {
 	var err error
 	var extensionBit bool
 	if extensionBit, err = r.ReadBool(); err != nil {
@@ -194,7 +194,7 @@ func (ie *SIB3) Decode(r *uper.UperReader) error {
 	}
 	if LateNonCriticalExtensionPresent {
 		var tmp_os_LateNonCriticalExtension []byte
-		if tmp_os_LateNonCriticalExtension, err = r.ReadOctetString(&uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+		if tmp_os_LateNonCriticalExtension, err = r.ReadOctetString(&aper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
 			return utils.WrapError("Decode LateNonCriticalExtension", err)
 		}
 		ie.LateNonCriticalExtension = &tmp_os_LateNonCriticalExtension
@@ -214,7 +214,7 @@ func (ie *SIB3) Decode(r *uper.UperReader) error {
 				return err
 			}
 
-			extReader := uper.NewReader(bytes.NewReader(extBytes))
+			extReader := aper.NewReader(bytes.NewReader(extBytes))
 
 			IntraFreqNeighCellList_v1610Present, err := extReader.ReadBool()
 			if err != nil {
@@ -244,7 +244,7 @@ func (ie *SIB3) Decode(r *uper.UperReader) error {
 			}
 			// decode IntraFreqCAG_CellList_r16 optional
 			if IntraFreqCAG_CellList_r16Present {
-				tmp_IntraFreqCAG_CellList_r16 := utils.NewSequence[*IntraFreqCAG_CellListPerPLMN_r16]([]*IntraFreqCAG_CellListPerPLMN_r16{}, uper.Constraint{Lb: 1, Ub: maxPLMN}, false)
+				tmp_IntraFreqCAG_CellList_r16 := utils.NewSequence[*IntraFreqCAG_CellListPerPLMN_r16]([]*IntraFreqCAG_CellListPerPLMN_r16{}, aper.Constraint{Lb: 1, Ub: maxPLMN}, false)
 				fn_IntraFreqCAG_CellList_r16 := func() *IntraFreqCAG_CellListPerPLMN_r16 {
 					return new(IntraFreqCAG_CellListPerPLMN_r16)
 				}
@@ -264,7 +264,7 @@ func (ie *SIB3) Decode(r *uper.UperReader) error {
 				return err
 			}
 
-			extReader := uper.NewReader(bytes.NewReader(extBytes))
+			extReader := aper.NewReader(bytes.NewReader(extBytes))
 
 			IntraFreqNeighHSDN_CellList_r17Present, err := extReader.ReadBool()
 			if err != nil {
@@ -296,7 +296,7 @@ func (ie *SIB3) Decode(r *uper.UperReader) error {
 				return err
 			}
 
-			extReader := uper.NewReader(bytes.NewReader(extBytes))
+			extReader := aper.NewReader(bytes.NewReader(extBytes))
 
 			ChannelAccessMode2_r17Present, err := extReader.ReadBool()
 			if err != nil {

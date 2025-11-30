@@ -3,7 +3,7 @@ package ies
 import (
 	"bytes"
 
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -15,7 +15,7 @@ type SRB_ToAddMod struct {
 	Srb_Identity_v1700 *SRB_Identity_v1700           `optional,ext-1`
 }
 
-func (ie *SRB_ToAddMod) Encode(w *uper.UperWriter) error {
+func (ie *SRB_ToAddMod) Encode(w *aper.AperWriter) error {
 	var err error
 	hasExtensions := ie.Srb_Identity_v1700 != nil
 	preambleBits := []bool{hasExtensions, ie.ReestablishPDCP != nil, ie.DiscardOnPDCP != nil, ie.Pdcp_Config != nil}
@@ -52,7 +52,7 @@ func (ie *SRB_ToAddMod) Encode(w *uper.UperWriter) error {
 		// encode extension group 1
 		if extBitmap[0] {
 			extBuf := new(bytes.Buffer)
-			extWriter := uper.NewWriter(extBuf)
+			extWriter := aper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 1
 			optionals_ext_1 := []bool{ie.Srb_Identity_v1700 != nil}
@@ -81,7 +81,7 @@ func (ie *SRB_ToAddMod) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *SRB_ToAddMod) Decode(r *uper.UperReader) error {
+func (ie *SRB_ToAddMod) Decode(r *aper.AperReader) error {
 	var err error
 	var extensionBit bool
 	if extensionBit, err = r.ReadBool(); err != nil {
@@ -135,7 +135,7 @@ func (ie *SRB_ToAddMod) Decode(r *uper.UperReader) error {
 				return err
 			}
 
-			extReader := uper.NewReader(bytes.NewReader(extBytes))
+			extReader := aper.NewReader(bytes.NewReader(extBytes))
 
 			Srb_Identity_v1700Present, err := extReader.ReadBool()
 			if err != nil {

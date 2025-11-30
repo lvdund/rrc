@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -10,7 +10,7 @@ type MeasObjectToAddMod struct {
 	MeasObject   MeasObjectToAddMod_measObject `madatory`
 }
 
-func (ie *MeasObjectToAddMod) Encode(w *uper.UperWriter) error {
+func (ie *MeasObjectToAddMod) Encode(w *aper.AperWriter) error {
 	var err error
 	if err = ie.MeasObjectId.Encode(w); err != nil {
 		return utils.WrapError("Encode MeasObjectId", err)
@@ -21,7 +21,7 @@ func (ie *MeasObjectToAddMod) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *MeasObjectToAddMod) Decode(r *uper.UperReader) error {
+func (ie *MeasObjectToAddMod) Decode(r *aper.AperReader) error {
 	var err error
 	if err = ie.MeasObjectId.Decode(r); err != nil {
 		return utils.WrapError("Decode MeasObjectId", err)

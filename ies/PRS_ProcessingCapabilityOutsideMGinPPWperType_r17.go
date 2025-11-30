@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -13,7 +13,7 @@ type PRS_ProcessingCapabilityOutsideMGinPPWperType_r17 struct {
 	Ppw_maxNumOfDL_Bandwidth_r17               *PRS_ProcessingCapabilityOutsideMGinPPWperType_r17_ppw_maxNumOfDL_Bandwidth_r17               `optional,ext`
 }
 
-func (ie *PRS_ProcessingCapabilityOutsideMGinPPWperType_r17) Encode(w *uper.UperWriter) error {
+func (ie *PRS_ProcessingCapabilityOutsideMGinPPWperType_r17) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.Ppw_durationOfPRS_Processing_r17 != nil, ie.Ppw_maxNumOfDL_PRS_ResProcessedPerSlot_r17 != nil}
 	for _, bit := range preambleBits {
@@ -40,7 +40,7 @@ func (ie *PRS_ProcessingCapabilityOutsideMGinPPWperType_r17) Encode(w *uper.Uper
 	return nil
 }
 
-func (ie *PRS_ProcessingCapabilityOutsideMGinPPWperType_r17) Decode(r *uper.UperReader) error {
+func (ie *PRS_ProcessingCapabilityOutsideMGinPPWperType_r17) Decode(r *aper.AperReader) error {
 	var err error
 	var Ppw_durationOfPRS_Processing_r17Present bool
 	if Ppw_durationOfPRS_Processing_r17Present, err = r.ReadBool(); err != nil {

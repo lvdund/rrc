@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -9,9 +9,9 @@ type ReestabNCellInfoList struct {
 	Value []ReestabNCellInfo `lb:1,ub:maxCellPrep,madatory`
 }
 
-func (ie *ReestabNCellInfoList) Encode(w *uper.UperWriter) error {
+func (ie *ReestabNCellInfoList) Encode(w *aper.AperWriter) error {
 	var err error
-	tmp := utils.NewSequence[*ReestabNCellInfo]([]*ReestabNCellInfo{}, uper.Constraint{Lb: 1, Ub: maxCellPrep}, false)
+	tmp := utils.NewSequence[*ReestabNCellInfo]([]*ReestabNCellInfo{}, aper.Constraint{Lb: 1, Ub: maxCellPrep}, false)
 	for _, i := range ie.Value {
 		tmp.Value = append(tmp.Value, &i)
 	}
@@ -21,9 +21,9 @@ func (ie *ReestabNCellInfoList) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *ReestabNCellInfoList) Decode(r *uper.UperReader) error {
+func (ie *ReestabNCellInfoList) Decode(r *aper.AperReader) error {
 	var err error
-	tmp := utils.NewSequence[*ReestabNCellInfo]([]*ReestabNCellInfo{}, uper.Constraint{Lb: 1, Ub: maxCellPrep}, false)
+	tmp := utils.NewSequence[*ReestabNCellInfo]([]*ReestabNCellInfo{}, aper.Constraint{Lb: 1, Ub: maxCellPrep}, false)
 	fn := func() *ReestabNCellInfo {
 		return new(ReestabNCellInfo)
 	}

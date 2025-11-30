@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -11,7 +11,7 @@ type MRB_RLC_ConfigBroadcast_r17 struct {
 	T_Reassembly_r17           *T_Reassembly                                   `optional`
 }
 
-func (ie *MRB_RLC_ConfigBroadcast_r17) Encode(w *uper.UperWriter) error {
+func (ie *MRB_RLC_ConfigBroadcast_r17) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.Sn_FieldLength_r17 != nil, ie.T_Reassembly_r17 != nil}
 	for _, bit := range preambleBits {
@@ -35,7 +35,7 @@ func (ie *MRB_RLC_ConfigBroadcast_r17) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *MRB_RLC_ConfigBroadcast_r17) Decode(r *uper.UperReader) error {
+func (ie *MRB_RLC_ConfigBroadcast_r17) Decode(r *aper.AperReader) error {
 	var err error
 	var Sn_FieldLength_r17Present bool
 	if Sn_FieldLength_r17Present, err = r.ReadBool(); err != nil {

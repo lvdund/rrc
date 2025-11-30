@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -10,7 +10,7 @@ type TAR_Config_r17 struct {
 	TimingAdvanceSR_r17   *TAR_Config_r17_timingAdvanceSR_r17   `optional`
 }
 
-func (ie *TAR_Config_r17) Encode(w *uper.UperWriter) error {
+func (ie *TAR_Config_r17) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.OffsetThresholdTA_r17 != nil, ie.TimingAdvanceSR_r17 != nil}
 	for _, bit := range preambleBits {
@@ -31,7 +31,7 @@ func (ie *TAR_Config_r17) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *TAR_Config_r17) Decode(r *uper.UperReader) error {
+func (ie *TAR_Config_r17) Decode(r *aper.AperReader) error {
 	var err error
 	var OffsetThresholdTA_r17Present bool
 	if OffsetThresholdTA_r17Present, err = r.ReadBool(); err != nil {

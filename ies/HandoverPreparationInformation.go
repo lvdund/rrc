@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -9,7 +9,7 @@ type HandoverPreparationInformation struct {
 	CriticalExtensions HandoverPreparationInformation_CriticalExtensions `madatory`
 }
 
-func (ie *HandoverPreparationInformation) Encode(w *uper.UperWriter) error {
+func (ie *HandoverPreparationInformation) Encode(w *aper.AperWriter) error {
 	var err error
 	if err = ie.CriticalExtensions.Encode(w); err != nil {
 		return utils.WrapError("Encode CriticalExtensions", err)
@@ -17,7 +17,7 @@ func (ie *HandoverPreparationInformation) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *HandoverPreparationInformation) Decode(r *uper.UperReader) error {
+func (ie *HandoverPreparationInformation) Decode(r *aper.AperReader) error {
 	var err error
 	if err = ie.CriticalExtensions.Decode(r); err != nil {
 		return utils.WrapError("Decode CriticalExtensions", err)

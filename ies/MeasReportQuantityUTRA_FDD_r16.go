@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -10,7 +10,7 @@ type MeasReportQuantityUTRA_FDD_r16 struct {
 	Cpich_EcN0 bool `madatory`
 }
 
-func (ie *MeasReportQuantityUTRA_FDD_r16) Encode(w *uper.UperWriter) error {
+func (ie *MeasReportQuantityUTRA_FDD_r16) Encode(w *aper.AperWriter) error {
 	var err error
 	if err = w.WriteBoolean(ie.Cpich_RSCP); err != nil {
 		return utils.WrapError("WriteBoolean Cpich_RSCP", err)
@@ -21,7 +21,7 @@ func (ie *MeasReportQuantityUTRA_FDD_r16) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *MeasReportQuantityUTRA_FDD_r16) Decode(r *uper.UperReader) error {
+func (ie *MeasReportQuantityUTRA_FDD_r16) Decode(r *aper.AperReader) error {
 	var err error
 	var tmp_bool_Cpich_RSCP bool
 	if tmp_bool_Cpich_RSCP, err = r.ReadBoolean(); err != nil {

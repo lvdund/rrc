@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -16,7 +16,7 @@ type LogMeasReport_r16 struct {
 	LogMeasAvailableWLAN_r16     *LogMeasReport_r16_logMeasAvailableWLAN_r16 `optional`
 }
 
-func (ie *LogMeasReport_r16) Encode(w *uper.UperWriter) error {
+func (ie *LogMeasReport_r16) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.LogMeasAvailable_r16 != nil, ie.LogMeasAvailableBT_r16 != nil, ie.LogMeasAvailableWLAN_r16 != nil}
 	for _, bit := range preambleBits {
@@ -30,10 +30,10 @@ func (ie *LogMeasReport_r16) Encode(w *uper.UperWriter) error {
 	if err = ie.TraceReference_r16.Encode(w); err != nil {
 		return utils.WrapError("Encode TraceReference_r16", err)
 	}
-	if err = w.WriteOctetString(ie.TraceRecordingSessionRef_r16, &uper.Constraint{Lb: 2, Ub: 2}, false); err != nil {
+	if err = w.WriteOctetString(ie.TraceRecordingSessionRef_r16, &aper.Constraint{Lb: 2, Ub: 2}, false); err != nil {
 		return utils.WrapError("WriteOctetString TraceRecordingSessionRef_r16", err)
 	}
-	if err = w.WriteOctetString(ie.Tce_Id_r16, &uper.Constraint{Lb: 1, Ub: 1}, false); err != nil {
+	if err = w.WriteOctetString(ie.Tce_Id_r16, &aper.Constraint{Lb: 1, Ub: 1}, false); err != nil {
 		return utils.WrapError("WriteOctetString Tce_Id_r16", err)
 	}
 	if err = ie.LogMeasInfoList_r16.Encode(w); err != nil {
@@ -57,7 +57,7 @@ func (ie *LogMeasReport_r16) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *LogMeasReport_r16) Decode(r *uper.UperReader) error {
+func (ie *LogMeasReport_r16) Decode(r *aper.AperReader) error {
 	var err error
 	var LogMeasAvailable_r16Present bool
 	if LogMeasAvailable_r16Present, err = r.ReadBool(); err != nil {
@@ -78,12 +78,12 @@ func (ie *LogMeasReport_r16) Decode(r *uper.UperReader) error {
 		return utils.WrapError("Decode TraceReference_r16", err)
 	}
 	var tmp_os_TraceRecordingSessionRef_r16 []byte
-	if tmp_os_TraceRecordingSessionRef_r16, err = r.ReadOctetString(&uper.Constraint{Lb: 2, Ub: 2}, false); err != nil {
+	if tmp_os_TraceRecordingSessionRef_r16, err = r.ReadOctetString(&aper.Constraint{Lb: 2, Ub: 2}, false); err != nil {
 		return utils.WrapError("ReadOctetString TraceRecordingSessionRef_r16", err)
 	}
 	ie.TraceRecordingSessionRef_r16 = tmp_os_TraceRecordingSessionRef_r16
 	var tmp_os_Tce_Id_r16 []byte
-	if tmp_os_Tce_Id_r16, err = r.ReadOctetString(&uper.Constraint{Lb: 1, Ub: 1}, false); err != nil {
+	if tmp_os_Tce_Id_r16, err = r.ReadOctetString(&aper.Constraint{Lb: 1, Ub: 1}, false); err != nil {
 		return utils.WrapError("ReadOctetString Tce_Id_r16", err)
 	}
 	ie.Tce_Id_r16 = tmp_os_Tce_Id_r16

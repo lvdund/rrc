@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -9,9 +9,9 @@ type FeatureSetCombination struct {
 	Value []FeatureSetsPerBand `lb:1,ub:maxSimultaneousBands,madatory`
 }
 
-func (ie *FeatureSetCombination) Encode(w *uper.UperWriter) error {
+func (ie *FeatureSetCombination) Encode(w *aper.AperWriter) error {
 	var err error
-	tmp := utils.NewSequence[*FeatureSetsPerBand]([]*FeatureSetsPerBand{}, uper.Constraint{Lb: 1, Ub: maxSimultaneousBands}, false)
+	tmp := utils.NewSequence[*FeatureSetsPerBand]([]*FeatureSetsPerBand{}, aper.Constraint{Lb: 1, Ub: maxSimultaneousBands}, false)
 	for _, i := range ie.Value {
 		tmp.Value = append(tmp.Value, &i)
 	}
@@ -21,9 +21,9 @@ func (ie *FeatureSetCombination) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *FeatureSetCombination) Decode(r *uper.UperReader) error {
+func (ie *FeatureSetCombination) Decode(r *aper.AperReader) error {
 	var err error
-	tmp := utils.NewSequence[*FeatureSetsPerBand]([]*FeatureSetsPerBand{}, uper.Constraint{Lb: 1, Ub: maxSimultaneousBands}, false)
+	tmp := utils.NewSequence[*FeatureSetsPerBand]([]*FeatureSetsPerBand{}, aper.Constraint{Lb: 1, Ub: maxSimultaneousBands}, false)
 	fn := func() *FeatureSetsPerBand {
 		return new(FeatureSetsPerBand)
 	}

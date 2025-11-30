@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -14,7 +14,7 @@ type RRCResume_v1610_IEs struct {
 	NonCriticalExtension        *RRCResume_v1700_IEs                             `optional`
 }
 
-func (ie *RRCResume_v1610_IEs) Encode(w *uper.UperWriter) error {
+func (ie *RRCResume_v1610_IEs) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.IdleModeMeasurementReq_r16 != nil, ie.RestoreMCG_SCells_r16 != nil, ie.RestoreSCG_r16 != nil, ie.Mrdc_SecondaryCellGroup_r16 != nil, ie.NeedForGapsConfigNR_r16 != nil, ie.NonCriticalExtension != nil}
 	for _, bit := range preambleBits {
@@ -58,7 +58,7 @@ func (ie *RRCResume_v1610_IEs) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *RRCResume_v1610_IEs) Decode(r *uper.UperReader) error {
+func (ie *RRCResume_v1610_IEs) Decode(r *aper.AperReader) error {
 	var err error
 	var IdleModeMeasurementReq_r16Present bool
 	if IdleModeMeasurementReq_r16Present, err = r.ReadBool(); err != nil {

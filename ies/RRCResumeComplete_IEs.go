@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -13,7 +13,7 @@ type RRCResumeComplete_IEs struct {
 	NonCriticalExtension      *RRCResumeComplete_v1610_IEs `optional`
 }
 
-func (ie *RRCResumeComplete_IEs) Encode(w *uper.UperWriter) error {
+func (ie *RRCResumeComplete_IEs) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.DedicatedNAS_Message != nil, ie.SelectedPLMN_Identity != nil, ie.UplinkTxDirectCurrentList != nil, ie.LateNonCriticalExtension != nil, ie.NonCriticalExtension != nil}
 	for _, bit := range preambleBits {
@@ -27,7 +27,7 @@ func (ie *RRCResumeComplete_IEs) Encode(w *uper.UperWriter) error {
 		}
 	}
 	if ie.SelectedPLMN_Identity != nil {
-		if err = w.WriteInteger(*ie.SelectedPLMN_Identity, &uper.Constraint{Lb: 1, Ub: maxPLMN}, false); err != nil {
+		if err = w.WriteInteger(*ie.SelectedPLMN_Identity, &aper.Constraint{Lb: 1, Ub: maxPLMN}, false); err != nil {
 			return utils.WrapError("Encode SelectedPLMN_Identity", err)
 		}
 	}
@@ -37,7 +37,7 @@ func (ie *RRCResumeComplete_IEs) Encode(w *uper.UperWriter) error {
 		}
 	}
 	if ie.LateNonCriticalExtension != nil {
-		if err = w.WriteOctetString(*ie.LateNonCriticalExtension, &uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+		if err = w.WriteOctetString(*ie.LateNonCriticalExtension, &aper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
 			return utils.WrapError("Encode LateNonCriticalExtension", err)
 		}
 	}
@@ -49,7 +49,7 @@ func (ie *RRCResumeComplete_IEs) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *RRCResumeComplete_IEs) Decode(r *uper.UperReader) error {
+func (ie *RRCResumeComplete_IEs) Decode(r *aper.AperReader) error {
 	var err error
 	var DedicatedNAS_MessagePresent bool
 	if DedicatedNAS_MessagePresent, err = r.ReadBool(); err != nil {
@@ -79,7 +79,7 @@ func (ie *RRCResumeComplete_IEs) Decode(r *uper.UperReader) error {
 	}
 	if SelectedPLMN_IdentityPresent {
 		var tmp_int_SelectedPLMN_Identity int64
-		if tmp_int_SelectedPLMN_Identity, err = r.ReadInteger(&uper.Constraint{Lb: 1, Ub: maxPLMN}, false); err != nil {
+		if tmp_int_SelectedPLMN_Identity, err = r.ReadInteger(&aper.Constraint{Lb: 1, Ub: maxPLMN}, false); err != nil {
 			return utils.WrapError("Decode SelectedPLMN_Identity", err)
 		}
 		ie.SelectedPLMN_Identity = &tmp_int_SelectedPLMN_Identity
@@ -92,7 +92,7 @@ func (ie *RRCResumeComplete_IEs) Decode(r *uper.UperReader) error {
 	}
 	if LateNonCriticalExtensionPresent {
 		var tmp_os_LateNonCriticalExtension []byte
-		if tmp_os_LateNonCriticalExtension, err = r.ReadOctetString(&uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+		if tmp_os_LateNonCriticalExtension, err = r.ReadOctetString(&aper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
 			return utils.WrapError("Decode LateNonCriticalExtension", err)
 		}
 		ie.LateNonCriticalExtension = &tmp_os_LateNonCriticalExtension

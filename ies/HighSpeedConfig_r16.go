@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -10,7 +10,7 @@ type HighSpeedConfig_r16 struct {
 	HighSpeedDemodFlag_r16 *HighSpeedConfig_r16_highSpeedDemodFlag_r16 `optional`
 }
 
-func (ie *HighSpeedConfig_r16) Encode(w *uper.UperWriter) error {
+func (ie *HighSpeedConfig_r16) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.HighSpeedMeasFlag_r16 != nil, ie.HighSpeedDemodFlag_r16 != nil}
 	for _, bit := range preambleBits {
@@ -31,7 +31,7 @@ func (ie *HighSpeedConfig_r16) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *HighSpeedConfig_r16) Decode(r *uper.UperReader) error {
+func (ie *HighSpeedConfig_r16) Decode(r *aper.AperReader) error {
 	var err error
 	var HighSpeedMeasFlag_r16Present bool
 	if HighSpeedMeasFlag_r16Present, err = r.ReadBool(); err != nil {

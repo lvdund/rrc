@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -10,7 +10,7 @@ type AdditionalRACH_Config_r17 struct {
 	MsgA_ConfigCommon_r17 *MsgA_ConfigCommon_r16 `optional`
 }
 
-func (ie *AdditionalRACH_Config_r17) Encode(w *uper.UperWriter) error {
+func (ie *AdditionalRACH_Config_r17) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.Rach_ConfigCommon_r17 != nil, ie.MsgA_ConfigCommon_r17 != nil}
 	for _, bit := range preambleBits {
@@ -31,7 +31,7 @@ func (ie *AdditionalRACH_Config_r17) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *AdditionalRACH_Config_r17) Decode(r *uper.UperReader) error {
+func (ie *AdditionalRACH_Config_r17) Decode(r *aper.AperReader) error {
 	var err error
 	var Rach_ConfigCommon_r17Present bool
 	if Rach_ConfigCommon_r17Present, err = r.ReadBool(); err != nil {

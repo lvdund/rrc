@@ -3,7 +3,7 @@ package ies
 import (
 	"fmt"
 
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -19,14 +19,14 @@ type SL_SDAP_Config_r16_sl_MappedQoS_Flows_r16 struct {
 	Sl_MappedQoS_FlowsListDedicated_r16 *SL_MappedQoS_FlowsListDedicated_r16
 }
 
-func (ie *SL_SDAP_Config_r16_sl_MappedQoS_Flows_r16) Encode(w *uper.UperWriter) error {
+func (ie *SL_SDAP_Config_r16_sl_MappedQoS_Flows_r16) Encode(w *aper.AperWriter) error {
 	var err error
 	if err = w.WriteChoice(ie.Choice, 2, false); err != nil {
 		return err
 	}
 	switch ie.Choice {
 	case SL_SDAP_Config_r16_sl_MappedQoS_Flows_r16_Choice_Sl_MappedQoS_FlowsList_r16:
-		tmp := utils.NewSequence[*SL_QoS_Profile_r16]([]*SL_QoS_Profile_r16{}, uper.Constraint{Lb: 1, Ub: maxNrofSL_QFIs_r16}, false)
+		tmp := utils.NewSequence[*SL_QoS_Profile_r16]([]*SL_QoS_Profile_r16{}, aper.Constraint{Lb: 1, Ub: maxNrofSL_QFIs_r16}, false)
 		for _, i := range ie.Sl_MappedQoS_FlowsList_r16 {
 			tmp.Value = append(tmp.Value, &i)
 		}
@@ -43,14 +43,14 @@ func (ie *SL_SDAP_Config_r16_sl_MappedQoS_Flows_r16) Encode(w *uper.UperWriter) 
 	return err
 }
 
-func (ie *SL_SDAP_Config_r16_sl_MappedQoS_Flows_r16) Decode(r *uper.UperReader) error {
+func (ie *SL_SDAP_Config_r16_sl_MappedQoS_Flows_r16) Decode(r *aper.AperReader) error {
 	var err error
 	if ie.Choice, err = r.ReadChoice(2, false); err != nil {
 		return err
 	}
 	switch ie.Choice {
 	case SL_SDAP_Config_r16_sl_MappedQoS_Flows_r16_Choice_Sl_MappedQoS_FlowsList_r16:
-		tmp := utils.NewSequence[*SL_QoS_Profile_r16]([]*SL_QoS_Profile_r16{}, uper.Constraint{Lb: 1, Ub: maxNrofSL_QFIs_r16}, false)
+		tmp := utils.NewSequence[*SL_QoS_Profile_r16]([]*SL_QoS_Profile_r16{}, aper.Constraint{Lb: 1, Ub: maxNrofSL_QFIs_r16}, false)
 		fn := func() *SL_QoS_Profile_r16 {
 			return new(SL_QoS_Profile_r16)
 		}

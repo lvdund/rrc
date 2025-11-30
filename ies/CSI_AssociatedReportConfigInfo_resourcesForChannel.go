@@ -3,7 +3,7 @@ package ies
 import (
 	"fmt"
 
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -19,7 +19,7 @@ type CSI_AssociatedReportConfigInfo_resourcesForChannel struct {
 	Csi_SSB_ResourceSet int64 `lb:1,ub:maxNrofCSI_SSB_ResourceSetsPerConfig,madatory`
 }
 
-func (ie *CSI_AssociatedReportConfigInfo_resourcesForChannel) Encode(w *uper.UperWriter) error {
+func (ie *CSI_AssociatedReportConfigInfo_resourcesForChannel) Encode(w *aper.AperWriter) error {
 	var err error
 	if err = w.WriteChoice(ie.Choice, 2, false); err != nil {
 		return err
@@ -30,7 +30,7 @@ func (ie *CSI_AssociatedReportConfigInfo_resourcesForChannel) Encode(w *uper.Upe
 			err = utils.WrapError("Encode Nzp_CSI_RS", err)
 		}
 	case CSI_AssociatedReportConfigInfo_resourcesForChannel_Choice_Csi_SSB_ResourceSet:
-		if err = w.WriteInteger(int64(ie.Csi_SSB_ResourceSet), &uper.Constraint{Lb: 1, Ub: maxNrofCSI_SSB_ResourceSetsPerConfig}, false); err != nil {
+		if err = w.WriteInteger(int64(ie.Csi_SSB_ResourceSet), &aper.Constraint{Lb: 1, Ub: maxNrofCSI_SSB_ResourceSetsPerConfig}, false); err != nil {
 			err = utils.WrapError("Encode Csi_SSB_ResourceSet", err)
 		}
 	default:
@@ -39,7 +39,7 @@ func (ie *CSI_AssociatedReportConfigInfo_resourcesForChannel) Encode(w *uper.Upe
 	return err
 }
 
-func (ie *CSI_AssociatedReportConfigInfo_resourcesForChannel) Decode(r *uper.UperReader) error {
+func (ie *CSI_AssociatedReportConfigInfo_resourcesForChannel) Decode(r *aper.AperReader) error {
 	var err error
 	if ie.Choice, err = r.ReadChoice(2, false); err != nil {
 		return err
@@ -52,7 +52,7 @@ func (ie *CSI_AssociatedReportConfigInfo_resourcesForChannel) Decode(r *uper.Upe
 		}
 	case CSI_AssociatedReportConfigInfo_resourcesForChannel_Choice_Csi_SSB_ResourceSet:
 		var tmp_int_Csi_SSB_ResourceSet int64
-		if tmp_int_Csi_SSB_ResourceSet, err = r.ReadInteger(&uper.Constraint{Lb: 1, Ub: maxNrofCSI_SSB_ResourceSetsPerConfig}, false); err != nil {
+		if tmp_int_Csi_SSB_ResourceSet, err = r.ReadInteger(&aper.Constraint{Lb: 1, Ub: maxNrofCSI_SSB_ResourceSetsPerConfig}, false); err != nil {
 			return utils.WrapError("Decode Csi_SSB_ResourceSet", err)
 		}
 		ie.Csi_SSB_ResourceSet = tmp_int_Csi_SSB_ResourceSet

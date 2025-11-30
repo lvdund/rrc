@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -16,7 +16,7 @@ type PortIndexFor8Ranks_portIndex8 struct {
 	Rank8_8 []PortIndex8 `lb:8,ub:8,optional`
 }
 
-func (ie *PortIndexFor8Ranks_portIndex8) Encode(w *uper.UperWriter) error {
+func (ie *PortIndexFor8Ranks_portIndex8) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.Rank1_8 != nil, len(ie.Rank2_8) > 0, len(ie.Rank3_8) > 0, len(ie.Rank4_8) > 0, len(ie.Rank5_8) > 0, len(ie.Rank6_8) > 0, len(ie.Rank7_8) > 0, len(ie.Rank8_8) > 0}
 	for _, bit := range preambleBits {
@@ -30,7 +30,7 @@ func (ie *PortIndexFor8Ranks_portIndex8) Encode(w *uper.UperWriter) error {
 		}
 	}
 	if len(ie.Rank2_8) > 0 {
-		tmp_Rank2_8 := utils.NewSequence[*PortIndex8]([]*PortIndex8{}, uper.Constraint{Lb: 2, Ub: 2}, false)
+		tmp_Rank2_8 := utils.NewSequence[*PortIndex8]([]*PortIndex8{}, aper.Constraint{Lb: 2, Ub: 2}, false)
 		for _, i := range ie.Rank2_8 {
 			tmp_Rank2_8.Value = append(tmp_Rank2_8.Value, &i)
 		}
@@ -39,7 +39,7 @@ func (ie *PortIndexFor8Ranks_portIndex8) Encode(w *uper.UperWriter) error {
 		}
 	}
 	if len(ie.Rank3_8) > 0 {
-		tmp_Rank3_8 := utils.NewSequence[*PortIndex8]([]*PortIndex8{}, uper.Constraint{Lb: 3, Ub: 3}, false)
+		tmp_Rank3_8 := utils.NewSequence[*PortIndex8]([]*PortIndex8{}, aper.Constraint{Lb: 3, Ub: 3}, false)
 		for _, i := range ie.Rank3_8 {
 			tmp_Rank3_8.Value = append(tmp_Rank3_8.Value, &i)
 		}
@@ -48,7 +48,7 @@ func (ie *PortIndexFor8Ranks_portIndex8) Encode(w *uper.UperWriter) error {
 		}
 	}
 	if len(ie.Rank4_8) > 0 {
-		tmp_Rank4_8 := utils.NewSequence[*PortIndex8]([]*PortIndex8{}, uper.Constraint{Lb: 4, Ub: 4}, false)
+		tmp_Rank4_8 := utils.NewSequence[*PortIndex8]([]*PortIndex8{}, aper.Constraint{Lb: 4, Ub: 4}, false)
 		for _, i := range ie.Rank4_8 {
 			tmp_Rank4_8.Value = append(tmp_Rank4_8.Value, &i)
 		}
@@ -57,7 +57,7 @@ func (ie *PortIndexFor8Ranks_portIndex8) Encode(w *uper.UperWriter) error {
 		}
 	}
 	if len(ie.Rank5_8) > 0 {
-		tmp_Rank5_8 := utils.NewSequence[*PortIndex8]([]*PortIndex8{}, uper.Constraint{Lb: 5, Ub: 5}, false)
+		tmp_Rank5_8 := utils.NewSequence[*PortIndex8]([]*PortIndex8{}, aper.Constraint{Lb: 5, Ub: 5}, false)
 		for _, i := range ie.Rank5_8 {
 			tmp_Rank5_8.Value = append(tmp_Rank5_8.Value, &i)
 		}
@@ -66,7 +66,7 @@ func (ie *PortIndexFor8Ranks_portIndex8) Encode(w *uper.UperWriter) error {
 		}
 	}
 	if len(ie.Rank6_8) > 0 {
-		tmp_Rank6_8 := utils.NewSequence[*PortIndex8]([]*PortIndex8{}, uper.Constraint{Lb: 6, Ub: 6}, false)
+		tmp_Rank6_8 := utils.NewSequence[*PortIndex8]([]*PortIndex8{}, aper.Constraint{Lb: 6, Ub: 6}, false)
 		for _, i := range ie.Rank6_8 {
 			tmp_Rank6_8.Value = append(tmp_Rank6_8.Value, &i)
 		}
@@ -75,7 +75,7 @@ func (ie *PortIndexFor8Ranks_portIndex8) Encode(w *uper.UperWriter) error {
 		}
 	}
 	if len(ie.Rank7_8) > 0 {
-		tmp_Rank7_8 := utils.NewSequence[*PortIndex8]([]*PortIndex8{}, uper.Constraint{Lb: 7, Ub: 7}, false)
+		tmp_Rank7_8 := utils.NewSequence[*PortIndex8]([]*PortIndex8{}, aper.Constraint{Lb: 7, Ub: 7}, false)
 		for _, i := range ie.Rank7_8 {
 			tmp_Rank7_8.Value = append(tmp_Rank7_8.Value, &i)
 		}
@@ -84,7 +84,7 @@ func (ie *PortIndexFor8Ranks_portIndex8) Encode(w *uper.UperWriter) error {
 		}
 	}
 	if len(ie.Rank8_8) > 0 {
-		tmp_Rank8_8 := utils.NewSequence[*PortIndex8]([]*PortIndex8{}, uper.Constraint{Lb: 8, Ub: 8}, false)
+		tmp_Rank8_8 := utils.NewSequence[*PortIndex8]([]*PortIndex8{}, aper.Constraint{Lb: 8, Ub: 8}, false)
 		for _, i := range ie.Rank8_8 {
 			tmp_Rank8_8.Value = append(tmp_Rank8_8.Value, &i)
 		}
@@ -95,7 +95,7 @@ func (ie *PortIndexFor8Ranks_portIndex8) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *PortIndexFor8Ranks_portIndex8) Decode(r *uper.UperReader) error {
+func (ie *PortIndexFor8Ranks_portIndex8) Decode(r *aper.AperReader) error {
 	var err error
 	var Rank1_8Present bool
 	if Rank1_8Present, err = r.ReadBool(); err != nil {
@@ -136,7 +136,7 @@ func (ie *PortIndexFor8Ranks_portIndex8) Decode(r *uper.UperReader) error {
 		}
 	}
 	if Rank2_8Present {
-		tmp_Rank2_8 := utils.NewSequence[*PortIndex8]([]*PortIndex8{}, uper.Constraint{Lb: 2, Ub: 2}, false)
+		tmp_Rank2_8 := utils.NewSequence[*PortIndex8]([]*PortIndex8{}, aper.Constraint{Lb: 2, Ub: 2}, false)
 		fn_Rank2_8 := func() *PortIndex8 {
 			return new(PortIndex8)
 		}
@@ -149,7 +149,7 @@ func (ie *PortIndexFor8Ranks_portIndex8) Decode(r *uper.UperReader) error {
 		}
 	}
 	if Rank3_8Present {
-		tmp_Rank3_8 := utils.NewSequence[*PortIndex8]([]*PortIndex8{}, uper.Constraint{Lb: 3, Ub: 3}, false)
+		tmp_Rank3_8 := utils.NewSequence[*PortIndex8]([]*PortIndex8{}, aper.Constraint{Lb: 3, Ub: 3}, false)
 		fn_Rank3_8 := func() *PortIndex8 {
 			return new(PortIndex8)
 		}
@@ -162,7 +162,7 @@ func (ie *PortIndexFor8Ranks_portIndex8) Decode(r *uper.UperReader) error {
 		}
 	}
 	if Rank4_8Present {
-		tmp_Rank4_8 := utils.NewSequence[*PortIndex8]([]*PortIndex8{}, uper.Constraint{Lb: 4, Ub: 4}, false)
+		tmp_Rank4_8 := utils.NewSequence[*PortIndex8]([]*PortIndex8{}, aper.Constraint{Lb: 4, Ub: 4}, false)
 		fn_Rank4_8 := func() *PortIndex8 {
 			return new(PortIndex8)
 		}
@@ -175,7 +175,7 @@ func (ie *PortIndexFor8Ranks_portIndex8) Decode(r *uper.UperReader) error {
 		}
 	}
 	if Rank5_8Present {
-		tmp_Rank5_8 := utils.NewSequence[*PortIndex8]([]*PortIndex8{}, uper.Constraint{Lb: 5, Ub: 5}, false)
+		tmp_Rank5_8 := utils.NewSequence[*PortIndex8]([]*PortIndex8{}, aper.Constraint{Lb: 5, Ub: 5}, false)
 		fn_Rank5_8 := func() *PortIndex8 {
 			return new(PortIndex8)
 		}
@@ -188,7 +188,7 @@ func (ie *PortIndexFor8Ranks_portIndex8) Decode(r *uper.UperReader) error {
 		}
 	}
 	if Rank6_8Present {
-		tmp_Rank6_8 := utils.NewSequence[*PortIndex8]([]*PortIndex8{}, uper.Constraint{Lb: 6, Ub: 6}, false)
+		tmp_Rank6_8 := utils.NewSequence[*PortIndex8]([]*PortIndex8{}, aper.Constraint{Lb: 6, Ub: 6}, false)
 		fn_Rank6_8 := func() *PortIndex8 {
 			return new(PortIndex8)
 		}
@@ -201,7 +201,7 @@ func (ie *PortIndexFor8Ranks_portIndex8) Decode(r *uper.UperReader) error {
 		}
 	}
 	if Rank7_8Present {
-		tmp_Rank7_8 := utils.NewSequence[*PortIndex8]([]*PortIndex8{}, uper.Constraint{Lb: 7, Ub: 7}, false)
+		tmp_Rank7_8 := utils.NewSequence[*PortIndex8]([]*PortIndex8{}, aper.Constraint{Lb: 7, Ub: 7}, false)
 		fn_Rank7_8 := func() *PortIndex8 {
 			return new(PortIndex8)
 		}
@@ -214,7 +214,7 @@ func (ie *PortIndexFor8Ranks_portIndex8) Decode(r *uper.UperReader) error {
 		}
 	}
 	if Rank8_8Present {
-		tmp_Rank8_8 := utils.NewSequence[*PortIndex8]([]*PortIndex8{}, uper.Constraint{Lb: 8, Ub: 8}, false)
+		tmp_Rank8_8 := utils.NewSequence[*PortIndex8]([]*PortIndex8{}, aper.Constraint{Lb: 8, Ub: 8}, false)
 		fn_Rank8_8 := func() *PortIndex8 {
 			return new(PortIndex8)
 		}

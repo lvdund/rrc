@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -12,7 +12,7 @@ type BandSidelinkPC5_r16_sl_Reception_r16 struct {
 	ExtendedCP_RxSidelink_r16    *BandSidelinkPC5_r16_sl_Reception_r16_extendedCP_RxSidelink_r16    `optional`
 }
 
-func (ie *BandSidelinkPC5_r16_sl_Reception_r16) Encode(w *uper.UperWriter) error {
+func (ie *BandSidelinkPC5_r16_sl_Reception_r16) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.Scs_CP_PatternRxSidelink_r16 != nil, ie.ExtendedCP_RxSidelink_r16 != nil}
 	for _, bit := range preambleBits {
@@ -39,7 +39,7 @@ func (ie *BandSidelinkPC5_r16_sl_Reception_r16) Encode(w *uper.UperWriter) error
 	return nil
 }
 
-func (ie *BandSidelinkPC5_r16_sl_Reception_r16) Decode(r *uper.UperReader) error {
+func (ie *BandSidelinkPC5_r16_sl_Reception_r16) Decode(r *aper.AperReader) error {
 	var err error
 	var Scs_CP_PatternRxSidelink_r16Present bool
 	if Scs_CP_PatternRxSidelink_r16Present, err = r.ReadBool(); err != nil {

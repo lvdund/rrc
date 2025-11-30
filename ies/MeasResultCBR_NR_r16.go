@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -10,7 +10,7 @@ type MeasResultCBR_NR_r16 struct {
 	Sl_CBR_ResultsNR_r16      SL_CBR_r16            `madatory`
 }
 
-func (ie *MeasResultCBR_NR_r16) Encode(w *uper.UperWriter) error {
+func (ie *MeasResultCBR_NR_r16) Encode(w *aper.AperWriter) error {
 	var err error
 	if err = ie.Sl_poolReportIdentity_r16.Encode(w); err != nil {
 		return utils.WrapError("Encode Sl_poolReportIdentity_r16", err)
@@ -21,7 +21,7 @@ func (ie *MeasResultCBR_NR_r16) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *MeasResultCBR_NR_r16) Decode(r *uper.UperReader) error {
+func (ie *MeasResultCBR_NR_r16) Decode(r *aper.AperReader) error {
 	var err error
 	if err = ie.Sl_poolReportIdentity_r16.Decode(r); err != nil {
 		return utils.WrapError("Decode Sl_poolReportIdentity_r16", err)

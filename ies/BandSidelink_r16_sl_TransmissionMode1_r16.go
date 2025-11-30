@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -12,7 +12,7 @@ type BandSidelink_r16_sl_TransmissionMode1_r16 struct {
 	Harq_ReportOnPUCCH_r16              *BandSidelink_r16_sl_TransmissionMode1_r16_harq_ReportOnPUCCH_r16             `optional`
 }
 
-func (ie *BandSidelink_r16_sl_TransmissionMode1_r16) Encode(w *uper.UperWriter) error {
+func (ie *BandSidelink_r16_sl_TransmissionMode1_r16) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.ExtendedCP_TxSidelink_r16 != nil, ie.Harq_ReportOnPUCCH_r16 != nil}
 	for _, bit := range preambleBits {
@@ -39,7 +39,7 @@ func (ie *BandSidelink_r16_sl_TransmissionMode1_r16) Encode(w *uper.UperWriter) 
 	return nil
 }
 
-func (ie *BandSidelink_r16_sl_TransmissionMode1_r16) Decode(r *uper.UperReader) error {
+func (ie *BandSidelink_r16_sl_TransmissionMode1_r16) Decode(r *aper.AperReader) error {
 	var err error
 	var ExtendedCP_TxSidelink_r16Present bool
 	if ExtendedCP_TxSidelink_r16Present, err = r.ReadBool(); err != nil {

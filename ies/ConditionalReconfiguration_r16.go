@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -11,7 +11,7 @@ type ConditionalReconfiguration_r16 struct {
 	CondReconfigToAddModList_r16 *CondReconfigToAddModList_r16                           `optional`
 }
 
-func (ie *ConditionalReconfiguration_r16) Encode(w *uper.UperWriter) error {
+func (ie *ConditionalReconfiguration_r16) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.AttemptCondReconfig_r16 != nil, ie.CondReconfigToRemoveList_r16 != nil, ie.CondReconfigToAddModList_r16 != nil}
 	for _, bit := range preambleBits {
@@ -37,7 +37,7 @@ func (ie *ConditionalReconfiguration_r16) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *ConditionalReconfiguration_r16) Decode(r *uper.UperReader) error {
+func (ie *ConditionalReconfiguration_r16) Decode(r *aper.AperReader) error {
 	var err error
 	var AttemptCondReconfig_r16Present bool
 	if AttemptCondReconfig_r16Present, err = r.ReadBool(); err != nil {

@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -10,7 +10,7 @@ type MinSchedulingOffsetPreferenceExt_r17_preferredK2_r17 struct {
 	PreferredK2_SCS_960kHz_r17 *MinSchedulingOffsetPreferenceExt_r17_preferredK2_r17_preferredK2_SCS_960kHz_r17 `optional`
 }
 
-func (ie *MinSchedulingOffsetPreferenceExt_r17_preferredK2_r17) Encode(w *uper.UperWriter) error {
+func (ie *MinSchedulingOffsetPreferenceExt_r17_preferredK2_r17) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.PreferredK2_SCS_480kHz_r17 != nil, ie.PreferredK2_SCS_960kHz_r17 != nil}
 	for _, bit := range preambleBits {
@@ -31,7 +31,7 @@ func (ie *MinSchedulingOffsetPreferenceExt_r17_preferredK2_r17) Encode(w *uper.U
 	return nil
 }
 
-func (ie *MinSchedulingOffsetPreferenceExt_r17_preferredK2_r17) Decode(r *uper.UperReader) error {
+func (ie *MinSchedulingOffsetPreferenceExt_r17_preferredK2_r17) Decode(r *aper.AperReader) error {
 	var err error
 	var PreferredK2_SCS_480kHz_r17Present bool
 	if PreferredK2_SCS_480kHz_r17Present, err = r.ReadBool(); err != nil {

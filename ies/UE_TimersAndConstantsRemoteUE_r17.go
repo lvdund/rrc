@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -11,7 +11,7 @@ type UE_TimersAndConstantsRemoteUE_r17 struct {
 	T319_RemoteUE_r17 *UE_TimersAndConstantsRemoteUE_r17_t319_RemoteUE_r17 `optional`
 }
 
-func (ie *UE_TimersAndConstantsRemoteUE_r17) Encode(w *uper.UperWriter) error {
+func (ie *UE_TimersAndConstantsRemoteUE_r17) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.T300_RemoteUE_r17 != nil, ie.T301_RemoteUE_r17 != nil, ie.T319_RemoteUE_r17 != nil}
 	for _, bit := range preambleBits {
@@ -37,7 +37,7 @@ func (ie *UE_TimersAndConstantsRemoteUE_r17) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *UE_TimersAndConstantsRemoteUE_r17) Decode(r *uper.UperReader) error {
+func (ie *UE_TimersAndConstantsRemoteUE_r17) Decode(r *aper.AperReader) error {
 	var err error
 	var T300_RemoteUE_r17Present bool
 	if T300_RemoteUE_r17Present, err = r.ReadBool(); err != nil {

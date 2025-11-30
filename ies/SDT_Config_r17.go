@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -12,7 +12,7 @@ type SDT_Config_r17 struct {
 	Sdt_DRB_ContinueROHC_r17  *SDT_Config_r17_sdt_DRB_ContinueROHC_r17 `optional`
 }
 
-func (ie *SDT_Config_r17) Encode(w *uper.UperWriter) error {
+func (ie *SDT_Config_r17) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{len(ie.Sdt_DRB_List_r17) > 0, ie.Sdt_SRB2_Indication_r17 != nil, ie.Sdt_MAC_PHY_CG_Config_r17 != nil, ie.Sdt_DRB_ContinueROHC_r17 != nil}
 	for _, bit := range preambleBits {
@@ -21,7 +21,7 @@ func (ie *SDT_Config_r17) Encode(w *uper.UperWriter) error {
 		}
 	}
 	if len(ie.Sdt_DRB_List_r17) > 0 {
-		tmp_Sdt_DRB_List_r17 := utils.NewSequence[*DRB_Identity]([]*DRB_Identity{}, uper.Constraint{Lb: 0, Ub: maxDRB}, false)
+		tmp_Sdt_DRB_List_r17 := utils.NewSequence[*DRB_Identity]([]*DRB_Identity{}, aper.Constraint{Lb: 0, Ub: maxDRB}, false)
 		for _, i := range ie.Sdt_DRB_List_r17 {
 			tmp_Sdt_DRB_List_r17.Value = append(tmp_Sdt_DRB_List_r17.Value, &i)
 		}
@@ -50,7 +50,7 @@ func (ie *SDT_Config_r17) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *SDT_Config_r17) Decode(r *uper.UperReader) error {
+func (ie *SDT_Config_r17) Decode(r *aper.AperReader) error {
 	var err error
 	var Sdt_DRB_List_r17Present bool
 	if Sdt_DRB_List_r17Present, err = r.ReadBool(); err != nil {
@@ -69,7 +69,7 @@ func (ie *SDT_Config_r17) Decode(r *uper.UperReader) error {
 		return err
 	}
 	if Sdt_DRB_List_r17Present {
-		tmp_Sdt_DRB_List_r17 := utils.NewSequence[*DRB_Identity]([]*DRB_Identity{}, uper.Constraint{Lb: 0, Ub: maxDRB}, false)
+		tmp_Sdt_DRB_List_r17 := utils.NewSequence[*DRB_Identity]([]*DRB_Identity{}, aper.Constraint{Lb: 0, Ub: maxDRB}, false)
 		fn_Sdt_DRB_List_r17 := func() *DRB_Identity {
 			return new(DRB_Identity)
 		}

@@ -3,7 +3,7 @@ package ies
 import (
 	"fmt"
 
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -23,26 +23,26 @@ type SRS_PeriodicityAndOffsetExt_r16 struct {
 	Sl20480 int64 `lb:0,ub:20479,madatory`
 }
 
-func (ie *SRS_PeriodicityAndOffsetExt_r16) Encode(w *uper.UperWriter) error {
+func (ie *SRS_PeriodicityAndOffsetExt_r16) Encode(w *aper.AperWriter) error {
 	var err error
 	if err = w.WriteChoice(ie.Choice, 4, false); err != nil {
 		return err
 	}
 	switch ie.Choice {
 	case SRS_PeriodicityAndOffsetExt_r16_Choice_Sl128:
-		if err = w.WriteInteger(int64(ie.Sl128), &uper.Constraint{Lb: 0, Ub: 127}, false); err != nil {
+		if err = w.WriteInteger(int64(ie.Sl128), &aper.Constraint{Lb: 0, Ub: 127}, false); err != nil {
 			err = utils.WrapError("Encode Sl128", err)
 		}
 	case SRS_PeriodicityAndOffsetExt_r16_Choice_Sl256:
-		if err = w.WriteInteger(int64(ie.Sl256), &uper.Constraint{Lb: 0, Ub: 255}, false); err != nil {
+		if err = w.WriteInteger(int64(ie.Sl256), &aper.Constraint{Lb: 0, Ub: 255}, false); err != nil {
 			err = utils.WrapError("Encode Sl256", err)
 		}
 	case SRS_PeriodicityAndOffsetExt_r16_Choice_Sl512:
-		if err = w.WriteInteger(int64(ie.Sl512), &uper.Constraint{Lb: 0, Ub: 511}, false); err != nil {
+		if err = w.WriteInteger(int64(ie.Sl512), &aper.Constraint{Lb: 0, Ub: 511}, false); err != nil {
 			err = utils.WrapError("Encode Sl512", err)
 		}
 	case SRS_PeriodicityAndOffsetExt_r16_Choice_Sl20480:
-		if err = w.WriteInteger(int64(ie.Sl20480), &uper.Constraint{Lb: 0, Ub: 20479}, false); err != nil {
+		if err = w.WriteInteger(int64(ie.Sl20480), &aper.Constraint{Lb: 0, Ub: 20479}, false); err != nil {
 			err = utils.WrapError("Encode Sl20480", err)
 		}
 	default:
@@ -51,7 +51,7 @@ func (ie *SRS_PeriodicityAndOffsetExt_r16) Encode(w *uper.UperWriter) error {
 	return err
 }
 
-func (ie *SRS_PeriodicityAndOffsetExt_r16) Decode(r *uper.UperReader) error {
+func (ie *SRS_PeriodicityAndOffsetExt_r16) Decode(r *aper.AperReader) error {
 	var err error
 	if ie.Choice, err = r.ReadChoice(4, false); err != nil {
 		return err
@@ -59,25 +59,25 @@ func (ie *SRS_PeriodicityAndOffsetExt_r16) Decode(r *uper.UperReader) error {
 	switch ie.Choice {
 	case SRS_PeriodicityAndOffsetExt_r16_Choice_Sl128:
 		var tmp_int_Sl128 int64
-		if tmp_int_Sl128, err = r.ReadInteger(&uper.Constraint{Lb: 0, Ub: 127}, false); err != nil {
+		if tmp_int_Sl128, err = r.ReadInteger(&aper.Constraint{Lb: 0, Ub: 127}, false); err != nil {
 			return utils.WrapError("Decode Sl128", err)
 		}
 		ie.Sl128 = tmp_int_Sl128
 	case SRS_PeriodicityAndOffsetExt_r16_Choice_Sl256:
 		var tmp_int_Sl256 int64
-		if tmp_int_Sl256, err = r.ReadInteger(&uper.Constraint{Lb: 0, Ub: 255}, false); err != nil {
+		if tmp_int_Sl256, err = r.ReadInteger(&aper.Constraint{Lb: 0, Ub: 255}, false); err != nil {
 			return utils.WrapError("Decode Sl256", err)
 		}
 		ie.Sl256 = tmp_int_Sl256
 	case SRS_PeriodicityAndOffsetExt_r16_Choice_Sl512:
 		var tmp_int_Sl512 int64
-		if tmp_int_Sl512, err = r.ReadInteger(&uper.Constraint{Lb: 0, Ub: 511}, false); err != nil {
+		if tmp_int_Sl512, err = r.ReadInteger(&aper.Constraint{Lb: 0, Ub: 511}, false); err != nil {
 			return utils.WrapError("Decode Sl512", err)
 		}
 		ie.Sl512 = tmp_int_Sl512
 	case SRS_PeriodicityAndOffsetExt_r16_Choice_Sl20480:
 		var tmp_int_Sl20480 int64
-		if tmp_int_Sl20480, err = r.ReadInteger(&uper.Constraint{Lb: 0, Ub: 20479}, false); err != nil {
+		if tmp_int_Sl20480, err = r.ReadInteger(&aper.Constraint{Lb: 0, Ub: 20479}, false); err != nil {
 			return utils.WrapError("Decode Sl20480", err)
 		}
 		ie.Sl20480 = tmp_int_Sl20480

@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -11,7 +11,7 @@ type RadioLinkMonitoringRS struct {
 	DetectionResource        RadioLinkMonitoringRS_detectionResource `madatory`
 }
 
-func (ie *RadioLinkMonitoringRS) Encode(w *uper.UperWriter) error {
+func (ie *RadioLinkMonitoringRS) Encode(w *aper.AperWriter) error {
 	var err error
 	if err = ie.RadioLinkMonitoringRS_Id.Encode(w); err != nil {
 		return utils.WrapError("Encode RadioLinkMonitoringRS_Id", err)
@@ -25,7 +25,7 @@ func (ie *RadioLinkMonitoringRS) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *RadioLinkMonitoringRS) Decode(r *uper.UperReader) error {
+func (ie *RadioLinkMonitoringRS) Decode(r *aper.AperReader) error {
 	var err error
 	if err = ie.RadioLinkMonitoringRS_Id.Decode(r); err != nil {
 		return utils.WrapError("Decode RadioLinkMonitoringRS_Id", err)

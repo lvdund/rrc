@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -10,7 +10,7 @@ type PLMN_RAN_AreaConfig struct {
 	Ran_Area      []RAN_AreaConfig `lb:1,ub:16,madatory`
 }
 
-func (ie *PLMN_RAN_AreaConfig) Encode(w *uper.UperWriter) error {
+func (ie *PLMN_RAN_AreaConfig) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.Plmn_Identity != nil}
 	for _, bit := range preambleBits {
@@ -23,7 +23,7 @@ func (ie *PLMN_RAN_AreaConfig) Encode(w *uper.UperWriter) error {
 			return utils.WrapError("Encode Plmn_Identity", err)
 		}
 	}
-	tmp_Ran_Area := utils.NewSequence[*RAN_AreaConfig]([]*RAN_AreaConfig{}, uper.Constraint{Lb: 1, Ub: 16}, false)
+	tmp_Ran_Area := utils.NewSequence[*RAN_AreaConfig]([]*RAN_AreaConfig{}, aper.Constraint{Lb: 1, Ub: 16}, false)
 	for _, i := range ie.Ran_Area {
 		tmp_Ran_Area.Value = append(tmp_Ran_Area.Value, &i)
 	}
@@ -33,7 +33,7 @@ func (ie *PLMN_RAN_AreaConfig) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *PLMN_RAN_AreaConfig) Decode(r *uper.UperReader) error {
+func (ie *PLMN_RAN_AreaConfig) Decode(r *aper.AperReader) error {
 	var err error
 	var Plmn_IdentityPresent bool
 	if Plmn_IdentityPresent, err = r.ReadBool(); err != nil {
@@ -45,7 +45,7 @@ func (ie *PLMN_RAN_AreaConfig) Decode(r *uper.UperReader) error {
 			return utils.WrapError("Decode Plmn_Identity", err)
 		}
 	}
-	tmp_Ran_Area := utils.NewSequence[*RAN_AreaConfig]([]*RAN_AreaConfig{}, uper.Constraint{Lb: 1, Ub: 16}, false)
+	tmp_Ran_Area := utils.NewSequence[*RAN_AreaConfig]([]*RAN_AreaConfig{}, aper.Constraint{Lb: 1, Ub: 16}, false)
 	fn_Ran_Area := func() *RAN_AreaConfig {
 		return new(RAN_AreaConfig)
 	}

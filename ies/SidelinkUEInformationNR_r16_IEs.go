@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -13,7 +13,7 @@ type SidelinkUEInformationNR_r16_IEs struct {
 	NonCriticalExtension        *SidelinkUEInformationNR_v1700_IEs `optional`
 }
 
-func (ie *SidelinkUEInformationNR_r16_IEs) Encode(w *uper.UperWriter) error {
+func (ie *SidelinkUEInformationNR_r16_IEs) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.Sl_RxInterestedFreqList_r16 != nil, ie.Sl_TxResourceReqList_r16 != nil, ie.Sl_FailureList_r16 != nil, ie.LateNonCriticalExtension != nil, ie.NonCriticalExtension != nil}
 	for _, bit := range preambleBits {
@@ -37,7 +37,7 @@ func (ie *SidelinkUEInformationNR_r16_IEs) Encode(w *uper.UperWriter) error {
 		}
 	}
 	if ie.LateNonCriticalExtension != nil {
-		if err = w.WriteOctetString(*ie.LateNonCriticalExtension, &uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+		if err = w.WriteOctetString(*ie.LateNonCriticalExtension, &aper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
 			return utils.WrapError("Encode LateNonCriticalExtension", err)
 		}
 	}
@@ -49,7 +49,7 @@ func (ie *SidelinkUEInformationNR_r16_IEs) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *SidelinkUEInformationNR_r16_IEs) Decode(r *uper.UperReader) error {
+func (ie *SidelinkUEInformationNR_r16_IEs) Decode(r *aper.AperReader) error {
 	var err error
 	var Sl_RxInterestedFreqList_r16Present bool
 	if Sl_RxInterestedFreqList_r16Present, err = r.ReadBool(); err != nil {
@@ -91,7 +91,7 @@ func (ie *SidelinkUEInformationNR_r16_IEs) Decode(r *uper.UperReader) error {
 	}
 	if LateNonCriticalExtensionPresent {
 		var tmp_os_LateNonCriticalExtension []byte
-		if tmp_os_LateNonCriticalExtension, err = r.ReadOctetString(&uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+		if tmp_os_LateNonCriticalExtension, err = r.ReadOctetString(&aper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
 			return utils.WrapError("Decode LateNonCriticalExtension", err)
 		}
 		ie.LateNonCriticalExtension = &tmp_os_LateNonCriticalExtension

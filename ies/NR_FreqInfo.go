@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -9,7 +9,7 @@ type NR_FreqInfo struct {
 	MeasuredFrequency *ARFCN_ValueNR `optional`
 }
 
-func (ie *NR_FreqInfo) Encode(w *uper.UperWriter) error {
+func (ie *NR_FreqInfo) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.MeasuredFrequency != nil}
 	for _, bit := range preambleBits {
@@ -25,7 +25,7 @@ func (ie *NR_FreqInfo) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *NR_FreqInfo) Decode(r *uper.UperReader) error {
+func (ie *NR_FreqInfo) Decode(r *aper.AperReader) error {
 	var err error
 	var MeasuredFrequencyPresent bool
 	if MeasuredFrequencyPresent, err = r.ReadBool(); err != nil {

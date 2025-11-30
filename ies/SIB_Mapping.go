@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -9,9 +9,9 @@ type SIB_Mapping struct {
 	Value []SIB_TypeInfo `lb:1,ub:maxSIB,madatory`
 }
 
-func (ie *SIB_Mapping) Encode(w *uper.UperWriter) error {
+func (ie *SIB_Mapping) Encode(w *aper.AperWriter) error {
 	var err error
-	tmp := utils.NewSequence[*SIB_TypeInfo]([]*SIB_TypeInfo{}, uper.Constraint{Lb: 1, Ub: maxSIB}, false)
+	tmp := utils.NewSequence[*SIB_TypeInfo]([]*SIB_TypeInfo{}, aper.Constraint{Lb: 1, Ub: maxSIB}, false)
 	for _, i := range ie.Value {
 		tmp.Value = append(tmp.Value, &i)
 	}
@@ -21,9 +21,9 @@ func (ie *SIB_Mapping) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *SIB_Mapping) Decode(r *uper.UperReader) error {
+func (ie *SIB_Mapping) Decode(r *aper.AperReader) error {
 	var err error
-	tmp := utils.NewSequence[*SIB_TypeInfo]([]*SIB_TypeInfo{}, uper.Constraint{Lb: 1, Ub: maxSIB}, false)
+	tmp := utils.NewSequence[*SIB_TypeInfo]([]*SIB_TypeInfo{}, aper.Constraint{Lb: 1, Ub: maxSIB}, false)
 	fn := func() *SIB_TypeInfo {
 		return new(SIB_TypeInfo)
 	}

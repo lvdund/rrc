@@ -3,7 +3,7 @@ package ies
 import (
 	"fmt"
 
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -19,7 +19,7 @@ type RLC_BearerConfig_servedRadioBearer struct {
 	Drb_Identity *DRB_Identity
 }
 
-func (ie *RLC_BearerConfig_servedRadioBearer) Encode(w *uper.UperWriter) error {
+func (ie *RLC_BearerConfig_servedRadioBearer) Encode(w *aper.AperWriter) error {
 	var err error
 	if err = w.WriteChoice(ie.Choice, 2, false); err != nil {
 		return err
@@ -39,7 +39,7 @@ func (ie *RLC_BearerConfig_servedRadioBearer) Encode(w *uper.UperWriter) error {
 	return err
 }
 
-func (ie *RLC_BearerConfig_servedRadioBearer) Decode(r *uper.UperReader) error {
+func (ie *RLC_BearerConfig_servedRadioBearer) Decode(r *aper.AperReader) error {
 	var err error
 	if ie.Choice, err = r.ReadChoice(2, false); err != nil {
 		return err

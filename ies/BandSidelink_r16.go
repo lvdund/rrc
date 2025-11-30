@@ -3,7 +3,7 @@ package ies
 import (
 	"bytes"
 
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -32,7 +32,7 @@ type BandSidelink_r16 struct {
 	Rx_IUC_Scheme1_SCI_ExplicitReq_r17               *BandSidelink_r16_rx_IUC_Scheme1_SCI_ExplicitReq_r17               `optional,ext-3`
 }
 
-func (ie *BandSidelink_r16) Encode(w *uper.UperWriter) error {
+func (ie *BandSidelink_r16) Encode(w *aper.AperWriter) error {
 	var err error
 	hasExtensions := ie.Sl_TransmissionMode2_r16 != nil || ie.CongestionControlSidelink_r16 != nil || ie.FewerSymbolSlotSidelink_r16 != nil || ie.Sl_openLoopPC_RSRP_ReportSidelink_r16 != nil || ie.Sl_Rx_256QAM_r16 != nil || ie.Ue_PowerClassSidelink_r16 != nil || ie.Sl_TransmissionMode2_RandomResourceSelection_r17 != nil || ie.Sync_Sidelink_v1710 != nil || ie.Enb_sync_Sidelink_v1710 != nil || ie.Rx_IUC_Scheme1_PreferredMode2Sidelink_r17 != nil || ie.Rx_IUC_Scheme1_NonPreferredMode2Sidelink_r17 != nil || ie.Rx_IUC_Scheme2_Mode2Sidelink_r17 != nil || ie.Rx_IUC_Scheme1_SCI_r17 != nil || ie.Rx_IUC_Scheme1_SCI_ExplicitReq_r17 != nil
 	preambleBits := []bool{hasExtensions, ie.Sl_Reception_r16 != nil, ie.Sl_TransmissionMode1_r16 != nil, ie.Sync_Sidelink_r16 != nil, ie.Sl_Tx_256QAM_r16 != nil, ie.Psfch_FormatZeroSidelink_r16 != nil, ie.LowSE_64QAM_MCS_TableSidelink_r16 != nil, ie.Enb_sync_Sidelink_r16 != nil}
@@ -89,7 +89,7 @@ func (ie *BandSidelink_r16) Encode(w *uper.UperWriter) error {
 		// encode extension group 1
 		if extBitmap[0] {
 			extBuf := new(bytes.Buffer)
-			extWriter := uper.NewWriter(extBuf)
+			extWriter := aper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 1
 			optionals_ext_1 := []bool{ie.Sl_TransmissionMode2_r16 != nil, ie.CongestionControlSidelink_r16 != nil, ie.FewerSymbolSlotSidelink_r16 != nil, ie.Sl_openLoopPC_RSRP_ReportSidelink_r16 != nil, ie.Sl_Rx_256QAM_r16 != nil}
@@ -142,7 +142,7 @@ func (ie *BandSidelink_r16) Encode(w *uper.UperWriter) error {
 		// encode extension group 2
 		if extBitmap[1] {
 			extBuf := new(bytes.Buffer)
-			extWriter := uper.NewWriter(extBuf)
+			extWriter := aper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 2
 			optionals_ext_2 := []bool{ie.Ue_PowerClassSidelink_r16 != nil}
@@ -171,7 +171,7 @@ func (ie *BandSidelink_r16) Encode(w *uper.UperWriter) error {
 		// encode extension group 3
 		if extBitmap[2] {
 			extBuf := new(bytes.Buffer)
-			extWriter := uper.NewWriter(extBuf)
+			extWriter := aper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 3
 			optionals_ext_3 := []bool{ie.Sl_TransmissionMode2_RandomResourceSelection_r17 != nil, ie.Sync_Sidelink_v1710 != nil, ie.Enb_sync_Sidelink_v1710 != nil, ie.Rx_IUC_Scheme1_PreferredMode2Sidelink_r17 != nil, ie.Rx_IUC_Scheme1_NonPreferredMode2Sidelink_r17 != nil, ie.Rx_IUC_Scheme2_Mode2Sidelink_r17 != nil, ie.Rx_IUC_Scheme1_SCI_r17 != nil, ie.Rx_IUC_Scheme1_SCI_ExplicitReq_r17 != nil}
@@ -242,7 +242,7 @@ func (ie *BandSidelink_r16) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *BandSidelink_r16) Decode(r *uper.UperReader) error {
+func (ie *BandSidelink_r16) Decode(r *aper.AperReader) error {
 	var err error
 	var extensionBit bool
 	if extensionBit, err = r.ReadBool(); err != nil {
@@ -336,7 +336,7 @@ func (ie *BandSidelink_r16) Decode(r *uper.UperReader) error {
 				return err
 			}
 
-			extReader := uper.NewReader(bytes.NewReader(extBytes))
+			extReader := aper.NewReader(bytes.NewReader(extBytes))
 
 			Sl_TransmissionMode2_r16Present, err := extReader.ReadBool()
 			if err != nil {
@@ -401,7 +401,7 @@ func (ie *BandSidelink_r16) Decode(r *uper.UperReader) error {
 				return err
 			}
 
-			extReader := uper.NewReader(bytes.NewReader(extBytes))
+			extReader := aper.NewReader(bytes.NewReader(extBytes))
 
 			Ue_PowerClassSidelink_r16Present, err := extReader.ReadBool()
 			if err != nil {
@@ -422,7 +422,7 @@ func (ie *BandSidelink_r16) Decode(r *uper.UperReader) error {
 				return err
 			}
 
-			extReader := uper.NewReader(bytes.NewReader(extBytes))
+			extReader := aper.NewReader(bytes.NewReader(extBytes))
 
 			Sl_TransmissionMode2_RandomResourceSelection_r17Present, err := extReader.ReadBool()
 			if err != nil {

@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -10,12 +10,12 @@ type NPN_Identity_r16_snpn_r16 struct {
 	Nid_List_r16      []NID_r16     `lb:1,ub:maxNPN_r16,madatory`
 }
 
-func (ie *NPN_Identity_r16_snpn_r16) Encode(w *uper.UperWriter) error {
+func (ie *NPN_Identity_r16_snpn_r16) Encode(w *aper.AperWriter) error {
 	var err error
 	if err = ie.Plmn_Identity_r16.Encode(w); err != nil {
 		return utils.WrapError("Encode Plmn_Identity_r16", err)
 	}
-	tmp_Nid_List_r16 := utils.NewSequence[*NID_r16]([]*NID_r16{}, uper.Constraint{Lb: 1, Ub: maxNPN_r16}, false)
+	tmp_Nid_List_r16 := utils.NewSequence[*NID_r16]([]*NID_r16{}, aper.Constraint{Lb: 1, Ub: maxNPN_r16}, false)
 	for _, i := range ie.Nid_List_r16 {
 		tmp_Nid_List_r16.Value = append(tmp_Nid_List_r16.Value, &i)
 	}
@@ -25,12 +25,12 @@ func (ie *NPN_Identity_r16_snpn_r16) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *NPN_Identity_r16_snpn_r16) Decode(r *uper.UperReader) error {
+func (ie *NPN_Identity_r16_snpn_r16) Decode(r *aper.AperReader) error {
 	var err error
 	if err = ie.Plmn_Identity_r16.Decode(r); err != nil {
 		return utils.WrapError("Decode Plmn_Identity_r16", err)
 	}
-	tmp_Nid_List_r16 := utils.NewSequence[*NID_r16]([]*NID_r16{}, uper.Constraint{Lb: 1, Ub: maxNPN_r16}, false)
+	tmp_Nid_List_r16 := utils.NewSequence[*NID_r16]([]*NID_r16{}, aper.Constraint{Lb: 1, Ub: maxNPN_r16}, false)
 	fn_Nid_List_r16 := func() *NID_r16 {
 		return new(NID_r16)
 	}

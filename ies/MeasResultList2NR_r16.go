@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -9,9 +9,9 @@ type MeasResultList2NR_r16 struct {
 	Value []MeasResult2NR_r16 `lb:1,ub:maxFreq,madatory`
 }
 
-func (ie *MeasResultList2NR_r16) Encode(w *uper.UperWriter) error {
+func (ie *MeasResultList2NR_r16) Encode(w *aper.AperWriter) error {
 	var err error
-	tmp := utils.NewSequence[*MeasResult2NR_r16]([]*MeasResult2NR_r16{}, uper.Constraint{Lb: 1, Ub: maxFreq}, false)
+	tmp := utils.NewSequence[*MeasResult2NR_r16]([]*MeasResult2NR_r16{}, aper.Constraint{Lb: 1, Ub: maxFreq}, false)
 	for _, i := range ie.Value {
 		tmp.Value = append(tmp.Value, &i)
 	}
@@ -21,9 +21,9 @@ func (ie *MeasResultList2NR_r16) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *MeasResultList2NR_r16) Decode(r *uper.UperReader) error {
+func (ie *MeasResultList2NR_r16) Decode(r *aper.AperReader) error {
 	var err error
-	tmp := utils.NewSequence[*MeasResult2NR_r16]([]*MeasResult2NR_r16{}, uper.Constraint{Lb: 1, Ub: maxFreq}, false)
+	tmp := utils.NewSequence[*MeasResult2NR_r16]([]*MeasResult2NR_r16{}, aper.Constraint{Lb: 1, Ub: maxFreq}, false)
 	fn := func() *MeasResult2NR_r16 {
 		return new(MeasResult2NR_r16)
 	}

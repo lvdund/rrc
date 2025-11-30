@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -9,7 +9,7 @@ type ULTxSwitchingBandPair_v1700 struct {
 	UplinkTxSwitchingPeriod2T2T_r17 *ULTxSwitchingBandPair_v1700_uplinkTxSwitchingPeriod2T2T_r17 `optional`
 }
 
-func (ie *ULTxSwitchingBandPair_v1700) Encode(w *uper.UperWriter) error {
+func (ie *ULTxSwitchingBandPair_v1700) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.UplinkTxSwitchingPeriod2T2T_r17 != nil}
 	for _, bit := range preambleBits {
@@ -25,7 +25,7 @@ func (ie *ULTxSwitchingBandPair_v1700) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *ULTxSwitchingBandPair_v1700) Decode(r *uper.UperReader) error {
+func (ie *ULTxSwitchingBandPair_v1700) Decode(r *aper.AperReader) error {
 	var err error
 	var UplinkTxSwitchingPeriod2T2T_r17Present bool
 	if UplinkTxSwitchingPeriod2T2T_r17Present, err = r.ReadBool(); err != nil {

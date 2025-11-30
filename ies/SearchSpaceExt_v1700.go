@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -14,7 +14,7 @@ type SearchSpaceExt_v1700 struct {
 	SearchSpaceLinkingId_r17                 *int64                                                         `lb:0,ub:maxNrofSearchSpacesLinks_1_r17,optional,ext`
 }
 
-func (ie *SearchSpaceExt_v1700) Encode(w *uper.UperWriter) error {
+func (ie *SearchSpaceExt_v1700) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.MonitoringSlotPeriodicityAndOffset_v1710 != nil, ie.MonitoringSlotsWithinSlotGroup_r17 != nil, ie.Duration_r17 != nil, ie.SearchSpaceType_r17 != nil}
 	for _, bit := range preambleBits {
@@ -33,7 +33,7 @@ func (ie *SearchSpaceExt_v1700) Encode(w *uper.UperWriter) error {
 		}
 	}
 	if ie.Duration_r17 != nil {
-		if err = w.WriteInteger(*ie.Duration_r17, &uper.Constraint{Lb: 4, Ub: 20476}, false); err != nil {
+		if err = w.WriteInteger(*ie.Duration_r17, &aper.Constraint{Lb: 4, Ub: 20476}, false); err != nil {
 			return utils.WrapError("Encode Duration_r17", err)
 		}
 	}
@@ -45,7 +45,7 @@ func (ie *SearchSpaceExt_v1700) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *SearchSpaceExt_v1700) Decode(r *uper.UperReader) error {
+func (ie *SearchSpaceExt_v1700) Decode(r *aper.AperReader) error {
 	var err error
 	var MonitoringSlotPeriodicityAndOffset_v1710Present bool
 	if MonitoringSlotPeriodicityAndOffset_v1710Present, err = r.ReadBool(); err != nil {
@@ -77,7 +77,7 @@ func (ie *SearchSpaceExt_v1700) Decode(r *uper.UperReader) error {
 	}
 	if Duration_r17Present {
 		var tmp_int_Duration_r17 int64
-		if tmp_int_Duration_r17, err = r.ReadInteger(&uper.Constraint{Lb: 4, Ub: 20476}, false); err != nil {
+		if tmp_int_Duration_r17, err = r.ReadInteger(&aper.Constraint{Lb: 4, Ub: 20476}, false); err != nil {
 			return utils.WrapError("Decode Duration_r17", err)
 		}
 		ie.Duration_r17 = &tmp_int_Duration_r17

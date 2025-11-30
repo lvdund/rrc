@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -10,7 +10,7 @@ type MBS_NeighbourCell_r17 struct {
 	CarrierFreq_r17 *ARFCN_ValueNR `optional`
 }
 
-func (ie *MBS_NeighbourCell_r17) Encode(w *uper.UperWriter) error {
+func (ie *MBS_NeighbourCell_r17) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.CarrierFreq_r17 != nil}
 	for _, bit := range preambleBits {
@@ -29,7 +29,7 @@ func (ie *MBS_NeighbourCell_r17) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *MBS_NeighbourCell_r17) Decode(r *uper.UperReader) error {
+func (ie *MBS_NeighbourCell_r17) Decode(r *aper.AperReader) error {
 	var err error
 	var CarrierFreq_r17Present bool
 	if CarrierFreq_r17Present, err = r.ReadBool(); err != nil {

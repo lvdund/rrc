@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -11,7 +11,7 @@ type EUTRA_Parameters struct {
 	Eutra_ParametersXDD_Diff *EUTRA_ParametersXDD_Diff `optional`
 }
 
-func (ie *EUTRA_Parameters) Encode(w *uper.UperWriter) error {
+func (ie *EUTRA_Parameters) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.Eutra_ParametersCommon != nil, ie.Eutra_ParametersXDD_Diff != nil}
 	for _, bit := range preambleBits {
@@ -19,7 +19,7 @@ func (ie *EUTRA_Parameters) Encode(w *uper.UperWriter) error {
 			return err
 		}
 	}
-	tmp_SupportedBandListEUTRA := utils.NewSequence[*FreqBandIndicatorEUTRA]([]*FreqBandIndicatorEUTRA{}, uper.Constraint{Lb: 1, Ub: maxBandsEUTRA}, false)
+	tmp_SupportedBandListEUTRA := utils.NewSequence[*FreqBandIndicatorEUTRA]([]*FreqBandIndicatorEUTRA{}, aper.Constraint{Lb: 1, Ub: maxBandsEUTRA}, false)
 	for _, i := range ie.SupportedBandListEUTRA {
 		tmp_SupportedBandListEUTRA.Value = append(tmp_SupportedBandListEUTRA.Value, &i)
 	}
@@ -39,7 +39,7 @@ func (ie *EUTRA_Parameters) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *EUTRA_Parameters) Decode(r *uper.UperReader) error {
+func (ie *EUTRA_Parameters) Decode(r *aper.AperReader) error {
 	var err error
 	var Eutra_ParametersCommonPresent bool
 	if Eutra_ParametersCommonPresent, err = r.ReadBool(); err != nil {
@@ -49,7 +49,7 @@ func (ie *EUTRA_Parameters) Decode(r *uper.UperReader) error {
 	if Eutra_ParametersXDD_DiffPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	tmp_SupportedBandListEUTRA := utils.NewSequence[*FreqBandIndicatorEUTRA]([]*FreqBandIndicatorEUTRA{}, uper.Constraint{Lb: 1, Ub: maxBandsEUTRA}, false)
+	tmp_SupportedBandListEUTRA := utils.NewSequence[*FreqBandIndicatorEUTRA]([]*FreqBandIndicatorEUTRA{}, aper.Constraint{Lb: 1, Ub: maxBandsEUTRA}, false)
 	fn_SupportedBandListEUTRA := func() *FreqBandIndicatorEUTRA {
 		return new(FreqBandIndicatorEUTRA)
 	}

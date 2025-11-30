@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -29,7 +29,7 @@ type CA_ParametersNR_v1720 struct {
 	Pdcch_BlindDetectionMixedList3_r17                []PDCCH_BlindDetectionMixed1_r17                                         `lb:1,ub:maxNrofPdcch_BlindDetection_r17,optional`
 }
 
-func (ie *CA_ParametersNR_v1720) Encode(w *uper.UperWriter) error {
+func (ie *CA_ParametersNR_v1720) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.ParallelTxSRS_PUCCH_PUSCH_intraBand_r17 != nil, ie.ParallelTxPRACH_SRS_PUCCH_PUSCH_intraBand_r17 != nil, ie.SemiStaticPUCCH_CellSwitchSingleGroup_r17 != nil, len(ie.SemiStaticPUCCH_CellSwitchTwoGroups_r17) > 0, ie.DynamicPUCCH_CellSwitchSameLengthSingleGroup_r17 != nil, ie.DynamicPUCCH_CellSwitchDiffLengthSingleGroup_r17 != nil, len(ie.DynamicPUCCH_CellSwitchSameLengthTwoGroups_r17) > 0, len(ie.DynamicPUCCH_CellSwitchDiffLengthTwoGroups_r17) > 0, ie.Ack_NACK_FeedbackForMulticast_r17 != nil, ie.Ptp_Retx_Multicast_r17 != nil, ie.Nack_OnlyFeedbackForMulticast_r17 != nil, ie.Nack_OnlyFeedbackSpecificResourceForMulticast_r17 != nil, ie.Ack_NACK_FeedbackForSPS_Multicast_r17 != nil, ie.Ptp_Retx_SPS_Multicast_r17 != nil, ie.HigherPowerLimit_r17 != nil, ie.ParallelTxMsgA_SRS_PUCCH_PUSCH_intraBand_r17 != nil, ie.Pdcch_MonitoringCA_r17 != nil, len(ie.Pdcch_BlindDetectionMCG_SCG_List_r17) > 0, len(ie.Pdcch_BlindDetectionMixedList1_r17) > 0, len(ie.Pdcch_BlindDetectionMixedList2_r17) > 0, len(ie.Pdcch_BlindDetectionMixedList3_r17) > 0}
 	for _, bit := range preambleBits {
@@ -53,7 +53,7 @@ func (ie *CA_ParametersNR_v1720) Encode(w *uper.UperWriter) error {
 		}
 	}
 	if len(ie.SemiStaticPUCCH_CellSwitchTwoGroups_r17) > 0 {
-		tmp_SemiStaticPUCCH_CellSwitchTwoGroups_r17 := utils.NewSequence[*TwoPUCCH_Grp_Configurations_r17]([]*TwoPUCCH_Grp_Configurations_r17{}, uper.Constraint{Lb: 1, Ub: maxTwoPUCCH_Grp_ConfigList_r17}, false)
+		tmp_SemiStaticPUCCH_CellSwitchTwoGroups_r17 := utils.NewSequence[*TwoPUCCH_Grp_Configurations_r17]([]*TwoPUCCH_Grp_Configurations_r17{}, aper.Constraint{Lb: 1, Ub: maxTwoPUCCH_Grp_ConfigList_r17}, false)
 		for _, i := range ie.SemiStaticPUCCH_CellSwitchTwoGroups_r17 {
 			tmp_SemiStaticPUCCH_CellSwitchTwoGroups_r17.Value = append(tmp_SemiStaticPUCCH_CellSwitchTwoGroups_r17.Value, &i)
 		}
@@ -72,7 +72,7 @@ func (ie *CA_ParametersNR_v1720) Encode(w *uper.UperWriter) error {
 		}
 	}
 	if len(ie.DynamicPUCCH_CellSwitchSameLengthTwoGroups_r17) > 0 {
-		tmp_DynamicPUCCH_CellSwitchSameLengthTwoGroups_r17 := utils.NewSequence[*TwoPUCCH_Grp_Configurations_r17]([]*TwoPUCCH_Grp_Configurations_r17{}, uper.Constraint{Lb: 1, Ub: maxTwoPUCCH_Grp_ConfigList_r17}, false)
+		tmp_DynamicPUCCH_CellSwitchSameLengthTwoGroups_r17 := utils.NewSequence[*TwoPUCCH_Grp_Configurations_r17]([]*TwoPUCCH_Grp_Configurations_r17{}, aper.Constraint{Lb: 1, Ub: maxTwoPUCCH_Grp_ConfigList_r17}, false)
 		for _, i := range ie.DynamicPUCCH_CellSwitchSameLengthTwoGroups_r17 {
 			tmp_DynamicPUCCH_CellSwitchSameLengthTwoGroups_r17.Value = append(tmp_DynamicPUCCH_CellSwitchSameLengthTwoGroups_r17.Value, &i)
 		}
@@ -81,7 +81,7 @@ func (ie *CA_ParametersNR_v1720) Encode(w *uper.UperWriter) error {
 		}
 	}
 	if len(ie.DynamicPUCCH_CellSwitchDiffLengthTwoGroups_r17) > 0 {
-		tmp_DynamicPUCCH_CellSwitchDiffLengthTwoGroups_r17 := utils.NewSequence[*TwoPUCCH_Grp_Configurations_r17]([]*TwoPUCCH_Grp_Configurations_r17{}, uper.Constraint{Lb: 1, Ub: maxTwoPUCCH_Grp_ConfigList_r17}, false)
+		tmp_DynamicPUCCH_CellSwitchDiffLengthTwoGroups_r17 := utils.NewSequence[*TwoPUCCH_Grp_Configurations_r17]([]*TwoPUCCH_Grp_Configurations_r17{}, aper.Constraint{Lb: 1, Ub: maxTwoPUCCH_Grp_ConfigList_r17}, false)
 		for _, i := range ie.DynamicPUCCH_CellSwitchDiffLengthTwoGroups_r17 {
 			tmp_DynamicPUCCH_CellSwitchDiffLengthTwoGroups_r17.Value = append(tmp_DynamicPUCCH_CellSwitchDiffLengthTwoGroups_r17.Value, &i)
 		}
@@ -130,12 +130,12 @@ func (ie *CA_ParametersNR_v1720) Encode(w *uper.UperWriter) error {
 		}
 	}
 	if ie.Pdcch_MonitoringCA_r17 != nil {
-		if err = w.WriteInteger(*ie.Pdcch_MonitoringCA_r17, &uper.Constraint{Lb: 4, Ub: 16}, false); err != nil {
+		if err = w.WriteInteger(*ie.Pdcch_MonitoringCA_r17, &aper.Constraint{Lb: 4, Ub: 16}, false); err != nil {
 			return utils.WrapError("Encode Pdcch_MonitoringCA_r17", err)
 		}
 	}
 	if len(ie.Pdcch_BlindDetectionMCG_SCG_List_r17) > 0 {
-		tmp_Pdcch_BlindDetectionMCG_SCG_List_r17 := utils.NewSequence[*PDCCH_BlindDetectionMCG_SCG_r17]([]*PDCCH_BlindDetectionMCG_SCG_r17{}, uper.Constraint{Lb: 1, Ub: maxNrofPdcch_BlindDetection_r17}, false)
+		tmp_Pdcch_BlindDetectionMCG_SCG_List_r17 := utils.NewSequence[*PDCCH_BlindDetectionMCG_SCG_r17]([]*PDCCH_BlindDetectionMCG_SCG_r17{}, aper.Constraint{Lb: 1, Ub: maxNrofPdcch_BlindDetection_r17}, false)
 		for _, i := range ie.Pdcch_BlindDetectionMCG_SCG_List_r17 {
 			tmp_Pdcch_BlindDetectionMCG_SCG_List_r17.Value = append(tmp_Pdcch_BlindDetectionMCG_SCG_List_r17.Value, &i)
 		}
@@ -144,7 +144,7 @@ func (ie *CA_ParametersNR_v1720) Encode(w *uper.UperWriter) error {
 		}
 	}
 	if len(ie.Pdcch_BlindDetectionMixedList1_r17) > 0 {
-		tmp_Pdcch_BlindDetectionMixedList1_r17 := utils.NewSequence[*PDCCH_BlindDetectionMixed_r17]([]*PDCCH_BlindDetectionMixed_r17{}, uper.Constraint{Lb: 1, Ub: maxNrofPdcch_BlindDetection_r17}, false)
+		tmp_Pdcch_BlindDetectionMixedList1_r17 := utils.NewSequence[*PDCCH_BlindDetectionMixed_r17]([]*PDCCH_BlindDetectionMixed_r17{}, aper.Constraint{Lb: 1, Ub: maxNrofPdcch_BlindDetection_r17}, false)
 		for _, i := range ie.Pdcch_BlindDetectionMixedList1_r17 {
 			tmp_Pdcch_BlindDetectionMixedList1_r17.Value = append(tmp_Pdcch_BlindDetectionMixedList1_r17.Value, &i)
 		}
@@ -153,7 +153,7 @@ func (ie *CA_ParametersNR_v1720) Encode(w *uper.UperWriter) error {
 		}
 	}
 	if len(ie.Pdcch_BlindDetectionMixedList2_r17) > 0 {
-		tmp_Pdcch_BlindDetectionMixedList2_r17 := utils.NewSequence[*PDCCH_BlindDetectionMixed_r17]([]*PDCCH_BlindDetectionMixed_r17{}, uper.Constraint{Lb: 1, Ub: maxNrofPdcch_BlindDetection_r17}, false)
+		tmp_Pdcch_BlindDetectionMixedList2_r17 := utils.NewSequence[*PDCCH_BlindDetectionMixed_r17]([]*PDCCH_BlindDetectionMixed_r17{}, aper.Constraint{Lb: 1, Ub: maxNrofPdcch_BlindDetection_r17}, false)
 		for _, i := range ie.Pdcch_BlindDetectionMixedList2_r17 {
 			tmp_Pdcch_BlindDetectionMixedList2_r17.Value = append(tmp_Pdcch_BlindDetectionMixedList2_r17.Value, &i)
 		}
@@ -162,7 +162,7 @@ func (ie *CA_ParametersNR_v1720) Encode(w *uper.UperWriter) error {
 		}
 	}
 	if len(ie.Pdcch_BlindDetectionMixedList3_r17) > 0 {
-		tmp_Pdcch_BlindDetectionMixedList3_r17 := utils.NewSequence[*PDCCH_BlindDetectionMixed1_r17]([]*PDCCH_BlindDetectionMixed1_r17{}, uper.Constraint{Lb: 1, Ub: maxNrofPdcch_BlindDetection_r17}, false)
+		tmp_Pdcch_BlindDetectionMixedList3_r17 := utils.NewSequence[*PDCCH_BlindDetectionMixed1_r17]([]*PDCCH_BlindDetectionMixed1_r17{}, aper.Constraint{Lb: 1, Ub: maxNrofPdcch_BlindDetection_r17}, false)
 		for _, i := range ie.Pdcch_BlindDetectionMixedList3_r17 {
 			tmp_Pdcch_BlindDetectionMixedList3_r17.Value = append(tmp_Pdcch_BlindDetectionMixedList3_r17.Value, &i)
 		}
@@ -173,7 +173,7 @@ func (ie *CA_ParametersNR_v1720) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *CA_ParametersNR_v1720) Decode(r *uper.UperReader) error {
+func (ie *CA_ParametersNR_v1720) Decode(r *aper.AperReader) error {
 	var err error
 	var ParallelTxSRS_PUCCH_PUSCH_intraBand_r17Present bool
 	if ParallelTxSRS_PUCCH_PUSCH_intraBand_r17Present, err = r.ReadBool(); err != nil {
@@ -278,7 +278,7 @@ func (ie *CA_ParametersNR_v1720) Decode(r *uper.UperReader) error {
 		}
 	}
 	if SemiStaticPUCCH_CellSwitchTwoGroups_r17Present {
-		tmp_SemiStaticPUCCH_CellSwitchTwoGroups_r17 := utils.NewSequence[*TwoPUCCH_Grp_Configurations_r17]([]*TwoPUCCH_Grp_Configurations_r17{}, uper.Constraint{Lb: 1, Ub: maxTwoPUCCH_Grp_ConfigList_r17}, false)
+		tmp_SemiStaticPUCCH_CellSwitchTwoGroups_r17 := utils.NewSequence[*TwoPUCCH_Grp_Configurations_r17]([]*TwoPUCCH_Grp_Configurations_r17{}, aper.Constraint{Lb: 1, Ub: maxTwoPUCCH_Grp_ConfigList_r17}, false)
 		fn_SemiStaticPUCCH_CellSwitchTwoGroups_r17 := func() *TwoPUCCH_Grp_Configurations_r17 {
 			return new(TwoPUCCH_Grp_Configurations_r17)
 		}
@@ -303,7 +303,7 @@ func (ie *CA_ParametersNR_v1720) Decode(r *uper.UperReader) error {
 		}
 	}
 	if DynamicPUCCH_CellSwitchSameLengthTwoGroups_r17Present {
-		tmp_DynamicPUCCH_CellSwitchSameLengthTwoGroups_r17 := utils.NewSequence[*TwoPUCCH_Grp_Configurations_r17]([]*TwoPUCCH_Grp_Configurations_r17{}, uper.Constraint{Lb: 1, Ub: maxTwoPUCCH_Grp_ConfigList_r17}, false)
+		tmp_DynamicPUCCH_CellSwitchSameLengthTwoGroups_r17 := utils.NewSequence[*TwoPUCCH_Grp_Configurations_r17]([]*TwoPUCCH_Grp_Configurations_r17{}, aper.Constraint{Lb: 1, Ub: maxTwoPUCCH_Grp_ConfigList_r17}, false)
 		fn_DynamicPUCCH_CellSwitchSameLengthTwoGroups_r17 := func() *TwoPUCCH_Grp_Configurations_r17 {
 			return new(TwoPUCCH_Grp_Configurations_r17)
 		}
@@ -316,7 +316,7 @@ func (ie *CA_ParametersNR_v1720) Decode(r *uper.UperReader) error {
 		}
 	}
 	if DynamicPUCCH_CellSwitchDiffLengthTwoGroups_r17Present {
-		tmp_DynamicPUCCH_CellSwitchDiffLengthTwoGroups_r17 := utils.NewSequence[*TwoPUCCH_Grp_Configurations_r17]([]*TwoPUCCH_Grp_Configurations_r17{}, uper.Constraint{Lb: 1, Ub: maxTwoPUCCH_Grp_ConfigList_r17}, false)
+		tmp_DynamicPUCCH_CellSwitchDiffLengthTwoGroups_r17 := utils.NewSequence[*TwoPUCCH_Grp_Configurations_r17]([]*TwoPUCCH_Grp_Configurations_r17{}, aper.Constraint{Lb: 1, Ub: maxTwoPUCCH_Grp_ConfigList_r17}, false)
 		fn_DynamicPUCCH_CellSwitchDiffLengthTwoGroups_r17 := func() *TwoPUCCH_Grp_Configurations_r17 {
 			return new(TwoPUCCH_Grp_Configurations_r17)
 		}
@@ -378,13 +378,13 @@ func (ie *CA_ParametersNR_v1720) Decode(r *uper.UperReader) error {
 	}
 	if Pdcch_MonitoringCA_r17Present {
 		var tmp_int_Pdcch_MonitoringCA_r17 int64
-		if tmp_int_Pdcch_MonitoringCA_r17, err = r.ReadInteger(&uper.Constraint{Lb: 4, Ub: 16}, false); err != nil {
+		if tmp_int_Pdcch_MonitoringCA_r17, err = r.ReadInteger(&aper.Constraint{Lb: 4, Ub: 16}, false); err != nil {
 			return utils.WrapError("Decode Pdcch_MonitoringCA_r17", err)
 		}
 		ie.Pdcch_MonitoringCA_r17 = &tmp_int_Pdcch_MonitoringCA_r17
 	}
 	if Pdcch_BlindDetectionMCG_SCG_List_r17Present {
-		tmp_Pdcch_BlindDetectionMCG_SCG_List_r17 := utils.NewSequence[*PDCCH_BlindDetectionMCG_SCG_r17]([]*PDCCH_BlindDetectionMCG_SCG_r17{}, uper.Constraint{Lb: 1, Ub: maxNrofPdcch_BlindDetection_r17}, false)
+		tmp_Pdcch_BlindDetectionMCG_SCG_List_r17 := utils.NewSequence[*PDCCH_BlindDetectionMCG_SCG_r17]([]*PDCCH_BlindDetectionMCG_SCG_r17{}, aper.Constraint{Lb: 1, Ub: maxNrofPdcch_BlindDetection_r17}, false)
 		fn_Pdcch_BlindDetectionMCG_SCG_List_r17 := func() *PDCCH_BlindDetectionMCG_SCG_r17 {
 			return new(PDCCH_BlindDetectionMCG_SCG_r17)
 		}
@@ -397,7 +397,7 @@ func (ie *CA_ParametersNR_v1720) Decode(r *uper.UperReader) error {
 		}
 	}
 	if Pdcch_BlindDetectionMixedList1_r17Present {
-		tmp_Pdcch_BlindDetectionMixedList1_r17 := utils.NewSequence[*PDCCH_BlindDetectionMixed_r17]([]*PDCCH_BlindDetectionMixed_r17{}, uper.Constraint{Lb: 1, Ub: maxNrofPdcch_BlindDetection_r17}, false)
+		tmp_Pdcch_BlindDetectionMixedList1_r17 := utils.NewSequence[*PDCCH_BlindDetectionMixed_r17]([]*PDCCH_BlindDetectionMixed_r17{}, aper.Constraint{Lb: 1, Ub: maxNrofPdcch_BlindDetection_r17}, false)
 		fn_Pdcch_BlindDetectionMixedList1_r17 := func() *PDCCH_BlindDetectionMixed_r17 {
 			return new(PDCCH_BlindDetectionMixed_r17)
 		}
@@ -410,7 +410,7 @@ func (ie *CA_ParametersNR_v1720) Decode(r *uper.UperReader) error {
 		}
 	}
 	if Pdcch_BlindDetectionMixedList2_r17Present {
-		tmp_Pdcch_BlindDetectionMixedList2_r17 := utils.NewSequence[*PDCCH_BlindDetectionMixed_r17]([]*PDCCH_BlindDetectionMixed_r17{}, uper.Constraint{Lb: 1, Ub: maxNrofPdcch_BlindDetection_r17}, false)
+		tmp_Pdcch_BlindDetectionMixedList2_r17 := utils.NewSequence[*PDCCH_BlindDetectionMixed_r17]([]*PDCCH_BlindDetectionMixed_r17{}, aper.Constraint{Lb: 1, Ub: maxNrofPdcch_BlindDetection_r17}, false)
 		fn_Pdcch_BlindDetectionMixedList2_r17 := func() *PDCCH_BlindDetectionMixed_r17 {
 			return new(PDCCH_BlindDetectionMixed_r17)
 		}
@@ -423,7 +423,7 @@ func (ie *CA_ParametersNR_v1720) Decode(r *uper.UperReader) error {
 		}
 	}
 	if Pdcch_BlindDetectionMixedList3_r17Present {
-		tmp_Pdcch_BlindDetectionMixedList3_r17 := utils.NewSequence[*PDCCH_BlindDetectionMixed1_r17]([]*PDCCH_BlindDetectionMixed1_r17{}, uper.Constraint{Lb: 1, Ub: maxNrofPdcch_BlindDetection_r17}, false)
+		tmp_Pdcch_BlindDetectionMixedList3_r17 := utils.NewSequence[*PDCCH_BlindDetectionMixed1_r17]([]*PDCCH_BlindDetectionMixed1_r17{}, aper.Constraint{Lb: 1, Ub: maxNrofPdcch_BlindDetection_r17}, false)
 		fn_Pdcch_BlindDetectionMixedList3_r17 := func() *PDCCH_BlindDetectionMixed1_r17 {
 			return new(PDCCH_BlindDetectionMixed1_r17)
 		}

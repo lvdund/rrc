@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -12,7 +12,7 @@ type SIB_TypeInfo_v1700_sibType_r17_type2_r17 struct {
 	Sbas_id_r17    *SBAS_ID_r16                                            `optional`
 }
 
-func (ie *SIB_TypeInfo_v1700_sibType_r17_type2_r17) Encode(w *uper.UperWriter) error {
+func (ie *SIB_TypeInfo_v1700_sibType_r17_type2_r17) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.Encrypted_r17 != nil, ie.Gnss_id_r17 != nil, ie.Sbas_id_r17 != nil}
 	for _, bit := range preambleBits {
@@ -41,7 +41,7 @@ func (ie *SIB_TypeInfo_v1700_sibType_r17_type2_r17) Encode(w *uper.UperWriter) e
 	return nil
 }
 
-func (ie *SIB_TypeInfo_v1700_sibType_r17_type2_r17) Decode(r *uper.UperReader) error {
+func (ie *SIB_TypeInfo_v1700_sibType_r17_type2_r17) Decode(r *aper.AperReader) error {
 	var err error
 	var Encrypted_r17Present bool
 	if Encrypted_r17Present, err = r.ReadBool(); err != nil {

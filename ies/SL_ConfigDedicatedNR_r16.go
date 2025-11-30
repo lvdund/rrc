@@ -3,7 +3,7 @@ package ies
 import (
 	"bytes"
 
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -18,7 +18,7 @@ type SL_ConfigDedicatedNR_r16 struct {
 	Sl_DiscConfig_r17                  *SL_DiscConfig_r17                 `optional,ext-1,setuprelease`
 }
 
-func (ie *SL_ConfigDedicatedNR_r16) Encode(w *uper.UperWriter) error {
+func (ie *SL_ConfigDedicatedNR_r16) Encode(w *aper.AperWriter) error {
 	var err error
 	hasExtensions := ie.Sl_PHY_MAC_RLC_Config_v1700 != nil || ie.Sl_DiscConfig_r17 != nil
 	preambleBits := []bool{hasExtensions, ie.Sl_PHY_MAC_RLC_Config_r16 != nil, len(ie.Sl_RadioBearerToReleaseList_r16) > 0, len(ie.Sl_RadioBearerToAddModList_r16) > 0, len(ie.Sl_MeasConfigInfoToReleaseList_r16) > 0, len(ie.Sl_MeasConfigInfoToAddModList_r16) > 0, ie.T400_r16 != nil}
@@ -33,7 +33,7 @@ func (ie *SL_ConfigDedicatedNR_r16) Encode(w *uper.UperWriter) error {
 		}
 	}
 	if len(ie.Sl_RadioBearerToReleaseList_r16) > 0 {
-		tmp_Sl_RadioBearerToReleaseList_r16 := utils.NewSequence[*SLRB_Uu_ConfigIndex_r16]([]*SLRB_Uu_ConfigIndex_r16{}, uper.Constraint{Lb: 1, Ub: maxNrofSLRB_r16}, false)
+		tmp_Sl_RadioBearerToReleaseList_r16 := utils.NewSequence[*SLRB_Uu_ConfigIndex_r16]([]*SLRB_Uu_ConfigIndex_r16{}, aper.Constraint{Lb: 1, Ub: maxNrofSLRB_r16}, false)
 		for _, i := range ie.Sl_RadioBearerToReleaseList_r16 {
 			tmp_Sl_RadioBearerToReleaseList_r16.Value = append(tmp_Sl_RadioBearerToReleaseList_r16.Value, &i)
 		}
@@ -42,7 +42,7 @@ func (ie *SL_ConfigDedicatedNR_r16) Encode(w *uper.UperWriter) error {
 		}
 	}
 	if len(ie.Sl_RadioBearerToAddModList_r16) > 0 {
-		tmp_Sl_RadioBearerToAddModList_r16 := utils.NewSequence[*SL_RadioBearerConfig_r16]([]*SL_RadioBearerConfig_r16{}, uper.Constraint{Lb: 1, Ub: maxNrofSLRB_r16}, false)
+		tmp_Sl_RadioBearerToAddModList_r16 := utils.NewSequence[*SL_RadioBearerConfig_r16]([]*SL_RadioBearerConfig_r16{}, aper.Constraint{Lb: 1, Ub: maxNrofSLRB_r16}, false)
 		for _, i := range ie.Sl_RadioBearerToAddModList_r16 {
 			tmp_Sl_RadioBearerToAddModList_r16.Value = append(tmp_Sl_RadioBearerToAddModList_r16.Value, &i)
 		}
@@ -51,7 +51,7 @@ func (ie *SL_ConfigDedicatedNR_r16) Encode(w *uper.UperWriter) error {
 		}
 	}
 	if len(ie.Sl_MeasConfigInfoToReleaseList_r16) > 0 {
-		tmp_Sl_MeasConfigInfoToReleaseList_r16 := utils.NewSequence[*SL_DestinationIndex_r16]([]*SL_DestinationIndex_r16{}, uper.Constraint{Lb: 1, Ub: maxNrofSL_Dest_r16}, false)
+		tmp_Sl_MeasConfigInfoToReleaseList_r16 := utils.NewSequence[*SL_DestinationIndex_r16]([]*SL_DestinationIndex_r16{}, aper.Constraint{Lb: 1, Ub: maxNrofSL_Dest_r16}, false)
 		for _, i := range ie.Sl_MeasConfigInfoToReleaseList_r16 {
 			tmp_Sl_MeasConfigInfoToReleaseList_r16.Value = append(tmp_Sl_MeasConfigInfoToReleaseList_r16.Value, &i)
 		}
@@ -60,7 +60,7 @@ func (ie *SL_ConfigDedicatedNR_r16) Encode(w *uper.UperWriter) error {
 		}
 	}
 	if len(ie.Sl_MeasConfigInfoToAddModList_r16) > 0 {
-		tmp_Sl_MeasConfigInfoToAddModList_r16 := utils.NewSequence[*SL_MeasConfigInfo_r16]([]*SL_MeasConfigInfo_r16{}, uper.Constraint{Lb: 1, Ub: maxNrofSL_Dest_r16}, false)
+		tmp_Sl_MeasConfigInfoToAddModList_r16 := utils.NewSequence[*SL_MeasConfigInfo_r16]([]*SL_MeasConfigInfo_r16{}, aper.Constraint{Lb: 1, Ub: maxNrofSL_Dest_r16}, false)
 		for _, i := range ie.Sl_MeasConfigInfoToAddModList_r16 {
 			tmp_Sl_MeasConfigInfoToAddModList_r16.Value = append(tmp_Sl_MeasConfigInfoToAddModList_r16.Value, &i)
 		}
@@ -83,7 +83,7 @@ func (ie *SL_ConfigDedicatedNR_r16) Encode(w *uper.UperWriter) error {
 		// encode extension group 1
 		if extBitmap[0] {
 			extBuf := new(bytes.Buffer)
-			extWriter := uper.NewWriter(extBuf)
+			extWriter := aper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 1
 			optionals_ext_1 := []bool{ie.Sl_PHY_MAC_RLC_Config_v1700 != nil, ie.Sl_DiscConfig_r17 != nil}
@@ -124,7 +124,7 @@ func (ie *SL_ConfigDedicatedNR_r16) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *SL_ConfigDedicatedNR_r16) Decode(r *uper.UperReader) error {
+func (ie *SL_ConfigDedicatedNR_r16) Decode(r *aper.AperReader) error {
 	var err error
 	var extensionBit bool
 	if extensionBit, err = r.ReadBool(); err != nil {
@@ -161,7 +161,7 @@ func (ie *SL_ConfigDedicatedNR_r16) Decode(r *uper.UperReader) error {
 		}
 	}
 	if Sl_RadioBearerToReleaseList_r16Present {
-		tmp_Sl_RadioBearerToReleaseList_r16 := utils.NewSequence[*SLRB_Uu_ConfigIndex_r16]([]*SLRB_Uu_ConfigIndex_r16{}, uper.Constraint{Lb: 1, Ub: maxNrofSLRB_r16}, false)
+		tmp_Sl_RadioBearerToReleaseList_r16 := utils.NewSequence[*SLRB_Uu_ConfigIndex_r16]([]*SLRB_Uu_ConfigIndex_r16{}, aper.Constraint{Lb: 1, Ub: maxNrofSLRB_r16}, false)
 		fn_Sl_RadioBearerToReleaseList_r16 := func() *SLRB_Uu_ConfigIndex_r16 {
 			return new(SLRB_Uu_ConfigIndex_r16)
 		}
@@ -174,7 +174,7 @@ func (ie *SL_ConfigDedicatedNR_r16) Decode(r *uper.UperReader) error {
 		}
 	}
 	if Sl_RadioBearerToAddModList_r16Present {
-		tmp_Sl_RadioBearerToAddModList_r16 := utils.NewSequence[*SL_RadioBearerConfig_r16]([]*SL_RadioBearerConfig_r16{}, uper.Constraint{Lb: 1, Ub: maxNrofSLRB_r16}, false)
+		tmp_Sl_RadioBearerToAddModList_r16 := utils.NewSequence[*SL_RadioBearerConfig_r16]([]*SL_RadioBearerConfig_r16{}, aper.Constraint{Lb: 1, Ub: maxNrofSLRB_r16}, false)
 		fn_Sl_RadioBearerToAddModList_r16 := func() *SL_RadioBearerConfig_r16 {
 			return new(SL_RadioBearerConfig_r16)
 		}
@@ -187,7 +187,7 @@ func (ie *SL_ConfigDedicatedNR_r16) Decode(r *uper.UperReader) error {
 		}
 	}
 	if Sl_MeasConfigInfoToReleaseList_r16Present {
-		tmp_Sl_MeasConfigInfoToReleaseList_r16 := utils.NewSequence[*SL_DestinationIndex_r16]([]*SL_DestinationIndex_r16{}, uper.Constraint{Lb: 1, Ub: maxNrofSL_Dest_r16}, false)
+		tmp_Sl_MeasConfigInfoToReleaseList_r16 := utils.NewSequence[*SL_DestinationIndex_r16]([]*SL_DestinationIndex_r16{}, aper.Constraint{Lb: 1, Ub: maxNrofSL_Dest_r16}, false)
 		fn_Sl_MeasConfigInfoToReleaseList_r16 := func() *SL_DestinationIndex_r16 {
 			return new(SL_DestinationIndex_r16)
 		}
@@ -200,7 +200,7 @@ func (ie *SL_ConfigDedicatedNR_r16) Decode(r *uper.UperReader) error {
 		}
 	}
 	if Sl_MeasConfigInfoToAddModList_r16Present {
-		tmp_Sl_MeasConfigInfoToAddModList_r16 := utils.NewSequence[*SL_MeasConfigInfo_r16]([]*SL_MeasConfigInfo_r16{}, uper.Constraint{Lb: 1, Ub: maxNrofSL_Dest_r16}, false)
+		tmp_Sl_MeasConfigInfoToAddModList_r16 := utils.NewSequence[*SL_MeasConfigInfo_r16]([]*SL_MeasConfigInfo_r16{}, aper.Constraint{Lb: 1, Ub: maxNrofSL_Dest_r16}, false)
 		fn_Sl_MeasConfigInfoToAddModList_r16 := func() *SL_MeasConfigInfo_r16 {
 			return new(SL_MeasConfigInfo_r16)
 		}
@@ -233,7 +233,7 @@ func (ie *SL_ConfigDedicatedNR_r16) Decode(r *uper.UperReader) error {
 				return err
 			}
 
-			extReader := uper.NewReader(bytes.NewReader(extBytes))
+			extReader := aper.NewReader(bytes.NewReader(extBytes))
 
 			Sl_PHY_MAC_RLC_Config_v1700Present, err := extReader.ReadBool()
 			if err != nil {

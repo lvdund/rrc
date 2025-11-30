@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -11,7 +11,7 @@ type NR_PRS_MeasurementInfo_r16 struct {
 	Nr_MeasPRS_length_r16              NR_PRS_MeasurementInfo_r16_nr_MeasPRS_length_r16              `madatory,ext`
 }
 
-func (ie *NR_PRS_MeasurementInfo_r16) Encode(w *uper.UperWriter) error {
+func (ie *NR_PRS_MeasurementInfo_r16) Encode(w *aper.AperWriter) error {
 	var err error
 	if err = ie.Dl_PRS_PointA_r16.Encode(w); err != nil {
 		return utils.WrapError("Encode Dl_PRS_PointA_r16", err)
@@ -22,7 +22,7 @@ func (ie *NR_PRS_MeasurementInfo_r16) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *NR_PRS_MeasurementInfo_r16) Decode(r *uper.UperReader) error {
+func (ie *NR_PRS_MeasurementInfo_r16) Decode(r *aper.AperReader) error {
 	var err error
 	if err = ie.Dl_PRS_PointA_r16.Decode(r); err != nil {
 		return utils.WrapError("Decode Dl_PRS_PointA_r16", err)

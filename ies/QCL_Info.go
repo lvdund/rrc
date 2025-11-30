@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -12,7 +12,7 @@ type QCL_Info struct {
 	Qcl_Type        QCL_Info_qcl_Type        `madatory`
 }
 
-func (ie *QCL_Info) Encode(w *uper.UperWriter) error {
+func (ie *QCL_Info) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.Cell != nil, ie.Bwp_Id != nil}
 	for _, bit := range preambleBits {
@@ -39,7 +39,7 @@ func (ie *QCL_Info) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *QCL_Info) Decode(r *uper.UperReader) error {
+func (ie *QCL_Info) Decode(r *aper.AperReader) error {
 	var err error
 	var CellPresent bool
 	if CellPresent, err = r.ReadBool(); err != nil {

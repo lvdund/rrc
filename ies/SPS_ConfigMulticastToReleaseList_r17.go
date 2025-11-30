@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -9,9 +9,9 @@ type SPS_ConfigMulticastToReleaseList_r17 struct {
 	Value []SPS_ConfigIndex_r16 `lb:1,ub:8,madatory`
 }
 
-func (ie *SPS_ConfigMulticastToReleaseList_r17) Encode(w *uper.UperWriter) error {
+func (ie *SPS_ConfigMulticastToReleaseList_r17) Encode(w *aper.AperWriter) error {
 	var err error
-	tmp := utils.NewSequence[*SPS_ConfigIndex_r16]([]*SPS_ConfigIndex_r16{}, uper.Constraint{Lb: 1, Ub: 8}, false)
+	tmp := utils.NewSequence[*SPS_ConfigIndex_r16]([]*SPS_ConfigIndex_r16{}, aper.Constraint{Lb: 1, Ub: 8}, false)
 	for _, i := range ie.Value {
 		tmp.Value = append(tmp.Value, &i)
 	}
@@ -21,9 +21,9 @@ func (ie *SPS_ConfigMulticastToReleaseList_r17) Encode(w *uper.UperWriter) error
 	return nil
 }
 
-func (ie *SPS_ConfigMulticastToReleaseList_r17) Decode(r *uper.UperReader) error {
+func (ie *SPS_ConfigMulticastToReleaseList_r17) Decode(r *aper.AperReader) error {
 	var err error
-	tmp := utils.NewSequence[*SPS_ConfigIndex_r16]([]*SPS_ConfigIndex_r16{}, uper.Constraint{Lb: 1, Ub: 8}, false)
+	tmp := utils.NewSequence[*SPS_ConfigIndex_r16]([]*SPS_ConfigIndex_r16{}, aper.Constraint{Lb: 1, Ub: 8}, false)
 	fn := func() *SPS_ConfigIndex_r16 {
 		return new(SPS_ConfigIndex_r16)
 	}

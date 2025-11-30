@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -10,7 +10,7 @@ type SecurityModeComplete struct {
 	CriticalExtensions        SecurityModeComplete_CriticalExtensions `madatory`
 }
 
-func (ie *SecurityModeComplete) Encode(w *uper.UperWriter) error {
+func (ie *SecurityModeComplete) Encode(w *aper.AperWriter) error {
 	var err error
 	if err = ie.Rrc_TransactionIdentifier.Encode(w); err != nil {
 		return utils.WrapError("Encode Rrc_TransactionIdentifier", err)
@@ -21,7 +21,7 @@ func (ie *SecurityModeComplete) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *SecurityModeComplete) Decode(r *uper.UperReader) error {
+func (ie *SecurityModeComplete) Decode(r *aper.AperReader) error {
 	var err error
 	if err = ie.Rrc_TransactionIdentifier.Decode(r); err != nil {
 		return utils.WrapError("Decode Rrc_TransactionIdentifier", err)

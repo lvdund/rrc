@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -12,7 +12,7 @@ type FeatureSetDownlink_v1610_cbgPDSCH_ProcessingType1_DifferentTB_PerSlot_r16 s
 	Scs_120kHz_r16 *FeatureSetDownlink_v1610_cbgPDSCH_ProcessingType1_DifferentTB_PerSlot_r16_scs_120kHz_r16 `optional`
 }
 
-func (ie *FeatureSetDownlink_v1610_cbgPDSCH_ProcessingType1_DifferentTB_PerSlot_r16) Encode(w *uper.UperWriter) error {
+func (ie *FeatureSetDownlink_v1610_cbgPDSCH_ProcessingType1_DifferentTB_PerSlot_r16) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.Scs_15kHz_r16 != nil, ie.Scs_30kHz_r16 != nil, ie.Scs_60kHz_r16 != nil, ie.Scs_120kHz_r16 != nil}
 	for _, bit := range preambleBits {
@@ -43,7 +43,7 @@ func (ie *FeatureSetDownlink_v1610_cbgPDSCH_ProcessingType1_DifferentTB_PerSlot_
 	return nil
 }
 
-func (ie *FeatureSetDownlink_v1610_cbgPDSCH_ProcessingType1_DifferentTB_PerSlot_r16) Decode(r *uper.UperReader) error {
+func (ie *FeatureSetDownlink_v1610_cbgPDSCH_ProcessingType1_DifferentTB_PerSlot_r16) Decode(r *aper.AperReader) error {
 	var err error
 	var Scs_15kHz_r16Present bool
 	if Scs_15kHz_r16Present, err = r.ReadBool(); err != nil {

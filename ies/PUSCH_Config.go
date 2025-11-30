@@ -3,7 +3,7 @@ package ies
 import (
 	"bytes"
 
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -77,7 +77,7 @@ type PUSCH_Config struct {
 	Mpe_ResourcePoolToReleaseList_r17               []MPE_ResourceId_r17                                        `lb:1,ub:maxMPE_Resources_r17,optional,ext-2`
 }
 
-func (ie *PUSCH_Config) Encode(w *uper.UperWriter) error {
+func (ie *PUSCH_Config) Encode(w *aper.AperWriter) error {
 	var err error
 	hasExtensions := ie.MinimumSchedulingOffsetK2_r16 != nil || ie.Ul_AccessConfigListDCI_0_1_r16 != nil || ie.Harq_ProcessNumberSizeDCI_0_2_r16 != nil || ie.Dmrs_SequenceInitializationDCI_0_2_r16 != nil || ie.NumberOfBitsForRV_DCI_0_2_r16 != nil || ie.AntennaPortsFieldPresenceDCI_0_2_r16 != nil || ie.Dmrs_UplinkForPUSCH_MappingTypeA_DCI_0_2_r16 != nil || ie.Dmrs_UplinkForPUSCH_MappingTypeB_DCI_0_2_r16 != nil || ie.FrequencyHoppingDCI_0_2_r16 != nil || ie.FrequencyHoppingOffsetListsDCI_0_2_r16 != nil || ie.CodebookSubsetDCI_0_2_r16 != nil || ie.InvalidSymbolPatternIndicatorDCI_0_2_r16 != nil || ie.MaxRankDCI_0_2_r16 != nil || ie.Mcs_TableDCI_0_2_r16 != nil || ie.Mcs_TableTransformPrecoderDCI_0_2_r16 != nil || ie.PriorityIndicatorDCI_0_2_r16 != nil || ie.Pusch_RepTypeIndicatorDCI_0_2_r16 != nil || ie.ResourceAllocationDCI_0_2_r16 != nil || ie.ResourceAllocationType1GranularityDCI_0_2_r16 != nil || ie.Uci_OnPUSCH_ListDCI_0_2_r16 != nil || ie.Pusch_TimeDomainAllocationListDCI_0_2_r16 != nil || ie.Pusch_TimeDomainAllocationListDCI_0_1_r16 != nil || ie.InvalidSymbolPatternIndicatorDCI_0_1_r16 != nil || ie.PriorityIndicatorDCI_0_1_r16 != nil || ie.Pusch_RepTypeIndicatorDCI_0_1_r16 != nil || ie.FrequencyHoppingDCI_0_1_r16 != nil || ie.Uci_OnPUSCH_ListDCI_0_1_r16 != nil || ie.InvalidSymbolPattern_r16 != nil || ie.Pusch_PowerControl_v1610 != nil || ie.Ul_FullPowerTransmission_r16 != nil || ie.Pusch_TimeDomainAllocationListForMultiPUSCH_r16 != nil || ie.NumberOfInvalidSymbolsForDL_UL_Switching_r16 != nil || ie.Ul_AccessConfigListDCI_0_2_r17 != nil || ie.BetaOffsetsCrossPri0_r17 != nil || ie.BetaOffsetsCrossPri1_r17 != nil || ie.BetaOffsetsCrossPri0DCI_0_2_r17 != nil || ie.BetaOffsetsCrossPri1DCI_0_2_r17 != nil || ie.MappingPattern_r17 != nil || ie.SecondTPCFieldDCI_0_1_r17 != nil || ie.SecondTPCFieldDCI_0_2_r17 != nil || ie.SequenceOffsetForRV_r17 != nil || ie.Ul_AccessConfigListDCI_0_1_r17 != nil || ie.MinimumSchedulingOffsetK2_r17 != nil || ie.AvailableSlotCounting_r17 != nil || ie.Dmrs_BundlingPUSCH_Config_r17 != nil || ie.Harq_ProcessNumberSizeDCI_0_2_v1700 != nil || ie.Harq_ProcessNumberSizeDCI_0_1_r17 != nil || len(ie.Mpe_ResourcePoolToAddModList_r17) > 0 || len(ie.Mpe_ResourcePoolToReleaseList_r17) > 0
 	preambleBits := []bool{hasExtensions, ie.DataScramblingIdentityPUSCH != nil, ie.TxConfig != nil, ie.Dmrs_UplinkForPUSCH_MappingTypeA != nil, ie.Dmrs_UplinkForPUSCH_MappingTypeB != nil, ie.Pusch_PowerControl != nil, ie.FrequencyHopping != nil, len(ie.FrequencyHoppingOffsetLists) > 0, ie.Pusch_TimeDomainAllocationList != nil, ie.Pusch_AggregationFactor != nil, ie.Mcs_Table != nil, ie.Mcs_TableTransformPrecoder != nil, ie.TransformPrecoder != nil, ie.CodebookSubset != nil, ie.MaxRank != nil, ie.Rbg_Size != nil, ie.Uci_OnPUSCH != nil, ie.Tp_pi2BPSK != nil}
@@ -87,7 +87,7 @@ func (ie *PUSCH_Config) Encode(w *uper.UperWriter) error {
 		}
 	}
 	if ie.DataScramblingIdentityPUSCH != nil {
-		if err = w.WriteInteger(*ie.DataScramblingIdentityPUSCH, &uper.Constraint{Lb: 0, Ub: 1023}, false); err != nil {
+		if err = w.WriteInteger(*ie.DataScramblingIdentityPUSCH, &aper.Constraint{Lb: 0, Ub: 1023}, false); err != nil {
 			return utils.WrapError("Encode DataScramblingIdentityPUSCH", err)
 		}
 	}
@@ -123,9 +123,9 @@ func (ie *PUSCH_Config) Encode(w *uper.UperWriter) error {
 		}
 	}
 	if len(ie.FrequencyHoppingOffsetLists) > 0 {
-		tmp_FrequencyHoppingOffsetLists := utils.NewSequence[*utils.INTEGER]([]*utils.INTEGER{}, uper.Constraint{Lb: 1, Ub: 4}, false)
+		tmp_FrequencyHoppingOffsetLists := utils.NewSequence[*utils.INTEGER]([]*utils.INTEGER{}, aper.Constraint{Lb: 1, Ub: 4}, false)
 		for _, i := range ie.FrequencyHoppingOffsetLists {
-			tmp_ie := utils.NewINTEGER(int64(i), uper.Constraint{Lb: 1, Ub: maxNrofPhysicalResourceBlocks_1}, false)
+			tmp_ie := utils.NewINTEGER(int64(i), aper.Constraint{Lb: 1, Ub: maxNrofPhysicalResourceBlocks_1}, false)
 			tmp_FrequencyHoppingOffsetLists.Value = append(tmp_FrequencyHoppingOffsetLists.Value, &tmp_ie)
 		}
 		if err = tmp_FrequencyHoppingOffsetLists.Encode(w); err != nil {
@@ -169,7 +169,7 @@ func (ie *PUSCH_Config) Encode(w *uper.UperWriter) error {
 		}
 	}
 	if ie.MaxRank != nil {
-		if err = w.WriteInteger(*ie.MaxRank, &uper.Constraint{Lb: 1, Ub: 4}, false); err != nil {
+		if err = w.WriteInteger(*ie.MaxRank, &aper.Constraint{Lb: 1, Ub: 4}, false); err != nil {
 			return utils.WrapError("Encode MaxRank", err)
 		}
 	}
@@ -201,7 +201,7 @@ func (ie *PUSCH_Config) Encode(w *uper.UperWriter) error {
 		// encode extension group 1
 		if extBitmap[0] {
 			extBuf := new(bytes.Buffer)
-			extWriter := uper.NewWriter(extBuf)
+			extWriter := aper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 1
 			optionals_ext_1 := []bool{ie.MinimumSchedulingOffsetK2_r16 != nil, ie.Ul_AccessConfigListDCI_0_1_r16 != nil, ie.Harq_ProcessNumberSizeDCI_0_2_r16 != nil, ie.Dmrs_SequenceInitializationDCI_0_2_r16 != nil, ie.NumberOfBitsForRV_DCI_0_2_r16 != nil, ie.AntennaPortsFieldPresenceDCI_0_2_r16 != nil, ie.Dmrs_UplinkForPUSCH_MappingTypeA_DCI_0_2_r16 != nil, ie.Dmrs_UplinkForPUSCH_MappingTypeB_DCI_0_2_r16 != nil, ie.FrequencyHoppingDCI_0_2_r16 != nil, ie.FrequencyHoppingOffsetListsDCI_0_2_r16 != nil, ie.CodebookSubsetDCI_0_2_r16 != nil, ie.InvalidSymbolPatternIndicatorDCI_0_2_r16 != nil, ie.MaxRankDCI_0_2_r16 != nil, ie.Mcs_TableDCI_0_2_r16 != nil, ie.Mcs_TableTransformPrecoderDCI_0_2_r16 != nil, ie.PriorityIndicatorDCI_0_2_r16 != nil, ie.Pusch_RepTypeIndicatorDCI_0_2_r16 != nil, ie.ResourceAllocationDCI_0_2_r16 != nil, ie.ResourceAllocationType1GranularityDCI_0_2_r16 != nil, ie.Uci_OnPUSCH_ListDCI_0_2_r16 != nil, ie.Pusch_TimeDomainAllocationListDCI_0_2_r16 != nil, ie.Pusch_TimeDomainAllocationListDCI_0_1_r16 != nil, ie.InvalidSymbolPatternIndicatorDCI_0_1_r16 != nil, ie.PriorityIndicatorDCI_0_1_r16 != nil, ie.Pusch_RepTypeIndicatorDCI_0_1_r16 != nil, ie.FrequencyHoppingDCI_0_1_r16 != nil, ie.Uci_OnPUSCH_ListDCI_0_1_r16 != nil, ie.InvalidSymbolPattern_r16 != nil, ie.Pusch_PowerControl_v1610 != nil, ie.Ul_FullPowerTransmission_r16 != nil, ie.Pusch_TimeDomainAllocationListForMultiPUSCH_r16 != nil, ie.NumberOfInvalidSymbolsForDL_UL_Switching_r16 != nil}
@@ -231,7 +231,7 @@ func (ie *PUSCH_Config) Encode(w *uper.UperWriter) error {
 			}
 			// encode Harq_ProcessNumberSizeDCI_0_2_r16 optional
 			if ie.Harq_ProcessNumberSizeDCI_0_2_r16 != nil {
-				if err = extWriter.WriteInteger(*ie.Harq_ProcessNumberSizeDCI_0_2_r16, &uper.Constraint{Lb: 0, Ub: 4}, false); err != nil {
+				if err = extWriter.WriteInteger(*ie.Harq_ProcessNumberSizeDCI_0_2_r16, &aper.Constraint{Lb: 0, Ub: 4}, false); err != nil {
 					return utils.WrapError("Encode Harq_ProcessNumberSizeDCI_0_2_r16", err)
 				}
 			}
@@ -243,7 +243,7 @@ func (ie *PUSCH_Config) Encode(w *uper.UperWriter) error {
 			}
 			// encode NumberOfBitsForRV_DCI_0_2_r16 optional
 			if ie.NumberOfBitsForRV_DCI_0_2_r16 != nil {
-				if err = extWriter.WriteInteger(*ie.NumberOfBitsForRV_DCI_0_2_r16, &uper.Constraint{Lb: 0, Ub: 2}, false); err != nil {
+				if err = extWriter.WriteInteger(*ie.NumberOfBitsForRV_DCI_0_2_r16, &aper.Constraint{Lb: 0, Ub: 2}, false); err != nil {
 					return utils.WrapError("Encode NumberOfBitsForRV_DCI_0_2_r16", err)
 				}
 			}
@@ -300,7 +300,7 @@ func (ie *PUSCH_Config) Encode(w *uper.UperWriter) error {
 			}
 			// encode MaxRankDCI_0_2_r16 optional
 			if ie.MaxRankDCI_0_2_r16 != nil {
-				if err = extWriter.WriteInteger(*ie.MaxRankDCI_0_2_r16, &uper.Constraint{Lb: 1, Ub: 4}, false); err != nil {
+				if err = extWriter.WriteInteger(*ie.MaxRankDCI_0_2_r16, &aper.Constraint{Lb: 1, Ub: 4}, false); err != nil {
 					return utils.WrapError("Encode MaxRankDCI_0_2_r16", err)
 				}
 			}
@@ -432,7 +432,7 @@ func (ie *PUSCH_Config) Encode(w *uper.UperWriter) error {
 			}
 			// encode NumberOfInvalidSymbolsForDL_UL_Switching_r16 optional
 			if ie.NumberOfInvalidSymbolsForDL_UL_Switching_r16 != nil {
-				if err = extWriter.WriteInteger(*ie.NumberOfInvalidSymbolsForDL_UL_Switching_r16, &uper.Constraint{Lb: 1, Ub: 4}, false); err != nil {
+				if err = extWriter.WriteInteger(*ie.NumberOfInvalidSymbolsForDL_UL_Switching_r16, &aper.Constraint{Lb: 1, Ub: 4}, false); err != nil {
 					return utils.WrapError("Encode NumberOfInvalidSymbolsForDL_UL_Switching_r16", err)
 				}
 			}
@@ -449,7 +449,7 @@ func (ie *PUSCH_Config) Encode(w *uper.UperWriter) error {
 		// encode extension group 2
 		if extBitmap[1] {
 			extBuf := new(bytes.Buffer)
-			extWriter := uper.NewWriter(extBuf)
+			extWriter := aper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 2
 			optionals_ext_2 := []bool{ie.Ul_AccessConfigListDCI_0_2_r17 != nil, ie.BetaOffsetsCrossPri0_r17 != nil, ie.BetaOffsetsCrossPri1_r17 != nil, ie.BetaOffsetsCrossPri0DCI_0_2_r17 != nil, ie.BetaOffsetsCrossPri1DCI_0_2_r17 != nil, ie.MappingPattern_r17 != nil, ie.SecondTPCFieldDCI_0_1_r17 != nil, ie.SecondTPCFieldDCI_0_2_r17 != nil, ie.SequenceOffsetForRV_r17 != nil, ie.Ul_AccessConfigListDCI_0_1_r17 != nil, ie.MinimumSchedulingOffsetK2_r17 != nil, ie.AvailableSlotCounting_r17 != nil, ie.Dmrs_BundlingPUSCH_Config_r17 != nil, ie.Harq_ProcessNumberSizeDCI_0_2_v1700 != nil, ie.Harq_ProcessNumberSizeDCI_0_1_r17 != nil, len(ie.Mpe_ResourcePoolToAddModList_r17) > 0, len(ie.Mpe_ResourcePoolToReleaseList_r17) > 0}
@@ -524,7 +524,7 @@ func (ie *PUSCH_Config) Encode(w *uper.UperWriter) error {
 			}
 			// encode SequenceOffsetForRV_r17 optional
 			if ie.SequenceOffsetForRV_r17 != nil {
-				if err = extWriter.WriteInteger(*ie.SequenceOffsetForRV_r17, &uper.Constraint{Lb: 0, Ub: 3}, false); err != nil {
+				if err = extWriter.WriteInteger(*ie.SequenceOffsetForRV_r17, &aper.Constraint{Lb: 0, Ub: 3}, false); err != nil {
 					return utils.WrapError("Encode SequenceOffsetForRV_r17", err)
 				}
 			}
@@ -563,19 +563,19 @@ func (ie *PUSCH_Config) Encode(w *uper.UperWriter) error {
 			}
 			// encode Harq_ProcessNumberSizeDCI_0_2_v1700 optional
 			if ie.Harq_ProcessNumberSizeDCI_0_2_v1700 != nil {
-				if err = extWriter.WriteInteger(*ie.Harq_ProcessNumberSizeDCI_0_2_v1700, &uper.Constraint{Lb: 5, Ub: 5}, false); err != nil {
+				if err = extWriter.WriteInteger(*ie.Harq_ProcessNumberSizeDCI_0_2_v1700, &aper.Constraint{Lb: 5, Ub: 5}, false); err != nil {
 					return utils.WrapError("Encode Harq_ProcessNumberSizeDCI_0_2_v1700", err)
 				}
 			}
 			// encode Harq_ProcessNumberSizeDCI_0_1_r17 optional
 			if ie.Harq_ProcessNumberSizeDCI_0_1_r17 != nil {
-				if err = extWriter.WriteInteger(*ie.Harq_ProcessNumberSizeDCI_0_1_r17, &uper.Constraint{Lb: 5, Ub: 5}, false); err != nil {
+				if err = extWriter.WriteInteger(*ie.Harq_ProcessNumberSizeDCI_0_1_r17, &aper.Constraint{Lb: 5, Ub: 5}, false); err != nil {
 					return utils.WrapError("Encode Harq_ProcessNumberSizeDCI_0_1_r17", err)
 				}
 			}
 			// encode Mpe_ResourcePoolToAddModList_r17 optional
 			if len(ie.Mpe_ResourcePoolToAddModList_r17) > 0 {
-				tmp_Mpe_ResourcePoolToAddModList_r17 := utils.NewSequence[*MPE_Resource_r17]([]*MPE_Resource_r17{}, uper.Constraint{Lb: 1, Ub: maxMPE_Resources_r17}, false)
+				tmp_Mpe_ResourcePoolToAddModList_r17 := utils.NewSequence[*MPE_Resource_r17]([]*MPE_Resource_r17{}, aper.Constraint{Lb: 1, Ub: maxMPE_Resources_r17}, false)
 				for _, i := range ie.Mpe_ResourcePoolToAddModList_r17 {
 					tmp_Mpe_ResourcePoolToAddModList_r17.Value = append(tmp_Mpe_ResourcePoolToAddModList_r17.Value, &i)
 				}
@@ -585,7 +585,7 @@ func (ie *PUSCH_Config) Encode(w *uper.UperWriter) error {
 			}
 			// encode Mpe_ResourcePoolToReleaseList_r17 optional
 			if len(ie.Mpe_ResourcePoolToReleaseList_r17) > 0 {
-				tmp_Mpe_ResourcePoolToReleaseList_r17 := utils.NewSequence[*MPE_ResourceId_r17]([]*MPE_ResourceId_r17{}, uper.Constraint{Lb: 1, Ub: maxMPE_Resources_r17}, false)
+				tmp_Mpe_ResourcePoolToReleaseList_r17 := utils.NewSequence[*MPE_ResourceId_r17]([]*MPE_ResourceId_r17{}, aper.Constraint{Lb: 1, Ub: maxMPE_Resources_r17}, false)
 				for _, i := range ie.Mpe_ResourcePoolToReleaseList_r17 {
 					tmp_Mpe_ResourcePoolToReleaseList_r17.Value = append(tmp_Mpe_ResourcePoolToReleaseList_r17.Value, &i)
 				}
@@ -606,7 +606,7 @@ func (ie *PUSCH_Config) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *PUSCH_Config) Decode(r *uper.UperReader) error {
+func (ie *PUSCH_Config) Decode(r *aper.AperReader) error {
 	var err error
 	var extensionBit bool
 	if extensionBit, err = r.ReadBool(); err != nil {
@@ -682,7 +682,7 @@ func (ie *PUSCH_Config) Decode(r *uper.UperReader) error {
 	}
 	if DataScramblingIdentityPUSCHPresent {
 		var tmp_int_DataScramblingIdentityPUSCH int64
-		if tmp_int_DataScramblingIdentityPUSCH, err = r.ReadInteger(&uper.Constraint{Lb: 0, Ub: 1023}, false); err != nil {
+		if tmp_int_DataScramblingIdentityPUSCH, err = r.ReadInteger(&aper.Constraint{Lb: 0, Ub: 1023}, false); err != nil {
 			return utils.WrapError("Decode DataScramblingIdentityPUSCH", err)
 		}
 		ie.DataScramblingIdentityPUSCH = &tmp_int_DataScramblingIdentityPUSCH
@@ -720,9 +720,9 @@ func (ie *PUSCH_Config) Decode(r *uper.UperReader) error {
 		}
 	}
 	if FrequencyHoppingOffsetListsPresent {
-		tmp_FrequencyHoppingOffsetLists := utils.NewSequence[*utils.INTEGER]([]*utils.INTEGER{}, uper.Constraint{Lb: 1, Ub: 4}, false)
+		tmp_FrequencyHoppingOffsetLists := utils.NewSequence[*utils.INTEGER]([]*utils.INTEGER{}, aper.Constraint{Lb: 1, Ub: 4}, false)
 		fn_FrequencyHoppingOffsetLists := func() *utils.INTEGER {
-			ie := utils.NewINTEGER(0, uper.Constraint{Lb: 1, Ub: maxNrofPhysicalResourceBlocks_1}, false)
+			ie := utils.NewINTEGER(0, aper.Constraint{Lb: 1, Ub: maxNrofPhysicalResourceBlocks_1}, false)
 			return &ie
 		}
 		if err = tmp_FrequencyHoppingOffsetLists.Decode(r, fn_FrequencyHoppingOffsetLists); err != nil {
@@ -775,7 +775,7 @@ func (ie *PUSCH_Config) Decode(r *uper.UperReader) error {
 	}
 	if MaxRankPresent {
 		var tmp_int_MaxRank int64
-		if tmp_int_MaxRank, err = r.ReadInteger(&uper.Constraint{Lb: 1, Ub: 4}, false); err != nil {
+		if tmp_int_MaxRank, err = r.ReadInteger(&aper.Constraint{Lb: 1, Ub: 4}, false); err != nil {
 			return utils.WrapError("Decode MaxRank", err)
 		}
 		ie.MaxRank = &tmp_int_MaxRank
@@ -814,7 +814,7 @@ func (ie *PUSCH_Config) Decode(r *uper.UperReader) error {
 				return err
 			}
 
-			extReader := uper.NewReader(bytes.NewReader(extBytes))
+			extReader := aper.NewReader(bytes.NewReader(extBytes))
 
 			MinimumSchedulingOffsetK2_r16Present, err := extReader.ReadBool()
 			if err != nil {
@@ -963,7 +963,7 @@ func (ie *PUSCH_Config) Decode(r *uper.UperReader) error {
 			// decode Harq_ProcessNumberSizeDCI_0_2_r16 optional
 			if Harq_ProcessNumberSizeDCI_0_2_r16Present {
 				var tmp_int_Harq_ProcessNumberSizeDCI_0_2_r16 int64
-				if tmp_int_Harq_ProcessNumberSizeDCI_0_2_r16, err = extReader.ReadInteger(&uper.Constraint{Lb: 0, Ub: 4}, false); err != nil {
+				if tmp_int_Harq_ProcessNumberSizeDCI_0_2_r16, err = extReader.ReadInteger(&aper.Constraint{Lb: 0, Ub: 4}, false); err != nil {
 					return utils.WrapError("Decode Harq_ProcessNumberSizeDCI_0_2_r16", err)
 				}
 				ie.Harq_ProcessNumberSizeDCI_0_2_r16 = &tmp_int_Harq_ProcessNumberSizeDCI_0_2_r16
@@ -978,7 +978,7 @@ func (ie *PUSCH_Config) Decode(r *uper.UperReader) error {
 			// decode NumberOfBitsForRV_DCI_0_2_r16 optional
 			if NumberOfBitsForRV_DCI_0_2_r16Present {
 				var tmp_int_NumberOfBitsForRV_DCI_0_2_r16 int64
-				if tmp_int_NumberOfBitsForRV_DCI_0_2_r16, err = extReader.ReadInteger(&uper.Constraint{Lb: 0, Ub: 2}, false); err != nil {
+				if tmp_int_NumberOfBitsForRV_DCI_0_2_r16, err = extReader.ReadInteger(&aper.Constraint{Lb: 0, Ub: 2}, false); err != nil {
 					return utils.WrapError("Decode NumberOfBitsForRV_DCI_0_2_r16", err)
 				}
 				ie.NumberOfBitsForRV_DCI_0_2_r16 = &tmp_int_NumberOfBitsForRV_DCI_0_2_r16
@@ -1038,7 +1038,7 @@ func (ie *PUSCH_Config) Decode(r *uper.UperReader) error {
 			// decode MaxRankDCI_0_2_r16 optional
 			if MaxRankDCI_0_2_r16Present {
 				var tmp_int_MaxRankDCI_0_2_r16 int64
-				if tmp_int_MaxRankDCI_0_2_r16, err = extReader.ReadInteger(&uper.Constraint{Lb: 1, Ub: 4}, false); err != nil {
+				if tmp_int_MaxRankDCI_0_2_r16, err = extReader.ReadInteger(&aper.Constraint{Lb: 1, Ub: 4}, false); err != nil {
 					return utils.WrapError("Decode MaxRankDCI_0_2_r16", err)
 				}
 				ie.MaxRankDCI_0_2_r16 = &tmp_int_MaxRankDCI_0_2_r16
@@ -1178,7 +1178,7 @@ func (ie *PUSCH_Config) Decode(r *uper.UperReader) error {
 			// decode NumberOfInvalidSymbolsForDL_UL_Switching_r16 optional
 			if NumberOfInvalidSymbolsForDL_UL_Switching_r16Present {
 				var tmp_int_NumberOfInvalidSymbolsForDL_UL_Switching_r16 int64
-				if tmp_int_NumberOfInvalidSymbolsForDL_UL_Switching_r16, err = extReader.ReadInteger(&uper.Constraint{Lb: 1, Ub: 4}, false); err != nil {
+				if tmp_int_NumberOfInvalidSymbolsForDL_UL_Switching_r16, err = extReader.ReadInteger(&aper.Constraint{Lb: 1, Ub: 4}, false); err != nil {
 					return utils.WrapError("Decode NumberOfInvalidSymbolsForDL_UL_Switching_r16", err)
 				}
 				ie.NumberOfInvalidSymbolsForDL_UL_Switching_r16 = &tmp_int_NumberOfInvalidSymbolsForDL_UL_Switching_r16
@@ -1191,7 +1191,7 @@ func (ie *PUSCH_Config) Decode(r *uper.UperReader) error {
 				return err
 			}
 
-			extReader := uper.NewReader(bytes.NewReader(extBytes))
+			extReader := aper.NewReader(bytes.NewReader(extBytes))
 
 			Ul_AccessConfigListDCI_0_2_r17Present, err := extReader.ReadBool()
 			if err != nil {
@@ -1325,7 +1325,7 @@ func (ie *PUSCH_Config) Decode(r *uper.UperReader) error {
 			// decode SequenceOffsetForRV_r17 optional
 			if SequenceOffsetForRV_r17Present {
 				var tmp_int_SequenceOffsetForRV_r17 int64
-				if tmp_int_SequenceOffsetForRV_r17, err = extReader.ReadInteger(&uper.Constraint{Lb: 0, Ub: 3}, false); err != nil {
+				if tmp_int_SequenceOffsetForRV_r17, err = extReader.ReadInteger(&aper.Constraint{Lb: 0, Ub: 3}, false); err != nil {
 					return utils.WrapError("Decode SequenceOffsetForRV_r17", err)
 				}
 				ie.SequenceOffsetForRV_r17 = &tmp_int_SequenceOffsetForRV_r17
@@ -1364,7 +1364,7 @@ func (ie *PUSCH_Config) Decode(r *uper.UperReader) error {
 			// decode Harq_ProcessNumberSizeDCI_0_2_v1700 optional
 			if Harq_ProcessNumberSizeDCI_0_2_v1700Present {
 				var tmp_int_Harq_ProcessNumberSizeDCI_0_2_v1700 int64
-				if tmp_int_Harq_ProcessNumberSizeDCI_0_2_v1700, err = extReader.ReadInteger(&uper.Constraint{Lb: 5, Ub: 5}, false); err != nil {
+				if tmp_int_Harq_ProcessNumberSizeDCI_0_2_v1700, err = extReader.ReadInteger(&aper.Constraint{Lb: 5, Ub: 5}, false); err != nil {
 					return utils.WrapError("Decode Harq_ProcessNumberSizeDCI_0_2_v1700", err)
 				}
 				ie.Harq_ProcessNumberSizeDCI_0_2_v1700 = &tmp_int_Harq_ProcessNumberSizeDCI_0_2_v1700
@@ -1372,14 +1372,14 @@ func (ie *PUSCH_Config) Decode(r *uper.UperReader) error {
 			// decode Harq_ProcessNumberSizeDCI_0_1_r17 optional
 			if Harq_ProcessNumberSizeDCI_0_1_r17Present {
 				var tmp_int_Harq_ProcessNumberSizeDCI_0_1_r17 int64
-				if tmp_int_Harq_ProcessNumberSizeDCI_0_1_r17, err = extReader.ReadInteger(&uper.Constraint{Lb: 5, Ub: 5}, false); err != nil {
+				if tmp_int_Harq_ProcessNumberSizeDCI_0_1_r17, err = extReader.ReadInteger(&aper.Constraint{Lb: 5, Ub: 5}, false); err != nil {
 					return utils.WrapError("Decode Harq_ProcessNumberSizeDCI_0_1_r17", err)
 				}
 				ie.Harq_ProcessNumberSizeDCI_0_1_r17 = &tmp_int_Harq_ProcessNumberSizeDCI_0_1_r17
 			}
 			// decode Mpe_ResourcePoolToAddModList_r17 optional
 			if Mpe_ResourcePoolToAddModList_r17Present {
-				tmp_Mpe_ResourcePoolToAddModList_r17 := utils.NewSequence[*MPE_Resource_r17]([]*MPE_Resource_r17{}, uper.Constraint{Lb: 1, Ub: maxMPE_Resources_r17}, false)
+				tmp_Mpe_ResourcePoolToAddModList_r17 := utils.NewSequence[*MPE_Resource_r17]([]*MPE_Resource_r17{}, aper.Constraint{Lb: 1, Ub: maxMPE_Resources_r17}, false)
 				fn_Mpe_ResourcePoolToAddModList_r17 := func() *MPE_Resource_r17 {
 					return new(MPE_Resource_r17)
 				}
@@ -1393,7 +1393,7 @@ func (ie *PUSCH_Config) Decode(r *uper.UperReader) error {
 			}
 			// decode Mpe_ResourcePoolToReleaseList_r17 optional
 			if Mpe_ResourcePoolToReleaseList_r17Present {
-				tmp_Mpe_ResourcePoolToReleaseList_r17 := utils.NewSequence[*MPE_ResourceId_r17]([]*MPE_ResourceId_r17{}, uper.Constraint{Lb: 1, Ub: maxMPE_Resources_r17}, false)
+				tmp_Mpe_ResourcePoolToReleaseList_r17 := utils.NewSequence[*MPE_ResourceId_r17]([]*MPE_ResourceId_r17{}, aper.Constraint{Lb: 1, Ub: maxMPE_Resources_r17}, false)
 				fn_Mpe_ResourcePoolToReleaseList_r17 := func() *MPE_ResourceId_r17 {
 					return new(MPE_ResourceId_r17)
 				}

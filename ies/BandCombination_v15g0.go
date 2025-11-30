@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -11,7 +11,7 @@ type BandCombination_v15g0 struct {
 	Mrdc_Parameters_v15g0   *MRDC_Parameters_v15g0   `optional`
 }
 
-func (ie *BandCombination_v15g0) Encode(w *uper.UperWriter) error {
+func (ie *BandCombination_v15g0) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.Ca_ParametersNR_v15g0 != nil, ie.Ca_ParametersNRDC_v15g0 != nil, ie.Mrdc_Parameters_v15g0 != nil}
 	for _, bit := range preambleBits {
@@ -37,7 +37,7 @@ func (ie *BandCombination_v15g0) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *BandCombination_v15g0) Decode(r *uper.UperReader) error {
+func (ie *BandCombination_v15g0) Decode(r *aper.AperReader) error {
 	var err error
 	var Ca_ParametersNR_v15g0Present bool
 	if Ca_ParametersNR_v15g0Present, err = r.ReadBool(); err != nil {

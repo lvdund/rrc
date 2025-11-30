@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -11,7 +11,7 @@ type AppLayerMeasConfig_r17 struct {
 	Rrc_SegAllowed_r17                  *AppLayerMeasConfig_r17_rrc_SegAllowed_r17 `optional`
 }
 
-func (ie *AppLayerMeasConfig_r17) Encode(w *uper.UperWriter) error {
+func (ie *AppLayerMeasConfig_r17) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{len(ie.MeasConfigAppLayerToAddModList_r17) > 0, len(ie.MeasConfigAppLayerToReleaseList_r17) > 0, ie.Rrc_SegAllowed_r17 != nil}
 	for _, bit := range preambleBits {
@@ -20,7 +20,7 @@ func (ie *AppLayerMeasConfig_r17) Encode(w *uper.UperWriter) error {
 		}
 	}
 	if len(ie.MeasConfigAppLayerToAddModList_r17) > 0 {
-		tmp_MeasConfigAppLayerToAddModList_r17 := utils.NewSequence[*MeasConfigAppLayer_r17]([]*MeasConfigAppLayer_r17{}, uper.Constraint{Lb: 1, Ub: maxNrofAppLayerMeas_r17}, false)
+		tmp_MeasConfigAppLayerToAddModList_r17 := utils.NewSequence[*MeasConfigAppLayer_r17]([]*MeasConfigAppLayer_r17{}, aper.Constraint{Lb: 1, Ub: maxNrofAppLayerMeas_r17}, false)
 		for _, i := range ie.MeasConfigAppLayerToAddModList_r17 {
 			tmp_MeasConfigAppLayerToAddModList_r17.Value = append(tmp_MeasConfigAppLayerToAddModList_r17.Value, &i)
 		}
@@ -29,7 +29,7 @@ func (ie *AppLayerMeasConfig_r17) Encode(w *uper.UperWriter) error {
 		}
 	}
 	if len(ie.MeasConfigAppLayerToReleaseList_r17) > 0 {
-		tmp_MeasConfigAppLayerToReleaseList_r17 := utils.NewSequence[*MeasConfigAppLayerId_r17]([]*MeasConfigAppLayerId_r17{}, uper.Constraint{Lb: 1, Ub: maxNrofAppLayerMeas_r17}, false)
+		tmp_MeasConfigAppLayerToReleaseList_r17 := utils.NewSequence[*MeasConfigAppLayerId_r17]([]*MeasConfigAppLayerId_r17{}, aper.Constraint{Lb: 1, Ub: maxNrofAppLayerMeas_r17}, false)
 		for _, i := range ie.MeasConfigAppLayerToReleaseList_r17 {
 			tmp_MeasConfigAppLayerToReleaseList_r17.Value = append(tmp_MeasConfigAppLayerToReleaseList_r17.Value, &i)
 		}
@@ -45,7 +45,7 @@ func (ie *AppLayerMeasConfig_r17) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *AppLayerMeasConfig_r17) Decode(r *uper.UperReader) error {
+func (ie *AppLayerMeasConfig_r17) Decode(r *aper.AperReader) error {
 	var err error
 	var MeasConfigAppLayerToAddModList_r17Present bool
 	if MeasConfigAppLayerToAddModList_r17Present, err = r.ReadBool(); err != nil {
@@ -60,7 +60,7 @@ func (ie *AppLayerMeasConfig_r17) Decode(r *uper.UperReader) error {
 		return err
 	}
 	if MeasConfigAppLayerToAddModList_r17Present {
-		tmp_MeasConfigAppLayerToAddModList_r17 := utils.NewSequence[*MeasConfigAppLayer_r17]([]*MeasConfigAppLayer_r17{}, uper.Constraint{Lb: 1, Ub: maxNrofAppLayerMeas_r17}, false)
+		tmp_MeasConfigAppLayerToAddModList_r17 := utils.NewSequence[*MeasConfigAppLayer_r17]([]*MeasConfigAppLayer_r17{}, aper.Constraint{Lb: 1, Ub: maxNrofAppLayerMeas_r17}, false)
 		fn_MeasConfigAppLayerToAddModList_r17 := func() *MeasConfigAppLayer_r17 {
 			return new(MeasConfigAppLayer_r17)
 		}
@@ -73,7 +73,7 @@ func (ie *AppLayerMeasConfig_r17) Decode(r *uper.UperReader) error {
 		}
 	}
 	if MeasConfigAppLayerToReleaseList_r17Present {
-		tmp_MeasConfigAppLayerToReleaseList_r17 := utils.NewSequence[*MeasConfigAppLayerId_r17]([]*MeasConfigAppLayerId_r17{}, uper.Constraint{Lb: 1, Ub: maxNrofAppLayerMeas_r17}, false)
+		tmp_MeasConfigAppLayerToReleaseList_r17 := utils.NewSequence[*MeasConfigAppLayerId_r17]([]*MeasConfigAppLayerId_r17{}, aper.Constraint{Lb: 1, Ub: maxNrofAppLayerMeas_r17}, false)
 		fn_MeasConfigAppLayerToReleaseList_r17 := func() *MeasConfigAppLayerId_r17 {
 			return new(MeasConfigAppLayerId_r17)
 		}

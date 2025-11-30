@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -9,7 +9,7 @@ type CSI_ReportConfig_reportQuantity_cri_RI_i1_CQI struct {
 	Pdsch_BundleSizeForCSI *CSI_ReportConfig_reportQuantity_cri_RI_i1_CQI_pdsch_BundleSizeForCSI `optional`
 }
 
-func (ie *CSI_ReportConfig_reportQuantity_cri_RI_i1_CQI) Encode(w *uper.UperWriter) error {
+func (ie *CSI_ReportConfig_reportQuantity_cri_RI_i1_CQI) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.Pdsch_BundleSizeForCSI != nil}
 	for _, bit := range preambleBits {
@@ -25,7 +25,7 @@ func (ie *CSI_ReportConfig_reportQuantity_cri_RI_i1_CQI) Encode(w *uper.UperWrit
 	return nil
 }
 
-func (ie *CSI_ReportConfig_reportQuantity_cri_RI_i1_CQI) Decode(r *uper.UperReader) error {
+func (ie *CSI_ReportConfig_reportQuantity_cri_RI_i1_CQI) Decode(r *aper.AperReader) error {
 	var err error
 	var Pdsch_BundleSizeForCSIPresent bool
 	if Pdsch_BundleSizeForCSIPresent, err = r.ReadBool(); err != nil {

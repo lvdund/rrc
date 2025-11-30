@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -11,7 +11,7 @@ type PDCP_Config_moreThanOneRLC struct {
 	Pdcp_Duplication      *bool                                   `optional`
 }
 
-func (ie *PDCP_Config_moreThanOneRLC) Encode(w *uper.UperWriter) error {
+func (ie *PDCP_Config_moreThanOneRLC) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.PrimaryPath != nil, ie.Ul_DataSplitThreshold != nil, ie.Pdcp_Duplication != nil}
 	for _, bit := range preambleBits {
@@ -37,7 +37,7 @@ func (ie *PDCP_Config_moreThanOneRLC) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *PDCP_Config_moreThanOneRLC) Decode(r *uper.UperReader) error {
+func (ie *PDCP_Config_moreThanOneRLC) Decode(r *aper.AperReader) error {
 	var err error
 	var PrimaryPathPresent bool
 	if PrimaryPathPresent, err = r.ReadBool(); err != nil {

@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -10,7 +10,7 @@ type RF_ParametersMRDC_supportedBandCombinationListNEDC_Only_v1720 struct {
 	SupportedBandCombinationList_v1720 *BandCombinationList_v1720 `optional`
 }
 
-func (ie *RF_ParametersMRDC_supportedBandCombinationListNEDC_Only_v1720) Encode(w *uper.UperWriter) error {
+func (ie *RF_ParametersMRDC_supportedBandCombinationListNEDC_Only_v1720) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.SupportedBandCombinationList_v1700 != nil, ie.SupportedBandCombinationList_v1720 != nil}
 	for _, bit := range preambleBits {
@@ -31,7 +31,7 @@ func (ie *RF_ParametersMRDC_supportedBandCombinationListNEDC_Only_v1720) Encode(
 	return nil
 }
 
-func (ie *RF_ParametersMRDC_supportedBandCombinationListNEDC_Only_v1720) Decode(r *uper.UperReader) error {
+func (ie *RF_ParametersMRDC_supportedBandCombinationListNEDC_Only_v1720) Decode(r *aper.AperReader) error {
 	var err error
 	var SupportedBandCombinationList_v1700Present bool
 	if SupportedBandCombinationList_v1700Present, err = r.ReadBool(); err != nil {

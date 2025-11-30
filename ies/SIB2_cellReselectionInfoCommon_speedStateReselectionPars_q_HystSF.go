@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -10,7 +10,7 @@ type SIB2_cellReselectionInfoCommon_speedStateReselectionPars_q_HystSF struct {
 	Sf_High   SIB2_cellReselectionInfoCommon_speedStateReselectionPars_q_HystSF_sf_High   `madatory`
 }
 
-func (ie *SIB2_cellReselectionInfoCommon_speedStateReselectionPars_q_HystSF) Encode(w *uper.UperWriter) error {
+func (ie *SIB2_cellReselectionInfoCommon_speedStateReselectionPars_q_HystSF) Encode(w *aper.AperWriter) error {
 	var err error
 	if err = ie.Sf_Medium.Encode(w); err != nil {
 		return utils.WrapError("Encode Sf_Medium", err)
@@ -21,7 +21,7 @@ func (ie *SIB2_cellReselectionInfoCommon_speedStateReselectionPars_q_HystSF) Enc
 	return nil
 }
 
-func (ie *SIB2_cellReselectionInfoCommon_speedStateReselectionPars_q_HystSF) Decode(r *uper.UperReader) error {
+func (ie *SIB2_cellReselectionInfoCommon_speedStateReselectionPars_q_HystSF) Decode(r *aper.AperReader) error {
 	var err error
 	if err = ie.Sf_Medium.Decode(r); err != nil {
 		return utils.WrapError("Decode Sf_Medium", err)

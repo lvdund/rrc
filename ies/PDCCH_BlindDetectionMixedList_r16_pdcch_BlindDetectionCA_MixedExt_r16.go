@@ -3,7 +3,7 @@ package ies
 import (
 	"fmt"
 
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -19,7 +19,7 @@ type PDCCH_BlindDetectionMixedList_r16_pdcch_BlindDetectionCA_MixedExt_r16 struc
 	Pdcch_BlindDetectionCA_Mixed_NonAlignedSpan_v16a0 *PDCCH_BlindDetectionCA_MixedExt_r16
 }
 
-func (ie *PDCCH_BlindDetectionMixedList_r16_pdcch_BlindDetectionCA_MixedExt_r16) Encode(w *uper.UperWriter) error {
+func (ie *PDCCH_BlindDetectionMixedList_r16_pdcch_BlindDetectionCA_MixedExt_r16) Encode(w *aper.AperWriter) error {
 	var err error
 	if err = w.WriteChoice(ie.Choice, 2, false); err != nil {
 		return err
@@ -39,7 +39,7 @@ func (ie *PDCCH_BlindDetectionMixedList_r16_pdcch_BlindDetectionCA_MixedExt_r16)
 	return err
 }
 
-func (ie *PDCCH_BlindDetectionMixedList_r16_pdcch_BlindDetectionCA_MixedExt_r16) Decode(r *uper.UperReader) error {
+func (ie *PDCCH_BlindDetectionMixedList_r16_pdcch_BlindDetectionCA_MixedExt_r16) Decode(r *aper.AperReader) error {
 	var err error
 	if ie.Choice, err = r.ReadChoice(2, false); err != nil {
 		return err

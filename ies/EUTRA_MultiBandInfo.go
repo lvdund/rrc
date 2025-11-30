@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -10,7 +10,7 @@ type EUTRA_MultiBandInfo struct {
 	Eutra_NS_PmaxList       *EUTRA_NS_PmaxList     `optional`
 }
 
-func (ie *EUTRA_MultiBandInfo) Encode(w *uper.UperWriter) error {
+func (ie *EUTRA_MultiBandInfo) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.Eutra_NS_PmaxList != nil}
 	for _, bit := range preambleBits {
@@ -29,7 +29,7 @@ func (ie *EUTRA_MultiBandInfo) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *EUTRA_MultiBandInfo) Decode(r *uper.UperReader) error {
+func (ie *EUTRA_MultiBandInfo) Decode(r *aper.AperReader) error {
 	var err error
 	var Eutra_NS_PmaxListPresent bool
 	if Eutra_NS_PmaxListPresent, err = r.ReadBool(); err != nil {

@@ -3,7 +3,7 @@ package ies
 import (
 	"bytes"
 
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -40,7 +40,7 @@ type MAC_ParametersCommon struct {
 	LastTransmissionUL_r17                    *MAC_ParametersCommon_lastTransmissionUL_r17                    `optional,ext-5`
 }
 
-func (ie *MAC_ParametersCommon) Encode(w *uper.UperWriter) error {
+func (ie *MAC_ParametersCommon) Encode(w *aper.AperWriter) error {
 	var err error
 	hasExtensions := ie.RecommendedBitRate != nil || ie.RecommendedBitRateQuery != nil || ie.RecommendedBitRateMultiplier_r16 != nil || ie.PreEmptiveBSR_r16 != nil || ie.AutonomousTransmission_r16 != nil || ie.Lch_PriorityBasedPrioritization_r16 != nil || ie.Lch_ToConfiguredGrantMapping_r16 != nil || ie.Lch_ToGrantPriorityRestriction_r16 != nil || ie.SinglePHR_P_r16 != nil || ie.Ul_LBT_FailureDetectionRecovery_r16 != nil || ie.Tdd_MPE_P_MPR_Reporting_r16 != nil || ie.Lcid_ExtensionIAB_r16 != nil || ie.SpCell_BFR_CBRA_r16 != nil || ie.Srs_ResourceId_Ext_r16 != nil || ie.EnhancedUuDRX_forSidelink_r17 != nil || ie.Mg_ActivationRequestPRS_Meas_r17 != nil || ie.Mg_ActivationCommPRS_Meas_r17 != nil || ie.IntraCG_Prioritization_r17 != nil || ie.JointPrioritizationCG_Retx_Timer_r17 != nil || ie.SurvivalTime_r17 != nil || ie.Lcg_ExtensionIAB_r17 != nil || ie.Harq_FeedbackDisabled_r17 != nil || ie.Uplink_Harq_ModeB_r17 != nil || ie.Sr_TriggeredBy_TA_Report_r17 != nil || ie.ExtendedDRX_CycleInactive_r17 != nil || ie.SimultaneousSR_PUSCH_DiffPUCCH_groups_r17 != nil || ie.LastTransmissionUL_r17 != nil
 	preambleBits := []bool{hasExtensions, ie.Lcp_Restriction != nil, ie.Dummy != nil, ie.Lch_ToSCellRestriction != nil}
@@ -74,7 +74,7 @@ func (ie *MAC_ParametersCommon) Encode(w *uper.UperWriter) error {
 		// encode extension group 1
 		if extBitmap[0] {
 			extBuf := new(bytes.Buffer)
-			extWriter := uper.NewWriter(extBuf)
+			extWriter := aper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 1
 			optionals_ext_1 := []bool{ie.RecommendedBitRate != nil, ie.RecommendedBitRateQuery != nil}
@@ -109,7 +109,7 @@ func (ie *MAC_ParametersCommon) Encode(w *uper.UperWriter) error {
 		// encode extension group 2
 		if extBitmap[1] {
 			extBuf := new(bytes.Buffer)
-			extWriter := uper.NewWriter(extBuf)
+			extWriter := aper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 2
 			optionals_ext_2 := []bool{ie.RecommendedBitRateMultiplier_r16 != nil, ie.PreEmptiveBSR_r16 != nil, ie.AutonomousTransmission_r16 != nil, ie.Lch_PriorityBasedPrioritization_r16 != nil, ie.Lch_ToConfiguredGrantMapping_r16 != nil, ie.Lch_ToGrantPriorityRestriction_r16 != nil, ie.SinglePHR_P_r16 != nil, ie.Ul_LBT_FailureDetectionRecovery_r16 != nil, ie.Tdd_MPE_P_MPR_Reporting_r16 != nil, ie.Lcid_ExtensionIAB_r16 != nil}
@@ -192,7 +192,7 @@ func (ie *MAC_ParametersCommon) Encode(w *uper.UperWriter) error {
 		// encode extension group 3
 		if extBitmap[2] {
 			extBuf := new(bytes.Buffer)
-			extWriter := uper.NewWriter(extBuf)
+			extWriter := aper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 3
 			optionals_ext_3 := []bool{ie.SpCell_BFR_CBRA_r16 != nil}
@@ -221,7 +221,7 @@ func (ie *MAC_ParametersCommon) Encode(w *uper.UperWriter) error {
 		// encode extension group 4
 		if extBitmap[3] {
 			extBuf := new(bytes.Buffer)
-			extWriter := uper.NewWriter(extBuf)
+			extWriter := aper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 4
 			optionals_ext_4 := []bool{ie.Srs_ResourceId_Ext_r16 != nil}
@@ -250,7 +250,7 @@ func (ie *MAC_ParametersCommon) Encode(w *uper.UperWriter) error {
 		// encode extension group 5
 		if extBitmap[4] {
 			extBuf := new(bytes.Buffer)
-			extWriter := uper.NewWriter(extBuf)
+			extWriter := aper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 5
 			optionals_ext_5 := []bool{ie.EnhancedUuDRX_forSidelink_r17 != nil, ie.Mg_ActivationRequestPRS_Meas_r17 != nil, ie.Mg_ActivationCommPRS_Meas_r17 != nil, ie.IntraCG_Prioritization_r17 != nil, ie.JointPrioritizationCG_Retx_Timer_r17 != nil, ie.SurvivalTime_r17 != nil, ie.Lcg_ExtensionIAB_r17 != nil, ie.Harq_FeedbackDisabled_r17 != nil, ie.Uplink_Harq_ModeB_r17 != nil, ie.Sr_TriggeredBy_TA_Report_r17 != nil, ie.ExtendedDRX_CycleInactive_r17 != nil, ie.SimultaneousSR_PUSCH_DiffPUCCH_groups_r17 != nil, ie.LastTransmissionUL_r17 != nil}
@@ -351,7 +351,7 @@ func (ie *MAC_ParametersCommon) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *MAC_ParametersCommon) Decode(r *uper.UperReader) error {
+func (ie *MAC_ParametersCommon) Decode(r *aper.AperReader) error {
 	var err error
 	var extensionBit bool
 	if extensionBit, err = r.ReadBool(); err != nil {
@@ -402,7 +402,7 @@ func (ie *MAC_ParametersCommon) Decode(r *uper.UperReader) error {
 				return err
 			}
 
-			extReader := uper.NewReader(bytes.NewReader(extBytes))
+			extReader := aper.NewReader(bytes.NewReader(extBytes))
 
 			RecommendedBitRatePresent, err := extReader.ReadBool()
 			if err != nil {
@@ -434,7 +434,7 @@ func (ie *MAC_ParametersCommon) Decode(r *uper.UperReader) error {
 				return err
 			}
 
-			extReader := uper.NewReader(bytes.NewReader(extBytes))
+			extReader := aper.NewReader(bytes.NewReader(extBytes))
 
 			RecommendedBitRateMultiplier_r16Present, err := extReader.ReadBool()
 			if err != nil {
@@ -554,7 +554,7 @@ func (ie *MAC_ParametersCommon) Decode(r *uper.UperReader) error {
 				return err
 			}
 
-			extReader := uper.NewReader(bytes.NewReader(extBytes))
+			extReader := aper.NewReader(bytes.NewReader(extBytes))
 
 			SpCell_BFR_CBRA_r16Present, err := extReader.ReadBool()
 			if err != nil {
@@ -575,7 +575,7 @@ func (ie *MAC_ParametersCommon) Decode(r *uper.UperReader) error {
 				return err
 			}
 
-			extReader := uper.NewReader(bytes.NewReader(extBytes))
+			extReader := aper.NewReader(bytes.NewReader(extBytes))
 
 			Srs_ResourceId_Ext_r16Present, err := extReader.ReadBool()
 			if err != nil {
@@ -596,7 +596,7 @@ func (ie *MAC_ParametersCommon) Decode(r *uper.UperReader) error {
 				return err
 			}
 
-			extReader := uper.NewReader(bytes.NewReader(extBytes))
+			extReader := aper.NewReader(bytes.NewReader(extBytes))
 
 			EnhancedUuDRX_forSidelink_r17Present, err := extReader.ReadBool()
 			if err != nil {

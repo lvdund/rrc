@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -10,7 +10,7 @@ type CrossCarrierSchedulingSCell_SpCell_r17 struct {
 	Pdcch_MonitoringOccasion_r17  CrossCarrierSchedulingSCell_SpCell_r17_pdcch_MonitoringOccasion_r17   `madatory`
 }
 
-func (ie *CrossCarrierSchedulingSCell_SpCell_r17) Encode(w *uper.UperWriter) error {
+func (ie *CrossCarrierSchedulingSCell_SpCell_r17) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.SupportedSCS_Combinations_r17 != nil}
 	for _, bit := range preambleBits {
@@ -29,7 +29,7 @@ func (ie *CrossCarrierSchedulingSCell_SpCell_r17) Encode(w *uper.UperWriter) err
 	return nil
 }
 
-func (ie *CrossCarrierSchedulingSCell_SpCell_r17) Decode(r *uper.UperReader) error {
+func (ie *CrossCarrierSchedulingSCell_SpCell_r17) Decode(r *aper.AperReader) error {
 	var err error
 	var SupportedSCS_Combinations_r17Present bool
 	if SupportedSCS_Combinations_r17Present, err = r.ReadBool(); err != nil {

@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -9,9 +9,9 @@ type PUCCH_ConfigurationList_r16 struct {
 	Value []PUCCH_Config `lb:1,ub:2,madatory`
 }
 
-func (ie *PUCCH_ConfigurationList_r16) Encode(w *uper.UperWriter) error {
+func (ie *PUCCH_ConfigurationList_r16) Encode(w *aper.AperWriter) error {
 	var err error
-	tmp := utils.NewSequence[*PUCCH_Config]([]*PUCCH_Config{}, uper.Constraint{Lb: 1, Ub: 2}, false)
+	tmp := utils.NewSequence[*PUCCH_Config]([]*PUCCH_Config{}, aper.Constraint{Lb: 1, Ub: 2}, false)
 	for _, i := range ie.Value {
 		tmp.Value = append(tmp.Value, &i)
 	}
@@ -21,9 +21,9 @@ func (ie *PUCCH_ConfigurationList_r16) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *PUCCH_ConfigurationList_r16) Decode(r *uper.UperReader) error {
+func (ie *PUCCH_ConfigurationList_r16) Decode(r *aper.AperReader) error {
 	var err error
-	tmp := utils.NewSequence[*PUCCH_Config]([]*PUCCH_Config{}, uper.Constraint{Lb: 1, Ub: 2}, false)
+	tmp := utils.NewSequence[*PUCCH_Config]([]*PUCCH_Config{}, aper.Constraint{Lb: 1, Ub: 2}, false)
 	fn := func() *PUCCH_Config {
 		return new(PUCCH_Config)
 	}

@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -11,7 +11,7 @@ type ZP_CSI_RS_Resource struct {
 	PeriodicityAndOffset *CSI_ResourcePeriodicityAndOffset `optional`
 }
 
-func (ie *ZP_CSI_RS_Resource) Encode(w *uper.UperWriter) error {
+func (ie *ZP_CSI_RS_Resource) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.PeriodicityAndOffset != nil}
 	for _, bit := range preambleBits {
@@ -33,7 +33,7 @@ func (ie *ZP_CSI_RS_Resource) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *ZP_CSI_RS_Resource) Decode(r *uper.UperReader) error {
+func (ie *ZP_CSI_RS_Resource) Decode(r *aper.AperReader) error {
 	var err error
 	var PeriodicityAndOffsetPresent bool
 	if PeriodicityAndOffsetPresent, err = r.ReadBool(); err != nil {

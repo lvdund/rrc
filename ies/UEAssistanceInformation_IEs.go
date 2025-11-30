@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -11,7 +11,7 @@ type UEAssistanceInformation_IEs struct {
 	NonCriticalExtension     *UEAssistanceInformation_v1540_IEs `optional`
 }
 
-func (ie *UEAssistanceInformation_IEs) Encode(w *uper.UperWriter) error {
+func (ie *UEAssistanceInformation_IEs) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.DelayBudgetReport != nil, ie.LateNonCriticalExtension != nil, ie.NonCriticalExtension != nil}
 	for _, bit := range preambleBits {
@@ -25,7 +25,7 @@ func (ie *UEAssistanceInformation_IEs) Encode(w *uper.UperWriter) error {
 		}
 	}
 	if ie.LateNonCriticalExtension != nil {
-		if err = w.WriteOctetString(*ie.LateNonCriticalExtension, &uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+		if err = w.WriteOctetString(*ie.LateNonCriticalExtension, &aper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
 			return utils.WrapError("Encode LateNonCriticalExtension", err)
 		}
 	}
@@ -37,7 +37,7 @@ func (ie *UEAssistanceInformation_IEs) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *UEAssistanceInformation_IEs) Decode(r *uper.UperReader) error {
+func (ie *UEAssistanceInformation_IEs) Decode(r *aper.AperReader) error {
 	var err error
 	var DelayBudgetReportPresent bool
 	if DelayBudgetReportPresent, err = r.ReadBool(); err != nil {
@@ -59,7 +59,7 @@ func (ie *UEAssistanceInformation_IEs) Decode(r *uper.UperReader) error {
 	}
 	if LateNonCriticalExtensionPresent {
 		var tmp_os_LateNonCriticalExtension []byte
-		if tmp_os_LateNonCriticalExtension, err = r.ReadOctetString(&uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+		if tmp_os_LateNonCriticalExtension, err = r.ReadOctetString(&aper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
 			return utils.WrapError("Decode LateNonCriticalExtension", err)
 		}
 		ie.LateNonCriticalExtension = &tmp_os_LateNonCriticalExtension

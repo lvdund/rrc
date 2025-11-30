@@ -3,7 +3,7 @@ package ies
 import (
 	"bytes"
 
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -27,7 +27,7 @@ type MeasResults struct {
 	CoarseLocationInfo_r17            *[]byte                            `optional,ext-4`
 }
 
-func (ie *MeasResults) Encode(w *uper.UperWriter) error {
+func (ie *MeasResults) Encode(w *aper.AperWriter) error {
 	var err error
 	hasExtensions := ie.MeasResultServFreqListEUTRA_SCG != nil || ie.MeasResultServFreqListNR_SCG != nil || ie.MeasResultSFTD_EUTRA != nil || ie.MeasResultSFTD_NR != nil || ie.MeasResultCellListSFTD_NR != nil || ie.MeasResultForRSSI_r16 != nil || ie.LocationInfo_r16 != nil || ie.Ul_PDCP_DelayValueResultList_r16 != nil || ie.MeasResultsSL_r16 != nil || ie.MeasResultCLI_r16 != nil || ie.MeasResultRxTxTimeDiff_r17 != nil || ie.Sl_MeasResultServingRelay_r17 != nil || ie.Ul_PDCP_ExcessDelayResultList_r17 != nil || ie.CoarseLocationInfo_r17 != nil
 	preambleBits := []bool{hasExtensions, ie.MeasResultNeighCells != nil}
@@ -57,7 +57,7 @@ func (ie *MeasResults) Encode(w *uper.UperWriter) error {
 		// encode extension group 1
 		if extBitmap[0] {
 			extBuf := new(bytes.Buffer)
-			extWriter := uper.NewWriter(extBuf)
+			extWriter := aper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 1
 			optionals_ext_1 := []bool{ie.MeasResultServFreqListEUTRA_SCG != nil, ie.MeasResultServFreqListNR_SCG != nil, ie.MeasResultSFTD_EUTRA != nil, ie.MeasResultSFTD_NR != nil}
@@ -104,7 +104,7 @@ func (ie *MeasResults) Encode(w *uper.UperWriter) error {
 		// encode extension group 2
 		if extBitmap[1] {
 			extBuf := new(bytes.Buffer)
-			extWriter := uper.NewWriter(extBuf)
+			extWriter := aper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 2
 			optionals_ext_2 := []bool{ie.MeasResultCellListSFTD_NR != nil}
@@ -133,7 +133,7 @@ func (ie *MeasResults) Encode(w *uper.UperWriter) error {
 		// encode extension group 3
 		if extBitmap[2] {
 			extBuf := new(bytes.Buffer)
-			extWriter := uper.NewWriter(extBuf)
+			extWriter := aper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 3
 			optionals_ext_3 := []bool{ie.MeasResultForRSSI_r16 != nil, ie.LocationInfo_r16 != nil, ie.Ul_PDCP_DelayValueResultList_r16 != nil, ie.MeasResultsSL_r16 != nil, ie.MeasResultCLI_r16 != nil}
@@ -186,7 +186,7 @@ func (ie *MeasResults) Encode(w *uper.UperWriter) error {
 		// encode extension group 4
 		if extBitmap[3] {
 			extBuf := new(bytes.Buffer)
-			extWriter := uper.NewWriter(extBuf)
+			extWriter := aper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 4
 			optionals_ext_4 := []bool{ie.MeasResultRxTxTimeDiff_r17 != nil, ie.Sl_MeasResultServingRelay_r17 != nil, ie.Ul_PDCP_ExcessDelayResultList_r17 != nil, ie.CoarseLocationInfo_r17 != nil}
@@ -204,7 +204,7 @@ func (ie *MeasResults) Encode(w *uper.UperWriter) error {
 			}
 			// encode Sl_MeasResultServingRelay_r17 optional
 			if ie.Sl_MeasResultServingRelay_r17 != nil {
-				if err = extWriter.WriteOctetString(*ie.Sl_MeasResultServingRelay_r17, &uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+				if err = extWriter.WriteOctetString(*ie.Sl_MeasResultServingRelay_r17, &aper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
 					return utils.WrapError("Encode Sl_MeasResultServingRelay_r17", err)
 				}
 			}
@@ -216,7 +216,7 @@ func (ie *MeasResults) Encode(w *uper.UperWriter) error {
 			}
 			// encode CoarseLocationInfo_r17 optional
 			if ie.CoarseLocationInfo_r17 != nil {
-				if err = extWriter.WriteOctetString(*ie.CoarseLocationInfo_r17, &uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+				if err = extWriter.WriteOctetString(*ie.CoarseLocationInfo_r17, &aper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
 					return utils.WrapError("Encode CoarseLocationInfo_r17", err)
 				}
 			}
@@ -233,7 +233,7 @@ func (ie *MeasResults) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *MeasResults) Decode(r *uper.UperReader) error {
+func (ie *MeasResults) Decode(r *aper.AperReader) error {
 	var err error
 	var extensionBit bool
 	if extensionBit, err = r.ReadBool(); err != nil {
@@ -270,7 +270,7 @@ func (ie *MeasResults) Decode(r *uper.UperReader) error {
 				return err
 			}
 
-			extReader := uper.NewReader(bytes.NewReader(extBytes))
+			extReader := aper.NewReader(bytes.NewReader(extBytes))
 
 			MeasResultServFreqListEUTRA_SCGPresent, err := extReader.ReadBool()
 			if err != nil {
@@ -324,7 +324,7 @@ func (ie *MeasResults) Decode(r *uper.UperReader) error {
 				return err
 			}
 
-			extReader := uper.NewReader(bytes.NewReader(extBytes))
+			extReader := aper.NewReader(bytes.NewReader(extBytes))
 
 			MeasResultCellListSFTD_NRPresent, err := extReader.ReadBool()
 			if err != nil {
@@ -345,7 +345,7 @@ func (ie *MeasResults) Decode(r *uper.UperReader) error {
 				return err
 			}
 
-			extReader := uper.NewReader(bytes.NewReader(extBytes))
+			extReader := aper.NewReader(bytes.NewReader(extBytes))
 
 			MeasResultForRSSI_r16Present, err := extReader.ReadBool()
 			if err != nil {
@@ -410,7 +410,7 @@ func (ie *MeasResults) Decode(r *uper.UperReader) error {
 				return err
 			}
 
-			extReader := uper.NewReader(bytes.NewReader(extBytes))
+			extReader := aper.NewReader(bytes.NewReader(extBytes))
 
 			MeasResultRxTxTimeDiff_r17Present, err := extReader.ReadBool()
 			if err != nil {
@@ -438,7 +438,7 @@ func (ie *MeasResults) Decode(r *uper.UperReader) error {
 			// decode Sl_MeasResultServingRelay_r17 optional
 			if Sl_MeasResultServingRelay_r17Present {
 				var tmp_os_Sl_MeasResultServingRelay_r17 []byte
-				if tmp_os_Sl_MeasResultServingRelay_r17, err = extReader.ReadOctetString(&uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+				if tmp_os_Sl_MeasResultServingRelay_r17, err = extReader.ReadOctetString(&aper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
 					return utils.WrapError("Decode Sl_MeasResultServingRelay_r17", err)
 				}
 				ie.Sl_MeasResultServingRelay_r17 = &tmp_os_Sl_MeasResultServingRelay_r17
@@ -453,7 +453,7 @@ func (ie *MeasResults) Decode(r *uper.UperReader) error {
 			// decode CoarseLocationInfo_r17 optional
 			if CoarseLocationInfo_r17Present {
 				var tmp_os_CoarseLocationInfo_r17 []byte
-				if tmp_os_CoarseLocationInfo_r17, err = extReader.ReadOctetString(&uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+				if tmp_os_CoarseLocationInfo_r17, err = extReader.ReadOctetString(&aper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
 					return utils.WrapError("Decode CoarseLocationInfo_r17", err)
 				}
 				ie.CoarseLocationInfo_r17 = &tmp_os_CoarseLocationInfo_r17

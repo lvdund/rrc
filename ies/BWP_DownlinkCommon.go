@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -11,7 +11,7 @@ type BWP_DownlinkCommon struct {
 	Pdsch_ConfigCommon *PDSCH_ConfigCommon `optional,setuprelease`
 }
 
-func (ie *BWP_DownlinkCommon) Encode(w *uper.UperWriter) error {
+func (ie *BWP_DownlinkCommon) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.Pdcch_ConfigCommon != nil, ie.Pdsch_ConfigCommon != nil}
 	for _, bit := range preambleBits {
@@ -41,7 +41,7 @@ func (ie *BWP_DownlinkCommon) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *BWP_DownlinkCommon) Decode(r *uper.UperReader) error {
+func (ie *BWP_DownlinkCommon) Decode(r *aper.AperReader) error {
 	var err error
 	var Pdcch_ConfigCommonPresent bool
 	if Pdcch_ConfigCommonPresent, err = r.ReadBool(); err != nil {

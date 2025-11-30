@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -9,7 +9,7 @@ type SL_PriorityTxConfigIndex_v1650 struct {
 	Sl_MCS_RangeList_r16 []SL_MinMaxMCS_List_r16 `lb:1,ub:maxCBR_Level_r16,optional`
 }
 
-func (ie *SL_PriorityTxConfigIndex_v1650) Encode(w *uper.UperWriter) error {
+func (ie *SL_PriorityTxConfigIndex_v1650) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{len(ie.Sl_MCS_RangeList_r16) > 0}
 	for _, bit := range preambleBits {
@@ -18,7 +18,7 @@ func (ie *SL_PriorityTxConfigIndex_v1650) Encode(w *uper.UperWriter) error {
 		}
 	}
 	if len(ie.Sl_MCS_RangeList_r16) > 0 {
-		tmp_Sl_MCS_RangeList_r16 := utils.NewSequence[*SL_MinMaxMCS_List_r16]([]*SL_MinMaxMCS_List_r16{}, uper.Constraint{Lb: 1, Ub: maxCBR_Level_r16}, false)
+		tmp_Sl_MCS_RangeList_r16 := utils.NewSequence[*SL_MinMaxMCS_List_r16]([]*SL_MinMaxMCS_List_r16{}, aper.Constraint{Lb: 1, Ub: maxCBR_Level_r16}, false)
 		for _, i := range ie.Sl_MCS_RangeList_r16 {
 			tmp_Sl_MCS_RangeList_r16.Value = append(tmp_Sl_MCS_RangeList_r16.Value, &i)
 		}
@@ -29,14 +29,14 @@ func (ie *SL_PriorityTxConfigIndex_v1650) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *SL_PriorityTxConfigIndex_v1650) Decode(r *uper.UperReader) error {
+func (ie *SL_PriorityTxConfigIndex_v1650) Decode(r *aper.AperReader) error {
 	var err error
 	var Sl_MCS_RangeList_r16Present bool
 	if Sl_MCS_RangeList_r16Present, err = r.ReadBool(); err != nil {
 		return err
 	}
 	if Sl_MCS_RangeList_r16Present {
-		tmp_Sl_MCS_RangeList_r16 := utils.NewSequence[*SL_MinMaxMCS_List_r16]([]*SL_MinMaxMCS_List_r16{}, uper.Constraint{Lb: 1, Ub: maxCBR_Level_r16}, false)
+		tmp_Sl_MCS_RangeList_r16 := utils.NewSequence[*SL_MinMaxMCS_List_r16]([]*SL_MinMaxMCS_List_r16{}, aper.Constraint{Lb: 1, Ub: maxCBR_Level_r16}, false)
 		fn_Sl_MCS_RangeList_r16 := func() *SL_MinMaxMCS_List_r16 {
 			return new(SL_MinMaxMCS_List_r16)
 		}

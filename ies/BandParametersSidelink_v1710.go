@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -10,7 +10,7 @@ type BandParametersSidelink_v1710 struct {
 	Tx_IUC_Scheme2_Mode2Sidelink_r17 *BandParametersSidelink_v1710_tx_IUC_Scheme2_Mode2Sidelink_r17 `optional`
 }
 
-func (ie *BandParametersSidelink_v1710) Encode(w *uper.UperWriter) error {
+func (ie *BandParametersSidelink_v1710) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.Tx_IUC_Scheme1_Mode2Sidelink_r17 != nil, ie.Tx_IUC_Scheme2_Mode2Sidelink_r17 != nil}
 	for _, bit := range preambleBits {
@@ -31,7 +31,7 @@ func (ie *BandParametersSidelink_v1710) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *BandParametersSidelink_v1710) Decode(r *uper.UperReader) error {
+func (ie *BandParametersSidelink_v1710) Decode(r *aper.AperReader) error {
 	var err error
 	var Tx_IUC_Scheme1_Mode2Sidelink_r17Present bool
 	if Tx_IUC_Scheme1_Mode2Sidelink_r17Present, err = r.ReadBool(); err != nil {

@@ -3,7 +3,7 @@ package ies
 import (
 	"fmt"
 
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -18,12 +18,12 @@ const (
 type ULInformationTransferIRAT_r16_CriticalExtensions_C1 struct {
 	Choice                        uint64
 	UlInformationTransferIRAT_r16 *ULInformationTransferIRAT_r16_IEs
-	Spare3                        uper.NULL `madatory`
-	Spare2                        uper.NULL `madatory`
-	Spare1                        uper.NULL `madatory`
+	Spare3                        aper.NULL `madatory`
+	Spare2                        aper.NULL `madatory`
+	Spare1                        aper.NULL `madatory`
 }
 
-func (ie *ULInformationTransferIRAT_r16_CriticalExtensions_C1) Encode(w *uper.UperWriter) error {
+func (ie *ULInformationTransferIRAT_r16_CriticalExtensions_C1) Encode(w *aper.AperWriter) error {
 	var err error
 	if err = w.WriteChoice(ie.Choice, 4, false); err != nil {
 		return err
@@ -51,7 +51,7 @@ func (ie *ULInformationTransferIRAT_r16_CriticalExtensions_C1) Encode(w *uper.Up
 	return err
 }
 
-func (ie *ULInformationTransferIRAT_r16_CriticalExtensions_C1) Decode(r *uper.UperReader) error {
+func (ie *ULInformationTransferIRAT_r16_CriticalExtensions_C1) Decode(r *aper.AperReader) error {
 	var err error
 	if ie.Choice, err = r.ReadChoice(4, false); err != nil {
 		return err

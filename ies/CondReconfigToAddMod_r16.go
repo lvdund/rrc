@@ -3,7 +3,7 @@ package ies
 import (
 	"bytes"
 
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -14,7 +14,7 @@ type CondReconfigToAddMod_r16 struct {
 	CondExecutionCondSCG_r17 *[]byte            `optional,ext-1`
 }
 
-func (ie *CondReconfigToAddMod_r16) Encode(w *uper.UperWriter) error {
+func (ie *CondReconfigToAddMod_r16) Encode(w *aper.AperWriter) error {
 	var err error
 	hasExtensions := ie.CondExecutionCondSCG_r17 != nil
 	preambleBits := []bool{hasExtensions, len(ie.CondExecutionCond_r16) > 0, ie.CondRRCReconfig_r16 != nil}
@@ -27,7 +27,7 @@ func (ie *CondReconfigToAddMod_r16) Encode(w *uper.UperWriter) error {
 		return utils.WrapError("Encode CondReconfigId_r16", err)
 	}
 	if len(ie.CondExecutionCond_r16) > 0 {
-		tmp_CondExecutionCond_r16 := utils.NewSequence[*MeasId]([]*MeasId{}, uper.Constraint{Lb: 1, Ub: 2}, false)
+		tmp_CondExecutionCond_r16 := utils.NewSequence[*MeasId]([]*MeasId{}, aper.Constraint{Lb: 1, Ub: 2}, false)
 		for _, i := range ie.CondExecutionCond_r16 {
 			tmp_CondExecutionCond_r16.Value = append(tmp_CondExecutionCond_r16.Value, &i)
 		}
@@ -36,7 +36,7 @@ func (ie *CondReconfigToAddMod_r16) Encode(w *uper.UperWriter) error {
 		}
 	}
 	if ie.CondRRCReconfig_r16 != nil {
-		if err = w.WriteOctetString(*ie.CondRRCReconfig_r16, &uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+		if err = w.WriteOctetString(*ie.CondRRCReconfig_r16, &aper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
 			return utils.WrapError("Encode CondRRCReconfig_r16", err)
 		}
 	}
@@ -50,7 +50,7 @@ func (ie *CondReconfigToAddMod_r16) Encode(w *uper.UperWriter) error {
 		// encode extension group 1
 		if extBitmap[0] {
 			extBuf := new(bytes.Buffer)
-			extWriter := uper.NewWriter(extBuf)
+			extWriter := aper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 1
 			optionals_ext_1 := []bool{ie.CondExecutionCondSCG_r17 != nil}
@@ -62,7 +62,7 @@ func (ie *CondReconfigToAddMod_r16) Encode(w *uper.UperWriter) error {
 
 			// encode CondExecutionCondSCG_r17 optional
 			if ie.CondExecutionCondSCG_r17 != nil {
-				if err = extWriter.WriteOctetString(*ie.CondExecutionCondSCG_r17, &uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+				if err = extWriter.WriteOctetString(*ie.CondExecutionCondSCG_r17, &aper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
 					return utils.WrapError("Encode CondExecutionCondSCG_r17", err)
 				}
 			}
@@ -79,7 +79,7 @@ func (ie *CondReconfigToAddMod_r16) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *CondReconfigToAddMod_r16) Decode(r *uper.UperReader) error {
+func (ie *CondReconfigToAddMod_r16) Decode(r *aper.AperReader) error {
 	var err error
 	var extensionBit bool
 	if extensionBit, err = r.ReadBool(); err != nil {
@@ -97,7 +97,7 @@ func (ie *CondReconfigToAddMod_r16) Decode(r *uper.UperReader) error {
 		return utils.WrapError("Decode CondReconfigId_r16", err)
 	}
 	if CondExecutionCond_r16Present {
-		tmp_CondExecutionCond_r16 := utils.NewSequence[*MeasId]([]*MeasId{}, uper.Constraint{Lb: 1, Ub: 2}, false)
+		tmp_CondExecutionCond_r16 := utils.NewSequence[*MeasId]([]*MeasId{}, aper.Constraint{Lb: 1, Ub: 2}, false)
 		fn_CondExecutionCond_r16 := func() *MeasId {
 			return new(MeasId)
 		}
@@ -111,7 +111,7 @@ func (ie *CondReconfigToAddMod_r16) Decode(r *uper.UperReader) error {
 	}
 	if CondRRCReconfig_r16Present {
 		var tmp_os_CondRRCReconfig_r16 []byte
-		if tmp_os_CondRRCReconfig_r16, err = r.ReadOctetString(&uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+		if tmp_os_CondRRCReconfig_r16, err = r.ReadOctetString(&aper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
 			return utils.WrapError("Decode CondRRCReconfig_r16", err)
 		}
 		ie.CondRRCReconfig_r16 = &tmp_os_CondRRCReconfig_r16
@@ -131,7 +131,7 @@ func (ie *CondReconfigToAddMod_r16) Decode(r *uper.UperReader) error {
 				return err
 			}
 
-			extReader := uper.NewReader(bytes.NewReader(extBytes))
+			extReader := aper.NewReader(bytes.NewReader(extBytes))
 
 			CondExecutionCondSCG_r17Present, err := extReader.ReadBool()
 			if err != nil {
@@ -140,7 +140,7 @@ func (ie *CondReconfigToAddMod_r16) Decode(r *uper.UperReader) error {
 			// decode CondExecutionCondSCG_r17 optional
 			if CondExecutionCondSCG_r17Present {
 				var tmp_os_CondExecutionCondSCG_r17 []byte
-				if tmp_os_CondExecutionCondSCG_r17, err = extReader.ReadOctetString(&uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+				if tmp_os_CondExecutionCondSCG_r17, err = extReader.ReadOctetString(&aper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
 					return utils.WrapError("Decode CondExecutionCondSCG_r17", err)
 				}
 				ie.CondExecutionCondSCG_r17 = &tmp_os_CondExecutionCondSCG_r17

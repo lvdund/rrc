@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -9,9 +9,9 @@ type TrackingAreaCodeList_r16 struct {
 	Value []TrackingAreaCode `lb:1,ub:8,madatory`
 }
 
-func (ie *TrackingAreaCodeList_r16) Encode(w *uper.UperWriter) error {
+func (ie *TrackingAreaCodeList_r16) Encode(w *aper.AperWriter) error {
 	var err error
-	tmp := utils.NewSequence[*TrackingAreaCode]([]*TrackingAreaCode{}, uper.Constraint{Lb: 1, Ub: 8}, false)
+	tmp := utils.NewSequence[*TrackingAreaCode]([]*TrackingAreaCode{}, aper.Constraint{Lb: 1, Ub: 8}, false)
 	for _, i := range ie.Value {
 		tmp.Value = append(tmp.Value, &i)
 	}
@@ -21,9 +21,9 @@ func (ie *TrackingAreaCodeList_r16) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *TrackingAreaCodeList_r16) Decode(r *uper.UperReader) error {
+func (ie *TrackingAreaCodeList_r16) Decode(r *aper.AperReader) error {
 	var err error
-	tmp := utils.NewSequence[*TrackingAreaCode]([]*TrackingAreaCode{}, uper.Constraint{Lb: 1, Ub: 8}, false)
+	tmp := utils.NewSequence[*TrackingAreaCode]([]*TrackingAreaCode{}, aper.Constraint{Lb: 1, Ub: 8}, false)
 	fn := func() *TrackingAreaCode {
 		return new(TrackingAreaCode)
 	}

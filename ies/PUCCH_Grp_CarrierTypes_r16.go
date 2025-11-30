@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -12,7 +12,7 @@ type PUCCH_Grp_CarrierTypes_r16 struct {
 	Fr2_r16              *PUCCH_Grp_CarrierTypes_r16_fr2_r16              `optional`
 }
 
-func (ie *PUCCH_Grp_CarrierTypes_r16) Encode(w *uper.UperWriter) error {
+func (ie *PUCCH_Grp_CarrierTypes_r16) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.Fr1_NonSharedTDD_r16 != nil, ie.Fr1_SharedTDD_r16 != nil, ie.Fr1_NonSharedFDD_r16 != nil, ie.Fr2_r16 != nil}
 	for _, bit := range preambleBits {
@@ -43,7 +43,7 @@ func (ie *PUCCH_Grp_CarrierTypes_r16) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *PUCCH_Grp_CarrierTypes_r16) Decode(r *uper.UperReader) error {
+func (ie *PUCCH_Grp_CarrierTypes_r16) Decode(r *aper.AperReader) error {
 	var err error
 	var Fr1_NonSharedTDD_r16Present bool
 	if Fr1_NonSharedTDD_r16Present, err = r.ReadBool(); err != nil {

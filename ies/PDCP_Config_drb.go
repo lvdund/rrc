@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -15,7 +15,7 @@ type PDCP_Config_drb struct {
 	OutOfOrderDelivery   *PDCP_Config_drb_outOfOrderDelivery   `optional`
 }
 
-func (ie *PDCP_Config_drb) Encode(w *uper.UperWriter) error {
+func (ie *PDCP_Config_drb) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.DiscardTimer != nil, ie.Pdcp_SN_SizeUL != nil, ie.Pdcp_SN_SizeDL != nil, ie.HeaderCompression != nil, ie.IntegrityProtection != nil, ie.StatusReportRequired != nil, ie.OutOfOrderDelivery != nil}
 	for _, bit := range preambleBits {
@@ -61,7 +61,7 @@ func (ie *PDCP_Config_drb) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *PDCP_Config_drb) Decode(r *uper.UperReader) error {
+func (ie *PDCP_Config_drb) Decode(r *aper.AperReader) error {
 	var err error
 	var DiscardTimerPresent bool
 	if DiscardTimerPresent, err = r.ReadBool(); err != nil {

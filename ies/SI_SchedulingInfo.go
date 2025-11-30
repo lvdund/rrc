@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -10,10 +10,10 @@ type SI_SchedulingInfo struct {
 	Si_WindowLength         SI_SchedulingInfo_si_WindowLength `madatory`
 	Si_RequestConfig        *SI_RequestConfig                 `optional`
 	Si_RequestConfigSUL     *SI_RequestConfig                 `optional`
-	SystemInformationAreaID *uper.BitString                   `lb:24,ub:24,optional`
+	SystemInformationAreaID *aper.BitString                   `lb:24,ub:24,optional`
 }
 
-func (ie *SI_SchedulingInfo) Encode(w *uper.UperWriter) error {
+func (ie *SI_SchedulingInfo) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.Si_RequestConfig != nil, ie.Si_RequestConfigSUL != nil, ie.SystemInformationAreaID != nil}
 	for _, bit := range preambleBits {
@@ -21,7 +21,7 @@ func (ie *SI_SchedulingInfo) Encode(w *uper.UperWriter) error {
 			return err
 		}
 	}
-	tmp_SchedulingInfoList := utils.NewSequence[*SchedulingInfo]([]*SchedulingInfo{}, uper.Constraint{Lb: 1, Ub: maxSI_Message}, false)
+	tmp_SchedulingInfoList := utils.NewSequence[*SchedulingInfo]([]*SchedulingInfo{}, aper.Constraint{Lb: 1, Ub: maxSI_Message}, false)
 	for _, i := range ie.SchedulingInfoList {
 		tmp_SchedulingInfoList.Value = append(tmp_SchedulingInfoList.Value, &i)
 	}
@@ -42,14 +42,14 @@ func (ie *SI_SchedulingInfo) Encode(w *uper.UperWriter) error {
 		}
 	}
 	if ie.SystemInformationAreaID != nil {
-		if err = w.WriteBitString(ie.SystemInformationAreaID.Bytes, uint(ie.SystemInformationAreaID.NumBits), &uper.Constraint{Lb: 24, Ub: 24}, false); err != nil {
+		if err = w.WriteBitString(ie.SystemInformationAreaID.Bytes, uint(ie.SystemInformationAreaID.NumBits), &aper.Constraint{Lb: 24, Ub: 24}, false); err != nil {
 			return utils.WrapError("Encode SystemInformationAreaID", err)
 		}
 	}
 	return nil
 }
 
-func (ie *SI_SchedulingInfo) Decode(r *uper.UperReader) error {
+func (ie *SI_SchedulingInfo) Decode(r *aper.AperReader) error {
 	var err error
 	var Si_RequestConfigPresent bool
 	if Si_RequestConfigPresent, err = r.ReadBool(); err != nil {
@@ -63,7 +63,7 @@ func (ie *SI_SchedulingInfo) Decode(r *uper.UperReader) error {
 	if SystemInformationAreaIDPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	tmp_SchedulingInfoList := utils.NewSequence[*SchedulingInfo]([]*SchedulingInfo{}, uper.Constraint{Lb: 1, Ub: maxSI_Message}, false)
+	tmp_SchedulingInfoList := utils.NewSequence[*SchedulingInfo]([]*SchedulingInfo{}, aper.Constraint{Lb: 1, Ub: maxSI_Message}, false)
 	fn_SchedulingInfoList := func() *SchedulingInfo {
 		return new(SchedulingInfo)
 	}
@@ -92,10 +92,10 @@ func (ie *SI_SchedulingInfo) Decode(r *uper.UperReader) error {
 	if SystemInformationAreaIDPresent {
 		var tmp_bs_SystemInformationAreaID []byte
 		var n_SystemInformationAreaID uint
-		if tmp_bs_SystemInformationAreaID, n_SystemInformationAreaID, err = r.ReadBitString(&uper.Constraint{Lb: 24, Ub: 24}, false); err != nil {
+		if tmp_bs_SystemInformationAreaID, n_SystemInformationAreaID, err = r.ReadBitString(&aper.Constraint{Lb: 24, Ub: 24}, false); err != nil {
 			return utils.WrapError("Decode SystemInformationAreaID", err)
 		}
-		tmp_bitstring := uper.BitString{
+		tmp_bitstring := aper.BitString{
 			Bytes:   tmp_bs_SystemInformationAreaID,
 			NumBits: uint64(n_SystemInformationAreaID),
 		}

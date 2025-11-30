@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -10,7 +10,7 @@ type DummyI struct {
 	TxSwitchImpactToRx        *DummyI_txSwitchImpactToRx       `optional`
 }
 
-func (ie *DummyI) Encode(w *uper.UperWriter) error {
+func (ie *DummyI) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.TxSwitchImpactToRx != nil}
 	for _, bit := range preambleBits {
@@ -29,7 +29,7 @@ func (ie *DummyI) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *DummyI) Decode(r *uper.UperReader) error {
+func (ie *DummyI) Decode(r *aper.AperReader) error {
 	var err error
 	var TxSwitchImpactToRxPresent bool
 	if TxSwitchImpactToRxPresent, err = r.ReadBool(); err != nil {

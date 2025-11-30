@@ -3,7 +3,7 @@ package ies
 import (
 	"bytes"
 
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -24,7 +24,7 @@ type SPS_Config struct {
 	Harq_ProcID_Offset_v1700    *int64                                  `lb:16,ub:31,optional,ext-2`
 }
 
-func (ie *SPS_Config) Encode(w *uper.UperWriter) error {
+func (ie *SPS_Config) Encode(w *aper.AperWriter) error {
 	var err error
 	hasExtensions := ie.Sps_ConfigIndex_r16 != nil || ie.Harq_ProcID_Offset_r16 != nil || ie.PeriodicityExt_r16 != nil || ie.Harq_CodebookID_r16 != nil || ie.Pdsch_AggregationFactor_r16 != nil || ie.Sps_HARQ_Deferral_r17 != nil || ie.N1PUCCH_AN_PUCCHsSCell_r17 != nil || ie.PeriodicityExt_r17 != nil || ie.NrofHARQ_Processes_v1710 != nil || ie.Harq_ProcID_Offset_v1700 != nil
 	preambleBits := []bool{hasExtensions, ie.N1PUCCH_AN != nil, ie.Mcs_Table != nil}
@@ -36,7 +36,7 @@ func (ie *SPS_Config) Encode(w *uper.UperWriter) error {
 	if err = ie.Periodicity.Encode(w); err != nil {
 		return utils.WrapError("Encode Periodicity", err)
 	}
-	if err = w.WriteInteger(ie.NrofHARQ_Processes, &uper.Constraint{Lb: 1, Ub: 8}, false); err != nil {
+	if err = w.WriteInteger(ie.NrofHARQ_Processes, &aper.Constraint{Lb: 1, Ub: 8}, false); err != nil {
 		return utils.WrapError("WriteInteger NrofHARQ_Processes", err)
 	}
 	if ie.N1PUCCH_AN != nil {
@@ -59,7 +59,7 @@ func (ie *SPS_Config) Encode(w *uper.UperWriter) error {
 		// encode extension group 1
 		if extBitmap[0] {
 			extBuf := new(bytes.Buffer)
-			extWriter := uper.NewWriter(extBuf)
+			extWriter := aper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 1
 			optionals_ext_1 := []bool{ie.Sps_ConfigIndex_r16 != nil, ie.Harq_ProcID_Offset_r16 != nil, ie.PeriodicityExt_r16 != nil, ie.Harq_CodebookID_r16 != nil, ie.Pdsch_AggregationFactor_r16 != nil}
@@ -77,19 +77,19 @@ func (ie *SPS_Config) Encode(w *uper.UperWriter) error {
 			}
 			// encode Harq_ProcID_Offset_r16 optional
 			if ie.Harq_ProcID_Offset_r16 != nil {
-				if err = extWriter.WriteInteger(*ie.Harq_ProcID_Offset_r16, &uper.Constraint{Lb: 0, Ub: 15}, false); err != nil {
+				if err = extWriter.WriteInteger(*ie.Harq_ProcID_Offset_r16, &aper.Constraint{Lb: 0, Ub: 15}, false); err != nil {
 					return utils.WrapError("Encode Harq_ProcID_Offset_r16", err)
 				}
 			}
 			// encode PeriodicityExt_r16 optional
 			if ie.PeriodicityExt_r16 != nil {
-				if err = extWriter.WriteInteger(*ie.PeriodicityExt_r16, &uper.Constraint{Lb: 1, Ub: 5120}, false); err != nil {
+				if err = extWriter.WriteInteger(*ie.PeriodicityExt_r16, &aper.Constraint{Lb: 1, Ub: 5120}, false); err != nil {
 					return utils.WrapError("Encode PeriodicityExt_r16", err)
 				}
 			}
 			// encode Harq_CodebookID_r16 optional
 			if ie.Harq_CodebookID_r16 != nil {
-				if err = extWriter.WriteInteger(*ie.Harq_CodebookID_r16, &uper.Constraint{Lb: 1, Ub: 2}, false); err != nil {
+				if err = extWriter.WriteInteger(*ie.Harq_CodebookID_r16, &aper.Constraint{Lb: 1, Ub: 2}, false); err != nil {
 					return utils.WrapError("Encode Harq_CodebookID_r16", err)
 				}
 			}
@@ -112,7 +112,7 @@ func (ie *SPS_Config) Encode(w *uper.UperWriter) error {
 		// encode extension group 2
 		if extBitmap[1] {
 			extBuf := new(bytes.Buffer)
-			extWriter := uper.NewWriter(extBuf)
+			extWriter := aper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 2
 			optionals_ext_2 := []bool{ie.Sps_HARQ_Deferral_r17 != nil, ie.N1PUCCH_AN_PUCCHsSCell_r17 != nil, ie.PeriodicityExt_r17 != nil, ie.NrofHARQ_Processes_v1710 != nil, ie.Harq_ProcID_Offset_v1700 != nil}
@@ -124,7 +124,7 @@ func (ie *SPS_Config) Encode(w *uper.UperWriter) error {
 
 			// encode Sps_HARQ_Deferral_r17 optional
 			if ie.Sps_HARQ_Deferral_r17 != nil {
-				if err = extWriter.WriteInteger(*ie.Sps_HARQ_Deferral_r17, &uper.Constraint{Lb: 1, Ub: 32}, false); err != nil {
+				if err = extWriter.WriteInteger(*ie.Sps_HARQ_Deferral_r17, &aper.Constraint{Lb: 1, Ub: 32}, false); err != nil {
 					return utils.WrapError("Encode Sps_HARQ_Deferral_r17", err)
 				}
 			}
@@ -136,19 +136,19 @@ func (ie *SPS_Config) Encode(w *uper.UperWriter) error {
 			}
 			// encode PeriodicityExt_r17 optional
 			if ie.PeriodicityExt_r17 != nil {
-				if err = extWriter.WriteInteger(*ie.PeriodicityExt_r17, &uper.Constraint{Lb: 1, Ub: 40960}, false); err != nil {
+				if err = extWriter.WriteInteger(*ie.PeriodicityExt_r17, &aper.Constraint{Lb: 1, Ub: 40960}, false); err != nil {
 					return utils.WrapError("Encode PeriodicityExt_r17", err)
 				}
 			}
 			// encode NrofHARQ_Processes_v1710 optional
 			if ie.NrofHARQ_Processes_v1710 != nil {
-				if err = extWriter.WriteInteger(*ie.NrofHARQ_Processes_v1710, &uper.Constraint{Lb: 9, Ub: 32}, false); err != nil {
+				if err = extWriter.WriteInteger(*ie.NrofHARQ_Processes_v1710, &aper.Constraint{Lb: 9, Ub: 32}, false); err != nil {
 					return utils.WrapError("Encode NrofHARQ_Processes_v1710", err)
 				}
 			}
 			// encode Harq_ProcID_Offset_v1700 optional
 			if ie.Harq_ProcID_Offset_v1700 != nil {
-				if err = extWriter.WriteInteger(*ie.Harq_ProcID_Offset_v1700, &uper.Constraint{Lb: 16, Ub: 31}, false); err != nil {
+				if err = extWriter.WriteInteger(*ie.Harq_ProcID_Offset_v1700, &aper.Constraint{Lb: 16, Ub: 31}, false); err != nil {
 					return utils.WrapError("Encode Harq_ProcID_Offset_v1700", err)
 				}
 			}
@@ -165,7 +165,7 @@ func (ie *SPS_Config) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *SPS_Config) Decode(r *uper.UperReader) error {
+func (ie *SPS_Config) Decode(r *aper.AperReader) error {
 	var err error
 	var extensionBit bool
 	if extensionBit, err = r.ReadBool(); err != nil {
@@ -183,7 +183,7 @@ func (ie *SPS_Config) Decode(r *uper.UperReader) error {
 		return utils.WrapError("Decode Periodicity", err)
 	}
 	var tmp_int_NrofHARQ_Processes int64
-	if tmp_int_NrofHARQ_Processes, err = r.ReadInteger(&uper.Constraint{Lb: 1, Ub: 8}, false); err != nil {
+	if tmp_int_NrofHARQ_Processes, err = r.ReadInteger(&aper.Constraint{Lb: 1, Ub: 8}, false); err != nil {
 		return utils.WrapError("ReadInteger NrofHARQ_Processes", err)
 	}
 	ie.NrofHARQ_Processes = tmp_int_NrofHARQ_Processes
@@ -214,7 +214,7 @@ func (ie *SPS_Config) Decode(r *uper.UperReader) error {
 				return err
 			}
 
-			extReader := uper.NewReader(bytes.NewReader(extBytes))
+			extReader := aper.NewReader(bytes.NewReader(extBytes))
 
 			Sps_ConfigIndex_r16Present, err := extReader.ReadBool()
 			if err != nil {
@@ -246,7 +246,7 @@ func (ie *SPS_Config) Decode(r *uper.UperReader) error {
 			// decode Harq_ProcID_Offset_r16 optional
 			if Harq_ProcID_Offset_r16Present {
 				var tmp_int_Harq_ProcID_Offset_r16 int64
-				if tmp_int_Harq_ProcID_Offset_r16, err = extReader.ReadInteger(&uper.Constraint{Lb: 0, Ub: 15}, false); err != nil {
+				if tmp_int_Harq_ProcID_Offset_r16, err = extReader.ReadInteger(&aper.Constraint{Lb: 0, Ub: 15}, false); err != nil {
 					return utils.WrapError("Decode Harq_ProcID_Offset_r16", err)
 				}
 				ie.Harq_ProcID_Offset_r16 = &tmp_int_Harq_ProcID_Offset_r16
@@ -254,7 +254,7 @@ func (ie *SPS_Config) Decode(r *uper.UperReader) error {
 			// decode PeriodicityExt_r16 optional
 			if PeriodicityExt_r16Present {
 				var tmp_int_PeriodicityExt_r16 int64
-				if tmp_int_PeriodicityExt_r16, err = extReader.ReadInteger(&uper.Constraint{Lb: 1, Ub: 5120}, false); err != nil {
+				if tmp_int_PeriodicityExt_r16, err = extReader.ReadInteger(&aper.Constraint{Lb: 1, Ub: 5120}, false); err != nil {
 					return utils.WrapError("Decode PeriodicityExt_r16", err)
 				}
 				ie.PeriodicityExt_r16 = &tmp_int_PeriodicityExt_r16
@@ -262,7 +262,7 @@ func (ie *SPS_Config) Decode(r *uper.UperReader) error {
 			// decode Harq_CodebookID_r16 optional
 			if Harq_CodebookID_r16Present {
 				var tmp_int_Harq_CodebookID_r16 int64
-				if tmp_int_Harq_CodebookID_r16, err = extReader.ReadInteger(&uper.Constraint{Lb: 1, Ub: 2}, false); err != nil {
+				if tmp_int_Harq_CodebookID_r16, err = extReader.ReadInteger(&aper.Constraint{Lb: 1, Ub: 2}, false); err != nil {
 					return utils.WrapError("Decode Harq_CodebookID_r16", err)
 				}
 				ie.Harq_CodebookID_r16 = &tmp_int_Harq_CodebookID_r16
@@ -282,7 +282,7 @@ func (ie *SPS_Config) Decode(r *uper.UperReader) error {
 				return err
 			}
 
-			extReader := uper.NewReader(bytes.NewReader(extBytes))
+			extReader := aper.NewReader(bytes.NewReader(extBytes))
 
 			Sps_HARQ_Deferral_r17Present, err := extReader.ReadBool()
 			if err != nil {
@@ -307,7 +307,7 @@ func (ie *SPS_Config) Decode(r *uper.UperReader) error {
 			// decode Sps_HARQ_Deferral_r17 optional
 			if Sps_HARQ_Deferral_r17Present {
 				var tmp_int_Sps_HARQ_Deferral_r17 int64
-				if tmp_int_Sps_HARQ_Deferral_r17, err = extReader.ReadInteger(&uper.Constraint{Lb: 1, Ub: 32}, false); err != nil {
+				if tmp_int_Sps_HARQ_Deferral_r17, err = extReader.ReadInteger(&aper.Constraint{Lb: 1, Ub: 32}, false); err != nil {
 					return utils.WrapError("Decode Sps_HARQ_Deferral_r17", err)
 				}
 				ie.Sps_HARQ_Deferral_r17 = &tmp_int_Sps_HARQ_Deferral_r17
@@ -322,7 +322,7 @@ func (ie *SPS_Config) Decode(r *uper.UperReader) error {
 			// decode PeriodicityExt_r17 optional
 			if PeriodicityExt_r17Present {
 				var tmp_int_PeriodicityExt_r17 int64
-				if tmp_int_PeriodicityExt_r17, err = extReader.ReadInteger(&uper.Constraint{Lb: 1, Ub: 40960}, false); err != nil {
+				if tmp_int_PeriodicityExt_r17, err = extReader.ReadInteger(&aper.Constraint{Lb: 1, Ub: 40960}, false); err != nil {
 					return utils.WrapError("Decode PeriodicityExt_r17", err)
 				}
 				ie.PeriodicityExt_r17 = &tmp_int_PeriodicityExt_r17
@@ -330,7 +330,7 @@ func (ie *SPS_Config) Decode(r *uper.UperReader) error {
 			// decode NrofHARQ_Processes_v1710 optional
 			if NrofHARQ_Processes_v1710Present {
 				var tmp_int_NrofHARQ_Processes_v1710 int64
-				if tmp_int_NrofHARQ_Processes_v1710, err = extReader.ReadInteger(&uper.Constraint{Lb: 9, Ub: 32}, false); err != nil {
+				if tmp_int_NrofHARQ_Processes_v1710, err = extReader.ReadInteger(&aper.Constraint{Lb: 9, Ub: 32}, false); err != nil {
 					return utils.WrapError("Decode NrofHARQ_Processes_v1710", err)
 				}
 				ie.NrofHARQ_Processes_v1710 = &tmp_int_NrofHARQ_Processes_v1710
@@ -338,7 +338,7 @@ func (ie *SPS_Config) Decode(r *uper.UperReader) error {
 			// decode Harq_ProcID_Offset_v1700 optional
 			if Harq_ProcID_Offset_v1700Present {
 				var tmp_int_Harq_ProcID_Offset_v1700 int64
-				if tmp_int_Harq_ProcID_Offset_v1700, err = extReader.ReadInteger(&uper.Constraint{Lb: 16, Ub: 31}, false); err != nil {
+				if tmp_int_Harq_ProcID_Offset_v1700, err = extReader.ReadInteger(&aper.Constraint{Lb: 16, Ub: 31}, false); err != nil {
 					return utils.WrapError("Decode Harq_ProcID_Offset_v1700", err)
 				}
 				ie.Harq_ProcID_Offset_v1700 = &tmp_int_Harq_ProcID_Offset_v1700

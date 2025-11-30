@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -9,7 +9,7 @@ type NeedForGapNCSG_ConfigNR_r17 struct {
 	RequestedTargetBandFilterNCSG_NR_r17 []FreqBandIndicatorNR `lb:1,ub:maxBands,optional`
 }
 
-func (ie *NeedForGapNCSG_ConfigNR_r17) Encode(w *uper.UperWriter) error {
+func (ie *NeedForGapNCSG_ConfigNR_r17) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{len(ie.RequestedTargetBandFilterNCSG_NR_r17) > 0}
 	for _, bit := range preambleBits {
@@ -18,7 +18,7 @@ func (ie *NeedForGapNCSG_ConfigNR_r17) Encode(w *uper.UperWriter) error {
 		}
 	}
 	if len(ie.RequestedTargetBandFilterNCSG_NR_r17) > 0 {
-		tmp_RequestedTargetBandFilterNCSG_NR_r17 := utils.NewSequence[*FreqBandIndicatorNR]([]*FreqBandIndicatorNR{}, uper.Constraint{Lb: 1, Ub: maxBands}, false)
+		tmp_RequestedTargetBandFilterNCSG_NR_r17 := utils.NewSequence[*FreqBandIndicatorNR]([]*FreqBandIndicatorNR{}, aper.Constraint{Lb: 1, Ub: maxBands}, false)
 		for _, i := range ie.RequestedTargetBandFilterNCSG_NR_r17 {
 			tmp_RequestedTargetBandFilterNCSG_NR_r17.Value = append(tmp_RequestedTargetBandFilterNCSG_NR_r17.Value, &i)
 		}
@@ -29,14 +29,14 @@ func (ie *NeedForGapNCSG_ConfigNR_r17) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *NeedForGapNCSG_ConfigNR_r17) Decode(r *uper.UperReader) error {
+func (ie *NeedForGapNCSG_ConfigNR_r17) Decode(r *aper.AperReader) error {
 	var err error
 	var RequestedTargetBandFilterNCSG_NR_r17Present bool
 	if RequestedTargetBandFilterNCSG_NR_r17Present, err = r.ReadBool(); err != nil {
 		return err
 	}
 	if RequestedTargetBandFilterNCSG_NR_r17Present {
-		tmp_RequestedTargetBandFilterNCSG_NR_r17 := utils.NewSequence[*FreqBandIndicatorNR]([]*FreqBandIndicatorNR{}, uper.Constraint{Lb: 1, Ub: maxBands}, false)
+		tmp_RequestedTargetBandFilterNCSG_NR_r17 := utils.NewSequence[*FreqBandIndicatorNR]([]*FreqBandIndicatorNR{}, aper.Constraint{Lb: 1, Ub: maxBands}, false)
 		fn_RequestedTargetBandFilterNCSG_NR_r17 := func() *FreqBandIndicatorNR {
 			return new(FreqBandIndicatorNR)
 		}

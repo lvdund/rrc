@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -11,7 +11,7 @@ type FreqBandInformationEUTRA struct {
 	Ca_BandwidthClassUL_EUTRA *CA_BandwidthClassEUTRA `optional`
 }
 
-func (ie *FreqBandInformationEUTRA) Encode(w *uper.UperWriter) error {
+func (ie *FreqBandInformationEUTRA) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.Ca_BandwidthClassDL_EUTRA != nil, ie.Ca_BandwidthClassUL_EUTRA != nil}
 	for _, bit := range preambleBits {
@@ -35,7 +35,7 @@ func (ie *FreqBandInformationEUTRA) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *FreqBandInformationEUTRA) Decode(r *uper.UperReader) error {
+func (ie *FreqBandInformationEUTRA) Decode(r *aper.AperReader) error {
 	var err error
 	var Ca_BandwidthClassDL_EUTRAPresent bool
 	if Ca_BandwidthClassDL_EUTRAPresent, err = r.ReadBool(); err != nil {

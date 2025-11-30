@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -10,7 +10,7 @@ type UE_NR_Capability_v1690 struct {
 	NonCriticalExtension    *UE_NR_Capability_v1700                         `optional`
 }
 
-func (ie *UE_NR_Capability_v1690) Encode(w *uper.UperWriter) error {
+func (ie *UE_NR_Capability_v1690) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.Ul_RRC_Segmentation_r16 != nil, ie.NonCriticalExtension != nil}
 	for _, bit := range preambleBits {
@@ -31,7 +31,7 @@ func (ie *UE_NR_Capability_v1690) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *UE_NR_Capability_v1690) Decode(r *uper.UperReader) error {
+func (ie *UE_NR_Capability_v1690) Decode(r *aper.AperReader) error {
 	var err error
 	var Ul_RRC_Segmentation_r16Present bool
 	if Ul_RRC_Segmentation_r16Present, err = r.ReadBool(); err != nil {

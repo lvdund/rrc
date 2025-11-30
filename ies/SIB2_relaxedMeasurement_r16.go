@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -12,7 +12,7 @@ type SIB2_relaxedMeasurement_r16 struct {
 	HighPriorityMeasRelax_r16       *SIB2_relaxedMeasurement_r16_highPriorityMeasRelax_r16       `optional`
 }
 
-func (ie *SIB2_relaxedMeasurement_r16) Encode(w *uper.UperWriter) error {
+func (ie *SIB2_relaxedMeasurement_r16) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.LowMobilityEvaluation_r16 != nil, ie.CellEdgeEvaluation_r16 != nil, ie.CombineRelaxedMeasCondition_r16 != nil, ie.HighPriorityMeasRelax_r16 != nil}
 	for _, bit := range preambleBits {
@@ -43,7 +43,7 @@ func (ie *SIB2_relaxedMeasurement_r16) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *SIB2_relaxedMeasurement_r16) Decode(r *uper.UperReader) error {
+func (ie *SIB2_relaxedMeasurement_r16) Decode(r *aper.AperReader) error {
 	var err error
 	var LowMobilityEvaluation_r16Present bool
 	if LowMobilityEvaluation_r16Present, err = r.ReadBool(); err != nil {

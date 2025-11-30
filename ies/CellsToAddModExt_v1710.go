@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -10,7 +10,7 @@ type CellsToAddModExt_v1710 struct {
 	Ntn_PolarizationUL_r17 *CellsToAddModExt_v1710_ntn_PolarizationUL_r17 `optional`
 }
 
-func (ie *CellsToAddModExt_v1710) Encode(w *uper.UperWriter) error {
+func (ie *CellsToAddModExt_v1710) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.Ntn_PolarizationDL_r17 != nil, ie.Ntn_PolarizationUL_r17 != nil}
 	for _, bit := range preambleBits {
@@ -31,7 +31,7 @@ func (ie *CellsToAddModExt_v1710) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *CellsToAddModExt_v1710) Decode(r *uper.UperReader) error {
+func (ie *CellsToAddModExt_v1710) Decode(r *aper.AperReader) error {
 	var err error
 	var Ntn_PolarizationDL_r17Present bool
 	if Ntn_PolarizationDL_r17Present, err = r.ReadBool(); err != nil {

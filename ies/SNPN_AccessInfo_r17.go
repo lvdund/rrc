@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -12,7 +12,7 @@ type SNPN_AccessInfo_r17 struct {
 	ImsEmergencySupportForSNPN_r17 *SNPN_AccessInfo_r17_imsEmergencySupportForSNPN_r17 `optional`
 }
 
-func (ie *SNPN_AccessInfo_r17) Encode(w *uper.UperWriter) error {
+func (ie *SNPN_AccessInfo_r17) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.ExtCH_Supported_r17 != nil, ie.ExtCH_WithoutConfigAllowed_r17 != nil, ie.OnboardingEnabled_r17 != nil, ie.ImsEmergencySupportForSNPN_r17 != nil}
 	for _, bit := range preambleBits {
@@ -43,7 +43,7 @@ func (ie *SNPN_AccessInfo_r17) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *SNPN_AccessInfo_r17) Decode(r *uper.UperReader) error {
+func (ie *SNPN_AccessInfo_r17) Decode(r *aper.AperReader) error {
 	var err error
 	var ExtCH_Supported_r17Present bool
 	if ExtCH_Supported_r17Present, err = r.ReadBool(); err != nil {

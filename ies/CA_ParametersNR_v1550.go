@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -9,7 +9,7 @@ type CA_ParametersNR_v1550 struct {
 	Dummy *CA_ParametersNR_v1550_dummy `optional`
 }
 
-func (ie *CA_ParametersNR_v1550) Encode(w *uper.UperWriter) error {
+func (ie *CA_ParametersNR_v1550) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.Dummy != nil}
 	for _, bit := range preambleBits {
@@ -25,7 +25,7 @@ func (ie *CA_ParametersNR_v1550) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *CA_ParametersNR_v1550) Decode(r *uper.UperReader) error {
+func (ie *CA_ParametersNR_v1550) Decode(r *aper.AperReader) error {
 	var err error
 	var DummyPresent bool
 	if DummyPresent, err = r.ReadBool(); err != nil {

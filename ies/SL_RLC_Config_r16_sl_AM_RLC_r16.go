@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -13,7 +13,7 @@ type SL_RLC_Config_r16_sl_AM_RLC_r16 struct {
 	Sl_MaxRetxThreshold_r16 SL_RLC_Config_r16_sl_AM_RLC_r16_sl_MaxRetxThreshold_r16 `madatory`
 }
 
-func (ie *SL_RLC_Config_r16_sl_AM_RLC_r16) Encode(w *uper.UperWriter) error {
+func (ie *SL_RLC_Config_r16_sl_AM_RLC_r16) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.Sl_SN_FieldLengthAM_r16 != nil}
 	for _, bit := range preambleBits {
@@ -41,7 +41,7 @@ func (ie *SL_RLC_Config_r16_sl_AM_RLC_r16) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *SL_RLC_Config_r16_sl_AM_RLC_r16) Decode(r *uper.UperReader) error {
+func (ie *SL_RLC_Config_r16_sl_AM_RLC_r16) Decode(r *aper.AperReader) error {
 	var err error
 	var Sl_SN_FieldLengthAM_r16Present bool
 	if Sl_SN_FieldLengthAM_r16Present, err = r.ReadBool(); err != nil {

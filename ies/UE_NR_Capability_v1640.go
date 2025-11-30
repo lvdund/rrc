@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -11,7 +11,7 @@ type UE_NR_Capability_v1640 struct {
 	NonCriticalExtension                     *UE_NR_Capability_v1650                           `optional`
 }
 
-func (ie *UE_NR_Capability_v1640) Encode(w *uper.UperWriter) error {
+func (ie *UE_NR_Capability_v1640) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.RedirectAtResumeByNAS_r16 != nil, ie.Phy_ParametersSharedSpectrumChAccess_r16 != nil, ie.NonCriticalExtension != nil}
 	for _, bit := range preambleBits {
@@ -37,7 +37,7 @@ func (ie *UE_NR_Capability_v1640) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *UE_NR_Capability_v1640) Decode(r *uper.UperReader) error {
+func (ie *UE_NR_Capability_v1640) Decode(r *aper.AperReader) error {
 	var err error
 	var RedirectAtResumeByNAS_r16Present bool
 	if RedirectAtResumeByNAS_r16Present, err = r.ReadBool(); err != nil {

@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -10,7 +10,7 @@ type SecurityAlgorithmConfig struct {
 	IntegrityProtAlgorithm *IntegrityProtAlgorithm `optional`
 }
 
-func (ie *SecurityAlgorithmConfig) Encode(w *uper.UperWriter) error {
+func (ie *SecurityAlgorithmConfig) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.IntegrityProtAlgorithm != nil}
 	for _, bit := range preambleBits {
@@ -29,7 +29,7 @@ func (ie *SecurityAlgorithmConfig) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *SecurityAlgorithmConfig) Decode(r *uper.UperReader) error {
+func (ie *SecurityAlgorithmConfig) Decode(r *aper.AperReader) error {
 	var err error
 	var IntegrityProtAlgorithmPresent bool
 	if IntegrityProtAlgorithmPresent, err = r.ReadBool(); err != nil {

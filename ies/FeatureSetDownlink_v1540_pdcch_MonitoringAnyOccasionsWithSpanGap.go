@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -12,7 +12,7 @@ type FeatureSetDownlink_v1540_pdcch_MonitoringAnyOccasionsWithSpanGap struct {
 	Scs_120kHz *FeatureSetDownlink_v1540_pdcch_MonitoringAnyOccasionsWithSpanGap_scs_120kHz `optional`
 }
 
-func (ie *FeatureSetDownlink_v1540_pdcch_MonitoringAnyOccasionsWithSpanGap) Encode(w *uper.UperWriter) error {
+func (ie *FeatureSetDownlink_v1540_pdcch_MonitoringAnyOccasionsWithSpanGap) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.Scs_15kHz != nil, ie.Scs_30kHz != nil, ie.Scs_60kHz != nil, ie.Scs_120kHz != nil}
 	for _, bit := range preambleBits {
@@ -43,7 +43,7 @@ func (ie *FeatureSetDownlink_v1540_pdcch_MonitoringAnyOccasionsWithSpanGap) Enco
 	return nil
 }
 
-func (ie *FeatureSetDownlink_v1540_pdcch_MonitoringAnyOccasionsWithSpanGap) Decode(r *uper.UperReader) error {
+func (ie *FeatureSetDownlink_v1540_pdcch_MonitoringAnyOccasionsWithSpanGap) Decode(r *aper.AperReader) error {
 	var err error
 	var Scs_15kHzPresent bool
 	if Scs_15kHzPresent, err = r.ReadBool(); err != nil {

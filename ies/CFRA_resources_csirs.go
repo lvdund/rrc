@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -10,9 +10,9 @@ type CFRA_resources_csirs struct {
 	Rsrp_ThresholdCSI_RS RSRP_Range            `madatory`
 }
 
-func (ie *CFRA_resources_csirs) Encode(w *uper.UperWriter) error {
+func (ie *CFRA_resources_csirs) Encode(w *aper.AperWriter) error {
 	var err error
-	tmp_Csirs_ResourceList := utils.NewSequence[*CFRA_CSIRS_Resource]([]*CFRA_CSIRS_Resource{}, uper.Constraint{Lb: 1, Ub: maxRA_CSIRS_Resources}, false)
+	tmp_Csirs_ResourceList := utils.NewSequence[*CFRA_CSIRS_Resource]([]*CFRA_CSIRS_Resource{}, aper.Constraint{Lb: 1, Ub: maxRA_CSIRS_Resources}, false)
 	for _, i := range ie.Csirs_ResourceList {
 		tmp_Csirs_ResourceList.Value = append(tmp_Csirs_ResourceList.Value, &i)
 	}
@@ -25,9 +25,9 @@ func (ie *CFRA_resources_csirs) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *CFRA_resources_csirs) Decode(r *uper.UperReader) error {
+func (ie *CFRA_resources_csirs) Decode(r *aper.AperReader) error {
 	var err error
-	tmp_Csirs_ResourceList := utils.NewSequence[*CFRA_CSIRS_Resource]([]*CFRA_CSIRS_Resource{}, uper.Constraint{Lb: 1, Ub: maxRA_CSIRS_Resources}, false)
+	tmp_Csirs_ResourceList := utils.NewSequence[*CFRA_CSIRS_Resource]([]*CFRA_CSIRS_Resource{}, aper.Constraint{Lb: 1, Ub: maxRA_CSIRS_Resources}, false)
 	fn_Csirs_ResourceList := func() *CFRA_CSIRS_Resource {
 		return new(CFRA_CSIRS_Resource)
 	}

@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -10,7 +10,7 @@ type SRS_SpatialRelationInfo_referenceSignal_srs struct {
 	UplinkBWP  BWP_Id         `madatory`
 }
 
-func (ie *SRS_SpatialRelationInfo_referenceSignal_srs) Encode(w *uper.UperWriter) error {
+func (ie *SRS_SpatialRelationInfo_referenceSignal_srs) Encode(w *aper.AperWriter) error {
 	var err error
 	if err = ie.ResourceId.Encode(w); err != nil {
 		return utils.WrapError("Encode ResourceId", err)
@@ -21,7 +21,7 @@ func (ie *SRS_SpatialRelationInfo_referenceSignal_srs) Encode(w *uper.UperWriter
 	return nil
 }
 
-func (ie *SRS_SpatialRelationInfo_referenceSignal_srs) Decode(r *uper.UperReader) error {
+func (ie *SRS_SpatialRelationInfo_referenceSignal_srs) Decode(r *aper.AperReader) error {
 	var err error
 	if err = ie.ResourceId.Decode(r); err != nil {
 		return utils.WrapError("Decode ResourceId", err)

@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -13,7 +13,7 @@ type SearchSpaceExt_r16_searchSpaceType_r16_common_r16_dci_Format2_5_r16_nrofCan
 	AggregationLevel16_r16 *SearchSpaceExt_r16_searchSpaceType_r16_common_r16_dci_Format2_5_r16_nrofCandidates_IAB_r16_aggregationLevel16_r16 `optional`
 }
 
-func (ie *SearchSpaceExt_r16_searchSpaceType_r16_common_r16_dci_Format2_5_r16_nrofCandidates_IAB_r16) Encode(w *uper.UperWriter) error {
+func (ie *SearchSpaceExt_r16_searchSpaceType_r16_common_r16_dci_Format2_5_r16_nrofCandidates_IAB_r16) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.AggregationLevel1_r16 != nil, ie.AggregationLevel2_r16 != nil, ie.AggregationLevel4_r16 != nil, ie.AggregationLevel8_r16 != nil, ie.AggregationLevel16_r16 != nil}
 	for _, bit := range preambleBits {
@@ -49,7 +49,7 @@ func (ie *SearchSpaceExt_r16_searchSpaceType_r16_common_r16_dci_Format2_5_r16_nr
 	return nil
 }
 
-func (ie *SearchSpaceExt_r16_searchSpaceType_r16_common_r16_dci_Format2_5_r16_nrofCandidates_IAB_r16) Decode(r *uper.UperReader) error {
+func (ie *SearchSpaceExt_r16_searchSpaceType_r16_common_r16_dci_Format2_5_r16_nrofCandidates_IAB_r16) Decode(r *aper.AperReader) error {
 	var err error
 	var AggregationLevel1_r16Present bool
 	if AggregationLevel1_r16Present, err = r.ReadBool(); err != nil {

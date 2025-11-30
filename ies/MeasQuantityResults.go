@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -11,7 +11,7 @@ type MeasQuantityResults struct {
 	Sinr *SINR_Range `optional`
 }
 
-func (ie *MeasQuantityResults) Encode(w *uper.UperWriter) error {
+func (ie *MeasQuantityResults) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.Rsrp != nil, ie.Rsrq != nil, ie.Sinr != nil}
 	for _, bit := range preambleBits {
@@ -37,7 +37,7 @@ func (ie *MeasQuantityResults) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *MeasQuantityResults) Decode(r *uper.UperReader) error {
+func (ie *MeasQuantityResults) Decode(r *aper.AperReader) error {
 	var err error
 	var RsrpPresent bool
 	if RsrpPresent, err = r.ReadBool(); err != nil {

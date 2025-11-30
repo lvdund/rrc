@@ -3,7 +3,7 @@ package ies
 import (
 	"bytes"
 
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -24,7 +24,7 @@ type UE_BasedPerfMeas_Parameters_r16 struct {
 	EarlyMeasLog_r17                   *UE_BasedPerfMeas_Parameters_r16_earlyMeasLog_r17                   `optional,ext-1`
 }
 
-func (ie *UE_BasedPerfMeas_Parameters_r16) Encode(w *uper.UperWriter) error {
+func (ie *UE_BasedPerfMeas_Parameters_r16) Encode(w *aper.AperWriter) error {
 	var err error
 	hasExtensions := ie.SigBasedLogMDT_OverrideProtect_r17 != nil || ie.MultipleCEF_Report_r17 != nil || ie.ExcessPacketDelay_r17 != nil || ie.EarlyMeasLog_r17 != nil
 	preambleBits := []bool{hasExtensions, ie.BarometerMeasReport_r16 != nil, ie.ImmMeasBT_r16 != nil, ie.ImmMeasWLAN_r16 != nil, ie.LoggedMeasBT_r16 != nil, ie.LoggedMeasurements_r16 != nil, ie.LoggedMeasWLAN_r16 != nil, ie.OrientationMeasReport_r16 != nil, ie.SpeedMeasReport_r16 != nil, ie.Gnss_Location_r16 != nil, ie.UlPDCP_Delay_r16 != nil}
@@ -93,7 +93,7 @@ func (ie *UE_BasedPerfMeas_Parameters_r16) Encode(w *uper.UperWriter) error {
 		// encode extension group 1
 		if extBitmap[0] {
 			extBuf := new(bytes.Buffer)
-			extWriter := uper.NewWriter(extBuf)
+			extWriter := aper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 1
 			optionals_ext_1 := []bool{ie.SigBasedLogMDT_OverrideProtect_r17 != nil, ie.MultipleCEF_Report_r17 != nil, ie.ExcessPacketDelay_r17 != nil, ie.EarlyMeasLog_r17 != nil}
@@ -140,7 +140,7 @@ func (ie *UE_BasedPerfMeas_Parameters_r16) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *UE_BasedPerfMeas_Parameters_r16) Decode(r *uper.UperReader) error {
+func (ie *UE_BasedPerfMeas_Parameters_r16) Decode(r *aper.AperReader) error {
 	var err error
 	var extensionBit bool
 	if extensionBit, err = r.ReadBool(); err != nil {
@@ -261,7 +261,7 @@ func (ie *UE_BasedPerfMeas_Parameters_r16) Decode(r *uper.UperReader) error {
 				return err
 			}
 
-			extReader := uper.NewReader(bytes.NewReader(extBytes))
+			extReader := aper.NewReader(bytes.NewReader(extBytes))
 
 			SigBasedLogMDT_OverrideProtect_r17Present, err := extReader.ReadBool()
 			if err != nil {

@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -15,7 +15,7 @@ type MBSBroadcastConfiguration_r17_IEs struct {
 	NonCriticalExtension           interface{}                     `optional`
 }
 
-func (ie *MBSBroadcastConfiguration_r17_IEs) Encode(w *uper.UperWriter) error {
+func (ie *MBSBroadcastConfiguration_r17_IEs) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.Mbs_SessionInfoList_r17 != nil, ie.Mbs_NeighbourCellList_r17 != nil, len(ie.Drx_ConfigPTM_List_r17) > 0, ie.Pdsch_ConfigMTCH_r17 != nil, ie.Mtch_SSB_MappingWindowList_r17 != nil, ie.LateNonCriticalExtension != nil}
 	for _, bit := range preambleBits {
@@ -34,7 +34,7 @@ func (ie *MBSBroadcastConfiguration_r17_IEs) Encode(w *uper.UperWriter) error {
 		}
 	}
 	if len(ie.Drx_ConfigPTM_List_r17) > 0 {
-		tmp_Drx_ConfigPTM_List_r17 := utils.NewSequence[*DRX_ConfigPTM_r17]([]*DRX_ConfigPTM_r17{}, uper.Constraint{Lb: 1, Ub: maxNrofDRX_ConfigPTM_r17}, false)
+		tmp_Drx_ConfigPTM_List_r17 := utils.NewSequence[*DRX_ConfigPTM_r17]([]*DRX_ConfigPTM_r17{}, aper.Constraint{Lb: 1, Ub: maxNrofDRX_ConfigPTM_r17}, false)
 		for _, i := range ie.Drx_ConfigPTM_List_r17 {
 			tmp_Drx_ConfigPTM_List_r17.Value = append(tmp_Drx_ConfigPTM_List_r17.Value, &i)
 		}
@@ -53,14 +53,14 @@ func (ie *MBSBroadcastConfiguration_r17_IEs) Encode(w *uper.UperWriter) error {
 		}
 	}
 	if ie.LateNonCriticalExtension != nil {
-		if err = w.WriteOctetString(*ie.LateNonCriticalExtension, &uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+		if err = w.WriteOctetString(*ie.LateNonCriticalExtension, &aper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
 			return utils.WrapError("Encode LateNonCriticalExtension", err)
 		}
 	}
 	return nil
 }
 
-func (ie *MBSBroadcastConfiguration_r17_IEs) Decode(r *uper.UperReader) error {
+func (ie *MBSBroadcastConfiguration_r17_IEs) Decode(r *aper.AperReader) error {
 	var err error
 	var Mbs_SessionInfoList_r17Present bool
 	if Mbs_SessionInfoList_r17Present, err = r.ReadBool(); err != nil {
@@ -99,7 +99,7 @@ func (ie *MBSBroadcastConfiguration_r17_IEs) Decode(r *uper.UperReader) error {
 		}
 	}
 	if Drx_ConfigPTM_List_r17Present {
-		tmp_Drx_ConfigPTM_List_r17 := utils.NewSequence[*DRX_ConfigPTM_r17]([]*DRX_ConfigPTM_r17{}, uper.Constraint{Lb: 1, Ub: maxNrofDRX_ConfigPTM_r17}, false)
+		tmp_Drx_ConfigPTM_List_r17 := utils.NewSequence[*DRX_ConfigPTM_r17]([]*DRX_ConfigPTM_r17{}, aper.Constraint{Lb: 1, Ub: maxNrofDRX_ConfigPTM_r17}, false)
 		fn_Drx_ConfigPTM_List_r17 := func() *DRX_ConfigPTM_r17 {
 			return new(DRX_ConfigPTM_r17)
 		}
@@ -125,7 +125,7 @@ func (ie *MBSBroadcastConfiguration_r17_IEs) Decode(r *uper.UperReader) error {
 	}
 	if LateNonCriticalExtensionPresent {
 		var tmp_os_LateNonCriticalExtension []byte
-		if tmp_os_LateNonCriticalExtension, err = r.ReadOctetString(&uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+		if tmp_os_LateNonCriticalExtension, err = r.ReadOctetString(&aper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
 			return utils.WrapError("Decode LateNonCriticalExtension", err)
 		}
 		ie.LateNonCriticalExtension = &tmp_os_LateNonCriticalExtension

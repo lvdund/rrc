@@ -3,7 +3,7 @@ package ies
 import (
 	"fmt"
 
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -23,7 +23,7 @@ type MeasResults_measResultNeighCells struct {
 	Sl_MeasResultsCandRelay_r17 []byte `madatory`
 }
 
-func (ie *MeasResults_measResultNeighCells) Encode(w *uper.UperWriter) error {
+func (ie *MeasResults_measResultNeighCells) Encode(w *aper.AperWriter) error {
 	var err error
 	if err = w.WriteChoice(ie.Choice, 4, false); err != nil {
 		return err
@@ -42,7 +42,7 @@ func (ie *MeasResults_measResultNeighCells) Encode(w *uper.UperWriter) error {
 			err = utils.WrapError("Encode MeasResultListUTRA_FDD_r16", err)
 		}
 	case MeasResults_measResultNeighCells_Choice_Sl_MeasResultsCandRelay_r17:
-		if err = w.WriteOctetString(ie.Sl_MeasResultsCandRelay_r17, &uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+		if err = w.WriteOctetString(ie.Sl_MeasResultsCandRelay_r17, &aper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
 			err = utils.WrapError("Encode Sl_MeasResultsCandRelay_r17", err)
 		}
 	default:
@@ -51,7 +51,7 @@ func (ie *MeasResults_measResultNeighCells) Encode(w *uper.UperWriter) error {
 	return err
 }
 
-func (ie *MeasResults_measResultNeighCells) Decode(r *uper.UperReader) error {
+func (ie *MeasResults_measResultNeighCells) Decode(r *aper.AperReader) error {
 	var err error
 	if ie.Choice, err = r.ReadChoice(4, false); err != nil {
 		return err
@@ -74,7 +74,7 @@ func (ie *MeasResults_measResultNeighCells) Decode(r *uper.UperReader) error {
 		}
 	case MeasResults_measResultNeighCells_Choice_Sl_MeasResultsCandRelay_r17:
 		var tmp_os_Sl_MeasResultsCandRelay_r17 []byte
-		if tmp_os_Sl_MeasResultsCandRelay_r17, err = r.ReadOctetString(&uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+		if tmp_os_Sl_MeasResultsCandRelay_r17, err = r.ReadOctetString(&aper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
 			return utils.WrapError("Decode Sl_MeasResultsCandRelay_r17", err)
 		}
 		ie.Sl_MeasResultsCandRelay_r17 = tmp_os_Sl_MeasResultsCandRelay_r17

@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -10,7 +10,7 @@ type MeasAndMobParametersMRDC_Common_v1610_condPSCellChangeParametersCommon_r16 
 	CondPSCellChangeFR1_FR2_r16 *MeasAndMobParametersMRDC_Common_v1610_condPSCellChangeParametersCommon_r16_condPSCellChangeFR1_FR2_r16 `optional`
 }
 
-func (ie *MeasAndMobParametersMRDC_Common_v1610_condPSCellChangeParametersCommon_r16) Encode(w *uper.UperWriter) error {
+func (ie *MeasAndMobParametersMRDC_Common_v1610_condPSCellChangeParametersCommon_r16) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.CondPSCellChangeFDD_TDD_r16 != nil, ie.CondPSCellChangeFR1_FR2_r16 != nil}
 	for _, bit := range preambleBits {
@@ -31,7 +31,7 @@ func (ie *MeasAndMobParametersMRDC_Common_v1610_condPSCellChangeParametersCommon
 	return nil
 }
 
-func (ie *MeasAndMobParametersMRDC_Common_v1610_condPSCellChangeParametersCommon_r16) Decode(r *uper.UperReader) error {
+func (ie *MeasAndMobParametersMRDC_Common_v1610_condPSCellChangeParametersCommon_r16) Decode(r *aper.AperReader) error {
 	var err error
 	var CondPSCellChangeFDD_TDD_r16Present bool
 	if CondPSCellChangeFDD_TDD_r16Present, err = r.ReadBool(); err != nil {

@@ -1,33 +1,33 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
 const (
-	SIB8_warningMessageSegmentType_Enum_notLastSegment uper.Enumerated = 0
-	SIB8_warningMessageSegmentType_Enum_lastSegment    uper.Enumerated = 1
+	SIB8_warningMessageSegmentType_Enum_notLastSegment aper.Enumerated = 0
+	SIB8_warningMessageSegmentType_Enum_lastSegment    aper.Enumerated = 1
 )
 
 type SIB8_warningMessageSegmentType struct {
-	Value uper.Enumerated `lb:0,ub:1,madatory`
+	Value aper.Enumerated `lb:0,ub:1,madatory`
 }
 
-func (ie *SIB8_warningMessageSegmentType) Encode(w *uper.UperWriter) error {
+func (ie *SIB8_warningMessageSegmentType) Encode(w *aper.AperWriter) error {
 	var err error
-	if err = w.WriteEnumerate(uint64(ie.Value), uper.Constraint{Lb: 0, Ub: 1}, false); err != nil {
+	if err = w.WriteEnumerate(uint64(ie.Value), aper.Constraint{Lb: 0, Ub: 1}, false); err != nil {
 		return utils.WrapError("Encode SIB8_warningMessageSegmentType", err)
 	}
 	return nil
 }
 
-func (ie *SIB8_warningMessageSegmentType) Decode(r *uper.UperReader) error {
+func (ie *SIB8_warningMessageSegmentType) Decode(r *aper.AperReader) error {
 	var err error
 	var v uint64
-	if v, err = r.ReadEnumerate(uper.Constraint{Lb: 0, Ub: 1}, false); err != nil {
+	if v, err = r.ReadEnumerate(aper.Constraint{Lb: 0, Ub: 1}, false); err != nil {
 		return utils.WrapError("Decode SIB8_warningMessageSegmentType", err)
 	}
-	ie.Value = uper.Enumerated(v)
+	ie.Value = aper.Enumerated(v)
 	return nil
 }

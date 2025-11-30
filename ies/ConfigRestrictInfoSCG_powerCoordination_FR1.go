@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -11,7 +11,7 @@ type ConfigRestrictInfoSCG_powerCoordination_FR1 struct {
 	P_maxUE_FR1 *P_Max `optional`
 }
 
-func (ie *ConfigRestrictInfoSCG_powerCoordination_FR1) Encode(w *uper.UperWriter) error {
+func (ie *ConfigRestrictInfoSCG_powerCoordination_FR1) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.P_maxNR_FR1 != nil, ie.P_maxEUTRA != nil, ie.P_maxUE_FR1 != nil}
 	for _, bit := range preambleBits {
@@ -37,7 +37,7 @@ func (ie *ConfigRestrictInfoSCG_powerCoordination_FR1) Encode(w *uper.UperWriter
 	return nil
 }
 
-func (ie *ConfigRestrictInfoSCG_powerCoordination_FR1) Decode(r *uper.UperReader) error {
+func (ie *ConfigRestrictInfoSCG_powerCoordination_FR1) Decode(r *aper.AperReader) error {
 	var err error
 	var P_maxNR_FR1Present bool
 	if P_maxNR_FR1Present, err = r.ReadBool(); err != nil {

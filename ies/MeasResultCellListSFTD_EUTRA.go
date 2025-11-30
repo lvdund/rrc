@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -9,9 +9,9 @@ type MeasResultCellListSFTD_EUTRA struct {
 	Value []MeasResultSFTD_EUTRA `lb:1,ub:maxCellSFTD,madatory`
 }
 
-func (ie *MeasResultCellListSFTD_EUTRA) Encode(w *uper.UperWriter) error {
+func (ie *MeasResultCellListSFTD_EUTRA) Encode(w *aper.AperWriter) error {
 	var err error
-	tmp := utils.NewSequence[*MeasResultSFTD_EUTRA]([]*MeasResultSFTD_EUTRA{}, uper.Constraint{Lb: 1, Ub: maxCellSFTD}, false)
+	tmp := utils.NewSequence[*MeasResultSFTD_EUTRA]([]*MeasResultSFTD_EUTRA{}, aper.Constraint{Lb: 1, Ub: maxCellSFTD}, false)
 	for _, i := range ie.Value {
 		tmp.Value = append(tmp.Value, &i)
 	}
@@ -21,9 +21,9 @@ func (ie *MeasResultCellListSFTD_EUTRA) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *MeasResultCellListSFTD_EUTRA) Decode(r *uper.UperReader) error {
+func (ie *MeasResultCellListSFTD_EUTRA) Decode(r *aper.AperReader) error {
 	var err error
-	tmp := utils.NewSequence[*MeasResultSFTD_EUTRA]([]*MeasResultSFTD_EUTRA{}, uper.Constraint{Lb: 1, Ub: maxCellSFTD}, false)
+	tmp := utils.NewSequence[*MeasResultSFTD_EUTRA]([]*MeasResultSFTD_EUTRA{}, aper.Constraint{Lb: 1, Ub: maxCellSFTD}, false)
 	fn := func() *MeasResultSFTD_EUTRA {
 		return new(MeasResultSFTD_EUTRA)
 	}

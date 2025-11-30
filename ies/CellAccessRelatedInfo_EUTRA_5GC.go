@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -12,7 +12,7 @@ type CellAccessRelatedInfo_EUTRA_5GC struct {
 	CellIdentity_eutra_5gc      CellIdentity_EUTRA_5GC      `madatory`
 }
 
-func (ie *CellAccessRelatedInfo_EUTRA_5GC) Encode(w *uper.UperWriter) error {
+func (ie *CellAccessRelatedInfo_EUTRA_5GC) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.Ranac_5gc != nil}
 	for _, bit := range preambleBits {
@@ -37,7 +37,7 @@ func (ie *CellAccessRelatedInfo_EUTRA_5GC) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *CellAccessRelatedInfo_EUTRA_5GC) Decode(r *uper.UperReader) error {
+func (ie *CellAccessRelatedInfo_EUTRA_5GC) Decode(r *aper.AperReader) error {
 	var err error
 	var Ranac_5gcPresent bool
 	if Ranac_5gcPresent, err = r.ReadBool(); err != nil {

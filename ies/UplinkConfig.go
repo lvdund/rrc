@@ -3,7 +3,7 @@ package ies
 import (
 	"bytes"
 
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -24,7 +24,7 @@ type UplinkConfig struct {
 	Mpr_PowerBoost_FR2_r16              *UplinkConfig_mpr_PowerBoost_FR2_r16              `optional,ext-2`
 }
 
-func (ie *UplinkConfig) Encode(w *uper.UperWriter) error {
+func (ie *UplinkConfig) Encode(w *aper.AperWriter) error {
 	var err error
 	hasExtensions := ie.PowerBoostPi2BPSK != nil || len(ie.UplinkChannelBW_PerSCS_List) > 0 || ie.EnablePL_RS_UpdateForPUSCH_SRS_r16 != nil || ie.EnableDefaultBeamPL_ForPUSCH0_0_r16 != nil || ie.EnableDefaultBeamPL_ForPUCCH_r16 != nil || ie.EnableDefaultBeamPL_ForSRS_r16 != nil || ie.UplinkTxSwitching_r16 != nil || ie.Mpr_PowerBoost_FR2_r16 != nil
 	preambleBits := []bool{hasExtensions, ie.InitialUplinkBWP != nil, len(ie.UplinkBWP_ToReleaseList) > 0, len(ie.UplinkBWP_ToAddModList) > 0, ie.FirstActiveUplinkBWP_Id != nil, ie.Pusch_ServingCellConfig != nil, ie.CarrierSwitching != nil}
@@ -39,7 +39,7 @@ func (ie *UplinkConfig) Encode(w *uper.UperWriter) error {
 		}
 	}
 	if len(ie.UplinkBWP_ToReleaseList) > 0 {
-		tmp_UplinkBWP_ToReleaseList := utils.NewSequence[*BWP_Id]([]*BWP_Id{}, uper.Constraint{Lb: 1, Ub: maxNrofBWPs}, false)
+		tmp_UplinkBWP_ToReleaseList := utils.NewSequence[*BWP_Id]([]*BWP_Id{}, aper.Constraint{Lb: 1, Ub: maxNrofBWPs}, false)
 		for _, i := range ie.UplinkBWP_ToReleaseList {
 			tmp_UplinkBWP_ToReleaseList.Value = append(tmp_UplinkBWP_ToReleaseList.Value, &i)
 		}
@@ -48,7 +48,7 @@ func (ie *UplinkConfig) Encode(w *uper.UperWriter) error {
 		}
 	}
 	if len(ie.UplinkBWP_ToAddModList) > 0 {
-		tmp_UplinkBWP_ToAddModList := utils.NewSequence[*BWP_Uplink]([]*BWP_Uplink{}, uper.Constraint{Lb: 1, Ub: maxNrofBWPs}, false)
+		tmp_UplinkBWP_ToAddModList := utils.NewSequence[*BWP_Uplink]([]*BWP_Uplink{}, aper.Constraint{Lb: 1, Ub: maxNrofBWPs}, false)
 		for _, i := range ie.UplinkBWP_ToAddModList {
 			tmp_UplinkBWP_ToAddModList.Value = append(tmp_UplinkBWP_ToAddModList.Value, &i)
 		}
@@ -87,7 +87,7 @@ func (ie *UplinkConfig) Encode(w *uper.UperWriter) error {
 		// encode extension group 1
 		if extBitmap[0] {
 			extBuf := new(bytes.Buffer)
-			extWriter := uper.NewWriter(extBuf)
+			extWriter := aper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 1
 			optionals_ext_1 := []bool{ie.PowerBoostPi2BPSK != nil, len(ie.UplinkChannelBW_PerSCS_List) > 0}
@@ -105,7 +105,7 @@ func (ie *UplinkConfig) Encode(w *uper.UperWriter) error {
 			}
 			// encode UplinkChannelBW_PerSCS_List optional
 			if len(ie.UplinkChannelBW_PerSCS_List) > 0 {
-				tmp_UplinkChannelBW_PerSCS_List := utils.NewSequence[*SCS_SpecificCarrier]([]*SCS_SpecificCarrier{}, uper.Constraint{Lb: 1, Ub: maxSCSs}, false)
+				tmp_UplinkChannelBW_PerSCS_List := utils.NewSequence[*SCS_SpecificCarrier]([]*SCS_SpecificCarrier{}, aper.Constraint{Lb: 1, Ub: maxSCSs}, false)
 				for _, i := range ie.UplinkChannelBW_PerSCS_List {
 					tmp_UplinkChannelBW_PerSCS_List.Value = append(tmp_UplinkChannelBW_PerSCS_List.Value, &i)
 				}
@@ -126,7 +126,7 @@ func (ie *UplinkConfig) Encode(w *uper.UperWriter) error {
 		// encode extension group 2
 		if extBitmap[1] {
 			extBuf := new(bytes.Buffer)
-			extWriter := uper.NewWriter(extBuf)
+			extWriter := aper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 2
 			optionals_ext_2 := []bool{ie.EnablePL_RS_UpdateForPUSCH_SRS_r16 != nil, ie.EnableDefaultBeamPL_ForPUSCH0_0_r16 != nil, ie.EnableDefaultBeamPL_ForPUCCH_r16 != nil, ie.EnableDefaultBeamPL_ForSRS_r16 != nil, ie.UplinkTxSwitching_r16 != nil, ie.Mpr_PowerBoost_FR2_r16 != nil}
@@ -188,7 +188,7 @@ func (ie *UplinkConfig) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *UplinkConfig) Decode(r *uper.UperReader) error {
+func (ie *UplinkConfig) Decode(r *aper.AperReader) error {
 	var err error
 	var extensionBit bool
 	if extensionBit, err = r.ReadBool(); err != nil {
@@ -225,7 +225,7 @@ func (ie *UplinkConfig) Decode(r *uper.UperReader) error {
 		}
 	}
 	if UplinkBWP_ToReleaseListPresent {
-		tmp_UplinkBWP_ToReleaseList := utils.NewSequence[*BWP_Id]([]*BWP_Id{}, uper.Constraint{Lb: 1, Ub: maxNrofBWPs}, false)
+		tmp_UplinkBWP_ToReleaseList := utils.NewSequence[*BWP_Id]([]*BWP_Id{}, aper.Constraint{Lb: 1, Ub: maxNrofBWPs}, false)
 		fn_UplinkBWP_ToReleaseList := func() *BWP_Id {
 			return new(BWP_Id)
 		}
@@ -238,7 +238,7 @@ func (ie *UplinkConfig) Decode(r *uper.UperReader) error {
 		}
 	}
 	if UplinkBWP_ToAddModListPresent {
-		tmp_UplinkBWP_ToAddModList := utils.NewSequence[*BWP_Uplink]([]*BWP_Uplink{}, uper.Constraint{Lb: 1, Ub: maxNrofBWPs}, false)
+		tmp_UplinkBWP_ToAddModList := utils.NewSequence[*BWP_Uplink]([]*BWP_Uplink{}, aper.Constraint{Lb: 1, Ub: maxNrofBWPs}, false)
 		fn_UplinkBWP_ToAddModList := func() *BWP_Uplink {
 			return new(BWP_Uplink)
 		}
@@ -285,7 +285,7 @@ func (ie *UplinkConfig) Decode(r *uper.UperReader) error {
 				return err
 			}
 
-			extReader := uper.NewReader(bytes.NewReader(extBytes))
+			extReader := aper.NewReader(bytes.NewReader(extBytes))
 
 			PowerBoostPi2BPSKPresent, err := extReader.ReadBool()
 			if err != nil {
@@ -305,7 +305,7 @@ func (ie *UplinkConfig) Decode(r *uper.UperReader) error {
 			}
 			// decode UplinkChannelBW_PerSCS_List optional
 			if UplinkChannelBW_PerSCS_ListPresent {
-				tmp_UplinkChannelBW_PerSCS_List := utils.NewSequence[*SCS_SpecificCarrier]([]*SCS_SpecificCarrier{}, uper.Constraint{Lb: 1, Ub: maxSCSs}, false)
+				tmp_UplinkChannelBW_PerSCS_List := utils.NewSequence[*SCS_SpecificCarrier]([]*SCS_SpecificCarrier{}, aper.Constraint{Lb: 1, Ub: maxSCSs}, false)
 				fn_UplinkChannelBW_PerSCS_List := func() *SCS_SpecificCarrier {
 					return new(SCS_SpecificCarrier)
 				}
@@ -325,7 +325,7 @@ func (ie *UplinkConfig) Decode(r *uper.UperReader) error {
 				return err
 			}
 
-			extReader := uper.NewReader(bytes.NewReader(extBytes))
+			extReader := aper.NewReader(bytes.NewReader(extBytes))
 
 			EnablePL_RS_UpdateForPUSCH_SRS_r16Present, err := extReader.ReadBool()
 			if err != nil {

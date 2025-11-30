@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -11,7 +11,7 @@ type BWP struct {
 	CyclicPrefix         *BWP_cyclicPrefix `optional`
 }
 
-func (ie *BWP) Encode(w *uper.UperWriter) error {
+func (ie *BWP) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.CyclicPrefix != nil}
 	for _, bit := range preambleBits {
@@ -19,7 +19,7 @@ func (ie *BWP) Encode(w *uper.UperWriter) error {
 			return err
 		}
 	}
-	if err = w.WriteInteger(ie.LocationAndBandwidth, &uper.Constraint{Lb: 0, Ub: 37949}, false); err != nil {
+	if err = w.WriteInteger(ie.LocationAndBandwidth, &aper.Constraint{Lb: 0, Ub: 37949}, false); err != nil {
 		return utils.WrapError("WriteInteger LocationAndBandwidth", err)
 	}
 	if err = ie.SubcarrierSpacing.Encode(w); err != nil {
@@ -33,14 +33,14 @@ func (ie *BWP) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *BWP) Decode(r *uper.UperReader) error {
+func (ie *BWP) Decode(r *aper.AperReader) error {
 	var err error
 	var CyclicPrefixPresent bool
 	if CyclicPrefixPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
 	var tmp_int_LocationAndBandwidth int64
-	if tmp_int_LocationAndBandwidth, err = r.ReadInteger(&uper.Constraint{Lb: 0, Ub: 37949}, false); err != nil {
+	if tmp_int_LocationAndBandwidth, err = r.ReadInteger(&aper.Constraint{Lb: 0, Ub: 37949}, false); err != nil {
 		return utils.WrapError("ReadInteger LocationAndBandwidth", err)
 	}
 	ie.LocationAndBandwidth = tmp_int_LocationAndBandwidth

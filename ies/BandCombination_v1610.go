@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -15,7 +15,7 @@ type BandCombination_v1610 struct {
 	Mrdc_Parameters_v1620         *MRDC_Parameters_v1620                      `optional`
 }
 
-func (ie *BandCombination_v1610) Encode(w *uper.UperWriter) error {
+func (ie *BandCombination_v1610) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{len(ie.BandList_v1610) > 0, ie.Ca_ParametersNR_v1610 != nil, ie.Ca_ParametersNRDC_v1610 != nil, ie.PowerClass_v1610 != nil, ie.PowerClassNRPart_r16 != nil, ie.FeatureSetCombinationDAPS_r16 != nil, ie.Mrdc_Parameters_v1620 != nil}
 	for _, bit := range preambleBits {
@@ -24,7 +24,7 @@ func (ie *BandCombination_v1610) Encode(w *uper.UperWriter) error {
 		}
 	}
 	if len(ie.BandList_v1610) > 0 {
-		tmp_BandList_v1610 := utils.NewSequence[*BandParameters_v1610]([]*BandParameters_v1610{}, uper.Constraint{Lb: 1, Ub: maxSimultaneousBands}, false)
+		tmp_BandList_v1610 := utils.NewSequence[*BandParameters_v1610]([]*BandParameters_v1610{}, aper.Constraint{Lb: 1, Ub: maxSimultaneousBands}, false)
 		for _, i := range ie.BandList_v1610 {
 			tmp_BandList_v1610.Value = append(tmp_BandList_v1610.Value, &i)
 		}
@@ -65,7 +65,7 @@ func (ie *BandCombination_v1610) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *BandCombination_v1610) Decode(r *uper.UperReader) error {
+func (ie *BandCombination_v1610) Decode(r *aper.AperReader) error {
 	var err error
 	var BandList_v1610Present bool
 	if BandList_v1610Present, err = r.ReadBool(); err != nil {
@@ -96,7 +96,7 @@ func (ie *BandCombination_v1610) Decode(r *uper.UperReader) error {
 		return err
 	}
 	if BandList_v1610Present {
-		tmp_BandList_v1610 := utils.NewSequence[*BandParameters_v1610]([]*BandParameters_v1610{}, uper.Constraint{Lb: 1, Ub: maxSimultaneousBands}, false)
+		tmp_BandList_v1610 := utils.NewSequence[*BandParameters_v1610]([]*BandParameters_v1610{}, aper.Constraint{Lb: 1, Ub: maxSimultaneousBands}, false)
 		fn_BandList_v1610 := func() *BandParameters_v1610 {
 			return new(BandParameters_v1610)
 		}

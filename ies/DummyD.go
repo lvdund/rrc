@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -15,7 +15,7 @@ type DummyD struct {
 	MaxNumberCSI_RS_PerResourceSet int64                              `lb:1,ub:8,madatory`
 }
 
-func (ie *DummyD) Encode(w *uper.UperWriter) error {
+func (ie *DummyD) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.AmplitudeSubsetRestriction != nil}
 	for _, bit := range preambleBits {
@@ -26,13 +26,13 @@ func (ie *DummyD) Encode(w *uper.UperWriter) error {
 	if err = ie.MaxNumberTxPortsPerResource.Encode(w); err != nil {
 		return utils.WrapError("Encode MaxNumberTxPortsPerResource", err)
 	}
-	if err = w.WriteInteger(ie.MaxNumberResources, &uper.Constraint{Lb: 1, Ub: 64}, false); err != nil {
+	if err = w.WriteInteger(ie.MaxNumberResources, &aper.Constraint{Lb: 1, Ub: 64}, false); err != nil {
 		return utils.WrapError("WriteInteger MaxNumberResources", err)
 	}
-	if err = w.WriteInteger(ie.TotalNumberTxPorts, &uper.Constraint{Lb: 2, Ub: 256}, false); err != nil {
+	if err = w.WriteInteger(ie.TotalNumberTxPorts, &aper.Constraint{Lb: 2, Ub: 256}, false); err != nil {
 		return utils.WrapError("WriteInteger TotalNumberTxPorts", err)
 	}
-	if err = w.WriteInteger(ie.ParameterLx, &uper.Constraint{Lb: 2, Ub: 4}, false); err != nil {
+	if err = w.WriteInteger(ie.ParameterLx, &aper.Constraint{Lb: 2, Ub: 4}, false); err != nil {
 		return utils.WrapError("WriteInteger ParameterLx", err)
 	}
 	if err = ie.AmplitudeScalingType.Encode(w); err != nil {
@@ -43,13 +43,13 @@ func (ie *DummyD) Encode(w *uper.UperWriter) error {
 			return utils.WrapError("Encode AmplitudeSubsetRestriction", err)
 		}
 	}
-	if err = w.WriteInteger(ie.MaxNumberCSI_RS_PerResourceSet, &uper.Constraint{Lb: 1, Ub: 8}, false); err != nil {
+	if err = w.WriteInteger(ie.MaxNumberCSI_RS_PerResourceSet, &aper.Constraint{Lb: 1, Ub: 8}, false); err != nil {
 		return utils.WrapError("WriteInteger MaxNumberCSI_RS_PerResourceSet", err)
 	}
 	return nil
 }
 
-func (ie *DummyD) Decode(r *uper.UperReader) error {
+func (ie *DummyD) Decode(r *aper.AperReader) error {
 	var err error
 	var AmplitudeSubsetRestrictionPresent bool
 	if AmplitudeSubsetRestrictionPresent, err = r.ReadBool(); err != nil {
@@ -59,17 +59,17 @@ func (ie *DummyD) Decode(r *uper.UperReader) error {
 		return utils.WrapError("Decode MaxNumberTxPortsPerResource", err)
 	}
 	var tmp_int_MaxNumberResources int64
-	if tmp_int_MaxNumberResources, err = r.ReadInteger(&uper.Constraint{Lb: 1, Ub: 64}, false); err != nil {
+	if tmp_int_MaxNumberResources, err = r.ReadInteger(&aper.Constraint{Lb: 1, Ub: 64}, false); err != nil {
 		return utils.WrapError("ReadInteger MaxNumberResources", err)
 	}
 	ie.MaxNumberResources = tmp_int_MaxNumberResources
 	var tmp_int_TotalNumberTxPorts int64
-	if tmp_int_TotalNumberTxPorts, err = r.ReadInteger(&uper.Constraint{Lb: 2, Ub: 256}, false); err != nil {
+	if tmp_int_TotalNumberTxPorts, err = r.ReadInteger(&aper.Constraint{Lb: 2, Ub: 256}, false); err != nil {
 		return utils.WrapError("ReadInteger TotalNumberTxPorts", err)
 	}
 	ie.TotalNumberTxPorts = tmp_int_TotalNumberTxPorts
 	var tmp_int_ParameterLx int64
-	if tmp_int_ParameterLx, err = r.ReadInteger(&uper.Constraint{Lb: 2, Ub: 4}, false); err != nil {
+	if tmp_int_ParameterLx, err = r.ReadInteger(&aper.Constraint{Lb: 2, Ub: 4}, false); err != nil {
 		return utils.WrapError("ReadInteger ParameterLx", err)
 	}
 	ie.ParameterLx = tmp_int_ParameterLx
@@ -83,7 +83,7 @@ func (ie *DummyD) Decode(r *uper.UperReader) error {
 		}
 	}
 	var tmp_int_MaxNumberCSI_RS_PerResourceSet int64
-	if tmp_int_MaxNumberCSI_RS_PerResourceSet, err = r.ReadInteger(&uper.Constraint{Lb: 1, Ub: 8}, false); err != nil {
+	if tmp_int_MaxNumberCSI_RS_PerResourceSet, err = r.ReadInteger(&aper.Constraint{Lb: 1, Ub: 8}, false); err != nil {
 		return utils.WrapError("ReadInteger MaxNumberCSI_RS_PerResourceSet", err)
 	}
 	ie.MaxNumberCSI_RS_PerResourceSet = tmp_int_MaxNumberCSI_RS_PerResourceSet

@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -10,12 +10,12 @@ type MeasResultsPerCarrierIdleEUTRA_r16 struct {
 	MeasResultsPerCellListIdleEUTRA_r16 []MeasResultsPerCellIdleEUTRA_r16 `lb:1,ub:maxCellMeasIdle_r16,madatory`
 }
 
-func (ie *MeasResultsPerCarrierIdleEUTRA_r16) Encode(w *uper.UperWriter) error {
+func (ie *MeasResultsPerCarrierIdleEUTRA_r16) Encode(w *aper.AperWriter) error {
 	var err error
 	if err = ie.CarrierFreqEUTRA_r16.Encode(w); err != nil {
 		return utils.WrapError("Encode CarrierFreqEUTRA_r16", err)
 	}
-	tmp_MeasResultsPerCellListIdleEUTRA_r16 := utils.NewSequence[*MeasResultsPerCellIdleEUTRA_r16]([]*MeasResultsPerCellIdleEUTRA_r16{}, uper.Constraint{Lb: 1, Ub: maxCellMeasIdle_r16}, false)
+	tmp_MeasResultsPerCellListIdleEUTRA_r16 := utils.NewSequence[*MeasResultsPerCellIdleEUTRA_r16]([]*MeasResultsPerCellIdleEUTRA_r16{}, aper.Constraint{Lb: 1, Ub: maxCellMeasIdle_r16}, false)
 	for _, i := range ie.MeasResultsPerCellListIdleEUTRA_r16 {
 		tmp_MeasResultsPerCellListIdleEUTRA_r16.Value = append(tmp_MeasResultsPerCellListIdleEUTRA_r16.Value, &i)
 	}
@@ -25,12 +25,12 @@ func (ie *MeasResultsPerCarrierIdleEUTRA_r16) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *MeasResultsPerCarrierIdleEUTRA_r16) Decode(r *uper.UperReader) error {
+func (ie *MeasResultsPerCarrierIdleEUTRA_r16) Decode(r *aper.AperReader) error {
 	var err error
 	if err = ie.CarrierFreqEUTRA_r16.Decode(r); err != nil {
 		return utils.WrapError("Decode CarrierFreqEUTRA_r16", err)
 	}
-	tmp_MeasResultsPerCellListIdleEUTRA_r16 := utils.NewSequence[*MeasResultsPerCellIdleEUTRA_r16]([]*MeasResultsPerCellIdleEUTRA_r16{}, uper.Constraint{Lb: 1, Ub: maxCellMeasIdle_r16}, false)
+	tmp_MeasResultsPerCellListIdleEUTRA_r16 := utils.NewSequence[*MeasResultsPerCellIdleEUTRA_r16]([]*MeasResultsPerCellIdleEUTRA_r16{}, aper.Constraint{Lb: 1, Ub: maxCellMeasIdle_r16}, false)
 	fn_MeasResultsPerCellListIdleEUTRA_r16 := func() *MeasResultsPerCellIdleEUTRA_r16 {
 		return new(MeasResultsPerCellIdleEUTRA_r16)
 	}

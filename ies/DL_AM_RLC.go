@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -11,7 +11,7 @@ type DL_AM_RLC struct {
 	T_StatusProhibit T_StatusProhibit  `madatory`
 }
 
-func (ie *DL_AM_RLC) Encode(w *uper.UperWriter) error {
+func (ie *DL_AM_RLC) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.Sn_FieldLength != nil}
 	for _, bit := range preambleBits {
@@ -33,7 +33,7 @@ func (ie *DL_AM_RLC) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *DL_AM_RLC) Decode(r *uper.UperReader) error {
+func (ie *DL_AM_RLC) Decode(r *aper.AperReader) error {
 	var err error
 	var Sn_FieldLengthPresent bool
 	if Sn_FieldLengthPresent, err = r.ReadBool(); err != nil {

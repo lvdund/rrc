@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -9,9 +9,9 @@ type MTCH_SSB_MappingWindowList_r17 struct {
 	Value []MTCH_SSB_MappingWindowCycleOffset_r17 `lb:1,ub:maxNrofMTCH_SSB_MappingWindow_r17,madatory`
 }
 
-func (ie *MTCH_SSB_MappingWindowList_r17) Encode(w *uper.UperWriter) error {
+func (ie *MTCH_SSB_MappingWindowList_r17) Encode(w *aper.AperWriter) error {
 	var err error
-	tmp := utils.NewSequence[*MTCH_SSB_MappingWindowCycleOffset_r17]([]*MTCH_SSB_MappingWindowCycleOffset_r17{}, uper.Constraint{Lb: 1, Ub: maxNrofMTCH_SSB_MappingWindow_r17}, false)
+	tmp := utils.NewSequence[*MTCH_SSB_MappingWindowCycleOffset_r17]([]*MTCH_SSB_MappingWindowCycleOffset_r17{}, aper.Constraint{Lb: 1, Ub: maxNrofMTCH_SSB_MappingWindow_r17}, false)
 	for _, i := range ie.Value {
 		tmp.Value = append(tmp.Value, &i)
 	}
@@ -21,9 +21,9 @@ func (ie *MTCH_SSB_MappingWindowList_r17) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *MTCH_SSB_MappingWindowList_r17) Decode(r *uper.UperReader) error {
+func (ie *MTCH_SSB_MappingWindowList_r17) Decode(r *aper.AperReader) error {
 	var err error
-	tmp := utils.NewSequence[*MTCH_SSB_MappingWindowCycleOffset_r17]([]*MTCH_SSB_MappingWindowCycleOffset_r17{}, uper.Constraint{Lb: 1, Ub: maxNrofMTCH_SSB_MappingWindow_r17}, false)
+	tmp := utils.NewSequence[*MTCH_SSB_MappingWindowCycleOffset_r17]([]*MTCH_SSB_MappingWindowCycleOffset_r17{}, aper.Constraint{Lb: 1, Ub: maxNrofMTCH_SSB_MappingWindow_r17}, false)
 	fn := func() *MTCH_SSB_MappingWindowCycleOffset_r17 {
 		return new(MTCH_SSB_MappingWindowCycleOffset_r17)
 	}

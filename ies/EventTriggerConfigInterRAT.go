@@ -3,7 +3,7 @@ package ies
 import (
 	"bytes"
 
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -22,7 +22,7 @@ type EventTriggerConfigInterRAT struct {
 	ReportQuantityRelay_r17       *SL_MeasReportQuantity_r16                                `optional,ext-5`
 }
 
-func (ie *EventTriggerConfigInterRAT) Encode(w *uper.UperWriter) error {
+func (ie *EventTriggerConfigInterRAT) Encode(w *aper.AperWriter) error {
 	var err error
 	hasExtensions := ie.ReportQuantityUTRA_FDD_r16 != nil || ie.IncludeCommonLocationInfo_r16 != nil || ie.IncludeBT_Meas_r16 != nil || ie.IncludeWLAN_Meas_r16 != nil || ie.IncludeSensor_Meas_r16 != nil || ie.ReportQuantityRelay_r17 != nil
 	preambleBits := []bool{hasExtensions}
@@ -44,7 +44,7 @@ func (ie *EventTriggerConfigInterRAT) Encode(w *uper.UperWriter) error {
 		// encode extension group 3
 		if extBitmap[2] {
 			extBuf := new(bytes.Buffer)
-			extWriter := uper.NewWriter(extBuf)
+			extWriter := aper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 3
 			optionals_ext_3 := []bool{ie.ReportQuantityUTRA_FDD_r16 != nil}
@@ -73,7 +73,7 @@ func (ie *EventTriggerConfigInterRAT) Encode(w *uper.UperWriter) error {
 		// encode extension group 4
 		if extBitmap[3] {
 			extBuf := new(bytes.Buffer)
-			extWriter := uper.NewWriter(extBuf)
+			extWriter := aper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 4
 			optionals_ext_4 := []bool{ie.IncludeCommonLocationInfo_r16 != nil, ie.IncludeBT_Meas_r16 != nil, ie.IncludeWLAN_Meas_r16 != nil, ie.IncludeSensor_Meas_r16 != nil}
@@ -129,7 +129,7 @@ func (ie *EventTriggerConfigInterRAT) Encode(w *uper.UperWriter) error {
 		// encode extension group 5
 		if extBitmap[4] {
 			extBuf := new(bytes.Buffer)
-			extWriter := uper.NewWriter(extBuf)
+			extWriter := aper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 5
 			optionals_ext_5 := []bool{ie.ReportQuantityRelay_r17 != nil}
@@ -158,7 +158,7 @@ func (ie *EventTriggerConfigInterRAT) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *EventTriggerConfigInterRAT) Decode(r *uper.UperReader) error {
+func (ie *EventTriggerConfigInterRAT) Decode(r *aper.AperReader) error {
 	var err error
 	var extensionBit bool
 	if extensionBit, err = r.ReadBool(); err != nil {
@@ -182,7 +182,7 @@ func (ie *EventTriggerConfigInterRAT) Decode(r *uper.UperReader) error {
 				return err
 			}
 
-			extReader := uper.NewReader(bytes.NewReader(extBytes))
+			extReader := aper.NewReader(bytes.NewReader(extBytes))
 
 			ReportQuantityUTRA_FDD_r16Present, err := extReader.ReadBool()
 			if err != nil {
@@ -203,7 +203,7 @@ func (ie *EventTriggerConfigInterRAT) Decode(r *uper.UperReader) error {
 				return err
 			}
 
-			extReader := uper.NewReader(bytes.NewReader(extBytes))
+			extReader := aper.NewReader(bytes.NewReader(extBytes))
 
 			IncludeCommonLocationInfo_r16Present, err := extReader.ReadBool()
 			if err != nil {
@@ -260,7 +260,7 @@ func (ie *EventTriggerConfigInterRAT) Decode(r *uper.UperReader) error {
 				return err
 			}
 
-			extReader := uper.NewReader(bytes.NewReader(extBytes))
+			extReader := aper.NewReader(bytes.NewReader(extBytes))
 
 			ReportQuantityRelay_r17Present, err := extReader.ReadBool()
 			if err != nil {

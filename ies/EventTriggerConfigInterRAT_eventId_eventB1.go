@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -12,7 +12,7 @@ type EventTriggerConfigInterRAT_eventId_eventB1 struct {
 	TimeToTrigger     TimeToTrigger            `madatory`
 }
 
-func (ie *EventTriggerConfigInterRAT_eventId_eventB1) Encode(w *uper.UperWriter) error {
+func (ie *EventTriggerConfigInterRAT_eventId_eventB1) Encode(w *aper.AperWriter) error {
 	var err error
 	if err = ie.B1_ThresholdEUTRA.Encode(w); err != nil {
 		return utils.WrapError("Encode B1_ThresholdEUTRA", err)
@@ -29,7 +29,7 @@ func (ie *EventTriggerConfigInterRAT_eventId_eventB1) Encode(w *uper.UperWriter)
 	return nil
 }
 
-func (ie *EventTriggerConfigInterRAT_eventId_eventB1) Decode(r *uper.UperReader) error {
+func (ie *EventTriggerConfigInterRAT_eventId_eventB1) Decode(r *aper.AperReader) error {
 	var err error
 	if err = ie.B1_ThresholdEUTRA.Decode(r); err != nil {
 		return utils.WrapError("Decode B1_ThresholdEUTRA", err)

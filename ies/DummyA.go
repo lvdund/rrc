@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -13,9 +13,9 @@ type DummyA struct {
 	TotalNumberPortsSimultaneousCSI_RS_ActBWP_AllCC DummyA_totalNumberPortsSimultaneousCSI_RS_ActBWP_AllCC `madatory`
 }
 
-func (ie *DummyA) Encode(w *uper.UperWriter) error {
+func (ie *DummyA) Encode(w *aper.AperWriter) error {
 	var err error
-	if err = w.WriteInteger(ie.MaxNumberNZP_CSI_RS_PerCC, &uper.Constraint{Lb: 1, Ub: 32}, false); err != nil {
+	if err = w.WriteInteger(ie.MaxNumberNZP_CSI_RS_PerCC, &aper.Constraint{Lb: 1, Ub: 32}, false); err != nil {
 		return utils.WrapError("WriteInteger MaxNumberNZP_CSI_RS_PerCC", err)
 	}
 	if err = ie.MaxNumberPortsAcrossNZP_CSI_RS_PerCC.Encode(w); err != nil {
@@ -33,10 +33,10 @@ func (ie *DummyA) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *DummyA) Decode(r *uper.UperReader) error {
+func (ie *DummyA) Decode(r *aper.AperReader) error {
 	var err error
 	var tmp_int_MaxNumberNZP_CSI_RS_PerCC int64
-	if tmp_int_MaxNumberNZP_CSI_RS_PerCC, err = r.ReadInteger(&uper.Constraint{Lb: 1, Ub: 32}, false); err != nil {
+	if tmp_int_MaxNumberNZP_CSI_RS_PerCC, err = r.ReadInteger(&aper.Constraint{Lb: 1, Ub: 32}, false); err != nil {
 		return utils.WrapError("ReadInteger MaxNumberNZP_CSI_RS_PerCC", err)
 	}
 	ie.MaxNumberNZP_CSI_RS_PerCC = tmp_int_MaxNumberNZP_CSI_RS_PerCC

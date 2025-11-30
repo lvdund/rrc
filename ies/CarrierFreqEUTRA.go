@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -22,7 +22,7 @@ type CarrierFreqEUTRA struct {
 	ThreshX_Q                  *ThreshX_Q                  `optional`
 }
 
-func (ie *CarrierFreqEUTRA) Encode(w *uper.UperWriter) error {
+func (ie *CarrierFreqEUTRA) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.Eutra_multiBandInfoList != nil, ie.Eutra_FreqNeighCellList != nil, ie.Eutra_ExcludedCellList != nil, ie.CellReselectionPriority != nil, ie.CellReselectionSubPriority != nil, ie.ThreshX_Q != nil}
 	for _, bit := range preambleBits {
@@ -70,13 +70,13 @@ func (ie *CarrierFreqEUTRA) Encode(w *uper.UperWriter) error {
 	if err = ie.ThreshX_Low.Encode(w); err != nil {
 		return utils.WrapError("Encode ThreshX_Low", err)
 	}
-	if err = w.WriteInteger(ie.Q_RxLevMin, &uper.Constraint{Lb: -70, Ub: -22}, false); err != nil {
+	if err = w.WriteInteger(ie.Q_RxLevMin, &aper.Constraint{Lb: -70, Ub: -22}, false); err != nil {
 		return utils.WrapError("WriteInteger Q_RxLevMin", err)
 	}
-	if err = w.WriteInteger(ie.Q_QualMin, &uper.Constraint{Lb: -34, Ub: -3}, false); err != nil {
+	if err = w.WriteInteger(ie.Q_QualMin, &aper.Constraint{Lb: -34, Ub: -3}, false); err != nil {
 		return utils.WrapError("WriteInteger Q_QualMin", err)
 	}
-	if err = w.WriteInteger(ie.P_MaxEUTRA, &uper.Constraint{Lb: -30, Ub: 33}, false); err != nil {
+	if err = w.WriteInteger(ie.P_MaxEUTRA, &aper.Constraint{Lb: -30, Ub: 33}, false); err != nil {
 		return utils.WrapError("WriteInteger P_MaxEUTRA", err)
 	}
 	if ie.ThreshX_Q != nil {
@@ -87,7 +87,7 @@ func (ie *CarrierFreqEUTRA) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *CarrierFreqEUTRA) Decode(r *uper.UperReader) error {
+func (ie *CarrierFreqEUTRA) Decode(r *aper.AperReader) error {
 	var err error
 	var Eutra_multiBandInfoListPresent bool
 	if Eutra_multiBandInfoListPresent, err = r.ReadBool(); err != nil {
@@ -159,17 +159,17 @@ func (ie *CarrierFreqEUTRA) Decode(r *uper.UperReader) error {
 		return utils.WrapError("Decode ThreshX_Low", err)
 	}
 	var tmp_int_Q_RxLevMin int64
-	if tmp_int_Q_RxLevMin, err = r.ReadInteger(&uper.Constraint{Lb: -70, Ub: -22}, false); err != nil {
+	if tmp_int_Q_RxLevMin, err = r.ReadInteger(&aper.Constraint{Lb: -70, Ub: -22}, false); err != nil {
 		return utils.WrapError("ReadInteger Q_RxLevMin", err)
 	}
 	ie.Q_RxLevMin = tmp_int_Q_RxLevMin
 	var tmp_int_Q_QualMin int64
-	if tmp_int_Q_QualMin, err = r.ReadInteger(&uper.Constraint{Lb: -34, Ub: -3}, false); err != nil {
+	if tmp_int_Q_QualMin, err = r.ReadInteger(&aper.Constraint{Lb: -34, Ub: -3}, false); err != nil {
 		return utils.WrapError("ReadInteger Q_QualMin", err)
 	}
 	ie.Q_QualMin = tmp_int_Q_QualMin
 	var tmp_int_P_MaxEUTRA int64
-	if tmp_int_P_MaxEUTRA, err = r.ReadInteger(&uper.Constraint{Lb: -30, Ub: 33}, false); err != nil {
+	if tmp_int_P_MaxEUTRA, err = r.ReadInteger(&aper.Constraint{Lb: -30, Ub: 33}, false); err != nil {
 		return utils.WrapError("ReadInteger P_MaxEUTRA", err)
 	}
 	ie.P_MaxEUTRA = tmp_int_P_MaxEUTRA

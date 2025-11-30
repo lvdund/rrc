@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -9,7 +9,7 @@ type SpatialRelationInfo_PDC_r17 struct {
 	ReferenceSignal SpatialRelationInfo_PDC_r17_referenceSignal `madatory`
 }
 
-func (ie *SpatialRelationInfo_PDC_r17) Encode(w *uper.UperWriter) error {
+func (ie *SpatialRelationInfo_PDC_r17) Encode(w *aper.AperWriter) error {
 	var err error
 	if err = ie.ReferenceSignal.Encode(w); err != nil {
 		return utils.WrapError("Encode ReferenceSignal", err)
@@ -17,7 +17,7 @@ func (ie *SpatialRelationInfo_PDC_r17) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *SpatialRelationInfo_PDC_r17) Decode(r *uper.UperReader) error {
+func (ie *SpatialRelationInfo_PDC_r17) Decode(r *aper.AperReader) error {
 	var err error
 	if err = ie.ReferenceSignal.Decode(r); err != nil {
 		return utils.WrapError("Decode ReferenceSignal", err)

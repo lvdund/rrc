@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -17,7 +17,7 @@ type SL_FreqConfigCommon_r16 struct {
 	Sl_SyncConfigList_r16          *SL_SyncConfigList_r16                              `optional`
 }
 
-func (ie *SL_FreqConfigCommon_r16) Encode(w *uper.UperWriter) error {
+func (ie *SL_FreqConfigCommon_r16) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.Sl_AbsoluteFrequencySSB_r16 != nil, ie.FrequencyShift7p5khzSL_r16 != nil, len(ie.Sl_BWP_List_r16) > 0, ie.Sl_SyncPriority_r16 != nil, ie.Sl_NbAsSync_r16 != nil, ie.Sl_SyncConfigList_r16 != nil}
 	for _, bit := range preambleBits {
@@ -25,7 +25,7 @@ func (ie *SL_FreqConfigCommon_r16) Encode(w *uper.UperWriter) error {
 			return err
 		}
 	}
-	tmp_Sl_SCS_SpecificCarrierList_r16 := utils.NewSequence[*SCS_SpecificCarrier]([]*SCS_SpecificCarrier{}, uper.Constraint{Lb: 1, Ub: maxSCSs}, false)
+	tmp_Sl_SCS_SpecificCarrierList_r16 := utils.NewSequence[*SCS_SpecificCarrier]([]*SCS_SpecificCarrier{}, aper.Constraint{Lb: 1, Ub: maxSCSs}, false)
 	for _, i := range ie.Sl_SCS_SpecificCarrierList_r16 {
 		tmp_Sl_SCS_SpecificCarrierList_r16.Value = append(tmp_Sl_SCS_SpecificCarrierList_r16.Value, &i)
 	}
@@ -45,11 +45,11 @@ func (ie *SL_FreqConfigCommon_r16) Encode(w *uper.UperWriter) error {
 			return utils.WrapError("Encode FrequencyShift7p5khzSL_r16", err)
 		}
 	}
-	if err = w.WriteInteger(ie.ValueN_r16, &uper.Constraint{Lb: -1, Ub: 1}, false); err != nil {
+	if err = w.WriteInteger(ie.ValueN_r16, &aper.Constraint{Lb: -1, Ub: 1}, false); err != nil {
 		return utils.WrapError("WriteInteger ValueN_r16", err)
 	}
 	if len(ie.Sl_BWP_List_r16) > 0 {
-		tmp_Sl_BWP_List_r16 := utils.NewSequence[*SL_BWP_ConfigCommon_r16]([]*SL_BWP_ConfigCommon_r16{}, uper.Constraint{Lb: 1, Ub: maxNrofSL_BWPs_r16}, false)
+		tmp_Sl_BWP_List_r16 := utils.NewSequence[*SL_BWP_ConfigCommon_r16]([]*SL_BWP_ConfigCommon_r16{}, aper.Constraint{Lb: 1, Ub: maxNrofSL_BWPs_r16}, false)
 		for _, i := range ie.Sl_BWP_List_r16 {
 			tmp_Sl_BWP_List_r16.Value = append(tmp_Sl_BWP_List_r16.Value, &i)
 		}
@@ -75,7 +75,7 @@ func (ie *SL_FreqConfigCommon_r16) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *SL_FreqConfigCommon_r16) Decode(r *uper.UperReader) error {
+func (ie *SL_FreqConfigCommon_r16) Decode(r *aper.AperReader) error {
 	var err error
 	var Sl_AbsoluteFrequencySSB_r16Present bool
 	if Sl_AbsoluteFrequencySSB_r16Present, err = r.ReadBool(); err != nil {
@@ -101,7 +101,7 @@ func (ie *SL_FreqConfigCommon_r16) Decode(r *uper.UperReader) error {
 	if Sl_SyncConfigList_r16Present, err = r.ReadBool(); err != nil {
 		return err
 	}
-	tmp_Sl_SCS_SpecificCarrierList_r16 := utils.NewSequence[*SCS_SpecificCarrier]([]*SCS_SpecificCarrier{}, uper.Constraint{Lb: 1, Ub: maxSCSs}, false)
+	tmp_Sl_SCS_SpecificCarrierList_r16 := utils.NewSequence[*SCS_SpecificCarrier]([]*SCS_SpecificCarrier{}, aper.Constraint{Lb: 1, Ub: maxSCSs}, false)
 	fn_Sl_SCS_SpecificCarrierList_r16 := func() *SCS_SpecificCarrier {
 		return new(SCS_SpecificCarrier)
 	}
@@ -128,12 +128,12 @@ func (ie *SL_FreqConfigCommon_r16) Decode(r *uper.UperReader) error {
 		}
 	}
 	var tmp_int_ValueN_r16 int64
-	if tmp_int_ValueN_r16, err = r.ReadInteger(&uper.Constraint{Lb: -1, Ub: 1}, false); err != nil {
+	if tmp_int_ValueN_r16, err = r.ReadInteger(&aper.Constraint{Lb: -1, Ub: 1}, false); err != nil {
 		return utils.WrapError("ReadInteger ValueN_r16", err)
 	}
 	ie.ValueN_r16 = tmp_int_ValueN_r16
 	if Sl_BWP_List_r16Present {
-		tmp_Sl_BWP_List_r16 := utils.NewSequence[*SL_BWP_ConfigCommon_r16]([]*SL_BWP_ConfigCommon_r16{}, uper.Constraint{Lb: 1, Ub: maxNrofSL_BWPs_r16}, false)
+		tmp_Sl_BWP_List_r16 := utils.NewSequence[*SL_BWP_ConfigCommon_r16]([]*SL_BWP_ConfigCommon_r16{}, aper.Constraint{Lb: 1, Ub: maxNrofSL_BWPs_r16}, false)
 		fn_Sl_BWP_List_r16 := func() *SL_BWP_ConfigCommon_r16 {
 			return new(SL_BWP_ConfigCommon_r16)
 		}

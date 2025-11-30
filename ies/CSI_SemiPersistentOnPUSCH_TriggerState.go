@@ -3,7 +3,7 @@ package ies
 import (
 	"bytes"
 
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -12,7 +12,7 @@ type CSI_SemiPersistentOnPUSCH_TriggerState struct {
 	Sp_CSI_MultiplexingMode_r17 *CSI_SemiPersistentOnPUSCH_TriggerState_sp_CSI_MultiplexingMode_r17 `optional,ext-1`
 }
 
-func (ie *CSI_SemiPersistentOnPUSCH_TriggerState) Encode(w *uper.UperWriter) error {
+func (ie *CSI_SemiPersistentOnPUSCH_TriggerState) Encode(w *aper.AperWriter) error {
 	var err error
 	hasExtensions := ie.Sp_CSI_MultiplexingMode_r17 != nil
 	preambleBits := []bool{hasExtensions}
@@ -34,7 +34,7 @@ func (ie *CSI_SemiPersistentOnPUSCH_TriggerState) Encode(w *uper.UperWriter) err
 		// encode extension group 1
 		if extBitmap[0] {
 			extBuf := new(bytes.Buffer)
-			extWriter := uper.NewWriter(extBuf)
+			extWriter := aper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 1
 			optionals_ext_1 := []bool{ie.Sp_CSI_MultiplexingMode_r17 != nil}
@@ -63,7 +63,7 @@ func (ie *CSI_SemiPersistentOnPUSCH_TriggerState) Encode(w *uper.UperWriter) err
 	return nil
 }
 
-func (ie *CSI_SemiPersistentOnPUSCH_TriggerState) Decode(r *uper.UperReader) error {
+func (ie *CSI_SemiPersistentOnPUSCH_TriggerState) Decode(r *aper.AperReader) error {
 	var err error
 	var extensionBit bool
 	if extensionBit, err = r.ReadBool(); err != nil {
@@ -87,7 +87,7 @@ func (ie *CSI_SemiPersistentOnPUSCH_TriggerState) Decode(r *uper.UperReader) err
 				return err
 			}
 
-			extReader := uper.NewReader(bytes.NewReader(extBytes))
+			extReader := aper.NewReader(bytes.NewReader(extBytes))
 
 			Sp_CSI_MultiplexingMode_r17Present, err := extReader.ReadBool()
 			if err != nil {

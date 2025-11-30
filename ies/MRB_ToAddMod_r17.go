@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -14,7 +14,7 @@ type MRB_ToAddMod_r17 struct {
 	Pdcp_Config_r17     *PDCP_Config                          `optional`
 }
 
-func (ie *MRB_ToAddMod_r17) Encode(w *uper.UperWriter) error {
+func (ie *MRB_ToAddMod_r17) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.Mbs_SessionId_r17 != nil, ie.Mrb_IdentityNew_r17 != nil, ie.ReestablishPDCP_r17 != nil, ie.RecoverPDCP_r17 != nil, ie.Pdcp_Config_r17 != nil}
 	for _, bit := range preambleBits {
@@ -53,7 +53,7 @@ func (ie *MRB_ToAddMod_r17) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *MRB_ToAddMod_r17) Decode(r *uper.UperReader) error {
+func (ie *MRB_ToAddMod_r17) Decode(r *aper.AperReader) error {
 	var err error
 	var Mbs_SessionId_r17Present bool
 	if Mbs_SessionId_r17Present, err = r.ReadBool(); err != nil {

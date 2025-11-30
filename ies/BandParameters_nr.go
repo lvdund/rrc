@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -11,7 +11,7 @@ type BandParameters_nr struct {
 	Ca_BandwidthClassUL_NR *CA_BandwidthClassNR `optional`
 }
 
-func (ie *BandParameters_nr) Encode(w *uper.UperWriter) error {
+func (ie *BandParameters_nr) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.Ca_BandwidthClassDL_NR != nil, ie.Ca_BandwidthClassUL_NR != nil}
 	for _, bit := range preambleBits {
@@ -35,7 +35,7 @@ func (ie *BandParameters_nr) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *BandParameters_nr) Decode(r *uper.UperReader) error {
+func (ie *BandParameters_nr) Decode(r *aper.AperReader) error {
 	var err error
 	var Ca_BandwidthClassDL_NRPresent bool
 	if Ca_BandwidthClassDL_NRPresent, err = r.ReadBool(); err != nil {

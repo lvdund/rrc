@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -11,7 +11,7 @@ type CFR_ConfigMCCH_MTCH_r17 struct {
 	CommonControlResourceSetExt_r17   *ControlResourceSet                `optional`
 }
 
-func (ie *CFR_ConfigMCCH_MTCH_r17) Encode(w *uper.UperWriter) error {
+func (ie *CFR_ConfigMCCH_MTCH_r17) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.LocationAndBandwidthBroadcast_r17 != nil, ie.Pdsch_ConfigMCCH_r17 != nil, ie.CommonControlResourceSetExt_r17 != nil}
 	for _, bit := range preambleBits {
@@ -37,7 +37,7 @@ func (ie *CFR_ConfigMCCH_MTCH_r17) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *CFR_ConfigMCCH_MTCH_r17) Decode(r *uper.UperReader) error {
+func (ie *CFR_ConfigMCCH_MTCH_r17) Decode(r *aper.AperReader) error {
 	var err error
 	var LocationAndBandwidthBroadcast_r17Present bool
 	if LocationAndBandwidthBroadcast_r17Present, err = r.ReadBool(); err != nil {

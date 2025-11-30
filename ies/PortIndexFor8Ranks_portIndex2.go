@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -10,7 +10,7 @@ type PortIndexFor8Ranks_portIndex2 struct {
 	Rank2_2 []PortIndex2 `lb:2,ub:2,optional`
 }
 
-func (ie *PortIndexFor8Ranks_portIndex2) Encode(w *uper.UperWriter) error {
+func (ie *PortIndexFor8Ranks_portIndex2) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.Rank1_2 != nil, len(ie.Rank2_2) > 0}
 	for _, bit := range preambleBits {
@@ -24,7 +24,7 @@ func (ie *PortIndexFor8Ranks_portIndex2) Encode(w *uper.UperWriter) error {
 		}
 	}
 	if len(ie.Rank2_2) > 0 {
-		tmp_Rank2_2 := utils.NewSequence[*PortIndex2]([]*PortIndex2{}, uper.Constraint{Lb: 2, Ub: 2}, false)
+		tmp_Rank2_2 := utils.NewSequence[*PortIndex2]([]*PortIndex2{}, aper.Constraint{Lb: 2, Ub: 2}, false)
 		for _, i := range ie.Rank2_2 {
 			tmp_Rank2_2.Value = append(tmp_Rank2_2.Value, &i)
 		}
@@ -35,7 +35,7 @@ func (ie *PortIndexFor8Ranks_portIndex2) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *PortIndexFor8Ranks_portIndex2) Decode(r *uper.UperReader) error {
+func (ie *PortIndexFor8Ranks_portIndex2) Decode(r *aper.AperReader) error {
 	var err error
 	var Rank1_2Present bool
 	if Rank1_2Present, err = r.ReadBool(); err != nil {
@@ -52,7 +52,7 @@ func (ie *PortIndexFor8Ranks_portIndex2) Decode(r *uper.UperReader) error {
 		}
 	}
 	if Rank2_2Present {
-		tmp_Rank2_2 := utils.NewSequence[*PortIndex2]([]*PortIndex2{}, uper.Constraint{Lb: 2, Ub: 2}, false)
+		tmp_Rank2_2 := utils.NewSequence[*PortIndex2]([]*PortIndex2{}, aper.Constraint{Lb: 2, Ub: 2}, false)
 		fn_Rank2_2 := func() *PortIndex2 {
 			return new(PortIndex2)
 		}

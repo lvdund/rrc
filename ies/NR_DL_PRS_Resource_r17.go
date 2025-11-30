@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -14,12 +14,12 @@ type NR_DL_PRS_Resource_r17 struct {
 	Dl_PRS_QCL_Info_r17              *DL_PRS_QCL_Info_r17                                    `optional,ext`
 }
 
-func (ie *NR_DL_PRS_Resource_r17) Encode(w *uper.UperWriter) error {
+func (ie *NR_DL_PRS_Resource_r17) Encode(w *aper.AperWriter) error {
 	var err error
 	if err = ie.Nr_DL_PRS_ResourceID_r17.Encode(w); err != nil {
 		return utils.WrapError("Encode Nr_DL_PRS_ResourceID_r17", err)
 	}
-	if err = w.WriteInteger(ie.Dl_PRS_SequenceID_r17, &uper.Constraint{Lb: 0, Ub: 4095}, false); err != nil {
+	if err = w.WriteInteger(ie.Dl_PRS_SequenceID_r17, &aper.Constraint{Lb: 0, Ub: 4095}, false); err != nil {
 		return utils.WrapError("WriteInteger Dl_PRS_SequenceID_r17", err)
 	}
 	if err = ie.Dl_PRS_CombSizeN_AndReOffset_r17.Encode(w); err != nil {
@@ -28,13 +28,13 @@ func (ie *NR_DL_PRS_Resource_r17) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *NR_DL_PRS_Resource_r17) Decode(r *uper.UperReader) error {
+func (ie *NR_DL_PRS_Resource_r17) Decode(r *aper.AperReader) error {
 	var err error
 	if err = ie.Nr_DL_PRS_ResourceID_r17.Decode(r); err != nil {
 		return utils.WrapError("Decode Nr_DL_PRS_ResourceID_r17", err)
 	}
 	var tmp_int_Dl_PRS_SequenceID_r17 int64
-	if tmp_int_Dl_PRS_SequenceID_r17, err = r.ReadInteger(&uper.Constraint{Lb: 0, Ub: 4095}, false); err != nil {
+	if tmp_int_Dl_PRS_SequenceID_r17, err = r.ReadInteger(&aper.Constraint{Lb: 0, Ub: 4095}, false); err != nil {
 		return utils.WrapError("ReadInteger Dl_PRS_SequenceID_r17", err)
 	}
 	ie.Dl_PRS_SequenceID_r17 = tmp_int_Dl_PRS_SequenceID_r17

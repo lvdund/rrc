@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -10,7 +10,7 @@ type BandSidelink_r16_psfch_FormatZeroSidelink_r16 struct {
 	Psfch_TxNumber BandSidelink_r16_psfch_FormatZeroSidelink_r16_psfch_TxNumber `madatory`
 }
 
-func (ie *BandSidelink_r16_psfch_FormatZeroSidelink_r16) Encode(w *uper.UperWriter) error {
+func (ie *BandSidelink_r16_psfch_FormatZeroSidelink_r16) Encode(w *aper.AperWriter) error {
 	var err error
 	if err = ie.Psfch_RxNumber.Encode(w); err != nil {
 		return utils.WrapError("Encode Psfch_RxNumber", err)
@@ -21,7 +21,7 @@ func (ie *BandSidelink_r16_psfch_FormatZeroSidelink_r16) Encode(w *uper.UperWrit
 	return nil
 }
 
-func (ie *BandSidelink_r16_psfch_FormatZeroSidelink_r16) Decode(r *uper.UperReader) error {
+func (ie *BandSidelink_r16_psfch_FormatZeroSidelink_r16) Decode(r *aper.AperReader) error {
 	var err error
 	if err = ie.Psfch_RxNumber.Decode(r); err != nil {
 		return utils.WrapError("Decode Psfch_RxNumber", err)

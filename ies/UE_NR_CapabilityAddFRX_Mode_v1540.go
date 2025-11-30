@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -9,7 +9,7 @@ type UE_NR_CapabilityAddFRX_Mode_v1540 struct {
 	Ims_ParametersFRX_Diff *IMS_ParametersFRX_Diff `optional`
 }
 
-func (ie *UE_NR_CapabilityAddFRX_Mode_v1540) Encode(w *uper.UperWriter) error {
+func (ie *UE_NR_CapabilityAddFRX_Mode_v1540) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.Ims_ParametersFRX_Diff != nil}
 	for _, bit := range preambleBits {
@@ -25,7 +25,7 @@ func (ie *UE_NR_CapabilityAddFRX_Mode_v1540) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *UE_NR_CapabilityAddFRX_Mode_v1540) Decode(r *uper.UperReader) error {
+func (ie *UE_NR_CapabilityAddFRX_Mode_v1540) Decode(r *aper.AperReader) error {
 	var err error
 	var Ims_ParametersFRX_DiffPresent bool
 	if Ims_ParametersFRX_DiffPresent, err = r.ReadBool(); err != nil {

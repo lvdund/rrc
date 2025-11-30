@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -14,12 +14,12 @@ type CondTriggerConfig_r16_condEventId_condEventD1_r17 struct {
 	TimeToTrigger_r17                TimeToTrigger          `madatory`
 }
 
-func (ie *CondTriggerConfig_r16_condEventId_condEventD1_r17) Encode(w *uper.UperWriter) error {
+func (ie *CondTriggerConfig_r16_condEventId_condEventD1_r17) Encode(w *aper.AperWriter) error {
 	var err error
-	if err = w.WriteInteger(ie.DistanceThreshFromReference1_r17, &uper.Constraint{Lb: 0, Ub: 65525}, false); err != nil {
+	if err = w.WriteInteger(ie.DistanceThreshFromReference1_r17, &aper.Constraint{Lb: 0, Ub: 65525}, false); err != nil {
 		return utils.WrapError("WriteInteger DistanceThreshFromReference1_r17", err)
 	}
-	if err = w.WriteInteger(ie.DistanceThreshFromReference2_r17, &uper.Constraint{Lb: 0, Ub: 65525}, false); err != nil {
+	if err = w.WriteInteger(ie.DistanceThreshFromReference2_r17, &aper.Constraint{Lb: 0, Ub: 65525}, false); err != nil {
 		return utils.WrapError("WriteInteger DistanceThreshFromReference2_r17", err)
 	}
 	if err = ie.ReferenceLocation1_r17.Encode(w); err != nil {
@@ -37,15 +37,15 @@ func (ie *CondTriggerConfig_r16_condEventId_condEventD1_r17) Encode(w *uper.Uper
 	return nil
 }
 
-func (ie *CondTriggerConfig_r16_condEventId_condEventD1_r17) Decode(r *uper.UperReader) error {
+func (ie *CondTriggerConfig_r16_condEventId_condEventD1_r17) Decode(r *aper.AperReader) error {
 	var err error
 	var tmp_int_DistanceThreshFromReference1_r17 int64
-	if tmp_int_DistanceThreshFromReference1_r17, err = r.ReadInteger(&uper.Constraint{Lb: 0, Ub: 65525}, false); err != nil {
+	if tmp_int_DistanceThreshFromReference1_r17, err = r.ReadInteger(&aper.Constraint{Lb: 0, Ub: 65525}, false); err != nil {
 		return utils.WrapError("ReadInteger DistanceThreshFromReference1_r17", err)
 	}
 	ie.DistanceThreshFromReference1_r17 = tmp_int_DistanceThreshFromReference1_r17
 	var tmp_int_DistanceThreshFromReference2_r17 int64
-	if tmp_int_DistanceThreshFromReference2_r17, err = r.ReadInteger(&uper.Constraint{Lb: 0, Ub: 65525}, false); err != nil {
+	if tmp_int_DistanceThreshFromReference2_r17, err = r.ReadInteger(&aper.Constraint{Lb: 0, Ub: 65525}, false); err != nil {
 		return utils.WrapError("ReadInteger DistanceThreshFromReference2_r17", err)
 	}
 	ie.DistanceThreshFromReference2_r17 = tmp_int_DistanceThreshFromReference2_r17

@@ -1,32 +1,32 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
 const (
-	GeneralParametersMRDC_XDD_Diff_splitDRB_withUL_Both_MCG_SCG_Enum_supported uper.Enumerated = 0
+	GeneralParametersMRDC_XDD_Diff_splitDRB_withUL_Both_MCG_SCG_Enum_supported aper.Enumerated = 0
 )
 
 type GeneralParametersMRDC_XDD_Diff_splitDRB_withUL_Both_MCG_SCG struct {
-	Value uper.Enumerated `lb:0,ub:0,madatory`
+	Value aper.Enumerated `lb:0,ub:0,madatory`
 }
 
-func (ie *GeneralParametersMRDC_XDD_Diff_splitDRB_withUL_Both_MCG_SCG) Encode(w *uper.UperWriter) error {
+func (ie *GeneralParametersMRDC_XDD_Diff_splitDRB_withUL_Both_MCG_SCG) Encode(w *aper.AperWriter) error {
 	var err error
-	if err = w.WriteEnumerate(uint64(ie.Value), uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+	if err = w.WriteEnumerate(uint64(ie.Value), aper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
 		return utils.WrapError("Encode GeneralParametersMRDC_XDD_Diff_splitDRB_withUL_Both_MCG_SCG", err)
 	}
 	return nil
 }
 
-func (ie *GeneralParametersMRDC_XDD_Diff_splitDRB_withUL_Both_MCG_SCG) Decode(r *uper.UperReader) error {
+func (ie *GeneralParametersMRDC_XDD_Diff_splitDRB_withUL_Both_MCG_SCG) Decode(r *aper.AperReader) error {
 	var err error
 	var v uint64
-	if v, err = r.ReadEnumerate(uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+	if v, err = r.ReadEnumerate(aper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
 		return utils.WrapError("Decode GeneralParametersMRDC_XDD_Diff_splitDRB_withUL_Both_MCG_SCG", err)
 	}
-	ie.Value = uper.Enumerated(v)
+	ie.Value = aper.Enumerated(v)
 	return nil
 }

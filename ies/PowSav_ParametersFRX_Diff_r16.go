@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -10,7 +10,7 @@ type PowSav_ParametersFRX_Diff_r16 struct {
 	MaxMIMO_LayerPreference_r16 *PowSav_ParametersFRX_Diff_r16_maxMIMO_LayerPreference_r16 `optional`
 }
 
-func (ie *PowSav_ParametersFRX_Diff_r16) Encode(w *uper.UperWriter) error {
+func (ie *PowSav_ParametersFRX_Diff_r16) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.MaxBW_Preference_r16 != nil, ie.MaxMIMO_LayerPreference_r16 != nil}
 	for _, bit := range preambleBits {
@@ -31,7 +31,7 @@ func (ie *PowSav_ParametersFRX_Diff_r16) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *PowSav_ParametersFRX_Diff_r16) Decode(r *uper.UperReader) error {
+func (ie *PowSav_ParametersFRX_Diff_r16) Decode(r *aper.AperReader) error {
 	var err error
 	var MaxBW_Preference_r16Present bool
 	if MaxBW_Preference_r16Present, err = r.ReadBool(); err != nil {

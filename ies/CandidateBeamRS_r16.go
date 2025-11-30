@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -10,7 +10,7 @@ type CandidateBeamRS_r16 struct {
 	ServingCellId           *ServCellIndex                              `optional`
 }
 
-func (ie *CandidateBeamRS_r16) Encode(w *uper.UperWriter) error {
+func (ie *CandidateBeamRS_r16) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.ServingCellId != nil}
 	for _, bit := range preambleBits {
@@ -29,7 +29,7 @@ func (ie *CandidateBeamRS_r16) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *CandidateBeamRS_r16) Decode(r *uper.UperReader) error {
+func (ie *CandidateBeamRS_r16) Decode(r *aper.AperReader) error {
 	var err error
 	var ServingCellIdPresent bool
 	if ServingCellIdPresent, err = r.ReadBool(); err != nil {

@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -10,7 +10,7 @@ type MRDC_SecondaryCellGroupConfig struct {
 	Mrdc_SecondaryCellGroup MRDC_SecondaryCellGroupConfig_mrdc_SecondaryCellGroup `madatory`
 }
 
-func (ie *MRDC_SecondaryCellGroupConfig) Encode(w *uper.UperWriter) error {
+func (ie *MRDC_SecondaryCellGroupConfig) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.Mrdc_ReleaseAndAdd != nil}
 	for _, bit := range preambleBits {
@@ -29,7 +29,7 @@ func (ie *MRDC_SecondaryCellGroupConfig) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *MRDC_SecondaryCellGroupConfig) Decode(r *uper.UperReader) error {
+func (ie *MRDC_SecondaryCellGroupConfig) Decode(r *aper.AperReader) error {
 	var err error
 	var Mrdc_ReleaseAndAddPresent bool
 	if Mrdc_ReleaseAndAddPresent, err = r.ReadBool(); err != nil {

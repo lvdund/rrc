@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -10,7 +10,7 @@ type MeasAndMobParametersCommon_condHandoverParametersCommon_r16 struct {
 	CondHandoverFR1_FR2_r16 *MeasAndMobParametersCommon_condHandoverParametersCommon_r16_condHandoverFR1_FR2_r16 `optional`
 }
 
-func (ie *MeasAndMobParametersCommon_condHandoverParametersCommon_r16) Encode(w *uper.UperWriter) error {
+func (ie *MeasAndMobParametersCommon_condHandoverParametersCommon_r16) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.CondHandoverFDD_TDD_r16 != nil, ie.CondHandoverFR1_FR2_r16 != nil}
 	for _, bit := range preambleBits {
@@ -31,7 +31,7 @@ func (ie *MeasAndMobParametersCommon_condHandoverParametersCommon_r16) Encode(w 
 	return nil
 }
 
-func (ie *MeasAndMobParametersCommon_condHandoverParametersCommon_r16) Decode(r *uper.UperReader) error {
+func (ie *MeasAndMobParametersCommon_condHandoverParametersCommon_r16) Decode(r *aper.AperReader) error {
 	var err error
 	var CondHandoverFDD_TDD_r16Present bool
 	if CondHandoverFDD_TDD_r16Present, err = r.ReadBool(); err != nil {

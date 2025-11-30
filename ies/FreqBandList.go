@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -9,9 +9,9 @@ type FreqBandList struct {
 	Value []FreqBandInformation `lb:1,ub:maxBandsMRDC,madatory`
 }
 
-func (ie *FreqBandList) Encode(w *uper.UperWriter) error {
+func (ie *FreqBandList) Encode(w *aper.AperWriter) error {
 	var err error
-	tmp := utils.NewSequence[*FreqBandInformation]([]*FreqBandInformation{}, uper.Constraint{Lb: 1, Ub: maxBandsMRDC}, false)
+	tmp := utils.NewSequence[*FreqBandInformation]([]*FreqBandInformation{}, aper.Constraint{Lb: 1, Ub: maxBandsMRDC}, false)
 	for _, i := range ie.Value {
 		tmp.Value = append(tmp.Value, &i)
 	}
@@ -21,9 +21,9 @@ func (ie *FreqBandList) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *FreqBandList) Decode(r *uper.UperReader) error {
+func (ie *FreqBandList) Decode(r *aper.AperReader) error {
 	var err error
-	tmp := utils.NewSequence[*FreqBandInformation]([]*FreqBandInformation{}, uper.Constraint{Lb: 1, Ub: maxBandsMRDC}, false)
+	tmp := utils.NewSequence[*FreqBandInformation]([]*FreqBandInformation{}, aper.Constraint{Lb: 1, Ub: maxBandsMRDC}, false)
 	fn := func() *FreqBandInformation {
 		return new(FreqBandInformation)
 	}

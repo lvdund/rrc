@@ -3,7 +3,7 @@ package ies
 import (
 	"bytes"
 
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -18,7 +18,7 @@ type MeasAndMobParametersXDD_Diff struct {
 	Dummy                        *MeasAndMobParametersXDD_Diff_dummy                        `optional,ext-3`
 }
 
-func (ie *MeasAndMobParametersXDD_Diff) Encode(w *uper.UperWriter) error {
+func (ie *MeasAndMobParametersXDD_Diff) Encode(w *aper.AperWriter) error {
 	var err error
 	hasExtensions := ie.HandoverInterF != nil || ie.HandoverLTE_EPC != nil || ie.HandoverLTE_5GC != nil || ie.Sftd_MeasNR_Neigh != nil || ie.Sftd_MeasNR_Neigh_DRX != nil || ie.Dummy != nil
 	preambleBits := []bool{hasExtensions, ie.IntraAndInterF_MeasAndReport != nil, ie.EventA_MeasAndReport != nil}
@@ -47,7 +47,7 @@ func (ie *MeasAndMobParametersXDD_Diff) Encode(w *uper.UperWriter) error {
 		// encode extension group 1
 		if extBitmap[0] {
 			extBuf := new(bytes.Buffer)
-			extWriter := uper.NewWriter(extBuf)
+			extWriter := aper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 1
 			optionals_ext_1 := []bool{ie.HandoverInterF != nil, ie.HandoverLTE_EPC != nil, ie.HandoverLTE_5GC != nil}
@@ -88,7 +88,7 @@ func (ie *MeasAndMobParametersXDD_Diff) Encode(w *uper.UperWriter) error {
 		// encode extension group 2
 		if extBitmap[1] {
 			extBuf := new(bytes.Buffer)
-			extWriter := uper.NewWriter(extBuf)
+			extWriter := aper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 2
 			optionals_ext_2 := []bool{ie.Sftd_MeasNR_Neigh != nil, ie.Sftd_MeasNR_Neigh_DRX != nil}
@@ -123,7 +123,7 @@ func (ie *MeasAndMobParametersXDD_Diff) Encode(w *uper.UperWriter) error {
 		// encode extension group 3
 		if extBitmap[2] {
 			extBuf := new(bytes.Buffer)
-			extWriter := uper.NewWriter(extBuf)
+			extWriter := aper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 3
 			optionals_ext_3 := []bool{ie.Dummy != nil}
@@ -152,7 +152,7 @@ func (ie *MeasAndMobParametersXDD_Diff) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *MeasAndMobParametersXDD_Diff) Decode(r *uper.UperReader) error {
+func (ie *MeasAndMobParametersXDD_Diff) Decode(r *aper.AperReader) error {
 	var err error
 	var extensionBit bool
 	if extensionBit, err = r.ReadBool(); err != nil {
@@ -193,7 +193,7 @@ func (ie *MeasAndMobParametersXDD_Diff) Decode(r *uper.UperReader) error {
 				return err
 			}
 
-			extReader := uper.NewReader(bytes.NewReader(extBytes))
+			extReader := aper.NewReader(bytes.NewReader(extBytes))
 
 			HandoverInterFPresent, err := extReader.ReadBool()
 			if err != nil {
@@ -236,7 +236,7 @@ func (ie *MeasAndMobParametersXDD_Diff) Decode(r *uper.UperReader) error {
 				return err
 			}
 
-			extReader := uper.NewReader(bytes.NewReader(extBytes))
+			extReader := aper.NewReader(bytes.NewReader(extBytes))
 
 			Sftd_MeasNR_NeighPresent, err := extReader.ReadBool()
 			if err != nil {
@@ -268,7 +268,7 @@ func (ie *MeasAndMobParametersXDD_Diff) Decode(r *uper.UperReader) error {
 				return err
 			}
 
-			extReader := uper.NewReader(bytes.NewReader(extBytes))
+			extReader := aper.NewReader(bytes.NewReader(extBytes))
 
 			DummyPresent, err := extReader.ReadBool()
 			if err != nil {

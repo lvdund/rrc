@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -13,7 +13,7 @@ type Uu_RelayRLC_ChannelConfig_r17 struct {
 	Mac_LogicalChannelConfig_r17  *LogicalChannelConfig                             `optional`
 }
 
-func (ie *Uu_RelayRLC_ChannelConfig_r17) Encode(w *uper.UperWriter) error {
+func (ie *Uu_RelayRLC_ChannelConfig_r17) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.Uu_LogicalChannelIdentity_r17 != nil, ie.ReestablishRLC_r17 != nil, ie.Rlc_Config_r17 != nil, ie.Mac_LogicalChannelConfig_r17 != nil}
 	for _, bit := range preambleBits {
@@ -47,7 +47,7 @@ func (ie *Uu_RelayRLC_ChannelConfig_r17) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *Uu_RelayRLC_ChannelConfig_r17) Decode(r *uper.UperReader) error {
+func (ie *Uu_RelayRLC_ChannelConfig_r17) Decode(r *aper.AperReader) error {
 	var err error
 	var Uu_LogicalChannelIdentity_r17Present bool
 	if Uu_LogicalChannelIdentity_r17Present, err = r.ReadBool(); err != nil {

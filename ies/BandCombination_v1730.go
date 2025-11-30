@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -11,7 +11,7 @@ type BandCombination_v1730 struct {
 	BandList_v1730          []BandParameters_v1730   `lb:1,ub:maxSimultaneousBands,optional`
 }
 
-func (ie *BandCombination_v1730) Encode(w *uper.UperWriter) error {
+func (ie *BandCombination_v1730) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.Ca_ParametersNR_v1730 != nil, ie.Ca_ParametersNRDC_v1730 != nil, len(ie.BandList_v1730) > 0}
 	for _, bit := range preambleBits {
@@ -30,7 +30,7 @@ func (ie *BandCombination_v1730) Encode(w *uper.UperWriter) error {
 		}
 	}
 	if len(ie.BandList_v1730) > 0 {
-		tmp_BandList_v1730 := utils.NewSequence[*BandParameters_v1730]([]*BandParameters_v1730{}, uper.Constraint{Lb: 1, Ub: maxSimultaneousBands}, false)
+		tmp_BandList_v1730 := utils.NewSequence[*BandParameters_v1730]([]*BandParameters_v1730{}, aper.Constraint{Lb: 1, Ub: maxSimultaneousBands}, false)
 		for _, i := range ie.BandList_v1730 {
 			tmp_BandList_v1730.Value = append(tmp_BandList_v1730.Value, &i)
 		}
@@ -41,7 +41,7 @@ func (ie *BandCombination_v1730) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *BandCombination_v1730) Decode(r *uper.UperReader) error {
+func (ie *BandCombination_v1730) Decode(r *aper.AperReader) error {
 	var err error
 	var Ca_ParametersNR_v1730Present bool
 	if Ca_ParametersNR_v1730Present, err = r.ReadBool(); err != nil {
@@ -68,7 +68,7 @@ func (ie *BandCombination_v1730) Decode(r *uper.UperReader) error {
 		}
 	}
 	if BandList_v1730Present {
-		tmp_BandList_v1730 := utils.NewSequence[*BandParameters_v1730]([]*BandParameters_v1730{}, uper.Constraint{Lb: 1, Ub: maxSimultaneousBands}, false)
+		tmp_BandList_v1730 := utils.NewSequence[*BandParameters_v1730]([]*BandParameters_v1730{}, aper.Constraint{Lb: 1, Ub: maxSimultaneousBands}, false)
 		fn_BandList_v1730 := func() *BandParameters_v1730 {
 			return new(BandParameters_v1730)
 		}

@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -10,7 +10,7 @@ type BandSidelink_r16_congestionControlSidelink_r16 struct {
 	Cbr_CR_TimeLimitSidelink_r16 BandSidelink_r16_congestionControlSidelink_r16_cbr_CR_TimeLimitSidelink_r16 `madatory`
 }
 
-func (ie *BandSidelink_r16_congestionControlSidelink_r16) Encode(w *uper.UperWriter) error {
+func (ie *BandSidelink_r16_congestionControlSidelink_r16) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.Cbr_ReportSidelink_r16 != nil}
 	for _, bit := range preambleBits {
@@ -29,7 +29,7 @@ func (ie *BandSidelink_r16_congestionControlSidelink_r16) Encode(w *uper.UperWri
 	return nil
 }
 
-func (ie *BandSidelink_r16_congestionControlSidelink_r16) Decode(r *uper.UperReader) error {
+func (ie *BandSidelink_r16_congestionControlSidelink_r16) Decode(r *aper.AperReader) error {
 	var err error
 	var Cbr_ReportSidelink_r16Present bool
 	if Cbr_ReportSidelink_r16Present, err = r.ReadBool(); err != nil {

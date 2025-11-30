@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -9,7 +9,7 @@ type MeasAndMobParametersMRDC_FRX_Diff struct {
 	SimultaneousRxDataSSB_DiffNumerology *MeasAndMobParametersMRDC_FRX_Diff_simultaneousRxDataSSB_DiffNumerology `optional`
 }
 
-func (ie *MeasAndMobParametersMRDC_FRX_Diff) Encode(w *uper.UperWriter) error {
+func (ie *MeasAndMobParametersMRDC_FRX_Diff) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.SimultaneousRxDataSSB_DiffNumerology != nil}
 	for _, bit := range preambleBits {
@@ -25,7 +25,7 @@ func (ie *MeasAndMobParametersMRDC_FRX_Diff) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *MeasAndMobParametersMRDC_FRX_Diff) Decode(r *uper.UperReader) error {
+func (ie *MeasAndMobParametersMRDC_FRX_Diff) Decode(r *aper.AperReader) error {
 	var err error
 	var SimultaneousRxDataSSB_DiffNumerologyPresent bool
 	if SimultaneousRxDataSSB_DiffNumerologyPresent, err = r.ReadBool(); err != nil {

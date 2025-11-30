@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -10,7 +10,7 @@ type SL_L2RelayUE_Config_r17 struct {
 	Sl_RemoteUE_ToReleaseList_r17 []SL_DestinationIdentity_r16 `lb:1,ub:maxNrofRemoteUE_r17,optional`
 }
 
-func (ie *SL_L2RelayUE_Config_r17) Encode(w *uper.UperWriter) error {
+func (ie *SL_L2RelayUE_Config_r17) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{len(ie.Sl_RemoteUE_ToAddModList_r17) > 0, len(ie.Sl_RemoteUE_ToReleaseList_r17) > 0}
 	for _, bit := range preambleBits {
@@ -19,7 +19,7 @@ func (ie *SL_L2RelayUE_Config_r17) Encode(w *uper.UperWriter) error {
 		}
 	}
 	if len(ie.Sl_RemoteUE_ToAddModList_r17) > 0 {
-		tmp_Sl_RemoteUE_ToAddModList_r17 := utils.NewSequence[*SL_RemoteUE_ToAddMod_r17]([]*SL_RemoteUE_ToAddMod_r17{}, uper.Constraint{Lb: 1, Ub: maxNrofRemoteUE_r17}, false)
+		tmp_Sl_RemoteUE_ToAddModList_r17 := utils.NewSequence[*SL_RemoteUE_ToAddMod_r17]([]*SL_RemoteUE_ToAddMod_r17{}, aper.Constraint{Lb: 1, Ub: maxNrofRemoteUE_r17}, false)
 		for _, i := range ie.Sl_RemoteUE_ToAddModList_r17 {
 			tmp_Sl_RemoteUE_ToAddModList_r17.Value = append(tmp_Sl_RemoteUE_ToAddModList_r17.Value, &i)
 		}
@@ -28,7 +28,7 @@ func (ie *SL_L2RelayUE_Config_r17) Encode(w *uper.UperWriter) error {
 		}
 	}
 	if len(ie.Sl_RemoteUE_ToReleaseList_r17) > 0 {
-		tmp_Sl_RemoteUE_ToReleaseList_r17 := utils.NewSequence[*SL_DestinationIdentity_r16]([]*SL_DestinationIdentity_r16{}, uper.Constraint{Lb: 1, Ub: maxNrofRemoteUE_r17}, false)
+		tmp_Sl_RemoteUE_ToReleaseList_r17 := utils.NewSequence[*SL_DestinationIdentity_r16]([]*SL_DestinationIdentity_r16{}, aper.Constraint{Lb: 1, Ub: maxNrofRemoteUE_r17}, false)
 		for _, i := range ie.Sl_RemoteUE_ToReleaseList_r17 {
 			tmp_Sl_RemoteUE_ToReleaseList_r17.Value = append(tmp_Sl_RemoteUE_ToReleaseList_r17.Value, &i)
 		}
@@ -39,7 +39,7 @@ func (ie *SL_L2RelayUE_Config_r17) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *SL_L2RelayUE_Config_r17) Decode(r *uper.UperReader) error {
+func (ie *SL_L2RelayUE_Config_r17) Decode(r *aper.AperReader) error {
 	var err error
 	var Sl_RemoteUE_ToAddModList_r17Present bool
 	if Sl_RemoteUE_ToAddModList_r17Present, err = r.ReadBool(); err != nil {
@@ -50,7 +50,7 @@ func (ie *SL_L2RelayUE_Config_r17) Decode(r *uper.UperReader) error {
 		return err
 	}
 	if Sl_RemoteUE_ToAddModList_r17Present {
-		tmp_Sl_RemoteUE_ToAddModList_r17 := utils.NewSequence[*SL_RemoteUE_ToAddMod_r17]([]*SL_RemoteUE_ToAddMod_r17{}, uper.Constraint{Lb: 1, Ub: maxNrofRemoteUE_r17}, false)
+		tmp_Sl_RemoteUE_ToAddModList_r17 := utils.NewSequence[*SL_RemoteUE_ToAddMod_r17]([]*SL_RemoteUE_ToAddMod_r17{}, aper.Constraint{Lb: 1, Ub: maxNrofRemoteUE_r17}, false)
 		fn_Sl_RemoteUE_ToAddModList_r17 := func() *SL_RemoteUE_ToAddMod_r17 {
 			return new(SL_RemoteUE_ToAddMod_r17)
 		}
@@ -63,7 +63,7 @@ func (ie *SL_L2RelayUE_Config_r17) Decode(r *uper.UperReader) error {
 		}
 	}
 	if Sl_RemoteUE_ToReleaseList_r17Present {
-		tmp_Sl_RemoteUE_ToReleaseList_r17 := utils.NewSequence[*SL_DestinationIdentity_r16]([]*SL_DestinationIdentity_r16{}, uper.Constraint{Lb: 1, Ub: maxNrofRemoteUE_r17}, false)
+		tmp_Sl_RemoteUE_ToReleaseList_r17 := utils.NewSequence[*SL_DestinationIdentity_r16]([]*SL_DestinationIdentity_r16{}, aper.Constraint{Lb: 1, Ub: maxNrofRemoteUE_r17}, false)
 		fn_Sl_RemoteUE_ToReleaseList_r17 := func() *SL_DestinationIdentity_r16 {
 			return new(SL_DestinationIdentity_r16)
 		}

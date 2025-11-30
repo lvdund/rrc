@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -9,9 +9,9 @@ type DL_PPW_PreConfigToReleaseList_r17 struct {
 	Value []DL_PPW_ID_r17 `lb:1,ub:maxNrofPPW_Config_r17,madatory`
 }
 
-func (ie *DL_PPW_PreConfigToReleaseList_r17) Encode(w *uper.UperWriter) error {
+func (ie *DL_PPW_PreConfigToReleaseList_r17) Encode(w *aper.AperWriter) error {
 	var err error
-	tmp := utils.NewSequence[*DL_PPW_ID_r17]([]*DL_PPW_ID_r17{}, uper.Constraint{Lb: 1, Ub: maxNrofPPW_Config_r17}, false)
+	tmp := utils.NewSequence[*DL_PPW_ID_r17]([]*DL_PPW_ID_r17{}, aper.Constraint{Lb: 1, Ub: maxNrofPPW_Config_r17}, false)
 	for _, i := range ie.Value {
 		tmp.Value = append(tmp.Value, &i)
 	}
@@ -21,9 +21,9 @@ func (ie *DL_PPW_PreConfigToReleaseList_r17) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *DL_PPW_PreConfigToReleaseList_r17) Decode(r *uper.UperReader) error {
+func (ie *DL_PPW_PreConfigToReleaseList_r17) Decode(r *aper.AperReader) error {
 	var err error
-	tmp := utils.NewSequence[*DL_PPW_ID_r17]([]*DL_PPW_ID_r17{}, uper.Constraint{Lb: 1, Ub: maxNrofPPW_Config_r17}, false)
+	tmp := utils.NewSequence[*DL_PPW_ID_r17]([]*DL_PPW_ID_r17{}, aper.Constraint{Lb: 1, Ub: maxNrofPPW_Config_r17}, false)
 	fn := func() *DL_PPW_ID_r17 {
 		return new(DL_PPW_ID_r17)
 	}

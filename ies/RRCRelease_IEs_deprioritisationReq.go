@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -10,7 +10,7 @@ type RRCRelease_IEs_deprioritisationReq struct {
 	DeprioritisationTimer RRCRelease_IEs_deprioritisationReq_deprioritisationTimer `madatory`
 }
 
-func (ie *RRCRelease_IEs_deprioritisationReq) Encode(w *uper.UperWriter) error {
+func (ie *RRCRelease_IEs_deprioritisationReq) Encode(w *aper.AperWriter) error {
 	var err error
 	if err = ie.DeprioritisationType.Encode(w); err != nil {
 		return utils.WrapError("Encode DeprioritisationType", err)
@@ -21,7 +21,7 @@ func (ie *RRCRelease_IEs_deprioritisationReq) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *RRCRelease_IEs_deprioritisationReq) Decode(r *uper.UperReader) error {
+func (ie *RRCRelease_IEs_deprioritisationReq) Decode(r *aper.AperReader) error {
 	var err error
 	if err = ie.DeprioritisationType.Decode(r); err != nil {
 		return utils.WrapError("Decode DeprioritisationType", err)

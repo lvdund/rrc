@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -10,9 +10,9 @@ type SL_RxInterestedGC_BC_Dest_r17 struct {
 	Sl_DestinationIdentity_r16      SL_DestinationIdentity_r16 `madatory`
 }
 
-func (ie *SL_RxInterestedGC_BC_Dest_r17) Encode(w *uper.UperWriter) error {
+func (ie *SL_RxInterestedGC_BC_Dest_r17) Encode(w *aper.AperWriter) error {
 	var err error
-	tmp_Sl_RxInterestedQoS_InfoList_r17 := utils.NewSequence[*SL_QoS_Info_r16]([]*SL_QoS_Info_r16{}, uper.Constraint{Lb: 1, Ub: maxNrofSL_QFIsPerDest_r16}, false)
+	tmp_Sl_RxInterestedQoS_InfoList_r17 := utils.NewSequence[*SL_QoS_Info_r16]([]*SL_QoS_Info_r16{}, aper.Constraint{Lb: 1, Ub: maxNrofSL_QFIsPerDest_r16}, false)
 	for _, i := range ie.Sl_RxInterestedQoS_InfoList_r17 {
 		tmp_Sl_RxInterestedQoS_InfoList_r17.Value = append(tmp_Sl_RxInterestedQoS_InfoList_r17.Value, &i)
 	}
@@ -25,9 +25,9 @@ func (ie *SL_RxInterestedGC_BC_Dest_r17) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *SL_RxInterestedGC_BC_Dest_r17) Decode(r *uper.UperReader) error {
+func (ie *SL_RxInterestedGC_BC_Dest_r17) Decode(r *aper.AperReader) error {
 	var err error
-	tmp_Sl_RxInterestedQoS_InfoList_r17 := utils.NewSequence[*SL_QoS_Info_r16]([]*SL_QoS_Info_r16{}, uper.Constraint{Lb: 1, Ub: maxNrofSL_QFIsPerDest_r16}, false)
+	tmp_Sl_RxInterestedQoS_InfoList_r17 := utils.NewSequence[*SL_QoS_Info_r16]([]*SL_QoS_Info_r16{}, aper.Constraint{Lb: 1, Ub: maxNrofSL_QFIsPerDest_r16}, false)
 	fn_Sl_RxInterestedQoS_InfoList_r17 := func() *SL_QoS_Info_r16 {
 		return new(SL_QoS_Info_r16)
 	}

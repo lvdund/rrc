@@ -3,7 +3,7 @@ package ies
 import (
 	"fmt"
 
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -19,7 +19,7 @@ type PathlossReferenceRS_Config struct {
 	Csi_RS_Index *NZP_CSI_RS_ResourceId
 }
 
-func (ie *PathlossReferenceRS_Config) Encode(w *uper.UperWriter) error {
+func (ie *PathlossReferenceRS_Config) Encode(w *aper.AperWriter) error {
 	var err error
 	if err = w.WriteChoice(ie.Choice, 2, false); err != nil {
 		return err
@@ -39,7 +39,7 @@ func (ie *PathlossReferenceRS_Config) Encode(w *uper.UperWriter) error {
 	return err
 }
 
-func (ie *PathlossReferenceRS_Config) Decode(r *uper.UperReader) error {
+func (ie *PathlossReferenceRS_Config) Decode(r *aper.AperReader) error {
 	var err error
 	if ie.Choice, err = r.ReadChoice(2, false); err != nil {
 		return err

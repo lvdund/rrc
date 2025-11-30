@@ -3,7 +3,7 @@ package ies
 import (
 	"bytes"
 
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -16,7 +16,7 @@ type MeasResultNR struct {
 	TriggeredEvent_r17 *MeasResultNR_triggeredEvent_r17 `optional,ext-2`
 }
 
-func (ie *MeasResultNR) Encode(w *uper.UperWriter) error {
+func (ie *MeasResultNR) Encode(w *aper.AperWriter) error {
 	var err error
 	hasExtensions := ie.Cgi_Info != nil || ie.ChoCandidate_r17 != nil || len(ie.ChoConfig_r17) > 0 || ie.TriggeredEvent_r17 != nil
 	preambleBits := []bool{hasExtensions, ie.PhysCellId != nil, ie.MeasResult != nil}
@@ -45,7 +45,7 @@ func (ie *MeasResultNR) Encode(w *uper.UperWriter) error {
 		// encode extension group 1
 		if extBitmap[0] {
 			extBuf := new(bytes.Buffer)
-			extWriter := uper.NewWriter(extBuf)
+			extWriter := aper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 1
 			optionals_ext_1 := []bool{ie.Cgi_Info != nil}
@@ -74,7 +74,7 @@ func (ie *MeasResultNR) Encode(w *uper.UperWriter) error {
 		// encode extension group 2
 		if extBitmap[1] {
 			extBuf := new(bytes.Buffer)
-			extWriter := uper.NewWriter(extBuf)
+			extWriter := aper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 2
 			optionals_ext_2 := []bool{ie.ChoCandidate_r17 != nil, len(ie.ChoConfig_r17) > 0, ie.TriggeredEvent_r17 != nil}
@@ -92,7 +92,7 @@ func (ie *MeasResultNR) Encode(w *uper.UperWriter) error {
 			}
 			// encode ChoConfig_r17 optional
 			if len(ie.ChoConfig_r17) > 0 {
-				tmp_ChoConfig_r17 := utils.NewSequence[*CondTriggerConfig_r16]([]*CondTriggerConfig_r16{}, uper.Constraint{Lb: 1, Ub: 2}, false)
+				tmp_ChoConfig_r17 := utils.NewSequence[*CondTriggerConfig_r16]([]*CondTriggerConfig_r16{}, aper.Constraint{Lb: 1, Ub: 2}, false)
 				for _, i := range ie.ChoConfig_r17 {
 					tmp_ChoConfig_r17.Value = append(tmp_ChoConfig_r17.Value, &i)
 				}
@@ -119,7 +119,7 @@ func (ie *MeasResultNR) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *MeasResultNR) Decode(r *uper.UperReader) error {
+func (ie *MeasResultNR) Decode(r *aper.AperReader) error {
 	var err error
 	var extensionBit bool
 	if extensionBit, err = r.ReadBool(); err != nil {
@@ -160,7 +160,7 @@ func (ie *MeasResultNR) Decode(r *uper.UperReader) error {
 				return err
 			}
 
-			extReader := uper.NewReader(bytes.NewReader(extBytes))
+			extReader := aper.NewReader(bytes.NewReader(extBytes))
 
 			Cgi_InfoPresent, err := extReader.ReadBool()
 			if err != nil {
@@ -181,7 +181,7 @@ func (ie *MeasResultNR) Decode(r *uper.UperReader) error {
 				return err
 			}
 
-			extReader := uper.NewReader(bytes.NewReader(extBytes))
+			extReader := aper.NewReader(bytes.NewReader(extBytes))
 
 			ChoCandidate_r17Present, err := extReader.ReadBool()
 			if err != nil {
@@ -204,7 +204,7 @@ func (ie *MeasResultNR) Decode(r *uper.UperReader) error {
 			}
 			// decode ChoConfig_r17 optional
 			if ChoConfig_r17Present {
-				tmp_ChoConfig_r17 := utils.NewSequence[*CondTriggerConfig_r16]([]*CondTriggerConfig_r16{}, uper.Constraint{Lb: 1, Ub: 2}, false)
+				tmp_ChoConfig_r17 := utils.NewSequence[*CondTriggerConfig_r16]([]*CondTriggerConfig_r16{}, aper.Constraint{Lb: 1, Ub: 2}, false)
 				fn_ChoConfig_r17 := func() *CondTriggerConfig_r16 {
 					return new(CondTriggerConfig_r16)
 				}

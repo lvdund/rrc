@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -10,7 +10,7 @@ type PCI_RangeElement struct {
 	Pci_Range      PCI_Range      `madatory`
 }
 
-func (ie *PCI_RangeElement) Encode(w *uper.UperWriter) error {
+func (ie *PCI_RangeElement) Encode(w *aper.AperWriter) error {
 	var err error
 	if err = ie.Pci_RangeIndex.Encode(w); err != nil {
 		return utils.WrapError("Encode Pci_RangeIndex", err)
@@ -21,7 +21,7 @@ func (ie *PCI_RangeElement) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *PCI_RangeElement) Decode(r *uper.UperReader) error {
+func (ie *PCI_RangeElement) Decode(r *aper.AperReader) error {
 	var err error
 	if err = ie.Pci_RangeIndex.Decode(r); err != nil {
 		return utils.WrapError("Decode Pci_RangeIndex", err)

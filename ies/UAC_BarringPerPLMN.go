@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -10,7 +10,7 @@ type UAC_BarringPerPLMN struct {
 	Uac_ACBarringListType *UAC_BarringPerPLMN_uac_ACBarringListType `lb:maxAccessCat_1,ub:maxAccessCat_1,optional`
 }
 
-func (ie *UAC_BarringPerPLMN) Encode(w *uper.UperWriter) error {
+func (ie *UAC_BarringPerPLMN) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.Uac_ACBarringListType != nil}
 	for _, bit := range preambleBits {
@@ -18,7 +18,7 @@ func (ie *UAC_BarringPerPLMN) Encode(w *uper.UperWriter) error {
 			return err
 		}
 	}
-	if err = w.WriteInteger(ie.Plmn_IdentityIndex, &uper.Constraint{Lb: 1, Ub: maxPLMN}, false); err != nil {
+	if err = w.WriteInteger(ie.Plmn_IdentityIndex, &aper.Constraint{Lb: 1, Ub: maxPLMN}, false); err != nil {
 		return utils.WrapError("WriteInteger Plmn_IdentityIndex", err)
 	}
 	if ie.Uac_ACBarringListType != nil {
@@ -29,14 +29,14 @@ func (ie *UAC_BarringPerPLMN) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *UAC_BarringPerPLMN) Decode(r *uper.UperReader) error {
+func (ie *UAC_BarringPerPLMN) Decode(r *aper.AperReader) error {
 	var err error
 	var Uac_ACBarringListTypePresent bool
 	if Uac_ACBarringListTypePresent, err = r.ReadBool(); err != nil {
 		return err
 	}
 	var tmp_int_Plmn_IdentityIndex int64
-	if tmp_int_Plmn_IdentityIndex, err = r.ReadInteger(&uper.Constraint{Lb: 1, Ub: maxPLMN}, false); err != nil {
+	if tmp_int_Plmn_IdentityIndex, err = r.ReadInteger(&aper.Constraint{Lb: 1, Ub: maxPLMN}, false); err != nil {
 		return utils.WrapError("ReadInteger Plmn_IdentityIndex", err)
 	}
 	ie.Plmn_IdentityIndex = tmp_int_Plmn_IdentityIndex

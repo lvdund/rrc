@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -11,12 +11,12 @@ type PerRASSBInfo_r16 struct {
 	PerRAAttemptInfoList_r16       PerRAAttemptInfoList_r16 `madatory`
 }
 
-func (ie *PerRASSBInfo_r16) Encode(w *uper.UperWriter) error {
+func (ie *PerRASSBInfo_r16) Encode(w *aper.AperWriter) error {
 	var err error
 	if err = ie.Ssb_Index_r16.Encode(w); err != nil {
 		return utils.WrapError("Encode Ssb_Index_r16", err)
 	}
-	if err = w.WriteInteger(ie.NumberOfPreamblesSentOnSSB_r16, &uper.Constraint{Lb: 1, Ub: 200}, false); err != nil {
+	if err = w.WriteInteger(ie.NumberOfPreamblesSentOnSSB_r16, &aper.Constraint{Lb: 1, Ub: 200}, false); err != nil {
 		return utils.WrapError("WriteInteger NumberOfPreamblesSentOnSSB_r16", err)
 	}
 	if err = ie.PerRAAttemptInfoList_r16.Encode(w); err != nil {
@@ -25,13 +25,13 @@ func (ie *PerRASSBInfo_r16) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *PerRASSBInfo_r16) Decode(r *uper.UperReader) error {
+func (ie *PerRASSBInfo_r16) Decode(r *aper.AperReader) error {
 	var err error
 	if err = ie.Ssb_Index_r16.Decode(r); err != nil {
 		return utils.WrapError("Decode Ssb_Index_r16", err)
 	}
 	var tmp_int_NumberOfPreamblesSentOnSSB_r16 int64
-	if tmp_int_NumberOfPreamblesSentOnSSB_r16, err = r.ReadInteger(&uper.Constraint{Lb: 1, Ub: 200}, false); err != nil {
+	if tmp_int_NumberOfPreamblesSentOnSSB_r16, err = r.ReadInteger(&aper.Constraint{Lb: 1, Ub: 200}, false); err != nil {
 		return utils.WrapError("ReadInteger NumberOfPreamblesSentOnSSB_r16", err)
 	}
 	ie.NumberOfPreamblesSentOnSSB_r16 = tmp_int_NumberOfPreamblesSentOnSSB_r16

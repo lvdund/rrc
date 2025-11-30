@@ -1,34 +1,34 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
 const (
-	FeatureSetDownlinkPerCC_v1720_maxModulationOrderForMulticastDataRateCalculation_r17_Enum_qam64   uper.Enumerated = 0
-	FeatureSetDownlinkPerCC_v1720_maxModulationOrderForMulticastDataRateCalculation_r17_Enum_qam256  uper.Enumerated = 1
-	FeatureSetDownlinkPerCC_v1720_maxModulationOrderForMulticastDataRateCalculation_r17_Enum_qam1024 uper.Enumerated = 2
+	FeatureSetDownlinkPerCC_v1720_maxModulationOrderForMulticastDataRateCalculation_r17_Enum_qam64   aper.Enumerated = 0
+	FeatureSetDownlinkPerCC_v1720_maxModulationOrderForMulticastDataRateCalculation_r17_Enum_qam256  aper.Enumerated = 1
+	FeatureSetDownlinkPerCC_v1720_maxModulationOrderForMulticastDataRateCalculation_r17_Enum_qam1024 aper.Enumerated = 2
 )
 
 type FeatureSetDownlinkPerCC_v1720_maxModulationOrderForMulticastDataRateCalculation_r17 struct {
-	Value uper.Enumerated `lb:0,ub:2,madatory`
+	Value aper.Enumerated `lb:0,ub:2,madatory`
 }
 
-func (ie *FeatureSetDownlinkPerCC_v1720_maxModulationOrderForMulticastDataRateCalculation_r17) Encode(w *uper.UperWriter) error {
+func (ie *FeatureSetDownlinkPerCC_v1720_maxModulationOrderForMulticastDataRateCalculation_r17) Encode(w *aper.AperWriter) error {
 	var err error
-	if err = w.WriteEnumerate(uint64(ie.Value), uper.Constraint{Lb: 0, Ub: 2}, false); err != nil {
+	if err = w.WriteEnumerate(uint64(ie.Value), aper.Constraint{Lb: 0, Ub: 2}, false); err != nil {
 		return utils.WrapError("Encode FeatureSetDownlinkPerCC_v1720_maxModulationOrderForMulticastDataRateCalculation_r17", err)
 	}
 	return nil
 }
 
-func (ie *FeatureSetDownlinkPerCC_v1720_maxModulationOrderForMulticastDataRateCalculation_r17) Decode(r *uper.UperReader) error {
+func (ie *FeatureSetDownlinkPerCC_v1720_maxModulationOrderForMulticastDataRateCalculation_r17) Decode(r *aper.AperReader) error {
 	var err error
 	var v uint64
-	if v, err = r.ReadEnumerate(uper.Constraint{Lb: 0, Ub: 2}, false); err != nil {
+	if v, err = r.ReadEnumerate(aper.Constraint{Lb: 0, Ub: 2}, false); err != nil {
 		return utils.WrapError("Decode FeatureSetDownlinkPerCC_v1720_maxModulationOrderForMulticastDataRateCalculation_r17", err)
 	}
-	ie.Value = uper.Enumerated(v)
+	ie.Value = aper.Enumerated(v)
 	return nil
 }

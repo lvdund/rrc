@@ -3,7 +3,7 @@ package ies
 import (
 	"fmt"
 
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -19,7 +19,7 @@ type CSI_IM_Resource_csi_IM_ResourceElementPattern struct {
 	Pattern1 *CSI_IM_Resource_csi_IM_ResourceElementPattern_pattern1
 }
 
-func (ie *CSI_IM_Resource_csi_IM_ResourceElementPattern) Encode(w *uper.UperWriter) error {
+func (ie *CSI_IM_Resource_csi_IM_ResourceElementPattern) Encode(w *aper.AperWriter) error {
 	var err error
 	if err = w.WriteChoice(ie.Choice, 2, false); err != nil {
 		return err
@@ -39,7 +39,7 @@ func (ie *CSI_IM_Resource_csi_IM_ResourceElementPattern) Encode(w *uper.UperWrit
 	return err
 }
 
-func (ie *CSI_IM_Resource_csi_IM_ResourceElementPattern) Decode(r *uper.UperReader) error {
+func (ie *CSI_IM_Resource_csi_IM_ResourceElementPattern) Decode(r *aper.AperReader) error {
 	var err error
 	if ie.Choice, err = r.ReadChoice(2, false); err != nil {
 		return err

@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -15,7 +15,7 @@ type SL_DRX_ConfigUC_r17 struct {
 	Sl_drx_SlotOffset              int64                                              `lb:0,ub:31,madatory`
 }
 
-func (ie *SL_DRX_ConfigUC_r17) Encode(w *uper.UperWriter) error {
+func (ie *SL_DRX_ConfigUC_r17) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.Sl_drx_HARQ_RTT_Timer1_r17 != nil, ie.Sl_drx_HARQ_RTT_Timer2_r17 != nil}
 	for _, bit := range preambleBits {
@@ -45,13 +45,13 @@ func (ie *SL_DRX_ConfigUC_r17) Encode(w *uper.UperWriter) error {
 	if err = ie.Sl_drx_CycleStartOffset_r17.Encode(w); err != nil {
 		return utils.WrapError("Encode Sl_drx_CycleStartOffset_r17", err)
 	}
-	if err = w.WriteInteger(ie.Sl_drx_SlotOffset, &uper.Constraint{Lb: 0, Ub: 31}, false); err != nil {
+	if err = w.WriteInteger(ie.Sl_drx_SlotOffset, &aper.Constraint{Lb: 0, Ub: 31}, false); err != nil {
 		return utils.WrapError("WriteInteger Sl_drx_SlotOffset", err)
 	}
 	return nil
 }
 
-func (ie *SL_DRX_ConfigUC_r17) Decode(r *uper.UperReader) error {
+func (ie *SL_DRX_ConfigUC_r17) Decode(r *aper.AperReader) error {
 	var err error
 	var Sl_drx_HARQ_RTT_Timer1_r17Present bool
 	if Sl_drx_HARQ_RTT_Timer1_r17Present, err = r.ReadBool(); err != nil {
@@ -86,7 +86,7 @@ func (ie *SL_DRX_ConfigUC_r17) Decode(r *uper.UperReader) error {
 		return utils.WrapError("Decode Sl_drx_CycleStartOffset_r17", err)
 	}
 	var tmp_int_Sl_drx_SlotOffset int64
-	if tmp_int_Sl_drx_SlotOffset, err = r.ReadInteger(&uper.Constraint{Lb: 0, Ub: 31}, false); err != nil {
+	if tmp_int_Sl_drx_SlotOffset, err = r.ReadInteger(&aper.Constraint{Lb: 0, Ub: 31}, false); err != nil {
 		return utils.WrapError("ReadInteger Sl_drx_SlotOffset", err)
 	}
 	ie.Sl_drx_SlotOffset = tmp_int_Sl_drx_SlotOffset

@@ -3,7 +3,7 @@ package ies
 import (
 	"fmt"
 
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -16,12 +16,12 @@ const (
 
 type TDD_UL_DL_SlotConfig_symbols struct {
 	Choice      uint64
-	AllDownlink uper.NULL `madatory`
-	AllUplink   uper.NULL `madatory`
+	AllDownlink aper.NULL `madatory`
+	AllUplink   aper.NULL `madatory`
 	Explicit    *TDD_UL_DL_SlotConfig_symbols_explicit
 }
 
-func (ie *TDD_UL_DL_SlotConfig_symbols) Encode(w *uper.UperWriter) error {
+func (ie *TDD_UL_DL_SlotConfig_symbols) Encode(w *aper.AperWriter) error {
 	var err error
 	if err = w.WriteChoice(ie.Choice, 3, false); err != nil {
 		return err
@@ -45,7 +45,7 @@ func (ie *TDD_UL_DL_SlotConfig_symbols) Encode(w *uper.UperWriter) error {
 	return err
 }
 
-func (ie *TDD_UL_DL_SlotConfig_symbols) Decode(r *uper.UperReader) error {
+func (ie *TDD_UL_DL_SlotConfig_symbols) Decode(r *aper.AperReader) error {
 	var err error
 	if ie.Choice, err = r.ReadChoice(3, false); err != nil {
 		return err

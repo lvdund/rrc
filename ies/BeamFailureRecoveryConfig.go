@@ -3,7 +3,7 @@ package ies
 import (
 	"bytes"
 
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -23,7 +23,7 @@ type BeamFailureRecoveryConfig struct {
 	SpCell_BFR_CBRA_r16          *BeamFailureRecoveryConfig_spCell_BFR_CBRA_r16      `optional,ext-3`
 }
 
-func (ie *BeamFailureRecoveryConfig) Encode(w *uper.UperWriter) error {
+func (ie *BeamFailureRecoveryConfig) Encode(w *aper.AperWriter) error {
 	var err error
 	hasExtensions := ie.Msg1_SubcarrierSpacing != nil || ie.Ra_PrioritizationTwoStep_r16 != nil || ie.CandidateBeamRSListExt_v1610 != nil || ie.SpCell_BFR_CBRA_r16 != nil
 	preambleBits := []bool{hasExtensions, ie.RootSequenceIndex_BFR != nil, ie.Rach_ConfigBFR != nil, ie.Rsrp_ThresholdSSB != nil, len(ie.CandidateBeamRSList) > 0, ie.Ssb_perRACH_Occasion != nil, ie.Ra_ssb_OccasionMaskIndex != nil, ie.RecoverySearchSpaceId != nil, ie.Ra_Prioritization != nil, ie.BeamFailureRecoveryTimer != nil}
@@ -33,7 +33,7 @@ func (ie *BeamFailureRecoveryConfig) Encode(w *uper.UperWriter) error {
 		}
 	}
 	if ie.RootSequenceIndex_BFR != nil {
-		if err = w.WriteInteger(*ie.RootSequenceIndex_BFR, &uper.Constraint{Lb: 0, Ub: 137}, false); err != nil {
+		if err = w.WriteInteger(*ie.RootSequenceIndex_BFR, &aper.Constraint{Lb: 0, Ub: 137}, false); err != nil {
 			return utils.WrapError("Encode RootSequenceIndex_BFR", err)
 		}
 	}
@@ -48,7 +48,7 @@ func (ie *BeamFailureRecoveryConfig) Encode(w *uper.UperWriter) error {
 		}
 	}
 	if len(ie.CandidateBeamRSList) > 0 {
-		tmp_CandidateBeamRSList := utils.NewSequence[*PRACH_ResourceDedicatedBFR]([]*PRACH_ResourceDedicatedBFR{}, uper.Constraint{Lb: 1, Ub: maxNrofCandidateBeams}, false)
+		tmp_CandidateBeamRSList := utils.NewSequence[*PRACH_ResourceDedicatedBFR]([]*PRACH_ResourceDedicatedBFR{}, aper.Constraint{Lb: 1, Ub: maxNrofCandidateBeams}, false)
 		for _, i := range ie.CandidateBeamRSList {
 			tmp_CandidateBeamRSList.Value = append(tmp_CandidateBeamRSList.Value, &i)
 		}
@@ -62,7 +62,7 @@ func (ie *BeamFailureRecoveryConfig) Encode(w *uper.UperWriter) error {
 		}
 	}
 	if ie.Ra_ssb_OccasionMaskIndex != nil {
-		if err = w.WriteInteger(*ie.Ra_ssb_OccasionMaskIndex, &uper.Constraint{Lb: 0, Ub: 15}, false); err != nil {
+		if err = w.WriteInteger(*ie.Ra_ssb_OccasionMaskIndex, &aper.Constraint{Lb: 0, Ub: 15}, false); err != nil {
 			return utils.WrapError("Encode Ra_ssb_OccasionMaskIndex", err)
 		}
 	}
@@ -91,7 +91,7 @@ func (ie *BeamFailureRecoveryConfig) Encode(w *uper.UperWriter) error {
 		// encode extension group 1
 		if extBitmap[0] {
 			extBuf := new(bytes.Buffer)
-			extWriter := uper.NewWriter(extBuf)
+			extWriter := aper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 1
 			optionals_ext_1 := []bool{ie.Msg1_SubcarrierSpacing != nil}
@@ -120,7 +120,7 @@ func (ie *BeamFailureRecoveryConfig) Encode(w *uper.UperWriter) error {
 		// encode extension group 2
 		if extBitmap[1] {
 			extBuf := new(bytes.Buffer)
-			extWriter := uper.NewWriter(extBuf)
+			extWriter := aper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 2
 			optionals_ext_2 := []bool{ie.Ra_PrioritizationTwoStep_r16 != nil, ie.CandidateBeamRSListExt_v1610 != nil}
@@ -158,7 +158,7 @@ func (ie *BeamFailureRecoveryConfig) Encode(w *uper.UperWriter) error {
 		// encode extension group 3
 		if extBitmap[2] {
 			extBuf := new(bytes.Buffer)
-			extWriter := uper.NewWriter(extBuf)
+			extWriter := aper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 3
 			optionals_ext_3 := []bool{ie.SpCell_BFR_CBRA_r16 != nil}
@@ -187,7 +187,7 @@ func (ie *BeamFailureRecoveryConfig) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *BeamFailureRecoveryConfig) Decode(r *uper.UperReader) error {
+func (ie *BeamFailureRecoveryConfig) Decode(r *aper.AperReader) error {
 	var err error
 	var extensionBit bool
 	if extensionBit, err = r.ReadBool(); err != nil {
@@ -231,7 +231,7 @@ func (ie *BeamFailureRecoveryConfig) Decode(r *uper.UperReader) error {
 	}
 	if RootSequenceIndex_BFRPresent {
 		var tmp_int_RootSequenceIndex_BFR int64
-		if tmp_int_RootSequenceIndex_BFR, err = r.ReadInteger(&uper.Constraint{Lb: 0, Ub: 137}, false); err != nil {
+		if tmp_int_RootSequenceIndex_BFR, err = r.ReadInteger(&aper.Constraint{Lb: 0, Ub: 137}, false); err != nil {
 			return utils.WrapError("Decode RootSequenceIndex_BFR", err)
 		}
 		ie.RootSequenceIndex_BFR = &tmp_int_RootSequenceIndex_BFR
@@ -249,7 +249,7 @@ func (ie *BeamFailureRecoveryConfig) Decode(r *uper.UperReader) error {
 		}
 	}
 	if CandidateBeamRSListPresent {
-		tmp_CandidateBeamRSList := utils.NewSequence[*PRACH_ResourceDedicatedBFR]([]*PRACH_ResourceDedicatedBFR{}, uper.Constraint{Lb: 1, Ub: maxNrofCandidateBeams}, false)
+		tmp_CandidateBeamRSList := utils.NewSequence[*PRACH_ResourceDedicatedBFR]([]*PRACH_ResourceDedicatedBFR{}, aper.Constraint{Lb: 1, Ub: maxNrofCandidateBeams}, false)
 		fn_CandidateBeamRSList := func() *PRACH_ResourceDedicatedBFR {
 			return new(PRACH_ResourceDedicatedBFR)
 		}
@@ -269,7 +269,7 @@ func (ie *BeamFailureRecoveryConfig) Decode(r *uper.UperReader) error {
 	}
 	if Ra_ssb_OccasionMaskIndexPresent {
 		var tmp_int_Ra_ssb_OccasionMaskIndex int64
-		if tmp_int_Ra_ssb_OccasionMaskIndex, err = r.ReadInteger(&uper.Constraint{Lb: 0, Ub: 15}, false); err != nil {
+		if tmp_int_Ra_ssb_OccasionMaskIndex, err = r.ReadInteger(&aper.Constraint{Lb: 0, Ub: 15}, false); err != nil {
 			return utils.WrapError("Decode Ra_ssb_OccasionMaskIndex", err)
 		}
 		ie.Ra_ssb_OccasionMaskIndex = &tmp_int_Ra_ssb_OccasionMaskIndex
@@ -307,7 +307,7 @@ func (ie *BeamFailureRecoveryConfig) Decode(r *uper.UperReader) error {
 				return err
 			}
 
-			extReader := uper.NewReader(bytes.NewReader(extBytes))
+			extReader := aper.NewReader(bytes.NewReader(extBytes))
 
 			Msg1_SubcarrierSpacingPresent, err := extReader.ReadBool()
 			if err != nil {
@@ -328,7 +328,7 @@ func (ie *BeamFailureRecoveryConfig) Decode(r *uper.UperReader) error {
 				return err
 			}
 
-			extReader := uper.NewReader(bytes.NewReader(extBytes))
+			extReader := aper.NewReader(bytes.NewReader(extBytes))
 
 			Ra_PrioritizationTwoStep_r16Present, err := extReader.ReadBool()
 			if err != nil {
@@ -361,7 +361,7 @@ func (ie *BeamFailureRecoveryConfig) Decode(r *uper.UperReader) error {
 				return err
 			}
 
-			extReader := uper.NewReader(bytes.NewReader(extBytes))
+			extReader := aper.NewReader(bytes.NewReader(extBytes))
 
 			SpCell_BFR_CBRA_r16Present, err := extReader.ReadBool()
 			if err != nil {

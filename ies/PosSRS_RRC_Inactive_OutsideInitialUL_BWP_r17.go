@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -21,7 +21,7 @@ type PosSRS_RRC_Inactive_OutsideInitialUL_BWP_r17 struct {
 	MaxNumOfSemiPersistentSRSposResourcesPerSlot_r17            *PosSRS_RRC_Inactive_OutsideInitialUL_BWP_r17_maxNumOfSemiPersistentSRSposResourcesPerSlot_r17            `optional`
 }
 
-func (ie *PosSRS_RRC_Inactive_OutsideInitialUL_BWP_r17) Encode(w *uper.UperWriter) error {
+func (ie *PosSRS_RRC_Inactive_OutsideInitialUL_BWP_r17) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.MaxSRSposBandwidthForEachSCS_withinCC_FR1_r17 != nil, ie.MaxSRSposBandwidthForEachSCS_withinCC_FR2_r17 != nil, ie.MaxNumOfSRSposResourceSets_r17 != nil, ie.MaxNumOfPeriodicSRSposResources_r17 != nil, ie.MaxNumOfPeriodicSRSposResourcesPerSlot_r17 != nil, ie.DifferentNumerologyBetweenSRSposAndInitialBWP_r17 != nil, ie.SrsPosWithoutRestrictionOnBWP_r17 != nil, ie.MaxNumOfPeriodicAndSemipersistentSRSposResources_r17 != nil, ie.MaxNumOfPeriodicAndSemipersistentSRSposResourcesPerSlot_r17 != nil, ie.DifferentCenterFreqBetweenSRSposAndInitialBWP_r17 != nil, ie.SwitchingTimeSRS_TX_OtherTX_r17 != nil, ie.MaxNumOfSemiPersistentSRSposResources_r17 != nil, ie.MaxNumOfSemiPersistentSRSposResourcesPerSlot_r17 != nil}
 	for _, bit := range preambleBits {
@@ -97,7 +97,7 @@ func (ie *PosSRS_RRC_Inactive_OutsideInitialUL_BWP_r17) Encode(w *uper.UperWrite
 	return nil
 }
 
-func (ie *PosSRS_RRC_Inactive_OutsideInitialUL_BWP_r17) Decode(r *uper.UperReader) error {
+func (ie *PosSRS_RRC_Inactive_OutsideInitialUL_BWP_r17) Decode(r *aper.AperReader) error {
 	var err error
 	var MaxSRSposBandwidthForEachSCS_withinCC_FR1_r17Present bool
 	if MaxSRSposBandwidthForEachSCS_withinCC_FR1_r17Present, err = r.ReadBool(); err != nil {

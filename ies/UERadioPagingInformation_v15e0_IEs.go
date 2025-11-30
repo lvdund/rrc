@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -15,7 +15,7 @@ type UERadioPagingInformation_v15e0_IEs struct {
 	NonCriticalExtension                    *UERadioPagingInformation_v1700_IEs                                         `optional`
 }
 
-func (ie *UERadioPagingInformation_v15e0_IEs) Encode(w *uper.UperWriter) error {
+func (ie *UERadioPagingInformation_v15e0_IEs) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.Dl_SchedulingOffset_PDSCH_TypeA_FDD_FR1 != nil, ie.Dl_SchedulingOffset_PDSCH_TypeA_TDD_FR1 != nil, ie.Dl_SchedulingOffset_PDSCH_TypeA_TDD_FR2 != nil, ie.Dl_SchedulingOffset_PDSCH_TypeB_FDD_FR1 != nil, ie.Dl_SchedulingOffset_PDSCH_TypeB_TDD_FR1 != nil, ie.Dl_SchedulingOffset_PDSCH_TypeB_TDD_FR2 != nil, ie.NonCriticalExtension != nil}
 	for _, bit := range preambleBits {
@@ -61,7 +61,7 @@ func (ie *UERadioPagingInformation_v15e0_IEs) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *UERadioPagingInformation_v15e0_IEs) Decode(r *uper.UperReader) error {
+func (ie *UERadioPagingInformation_v15e0_IEs) Decode(r *aper.AperReader) error {
 	var err error
 	var Dl_SchedulingOffset_PDSCH_TypeA_FDD_FR1Present bool
 	if Dl_SchedulingOffset_PDSCH_TypeA_FDD_FR1Present, err = r.ReadBool(); err != nil {

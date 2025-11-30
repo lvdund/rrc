@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -10,9 +10,9 @@ type CGI_InfoNR_noSIB1 struct {
 	Pdcch_ConfigSIB1     PDCCH_ConfigSIB1 `madatory`
 }
 
-func (ie *CGI_InfoNR_noSIB1) Encode(w *uper.UperWriter) error {
+func (ie *CGI_InfoNR_noSIB1) Encode(w *aper.AperWriter) error {
 	var err error
-	if err = w.WriteInteger(ie.Ssb_SubcarrierOffset, &uper.Constraint{Lb: 0, Ub: 15}, false); err != nil {
+	if err = w.WriteInteger(ie.Ssb_SubcarrierOffset, &aper.Constraint{Lb: 0, Ub: 15}, false); err != nil {
 		return utils.WrapError("WriteInteger Ssb_SubcarrierOffset", err)
 	}
 	if err = ie.Pdcch_ConfigSIB1.Encode(w); err != nil {
@@ -21,10 +21,10 @@ func (ie *CGI_InfoNR_noSIB1) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *CGI_InfoNR_noSIB1) Decode(r *uper.UperReader) error {
+func (ie *CGI_InfoNR_noSIB1) Decode(r *aper.AperReader) error {
 	var err error
 	var tmp_int_Ssb_SubcarrierOffset int64
-	if tmp_int_Ssb_SubcarrierOffset, err = r.ReadInteger(&uper.Constraint{Lb: 0, Ub: 15}, false); err != nil {
+	if tmp_int_Ssb_SubcarrierOffset, err = r.ReadInteger(&aper.Constraint{Lb: 0, Ub: 15}, false); err != nil {
 		return utils.WrapError("ReadInteger Ssb_SubcarrierOffset", err)
 	}
 	ie.Ssb_SubcarrierOffset = tmp_int_Ssb_SubcarrierOffset

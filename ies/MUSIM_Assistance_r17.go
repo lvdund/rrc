@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -10,7 +10,7 @@ type MUSIM_Assistance_r17 struct {
 	Musim_GapPreferenceList_r17  *MUSIM_GapPreferenceList_r17                       `optional`
 }
 
-func (ie *MUSIM_Assistance_r17) Encode(w *uper.UperWriter) error {
+func (ie *MUSIM_Assistance_r17) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.Musim_PreferredRRC_State_r17 != nil, ie.Musim_GapPreferenceList_r17 != nil}
 	for _, bit := range preambleBits {
@@ -31,7 +31,7 @@ func (ie *MUSIM_Assistance_r17) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *MUSIM_Assistance_r17) Decode(r *uper.UperReader) error {
+func (ie *MUSIM_Assistance_r17) Decode(r *aper.AperReader) error {
 	var err error
 	var Musim_PreferredRRC_State_r17Present bool
 	if Musim_PreferredRRC_State_r17Present, err = r.ReadBool(); err != nil {

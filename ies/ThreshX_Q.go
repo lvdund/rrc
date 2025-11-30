@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -10,7 +10,7 @@ type ThreshX_Q struct {
 	ThreshX_LowQ  ReselectionThresholdQ `madatory`
 }
 
-func (ie *ThreshX_Q) Encode(w *uper.UperWriter) error {
+func (ie *ThreshX_Q) Encode(w *aper.AperWriter) error {
 	var err error
 	if err = ie.ThreshX_HighQ.Encode(w); err != nil {
 		return utils.WrapError("Encode ThreshX_HighQ", err)
@@ -21,7 +21,7 @@ func (ie *ThreshX_Q) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *ThreshX_Q) Decode(r *uper.UperReader) error {
+func (ie *ThreshX_Q) Decode(r *aper.AperReader) error {
 	var err error
 	if err = ie.ThreshX_HighQ.Decode(r); err != nil {
 		return utils.WrapError("Decode ThreshX_HighQ", err)

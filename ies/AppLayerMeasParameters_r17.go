@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -14,7 +14,7 @@ type AppLayerMeasParameters_r17 struct {
 	Ul_MeasurementReportAppLayer_Seg_r17    *AppLayerMeasParameters_r17_ul_MeasurementReportAppLayer_Seg_r17    `optional`
 }
 
-func (ie *AppLayerMeasParameters_r17) Encode(w *uper.UperWriter) error {
+func (ie *AppLayerMeasParameters_r17) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.Qoe_Streaming_MeasReport_r17 != nil, ie.Qoe_MTSI_MeasReport_r17 != nil, ie.Qoe_VR_MeasReport_r17 != nil, ie.Ran_VisibleQoE_Streaming_MeasReport_r17 != nil, ie.Ran_VisibleQoE_VR_MeasReport_r17 != nil, ie.Ul_MeasurementReportAppLayer_Seg_r17 != nil}
 	for _, bit := range preambleBits {
@@ -55,7 +55,7 @@ func (ie *AppLayerMeasParameters_r17) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *AppLayerMeasParameters_r17) Decode(r *uper.UperReader) error {
+func (ie *AppLayerMeasParameters_r17) Decode(r *aper.AperReader) error {
 	var err error
 	var Qoe_Streaming_MeasReport_r17Present bool
 	if Qoe_Streaming_MeasReport_r17Present, err = r.ReadBool(); err != nil {

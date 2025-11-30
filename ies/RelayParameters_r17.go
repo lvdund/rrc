@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -11,7 +11,7 @@ type RelayParameters_r17 struct {
 	RemoteUE_PathSwitchToIdleInactiveRelay_r17 *RelayParameters_r17_remoteUE_PathSwitchToIdleInactiveRelay_r17 `optional`
 }
 
-func (ie *RelayParameters_r17) Encode(w *uper.UperWriter) error {
+func (ie *RelayParameters_r17) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.RelayUE_Operation_L2_r17 != nil, ie.RemoteUE_Operation_L2_r17 != nil, ie.RemoteUE_PathSwitchToIdleInactiveRelay_r17 != nil}
 	for _, bit := range preambleBits {
@@ -37,7 +37,7 @@ func (ie *RelayParameters_r17) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *RelayParameters_r17) Decode(r *uper.UperReader) error {
+func (ie *RelayParameters_r17) Decode(r *aper.AperReader) error {
 	var err error
 	var RelayUE_Operation_L2_r17Present bool
 	if RelayUE_Operation_L2_r17Present, err = r.ReadBool(); err != nil {

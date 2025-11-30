@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -9,7 +9,7 @@ type GeneralParametersMRDC_v1610 struct {
 	F1c_OverEUTRA_r16 *GeneralParametersMRDC_v1610_f1c_OverEUTRA_r16 `optional`
 }
 
-func (ie *GeneralParametersMRDC_v1610) Encode(w *uper.UperWriter) error {
+func (ie *GeneralParametersMRDC_v1610) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.F1c_OverEUTRA_r16 != nil}
 	for _, bit := range preambleBits {
@@ -25,7 +25,7 @@ func (ie *GeneralParametersMRDC_v1610) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *GeneralParametersMRDC_v1610) Decode(r *uper.UperReader) error {
+func (ie *GeneralParametersMRDC_v1610) Decode(r *aper.AperReader) error {
 	var err error
 	var F1c_OverEUTRA_r16Present bool
 	if F1c_OverEUTRA_r16Present, err = r.ReadBool(); err != nil {

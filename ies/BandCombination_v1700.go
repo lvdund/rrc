@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -10,11 +10,11 @@ type BandCombination_v1700 struct {
 	Ca_ParametersNRDC_v1700                             *CA_ParametersNRDC_v1700 `optional`
 	Mrdc_Parameters_v1700                               *MRDC_Parameters_v1700   `optional`
 	BandList_v1710                                      []BandParameters_v1710   `lb:1,ub:maxSimultaneousBands,optional`
-	SupportedBandCombListPerBC_SL_RelayDiscovery_r17    *uper.BitString          `lb:1,ub:maxBandComb,optional`
-	SupportedBandCombListPerBC_SL_NonRelayDiscovery_r17 *uper.BitString          `lb:1,ub:maxBandComb,optional`
+	SupportedBandCombListPerBC_SL_RelayDiscovery_r17    *aper.BitString          `lb:1,ub:maxBandComb,optional`
+	SupportedBandCombListPerBC_SL_NonRelayDiscovery_r17 *aper.BitString          `lb:1,ub:maxBandComb,optional`
 }
 
-func (ie *BandCombination_v1700) Encode(w *uper.UperWriter) error {
+func (ie *BandCombination_v1700) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.Ca_ParametersNR_v1700 != nil, ie.Ca_ParametersNRDC_v1700 != nil, ie.Mrdc_Parameters_v1700 != nil, len(ie.BandList_v1710) > 0, ie.SupportedBandCombListPerBC_SL_RelayDiscovery_r17 != nil, ie.SupportedBandCombListPerBC_SL_NonRelayDiscovery_r17 != nil}
 	for _, bit := range preambleBits {
@@ -38,7 +38,7 @@ func (ie *BandCombination_v1700) Encode(w *uper.UperWriter) error {
 		}
 	}
 	if len(ie.BandList_v1710) > 0 {
-		tmp_BandList_v1710 := utils.NewSequence[*BandParameters_v1710]([]*BandParameters_v1710{}, uper.Constraint{Lb: 1, Ub: maxSimultaneousBands}, false)
+		tmp_BandList_v1710 := utils.NewSequence[*BandParameters_v1710]([]*BandParameters_v1710{}, aper.Constraint{Lb: 1, Ub: maxSimultaneousBands}, false)
 		for _, i := range ie.BandList_v1710 {
 			tmp_BandList_v1710.Value = append(tmp_BandList_v1710.Value, &i)
 		}
@@ -47,19 +47,19 @@ func (ie *BandCombination_v1700) Encode(w *uper.UperWriter) error {
 		}
 	}
 	if ie.SupportedBandCombListPerBC_SL_RelayDiscovery_r17 != nil {
-		if err = w.WriteBitString(ie.SupportedBandCombListPerBC_SL_RelayDiscovery_r17.Bytes, uint(ie.SupportedBandCombListPerBC_SL_RelayDiscovery_r17.NumBits), &uper.Constraint{Lb: 1, Ub: maxBandComb}, false); err != nil {
+		if err = w.WriteBitString(ie.SupportedBandCombListPerBC_SL_RelayDiscovery_r17.Bytes, uint(ie.SupportedBandCombListPerBC_SL_RelayDiscovery_r17.NumBits), &aper.Constraint{Lb: 1, Ub: maxBandComb}, false); err != nil {
 			return utils.WrapError("Encode SupportedBandCombListPerBC_SL_RelayDiscovery_r17", err)
 		}
 	}
 	if ie.SupportedBandCombListPerBC_SL_NonRelayDiscovery_r17 != nil {
-		if err = w.WriteBitString(ie.SupportedBandCombListPerBC_SL_NonRelayDiscovery_r17.Bytes, uint(ie.SupportedBandCombListPerBC_SL_NonRelayDiscovery_r17.NumBits), &uper.Constraint{Lb: 1, Ub: maxBandComb}, false); err != nil {
+		if err = w.WriteBitString(ie.SupportedBandCombListPerBC_SL_NonRelayDiscovery_r17.Bytes, uint(ie.SupportedBandCombListPerBC_SL_NonRelayDiscovery_r17.NumBits), &aper.Constraint{Lb: 1, Ub: maxBandComb}, false); err != nil {
 			return utils.WrapError("Encode SupportedBandCombListPerBC_SL_NonRelayDiscovery_r17", err)
 		}
 	}
 	return nil
 }
 
-func (ie *BandCombination_v1700) Decode(r *uper.UperReader) error {
+func (ie *BandCombination_v1700) Decode(r *aper.AperReader) error {
 	var err error
 	var Ca_ParametersNR_v1700Present bool
 	if Ca_ParametersNR_v1700Present, err = r.ReadBool(); err != nil {
@@ -104,7 +104,7 @@ func (ie *BandCombination_v1700) Decode(r *uper.UperReader) error {
 		}
 	}
 	if BandList_v1710Present {
-		tmp_BandList_v1710 := utils.NewSequence[*BandParameters_v1710]([]*BandParameters_v1710{}, uper.Constraint{Lb: 1, Ub: maxSimultaneousBands}, false)
+		tmp_BandList_v1710 := utils.NewSequence[*BandParameters_v1710]([]*BandParameters_v1710{}, aper.Constraint{Lb: 1, Ub: maxSimultaneousBands}, false)
 		fn_BandList_v1710 := func() *BandParameters_v1710 {
 			return new(BandParameters_v1710)
 		}
@@ -119,10 +119,10 @@ func (ie *BandCombination_v1700) Decode(r *uper.UperReader) error {
 	if SupportedBandCombListPerBC_SL_RelayDiscovery_r17Present {
 		var tmp_bs_SupportedBandCombListPerBC_SL_RelayDiscovery_r17 []byte
 		var n_SupportedBandCombListPerBC_SL_RelayDiscovery_r17 uint
-		if tmp_bs_SupportedBandCombListPerBC_SL_RelayDiscovery_r17, n_SupportedBandCombListPerBC_SL_RelayDiscovery_r17, err = r.ReadBitString(&uper.Constraint{Lb: 1, Ub: maxBandComb}, false); err != nil {
+		if tmp_bs_SupportedBandCombListPerBC_SL_RelayDiscovery_r17, n_SupportedBandCombListPerBC_SL_RelayDiscovery_r17, err = r.ReadBitString(&aper.Constraint{Lb: 1, Ub: maxBandComb}, false); err != nil {
 			return utils.WrapError("Decode SupportedBandCombListPerBC_SL_RelayDiscovery_r17", err)
 		}
-		tmp_bitstring := uper.BitString{
+		tmp_bitstring := aper.BitString{
 			Bytes:   tmp_bs_SupportedBandCombListPerBC_SL_RelayDiscovery_r17,
 			NumBits: uint64(n_SupportedBandCombListPerBC_SL_RelayDiscovery_r17),
 		}
@@ -131,10 +131,10 @@ func (ie *BandCombination_v1700) Decode(r *uper.UperReader) error {
 	if SupportedBandCombListPerBC_SL_NonRelayDiscovery_r17Present {
 		var tmp_bs_SupportedBandCombListPerBC_SL_NonRelayDiscovery_r17 []byte
 		var n_SupportedBandCombListPerBC_SL_NonRelayDiscovery_r17 uint
-		if tmp_bs_SupportedBandCombListPerBC_SL_NonRelayDiscovery_r17, n_SupportedBandCombListPerBC_SL_NonRelayDiscovery_r17, err = r.ReadBitString(&uper.Constraint{Lb: 1, Ub: maxBandComb}, false); err != nil {
+		if tmp_bs_SupportedBandCombListPerBC_SL_NonRelayDiscovery_r17, n_SupportedBandCombListPerBC_SL_NonRelayDiscovery_r17, err = r.ReadBitString(&aper.Constraint{Lb: 1, Ub: maxBandComb}, false); err != nil {
 			return utils.WrapError("Decode SupportedBandCombListPerBC_SL_NonRelayDiscovery_r17", err)
 		}
-		tmp_bitstring := uper.BitString{
+		tmp_bitstring := aper.BitString{
 			Bytes:   tmp_bs_SupportedBandCombListPerBC_SL_NonRelayDiscovery_r17,
 			NumBits: uint64(n_SupportedBandCombListPerBC_SL_NonRelayDiscovery_r17),
 		}

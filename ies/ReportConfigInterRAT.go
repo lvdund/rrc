@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -9,7 +9,7 @@ type ReportConfigInterRAT struct {
 	ReportType ReportConfigInterRAT_reportType `madatory`
 }
 
-func (ie *ReportConfigInterRAT) Encode(w *uper.UperWriter) error {
+func (ie *ReportConfigInterRAT) Encode(w *aper.AperWriter) error {
 	var err error
 	if err = ie.ReportType.Encode(w); err != nil {
 		return utils.WrapError("Encode ReportType", err)
@@ -17,7 +17,7 @@ func (ie *ReportConfigInterRAT) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *ReportConfigInterRAT) Decode(r *uper.UperReader) error {
+func (ie *ReportConfigInterRAT) Decode(r *aper.AperReader) error {
 	var err error
 	if err = ie.ReportType.Decode(r); err != nil {
 		return utils.WrapError("Decode ReportType", err)

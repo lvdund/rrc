@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -12,7 +12,7 @@ type MIMO_ParametersPerBand_srs_PortReport_r17 struct {
 	CapVal4_r17 *MIMO_ParametersPerBand_srs_PortReport_r17_capVal4_r17 `optional`
 }
 
-func (ie *MIMO_ParametersPerBand_srs_PortReport_r17) Encode(w *uper.UperWriter) error {
+func (ie *MIMO_ParametersPerBand_srs_PortReport_r17) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.CapVal1_r17 != nil, ie.CapVal2_r17 != nil, ie.CapVal3_r17 != nil, ie.CapVal4_r17 != nil}
 	for _, bit := range preambleBits {
@@ -43,7 +43,7 @@ func (ie *MIMO_ParametersPerBand_srs_PortReport_r17) Encode(w *uper.UperWriter) 
 	return nil
 }
 
-func (ie *MIMO_ParametersPerBand_srs_PortReport_r17) Decode(r *uper.UperReader) error {
+func (ie *MIMO_ParametersPerBand_srs_PortReport_r17) Decode(r *aper.AperReader) error {
 	var err error
 	var CapVal1_r17Present bool
 	if CapVal1_r17Present, err = r.ReadBool(); err != nil {

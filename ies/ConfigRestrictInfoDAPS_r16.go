@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -9,7 +9,7 @@ type ConfigRestrictInfoDAPS_r16 struct {
 	PowerCoordination_r16 *ConfigRestrictInfoDAPS_r16_powerCoordination_r16 `optional`
 }
 
-func (ie *ConfigRestrictInfoDAPS_r16) Encode(w *uper.UperWriter) error {
+func (ie *ConfigRestrictInfoDAPS_r16) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.PowerCoordination_r16 != nil}
 	for _, bit := range preambleBits {
@@ -25,7 +25,7 @@ func (ie *ConfigRestrictInfoDAPS_r16) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *ConfigRestrictInfoDAPS_r16) Decode(r *uper.UperReader) error {
+func (ie *ConfigRestrictInfoDAPS_r16) Decode(r *aper.AperReader) error {
 	var err error
 	var PowerCoordination_r16Present bool
 	if PowerCoordination_r16Present, err = r.ReadBool(); err != nil {

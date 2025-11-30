@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -9,7 +9,7 @@ type PDCP_ParametersMRDC_v1610 struct {
 	Scg_DRB_NR_IAB_r16 *PDCP_ParametersMRDC_v1610_scg_DRB_NR_IAB_r16 `optional`
 }
 
-func (ie *PDCP_ParametersMRDC_v1610) Encode(w *uper.UperWriter) error {
+func (ie *PDCP_ParametersMRDC_v1610) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.Scg_DRB_NR_IAB_r16 != nil}
 	for _, bit := range preambleBits {
@@ -25,7 +25,7 @@ func (ie *PDCP_ParametersMRDC_v1610) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *PDCP_ParametersMRDC_v1610) Decode(r *uper.UperReader) error {
+func (ie *PDCP_ParametersMRDC_v1610) Decode(r *aper.AperReader) error {
 	var err error
 	var Scg_DRB_NR_IAB_r16Present bool
 	if Scg_DRB_NR_IAB_r16Present, err = r.ReadBool(); err != nil {

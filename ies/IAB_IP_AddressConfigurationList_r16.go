@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -10,7 +10,7 @@ type IAB_IP_AddressConfigurationList_r16 struct {
 	Iab_IP_AddressToReleaseList_r16 []IAB_IP_AddressIndex_r16         `lb:1,ub:maxIAB_IP_Address_r16,optional`
 }
 
-func (ie *IAB_IP_AddressConfigurationList_r16) Encode(w *uper.UperWriter) error {
+func (ie *IAB_IP_AddressConfigurationList_r16) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{len(ie.Iab_IP_AddressToAddModList_r16) > 0, len(ie.Iab_IP_AddressToReleaseList_r16) > 0}
 	for _, bit := range preambleBits {
@@ -19,7 +19,7 @@ func (ie *IAB_IP_AddressConfigurationList_r16) Encode(w *uper.UperWriter) error 
 		}
 	}
 	if len(ie.Iab_IP_AddressToAddModList_r16) > 0 {
-		tmp_Iab_IP_AddressToAddModList_r16 := utils.NewSequence[*IAB_IP_AddressConfiguration_r16]([]*IAB_IP_AddressConfiguration_r16{}, uper.Constraint{Lb: 1, Ub: maxIAB_IP_Address_r16}, false)
+		tmp_Iab_IP_AddressToAddModList_r16 := utils.NewSequence[*IAB_IP_AddressConfiguration_r16]([]*IAB_IP_AddressConfiguration_r16{}, aper.Constraint{Lb: 1, Ub: maxIAB_IP_Address_r16}, false)
 		for _, i := range ie.Iab_IP_AddressToAddModList_r16 {
 			tmp_Iab_IP_AddressToAddModList_r16.Value = append(tmp_Iab_IP_AddressToAddModList_r16.Value, &i)
 		}
@@ -28,7 +28,7 @@ func (ie *IAB_IP_AddressConfigurationList_r16) Encode(w *uper.UperWriter) error 
 		}
 	}
 	if len(ie.Iab_IP_AddressToReleaseList_r16) > 0 {
-		tmp_Iab_IP_AddressToReleaseList_r16 := utils.NewSequence[*IAB_IP_AddressIndex_r16]([]*IAB_IP_AddressIndex_r16{}, uper.Constraint{Lb: 1, Ub: maxIAB_IP_Address_r16}, false)
+		tmp_Iab_IP_AddressToReleaseList_r16 := utils.NewSequence[*IAB_IP_AddressIndex_r16]([]*IAB_IP_AddressIndex_r16{}, aper.Constraint{Lb: 1, Ub: maxIAB_IP_Address_r16}, false)
 		for _, i := range ie.Iab_IP_AddressToReleaseList_r16 {
 			tmp_Iab_IP_AddressToReleaseList_r16.Value = append(tmp_Iab_IP_AddressToReleaseList_r16.Value, &i)
 		}
@@ -39,7 +39,7 @@ func (ie *IAB_IP_AddressConfigurationList_r16) Encode(w *uper.UperWriter) error 
 	return nil
 }
 
-func (ie *IAB_IP_AddressConfigurationList_r16) Decode(r *uper.UperReader) error {
+func (ie *IAB_IP_AddressConfigurationList_r16) Decode(r *aper.AperReader) error {
 	var err error
 	var Iab_IP_AddressToAddModList_r16Present bool
 	if Iab_IP_AddressToAddModList_r16Present, err = r.ReadBool(); err != nil {
@@ -50,7 +50,7 @@ func (ie *IAB_IP_AddressConfigurationList_r16) Decode(r *uper.UperReader) error 
 		return err
 	}
 	if Iab_IP_AddressToAddModList_r16Present {
-		tmp_Iab_IP_AddressToAddModList_r16 := utils.NewSequence[*IAB_IP_AddressConfiguration_r16]([]*IAB_IP_AddressConfiguration_r16{}, uper.Constraint{Lb: 1, Ub: maxIAB_IP_Address_r16}, false)
+		tmp_Iab_IP_AddressToAddModList_r16 := utils.NewSequence[*IAB_IP_AddressConfiguration_r16]([]*IAB_IP_AddressConfiguration_r16{}, aper.Constraint{Lb: 1, Ub: maxIAB_IP_Address_r16}, false)
 		fn_Iab_IP_AddressToAddModList_r16 := func() *IAB_IP_AddressConfiguration_r16 {
 			return new(IAB_IP_AddressConfiguration_r16)
 		}
@@ -63,7 +63,7 @@ func (ie *IAB_IP_AddressConfigurationList_r16) Decode(r *uper.UperReader) error 
 		}
 	}
 	if Iab_IP_AddressToReleaseList_r16Present {
-		tmp_Iab_IP_AddressToReleaseList_r16 := utils.NewSequence[*IAB_IP_AddressIndex_r16]([]*IAB_IP_AddressIndex_r16{}, uper.Constraint{Lb: 1, Ub: maxIAB_IP_Address_r16}, false)
+		tmp_Iab_IP_AddressToReleaseList_r16 := utils.NewSequence[*IAB_IP_AddressIndex_r16]([]*IAB_IP_AddressIndex_r16{}, aper.Constraint{Lb: 1, Ub: maxIAB_IP_Address_r16}, false)
 		fn_Iab_IP_AddressToReleaseList_r16 := func() *IAB_IP_AddressIndex_r16 {
 			return new(IAB_IP_AddressIndex_r16)
 		}

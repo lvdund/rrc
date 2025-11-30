@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -14,7 +14,7 @@ type FeatureSetUplinkPerCC struct {
 	SupportedModulationOrderUL      *ModulationOrder                       `optional`
 }
 
-func (ie *FeatureSetUplinkPerCC) Encode(w *uper.UperWriter) error {
+func (ie *FeatureSetUplinkPerCC) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.ChannelBW_90mhz != nil, ie.Mimo_CB_PUSCH != nil, ie.MaxNumberMIMO_LayersNonCB_PUSCH != nil, ie.SupportedModulationOrderUL != nil}
 	for _, bit := range preambleBits {
@@ -51,7 +51,7 @@ func (ie *FeatureSetUplinkPerCC) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *FeatureSetUplinkPerCC) Decode(r *uper.UperReader) error {
+func (ie *FeatureSetUplinkPerCC) Decode(r *aper.AperReader) error {
 	var err error
 	var ChannelBW_90mhzPresent bool
 	if ChannelBW_90mhzPresent, err = r.ReadBool(); err != nil {

@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -10,7 +10,7 @@ type HighSpeedParameters_r16 struct {
 	DemodulationEnhancement_r16 *HighSpeedParameters_r16_demodulationEnhancement_r16 `optional`
 }
 
-func (ie *HighSpeedParameters_r16) Encode(w *uper.UperWriter) error {
+func (ie *HighSpeedParameters_r16) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.MeasurementEnhancement_r16 != nil, ie.DemodulationEnhancement_r16 != nil}
 	for _, bit := range preambleBits {
@@ -31,7 +31,7 @@ func (ie *HighSpeedParameters_r16) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *HighSpeedParameters_r16) Decode(r *uper.UperReader) error {
+func (ie *HighSpeedParameters_r16) Decode(r *aper.AperReader) error {
 	var err error
 	var MeasurementEnhancement_r16Present bool
 	if MeasurementEnhancement_r16Present, err = r.ReadBool(); err != nil {

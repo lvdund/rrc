@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -10,7 +10,7 @@ type PDCP_Config_moreThanOneRLC_primaryPath struct {
 	LogicalChannel *LogicalChannelIdentity `optional`
 }
 
-func (ie *PDCP_Config_moreThanOneRLC_primaryPath) Encode(w *uper.UperWriter) error {
+func (ie *PDCP_Config_moreThanOneRLC_primaryPath) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.CellGroup != nil, ie.LogicalChannel != nil}
 	for _, bit := range preambleBits {
@@ -31,7 +31,7 @@ func (ie *PDCP_Config_moreThanOneRLC_primaryPath) Encode(w *uper.UperWriter) err
 	return nil
 }
 
-func (ie *PDCP_Config_moreThanOneRLC_primaryPath) Decode(r *uper.UperReader) error {
+func (ie *PDCP_Config_moreThanOneRLC_primaryPath) Decode(r *aper.AperReader) error {
 	var err error
 	var CellGroupPresent bool
 	if CellGroupPresent, err = r.ReadBool(); err != nil {

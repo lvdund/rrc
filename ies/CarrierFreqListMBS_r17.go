@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -9,9 +9,9 @@ type CarrierFreqListMBS_r17 struct {
 	Value []ARFCN_ValueNR `lb:1,ub:maxFreqMBS_r17,madatory`
 }
 
-func (ie *CarrierFreqListMBS_r17) Encode(w *uper.UperWriter) error {
+func (ie *CarrierFreqListMBS_r17) Encode(w *aper.AperWriter) error {
 	var err error
-	tmp := utils.NewSequence[*ARFCN_ValueNR]([]*ARFCN_ValueNR{}, uper.Constraint{Lb: 1, Ub: maxFreqMBS_r17}, false)
+	tmp := utils.NewSequence[*ARFCN_ValueNR]([]*ARFCN_ValueNR{}, aper.Constraint{Lb: 1, Ub: maxFreqMBS_r17}, false)
 	for _, i := range ie.Value {
 		tmp.Value = append(tmp.Value, &i)
 	}
@@ -21,9 +21,9 @@ func (ie *CarrierFreqListMBS_r17) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *CarrierFreqListMBS_r17) Decode(r *uper.UperReader) error {
+func (ie *CarrierFreqListMBS_r17) Decode(r *aper.AperReader) error {
 	var err error
-	tmp := utils.NewSequence[*ARFCN_ValueNR]([]*ARFCN_ValueNR{}, uper.Constraint{Lb: 1, Ub: maxFreqMBS_r17}, false)
+	tmp := utils.NewSequence[*ARFCN_ValueNR]([]*ARFCN_ValueNR{}, aper.Constraint{Lb: 1, Ub: maxFreqMBS_r17}, false)
 	fn := func() *ARFCN_ValueNR {
 		return new(ARFCN_ValueNR)
 	}

@@ -3,7 +3,7 @@ package ies
 import (
 	"bytes"
 
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -26,7 +26,7 @@ type RACH_ConfigCommonTwoStepRA_r16 struct {
 	FeatureCombinationPreamblesList_r17                []FeatureCombinationPreambles_r17                                                  `lb:1,ub:maxFeatureCombPreamblesPerRACHResource_r17,optional,ext-1`
 }
 
-func (ie *RACH_ConfigCommonTwoStepRA_r16) Encode(w *uper.UperWriter) error {
+func (ie *RACH_ConfigCommonTwoStepRA_r16) Encode(w *aper.AperWriter) error {
 	var err error
 	hasExtensions := ie.Ra_PrioritizationForSlicingTwoStep_r17 != nil || len(ie.FeatureCombinationPreamblesList_r17) > 0
 	preambleBits := []bool{hasExtensions, ie.MsgA_TotalNumberOfRA_Preambles_r16 != nil, ie.MsgA_SSB_PerRACH_OccasionAndCB_PreamblesPerSSB_r16 != nil, ie.MsgA_CB_PreamblesPerSSB_PerSharedRO_r16 != nil, ie.MsgA_SSB_SharedRO_MaskIndex_r16 != nil, ie.GroupB_ConfiguredTwoStepRA_r16 != nil, ie.MsgA_PRACH_RootSequenceIndex_r16 != nil, ie.MsgA_TransMax_r16 != nil, ie.MsgA_RSRP_Threshold_r16 != nil, ie.MsgA_RSRP_ThresholdSSB_r16 != nil, ie.MsgA_SubcarrierSpacing_r16 != nil, ie.MsgA_RestrictedSetConfig_r16 != nil, ie.Ra_PrioritizationForAccessIdentityTwoStep_r16 != nil, ie.Ra_ContentionResolutionTimer_r16 != nil}
@@ -39,7 +39,7 @@ func (ie *RACH_ConfigCommonTwoStepRA_r16) Encode(w *uper.UperWriter) error {
 		return utils.WrapError("Encode Rach_ConfigGenericTwoStepRA_r16", err)
 	}
 	if ie.MsgA_TotalNumberOfRA_Preambles_r16 != nil {
-		if err = w.WriteInteger(*ie.MsgA_TotalNumberOfRA_Preambles_r16, &uper.Constraint{Lb: 1, Ub: 63}, false); err != nil {
+		if err = w.WriteInteger(*ie.MsgA_TotalNumberOfRA_Preambles_r16, &aper.Constraint{Lb: 1, Ub: 63}, false); err != nil {
 			return utils.WrapError("Encode MsgA_TotalNumberOfRA_Preambles_r16", err)
 		}
 	}
@@ -49,12 +49,12 @@ func (ie *RACH_ConfigCommonTwoStepRA_r16) Encode(w *uper.UperWriter) error {
 		}
 	}
 	if ie.MsgA_CB_PreamblesPerSSB_PerSharedRO_r16 != nil {
-		if err = w.WriteInteger(*ie.MsgA_CB_PreamblesPerSSB_PerSharedRO_r16, &uper.Constraint{Lb: 1, Ub: 60}, false); err != nil {
+		if err = w.WriteInteger(*ie.MsgA_CB_PreamblesPerSSB_PerSharedRO_r16, &aper.Constraint{Lb: 1, Ub: 60}, false); err != nil {
 			return utils.WrapError("Encode MsgA_CB_PreamblesPerSSB_PerSharedRO_r16", err)
 		}
 	}
 	if ie.MsgA_SSB_SharedRO_MaskIndex_r16 != nil {
-		if err = w.WriteInteger(*ie.MsgA_SSB_SharedRO_MaskIndex_r16, &uper.Constraint{Lb: 1, Ub: 15}, false); err != nil {
+		if err = w.WriteInteger(*ie.MsgA_SSB_SharedRO_MaskIndex_r16, &aper.Constraint{Lb: 1, Ub: 15}, false); err != nil {
 			return utils.WrapError("Encode MsgA_SSB_SharedRO_MaskIndex_r16", err)
 		}
 	}
@@ -113,7 +113,7 @@ func (ie *RACH_ConfigCommonTwoStepRA_r16) Encode(w *uper.UperWriter) error {
 		// encode extension group 1
 		if extBitmap[0] {
 			extBuf := new(bytes.Buffer)
-			extWriter := uper.NewWriter(extBuf)
+			extWriter := aper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 1
 			optionals_ext_1 := []bool{ie.Ra_PrioritizationForSlicingTwoStep_r17 != nil, len(ie.FeatureCombinationPreamblesList_r17) > 0}
@@ -131,7 +131,7 @@ func (ie *RACH_ConfigCommonTwoStepRA_r16) Encode(w *uper.UperWriter) error {
 			}
 			// encode FeatureCombinationPreamblesList_r17 optional
 			if len(ie.FeatureCombinationPreamblesList_r17) > 0 {
-				tmp_FeatureCombinationPreamblesList_r17 := utils.NewSequence[*FeatureCombinationPreambles_r17]([]*FeatureCombinationPreambles_r17{}, uper.Constraint{Lb: 1, Ub: maxFeatureCombPreamblesPerRACHResource_r17}, false)
+				tmp_FeatureCombinationPreamblesList_r17 := utils.NewSequence[*FeatureCombinationPreambles_r17]([]*FeatureCombinationPreambles_r17{}, aper.Constraint{Lb: 1, Ub: maxFeatureCombPreamblesPerRACHResource_r17}, false)
 				for _, i := range ie.FeatureCombinationPreamblesList_r17 {
 					tmp_FeatureCombinationPreamblesList_r17.Value = append(tmp_FeatureCombinationPreamblesList_r17.Value, &i)
 				}
@@ -152,7 +152,7 @@ func (ie *RACH_ConfigCommonTwoStepRA_r16) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *RACH_ConfigCommonTwoStepRA_r16) Decode(r *uper.UperReader) error {
+func (ie *RACH_ConfigCommonTwoStepRA_r16) Decode(r *aper.AperReader) error {
 	var err error
 	var extensionBit bool
 	if extensionBit, err = r.ReadBool(); err != nil {
@@ -215,7 +215,7 @@ func (ie *RACH_ConfigCommonTwoStepRA_r16) Decode(r *uper.UperReader) error {
 	}
 	if MsgA_TotalNumberOfRA_Preambles_r16Present {
 		var tmp_int_MsgA_TotalNumberOfRA_Preambles_r16 int64
-		if tmp_int_MsgA_TotalNumberOfRA_Preambles_r16, err = r.ReadInteger(&uper.Constraint{Lb: 1, Ub: 63}, false); err != nil {
+		if tmp_int_MsgA_TotalNumberOfRA_Preambles_r16, err = r.ReadInteger(&aper.Constraint{Lb: 1, Ub: 63}, false); err != nil {
 			return utils.WrapError("Decode MsgA_TotalNumberOfRA_Preambles_r16", err)
 		}
 		ie.MsgA_TotalNumberOfRA_Preambles_r16 = &tmp_int_MsgA_TotalNumberOfRA_Preambles_r16
@@ -228,14 +228,14 @@ func (ie *RACH_ConfigCommonTwoStepRA_r16) Decode(r *uper.UperReader) error {
 	}
 	if MsgA_CB_PreamblesPerSSB_PerSharedRO_r16Present {
 		var tmp_int_MsgA_CB_PreamblesPerSSB_PerSharedRO_r16 int64
-		if tmp_int_MsgA_CB_PreamblesPerSSB_PerSharedRO_r16, err = r.ReadInteger(&uper.Constraint{Lb: 1, Ub: 60}, false); err != nil {
+		if tmp_int_MsgA_CB_PreamblesPerSSB_PerSharedRO_r16, err = r.ReadInteger(&aper.Constraint{Lb: 1, Ub: 60}, false); err != nil {
 			return utils.WrapError("Decode MsgA_CB_PreamblesPerSSB_PerSharedRO_r16", err)
 		}
 		ie.MsgA_CB_PreamblesPerSSB_PerSharedRO_r16 = &tmp_int_MsgA_CB_PreamblesPerSSB_PerSharedRO_r16
 	}
 	if MsgA_SSB_SharedRO_MaskIndex_r16Present {
 		var tmp_int_MsgA_SSB_SharedRO_MaskIndex_r16 int64
-		if tmp_int_MsgA_SSB_SharedRO_MaskIndex_r16, err = r.ReadInteger(&uper.Constraint{Lb: 1, Ub: 15}, false); err != nil {
+		if tmp_int_MsgA_SSB_SharedRO_MaskIndex_r16, err = r.ReadInteger(&aper.Constraint{Lb: 1, Ub: 15}, false); err != nil {
 			return utils.WrapError("Decode MsgA_SSB_SharedRO_MaskIndex_r16", err)
 		}
 		ie.MsgA_SSB_SharedRO_MaskIndex_r16 = &tmp_int_MsgA_SSB_SharedRO_MaskIndex_r16
@@ -309,7 +309,7 @@ func (ie *RACH_ConfigCommonTwoStepRA_r16) Decode(r *uper.UperReader) error {
 				return err
 			}
 
-			extReader := uper.NewReader(bytes.NewReader(extBytes))
+			extReader := aper.NewReader(bytes.NewReader(extBytes))
 
 			Ra_PrioritizationForSlicingTwoStep_r17Present, err := extReader.ReadBool()
 			if err != nil {
@@ -328,7 +328,7 @@ func (ie *RACH_ConfigCommonTwoStepRA_r16) Decode(r *uper.UperReader) error {
 			}
 			// decode FeatureCombinationPreamblesList_r17 optional
 			if FeatureCombinationPreamblesList_r17Present {
-				tmp_FeatureCombinationPreamblesList_r17 := utils.NewSequence[*FeatureCombinationPreambles_r17]([]*FeatureCombinationPreambles_r17{}, uper.Constraint{Lb: 1, Ub: maxFeatureCombPreamblesPerRACHResource_r17}, false)
+				tmp_FeatureCombinationPreamblesList_r17 := utils.NewSequence[*FeatureCombinationPreambles_r17]([]*FeatureCombinationPreambles_r17{}, aper.Constraint{Lb: 1, Ub: maxFeatureCombPreamblesPerRACHResource_r17}, false)
 				fn_FeatureCombinationPreamblesList_r17 := func() *FeatureCombinationPreambles_r17 {
 					return new(FeatureCombinationPreambles_r17)
 				}

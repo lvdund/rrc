@@ -3,7 +3,7 @@ package ies
 import (
 	"bytes"
 
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -22,7 +22,7 @@ type BWP_UplinkCommon struct {
 	Mcs_Msg3_Repetitions_r17              []int64                                       `lb:8,ub:8,e_lb:0,e_ub:0,optional,ext-2`
 }
 
-func (ie *BWP_UplinkCommon) Encode(w *uper.UperWriter) error {
+func (ie *BWP_UplinkCommon) Encode(w *aper.AperWriter) error {
 	var err error
 	hasExtensions := ie.Rach_ConfigCommonIAB_r16 != nil || ie.UseInterlacePUCCH_PUSCH_r16 != nil || ie.MsgA_ConfigCommon_r16 != nil || ie.EnableRA_PrioritizationForSlicing_r17 != nil || ie.AdditionalRACH_ConfigList_r17 != nil || ie.Rsrp_ThresholdMsg3_r17 != nil || len(ie.NumberOfMsg3_RepetitionsList_r17) > 0 || len(ie.Mcs_Msg3_Repetitions_r17) > 0
 	preambleBits := []bool{hasExtensions, ie.Rach_ConfigCommon != nil, ie.Pusch_ConfigCommon != nil, ie.Pucch_ConfigCommon != nil}
@@ -68,7 +68,7 @@ func (ie *BWP_UplinkCommon) Encode(w *uper.UperWriter) error {
 		// encode extension group 1
 		if extBitmap[0] {
 			extBuf := new(bytes.Buffer)
-			extWriter := uper.NewWriter(extBuf)
+			extWriter := aper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 1
 			optionals_ext_1 := []bool{ie.Rach_ConfigCommonIAB_r16 != nil, ie.UseInterlacePUCCH_PUSCH_r16 != nil, ie.MsgA_ConfigCommon_r16 != nil}
@@ -115,7 +115,7 @@ func (ie *BWP_UplinkCommon) Encode(w *uper.UperWriter) error {
 		// encode extension group 2
 		if extBitmap[1] {
 			extBuf := new(bytes.Buffer)
-			extWriter := uper.NewWriter(extBuf)
+			extWriter := aper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 2
 			optionals_ext_2 := []bool{ie.EnableRA_PrioritizationForSlicing_r17 != nil, ie.AdditionalRACH_ConfigList_r17 != nil, ie.Rsrp_ThresholdMsg3_r17 != nil, len(ie.NumberOfMsg3_RepetitionsList_r17) > 0, len(ie.Mcs_Msg3_Repetitions_r17) > 0}
@@ -148,7 +148,7 @@ func (ie *BWP_UplinkCommon) Encode(w *uper.UperWriter) error {
 			}
 			// encode NumberOfMsg3_RepetitionsList_r17 optional
 			if len(ie.NumberOfMsg3_RepetitionsList_r17) > 0 {
-				tmp_NumberOfMsg3_RepetitionsList_r17 := utils.NewSequence[*NumberOfMsg3_Repetitions_r17]([]*NumberOfMsg3_Repetitions_r17{}, uper.Constraint{Lb: 4, Ub: 4}, false)
+				tmp_NumberOfMsg3_RepetitionsList_r17 := utils.NewSequence[*NumberOfMsg3_Repetitions_r17]([]*NumberOfMsg3_Repetitions_r17{}, aper.Constraint{Lb: 4, Ub: 4}, false)
 				for _, i := range ie.NumberOfMsg3_RepetitionsList_r17 {
 					tmp_NumberOfMsg3_RepetitionsList_r17.Value = append(tmp_NumberOfMsg3_RepetitionsList_r17.Value, &i)
 				}
@@ -158,9 +158,9 @@ func (ie *BWP_UplinkCommon) Encode(w *uper.UperWriter) error {
 			}
 			// encode Mcs_Msg3_Repetitions_r17 optional
 			if len(ie.Mcs_Msg3_Repetitions_r17) > 0 {
-				tmp_Mcs_Msg3_Repetitions_r17 := utils.NewSequence[*utils.INTEGER]([]*utils.INTEGER{}, uper.Constraint{Lb: 8, Ub: 8}, false)
+				tmp_Mcs_Msg3_Repetitions_r17 := utils.NewSequence[*utils.INTEGER]([]*utils.INTEGER{}, aper.Constraint{Lb: 8, Ub: 8}, false)
 				for _, i := range ie.Mcs_Msg3_Repetitions_r17 {
-					tmp_ie := utils.NewINTEGER(int64(i), uper.Constraint{Lb: 0, Ub: 0}, false)
+					tmp_ie := utils.NewINTEGER(int64(i), aper.Constraint{Lb: 0, Ub: 0}, false)
 					tmp_Mcs_Msg3_Repetitions_r17.Value = append(tmp_Mcs_Msg3_Repetitions_r17.Value, &tmp_ie)
 				}
 				if err = tmp_Mcs_Msg3_Repetitions_r17.Encode(extWriter); err != nil {
@@ -180,7 +180,7 @@ func (ie *BWP_UplinkCommon) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *BWP_UplinkCommon) Decode(r *uper.UperReader) error {
+func (ie *BWP_UplinkCommon) Decode(r *aper.AperReader) error {
 	var err error
 	var extensionBit bool
 	if extensionBit, err = r.ReadBool(); err != nil {
@@ -237,7 +237,7 @@ func (ie *BWP_UplinkCommon) Decode(r *uper.UperReader) error {
 				return err
 			}
 
-			extReader := uper.NewReader(bytes.NewReader(extBytes))
+			extReader := aper.NewReader(bytes.NewReader(extBytes))
 
 			Rach_ConfigCommonIAB_r16Present, err := extReader.ReadBool()
 			if err != nil {
@@ -282,7 +282,7 @@ func (ie *BWP_UplinkCommon) Decode(r *uper.UperReader) error {
 				return err
 			}
 
-			extReader := uper.NewReader(bytes.NewReader(extBytes))
+			extReader := aper.NewReader(bytes.NewReader(extBytes))
 
 			EnableRA_PrioritizationForSlicing_r17Present, err := extReader.ReadBool()
 			if err != nil {
@@ -329,7 +329,7 @@ func (ie *BWP_UplinkCommon) Decode(r *uper.UperReader) error {
 			}
 			// decode NumberOfMsg3_RepetitionsList_r17 optional
 			if NumberOfMsg3_RepetitionsList_r17Present {
-				tmp_NumberOfMsg3_RepetitionsList_r17 := utils.NewSequence[*NumberOfMsg3_Repetitions_r17]([]*NumberOfMsg3_Repetitions_r17{}, uper.Constraint{Lb: 4, Ub: 4}, false)
+				tmp_NumberOfMsg3_RepetitionsList_r17 := utils.NewSequence[*NumberOfMsg3_Repetitions_r17]([]*NumberOfMsg3_Repetitions_r17{}, aper.Constraint{Lb: 4, Ub: 4}, false)
 				fn_NumberOfMsg3_RepetitionsList_r17 := func() *NumberOfMsg3_Repetitions_r17 {
 					return new(NumberOfMsg3_Repetitions_r17)
 				}
@@ -343,9 +343,9 @@ func (ie *BWP_UplinkCommon) Decode(r *uper.UperReader) error {
 			}
 			// decode Mcs_Msg3_Repetitions_r17 optional
 			if Mcs_Msg3_Repetitions_r17Present {
-				tmp_Mcs_Msg3_Repetitions_r17 := utils.NewSequence[*utils.INTEGER]([]*utils.INTEGER{}, uper.Constraint{Lb: 8, Ub: 8}, false)
+				tmp_Mcs_Msg3_Repetitions_r17 := utils.NewSequence[*utils.INTEGER]([]*utils.INTEGER{}, aper.Constraint{Lb: 8, Ub: 8}, false)
 				fn_Mcs_Msg3_Repetitions_r17 := func() *utils.INTEGER {
-					ie := utils.NewINTEGER(0, uper.Constraint{Lb: 0, Ub: 0}, false)
+					ie := utils.NewINTEGER(0, aper.Constraint{Lb: 0, Ub: 0}, false)
 					return &ie
 				}
 				if err = tmp_Mcs_Msg3_Repetitions_r17.Decode(extReader, fn_Mcs_Msg3_Repetitions_r17); err != nil {

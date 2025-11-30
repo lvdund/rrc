@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -10,7 +10,7 @@ type SpeedStateScaleFactors struct {
 	Sf_High   SpeedStateScaleFactors_sf_High   `madatory`
 }
 
-func (ie *SpeedStateScaleFactors) Encode(w *uper.UperWriter) error {
+func (ie *SpeedStateScaleFactors) Encode(w *aper.AperWriter) error {
 	var err error
 	if err = ie.Sf_Medium.Encode(w); err != nil {
 		return utils.WrapError("Encode Sf_Medium", err)
@@ -21,7 +21,7 @@ func (ie *SpeedStateScaleFactors) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *SpeedStateScaleFactors) Decode(r *uper.UperReader) error {
+func (ie *SpeedStateScaleFactors) Decode(r *aper.AperReader) error {
 	var err error
 	if err = ie.Sf_Medium.Decode(r); err != nil {
 		return utils.WrapError("Decode Sf_Medium", err)

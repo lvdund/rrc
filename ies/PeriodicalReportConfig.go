@@ -3,7 +3,7 @@ package ies
 import (
 	"bytes"
 
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -29,7 +29,7 @@ type PeriodicalReportConfig struct {
 	ReportQuantityRelay_r17       *SL_MeasReportQuantity_r16                            `optional,ext-2`
 }
 
-func (ie *PeriodicalReportConfig) Encode(w *uper.UperWriter) error {
+func (ie *PeriodicalReportConfig) Encode(w *aper.AperWriter) error {
 	var err error
 	hasExtensions := ie.MeasRSSI_ReportConfig_r16 != nil || ie.IncludeCommonLocationInfo_r16 != nil || ie.IncludeBT_Meas_r16 != nil || ie.IncludeWLAN_Meas_r16 != nil || ie.IncludeSensor_Meas_r16 != nil || ie.Ul_DelayValueConfig_r16 != nil || ie.ReportAddNeighMeas_r16 != nil || ie.Ul_ExcessDelayConfig_r17 != nil || ie.CoarseLocationRequest_r17 != nil || ie.ReportQuantityRelay_r17 != nil
 	preambleBits := []bool{hasExtensions, ie.ReportQuantityRS_Indexes != nil, ie.MaxNrofRS_IndexesToReport != nil}
@@ -50,7 +50,7 @@ func (ie *PeriodicalReportConfig) Encode(w *uper.UperWriter) error {
 	if err = ie.ReportQuantityCell.Encode(w); err != nil {
 		return utils.WrapError("Encode ReportQuantityCell", err)
 	}
-	if err = w.WriteInteger(ie.MaxReportCells, &uper.Constraint{Lb: 1, Ub: maxCellReport}, false); err != nil {
+	if err = w.WriteInteger(ie.MaxReportCells, &aper.Constraint{Lb: 1, Ub: maxCellReport}, false); err != nil {
 		return utils.WrapError("WriteInteger MaxReportCells", err)
 	}
 	if ie.ReportQuantityRS_Indexes != nil {
@@ -59,7 +59,7 @@ func (ie *PeriodicalReportConfig) Encode(w *uper.UperWriter) error {
 		}
 	}
 	if ie.MaxNrofRS_IndexesToReport != nil {
-		if err = w.WriteInteger(*ie.MaxNrofRS_IndexesToReport, &uper.Constraint{Lb: 1, Ub: maxNrofIndexesToReport}, false); err != nil {
+		if err = w.WriteInteger(*ie.MaxNrofRS_IndexesToReport, &aper.Constraint{Lb: 1, Ub: maxNrofIndexesToReport}, false); err != nil {
 			return utils.WrapError("Encode MaxNrofRS_IndexesToReport", err)
 		}
 	}
@@ -79,7 +79,7 @@ func (ie *PeriodicalReportConfig) Encode(w *uper.UperWriter) error {
 		// encode extension group 1
 		if extBitmap[0] {
 			extBuf := new(bytes.Buffer)
-			extWriter := uper.NewWriter(extBuf)
+			extWriter := aper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 1
 			optionals_ext_1 := []bool{ie.MeasRSSI_ReportConfig_r16 != nil, ie.IncludeCommonLocationInfo_r16 != nil, ie.IncludeBT_Meas_r16 != nil, ie.IncludeWLAN_Meas_r16 != nil, ie.IncludeSensor_Meas_r16 != nil, ie.Ul_DelayValueConfig_r16 != nil, ie.ReportAddNeighMeas_r16 != nil}
@@ -156,7 +156,7 @@ func (ie *PeriodicalReportConfig) Encode(w *uper.UperWriter) error {
 		// encode extension group 2
 		if extBitmap[1] {
 			extBuf := new(bytes.Buffer)
-			extWriter := uper.NewWriter(extBuf)
+			extWriter := aper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 2
 			optionals_ext_2 := []bool{ie.Ul_ExcessDelayConfig_r17 != nil, ie.CoarseLocationRequest_r17 != nil, ie.ReportQuantityRelay_r17 != nil}
@@ -200,7 +200,7 @@ func (ie *PeriodicalReportConfig) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *PeriodicalReportConfig) Decode(r *uper.UperReader) error {
+func (ie *PeriodicalReportConfig) Decode(r *aper.AperReader) error {
 	var err error
 	var extensionBit bool
 	if extensionBit, err = r.ReadBool(); err != nil {
@@ -227,7 +227,7 @@ func (ie *PeriodicalReportConfig) Decode(r *uper.UperReader) error {
 		return utils.WrapError("Decode ReportQuantityCell", err)
 	}
 	var tmp_int_MaxReportCells int64
-	if tmp_int_MaxReportCells, err = r.ReadInteger(&uper.Constraint{Lb: 1, Ub: maxCellReport}, false); err != nil {
+	if tmp_int_MaxReportCells, err = r.ReadInteger(&aper.Constraint{Lb: 1, Ub: maxCellReport}, false); err != nil {
 		return utils.WrapError("ReadInteger MaxReportCells", err)
 	}
 	ie.MaxReportCells = tmp_int_MaxReportCells
@@ -239,7 +239,7 @@ func (ie *PeriodicalReportConfig) Decode(r *uper.UperReader) error {
 	}
 	if MaxNrofRS_IndexesToReportPresent {
 		var tmp_int_MaxNrofRS_IndexesToReport int64
-		if tmp_int_MaxNrofRS_IndexesToReport, err = r.ReadInteger(&uper.Constraint{Lb: 1, Ub: maxNrofIndexesToReport}, false); err != nil {
+		if tmp_int_MaxNrofRS_IndexesToReport, err = r.ReadInteger(&aper.Constraint{Lb: 1, Ub: maxNrofIndexesToReport}, false); err != nil {
 			return utils.WrapError("Decode MaxNrofRS_IndexesToReport", err)
 		}
 		ie.MaxNrofRS_IndexesToReport = &tmp_int_MaxNrofRS_IndexesToReport
@@ -269,7 +269,7 @@ func (ie *PeriodicalReportConfig) Decode(r *uper.UperReader) error {
 				return err
 			}
 
-			extReader := uper.NewReader(bytes.NewReader(extBytes))
+			extReader := aper.NewReader(bytes.NewReader(extBytes))
 
 			MeasRSSI_ReportConfig_r16Present, err := extReader.ReadBool()
 			if err != nil {
@@ -360,7 +360,7 @@ func (ie *PeriodicalReportConfig) Decode(r *uper.UperReader) error {
 				return err
 			}
 
-			extReader := uper.NewReader(bytes.NewReader(extBytes))
+			extReader := aper.NewReader(bytes.NewReader(extBytes))
 
 			Ul_ExcessDelayConfig_r17Present, err := extReader.ReadBool()
 			if err != nil {

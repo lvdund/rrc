@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -10,7 +10,7 @@ type PDSCH_Config_prb_BundlingType_dynamicBundling struct {
 	BundleSizeSet2 *PDSCH_Config_prb_BundlingType_dynamicBundling_bundleSizeSet2 `optional`
 }
 
-func (ie *PDSCH_Config_prb_BundlingType_dynamicBundling) Encode(w *uper.UperWriter) error {
+func (ie *PDSCH_Config_prb_BundlingType_dynamicBundling) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.BundleSizeSet1 != nil, ie.BundleSizeSet2 != nil}
 	for _, bit := range preambleBits {
@@ -31,7 +31,7 @@ func (ie *PDSCH_Config_prb_BundlingType_dynamicBundling) Encode(w *uper.UperWrit
 	return nil
 }
 
-func (ie *PDSCH_Config_prb_BundlingType_dynamicBundling) Decode(r *uper.UperReader) error {
+func (ie *PDSCH_Config_prb_BundlingType_dynamicBundling) Decode(r *aper.AperReader) error {
 	var err error
 	var BundleSizeSet1Present bool
 	if BundleSizeSet1Present, err = r.ReadBool(); err != nil {

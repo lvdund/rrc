@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -10,7 +10,7 @@ type PropDelayDiffReportConfig_r17 struct {
 	NeighCellInfoList_r17   []NeighbourCellInfo_r17                                `lb:1,ub:maxCellNTN_r17,optional`
 }
 
-func (ie *PropDelayDiffReportConfig_r17) Encode(w *uper.UperWriter) error {
+func (ie *PropDelayDiffReportConfig_r17) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.ThreshPropDelayDiff_r17 != nil, len(ie.NeighCellInfoList_r17) > 0}
 	for _, bit := range preambleBits {
@@ -24,7 +24,7 @@ func (ie *PropDelayDiffReportConfig_r17) Encode(w *uper.UperWriter) error {
 		}
 	}
 	if len(ie.NeighCellInfoList_r17) > 0 {
-		tmp_NeighCellInfoList_r17 := utils.NewSequence[*NeighbourCellInfo_r17]([]*NeighbourCellInfo_r17{}, uper.Constraint{Lb: 1, Ub: maxCellNTN_r17}, false)
+		tmp_NeighCellInfoList_r17 := utils.NewSequence[*NeighbourCellInfo_r17]([]*NeighbourCellInfo_r17{}, aper.Constraint{Lb: 1, Ub: maxCellNTN_r17}, false)
 		for _, i := range ie.NeighCellInfoList_r17 {
 			tmp_NeighCellInfoList_r17.Value = append(tmp_NeighCellInfoList_r17.Value, &i)
 		}
@@ -35,7 +35,7 @@ func (ie *PropDelayDiffReportConfig_r17) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *PropDelayDiffReportConfig_r17) Decode(r *uper.UperReader) error {
+func (ie *PropDelayDiffReportConfig_r17) Decode(r *aper.AperReader) error {
 	var err error
 	var ThreshPropDelayDiff_r17Present bool
 	if ThreshPropDelayDiff_r17Present, err = r.ReadBool(); err != nil {
@@ -52,7 +52,7 @@ func (ie *PropDelayDiffReportConfig_r17) Decode(r *uper.UperReader) error {
 		}
 	}
 	if NeighCellInfoList_r17Present {
-		tmp_NeighCellInfoList_r17 := utils.NewSequence[*NeighbourCellInfo_r17]([]*NeighbourCellInfo_r17{}, uper.Constraint{Lb: 1, Ub: maxCellNTN_r17}, false)
+		tmp_NeighCellInfoList_r17 := utils.NewSequence[*NeighbourCellInfo_r17]([]*NeighbourCellInfo_r17{}, aper.Constraint{Lb: 1, Ub: maxCellNTN_r17}, false)
 		fn_NeighCellInfoList_r17 := func() *NeighbourCellInfo_r17 {
 			return new(NeighbourCellInfo_r17)
 		}

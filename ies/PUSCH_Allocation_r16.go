@@ -3,7 +3,7 @@ package ies
 import (
 	"bytes"
 
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -18,7 +18,7 @@ type PUSCH_Allocation_r16 struct {
 	ExtendedK2_r17             *int64                                           `lb:0,ub:128,optional,ext-1`
 }
 
-func (ie *PUSCH_Allocation_r16) Encode(w *uper.UperWriter) error {
+func (ie *PUSCH_Allocation_r16) Encode(w *aper.AperWriter) error {
 	var err error
 	hasExtensions := ie.NumberOfRepetitionsExt_r17 != nil || ie.NumberOfSlotsTBoMS_r17 != nil || ie.ExtendedK2_r17 != nil
 	preambleBits := []bool{hasExtensions, ie.MappingType_r16 != nil, ie.StartSymbolAndLength_r16 != nil, ie.StartSymbol_r16 != nil, ie.Length_r16 != nil, ie.NumberOfRepetitions_r16 != nil}
@@ -33,17 +33,17 @@ func (ie *PUSCH_Allocation_r16) Encode(w *uper.UperWriter) error {
 		}
 	}
 	if ie.StartSymbolAndLength_r16 != nil {
-		if err = w.WriteInteger(*ie.StartSymbolAndLength_r16, &uper.Constraint{Lb: 0, Ub: 127}, false); err != nil {
+		if err = w.WriteInteger(*ie.StartSymbolAndLength_r16, &aper.Constraint{Lb: 0, Ub: 127}, false); err != nil {
 			return utils.WrapError("Encode StartSymbolAndLength_r16", err)
 		}
 	}
 	if ie.StartSymbol_r16 != nil {
-		if err = w.WriteInteger(*ie.StartSymbol_r16, &uper.Constraint{Lb: 0, Ub: 13}, false); err != nil {
+		if err = w.WriteInteger(*ie.StartSymbol_r16, &aper.Constraint{Lb: 0, Ub: 13}, false); err != nil {
 			return utils.WrapError("Encode StartSymbol_r16", err)
 		}
 	}
 	if ie.Length_r16 != nil {
-		if err = w.WriteInteger(*ie.Length_r16, &uper.Constraint{Lb: 1, Ub: 14}, false); err != nil {
+		if err = w.WriteInteger(*ie.Length_r16, &aper.Constraint{Lb: 1, Ub: 14}, false); err != nil {
 			return utils.WrapError("Encode Length_r16", err)
 		}
 	}
@@ -62,7 +62,7 @@ func (ie *PUSCH_Allocation_r16) Encode(w *uper.UperWriter) error {
 		// encode extension group 1
 		if extBitmap[0] {
 			extBuf := new(bytes.Buffer)
-			extWriter := uper.NewWriter(extBuf)
+			extWriter := aper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 1
 			optionals_ext_1 := []bool{ie.NumberOfRepetitionsExt_r17 != nil, ie.NumberOfSlotsTBoMS_r17 != nil, ie.ExtendedK2_r17 != nil}
@@ -86,7 +86,7 @@ func (ie *PUSCH_Allocation_r16) Encode(w *uper.UperWriter) error {
 			}
 			// encode ExtendedK2_r17 optional
 			if ie.ExtendedK2_r17 != nil {
-				if err = extWriter.WriteInteger(*ie.ExtendedK2_r17, &uper.Constraint{Lb: 0, Ub: 128}, false); err != nil {
+				if err = extWriter.WriteInteger(*ie.ExtendedK2_r17, &aper.Constraint{Lb: 0, Ub: 128}, false); err != nil {
 					return utils.WrapError("Encode ExtendedK2_r17", err)
 				}
 			}
@@ -103,7 +103,7 @@ func (ie *PUSCH_Allocation_r16) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *PUSCH_Allocation_r16) Decode(r *uper.UperReader) error {
+func (ie *PUSCH_Allocation_r16) Decode(r *aper.AperReader) error {
 	var err error
 	var extensionBit bool
 	if extensionBit, err = r.ReadBool(); err != nil {
@@ -137,21 +137,21 @@ func (ie *PUSCH_Allocation_r16) Decode(r *uper.UperReader) error {
 	}
 	if StartSymbolAndLength_r16Present {
 		var tmp_int_StartSymbolAndLength_r16 int64
-		if tmp_int_StartSymbolAndLength_r16, err = r.ReadInteger(&uper.Constraint{Lb: 0, Ub: 127}, false); err != nil {
+		if tmp_int_StartSymbolAndLength_r16, err = r.ReadInteger(&aper.Constraint{Lb: 0, Ub: 127}, false); err != nil {
 			return utils.WrapError("Decode StartSymbolAndLength_r16", err)
 		}
 		ie.StartSymbolAndLength_r16 = &tmp_int_StartSymbolAndLength_r16
 	}
 	if StartSymbol_r16Present {
 		var tmp_int_StartSymbol_r16 int64
-		if tmp_int_StartSymbol_r16, err = r.ReadInteger(&uper.Constraint{Lb: 0, Ub: 13}, false); err != nil {
+		if tmp_int_StartSymbol_r16, err = r.ReadInteger(&aper.Constraint{Lb: 0, Ub: 13}, false); err != nil {
 			return utils.WrapError("Decode StartSymbol_r16", err)
 		}
 		ie.StartSymbol_r16 = &tmp_int_StartSymbol_r16
 	}
 	if Length_r16Present {
 		var tmp_int_Length_r16 int64
-		if tmp_int_Length_r16, err = r.ReadInteger(&uper.Constraint{Lb: 1, Ub: 14}, false); err != nil {
+		if tmp_int_Length_r16, err = r.ReadInteger(&aper.Constraint{Lb: 1, Ub: 14}, false); err != nil {
 			return utils.WrapError("Decode Length_r16", err)
 		}
 		ie.Length_r16 = &tmp_int_Length_r16
@@ -177,7 +177,7 @@ func (ie *PUSCH_Allocation_r16) Decode(r *uper.UperReader) error {
 				return err
 			}
 
-			extReader := uper.NewReader(bytes.NewReader(extBytes))
+			extReader := aper.NewReader(bytes.NewReader(extBytes))
 
 			NumberOfRepetitionsExt_r17Present, err := extReader.ReadBool()
 			if err != nil {
@@ -208,7 +208,7 @@ func (ie *PUSCH_Allocation_r16) Decode(r *uper.UperReader) error {
 			// decode ExtendedK2_r17 optional
 			if ExtendedK2_r17Present {
 				var tmp_int_ExtendedK2_r17 int64
-				if tmp_int_ExtendedK2_r17, err = extReader.ReadInteger(&uper.Constraint{Lb: 0, Ub: 128}, false); err != nil {
+				if tmp_int_ExtendedK2_r17, err = extReader.ReadInteger(&aper.Constraint{Lb: 0, Ub: 128}, false); err != nil {
 					return utils.WrapError("Decode ExtendedK2_r17", err)
 				}
 				ie.ExtendedK2_r17 = &tmp_int_ExtendedK2_r17

@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -9,9 +9,9 @@ type MeasIdToRemoveList struct {
 	Value []MeasId `lb:1,ub:maxNrofMeasId,madatory`
 }
 
-func (ie *MeasIdToRemoveList) Encode(w *uper.UperWriter) error {
+func (ie *MeasIdToRemoveList) Encode(w *aper.AperWriter) error {
 	var err error
-	tmp := utils.NewSequence[*MeasId]([]*MeasId{}, uper.Constraint{Lb: 1, Ub: maxNrofMeasId}, false)
+	tmp := utils.NewSequence[*MeasId]([]*MeasId{}, aper.Constraint{Lb: 1, Ub: maxNrofMeasId}, false)
 	for _, i := range ie.Value {
 		tmp.Value = append(tmp.Value, &i)
 	}
@@ -21,9 +21,9 @@ func (ie *MeasIdToRemoveList) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *MeasIdToRemoveList) Decode(r *uper.UperReader) error {
+func (ie *MeasIdToRemoveList) Decode(r *aper.AperReader) error {
 	var err error
-	tmp := utils.NewSequence[*MeasId]([]*MeasId{}, uper.Constraint{Lb: 1, Ub: maxNrofMeasId}, false)
+	tmp := utils.NewSequence[*MeasId]([]*MeasId{}, aper.Constraint{Lb: 1, Ub: maxNrofMeasId}, false)
 	fn := func() *MeasId {
 		return new(MeasId)
 	}

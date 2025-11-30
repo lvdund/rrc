@@ -3,7 +3,7 @@ package ies
 import (
 	"bytes"
 
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -18,7 +18,7 @@ type BWP_DownlinkDedicated struct {
 	BeamFailureRecoverySCellConfig_r16    *BeamFailureRecoveryRSConfig_r16     `optional,ext-1,setuprelease`
 	Sl_PDCCH_Config_r16                   *PDCCH_Config                        `optional,ext-1,setuprelease`
 	Sl_V2X_PDCCH_Config_r16               *PDCCH_Config                        `optional,ext-1,setuprelease`
-	PreConfGapStatus_r17                  *uper.BitString                      `lb:maxNrofGapId_r17,ub:maxNrofGapId_r17,optional,ext-2`
+	PreConfGapStatus_r17                  *aper.BitString                      `lb:maxNrofGapId_r17,ub:maxNrofGapId_r17,optional,ext-2`
 	BeamFailureRecoverySpCellConfig_r17   *BeamFailureRecoveryRSConfig_r16     `optional,ext-2,setuprelease`
 	Harq_FeedbackEnablingforSPSactive_r17 *bool                                `optional,ext-2`
 	Cfr_ConfigMulticast_r17               *CFR_ConfigMulticast_r17             `optional,ext-2,setuprelease`
@@ -28,7 +28,7 @@ type BWP_DownlinkDedicated struct {
 	ServingCellMO_r17                     *MeasObjectId                        `optional,ext-2`
 }
 
-func (ie *BWP_DownlinkDedicated) Encode(w *uper.UperWriter) error {
+func (ie *BWP_DownlinkDedicated) Encode(w *aper.AperWriter) error {
 	var err error
 	hasExtensions := ie.Sps_ConfigToAddModList_r16 != nil || ie.Sps_ConfigToReleaseList_r16 != nil || ie.Sps_ConfigDeactivationStateList_r16 != nil || ie.BeamFailureRecoverySCellConfig_r16 != nil || ie.Sl_PDCCH_Config_r16 != nil || ie.Sl_V2X_PDCCH_Config_r16 != nil || ie.PreConfGapStatus_r17 != nil || ie.BeamFailureRecoverySpCellConfig_r17 != nil || ie.Harq_FeedbackEnablingforSPSactive_r17 != nil || ie.Cfr_ConfigMulticast_r17 != nil || ie.Dl_PPW_PreConfigToAddModList_r17 != nil || ie.Dl_PPW_PreConfigToReleaseList_r17 != nil || ie.NonCellDefiningSSB_r17 != nil || ie.ServingCellMO_r17 != nil
 	preambleBits := []bool{hasExtensions, ie.Pdcch_Config != nil, ie.Pdsch_Config != nil, ie.Sps_Config != nil, ie.RadioLinkMonitoringConfig != nil}
@@ -79,7 +79,7 @@ func (ie *BWP_DownlinkDedicated) Encode(w *uper.UperWriter) error {
 		// encode extension group 1
 		if extBitmap[0] {
 			extBuf := new(bytes.Buffer)
-			extWriter := uper.NewWriter(extBuf)
+			extWriter := aper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 1
 			optionals_ext_1 := []bool{ie.Sps_ConfigToAddModList_r16 != nil, ie.Sps_ConfigToReleaseList_r16 != nil, ie.Sps_ConfigDeactivationStateList_r16 != nil, ie.BeamFailureRecoverySCellConfig_r16 != nil, ie.Sl_PDCCH_Config_r16 != nil, ie.Sl_V2X_PDCCH_Config_r16 != nil}
@@ -147,7 +147,7 @@ func (ie *BWP_DownlinkDedicated) Encode(w *uper.UperWriter) error {
 		// encode extension group 2
 		if extBitmap[1] {
 			extBuf := new(bytes.Buffer)
-			extWriter := uper.NewWriter(extBuf)
+			extWriter := aper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 2
 			optionals_ext_2 := []bool{ie.PreConfGapStatus_r17 != nil, ie.BeamFailureRecoverySpCellConfig_r17 != nil, ie.Harq_FeedbackEnablingforSPSactive_r17 != nil, ie.Cfr_ConfigMulticast_r17 != nil, ie.Dl_PPW_PreConfigToAddModList_r17 != nil, ie.Dl_PPW_PreConfigToReleaseList_r17 != nil, ie.NonCellDefiningSSB_r17 != nil, ie.ServingCellMO_r17 != nil}
@@ -159,7 +159,7 @@ func (ie *BWP_DownlinkDedicated) Encode(w *uper.UperWriter) error {
 
 			// encode PreConfGapStatus_r17 optional
 			if ie.PreConfGapStatus_r17 != nil {
-				if err = extWriter.WriteBitString(ie.PreConfGapStatus_r17.Bytes, uint(ie.PreConfGapStatus_r17.NumBits), &uper.Constraint{Lb: maxNrofGapId_r17, Ub: maxNrofGapId_r17}, false); err != nil {
+				if err = extWriter.WriteBitString(ie.PreConfGapStatus_r17.Bytes, uint(ie.PreConfGapStatus_r17.NumBits), &aper.Constraint{Lb: maxNrofGapId_r17, Ub: maxNrofGapId_r17}, false); err != nil {
 					return utils.WrapError("Encode PreConfGapStatus_r17", err)
 				}
 			}
@@ -224,7 +224,7 @@ func (ie *BWP_DownlinkDedicated) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *BWP_DownlinkDedicated) Decode(r *uper.UperReader) error {
+func (ie *BWP_DownlinkDedicated) Decode(r *aper.AperReader) error {
 	var err error
 	var extensionBit bool
 	if extensionBit, err = r.ReadBool(); err != nil {
@@ -289,7 +289,7 @@ func (ie *BWP_DownlinkDedicated) Decode(r *uper.UperReader) error {
 				return err
 			}
 
-			extReader := uper.NewReader(bytes.NewReader(extBytes))
+			extReader := aper.NewReader(bytes.NewReader(extBytes))
 
 			Sps_ConfigToAddModList_r16Present, err := extReader.ReadBool()
 			if err != nil {
@@ -368,7 +368,7 @@ func (ie *BWP_DownlinkDedicated) Decode(r *uper.UperReader) error {
 				return err
 			}
 
-			extReader := uper.NewReader(bytes.NewReader(extBytes))
+			extReader := aper.NewReader(bytes.NewReader(extBytes))
 
 			PreConfGapStatus_r17Present, err := extReader.ReadBool()
 			if err != nil {
@@ -406,10 +406,10 @@ func (ie *BWP_DownlinkDedicated) Decode(r *uper.UperReader) error {
 			if PreConfGapStatus_r17Present {
 				var tmp_bs_PreConfGapStatus_r17 []byte
 				var n_PreConfGapStatus_r17 uint
-				if tmp_bs_PreConfGapStatus_r17, n_PreConfGapStatus_r17, err = extReader.ReadBitString(&uper.Constraint{Lb: maxNrofGapId_r17, Ub: maxNrofGapId_r17}, false); err != nil {
+				if tmp_bs_PreConfGapStatus_r17, n_PreConfGapStatus_r17, err = extReader.ReadBitString(&aper.Constraint{Lb: maxNrofGapId_r17, Ub: maxNrofGapId_r17}, false); err != nil {
 					return utils.WrapError("Decode PreConfGapStatus_r17", err)
 				}
-				tmp_bitstring := uper.BitString{
+				tmp_bitstring := aper.BitString{
 					Bytes:   tmp_bs_PreConfGapStatus_r17,
 					NumBits: uint64(n_PreConfGapStatus_r17),
 				}

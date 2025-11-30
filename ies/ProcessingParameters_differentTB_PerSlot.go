@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -12,7 +12,7 @@ type ProcessingParameters_differentTB_PerSlot struct {
 	Upto7 *NumberOfCarriers `optional`
 }
 
-func (ie *ProcessingParameters_differentTB_PerSlot) Encode(w *uper.UperWriter) error {
+func (ie *ProcessingParameters_differentTB_PerSlot) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.Upto1 != nil, ie.Upto2 != nil, ie.Upto4 != nil, ie.Upto7 != nil}
 	for _, bit := range preambleBits {
@@ -43,7 +43,7 @@ func (ie *ProcessingParameters_differentTB_PerSlot) Encode(w *uper.UperWriter) e
 	return nil
 }
 
-func (ie *ProcessingParameters_differentTB_PerSlot) Decode(r *uper.UperReader) error {
+func (ie *ProcessingParameters_differentTB_PerSlot) Decode(r *aper.AperReader) error {
 	var err error
 	var Upto1Present bool
 	if Upto1Present, err = r.ReadBool(); err != nil {

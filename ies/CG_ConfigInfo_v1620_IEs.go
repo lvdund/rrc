@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -10,7 +10,7 @@ type CG_ConfigInfo_v1620_IEs struct {
 	NonCriticalExtension                 *CG_ConfigInfo_v1640_IEs `optional`
 }
 
-func (ie *CG_ConfigInfo_v1620_IEs) Encode(w *uper.UperWriter) error {
+func (ie *CG_ConfigInfo_v1620_IEs) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.UeAssistanceInformationSourceSCG_r16 != nil, ie.NonCriticalExtension != nil}
 	for _, bit := range preambleBits {
@@ -19,7 +19,7 @@ func (ie *CG_ConfigInfo_v1620_IEs) Encode(w *uper.UperWriter) error {
 		}
 	}
 	if ie.UeAssistanceInformationSourceSCG_r16 != nil {
-		if err = w.WriteOctetString(*ie.UeAssistanceInformationSourceSCG_r16, &uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+		if err = w.WriteOctetString(*ie.UeAssistanceInformationSourceSCG_r16, &aper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
 			return utils.WrapError("Encode UeAssistanceInformationSourceSCG_r16", err)
 		}
 	}
@@ -31,7 +31,7 @@ func (ie *CG_ConfigInfo_v1620_IEs) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *CG_ConfigInfo_v1620_IEs) Decode(r *uper.UperReader) error {
+func (ie *CG_ConfigInfo_v1620_IEs) Decode(r *aper.AperReader) error {
 	var err error
 	var UeAssistanceInformationSourceSCG_r16Present bool
 	if UeAssistanceInformationSourceSCG_r16Present, err = r.ReadBool(); err != nil {
@@ -43,7 +43,7 @@ func (ie *CG_ConfigInfo_v1620_IEs) Decode(r *uper.UperReader) error {
 	}
 	if UeAssistanceInformationSourceSCG_r16Present {
 		var tmp_os_UeAssistanceInformationSourceSCG_r16 []byte
-		if tmp_os_UeAssistanceInformationSourceSCG_r16, err = r.ReadOctetString(&uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+		if tmp_os_UeAssistanceInformationSourceSCG_r16, err = r.ReadOctetString(&aper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
 			return utils.WrapError("Decode UeAssistanceInformationSourceSCG_r16", err)
 		}
 		ie.UeAssistanceInformationSourceSCG_r16 = &tmp_os_UeAssistanceInformationSourceSCG_r16

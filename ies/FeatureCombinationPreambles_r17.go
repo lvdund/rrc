@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -17,7 +17,7 @@ type FeatureCombinationPreambles_r17 struct {
 	DeltaPreamble_r17                            *int64                                                `lb:-1,ub:6,optional`
 }
 
-func (ie *FeatureCombinationPreambles_r17) Encode(w *uper.UperWriter) error {
+func (ie *FeatureCombinationPreambles_r17) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.Ssb_SharedRO_MaskIndex_r17 != nil, ie.GroupBconfigured_r17 != nil, ie.SeparateMsgA_PUSCH_Config_r17 != nil, ie.MsgA_RSRP_Threshold_r17 != nil, ie.Rsrp_ThresholdSSB_r17 != nil, ie.DeltaPreamble_r17 != nil}
 	for _, bit := range preambleBits {
@@ -28,14 +28,14 @@ func (ie *FeatureCombinationPreambles_r17) Encode(w *uper.UperWriter) error {
 	if err = ie.FeatureCombination_r17.Encode(w); err != nil {
 		return utils.WrapError("Encode FeatureCombination_r17", err)
 	}
-	if err = w.WriteInteger(ie.StartPreambleForThisPartition_r17, &uper.Constraint{Lb: 0, Ub: 63}, false); err != nil {
+	if err = w.WriteInteger(ie.StartPreambleForThisPartition_r17, &aper.Constraint{Lb: 0, Ub: 63}, false); err != nil {
 		return utils.WrapError("WriteInteger StartPreambleForThisPartition_r17", err)
 	}
-	if err = w.WriteInteger(ie.NumberOfPreamblesPerSSB_ForThisPartition_r17, &uper.Constraint{Lb: 1, Ub: 64}, false); err != nil {
+	if err = w.WriteInteger(ie.NumberOfPreamblesPerSSB_ForThisPartition_r17, &aper.Constraint{Lb: 1, Ub: 64}, false); err != nil {
 		return utils.WrapError("WriteInteger NumberOfPreamblesPerSSB_ForThisPartition_r17", err)
 	}
 	if ie.Ssb_SharedRO_MaskIndex_r17 != nil {
-		if err = w.WriteInteger(*ie.Ssb_SharedRO_MaskIndex_r17, &uper.Constraint{Lb: 1, Ub: 15}, false); err != nil {
+		if err = w.WriteInteger(*ie.Ssb_SharedRO_MaskIndex_r17, &aper.Constraint{Lb: 1, Ub: 15}, false); err != nil {
 			return utils.WrapError("Encode Ssb_SharedRO_MaskIndex_r17", err)
 		}
 	}
@@ -60,14 +60,14 @@ func (ie *FeatureCombinationPreambles_r17) Encode(w *uper.UperWriter) error {
 		}
 	}
 	if ie.DeltaPreamble_r17 != nil {
-		if err = w.WriteInteger(*ie.DeltaPreamble_r17, &uper.Constraint{Lb: -1, Ub: 6}, false); err != nil {
+		if err = w.WriteInteger(*ie.DeltaPreamble_r17, &aper.Constraint{Lb: -1, Ub: 6}, false); err != nil {
 			return utils.WrapError("Encode DeltaPreamble_r17", err)
 		}
 	}
 	return nil
 }
 
-func (ie *FeatureCombinationPreambles_r17) Decode(r *uper.UperReader) error {
+func (ie *FeatureCombinationPreambles_r17) Decode(r *aper.AperReader) error {
 	var err error
 	var Ssb_SharedRO_MaskIndex_r17Present bool
 	if Ssb_SharedRO_MaskIndex_r17Present, err = r.ReadBool(); err != nil {
@@ -97,18 +97,18 @@ func (ie *FeatureCombinationPreambles_r17) Decode(r *uper.UperReader) error {
 		return utils.WrapError("Decode FeatureCombination_r17", err)
 	}
 	var tmp_int_StartPreambleForThisPartition_r17 int64
-	if tmp_int_StartPreambleForThisPartition_r17, err = r.ReadInteger(&uper.Constraint{Lb: 0, Ub: 63}, false); err != nil {
+	if tmp_int_StartPreambleForThisPartition_r17, err = r.ReadInteger(&aper.Constraint{Lb: 0, Ub: 63}, false); err != nil {
 		return utils.WrapError("ReadInteger StartPreambleForThisPartition_r17", err)
 	}
 	ie.StartPreambleForThisPartition_r17 = tmp_int_StartPreambleForThisPartition_r17
 	var tmp_int_NumberOfPreamblesPerSSB_ForThisPartition_r17 int64
-	if tmp_int_NumberOfPreamblesPerSSB_ForThisPartition_r17, err = r.ReadInteger(&uper.Constraint{Lb: 1, Ub: 64}, false); err != nil {
+	if tmp_int_NumberOfPreamblesPerSSB_ForThisPartition_r17, err = r.ReadInteger(&aper.Constraint{Lb: 1, Ub: 64}, false); err != nil {
 		return utils.WrapError("ReadInteger NumberOfPreamblesPerSSB_ForThisPartition_r17", err)
 	}
 	ie.NumberOfPreamblesPerSSB_ForThisPartition_r17 = tmp_int_NumberOfPreamblesPerSSB_ForThisPartition_r17
 	if Ssb_SharedRO_MaskIndex_r17Present {
 		var tmp_int_Ssb_SharedRO_MaskIndex_r17 int64
-		if tmp_int_Ssb_SharedRO_MaskIndex_r17, err = r.ReadInteger(&uper.Constraint{Lb: 1, Ub: 15}, false); err != nil {
+		if tmp_int_Ssb_SharedRO_MaskIndex_r17, err = r.ReadInteger(&aper.Constraint{Lb: 1, Ub: 15}, false); err != nil {
 			return utils.WrapError("Decode Ssb_SharedRO_MaskIndex_r17", err)
 		}
 		ie.Ssb_SharedRO_MaskIndex_r17 = &tmp_int_Ssb_SharedRO_MaskIndex_r17
@@ -139,7 +139,7 @@ func (ie *FeatureCombinationPreambles_r17) Decode(r *uper.UperReader) error {
 	}
 	if DeltaPreamble_r17Present {
 		var tmp_int_DeltaPreamble_r17 int64
-		if tmp_int_DeltaPreamble_r17, err = r.ReadInteger(&uper.Constraint{Lb: -1, Ub: 6}, false); err != nil {
+		if tmp_int_DeltaPreamble_r17, err = r.ReadInteger(&aper.Constraint{Lb: -1, Ub: 6}, false); err != nil {
 			return utils.WrapError("Decode DeltaPreamble_r17", err)
 		}
 		ie.DeltaPreamble_r17 = &tmp_int_DeltaPreamble_r17

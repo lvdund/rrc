@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -10,7 +10,7 @@ type UplinkDataCompression_r17_newSetup struct {
 	Dictionary_r17 *UplinkDataCompression_r17_newSetup_dictionary_r17 `optional`
 }
 
-func (ie *UplinkDataCompression_r17_newSetup) Encode(w *uper.UperWriter) error {
+func (ie *UplinkDataCompression_r17_newSetup) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.Dictionary_r17 != nil}
 	for _, bit := range preambleBits {
@@ -29,7 +29,7 @@ func (ie *UplinkDataCompression_r17_newSetup) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *UplinkDataCompression_r17_newSetup) Decode(r *uper.UperReader) error {
+func (ie *UplinkDataCompression_r17_newSetup) Decode(r *aper.AperReader) error {
 	var err error
 	var Dictionary_r17Present bool
 	if Dictionary_r17Present, err = r.ReadBool(); err != nil {

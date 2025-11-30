@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -11,7 +11,7 @@ type UplinkConfigCommon struct {
 	Dummy            TimeAlignmentTimer `madatory`
 }
 
-func (ie *UplinkConfigCommon) Encode(w *uper.UperWriter) error {
+func (ie *UplinkConfigCommon) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.FrequencyInfoUL != nil, ie.InitialUplinkBWP != nil}
 	for _, bit := range preambleBits {
@@ -35,7 +35,7 @@ func (ie *UplinkConfigCommon) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *UplinkConfigCommon) Decode(r *uper.UperReader) error {
+func (ie *UplinkConfigCommon) Decode(r *aper.AperReader) error {
 	var err error
 	var FrequencyInfoULPresent bool
 	if FrequencyInfoULPresent, err = r.ReadBool(); err != nil {

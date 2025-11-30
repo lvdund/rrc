@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -10,12 +10,12 @@ type BandCombinationInfo struct {
 	AllowedFeatureSetsList []FeatureSetEntryIndex `lb:1,ub:maxFeatureSetsPerBand,madatory`
 }
 
-func (ie *BandCombinationInfo) Encode(w *uper.UperWriter) error {
+func (ie *BandCombinationInfo) Encode(w *aper.AperWriter) error {
 	var err error
 	if err = ie.BandCombinationIndex.Encode(w); err != nil {
 		return utils.WrapError("Encode BandCombinationIndex", err)
 	}
-	tmp_AllowedFeatureSetsList := utils.NewSequence[*FeatureSetEntryIndex]([]*FeatureSetEntryIndex{}, uper.Constraint{Lb: 1, Ub: maxFeatureSetsPerBand}, false)
+	tmp_AllowedFeatureSetsList := utils.NewSequence[*FeatureSetEntryIndex]([]*FeatureSetEntryIndex{}, aper.Constraint{Lb: 1, Ub: maxFeatureSetsPerBand}, false)
 	for _, i := range ie.AllowedFeatureSetsList {
 		tmp_AllowedFeatureSetsList.Value = append(tmp_AllowedFeatureSetsList.Value, &i)
 	}
@@ -25,12 +25,12 @@ func (ie *BandCombinationInfo) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *BandCombinationInfo) Decode(r *uper.UperReader) error {
+func (ie *BandCombinationInfo) Decode(r *aper.AperReader) error {
 	var err error
 	if err = ie.BandCombinationIndex.Decode(r); err != nil {
 		return utils.WrapError("Decode BandCombinationIndex", err)
 	}
-	tmp_AllowedFeatureSetsList := utils.NewSequence[*FeatureSetEntryIndex]([]*FeatureSetEntryIndex{}, uper.Constraint{Lb: 1, Ub: maxFeatureSetsPerBand}, false)
+	tmp_AllowedFeatureSetsList := utils.NewSequence[*FeatureSetEntryIndex]([]*FeatureSetEntryIndex{}, aper.Constraint{Lb: 1, Ub: maxFeatureSetsPerBand}, false)
 	fn_AllowedFeatureSetsList := func() *FeatureSetEntryIndex {
 		return new(FeatureSetEntryIndex)
 	}

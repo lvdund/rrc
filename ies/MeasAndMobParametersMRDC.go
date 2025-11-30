@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -11,7 +11,7 @@ type MeasAndMobParametersMRDC struct {
 	MeasAndMobParametersMRDC_FRX_Diff *MeasAndMobParametersMRDC_FRX_Diff `optional`
 }
 
-func (ie *MeasAndMobParametersMRDC) Encode(w *uper.UperWriter) error {
+func (ie *MeasAndMobParametersMRDC) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.MeasAndMobParametersMRDC_Common != nil, ie.MeasAndMobParametersMRDC_XDD_Diff != nil, ie.MeasAndMobParametersMRDC_FRX_Diff != nil}
 	for _, bit := range preambleBits {
@@ -37,7 +37,7 @@ func (ie *MeasAndMobParametersMRDC) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *MeasAndMobParametersMRDC) Decode(r *uper.UperReader) error {
+func (ie *MeasAndMobParametersMRDC) Decode(r *aper.AperReader) error {
 	var err error
 	var MeasAndMobParametersMRDC_CommonPresent bool
 	if MeasAndMobParametersMRDC_CommonPresent, err = r.ReadBool(); err != nil {

@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -10,7 +10,7 @@ type SearchSpaceSwitchConfig_r16 struct {
 	SearchSpaceSwitchDelay_r16  *int64                   `lb:10,ub:52,optional`
 }
 
-func (ie *SearchSpaceSwitchConfig_r16) Encode(w *uper.UperWriter) error {
+func (ie *SearchSpaceSwitchConfig_r16) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{len(ie.CellGroupsForSwitchList_r16) > 0, ie.SearchSpaceSwitchDelay_r16 != nil}
 	for _, bit := range preambleBits {
@@ -19,7 +19,7 @@ func (ie *SearchSpaceSwitchConfig_r16) Encode(w *uper.UperWriter) error {
 		}
 	}
 	if len(ie.CellGroupsForSwitchList_r16) > 0 {
-		tmp_CellGroupsForSwitchList_r16 := utils.NewSequence[*CellGroupForSwitch_r16]([]*CellGroupForSwitch_r16{}, uper.Constraint{Lb: 1, Ub: 4}, false)
+		tmp_CellGroupsForSwitchList_r16 := utils.NewSequence[*CellGroupForSwitch_r16]([]*CellGroupForSwitch_r16{}, aper.Constraint{Lb: 1, Ub: 4}, false)
 		for _, i := range ie.CellGroupsForSwitchList_r16 {
 			tmp_CellGroupsForSwitchList_r16.Value = append(tmp_CellGroupsForSwitchList_r16.Value, &i)
 		}
@@ -28,14 +28,14 @@ func (ie *SearchSpaceSwitchConfig_r16) Encode(w *uper.UperWriter) error {
 		}
 	}
 	if ie.SearchSpaceSwitchDelay_r16 != nil {
-		if err = w.WriteInteger(*ie.SearchSpaceSwitchDelay_r16, &uper.Constraint{Lb: 10, Ub: 52}, false); err != nil {
+		if err = w.WriteInteger(*ie.SearchSpaceSwitchDelay_r16, &aper.Constraint{Lb: 10, Ub: 52}, false); err != nil {
 			return utils.WrapError("Encode SearchSpaceSwitchDelay_r16", err)
 		}
 	}
 	return nil
 }
 
-func (ie *SearchSpaceSwitchConfig_r16) Decode(r *uper.UperReader) error {
+func (ie *SearchSpaceSwitchConfig_r16) Decode(r *aper.AperReader) error {
 	var err error
 	var CellGroupsForSwitchList_r16Present bool
 	if CellGroupsForSwitchList_r16Present, err = r.ReadBool(); err != nil {
@@ -46,7 +46,7 @@ func (ie *SearchSpaceSwitchConfig_r16) Decode(r *uper.UperReader) error {
 		return err
 	}
 	if CellGroupsForSwitchList_r16Present {
-		tmp_CellGroupsForSwitchList_r16 := utils.NewSequence[*CellGroupForSwitch_r16]([]*CellGroupForSwitch_r16{}, uper.Constraint{Lb: 1, Ub: 4}, false)
+		tmp_CellGroupsForSwitchList_r16 := utils.NewSequence[*CellGroupForSwitch_r16]([]*CellGroupForSwitch_r16{}, aper.Constraint{Lb: 1, Ub: 4}, false)
 		fn_CellGroupsForSwitchList_r16 := func() *CellGroupForSwitch_r16 {
 			return new(CellGroupForSwitch_r16)
 		}
@@ -60,7 +60,7 @@ func (ie *SearchSpaceSwitchConfig_r16) Decode(r *uper.UperReader) error {
 	}
 	if SearchSpaceSwitchDelay_r16Present {
 		var tmp_int_SearchSpaceSwitchDelay_r16 int64
-		if tmp_int_SearchSpaceSwitchDelay_r16, err = r.ReadInteger(&uper.Constraint{Lb: 10, Ub: 52}, false); err != nil {
+		if tmp_int_SearchSpaceSwitchDelay_r16, err = r.ReadInteger(&aper.Constraint{Lb: 10, Ub: 52}, false); err != nil {
 			return utils.WrapError("Decode SearchSpaceSwitchDelay_r16", err)
 		}
 		ie.SearchSpaceSwitchDelay_r16 = &tmp_int_SearchSpaceSwitchDelay_r16

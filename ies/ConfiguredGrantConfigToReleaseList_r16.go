@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -9,9 +9,9 @@ type ConfiguredGrantConfigToReleaseList_r16 struct {
 	Value []ConfiguredGrantConfigIndex_r16 `lb:1,ub:maxNrofConfiguredGrantConfig_r16,madatory`
 }
 
-func (ie *ConfiguredGrantConfigToReleaseList_r16) Encode(w *uper.UperWriter) error {
+func (ie *ConfiguredGrantConfigToReleaseList_r16) Encode(w *aper.AperWriter) error {
 	var err error
-	tmp := utils.NewSequence[*ConfiguredGrantConfigIndex_r16]([]*ConfiguredGrantConfigIndex_r16{}, uper.Constraint{Lb: 1, Ub: maxNrofConfiguredGrantConfig_r16}, false)
+	tmp := utils.NewSequence[*ConfiguredGrantConfigIndex_r16]([]*ConfiguredGrantConfigIndex_r16{}, aper.Constraint{Lb: 1, Ub: maxNrofConfiguredGrantConfig_r16}, false)
 	for _, i := range ie.Value {
 		tmp.Value = append(tmp.Value, &i)
 	}
@@ -21,9 +21,9 @@ func (ie *ConfiguredGrantConfigToReleaseList_r16) Encode(w *uper.UperWriter) err
 	return nil
 }
 
-func (ie *ConfiguredGrantConfigToReleaseList_r16) Decode(r *uper.UperReader) error {
+func (ie *ConfiguredGrantConfigToReleaseList_r16) Decode(r *aper.AperReader) error {
 	var err error
-	tmp := utils.NewSequence[*ConfiguredGrantConfigIndex_r16]([]*ConfiguredGrantConfigIndex_r16{}, uper.Constraint{Lb: 1, Ub: maxNrofConfiguredGrantConfig_r16}, false)
+	tmp := utils.NewSequence[*ConfiguredGrantConfigIndex_r16]([]*ConfiguredGrantConfigIndex_r16{}, aper.Constraint{Lb: 1, Ub: maxNrofConfiguredGrantConfig_r16}, false)
 	fn := func() *ConfiguredGrantConfigIndex_r16 {
 		return new(ConfiguredGrantConfigIndex_r16)
 	}

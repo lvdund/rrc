@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -12,7 +12,7 @@ type OLPC_SRS_Pos_r16 struct {
 	MaxNumberPathLossEstimatePerServing_r16 *OLPC_SRS_Pos_r16_maxNumberPathLossEstimatePerServing_r16 `optional`
 }
 
-func (ie *OLPC_SRS_Pos_r16) Encode(w *uper.UperWriter) error {
+func (ie *OLPC_SRS_Pos_r16) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.Olpc_SRS_PosBasedOnPRS_Serving_r16 != nil, ie.Olpc_SRS_PosBasedOnSSB_Neigh_r16 != nil, ie.Olpc_SRS_PosBasedOnPRS_Neigh_r16 != nil, ie.MaxNumberPathLossEstimatePerServing_r16 != nil}
 	for _, bit := range preambleBits {
@@ -43,7 +43,7 @@ func (ie *OLPC_SRS_Pos_r16) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *OLPC_SRS_Pos_r16) Decode(r *uper.UperReader) error {
+func (ie *OLPC_SRS_Pos_r16) Decode(r *aper.AperReader) error {
 	var err error
 	var Olpc_SRS_PosBasedOnPRS_Serving_r16Present bool
 	if Olpc_SRS_PosBasedOnPRS_Serving_r16Present, err = r.ReadBool(); err != nil {

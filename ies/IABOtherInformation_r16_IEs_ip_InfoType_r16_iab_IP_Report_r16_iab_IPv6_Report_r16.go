@@ -3,7 +3,7 @@ package ies
 import (
 	"fmt"
 
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -19,7 +19,7 @@ type IABOtherInformation_r16_IEs_ip_InfoType_r16_iab_IP_Report_r16_iab_IPv6_Repo
 	Iab_IPv6_PrefixReport_r16  *IAB_IP_PrefixAndTraffic_r16
 }
 
-func (ie *IABOtherInformation_r16_IEs_ip_InfoType_r16_iab_IP_Report_r16_iab_IPv6_Report_r16) Encode(w *uper.UperWriter) error {
+func (ie *IABOtherInformation_r16_IEs_ip_InfoType_r16_iab_IP_Report_r16_iab_IPv6_Report_r16) Encode(w *aper.AperWriter) error {
 	var err error
 	if err = w.WriteChoice(ie.Choice, 2, false); err != nil {
 		return err
@@ -39,7 +39,7 @@ func (ie *IABOtherInformation_r16_IEs_ip_InfoType_r16_iab_IP_Report_r16_iab_IPv6
 	return err
 }
 
-func (ie *IABOtherInformation_r16_IEs_ip_InfoType_r16_iab_IP_Report_r16_iab_IPv6_Report_r16) Decode(r *uper.UperReader) error {
+func (ie *IABOtherInformation_r16_IEs_ip_InfoType_r16_iab_IP_Report_r16_iab_IPv6_Report_r16) Decode(r *aper.AperReader) error {
 	var err error
 	if ie.Choice, err = r.ReadChoice(2, false); err != nil {
 		return err

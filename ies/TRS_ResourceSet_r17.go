@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -13,12 +13,12 @@ type TRS_ResourceSet_r17 struct {
 	NrofRBs_r17                     int64                                        `lb:24,ub:maxNrofPhysicalResourceBlocksPlus1,madatory,ext`
 	Ssb_Index_r17                   SSB_Index                                    `madatory,ext`
 	PeriodicityAndOffset_r17        TRS_ResourceSet_r17_periodicityAndOffset_r17 `lb:0,ub:9,madatory,ext`
-	FrequencyDomainAllocation_r17   uper.BitString                               `lb:4,ub:4,madatory,ext`
+	FrequencyDomainAllocation_r17   aper.BitString                               `lb:4,ub:4,madatory,ext`
 	IndBitID_r17                    int64                                        `lb:0,ub:5,madatory,ext`
 	NrofResources_r17               TRS_ResourceSet_r17_nrofResources_r17        `madatory,ext`
 }
 
-func (ie *TRS_ResourceSet_r17) Encode(w *uper.UperWriter) error {
+func (ie *TRS_ResourceSet_r17) Encode(w *aper.AperWriter) error {
 	var err error
 	if err = ie.PowerControlOffsetSS_r17.Encode(w); err != nil {
 		return utils.WrapError("Encode PowerControlOffsetSS_r17", err)
@@ -29,7 +29,7 @@ func (ie *TRS_ResourceSet_r17) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *TRS_ResourceSet_r17) Decode(r *uper.UperReader) error {
+func (ie *TRS_ResourceSet_r17) Decode(r *aper.AperReader) error {
 	var err error
 	if err = ie.PowerControlOffsetSS_r17.Decode(r); err != nil {
 		return utils.WrapError("Decode PowerControlOffsetSS_r17", err)

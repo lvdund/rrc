@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -15,7 +15,7 @@ type LTE_NeighCellsCRS_AssistInfo_r17 struct {
 	NeighV_Shift_r17                  *LTE_NeighCellsCRS_AssistInfo_r17_neighV_Shift_r17            `optional`
 }
 
-func (ie *LTE_NeighCellsCRS_AssistInfo_r17) Encode(w *uper.UperWriter) error {
+func (ie *LTE_NeighCellsCRS_AssistInfo_r17) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.NeighCarrierBandwidthDL_r17 != nil, ie.NeighCarrierFreqDL_r17 != nil, ie.NeighCellId_r17 != nil, ie.NeighCRS_muting_r17 != nil, ie.NeighMBSFN_SubframeConfigList_r17 != nil, ie.NeighNrofCRS_Ports_r17 != nil, ie.NeighV_Shift_r17 != nil}
 	for _, bit := range preambleBits {
@@ -29,7 +29,7 @@ func (ie *LTE_NeighCellsCRS_AssistInfo_r17) Encode(w *uper.UperWriter) error {
 		}
 	}
 	if ie.NeighCarrierFreqDL_r17 != nil {
-		if err = w.WriteInteger(*ie.NeighCarrierFreqDL_r17, &uper.Constraint{Lb: 0, Ub: 16383}, false); err != nil {
+		if err = w.WriteInteger(*ie.NeighCarrierFreqDL_r17, &aper.Constraint{Lb: 0, Ub: 16383}, false); err != nil {
 			return utils.WrapError("Encode NeighCarrierFreqDL_r17", err)
 		}
 	}
@@ -61,7 +61,7 @@ func (ie *LTE_NeighCellsCRS_AssistInfo_r17) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *LTE_NeighCellsCRS_AssistInfo_r17) Decode(r *uper.UperReader) error {
+func (ie *LTE_NeighCellsCRS_AssistInfo_r17) Decode(r *aper.AperReader) error {
 	var err error
 	var NeighCarrierBandwidthDL_r17Present bool
 	if NeighCarrierBandwidthDL_r17Present, err = r.ReadBool(); err != nil {
@@ -99,7 +99,7 @@ func (ie *LTE_NeighCellsCRS_AssistInfo_r17) Decode(r *uper.UperReader) error {
 	}
 	if NeighCarrierFreqDL_r17Present {
 		var tmp_int_NeighCarrierFreqDL_r17 int64
-		if tmp_int_NeighCarrierFreqDL_r17, err = r.ReadInteger(&uper.Constraint{Lb: 0, Ub: 16383}, false); err != nil {
+		if tmp_int_NeighCarrierFreqDL_r17, err = r.ReadInteger(&aper.Constraint{Lb: 0, Ub: 16383}, false); err != nil {
 			return utils.WrapError("Decode NeighCarrierFreqDL_r17", err)
 		}
 		ie.NeighCarrierFreqDL_r17 = &tmp_int_NeighCarrierFreqDL_r17

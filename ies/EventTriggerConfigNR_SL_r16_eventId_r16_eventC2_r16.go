@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -11,7 +11,7 @@ type EventTriggerConfigNR_SL_r16_eventId_r16_eventC2_r16 struct {
 	TimeToTrigger_r16 TimeToTrigger `madatory`
 }
 
-func (ie *EventTriggerConfigNR_SL_r16_eventId_r16_eventC2_r16) Encode(w *uper.UperWriter) error {
+func (ie *EventTriggerConfigNR_SL_r16_eventId_r16_eventC2_r16) Encode(w *aper.AperWriter) error {
 	var err error
 	if err = ie.C2_Threshold_r16.Encode(w); err != nil {
 		return utils.WrapError("Encode C2_Threshold_r16", err)
@@ -25,7 +25,7 @@ func (ie *EventTriggerConfigNR_SL_r16_eventId_r16_eventC2_r16) Encode(w *uper.Up
 	return nil
 }
 
-func (ie *EventTriggerConfigNR_SL_r16_eventId_r16_eventC2_r16) Decode(r *uper.UperReader) error {
+func (ie *EventTriggerConfigNR_SL_r16_eventId_r16_eventC2_r16) Decode(r *aper.AperReader) error {
 	var err error
 	if err = ie.C2_Threshold_r16.Decode(r); err != nil {
 		return utils.WrapError("Decode C2_Threshold_r16", err)

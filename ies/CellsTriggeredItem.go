@@ -3,7 +3,7 @@ package ies
 import (
 	"fmt"
 
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -21,7 +21,7 @@ type CellsTriggeredItem struct {
 	PhysCellIdUTRA_FDD_r16 *PhysCellIdUTRA_FDD_r16
 }
 
-func (ie *CellsTriggeredItem) Encode(w *uper.UperWriter) error {
+func (ie *CellsTriggeredItem) Encode(w *aper.AperWriter) error {
 	var err error
 	if err = w.WriteChoice(ie.Choice, 3, false); err != nil {
 		return err
@@ -45,7 +45,7 @@ func (ie *CellsTriggeredItem) Encode(w *uper.UperWriter) error {
 	return err
 }
 
-func (ie *CellsTriggeredItem) Decode(r *uper.UperReader) error {
+func (ie *CellsTriggeredItem) Decode(r *aper.AperReader) error {
 	var err error
 	if ie.Choice, err = r.ReadChoice(3, false); err != nil {
 		return err

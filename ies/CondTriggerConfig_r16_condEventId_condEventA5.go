@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -12,7 +12,7 @@ type CondTriggerConfig_r16_condEventId_condEventA5 struct {
 	TimeToTrigger TimeToTrigger       `madatory`
 }
 
-func (ie *CondTriggerConfig_r16_condEventId_condEventA5) Encode(w *uper.UperWriter) error {
+func (ie *CondTriggerConfig_r16_condEventId_condEventA5) Encode(w *aper.AperWriter) error {
 	var err error
 	if err = ie.A5_Threshold1.Encode(w); err != nil {
 		return utils.WrapError("Encode A5_Threshold1", err)
@@ -29,7 +29,7 @@ func (ie *CondTriggerConfig_r16_condEventId_condEventA5) Encode(w *uper.UperWrit
 	return nil
 }
 
-func (ie *CondTriggerConfig_r16_condEventId_condEventA5) Decode(r *uper.UperReader) error {
+func (ie *CondTriggerConfig_r16_condEventId_condEventA5) Decode(r *aper.AperReader) error {
 	var err error
 	if err = ie.A5_Threshold1.Decode(r); err != nil {
 		return utils.WrapError("Decode A5_Threshold1", err)

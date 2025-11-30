@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -9,9 +9,9 @@ type PCI_List struct {
 	Value []PhysCellId `lb:1,ub:maxNrofCellMeas,madatory`
 }
 
-func (ie *PCI_List) Encode(w *uper.UperWriter) error {
+func (ie *PCI_List) Encode(w *aper.AperWriter) error {
 	var err error
-	tmp := utils.NewSequence[*PhysCellId]([]*PhysCellId{}, uper.Constraint{Lb: 1, Ub: maxNrofCellMeas}, false)
+	tmp := utils.NewSequence[*PhysCellId]([]*PhysCellId{}, aper.Constraint{Lb: 1, Ub: maxNrofCellMeas}, false)
 	for _, i := range ie.Value {
 		tmp.Value = append(tmp.Value, &i)
 	}
@@ -21,9 +21,9 @@ func (ie *PCI_List) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *PCI_List) Decode(r *uper.UperReader) error {
+func (ie *PCI_List) Decode(r *aper.AperReader) error {
 	var err error
-	tmp := utils.NewSequence[*PhysCellId]([]*PhysCellId{}, uper.Constraint{Lb: 1, Ub: maxNrofCellMeas}, false)
+	tmp := utils.NewSequence[*PhysCellId]([]*PhysCellId{}, aper.Constraint{Lb: 1, Ub: maxNrofCellMeas}, false)
 	fn := func() *PhysCellId {
 		return new(PhysCellId)
 	}

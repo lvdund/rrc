@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -10,7 +10,7 @@ type RRCReestablishment_v1700_IEs struct {
 	NonCriticalExtension     interface{}               `optional`
 }
 
-func (ie *RRCReestablishment_v1700_IEs) Encode(w *uper.UperWriter) error {
+func (ie *RRCReestablishment_v1700_IEs) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.Sl_L2RemoteUE_Config_r17 != nil}
 	for _, bit := range preambleBits {
@@ -29,7 +29,7 @@ func (ie *RRCReestablishment_v1700_IEs) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *RRCReestablishment_v1700_IEs) Decode(r *uper.UperReader) error {
+func (ie *RRCReestablishment_v1700_IEs) Decode(r *aper.AperReader) error {
 	var err error
 	var Sl_L2RemoteUE_Config_r17Present bool
 	if Sl_L2RemoteUE_Config_r17Present, err = r.ReadBool(); err != nil {

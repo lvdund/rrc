@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -12,7 +12,7 @@ type SSB_MTC3_r16 struct {
 	Ssb_ToMeasure_r16        *SSB_ToMeasure                        `optional,setuprelease`
 }
 
-func (ie *SSB_MTC3_r16) Encode(w *uper.UperWriter) error {
+func (ie *SSB_MTC3_r16) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{len(ie.Pci_List_r16) > 0, ie.Ssb_ToMeasure_r16 != nil}
 	for _, bit := range preambleBits {
@@ -27,7 +27,7 @@ func (ie *SSB_MTC3_r16) Encode(w *uper.UperWriter) error {
 		return utils.WrapError("Encode Duration_r16", err)
 	}
 	if len(ie.Pci_List_r16) > 0 {
-		tmp_Pci_List_r16 := utils.NewSequence[*PhysCellId]([]*PhysCellId{}, uper.Constraint{Lb: 1, Ub: maxNrofPCIsPerSMTC}, false)
+		tmp_Pci_List_r16 := utils.NewSequence[*PhysCellId]([]*PhysCellId{}, aper.Constraint{Lb: 1, Ub: maxNrofPCIsPerSMTC}, false)
 		for _, i := range ie.Pci_List_r16 {
 			tmp_Pci_List_r16.Value = append(tmp_Pci_List_r16.Value, &i)
 		}
@@ -46,7 +46,7 @@ func (ie *SSB_MTC3_r16) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *SSB_MTC3_r16) Decode(r *uper.UperReader) error {
+func (ie *SSB_MTC3_r16) Decode(r *aper.AperReader) error {
 	var err error
 	var Pci_List_r16Present bool
 	if Pci_List_r16Present, err = r.ReadBool(); err != nil {
@@ -63,7 +63,7 @@ func (ie *SSB_MTC3_r16) Decode(r *uper.UperReader) error {
 		return utils.WrapError("Decode Duration_r16", err)
 	}
 	if Pci_List_r16Present {
-		tmp_Pci_List_r16 := utils.NewSequence[*PhysCellId]([]*PhysCellId{}, uper.Constraint{Lb: 1, Ub: maxNrofPCIsPerSMTC}, false)
+		tmp_Pci_List_r16 := utils.NewSequence[*PhysCellId]([]*PhysCellId{}, aper.Constraint{Lb: 1, Ub: maxNrofPCIsPerSMTC}, false)
 		fn_Pci_List_r16 := func() *PhysCellId {
 			return new(PhysCellId)
 		}

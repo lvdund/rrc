@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -13,7 +13,7 @@ type InterFreqCarrierFreqInfo_v1610 struct {
 	InterFreqCAG_CellList_r16    []InterFreqCAG_CellListPerPLMN_r16 `lb:1,ub:maxPLMN,optional`
 }
 
-func (ie *InterFreqCarrierFreqInfo_v1610) Encode(w *uper.UperWriter) error {
+func (ie *InterFreqCarrierFreqInfo_v1610) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.InterFreqNeighCellList_v1610 != nil, ie.Smtc2_LP_r16 != nil, ie.InterFreqAllowedCellList_r16 != nil, ie.Ssb_PositionQCL_Common_r16 != nil, len(ie.InterFreqCAG_CellList_r16) > 0}
 	for _, bit := range preambleBits {
@@ -42,7 +42,7 @@ func (ie *InterFreqCarrierFreqInfo_v1610) Encode(w *uper.UperWriter) error {
 		}
 	}
 	if len(ie.InterFreqCAG_CellList_r16) > 0 {
-		tmp_InterFreqCAG_CellList_r16 := utils.NewSequence[*InterFreqCAG_CellListPerPLMN_r16]([]*InterFreqCAG_CellListPerPLMN_r16{}, uper.Constraint{Lb: 1, Ub: maxPLMN}, false)
+		tmp_InterFreqCAG_CellList_r16 := utils.NewSequence[*InterFreqCAG_CellListPerPLMN_r16]([]*InterFreqCAG_CellListPerPLMN_r16{}, aper.Constraint{Lb: 1, Ub: maxPLMN}, false)
 		for _, i := range ie.InterFreqCAG_CellList_r16 {
 			tmp_InterFreqCAG_CellList_r16.Value = append(tmp_InterFreqCAG_CellList_r16.Value, &i)
 		}
@@ -53,7 +53,7 @@ func (ie *InterFreqCarrierFreqInfo_v1610) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *InterFreqCarrierFreqInfo_v1610) Decode(r *uper.UperReader) error {
+func (ie *InterFreqCarrierFreqInfo_v1610) Decode(r *aper.AperReader) error {
 	var err error
 	var InterFreqNeighCellList_v1610Present bool
 	if InterFreqNeighCellList_v1610Present, err = r.ReadBool(); err != nil {
@@ -100,7 +100,7 @@ func (ie *InterFreqCarrierFreqInfo_v1610) Decode(r *uper.UperReader) error {
 		}
 	}
 	if InterFreqCAG_CellList_r16Present {
-		tmp_InterFreqCAG_CellList_r16 := utils.NewSequence[*InterFreqCAG_CellListPerPLMN_r16]([]*InterFreqCAG_CellListPerPLMN_r16{}, uper.Constraint{Lb: 1, Ub: maxPLMN}, false)
+		tmp_InterFreqCAG_CellList_r16 := utils.NewSequence[*InterFreqCAG_CellListPerPLMN_r16]([]*InterFreqCAG_CellListPerPLMN_r16{}, aper.Constraint{Lb: 1, Ub: maxPLMN}, false)
 		fn_InterFreqCAG_CellList_r16 := func() *InterFreqCAG_CellListPerPLMN_r16 {
 			return new(InterFreqCAG_CellListPerPLMN_r16)
 		}

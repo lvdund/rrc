@@ -3,7 +3,7 @@ package ies
 import (
 	"bytes"
 
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -18,7 +18,7 @@ type PLMN_IdentityInfo struct {
 	GNB_ID_Length_r17          *int64                                       `lb:22,ub:32,optional,ext-2`
 }
 
-func (ie *PLMN_IdentityInfo) Encode(w *uper.UperWriter) error {
+func (ie *PLMN_IdentityInfo) Encode(w *aper.AperWriter) error {
 	var err error
 	hasExtensions := ie.Iab_Support_r16 != nil || len(ie.TrackingAreaList_r17) > 0 || ie.GNB_ID_Length_r17 != nil
 	preambleBits := []bool{hasExtensions, ie.TrackingAreaCode != nil, ie.Ranac != nil}
@@ -27,7 +27,7 @@ func (ie *PLMN_IdentityInfo) Encode(w *uper.UperWriter) error {
 			return err
 		}
 	}
-	tmp_Plmn_IdentityList := utils.NewSequence[*PLMN_Identity]([]*PLMN_Identity{}, uper.Constraint{Lb: 1, Ub: maxPLMN}, false)
+	tmp_Plmn_IdentityList := utils.NewSequence[*PLMN_Identity]([]*PLMN_Identity{}, aper.Constraint{Lb: 1, Ub: maxPLMN}, false)
 	for _, i := range ie.Plmn_IdentityList {
 		tmp_Plmn_IdentityList.Value = append(tmp_Plmn_IdentityList.Value, &i)
 	}
@@ -60,7 +60,7 @@ func (ie *PLMN_IdentityInfo) Encode(w *uper.UperWriter) error {
 		// encode extension group 1
 		if extBitmap[0] {
 			extBuf := new(bytes.Buffer)
-			extWriter := uper.NewWriter(extBuf)
+			extWriter := aper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 1
 			optionals_ext_1 := []bool{ie.Iab_Support_r16 != nil}
@@ -89,7 +89,7 @@ func (ie *PLMN_IdentityInfo) Encode(w *uper.UperWriter) error {
 		// encode extension group 2
 		if extBitmap[1] {
 			extBuf := new(bytes.Buffer)
-			extWriter := uper.NewWriter(extBuf)
+			extWriter := aper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 2
 			optionals_ext_2 := []bool{len(ie.TrackingAreaList_r17) > 0, ie.GNB_ID_Length_r17 != nil}
@@ -101,7 +101,7 @@ func (ie *PLMN_IdentityInfo) Encode(w *uper.UperWriter) error {
 
 			// encode TrackingAreaList_r17 optional
 			if len(ie.TrackingAreaList_r17) > 0 {
-				tmp_TrackingAreaList_r17 := utils.NewSequence[*TrackingAreaCode]([]*TrackingAreaCode{}, uper.Constraint{Lb: 1, Ub: maxTAC_r17}, false)
+				tmp_TrackingAreaList_r17 := utils.NewSequence[*TrackingAreaCode]([]*TrackingAreaCode{}, aper.Constraint{Lb: 1, Ub: maxTAC_r17}, false)
 				for _, i := range ie.TrackingAreaList_r17 {
 					tmp_TrackingAreaList_r17.Value = append(tmp_TrackingAreaList_r17.Value, &i)
 				}
@@ -111,7 +111,7 @@ func (ie *PLMN_IdentityInfo) Encode(w *uper.UperWriter) error {
 			}
 			// encode GNB_ID_Length_r17 optional
 			if ie.GNB_ID_Length_r17 != nil {
-				if err = extWriter.WriteInteger(*ie.GNB_ID_Length_r17, &uper.Constraint{Lb: 22, Ub: 32}, false); err != nil {
+				if err = extWriter.WriteInteger(*ie.GNB_ID_Length_r17, &aper.Constraint{Lb: 22, Ub: 32}, false); err != nil {
 					return utils.WrapError("Encode GNB_ID_Length_r17", err)
 				}
 			}
@@ -128,7 +128,7 @@ func (ie *PLMN_IdentityInfo) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *PLMN_IdentityInfo) Decode(r *uper.UperReader) error {
+func (ie *PLMN_IdentityInfo) Decode(r *aper.AperReader) error {
 	var err error
 	var extensionBit bool
 	if extensionBit, err = r.ReadBool(); err != nil {
@@ -142,7 +142,7 @@ func (ie *PLMN_IdentityInfo) Decode(r *uper.UperReader) error {
 	if RanacPresent, err = r.ReadBool(); err != nil {
 		return err
 	}
-	tmp_Plmn_IdentityList := utils.NewSequence[*PLMN_Identity]([]*PLMN_Identity{}, uper.Constraint{Lb: 1, Ub: maxPLMN}, false)
+	tmp_Plmn_IdentityList := utils.NewSequence[*PLMN_Identity]([]*PLMN_Identity{}, aper.Constraint{Lb: 1, Ub: maxPLMN}, false)
 	fn_Plmn_IdentityList := func() *PLMN_Identity {
 		return new(PLMN_Identity)
 	}
@@ -186,7 +186,7 @@ func (ie *PLMN_IdentityInfo) Decode(r *uper.UperReader) error {
 				return err
 			}
 
-			extReader := uper.NewReader(bytes.NewReader(extBytes))
+			extReader := aper.NewReader(bytes.NewReader(extBytes))
 
 			Iab_Support_r16Present, err := extReader.ReadBool()
 			if err != nil {
@@ -207,7 +207,7 @@ func (ie *PLMN_IdentityInfo) Decode(r *uper.UperReader) error {
 				return err
 			}
 
-			extReader := uper.NewReader(bytes.NewReader(extBytes))
+			extReader := aper.NewReader(bytes.NewReader(extBytes))
 
 			TrackingAreaList_r17Present, err := extReader.ReadBool()
 			if err != nil {
@@ -219,7 +219,7 @@ func (ie *PLMN_IdentityInfo) Decode(r *uper.UperReader) error {
 			}
 			// decode TrackingAreaList_r17 optional
 			if TrackingAreaList_r17Present {
-				tmp_TrackingAreaList_r17 := utils.NewSequence[*TrackingAreaCode]([]*TrackingAreaCode{}, uper.Constraint{Lb: 1, Ub: maxTAC_r17}, false)
+				tmp_TrackingAreaList_r17 := utils.NewSequence[*TrackingAreaCode]([]*TrackingAreaCode{}, aper.Constraint{Lb: 1, Ub: maxTAC_r17}, false)
 				fn_TrackingAreaList_r17 := func() *TrackingAreaCode {
 					return new(TrackingAreaCode)
 				}
@@ -234,7 +234,7 @@ func (ie *PLMN_IdentityInfo) Decode(r *uper.UperReader) error {
 			// decode GNB_ID_Length_r17 optional
 			if GNB_ID_Length_r17Present {
 				var tmp_int_GNB_ID_Length_r17 int64
-				if tmp_int_GNB_ID_Length_r17, err = extReader.ReadInteger(&uper.Constraint{Lb: 22, Ub: 32}, false); err != nil {
+				if tmp_int_GNB_ID_Length_r17, err = extReader.ReadInteger(&aper.Constraint{Lb: 22, Ub: 32}, false); err != nil {
 					return utils.WrapError("Decode GNB_ID_Length_r17", err)
 				}
 				ie.GNB_ID_Length_r17 = &tmp_int_GNB_ID_Length_r17

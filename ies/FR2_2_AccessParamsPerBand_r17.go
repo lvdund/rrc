@@ -3,7 +3,7 @@ package ies
 import (
 	"bytes"
 
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -33,7 +33,7 @@ type FR2_2_AccessParamsPerBand_r17 struct {
 	Modulation64_QAM_PUSCH_FR2_2_r17          *FR2_2_AccessParamsPerBand_r17_modulation64_QAM_PUSCH_FR2_2_r17          `optional,ext-1`
 }
 
-func (ie *FR2_2_AccessParamsPerBand_r17) Encode(w *uper.UperWriter) error {
+func (ie *FR2_2_AccessParamsPerBand_r17) Encode(w *aper.AperWriter) error {
 	var err error
 	hasExtensions := ie.Modulation64_QAM_PUSCH_FR2_2_r17 != nil
 	preambleBits := []bool{hasExtensions, ie.Dl_FR2_2_SCS_120kHz_r17 != nil, ie.Ul_FR2_2_SCS_120kHz_r17 != nil, ie.InitialAccessSSB_120kHz_r17 != nil, ie.WidebandPRACH_SCS_120kHz_r17 != nil, ie.MultiRB_PUCCH_SCS_120kHz_r17 != nil, ie.MultiPDSCH_SingleDCI_FR2_2_SCS_120kHz_r17 != nil, ie.MultiPUSCH_SingleDCI_FR2_2_SCS_120kHz_r17 != nil, ie.Dl_FR2_2_SCS_480kHz_r17 != nil, ie.Ul_FR2_2_SCS_480kHz_r17 != nil, ie.InitialAccessSSB_480kHz_r17 != nil, ie.WidebandPRACH_SCS_480kHz_r17 != nil, ie.MultiRB_PUCCH_SCS_480kHz_r17 != nil, ie.EnhancedPDCCH_monitoringSCS_480kHz_r17 != nil, ie.Dl_FR2_2_SCS_960kHz_r17 != nil, ie.Ul_FR2_2_SCS_960kHz_r17 != nil, ie.MultiRB_PUCCH_SCS_960kHz_r17 != nil, ie.EnhancedPDCCH_monitoringSCS_960kHz_r17 != nil, ie.Type1_ChannelAccess_FR2_2_r17 != nil, ie.Type2_ChannelAccess_FR2_2_r17 != nil, ie.Reduced_BeamSwitchTiming_FR2_2_r17 != nil, ie.Support32_DL_HARQ_ProcessPerSCS_r17 != nil, ie.Support32_UL_HARQ_ProcessPerSCS_r17 != nil}
@@ -162,7 +162,7 @@ func (ie *FR2_2_AccessParamsPerBand_r17) Encode(w *uper.UperWriter) error {
 		// encode extension group 1
 		if extBitmap[0] {
 			extBuf := new(bytes.Buffer)
-			extWriter := uper.NewWriter(extBuf)
+			extWriter := aper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 1
 			optionals_ext_1 := []bool{ie.Modulation64_QAM_PUSCH_FR2_2_r17 != nil}
@@ -191,7 +191,7 @@ func (ie *FR2_2_AccessParamsPerBand_r17) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *FR2_2_AccessParamsPerBand_r17) Decode(r *uper.UperReader) error {
+func (ie *FR2_2_AccessParamsPerBand_r17) Decode(r *aper.AperReader) error {
 	var err error
 	var extensionBit bool
 	if extensionBit, err = r.ReadBool(); err != nil {
@@ -432,7 +432,7 @@ func (ie *FR2_2_AccessParamsPerBand_r17) Decode(r *uper.UperReader) error {
 				return err
 			}
 
-			extReader := uper.NewReader(bytes.NewReader(extBytes))
+			extReader := aper.NewReader(bytes.NewReader(extBytes))
 
 			Modulation64_QAM_PUSCH_FR2_2_r17Present, err := extReader.ReadBool()
 			if err != nil {

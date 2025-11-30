@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -14,7 +14,7 @@ type RRCResume_IEs struct {
 	NonCriticalExtension     *RRCResume_v1560_IEs      `optional`
 }
 
-func (ie *RRCResume_IEs) Encode(w *uper.UperWriter) error {
+func (ie *RRCResume_IEs) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.RadioBearerConfig != nil, ie.MasterCellGroup != nil, ie.MeasConfig != nil, ie.FullConfig != nil, ie.LateNonCriticalExtension != nil, ie.NonCriticalExtension != nil}
 	for _, bit := range preambleBits {
@@ -28,7 +28,7 @@ func (ie *RRCResume_IEs) Encode(w *uper.UperWriter) error {
 		}
 	}
 	if ie.MasterCellGroup != nil {
-		if err = w.WriteOctetString(*ie.MasterCellGroup, &uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+		if err = w.WriteOctetString(*ie.MasterCellGroup, &aper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
 			return utils.WrapError("Encode MasterCellGroup", err)
 		}
 	}
@@ -43,7 +43,7 @@ func (ie *RRCResume_IEs) Encode(w *uper.UperWriter) error {
 		}
 	}
 	if ie.LateNonCriticalExtension != nil {
-		if err = w.WriteOctetString(*ie.LateNonCriticalExtension, &uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+		if err = w.WriteOctetString(*ie.LateNonCriticalExtension, &aper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
 			return utils.WrapError("Encode LateNonCriticalExtension", err)
 		}
 	}
@@ -55,7 +55,7 @@ func (ie *RRCResume_IEs) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *RRCResume_IEs) Decode(r *uper.UperReader) error {
+func (ie *RRCResume_IEs) Decode(r *aper.AperReader) error {
 	var err error
 	var RadioBearerConfigPresent bool
 	if RadioBearerConfigPresent, err = r.ReadBool(); err != nil {
@@ -89,7 +89,7 @@ func (ie *RRCResume_IEs) Decode(r *uper.UperReader) error {
 	}
 	if MasterCellGroupPresent {
 		var tmp_os_MasterCellGroup []byte
-		if tmp_os_MasterCellGroup, err = r.ReadOctetString(&uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+		if tmp_os_MasterCellGroup, err = r.ReadOctetString(&aper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
 			return utils.WrapError("Decode MasterCellGroup", err)
 		}
 		ie.MasterCellGroup = &tmp_os_MasterCellGroup
@@ -108,7 +108,7 @@ func (ie *RRCResume_IEs) Decode(r *uper.UperReader) error {
 	}
 	if LateNonCriticalExtensionPresent {
 		var tmp_os_LateNonCriticalExtension []byte
-		if tmp_os_LateNonCriticalExtension, err = r.ReadOctetString(&uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+		if tmp_os_LateNonCriticalExtension, err = r.ReadOctetString(&aper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
 			return utils.WrapError("Decode LateNonCriticalExtension", err)
 		}
 		ie.LateNonCriticalExtension = &tmp_os_LateNonCriticalExtension

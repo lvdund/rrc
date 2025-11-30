@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -13,7 +13,7 @@ type FeatureSetUplink_v1610_intraFreqDAPS_UL_r16 struct {
 	Dummy3                    *FeatureSetUplink_v1610_intraFreqDAPS_UL_r16_dummy3                    `optional`
 }
 
-func (ie *FeatureSetUplink_v1610_intraFreqDAPS_UL_r16) Encode(w *uper.UperWriter) error {
+func (ie *FeatureSetUplink_v1610_intraFreqDAPS_UL_r16) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.Dummy != nil, ie.IntraFreqTwoTAGs_DAPS_r16 != nil, ie.Dummy1 != nil, ie.Dummy2 != nil, ie.Dummy3 != nil}
 	for _, bit := range preambleBits {
@@ -49,7 +49,7 @@ func (ie *FeatureSetUplink_v1610_intraFreqDAPS_UL_r16) Encode(w *uper.UperWriter
 	return nil
 }
 
-func (ie *FeatureSetUplink_v1610_intraFreqDAPS_UL_r16) Decode(r *uper.UperReader) error {
+func (ie *FeatureSetUplink_v1610_intraFreqDAPS_UL_r16) Decode(r *aper.AperReader) error {
 	var err error
 	var DummyPresent bool
 	if DummyPresent, err = r.ReadBool(); err != nil {

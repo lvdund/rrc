@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -13,7 +13,7 @@ type InterFreqCarrierFreqInfo_v1700 struct {
 	InterFreqNeighCellList_v1710    *InterFreqNeighCellList_v1710                              `optional`
 }
 
-func (ie *InterFreqCarrierFreqInfo_v1700) Encode(w *uper.UperWriter) error {
+func (ie *InterFreqCarrierFreqInfo_v1700) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.InterFreqNeighHSDN_CellList_r17 != nil, ie.HighSpeedMeasInterFreq_r17 != nil, ie.RedCapAccessAllowed_r17 != nil, ie.Ssb_PositionQCL_Common_r17 != nil, ie.InterFreqNeighCellList_v1710 != nil}
 	for _, bit := range preambleBits {
@@ -49,7 +49,7 @@ func (ie *InterFreqCarrierFreqInfo_v1700) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *InterFreqCarrierFreqInfo_v1700) Decode(r *uper.UperReader) error {
+func (ie *InterFreqCarrierFreqInfo_v1700) Decode(r *aper.AperReader) error {
 	var err error
 	var InterFreqNeighHSDN_CellList_r17Present bool
 	if InterFreqNeighHSDN_CellList_r17Present, err = r.ReadBool(); err != nil {

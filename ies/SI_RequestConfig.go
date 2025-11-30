@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -11,7 +11,7 @@ type SI_RequestConfig struct {
 	Si_RequestResources []SI_RequestResources              `lb:1,ub:maxSI_Message,madatory`
 }
 
-func (ie *SI_RequestConfig) Encode(w *uper.UperWriter) error {
+func (ie *SI_RequestConfig) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.Rach_OccasionsSI != nil, ie.Si_RequestPeriod != nil}
 	for _, bit := range preambleBits {
@@ -29,7 +29,7 @@ func (ie *SI_RequestConfig) Encode(w *uper.UperWriter) error {
 			return utils.WrapError("Encode Si_RequestPeriod", err)
 		}
 	}
-	tmp_Si_RequestResources := utils.NewSequence[*SI_RequestResources]([]*SI_RequestResources{}, uper.Constraint{Lb: 1, Ub: maxSI_Message}, false)
+	tmp_Si_RequestResources := utils.NewSequence[*SI_RequestResources]([]*SI_RequestResources{}, aper.Constraint{Lb: 1, Ub: maxSI_Message}, false)
 	for _, i := range ie.Si_RequestResources {
 		tmp_Si_RequestResources.Value = append(tmp_Si_RequestResources.Value, &i)
 	}
@@ -39,7 +39,7 @@ func (ie *SI_RequestConfig) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *SI_RequestConfig) Decode(r *uper.UperReader) error {
+func (ie *SI_RequestConfig) Decode(r *aper.AperReader) error {
 	var err error
 	var Rach_OccasionsSIPresent bool
 	if Rach_OccasionsSIPresent, err = r.ReadBool(); err != nil {
@@ -61,7 +61,7 @@ func (ie *SI_RequestConfig) Decode(r *uper.UperReader) error {
 			return utils.WrapError("Decode Si_RequestPeriod", err)
 		}
 	}
-	tmp_Si_RequestResources := utils.NewSequence[*SI_RequestResources]([]*SI_RequestResources{}, uper.Constraint{Lb: 1, Ub: maxSI_Message}, false)
+	tmp_Si_RequestResources := utils.NewSequence[*SI_RequestResources]([]*SI_RequestResources{}, aper.Constraint{Lb: 1, Ub: maxSI_Message}, false)
 	fn_Si_RequestResources := func() *SI_RequestResources {
 		return new(SI_RequestResources)
 	}

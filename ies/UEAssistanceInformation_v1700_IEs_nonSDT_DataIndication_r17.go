@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -9,7 +9,7 @@ type UEAssistanceInformation_v1700_IEs_nonSDT_DataIndication_r17 struct {
 	ResumeCause_r17 *ResumeCause `optional`
 }
 
-func (ie *UEAssistanceInformation_v1700_IEs_nonSDT_DataIndication_r17) Encode(w *uper.UperWriter) error {
+func (ie *UEAssistanceInformation_v1700_IEs_nonSDT_DataIndication_r17) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.ResumeCause_r17 != nil}
 	for _, bit := range preambleBits {
@@ -25,7 +25,7 @@ func (ie *UEAssistanceInformation_v1700_IEs_nonSDT_DataIndication_r17) Encode(w 
 	return nil
 }
 
-func (ie *UEAssistanceInformation_v1700_IEs_nonSDT_DataIndication_r17) Decode(r *uper.UperReader) error {
+func (ie *UEAssistanceInformation_v1700_IEs_nonSDT_DataIndication_r17) Decode(r *aper.AperReader) error {
 	var err error
 	var ResumeCause_r17Present bool
 	if ResumeCause_r17Present, err = r.ReadBool(); err != nil {

@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -11,7 +11,7 @@ type SIB15_r17 struct {
 	LateNonCriticalExtension             *[]byte                      `optional`
 }
 
-func (ie *SIB15_r17) Encode(w *uper.UperWriter) error {
+func (ie *SIB15_r17) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{len(ie.CommonPLMNsWithDisasterCondition_r17) > 0, len(ie.ApplicableDisasterInfoList_r17) > 0, ie.LateNonCriticalExtension != nil}
 	for _, bit := range preambleBits {
@@ -20,7 +20,7 @@ func (ie *SIB15_r17) Encode(w *uper.UperWriter) error {
 		}
 	}
 	if len(ie.CommonPLMNsWithDisasterCondition_r17) > 0 {
-		tmp_CommonPLMNsWithDisasterCondition_r17 := utils.NewSequence[*PLMN_Identity]([]*PLMN_Identity{}, uper.Constraint{Lb: 1, Ub: maxPLMN}, false)
+		tmp_CommonPLMNsWithDisasterCondition_r17 := utils.NewSequence[*PLMN_Identity]([]*PLMN_Identity{}, aper.Constraint{Lb: 1, Ub: maxPLMN}, false)
 		for _, i := range ie.CommonPLMNsWithDisasterCondition_r17 {
 			tmp_CommonPLMNsWithDisasterCondition_r17.Value = append(tmp_CommonPLMNsWithDisasterCondition_r17.Value, &i)
 		}
@@ -29,7 +29,7 @@ func (ie *SIB15_r17) Encode(w *uper.UperWriter) error {
 		}
 	}
 	if len(ie.ApplicableDisasterInfoList_r17) > 0 {
-		tmp_ApplicableDisasterInfoList_r17 := utils.NewSequence[*ApplicableDisasterInfo_r17]([]*ApplicableDisasterInfo_r17{}, uper.Constraint{Lb: 1, Ub: maxPLMN}, false)
+		tmp_ApplicableDisasterInfoList_r17 := utils.NewSequence[*ApplicableDisasterInfo_r17]([]*ApplicableDisasterInfo_r17{}, aper.Constraint{Lb: 1, Ub: maxPLMN}, false)
 		for _, i := range ie.ApplicableDisasterInfoList_r17 {
 			tmp_ApplicableDisasterInfoList_r17.Value = append(tmp_ApplicableDisasterInfoList_r17.Value, &i)
 		}
@@ -38,14 +38,14 @@ func (ie *SIB15_r17) Encode(w *uper.UperWriter) error {
 		}
 	}
 	if ie.LateNonCriticalExtension != nil {
-		if err = w.WriteOctetString(*ie.LateNonCriticalExtension, &uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+		if err = w.WriteOctetString(*ie.LateNonCriticalExtension, &aper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
 			return utils.WrapError("Encode LateNonCriticalExtension", err)
 		}
 	}
 	return nil
 }
 
-func (ie *SIB15_r17) Decode(r *uper.UperReader) error {
+func (ie *SIB15_r17) Decode(r *aper.AperReader) error {
 	var err error
 	var CommonPLMNsWithDisasterCondition_r17Present bool
 	if CommonPLMNsWithDisasterCondition_r17Present, err = r.ReadBool(); err != nil {
@@ -60,7 +60,7 @@ func (ie *SIB15_r17) Decode(r *uper.UperReader) error {
 		return err
 	}
 	if CommonPLMNsWithDisasterCondition_r17Present {
-		tmp_CommonPLMNsWithDisasterCondition_r17 := utils.NewSequence[*PLMN_Identity]([]*PLMN_Identity{}, uper.Constraint{Lb: 1, Ub: maxPLMN}, false)
+		tmp_CommonPLMNsWithDisasterCondition_r17 := utils.NewSequence[*PLMN_Identity]([]*PLMN_Identity{}, aper.Constraint{Lb: 1, Ub: maxPLMN}, false)
 		fn_CommonPLMNsWithDisasterCondition_r17 := func() *PLMN_Identity {
 			return new(PLMN_Identity)
 		}
@@ -73,7 +73,7 @@ func (ie *SIB15_r17) Decode(r *uper.UperReader) error {
 		}
 	}
 	if ApplicableDisasterInfoList_r17Present {
-		tmp_ApplicableDisasterInfoList_r17 := utils.NewSequence[*ApplicableDisasterInfo_r17]([]*ApplicableDisasterInfo_r17{}, uper.Constraint{Lb: 1, Ub: maxPLMN}, false)
+		tmp_ApplicableDisasterInfoList_r17 := utils.NewSequence[*ApplicableDisasterInfo_r17]([]*ApplicableDisasterInfo_r17{}, aper.Constraint{Lb: 1, Ub: maxPLMN}, false)
 		fn_ApplicableDisasterInfoList_r17 := func() *ApplicableDisasterInfo_r17 {
 			return new(ApplicableDisasterInfo_r17)
 		}
@@ -87,7 +87,7 @@ func (ie *SIB15_r17) Decode(r *uper.UperReader) error {
 	}
 	if LateNonCriticalExtensionPresent {
 		var tmp_os_LateNonCriticalExtension []byte
-		if tmp_os_LateNonCriticalExtension, err = r.ReadOctetString(&uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+		if tmp_os_LateNonCriticalExtension, err = r.ReadOctetString(&aper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
 			return utils.WrapError("Decode LateNonCriticalExtension", err)
 		}
 		ie.LateNonCriticalExtension = &tmp_os_LateNonCriticalExtension

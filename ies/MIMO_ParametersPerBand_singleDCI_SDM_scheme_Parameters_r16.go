@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -10,7 +10,7 @@ type MIMO_ParametersPerBand_singleDCI_SDM_scheme_Parameters_r16 struct {
 	SupportTwoPortDL_PTRS_r16 *MIMO_ParametersPerBand_singleDCI_SDM_scheme_Parameters_r16_supportTwoPortDL_PTRS_r16 `optional`
 }
 
-func (ie *MIMO_ParametersPerBand_singleDCI_SDM_scheme_Parameters_r16) Encode(w *uper.UperWriter) error {
+func (ie *MIMO_ParametersPerBand_singleDCI_SDM_scheme_Parameters_r16) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.SupportNewDMRS_Port_r16 != nil, ie.SupportTwoPortDL_PTRS_r16 != nil}
 	for _, bit := range preambleBits {
@@ -31,7 +31,7 @@ func (ie *MIMO_ParametersPerBand_singleDCI_SDM_scheme_Parameters_r16) Encode(w *
 	return nil
 }
 
-func (ie *MIMO_ParametersPerBand_singleDCI_SDM_scheme_Parameters_r16) Decode(r *uper.UperReader) error {
+func (ie *MIMO_ParametersPerBand_singleDCI_SDM_scheme_Parameters_r16) Decode(r *aper.AperReader) error {
 	var err error
 	var SupportNewDMRS_Port_r16Present bool
 	if SupportNewDMRS_Port_r16Present, err = r.ReadBool(); err != nil {

@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -10,12 +10,12 @@ type InterFreqCAG_CellListPerPLMN_r16 struct {
 	Cag_CellList_r16       []PCI_Range `lb:1,ub:maxCAG_Cell_r16,madatory`
 }
 
-func (ie *InterFreqCAG_CellListPerPLMN_r16) Encode(w *uper.UperWriter) error {
+func (ie *InterFreqCAG_CellListPerPLMN_r16) Encode(w *aper.AperWriter) error {
 	var err error
-	if err = w.WriteInteger(ie.Plmn_IdentityIndex_r16, &uper.Constraint{Lb: 1, Ub: maxPLMN}, false); err != nil {
+	if err = w.WriteInteger(ie.Plmn_IdentityIndex_r16, &aper.Constraint{Lb: 1, Ub: maxPLMN}, false); err != nil {
 		return utils.WrapError("WriteInteger Plmn_IdentityIndex_r16", err)
 	}
-	tmp_Cag_CellList_r16 := utils.NewSequence[*PCI_Range]([]*PCI_Range{}, uper.Constraint{Lb: 1, Ub: maxCAG_Cell_r16}, false)
+	tmp_Cag_CellList_r16 := utils.NewSequence[*PCI_Range]([]*PCI_Range{}, aper.Constraint{Lb: 1, Ub: maxCAG_Cell_r16}, false)
 	for _, i := range ie.Cag_CellList_r16 {
 		tmp_Cag_CellList_r16.Value = append(tmp_Cag_CellList_r16.Value, &i)
 	}
@@ -25,14 +25,14 @@ func (ie *InterFreqCAG_CellListPerPLMN_r16) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *InterFreqCAG_CellListPerPLMN_r16) Decode(r *uper.UperReader) error {
+func (ie *InterFreqCAG_CellListPerPLMN_r16) Decode(r *aper.AperReader) error {
 	var err error
 	var tmp_int_Plmn_IdentityIndex_r16 int64
-	if tmp_int_Plmn_IdentityIndex_r16, err = r.ReadInteger(&uper.Constraint{Lb: 1, Ub: maxPLMN}, false); err != nil {
+	if tmp_int_Plmn_IdentityIndex_r16, err = r.ReadInteger(&aper.Constraint{Lb: 1, Ub: maxPLMN}, false); err != nil {
 		return utils.WrapError("ReadInteger Plmn_IdentityIndex_r16", err)
 	}
 	ie.Plmn_IdentityIndex_r16 = tmp_int_Plmn_IdentityIndex_r16
-	tmp_Cag_CellList_r16 := utils.NewSequence[*PCI_Range]([]*PCI_Range{}, uper.Constraint{Lb: 1, Ub: maxCAG_Cell_r16}, false)
+	tmp_Cag_CellList_r16 := utils.NewSequence[*PCI_Range]([]*PCI_Range{}, aper.Constraint{Lb: 1, Ub: maxCAG_Cell_r16}, false)
 	fn_Cag_CellList_r16 := func() *PCI_Range {
 		return new(PCI_Range)
 	}

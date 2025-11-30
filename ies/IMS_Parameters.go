@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -10,7 +10,7 @@ type IMS_Parameters struct {
 	Ims_ParametersFRX_Diff *IMS_ParametersFRX_Diff `optional`
 }
 
-func (ie *IMS_Parameters) Encode(w *uper.UperWriter) error {
+func (ie *IMS_Parameters) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.Ims_ParametersCommon != nil, ie.Ims_ParametersFRX_Diff != nil}
 	for _, bit := range preambleBits {
@@ -31,7 +31,7 @@ func (ie *IMS_Parameters) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *IMS_Parameters) Decode(r *uper.UperReader) error {
+func (ie *IMS_Parameters) Decode(r *aper.AperReader) error {
 	var err error
 	var Ims_ParametersCommonPresent bool
 	if Ims_ParametersCommonPresent, err = r.ReadBool(); err != nil {

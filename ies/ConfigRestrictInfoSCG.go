@@ -3,7 +3,7 @@ package ies
 import (
 	"bytes"
 
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -32,7 +32,7 @@ type ConfigRestrictInfoSCG struct {
 	MaxNumberCPCCandidates_r17             *int64                                           `lb:0,ub:maxNrofCondCells_1_r17,optional,ext-4`
 }
 
-func (ie *ConfigRestrictInfoSCG) Encode(w *uper.UperWriter) error {
+func (ie *ConfigRestrictInfoSCG) Encode(w *aper.AperWriter) error {
 	var err error
 	hasExtensions := len(ie.SelectedBandEntriesMNList) > 0 || ie.Pdcch_BlindDetectionSCG != nil || ie.MaxNumberROHC_ContextSessionsSN != nil || ie.MaxIntraFreqMeasIdentitiesSCG != nil || ie.MaxInterFreqMeasIdentitiesSCG != nil || ie.P_maxNR_FR1_MCG_r16 != nil || ie.PowerCoordination_FR2_r16 != nil || ie.Nrdc_PC_mode_FR1_r16 != nil || ie.Nrdc_PC_mode_FR2_r16 != nil || ie.MaxMeasSRS_ResourceSCG_r16 != nil || ie.MaxMeasCLI_ResourceSCG_r16 != nil || ie.MaxNumberEHC_ContextsSN_r16 != nil || ie.AllowedReducedConfigForOverheating_r16 != nil || ie.MaxToffset_r16 != nil || ie.AllowedReducedConfigForOverheating_r17 != nil || ie.MaxNumberUDC_DRB_r17 != nil || ie.MaxNumberCPCCandidates_r17 != nil
 	preambleBits := []bool{hasExtensions, ie.AllowedBC_ListMRDC != nil, ie.PowerCoordination_FR1 != nil, ie.ServCellIndexRangeSCG != nil, ie.MaxMeasFreqsSCG != nil, ie.Dummy != nil}
@@ -57,12 +57,12 @@ func (ie *ConfigRestrictInfoSCG) Encode(w *uper.UperWriter) error {
 		}
 	}
 	if ie.MaxMeasFreqsSCG != nil {
-		if err = w.WriteInteger(*ie.MaxMeasFreqsSCG, &uper.Constraint{Lb: 1, Ub: maxMeasFreqsMN}, false); err != nil {
+		if err = w.WriteInteger(*ie.MaxMeasFreqsSCG, &aper.Constraint{Lb: 1, Ub: maxMeasFreqsMN}, false); err != nil {
 			return utils.WrapError("Encode MaxMeasFreqsSCG", err)
 		}
 	}
 	if ie.Dummy != nil {
-		if err = w.WriteInteger(*ie.Dummy, &uper.Constraint{Lb: 1, Ub: maxMeasIdentitiesMN}, false); err != nil {
+		if err = w.WriteInteger(*ie.Dummy, &aper.Constraint{Lb: 1, Ub: maxMeasIdentitiesMN}, false); err != nil {
 			return utils.WrapError("Encode Dummy", err)
 		}
 	}
@@ -76,7 +76,7 @@ func (ie *ConfigRestrictInfoSCG) Encode(w *uper.UperWriter) error {
 		// encode extension group 1
 		if extBitmap[0] {
 			extBuf := new(bytes.Buffer)
-			extWriter := uper.NewWriter(extBuf)
+			extWriter := aper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 1
 			optionals_ext_1 := []bool{len(ie.SelectedBandEntriesMNList) > 0, ie.Pdcch_BlindDetectionSCG != nil, ie.MaxNumberROHC_ContextSessionsSN != nil}
@@ -88,7 +88,7 @@ func (ie *ConfigRestrictInfoSCG) Encode(w *uper.UperWriter) error {
 
 			// encode SelectedBandEntriesMNList optional
 			if len(ie.SelectedBandEntriesMNList) > 0 {
-				tmp_SelectedBandEntriesMNList := utils.NewSequence[*SelectedBandEntriesMN]([]*SelectedBandEntriesMN{}, uper.Constraint{Lb: 1, Ub: maxBandComb}, false)
+				tmp_SelectedBandEntriesMNList := utils.NewSequence[*SelectedBandEntriesMN]([]*SelectedBandEntriesMN{}, aper.Constraint{Lb: 1, Ub: maxBandComb}, false)
 				for _, i := range ie.SelectedBandEntriesMNList {
 					tmp_SelectedBandEntriesMNList.Value = append(tmp_SelectedBandEntriesMNList.Value, &i)
 				}
@@ -98,13 +98,13 @@ func (ie *ConfigRestrictInfoSCG) Encode(w *uper.UperWriter) error {
 			}
 			// encode Pdcch_BlindDetectionSCG optional
 			if ie.Pdcch_BlindDetectionSCG != nil {
-				if err = extWriter.WriteInteger(*ie.Pdcch_BlindDetectionSCG, &uper.Constraint{Lb: 1, Ub: 15}, false); err != nil {
+				if err = extWriter.WriteInteger(*ie.Pdcch_BlindDetectionSCG, &aper.Constraint{Lb: 1, Ub: 15}, false); err != nil {
 					return utils.WrapError("Encode Pdcch_BlindDetectionSCG", err)
 				}
 			}
 			// encode MaxNumberROHC_ContextSessionsSN optional
 			if ie.MaxNumberROHC_ContextSessionsSN != nil {
-				if err = extWriter.WriteInteger(*ie.MaxNumberROHC_ContextSessionsSN, &uper.Constraint{Lb: 0, Ub: 16384}, false); err != nil {
+				if err = extWriter.WriteInteger(*ie.MaxNumberROHC_ContextSessionsSN, &aper.Constraint{Lb: 0, Ub: 16384}, false); err != nil {
 					return utils.WrapError("Encode MaxNumberROHC_ContextSessionsSN", err)
 				}
 			}
@@ -121,7 +121,7 @@ func (ie *ConfigRestrictInfoSCG) Encode(w *uper.UperWriter) error {
 		// encode extension group 2
 		if extBitmap[1] {
 			extBuf := new(bytes.Buffer)
-			extWriter := uper.NewWriter(extBuf)
+			extWriter := aper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 2
 			optionals_ext_2 := []bool{ie.MaxIntraFreqMeasIdentitiesSCG != nil, ie.MaxInterFreqMeasIdentitiesSCG != nil}
@@ -133,13 +133,13 @@ func (ie *ConfigRestrictInfoSCG) Encode(w *uper.UperWriter) error {
 
 			// encode MaxIntraFreqMeasIdentitiesSCG optional
 			if ie.MaxIntraFreqMeasIdentitiesSCG != nil {
-				if err = extWriter.WriteInteger(*ie.MaxIntraFreqMeasIdentitiesSCG, &uper.Constraint{Lb: 1, Ub: maxMeasIdentitiesMN}, false); err != nil {
+				if err = extWriter.WriteInteger(*ie.MaxIntraFreqMeasIdentitiesSCG, &aper.Constraint{Lb: 1, Ub: maxMeasIdentitiesMN}, false); err != nil {
 					return utils.WrapError("Encode MaxIntraFreqMeasIdentitiesSCG", err)
 				}
 			}
 			// encode MaxInterFreqMeasIdentitiesSCG optional
 			if ie.MaxInterFreqMeasIdentitiesSCG != nil {
-				if err = extWriter.WriteInteger(*ie.MaxInterFreqMeasIdentitiesSCG, &uper.Constraint{Lb: 1, Ub: maxMeasIdentitiesMN}, false); err != nil {
+				if err = extWriter.WriteInteger(*ie.MaxInterFreqMeasIdentitiesSCG, &aper.Constraint{Lb: 1, Ub: maxMeasIdentitiesMN}, false); err != nil {
 					return utils.WrapError("Encode MaxInterFreqMeasIdentitiesSCG", err)
 				}
 			}
@@ -156,7 +156,7 @@ func (ie *ConfigRestrictInfoSCG) Encode(w *uper.UperWriter) error {
 		// encode extension group 3
 		if extBitmap[2] {
 			extBuf := new(bytes.Buffer)
-			extWriter := uper.NewWriter(extBuf)
+			extWriter := aper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 3
 			optionals_ext_3 := []bool{ie.P_maxNR_FR1_MCG_r16 != nil, ie.PowerCoordination_FR2_r16 != nil, ie.Nrdc_PC_mode_FR1_r16 != nil, ie.Nrdc_PC_mode_FR2_r16 != nil, ie.MaxMeasSRS_ResourceSCG_r16 != nil, ie.MaxMeasCLI_ResourceSCG_r16 != nil, ie.MaxNumberEHC_ContextsSN_r16 != nil, ie.AllowedReducedConfigForOverheating_r16 != nil, ie.MaxToffset_r16 != nil}
@@ -192,19 +192,19 @@ func (ie *ConfigRestrictInfoSCG) Encode(w *uper.UperWriter) error {
 			}
 			// encode MaxMeasSRS_ResourceSCG_r16 optional
 			if ie.MaxMeasSRS_ResourceSCG_r16 != nil {
-				if err = extWriter.WriteInteger(*ie.MaxMeasSRS_ResourceSCG_r16, &uper.Constraint{Lb: 0, Ub: maxNrofCLI_SRS_Resources_r16}, false); err != nil {
+				if err = extWriter.WriteInteger(*ie.MaxMeasSRS_ResourceSCG_r16, &aper.Constraint{Lb: 0, Ub: maxNrofCLI_SRS_Resources_r16}, false); err != nil {
 					return utils.WrapError("Encode MaxMeasSRS_ResourceSCG_r16", err)
 				}
 			}
 			// encode MaxMeasCLI_ResourceSCG_r16 optional
 			if ie.MaxMeasCLI_ResourceSCG_r16 != nil {
-				if err = extWriter.WriteInteger(*ie.MaxMeasCLI_ResourceSCG_r16, &uper.Constraint{Lb: 0, Ub: maxNrofCLI_RSSI_Resources_r16}, false); err != nil {
+				if err = extWriter.WriteInteger(*ie.MaxMeasCLI_ResourceSCG_r16, &aper.Constraint{Lb: 0, Ub: maxNrofCLI_RSSI_Resources_r16}, false); err != nil {
 					return utils.WrapError("Encode MaxMeasCLI_ResourceSCG_r16", err)
 				}
 			}
 			// encode MaxNumberEHC_ContextsSN_r16 optional
 			if ie.MaxNumberEHC_ContextsSN_r16 != nil {
-				if err = extWriter.WriteInteger(*ie.MaxNumberEHC_ContextsSN_r16, &uper.Constraint{Lb: 0, Ub: 65536}, false); err != nil {
+				if err = extWriter.WriteInteger(*ie.MaxNumberEHC_ContextsSN_r16, &aper.Constraint{Lb: 0, Ub: 65536}, false); err != nil {
 					return utils.WrapError("Encode MaxNumberEHC_ContextsSN_r16", err)
 				}
 			}
@@ -233,7 +233,7 @@ func (ie *ConfigRestrictInfoSCG) Encode(w *uper.UperWriter) error {
 		// encode extension group 4
 		if extBitmap[3] {
 			extBuf := new(bytes.Buffer)
-			extWriter := uper.NewWriter(extBuf)
+			extWriter := aper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 4
 			optionals_ext_4 := []bool{ie.AllowedReducedConfigForOverheating_r17 != nil, ie.MaxNumberUDC_DRB_r17 != nil, ie.MaxNumberCPCCandidates_r17 != nil}
@@ -251,13 +251,13 @@ func (ie *ConfigRestrictInfoSCG) Encode(w *uper.UperWriter) error {
 			}
 			// encode MaxNumberUDC_DRB_r17 optional
 			if ie.MaxNumberUDC_DRB_r17 != nil {
-				if err = extWriter.WriteInteger(*ie.MaxNumberUDC_DRB_r17, &uper.Constraint{Lb: 0, Ub: 2}, false); err != nil {
+				if err = extWriter.WriteInteger(*ie.MaxNumberUDC_DRB_r17, &aper.Constraint{Lb: 0, Ub: 2}, false); err != nil {
 					return utils.WrapError("Encode MaxNumberUDC_DRB_r17", err)
 				}
 			}
 			// encode MaxNumberCPCCandidates_r17 optional
 			if ie.MaxNumberCPCCandidates_r17 != nil {
-				if err = extWriter.WriteInteger(*ie.MaxNumberCPCCandidates_r17, &uper.Constraint{Lb: 0, Ub: maxNrofCondCells_1_r17}, false); err != nil {
+				if err = extWriter.WriteInteger(*ie.MaxNumberCPCCandidates_r17, &aper.Constraint{Lb: 0, Ub: maxNrofCondCells_1_r17}, false); err != nil {
 					return utils.WrapError("Encode MaxNumberCPCCandidates_r17", err)
 				}
 			}
@@ -274,7 +274,7 @@ func (ie *ConfigRestrictInfoSCG) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *ConfigRestrictInfoSCG) Decode(r *uper.UperReader) error {
+func (ie *ConfigRestrictInfoSCG) Decode(r *aper.AperReader) error {
 	var err error
 	var extensionBit bool
 	if extensionBit, err = r.ReadBool(); err != nil {
@@ -320,14 +320,14 @@ func (ie *ConfigRestrictInfoSCG) Decode(r *uper.UperReader) error {
 	}
 	if MaxMeasFreqsSCGPresent {
 		var tmp_int_MaxMeasFreqsSCG int64
-		if tmp_int_MaxMeasFreqsSCG, err = r.ReadInteger(&uper.Constraint{Lb: 1, Ub: maxMeasFreqsMN}, false); err != nil {
+		if tmp_int_MaxMeasFreqsSCG, err = r.ReadInteger(&aper.Constraint{Lb: 1, Ub: maxMeasFreqsMN}, false); err != nil {
 			return utils.WrapError("Decode MaxMeasFreqsSCG", err)
 		}
 		ie.MaxMeasFreqsSCG = &tmp_int_MaxMeasFreqsSCG
 	}
 	if DummyPresent {
 		var tmp_int_Dummy int64
-		if tmp_int_Dummy, err = r.ReadInteger(&uper.Constraint{Lb: 1, Ub: maxMeasIdentitiesMN}, false); err != nil {
+		if tmp_int_Dummy, err = r.ReadInteger(&aper.Constraint{Lb: 1, Ub: maxMeasIdentitiesMN}, false); err != nil {
 			return utils.WrapError("Decode Dummy", err)
 		}
 		ie.Dummy = &tmp_int_Dummy
@@ -347,7 +347,7 @@ func (ie *ConfigRestrictInfoSCG) Decode(r *uper.UperReader) error {
 				return err
 			}
 
-			extReader := uper.NewReader(bytes.NewReader(extBytes))
+			extReader := aper.NewReader(bytes.NewReader(extBytes))
 
 			SelectedBandEntriesMNListPresent, err := extReader.ReadBool()
 			if err != nil {
@@ -363,7 +363,7 @@ func (ie *ConfigRestrictInfoSCG) Decode(r *uper.UperReader) error {
 			}
 			// decode SelectedBandEntriesMNList optional
 			if SelectedBandEntriesMNListPresent {
-				tmp_SelectedBandEntriesMNList := utils.NewSequence[*SelectedBandEntriesMN]([]*SelectedBandEntriesMN{}, uper.Constraint{Lb: 1, Ub: maxBandComb}, false)
+				tmp_SelectedBandEntriesMNList := utils.NewSequence[*SelectedBandEntriesMN]([]*SelectedBandEntriesMN{}, aper.Constraint{Lb: 1, Ub: maxBandComb}, false)
 				fn_SelectedBandEntriesMNList := func() *SelectedBandEntriesMN {
 					return new(SelectedBandEntriesMN)
 				}
@@ -378,7 +378,7 @@ func (ie *ConfigRestrictInfoSCG) Decode(r *uper.UperReader) error {
 			// decode Pdcch_BlindDetectionSCG optional
 			if Pdcch_BlindDetectionSCGPresent {
 				var tmp_int_Pdcch_BlindDetectionSCG int64
-				if tmp_int_Pdcch_BlindDetectionSCG, err = extReader.ReadInteger(&uper.Constraint{Lb: 1, Ub: 15}, false); err != nil {
+				if tmp_int_Pdcch_BlindDetectionSCG, err = extReader.ReadInteger(&aper.Constraint{Lb: 1, Ub: 15}, false); err != nil {
 					return utils.WrapError("Decode Pdcch_BlindDetectionSCG", err)
 				}
 				ie.Pdcch_BlindDetectionSCG = &tmp_int_Pdcch_BlindDetectionSCG
@@ -386,7 +386,7 @@ func (ie *ConfigRestrictInfoSCG) Decode(r *uper.UperReader) error {
 			// decode MaxNumberROHC_ContextSessionsSN optional
 			if MaxNumberROHC_ContextSessionsSNPresent {
 				var tmp_int_MaxNumberROHC_ContextSessionsSN int64
-				if tmp_int_MaxNumberROHC_ContextSessionsSN, err = extReader.ReadInteger(&uper.Constraint{Lb: 0, Ub: 16384}, false); err != nil {
+				if tmp_int_MaxNumberROHC_ContextSessionsSN, err = extReader.ReadInteger(&aper.Constraint{Lb: 0, Ub: 16384}, false); err != nil {
 					return utils.WrapError("Decode MaxNumberROHC_ContextSessionsSN", err)
 				}
 				ie.MaxNumberROHC_ContextSessionsSN = &tmp_int_MaxNumberROHC_ContextSessionsSN
@@ -399,7 +399,7 @@ func (ie *ConfigRestrictInfoSCG) Decode(r *uper.UperReader) error {
 				return err
 			}
 
-			extReader := uper.NewReader(bytes.NewReader(extBytes))
+			extReader := aper.NewReader(bytes.NewReader(extBytes))
 
 			MaxIntraFreqMeasIdentitiesSCGPresent, err := extReader.ReadBool()
 			if err != nil {
@@ -412,7 +412,7 @@ func (ie *ConfigRestrictInfoSCG) Decode(r *uper.UperReader) error {
 			// decode MaxIntraFreqMeasIdentitiesSCG optional
 			if MaxIntraFreqMeasIdentitiesSCGPresent {
 				var tmp_int_MaxIntraFreqMeasIdentitiesSCG int64
-				if tmp_int_MaxIntraFreqMeasIdentitiesSCG, err = extReader.ReadInteger(&uper.Constraint{Lb: 1, Ub: maxMeasIdentitiesMN}, false); err != nil {
+				if tmp_int_MaxIntraFreqMeasIdentitiesSCG, err = extReader.ReadInteger(&aper.Constraint{Lb: 1, Ub: maxMeasIdentitiesMN}, false); err != nil {
 					return utils.WrapError("Decode MaxIntraFreqMeasIdentitiesSCG", err)
 				}
 				ie.MaxIntraFreqMeasIdentitiesSCG = &tmp_int_MaxIntraFreqMeasIdentitiesSCG
@@ -420,7 +420,7 @@ func (ie *ConfigRestrictInfoSCG) Decode(r *uper.UperReader) error {
 			// decode MaxInterFreqMeasIdentitiesSCG optional
 			if MaxInterFreqMeasIdentitiesSCGPresent {
 				var tmp_int_MaxInterFreqMeasIdentitiesSCG int64
-				if tmp_int_MaxInterFreqMeasIdentitiesSCG, err = extReader.ReadInteger(&uper.Constraint{Lb: 1, Ub: maxMeasIdentitiesMN}, false); err != nil {
+				if tmp_int_MaxInterFreqMeasIdentitiesSCG, err = extReader.ReadInteger(&aper.Constraint{Lb: 1, Ub: maxMeasIdentitiesMN}, false); err != nil {
 					return utils.WrapError("Decode MaxInterFreqMeasIdentitiesSCG", err)
 				}
 				ie.MaxInterFreqMeasIdentitiesSCG = &tmp_int_MaxInterFreqMeasIdentitiesSCG
@@ -433,7 +433,7 @@ func (ie *ConfigRestrictInfoSCG) Decode(r *uper.UperReader) error {
 				return err
 			}
 
-			extReader := uper.NewReader(bytes.NewReader(extBytes))
+			extReader := aper.NewReader(bytes.NewReader(extBytes))
 
 			P_maxNR_FR1_MCG_r16Present, err := extReader.ReadBool()
 			if err != nil {
@@ -502,7 +502,7 @@ func (ie *ConfigRestrictInfoSCG) Decode(r *uper.UperReader) error {
 			// decode MaxMeasSRS_ResourceSCG_r16 optional
 			if MaxMeasSRS_ResourceSCG_r16Present {
 				var tmp_int_MaxMeasSRS_ResourceSCG_r16 int64
-				if tmp_int_MaxMeasSRS_ResourceSCG_r16, err = extReader.ReadInteger(&uper.Constraint{Lb: 0, Ub: maxNrofCLI_SRS_Resources_r16}, false); err != nil {
+				if tmp_int_MaxMeasSRS_ResourceSCG_r16, err = extReader.ReadInteger(&aper.Constraint{Lb: 0, Ub: maxNrofCLI_SRS_Resources_r16}, false); err != nil {
 					return utils.WrapError("Decode MaxMeasSRS_ResourceSCG_r16", err)
 				}
 				ie.MaxMeasSRS_ResourceSCG_r16 = &tmp_int_MaxMeasSRS_ResourceSCG_r16
@@ -510,7 +510,7 @@ func (ie *ConfigRestrictInfoSCG) Decode(r *uper.UperReader) error {
 			// decode MaxMeasCLI_ResourceSCG_r16 optional
 			if MaxMeasCLI_ResourceSCG_r16Present {
 				var tmp_int_MaxMeasCLI_ResourceSCG_r16 int64
-				if tmp_int_MaxMeasCLI_ResourceSCG_r16, err = extReader.ReadInteger(&uper.Constraint{Lb: 0, Ub: maxNrofCLI_RSSI_Resources_r16}, false); err != nil {
+				if tmp_int_MaxMeasCLI_ResourceSCG_r16, err = extReader.ReadInteger(&aper.Constraint{Lb: 0, Ub: maxNrofCLI_RSSI_Resources_r16}, false); err != nil {
 					return utils.WrapError("Decode MaxMeasCLI_ResourceSCG_r16", err)
 				}
 				ie.MaxMeasCLI_ResourceSCG_r16 = &tmp_int_MaxMeasCLI_ResourceSCG_r16
@@ -518,7 +518,7 @@ func (ie *ConfigRestrictInfoSCG) Decode(r *uper.UperReader) error {
 			// decode MaxNumberEHC_ContextsSN_r16 optional
 			if MaxNumberEHC_ContextsSN_r16Present {
 				var tmp_int_MaxNumberEHC_ContextsSN_r16 int64
-				if tmp_int_MaxNumberEHC_ContextsSN_r16, err = extReader.ReadInteger(&uper.Constraint{Lb: 0, Ub: 65536}, false); err != nil {
+				if tmp_int_MaxNumberEHC_ContextsSN_r16, err = extReader.ReadInteger(&aper.Constraint{Lb: 0, Ub: 65536}, false); err != nil {
 					return utils.WrapError("Decode MaxNumberEHC_ContextsSN_r16", err)
 				}
 				ie.MaxNumberEHC_ContextsSN_r16 = &tmp_int_MaxNumberEHC_ContextsSN_r16
@@ -545,7 +545,7 @@ func (ie *ConfigRestrictInfoSCG) Decode(r *uper.UperReader) error {
 				return err
 			}
 
-			extReader := uper.NewReader(bytes.NewReader(extBytes))
+			extReader := aper.NewReader(bytes.NewReader(extBytes))
 
 			AllowedReducedConfigForOverheating_r17Present, err := extReader.ReadBool()
 			if err != nil {
@@ -569,7 +569,7 @@ func (ie *ConfigRestrictInfoSCG) Decode(r *uper.UperReader) error {
 			// decode MaxNumberUDC_DRB_r17 optional
 			if MaxNumberUDC_DRB_r17Present {
 				var tmp_int_MaxNumberUDC_DRB_r17 int64
-				if tmp_int_MaxNumberUDC_DRB_r17, err = extReader.ReadInteger(&uper.Constraint{Lb: 0, Ub: 2}, false); err != nil {
+				if tmp_int_MaxNumberUDC_DRB_r17, err = extReader.ReadInteger(&aper.Constraint{Lb: 0, Ub: 2}, false); err != nil {
 					return utils.WrapError("Decode MaxNumberUDC_DRB_r17", err)
 				}
 				ie.MaxNumberUDC_DRB_r17 = &tmp_int_MaxNumberUDC_DRB_r17
@@ -577,7 +577,7 @@ func (ie *ConfigRestrictInfoSCG) Decode(r *uper.UperReader) error {
 			// decode MaxNumberCPCCandidates_r17 optional
 			if MaxNumberCPCCandidates_r17Present {
 				var tmp_int_MaxNumberCPCCandidates_r17 int64
-				if tmp_int_MaxNumberCPCCandidates_r17, err = extReader.ReadInteger(&uper.Constraint{Lb: 0, Ub: maxNrofCondCells_1_r17}, false); err != nil {
+				if tmp_int_MaxNumberCPCCandidates_r17, err = extReader.ReadInteger(&aper.Constraint{Lb: 0, Ub: maxNrofCondCells_1_r17}, false); err != nil {
 					return utils.WrapError("Decode MaxNumberCPCCandidates_r17", err)
 				}
 				ie.MaxNumberCPCCandidates_r17 = &tmp_int_MaxNumberCPCCandidates_r17

@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -27,12 +27,12 @@ type UE_NR_Capability_v1700 struct {
 	Ntn_ScenarioSupport_r17                 *UE_NR_Capability_v1700_ntn_ScenarioSupport_r17                 `optional`
 	SliceInfoforCellReselection_r17         *UE_NR_Capability_v1700_sliceInfoforCellReselection_r17         `optional`
 	Ue_RadioPagingInfo_r17                  *UE_RadioPagingInfo_r17                                         `optional`
-	Ul_GapFR2_Pattern_r17                   *uper.BitString                                                 `lb:4,ub:4,optional`
+	Ul_GapFR2_Pattern_r17                   *aper.BitString                                                 `lb:4,ub:4,optional`
 	Ntn_Parameters_r17                      *NTN_Parameters_r17                                             `optional`
 	NonCriticalExtension                    interface{}                                                     `optional`
 }
 
-func (ie *UE_NR_Capability_v1700) Encode(w *uper.UperWriter) error {
+func (ie *UE_NR_Capability_v1700) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.InactiveStatePO_Determination_r17 != nil, ie.HighSpeedParameters_v1700 != nil, ie.PowSav_Parameters_v1700 != nil, ie.Mac_Parameters_v1700 != nil, ie.Ims_Parameters_v1700 != nil, ie.AppLayerMeasParameters_r17 != nil, ie.RedCapParameters_r17 != nil, ie.Ra_SDT_r17 != nil, ie.Srb_SDT_r17 != nil, ie.GNB_SideRTT_BasedPDC_r17 != nil, ie.Bh_RLF_DetectionRecovery_Indication_r17 != nil, ie.Nrdc_Parameters_v1700 != nil, ie.Bap_Parameters_v1700 != nil, ie.Musim_GapPreference_r17 != nil, ie.MusimLeaveConnected_r17 != nil, ie.NonTerrestrialNetwork_r17 != nil, ie.Ntn_ScenarioSupport_r17 != nil, ie.SliceInfoforCellReselection_r17 != nil, ie.Ue_RadioPagingInfo_r17 != nil, ie.Ul_GapFR2_Pattern_r17 != nil, ie.Ntn_Parameters_r17 != nil}
 	for _, bit := range preambleBits {
@@ -136,7 +136,7 @@ func (ie *UE_NR_Capability_v1700) Encode(w *uper.UperWriter) error {
 		}
 	}
 	if ie.Ul_GapFR2_Pattern_r17 != nil {
-		if err = w.WriteBitString(ie.Ul_GapFR2_Pattern_r17.Bytes, uint(ie.Ul_GapFR2_Pattern_r17.NumBits), &uper.Constraint{Lb: 4, Ub: 4}, false); err != nil {
+		if err = w.WriteBitString(ie.Ul_GapFR2_Pattern_r17.Bytes, uint(ie.Ul_GapFR2_Pattern_r17.NumBits), &aper.Constraint{Lb: 4, Ub: 4}, false); err != nil {
 			return utils.WrapError("Encode Ul_GapFR2_Pattern_r17", err)
 		}
 	}
@@ -148,7 +148,7 @@ func (ie *UE_NR_Capability_v1700) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *UE_NR_Capability_v1700) Decode(r *uper.UperReader) error {
+func (ie *UE_NR_Capability_v1700) Decode(r *aper.AperReader) error {
 	var err error
 	var InactiveStatePO_Determination_r17Present bool
 	if InactiveStatePO_Determination_r17Present, err = r.ReadBool(); err != nil {
@@ -351,10 +351,10 @@ func (ie *UE_NR_Capability_v1700) Decode(r *uper.UperReader) error {
 	if Ul_GapFR2_Pattern_r17Present {
 		var tmp_bs_Ul_GapFR2_Pattern_r17 []byte
 		var n_Ul_GapFR2_Pattern_r17 uint
-		if tmp_bs_Ul_GapFR2_Pattern_r17, n_Ul_GapFR2_Pattern_r17, err = r.ReadBitString(&uper.Constraint{Lb: 4, Ub: 4}, false); err != nil {
+		if tmp_bs_Ul_GapFR2_Pattern_r17, n_Ul_GapFR2_Pattern_r17, err = r.ReadBitString(&aper.Constraint{Lb: 4, Ub: 4}, false); err != nil {
 			return utils.WrapError("Decode Ul_GapFR2_Pattern_r17", err)
 		}
-		tmp_bitstring := uper.BitString{
+		tmp_bitstring := aper.BitString{
 			Bytes:   tmp_bs_Ul_GapFR2_Pattern_r17,
 			NumBits: uint64(n_Ul_GapFR2_Pattern_r17),
 		}

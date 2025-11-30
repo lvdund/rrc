@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -14,7 +14,7 @@ type SRS_PosResourceSet_r16 struct {
 	PathlossReferenceRS_Pos_r16 *SRS_PosResourceSet_r16_pathlossReferenceRS_Pos_r16 `optional`
 }
 
-func (ie *SRS_PosResourceSet_r16) Encode(w *uper.UperWriter) error {
+func (ie *SRS_PosResourceSet_r16) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{len(ie.Srs_PosResourceIdList_r16) > 0, ie.Alpha_r16 != nil, ie.P0_r16 != nil, ie.PathlossReferenceRS_Pos_r16 != nil}
 	for _, bit := range preambleBits {
@@ -26,7 +26,7 @@ func (ie *SRS_PosResourceSet_r16) Encode(w *uper.UperWriter) error {
 		return utils.WrapError("Encode Srs_PosResourceSetId_r16", err)
 	}
 	if len(ie.Srs_PosResourceIdList_r16) > 0 {
-		tmp_Srs_PosResourceIdList_r16 := utils.NewSequence[*SRS_PosResourceId_r16]([]*SRS_PosResourceId_r16{}, uper.Constraint{Lb: 1, Ub: maxNrofSRS_ResourcesPerSet}, false)
+		tmp_Srs_PosResourceIdList_r16 := utils.NewSequence[*SRS_PosResourceId_r16]([]*SRS_PosResourceId_r16{}, aper.Constraint{Lb: 1, Ub: maxNrofSRS_ResourcesPerSet}, false)
 		for _, i := range ie.Srs_PosResourceIdList_r16 {
 			tmp_Srs_PosResourceIdList_r16.Value = append(tmp_Srs_PosResourceIdList_r16.Value, &i)
 		}
@@ -43,7 +43,7 @@ func (ie *SRS_PosResourceSet_r16) Encode(w *uper.UperWriter) error {
 		}
 	}
 	if ie.P0_r16 != nil {
-		if err = w.WriteInteger(*ie.P0_r16, &uper.Constraint{Lb: -202, Ub: 24}, false); err != nil {
+		if err = w.WriteInteger(*ie.P0_r16, &aper.Constraint{Lb: -202, Ub: 24}, false); err != nil {
 			return utils.WrapError("Encode P0_r16", err)
 		}
 	}
@@ -55,7 +55,7 @@ func (ie *SRS_PosResourceSet_r16) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *SRS_PosResourceSet_r16) Decode(r *uper.UperReader) error {
+func (ie *SRS_PosResourceSet_r16) Decode(r *aper.AperReader) error {
 	var err error
 	var Srs_PosResourceIdList_r16Present bool
 	if Srs_PosResourceIdList_r16Present, err = r.ReadBool(); err != nil {
@@ -77,7 +77,7 @@ func (ie *SRS_PosResourceSet_r16) Decode(r *uper.UperReader) error {
 		return utils.WrapError("Decode Srs_PosResourceSetId_r16", err)
 	}
 	if Srs_PosResourceIdList_r16Present {
-		tmp_Srs_PosResourceIdList_r16 := utils.NewSequence[*SRS_PosResourceId_r16]([]*SRS_PosResourceId_r16{}, uper.Constraint{Lb: 1, Ub: maxNrofSRS_ResourcesPerSet}, false)
+		tmp_Srs_PosResourceIdList_r16 := utils.NewSequence[*SRS_PosResourceId_r16]([]*SRS_PosResourceId_r16{}, aper.Constraint{Lb: 1, Ub: maxNrofSRS_ResourcesPerSet}, false)
 		fn_Srs_PosResourceIdList_r16 := func() *SRS_PosResourceId_r16 {
 			return new(SRS_PosResourceId_r16)
 		}
@@ -100,7 +100,7 @@ func (ie *SRS_PosResourceSet_r16) Decode(r *uper.UperReader) error {
 	}
 	if P0_r16Present {
 		var tmp_int_P0_r16 int64
-		if tmp_int_P0_r16, err = r.ReadInteger(&uper.Constraint{Lb: -202, Ub: 24}, false); err != nil {
+		if tmp_int_P0_r16, err = r.ReadInteger(&aper.Constraint{Lb: -202, Ub: 24}, false); err != nil {
 			return utils.WrapError("Decode P0_r16", err)
 		}
 		ie.P0_r16 = &tmp_int_P0_r16

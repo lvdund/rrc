@@ -3,7 +3,7 @@ package ies
 import (
 	"bytes"
 
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -14,12 +14,12 @@ type SCellConfig struct {
 	Smtc                             *SSB_MTC                                  `optional,ext-1`
 	SCellState_r16                   *SCellConfig_sCellState_r16               `optional,ext-2`
 	SecondaryDRX_GroupConfig_r16     *SCellConfig_secondaryDRX_GroupConfig_r16 `optional,ext-2`
-	PreConfGapStatus_r17             *uper.BitString                           `lb:maxNrofGapId_r17,ub:maxNrofGapId_r17,optional,ext-3`
+	PreConfGapStatus_r17             *aper.BitString                           `lb:maxNrofGapId_r17,ub:maxNrofGapId_r17,optional,ext-3`
 	GoodServingCellEvaluationBFD_r17 *GoodServingCellEvaluation_r17            `optional,ext-3`
 	SCellSIB20_r17                   *SCellSIB20_r17                           `optional,ext-3,setuprelease`
 }
 
-func (ie *SCellConfig) Encode(w *uper.UperWriter) error {
+func (ie *SCellConfig) Encode(w *aper.AperWriter) error {
 	var err error
 	hasExtensions := ie.Smtc != nil || ie.SCellState_r16 != nil || ie.SecondaryDRX_GroupConfig_r16 != nil || ie.PreConfGapStatus_r17 != nil || ie.GoodServingCellEvaluationBFD_r17 != nil || ie.SCellSIB20_r17 != nil
 	preambleBits := []bool{hasExtensions, ie.SCellConfigCommon != nil, ie.SCellConfigDedicated != nil}
@@ -51,7 +51,7 @@ func (ie *SCellConfig) Encode(w *uper.UperWriter) error {
 		// encode extension group 1
 		if extBitmap[0] {
 			extBuf := new(bytes.Buffer)
-			extWriter := uper.NewWriter(extBuf)
+			extWriter := aper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 1
 			optionals_ext_1 := []bool{ie.Smtc != nil}
@@ -80,7 +80,7 @@ func (ie *SCellConfig) Encode(w *uper.UperWriter) error {
 		// encode extension group 2
 		if extBitmap[1] {
 			extBuf := new(bytes.Buffer)
-			extWriter := uper.NewWriter(extBuf)
+			extWriter := aper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 2
 			optionals_ext_2 := []bool{ie.SCellState_r16 != nil, ie.SecondaryDRX_GroupConfig_r16 != nil}
@@ -115,7 +115,7 @@ func (ie *SCellConfig) Encode(w *uper.UperWriter) error {
 		// encode extension group 3
 		if extBitmap[2] {
 			extBuf := new(bytes.Buffer)
-			extWriter := uper.NewWriter(extBuf)
+			extWriter := aper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 3
 			optionals_ext_3 := []bool{ie.PreConfGapStatus_r17 != nil, ie.GoodServingCellEvaluationBFD_r17 != nil, ie.SCellSIB20_r17 != nil}
@@ -127,7 +127,7 @@ func (ie *SCellConfig) Encode(w *uper.UperWriter) error {
 
 			// encode PreConfGapStatus_r17 optional
 			if ie.PreConfGapStatus_r17 != nil {
-				if err = extWriter.WriteBitString(ie.PreConfGapStatus_r17.Bytes, uint(ie.PreConfGapStatus_r17.NumBits), &uper.Constraint{Lb: maxNrofGapId_r17, Ub: maxNrofGapId_r17}, false); err != nil {
+				if err = extWriter.WriteBitString(ie.PreConfGapStatus_r17.Bytes, uint(ie.PreConfGapStatus_r17.NumBits), &aper.Constraint{Lb: maxNrofGapId_r17, Ub: maxNrofGapId_r17}, false); err != nil {
 					return utils.WrapError("Encode PreConfGapStatus_r17", err)
 				}
 			}
@@ -159,7 +159,7 @@ func (ie *SCellConfig) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *SCellConfig) Decode(r *uper.UperReader) error {
+func (ie *SCellConfig) Decode(r *aper.AperReader) error {
 	var err error
 	var extensionBit bool
 	if extensionBit, err = r.ReadBool(); err != nil {
@@ -203,7 +203,7 @@ func (ie *SCellConfig) Decode(r *uper.UperReader) error {
 				return err
 			}
 
-			extReader := uper.NewReader(bytes.NewReader(extBytes))
+			extReader := aper.NewReader(bytes.NewReader(extBytes))
 
 			SmtcPresent, err := extReader.ReadBool()
 			if err != nil {
@@ -224,7 +224,7 @@ func (ie *SCellConfig) Decode(r *uper.UperReader) error {
 				return err
 			}
 
-			extReader := uper.NewReader(bytes.NewReader(extBytes))
+			extReader := aper.NewReader(bytes.NewReader(extBytes))
 
 			SCellState_r16Present, err := extReader.ReadBool()
 			if err != nil {
@@ -256,7 +256,7 @@ func (ie *SCellConfig) Decode(r *uper.UperReader) error {
 				return err
 			}
 
-			extReader := uper.NewReader(bytes.NewReader(extBytes))
+			extReader := aper.NewReader(bytes.NewReader(extBytes))
 
 			PreConfGapStatus_r17Present, err := extReader.ReadBool()
 			if err != nil {
@@ -274,10 +274,10 @@ func (ie *SCellConfig) Decode(r *uper.UperReader) error {
 			if PreConfGapStatus_r17Present {
 				var tmp_bs_PreConfGapStatus_r17 []byte
 				var n_PreConfGapStatus_r17 uint
-				if tmp_bs_PreConfGapStatus_r17, n_PreConfGapStatus_r17, err = extReader.ReadBitString(&uper.Constraint{Lb: maxNrofGapId_r17, Ub: maxNrofGapId_r17}, false); err != nil {
+				if tmp_bs_PreConfGapStatus_r17, n_PreConfGapStatus_r17, err = extReader.ReadBitString(&aper.Constraint{Lb: maxNrofGapId_r17, Ub: maxNrofGapId_r17}, false); err != nil {
 					return utils.WrapError("Decode PreConfGapStatus_r17", err)
 				}
-				tmp_bitstring := uper.BitString{
+				tmp_bitstring := aper.BitString{
 					Bytes:   tmp_bs_PreConfGapStatus_r17,
 					NumBits: uint64(n_PreConfGapStatus_r17),
 				}

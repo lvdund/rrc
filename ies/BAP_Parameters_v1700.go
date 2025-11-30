@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -10,7 +10,7 @@ type BAP_Parameters_v1700 struct {
 	BapHeaderRewriting_Routing_r17   *BAP_Parameters_v1700_bapHeaderRewriting_Routing_r17   `optional`
 }
 
-func (ie *BAP_Parameters_v1700) Encode(w *uper.UperWriter) error {
+func (ie *BAP_Parameters_v1700) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.BapHeaderRewriting_Rerouting_r17 != nil, ie.BapHeaderRewriting_Routing_r17 != nil}
 	for _, bit := range preambleBits {
@@ -31,7 +31,7 @@ func (ie *BAP_Parameters_v1700) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *BAP_Parameters_v1700) Decode(r *uper.UperReader) error {
+func (ie *BAP_Parameters_v1700) Decode(r *aper.AperReader) error {
 	var err error
 	var BapHeaderRewriting_Rerouting_r17Present bool
 	if BapHeaderRewriting_Rerouting_r17Present, err = r.ReadBool(); err != nil {

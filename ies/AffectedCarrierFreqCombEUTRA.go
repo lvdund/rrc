@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -9,9 +9,9 @@ type AffectedCarrierFreqCombEUTRA struct {
 	Value []ARFCN_ValueEUTRA `lb:1,ub:maxNrofServingCellsEUTRA,madatory`
 }
 
-func (ie *AffectedCarrierFreqCombEUTRA) Encode(w *uper.UperWriter) error {
+func (ie *AffectedCarrierFreqCombEUTRA) Encode(w *aper.AperWriter) error {
 	var err error
-	tmp := utils.NewSequence[*ARFCN_ValueEUTRA]([]*ARFCN_ValueEUTRA{}, uper.Constraint{Lb: 1, Ub: maxNrofServingCellsEUTRA}, false)
+	tmp := utils.NewSequence[*ARFCN_ValueEUTRA]([]*ARFCN_ValueEUTRA{}, aper.Constraint{Lb: 1, Ub: maxNrofServingCellsEUTRA}, false)
 	for _, i := range ie.Value {
 		tmp.Value = append(tmp.Value, &i)
 	}
@@ -21,9 +21,9 @@ func (ie *AffectedCarrierFreqCombEUTRA) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *AffectedCarrierFreqCombEUTRA) Decode(r *uper.UperReader) error {
+func (ie *AffectedCarrierFreqCombEUTRA) Decode(r *aper.AperReader) error {
 	var err error
-	tmp := utils.NewSequence[*ARFCN_ValueEUTRA]([]*ARFCN_ValueEUTRA{}, uper.Constraint{Lb: 1, Ub: maxNrofServingCellsEUTRA}, false)
+	tmp := utils.NewSequence[*ARFCN_ValueEUTRA]([]*ARFCN_ValueEUTRA{}, aper.Constraint{Lb: 1, Ub: maxNrofServingCellsEUTRA}, false)
 	fn := func() *ARFCN_ValueEUTRA {
 		return new(ARFCN_ValueEUTRA)
 	}

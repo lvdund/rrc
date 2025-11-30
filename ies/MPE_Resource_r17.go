@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -12,7 +12,7 @@ type MPE_Resource_r17 struct {
 	Mpe_ReferenceSignal_r17 MPE_Resource_r17_mpe_ReferenceSignal_r17 `madatory`
 }
 
-func (ie *MPE_Resource_r17) Encode(w *uper.UperWriter) error {
+func (ie *MPE_Resource_r17) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.Cell_r17 != nil, ie.AdditionalPCI_r17 != nil}
 	for _, bit := range preambleBits {
@@ -39,7 +39,7 @@ func (ie *MPE_Resource_r17) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *MPE_Resource_r17) Decode(r *uper.UperReader) error {
+func (ie *MPE_Resource_r17) Decode(r *aper.AperReader) error {
 	var err error
 	var Cell_r17Present bool
 	if Cell_r17Present, err = r.ReadBool(); err != nil {

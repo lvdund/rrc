@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -10,9 +10,9 @@ type PUCCH_ResourceExt_v1610_interlaceAllocation_r16 struct {
 	Interlace0_r16  PUCCH_ResourceExt_v1610_interlaceAllocation_r16_interlace0_r16 `lb:0,ub:9,madatory`
 }
 
-func (ie *PUCCH_ResourceExt_v1610_interlaceAllocation_r16) Encode(w *uper.UperWriter) error {
+func (ie *PUCCH_ResourceExt_v1610_interlaceAllocation_r16) Encode(w *aper.AperWriter) error {
 	var err error
-	if err = w.WriteInteger(ie.Rb_SetIndex_r16, &uper.Constraint{Lb: 0, Ub: 4}, false); err != nil {
+	if err = w.WriteInteger(ie.Rb_SetIndex_r16, &aper.Constraint{Lb: 0, Ub: 4}, false); err != nil {
 		return utils.WrapError("WriteInteger Rb_SetIndex_r16", err)
 	}
 	if err = ie.Interlace0_r16.Encode(w); err != nil {
@@ -21,10 +21,10 @@ func (ie *PUCCH_ResourceExt_v1610_interlaceAllocation_r16) Encode(w *uper.UperWr
 	return nil
 }
 
-func (ie *PUCCH_ResourceExt_v1610_interlaceAllocation_r16) Decode(r *uper.UperReader) error {
+func (ie *PUCCH_ResourceExt_v1610_interlaceAllocation_r16) Decode(r *aper.AperReader) error {
 	var err error
 	var tmp_int_Rb_SetIndex_r16 int64
-	if tmp_int_Rb_SetIndex_r16, err = r.ReadInteger(&uper.Constraint{Lb: 0, Ub: 4}, false); err != nil {
+	if tmp_int_Rb_SetIndex_r16, err = r.ReadInteger(&aper.Constraint{Lb: 0, Ub: 4}, false); err != nil {
 		return utils.WrapError("ReadInteger Rb_SetIndex_r16", err)
 	}
 	ie.Rb_SetIndex_r16 = tmp_int_Rb_SetIndex_r16

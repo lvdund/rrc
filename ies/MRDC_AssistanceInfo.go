@@ -3,7 +3,7 @@ package ies
 import (
 	"bytes"
 
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -13,7 +13,7 @@ type MRDC_AssistanceInfo struct {
 	OverheatingAssistanceSCG_FR2_2_r17  *[]byte                           `optional,ext-2`
 }
 
-func (ie *MRDC_AssistanceInfo) Encode(w *uper.UperWriter) error {
+func (ie *MRDC_AssistanceInfo) Encode(w *aper.AperWriter) error {
 	var err error
 	hasExtensions := ie.OverheatingAssistanceSCG_r16 != nil || ie.OverheatingAssistanceSCG_FR2_2_r17 != nil
 	preambleBits := []bool{hasExtensions}
@@ -22,7 +22,7 @@ func (ie *MRDC_AssistanceInfo) Encode(w *uper.UperWriter) error {
 			return err
 		}
 	}
-	tmp_AffectedCarrierFreqCombInfoListMRDC := utils.NewSequence[*AffectedCarrierFreqCombInfoMRDC]([]*AffectedCarrierFreqCombInfoMRDC{}, uper.Constraint{Lb: 1, Ub: maxNrofCombIDC}, false)
+	tmp_AffectedCarrierFreqCombInfoListMRDC := utils.NewSequence[*AffectedCarrierFreqCombInfoMRDC]([]*AffectedCarrierFreqCombInfoMRDC{}, aper.Constraint{Lb: 1, Ub: maxNrofCombIDC}, false)
 	for _, i := range ie.AffectedCarrierFreqCombInfoListMRDC {
 		tmp_AffectedCarrierFreqCombInfoListMRDC.Value = append(tmp_AffectedCarrierFreqCombInfoListMRDC.Value, &i)
 	}
@@ -39,7 +39,7 @@ func (ie *MRDC_AssistanceInfo) Encode(w *uper.UperWriter) error {
 		// encode extension group 1
 		if extBitmap[0] {
 			extBuf := new(bytes.Buffer)
-			extWriter := uper.NewWriter(extBuf)
+			extWriter := aper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 1
 			optionals_ext_1 := []bool{ie.OverheatingAssistanceSCG_r16 != nil}
@@ -51,7 +51,7 @@ func (ie *MRDC_AssistanceInfo) Encode(w *uper.UperWriter) error {
 
 			// encode OverheatingAssistanceSCG_r16 optional
 			if ie.OverheatingAssistanceSCG_r16 != nil {
-				if err = extWriter.WriteOctetString(*ie.OverheatingAssistanceSCG_r16, &uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+				if err = extWriter.WriteOctetString(*ie.OverheatingAssistanceSCG_r16, &aper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
 					return utils.WrapError("Encode OverheatingAssistanceSCG_r16", err)
 				}
 			}
@@ -68,7 +68,7 @@ func (ie *MRDC_AssistanceInfo) Encode(w *uper.UperWriter) error {
 		// encode extension group 2
 		if extBitmap[1] {
 			extBuf := new(bytes.Buffer)
-			extWriter := uper.NewWriter(extBuf)
+			extWriter := aper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 2
 			optionals_ext_2 := []bool{ie.OverheatingAssistanceSCG_FR2_2_r17 != nil}
@@ -80,7 +80,7 @@ func (ie *MRDC_AssistanceInfo) Encode(w *uper.UperWriter) error {
 
 			// encode OverheatingAssistanceSCG_FR2_2_r17 optional
 			if ie.OverheatingAssistanceSCG_FR2_2_r17 != nil {
-				if err = extWriter.WriteOctetString(*ie.OverheatingAssistanceSCG_FR2_2_r17, &uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+				if err = extWriter.WriteOctetString(*ie.OverheatingAssistanceSCG_FR2_2_r17, &aper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
 					return utils.WrapError("Encode OverheatingAssistanceSCG_FR2_2_r17", err)
 				}
 			}
@@ -97,13 +97,13 @@ func (ie *MRDC_AssistanceInfo) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *MRDC_AssistanceInfo) Decode(r *uper.UperReader) error {
+func (ie *MRDC_AssistanceInfo) Decode(r *aper.AperReader) error {
 	var err error
 	var extensionBit bool
 	if extensionBit, err = r.ReadBool(); err != nil {
 		return err
 	}
-	tmp_AffectedCarrierFreqCombInfoListMRDC := utils.NewSequence[*AffectedCarrierFreqCombInfoMRDC]([]*AffectedCarrierFreqCombInfoMRDC{}, uper.Constraint{Lb: 1, Ub: maxNrofCombIDC}, false)
+	tmp_AffectedCarrierFreqCombInfoListMRDC := utils.NewSequence[*AffectedCarrierFreqCombInfoMRDC]([]*AffectedCarrierFreqCombInfoMRDC{}, aper.Constraint{Lb: 1, Ub: maxNrofCombIDC}, false)
 	fn_AffectedCarrierFreqCombInfoListMRDC := func() *AffectedCarrierFreqCombInfoMRDC {
 		return new(AffectedCarrierFreqCombInfoMRDC)
 	}
@@ -129,7 +129,7 @@ func (ie *MRDC_AssistanceInfo) Decode(r *uper.UperReader) error {
 				return err
 			}
 
-			extReader := uper.NewReader(bytes.NewReader(extBytes))
+			extReader := aper.NewReader(bytes.NewReader(extBytes))
 
 			OverheatingAssistanceSCG_r16Present, err := extReader.ReadBool()
 			if err != nil {
@@ -138,7 +138,7 @@ func (ie *MRDC_AssistanceInfo) Decode(r *uper.UperReader) error {
 			// decode OverheatingAssistanceSCG_r16 optional
 			if OverheatingAssistanceSCG_r16Present {
 				var tmp_os_OverheatingAssistanceSCG_r16 []byte
-				if tmp_os_OverheatingAssistanceSCG_r16, err = extReader.ReadOctetString(&uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+				if tmp_os_OverheatingAssistanceSCG_r16, err = extReader.ReadOctetString(&aper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
 					return utils.WrapError("Decode OverheatingAssistanceSCG_r16", err)
 				}
 				ie.OverheatingAssistanceSCG_r16 = &tmp_os_OverheatingAssistanceSCG_r16
@@ -151,7 +151,7 @@ func (ie *MRDC_AssistanceInfo) Decode(r *uper.UperReader) error {
 				return err
 			}
 
-			extReader := uper.NewReader(bytes.NewReader(extBytes))
+			extReader := aper.NewReader(bytes.NewReader(extBytes))
 
 			OverheatingAssistanceSCG_FR2_2_r17Present, err := extReader.ReadBool()
 			if err != nil {
@@ -160,7 +160,7 @@ func (ie *MRDC_AssistanceInfo) Decode(r *uper.UperReader) error {
 			// decode OverheatingAssistanceSCG_FR2_2_r17 optional
 			if OverheatingAssistanceSCG_FR2_2_r17Present {
 				var tmp_os_OverheatingAssistanceSCG_FR2_2_r17 []byte
-				if tmp_os_OverheatingAssistanceSCG_FR2_2_r17, err = extReader.ReadOctetString(&uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+				if tmp_os_OverheatingAssistanceSCG_FR2_2_r17, err = extReader.ReadOctetString(&aper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
 					return utils.WrapError("Decode OverheatingAssistanceSCG_FR2_2_r17", err)
 				}
 				ie.OverheatingAssistanceSCG_FR2_2_r17 = &tmp_os_OverheatingAssistanceSCG_FR2_2_r17

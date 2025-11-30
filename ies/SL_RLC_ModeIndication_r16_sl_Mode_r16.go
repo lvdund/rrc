@@ -3,7 +3,7 @@ package ies
 import (
 	"fmt"
 
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -15,11 +15,11 @@ const (
 
 type SL_RLC_ModeIndication_r16_sl_Mode_r16 struct {
 	Choice         uint64
-	Sl_AM_Mode_r16 uper.NULL `madatory`
-	Sl_UM_Mode_r16 uper.NULL `madatory`
+	Sl_AM_Mode_r16 aper.NULL `madatory`
+	Sl_UM_Mode_r16 aper.NULL `madatory`
 }
 
-func (ie *SL_RLC_ModeIndication_r16_sl_Mode_r16) Encode(w *uper.UperWriter) error {
+func (ie *SL_RLC_ModeIndication_r16_sl_Mode_r16) Encode(w *aper.AperWriter) error {
 	var err error
 	if err = w.WriteChoice(ie.Choice, 2, false); err != nil {
 		return err
@@ -39,7 +39,7 @@ func (ie *SL_RLC_ModeIndication_r16_sl_Mode_r16) Encode(w *uper.UperWriter) erro
 	return err
 }
 
-func (ie *SL_RLC_ModeIndication_r16_sl_Mode_r16) Decode(r *uper.UperReader) error {
+func (ie *SL_RLC_ModeIndication_r16_sl_Mode_r16) Decode(r *aper.AperReader) error {
 	var err error
 	if ie.Choice, err = r.ReadChoice(2, false); err != nil {
 		return err

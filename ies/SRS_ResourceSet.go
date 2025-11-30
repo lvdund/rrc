@@ -3,7 +3,7 @@ package ies
 import (
 	"bytes"
 
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -22,7 +22,7 @@ type SRS_ResourceSet struct {
 	FollowUnifiedTCI_StateSRS_r17    *SRS_ResourceSet_followUnifiedTCI_StateSRS_r17    `optional,ext-3`
 }
 
-func (ie *SRS_ResourceSet) Encode(w *uper.UperWriter) error {
+func (ie *SRS_ResourceSet) Encode(w *aper.AperWriter) error {
 	var err error
 	hasExtensions := ie.PathlossReferenceRSList_r16 != nil || ie.UsagePDC_r17 != nil || len(ie.AvailableSlotOffsetList_r17) > 0 || ie.FollowUnifiedTCI_StateSRS_r17 != nil
 	preambleBits := []bool{hasExtensions, len(ie.Srs_ResourceIdList) > 0, len(ie.ResourceType) > 0}
@@ -35,7 +35,7 @@ func (ie *SRS_ResourceSet) Encode(w *uper.UperWriter) error {
 		return utils.WrapError("Encode Srs_ResourceSetId", err)
 	}
 	if len(ie.Srs_ResourceIdList) > 0 {
-		tmp_Srs_ResourceIdList := utils.NewSequence[*SRS_ResourceId]([]*SRS_ResourceId{}, uper.Constraint{Lb: 1, Ub: maxNrofSRS_ResourcesPerSet}, false)
+		tmp_Srs_ResourceIdList := utils.NewSequence[*SRS_ResourceId]([]*SRS_ResourceId{}, aper.Constraint{Lb: 1, Ub: maxNrofSRS_ResourcesPerSet}, false)
 		for _, i := range ie.Srs_ResourceIdList {
 			tmp_Srs_ResourceIdList.Value = append(tmp_Srs_ResourceIdList.Value, &i)
 		}
@@ -44,9 +44,9 @@ func (ie *SRS_ResourceSet) Encode(w *uper.UperWriter) error {
 		}
 	}
 	if len(ie.ResourceType) > 0 {
-		tmp_ResourceType := utils.NewSequence[*utils.INTEGER]([]*utils.INTEGER{}, uper.Constraint{Lb: 1, Ub: maxNrofSRS_TriggerStates_2}, false)
+		tmp_ResourceType := utils.NewSequence[*utils.INTEGER]([]*utils.INTEGER{}, aper.Constraint{Lb: 1, Ub: maxNrofSRS_TriggerStates_2}, false)
 		for _, i := range ie.ResourceType {
-			tmp_ie := utils.NewINTEGER(int64(i), uper.Constraint{Lb: 1, Ub: maxNrofSRS_TriggerStates_1}, false)
+			tmp_ie := utils.NewINTEGER(int64(i), aper.Constraint{Lb: 1, Ub: maxNrofSRS_TriggerStates_1}, false)
 			tmp_ResourceType.Value = append(tmp_ResourceType.Value, &tmp_ie)
 		}
 		if err = tmp_ResourceType.Encode(w); err != nil {
@@ -63,7 +63,7 @@ func (ie *SRS_ResourceSet) Encode(w *uper.UperWriter) error {
 		// encode extension group 2
 		if extBitmap[1] {
 			extBuf := new(bytes.Buffer)
-			extWriter := uper.NewWriter(extBuf)
+			extWriter := aper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 2
 			optionals_ext_2 := []bool{ie.PathlossReferenceRSList_r16 != nil}
@@ -95,7 +95,7 @@ func (ie *SRS_ResourceSet) Encode(w *uper.UperWriter) error {
 		// encode extension group 3
 		if extBitmap[2] {
 			extBuf := new(bytes.Buffer)
-			extWriter := uper.NewWriter(extBuf)
+			extWriter := aper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 3
 			optionals_ext_3 := []bool{ie.UsagePDC_r17 != nil, len(ie.AvailableSlotOffsetList_r17) > 0, ie.FollowUnifiedTCI_StateSRS_r17 != nil}
@@ -113,7 +113,7 @@ func (ie *SRS_ResourceSet) Encode(w *uper.UperWriter) error {
 			}
 			// encode AvailableSlotOffsetList_r17 optional
 			if len(ie.AvailableSlotOffsetList_r17) > 0 {
-				tmp_AvailableSlotOffsetList_r17 := utils.NewSequence[*AvailableSlotOffset_r17]([]*AvailableSlotOffset_r17{}, uper.Constraint{Lb: 1, Ub: 4}, false)
+				tmp_AvailableSlotOffsetList_r17 := utils.NewSequence[*AvailableSlotOffset_r17]([]*AvailableSlotOffset_r17{}, aper.Constraint{Lb: 1, Ub: 4}, false)
 				for _, i := range ie.AvailableSlotOffsetList_r17 {
 					tmp_AvailableSlotOffsetList_r17.Value = append(tmp_AvailableSlotOffsetList_r17.Value, &i)
 				}
@@ -140,7 +140,7 @@ func (ie *SRS_ResourceSet) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *SRS_ResourceSet) Decode(r *uper.UperReader) error {
+func (ie *SRS_ResourceSet) Decode(r *aper.AperReader) error {
 	var err error
 	var extensionBit bool
 	if extensionBit, err = r.ReadBool(); err != nil {
@@ -158,7 +158,7 @@ func (ie *SRS_ResourceSet) Decode(r *uper.UperReader) error {
 		return utils.WrapError("Decode Srs_ResourceSetId", err)
 	}
 	if Srs_ResourceIdListPresent {
-		tmp_Srs_ResourceIdList := utils.NewSequence[*SRS_ResourceId]([]*SRS_ResourceId{}, uper.Constraint{Lb: 1, Ub: maxNrofSRS_ResourcesPerSet}, false)
+		tmp_Srs_ResourceIdList := utils.NewSequence[*SRS_ResourceId]([]*SRS_ResourceId{}, aper.Constraint{Lb: 1, Ub: maxNrofSRS_ResourcesPerSet}, false)
 		fn_Srs_ResourceIdList := func() *SRS_ResourceId {
 			return new(SRS_ResourceId)
 		}
@@ -171,9 +171,9 @@ func (ie *SRS_ResourceSet) Decode(r *uper.UperReader) error {
 		}
 	}
 	if ResourceTypePresent {
-		tmp_ResourceType := utils.NewSequence[*utils.INTEGER]([]*utils.INTEGER{}, uper.Constraint{Lb: 1, Ub: maxNrofSRS_TriggerStates_2}, false)
+		tmp_ResourceType := utils.NewSequence[*utils.INTEGER]([]*utils.INTEGER{}, aper.Constraint{Lb: 1, Ub: maxNrofSRS_TriggerStates_2}, false)
 		fn_ResourceType := func() *utils.INTEGER {
-			ie := utils.NewINTEGER(0, uper.Constraint{Lb: 1, Ub: maxNrofSRS_TriggerStates_1}, false)
+			ie := utils.NewINTEGER(0, aper.Constraint{Lb: 1, Ub: maxNrofSRS_TriggerStates_1}, false)
 			return &ie
 		}
 		if err = tmp_ResourceType.Decode(r, fn_ResourceType); err != nil {
@@ -199,7 +199,7 @@ func (ie *SRS_ResourceSet) Decode(r *uper.UperReader) error {
 				return err
 			}
 
-			extReader := uper.NewReader(bytes.NewReader(extBytes))
+			extReader := aper.NewReader(bytes.NewReader(extBytes))
 
 			PathlossReferenceRSList_r16Present, err := extReader.ReadBool()
 			if err != nil {
@@ -221,7 +221,7 @@ func (ie *SRS_ResourceSet) Decode(r *uper.UperReader) error {
 				return err
 			}
 
-			extReader := uper.NewReader(bytes.NewReader(extBytes))
+			extReader := aper.NewReader(bytes.NewReader(extBytes))
 
 			UsagePDC_r17Present, err := extReader.ReadBool()
 			if err != nil {
@@ -244,7 +244,7 @@ func (ie *SRS_ResourceSet) Decode(r *uper.UperReader) error {
 			}
 			// decode AvailableSlotOffsetList_r17 optional
 			if AvailableSlotOffsetList_r17Present {
-				tmp_AvailableSlotOffsetList_r17 := utils.NewSequence[*AvailableSlotOffset_r17]([]*AvailableSlotOffset_r17{}, uper.Constraint{Lb: 1, Ub: 4}, false)
+				tmp_AvailableSlotOffsetList_r17 := utils.NewSequence[*AvailableSlotOffset_r17]([]*AvailableSlotOffset_r17{}, aper.Constraint{Lb: 1, Ub: 4}, false)
 				fn_AvailableSlotOffsetList_r17 := func() *AvailableSlotOffset_r17 {
 					return new(AvailableSlotOffset_r17)
 				}

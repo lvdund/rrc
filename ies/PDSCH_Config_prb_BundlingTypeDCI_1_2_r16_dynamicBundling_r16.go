@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -10,7 +10,7 @@ type PDSCH_Config_prb_BundlingTypeDCI_1_2_r16_dynamicBundling_r16 struct {
 	BundleSizeSet2_r16 *PDSCH_Config_prb_BundlingTypeDCI_1_2_r16_dynamicBundling_r16_bundleSizeSet2_r16 `optional`
 }
 
-func (ie *PDSCH_Config_prb_BundlingTypeDCI_1_2_r16_dynamicBundling_r16) Encode(w *uper.UperWriter) error {
+func (ie *PDSCH_Config_prb_BundlingTypeDCI_1_2_r16_dynamicBundling_r16) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.BundleSizeSet1_r16 != nil, ie.BundleSizeSet2_r16 != nil}
 	for _, bit := range preambleBits {
@@ -31,7 +31,7 @@ func (ie *PDSCH_Config_prb_BundlingTypeDCI_1_2_r16_dynamicBundling_r16) Encode(w
 	return nil
 }
 
-func (ie *PDSCH_Config_prb_BundlingTypeDCI_1_2_r16_dynamicBundling_r16) Decode(r *uper.UperReader) error {
+func (ie *PDSCH_Config_prb_BundlingTypeDCI_1_2_r16_dynamicBundling_r16) Decode(r *aper.AperReader) error {
 	var err error
 	var BundleSizeSet1_r16Present bool
 	if BundleSizeSet1_r16Present, err = r.ReadBool(); err != nil {

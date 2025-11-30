@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -16,7 +16,7 @@ type FeatureCombination_r17 struct {
 	Spare1               *FeatureCombination_r17_spare1               `optional`
 }
 
-func (ie *FeatureCombination_r17) Encode(w *uper.UperWriter) error {
+func (ie *FeatureCombination_r17) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.RedCap_r17 != nil, ie.SmallData_r17 != nil, ie.Nsag_r17 != nil, ie.Msg3_Repetitions_r17 != nil, ie.Spare4 != nil, ie.Spare3 != nil, ie.Spare2 != nil, ie.Spare1 != nil}
 	for _, bit := range preambleBits {
@@ -67,7 +67,7 @@ func (ie *FeatureCombination_r17) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *FeatureCombination_r17) Decode(r *uper.UperReader) error {
+func (ie *FeatureCombination_r17) Decode(r *aper.AperReader) error {
 	var err error
 	var RedCap_r17Present bool
 	if RedCap_r17Present, err = r.ReadBool(); err != nil {

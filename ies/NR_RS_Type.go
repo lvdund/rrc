@@ -1,33 +1,33 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
 const (
-	NR_RS_Type_Enum_ssb    uper.Enumerated = 0
-	NR_RS_Type_Enum_csi_rs uper.Enumerated = 1
+	NR_RS_Type_Enum_ssb    aper.Enumerated = 0
+	NR_RS_Type_Enum_csi_rs aper.Enumerated = 1
 )
 
 type NR_RS_Type struct {
-	Value uper.Enumerated `lb:0,ub:1,madatory`
+	Value aper.Enumerated `lb:0,ub:1,madatory`
 }
 
-func (ie *NR_RS_Type) Encode(w *uper.UperWriter) error {
+func (ie *NR_RS_Type) Encode(w *aper.AperWriter) error {
 	var err error
-	if err = w.WriteEnumerate(uint64(ie.Value), uper.Constraint{Lb: 0, Ub: 1}, false); err != nil {
+	if err = w.WriteEnumerate(uint64(ie.Value), aper.Constraint{Lb: 0, Ub: 1}, false); err != nil {
 		return utils.WrapError("Encode NR_RS_Type", err)
 	}
 	return nil
 }
 
-func (ie *NR_RS_Type) Decode(r *uper.UperReader) error {
+func (ie *NR_RS_Type) Decode(r *aper.AperReader) error {
 	var err error
 	var v uint64
-	if v, err = r.ReadEnumerate(uper.Constraint{Lb: 0, Ub: 1}, false); err != nil {
+	if v, err = r.ReadEnumerate(aper.Constraint{Lb: 0, Ub: 1}, false); err != nil {
 		return utils.WrapError("Decode NR_RS_Type", err)
 	}
-	ie.Value = uper.Enumerated(v)
+	ie.Value = aper.Enumerated(v)
 	return nil
 }

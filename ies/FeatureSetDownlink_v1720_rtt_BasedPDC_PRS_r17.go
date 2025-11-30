@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -10,7 +10,7 @@ type FeatureSetDownlink_v1720_rtt_BasedPDC_PRS_r17 struct {
 	MaxNumberPRS_ResourceProcessedPerSlot_r17 *FeatureSetDownlink_v1720_rtt_BasedPDC_PRS_r17_maxNumberPRS_ResourceProcessedPerSlot_r17 `optional`
 }
 
-func (ie *FeatureSetDownlink_v1720_rtt_BasedPDC_PRS_r17) Encode(w *uper.UperWriter) error {
+func (ie *FeatureSetDownlink_v1720_rtt_BasedPDC_PRS_r17) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.MaxNumberPRS_ResourceProcessedPerSlot_r17 != nil}
 	for _, bit := range preambleBits {
@@ -29,7 +29,7 @@ func (ie *FeatureSetDownlink_v1720_rtt_BasedPDC_PRS_r17) Encode(w *uper.UperWrit
 	return nil
 }
 
-func (ie *FeatureSetDownlink_v1720_rtt_BasedPDC_PRS_r17) Decode(r *uper.UperReader) error {
+func (ie *FeatureSetDownlink_v1720_rtt_BasedPDC_PRS_r17) Decode(r *aper.AperReader) error {
 	var err error
 	var MaxNumberPRS_ResourceProcessedPerSlot_r17Present bool
 	if MaxNumberPRS_ResourceProcessedPerSlot_r17Present, err = r.ReadBool(); err != nil {

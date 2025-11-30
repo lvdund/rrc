@@ -3,7 +3,7 @@ package ies
 import (
 	"fmt"
 
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -19,7 +19,7 @@ type VarMeasConfig_s_MeasureConfig struct {
 	Csi_RSRP *RSRP_Range
 }
 
-func (ie *VarMeasConfig_s_MeasureConfig) Encode(w *uper.UperWriter) error {
+func (ie *VarMeasConfig_s_MeasureConfig) Encode(w *aper.AperWriter) error {
 	var err error
 	if err = w.WriteChoice(ie.Choice, 2, false); err != nil {
 		return err
@@ -39,7 +39,7 @@ func (ie *VarMeasConfig_s_MeasureConfig) Encode(w *uper.UperWriter) error {
 	return err
 }
 
-func (ie *VarMeasConfig_s_MeasureConfig) Decode(r *uper.UperReader) error {
+func (ie *VarMeasConfig_s_MeasureConfig) Decode(r *aper.AperReader) error {
 	var err error
 	if ie.Choice, err = r.ReadChoice(2, false); err != nil {
 		return err

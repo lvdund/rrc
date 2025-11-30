@@ -3,7 +3,7 @@ package ies
 import (
 	"fmt"
 
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -15,11 +15,11 @@ const (
 
 type LocationAndBandwidthBroadcast_r17 struct {
 	Choice                            uint64
-	SameAsSib1ConfiguredLocationAndBW uper.NULL `madatory`
+	SameAsSib1ConfiguredLocationAndBW aper.NULL `madatory`
 	LocationAndBandwidth              int64     `lb:0,ub:37949,madatory`
 }
 
-func (ie *LocationAndBandwidthBroadcast_r17) Encode(w *uper.UperWriter) error {
+func (ie *LocationAndBandwidthBroadcast_r17) Encode(w *aper.AperWriter) error {
 	var err error
 	if err = w.WriteChoice(ie.Choice, 2, false); err != nil {
 		return err
@@ -30,7 +30,7 @@ func (ie *LocationAndBandwidthBroadcast_r17) Encode(w *uper.UperWriter) error {
 			err = utils.WrapError("Encode SameAsSib1ConfiguredLocationAndBW", err)
 		}
 	case LocationAndBandwidthBroadcast_r17_Choice_LocationAndBandwidth:
-		if err = w.WriteInteger(int64(ie.LocationAndBandwidth), &uper.Constraint{Lb: 0, Ub: 37949}, false); err != nil {
+		if err = w.WriteInteger(int64(ie.LocationAndBandwidth), &aper.Constraint{Lb: 0, Ub: 37949}, false); err != nil {
 			err = utils.WrapError("Encode LocationAndBandwidth", err)
 		}
 	default:
@@ -39,7 +39,7 @@ func (ie *LocationAndBandwidthBroadcast_r17) Encode(w *uper.UperWriter) error {
 	return err
 }
 
-func (ie *LocationAndBandwidthBroadcast_r17) Decode(r *uper.UperReader) error {
+func (ie *LocationAndBandwidthBroadcast_r17) Decode(r *aper.AperReader) error {
 	var err error
 	if ie.Choice, err = r.ReadChoice(2, false); err != nil {
 		return err
@@ -51,7 +51,7 @@ func (ie *LocationAndBandwidthBroadcast_r17) Decode(r *uper.UperReader) error {
 		}
 	case LocationAndBandwidthBroadcast_r17_Choice_LocationAndBandwidth:
 		var tmp_int_LocationAndBandwidth int64
-		if tmp_int_LocationAndBandwidth, err = r.ReadInteger(&uper.Constraint{Lb: 0, Ub: 37949}, false); err != nil {
+		if tmp_int_LocationAndBandwidth, err = r.ReadInteger(&aper.Constraint{Lb: 0, Ub: 37949}, false); err != nil {
 			return utils.WrapError("Decode LocationAndBandwidth", err)
 		}
 		ie.LocationAndBandwidth = tmp_int_LocationAndBandwidth

@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -20,7 +20,7 @@ type OtherConfig_v1700 struct {
 	PropDelayDiffReportConfig_r17              *PropDelayDiffReportConfig_r17                                `optional,setuprelease`
 }
 
-func (ie *OtherConfig_v1700) Encode(w *uper.UperWriter) error {
+func (ie *OtherConfig_v1700) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.Ul_GapFR2_PreferenceConfig_r17 != nil, ie.Musim_GapAssistanceConfig_r17 != nil, ie.Musim_LeaveAssistanceConfig_r17 != nil, ie.SuccessHO_Config_r17 != nil, ie.MaxBW_PreferenceConfigFR2_2_r17 != nil, ie.MaxMIMO_LayerPreferenceConfigFR2_2_r17 != nil, ie.MinSchedulingOffsetPreferenceConfigExt_r17 != nil, ie.Rlm_RelaxationReportingConfig_r17 != nil, ie.Bfd_RelaxationReportingConfig_r17 != nil, ie.Scg_DeactivationPreferenceConfig_r17 != nil, ie.Rrm_MeasRelaxationReportingConfig_r17 != nil, ie.PropDelayDiffReportConfig_r17 != nil}
 	for _, bit := range preambleBits {
@@ -115,7 +115,7 @@ func (ie *OtherConfig_v1700) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *OtherConfig_v1700) Decode(r *uper.UperReader) error {
+func (ie *OtherConfig_v1700) Decode(r *aper.AperReader) error {
 	var err error
 	var Ul_GapFR2_PreferenceConfig_r17Present bool
 	if Ul_GapFR2_PreferenceConfig_r17Present, err = r.ReadBool(); err != nil {

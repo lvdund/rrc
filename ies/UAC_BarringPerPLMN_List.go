@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -9,9 +9,9 @@ type UAC_BarringPerPLMN_List struct {
 	Value []UAC_BarringPerPLMN `lb:1,ub:maxPLMN,madatory`
 }
 
-func (ie *UAC_BarringPerPLMN_List) Encode(w *uper.UperWriter) error {
+func (ie *UAC_BarringPerPLMN_List) Encode(w *aper.AperWriter) error {
 	var err error
-	tmp := utils.NewSequence[*UAC_BarringPerPLMN]([]*UAC_BarringPerPLMN{}, uper.Constraint{Lb: 1, Ub: maxPLMN}, false)
+	tmp := utils.NewSequence[*UAC_BarringPerPLMN]([]*UAC_BarringPerPLMN{}, aper.Constraint{Lb: 1, Ub: maxPLMN}, false)
 	for _, i := range ie.Value {
 		tmp.Value = append(tmp.Value, &i)
 	}
@@ -21,9 +21,9 @@ func (ie *UAC_BarringPerPLMN_List) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *UAC_BarringPerPLMN_List) Decode(r *uper.UperReader) error {
+func (ie *UAC_BarringPerPLMN_List) Decode(r *aper.AperReader) error {
 	var err error
-	tmp := utils.NewSequence[*UAC_BarringPerPLMN]([]*UAC_BarringPerPLMN{}, uper.Constraint{Lb: 1, Ub: maxPLMN}, false)
+	tmp := utils.NewSequence[*UAC_BarringPerPLMN]([]*UAC_BarringPerPLMN{}, aper.Constraint{Lb: 1, Ub: maxPLMN}, false)
 	fn := func() *UAC_BarringPerPLMN {
 		return new(UAC_BarringPerPLMN)
 	}

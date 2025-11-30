@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -10,7 +10,7 @@ type PowSav_Parameters_r16 struct {
 	PowSav_ParametersFRX_Diff_r16 *PowSav_ParametersFRX_Diff_r16 `optional`
 }
 
-func (ie *PowSav_Parameters_r16) Encode(w *uper.UperWriter) error {
+func (ie *PowSav_Parameters_r16) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.PowSav_ParametersCommon_r16 != nil, ie.PowSav_ParametersFRX_Diff_r16 != nil}
 	for _, bit := range preambleBits {
@@ -31,7 +31,7 @@ func (ie *PowSav_Parameters_r16) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *PowSav_Parameters_r16) Decode(r *uper.UperReader) error {
+func (ie *PowSav_Parameters_r16) Decode(r *aper.AperReader) error {
 	var err error
 	var PowSav_ParametersCommon_r16Present bool
 	if PowSav_ParametersCommon_r16Present, err = r.ReadBool(); err != nil {

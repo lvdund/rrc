@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -9,9 +9,9 @@ type BandCombinationList_UplinkTxSwitch_v1650 struct {
 	Value []BandCombination_UplinkTxSwitch_v1650 `lb:1,ub:maxBandComb,madatory`
 }
 
-func (ie *BandCombinationList_UplinkTxSwitch_v1650) Encode(w *uper.UperWriter) error {
+func (ie *BandCombinationList_UplinkTxSwitch_v1650) Encode(w *aper.AperWriter) error {
 	var err error
-	tmp := utils.NewSequence[*BandCombination_UplinkTxSwitch_v1650]([]*BandCombination_UplinkTxSwitch_v1650{}, uper.Constraint{Lb: 1, Ub: maxBandComb}, false)
+	tmp := utils.NewSequence[*BandCombination_UplinkTxSwitch_v1650]([]*BandCombination_UplinkTxSwitch_v1650{}, aper.Constraint{Lb: 1, Ub: maxBandComb}, false)
 	for _, i := range ie.Value {
 		tmp.Value = append(tmp.Value, &i)
 	}
@@ -21,9 +21,9 @@ func (ie *BandCombinationList_UplinkTxSwitch_v1650) Encode(w *uper.UperWriter) e
 	return nil
 }
 
-func (ie *BandCombinationList_UplinkTxSwitch_v1650) Decode(r *uper.UperReader) error {
+func (ie *BandCombinationList_UplinkTxSwitch_v1650) Decode(r *aper.AperReader) error {
 	var err error
-	tmp := utils.NewSequence[*BandCombination_UplinkTxSwitch_v1650]([]*BandCombination_UplinkTxSwitch_v1650{}, uper.Constraint{Lb: 1, Ub: maxBandComb}, false)
+	tmp := utils.NewSequence[*BandCombination_UplinkTxSwitch_v1650]([]*BandCombination_UplinkTxSwitch_v1650{}, aper.Constraint{Lb: 1, Ub: maxBandComb}, false)
 	fn := func() *BandCombination_UplinkTxSwitch_v1650 {
 		return new(BandCombination_UplinkTxSwitch_v1650)
 	}

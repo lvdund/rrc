@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -9,11 +9,11 @@ type UL_AccessConfigListDCI_0_2_r17 struct {
 	Value []int64 `lb:1,ub:64,madatory`
 }
 
-func (ie *UL_AccessConfigListDCI_0_2_r17) Encode(w *uper.UperWriter) error {
+func (ie *UL_AccessConfigListDCI_0_2_r17) Encode(w *aper.AperWriter) error {
 	var err error
-	tmp := utils.NewSequence[*utils.INTEGER]([]*utils.INTEGER{}, uper.Constraint{Lb: 1, Ub: 64}, false)
+	tmp := utils.NewSequence[*utils.INTEGER]([]*utils.INTEGER{}, aper.Constraint{Lb: 1, Ub: 64}, false)
 	for _, i := range ie.Value {
-		tmp_ie := utils.NewINTEGER(int64(i), uper.Constraint{Lb: 0, Ub: 0}, false)
+		tmp_ie := utils.NewINTEGER(int64(i), aper.Constraint{Lb: 0, Ub: 0}, false)
 		tmp.Value = append(tmp.Value, &tmp_ie)
 	}
 	if err = tmp.Encode(w); err != nil {
@@ -22,11 +22,11 @@ func (ie *UL_AccessConfigListDCI_0_2_r17) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *UL_AccessConfigListDCI_0_2_r17) Decode(r *uper.UperReader) error {
+func (ie *UL_AccessConfigListDCI_0_2_r17) Decode(r *aper.AperReader) error {
 	var err error
-	tmp := utils.NewSequence[*utils.INTEGER]([]*utils.INTEGER{}, uper.Constraint{Lb: 1, Ub: 64}, false)
+	tmp := utils.NewSequence[*utils.INTEGER]([]*utils.INTEGER{}, aper.Constraint{Lb: 1, Ub: 64}, false)
 	fn := func() *utils.INTEGER {
-		ie := utils.NewINTEGER(0, uper.Constraint{Lb: 0, Ub: 0}, false)
+		ie := utils.NewINTEGER(0, aper.Constraint{Lb: 0, Ub: 0}, false)
 		return &ie
 	}
 	if err = tmp.Decode(r, fn); err != nil {

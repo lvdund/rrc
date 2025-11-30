@@ -3,7 +3,7 @@ package ies
 import (
 	"bytes"
 
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -73,7 +73,7 @@ type MIMO_ParametersPerBand struct {
 	SpatialRelations_v1640                       *MIMO_ParametersPerBand_spatialRelations_v1640                       `optional,ext-4`
 	Support64CandidateBeamRS_BFR_r16             *MIMO_ParametersPerBand_support64CandidateBeamRS_BFR_r16             `optional,ext-4`
 	MaxMIMO_LayersForMulti_DCI_mTRP_r16          *MIMO_ParametersPerBand_maxMIMO_LayersForMulti_DCI_mTRP_r16          `optional,ext-5`
-	SupportedSINR_meas_v1670                     *uper.BitString                                                      `lb:4,ub:4,optional,ext-6`
+	SupportedSINR_meas_v1670                     *aper.BitString                                                      `lb:4,ub:4,optional,ext-6`
 	Srs_increasedRepetition_r17                  *MIMO_ParametersPerBand_srs_increasedRepetition_r17                  `optional,ext-7`
 	Srs_partialFrequencySounding_r17             *MIMO_ParametersPerBand_srs_partialFrequencySounding_r17             `optional,ext-7`
 	Srs_startRB_locationHoppingPartial_r17       *MIMO_ParametersPerBand_srs_startRB_locationHoppingPartial_r17       `optional,ext-7`
@@ -146,7 +146,7 @@ type MIMO_ParametersPerBand struct {
 	SupportRepNumPDSCH_TDRA_DCI_1_2_r17          *MIMO_ParametersPerBand_supportRepNumPDSCH_TDRA_DCI_1_2_r17          `optional,ext-9`
 }
 
-func (ie *MIMO_ParametersPerBand) Encode(w *uper.UperWriter) error {
+func (ie *MIMO_ParametersPerBand) Encode(w *aper.AperWriter) error {
 	var err error
 	hasExtensions := ie.Dummy6 != nil || ie.BeamManagementSSB_CSI_RS != nil || ie.BeamSwitchTiming != nil || ie.CodebookParameters != nil || ie.Csi_RS_IM_ReceptionForFeedback != nil || ie.Csi_RS_ProcFrameworkForSRS != nil || ie.Csi_ReportFramework != nil || ie.Csi_RS_ForTracking != nil || len(ie.Srs_AssocCSI_RS) > 0 || ie.SpatialRelations != nil || ie.DefaultQCL_TwoTCI_r16 != nil || ie.CodebookParametersPerBand_r16 != nil || ie.Simul_SpatialRelationUpdatePUCCHResGroup_r16 != nil || ie.MaxNumberSCellBFR_r16 != nil || ie.SimultaneousReceptionDiffTypeD_r16 != nil || ie.Ssb_csirs_SINR_measurement_r16 != nil || ie.NonGroupSINR_reporting_r16 != nil || ie.GroupSINR_reporting_r16 != nil || ie.MultiDCI_multiTRP_Parameters_r16 != nil || ie.SingleDCI_SDM_scheme_Parameters_r16 != nil || ie.SupportFDM_SchemeA_r16 != nil || ie.SupportCodeWordSoftCombining_r16 != nil || ie.SupportTDM_SchemeA_r16 != nil || ie.SupportInter_slotTDM_r16 != nil || ie.LowPAPR_DMRS_PDSCH_r16 != nil || ie.LowPAPR_DMRS_PUSCHwithoutPrecoding_r16 != nil || ie.LowPAPR_DMRS_PUCCH_r16 != nil || ie.LowPAPR_DMRS_PUSCHwithPrecoding_r16 != nil || ie.Csi_ReportFrameworkExt_r16 != nil || ie.CodebookParametersAddition_r16 != nil || ie.CodebookComboParametersAddition_r16 != nil || ie.BeamCorrespondenceSSB_based_r16 != nil || ie.BeamCorrespondenceCSI_RS_based_r16 != nil || ie.BeamSwitchTiming_r16 != nil || ie.Semi_PersistentL1_SINR_Report_PUCCH_r16 != nil || ie.Semi_PersistentL1_SINR_Report_PUSCH_r16 != nil || ie.SpatialRelations_v1640 != nil || ie.Support64CandidateBeamRS_BFR_r16 != nil || ie.MaxMIMO_LayersForMulti_DCI_mTRP_r16 != nil || ie.SupportedSINR_meas_v1670 != nil || ie.Srs_increasedRepetition_r17 != nil || ie.Srs_partialFrequencySounding_r17 != nil || ie.Srs_startRB_locationHoppingPartial_r17 != nil || ie.Srs_combEight_r17 != nil || ie.CodebookParametersfetype2_r17 != nil || ie.MTRP_PUSCH_twoCSI_RS_r17 != nil || ie.MTRP_PUCCH_InterSlot_r17 != nil || ie.MTRP_PUCCH_CyclicMapping_r17 != nil || ie.MTRP_PUCCH_SecondTPC_r17 != nil || ie.MTRP_BFR_twoBFD_RS_Set_r17 != nil || ie.MTRP_BFR_PUCCH_SR_perCG_r17 != nil || ie.MTRP_BFR_association_PUCCH_SR_r17 != nil || ie.Sfn_SimulTwoTCI_AcrossMultiCC_r17 != nil || ie.Sfn_DefaultDL_BeamSetup_r17 != nil || ie.Sfn_DefaultUL_BeamSetup_r17 != nil || ie.Srs_TriggeringOffset_r17 != nil || ie.Srs_TriggeringDCI_r17 != nil || ie.CodebookComboParameterMixedType_r17 != nil || ie.UnifiedJointTCI_r17 != nil || ie.UnifiedJointTCI_multiMAC_CE_r17 != nil || ie.UnifiedJointTCI_perBWP_CA_r17 != nil || ie.UnifiedJointTCI_ListSharingCA_r17 != nil || ie.UnifiedJointTCI_commonMultiCC_r17 != nil || ie.UnifiedJointTCI_BeamAlignDLRS_r17 != nil || ie.UnifiedJointTCI_PC_association_r17 != nil || ie.UnifiedJointTCI_Legacy_r17 != nil || ie.UnifiedJointTCI_Legacy_SRS_r17 != nil || ie.UnifiedJointTCI_Legacy_CORESET0_r17 != nil || ie.UnifiedJointTCI_SCellBFR_r17 != nil || ie.UnifiedJointTCI_InterCell_r17 != nil || ie.UnifiedSeparateTCI_r17 != nil || ie.UnifiedSeparateTCI_multiMAC_CE_r17 != nil || ie.UnifiedSeparateTCI_perBWP_CA_r17 != nil || ie.UnifiedSeparateTCI_ListSharingCA_r17 != nil || ie.UnifiedSeparateTCI_commonMultiCC_r17 != nil || ie.UnifiedSeparateTCI_InterCell_r17 != nil || ie.UnifiedJointTCI_mTRP_InterCell_BM_r17 != nil || ie.Mpe_Mitigation_r17 != nil || ie.Srs_PortReport_r17 != nil || ie.MTRP_PDCCH_individual_r17 != nil || ie.MTRP_PDCCH_anySpan_3Symbols_r17 != nil || ie.MTRP_PDCCH_TwoQCL_TypeD_r17 != nil || ie.MTRP_PUSCH_CSI_RS_r17 != nil || ie.MTRP_PUSCH_cyclicMapping_r17 != nil || ie.MTRP_PUSCH_secondTPC_r17 != nil || ie.MTRP_PUSCH_twoPHR_Reporting_r17 != nil || ie.MTRP_PUSCH_A_CSI_r17 != nil || ie.MTRP_PUSCH_SP_CSI_r17 != nil || ie.MTRP_PUSCH_CG_r17 != nil || ie.MTRP_PUCCH_MAC_CE_r17 != nil || ie.MTRP_PUCCH_maxNum_PC_FR1_r17 != nil || ie.MTRP_inter_Cell_r17 != nil || ie.MTRP_GroupBasedL1_RSRP_r17 != nil || ie.MTRP_BFD_RS_MAC_CE_r17 != nil || ie.MTRP_CSI_EnhancementPerBand_r17 != nil || ie.CodebookComboParameterMultiTRP_r17 != nil || ie.MTRP_CSI_additionalCSI_r17 != nil || ie.MTRP_CSI_N_Max2_r17 != nil || ie.MTRP_CSI_CMR_r17 != nil || ie.Srs_partialFreqSounding_r17 != nil || ie.BeamSwitchTiming_v1710 != nil || ie.BeamSwitchTiming_r17 != nil || ie.BeamReportTiming_v1710 != nil || ie.MaxNumberRxTxBeamSwitchDL_v1710 != nil || ie.Srs_PortReportSP_AP_r17 != nil || ie.MaxNumberRxBeam_v1720 != nil || ie.Sfn_ImplicitRS_twoTCI_r17 != nil || ie.Sfn_QCL_TypeD_Collision_twoTCI_r17 != nil || ie.MTRP_CSI_numCPU_r17 != nil || ie.SupportRepNumPDSCH_TDRA_DCI_1_2_r17 != nil
 	preambleBits := []bool{hasExtensions, ie.Tci_StatePDSCH != nil, ie.AdditionalActiveTCI_StatePDCCH != nil, ie.Pusch_TransCoherence != nil, ie.BeamCorrespondenceWithoutUL_BeamSweeping != nil, ie.PeriodicBeamReport != nil, ie.AperiodicBeamReport != nil, ie.Sp_BeamReportPUCCH != nil, ie.Sp_BeamReportPUSCH != nil, ie.Dummy1 != nil, ie.MaxNumberRxBeam != nil, ie.MaxNumberRxTxBeamSwitchDL != nil, ie.MaxNumberNonGroupBeamReporting != nil, ie.GroupBeamReporting != nil, ie.UplinkBeamManagement != nil, ie.MaxNumberCSI_RS_BFD != nil, ie.MaxNumberSSB_BFD != nil, ie.MaxNumberCSI_RS_SSB_CBD != nil, ie.Dummy2 != nil, ie.TwoPortsPTRS_UL != nil, ie.Dummy5 != nil, ie.Dummy3 != nil, ie.BeamReportTiming != nil, ie.Ptrs_DensityRecommendationSetDL != nil, ie.Ptrs_DensityRecommendationSetUL != nil, ie.Dummy4 != nil, ie.AperiodicTRS != nil}
@@ -201,7 +201,7 @@ func (ie *MIMO_ParametersPerBand) Encode(w *uper.UperWriter) error {
 		}
 	}
 	if ie.MaxNumberRxBeam != nil {
-		if err = w.WriteInteger(*ie.MaxNumberRxBeam, &uper.Constraint{Lb: 2, Ub: 8}, false); err != nil {
+		if err = w.WriteInteger(*ie.MaxNumberRxBeam, &aper.Constraint{Lb: 2, Ub: 8}, false); err != nil {
 			return utils.WrapError("Encode MaxNumberRxBeam", err)
 		}
 	}
@@ -226,17 +226,17 @@ func (ie *MIMO_ParametersPerBand) Encode(w *uper.UperWriter) error {
 		}
 	}
 	if ie.MaxNumberCSI_RS_BFD != nil {
-		if err = w.WriteInteger(*ie.MaxNumberCSI_RS_BFD, &uper.Constraint{Lb: 1, Ub: 64}, false); err != nil {
+		if err = w.WriteInteger(*ie.MaxNumberCSI_RS_BFD, &aper.Constraint{Lb: 1, Ub: 64}, false); err != nil {
 			return utils.WrapError("Encode MaxNumberCSI_RS_BFD", err)
 		}
 	}
 	if ie.MaxNumberSSB_BFD != nil {
-		if err = w.WriteInteger(*ie.MaxNumberSSB_BFD, &uper.Constraint{Lb: 1, Ub: 64}, false); err != nil {
+		if err = w.WriteInteger(*ie.MaxNumberSSB_BFD, &aper.Constraint{Lb: 1, Ub: 64}, false); err != nil {
 			return utils.WrapError("Encode MaxNumberSSB_BFD", err)
 		}
 	}
 	if ie.MaxNumberCSI_RS_SSB_CBD != nil {
-		if err = w.WriteInteger(*ie.MaxNumberCSI_RS_SSB_CBD, &uper.Constraint{Lb: 1, Ub: 256}, false); err != nil {
+		if err = w.WriteInteger(*ie.MaxNumberCSI_RS_SSB_CBD, &aper.Constraint{Lb: 1, Ub: 256}, false); err != nil {
 			return utils.WrapError("Encode MaxNumberCSI_RS_SSB_CBD", err)
 		}
 	}
@@ -256,7 +256,7 @@ func (ie *MIMO_ParametersPerBand) Encode(w *uper.UperWriter) error {
 		}
 	}
 	if ie.Dummy3 != nil {
-		if err = w.WriteInteger(*ie.Dummy3, &uper.Constraint{Lb: 1, Ub: 4}, false); err != nil {
+		if err = w.WriteInteger(*ie.Dummy3, &aper.Constraint{Lb: 1, Ub: 4}, false); err != nil {
 			return utils.WrapError("Encode Dummy3", err)
 		}
 	}
@@ -295,7 +295,7 @@ func (ie *MIMO_ParametersPerBand) Encode(w *uper.UperWriter) error {
 		// encode extension group 1
 		if extBitmap[0] {
 			extBuf := new(bytes.Buffer)
-			extWriter := uper.NewWriter(extBuf)
+			extWriter := aper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 1
 			optionals_ext_1 := []bool{ie.Dummy6 != nil, ie.BeamManagementSSB_CSI_RS != nil, ie.BeamSwitchTiming != nil, ie.CodebookParameters != nil, ie.Csi_RS_IM_ReceptionForFeedback != nil, ie.Csi_RS_ProcFrameworkForSRS != nil, ie.Csi_ReportFramework != nil, ie.Csi_RS_ForTracking != nil, len(ie.Srs_AssocCSI_RS) > 0, ie.SpatialRelations != nil}
@@ -355,7 +355,7 @@ func (ie *MIMO_ParametersPerBand) Encode(w *uper.UperWriter) error {
 			}
 			// encode Srs_AssocCSI_RS optional
 			if len(ie.Srs_AssocCSI_RS) > 0 {
-				tmp_Srs_AssocCSI_RS := utils.NewSequence[*SupportedCSI_RS_Resource]([]*SupportedCSI_RS_Resource{}, uper.Constraint{Lb: 1, Ub: maxNrofCSI_RS_Resources}, false)
+				tmp_Srs_AssocCSI_RS := utils.NewSequence[*SupportedCSI_RS_Resource]([]*SupportedCSI_RS_Resource{}, aper.Constraint{Lb: 1, Ub: maxNrofCSI_RS_Resources}, false)
 				for _, i := range ie.Srs_AssocCSI_RS {
 					tmp_Srs_AssocCSI_RS.Value = append(tmp_Srs_AssocCSI_RS.Value, &i)
 				}
@@ -382,7 +382,7 @@ func (ie *MIMO_ParametersPerBand) Encode(w *uper.UperWriter) error {
 		// encode extension group 2
 		if extBitmap[1] {
 			extBuf := new(bytes.Buffer)
-			extWriter := uper.NewWriter(extBuf)
+			extWriter := aper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 2
 			optionals_ext_2 := []bool{ie.DefaultQCL_TwoTCI_r16 != nil, ie.CodebookParametersPerBand_r16 != nil, ie.Simul_SpatialRelationUpdatePUCCHResGroup_r16 != nil, ie.MaxNumberSCellBFR_r16 != nil, ie.SimultaneousReceptionDiffTypeD_r16 != nil, ie.Ssb_csirs_SINR_measurement_r16 != nil, ie.NonGroupSINR_reporting_r16 != nil, ie.GroupSINR_reporting_r16 != nil, ie.MultiDCI_multiTRP_Parameters_r16 != nil, ie.SingleDCI_SDM_scheme_Parameters_r16 != nil, ie.SupportFDM_SchemeA_r16 != nil, ie.SupportCodeWordSoftCombining_r16 != nil, ie.SupportTDM_SchemeA_r16 != nil, ie.SupportInter_slotTDM_r16 != nil, ie.LowPAPR_DMRS_PDSCH_r16 != nil, ie.LowPAPR_DMRS_PUSCHwithoutPrecoding_r16 != nil, ie.LowPAPR_DMRS_PUCCH_r16 != nil, ie.LowPAPR_DMRS_PUSCHwithPrecoding_r16 != nil, ie.Csi_ReportFrameworkExt_r16 != nil, ie.CodebookParametersAddition_r16 != nil, ie.CodebookComboParametersAddition_r16 != nil, ie.BeamCorrespondenceSSB_based_r16 != nil, ie.BeamCorrespondenceCSI_RS_based_r16 != nil, ie.BeamSwitchTiming_r16 != nil}
@@ -549,7 +549,7 @@ func (ie *MIMO_ParametersPerBand) Encode(w *uper.UperWriter) error {
 		// encode extension group 3
 		if extBitmap[2] {
 			extBuf := new(bytes.Buffer)
-			extWriter := uper.NewWriter(extBuf)
+			extWriter := aper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 3
 			optionals_ext_3 := []bool{ie.Semi_PersistentL1_SINR_Report_PUCCH_r16 != nil, ie.Semi_PersistentL1_SINR_Report_PUSCH_r16 != nil}
@@ -584,7 +584,7 @@ func (ie *MIMO_ParametersPerBand) Encode(w *uper.UperWriter) error {
 		// encode extension group 4
 		if extBitmap[3] {
 			extBuf := new(bytes.Buffer)
-			extWriter := uper.NewWriter(extBuf)
+			extWriter := aper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 4
 			optionals_ext_4 := []bool{ie.SpatialRelations_v1640 != nil, ie.Support64CandidateBeamRS_BFR_r16 != nil}
@@ -619,7 +619,7 @@ func (ie *MIMO_ParametersPerBand) Encode(w *uper.UperWriter) error {
 		// encode extension group 5
 		if extBitmap[4] {
 			extBuf := new(bytes.Buffer)
-			extWriter := uper.NewWriter(extBuf)
+			extWriter := aper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 5
 			optionals_ext_5 := []bool{ie.MaxMIMO_LayersForMulti_DCI_mTRP_r16 != nil}
@@ -648,7 +648,7 @@ func (ie *MIMO_ParametersPerBand) Encode(w *uper.UperWriter) error {
 		// encode extension group 6
 		if extBitmap[5] {
 			extBuf := new(bytes.Buffer)
-			extWriter := uper.NewWriter(extBuf)
+			extWriter := aper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 6
 			optionals_ext_6 := []bool{ie.SupportedSINR_meas_v1670 != nil}
@@ -660,7 +660,7 @@ func (ie *MIMO_ParametersPerBand) Encode(w *uper.UperWriter) error {
 
 			// encode SupportedSINR_meas_v1670 optional
 			if ie.SupportedSINR_meas_v1670 != nil {
-				if err = extWriter.WriteBitString(ie.SupportedSINR_meas_v1670.Bytes, uint(ie.SupportedSINR_meas_v1670.NumBits), &uper.Constraint{Lb: 4, Ub: 4}, false); err != nil {
+				if err = extWriter.WriteBitString(ie.SupportedSINR_meas_v1670.Bytes, uint(ie.SupportedSINR_meas_v1670.NumBits), &aper.Constraint{Lb: 4, Ub: 4}, false); err != nil {
 					return utils.WrapError("Encode SupportedSINR_meas_v1670", err)
 				}
 			}
@@ -677,7 +677,7 @@ func (ie *MIMO_ParametersPerBand) Encode(w *uper.UperWriter) error {
 		// encode extension group 7
 		if extBitmap[6] {
 			extBuf := new(bytes.Buffer)
-			extWriter := uper.NewWriter(extBuf)
+			extWriter := aper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 7
 			optionals_ext_7 := []bool{ie.Srs_increasedRepetition_r17 != nil, ie.Srs_partialFrequencySounding_r17 != nil, ie.Srs_startRB_locationHoppingPartial_r17 != nil, ie.Srs_combEight_r17 != nil, ie.CodebookParametersfetype2_r17 != nil, ie.MTRP_PUSCH_twoCSI_RS_r17 != nil, ie.MTRP_PUCCH_InterSlot_r17 != nil, ie.MTRP_PUCCH_CyclicMapping_r17 != nil, ie.MTRP_PUCCH_SecondTPC_r17 != nil, ie.MTRP_BFR_twoBFD_RS_Set_r17 != nil, ie.MTRP_BFR_PUCCH_SR_perCG_r17 != nil, ie.MTRP_BFR_association_PUCCH_SR_r17 != nil, ie.Sfn_SimulTwoTCI_AcrossMultiCC_r17 != nil, ie.Sfn_DefaultDL_BeamSetup_r17 != nil, ie.Sfn_DefaultUL_BeamSetup_r17 != nil, ie.Srs_TriggeringOffset_r17 != nil, ie.Srs_TriggeringDCI_r17 != nil, ie.CodebookComboParameterMixedType_r17 != nil, ie.UnifiedJointTCI_r17 != nil, ie.UnifiedJointTCI_multiMAC_CE_r17 != nil, ie.UnifiedJointTCI_perBWP_CA_r17 != nil, ie.UnifiedJointTCI_ListSharingCA_r17 != nil, ie.UnifiedJointTCI_commonMultiCC_r17 != nil, ie.UnifiedJointTCI_BeamAlignDLRS_r17 != nil, ie.UnifiedJointTCI_PC_association_r17 != nil, ie.UnifiedJointTCI_Legacy_r17 != nil, ie.UnifiedJointTCI_Legacy_SRS_r17 != nil, ie.UnifiedJointTCI_Legacy_CORESET0_r17 != nil, ie.UnifiedJointTCI_SCellBFR_r17 != nil, ie.UnifiedJointTCI_InterCell_r17 != nil, ie.UnifiedSeparateTCI_r17 != nil, ie.UnifiedSeparateTCI_multiMAC_CE_r17 != nil, ie.UnifiedSeparateTCI_perBWP_CA_r17 != nil, ie.UnifiedSeparateTCI_ListSharingCA_r17 != nil, ie.UnifiedSeparateTCI_commonMultiCC_r17 != nil, ie.UnifiedSeparateTCI_InterCell_r17 != nil, ie.UnifiedJointTCI_mTRP_InterCell_BM_r17 != nil, ie.Mpe_Mitigation_r17 != nil, ie.Srs_PortReport_r17 != nil, ie.MTRP_PDCCH_individual_r17 != nil, ie.MTRP_PDCCH_anySpan_3Symbols_r17 != nil, ie.MTRP_PDCCH_TwoQCL_TypeD_r17 != nil, ie.MTRP_PUSCH_CSI_RS_r17 != nil, ie.MTRP_PUSCH_cyclicMapping_r17 != nil, ie.MTRP_PUSCH_secondTPC_r17 != nil, ie.MTRP_PUSCH_twoPHR_Reporting_r17 != nil, ie.MTRP_PUSCH_A_CSI_r17 != nil, ie.MTRP_PUSCH_SP_CSI_r17 != nil, ie.MTRP_PUSCH_CG_r17 != nil, ie.MTRP_PUCCH_MAC_CE_r17 != nil, ie.MTRP_PUCCH_maxNum_PC_FR1_r17 != nil, ie.MTRP_inter_Cell_r17 != nil, ie.MTRP_GroupBasedL1_RSRP_r17 != nil, ie.MTRP_BFD_RS_MAC_CE_r17 != nil, ie.MTRP_CSI_EnhancementPerBand_r17 != nil, ie.CodebookComboParameterMultiTRP_r17 != nil, ie.MTRP_CSI_additionalCSI_r17 != nil, ie.MTRP_CSI_N_Max2_r17 != nil, ie.MTRP_CSI_CMR_r17 != nil, ie.Srs_partialFreqSounding_r17 != nil, ie.BeamSwitchTiming_v1710 != nil, ie.BeamSwitchTiming_r17 != nil, ie.BeamReportTiming_v1710 != nil, ie.MaxNumberRxTxBeamSwitchDL_v1710 != nil}
@@ -989,7 +989,7 @@ func (ie *MIMO_ParametersPerBand) Encode(w *uper.UperWriter) error {
 			}
 			// encode MTRP_PUCCH_maxNum_PC_FR1_r17 optional
 			if ie.MTRP_PUCCH_maxNum_PC_FR1_r17 != nil {
-				if err = extWriter.WriteInteger(*ie.MTRP_PUCCH_maxNum_PC_FR1_r17, &uper.Constraint{Lb: 3, Ub: 8}, false); err != nil {
+				if err = extWriter.WriteInteger(*ie.MTRP_PUCCH_maxNum_PC_FR1_r17, &aper.Constraint{Lb: 3, Ub: 8}, false); err != nil {
 					return utils.WrapError("Encode MTRP_PUCCH_maxNum_PC_FR1_r17", err)
 				}
 			}
@@ -1084,7 +1084,7 @@ func (ie *MIMO_ParametersPerBand) Encode(w *uper.UperWriter) error {
 		// encode extension group 8
 		if extBitmap[7] {
 			extBuf := new(bytes.Buffer)
-			extWriter := uper.NewWriter(extBuf)
+			extWriter := aper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 8
 			optionals_ext_8 := []bool{ie.Srs_PortReportSP_AP_r17 != nil, ie.MaxNumberRxBeam_v1720 != nil, ie.Sfn_ImplicitRS_twoTCI_r17 != nil, ie.Sfn_QCL_TypeD_Collision_twoTCI_r17 != nil, ie.MTRP_CSI_numCPU_r17 != nil}
@@ -1102,7 +1102,7 @@ func (ie *MIMO_ParametersPerBand) Encode(w *uper.UperWriter) error {
 			}
 			// encode MaxNumberRxBeam_v1720 optional
 			if ie.MaxNumberRxBeam_v1720 != nil {
-				if err = extWriter.WriteInteger(*ie.MaxNumberRxBeam_v1720, &uper.Constraint{Lb: 9, Ub: 12}, false); err != nil {
+				if err = extWriter.WriteInteger(*ie.MaxNumberRxBeam_v1720, &aper.Constraint{Lb: 9, Ub: 12}, false); err != nil {
 					return utils.WrapError("Encode MaxNumberRxBeam_v1720", err)
 				}
 			}
@@ -1137,7 +1137,7 @@ func (ie *MIMO_ParametersPerBand) Encode(w *uper.UperWriter) error {
 		// encode extension group 9
 		if extBitmap[8] {
 			extBuf := new(bytes.Buffer)
-			extWriter := uper.NewWriter(extBuf)
+			extWriter := aper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 9
 			optionals_ext_9 := []bool{ie.SupportRepNumPDSCH_TDRA_DCI_1_2_r17 != nil}
@@ -1166,7 +1166,7 @@ func (ie *MIMO_ParametersPerBand) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *MIMO_ParametersPerBand) Decode(r *uper.UperReader) error {
+func (ie *MIMO_ParametersPerBand) Decode(r *aper.AperReader) error {
 	var err error
 	var extensionBit bool
 	if extensionBit, err = r.ReadBool(); err != nil {
@@ -1332,7 +1332,7 @@ func (ie *MIMO_ParametersPerBand) Decode(r *uper.UperReader) error {
 	}
 	if MaxNumberRxBeamPresent {
 		var tmp_int_MaxNumberRxBeam int64
-		if tmp_int_MaxNumberRxBeam, err = r.ReadInteger(&uper.Constraint{Lb: 2, Ub: 8}, false); err != nil {
+		if tmp_int_MaxNumberRxBeam, err = r.ReadInteger(&aper.Constraint{Lb: 2, Ub: 8}, false); err != nil {
 			return utils.WrapError("Decode MaxNumberRxBeam", err)
 		}
 		ie.MaxNumberRxBeam = &tmp_int_MaxNumberRxBeam
@@ -1363,21 +1363,21 @@ func (ie *MIMO_ParametersPerBand) Decode(r *uper.UperReader) error {
 	}
 	if MaxNumberCSI_RS_BFDPresent {
 		var tmp_int_MaxNumberCSI_RS_BFD int64
-		if tmp_int_MaxNumberCSI_RS_BFD, err = r.ReadInteger(&uper.Constraint{Lb: 1, Ub: 64}, false); err != nil {
+		if tmp_int_MaxNumberCSI_RS_BFD, err = r.ReadInteger(&aper.Constraint{Lb: 1, Ub: 64}, false); err != nil {
 			return utils.WrapError("Decode MaxNumberCSI_RS_BFD", err)
 		}
 		ie.MaxNumberCSI_RS_BFD = &tmp_int_MaxNumberCSI_RS_BFD
 	}
 	if MaxNumberSSB_BFDPresent {
 		var tmp_int_MaxNumberSSB_BFD int64
-		if tmp_int_MaxNumberSSB_BFD, err = r.ReadInteger(&uper.Constraint{Lb: 1, Ub: 64}, false); err != nil {
+		if tmp_int_MaxNumberSSB_BFD, err = r.ReadInteger(&aper.Constraint{Lb: 1, Ub: 64}, false); err != nil {
 			return utils.WrapError("Decode MaxNumberSSB_BFD", err)
 		}
 		ie.MaxNumberSSB_BFD = &tmp_int_MaxNumberSSB_BFD
 	}
 	if MaxNumberCSI_RS_SSB_CBDPresent {
 		var tmp_int_MaxNumberCSI_RS_SSB_CBD int64
-		if tmp_int_MaxNumberCSI_RS_SSB_CBD, err = r.ReadInteger(&uper.Constraint{Lb: 1, Ub: 256}, false); err != nil {
+		if tmp_int_MaxNumberCSI_RS_SSB_CBD, err = r.ReadInteger(&aper.Constraint{Lb: 1, Ub: 256}, false); err != nil {
 			return utils.WrapError("Decode MaxNumberCSI_RS_SSB_CBD", err)
 		}
 		ie.MaxNumberCSI_RS_SSB_CBD = &tmp_int_MaxNumberCSI_RS_SSB_CBD
@@ -1402,7 +1402,7 @@ func (ie *MIMO_ParametersPerBand) Decode(r *uper.UperReader) error {
 	}
 	if Dummy3Present {
 		var tmp_int_Dummy3 int64
-		if tmp_int_Dummy3, err = r.ReadInteger(&uper.Constraint{Lb: 1, Ub: 4}, false); err != nil {
+		if tmp_int_Dummy3, err = r.ReadInteger(&aper.Constraint{Lb: 1, Ub: 4}, false); err != nil {
 			return utils.WrapError("Decode Dummy3", err)
 		}
 		ie.Dummy3 = &tmp_int_Dummy3
@@ -1452,7 +1452,7 @@ func (ie *MIMO_ParametersPerBand) Decode(r *uper.UperReader) error {
 				return err
 			}
 
-			extReader := uper.NewReader(bytes.NewReader(extBytes))
+			extReader := aper.NewReader(bytes.NewReader(extBytes))
 
 			Dummy6Present, err := extReader.ReadBool()
 			if err != nil {
@@ -1552,7 +1552,7 @@ func (ie *MIMO_ParametersPerBand) Decode(r *uper.UperReader) error {
 			}
 			// decode Srs_AssocCSI_RS optional
 			if Srs_AssocCSI_RSPresent {
-				tmp_Srs_AssocCSI_RS := utils.NewSequence[*SupportedCSI_RS_Resource]([]*SupportedCSI_RS_Resource{}, uper.Constraint{Lb: 1, Ub: maxNrofCSI_RS_Resources}, false)
+				tmp_Srs_AssocCSI_RS := utils.NewSequence[*SupportedCSI_RS_Resource]([]*SupportedCSI_RS_Resource{}, aper.Constraint{Lb: 1, Ub: maxNrofCSI_RS_Resources}, false)
 				fn_Srs_AssocCSI_RS := func() *SupportedCSI_RS_Resource {
 					return new(SupportedCSI_RS_Resource)
 				}
@@ -1579,7 +1579,7 @@ func (ie *MIMO_ParametersPerBand) Decode(r *uper.UperReader) error {
 				return err
 			}
 
-			extReader := uper.NewReader(bytes.NewReader(extBytes))
+			extReader := aper.NewReader(bytes.NewReader(extBytes))
 
 			DefaultQCL_TwoTCI_r16Present, err := extReader.ReadBool()
 			if err != nil {
@@ -1853,7 +1853,7 @@ func (ie *MIMO_ParametersPerBand) Decode(r *uper.UperReader) error {
 				return err
 			}
 
-			extReader := uper.NewReader(bytes.NewReader(extBytes))
+			extReader := aper.NewReader(bytes.NewReader(extBytes))
 
 			Semi_PersistentL1_SINR_Report_PUCCH_r16Present, err := extReader.ReadBool()
 			if err != nil {
@@ -1885,7 +1885,7 @@ func (ie *MIMO_ParametersPerBand) Decode(r *uper.UperReader) error {
 				return err
 			}
 
-			extReader := uper.NewReader(bytes.NewReader(extBytes))
+			extReader := aper.NewReader(bytes.NewReader(extBytes))
 
 			SpatialRelations_v1640Present, err := extReader.ReadBool()
 			if err != nil {
@@ -1917,7 +1917,7 @@ func (ie *MIMO_ParametersPerBand) Decode(r *uper.UperReader) error {
 				return err
 			}
 
-			extReader := uper.NewReader(bytes.NewReader(extBytes))
+			extReader := aper.NewReader(bytes.NewReader(extBytes))
 
 			MaxMIMO_LayersForMulti_DCI_mTRP_r16Present, err := extReader.ReadBool()
 			if err != nil {
@@ -1938,7 +1938,7 @@ func (ie *MIMO_ParametersPerBand) Decode(r *uper.UperReader) error {
 				return err
 			}
 
-			extReader := uper.NewReader(bytes.NewReader(extBytes))
+			extReader := aper.NewReader(bytes.NewReader(extBytes))
 
 			SupportedSINR_meas_v1670Present, err := extReader.ReadBool()
 			if err != nil {
@@ -1948,10 +1948,10 @@ func (ie *MIMO_ParametersPerBand) Decode(r *uper.UperReader) error {
 			if SupportedSINR_meas_v1670Present {
 				var tmp_bs_SupportedSINR_meas_v1670 []byte
 				var n_SupportedSINR_meas_v1670 uint
-				if tmp_bs_SupportedSINR_meas_v1670, n_SupportedSINR_meas_v1670, err = extReader.ReadBitString(&uper.Constraint{Lb: 4, Ub: 4}, false); err != nil {
+				if tmp_bs_SupportedSINR_meas_v1670, n_SupportedSINR_meas_v1670, err = extReader.ReadBitString(&aper.Constraint{Lb: 4, Ub: 4}, false); err != nil {
 					return utils.WrapError("Decode SupportedSINR_meas_v1670", err)
 				}
-				tmp_bitstring := uper.BitString{
+				tmp_bitstring := aper.BitString{
 					Bytes:   tmp_bs_SupportedSINR_meas_v1670,
 					NumBits: uint64(n_SupportedSINR_meas_v1670),
 				}
@@ -1965,7 +1965,7 @@ func (ie *MIMO_ParametersPerBand) Decode(r *uper.UperReader) error {
 				return err
 			}
 
-			extReader := uper.NewReader(bytes.NewReader(extBytes))
+			extReader := aper.NewReader(bytes.NewReader(extBytes))
 
 			Srs_increasedRepetition_r17Present, err := extReader.ReadBool()
 			if err != nil {
@@ -2576,7 +2576,7 @@ func (ie *MIMO_ParametersPerBand) Decode(r *uper.UperReader) error {
 			// decode MTRP_PUCCH_maxNum_PC_FR1_r17 optional
 			if MTRP_PUCCH_maxNum_PC_FR1_r17Present {
 				var tmp_int_MTRP_PUCCH_maxNum_PC_FR1_r17 int64
-				if tmp_int_MTRP_PUCCH_maxNum_PC_FR1_r17, err = extReader.ReadInteger(&uper.Constraint{Lb: 3, Ub: 8}, false); err != nil {
+				if tmp_int_MTRP_PUCCH_maxNum_PC_FR1_r17, err = extReader.ReadInteger(&aper.Constraint{Lb: 3, Ub: 8}, false); err != nil {
 					return utils.WrapError("Decode MTRP_PUCCH_maxNum_PC_FR1_r17", err)
 				}
 				ie.MTRP_PUCCH_maxNum_PC_FR1_r17 = &tmp_int_MTRP_PUCCH_maxNum_PC_FR1_r17
@@ -2680,7 +2680,7 @@ func (ie *MIMO_ParametersPerBand) Decode(r *uper.UperReader) error {
 				return err
 			}
 
-			extReader := uper.NewReader(bytes.NewReader(extBytes))
+			extReader := aper.NewReader(bytes.NewReader(extBytes))
 
 			Srs_PortReportSP_AP_r17Present, err := extReader.ReadBool()
 			if err != nil {
@@ -2712,7 +2712,7 @@ func (ie *MIMO_ParametersPerBand) Decode(r *uper.UperReader) error {
 			// decode MaxNumberRxBeam_v1720 optional
 			if MaxNumberRxBeam_v1720Present {
 				var tmp_int_MaxNumberRxBeam_v1720 int64
-				if tmp_int_MaxNumberRxBeam_v1720, err = extReader.ReadInteger(&uper.Constraint{Lb: 9, Ub: 12}, false); err != nil {
+				if tmp_int_MaxNumberRxBeam_v1720, err = extReader.ReadInteger(&aper.Constraint{Lb: 9, Ub: 12}, false); err != nil {
 					return utils.WrapError("Decode MaxNumberRxBeam_v1720", err)
 				}
 				ie.MaxNumberRxBeam_v1720 = &tmp_int_MaxNumberRxBeam_v1720
@@ -2746,7 +2746,7 @@ func (ie *MIMO_ParametersPerBand) Decode(r *uper.UperReader) error {
 				return err
 			}
 
-			extReader := uper.NewReader(bytes.NewReader(extBytes))
+			extReader := aper.NewReader(bytes.NewReader(extBytes))
 
 			SupportRepNumPDSCH_TDRA_DCI_1_2_r17Present, err := extReader.ReadBool()
 			if err != nil {

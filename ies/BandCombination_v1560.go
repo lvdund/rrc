@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -12,7 +12,7 @@ type BandCombination_v1560 struct {
 	Ca_ParametersNR_v1560    *CA_ParametersNR_v1560          `optional`
 }
 
-func (ie *BandCombination_v1560) Encode(w *uper.UperWriter) error {
+func (ie *BandCombination_v1560) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.Ne_DC_BC != nil, ie.Ca_ParametersNRDC != nil, ie.Ca_ParametersEUTRA_v1560 != nil, ie.Ca_ParametersNR_v1560 != nil}
 	for _, bit := range preambleBits {
@@ -43,7 +43,7 @@ func (ie *BandCombination_v1560) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *BandCombination_v1560) Decode(r *uper.UperReader) error {
+func (ie *BandCombination_v1560) Decode(r *aper.AperReader) error {
 	var err error
 	var Ne_DC_BCPresent bool
 	if Ne_DC_BCPresent, err = r.ReadBool(); err != nil {

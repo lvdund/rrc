@@ -3,7 +3,7 @@ package ies
 import (
 	"fmt"
 
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -15,11 +15,11 @@ const (
 
 type MeasObjectRxTxDiff_r17_dl_Ref_r17 struct {
 	Choice         uint64
-	Prs_Ref_r17    uper.NULL `madatory`
-	Csi_RS_Ref_r17 uper.NULL `madatory`
+	Prs_Ref_r17    aper.NULL `madatory`
+	Csi_RS_Ref_r17 aper.NULL `madatory`
 }
 
-func (ie *MeasObjectRxTxDiff_r17_dl_Ref_r17) Encode(w *uper.UperWriter) error {
+func (ie *MeasObjectRxTxDiff_r17_dl_Ref_r17) Encode(w *aper.AperWriter) error {
 	var err error
 	if err = w.WriteChoice(ie.Choice, 2, false); err != nil {
 		return err
@@ -39,7 +39,7 @@ func (ie *MeasObjectRxTxDiff_r17_dl_Ref_r17) Encode(w *uper.UperWriter) error {
 	return err
 }
 
-func (ie *MeasObjectRxTxDiff_r17_dl_Ref_r17) Decode(r *uper.UperReader) error {
+func (ie *MeasObjectRxTxDiff_r17_dl_Ref_r17) Decode(r *aper.AperReader) error {
 	var err error
 	if ie.Choice, err = r.ReadChoice(2, false); err != nil {
 		return err

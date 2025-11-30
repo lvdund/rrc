@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -12,7 +12,7 @@ type CG_StartingOffsets_r16 struct {
 	Cg_StartingPartialBW_OutsideCOT_r16 *int64  `lb:0,ub:6,optional`
 }
 
-func (ie *CG_StartingOffsets_r16) Encode(w *uper.UperWriter) error {
+func (ie *CG_StartingOffsets_r16) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{len(ie.Cg_StartingFullBW_InsideCOT_r16) > 0, len(ie.Cg_StartingFullBW_OutsideCOT_r16) > 0, ie.Cg_StartingPartialBW_InsideCOT_r16 != nil, ie.Cg_StartingPartialBW_OutsideCOT_r16 != nil}
 	for _, bit := range preambleBits {
@@ -21,9 +21,9 @@ func (ie *CG_StartingOffsets_r16) Encode(w *uper.UperWriter) error {
 		}
 	}
 	if len(ie.Cg_StartingFullBW_InsideCOT_r16) > 0 {
-		tmp_Cg_StartingFullBW_InsideCOT_r16 := utils.NewSequence[*utils.INTEGER]([]*utils.INTEGER{}, uper.Constraint{Lb: 1, Ub: 7}, false)
+		tmp_Cg_StartingFullBW_InsideCOT_r16 := utils.NewSequence[*utils.INTEGER]([]*utils.INTEGER{}, aper.Constraint{Lb: 1, Ub: 7}, false)
 		for _, i := range ie.Cg_StartingFullBW_InsideCOT_r16 {
-			tmp_ie := utils.NewINTEGER(int64(i), uper.Constraint{Lb: 0, Ub: 6}, false)
+			tmp_ie := utils.NewINTEGER(int64(i), aper.Constraint{Lb: 0, Ub: 6}, false)
 			tmp_Cg_StartingFullBW_InsideCOT_r16.Value = append(tmp_Cg_StartingFullBW_InsideCOT_r16.Value, &tmp_ie)
 		}
 		if err = tmp_Cg_StartingFullBW_InsideCOT_r16.Encode(w); err != nil {
@@ -31,9 +31,9 @@ func (ie *CG_StartingOffsets_r16) Encode(w *uper.UperWriter) error {
 		}
 	}
 	if len(ie.Cg_StartingFullBW_OutsideCOT_r16) > 0 {
-		tmp_Cg_StartingFullBW_OutsideCOT_r16 := utils.NewSequence[*utils.INTEGER]([]*utils.INTEGER{}, uper.Constraint{Lb: 1, Ub: 7}, false)
+		tmp_Cg_StartingFullBW_OutsideCOT_r16 := utils.NewSequence[*utils.INTEGER]([]*utils.INTEGER{}, aper.Constraint{Lb: 1, Ub: 7}, false)
 		for _, i := range ie.Cg_StartingFullBW_OutsideCOT_r16 {
-			tmp_ie := utils.NewINTEGER(int64(i), uper.Constraint{Lb: 0, Ub: 6}, false)
+			tmp_ie := utils.NewINTEGER(int64(i), aper.Constraint{Lb: 0, Ub: 6}, false)
 			tmp_Cg_StartingFullBW_OutsideCOT_r16.Value = append(tmp_Cg_StartingFullBW_OutsideCOT_r16.Value, &tmp_ie)
 		}
 		if err = tmp_Cg_StartingFullBW_OutsideCOT_r16.Encode(w); err != nil {
@@ -41,19 +41,19 @@ func (ie *CG_StartingOffsets_r16) Encode(w *uper.UperWriter) error {
 		}
 	}
 	if ie.Cg_StartingPartialBW_InsideCOT_r16 != nil {
-		if err = w.WriteInteger(*ie.Cg_StartingPartialBW_InsideCOT_r16, &uper.Constraint{Lb: 0, Ub: 6}, false); err != nil {
+		if err = w.WriteInteger(*ie.Cg_StartingPartialBW_InsideCOT_r16, &aper.Constraint{Lb: 0, Ub: 6}, false); err != nil {
 			return utils.WrapError("Encode Cg_StartingPartialBW_InsideCOT_r16", err)
 		}
 	}
 	if ie.Cg_StartingPartialBW_OutsideCOT_r16 != nil {
-		if err = w.WriteInteger(*ie.Cg_StartingPartialBW_OutsideCOT_r16, &uper.Constraint{Lb: 0, Ub: 6}, false); err != nil {
+		if err = w.WriteInteger(*ie.Cg_StartingPartialBW_OutsideCOT_r16, &aper.Constraint{Lb: 0, Ub: 6}, false); err != nil {
 			return utils.WrapError("Encode Cg_StartingPartialBW_OutsideCOT_r16", err)
 		}
 	}
 	return nil
 }
 
-func (ie *CG_StartingOffsets_r16) Decode(r *uper.UperReader) error {
+func (ie *CG_StartingOffsets_r16) Decode(r *aper.AperReader) error {
 	var err error
 	var Cg_StartingFullBW_InsideCOT_r16Present bool
 	if Cg_StartingFullBW_InsideCOT_r16Present, err = r.ReadBool(); err != nil {
@@ -72,9 +72,9 @@ func (ie *CG_StartingOffsets_r16) Decode(r *uper.UperReader) error {
 		return err
 	}
 	if Cg_StartingFullBW_InsideCOT_r16Present {
-		tmp_Cg_StartingFullBW_InsideCOT_r16 := utils.NewSequence[*utils.INTEGER]([]*utils.INTEGER{}, uper.Constraint{Lb: 1, Ub: 7}, false)
+		tmp_Cg_StartingFullBW_InsideCOT_r16 := utils.NewSequence[*utils.INTEGER]([]*utils.INTEGER{}, aper.Constraint{Lb: 1, Ub: 7}, false)
 		fn_Cg_StartingFullBW_InsideCOT_r16 := func() *utils.INTEGER {
-			ie := utils.NewINTEGER(0, uper.Constraint{Lb: 0, Ub: 6}, false)
+			ie := utils.NewINTEGER(0, aper.Constraint{Lb: 0, Ub: 6}, false)
 			return &ie
 		}
 		if err = tmp_Cg_StartingFullBW_InsideCOT_r16.Decode(r, fn_Cg_StartingFullBW_InsideCOT_r16); err != nil {
@@ -86,9 +86,9 @@ func (ie *CG_StartingOffsets_r16) Decode(r *uper.UperReader) error {
 		}
 	}
 	if Cg_StartingFullBW_OutsideCOT_r16Present {
-		tmp_Cg_StartingFullBW_OutsideCOT_r16 := utils.NewSequence[*utils.INTEGER]([]*utils.INTEGER{}, uper.Constraint{Lb: 1, Ub: 7}, false)
+		tmp_Cg_StartingFullBW_OutsideCOT_r16 := utils.NewSequence[*utils.INTEGER]([]*utils.INTEGER{}, aper.Constraint{Lb: 1, Ub: 7}, false)
 		fn_Cg_StartingFullBW_OutsideCOT_r16 := func() *utils.INTEGER {
-			ie := utils.NewINTEGER(0, uper.Constraint{Lb: 0, Ub: 6}, false)
+			ie := utils.NewINTEGER(0, aper.Constraint{Lb: 0, Ub: 6}, false)
 			return &ie
 		}
 		if err = tmp_Cg_StartingFullBW_OutsideCOT_r16.Decode(r, fn_Cg_StartingFullBW_OutsideCOT_r16); err != nil {
@@ -101,14 +101,14 @@ func (ie *CG_StartingOffsets_r16) Decode(r *uper.UperReader) error {
 	}
 	if Cg_StartingPartialBW_InsideCOT_r16Present {
 		var tmp_int_Cg_StartingPartialBW_InsideCOT_r16 int64
-		if tmp_int_Cg_StartingPartialBW_InsideCOT_r16, err = r.ReadInteger(&uper.Constraint{Lb: 0, Ub: 6}, false); err != nil {
+		if tmp_int_Cg_StartingPartialBW_InsideCOT_r16, err = r.ReadInteger(&aper.Constraint{Lb: 0, Ub: 6}, false); err != nil {
 			return utils.WrapError("Decode Cg_StartingPartialBW_InsideCOT_r16", err)
 		}
 		ie.Cg_StartingPartialBW_InsideCOT_r16 = &tmp_int_Cg_StartingPartialBW_InsideCOT_r16
 	}
 	if Cg_StartingPartialBW_OutsideCOT_r16Present {
 		var tmp_int_Cg_StartingPartialBW_OutsideCOT_r16 int64
-		if tmp_int_Cg_StartingPartialBW_OutsideCOT_r16, err = r.ReadInteger(&uper.Constraint{Lb: 0, Ub: 6}, false); err != nil {
+		if tmp_int_Cg_StartingPartialBW_OutsideCOT_r16, err = r.ReadInteger(&aper.Constraint{Lb: 0, Ub: 6}, false); err != nil {
 			return utils.WrapError("Decode Cg_StartingPartialBW_OutsideCOT_r16", err)
 		}
 		ie.Cg_StartingPartialBW_OutsideCOT_r16 = &tmp_int_Cg_StartingPartialBW_OutsideCOT_r16

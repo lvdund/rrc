@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -11,7 +11,7 @@ type BWP_Downlink struct {
 	Bwp_Dedicated *BWP_DownlinkDedicated `optional`
 }
 
-func (ie *BWP_Downlink) Encode(w *uper.UperWriter) error {
+func (ie *BWP_Downlink) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.Bwp_Common != nil, ie.Bwp_Dedicated != nil}
 	for _, bit := range preambleBits {
@@ -35,7 +35,7 @@ func (ie *BWP_Downlink) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *BWP_Downlink) Decode(r *uper.UperReader) error {
+func (ie *BWP_Downlink) Decode(r *aper.AperReader) error {
 	var err error
 	var Bwp_CommonPresent bool
 	if Bwp_CommonPresent, err = r.ReadBool(); err != nil {

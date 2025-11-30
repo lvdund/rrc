@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -10,7 +10,7 @@ type MAC_Parameters struct {
 	Mac_ParametersXDD_Diff *MAC_ParametersXDD_Diff `optional`
 }
 
-func (ie *MAC_Parameters) Encode(w *uper.UperWriter) error {
+func (ie *MAC_Parameters) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.Mac_ParametersCommon != nil, ie.Mac_ParametersXDD_Diff != nil}
 	for _, bit := range preambleBits {
@@ -31,7 +31,7 @@ func (ie *MAC_Parameters) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *MAC_Parameters) Decode(r *uper.UperReader) error {
+func (ie *MAC_Parameters) Decode(r *aper.AperReader) error {
 	var err error
 	var Mac_ParametersCommonPresent bool
 	if Mac_ParametersCommonPresent, err = r.ReadBool(); err != nil {

@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -9,9 +9,9 @@ type WLAN_NameList_r16 struct {
 	Value []WLAN_Name_r16 `lb:1,ub:maxWLAN_Name_r16,madatory`
 }
 
-func (ie *WLAN_NameList_r16) Encode(w *uper.UperWriter) error {
+func (ie *WLAN_NameList_r16) Encode(w *aper.AperWriter) error {
 	var err error
-	tmp := utils.NewSequence[*WLAN_Name_r16]([]*WLAN_Name_r16{}, uper.Constraint{Lb: 1, Ub: maxWLAN_Name_r16}, false)
+	tmp := utils.NewSequence[*WLAN_Name_r16]([]*WLAN_Name_r16{}, aper.Constraint{Lb: 1, Ub: maxWLAN_Name_r16}, false)
 	for _, i := range ie.Value {
 		tmp.Value = append(tmp.Value, &i)
 	}
@@ -21,9 +21,9 @@ func (ie *WLAN_NameList_r16) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *WLAN_NameList_r16) Decode(r *uper.UperReader) error {
+func (ie *WLAN_NameList_r16) Decode(r *aper.AperReader) error {
 	var err error
-	tmp := utils.NewSequence[*WLAN_Name_r16]([]*WLAN_Name_r16{}, uper.Constraint{Lb: 1, Ub: maxWLAN_Name_r16}, false)
+	tmp := utils.NewSequence[*WLAN_Name_r16]([]*WLAN_Name_r16{}, aper.Constraint{Lb: 1, Ub: maxWLAN_Name_r16}, false)
 	fn := func() *WLAN_Name_r16 {
 		return new(WLAN_Name_r16)
 	}

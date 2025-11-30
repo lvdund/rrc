@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -9,9 +9,9 @@ type BandCombinationInfoList struct {
 	Value []BandCombinationInfo `lb:1,ub:maxBandComb,madatory`
 }
 
-func (ie *BandCombinationInfoList) Encode(w *uper.UperWriter) error {
+func (ie *BandCombinationInfoList) Encode(w *aper.AperWriter) error {
 	var err error
-	tmp := utils.NewSequence[*BandCombinationInfo]([]*BandCombinationInfo{}, uper.Constraint{Lb: 1, Ub: maxBandComb}, false)
+	tmp := utils.NewSequence[*BandCombinationInfo]([]*BandCombinationInfo{}, aper.Constraint{Lb: 1, Ub: maxBandComb}, false)
 	for _, i := range ie.Value {
 		tmp.Value = append(tmp.Value, &i)
 	}
@@ -21,9 +21,9 @@ func (ie *BandCombinationInfoList) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *BandCombinationInfoList) Decode(r *uper.UperReader) error {
+func (ie *BandCombinationInfoList) Decode(r *aper.AperReader) error {
 	var err error
-	tmp := utils.NewSequence[*BandCombinationInfo]([]*BandCombinationInfo{}, uper.Constraint{Lb: 1, Ub: maxBandComb}, false)
+	tmp := utils.NewSequence[*BandCombinationInfo]([]*BandCombinationInfo{}, aper.Constraint{Lb: 1, Ub: maxBandComb}, false)
 	fn := func() *BandCombinationInfo {
 		return new(BandCombinationInfo)
 	}

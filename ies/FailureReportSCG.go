@@ -3,7 +3,7 @@ package ies
 import (
 	"bytes"
 
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -19,7 +19,7 @@ type FailureReportSCG struct {
 	PerRAInfoList_r17     *PerRAInfoList_r16                  `optional,ext-2`
 }
 
-func (ie *FailureReportSCG) Encode(w *uper.UperWriter) error {
+func (ie *FailureReportSCG) Encode(w *aper.AperWriter) error {
 	var err error
 	hasExtensions := ie.LocationInfo_r16 != nil || ie.FailureType_v1610 != nil || ie.PreviousPSCellId_r17 != nil || ie.FailedPSCellId_r17 != nil || ie.TimeSCGFailure_r17 != nil || ie.PerRAInfoList_r17 != nil
 	preambleBits := []bool{hasExtensions, ie.MeasResultFreqList != nil, ie.MeasResultSCG_Failure != nil}
@@ -37,7 +37,7 @@ func (ie *FailureReportSCG) Encode(w *uper.UperWriter) error {
 		}
 	}
 	if ie.MeasResultSCG_Failure != nil {
-		if err = w.WriteOctetString(*ie.MeasResultSCG_Failure, &uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+		if err = w.WriteOctetString(*ie.MeasResultSCG_Failure, &aper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
 			return utils.WrapError("Encode MeasResultSCG_Failure", err)
 		}
 	}
@@ -51,7 +51,7 @@ func (ie *FailureReportSCG) Encode(w *uper.UperWriter) error {
 		// encode extension group 1
 		if extBitmap[0] {
 			extBuf := new(bytes.Buffer)
-			extWriter := uper.NewWriter(extBuf)
+			extWriter := aper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 1
 			optionals_ext_1 := []bool{ie.LocationInfo_r16 != nil, ie.FailureType_v1610 != nil}
@@ -86,7 +86,7 @@ func (ie *FailureReportSCG) Encode(w *uper.UperWriter) error {
 		// encode extension group 2
 		if extBitmap[1] {
 			extBuf := new(bytes.Buffer)
-			extWriter := uper.NewWriter(extBuf)
+			extWriter := aper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 2
 			optionals_ext_2 := []bool{ie.PreviousPSCellId_r17 != nil, ie.FailedPSCellId_r17 != nil, ie.TimeSCGFailure_r17 != nil, ie.PerRAInfoList_r17 != nil}
@@ -110,7 +110,7 @@ func (ie *FailureReportSCG) Encode(w *uper.UperWriter) error {
 			}
 			// encode TimeSCGFailure_r17 optional
 			if ie.TimeSCGFailure_r17 != nil {
-				if err = extWriter.WriteInteger(*ie.TimeSCGFailure_r17, &uper.Constraint{Lb: 0, Ub: 1023}, false); err != nil {
+				if err = extWriter.WriteInteger(*ie.TimeSCGFailure_r17, &aper.Constraint{Lb: 0, Ub: 1023}, false); err != nil {
 					return utils.WrapError("Encode TimeSCGFailure_r17", err)
 				}
 			}
@@ -133,7 +133,7 @@ func (ie *FailureReportSCG) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *FailureReportSCG) Decode(r *uper.UperReader) error {
+func (ie *FailureReportSCG) Decode(r *aper.AperReader) error {
 	var err error
 	var extensionBit bool
 	if extensionBit, err = r.ReadBool(); err != nil {
@@ -158,7 +158,7 @@ func (ie *FailureReportSCG) Decode(r *uper.UperReader) error {
 	}
 	if MeasResultSCG_FailurePresent {
 		var tmp_os_MeasResultSCG_Failure []byte
-		if tmp_os_MeasResultSCG_Failure, err = r.ReadOctetString(&uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+		if tmp_os_MeasResultSCG_Failure, err = r.ReadOctetString(&aper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
 			return utils.WrapError("Decode MeasResultSCG_Failure", err)
 		}
 		ie.MeasResultSCG_Failure = &tmp_os_MeasResultSCG_Failure
@@ -178,7 +178,7 @@ func (ie *FailureReportSCG) Decode(r *uper.UperReader) error {
 				return err
 			}
 
-			extReader := uper.NewReader(bytes.NewReader(extBytes))
+			extReader := aper.NewReader(bytes.NewReader(extBytes))
 
 			LocationInfo_r16Present, err := extReader.ReadBool()
 			if err != nil {
@@ -210,7 +210,7 @@ func (ie *FailureReportSCG) Decode(r *uper.UperReader) error {
 				return err
 			}
 
-			extReader := uper.NewReader(bytes.NewReader(extBytes))
+			extReader := aper.NewReader(bytes.NewReader(extBytes))
 
 			PreviousPSCellId_r17Present, err := extReader.ReadBool()
 			if err != nil {
@@ -245,7 +245,7 @@ func (ie *FailureReportSCG) Decode(r *uper.UperReader) error {
 			// decode TimeSCGFailure_r17 optional
 			if TimeSCGFailure_r17Present {
 				var tmp_int_TimeSCGFailure_r17 int64
-				if tmp_int_TimeSCGFailure_r17, err = extReader.ReadInteger(&uper.Constraint{Lb: 0, Ub: 1023}, false); err != nil {
+				if tmp_int_TimeSCGFailure_r17, err = extReader.ReadInteger(&aper.Constraint{Lb: 0, Ub: 1023}, false); err != nil {
 					return utils.WrapError("Decode TimeSCGFailure_r17", err)
 				}
 				ie.TimeSCGFailure_r17 = &tmp_int_TimeSCGFailure_r17

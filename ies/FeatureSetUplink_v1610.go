@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -38,7 +38,7 @@ type FeatureSetUplink_v1610 struct {
 	Ul_FullPwrMode2_TPMIGroup_r16                    *FeatureSetUplink_v1610_ul_FullPwrMode2_TPMIGroup_r16                    `lb:2,ub:2,optional`
 }
 
-func (ie *FeatureSetUplink_v1610) Encode(w *uper.UperWriter) error {
+func (ie *FeatureSetUplink_v1610) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.Pusch_RepetitionTypeB_r16 != nil, ie.Ul_CancellationSelfCarrier_r16 != nil, ie.Ul_CancellationCrossCarrier_r16 != nil, ie.Ul_FullPwrMode2_MaxSRS_ResInSet_r16 != nil, ie.CbgPUSCH_ProcessingType1_DifferentTB_PerSlot_r16 != nil, ie.CbgPUSCH_ProcessingType2_DifferentTB_PerSlot_r16 != nil, ie.SupportedSRS_PosResources_r16 != nil, ie.IntraFreqDAPS_UL_r16 != nil, ie.IntraBandFreqSeparationUL_v1620 != nil, ie.MultiPUCCH_r16 != nil, ie.TwoPUCCH_Type1_r16 != nil, ie.TwoPUCCH_Type2_r16 != nil, ie.TwoPUCCH_Type3_r16 != nil, ie.TwoPUCCH_Type4_r16 != nil, ie.Mux_SR_HARQ_ACK_r16 != nil, ie.Dummy1 != nil, ie.Dummy2 != nil, ie.TwoPUCCH_Type5_r16 != nil, ie.TwoPUCCH_Type6_r16 != nil, ie.TwoPUCCH_Type7_r16 != nil, ie.TwoPUCCH_Type8_r16 != nil, ie.TwoPUCCH_Type9_r16 != nil, ie.TwoPUCCH_Type10_r16 != nil, ie.TwoPUCCH_Type11_r16 != nil, ie.Ul_IntraUE_Mux_r16 != nil, ie.Ul_FullPwrMode_r16 != nil, ie.CrossCarrierSchedulingProcessing_DiffSCS_r16 != nil, ie.Ul_FullPwrMode1_r16 != nil, ie.Ul_FullPwrMode2_SRSConfig_diffNumSRSPorts_r16 != nil, ie.Ul_FullPwrMode2_TPMIGroup_r16 != nil}
 	for _, bit := range preambleBits {
@@ -199,7 +199,7 @@ func (ie *FeatureSetUplink_v1610) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *FeatureSetUplink_v1610) Decode(r *uper.UperReader) error {
+func (ie *FeatureSetUplink_v1610) Decode(r *aper.AperReader) error {
 	var err error
 	var Pusch_RepetitionTypeB_r16Present bool
 	if Pusch_RepetitionTypeB_r16Present, err = r.ReadBool(); err != nil {

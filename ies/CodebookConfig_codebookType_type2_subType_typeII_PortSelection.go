@@ -1,16 +1,16 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
 type CodebookConfig_codebookType_type2_subType_typeII_PortSelection struct {
 	PortSelectionSamplingSize          *CodebookConfig_codebookType_type2_subType_typeII_PortSelection_portSelectionSamplingSize `optional`
-	TypeII_PortSelectionRI_Restriction uper.BitString                                                                            `lb:2,ub:2,madatory`
+	TypeII_PortSelectionRI_Restriction aper.BitString                                                                            `lb:2,ub:2,madatory`
 }
 
-func (ie *CodebookConfig_codebookType_type2_subType_typeII_PortSelection) Encode(w *uper.UperWriter) error {
+func (ie *CodebookConfig_codebookType_type2_subType_typeII_PortSelection) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.PortSelectionSamplingSize != nil}
 	for _, bit := range preambleBits {
@@ -23,13 +23,13 @@ func (ie *CodebookConfig_codebookType_type2_subType_typeII_PortSelection) Encode
 			return utils.WrapError("Encode PortSelectionSamplingSize", err)
 		}
 	}
-	if err = w.WriteBitString(ie.TypeII_PortSelectionRI_Restriction.Bytes, uint(ie.TypeII_PortSelectionRI_Restriction.NumBits), &uper.Constraint{Lb: 2, Ub: 2}, false); err != nil {
+	if err = w.WriteBitString(ie.TypeII_PortSelectionRI_Restriction.Bytes, uint(ie.TypeII_PortSelectionRI_Restriction.NumBits), &aper.Constraint{Lb: 2, Ub: 2}, false); err != nil {
 		return utils.WrapError("WriteBitString TypeII_PortSelectionRI_Restriction", err)
 	}
 	return nil
 }
 
-func (ie *CodebookConfig_codebookType_type2_subType_typeII_PortSelection) Decode(r *uper.UperReader) error {
+func (ie *CodebookConfig_codebookType_type2_subType_typeII_PortSelection) Decode(r *aper.AperReader) error {
 	var err error
 	var PortSelectionSamplingSizePresent bool
 	if PortSelectionSamplingSizePresent, err = r.ReadBool(); err != nil {
@@ -43,10 +43,10 @@ func (ie *CodebookConfig_codebookType_type2_subType_typeII_PortSelection) Decode
 	}
 	var tmp_bs_TypeII_PortSelectionRI_Restriction []byte
 	var n_TypeII_PortSelectionRI_Restriction uint
-	if tmp_bs_TypeII_PortSelectionRI_Restriction, n_TypeII_PortSelectionRI_Restriction, err = r.ReadBitString(&uper.Constraint{Lb: 2, Ub: 2}, false); err != nil {
+	if tmp_bs_TypeII_PortSelectionRI_Restriction, n_TypeII_PortSelectionRI_Restriction, err = r.ReadBitString(&aper.Constraint{Lb: 2, Ub: 2}, false); err != nil {
 		return utils.WrapError("ReadBitString TypeII_PortSelectionRI_Restriction", err)
 	}
-	ie.TypeII_PortSelectionRI_Restriction = uper.BitString{
+	ie.TypeII_PortSelectionRI_Restriction = aper.BitString{
 		Bytes:   tmp_bs_TypeII_PortSelectionRI_Restriction,
 		NumBits: uint64(n_TypeII_PortSelectionRI_Restriction),
 	}

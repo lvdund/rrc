@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -10,7 +10,7 @@ type UECapabilityEnquiry_v1560_IEs struct {
 	NonCriticalExtension          *UECapabilityEnquiry_v1610_IEs    `optional`
 }
 
-func (ie *UECapabilityEnquiry_v1560_IEs) Encode(w *uper.UperWriter) error {
+func (ie *UECapabilityEnquiry_v1560_IEs) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.CapabilityRequestFilterCommon != nil, ie.NonCriticalExtension != nil}
 	for _, bit := range preambleBits {
@@ -31,7 +31,7 @@ func (ie *UECapabilityEnquiry_v1560_IEs) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *UECapabilityEnquiry_v1560_IEs) Decode(r *uper.UperReader) error {
+func (ie *UECapabilityEnquiry_v1560_IEs) Decode(r *aper.AperReader) error {
 	var err error
 	var CapabilityRequestFilterCommonPresent bool
 	if CapabilityRequestFilterCommonPresent, err = r.ReadBool(); err != nil {

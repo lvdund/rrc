@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -10,7 +10,7 @@ type TDD_UL_DL_SlotConfig struct {
 	Symbols   *TDD_UL_DL_SlotConfig_symbols `lb:1,ub:maxNrofSymbols_1,optional`
 }
 
-func (ie *TDD_UL_DL_SlotConfig) Encode(w *uper.UperWriter) error {
+func (ie *TDD_UL_DL_SlotConfig) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.Symbols != nil}
 	for _, bit := range preambleBits {
@@ -29,7 +29,7 @@ func (ie *TDD_UL_DL_SlotConfig) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *TDD_UL_DL_SlotConfig) Decode(r *uper.UperReader) error {
+func (ie *TDD_UL_DL_SlotConfig) Decode(r *aper.AperReader) error {
 	var err error
 	var SymbolsPresent bool
 	if SymbolsPresent, err = r.ReadBool(); err != nil {

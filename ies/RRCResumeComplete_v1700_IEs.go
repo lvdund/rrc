@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -11,7 +11,7 @@ type RRCResumeComplete_v1700_IEs struct {
 	NonCriticalExtension         *RRCResumeComplete_v1720_IEs  `optional`
 }
 
-func (ie *RRCResumeComplete_v1700_IEs) Encode(w *uper.UperWriter) error {
+func (ie *RRCResumeComplete_v1700_IEs) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.NeedForGapNCSG_InfoNR_r17 != nil, ie.NeedForGapNCSG_InfoEUTRA_r17 != nil, ie.NonCriticalExtension != nil}
 	for _, bit := range preambleBits {
@@ -37,7 +37,7 @@ func (ie *RRCResumeComplete_v1700_IEs) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *RRCResumeComplete_v1700_IEs) Decode(r *uper.UperReader) error {
+func (ie *RRCResumeComplete_v1700_IEs) Decode(r *aper.AperReader) error {
 	var err error
 	var NeedForGapNCSG_InfoNR_r17Present bool
 	if NeedForGapNCSG_InfoNR_r17Present, err = r.ReadBool(); err != nil {

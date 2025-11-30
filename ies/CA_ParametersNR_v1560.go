@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -9,7 +9,7 @@ type CA_ParametersNR_v1560 struct {
 	DiffNumerologyWithinPUCCH_GroupLargerSCS *CA_ParametersNR_v1560_diffNumerologyWithinPUCCH_GroupLargerSCS `optional`
 }
 
-func (ie *CA_ParametersNR_v1560) Encode(w *uper.UperWriter) error {
+func (ie *CA_ParametersNR_v1560) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.DiffNumerologyWithinPUCCH_GroupLargerSCS != nil}
 	for _, bit := range preambleBits {
@@ -25,7 +25,7 @@ func (ie *CA_ParametersNR_v1560) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *CA_ParametersNR_v1560) Decode(r *uper.UperReader) error {
+func (ie *CA_ParametersNR_v1560) Decode(r *aper.AperReader) error {
 	var err error
 	var DiffNumerologyWithinPUCCH_GroupLargerSCSPresent bool
 	if DiffNumerologyWithinPUCCH_GroupLargerSCSPresent, err = r.ReadBool(); err != nil {

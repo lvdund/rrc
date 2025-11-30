@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -11,7 +11,7 @@ type BandSidelink_r16_sl_TransmissionMode2_r16 struct {
 	Dl_openLoopPC_Sidelink_r16          *BandSidelink_r16_sl_TransmissionMode2_r16_dl_openLoopPC_Sidelink_r16          `optional`
 }
 
-func (ie *BandSidelink_r16_sl_TransmissionMode2_r16) Encode(w *uper.UperWriter) error {
+func (ie *BandSidelink_r16_sl_TransmissionMode2_r16) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.Scs_CP_PatternTxSidelinkModeTwo_r16 != nil, ie.Dl_openLoopPC_Sidelink_r16 != nil}
 	for _, bit := range preambleBits {
@@ -35,7 +35,7 @@ func (ie *BandSidelink_r16_sl_TransmissionMode2_r16) Encode(w *uper.UperWriter) 
 	return nil
 }
 
-func (ie *BandSidelink_r16_sl_TransmissionMode2_r16) Decode(r *uper.UperReader) error {
+func (ie *BandSidelink_r16_sl_TransmissionMode2_r16) Decode(r *aper.AperReader) error {
 	var err error
 	var Scs_CP_PatternTxSidelinkModeTwo_r16Present bool
 	if Scs_CP_PatternTxSidelinkModeTwo_r16Present, err = r.ReadBool(); err != nil {

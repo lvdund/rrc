@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -13,7 +13,7 @@ type MobilityFromNRCommand_IEs struct {
 	NonCriticalExtension       *MobilityFromNRCommand_v1610_IEs         `optional`
 }
 
-func (ie *MobilityFromNRCommand_IEs) Encode(w *uper.UperWriter) error {
+func (ie *MobilityFromNRCommand_IEs) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.Nas_SecurityParamFromNR != nil, ie.LateNonCriticalExtension != nil, ie.NonCriticalExtension != nil}
 	for _, bit := range preambleBits {
@@ -24,16 +24,16 @@ func (ie *MobilityFromNRCommand_IEs) Encode(w *uper.UperWriter) error {
 	if err = ie.TargetRAT_Type.Encode(w); err != nil {
 		return utils.WrapError("Encode TargetRAT_Type", err)
 	}
-	if err = w.WriteOctetString(ie.TargetRAT_MessageContainer, &uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+	if err = w.WriteOctetString(ie.TargetRAT_MessageContainer, &aper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
 		return utils.WrapError("WriteOctetString TargetRAT_MessageContainer", err)
 	}
 	if ie.Nas_SecurityParamFromNR != nil {
-		if err = w.WriteOctetString(*ie.Nas_SecurityParamFromNR, &uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+		if err = w.WriteOctetString(*ie.Nas_SecurityParamFromNR, &aper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
 			return utils.WrapError("Encode Nas_SecurityParamFromNR", err)
 		}
 	}
 	if ie.LateNonCriticalExtension != nil {
-		if err = w.WriteOctetString(*ie.LateNonCriticalExtension, &uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+		if err = w.WriteOctetString(*ie.LateNonCriticalExtension, &aper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
 			return utils.WrapError("Encode LateNonCriticalExtension", err)
 		}
 	}
@@ -45,7 +45,7 @@ func (ie *MobilityFromNRCommand_IEs) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *MobilityFromNRCommand_IEs) Decode(r *uper.UperReader) error {
+func (ie *MobilityFromNRCommand_IEs) Decode(r *aper.AperReader) error {
 	var err error
 	var Nas_SecurityParamFromNRPresent bool
 	if Nas_SecurityParamFromNRPresent, err = r.ReadBool(); err != nil {
@@ -63,20 +63,20 @@ func (ie *MobilityFromNRCommand_IEs) Decode(r *uper.UperReader) error {
 		return utils.WrapError("Decode TargetRAT_Type", err)
 	}
 	var tmp_os_TargetRAT_MessageContainer []byte
-	if tmp_os_TargetRAT_MessageContainer, err = r.ReadOctetString(&uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+	if tmp_os_TargetRAT_MessageContainer, err = r.ReadOctetString(&aper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
 		return utils.WrapError("ReadOctetString TargetRAT_MessageContainer", err)
 	}
 	ie.TargetRAT_MessageContainer = tmp_os_TargetRAT_MessageContainer
 	if Nas_SecurityParamFromNRPresent {
 		var tmp_os_Nas_SecurityParamFromNR []byte
-		if tmp_os_Nas_SecurityParamFromNR, err = r.ReadOctetString(&uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+		if tmp_os_Nas_SecurityParamFromNR, err = r.ReadOctetString(&aper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
 			return utils.WrapError("Decode Nas_SecurityParamFromNR", err)
 		}
 		ie.Nas_SecurityParamFromNR = &tmp_os_Nas_SecurityParamFromNR
 	}
 	if LateNonCriticalExtensionPresent {
 		var tmp_os_LateNonCriticalExtension []byte
-		if tmp_os_LateNonCriticalExtension, err = r.ReadOctetString(&uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+		if tmp_os_LateNonCriticalExtension, err = r.ReadOctetString(&aper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
 			return utils.WrapError("Decode LateNonCriticalExtension", err)
 		}
 		ie.LateNonCriticalExtension = &tmp_os_LateNonCriticalExtension

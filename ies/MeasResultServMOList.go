@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -9,9 +9,9 @@ type MeasResultServMOList struct {
 	Value []MeasResultServMO `lb:1,ub:maxNrofServingCells,madatory`
 }
 
-func (ie *MeasResultServMOList) Encode(w *uper.UperWriter) error {
+func (ie *MeasResultServMOList) Encode(w *aper.AperWriter) error {
 	var err error
-	tmp := utils.NewSequence[*MeasResultServMO]([]*MeasResultServMO{}, uper.Constraint{Lb: 1, Ub: maxNrofServingCells}, false)
+	tmp := utils.NewSequence[*MeasResultServMO]([]*MeasResultServMO{}, aper.Constraint{Lb: 1, Ub: maxNrofServingCells}, false)
 	for _, i := range ie.Value {
 		tmp.Value = append(tmp.Value, &i)
 	}
@@ -21,9 +21,9 @@ func (ie *MeasResultServMOList) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *MeasResultServMOList) Decode(r *uper.UperReader) error {
+func (ie *MeasResultServMOList) Decode(r *aper.AperReader) error {
 	var err error
-	tmp := utils.NewSequence[*MeasResultServMO]([]*MeasResultServMO{}, uper.Constraint{Lb: 1, Ub: maxNrofServingCells}, false)
+	tmp := utils.NewSequence[*MeasResultServMO]([]*MeasResultServMO{}, aper.Constraint{Lb: 1, Ub: maxNrofServingCells}, false)
 	fn := func() *MeasResultServMO {
 		return new(MeasResultServMO)
 	}

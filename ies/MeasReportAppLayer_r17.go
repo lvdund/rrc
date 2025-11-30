@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -12,7 +12,7 @@ type MeasReportAppLayer_r17 struct {
 	Ran_VisibleMeasurements_r17     *RAN_VisibleMeasurements_r17                      `optional`
 }
 
-func (ie *MeasReportAppLayer_r17) Encode(w *uper.UperWriter) error {
+func (ie *MeasReportAppLayer_r17) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.MeasReportAppLayerContainer_r17 != nil, ie.AppLayerSessionStatus_r17 != nil, ie.Ran_VisibleMeasurements_r17 != nil}
 	for _, bit := range preambleBits {
@@ -24,7 +24,7 @@ func (ie *MeasReportAppLayer_r17) Encode(w *uper.UperWriter) error {
 		return utils.WrapError("Encode MeasConfigAppLayerId_r17", err)
 	}
 	if ie.MeasReportAppLayerContainer_r17 != nil {
-		if err = w.WriteOctetString(*ie.MeasReportAppLayerContainer_r17, &uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+		if err = w.WriteOctetString(*ie.MeasReportAppLayerContainer_r17, &aper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
 			return utils.WrapError("Encode MeasReportAppLayerContainer_r17", err)
 		}
 	}
@@ -41,7 +41,7 @@ func (ie *MeasReportAppLayer_r17) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *MeasReportAppLayer_r17) Decode(r *uper.UperReader) error {
+func (ie *MeasReportAppLayer_r17) Decode(r *aper.AperReader) error {
 	var err error
 	var MeasReportAppLayerContainer_r17Present bool
 	if MeasReportAppLayerContainer_r17Present, err = r.ReadBool(); err != nil {
@@ -60,7 +60,7 @@ func (ie *MeasReportAppLayer_r17) Decode(r *uper.UperReader) error {
 	}
 	if MeasReportAppLayerContainer_r17Present {
 		var tmp_os_MeasReportAppLayerContainer_r17 []byte
-		if tmp_os_MeasReportAppLayerContainer_r17, err = r.ReadOctetString(&uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+		if tmp_os_MeasReportAppLayerContainer_r17, err = r.ReadOctetString(&aper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
 			return utils.WrapError("Decode MeasReportAppLayerContainer_r17", err)
 		}
 		ie.MeasReportAppLayerContainer_r17 = &tmp_os_MeasReportAppLayerContainer_r17

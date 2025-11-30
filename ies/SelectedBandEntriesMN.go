@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -9,9 +9,9 @@ type SelectedBandEntriesMN struct {
 	Value []BandEntryIndex `lb:1,ub:maxSimultaneousBands,madatory`
 }
 
-func (ie *SelectedBandEntriesMN) Encode(w *uper.UperWriter) error {
+func (ie *SelectedBandEntriesMN) Encode(w *aper.AperWriter) error {
 	var err error
-	tmp := utils.NewSequence[*BandEntryIndex]([]*BandEntryIndex{}, uper.Constraint{Lb: 1, Ub: maxSimultaneousBands}, false)
+	tmp := utils.NewSequence[*BandEntryIndex]([]*BandEntryIndex{}, aper.Constraint{Lb: 1, Ub: maxSimultaneousBands}, false)
 	for _, i := range ie.Value {
 		tmp.Value = append(tmp.Value, &i)
 	}
@@ -21,9 +21,9 @@ func (ie *SelectedBandEntriesMN) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *SelectedBandEntriesMN) Decode(r *uper.UperReader) error {
+func (ie *SelectedBandEntriesMN) Decode(r *aper.AperReader) error {
 	var err error
-	tmp := utils.NewSequence[*BandEntryIndex]([]*BandEntryIndex{}, uper.Constraint{Lb: 1, Ub: maxSimultaneousBands}, false)
+	tmp := utils.NewSequence[*BandEntryIndex]([]*BandEntryIndex{}, aper.Constraint{Lb: 1, Ub: maxSimultaneousBands}, false)
 	fn := func() *BandEntryIndex {
 		return new(BandEntryIndex)
 	}

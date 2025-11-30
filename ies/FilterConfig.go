@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -11,7 +11,7 @@ type FilterConfig struct {
 	FilterCoefficientRS_SINR FilterCoefficient `madatory`
 }
 
-func (ie *FilterConfig) Encode(w *uper.UperWriter) error {
+func (ie *FilterConfig) Encode(w *aper.AperWriter) error {
 	var err error
 	if err = ie.FilterCoefficientRSRP.Encode(w); err != nil {
 		return utils.WrapError("Encode FilterCoefficientRSRP", err)
@@ -25,7 +25,7 @@ func (ie *FilterConfig) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *FilterConfig) Decode(r *uper.UperReader) error {
+func (ie *FilterConfig) Decode(r *aper.AperReader) error {
 	var err error
 	if err = ie.FilterCoefficientRSRP.Decode(r); err != nil {
 		return utils.WrapError("Decode FilterCoefficientRSRP", err)

@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -11,7 +11,7 @@ type FeatureSetDownlink_v1540_pdsch_ProcessingType2 struct {
 	Scs_60kHz *ProcessingParameters `optional`
 }
 
-func (ie *FeatureSetDownlink_v1540_pdsch_ProcessingType2) Encode(w *uper.UperWriter) error {
+func (ie *FeatureSetDownlink_v1540_pdsch_ProcessingType2) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.Scs_15kHz != nil, ie.Scs_30kHz != nil, ie.Scs_60kHz != nil}
 	for _, bit := range preambleBits {
@@ -37,7 +37,7 @@ func (ie *FeatureSetDownlink_v1540_pdsch_ProcessingType2) Encode(w *uper.UperWri
 	return nil
 }
 
-func (ie *FeatureSetDownlink_v1540_pdsch_ProcessingType2) Decode(r *uper.UperReader) error {
+func (ie *FeatureSetDownlink_v1540_pdsch_ProcessingType2) Decode(r *aper.AperReader) error {
 	var err error
 	var Scs_15kHzPresent bool
 	if Scs_15kHzPresent, err = r.ReadBool(); err != nil {

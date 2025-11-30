@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -14,7 +14,7 @@ type SRS_PosRRC_InactiveConfig_r17 struct {
 	InactivePosSRS_RSRP_ChangeThreshold_r17 *RSRP_ChangeThreshold_r17 `optional`
 }
 
-func (ie *SRS_PosRRC_InactiveConfig_r17) Encode(w *uper.UperWriter) error {
+func (ie *SRS_PosRRC_InactiveConfig_r17) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.Srs_PosConfigNUL_r17 != nil, ie.Srs_PosConfigSUL_r17 != nil, ie.Bwp_NUL_r17 != nil, ie.Bwp_SUL_r17 != nil, ie.InactivePosSRS_TimeAlignmentTimer_r17 != nil, ie.InactivePosSRS_RSRP_ChangeThreshold_r17 != nil}
 	for _, bit := range preambleBits {
@@ -55,7 +55,7 @@ func (ie *SRS_PosRRC_InactiveConfig_r17) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *SRS_PosRRC_InactiveConfig_r17) Decode(r *uper.UperReader) error {
+func (ie *SRS_PosRRC_InactiveConfig_r17) Decode(r *aper.AperReader) error {
 	var err error
 	var Srs_PosConfigNUL_r17Present bool
 	if Srs_PosConfigNUL_r17Present, err = r.ReadBool(); err != nil {

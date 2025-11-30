@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -17,7 +17,7 @@ type FeatureSetDownlink_v1610 struct {
 	SingleDCI_SDM_scheme_r16                         *FeatureSetDownlink_v1610_singleDCI_SDM_scheme_r16                         `optional`
 }
 
-func (ie *FeatureSetDownlink_v1610) Encode(w *uper.UperWriter) error {
+func (ie *FeatureSetDownlink_v1610) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.CbgPDSCH_ProcessingType1_DifferentTB_PerSlot_r16 != nil, ie.CbgPDSCH_ProcessingType2_DifferentTB_PerSlot_r16 != nil, ie.IntraFreqDAPS_r16 != nil, ie.IntraBandFreqSeparationDL_v1620 != nil, ie.IntraBandFreqSeparationDL_Only_r16 != nil, ie.Pdcch_Monitoring_r16 != nil, ie.Pdcch_MonitoringMixed_r16 != nil, ie.CrossCarrierSchedulingProcessing_DiffSCS_r16 != nil, ie.SingleDCI_SDM_scheme_r16 != nil}
 	for _, bit := range preambleBits {
@@ -73,7 +73,7 @@ func (ie *FeatureSetDownlink_v1610) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *FeatureSetDownlink_v1610) Decode(r *uper.UperReader) error {
+func (ie *FeatureSetDownlink_v1610) Decode(r *aper.AperReader) error {
 	var err error
 	var CbgPDSCH_ProcessingType1_DifferentTB_PerSlot_r16Present bool
 	if CbgPDSCH_ProcessingType1_DifferentTB_PerSlot_r16Present, err = r.ReadBool(); err != nil {

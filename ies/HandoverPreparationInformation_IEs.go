@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -13,7 +13,7 @@ type HandoverPreparationInformation_IEs struct {
 	NonCriticalExtension  interface{}                    `optional`
 }
 
-func (ie *HandoverPreparationInformation_IEs) Encode(w *uper.UperWriter) error {
+func (ie *HandoverPreparationInformation_IEs) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.SourceConfig != nil, ie.Rrm_Config != nil, ie.As_Context != nil}
 	for _, bit := range preambleBits {
@@ -39,7 +39,7 @@ func (ie *HandoverPreparationInformation_IEs) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *HandoverPreparationInformation_IEs) Decode(r *uper.UperReader) error {
+func (ie *HandoverPreparationInformation_IEs) Decode(r *aper.AperReader) error {
 	var err error
 	var SourceConfigPresent bool
 	if SourceConfigPresent, err = r.ReadBool(); err != nil {

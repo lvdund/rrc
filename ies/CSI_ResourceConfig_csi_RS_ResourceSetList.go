@@ -3,7 +3,7 @@ package ies
 import (
 	"fmt"
 
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -19,7 +19,7 @@ type CSI_ResourceConfig_csi_RS_ResourceSetList struct {
 	Csi_IM_ResourceSetList []CSI_IM_ResourceSetId `lb:1,ub:maxNrofCSI_IM_ResourceSetsPerConfig,madatory`
 }
 
-func (ie *CSI_ResourceConfig_csi_RS_ResourceSetList) Encode(w *uper.UperWriter) error {
+func (ie *CSI_ResourceConfig_csi_RS_ResourceSetList) Encode(w *aper.AperWriter) error {
 	var err error
 	if err = w.WriteChoice(ie.Choice, 2, false); err != nil {
 		return err
@@ -30,7 +30,7 @@ func (ie *CSI_ResourceConfig_csi_RS_ResourceSetList) Encode(w *uper.UperWriter) 
 			err = utils.WrapError("Encode Nzp_CSI_RS_SSB", err)
 		}
 	case CSI_ResourceConfig_csi_RS_ResourceSetList_Choice_Csi_IM_ResourceSetList:
-		tmp := utils.NewSequence[*CSI_IM_ResourceSetId]([]*CSI_IM_ResourceSetId{}, uper.Constraint{Lb: 1, Ub: maxNrofCSI_IM_ResourceSetsPerConfig}, false)
+		tmp := utils.NewSequence[*CSI_IM_ResourceSetId]([]*CSI_IM_ResourceSetId{}, aper.Constraint{Lb: 1, Ub: maxNrofCSI_IM_ResourceSetsPerConfig}, false)
 		for _, i := range ie.Csi_IM_ResourceSetList {
 			tmp.Value = append(tmp.Value, &i)
 		}
@@ -43,7 +43,7 @@ func (ie *CSI_ResourceConfig_csi_RS_ResourceSetList) Encode(w *uper.UperWriter) 
 	return err
 }
 
-func (ie *CSI_ResourceConfig_csi_RS_ResourceSetList) Decode(r *uper.UperReader) error {
+func (ie *CSI_ResourceConfig_csi_RS_ResourceSetList) Decode(r *aper.AperReader) error {
 	var err error
 	if ie.Choice, err = r.ReadChoice(2, false); err != nil {
 		return err
@@ -55,7 +55,7 @@ func (ie *CSI_ResourceConfig_csi_RS_ResourceSetList) Decode(r *uper.UperReader) 
 			return utils.WrapError("Decode Nzp_CSI_RS_SSB", err)
 		}
 	case CSI_ResourceConfig_csi_RS_ResourceSetList_Choice_Csi_IM_ResourceSetList:
-		tmp := utils.NewSequence[*CSI_IM_ResourceSetId]([]*CSI_IM_ResourceSetId{}, uper.Constraint{Lb: 1, Ub: maxNrofCSI_IM_ResourceSetsPerConfig}, false)
+		tmp := utils.NewSequence[*CSI_IM_ResourceSetId]([]*CSI_IM_ResourceSetId{}, aper.Constraint{Lb: 1, Ub: maxNrofCSI_IM_ResourceSetsPerConfig}, false)
 		fn := func() *CSI_IM_ResourceSetId {
 			return new(CSI_IM_ResourceSetId)
 		}

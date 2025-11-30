@@ -3,13 +3,13 @@ package ies
 import (
 	"bytes"
 
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
 type ControlResourceSet struct {
 	ControlResourceSetId          ControlResourceSetId                           `madatory`
-	FrequencyDomainResources      uper.BitString                                 `lb:45,ub:45,madatory`
+	FrequencyDomainResources      aper.BitString                                 `lb:45,ub:45,madatory`
 	Duration                      int64                                          `lb:1,ub:maxCoReSetDuration,madatory`
 	Cce_REG_MappingType           *ControlResourceSet_cce_REG_MappingType        `lb:0,ub:maxNrofPhysicalResourceBlocks_1,optional`
 	PrecoderGranularity           ControlResourceSet_precoderGranularity         `madatory`
@@ -24,7 +24,7 @@ type ControlResourceSet struct {
 	FollowUnifiedTCI_State_r17    *ControlResourceSet_followUnifiedTCI_State_r17 `optional,ext-2`
 }
 
-func (ie *ControlResourceSet) Encode(w *uper.UperWriter) error {
+func (ie *ControlResourceSet) Encode(w *aper.AperWriter) error {
 	var err error
 	hasExtensions := ie.Rb_Offset_r16 != nil || ie.Tci_PresentDCI_1_2_r16 != nil || ie.CoresetPoolIndex_r16 != nil || ie.ControlResourceSetId_v1610 != nil || ie.FollowUnifiedTCI_State_r17 != nil
 	preambleBits := []bool{hasExtensions, ie.Cce_REG_MappingType != nil, len(ie.Tci_StatesPDCCH_ToAddList) > 0, len(ie.Tci_StatesPDCCH_ToReleaseList) > 0, ie.Tci_PresentInDCI != nil, ie.Pdcch_DMRS_ScramblingID != nil}
@@ -36,10 +36,10 @@ func (ie *ControlResourceSet) Encode(w *uper.UperWriter) error {
 	if err = ie.ControlResourceSetId.Encode(w); err != nil {
 		return utils.WrapError("Encode ControlResourceSetId", err)
 	}
-	if err = w.WriteBitString(ie.FrequencyDomainResources.Bytes, uint(ie.FrequencyDomainResources.NumBits), &uper.Constraint{Lb: 45, Ub: 45}, false); err != nil {
+	if err = w.WriteBitString(ie.FrequencyDomainResources.Bytes, uint(ie.FrequencyDomainResources.NumBits), &aper.Constraint{Lb: 45, Ub: 45}, false); err != nil {
 		return utils.WrapError("WriteBitString FrequencyDomainResources", err)
 	}
-	if err = w.WriteInteger(ie.Duration, &uper.Constraint{Lb: 1, Ub: maxCoReSetDuration}, false); err != nil {
+	if err = w.WriteInteger(ie.Duration, &aper.Constraint{Lb: 1, Ub: maxCoReSetDuration}, false); err != nil {
 		return utils.WrapError("WriteInteger Duration", err)
 	}
 	if ie.Cce_REG_MappingType != nil {
@@ -51,7 +51,7 @@ func (ie *ControlResourceSet) Encode(w *uper.UperWriter) error {
 		return utils.WrapError("Encode PrecoderGranularity", err)
 	}
 	if len(ie.Tci_StatesPDCCH_ToAddList) > 0 {
-		tmp_Tci_StatesPDCCH_ToAddList := utils.NewSequence[*TCI_StateId]([]*TCI_StateId{}, uper.Constraint{Lb: 1, Ub: maxNrofTCI_StatesPDCCH}, false)
+		tmp_Tci_StatesPDCCH_ToAddList := utils.NewSequence[*TCI_StateId]([]*TCI_StateId{}, aper.Constraint{Lb: 1, Ub: maxNrofTCI_StatesPDCCH}, false)
 		for _, i := range ie.Tci_StatesPDCCH_ToAddList {
 			tmp_Tci_StatesPDCCH_ToAddList.Value = append(tmp_Tci_StatesPDCCH_ToAddList.Value, &i)
 		}
@@ -60,7 +60,7 @@ func (ie *ControlResourceSet) Encode(w *uper.UperWriter) error {
 		}
 	}
 	if len(ie.Tci_StatesPDCCH_ToReleaseList) > 0 {
-		tmp_Tci_StatesPDCCH_ToReleaseList := utils.NewSequence[*TCI_StateId]([]*TCI_StateId{}, uper.Constraint{Lb: 1, Ub: maxNrofTCI_StatesPDCCH}, false)
+		tmp_Tci_StatesPDCCH_ToReleaseList := utils.NewSequence[*TCI_StateId]([]*TCI_StateId{}, aper.Constraint{Lb: 1, Ub: maxNrofTCI_StatesPDCCH}, false)
 		for _, i := range ie.Tci_StatesPDCCH_ToReleaseList {
 			tmp_Tci_StatesPDCCH_ToReleaseList.Value = append(tmp_Tci_StatesPDCCH_ToReleaseList.Value, &i)
 		}
@@ -74,7 +74,7 @@ func (ie *ControlResourceSet) Encode(w *uper.UperWriter) error {
 		}
 	}
 	if ie.Pdcch_DMRS_ScramblingID != nil {
-		if err = w.WriteInteger(*ie.Pdcch_DMRS_ScramblingID, &uper.Constraint{Lb: 0, Ub: 65535}, false); err != nil {
+		if err = w.WriteInteger(*ie.Pdcch_DMRS_ScramblingID, &aper.Constraint{Lb: 0, Ub: 65535}, false); err != nil {
 			return utils.WrapError("Encode Pdcch_DMRS_ScramblingID", err)
 		}
 	}
@@ -88,7 +88,7 @@ func (ie *ControlResourceSet) Encode(w *uper.UperWriter) error {
 		// encode extension group 1
 		if extBitmap[0] {
 			extBuf := new(bytes.Buffer)
-			extWriter := uper.NewWriter(extBuf)
+			extWriter := aper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 1
 			optionals_ext_1 := []bool{ie.Rb_Offset_r16 != nil, ie.Tci_PresentDCI_1_2_r16 != nil, ie.CoresetPoolIndex_r16 != nil, ie.ControlResourceSetId_v1610 != nil}
@@ -100,19 +100,19 @@ func (ie *ControlResourceSet) Encode(w *uper.UperWriter) error {
 
 			// encode Rb_Offset_r16 optional
 			if ie.Rb_Offset_r16 != nil {
-				if err = extWriter.WriteInteger(*ie.Rb_Offset_r16, &uper.Constraint{Lb: 0, Ub: 5}, false); err != nil {
+				if err = extWriter.WriteInteger(*ie.Rb_Offset_r16, &aper.Constraint{Lb: 0, Ub: 5}, false); err != nil {
 					return utils.WrapError("Encode Rb_Offset_r16", err)
 				}
 			}
 			// encode Tci_PresentDCI_1_2_r16 optional
 			if ie.Tci_PresentDCI_1_2_r16 != nil {
-				if err = extWriter.WriteInteger(*ie.Tci_PresentDCI_1_2_r16, &uper.Constraint{Lb: 1, Ub: 3}, false); err != nil {
+				if err = extWriter.WriteInteger(*ie.Tci_PresentDCI_1_2_r16, &aper.Constraint{Lb: 1, Ub: 3}, false); err != nil {
 					return utils.WrapError("Encode Tci_PresentDCI_1_2_r16", err)
 				}
 			}
 			// encode CoresetPoolIndex_r16 optional
 			if ie.CoresetPoolIndex_r16 != nil {
-				if err = extWriter.WriteInteger(*ie.CoresetPoolIndex_r16, &uper.Constraint{Lb: 0, Ub: 1}, false); err != nil {
+				if err = extWriter.WriteInteger(*ie.CoresetPoolIndex_r16, &aper.Constraint{Lb: 0, Ub: 1}, false); err != nil {
 					return utils.WrapError("Encode CoresetPoolIndex_r16", err)
 				}
 			}
@@ -135,7 +135,7 @@ func (ie *ControlResourceSet) Encode(w *uper.UperWriter) error {
 		// encode extension group 2
 		if extBitmap[1] {
 			extBuf := new(bytes.Buffer)
-			extWriter := uper.NewWriter(extBuf)
+			extWriter := aper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 2
 			optionals_ext_2 := []bool{ie.FollowUnifiedTCI_State_r17 != nil}
@@ -164,7 +164,7 @@ func (ie *ControlResourceSet) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *ControlResourceSet) Decode(r *uper.UperReader) error {
+func (ie *ControlResourceSet) Decode(r *aper.AperReader) error {
 	var err error
 	var extensionBit bool
 	if extensionBit, err = r.ReadBool(); err != nil {
@@ -195,15 +195,15 @@ func (ie *ControlResourceSet) Decode(r *uper.UperReader) error {
 	}
 	var tmp_bs_FrequencyDomainResources []byte
 	var n_FrequencyDomainResources uint
-	if tmp_bs_FrequencyDomainResources, n_FrequencyDomainResources, err = r.ReadBitString(&uper.Constraint{Lb: 45, Ub: 45}, false); err != nil {
+	if tmp_bs_FrequencyDomainResources, n_FrequencyDomainResources, err = r.ReadBitString(&aper.Constraint{Lb: 45, Ub: 45}, false); err != nil {
 		return utils.WrapError("ReadBitString FrequencyDomainResources", err)
 	}
-	ie.FrequencyDomainResources = uper.BitString{
+	ie.FrequencyDomainResources = aper.BitString{
 		Bytes:   tmp_bs_FrequencyDomainResources,
 		NumBits: uint64(n_FrequencyDomainResources),
 	}
 	var tmp_int_Duration int64
-	if tmp_int_Duration, err = r.ReadInteger(&uper.Constraint{Lb: 1, Ub: maxCoReSetDuration}, false); err != nil {
+	if tmp_int_Duration, err = r.ReadInteger(&aper.Constraint{Lb: 1, Ub: maxCoReSetDuration}, false); err != nil {
 		return utils.WrapError("ReadInteger Duration", err)
 	}
 	ie.Duration = tmp_int_Duration
@@ -217,7 +217,7 @@ func (ie *ControlResourceSet) Decode(r *uper.UperReader) error {
 		return utils.WrapError("Decode PrecoderGranularity", err)
 	}
 	if Tci_StatesPDCCH_ToAddListPresent {
-		tmp_Tci_StatesPDCCH_ToAddList := utils.NewSequence[*TCI_StateId]([]*TCI_StateId{}, uper.Constraint{Lb: 1, Ub: maxNrofTCI_StatesPDCCH}, false)
+		tmp_Tci_StatesPDCCH_ToAddList := utils.NewSequence[*TCI_StateId]([]*TCI_StateId{}, aper.Constraint{Lb: 1, Ub: maxNrofTCI_StatesPDCCH}, false)
 		fn_Tci_StatesPDCCH_ToAddList := func() *TCI_StateId {
 			return new(TCI_StateId)
 		}
@@ -230,7 +230,7 @@ func (ie *ControlResourceSet) Decode(r *uper.UperReader) error {
 		}
 	}
 	if Tci_StatesPDCCH_ToReleaseListPresent {
-		tmp_Tci_StatesPDCCH_ToReleaseList := utils.NewSequence[*TCI_StateId]([]*TCI_StateId{}, uper.Constraint{Lb: 1, Ub: maxNrofTCI_StatesPDCCH}, false)
+		tmp_Tci_StatesPDCCH_ToReleaseList := utils.NewSequence[*TCI_StateId]([]*TCI_StateId{}, aper.Constraint{Lb: 1, Ub: maxNrofTCI_StatesPDCCH}, false)
 		fn_Tci_StatesPDCCH_ToReleaseList := func() *TCI_StateId {
 			return new(TCI_StateId)
 		}
@@ -250,7 +250,7 @@ func (ie *ControlResourceSet) Decode(r *uper.UperReader) error {
 	}
 	if Pdcch_DMRS_ScramblingIDPresent {
 		var tmp_int_Pdcch_DMRS_ScramblingID int64
-		if tmp_int_Pdcch_DMRS_ScramblingID, err = r.ReadInteger(&uper.Constraint{Lb: 0, Ub: 65535}, false); err != nil {
+		if tmp_int_Pdcch_DMRS_ScramblingID, err = r.ReadInteger(&aper.Constraint{Lb: 0, Ub: 65535}, false); err != nil {
 			return utils.WrapError("Decode Pdcch_DMRS_ScramblingID", err)
 		}
 		ie.Pdcch_DMRS_ScramblingID = &tmp_int_Pdcch_DMRS_ScramblingID
@@ -270,7 +270,7 @@ func (ie *ControlResourceSet) Decode(r *uper.UperReader) error {
 				return err
 			}
 
-			extReader := uper.NewReader(bytes.NewReader(extBytes))
+			extReader := aper.NewReader(bytes.NewReader(extBytes))
 
 			Rb_Offset_r16Present, err := extReader.ReadBool()
 			if err != nil {
@@ -291,7 +291,7 @@ func (ie *ControlResourceSet) Decode(r *uper.UperReader) error {
 			// decode Rb_Offset_r16 optional
 			if Rb_Offset_r16Present {
 				var tmp_int_Rb_Offset_r16 int64
-				if tmp_int_Rb_Offset_r16, err = extReader.ReadInteger(&uper.Constraint{Lb: 0, Ub: 5}, false); err != nil {
+				if tmp_int_Rb_Offset_r16, err = extReader.ReadInteger(&aper.Constraint{Lb: 0, Ub: 5}, false); err != nil {
 					return utils.WrapError("Decode Rb_Offset_r16", err)
 				}
 				ie.Rb_Offset_r16 = &tmp_int_Rb_Offset_r16
@@ -299,7 +299,7 @@ func (ie *ControlResourceSet) Decode(r *uper.UperReader) error {
 			// decode Tci_PresentDCI_1_2_r16 optional
 			if Tci_PresentDCI_1_2_r16Present {
 				var tmp_int_Tci_PresentDCI_1_2_r16 int64
-				if tmp_int_Tci_PresentDCI_1_2_r16, err = extReader.ReadInteger(&uper.Constraint{Lb: 1, Ub: 3}, false); err != nil {
+				if tmp_int_Tci_PresentDCI_1_2_r16, err = extReader.ReadInteger(&aper.Constraint{Lb: 1, Ub: 3}, false); err != nil {
 					return utils.WrapError("Decode Tci_PresentDCI_1_2_r16", err)
 				}
 				ie.Tci_PresentDCI_1_2_r16 = &tmp_int_Tci_PresentDCI_1_2_r16
@@ -307,7 +307,7 @@ func (ie *ControlResourceSet) Decode(r *uper.UperReader) error {
 			// decode CoresetPoolIndex_r16 optional
 			if CoresetPoolIndex_r16Present {
 				var tmp_int_CoresetPoolIndex_r16 int64
-				if tmp_int_CoresetPoolIndex_r16, err = extReader.ReadInteger(&uper.Constraint{Lb: 0, Ub: 1}, false); err != nil {
+				if tmp_int_CoresetPoolIndex_r16, err = extReader.ReadInteger(&aper.Constraint{Lb: 0, Ub: 1}, false); err != nil {
 					return utils.WrapError("Decode CoresetPoolIndex_r16", err)
 				}
 				ie.CoresetPoolIndex_r16 = &tmp_int_CoresetPoolIndex_r16
@@ -327,7 +327,7 @@ func (ie *ControlResourceSet) Decode(r *uper.UperReader) error {
 				return err
 			}
 
-			extReader := uper.NewReader(bytes.NewReader(extBytes))
+			extReader := aper.NewReader(bytes.NewReader(extBytes))
 
 			FollowUnifiedTCI_State_r17Present, err := extReader.ReadBool()
 			if err != nil {

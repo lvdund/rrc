@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -11,9 +11,9 @@ type CodebookParameters_type1_singlePanel struct {
 	MaxNumberCSI_RS_PerResourceSet int64                                      `lb:1,ub:8,madatory`
 }
 
-func (ie *CodebookParameters_type1_singlePanel) Encode(w *uper.UperWriter) error {
+func (ie *CodebookParameters_type1_singlePanel) Encode(w *aper.AperWriter) error {
 	var err error
-	tmp_SupportedCSI_RS_ResourceList := utils.NewSequence[*SupportedCSI_RS_Resource]([]*SupportedCSI_RS_Resource{}, uper.Constraint{Lb: 1, Ub: maxNrofCSI_RS_Resources}, false)
+	tmp_SupportedCSI_RS_ResourceList := utils.NewSequence[*SupportedCSI_RS_Resource]([]*SupportedCSI_RS_Resource{}, aper.Constraint{Lb: 1, Ub: maxNrofCSI_RS_Resources}, false)
 	for _, i := range ie.SupportedCSI_RS_ResourceList {
 		tmp_SupportedCSI_RS_ResourceList.Value = append(tmp_SupportedCSI_RS_ResourceList.Value, &i)
 	}
@@ -23,15 +23,15 @@ func (ie *CodebookParameters_type1_singlePanel) Encode(w *uper.UperWriter) error
 	if err = ie.Modes.Encode(w); err != nil {
 		return utils.WrapError("Encode Modes", err)
 	}
-	if err = w.WriteInteger(ie.MaxNumberCSI_RS_PerResourceSet, &uper.Constraint{Lb: 1, Ub: 8}, false); err != nil {
+	if err = w.WriteInteger(ie.MaxNumberCSI_RS_PerResourceSet, &aper.Constraint{Lb: 1, Ub: 8}, false); err != nil {
 		return utils.WrapError("WriteInteger MaxNumberCSI_RS_PerResourceSet", err)
 	}
 	return nil
 }
 
-func (ie *CodebookParameters_type1_singlePanel) Decode(r *uper.UperReader) error {
+func (ie *CodebookParameters_type1_singlePanel) Decode(r *aper.AperReader) error {
 	var err error
-	tmp_SupportedCSI_RS_ResourceList := utils.NewSequence[*SupportedCSI_RS_Resource]([]*SupportedCSI_RS_Resource{}, uper.Constraint{Lb: 1, Ub: maxNrofCSI_RS_Resources}, false)
+	tmp_SupportedCSI_RS_ResourceList := utils.NewSequence[*SupportedCSI_RS_Resource]([]*SupportedCSI_RS_Resource{}, aper.Constraint{Lb: 1, Ub: maxNrofCSI_RS_Resources}, false)
 	fn_SupportedCSI_RS_ResourceList := func() *SupportedCSI_RS_Resource {
 		return new(SupportedCSI_RS_Resource)
 	}
@@ -46,7 +46,7 @@ func (ie *CodebookParameters_type1_singlePanel) Decode(r *uper.UperReader) error
 		return utils.WrapError("Decode Modes", err)
 	}
 	var tmp_int_MaxNumberCSI_RS_PerResourceSet int64
-	if tmp_int_MaxNumberCSI_RS_PerResourceSet, err = r.ReadInteger(&uper.Constraint{Lb: 1, Ub: 8}, false); err != nil {
+	if tmp_int_MaxNumberCSI_RS_PerResourceSet, err = r.ReadInteger(&aper.Constraint{Lb: 1, Ub: 8}, false); err != nil {
 		return utils.WrapError("ReadInteger MaxNumberCSI_RS_PerResourceSet", err)
 	}
 	ie.MaxNumberCSI_RS_PerResourceSet = tmp_int_MaxNumberCSI_RS_PerResourceSet

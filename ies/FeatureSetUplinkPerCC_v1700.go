@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -12,7 +12,7 @@ type FeatureSetUplinkPerCC_v1700 struct {
 	SupportedBandwidthUL_v1710     *SupportedBandwidth_v1700                                   `optional`
 }
 
-func (ie *FeatureSetUplinkPerCC_v1700) Encode(w *uper.UperWriter) error {
+func (ie *FeatureSetUplinkPerCC_v1700) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.SupportedMinBandwidthUL_r17 != nil, ie.MTRP_PUSCH_RepetitionTypeB_r17 != nil, ie.MTRP_PUSCH_TypeB_CB_r17 != nil, ie.SupportedBandwidthUL_v1710 != nil}
 	for _, bit := range preambleBits {
@@ -43,7 +43,7 @@ func (ie *FeatureSetUplinkPerCC_v1700) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *FeatureSetUplinkPerCC_v1700) Decode(r *uper.UperReader) error {
+func (ie *FeatureSetUplinkPerCC_v1700) Decode(r *aper.AperReader) error {
 	var err error
 	var SupportedMinBandwidthUL_r17Present bool
 	if SupportedMinBandwidthUL_r17Present, err = r.ReadBool(); err != nil {

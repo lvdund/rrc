@@ -3,7 +3,7 @@ package ies
 import (
 	"bytes"
 
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -15,7 +15,7 @@ type RadioLinkMonitoringConfig struct {
 	Beamfailure_r17                        *BeamFailureDetection_r17                              `optional,ext-1`
 }
 
-func (ie *RadioLinkMonitoringConfig) Encode(w *uper.UperWriter) error {
+func (ie *RadioLinkMonitoringConfig) Encode(w *aper.AperWriter) error {
 	var err error
 	hasExtensions := ie.Beamfailure_r17 != nil
 	preambleBits := []bool{hasExtensions, len(ie.FailureDetectionResourcesToAddModList) > 0, len(ie.FailureDetectionResourcesToReleaseList) > 0, ie.BeamFailureInstanceMaxCount != nil, ie.BeamFailureDetectionTimer != nil}
@@ -25,7 +25,7 @@ func (ie *RadioLinkMonitoringConfig) Encode(w *uper.UperWriter) error {
 		}
 	}
 	if len(ie.FailureDetectionResourcesToAddModList) > 0 {
-		tmp_FailureDetectionResourcesToAddModList := utils.NewSequence[*RadioLinkMonitoringRS]([]*RadioLinkMonitoringRS{}, uper.Constraint{Lb: 1, Ub: maxNrofFailureDetectionResources}, false)
+		tmp_FailureDetectionResourcesToAddModList := utils.NewSequence[*RadioLinkMonitoringRS]([]*RadioLinkMonitoringRS{}, aper.Constraint{Lb: 1, Ub: maxNrofFailureDetectionResources}, false)
 		for _, i := range ie.FailureDetectionResourcesToAddModList {
 			tmp_FailureDetectionResourcesToAddModList.Value = append(tmp_FailureDetectionResourcesToAddModList.Value, &i)
 		}
@@ -34,7 +34,7 @@ func (ie *RadioLinkMonitoringConfig) Encode(w *uper.UperWriter) error {
 		}
 	}
 	if len(ie.FailureDetectionResourcesToReleaseList) > 0 {
-		tmp_FailureDetectionResourcesToReleaseList := utils.NewSequence[*RadioLinkMonitoringRS_Id]([]*RadioLinkMonitoringRS_Id{}, uper.Constraint{Lb: 1, Ub: maxNrofFailureDetectionResources}, false)
+		tmp_FailureDetectionResourcesToReleaseList := utils.NewSequence[*RadioLinkMonitoringRS_Id]([]*RadioLinkMonitoringRS_Id{}, aper.Constraint{Lb: 1, Ub: maxNrofFailureDetectionResources}, false)
 		for _, i := range ie.FailureDetectionResourcesToReleaseList {
 			tmp_FailureDetectionResourcesToReleaseList.Value = append(tmp_FailureDetectionResourcesToReleaseList.Value, &i)
 		}
@@ -62,7 +62,7 @@ func (ie *RadioLinkMonitoringConfig) Encode(w *uper.UperWriter) error {
 		// encode extension group 1
 		if extBitmap[0] {
 			extBuf := new(bytes.Buffer)
-			extWriter := uper.NewWriter(extBuf)
+			extWriter := aper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 1
 			optionals_ext_1 := []bool{ie.Beamfailure_r17 != nil}
@@ -91,7 +91,7 @@ func (ie *RadioLinkMonitoringConfig) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *RadioLinkMonitoringConfig) Decode(r *uper.UperReader) error {
+func (ie *RadioLinkMonitoringConfig) Decode(r *aper.AperReader) error {
 	var err error
 	var extensionBit bool
 	if extensionBit, err = r.ReadBool(); err != nil {
@@ -114,7 +114,7 @@ func (ie *RadioLinkMonitoringConfig) Decode(r *uper.UperReader) error {
 		return err
 	}
 	if FailureDetectionResourcesToAddModListPresent {
-		tmp_FailureDetectionResourcesToAddModList := utils.NewSequence[*RadioLinkMonitoringRS]([]*RadioLinkMonitoringRS{}, uper.Constraint{Lb: 1, Ub: maxNrofFailureDetectionResources}, false)
+		tmp_FailureDetectionResourcesToAddModList := utils.NewSequence[*RadioLinkMonitoringRS]([]*RadioLinkMonitoringRS{}, aper.Constraint{Lb: 1, Ub: maxNrofFailureDetectionResources}, false)
 		fn_FailureDetectionResourcesToAddModList := func() *RadioLinkMonitoringRS {
 			return new(RadioLinkMonitoringRS)
 		}
@@ -127,7 +127,7 @@ func (ie *RadioLinkMonitoringConfig) Decode(r *uper.UperReader) error {
 		}
 	}
 	if FailureDetectionResourcesToReleaseListPresent {
-		tmp_FailureDetectionResourcesToReleaseList := utils.NewSequence[*RadioLinkMonitoringRS_Id]([]*RadioLinkMonitoringRS_Id{}, uper.Constraint{Lb: 1, Ub: maxNrofFailureDetectionResources}, false)
+		tmp_FailureDetectionResourcesToReleaseList := utils.NewSequence[*RadioLinkMonitoringRS_Id]([]*RadioLinkMonitoringRS_Id{}, aper.Constraint{Lb: 1, Ub: maxNrofFailureDetectionResources}, false)
 		fn_FailureDetectionResourcesToReleaseList := func() *RadioLinkMonitoringRS_Id {
 			return new(RadioLinkMonitoringRS_Id)
 		}
@@ -166,7 +166,7 @@ func (ie *RadioLinkMonitoringConfig) Decode(r *uper.UperReader) error {
 				return err
 			}
 
-			extReader := uper.NewReader(bytes.NewReader(extBytes))
+			extReader := aper.NewReader(bytes.NewReader(extBytes))
 
 			Beamfailure_r17Present, err := extReader.ReadBool()
 			if err != nil {

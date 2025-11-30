@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -9,9 +9,9 @@ type MeasResultListUTRA_FDD_r16 struct {
 	Value []MeasResultUTRA_FDD_r16 `lb:1,ub:maxCellReport,madatory`
 }
 
-func (ie *MeasResultListUTRA_FDD_r16) Encode(w *uper.UperWriter) error {
+func (ie *MeasResultListUTRA_FDD_r16) Encode(w *aper.AperWriter) error {
 	var err error
-	tmp := utils.NewSequence[*MeasResultUTRA_FDD_r16]([]*MeasResultUTRA_FDD_r16{}, uper.Constraint{Lb: 1, Ub: maxCellReport}, false)
+	tmp := utils.NewSequence[*MeasResultUTRA_FDD_r16]([]*MeasResultUTRA_FDD_r16{}, aper.Constraint{Lb: 1, Ub: maxCellReport}, false)
 	for _, i := range ie.Value {
 		tmp.Value = append(tmp.Value, &i)
 	}
@@ -21,9 +21,9 @@ func (ie *MeasResultListUTRA_FDD_r16) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *MeasResultListUTRA_FDD_r16) Decode(r *uper.UperReader) error {
+func (ie *MeasResultListUTRA_FDD_r16) Decode(r *aper.AperReader) error {
 	var err error
-	tmp := utils.NewSequence[*MeasResultUTRA_FDD_r16]([]*MeasResultUTRA_FDD_r16{}, uper.Constraint{Lb: 1, Ub: maxCellReport}, false)
+	tmp := utils.NewSequence[*MeasResultUTRA_FDD_r16]([]*MeasResultUTRA_FDD_r16{}, aper.Constraint{Lb: 1, Ub: maxCellReport}, false)
 	fn := func() *MeasResultUTRA_FDD_r16 {
 		return new(MeasResultUTRA_FDD_r16)
 	}

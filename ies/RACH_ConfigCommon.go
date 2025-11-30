@@ -3,7 +3,7 @@ package ies
 import (
 	"bytes"
 
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -25,7 +25,7 @@ type RACH_ConfigCommon struct {
 	FeatureCombinationPreamblesList_r17       []FeatureCombinationPreambles_r17                            `lb:1,ub:maxFeatureCombPreamblesPerRACHResource_r17,optional,ext-2`
 }
 
-func (ie *RACH_ConfigCommon) Encode(w *uper.UperWriter) error {
+func (ie *RACH_ConfigCommon) Encode(w *aper.AperWriter) error {
 	var err error
 	hasExtensions := ie.Ra_PrioritizationForAccessIdentity_r16 != nil || ie.Prach_RootSequenceIndex_r16 != nil || ie.Ra_PrioritizationForSlicing_r17 != nil || len(ie.FeatureCombinationPreamblesList_r17) > 0
 	preambleBits := []bool{hasExtensions, ie.TotalNumberOfRA_Preambles != nil, ie.Ssb_perRACH_OccasionAndCB_PreamblesPerSSB != nil, ie.GroupBconfigured != nil, ie.Rsrp_ThresholdSSB != nil, ie.Rsrp_ThresholdSSB_SUL != nil, ie.Msg1_SubcarrierSpacing != nil, ie.Msg3_transformPrecoder != nil}
@@ -38,7 +38,7 @@ func (ie *RACH_ConfigCommon) Encode(w *uper.UperWriter) error {
 		return utils.WrapError("Encode Rach_ConfigGeneric", err)
 	}
 	if ie.TotalNumberOfRA_Preambles != nil {
-		if err = w.WriteInteger(*ie.TotalNumberOfRA_Preambles, &uper.Constraint{Lb: 1, Ub: 63}, false); err != nil {
+		if err = w.WriteInteger(*ie.TotalNumberOfRA_Preambles, &aper.Constraint{Lb: 1, Ub: 63}, false); err != nil {
 			return utils.WrapError("Encode TotalNumberOfRA_Preambles", err)
 		}
 	}
@@ -91,7 +91,7 @@ func (ie *RACH_ConfigCommon) Encode(w *uper.UperWriter) error {
 		// encode extension group 1
 		if extBitmap[0] {
 			extBuf := new(bytes.Buffer)
-			extWriter := uper.NewWriter(extBuf)
+			extWriter := aper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 1
 			optionals_ext_1 := []bool{ie.Ra_PrioritizationForAccessIdentity_r16 != nil, ie.Prach_RootSequenceIndex_r16 != nil}
@@ -126,7 +126,7 @@ func (ie *RACH_ConfigCommon) Encode(w *uper.UperWriter) error {
 		// encode extension group 2
 		if extBitmap[1] {
 			extBuf := new(bytes.Buffer)
-			extWriter := uper.NewWriter(extBuf)
+			extWriter := aper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 2
 			optionals_ext_2 := []bool{ie.Ra_PrioritizationForSlicing_r17 != nil, len(ie.FeatureCombinationPreamblesList_r17) > 0}
@@ -144,7 +144,7 @@ func (ie *RACH_ConfigCommon) Encode(w *uper.UperWriter) error {
 			}
 			// encode FeatureCombinationPreamblesList_r17 optional
 			if len(ie.FeatureCombinationPreamblesList_r17) > 0 {
-				tmp_FeatureCombinationPreamblesList_r17 := utils.NewSequence[*FeatureCombinationPreambles_r17]([]*FeatureCombinationPreambles_r17{}, uper.Constraint{Lb: 1, Ub: maxFeatureCombPreamblesPerRACHResource_r17}, false)
+				tmp_FeatureCombinationPreamblesList_r17 := utils.NewSequence[*FeatureCombinationPreambles_r17]([]*FeatureCombinationPreambles_r17{}, aper.Constraint{Lb: 1, Ub: maxFeatureCombPreamblesPerRACHResource_r17}, false)
 				for _, i := range ie.FeatureCombinationPreamblesList_r17 {
 					tmp_FeatureCombinationPreamblesList_r17.Value = append(tmp_FeatureCombinationPreamblesList_r17.Value, &i)
 				}
@@ -165,7 +165,7 @@ func (ie *RACH_ConfigCommon) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *RACH_ConfigCommon) Decode(r *uper.UperReader) error {
+func (ie *RACH_ConfigCommon) Decode(r *aper.AperReader) error {
 	var err error
 	var extensionBit bool
 	if extensionBit, err = r.ReadBool(); err != nil {
@@ -204,7 +204,7 @@ func (ie *RACH_ConfigCommon) Decode(r *uper.UperReader) error {
 	}
 	if TotalNumberOfRA_PreamblesPresent {
 		var tmp_int_TotalNumberOfRA_Preambles int64
-		if tmp_int_TotalNumberOfRA_Preambles, err = r.ReadInteger(&uper.Constraint{Lb: 1, Ub: 63}, false); err != nil {
+		if tmp_int_TotalNumberOfRA_Preambles, err = r.ReadInteger(&aper.Constraint{Lb: 1, Ub: 63}, false); err != nil {
 			return utils.WrapError("Decode TotalNumberOfRA_Preambles", err)
 		}
 		ie.TotalNumberOfRA_Preambles = &tmp_int_TotalNumberOfRA_Preambles
@@ -269,7 +269,7 @@ func (ie *RACH_ConfigCommon) Decode(r *uper.UperReader) error {
 				return err
 			}
 
-			extReader := uper.NewReader(bytes.NewReader(extBytes))
+			extReader := aper.NewReader(bytes.NewReader(extBytes))
 
 			Ra_PrioritizationForAccessIdentity_r16Present, err := extReader.ReadBool()
 			if err != nil {
@@ -301,7 +301,7 @@ func (ie *RACH_ConfigCommon) Decode(r *uper.UperReader) error {
 				return err
 			}
 
-			extReader := uper.NewReader(bytes.NewReader(extBytes))
+			extReader := aper.NewReader(bytes.NewReader(extBytes))
 
 			Ra_PrioritizationForSlicing_r17Present, err := extReader.ReadBool()
 			if err != nil {
@@ -320,7 +320,7 @@ func (ie *RACH_ConfigCommon) Decode(r *uper.UperReader) error {
 			}
 			// decode FeatureCombinationPreamblesList_r17 optional
 			if FeatureCombinationPreamblesList_r17Present {
-				tmp_FeatureCombinationPreamblesList_r17 := utils.NewSequence[*FeatureCombinationPreambles_r17]([]*FeatureCombinationPreambles_r17{}, uper.Constraint{Lb: 1, Ub: maxFeatureCombPreamblesPerRACHResource_r17}, false)
+				tmp_FeatureCombinationPreamblesList_r17 := utils.NewSequence[*FeatureCombinationPreambles_r17]([]*FeatureCombinationPreambles_r17{}, aper.Constraint{Lb: 1, Ub: maxFeatureCombPreamblesPerRACHResource_r17}, false)
 				fn_FeatureCombinationPreamblesList_r17 := func() *FeatureCombinationPreambles_r17 {
 					return new(FeatureCombinationPreambles_r17)
 				}

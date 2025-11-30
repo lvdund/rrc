@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -13,7 +13,7 @@ type CA_ParametersNRDC_v1700 struct {
 	BeamManagementType_CBM_r17               *CA_ParametersNRDC_v1700_beamManagementType_CBM_r17               `optional`
 }
 
-func (ie *CA_ParametersNRDC_v1700) Encode(w *uper.UperWriter) error {
+func (ie *CA_ParametersNRDC_v1700) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.SimultaneousRxTx_IAB_MultipleParents_r17 != nil, ie.CondPSCellAdditionNRDC_r17 != nil, ie.Scg_ActivationDeactivationNRDC_r17 != nil, ie.Scg_ActivationDeactivationResumeNRDC_r17 != nil, ie.BeamManagementType_CBM_r17 != nil}
 	for _, bit := range preambleBits {
@@ -49,7 +49,7 @@ func (ie *CA_ParametersNRDC_v1700) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *CA_ParametersNRDC_v1700) Decode(r *uper.UperReader) error {
+func (ie *CA_ParametersNRDC_v1700) Decode(r *aper.AperReader) error {
 	var err error
 	var SimultaneousRxTx_IAB_MultipleParents_r17Present bool
 	if SimultaneousRxTx_IAB_MultipleParents_r17Present, err = r.ReadBool(); err != nil {

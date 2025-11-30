@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -10,7 +10,7 @@ type CellsToAddMod struct {
 	CellIndividualOffset Q_OffsetRangeList `madatory`
 }
 
-func (ie *CellsToAddMod) Encode(w *uper.UperWriter) error {
+func (ie *CellsToAddMod) Encode(w *aper.AperWriter) error {
 	var err error
 	if err = ie.PhysCellId.Encode(w); err != nil {
 		return utils.WrapError("Encode PhysCellId", err)
@@ -21,7 +21,7 @@ func (ie *CellsToAddMod) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *CellsToAddMod) Decode(r *uper.UperReader) error {
+func (ie *CellsToAddMod) Decode(r *aper.AperReader) error {
 	var err error
 	if err = ie.PhysCellId.Decode(r); err != nil {
 		return utils.WrapError("Decode PhysCellId", err)

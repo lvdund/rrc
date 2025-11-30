@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -10,7 +10,7 @@ type FeatureSetDownlinkPerCC_v1620 struct {
 	SupportFDM_SchemeB_r16 *FeatureSetDownlinkPerCC_v1620_supportFDM_SchemeB_r16 `optional`
 }
 
-func (ie *FeatureSetDownlinkPerCC_v1620) Encode(w *uper.UperWriter) error {
+func (ie *FeatureSetDownlinkPerCC_v1620) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.MultiDCI_MultiTRP_r16 != nil, ie.SupportFDM_SchemeB_r16 != nil}
 	for _, bit := range preambleBits {
@@ -31,7 +31,7 @@ func (ie *FeatureSetDownlinkPerCC_v1620) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *FeatureSetDownlinkPerCC_v1620) Decode(r *uper.UperReader) error {
+func (ie *FeatureSetDownlinkPerCC_v1620) Decode(r *aper.AperReader) error {
 	var err error
 	var MultiDCI_MultiTRP_r16Present bool
 	if MultiDCI_MultiTRP_r16Present, err = r.ReadBool(); err != nil {

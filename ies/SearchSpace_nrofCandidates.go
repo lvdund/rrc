@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -13,7 +13,7 @@ type SearchSpace_nrofCandidates struct {
 	AggregationLevel16 SearchSpace_nrofCandidates_aggregationLevel16 `madatory`
 }
 
-func (ie *SearchSpace_nrofCandidates) Encode(w *uper.UperWriter) error {
+func (ie *SearchSpace_nrofCandidates) Encode(w *aper.AperWriter) error {
 	var err error
 	if err = ie.AggregationLevel1.Encode(w); err != nil {
 		return utils.WrapError("Encode AggregationLevel1", err)
@@ -33,7 +33,7 @@ func (ie *SearchSpace_nrofCandidates) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *SearchSpace_nrofCandidates) Decode(r *uper.UperReader) error {
+func (ie *SearchSpace_nrofCandidates) Decode(r *aper.AperReader) error {
 	var err error
 	if err = ie.AggregationLevel1.Decode(r); err != nil {
 		return utils.WrapError("Decode AggregationLevel1", err)

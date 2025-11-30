@@ -3,7 +3,7 @@ package ies
 import (
 	"fmt"
 
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -19,14 +19,14 @@ type SRS_CarrierSwitching_srs_TPC_PDCCH_Group struct {
 	TypeB  *SRS_TPC_PDCCH_Config
 }
 
-func (ie *SRS_CarrierSwitching_srs_TPC_PDCCH_Group) Encode(w *uper.UperWriter) error {
+func (ie *SRS_CarrierSwitching_srs_TPC_PDCCH_Group) Encode(w *aper.AperWriter) error {
 	var err error
 	if err = w.WriteChoice(ie.Choice, 2, false); err != nil {
 		return err
 	}
 	switch ie.Choice {
 	case SRS_CarrierSwitching_srs_TPC_PDCCH_Group_Choice_TypeA:
-		tmp := utils.NewSequence[*SRS_TPC_PDCCH_Config]([]*SRS_TPC_PDCCH_Config{}, uper.Constraint{Lb: 1, Ub: 32}, false)
+		tmp := utils.NewSequence[*SRS_TPC_PDCCH_Config]([]*SRS_TPC_PDCCH_Config{}, aper.Constraint{Lb: 1, Ub: 32}, false)
 		for _, i := range ie.TypeA {
 			tmp.Value = append(tmp.Value, &i)
 		}
@@ -43,14 +43,14 @@ func (ie *SRS_CarrierSwitching_srs_TPC_PDCCH_Group) Encode(w *uper.UperWriter) e
 	return err
 }
 
-func (ie *SRS_CarrierSwitching_srs_TPC_PDCCH_Group) Decode(r *uper.UperReader) error {
+func (ie *SRS_CarrierSwitching_srs_TPC_PDCCH_Group) Decode(r *aper.AperReader) error {
 	var err error
 	if ie.Choice, err = r.ReadChoice(2, false); err != nil {
 		return err
 	}
 	switch ie.Choice {
 	case SRS_CarrierSwitching_srs_TPC_PDCCH_Group_Choice_TypeA:
-		tmp := utils.NewSequence[*SRS_TPC_PDCCH_Config]([]*SRS_TPC_PDCCH_Config{}, uper.Constraint{Lb: 1, Ub: 32}, false)
+		tmp := utils.NewSequence[*SRS_TPC_PDCCH_Config]([]*SRS_TPC_PDCCH_Config{}, aper.Constraint{Lb: 1, Ub: 32}, false)
 		fn := func() *SRS_TPC_PDCCH_Config {
 			return new(SRS_TPC_PDCCH_Config)
 		}

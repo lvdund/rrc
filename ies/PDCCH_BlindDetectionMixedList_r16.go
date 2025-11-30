@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -10,7 +10,7 @@ type PDCCH_BlindDetectionMixedList_r16 struct {
 	Pdcch_BlindDetectionCG_UE_MixedExt_r16 *PDCCH_BlindDetectionMixedList_r16_pdcch_BlindDetectionCG_UE_MixedExt_r16 `optional`
 }
 
-func (ie *PDCCH_BlindDetectionMixedList_r16) Encode(w *uper.UperWriter) error {
+func (ie *PDCCH_BlindDetectionMixedList_r16) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.Pdcch_BlindDetectionCA_MixedExt_r16 != nil, ie.Pdcch_BlindDetectionCG_UE_MixedExt_r16 != nil}
 	for _, bit := range preambleBits {
@@ -31,7 +31,7 @@ func (ie *PDCCH_BlindDetectionMixedList_r16) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *PDCCH_BlindDetectionMixedList_r16) Decode(r *uper.UperReader) error {
+func (ie *PDCCH_BlindDetectionMixedList_r16) Decode(r *aper.AperReader) error {
 	var err error
 	var Pdcch_BlindDetectionCA_MixedExt_r16Present bool
 	if Pdcch_BlindDetectionCA_MixedExt_r16Present, err = r.ReadBool(); err != nil {

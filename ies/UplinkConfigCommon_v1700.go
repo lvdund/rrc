@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -9,7 +9,7 @@ type UplinkConfigCommon_v1700 struct {
 	InitialUplinkBWP_RedCap_r17 *BWP_UplinkCommon `optional`
 }
 
-func (ie *UplinkConfigCommon_v1700) Encode(w *uper.UperWriter) error {
+func (ie *UplinkConfigCommon_v1700) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.InitialUplinkBWP_RedCap_r17 != nil}
 	for _, bit := range preambleBits {
@@ -25,7 +25,7 @@ func (ie *UplinkConfigCommon_v1700) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *UplinkConfigCommon_v1700) Decode(r *uper.UperReader) error {
+func (ie *UplinkConfigCommon_v1700) Decode(r *aper.AperReader) error {
 	var err error
 	var InitialUplinkBWP_RedCap_r17Present bool
 	if InitialUplinkBWP_RedCap_r17Present, err = r.ReadBool(); err != nil {

@@ -3,7 +3,7 @@ package ies
 import (
 	"bytes"
 
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -30,7 +30,7 @@ type SRS_Resource struct {
 	Srs_DLorJointTCI_State_v1730 *SRS_Resource_srs_DLorJointTCI_State_v1730 `optional,ext-3`
 }
 
-func (ie *SRS_Resource) Encode(w *uper.UperWriter) error {
+func (ie *SRS_Resource) Encode(w *aper.AperWriter) error {
 	var err error
 	hasExtensions := ie.ResourceMapping_r16 != nil || ie.SpatialRelationInfo_PDC_r17 != nil || ie.ResourceMapping_r17 != nil || ie.PartialFreqSounding_r17 != nil || ie.TransmissionComb_n8_r17 != nil || ie.Srs_TCI_State_r17 != nil || ie.RepetitionFactor_v1730 != nil || ie.Srs_DLorJointTCI_State_v1730 != nil
 	preambleBits := []bool{hasExtensions, ie.Ptrs_PortIndex != nil}
@@ -56,10 +56,10 @@ func (ie *SRS_Resource) Encode(w *uper.UperWriter) error {
 	if err = ie.ResourceMapping.Encode(w); err != nil {
 		return utils.WrapError("Encode ResourceMapping", err)
 	}
-	if err = w.WriteInteger(ie.FreqDomainPosition, &uper.Constraint{Lb: 0, Ub: 67}, false); err != nil {
+	if err = w.WriteInteger(ie.FreqDomainPosition, &aper.Constraint{Lb: 0, Ub: 67}, false); err != nil {
 		return utils.WrapError("WriteInteger FreqDomainPosition", err)
 	}
-	if err = w.WriteInteger(ie.FreqDomainShift, &uper.Constraint{Lb: 0, Ub: 268}, false); err != nil {
+	if err = w.WriteInteger(ie.FreqDomainShift, &aper.Constraint{Lb: 0, Ub: 268}, false); err != nil {
 		return utils.WrapError("WriteInteger FreqDomainShift", err)
 	}
 	if err = ie.FreqHopping.Encode(w); err != nil {
@@ -81,7 +81,7 @@ func (ie *SRS_Resource) Encode(w *uper.UperWriter) error {
 		// encode extension group 1
 		if extBitmap[0] {
 			extBuf := new(bytes.Buffer)
-			extWriter := uper.NewWriter(extBuf)
+			extWriter := aper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 1
 			optionals_ext_1 := []bool{ie.ResourceMapping_r16 != nil}
@@ -110,7 +110,7 @@ func (ie *SRS_Resource) Encode(w *uper.UperWriter) error {
 		// encode extension group 2
 		if extBitmap[1] {
 			extBuf := new(bytes.Buffer)
-			extWriter := uper.NewWriter(extBuf)
+			extWriter := aper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 2
 			optionals_ext_2 := []bool{ie.SpatialRelationInfo_PDC_r17 != nil, ie.ResourceMapping_r17 != nil, ie.PartialFreqSounding_r17 != nil, ie.TransmissionComb_n8_r17 != nil, ie.Srs_TCI_State_r17 != nil}
@@ -166,7 +166,7 @@ func (ie *SRS_Resource) Encode(w *uper.UperWriter) error {
 		// encode extension group 3
 		if extBitmap[2] {
 			extBuf := new(bytes.Buffer)
-			extWriter := uper.NewWriter(extBuf)
+			extWriter := aper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 3
 			optionals_ext_3 := []bool{ie.RepetitionFactor_v1730 != nil, ie.Srs_DLorJointTCI_State_v1730 != nil}
@@ -201,7 +201,7 @@ func (ie *SRS_Resource) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *SRS_Resource) Decode(r *uper.UperReader) error {
+func (ie *SRS_Resource) Decode(r *aper.AperReader) error {
 	var err error
 	var extensionBit bool
 	if extensionBit, err = r.ReadBool(); err != nil {
@@ -230,12 +230,12 @@ func (ie *SRS_Resource) Decode(r *uper.UperReader) error {
 		return utils.WrapError("Decode ResourceMapping", err)
 	}
 	var tmp_int_FreqDomainPosition int64
-	if tmp_int_FreqDomainPosition, err = r.ReadInteger(&uper.Constraint{Lb: 0, Ub: 67}, false); err != nil {
+	if tmp_int_FreqDomainPosition, err = r.ReadInteger(&aper.Constraint{Lb: 0, Ub: 67}, false); err != nil {
 		return utils.WrapError("ReadInteger FreqDomainPosition", err)
 	}
 	ie.FreqDomainPosition = tmp_int_FreqDomainPosition
 	var tmp_int_FreqDomainShift int64
-	if tmp_int_FreqDomainShift, err = r.ReadInteger(&uper.Constraint{Lb: 0, Ub: 268}, false); err != nil {
+	if tmp_int_FreqDomainShift, err = r.ReadInteger(&aper.Constraint{Lb: 0, Ub: 268}, false); err != nil {
 		return utils.WrapError("ReadInteger FreqDomainShift", err)
 	}
 	ie.FreqDomainShift = tmp_int_FreqDomainShift
@@ -263,7 +263,7 @@ func (ie *SRS_Resource) Decode(r *uper.UperReader) error {
 				return err
 			}
 
-			extReader := uper.NewReader(bytes.NewReader(extBytes))
+			extReader := aper.NewReader(bytes.NewReader(extBytes))
 
 			ResourceMapping_r16Present, err := extReader.ReadBool()
 			if err != nil {
@@ -284,7 +284,7 @@ func (ie *SRS_Resource) Decode(r *uper.UperReader) error {
 				return err
 			}
 
-			extReader := uper.NewReader(bytes.NewReader(extBytes))
+			extReader := aper.NewReader(bytes.NewReader(extBytes))
 
 			SpatialRelationInfo_PDC_r17Present, err := extReader.ReadBool()
 			if err != nil {
@@ -350,7 +350,7 @@ func (ie *SRS_Resource) Decode(r *uper.UperReader) error {
 				return err
 			}
 
-			extReader := uper.NewReader(bytes.NewReader(extBytes))
+			extReader := aper.NewReader(bytes.NewReader(extBytes))
 
 			RepetitionFactor_v1730Present, err := extReader.ReadBool()
 			if err != nil {

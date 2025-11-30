@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -12,7 +12,7 @@ type LocationInfo_r16 struct {
 	Sensor_LocationInfo_r16 *Sensor_LocationInfo_r16   `optional`
 }
 
-func (ie *LocationInfo_r16) Encode(w *uper.UperWriter) error {
+func (ie *LocationInfo_r16) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.CommonLocationInfo_r16 != nil, ie.Bt_LocationInfo_r16 != nil, ie.Wlan_LocationInfo_r16 != nil, ie.Sensor_LocationInfo_r16 != nil}
 	for _, bit := range preambleBits {
@@ -43,7 +43,7 @@ func (ie *LocationInfo_r16) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *LocationInfo_r16) Decode(r *uper.UperReader) error {
+func (ie *LocationInfo_r16) Decode(r *aper.AperReader) error {
 	var err error
 	var CommonLocationInfo_r16Present bool
 	if CommonLocationInfo_r16Present, err = r.ReadBool(); err != nil {

@@ -3,7 +3,7 @@ package ies
 import (
 	"fmt"
 
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -19,7 +19,7 @@ type SIB1_uac_BarringInfo_uac_AccessCategory1_SelectionAssistanceInfo struct {
 	IndividualPLMNList []UAC_AccessCategory1_SelectionAssistanceInfo `lb:2,ub:maxPLMN,madatory`
 }
 
-func (ie *SIB1_uac_BarringInfo_uac_AccessCategory1_SelectionAssistanceInfo) Encode(w *uper.UperWriter) error {
+func (ie *SIB1_uac_BarringInfo_uac_AccessCategory1_SelectionAssistanceInfo) Encode(w *aper.AperWriter) error {
 	var err error
 	if err = w.WriteChoice(ie.Choice, 2, false); err != nil {
 		return err
@@ -30,7 +30,7 @@ func (ie *SIB1_uac_BarringInfo_uac_AccessCategory1_SelectionAssistanceInfo) Enco
 			err = utils.WrapError("Encode PlmnCommon", err)
 		}
 	case SIB1_uac_BarringInfo_uac_AccessCategory1_SelectionAssistanceInfo_Choice_IndividualPLMNList:
-		tmp := utils.NewSequence[*UAC_AccessCategory1_SelectionAssistanceInfo]([]*UAC_AccessCategory1_SelectionAssistanceInfo{}, uper.Constraint{Lb: 2, Ub: maxPLMN}, false)
+		tmp := utils.NewSequence[*UAC_AccessCategory1_SelectionAssistanceInfo]([]*UAC_AccessCategory1_SelectionAssistanceInfo{}, aper.Constraint{Lb: 2, Ub: maxPLMN}, false)
 		for _, i := range ie.IndividualPLMNList {
 			tmp.Value = append(tmp.Value, &i)
 		}
@@ -43,7 +43,7 @@ func (ie *SIB1_uac_BarringInfo_uac_AccessCategory1_SelectionAssistanceInfo) Enco
 	return err
 }
 
-func (ie *SIB1_uac_BarringInfo_uac_AccessCategory1_SelectionAssistanceInfo) Decode(r *uper.UperReader) error {
+func (ie *SIB1_uac_BarringInfo_uac_AccessCategory1_SelectionAssistanceInfo) Decode(r *aper.AperReader) error {
 	var err error
 	if ie.Choice, err = r.ReadChoice(2, false); err != nil {
 		return err
@@ -55,7 +55,7 @@ func (ie *SIB1_uac_BarringInfo_uac_AccessCategory1_SelectionAssistanceInfo) Deco
 			return utils.WrapError("Decode PlmnCommon", err)
 		}
 	case SIB1_uac_BarringInfo_uac_AccessCategory1_SelectionAssistanceInfo_Choice_IndividualPLMNList:
-		tmp := utils.NewSequence[*UAC_AccessCategory1_SelectionAssistanceInfo]([]*UAC_AccessCategory1_SelectionAssistanceInfo{}, uper.Constraint{Lb: 2, Ub: maxPLMN}, false)
+		tmp := utils.NewSequence[*UAC_AccessCategory1_SelectionAssistanceInfo]([]*UAC_AccessCategory1_SelectionAssistanceInfo{}, aper.Constraint{Lb: 2, Ub: maxPLMN}, false)
 		fn := func() *UAC_AccessCategory1_SelectionAssistanceInfo {
 			return new(UAC_AccessCategory1_SelectionAssistanceInfo)
 		}

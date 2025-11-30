@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -12,7 +12,7 @@ type SIB1_uac_BarringInfo struct {
 	Uac_AccessCategory1_SelectionAssistanceInfo *SIB1_uac_BarringInfo_uac_AccessCategory1_SelectionAssistanceInfo `lb:2,ub:maxPLMN,optional`
 }
 
-func (ie *SIB1_uac_BarringInfo) Encode(w *uper.UperWriter) error {
+func (ie *SIB1_uac_BarringInfo) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.Uac_BarringForCommon != nil, ie.Uac_BarringPerPLMN_List != nil, ie.Uac_AccessCategory1_SelectionAssistanceInfo != nil}
 	for _, bit := range preambleBits {
@@ -41,7 +41,7 @@ func (ie *SIB1_uac_BarringInfo) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *SIB1_uac_BarringInfo) Decode(r *uper.UperReader) error {
+func (ie *SIB1_uac_BarringInfo) Decode(r *aper.AperReader) error {
 	var err error
 	var Uac_BarringForCommonPresent bool
 	if Uac_BarringForCommonPresent, err = r.ReadBool(); err != nil {

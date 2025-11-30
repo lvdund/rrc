@@ -3,7 +3,7 @@ package ies
 import (
 	"fmt"
 
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -15,11 +15,11 @@ const (
 
 type OtherConfig_delayBudgetReportingConfig struct {
 	Choice  uint64
-	Release uper.NULL `madatory`
+	Release aper.NULL `madatory`
 	Setup   *OtherConfig_delayBudgetReportingConfig_setup
 }
 
-func (ie *OtherConfig_delayBudgetReportingConfig) Encode(w *uper.UperWriter) error {
+func (ie *OtherConfig_delayBudgetReportingConfig) Encode(w *aper.AperWriter) error {
 	var err error
 	if err = w.WriteChoice(ie.Choice, 2, false); err != nil {
 		return err
@@ -39,7 +39,7 @@ func (ie *OtherConfig_delayBudgetReportingConfig) Encode(w *uper.UperWriter) err
 	return err
 }
 
-func (ie *OtherConfig_delayBudgetReportingConfig) Decode(r *uper.UperReader) error {
+func (ie *OtherConfig_delayBudgetReportingConfig) Decode(r *aper.AperReader) error {
 	var err error
 	if ie.Choice, err = r.ReadChoice(2, false); err != nil {
 		return err

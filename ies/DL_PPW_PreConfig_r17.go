@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -13,7 +13,7 @@ type DL_PPW_PreConfig_r17 struct {
 	Priority_r17                       *DL_PPW_PreConfig_r17_priority_r17 `optional`
 }
 
-func (ie *DL_PPW_PreConfig_r17) Encode(w *uper.UperWriter) error {
+func (ie *DL_PPW_PreConfig_r17) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.Type_r17 != nil, ie.Priority_r17 != nil}
 	for _, bit := range preambleBits {
@@ -27,7 +27,7 @@ func (ie *DL_PPW_PreConfig_r17) Encode(w *uper.UperWriter) error {
 	if err = ie.Dl_PPW_PeriodicityAndStartSlot_r17.Encode(w); err != nil {
 		return utils.WrapError("Encode Dl_PPW_PeriodicityAndStartSlot_r17", err)
 	}
-	if err = w.WriteInteger(ie.Length_r17, &uper.Constraint{Lb: 1, Ub: 160}, false); err != nil {
+	if err = w.WriteInteger(ie.Length_r17, &aper.Constraint{Lb: 1, Ub: 160}, false); err != nil {
 		return utils.WrapError("WriteInteger Length_r17", err)
 	}
 	if ie.Type_r17 != nil {
@@ -43,7 +43,7 @@ func (ie *DL_PPW_PreConfig_r17) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *DL_PPW_PreConfig_r17) Decode(r *uper.UperReader) error {
+func (ie *DL_PPW_PreConfig_r17) Decode(r *aper.AperReader) error {
 	var err error
 	var Type_r17Present bool
 	if Type_r17Present, err = r.ReadBool(); err != nil {
@@ -60,7 +60,7 @@ func (ie *DL_PPW_PreConfig_r17) Decode(r *uper.UperReader) error {
 		return utils.WrapError("Decode Dl_PPW_PeriodicityAndStartSlot_r17", err)
 	}
 	var tmp_int_Length_r17 int64
-	if tmp_int_Length_r17, err = r.ReadInteger(&uper.Constraint{Lb: 1, Ub: 160}, false); err != nil {
+	if tmp_int_Length_r17, err = r.ReadInteger(&aper.Constraint{Lb: 1, Ub: 160}, false); err != nil {
 		return utils.WrapError("ReadInteger Length_r17", err)
 	}
 	ie.Length_r17 = tmp_int_Length_r17

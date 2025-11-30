@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -9,9 +9,9 @@ type PagingRecordList struct {
 	Value []PagingRecord `lb:1,ub:maxNrofPageRec,madatory`
 }
 
-func (ie *PagingRecordList) Encode(w *uper.UperWriter) error {
+func (ie *PagingRecordList) Encode(w *aper.AperWriter) error {
 	var err error
-	tmp := utils.NewSequence[*PagingRecord]([]*PagingRecord{}, uper.Constraint{Lb: 1, Ub: maxNrofPageRec}, false)
+	tmp := utils.NewSequence[*PagingRecord]([]*PagingRecord{}, aper.Constraint{Lb: 1, Ub: maxNrofPageRec}, false)
 	for _, i := range ie.Value {
 		tmp.Value = append(tmp.Value, &i)
 	}
@@ -21,9 +21,9 @@ func (ie *PagingRecordList) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *PagingRecordList) Decode(r *uper.UperReader) error {
+func (ie *PagingRecordList) Decode(r *aper.AperReader) error {
 	var err error
-	tmp := utils.NewSequence[*PagingRecord]([]*PagingRecord{}, uper.Constraint{Lb: 1, Ub: maxNrofPageRec}, false)
+	tmp := utils.NewSequence[*PagingRecord]([]*PagingRecord{}, aper.Constraint{Lb: 1, Ub: maxNrofPageRec}, false)
 	fn := func() *PagingRecord {
 		return new(PagingRecord)
 	}

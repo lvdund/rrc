@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -21,7 +21,7 @@ type RRCReconfiguration_v1610_IEs struct {
 	NonCriticalExtension                *RRCReconfiguration_v1700_IEs                        `optional`
 }
 
-func (ie *RRCReconfiguration_v1610_IEs) Encode(w *uper.UperWriter) error {
+func (ie *RRCReconfiguration_v1610_IEs) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.OtherConfig_v1610 != nil, ie.Bap_Config_r16 != nil, ie.Iab_IP_AddressConfigurationList_r16 != nil, ie.ConditionalReconfiguration_r16 != nil, ie.Daps_SourceRelease_r16 != nil, ie.T316_r16 != nil, ie.NeedForGapsConfigNR_r16 != nil, ie.OnDemandSIB_Request_r16 != nil, ie.DedicatedPosSysInfoDelivery_r16 != nil, ie.Sl_ConfigDedicatedNR_r16 != nil, ie.Sl_ConfigDedicatedEUTRA_Info_r16 != nil, ie.TargetCellSMTC_SCG_r16 != nil, ie.NonCriticalExtension != nil}
 	for _, bit := range preambleBits {
@@ -82,7 +82,7 @@ func (ie *RRCReconfiguration_v1610_IEs) Encode(w *uper.UperWriter) error {
 		}
 	}
 	if ie.DedicatedPosSysInfoDelivery_r16 != nil {
-		if err = w.WriteOctetString(*ie.DedicatedPosSysInfoDelivery_r16, &uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+		if err = w.WriteOctetString(*ie.DedicatedPosSysInfoDelivery_r16, &aper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
 			return utils.WrapError("Encode DedicatedPosSysInfoDelivery_r16", err)
 		}
 	}
@@ -115,7 +115,7 @@ func (ie *RRCReconfiguration_v1610_IEs) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *RRCReconfiguration_v1610_IEs) Decode(r *uper.UperReader) error {
+func (ie *RRCReconfiguration_v1610_IEs) Decode(r *aper.AperReader) error {
 	var err error
 	var OtherConfig_v1610Present bool
 	if OtherConfig_v1610Present, err = r.ReadBool(); err != nil {
@@ -223,7 +223,7 @@ func (ie *RRCReconfiguration_v1610_IEs) Decode(r *uper.UperReader) error {
 	}
 	if DedicatedPosSysInfoDelivery_r16Present {
 		var tmp_os_DedicatedPosSysInfoDelivery_r16 []byte
-		if tmp_os_DedicatedPosSysInfoDelivery_r16, err = r.ReadOctetString(&uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+		if tmp_os_DedicatedPosSysInfoDelivery_r16, err = r.ReadOctetString(&aper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
 			return utils.WrapError("Decode DedicatedPosSysInfoDelivery_r16", err)
 		}
 		ie.DedicatedPosSysInfoDelivery_r16 = &tmp_os_DedicatedPosSysInfoDelivery_r16

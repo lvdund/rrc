@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -11,7 +11,7 @@ type SearchSpaceExt_r16_searchSpaceType_r16_common_r16 struct {
 	Dci_Format2_6_r16 interface{}                                                          `optional`
 }
 
-func (ie *SearchSpaceExt_r16_searchSpaceType_r16_common_r16) Encode(w *uper.UperWriter) error {
+func (ie *SearchSpaceExt_r16_searchSpaceType_r16_common_r16) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.Dci_Format2_4_r16 != nil, ie.Dci_Format2_5_r16 != nil}
 	for _, bit := range preambleBits {
@@ -32,7 +32,7 @@ func (ie *SearchSpaceExt_r16_searchSpaceType_r16_common_r16) Encode(w *uper.Uper
 	return nil
 }
 
-func (ie *SearchSpaceExt_r16_searchSpaceType_r16_common_r16) Decode(r *uper.UperReader) error {
+func (ie *SearchSpaceExt_r16_searchSpaceType_r16_common_r16) Decode(r *aper.AperReader) error {
 	var err error
 	var Dci_Format2_4_r16Present bool
 	if Dci_Format2_4_r16Present, err = r.ReadBool(); err != nil {

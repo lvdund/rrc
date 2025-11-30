@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -9,9 +9,9 @@ type SL_RxDRX_ReportList_v1700 struct {
 	Value []SL_RxDRX_Report_v1700 `lb:1,ub:maxNrofSL_Dest_r16,madatory`
 }
 
-func (ie *SL_RxDRX_ReportList_v1700) Encode(w *uper.UperWriter) error {
+func (ie *SL_RxDRX_ReportList_v1700) Encode(w *aper.AperWriter) error {
 	var err error
-	tmp := utils.NewSequence[*SL_RxDRX_Report_v1700]([]*SL_RxDRX_Report_v1700{}, uper.Constraint{Lb: 1, Ub: maxNrofSL_Dest_r16}, false)
+	tmp := utils.NewSequence[*SL_RxDRX_Report_v1700]([]*SL_RxDRX_Report_v1700{}, aper.Constraint{Lb: 1, Ub: maxNrofSL_Dest_r16}, false)
 	for _, i := range ie.Value {
 		tmp.Value = append(tmp.Value, &i)
 	}
@@ -21,9 +21,9 @@ func (ie *SL_RxDRX_ReportList_v1700) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *SL_RxDRX_ReportList_v1700) Decode(r *uper.UperReader) error {
+func (ie *SL_RxDRX_ReportList_v1700) Decode(r *aper.AperReader) error {
 	var err error
-	tmp := utils.NewSequence[*SL_RxDRX_Report_v1700]([]*SL_RxDRX_Report_v1700{}, uper.Constraint{Lb: 1, Ub: maxNrofSL_Dest_r16}, false)
+	tmp := utils.NewSequence[*SL_RxDRX_Report_v1700]([]*SL_RxDRX_Report_v1700{}, aper.Constraint{Lb: 1, Ub: maxNrofSL_Dest_r16}, false)
 	fn := func() *SL_RxDRX_Report_v1700 {
 		return new(SL_RxDRX_Report_v1700)
 	}

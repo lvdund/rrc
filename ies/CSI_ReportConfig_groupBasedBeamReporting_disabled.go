@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -9,7 +9,7 @@ type CSI_ReportConfig_groupBasedBeamReporting_disabled struct {
 	NrofReportedRS *CSI_ReportConfig_groupBasedBeamReporting_disabled_nrofReportedRS `optional`
 }
 
-func (ie *CSI_ReportConfig_groupBasedBeamReporting_disabled) Encode(w *uper.UperWriter) error {
+func (ie *CSI_ReportConfig_groupBasedBeamReporting_disabled) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.NrofReportedRS != nil}
 	for _, bit := range preambleBits {
@@ -25,7 +25,7 @@ func (ie *CSI_ReportConfig_groupBasedBeamReporting_disabled) Encode(w *uper.Uper
 	return nil
 }
 
-func (ie *CSI_ReportConfig_groupBasedBeamReporting_disabled) Decode(r *uper.UperReader) error {
+func (ie *CSI_ReportConfig_groupBasedBeamReporting_disabled) Decode(r *aper.AperReader) error {
 	var err error
 	var NrofReportedRSPresent bool
 	if NrofReportedRSPresent, err = r.ReadBool(); err != nil {

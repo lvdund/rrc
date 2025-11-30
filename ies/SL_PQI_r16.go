@@ -3,7 +3,7 @@ package ies
 import (
 	"fmt"
 
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -19,14 +19,14 @@ type SL_PQI_r16 struct {
 	Sl_Non_StandardizedPQI_r16 *SL_PQI_r16_sl_Non_StandardizedPQI_r16
 }
 
-func (ie *SL_PQI_r16) Encode(w *uper.UperWriter) error {
+func (ie *SL_PQI_r16) Encode(w *aper.AperWriter) error {
 	var err error
 	if err = w.WriteChoice(ie.Choice, 2, false); err != nil {
 		return err
 	}
 	switch ie.Choice {
 	case SL_PQI_r16_Choice_Sl_StandardizedPQI_r16:
-		if err = w.WriteInteger(int64(ie.Sl_StandardizedPQI_r16), &uper.Constraint{Lb: 0, Ub: 255}, false); err != nil {
+		if err = w.WriteInteger(int64(ie.Sl_StandardizedPQI_r16), &aper.Constraint{Lb: 0, Ub: 255}, false); err != nil {
 			err = utils.WrapError("Encode Sl_StandardizedPQI_r16", err)
 		}
 	case SL_PQI_r16_Choice_Sl_Non_StandardizedPQI_r16:
@@ -39,7 +39,7 @@ func (ie *SL_PQI_r16) Encode(w *uper.UperWriter) error {
 	return err
 }
 
-func (ie *SL_PQI_r16) Decode(r *uper.UperReader) error {
+func (ie *SL_PQI_r16) Decode(r *aper.AperReader) error {
 	var err error
 	if ie.Choice, err = r.ReadChoice(2, false); err != nil {
 		return err
@@ -47,7 +47,7 @@ func (ie *SL_PQI_r16) Decode(r *uper.UperReader) error {
 	switch ie.Choice {
 	case SL_PQI_r16_Choice_Sl_StandardizedPQI_r16:
 		var tmp_int_Sl_StandardizedPQI_r16 int64
-		if tmp_int_Sl_StandardizedPQI_r16, err = r.ReadInteger(&uper.Constraint{Lb: 0, Ub: 255}, false); err != nil {
+		if tmp_int_Sl_StandardizedPQI_r16, err = r.ReadInteger(&aper.Constraint{Lb: 0, Ub: 255}, false); err != nil {
 			return utils.WrapError("Decode Sl_StandardizedPQI_r16", err)
 		}
 		ie.Sl_StandardizedPQI_r16 = tmp_int_Sl_StandardizedPQI_r16

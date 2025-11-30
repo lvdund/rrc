@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -9,9 +9,9 @@ type BandCombinationListSidelinkNR_v1710 struct {
 	Value []BandCombinationParametersSidelinkNR_v1710 `lb:1,ub:maxBandComb,madatory`
 }
 
-func (ie *BandCombinationListSidelinkNR_v1710) Encode(w *uper.UperWriter) error {
+func (ie *BandCombinationListSidelinkNR_v1710) Encode(w *aper.AperWriter) error {
 	var err error
-	tmp := utils.NewSequence[*BandCombinationParametersSidelinkNR_v1710]([]*BandCombinationParametersSidelinkNR_v1710{}, uper.Constraint{Lb: 1, Ub: maxBandComb}, false)
+	tmp := utils.NewSequence[*BandCombinationParametersSidelinkNR_v1710]([]*BandCombinationParametersSidelinkNR_v1710{}, aper.Constraint{Lb: 1, Ub: maxBandComb}, false)
 	for _, i := range ie.Value {
 		tmp.Value = append(tmp.Value, &i)
 	}
@@ -21,9 +21,9 @@ func (ie *BandCombinationListSidelinkNR_v1710) Encode(w *uper.UperWriter) error 
 	return nil
 }
 
-func (ie *BandCombinationListSidelinkNR_v1710) Decode(r *uper.UperReader) error {
+func (ie *BandCombinationListSidelinkNR_v1710) Decode(r *aper.AperReader) error {
 	var err error
-	tmp := utils.NewSequence[*BandCombinationParametersSidelinkNR_v1710]([]*BandCombinationParametersSidelinkNR_v1710{}, uper.Constraint{Lb: 1, Ub: maxBandComb}, false)
+	tmp := utils.NewSequence[*BandCombinationParametersSidelinkNR_v1710]([]*BandCombinationParametersSidelinkNR_v1710{}, aper.Constraint{Lb: 1, Ub: maxBandComb}, false)
 	fn := func() *BandCombinationParametersSidelinkNR_v1710 {
 		return new(BandCombinationParametersSidelinkNR_v1710)
 	}

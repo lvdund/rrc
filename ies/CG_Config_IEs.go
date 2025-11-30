@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -18,7 +18,7 @@ type CG_Config_IEs struct {
 	NonCriticalExtension       *CG_Config_v1540_IEs        `optional`
 }
 
-func (ie *CG_Config_IEs) Encode(w *uper.UperWriter) error {
+func (ie *CG_Config_IEs) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.Scg_CellGroupConfig != nil, ie.Scg_RB_Config != nil, ie.ConfigRestrictModReq != nil, ie.Drx_InfoSCG != nil, ie.CandidateCellInfoListSN != nil, ie.MeasConfigSN != nil, ie.SelectedBandCombination != nil, ie.Fr_InfoListSCG != nil, ie.CandidateServingFreqListNR != nil, ie.NonCriticalExtension != nil}
 	for _, bit := range preambleBits {
@@ -27,12 +27,12 @@ func (ie *CG_Config_IEs) Encode(w *uper.UperWriter) error {
 		}
 	}
 	if ie.Scg_CellGroupConfig != nil {
-		if err = w.WriteOctetString(*ie.Scg_CellGroupConfig, &uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+		if err = w.WriteOctetString(*ie.Scg_CellGroupConfig, &aper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
 			return utils.WrapError("Encode Scg_CellGroupConfig", err)
 		}
 	}
 	if ie.Scg_RB_Config != nil {
-		if err = w.WriteOctetString(*ie.Scg_RB_Config, &uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+		if err = w.WriteOctetString(*ie.Scg_RB_Config, &aper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
 			return utils.WrapError("Encode Scg_RB_Config", err)
 		}
 	}
@@ -47,7 +47,7 @@ func (ie *CG_Config_IEs) Encode(w *uper.UperWriter) error {
 		}
 	}
 	if ie.CandidateCellInfoListSN != nil {
-		if err = w.WriteOctetString(*ie.CandidateCellInfoListSN, &uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+		if err = w.WriteOctetString(*ie.CandidateCellInfoListSN, &aper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
 			return utils.WrapError("Encode CandidateCellInfoListSN", err)
 		}
 	}
@@ -79,7 +79,7 @@ func (ie *CG_Config_IEs) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *CG_Config_IEs) Decode(r *uper.UperReader) error {
+func (ie *CG_Config_IEs) Decode(r *aper.AperReader) error {
 	var err error
 	var Scg_CellGroupConfigPresent bool
 	if Scg_CellGroupConfigPresent, err = r.ReadBool(); err != nil {
@@ -123,14 +123,14 @@ func (ie *CG_Config_IEs) Decode(r *uper.UperReader) error {
 	}
 	if Scg_CellGroupConfigPresent {
 		var tmp_os_Scg_CellGroupConfig []byte
-		if tmp_os_Scg_CellGroupConfig, err = r.ReadOctetString(&uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+		if tmp_os_Scg_CellGroupConfig, err = r.ReadOctetString(&aper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
 			return utils.WrapError("Decode Scg_CellGroupConfig", err)
 		}
 		ie.Scg_CellGroupConfig = &tmp_os_Scg_CellGroupConfig
 	}
 	if Scg_RB_ConfigPresent {
 		var tmp_os_Scg_RB_Config []byte
-		if tmp_os_Scg_RB_Config, err = r.ReadOctetString(&uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+		if tmp_os_Scg_RB_Config, err = r.ReadOctetString(&aper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
 			return utils.WrapError("Decode Scg_RB_Config", err)
 		}
 		ie.Scg_RB_Config = &tmp_os_Scg_RB_Config
@@ -149,7 +149,7 @@ func (ie *CG_Config_IEs) Decode(r *uper.UperReader) error {
 	}
 	if CandidateCellInfoListSNPresent {
 		var tmp_os_CandidateCellInfoListSN []byte
-		if tmp_os_CandidateCellInfoListSN, err = r.ReadOctetString(&uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+		if tmp_os_CandidateCellInfoListSN, err = r.ReadOctetString(&aper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
 			return utils.WrapError("Decode CandidateCellInfoListSN", err)
 		}
 		ie.CandidateCellInfoListSN = &tmp_os_CandidateCellInfoListSN

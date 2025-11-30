@@ -3,7 +3,7 @@ package ies
 import (
 	"bytes"
 
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -39,7 +39,7 @@ type MAC_CellGroupConfig struct {
 	Drx_LastTransmissionUL_r17              *MAC_CellGroupConfig_drx_LastTransmissionUL_r17         `optional,ext-5`
 }
 
-func (ie *MAC_CellGroupConfig) Encode(w *uper.UperWriter) error {
+func (ie *MAC_CellGroupConfig) Encode(w *aper.AperWriter) error {
 	var err error
 	hasExtensions := ie.Csi_Mask != nil || ie.DataInactivityTimer != nil || ie.UsePreBSR_r16 != nil || ie.SchedulingRequestID_LBT_SCell_r16 != nil || ie.Lch_BasedPrioritization_r16 != nil || ie.SchedulingRequestID_BFR_SCell_r16 != nil || ie.Drx_ConfigSecondaryGroup_r16 != nil || ie.EnhancedSkipUplinkTxDynamic_r16 != nil || ie.EnhancedSkipUplinkTxConfigured_r16 != nil || ie.IntraCG_Prioritization_r17 != nil || ie.Drx_ConfigSL_r17 != nil || ie.Drx_ConfigExt_v1700 != nil || ie.SchedulingRequestID_BFR_r17 != nil || ie.SchedulingRequestID_BFR2_r17 != nil || ie.SchedulingRequestConfig_v1700 != nil || ie.Tar_Config_r17 != nil || len(ie.G_RNTI_ConfigToAddModList_r17) > 0 || len(ie.G_RNTI_ConfigToReleaseList_r17) > 0 || len(ie.G_CS_RNTI_ConfigToAddModList_r17) > 0 || len(ie.G_CS_RNTI_ConfigToReleaseList_r17) > 0 || ie.AllowCSI_SRS_Tx_MulticastDRX_Active_r17 != nil || ie.SchedulingRequestID_PosMG_Request_r17 != nil || ie.Drx_LastTransmissionUL_r17 != nil
 	preambleBits := []bool{hasExtensions, ie.Drx_Config != nil, ie.SchedulingRequestConfig != nil, ie.Bsr_Config != nil, ie.Tag_Config != nil, ie.Phr_Config != nil}
@@ -92,7 +92,7 @@ func (ie *MAC_CellGroupConfig) Encode(w *uper.UperWriter) error {
 		// encode extension group 1
 		if extBitmap[0] {
 			extBuf := new(bytes.Buffer)
-			extWriter := uper.NewWriter(extBuf)
+			extWriter := aper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 1
 			optionals_ext_1 := []bool{ie.Csi_Mask != nil, ie.DataInactivityTimer != nil}
@@ -130,7 +130,7 @@ func (ie *MAC_CellGroupConfig) Encode(w *uper.UperWriter) error {
 		// encode extension group 2
 		if extBitmap[1] {
 			extBuf := new(bytes.Buffer)
-			extWriter := uper.NewWriter(extBuf)
+			extWriter := aper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 2
 			optionals_ext_2 := []bool{ie.UsePreBSR_r16 != nil, ie.SchedulingRequestID_LBT_SCell_r16 != nil, ie.Lch_BasedPrioritization_r16 != nil, ie.SchedulingRequestID_BFR_SCell_r16 != nil, ie.Drx_ConfigSecondaryGroup_r16 != nil}
@@ -186,7 +186,7 @@ func (ie *MAC_CellGroupConfig) Encode(w *uper.UperWriter) error {
 		// encode extension group 3
 		if extBitmap[2] {
 			extBuf := new(bytes.Buffer)
-			extWriter := uper.NewWriter(extBuf)
+			extWriter := aper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 3
 			optionals_ext_3 := []bool{ie.EnhancedSkipUplinkTxDynamic_r16 != nil, ie.EnhancedSkipUplinkTxConfigured_r16 != nil}
@@ -221,7 +221,7 @@ func (ie *MAC_CellGroupConfig) Encode(w *uper.UperWriter) error {
 		// encode extension group 4
 		if extBitmap[3] {
 			extBuf := new(bytes.Buffer)
-			extWriter := uper.NewWriter(extBuf)
+			extWriter := aper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 4
 			optionals_ext_4 := []bool{ie.IntraCG_Prioritization_r17 != nil, ie.Drx_ConfigSL_r17 != nil, ie.Drx_ConfigExt_v1700 != nil, ie.SchedulingRequestID_BFR_r17 != nil, ie.SchedulingRequestID_BFR2_r17 != nil, ie.SchedulingRequestConfig_v1700 != nil, ie.Tar_Config_r17 != nil, len(ie.G_RNTI_ConfigToAddModList_r17) > 0, len(ie.G_RNTI_ConfigToReleaseList_r17) > 0, len(ie.G_CS_RNTI_ConfigToAddModList_r17) > 0, len(ie.G_CS_RNTI_ConfigToReleaseList_r17) > 0, ie.AllowCSI_SRS_Tx_MulticastDRX_Active_r17 != nil}
@@ -284,7 +284,7 @@ func (ie *MAC_CellGroupConfig) Encode(w *uper.UperWriter) error {
 			}
 			// encode G_RNTI_ConfigToAddModList_r17 optional
 			if len(ie.G_RNTI_ConfigToAddModList_r17) > 0 {
-				tmp_G_RNTI_ConfigToAddModList_r17 := utils.NewSequence[*MBS_RNTI_SpecificConfig_r17]([]*MBS_RNTI_SpecificConfig_r17{}, uper.Constraint{Lb: 1, Ub: maxG_RNTI_r17}, false)
+				tmp_G_RNTI_ConfigToAddModList_r17 := utils.NewSequence[*MBS_RNTI_SpecificConfig_r17]([]*MBS_RNTI_SpecificConfig_r17{}, aper.Constraint{Lb: 1, Ub: maxG_RNTI_r17}, false)
 				for _, i := range ie.G_RNTI_ConfigToAddModList_r17 {
 					tmp_G_RNTI_ConfigToAddModList_r17.Value = append(tmp_G_RNTI_ConfigToAddModList_r17.Value, &i)
 				}
@@ -294,7 +294,7 @@ func (ie *MAC_CellGroupConfig) Encode(w *uper.UperWriter) error {
 			}
 			// encode G_RNTI_ConfigToReleaseList_r17 optional
 			if len(ie.G_RNTI_ConfigToReleaseList_r17) > 0 {
-				tmp_G_RNTI_ConfigToReleaseList_r17 := utils.NewSequence[*MBS_RNTI_SpecificConfigId_r17]([]*MBS_RNTI_SpecificConfigId_r17{}, uper.Constraint{Lb: 1, Ub: maxG_RNTI_r17}, false)
+				tmp_G_RNTI_ConfigToReleaseList_r17 := utils.NewSequence[*MBS_RNTI_SpecificConfigId_r17]([]*MBS_RNTI_SpecificConfigId_r17{}, aper.Constraint{Lb: 1, Ub: maxG_RNTI_r17}, false)
 				for _, i := range ie.G_RNTI_ConfigToReleaseList_r17 {
 					tmp_G_RNTI_ConfigToReleaseList_r17.Value = append(tmp_G_RNTI_ConfigToReleaseList_r17.Value, &i)
 				}
@@ -304,7 +304,7 @@ func (ie *MAC_CellGroupConfig) Encode(w *uper.UperWriter) error {
 			}
 			// encode G_CS_RNTI_ConfigToAddModList_r17 optional
 			if len(ie.G_CS_RNTI_ConfigToAddModList_r17) > 0 {
-				tmp_G_CS_RNTI_ConfigToAddModList_r17 := utils.NewSequence[*MBS_RNTI_SpecificConfig_r17]([]*MBS_RNTI_SpecificConfig_r17{}, uper.Constraint{Lb: 1, Ub: maxG_CS_RNTI_r17}, false)
+				tmp_G_CS_RNTI_ConfigToAddModList_r17 := utils.NewSequence[*MBS_RNTI_SpecificConfig_r17]([]*MBS_RNTI_SpecificConfig_r17{}, aper.Constraint{Lb: 1, Ub: maxG_CS_RNTI_r17}, false)
 				for _, i := range ie.G_CS_RNTI_ConfigToAddModList_r17 {
 					tmp_G_CS_RNTI_ConfigToAddModList_r17.Value = append(tmp_G_CS_RNTI_ConfigToAddModList_r17.Value, &i)
 				}
@@ -314,7 +314,7 @@ func (ie *MAC_CellGroupConfig) Encode(w *uper.UperWriter) error {
 			}
 			// encode G_CS_RNTI_ConfigToReleaseList_r17 optional
 			if len(ie.G_CS_RNTI_ConfigToReleaseList_r17) > 0 {
-				tmp_G_CS_RNTI_ConfigToReleaseList_r17 := utils.NewSequence[*MBS_RNTI_SpecificConfigId_r17]([]*MBS_RNTI_SpecificConfigId_r17{}, uper.Constraint{Lb: 1, Ub: maxG_CS_RNTI_r17}, false)
+				tmp_G_CS_RNTI_ConfigToReleaseList_r17 := utils.NewSequence[*MBS_RNTI_SpecificConfigId_r17]([]*MBS_RNTI_SpecificConfigId_r17{}, aper.Constraint{Lb: 1, Ub: maxG_CS_RNTI_r17}, false)
 				for _, i := range ie.G_CS_RNTI_ConfigToReleaseList_r17 {
 					tmp_G_CS_RNTI_ConfigToReleaseList_r17.Value = append(tmp_G_CS_RNTI_ConfigToReleaseList_r17.Value, &i)
 				}
@@ -341,7 +341,7 @@ func (ie *MAC_CellGroupConfig) Encode(w *uper.UperWriter) error {
 		// encode extension group 5
 		if extBitmap[4] {
 			extBuf := new(bytes.Buffer)
-			extWriter := uper.NewWriter(extBuf)
+			extWriter := aper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 5
 			optionals_ext_5 := []bool{ie.SchedulingRequestID_PosMG_Request_r17 != nil, ie.Drx_LastTransmissionUL_r17 != nil}
@@ -376,7 +376,7 @@ func (ie *MAC_CellGroupConfig) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *MAC_CellGroupConfig) Decode(r *uper.UperReader) error {
+func (ie *MAC_CellGroupConfig) Decode(r *aper.AperReader) error {
 	var err error
 	var extensionBit bool
 	if extensionBit, err = r.ReadBool(); err != nil {
@@ -454,7 +454,7 @@ func (ie *MAC_CellGroupConfig) Decode(r *uper.UperReader) error {
 				return err
 			}
 
-			extReader := uper.NewReader(bytes.NewReader(extBytes))
+			extReader := aper.NewReader(bytes.NewReader(extBytes))
 
 			Csi_MaskPresent, err := extReader.ReadBool()
 			if err != nil {
@@ -488,7 +488,7 @@ func (ie *MAC_CellGroupConfig) Decode(r *uper.UperReader) error {
 				return err
 			}
 
-			extReader := uper.NewReader(bytes.NewReader(extBytes))
+			extReader := aper.NewReader(bytes.NewReader(extBytes))
 
 			UsePreBSR_r16Present, err := extReader.ReadBool()
 			if err != nil {
@@ -554,7 +554,7 @@ func (ie *MAC_CellGroupConfig) Decode(r *uper.UperReader) error {
 				return err
 			}
 
-			extReader := uper.NewReader(bytes.NewReader(extBytes))
+			extReader := aper.NewReader(bytes.NewReader(extBytes))
 
 			EnhancedSkipUplinkTxDynamic_r16Present, err := extReader.ReadBool()
 			if err != nil {
@@ -586,7 +586,7 @@ func (ie *MAC_CellGroupConfig) Decode(r *uper.UperReader) error {
 				return err
 			}
 
-			extReader := uper.NewReader(bytes.NewReader(extBytes))
+			extReader := aper.NewReader(bytes.NewReader(extBytes))
 
 			IntraCG_Prioritization_r17Present, err := extReader.ReadBool()
 			if err != nil {
@@ -690,7 +690,7 @@ func (ie *MAC_CellGroupConfig) Decode(r *uper.UperReader) error {
 			}
 			// decode G_RNTI_ConfigToAddModList_r17 optional
 			if G_RNTI_ConfigToAddModList_r17Present {
-				tmp_G_RNTI_ConfigToAddModList_r17 := utils.NewSequence[*MBS_RNTI_SpecificConfig_r17]([]*MBS_RNTI_SpecificConfig_r17{}, uper.Constraint{Lb: 1, Ub: maxG_RNTI_r17}, false)
+				tmp_G_RNTI_ConfigToAddModList_r17 := utils.NewSequence[*MBS_RNTI_SpecificConfig_r17]([]*MBS_RNTI_SpecificConfig_r17{}, aper.Constraint{Lb: 1, Ub: maxG_RNTI_r17}, false)
 				fn_G_RNTI_ConfigToAddModList_r17 := func() *MBS_RNTI_SpecificConfig_r17 {
 					return new(MBS_RNTI_SpecificConfig_r17)
 				}
@@ -704,7 +704,7 @@ func (ie *MAC_CellGroupConfig) Decode(r *uper.UperReader) error {
 			}
 			// decode G_RNTI_ConfigToReleaseList_r17 optional
 			if G_RNTI_ConfigToReleaseList_r17Present {
-				tmp_G_RNTI_ConfigToReleaseList_r17 := utils.NewSequence[*MBS_RNTI_SpecificConfigId_r17]([]*MBS_RNTI_SpecificConfigId_r17{}, uper.Constraint{Lb: 1, Ub: maxG_RNTI_r17}, false)
+				tmp_G_RNTI_ConfigToReleaseList_r17 := utils.NewSequence[*MBS_RNTI_SpecificConfigId_r17]([]*MBS_RNTI_SpecificConfigId_r17{}, aper.Constraint{Lb: 1, Ub: maxG_RNTI_r17}, false)
 				fn_G_RNTI_ConfigToReleaseList_r17 := func() *MBS_RNTI_SpecificConfigId_r17 {
 					return new(MBS_RNTI_SpecificConfigId_r17)
 				}
@@ -718,7 +718,7 @@ func (ie *MAC_CellGroupConfig) Decode(r *uper.UperReader) error {
 			}
 			// decode G_CS_RNTI_ConfigToAddModList_r17 optional
 			if G_CS_RNTI_ConfigToAddModList_r17Present {
-				tmp_G_CS_RNTI_ConfigToAddModList_r17 := utils.NewSequence[*MBS_RNTI_SpecificConfig_r17]([]*MBS_RNTI_SpecificConfig_r17{}, uper.Constraint{Lb: 1, Ub: maxG_CS_RNTI_r17}, false)
+				tmp_G_CS_RNTI_ConfigToAddModList_r17 := utils.NewSequence[*MBS_RNTI_SpecificConfig_r17]([]*MBS_RNTI_SpecificConfig_r17{}, aper.Constraint{Lb: 1, Ub: maxG_CS_RNTI_r17}, false)
 				fn_G_CS_RNTI_ConfigToAddModList_r17 := func() *MBS_RNTI_SpecificConfig_r17 {
 					return new(MBS_RNTI_SpecificConfig_r17)
 				}
@@ -732,7 +732,7 @@ func (ie *MAC_CellGroupConfig) Decode(r *uper.UperReader) error {
 			}
 			// decode G_CS_RNTI_ConfigToReleaseList_r17 optional
 			if G_CS_RNTI_ConfigToReleaseList_r17Present {
-				tmp_G_CS_RNTI_ConfigToReleaseList_r17 := utils.NewSequence[*MBS_RNTI_SpecificConfigId_r17]([]*MBS_RNTI_SpecificConfigId_r17{}, uper.Constraint{Lb: 1, Ub: maxG_CS_RNTI_r17}, false)
+				tmp_G_CS_RNTI_ConfigToReleaseList_r17 := utils.NewSequence[*MBS_RNTI_SpecificConfigId_r17]([]*MBS_RNTI_SpecificConfigId_r17{}, aper.Constraint{Lb: 1, Ub: maxG_CS_RNTI_r17}, false)
 				fn_G_CS_RNTI_ConfigToReleaseList_r17 := func() *MBS_RNTI_SpecificConfigId_r17 {
 					return new(MBS_RNTI_SpecificConfigId_r17)
 				}
@@ -760,7 +760,7 @@ func (ie *MAC_CellGroupConfig) Decode(r *uper.UperReader) error {
 				return err
 			}
 
-			extReader := uper.NewReader(bytes.NewReader(extBytes))
+			extReader := aper.NewReader(bytes.NewReader(extBytes))
 
 			SchedulingRequestID_PosMG_Request_r17Present, err := extReader.ReadBool()
 			if err != nil {

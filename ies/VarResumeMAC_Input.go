@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -11,7 +11,7 @@ type VarResumeMAC_Input struct {
 	Source_c_RNTI      RNTI_Value   `madatory`
 }
 
-func (ie *VarResumeMAC_Input) Encode(w *uper.UperWriter) error {
+func (ie *VarResumeMAC_Input) Encode(w *aper.AperWriter) error {
 	var err error
 	if err = ie.SourcePhysCellId.Encode(w); err != nil {
 		return utils.WrapError("Encode SourcePhysCellId", err)
@@ -25,7 +25,7 @@ func (ie *VarResumeMAC_Input) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *VarResumeMAC_Input) Decode(r *uper.UperReader) error {
+func (ie *VarResumeMAC_Input) Decode(r *aper.AperReader) error {
 	var err error
 	if err = ie.SourcePhysCellId.Decode(r); err != nil {
 		return utils.WrapError("Decode SourcePhysCellId", err)

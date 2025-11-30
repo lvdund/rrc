@@ -3,7 +3,7 @@ package ies
 import (
 	"bytes"
 
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -18,7 +18,7 @@ type ConfigRestrictModReqSCG struct {
 	RequestedToffset_r16               *T_Offset_r16          `optional,ext-2`
 }
 
-func (ie *ConfigRestrictModReqSCG) Encode(w *uper.UperWriter) error {
+func (ie *ConfigRestrictModReqSCG) Encode(w *aper.AperWriter) error {
 	var err error
 	hasExtensions := ie.RequestedPDCCH_BlindDetectionSCG != nil || ie.RequestedP_MaxEUTRA != nil || ie.RequestedP_MaxFR2_r16 != nil || ie.RequestedMaxInterFreqMeasIdSCG_r16 != nil || ie.RequestedMaxIntraFreqMeasIdSCG_r16 != nil || ie.RequestedToffset_r16 != nil
 	preambleBits := []bool{hasExtensions, ie.RequestedBC_MRDC != nil, ie.RequestedP_MaxFR1 != nil}
@@ -47,7 +47,7 @@ func (ie *ConfigRestrictModReqSCG) Encode(w *uper.UperWriter) error {
 		// encode extension group 1
 		if extBitmap[0] {
 			extBuf := new(bytes.Buffer)
-			extWriter := uper.NewWriter(extBuf)
+			extWriter := aper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 1
 			optionals_ext_1 := []bool{ie.RequestedPDCCH_BlindDetectionSCG != nil, ie.RequestedP_MaxEUTRA != nil}
@@ -59,7 +59,7 @@ func (ie *ConfigRestrictModReqSCG) Encode(w *uper.UperWriter) error {
 
 			// encode RequestedPDCCH_BlindDetectionSCG optional
 			if ie.RequestedPDCCH_BlindDetectionSCG != nil {
-				if err = extWriter.WriteInteger(*ie.RequestedPDCCH_BlindDetectionSCG, &uper.Constraint{Lb: 1, Ub: 15}, false); err != nil {
+				if err = extWriter.WriteInteger(*ie.RequestedPDCCH_BlindDetectionSCG, &aper.Constraint{Lb: 1, Ub: 15}, false); err != nil {
 					return utils.WrapError("Encode RequestedPDCCH_BlindDetectionSCG", err)
 				}
 			}
@@ -82,7 +82,7 @@ func (ie *ConfigRestrictModReqSCG) Encode(w *uper.UperWriter) error {
 		// encode extension group 2
 		if extBitmap[1] {
 			extBuf := new(bytes.Buffer)
-			extWriter := uper.NewWriter(extBuf)
+			extWriter := aper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 2
 			optionals_ext_2 := []bool{ie.RequestedP_MaxFR2_r16 != nil, ie.RequestedMaxInterFreqMeasIdSCG_r16 != nil, ie.RequestedMaxIntraFreqMeasIdSCG_r16 != nil, ie.RequestedToffset_r16 != nil}
@@ -100,13 +100,13 @@ func (ie *ConfigRestrictModReqSCG) Encode(w *uper.UperWriter) error {
 			}
 			// encode RequestedMaxInterFreqMeasIdSCG_r16 optional
 			if ie.RequestedMaxInterFreqMeasIdSCG_r16 != nil {
-				if err = extWriter.WriteInteger(*ie.RequestedMaxInterFreqMeasIdSCG_r16, &uper.Constraint{Lb: 1, Ub: maxMeasIdentitiesMN}, false); err != nil {
+				if err = extWriter.WriteInteger(*ie.RequestedMaxInterFreqMeasIdSCG_r16, &aper.Constraint{Lb: 1, Ub: maxMeasIdentitiesMN}, false); err != nil {
 					return utils.WrapError("Encode RequestedMaxInterFreqMeasIdSCG_r16", err)
 				}
 			}
 			// encode RequestedMaxIntraFreqMeasIdSCG_r16 optional
 			if ie.RequestedMaxIntraFreqMeasIdSCG_r16 != nil {
-				if err = extWriter.WriteInteger(*ie.RequestedMaxIntraFreqMeasIdSCG_r16, &uper.Constraint{Lb: 1, Ub: maxMeasIdentitiesMN}, false); err != nil {
+				if err = extWriter.WriteInteger(*ie.RequestedMaxIntraFreqMeasIdSCG_r16, &aper.Constraint{Lb: 1, Ub: maxMeasIdentitiesMN}, false); err != nil {
 					return utils.WrapError("Encode RequestedMaxIntraFreqMeasIdSCG_r16", err)
 				}
 			}
@@ -129,7 +129,7 @@ func (ie *ConfigRestrictModReqSCG) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *ConfigRestrictModReqSCG) Decode(r *uper.UperReader) error {
+func (ie *ConfigRestrictModReqSCG) Decode(r *aper.AperReader) error {
 	var err error
 	var extensionBit bool
 	if extensionBit, err = r.ReadBool(); err != nil {
@@ -170,7 +170,7 @@ func (ie *ConfigRestrictModReqSCG) Decode(r *uper.UperReader) error {
 				return err
 			}
 
-			extReader := uper.NewReader(bytes.NewReader(extBytes))
+			extReader := aper.NewReader(bytes.NewReader(extBytes))
 
 			RequestedPDCCH_BlindDetectionSCGPresent, err := extReader.ReadBool()
 			if err != nil {
@@ -183,7 +183,7 @@ func (ie *ConfigRestrictModReqSCG) Decode(r *uper.UperReader) error {
 			// decode RequestedPDCCH_BlindDetectionSCG optional
 			if RequestedPDCCH_BlindDetectionSCGPresent {
 				var tmp_int_RequestedPDCCH_BlindDetectionSCG int64
-				if tmp_int_RequestedPDCCH_BlindDetectionSCG, err = extReader.ReadInteger(&uper.Constraint{Lb: 1, Ub: 15}, false); err != nil {
+				if tmp_int_RequestedPDCCH_BlindDetectionSCG, err = extReader.ReadInteger(&aper.Constraint{Lb: 1, Ub: 15}, false); err != nil {
 					return utils.WrapError("Decode RequestedPDCCH_BlindDetectionSCG", err)
 				}
 				ie.RequestedPDCCH_BlindDetectionSCG = &tmp_int_RequestedPDCCH_BlindDetectionSCG
@@ -203,7 +203,7 @@ func (ie *ConfigRestrictModReqSCG) Decode(r *uper.UperReader) error {
 				return err
 			}
 
-			extReader := uper.NewReader(bytes.NewReader(extBytes))
+			extReader := aper.NewReader(bytes.NewReader(extBytes))
 
 			RequestedP_MaxFR2_r16Present, err := extReader.ReadBool()
 			if err != nil {
@@ -231,7 +231,7 @@ func (ie *ConfigRestrictModReqSCG) Decode(r *uper.UperReader) error {
 			// decode RequestedMaxInterFreqMeasIdSCG_r16 optional
 			if RequestedMaxInterFreqMeasIdSCG_r16Present {
 				var tmp_int_RequestedMaxInterFreqMeasIdSCG_r16 int64
-				if tmp_int_RequestedMaxInterFreqMeasIdSCG_r16, err = extReader.ReadInteger(&uper.Constraint{Lb: 1, Ub: maxMeasIdentitiesMN}, false); err != nil {
+				if tmp_int_RequestedMaxInterFreqMeasIdSCG_r16, err = extReader.ReadInteger(&aper.Constraint{Lb: 1, Ub: maxMeasIdentitiesMN}, false); err != nil {
 					return utils.WrapError("Decode RequestedMaxInterFreqMeasIdSCG_r16", err)
 				}
 				ie.RequestedMaxInterFreqMeasIdSCG_r16 = &tmp_int_RequestedMaxInterFreqMeasIdSCG_r16
@@ -239,7 +239,7 @@ func (ie *ConfigRestrictModReqSCG) Decode(r *uper.UperReader) error {
 			// decode RequestedMaxIntraFreqMeasIdSCG_r16 optional
 			if RequestedMaxIntraFreqMeasIdSCG_r16Present {
 				var tmp_int_RequestedMaxIntraFreqMeasIdSCG_r16 int64
-				if tmp_int_RequestedMaxIntraFreqMeasIdSCG_r16, err = extReader.ReadInteger(&uper.Constraint{Lb: 1, Ub: maxMeasIdentitiesMN}, false); err != nil {
+				if tmp_int_RequestedMaxIntraFreqMeasIdSCG_r16, err = extReader.ReadInteger(&aper.Constraint{Lb: 1, Ub: maxMeasIdentitiesMN}, false); err != nil {
 					return utils.WrapError("Decode RequestedMaxIntraFreqMeasIdSCG_r16", err)
 				}
 				ie.RequestedMaxIntraFreqMeasIdSCG_r16 = &tmp_int_RequestedMaxIntraFreqMeasIdSCG_r16

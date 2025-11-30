@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -10,7 +10,7 @@ type TDD_UL_DL_ConfigDedicated struct {
 	SlotSpecificConfigurationsToReleaseList []TDD_UL_DL_SlotIndex  `lb:1,ub:maxNrofSlots,optional`
 }
 
-func (ie *TDD_UL_DL_ConfigDedicated) Encode(w *uper.UperWriter) error {
+func (ie *TDD_UL_DL_ConfigDedicated) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{len(ie.SlotSpecificConfigurationsToAddModList) > 0, len(ie.SlotSpecificConfigurationsToReleaseList) > 0}
 	for _, bit := range preambleBits {
@@ -19,7 +19,7 @@ func (ie *TDD_UL_DL_ConfigDedicated) Encode(w *uper.UperWriter) error {
 		}
 	}
 	if len(ie.SlotSpecificConfigurationsToAddModList) > 0 {
-		tmp_SlotSpecificConfigurationsToAddModList := utils.NewSequence[*TDD_UL_DL_SlotConfig]([]*TDD_UL_DL_SlotConfig{}, uper.Constraint{Lb: 1, Ub: maxNrofSlots}, false)
+		tmp_SlotSpecificConfigurationsToAddModList := utils.NewSequence[*TDD_UL_DL_SlotConfig]([]*TDD_UL_DL_SlotConfig{}, aper.Constraint{Lb: 1, Ub: maxNrofSlots}, false)
 		for _, i := range ie.SlotSpecificConfigurationsToAddModList {
 			tmp_SlotSpecificConfigurationsToAddModList.Value = append(tmp_SlotSpecificConfigurationsToAddModList.Value, &i)
 		}
@@ -28,7 +28,7 @@ func (ie *TDD_UL_DL_ConfigDedicated) Encode(w *uper.UperWriter) error {
 		}
 	}
 	if len(ie.SlotSpecificConfigurationsToReleaseList) > 0 {
-		tmp_SlotSpecificConfigurationsToReleaseList := utils.NewSequence[*TDD_UL_DL_SlotIndex]([]*TDD_UL_DL_SlotIndex{}, uper.Constraint{Lb: 1, Ub: maxNrofSlots}, false)
+		tmp_SlotSpecificConfigurationsToReleaseList := utils.NewSequence[*TDD_UL_DL_SlotIndex]([]*TDD_UL_DL_SlotIndex{}, aper.Constraint{Lb: 1, Ub: maxNrofSlots}, false)
 		for _, i := range ie.SlotSpecificConfigurationsToReleaseList {
 			tmp_SlotSpecificConfigurationsToReleaseList.Value = append(tmp_SlotSpecificConfigurationsToReleaseList.Value, &i)
 		}
@@ -39,7 +39,7 @@ func (ie *TDD_UL_DL_ConfigDedicated) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *TDD_UL_DL_ConfigDedicated) Decode(r *uper.UperReader) error {
+func (ie *TDD_UL_DL_ConfigDedicated) Decode(r *aper.AperReader) error {
 	var err error
 	var SlotSpecificConfigurationsToAddModListPresent bool
 	if SlotSpecificConfigurationsToAddModListPresent, err = r.ReadBool(); err != nil {
@@ -50,7 +50,7 @@ func (ie *TDD_UL_DL_ConfigDedicated) Decode(r *uper.UperReader) error {
 		return err
 	}
 	if SlotSpecificConfigurationsToAddModListPresent {
-		tmp_SlotSpecificConfigurationsToAddModList := utils.NewSequence[*TDD_UL_DL_SlotConfig]([]*TDD_UL_DL_SlotConfig{}, uper.Constraint{Lb: 1, Ub: maxNrofSlots}, false)
+		tmp_SlotSpecificConfigurationsToAddModList := utils.NewSequence[*TDD_UL_DL_SlotConfig]([]*TDD_UL_DL_SlotConfig{}, aper.Constraint{Lb: 1, Ub: maxNrofSlots}, false)
 		fn_SlotSpecificConfigurationsToAddModList := func() *TDD_UL_DL_SlotConfig {
 			return new(TDD_UL_DL_SlotConfig)
 		}
@@ -63,7 +63,7 @@ func (ie *TDD_UL_DL_ConfigDedicated) Decode(r *uper.UperReader) error {
 		}
 	}
 	if SlotSpecificConfigurationsToReleaseListPresent {
-		tmp_SlotSpecificConfigurationsToReleaseList := utils.NewSequence[*TDD_UL_DL_SlotIndex]([]*TDD_UL_DL_SlotIndex{}, uper.Constraint{Lb: 1, Ub: maxNrofSlots}, false)
+		tmp_SlotSpecificConfigurationsToReleaseList := utils.NewSequence[*TDD_UL_DL_SlotIndex]([]*TDD_UL_DL_SlotIndex{}, aper.Constraint{Lb: 1, Ub: maxNrofSlots}, false)
 		fn_SlotSpecificConfigurationsToReleaseList := func() *TDD_UL_DL_SlotIndex {
 			return new(TDD_UL_DL_SlotIndex)
 		}

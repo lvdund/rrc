@@ -3,7 +3,7 @@ package ies
 import (
 	"bytes"
 
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -28,7 +28,7 @@ type PDCP_Parameters struct {
 	Udc_r17                            *PDCP_Parameters_udc_r17                            `lb:0,ub:15,optional,ext-2`
 }
 
-func (ie *PDCP_Parameters) Encode(w *uper.UperWriter) error {
+func (ie *PDCP_Parameters) Encode(w *aper.AperWriter) error {
 	var err error
 	hasExtensions := ie.Drb_IAB_r16 != nil || ie.Non_DRB_IAB_r16 != nil || ie.ExtendedDiscardTimer_r16 != nil || ie.ContinueEHC_Context_r16 != nil || ie.Ehc_r16 != nil || ie.MaxNumberEHC_Contexts_r16 != nil || ie.JointEHC_ROHC_Config_r16 != nil || ie.Pdcp_DuplicationMoreThanTwoRLC_r16 != nil || ie.LongSN_RedCap_r17 != nil || ie.Udc_r17 != nil
 	preambleBits := []bool{hasExtensions, ie.UplinkOnlyROHC_Profiles != nil, ie.ContinueROHC_Context != nil, ie.OutOfOrderDelivery != nil, ie.ShortSN != nil, ie.Pdcp_DuplicationSRB != nil, ie.Pdcp_DuplicationMCG_OrSCG_DRB != nil}
@@ -83,7 +83,7 @@ func (ie *PDCP_Parameters) Encode(w *uper.UperWriter) error {
 		// encode extension group 1
 		if extBitmap[0] {
 			extBuf := new(bytes.Buffer)
-			extWriter := uper.NewWriter(extBuf)
+			extWriter := aper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 1
 			optionals_ext_1 := []bool{ie.Drb_IAB_r16 != nil, ie.Non_DRB_IAB_r16 != nil, ie.ExtendedDiscardTimer_r16 != nil, ie.ContinueEHC_Context_r16 != nil, ie.Ehc_r16 != nil, ie.MaxNumberEHC_Contexts_r16 != nil, ie.JointEHC_ROHC_Config_r16 != nil, ie.Pdcp_DuplicationMoreThanTwoRLC_r16 != nil}
@@ -154,7 +154,7 @@ func (ie *PDCP_Parameters) Encode(w *uper.UperWriter) error {
 		// encode extension group 2
 		if extBitmap[1] {
 			extBuf := new(bytes.Buffer)
-			extWriter := uper.NewWriter(extBuf)
+			extWriter := aper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 2
 			optionals_ext_2 := []bool{ie.LongSN_RedCap_r17 != nil, ie.Udc_r17 != nil}
@@ -189,7 +189,7 @@ func (ie *PDCP_Parameters) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *PDCP_Parameters) Decode(r *uper.UperReader) error {
+func (ie *PDCP_Parameters) Decode(r *aper.AperReader) error {
 	var err error
 	var extensionBit bool
 	if extensionBit, err = r.ReadBool(); err != nil {
@@ -276,7 +276,7 @@ func (ie *PDCP_Parameters) Decode(r *uper.UperReader) error {
 				return err
 			}
 
-			extReader := uper.NewReader(bytes.NewReader(extBytes))
+			extReader := aper.NewReader(bytes.NewReader(extBytes))
 
 			Drb_IAB_r16Present, err := extReader.ReadBool()
 			if err != nil {
@@ -374,7 +374,7 @@ func (ie *PDCP_Parameters) Decode(r *uper.UperReader) error {
 				return err
 			}
 
-			extReader := uper.NewReader(bytes.NewReader(extBytes))
+			extReader := aper.NewReader(bytes.NewReader(extBytes))
 
 			LongSN_RedCap_r17Present, err := extReader.ReadBool()
 			if err != nil {

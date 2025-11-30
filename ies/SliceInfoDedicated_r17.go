@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -11,7 +11,7 @@ type SliceInfoDedicated_r17 struct {
 	Nsag_CellReselectionSubPriority_r17 *CellReselectionSubPriority `optional`
 }
 
-func (ie *SliceInfoDedicated_r17) Encode(w *uper.UperWriter) error {
+func (ie *SliceInfoDedicated_r17) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.Nsag_CellReselectionPriority_r17 != nil, ie.Nsag_CellReselectionSubPriority_r17 != nil}
 	for _, bit := range preambleBits {
@@ -35,7 +35,7 @@ func (ie *SliceInfoDedicated_r17) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *SliceInfoDedicated_r17) Decode(r *uper.UperReader) error {
+func (ie *SliceInfoDedicated_r17) Decode(r *aper.AperReader) error {
 	var err error
 	var Nsag_CellReselectionPriority_r17Present bool
 	if Nsag_CellReselectionPriority_r17Present, err = r.ReadBool(); err != nil {

@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -11,7 +11,7 @@ type TDD_UL_DL_ConfigCommon struct {
 	Pattern2                   *TDD_UL_DL_Pattern `optional`
 }
 
-func (ie *TDD_UL_DL_ConfigCommon) Encode(w *uper.UperWriter) error {
+func (ie *TDD_UL_DL_ConfigCommon) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.Pattern2 != nil}
 	for _, bit := range preambleBits {
@@ -33,7 +33,7 @@ func (ie *TDD_UL_DL_ConfigCommon) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *TDD_UL_DL_ConfigCommon) Decode(r *uper.UperReader) error {
+func (ie *TDD_UL_DL_ConfigCommon) Decode(r *aper.AperReader) error {
 	var err error
 	var Pattern2Present bool
 	if Pattern2Present, err = r.ReadBool(); err != nil {

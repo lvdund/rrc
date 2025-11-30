@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -10,9 +10,9 @@ type ExcessDelay_DRB_IdentityInfo_r17 struct {
 	DelayThreshold   ExcessDelay_DRB_IdentityInfo_r17_delayThreshold `madatory`
 }
 
-func (ie *ExcessDelay_DRB_IdentityInfo_r17) Encode(w *uper.UperWriter) error {
+func (ie *ExcessDelay_DRB_IdentityInfo_r17) Encode(w *aper.AperWriter) error {
 	var err error
-	tmp_Drb_IdentityList := utils.NewSequence[*DRB_Identity]([]*DRB_Identity{}, uper.Constraint{Lb: 1, Ub: maxDRB}, false)
+	tmp_Drb_IdentityList := utils.NewSequence[*DRB_Identity]([]*DRB_Identity{}, aper.Constraint{Lb: 1, Ub: maxDRB}, false)
 	for _, i := range ie.Drb_IdentityList {
 		tmp_Drb_IdentityList.Value = append(tmp_Drb_IdentityList.Value, &i)
 	}
@@ -25,9 +25,9 @@ func (ie *ExcessDelay_DRB_IdentityInfo_r17) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *ExcessDelay_DRB_IdentityInfo_r17) Decode(r *uper.UperReader) error {
+func (ie *ExcessDelay_DRB_IdentityInfo_r17) Decode(r *aper.AperReader) error {
 	var err error
-	tmp_Drb_IdentityList := utils.NewSequence[*DRB_Identity]([]*DRB_Identity{}, uper.Constraint{Lb: 1, Ub: maxDRB}, false)
+	tmp_Drb_IdentityList := utils.NewSequence[*DRB_Identity]([]*DRB_Identity{}, aper.Constraint{Lb: 1, Ub: maxDRB}, false)
 	fn_Drb_IdentityList := func() *DRB_Identity {
 		return new(DRB_Identity)
 	}

@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -10,7 +10,7 @@ type SharedSpectrumChAccessParamsPerBand_v1630 struct {
 	Dl_ReceptionLBT_subsetRB_r16       *SharedSpectrumChAccessParamsPerBand_v1630_dl_ReceptionLBT_subsetRB_r16       `optional`
 }
 
-func (ie *SharedSpectrumChAccessParamsPerBand_v1630) Encode(w *uper.UperWriter) error {
+func (ie *SharedSpectrumChAccessParamsPerBand_v1630) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.Dl_ReceptionIntraCellGuardband_r16 != nil, ie.Dl_ReceptionLBT_subsetRB_r16 != nil}
 	for _, bit := range preambleBits {
@@ -31,7 +31,7 @@ func (ie *SharedSpectrumChAccessParamsPerBand_v1630) Encode(w *uper.UperWriter) 
 	return nil
 }
 
-func (ie *SharedSpectrumChAccessParamsPerBand_v1630) Decode(r *uper.UperReader) error {
+func (ie *SharedSpectrumChAccessParamsPerBand_v1630) Decode(r *aper.AperReader) error {
 	var err error
 	var Dl_ReceptionIntraCellGuardband_r16Present bool
 	if Dl_ReceptionIntraCellGuardband_r16Present, err = r.ReadBool(); err != nil {

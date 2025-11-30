@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -12,7 +12,7 @@ type SDT_ConfigCommonSIB_r17 struct {
 	T319a_r17                           SDT_ConfigCommonSIB_r17_t319a_r17                            `madatory`
 }
 
-func (ie *SDT_ConfigCommonSIB_r17) Encode(w *uper.UperWriter) error {
+func (ie *SDT_ConfigCommonSIB_r17) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.Sdt_RSRP_Threshold_r17 != nil, ie.Sdt_LogicalChannelSR_DelayTimer_r17 != nil}
 	for _, bit := range preambleBits {
@@ -39,7 +39,7 @@ func (ie *SDT_ConfigCommonSIB_r17) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *SDT_ConfigCommonSIB_r17) Decode(r *uper.UperReader) error {
+func (ie *SDT_ConfigCommonSIB_r17) Decode(r *aper.AperReader) error {
 	var err error
 	var Sdt_RSRP_Threshold_r17Present bool
 	if Sdt_RSRP_Threshold_r17Present, err = r.ReadBool(); err != nil {

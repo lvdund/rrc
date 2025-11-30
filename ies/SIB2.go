@@ -3,7 +3,7 @@ package ies
 import (
 	"bytes"
 
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -16,7 +16,7 @@ type SIB2 struct {
 	RelaxedMeasurement_r17         *SIB2_relaxedMeasurement_r17         `optional,ext-6`
 }
 
-func (ie *SIB2) Encode(w *uper.UperWriter) error {
+func (ie *SIB2) Encode(w *aper.AperWriter) error {
 	var err error
 	hasExtensions := ie.RelaxedMeasurement_r16 != nil || ie.CellEquivalentSize_r17 != nil || ie.RelaxedMeasurement_r17 != nil
 	preambleBits := []bool{hasExtensions, ie.CellReselectionInfoCommon != nil}
@@ -40,7 +40,7 @@ func (ie *SIB2) Encode(w *uper.UperWriter) error {
 		// encode extension group 5
 		if extBitmap[4] {
 			extBuf := new(bytes.Buffer)
-			extWriter := uper.NewWriter(extBuf)
+			extWriter := aper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 5
 			optionals_ext_5 := []bool{ie.RelaxedMeasurement_r16 != nil}
@@ -69,7 +69,7 @@ func (ie *SIB2) Encode(w *uper.UperWriter) error {
 		// encode extension group 6
 		if extBitmap[5] {
 			extBuf := new(bytes.Buffer)
-			extWriter := uper.NewWriter(extBuf)
+			extWriter := aper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 6
 			optionals_ext_6 := []bool{ie.CellEquivalentSize_r17 != nil, ie.RelaxedMeasurement_r17 != nil}
@@ -81,7 +81,7 @@ func (ie *SIB2) Encode(w *uper.UperWriter) error {
 
 			// encode CellEquivalentSize_r17 optional
 			if ie.CellEquivalentSize_r17 != nil {
-				if err = extWriter.WriteInteger(*ie.CellEquivalentSize_r17, &uper.Constraint{Lb: 2, Ub: 16}, false); err != nil {
+				if err = extWriter.WriteInteger(*ie.CellEquivalentSize_r17, &aper.Constraint{Lb: 2, Ub: 16}, false); err != nil {
 					return utils.WrapError("Encode CellEquivalentSize_r17", err)
 				}
 			}
@@ -104,7 +104,7 @@ func (ie *SIB2) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *SIB2) Decode(r *uper.UperReader) error {
+func (ie *SIB2) Decode(r *aper.AperReader) error {
 	var err error
 	var extensionBit bool
 	if extensionBit, err = r.ReadBool(); err != nil {
@@ -135,7 +135,7 @@ func (ie *SIB2) Decode(r *uper.UperReader) error {
 				return err
 			}
 
-			extReader := uper.NewReader(bytes.NewReader(extBytes))
+			extReader := aper.NewReader(bytes.NewReader(extBytes))
 
 			RelaxedMeasurement_r16Present, err := extReader.ReadBool()
 			if err != nil {
@@ -156,7 +156,7 @@ func (ie *SIB2) Decode(r *uper.UperReader) error {
 				return err
 			}
 
-			extReader := uper.NewReader(bytes.NewReader(extBytes))
+			extReader := aper.NewReader(bytes.NewReader(extBytes))
 
 			CellEquivalentSize_r17Present, err := extReader.ReadBool()
 			if err != nil {
@@ -169,7 +169,7 @@ func (ie *SIB2) Decode(r *uper.UperReader) error {
 			// decode CellEquivalentSize_r17 optional
 			if CellEquivalentSize_r17Present {
 				var tmp_int_CellEquivalentSize_r17 int64
-				if tmp_int_CellEquivalentSize_r17, err = extReader.ReadInteger(&uper.Constraint{Lb: 2, Ub: 16}, false); err != nil {
+				if tmp_int_CellEquivalentSize_r17, err = extReader.ReadInteger(&aper.Constraint{Lb: 2, Ub: 16}, false); err != nil {
 					return utils.WrapError("Decode CellEquivalentSize_r17", err)
 				}
 				ie.CellEquivalentSize_r17 = &tmp_int_CellEquivalentSize_r17

@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -9,9 +9,9 @@ type CandidateBeamRSListExt_r16 struct {
 	Value []PRACH_ResourceDedicatedBFR `lb:1,ub:maxNrofCandidateBeamsExt_r16,madatory`
 }
 
-func (ie *CandidateBeamRSListExt_r16) Encode(w *uper.UperWriter) error {
+func (ie *CandidateBeamRSListExt_r16) Encode(w *aper.AperWriter) error {
 	var err error
-	tmp := utils.NewSequence[*PRACH_ResourceDedicatedBFR]([]*PRACH_ResourceDedicatedBFR{}, uper.Constraint{Lb: 1, Ub: maxNrofCandidateBeamsExt_r16}, false)
+	tmp := utils.NewSequence[*PRACH_ResourceDedicatedBFR]([]*PRACH_ResourceDedicatedBFR{}, aper.Constraint{Lb: 1, Ub: maxNrofCandidateBeamsExt_r16}, false)
 	for _, i := range ie.Value {
 		tmp.Value = append(tmp.Value, &i)
 	}
@@ -21,9 +21,9 @@ func (ie *CandidateBeamRSListExt_r16) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *CandidateBeamRSListExt_r16) Decode(r *uper.UperReader) error {
+func (ie *CandidateBeamRSListExt_r16) Decode(r *aper.AperReader) error {
 	var err error
-	tmp := utils.NewSequence[*PRACH_ResourceDedicatedBFR]([]*PRACH_ResourceDedicatedBFR{}, uper.Constraint{Lb: 1, Ub: maxNrofCandidateBeamsExt_r16}, false)
+	tmp := utils.NewSequence[*PRACH_ResourceDedicatedBFR]([]*PRACH_ResourceDedicatedBFR{}, aper.Constraint{Lb: 1, Ub: maxNrofCandidateBeamsExt_r16}, false)
 	fn := func() *PRACH_ResourceDedicatedBFR {
 		return new(PRACH_ResourceDedicatedBFR)
 	}

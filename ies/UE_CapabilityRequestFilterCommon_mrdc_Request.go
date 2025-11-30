@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -11,7 +11,7 @@ type UE_CapabilityRequestFilterCommon_mrdc_Request struct {
 	IncludeNE_DC *UE_CapabilityRequestFilterCommon_mrdc_Request_includeNE_DC `optional`
 }
 
-func (ie *UE_CapabilityRequestFilterCommon_mrdc_Request) Encode(w *uper.UperWriter) error {
+func (ie *UE_CapabilityRequestFilterCommon_mrdc_Request) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.OmitEN_DC != nil, ie.IncludeNR_DC != nil, ie.IncludeNE_DC != nil}
 	for _, bit := range preambleBits {
@@ -37,7 +37,7 @@ func (ie *UE_CapabilityRequestFilterCommon_mrdc_Request) Encode(w *uper.UperWrit
 	return nil
 }
 
-func (ie *UE_CapabilityRequestFilterCommon_mrdc_Request) Decode(r *uper.UperReader) error {
+func (ie *UE_CapabilityRequestFilterCommon_mrdc_Request) Decode(r *aper.AperReader) error {
 	var err error
 	var OmitEN_DCPresent bool
 	if OmitEN_DCPresent, err = r.ReadBool(); err != nil {

@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -14,7 +14,7 @@ type PUCCH_SpatialRelationInfo struct {
 	ClosedLoopIndex              PUCCH_SpatialRelationInfo_closedLoopIndex `madatory`
 }
 
-func (ie *PUCCH_SpatialRelationInfo) Encode(w *uper.UperWriter) error {
+func (ie *PUCCH_SpatialRelationInfo) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.ServingCellId != nil}
 	for _, bit := range preambleBits {
@@ -45,7 +45,7 @@ func (ie *PUCCH_SpatialRelationInfo) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *PUCCH_SpatialRelationInfo) Decode(r *uper.UperReader) error {
+func (ie *PUCCH_SpatialRelationInfo) Decode(r *aper.AperReader) error {
 	var err error
 	var ServingCellIdPresent bool
 	if ServingCellIdPresent, err = r.ReadBool(); err != nil {

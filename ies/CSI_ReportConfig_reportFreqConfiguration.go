@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -11,7 +11,7 @@ type CSI_ReportConfig_reportFreqConfiguration struct {
 	Csi_ReportingBand   *CSI_ReportConfig_reportFreqConfiguration_csi_ReportingBand   `lb:3,ub:3,optional`
 }
 
-func (ie *CSI_ReportConfig_reportFreqConfiguration) Encode(w *uper.UperWriter) error {
+func (ie *CSI_ReportConfig_reportFreqConfiguration) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.Cqi_FormatIndicator != nil, ie.Pmi_FormatIndicator != nil, ie.Csi_ReportingBand != nil}
 	for _, bit := range preambleBits {
@@ -37,7 +37,7 @@ func (ie *CSI_ReportConfig_reportFreqConfiguration) Encode(w *uper.UperWriter) e
 	return nil
 }
 
-func (ie *CSI_ReportConfig_reportFreqConfiguration) Decode(r *uper.UperReader) error {
+func (ie *CSI_ReportConfig_reportFreqConfiguration) Decode(r *aper.AperReader) error {
 	var err error
 	var Cqi_FormatIndicatorPresent bool
 	if Cqi_FormatIndicatorPresent, err = r.ReadBool(); err != nil {

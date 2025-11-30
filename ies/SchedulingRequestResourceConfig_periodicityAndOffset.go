@@ -3,7 +3,7 @@ package ies
 import (
 	"fmt"
 
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -28,9 +28,9 @@ const (
 
 type SchedulingRequestResourceConfig_periodicityAndOffset struct {
 	Choice  uint64
-	Sym2    uper.NULL `madatory`
-	Sym6or7 uper.NULL `madatory`
-	Sl1     uper.NULL `madatory`
+	Sym2    aper.NULL `madatory`
+	Sym6or7 aper.NULL `madatory`
+	Sl1     aper.NULL `madatory`
 	Sl2     int64     `lb:0,ub:1,madatory`
 	Sl4     int64     `lb:0,ub:3,madatory`
 	Sl5     int64     `lb:0,ub:4,madatory`
@@ -45,7 +45,7 @@ type SchedulingRequestResourceConfig_periodicityAndOffset struct {
 	Sl640   int64     `lb:0,ub:639,madatory`
 }
 
-func (ie *SchedulingRequestResourceConfig_periodicityAndOffset) Encode(w *uper.UperWriter) error {
+func (ie *SchedulingRequestResourceConfig_periodicityAndOffset) Encode(w *aper.AperWriter) error {
 	var err error
 	if err = w.WriteChoice(ie.Choice, 15, false); err != nil {
 		return err
@@ -64,51 +64,51 @@ func (ie *SchedulingRequestResourceConfig_periodicityAndOffset) Encode(w *uper.U
 			err = utils.WrapError("Encode Sl1", err)
 		}
 	case SchedulingRequestResourceConfig_periodicityAndOffset_Choice_Sl2:
-		if err = w.WriteInteger(int64(ie.Sl2), &uper.Constraint{Lb: 0, Ub: 1}, false); err != nil {
+		if err = w.WriteInteger(int64(ie.Sl2), &aper.Constraint{Lb: 0, Ub: 1}, false); err != nil {
 			err = utils.WrapError("Encode Sl2", err)
 		}
 	case SchedulingRequestResourceConfig_periodicityAndOffset_Choice_Sl4:
-		if err = w.WriteInteger(int64(ie.Sl4), &uper.Constraint{Lb: 0, Ub: 3}, false); err != nil {
+		if err = w.WriteInteger(int64(ie.Sl4), &aper.Constraint{Lb: 0, Ub: 3}, false); err != nil {
 			err = utils.WrapError("Encode Sl4", err)
 		}
 	case SchedulingRequestResourceConfig_periodicityAndOffset_Choice_Sl5:
-		if err = w.WriteInteger(int64(ie.Sl5), &uper.Constraint{Lb: 0, Ub: 4}, false); err != nil {
+		if err = w.WriteInteger(int64(ie.Sl5), &aper.Constraint{Lb: 0, Ub: 4}, false); err != nil {
 			err = utils.WrapError("Encode Sl5", err)
 		}
 	case SchedulingRequestResourceConfig_periodicityAndOffset_Choice_Sl8:
-		if err = w.WriteInteger(int64(ie.Sl8), &uper.Constraint{Lb: 0, Ub: 7}, false); err != nil {
+		if err = w.WriteInteger(int64(ie.Sl8), &aper.Constraint{Lb: 0, Ub: 7}, false); err != nil {
 			err = utils.WrapError("Encode Sl8", err)
 		}
 	case SchedulingRequestResourceConfig_periodicityAndOffset_Choice_Sl10:
-		if err = w.WriteInteger(int64(ie.Sl10), &uper.Constraint{Lb: 0, Ub: 9}, false); err != nil {
+		if err = w.WriteInteger(int64(ie.Sl10), &aper.Constraint{Lb: 0, Ub: 9}, false); err != nil {
 			err = utils.WrapError("Encode Sl10", err)
 		}
 	case SchedulingRequestResourceConfig_periodicityAndOffset_Choice_Sl16:
-		if err = w.WriteInteger(int64(ie.Sl16), &uper.Constraint{Lb: 0, Ub: 15}, false); err != nil {
+		if err = w.WriteInteger(int64(ie.Sl16), &aper.Constraint{Lb: 0, Ub: 15}, false); err != nil {
 			err = utils.WrapError("Encode Sl16", err)
 		}
 	case SchedulingRequestResourceConfig_periodicityAndOffset_Choice_Sl20:
-		if err = w.WriteInteger(int64(ie.Sl20), &uper.Constraint{Lb: 0, Ub: 19}, false); err != nil {
+		if err = w.WriteInteger(int64(ie.Sl20), &aper.Constraint{Lb: 0, Ub: 19}, false); err != nil {
 			err = utils.WrapError("Encode Sl20", err)
 		}
 	case SchedulingRequestResourceConfig_periodicityAndOffset_Choice_Sl40:
-		if err = w.WriteInteger(int64(ie.Sl40), &uper.Constraint{Lb: 0, Ub: 39}, false); err != nil {
+		if err = w.WriteInteger(int64(ie.Sl40), &aper.Constraint{Lb: 0, Ub: 39}, false); err != nil {
 			err = utils.WrapError("Encode Sl40", err)
 		}
 	case SchedulingRequestResourceConfig_periodicityAndOffset_Choice_Sl80:
-		if err = w.WriteInteger(int64(ie.Sl80), &uper.Constraint{Lb: 0, Ub: 79}, false); err != nil {
+		if err = w.WriteInteger(int64(ie.Sl80), &aper.Constraint{Lb: 0, Ub: 79}, false); err != nil {
 			err = utils.WrapError("Encode Sl80", err)
 		}
 	case SchedulingRequestResourceConfig_periodicityAndOffset_Choice_Sl160:
-		if err = w.WriteInteger(int64(ie.Sl160), &uper.Constraint{Lb: 0, Ub: 159}, false); err != nil {
+		if err = w.WriteInteger(int64(ie.Sl160), &aper.Constraint{Lb: 0, Ub: 159}, false); err != nil {
 			err = utils.WrapError("Encode Sl160", err)
 		}
 	case SchedulingRequestResourceConfig_periodicityAndOffset_Choice_Sl320:
-		if err = w.WriteInteger(int64(ie.Sl320), &uper.Constraint{Lb: 0, Ub: 319}, false); err != nil {
+		if err = w.WriteInteger(int64(ie.Sl320), &aper.Constraint{Lb: 0, Ub: 319}, false); err != nil {
 			err = utils.WrapError("Encode Sl320", err)
 		}
 	case SchedulingRequestResourceConfig_periodicityAndOffset_Choice_Sl640:
-		if err = w.WriteInteger(int64(ie.Sl640), &uper.Constraint{Lb: 0, Ub: 639}, false); err != nil {
+		if err = w.WriteInteger(int64(ie.Sl640), &aper.Constraint{Lb: 0, Ub: 639}, false); err != nil {
 			err = utils.WrapError("Encode Sl640", err)
 		}
 	default:
@@ -117,7 +117,7 @@ func (ie *SchedulingRequestResourceConfig_periodicityAndOffset) Encode(w *uper.U
 	return err
 }
 
-func (ie *SchedulingRequestResourceConfig_periodicityAndOffset) Decode(r *uper.UperReader) error {
+func (ie *SchedulingRequestResourceConfig_periodicityAndOffset) Decode(r *aper.AperReader) error {
 	var err error
 	if ie.Choice, err = r.ReadChoice(15, false); err != nil {
 		return err
@@ -137,73 +137,73 @@ func (ie *SchedulingRequestResourceConfig_periodicityAndOffset) Decode(r *uper.U
 		}
 	case SchedulingRequestResourceConfig_periodicityAndOffset_Choice_Sl2:
 		var tmp_int_Sl2 int64
-		if tmp_int_Sl2, err = r.ReadInteger(&uper.Constraint{Lb: 0, Ub: 1}, false); err != nil {
+		if tmp_int_Sl2, err = r.ReadInteger(&aper.Constraint{Lb: 0, Ub: 1}, false); err != nil {
 			return utils.WrapError("Decode Sl2", err)
 		}
 		ie.Sl2 = tmp_int_Sl2
 	case SchedulingRequestResourceConfig_periodicityAndOffset_Choice_Sl4:
 		var tmp_int_Sl4 int64
-		if tmp_int_Sl4, err = r.ReadInteger(&uper.Constraint{Lb: 0, Ub: 3}, false); err != nil {
+		if tmp_int_Sl4, err = r.ReadInteger(&aper.Constraint{Lb: 0, Ub: 3}, false); err != nil {
 			return utils.WrapError("Decode Sl4", err)
 		}
 		ie.Sl4 = tmp_int_Sl4
 	case SchedulingRequestResourceConfig_periodicityAndOffset_Choice_Sl5:
 		var tmp_int_Sl5 int64
-		if tmp_int_Sl5, err = r.ReadInteger(&uper.Constraint{Lb: 0, Ub: 4}, false); err != nil {
+		if tmp_int_Sl5, err = r.ReadInteger(&aper.Constraint{Lb: 0, Ub: 4}, false); err != nil {
 			return utils.WrapError("Decode Sl5", err)
 		}
 		ie.Sl5 = tmp_int_Sl5
 	case SchedulingRequestResourceConfig_periodicityAndOffset_Choice_Sl8:
 		var tmp_int_Sl8 int64
-		if tmp_int_Sl8, err = r.ReadInteger(&uper.Constraint{Lb: 0, Ub: 7}, false); err != nil {
+		if tmp_int_Sl8, err = r.ReadInteger(&aper.Constraint{Lb: 0, Ub: 7}, false); err != nil {
 			return utils.WrapError("Decode Sl8", err)
 		}
 		ie.Sl8 = tmp_int_Sl8
 	case SchedulingRequestResourceConfig_periodicityAndOffset_Choice_Sl10:
 		var tmp_int_Sl10 int64
-		if tmp_int_Sl10, err = r.ReadInteger(&uper.Constraint{Lb: 0, Ub: 9}, false); err != nil {
+		if tmp_int_Sl10, err = r.ReadInteger(&aper.Constraint{Lb: 0, Ub: 9}, false); err != nil {
 			return utils.WrapError("Decode Sl10", err)
 		}
 		ie.Sl10 = tmp_int_Sl10
 	case SchedulingRequestResourceConfig_periodicityAndOffset_Choice_Sl16:
 		var tmp_int_Sl16 int64
-		if tmp_int_Sl16, err = r.ReadInteger(&uper.Constraint{Lb: 0, Ub: 15}, false); err != nil {
+		if tmp_int_Sl16, err = r.ReadInteger(&aper.Constraint{Lb: 0, Ub: 15}, false); err != nil {
 			return utils.WrapError("Decode Sl16", err)
 		}
 		ie.Sl16 = tmp_int_Sl16
 	case SchedulingRequestResourceConfig_periodicityAndOffset_Choice_Sl20:
 		var tmp_int_Sl20 int64
-		if tmp_int_Sl20, err = r.ReadInteger(&uper.Constraint{Lb: 0, Ub: 19}, false); err != nil {
+		if tmp_int_Sl20, err = r.ReadInteger(&aper.Constraint{Lb: 0, Ub: 19}, false); err != nil {
 			return utils.WrapError("Decode Sl20", err)
 		}
 		ie.Sl20 = tmp_int_Sl20
 	case SchedulingRequestResourceConfig_periodicityAndOffset_Choice_Sl40:
 		var tmp_int_Sl40 int64
-		if tmp_int_Sl40, err = r.ReadInteger(&uper.Constraint{Lb: 0, Ub: 39}, false); err != nil {
+		if tmp_int_Sl40, err = r.ReadInteger(&aper.Constraint{Lb: 0, Ub: 39}, false); err != nil {
 			return utils.WrapError("Decode Sl40", err)
 		}
 		ie.Sl40 = tmp_int_Sl40
 	case SchedulingRequestResourceConfig_periodicityAndOffset_Choice_Sl80:
 		var tmp_int_Sl80 int64
-		if tmp_int_Sl80, err = r.ReadInteger(&uper.Constraint{Lb: 0, Ub: 79}, false); err != nil {
+		if tmp_int_Sl80, err = r.ReadInteger(&aper.Constraint{Lb: 0, Ub: 79}, false); err != nil {
 			return utils.WrapError("Decode Sl80", err)
 		}
 		ie.Sl80 = tmp_int_Sl80
 	case SchedulingRequestResourceConfig_periodicityAndOffset_Choice_Sl160:
 		var tmp_int_Sl160 int64
-		if tmp_int_Sl160, err = r.ReadInteger(&uper.Constraint{Lb: 0, Ub: 159}, false); err != nil {
+		if tmp_int_Sl160, err = r.ReadInteger(&aper.Constraint{Lb: 0, Ub: 159}, false); err != nil {
 			return utils.WrapError("Decode Sl160", err)
 		}
 		ie.Sl160 = tmp_int_Sl160
 	case SchedulingRequestResourceConfig_periodicityAndOffset_Choice_Sl320:
 		var tmp_int_Sl320 int64
-		if tmp_int_Sl320, err = r.ReadInteger(&uper.Constraint{Lb: 0, Ub: 319}, false); err != nil {
+		if tmp_int_Sl320, err = r.ReadInteger(&aper.Constraint{Lb: 0, Ub: 319}, false); err != nil {
 			return utils.WrapError("Decode Sl320", err)
 		}
 		ie.Sl320 = tmp_int_Sl320
 	case SchedulingRequestResourceConfig_periodicityAndOffset_Choice_Sl640:
 		var tmp_int_Sl640 int64
-		if tmp_int_Sl640, err = r.ReadInteger(&uper.Constraint{Lb: 0, Ub: 639}, false); err != nil {
+		if tmp_int_Sl640, err = r.ReadInteger(&aper.Constraint{Lb: 0, Ub: 639}, false); err != nil {
 			return utils.WrapError("Decode Sl640", err)
 		}
 		ie.Sl640 = tmp_int_Sl640

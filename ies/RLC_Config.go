@@ -3,7 +3,7 @@ package ies
 import (
 	"fmt"
 
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -23,7 +23,7 @@ type RLC_Config struct {
 	Um_Uni_Directional_DL *RLC_Config_um_Uni_Directional_DL
 }
 
-func (ie *RLC_Config) Encode(w *uper.UperWriter) error {
+func (ie *RLC_Config) Encode(w *aper.AperWriter) error {
 	var err error
 	if err = w.WriteChoice(ie.Choice, 4, false); err != nil {
 		return err
@@ -51,7 +51,7 @@ func (ie *RLC_Config) Encode(w *uper.UperWriter) error {
 	return err
 }
 
-func (ie *RLC_Config) Decode(r *uper.UperReader) error {
+func (ie *RLC_Config) Decode(r *aper.AperReader) error {
 	var err error
 	if ie.Choice, err = r.ReadChoice(4, false); err != nil {
 		return err

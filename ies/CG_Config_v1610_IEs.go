@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -10,7 +10,7 @@ type CG_Config_v1610_IEs struct {
 	NonCriticalExtension *CG_Config_v1620_IEs `optional`
 }
 
-func (ie *CG_Config_v1610_IEs) Encode(w *uper.UperWriter) error {
+func (ie *CG_Config_v1610_IEs) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.Drx_InfoSCG2 != nil, ie.NonCriticalExtension != nil}
 	for _, bit := range preambleBits {
@@ -31,7 +31,7 @@ func (ie *CG_Config_v1610_IEs) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *CG_Config_v1610_IEs) Decode(r *uper.UperReader) error {
+func (ie *CG_Config_v1610_IEs) Decode(r *aper.AperReader) error {
 	var err error
 	var Drx_InfoSCG2Present bool
 	if Drx_InfoSCG2Present, err = r.ReadBool(); err != nil {

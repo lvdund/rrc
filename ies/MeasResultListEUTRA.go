@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -9,9 +9,9 @@ type MeasResultListEUTRA struct {
 	Value []MeasResultEUTRA `lb:1,ub:maxCellReport,madatory`
 }
 
-func (ie *MeasResultListEUTRA) Encode(w *uper.UperWriter) error {
+func (ie *MeasResultListEUTRA) Encode(w *aper.AperWriter) error {
 	var err error
-	tmp := utils.NewSequence[*MeasResultEUTRA]([]*MeasResultEUTRA{}, uper.Constraint{Lb: 1, Ub: maxCellReport}, false)
+	tmp := utils.NewSequence[*MeasResultEUTRA]([]*MeasResultEUTRA{}, aper.Constraint{Lb: 1, Ub: maxCellReport}, false)
 	for _, i := range ie.Value {
 		tmp.Value = append(tmp.Value, &i)
 	}
@@ -21,9 +21,9 @@ func (ie *MeasResultListEUTRA) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *MeasResultListEUTRA) Decode(r *uper.UperReader) error {
+func (ie *MeasResultListEUTRA) Decode(r *aper.AperReader) error {
 	var err error
-	tmp := utils.NewSequence[*MeasResultEUTRA]([]*MeasResultEUTRA{}, uper.Constraint{Lb: 1, Ub: maxCellReport}, false)
+	tmp := utils.NewSequence[*MeasResultEUTRA]([]*MeasResultEUTRA{}, aper.Constraint{Lb: 1, Ub: maxCellReport}, false)
 	fn := func() *MeasResultEUTRA {
 		return new(MeasResultEUTRA)
 	}

@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -17,7 +17,7 @@ type FeatureSetDownlink_v1540 struct {
 	Dl_MCS_TableAlt_DynamicIndication       *FeatureSetDownlink_v1540_dl_MCS_TableAlt_DynamicIndication       `optional`
 }
 
-func (ie *FeatureSetDownlink_v1540) Encode(w *uper.UperWriter) error {
+func (ie *FeatureSetDownlink_v1540) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.OneFL_DMRS_TwoAdditionalDMRS_DL != nil, ie.AdditionalDMRS_DL_Alt != nil, ie.TwoFL_DMRS_TwoAdditionalDMRS_DL != nil, ie.OneFL_DMRS_ThreeAdditionalDMRS_DL != nil, ie.Pdcch_MonitoringAnyOccasionsWithSpanGap != nil, ie.Pdsch_SeparationWithGap != nil, ie.Pdsch_ProcessingType2 != nil, ie.Pdsch_ProcessingType2_Limited != nil, ie.Dl_MCS_TableAlt_DynamicIndication != nil}
 	for _, bit := range preambleBits {
@@ -73,7 +73,7 @@ func (ie *FeatureSetDownlink_v1540) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *FeatureSetDownlink_v1540) Decode(r *uper.UperReader) error {
+func (ie *FeatureSetDownlink_v1540) Decode(r *aper.AperReader) error {
 	var err error
 	var OneFL_DMRS_TwoAdditionalDMRS_DLPresent bool
 	if OneFL_DMRS_TwoAdditionalDMRS_DLPresent, err = r.ReadBool(); err != nil {

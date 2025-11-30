@@ -3,7 +3,7 @@ package ies
 import (
 	"fmt"
 
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -29,7 +29,7 @@ type MeasObjectToAddMod_measObject struct {
 	MeasObjectRelay_r17    *SL_MeasObject_r16
 }
 
-func (ie *MeasObjectToAddMod_measObject) Encode(w *uper.UperWriter) error {
+func (ie *MeasObjectToAddMod_measObject) Encode(w *aper.AperWriter) error {
 	var err error
 	if err = w.WriteChoice(ie.Choice, 7, false); err != nil {
 		return err
@@ -69,7 +69,7 @@ func (ie *MeasObjectToAddMod_measObject) Encode(w *uper.UperWriter) error {
 	return err
 }
 
-func (ie *MeasObjectToAddMod_measObject) Decode(r *uper.UperReader) error {
+func (ie *MeasObjectToAddMod_measObject) Decode(r *aper.AperReader) error {
 	var err error
 	if ie.Choice, err = r.ReadChoice(7, false); err != nil {
 		return err

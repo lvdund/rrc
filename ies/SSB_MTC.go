@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -10,7 +10,7 @@ type SSB_MTC struct {
 	Duration             SSB_MTC_duration             `madatory`
 }
 
-func (ie *SSB_MTC) Encode(w *uper.UperWriter) error {
+func (ie *SSB_MTC) Encode(w *aper.AperWriter) error {
 	var err error
 	if err = ie.PeriodicityAndOffset.Encode(w); err != nil {
 		return utils.WrapError("Encode PeriodicityAndOffset", err)
@@ -21,7 +21,7 @@ func (ie *SSB_MTC) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *SSB_MTC) Decode(r *uper.UperReader) error {
+func (ie *SSB_MTC) Decode(r *aper.AperReader) error {
 	var err error
 	if err = ie.PeriodicityAndOffset.Decode(r); err != nil {
 		return utils.WrapError("Decode PeriodicityAndOffset", err)

@@ -3,7 +3,7 @@ package ies
 import (
 	"bytes"
 
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -36,7 +36,7 @@ type ServingCellConfigCommon struct {
 	FeaturePriorities_r17          *FeaturePriorities_r17                                  `optional,ext-3`
 }
 
-func (ie *ServingCellConfigCommon) Encode(w *uper.UperWriter) error {
+func (ie *ServingCellConfigCommon) Encode(w *aper.AperWriter) error {
 	var err error
 	hasExtensions := ie.ChannelAccessMode_r16 != nil || ie.DiscoveryBurstWindowLength_r16 != nil || ie.Ssb_PositionQCL_r16 != nil || ie.HighSpeedConfig_r16 != nil || ie.HighSpeedConfig_v1700 != nil || ie.ChannelAccessMode2_r17 != nil || ie.DiscoveryBurstWindowLength_r17 != nil || ie.Ssb_PositionQCL_r17 != nil || ie.HighSpeedConfigFR2_r17 != nil || ie.UplinkConfigCommon_v1700 != nil || ie.Ntn_Config_r17 != nil || ie.FeaturePriorities_r17 != nil
 	preambleBits := []bool{hasExtensions, ie.PhysCellId != nil, ie.DownlinkConfigCommon != nil, ie.UplinkConfigCommon != nil, ie.SupplementaryUplinkConfig != nil, ie.N_TimingAdvanceOffset != nil, ie.Ssb_PositionsInBurst != nil, ie.Ssb_periodicityServingCell != nil, ie.Lte_CRS_ToMatchAround != nil, len(ie.RateMatchPatternToAddModList) > 0, len(ie.RateMatchPatternToReleaseList) > 0, ie.SsbSubcarrierSpacing != nil, ie.Tdd_UL_DL_ConfigurationCommon != nil}
@@ -92,7 +92,7 @@ func (ie *ServingCellConfigCommon) Encode(w *uper.UperWriter) error {
 		}
 	}
 	if len(ie.RateMatchPatternToAddModList) > 0 {
-		tmp_RateMatchPatternToAddModList := utils.NewSequence[*RateMatchPattern]([]*RateMatchPattern{}, uper.Constraint{Lb: 1, Ub: maxNrofRateMatchPatterns}, false)
+		tmp_RateMatchPatternToAddModList := utils.NewSequence[*RateMatchPattern]([]*RateMatchPattern{}, aper.Constraint{Lb: 1, Ub: maxNrofRateMatchPatterns}, false)
 		for _, i := range ie.RateMatchPatternToAddModList {
 			tmp_RateMatchPatternToAddModList.Value = append(tmp_RateMatchPatternToAddModList.Value, &i)
 		}
@@ -101,7 +101,7 @@ func (ie *ServingCellConfigCommon) Encode(w *uper.UperWriter) error {
 		}
 	}
 	if len(ie.RateMatchPatternToReleaseList) > 0 {
-		tmp_RateMatchPatternToReleaseList := utils.NewSequence[*RateMatchPatternId]([]*RateMatchPatternId{}, uper.Constraint{Lb: 1, Ub: maxNrofRateMatchPatterns}, false)
+		tmp_RateMatchPatternToReleaseList := utils.NewSequence[*RateMatchPatternId]([]*RateMatchPatternId{}, aper.Constraint{Lb: 1, Ub: maxNrofRateMatchPatterns}, false)
 		for _, i := range ie.RateMatchPatternToReleaseList {
 			tmp_RateMatchPatternToReleaseList.Value = append(tmp_RateMatchPatternToReleaseList.Value, &i)
 		}
@@ -119,7 +119,7 @@ func (ie *ServingCellConfigCommon) Encode(w *uper.UperWriter) error {
 			return utils.WrapError("Encode Tdd_UL_DL_ConfigurationCommon", err)
 		}
 	}
-	if err = w.WriteInteger(ie.Ss_PBCH_BlockPower, &uper.Constraint{Lb: -60, Ub: 50}, false); err != nil {
+	if err = w.WriteInteger(ie.Ss_PBCH_BlockPower, &aper.Constraint{Lb: -60, Ub: 50}, false); err != nil {
 		return utils.WrapError("WriteInteger Ss_PBCH_BlockPower", err)
 	}
 	if hasExtensions {
@@ -132,7 +132,7 @@ func (ie *ServingCellConfigCommon) Encode(w *uper.UperWriter) error {
 		// encode extension group 1
 		if extBitmap[0] {
 			extBuf := new(bytes.Buffer)
-			extWriter := uper.NewWriter(extBuf)
+			extWriter := aper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 1
 			optionals_ext_1 := []bool{ie.ChannelAccessMode_r16 != nil, ie.DiscoveryBurstWindowLength_r16 != nil, ie.Ssb_PositionQCL_r16 != nil, ie.HighSpeedConfig_r16 != nil}
@@ -179,7 +179,7 @@ func (ie *ServingCellConfigCommon) Encode(w *uper.UperWriter) error {
 		// encode extension group 2
 		if extBitmap[1] {
 			extBuf := new(bytes.Buffer)
-			extWriter := uper.NewWriter(extBuf)
+			extWriter := aper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 2
 			optionals_ext_2 := []bool{ie.HighSpeedConfig_v1700 != nil, ie.ChannelAccessMode2_r17 != nil, ie.DiscoveryBurstWindowLength_r17 != nil, ie.Ssb_PositionQCL_r17 != nil, ie.HighSpeedConfigFR2_r17 != nil, ie.UplinkConfigCommon_v1700 != nil, ie.Ntn_Config_r17 != nil}
@@ -244,7 +244,7 @@ func (ie *ServingCellConfigCommon) Encode(w *uper.UperWriter) error {
 		// encode extension group 3
 		if extBitmap[2] {
 			extBuf := new(bytes.Buffer)
-			extWriter := uper.NewWriter(extBuf)
+			extWriter := aper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 3
 			optionals_ext_3 := []bool{ie.FeaturePriorities_r17 != nil}
@@ -273,7 +273,7 @@ func (ie *ServingCellConfigCommon) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *ServingCellConfigCommon) Decode(r *uper.UperReader) error {
+func (ie *ServingCellConfigCommon) Decode(r *aper.AperReader) error {
 	var err error
 	var extensionBit bool
 	if extensionBit, err = r.ReadBool(); err != nil {
@@ -380,7 +380,7 @@ func (ie *ServingCellConfigCommon) Decode(r *uper.UperReader) error {
 		ie.Lte_CRS_ToMatchAround = tmp_Lte_CRS_ToMatchAround.Setup
 	}
 	if RateMatchPatternToAddModListPresent {
-		tmp_RateMatchPatternToAddModList := utils.NewSequence[*RateMatchPattern]([]*RateMatchPattern{}, uper.Constraint{Lb: 1, Ub: maxNrofRateMatchPatterns}, false)
+		tmp_RateMatchPatternToAddModList := utils.NewSequence[*RateMatchPattern]([]*RateMatchPattern{}, aper.Constraint{Lb: 1, Ub: maxNrofRateMatchPatterns}, false)
 		fn_RateMatchPatternToAddModList := func() *RateMatchPattern {
 			return new(RateMatchPattern)
 		}
@@ -393,7 +393,7 @@ func (ie *ServingCellConfigCommon) Decode(r *uper.UperReader) error {
 		}
 	}
 	if RateMatchPatternToReleaseListPresent {
-		tmp_RateMatchPatternToReleaseList := utils.NewSequence[*RateMatchPatternId]([]*RateMatchPatternId{}, uper.Constraint{Lb: 1, Ub: maxNrofRateMatchPatterns}, false)
+		tmp_RateMatchPatternToReleaseList := utils.NewSequence[*RateMatchPatternId]([]*RateMatchPatternId{}, aper.Constraint{Lb: 1, Ub: maxNrofRateMatchPatterns}, false)
 		fn_RateMatchPatternToReleaseList := func() *RateMatchPatternId {
 			return new(RateMatchPatternId)
 		}
@@ -418,7 +418,7 @@ func (ie *ServingCellConfigCommon) Decode(r *uper.UperReader) error {
 		}
 	}
 	var tmp_int_Ss_PBCH_BlockPower int64
-	if tmp_int_Ss_PBCH_BlockPower, err = r.ReadInteger(&uper.Constraint{Lb: -60, Ub: 50}, false); err != nil {
+	if tmp_int_Ss_PBCH_BlockPower, err = r.ReadInteger(&aper.Constraint{Lb: -60, Ub: 50}, false); err != nil {
 		return utils.WrapError("ReadInteger Ss_PBCH_BlockPower", err)
 	}
 	ie.Ss_PBCH_BlockPower = tmp_int_Ss_PBCH_BlockPower
@@ -437,7 +437,7 @@ func (ie *ServingCellConfigCommon) Decode(r *uper.UperReader) error {
 				return err
 			}
 
-			extReader := uper.NewReader(bytes.NewReader(extBytes))
+			extReader := aper.NewReader(bytes.NewReader(extBytes))
 
 			ChannelAccessMode_r16Present, err := extReader.ReadBool()
 			if err != nil {
@@ -491,7 +491,7 @@ func (ie *ServingCellConfigCommon) Decode(r *uper.UperReader) error {
 				return err
 			}
 
-			extReader := uper.NewReader(bytes.NewReader(extBytes))
+			extReader := aper.NewReader(bytes.NewReader(extBytes))
 
 			HighSpeedConfig_v1700Present, err := extReader.ReadBool()
 			if err != nil {
@@ -578,7 +578,7 @@ func (ie *ServingCellConfigCommon) Decode(r *uper.UperReader) error {
 				return err
 			}
 
-			extReader := uper.NewReader(bytes.NewReader(extBytes))
+			extReader := aper.NewReader(bytes.NewReader(extBytes))
 
 			FeaturePriorities_r17Present, err := extReader.ReadBool()
 			if err != nil {

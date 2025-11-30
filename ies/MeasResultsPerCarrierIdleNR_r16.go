@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -10,12 +10,12 @@ type MeasResultsPerCarrierIdleNR_r16 struct {
 	MeasResultsPerCellListIdleNR_r16 []MeasResultsPerCellIdleNR_r16 `lb:1,ub:maxCellMeasIdle_r16,madatory`
 }
 
-func (ie *MeasResultsPerCarrierIdleNR_r16) Encode(w *uper.UperWriter) error {
+func (ie *MeasResultsPerCarrierIdleNR_r16) Encode(w *aper.AperWriter) error {
 	var err error
 	if err = ie.CarrierFreq_r16.Encode(w); err != nil {
 		return utils.WrapError("Encode CarrierFreq_r16", err)
 	}
-	tmp_MeasResultsPerCellListIdleNR_r16 := utils.NewSequence[*MeasResultsPerCellIdleNR_r16]([]*MeasResultsPerCellIdleNR_r16{}, uper.Constraint{Lb: 1, Ub: maxCellMeasIdle_r16}, false)
+	tmp_MeasResultsPerCellListIdleNR_r16 := utils.NewSequence[*MeasResultsPerCellIdleNR_r16]([]*MeasResultsPerCellIdleNR_r16{}, aper.Constraint{Lb: 1, Ub: maxCellMeasIdle_r16}, false)
 	for _, i := range ie.MeasResultsPerCellListIdleNR_r16 {
 		tmp_MeasResultsPerCellListIdleNR_r16.Value = append(tmp_MeasResultsPerCellListIdleNR_r16.Value, &i)
 	}
@@ -25,12 +25,12 @@ func (ie *MeasResultsPerCarrierIdleNR_r16) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *MeasResultsPerCarrierIdleNR_r16) Decode(r *uper.UperReader) error {
+func (ie *MeasResultsPerCarrierIdleNR_r16) Decode(r *aper.AperReader) error {
 	var err error
 	if err = ie.CarrierFreq_r16.Decode(r); err != nil {
 		return utils.WrapError("Decode CarrierFreq_r16", err)
 	}
-	tmp_MeasResultsPerCellListIdleNR_r16 := utils.NewSequence[*MeasResultsPerCellIdleNR_r16]([]*MeasResultsPerCellIdleNR_r16{}, uper.Constraint{Lb: 1, Ub: maxCellMeasIdle_r16}, false)
+	tmp_MeasResultsPerCellListIdleNR_r16 := utils.NewSequence[*MeasResultsPerCellIdleNR_r16]([]*MeasResultsPerCellIdleNR_r16{}, aper.Constraint{Lb: 1, Ub: maxCellMeasIdle_r16}, false)
 	fn_MeasResultsPerCellListIdleNR_r16 := func() *MeasResultsPerCellIdleNR_r16 {
 		return new(MeasResultsPerCellIdleNR_r16)
 	}

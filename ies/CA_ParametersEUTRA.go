@@ -1,20 +1,20 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
 type CA_ParametersEUTRA struct {
 	MultipleTimingAdvance                       *CA_ParametersEUTRA_multipleTimingAdvance          `optional`
 	SimultaneousRx_Tx                           *CA_ParametersEUTRA_simultaneousRx_Tx              `optional`
-	SupportedNAICS_2CRS_AP                      *uper.BitString                                    `lb:1,ub:8,optional`
+	SupportedNAICS_2CRS_AP                      *aper.BitString                                    `lb:1,ub:8,optional`
 	AdditionalRx_Tx_PerformanceReq              *CA_ParametersEUTRA_additionalRx_Tx_PerformanceReq `optional`
 	Ue_CA_PowerClass_N                          *CA_ParametersEUTRA_ue_CA_PowerClass_N             `optional`
-	SupportedBandwidthCombinationSetEUTRA_v1530 *uper.BitString                                    `lb:1,ub:32,optional`
+	SupportedBandwidthCombinationSetEUTRA_v1530 *aper.BitString                                    `lb:1,ub:32,optional`
 }
 
-func (ie *CA_ParametersEUTRA) Encode(w *uper.UperWriter) error {
+func (ie *CA_ParametersEUTRA) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.MultipleTimingAdvance != nil, ie.SimultaneousRx_Tx != nil, ie.SupportedNAICS_2CRS_AP != nil, ie.AdditionalRx_Tx_PerformanceReq != nil, ie.Ue_CA_PowerClass_N != nil, ie.SupportedBandwidthCombinationSetEUTRA_v1530 != nil}
 	for _, bit := range preambleBits {
@@ -33,7 +33,7 @@ func (ie *CA_ParametersEUTRA) Encode(w *uper.UperWriter) error {
 		}
 	}
 	if ie.SupportedNAICS_2CRS_AP != nil {
-		if err = w.WriteBitString(ie.SupportedNAICS_2CRS_AP.Bytes, uint(ie.SupportedNAICS_2CRS_AP.NumBits), &uper.Constraint{Lb: 1, Ub: 8}, false); err != nil {
+		if err = w.WriteBitString(ie.SupportedNAICS_2CRS_AP.Bytes, uint(ie.SupportedNAICS_2CRS_AP.NumBits), &aper.Constraint{Lb: 1, Ub: 8}, false); err != nil {
 			return utils.WrapError("Encode SupportedNAICS_2CRS_AP", err)
 		}
 	}
@@ -48,14 +48,14 @@ func (ie *CA_ParametersEUTRA) Encode(w *uper.UperWriter) error {
 		}
 	}
 	if ie.SupportedBandwidthCombinationSetEUTRA_v1530 != nil {
-		if err = w.WriteBitString(ie.SupportedBandwidthCombinationSetEUTRA_v1530.Bytes, uint(ie.SupportedBandwidthCombinationSetEUTRA_v1530.NumBits), &uper.Constraint{Lb: 1, Ub: 32}, false); err != nil {
+		if err = w.WriteBitString(ie.SupportedBandwidthCombinationSetEUTRA_v1530.Bytes, uint(ie.SupportedBandwidthCombinationSetEUTRA_v1530.NumBits), &aper.Constraint{Lb: 1, Ub: 32}, false); err != nil {
 			return utils.WrapError("Encode SupportedBandwidthCombinationSetEUTRA_v1530", err)
 		}
 	}
 	return nil
 }
 
-func (ie *CA_ParametersEUTRA) Decode(r *uper.UperReader) error {
+func (ie *CA_ParametersEUTRA) Decode(r *aper.AperReader) error {
 	var err error
 	var MultipleTimingAdvancePresent bool
 	if MultipleTimingAdvancePresent, err = r.ReadBool(); err != nil {
@@ -96,10 +96,10 @@ func (ie *CA_ParametersEUTRA) Decode(r *uper.UperReader) error {
 	if SupportedNAICS_2CRS_APPresent {
 		var tmp_bs_SupportedNAICS_2CRS_AP []byte
 		var n_SupportedNAICS_2CRS_AP uint
-		if tmp_bs_SupportedNAICS_2CRS_AP, n_SupportedNAICS_2CRS_AP, err = r.ReadBitString(&uper.Constraint{Lb: 1, Ub: 8}, false); err != nil {
+		if tmp_bs_SupportedNAICS_2CRS_AP, n_SupportedNAICS_2CRS_AP, err = r.ReadBitString(&aper.Constraint{Lb: 1, Ub: 8}, false); err != nil {
 			return utils.WrapError("Decode SupportedNAICS_2CRS_AP", err)
 		}
-		tmp_bitstring := uper.BitString{
+		tmp_bitstring := aper.BitString{
 			Bytes:   tmp_bs_SupportedNAICS_2CRS_AP,
 			NumBits: uint64(n_SupportedNAICS_2CRS_AP),
 		}
@@ -120,10 +120,10 @@ func (ie *CA_ParametersEUTRA) Decode(r *uper.UperReader) error {
 	if SupportedBandwidthCombinationSetEUTRA_v1530Present {
 		var tmp_bs_SupportedBandwidthCombinationSetEUTRA_v1530 []byte
 		var n_SupportedBandwidthCombinationSetEUTRA_v1530 uint
-		if tmp_bs_SupportedBandwidthCombinationSetEUTRA_v1530, n_SupportedBandwidthCombinationSetEUTRA_v1530, err = r.ReadBitString(&uper.Constraint{Lb: 1, Ub: 32}, false); err != nil {
+		if tmp_bs_SupportedBandwidthCombinationSetEUTRA_v1530, n_SupportedBandwidthCombinationSetEUTRA_v1530, err = r.ReadBitString(&aper.Constraint{Lb: 1, Ub: 32}, false); err != nil {
 			return utils.WrapError("Decode SupportedBandwidthCombinationSetEUTRA_v1530", err)
 		}
-		tmp_bitstring := uper.BitString{
+		tmp_bitstring := aper.BitString{
 			Bytes:   tmp_bs_SupportedBandwidthCombinationSetEUTRA_v1530,
 			NumBits: uint64(n_SupportedBandwidthCombinationSetEUTRA_v1530),
 		}

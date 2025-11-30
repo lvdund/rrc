@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -10,7 +10,7 @@ type MeasAndMobParametersMRDC_Common_v1610 struct {
 	PscellT312_r16                       *MeasAndMobParametersMRDC_Common_v1610_pscellT312_r16                       `optional`
 }
 
-func (ie *MeasAndMobParametersMRDC_Common_v1610) Encode(w *uper.UperWriter) error {
+func (ie *MeasAndMobParametersMRDC_Common_v1610) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.CondPSCellChangeParametersCommon_r16 != nil, ie.PscellT312_r16 != nil}
 	for _, bit := range preambleBits {
@@ -31,7 +31,7 @@ func (ie *MeasAndMobParametersMRDC_Common_v1610) Encode(w *uper.UperWriter) erro
 	return nil
 }
 
-func (ie *MeasAndMobParametersMRDC_Common_v1610) Decode(r *uper.UperReader) error {
+func (ie *MeasAndMobParametersMRDC_Common_v1610) Decode(r *aper.AperReader) error {
 	var err error
 	var CondPSCellChangeParametersCommon_r16Present bool
 	if CondPSCellChangeParametersCommon_r16Present, err = r.ReadBool(); err != nil {

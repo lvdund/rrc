@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -11,7 +11,7 @@ type MasterKeyUpdate struct {
 	Nas_Container         *[]byte              `optional`
 }
 
-func (ie *MasterKeyUpdate) Encode(w *uper.UperWriter) error {
+func (ie *MasterKeyUpdate) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.Nas_Container != nil}
 	for _, bit := range preambleBits {
@@ -26,14 +26,14 @@ func (ie *MasterKeyUpdate) Encode(w *uper.UperWriter) error {
 		return utils.WrapError("Encode NextHopChainingCount", err)
 	}
 	if ie.Nas_Container != nil {
-		if err = w.WriteOctetString(*ie.Nas_Container, &uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+		if err = w.WriteOctetString(*ie.Nas_Container, &aper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
 			return utils.WrapError("Encode Nas_Container", err)
 		}
 	}
 	return nil
 }
 
-func (ie *MasterKeyUpdate) Decode(r *uper.UperReader) error {
+func (ie *MasterKeyUpdate) Decode(r *aper.AperReader) error {
 	var err error
 	var Nas_ContainerPresent bool
 	if Nas_ContainerPresent, err = r.ReadBool(); err != nil {
@@ -49,7 +49,7 @@ func (ie *MasterKeyUpdate) Decode(r *uper.UperReader) error {
 	}
 	if Nas_ContainerPresent {
 		var tmp_os_Nas_Container []byte
-		if tmp_os_Nas_Container, err = r.ReadOctetString(&uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+		if tmp_os_Nas_Container, err = r.ReadOctetString(&aper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
 			return utils.WrapError("Decode Nas_Container", err)
 		}
 		ie.Nas_Container = &tmp_os_Nas_Container

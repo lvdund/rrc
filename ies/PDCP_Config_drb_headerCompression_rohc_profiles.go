@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -17,7 +17,7 @@ type PDCP_Config_drb_headerCompression_rohc_profiles struct {
 	Profile0x0104 bool `madatory`
 }
 
-func (ie *PDCP_Config_drb_headerCompression_rohc_profiles) Encode(w *uper.UperWriter) error {
+func (ie *PDCP_Config_drb_headerCompression_rohc_profiles) Encode(w *aper.AperWriter) error {
 	var err error
 	if err = w.WriteBoolean(ie.Profile0x0001); err != nil {
 		return utils.WrapError("WriteBoolean Profile0x0001", err)
@@ -49,7 +49,7 @@ func (ie *PDCP_Config_drb_headerCompression_rohc_profiles) Encode(w *uper.UperWr
 	return nil
 }
 
-func (ie *PDCP_Config_drb_headerCompression_rohc_profiles) Decode(r *uper.UperReader) error {
+func (ie *PDCP_Config_drb_headerCompression_rohc_profiles) Decode(r *aper.AperReader) error {
 	var err error
 	var tmp_bool_Profile0x0001 bool
 	if tmp_bool_Profile0x0001, err = r.ReadBoolean(); err != nil {

@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -11,7 +11,7 @@ type DormantBWP_Config_r16 struct {
 	OutsideActiveTimeConfig_r16 *OutsideActiveTimeConfig_r16 `optional,setuprelease`
 }
 
-func (ie *DormantBWP_Config_r16) Encode(w *uper.UperWriter) error {
+func (ie *DormantBWP_Config_r16) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.DormantBWP_Id_r16 != nil, ie.WithinActiveTimeConfig_r16 != nil, ie.OutsideActiveTimeConfig_r16 != nil}
 	for _, bit := range preambleBits {
@@ -43,7 +43,7 @@ func (ie *DormantBWP_Config_r16) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *DormantBWP_Config_r16) Decode(r *uper.UperReader) error {
+func (ie *DormantBWP_Config_r16) Decode(r *aper.AperReader) error {
 	var err error
 	var DormantBWP_Id_r16Present bool
 	if DormantBWP_Id_r16Present, err = r.ReadBool(); err != nil {

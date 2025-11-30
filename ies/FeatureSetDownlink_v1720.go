@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -11,7 +11,7 @@ type FeatureSetDownlink_v1720 struct {
 	Sps_Multicast_r17                   *FeatureSetDownlink_v1720_sps_Multicast_r17                   `optional`
 }
 
-func (ie *FeatureSetDownlink_v1720) Encode(w *uper.UperWriter) error {
+func (ie *FeatureSetDownlink_v1720) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.Rtt_BasedPDC_CSI_RS_ForTracking_r17 != nil, ie.Rtt_BasedPDC_PRS_r17 != nil, ie.Sps_Multicast_r17 != nil}
 	for _, bit := range preambleBits {
@@ -37,7 +37,7 @@ func (ie *FeatureSetDownlink_v1720) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *FeatureSetDownlink_v1720) Decode(r *uper.UperReader) error {
+func (ie *FeatureSetDownlink_v1720) Decode(r *aper.AperReader) error {
 	var err error
 	var Rtt_BasedPDC_CSI_RS_ForTracking_r17Present bool
 	if Rtt_BasedPDC_CSI_RS_ForTracking_r17Present, err = r.ReadBool(); err != nil {

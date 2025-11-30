@@ -3,7 +3,7 @@ package ies
 import (
 	"bytes"
 
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -32,7 +32,7 @@ type BWP_UplinkDedicated struct {
 	PathlossReferenceRSToReleaseList_r17                []PathlossReferenceRS_Id_r17                         `lb:1,ub:maxNrofPathlossReferenceRSs_r17,optional,ext-4`
 }
 
-func (ie *BWP_UplinkDedicated) Encode(w *uper.UperWriter) error {
+func (ie *BWP_UplinkDedicated) Encode(w *aper.AperWriter) error {
 	var err error
 	hasExtensions := ie.Sl_PUCCH_Config_r16 != nil || ie.Cp_ExtensionC2_r16 != nil || ie.Cp_ExtensionC3_r16 != nil || ie.UseInterlacePUCCH_PUSCH_r16 != nil || ie.Pucch_ConfigurationList_r16 != nil || ie.Lbt_FailureRecoveryConfig_r16 != nil || ie.ConfiguredGrantConfigToAddModList_r16 != nil || ie.ConfiguredGrantConfigToReleaseList_r16 != nil || ie.ConfiguredGrantConfigType2DeactivationStateList_r16 != nil || ie.Ul_TCI_StateList_r17 != nil || ie.Ul_powerControl_r17 != nil || ie.Pucch_ConfigurationListMulticast1_r17 != nil || ie.Pucch_ConfigurationListMulticast2_r17 != nil || ie.Pucch_ConfigMulticast1_r17 != nil || ie.Pucch_ConfigMulticast2_r17 != nil || len(ie.PathlossReferenceRSToAddModList_r17) > 0 || len(ie.PathlossReferenceRSToReleaseList_r17) > 0
 	preambleBits := []bool{hasExtensions, ie.Pucch_Config != nil, ie.Pusch_Config != nil, ie.ConfiguredGrantConfig != nil, ie.Srs_Config != nil, ie.BeamFailureRecoveryConfig != nil}
@@ -91,7 +91,7 @@ func (ie *BWP_UplinkDedicated) Encode(w *uper.UperWriter) error {
 		// encode extension group 1
 		if extBitmap[0] {
 			extBuf := new(bytes.Buffer)
-			extWriter := uper.NewWriter(extBuf)
+			extWriter := aper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 1
 			optionals_ext_1 := []bool{ie.Sl_PUCCH_Config_r16 != nil, ie.Cp_ExtensionC2_r16 != nil, ie.Cp_ExtensionC3_r16 != nil, ie.UseInterlacePUCCH_PUSCH_r16 != nil, ie.Pucch_ConfigurationList_r16 != nil, ie.Lbt_FailureRecoveryConfig_r16 != nil, ie.ConfiguredGrantConfigToAddModList_r16 != nil, ie.ConfiguredGrantConfigToReleaseList_r16 != nil, ie.ConfiguredGrantConfigType2DeactivationStateList_r16 != nil}
@@ -112,13 +112,13 @@ func (ie *BWP_UplinkDedicated) Encode(w *uper.UperWriter) error {
 			}
 			// encode Cp_ExtensionC2_r16 optional
 			if ie.Cp_ExtensionC2_r16 != nil {
-				if err = extWriter.WriteInteger(*ie.Cp_ExtensionC2_r16, &uper.Constraint{Lb: 1, Ub: 28}, false); err != nil {
+				if err = extWriter.WriteInteger(*ie.Cp_ExtensionC2_r16, &aper.Constraint{Lb: 1, Ub: 28}, false); err != nil {
 					return utils.WrapError("Encode Cp_ExtensionC2_r16", err)
 				}
 			}
 			// encode Cp_ExtensionC3_r16 optional
 			if ie.Cp_ExtensionC3_r16 != nil {
-				if err = extWriter.WriteInteger(*ie.Cp_ExtensionC3_r16, &uper.Constraint{Lb: 1, Ub: 28}, false); err != nil {
+				if err = extWriter.WriteInteger(*ie.Cp_ExtensionC3_r16, &aper.Constraint{Lb: 1, Ub: 28}, false); err != nil {
 					return utils.WrapError("Encode Cp_ExtensionC3_r16", err)
 				}
 			}
@@ -177,7 +177,7 @@ func (ie *BWP_UplinkDedicated) Encode(w *uper.UperWriter) error {
 		// encode extension group 2
 		if extBitmap[1] {
 			extBuf := new(bytes.Buffer)
-			extWriter := uper.NewWriter(extBuf)
+			extWriter := aper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 2
 			optionals_ext_2 := []bool{ie.Ul_TCI_StateList_r17 != nil, ie.Ul_powerControl_r17 != nil, ie.Pucch_ConfigurationListMulticast1_r17 != nil, ie.Pucch_ConfigurationListMulticast2_r17 != nil}
@@ -230,7 +230,7 @@ func (ie *BWP_UplinkDedicated) Encode(w *uper.UperWriter) error {
 		// encode extension group 3
 		if extBitmap[2] {
 			extBuf := new(bytes.Buffer)
-			extWriter := uper.NewWriter(extBuf)
+			extWriter := aper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 3
 			optionals_ext_3 := []bool{ie.Pucch_ConfigMulticast1_r17 != nil, ie.Pucch_ConfigMulticast2_r17 != nil}
@@ -271,7 +271,7 @@ func (ie *BWP_UplinkDedicated) Encode(w *uper.UperWriter) error {
 		// encode extension group 4
 		if extBitmap[3] {
 			extBuf := new(bytes.Buffer)
-			extWriter := uper.NewWriter(extBuf)
+			extWriter := aper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 4
 			optionals_ext_4 := []bool{len(ie.PathlossReferenceRSToAddModList_r17) > 0, len(ie.PathlossReferenceRSToReleaseList_r17) > 0}
@@ -283,7 +283,7 @@ func (ie *BWP_UplinkDedicated) Encode(w *uper.UperWriter) error {
 
 			// encode PathlossReferenceRSToAddModList_r17 optional
 			if len(ie.PathlossReferenceRSToAddModList_r17) > 0 {
-				tmp_PathlossReferenceRSToAddModList_r17 := utils.NewSequence[*PathlossReferenceRS_r17]([]*PathlossReferenceRS_r17{}, uper.Constraint{Lb: 1, Ub: maxNrofPathlossReferenceRSs_r17}, false)
+				tmp_PathlossReferenceRSToAddModList_r17 := utils.NewSequence[*PathlossReferenceRS_r17]([]*PathlossReferenceRS_r17{}, aper.Constraint{Lb: 1, Ub: maxNrofPathlossReferenceRSs_r17}, false)
 				for _, i := range ie.PathlossReferenceRSToAddModList_r17 {
 					tmp_PathlossReferenceRSToAddModList_r17.Value = append(tmp_PathlossReferenceRSToAddModList_r17.Value, &i)
 				}
@@ -293,7 +293,7 @@ func (ie *BWP_UplinkDedicated) Encode(w *uper.UperWriter) error {
 			}
 			// encode PathlossReferenceRSToReleaseList_r17 optional
 			if len(ie.PathlossReferenceRSToReleaseList_r17) > 0 {
-				tmp_PathlossReferenceRSToReleaseList_r17 := utils.NewSequence[*PathlossReferenceRS_Id_r17]([]*PathlossReferenceRS_Id_r17{}, uper.Constraint{Lb: 1, Ub: maxNrofPathlossReferenceRSs_r17}, false)
+				tmp_PathlossReferenceRSToReleaseList_r17 := utils.NewSequence[*PathlossReferenceRS_Id_r17]([]*PathlossReferenceRS_Id_r17{}, aper.Constraint{Lb: 1, Ub: maxNrofPathlossReferenceRSs_r17}, false)
 				for _, i := range ie.PathlossReferenceRSToReleaseList_r17 {
 					tmp_PathlossReferenceRSToReleaseList_r17.Value = append(tmp_PathlossReferenceRSToReleaseList_r17.Value, &i)
 				}
@@ -314,7 +314,7 @@ func (ie *BWP_UplinkDedicated) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *BWP_UplinkDedicated) Decode(r *uper.UperReader) error {
+func (ie *BWP_UplinkDedicated) Decode(r *aper.AperReader) error {
 	var err error
 	var extensionBit bool
 	if extensionBit, err = r.ReadBool(); err != nil {
@@ -390,7 +390,7 @@ func (ie *BWP_UplinkDedicated) Decode(r *uper.UperReader) error {
 				return err
 			}
 
-			extReader := uper.NewReader(bytes.NewReader(extBytes))
+			extReader := aper.NewReader(bytes.NewReader(extBytes))
 
 			Sl_PUCCH_Config_r16Present, err := extReader.ReadBool()
 			if err != nil {
@@ -439,7 +439,7 @@ func (ie *BWP_UplinkDedicated) Decode(r *uper.UperReader) error {
 			// decode Cp_ExtensionC2_r16 optional
 			if Cp_ExtensionC2_r16Present {
 				var tmp_int_Cp_ExtensionC2_r16 int64
-				if tmp_int_Cp_ExtensionC2_r16, err = extReader.ReadInteger(&uper.Constraint{Lb: 1, Ub: 28}, false); err != nil {
+				if tmp_int_Cp_ExtensionC2_r16, err = extReader.ReadInteger(&aper.Constraint{Lb: 1, Ub: 28}, false); err != nil {
 					return utils.WrapError("Decode Cp_ExtensionC2_r16", err)
 				}
 				ie.Cp_ExtensionC2_r16 = &tmp_int_Cp_ExtensionC2_r16
@@ -447,7 +447,7 @@ func (ie *BWP_UplinkDedicated) Decode(r *uper.UperReader) error {
 			// decode Cp_ExtensionC3_r16 optional
 			if Cp_ExtensionC3_r16Present {
 				var tmp_int_Cp_ExtensionC3_r16 int64
-				if tmp_int_Cp_ExtensionC3_r16, err = extReader.ReadInteger(&uper.Constraint{Lb: 1, Ub: 28}, false); err != nil {
+				if tmp_int_Cp_ExtensionC3_r16, err = extReader.ReadInteger(&aper.Constraint{Lb: 1, Ub: 28}, false); err != nil {
 					return utils.WrapError("Decode Cp_ExtensionC3_r16", err)
 				}
 				ie.Cp_ExtensionC3_r16 = &tmp_int_Cp_ExtensionC3_r16
@@ -504,7 +504,7 @@ func (ie *BWP_UplinkDedicated) Decode(r *uper.UperReader) error {
 				return err
 			}
 
-			extReader := uper.NewReader(bytes.NewReader(extBytes))
+			extReader := aper.NewReader(bytes.NewReader(extBytes))
 
 			Ul_TCI_StateList_r17Present, err := extReader.ReadBool()
 			if err != nil {
@@ -560,7 +560,7 @@ func (ie *BWP_UplinkDedicated) Decode(r *uper.UperReader) error {
 				return err
 			}
 
-			extReader := uper.NewReader(bytes.NewReader(extBytes))
+			extReader := aper.NewReader(bytes.NewReader(extBytes))
 
 			Pucch_ConfigMulticast1_r17Present, err := extReader.ReadBool()
 			if err != nil {
@@ -594,7 +594,7 @@ func (ie *BWP_UplinkDedicated) Decode(r *uper.UperReader) error {
 				return err
 			}
 
-			extReader := uper.NewReader(bytes.NewReader(extBytes))
+			extReader := aper.NewReader(bytes.NewReader(extBytes))
 
 			PathlossReferenceRSToAddModList_r17Present, err := extReader.ReadBool()
 			if err != nil {
@@ -606,7 +606,7 @@ func (ie *BWP_UplinkDedicated) Decode(r *uper.UperReader) error {
 			}
 			// decode PathlossReferenceRSToAddModList_r17 optional
 			if PathlossReferenceRSToAddModList_r17Present {
-				tmp_PathlossReferenceRSToAddModList_r17 := utils.NewSequence[*PathlossReferenceRS_r17]([]*PathlossReferenceRS_r17{}, uper.Constraint{Lb: 1, Ub: maxNrofPathlossReferenceRSs_r17}, false)
+				tmp_PathlossReferenceRSToAddModList_r17 := utils.NewSequence[*PathlossReferenceRS_r17]([]*PathlossReferenceRS_r17{}, aper.Constraint{Lb: 1, Ub: maxNrofPathlossReferenceRSs_r17}, false)
 				fn_PathlossReferenceRSToAddModList_r17 := func() *PathlossReferenceRS_r17 {
 					return new(PathlossReferenceRS_r17)
 				}
@@ -620,7 +620,7 @@ func (ie *BWP_UplinkDedicated) Decode(r *uper.UperReader) error {
 			}
 			// decode PathlossReferenceRSToReleaseList_r17 optional
 			if PathlossReferenceRSToReleaseList_r17Present {
-				tmp_PathlossReferenceRSToReleaseList_r17 := utils.NewSequence[*PathlossReferenceRS_Id_r17]([]*PathlossReferenceRS_Id_r17{}, uper.Constraint{Lb: 1, Ub: maxNrofPathlossReferenceRSs_r17}, false)
+				tmp_PathlossReferenceRSToReleaseList_r17 := utils.NewSequence[*PathlossReferenceRS_Id_r17]([]*PathlossReferenceRS_Id_r17{}, aper.Constraint{Lb: 1, Ub: maxNrofPathlossReferenceRSs_r17}, false)
 				fn_PathlossReferenceRSToReleaseList_r17 := func() *PathlossReferenceRS_Id_r17 {
 					return new(PathlossReferenceRS_Id_r17)
 				}

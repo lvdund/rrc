@@ -3,7 +3,7 @@ package ies
 import (
 	"bytes"
 
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -36,11 +36,11 @@ type RA_InformationCommon_r16 struct {
 	DlPathlossRSRP_r17                             *RSRP_Range                                                              `optional,ext-4`
 	IntendedSIBs_r17                               []SIB_Type_r17                                                           `lb:1,ub:maxSIB,optional,ext-4`
 	SsbsForSI_Acquisition_r17                      []SSB_Index                                                              `lb:1,ub:maxNrofSSBs_r16,optional,ext-4`
-	MsgA_PUSCH_PayloadSize_r17                     *uper.BitString                                                          `lb:5,ub:5,optional,ext-4`
+	MsgA_PUSCH_PayloadSize_r17                     *aper.BitString                                                          `lb:5,ub:5,optional,ext-4`
 	OnDemandSISuccess_r17                          *RA_InformationCommon_r16_onDemandSISuccess_r17                          `optional,ext-4`
 }
 
-func (ie *RA_InformationCommon_r16) Encode(w *uper.UperWriter) error {
+func (ie *RA_InformationCommon_r16) Encode(w *aper.AperWriter) error {
 	var err error
 	hasExtensions := ie.PerRAInfoList_v1660 != nil || ie.Msg1_SCS_From_prach_ConfigurationIndex_r16 != nil || ie.Msg1_SCS_From_prach_ConfigurationIndexCFRA_r16 != nil || ie.MsgA_RO_FrequencyStart_r17 != nil || ie.MsgA_RO_FrequencyStartCFRA_r17 != nil || ie.MsgA_SubcarrierSpacing_r17 != nil || ie.MsgA_RO_FDM_r17 != nil || ie.MsgA_RO_FDMCFRA_r17 != nil || ie.MsgA_SCS_From_prach_ConfigurationIndex_r17 != nil || ie.MsgA_TransMax_r17 != nil || ie.MsgA_MCS_r17 != nil || ie.NrofPRBs_PerMsgA_PO_r17 != nil || ie.MsgA_PUSCH_TimeDomainAllocation_r17 != nil || ie.FrequencyStartMsgA_PUSCH_r17 != nil || ie.NrofMsgA_PO_FDM_r17 != nil || ie.DlPathlossRSRP_r17 != nil || len(ie.IntendedSIBs_r17) > 0 || len(ie.SsbsForSI_Acquisition_r17) > 0 || ie.MsgA_PUSCH_PayloadSize_r17 != nil || ie.OnDemandSISuccess_r17 != nil
 	preambleBits := []bool{hasExtensions, ie.Msg1_FrequencyStart_r16 != nil, ie.Msg1_FrequencyStartCFRA_r16 != nil, ie.Msg1_SubcarrierSpacing_r16 != nil, ie.Msg1_SubcarrierSpacingCFRA_r16 != nil, ie.Msg1_FDM_r16 != nil, ie.Msg1_FDMCFRA_r16 != nil}
@@ -52,19 +52,19 @@ func (ie *RA_InformationCommon_r16) Encode(w *uper.UperWriter) error {
 	if err = ie.AbsoluteFrequencyPointA_r16.Encode(w); err != nil {
 		return utils.WrapError("Encode AbsoluteFrequencyPointA_r16", err)
 	}
-	if err = w.WriteInteger(ie.LocationAndBandwidth_r16, &uper.Constraint{Lb: 0, Ub: 37949}, false); err != nil {
+	if err = w.WriteInteger(ie.LocationAndBandwidth_r16, &aper.Constraint{Lb: 0, Ub: 37949}, false); err != nil {
 		return utils.WrapError("WriteInteger LocationAndBandwidth_r16", err)
 	}
 	if err = ie.SubcarrierSpacing_r16.Encode(w); err != nil {
 		return utils.WrapError("Encode SubcarrierSpacing_r16", err)
 	}
 	if ie.Msg1_FrequencyStart_r16 != nil {
-		if err = w.WriteInteger(*ie.Msg1_FrequencyStart_r16, &uper.Constraint{Lb: 0, Ub: maxNrofPhysicalResourceBlocks_1}, false); err != nil {
+		if err = w.WriteInteger(*ie.Msg1_FrequencyStart_r16, &aper.Constraint{Lb: 0, Ub: maxNrofPhysicalResourceBlocks_1}, false); err != nil {
 			return utils.WrapError("Encode Msg1_FrequencyStart_r16", err)
 		}
 	}
 	if ie.Msg1_FrequencyStartCFRA_r16 != nil {
-		if err = w.WriteInteger(*ie.Msg1_FrequencyStartCFRA_r16, &uper.Constraint{Lb: 0, Ub: maxNrofPhysicalResourceBlocks_1}, false); err != nil {
+		if err = w.WriteInteger(*ie.Msg1_FrequencyStartCFRA_r16, &aper.Constraint{Lb: 0, Ub: maxNrofPhysicalResourceBlocks_1}, false); err != nil {
 			return utils.WrapError("Encode Msg1_FrequencyStartCFRA_r16", err)
 		}
 	}
@@ -101,7 +101,7 @@ func (ie *RA_InformationCommon_r16) Encode(w *uper.UperWriter) error {
 		// encode extension group 1
 		if extBitmap[0] {
 			extBuf := new(bytes.Buffer)
-			extWriter := uper.NewWriter(extBuf)
+			extWriter := aper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 1
 			optionals_ext_1 := []bool{ie.PerRAInfoList_v1660 != nil}
@@ -130,7 +130,7 @@ func (ie *RA_InformationCommon_r16) Encode(w *uper.UperWriter) error {
 		// encode extension group 2
 		if extBitmap[1] {
 			extBuf := new(bytes.Buffer)
-			extWriter := uper.NewWriter(extBuf)
+			extWriter := aper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 2
 			optionals_ext_2 := []bool{ie.Msg1_SCS_From_prach_ConfigurationIndex_r16 != nil}
@@ -159,7 +159,7 @@ func (ie *RA_InformationCommon_r16) Encode(w *uper.UperWriter) error {
 		// encode extension group 3
 		if extBitmap[2] {
 			extBuf := new(bytes.Buffer)
-			extWriter := uper.NewWriter(extBuf)
+			extWriter := aper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 3
 			optionals_ext_3 := []bool{ie.Msg1_SCS_From_prach_ConfigurationIndexCFRA_r16 != nil}
@@ -188,7 +188,7 @@ func (ie *RA_InformationCommon_r16) Encode(w *uper.UperWriter) error {
 		// encode extension group 4
 		if extBitmap[3] {
 			extBuf := new(bytes.Buffer)
-			extWriter := uper.NewWriter(extBuf)
+			extWriter := aper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 4
 			optionals_ext_4 := []bool{ie.MsgA_RO_FrequencyStart_r17 != nil, ie.MsgA_RO_FrequencyStartCFRA_r17 != nil, ie.MsgA_SubcarrierSpacing_r17 != nil, ie.MsgA_RO_FDM_r17 != nil, ie.MsgA_RO_FDMCFRA_r17 != nil, ie.MsgA_SCS_From_prach_ConfigurationIndex_r17 != nil, ie.MsgA_TransMax_r17 != nil, ie.MsgA_MCS_r17 != nil, ie.NrofPRBs_PerMsgA_PO_r17 != nil, ie.MsgA_PUSCH_TimeDomainAllocation_r17 != nil, ie.FrequencyStartMsgA_PUSCH_r17 != nil, ie.NrofMsgA_PO_FDM_r17 != nil, ie.DlPathlossRSRP_r17 != nil, len(ie.IntendedSIBs_r17) > 0, len(ie.SsbsForSI_Acquisition_r17) > 0, ie.MsgA_PUSCH_PayloadSize_r17 != nil, ie.OnDemandSISuccess_r17 != nil}
@@ -200,13 +200,13 @@ func (ie *RA_InformationCommon_r16) Encode(w *uper.UperWriter) error {
 
 			// encode MsgA_RO_FrequencyStart_r17 optional
 			if ie.MsgA_RO_FrequencyStart_r17 != nil {
-				if err = extWriter.WriteInteger(*ie.MsgA_RO_FrequencyStart_r17, &uper.Constraint{Lb: 0, Ub: maxNrofPhysicalResourceBlocks_1}, false); err != nil {
+				if err = extWriter.WriteInteger(*ie.MsgA_RO_FrequencyStart_r17, &aper.Constraint{Lb: 0, Ub: maxNrofPhysicalResourceBlocks_1}, false); err != nil {
 					return utils.WrapError("Encode MsgA_RO_FrequencyStart_r17", err)
 				}
 			}
 			// encode MsgA_RO_FrequencyStartCFRA_r17 optional
 			if ie.MsgA_RO_FrequencyStartCFRA_r17 != nil {
-				if err = extWriter.WriteInteger(*ie.MsgA_RO_FrequencyStartCFRA_r17, &uper.Constraint{Lb: 0, Ub: maxNrofPhysicalResourceBlocks_1}, false); err != nil {
+				if err = extWriter.WriteInteger(*ie.MsgA_RO_FrequencyStartCFRA_r17, &aper.Constraint{Lb: 0, Ub: maxNrofPhysicalResourceBlocks_1}, false); err != nil {
 					return utils.WrapError("Encode MsgA_RO_FrequencyStartCFRA_r17", err)
 				}
 			}
@@ -242,25 +242,25 @@ func (ie *RA_InformationCommon_r16) Encode(w *uper.UperWriter) error {
 			}
 			// encode MsgA_MCS_r17 optional
 			if ie.MsgA_MCS_r17 != nil {
-				if err = extWriter.WriteInteger(*ie.MsgA_MCS_r17, &uper.Constraint{Lb: 0, Ub: 15}, false); err != nil {
+				if err = extWriter.WriteInteger(*ie.MsgA_MCS_r17, &aper.Constraint{Lb: 0, Ub: 15}, false); err != nil {
 					return utils.WrapError("Encode MsgA_MCS_r17", err)
 				}
 			}
 			// encode NrofPRBs_PerMsgA_PO_r17 optional
 			if ie.NrofPRBs_PerMsgA_PO_r17 != nil {
-				if err = extWriter.WriteInteger(*ie.NrofPRBs_PerMsgA_PO_r17, &uper.Constraint{Lb: 1, Ub: 32}, false); err != nil {
+				if err = extWriter.WriteInteger(*ie.NrofPRBs_PerMsgA_PO_r17, &aper.Constraint{Lb: 1, Ub: 32}, false); err != nil {
 					return utils.WrapError("Encode NrofPRBs_PerMsgA_PO_r17", err)
 				}
 			}
 			// encode MsgA_PUSCH_TimeDomainAllocation_r17 optional
 			if ie.MsgA_PUSCH_TimeDomainAllocation_r17 != nil {
-				if err = extWriter.WriteInteger(*ie.MsgA_PUSCH_TimeDomainAllocation_r17, &uper.Constraint{Lb: 1, Ub: maxNrofUL_Allocations}, false); err != nil {
+				if err = extWriter.WriteInteger(*ie.MsgA_PUSCH_TimeDomainAllocation_r17, &aper.Constraint{Lb: 1, Ub: maxNrofUL_Allocations}, false); err != nil {
 					return utils.WrapError("Encode MsgA_PUSCH_TimeDomainAllocation_r17", err)
 				}
 			}
 			// encode FrequencyStartMsgA_PUSCH_r17 optional
 			if ie.FrequencyStartMsgA_PUSCH_r17 != nil {
-				if err = extWriter.WriteInteger(*ie.FrequencyStartMsgA_PUSCH_r17, &uper.Constraint{Lb: 0, Ub: maxNrofPhysicalResourceBlocks_1}, false); err != nil {
+				if err = extWriter.WriteInteger(*ie.FrequencyStartMsgA_PUSCH_r17, &aper.Constraint{Lb: 0, Ub: maxNrofPhysicalResourceBlocks_1}, false); err != nil {
 					return utils.WrapError("Encode FrequencyStartMsgA_PUSCH_r17", err)
 				}
 			}
@@ -278,7 +278,7 @@ func (ie *RA_InformationCommon_r16) Encode(w *uper.UperWriter) error {
 			}
 			// encode IntendedSIBs_r17 optional
 			if len(ie.IntendedSIBs_r17) > 0 {
-				tmp_IntendedSIBs_r17 := utils.NewSequence[*SIB_Type_r17]([]*SIB_Type_r17{}, uper.Constraint{Lb: 1, Ub: maxSIB}, false)
+				tmp_IntendedSIBs_r17 := utils.NewSequence[*SIB_Type_r17]([]*SIB_Type_r17{}, aper.Constraint{Lb: 1, Ub: maxSIB}, false)
 				for _, i := range ie.IntendedSIBs_r17 {
 					tmp_IntendedSIBs_r17.Value = append(tmp_IntendedSIBs_r17.Value, &i)
 				}
@@ -288,7 +288,7 @@ func (ie *RA_InformationCommon_r16) Encode(w *uper.UperWriter) error {
 			}
 			// encode SsbsForSI_Acquisition_r17 optional
 			if len(ie.SsbsForSI_Acquisition_r17) > 0 {
-				tmp_SsbsForSI_Acquisition_r17 := utils.NewSequence[*SSB_Index]([]*SSB_Index{}, uper.Constraint{Lb: 1, Ub: maxNrofSSBs_r16}, false)
+				tmp_SsbsForSI_Acquisition_r17 := utils.NewSequence[*SSB_Index]([]*SSB_Index{}, aper.Constraint{Lb: 1, Ub: maxNrofSSBs_r16}, false)
 				for _, i := range ie.SsbsForSI_Acquisition_r17 {
 					tmp_SsbsForSI_Acquisition_r17.Value = append(tmp_SsbsForSI_Acquisition_r17.Value, &i)
 				}
@@ -298,7 +298,7 @@ func (ie *RA_InformationCommon_r16) Encode(w *uper.UperWriter) error {
 			}
 			// encode MsgA_PUSCH_PayloadSize_r17 optional
 			if ie.MsgA_PUSCH_PayloadSize_r17 != nil {
-				if err = extWriter.WriteBitString(ie.MsgA_PUSCH_PayloadSize_r17.Bytes, uint(ie.MsgA_PUSCH_PayloadSize_r17.NumBits), &uper.Constraint{Lb: 5, Ub: 5}, false); err != nil {
+				if err = extWriter.WriteBitString(ie.MsgA_PUSCH_PayloadSize_r17.Bytes, uint(ie.MsgA_PUSCH_PayloadSize_r17.NumBits), &aper.Constraint{Lb: 5, Ub: 5}, false); err != nil {
 					return utils.WrapError("Encode MsgA_PUSCH_PayloadSize_r17", err)
 				}
 			}
@@ -321,7 +321,7 @@ func (ie *RA_InformationCommon_r16) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *RA_InformationCommon_r16) Decode(r *uper.UperReader) error {
+func (ie *RA_InformationCommon_r16) Decode(r *aper.AperReader) error {
 	var err error
 	var extensionBit bool
 	if extensionBit, err = r.ReadBool(); err != nil {
@@ -355,7 +355,7 @@ func (ie *RA_InformationCommon_r16) Decode(r *uper.UperReader) error {
 		return utils.WrapError("Decode AbsoluteFrequencyPointA_r16", err)
 	}
 	var tmp_int_LocationAndBandwidth_r16 int64
-	if tmp_int_LocationAndBandwidth_r16, err = r.ReadInteger(&uper.Constraint{Lb: 0, Ub: 37949}, false); err != nil {
+	if tmp_int_LocationAndBandwidth_r16, err = r.ReadInteger(&aper.Constraint{Lb: 0, Ub: 37949}, false); err != nil {
 		return utils.WrapError("ReadInteger LocationAndBandwidth_r16", err)
 	}
 	ie.LocationAndBandwidth_r16 = tmp_int_LocationAndBandwidth_r16
@@ -364,14 +364,14 @@ func (ie *RA_InformationCommon_r16) Decode(r *uper.UperReader) error {
 	}
 	if Msg1_FrequencyStart_r16Present {
 		var tmp_int_Msg1_FrequencyStart_r16 int64
-		if tmp_int_Msg1_FrequencyStart_r16, err = r.ReadInteger(&uper.Constraint{Lb: 0, Ub: maxNrofPhysicalResourceBlocks_1}, false); err != nil {
+		if tmp_int_Msg1_FrequencyStart_r16, err = r.ReadInteger(&aper.Constraint{Lb: 0, Ub: maxNrofPhysicalResourceBlocks_1}, false); err != nil {
 			return utils.WrapError("Decode Msg1_FrequencyStart_r16", err)
 		}
 		ie.Msg1_FrequencyStart_r16 = &tmp_int_Msg1_FrequencyStart_r16
 	}
 	if Msg1_FrequencyStartCFRA_r16Present {
 		var tmp_int_Msg1_FrequencyStartCFRA_r16 int64
-		if tmp_int_Msg1_FrequencyStartCFRA_r16, err = r.ReadInteger(&uper.Constraint{Lb: 0, Ub: maxNrofPhysicalResourceBlocks_1}, false); err != nil {
+		if tmp_int_Msg1_FrequencyStartCFRA_r16, err = r.ReadInteger(&aper.Constraint{Lb: 0, Ub: maxNrofPhysicalResourceBlocks_1}, false); err != nil {
 			return utils.WrapError("Decode Msg1_FrequencyStartCFRA_r16", err)
 		}
 		ie.Msg1_FrequencyStartCFRA_r16 = &tmp_int_Msg1_FrequencyStartCFRA_r16
@@ -418,7 +418,7 @@ func (ie *RA_InformationCommon_r16) Decode(r *uper.UperReader) error {
 				return err
 			}
 
-			extReader := uper.NewReader(bytes.NewReader(extBytes))
+			extReader := aper.NewReader(bytes.NewReader(extBytes))
 
 			PerRAInfoList_v1660Present, err := extReader.ReadBool()
 			if err != nil {
@@ -439,7 +439,7 @@ func (ie *RA_InformationCommon_r16) Decode(r *uper.UperReader) error {
 				return err
 			}
 
-			extReader := uper.NewReader(bytes.NewReader(extBytes))
+			extReader := aper.NewReader(bytes.NewReader(extBytes))
 
 			Msg1_SCS_From_prach_ConfigurationIndex_r16Present, err := extReader.ReadBool()
 			if err != nil {
@@ -460,7 +460,7 @@ func (ie *RA_InformationCommon_r16) Decode(r *uper.UperReader) error {
 				return err
 			}
 
-			extReader := uper.NewReader(bytes.NewReader(extBytes))
+			extReader := aper.NewReader(bytes.NewReader(extBytes))
 
 			Msg1_SCS_From_prach_ConfigurationIndexCFRA_r16Present, err := extReader.ReadBool()
 			if err != nil {
@@ -481,7 +481,7 @@ func (ie *RA_InformationCommon_r16) Decode(r *uper.UperReader) error {
 				return err
 			}
 
-			extReader := uper.NewReader(bytes.NewReader(extBytes))
+			extReader := aper.NewReader(bytes.NewReader(extBytes))
 
 			MsgA_RO_FrequencyStart_r17Present, err := extReader.ReadBool()
 			if err != nil {
@@ -554,7 +554,7 @@ func (ie *RA_InformationCommon_r16) Decode(r *uper.UperReader) error {
 			// decode MsgA_RO_FrequencyStart_r17 optional
 			if MsgA_RO_FrequencyStart_r17Present {
 				var tmp_int_MsgA_RO_FrequencyStart_r17 int64
-				if tmp_int_MsgA_RO_FrequencyStart_r17, err = extReader.ReadInteger(&uper.Constraint{Lb: 0, Ub: maxNrofPhysicalResourceBlocks_1}, false); err != nil {
+				if tmp_int_MsgA_RO_FrequencyStart_r17, err = extReader.ReadInteger(&aper.Constraint{Lb: 0, Ub: maxNrofPhysicalResourceBlocks_1}, false); err != nil {
 					return utils.WrapError("Decode MsgA_RO_FrequencyStart_r17", err)
 				}
 				ie.MsgA_RO_FrequencyStart_r17 = &tmp_int_MsgA_RO_FrequencyStart_r17
@@ -562,7 +562,7 @@ func (ie *RA_InformationCommon_r16) Decode(r *uper.UperReader) error {
 			// decode MsgA_RO_FrequencyStartCFRA_r17 optional
 			if MsgA_RO_FrequencyStartCFRA_r17Present {
 				var tmp_int_MsgA_RO_FrequencyStartCFRA_r17 int64
-				if tmp_int_MsgA_RO_FrequencyStartCFRA_r17, err = extReader.ReadInteger(&uper.Constraint{Lb: 0, Ub: maxNrofPhysicalResourceBlocks_1}, false); err != nil {
+				if tmp_int_MsgA_RO_FrequencyStartCFRA_r17, err = extReader.ReadInteger(&aper.Constraint{Lb: 0, Ub: maxNrofPhysicalResourceBlocks_1}, false); err != nil {
 					return utils.WrapError("Decode MsgA_RO_FrequencyStartCFRA_r17", err)
 				}
 				ie.MsgA_RO_FrequencyStartCFRA_r17 = &tmp_int_MsgA_RO_FrequencyStartCFRA_r17
@@ -605,7 +605,7 @@ func (ie *RA_InformationCommon_r16) Decode(r *uper.UperReader) error {
 			// decode MsgA_MCS_r17 optional
 			if MsgA_MCS_r17Present {
 				var tmp_int_MsgA_MCS_r17 int64
-				if tmp_int_MsgA_MCS_r17, err = extReader.ReadInteger(&uper.Constraint{Lb: 0, Ub: 15}, false); err != nil {
+				if tmp_int_MsgA_MCS_r17, err = extReader.ReadInteger(&aper.Constraint{Lb: 0, Ub: 15}, false); err != nil {
 					return utils.WrapError("Decode MsgA_MCS_r17", err)
 				}
 				ie.MsgA_MCS_r17 = &tmp_int_MsgA_MCS_r17
@@ -613,7 +613,7 @@ func (ie *RA_InformationCommon_r16) Decode(r *uper.UperReader) error {
 			// decode NrofPRBs_PerMsgA_PO_r17 optional
 			if NrofPRBs_PerMsgA_PO_r17Present {
 				var tmp_int_NrofPRBs_PerMsgA_PO_r17 int64
-				if tmp_int_NrofPRBs_PerMsgA_PO_r17, err = extReader.ReadInteger(&uper.Constraint{Lb: 1, Ub: 32}, false); err != nil {
+				if tmp_int_NrofPRBs_PerMsgA_PO_r17, err = extReader.ReadInteger(&aper.Constraint{Lb: 1, Ub: 32}, false); err != nil {
 					return utils.WrapError("Decode NrofPRBs_PerMsgA_PO_r17", err)
 				}
 				ie.NrofPRBs_PerMsgA_PO_r17 = &tmp_int_NrofPRBs_PerMsgA_PO_r17
@@ -621,7 +621,7 @@ func (ie *RA_InformationCommon_r16) Decode(r *uper.UperReader) error {
 			// decode MsgA_PUSCH_TimeDomainAllocation_r17 optional
 			if MsgA_PUSCH_TimeDomainAllocation_r17Present {
 				var tmp_int_MsgA_PUSCH_TimeDomainAllocation_r17 int64
-				if tmp_int_MsgA_PUSCH_TimeDomainAllocation_r17, err = extReader.ReadInteger(&uper.Constraint{Lb: 1, Ub: maxNrofUL_Allocations}, false); err != nil {
+				if tmp_int_MsgA_PUSCH_TimeDomainAllocation_r17, err = extReader.ReadInteger(&aper.Constraint{Lb: 1, Ub: maxNrofUL_Allocations}, false); err != nil {
 					return utils.WrapError("Decode MsgA_PUSCH_TimeDomainAllocation_r17", err)
 				}
 				ie.MsgA_PUSCH_TimeDomainAllocation_r17 = &tmp_int_MsgA_PUSCH_TimeDomainAllocation_r17
@@ -629,7 +629,7 @@ func (ie *RA_InformationCommon_r16) Decode(r *uper.UperReader) error {
 			// decode FrequencyStartMsgA_PUSCH_r17 optional
 			if FrequencyStartMsgA_PUSCH_r17Present {
 				var tmp_int_FrequencyStartMsgA_PUSCH_r17 int64
-				if tmp_int_FrequencyStartMsgA_PUSCH_r17, err = extReader.ReadInteger(&uper.Constraint{Lb: 0, Ub: maxNrofPhysicalResourceBlocks_1}, false); err != nil {
+				if tmp_int_FrequencyStartMsgA_PUSCH_r17, err = extReader.ReadInteger(&aper.Constraint{Lb: 0, Ub: maxNrofPhysicalResourceBlocks_1}, false); err != nil {
 					return utils.WrapError("Decode FrequencyStartMsgA_PUSCH_r17", err)
 				}
 				ie.FrequencyStartMsgA_PUSCH_r17 = &tmp_int_FrequencyStartMsgA_PUSCH_r17
@@ -650,7 +650,7 @@ func (ie *RA_InformationCommon_r16) Decode(r *uper.UperReader) error {
 			}
 			// decode IntendedSIBs_r17 optional
 			if IntendedSIBs_r17Present {
-				tmp_IntendedSIBs_r17 := utils.NewSequence[*SIB_Type_r17]([]*SIB_Type_r17{}, uper.Constraint{Lb: 1, Ub: maxSIB}, false)
+				tmp_IntendedSIBs_r17 := utils.NewSequence[*SIB_Type_r17]([]*SIB_Type_r17{}, aper.Constraint{Lb: 1, Ub: maxSIB}, false)
 				fn_IntendedSIBs_r17 := func() *SIB_Type_r17 {
 					return new(SIB_Type_r17)
 				}
@@ -664,7 +664,7 @@ func (ie *RA_InformationCommon_r16) Decode(r *uper.UperReader) error {
 			}
 			// decode SsbsForSI_Acquisition_r17 optional
 			if SsbsForSI_Acquisition_r17Present {
-				tmp_SsbsForSI_Acquisition_r17 := utils.NewSequence[*SSB_Index]([]*SSB_Index{}, uper.Constraint{Lb: 1, Ub: maxNrofSSBs_r16}, false)
+				tmp_SsbsForSI_Acquisition_r17 := utils.NewSequence[*SSB_Index]([]*SSB_Index{}, aper.Constraint{Lb: 1, Ub: maxNrofSSBs_r16}, false)
 				fn_SsbsForSI_Acquisition_r17 := func() *SSB_Index {
 					return new(SSB_Index)
 				}
@@ -680,10 +680,10 @@ func (ie *RA_InformationCommon_r16) Decode(r *uper.UperReader) error {
 			if MsgA_PUSCH_PayloadSize_r17Present {
 				var tmp_bs_MsgA_PUSCH_PayloadSize_r17 []byte
 				var n_MsgA_PUSCH_PayloadSize_r17 uint
-				if tmp_bs_MsgA_PUSCH_PayloadSize_r17, n_MsgA_PUSCH_PayloadSize_r17, err = extReader.ReadBitString(&uper.Constraint{Lb: 5, Ub: 5}, false); err != nil {
+				if tmp_bs_MsgA_PUSCH_PayloadSize_r17, n_MsgA_PUSCH_PayloadSize_r17, err = extReader.ReadBitString(&aper.Constraint{Lb: 5, Ub: 5}, false); err != nil {
 					return utils.WrapError("Decode MsgA_PUSCH_PayloadSize_r17", err)
 				}
-				tmp_bitstring := uper.BitString{
+				tmp_bitstring := aper.BitString{
 					Bytes:   tmp_bs_MsgA_PUSCH_PayloadSize_r17,
 					NumBits: uint64(n_MsgA_PUSCH_PayloadSize_r17),
 				}

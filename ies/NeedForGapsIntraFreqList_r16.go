@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -9,9 +9,9 @@ type NeedForGapsIntraFreqList_r16 struct {
 	Value []NeedForGapsIntraFreq_r16 `lb:1,ub:maxNrofServingCells,madatory`
 }
 
-func (ie *NeedForGapsIntraFreqList_r16) Encode(w *uper.UperWriter) error {
+func (ie *NeedForGapsIntraFreqList_r16) Encode(w *aper.AperWriter) error {
 	var err error
-	tmp := utils.NewSequence[*NeedForGapsIntraFreq_r16]([]*NeedForGapsIntraFreq_r16{}, uper.Constraint{Lb: 1, Ub: maxNrofServingCells}, false)
+	tmp := utils.NewSequence[*NeedForGapsIntraFreq_r16]([]*NeedForGapsIntraFreq_r16{}, aper.Constraint{Lb: 1, Ub: maxNrofServingCells}, false)
 	for _, i := range ie.Value {
 		tmp.Value = append(tmp.Value, &i)
 	}
@@ -21,9 +21,9 @@ func (ie *NeedForGapsIntraFreqList_r16) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *NeedForGapsIntraFreqList_r16) Decode(r *uper.UperReader) error {
+func (ie *NeedForGapsIntraFreqList_r16) Decode(r *aper.AperReader) error {
 	var err error
-	tmp := utils.NewSequence[*NeedForGapsIntraFreq_r16]([]*NeedForGapsIntraFreq_r16{}, uper.Constraint{Lb: 1, Ub: maxNrofServingCells}, false)
+	tmp := utils.NewSequence[*NeedForGapsIntraFreq_r16]([]*NeedForGapsIntraFreq_r16{}, aper.Constraint{Lb: 1, Ub: maxNrofServingCells}, false)
 	fn := func() *NeedForGapsIntraFreq_r16 {
 		return new(NeedForGapsIntraFreq_r16)
 	}

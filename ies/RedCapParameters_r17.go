@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -10,7 +10,7 @@ type RedCapParameters_r17 struct {
 	SupportOf16DRB_RedCap_r17 *RedCapParameters_r17_supportOf16DRB_RedCap_r17 `optional`
 }
 
-func (ie *RedCapParameters_r17) Encode(w *uper.UperWriter) error {
+func (ie *RedCapParameters_r17) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.SupportOfRedCap_r17 != nil, ie.SupportOf16DRB_RedCap_r17 != nil}
 	for _, bit := range preambleBits {
@@ -31,7 +31,7 @@ func (ie *RedCapParameters_r17) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *RedCapParameters_r17) Decode(r *uper.UperReader) error {
+func (ie *RedCapParameters_r17) Decode(r *aper.AperReader) error {
 	var err error
 	var SupportOfRedCap_r17Present bool
 	if SupportOfRedCap_r17Present, err = r.ReadBool(); err != nil {

@@ -3,7 +3,7 @@ package ies
 import (
 	"bytes"
 
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -41,7 +41,7 @@ type CSI_ReportConfig struct {
 	CodebookConfig_v1730                       *CodebookConfig_v1730                                       `optional,ext-5`
 }
 
-func (ie *CSI_ReportConfig) Encode(w *uper.UperWriter) error {
+func (ie *CSI_ReportConfig) Encode(w *aper.AperWriter) error {
 	var err error
 	hasExtensions := ie.SemiPersistentOnPUSCH_v1530 != nil || len(ie.SemiPersistentOnPUSCH_v1610) > 0 || len(ie.Aperiodic_v1610) > 0 || ie.ReportQuantity_r16 != nil || ie.CodebookConfig_r16 != nil || ie.Cqi_BitsPerSubband_r17 != nil || ie.GroupBasedBeamReporting_v1710 != nil || ie.CodebookConfig_r17 != nil || ie.SharedCMR_r17 != nil || ie.Csi_ReportMode_r17 != nil || ie.NumberOfSingleTRP_CSI_Mode1_r17 != nil || ie.ReportQuantity_r17 != nil || len(ie.SemiPersistentOnPUSCH_v1720) > 0 || len(ie.Aperiodic_v1720) > 0 || ie.CodebookConfig_v1730 != nil
 	preambleBits := []bool{hasExtensions, ie.Carrier != nil, ie.Csi_IM_ResourcesForInterference != nil, ie.Nzp_CSI_RS_ResourcesForInterference != nil, ie.ReportQuantity != nil, ie.ReportFreqConfiguration != nil}
@@ -71,9 +71,9 @@ func (ie *CSI_ReportConfig) Encode(w *uper.UperWriter) error {
 			return utils.WrapError("Encode Nzp_CSI_RS_ResourcesForInterference", err)
 		}
 	}
-	tmp_ReportConfigType := utils.NewSequence[*utils.INTEGER]([]*utils.INTEGER{}, uper.Constraint{Lb: 1, Ub: maxNrofUL_Allocations}, false)
+	tmp_ReportConfigType := utils.NewSequence[*utils.INTEGER]([]*utils.INTEGER{}, aper.Constraint{Lb: 1, Ub: maxNrofUL_Allocations}, false)
 	for _, i := range ie.ReportConfigType {
-		tmp_ie := utils.NewINTEGER(int64(i), uper.Constraint{Lb: 0, Ub: 32}, false)
+		tmp_ie := utils.NewINTEGER(int64(i), aper.Constraint{Lb: 0, Ub: 32}, false)
 		tmp_ReportConfigType.Value = append(tmp_ReportConfigType.Value, &tmp_ie)
 	}
 	if err = tmp_ReportConfigType.Encode(w); err != nil {
@@ -99,7 +99,7 @@ func (ie *CSI_ReportConfig) Encode(w *uper.UperWriter) error {
 		// encode extension group 1
 		if extBitmap[0] {
 			extBuf := new(bytes.Buffer)
-			extWriter := uper.NewWriter(extBuf)
+			extWriter := aper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 1
 			optionals_ext_1 := []bool{ie.SemiPersistentOnPUSCH_v1530 != nil}
@@ -128,7 +128,7 @@ func (ie *CSI_ReportConfig) Encode(w *uper.UperWriter) error {
 		// encode extension group 2
 		if extBitmap[1] {
 			extBuf := new(bytes.Buffer)
-			extWriter := uper.NewWriter(extBuf)
+			extWriter := aper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 2
 			optionals_ext_2 := []bool{len(ie.SemiPersistentOnPUSCH_v1610) > 0, len(ie.Aperiodic_v1610) > 0, ie.ReportQuantity_r16 != nil, ie.CodebookConfig_r16 != nil}
@@ -140,9 +140,9 @@ func (ie *CSI_ReportConfig) Encode(w *uper.UperWriter) error {
 
 			// encode SemiPersistentOnPUSCH_v1610 optional
 			if len(ie.SemiPersistentOnPUSCH_v1610) > 0 {
-				tmp_SemiPersistentOnPUSCH_v1610 := utils.NewSequence[*utils.INTEGER]([]*utils.INTEGER{}, uper.Constraint{Lb: 1, Ub: maxNrofUL_Allocations_r16}, false)
+				tmp_SemiPersistentOnPUSCH_v1610 := utils.NewSequence[*utils.INTEGER]([]*utils.INTEGER{}, aper.Constraint{Lb: 1, Ub: maxNrofUL_Allocations_r16}, false)
 				for _, i := range ie.SemiPersistentOnPUSCH_v1610 {
-					tmp_ie := utils.NewINTEGER(int64(i), uper.Constraint{Lb: 0, Ub: 32}, false)
+					tmp_ie := utils.NewINTEGER(int64(i), aper.Constraint{Lb: 0, Ub: 32}, false)
 					tmp_SemiPersistentOnPUSCH_v1610.Value = append(tmp_SemiPersistentOnPUSCH_v1610.Value, &tmp_ie)
 				}
 				if err = tmp_SemiPersistentOnPUSCH_v1610.Encode(extWriter); err != nil {
@@ -151,9 +151,9 @@ func (ie *CSI_ReportConfig) Encode(w *uper.UperWriter) error {
 			}
 			// encode Aperiodic_v1610 optional
 			if len(ie.Aperiodic_v1610) > 0 {
-				tmp_Aperiodic_v1610 := utils.NewSequence[*utils.INTEGER]([]*utils.INTEGER{}, uper.Constraint{Lb: 1, Ub: maxNrofUL_Allocations_r16}, false)
+				tmp_Aperiodic_v1610 := utils.NewSequence[*utils.INTEGER]([]*utils.INTEGER{}, aper.Constraint{Lb: 1, Ub: maxNrofUL_Allocations_r16}, false)
 				for _, i := range ie.Aperiodic_v1610 {
-					tmp_ie := utils.NewINTEGER(int64(i), uper.Constraint{Lb: 0, Ub: 32}, false)
+					tmp_ie := utils.NewINTEGER(int64(i), aper.Constraint{Lb: 0, Ub: 32}, false)
 					tmp_Aperiodic_v1610.Value = append(tmp_Aperiodic_v1610.Value, &tmp_ie)
 				}
 				if err = tmp_Aperiodic_v1610.Encode(extWriter); err != nil {
@@ -185,7 +185,7 @@ func (ie *CSI_ReportConfig) Encode(w *uper.UperWriter) error {
 		// encode extension group 3
 		if extBitmap[2] {
 			extBuf := new(bytes.Buffer)
-			extWriter := uper.NewWriter(extBuf)
+			extWriter := aper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 3
 			optionals_ext_3 := []bool{ie.Cqi_BitsPerSubband_r17 != nil, ie.GroupBasedBeamReporting_v1710 != nil, ie.CodebookConfig_r17 != nil, ie.SharedCMR_r17 != nil, ie.Csi_ReportMode_r17 != nil, ie.NumberOfSingleTRP_CSI_Mode1_r17 != nil, ie.ReportQuantity_r17 != nil}
@@ -250,7 +250,7 @@ func (ie *CSI_ReportConfig) Encode(w *uper.UperWriter) error {
 		// encode extension group 4
 		if extBitmap[3] {
 			extBuf := new(bytes.Buffer)
-			extWriter := uper.NewWriter(extBuf)
+			extWriter := aper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 4
 			optionals_ext_4 := []bool{len(ie.SemiPersistentOnPUSCH_v1720) > 0, len(ie.Aperiodic_v1720) > 0}
@@ -262,9 +262,9 @@ func (ie *CSI_ReportConfig) Encode(w *uper.UperWriter) error {
 
 			// encode SemiPersistentOnPUSCH_v1720 optional
 			if len(ie.SemiPersistentOnPUSCH_v1720) > 0 {
-				tmp_SemiPersistentOnPUSCH_v1720 := utils.NewSequence[*utils.INTEGER]([]*utils.INTEGER{}, uper.Constraint{Lb: 1, Ub: maxNrofUL_Allocations_r16}, false)
+				tmp_SemiPersistentOnPUSCH_v1720 := utils.NewSequence[*utils.INTEGER]([]*utils.INTEGER{}, aper.Constraint{Lb: 1, Ub: maxNrofUL_Allocations_r16}, false)
 				for _, i := range ie.SemiPersistentOnPUSCH_v1720 {
-					tmp_ie := utils.NewINTEGER(int64(i), uper.Constraint{Lb: 0, Ub: 128}, false)
+					tmp_ie := utils.NewINTEGER(int64(i), aper.Constraint{Lb: 0, Ub: 128}, false)
 					tmp_SemiPersistentOnPUSCH_v1720.Value = append(tmp_SemiPersistentOnPUSCH_v1720.Value, &tmp_ie)
 				}
 				if err = tmp_SemiPersistentOnPUSCH_v1720.Encode(extWriter); err != nil {
@@ -273,9 +273,9 @@ func (ie *CSI_ReportConfig) Encode(w *uper.UperWriter) error {
 			}
 			// encode Aperiodic_v1720 optional
 			if len(ie.Aperiodic_v1720) > 0 {
-				tmp_Aperiodic_v1720 := utils.NewSequence[*utils.INTEGER]([]*utils.INTEGER{}, uper.Constraint{Lb: 1, Ub: maxNrofUL_Allocations_r16}, false)
+				tmp_Aperiodic_v1720 := utils.NewSequence[*utils.INTEGER]([]*utils.INTEGER{}, aper.Constraint{Lb: 1, Ub: maxNrofUL_Allocations_r16}, false)
 				for _, i := range ie.Aperiodic_v1720 {
-					tmp_ie := utils.NewINTEGER(int64(i), uper.Constraint{Lb: 0, Ub: 128}, false)
+					tmp_ie := utils.NewINTEGER(int64(i), aper.Constraint{Lb: 0, Ub: 128}, false)
 					tmp_Aperiodic_v1720.Value = append(tmp_Aperiodic_v1720.Value, &tmp_ie)
 				}
 				if err = tmp_Aperiodic_v1720.Encode(extWriter); err != nil {
@@ -295,7 +295,7 @@ func (ie *CSI_ReportConfig) Encode(w *uper.UperWriter) error {
 		// encode extension group 5
 		if extBitmap[4] {
 			extBuf := new(bytes.Buffer)
-			extWriter := uper.NewWriter(extBuf)
+			extWriter := aper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 5
 			optionals_ext_5 := []bool{ie.CodebookConfig_v1730 != nil}
@@ -324,7 +324,7 @@ func (ie *CSI_ReportConfig) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *CSI_ReportConfig) Decode(r *uper.UperReader) error {
+func (ie *CSI_ReportConfig) Decode(r *aper.AperReader) error {
 	var err error
 	var extensionBit bool
 	if extensionBit, err = r.ReadBool(); err != nil {
@@ -374,9 +374,9 @@ func (ie *CSI_ReportConfig) Decode(r *uper.UperReader) error {
 			return utils.WrapError("Decode Nzp_CSI_RS_ResourcesForInterference", err)
 		}
 	}
-	tmp_ReportConfigType := utils.NewSequence[*utils.INTEGER]([]*utils.INTEGER{}, uper.Constraint{Lb: 1, Ub: maxNrofUL_Allocations}, false)
+	tmp_ReportConfigType := utils.NewSequence[*utils.INTEGER]([]*utils.INTEGER{}, aper.Constraint{Lb: 1, Ub: maxNrofUL_Allocations}, false)
 	fn_ReportConfigType := func() *utils.INTEGER {
-		ie := utils.NewINTEGER(0, uper.Constraint{Lb: 0, Ub: 32}, false)
+		ie := utils.NewINTEGER(0, aper.Constraint{Lb: 0, Ub: 32}, false)
 		return &ie
 	}
 	if err = tmp_ReportConfigType.Decode(r, fn_ReportConfigType); err != nil {
@@ -413,7 +413,7 @@ func (ie *CSI_ReportConfig) Decode(r *uper.UperReader) error {
 				return err
 			}
 
-			extReader := uper.NewReader(bytes.NewReader(extBytes))
+			extReader := aper.NewReader(bytes.NewReader(extBytes))
 
 			SemiPersistentOnPUSCH_v1530Present, err := extReader.ReadBool()
 			if err != nil {
@@ -434,7 +434,7 @@ func (ie *CSI_ReportConfig) Decode(r *uper.UperReader) error {
 				return err
 			}
 
-			extReader := uper.NewReader(bytes.NewReader(extBytes))
+			extReader := aper.NewReader(bytes.NewReader(extBytes))
 
 			SemiPersistentOnPUSCH_v1610Present, err := extReader.ReadBool()
 			if err != nil {
@@ -454,9 +454,9 @@ func (ie *CSI_ReportConfig) Decode(r *uper.UperReader) error {
 			}
 			// decode SemiPersistentOnPUSCH_v1610 optional
 			if SemiPersistentOnPUSCH_v1610Present {
-				tmp_SemiPersistentOnPUSCH_v1610 := utils.NewSequence[*utils.INTEGER]([]*utils.INTEGER{}, uper.Constraint{Lb: 1, Ub: maxNrofUL_Allocations_r16}, false)
+				tmp_SemiPersistentOnPUSCH_v1610 := utils.NewSequence[*utils.INTEGER]([]*utils.INTEGER{}, aper.Constraint{Lb: 1, Ub: maxNrofUL_Allocations_r16}, false)
 				fn_SemiPersistentOnPUSCH_v1610 := func() *utils.INTEGER {
-					ie := utils.NewINTEGER(0, uper.Constraint{Lb: 0, Ub: 32}, false)
+					ie := utils.NewINTEGER(0, aper.Constraint{Lb: 0, Ub: 32}, false)
 					return &ie
 				}
 				if err = tmp_SemiPersistentOnPUSCH_v1610.Decode(extReader, fn_SemiPersistentOnPUSCH_v1610); err != nil {
@@ -469,9 +469,9 @@ func (ie *CSI_ReportConfig) Decode(r *uper.UperReader) error {
 			}
 			// decode Aperiodic_v1610 optional
 			if Aperiodic_v1610Present {
-				tmp_Aperiodic_v1610 := utils.NewSequence[*utils.INTEGER]([]*utils.INTEGER{}, uper.Constraint{Lb: 1, Ub: maxNrofUL_Allocations_r16}, false)
+				tmp_Aperiodic_v1610 := utils.NewSequence[*utils.INTEGER]([]*utils.INTEGER{}, aper.Constraint{Lb: 1, Ub: maxNrofUL_Allocations_r16}, false)
 				fn_Aperiodic_v1610 := func() *utils.INTEGER {
-					ie := utils.NewINTEGER(0, uper.Constraint{Lb: 0, Ub: 32}, false)
+					ie := utils.NewINTEGER(0, aper.Constraint{Lb: 0, Ub: 32}, false)
 					return &ie
 				}
 				if err = tmp_Aperiodic_v1610.Decode(extReader, fn_Aperiodic_v1610); err != nil {
@@ -504,7 +504,7 @@ func (ie *CSI_ReportConfig) Decode(r *uper.UperReader) error {
 				return err
 			}
 
-			extReader := uper.NewReader(bytes.NewReader(extBytes))
+			extReader := aper.NewReader(bytes.NewReader(extBytes))
 
 			Cqi_BitsPerSubband_r17Present, err := extReader.ReadBool()
 			if err != nil {
@@ -591,7 +591,7 @@ func (ie *CSI_ReportConfig) Decode(r *uper.UperReader) error {
 				return err
 			}
 
-			extReader := uper.NewReader(bytes.NewReader(extBytes))
+			extReader := aper.NewReader(bytes.NewReader(extBytes))
 
 			SemiPersistentOnPUSCH_v1720Present, err := extReader.ReadBool()
 			if err != nil {
@@ -603,9 +603,9 @@ func (ie *CSI_ReportConfig) Decode(r *uper.UperReader) error {
 			}
 			// decode SemiPersistentOnPUSCH_v1720 optional
 			if SemiPersistentOnPUSCH_v1720Present {
-				tmp_SemiPersistentOnPUSCH_v1720 := utils.NewSequence[*utils.INTEGER]([]*utils.INTEGER{}, uper.Constraint{Lb: 1, Ub: maxNrofUL_Allocations_r16}, false)
+				tmp_SemiPersistentOnPUSCH_v1720 := utils.NewSequence[*utils.INTEGER]([]*utils.INTEGER{}, aper.Constraint{Lb: 1, Ub: maxNrofUL_Allocations_r16}, false)
 				fn_SemiPersistentOnPUSCH_v1720 := func() *utils.INTEGER {
-					ie := utils.NewINTEGER(0, uper.Constraint{Lb: 0, Ub: 128}, false)
+					ie := utils.NewINTEGER(0, aper.Constraint{Lb: 0, Ub: 128}, false)
 					return &ie
 				}
 				if err = tmp_SemiPersistentOnPUSCH_v1720.Decode(extReader, fn_SemiPersistentOnPUSCH_v1720); err != nil {
@@ -618,9 +618,9 @@ func (ie *CSI_ReportConfig) Decode(r *uper.UperReader) error {
 			}
 			// decode Aperiodic_v1720 optional
 			if Aperiodic_v1720Present {
-				tmp_Aperiodic_v1720 := utils.NewSequence[*utils.INTEGER]([]*utils.INTEGER{}, uper.Constraint{Lb: 1, Ub: maxNrofUL_Allocations_r16}, false)
+				tmp_Aperiodic_v1720 := utils.NewSequence[*utils.INTEGER]([]*utils.INTEGER{}, aper.Constraint{Lb: 1, Ub: maxNrofUL_Allocations_r16}, false)
 				fn_Aperiodic_v1720 := func() *utils.INTEGER {
-					ie := utils.NewINTEGER(0, uper.Constraint{Lb: 0, Ub: 128}, false)
+					ie := utils.NewINTEGER(0, aper.Constraint{Lb: 0, Ub: 128}, false)
 					return &ie
 				}
 				if err = tmp_Aperiodic_v1720.Decode(extReader, fn_Aperiodic_v1720); err != nil {
@@ -639,7 +639,7 @@ func (ie *CSI_ReportConfig) Decode(r *uper.UperReader) error {
 				return err
 			}
 
-			extReader := uper.NewReader(bytes.NewReader(extBytes))
+			extReader := aper.NewReader(bytes.NewReader(extBytes))
 
 			CodebookConfig_v1730Present, err := extReader.ReadBool()
 			if err != nil {

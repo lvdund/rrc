@@ -3,7 +3,7 @@ package ies
 import (
 	"bytes"
 
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -17,7 +17,7 @@ type MeasGapConfig struct {
 	PosMeasGapPreConfigToReleaseList_r17 *PosMeasGapPreConfigToReleaseList_r17 `optional,ext-2`
 }
 
-func (ie *MeasGapConfig) Encode(w *uper.UperWriter) error {
+func (ie *MeasGapConfig) Encode(w *aper.AperWriter) error {
 	var err error
 	hasExtensions := ie.GapFR1 != nil || ie.GapUE != nil || len(ie.GapToAddModList_r17) > 0 || len(ie.GapToReleaseList_r17) > 0 || ie.PosMeasGapPreConfigToAddModList_r17 != nil || ie.PosMeasGapPreConfigToReleaseList_r17 != nil
 	preambleBits := []bool{hasExtensions, ie.GapFR2 != nil}
@@ -44,7 +44,7 @@ func (ie *MeasGapConfig) Encode(w *uper.UperWriter) error {
 		// encode extension group 1
 		if extBitmap[0] {
 			extBuf := new(bytes.Buffer)
-			extWriter := uper.NewWriter(extBuf)
+			extWriter := aper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 1
 			optionals_ext_1 := []bool{ie.GapFR1 != nil, ie.GapUE != nil}
@@ -85,7 +85,7 @@ func (ie *MeasGapConfig) Encode(w *uper.UperWriter) error {
 		// encode extension group 2
 		if extBitmap[1] {
 			extBuf := new(bytes.Buffer)
-			extWriter := uper.NewWriter(extBuf)
+			extWriter := aper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 2
 			optionals_ext_2 := []bool{len(ie.GapToAddModList_r17) > 0, len(ie.GapToReleaseList_r17) > 0, ie.PosMeasGapPreConfigToAddModList_r17 != nil, ie.PosMeasGapPreConfigToReleaseList_r17 != nil}
@@ -97,7 +97,7 @@ func (ie *MeasGapConfig) Encode(w *uper.UperWriter) error {
 
 			// encode GapToAddModList_r17 optional
 			if len(ie.GapToAddModList_r17) > 0 {
-				tmp_GapToAddModList_r17 := utils.NewSequence[*GapConfig_r17]([]*GapConfig_r17{}, uper.Constraint{Lb: 1, Ub: maxNrofGapId_r17}, false)
+				tmp_GapToAddModList_r17 := utils.NewSequence[*GapConfig_r17]([]*GapConfig_r17{}, aper.Constraint{Lb: 1, Ub: maxNrofGapId_r17}, false)
 				for _, i := range ie.GapToAddModList_r17 {
 					tmp_GapToAddModList_r17.Value = append(tmp_GapToAddModList_r17.Value, &i)
 				}
@@ -107,7 +107,7 @@ func (ie *MeasGapConfig) Encode(w *uper.UperWriter) error {
 			}
 			// encode GapToReleaseList_r17 optional
 			if len(ie.GapToReleaseList_r17) > 0 {
-				tmp_GapToReleaseList_r17 := utils.NewSequence[*MeasGapId_r17]([]*MeasGapId_r17{}, uper.Constraint{Lb: 1, Ub: maxNrofGapId_r17}, false)
+				tmp_GapToReleaseList_r17 := utils.NewSequence[*MeasGapId_r17]([]*MeasGapId_r17{}, aper.Constraint{Lb: 1, Ub: maxNrofGapId_r17}, false)
 				for _, i := range ie.GapToReleaseList_r17 {
 					tmp_GapToReleaseList_r17.Value = append(tmp_GapToReleaseList_r17.Value, &i)
 				}
@@ -140,7 +140,7 @@ func (ie *MeasGapConfig) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *MeasGapConfig) Decode(r *uper.UperReader) error {
+func (ie *MeasGapConfig) Decode(r *aper.AperReader) error {
 	var err error
 	var extensionBit bool
 	if extensionBit, err = r.ReadBool(); err != nil {
@@ -172,7 +172,7 @@ func (ie *MeasGapConfig) Decode(r *uper.UperReader) error {
 				return err
 			}
 
-			extReader := uper.NewReader(bytes.NewReader(extBytes))
+			extReader := aper.NewReader(bytes.NewReader(extBytes))
 
 			GapFR1Present, err := extReader.ReadBool()
 			if err != nil {
@@ -206,7 +206,7 @@ func (ie *MeasGapConfig) Decode(r *uper.UperReader) error {
 				return err
 			}
 
-			extReader := uper.NewReader(bytes.NewReader(extBytes))
+			extReader := aper.NewReader(bytes.NewReader(extBytes))
 
 			GapToAddModList_r17Present, err := extReader.ReadBool()
 			if err != nil {
@@ -226,7 +226,7 @@ func (ie *MeasGapConfig) Decode(r *uper.UperReader) error {
 			}
 			// decode GapToAddModList_r17 optional
 			if GapToAddModList_r17Present {
-				tmp_GapToAddModList_r17 := utils.NewSequence[*GapConfig_r17]([]*GapConfig_r17{}, uper.Constraint{Lb: 1, Ub: maxNrofGapId_r17}, false)
+				tmp_GapToAddModList_r17 := utils.NewSequence[*GapConfig_r17]([]*GapConfig_r17{}, aper.Constraint{Lb: 1, Ub: maxNrofGapId_r17}, false)
 				fn_GapToAddModList_r17 := func() *GapConfig_r17 {
 					return new(GapConfig_r17)
 				}
@@ -240,7 +240,7 @@ func (ie *MeasGapConfig) Decode(r *uper.UperReader) error {
 			}
 			// decode GapToReleaseList_r17 optional
 			if GapToReleaseList_r17Present {
-				tmp_GapToReleaseList_r17 := utils.NewSequence[*MeasGapId_r17]([]*MeasGapId_r17{}, uper.Constraint{Lb: 1, Ub: maxNrofGapId_r17}, false)
+				tmp_GapToReleaseList_r17 := utils.NewSequence[*MeasGapId_r17]([]*MeasGapId_r17{}, aper.Constraint{Lb: 1, Ub: maxNrofGapId_r17}, false)
 				fn_GapToReleaseList_r17 := func() *MeasGapId_r17 {
 					return new(MeasGapId_r17)
 				}

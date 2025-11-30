@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -9,9 +9,9 @@ type UAC_BarringInfoSetList_v1700 struct {
 	Value []UAC_BarringInfoSet_v1700 `lb:1,ub:maxBarringInfoSet,madatory`
 }
 
-func (ie *UAC_BarringInfoSetList_v1700) Encode(w *uper.UperWriter) error {
+func (ie *UAC_BarringInfoSetList_v1700) Encode(w *aper.AperWriter) error {
 	var err error
-	tmp := utils.NewSequence[*UAC_BarringInfoSet_v1700]([]*UAC_BarringInfoSet_v1700{}, uper.Constraint{Lb: 1, Ub: maxBarringInfoSet}, false)
+	tmp := utils.NewSequence[*UAC_BarringInfoSet_v1700]([]*UAC_BarringInfoSet_v1700{}, aper.Constraint{Lb: 1, Ub: maxBarringInfoSet}, false)
 	for _, i := range ie.Value {
 		tmp.Value = append(tmp.Value, &i)
 	}
@@ -21,9 +21,9 @@ func (ie *UAC_BarringInfoSetList_v1700) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *UAC_BarringInfoSetList_v1700) Decode(r *uper.UperReader) error {
+func (ie *UAC_BarringInfoSetList_v1700) Decode(r *aper.AperReader) error {
 	var err error
-	tmp := utils.NewSequence[*UAC_BarringInfoSet_v1700]([]*UAC_BarringInfoSet_v1700{}, uper.Constraint{Lb: 1, Ub: maxBarringInfoSet}, false)
+	tmp := utils.NewSequence[*UAC_BarringInfoSet_v1700]([]*UAC_BarringInfoSet_v1700{}, aper.Constraint{Lb: 1, Ub: maxBarringInfoSet}, false)
 	fn := func() *UAC_BarringInfoSet_v1700 {
 		return new(UAC_BarringInfoSet_v1700)
 	}

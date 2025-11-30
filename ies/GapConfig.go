@@ -3,7 +3,7 @@ package ies
 import (
 	"bytes"
 
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -17,7 +17,7 @@ type GapConfig struct {
 	Mgl_r16                   *GapConfig_mgl_r16              `optional,ext-2`
 }
 
-func (ie *GapConfig) Encode(w *uper.UperWriter) error {
+func (ie *GapConfig) Encode(w *aper.AperWriter) error {
 	var err error
 	hasExtensions := ie.RefServCellIndicator != nil || ie.RefFR2ServCellAsyncCA_r16 != nil || ie.Mgl_r16 != nil
 	preambleBits := []bool{hasExtensions}
@@ -26,7 +26,7 @@ func (ie *GapConfig) Encode(w *uper.UperWriter) error {
 			return err
 		}
 	}
-	if err = w.WriteInteger(ie.GapOffset, &uper.Constraint{Lb: 0, Ub: 159}, false); err != nil {
+	if err = w.WriteInteger(ie.GapOffset, &aper.Constraint{Lb: 0, Ub: 159}, false); err != nil {
 		return utils.WrapError("WriteInteger GapOffset", err)
 	}
 	if err = ie.Mgl.Encode(w); err != nil {
@@ -48,7 +48,7 @@ func (ie *GapConfig) Encode(w *uper.UperWriter) error {
 		// encode extension group 1
 		if extBitmap[0] {
 			extBuf := new(bytes.Buffer)
-			extWriter := uper.NewWriter(extBuf)
+			extWriter := aper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 1
 			optionals_ext_1 := []bool{ie.RefServCellIndicator != nil}
@@ -77,7 +77,7 @@ func (ie *GapConfig) Encode(w *uper.UperWriter) error {
 		// encode extension group 2
 		if extBitmap[1] {
 			extBuf := new(bytes.Buffer)
-			extWriter := uper.NewWriter(extBuf)
+			extWriter := aper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 2
 			optionals_ext_2 := []bool{ie.RefFR2ServCellAsyncCA_r16 != nil, ie.Mgl_r16 != nil}
@@ -112,14 +112,14 @@ func (ie *GapConfig) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *GapConfig) Decode(r *uper.UperReader) error {
+func (ie *GapConfig) Decode(r *aper.AperReader) error {
 	var err error
 	var extensionBit bool
 	if extensionBit, err = r.ReadBool(); err != nil {
 		return err
 	}
 	var tmp_int_GapOffset int64
-	if tmp_int_GapOffset, err = r.ReadInteger(&uper.Constraint{Lb: 0, Ub: 159}, false); err != nil {
+	if tmp_int_GapOffset, err = r.ReadInteger(&aper.Constraint{Lb: 0, Ub: 159}, false); err != nil {
 		return utils.WrapError("ReadInteger GapOffset", err)
 	}
 	ie.GapOffset = tmp_int_GapOffset
@@ -147,7 +147,7 @@ func (ie *GapConfig) Decode(r *uper.UperReader) error {
 				return err
 			}
 
-			extReader := uper.NewReader(bytes.NewReader(extBytes))
+			extReader := aper.NewReader(bytes.NewReader(extBytes))
 
 			RefServCellIndicatorPresent, err := extReader.ReadBool()
 			if err != nil {
@@ -168,7 +168,7 @@ func (ie *GapConfig) Decode(r *uper.UperReader) error {
 				return err
 			}
 
-			extReader := uper.NewReader(bytes.NewReader(extBytes))
+			extReader := aper.NewReader(bytes.NewReader(extBytes))
 
 			RefFR2ServCellAsyncCA_r16Present, err := extReader.ReadBool()
 			if err != nil {

@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -14,7 +14,7 @@ type PDSCH_ConfigBroadcast_r17 struct {
 	XOverhead_r17                      *PDSCH_ConfigBroadcast_r17_xOverhead_r17    `optional`
 }
 
-func (ie *PDSCH_ConfigBroadcast_r17) Encode(w *uper.UperWriter) error {
+func (ie *PDSCH_ConfigBroadcast_r17) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.Pdsch_TimeDomainAllocationList_r17 != nil, len(ie.RateMatchPatternToAddModList_r17) > 0, ie.Lte_CRS_ToMatchAround_r17 != nil, ie.Mcs_Table_r17 != nil, ie.XOverhead_r17 != nil}
 	for _, bit := range preambleBits {
@@ -22,7 +22,7 @@ func (ie *PDSCH_ConfigBroadcast_r17) Encode(w *uper.UperWriter) error {
 			return err
 		}
 	}
-	tmp_PdschConfigList_r17 := utils.NewSequence[*PDSCH_ConfigPTM_r17]([]*PDSCH_ConfigPTM_r17{}, uper.Constraint{Lb: 1, Ub: maxNrofPDSCH_ConfigPTM_r17}, false)
+	tmp_PdschConfigList_r17 := utils.NewSequence[*PDSCH_ConfigPTM_r17]([]*PDSCH_ConfigPTM_r17{}, aper.Constraint{Lb: 1, Ub: maxNrofPDSCH_ConfigPTM_r17}, false)
 	for _, i := range ie.PdschConfigList_r17 {
 		tmp_PdschConfigList_r17.Value = append(tmp_PdschConfigList_r17.Value, &i)
 	}
@@ -35,7 +35,7 @@ func (ie *PDSCH_ConfigBroadcast_r17) Encode(w *uper.UperWriter) error {
 		}
 	}
 	if len(ie.RateMatchPatternToAddModList_r17) > 0 {
-		tmp_RateMatchPatternToAddModList_r17 := utils.NewSequence[*RateMatchPattern]([]*RateMatchPattern{}, uper.Constraint{Lb: 1, Ub: maxNrofRateMatchPatterns}, false)
+		tmp_RateMatchPatternToAddModList_r17 := utils.NewSequence[*RateMatchPattern]([]*RateMatchPattern{}, aper.Constraint{Lb: 1, Ub: maxNrofRateMatchPatterns}, false)
 		for _, i := range ie.RateMatchPatternToAddModList_r17 {
 			tmp_RateMatchPatternToAddModList_r17.Value = append(tmp_RateMatchPatternToAddModList_r17.Value, &i)
 		}
@@ -61,7 +61,7 @@ func (ie *PDSCH_ConfigBroadcast_r17) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *PDSCH_ConfigBroadcast_r17) Decode(r *uper.UperReader) error {
+func (ie *PDSCH_ConfigBroadcast_r17) Decode(r *aper.AperReader) error {
 	var err error
 	var Pdsch_TimeDomainAllocationList_r17Present bool
 	if Pdsch_TimeDomainAllocationList_r17Present, err = r.ReadBool(); err != nil {
@@ -83,7 +83,7 @@ func (ie *PDSCH_ConfigBroadcast_r17) Decode(r *uper.UperReader) error {
 	if XOverhead_r17Present, err = r.ReadBool(); err != nil {
 		return err
 	}
-	tmp_PdschConfigList_r17 := utils.NewSequence[*PDSCH_ConfigPTM_r17]([]*PDSCH_ConfigPTM_r17{}, uper.Constraint{Lb: 1, Ub: maxNrofPDSCH_ConfigPTM_r17}, false)
+	tmp_PdschConfigList_r17 := utils.NewSequence[*PDSCH_ConfigPTM_r17]([]*PDSCH_ConfigPTM_r17{}, aper.Constraint{Lb: 1, Ub: maxNrofPDSCH_ConfigPTM_r17}, false)
 	fn_PdschConfigList_r17 := func() *PDSCH_ConfigPTM_r17 {
 		return new(PDSCH_ConfigPTM_r17)
 	}
@@ -101,7 +101,7 @@ func (ie *PDSCH_ConfigBroadcast_r17) Decode(r *uper.UperReader) error {
 		}
 	}
 	if RateMatchPatternToAddModList_r17Present {
-		tmp_RateMatchPatternToAddModList_r17 := utils.NewSequence[*RateMatchPattern]([]*RateMatchPattern{}, uper.Constraint{Lb: 1, Ub: maxNrofRateMatchPatterns}, false)
+		tmp_RateMatchPatternToAddModList_r17 := utils.NewSequence[*RateMatchPattern]([]*RateMatchPattern{}, aper.Constraint{Lb: 1, Ub: maxNrofRateMatchPatterns}, false)
 		fn_RateMatchPatternToAddModList_r17 := func() *RateMatchPattern {
 			return new(RateMatchPattern)
 		}

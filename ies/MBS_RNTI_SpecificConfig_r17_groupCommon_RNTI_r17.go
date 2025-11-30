@@ -3,7 +3,7 @@ package ies
 import (
 	"fmt"
 
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -19,7 +19,7 @@ type MBS_RNTI_SpecificConfig_r17_groupCommon_RNTI_r17 struct {
 	G_CS_RNTI *RNTI_Value
 }
 
-func (ie *MBS_RNTI_SpecificConfig_r17_groupCommon_RNTI_r17) Encode(w *uper.UperWriter) error {
+func (ie *MBS_RNTI_SpecificConfig_r17_groupCommon_RNTI_r17) Encode(w *aper.AperWriter) error {
 	var err error
 	if err = w.WriteChoice(ie.Choice, 2, false); err != nil {
 		return err
@@ -39,7 +39,7 @@ func (ie *MBS_RNTI_SpecificConfig_r17_groupCommon_RNTI_r17) Encode(w *uper.UperW
 	return err
 }
 
-func (ie *MBS_RNTI_SpecificConfig_r17_groupCommon_RNTI_r17) Decode(r *uper.UperReader) error {
+func (ie *MBS_RNTI_SpecificConfig_r17_groupCommon_RNTI_r17) Decode(r *aper.AperReader) error {
 	var err error
 	if ie.Choice, err = r.ReadChoice(2, false); err != nil {
 		return err

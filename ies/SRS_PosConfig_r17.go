@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -12,7 +12,7 @@ type SRS_PosConfig_r17 struct {
 	Srs_PosResourceToAddModList_r17     []SRS_PosResource_r16      `lb:1,ub:maxNrofSRS_PosResources_r16,optional`
 }
 
-func (ie *SRS_PosConfig_r17) Encode(w *uper.UperWriter) error {
+func (ie *SRS_PosConfig_r17) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{len(ie.Srs_PosResourceSetToReleaseList_r17) > 0, len(ie.Srs_PosResourceSetToAddModList_r17) > 0, len(ie.Srs_PosResourceToReleaseList_r17) > 0, len(ie.Srs_PosResourceToAddModList_r17) > 0}
 	for _, bit := range preambleBits {
@@ -21,7 +21,7 @@ func (ie *SRS_PosConfig_r17) Encode(w *uper.UperWriter) error {
 		}
 	}
 	if len(ie.Srs_PosResourceSetToReleaseList_r17) > 0 {
-		tmp_Srs_PosResourceSetToReleaseList_r17 := utils.NewSequence[*SRS_PosResourceSetId_r16]([]*SRS_PosResourceSetId_r16{}, uper.Constraint{Lb: 1, Ub: maxNrofSRS_PosResourceSets_r16}, false)
+		tmp_Srs_PosResourceSetToReleaseList_r17 := utils.NewSequence[*SRS_PosResourceSetId_r16]([]*SRS_PosResourceSetId_r16{}, aper.Constraint{Lb: 1, Ub: maxNrofSRS_PosResourceSets_r16}, false)
 		for _, i := range ie.Srs_PosResourceSetToReleaseList_r17 {
 			tmp_Srs_PosResourceSetToReleaseList_r17.Value = append(tmp_Srs_PosResourceSetToReleaseList_r17.Value, &i)
 		}
@@ -30,7 +30,7 @@ func (ie *SRS_PosConfig_r17) Encode(w *uper.UperWriter) error {
 		}
 	}
 	if len(ie.Srs_PosResourceSetToAddModList_r17) > 0 {
-		tmp_Srs_PosResourceSetToAddModList_r17 := utils.NewSequence[*SRS_PosResourceSet_r16]([]*SRS_PosResourceSet_r16{}, uper.Constraint{Lb: 1, Ub: maxNrofSRS_PosResourceSets_r16}, false)
+		tmp_Srs_PosResourceSetToAddModList_r17 := utils.NewSequence[*SRS_PosResourceSet_r16]([]*SRS_PosResourceSet_r16{}, aper.Constraint{Lb: 1, Ub: maxNrofSRS_PosResourceSets_r16}, false)
 		for _, i := range ie.Srs_PosResourceSetToAddModList_r17 {
 			tmp_Srs_PosResourceSetToAddModList_r17.Value = append(tmp_Srs_PosResourceSetToAddModList_r17.Value, &i)
 		}
@@ -39,7 +39,7 @@ func (ie *SRS_PosConfig_r17) Encode(w *uper.UperWriter) error {
 		}
 	}
 	if len(ie.Srs_PosResourceToReleaseList_r17) > 0 {
-		tmp_Srs_PosResourceToReleaseList_r17 := utils.NewSequence[*SRS_PosResourceId_r16]([]*SRS_PosResourceId_r16{}, uper.Constraint{Lb: 1, Ub: maxNrofSRS_PosResources_r16}, false)
+		tmp_Srs_PosResourceToReleaseList_r17 := utils.NewSequence[*SRS_PosResourceId_r16]([]*SRS_PosResourceId_r16{}, aper.Constraint{Lb: 1, Ub: maxNrofSRS_PosResources_r16}, false)
 		for _, i := range ie.Srs_PosResourceToReleaseList_r17 {
 			tmp_Srs_PosResourceToReleaseList_r17.Value = append(tmp_Srs_PosResourceToReleaseList_r17.Value, &i)
 		}
@@ -48,7 +48,7 @@ func (ie *SRS_PosConfig_r17) Encode(w *uper.UperWriter) error {
 		}
 	}
 	if len(ie.Srs_PosResourceToAddModList_r17) > 0 {
-		tmp_Srs_PosResourceToAddModList_r17 := utils.NewSequence[*SRS_PosResource_r16]([]*SRS_PosResource_r16{}, uper.Constraint{Lb: 1, Ub: maxNrofSRS_PosResources_r16}, false)
+		tmp_Srs_PosResourceToAddModList_r17 := utils.NewSequence[*SRS_PosResource_r16]([]*SRS_PosResource_r16{}, aper.Constraint{Lb: 1, Ub: maxNrofSRS_PosResources_r16}, false)
 		for _, i := range ie.Srs_PosResourceToAddModList_r17 {
 			tmp_Srs_PosResourceToAddModList_r17.Value = append(tmp_Srs_PosResourceToAddModList_r17.Value, &i)
 		}
@@ -59,7 +59,7 @@ func (ie *SRS_PosConfig_r17) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *SRS_PosConfig_r17) Decode(r *uper.UperReader) error {
+func (ie *SRS_PosConfig_r17) Decode(r *aper.AperReader) error {
 	var err error
 	var Srs_PosResourceSetToReleaseList_r17Present bool
 	if Srs_PosResourceSetToReleaseList_r17Present, err = r.ReadBool(); err != nil {
@@ -78,7 +78,7 @@ func (ie *SRS_PosConfig_r17) Decode(r *uper.UperReader) error {
 		return err
 	}
 	if Srs_PosResourceSetToReleaseList_r17Present {
-		tmp_Srs_PosResourceSetToReleaseList_r17 := utils.NewSequence[*SRS_PosResourceSetId_r16]([]*SRS_PosResourceSetId_r16{}, uper.Constraint{Lb: 1, Ub: maxNrofSRS_PosResourceSets_r16}, false)
+		tmp_Srs_PosResourceSetToReleaseList_r17 := utils.NewSequence[*SRS_PosResourceSetId_r16]([]*SRS_PosResourceSetId_r16{}, aper.Constraint{Lb: 1, Ub: maxNrofSRS_PosResourceSets_r16}, false)
 		fn_Srs_PosResourceSetToReleaseList_r17 := func() *SRS_PosResourceSetId_r16 {
 			return new(SRS_PosResourceSetId_r16)
 		}
@@ -91,7 +91,7 @@ func (ie *SRS_PosConfig_r17) Decode(r *uper.UperReader) error {
 		}
 	}
 	if Srs_PosResourceSetToAddModList_r17Present {
-		tmp_Srs_PosResourceSetToAddModList_r17 := utils.NewSequence[*SRS_PosResourceSet_r16]([]*SRS_PosResourceSet_r16{}, uper.Constraint{Lb: 1, Ub: maxNrofSRS_PosResourceSets_r16}, false)
+		tmp_Srs_PosResourceSetToAddModList_r17 := utils.NewSequence[*SRS_PosResourceSet_r16]([]*SRS_PosResourceSet_r16{}, aper.Constraint{Lb: 1, Ub: maxNrofSRS_PosResourceSets_r16}, false)
 		fn_Srs_PosResourceSetToAddModList_r17 := func() *SRS_PosResourceSet_r16 {
 			return new(SRS_PosResourceSet_r16)
 		}
@@ -104,7 +104,7 @@ func (ie *SRS_PosConfig_r17) Decode(r *uper.UperReader) error {
 		}
 	}
 	if Srs_PosResourceToReleaseList_r17Present {
-		tmp_Srs_PosResourceToReleaseList_r17 := utils.NewSequence[*SRS_PosResourceId_r16]([]*SRS_PosResourceId_r16{}, uper.Constraint{Lb: 1, Ub: maxNrofSRS_PosResources_r16}, false)
+		tmp_Srs_PosResourceToReleaseList_r17 := utils.NewSequence[*SRS_PosResourceId_r16]([]*SRS_PosResourceId_r16{}, aper.Constraint{Lb: 1, Ub: maxNrofSRS_PosResources_r16}, false)
 		fn_Srs_PosResourceToReleaseList_r17 := func() *SRS_PosResourceId_r16 {
 			return new(SRS_PosResourceId_r16)
 		}
@@ -117,7 +117,7 @@ func (ie *SRS_PosConfig_r17) Decode(r *uper.UperReader) error {
 		}
 	}
 	if Srs_PosResourceToAddModList_r17Present {
-		tmp_Srs_PosResourceToAddModList_r17 := utils.NewSequence[*SRS_PosResource_r16]([]*SRS_PosResource_r16{}, uper.Constraint{Lb: 1, Ub: maxNrofSRS_PosResources_r16}, false)
+		tmp_Srs_PosResourceToAddModList_r17 := utils.NewSequence[*SRS_PosResource_r16]([]*SRS_PosResource_r16{}, aper.Constraint{Lb: 1, Ub: maxNrofSRS_PosResources_r16}, false)
 		fn_Srs_PosResourceToAddModList_r17 := func() *SRS_PosResource_r16 {
 			return new(SRS_PosResource_r16)
 		}

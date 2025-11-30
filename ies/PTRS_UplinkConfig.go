@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -10,7 +10,7 @@ type PTRS_UplinkConfig struct {
 	TransformPrecoderEnabled  *PTRS_UplinkConfig_transformPrecoderEnabled  `lb:5,ub:5,optional`
 }
 
-func (ie *PTRS_UplinkConfig) Encode(w *uper.UperWriter) error {
+func (ie *PTRS_UplinkConfig) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.TransformPrecoderDisabled != nil, ie.TransformPrecoderEnabled != nil}
 	for _, bit := range preambleBits {
@@ -31,7 +31,7 @@ func (ie *PTRS_UplinkConfig) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *PTRS_UplinkConfig) Decode(r *uper.UperReader) error {
+func (ie *PTRS_UplinkConfig) Decode(r *aper.AperReader) error {
 	var err error
 	var TransformPrecoderDisabledPresent bool
 	if TransformPrecoderDisabledPresent, err = r.ReadBool(); err != nil {

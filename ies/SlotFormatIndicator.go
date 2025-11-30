@@ -3,7 +3,7 @@ package ies
 import (
 	"bytes"
 
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -23,7 +23,7 @@ type SlotFormatIndicator struct {
 	Co_DurationsPerCellToAddModList_r17   []CO_DurationsPerCell_r17       `lb:1,ub:maxNrofAggregatedCellsPerCellGroup,optional,ext-3`
 }
 
-func (ie *SlotFormatIndicator) Encode(w *uper.UperWriter) error {
+func (ie *SlotFormatIndicator) Encode(w *aper.AperWriter) error {
 	var err error
 	hasExtensions := len(ie.AvailableRB_SetsToAddModList_r16) > 0 || len(ie.AvailableRB_SetsToReleaseList_r16) > 0 || len(ie.SwitchTriggerToAddModList_r16) > 0 || len(ie.SwitchTriggerToReleaseList_r16) > 0 || len(ie.Co_DurationsPerCellToAddModList_r16) > 0 || len(ie.Co_DurationsPerCellToReleaseList_r16) > 0 || len(ie.SwitchTriggerToAddModListSizeExt_r16) > 0 || len(ie.SwitchTriggerToReleaseListSizeExt_r16) > 0 || len(ie.Co_DurationsPerCellToAddModList_r17) > 0
 	preambleBits := []bool{hasExtensions, len(ie.SlotFormatCombToAddModList) > 0, len(ie.SlotFormatCombToReleaseList) > 0}
@@ -35,11 +35,11 @@ func (ie *SlotFormatIndicator) Encode(w *uper.UperWriter) error {
 	if err = ie.Sfi_RNTI.Encode(w); err != nil {
 		return utils.WrapError("Encode Sfi_RNTI", err)
 	}
-	if err = w.WriteInteger(ie.Dci_PayloadSize, &uper.Constraint{Lb: 1, Ub: maxSFI_DCI_PayloadSize}, false); err != nil {
+	if err = w.WriteInteger(ie.Dci_PayloadSize, &aper.Constraint{Lb: 1, Ub: maxSFI_DCI_PayloadSize}, false); err != nil {
 		return utils.WrapError("WriteInteger Dci_PayloadSize", err)
 	}
 	if len(ie.SlotFormatCombToAddModList) > 0 {
-		tmp_SlotFormatCombToAddModList := utils.NewSequence[*SlotFormatCombinationsPerCell]([]*SlotFormatCombinationsPerCell{}, uper.Constraint{Lb: 1, Ub: maxNrofAggregatedCellsPerCellGroup}, false)
+		tmp_SlotFormatCombToAddModList := utils.NewSequence[*SlotFormatCombinationsPerCell]([]*SlotFormatCombinationsPerCell{}, aper.Constraint{Lb: 1, Ub: maxNrofAggregatedCellsPerCellGroup}, false)
 		for _, i := range ie.SlotFormatCombToAddModList {
 			tmp_SlotFormatCombToAddModList.Value = append(tmp_SlotFormatCombToAddModList.Value, &i)
 		}
@@ -48,7 +48,7 @@ func (ie *SlotFormatIndicator) Encode(w *uper.UperWriter) error {
 		}
 	}
 	if len(ie.SlotFormatCombToReleaseList) > 0 {
-		tmp_SlotFormatCombToReleaseList := utils.NewSequence[*ServCellIndex]([]*ServCellIndex{}, uper.Constraint{Lb: 1, Ub: maxNrofAggregatedCellsPerCellGroup}, false)
+		tmp_SlotFormatCombToReleaseList := utils.NewSequence[*ServCellIndex]([]*ServCellIndex{}, aper.Constraint{Lb: 1, Ub: maxNrofAggregatedCellsPerCellGroup}, false)
 		for _, i := range ie.SlotFormatCombToReleaseList {
 			tmp_SlotFormatCombToReleaseList.Value = append(tmp_SlotFormatCombToReleaseList.Value, &i)
 		}
@@ -66,7 +66,7 @@ func (ie *SlotFormatIndicator) Encode(w *uper.UperWriter) error {
 		// encode extension group 1
 		if extBitmap[0] {
 			extBuf := new(bytes.Buffer)
-			extWriter := uper.NewWriter(extBuf)
+			extWriter := aper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 1
 			optionals_ext_1 := []bool{len(ie.AvailableRB_SetsToAddModList_r16) > 0, len(ie.AvailableRB_SetsToReleaseList_r16) > 0, len(ie.SwitchTriggerToAddModList_r16) > 0, len(ie.SwitchTriggerToReleaseList_r16) > 0, len(ie.Co_DurationsPerCellToAddModList_r16) > 0, len(ie.Co_DurationsPerCellToReleaseList_r16) > 0}
@@ -78,7 +78,7 @@ func (ie *SlotFormatIndicator) Encode(w *uper.UperWriter) error {
 
 			// encode AvailableRB_SetsToAddModList_r16 optional
 			if len(ie.AvailableRB_SetsToAddModList_r16) > 0 {
-				tmp_AvailableRB_SetsToAddModList_r16 := utils.NewSequence[*AvailableRB_SetsPerCell_r16]([]*AvailableRB_SetsPerCell_r16{}, uper.Constraint{Lb: 1, Ub: maxNrofAggregatedCellsPerCellGroup}, false)
+				tmp_AvailableRB_SetsToAddModList_r16 := utils.NewSequence[*AvailableRB_SetsPerCell_r16]([]*AvailableRB_SetsPerCell_r16{}, aper.Constraint{Lb: 1, Ub: maxNrofAggregatedCellsPerCellGroup}, false)
 				for _, i := range ie.AvailableRB_SetsToAddModList_r16 {
 					tmp_AvailableRB_SetsToAddModList_r16.Value = append(tmp_AvailableRB_SetsToAddModList_r16.Value, &i)
 				}
@@ -88,7 +88,7 @@ func (ie *SlotFormatIndicator) Encode(w *uper.UperWriter) error {
 			}
 			// encode AvailableRB_SetsToReleaseList_r16 optional
 			if len(ie.AvailableRB_SetsToReleaseList_r16) > 0 {
-				tmp_AvailableRB_SetsToReleaseList_r16 := utils.NewSequence[*ServCellIndex]([]*ServCellIndex{}, uper.Constraint{Lb: 1, Ub: maxNrofAggregatedCellsPerCellGroup}, false)
+				tmp_AvailableRB_SetsToReleaseList_r16 := utils.NewSequence[*ServCellIndex]([]*ServCellIndex{}, aper.Constraint{Lb: 1, Ub: maxNrofAggregatedCellsPerCellGroup}, false)
 				for _, i := range ie.AvailableRB_SetsToReleaseList_r16 {
 					tmp_AvailableRB_SetsToReleaseList_r16.Value = append(tmp_AvailableRB_SetsToReleaseList_r16.Value, &i)
 				}
@@ -98,7 +98,7 @@ func (ie *SlotFormatIndicator) Encode(w *uper.UperWriter) error {
 			}
 			// encode SwitchTriggerToAddModList_r16 optional
 			if len(ie.SwitchTriggerToAddModList_r16) > 0 {
-				tmp_SwitchTriggerToAddModList_r16 := utils.NewSequence[*SearchSpaceSwitchTrigger_r16]([]*SearchSpaceSwitchTrigger_r16{}, uper.Constraint{Lb: 1, Ub: 4}, false)
+				tmp_SwitchTriggerToAddModList_r16 := utils.NewSequence[*SearchSpaceSwitchTrigger_r16]([]*SearchSpaceSwitchTrigger_r16{}, aper.Constraint{Lb: 1, Ub: 4}, false)
 				for _, i := range ie.SwitchTriggerToAddModList_r16 {
 					tmp_SwitchTriggerToAddModList_r16.Value = append(tmp_SwitchTriggerToAddModList_r16.Value, &i)
 				}
@@ -108,7 +108,7 @@ func (ie *SlotFormatIndicator) Encode(w *uper.UperWriter) error {
 			}
 			// encode SwitchTriggerToReleaseList_r16 optional
 			if len(ie.SwitchTriggerToReleaseList_r16) > 0 {
-				tmp_SwitchTriggerToReleaseList_r16 := utils.NewSequence[*ServCellIndex]([]*ServCellIndex{}, uper.Constraint{Lb: 1, Ub: 4}, false)
+				tmp_SwitchTriggerToReleaseList_r16 := utils.NewSequence[*ServCellIndex]([]*ServCellIndex{}, aper.Constraint{Lb: 1, Ub: 4}, false)
 				for _, i := range ie.SwitchTriggerToReleaseList_r16 {
 					tmp_SwitchTriggerToReleaseList_r16.Value = append(tmp_SwitchTriggerToReleaseList_r16.Value, &i)
 				}
@@ -118,7 +118,7 @@ func (ie *SlotFormatIndicator) Encode(w *uper.UperWriter) error {
 			}
 			// encode Co_DurationsPerCellToAddModList_r16 optional
 			if len(ie.Co_DurationsPerCellToAddModList_r16) > 0 {
-				tmp_Co_DurationsPerCellToAddModList_r16 := utils.NewSequence[*CO_DurationsPerCell_r16]([]*CO_DurationsPerCell_r16{}, uper.Constraint{Lb: 1, Ub: maxNrofAggregatedCellsPerCellGroup}, false)
+				tmp_Co_DurationsPerCellToAddModList_r16 := utils.NewSequence[*CO_DurationsPerCell_r16]([]*CO_DurationsPerCell_r16{}, aper.Constraint{Lb: 1, Ub: maxNrofAggregatedCellsPerCellGroup}, false)
 				for _, i := range ie.Co_DurationsPerCellToAddModList_r16 {
 					tmp_Co_DurationsPerCellToAddModList_r16.Value = append(tmp_Co_DurationsPerCellToAddModList_r16.Value, &i)
 				}
@@ -128,7 +128,7 @@ func (ie *SlotFormatIndicator) Encode(w *uper.UperWriter) error {
 			}
 			// encode Co_DurationsPerCellToReleaseList_r16 optional
 			if len(ie.Co_DurationsPerCellToReleaseList_r16) > 0 {
-				tmp_Co_DurationsPerCellToReleaseList_r16 := utils.NewSequence[*ServCellIndex]([]*ServCellIndex{}, uper.Constraint{Lb: 1, Ub: maxNrofAggregatedCellsPerCellGroup}, false)
+				tmp_Co_DurationsPerCellToReleaseList_r16 := utils.NewSequence[*ServCellIndex]([]*ServCellIndex{}, aper.Constraint{Lb: 1, Ub: maxNrofAggregatedCellsPerCellGroup}, false)
 				for _, i := range ie.Co_DurationsPerCellToReleaseList_r16 {
 					tmp_Co_DurationsPerCellToReleaseList_r16.Value = append(tmp_Co_DurationsPerCellToReleaseList_r16.Value, &i)
 				}
@@ -149,7 +149,7 @@ func (ie *SlotFormatIndicator) Encode(w *uper.UperWriter) error {
 		// encode extension group 2
 		if extBitmap[1] {
 			extBuf := new(bytes.Buffer)
-			extWriter := uper.NewWriter(extBuf)
+			extWriter := aper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 2
 			optionals_ext_2 := []bool{len(ie.SwitchTriggerToAddModListSizeExt_r16) > 0, len(ie.SwitchTriggerToReleaseListSizeExt_r16) > 0}
@@ -161,7 +161,7 @@ func (ie *SlotFormatIndicator) Encode(w *uper.UperWriter) error {
 
 			// encode SwitchTriggerToAddModListSizeExt_r16 optional
 			if len(ie.SwitchTriggerToAddModListSizeExt_r16) > 0 {
-				tmp_SwitchTriggerToAddModListSizeExt_r16 := utils.NewSequence[*SearchSpaceSwitchTrigger_r16]([]*SearchSpaceSwitchTrigger_r16{}, uper.Constraint{Lb: 1, Ub: maxNrofAggregatedCellsPerCellGroupMinus4_r16}, false)
+				tmp_SwitchTriggerToAddModListSizeExt_r16 := utils.NewSequence[*SearchSpaceSwitchTrigger_r16]([]*SearchSpaceSwitchTrigger_r16{}, aper.Constraint{Lb: 1, Ub: maxNrofAggregatedCellsPerCellGroupMinus4_r16}, false)
 				for _, i := range ie.SwitchTriggerToAddModListSizeExt_r16 {
 					tmp_SwitchTriggerToAddModListSizeExt_r16.Value = append(tmp_SwitchTriggerToAddModListSizeExt_r16.Value, &i)
 				}
@@ -171,7 +171,7 @@ func (ie *SlotFormatIndicator) Encode(w *uper.UperWriter) error {
 			}
 			// encode SwitchTriggerToReleaseListSizeExt_r16 optional
 			if len(ie.SwitchTriggerToReleaseListSizeExt_r16) > 0 {
-				tmp_SwitchTriggerToReleaseListSizeExt_r16 := utils.NewSequence[*ServCellIndex]([]*ServCellIndex{}, uper.Constraint{Lb: 1, Ub: maxNrofAggregatedCellsPerCellGroupMinus4_r16}, false)
+				tmp_SwitchTriggerToReleaseListSizeExt_r16 := utils.NewSequence[*ServCellIndex]([]*ServCellIndex{}, aper.Constraint{Lb: 1, Ub: maxNrofAggregatedCellsPerCellGroupMinus4_r16}, false)
 				for _, i := range ie.SwitchTriggerToReleaseListSizeExt_r16 {
 					tmp_SwitchTriggerToReleaseListSizeExt_r16.Value = append(tmp_SwitchTriggerToReleaseListSizeExt_r16.Value, &i)
 				}
@@ -192,7 +192,7 @@ func (ie *SlotFormatIndicator) Encode(w *uper.UperWriter) error {
 		// encode extension group 3
 		if extBitmap[2] {
 			extBuf := new(bytes.Buffer)
-			extWriter := uper.NewWriter(extBuf)
+			extWriter := aper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 3
 			optionals_ext_3 := []bool{len(ie.Co_DurationsPerCellToAddModList_r17) > 0}
@@ -204,7 +204,7 @@ func (ie *SlotFormatIndicator) Encode(w *uper.UperWriter) error {
 
 			// encode Co_DurationsPerCellToAddModList_r17 optional
 			if len(ie.Co_DurationsPerCellToAddModList_r17) > 0 {
-				tmp_Co_DurationsPerCellToAddModList_r17 := utils.NewSequence[*CO_DurationsPerCell_r17]([]*CO_DurationsPerCell_r17{}, uper.Constraint{Lb: 1, Ub: maxNrofAggregatedCellsPerCellGroup}, false)
+				tmp_Co_DurationsPerCellToAddModList_r17 := utils.NewSequence[*CO_DurationsPerCell_r17]([]*CO_DurationsPerCell_r17{}, aper.Constraint{Lb: 1, Ub: maxNrofAggregatedCellsPerCellGroup}, false)
 				for _, i := range ie.Co_DurationsPerCellToAddModList_r17 {
 					tmp_Co_DurationsPerCellToAddModList_r17.Value = append(tmp_Co_DurationsPerCellToAddModList_r17.Value, &i)
 				}
@@ -225,7 +225,7 @@ func (ie *SlotFormatIndicator) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *SlotFormatIndicator) Decode(r *uper.UperReader) error {
+func (ie *SlotFormatIndicator) Decode(r *aper.AperReader) error {
 	var err error
 	var extensionBit bool
 	if extensionBit, err = r.ReadBool(); err != nil {
@@ -243,12 +243,12 @@ func (ie *SlotFormatIndicator) Decode(r *uper.UperReader) error {
 		return utils.WrapError("Decode Sfi_RNTI", err)
 	}
 	var tmp_int_Dci_PayloadSize int64
-	if tmp_int_Dci_PayloadSize, err = r.ReadInteger(&uper.Constraint{Lb: 1, Ub: maxSFI_DCI_PayloadSize}, false); err != nil {
+	if tmp_int_Dci_PayloadSize, err = r.ReadInteger(&aper.Constraint{Lb: 1, Ub: maxSFI_DCI_PayloadSize}, false); err != nil {
 		return utils.WrapError("ReadInteger Dci_PayloadSize", err)
 	}
 	ie.Dci_PayloadSize = tmp_int_Dci_PayloadSize
 	if SlotFormatCombToAddModListPresent {
-		tmp_SlotFormatCombToAddModList := utils.NewSequence[*SlotFormatCombinationsPerCell]([]*SlotFormatCombinationsPerCell{}, uper.Constraint{Lb: 1, Ub: maxNrofAggregatedCellsPerCellGroup}, false)
+		tmp_SlotFormatCombToAddModList := utils.NewSequence[*SlotFormatCombinationsPerCell]([]*SlotFormatCombinationsPerCell{}, aper.Constraint{Lb: 1, Ub: maxNrofAggregatedCellsPerCellGroup}, false)
 		fn_SlotFormatCombToAddModList := func() *SlotFormatCombinationsPerCell {
 			return new(SlotFormatCombinationsPerCell)
 		}
@@ -261,7 +261,7 @@ func (ie *SlotFormatIndicator) Decode(r *uper.UperReader) error {
 		}
 	}
 	if SlotFormatCombToReleaseListPresent {
-		tmp_SlotFormatCombToReleaseList := utils.NewSequence[*ServCellIndex]([]*ServCellIndex{}, uper.Constraint{Lb: 1, Ub: maxNrofAggregatedCellsPerCellGroup}, false)
+		tmp_SlotFormatCombToReleaseList := utils.NewSequence[*ServCellIndex]([]*ServCellIndex{}, aper.Constraint{Lb: 1, Ub: maxNrofAggregatedCellsPerCellGroup}, false)
 		fn_SlotFormatCombToReleaseList := func() *ServCellIndex {
 			return new(ServCellIndex)
 		}
@@ -288,7 +288,7 @@ func (ie *SlotFormatIndicator) Decode(r *uper.UperReader) error {
 				return err
 			}
 
-			extReader := uper.NewReader(bytes.NewReader(extBytes))
+			extReader := aper.NewReader(bytes.NewReader(extBytes))
 
 			AvailableRB_SetsToAddModList_r16Present, err := extReader.ReadBool()
 			if err != nil {
@@ -316,7 +316,7 @@ func (ie *SlotFormatIndicator) Decode(r *uper.UperReader) error {
 			}
 			// decode AvailableRB_SetsToAddModList_r16 optional
 			if AvailableRB_SetsToAddModList_r16Present {
-				tmp_AvailableRB_SetsToAddModList_r16 := utils.NewSequence[*AvailableRB_SetsPerCell_r16]([]*AvailableRB_SetsPerCell_r16{}, uper.Constraint{Lb: 1, Ub: maxNrofAggregatedCellsPerCellGroup}, false)
+				tmp_AvailableRB_SetsToAddModList_r16 := utils.NewSequence[*AvailableRB_SetsPerCell_r16]([]*AvailableRB_SetsPerCell_r16{}, aper.Constraint{Lb: 1, Ub: maxNrofAggregatedCellsPerCellGroup}, false)
 				fn_AvailableRB_SetsToAddModList_r16 := func() *AvailableRB_SetsPerCell_r16 {
 					return new(AvailableRB_SetsPerCell_r16)
 				}
@@ -330,7 +330,7 @@ func (ie *SlotFormatIndicator) Decode(r *uper.UperReader) error {
 			}
 			// decode AvailableRB_SetsToReleaseList_r16 optional
 			if AvailableRB_SetsToReleaseList_r16Present {
-				tmp_AvailableRB_SetsToReleaseList_r16 := utils.NewSequence[*ServCellIndex]([]*ServCellIndex{}, uper.Constraint{Lb: 1, Ub: maxNrofAggregatedCellsPerCellGroup}, false)
+				tmp_AvailableRB_SetsToReleaseList_r16 := utils.NewSequence[*ServCellIndex]([]*ServCellIndex{}, aper.Constraint{Lb: 1, Ub: maxNrofAggregatedCellsPerCellGroup}, false)
 				fn_AvailableRB_SetsToReleaseList_r16 := func() *ServCellIndex {
 					return new(ServCellIndex)
 				}
@@ -344,7 +344,7 @@ func (ie *SlotFormatIndicator) Decode(r *uper.UperReader) error {
 			}
 			// decode SwitchTriggerToAddModList_r16 optional
 			if SwitchTriggerToAddModList_r16Present {
-				tmp_SwitchTriggerToAddModList_r16 := utils.NewSequence[*SearchSpaceSwitchTrigger_r16]([]*SearchSpaceSwitchTrigger_r16{}, uper.Constraint{Lb: 1, Ub: 4}, false)
+				tmp_SwitchTriggerToAddModList_r16 := utils.NewSequence[*SearchSpaceSwitchTrigger_r16]([]*SearchSpaceSwitchTrigger_r16{}, aper.Constraint{Lb: 1, Ub: 4}, false)
 				fn_SwitchTriggerToAddModList_r16 := func() *SearchSpaceSwitchTrigger_r16 {
 					return new(SearchSpaceSwitchTrigger_r16)
 				}
@@ -358,7 +358,7 @@ func (ie *SlotFormatIndicator) Decode(r *uper.UperReader) error {
 			}
 			// decode SwitchTriggerToReleaseList_r16 optional
 			if SwitchTriggerToReleaseList_r16Present {
-				tmp_SwitchTriggerToReleaseList_r16 := utils.NewSequence[*ServCellIndex]([]*ServCellIndex{}, uper.Constraint{Lb: 1, Ub: 4}, false)
+				tmp_SwitchTriggerToReleaseList_r16 := utils.NewSequence[*ServCellIndex]([]*ServCellIndex{}, aper.Constraint{Lb: 1, Ub: 4}, false)
 				fn_SwitchTriggerToReleaseList_r16 := func() *ServCellIndex {
 					return new(ServCellIndex)
 				}
@@ -372,7 +372,7 @@ func (ie *SlotFormatIndicator) Decode(r *uper.UperReader) error {
 			}
 			// decode Co_DurationsPerCellToAddModList_r16 optional
 			if Co_DurationsPerCellToAddModList_r16Present {
-				tmp_Co_DurationsPerCellToAddModList_r16 := utils.NewSequence[*CO_DurationsPerCell_r16]([]*CO_DurationsPerCell_r16{}, uper.Constraint{Lb: 1, Ub: maxNrofAggregatedCellsPerCellGroup}, false)
+				tmp_Co_DurationsPerCellToAddModList_r16 := utils.NewSequence[*CO_DurationsPerCell_r16]([]*CO_DurationsPerCell_r16{}, aper.Constraint{Lb: 1, Ub: maxNrofAggregatedCellsPerCellGroup}, false)
 				fn_Co_DurationsPerCellToAddModList_r16 := func() *CO_DurationsPerCell_r16 {
 					return new(CO_DurationsPerCell_r16)
 				}
@@ -386,7 +386,7 @@ func (ie *SlotFormatIndicator) Decode(r *uper.UperReader) error {
 			}
 			// decode Co_DurationsPerCellToReleaseList_r16 optional
 			if Co_DurationsPerCellToReleaseList_r16Present {
-				tmp_Co_DurationsPerCellToReleaseList_r16 := utils.NewSequence[*ServCellIndex]([]*ServCellIndex{}, uper.Constraint{Lb: 1, Ub: maxNrofAggregatedCellsPerCellGroup}, false)
+				tmp_Co_DurationsPerCellToReleaseList_r16 := utils.NewSequence[*ServCellIndex]([]*ServCellIndex{}, aper.Constraint{Lb: 1, Ub: maxNrofAggregatedCellsPerCellGroup}, false)
 				fn_Co_DurationsPerCellToReleaseList_r16 := func() *ServCellIndex {
 					return new(ServCellIndex)
 				}
@@ -406,7 +406,7 @@ func (ie *SlotFormatIndicator) Decode(r *uper.UperReader) error {
 				return err
 			}
 
-			extReader := uper.NewReader(bytes.NewReader(extBytes))
+			extReader := aper.NewReader(bytes.NewReader(extBytes))
 
 			SwitchTriggerToAddModListSizeExt_r16Present, err := extReader.ReadBool()
 			if err != nil {
@@ -418,7 +418,7 @@ func (ie *SlotFormatIndicator) Decode(r *uper.UperReader) error {
 			}
 			// decode SwitchTriggerToAddModListSizeExt_r16 optional
 			if SwitchTriggerToAddModListSizeExt_r16Present {
-				tmp_SwitchTriggerToAddModListSizeExt_r16 := utils.NewSequence[*SearchSpaceSwitchTrigger_r16]([]*SearchSpaceSwitchTrigger_r16{}, uper.Constraint{Lb: 1, Ub: maxNrofAggregatedCellsPerCellGroupMinus4_r16}, false)
+				tmp_SwitchTriggerToAddModListSizeExt_r16 := utils.NewSequence[*SearchSpaceSwitchTrigger_r16]([]*SearchSpaceSwitchTrigger_r16{}, aper.Constraint{Lb: 1, Ub: maxNrofAggregatedCellsPerCellGroupMinus4_r16}, false)
 				fn_SwitchTriggerToAddModListSizeExt_r16 := func() *SearchSpaceSwitchTrigger_r16 {
 					return new(SearchSpaceSwitchTrigger_r16)
 				}
@@ -432,7 +432,7 @@ func (ie *SlotFormatIndicator) Decode(r *uper.UperReader) error {
 			}
 			// decode SwitchTriggerToReleaseListSizeExt_r16 optional
 			if SwitchTriggerToReleaseListSizeExt_r16Present {
-				tmp_SwitchTriggerToReleaseListSizeExt_r16 := utils.NewSequence[*ServCellIndex]([]*ServCellIndex{}, uper.Constraint{Lb: 1, Ub: maxNrofAggregatedCellsPerCellGroupMinus4_r16}, false)
+				tmp_SwitchTriggerToReleaseListSizeExt_r16 := utils.NewSequence[*ServCellIndex]([]*ServCellIndex{}, aper.Constraint{Lb: 1, Ub: maxNrofAggregatedCellsPerCellGroupMinus4_r16}, false)
 				fn_SwitchTriggerToReleaseListSizeExt_r16 := func() *ServCellIndex {
 					return new(ServCellIndex)
 				}
@@ -452,7 +452,7 @@ func (ie *SlotFormatIndicator) Decode(r *uper.UperReader) error {
 				return err
 			}
 
-			extReader := uper.NewReader(bytes.NewReader(extBytes))
+			extReader := aper.NewReader(bytes.NewReader(extBytes))
 
 			Co_DurationsPerCellToAddModList_r17Present, err := extReader.ReadBool()
 			if err != nil {
@@ -460,7 +460,7 @@ func (ie *SlotFormatIndicator) Decode(r *uper.UperReader) error {
 			}
 			// decode Co_DurationsPerCellToAddModList_r17 optional
 			if Co_DurationsPerCellToAddModList_r17Present {
-				tmp_Co_DurationsPerCellToAddModList_r17 := utils.NewSequence[*CO_DurationsPerCell_r17]([]*CO_DurationsPerCell_r17{}, uper.Constraint{Lb: 1, Ub: maxNrofAggregatedCellsPerCellGroup}, false)
+				tmp_Co_DurationsPerCellToAddModList_r17 := utils.NewSequence[*CO_DurationsPerCell_r17]([]*CO_DurationsPerCell_r17{}, aper.Constraint{Lb: 1, Ub: maxNrofAggregatedCellsPerCellGroup}, false)
 				fn_Co_DurationsPerCellToAddModList_r17 := func() *CO_DurationsPerCell_r17 {
 					return new(CO_DurationsPerCell_r17)
 				}

@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -9,9 +9,9 @@ type BandParameters_v1730 struct {
 	Srs_SwitchingAffectedBandsListNR_r17 []SRS_SwitchingAffectedBandsNR_r17 `lb:1,ub:maxSimultaneousBands,madatory`
 }
 
-func (ie *BandParameters_v1730) Encode(w *uper.UperWriter) error {
+func (ie *BandParameters_v1730) Encode(w *aper.AperWriter) error {
 	var err error
-	tmp_Srs_SwitchingAffectedBandsListNR_r17 := utils.NewSequence[*SRS_SwitchingAffectedBandsNR_r17]([]*SRS_SwitchingAffectedBandsNR_r17{}, uper.Constraint{Lb: 1, Ub: maxSimultaneousBands}, false)
+	tmp_Srs_SwitchingAffectedBandsListNR_r17 := utils.NewSequence[*SRS_SwitchingAffectedBandsNR_r17]([]*SRS_SwitchingAffectedBandsNR_r17{}, aper.Constraint{Lb: 1, Ub: maxSimultaneousBands}, false)
 	for _, i := range ie.Srs_SwitchingAffectedBandsListNR_r17 {
 		tmp_Srs_SwitchingAffectedBandsListNR_r17.Value = append(tmp_Srs_SwitchingAffectedBandsListNR_r17.Value, &i)
 	}
@@ -21,9 +21,9 @@ func (ie *BandParameters_v1730) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *BandParameters_v1730) Decode(r *uper.UperReader) error {
+func (ie *BandParameters_v1730) Decode(r *aper.AperReader) error {
 	var err error
-	tmp_Srs_SwitchingAffectedBandsListNR_r17 := utils.NewSequence[*SRS_SwitchingAffectedBandsNR_r17]([]*SRS_SwitchingAffectedBandsNR_r17{}, uper.Constraint{Lb: 1, Ub: maxSimultaneousBands}, false)
+	tmp_Srs_SwitchingAffectedBandsListNR_r17 := utils.NewSequence[*SRS_SwitchingAffectedBandsNR_r17]([]*SRS_SwitchingAffectedBandsNR_r17{}, aper.Constraint{Lb: 1, Ub: maxSimultaneousBands}, false)
 	fn_Srs_SwitchingAffectedBandsListNR_r17 := func() *SRS_SwitchingAffectedBandsNR_r17 {
 		return new(SRS_SwitchingAffectedBandsNR_r17)
 	}

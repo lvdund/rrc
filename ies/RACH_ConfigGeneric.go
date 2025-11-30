@@ -3,7 +3,7 @@ package ies
 import (
 	"bytes"
 
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -24,7 +24,7 @@ type RACH_ConfigGeneric struct {
 	Ra_ResponseWindow_v1700                  *RACH_ConfigGeneric_ra_ResponseWindow_v1700                  `optional,ext-2`
 }
 
-func (ie *RACH_ConfigGeneric) Encode(w *uper.UperWriter) error {
+func (ie *RACH_ConfigGeneric) Encode(w *aper.AperWriter) error {
 	var err error
 	hasExtensions := ie.Prach_ConfigurationPeriodScaling_IAB_r16 != nil || ie.Prach_ConfigurationFrameOffset_IAB_r16 != nil || ie.Prach_ConfigurationSOffset_IAB_r16 != nil || ie.Ra_ResponseWindow_v1610 != nil || ie.Prach_ConfigurationIndex_v1610 != nil || ie.Ra_ResponseWindow_v1700 != nil
 	preambleBits := []bool{hasExtensions}
@@ -33,19 +33,19 @@ func (ie *RACH_ConfigGeneric) Encode(w *uper.UperWriter) error {
 			return err
 		}
 	}
-	if err = w.WriteInteger(ie.Prach_ConfigurationIndex, &uper.Constraint{Lb: 0, Ub: 255}, false); err != nil {
+	if err = w.WriteInteger(ie.Prach_ConfigurationIndex, &aper.Constraint{Lb: 0, Ub: 255}, false); err != nil {
 		return utils.WrapError("WriteInteger Prach_ConfigurationIndex", err)
 	}
 	if err = ie.Msg1_FDM.Encode(w); err != nil {
 		return utils.WrapError("Encode Msg1_FDM", err)
 	}
-	if err = w.WriteInteger(ie.Msg1_FrequencyStart, &uper.Constraint{Lb: 0, Ub: maxNrofPhysicalResourceBlocks_1}, false); err != nil {
+	if err = w.WriteInteger(ie.Msg1_FrequencyStart, &aper.Constraint{Lb: 0, Ub: maxNrofPhysicalResourceBlocks_1}, false); err != nil {
 		return utils.WrapError("WriteInteger Msg1_FrequencyStart", err)
 	}
-	if err = w.WriteInteger(ie.ZeroCorrelationZoneConfig, &uper.Constraint{Lb: 0, Ub: 15}, false); err != nil {
+	if err = w.WriteInteger(ie.ZeroCorrelationZoneConfig, &aper.Constraint{Lb: 0, Ub: 15}, false); err != nil {
 		return utils.WrapError("WriteInteger ZeroCorrelationZoneConfig", err)
 	}
-	if err = w.WriteInteger(ie.PreambleReceivedTargetPower, &uper.Constraint{Lb: -202, Ub: -60}, false); err != nil {
+	if err = w.WriteInteger(ie.PreambleReceivedTargetPower, &aper.Constraint{Lb: -202, Ub: -60}, false); err != nil {
 		return utils.WrapError("WriteInteger PreambleReceivedTargetPower", err)
 	}
 	if err = ie.PreambleTransMax.Encode(w); err != nil {
@@ -67,7 +67,7 @@ func (ie *RACH_ConfigGeneric) Encode(w *uper.UperWriter) error {
 		// encode extension group 1
 		if extBitmap[0] {
 			extBuf := new(bytes.Buffer)
-			extWriter := uper.NewWriter(extBuf)
+			extWriter := aper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 1
 			optionals_ext_1 := []bool{ie.Prach_ConfigurationPeriodScaling_IAB_r16 != nil, ie.Prach_ConfigurationFrameOffset_IAB_r16 != nil, ie.Prach_ConfigurationSOffset_IAB_r16 != nil, ie.Ra_ResponseWindow_v1610 != nil, ie.Prach_ConfigurationIndex_v1610 != nil}
@@ -85,13 +85,13 @@ func (ie *RACH_ConfigGeneric) Encode(w *uper.UperWriter) error {
 			}
 			// encode Prach_ConfigurationFrameOffset_IAB_r16 optional
 			if ie.Prach_ConfigurationFrameOffset_IAB_r16 != nil {
-				if err = extWriter.WriteInteger(*ie.Prach_ConfigurationFrameOffset_IAB_r16, &uper.Constraint{Lb: 0, Ub: 63}, false); err != nil {
+				if err = extWriter.WriteInteger(*ie.Prach_ConfigurationFrameOffset_IAB_r16, &aper.Constraint{Lb: 0, Ub: 63}, false); err != nil {
 					return utils.WrapError("Encode Prach_ConfigurationFrameOffset_IAB_r16", err)
 				}
 			}
 			// encode Prach_ConfigurationSOffset_IAB_r16 optional
 			if ie.Prach_ConfigurationSOffset_IAB_r16 != nil {
-				if err = extWriter.WriteInteger(*ie.Prach_ConfigurationSOffset_IAB_r16, &uper.Constraint{Lb: 0, Ub: 39}, false); err != nil {
+				if err = extWriter.WriteInteger(*ie.Prach_ConfigurationSOffset_IAB_r16, &aper.Constraint{Lb: 0, Ub: 39}, false); err != nil {
 					return utils.WrapError("Encode Prach_ConfigurationSOffset_IAB_r16", err)
 				}
 			}
@@ -103,7 +103,7 @@ func (ie *RACH_ConfigGeneric) Encode(w *uper.UperWriter) error {
 			}
 			// encode Prach_ConfigurationIndex_v1610 optional
 			if ie.Prach_ConfigurationIndex_v1610 != nil {
-				if err = extWriter.WriteInteger(*ie.Prach_ConfigurationIndex_v1610, &uper.Constraint{Lb: 256, Ub: 262}, false); err != nil {
+				if err = extWriter.WriteInteger(*ie.Prach_ConfigurationIndex_v1610, &aper.Constraint{Lb: 256, Ub: 262}, false); err != nil {
 					return utils.WrapError("Encode Prach_ConfigurationIndex_v1610", err)
 				}
 			}
@@ -120,7 +120,7 @@ func (ie *RACH_ConfigGeneric) Encode(w *uper.UperWriter) error {
 		// encode extension group 2
 		if extBitmap[1] {
 			extBuf := new(bytes.Buffer)
-			extWriter := uper.NewWriter(extBuf)
+			extWriter := aper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 2
 			optionals_ext_2 := []bool{ie.Ra_ResponseWindow_v1700 != nil}
@@ -149,14 +149,14 @@ func (ie *RACH_ConfigGeneric) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *RACH_ConfigGeneric) Decode(r *uper.UperReader) error {
+func (ie *RACH_ConfigGeneric) Decode(r *aper.AperReader) error {
 	var err error
 	var extensionBit bool
 	if extensionBit, err = r.ReadBool(); err != nil {
 		return err
 	}
 	var tmp_int_Prach_ConfigurationIndex int64
-	if tmp_int_Prach_ConfigurationIndex, err = r.ReadInteger(&uper.Constraint{Lb: 0, Ub: 255}, false); err != nil {
+	if tmp_int_Prach_ConfigurationIndex, err = r.ReadInteger(&aper.Constraint{Lb: 0, Ub: 255}, false); err != nil {
 		return utils.WrapError("ReadInteger Prach_ConfigurationIndex", err)
 	}
 	ie.Prach_ConfigurationIndex = tmp_int_Prach_ConfigurationIndex
@@ -164,17 +164,17 @@ func (ie *RACH_ConfigGeneric) Decode(r *uper.UperReader) error {
 		return utils.WrapError("Decode Msg1_FDM", err)
 	}
 	var tmp_int_Msg1_FrequencyStart int64
-	if tmp_int_Msg1_FrequencyStart, err = r.ReadInteger(&uper.Constraint{Lb: 0, Ub: maxNrofPhysicalResourceBlocks_1}, false); err != nil {
+	if tmp_int_Msg1_FrequencyStart, err = r.ReadInteger(&aper.Constraint{Lb: 0, Ub: maxNrofPhysicalResourceBlocks_1}, false); err != nil {
 		return utils.WrapError("ReadInteger Msg1_FrequencyStart", err)
 	}
 	ie.Msg1_FrequencyStart = tmp_int_Msg1_FrequencyStart
 	var tmp_int_ZeroCorrelationZoneConfig int64
-	if tmp_int_ZeroCorrelationZoneConfig, err = r.ReadInteger(&uper.Constraint{Lb: 0, Ub: 15}, false); err != nil {
+	if tmp_int_ZeroCorrelationZoneConfig, err = r.ReadInteger(&aper.Constraint{Lb: 0, Ub: 15}, false); err != nil {
 		return utils.WrapError("ReadInteger ZeroCorrelationZoneConfig", err)
 	}
 	ie.ZeroCorrelationZoneConfig = tmp_int_ZeroCorrelationZoneConfig
 	var tmp_int_PreambleReceivedTargetPower int64
-	if tmp_int_PreambleReceivedTargetPower, err = r.ReadInteger(&uper.Constraint{Lb: -202, Ub: -60}, false); err != nil {
+	if tmp_int_PreambleReceivedTargetPower, err = r.ReadInteger(&aper.Constraint{Lb: -202, Ub: -60}, false); err != nil {
 		return utils.WrapError("ReadInteger PreambleReceivedTargetPower", err)
 	}
 	ie.PreambleReceivedTargetPower = tmp_int_PreambleReceivedTargetPower
@@ -202,7 +202,7 @@ func (ie *RACH_ConfigGeneric) Decode(r *uper.UperReader) error {
 				return err
 			}
 
-			extReader := uper.NewReader(bytes.NewReader(extBytes))
+			extReader := aper.NewReader(bytes.NewReader(extBytes))
 
 			Prach_ConfigurationPeriodScaling_IAB_r16Present, err := extReader.ReadBool()
 			if err != nil {
@@ -234,7 +234,7 @@ func (ie *RACH_ConfigGeneric) Decode(r *uper.UperReader) error {
 			// decode Prach_ConfigurationFrameOffset_IAB_r16 optional
 			if Prach_ConfigurationFrameOffset_IAB_r16Present {
 				var tmp_int_Prach_ConfigurationFrameOffset_IAB_r16 int64
-				if tmp_int_Prach_ConfigurationFrameOffset_IAB_r16, err = extReader.ReadInteger(&uper.Constraint{Lb: 0, Ub: 63}, false); err != nil {
+				if tmp_int_Prach_ConfigurationFrameOffset_IAB_r16, err = extReader.ReadInteger(&aper.Constraint{Lb: 0, Ub: 63}, false); err != nil {
 					return utils.WrapError("Decode Prach_ConfigurationFrameOffset_IAB_r16", err)
 				}
 				ie.Prach_ConfigurationFrameOffset_IAB_r16 = &tmp_int_Prach_ConfigurationFrameOffset_IAB_r16
@@ -242,7 +242,7 @@ func (ie *RACH_ConfigGeneric) Decode(r *uper.UperReader) error {
 			// decode Prach_ConfigurationSOffset_IAB_r16 optional
 			if Prach_ConfigurationSOffset_IAB_r16Present {
 				var tmp_int_Prach_ConfigurationSOffset_IAB_r16 int64
-				if tmp_int_Prach_ConfigurationSOffset_IAB_r16, err = extReader.ReadInteger(&uper.Constraint{Lb: 0, Ub: 39}, false); err != nil {
+				if tmp_int_Prach_ConfigurationSOffset_IAB_r16, err = extReader.ReadInteger(&aper.Constraint{Lb: 0, Ub: 39}, false); err != nil {
 					return utils.WrapError("Decode Prach_ConfigurationSOffset_IAB_r16", err)
 				}
 				ie.Prach_ConfigurationSOffset_IAB_r16 = &tmp_int_Prach_ConfigurationSOffset_IAB_r16
@@ -257,7 +257,7 @@ func (ie *RACH_ConfigGeneric) Decode(r *uper.UperReader) error {
 			// decode Prach_ConfigurationIndex_v1610 optional
 			if Prach_ConfigurationIndex_v1610Present {
 				var tmp_int_Prach_ConfigurationIndex_v1610 int64
-				if tmp_int_Prach_ConfigurationIndex_v1610, err = extReader.ReadInteger(&uper.Constraint{Lb: 256, Ub: 262}, false); err != nil {
+				if tmp_int_Prach_ConfigurationIndex_v1610, err = extReader.ReadInteger(&aper.Constraint{Lb: 256, Ub: 262}, false); err != nil {
 					return utils.WrapError("Decode Prach_ConfigurationIndex_v1610", err)
 				}
 				ie.Prach_ConfigurationIndex_v1610 = &tmp_int_Prach_ConfigurationIndex_v1610
@@ -270,7 +270,7 @@ func (ie *RACH_ConfigGeneric) Decode(r *uper.UperReader) error {
 				return err
 			}
 
-			extReader := uper.NewReader(bytes.NewReader(extBytes))
+			extReader := aper.NewReader(bytes.NewReader(extBytes))
 
 			Ra_ResponseWindow_v1700Present, err := extReader.ReadBool()
 			if err != nil {

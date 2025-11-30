@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -11,7 +11,7 @@ type Sensor_NameList_r16 struct {
 	MeasUeOrientation   *Sensor_NameList_r16_measUeOrientation   `optional`
 }
 
-func (ie *Sensor_NameList_r16) Encode(w *uper.UperWriter) error {
+func (ie *Sensor_NameList_r16) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.MeasUncomBarPre_r16 != nil, ie.MeasUeSpeed != nil, ie.MeasUeOrientation != nil}
 	for _, bit := range preambleBits {
@@ -37,7 +37,7 @@ func (ie *Sensor_NameList_r16) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *Sensor_NameList_r16) Decode(r *uper.UperReader) error {
+func (ie *Sensor_NameList_r16) Decode(r *aper.AperReader) error {
 	var err error
 	var MeasUncomBarPre_r16Present bool
 	if MeasUncomBarPre_r16Present, err = r.ReadBool(); err != nil {

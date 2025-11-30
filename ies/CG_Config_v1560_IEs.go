@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -16,7 +16,7 @@ type CG_Config_v1560_IEs struct {
 	NonCriticalExtension          *CG_Config_v1590_IEs                        `optional`
 }
 
-func (ie *CG_Config_v1560_IEs) Encode(w *uper.UperWriter) error {
+func (ie *CG_Config_v1560_IEs) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.PSCellFrequencyEUTRA != nil, ie.Scg_CellGroupConfigEUTRA != nil, ie.CandidateCellInfoListSN_EUTRA != nil, ie.CandidateServingFreqListEUTRA != nil, ie.NeedForGaps != nil, ie.Drx_ConfigSCG != nil, ie.ReportCGI_RequestEUTRA != nil, ie.NonCriticalExtension != nil}
 	for _, bit := range preambleBits {
@@ -30,12 +30,12 @@ func (ie *CG_Config_v1560_IEs) Encode(w *uper.UperWriter) error {
 		}
 	}
 	if ie.Scg_CellGroupConfigEUTRA != nil {
-		if err = w.WriteOctetString(*ie.Scg_CellGroupConfigEUTRA, &uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+		if err = w.WriteOctetString(*ie.Scg_CellGroupConfigEUTRA, &aper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
 			return utils.WrapError("Encode Scg_CellGroupConfigEUTRA", err)
 		}
 	}
 	if ie.CandidateCellInfoListSN_EUTRA != nil {
-		if err = w.WriteOctetString(*ie.CandidateCellInfoListSN_EUTRA, &uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+		if err = w.WriteOctetString(*ie.CandidateCellInfoListSN_EUTRA, &aper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
 			return utils.WrapError("Encode CandidateCellInfoListSN_EUTRA", err)
 		}
 	}
@@ -67,7 +67,7 @@ func (ie *CG_Config_v1560_IEs) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *CG_Config_v1560_IEs) Decode(r *uper.UperReader) error {
+func (ie *CG_Config_v1560_IEs) Decode(r *aper.AperReader) error {
 	var err error
 	var PSCellFrequencyEUTRAPresent bool
 	if PSCellFrequencyEUTRAPresent, err = r.ReadBool(); err != nil {
@@ -109,14 +109,14 @@ func (ie *CG_Config_v1560_IEs) Decode(r *uper.UperReader) error {
 	}
 	if Scg_CellGroupConfigEUTRAPresent {
 		var tmp_os_Scg_CellGroupConfigEUTRA []byte
-		if tmp_os_Scg_CellGroupConfigEUTRA, err = r.ReadOctetString(&uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+		if tmp_os_Scg_CellGroupConfigEUTRA, err = r.ReadOctetString(&aper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
 			return utils.WrapError("Decode Scg_CellGroupConfigEUTRA", err)
 		}
 		ie.Scg_CellGroupConfigEUTRA = &tmp_os_Scg_CellGroupConfigEUTRA
 	}
 	if CandidateCellInfoListSN_EUTRAPresent {
 		var tmp_os_CandidateCellInfoListSN_EUTRA []byte
-		if tmp_os_CandidateCellInfoListSN_EUTRA, err = r.ReadOctetString(&uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+		if tmp_os_CandidateCellInfoListSN_EUTRA, err = r.ReadOctetString(&aper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
 			return utils.WrapError("Decode CandidateCellInfoListSN_EUTRA", err)
 		}
 		ie.CandidateCellInfoListSN_EUTRA = &tmp_os_CandidateCellInfoListSN_EUTRA

@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -10,7 +10,7 @@ type InterFreqTargetInfo_r16 struct {
 	CellList_r16       []PhysCellId  `lb:1,ub:32,optional`
 }
 
-func (ie *InterFreqTargetInfo_r16) Encode(w *uper.UperWriter) error {
+func (ie *InterFreqTargetInfo_r16) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{len(ie.CellList_r16) > 0}
 	for _, bit := range preambleBits {
@@ -22,7 +22,7 @@ func (ie *InterFreqTargetInfo_r16) Encode(w *uper.UperWriter) error {
 		return utils.WrapError("Encode Dl_CarrierFreq_r16", err)
 	}
 	if len(ie.CellList_r16) > 0 {
-		tmp_CellList_r16 := utils.NewSequence[*PhysCellId]([]*PhysCellId{}, uper.Constraint{Lb: 1, Ub: 32}, false)
+		tmp_CellList_r16 := utils.NewSequence[*PhysCellId]([]*PhysCellId{}, aper.Constraint{Lb: 1, Ub: 32}, false)
 		for _, i := range ie.CellList_r16 {
 			tmp_CellList_r16.Value = append(tmp_CellList_r16.Value, &i)
 		}
@@ -33,7 +33,7 @@ func (ie *InterFreqTargetInfo_r16) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *InterFreqTargetInfo_r16) Decode(r *uper.UperReader) error {
+func (ie *InterFreqTargetInfo_r16) Decode(r *aper.AperReader) error {
 	var err error
 	var CellList_r16Present bool
 	if CellList_r16Present, err = r.ReadBool(); err != nil {
@@ -43,7 +43,7 @@ func (ie *InterFreqTargetInfo_r16) Decode(r *uper.UperReader) error {
 		return utils.WrapError("Decode Dl_CarrierFreq_r16", err)
 	}
 	if CellList_r16Present {
-		tmp_CellList_r16 := utils.NewSequence[*PhysCellId]([]*PhysCellId{}, uper.Constraint{Lb: 1, Ub: 32}, false)
+		tmp_CellList_r16 := utils.NewSequence[*PhysCellId]([]*PhysCellId{}, aper.Constraint{Lb: 1, Ub: 32}, false)
 		fn_CellList_r16 := func() *PhysCellId {
 			return new(PhysCellId)
 		}

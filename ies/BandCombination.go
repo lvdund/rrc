@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -11,11 +11,11 @@ type BandCombination struct {
 	Ca_ParametersEUTRA               *CA_ParametersEUTRA               `optional`
 	Ca_ParametersNR                  *CA_ParametersNR                  `optional`
 	Mrdc_Parameters                  *MRDC_Parameters                  `optional`
-	SupportedBandwidthCombinationSet *uper.BitString                   `lb:1,ub:32,optional`
+	SupportedBandwidthCombinationSet *aper.BitString                   `lb:1,ub:32,optional`
 	PowerClass_v1530                 *BandCombination_powerClass_v1530 `optional`
 }
 
-func (ie *BandCombination) Encode(w *uper.UperWriter) error {
+func (ie *BandCombination) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.Ca_ParametersEUTRA != nil, ie.Ca_ParametersNR != nil, ie.Mrdc_Parameters != nil, ie.SupportedBandwidthCombinationSet != nil, ie.PowerClass_v1530 != nil}
 	for _, bit := range preambleBits {
@@ -23,7 +23,7 @@ func (ie *BandCombination) Encode(w *uper.UperWriter) error {
 			return err
 		}
 	}
-	tmp_BandList := utils.NewSequence[*BandParameters]([]*BandParameters{}, uper.Constraint{Lb: 1, Ub: maxSimultaneousBands}, false)
+	tmp_BandList := utils.NewSequence[*BandParameters]([]*BandParameters{}, aper.Constraint{Lb: 1, Ub: maxSimultaneousBands}, false)
 	for _, i := range ie.BandList {
 		tmp_BandList.Value = append(tmp_BandList.Value, &i)
 	}
@@ -49,7 +49,7 @@ func (ie *BandCombination) Encode(w *uper.UperWriter) error {
 		}
 	}
 	if ie.SupportedBandwidthCombinationSet != nil {
-		if err = w.WriteBitString(ie.SupportedBandwidthCombinationSet.Bytes, uint(ie.SupportedBandwidthCombinationSet.NumBits), &uper.Constraint{Lb: 1, Ub: 32}, false); err != nil {
+		if err = w.WriteBitString(ie.SupportedBandwidthCombinationSet.Bytes, uint(ie.SupportedBandwidthCombinationSet.NumBits), &aper.Constraint{Lb: 1, Ub: 32}, false); err != nil {
 			return utils.WrapError("Encode SupportedBandwidthCombinationSet", err)
 		}
 	}
@@ -61,7 +61,7 @@ func (ie *BandCombination) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *BandCombination) Decode(r *uper.UperReader) error {
+func (ie *BandCombination) Decode(r *aper.AperReader) error {
 	var err error
 	var Ca_ParametersEUTRAPresent bool
 	if Ca_ParametersEUTRAPresent, err = r.ReadBool(); err != nil {
@@ -83,7 +83,7 @@ func (ie *BandCombination) Decode(r *uper.UperReader) error {
 	if PowerClass_v1530Present, err = r.ReadBool(); err != nil {
 		return err
 	}
-	tmp_BandList := utils.NewSequence[*BandParameters]([]*BandParameters{}, uper.Constraint{Lb: 1, Ub: maxSimultaneousBands}, false)
+	tmp_BandList := utils.NewSequence[*BandParameters]([]*BandParameters{}, aper.Constraint{Lb: 1, Ub: maxSimultaneousBands}, false)
 	fn_BandList := func() *BandParameters {
 		return new(BandParameters)
 	}
@@ -118,10 +118,10 @@ func (ie *BandCombination) Decode(r *uper.UperReader) error {
 	if SupportedBandwidthCombinationSetPresent {
 		var tmp_bs_SupportedBandwidthCombinationSet []byte
 		var n_SupportedBandwidthCombinationSet uint
-		if tmp_bs_SupportedBandwidthCombinationSet, n_SupportedBandwidthCombinationSet, err = r.ReadBitString(&uper.Constraint{Lb: 1, Ub: 32}, false); err != nil {
+		if tmp_bs_SupportedBandwidthCombinationSet, n_SupportedBandwidthCombinationSet, err = r.ReadBitString(&aper.Constraint{Lb: 1, Ub: 32}, false); err != nil {
 			return utils.WrapError("Decode SupportedBandwidthCombinationSet", err)
 		}
-		tmp_bitstring := uper.BitString{
+		tmp_bitstring := aper.BitString{
 			Bytes:   tmp_bs_SupportedBandwidthCombinationSet,
 			NumBits: uint64(n_SupportedBandwidthCombinationSet),
 		}

@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -11,7 +11,7 @@ type AvailabilityCombinationRB_Groups_r17 struct {
 	ResourceAvailability_r17      []int64                       `lb:1,ub:maxNrofResourceAvailabilityPerCombination_r16,e_lb:0,e_ub:7,optional`
 }
 
-func (ie *AvailabilityCombinationRB_Groups_r17) Encode(w *uper.UperWriter) error {
+func (ie *AvailabilityCombinationRB_Groups_r17) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{len(ie.Rb_SetGroups_r17) > 0, len(ie.ResourceAvailability_r17) > 0}
 	for _, bit := range preambleBits {
@@ -23,7 +23,7 @@ func (ie *AvailabilityCombinationRB_Groups_r17) Encode(w *uper.UperWriter) error
 		return utils.WrapError("Encode AvailabilityCombinationId_r17", err)
 	}
 	if len(ie.Rb_SetGroups_r17) > 0 {
-		tmp_Rb_SetGroups_r17 := utils.NewSequence[*RB_SetGroup_r17]([]*RB_SetGroup_r17{}, uper.Constraint{Lb: 1, Ub: maxNrofRB_SetGroups_r17}, false)
+		tmp_Rb_SetGroups_r17 := utils.NewSequence[*RB_SetGroup_r17]([]*RB_SetGroup_r17{}, aper.Constraint{Lb: 1, Ub: maxNrofRB_SetGroups_r17}, false)
 		for _, i := range ie.Rb_SetGroups_r17 {
 			tmp_Rb_SetGroups_r17.Value = append(tmp_Rb_SetGroups_r17.Value, &i)
 		}
@@ -32,9 +32,9 @@ func (ie *AvailabilityCombinationRB_Groups_r17) Encode(w *uper.UperWriter) error
 		}
 	}
 	if len(ie.ResourceAvailability_r17) > 0 {
-		tmp_ResourceAvailability_r17 := utils.NewSequence[*utils.INTEGER]([]*utils.INTEGER{}, uper.Constraint{Lb: 1, Ub: maxNrofResourceAvailabilityPerCombination_r16}, false)
+		tmp_ResourceAvailability_r17 := utils.NewSequence[*utils.INTEGER]([]*utils.INTEGER{}, aper.Constraint{Lb: 1, Ub: maxNrofResourceAvailabilityPerCombination_r16}, false)
 		for _, i := range ie.ResourceAvailability_r17 {
-			tmp_ie := utils.NewINTEGER(int64(i), uper.Constraint{Lb: 0, Ub: 7}, false)
+			tmp_ie := utils.NewINTEGER(int64(i), aper.Constraint{Lb: 0, Ub: 7}, false)
 			tmp_ResourceAvailability_r17.Value = append(tmp_ResourceAvailability_r17.Value, &tmp_ie)
 		}
 		if err = tmp_ResourceAvailability_r17.Encode(w); err != nil {
@@ -44,7 +44,7 @@ func (ie *AvailabilityCombinationRB_Groups_r17) Encode(w *uper.UperWriter) error
 	return nil
 }
 
-func (ie *AvailabilityCombinationRB_Groups_r17) Decode(r *uper.UperReader) error {
+func (ie *AvailabilityCombinationRB_Groups_r17) Decode(r *aper.AperReader) error {
 	var err error
 	var Rb_SetGroups_r17Present bool
 	if Rb_SetGroups_r17Present, err = r.ReadBool(); err != nil {
@@ -58,7 +58,7 @@ func (ie *AvailabilityCombinationRB_Groups_r17) Decode(r *uper.UperReader) error
 		return utils.WrapError("Decode AvailabilityCombinationId_r17", err)
 	}
 	if Rb_SetGroups_r17Present {
-		tmp_Rb_SetGroups_r17 := utils.NewSequence[*RB_SetGroup_r17]([]*RB_SetGroup_r17{}, uper.Constraint{Lb: 1, Ub: maxNrofRB_SetGroups_r17}, false)
+		tmp_Rb_SetGroups_r17 := utils.NewSequence[*RB_SetGroup_r17]([]*RB_SetGroup_r17{}, aper.Constraint{Lb: 1, Ub: maxNrofRB_SetGroups_r17}, false)
 		fn_Rb_SetGroups_r17 := func() *RB_SetGroup_r17 {
 			return new(RB_SetGroup_r17)
 		}
@@ -71,9 +71,9 @@ func (ie *AvailabilityCombinationRB_Groups_r17) Decode(r *uper.UperReader) error
 		}
 	}
 	if ResourceAvailability_r17Present {
-		tmp_ResourceAvailability_r17 := utils.NewSequence[*utils.INTEGER]([]*utils.INTEGER{}, uper.Constraint{Lb: 1, Ub: maxNrofResourceAvailabilityPerCombination_r16}, false)
+		tmp_ResourceAvailability_r17 := utils.NewSequence[*utils.INTEGER]([]*utils.INTEGER{}, aper.Constraint{Lb: 1, Ub: maxNrofResourceAvailabilityPerCombination_r16}, false)
 		fn_ResourceAvailability_r17 := func() *utils.INTEGER {
-			ie := utils.NewINTEGER(0, uper.Constraint{Lb: 0, Ub: 7}, false)
+			ie := utils.NewINTEGER(0, aper.Constraint{Lb: 0, Ub: 7}, false)
 			return &ie
 		}
 		if err = tmp_ResourceAvailability_r17.Decode(r, fn_ResourceAvailability_r17); err != nil {

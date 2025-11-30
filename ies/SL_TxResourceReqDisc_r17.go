@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -14,7 +14,7 @@ type SL_TxResourceReqDisc_r17 struct {
 	Sl_DiscoveryType_r17            SL_TxResourceReqDisc_r17_sl_DiscoveryType_r17 `madatory`
 }
 
-func (ie *SL_TxResourceReqDisc_r17) Encode(w *uper.UperWriter) error {
+func (ie *SL_TxResourceReqDisc_r17) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.Sl_SourceIdentityRelayUE_r17 != nil}
 	for _, bit := range preambleBits {
@@ -36,7 +36,7 @@ func (ie *SL_TxResourceReqDisc_r17) Encode(w *uper.UperWriter) error {
 	if err = ie.Sl_TxInterestedFreqListDisc_r17.Encode(w); err != nil {
 		return utils.WrapError("Encode Sl_TxInterestedFreqListDisc_r17", err)
 	}
-	tmp_Sl_TypeTxSyncListDisc_r17 := utils.NewSequence[*SL_TypeTxSync_r16]([]*SL_TypeTxSync_r16{}, uper.Constraint{Lb: 1, Ub: maxNrofFreqSL_r16}, false)
+	tmp_Sl_TypeTxSyncListDisc_r17 := utils.NewSequence[*SL_TypeTxSync_r16]([]*SL_TypeTxSync_r16{}, aper.Constraint{Lb: 1, Ub: maxNrofFreqSL_r16}, false)
 	for _, i := range ie.Sl_TypeTxSyncListDisc_r17 {
 		tmp_Sl_TypeTxSyncListDisc_r17.Value = append(tmp_Sl_TypeTxSyncListDisc_r17.Value, &i)
 	}
@@ -49,7 +49,7 @@ func (ie *SL_TxResourceReqDisc_r17) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *SL_TxResourceReqDisc_r17) Decode(r *uper.UperReader) error {
+func (ie *SL_TxResourceReqDisc_r17) Decode(r *aper.AperReader) error {
 	var err error
 	var Sl_SourceIdentityRelayUE_r17Present bool
 	if Sl_SourceIdentityRelayUE_r17Present, err = r.ReadBool(); err != nil {
@@ -70,7 +70,7 @@ func (ie *SL_TxResourceReqDisc_r17) Decode(r *uper.UperReader) error {
 	if err = ie.Sl_TxInterestedFreqListDisc_r17.Decode(r); err != nil {
 		return utils.WrapError("Decode Sl_TxInterestedFreqListDisc_r17", err)
 	}
-	tmp_Sl_TypeTxSyncListDisc_r17 := utils.NewSequence[*SL_TypeTxSync_r16]([]*SL_TypeTxSync_r16{}, uper.Constraint{Lb: 1, Ub: maxNrofFreqSL_r16}, false)
+	tmp_Sl_TypeTxSyncListDisc_r17 := utils.NewSequence[*SL_TypeTxSync_r16]([]*SL_TypeTxSync_r16{}, aper.Constraint{Lb: 1, Ub: maxNrofFreqSL_r16}, false)
 	fn_Sl_TypeTxSyncListDisc_r17 := func() *SL_TypeTxSync_r16 {
 		return new(SL_TypeTxSync_r16)
 	}

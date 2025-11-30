@@ -3,7 +3,7 @@ package ies
 import (
 	"bytes"
 
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -15,7 +15,7 @@ type MeasConfigMN struct {
 	InterFreqNoGap_r16    *MeasConfigMN_interFreqNoGap_r16 `optional,ext-2`
 }
 
-func (ie *MeasConfigMN) Encode(w *uper.UperWriter) error {
+func (ie *MeasConfigMN) Encode(w *aper.AperWriter) error {
 	var err error
 	hasExtensions := ie.MeasGapConfigFR2 != nil || ie.InterFreqNoGap_r16 != nil
 	preambleBits := []bool{hasExtensions, len(ie.MeasuredFrequenciesMN) > 0, ie.MeasGapConfig != nil, ie.GapPurpose != nil}
@@ -25,7 +25,7 @@ func (ie *MeasConfigMN) Encode(w *uper.UperWriter) error {
 		}
 	}
 	if len(ie.MeasuredFrequenciesMN) > 0 {
-		tmp_MeasuredFrequenciesMN := utils.NewSequence[*NR_FreqInfo]([]*NR_FreqInfo{}, uper.Constraint{Lb: 1, Ub: maxMeasFreqsMN}, false)
+		tmp_MeasuredFrequenciesMN := utils.NewSequence[*NR_FreqInfo]([]*NR_FreqInfo{}, aper.Constraint{Lb: 1, Ub: maxMeasFreqsMN}, false)
 		for _, i := range ie.MeasuredFrequenciesMN {
 			tmp_MeasuredFrequenciesMN.Value = append(tmp_MeasuredFrequenciesMN.Value, &i)
 		}
@@ -56,7 +56,7 @@ func (ie *MeasConfigMN) Encode(w *uper.UperWriter) error {
 		// encode extension group 1
 		if extBitmap[0] {
 			extBuf := new(bytes.Buffer)
-			extWriter := uper.NewWriter(extBuf)
+			extWriter := aper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 1
 			optionals_ext_1 := []bool{ie.MeasGapConfigFR2 != nil}
@@ -88,7 +88,7 @@ func (ie *MeasConfigMN) Encode(w *uper.UperWriter) error {
 		// encode extension group 2
 		if extBitmap[1] {
 			extBuf := new(bytes.Buffer)
-			extWriter := uper.NewWriter(extBuf)
+			extWriter := aper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 2
 			optionals_ext_2 := []bool{ie.InterFreqNoGap_r16 != nil}
@@ -117,7 +117,7 @@ func (ie *MeasConfigMN) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *MeasConfigMN) Decode(r *uper.UperReader) error {
+func (ie *MeasConfigMN) Decode(r *aper.AperReader) error {
 	var err error
 	var extensionBit bool
 	if extensionBit, err = r.ReadBool(); err != nil {
@@ -136,7 +136,7 @@ func (ie *MeasConfigMN) Decode(r *uper.UperReader) error {
 		return err
 	}
 	if MeasuredFrequenciesMNPresent {
-		tmp_MeasuredFrequenciesMN := utils.NewSequence[*NR_FreqInfo]([]*NR_FreqInfo{}, uper.Constraint{Lb: 1, Ub: maxMeasFreqsMN}, false)
+		tmp_MeasuredFrequenciesMN := utils.NewSequence[*NR_FreqInfo]([]*NR_FreqInfo{}, aper.Constraint{Lb: 1, Ub: maxMeasFreqsMN}, false)
 		fn_MeasuredFrequenciesMN := func() *NR_FreqInfo {
 			return new(NR_FreqInfo)
 		}
@@ -176,7 +176,7 @@ func (ie *MeasConfigMN) Decode(r *uper.UperReader) error {
 				return err
 			}
 
-			extReader := uper.NewReader(bytes.NewReader(extBytes))
+			extReader := aper.NewReader(bytes.NewReader(extBytes))
 
 			MeasGapConfigFR2Present, err := extReader.ReadBool()
 			if err != nil {
@@ -198,7 +198,7 @@ func (ie *MeasConfigMN) Decode(r *uper.UperReader) error {
 				return err
 			}
 
-			extReader := uper.NewReader(bytes.NewReader(extBytes))
+			extReader := aper.NewReader(bytes.NewReader(extBytes))
 
 			InterFreqNoGap_r16Present, err := extReader.ReadBool()
 			if err != nil {

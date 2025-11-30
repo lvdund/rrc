@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -10,7 +10,7 @@ type IABOtherInformation_r16_IEs_ip_InfoType_r16_iab_IP_Report_r16 struct {
 	Iab_IPv6_Report_r16        *IABOtherInformation_r16_IEs_ip_InfoType_r16_iab_IP_Report_r16_iab_IPv6_Report_r16 `optional`
 }
 
-func (ie *IABOtherInformation_r16_IEs_ip_InfoType_r16_iab_IP_Report_r16) Encode(w *uper.UperWriter) error {
+func (ie *IABOtherInformation_r16_IEs_ip_InfoType_r16_iab_IP_Report_r16) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.Iab_IPv4_AddressReport_r16 != nil, ie.Iab_IPv6_Report_r16 != nil}
 	for _, bit := range preambleBits {
@@ -31,7 +31,7 @@ func (ie *IABOtherInformation_r16_IEs_ip_InfoType_r16_iab_IP_Report_r16) Encode(
 	return nil
 }
 
-func (ie *IABOtherInformation_r16_IEs_ip_InfoType_r16_iab_IP_Report_r16) Decode(r *uper.UperReader) error {
+func (ie *IABOtherInformation_r16_IEs_ip_InfoType_r16_iab_IP_Report_r16) Decode(r *aper.AperReader) error {
 	var err error
 	var Iab_IPv4_AddressReport_r16Present bool
 	if Iab_IPv4_AddressReport_r16Present, err = r.ReadBool(); err != nil {

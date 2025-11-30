@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -13,7 +13,7 @@ type UEAssistanceInformation_v1700_IEs struct {
 	MaxMIMO_LayerPreferenceFR2_2_r17     *MaxMIMO_LayerPreferenceFR2_2_r17                                 `optional`
 	MinSchedulingOffsetPreferenceExt_r17 *MinSchedulingOffsetPreferenceExt_r17                             `optional`
 	Rlm_MeasRelaxationState_r17          *bool                                                             `optional`
-	Bfd_MeasRelaxationState_r17          *uper.BitString                                                   `lb:1,ub:maxNrofServingCells,optional`
+	Bfd_MeasRelaxationState_r17          *aper.BitString                                                   `lb:1,ub:maxNrofServingCells,optional`
 	NonSDT_DataIndication_r17            *UEAssistanceInformation_v1700_IEs_nonSDT_DataIndication_r17      `optional`
 	Scg_DeactivationPreference_r17       *UEAssistanceInformation_v1700_IEs_scg_DeactivationPreference_r17 `optional`
 	UplinkData_r17                       *UEAssistanceInformation_v1700_IEs_uplinkData_r17                 `optional`
@@ -22,7 +22,7 @@ type UEAssistanceInformation_v1700_IEs struct {
 	NonCriticalExtension                 interface{}                                                       `optional`
 }
 
-func (ie *UEAssistanceInformation_v1700_IEs) Encode(w *uper.UperWriter) error {
+func (ie *UEAssistanceInformation_v1700_IEs) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.Ul_GapFR2_Preference_r17 != nil, ie.Musim_Assistance_r17 != nil, ie.OverheatingAssistance_r17 != nil, ie.MaxBW_PreferenceFR2_2_r17 != nil, ie.MaxMIMO_LayerPreferenceFR2_2_r17 != nil, ie.MinSchedulingOffsetPreferenceExt_r17 != nil, ie.Rlm_MeasRelaxationState_r17 != nil, ie.Bfd_MeasRelaxationState_r17 != nil, ie.NonSDT_DataIndication_r17 != nil, ie.Scg_DeactivationPreference_r17 != nil, ie.UplinkData_r17 != nil, ie.Rrm_MeasRelaxationFulfilment_r17 != nil, ie.PropagationDelayDifference_r17 != nil}
 	for _, bit := range preambleBits {
@@ -66,7 +66,7 @@ func (ie *UEAssistanceInformation_v1700_IEs) Encode(w *uper.UperWriter) error {
 		}
 	}
 	if ie.Bfd_MeasRelaxationState_r17 != nil {
-		if err = w.WriteBitString(ie.Bfd_MeasRelaxationState_r17.Bytes, uint(ie.Bfd_MeasRelaxationState_r17.NumBits), &uper.Constraint{Lb: 1, Ub: maxNrofServingCells}, false); err != nil {
+		if err = w.WriteBitString(ie.Bfd_MeasRelaxationState_r17.Bytes, uint(ie.Bfd_MeasRelaxationState_r17.NumBits), &aper.Constraint{Lb: 1, Ub: maxNrofServingCells}, false); err != nil {
 			return utils.WrapError("Encode Bfd_MeasRelaxationState_r17", err)
 		}
 	}
@@ -98,7 +98,7 @@ func (ie *UEAssistanceInformation_v1700_IEs) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *UEAssistanceInformation_v1700_IEs) Decode(r *uper.UperReader) error {
+func (ie *UEAssistanceInformation_v1700_IEs) Decode(r *aper.AperReader) error {
 	var err error
 	var Ul_GapFR2_Preference_r17Present bool
 	if Ul_GapFR2_Preference_r17Present, err = r.ReadBool(); err != nil {
@@ -198,10 +198,10 @@ func (ie *UEAssistanceInformation_v1700_IEs) Decode(r *uper.UperReader) error {
 	if Bfd_MeasRelaxationState_r17Present {
 		var tmp_bs_Bfd_MeasRelaxationState_r17 []byte
 		var n_Bfd_MeasRelaxationState_r17 uint
-		if tmp_bs_Bfd_MeasRelaxationState_r17, n_Bfd_MeasRelaxationState_r17, err = r.ReadBitString(&uper.Constraint{Lb: 1, Ub: maxNrofServingCells}, false); err != nil {
+		if tmp_bs_Bfd_MeasRelaxationState_r17, n_Bfd_MeasRelaxationState_r17, err = r.ReadBitString(&aper.Constraint{Lb: 1, Ub: maxNrofServingCells}, false); err != nil {
 			return utils.WrapError("Decode Bfd_MeasRelaxationState_r17", err)
 		}
-		tmp_bitstring := uper.BitString{
+		tmp_bitstring := aper.BitString{
 			Bytes:   tmp_bs_Bfd_MeasRelaxationState_r17,
 			NumBits: uint64(n_Bfd_MeasRelaxationState_r17),
 		}

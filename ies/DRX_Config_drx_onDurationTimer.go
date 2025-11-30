@@ -3,7 +3,7 @@ package ies
 import (
 	"fmt"
 
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -19,14 +19,14 @@ type DRX_Config_drx_onDurationTimer struct {
 	MilliSeconds    *DRX_Config_drx_onDurationTimer_milliSeconds
 }
 
-func (ie *DRX_Config_drx_onDurationTimer) Encode(w *uper.UperWriter) error {
+func (ie *DRX_Config_drx_onDurationTimer) Encode(w *aper.AperWriter) error {
 	var err error
 	if err = w.WriteChoice(ie.Choice, 2, false); err != nil {
 		return err
 	}
 	switch ie.Choice {
 	case DRX_Config_drx_onDurationTimer_Choice_SubMilliSeconds:
-		if err = w.WriteInteger(int64(ie.SubMilliSeconds), &uper.Constraint{Lb: 1, Ub: 31}, false); err != nil {
+		if err = w.WriteInteger(int64(ie.SubMilliSeconds), &aper.Constraint{Lb: 1, Ub: 31}, false); err != nil {
 			err = utils.WrapError("Encode SubMilliSeconds", err)
 		}
 	case DRX_Config_drx_onDurationTimer_Choice_MilliSeconds:
@@ -39,7 +39,7 @@ func (ie *DRX_Config_drx_onDurationTimer) Encode(w *uper.UperWriter) error {
 	return err
 }
 
-func (ie *DRX_Config_drx_onDurationTimer) Decode(r *uper.UperReader) error {
+func (ie *DRX_Config_drx_onDurationTimer) Decode(r *aper.AperReader) error {
 	var err error
 	if ie.Choice, err = r.ReadChoice(2, false); err != nil {
 		return err
@@ -47,7 +47,7 @@ func (ie *DRX_Config_drx_onDurationTimer) Decode(r *uper.UperReader) error {
 	switch ie.Choice {
 	case DRX_Config_drx_onDurationTimer_Choice_SubMilliSeconds:
 		var tmp_int_SubMilliSeconds int64
-		if tmp_int_SubMilliSeconds, err = r.ReadInteger(&uper.Constraint{Lb: 1, Ub: 31}, false); err != nil {
+		if tmp_int_SubMilliSeconds, err = r.ReadInteger(&aper.Constraint{Lb: 1, Ub: 31}, false); err != nil {
 			return utils.WrapError("Decode SubMilliSeconds", err)
 		}
 		ie.SubMilliSeconds = tmp_int_SubMilliSeconds

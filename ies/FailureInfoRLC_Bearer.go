@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -11,7 +11,7 @@ type FailureInfoRLC_Bearer struct {
 	FailureType            FailureInfoRLC_Bearer_failureType `madatory`
 }
 
-func (ie *FailureInfoRLC_Bearer) Encode(w *uper.UperWriter) error {
+func (ie *FailureInfoRLC_Bearer) Encode(w *aper.AperWriter) error {
 	var err error
 	if err = ie.CellGroupId.Encode(w); err != nil {
 		return utils.WrapError("Encode CellGroupId", err)
@@ -25,7 +25,7 @@ func (ie *FailureInfoRLC_Bearer) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *FailureInfoRLC_Bearer) Decode(r *uper.UperReader) error {
+func (ie *FailureInfoRLC_Bearer) Decode(r *aper.AperReader) error {
 	var err error
 	if err = ie.CellGroupId.Decode(r); err != nil {
 		return utils.WrapError("Decode CellGroupId", err)

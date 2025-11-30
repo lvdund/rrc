@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -9,9 +9,9 @@ type UAC_BarringPerCatList struct {
 	Value []UAC_BarringPerCat `lb:1,ub:maxAccessCat_1,madatory`
 }
 
-func (ie *UAC_BarringPerCatList) Encode(w *uper.UperWriter) error {
+func (ie *UAC_BarringPerCatList) Encode(w *aper.AperWriter) error {
 	var err error
-	tmp := utils.NewSequence[*UAC_BarringPerCat]([]*UAC_BarringPerCat{}, uper.Constraint{Lb: 1, Ub: maxAccessCat_1}, false)
+	tmp := utils.NewSequence[*UAC_BarringPerCat]([]*UAC_BarringPerCat{}, aper.Constraint{Lb: 1, Ub: maxAccessCat_1}, false)
 	for _, i := range ie.Value {
 		tmp.Value = append(tmp.Value, &i)
 	}
@@ -21,9 +21,9 @@ func (ie *UAC_BarringPerCatList) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *UAC_BarringPerCatList) Decode(r *uper.UperReader) error {
+func (ie *UAC_BarringPerCatList) Decode(r *aper.AperReader) error {
 	var err error
-	tmp := utils.NewSequence[*UAC_BarringPerCat]([]*UAC_BarringPerCat{}, uper.Constraint{Lb: 1, Ub: maxAccessCat_1}, false)
+	tmp := utils.NewSequence[*UAC_BarringPerCat]([]*UAC_BarringPerCat{}, aper.Constraint{Lb: 1, Ub: maxAccessCat_1}, false)
 	fn := func() *UAC_BarringPerCat {
 		return new(UAC_BarringPerCat)
 	}

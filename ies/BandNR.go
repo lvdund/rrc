@@ -3,13 +3,13 @@ package ies
 import (
 	"bytes"
 
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
 type BandNR struct {
 	BandNR                                                         FreqBandIndicatorNR                                                    `madatory`
-	ModifiedMPR_Behaviour                                          *uper.BitString                                                        `lb:8,ub:8,optional`
+	ModifiedMPR_Behaviour                                          *aper.BitString                                                        `lb:8,ub:8,optional`
 	Mimo_ParametersPerBand                                         *MIMO_ParametersPerBand                                                `optional`
 	ExtendedCP                                                     *BandNR_extendedCP                                                     `optional`
 	MultipleTCI                                                    *BandNR_multipleTCI                                                    `optional`
@@ -29,7 +29,7 @@ type BandNR struct {
 	MaxUplinkDutyCycle_FR2                                         *BandNR_maxUplinkDutyCycle_FR2                                         `optional,ext-3`
 	ChannelBWs_DL_v1590                                            *BandNR_channelBWs_DL_v1590                                            `lb:16,ub:16,optional,ext-4`
 	ChannelBWs_UL_v1590                                            *BandNR_channelBWs_UL_v1590                                            `lb:16,ub:16,optional,ext-4`
-	AsymmetricBandwidthCombinationSet                              *uper.BitString                                                        `lb:1,ub:32,optional,ext-5`
+	AsymmetricBandwidthCombinationSet                              *aper.BitString                                                        `lb:1,ub:32,optional,ext-5`
 	SharedSpectrumChAccessParamsPerBand_r16                        *SharedSpectrumChAccessParamsPerBand_r16                               `optional,ext-6`
 	CancelOverlappingPUSCH_r16                                     *BandNR_cancelOverlappingPUSCH_r16                                     `optional,ext-6`
 	MultipleRateMatchingEUTRA_CRS_r16                              *BandNR_multipleRateMatchingEUTRA_CRS_r16                              `lb:2,ub:6,optional,ext-6`
@@ -120,10 +120,10 @@ type BandNR struct {
 	Bwp_WithoutCD_SSB_OrNCD_SSB_RedCap_r17                         *BandNR_bwp_WithoutCD_SSB_OrNCD_SSB_RedCap_r17                         `optional,ext-12`
 	HalfDuplexFDD_TypeA_RedCap_r17                                 *BandNR_halfDuplexFDD_TypeA_RedCap_r17                                 `optional,ext-12`
 	PosSRS_RRC_Inactive_OutsideInitialUL_BWP_r17                   *PosSRS_RRC_Inactive_OutsideInitialUL_BWP_r17                          `optional,ext-12`
-	ChannelBWs_DL_SCS_480kHz_FR2_2_r17                             *uper.BitString                                                        `lb:8,ub:8,optional,ext-12`
-	ChannelBWs_UL_SCS_480kHz_FR2_2_r17                             *uper.BitString                                                        `lb:8,ub:8,optional,ext-12`
-	ChannelBWs_DL_SCS_960kHz_FR2_2_r17                             *uper.BitString                                                        `lb:8,ub:8,optional,ext-12`
-	ChannelBWs_UL_SCS_960kHz_FR2_2_r17                             *uper.BitString                                                        `lb:8,ub:8,optional,ext-12`
+	ChannelBWs_DL_SCS_480kHz_FR2_2_r17                             *aper.BitString                                                        `lb:8,ub:8,optional,ext-12`
+	ChannelBWs_UL_SCS_480kHz_FR2_2_r17                             *aper.BitString                                                        `lb:8,ub:8,optional,ext-12`
+	ChannelBWs_DL_SCS_960kHz_FR2_2_r17                             *aper.BitString                                                        `lb:8,ub:8,optional,ext-12`
+	ChannelBWs_UL_SCS_960kHz_FR2_2_r17                             *aper.BitString                                                        `lb:8,ub:8,optional,ext-12`
 	Ul_GapFR2_r17                                                  *BandNR_ul_GapFR2_r17                                                  `optional,ext-12`
 	OneShotHARQ_feedbackTriggeredByDCI_1_2_r17                     *BandNR_oneShotHARQ_feedbackTriggeredByDCI_1_2_r17                     `optional,ext-12`
 	OneShotHARQ_feedbackPhy_Priority_r17                           *BandNR_oneShotHARQ_feedbackPhy_Priority_r17                           `optional,ext-12`
@@ -149,8 +149,8 @@ type BandNR struct {
 	MaxNumber_LEO_SatellitesPerCarrier_r17                         *int64                                                                 `lb:3,ub:4,optional,ext-13`
 	Prs_ProcessingCapabilityOutsideMGinPPW_r17                     []PRS_ProcessingCapabilityOutsideMGinPPWperType_r17                    `lb:1,ub:3,optional,ext-13`
 	Srs_SemiPersistent_PosResourcesRRC_Inactive_r17                *BandNR_srs_SemiPersistent_PosResourcesRRC_Inactive_r17                `optional,ext-13`
-	ChannelBWs_DL_SCS_120kHz_FR2_2_r17                             *uper.BitString                                                        `lb:8,ub:8,optional,ext-13`
-	ChannelBWs_UL_SCS_120kHz_FR2_2_r17                             *uper.BitString                                                        `lb:8,ub:8,optional,ext-13`
+	ChannelBWs_DL_SCS_120kHz_FR2_2_r17                             *aper.BitString                                                        `lb:8,ub:8,optional,ext-13`
+	ChannelBWs_UL_SCS_120kHz_FR2_2_r17                             *aper.BitString                                                        `lb:8,ub:8,optional,ext-13`
 	Dmrs_BundlingPUSCH_RepTypeA_r17                                *BandNR_dmrs_BundlingPUSCH_RepTypeA_r17                                `optional,ext-14`
 	Dmrs_BundlingPUSCH_RepTypeB_r17                                *BandNR_dmrs_BundlingPUSCH_RepTypeB_r17                                `optional,ext-14`
 	Dmrs_BundlingPUSCH_multiSlot_r17                               *BandNR_dmrs_BundlingPUSCH_multiSlot_r17                               `optional,ext-14`
@@ -161,7 +161,7 @@ type BandNR struct {
 	Dmrs_BundlingNonBackToBackTX_r17                               *BandNR_dmrs_BundlingNonBackToBackTX_r17                               `optional,ext-14`
 }
 
-func (ie *BandNR) Encode(w *uper.UperWriter) error {
+func (ie *BandNR) Encode(w *aper.AperWriter) error {
 	var err error
 	hasExtensions := ie.MaxUplinkDutyCycle_PC2_FR1 != nil || ie.Pucch_SpatialRelInfoMAC_CE != nil || ie.PowerBoosting_pi2BPSK != nil || ie.MaxUplinkDutyCycle_FR2 != nil || ie.ChannelBWs_DL_v1590 != nil || ie.ChannelBWs_UL_v1590 != nil || ie.AsymmetricBandwidthCombinationSet != nil || ie.SharedSpectrumChAccessParamsPerBand_r16 != nil || ie.CancelOverlappingPUSCH_r16 != nil || ie.MultipleRateMatchingEUTRA_CRS_r16 != nil || ie.OverlapRateMatchingEUTRA_CRS_r16 != nil || ie.Pdsch_MappingTypeB_Alt_r16 != nil || ie.OneSlotPeriodicTRS_r16 != nil || ie.Olpc_SRS_Pos_r16 != nil || ie.SpatialRelationsSRS_Pos_r16 != nil || ie.SimulSRS_MIMO_TransWithinBand_r16 != nil || ie.ChannelBW_DL_IAB_r16 != nil || ie.ChannelBW_UL_IAB_r16 != nil || ie.RasterShift7dot5_IAB_r16 != nil || ie.Ue_PowerClass_v1610 != nil || ie.CondHandover_r16 != nil || ie.CondHandoverFailure_r16 != nil || ie.CondHandoverTwoTriggerEvents_r16 != nil || ie.CondPSCellChange_r16 != nil || ie.CondPSCellChangeTwoTriggerEvents_r16 != nil || ie.Mpr_PowerBoost_FR2_r16 != nil || ie.ActiveConfiguredGrant_r16 != nil || ie.JointReleaseConfiguredGrantType2_r16 != nil || ie.Sps_r16 != nil || ie.JointReleaseSPS_r16 != nil || ie.SimulSRS_TransWithinBand_r16 != nil || ie.Trs_AdditionalBandwidth_r16 != nil || ie.HandoverIntraF_IAB_r16 != nil || ie.SimulTX_SRS_AntSwitchingIntraBandUL_CA_r16 != nil || ie.SharedSpectrumChAccessParamsPerBand_v1630 != nil || ie.HandoverUTRA_FDD_r16 != nil || ie.EnhancedUL_TransientPeriod_r16 != nil || ie.SharedSpectrumChAccessParamsPerBand_v1640 != nil || ie.Type1_PUSCH_RepetitionMultiSlots_v1650 != nil || ie.Type2_PUSCH_RepetitionMultiSlots_v1650 != nil || ie.Pusch_RepetitionMultiSlots_v1650 != nil || ie.ConfiguredUL_GrantType1_v1650 != nil || ie.ConfiguredUL_GrantType2_v1650 != nil || ie.SharedSpectrumChAccessParamsPerBand_v1650 != nil || ie.EnhancedSkipUplinkTxConfigured_v1660 != nil || ie.EnhancedSkipUplinkTxDynamic_v1660 != nil || ie.MaxUplinkDutyCycle_PC1dot5_MPE_FR1_r16 != nil || ie.TxDiversity_r16 != nil || ie.Pdsch_1024QAM_FR1_r17 != nil || ie.Ue_PowerClass_v1700 != nil || ie.Fr2_2_AccessParamsPerBand_r17 != nil || ie.Rlm_Relaxation_r17 != nil || ie.Bfd_Relaxation_r17 != nil || ie.Cg_SDT_r17 != nil || ie.LocationBasedCondHandover_r17 != nil || ie.TimeBasedCondHandover_r17 != nil || ie.EventA4BasedCondHandover_r17 != nil || ie.Mn_InitiatedCondPSCellChangeNRDC_r17 != nil || ie.Sn_InitiatedCondPSCellChangeNRDC_r17 != nil || ie.Pdcch_SkippingWithoutSSSG_r17 != nil || ie.Sssg_Switching_1BitInd_r17 != nil || ie.Sssg_Switching_2BitInd_r17 != nil || ie.Pdcch_SkippingWithSSSG_r17 != nil || ie.SearchSpaceSetGrp_switchCap2_r17 != nil || ie.UplinkPreCompensation_r17 != nil || ie.Uplink_TA_Reporting_r17 != nil || ie.Max_HARQ_ProcessNumber_r17 != nil || ie.Type2_HARQ_Codebook_r17 != nil || ie.Type1_HARQ_Codebook_r17 != nil || ie.Type3_HARQ_Codebook_r17 != nil || ie.Ue_specific_K_Offset_r17 != nil || ie.MultiPDSCH_SingleDCI_FR2_1_SCS_120kHz_r17 != nil || ie.MultiPUSCH_SingleDCI_FR2_1_SCS_120kHz_r17 != nil || ie.ParallelPRS_MeasRRC_Inactive_r17 != nil || ie.Nr_UE_TxTEG_ID_MaxSupport_r17 != nil || ie.Prs_ProcessingRRC_Inactive_r17 != nil || ie.Prs_ProcessingWindowType1A_r17 != nil || ie.Prs_ProcessingWindowType1B_r17 != nil || ie.Prs_ProcessingWindowType2_r17 != nil || ie.Srs_AllPosResourcesRRC_Inactive_r17 != nil || ie.Olpc_SRS_PosRRC_Inactive_r17 != nil || ie.SpatialRelationsSRS_PosRRC_Inactive_r17 != nil || ie.MaxNumberPUSCH_TypeA_Repetition_r17 != nil || ie.PuschTypeA_RepetitionsAvailSlot_r17 != nil || ie.Tb_ProcessingMultiSlotPUSCH_r17 != nil || ie.Tb_ProcessingRepMultiSlotPUSCH_r17 != nil || ie.MaxDurationDMRS_Bundling_r17 != nil || ie.Pusch_RepetitionMsg3_r17 != nil || ie.SharedSpectrumChAccessParamsPerBand_v1710 != nil || ie.ParallelMeasurementWithoutRestriction_r17 != nil || ie.MaxNumber_NGSO_SatellitesWithinOneSMTC_r17 != nil || ie.K1_RangeExtension_r17 != nil || ie.AperiodicCSI_RS_FastScellActivation_r17 != nil || ie.AperiodicCSI_RS_AdditionalBandwidth_r17 != nil || ie.Bwp_WithoutCD_SSB_OrNCD_SSB_RedCap_r17 != nil || ie.HalfDuplexFDD_TypeA_RedCap_r17 != nil || ie.PosSRS_RRC_Inactive_OutsideInitialUL_BWP_r17 != nil || ie.ChannelBWs_DL_SCS_480kHz_FR2_2_r17 != nil || ie.ChannelBWs_UL_SCS_480kHz_FR2_2_r17 != nil || ie.ChannelBWs_DL_SCS_960kHz_FR2_2_r17 != nil || ie.ChannelBWs_UL_SCS_960kHz_FR2_2_r17 != nil || ie.Ul_GapFR2_r17 != nil || ie.OneShotHARQ_feedbackTriggeredByDCI_1_2_r17 != nil || ie.OneShotHARQ_feedbackPhy_Priority_r17 != nil || ie.EnhancedType3_HARQ_CodebookFeedback_r17 != nil || ie.TriggeredHARQ_CodebookRetx_r17 != nil || ie.Ue_OneShotUL_TimingAdj_r17 != nil || ie.Pucch_Repetition_F0_2_r17 != nil || ie.Cqi_4_BitsSubbandNTN_SharedSpectrumChAccess_r17 != nil || ie.Mux_HARQ_ACK_DiffPriorities_r17 != nil || ie.Ta_BasedPDC_NTN_SharedSpectrumChAccess_r17 != nil || ie.Ack_NACK_FeedbackForMulticastWithDCI_Enabler_r17 != nil || ie.MaxNumberG_RNTI_r17 != nil || ie.DynamicMulticastDCI_Format4_2_r17 != nil || ie.MaxModulationOrderForMulticast_r17 != nil || ie.DynamicSlotRepetitionMulticastTN_NonSharedSpectrumChAccess_r17 != nil || ie.DynamicSlotRepetitionMulticastNTN_SharedSpectrumChAccess_r17 != nil || ie.Nack_OnlyFeedbackForMulticastWithDCI_Enabler_r17 != nil || ie.Ack_NACK_FeedbackForSPS_MulticastWithDCI_Enabler_r17 != nil || ie.MaxNumberG_CS_RNTI_r17 != nil || ie.Re_LevelRateMatchingForMulticast_r17 != nil || ie.Pdsch_1024QAM_2MIMO_FR1_r17 != nil || ie.Prs_MeasurementWithoutMG_r17 != nil || ie.MaxNumber_LEO_SatellitesPerCarrier_r17 != nil || len(ie.Prs_ProcessingCapabilityOutsideMGinPPW_r17) > 0 || ie.Srs_SemiPersistent_PosResourcesRRC_Inactive_r17 != nil || ie.ChannelBWs_DL_SCS_120kHz_FR2_2_r17 != nil || ie.ChannelBWs_UL_SCS_120kHz_FR2_2_r17 != nil || ie.Dmrs_BundlingPUSCH_RepTypeA_r17 != nil || ie.Dmrs_BundlingPUSCH_RepTypeB_r17 != nil || ie.Dmrs_BundlingPUSCH_multiSlot_r17 != nil || ie.Dmrs_BundlingPUCCH_Rep_r17 != nil || ie.InterSlotFreqHopInterSlotBundlingPUSCH_r17 != nil || ie.InterSlotFreqHopPUCCH_r17 != nil || ie.Dmrs_BundlingRestart_r17 != nil || ie.Dmrs_BundlingNonBackToBackTX_r17 != nil
 	preambleBits := []bool{hasExtensions, ie.ModifiedMPR_Behaviour != nil, ie.Mimo_ParametersPerBand != nil, ie.ExtendedCP != nil, ie.MultipleTCI != nil, ie.Bwp_WithoutRestriction != nil, ie.Bwp_SameNumerology != nil, ie.Bwp_DiffNumerology != nil, ie.CrossCarrierScheduling_SameSCS != nil, ie.Pdsch_256QAM_FR2 != nil, ie.Pusch_256QAM != nil, ie.Ue_PowerClass != nil, ie.RateMatchingLTE_CRS != nil, ie.ChannelBWs_DL != nil, ie.ChannelBWs_UL != nil}
@@ -174,7 +174,7 @@ func (ie *BandNR) Encode(w *uper.UperWriter) error {
 		return utils.WrapError("Encode BandNR", err)
 	}
 	if ie.ModifiedMPR_Behaviour != nil {
-		if err = w.WriteBitString(ie.ModifiedMPR_Behaviour.Bytes, uint(ie.ModifiedMPR_Behaviour.NumBits), &uper.Constraint{Lb: 8, Ub: 8}, false); err != nil {
+		if err = w.WriteBitString(ie.ModifiedMPR_Behaviour.Bytes, uint(ie.ModifiedMPR_Behaviour.NumBits), &aper.Constraint{Lb: 8, Ub: 8}, false); err != nil {
 			return utils.WrapError("Encode ModifiedMPR_Behaviour", err)
 		}
 	}
@@ -253,7 +253,7 @@ func (ie *BandNR) Encode(w *uper.UperWriter) error {
 		// encode extension group 1
 		if extBitmap[0] {
 			extBuf := new(bytes.Buffer)
-			extWriter := uper.NewWriter(extBuf)
+			extWriter := aper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 1
 			optionals_ext_1 := []bool{ie.MaxUplinkDutyCycle_PC2_FR1 != nil}
@@ -282,7 +282,7 @@ func (ie *BandNR) Encode(w *uper.UperWriter) error {
 		// encode extension group 2
 		if extBitmap[1] {
 			extBuf := new(bytes.Buffer)
-			extWriter := uper.NewWriter(extBuf)
+			extWriter := aper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 2
 			optionals_ext_2 := []bool{ie.Pucch_SpatialRelInfoMAC_CE != nil, ie.PowerBoosting_pi2BPSK != nil}
@@ -317,7 +317,7 @@ func (ie *BandNR) Encode(w *uper.UperWriter) error {
 		// encode extension group 3
 		if extBitmap[2] {
 			extBuf := new(bytes.Buffer)
-			extWriter := uper.NewWriter(extBuf)
+			extWriter := aper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 3
 			optionals_ext_3 := []bool{ie.MaxUplinkDutyCycle_FR2 != nil}
@@ -346,7 +346,7 @@ func (ie *BandNR) Encode(w *uper.UperWriter) error {
 		// encode extension group 4
 		if extBitmap[3] {
 			extBuf := new(bytes.Buffer)
-			extWriter := uper.NewWriter(extBuf)
+			extWriter := aper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 4
 			optionals_ext_4 := []bool{ie.ChannelBWs_DL_v1590 != nil, ie.ChannelBWs_UL_v1590 != nil}
@@ -381,7 +381,7 @@ func (ie *BandNR) Encode(w *uper.UperWriter) error {
 		// encode extension group 5
 		if extBitmap[4] {
 			extBuf := new(bytes.Buffer)
-			extWriter := uper.NewWriter(extBuf)
+			extWriter := aper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 5
 			optionals_ext_5 := []bool{ie.AsymmetricBandwidthCombinationSet != nil}
@@ -393,7 +393,7 @@ func (ie *BandNR) Encode(w *uper.UperWriter) error {
 
 			// encode AsymmetricBandwidthCombinationSet optional
 			if ie.AsymmetricBandwidthCombinationSet != nil {
-				if err = extWriter.WriteBitString(ie.AsymmetricBandwidthCombinationSet.Bytes, uint(ie.AsymmetricBandwidthCombinationSet.NumBits), &uper.Constraint{Lb: 1, Ub: 32}, false); err != nil {
+				if err = extWriter.WriteBitString(ie.AsymmetricBandwidthCombinationSet.Bytes, uint(ie.AsymmetricBandwidthCombinationSet.NumBits), &aper.Constraint{Lb: 1, Ub: 32}, false); err != nil {
 					return utils.WrapError("Encode AsymmetricBandwidthCombinationSet", err)
 				}
 			}
@@ -410,7 +410,7 @@ func (ie *BandNR) Encode(w *uper.UperWriter) error {
 		// encode extension group 6
 		if extBitmap[5] {
 			extBuf := new(bytes.Buffer)
-			extWriter := uper.NewWriter(extBuf)
+			extWriter := aper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 6
 			optionals_ext_6 := []bool{ie.SharedSpectrumChAccessParamsPerBand_r16 != nil, ie.CancelOverlappingPUSCH_r16 != nil, ie.MultipleRateMatchingEUTRA_CRS_r16 != nil, ie.OverlapRateMatchingEUTRA_CRS_r16 != nil, ie.Pdsch_MappingTypeB_Alt_r16 != nil, ie.OneSlotPeriodicTRS_r16 != nil, ie.Olpc_SRS_Pos_r16 != nil, ie.SpatialRelationsSRS_Pos_r16 != nil, ie.SimulSRS_MIMO_TransWithinBand_r16 != nil, ie.ChannelBW_DL_IAB_r16 != nil, ie.ChannelBW_UL_IAB_r16 != nil, ie.RasterShift7dot5_IAB_r16 != nil, ie.Ue_PowerClass_v1610 != nil, ie.CondHandover_r16 != nil, ie.CondHandoverFailure_r16 != nil, ie.CondHandoverTwoTriggerEvents_r16 != nil, ie.CondPSCellChange_r16 != nil, ie.CondPSCellChangeTwoTriggerEvents_r16 != nil, ie.Mpr_PowerBoost_FR2_r16 != nil, ie.ActiveConfiguredGrant_r16 != nil, ie.JointReleaseConfiguredGrantType2_r16 != nil, ie.Sps_r16 != nil, ie.JointReleaseSPS_r16 != nil, ie.SimulSRS_TransWithinBand_r16 != nil, ie.Trs_AdditionalBandwidth_r16 != nil, ie.HandoverIntraF_IAB_r16 != nil}
@@ -589,7 +589,7 @@ func (ie *BandNR) Encode(w *uper.UperWriter) error {
 		// encode extension group 7
 		if extBitmap[6] {
 			extBuf := new(bytes.Buffer)
-			extWriter := uper.NewWriter(extBuf)
+			extWriter := aper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 7
 			optionals_ext_7 := []bool{ie.SimulTX_SRS_AntSwitchingIntraBandUL_CA_r16 != nil, ie.SharedSpectrumChAccessParamsPerBand_v1630 != nil}
@@ -624,7 +624,7 @@ func (ie *BandNR) Encode(w *uper.UperWriter) error {
 		// encode extension group 8
 		if extBitmap[7] {
 			extBuf := new(bytes.Buffer)
-			extWriter := uper.NewWriter(extBuf)
+			extWriter := aper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 8
 			optionals_ext_8 := []bool{ie.HandoverUTRA_FDD_r16 != nil, ie.EnhancedUL_TransientPeriod_r16 != nil, ie.SharedSpectrumChAccessParamsPerBand_v1640 != nil}
@@ -665,7 +665,7 @@ func (ie *BandNR) Encode(w *uper.UperWriter) error {
 		// encode extension group 9
 		if extBitmap[8] {
 			extBuf := new(bytes.Buffer)
-			extWriter := uper.NewWriter(extBuf)
+			extWriter := aper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 9
 			optionals_ext_9 := []bool{ie.Type1_PUSCH_RepetitionMultiSlots_v1650 != nil, ie.Type2_PUSCH_RepetitionMultiSlots_v1650 != nil, ie.Pusch_RepetitionMultiSlots_v1650 != nil, ie.ConfiguredUL_GrantType1_v1650 != nil, ie.ConfiguredUL_GrantType2_v1650 != nil, ie.SharedSpectrumChAccessParamsPerBand_v1650 != nil}
@@ -724,7 +724,7 @@ func (ie *BandNR) Encode(w *uper.UperWriter) error {
 		// encode extension group 10
 		if extBitmap[9] {
 			extBuf := new(bytes.Buffer)
-			extWriter := uper.NewWriter(extBuf)
+			extWriter := aper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 10
 			optionals_ext_10 := []bool{ie.EnhancedSkipUplinkTxConfigured_v1660 != nil, ie.EnhancedSkipUplinkTxDynamic_v1660 != nil}
@@ -759,7 +759,7 @@ func (ie *BandNR) Encode(w *uper.UperWriter) error {
 		// encode extension group 11
 		if extBitmap[10] {
 			extBuf := new(bytes.Buffer)
-			extWriter := uper.NewWriter(extBuf)
+			extWriter := aper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 11
 			optionals_ext_11 := []bool{ie.MaxUplinkDutyCycle_PC1dot5_MPE_FR1_r16 != nil, ie.TxDiversity_r16 != nil}
@@ -794,7 +794,7 @@ func (ie *BandNR) Encode(w *uper.UperWriter) error {
 		// encode extension group 12
 		if extBitmap[11] {
 			extBuf := new(bytes.Buffer)
-			extWriter := uper.NewWriter(extBuf)
+			extWriter := aper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 12
 			optionals_ext_12 := []bool{ie.Pdsch_1024QAM_FR1_r17 != nil, ie.Ue_PowerClass_v1700 != nil, ie.Fr2_2_AccessParamsPerBand_r17 != nil, ie.Rlm_Relaxation_r17 != nil, ie.Bfd_Relaxation_r17 != nil, ie.Cg_SDT_r17 != nil, ie.LocationBasedCondHandover_r17 != nil, ie.TimeBasedCondHandover_r17 != nil, ie.EventA4BasedCondHandover_r17 != nil, ie.Mn_InitiatedCondPSCellChangeNRDC_r17 != nil, ie.Sn_InitiatedCondPSCellChangeNRDC_r17 != nil, ie.Pdcch_SkippingWithoutSSSG_r17 != nil, ie.Sssg_Switching_1BitInd_r17 != nil, ie.Sssg_Switching_2BitInd_r17 != nil, ie.Pdcch_SkippingWithSSSG_r17 != nil, ie.SearchSpaceSetGrp_switchCap2_r17 != nil, ie.UplinkPreCompensation_r17 != nil, ie.Uplink_TA_Reporting_r17 != nil, ie.Max_HARQ_ProcessNumber_r17 != nil, ie.Type2_HARQ_Codebook_r17 != nil, ie.Type1_HARQ_Codebook_r17 != nil, ie.Type3_HARQ_Codebook_r17 != nil, ie.Ue_specific_K_Offset_r17 != nil, ie.MultiPDSCH_SingleDCI_FR2_1_SCS_120kHz_r17 != nil, ie.MultiPUSCH_SingleDCI_FR2_1_SCS_120kHz_r17 != nil, ie.ParallelPRS_MeasRRC_Inactive_r17 != nil, ie.Nr_UE_TxTEG_ID_MaxSupport_r17 != nil, ie.Prs_ProcessingRRC_Inactive_r17 != nil, ie.Prs_ProcessingWindowType1A_r17 != nil, ie.Prs_ProcessingWindowType1B_r17 != nil, ie.Prs_ProcessingWindowType2_r17 != nil, ie.Srs_AllPosResourcesRRC_Inactive_r17 != nil, ie.Olpc_SRS_PosRRC_Inactive_r17 != nil, ie.SpatialRelationsSRS_PosRRC_Inactive_r17 != nil, ie.MaxNumberPUSCH_TypeA_Repetition_r17 != nil, ie.PuschTypeA_RepetitionsAvailSlot_r17 != nil, ie.Tb_ProcessingMultiSlotPUSCH_r17 != nil, ie.Tb_ProcessingRepMultiSlotPUSCH_r17 != nil, ie.MaxDurationDMRS_Bundling_r17 != nil, ie.Pusch_RepetitionMsg3_r17 != nil, ie.SharedSpectrumChAccessParamsPerBand_v1710 != nil, ie.ParallelMeasurementWithoutRestriction_r17 != nil, ie.MaxNumber_NGSO_SatellitesWithinOneSMTC_r17 != nil, ie.K1_RangeExtension_r17 != nil, ie.AperiodicCSI_RS_FastScellActivation_r17 != nil, ie.AperiodicCSI_RS_AdditionalBandwidth_r17 != nil, ie.Bwp_WithoutCD_SSB_OrNCD_SSB_RedCap_r17 != nil, ie.HalfDuplexFDD_TypeA_RedCap_r17 != nil, ie.PosSRS_RRC_Inactive_OutsideInitialUL_BWP_r17 != nil, ie.ChannelBWs_DL_SCS_480kHz_FR2_2_r17 != nil, ie.ChannelBWs_UL_SCS_480kHz_FR2_2_r17 != nil, ie.ChannelBWs_DL_SCS_960kHz_FR2_2_r17 != nil, ie.ChannelBWs_UL_SCS_960kHz_FR2_2_r17 != nil, ie.Ul_GapFR2_r17 != nil, ie.OneShotHARQ_feedbackTriggeredByDCI_1_2_r17 != nil, ie.OneShotHARQ_feedbackPhy_Priority_r17 != nil, ie.EnhancedType3_HARQ_CodebookFeedback_r17 != nil, ie.TriggeredHARQ_CodebookRetx_r17 != nil}
@@ -1100,25 +1100,25 @@ func (ie *BandNR) Encode(w *uper.UperWriter) error {
 			}
 			// encode ChannelBWs_DL_SCS_480kHz_FR2_2_r17 optional
 			if ie.ChannelBWs_DL_SCS_480kHz_FR2_2_r17 != nil {
-				if err = extWriter.WriteBitString(ie.ChannelBWs_DL_SCS_480kHz_FR2_2_r17.Bytes, uint(ie.ChannelBWs_DL_SCS_480kHz_FR2_2_r17.NumBits), &uper.Constraint{Lb: 8, Ub: 8}, false); err != nil {
+				if err = extWriter.WriteBitString(ie.ChannelBWs_DL_SCS_480kHz_FR2_2_r17.Bytes, uint(ie.ChannelBWs_DL_SCS_480kHz_FR2_2_r17.NumBits), &aper.Constraint{Lb: 8, Ub: 8}, false); err != nil {
 					return utils.WrapError("Encode ChannelBWs_DL_SCS_480kHz_FR2_2_r17", err)
 				}
 			}
 			// encode ChannelBWs_UL_SCS_480kHz_FR2_2_r17 optional
 			if ie.ChannelBWs_UL_SCS_480kHz_FR2_2_r17 != nil {
-				if err = extWriter.WriteBitString(ie.ChannelBWs_UL_SCS_480kHz_FR2_2_r17.Bytes, uint(ie.ChannelBWs_UL_SCS_480kHz_FR2_2_r17.NumBits), &uper.Constraint{Lb: 8, Ub: 8}, false); err != nil {
+				if err = extWriter.WriteBitString(ie.ChannelBWs_UL_SCS_480kHz_FR2_2_r17.Bytes, uint(ie.ChannelBWs_UL_SCS_480kHz_FR2_2_r17.NumBits), &aper.Constraint{Lb: 8, Ub: 8}, false); err != nil {
 					return utils.WrapError("Encode ChannelBWs_UL_SCS_480kHz_FR2_2_r17", err)
 				}
 			}
 			// encode ChannelBWs_DL_SCS_960kHz_FR2_2_r17 optional
 			if ie.ChannelBWs_DL_SCS_960kHz_FR2_2_r17 != nil {
-				if err = extWriter.WriteBitString(ie.ChannelBWs_DL_SCS_960kHz_FR2_2_r17.Bytes, uint(ie.ChannelBWs_DL_SCS_960kHz_FR2_2_r17.NumBits), &uper.Constraint{Lb: 8, Ub: 8}, false); err != nil {
+				if err = extWriter.WriteBitString(ie.ChannelBWs_DL_SCS_960kHz_FR2_2_r17.Bytes, uint(ie.ChannelBWs_DL_SCS_960kHz_FR2_2_r17.NumBits), &aper.Constraint{Lb: 8, Ub: 8}, false); err != nil {
 					return utils.WrapError("Encode ChannelBWs_DL_SCS_960kHz_FR2_2_r17", err)
 				}
 			}
 			// encode ChannelBWs_UL_SCS_960kHz_FR2_2_r17 optional
 			if ie.ChannelBWs_UL_SCS_960kHz_FR2_2_r17 != nil {
-				if err = extWriter.WriteBitString(ie.ChannelBWs_UL_SCS_960kHz_FR2_2_r17.Bytes, uint(ie.ChannelBWs_UL_SCS_960kHz_FR2_2_r17.NumBits), &uper.Constraint{Lb: 8, Ub: 8}, false); err != nil {
+				if err = extWriter.WriteBitString(ie.ChannelBWs_UL_SCS_960kHz_FR2_2_r17.Bytes, uint(ie.ChannelBWs_UL_SCS_960kHz_FR2_2_r17.NumBits), &aper.Constraint{Lb: 8, Ub: 8}, false); err != nil {
 					return utils.WrapError("Encode ChannelBWs_UL_SCS_960kHz_FR2_2_r17", err)
 				}
 			}
@@ -1165,7 +1165,7 @@ func (ie *BandNR) Encode(w *uper.UperWriter) error {
 		// encode extension group 13
 		if extBitmap[12] {
 			extBuf := new(bytes.Buffer)
-			extWriter := uper.NewWriter(extBuf)
+			extWriter := aper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 13
 			optionals_ext_13 := []bool{ie.Ue_OneShotUL_TimingAdj_r17 != nil, ie.Pucch_Repetition_F0_2_r17 != nil, ie.Cqi_4_BitsSubbandNTN_SharedSpectrumChAccess_r17 != nil, ie.Mux_HARQ_ACK_DiffPriorities_r17 != nil, ie.Ta_BasedPDC_NTN_SharedSpectrumChAccess_r17 != nil, ie.Ack_NACK_FeedbackForMulticastWithDCI_Enabler_r17 != nil, ie.MaxNumberG_RNTI_r17 != nil, ie.DynamicMulticastDCI_Format4_2_r17 != nil, ie.MaxModulationOrderForMulticast_r17 != nil, ie.DynamicSlotRepetitionMulticastTN_NonSharedSpectrumChAccess_r17 != nil, ie.DynamicSlotRepetitionMulticastNTN_SharedSpectrumChAccess_r17 != nil, ie.Nack_OnlyFeedbackForMulticastWithDCI_Enabler_r17 != nil, ie.Ack_NACK_FeedbackForSPS_MulticastWithDCI_Enabler_r17 != nil, ie.MaxNumberG_CS_RNTI_r17 != nil, ie.Re_LevelRateMatchingForMulticast_r17 != nil, ie.Pdsch_1024QAM_2MIMO_FR1_r17 != nil, ie.Prs_MeasurementWithoutMG_r17 != nil, ie.MaxNumber_LEO_SatellitesPerCarrier_r17 != nil, len(ie.Prs_ProcessingCapabilityOutsideMGinPPW_r17) > 0, ie.Srs_SemiPersistent_PosResourcesRRC_Inactive_r17 != nil, ie.ChannelBWs_DL_SCS_120kHz_FR2_2_r17 != nil, ie.ChannelBWs_UL_SCS_120kHz_FR2_2_r17 != nil}
@@ -1213,7 +1213,7 @@ func (ie *BandNR) Encode(w *uper.UperWriter) error {
 			}
 			// encode MaxNumberG_RNTI_r17 optional
 			if ie.MaxNumberG_RNTI_r17 != nil {
-				if err = extWriter.WriteInteger(*ie.MaxNumberG_RNTI_r17, &uper.Constraint{Lb: 2, Ub: 8}, false); err != nil {
+				if err = extWriter.WriteInteger(*ie.MaxNumberG_RNTI_r17, &aper.Constraint{Lb: 2, Ub: 8}, false); err != nil {
 					return utils.WrapError("Encode MaxNumberG_RNTI_r17", err)
 				}
 			}
@@ -1255,7 +1255,7 @@ func (ie *BandNR) Encode(w *uper.UperWriter) error {
 			}
 			// encode MaxNumberG_CS_RNTI_r17 optional
 			if ie.MaxNumberG_CS_RNTI_r17 != nil {
-				if err = extWriter.WriteInteger(*ie.MaxNumberG_CS_RNTI_r17, &uper.Constraint{Lb: 2, Ub: 8}, false); err != nil {
+				if err = extWriter.WriteInteger(*ie.MaxNumberG_CS_RNTI_r17, &aper.Constraint{Lb: 2, Ub: 8}, false); err != nil {
 					return utils.WrapError("Encode MaxNumberG_CS_RNTI_r17", err)
 				}
 			}
@@ -1279,13 +1279,13 @@ func (ie *BandNR) Encode(w *uper.UperWriter) error {
 			}
 			// encode MaxNumber_LEO_SatellitesPerCarrier_r17 optional
 			if ie.MaxNumber_LEO_SatellitesPerCarrier_r17 != nil {
-				if err = extWriter.WriteInteger(*ie.MaxNumber_LEO_SatellitesPerCarrier_r17, &uper.Constraint{Lb: 3, Ub: 4}, false); err != nil {
+				if err = extWriter.WriteInteger(*ie.MaxNumber_LEO_SatellitesPerCarrier_r17, &aper.Constraint{Lb: 3, Ub: 4}, false); err != nil {
 					return utils.WrapError("Encode MaxNumber_LEO_SatellitesPerCarrier_r17", err)
 				}
 			}
 			// encode Prs_ProcessingCapabilityOutsideMGinPPW_r17 optional
 			if len(ie.Prs_ProcessingCapabilityOutsideMGinPPW_r17) > 0 {
-				tmp_Prs_ProcessingCapabilityOutsideMGinPPW_r17 := utils.NewSequence[*PRS_ProcessingCapabilityOutsideMGinPPWperType_r17]([]*PRS_ProcessingCapabilityOutsideMGinPPWperType_r17{}, uper.Constraint{Lb: 1, Ub: 3}, false)
+				tmp_Prs_ProcessingCapabilityOutsideMGinPPW_r17 := utils.NewSequence[*PRS_ProcessingCapabilityOutsideMGinPPWperType_r17]([]*PRS_ProcessingCapabilityOutsideMGinPPWperType_r17{}, aper.Constraint{Lb: 1, Ub: 3}, false)
 				for _, i := range ie.Prs_ProcessingCapabilityOutsideMGinPPW_r17 {
 					tmp_Prs_ProcessingCapabilityOutsideMGinPPW_r17.Value = append(tmp_Prs_ProcessingCapabilityOutsideMGinPPW_r17.Value, &i)
 				}
@@ -1301,13 +1301,13 @@ func (ie *BandNR) Encode(w *uper.UperWriter) error {
 			}
 			// encode ChannelBWs_DL_SCS_120kHz_FR2_2_r17 optional
 			if ie.ChannelBWs_DL_SCS_120kHz_FR2_2_r17 != nil {
-				if err = extWriter.WriteBitString(ie.ChannelBWs_DL_SCS_120kHz_FR2_2_r17.Bytes, uint(ie.ChannelBWs_DL_SCS_120kHz_FR2_2_r17.NumBits), &uper.Constraint{Lb: 8, Ub: 8}, false); err != nil {
+				if err = extWriter.WriteBitString(ie.ChannelBWs_DL_SCS_120kHz_FR2_2_r17.Bytes, uint(ie.ChannelBWs_DL_SCS_120kHz_FR2_2_r17.NumBits), &aper.Constraint{Lb: 8, Ub: 8}, false); err != nil {
 					return utils.WrapError("Encode ChannelBWs_DL_SCS_120kHz_FR2_2_r17", err)
 				}
 			}
 			// encode ChannelBWs_UL_SCS_120kHz_FR2_2_r17 optional
 			if ie.ChannelBWs_UL_SCS_120kHz_FR2_2_r17 != nil {
-				if err = extWriter.WriteBitString(ie.ChannelBWs_UL_SCS_120kHz_FR2_2_r17.Bytes, uint(ie.ChannelBWs_UL_SCS_120kHz_FR2_2_r17.NumBits), &uper.Constraint{Lb: 8, Ub: 8}, false); err != nil {
+				if err = extWriter.WriteBitString(ie.ChannelBWs_UL_SCS_120kHz_FR2_2_r17.Bytes, uint(ie.ChannelBWs_UL_SCS_120kHz_FR2_2_r17.NumBits), &aper.Constraint{Lb: 8, Ub: 8}, false); err != nil {
 					return utils.WrapError("Encode ChannelBWs_UL_SCS_120kHz_FR2_2_r17", err)
 				}
 			}
@@ -1324,7 +1324,7 @@ func (ie *BandNR) Encode(w *uper.UperWriter) error {
 		// encode extension group 14
 		if extBitmap[13] {
 			extBuf := new(bytes.Buffer)
-			extWriter := uper.NewWriter(extBuf)
+			extWriter := aper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 14
 			optionals_ext_14 := []bool{ie.Dmrs_BundlingPUSCH_RepTypeA_r17 != nil, ie.Dmrs_BundlingPUSCH_RepTypeB_r17 != nil, ie.Dmrs_BundlingPUSCH_multiSlot_r17 != nil, ie.Dmrs_BundlingPUCCH_Rep_r17 != nil, ie.InterSlotFreqHopInterSlotBundlingPUSCH_r17 != nil, ie.InterSlotFreqHopPUCCH_r17 != nil, ie.Dmrs_BundlingRestart_r17 != nil, ie.Dmrs_BundlingNonBackToBackTX_r17 != nil}
@@ -1395,7 +1395,7 @@ func (ie *BandNR) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *BandNR) Decode(r *uper.UperReader) error {
+func (ie *BandNR) Decode(r *aper.AperReader) error {
 	var err error
 	var extensionBit bool
 	if extensionBit, err = r.ReadBool(); err != nil {
@@ -1463,10 +1463,10 @@ func (ie *BandNR) Decode(r *uper.UperReader) error {
 	if ModifiedMPR_BehaviourPresent {
 		var tmp_bs_ModifiedMPR_Behaviour []byte
 		var n_ModifiedMPR_Behaviour uint
-		if tmp_bs_ModifiedMPR_Behaviour, n_ModifiedMPR_Behaviour, err = r.ReadBitString(&uper.Constraint{Lb: 8, Ub: 8}, false); err != nil {
+		if tmp_bs_ModifiedMPR_Behaviour, n_ModifiedMPR_Behaviour, err = r.ReadBitString(&aper.Constraint{Lb: 8, Ub: 8}, false); err != nil {
 			return utils.WrapError("Decode ModifiedMPR_Behaviour", err)
 		}
-		tmp_bitstring := uper.BitString{
+		tmp_bitstring := aper.BitString{
 			Bytes:   tmp_bs_ModifiedMPR_Behaviour,
 			NumBits: uint64(n_ModifiedMPR_Behaviour),
 		}
@@ -1565,7 +1565,7 @@ func (ie *BandNR) Decode(r *uper.UperReader) error {
 				return err
 			}
 
-			extReader := uper.NewReader(bytes.NewReader(extBytes))
+			extReader := aper.NewReader(bytes.NewReader(extBytes))
 
 			MaxUplinkDutyCycle_PC2_FR1Present, err := extReader.ReadBool()
 			if err != nil {
@@ -1586,7 +1586,7 @@ func (ie *BandNR) Decode(r *uper.UperReader) error {
 				return err
 			}
 
-			extReader := uper.NewReader(bytes.NewReader(extBytes))
+			extReader := aper.NewReader(bytes.NewReader(extBytes))
 
 			Pucch_SpatialRelInfoMAC_CEPresent, err := extReader.ReadBool()
 			if err != nil {
@@ -1618,7 +1618,7 @@ func (ie *BandNR) Decode(r *uper.UperReader) error {
 				return err
 			}
 
-			extReader := uper.NewReader(bytes.NewReader(extBytes))
+			extReader := aper.NewReader(bytes.NewReader(extBytes))
 
 			MaxUplinkDutyCycle_FR2Present, err := extReader.ReadBool()
 			if err != nil {
@@ -1639,7 +1639,7 @@ func (ie *BandNR) Decode(r *uper.UperReader) error {
 				return err
 			}
 
-			extReader := uper.NewReader(bytes.NewReader(extBytes))
+			extReader := aper.NewReader(bytes.NewReader(extBytes))
 
 			ChannelBWs_DL_v1590Present, err := extReader.ReadBool()
 			if err != nil {
@@ -1671,7 +1671,7 @@ func (ie *BandNR) Decode(r *uper.UperReader) error {
 				return err
 			}
 
-			extReader := uper.NewReader(bytes.NewReader(extBytes))
+			extReader := aper.NewReader(bytes.NewReader(extBytes))
 
 			AsymmetricBandwidthCombinationSetPresent, err := extReader.ReadBool()
 			if err != nil {
@@ -1681,10 +1681,10 @@ func (ie *BandNR) Decode(r *uper.UperReader) error {
 			if AsymmetricBandwidthCombinationSetPresent {
 				var tmp_bs_AsymmetricBandwidthCombinationSet []byte
 				var n_AsymmetricBandwidthCombinationSet uint
-				if tmp_bs_AsymmetricBandwidthCombinationSet, n_AsymmetricBandwidthCombinationSet, err = extReader.ReadBitString(&uper.Constraint{Lb: 1, Ub: 32}, false); err != nil {
+				if tmp_bs_AsymmetricBandwidthCombinationSet, n_AsymmetricBandwidthCombinationSet, err = extReader.ReadBitString(&aper.Constraint{Lb: 1, Ub: 32}, false); err != nil {
 					return utils.WrapError("Decode AsymmetricBandwidthCombinationSet", err)
 				}
-				tmp_bitstring := uper.BitString{
+				tmp_bitstring := aper.BitString{
 					Bytes:   tmp_bs_AsymmetricBandwidthCombinationSet,
 					NumBits: uint64(n_AsymmetricBandwidthCombinationSet),
 				}
@@ -1698,7 +1698,7 @@ func (ie *BandNR) Decode(r *uper.UperReader) error {
 				return err
 			}
 
-			extReader := uper.NewReader(bytes.NewReader(extBytes))
+			extReader := aper.NewReader(bytes.NewReader(extBytes))
 
 			SharedSpectrumChAccessParamsPerBand_r16Present, err := extReader.ReadBool()
 			if err != nil {
@@ -1994,7 +1994,7 @@ func (ie *BandNR) Decode(r *uper.UperReader) error {
 				return err
 			}
 
-			extReader := uper.NewReader(bytes.NewReader(extBytes))
+			extReader := aper.NewReader(bytes.NewReader(extBytes))
 
 			SimulTX_SRS_AntSwitchingIntraBandUL_CA_r16Present, err := extReader.ReadBool()
 			if err != nil {
@@ -2026,7 +2026,7 @@ func (ie *BandNR) Decode(r *uper.UperReader) error {
 				return err
 			}
 
-			extReader := uper.NewReader(bytes.NewReader(extBytes))
+			extReader := aper.NewReader(bytes.NewReader(extBytes))
 
 			HandoverUTRA_FDD_r16Present, err := extReader.ReadBool()
 			if err != nil {
@@ -2069,7 +2069,7 @@ func (ie *BandNR) Decode(r *uper.UperReader) error {
 				return err
 			}
 
-			extReader := uper.NewReader(bytes.NewReader(extBytes))
+			extReader := aper.NewReader(bytes.NewReader(extBytes))
 
 			Type1_PUSCH_RepetitionMultiSlots_v1650Present, err := extReader.ReadBool()
 			if err != nil {
@@ -2145,7 +2145,7 @@ func (ie *BandNR) Decode(r *uper.UperReader) error {
 				return err
 			}
 
-			extReader := uper.NewReader(bytes.NewReader(extBytes))
+			extReader := aper.NewReader(bytes.NewReader(extBytes))
 
 			EnhancedSkipUplinkTxConfigured_v1660Present, err := extReader.ReadBool()
 			if err != nil {
@@ -2177,7 +2177,7 @@ func (ie *BandNR) Decode(r *uper.UperReader) error {
 				return err
 			}
 
-			extReader := uper.NewReader(bytes.NewReader(extBytes))
+			extReader := aper.NewReader(bytes.NewReader(extBytes))
 
 			MaxUplinkDutyCycle_PC1dot5_MPE_FR1_r16Present, err := extReader.ReadBool()
 			if err != nil {
@@ -2209,7 +2209,7 @@ func (ie *BandNR) Decode(r *uper.UperReader) error {
 				return err
 			}
 
-			extReader := uper.NewReader(bytes.NewReader(extBytes))
+			extReader := aper.NewReader(bytes.NewReader(extBytes))
 
 			Pdsch_1024QAM_FR1_r17Present, err := extReader.ReadBool()
 			if err != nil {
@@ -2790,10 +2790,10 @@ func (ie *BandNR) Decode(r *uper.UperReader) error {
 			if ChannelBWs_DL_SCS_480kHz_FR2_2_r17Present {
 				var tmp_bs_ChannelBWs_DL_SCS_480kHz_FR2_2_r17 []byte
 				var n_ChannelBWs_DL_SCS_480kHz_FR2_2_r17 uint
-				if tmp_bs_ChannelBWs_DL_SCS_480kHz_FR2_2_r17, n_ChannelBWs_DL_SCS_480kHz_FR2_2_r17, err = extReader.ReadBitString(&uper.Constraint{Lb: 8, Ub: 8}, false); err != nil {
+				if tmp_bs_ChannelBWs_DL_SCS_480kHz_FR2_2_r17, n_ChannelBWs_DL_SCS_480kHz_FR2_2_r17, err = extReader.ReadBitString(&aper.Constraint{Lb: 8, Ub: 8}, false); err != nil {
 					return utils.WrapError("Decode ChannelBWs_DL_SCS_480kHz_FR2_2_r17", err)
 				}
-				tmp_bitstring := uper.BitString{
+				tmp_bitstring := aper.BitString{
 					Bytes:   tmp_bs_ChannelBWs_DL_SCS_480kHz_FR2_2_r17,
 					NumBits: uint64(n_ChannelBWs_DL_SCS_480kHz_FR2_2_r17),
 				}
@@ -2803,10 +2803,10 @@ func (ie *BandNR) Decode(r *uper.UperReader) error {
 			if ChannelBWs_UL_SCS_480kHz_FR2_2_r17Present {
 				var tmp_bs_ChannelBWs_UL_SCS_480kHz_FR2_2_r17 []byte
 				var n_ChannelBWs_UL_SCS_480kHz_FR2_2_r17 uint
-				if tmp_bs_ChannelBWs_UL_SCS_480kHz_FR2_2_r17, n_ChannelBWs_UL_SCS_480kHz_FR2_2_r17, err = extReader.ReadBitString(&uper.Constraint{Lb: 8, Ub: 8}, false); err != nil {
+				if tmp_bs_ChannelBWs_UL_SCS_480kHz_FR2_2_r17, n_ChannelBWs_UL_SCS_480kHz_FR2_2_r17, err = extReader.ReadBitString(&aper.Constraint{Lb: 8, Ub: 8}, false); err != nil {
 					return utils.WrapError("Decode ChannelBWs_UL_SCS_480kHz_FR2_2_r17", err)
 				}
-				tmp_bitstring := uper.BitString{
+				tmp_bitstring := aper.BitString{
 					Bytes:   tmp_bs_ChannelBWs_UL_SCS_480kHz_FR2_2_r17,
 					NumBits: uint64(n_ChannelBWs_UL_SCS_480kHz_FR2_2_r17),
 				}
@@ -2816,10 +2816,10 @@ func (ie *BandNR) Decode(r *uper.UperReader) error {
 			if ChannelBWs_DL_SCS_960kHz_FR2_2_r17Present {
 				var tmp_bs_ChannelBWs_DL_SCS_960kHz_FR2_2_r17 []byte
 				var n_ChannelBWs_DL_SCS_960kHz_FR2_2_r17 uint
-				if tmp_bs_ChannelBWs_DL_SCS_960kHz_FR2_2_r17, n_ChannelBWs_DL_SCS_960kHz_FR2_2_r17, err = extReader.ReadBitString(&uper.Constraint{Lb: 8, Ub: 8}, false); err != nil {
+				if tmp_bs_ChannelBWs_DL_SCS_960kHz_FR2_2_r17, n_ChannelBWs_DL_SCS_960kHz_FR2_2_r17, err = extReader.ReadBitString(&aper.Constraint{Lb: 8, Ub: 8}, false); err != nil {
 					return utils.WrapError("Decode ChannelBWs_DL_SCS_960kHz_FR2_2_r17", err)
 				}
-				tmp_bitstring := uper.BitString{
+				tmp_bitstring := aper.BitString{
 					Bytes:   tmp_bs_ChannelBWs_DL_SCS_960kHz_FR2_2_r17,
 					NumBits: uint64(n_ChannelBWs_DL_SCS_960kHz_FR2_2_r17),
 				}
@@ -2829,10 +2829,10 @@ func (ie *BandNR) Decode(r *uper.UperReader) error {
 			if ChannelBWs_UL_SCS_960kHz_FR2_2_r17Present {
 				var tmp_bs_ChannelBWs_UL_SCS_960kHz_FR2_2_r17 []byte
 				var n_ChannelBWs_UL_SCS_960kHz_FR2_2_r17 uint
-				if tmp_bs_ChannelBWs_UL_SCS_960kHz_FR2_2_r17, n_ChannelBWs_UL_SCS_960kHz_FR2_2_r17, err = extReader.ReadBitString(&uper.Constraint{Lb: 8, Ub: 8}, false); err != nil {
+				if tmp_bs_ChannelBWs_UL_SCS_960kHz_FR2_2_r17, n_ChannelBWs_UL_SCS_960kHz_FR2_2_r17, err = extReader.ReadBitString(&aper.Constraint{Lb: 8, Ub: 8}, false); err != nil {
 					return utils.WrapError("Decode ChannelBWs_UL_SCS_960kHz_FR2_2_r17", err)
 				}
-				tmp_bitstring := uper.BitString{
+				tmp_bitstring := aper.BitString{
 					Bytes:   tmp_bs_ChannelBWs_UL_SCS_960kHz_FR2_2_r17,
 					NumBits: uint64(n_ChannelBWs_UL_SCS_960kHz_FR2_2_r17),
 				}
@@ -2881,7 +2881,7 @@ func (ie *BandNR) Decode(r *uper.UperReader) error {
 				return err
 			}
 
-			extReader := uper.NewReader(bytes.NewReader(extBytes))
+			extReader := aper.NewReader(bytes.NewReader(extBytes))
 
 			Ue_OneShotUL_TimingAdj_r17Present, err := extReader.ReadBool()
 			if err != nil {
@@ -3016,7 +3016,7 @@ func (ie *BandNR) Decode(r *uper.UperReader) error {
 			// decode MaxNumberG_RNTI_r17 optional
 			if MaxNumberG_RNTI_r17Present {
 				var tmp_int_MaxNumberG_RNTI_r17 int64
-				if tmp_int_MaxNumberG_RNTI_r17, err = extReader.ReadInteger(&uper.Constraint{Lb: 2, Ub: 8}, false); err != nil {
+				if tmp_int_MaxNumberG_RNTI_r17, err = extReader.ReadInteger(&aper.Constraint{Lb: 2, Ub: 8}, false); err != nil {
 					return utils.WrapError("Decode MaxNumberG_RNTI_r17", err)
 				}
 				ie.MaxNumberG_RNTI_r17 = &tmp_int_MaxNumberG_RNTI_r17
@@ -3066,7 +3066,7 @@ func (ie *BandNR) Decode(r *uper.UperReader) error {
 			// decode MaxNumberG_CS_RNTI_r17 optional
 			if MaxNumberG_CS_RNTI_r17Present {
 				var tmp_int_MaxNumberG_CS_RNTI_r17 int64
-				if tmp_int_MaxNumberG_CS_RNTI_r17, err = extReader.ReadInteger(&uper.Constraint{Lb: 2, Ub: 8}, false); err != nil {
+				if tmp_int_MaxNumberG_CS_RNTI_r17, err = extReader.ReadInteger(&aper.Constraint{Lb: 2, Ub: 8}, false); err != nil {
 					return utils.WrapError("Decode MaxNumberG_CS_RNTI_r17", err)
 				}
 				ie.MaxNumberG_CS_RNTI_r17 = &tmp_int_MaxNumberG_CS_RNTI_r17
@@ -3095,14 +3095,14 @@ func (ie *BandNR) Decode(r *uper.UperReader) error {
 			// decode MaxNumber_LEO_SatellitesPerCarrier_r17 optional
 			if MaxNumber_LEO_SatellitesPerCarrier_r17Present {
 				var tmp_int_MaxNumber_LEO_SatellitesPerCarrier_r17 int64
-				if tmp_int_MaxNumber_LEO_SatellitesPerCarrier_r17, err = extReader.ReadInteger(&uper.Constraint{Lb: 3, Ub: 4}, false); err != nil {
+				if tmp_int_MaxNumber_LEO_SatellitesPerCarrier_r17, err = extReader.ReadInteger(&aper.Constraint{Lb: 3, Ub: 4}, false); err != nil {
 					return utils.WrapError("Decode MaxNumber_LEO_SatellitesPerCarrier_r17", err)
 				}
 				ie.MaxNumber_LEO_SatellitesPerCarrier_r17 = &tmp_int_MaxNumber_LEO_SatellitesPerCarrier_r17
 			}
 			// decode Prs_ProcessingCapabilityOutsideMGinPPW_r17 optional
 			if Prs_ProcessingCapabilityOutsideMGinPPW_r17Present {
-				tmp_Prs_ProcessingCapabilityOutsideMGinPPW_r17 := utils.NewSequence[*PRS_ProcessingCapabilityOutsideMGinPPWperType_r17]([]*PRS_ProcessingCapabilityOutsideMGinPPWperType_r17{}, uper.Constraint{Lb: 1, Ub: 3}, false)
+				tmp_Prs_ProcessingCapabilityOutsideMGinPPW_r17 := utils.NewSequence[*PRS_ProcessingCapabilityOutsideMGinPPWperType_r17]([]*PRS_ProcessingCapabilityOutsideMGinPPWperType_r17{}, aper.Constraint{Lb: 1, Ub: 3}, false)
 				fn_Prs_ProcessingCapabilityOutsideMGinPPW_r17 := func() *PRS_ProcessingCapabilityOutsideMGinPPWperType_r17 {
 					return new(PRS_ProcessingCapabilityOutsideMGinPPWperType_r17)
 				}
@@ -3125,10 +3125,10 @@ func (ie *BandNR) Decode(r *uper.UperReader) error {
 			if ChannelBWs_DL_SCS_120kHz_FR2_2_r17Present {
 				var tmp_bs_ChannelBWs_DL_SCS_120kHz_FR2_2_r17 []byte
 				var n_ChannelBWs_DL_SCS_120kHz_FR2_2_r17 uint
-				if tmp_bs_ChannelBWs_DL_SCS_120kHz_FR2_2_r17, n_ChannelBWs_DL_SCS_120kHz_FR2_2_r17, err = extReader.ReadBitString(&uper.Constraint{Lb: 8, Ub: 8}, false); err != nil {
+				if tmp_bs_ChannelBWs_DL_SCS_120kHz_FR2_2_r17, n_ChannelBWs_DL_SCS_120kHz_FR2_2_r17, err = extReader.ReadBitString(&aper.Constraint{Lb: 8, Ub: 8}, false); err != nil {
 					return utils.WrapError("Decode ChannelBWs_DL_SCS_120kHz_FR2_2_r17", err)
 				}
-				tmp_bitstring := uper.BitString{
+				tmp_bitstring := aper.BitString{
 					Bytes:   tmp_bs_ChannelBWs_DL_SCS_120kHz_FR2_2_r17,
 					NumBits: uint64(n_ChannelBWs_DL_SCS_120kHz_FR2_2_r17),
 				}
@@ -3138,10 +3138,10 @@ func (ie *BandNR) Decode(r *uper.UperReader) error {
 			if ChannelBWs_UL_SCS_120kHz_FR2_2_r17Present {
 				var tmp_bs_ChannelBWs_UL_SCS_120kHz_FR2_2_r17 []byte
 				var n_ChannelBWs_UL_SCS_120kHz_FR2_2_r17 uint
-				if tmp_bs_ChannelBWs_UL_SCS_120kHz_FR2_2_r17, n_ChannelBWs_UL_SCS_120kHz_FR2_2_r17, err = extReader.ReadBitString(&uper.Constraint{Lb: 8, Ub: 8}, false); err != nil {
+				if tmp_bs_ChannelBWs_UL_SCS_120kHz_FR2_2_r17, n_ChannelBWs_UL_SCS_120kHz_FR2_2_r17, err = extReader.ReadBitString(&aper.Constraint{Lb: 8, Ub: 8}, false); err != nil {
 					return utils.WrapError("Decode ChannelBWs_UL_SCS_120kHz_FR2_2_r17", err)
 				}
-				tmp_bitstring := uper.BitString{
+				tmp_bitstring := aper.BitString{
 					Bytes:   tmp_bs_ChannelBWs_UL_SCS_120kHz_FR2_2_r17,
 					NumBits: uint64(n_ChannelBWs_UL_SCS_120kHz_FR2_2_r17),
 				}
@@ -3155,7 +3155,7 @@ func (ie *BandNR) Decode(r *uper.UperReader) error {
 				return err
 			}
 
-			extReader := uper.NewReader(bytes.NewReader(extBytes))
+			extReader := aper.NewReader(bytes.NewReader(extBytes))
 
 			Dmrs_BundlingPUSCH_RepTypeA_r17Present, err := extReader.ReadBool()
 			if err != nil {

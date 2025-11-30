@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -14,7 +14,7 @@ type DMRS_UplinkConfig struct {
 	TransformPrecodingEnabled  *DMRS_UplinkConfig_transformPrecodingEnabled  `lb:0,ub:1007,optional,ext`
 }
 
-func (ie *DMRS_UplinkConfig) Encode(w *uper.UperWriter) error {
+func (ie *DMRS_UplinkConfig) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.Dmrs_Type != nil, ie.Dmrs_AdditionalPosition != nil, ie.PhaseTrackingRS != nil, ie.MaxLength != nil, ie.TransformPrecodingDisabled != nil}
 	for _, bit := range preambleBits {
@@ -53,7 +53,7 @@ func (ie *DMRS_UplinkConfig) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *DMRS_UplinkConfig) Decode(r *uper.UperReader) error {
+func (ie *DMRS_UplinkConfig) Decode(r *aper.AperReader) error {
 	var err error
 	var Dmrs_TypePresent bool
 	if Dmrs_TypePresent, err = r.ReadBool(); err != nil {

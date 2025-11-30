@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -15,7 +15,7 @@ type CA_ParametersNR_v1610_interFreqDAPS_r16 struct {
 	InterFreqUL_TransCancellationDAPS_r16         *CA_ParametersNR_v1610_interFreqDAPS_r16_interFreqUL_TransCancellationDAPS_r16         `optional`
 }
 
-func (ie *CA_ParametersNR_v1610_interFreqDAPS_r16) Encode(w *uper.UperWriter) error {
+func (ie *CA_ParametersNR_v1610_interFreqDAPS_r16) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.InterFreqAsyncDAPS_r16 != nil, ie.InterFreqDiffSCS_DAPS_r16 != nil, ie.InterFreqMultiUL_TransmissionDAPS_r16 != nil, ie.InterFreqSemiStaticPowerSharingDAPS_Mode1_r16 != nil, ie.InterFreqSemiStaticPowerSharingDAPS_Mode2_r16 != nil, ie.InterFreqDynamicPowerSharingDAPS_r16 != nil, ie.InterFreqUL_TransCancellationDAPS_r16 != nil}
 	for _, bit := range preambleBits {
@@ -61,7 +61,7 @@ func (ie *CA_ParametersNR_v1610_interFreqDAPS_r16) Encode(w *uper.UperWriter) er
 	return nil
 }
 
-func (ie *CA_ParametersNR_v1610_interFreqDAPS_r16) Decode(r *uper.UperReader) error {
+func (ie *CA_ParametersNR_v1610_interFreqDAPS_r16) Decode(r *aper.AperReader) error {
 	var err error
 	var InterFreqAsyncDAPS_r16Present bool
 	if InterFreqAsyncDAPS_r16Present, err = r.ReadBool(); err != nil {

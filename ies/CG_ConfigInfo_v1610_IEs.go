@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -15,7 +15,7 @@ type CG_ConfigInfo_v1610_IEs struct {
 	NonCriticalExtension           *CG_ConfigInfo_v1620_IEs                       `optional`
 }
 
-func (ie *CG_ConfigInfo_v1610_IEs) Encode(w *uper.UperWriter) error {
+func (ie *CG_ConfigInfo_v1610_IEs) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.Drx_InfoMCG2 != nil, ie.AlignedDRX_Indication != nil, ie.ScgFailureInfo_r16 != nil, ie.Dummy1 != nil, ie.SidelinkUEInformationNR_r16 != nil, ie.SidelinkUEInformationEUTRA_r16 != nil, ie.NonCriticalExtension != nil}
 	for _, bit := range preambleBits {
@@ -44,12 +44,12 @@ func (ie *CG_ConfigInfo_v1610_IEs) Encode(w *uper.UperWriter) error {
 		}
 	}
 	if ie.SidelinkUEInformationNR_r16 != nil {
-		if err = w.WriteOctetString(*ie.SidelinkUEInformationNR_r16, &uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+		if err = w.WriteOctetString(*ie.SidelinkUEInformationNR_r16, &aper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
 			return utils.WrapError("Encode SidelinkUEInformationNR_r16", err)
 		}
 	}
 	if ie.SidelinkUEInformationEUTRA_r16 != nil {
-		if err = w.WriteOctetString(*ie.SidelinkUEInformationEUTRA_r16, &uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+		if err = w.WriteOctetString(*ie.SidelinkUEInformationEUTRA_r16, &aper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
 			return utils.WrapError("Encode SidelinkUEInformationEUTRA_r16", err)
 		}
 	}
@@ -61,7 +61,7 @@ func (ie *CG_ConfigInfo_v1610_IEs) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *CG_ConfigInfo_v1610_IEs) Decode(r *uper.UperReader) error {
+func (ie *CG_ConfigInfo_v1610_IEs) Decode(r *aper.AperReader) error {
 	var err error
 	var Drx_InfoMCG2Present bool
 	if Drx_InfoMCG2Present, err = r.ReadBool(); err != nil {
@@ -117,14 +117,14 @@ func (ie *CG_ConfigInfo_v1610_IEs) Decode(r *uper.UperReader) error {
 	}
 	if SidelinkUEInformationNR_r16Present {
 		var tmp_os_SidelinkUEInformationNR_r16 []byte
-		if tmp_os_SidelinkUEInformationNR_r16, err = r.ReadOctetString(&uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+		if tmp_os_SidelinkUEInformationNR_r16, err = r.ReadOctetString(&aper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
 			return utils.WrapError("Decode SidelinkUEInformationNR_r16", err)
 		}
 		ie.SidelinkUEInformationNR_r16 = &tmp_os_SidelinkUEInformationNR_r16
 	}
 	if SidelinkUEInformationEUTRA_r16Present {
 		var tmp_os_SidelinkUEInformationEUTRA_r16 []byte
-		if tmp_os_SidelinkUEInformationEUTRA_r16, err = r.ReadOctetString(&uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+		if tmp_os_SidelinkUEInformationEUTRA_r16, err = r.ReadOctetString(&aper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
 			return utils.WrapError("Decode SidelinkUEInformationEUTRA_r16", err)
 		}
 		ie.SidelinkUEInformationEUTRA_r16 = &tmp_os_SidelinkUEInformationEUTRA_r16

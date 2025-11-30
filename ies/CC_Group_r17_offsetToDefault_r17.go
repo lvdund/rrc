@@ -3,7 +3,7 @@ package ies
 import (
 	"fmt"
 
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -19,7 +19,7 @@ type CC_Group_r17_offsetToDefault_r17 struct {
 	Offsetlist  []OffsetValue_r17 `lb:1,ub:maxNrofReqComDC_Location_r17,madatory`
 }
 
-func (ie *CC_Group_r17_offsetToDefault_r17) Encode(w *uper.UperWriter) error {
+func (ie *CC_Group_r17_offsetToDefault_r17) Encode(w *aper.AperWriter) error {
 	var err error
 	if err = w.WriteChoice(ie.Choice, 2, false); err != nil {
 		return err
@@ -30,7 +30,7 @@ func (ie *CC_Group_r17_offsetToDefault_r17) Encode(w *uper.UperWriter) error {
 			err = utils.WrapError("Encode OffsetValue", err)
 		}
 	case CC_Group_r17_offsetToDefault_r17_Choice_Offsetlist:
-		tmp := utils.NewSequence[*OffsetValue_r17]([]*OffsetValue_r17{}, uper.Constraint{Lb: 1, Ub: maxNrofReqComDC_Location_r17}, false)
+		tmp := utils.NewSequence[*OffsetValue_r17]([]*OffsetValue_r17{}, aper.Constraint{Lb: 1, Ub: maxNrofReqComDC_Location_r17}, false)
 		for _, i := range ie.Offsetlist {
 			tmp.Value = append(tmp.Value, &i)
 		}
@@ -43,7 +43,7 @@ func (ie *CC_Group_r17_offsetToDefault_r17) Encode(w *uper.UperWriter) error {
 	return err
 }
 
-func (ie *CC_Group_r17_offsetToDefault_r17) Decode(r *uper.UperReader) error {
+func (ie *CC_Group_r17_offsetToDefault_r17) Decode(r *aper.AperReader) error {
 	var err error
 	if ie.Choice, err = r.ReadChoice(2, false); err != nil {
 		return err
@@ -55,7 +55,7 @@ func (ie *CC_Group_r17_offsetToDefault_r17) Decode(r *uper.UperReader) error {
 			return utils.WrapError("Decode OffsetValue", err)
 		}
 	case CC_Group_r17_offsetToDefault_r17_Choice_Offsetlist:
-		tmp := utils.NewSequence[*OffsetValue_r17]([]*OffsetValue_r17{}, uper.Constraint{Lb: 1, Ub: maxNrofReqComDC_Location_r17}, false)
+		tmp := utils.NewSequence[*OffsetValue_r17]([]*OffsetValue_r17{}, aper.Constraint{Lb: 1, Ub: maxNrofReqComDC_Location_r17}, false)
 		fn := func() *OffsetValue_r17 {
 			return new(OffsetValue_r17)
 		}

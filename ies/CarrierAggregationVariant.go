@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -17,7 +17,7 @@ type CarrierAggregationVariant struct {
 	Fr1fdd_FR1TDD_FR2TDD_CA_SpCellOnFR2TDD *CarrierAggregationVariant_fr1fdd_FR1TDD_FR2TDD_CA_SpCellOnFR2TDD `optional`
 }
 
-func (ie *CarrierAggregationVariant) Encode(w *uper.UperWriter) error {
+func (ie *CarrierAggregationVariant) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.Fr1fdd_FR1TDD_CA_SpCellOnFR1FDD != nil, ie.Fr1fdd_FR1TDD_CA_SpCellOnFR1TDD != nil, ie.Fr1fdd_FR2TDD_CA_SpCellOnFR1FDD != nil, ie.Fr1fdd_FR2TDD_CA_SpCellOnFR2TDD != nil, ie.Fr1tdd_FR2TDD_CA_SpCellOnFR1TDD != nil, ie.Fr1tdd_FR2TDD_CA_SpCellOnFR2TDD != nil, ie.Fr1fdd_FR1TDD_FR2TDD_CA_SpCellOnFR1FDD != nil, ie.Fr1fdd_FR1TDD_FR2TDD_CA_SpCellOnFR1TDD != nil, ie.Fr1fdd_FR1TDD_FR2TDD_CA_SpCellOnFR2TDD != nil}
 	for _, bit := range preambleBits {
@@ -73,7 +73,7 @@ func (ie *CarrierAggregationVariant) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *CarrierAggregationVariant) Decode(r *uper.UperReader) error {
+func (ie *CarrierAggregationVariant) Decode(r *aper.AperReader) error {
 	var err error
 	var Fr1fdd_FR1TDD_CA_SpCellOnFR1FDDPresent bool
 	if Fr1fdd_FR1TDD_CA_SpCellOnFR1FDDPresent, err = r.ReadBool(); err != nil {

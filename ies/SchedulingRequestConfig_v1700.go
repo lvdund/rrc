@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -9,7 +9,7 @@ type SchedulingRequestConfig_v1700 struct {
 	SchedulingRequestToAddModListExt_v1700 []SchedulingRequestToAddModExt_v1700 `lb:1,ub:maxNrofSR_ConfigPerCellGroup,optional`
 }
 
-func (ie *SchedulingRequestConfig_v1700) Encode(w *uper.UperWriter) error {
+func (ie *SchedulingRequestConfig_v1700) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{len(ie.SchedulingRequestToAddModListExt_v1700) > 0}
 	for _, bit := range preambleBits {
@@ -18,7 +18,7 @@ func (ie *SchedulingRequestConfig_v1700) Encode(w *uper.UperWriter) error {
 		}
 	}
 	if len(ie.SchedulingRequestToAddModListExt_v1700) > 0 {
-		tmp_SchedulingRequestToAddModListExt_v1700 := utils.NewSequence[*SchedulingRequestToAddModExt_v1700]([]*SchedulingRequestToAddModExt_v1700{}, uper.Constraint{Lb: 1, Ub: maxNrofSR_ConfigPerCellGroup}, false)
+		tmp_SchedulingRequestToAddModListExt_v1700 := utils.NewSequence[*SchedulingRequestToAddModExt_v1700]([]*SchedulingRequestToAddModExt_v1700{}, aper.Constraint{Lb: 1, Ub: maxNrofSR_ConfigPerCellGroup}, false)
 		for _, i := range ie.SchedulingRequestToAddModListExt_v1700 {
 			tmp_SchedulingRequestToAddModListExt_v1700.Value = append(tmp_SchedulingRequestToAddModListExt_v1700.Value, &i)
 		}
@@ -29,14 +29,14 @@ func (ie *SchedulingRequestConfig_v1700) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *SchedulingRequestConfig_v1700) Decode(r *uper.UperReader) error {
+func (ie *SchedulingRequestConfig_v1700) Decode(r *aper.AperReader) error {
 	var err error
 	var SchedulingRequestToAddModListExt_v1700Present bool
 	if SchedulingRequestToAddModListExt_v1700Present, err = r.ReadBool(); err != nil {
 		return err
 	}
 	if SchedulingRequestToAddModListExt_v1700Present {
-		tmp_SchedulingRequestToAddModListExt_v1700 := utils.NewSequence[*SchedulingRequestToAddModExt_v1700]([]*SchedulingRequestToAddModExt_v1700{}, uper.Constraint{Lb: 1, Ub: maxNrofSR_ConfigPerCellGroup}, false)
+		tmp_SchedulingRequestToAddModListExt_v1700 := utils.NewSequence[*SchedulingRequestToAddModExt_v1700]([]*SchedulingRequestToAddModExt_v1700{}, aper.Constraint{Lb: 1, Ub: maxNrofSR_ConfigPerCellGroup}, false)
 		fn_SchedulingRequestToAddModListExt_v1700 := func() *SchedulingRequestToAddModExt_v1700 {
 			return new(SchedulingRequestToAddModExt_v1700)
 		}

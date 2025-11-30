@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -10,7 +10,7 @@ type MIMO_ParametersPerBand_beamSwitchTiming_r16 struct {
 	Scs_120kHz_r16 *MIMO_ParametersPerBand_beamSwitchTiming_r16_scs_120kHz_r16 `optional`
 }
 
-func (ie *MIMO_ParametersPerBand_beamSwitchTiming_r16) Encode(w *uper.UperWriter) error {
+func (ie *MIMO_ParametersPerBand_beamSwitchTiming_r16) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.Scs_60kHz_r16 != nil, ie.Scs_120kHz_r16 != nil}
 	for _, bit := range preambleBits {
@@ -31,7 +31,7 @@ func (ie *MIMO_ParametersPerBand_beamSwitchTiming_r16) Encode(w *uper.UperWriter
 	return nil
 }
 
-func (ie *MIMO_ParametersPerBand_beamSwitchTiming_r16) Decode(r *uper.UperReader) error {
+func (ie *MIMO_ParametersPerBand_beamSwitchTiming_r16) Decode(r *aper.AperReader) error {
 	var err error
 	var Scs_60kHz_r16Present bool
 	if Scs_60kHz_r16Present, err = r.ReadBool(); err != nil {

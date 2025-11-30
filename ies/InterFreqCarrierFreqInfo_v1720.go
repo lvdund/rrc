@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -9,7 +9,7 @@ type InterFreqCarrierFreqInfo_v1720 struct {
 	Smtc4list_r17 *SSB_MTC4List_r17 `optional`
 }
 
-func (ie *InterFreqCarrierFreqInfo_v1720) Encode(w *uper.UperWriter) error {
+func (ie *InterFreqCarrierFreqInfo_v1720) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.Smtc4list_r17 != nil}
 	for _, bit := range preambleBits {
@@ -25,7 +25,7 @@ func (ie *InterFreqCarrierFreqInfo_v1720) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *InterFreqCarrierFreqInfo_v1720) Decode(r *uper.UperReader) error {
+func (ie *InterFreqCarrierFreqInfo_v1720) Decode(r *aper.AperReader) error {
 	var err error
 	var Smtc4list_r17Present bool
 	if Smtc4list_r17Present, err = r.ReadBool(); err != nil {

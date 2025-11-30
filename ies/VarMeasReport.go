@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -14,7 +14,7 @@ type VarMeasReport struct {
 	RelaysTriggeredList_r17       *RelaysTriggeredList_r17 `optional`
 }
 
-func (ie *VarMeasReport) Encode(w *uper.UperWriter) error {
+func (ie *VarMeasReport) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.CellsTriggeredList != nil, ie.Cli_TriggeredList_r16 != nil, ie.Tx_PoolMeasToAddModListNR_r16 != nil, ie.RelaysTriggeredList_r17 != nil}
 	for _, bit := range preambleBits {
@@ -30,7 +30,7 @@ func (ie *VarMeasReport) Encode(w *uper.UperWriter) error {
 			return utils.WrapError("Encode CellsTriggeredList", err)
 		}
 	}
-	if err = w.WriteInteger(ie.NumberOfReportsSent, &uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+	if err = w.WriteInteger(ie.NumberOfReportsSent, &aper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
 		return utils.WrapError("WriteInteger NumberOfReportsSent", err)
 	}
 	if ie.Cli_TriggeredList_r16 != nil {
@@ -51,7 +51,7 @@ func (ie *VarMeasReport) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *VarMeasReport) Decode(r *uper.UperReader) error {
+func (ie *VarMeasReport) Decode(r *aper.AperReader) error {
 	var err error
 	var CellsTriggeredListPresent bool
 	if CellsTriggeredListPresent, err = r.ReadBool(); err != nil {
@@ -79,7 +79,7 @@ func (ie *VarMeasReport) Decode(r *uper.UperReader) error {
 		}
 	}
 	var tmp_int_NumberOfReportsSent int64
-	if tmp_int_NumberOfReportsSent, err = r.ReadInteger(&uper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+	if tmp_int_NumberOfReportsSent, err = r.ReadInteger(&aper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
 		return utils.WrapError("ReadInteger NumberOfReportsSent", err)
 	}
 	ie.NumberOfReportsSent = tmp_int_NumberOfReportsSent

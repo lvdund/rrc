@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -10,7 +10,7 @@ type CFRA_occasions struct {
 	Ssb_perRACH_Occasion *CFRA_occasions_ssb_perRACH_Occasion `optional`
 }
 
-func (ie *CFRA_occasions) Encode(w *uper.UperWriter) error {
+func (ie *CFRA_occasions) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.Ssb_perRACH_Occasion != nil}
 	for _, bit := range preambleBits {
@@ -29,7 +29,7 @@ func (ie *CFRA_occasions) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *CFRA_occasions) Decode(r *uper.UperReader) error {
+func (ie *CFRA_occasions) Decode(r *aper.AperReader) error {
 	var err error
 	var Ssb_perRACH_OccasionPresent bool
 	if Ssb_perRACH_OccasionPresent, err = r.ReadBool(); err != nil {

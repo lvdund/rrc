@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -11,7 +11,7 @@ type CMRGroupingAndPairing_r17 struct {
 	Pair2OfNZP_CSI_RS_r17   *NZP_CSI_RS_Pairing_r17 `optional`
 }
 
-func (ie *CMRGroupingAndPairing_r17) Encode(w *uper.UperWriter) error {
+func (ie *CMRGroupingAndPairing_r17) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.Pair1OfNZP_CSI_RS_r17 != nil, ie.Pair2OfNZP_CSI_RS_r17 != nil}
 	for _, bit := range preambleBits {
@@ -19,7 +19,7 @@ func (ie *CMRGroupingAndPairing_r17) Encode(w *uper.UperWriter) error {
 			return err
 		}
 	}
-	if err = w.WriteInteger(ie.NrofResourcesGroup1_r17, &uper.Constraint{Lb: 1, Ub: 7}, false); err != nil {
+	if err = w.WriteInteger(ie.NrofResourcesGroup1_r17, &aper.Constraint{Lb: 1, Ub: 7}, false); err != nil {
 		return utils.WrapError("WriteInteger NrofResourcesGroup1_r17", err)
 	}
 	if ie.Pair1OfNZP_CSI_RS_r17 != nil {
@@ -35,7 +35,7 @@ func (ie *CMRGroupingAndPairing_r17) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *CMRGroupingAndPairing_r17) Decode(r *uper.UperReader) error {
+func (ie *CMRGroupingAndPairing_r17) Decode(r *aper.AperReader) error {
 	var err error
 	var Pair1OfNZP_CSI_RS_r17Present bool
 	if Pair1OfNZP_CSI_RS_r17Present, err = r.ReadBool(); err != nil {
@@ -46,7 +46,7 @@ func (ie *CMRGroupingAndPairing_r17) Decode(r *uper.UperReader) error {
 		return err
 	}
 	var tmp_int_NrofResourcesGroup1_r17 int64
-	if tmp_int_NrofResourcesGroup1_r17, err = r.ReadInteger(&uper.Constraint{Lb: 1, Ub: 7}, false); err != nil {
+	if tmp_int_NrofResourcesGroup1_r17, err = r.ReadInteger(&aper.Constraint{Lb: 1, Ub: 7}, false); err != nil {
 		return utils.WrapError("ReadInteger NrofResourcesGroup1_r17", err)
 	}
 	ie.NrofResourcesGroup1_r17 = tmp_int_NrofResourcesGroup1_r17

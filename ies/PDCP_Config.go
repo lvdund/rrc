@@ -3,7 +3,7 @@ package ies
 import (
 	"bytes"
 
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -18,10 +18,10 @@ type PDCP_Config struct {
 	SurvivalTimeStateSupport_r17  *PDCP_Config_survivalTimeStateSupport_r17 `optional,ext-3`
 	UplinkDataCompression_r17     *UplinkDataCompression_r17                `optional,ext-3,setuprelease`
 	DiscardTimerExt2_r17          *DiscardTimerExt2_r17                     `optional,ext-3,setuprelease`
-	InitialRX_DELIV_r17           *uper.BitString                           `lb:32,ub:32,optional,ext-3`
+	InitialRX_DELIV_r17           *aper.BitString                           `lb:32,ub:32,optional,ext-3`
 }
 
-func (ie *PDCP_Config) Encode(w *uper.UperWriter) error {
+func (ie *PDCP_Config) Encode(w *aper.AperWriter) error {
 	var err error
 	hasExtensions := ie.CipheringDisabled != nil || ie.DiscardTimerExt_r16 != nil || ie.MoreThanTwoRLC_DRB_r16 != nil || ie.EthernetHeaderCompression_r16 != nil || ie.SurvivalTimeStateSupport_r17 != nil || ie.UplinkDataCompression_r17 != nil || ie.DiscardTimerExt2_r17 != nil || ie.InitialRX_DELIV_r17 != nil
 	preambleBits := []bool{hasExtensions, ie.Drb != nil}
@@ -45,7 +45,7 @@ func (ie *PDCP_Config) Encode(w *uper.UperWriter) error {
 		// encode extension group 1
 		if extBitmap[0] {
 			extBuf := new(bytes.Buffer)
-			extWriter := uper.NewWriter(extBuf)
+			extWriter := aper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 1
 			optionals_ext_1 := []bool{ie.CipheringDisabled != nil}
@@ -74,7 +74,7 @@ func (ie *PDCP_Config) Encode(w *uper.UperWriter) error {
 		// encode extension group 2
 		if extBitmap[1] {
 			extBuf := new(bytes.Buffer)
-			extWriter := uper.NewWriter(extBuf)
+			extWriter := aper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 2
 			optionals_ext_2 := []bool{ie.DiscardTimerExt_r16 != nil, ie.MoreThanTwoRLC_DRB_r16 != nil, ie.EthernetHeaderCompression_r16 != nil}
@@ -121,7 +121,7 @@ func (ie *PDCP_Config) Encode(w *uper.UperWriter) error {
 		// encode extension group 3
 		if extBitmap[2] {
 			extBuf := new(bytes.Buffer)
-			extWriter := uper.NewWriter(extBuf)
+			extWriter := aper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 3
 			optionals_ext_3 := []bool{ie.SurvivalTimeStateSupport_r17 != nil, ie.UplinkDataCompression_r17 != nil, ie.DiscardTimerExt2_r17 != nil, ie.InitialRX_DELIV_r17 != nil}
@@ -157,7 +157,7 @@ func (ie *PDCP_Config) Encode(w *uper.UperWriter) error {
 			}
 			// encode InitialRX_DELIV_r17 optional
 			if ie.InitialRX_DELIV_r17 != nil {
-				if err = extWriter.WriteBitString(ie.InitialRX_DELIV_r17.Bytes, uint(ie.InitialRX_DELIV_r17.NumBits), &uper.Constraint{Lb: 32, Ub: 32}, false); err != nil {
+				if err = extWriter.WriteBitString(ie.InitialRX_DELIV_r17.Bytes, uint(ie.InitialRX_DELIV_r17.NumBits), &aper.Constraint{Lb: 32, Ub: 32}, false); err != nil {
 					return utils.WrapError("Encode InitialRX_DELIV_r17", err)
 				}
 			}
@@ -174,7 +174,7 @@ func (ie *PDCP_Config) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *PDCP_Config) Decode(r *uper.UperReader) error {
+func (ie *PDCP_Config) Decode(r *aper.AperReader) error {
 	var err error
 	var extensionBit bool
 	if extensionBit, err = r.ReadBool(); err != nil {
@@ -205,7 +205,7 @@ func (ie *PDCP_Config) Decode(r *uper.UperReader) error {
 				return err
 			}
 
-			extReader := uper.NewReader(bytes.NewReader(extBytes))
+			extReader := aper.NewReader(bytes.NewReader(extBytes))
 
 			CipheringDisabledPresent, err := extReader.ReadBool()
 			if err != nil {
@@ -226,7 +226,7 @@ func (ie *PDCP_Config) Decode(r *uper.UperReader) error {
 				return err
 			}
 
-			extReader := uper.NewReader(bytes.NewReader(extBytes))
+			extReader := aper.NewReader(bytes.NewReader(extBytes))
 
 			DiscardTimerExt_r16Present, err := extReader.ReadBool()
 			if err != nil {
@@ -271,7 +271,7 @@ func (ie *PDCP_Config) Decode(r *uper.UperReader) error {
 				return err
 			}
 
-			extReader := uper.NewReader(bytes.NewReader(extBytes))
+			extReader := aper.NewReader(bytes.NewReader(extBytes))
 
 			SurvivalTimeStateSupport_r17Present, err := extReader.ReadBool()
 			if err != nil {
@@ -316,10 +316,10 @@ func (ie *PDCP_Config) Decode(r *uper.UperReader) error {
 			if InitialRX_DELIV_r17Present {
 				var tmp_bs_InitialRX_DELIV_r17 []byte
 				var n_InitialRX_DELIV_r17 uint
-				if tmp_bs_InitialRX_DELIV_r17, n_InitialRX_DELIV_r17, err = extReader.ReadBitString(&uper.Constraint{Lb: 32, Ub: 32}, false); err != nil {
+				if tmp_bs_InitialRX_DELIV_r17, n_InitialRX_DELIV_r17, err = extReader.ReadBitString(&aper.Constraint{Lb: 32, Ub: 32}, false); err != nil {
 					return utils.WrapError("Decode InitialRX_DELIV_r17", err)
 				}
-				tmp_bitstring := uper.BitString{
+				tmp_bitstring := aper.BitString{
 					Bytes:   tmp_bs_InitialRX_DELIV_r17,
 					NumBits: uint64(n_InitialRX_DELIV_r17),
 				}

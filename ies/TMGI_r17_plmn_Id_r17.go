@@ -3,7 +3,7 @@ package ies
 import (
 	"fmt"
 
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -19,14 +19,14 @@ type TMGI_r17_plmn_Id_r17 struct {
 	ExplicitValue *PLMN_Identity
 }
 
-func (ie *TMGI_r17_plmn_Id_r17) Encode(w *uper.UperWriter) error {
+func (ie *TMGI_r17_plmn_Id_r17) Encode(w *aper.AperWriter) error {
 	var err error
 	if err = w.WriteChoice(ie.Choice, 2, false); err != nil {
 		return err
 	}
 	switch ie.Choice {
 	case TMGI_r17_plmn_Id_r17_Choice_Plmn_Index:
-		if err = w.WriteInteger(int64(ie.Plmn_Index), &uper.Constraint{Lb: 1, Ub: maxPLMN}, false); err != nil {
+		if err = w.WriteInteger(int64(ie.Plmn_Index), &aper.Constraint{Lb: 1, Ub: maxPLMN}, false); err != nil {
 			err = utils.WrapError("Encode Plmn_Index", err)
 		}
 	case TMGI_r17_plmn_Id_r17_Choice_ExplicitValue:
@@ -39,7 +39,7 @@ func (ie *TMGI_r17_plmn_Id_r17) Encode(w *uper.UperWriter) error {
 	return err
 }
 
-func (ie *TMGI_r17_plmn_Id_r17) Decode(r *uper.UperReader) error {
+func (ie *TMGI_r17_plmn_Id_r17) Decode(r *aper.AperReader) error {
 	var err error
 	if ie.Choice, err = r.ReadChoice(2, false); err != nil {
 		return err
@@ -47,7 +47,7 @@ func (ie *TMGI_r17_plmn_Id_r17) Decode(r *uper.UperReader) error {
 	switch ie.Choice {
 	case TMGI_r17_plmn_Id_r17_Choice_Plmn_Index:
 		var tmp_int_Plmn_Index int64
-		if tmp_int_Plmn_Index, err = r.ReadInteger(&uper.Constraint{Lb: 1, Ub: maxPLMN}, false); err != nil {
+		if tmp_int_Plmn_Index, err = r.ReadInteger(&aper.Constraint{Lb: 1, Ub: maxPLMN}, false); err != nil {
 			return utils.WrapError("Decode Plmn_Index", err)
 		}
 		ie.Plmn_Index = tmp_int_Plmn_Index

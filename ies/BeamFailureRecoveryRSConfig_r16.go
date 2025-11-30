@@ -3,7 +3,7 @@ package ies
 import (
 	"bytes"
 
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -13,7 +13,7 @@ type BeamFailureRecoveryRSConfig_r16 struct {
 	CandidateBeamRS_List2_r17 []CandidateBeamRS_r16 `lb:1,ub:maxNrofCandidateBeams_r16,optional,ext-1`
 }
 
-func (ie *BeamFailureRecoveryRSConfig_r16) Encode(w *uper.UperWriter) error {
+func (ie *BeamFailureRecoveryRSConfig_r16) Encode(w *aper.AperWriter) error {
 	var err error
 	hasExtensions := len(ie.CandidateBeamRS_List2_r17) > 0
 	preambleBits := []bool{hasExtensions, ie.Rsrp_ThresholdBFR_r16 != nil, len(ie.CandidateBeamRS_List_r16) > 0}
@@ -28,7 +28,7 @@ func (ie *BeamFailureRecoveryRSConfig_r16) Encode(w *uper.UperWriter) error {
 		}
 	}
 	if len(ie.CandidateBeamRS_List_r16) > 0 {
-		tmp_CandidateBeamRS_List_r16 := utils.NewSequence[*CandidateBeamRS_r16]([]*CandidateBeamRS_r16{}, uper.Constraint{Lb: 1, Ub: maxNrofCandidateBeams_r16}, false)
+		tmp_CandidateBeamRS_List_r16 := utils.NewSequence[*CandidateBeamRS_r16]([]*CandidateBeamRS_r16{}, aper.Constraint{Lb: 1, Ub: maxNrofCandidateBeams_r16}, false)
 		for _, i := range ie.CandidateBeamRS_List_r16 {
 			tmp_CandidateBeamRS_List_r16.Value = append(tmp_CandidateBeamRS_List_r16.Value, &i)
 		}
@@ -46,7 +46,7 @@ func (ie *BeamFailureRecoveryRSConfig_r16) Encode(w *uper.UperWriter) error {
 		// encode extension group 1
 		if extBitmap[0] {
 			extBuf := new(bytes.Buffer)
-			extWriter := uper.NewWriter(extBuf)
+			extWriter := aper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 1
 			optionals_ext_1 := []bool{len(ie.CandidateBeamRS_List2_r17) > 0}
@@ -58,7 +58,7 @@ func (ie *BeamFailureRecoveryRSConfig_r16) Encode(w *uper.UperWriter) error {
 
 			// encode CandidateBeamRS_List2_r17 optional
 			if len(ie.CandidateBeamRS_List2_r17) > 0 {
-				tmp_CandidateBeamRS_List2_r17 := utils.NewSequence[*CandidateBeamRS_r16]([]*CandidateBeamRS_r16{}, uper.Constraint{Lb: 1, Ub: maxNrofCandidateBeams_r16}, false)
+				tmp_CandidateBeamRS_List2_r17 := utils.NewSequence[*CandidateBeamRS_r16]([]*CandidateBeamRS_r16{}, aper.Constraint{Lb: 1, Ub: maxNrofCandidateBeams_r16}, false)
 				for _, i := range ie.CandidateBeamRS_List2_r17 {
 					tmp_CandidateBeamRS_List2_r17.Value = append(tmp_CandidateBeamRS_List2_r17.Value, &i)
 				}
@@ -79,7 +79,7 @@ func (ie *BeamFailureRecoveryRSConfig_r16) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *BeamFailureRecoveryRSConfig_r16) Decode(r *uper.UperReader) error {
+func (ie *BeamFailureRecoveryRSConfig_r16) Decode(r *aper.AperReader) error {
 	var err error
 	var extensionBit bool
 	if extensionBit, err = r.ReadBool(); err != nil {
@@ -100,7 +100,7 @@ func (ie *BeamFailureRecoveryRSConfig_r16) Decode(r *uper.UperReader) error {
 		}
 	}
 	if CandidateBeamRS_List_r16Present {
-		tmp_CandidateBeamRS_List_r16 := utils.NewSequence[*CandidateBeamRS_r16]([]*CandidateBeamRS_r16{}, uper.Constraint{Lb: 1, Ub: maxNrofCandidateBeams_r16}, false)
+		tmp_CandidateBeamRS_List_r16 := utils.NewSequence[*CandidateBeamRS_r16]([]*CandidateBeamRS_r16{}, aper.Constraint{Lb: 1, Ub: maxNrofCandidateBeams_r16}, false)
 		fn_CandidateBeamRS_List_r16 := func() *CandidateBeamRS_r16 {
 			return new(CandidateBeamRS_r16)
 		}
@@ -127,7 +127,7 @@ func (ie *BeamFailureRecoveryRSConfig_r16) Decode(r *uper.UperReader) error {
 				return err
 			}
 
-			extReader := uper.NewReader(bytes.NewReader(extBytes))
+			extReader := aper.NewReader(bytes.NewReader(extBytes))
 
 			CandidateBeamRS_List2_r17Present, err := extReader.ReadBool()
 			if err != nil {
@@ -135,7 +135,7 @@ func (ie *BeamFailureRecoveryRSConfig_r16) Decode(r *uper.UperReader) error {
 			}
 			// decode CandidateBeamRS_List2_r17 optional
 			if CandidateBeamRS_List2_r17Present {
-				tmp_CandidateBeamRS_List2_r17 := utils.NewSequence[*CandidateBeamRS_r16]([]*CandidateBeamRS_r16{}, uper.Constraint{Lb: 1, Ub: maxNrofCandidateBeams_r16}, false)
+				tmp_CandidateBeamRS_List2_r17 := utils.NewSequence[*CandidateBeamRS_r16]([]*CandidateBeamRS_r16{}, aper.Constraint{Lb: 1, Ub: maxNrofCandidateBeams_r16}, false)
 				fn_CandidateBeamRS_List2_r17 := func() *CandidateBeamRS_r16 {
 					return new(CandidateBeamRS_r16)
 				}

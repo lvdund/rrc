@@ -3,7 +3,7 @@ package ies
 import (
 	"bytes"
 
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -17,7 +17,7 @@ type CellGroupConfig struct {
 	SCellToAddModList                          []SCellConfig                                              `lb:1,ub:maxNrofSCells,optional`
 	SCellToReleaseList                         []SCellIndex                                               `lb:1,ub:maxNrofSCells,optional`
 	ReportUplinkTxDirectCurrent                *CellGroupConfig_reportUplinkTxDirectCurrent               `optional,ext-1`
-	Bap_Address_r16                            *uper.BitString                                            `lb:10,ub:10,optional,ext-2`
+	Bap_Address_r16                            *aper.BitString                                            `lb:10,ub:10,optional,ext-2`
 	Bh_RLC_ChannelToAddModList_r16             []BH_RLC_ChannelConfig_r16                                 `lb:1,ub:maxBH_RLC_ChannelID_r16,optional,ext-2`
 	Bh_RLC_ChannelToReleaseList_r16            []BH_RLC_ChannelID_r16                                     `lb:1,ub:maxBH_RLC_ChannelID_r16,optional,ext-2`
 	F1c_TransferPath_r16                       *CellGroupConfig_f1c_TransferPath_r16                      `optional,ext-2`
@@ -43,7 +43,7 @@ type CellGroupConfig struct {
 	ReportUplinkTxDirectCurrentMoreCarrier_r17 *ReportUplinkTxDirectCurrentMoreCarrier_r17                `optional,ext-5`
 }
 
-func (ie *CellGroupConfig) Encode(w *uper.UperWriter) error {
+func (ie *CellGroupConfig) Encode(w *aper.AperWriter) error {
 	var err error
 	hasExtensions := ie.ReportUplinkTxDirectCurrent != nil || ie.Bap_Address_r16 != nil || len(ie.Bh_RLC_ChannelToAddModList_r16) > 0 || len(ie.Bh_RLC_ChannelToReleaseList_r16) > 0 || ie.F1c_TransferPath_r16 != nil || len(ie.SimultaneousTCI_UpdateList1_r16) > 0 || len(ie.SimultaneousTCI_UpdateList2_r16) > 0 || len(ie.SimultaneousSpatial_UpdatedList1_r16) > 0 || len(ie.SimultaneousSpatial_UpdatedList2_r16) > 0 || ie.UplinkTxSwitchingOption_r16 != nil || ie.UplinkTxSwitchingPowerBoosting_r16 != nil || ie.ReportUplinkTxDirectCurrentTwoCarrier_r16 != nil || ie.F1c_TransferPathNRDC_r17 != nil || ie.UplinkTxSwitching_2T_Mode_r17 != nil || ie.UplinkTxSwitching_DualUL_TxState_r17 != nil || len(ie.Uu_RelayRLC_ChannelToAddModList_r17) > 0 || len(ie.Uu_RelayRLC_ChannelToReleaseList_r17) > 0 || len(ie.SimultaneousU_TCI_UpdateList1_r17) > 0 || len(ie.SimultaneousU_TCI_UpdateList2_r17) > 0 || len(ie.SimultaneousU_TCI_UpdateList3_r17) > 0 || len(ie.SimultaneousU_TCI_UpdateList4_r17) > 0 || len(ie.Rlc_BearerToReleaseListExt_r17) > 0 || len(ie.Iab_ResourceConfigToAddModList_r17) > 0 || len(ie.Iab_ResourceConfigToReleaseList_r17) > 0 || ie.ReportUplinkTxDirectCurrentMoreCarrier_r17 != nil
 	preambleBits := []bool{hasExtensions, len(ie.Rlc_BearerToAddModList) > 0, len(ie.Rlc_BearerToReleaseList) > 0, ie.Mac_CellGroupConfig != nil, ie.PhysicalCellGroupConfig != nil, ie.SpCellConfig != nil, len(ie.SCellToAddModList) > 0, len(ie.SCellToReleaseList) > 0}
@@ -56,7 +56,7 @@ func (ie *CellGroupConfig) Encode(w *uper.UperWriter) error {
 		return utils.WrapError("Encode CellGroupId", err)
 	}
 	if len(ie.Rlc_BearerToAddModList) > 0 {
-		tmp_Rlc_BearerToAddModList := utils.NewSequence[*RLC_BearerConfig]([]*RLC_BearerConfig{}, uper.Constraint{Lb: 1, Ub: maxLC_ID}, false)
+		tmp_Rlc_BearerToAddModList := utils.NewSequence[*RLC_BearerConfig]([]*RLC_BearerConfig{}, aper.Constraint{Lb: 1, Ub: maxLC_ID}, false)
 		for _, i := range ie.Rlc_BearerToAddModList {
 			tmp_Rlc_BearerToAddModList.Value = append(tmp_Rlc_BearerToAddModList.Value, &i)
 		}
@@ -65,7 +65,7 @@ func (ie *CellGroupConfig) Encode(w *uper.UperWriter) error {
 		}
 	}
 	if len(ie.Rlc_BearerToReleaseList) > 0 {
-		tmp_Rlc_BearerToReleaseList := utils.NewSequence[*LogicalChannelIdentity]([]*LogicalChannelIdentity{}, uper.Constraint{Lb: 1, Ub: maxLC_ID}, false)
+		tmp_Rlc_BearerToReleaseList := utils.NewSequence[*LogicalChannelIdentity]([]*LogicalChannelIdentity{}, aper.Constraint{Lb: 1, Ub: maxLC_ID}, false)
 		for _, i := range ie.Rlc_BearerToReleaseList {
 			tmp_Rlc_BearerToReleaseList.Value = append(tmp_Rlc_BearerToReleaseList.Value, &i)
 		}
@@ -89,7 +89,7 @@ func (ie *CellGroupConfig) Encode(w *uper.UperWriter) error {
 		}
 	}
 	if len(ie.SCellToAddModList) > 0 {
-		tmp_SCellToAddModList := utils.NewSequence[*SCellConfig]([]*SCellConfig{}, uper.Constraint{Lb: 1, Ub: maxNrofSCells}, false)
+		tmp_SCellToAddModList := utils.NewSequence[*SCellConfig]([]*SCellConfig{}, aper.Constraint{Lb: 1, Ub: maxNrofSCells}, false)
 		for _, i := range ie.SCellToAddModList {
 			tmp_SCellToAddModList.Value = append(tmp_SCellToAddModList.Value, &i)
 		}
@@ -98,7 +98,7 @@ func (ie *CellGroupConfig) Encode(w *uper.UperWriter) error {
 		}
 	}
 	if len(ie.SCellToReleaseList) > 0 {
-		tmp_SCellToReleaseList := utils.NewSequence[*SCellIndex]([]*SCellIndex{}, uper.Constraint{Lb: 1, Ub: maxNrofSCells}, false)
+		tmp_SCellToReleaseList := utils.NewSequence[*SCellIndex]([]*SCellIndex{}, aper.Constraint{Lb: 1, Ub: maxNrofSCells}, false)
 		for _, i := range ie.SCellToReleaseList {
 			tmp_SCellToReleaseList.Value = append(tmp_SCellToReleaseList.Value, &i)
 		}
@@ -116,7 +116,7 @@ func (ie *CellGroupConfig) Encode(w *uper.UperWriter) error {
 		// encode extension group 1
 		if extBitmap[0] {
 			extBuf := new(bytes.Buffer)
-			extWriter := uper.NewWriter(extBuf)
+			extWriter := aper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 1
 			optionals_ext_1 := []bool{ie.ReportUplinkTxDirectCurrent != nil}
@@ -145,7 +145,7 @@ func (ie *CellGroupConfig) Encode(w *uper.UperWriter) error {
 		// encode extension group 2
 		if extBitmap[1] {
 			extBuf := new(bytes.Buffer)
-			extWriter := uper.NewWriter(extBuf)
+			extWriter := aper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 2
 			optionals_ext_2 := []bool{ie.Bap_Address_r16 != nil, len(ie.Bh_RLC_ChannelToAddModList_r16) > 0, len(ie.Bh_RLC_ChannelToReleaseList_r16) > 0, ie.F1c_TransferPath_r16 != nil, len(ie.SimultaneousTCI_UpdateList1_r16) > 0, len(ie.SimultaneousTCI_UpdateList2_r16) > 0, len(ie.SimultaneousSpatial_UpdatedList1_r16) > 0, len(ie.SimultaneousSpatial_UpdatedList2_r16) > 0, ie.UplinkTxSwitchingOption_r16 != nil, ie.UplinkTxSwitchingPowerBoosting_r16 != nil}
@@ -157,13 +157,13 @@ func (ie *CellGroupConfig) Encode(w *uper.UperWriter) error {
 
 			// encode Bap_Address_r16 optional
 			if ie.Bap_Address_r16 != nil {
-				if err = extWriter.WriteBitString(ie.Bap_Address_r16.Bytes, uint(ie.Bap_Address_r16.NumBits), &uper.Constraint{Lb: 10, Ub: 10}, false); err != nil {
+				if err = extWriter.WriteBitString(ie.Bap_Address_r16.Bytes, uint(ie.Bap_Address_r16.NumBits), &aper.Constraint{Lb: 10, Ub: 10}, false); err != nil {
 					return utils.WrapError("Encode Bap_Address_r16", err)
 				}
 			}
 			// encode Bh_RLC_ChannelToAddModList_r16 optional
 			if len(ie.Bh_RLC_ChannelToAddModList_r16) > 0 {
-				tmp_Bh_RLC_ChannelToAddModList_r16 := utils.NewSequence[*BH_RLC_ChannelConfig_r16]([]*BH_RLC_ChannelConfig_r16{}, uper.Constraint{Lb: 1, Ub: maxBH_RLC_ChannelID_r16}, false)
+				tmp_Bh_RLC_ChannelToAddModList_r16 := utils.NewSequence[*BH_RLC_ChannelConfig_r16]([]*BH_RLC_ChannelConfig_r16{}, aper.Constraint{Lb: 1, Ub: maxBH_RLC_ChannelID_r16}, false)
 				for _, i := range ie.Bh_RLC_ChannelToAddModList_r16 {
 					tmp_Bh_RLC_ChannelToAddModList_r16.Value = append(tmp_Bh_RLC_ChannelToAddModList_r16.Value, &i)
 				}
@@ -173,7 +173,7 @@ func (ie *CellGroupConfig) Encode(w *uper.UperWriter) error {
 			}
 			// encode Bh_RLC_ChannelToReleaseList_r16 optional
 			if len(ie.Bh_RLC_ChannelToReleaseList_r16) > 0 {
-				tmp_Bh_RLC_ChannelToReleaseList_r16 := utils.NewSequence[*BH_RLC_ChannelID_r16]([]*BH_RLC_ChannelID_r16{}, uper.Constraint{Lb: 1, Ub: maxBH_RLC_ChannelID_r16}, false)
+				tmp_Bh_RLC_ChannelToReleaseList_r16 := utils.NewSequence[*BH_RLC_ChannelID_r16]([]*BH_RLC_ChannelID_r16{}, aper.Constraint{Lb: 1, Ub: maxBH_RLC_ChannelID_r16}, false)
 				for _, i := range ie.Bh_RLC_ChannelToReleaseList_r16 {
 					tmp_Bh_RLC_ChannelToReleaseList_r16.Value = append(tmp_Bh_RLC_ChannelToReleaseList_r16.Value, &i)
 				}
@@ -189,7 +189,7 @@ func (ie *CellGroupConfig) Encode(w *uper.UperWriter) error {
 			}
 			// encode SimultaneousTCI_UpdateList1_r16 optional
 			if len(ie.SimultaneousTCI_UpdateList1_r16) > 0 {
-				tmp_SimultaneousTCI_UpdateList1_r16 := utils.NewSequence[*ServCellIndex]([]*ServCellIndex{}, uper.Constraint{Lb: 1, Ub: maxNrofServingCellsTCI_r16}, false)
+				tmp_SimultaneousTCI_UpdateList1_r16 := utils.NewSequence[*ServCellIndex]([]*ServCellIndex{}, aper.Constraint{Lb: 1, Ub: maxNrofServingCellsTCI_r16}, false)
 				for _, i := range ie.SimultaneousTCI_UpdateList1_r16 {
 					tmp_SimultaneousTCI_UpdateList1_r16.Value = append(tmp_SimultaneousTCI_UpdateList1_r16.Value, &i)
 				}
@@ -199,7 +199,7 @@ func (ie *CellGroupConfig) Encode(w *uper.UperWriter) error {
 			}
 			// encode SimultaneousTCI_UpdateList2_r16 optional
 			if len(ie.SimultaneousTCI_UpdateList2_r16) > 0 {
-				tmp_SimultaneousTCI_UpdateList2_r16 := utils.NewSequence[*ServCellIndex]([]*ServCellIndex{}, uper.Constraint{Lb: 1, Ub: maxNrofServingCellsTCI_r16}, false)
+				tmp_SimultaneousTCI_UpdateList2_r16 := utils.NewSequence[*ServCellIndex]([]*ServCellIndex{}, aper.Constraint{Lb: 1, Ub: maxNrofServingCellsTCI_r16}, false)
 				for _, i := range ie.SimultaneousTCI_UpdateList2_r16 {
 					tmp_SimultaneousTCI_UpdateList2_r16.Value = append(tmp_SimultaneousTCI_UpdateList2_r16.Value, &i)
 				}
@@ -209,7 +209,7 @@ func (ie *CellGroupConfig) Encode(w *uper.UperWriter) error {
 			}
 			// encode SimultaneousSpatial_UpdatedList1_r16 optional
 			if len(ie.SimultaneousSpatial_UpdatedList1_r16) > 0 {
-				tmp_SimultaneousSpatial_UpdatedList1_r16 := utils.NewSequence[*ServCellIndex]([]*ServCellIndex{}, uper.Constraint{Lb: 1, Ub: maxNrofServingCellsTCI_r16}, false)
+				tmp_SimultaneousSpatial_UpdatedList1_r16 := utils.NewSequence[*ServCellIndex]([]*ServCellIndex{}, aper.Constraint{Lb: 1, Ub: maxNrofServingCellsTCI_r16}, false)
 				for _, i := range ie.SimultaneousSpatial_UpdatedList1_r16 {
 					tmp_SimultaneousSpatial_UpdatedList1_r16.Value = append(tmp_SimultaneousSpatial_UpdatedList1_r16.Value, &i)
 				}
@@ -219,7 +219,7 @@ func (ie *CellGroupConfig) Encode(w *uper.UperWriter) error {
 			}
 			// encode SimultaneousSpatial_UpdatedList2_r16 optional
 			if len(ie.SimultaneousSpatial_UpdatedList2_r16) > 0 {
-				tmp_SimultaneousSpatial_UpdatedList2_r16 := utils.NewSequence[*ServCellIndex]([]*ServCellIndex{}, uper.Constraint{Lb: 1, Ub: maxNrofServingCellsTCI_r16}, false)
+				tmp_SimultaneousSpatial_UpdatedList2_r16 := utils.NewSequence[*ServCellIndex]([]*ServCellIndex{}, aper.Constraint{Lb: 1, Ub: maxNrofServingCellsTCI_r16}, false)
 				for _, i := range ie.SimultaneousSpatial_UpdatedList2_r16 {
 					tmp_SimultaneousSpatial_UpdatedList2_r16.Value = append(tmp_SimultaneousSpatial_UpdatedList2_r16.Value, &i)
 				}
@@ -252,7 +252,7 @@ func (ie *CellGroupConfig) Encode(w *uper.UperWriter) error {
 		// encode extension group 3
 		if extBitmap[2] {
 			extBuf := new(bytes.Buffer)
-			extWriter := uper.NewWriter(extBuf)
+			extWriter := aper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 3
 			optionals_ext_3 := []bool{ie.ReportUplinkTxDirectCurrentTwoCarrier_r16 != nil}
@@ -281,7 +281,7 @@ func (ie *CellGroupConfig) Encode(w *uper.UperWriter) error {
 		// encode extension group 4
 		if extBitmap[3] {
 			extBuf := new(bytes.Buffer)
-			extWriter := uper.NewWriter(extBuf)
+			extWriter := aper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 4
 			optionals_ext_4 := []bool{ie.F1c_TransferPathNRDC_r17 != nil, ie.UplinkTxSwitching_2T_Mode_r17 != nil, ie.UplinkTxSwitching_DualUL_TxState_r17 != nil, len(ie.Uu_RelayRLC_ChannelToAddModList_r17) > 0, len(ie.Uu_RelayRLC_ChannelToReleaseList_r17) > 0, len(ie.SimultaneousU_TCI_UpdateList1_r17) > 0, len(ie.SimultaneousU_TCI_UpdateList2_r17) > 0, len(ie.SimultaneousU_TCI_UpdateList3_r17) > 0, len(ie.SimultaneousU_TCI_UpdateList4_r17) > 0, len(ie.Rlc_BearerToReleaseListExt_r17) > 0, len(ie.Iab_ResourceConfigToAddModList_r17) > 0, len(ie.Iab_ResourceConfigToReleaseList_r17) > 0}
@@ -311,7 +311,7 @@ func (ie *CellGroupConfig) Encode(w *uper.UperWriter) error {
 			}
 			// encode Uu_RelayRLC_ChannelToAddModList_r17 optional
 			if len(ie.Uu_RelayRLC_ChannelToAddModList_r17) > 0 {
-				tmp_Uu_RelayRLC_ChannelToAddModList_r17 := utils.NewSequence[*Uu_RelayRLC_ChannelConfig_r17]([]*Uu_RelayRLC_ChannelConfig_r17{}, uper.Constraint{Lb: 1, Ub: maxUu_RelayRLC_ChannelID_r17}, false)
+				tmp_Uu_RelayRLC_ChannelToAddModList_r17 := utils.NewSequence[*Uu_RelayRLC_ChannelConfig_r17]([]*Uu_RelayRLC_ChannelConfig_r17{}, aper.Constraint{Lb: 1, Ub: maxUu_RelayRLC_ChannelID_r17}, false)
 				for _, i := range ie.Uu_RelayRLC_ChannelToAddModList_r17 {
 					tmp_Uu_RelayRLC_ChannelToAddModList_r17.Value = append(tmp_Uu_RelayRLC_ChannelToAddModList_r17.Value, &i)
 				}
@@ -321,7 +321,7 @@ func (ie *CellGroupConfig) Encode(w *uper.UperWriter) error {
 			}
 			// encode Uu_RelayRLC_ChannelToReleaseList_r17 optional
 			if len(ie.Uu_RelayRLC_ChannelToReleaseList_r17) > 0 {
-				tmp_Uu_RelayRLC_ChannelToReleaseList_r17 := utils.NewSequence[*Uu_RelayRLC_ChannelID_r17]([]*Uu_RelayRLC_ChannelID_r17{}, uper.Constraint{Lb: 1, Ub: maxUu_RelayRLC_ChannelID_r17}, false)
+				tmp_Uu_RelayRLC_ChannelToReleaseList_r17 := utils.NewSequence[*Uu_RelayRLC_ChannelID_r17]([]*Uu_RelayRLC_ChannelID_r17{}, aper.Constraint{Lb: 1, Ub: maxUu_RelayRLC_ChannelID_r17}, false)
 				for _, i := range ie.Uu_RelayRLC_ChannelToReleaseList_r17 {
 					tmp_Uu_RelayRLC_ChannelToReleaseList_r17.Value = append(tmp_Uu_RelayRLC_ChannelToReleaseList_r17.Value, &i)
 				}
@@ -331,7 +331,7 @@ func (ie *CellGroupConfig) Encode(w *uper.UperWriter) error {
 			}
 			// encode SimultaneousU_TCI_UpdateList1_r17 optional
 			if len(ie.SimultaneousU_TCI_UpdateList1_r17) > 0 {
-				tmp_SimultaneousU_TCI_UpdateList1_r17 := utils.NewSequence[*ServCellIndex]([]*ServCellIndex{}, uper.Constraint{Lb: 1, Ub: maxNrofServingCellsTCI_r16}, false)
+				tmp_SimultaneousU_TCI_UpdateList1_r17 := utils.NewSequence[*ServCellIndex]([]*ServCellIndex{}, aper.Constraint{Lb: 1, Ub: maxNrofServingCellsTCI_r16}, false)
 				for _, i := range ie.SimultaneousU_TCI_UpdateList1_r17 {
 					tmp_SimultaneousU_TCI_UpdateList1_r17.Value = append(tmp_SimultaneousU_TCI_UpdateList1_r17.Value, &i)
 				}
@@ -341,7 +341,7 @@ func (ie *CellGroupConfig) Encode(w *uper.UperWriter) error {
 			}
 			// encode SimultaneousU_TCI_UpdateList2_r17 optional
 			if len(ie.SimultaneousU_TCI_UpdateList2_r17) > 0 {
-				tmp_SimultaneousU_TCI_UpdateList2_r17 := utils.NewSequence[*ServCellIndex]([]*ServCellIndex{}, uper.Constraint{Lb: 1, Ub: maxNrofServingCellsTCI_r16}, false)
+				tmp_SimultaneousU_TCI_UpdateList2_r17 := utils.NewSequence[*ServCellIndex]([]*ServCellIndex{}, aper.Constraint{Lb: 1, Ub: maxNrofServingCellsTCI_r16}, false)
 				for _, i := range ie.SimultaneousU_TCI_UpdateList2_r17 {
 					tmp_SimultaneousU_TCI_UpdateList2_r17.Value = append(tmp_SimultaneousU_TCI_UpdateList2_r17.Value, &i)
 				}
@@ -351,7 +351,7 @@ func (ie *CellGroupConfig) Encode(w *uper.UperWriter) error {
 			}
 			// encode SimultaneousU_TCI_UpdateList3_r17 optional
 			if len(ie.SimultaneousU_TCI_UpdateList3_r17) > 0 {
-				tmp_SimultaneousU_TCI_UpdateList3_r17 := utils.NewSequence[*ServCellIndex]([]*ServCellIndex{}, uper.Constraint{Lb: 1, Ub: maxNrofServingCellsTCI_r16}, false)
+				tmp_SimultaneousU_TCI_UpdateList3_r17 := utils.NewSequence[*ServCellIndex]([]*ServCellIndex{}, aper.Constraint{Lb: 1, Ub: maxNrofServingCellsTCI_r16}, false)
 				for _, i := range ie.SimultaneousU_TCI_UpdateList3_r17 {
 					tmp_SimultaneousU_TCI_UpdateList3_r17.Value = append(tmp_SimultaneousU_TCI_UpdateList3_r17.Value, &i)
 				}
@@ -361,7 +361,7 @@ func (ie *CellGroupConfig) Encode(w *uper.UperWriter) error {
 			}
 			// encode SimultaneousU_TCI_UpdateList4_r17 optional
 			if len(ie.SimultaneousU_TCI_UpdateList4_r17) > 0 {
-				tmp_SimultaneousU_TCI_UpdateList4_r17 := utils.NewSequence[*ServCellIndex]([]*ServCellIndex{}, uper.Constraint{Lb: 1, Ub: maxNrofServingCellsTCI_r16}, false)
+				tmp_SimultaneousU_TCI_UpdateList4_r17 := utils.NewSequence[*ServCellIndex]([]*ServCellIndex{}, aper.Constraint{Lb: 1, Ub: maxNrofServingCellsTCI_r16}, false)
 				for _, i := range ie.SimultaneousU_TCI_UpdateList4_r17 {
 					tmp_SimultaneousU_TCI_UpdateList4_r17.Value = append(tmp_SimultaneousU_TCI_UpdateList4_r17.Value, &i)
 				}
@@ -371,7 +371,7 @@ func (ie *CellGroupConfig) Encode(w *uper.UperWriter) error {
 			}
 			// encode Rlc_BearerToReleaseListExt_r17 optional
 			if len(ie.Rlc_BearerToReleaseListExt_r17) > 0 {
-				tmp_Rlc_BearerToReleaseListExt_r17 := utils.NewSequence[*LogicalChannelIdentityExt_r17]([]*LogicalChannelIdentityExt_r17{}, uper.Constraint{Lb: 1, Ub: maxLC_ID}, false)
+				tmp_Rlc_BearerToReleaseListExt_r17 := utils.NewSequence[*LogicalChannelIdentityExt_r17]([]*LogicalChannelIdentityExt_r17{}, aper.Constraint{Lb: 1, Ub: maxLC_ID}, false)
 				for _, i := range ie.Rlc_BearerToReleaseListExt_r17 {
 					tmp_Rlc_BearerToReleaseListExt_r17.Value = append(tmp_Rlc_BearerToReleaseListExt_r17.Value, &i)
 				}
@@ -381,7 +381,7 @@ func (ie *CellGroupConfig) Encode(w *uper.UperWriter) error {
 			}
 			// encode Iab_ResourceConfigToAddModList_r17 optional
 			if len(ie.Iab_ResourceConfigToAddModList_r17) > 0 {
-				tmp_Iab_ResourceConfigToAddModList_r17 := utils.NewSequence[*IAB_ResourceConfig_r17]([]*IAB_ResourceConfig_r17{}, uper.Constraint{Lb: 1, Ub: maxNrofIABResourceConfig_r17}, false)
+				tmp_Iab_ResourceConfigToAddModList_r17 := utils.NewSequence[*IAB_ResourceConfig_r17]([]*IAB_ResourceConfig_r17{}, aper.Constraint{Lb: 1, Ub: maxNrofIABResourceConfig_r17}, false)
 				for _, i := range ie.Iab_ResourceConfigToAddModList_r17 {
 					tmp_Iab_ResourceConfigToAddModList_r17.Value = append(tmp_Iab_ResourceConfigToAddModList_r17.Value, &i)
 				}
@@ -391,7 +391,7 @@ func (ie *CellGroupConfig) Encode(w *uper.UperWriter) error {
 			}
 			// encode Iab_ResourceConfigToReleaseList_r17 optional
 			if len(ie.Iab_ResourceConfigToReleaseList_r17) > 0 {
-				tmp_Iab_ResourceConfigToReleaseList_r17 := utils.NewSequence[*IAB_ResourceConfigID_r17]([]*IAB_ResourceConfigID_r17{}, uper.Constraint{Lb: 1, Ub: maxNrofIABResourceConfig_r17}, false)
+				tmp_Iab_ResourceConfigToReleaseList_r17 := utils.NewSequence[*IAB_ResourceConfigID_r17]([]*IAB_ResourceConfigID_r17{}, aper.Constraint{Lb: 1, Ub: maxNrofIABResourceConfig_r17}, false)
 				for _, i := range ie.Iab_ResourceConfigToReleaseList_r17 {
 					tmp_Iab_ResourceConfigToReleaseList_r17.Value = append(tmp_Iab_ResourceConfigToReleaseList_r17.Value, &i)
 				}
@@ -412,7 +412,7 @@ func (ie *CellGroupConfig) Encode(w *uper.UperWriter) error {
 		// encode extension group 5
 		if extBitmap[4] {
 			extBuf := new(bytes.Buffer)
-			extWriter := uper.NewWriter(extBuf)
+			extWriter := aper.NewWriter(extBuf)
 
 			// Write preamble bits for optional fields in extension group 5
 			optionals_ext_5 := []bool{ie.ReportUplinkTxDirectCurrentMoreCarrier_r17 != nil}
@@ -441,7 +441,7 @@ func (ie *CellGroupConfig) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *CellGroupConfig) Decode(r *uper.UperReader) error {
+func (ie *CellGroupConfig) Decode(r *aper.AperReader) error {
 	var err error
 	var extensionBit bool
 	if extensionBit, err = r.ReadBool(); err != nil {
@@ -479,7 +479,7 @@ func (ie *CellGroupConfig) Decode(r *uper.UperReader) error {
 		return utils.WrapError("Decode CellGroupId", err)
 	}
 	if Rlc_BearerToAddModListPresent {
-		tmp_Rlc_BearerToAddModList := utils.NewSequence[*RLC_BearerConfig]([]*RLC_BearerConfig{}, uper.Constraint{Lb: 1, Ub: maxLC_ID}, false)
+		tmp_Rlc_BearerToAddModList := utils.NewSequence[*RLC_BearerConfig]([]*RLC_BearerConfig{}, aper.Constraint{Lb: 1, Ub: maxLC_ID}, false)
 		fn_Rlc_BearerToAddModList := func() *RLC_BearerConfig {
 			return new(RLC_BearerConfig)
 		}
@@ -492,7 +492,7 @@ func (ie *CellGroupConfig) Decode(r *uper.UperReader) error {
 		}
 	}
 	if Rlc_BearerToReleaseListPresent {
-		tmp_Rlc_BearerToReleaseList := utils.NewSequence[*LogicalChannelIdentity]([]*LogicalChannelIdentity{}, uper.Constraint{Lb: 1, Ub: maxLC_ID}, false)
+		tmp_Rlc_BearerToReleaseList := utils.NewSequence[*LogicalChannelIdentity]([]*LogicalChannelIdentity{}, aper.Constraint{Lb: 1, Ub: maxLC_ID}, false)
 		fn_Rlc_BearerToReleaseList := func() *LogicalChannelIdentity {
 			return new(LogicalChannelIdentity)
 		}
@@ -523,7 +523,7 @@ func (ie *CellGroupConfig) Decode(r *uper.UperReader) error {
 		}
 	}
 	if SCellToAddModListPresent {
-		tmp_SCellToAddModList := utils.NewSequence[*SCellConfig]([]*SCellConfig{}, uper.Constraint{Lb: 1, Ub: maxNrofSCells}, false)
+		tmp_SCellToAddModList := utils.NewSequence[*SCellConfig]([]*SCellConfig{}, aper.Constraint{Lb: 1, Ub: maxNrofSCells}, false)
 		fn_SCellToAddModList := func() *SCellConfig {
 			return new(SCellConfig)
 		}
@@ -536,7 +536,7 @@ func (ie *CellGroupConfig) Decode(r *uper.UperReader) error {
 		}
 	}
 	if SCellToReleaseListPresent {
-		tmp_SCellToReleaseList := utils.NewSequence[*SCellIndex]([]*SCellIndex{}, uper.Constraint{Lb: 1, Ub: maxNrofSCells}, false)
+		tmp_SCellToReleaseList := utils.NewSequence[*SCellIndex]([]*SCellIndex{}, aper.Constraint{Lb: 1, Ub: maxNrofSCells}, false)
 		fn_SCellToReleaseList := func() *SCellIndex {
 			return new(SCellIndex)
 		}
@@ -563,7 +563,7 @@ func (ie *CellGroupConfig) Decode(r *uper.UperReader) error {
 				return err
 			}
 
-			extReader := uper.NewReader(bytes.NewReader(extBytes))
+			extReader := aper.NewReader(bytes.NewReader(extBytes))
 
 			ReportUplinkTxDirectCurrentPresent, err := extReader.ReadBool()
 			if err != nil {
@@ -584,7 +584,7 @@ func (ie *CellGroupConfig) Decode(r *uper.UperReader) error {
 				return err
 			}
 
-			extReader := uper.NewReader(bytes.NewReader(extBytes))
+			extReader := aper.NewReader(bytes.NewReader(extBytes))
 
 			Bap_Address_r16Present, err := extReader.ReadBool()
 			if err != nil {
@@ -630,10 +630,10 @@ func (ie *CellGroupConfig) Decode(r *uper.UperReader) error {
 			if Bap_Address_r16Present {
 				var tmp_bs_Bap_Address_r16 []byte
 				var n_Bap_Address_r16 uint
-				if tmp_bs_Bap_Address_r16, n_Bap_Address_r16, err = extReader.ReadBitString(&uper.Constraint{Lb: 10, Ub: 10}, false); err != nil {
+				if tmp_bs_Bap_Address_r16, n_Bap_Address_r16, err = extReader.ReadBitString(&aper.Constraint{Lb: 10, Ub: 10}, false); err != nil {
 					return utils.WrapError("Decode Bap_Address_r16", err)
 				}
-				tmp_bitstring := uper.BitString{
+				tmp_bitstring := aper.BitString{
 					Bytes:   tmp_bs_Bap_Address_r16,
 					NumBits: uint64(n_Bap_Address_r16),
 				}
@@ -641,7 +641,7 @@ func (ie *CellGroupConfig) Decode(r *uper.UperReader) error {
 			}
 			// decode Bh_RLC_ChannelToAddModList_r16 optional
 			if Bh_RLC_ChannelToAddModList_r16Present {
-				tmp_Bh_RLC_ChannelToAddModList_r16 := utils.NewSequence[*BH_RLC_ChannelConfig_r16]([]*BH_RLC_ChannelConfig_r16{}, uper.Constraint{Lb: 1, Ub: maxBH_RLC_ChannelID_r16}, false)
+				tmp_Bh_RLC_ChannelToAddModList_r16 := utils.NewSequence[*BH_RLC_ChannelConfig_r16]([]*BH_RLC_ChannelConfig_r16{}, aper.Constraint{Lb: 1, Ub: maxBH_RLC_ChannelID_r16}, false)
 				fn_Bh_RLC_ChannelToAddModList_r16 := func() *BH_RLC_ChannelConfig_r16 {
 					return new(BH_RLC_ChannelConfig_r16)
 				}
@@ -655,7 +655,7 @@ func (ie *CellGroupConfig) Decode(r *uper.UperReader) error {
 			}
 			// decode Bh_RLC_ChannelToReleaseList_r16 optional
 			if Bh_RLC_ChannelToReleaseList_r16Present {
-				tmp_Bh_RLC_ChannelToReleaseList_r16 := utils.NewSequence[*BH_RLC_ChannelID_r16]([]*BH_RLC_ChannelID_r16{}, uper.Constraint{Lb: 1, Ub: maxBH_RLC_ChannelID_r16}, false)
+				tmp_Bh_RLC_ChannelToReleaseList_r16 := utils.NewSequence[*BH_RLC_ChannelID_r16]([]*BH_RLC_ChannelID_r16{}, aper.Constraint{Lb: 1, Ub: maxBH_RLC_ChannelID_r16}, false)
 				fn_Bh_RLC_ChannelToReleaseList_r16 := func() *BH_RLC_ChannelID_r16 {
 					return new(BH_RLC_ChannelID_r16)
 				}
@@ -676,7 +676,7 @@ func (ie *CellGroupConfig) Decode(r *uper.UperReader) error {
 			}
 			// decode SimultaneousTCI_UpdateList1_r16 optional
 			if SimultaneousTCI_UpdateList1_r16Present {
-				tmp_SimultaneousTCI_UpdateList1_r16 := utils.NewSequence[*ServCellIndex]([]*ServCellIndex{}, uper.Constraint{Lb: 1, Ub: maxNrofServingCellsTCI_r16}, false)
+				tmp_SimultaneousTCI_UpdateList1_r16 := utils.NewSequence[*ServCellIndex]([]*ServCellIndex{}, aper.Constraint{Lb: 1, Ub: maxNrofServingCellsTCI_r16}, false)
 				fn_SimultaneousTCI_UpdateList1_r16 := func() *ServCellIndex {
 					return new(ServCellIndex)
 				}
@@ -690,7 +690,7 @@ func (ie *CellGroupConfig) Decode(r *uper.UperReader) error {
 			}
 			// decode SimultaneousTCI_UpdateList2_r16 optional
 			if SimultaneousTCI_UpdateList2_r16Present {
-				tmp_SimultaneousTCI_UpdateList2_r16 := utils.NewSequence[*ServCellIndex]([]*ServCellIndex{}, uper.Constraint{Lb: 1, Ub: maxNrofServingCellsTCI_r16}, false)
+				tmp_SimultaneousTCI_UpdateList2_r16 := utils.NewSequence[*ServCellIndex]([]*ServCellIndex{}, aper.Constraint{Lb: 1, Ub: maxNrofServingCellsTCI_r16}, false)
 				fn_SimultaneousTCI_UpdateList2_r16 := func() *ServCellIndex {
 					return new(ServCellIndex)
 				}
@@ -704,7 +704,7 @@ func (ie *CellGroupConfig) Decode(r *uper.UperReader) error {
 			}
 			// decode SimultaneousSpatial_UpdatedList1_r16 optional
 			if SimultaneousSpatial_UpdatedList1_r16Present {
-				tmp_SimultaneousSpatial_UpdatedList1_r16 := utils.NewSequence[*ServCellIndex]([]*ServCellIndex{}, uper.Constraint{Lb: 1, Ub: maxNrofServingCellsTCI_r16}, false)
+				tmp_SimultaneousSpatial_UpdatedList1_r16 := utils.NewSequence[*ServCellIndex]([]*ServCellIndex{}, aper.Constraint{Lb: 1, Ub: maxNrofServingCellsTCI_r16}, false)
 				fn_SimultaneousSpatial_UpdatedList1_r16 := func() *ServCellIndex {
 					return new(ServCellIndex)
 				}
@@ -718,7 +718,7 @@ func (ie *CellGroupConfig) Decode(r *uper.UperReader) error {
 			}
 			// decode SimultaneousSpatial_UpdatedList2_r16 optional
 			if SimultaneousSpatial_UpdatedList2_r16Present {
-				tmp_SimultaneousSpatial_UpdatedList2_r16 := utils.NewSequence[*ServCellIndex]([]*ServCellIndex{}, uper.Constraint{Lb: 1, Ub: maxNrofServingCellsTCI_r16}, false)
+				tmp_SimultaneousSpatial_UpdatedList2_r16 := utils.NewSequence[*ServCellIndex]([]*ServCellIndex{}, aper.Constraint{Lb: 1, Ub: maxNrofServingCellsTCI_r16}, false)
 				fn_SimultaneousSpatial_UpdatedList2_r16 := func() *ServCellIndex {
 					return new(ServCellIndex)
 				}
@@ -752,7 +752,7 @@ func (ie *CellGroupConfig) Decode(r *uper.UperReader) error {
 				return err
 			}
 
-			extReader := uper.NewReader(bytes.NewReader(extBytes))
+			extReader := aper.NewReader(bytes.NewReader(extBytes))
 
 			ReportUplinkTxDirectCurrentTwoCarrier_r16Present, err := extReader.ReadBool()
 			if err != nil {
@@ -773,7 +773,7 @@ func (ie *CellGroupConfig) Decode(r *uper.UperReader) error {
 				return err
 			}
 
-			extReader := uper.NewReader(bytes.NewReader(extBytes))
+			extReader := aper.NewReader(bytes.NewReader(extBytes))
 
 			F1c_TransferPathNRDC_r17Present, err := extReader.ReadBool()
 			if err != nil {
@@ -846,7 +846,7 @@ func (ie *CellGroupConfig) Decode(r *uper.UperReader) error {
 			}
 			// decode Uu_RelayRLC_ChannelToAddModList_r17 optional
 			if Uu_RelayRLC_ChannelToAddModList_r17Present {
-				tmp_Uu_RelayRLC_ChannelToAddModList_r17 := utils.NewSequence[*Uu_RelayRLC_ChannelConfig_r17]([]*Uu_RelayRLC_ChannelConfig_r17{}, uper.Constraint{Lb: 1, Ub: maxUu_RelayRLC_ChannelID_r17}, false)
+				tmp_Uu_RelayRLC_ChannelToAddModList_r17 := utils.NewSequence[*Uu_RelayRLC_ChannelConfig_r17]([]*Uu_RelayRLC_ChannelConfig_r17{}, aper.Constraint{Lb: 1, Ub: maxUu_RelayRLC_ChannelID_r17}, false)
 				fn_Uu_RelayRLC_ChannelToAddModList_r17 := func() *Uu_RelayRLC_ChannelConfig_r17 {
 					return new(Uu_RelayRLC_ChannelConfig_r17)
 				}
@@ -860,7 +860,7 @@ func (ie *CellGroupConfig) Decode(r *uper.UperReader) error {
 			}
 			// decode Uu_RelayRLC_ChannelToReleaseList_r17 optional
 			if Uu_RelayRLC_ChannelToReleaseList_r17Present {
-				tmp_Uu_RelayRLC_ChannelToReleaseList_r17 := utils.NewSequence[*Uu_RelayRLC_ChannelID_r17]([]*Uu_RelayRLC_ChannelID_r17{}, uper.Constraint{Lb: 1, Ub: maxUu_RelayRLC_ChannelID_r17}, false)
+				tmp_Uu_RelayRLC_ChannelToReleaseList_r17 := utils.NewSequence[*Uu_RelayRLC_ChannelID_r17]([]*Uu_RelayRLC_ChannelID_r17{}, aper.Constraint{Lb: 1, Ub: maxUu_RelayRLC_ChannelID_r17}, false)
 				fn_Uu_RelayRLC_ChannelToReleaseList_r17 := func() *Uu_RelayRLC_ChannelID_r17 {
 					return new(Uu_RelayRLC_ChannelID_r17)
 				}
@@ -874,7 +874,7 @@ func (ie *CellGroupConfig) Decode(r *uper.UperReader) error {
 			}
 			// decode SimultaneousU_TCI_UpdateList1_r17 optional
 			if SimultaneousU_TCI_UpdateList1_r17Present {
-				tmp_SimultaneousU_TCI_UpdateList1_r17 := utils.NewSequence[*ServCellIndex]([]*ServCellIndex{}, uper.Constraint{Lb: 1, Ub: maxNrofServingCellsTCI_r16}, false)
+				tmp_SimultaneousU_TCI_UpdateList1_r17 := utils.NewSequence[*ServCellIndex]([]*ServCellIndex{}, aper.Constraint{Lb: 1, Ub: maxNrofServingCellsTCI_r16}, false)
 				fn_SimultaneousU_TCI_UpdateList1_r17 := func() *ServCellIndex {
 					return new(ServCellIndex)
 				}
@@ -888,7 +888,7 @@ func (ie *CellGroupConfig) Decode(r *uper.UperReader) error {
 			}
 			// decode SimultaneousU_TCI_UpdateList2_r17 optional
 			if SimultaneousU_TCI_UpdateList2_r17Present {
-				tmp_SimultaneousU_TCI_UpdateList2_r17 := utils.NewSequence[*ServCellIndex]([]*ServCellIndex{}, uper.Constraint{Lb: 1, Ub: maxNrofServingCellsTCI_r16}, false)
+				tmp_SimultaneousU_TCI_UpdateList2_r17 := utils.NewSequence[*ServCellIndex]([]*ServCellIndex{}, aper.Constraint{Lb: 1, Ub: maxNrofServingCellsTCI_r16}, false)
 				fn_SimultaneousU_TCI_UpdateList2_r17 := func() *ServCellIndex {
 					return new(ServCellIndex)
 				}
@@ -902,7 +902,7 @@ func (ie *CellGroupConfig) Decode(r *uper.UperReader) error {
 			}
 			// decode SimultaneousU_TCI_UpdateList3_r17 optional
 			if SimultaneousU_TCI_UpdateList3_r17Present {
-				tmp_SimultaneousU_TCI_UpdateList3_r17 := utils.NewSequence[*ServCellIndex]([]*ServCellIndex{}, uper.Constraint{Lb: 1, Ub: maxNrofServingCellsTCI_r16}, false)
+				tmp_SimultaneousU_TCI_UpdateList3_r17 := utils.NewSequence[*ServCellIndex]([]*ServCellIndex{}, aper.Constraint{Lb: 1, Ub: maxNrofServingCellsTCI_r16}, false)
 				fn_SimultaneousU_TCI_UpdateList3_r17 := func() *ServCellIndex {
 					return new(ServCellIndex)
 				}
@@ -916,7 +916,7 @@ func (ie *CellGroupConfig) Decode(r *uper.UperReader) error {
 			}
 			// decode SimultaneousU_TCI_UpdateList4_r17 optional
 			if SimultaneousU_TCI_UpdateList4_r17Present {
-				tmp_SimultaneousU_TCI_UpdateList4_r17 := utils.NewSequence[*ServCellIndex]([]*ServCellIndex{}, uper.Constraint{Lb: 1, Ub: maxNrofServingCellsTCI_r16}, false)
+				tmp_SimultaneousU_TCI_UpdateList4_r17 := utils.NewSequence[*ServCellIndex]([]*ServCellIndex{}, aper.Constraint{Lb: 1, Ub: maxNrofServingCellsTCI_r16}, false)
 				fn_SimultaneousU_TCI_UpdateList4_r17 := func() *ServCellIndex {
 					return new(ServCellIndex)
 				}
@@ -930,7 +930,7 @@ func (ie *CellGroupConfig) Decode(r *uper.UperReader) error {
 			}
 			// decode Rlc_BearerToReleaseListExt_r17 optional
 			if Rlc_BearerToReleaseListExt_r17Present {
-				tmp_Rlc_BearerToReleaseListExt_r17 := utils.NewSequence[*LogicalChannelIdentityExt_r17]([]*LogicalChannelIdentityExt_r17{}, uper.Constraint{Lb: 1, Ub: maxLC_ID}, false)
+				tmp_Rlc_BearerToReleaseListExt_r17 := utils.NewSequence[*LogicalChannelIdentityExt_r17]([]*LogicalChannelIdentityExt_r17{}, aper.Constraint{Lb: 1, Ub: maxLC_ID}, false)
 				fn_Rlc_BearerToReleaseListExt_r17 := func() *LogicalChannelIdentityExt_r17 {
 					return new(LogicalChannelIdentityExt_r17)
 				}
@@ -944,7 +944,7 @@ func (ie *CellGroupConfig) Decode(r *uper.UperReader) error {
 			}
 			// decode Iab_ResourceConfigToAddModList_r17 optional
 			if Iab_ResourceConfigToAddModList_r17Present {
-				tmp_Iab_ResourceConfigToAddModList_r17 := utils.NewSequence[*IAB_ResourceConfig_r17]([]*IAB_ResourceConfig_r17{}, uper.Constraint{Lb: 1, Ub: maxNrofIABResourceConfig_r17}, false)
+				tmp_Iab_ResourceConfigToAddModList_r17 := utils.NewSequence[*IAB_ResourceConfig_r17]([]*IAB_ResourceConfig_r17{}, aper.Constraint{Lb: 1, Ub: maxNrofIABResourceConfig_r17}, false)
 				fn_Iab_ResourceConfigToAddModList_r17 := func() *IAB_ResourceConfig_r17 {
 					return new(IAB_ResourceConfig_r17)
 				}
@@ -958,7 +958,7 @@ func (ie *CellGroupConfig) Decode(r *uper.UperReader) error {
 			}
 			// decode Iab_ResourceConfigToReleaseList_r17 optional
 			if Iab_ResourceConfigToReleaseList_r17Present {
-				tmp_Iab_ResourceConfigToReleaseList_r17 := utils.NewSequence[*IAB_ResourceConfigID_r17]([]*IAB_ResourceConfigID_r17{}, uper.Constraint{Lb: 1, Ub: maxNrofIABResourceConfig_r17}, false)
+				tmp_Iab_ResourceConfigToReleaseList_r17 := utils.NewSequence[*IAB_ResourceConfigID_r17]([]*IAB_ResourceConfigID_r17{}, aper.Constraint{Lb: 1, Ub: maxNrofIABResourceConfig_r17}, false)
 				fn_Iab_ResourceConfigToReleaseList_r17 := func() *IAB_ResourceConfigID_r17 {
 					return new(IAB_ResourceConfigID_r17)
 				}
@@ -978,7 +978,7 @@ func (ie *CellGroupConfig) Decode(r *uper.UperReader) error {
 				return err
 			}
 
-			extReader := uper.NewReader(bytes.NewReader(extBytes))
+			extReader := aper.NewReader(bytes.NewReader(extBytes))
 
 			ReportUplinkTxDirectCurrentMoreCarrier_r17Present, err := extReader.ReadBool()
 			if err != nil {

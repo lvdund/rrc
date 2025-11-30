@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -9,7 +9,7 @@ type IMS_ParametersFRX_Diff struct {
 	VoiceOverNR *IMS_ParametersFRX_Diff_voiceOverNR `optional`
 }
 
-func (ie *IMS_ParametersFRX_Diff) Encode(w *uper.UperWriter) error {
+func (ie *IMS_ParametersFRX_Diff) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.VoiceOverNR != nil}
 	for _, bit := range preambleBits {
@@ -25,7 +25,7 @@ func (ie *IMS_ParametersFRX_Diff) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *IMS_ParametersFRX_Diff) Decode(r *uper.UperReader) error {
+func (ie *IMS_ParametersFRX_Diff) Decode(r *aper.AperReader) error {
 	var err error
 	var VoiceOverNRPresent bool
 	if VoiceOverNRPresent, err = r.ReadBool(); err != nil {

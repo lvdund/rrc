@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -12,7 +12,7 @@ type CA_ParametersNR_v1690_csi_ReportingCrossPUCCH_Grp_r16_additionalSymbols_r16
 	Scs_120kHz_additionalSymbols_r16 *CA_ParametersNR_v1690_csi_ReportingCrossPUCCH_Grp_r16_additionalSymbols_r16_scs_120kHz_additionalSymbols_r16 `optional`
 }
 
-func (ie *CA_ParametersNR_v1690_csi_ReportingCrossPUCCH_Grp_r16_additionalSymbols_r16) Encode(w *uper.UperWriter) error {
+func (ie *CA_ParametersNR_v1690_csi_ReportingCrossPUCCH_Grp_r16_additionalSymbols_r16) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.Scs_15kHz_additionalSymbols_r16 != nil, ie.Scs_30kHz_additionalSymbols_r16 != nil, ie.Scs_60kHz_additionalSymbols_r16 != nil, ie.Scs_120kHz_additionalSymbols_r16 != nil}
 	for _, bit := range preambleBits {
@@ -43,7 +43,7 @@ func (ie *CA_ParametersNR_v1690_csi_ReportingCrossPUCCH_Grp_r16_additionalSymbol
 	return nil
 }
 
-func (ie *CA_ParametersNR_v1690_csi_ReportingCrossPUCCH_Grp_r16_additionalSymbols_r16) Decode(r *uper.UperReader) error {
+func (ie *CA_ParametersNR_v1690_csi_ReportingCrossPUCCH_Grp_r16_additionalSymbols_r16) Decode(r *aper.AperReader) error {
 	var err error
 	var Scs_15kHz_additionalSymbols_r16Present bool
 	if Scs_15kHz_additionalSymbols_r16Present, err = r.ReadBool(); err != nil {

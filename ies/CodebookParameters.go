@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -11,7 +11,7 @@ type CodebookParameters struct {
 	Type2_PortSelection *CodebookParameters_type2_PortSelection `lb:1,ub:maxNrofCSI_RS_Resources,optional`
 }
 
-func (ie *CodebookParameters) Encode(w *uper.UperWriter) error {
+func (ie *CodebookParameters) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.Type1 != nil, ie.Type2 != nil, ie.Type2_PortSelection != nil}
 	for _, bit := range preambleBits {
@@ -37,7 +37,7 @@ func (ie *CodebookParameters) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *CodebookParameters) Decode(r *uper.UperReader) error {
+func (ie *CodebookParameters) Decode(r *aper.AperReader) error {
 	var err error
 	var Type1Present bool
 	if Type1Present, err = r.ReadBool(); err != nil {

@@ -1,7 +1,7 @@
 package ies
 
 import (
-	"github.com/lvdund/asn1go/uper"
+	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
 
@@ -10,7 +10,7 @@ type SIB1_v1630_IEs struct {
 	NonCriticalExtension  *SIB1_v1700_IEs                       `optional`
 }
 
-func (ie *SIB1_v1630_IEs) Encode(w *uper.UperWriter) error {
+func (ie *SIB1_v1630_IEs) Encode(w *aper.AperWriter) error {
 	var err error
 	preambleBits := []bool{ie.Uac_BarringInfo_v1630 != nil, ie.NonCriticalExtension != nil}
 	for _, bit := range preambleBits {
@@ -31,7 +31,7 @@ func (ie *SIB1_v1630_IEs) Encode(w *uper.UperWriter) error {
 	return nil
 }
 
-func (ie *SIB1_v1630_IEs) Decode(r *uper.UperReader) error {
+func (ie *SIB1_v1630_IEs) Decode(r *aper.AperReader) error {
 	var err error
 	var Uac_BarringInfo_v1630Present bool
 	if Uac_BarringInfo_v1630Present, err = r.ReadBool(); err != nil {
