@@ -42,7 +42,7 @@ func (ie *MeasResults_measResultNeighCells) Encode(w *aper.AperWriter) error {
 			err = utils.WrapError("Encode MeasResultListUTRA_FDD_r16", err)
 		}
 	case MeasResults_measResultNeighCells_Choice_Sl_MeasResultsCandRelay_r17:
-		if err = w.WriteOctetString(ie.Sl_MeasResultsCandRelay_r17, &aper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+		if err = w.WriteOctetString(ie.Sl_MeasResultsCandRelay_r17, nil, false); err != nil {
 			err = utils.WrapError("Encode Sl_MeasResultsCandRelay_r17", err)
 		}
 	default:
@@ -74,7 +74,7 @@ func (ie *MeasResults_measResultNeighCells) Decode(r *aper.AperReader) error {
 		}
 	case MeasResults_measResultNeighCells_Choice_Sl_MeasResultsCandRelay_r17:
 		var tmp_os_Sl_MeasResultsCandRelay_r17 []byte
-		if tmp_os_Sl_MeasResultsCandRelay_r17, err = r.ReadOctetString(&aper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+		if tmp_os_Sl_MeasResultsCandRelay_r17, err = r.ReadOctetString(nil, false); err != nil {
 			return utils.WrapError("Decode Sl_MeasResultsCandRelay_r17", err)
 		}
 		ie.Sl_MeasResultsCandRelay_r17 = tmp_os_Sl_MeasResultsCandRelay_r17

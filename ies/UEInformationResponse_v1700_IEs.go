@@ -31,7 +31,7 @@ func (ie *UEInformationResponse_v1700_IEs) Encode(w *aper.AperWriter) error {
 		}
 	}
 	if ie.CoarseLocationInfo_r17 != nil {
-		if err = w.WriteOctetString(*ie.CoarseLocationInfo_r17, &aper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+		if err = w.WriteOctetString(*ie.CoarseLocationInfo_r17, nil, false); err != nil {
 			return utils.WrapError("Encode CoarseLocationInfo_r17", err)
 		}
 	}
@@ -66,7 +66,7 @@ func (ie *UEInformationResponse_v1700_IEs) Decode(r *aper.AperReader) error {
 	}
 	if CoarseLocationInfo_r17Present {
 		var tmp_os_CoarseLocationInfo_r17 []byte
-		if tmp_os_CoarseLocationInfo_r17, err = r.ReadOctetString(&aper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+		if tmp_os_CoarseLocationInfo_r17, err = r.ReadOctetString(nil, false); err != nil {
 			return utils.WrapError("Decode CoarseLocationInfo_r17", err)
 		}
 		ie.CoarseLocationInfo_r17 = &tmp_os_CoarseLocationInfo_r17

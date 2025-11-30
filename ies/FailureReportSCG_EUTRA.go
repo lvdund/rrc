@@ -32,7 +32,7 @@ func (ie *FailureReportSCG_EUTRA) Encode(w *aper.AperWriter) error {
 		}
 	}
 	if ie.MeasResultSCG_FailureMRDC != nil {
-		if err = w.WriteOctetString(*ie.MeasResultSCG_FailureMRDC, &aper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+		if err = w.WriteOctetString(*ie.MeasResultSCG_FailureMRDC, nil, false); err != nil {
 			return utils.WrapError("Encode MeasResultSCG_FailureMRDC", err)
 		}
 	}
@@ -100,7 +100,7 @@ func (ie *FailureReportSCG_EUTRA) Decode(r *aper.AperReader) error {
 	}
 	if MeasResultSCG_FailureMRDCPresent {
 		var tmp_os_MeasResultSCG_FailureMRDC []byte
-		if tmp_os_MeasResultSCG_FailureMRDC, err = r.ReadOctetString(&aper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+		if tmp_os_MeasResultSCG_FailureMRDC, err = r.ReadOctetString(nil, false); err != nil {
 			return utils.WrapError("Decode MeasResultSCG_FailureMRDC", err)
 		}
 		ie.MeasResultSCG_FailureMRDC = &tmp_os_MeasResultSCG_FailureMRDC

@@ -37,7 +37,7 @@ func (ie *FailureReportSCG) Encode(w *aper.AperWriter) error {
 		}
 	}
 	if ie.MeasResultSCG_Failure != nil {
-		if err = w.WriteOctetString(*ie.MeasResultSCG_Failure, &aper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+		if err = w.WriteOctetString(*ie.MeasResultSCG_Failure, nil, false); err != nil {
 			return utils.WrapError("Encode MeasResultSCG_Failure", err)
 		}
 	}
@@ -158,7 +158,7 @@ func (ie *FailureReportSCG) Decode(r *aper.AperReader) error {
 	}
 	if MeasResultSCG_FailurePresent {
 		var tmp_os_MeasResultSCG_Failure []byte
-		if tmp_os_MeasResultSCG_Failure, err = r.ReadOctetString(&aper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+		if tmp_os_MeasResultSCG_Failure, err = r.ReadOctetString(nil, false); err != nil {
 			return utils.WrapError("Decode MeasResultSCG_Failure", err)
 		}
 		ie.MeasResultSCG_Failure = &tmp_os_MeasResultSCG_Failure

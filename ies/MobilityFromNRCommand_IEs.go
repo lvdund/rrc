@@ -24,16 +24,16 @@ func (ie *MobilityFromNRCommand_IEs) Encode(w *aper.AperWriter) error {
 	if err = ie.TargetRAT_Type.Encode(w); err != nil {
 		return utils.WrapError("Encode TargetRAT_Type", err)
 	}
-	if err = w.WriteOctetString(ie.TargetRAT_MessageContainer, &aper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+	if err = w.WriteOctetString(ie.TargetRAT_MessageContainer, nil, false); err != nil {
 		return utils.WrapError("WriteOctetString TargetRAT_MessageContainer", err)
 	}
 	if ie.Nas_SecurityParamFromNR != nil {
-		if err = w.WriteOctetString(*ie.Nas_SecurityParamFromNR, &aper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+		if err = w.WriteOctetString(*ie.Nas_SecurityParamFromNR, nil, false); err != nil {
 			return utils.WrapError("Encode Nas_SecurityParamFromNR", err)
 		}
 	}
 	if ie.LateNonCriticalExtension != nil {
-		if err = w.WriteOctetString(*ie.LateNonCriticalExtension, &aper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+		if err = w.WriteOctetString(*ie.LateNonCriticalExtension, nil, false); err != nil {
 			return utils.WrapError("Encode LateNonCriticalExtension", err)
 		}
 	}
@@ -63,20 +63,20 @@ func (ie *MobilityFromNRCommand_IEs) Decode(r *aper.AperReader) error {
 		return utils.WrapError("Decode TargetRAT_Type", err)
 	}
 	var tmp_os_TargetRAT_MessageContainer []byte
-	if tmp_os_TargetRAT_MessageContainer, err = r.ReadOctetString(&aper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+	if tmp_os_TargetRAT_MessageContainer, err = r.ReadOctetString(nil, false); err != nil {
 		return utils.WrapError("ReadOctetString TargetRAT_MessageContainer", err)
 	}
 	ie.TargetRAT_MessageContainer = tmp_os_TargetRAT_MessageContainer
 	if Nas_SecurityParamFromNRPresent {
 		var tmp_os_Nas_SecurityParamFromNR []byte
-		if tmp_os_Nas_SecurityParamFromNR, err = r.ReadOctetString(&aper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+		if tmp_os_Nas_SecurityParamFromNR, err = r.ReadOctetString(nil, false); err != nil {
 			return utils.WrapError("Decode Nas_SecurityParamFromNR", err)
 		}
 		ie.Nas_SecurityParamFromNR = &tmp_os_Nas_SecurityParamFromNR
 	}
 	if LateNonCriticalExtensionPresent {
 		var tmp_os_LateNonCriticalExtension []byte
-		if tmp_os_LateNonCriticalExtension, err = r.ReadOctetString(&aper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+		if tmp_os_LateNonCriticalExtension, err = r.ReadOctetString(nil, false); err != nil {
 			return utils.WrapError("Decode LateNonCriticalExtension", err)
 		}
 		ie.LateNonCriticalExtension = &tmp_os_LateNonCriticalExtension

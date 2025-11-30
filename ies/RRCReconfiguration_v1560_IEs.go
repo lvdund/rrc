@@ -29,7 +29,7 @@ func (ie *RRCReconfiguration_v1560_IEs) Encode(w *aper.AperWriter) error {
 		}
 	}
 	if ie.RadioBearerConfig2 != nil {
-		if err = w.WriteOctetString(*ie.RadioBearerConfig2, &aper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+		if err = w.WriteOctetString(*ie.RadioBearerConfig2, nil, false); err != nil {
 			return utils.WrapError("Encode RadioBearerConfig2", err)
 		}
 	}
@@ -73,7 +73,7 @@ func (ie *RRCReconfiguration_v1560_IEs) Decode(r *aper.AperReader) error {
 	}
 	if RadioBearerConfig2Present {
 		var tmp_os_RadioBearerConfig2 []byte
-		if tmp_os_RadioBearerConfig2, err = r.ReadOctetString(&aper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+		if tmp_os_RadioBearerConfig2, err = r.ReadOctetString(nil, false); err != nil {
 			return utils.WrapError("Decode RadioBearerConfig2", err)
 		}
 		ie.RadioBearerConfig2 = &tmp_os_RadioBearerConfig2

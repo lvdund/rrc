@@ -26,11 +26,11 @@ func (ie *RRCReconfigurationComplete_v1560_IEs_scg_Response) Encode(w *aper.Aper
 	}
 	switch ie.Choice {
 	case RRCReconfigurationComplete_v1560_IEs_scg_Response_Choice_Nr_SCG_Response:
-		if err = w.WriteOctetString(ie.Nr_SCG_Response, &aper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+		if err = w.WriteOctetString(ie.Nr_SCG_Response, nil, false); err != nil {
 			err = utils.WrapError("Encode Nr_SCG_Response", err)
 		}
 	case RRCReconfigurationComplete_v1560_IEs_scg_Response_Choice_Eutra_SCG_Response:
-		if err = w.WriteOctetString(ie.Eutra_SCG_Response, &aper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+		if err = w.WriteOctetString(ie.Eutra_SCG_Response, nil, false); err != nil {
 			err = utils.WrapError("Encode Eutra_SCG_Response", err)
 		}
 	default:
@@ -47,13 +47,13 @@ func (ie *RRCReconfigurationComplete_v1560_IEs_scg_Response) Decode(r *aper.Aper
 	switch ie.Choice {
 	case RRCReconfigurationComplete_v1560_IEs_scg_Response_Choice_Nr_SCG_Response:
 		var tmp_os_Nr_SCG_Response []byte
-		if tmp_os_Nr_SCG_Response, err = r.ReadOctetString(&aper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+		if tmp_os_Nr_SCG_Response, err = r.ReadOctetString(nil, false); err != nil {
 			return utils.WrapError("Decode Nr_SCG_Response", err)
 		}
 		ie.Nr_SCG_Response = tmp_os_Nr_SCG_Response
 	case RRCReconfigurationComplete_v1560_IEs_scg_Response_Choice_Eutra_SCG_Response:
 		var tmp_os_Eutra_SCG_Response []byte
-		if tmp_os_Eutra_SCG_Response, err = r.ReadOctetString(&aper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+		if tmp_os_Eutra_SCG_Response, err = r.ReadOctetString(nil, false); err != nil {
 			return utils.WrapError("Decode Eutra_SCG_Response", err)
 		}
 		ie.Eutra_SCG_Response = tmp_os_Eutra_SCG_Response

@@ -55,7 +55,7 @@ func (ie *NRDC_Parameters) Encode(w *aper.AperWriter) error {
 		}
 	}
 	if ie.Dummy2 != nil {
-		if err = w.WriteOctetString(*ie.Dummy2, &aper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+		if err = w.WriteOctetString(*ie.Dummy2, nil, false); err != nil {
 			return utils.WrapError("Encode Dummy2", err)
 		}
 	}
@@ -130,7 +130,7 @@ func (ie *NRDC_Parameters) Decode(r *aper.AperReader) error {
 	}
 	if Dummy2Present {
 		var tmp_os_Dummy2 []byte
-		if tmp_os_Dummy2, err = r.ReadOctetString(&aper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+		if tmp_os_Dummy2, err = r.ReadOctetString(nil, false); err != nil {
 			return utils.WrapError("Decode Dummy2", err)
 		}
 		ie.Dummy2 = &tmp_os_Dummy2

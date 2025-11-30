@@ -30,12 +30,12 @@ func (ie *CG_Config_v1560_IEs) Encode(w *aper.AperWriter) error {
 		}
 	}
 	if ie.Scg_CellGroupConfigEUTRA != nil {
-		if err = w.WriteOctetString(*ie.Scg_CellGroupConfigEUTRA, &aper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+		if err = w.WriteOctetString(*ie.Scg_CellGroupConfigEUTRA, nil, false); err != nil {
 			return utils.WrapError("Encode Scg_CellGroupConfigEUTRA", err)
 		}
 	}
 	if ie.CandidateCellInfoListSN_EUTRA != nil {
-		if err = w.WriteOctetString(*ie.CandidateCellInfoListSN_EUTRA, &aper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+		if err = w.WriteOctetString(*ie.CandidateCellInfoListSN_EUTRA, nil, false); err != nil {
 			return utils.WrapError("Encode CandidateCellInfoListSN_EUTRA", err)
 		}
 	}
@@ -109,14 +109,14 @@ func (ie *CG_Config_v1560_IEs) Decode(r *aper.AperReader) error {
 	}
 	if Scg_CellGroupConfigEUTRAPresent {
 		var tmp_os_Scg_CellGroupConfigEUTRA []byte
-		if tmp_os_Scg_CellGroupConfigEUTRA, err = r.ReadOctetString(&aper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+		if tmp_os_Scg_CellGroupConfigEUTRA, err = r.ReadOctetString(nil, false); err != nil {
 			return utils.WrapError("Decode Scg_CellGroupConfigEUTRA", err)
 		}
 		ie.Scg_CellGroupConfigEUTRA = &tmp_os_Scg_CellGroupConfigEUTRA
 	}
 	if CandidateCellInfoListSN_EUTRAPresent {
 		var tmp_os_CandidateCellInfoListSN_EUTRA []byte
-		if tmp_os_CandidateCellInfoListSN_EUTRA, err = r.ReadOctetString(&aper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+		if tmp_os_CandidateCellInfoListSN_EUTRA, err = r.ReadOctetString(nil, false); err != nil {
 			return utils.WrapError("Decode CandidateCellInfoListSN_EUTRA", err)
 		}
 		ie.CandidateCellInfoListSN_EUTRA = &tmp_os_CandidateCellInfoListSN_EUTRA

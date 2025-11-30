@@ -19,7 +19,7 @@ func (ie *SIB12_r16) Encode(w *aper.AperWriter) error {
 	if err = ie.SegmentType_r16.Encode(w); err != nil {
 		return utils.WrapError("Encode SegmentType_r16", err)
 	}
-	if err = w.WriteOctetString(ie.SegmentContainer_r16, &aper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+	if err = w.WriteOctetString(ie.SegmentContainer_r16, nil, false); err != nil {
 		return utils.WrapError("WriteOctetString SegmentContainer_r16", err)
 	}
 	return nil
@@ -36,7 +36,7 @@ func (ie *SIB12_r16) Decode(r *aper.AperReader) error {
 		return utils.WrapError("Decode SegmentType_r16", err)
 	}
 	var tmp_os_SegmentContainer_r16 []byte
-	if tmp_os_SegmentContainer_r16, err = r.ReadOctetString(&aper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+	if tmp_os_SegmentContainer_r16, err = r.ReadOctetString(nil, false); err != nil {
 		return utils.WrapError("ReadOctetString SegmentContainer_r16", err)
 	}
 	ie.SegmentContainer_r16 = tmp_os_SegmentContainer_r16

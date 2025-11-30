@@ -19,12 +19,12 @@ func (ie *Sensor_LocationInfo_r16) Encode(w *aper.AperWriter) error {
 		}
 	}
 	if ie.Sensor_MeasurementInformation_r16 != nil {
-		if err = w.WriteOctetString(*ie.Sensor_MeasurementInformation_r16, &aper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+		if err = w.WriteOctetString(*ie.Sensor_MeasurementInformation_r16, nil, false); err != nil {
 			return utils.WrapError("Encode Sensor_MeasurementInformation_r16", err)
 		}
 	}
 	if ie.Sensor_MotionInformation_r16 != nil {
-		if err = w.WriteOctetString(*ie.Sensor_MotionInformation_r16, &aper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+		if err = w.WriteOctetString(*ie.Sensor_MotionInformation_r16, nil, false); err != nil {
 			return utils.WrapError("Encode Sensor_MotionInformation_r16", err)
 		}
 	}
@@ -43,14 +43,14 @@ func (ie *Sensor_LocationInfo_r16) Decode(r *aper.AperReader) error {
 	}
 	if Sensor_MeasurementInformation_r16Present {
 		var tmp_os_Sensor_MeasurementInformation_r16 []byte
-		if tmp_os_Sensor_MeasurementInformation_r16, err = r.ReadOctetString(&aper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+		if tmp_os_Sensor_MeasurementInformation_r16, err = r.ReadOctetString(nil, false); err != nil {
 			return utils.WrapError("Decode Sensor_MeasurementInformation_r16", err)
 		}
 		ie.Sensor_MeasurementInformation_r16 = &tmp_os_Sensor_MeasurementInformation_r16
 	}
 	if Sensor_MotionInformation_r16Present {
 		var tmp_os_Sensor_MotionInformation_r16 []byte
-		if tmp_os_Sensor_MotionInformation_r16, err = r.ReadOctetString(&aper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+		if tmp_os_Sensor_MotionInformation_r16, err = r.ReadOctetString(nil, false); err != nil {
 			return utils.WrapError("Decode Sensor_MotionInformation_r16", err)
 		}
 		ie.Sensor_MotionInformation_r16 = &tmp_os_Sensor_MotionInformation_r16

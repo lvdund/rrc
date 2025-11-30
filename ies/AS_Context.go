@@ -95,7 +95,7 @@ func (ie *AS_Context) Encode(w *aper.AperWriter) error {
 
 			// encode UeAssistanceInformation optional
 			if ie.UeAssistanceInformation != nil {
-				if err = extWriter.WriteOctetString(*ie.UeAssistanceInformation, &aper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+				if err = extWriter.WriteOctetString(*ie.UeAssistanceInformation, nil, false); err != nil {
 					return utils.WrapError("Encode UeAssistanceInformation", err)
 				}
 			}
@@ -159,25 +159,25 @@ func (ie *AS_Context) Encode(w *aper.AperWriter) error {
 			}
 			// encode SidelinkUEInformationNR_r16 optional
 			if ie.SidelinkUEInformationNR_r16 != nil {
-				if err = extWriter.WriteOctetString(*ie.SidelinkUEInformationNR_r16, &aper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+				if err = extWriter.WriteOctetString(*ie.SidelinkUEInformationNR_r16, nil, false); err != nil {
 					return utils.WrapError("Encode SidelinkUEInformationNR_r16", err)
 				}
 			}
 			// encode SidelinkUEInformationEUTRA_r16 optional
 			if ie.SidelinkUEInformationEUTRA_r16 != nil {
-				if err = extWriter.WriteOctetString(*ie.SidelinkUEInformationEUTRA_r16, &aper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+				if err = extWriter.WriteOctetString(*ie.SidelinkUEInformationEUTRA_r16, nil, false); err != nil {
 					return utils.WrapError("Encode SidelinkUEInformationEUTRA_r16", err)
 				}
 			}
 			// encode UeAssistanceInformationEUTRA_r16 optional
 			if ie.UeAssistanceInformationEUTRA_r16 != nil {
-				if err = extWriter.WriteOctetString(*ie.UeAssistanceInformationEUTRA_r16, &aper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+				if err = extWriter.WriteOctetString(*ie.UeAssistanceInformationEUTRA_r16, nil, false); err != nil {
 					return utils.WrapError("Encode UeAssistanceInformationEUTRA_r16", err)
 				}
 			}
 			// encode UeAssistanceInformationSCG_r16 optional
 			if ie.UeAssistanceInformationSCG_r16 != nil {
-				if err = extWriter.WriteOctetString(*ie.UeAssistanceInformationSCG_r16, &aper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+				if err = extWriter.WriteOctetString(*ie.UeAssistanceInformationSCG_r16, nil, false); err != nil {
 					return utils.WrapError("Encode UeAssistanceInformationSCG_r16", err)
 				}
 			}
@@ -253,7 +253,7 @@ func (ie *AS_Context) Encode(w *aper.AperWriter) error {
 			}
 			// encode MbsInterestIndication_r17 optional
 			if ie.MbsInterestIndication_r17 != nil {
-				if err = extWriter.WriteOctetString(*ie.MbsInterestIndication_r17, &aper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+				if err = extWriter.WriteOctetString(*ie.MbsInterestIndication_r17, nil, false); err != nil {
 					return utils.WrapError("Encode MbsInterestIndication_r17", err)
 				}
 			}
@@ -341,7 +341,7 @@ func (ie *AS_Context) Decode(r *aper.AperReader) error {
 			// decode UeAssistanceInformation optional
 			if UeAssistanceInformationPresent {
 				var tmp_os_UeAssistanceInformation []byte
-				if tmp_os_UeAssistanceInformation, err = extReader.ReadOctetString(&aper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+				if tmp_os_UeAssistanceInformation, err = extReader.ReadOctetString(nil, false); err != nil {
 					return utils.WrapError("Decode UeAssistanceInformation", err)
 				}
 				ie.UeAssistanceInformation = &tmp_os_UeAssistanceInformation
@@ -411,7 +411,7 @@ func (ie *AS_Context) Decode(r *aper.AperReader) error {
 			// decode SidelinkUEInformationNR_r16 optional
 			if SidelinkUEInformationNR_r16Present {
 				var tmp_os_SidelinkUEInformationNR_r16 []byte
-				if tmp_os_SidelinkUEInformationNR_r16, err = extReader.ReadOctetString(&aper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+				if tmp_os_SidelinkUEInformationNR_r16, err = extReader.ReadOctetString(nil, false); err != nil {
 					return utils.WrapError("Decode SidelinkUEInformationNR_r16", err)
 				}
 				ie.SidelinkUEInformationNR_r16 = &tmp_os_SidelinkUEInformationNR_r16
@@ -419,7 +419,7 @@ func (ie *AS_Context) Decode(r *aper.AperReader) error {
 			// decode SidelinkUEInformationEUTRA_r16 optional
 			if SidelinkUEInformationEUTRA_r16Present {
 				var tmp_os_SidelinkUEInformationEUTRA_r16 []byte
-				if tmp_os_SidelinkUEInformationEUTRA_r16, err = extReader.ReadOctetString(&aper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+				if tmp_os_SidelinkUEInformationEUTRA_r16, err = extReader.ReadOctetString(nil, false); err != nil {
 					return utils.WrapError("Decode SidelinkUEInformationEUTRA_r16", err)
 				}
 				ie.SidelinkUEInformationEUTRA_r16 = &tmp_os_SidelinkUEInformationEUTRA_r16
@@ -427,7 +427,7 @@ func (ie *AS_Context) Decode(r *aper.AperReader) error {
 			// decode UeAssistanceInformationEUTRA_r16 optional
 			if UeAssistanceInformationEUTRA_r16Present {
 				var tmp_os_UeAssistanceInformationEUTRA_r16 []byte
-				if tmp_os_UeAssistanceInformationEUTRA_r16, err = extReader.ReadOctetString(&aper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+				if tmp_os_UeAssistanceInformationEUTRA_r16, err = extReader.ReadOctetString(nil, false); err != nil {
 					return utils.WrapError("Decode UeAssistanceInformationEUTRA_r16", err)
 				}
 				ie.UeAssistanceInformationEUTRA_r16 = &tmp_os_UeAssistanceInformationEUTRA_r16
@@ -435,7 +435,7 @@ func (ie *AS_Context) Decode(r *aper.AperReader) error {
 			// decode UeAssistanceInformationSCG_r16 optional
 			if UeAssistanceInformationSCG_r16Present {
 				var tmp_os_UeAssistanceInformationSCG_r16 []byte
-				if tmp_os_UeAssistanceInformationSCG_r16, err = extReader.ReadOctetString(&aper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+				if tmp_os_UeAssistanceInformationSCG_r16, err = extReader.ReadOctetString(nil, false); err != nil {
 					return utils.WrapError("Decode UeAssistanceInformationSCG_r16", err)
 				}
 				ie.UeAssistanceInformationSCG_r16 = &tmp_os_UeAssistanceInformationSCG_r16
@@ -507,7 +507,7 @@ func (ie *AS_Context) Decode(r *aper.AperReader) error {
 			// decode MbsInterestIndication_r17 optional
 			if MbsInterestIndication_r17Present {
 				var tmp_os_MbsInterestIndication_r17 []byte
-				if tmp_os_MbsInterestIndication_r17, err = extReader.ReadOctetString(&aper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+				if tmp_os_MbsInterestIndication_r17, err = extReader.ReadOctetString(nil, false); err != nil {
 					return utils.WrapError("Decode MbsInterestIndication_r17", err)
 				}
 				ie.MbsInterestIndication_r17 = &tmp_os_MbsInterestIndication_r17

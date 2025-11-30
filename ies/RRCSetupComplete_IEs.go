@@ -1,8 +1,6 @@
 package ies
 
 import (
-	"fmt"
-
 	"github.com/lvdund/asn1go/aper"
 	"github.com/lvdund/rrc/utils"
 )
@@ -14,7 +12,7 @@ type RRCSetupComplete_IEs struct {
 	S_NSSAI_List             []S_NSSAI                                `lb:1,ub:maxNrofS_NSSAI,optional`
 	DedicatedNAS_Message     DedicatedNAS_Message                     `madatory`
 	Ng_5G_S_TMSI_Value       *RRCSetupComplete_IEs_ng_5G_S_TMSI_Value `lb:9,ub:9,optional`
-	LateNonCriticalExtension []byte                                   `optional`
+	LateNonCriticalExtension *[]byte                                  `optional`
 	NonCriticalExtension     *RRCSetupComplete_v1610_IEs              `optional`
 }
 
@@ -57,7 +55,7 @@ func (ie *RRCSetupComplete_IEs) Encode(w *aper.AperWriter) error {
 		}
 	}
 	if ie.LateNonCriticalExtension != nil {
-		if err = w.WriteOctetString(ie.LateNonCriticalExtension, nil, false); err != nil {
+		if err = w.WriteOctetString(*ie.LateNonCriticalExtension, nil, false); err != nil {
 			return utils.WrapError("Encode LateNonCriticalExtension", err)
 		}
 	}
@@ -135,12 +133,11 @@ func (ie *RRCSetupComplete_IEs) Decode(r *aper.AperReader) error {
 		}
 	}
 	if LateNonCriticalExtensionPresent {
-		fmt.Printf("Begin decode -> LateNonCriticalExtensionPresent\n")
 		var tmp_os_LateNonCriticalExtension []byte
 		if tmp_os_LateNonCriticalExtension, err = r.ReadOctetString(nil, false); err != nil {
 			return utils.WrapError("Decode LateNonCriticalExtension", err)
 		}
-		ie.LateNonCriticalExtension = tmp_os_LateNonCriticalExtension
+		ie.LateNonCriticalExtension = &tmp_os_LateNonCriticalExtension
 	}
 	if NonCriticalExtensionPresent {
 		ie.NonCriticalExtension = new(RRCSetupComplete_v1610_IEs)

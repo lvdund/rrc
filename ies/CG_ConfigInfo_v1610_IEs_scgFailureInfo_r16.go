@@ -15,7 +15,7 @@ func (ie *CG_ConfigInfo_v1610_IEs_scgFailureInfo_r16) Encode(w *aper.AperWriter)
 	if err = ie.FailureType_r16.Encode(w); err != nil {
 		return utils.WrapError("Encode FailureType_r16", err)
 	}
-	if err = w.WriteOctetString(ie.MeasResultSCG_r16, &aper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+	if err = w.WriteOctetString(ie.MeasResultSCG_r16, nil, false); err != nil {
 		return utils.WrapError("WriteOctetString MeasResultSCG_r16", err)
 	}
 	return nil
@@ -27,7 +27,7 @@ func (ie *CG_ConfigInfo_v1610_IEs_scgFailureInfo_r16) Decode(r *aper.AperReader)
 		return utils.WrapError("Decode FailureType_r16", err)
 	}
 	var tmp_os_MeasResultSCG_r16 []byte
-	if tmp_os_MeasResultSCG_r16, err = r.ReadOctetString(&aper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+	if tmp_os_MeasResultSCG_r16, err = r.ReadOctetString(nil, false); err != nil {
 		return utils.WrapError("ReadOctetString MeasResultSCG_r16", err)
 	}
 	ie.MeasResultSCG_r16 = tmp_os_MeasResultSCG_r16

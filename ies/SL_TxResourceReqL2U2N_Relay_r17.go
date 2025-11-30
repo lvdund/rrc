@@ -48,7 +48,7 @@ func (ie *SL_TxResourceReqL2U2N_Relay_r17) Encode(w *aper.AperWriter) error {
 		}
 	}
 	if ie.Sl_CapabilityInformationSidelink_r17 != nil {
-		if err = w.WriteOctetString(*ie.Sl_CapabilityInformationSidelink_r17, &aper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+		if err = w.WriteOctetString(*ie.Sl_CapabilityInformationSidelink_r17, nil, false); err != nil {
 			return utils.WrapError("Encode Sl_CapabilityInformationSidelink_r17", err)
 		}
 	}
@@ -107,7 +107,7 @@ func (ie *SL_TxResourceReqL2U2N_Relay_r17) Decode(r *aper.AperReader) error {
 	}
 	if Sl_CapabilityInformationSidelink_r17Present {
 		var tmp_os_Sl_CapabilityInformationSidelink_r17 []byte
-		if tmp_os_Sl_CapabilityInformationSidelink_r17, err = r.ReadOctetString(&aper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+		if tmp_os_Sl_CapabilityInformationSidelink_r17, err = r.ReadOctetString(nil, false); err != nil {
 			return utils.WrapError("Decode Sl_CapabilityInformationSidelink_r17", err)
 		}
 		ie.Sl_CapabilityInformationSidelink_r17 = &tmp_os_Sl_CapabilityInformationSidelink_r17

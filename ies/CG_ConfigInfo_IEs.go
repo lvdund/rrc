@@ -30,7 +30,7 @@ func (ie *CG_ConfigInfo_IEs) Encode(w *aper.AperWriter) error {
 		}
 	}
 	if ie.Ue_CapabilityInfo != nil {
-		if err = w.WriteOctetString(*ie.Ue_CapabilityInfo, &aper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+		if err = w.WriteOctetString(*ie.Ue_CapabilityInfo, nil, false); err != nil {
 			return utils.WrapError("Encode Ue_CapabilityInfo", err)
 		}
 	}
@@ -40,7 +40,7 @@ func (ie *CG_ConfigInfo_IEs) Encode(w *aper.AperWriter) error {
 		}
 	}
 	if ie.CandidateCellInfoListSN != nil {
-		if err = w.WriteOctetString(*ie.CandidateCellInfoListSN, &aper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+		if err = w.WriteOctetString(*ie.CandidateCellInfoListSN, nil, false); err != nil {
 			return utils.WrapError("Encode CandidateCellInfoListSN", err)
 		}
 	}
@@ -70,17 +70,17 @@ func (ie *CG_ConfigInfo_IEs) Encode(w *aper.AperWriter) error {
 		}
 	}
 	if ie.SourceConfigSCG != nil {
-		if err = w.WriteOctetString(*ie.SourceConfigSCG, &aper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+		if err = w.WriteOctetString(*ie.SourceConfigSCG, nil, false); err != nil {
 			return utils.WrapError("Encode SourceConfigSCG", err)
 		}
 	}
 	if ie.Scg_RB_Config != nil {
-		if err = w.WriteOctetString(*ie.Scg_RB_Config, &aper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+		if err = w.WriteOctetString(*ie.Scg_RB_Config, nil, false); err != nil {
 			return utils.WrapError("Encode Scg_RB_Config", err)
 		}
 	}
 	if ie.Mcg_RB_Config != nil {
-		if err = w.WriteOctetString(*ie.Mcg_RB_Config, &aper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+		if err = w.WriteOctetString(*ie.Mcg_RB_Config, nil, false); err != nil {
 			return utils.WrapError("Encode Mcg_RB_Config", err)
 		}
 	}
@@ -153,7 +153,7 @@ func (ie *CG_ConfigInfo_IEs) Decode(r *aper.AperReader) error {
 	}
 	if Ue_CapabilityInfoPresent {
 		var tmp_os_Ue_CapabilityInfo []byte
-		if tmp_os_Ue_CapabilityInfo, err = r.ReadOctetString(&aper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+		if tmp_os_Ue_CapabilityInfo, err = r.ReadOctetString(nil, false); err != nil {
 			return utils.WrapError("Decode Ue_CapabilityInfo", err)
 		}
 		ie.Ue_CapabilityInfo = &tmp_os_Ue_CapabilityInfo
@@ -166,7 +166,7 @@ func (ie *CG_ConfigInfo_IEs) Decode(r *aper.AperReader) error {
 	}
 	if CandidateCellInfoListSNPresent {
 		var tmp_os_CandidateCellInfoListSN []byte
-		if tmp_os_CandidateCellInfoListSN, err = r.ReadOctetString(&aper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+		if tmp_os_CandidateCellInfoListSN, err = r.ReadOctetString(nil, false); err != nil {
 			return utils.WrapError("Decode CandidateCellInfoListSN", err)
 		}
 		ie.CandidateCellInfoListSN = &tmp_os_CandidateCellInfoListSN
@@ -203,21 +203,21 @@ func (ie *CG_ConfigInfo_IEs) Decode(r *aper.AperReader) error {
 	}
 	if SourceConfigSCGPresent {
 		var tmp_os_SourceConfigSCG []byte
-		if tmp_os_SourceConfigSCG, err = r.ReadOctetString(&aper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+		if tmp_os_SourceConfigSCG, err = r.ReadOctetString(nil, false); err != nil {
 			return utils.WrapError("Decode SourceConfigSCG", err)
 		}
 		ie.SourceConfigSCG = &tmp_os_SourceConfigSCG
 	}
 	if Scg_RB_ConfigPresent {
 		var tmp_os_Scg_RB_Config []byte
-		if tmp_os_Scg_RB_Config, err = r.ReadOctetString(&aper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+		if tmp_os_Scg_RB_Config, err = r.ReadOctetString(nil, false); err != nil {
 			return utils.WrapError("Decode Scg_RB_Config", err)
 		}
 		ie.Scg_RB_Config = &tmp_os_Scg_RB_Config
 	}
 	if Mcg_RB_ConfigPresent {
 		var tmp_os_Mcg_RB_Config []byte
-		if tmp_os_Mcg_RB_Config, err = r.ReadOctetString(&aper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+		if tmp_os_Mcg_RB_Config, err = r.ReadOctetString(nil, false); err != nil {
 			return utils.WrapError("Decode Mcg_RB_Config", err)
 		}
 		ie.Mcg_RB_Config = &tmp_os_Mcg_RB_Config

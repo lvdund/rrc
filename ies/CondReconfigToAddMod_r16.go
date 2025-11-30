@@ -36,7 +36,7 @@ func (ie *CondReconfigToAddMod_r16) Encode(w *aper.AperWriter) error {
 		}
 	}
 	if ie.CondRRCReconfig_r16 != nil {
-		if err = w.WriteOctetString(*ie.CondRRCReconfig_r16, &aper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+		if err = w.WriteOctetString(*ie.CondRRCReconfig_r16, nil, false); err != nil {
 			return utils.WrapError("Encode CondRRCReconfig_r16", err)
 		}
 	}
@@ -62,7 +62,7 @@ func (ie *CondReconfigToAddMod_r16) Encode(w *aper.AperWriter) error {
 
 			// encode CondExecutionCondSCG_r17 optional
 			if ie.CondExecutionCondSCG_r17 != nil {
-				if err = extWriter.WriteOctetString(*ie.CondExecutionCondSCG_r17, &aper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+				if err = extWriter.WriteOctetString(*ie.CondExecutionCondSCG_r17, nil, false); err != nil {
 					return utils.WrapError("Encode CondExecutionCondSCG_r17", err)
 				}
 			}
@@ -111,7 +111,7 @@ func (ie *CondReconfigToAddMod_r16) Decode(r *aper.AperReader) error {
 	}
 	if CondRRCReconfig_r16Present {
 		var tmp_os_CondRRCReconfig_r16 []byte
-		if tmp_os_CondRRCReconfig_r16, err = r.ReadOctetString(&aper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+		if tmp_os_CondRRCReconfig_r16, err = r.ReadOctetString(nil, false); err != nil {
 			return utils.WrapError("Decode CondRRCReconfig_r16", err)
 		}
 		ie.CondRRCReconfig_r16 = &tmp_os_CondRRCReconfig_r16
@@ -140,7 +140,7 @@ func (ie *CondReconfigToAddMod_r16) Decode(r *aper.AperReader) error {
 			// decode CondExecutionCondSCG_r17 optional
 			if CondExecutionCondSCG_r17Present {
 				var tmp_os_CondExecutionCondSCG_r17 []byte
-				if tmp_os_CondExecutionCondSCG_r17, err = extReader.ReadOctetString(&aper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+				if tmp_os_CondExecutionCondSCG_r17, err = extReader.ReadOctetString(nil, false); err != nil {
 					return utils.WrapError("Decode CondExecutionCondSCG_r17", err)
 				}
 				ie.CondExecutionCondSCG_r17 = &tmp_os_CondExecutionCondSCG_r17

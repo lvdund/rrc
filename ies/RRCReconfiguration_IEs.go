@@ -27,7 +27,7 @@ func (ie *RRCReconfiguration_IEs) Encode(w *aper.AperWriter) error {
 		}
 	}
 	if ie.SecondaryCellGroup != nil {
-		if err = w.WriteOctetString(*ie.SecondaryCellGroup, &aper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+		if err = w.WriteOctetString(*ie.SecondaryCellGroup, nil, false); err != nil {
 			return utils.WrapError("Encode SecondaryCellGroup", err)
 		}
 	}
@@ -37,7 +37,7 @@ func (ie *RRCReconfiguration_IEs) Encode(w *aper.AperWriter) error {
 		}
 	}
 	if ie.LateNonCriticalExtension != nil {
-		if err = w.WriteOctetString(*ie.LateNonCriticalExtension, &aper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+		if err = w.WriteOctetString(*ie.LateNonCriticalExtension, nil, false); err != nil {
 			return utils.WrapError("Encode LateNonCriticalExtension", err)
 		}
 	}
@@ -79,7 +79,7 @@ func (ie *RRCReconfiguration_IEs) Decode(r *aper.AperReader) error {
 	}
 	if SecondaryCellGroupPresent {
 		var tmp_os_SecondaryCellGroup []byte
-		if tmp_os_SecondaryCellGroup, err = r.ReadOctetString(&aper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+		if tmp_os_SecondaryCellGroup, err = r.ReadOctetString(nil, false); err != nil {
 			return utils.WrapError("Decode SecondaryCellGroup", err)
 		}
 		ie.SecondaryCellGroup = &tmp_os_SecondaryCellGroup
@@ -92,7 +92,7 @@ func (ie *RRCReconfiguration_IEs) Decode(r *aper.AperReader) error {
 	}
 	if LateNonCriticalExtensionPresent {
 		var tmp_os_LateNonCriticalExtension []byte
-		if tmp_os_LateNonCriticalExtension, err = r.ReadOctetString(&aper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+		if tmp_os_LateNonCriticalExtension, err = r.ReadOctetString(nil, false); err != nil {
 			return utils.WrapError("Decode LateNonCriticalExtension", err)
 		}
 		ie.LateNonCriticalExtension = &tmp_os_LateNonCriticalExtension

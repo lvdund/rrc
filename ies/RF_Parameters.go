@@ -472,13 +472,13 @@ func (ie *RF_Parameters) Encode(w *aper.AperWriter) error {
 			}
 			// encode SupportedBandCombinationListSL_RelayDiscovery_r17 optional
 			if ie.SupportedBandCombinationListSL_RelayDiscovery_r17 != nil {
-				if err = extWriter.WriteOctetString(*ie.SupportedBandCombinationListSL_RelayDiscovery_r17, &aper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+				if err = extWriter.WriteOctetString(*ie.SupportedBandCombinationListSL_RelayDiscovery_r17, nil, false); err != nil {
 					return utils.WrapError("Encode SupportedBandCombinationListSL_RelayDiscovery_r17", err)
 				}
 			}
 			// encode SupportedBandCombinationListSL_NonRelayDiscovery_r17 optional
 			if ie.SupportedBandCombinationListSL_NonRelayDiscovery_r17 != nil {
-				if err = extWriter.WriteOctetString(*ie.SupportedBandCombinationListSL_NonRelayDiscovery_r17, &aper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+				if err = extWriter.WriteOctetString(*ie.SupportedBandCombinationListSL_NonRelayDiscovery_r17, nil, false); err != nil {
 					return utils.WrapError("Encode SupportedBandCombinationListSL_NonRelayDiscovery_r17", err)
 				}
 			}
@@ -1013,7 +1013,7 @@ func (ie *RF_Parameters) Decode(r *aper.AperReader) error {
 			// decode SupportedBandCombinationListSL_RelayDiscovery_r17 optional
 			if SupportedBandCombinationListSL_RelayDiscovery_r17Present {
 				var tmp_os_SupportedBandCombinationListSL_RelayDiscovery_r17 []byte
-				if tmp_os_SupportedBandCombinationListSL_RelayDiscovery_r17, err = extReader.ReadOctetString(&aper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+				if tmp_os_SupportedBandCombinationListSL_RelayDiscovery_r17, err = extReader.ReadOctetString(nil, false); err != nil {
 					return utils.WrapError("Decode SupportedBandCombinationListSL_RelayDiscovery_r17", err)
 				}
 				ie.SupportedBandCombinationListSL_RelayDiscovery_r17 = &tmp_os_SupportedBandCombinationListSL_RelayDiscovery_r17
@@ -1021,7 +1021,7 @@ func (ie *RF_Parameters) Decode(r *aper.AperReader) error {
 			// decode SupportedBandCombinationListSL_NonRelayDiscovery_r17 optional
 			if SupportedBandCombinationListSL_NonRelayDiscovery_r17Present {
 				var tmp_os_SupportedBandCombinationListSL_NonRelayDiscovery_r17 []byte
-				if tmp_os_SupportedBandCombinationListSL_NonRelayDiscovery_r17, err = extReader.ReadOctetString(&aper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+				if tmp_os_SupportedBandCombinationListSL_NonRelayDiscovery_r17, err = extReader.ReadOctetString(nil, false); err != nil {
 					return utils.WrapError("Decode SupportedBandCombinationListSL_NonRelayDiscovery_r17", err)
 				}
 				ie.SupportedBandCombinationListSL_NonRelayDiscovery_r17 = &tmp_os_SupportedBandCombinationListSL_NonRelayDiscovery_r17

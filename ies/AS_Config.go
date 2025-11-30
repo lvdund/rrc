@@ -25,7 +25,7 @@ func (ie *AS_Config) Encode(w *aper.AperWriter) error {
 			return err
 		}
 	}
-	if err = w.WriteOctetString(ie.RrcReconfiguration, &aper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+	if err = w.WriteOctetString(ie.RrcReconfiguration, nil, false); err != nil {
 		return utils.WrapError("WriteOctetString RrcReconfiguration", err)
 	}
 	if hasExtensions {
@@ -50,19 +50,19 @@ func (ie *AS_Config) Encode(w *aper.AperWriter) error {
 
 			// encode SourceRB_SN_Config optional
 			if ie.SourceRB_SN_Config != nil {
-				if err = extWriter.WriteOctetString(*ie.SourceRB_SN_Config, &aper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+				if err = extWriter.WriteOctetString(*ie.SourceRB_SN_Config, nil, false); err != nil {
 					return utils.WrapError("Encode SourceRB_SN_Config", err)
 				}
 			}
 			// encode SourceSCG_NR_Config optional
 			if ie.SourceSCG_NR_Config != nil {
-				if err = extWriter.WriteOctetString(*ie.SourceSCG_NR_Config, &aper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+				if err = extWriter.WriteOctetString(*ie.SourceSCG_NR_Config, nil, false); err != nil {
 					return utils.WrapError("Encode SourceSCG_NR_Config", err)
 				}
 			}
 			// encode SourceSCG_EUTRA_Config optional
 			if ie.SourceSCG_EUTRA_Config != nil {
-				if err = extWriter.WriteOctetString(*ie.SourceSCG_EUTRA_Config, &aper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+				if err = extWriter.WriteOctetString(*ie.SourceSCG_EUTRA_Config, nil, false); err != nil {
 					return utils.WrapError("Encode SourceSCG_EUTRA_Config", err)
 				}
 			}
@@ -144,7 +144,7 @@ func (ie *AS_Config) Decode(r *aper.AperReader) error {
 		return err
 	}
 	var tmp_os_RrcReconfiguration []byte
-	if tmp_os_RrcReconfiguration, err = r.ReadOctetString(&aper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+	if tmp_os_RrcReconfiguration, err = r.ReadOctetString(nil, false); err != nil {
 		return utils.WrapError("ReadOctetString RrcReconfiguration", err)
 	}
 	ie.RrcReconfiguration = tmp_os_RrcReconfiguration
@@ -180,7 +180,7 @@ func (ie *AS_Config) Decode(r *aper.AperReader) error {
 			// decode SourceRB_SN_Config optional
 			if SourceRB_SN_ConfigPresent {
 				var tmp_os_SourceRB_SN_Config []byte
-				if tmp_os_SourceRB_SN_Config, err = extReader.ReadOctetString(&aper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+				if tmp_os_SourceRB_SN_Config, err = extReader.ReadOctetString(nil, false); err != nil {
 					return utils.WrapError("Decode SourceRB_SN_Config", err)
 				}
 				ie.SourceRB_SN_Config = &tmp_os_SourceRB_SN_Config
@@ -188,7 +188,7 @@ func (ie *AS_Config) Decode(r *aper.AperReader) error {
 			// decode SourceSCG_NR_Config optional
 			if SourceSCG_NR_ConfigPresent {
 				var tmp_os_SourceSCG_NR_Config []byte
-				if tmp_os_SourceSCG_NR_Config, err = extReader.ReadOctetString(&aper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+				if tmp_os_SourceSCG_NR_Config, err = extReader.ReadOctetString(nil, false); err != nil {
 					return utils.WrapError("Decode SourceSCG_NR_Config", err)
 				}
 				ie.SourceSCG_NR_Config = &tmp_os_SourceSCG_NR_Config
@@ -196,7 +196,7 @@ func (ie *AS_Config) Decode(r *aper.AperReader) error {
 			// decode SourceSCG_EUTRA_Config optional
 			if SourceSCG_EUTRA_ConfigPresent {
 				var tmp_os_SourceSCG_EUTRA_Config []byte
-				if tmp_os_SourceSCG_EUTRA_Config, err = extReader.ReadOctetString(&aper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+				if tmp_os_SourceSCG_EUTRA_Config, err = extReader.ReadOctetString(nil, false); err != nil {
 					return utils.WrapError("Decode SourceSCG_EUTRA_Config", err)
 				}
 				ie.SourceSCG_EUTRA_Config = &tmp_os_SourceSCG_EUTRA_Config

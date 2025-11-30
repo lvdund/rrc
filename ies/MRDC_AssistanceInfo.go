@@ -51,7 +51,7 @@ func (ie *MRDC_AssistanceInfo) Encode(w *aper.AperWriter) error {
 
 			// encode OverheatingAssistanceSCG_r16 optional
 			if ie.OverheatingAssistanceSCG_r16 != nil {
-				if err = extWriter.WriteOctetString(*ie.OverheatingAssistanceSCG_r16, &aper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+				if err = extWriter.WriteOctetString(*ie.OverheatingAssistanceSCG_r16, nil, false); err != nil {
 					return utils.WrapError("Encode OverheatingAssistanceSCG_r16", err)
 				}
 			}
@@ -80,7 +80,7 @@ func (ie *MRDC_AssistanceInfo) Encode(w *aper.AperWriter) error {
 
 			// encode OverheatingAssistanceSCG_FR2_2_r17 optional
 			if ie.OverheatingAssistanceSCG_FR2_2_r17 != nil {
-				if err = extWriter.WriteOctetString(*ie.OverheatingAssistanceSCG_FR2_2_r17, &aper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+				if err = extWriter.WriteOctetString(*ie.OverheatingAssistanceSCG_FR2_2_r17, nil, false); err != nil {
 					return utils.WrapError("Encode OverheatingAssistanceSCG_FR2_2_r17", err)
 				}
 			}
@@ -138,7 +138,7 @@ func (ie *MRDC_AssistanceInfo) Decode(r *aper.AperReader) error {
 			// decode OverheatingAssistanceSCG_r16 optional
 			if OverheatingAssistanceSCG_r16Present {
 				var tmp_os_OverheatingAssistanceSCG_r16 []byte
-				if tmp_os_OverheatingAssistanceSCG_r16, err = extReader.ReadOctetString(&aper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+				if tmp_os_OverheatingAssistanceSCG_r16, err = extReader.ReadOctetString(nil, false); err != nil {
 					return utils.WrapError("Decode OverheatingAssistanceSCG_r16", err)
 				}
 				ie.OverheatingAssistanceSCG_r16 = &tmp_os_OverheatingAssistanceSCG_r16
@@ -160,7 +160,7 @@ func (ie *MRDC_AssistanceInfo) Decode(r *aper.AperReader) error {
 			// decode OverheatingAssistanceSCG_FR2_2_r17 optional
 			if OverheatingAssistanceSCG_FR2_2_r17Present {
 				var tmp_os_OverheatingAssistanceSCG_FR2_2_r17 []byte
-				if tmp_os_OverheatingAssistanceSCG_FR2_2_r17, err = extReader.ReadOctetString(&aper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+				if tmp_os_OverheatingAssistanceSCG_FR2_2_r17, err = extReader.ReadOctetString(nil, false); err != nil {
 					return utils.WrapError("Decode OverheatingAssistanceSCG_FR2_2_r17", err)
 				}
 				ie.OverheatingAssistanceSCG_FR2_2_r17 = &tmp_os_OverheatingAssistanceSCG_FR2_2_r17

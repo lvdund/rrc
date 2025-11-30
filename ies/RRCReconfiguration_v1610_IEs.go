@@ -82,7 +82,7 @@ func (ie *RRCReconfiguration_v1610_IEs) Encode(w *aper.AperWriter) error {
 		}
 	}
 	if ie.DedicatedPosSysInfoDelivery_r16 != nil {
-		if err = w.WriteOctetString(*ie.DedicatedPosSysInfoDelivery_r16, &aper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+		if err = w.WriteOctetString(*ie.DedicatedPosSysInfoDelivery_r16, nil, false); err != nil {
 			return utils.WrapError("Encode DedicatedPosSysInfoDelivery_r16", err)
 		}
 	}
@@ -223,7 +223,7 @@ func (ie *RRCReconfiguration_v1610_IEs) Decode(r *aper.AperReader) error {
 	}
 	if DedicatedPosSysInfoDelivery_r16Present {
 		var tmp_os_DedicatedPosSysInfoDelivery_r16 []byte
-		if tmp_os_DedicatedPosSysInfoDelivery_r16, err = r.ReadOctetString(&aper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+		if tmp_os_DedicatedPosSysInfoDelivery_r16, err = r.ReadOctetString(nil, false); err != nil {
 			return utils.WrapError("Decode DedicatedPosSysInfoDelivery_r16", err)
 		}
 		ie.DedicatedPosSysInfoDelivery_r16 = &tmp_os_DedicatedPosSysInfoDelivery_r16

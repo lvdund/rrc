@@ -24,11 +24,11 @@ func (ie *ULDedicatedMessageSegment_r16_IEs) Encode(w *aper.AperWriter) error {
 	if err = w.WriteInteger(ie.SegmentNumber_r16, &aper.Constraint{Lb: 0, Ub: 15}, false); err != nil {
 		return utils.WrapError("WriteInteger SegmentNumber_r16", err)
 	}
-	if err = w.WriteOctetString(ie.Rrc_MessageSegmentContainer_r16, &aper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+	if err = w.WriteOctetString(ie.Rrc_MessageSegmentContainer_r16, nil, false); err != nil {
 		return utils.WrapError("WriteOctetString Rrc_MessageSegmentContainer_r16", err)
 	}
 	if ie.LateNonCriticalExtension != nil {
-		if err = w.WriteOctetString(*ie.LateNonCriticalExtension, &aper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+		if err = w.WriteOctetString(*ie.LateNonCriticalExtension, nil, false); err != nil {
 			return utils.WrapError("Encode LateNonCriticalExtension", err)
 		}
 	}
@@ -47,13 +47,13 @@ func (ie *ULDedicatedMessageSegment_r16_IEs) Decode(r *aper.AperReader) error {
 	}
 	ie.SegmentNumber_r16 = tmp_int_SegmentNumber_r16
 	var tmp_os_Rrc_MessageSegmentContainer_r16 []byte
-	if tmp_os_Rrc_MessageSegmentContainer_r16, err = r.ReadOctetString(&aper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+	if tmp_os_Rrc_MessageSegmentContainer_r16, err = r.ReadOctetString(nil, false); err != nil {
 		return utils.WrapError("ReadOctetString Rrc_MessageSegmentContainer_r16", err)
 	}
 	ie.Rrc_MessageSegmentContainer_r16 = tmp_os_Rrc_MessageSegmentContainer_r16
 	if LateNonCriticalExtensionPresent {
 		var tmp_os_LateNonCriticalExtension []byte
-		if tmp_os_LateNonCriticalExtension, err = r.ReadOctetString(&aper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+		if tmp_os_LateNonCriticalExtension, err = r.ReadOctetString(nil, false); err != nil {
 			return utils.WrapError("Decode LateNonCriticalExtension", err)
 		}
 		ie.LateNonCriticalExtension = &tmp_os_LateNonCriticalExtension

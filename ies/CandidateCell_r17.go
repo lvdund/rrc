@@ -22,7 +22,7 @@ func (ie *CandidateCell_r17) Encode(w *aper.AperWriter) error {
 		return utils.WrapError("Encode PhysCellId_r17", err)
 	}
 	if ie.CondExecutionCondSCG_r17 != nil {
-		if err = w.WriteOctetString(*ie.CondExecutionCondSCG_r17, &aper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+		if err = w.WriteOctetString(*ie.CondExecutionCondSCG_r17, nil, false); err != nil {
 			return utils.WrapError("Encode CondExecutionCondSCG_r17", err)
 		}
 	}
@@ -40,7 +40,7 @@ func (ie *CandidateCell_r17) Decode(r *aper.AperReader) error {
 	}
 	if CondExecutionCondSCG_r17Present {
 		var tmp_os_CondExecutionCondSCG_r17 []byte
-		if tmp_os_CondExecutionCondSCG_r17, err = r.ReadOctetString(&aper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+		if tmp_os_CondExecutionCondSCG_r17, err = r.ReadOctetString(nil, false); err != nil {
 			return utils.WrapError("Decode CondExecutionCondSCG_r17", err)
 		}
 		ie.CondExecutionCondSCG_r17 = &tmp_os_CondExecutionCondSCG_r17

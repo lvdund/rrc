@@ -26,17 +26,17 @@ func (ie *CG_ConfigInfo_v1560_IEs) Encode(w *aper.AperWriter) error {
 		}
 	}
 	if ie.CandidateCellInfoListMN_EUTRA != nil {
-		if err = w.WriteOctetString(*ie.CandidateCellInfoListMN_EUTRA, &aper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+		if err = w.WriteOctetString(*ie.CandidateCellInfoListMN_EUTRA, nil, false); err != nil {
 			return utils.WrapError("Encode CandidateCellInfoListMN_EUTRA", err)
 		}
 	}
 	if ie.CandidateCellInfoListSN_EUTRA != nil {
-		if err = w.WriteOctetString(*ie.CandidateCellInfoListSN_EUTRA, &aper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+		if err = w.WriteOctetString(*ie.CandidateCellInfoListSN_EUTRA, nil, false); err != nil {
 			return utils.WrapError("Encode CandidateCellInfoListSN_EUTRA", err)
 		}
 	}
 	if ie.SourceConfigSCG_EUTRA != nil {
-		if err = w.WriteOctetString(*ie.SourceConfigSCG_EUTRA, &aper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+		if err = w.WriteOctetString(*ie.SourceConfigSCG_EUTRA, nil, false); err != nil {
 			return utils.WrapError("Encode SourceConfigSCG_EUTRA", err)
 		}
 	}
@@ -113,21 +113,21 @@ func (ie *CG_ConfigInfo_v1560_IEs) Decode(r *aper.AperReader) error {
 	}
 	if CandidateCellInfoListMN_EUTRAPresent {
 		var tmp_os_CandidateCellInfoListMN_EUTRA []byte
-		if tmp_os_CandidateCellInfoListMN_EUTRA, err = r.ReadOctetString(&aper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+		if tmp_os_CandidateCellInfoListMN_EUTRA, err = r.ReadOctetString(nil, false); err != nil {
 			return utils.WrapError("Decode CandidateCellInfoListMN_EUTRA", err)
 		}
 		ie.CandidateCellInfoListMN_EUTRA = &tmp_os_CandidateCellInfoListMN_EUTRA
 	}
 	if CandidateCellInfoListSN_EUTRAPresent {
 		var tmp_os_CandidateCellInfoListSN_EUTRA []byte
-		if tmp_os_CandidateCellInfoListSN_EUTRA, err = r.ReadOctetString(&aper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+		if tmp_os_CandidateCellInfoListSN_EUTRA, err = r.ReadOctetString(nil, false); err != nil {
 			return utils.WrapError("Decode CandidateCellInfoListSN_EUTRA", err)
 		}
 		ie.CandidateCellInfoListSN_EUTRA = &tmp_os_CandidateCellInfoListSN_EUTRA
 	}
 	if SourceConfigSCG_EUTRAPresent {
 		var tmp_os_SourceConfigSCG_EUTRA []byte
-		if tmp_os_SourceConfigSCG_EUTRA, err = r.ReadOctetString(&aper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+		if tmp_os_SourceConfigSCG_EUTRA, err = r.ReadOctetString(nil, false); err != nil {
 			return utils.WrapError("Decode SourceConfigSCG_EUTRA", err)
 		}
 		ie.SourceConfigSCG_EUTRA = &tmp_os_SourceConfigSCG_EUTRA

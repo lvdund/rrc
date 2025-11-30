@@ -12,7 +12,7 @@ type UERadioAccessCapabilityInformation_IEs struct {
 
 func (ie *UERadioAccessCapabilityInformation_IEs) Encode(w *aper.AperWriter) error {
 	var err error
-	if err = w.WriteOctetString(ie.Ue_RadioAccessCapabilityInfo, &aper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+	if err = w.WriteOctetString(ie.Ue_RadioAccessCapabilityInfo, nil, false); err != nil {
 		return utils.WrapError("WriteOctetString Ue_RadioAccessCapabilityInfo", err)
 	}
 	return nil
@@ -21,7 +21,7 @@ func (ie *UERadioAccessCapabilityInformation_IEs) Encode(w *aper.AperWriter) err
 func (ie *UERadioAccessCapabilityInformation_IEs) Decode(r *aper.AperReader) error {
 	var err error
 	var tmp_os_Ue_RadioAccessCapabilityInfo []byte
-	if tmp_os_Ue_RadioAccessCapabilityInfo, err = r.ReadOctetString(&aper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+	if tmp_os_Ue_RadioAccessCapabilityInfo, err = r.ReadOctetString(nil, false); err != nil {
 		return utils.WrapError("ReadOctetString Ue_RadioAccessCapabilityInfo", err)
 	}
 	ie.Ue_RadioAccessCapabilityInfo = tmp_os_Ue_RadioAccessCapabilityInfo

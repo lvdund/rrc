@@ -25,7 +25,7 @@ func (ie *RRCReconfiguration_v1530_IEs) Encode(w *aper.AperWriter) error {
 		}
 	}
 	if ie.MasterCellGroup != nil {
-		if err = w.WriteOctetString(*ie.MasterCellGroup, &aper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+		if err = w.WriteOctetString(*ie.MasterCellGroup, nil, false); err != nil {
 			return utils.WrapError("Encode MasterCellGroup", err)
 		}
 	}
@@ -49,12 +49,12 @@ func (ie *RRCReconfiguration_v1530_IEs) Encode(w *aper.AperWriter) error {
 		}
 	}
 	if ie.DedicatedSIB1_Delivery != nil {
-		if err = w.WriteOctetString(*ie.DedicatedSIB1_Delivery, &aper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+		if err = w.WriteOctetString(*ie.DedicatedSIB1_Delivery, nil, false); err != nil {
 			return utils.WrapError("Encode DedicatedSIB1_Delivery", err)
 		}
 	}
 	if ie.DedicatedSystemInformationDelivery != nil {
-		if err = w.WriteOctetString(*ie.DedicatedSystemInformationDelivery, &aper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+		if err = w.WriteOctetString(*ie.DedicatedSystemInformationDelivery, nil, false); err != nil {
 			return utils.WrapError("Encode DedicatedSystemInformationDelivery", err)
 		}
 	}
@@ -107,7 +107,7 @@ func (ie *RRCReconfiguration_v1530_IEs) Decode(r *aper.AperReader) error {
 	}
 	if MasterCellGroupPresent {
 		var tmp_os_MasterCellGroup []byte
-		if tmp_os_MasterCellGroup, err = r.ReadOctetString(&aper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+		if tmp_os_MasterCellGroup, err = r.ReadOctetString(nil, false); err != nil {
 			return utils.WrapError("Decode MasterCellGroup", err)
 		}
 		ie.MasterCellGroup = &tmp_os_MasterCellGroup
@@ -139,14 +139,14 @@ func (ie *RRCReconfiguration_v1530_IEs) Decode(r *aper.AperReader) error {
 	}
 	if DedicatedSIB1_DeliveryPresent {
 		var tmp_os_DedicatedSIB1_Delivery []byte
-		if tmp_os_DedicatedSIB1_Delivery, err = r.ReadOctetString(&aper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+		if tmp_os_DedicatedSIB1_Delivery, err = r.ReadOctetString(nil, false); err != nil {
 			return utils.WrapError("Decode DedicatedSIB1_Delivery", err)
 		}
 		ie.DedicatedSIB1_Delivery = &tmp_os_DedicatedSIB1_Delivery
 	}
 	if DedicatedSystemInformationDeliveryPresent {
 		var tmp_os_DedicatedSystemInformationDelivery []byte
-		if tmp_os_DedicatedSystemInformationDelivery, err = r.ReadOctetString(&aper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+		if tmp_os_DedicatedSystemInformationDelivery, err = r.ReadOctetString(nil, false); err != nil {
 			return utils.WrapError("Decode DedicatedSystemInformationDelivery", err)
 		}
 		ie.DedicatedSystemInformationDelivery = &tmp_os_DedicatedSystemInformationDelivery

@@ -24,7 +24,7 @@ func (ie *MeasReportAppLayer_r17) Encode(w *aper.AperWriter) error {
 		return utils.WrapError("Encode MeasConfigAppLayerId_r17", err)
 	}
 	if ie.MeasReportAppLayerContainer_r17 != nil {
-		if err = w.WriteOctetString(*ie.MeasReportAppLayerContainer_r17, &aper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+		if err = w.WriteOctetString(*ie.MeasReportAppLayerContainer_r17, nil, false); err != nil {
 			return utils.WrapError("Encode MeasReportAppLayerContainer_r17", err)
 		}
 	}
@@ -60,7 +60,7 @@ func (ie *MeasReportAppLayer_r17) Decode(r *aper.AperReader) error {
 	}
 	if MeasReportAppLayerContainer_r17Present {
 		var tmp_os_MeasReportAppLayerContainer_r17 []byte
-		if tmp_os_MeasReportAppLayerContainer_r17, err = r.ReadOctetString(&aper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+		if tmp_os_MeasReportAppLayerContainer_r17, err = r.ReadOctetString(nil, false); err != nil {
 			return utils.WrapError("Decode MeasReportAppLayerContainer_r17", err)
 		}
 		ie.MeasReportAppLayerContainer_r17 = &tmp_os_MeasReportAppLayerContainer_r17

@@ -19,12 +19,12 @@ func (ie *BandParametersSidelinkEUTRA_NR_r16_eutra) Encode(w *aper.AperWriter) e
 		}
 	}
 	if ie.BandParametersSidelinkEUTRA1_r16 != nil {
-		if err = w.WriteOctetString(*ie.BandParametersSidelinkEUTRA1_r16, &aper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+		if err = w.WriteOctetString(*ie.BandParametersSidelinkEUTRA1_r16, nil, false); err != nil {
 			return utils.WrapError("Encode BandParametersSidelinkEUTRA1_r16", err)
 		}
 	}
 	if ie.BandParametersSidelinkEUTRA2_r16 != nil {
-		if err = w.WriteOctetString(*ie.BandParametersSidelinkEUTRA2_r16, &aper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+		if err = w.WriteOctetString(*ie.BandParametersSidelinkEUTRA2_r16, nil, false); err != nil {
 			return utils.WrapError("Encode BandParametersSidelinkEUTRA2_r16", err)
 		}
 	}
@@ -43,14 +43,14 @@ func (ie *BandParametersSidelinkEUTRA_NR_r16_eutra) Decode(r *aper.AperReader) e
 	}
 	if BandParametersSidelinkEUTRA1_r16Present {
 		var tmp_os_BandParametersSidelinkEUTRA1_r16 []byte
-		if tmp_os_BandParametersSidelinkEUTRA1_r16, err = r.ReadOctetString(&aper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+		if tmp_os_BandParametersSidelinkEUTRA1_r16, err = r.ReadOctetString(nil, false); err != nil {
 			return utils.WrapError("Decode BandParametersSidelinkEUTRA1_r16", err)
 		}
 		ie.BandParametersSidelinkEUTRA1_r16 = &tmp_os_BandParametersSidelinkEUTRA1_r16
 	}
 	if BandParametersSidelinkEUTRA2_r16Present {
 		var tmp_os_BandParametersSidelinkEUTRA2_r16 []byte
-		if tmp_os_BandParametersSidelinkEUTRA2_r16, err = r.ReadOctetString(&aper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+		if tmp_os_BandParametersSidelinkEUTRA2_r16, err = r.ReadOctetString(nil, false); err != nil {
 			return utils.WrapError("Decode BandParametersSidelinkEUTRA2_r16", err)
 		}
 		ie.BandParametersSidelinkEUTRA2_r16 = &tmp_os_BandParametersSidelinkEUTRA2_r16

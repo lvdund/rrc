@@ -27,12 +27,12 @@ func (ie *CG_Config_IEs) Encode(w *aper.AperWriter) error {
 		}
 	}
 	if ie.Scg_CellGroupConfig != nil {
-		if err = w.WriteOctetString(*ie.Scg_CellGroupConfig, &aper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+		if err = w.WriteOctetString(*ie.Scg_CellGroupConfig, nil, false); err != nil {
 			return utils.WrapError("Encode Scg_CellGroupConfig", err)
 		}
 	}
 	if ie.Scg_RB_Config != nil {
-		if err = w.WriteOctetString(*ie.Scg_RB_Config, &aper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+		if err = w.WriteOctetString(*ie.Scg_RB_Config, nil, false); err != nil {
 			return utils.WrapError("Encode Scg_RB_Config", err)
 		}
 	}
@@ -47,7 +47,7 @@ func (ie *CG_Config_IEs) Encode(w *aper.AperWriter) error {
 		}
 	}
 	if ie.CandidateCellInfoListSN != nil {
-		if err = w.WriteOctetString(*ie.CandidateCellInfoListSN, &aper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+		if err = w.WriteOctetString(*ie.CandidateCellInfoListSN, nil, false); err != nil {
 			return utils.WrapError("Encode CandidateCellInfoListSN", err)
 		}
 	}
@@ -123,14 +123,14 @@ func (ie *CG_Config_IEs) Decode(r *aper.AperReader) error {
 	}
 	if Scg_CellGroupConfigPresent {
 		var tmp_os_Scg_CellGroupConfig []byte
-		if tmp_os_Scg_CellGroupConfig, err = r.ReadOctetString(&aper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+		if tmp_os_Scg_CellGroupConfig, err = r.ReadOctetString(nil, false); err != nil {
 			return utils.WrapError("Decode Scg_CellGroupConfig", err)
 		}
 		ie.Scg_CellGroupConfig = &tmp_os_Scg_CellGroupConfig
 	}
 	if Scg_RB_ConfigPresent {
 		var tmp_os_Scg_RB_Config []byte
-		if tmp_os_Scg_RB_Config, err = r.ReadOctetString(&aper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+		if tmp_os_Scg_RB_Config, err = r.ReadOctetString(nil, false); err != nil {
 			return utils.WrapError("Decode Scg_RB_Config", err)
 		}
 		ie.Scg_RB_Config = &tmp_os_Scg_RB_Config
@@ -149,7 +149,7 @@ func (ie *CG_Config_IEs) Decode(r *aper.AperReader) error {
 	}
 	if CandidateCellInfoListSNPresent {
 		var tmp_os_CandidateCellInfoListSN []byte
-		if tmp_os_CandidateCellInfoListSN, err = r.ReadOctetString(&aper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+		if tmp_os_CandidateCellInfoListSN, err = r.ReadOctetString(nil, false); err != nil {
 			return utils.WrapError("Decode CandidateCellInfoListSN", err)
 		}
 		ie.CandidateCellInfoListSN = &tmp_os_CandidateCellInfoListSN

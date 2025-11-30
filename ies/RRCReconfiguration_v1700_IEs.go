@@ -50,7 +50,7 @@ func (ie *RRCReconfiguration_v1700_IEs) Encode(w *aper.AperWriter) error {
 		}
 	}
 	if ie.DedicatedPagingDelivery_r17 != nil {
-		if err = w.WriteOctetString(*ie.DedicatedPagingDelivery_r17, &aper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+		if err = w.WriteOctetString(*ie.DedicatedPagingDelivery_r17, nil, false); err != nil {
 			return utils.WrapError("Encode DedicatedPagingDelivery_r17", err)
 		}
 	}
@@ -175,7 +175,7 @@ func (ie *RRCReconfiguration_v1700_IEs) Decode(r *aper.AperReader) error {
 	}
 	if DedicatedPagingDelivery_r17Present {
 		var tmp_os_DedicatedPagingDelivery_r17 []byte
-		if tmp_os_DedicatedPagingDelivery_r17, err = r.ReadOctetString(&aper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+		if tmp_os_DedicatedPagingDelivery_r17, err = r.ReadOctetString(nil, false); err != nil {
 			return utils.WrapError("Decode DedicatedPagingDelivery_r17", err)
 		}
 		ie.DedicatedPagingDelivery_r17 = &tmp_os_DedicatedPagingDelivery_r17

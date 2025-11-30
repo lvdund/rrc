@@ -19,7 +19,7 @@ func (ie *CG_Config_v1620_IEs) Encode(w *aper.AperWriter) error {
 		}
 	}
 	if ie.UeAssistanceInformationSCG_r16 != nil {
-		if err = w.WriteOctetString(*ie.UeAssistanceInformationSCG_r16, &aper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+		if err = w.WriteOctetString(*ie.UeAssistanceInformationSCG_r16, nil, false); err != nil {
 			return utils.WrapError("Encode UeAssistanceInformationSCG_r16", err)
 		}
 	}
@@ -43,7 +43,7 @@ func (ie *CG_Config_v1620_IEs) Decode(r *aper.AperReader) error {
 	}
 	if UeAssistanceInformationSCG_r16Present {
 		var tmp_os_UeAssistanceInformationSCG_r16 []byte
-		if tmp_os_UeAssistanceInformationSCG_r16, err = r.ReadOctetString(&aper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+		if tmp_os_UeAssistanceInformationSCG_r16, err = r.ReadOctetString(nil, false); err != nil {
 			return utils.WrapError("Decode UeAssistanceInformationSCG_r16", err)
 		}
 		ie.UeAssistanceInformationSCG_r16 = &tmp_os_UeAssistanceInformationSCG_r16

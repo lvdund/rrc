@@ -21,17 +21,17 @@ func (ie *SidelinkParametersEUTRA_r16) Encode(w *aper.AperWriter) error {
 		}
 	}
 	if ie.Sl_ParametersEUTRA1_r16 != nil {
-		if err = w.WriteOctetString(*ie.Sl_ParametersEUTRA1_r16, &aper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+		if err = w.WriteOctetString(*ie.Sl_ParametersEUTRA1_r16, nil, false); err != nil {
 			return utils.WrapError("Encode Sl_ParametersEUTRA1_r16", err)
 		}
 	}
 	if ie.Sl_ParametersEUTRA2_r16 != nil {
-		if err = w.WriteOctetString(*ie.Sl_ParametersEUTRA2_r16, &aper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+		if err = w.WriteOctetString(*ie.Sl_ParametersEUTRA2_r16, nil, false); err != nil {
 			return utils.WrapError("Encode Sl_ParametersEUTRA2_r16", err)
 		}
 	}
 	if ie.Sl_ParametersEUTRA3_r16 != nil {
-		if err = w.WriteOctetString(*ie.Sl_ParametersEUTRA3_r16, &aper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+		if err = w.WriteOctetString(*ie.Sl_ParametersEUTRA3_r16, nil, false); err != nil {
 			return utils.WrapError("Encode Sl_ParametersEUTRA3_r16", err)
 		}
 	}
@@ -67,21 +67,21 @@ func (ie *SidelinkParametersEUTRA_r16) Decode(r *aper.AperReader) error {
 	}
 	if Sl_ParametersEUTRA1_r16Present {
 		var tmp_os_Sl_ParametersEUTRA1_r16 []byte
-		if tmp_os_Sl_ParametersEUTRA1_r16, err = r.ReadOctetString(&aper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+		if tmp_os_Sl_ParametersEUTRA1_r16, err = r.ReadOctetString(nil, false); err != nil {
 			return utils.WrapError("Decode Sl_ParametersEUTRA1_r16", err)
 		}
 		ie.Sl_ParametersEUTRA1_r16 = &tmp_os_Sl_ParametersEUTRA1_r16
 	}
 	if Sl_ParametersEUTRA2_r16Present {
 		var tmp_os_Sl_ParametersEUTRA2_r16 []byte
-		if tmp_os_Sl_ParametersEUTRA2_r16, err = r.ReadOctetString(&aper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+		if tmp_os_Sl_ParametersEUTRA2_r16, err = r.ReadOctetString(nil, false); err != nil {
 			return utils.WrapError("Decode Sl_ParametersEUTRA2_r16", err)
 		}
 		ie.Sl_ParametersEUTRA2_r16 = &tmp_os_Sl_ParametersEUTRA2_r16
 	}
 	if Sl_ParametersEUTRA3_r16Present {
 		var tmp_os_Sl_ParametersEUTRA3_r16 []byte
-		if tmp_os_Sl_ParametersEUTRA3_r16, err = r.ReadOctetString(&aper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+		if tmp_os_Sl_ParametersEUTRA3_r16, err = r.ReadOctetString(nil, false); err != nil {
 			return utils.WrapError("Decode Sl_ParametersEUTRA3_r16", err)
 		}
 		ie.Sl_ParametersEUTRA3_r16 = &tmp_os_Sl_ParametersEUTRA3_r16

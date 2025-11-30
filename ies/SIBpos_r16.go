@@ -18,11 +18,11 @@ func (ie *SIBpos_r16) Encode(w *aper.AperWriter) error {
 			return err
 		}
 	}
-	if err = w.WriteOctetString(ie.AssistanceDataSIB_Element_r16, &aper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+	if err = w.WriteOctetString(ie.AssistanceDataSIB_Element_r16, nil, false); err != nil {
 		return utils.WrapError("WriteOctetString AssistanceDataSIB_Element_r16", err)
 	}
 	if ie.LateNonCriticalExtension != nil {
-		if err = w.WriteOctetString(*ie.LateNonCriticalExtension, &aper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+		if err = w.WriteOctetString(*ie.LateNonCriticalExtension, nil, false); err != nil {
 			return utils.WrapError("Encode LateNonCriticalExtension", err)
 		}
 	}
@@ -36,13 +36,13 @@ func (ie *SIBpos_r16) Decode(r *aper.AperReader) error {
 		return err
 	}
 	var tmp_os_AssistanceDataSIB_Element_r16 []byte
-	if tmp_os_AssistanceDataSIB_Element_r16, err = r.ReadOctetString(&aper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+	if tmp_os_AssistanceDataSIB_Element_r16, err = r.ReadOctetString(nil, false); err != nil {
 		return utils.WrapError("ReadOctetString AssistanceDataSIB_Element_r16", err)
 	}
 	ie.AssistanceDataSIB_Element_r16 = tmp_os_AssistanceDataSIB_Element_r16
 	if LateNonCriticalExtensionPresent {
 		var tmp_os_LateNonCriticalExtension []byte
-		if tmp_os_LateNonCriticalExtension, err = r.ReadOctetString(&aper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+		if tmp_os_LateNonCriticalExtension, err = r.ReadOctetString(nil, false); err != nil {
 			return utils.WrapError("Decode LateNonCriticalExtension", err)
 		}
 		ie.LateNonCriticalExtension = &tmp_os_LateNonCriticalExtension

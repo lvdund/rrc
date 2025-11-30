@@ -26,7 +26,7 @@ func (ie *MasterKeyUpdate) Encode(w *aper.AperWriter) error {
 		return utils.WrapError("Encode NextHopChainingCount", err)
 	}
 	if ie.Nas_Container != nil {
-		if err = w.WriteOctetString(*ie.Nas_Container, &aper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+		if err = w.WriteOctetString(*ie.Nas_Container, nil, false); err != nil {
 			return utils.WrapError("Encode Nas_Container", err)
 		}
 	}
@@ -49,7 +49,7 @@ func (ie *MasterKeyUpdate) Decode(r *aper.AperReader) error {
 	}
 	if Nas_ContainerPresent {
 		var tmp_os_Nas_Container []byte
-		if tmp_os_Nas_Container, err = r.ReadOctetString(&aper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+		if tmp_os_Nas_Container, err = r.ReadOctetString(nil, false); err != nil {
 			return utils.WrapError("Decode Nas_Container", err)
 		}
 		ie.Nas_Container = &tmp_os_Nas_Container

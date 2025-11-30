@@ -22,22 +22,22 @@ func (ie *UuMessageTransferSidelink_r17_IEs) Encode(w *aper.AperWriter) error {
 		}
 	}
 	if ie.Sl_PagingDelivery_r17 != nil {
-		if err = w.WriteOctetString(*ie.Sl_PagingDelivery_r17, &aper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+		if err = w.WriteOctetString(*ie.Sl_PagingDelivery_r17, nil, false); err != nil {
 			return utils.WrapError("Encode Sl_PagingDelivery_r17", err)
 		}
 	}
 	if ie.Sl_SIB1_Delivery_r17 != nil {
-		if err = w.WriteOctetString(*ie.Sl_SIB1_Delivery_r17, &aper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+		if err = w.WriteOctetString(*ie.Sl_SIB1_Delivery_r17, nil, false); err != nil {
 			return utils.WrapError("Encode Sl_SIB1_Delivery_r17", err)
 		}
 	}
 	if ie.Sl_SystemInformationDelivery_r17 != nil {
-		if err = w.WriteOctetString(*ie.Sl_SystemInformationDelivery_r17, &aper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+		if err = w.WriteOctetString(*ie.Sl_SystemInformationDelivery_r17, nil, false); err != nil {
 			return utils.WrapError("Encode Sl_SystemInformationDelivery_r17", err)
 		}
 	}
 	if ie.LateNonCriticalExtension != nil {
-		if err = w.WriteOctetString(*ie.LateNonCriticalExtension, &aper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+		if err = w.WriteOctetString(*ie.LateNonCriticalExtension, nil, false); err != nil {
 			return utils.WrapError("Encode LateNonCriticalExtension", err)
 		}
 	}
@@ -64,28 +64,28 @@ func (ie *UuMessageTransferSidelink_r17_IEs) Decode(r *aper.AperReader) error {
 	}
 	if Sl_PagingDelivery_r17Present {
 		var tmp_os_Sl_PagingDelivery_r17 []byte
-		if tmp_os_Sl_PagingDelivery_r17, err = r.ReadOctetString(&aper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+		if tmp_os_Sl_PagingDelivery_r17, err = r.ReadOctetString(nil, false); err != nil {
 			return utils.WrapError("Decode Sl_PagingDelivery_r17", err)
 		}
 		ie.Sl_PagingDelivery_r17 = &tmp_os_Sl_PagingDelivery_r17
 	}
 	if Sl_SIB1_Delivery_r17Present {
 		var tmp_os_Sl_SIB1_Delivery_r17 []byte
-		if tmp_os_Sl_SIB1_Delivery_r17, err = r.ReadOctetString(&aper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+		if tmp_os_Sl_SIB1_Delivery_r17, err = r.ReadOctetString(nil, false); err != nil {
 			return utils.WrapError("Decode Sl_SIB1_Delivery_r17", err)
 		}
 		ie.Sl_SIB1_Delivery_r17 = &tmp_os_Sl_SIB1_Delivery_r17
 	}
 	if Sl_SystemInformationDelivery_r17Present {
 		var tmp_os_Sl_SystemInformationDelivery_r17 []byte
-		if tmp_os_Sl_SystemInformationDelivery_r17, err = r.ReadOctetString(&aper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+		if tmp_os_Sl_SystemInformationDelivery_r17, err = r.ReadOctetString(nil, false); err != nil {
 			return utils.WrapError("Decode Sl_SystemInformationDelivery_r17", err)
 		}
 		ie.Sl_SystemInformationDelivery_r17 = &tmp_os_Sl_SystemInformationDelivery_r17
 	}
 	if LateNonCriticalExtensionPresent {
 		var tmp_os_LateNonCriticalExtension []byte
-		if tmp_os_LateNonCriticalExtension, err = r.ReadOctetString(&aper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+		if tmp_os_LateNonCriticalExtension, err = r.ReadOctetString(nil, false); err != nil {
 			return utils.WrapError("Decode LateNonCriticalExtension", err)
 		}
 		ie.LateNonCriticalExtension = &tmp_os_LateNonCriticalExtension

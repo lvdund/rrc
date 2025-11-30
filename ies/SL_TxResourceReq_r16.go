@@ -62,7 +62,7 @@ func (ie *SL_TxResourceReq_r16) Encode(w *aper.AperWriter) error {
 		}
 	}
 	if ie.Sl_CapabilityInformationSidelink_r16 != nil {
-		if err = w.WriteOctetString(*ie.Sl_CapabilityInformationSidelink_r16, &aper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+		if err = w.WriteOctetString(*ie.Sl_CapabilityInformationSidelink_r16, nil, false); err != nil {
 			return utils.WrapError("Encode Sl_CapabilityInformationSidelink_r16", err)
 		}
 	}
@@ -144,7 +144,7 @@ func (ie *SL_TxResourceReq_r16) Decode(r *aper.AperReader) error {
 	}
 	if Sl_CapabilityInformationSidelink_r16Present {
 		var tmp_os_Sl_CapabilityInformationSidelink_r16 []byte
-		if tmp_os_Sl_CapabilityInformationSidelink_r16, err = r.ReadOctetString(&aper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+		if tmp_os_Sl_CapabilityInformationSidelink_r16, err = r.ReadOctetString(nil, false); err != nil {
 			return utils.WrapError("Decode Sl_CapabilityInformationSidelink_r16", err)
 		}
 		ie.Sl_CapabilityInformationSidelink_r16 = &tmp_os_Sl_CapabilityInformationSidelink_r16

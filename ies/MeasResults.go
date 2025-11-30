@@ -204,7 +204,7 @@ func (ie *MeasResults) Encode(w *aper.AperWriter) error {
 			}
 			// encode Sl_MeasResultServingRelay_r17 optional
 			if ie.Sl_MeasResultServingRelay_r17 != nil {
-				if err = extWriter.WriteOctetString(*ie.Sl_MeasResultServingRelay_r17, &aper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+				if err = extWriter.WriteOctetString(*ie.Sl_MeasResultServingRelay_r17, nil, false); err != nil {
 					return utils.WrapError("Encode Sl_MeasResultServingRelay_r17", err)
 				}
 			}
@@ -216,7 +216,7 @@ func (ie *MeasResults) Encode(w *aper.AperWriter) error {
 			}
 			// encode CoarseLocationInfo_r17 optional
 			if ie.CoarseLocationInfo_r17 != nil {
-				if err = extWriter.WriteOctetString(*ie.CoarseLocationInfo_r17, &aper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+				if err = extWriter.WriteOctetString(*ie.CoarseLocationInfo_r17, nil, false); err != nil {
 					return utils.WrapError("Encode CoarseLocationInfo_r17", err)
 				}
 			}
@@ -438,7 +438,7 @@ func (ie *MeasResults) Decode(r *aper.AperReader) error {
 			// decode Sl_MeasResultServingRelay_r17 optional
 			if Sl_MeasResultServingRelay_r17Present {
 				var tmp_os_Sl_MeasResultServingRelay_r17 []byte
-				if tmp_os_Sl_MeasResultServingRelay_r17, err = extReader.ReadOctetString(&aper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+				if tmp_os_Sl_MeasResultServingRelay_r17, err = extReader.ReadOctetString(nil, false); err != nil {
 					return utils.WrapError("Decode Sl_MeasResultServingRelay_r17", err)
 				}
 				ie.Sl_MeasResultServingRelay_r17 = &tmp_os_Sl_MeasResultServingRelay_r17
@@ -453,7 +453,7 @@ func (ie *MeasResults) Decode(r *aper.AperReader) error {
 			// decode CoarseLocationInfo_r17 optional
 			if CoarseLocationInfo_r17Present {
 				var tmp_os_CoarseLocationInfo_r17 []byte
-				if tmp_os_CoarseLocationInfo_r17, err = extReader.ReadOctetString(&aper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+				if tmp_os_CoarseLocationInfo_r17, err = extReader.ReadOctetString(nil, false); err != nil {
 					return utils.WrapError("Decode CoarseLocationInfo_r17", err)
 				}
 				ie.CoarseLocationInfo_r17 = &tmp_os_CoarseLocationInfo_r17

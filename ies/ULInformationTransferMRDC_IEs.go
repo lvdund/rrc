@@ -21,17 +21,17 @@ func (ie *ULInformationTransferMRDC_IEs) Encode(w *aper.AperWriter) error {
 		}
 	}
 	if ie.Ul_DCCH_MessageNR != nil {
-		if err = w.WriteOctetString(*ie.Ul_DCCH_MessageNR, &aper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+		if err = w.WriteOctetString(*ie.Ul_DCCH_MessageNR, nil, false); err != nil {
 			return utils.WrapError("Encode Ul_DCCH_MessageNR", err)
 		}
 	}
 	if ie.Ul_DCCH_MessageEUTRA != nil {
-		if err = w.WriteOctetString(*ie.Ul_DCCH_MessageEUTRA, &aper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+		if err = w.WriteOctetString(*ie.Ul_DCCH_MessageEUTRA, nil, false); err != nil {
 			return utils.WrapError("Encode Ul_DCCH_MessageEUTRA", err)
 		}
 	}
 	if ie.LateNonCriticalExtension != nil {
-		if err = w.WriteOctetString(*ie.LateNonCriticalExtension, &aper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+		if err = w.WriteOctetString(*ie.LateNonCriticalExtension, nil, false); err != nil {
 			return utils.WrapError("Encode LateNonCriticalExtension", err)
 		}
 	}
@@ -54,21 +54,21 @@ func (ie *ULInformationTransferMRDC_IEs) Decode(r *aper.AperReader) error {
 	}
 	if Ul_DCCH_MessageNRPresent {
 		var tmp_os_Ul_DCCH_MessageNR []byte
-		if tmp_os_Ul_DCCH_MessageNR, err = r.ReadOctetString(&aper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+		if tmp_os_Ul_DCCH_MessageNR, err = r.ReadOctetString(nil, false); err != nil {
 			return utils.WrapError("Decode Ul_DCCH_MessageNR", err)
 		}
 		ie.Ul_DCCH_MessageNR = &tmp_os_Ul_DCCH_MessageNR
 	}
 	if Ul_DCCH_MessageEUTRAPresent {
 		var tmp_os_Ul_DCCH_MessageEUTRA []byte
-		if tmp_os_Ul_DCCH_MessageEUTRA, err = r.ReadOctetString(&aper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+		if tmp_os_Ul_DCCH_MessageEUTRA, err = r.ReadOctetString(nil, false); err != nil {
 			return utils.WrapError("Decode Ul_DCCH_MessageEUTRA", err)
 		}
 		ie.Ul_DCCH_MessageEUTRA = &tmp_os_Ul_DCCH_MessageEUTRA
 	}
 	if LateNonCriticalExtensionPresent {
 		var tmp_os_LateNonCriticalExtension []byte
-		if tmp_os_LateNonCriticalExtension, err = r.ReadOctetString(&aper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+		if tmp_os_LateNonCriticalExtension, err = r.ReadOctetString(nil, false); err != nil {
 			return utils.WrapError("Decode LateNonCriticalExtension", err)
 		}
 		ie.LateNonCriticalExtension = &tmp_os_LateNonCriticalExtension

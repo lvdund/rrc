@@ -25,7 +25,7 @@ func (ie *UE_NR_Capability_v1560) Encode(w *aper.AperWriter) error {
 		}
 	}
 	if ie.ReceivedFilters != nil {
-		if err = w.WriteOctetString(*ie.ReceivedFilters, &aper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+		if err = w.WriteOctetString(*ie.ReceivedFilters, nil, false); err != nil {
 			return utils.WrapError("Encode ReceivedFilters", err)
 		}
 	}
@@ -59,7 +59,7 @@ func (ie *UE_NR_Capability_v1560) Decode(r *aper.AperReader) error {
 	}
 	if ReceivedFiltersPresent {
 		var tmp_os_ReceivedFilters []byte
-		if tmp_os_ReceivedFilters, err = r.ReadOctetString(&aper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+		if tmp_os_ReceivedFilters, err = r.ReadOctetString(nil, false); err != nil {
 			return utils.WrapError("Decode ReceivedFilters", err)
 		}
 		ie.ReceivedFilters = &tmp_os_ReceivedFilters

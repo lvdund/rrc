@@ -22,7 +22,7 @@ func (ie *UE_CapabilityRAT_Request) Encode(w *aper.AperWriter) error {
 		return utils.WrapError("Encode Rat_Type", err)
 	}
 	if ie.CapabilityRequestFilter != nil {
-		if err = w.WriteOctetString(*ie.CapabilityRequestFilter, &aper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+		if err = w.WriteOctetString(*ie.CapabilityRequestFilter, nil, false); err != nil {
 			return utils.WrapError("Encode CapabilityRequestFilter", err)
 		}
 	}
@@ -40,7 +40,7 @@ func (ie *UE_CapabilityRAT_Request) Decode(r *aper.AperReader) error {
 	}
 	if CapabilityRequestFilterPresent {
 		var tmp_os_CapabilityRequestFilter []byte
-		if tmp_os_CapabilityRequestFilter, err = r.ReadOctetString(&aper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+		if tmp_os_CapabilityRequestFilter, err = r.ReadOctetString(nil, false); err != nil {
 			return utils.WrapError("Decode CapabilityRequestFilter", err)
 		}
 		ie.CapabilityRequestFilter = &tmp_os_CapabilityRequestFilter

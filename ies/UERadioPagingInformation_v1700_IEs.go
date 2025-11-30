@@ -22,7 +22,7 @@ func (ie *UERadioPagingInformation_v1700_IEs) Encode(w *aper.AperWriter) error {
 		}
 	}
 	if ie.Ue_RadioPagingInfo_r17 != nil {
-		if err = w.WriteOctetString(*ie.Ue_RadioPagingInfo_r17, &aper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+		if err = w.WriteOctetString(*ie.Ue_RadioPagingInfo_r17, nil, false); err != nil {
 			return utils.WrapError("Encode Ue_RadioPagingInfo_r17", err)
 		}
 	}
@@ -68,7 +68,7 @@ func (ie *UERadioPagingInformation_v1700_IEs) Decode(r *aper.AperReader) error {
 	}
 	if Ue_RadioPagingInfo_r17Present {
 		var tmp_os_Ue_RadioPagingInfo_r17 []byte
-		if tmp_os_Ue_RadioPagingInfo_r17, err = r.ReadOctetString(&aper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+		if tmp_os_Ue_RadioPagingInfo_r17, err = r.ReadOctetString(nil, false); err != nil {
 			return utils.WrapError("Decode Ue_RadioPagingInfo_r17", err)
 		}
 		ie.Ue_RadioPagingInfo_r17 = &tmp_os_Ue_RadioPagingInfo_r17

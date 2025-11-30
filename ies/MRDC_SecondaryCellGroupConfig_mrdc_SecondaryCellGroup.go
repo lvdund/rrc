@@ -26,11 +26,11 @@ func (ie *MRDC_SecondaryCellGroupConfig_mrdc_SecondaryCellGroup) Encode(w *aper.
 	}
 	switch ie.Choice {
 	case MRDC_SecondaryCellGroupConfig_mrdc_SecondaryCellGroup_Choice_Nr_SCG:
-		if err = w.WriteOctetString(ie.Nr_SCG, &aper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+		if err = w.WriteOctetString(ie.Nr_SCG, nil, false); err != nil {
 			err = utils.WrapError("Encode Nr_SCG", err)
 		}
 	case MRDC_SecondaryCellGroupConfig_mrdc_SecondaryCellGroup_Choice_Eutra_SCG:
-		if err = w.WriteOctetString(ie.Eutra_SCG, &aper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+		if err = w.WriteOctetString(ie.Eutra_SCG, nil, false); err != nil {
 			err = utils.WrapError("Encode Eutra_SCG", err)
 		}
 	default:
@@ -47,13 +47,13 @@ func (ie *MRDC_SecondaryCellGroupConfig_mrdc_SecondaryCellGroup) Decode(r *aper.
 	switch ie.Choice {
 	case MRDC_SecondaryCellGroupConfig_mrdc_SecondaryCellGroup_Choice_Nr_SCG:
 		var tmp_os_Nr_SCG []byte
-		if tmp_os_Nr_SCG, err = r.ReadOctetString(&aper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+		if tmp_os_Nr_SCG, err = r.ReadOctetString(nil, false); err != nil {
 			return utils.WrapError("Decode Nr_SCG", err)
 		}
 		ie.Nr_SCG = tmp_os_Nr_SCG
 	case MRDC_SecondaryCellGroupConfig_mrdc_SecondaryCellGroup_Choice_Eutra_SCG:
 		var tmp_os_Eutra_SCG []byte
-		if tmp_os_Eutra_SCG, err = r.ReadOctetString(&aper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+		if tmp_os_Eutra_SCG, err = r.ReadOctetString(nil, false); err != nil {
 			return utils.WrapError("Decode Eutra_SCG", err)
 		}
 		ie.Eutra_SCG = tmp_os_Eutra_SCG

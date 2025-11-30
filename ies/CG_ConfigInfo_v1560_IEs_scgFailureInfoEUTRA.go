@@ -15,7 +15,7 @@ func (ie *CG_ConfigInfo_v1560_IEs_scgFailureInfoEUTRA) Encode(w *aper.AperWriter
 	if err = ie.FailureTypeEUTRA.Encode(w); err != nil {
 		return utils.WrapError("Encode FailureTypeEUTRA", err)
 	}
-	if err = w.WriteOctetString(ie.MeasResultSCG_EUTRA, &aper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+	if err = w.WriteOctetString(ie.MeasResultSCG_EUTRA, nil, false); err != nil {
 		return utils.WrapError("WriteOctetString MeasResultSCG_EUTRA", err)
 	}
 	return nil
@@ -27,7 +27,7 @@ func (ie *CG_ConfigInfo_v1560_IEs_scgFailureInfoEUTRA) Decode(r *aper.AperReader
 		return utils.WrapError("Decode FailureTypeEUTRA", err)
 	}
 	var tmp_os_MeasResultSCG_EUTRA []byte
-	if tmp_os_MeasResultSCG_EUTRA, err = r.ReadOctetString(&aper.Constraint{Lb: 0, Ub: 0}, false); err != nil {
+	if tmp_os_MeasResultSCG_EUTRA, err = r.ReadOctetString(nil, false); err != nil {
 		return utils.WrapError("ReadOctetString MeasResultSCG_EUTRA", err)
 	}
 	ie.MeasResultSCG_EUTRA = tmp_os_MeasResultSCG_EUTRA
