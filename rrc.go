@@ -114,17 +114,41 @@ func DecodeAny(buf []byte) (*DecodedMessage, error) {
 		reader := aper.NewReader(bytes.NewReader(buf))
 
 		if err := msg.Decode(reader); err == nil {
-			// Check if we consumed all bytes (successful decode)
-			// Note: APER reader might not have a way to check remaining bytes,
-			// so we rely on successful decode without error
-			return &DecodedMessage{
-				Type:    ct.Type,
-				Message: msg,
-			}, nil
+			// Verify by re-encoding and comparing with original bytes
+			// This ensures we decoded the correct message type
+			reencoded, err := Encode(msg)
+			if err == nil && bytes.Equal(reencoded, buf) {
+				return &DecodedMessage{
+					Type:    ct.Type,
+					Message: msg,
+				}, nil
+			}
+			// If re-encoding doesn't match, continue trying other types
+			if err != nil {
+				lastErr = err
+			}
 		} else {
 			lastErr = err
 		}
 	}
+
+	// var lastErr error
+	// for _, ct := range containerTypes {
+	// 	msg := ct.Factory()
+	// 	reader := aper.NewReader(bytes.NewReader(buf))
+
+	// 	if err := msg.Decode(reader); err == nil {
+	// 		// Check if we consumed all bytes (successful decode)
+	// 		// Note: APER reader might not have a way to check remaining bytes,
+	// 		// so we rely on successful decode without error
+	// 		return &DecodedMessage{
+	// 			Type:    ct.Type,
+	// 			Message: msg,
+	// 		}, nil
+	// 	} else {
+	// 		lastErr = err
+	// 	}
+	// }
 
 	return nil, fmt.Errorf("failed to decode as any known container type, last error: %w", lastErr)
 }
