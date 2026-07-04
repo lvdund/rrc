@@ -1,5 +1,9 @@
 module github.com/lvdund/rrc
 
-go 1.24.4
+go 1.25.5
 
-require github.com/lvdund/asn1go v1.0.6
+// require github.com/lvdund/asn1go v0.0.1
+
+require github.com/lvdund/asn1go v0.0.0
+
+replace github.com/lvdund/asn1go => ./asn1go

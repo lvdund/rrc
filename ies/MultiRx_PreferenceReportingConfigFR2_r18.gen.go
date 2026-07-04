@@ -1,0 +1,75 @@
+// Code generated from docs/NR-RRC-Definitions.asn by codegen.
+// DO NOT EDIT.
+
+package ies
+
+import (
+	"github.com/lvdund/asn1go/per"
+)
+
+// Source: MultiRx-PreferenceReportingConfigFR2-r18 (line 26381).
+
+var multiRxPreferenceReportingConfigFR2R18Constraints = per.SequenceConstraints{
+	Extensible: false,
+	RootComponents: []per.ComponentInfo{
+		{Name: "multiRx-PreferenceReportingConfigFR2ProhibitTimer-r18"},
+	},
+}
+
+const (
+	MultiRx_PreferenceReportingConfigFR2_r18_MultiRx_PreferenceReportingConfigFR2ProhibitTimer_r18_S0     = 0
+	MultiRx_PreferenceReportingConfigFR2_r18_MultiRx_PreferenceReportingConfigFR2ProhibitTimer_r18_S0dot5 = 1
+	MultiRx_PreferenceReportingConfigFR2_r18_MultiRx_PreferenceReportingConfigFR2ProhibitTimer_r18_S1     = 2
+	MultiRx_PreferenceReportingConfigFR2_r18_MultiRx_PreferenceReportingConfigFR2ProhibitTimer_r18_S2     = 3
+	MultiRx_PreferenceReportingConfigFR2_r18_MultiRx_PreferenceReportingConfigFR2ProhibitTimer_r18_S3     = 4
+	MultiRx_PreferenceReportingConfigFR2_r18_MultiRx_PreferenceReportingConfigFR2ProhibitTimer_r18_S4     = 5
+	MultiRx_PreferenceReportingConfigFR2_r18_MultiRx_PreferenceReportingConfigFR2ProhibitTimer_r18_S5     = 6
+	MultiRx_PreferenceReportingConfigFR2_r18_MultiRx_PreferenceReportingConfigFR2ProhibitTimer_r18_S6     = 7
+	MultiRx_PreferenceReportingConfigFR2_r18_MultiRx_PreferenceReportingConfigFR2ProhibitTimer_r18_S7     = 8
+	MultiRx_PreferenceReportingConfigFR2_r18_MultiRx_PreferenceReportingConfigFR2ProhibitTimer_r18_S8     = 9
+	MultiRx_PreferenceReportingConfigFR2_r18_MultiRx_PreferenceReportingConfigFR2ProhibitTimer_r18_S9     = 10
+	MultiRx_PreferenceReportingConfigFR2_r18_MultiRx_PreferenceReportingConfigFR2ProhibitTimer_r18_S10    = 11
+	MultiRx_PreferenceReportingConfigFR2_r18_MultiRx_PreferenceReportingConfigFR2ProhibitTimer_r18_S20    = 12
+	MultiRx_PreferenceReportingConfigFR2_r18_MultiRx_PreferenceReportingConfigFR2ProhibitTimer_r18_S30    = 13
+	MultiRx_PreferenceReportingConfigFR2_r18_MultiRx_PreferenceReportingConfigFR2ProhibitTimer_r18_Spare2 = 14
+	MultiRx_PreferenceReportingConfigFR2_r18_MultiRx_PreferenceReportingConfigFR2ProhibitTimer_r18_Spare1 = 15
+)
+
+var multiRxPreferenceReportingConfigFR2R18MultiRxPreferenceReportingConfigFR2ProhibitTimerR18Constraints = per.EnumeratedConstraints{
+	Extensible: false,
+	RootValues: []int64{MultiRx_PreferenceReportingConfigFR2_r18_MultiRx_PreferenceReportingConfigFR2ProhibitTimer_r18_S0, MultiRx_PreferenceReportingConfigFR2_r18_MultiRx_PreferenceReportingConfigFR2ProhibitTimer_r18_S0dot5, MultiRx_PreferenceReportingConfigFR2_r18_MultiRx_PreferenceReportingConfigFR2ProhibitTimer_r18_S1, MultiRx_PreferenceReportingConfigFR2_r18_MultiRx_PreferenceReportingConfigFR2ProhibitTimer_r18_S2, MultiRx_PreferenceReportingConfigFR2_r18_MultiRx_PreferenceReportingConfigFR2ProhibitTimer_r18_S3, MultiRx_PreferenceReportingConfigFR2_r18_MultiRx_PreferenceReportingConfigFR2ProhibitTimer_r18_S4, MultiRx_PreferenceReportingConfigFR2_r18_MultiRx_PreferenceReportingConfigFR2ProhibitTimer_r18_S5, MultiRx_PreferenceReportingConfigFR2_r18_MultiRx_PreferenceReportingConfigFR2ProhibitTimer_r18_S6, MultiRx_PreferenceReportingConfigFR2_r18_MultiRx_PreferenceReportingConfigFR2ProhibitTimer_r18_S7, MultiRx_PreferenceReportingConfigFR2_r18_MultiRx_PreferenceReportingConfigFR2ProhibitTimer_r18_S8, MultiRx_PreferenceReportingConfigFR2_r18_MultiRx_PreferenceReportingConfigFR2ProhibitTimer_r18_S9, MultiRx_PreferenceReportingConfigFR2_r18_MultiRx_PreferenceReportingConfigFR2ProhibitTimer_r18_S10, MultiRx_PreferenceReportingConfigFR2_r18_MultiRx_PreferenceReportingConfigFR2ProhibitTimer_r18_S20, MultiRx_PreferenceReportingConfigFR2_r18_MultiRx_PreferenceReportingConfigFR2ProhibitTimer_r18_S30, MultiRx_PreferenceReportingConfigFR2_r18_MultiRx_PreferenceReportingConfigFR2ProhibitTimer_r18_Spare2, MultiRx_PreferenceReportingConfigFR2_r18_MultiRx_PreferenceReportingConfigFR2ProhibitTimer_r18_Spare1},
+}
+
+type MultiRx_PreferenceReportingConfigFR2_r18 struct {
+	MultiRx_PreferenceReportingConfigFR2ProhibitTimer_r18 int64
+}
+
+func (ie *MultiRx_PreferenceReportingConfigFR2_r18) Encode(e *per.Encoder) error {
+	seq := e.NewSequenceEncoder(multiRxPreferenceReportingConfigFR2R18Constraints)
+	_ = seq
+
+	// 1. multiRx-PreferenceReportingConfigFR2ProhibitTimer-r18: enumerated
+	{
+		if err := e.EncodeEnumerated(ie.MultiRx_PreferenceReportingConfigFR2ProhibitTimer_r18, multiRxPreferenceReportingConfigFR2R18MultiRxPreferenceReportingConfigFR2ProhibitTimerR18Constraints); err != nil {
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (ie *MultiRx_PreferenceReportingConfigFR2_r18) Decode(d *per.Decoder) error {
+	seq := d.NewSequenceDecoder(multiRxPreferenceReportingConfigFR2R18Constraints)
+	_ = seq
+
+	// 1. multiRx-PreferenceReportingConfigFR2ProhibitTimer-r18: enumerated
+	{
+		v0, err := d.DecodeEnumerated(multiRxPreferenceReportingConfigFR2R18MultiRxPreferenceReportingConfigFR2ProhibitTimerR18Constraints)
+		if err != nil {
+			return err
+		}
+		ie.MultiRx_PreferenceReportingConfigFR2ProhibitTimer_r18 = v0
+	}
+
+	return nil
+}

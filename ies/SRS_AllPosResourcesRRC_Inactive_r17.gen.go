@@ -1,0 +1,240 @@
+// Code generated from docs/NR-RRC-Definitions.asn by codegen.
+// DO NOT EDIT.
+
+package ies
+
+import (
+	"github.com/lvdund/asn1go/per"
+)
+
+// Source: SRS-AllPosResourcesRRC-Inactive-r17 (line 25368).
+
+var sRSAllPosResourcesRRCInactiveR17Constraints = per.SequenceConstraints{
+	Extensible: false,
+	RootComponents: []per.ComponentInfo{
+		{Name: "srs-PosResourcesRRC-Inactive-r17"},
+	},
+}
+
+const (
+	SRS_AllPosResourcesRRC_Inactive_r17_Srs_PosResourcesRRC_Inactive_r17_MaxNumberSRS_PosResourceSetPerBWP_r17_N1  = 0
+	SRS_AllPosResourcesRRC_Inactive_r17_Srs_PosResourcesRRC_Inactive_r17_MaxNumberSRS_PosResourceSetPerBWP_r17_N2  = 1
+	SRS_AllPosResourcesRRC_Inactive_r17_Srs_PosResourcesRRC_Inactive_r17_MaxNumberSRS_PosResourceSetPerBWP_r17_N4  = 2
+	SRS_AllPosResourcesRRC_Inactive_r17_Srs_PosResourcesRRC_Inactive_r17_MaxNumberSRS_PosResourceSetPerBWP_r17_N8  = 3
+	SRS_AllPosResourcesRRC_Inactive_r17_Srs_PosResourcesRRC_Inactive_r17_MaxNumberSRS_PosResourceSetPerBWP_r17_N12 = 4
+	SRS_AllPosResourcesRRC_Inactive_r17_Srs_PosResourcesRRC_Inactive_r17_MaxNumberSRS_PosResourceSetPerBWP_r17_N16 = 5
+)
+
+var sRSAllPosResourcesRRCInactiveR17SrsPosResourcesRRCInactiveR17MaxNumberSRSPosResourceSetPerBWPR17Constraints = per.EnumeratedConstraints{
+	Extensible: false,
+	RootValues: []int64{SRS_AllPosResourcesRRC_Inactive_r17_Srs_PosResourcesRRC_Inactive_r17_MaxNumberSRS_PosResourceSetPerBWP_r17_N1, SRS_AllPosResourcesRRC_Inactive_r17_Srs_PosResourcesRRC_Inactive_r17_MaxNumberSRS_PosResourceSetPerBWP_r17_N2, SRS_AllPosResourcesRRC_Inactive_r17_Srs_PosResourcesRRC_Inactive_r17_MaxNumberSRS_PosResourceSetPerBWP_r17_N4, SRS_AllPosResourcesRRC_Inactive_r17_Srs_PosResourcesRRC_Inactive_r17_MaxNumberSRS_PosResourceSetPerBWP_r17_N8, SRS_AllPosResourcesRRC_Inactive_r17_Srs_PosResourcesRRC_Inactive_r17_MaxNumberSRS_PosResourceSetPerBWP_r17_N12, SRS_AllPosResourcesRRC_Inactive_r17_Srs_PosResourcesRRC_Inactive_r17_MaxNumberSRS_PosResourceSetPerBWP_r17_N16},
+}
+
+const (
+	SRS_AllPosResourcesRRC_Inactive_r17_Srs_PosResourcesRRC_Inactive_r17_MaxNumberSRS_PosResourcesPerBWP_r17_N1  = 0
+	SRS_AllPosResourcesRRC_Inactive_r17_Srs_PosResourcesRRC_Inactive_r17_MaxNumberSRS_PosResourcesPerBWP_r17_N2  = 1
+	SRS_AllPosResourcesRRC_Inactive_r17_Srs_PosResourcesRRC_Inactive_r17_MaxNumberSRS_PosResourcesPerBWP_r17_N4  = 2
+	SRS_AllPosResourcesRRC_Inactive_r17_Srs_PosResourcesRRC_Inactive_r17_MaxNumberSRS_PosResourcesPerBWP_r17_N8  = 3
+	SRS_AllPosResourcesRRC_Inactive_r17_Srs_PosResourcesRRC_Inactive_r17_MaxNumberSRS_PosResourcesPerBWP_r17_N16 = 4
+	SRS_AllPosResourcesRRC_Inactive_r17_Srs_PosResourcesRRC_Inactive_r17_MaxNumberSRS_PosResourcesPerBWP_r17_N32 = 5
+	SRS_AllPosResourcesRRC_Inactive_r17_Srs_PosResourcesRRC_Inactive_r17_MaxNumberSRS_PosResourcesPerBWP_r17_N64 = 6
+)
+
+var sRSAllPosResourcesRRCInactiveR17SrsPosResourcesRRCInactiveR17MaxNumberSRSPosResourcesPerBWPR17Constraints = per.EnumeratedConstraints{
+	Extensible: false,
+	RootValues: []int64{SRS_AllPosResourcesRRC_Inactive_r17_Srs_PosResourcesRRC_Inactive_r17_MaxNumberSRS_PosResourcesPerBWP_r17_N1, SRS_AllPosResourcesRRC_Inactive_r17_Srs_PosResourcesRRC_Inactive_r17_MaxNumberSRS_PosResourcesPerBWP_r17_N2, SRS_AllPosResourcesRRC_Inactive_r17_Srs_PosResourcesRRC_Inactive_r17_MaxNumberSRS_PosResourcesPerBWP_r17_N4, SRS_AllPosResourcesRRC_Inactive_r17_Srs_PosResourcesRRC_Inactive_r17_MaxNumberSRS_PosResourcesPerBWP_r17_N8, SRS_AllPosResourcesRRC_Inactive_r17_Srs_PosResourcesRRC_Inactive_r17_MaxNumberSRS_PosResourcesPerBWP_r17_N16, SRS_AllPosResourcesRRC_Inactive_r17_Srs_PosResourcesRRC_Inactive_r17_MaxNumberSRS_PosResourcesPerBWP_r17_N32, SRS_AllPosResourcesRRC_Inactive_r17_Srs_PosResourcesRRC_Inactive_r17_MaxNumberSRS_PosResourcesPerBWP_r17_N64},
+}
+
+const (
+	SRS_AllPosResourcesRRC_Inactive_r17_Srs_PosResourcesRRC_Inactive_r17_MaxNumberSRS_ResourcesPerBWP_PerSlot_r17_N1  = 0
+	SRS_AllPosResourcesRRC_Inactive_r17_Srs_PosResourcesRRC_Inactive_r17_MaxNumberSRS_ResourcesPerBWP_PerSlot_r17_N2  = 1
+	SRS_AllPosResourcesRRC_Inactive_r17_Srs_PosResourcesRRC_Inactive_r17_MaxNumberSRS_ResourcesPerBWP_PerSlot_r17_N3  = 2
+	SRS_AllPosResourcesRRC_Inactive_r17_Srs_PosResourcesRRC_Inactive_r17_MaxNumberSRS_ResourcesPerBWP_PerSlot_r17_N4  = 3
+	SRS_AllPosResourcesRRC_Inactive_r17_Srs_PosResourcesRRC_Inactive_r17_MaxNumberSRS_ResourcesPerBWP_PerSlot_r17_N5  = 4
+	SRS_AllPosResourcesRRC_Inactive_r17_Srs_PosResourcesRRC_Inactive_r17_MaxNumberSRS_ResourcesPerBWP_PerSlot_r17_N6  = 5
+	SRS_AllPosResourcesRRC_Inactive_r17_Srs_PosResourcesRRC_Inactive_r17_MaxNumberSRS_ResourcesPerBWP_PerSlot_r17_N8  = 6
+	SRS_AllPosResourcesRRC_Inactive_r17_Srs_PosResourcesRRC_Inactive_r17_MaxNumberSRS_ResourcesPerBWP_PerSlot_r17_N10 = 7
+	SRS_AllPosResourcesRRC_Inactive_r17_Srs_PosResourcesRRC_Inactive_r17_MaxNumberSRS_ResourcesPerBWP_PerSlot_r17_N12 = 8
+	SRS_AllPosResourcesRRC_Inactive_r17_Srs_PosResourcesRRC_Inactive_r17_MaxNumberSRS_ResourcesPerBWP_PerSlot_r17_N14 = 9
+)
+
+var sRSAllPosResourcesRRCInactiveR17SrsPosResourcesRRCInactiveR17MaxNumberSRSResourcesPerBWPPerSlotR17Constraints = per.EnumeratedConstraints{
+	Extensible: false,
+	RootValues: []int64{SRS_AllPosResourcesRRC_Inactive_r17_Srs_PosResourcesRRC_Inactive_r17_MaxNumberSRS_ResourcesPerBWP_PerSlot_r17_N1, SRS_AllPosResourcesRRC_Inactive_r17_Srs_PosResourcesRRC_Inactive_r17_MaxNumberSRS_ResourcesPerBWP_PerSlot_r17_N2, SRS_AllPosResourcesRRC_Inactive_r17_Srs_PosResourcesRRC_Inactive_r17_MaxNumberSRS_ResourcesPerBWP_PerSlot_r17_N3, SRS_AllPosResourcesRRC_Inactive_r17_Srs_PosResourcesRRC_Inactive_r17_MaxNumberSRS_ResourcesPerBWP_PerSlot_r17_N4, SRS_AllPosResourcesRRC_Inactive_r17_Srs_PosResourcesRRC_Inactive_r17_MaxNumberSRS_ResourcesPerBWP_PerSlot_r17_N5, SRS_AllPosResourcesRRC_Inactive_r17_Srs_PosResourcesRRC_Inactive_r17_MaxNumberSRS_ResourcesPerBWP_PerSlot_r17_N6, SRS_AllPosResourcesRRC_Inactive_r17_Srs_PosResourcesRRC_Inactive_r17_MaxNumberSRS_ResourcesPerBWP_PerSlot_r17_N8, SRS_AllPosResourcesRRC_Inactive_r17_Srs_PosResourcesRRC_Inactive_r17_MaxNumberSRS_ResourcesPerBWP_PerSlot_r17_N10, SRS_AllPosResourcesRRC_Inactive_r17_Srs_PosResourcesRRC_Inactive_r17_MaxNumberSRS_ResourcesPerBWP_PerSlot_r17_N12, SRS_AllPosResourcesRRC_Inactive_r17_Srs_PosResourcesRRC_Inactive_r17_MaxNumberSRS_ResourcesPerBWP_PerSlot_r17_N14},
+}
+
+const (
+	SRS_AllPosResourcesRRC_Inactive_r17_Srs_PosResourcesRRC_Inactive_r17_MaxNumberPeriodicSRS_PosResourcesPerBWP_r17_N1  = 0
+	SRS_AllPosResourcesRRC_Inactive_r17_Srs_PosResourcesRRC_Inactive_r17_MaxNumberPeriodicSRS_PosResourcesPerBWP_r17_N2  = 1
+	SRS_AllPosResourcesRRC_Inactive_r17_Srs_PosResourcesRRC_Inactive_r17_MaxNumberPeriodicSRS_PosResourcesPerBWP_r17_N4  = 2
+	SRS_AllPosResourcesRRC_Inactive_r17_Srs_PosResourcesRRC_Inactive_r17_MaxNumberPeriodicSRS_PosResourcesPerBWP_r17_N8  = 3
+	SRS_AllPosResourcesRRC_Inactive_r17_Srs_PosResourcesRRC_Inactive_r17_MaxNumberPeriodicSRS_PosResourcesPerBWP_r17_N16 = 4
+	SRS_AllPosResourcesRRC_Inactive_r17_Srs_PosResourcesRRC_Inactive_r17_MaxNumberPeriodicSRS_PosResourcesPerBWP_r17_N32 = 5
+	SRS_AllPosResourcesRRC_Inactive_r17_Srs_PosResourcesRRC_Inactive_r17_MaxNumberPeriodicSRS_PosResourcesPerBWP_r17_N64 = 6
+)
+
+var sRSAllPosResourcesRRCInactiveR17SrsPosResourcesRRCInactiveR17MaxNumberPeriodicSRSPosResourcesPerBWPR17Constraints = per.EnumeratedConstraints{
+	Extensible: false,
+	RootValues: []int64{SRS_AllPosResourcesRRC_Inactive_r17_Srs_PosResourcesRRC_Inactive_r17_MaxNumberPeriodicSRS_PosResourcesPerBWP_r17_N1, SRS_AllPosResourcesRRC_Inactive_r17_Srs_PosResourcesRRC_Inactive_r17_MaxNumberPeriodicSRS_PosResourcesPerBWP_r17_N2, SRS_AllPosResourcesRRC_Inactive_r17_Srs_PosResourcesRRC_Inactive_r17_MaxNumberPeriodicSRS_PosResourcesPerBWP_r17_N4, SRS_AllPosResourcesRRC_Inactive_r17_Srs_PosResourcesRRC_Inactive_r17_MaxNumberPeriodicSRS_PosResourcesPerBWP_r17_N8, SRS_AllPosResourcesRRC_Inactive_r17_Srs_PosResourcesRRC_Inactive_r17_MaxNumberPeriodicSRS_PosResourcesPerBWP_r17_N16, SRS_AllPosResourcesRRC_Inactive_r17_Srs_PosResourcesRRC_Inactive_r17_MaxNumberPeriodicSRS_PosResourcesPerBWP_r17_N32, SRS_AllPosResourcesRRC_Inactive_r17_Srs_PosResourcesRRC_Inactive_r17_MaxNumberPeriodicSRS_PosResourcesPerBWP_r17_N64},
+}
+
+const (
+	SRS_AllPosResourcesRRC_Inactive_r17_Srs_PosResourcesRRC_Inactive_r17_MaxNumberPeriodicSRS_PosResourcesPerBWP_PerSlot_r17_N1  = 0
+	SRS_AllPosResourcesRRC_Inactive_r17_Srs_PosResourcesRRC_Inactive_r17_MaxNumberPeriodicSRS_PosResourcesPerBWP_PerSlot_r17_N2  = 1
+	SRS_AllPosResourcesRRC_Inactive_r17_Srs_PosResourcesRRC_Inactive_r17_MaxNumberPeriodicSRS_PosResourcesPerBWP_PerSlot_r17_N3  = 2
+	SRS_AllPosResourcesRRC_Inactive_r17_Srs_PosResourcesRRC_Inactive_r17_MaxNumberPeriodicSRS_PosResourcesPerBWP_PerSlot_r17_N4  = 3
+	SRS_AllPosResourcesRRC_Inactive_r17_Srs_PosResourcesRRC_Inactive_r17_MaxNumberPeriodicSRS_PosResourcesPerBWP_PerSlot_r17_N5  = 4
+	SRS_AllPosResourcesRRC_Inactive_r17_Srs_PosResourcesRRC_Inactive_r17_MaxNumberPeriodicSRS_PosResourcesPerBWP_PerSlot_r17_N6  = 5
+	SRS_AllPosResourcesRRC_Inactive_r17_Srs_PosResourcesRRC_Inactive_r17_MaxNumberPeriodicSRS_PosResourcesPerBWP_PerSlot_r17_N8  = 6
+	SRS_AllPosResourcesRRC_Inactive_r17_Srs_PosResourcesRRC_Inactive_r17_MaxNumberPeriodicSRS_PosResourcesPerBWP_PerSlot_r17_N10 = 7
+	SRS_AllPosResourcesRRC_Inactive_r17_Srs_PosResourcesRRC_Inactive_r17_MaxNumberPeriodicSRS_PosResourcesPerBWP_PerSlot_r17_N12 = 8
+	SRS_AllPosResourcesRRC_Inactive_r17_Srs_PosResourcesRRC_Inactive_r17_MaxNumberPeriodicSRS_PosResourcesPerBWP_PerSlot_r17_N14 = 9
+)
+
+var sRSAllPosResourcesRRCInactiveR17SrsPosResourcesRRCInactiveR17MaxNumberPeriodicSRSPosResourcesPerBWPPerSlotR17Constraints = per.EnumeratedConstraints{
+	Extensible: false,
+	RootValues: []int64{SRS_AllPosResourcesRRC_Inactive_r17_Srs_PosResourcesRRC_Inactive_r17_MaxNumberPeriodicSRS_PosResourcesPerBWP_PerSlot_r17_N1, SRS_AllPosResourcesRRC_Inactive_r17_Srs_PosResourcesRRC_Inactive_r17_MaxNumberPeriodicSRS_PosResourcesPerBWP_PerSlot_r17_N2, SRS_AllPosResourcesRRC_Inactive_r17_Srs_PosResourcesRRC_Inactive_r17_MaxNumberPeriodicSRS_PosResourcesPerBWP_PerSlot_r17_N3, SRS_AllPosResourcesRRC_Inactive_r17_Srs_PosResourcesRRC_Inactive_r17_MaxNumberPeriodicSRS_PosResourcesPerBWP_PerSlot_r17_N4, SRS_AllPosResourcesRRC_Inactive_r17_Srs_PosResourcesRRC_Inactive_r17_MaxNumberPeriodicSRS_PosResourcesPerBWP_PerSlot_r17_N5, SRS_AllPosResourcesRRC_Inactive_r17_Srs_PosResourcesRRC_Inactive_r17_MaxNumberPeriodicSRS_PosResourcesPerBWP_PerSlot_r17_N6, SRS_AllPosResourcesRRC_Inactive_r17_Srs_PosResourcesRRC_Inactive_r17_MaxNumberPeriodicSRS_PosResourcesPerBWP_PerSlot_r17_N8, SRS_AllPosResourcesRRC_Inactive_r17_Srs_PosResourcesRRC_Inactive_r17_MaxNumberPeriodicSRS_PosResourcesPerBWP_PerSlot_r17_N10, SRS_AllPosResourcesRRC_Inactive_r17_Srs_PosResourcesRRC_Inactive_r17_MaxNumberPeriodicSRS_PosResourcesPerBWP_PerSlot_r17_N12, SRS_AllPosResourcesRRC_Inactive_r17_Srs_PosResourcesRRC_Inactive_r17_MaxNumberPeriodicSRS_PosResourcesPerBWP_PerSlot_r17_N14},
+}
+
+const (
+	SRS_AllPosResourcesRRC_Inactive_r17_Srs_PosResourcesRRC_Inactive_r17_Dummy1_N1  = 0
+	SRS_AllPosResourcesRRC_Inactive_r17_Srs_PosResourcesRRC_Inactive_r17_Dummy1_N2  = 1
+	SRS_AllPosResourcesRRC_Inactive_r17_Srs_PosResourcesRRC_Inactive_r17_Dummy1_N4  = 2
+	SRS_AllPosResourcesRRC_Inactive_r17_Srs_PosResourcesRRC_Inactive_r17_Dummy1_N8  = 3
+	SRS_AllPosResourcesRRC_Inactive_r17_Srs_PosResourcesRRC_Inactive_r17_Dummy1_N16 = 4
+	SRS_AllPosResourcesRRC_Inactive_r17_Srs_PosResourcesRRC_Inactive_r17_Dummy1_N32 = 5
+	SRS_AllPosResourcesRRC_Inactive_r17_Srs_PosResourcesRRC_Inactive_r17_Dummy1_N64 = 6
+)
+
+var sRSAllPosResourcesRRCInactiveR17SrsPosResourcesRRCInactiveR17Dummy1Constraints = per.EnumeratedConstraints{
+	Extensible: false,
+	RootValues: []int64{SRS_AllPosResourcesRRC_Inactive_r17_Srs_PosResourcesRRC_Inactive_r17_Dummy1_N1, SRS_AllPosResourcesRRC_Inactive_r17_Srs_PosResourcesRRC_Inactive_r17_Dummy1_N2, SRS_AllPosResourcesRRC_Inactive_r17_Srs_PosResourcesRRC_Inactive_r17_Dummy1_N4, SRS_AllPosResourcesRRC_Inactive_r17_Srs_PosResourcesRRC_Inactive_r17_Dummy1_N8, SRS_AllPosResourcesRRC_Inactive_r17_Srs_PosResourcesRRC_Inactive_r17_Dummy1_N16, SRS_AllPosResourcesRRC_Inactive_r17_Srs_PosResourcesRRC_Inactive_r17_Dummy1_N32, SRS_AllPosResourcesRRC_Inactive_r17_Srs_PosResourcesRRC_Inactive_r17_Dummy1_N64},
+}
+
+const (
+	SRS_AllPosResourcesRRC_Inactive_r17_Srs_PosResourcesRRC_Inactive_r17_Dummy2_N1  = 0
+	SRS_AllPosResourcesRRC_Inactive_r17_Srs_PosResourcesRRC_Inactive_r17_Dummy2_N2  = 1
+	SRS_AllPosResourcesRRC_Inactive_r17_Srs_PosResourcesRRC_Inactive_r17_Dummy2_N3  = 2
+	SRS_AllPosResourcesRRC_Inactive_r17_Srs_PosResourcesRRC_Inactive_r17_Dummy2_N4  = 3
+	SRS_AllPosResourcesRRC_Inactive_r17_Srs_PosResourcesRRC_Inactive_r17_Dummy2_N5  = 4
+	SRS_AllPosResourcesRRC_Inactive_r17_Srs_PosResourcesRRC_Inactive_r17_Dummy2_N6  = 5
+	SRS_AllPosResourcesRRC_Inactive_r17_Srs_PosResourcesRRC_Inactive_r17_Dummy2_N8  = 6
+	SRS_AllPosResourcesRRC_Inactive_r17_Srs_PosResourcesRRC_Inactive_r17_Dummy2_N10 = 7
+	SRS_AllPosResourcesRRC_Inactive_r17_Srs_PosResourcesRRC_Inactive_r17_Dummy2_N12 = 8
+	SRS_AllPosResourcesRRC_Inactive_r17_Srs_PosResourcesRRC_Inactive_r17_Dummy2_N14 = 9
+)
+
+var sRSAllPosResourcesRRCInactiveR17SrsPosResourcesRRCInactiveR17Dummy2Constraints = per.EnumeratedConstraints{
+	Extensible: false,
+	RootValues: []int64{SRS_AllPosResourcesRRC_Inactive_r17_Srs_PosResourcesRRC_Inactive_r17_Dummy2_N1, SRS_AllPosResourcesRRC_Inactive_r17_Srs_PosResourcesRRC_Inactive_r17_Dummy2_N2, SRS_AllPosResourcesRRC_Inactive_r17_Srs_PosResourcesRRC_Inactive_r17_Dummy2_N3, SRS_AllPosResourcesRRC_Inactive_r17_Srs_PosResourcesRRC_Inactive_r17_Dummy2_N4, SRS_AllPosResourcesRRC_Inactive_r17_Srs_PosResourcesRRC_Inactive_r17_Dummy2_N5, SRS_AllPosResourcesRRC_Inactive_r17_Srs_PosResourcesRRC_Inactive_r17_Dummy2_N6, SRS_AllPosResourcesRRC_Inactive_r17_Srs_PosResourcesRRC_Inactive_r17_Dummy2_N8, SRS_AllPosResourcesRRC_Inactive_r17_Srs_PosResourcesRRC_Inactive_r17_Dummy2_N10, SRS_AllPosResourcesRRC_Inactive_r17_Srs_PosResourcesRRC_Inactive_r17_Dummy2_N12, SRS_AllPosResourcesRRC_Inactive_r17_Srs_PosResourcesRRC_Inactive_r17_Dummy2_N14},
+}
+
+type SRS_AllPosResourcesRRC_Inactive_r17 struct {
+	Srs_PosResourcesRRC_Inactive_r17 struct {
+		MaxNumberSRS_PosResourceSetPerBWP_r17               int64
+		MaxNumberSRS_PosResourcesPerBWP_r17                 int64
+		MaxNumberSRS_ResourcesPerBWP_PerSlot_r17            int64
+		MaxNumberPeriodicSRS_PosResourcesPerBWP_r17         int64
+		MaxNumberPeriodicSRS_PosResourcesPerBWP_PerSlot_r17 int64
+		Dummy1                                              int64
+		Dummy2                                              int64
+	}
+}
+
+func (ie *SRS_AllPosResourcesRRC_Inactive_r17) Encode(e *per.Encoder) error {
+	seq := e.NewSequenceEncoder(sRSAllPosResourcesRRCInactiveR17Constraints)
+	_ = seq
+
+	// 1. srs-PosResourcesRRC-Inactive-r17: sequence
+	{
+		{
+			c := &ie.Srs_PosResourcesRRC_Inactive_r17
+			if err := e.EncodeEnumerated(c.MaxNumberSRS_PosResourceSetPerBWP_r17, sRSAllPosResourcesRRCInactiveR17SrsPosResourcesRRCInactiveR17MaxNumberSRSPosResourceSetPerBWPR17Constraints); err != nil {
+				return err
+			}
+			if err := e.EncodeEnumerated(c.MaxNumberSRS_PosResourcesPerBWP_r17, sRSAllPosResourcesRRCInactiveR17SrsPosResourcesRRCInactiveR17MaxNumberSRSPosResourcesPerBWPR17Constraints); err != nil {
+				return err
+			}
+			if err := e.EncodeEnumerated(c.MaxNumberSRS_ResourcesPerBWP_PerSlot_r17, sRSAllPosResourcesRRCInactiveR17SrsPosResourcesRRCInactiveR17MaxNumberSRSResourcesPerBWPPerSlotR17Constraints); err != nil {
+				return err
+			}
+			if err := e.EncodeEnumerated(c.MaxNumberPeriodicSRS_PosResourcesPerBWP_r17, sRSAllPosResourcesRRCInactiveR17SrsPosResourcesRRCInactiveR17MaxNumberPeriodicSRSPosResourcesPerBWPR17Constraints); err != nil {
+				return err
+			}
+			if err := e.EncodeEnumerated(c.MaxNumberPeriodicSRS_PosResourcesPerBWP_PerSlot_r17, sRSAllPosResourcesRRCInactiveR17SrsPosResourcesRRCInactiveR17MaxNumberPeriodicSRSPosResourcesPerBWPPerSlotR17Constraints); err != nil {
+				return err
+			}
+			if err := e.EncodeEnumerated(c.Dummy1, sRSAllPosResourcesRRCInactiveR17SrsPosResourcesRRCInactiveR17Dummy1Constraints); err != nil {
+				return err
+			}
+			if err := e.EncodeEnumerated(c.Dummy2, sRSAllPosResourcesRRCInactiveR17SrsPosResourcesRRCInactiveR17Dummy2Constraints); err != nil {
+				return err
+			}
+		}
+	}
+
+	return nil
+}
+
+func (ie *SRS_AllPosResourcesRRC_Inactive_r17) Decode(d *per.Decoder) error {
+	seq := d.NewSequenceDecoder(sRSAllPosResourcesRRCInactiveR17Constraints)
+	_ = seq
+
+	// 1. srs-PosResourcesRRC-Inactive-r17: sequence
+	{
+		{
+			c := &ie.Srs_PosResourcesRRC_Inactive_r17
+			{
+				v, err := d.DecodeEnumerated(sRSAllPosResourcesRRCInactiveR17SrsPosResourcesRRCInactiveR17MaxNumberSRSPosResourceSetPerBWPR17Constraints)
+				if err != nil {
+					return err
+				}
+				c.MaxNumberSRS_PosResourceSetPerBWP_r17 = v
+			}
+			{
+				v, err := d.DecodeEnumerated(sRSAllPosResourcesRRCInactiveR17SrsPosResourcesRRCInactiveR17MaxNumberSRSPosResourcesPerBWPR17Constraints)
+				if err != nil {
+					return err
+				}
+				c.MaxNumberSRS_PosResourcesPerBWP_r17 = v
+			}
+			{
+				v, err := d.DecodeEnumerated(sRSAllPosResourcesRRCInactiveR17SrsPosResourcesRRCInactiveR17MaxNumberSRSResourcesPerBWPPerSlotR17Constraints)
+				if err != nil {
+					return err
+				}
+				c.MaxNumberSRS_ResourcesPerBWP_PerSlot_r17 = v
+			}
+			{
+				v, err := d.DecodeEnumerated(sRSAllPosResourcesRRCInactiveR17SrsPosResourcesRRCInactiveR17MaxNumberPeriodicSRSPosResourcesPerBWPR17Constraints)
+				if err != nil {
+					return err
+				}
+				c.MaxNumberPeriodicSRS_PosResourcesPerBWP_r17 = v
+			}
+			{
+				v, err := d.DecodeEnumerated(sRSAllPosResourcesRRCInactiveR17SrsPosResourcesRRCInactiveR17MaxNumberPeriodicSRSPosResourcesPerBWPPerSlotR17Constraints)
+				if err != nil {
+					return err
+				}
+				c.MaxNumberPeriodicSRS_PosResourcesPerBWP_PerSlot_r17 = v
+			}
+			{
+				v, err := d.DecodeEnumerated(sRSAllPosResourcesRRCInactiveR17SrsPosResourcesRRCInactiveR17Dummy1Constraints)
+				if err != nil {
+					return err
+				}
+				c.Dummy1 = v
+			}
+			{
+				v, err := d.DecodeEnumerated(sRSAllPosResourcesRRCInactiveR17SrsPosResourcesRRCInactiveR17Dummy2Constraints)
+				if err != nil {
+					return err
+				}
+				c.Dummy2 = v
+			}
+		}
+	}
+
+	return nil
+}

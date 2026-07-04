@@ -1,0 +1,4833 @@
+// Code generated from docs/NR-RRC-Definitions.asn by codegen.
+// DO NOT EDIT.
+
+package ies
+
+import (
+	"github.com/lvdund/asn1go/per"
+	"github.com/lvdund/rrc/common"
+)
+
+// Source: CA-ParametersNR-v1900 (line 17907).
+
+var cAParametersNRV1900Constraints = per.SequenceConstraints{
+	Extensible: false,
+	RootComponents: []per.ComponentInfo{
+		{Name: "codebookParametersType1SP-SchemeA-PerBC-r19", Optional: true},
+		{Name: "codebookParametersType1SP-SchemeB-PerBC-r19", Optional: true},
+		{Name: "codebookParametersType1MP-PerBC-r19", Optional: true},
+		{Name: "codebookParameterseType2ExtPerBC-r19", Optional: true},
+		{Name: "codebookParametersfeType2ExtPerBC-r19", Optional: true},
+		{Name: "codebookParameterseType2DopplerExtPerBC-r19", Optional: true},
+		{Name: "codebookParametersHybridBF-Type1SP-PerBC-r19", Optional: true},
+		{Name: "codebookParametersHybridBF-eType2PerBC-r19", Optional: true},
+		{Name: "aiml-CSI-PredictionDopplerPerBC-r19", Optional: true},
+		{Name: "aiml-CSI-ReportPerBC-r19", Optional: true},
+		{Name: "aiml-CSI-PredictionPerBC-r19", Optional: true},
+		{Name: "aiml-CSI-PredictionUnitDurationDD-PerBC-r19", Optional: true},
+		{Name: "aiml-CSI-PredictionN4PerBC-r19", Optional: true},
+		{Name: "aiml-CSI-PredictionUE-DataCollectionPerBC-r19", Optional: true},
+		{Name: "aiml-CSI-PredictionMonitoringPerBC-r19", Optional: true},
+		{Name: "diffGroupPUCCH-PUSCH-r19", Optional: true},
+		{Name: "timeRestriction128PortPerBC-r19", Optional: true},
+		{Name: "groupScalingFactorPerBC-r19", Optional: true},
+		{Name: "nes-SD-Type1-SP-PerBC-r19", Optional: true},
+		{Name: "mr-AlwaysReportedType1SP-PerBC-r19", Optional: true},
+		{Name: "mr-AlwaysReported-eType2PerBC-r19", Optional: true},
+		{Name: "cjtc-DdReportPerBC-r19", Optional: true},
+		{Name: "cjtc-DdReportProcessingPerBC-r19", Optional: true},
+		{Name: "cjtc-FO-ReportPerBC-r19", Optional: true},
+		{Name: "cjtc-FO-ReportProcessingPerBC-r19", Optional: true},
+		{Name: "cjtc-PO-ReportWidebandPerBC-r19", Optional: true},
+		{Name: "cjtc-PO-ReportWidebandProcessingPerBC-r19", Optional: true},
+		{Name: "cjtc-PO-ReportSubbandPerBC-r19", Optional: true},
+		{Name: "cjtc-DdFO-ReportPerBC-r19", Optional: true},
+		{Name: "cjtc-DdFO-ReportProcessingPerBC-r19", Optional: true},
+		{Name: "linked-CJTC-Dd-eType2CJT-JointPerBC-r19", Optional: true},
+		{Name: "linked-CJTC-Dd-eType2CJT-SeparatePerBC-r19", Optional: true},
+		{Name: "linked-CJTC-Dd-eType2CJT-SeparatePerStatePerBC-r19", Optional: true},
+		{Name: "timelineRelax-CJTC-Dd-eType2CJT-PerBC-r19", Optional: true},
+		{Name: "nonCodebook-CSI-RS-SRS-PerBC-Enh-r19", Optional: true},
+		{Name: "intraFreqL1-MeasConfigPeriodicCSI-RS-r19", Optional: true},
+		{Name: "interFreqL1-MeasConfigPeriodicCSI-RS-r19", Optional: true},
+		{Name: "intraFreqL1-MeasConfigSP-CSI-RS-r19", Optional: true},
+		{Name: "currentSpCellInclL1-ReportCSI-RS-r19", Optional: true},
+		{Name: "simultaneousNZP-CSI-RS-r19", Optional: true},
+		{Name: "interFreqL1-MeasConfigSP-CSI-RS-r19", Optional: true},
+		{Name: "ltm-CSI-RS-CSI-IM-PeriodicCandidateIntraFreq-r19", Optional: true},
+		{Name: "ltm-CSI-RS-CSI-IM-SP-CandidateIntraFreq-r19", Optional: true},
+		{Name: "ltm-CSI-RS-CSI-IM-PeriodicCandidateInterFreq-r19", Optional: true},
+		{Name: "ltm-CSI-RS-CSI-IM-SP-CandidateInterFreq-r19", Optional: true},
+		{Name: "simultaneousNZP-CSI-RS-NES-r19", Optional: true},
+		{Name: "multiCell-PDSCH-DCI-1-3-DiffSCS-DiffCC-r19", Optional: true},
+		{Name: "multiCell-PUSCH-DCI-0-3-DiffSCS-DiffCC-r19", Optional: true},
+		{Name: "multiCellMultiPDSCH-DCI-1-3-r19", Optional: true},
+		{Name: "multiCellMultiPUSCH-DCI-0-3-r19", Optional: true},
+		{Name: "advUnicastDCI-DL-DiffSCS-DiffCC-r19", Optional: true},
+		{Name: "advUnicastDCI-UL-DiffSCS-DiffCC-r19", Optional: true},
+		{Name: "type3HARQ-CB-DCI-1-3-Diff-r19", Optional: true},
+		{Name: "type3EnhHARQ-CB-DCI-1-3-Diff-r19", Optional: true},
+		{Name: "scellDormancyWithinActiveTime-DCI-0-3-And-1-3-Diff-r19", Optional: true},
+		{Name: "qcl-MultiCellDCI-1-3-Diff-r19", Optional: true},
+		{Name: "bwp-SwitchingDCI-0-3-And-1-3-Diff-r19", Optional: true},
+		{Name: "mpr-ActiveCarrierEnh-r19", Optional: true},
+		{Name: "mpr-DL-Independent-r19", Optional: true},
+		{Name: "mpr-ActivateDependent-r19", Optional: true},
+		{Name: "intraBandNR-CA-non-collocated-r19", Optional: true},
+		{Name: "atg-RxBeamType-r19", Optional: true},
+		{Name: "od-SSB-FastMeasWinLowerBound-r19", Optional: true},
+		{Name: "maxCSI-RS-ResourceL1-Meas-r19", Optional: true},
+		{Name: "totalCSI-RS-ResourceL1-Meas-r19", Optional: true},
+	},
+}
+
+var cAParametersNRV1900AimlCSIReportPerBCR19Constraints = per.SizeRange(1, 2)
+
+const (
+	CA_ParametersNR_v1900_Aiml_CSI_PredictionUnitDurationDD_PerBC_r19_Supported = 0
+)
+
+var cAParametersNRV1900AimlCSIPredictionUnitDurationDDPerBCR19Constraints = per.EnumeratedConstraints{
+	Extensible: false,
+	RootValues: []int64{CA_ParametersNR_v1900_Aiml_CSI_PredictionUnitDurationDD_PerBC_r19_Supported},
+}
+
+const (
+	CA_ParametersNR_v1900_Aiml_CSI_PredictionUE_DataCollectionPerBC_r19_Supported = 0
+)
+
+var cAParametersNRV1900AimlCSIPredictionUEDataCollectionPerBCR19Constraints = per.EnumeratedConstraints{
+	Extensible: false,
+	RootValues: []int64{CA_ParametersNR_v1900_Aiml_CSI_PredictionUE_DataCollectionPerBC_r19_Supported},
+}
+
+const (
+	CA_ParametersNR_v1900_DiffGroupPUCCH_PUSCH_r19_Supported = 0
+)
+
+var cAParametersNRV1900DiffGroupPUCCHPUSCHR19Constraints = per.EnumeratedConstraints{
+	Extensible: false,
+	RootValues: []int64{CA_ParametersNR_v1900_DiffGroupPUCCH_PUSCH_r19_Supported},
+}
+
+const (
+	CA_ParametersNR_v1900_TimeRestriction128PortPerBC_r19_Supported = 0
+)
+
+var cAParametersNRV1900TimeRestriction128PortPerBCR19Constraints = per.EnumeratedConstraints{
+	Extensible: false,
+	RootValues: []int64{CA_ParametersNR_v1900_TimeRestriction128PortPerBC_r19_Supported},
+}
+
+const (
+	CA_ParametersNR_v1900_GroupScalingFactorPerBC_r19_Rank1     = 0
+	CA_ParametersNR_v1900_GroupScalingFactorPerBC_r19_Rank1and2 = 1
+)
+
+var cAParametersNRV1900GroupScalingFactorPerBCR19Constraints = per.EnumeratedConstraints{
+	Extensible: false,
+	RootValues: []int64{CA_ParametersNR_v1900_GroupScalingFactorPerBC_r19_Rank1, CA_ParametersNR_v1900_GroupScalingFactorPerBC_r19_Rank1and2},
+}
+
+const (
+	CA_ParametersNR_v1900_Mr_AlwaysReportedType1SP_PerBC_r19_Supported = 0
+)
+
+var cAParametersNRV1900MrAlwaysReportedType1SPPerBCR19Constraints = per.EnumeratedConstraints{
+	Extensible: false,
+	RootValues: []int64{CA_ParametersNR_v1900_Mr_AlwaysReportedType1SP_PerBC_r19_Supported},
+}
+
+const (
+	CA_ParametersNR_v1900_Mr_AlwaysReported_EType2PerBC_r19_Supported = 0
+)
+
+var cAParametersNRV1900MrAlwaysReportedEType2PerBCR19Constraints = per.EnumeratedConstraints{
+	Extensible: false,
+	RootValues: []int64{CA_ParametersNR_v1900_Mr_AlwaysReported_EType2PerBC_r19_Supported},
+}
+
+const (
+	CA_ParametersNR_v1900_Linked_CJTC_Dd_EType2CJT_JointPerBC_r19_Supported = 0
+)
+
+var cAParametersNRV1900LinkedCJTCDdEType2CJTJointPerBCR19Constraints = per.EnumeratedConstraints{
+	Extensible: false,
+	RootValues: []int64{CA_ParametersNR_v1900_Linked_CJTC_Dd_EType2CJT_JointPerBC_r19_Supported},
+}
+
+const (
+	CA_ParametersNR_v1900_Linked_CJTC_Dd_EType2CJT_SeparatePerBC_r19_Supported = 0
+)
+
+var cAParametersNRV1900LinkedCJTCDdEType2CJTSeparatePerBCR19Constraints = per.EnumeratedConstraints{
+	Extensible: false,
+	RootValues: []int64{CA_ParametersNR_v1900_Linked_CJTC_Dd_EType2CJT_SeparatePerBC_r19_Supported},
+}
+
+const (
+	CA_ParametersNR_v1900_Linked_CJTC_Dd_EType2CJT_SeparatePerStatePerBC_r19_Supported = 0
+)
+
+var cAParametersNRV1900LinkedCJTCDdEType2CJTSeparatePerStatePerBCR19Constraints = per.EnumeratedConstraints{
+	Extensible: false,
+	RootValues: []int64{CA_ParametersNR_v1900_Linked_CJTC_Dd_EType2CJT_SeparatePerStatePerBC_r19_Supported},
+}
+
+var cAParametersNRV1900NonCodebookCSIRSSRSPerBCEnhR19Constraints = per.SizeRange(1, common.MaxNrofCSI_RS_ResourcesExt_r16)
+
+const (
+	CA_ParametersNR_v1900_CurrentSpCellInclL1_ReportCSI_RS_r19_Supported = 0
+)
+
+var cAParametersNRV1900CurrentSpCellInclL1ReportCSIRSR19Constraints = per.EnumeratedConstraints{
+	Extensible: false,
+	RootValues: []int64{CA_ParametersNR_v1900_CurrentSpCellInclL1_ReportCSI_RS_r19_Supported},
+}
+
+const (
+	CA_ParametersNR_v1900_SimultaneousNZP_CSI_RS_r19_Supported = 0
+)
+
+var cAParametersNRV1900SimultaneousNZPCSIRSR19Constraints = per.EnumeratedConstraints{
+	Extensible: false,
+	RootValues: []int64{CA_ParametersNR_v1900_SimultaneousNZP_CSI_RS_r19_Supported},
+}
+
+const (
+	CA_ParametersNR_v1900_SimultaneousNZP_CSI_RS_NES_r19_Supported = 0
+)
+
+var cAParametersNRV1900SimultaneousNZPCSIRSNESR19Constraints = per.EnumeratedConstraints{
+	Extensible: false,
+	RootValues: []int64{CA_ParametersNR_v1900_SimultaneousNZP_CSI_RS_NES_r19_Supported},
+}
+
+const (
+	CA_ParametersNR_v1900_MultiCellMultiPDSCH_DCI_1_3_r19_N8  = 0
+	CA_ParametersNR_v1900_MultiCellMultiPDSCH_DCI_1_3_r19_N12 = 1
+	CA_ParametersNR_v1900_MultiCellMultiPDSCH_DCI_1_3_r19_N16 = 2
+	CA_ParametersNR_v1900_MultiCellMultiPDSCH_DCI_1_3_r19_N32 = 3
+)
+
+var cAParametersNRV1900MultiCellMultiPDSCHDCI13R19Constraints = per.EnumeratedConstraints{
+	Extensible: false,
+	RootValues: []int64{CA_ParametersNR_v1900_MultiCellMultiPDSCH_DCI_1_3_r19_N8, CA_ParametersNR_v1900_MultiCellMultiPDSCH_DCI_1_3_r19_N12, CA_ParametersNR_v1900_MultiCellMultiPDSCH_DCI_1_3_r19_N16, CA_ParametersNR_v1900_MultiCellMultiPDSCH_DCI_1_3_r19_N32},
+}
+
+const (
+	CA_ParametersNR_v1900_MultiCellMultiPUSCH_DCI_0_3_r19_N8  = 0
+	CA_ParametersNR_v1900_MultiCellMultiPUSCH_DCI_0_3_r19_N12 = 1
+	CA_ParametersNR_v1900_MultiCellMultiPUSCH_DCI_0_3_r19_N16 = 2
+	CA_ParametersNR_v1900_MultiCellMultiPUSCH_DCI_0_3_r19_N32 = 3
+)
+
+var cAParametersNRV1900MultiCellMultiPUSCHDCI03R19Constraints = per.EnumeratedConstraints{
+	Extensible: false,
+	RootValues: []int64{CA_ParametersNR_v1900_MultiCellMultiPUSCH_DCI_0_3_r19_N8, CA_ParametersNR_v1900_MultiCellMultiPUSCH_DCI_0_3_r19_N12, CA_ParametersNR_v1900_MultiCellMultiPUSCH_DCI_0_3_r19_N16, CA_ParametersNR_v1900_MultiCellMultiPUSCH_DCI_0_3_r19_N32},
+}
+
+const (
+	CA_ParametersNR_v1900_Type3HARQ_CB_DCI_1_3_Diff_r19_Supported = 0
+)
+
+var cAParametersNRV1900Type3HARQCBDCI13DiffR19Constraints = per.EnumeratedConstraints{
+	Extensible: false,
+	RootValues: []int64{CA_ParametersNR_v1900_Type3HARQ_CB_DCI_1_3_Diff_r19_Supported},
+}
+
+const (
+	CA_ParametersNR_v1900_Type3EnhHARQ_CB_DCI_1_3_Diff_r19_N1 = 0
+	CA_ParametersNR_v1900_Type3EnhHARQ_CB_DCI_1_3_Diff_r19_N2 = 1
+	CA_ParametersNR_v1900_Type3EnhHARQ_CB_DCI_1_3_Diff_r19_N4 = 2
+	CA_ParametersNR_v1900_Type3EnhHARQ_CB_DCI_1_3_Diff_r19_N8 = 3
+)
+
+var cAParametersNRV1900Type3EnhHARQCBDCI13DiffR19Constraints = per.EnumeratedConstraints{
+	Extensible: false,
+	RootValues: []int64{CA_ParametersNR_v1900_Type3EnhHARQ_CB_DCI_1_3_Diff_r19_N1, CA_ParametersNR_v1900_Type3EnhHARQ_CB_DCI_1_3_Diff_r19_N2, CA_ParametersNR_v1900_Type3EnhHARQ_CB_DCI_1_3_Diff_r19_N4, CA_ParametersNR_v1900_Type3EnhHARQ_CB_DCI_1_3_Diff_r19_N8},
+}
+
+const (
+	CA_ParametersNR_v1900_ScellDormancyWithinActiveTime_DCI_0_3_And_1_3_Diff_r19_Supported = 0
+)
+
+var cAParametersNRV1900ScellDormancyWithinActiveTimeDCI03And13DiffR19Constraints = per.EnumeratedConstraints{
+	Extensible: false,
+	RootValues: []int64{CA_ParametersNR_v1900_ScellDormancyWithinActiveTime_DCI_0_3_And_1_3_Diff_r19_Supported},
+}
+
+const (
+	CA_ParametersNR_v1900_Qcl_MultiCellDCI_1_3_Diff_r19_Diff = 0
+	CA_ParametersNR_v1900_Qcl_MultiCellDCI_1_3_Diff_r19_Both = 1
+)
+
+var cAParametersNRV1900QclMultiCellDCI13DiffR19Constraints = per.EnumeratedConstraints{
+	Extensible: false,
+	RootValues: []int64{CA_ParametersNR_v1900_Qcl_MultiCellDCI_1_3_Diff_r19_Diff, CA_ParametersNR_v1900_Qcl_MultiCellDCI_1_3_Diff_r19_Both},
+}
+
+const (
+	CA_ParametersNR_v1900_Bwp_SwitchingDCI_0_3_And_1_3_Diff_r19_Supported = 0
+)
+
+var cAParametersNRV1900BwpSwitchingDCI03And13DiffR19Constraints = per.EnumeratedConstraints{
+	Extensible: false,
+	RootValues: []int64{CA_ParametersNR_v1900_Bwp_SwitchingDCI_0_3_And_1_3_Diff_r19_Supported},
+}
+
+const (
+	CA_ParametersNR_v1900_Mpr_ActiveCarrierEnh_r19_Supported = 0
+)
+
+var cAParametersNRV1900MprActiveCarrierEnhR19Constraints = per.EnumeratedConstraints{
+	Extensible: false,
+	RootValues: []int64{CA_ParametersNR_v1900_Mpr_ActiveCarrierEnh_r19_Supported},
+}
+
+const (
+	CA_ParametersNR_v1900_Mpr_DL_Independent_r19_Supported = 0
+)
+
+var cAParametersNRV1900MprDLIndependentR19Constraints = per.EnumeratedConstraints{
+	Extensible: false,
+	RootValues: []int64{CA_ParametersNR_v1900_Mpr_DL_Independent_r19_Supported},
+}
+
+const (
+	CA_ParametersNR_v1900_Mpr_ActivateDependent_r19_Supported = 0
+)
+
+var cAParametersNRV1900MprActivateDependentR19Constraints = per.EnumeratedConstraints{
+	Extensible: false,
+	RootValues: []int64{CA_ParametersNR_v1900_Mpr_ActivateDependent_r19_Supported},
+}
+
+const (
+	CA_ParametersNR_v1900_IntraBandNR_CA_Non_Collocated_r19_Supported = 0
+)
+
+var cAParametersNRV1900IntraBandNRCANonCollocatedR19Constraints = per.EnumeratedConstraints{
+	Extensible: false,
+	RootValues: []int64{CA_ParametersNR_v1900_IntraBandNR_CA_Non_Collocated_r19_Supported},
+}
+
+const (
+	CA_ParametersNR_v1900_Atg_RxBeamType_r19_RxType1 = 0
+	CA_ParametersNR_v1900_Atg_RxBeamType_r19_RxType2 = 1
+)
+
+var cAParametersNRV1900AtgRxBeamTypeR19Constraints = per.EnumeratedConstraints{
+	Extensible: false,
+	RootValues: []int64{CA_ParametersNR_v1900_Atg_RxBeamType_r19_RxType1, CA_ParametersNR_v1900_Atg_RxBeamType_r19_RxType2},
+}
+
+const (
+	CA_ParametersNR_v1900_Od_SSB_FastMeasWinLowerBound_r19_Supported = 0
+)
+
+var cAParametersNRV1900OdSSBFastMeasWinLowerBoundR19Constraints = per.EnumeratedConstraints{
+	Extensible: false,
+	RootValues: []int64{CA_ParametersNR_v1900_Od_SSB_FastMeasWinLowerBound_r19_Supported},
+}
+
+const (
+	CA_ParametersNR_v1900_MaxCSI_RS_ResourceL1_Meas_r19_N1  = 0
+	CA_ParametersNR_v1900_MaxCSI_RS_ResourceL1_Meas_r19_N2  = 1
+	CA_ParametersNR_v1900_MaxCSI_RS_ResourceL1_Meas_r19_N3  = 2
+	CA_ParametersNR_v1900_MaxCSI_RS_ResourceL1_Meas_r19_N4  = 3
+	CA_ParametersNR_v1900_MaxCSI_RS_ResourceL1_Meas_r19_N5  = 4
+	CA_ParametersNR_v1900_MaxCSI_RS_ResourceL1_Meas_r19_N6  = 5
+	CA_ParametersNR_v1900_MaxCSI_RS_ResourceL1_Meas_r19_N7  = 6
+	CA_ParametersNR_v1900_MaxCSI_RS_ResourceL1_Meas_r19_N8  = 7
+	CA_ParametersNR_v1900_MaxCSI_RS_ResourceL1_Meas_r19_N16 = 8
+	CA_ParametersNR_v1900_MaxCSI_RS_ResourceL1_Meas_r19_N32 = 9
+	CA_ParametersNR_v1900_MaxCSI_RS_ResourceL1_Meas_r19_N48 = 10
+	CA_ParametersNR_v1900_MaxCSI_RS_ResourceL1_Meas_r19_N64 = 11
+)
+
+var cAParametersNRV1900MaxCSIRSResourceL1MeasR19Constraints = per.EnumeratedConstraints{
+	Extensible: false,
+	RootValues: []int64{CA_ParametersNR_v1900_MaxCSI_RS_ResourceL1_Meas_r19_N1, CA_ParametersNR_v1900_MaxCSI_RS_ResourceL1_Meas_r19_N2, CA_ParametersNR_v1900_MaxCSI_RS_ResourceL1_Meas_r19_N3, CA_ParametersNR_v1900_MaxCSI_RS_ResourceL1_Meas_r19_N4, CA_ParametersNR_v1900_MaxCSI_RS_ResourceL1_Meas_r19_N5, CA_ParametersNR_v1900_MaxCSI_RS_ResourceL1_Meas_r19_N6, CA_ParametersNR_v1900_MaxCSI_RS_ResourceL1_Meas_r19_N7, CA_ParametersNR_v1900_MaxCSI_RS_ResourceL1_Meas_r19_N8, CA_ParametersNR_v1900_MaxCSI_RS_ResourceL1_Meas_r19_N16, CA_ParametersNR_v1900_MaxCSI_RS_ResourceL1_Meas_r19_N32, CA_ParametersNR_v1900_MaxCSI_RS_ResourceL1_Meas_r19_N48, CA_ParametersNR_v1900_MaxCSI_RS_ResourceL1_Meas_r19_N64},
+}
+
+const (
+	CA_ParametersNR_v1900_TotalCSI_RS_ResourceL1_Meas_r19_N2  = 0
+	CA_ParametersNR_v1900_TotalCSI_RS_ResourceL1_Meas_r19_N4  = 1
+	CA_ParametersNR_v1900_TotalCSI_RS_ResourceL1_Meas_r19_N8  = 2
+	CA_ParametersNR_v1900_TotalCSI_RS_ResourceL1_Meas_r19_N12 = 3
+	CA_ParametersNR_v1900_TotalCSI_RS_ResourceL1_Meas_r19_N16 = 4
+	CA_ParametersNR_v1900_TotalCSI_RS_ResourceL1_Meas_r19_N32 = 5
+	CA_ParametersNR_v1900_TotalCSI_RS_ResourceL1_Meas_r19_N64 = 6
+)
+
+var cAParametersNRV1900TotalCSIRSResourceL1MeasR19Constraints = per.EnumeratedConstraints{
+	Extensible: false,
+	RootValues: []int64{CA_ParametersNR_v1900_TotalCSI_RS_ResourceL1_Meas_r19_N2, CA_ParametersNR_v1900_TotalCSI_RS_ResourceL1_Meas_r19_N4, CA_ParametersNR_v1900_TotalCSI_RS_ResourceL1_Meas_r19_N8, CA_ParametersNR_v1900_TotalCSI_RS_ResourceL1_Meas_r19_N12, CA_ParametersNR_v1900_TotalCSI_RS_ResourceL1_Meas_r19_N16, CA_ParametersNR_v1900_TotalCSI_RS_ResourceL1_Meas_r19_N32, CA_ParametersNR_v1900_TotalCSI_RS_ResourceL1_Meas_r19_N64},
+}
+
+var cAParametersNRV1900AimlCSIPredictionPerBCR19SupportedCSIRSResourceListR19Constraints = per.SizeRange(1, common.MaxNrofCSI_RS_ResourcesExt_r16)
+
+const (
+	CA_ParametersNR_v1900_Aiml_CSI_PredictionPerBC_r19_ScalingFactor_r19_N1 = 0
+	CA_ParametersNR_v1900_Aiml_CSI_PredictionPerBC_r19_ScalingFactor_r19_N2 = 1
+	CA_ParametersNR_v1900_Aiml_CSI_PredictionPerBC_r19_ScalingFactor_r19_N4 = 2
+)
+
+var cAParametersNRV1900AimlCSIPredictionPerBCR19ScalingFactorR19Constraints = per.EnumeratedConstraints{
+	Extensible: false,
+	RootValues: []int64{CA_ParametersNR_v1900_Aiml_CSI_PredictionPerBC_r19_ScalingFactor_r19_N1, CA_ParametersNR_v1900_Aiml_CSI_PredictionPerBC_r19_ScalingFactor_r19_N2, CA_ParametersNR_v1900_Aiml_CSI_PredictionPerBC_r19_ScalingFactor_r19_N4},
+}
+
+const (
+	CA_ParametersNR_v1900_Aiml_CSI_PredictionPerBC_r19_RelaxationTimelineT_r19_Scs15kHz_r19_N14  = 0
+	CA_ParametersNR_v1900_Aiml_CSI_PredictionPerBC_r19_RelaxationTimelineT_r19_Scs15kHz_r19_N28  = 1
+	CA_ParametersNR_v1900_Aiml_CSI_PredictionPerBC_r19_RelaxationTimelineT_r19_Scs15kHz_r19_N56  = 2
+	CA_ParametersNR_v1900_Aiml_CSI_PredictionPerBC_r19_RelaxationTimelineT_r19_Scs15kHz_r19_N112 = 3
+)
+
+var cAParametersNRV1900AimlCSIPredictionPerBCR19RelaxationTimelineTR19Scs15kHzR19Constraints = per.EnumeratedConstraints{
+	Extensible: false,
+	RootValues: []int64{CA_ParametersNR_v1900_Aiml_CSI_PredictionPerBC_r19_RelaxationTimelineT_r19_Scs15kHz_r19_N14, CA_ParametersNR_v1900_Aiml_CSI_PredictionPerBC_r19_RelaxationTimelineT_r19_Scs15kHz_r19_N28, CA_ParametersNR_v1900_Aiml_CSI_PredictionPerBC_r19_RelaxationTimelineT_r19_Scs15kHz_r19_N56, CA_ParametersNR_v1900_Aiml_CSI_PredictionPerBC_r19_RelaxationTimelineT_r19_Scs15kHz_r19_N112},
+}
+
+const (
+	CA_ParametersNR_v1900_Aiml_CSI_PredictionPerBC_r19_RelaxationTimelineT_r19_Scs30kHz_r19_N28  = 0
+	CA_ParametersNR_v1900_Aiml_CSI_PredictionPerBC_r19_RelaxationTimelineT_r19_Scs30kHz_r19_N56  = 1
+	CA_ParametersNR_v1900_Aiml_CSI_PredictionPerBC_r19_RelaxationTimelineT_r19_Scs30kHz_r19_N112 = 2
+	CA_ParametersNR_v1900_Aiml_CSI_PredictionPerBC_r19_RelaxationTimelineT_r19_Scs30kHz_r19_N224 = 3
+)
+
+var cAParametersNRV1900AimlCSIPredictionPerBCR19RelaxationTimelineTR19Scs30kHzR19Constraints = per.EnumeratedConstraints{
+	Extensible: false,
+	RootValues: []int64{CA_ParametersNR_v1900_Aiml_CSI_PredictionPerBC_r19_RelaxationTimelineT_r19_Scs30kHz_r19_N28, CA_ParametersNR_v1900_Aiml_CSI_PredictionPerBC_r19_RelaxationTimelineT_r19_Scs30kHz_r19_N56, CA_ParametersNR_v1900_Aiml_CSI_PredictionPerBC_r19_RelaxationTimelineT_r19_Scs30kHz_r19_N112, CA_ParametersNR_v1900_Aiml_CSI_PredictionPerBC_r19_RelaxationTimelineT_r19_Scs30kHz_r19_N224},
+}
+
+const (
+	CA_ParametersNR_v1900_Aiml_CSI_PredictionPerBC_r19_RelaxationTimelineT_r19_Scs60kHz_r19_N56  = 0
+	CA_ParametersNR_v1900_Aiml_CSI_PredictionPerBC_r19_RelaxationTimelineT_r19_Scs60kHz_r19_N112 = 1
+	CA_ParametersNR_v1900_Aiml_CSI_PredictionPerBC_r19_RelaxationTimelineT_r19_Scs60kHz_r19_N224 = 2
+	CA_ParametersNR_v1900_Aiml_CSI_PredictionPerBC_r19_RelaxationTimelineT_r19_Scs60kHz_r19_N448 = 3
+)
+
+var cAParametersNRV1900AimlCSIPredictionPerBCR19RelaxationTimelineTR19Scs60kHzR19Constraints = per.EnumeratedConstraints{
+	Extensible: false,
+	RootValues: []int64{CA_ParametersNR_v1900_Aiml_CSI_PredictionPerBC_r19_RelaxationTimelineT_r19_Scs60kHz_r19_N56, CA_ParametersNR_v1900_Aiml_CSI_PredictionPerBC_r19_RelaxationTimelineT_r19_Scs60kHz_r19_N112, CA_ParametersNR_v1900_Aiml_CSI_PredictionPerBC_r19_RelaxationTimelineT_r19_Scs60kHz_r19_N224, CA_ParametersNR_v1900_Aiml_CSI_PredictionPerBC_r19_RelaxationTimelineT_r19_Scs60kHz_r19_N448},
+}
+
+const (
+	CA_ParametersNR_v1900_Aiml_CSI_PredictionPerBC_r19_RelaxationTimelineT_r19_Scs120kHz_r19_N112 = 0
+	CA_ParametersNR_v1900_Aiml_CSI_PredictionPerBC_r19_RelaxationTimelineT_r19_Scs120kHz_r19_N224 = 1
+	CA_ParametersNR_v1900_Aiml_CSI_PredictionPerBC_r19_RelaxationTimelineT_r19_Scs120kHz_r19_N448 = 2
+)
+
+var cAParametersNRV1900AimlCSIPredictionPerBCR19RelaxationTimelineTR19Scs120kHzR19Constraints = per.EnumeratedConstraints{
+	Extensible: false,
+	RootValues: []int64{CA_ParametersNR_v1900_Aiml_CSI_PredictionPerBC_r19_RelaxationTimelineT_r19_Scs120kHz_r19_N112, CA_ParametersNR_v1900_Aiml_CSI_PredictionPerBC_r19_RelaxationTimelineT_r19_Scs120kHz_r19_N224, CA_ParametersNR_v1900_Aiml_CSI_PredictionPerBC_r19_RelaxationTimelineT_r19_Scs120kHz_r19_N448},
+}
+
+const (
+	CA_ParametersNR_v1900_Aiml_CSI_PredictionPerBC_r19_RelaxationTimelineT_r19_Scs480kHz_r19_N448  = 0
+	CA_ParametersNR_v1900_Aiml_CSI_PredictionPerBC_r19_RelaxationTimelineT_r19_Scs480kHz_r19_N896  = 1
+	CA_ParametersNR_v1900_Aiml_CSI_PredictionPerBC_r19_RelaxationTimelineT_r19_Scs480kHz_r19_N1792 = 2
+)
+
+var cAParametersNRV1900AimlCSIPredictionPerBCR19RelaxationTimelineTR19Scs480kHzR19Constraints = per.EnumeratedConstraints{
+	Extensible: false,
+	RootValues: []int64{CA_ParametersNR_v1900_Aiml_CSI_PredictionPerBC_r19_RelaxationTimelineT_r19_Scs480kHz_r19_N448, CA_ParametersNR_v1900_Aiml_CSI_PredictionPerBC_r19_RelaxationTimelineT_r19_Scs480kHz_r19_N896, CA_ParametersNR_v1900_Aiml_CSI_PredictionPerBC_r19_RelaxationTimelineT_r19_Scs480kHz_r19_N1792},
+}
+
+const (
+	CA_ParametersNR_v1900_Aiml_CSI_PredictionPerBC_r19_RelaxationTimelineT_r19_Scs960kHz_r19_N896  = 0
+	CA_ParametersNR_v1900_Aiml_CSI_PredictionPerBC_r19_RelaxationTimelineT_r19_Scs960kHz_r19_N1792 = 1
+)
+
+var cAParametersNRV1900AimlCSIPredictionPerBCR19RelaxationTimelineTR19Scs960kHzR19Constraints = per.EnumeratedConstraints{
+	Extensible: false,
+	RootValues: []int64{CA_ParametersNR_v1900_Aiml_CSI_PredictionPerBC_r19_RelaxationTimelineT_r19_Scs960kHz_r19_N896, CA_ParametersNR_v1900_Aiml_CSI_PredictionPerBC_r19_RelaxationTimelineT_r19_Scs960kHz_r19_N1792},
+}
+
+const (
+	CA_ParametersNR_v1900_Aiml_CSI_PredictionPerBC_r19_InferenceReportType_r19_Aperiodic      = 0
+	CA_ParametersNR_v1900_Aiml_CSI_PredictionPerBC_r19_InferenceReportType_r19_SemiPersistent = 1
+)
+
+var cAParametersNRV1900AimlCSIPredictionPerBCR19InferenceReportTypeR19Constraints = per.EnumeratedConstraints{
+	Extensible: false,
+	RootValues: []int64{CA_ParametersNR_v1900_Aiml_CSI_PredictionPerBC_r19_InferenceReportType_r19_Aperiodic, CA_ParametersNR_v1900_Aiml_CSI_PredictionPerBC_r19_InferenceReportType_r19_SemiPersistent},
+}
+
+var cAParametersNRV1900AimlCSIPredictionN4PerBCR19SupportedCSIRSReportSettingAcrossCCR19Constraints = per.SizeRange(1, common.MaxNrofCSI_RS_ResourcesExt_r16)
+
+var cAParametersNRV1900AimlCSIPredictionN4PerBCR19SupportedCSIRSReportSettingOneReportR19Constraints = per.SizeRange(1, common.MaxNrofCSI_RS_ResourcesExt_r16)
+
+const (
+	CA_ParametersNR_v1900_Aiml_CSI_PredictionN4PerBC_r19_OccupiedPool_r19_P1 = 0
+	CA_ParametersNR_v1900_Aiml_CSI_PredictionN4PerBC_r19_OccupiedPool_r19_P2 = 1
+)
+
+var cAParametersNRV1900AimlCSIPredictionN4PerBCR19OccupiedPoolR19Constraints = per.EnumeratedConstraints{
+	Extensible: false,
+	RootValues: []int64{CA_ParametersNR_v1900_Aiml_CSI_PredictionN4PerBC_r19_OccupiedPool_r19_P1, CA_ParametersNR_v1900_Aiml_CSI_PredictionN4PerBC_r19_OccupiedPool_r19_P2},
+}
+
+var cAParametersNRV1900AimlCSIPredictionMonitoringPerBCR19SuppportedCSIRSResourceListR19Constraints = per.SizeRange(1, common.MaxNrofCSI_RS_ResourcesExt_r16)
+
+const (
+	CA_ParametersNR_v1900_Nes_SD_Type1_SP_PerBC_r19_Timeline_r19_Cap1 = 0
+	CA_ParametersNR_v1900_Nes_SD_Type1_SP_PerBC_r19_Timeline_r19_Cap2 = 1
+)
+
+var cAParametersNRV1900NesSDType1SPPerBCR19TimelineR19Constraints = per.EnumeratedConstraints{
+	Extensible: false,
+	RootValues: []int64{CA_ParametersNR_v1900_Nes_SD_Type1_SP_PerBC_r19_Timeline_r19_Cap1, CA_ParametersNR_v1900_Nes_SD_Type1_SP_PerBC_r19_Timeline_r19_Cap2},
+}
+
+const (
+	CA_ParametersNR_v1900_Cjtc_DdReportPerBC_r19_MinRangeDdInCyclicPrefix_r19_Half = 0
+	CA_ParametersNR_v1900_Cjtc_DdReportPerBC_r19_MinRangeDdInCyclicPrefix_r19_Full = 1
+)
+
+var cAParametersNRV1900CjtcDdReportPerBCR19MinRangeDdInCyclicPrefixR19Constraints = per.EnumeratedConstraints{
+	Extensible: false,
+	RootValues: []int64{CA_ParametersNR_v1900_Cjtc_DdReportPerBC_r19_MinRangeDdInCyclicPrefix_r19_Half, CA_ParametersNR_v1900_Cjtc_DdReportPerBC_r19_MinRangeDdInCyclicPrefix_r19_Full},
+}
+
+const (
+	CA_ParametersNR_v1900_Cjtc_DdReportPerBC_r19_MaxResolutionDd_r19_N32  = 0
+	CA_ParametersNR_v1900_Cjtc_DdReportPerBC_r19_MaxResolutionDd_r19_N64  = 1
+	CA_ParametersNR_v1900_Cjtc_DdReportPerBC_r19_MaxResolutionDd_r19_N128 = 2
+	CA_ParametersNR_v1900_Cjtc_DdReportPerBC_r19_MaxResolutionDd_r19_N256 = 3
+)
+
+var cAParametersNRV1900CjtcDdReportPerBCR19MaxResolutionDdR19Constraints = per.EnumeratedConstraints{
+	Extensible: false,
+	RootValues: []int64{CA_ParametersNR_v1900_Cjtc_DdReportPerBC_r19_MaxResolutionDd_r19_N32, CA_ParametersNR_v1900_Cjtc_DdReportPerBC_r19_MaxResolutionDd_r19_N64, CA_ParametersNR_v1900_Cjtc_DdReportPerBC_r19_MaxResolutionDd_r19_N128, CA_ParametersNR_v1900_Cjtc_DdReportPerBC_r19_MaxResolutionDd_r19_N256},
+}
+
+const (
+	CA_ParametersNR_v1900_Cjtc_DdReportProcessingPerBC_r19_MaxNumberTRS_Resource_r19_N2  = 0
+	CA_ParametersNR_v1900_Cjtc_DdReportProcessingPerBC_r19_MaxNumberTRS_Resource_r19_N4  = 1
+	CA_ParametersNR_v1900_Cjtc_DdReportProcessingPerBC_r19_MaxNumberTRS_Resource_r19_N6  = 2
+	CA_ParametersNR_v1900_Cjtc_DdReportProcessingPerBC_r19_MaxNumberTRS_Resource_r19_N8  = 3
+	CA_ParametersNR_v1900_Cjtc_DdReportProcessingPerBC_r19_MaxNumberTRS_Resource_r19_N10 = 4
+	CA_ParametersNR_v1900_Cjtc_DdReportProcessingPerBC_r19_MaxNumberTRS_Resource_r19_N12 = 5
+)
+
+var cAParametersNRV1900CjtcDdReportProcessingPerBCR19MaxNumberTRSResourceR19Constraints = per.EnumeratedConstraints{
+	Extensible: false,
+	RootValues: []int64{CA_ParametersNR_v1900_Cjtc_DdReportProcessingPerBC_r19_MaxNumberTRS_Resource_r19_N2, CA_ParametersNR_v1900_Cjtc_DdReportProcessingPerBC_r19_MaxNumberTRS_Resource_r19_N4, CA_ParametersNR_v1900_Cjtc_DdReportProcessingPerBC_r19_MaxNumberTRS_Resource_r19_N6, CA_ParametersNR_v1900_Cjtc_DdReportProcessingPerBC_r19_MaxNumberTRS_Resource_r19_N8, CA_ParametersNR_v1900_Cjtc_DdReportProcessingPerBC_r19_MaxNumberTRS_Resource_r19_N10, CA_ParametersNR_v1900_Cjtc_DdReportProcessingPerBC_r19_MaxNumberTRS_Resource_r19_N12},
+}
+
+const (
+	CA_ParametersNR_v1900_Cjtc_DdReportProcessingPerBC_r19_MaxNumberTRS_ResourceAcrossCC_r19_N2  = 0
+	CA_ParametersNR_v1900_Cjtc_DdReportProcessingPerBC_r19_MaxNumberTRS_ResourceAcrossCC_r19_N4  = 1
+	CA_ParametersNR_v1900_Cjtc_DdReportProcessingPerBC_r19_MaxNumberTRS_ResourceAcrossCC_r19_N6  = 2
+	CA_ParametersNR_v1900_Cjtc_DdReportProcessingPerBC_r19_MaxNumberTRS_ResourceAcrossCC_r19_N8  = 3
+	CA_ParametersNR_v1900_Cjtc_DdReportProcessingPerBC_r19_MaxNumberTRS_ResourceAcrossCC_r19_N12 = 4
+	CA_ParametersNR_v1900_Cjtc_DdReportProcessingPerBC_r19_MaxNumberTRS_ResourceAcrossCC_r19_N64 = 5
+)
+
+var cAParametersNRV1900CjtcDdReportProcessingPerBCR19MaxNumberTRSResourceAcrossCCR19Constraints = per.EnumeratedConstraints{
+	Extensible: false,
+	RootValues: []int64{CA_ParametersNR_v1900_Cjtc_DdReportProcessingPerBC_r19_MaxNumberTRS_ResourceAcrossCC_r19_N2, CA_ParametersNR_v1900_Cjtc_DdReportProcessingPerBC_r19_MaxNumberTRS_ResourceAcrossCC_r19_N4, CA_ParametersNR_v1900_Cjtc_DdReportProcessingPerBC_r19_MaxNumberTRS_ResourceAcrossCC_r19_N6, CA_ParametersNR_v1900_Cjtc_DdReportProcessingPerBC_r19_MaxNumberTRS_ResourceAcrossCC_r19_N8, CA_ParametersNR_v1900_Cjtc_DdReportProcessingPerBC_r19_MaxNumberTRS_ResourceAcrossCC_r19_N12, CA_ParametersNR_v1900_Cjtc_DdReportProcessingPerBC_r19_MaxNumberTRS_ResourceAcrossCC_r19_N64},
+}
+
+const (
+	CA_ParametersNR_v1900_Cjtc_DdReportProcessingPerBC_r19_MaxNumberCSI_RS_ResourcePerCC_r19_N2  = 0
+	CA_ParametersNR_v1900_Cjtc_DdReportProcessingPerBC_r19_MaxNumberCSI_RS_ResourcePerCC_r19_N4  = 1
+	CA_ParametersNR_v1900_Cjtc_DdReportProcessingPerBC_r19_MaxNumberCSI_RS_ResourcePerCC_r19_N6  = 2
+	CA_ParametersNR_v1900_Cjtc_DdReportProcessingPerBC_r19_MaxNumberCSI_RS_ResourcePerCC_r19_N8  = 3
+	CA_ParametersNR_v1900_Cjtc_DdReportProcessingPerBC_r19_MaxNumberCSI_RS_ResourcePerCC_r19_N12 = 4
+	CA_ParametersNR_v1900_Cjtc_DdReportProcessingPerBC_r19_MaxNumberCSI_RS_ResourcePerCC_r19_N16 = 5
+	CA_ParametersNR_v1900_Cjtc_DdReportProcessingPerBC_r19_MaxNumberCSI_RS_ResourcePerCC_r19_N20 = 6
+	CA_ParametersNR_v1900_Cjtc_DdReportProcessingPerBC_r19_MaxNumberCSI_RS_ResourcePerCC_r19_N24 = 7
+	CA_ParametersNR_v1900_Cjtc_DdReportProcessingPerBC_r19_MaxNumberCSI_RS_ResourcePerCC_r19_N28 = 8
+	CA_ParametersNR_v1900_Cjtc_DdReportProcessingPerBC_r19_MaxNumberCSI_RS_ResourcePerCC_r19_N32 = 9
+)
+
+var cAParametersNRV1900CjtcDdReportProcessingPerBCR19MaxNumberCSIRSResourcePerCCR19Constraints = per.EnumeratedConstraints{
+	Extensible: false,
+	RootValues: []int64{CA_ParametersNR_v1900_Cjtc_DdReportProcessingPerBC_r19_MaxNumberCSI_RS_ResourcePerCC_r19_N2, CA_ParametersNR_v1900_Cjtc_DdReportProcessingPerBC_r19_MaxNumberCSI_RS_ResourcePerCC_r19_N4, CA_ParametersNR_v1900_Cjtc_DdReportProcessingPerBC_r19_MaxNumberCSI_RS_ResourcePerCC_r19_N6, CA_ParametersNR_v1900_Cjtc_DdReportProcessingPerBC_r19_MaxNumberCSI_RS_ResourcePerCC_r19_N8, CA_ParametersNR_v1900_Cjtc_DdReportProcessingPerBC_r19_MaxNumberCSI_RS_ResourcePerCC_r19_N12, CA_ParametersNR_v1900_Cjtc_DdReportProcessingPerBC_r19_MaxNumberCSI_RS_ResourcePerCC_r19_N16, CA_ParametersNR_v1900_Cjtc_DdReportProcessingPerBC_r19_MaxNumberCSI_RS_ResourcePerCC_r19_N20, CA_ParametersNR_v1900_Cjtc_DdReportProcessingPerBC_r19_MaxNumberCSI_RS_ResourcePerCC_r19_N24, CA_ParametersNR_v1900_Cjtc_DdReportProcessingPerBC_r19_MaxNumberCSI_RS_ResourcePerCC_r19_N28, CA_ParametersNR_v1900_Cjtc_DdReportProcessingPerBC_r19_MaxNumberCSI_RS_ResourcePerCC_r19_N32},
+}
+
+const (
+	CA_ParametersNR_v1900_Cjtc_DdReportProcessingPerBC_r19_MaxNumberCSI_RS_ResourceAcrossCC_r19_N2  = 0
+	CA_ParametersNR_v1900_Cjtc_DdReportProcessingPerBC_r19_MaxNumberCSI_RS_ResourceAcrossCC_r19_N4  = 1
+	CA_ParametersNR_v1900_Cjtc_DdReportProcessingPerBC_r19_MaxNumberCSI_RS_ResourceAcrossCC_r19_N6  = 2
+	CA_ParametersNR_v1900_Cjtc_DdReportProcessingPerBC_r19_MaxNumberCSI_RS_ResourceAcrossCC_r19_N8  = 3
+	CA_ParametersNR_v1900_Cjtc_DdReportProcessingPerBC_r19_MaxNumberCSI_RS_ResourceAcrossCC_r19_N12 = 4
+	CA_ParametersNR_v1900_Cjtc_DdReportProcessingPerBC_r19_MaxNumberCSI_RS_ResourceAcrossCC_r19_N16 = 5
+	CA_ParametersNR_v1900_Cjtc_DdReportProcessingPerBC_r19_MaxNumberCSI_RS_ResourceAcrossCC_r19_N20 = 6
+	CA_ParametersNR_v1900_Cjtc_DdReportProcessingPerBC_r19_MaxNumberCSI_RS_ResourceAcrossCC_r19_N24 = 7
+	CA_ParametersNR_v1900_Cjtc_DdReportProcessingPerBC_r19_MaxNumberCSI_RS_ResourceAcrossCC_r19_N28 = 8
+	CA_ParametersNR_v1900_Cjtc_DdReportProcessingPerBC_r19_MaxNumberCSI_RS_ResourceAcrossCC_r19_N32 = 9
+	CA_ParametersNR_v1900_Cjtc_DdReportProcessingPerBC_r19_MaxNumberCSI_RS_ResourceAcrossCC_r19_N64 = 10
+)
+
+var cAParametersNRV1900CjtcDdReportProcessingPerBCR19MaxNumberCSIRSResourceAcrossCCR19Constraints = per.EnumeratedConstraints{
+	Extensible: false,
+	RootValues: []int64{CA_ParametersNR_v1900_Cjtc_DdReportProcessingPerBC_r19_MaxNumberCSI_RS_ResourceAcrossCC_r19_N2, CA_ParametersNR_v1900_Cjtc_DdReportProcessingPerBC_r19_MaxNumberCSI_RS_ResourceAcrossCC_r19_N4, CA_ParametersNR_v1900_Cjtc_DdReportProcessingPerBC_r19_MaxNumberCSI_RS_ResourceAcrossCC_r19_N6, CA_ParametersNR_v1900_Cjtc_DdReportProcessingPerBC_r19_MaxNumberCSI_RS_ResourceAcrossCC_r19_N8, CA_ParametersNR_v1900_Cjtc_DdReportProcessingPerBC_r19_MaxNumberCSI_RS_ResourceAcrossCC_r19_N12, CA_ParametersNR_v1900_Cjtc_DdReportProcessingPerBC_r19_MaxNumberCSI_RS_ResourceAcrossCC_r19_N16, CA_ParametersNR_v1900_Cjtc_DdReportProcessingPerBC_r19_MaxNumberCSI_RS_ResourceAcrossCC_r19_N20, CA_ParametersNR_v1900_Cjtc_DdReportProcessingPerBC_r19_MaxNumberCSI_RS_ResourceAcrossCC_r19_N24, CA_ParametersNR_v1900_Cjtc_DdReportProcessingPerBC_r19_MaxNumberCSI_RS_ResourceAcrossCC_r19_N28, CA_ParametersNR_v1900_Cjtc_DdReportProcessingPerBC_r19_MaxNumberCSI_RS_ResourceAcrossCC_r19_N32, CA_ParametersNR_v1900_Cjtc_DdReportProcessingPerBC_r19_MaxNumberCSI_RS_ResourceAcrossCC_r19_N64},
+}
+
+const (
+	CA_ParametersNR_v1900_Cjtc_FO_ReportPerBC_r19_MinRangeFO_r19_PpmDot1 = 0
+	CA_ParametersNR_v1900_Cjtc_FO_ReportPerBC_r19_MinRangeFO_r19_PpmDot2 = 1
+)
+
+var cAParametersNRV1900CjtcFOReportPerBCR19MinRangeFOR19Constraints = per.EnumeratedConstraints{
+	Extensible: false,
+	RootValues: []int64{CA_ParametersNR_v1900_Cjtc_FO_ReportPerBC_r19_MinRangeFO_r19_PpmDot1, CA_ParametersNR_v1900_Cjtc_FO_ReportPerBC_r19_MinRangeFO_r19_PpmDot2},
+}
+
+const (
+	CA_ParametersNR_v1900_Cjtc_FO_ReportPerBC_r19_MaxResolutionFO_r19_N16  = 0
+	CA_ParametersNR_v1900_Cjtc_FO_ReportPerBC_r19_MaxResolutionFO_r19_N32  = 1
+	CA_ParametersNR_v1900_Cjtc_FO_ReportPerBC_r19_MaxResolutionFO_r19_N256 = 2
+)
+
+var cAParametersNRV1900CjtcFOReportPerBCR19MaxResolutionFOR19Constraints = per.EnumeratedConstraints{
+	Extensible: false,
+	RootValues: []int64{CA_ParametersNR_v1900_Cjtc_FO_ReportPerBC_r19_MaxResolutionFO_r19_N16, CA_ParametersNR_v1900_Cjtc_FO_ReportPerBC_r19_MaxResolutionFO_r19_N32, CA_ParametersNR_v1900_Cjtc_FO_ReportPerBC_r19_MaxResolutionFO_r19_N256},
+}
+
+const (
+	CA_ParametersNR_v1900_Cjtc_FO_ReportProcessingPerBC_r19_MaxNumberTRS_Resource_r19_N2  = 0
+	CA_ParametersNR_v1900_Cjtc_FO_ReportProcessingPerBC_r19_MaxNumberTRS_Resource_r19_N4  = 1
+	CA_ParametersNR_v1900_Cjtc_FO_ReportProcessingPerBC_r19_MaxNumberTRS_Resource_r19_N6  = 2
+	CA_ParametersNR_v1900_Cjtc_FO_ReportProcessingPerBC_r19_MaxNumberTRS_Resource_r19_N8  = 3
+	CA_ParametersNR_v1900_Cjtc_FO_ReportProcessingPerBC_r19_MaxNumberTRS_Resource_r19_N10 = 4
+	CA_ParametersNR_v1900_Cjtc_FO_ReportProcessingPerBC_r19_MaxNumberTRS_Resource_r19_N12 = 5
+)
+
+var cAParametersNRV1900CjtcFOReportProcessingPerBCR19MaxNumberTRSResourceR19Constraints = per.EnumeratedConstraints{
+	Extensible: false,
+	RootValues: []int64{CA_ParametersNR_v1900_Cjtc_FO_ReportProcessingPerBC_r19_MaxNumberTRS_Resource_r19_N2, CA_ParametersNR_v1900_Cjtc_FO_ReportProcessingPerBC_r19_MaxNumberTRS_Resource_r19_N4, CA_ParametersNR_v1900_Cjtc_FO_ReportProcessingPerBC_r19_MaxNumberTRS_Resource_r19_N6, CA_ParametersNR_v1900_Cjtc_FO_ReportProcessingPerBC_r19_MaxNumberTRS_Resource_r19_N8, CA_ParametersNR_v1900_Cjtc_FO_ReportProcessingPerBC_r19_MaxNumberTRS_Resource_r19_N10, CA_ParametersNR_v1900_Cjtc_FO_ReportProcessingPerBC_r19_MaxNumberTRS_Resource_r19_N12},
+}
+
+const (
+	CA_ParametersNR_v1900_Cjtc_FO_ReportProcessingPerBC_r19_MaxNumberTRS_ResourceAcrossCC_r19_N2  = 0
+	CA_ParametersNR_v1900_Cjtc_FO_ReportProcessingPerBC_r19_MaxNumberTRS_ResourceAcrossCC_r19_N4  = 1
+	CA_ParametersNR_v1900_Cjtc_FO_ReportProcessingPerBC_r19_MaxNumberTRS_ResourceAcrossCC_r19_N6  = 2
+	CA_ParametersNR_v1900_Cjtc_FO_ReportProcessingPerBC_r19_MaxNumberTRS_ResourceAcrossCC_r19_N8  = 3
+	CA_ParametersNR_v1900_Cjtc_FO_ReportProcessingPerBC_r19_MaxNumberTRS_ResourceAcrossCC_r19_N12 = 4
+	CA_ParametersNR_v1900_Cjtc_FO_ReportProcessingPerBC_r19_MaxNumberTRS_ResourceAcrossCC_r19_N64 = 5
+)
+
+var cAParametersNRV1900CjtcFOReportProcessingPerBCR19MaxNumberTRSResourceAcrossCCR19Constraints = per.EnumeratedConstraints{
+	Extensible: false,
+	RootValues: []int64{CA_ParametersNR_v1900_Cjtc_FO_ReportProcessingPerBC_r19_MaxNumberTRS_ResourceAcrossCC_r19_N2, CA_ParametersNR_v1900_Cjtc_FO_ReportProcessingPerBC_r19_MaxNumberTRS_ResourceAcrossCC_r19_N4, CA_ParametersNR_v1900_Cjtc_FO_ReportProcessingPerBC_r19_MaxNumberTRS_ResourceAcrossCC_r19_N6, CA_ParametersNR_v1900_Cjtc_FO_ReportProcessingPerBC_r19_MaxNumberTRS_ResourceAcrossCC_r19_N8, CA_ParametersNR_v1900_Cjtc_FO_ReportProcessingPerBC_r19_MaxNumberTRS_ResourceAcrossCC_r19_N12, CA_ParametersNR_v1900_Cjtc_FO_ReportProcessingPerBC_r19_MaxNumberTRS_ResourceAcrossCC_r19_N64},
+}
+
+const (
+	CA_ParametersNR_v1900_Cjtc_FO_ReportProcessingPerBC_r19_MaxNumberCSI_RS_ResourcePerCC_r19_N2  = 0
+	CA_ParametersNR_v1900_Cjtc_FO_ReportProcessingPerBC_r19_MaxNumberCSI_RS_ResourcePerCC_r19_N4  = 1
+	CA_ParametersNR_v1900_Cjtc_FO_ReportProcessingPerBC_r19_MaxNumberCSI_RS_ResourcePerCC_r19_N6  = 2
+	CA_ParametersNR_v1900_Cjtc_FO_ReportProcessingPerBC_r19_MaxNumberCSI_RS_ResourcePerCC_r19_N8  = 3
+	CA_ParametersNR_v1900_Cjtc_FO_ReportProcessingPerBC_r19_MaxNumberCSI_RS_ResourcePerCC_r19_N12 = 4
+	CA_ParametersNR_v1900_Cjtc_FO_ReportProcessingPerBC_r19_MaxNumberCSI_RS_ResourcePerCC_r19_N16 = 5
+	CA_ParametersNR_v1900_Cjtc_FO_ReportProcessingPerBC_r19_MaxNumberCSI_RS_ResourcePerCC_r19_N20 = 6
+	CA_ParametersNR_v1900_Cjtc_FO_ReportProcessingPerBC_r19_MaxNumberCSI_RS_ResourcePerCC_r19_N24 = 7
+	CA_ParametersNR_v1900_Cjtc_FO_ReportProcessingPerBC_r19_MaxNumberCSI_RS_ResourcePerCC_r19_N28 = 8
+	CA_ParametersNR_v1900_Cjtc_FO_ReportProcessingPerBC_r19_MaxNumberCSI_RS_ResourcePerCC_r19_N32 = 9
+)
+
+var cAParametersNRV1900CjtcFOReportProcessingPerBCR19MaxNumberCSIRSResourcePerCCR19Constraints = per.EnumeratedConstraints{
+	Extensible: false,
+	RootValues: []int64{CA_ParametersNR_v1900_Cjtc_FO_ReportProcessingPerBC_r19_MaxNumberCSI_RS_ResourcePerCC_r19_N2, CA_ParametersNR_v1900_Cjtc_FO_ReportProcessingPerBC_r19_MaxNumberCSI_RS_ResourcePerCC_r19_N4, CA_ParametersNR_v1900_Cjtc_FO_ReportProcessingPerBC_r19_MaxNumberCSI_RS_ResourcePerCC_r19_N6, CA_ParametersNR_v1900_Cjtc_FO_ReportProcessingPerBC_r19_MaxNumberCSI_RS_ResourcePerCC_r19_N8, CA_ParametersNR_v1900_Cjtc_FO_ReportProcessingPerBC_r19_MaxNumberCSI_RS_ResourcePerCC_r19_N12, CA_ParametersNR_v1900_Cjtc_FO_ReportProcessingPerBC_r19_MaxNumberCSI_RS_ResourcePerCC_r19_N16, CA_ParametersNR_v1900_Cjtc_FO_ReportProcessingPerBC_r19_MaxNumberCSI_RS_ResourcePerCC_r19_N20, CA_ParametersNR_v1900_Cjtc_FO_ReportProcessingPerBC_r19_MaxNumberCSI_RS_ResourcePerCC_r19_N24, CA_ParametersNR_v1900_Cjtc_FO_ReportProcessingPerBC_r19_MaxNumberCSI_RS_ResourcePerCC_r19_N28, CA_ParametersNR_v1900_Cjtc_FO_ReportProcessingPerBC_r19_MaxNumberCSI_RS_ResourcePerCC_r19_N32},
+}
+
+const (
+	CA_ParametersNR_v1900_Cjtc_FO_ReportProcessingPerBC_r19_MaxNumberCSI_RS_ResourceAcrossCC_r19_N2  = 0
+	CA_ParametersNR_v1900_Cjtc_FO_ReportProcessingPerBC_r19_MaxNumberCSI_RS_ResourceAcrossCC_r19_N4  = 1
+	CA_ParametersNR_v1900_Cjtc_FO_ReportProcessingPerBC_r19_MaxNumberCSI_RS_ResourceAcrossCC_r19_N6  = 2
+	CA_ParametersNR_v1900_Cjtc_FO_ReportProcessingPerBC_r19_MaxNumberCSI_RS_ResourceAcrossCC_r19_N8  = 3
+	CA_ParametersNR_v1900_Cjtc_FO_ReportProcessingPerBC_r19_MaxNumberCSI_RS_ResourceAcrossCC_r19_N12 = 4
+	CA_ParametersNR_v1900_Cjtc_FO_ReportProcessingPerBC_r19_MaxNumberCSI_RS_ResourceAcrossCC_r19_N16 = 5
+	CA_ParametersNR_v1900_Cjtc_FO_ReportProcessingPerBC_r19_MaxNumberCSI_RS_ResourceAcrossCC_r19_N20 = 6
+	CA_ParametersNR_v1900_Cjtc_FO_ReportProcessingPerBC_r19_MaxNumberCSI_RS_ResourceAcrossCC_r19_N24 = 7
+	CA_ParametersNR_v1900_Cjtc_FO_ReportProcessingPerBC_r19_MaxNumberCSI_RS_ResourceAcrossCC_r19_N28 = 8
+	CA_ParametersNR_v1900_Cjtc_FO_ReportProcessingPerBC_r19_MaxNumberCSI_RS_ResourceAcrossCC_r19_N32 = 9
+	CA_ParametersNR_v1900_Cjtc_FO_ReportProcessingPerBC_r19_MaxNumberCSI_RS_ResourceAcrossCC_r19_N64 = 10
+)
+
+var cAParametersNRV1900CjtcFOReportProcessingPerBCR19MaxNumberCSIRSResourceAcrossCCR19Constraints = per.EnumeratedConstraints{
+	Extensible: false,
+	RootValues: []int64{CA_ParametersNR_v1900_Cjtc_FO_ReportProcessingPerBC_r19_MaxNumberCSI_RS_ResourceAcrossCC_r19_N2, CA_ParametersNR_v1900_Cjtc_FO_ReportProcessingPerBC_r19_MaxNumberCSI_RS_ResourceAcrossCC_r19_N4, CA_ParametersNR_v1900_Cjtc_FO_ReportProcessingPerBC_r19_MaxNumberCSI_RS_ResourceAcrossCC_r19_N6, CA_ParametersNR_v1900_Cjtc_FO_ReportProcessingPerBC_r19_MaxNumberCSI_RS_ResourceAcrossCC_r19_N8, CA_ParametersNR_v1900_Cjtc_FO_ReportProcessingPerBC_r19_MaxNumberCSI_RS_ResourceAcrossCC_r19_N12, CA_ParametersNR_v1900_Cjtc_FO_ReportProcessingPerBC_r19_MaxNumberCSI_RS_ResourceAcrossCC_r19_N16, CA_ParametersNR_v1900_Cjtc_FO_ReportProcessingPerBC_r19_MaxNumberCSI_RS_ResourceAcrossCC_r19_N20, CA_ParametersNR_v1900_Cjtc_FO_ReportProcessingPerBC_r19_MaxNumberCSI_RS_ResourceAcrossCC_r19_N24, CA_ParametersNR_v1900_Cjtc_FO_ReportProcessingPerBC_r19_MaxNumberCSI_RS_ResourceAcrossCC_r19_N28, CA_ParametersNR_v1900_Cjtc_FO_ReportProcessingPerBC_r19_MaxNumberCSI_RS_ResourceAcrossCC_r19_N32, CA_ParametersNR_v1900_Cjtc_FO_ReportProcessingPerBC_r19_MaxNumberCSI_RS_ResourceAcrossCC_r19_N64},
+}
+
+const (
+	CA_ParametersNR_v1900_Cjtc_PO_ReportWidebandPerBC_r19_MaxResolution_r19_N16 = 0
+	CA_ParametersNR_v1900_Cjtc_PO_ReportWidebandPerBC_r19_MaxResolution_r19_N32 = 1
+)
+
+var cAParametersNRV1900CjtcPOReportWidebandPerBCR19MaxResolutionR19Constraints = per.EnumeratedConstraints{
+	Extensible: false,
+	RootValues: []int64{CA_ParametersNR_v1900_Cjtc_PO_ReportWidebandPerBC_r19_MaxResolution_r19_N16, CA_ParametersNR_v1900_Cjtc_PO_ReportWidebandPerBC_r19_MaxResolution_r19_N32},
+}
+
+const (
+	CA_ParametersNR_v1900_Cjtc_PO_ReportWidebandProcessingPerBC_r19_MaxNumberCSI_RS_Configured_r19_N2  = 0
+	CA_ParametersNR_v1900_Cjtc_PO_ReportWidebandProcessingPerBC_r19_MaxNumberCSI_RS_Configured_r19_N4  = 1
+	CA_ParametersNR_v1900_Cjtc_PO_ReportWidebandProcessingPerBC_r19_MaxNumberCSI_RS_Configured_r19_N6  = 2
+	CA_ParametersNR_v1900_Cjtc_PO_ReportWidebandProcessingPerBC_r19_MaxNumberCSI_RS_Configured_r19_N8  = 3
+	CA_ParametersNR_v1900_Cjtc_PO_ReportWidebandProcessingPerBC_r19_MaxNumberCSI_RS_Configured_r19_N10 = 4
+	CA_ParametersNR_v1900_Cjtc_PO_ReportWidebandProcessingPerBC_r19_MaxNumberCSI_RS_Configured_r19_N12 = 5
+)
+
+var cAParametersNRV1900CjtcPOReportWidebandProcessingPerBCR19MaxNumberCSIRSConfiguredR19Constraints = per.EnumeratedConstraints{
+	Extensible: false,
+	RootValues: []int64{CA_ParametersNR_v1900_Cjtc_PO_ReportWidebandProcessingPerBC_r19_MaxNumberCSI_RS_Configured_r19_N2, CA_ParametersNR_v1900_Cjtc_PO_ReportWidebandProcessingPerBC_r19_MaxNumberCSI_RS_Configured_r19_N4, CA_ParametersNR_v1900_Cjtc_PO_ReportWidebandProcessingPerBC_r19_MaxNumberCSI_RS_Configured_r19_N6, CA_ParametersNR_v1900_Cjtc_PO_ReportWidebandProcessingPerBC_r19_MaxNumberCSI_RS_Configured_r19_N8, CA_ParametersNR_v1900_Cjtc_PO_ReportWidebandProcessingPerBC_r19_MaxNumberCSI_RS_Configured_r19_N10, CA_ParametersNR_v1900_Cjtc_PO_ReportWidebandProcessingPerBC_r19_MaxNumberCSI_RS_Configured_r19_N12},
+}
+
+const (
+	CA_ParametersNR_v1900_Cjtc_PO_ReportWidebandProcessingPerBC_r19_MaxNumberCSI_RS_ConfiguredAcrossCC_r19_N2  = 0
+	CA_ParametersNR_v1900_Cjtc_PO_ReportWidebandProcessingPerBC_r19_MaxNumberCSI_RS_ConfiguredAcrossCC_r19_N4  = 1
+	CA_ParametersNR_v1900_Cjtc_PO_ReportWidebandProcessingPerBC_r19_MaxNumberCSI_RS_ConfiguredAcrossCC_r19_N6  = 2
+	CA_ParametersNR_v1900_Cjtc_PO_ReportWidebandProcessingPerBC_r19_MaxNumberCSI_RS_ConfiguredAcrossCC_r19_N8  = 3
+	CA_ParametersNR_v1900_Cjtc_PO_ReportWidebandProcessingPerBC_r19_MaxNumberCSI_RS_ConfiguredAcrossCC_r19_N12 = 4
+	CA_ParametersNR_v1900_Cjtc_PO_ReportWidebandProcessingPerBC_r19_MaxNumberCSI_RS_ConfiguredAcrossCC_r19_N64 = 5
+)
+
+var cAParametersNRV1900CjtcPOReportWidebandProcessingPerBCR19MaxNumberCSIRSConfiguredAcrossCCR19Constraints = per.EnumeratedConstraints{
+	Extensible: false,
+	RootValues: []int64{CA_ParametersNR_v1900_Cjtc_PO_ReportWidebandProcessingPerBC_r19_MaxNumberCSI_RS_ConfiguredAcrossCC_r19_N2, CA_ParametersNR_v1900_Cjtc_PO_ReportWidebandProcessingPerBC_r19_MaxNumberCSI_RS_ConfiguredAcrossCC_r19_N4, CA_ParametersNR_v1900_Cjtc_PO_ReportWidebandProcessingPerBC_r19_MaxNumberCSI_RS_ConfiguredAcrossCC_r19_N6, CA_ParametersNR_v1900_Cjtc_PO_ReportWidebandProcessingPerBC_r19_MaxNumberCSI_RS_ConfiguredAcrossCC_r19_N8, CA_ParametersNR_v1900_Cjtc_PO_ReportWidebandProcessingPerBC_r19_MaxNumberCSI_RS_ConfiguredAcrossCC_r19_N12, CA_ParametersNR_v1900_Cjtc_PO_ReportWidebandProcessingPerBC_r19_MaxNumberCSI_RS_ConfiguredAcrossCC_r19_N64},
+}
+
+const (
+	CA_ParametersNR_v1900_Cjtc_PO_ReportWidebandProcessingPerBC_r19_MaxNumberCSI_RS_ResourcePerCC_r19_N2  = 0
+	CA_ParametersNR_v1900_Cjtc_PO_ReportWidebandProcessingPerBC_r19_MaxNumberCSI_RS_ResourcePerCC_r19_N4  = 1
+	CA_ParametersNR_v1900_Cjtc_PO_ReportWidebandProcessingPerBC_r19_MaxNumberCSI_RS_ResourcePerCC_r19_N6  = 2
+	CA_ParametersNR_v1900_Cjtc_PO_ReportWidebandProcessingPerBC_r19_MaxNumberCSI_RS_ResourcePerCC_r19_N8  = 3
+	CA_ParametersNR_v1900_Cjtc_PO_ReportWidebandProcessingPerBC_r19_MaxNumberCSI_RS_ResourcePerCC_r19_N12 = 4
+	CA_ParametersNR_v1900_Cjtc_PO_ReportWidebandProcessingPerBC_r19_MaxNumberCSI_RS_ResourcePerCC_r19_N16 = 5
+	CA_ParametersNR_v1900_Cjtc_PO_ReportWidebandProcessingPerBC_r19_MaxNumberCSI_RS_ResourcePerCC_r19_N20 = 6
+	CA_ParametersNR_v1900_Cjtc_PO_ReportWidebandProcessingPerBC_r19_MaxNumberCSI_RS_ResourcePerCC_r19_N24 = 7
+	CA_ParametersNR_v1900_Cjtc_PO_ReportWidebandProcessingPerBC_r19_MaxNumberCSI_RS_ResourcePerCC_r19_N28 = 8
+	CA_ParametersNR_v1900_Cjtc_PO_ReportWidebandProcessingPerBC_r19_MaxNumberCSI_RS_ResourcePerCC_r19_N32 = 9
+)
+
+var cAParametersNRV1900CjtcPOReportWidebandProcessingPerBCR19MaxNumberCSIRSResourcePerCCR19Constraints = per.EnumeratedConstraints{
+	Extensible: false,
+	RootValues: []int64{CA_ParametersNR_v1900_Cjtc_PO_ReportWidebandProcessingPerBC_r19_MaxNumberCSI_RS_ResourcePerCC_r19_N2, CA_ParametersNR_v1900_Cjtc_PO_ReportWidebandProcessingPerBC_r19_MaxNumberCSI_RS_ResourcePerCC_r19_N4, CA_ParametersNR_v1900_Cjtc_PO_ReportWidebandProcessingPerBC_r19_MaxNumberCSI_RS_ResourcePerCC_r19_N6, CA_ParametersNR_v1900_Cjtc_PO_ReportWidebandProcessingPerBC_r19_MaxNumberCSI_RS_ResourcePerCC_r19_N8, CA_ParametersNR_v1900_Cjtc_PO_ReportWidebandProcessingPerBC_r19_MaxNumberCSI_RS_ResourcePerCC_r19_N12, CA_ParametersNR_v1900_Cjtc_PO_ReportWidebandProcessingPerBC_r19_MaxNumberCSI_RS_ResourcePerCC_r19_N16, CA_ParametersNR_v1900_Cjtc_PO_ReportWidebandProcessingPerBC_r19_MaxNumberCSI_RS_ResourcePerCC_r19_N20, CA_ParametersNR_v1900_Cjtc_PO_ReportWidebandProcessingPerBC_r19_MaxNumberCSI_RS_ResourcePerCC_r19_N24, CA_ParametersNR_v1900_Cjtc_PO_ReportWidebandProcessingPerBC_r19_MaxNumberCSI_RS_ResourcePerCC_r19_N28, CA_ParametersNR_v1900_Cjtc_PO_ReportWidebandProcessingPerBC_r19_MaxNumberCSI_RS_ResourcePerCC_r19_N32},
+}
+
+const (
+	CA_ParametersNR_v1900_Cjtc_PO_ReportWidebandProcessingPerBC_r19_MaxNumberCSI_RS_ResourceAcrossCC_r19_N2  = 0
+	CA_ParametersNR_v1900_Cjtc_PO_ReportWidebandProcessingPerBC_r19_MaxNumberCSI_RS_ResourceAcrossCC_r19_N4  = 1
+	CA_ParametersNR_v1900_Cjtc_PO_ReportWidebandProcessingPerBC_r19_MaxNumberCSI_RS_ResourceAcrossCC_r19_N6  = 2
+	CA_ParametersNR_v1900_Cjtc_PO_ReportWidebandProcessingPerBC_r19_MaxNumberCSI_RS_ResourceAcrossCC_r19_N8  = 3
+	CA_ParametersNR_v1900_Cjtc_PO_ReportWidebandProcessingPerBC_r19_MaxNumberCSI_RS_ResourceAcrossCC_r19_N12 = 4
+	CA_ParametersNR_v1900_Cjtc_PO_ReportWidebandProcessingPerBC_r19_MaxNumberCSI_RS_ResourceAcrossCC_r19_N16 = 5
+	CA_ParametersNR_v1900_Cjtc_PO_ReportWidebandProcessingPerBC_r19_MaxNumberCSI_RS_ResourceAcrossCC_r19_N20 = 6
+	CA_ParametersNR_v1900_Cjtc_PO_ReportWidebandProcessingPerBC_r19_MaxNumberCSI_RS_ResourceAcrossCC_r19_N24 = 7
+	CA_ParametersNR_v1900_Cjtc_PO_ReportWidebandProcessingPerBC_r19_MaxNumberCSI_RS_ResourceAcrossCC_r19_N28 = 8
+	CA_ParametersNR_v1900_Cjtc_PO_ReportWidebandProcessingPerBC_r19_MaxNumberCSI_RS_ResourceAcrossCC_r19_N32 = 9
+	CA_ParametersNR_v1900_Cjtc_PO_ReportWidebandProcessingPerBC_r19_MaxNumberCSI_RS_ResourceAcrossCC_r19_N64 = 10
+)
+
+var cAParametersNRV1900CjtcPOReportWidebandProcessingPerBCR19MaxNumberCSIRSResourceAcrossCCR19Constraints = per.EnumeratedConstraints{
+	Extensible: false,
+	RootValues: []int64{CA_ParametersNR_v1900_Cjtc_PO_ReportWidebandProcessingPerBC_r19_MaxNumberCSI_RS_ResourceAcrossCC_r19_N2, CA_ParametersNR_v1900_Cjtc_PO_ReportWidebandProcessingPerBC_r19_MaxNumberCSI_RS_ResourceAcrossCC_r19_N4, CA_ParametersNR_v1900_Cjtc_PO_ReportWidebandProcessingPerBC_r19_MaxNumberCSI_RS_ResourceAcrossCC_r19_N6, CA_ParametersNR_v1900_Cjtc_PO_ReportWidebandProcessingPerBC_r19_MaxNumberCSI_RS_ResourceAcrossCC_r19_N8, CA_ParametersNR_v1900_Cjtc_PO_ReportWidebandProcessingPerBC_r19_MaxNumberCSI_RS_ResourceAcrossCC_r19_N12, CA_ParametersNR_v1900_Cjtc_PO_ReportWidebandProcessingPerBC_r19_MaxNumberCSI_RS_ResourceAcrossCC_r19_N16, CA_ParametersNR_v1900_Cjtc_PO_ReportWidebandProcessingPerBC_r19_MaxNumberCSI_RS_ResourceAcrossCC_r19_N20, CA_ParametersNR_v1900_Cjtc_PO_ReportWidebandProcessingPerBC_r19_MaxNumberCSI_RS_ResourceAcrossCC_r19_N24, CA_ParametersNR_v1900_Cjtc_PO_ReportWidebandProcessingPerBC_r19_MaxNumberCSI_RS_ResourceAcrossCC_r19_N28, CA_ParametersNR_v1900_Cjtc_PO_ReportWidebandProcessingPerBC_r19_MaxNumberCSI_RS_ResourceAcrossCC_r19_N32, CA_ParametersNR_v1900_Cjtc_PO_ReportWidebandProcessingPerBC_r19_MaxNumberCSI_RS_ResourceAcrossCC_r19_N64},
+}
+
+const (
+	CA_ParametersNR_v1900_Cjtc_PO_ReportSubbandPerBC_r19_MaxResolution_r19_N16 = 0
+	CA_ParametersNR_v1900_Cjtc_PO_ReportSubbandPerBC_r19_MaxResolution_r19_N32 = 1
+)
+
+var cAParametersNRV1900CjtcPOReportSubbandPerBCR19MaxResolutionR19Constraints = per.EnumeratedConstraints{
+	Extensible: false,
+	RootValues: []int64{CA_ParametersNR_v1900_Cjtc_PO_ReportSubbandPerBC_r19_MaxResolution_r19_N16, CA_ParametersNR_v1900_Cjtc_PO_ReportSubbandPerBC_r19_MaxResolution_r19_N32},
+}
+
+const (
+	CA_ParametersNR_v1900_Cjtc_PO_ReportSubbandPerBC_r19_MinSubbandSize_r19_N1  = 0
+	CA_ParametersNR_v1900_Cjtc_PO_ReportSubbandPerBC_r19_MinSubbandSize_r19_N2  = 1
+	CA_ParametersNR_v1900_Cjtc_PO_ReportSubbandPerBC_r19_MinSubbandSize_r19_N4  = 2
+	CA_ParametersNR_v1900_Cjtc_PO_ReportSubbandPerBC_r19_MinSubbandSize_r19_N8  = 3
+	CA_ParametersNR_v1900_Cjtc_PO_ReportSubbandPerBC_r19_MinSubbandSize_r19_N16 = 4
+)
+
+var cAParametersNRV1900CjtcPOReportSubbandPerBCR19MinSubbandSizeR19Constraints = per.EnumeratedConstraints{
+	Extensible: false,
+	RootValues: []int64{CA_ParametersNR_v1900_Cjtc_PO_ReportSubbandPerBC_r19_MinSubbandSize_r19_N1, CA_ParametersNR_v1900_Cjtc_PO_ReportSubbandPerBC_r19_MinSubbandSize_r19_N2, CA_ParametersNR_v1900_Cjtc_PO_ReportSubbandPerBC_r19_MinSubbandSize_r19_N4, CA_ParametersNR_v1900_Cjtc_PO_ReportSubbandPerBC_r19_MinSubbandSize_r19_N8, CA_ParametersNR_v1900_Cjtc_PO_ReportSubbandPerBC_r19_MinSubbandSize_r19_N16},
+}
+
+const (
+	CA_ParametersNR_v1900_Cjtc_DdFO_ReportPerBC_r19_MinRangeDdInCyclicPrefix_r19_Half = 0
+	CA_ParametersNR_v1900_Cjtc_DdFO_ReportPerBC_r19_MinRangeDdInCyclicPrefix_r19_Full = 1
+)
+
+var cAParametersNRV1900CjtcDdFOReportPerBCR19MinRangeDdInCyclicPrefixR19Constraints = per.EnumeratedConstraints{
+	Extensible: false,
+	RootValues: []int64{CA_ParametersNR_v1900_Cjtc_DdFO_ReportPerBC_r19_MinRangeDdInCyclicPrefix_r19_Half, CA_ParametersNR_v1900_Cjtc_DdFO_ReportPerBC_r19_MinRangeDdInCyclicPrefix_r19_Full},
+}
+
+const (
+	CA_ParametersNR_v1900_Cjtc_DdFO_ReportPerBC_r19_MaxResolutionDd_r19_N32  = 0
+	CA_ParametersNR_v1900_Cjtc_DdFO_ReportPerBC_r19_MaxResolutionDd_r19_N64  = 1
+	CA_ParametersNR_v1900_Cjtc_DdFO_ReportPerBC_r19_MaxResolutionDd_r19_N128 = 2
+	CA_ParametersNR_v1900_Cjtc_DdFO_ReportPerBC_r19_MaxResolutionDd_r19_N256 = 3
+)
+
+var cAParametersNRV1900CjtcDdFOReportPerBCR19MaxResolutionDdR19Constraints = per.EnumeratedConstraints{
+	Extensible: false,
+	RootValues: []int64{CA_ParametersNR_v1900_Cjtc_DdFO_ReportPerBC_r19_MaxResolutionDd_r19_N32, CA_ParametersNR_v1900_Cjtc_DdFO_ReportPerBC_r19_MaxResolutionDd_r19_N64, CA_ParametersNR_v1900_Cjtc_DdFO_ReportPerBC_r19_MaxResolutionDd_r19_N128, CA_ParametersNR_v1900_Cjtc_DdFO_ReportPerBC_r19_MaxResolutionDd_r19_N256},
+}
+
+const (
+	CA_ParametersNR_v1900_Cjtc_DdFO_ReportPerBC_r19_MinRangeFO_r19_PpmDot1 = 0
+	CA_ParametersNR_v1900_Cjtc_DdFO_ReportPerBC_r19_MinRangeFO_r19_PpmDot2 = 1
+)
+
+var cAParametersNRV1900CjtcDdFOReportPerBCR19MinRangeFOR19Constraints = per.EnumeratedConstraints{
+	Extensible: false,
+	RootValues: []int64{CA_ParametersNR_v1900_Cjtc_DdFO_ReportPerBC_r19_MinRangeFO_r19_PpmDot1, CA_ParametersNR_v1900_Cjtc_DdFO_ReportPerBC_r19_MinRangeFO_r19_PpmDot2},
+}
+
+const (
+	CA_ParametersNR_v1900_Cjtc_DdFO_ReportPerBC_r19_MaxResolutionFO_r19_N16  = 0
+	CA_ParametersNR_v1900_Cjtc_DdFO_ReportPerBC_r19_MaxResolutionFO_r19_N32  = 1
+	CA_ParametersNR_v1900_Cjtc_DdFO_ReportPerBC_r19_MaxResolutionFO_r19_N256 = 2
+)
+
+var cAParametersNRV1900CjtcDdFOReportPerBCR19MaxResolutionFOR19Constraints = per.EnumeratedConstraints{
+	Extensible: false,
+	RootValues: []int64{CA_ParametersNR_v1900_Cjtc_DdFO_ReportPerBC_r19_MaxResolutionFO_r19_N16, CA_ParametersNR_v1900_Cjtc_DdFO_ReportPerBC_r19_MaxResolutionFO_r19_N32, CA_ParametersNR_v1900_Cjtc_DdFO_ReportPerBC_r19_MaxResolutionFO_r19_N256},
+}
+
+const (
+	CA_ParametersNR_v1900_Cjtc_DdFO_ReportProcessingPerBC_r19_MaxNumberTRS_Resource_r19_N2  = 0
+	CA_ParametersNR_v1900_Cjtc_DdFO_ReportProcessingPerBC_r19_MaxNumberTRS_Resource_r19_N4  = 1
+	CA_ParametersNR_v1900_Cjtc_DdFO_ReportProcessingPerBC_r19_MaxNumberTRS_Resource_r19_N6  = 2
+	CA_ParametersNR_v1900_Cjtc_DdFO_ReportProcessingPerBC_r19_MaxNumberTRS_Resource_r19_N8  = 3
+	CA_ParametersNR_v1900_Cjtc_DdFO_ReportProcessingPerBC_r19_MaxNumberTRS_Resource_r19_N10 = 4
+	CA_ParametersNR_v1900_Cjtc_DdFO_ReportProcessingPerBC_r19_MaxNumberTRS_Resource_r19_N12 = 5
+)
+
+var cAParametersNRV1900CjtcDdFOReportProcessingPerBCR19MaxNumberTRSResourceR19Constraints = per.EnumeratedConstraints{
+	Extensible: false,
+	RootValues: []int64{CA_ParametersNR_v1900_Cjtc_DdFO_ReportProcessingPerBC_r19_MaxNumberTRS_Resource_r19_N2, CA_ParametersNR_v1900_Cjtc_DdFO_ReportProcessingPerBC_r19_MaxNumberTRS_Resource_r19_N4, CA_ParametersNR_v1900_Cjtc_DdFO_ReportProcessingPerBC_r19_MaxNumberTRS_Resource_r19_N6, CA_ParametersNR_v1900_Cjtc_DdFO_ReportProcessingPerBC_r19_MaxNumberTRS_Resource_r19_N8, CA_ParametersNR_v1900_Cjtc_DdFO_ReportProcessingPerBC_r19_MaxNumberTRS_Resource_r19_N10, CA_ParametersNR_v1900_Cjtc_DdFO_ReportProcessingPerBC_r19_MaxNumberTRS_Resource_r19_N12},
+}
+
+const (
+	CA_ParametersNR_v1900_Cjtc_DdFO_ReportProcessingPerBC_r19_MaxNumberTRS_ResourceAcrossCC_r19_N2  = 0
+	CA_ParametersNR_v1900_Cjtc_DdFO_ReportProcessingPerBC_r19_MaxNumberTRS_ResourceAcrossCC_r19_N4  = 1
+	CA_ParametersNR_v1900_Cjtc_DdFO_ReportProcessingPerBC_r19_MaxNumberTRS_ResourceAcrossCC_r19_N6  = 2
+	CA_ParametersNR_v1900_Cjtc_DdFO_ReportProcessingPerBC_r19_MaxNumberTRS_ResourceAcrossCC_r19_N8  = 3
+	CA_ParametersNR_v1900_Cjtc_DdFO_ReportProcessingPerBC_r19_MaxNumberTRS_ResourceAcrossCC_r19_N12 = 4
+	CA_ParametersNR_v1900_Cjtc_DdFO_ReportProcessingPerBC_r19_MaxNumberTRS_ResourceAcrossCC_r19_N64 = 5
+)
+
+var cAParametersNRV1900CjtcDdFOReportProcessingPerBCR19MaxNumberTRSResourceAcrossCCR19Constraints = per.EnumeratedConstraints{
+	Extensible: false,
+	RootValues: []int64{CA_ParametersNR_v1900_Cjtc_DdFO_ReportProcessingPerBC_r19_MaxNumberTRS_ResourceAcrossCC_r19_N2, CA_ParametersNR_v1900_Cjtc_DdFO_ReportProcessingPerBC_r19_MaxNumberTRS_ResourceAcrossCC_r19_N4, CA_ParametersNR_v1900_Cjtc_DdFO_ReportProcessingPerBC_r19_MaxNumberTRS_ResourceAcrossCC_r19_N6, CA_ParametersNR_v1900_Cjtc_DdFO_ReportProcessingPerBC_r19_MaxNumberTRS_ResourceAcrossCC_r19_N8, CA_ParametersNR_v1900_Cjtc_DdFO_ReportProcessingPerBC_r19_MaxNumberTRS_ResourceAcrossCC_r19_N12, CA_ParametersNR_v1900_Cjtc_DdFO_ReportProcessingPerBC_r19_MaxNumberTRS_ResourceAcrossCC_r19_N64},
+}
+
+const (
+	CA_ParametersNR_v1900_Cjtc_DdFO_ReportProcessingPerBC_r19_MaxNumberCSI_RS_ResourcePerCC_r19_N2  = 0
+	CA_ParametersNR_v1900_Cjtc_DdFO_ReportProcessingPerBC_r19_MaxNumberCSI_RS_ResourcePerCC_r19_N4  = 1
+	CA_ParametersNR_v1900_Cjtc_DdFO_ReportProcessingPerBC_r19_MaxNumberCSI_RS_ResourcePerCC_r19_N6  = 2
+	CA_ParametersNR_v1900_Cjtc_DdFO_ReportProcessingPerBC_r19_MaxNumberCSI_RS_ResourcePerCC_r19_N8  = 3
+	CA_ParametersNR_v1900_Cjtc_DdFO_ReportProcessingPerBC_r19_MaxNumberCSI_RS_ResourcePerCC_r19_N12 = 4
+	CA_ParametersNR_v1900_Cjtc_DdFO_ReportProcessingPerBC_r19_MaxNumberCSI_RS_ResourcePerCC_r19_N16 = 5
+	CA_ParametersNR_v1900_Cjtc_DdFO_ReportProcessingPerBC_r19_MaxNumberCSI_RS_ResourcePerCC_r19_N20 = 6
+	CA_ParametersNR_v1900_Cjtc_DdFO_ReportProcessingPerBC_r19_MaxNumberCSI_RS_ResourcePerCC_r19_N24 = 7
+	CA_ParametersNR_v1900_Cjtc_DdFO_ReportProcessingPerBC_r19_MaxNumberCSI_RS_ResourcePerCC_r19_N28 = 8
+	CA_ParametersNR_v1900_Cjtc_DdFO_ReportProcessingPerBC_r19_MaxNumberCSI_RS_ResourcePerCC_r19_N32 = 9
+)
+
+var cAParametersNRV1900CjtcDdFOReportProcessingPerBCR19MaxNumberCSIRSResourcePerCCR19Constraints = per.EnumeratedConstraints{
+	Extensible: false,
+	RootValues: []int64{CA_ParametersNR_v1900_Cjtc_DdFO_ReportProcessingPerBC_r19_MaxNumberCSI_RS_ResourcePerCC_r19_N2, CA_ParametersNR_v1900_Cjtc_DdFO_ReportProcessingPerBC_r19_MaxNumberCSI_RS_ResourcePerCC_r19_N4, CA_ParametersNR_v1900_Cjtc_DdFO_ReportProcessingPerBC_r19_MaxNumberCSI_RS_ResourcePerCC_r19_N6, CA_ParametersNR_v1900_Cjtc_DdFO_ReportProcessingPerBC_r19_MaxNumberCSI_RS_ResourcePerCC_r19_N8, CA_ParametersNR_v1900_Cjtc_DdFO_ReportProcessingPerBC_r19_MaxNumberCSI_RS_ResourcePerCC_r19_N12, CA_ParametersNR_v1900_Cjtc_DdFO_ReportProcessingPerBC_r19_MaxNumberCSI_RS_ResourcePerCC_r19_N16, CA_ParametersNR_v1900_Cjtc_DdFO_ReportProcessingPerBC_r19_MaxNumberCSI_RS_ResourcePerCC_r19_N20, CA_ParametersNR_v1900_Cjtc_DdFO_ReportProcessingPerBC_r19_MaxNumberCSI_RS_ResourcePerCC_r19_N24, CA_ParametersNR_v1900_Cjtc_DdFO_ReportProcessingPerBC_r19_MaxNumberCSI_RS_ResourcePerCC_r19_N28, CA_ParametersNR_v1900_Cjtc_DdFO_ReportProcessingPerBC_r19_MaxNumberCSI_RS_ResourcePerCC_r19_N32},
+}
+
+const (
+	CA_ParametersNR_v1900_Cjtc_DdFO_ReportProcessingPerBC_r19_MaxNumberCSI_RS_ResourceAcrossCC_r19_N2  = 0
+	CA_ParametersNR_v1900_Cjtc_DdFO_ReportProcessingPerBC_r19_MaxNumberCSI_RS_ResourceAcrossCC_r19_N4  = 1
+	CA_ParametersNR_v1900_Cjtc_DdFO_ReportProcessingPerBC_r19_MaxNumberCSI_RS_ResourceAcrossCC_r19_N6  = 2
+	CA_ParametersNR_v1900_Cjtc_DdFO_ReportProcessingPerBC_r19_MaxNumberCSI_RS_ResourceAcrossCC_r19_N8  = 3
+	CA_ParametersNR_v1900_Cjtc_DdFO_ReportProcessingPerBC_r19_MaxNumberCSI_RS_ResourceAcrossCC_r19_N12 = 4
+	CA_ParametersNR_v1900_Cjtc_DdFO_ReportProcessingPerBC_r19_MaxNumberCSI_RS_ResourceAcrossCC_r19_N16 = 5
+	CA_ParametersNR_v1900_Cjtc_DdFO_ReportProcessingPerBC_r19_MaxNumberCSI_RS_ResourceAcrossCC_r19_N20 = 6
+	CA_ParametersNR_v1900_Cjtc_DdFO_ReportProcessingPerBC_r19_MaxNumberCSI_RS_ResourceAcrossCC_r19_N24 = 7
+	CA_ParametersNR_v1900_Cjtc_DdFO_ReportProcessingPerBC_r19_MaxNumberCSI_RS_ResourceAcrossCC_r19_N28 = 8
+	CA_ParametersNR_v1900_Cjtc_DdFO_ReportProcessingPerBC_r19_MaxNumberCSI_RS_ResourceAcrossCC_r19_N32 = 9
+	CA_ParametersNR_v1900_Cjtc_DdFO_ReportProcessingPerBC_r19_MaxNumberCSI_RS_ResourceAcrossCC_r19_N64 = 10
+)
+
+var cAParametersNRV1900CjtcDdFOReportProcessingPerBCR19MaxNumberCSIRSResourceAcrossCCR19Constraints = per.EnumeratedConstraints{
+	Extensible: false,
+	RootValues: []int64{CA_ParametersNR_v1900_Cjtc_DdFO_ReportProcessingPerBC_r19_MaxNumberCSI_RS_ResourceAcrossCC_r19_N2, CA_ParametersNR_v1900_Cjtc_DdFO_ReportProcessingPerBC_r19_MaxNumberCSI_RS_ResourceAcrossCC_r19_N4, CA_ParametersNR_v1900_Cjtc_DdFO_ReportProcessingPerBC_r19_MaxNumberCSI_RS_ResourceAcrossCC_r19_N6, CA_ParametersNR_v1900_Cjtc_DdFO_ReportProcessingPerBC_r19_MaxNumberCSI_RS_ResourceAcrossCC_r19_N8, CA_ParametersNR_v1900_Cjtc_DdFO_ReportProcessingPerBC_r19_MaxNumberCSI_RS_ResourceAcrossCC_r19_N12, CA_ParametersNR_v1900_Cjtc_DdFO_ReportProcessingPerBC_r19_MaxNumberCSI_RS_ResourceAcrossCC_r19_N16, CA_ParametersNR_v1900_Cjtc_DdFO_ReportProcessingPerBC_r19_MaxNumberCSI_RS_ResourceAcrossCC_r19_N20, CA_ParametersNR_v1900_Cjtc_DdFO_ReportProcessingPerBC_r19_MaxNumberCSI_RS_ResourceAcrossCC_r19_N24, CA_ParametersNR_v1900_Cjtc_DdFO_ReportProcessingPerBC_r19_MaxNumberCSI_RS_ResourceAcrossCC_r19_N28, CA_ParametersNR_v1900_Cjtc_DdFO_ReportProcessingPerBC_r19_MaxNumberCSI_RS_ResourceAcrossCC_r19_N32, CA_ParametersNR_v1900_Cjtc_DdFO_ReportProcessingPerBC_r19_MaxNumberCSI_RS_ResourceAcrossCC_r19_N64},
+}
+
+var cAParametersNRV1900TimelineRelaxCJTCDdEType2CJTPerBCR19Constraints = per.SequenceConstraints{
+	Extensible: false,
+	RootComponents: []per.ComponentInfo{
+		{Name: "scs15kHz-r19", Optional: true},
+		{Name: "scs30kHz-r19", Optional: true},
+		{Name: "scs60kHz-r19", Optional: true},
+		{Name: "scs120kHz-r19", Optional: true},
+		{Name: "scs480kHz-r19", Optional: true},
+		{Name: "scs960kHz-r19", Optional: true},
+	},
+}
+
+const (
+	CA_ParametersNR_v1900_TimelineRelax_CJTC_Dd_EType2CJT_PerBC_r19_Scs15kHz_r19_N2 = 0
+	CA_ParametersNR_v1900_TimelineRelax_CJTC_Dd_EType2CJT_PerBC_r19_Scs15kHz_r19_N4 = 1
+	CA_ParametersNR_v1900_TimelineRelax_CJTC_Dd_EType2CJT_PerBC_r19_Scs15kHz_r19_N8 = 2
+)
+
+var cAParametersNRV1900TimelineRelaxCJTCDdEType2CJTPerBCR19Scs15kHzR19Constraints = per.EnumeratedConstraints{
+	Extensible: false,
+	RootValues: []int64{CA_ParametersNR_v1900_TimelineRelax_CJTC_Dd_EType2CJT_PerBC_r19_Scs15kHz_r19_N2, CA_ParametersNR_v1900_TimelineRelax_CJTC_Dd_EType2CJT_PerBC_r19_Scs15kHz_r19_N4, CA_ParametersNR_v1900_TimelineRelax_CJTC_Dd_EType2CJT_PerBC_r19_Scs15kHz_r19_N8},
+}
+
+const (
+	CA_ParametersNR_v1900_TimelineRelax_CJTC_Dd_EType2CJT_PerBC_r19_Scs30kHz_r19_N4  = 0
+	CA_ParametersNR_v1900_TimelineRelax_CJTC_Dd_EType2CJT_PerBC_r19_Scs30kHz_r19_N8  = 1
+	CA_ParametersNR_v1900_TimelineRelax_CJTC_Dd_EType2CJT_PerBC_r19_Scs30kHz_r19_N14 = 2
+	CA_ParametersNR_v1900_TimelineRelax_CJTC_Dd_EType2CJT_PerBC_r19_Scs30kHz_r19_N28 = 3
+)
+
+var cAParametersNRV1900TimelineRelaxCJTCDdEType2CJTPerBCR19Scs30kHzR19Constraints = per.EnumeratedConstraints{
+	Extensible: false,
+	RootValues: []int64{CA_ParametersNR_v1900_TimelineRelax_CJTC_Dd_EType2CJT_PerBC_r19_Scs30kHz_r19_N4, CA_ParametersNR_v1900_TimelineRelax_CJTC_Dd_EType2CJT_PerBC_r19_Scs30kHz_r19_N8, CA_ParametersNR_v1900_TimelineRelax_CJTC_Dd_EType2CJT_PerBC_r19_Scs30kHz_r19_N14, CA_ParametersNR_v1900_TimelineRelax_CJTC_Dd_EType2CJT_PerBC_r19_Scs30kHz_r19_N28},
+}
+
+const (
+	CA_ParametersNR_v1900_TimelineRelax_CJTC_Dd_EType2CJT_PerBC_r19_Scs60kHz_r19_N8  = 0
+	CA_ParametersNR_v1900_TimelineRelax_CJTC_Dd_EType2CJT_PerBC_r19_Scs60kHz_r19_N14 = 1
+	CA_ParametersNR_v1900_TimelineRelax_CJTC_Dd_EType2CJT_PerBC_r19_Scs60kHz_r19_N28 = 2
+)
+
+var cAParametersNRV1900TimelineRelaxCJTCDdEType2CJTPerBCR19Scs60kHzR19Constraints = per.EnumeratedConstraints{
+	Extensible: false,
+	RootValues: []int64{CA_ParametersNR_v1900_TimelineRelax_CJTC_Dd_EType2CJT_PerBC_r19_Scs60kHz_r19_N8, CA_ParametersNR_v1900_TimelineRelax_CJTC_Dd_EType2CJT_PerBC_r19_Scs60kHz_r19_N14, CA_ParametersNR_v1900_TimelineRelax_CJTC_Dd_EType2CJT_PerBC_r19_Scs60kHz_r19_N28},
+}
+
+const (
+	CA_ParametersNR_v1900_TimelineRelax_CJTC_Dd_EType2CJT_PerBC_r19_Scs120kHz_r19_N14 = 0
+	CA_ParametersNR_v1900_TimelineRelax_CJTC_Dd_EType2CJT_PerBC_r19_Scs120kHz_r19_N28 = 1
+	CA_ParametersNR_v1900_TimelineRelax_CJTC_Dd_EType2CJT_PerBC_r19_Scs120kHz_r19_N56 = 2
+)
+
+var cAParametersNRV1900TimelineRelaxCJTCDdEType2CJTPerBCR19Scs120kHzR19Constraints = per.EnumeratedConstraints{
+	Extensible: false,
+	RootValues: []int64{CA_ParametersNR_v1900_TimelineRelax_CJTC_Dd_EType2CJT_PerBC_r19_Scs120kHz_r19_N14, CA_ParametersNR_v1900_TimelineRelax_CJTC_Dd_EType2CJT_PerBC_r19_Scs120kHz_r19_N28, CA_ParametersNR_v1900_TimelineRelax_CJTC_Dd_EType2CJT_PerBC_r19_Scs120kHz_r19_N56},
+}
+
+const (
+	CA_ParametersNR_v1900_TimelineRelax_CJTC_Dd_EType2CJT_PerBC_r19_Scs480kHz_r19_N56  = 0
+	CA_ParametersNR_v1900_TimelineRelax_CJTC_Dd_EType2CJT_PerBC_r19_Scs480kHz_r19_N112 = 1
+	CA_ParametersNR_v1900_TimelineRelax_CJTC_Dd_EType2CJT_PerBC_r19_Scs480kHz_r19_N224 = 2
+)
+
+var cAParametersNRV1900TimelineRelaxCJTCDdEType2CJTPerBCR19Scs480kHzR19Constraints = per.EnumeratedConstraints{
+	Extensible: false,
+	RootValues: []int64{CA_ParametersNR_v1900_TimelineRelax_CJTC_Dd_EType2CJT_PerBC_r19_Scs480kHz_r19_N56, CA_ParametersNR_v1900_TimelineRelax_CJTC_Dd_EType2CJT_PerBC_r19_Scs480kHz_r19_N112, CA_ParametersNR_v1900_TimelineRelax_CJTC_Dd_EType2CJT_PerBC_r19_Scs480kHz_r19_N224},
+}
+
+const (
+	CA_ParametersNR_v1900_TimelineRelax_CJTC_Dd_EType2CJT_PerBC_r19_Scs960kHz_r19_N112 = 0
+	CA_ParametersNR_v1900_TimelineRelax_CJTC_Dd_EType2CJT_PerBC_r19_Scs960kHz_r19_N224 = 1
+	CA_ParametersNR_v1900_TimelineRelax_CJTC_Dd_EType2CJT_PerBC_r19_Scs960kHz_r19_N448 = 2
+)
+
+var cAParametersNRV1900TimelineRelaxCJTCDdEType2CJTPerBCR19Scs960kHzR19Constraints = per.EnumeratedConstraints{
+	Extensible: false,
+	RootValues: []int64{CA_ParametersNR_v1900_TimelineRelax_CJTC_Dd_EType2CJT_PerBC_r19_Scs960kHz_r19_N112, CA_ParametersNR_v1900_TimelineRelax_CJTC_Dd_EType2CJT_PerBC_r19_Scs960kHz_r19_N224, CA_ParametersNR_v1900_TimelineRelax_CJTC_Dd_EType2CJT_PerBC_r19_Scs960kHz_r19_N448},
+}
+
+const (
+	CA_ParametersNR_v1900_IntraFreqL1_MeasConfigPeriodicCSI_RS_r19_SupportedMaxReportBeamsReports_r19_N1  = 0
+	CA_ParametersNR_v1900_IntraFreqL1_MeasConfigPeriodicCSI_RS_r19_SupportedMaxReportBeamsReports_r19_N2  = 1
+	CA_ParametersNR_v1900_IntraFreqL1_MeasConfigPeriodicCSI_RS_r19_SupportedMaxReportBeamsReports_r19_N3  = 2
+	CA_ParametersNR_v1900_IntraFreqL1_MeasConfigPeriodicCSI_RS_r19_SupportedMaxReportBeamsReports_r19_N4  = 3
+	CA_ParametersNR_v1900_IntraFreqL1_MeasConfigPeriodicCSI_RS_r19_SupportedMaxReportBeamsReports_r19_N6  = 4
+	CA_ParametersNR_v1900_IntraFreqL1_MeasConfigPeriodicCSI_RS_r19_SupportedMaxReportBeamsReports_r19_N8  = 5
+	CA_ParametersNR_v1900_IntraFreqL1_MeasConfigPeriodicCSI_RS_r19_SupportedMaxReportBeamsReports_r19_N9  = 6
+	CA_ParametersNR_v1900_IntraFreqL1_MeasConfigPeriodicCSI_RS_r19_SupportedMaxReportBeamsReports_r19_N12 = 7
+	CA_ParametersNR_v1900_IntraFreqL1_MeasConfigPeriodicCSI_RS_r19_SupportedMaxReportBeamsReports_r19_N16 = 8
+)
+
+var cAParametersNRV1900IntraFreqL1MeasConfigPeriodicCSIRSR19SupportedMaxReportBeamsReportsR19Constraints = per.EnumeratedConstraints{
+	Extensible: false,
+	RootValues: []int64{CA_ParametersNR_v1900_IntraFreqL1_MeasConfigPeriodicCSI_RS_r19_SupportedMaxReportBeamsReports_r19_N1, CA_ParametersNR_v1900_IntraFreqL1_MeasConfigPeriodicCSI_RS_r19_SupportedMaxReportBeamsReports_r19_N2, CA_ParametersNR_v1900_IntraFreqL1_MeasConfigPeriodicCSI_RS_r19_SupportedMaxReportBeamsReports_r19_N3, CA_ParametersNR_v1900_IntraFreqL1_MeasConfigPeriodicCSI_RS_r19_SupportedMaxReportBeamsReports_r19_N4, CA_ParametersNR_v1900_IntraFreqL1_MeasConfigPeriodicCSI_RS_r19_SupportedMaxReportBeamsReports_r19_N6, CA_ParametersNR_v1900_IntraFreqL1_MeasConfigPeriodicCSI_RS_r19_SupportedMaxReportBeamsReports_r19_N8, CA_ParametersNR_v1900_IntraFreqL1_MeasConfigPeriodicCSI_RS_r19_SupportedMaxReportBeamsReports_r19_N9, CA_ParametersNR_v1900_IntraFreqL1_MeasConfigPeriodicCSI_RS_r19_SupportedMaxReportBeamsReports_r19_N12, CA_ParametersNR_v1900_IntraFreqL1_MeasConfigPeriodicCSI_RS_r19_SupportedMaxReportBeamsReports_r19_N16},
+}
+
+const (
+	CA_ParametersNR_v1900_InterFreqL1_MeasConfigPeriodicCSI_RS_r19_SupportedMaxReportBeamsReports_r19_N1  = 0
+	CA_ParametersNR_v1900_InterFreqL1_MeasConfigPeriodicCSI_RS_r19_SupportedMaxReportBeamsReports_r19_N2  = 1
+	CA_ParametersNR_v1900_InterFreqL1_MeasConfigPeriodicCSI_RS_r19_SupportedMaxReportBeamsReports_r19_N3  = 2
+	CA_ParametersNR_v1900_InterFreqL1_MeasConfigPeriodicCSI_RS_r19_SupportedMaxReportBeamsReports_r19_N4  = 3
+	CA_ParametersNR_v1900_InterFreqL1_MeasConfigPeriodicCSI_RS_r19_SupportedMaxReportBeamsReports_r19_N6  = 4
+	CA_ParametersNR_v1900_InterFreqL1_MeasConfigPeriodicCSI_RS_r19_SupportedMaxReportBeamsReports_r19_N8  = 5
+	CA_ParametersNR_v1900_InterFreqL1_MeasConfigPeriodicCSI_RS_r19_SupportedMaxReportBeamsReports_r19_N9  = 6
+	CA_ParametersNR_v1900_InterFreqL1_MeasConfigPeriodicCSI_RS_r19_SupportedMaxReportBeamsReports_r19_N12 = 7
+	CA_ParametersNR_v1900_InterFreqL1_MeasConfigPeriodicCSI_RS_r19_SupportedMaxReportBeamsReports_r19_N16 = 8
+)
+
+var cAParametersNRV1900InterFreqL1MeasConfigPeriodicCSIRSR19SupportedMaxReportBeamsReportsR19Constraints = per.EnumeratedConstraints{
+	Extensible: false,
+	RootValues: []int64{CA_ParametersNR_v1900_InterFreqL1_MeasConfigPeriodicCSI_RS_r19_SupportedMaxReportBeamsReports_r19_N1, CA_ParametersNR_v1900_InterFreqL1_MeasConfigPeriodicCSI_RS_r19_SupportedMaxReportBeamsReports_r19_N2, CA_ParametersNR_v1900_InterFreqL1_MeasConfigPeriodicCSI_RS_r19_SupportedMaxReportBeamsReports_r19_N3, CA_ParametersNR_v1900_InterFreqL1_MeasConfigPeriodicCSI_RS_r19_SupportedMaxReportBeamsReports_r19_N4, CA_ParametersNR_v1900_InterFreqL1_MeasConfigPeriodicCSI_RS_r19_SupportedMaxReportBeamsReports_r19_N6, CA_ParametersNR_v1900_InterFreqL1_MeasConfigPeriodicCSI_RS_r19_SupportedMaxReportBeamsReports_r19_N8, CA_ParametersNR_v1900_InterFreqL1_MeasConfigPeriodicCSI_RS_r19_SupportedMaxReportBeamsReports_r19_N9, CA_ParametersNR_v1900_InterFreqL1_MeasConfigPeriodicCSI_RS_r19_SupportedMaxReportBeamsReports_r19_N12, CA_ParametersNR_v1900_InterFreqL1_MeasConfigPeriodicCSI_RS_r19_SupportedMaxReportBeamsReports_r19_N16},
+}
+
+const (
+	CA_ParametersNR_v1900_Ltm_CSI_RS_CSI_IM_PeriodicCandidateIntraFreq_r19_MaxNumOfCSI_RS_PortsPerCell_r19_N1   = 0
+	CA_ParametersNR_v1900_Ltm_CSI_RS_CSI_IM_PeriodicCandidateIntraFreq_r19_MaxNumOfCSI_RS_PortsPerCell_r19_N2   = 1
+	CA_ParametersNR_v1900_Ltm_CSI_RS_CSI_IM_PeriodicCandidateIntraFreq_r19_MaxNumOfCSI_RS_PortsPerCell_r19_N4   = 2
+	CA_ParametersNR_v1900_Ltm_CSI_RS_CSI_IM_PeriodicCandidateIntraFreq_r19_MaxNumOfCSI_RS_PortsPerCell_r19_N8   = 3
+	CA_ParametersNR_v1900_Ltm_CSI_RS_CSI_IM_PeriodicCandidateIntraFreq_r19_MaxNumOfCSI_RS_PortsPerCell_r19_N12  = 4
+	CA_ParametersNR_v1900_Ltm_CSI_RS_CSI_IM_PeriodicCandidateIntraFreq_r19_MaxNumOfCSI_RS_PortsPerCell_r19_N16  = 5
+	CA_ParametersNR_v1900_Ltm_CSI_RS_CSI_IM_PeriodicCandidateIntraFreq_r19_MaxNumOfCSI_RS_PortsPerCell_r19_N24  = 6
+	CA_ParametersNR_v1900_Ltm_CSI_RS_CSI_IM_PeriodicCandidateIntraFreq_r19_MaxNumOfCSI_RS_PortsPerCell_r19_N32  = 7
+	CA_ParametersNR_v1900_Ltm_CSI_RS_CSI_IM_PeriodicCandidateIntraFreq_r19_MaxNumOfCSI_RS_PortsPerCell_r19_N48  = 8
+	CA_ParametersNR_v1900_Ltm_CSI_RS_CSI_IM_PeriodicCandidateIntraFreq_r19_MaxNumOfCSI_RS_PortsPerCell_r19_N64  = 9
+	CA_ParametersNR_v1900_Ltm_CSI_RS_CSI_IM_PeriodicCandidateIntraFreq_r19_MaxNumOfCSI_RS_PortsPerCell_r19_N128 = 10
+)
+
+var cAParametersNRV1900LtmCSIRSCSIIMPeriodicCandidateIntraFreqR19MaxNumOfCSIRSPortsPerCellR19Constraints = per.EnumeratedConstraints{
+	Extensible: false,
+	RootValues: []int64{CA_ParametersNR_v1900_Ltm_CSI_RS_CSI_IM_PeriodicCandidateIntraFreq_r19_MaxNumOfCSI_RS_PortsPerCell_r19_N1, CA_ParametersNR_v1900_Ltm_CSI_RS_CSI_IM_PeriodicCandidateIntraFreq_r19_MaxNumOfCSI_RS_PortsPerCell_r19_N2, CA_ParametersNR_v1900_Ltm_CSI_RS_CSI_IM_PeriodicCandidateIntraFreq_r19_MaxNumOfCSI_RS_PortsPerCell_r19_N4, CA_ParametersNR_v1900_Ltm_CSI_RS_CSI_IM_PeriodicCandidateIntraFreq_r19_MaxNumOfCSI_RS_PortsPerCell_r19_N8, CA_ParametersNR_v1900_Ltm_CSI_RS_CSI_IM_PeriodicCandidateIntraFreq_r19_MaxNumOfCSI_RS_PortsPerCell_r19_N12, CA_ParametersNR_v1900_Ltm_CSI_RS_CSI_IM_PeriodicCandidateIntraFreq_r19_MaxNumOfCSI_RS_PortsPerCell_r19_N16, CA_ParametersNR_v1900_Ltm_CSI_RS_CSI_IM_PeriodicCandidateIntraFreq_r19_MaxNumOfCSI_RS_PortsPerCell_r19_N24, CA_ParametersNR_v1900_Ltm_CSI_RS_CSI_IM_PeriodicCandidateIntraFreq_r19_MaxNumOfCSI_RS_PortsPerCell_r19_N32, CA_ParametersNR_v1900_Ltm_CSI_RS_CSI_IM_PeriodicCandidateIntraFreq_r19_MaxNumOfCSI_RS_PortsPerCell_r19_N48, CA_ParametersNR_v1900_Ltm_CSI_RS_CSI_IM_PeriodicCandidateIntraFreq_r19_MaxNumOfCSI_RS_PortsPerCell_r19_N64, CA_ParametersNR_v1900_Ltm_CSI_RS_CSI_IM_PeriodicCandidateIntraFreq_r19_MaxNumOfCSI_RS_PortsPerCell_r19_N128},
+}
+
+const (
+	CA_ParametersNR_v1900_Ltm_CSI_RS_CSI_IM_PeriodicCandidateIntraFreq_r19_MaxNumOfNZP_CSI_RS_PortsPerCell_r19_N1  = 0
+	CA_ParametersNR_v1900_Ltm_CSI_RS_CSI_IM_PeriodicCandidateIntraFreq_r19_MaxNumOfNZP_CSI_RS_PortsPerCell_r19_N2  = 1
+	CA_ParametersNR_v1900_Ltm_CSI_RS_CSI_IM_PeriodicCandidateIntraFreq_r19_MaxNumOfNZP_CSI_RS_PortsPerCell_r19_N4  = 2
+	CA_ParametersNR_v1900_Ltm_CSI_RS_CSI_IM_PeriodicCandidateIntraFreq_r19_MaxNumOfNZP_CSI_RS_PortsPerCell_r19_N8  = 3
+	CA_ParametersNR_v1900_Ltm_CSI_RS_CSI_IM_PeriodicCandidateIntraFreq_r19_MaxNumOfNZP_CSI_RS_PortsPerCell_r19_N12 = 4
+	CA_ParametersNR_v1900_Ltm_CSI_RS_CSI_IM_PeriodicCandidateIntraFreq_r19_MaxNumOfNZP_CSI_RS_PortsPerCell_r19_N16 = 5
+	CA_ParametersNR_v1900_Ltm_CSI_RS_CSI_IM_PeriodicCandidateIntraFreq_r19_MaxNumOfNZP_CSI_RS_PortsPerCell_r19_N24 = 6
+	CA_ParametersNR_v1900_Ltm_CSI_RS_CSI_IM_PeriodicCandidateIntraFreq_r19_MaxNumOfNZP_CSI_RS_PortsPerCell_r19_N32 = 7
+)
+
+var cAParametersNRV1900LtmCSIRSCSIIMPeriodicCandidateIntraFreqR19MaxNumOfNZPCSIRSPortsPerCellR19Constraints = per.EnumeratedConstraints{
+	Extensible: false,
+	RootValues: []int64{CA_ParametersNR_v1900_Ltm_CSI_RS_CSI_IM_PeriodicCandidateIntraFreq_r19_MaxNumOfNZP_CSI_RS_PortsPerCell_r19_N1, CA_ParametersNR_v1900_Ltm_CSI_RS_CSI_IM_PeriodicCandidateIntraFreq_r19_MaxNumOfNZP_CSI_RS_PortsPerCell_r19_N2, CA_ParametersNR_v1900_Ltm_CSI_RS_CSI_IM_PeriodicCandidateIntraFreq_r19_MaxNumOfNZP_CSI_RS_PortsPerCell_r19_N4, CA_ParametersNR_v1900_Ltm_CSI_RS_CSI_IM_PeriodicCandidateIntraFreq_r19_MaxNumOfNZP_CSI_RS_PortsPerCell_r19_N8, CA_ParametersNR_v1900_Ltm_CSI_RS_CSI_IM_PeriodicCandidateIntraFreq_r19_MaxNumOfNZP_CSI_RS_PortsPerCell_r19_N12, CA_ParametersNR_v1900_Ltm_CSI_RS_CSI_IM_PeriodicCandidateIntraFreq_r19_MaxNumOfNZP_CSI_RS_PortsPerCell_r19_N16, CA_ParametersNR_v1900_Ltm_CSI_RS_CSI_IM_PeriodicCandidateIntraFreq_r19_MaxNumOfNZP_CSI_RS_PortsPerCell_r19_N24, CA_ParametersNR_v1900_Ltm_CSI_RS_CSI_IM_PeriodicCandidateIntraFreq_r19_MaxNumOfNZP_CSI_RS_PortsPerCell_r19_N32},
+}
+
+const (
+	CA_ParametersNR_v1900_Ltm_CSI_RS_CSI_IM_SP_CandidateIntraFreq_r19_MaxNumOfCSI_RS_PortsPerCell_r19_N1   = 0
+	CA_ParametersNR_v1900_Ltm_CSI_RS_CSI_IM_SP_CandidateIntraFreq_r19_MaxNumOfCSI_RS_PortsPerCell_r19_N2   = 1
+	CA_ParametersNR_v1900_Ltm_CSI_RS_CSI_IM_SP_CandidateIntraFreq_r19_MaxNumOfCSI_RS_PortsPerCell_r19_N4   = 2
+	CA_ParametersNR_v1900_Ltm_CSI_RS_CSI_IM_SP_CandidateIntraFreq_r19_MaxNumOfCSI_RS_PortsPerCell_r19_N8   = 3
+	CA_ParametersNR_v1900_Ltm_CSI_RS_CSI_IM_SP_CandidateIntraFreq_r19_MaxNumOfCSI_RS_PortsPerCell_r19_N12  = 4
+	CA_ParametersNR_v1900_Ltm_CSI_RS_CSI_IM_SP_CandidateIntraFreq_r19_MaxNumOfCSI_RS_PortsPerCell_r19_N16  = 5
+	CA_ParametersNR_v1900_Ltm_CSI_RS_CSI_IM_SP_CandidateIntraFreq_r19_MaxNumOfCSI_RS_PortsPerCell_r19_N24  = 6
+	CA_ParametersNR_v1900_Ltm_CSI_RS_CSI_IM_SP_CandidateIntraFreq_r19_MaxNumOfCSI_RS_PortsPerCell_r19_N32  = 7
+	CA_ParametersNR_v1900_Ltm_CSI_RS_CSI_IM_SP_CandidateIntraFreq_r19_MaxNumOfCSI_RS_PortsPerCell_r19_N48  = 8
+	CA_ParametersNR_v1900_Ltm_CSI_RS_CSI_IM_SP_CandidateIntraFreq_r19_MaxNumOfCSI_RS_PortsPerCell_r19_N64  = 9
+	CA_ParametersNR_v1900_Ltm_CSI_RS_CSI_IM_SP_CandidateIntraFreq_r19_MaxNumOfCSI_RS_PortsPerCell_r19_N128 = 10
+)
+
+var cAParametersNRV1900LtmCSIRSCSIIMSPCandidateIntraFreqR19MaxNumOfCSIRSPortsPerCellR19Constraints = per.EnumeratedConstraints{
+	Extensible: false,
+	RootValues: []int64{CA_ParametersNR_v1900_Ltm_CSI_RS_CSI_IM_SP_CandidateIntraFreq_r19_MaxNumOfCSI_RS_PortsPerCell_r19_N1, CA_ParametersNR_v1900_Ltm_CSI_RS_CSI_IM_SP_CandidateIntraFreq_r19_MaxNumOfCSI_RS_PortsPerCell_r19_N2, CA_ParametersNR_v1900_Ltm_CSI_RS_CSI_IM_SP_CandidateIntraFreq_r19_MaxNumOfCSI_RS_PortsPerCell_r19_N4, CA_ParametersNR_v1900_Ltm_CSI_RS_CSI_IM_SP_CandidateIntraFreq_r19_MaxNumOfCSI_RS_PortsPerCell_r19_N8, CA_ParametersNR_v1900_Ltm_CSI_RS_CSI_IM_SP_CandidateIntraFreq_r19_MaxNumOfCSI_RS_PortsPerCell_r19_N12, CA_ParametersNR_v1900_Ltm_CSI_RS_CSI_IM_SP_CandidateIntraFreq_r19_MaxNumOfCSI_RS_PortsPerCell_r19_N16, CA_ParametersNR_v1900_Ltm_CSI_RS_CSI_IM_SP_CandidateIntraFreq_r19_MaxNumOfCSI_RS_PortsPerCell_r19_N24, CA_ParametersNR_v1900_Ltm_CSI_RS_CSI_IM_SP_CandidateIntraFreq_r19_MaxNumOfCSI_RS_PortsPerCell_r19_N32, CA_ParametersNR_v1900_Ltm_CSI_RS_CSI_IM_SP_CandidateIntraFreq_r19_MaxNumOfCSI_RS_PortsPerCell_r19_N48, CA_ParametersNR_v1900_Ltm_CSI_RS_CSI_IM_SP_CandidateIntraFreq_r19_MaxNumOfCSI_RS_PortsPerCell_r19_N64, CA_ParametersNR_v1900_Ltm_CSI_RS_CSI_IM_SP_CandidateIntraFreq_r19_MaxNumOfCSI_RS_PortsPerCell_r19_N128},
+}
+
+const (
+	CA_ParametersNR_v1900_Ltm_CSI_RS_CSI_IM_SP_CandidateIntraFreq_r19_MaxNumOfNZP_CSI_RS_PortsPerCell_r19_N1  = 0
+	CA_ParametersNR_v1900_Ltm_CSI_RS_CSI_IM_SP_CandidateIntraFreq_r19_MaxNumOfNZP_CSI_RS_PortsPerCell_r19_N2  = 1
+	CA_ParametersNR_v1900_Ltm_CSI_RS_CSI_IM_SP_CandidateIntraFreq_r19_MaxNumOfNZP_CSI_RS_PortsPerCell_r19_N4  = 2
+	CA_ParametersNR_v1900_Ltm_CSI_RS_CSI_IM_SP_CandidateIntraFreq_r19_MaxNumOfNZP_CSI_RS_PortsPerCell_r19_N8  = 3
+	CA_ParametersNR_v1900_Ltm_CSI_RS_CSI_IM_SP_CandidateIntraFreq_r19_MaxNumOfNZP_CSI_RS_PortsPerCell_r19_N12 = 4
+	CA_ParametersNR_v1900_Ltm_CSI_RS_CSI_IM_SP_CandidateIntraFreq_r19_MaxNumOfNZP_CSI_RS_PortsPerCell_r19_N16 = 5
+	CA_ParametersNR_v1900_Ltm_CSI_RS_CSI_IM_SP_CandidateIntraFreq_r19_MaxNumOfNZP_CSI_RS_PortsPerCell_r19_N24 = 6
+	CA_ParametersNR_v1900_Ltm_CSI_RS_CSI_IM_SP_CandidateIntraFreq_r19_MaxNumOfNZP_CSI_RS_PortsPerCell_r19_N32 = 7
+)
+
+var cAParametersNRV1900LtmCSIRSCSIIMSPCandidateIntraFreqR19MaxNumOfNZPCSIRSPortsPerCellR19Constraints = per.EnumeratedConstraints{
+	Extensible: false,
+	RootValues: []int64{CA_ParametersNR_v1900_Ltm_CSI_RS_CSI_IM_SP_CandidateIntraFreq_r19_MaxNumOfNZP_CSI_RS_PortsPerCell_r19_N1, CA_ParametersNR_v1900_Ltm_CSI_RS_CSI_IM_SP_CandidateIntraFreq_r19_MaxNumOfNZP_CSI_RS_PortsPerCell_r19_N2, CA_ParametersNR_v1900_Ltm_CSI_RS_CSI_IM_SP_CandidateIntraFreq_r19_MaxNumOfNZP_CSI_RS_PortsPerCell_r19_N4, CA_ParametersNR_v1900_Ltm_CSI_RS_CSI_IM_SP_CandidateIntraFreq_r19_MaxNumOfNZP_CSI_RS_PortsPerCell_r19_N8, CA_ParametersNR_v1900_Ltm_CSI_RS_CSI_IM_SP_CandidateIntraFreq_r19_MaxNumOfNZP_CSI_RS_PortsPerCell_r19_N12, CA_ParametersNR_v1900_Ltm_CSI_RS_CSI_IM_SP_CandidateIntraFreq_r19_MaxNumOfNZP_CSI_RS_PortsPerCell_r19_N16, CA_ParametersNR_v1900_Ltm_CSI_RS_CSI_IM_SP_CandidateIntraFreq_r19_MaxNumOfNZP_CSI_RS_PortsPerCell_r19_N24, CA_ParametersNR_v1900_Ltm_CSI_RS_CSI_IM_SP_CandidateIntraFreq_r19_MaxNumOfNZP_CSI_RS_PortsPerCell_r19_N32},
+}
+
+const (
+	CA_ParametersNR_v1900_Ltm_CSI_RS_CSI_IM_PeriodicCandidateInterFreq_r19_MaxNumOfCSI_RS_PortsPerCell_r19_N1   = 0
+	CA_ParametersNR_v1900_Ltm_CSI_RS_CSI_IM_PeriodicCandidateInterFreq_r19_MaxNumOfCSI_RS_PortsPerCell_r19_N2   = 1
+	CA_ParametersNR_v1900_Ltm_CSI_RS_CSI_IM_PeriodicCandidateInterFreq_r19_MaxNumOfCSI_RS_PortsPerCell_r19_N4   = 2
+	CA_ParametersNR_v1900_Ltm_CSI_RS_CSI_IM_PeriodicCandidateInterFreq_r19_MaxNumOfCSI_RS_PortsPerCell_r19_N8   = 3
+	CA_ParametersNR_v1900_Ltm_CSI_RS_CSI_IM_PeriodicCandidateInterFreq_r19_MaxNumOfCSI_RS_PortsPerCell_r19_N12  = 4
+	CA_ParametersNR_v1900_Ltm_CSI_RS_CSI_IM_PeriodicCandidateInterFreq_r19_MaxNumOfCSI_RS_PortsPerCell_r19_N16  = 5
+	CA_ParametersNR_v1900_Ltm_CSI_RS_CSI_IM_PeriodicCandidateInterFreq_r19_MaxNumOfCSI_RS_PortsPerCell_r19_N24  = 6
+	CA_ParametersNR_v1900_Ltm_CSI_RS_CSI_IM_PeriodicCandidateInterFreq_r19_MaxNumOfCSI_RS_PortsPerCell_r19_N32  = 7
+	CA_ParametersNR_v1900_Ltm_CSI_RS_CSI_IM_PeriodicCandidateInterFreq_r19_MaxNumOfCSI_RS_PortsPerCell_r19_N48  = 8
+	CA_ParametersNR_v1900_Ltm_CSI_RS_CSI_IM_PeriodicCandidateInterFreq_r19_MaxNumOfCSI_RS_PortsPerCell_r19_N64  = 9
+	CA_ParametersNR_v1900_Ltm_CSI_RS_CSI_IM_PeriodicCandidateInterFreq_r19_MaxNumOfCSI_RS_PortsPerCell_r19_N128 = 10
+)
+
+var cAParametersNRV1900LtmCSIRSCSIIMPeriodicCandidateInterFreqR19MaxNumOfCSIRSPortsPerCellR19Constraints = per.EnumeratedConstraints{
+	Extensible: false,
+	RootValues: []int64{CA_ParametersNR_v1900_Ltm_CSI_RS_CSI_IM_PeriodicCandidateInterFreq_r19_MaxNumOfCSI_RS_PortsPerCell_r19_N1, CA_ParametersNR_v1900_Ltm_CSI_RS_CSI_IM_PeriodicCandidateInterFreq_r19_MaxNumOfCSI_RS_PortsPerCell_r19_N2, CA_ParametersNR_v1900_Ltm_CSI_RS_CSI_IM_PeriodicCandidateInterFreq_r19_MaxNumOfCSI_RS_PortsPerCell_r19_N4, CA_ParametersNR_v1900_Ltm_CSI_RS_CSI_IM_PeriodicCandidateInterFreq_r19_MaxNumOfCSI_RS_PortsPerCell_r19_N8, CA_ParametersNR_v1900_Ltm_CSI_RS_CSI_IM_PeriodicCandidateInterFreq_r19_MaxNumOfCSI_RS_PortsPerCell_r19_N12, CA_ParametersNR_v1900_Ltm_CSI_RS_CSI_IM_PeriodicCandidateInterFreq_r19_MaxNumOfCSI_RS_PortsPerCell_r19_N16, CA_ParametersNR_v1900_Ltm_CSI_RS_CSI_IM_PeriodicCandidateInterFreq_r19_MaxNumOfCSI_RS_PortsPerCell_r19_N24, CA_ParametersNR_v1900_Ltm_CSI_RS_CSI_IM_PeriodicCandidateInterFreq_r19_MaxNumOfCSI_RS_PortsPerCell_r19_N32, CA_ParametersNR_v1900_Ltm_CSI_RS_CSI_IM_PeriodicCandidateInterFreq_r19_MaxNumOfCSI_RS_PortsPerCell_r19_N48, CA_ParametersNR_v1900_Ltm_CSI_RS_CSI_IM_PeriodicCandidateInterFreq_r19_MaxNumOfCSI_RS_PortsPerCell_r19_N64, CA_ParametersNR_v1900_Ltm_CSI_RS_CSI_IM_PeriodicCandidateInterFreq_r19_MaxNumOfCSI_RS_PortsPerCell_r19_N128},
+}
+
+const (
+	CA_ParametersNR_v1900_Ltm_CSI_RS_CSI_IM_PeriodicCandidateInterFreq_r19_MaxNumOfNZP_CSI_RS_PortsPerCell_r19_N1  = 0
+	CA_ParametersNR_v1900_Ltm_CSI_RS_CSI_IM_PeriodicCandidateInterFreq_r19_MaxNumOfNZP_CSI_RS_PortsPerCell_r19_N2  = 1
+	CA_ParametersNR_v1900_Ltm_CSI_RS_CSI_IM_PeriodicCandidateInterFreq_r19_MaxNumOfNZP_CSI_RS_PortsPerCell_r19_N4  = 2
+	CA_ParametersNR_v1900_Ltm_CSI_RS_CSI_IM_PeriodicCandidateInterFreq_r19_MaxNumOfNZP_CSI_RS_PortsPerCell_r19_N8  = 3
+	CA_ParametersNR_v1900_Ltm_CSI_RS_CSI_IM_PeriodicCandidateInterFreq_r19_MaxNumOfNZP_CSI_RS_PortsPerCell_r19_N12 = 4
+	CA_ParametersNR_v1900_Ltm_CSI_RS_CSI_IM_PeriodicCandidateInterFreq_r19_MaxNumOfNZP_CSI_RS_PortsPerCell_r19_N16 = 5
+	CA_ParametersNR_v1900_Ltm_CSI_RS_CSI_IM_PeriodicCandidateInterFreq_r19_MaxNumOfNZP_CSI_RS_PortsPerCell_r19_N24 = 6
+	CA_ParametersNR_v1900_Ltm_CSI_RS_CSI_IM_PeriodicCandidateInterFreq_r19_MaxNumOfNZP_CSI_RS_PortsPerCell_r19_N32 = 7
+)
+
+var cAParametersNRV1900LtmCSIRSCSIIMPeriodicCandidateInterFreqR19MaxNumOfNZPCSIRSPortsPerCellR19Constraints = per.EnumeratedConstraints{
+	Extensible: false,
+	RootValues: []int64{CA_ParametersNR_v1900_Ltm_CSI_RS_CSI_IM_PeriodicCandidateInterFreq_r19_MaxNumOfNZP_CSI_RS_PortsPerCell_r19_N1, CA_ParametersNR_v1900_Ltm_CSI_RS_CSI_IM_PeriodicCandidateInterFreq_r19_MaxNumOfNZP_CSI_RS_PortsPerCell_r19_N2, CA_ParametersNR_v1900_Ltm_CSI_RS_CSI_IM_PeriodicCandidateInterFreq_r19_MaxNumOfNZP_CSI_RS_PortsPerCell_r19_N4, CA_ParametersNR_v1900_Ltm_CSI_RS_CSI_IM_PeriodicCandidateInterFreq_r19_MaxNumOfNZP_CSI_RS_PortsPerCell_r19_N8, CA_ParametersNR_v1900_Ltm_CSI_RS_CSI_IM_PeriodicCandidateInterFreq_r19_MaxNumOfNZP_CSI_RS_PortsPerCell_r19_N12, CA_ParametersNR_v1900_Ltm_CSI_RS_CSI_IM_PeriodicCandidateInterFreq_r19_MaxNumOfNZP_CSI_RS_PortsPerCell_r19_N16, CA_ParametersNR_v1900_Ltm_CSI_RS_CSI_IM_PeriodicCandidateInterFreq_r19_MaxNumOfNZP_CSI_RS_PortsPerCell_r19_N24, CA_ParametersNR_v1900_Ltm_CSI_RS_CSI_IM_PeriodicCandidateInterFreq_r19_MaxNumOfNZP_CSI_RS_PortsPerCell_r19_N32},
+}
+
+const (
+	CA_ParametersNR_v1900_Ltm_CSI_RS_CSI_IM_SP_CandidateInterFreq_r19_MaxNumOfCSI_RS_PortsPerCell_r19_N1   = 0
+	CA_ParametersNR_v1900_Ltm_CSI_RS_CSI_IM_SP_CandidateInterFreq_r19_MaxNumOfCSI_RS_PortsPerCell_r19_N2   = 1
+	CA_ParametersNR_v1900_Ltm_CSI_RS_CSI_IM_SP_CandidateInterFreq_r19_MaxNumOfCSI_RS_PortsPerCell_r19_N4   = 2
+	CA_ParametersNR_v1900_Ltm_CSI_RS_CSI_IM_SP_CandidateInterFreq_r19_MaxNumOfCSI_RS_PortsPerCell_r19_N8   = 3
+	CA_ParametersNR_v1900_Ltm_CSI_RS_CSI_IM_SP_CandidateInterFreq_r19_MaxNumOfCSI_RS_PortsPerCell_r19_N12  = 4
+	CA_ParametersNR_v1900_Ltm_CSI_RS_CSI_IM_SP_CandidateInterFreq_r19_MaxNumOfCSI_RS_PortsPerCell_r19_N16  = 5
+	CA_ParametersNR_v1900_Ltm_CSI_RS_CSI_IM_SP_CandidateInterFreq_r19_MaxNumOfCSI_RS_PortsPerCell_r19_N24  = 6
+	CA_ParametersNR_v1900_Ltm_CSI_RS_CSI_IM_SP_CandidateInterFreq_r19_MaxNumOfCSI_RS_PortsPerCell_r19_N32  = 7
+	CA_ParametersNR_v1900_Ltm_CSI_RS_CSI_IM_SP_CandidateInterFreq_r19_MaxNumOfCSI_RS_PortsPerCell_r19_N48  = 8
+	CA_ParametersNR_v1900_Ltm_CSI_RS_CSI_IM_SP_CandidateInterFreq_r19_MaxNumOfCSI_RS_PortsPerCell_r19_N64  = 9
+	CA_ParametersNR_v1900_Ltm_CSI_RS_CSI_IM_SP_CandidateInterFreq_r19_MaxNumOfCSI_RS_PortsPerCell_r19_N128 = 10
+)
+
+var cAParametersNRV1900LtmCSIRSCSIIMSPCandidateInterFreqR19MaxNumOfCSIRSPortsPerCellR19Constraints = per.EnumeratedConstraints{
+	Extensible: false,
+	RootValues: []int64{CA_ParametersNR_v1900_Ltm_CSI_RS_CSI_IM_SP_CandidateInterFreq_r19_MaxNumOfCSI_RS_PortsPerCell_r19_N1, CA_ParametersNR_v1900_Ltm_CSI_RS_CSI_IM_SP_CandidateInterFreq_r19_MaxNumOfCSI_RS_PortsPerCell_r19_N2, CA_ParametersNR_v1900_Ltm_CSI_RS_CSI_IM_SP_CandidateInterFreq_r19_MaxNumOfCSI_RS_PortsPerCell_r19_N4, CA_ParametersNR_v1900_Ltm_CSI_RS_CSI_IM_SP_CandidateInterFreq_r19_MaxNumOfCSI_RS_PortsPerCell_r19_N8, CA_ParametersNR_v1900_Ltm_CSI_RS_CSI_IM_SP_CandidateInterFreq_r19_MaxNumOfCSI_RS_PortsPerCell_r19_N12, CA_ParametersNR_v1900_Ltm_CSI_RS_CSI_IM_SP_CandidateInterFreq_r19_MaxNumOfCSI_RS_PortsPerCell_r19_N16, CA_ParametersNR_v1900_Ltm_CSI_RS_CSI_IM_SP_CandidateInterFreq_r19_MaxNumOfCSI_RS_PortsPerCell_r19_N24, CA_ParametersNR_v1900_Ltm_CSI_RS_CSI_IM_SP_CandidateInterFreq_r19_MaxNumOfCSI_RS_PortsPerCell_r19_N32, CA_ParametersNR_v1900_Ltm_CSI_RS_CSI_IM_SP_CandidateInterFreq_r19_MaxNumOfCSI_RS_PortsPerCell_r19_N48, CA_ParametersNR_v1900_Ltm_CSI_RS_CSI_IM_SP_CandidateInterFreq_r19_MaxNumOfCSI_RS_PortsPerCell_r19_N64, CA_ParametersNR_v1900_Ltm_CSI_RS_CSI_IM_SP_CandidateInterFreq_r19_MaxNumOfCSI_RS_PortsPerCell_r19_N128},
+}
+
+const (
+	CA_ParametersNR_v1900_Ltm_CSI_RS_CSI_IM_SP_CandidateInterFreq_r19_MaxNumOfNZP_CSI_RS_PortsPerCell_r19_N1  = 0
+	CA_ParametersNR_v1900_Ltm_CSI_RS_CSI_IM_SP_CandidateInterFreq_r19_MaxNumOfNZP_CSI_RS_PortsPerCell_r19_N2  = 1
+	CA_ParametersNR_v1900_Ltm_CSI_RS_CSI_IM_SP_CandidateInterFreq_r19_MaxNumOfNZP_CSI_RS_PortsPerCell_r19_N4  = 2
+	CA_ParametersNR_v1900_Ltm_CSI_RS_CSI_IM_SP_CandidateInterFreq_r19_MaxNumOfNZP_CSI_RS_PortsPerCell_r19_N8  = 3
+	CA_ParametersNR_v1900_Ltm_CSI_RS_CSI_IM_SP_CandidateInterFreq_r19_MaxNumOfNZP_CSI_RS_PortsPerCell_r19_N12 = 4
+	CA_ParametersNR_v1900_Ltm_CSI_RS_CSI_IM_SP_CandidateInterFreq_r19_MaxNumOfNZP_CSI_RS_PortsPerCell_r19_N16 = 5
+	CA_ParametersNR_v1900_Ltm_CSI_RS_CSI_IM_SP_CandidateInterFreq_r19_MaxNumOfNZP_CSI_RS_PortsPerCell_r19_N24 = 6
+	CA_ParametersNR_v1900_Ltm_CSI_RS_CSI_IM_SP_CandidateInterFreq_r19_MaxNumOfNZP_CSI_RS_PortsPerCell_r19_N32 = 7
+)
+
+var cAParametersNRV1900LtmCSIRSCSIIMSPCandidateInterFreqR19MaxNumOfNZPCSIRSPortsPerCellR19Constraints = per.EnumeratedConstraints{
+	Extensible: false,
+	RootValues: []int64{CA_ParametersNR_v1900_Ltm_CSI_RS_CSI_IM_SP_CandidateInterFreq_r19_MaxNumOfNZP_CSI_RS_PortsPerCell_r19_N1, CA_ParametersNR_v1900_Ltm_CSI_RS_CSI_IM_SP_CandidateInterFreq_r19_MaxNumOfNZP_CSI_RS_PortsPerCell_r19_N2, CA_ParametersNR_v1900_Ltm_CSI_RS_CSI_IM_SP_CandidateInterFreq_r19_MaxNumOfNZP_CSI_RS_PortsPerCell_r19_N4, CA_ParametersNR_v1900_Ltm_CSI_RS_CSI_IM_SP_CandidateInterFreq_r19_MaxNumOfNZP_CSI_RS_PortsPerCell_r19_N8, CA_ParametersNR_v1900_Ltm_CSI_RS_CSI_IM_SP_CandidateInterFreq_r19_MaxNumOfNZP_CSI_RS_PortsPerCell_r19_N12, CA_ParametersNR_v1900_Ltm_CSI_RS_CSI_IM_SP_CandidateInterFreq_r19_MaxNumOfNZP_CSI_RS_PortsPerCell_r19_N16, CA_ParametersNR_v1900_Ltm_CSI_RS_CSI_IM_SP_CandidateInterFreq_r19_MaxNumOfNZP_CSI_RS_PortsPerCell_r19_N24, CA_ParametersNR_v1900_Ltm_CSI_RS_CSI_IM_SP_CandidateInterFreq_r19_MaxNumOfNZP_CSI_RS_PortsPerCell_r19_N32},
+}
+
+var cAParametersNRV1900MultiCellPDSCHDCI13DiffSCSDiffCCR19Constraints = per.SequenceConstraints{
+	Extensible: false,
+	RootComponents: []per.ComponentInfo{
+		{Name: "combinationCarrierTypeSCS-r19"},
+		{Name: "maxNumberCoScheduledCell-r19"},
+		{Name: "maxNumberSetsOfCellAcrossPUCCH-Group-r19"},
+		{Name: "maxNumberSetsOfCellScheduling-r19"},
+		{Name: "harqFeedbackType-r19"},
+		{Name: "coScheduledCellIndicationScheme-r19"},
+		{Name: "supportOfSearchSpace-r19", Optional: true},
+		{Name: "threeSetsCombination-r19", Optional: true},
+	},
+}
+
+var cAParametersNRV1900MultiCellPDSCHDCI13DiffSCSDiffCCR19CombinationCarrierTypeSCSR19Constraints = per.SizeRange(1, common.MaxSchedulingBandCombination_r18)
+
+const (
+	CA_ParametersNR_v1900_MultiCell_PDSCH_DCI_1_3_DiffSCS_DiffCC_r19_HarqFeedbackType_r19_Type1     = 0
+	CA_ParametersNR_v1900_MultiCell_PDSCH_DCI_1_3_DiffSCS_DiffCC_r19_HarqFeedbackType_r19_Type2     = 1
+	CA_ParametersNR_v1900_MultiCell_PDSCH_DCI_1_3_DiffSCS_DiffCC_r19_HarqFeedbackType_r19_Type1And2 = 2
+)
+
+var cAParametersNRV1900MultiCellPDSCHDCI13DiffSCSDiffCCR19HarqFeedbackTypeR19Constraints = per.EnumeratedConstraints{
+	Extensible: false,
+	RootValues: []int64{CA_ParametersNR_v1900_MultiCell_PDSCH_DCI_1_3_DiffSCS_DiffCC_r19_HarqFeedbackType_r19_Type1, CA_ParametersNR_v1900_MultiCell_PDSCH_DCI_1_3_DiffSCS_DiffCC_r19_HarqFeedbackType_r19_Type2, CA_ParametersNR_v1900_MultiCell_PDSCH_DCI_1_3_DiffSCS_DiffCC_r19_HarqFeedbackType_r19_Type1And2},
+}
+
+const (
+	CA_ParametersNR_v1900_MultiCell_PDSCH_DCI_1_3_DiffSCS_DiffCC_r19_CoScheduledCellIndicationScheme_r19_Fdra    = 0
+	CA_ParametersNR_v1900_MultiCell_PDSCH_DCI_1_3_DiffSCS_DiffCC_r19_CoScheduledCellIndicationScheme_r19_CellInd = 1
+	CA_ParametersNR_v1900_MultiCell_PDSCH_DCI_1_3_DiffSCS_DiffCC_r19_CoScheduledCellIndicationScheme_r19_Both    = 2
+)
+
+var cAParametersNRV1900MultiCellPDSCHDCI13DiffSCSDiffCCR19CoScheduledCellIndicationSchemeR19Constraints = per.EnumeratedConstraints{
+	Extensible: false,
+	RootValues: []int64{CA_ParametersNR_v1900_MultiCell_PDSCH_DCI_1_3_DiffSCS_DiffCC_r19_CoScheduledCellIndicationScheme_r19_Fdra, CA_ParametersNR_v1900_MultiCell_PDSCH_DCI_1_3_DiffSCS_DiffCC_r19_CoScheduledCellIndicationScheme_r19_CellInd, CA_ParametersNR_v1900_MultiCell_PDSCH_DCI_1_3_DiffSCS_DiffCC_r19_CoScheduledCellIndicationScheme_r19_Both},
+}
+
+const (
+	CA_ParametersNR_v1900_MultiCell_PDSCH_DCI_1_3_DiffSCS_DiffCC_r19_SupportOfSearchSpace_r19_Supported = 0
+)
+
+var cAParametersNRV1900MultiCellPDSCHDCI13DiffSCSDiffCCR19SupportOfSearchSpaceR19Constraints = per.EnumeratedConstraints{
+	Extensible: false,
+	RootValues: []int64{CA_ParametersNR_v1900_MultiCell_PDSCH_DCI_1_3_DiffSCS_DiffCC_r19_SupportOfSearchSpace_r19_Supported},
+}
+
+var cAParametersNRV1900MultiCellPDSCHDCI13DiffSCSDiffCCR19ThreeSetsCombinationR19Constraints = per.SizeRange(1, common.MaxSchedulingBandCombination_r18)
+
+var cAParametersNRV1900MultiCellPUSCHDCI03DiffSCSDiffCCR19Constraints = per.SequenceConstraints{
+	Extensible: false,
+	RootComponents: []per.ComponentInfo{
+		{Name: "combinationCarrierTypeSCS-r19"},
+		{Name: "maxNumberCoScheduledCell-r19"},
+		{Name: "maxNumberSetsOfCellAcrossPUCCH-Group-r19"},
+		{Name: "maxNumberSetsOfCellScheduling-r19"},
+		{Name: "coScheduledCellIndicationScheme-r19"},
+		{Name: "supportOfSearchSpace-r19", Optional: true},
+		{Name: "threeSetsCombination-r19", Optional: true},
+	},
+}
+
+var cAParametersNRV1900MultiCellPUSCHDCI03DiffSCSDiffCCR19CombinationCarrierTypeSCSR19Constraints = per.SizeRange(1, common.MaxSchedulingBandCombination_r18)
+
+const (
+	CA_ParametersNR_v1900_MultiCell_PUSCH_DCI_0_3_DiffSCS_DiffCC_r19_CoScheduledCellIndicationScheme_r19_Fdra    = 0
+	CA_ParametersNR_v1900_MultiCell_PUSCH_DCI_0_3_DiffSCS_DiffCC_r19_CoScheduledCellIndicationScheme_r19_CellInd = 1
+	CA_ParametersNR_v1900_MultiCell_PUSCH_DCI_0_3_DiffSCS_DiffCC_r19_CoScheduledCellIndicationScheme_r19_Both    = 2
+)
+
+var cAParametersNRV1900MultiCellPUSCHDCI03DiffSCSDiffCCR19CoScheduledCellIndicationSchemeR19Constraints = per.EnumeratedConstraints{
+	Extensible: false,
+	RootValues: []int64{CA_ParametersNR_v1900_MultiCell_PUSCH_DCI_0_3_DiffSCS_DiffCC_r19_CoScheduledCellIndicationScheme_r19_Fdra, CA_ParametersNR_v1900_MultiCell_PUSCH_DCI_0_3_DiffSCS_DiffCC_r19_CoScheduledCellIndicationScheme_r19_CellInd, CA_ParametersNR_v1900_MultiCell_PUSCH_DCI_0_3_DiffSCS_DiffCC_r19_CoScheduledCellIndicationScheme_r19_Both},
+}
+
+const (
+	CA_ParametersNR_v1900_MultiCell_PUSCH_DCI_0_3_DiffSCS_DiffCC_r19_SupportOfSearchSpace_r19_Supported = 0
+)
+
+var cAParametersNRV1900MultiCellPUSCHDCI03DiffSCSDiffCCR19SupportOfSearchSpaceR19Constraints = per.EnumeratedConstraints{
+	Extensible: false,
+	RootValues: []int64{CA_ParametersNR_v1900_MultiCell_PUSCH_DCI_0_3_DiffSCS_DiffCC_r19_SupportOfSearchSpace_r19_Supported},
+}
+
+var cAParametersNRV1900MultiCellPUSCHDCI03DiffSCSDiffCCR19ThreeSetsCombinationR19Constraints = per.SizeRange(1, common.MaxSchedulingBandCombination_r18)
+
+var cAParametersNRV1900AdvUnicastDCIDLDiffSCSDiffCCR19UnicastDCIFormatsR19Constraints = per.SequenceConstraints{
+	Extensible: false,
+	RootComponents: []per.ComponentInfo{
+		{Name: "scs-15kHz-120kHz-r19", Optional: true},
+		{Name: "scs-15kHz-60kHz-r19", Optional: true},
+		{Name: "scs-30kHz-120kHz-r19", Optional: true},
+		{Name: "scs-15kHz-30kHz-r19", Optional: true},
+		{Name: "scs-30kHz-60kHz-r19", Optional: true},
+		{Name: "scs-30kHz-30kHz-r19", Optional: true},
+	},
+}
+
+const (
+	CA_ParametersNR_v1900_AdvUnicastDCI_DL_DiffSCS_DiffCC_r19_UnicastDCI_Formats_r19_Scs_15kHz_120kHz_r19_N2 = 0
+	CA_ParametersNR_v1900_AdvUnicastDCI_DL_DiffSCS_DiffCC_r19_UnicastDCI_Formats_r19_Scs_15kHz_120kHz_r19_N4 = 1
+	CA_ParametersNR_v1900_AdvUnicastDCI_DL_DiffSCS_DiffCC_r19_UnicastDCI_Formats_r19_Scs_15kHz_120kHz_r19_N8 = 2
+)
+
+var cAParametersNRV1900AdvUnicastDCIDLDiffSCSDiffCCR19UnicastDCIFormatsR19Scs15kHz120kHzR19Constraints = per.EnumeratedConstraints{
+	Extensible: false,
+	RootValues: []int64{CA_ParametersNR_v1900_AdvUnicastDCI_DL_DiffSCS_DiffCC_r19_UnicastDCI_Formats_r19_Scs_15kHz_120kHz_r19_N2, CA_ParametersNR_v1900_AdvUnicastDCI_DL_DiffSCS_DiffCC_r19_UnicastDCI_Formats_r19_Scs_15kHz_120kHz_r19_N4, CA_ParametersNR_v1900_AdvUnicastDCI_DL_DiffSCS_DiffCC_r19_UnicastDCI_Formats_r19_Scs_15kHz_120kHz_r19_N8},
+}
+
+const (
+	CA_ParametersNR_v1900_AdvUnicastDCI_DL_DiffSCS_DiffCC_r19_UnicastDCI_Formats_r19_Scs_15kHz_60kHz_r19_N2 = 0
+	CA_ParametersNR_v1900_AdvUnicastDCI_DL_DiffSCS_DiffCC_r19_UnicastDCI_Formats_r19_Scs_15kHz_60kHz_r19_N4 = 1
+)
+
+var cAParametersNRV1900AdvUnicastDCIDLDiffSCSDiffCCR19UnicastDCIFormatsR19Scs15kHz60kHzR19Constraints = per.EnumeratedConstraints{
+	Extensible: false,
+	RootValues: []int64{CA_ParametersNR_v1900_AdvUnicastDCI_DL_DiffSCS_DiffCC_r19_UnicastDCI_Formats_r19_Scs_15kHz_60kHz_r19_N2, CA_ParametersNR_v1900_AdvUnicastDCI_DL_DiffSCS_DiffCC_r19_UnicastDCI_Formats_r19_Scs_15kHz_60kHz_r19_N4},
+}
+
+const (
+	CA_ParametersNR_v1900_AdvUnicastDCI_DL_DiffSCS_DiffCC_r19_UnicastDCI_Formats_r19_Scs_30kHz_120kHz_r19_N2 = 0
+	CA_ParametersNR_v1900_AdvUnicastDCI_DL_DiffSCS_DiffCC_r19_UnicastDCI_Formats_r19_Scs_30kHz_120kHz_r19_N4 = 1
+)
+
+var cAParametersNRV1900AdvUnicastDCIDLDiffSCSDiffCCR19UnicastDCIFormatsR19Scs30kHz120kHzR19Constraints = per.EnumeratedConstraints{
+	Extensible: false,
+	RootValues: []int64{CA_ParametersNR_v1900_AdvUnicastDCI_DL_DiffSCS_DiffCC_r19_UnicastDCI_Formats_r19_Scs_30kHz_120kHz_r19_N2, CA_ParametersNR_v1900_AdvUnicastDCI_DL_DiffSCS_DiffCC_r19_UnicastDCI_Formats_r19_Scs_30kHz_120kHz_r19_N4},
+}
+
+const (
+	CA_ParametersNR_v1900_AdvUnicastDCI_DL_DiffSCS_DiffCC_r19_UnicastDCI_Formats_r19_Scs_15kHz_30kHz_r19_N2 = 0
+)
+
+var cAParametersNRV1900AdvUnicastDCIDLDiffSCSDiffCCR19UnicastDCIFormatsR19Scs15kHz30kHzR19Constraints = per.EnumeratedConstraints{
+	Extensible: false,
+	RootValues: []int64{CA_ParametersNR_v1900_AdvUnicastDCI_DL_DiffSCS_DiffCC_r19_UnicastDCI_Formats_r19_Scs_15kHz_30kHz_r19_N2},
+}
+
+const (
+	CA_ParametersNR_v1900_AdvUnicastDCI_DL_DiffSCS_DiffCC_r19_UnicastDCI_Formats_r19_Scs_30kHz_60kHz_r19_N2 = 0
+)
+
+var cAParametersNRV1900AdvUnicastDCIDLDiffSCSDiffCCR19UnicastDCIFormatsR19Scs30kHz60kHzR19Constraints = per.EnumeratedConstraints{
+	Extensible: false,
+	RootValues: []int64{CA_ParametersNR_v1900_AdvUnicastDCI_DL_DiffSCS_DiffCC_r19_UnicastDCI_Formats_r19_Scs_30kHz_60kHz_r19_N2},
+}
+
+const (
+	CA_ParametersNR_v1900_AdvUnicastDCI_DL_DiffSCS_DiffCC_r19_UnicastDCI_Formats_r19_Scs_30kHz_30kHz_r19_N1 = 0
+)
+
+var cAParametersNRV1900AdvUnicastDCIDLDiffSCSDiffCCR19UnicastDCIFormatsR19Scs30kHz30kHzR19Constraints = per.EnumeratedConstraints{
+	Extensible: false,
+	RootValues: []int64{CA_ParametersNR_v1900_AdvUnicastDCI_DL_DiffSCS_DiffCC_r19_UnicastDCI_Formats_r19_Scs_30kHz_30kHz_r19_N1},
+}
+
+var cAParametersNRV1900AdvUnicastDCIDLDiffSCSDiffCCR19NumDCI13R19Constraints = per.SequenceConstraints{
+	Extensible: false,
+	RootComponents: []per.ComponentInfo{
+		{Name: "scs-15kHz-120kHz-r19", Optional: true},
+		{Name: "scs-15kHz-60kHz-r19", Optional: true},
+		{Name: "scs-30kHz-120kHz-r19", Optional: true},
+		{Name: "scs-15kHz-30kHz-r19", Optional: true},
+		{Name: "scs-30kHz-60kHz-r19", Optional: true},
+		{Name: "scs-30kHz-30kHz-r19", Optional: true},
+	},
+}
+
+const (
+	CA_ParametersNR_v1900_AdvUnicastDCI_DL_DiffSCS_DiffCC_r19_NumDCI_1_3_r19_Scs_15kHz_120kHz_r19_N2 = 0
+	CA_ParametersNR_v1900_AdvUnicastDCI_DL_DiffSCS_DiffCC_r19_NumDCI_1_3_r19_Scs_15kHz_120kHz_r19_N4 = 1
+	CA_ParametersNR_v1900_AdvUnicastDCI_DL_DiffSCS_DiffCC_r19_NumDCI_1_3_r19_Scs_15kHz_120kHz_r19_N8 = 2
+)
+
+var cAParametersNRV1900AdvUnicastDCIDLDiffSCSDiffCCR19NumDCI13R19Scs15kHz120kHzR19Constraints = per.EnumeratedConstraints{
+	Extensible: false,
+	RootValues: []int64{CA_ParametersNR_v1900_AdvUnicastDCI_DL_DiffSCS_DiffCC_r19_NumDCI_1_3_r19_Scs_15kHz_120kHz_r19_N2, CA_ParametersNR_v1900_AdvUnicastDCI_DL_DiffSCS_DiffCC_r19_NumDCI_1_3_r19_Scs_15kHz_120kHz_r19_N4, CA_ParametersNR_v1900_AdvUnicastDCI_DL_DiffSCS_DiffCC_r19_NumDCI_1_3_r19_Scs_15kHz_120kHz_r19_N8},
+}
+
+const (
+	CA_ParametersNR_v1900_AdvUnicastDCI_DL_DiffSCS_DiffCC_r19_NumDCI_1_3_r19_Scs_15kHz_60kHz_r19_N2 = 0
+	CA_ParametersNR_v1900_AdvUnicastDCI_DL_DiffSCS_DiffCC_r19_NumDCI_1_3_r19_Scs_15kHz_60kHz_r19_N4 = 1
+)
+
+var cAParametersNRV1900AdvUnicastDCIDLDiffSCSDiffCCR19NumDCI13R19Scs15kHz60kHzR19Constraints = per.EnumeratedConstraints{
+	Extensible: false,
+	RootValues: []int64{CA_ParametersNR_v1900_AdvUnicastDCI_DL_DiffSCS_DiffCC_r19_NumDCI_1_3_r19_Scs_15kHz_60kHz_r19_N2, CA_ParametersNR_v1900_AdvUnicastDCI_DL_DiffSCS_DiffCC_r19_NumDCI_1_3_r19_Scs_15kHz_60kHz_r19_N4},
+}
+
+const (
+	CA_ParametersNR_v1900_AdvUnicastDCI_DL_DiffSCS_DiffCC_r19_NumDCI_1_3_r19_Scs_30kHz_120kHz_r19_N2 = 0
+	CA_ParametersNR_v1900_AdvUnicastDCI_DL_DiffSCS_DiffCC_r19_NumDCI_1_3_r19_Scs_30kHz_120kHz_r19_N4 = 1
+)
+
+var cAParametersNRV1900AdvUnicastDCIDLDiffSCSDiffCCR19NumDCI13R19Scs30kHz120kHzR19Constraints = per.EnumeratedConstraints{
+	Extensible: false,
+	RootValues: []int64{CA_ParametersNR_v1900_AdvUnicastDCI_DL_DiffSCS_DiffCC_r19_NumDCI_1_3_r19_Scs_30kHz_120kHz_r19_N2, CA_ParametersNR_v1900_AdvUnicastDCI_DL_DiffSCS_DiffCC_r19_NumDCI_1_3_r19_Scs_30kHz_120kHz_r19_N4},
+}
+
+const (
+	CA_ParametersNR_v1900_AdvUnicastDCI_DL_DiffSCS_DiffCC_r19_NumDCI_1_3_r19_Scs_15kHz_30kHz_r19_N2 = 0
+)
+
+var cAParametersNRV1900AdvUnicastDCIDLDiffSCSDiffCCR19NumDCI13R19Scs15kHz30kHzR19Constraints = per.EnumeratedConstraints{
+	Extensible: false,
+	RootValues: []int64{CA_ParametersNR_v1900_AdvUnicastDCI_DL_DiffSCS_DiffCC_r19_NumDCI_1_3_r19_Scs_15kHz_30kHz_r19_N2},
+}
+
+const (
+	CA_ParametersNR_v1900_AdvUnicastDCI_DL_DiffSCS_DiffCC_r19_NumDCI_1_3_r19_Scs_30kHz_60kHz_r19_N2 = 0
+)
+
+var cAParametersNRV1900AdvUnicastDCIDLDiffSCSDiffCCR19NumDCI13R19Scs30kHz60kHzR19Constraints = per.EnumeratedConstraints{
+	Extensible: false,
+	RootValues: []int64{CA_ParametersNR_v1900_AdvUnicastDCI_DL_DiffSCS_DiffCC_r19_NumDCI_1_3_r19_Scs_30kHz_60kHz_r19_N2},
+}
+
+const (
+	CA_ParametersNR_v1900_AdvUnicastDCI_DL_DiffSCS_DiffCC_r19_NumDCI_1_3_r19_Scs_30kHz_30kHz_r19_N1 = 0
+)
+
+var cAParametersNRV1900AdvUnicastDCIDLDiffSCSDiffCCR19NumDCI13R19Scs30kHz30kHzR19Constraints = per.EnumeratedConstraints{
+	Extensible: false,
+	RootValues: []int64{CA_ParametersNR_v1900_AdvUnicastDCI_DL_DiffSCS_DiffCC_r19_NumDCI_1_3_r19_Scs_30kHz_30kHz_r19_N1},
+}
+
+var cAParametersNRV1900AdvUnicastDCIULDiffSCSDiffCCR19UnicastDCIFormatsR19Constraints = per.SequenceConstraints{
+	Extensible: false,
+	RootComponents: []per.ComponentInfo{
+		{Name: "scs-15kHz-120kHz-r19", Optional: true},
+		{Name: "scs-15kHz-60kHz-r19", Optional: true},
+		{Name: "scs-30kHz-120kHz-r19", Optional: true},
+		{Name: "scs-15kHz-30kHz-r19", Optional: true},
+		{Name: "scs-30kHz-60kHz-r19", Optional: true},
+		{Name: "scs-30kHz-30kHz-r19", Optional: true},
+	},
+}
+
+const (
+	CA_ParametersNR_v1900_AdvUnicastDCI_UL_DiffSCS_DiffCC_r19_UnicastDCI_Formats_r19_Scs_15kHz_120kHz_r19_N2 = 0
+	CA_ParametersNR_v1900_AdvUnicastDCI_UL_DiffSCS_DiffCC_r19_UnicastDCI_Formats_r19_Scs_15kHz_120kHz_r19_N4 = 1
+	CA_ParametersNR_v1900_AdvUnicastDCI_UL_DiffSCS_DiffCC_r19_UnicastDCI_Formats_r19_Scs_15kHz_120kHz_r19_N8 = 2
+)
+
+var cAParametersNRV1900AdvUnicastDCIULDiffSCSDiffCCR19UnicastDCIFormatsR19Scs15kHz120kHzR19Constraints = per.EnumeratedConstraints{
+	Extensible: false,
+	RootValues: []int64{CA_ParametersNR_v1900_AdvUnicastDCI_UL_DiffSCS_DiffCC_r19_UnicastDCI_Formats_r19_Scs_15kHz_120kHz_r19_N2, CA_ParametersNR_v1900_AdvUnicastDCI_UL_DiffSCS_DiffCC_r19_UnicastDCI_Formats_r19_Scs_15kHz_120kHz_r19_N4, CA_ParametersNR_v1900_AdvUnicastDCI_UL_DiffSCS_DiffCC_r19_UnicastDCI_Formats_r19_Scs_15kHz_120kHz_r19_N8},
+}
+
+const (
+	CA_ParametersNR_v1900_AdvUnicastDCI_UL_DiffSCS_DiffCC_r19_UnicastDCI_Formats_r19_Scs_15kHz_60kHz_r19_N2 = 0
+	CA_ParametersNR_v1900_AdvUnicastDCI_UL_DiffSCS_DiffCC_r19_UnicastDCI_Formats_r19_Scs_15kHz_60kHz_r19_N4 = 1
+)
+
+var cAParametersNRV1900AdvUnicastDCIULDiffSCSDiffCCR19UnicastDCIFormatsR19Scs15kHz60kHzR19Constraints = per.EnumeratedConstraints{
+	Extensible: false,
+	RootValues: []int64{CA_ParametersNR_v1900_AdvUnicastDCI_UL_DiffSCS_DiffCC_r19_UnicastDCI_Formats_r19_Scs_15kHz_60kHz_r19_N2, CA_ParametersNR_v1900_AdvUnicastDCI_UL_DiffSCS_DiffCC_r19_UnicastDCI_Formats_r19_Scs_15kHz_60kHz_r19_N4},
+}
+
+const (
+	CA_ParametersNR_v1900_AdvUnicastDCI_UL_DiffSCS_DiffCC_r19_UnicastDCI_Formats_r19_Scs_30kHz_120kHz_r19_N2 = 0
+	CA_ParametersNR_v1900_AdvUnicastDCI_UL_DiffSCS_DiffCC_r19_UnicastDCI_Formats_r19_Scs_30kHz_120kHz_r19_N4 = 1
+)
+
+var cAParametersNRV1900AdvUnicastDCIULDiffSCSDiffCCR19UnicastDCIFormatsR19Scs30kHz120kHzR19Constraints = per.EnumeratedConstraints{
+	Extensible: false,
+	RootValues: []int64{CA_ParametersNR_v1900_AdvUnicastDCI_UL_DiffSCS_DiffCC_r19_UnicastDCI_Formats_r19_Scs_30kHz_120kHz_r19_N2, CA_ParametersNR_v1900_AdvUnicastDCI_UL_DiffSCS_DiffCC_r19_UnicastDCI_Formats_r19_Scs_30kHz_120kHz_r19_N4},
+}
+
+const (
+	CA_ParametersNR_v1900_AdvUnicastDCI_UL_DiffSCS_DiffCC_r19_UnicastDCI_Formats_r19_Scs_15kHz_30kHz_r19_N2 = 0
+)
+
+var cAParametersNRV1900AdvUnicastDCIULDiffSCSDiffCCR19UnicastDCIFormatsR19Scs15kHz30kHzR19Constraints = per.EnumeratedConstraints{
+	Extensible: false,
+	RootValues: []int64{CA_ParametersNR_v1900_AdvUnicastDCI_UL_DiffSCS_DiffCC_r19_UnicastDCI_Formats_r19_Scs_15kHz_30kHz_r19_N2},
+}
+
+const (
+	CA_ParametersNR_v1900_AdvUnicastDCI_UL_DiffSCS_DiffCC_r19_UnicastDCI_Formats_r19_Scs_30kHz_60kHz_r19_N2 = 0
+)
+
+var cAParametersNRV1900AdvUnicastDCIULDiffSCSDiffCCR19UnicastDCIFormatsR19Scs30kHz60kHzR19Constraints = per.EnumeratedConstraints{
+	Extensible: false,
+	RootValues: []int64{CA_ParametersNR_v1900_AdvUnicastDCI_UL_DiffSCS_DiffCC_r19_UnicastDCI_Formats_r19_Scs_30kHz_60kHz_r19_N2},
+}
+
+const (
+	CA_ParametersNR_v1900_AdvUnicastDCI_UL_DiffSCS_DiffCC_r19_UnicastDCI_Formats_r19_Scs_30kHz_30kHz_r19_N1 = 0
+)
+
+var cAParametersNRV1900AdvUnicastDCIULDiffSCSDiffCCR19UnicastDCIFormatsR19Scs30kHz30kHzR19Constraints = per.EnumeratedConstraints{
+	Extensible: false,
+	RootValues: []int64{CA_ParametersNR_v1900_AdvUnicastDCI_UL_DiffSCS_DiffCC_r19_UnicastDCI_Formats_r19_Scs_30kHz_30kHz_r19_N1},
+}
+
+var cAParametersNRV1900AdvUnicastDCIULDiffSCSDiffCCR19NumDCI03R19Constraints = per.SequenceConstraints{
+	Extensible: false,
+	RootComponents: []per.ComponentInfo{
+		{Name: "scs-15kHz-120kHz-r19", Optional: true},
+		{Name: "scs-15kHz-60kHz-r19", Optional: true},
+		{Name: "scs-30kHz-120kHz-r19", Optional: true},
+		{Name: "scs-15kHz-30kHz-r19", Optional: true},
+		{Name: "scs-30kHz-60kHz-r19", Optional: true},
+		{Name: "scs-30kHz-30kHz-r19", Optional: true},
+	},
+}
+
+const (
+	CA_ParametersNR_v1900_AdvUnicastDCI_UL_DiffSCS_DiffCC_r19_NumDCI_0_3_r19_Scs_15kHz_120kHz_r19_N2 = 0
+	CA_ParametersNR_v1900_AdvUnicastDCI_UL_DiffSCS_DiffCC_r19_NumDCI_0_3_r19_Scs_15kHz_120kHz_r19_N4 = 1
+	CA_ParametersNR_v1900_AdvUnicastDCI_UL_DiffSCS_DiffCC_r19_NumDCI_0_3_r19_Scs_15kHz_120kHz_r19_N8 = 2
+)
+
+var cAParametersNRV1900AdvUnicastDCIULDiffSCSDiffCCR19NumDCI03R19Scs15kHz120kHzR19Constraints = per.EnumeratedConstraints{
+	Extensible: false,
+	RootValues: []int64{CA_ParametersNR_v1900_AdvUnicastDCI_UL_DiffSCS_DiffCC_r19_NumDCI_0_3_r19_Scs_15kHz_120kHz_r19_N2, CA_ParametersNR_v1900_AdvUnicastDCI_UL_DiffSCS_DiffCC_r19_NumDCI_0_3_r19_Scs_15kHz_120kHz_r19_N4, CA_ParametersNR_v1900_AdvUnicastDCI_UL_DiffSCS_DiffCC_r19_NumDCI_0_3_r19_Scs_15kHz_120kHz_r19_N8},
+}
+
+const (
+	CA_ParametersNR_v1900_AdvUnicastDCI_UL_DiffSCS_DiffCC_r19_NumDCI_0_3_r19_Scs_15kHz_60kHz_r19_N2 = 0
+	CA_ParametersNR_v1900_AdvUnicastDCI_UL_DiffSCS_DiffCC_r19_NumDCI_0_3_r19_Scs_15kHz_60kHz_r19_N4 = 1
+)
+
+var cAParametersNRV1900AdvUnicastDCIULDiffSCSDiffCCR19NumDCI03R19Scs15kHz60kHzR19Constraints = per.EnumeratedConstraints{
+	Extensible: false,
+	RootValues: []int64{CA_ParametersNR_v1900_AdvUnicastDCI_UL_DiffSCS_DiffCC_r19_NumDCI_0_3_r19_Scs_15kHz_60kHz_r19_N2, CA_ParametersNR_v1900_AdvUnicastDCI_UL_DiffSCS_DiffCC_r19_NumDCI_0_3_r19_Scs_15kHz_60kHz_r19_N4},
+}
+
+const (
+	CA_ParametersNR_v1900_AdvUnicastDCI_UL_DiffSCS_DiffCC_r19_NumDCI_0_3_r19_Scs_30kHz_120kHz_r19_N2 = 0
+	CA_ParametersNR_v1900_AdvUnicastDCI_UL_DiffSCS_DiffCC_r19_NumDCI_0_3_r19_Scs_30kHz_120kHz_r19_N4 = 1
+)
+
+var cAParametersNRV1900AdvUnicastDCIULDiffSCSDiffCCR19NumDCI03R19Scs30kHz120kHzR19Constraints = per.EnumeratedConstraints{
+	Extensible: false,
+	RootValues: []int64{CA_ParametersNR_v1900_AdvUnicastDCI_UL_DiffSCS_DiffCC_r19_NumDCI_0_3_r19_Scs_30kHz_120kHz_r19_N2, CA_ParametersNR_v1900_AdvUnicastDCI_UL_DiffSCS_DiffCC_r19_NumDCI_0_3_r19_Scs_30kHz_120kHz_r19_N4},
+}
+
+const (
+	CA_ParametersNR_v1900_AdvUnicastDCI_UL_DiffSCS_DiffCC_r19_NumDCI_0_3_r19_Scs_15kHz_30kHz_r19_N2 = 0
+)
+
+var cAParametersNRV1900AdvUnicastDCIULDiffSCSDiffCCR19NumDCI03R19Scs15kHz30kHzR19Constraints = per.EnumeratedConstraints{
+	Extensible: false,
+	RootValues: []int64{CA_ParametersNR_v1900_AdvUnicastDCI_UL_DiffSCS_DiffCC_r19_NumDCI_0_3_r19_Scs_15kHz_30kHz_r19_N2},
+}
+
+const (
+	CA_ParametersNR_v1900_AdvUnicastDCI_UL_DiffSCS_DiffCC_r19_NumDCI_0_3_r19_Scs_30kHz_60kHz_r19_N2 = 0
+)
+
+var cAParametersNRV1900AdvUnicastDCIULDiffSCSDiffCCR19NumDCI03R19Scs30kHz60kHzR19Constraints = per.EnumeratedConstraints{
+	Extensible: false,
+	RootValues: []int64{CA_ParametersNR_v1900_AdvUnicastDCI_UL_DiffSCS_DiffCC_r19_NumDCI_0_3_r19_Scs_30kHz_60kHz_r19_N2},
+}
+
+const (
+	CA_ParametersNR_v1900_AdvUnicastDCI_UL_DiffSCS_DiffCC_r19_NumDCI_0_3_r19_Scs_30kHz_30kHz_r19_N1 = 0
+)
+
+var cAParametersNRV1900AdvUnicastDCIULDiffSCSDiffCCR19NumDCI03R19Scs30kHz30kHzR19Constraints = per.EnumeratedConstraints{
+	Extensible: false,
+	RootValues: []int64{CA_ParametersNR_v1900_AdvUnicastDCI_UL_DiffSCS_DiffCC_r19_NumDCI_0_3_r19_Scs_30kHz_30kHz_r19_N1},
+}
+
+type CA_ParametersNR_v1900 struct {
+	CodebookParametersType1SP_SchemeA_PerBC_r19  *CodebookParametersType1SP_SchemeA_r19
+	CodebookParametersType1SP_SchemeB_PerBC_r19  *CodebookParametersType1SP_SchemeB_r19
+	CodebookParametersType1MP_PerBC_r19          *CodebookParametersType1MP_r19
+	CodebookParameterseType2ExtPerBC_r19         *CodebookParameterseType2Ext_r19
+	CodebookParametersfeType2ExtPerBC_r19        *CodebookParametersfeType2Ext_r19
+	CodebookParameterseType2DopplerExtPerBC_r19  *CodebookParameterseType2DopplerExt_r19
+	CodebookParametersHybridBF_Type1SP_PerBC_r19 *CodebookParametersHybridBF_Type1SP_r19
+	CodebookParametersHybridBF_EType2PerBC_r19   *CodebookParametersHybridBF_EType2_r19
+	Aiml_CSI_PredictionDopplerPerBC_r19          *CodebookParametersCSI_PredictionDoppler_r19
+	Aiml_CSI_ReportPerBC_r19                     []CPU_PoolInfo_r19
+	Aiml_CSI_PredictionPerBC_r19                 *struct {
+		SupportedCSI_RS_ResourceList_r19 []int64
+		ScalingFactor_r19                int64
+		NumberOfOccupiedCPU_r19          int64
+		NumberOfOccupiedCPUx_r19         int64
+		RelaxationTimelineT_r19          struct {
+			Scs15kHz_r19  int64
+			Scs30kHz_r19  int64
+			Scs60kHz_r19  int64
+			Scs120kHz_r19 int64
+			Scs480kHz_r19 int64
+			Scs960kHz_r19 int64
+		}
+		OccupiedResourcePool_r19 int64
+		InferenceReportType_r19  int64
+	}
+	Aiml_CSI_PredictionUnitDurationDD_PerBC_r19 *int64
+	Aiml_CSI_PredictionN4PerBC_r19              *struct {
+		SupportedCSI_RS_ReportSettingAcrossCC_r19  []SupportedCSI_RS_ReportSetting_r18
+		SupportedCSI_RS_ReportSettingOneReport_r19 []SupportedCSI_RS_ReportSetting_r18
+		NumOccupiedCPU_r19                         int64
+		NumOccupiedCPUx_r19                        int64
+		OccupiedPool_r19                           int64
+	}
+	Aiml_CSI_PredictionUE_DataCollectionPerBC_r19 *int64
+	Aiml_CSI_PredictionMonitoringPerBC_r19        *struct {
+		SuppportedCSI_RS_ResourceList_r19 []int64
+		NumOccupiedCPU_r19                int64
+	}
+	DiffGroupPUCCH_PUSCH_r19        *int64
+	TimeRestriction128PortPerBC_r19 *int64
+	GroupScalingFactorPerBC_r19     *int64
+	Nes_SD_Type1_SP_PerBC_r19       *struct {
+		Timeline_r19            int64
+		NumOfPortCSI_Report_r19 per.BitString
+	}
+	Mr_AlwaysReportedType1SP_PerBC_r19 *int64
+	Mr_AlwaysReported_EType2PerBC_r19  *int64
+	Cjtc_DdReportPerBC_r19             *struct {
+		MinRangeDdInCyclicPrefix_r19 int64
+		MaxResolutionDd_r19          int64
+		ScalingFactor_r19            int64
+	}
+	Cjtc_DdReportProcessingPerBC_r19 *struct {
+		MaxNumberTRS_Resource_r19            int64
+		MaxNumberTRS_ResourceAcrossCC_r19    int64
+		MaxNumberCSI_RS_ResourcePerCC_r19    int64
+		MaxNumberCSI_RS_ResourceAcrossCC_r19 int64
+		ValueX_r19                           int64
+	}
+	Cjtc_FO_ReportPerBC_r19 *struct {
+		MinRangeFO_r19      int64
+		MaxResolutionFO_r19 int64
+		ScalingFactor_r19   int64
+	}
+	Cjtc_FO_ReportProcessingPerBC_r19 *struct {
+		MaxNumberTRS_Resource_r19            int64
+		MaxNumberTRS_ResourceAcrossCC_r19    int64
+		MaxNumberCSI_RS_ResourcePerCC_r19    int64
+		MaxNumberCSI_RS_ResourceAcrossCC_r19 int64
+		ValueX_r19                           int64
+	}
+	Cjtc_PO_ReportWidebandPerBC_r19 *struct {
+		MaxResolution_r19   int64
+		ScalingFactor_r19   int64
+		MaxSlotDuration_r19 int64
+	}
+	Cjtc_PO_ReportWidebandProcessingPerBC_r19 *struct {
+		MaxNumberCSI_RS_Configured_r19         int64
+		MaxNumberCSI_RS_ConfiguredAcrossCC_r19 int64
+		MaxNumberCSI_RS_ResourcePerCC_r19      int64
+		MaxNumberCSI_RS_ResourceAcrossCC_r19   int64
+		ValueX_r19                             int64
+	}
+	Cjtc_PO_ReportSubbandPerBC_r19 *struct {
+		MaxResolution_r19   int64
+		MinSubbandSize_r19  int64
+		ScalingFactor_r19   int64
+		MaxSlotDuration_r19 int64
+	}
+	Cjtc_DdFO_ReportPerBC_r19 *struct {
+		MinRangeDdInCyclicPrefix_r19 int64
+		MaxResolutionDd_r19          int64
+		MinRangeFO_r19               int64
+		MaxResolutionFO_r19          int64
+		ScalingFactor_r19            int64
+	}
+	Cjtc_DdFO_ReportProcessingPerBC_r19 *struct {
+		MaxNumberTRS_Resource_r19            int64
+		MaxNumberTRS_ResourceAcrossCC_r19    int64
+		MaxNumberCSI_RS_ResourcePerCC_r19    int64
+		MaxNumberCSI_RS_ResourceAcrossCC_r19 int64
+		ValueX_r19                           int64
+	}
+	Linked_CJTC_Dd_EType2CJT_JointPerBC_r19            *int64
+	Linked_CJTC_Dd_EType2CJT_SeparatePerBC_r19         *int64
+	Linked_CJTC_Dd_EType2CJT_SeparatePerStatePerBC_r19 *int64
+	TimelineRelax_CJTC_Dd_EType2CJT_PerBC_r19          *struct {
+		Scs15kHz_r19  *int64
+		Scs30kHz_r19  *int64
+		Scs60kHz_r19  *int64
+		Scs120kHz_r19 *int64
+		Scs480kHz_r19 *int64
+		Scs960kHz_r19 *int64
+	}
+	NonCodebook_CSI_RS_SRS_PerBC_Enh_r19     []int64
+	IntraFreqL1_MeasConfigPeriodicCSI_RS_r19 *struct {
+		SupportedMaxIntraFreqCellsConfig_r19                int64
+		SupportedMaxIntraFreqCellsPerReport_r19             int64
+		SupportedMaxReportBeamsPerReportedCell_r19          int64
+		SupportedMaxReportBeamsReports_r19                  int64
+		SupportedMaxAperiodic_LTM_CSI_ReportConfig_r19      int64
+		SupportedMaxPeriodic_LTM_CSI_ReportConfig_r19       int64
+		SupportedMaxSemiPersistent_LTM_CSI_ReportConfig_r19 int64
+	}
+	InterFreqL1_MeasConfigPeriodicCSI_RS_r19 *struct {
+		SupportedMaxInterFreqCellsConfig_r19                int64
+		SupportedMaxInterFreqCellsPerReport_r19             int64
+		SupportedMaxReportBeamsPerReportedCell_r19          int64
+		SupportedMaxReportBeamsReports_r19                  int64
+		SupportedMaxAperiodic_LTM_CSI_ReportConfig_r19      int64
+		SupportedMaxPeriodic_LTM_CSI_ReportConfig_r19       int64
+		SupportedMaxSemiPersistent_LTM_CSI_ReportConfig_r19 int64
+	}
+	IntraFreqL1_MeasConfigSP_CSI_RS_r19 *struct {
+		SupportedMaxAperiodic_LTM_CSI_ReportConfig_r19      int64
+		SupportedMaxSemiPersistent_LTM_CSI_ReportConfig_r19 int64
+	}
+	CurrentSpCellInclL1_ReportCSI_RS_r19 *int64
+	SimultaneousNZP_CSI_RS_r19           *int64
+	InterFreqL1_MeasConfigSP_CSI_RS_r19  *struct {
+		SupportedMaxAperiodic_LTM_CSI_ReportConfig_r19      int64
+		SupportedMaxSemiPersistent_LTM_CSI_ReportConfig_r19 int64
+	}
+	Ltm_CSI_RS_CSI_IM_PeriodicCandidateIntraFreq_r19 *struct {
+		MaxNumOfCandidateCells_r19             int64
+		MaxNumOfCSI_RS_ResourceAcrossCells_r19 int64
+		MaxNumOfCSI_RS_PortsPerCell_r19        int64
+		MaxNumOfNZP_CSI_RS_PortsPerCell_r19    int64
+		MaxNumOfCSI_IM_ResourceAcrossCells_r19 int64
+	}
+	Ltm_CSI_RS_CSI_IM_SP_CandidateIntraFreq_r19 *struct {
+		MaxNumOfCandidateCells_r19             int64
+		MaxNumOfCSI_RS_ResourceAcrossCells_r19 int64
+		MaxNumOfCSI_RS_PortsPerCell_r19        int64
+		MaxNumOfNZP_CSI_RS_PortsPerCell_r19    int64
+		MaxNumOfCSI_IM_ResourceAcrossCells_r19 int64
+	}
+	Ltm_CSI_RS_CSI_IM_PeriodicCandidateInterFreq_r19 *struct {
+		MaxNumOfCandidateCells_r19             int64
+		MaxNumOfCSI_RS_ResourceAcrossCells_r19 int64
+		MaxNumOfCSI_RS_PortsPerCell_r19        int64
+		MaxNumOfNZP_CSI_RS_PortsPerCell_r19    int64
+		MaxNumOfCSI_IM_ResourceAcrossCells_r19 int64
+	}
+	Ltm_CSI_RS_CSI_IM_SP_CandidateInterFreq_r19 *struct {
+		MaxNumOfCandidateCells_r19             int64
+		MaxNumOfCSI_RS_ResourceAcrossCells_r19 int64
+		MaxNumOfCSI_RS_PortsPerCell_r19        int64
+		MaxNumOfNZP_CSI_RS_PortsPerCell_r19    int64
+		MaxNumOfCSI_IM_ResourceAcrossCells_r19 int64
+	}
+	SimultaneousNZP_CSI_RS_NES_r19             *int64
+	MultiCell_PDSCH_DCI_1_3_DiffSCS_DiffCC_r19 *struct {
+		CombinationCarrierTypeSCS_r19            []CombinationCarrierTypeSCS_r19
+		MaxNumberCoScheduledCell_r19             int64
+		MaxNumberSetsOfCellAcrossPUCCH_Group_r19 int64
+		MaxNumberSetsOfCellScheduling_r19        int64
+		HarqFeedbackType_r19                     int64
+		CoScheduledCellIndicationScheme_r19      int64
+		SupportOfSearchSpace_r19                 *int64
+		ThreeSetsCombination_r19                 []CombinationCarrierTypeSCS_ThreeSets_r19
+	}
+	MultiCell_PUSCH_DCI_0_3_DiffSCS_DiffCC_r19 *struct {
+		CombinationCarrierTypeSCS_r19            []CombinationCarrierTypeSCS_r19
+		MaxNumberCoScheduledCell_r19             int64
+		MaxNumberSetsOfCellAcrossPUCCH_Group_r19 int64
+		MaxNumberSetsOfCellScheduling_r19        int64
+		CoScheduledCellIndicationScheme_r19      int64
+		SupportOfSearchSpace_r19                 *int64
+		ThreeSetsCombination_r19                 []CombinationCarrierTypeSCS_ThreeSets_r19
+	}
+	MultiCellMultiPDSCH_DCI_1_3_r19     *int64
+	MultiCellMultiPUSCH_DCI_0_3_r19     *int64
+	AdvUnicastDCI_DL_DiffSCS_DiffCC_r19 *struct {
+		UnicastDCI_Formats_r19 struct {
+			Scs_15kHz_120kHz_r19 *int64
+			Scs_15kHz_60kHz_r19  *int64
+			Scs_30kHz_120kHz_r19 *int64
+			Scs_15kHz_30kHz_r19  *int64
+			Scs_30kHz_60kHz_r19  *int64
+			Scs_30kHz_30kHz_r19  *int64
+		}
+		NumDCI_1_3_r19 struct {
+			Scs_15kHz_120kHz_r19 *int64
+			Scs_15kHz_60kHz_r19  *int64
+			Scs_30kHz_120kHz_r19 *int64
+			Scs_15kHz_30kHz_r19  *int64
+			Scs_30kHz_60kHz_r19  *int64
+			Scs_30kHz_30kHz_r19  *int64
+		}
+	}
+	AdvUnicastDCI_UL_DiffSCS_DiffCC_r19 *struct {
+		UnicastDCI_Formats_r19 struct {
+			Scs_15kHz_120kHz_r19 *int64
+			Scs_15kHz_60kHz_r19  *int64
+			Scs_30kHz_120kHz_r19 *int64
+			Scs_15kHz_30kHz_r19  *int64
+			Scs_30kHz_60kHz_r19  *int64
+			Scs_30kHz_30kHz_r19  *int64
+		}
+		NumDCI_0_3_r19 struct {
+			Scs_15kHz_120kHz_r19 *int64
+			Scs_15kHz_60kHz_r19  *int64
+			Scs_30kHz_120kHz_r19 *int64
+			Scs_15kHz_30kHz_r19  *int64
+			Scs_30kHz_60kHz_r19  *int64
+			Scs_30kHz_30kHz_r19  *int64
+		}
+	}
+	Type3HARQ_CB_DCI_1_3_Diff_r19                          *int64
+	Type3EnhHARQ_CB_DCI_1_3_Diff_r19                       *int64
+	ScellDormancyWithinActiveTime_DCI_0_3_And_1_3_Diff_r19 *int64
+	Qcl_MultiCellDCI_1_3_Diff_r19                          *int64
+	Bwp_SwitchingDCI_0_3_And_1_3_Diff_r19                  *int64
+	Mpr_ActiveCarrierEnh_r19                               *int64
+	Mpr_DL_Independent_r19                                 *int64
+	Mpr_ActivateDependent_r19                              *int64
+	IntraBandNR_CA_Non_Collocated_r19                      *int64
+	Atg_RxBeamType_r19                                     *int64
+	Od_SSB_FastMeasWinLowerBound_r19                       *int64
+	MaxCSI_RS_ResourceL1_Meas_r19                          *int64
+	TotalCSI_RS_ResourceL1_Meas_r19                        *int64
+}
+
+func (ie *CA_ParametersNR_v1900) Encode(e *per.Encoder) error {
+	seq := e.NewSequenceEncoder(cAParametersNRV1900Constraints)
+
+	// 1. Root OPTIONAL bitmap, one bit per optional/default field.
+	if err := seq.EncodePreamble([]bool{ie.CodebookParametersType1SP_SchemeA_PerBC_r19 != nil, ie.CodebookParametersType1SP_SchemeB_PerBC_r19 != nil, ie.CodebookParametersType1MP_PerBC_r19 != nil, ie.CodebookParameterseType2ExtPerBC_r19 != nil, ie.CodebookParametersfeType2ExtPerBC_r19 != nil, ie.CodebookParameterseType2DopplerExtPerBC_r19 != nil, ie.CodebookParametersHybridBF_Type1SP_PerBC_r19 != nil, ie.CodebookParametersHybridBF_EType2PerBC_r19 != nil, ie.Aiml_CSI_PredictionDopplerPerBC_r19 != nil, ie.Aiml_CSI_ReportPerBC_r19 != nil, ie.Aiml_CSI_PredictionPerBC_r19 != nil, ie.Aiml_CSI_PredictionUnitDurationDD_PerBC_r19 != nil, ie.Aiml_CSI_PredictionN4PerBC_r19 != nil, ie.Aiml_CSI_PredictionUE_DataCollectionPerBC_r19 != nil, ie.Aiml_CSI_PredictionMonitoringPerBC_r19 != nil, ie.DiffGroupPUCCH_PUSCH_r19 != nil, ie.TimeRestriction128PortPerBC_r19 != nil, ie.GroupScalingFactorPerBC_r19 != nil, ie.Nes_SD_Type1_SP_PerBC_r19 != nil, ie.Mr_AlwaysReportedType1SP_PerBC_r19 != nil, ie.Mr_AlwaysReported_EType2PerBC_r19 != nil, ie.Cjtc_DdReportPerBC_r19 != nil, ie.Cjtc_DdReportProcessingPerBC_r19 != nil, ie.Cjtc_FO_ReportPerBC_r19 != nil, ie.Cjtc_FO_ReportProcessingPerBC_r19 != nil, ie.Cjtc_PO_ReportWidebandPerBC_r19 != nil, ie.Cjtc_PO_ReportWidebandProcessingPerBC_r19 != nil, ie.Cjtc_PO_ReportSubbandPerBC_r19 != nil, ie.Cjtc_DdFO_ReportPerBC_r19 != nil, ie.Cjtc_DdFO_ReportProcessingPerBC_r19 != nil, ie.Linked_CJTC_Dd_EType2CJT_JointPerBC_r19 != nil, ie.Linked_CJTC_Dd_EType2CJT_SeparatePerBC_r19 != nil, ie.Linked_CJTC_Dd_EType2CJT_SeparatePerStatePerBC_r19 != nil, ie.TimelineRelax_CJTC_Dd_EType2CJT_PerBC_r19 != nil, ie.NonCodebook_CSI_RS_SRS_PerBC_Enh_r19 != nil, ie.IntraFreqL1_MeasConfigPeriodicCSI_RS_r19 != nil, ie.InterFreqL1_MeasConfigPeriodicCSI_RS_r19 != nil, ie.IntraFreqL1_MeasConfigSP_CSI_RS_r19 != nil, ie.CurrentSpCellInclL1_ReportCSI_RS_r19 != nil, ie.SimultaneousNZP_CSI_RS_r19 != nil, ie.InterFreqL1_MeasConfigSP_CSI_RS_r19 != nil, ie.Ltm_CSI_RS_CSI_IM_PeriodicCandidateIntraFreq_r19 != nil, ie.Ltm_CSI_RS_CSI_IM_SP_CandidateIntraFreq_r19 != nil, ie.Ltm_CSI_RS_CSI_IM_PeriodicCandidateInterFreq_r19 != nil, ie.Ltm_CSI_RS_CSI_IM_SP_CandidateInterFreq_r19 != nil, ie.SimultaneousNZP_CSI_RS_NES_r19 != nil, ie.MultiCell_PDSCH_DCI_1_3_DiffSCS_DiffCC_r19 != nil, ie.MultiCell_PUSCH_DCI_0_3_DiffSCS_DiffCC_r19 != nil, ie.MultiCellMultiPDSCH_DCI_1_3_r19 != nil, ie.MultiCellMultiPUSCH_DCI_0_3_r19 != nil, ie.AdvUnicastDCI_DL_DiffSCS_DiffCC_r19 != nil, ie.AdvUnicastDCI_UL_DiffSCS_DiffCC_r19 != nil, ie.Type3HARQ_CB_DCI_1_3_Diff_r19 != nil, ie.Type3EnhHARQ_CB_DCI_1_3_Diff_r19 != nil, ie.ScellDormancyWithinActiveTime_DCI_0_3_And_1_3_Diff_r19 != nil, ie.Qcl_MultiCellDCI_1_3_Diff_r19 != nil, ie.Bwp_SwitchingDCI_0_3_And_1_3_Diff_r19 != nil, ie.Mpr_ActiveCarrierEnh_r19 != nil, ie.Mpr_DL_Independent_r19 != nil, ie.Mpr_ActivateDependent_r19 != nil, ie.IntraBandNR_CA_Non_Collocated_r19 != nil, ie.Atg_RxBeamType_r19 != nil, ie.Od_SSB_FastMeasWinLowerBound_r19 != nil, ie.MaxCSI_RS_ResourceL1_Meas_r19 != nil, ie.TotalCSI_RS_ResourceL1_Meas_r19 != nil}); err != nil {
+		return err
+	}
+
+	// 2. codebookParametersType1SP-SchemeA-PerBC-r19: ref
+	{
+		if ie.CodebookParametersType1SP_SchemeA_PerBC_r19 != nil {
+			if err := ie.CodebookParametersType1SP_SchemeA_PerBC_r19.Encode(e); err != nil {
+				return err
+			}
+		}
+	}
+
+	// 3. codebookParametersType1SP-SchemeB-PerBC-r19: ref
+	{
+		if ie.CodebookParametersType1SP_SchemeB_PerBC_r19 != nil {
+			if err := ie.CodebookParametersType1SP_SchemeB_PerBC_r19.Encode(e); err != nil {
+				return err
+			}
+		}
+	}
+
+	// 4. codebookParametersType1MP-PerBC-r19: ref
+	{
+		if ie.CodebookParametersType1MP_PerBC_r19 != nil {
+			if err := ie.CodebookParametersType1MP_PerBC_r19.Encode(e); err != nil {
+				return err
+			}
+		}
+	}
+
+	// 5. codebookParameterseType2ExtPerBC-r19: ref
+	{
+		if ie.CodebookParameterseType2ExtPerBC_r19 != nil {
+			if err := ie.CodebookParameterseType2ExtPerBC_r19.Encode(e); err != nil {
+				return err
+			}
+		}
+	}
+
+	// 6. codebookParametersfeType2ExtPerBC-r19: ref
+	{
+		if ie.CodebookParametersfeType2ExtPerBC_r19 != nil {
+			if err := ie.CodebookParametersfeType2ExtPerBC_r19.Encode(e); err != nil {
+				return err
+			}
+		}
+	}
+
+	// 7. codebookParameterseType2DopplerExtPerBC-r19: ref
+	{
+		if ie.CodebookParameterseType2DopplerExtPerBC_r19 != nil {
+			if err := ie.CodebookParameterseType2DopplerExtPerBC_r19.Encode(e); err != nil {
+				return err
+			}
+		}
+	}
+
+	// 8. codebookParametersHybridBF-Type1SP-PerBC-r19: ref
+	{
+		if ie.CodebookParametersHybridBF_Type1SP_PerBC_r19 != nil {
+			if err := ie.CodebookParametersHybridBF_Type1SP_PerBC_r19.Encode(e); err != nil {
+				return err
+			}
+		}
+	}
+
+	// 9. codebookParametersHybridBF-eType2PerBC-r19: ref
+	{
+		if ie.CodebookParametersHybridBF_EType2PerBC_r19 != nil {
+			if err := ie.CodebookParametersHybridBF_EType2PerBC_r19.Encode(e); err != nil {
+				return err
+			}
+		}
+	}
+
+	// 10. aiml-CSI-PredictionDopplerPerBC-r19: ref
+	{
+		if ie.Aiml_CSI_PredictionDopplerPerBC_r19 != nil {
+			if err := ie.Aiml_CSI_PredictionDopplerPerBC_r19.Encode(e); err != nil {
+				return err
+			}
+		}
+	}
+
+	// 11. aiml-CSI-ReportPerBC-r19: sequence-of
+	{
+		if ie.Aiml_CSI_ReportPerBC_r19 != nil {
+			seqOf := e.NewSequenceOfEncoder(cAParametersNRV1900AimlCSIReportPerBCR19Constraints)
+			if err := seqOf.EncodeLength(int64(len(ie.Aiml_CSI_ReportPerBC_r19))); err != nil {
+				return err
+			}
+			for i := range ie.Aiml_CSI_ReportPerBC_r19 {
+				if err := ie.Aiml_CSI_ReportPerBC_r19[i].Encode(e); err != nil {
+					return err
+				}
+			}
+		}
+	}
+
+	// 12. aiml-CSI-PredictionPerBC-r19: sequence
+	{
+		if ie.Aiml_CSI_PredictionPerBC_r19 != nil {
+			c := ie.Aiml_CSI_PredictionPerBC_r19
+			{
+				seqOf := e.NewSequenceOfEncoder(cAParametersNRV1900AimlCSIPredictionPerBCR19SupportedCSIRSResourceListR19Constraints)
+				if err := seqOf.EncodeLength(int64(len(c.SupportedCSI_RS_ResourceList_r19))); err != nil {
+					return err
+				}
+				for i := range c.SupportedCSI_RS_ResourceList_r19 {
+					if err := e.EncodeInteger(c.SupportedCSI_RS_ResourceList_r19[i], per.Constrained(0, common.MaxNrofCSI_RS_ResourcesAlt_1_r16)); err != nil {
+						return err
+					}
+				}
+			}
+			if err := e.EncodeEnumerated(c.ScalingFactor_r19, cAParametersNRV1900AimlCSIPredictionPerBCR19ScalingFactorR19Constraints); err != nil {
+				return err
+			}
+			if err := e.EncodeInteger(c.NumberOfOccupiedCPU_r19, per.Constrained(0, 8)); err != nil {
+				return err
+			}
+			if err := e.EncodeInteger(c.NumberOfOccupiedCPUx_r19, per.Constrained(0, 8)); err != nil {
+				return err
+			}
+			{
+				c := &c.RelaxationTimelineT_r19
+				if err := e.EncodeEnumerated(c.Scs15kHz_r19, cAParametersNRV1900AimlCSIPredictionPerBCR19RelaxationTimelineTR19Scs15kHzR19Constraints); err != nil {
+					return err
+				}
+				if err := e.EncodeEnumerated(c.Scs30kHz_r19, cAParametersNRV1900AimlCSIPredictionPerBCR19RelaxationTimelineTR19Scs30kHzR19Constraints); err != nil {
+					return err
+				}
+				if err := e.EncodeEnumerated(c.Scs60kHz_r19, cAParametersNRV1900AimlCSIPredictionPerBCR19RelaxationTimelineTR19Scs60kHzR19Constraints); err != nil {
+					return err
+				}
+				if err := e.EncodeEnumerated(c.Scs120kHz_r19, cAParametersNRV1900AimlCSIPredictionPerBCR19RelaxationTimelineTR19Scs120kHzR19Constraints); err != nil {
+					return err
+				}
+				if err := e.EncodeEnumerated(c.Scs480kHz_r19, cAParametersNRV1900AimlCSIPredictionPerBCR19RelaxationTimelineTR19Scs480kHzR19Constraints); err != nil {
+					return err
+				}
+				if err := e.EncodeEnumerated(c.Scs960kHz_r19, cAParametersNRV1900AimlCSIPredictionPerBCR19RelaxationTimelineTR19Scs960kHzR19Constraints); err != nil {
+					return err
+				}
+			}
+			if err := e.EncodeInteger(c.OccupiedResourcePool_r19, per.Constrained(1, 2)); err != nil {
+				return err
+			}
+			if err := e.EncodeEnumerated(c.InferenceReportType_r19, cAParametersNRV1900AimlCSIPredictionPerBCR19InferenceReportTypeR19Constraints); err != nil {
+				return err
+			}
+		}
+	}
+
+	// 13. aiml-CSI-PredictionUnitDurationDD-PerBC-r19: enumerated
+	{
+		if ie.Aiml_CSI_PredictionUnitDurationDD_PerBC_r19 != nil {
+			if err := e.EncodeEnumerated(*ie.Aiml_CSI_PredictionUnitDurationDD_PerBC_r19, cAParametersNRV1900AimlCSIPredictionUnitDurationDDPerBCR19Constraints); err != nil {
+				return err
+			}
+		}
+	}
+
+	// 14. aiml-CSI-PredictionN4PerBC-r19: sequence
+	{
+		if ie.Aiml_CSI_PredictionN4PerBC_r19 != nil {
+			c := ie.Aiml_CSI_PredictionN4PerBC_r19
+			{
+				seqOf := e.NewSequenceOfEncoder(cAParametersNRV1900AimlCSIPredictionN4PerBCR19SupportedCSIRSReportSettingAcrossCCR19Constraints)
+				if err := seqOf.EncodeLength(int64(len(c.SupportedCSI_RS_ReportSettingAcrossCC_r19))); err != nil {
+					return err
+				}
+				for i := range c.SupportedCSI_RS_ReportSettingAcrossCC_r19 {
+					if err := c.SupportedCSI_RS_ReportSettingAcrossCC_r19[i].Encode(e); err != nil {
+						return err
+					}
+				}
+			}
+			{
+				seqOf := e.NewSequenceOfEncoder(cAParametersNRV1900AimlCSIPredictionN4PerBCR19SupportedCSIRSReportSettingOneReportR19Constraints)
+				if err := seqOf.EncodeLength(int64(len(c.SupportedCSI_RS_ReportSettingOneReport_r19))); err != nil {
+					return err
+				}
+				for i := range c.SupportedCSI_RS_ReportSettingOneReport_r19 {
+					if err := c.SupportedCSI_RS_ReportSettingOneReport_r19[i].Encode(e); err != nil {
+						return err
+					}
+				}
+			}
+			if err := e.EncodeInteger(c.NumOccupiedCPU_r19, per.Constrained(0, 8)); err != nil {
+				return err
+			}
+			if err := e.EncodeInteger(c.NumOccupiedCPUx_r19, per.Constrained(0, 8)); err != nil {
+				return err
+			}
+			if err := e.EncodeEnumerated(c.OccupiedPool_r19, cAParametersNRV1900AimlCSIPredictionN4PerBCR19OccupiedPoolR19Constraints); err != nil {
+				return err
+			}
+		}
+	}
+
+	// 15. aiml-CSI-PredictionUE-DataCollectionPerBC-r19: enumerated
+	{
+		if ie.Aiml_CSI_PredictionUE_DataCollectionPerBC_r19 != nil {
+			if err := e.EncodeEnumerated(*ie.Aiml_CSI_PredictionUE_DataCollectionPerBC_r19, cAParametersNRV1900AimlCSIPredictionUEDataCollectionPerBCR19Constraints); err != nil {
+				return err
+			}
+		}
+	}
+
+	// 16. aiml-CSI-PredictionMonitoringPerBC-r19: sequence
+	{
+		if ie.Aiml_CSI_PredictionMonitoringPerBC_r19 != nil {
+			c := ie.Aiml_CSI_PredictionMonitoringPerBC_r19
+			{
+				seqOf := e.NewSequenceOfEncoder(cAParametersNRV1900AimlCSIPredictionMonitoringPerBCR19SuppportedCSIRSResourceListR19Constraints)
+				if err := seqOf.EncodeLength(int64(len(c.SuppportedCSI_RS_ResourceList_r19))); err != nil {
+					return err
+				}
+				for i := range c.SuppportedCSI_RS_ResourceList_r19 {
+					if err := e.EncodeInteger(c.SuppportedCSI_RS_ResourceList_r19[i], per.Constrained(0, common.MaxNrofCSI_RS_ResourcesAlt_1_r16)); err != nil {
+						return err
+					}
+				}
+			}
+			if err := e.EncodeInteger(c.NumOccupiedCPU_r19, per.Constrained(1, 2)); err != nil {
+				return err
+			}
+		}
+	}
+
+	// 17. diffGroupPUCCH-PUSCH-r19: enumerated
+	{
+		if ie.DiffGroupPUCCH_PUSCH_r19 != nil {
+			if err := e.EncodeEnumerated(*ie.DiffGroupPUCCH_PUSCH_r19, cAParametersNRV1900DiffGroupPUCCHPUSCHR19Constraints); err != nil {
+				return err
+			}
+		}
+	}
+
+	// 18. timeRestriction128PortPerBC-r19: enumerated
+	{
+		if ie.TimeRestriction128PortPerBC_r19 != nil {
+			if err := e.EncodeEnumerated(*ie.TimeRestriction128PortPerBC_r19, cAParametersNRV1900TimeRestriction128PortPerBCR19Constraints); err != nil {
+				return err
+			}
+		}
+	}
+
+	// 19. groupScalingFactorPerBC-r19: enumerated
+	{
+		if ie.GroupScalingFactorPerBC_r19 != nil {
+			if err := e.EncodeEnumerated(*ie.GroupScalingFactorPerBC_r19, cAParametersNRV1900GroupScalingFactorPerBCR19Constraints); err != nil {
+				return err
+			}
+		}
+	}
+
+	// 20. nes-SD-Type1-SP-PerBC-r19: sequence
+	{
+		if ie.Nes_SD_Type1_SP_PerBC_r19 != nil {
+			c := ie.Nes_SD_Type1_SP_PerBC_r19
+			if err := e.EncodeEnumerated(c.Timeline_r19, cAParametersNRV1900NesSDType1SPPerBCR19TimelineR19Constraints); err != nil {
+				return err
+			}
+			if err := e.EncodeBitString(c.NumOfPortCSI_Report_r19, per.FixedSize(10)); err != nil {
+				return err
+			}
+		}
+	}
+
+	// 21. mr-AlwaysReportedType1SP-PerBC-r19: enumerated
+	{
+		if ie.Mr_AlwaysReportedType1SP_PerBC_r19 != nil {
+			if err := e.EncodeEnumerated(*ie.Mr_AlwaysReportedType1SP_PerBC_r19, cAParametersNRV1900MrAlwaysReportedType1SPPerBCR19Constraints); err != nil {
+				return err
+			}
+		}
+	}
+
+	// 22. mr-AlwaysReported-eType2PerBC-r19: enumerated
+	{
+		if ie.Mr_AlwaysReported_EType2PerBC_r19 != nil {
+			if err := e.EncodeEnumerated(*ie.Mr_AlwaysReported_EType2PerBC_r19, cAParametersNRV1900MrAlwaysReportedEType2PerBCR19Constraints); err != nil {
+				return err
+			}
+		}
+	}
+
+	// 23. cjtc-DdReportPerBC-r19: sequence
+	{
+		if ie.Cjtc_DdReportPerBC_r19 != nil {
+			c := ie.Cjtc_DdReportPerBC_r19
+			if err := e.EncodeEnumerated(c.MinRangeDdInCyclicPrefix_r19, cAParametersNRV1900CjtcDdReportPerBCR19MinRangeDdInCyclicPrefixR19Constraints); err != nil {
+				return err
+			}
+			if err := e.EncodeEnumerated(c.MaxResolutionDd_r19, cAParametersNRV1900CjtcDdReportPerBCR19MaxResolutionDdR19Constraints); err != nil {
+				return err
+			}
+			if err := e.EncodeInteger(c.ScalingFactor_r19, per.Constrained(1, 2)); err != nil {
+				return err
+			}
+		}
+	}
+
+	// 24. cjtc-DdReportProcessingPerBC-r19: sequence
+	{
+		if ie.Cjtc_DdReportProcessingPerBC_r19 != nil {
+			c := ie.Cjtc_DdReportProcessingPerBC_r19
+			if err := e.EncodeEnumerated(c.MaxNumberTRS_Resource_r19, cAParametersNRV1900CjtcDdReportProcessingPerBCR19MaxNumberTRSResourceR19Constraints); err != nil {
+				return err
+			}
+			if err := e.EncodeEnumerated(c.MaxNumberTRS_ResourceAcrossCC_r19, cAParametersNRV1900CjtcDdReportProcessingPerBCR19MaxNumberTRSResourceAcrossCCR19Constraints); err != nil {
+				return err
+			}
+			if err := e.EncodeEnumerated(c.MaxNumberCSI_RS_ResourcePerCC_r19, cAParametersNRV1900CjtcDdReportProcessingPerBCR19MaxNumberCSIRSResourcePerCCR19Constraints); err != nil {
+				return err
+			}
+			if err := e.EncodeEnumerated(c.MaxNumberCSI_RS_ResourceAcrossCC_r19, cAParametersNRV1900CjtcDdReportProcessingPerBCR19MaxNumberCSIRSResourceAcrossCCR19Constraints); err != nil {
+				return err
+			}
+			if err := e.EncodeInteger(c.ValueX_r19, per.Constrained(1, 2)); err != nil {
+				return err
+			}
+		}
+	}
+
+	// 25. cjtc-FO-ReportPerBC-r19: sequence
+	{
+		if ie.Cjtc_FO_ReportPerBC_r19 != nil {
+			c := ie.Cjtc_FO_ReportPerBC_r19
+			if err := e.EncodeEnumerated(c.MinRangeFO_r19, cAParametersNRV1900CjtcFOReportPerBCR19MinRangeFOR19Constraints); err != nil {
+				return err
+			}
+			if err := e.EncodeEnumerated(c.MaxResolutionFO_r19, cAParametersNRV1900CjtcFOReportPerBCR19MaxResolutionFOR19Constraints); err != nil {
+				return err
+			}
+			if err := e.EncodeInteger(c.ScalingFactor_r19, per.Constrained(1, 2)); err != nil {
+				return err
+			}
+		}
+	}
+
+	// 26. cjtc-FO-ReportProcessingPerBC-r19: sequence
+	{
+		if ie.Cjtc_FO_ReportProcessingPerBC_r19 != nil {
+			c := ie.Cjtc_FO_ReportProcessingPerBC_r19
+			if err := e.EncodeEnumerated(c.MaxNumberTRS_Resource_r19, cAParametersNRV1900CjtcFOReportProcessingPerBCR19MaxNumberTRSResourceR19Constraints); err != nil {
+				return err
+			}
+			if err := e.EncodeEnumerated(c.MaxNumberTRS_ResourceAcrossCC_r19, cAParametersNRV1900CjtcFOReportProcessingPerBCR19MaxNumberTRSResourceAcrossCCR19Constraints); err != nil {
+				return err
+			}
+			if err := e.EncodeEnumerated(c.MaxNumberCSI_RS_ResourcePerCC_r19, cAParametersNRV1900CjtcFOReportProcessingPerBCR19MaxNumberCSIRSResourcePerCCR19Constraints); err != nil {
+				return err
+			}
+			if err := e.EncodeEnumerated(c.MaxNumberCSI_RS_ResourceAcrossCC_r19, cAParametersNRV1900CjtcFOReportProcessingPerBCR19MaxNumberCSIRSResourceAcrossCCR19Constraints); err != nil {
+				return err
+			}
+			if err := e.EncodeInteger(c.ValueX_r19, per.Constrained(1, 2)); err != nil {
+				return err
+			}
+		}
+	}
+
+	// 27. cjtc-PO-ReportWidebandPerBC-r19: sequence
+	{
+		if ie.Cjtc_PO_ReportWidebandPerBC_r19 != nil {
+			c := ie.Cjtc_PO_ReportWidebandPerBC_r19
+			if err := e.EncodeEnumerated(c.MaxResolution_r19, cAParametersNRV1900CjtcPOReportWidebandPerBCR19MaxResolutionR19Constraints); err != nil {
+				return err
+			}
+			if err := e.EncodeInteger(c.ScalingFactor_r19, per.Constrained(1, 2)); err != nil {
+				return err
+			}
+			if err := e.EncodeInteger(c.MaxSlotDuration_r19, per.Constrained(1, 2)); err != nil {
+				return err
+			}
+		}
+	}
+
+	// 28. cjtc-PO-ReportWidebandProcessingPerBC-r19: sequence
+	{
+		if ie.Cjtc_PO_ReportWidebandProcessingPerBC_r19 != nil {
+			c := ie.Cjtc_PO_ReportWidebandProcessingPerBC_r19
+			if err := e.EncodeEnumerated(c.MaxNumberCSI_RS_Configured_r19, cAParametersNRV1900CjtcPOReportWidebandProcessingPerBCR19MaxNumberCSIRSConfiguredR19Constraints); err != nil {
+				return err
+			}
+			if err := e.EncodeEnumerated(c.MaxNumberCSI_RS_ConfiguredAcrossCC_r19, cAParametersNRV1900CjtcPOReportWidebandProcessingPerBCR19MaxNumberCSIRSConfiguredAcrossCCR19Constraints); err != nil {
+				return err
+			}
+			if err := e.EncodeEnumerated(c.MaxNumberCSI_RS_ResourcePerCC_r19, cAParametersNRV1900CjtcPOReportWidebandProcessingPerBCR19MaxNumberCSIRSResourcePerCCR19Constraints); err != nil {
+				return err
+			}
+			if err := e.EncodeEnumerated(c.MaxNumberCSI_RS_ResourceAcrossCC_r19, cAParametersNRV1900CjtcPOReportWidebandProcessingPerBCR19MaxNumberCSIRSResourceAcrossCCR19Constraints); err != nil {
+				return err
+			}
+			if err := e.EncodeInteger(c.ValueX_r19, per.Constrained(1, 2)); err != nil {
+				return err
+			}
+		}
+	}
+
+	// 29. cjtc-PO-ReportSubbandPerBC-r19: sequence
+	{
+		if ie.Cjtc_PO_ReportSubbandPerBC_r19 != nil {
+			c := ie.Cjtc_PO_ReportSubbandPerBC_r19
+			if err := e.EncodeEnumerated(c.MaxResolution_r19, cAParametersNRV1900CjtcPOReportSubbandPerBCR19MaxResolutionR19Constraints); err != nil {
+				return err
+			}
+			if err := e.EncodeEnumerated(c.MinSubbandSize_r19, cAParametersNRV1900CjtcPOReportSubbandPerBCR19MinSubbandSizeR19Constraints); err != nil {
+				return err
+			}
+			if err := e.EncodeInteger(c.ScalingFactor_r19, per.Constrained(1, 2)); err != nil {
+				return err
+			}
+			if err := e.EncodeInteger(c.MaxSlotDuration_r19, per.Constrained(1, 2)); err != nil {
+				return err
+			}
+		}
+	}
+
+	// 30. cjtc-DdFO-ReportPerBC-r19: sequence
+	{
+		if ie.Cjtc_DdFO_ReportPerBC_r19 != nil {
+			c := ie.Cjtc_DdFO_ReportPerBC_r19
+			if err := e.EncodeEnumerated(c.MinRangeDdInCyclicPrefix_r19, cAParametersNRV1900CjtcDdFOReportPerBCR19MinRangeDdInCyclicPrefixR19Constraints); err != nil {
+				return err
+			}
+			if err := e.EncodeEnumerated(c.MaxResolutionDd_r19, cAParametersNRV1900CjtcDdFOReportPerBCR19MaxResolutionDdR19Constraints); err != nil {
+				return err
+			}
+			if err := e.EncodeEnumerated(c.MinRangeFO_r19, cAParametersNRV1900CjtcDdFOReportPerBCR19MinRangeFOR19Constraints); err != nil {
+				return err
+			}
+			if err := e.EncodeEnumerated(c.MaxResolutionFO_r19, cAParametersNRV1900CjtcDdFOReportPerBCR19MaxResolutionFOR19Constraints); err != nil {
+				return err
+			}
+			if err := e.EncodeInteger(c.ScalingFactor_r19, per.Constrained(1, 2)); err != nil {
+				return err
+			}
+		}
+	}
+
+	// 31. cjtc-DdFO-ReportProcessingPerBC-r19: sequence
+	{
+		if ie.Cjtc_DdFO_ReportProcessingPerBC_r19 != nil {
+			c := ie.Cjtc_DdFO_ReportProcessingPerBC_r19
+			if err := e.EncodeEnumerated(c.MaxNumberTRS_Resource_r19, cAParametersNRV1900CjtcDdFOReportProcessingPerBCR19MaxNumberTRSResourceR19Constraints); err != nil {
+				return err
+			}
+			if err := e.EncodeEnumerated(c.MaxNumberTRS_ResourceAcrossCC_r19, cAParametersNRV1900CjtcDdFOReportProcessingPerBCR19MaxNumberTRSResourceAcrossCCR19Constraints); err != nil {
+				return err
+			}
+			if err := e.EncodeEnumerated(c.MaxNumberCSI_RS_ResourcePerCC_r19, cAParametersNRV1900CjtcDdFOReportProcessingPerBCR19MaxNumberCSIRSResourcePerCCR19Constraints); err != nil {
+				return err
+			}
+			if err := e.EncodeEnumerated(c.MaxNumberCSI_RS_ResourceAcrossCC_r19, cAParametersNRV1900CjtcDdFOReportProcessingPerBCR19MaxNumberCSIRSResourceAcrossCCR19Constraints); err != nil {
+				return err
+			}
+			if err := e.EncodeInteger(c.ValueX_r19, per.Constrained(1, 2)); err != nil {
+				return err
+			}
+		}
+	}
+
+	// 32. linked-CJTC-Dd-eType2CJT-JointPerBC-r19: enumerated
+	{
+		if ie.Linked_CJTC_Dd_EType2CJT_JointPerBC_r19 != nil {
+			if err := e.EncodeEnumerated(*ie.Linked_CJTC_Dd_EType2CJT_JointPerBC_r19, cAParametersNRV1900LinkedCJTCDdEType2CJTJointPerBCR19Constraints); err != nil {
+				return err
+			}
+		}
+	}
+
+	// 33. linked-CJTC-Dd-eType2CJT-SeparatePerBC-r19: enumerated
+	{
+		if ie.Linked_CJTC_Dd_EType2CJT_SeparatePerBC_r19 != nil {
+			if err := e.EncodeEnumerated(*ie.Linked_CJTC_Dd_EType2CJT_SeparatePerBC_r19, cAParametersNRV1900LinkedCJTCDdEType2CJTSeparatePerBCR19Constraints); err != nil {
+				return err
+			}
+		}
+	}
+
+	// 34. linked-CJTC-Dd-eType2CJT-SeparatePerStatePerBC-r19: enumerated
+	{
+		if ie.Linked_CJTC_Dd_EType2CJT_SeparatePerStatePerBC_r19 != nil {
+			if err := e.EncodeEnumerated(*ie.Linked_CJTC_Dd_EType2CJT_SeparatePerStatePerBC_r19, cAParametersNRV1900LinkedCJTCDdEType2CJTSeparatePerStatePerBCR19Constraints); err != nil {
+				return err
+			}
+		}
+	}
+
+	// 35. timelineRelax-CJTC-Dd-eType2CJT-PerBC-r19: sequence
+	{
+		if ie.TimelineRelax_CJTC_Dd_EType2CJT_PerBC_r19 != nil {
+			c := ie.TimelineRelax_CJTC_Dd_EType2CJT_PerBC_r19
+			cAParametersNRV1900TimelineRelaxCJTCDdEType2CJTPerBCR19Seq := e.NewSequenceEncoder(cAParametersNRV1900TimelineRelaxCJTCDdEType2CJTPerBCR19Constraints)
+			if err := cAParametersNRV1900TimelineRelaxCJTCDdEType2CJTPerBCR19Seq.EncodePreamble([]bool{c.Scs15kHz_r19 != nil, c.Scs30kHz_r19 != nil, c.Scs60kHz_r19 != nil, c.Scs120kHz_r19 != nil, c.Scs480kHz_r19 != nil, c.Scs960kHz_r19 != nil}); err != nil {
+				return err
+			}
+			if c.Scs15kHz_r19 != nil {
+				if err := e.EncodeEnumerated((*c.Scs15kHz_r19), cAParametersNRV1900TimelineRelaxCJTCDdEType2CJTPerBCR19Scs15kHzR19Constraints); err != nil {
+					return err
+				}
+			}
+			if c.Scs30kHz_r19 != nil {
+				if err := e.EncodeEnumerated((*c.Scs30kHz_r19), cAParametersNRV1900TimelineRelaxCJTCDdEType2CJTPerBCR19Scs30kHzR19Constraints); err != nil {
+					return err
+				}
+			}
+			if c.Scs60kHz_r19 != nil {
+				if err := e.EncodeEnumerated((*c.Scs60kHz_r19), cAParametersNRV1900TimelineRelaxCJTCDdEType2CJTPerBCR19Scs60kHzR19Constraints); err != nil {
+					return err
+				}
+			}
+			if c.Scs120kHz_r19 != nil {
+				if err := e.EncodeEnumerated((*c.Scs120kHz_r19), cAParametersNRV1900TimelineRelaxCJTCDdEType2CJTPerBCR19Scs120kHzR19Constraints); err != nil {
+					return err
+				}
+			}
+			if c.Scs480kHz_r19 != nil {
+				if err := e.EncodeEnumerated((*c.Scs480kHz_r19), cAParametersNRV1900TimelineRelaxCJTCDdEType2CJTPerBCR19Scs480kHzR19Constraints); err != nil {
+					return err
+				}
+			}
+			if c.Scs960kHz_r19 != nil {
+				if err := e.EncodeEnumerated((*c.Scs960kHz_r19), cAParametersNRV1900TimelineRelaxCJTCDdEType2CJTPerBCR19Scs960kHzR19Constraints); err != nil {
+					return err
+				}
+			}
+		}
+	}
+
+	// 36. nonCodebook-CSI-RS-SRS-PerBC-Enh-r19: sequence-of
+	{
+		if ie.NonCodebook_CSI_RS_SRS_PerBC_Enh_r19 != nil {
+			seqOf := e.NewSequenceOfEncoder(cAParametersNRV1900NonCodebookCSIRSSRSPerBCEnhR19Constraints)
+			if err := seqOf.EncodeLength(int64(len(ie.NonCodebook_CSI_RS_SRS_PerBC_Enh_r19))); err != nil {
+				return err
+			}
+			for i := range ie.NonCodebook_CSI_RS_SRS_PerBC_Enh_r19 {
+				if err := e.EncodeInteger(ie.NonCodebook_CSI_RS_SRS_PerBC_Enh_r19[i], per.Constrained(0, common.MaxNrofCSI_RS_ResourcesAlt_1_r16)); err != nil {
+					return err
+				}
+			}
+		}
+	}
+
+	// 37. intraFreqL1-MeasConfigPeriodicCSI-RS-r19: sequence
+	{
+		if ie.IntraFreqL1_MeasConfigPeriodicCSI_RS_r19 != nil {
+			c := ie.IntraFreqL1_MeasConfigPeriodicCSI_RS_r19
+			if err := e.EncodeInteger(c.SupportedMaxIntraFreqCellsConfig_r19, per.Constrained(1, 8)); err != nil {
+				return err
+			}
+			if err := e.EncodeInteger(c.SupportedMaxIntraFreqCellsPerReport_r19, per.Constrained(1, 4)); err != nil {
+				return err
+			}
+			if err := e.EncodeInteger(c.SupportedMaxReportBeamsPerReportedCell_r19, per.Constrained(1, 4)); err != nil {
+				return err
+			}
+			if err := e.EncodeEnumerated(c.SupportedMaxReportBeamsReports_r19, cAParametersNRV1900IntraFreqL1MeasConfigPeriodicCSIRSR19SupportedMaxReportBeamsReportsR19Constraints); err != nil {
+				return err
+			}
+			if err := e.EncodeInteger(c.SupportedMaxAperiodic_LTM_CSI_ReportConfig_r19, per.Constrained(0, 4)); err != nil {
+				return err
+			}
+			if err := e.EncodeInteger(c.SupportedMaxPeriodic_LTM_CSI_ReportConfig_r19, per.Constrained(1, 4)); err != nil {
+				return err
+			}
+			if err := e.EncodeInteger(c.SupportedMaxSemiPersistent_LTM_CSI_ReportConfig_r19, per.Constrained(0, 4)); err != nil {
+				return err
+			}
+		}
+	}
+
+	// 38. interFreqL1-MeasConfigPeriodicCSI-RS-r19: sequence
+	{
+		if ie.InterFreqL1_MeasConfigPeriodicCSI_RS_r19 != nil {
+			c := ie.InterFreqL1_MeasConfigPeriodicCSI_RS_r19
+			if err := e.EncodeInteger(c.SupportedMaxInterFreqCellsConfig_r19, per.Constrained(1, 8)); err != nil {
+				return err
+			}
+			if err := e.EncodeInteger(c.SupportedMaxInterFreqCellsPerReport_r19, per.Constrained(1, 4)); err != nil {
+				return err
+			}
+			if err := e.EncodeInteger(c.SupportedMaxReportBeamsPerReportedCell_r19, per.Constrained(1, 4)); err != nil {
+				return err
+			}
+			if err := e.EncodeEnumerated(c.SupportedMaxReportBeamsReports_r19, cAParametersNRV1900InterFreqL1MeasConfigPeriodicCSIRSR19SupportedMaxReportBeamsReportsR19Constraints); err != nil {
+				return err
+			}
+			if err := e.EncodeInteger(c.SupportedMaxAperiodic_LTM_CSI_ReportConfig_r19, per.Constrained(0, 4)); err != nil {
+				return err
+			}
+			if err := e.EncodeInteger(c.SupportedMaxPeriodic_LTM_CSI_ReportConfig_r19, per.Constrained(1, 4)); err != nil {
+				return err
+			}
+			if err := e.EncodeInteger(c.SupportedMaxSemiPersistent_LTM_CSI_ReportConfig_r19, per.Constrained(0, 4)); err != nil {
+				return err
+			}
+		}
+	}
+
+	// 39. intraFreqL1-MeasConfigSP-CSI-RS-r19: sequence
+	{
+		if ie.IntraFreqL1_MeasConfigSP_CSI_RS_r19 != nil {
+			c := ie.IntraFreqL1_MeasConfigSP_CSI_RS_r19
+			if err := e.EncodeInteger(c.SupportedMaxAperiodic_LTM_CSI_ReportConfig_r19, per.Constrained(0, 4)); err != nil {
+				return err
+			}
+			if err := e.EncodeInteger(c.SupportedMaxSemiPersistent_LTM_CSI_ReportConfig_r19, per.Constrained(0, 4)); err != nil {
+				return err
+			}
+		}
+	}
+
+	// 40. currentSpCellInclL1-ReportCSI-RS-r19: enumerated
+	{
+		if ie.CurrentSpCellInclL1_ReportCSI_RS_r19 != nil {
+			if err := e.EncodeEnumerated(*ie.CurrentSpCellInclL1_ReportCSI_RS_r19, cAParametersNRV1900CurrentSpCellInclL1ReportCSIRSR19Constraints); err != nil {
+				return err
+			}
+		}
+	}
+
+	// 41. simultaneousNZP-CSI-RS-r19: enumerated
+	{
+		if ie.SimultaneousNZP_CSI_RS_r19 != nil {
+			if err := e.EncodeEnumerated(*ie.SimultaneousNZP_CSI_RS_r19, cAParametersNRV1900SimultaneousNZPCSIRSR19Constraints); err != nil {
+				return err
+			}
+		}
+	}
+
+	// 42. interFreqL1-MeasConfigSP-CSI-RS-r19: sequence
+	{
+		if ie.InterFreqL1_MeasConfigSP_CSI_RS_r19 != nil {
+			c := ie.InterFreqL1_MeasConfigSP_CSI_RS_r19
+			if err := e.EncodeInteger(c.SupportedMaxAperiodic_LTM_CSI_ReportConfig_r19, per.Constrained(0, 4)); err != nil {
+				return err
+			}
+			if err := e.EncodeInteger(c.SupportedMaxSemiPersistent_LTM_CSI_ReportConfig_r19, per.Constrained(0, 4)); err != nil {
+				return err
+			}
+		}
+	}
+
+	// 43. ltm-CSI-RS-CSI-IM-PeriodicCandidateIntraFreq-r19: sequence
+	{
+		if ie.Ltm_CSI_RS_CSI_IM_PeriodicCandidateIntraFreq_r19 != nil {
+			c := ie.Ltm_CSI_RS_CSI_IM_PeriodicCandidateIntraFreq_r19
+			if err := e.EncodeInteger(c.MaxNumOfCandidateCells_r19, per.Constrained(1, 8)); err != nil {
+				return err
+			}
+			if err := e.EncodeInteger(c.MaxNumOfCSI_RS_ResourceAcrossCells_r19, per.Constrained(1, 64)); err != nil {
+				return err
+			}
+			if err := e.EncodeEnumerated(c.MaxNumOfCSI_RS_PortsPerCell_r19, cAParametersNRV1900LtmCSIRSCSIIMPeriodicCandidateIntraFreqR19MaxNumOfCSIRSPortsPerCellR19Constraints); err != nil {
+				return err
+			}
+			if err := e.EncodeEnumerated(c.MaxNumOfNZP_CSI_RS_PortsPerCell_r19, cAParametersNRV1900LtmCSIRSCSIIMPeriodicCandidateIntraFreqR19MaxNumOfNZPCSIRSPortsPerCellR19Constraints); err != nil {
+				return err
+			}
+			if err := e.EncodeInteger(c.MaxNumOfCSI_IM_ResourceAcrossCells_r19, per.Constrained(1, 64)); err != nil {
+				return err
+			}
+		}
+	}
+
+	// 44. ltm-CSI-RS-CSI-IM-SP-CandidateIntraFreq-r19: sequence
+	{
+		if ie.Ltm_CSI_RS_CSI_IM_SP_CandidateIntraFreq_r19 != nil {
+			c := ie.Ltm_CSI_RS_CSI_IM_SP_CandidateIntraFreq_r19
+			if err := e.EncodeInteger(c.MaxNumOfCandidateCells_r19, per.Constrained(1, 8)); err != nil {
+				return err
+			}
+			if err := e.EncodeInteger(c.MaxNumOfCSI_RS_ResourceAcrossCells_r19, per.Constrained(1, 64)); err != nil {
+				return err
+			}
+			if err := e.EncodeEnumerated(c.MaxNumOfCSI_RS_PortsPerCell_r19, cAParametersNRV1900LtmCSIRSCSIIMSPCandidateIntraFreqR19MaxNumOfCSIRSPortsPerCellR19Constraints); err != nil {
+				return err
+			}
+			if err := e.EncodeEnumerated(c.MaxNumOfNZP_CSI_RS_PortsPerCell_r19, cAParametersNRV1900LtmCSIRSCSIIMSPCandidateIntraFreqR19MaxNumOfNZPCSIRSPortsPerCellR19Constraints); err != nil {
+				return err
+			}
+			if err := e.EncodeInteger(c.MaxNumOfCSI_IM_ResourceAcrossCells_r19, per.Constrained(1, 64)); err != nil {
+				return err
+			}
+		}
+	}
+
+	// 45. ltm-CSI-RS-CSI-IM-PeriodicCandidateInterFreq-r19: sequence
+	{
+		if ie.Ltm_CSI_RS_CSI_IM_PeriodicCandidateInterFreq_r19 != nil {
+			c := ie.Ltm_CSI_RS_CSI_IM_PeriodicCandidateInterFreq_r19
+			if err := e.EncodeInteger(c.MaxNumOfCandidateCells_r19, per.Constrained(1, 8)); err != nil {
+				return err
+			}
+			if err := e.EncodeInteger(c.MaxNumOfCSI_RS_ResourceAcrossCells_r19, per.Constrained(1, 64)); err != nil {
+				return err
+			}
+			if err := e.EncodeEnumerated(c.MaxNumOfCSI_RS_PortsPerCell_r19, cAParametersNRV1900LtmCSIRSCSIIMPeriodicCandidateInterFreqR19MaxNumOfCSIRSPortsPerCellR19Constraints); err != nil {
+				return err
+			}
+			if err := e.EncodeEnumerated(c.MaxNumOfNZP_CSI_RS_PortsPerCell_r19, cAParametersNRV1900LtmCSIRSCSIIMPeriodicCandidateInterFreqR19MaxNumOfNZPCSIRSPortsPerCellR19Constraints); err != nil {
+				return err
+			}
+			if err := e.EncodeInteger(c.MaxNumOfCSI_IM_ResourceAcrossCells_r19, per.Constrained(1, 64)); err != nil {
+				return err
+			}
+		}
+	}
+
+	// 46. ltm-CSI-RS-CSI-IM-SP-CandidateInterFreq-r19: sequence
+	{
+		if ie.Ltm_CSI_RS_CSI_IM_SP_CandidateInterFreq_r19 != nil {
+			c := ie.Ltm_CSI_RS_CSI_IM_SP_CandidateInterFreq_r19
+			if err := e.EncodeInteger(c.MaxNumOfCandidateCells_r19, per.Constrained(1, 8)); err != nil {
+				return err
+			}
+			if err := e.EncodeInteger(c.MaxNumOfCSI_RS_ResourceAcrossCells_r19, per.Constrained(1, 64)); err != nil {
+				return err
+			}
+			if err := e.EncodeEnumerated(c.MaxNumOfCSI_RS_PortsPerCell_r19, cAParametersNRV1900LtmCSIRSCSIIMSPCandidateInterFreqR19MaxNumOfCSIRSPortsPerCellR19Constraints); err != nil {
+				return err
+			}
+			if err := e.EncodeEnumerated(c.MaxNumOfNZP_CSI_RS_PortsPerCell_r19, cAParametersNRV1900LtmCSIRSCSIIMSPCandidateInterFreqR19MaxNumOfNZPCSIRSPortsPerCellR19Constraints); err != nil {
+				return err
+			}
+			if err := e.EncodeInteger(c.MaxNumOfCSI_IM_ResourceAcrossCells_r19, per.Constrained(1, 64)); err != nil {
+				return err
+			}
+		}
+	}
+
+	// 47. simultaneousNZP-CSI-RS-NES-r19: enumerated
+	{
+		if ie.SimultaneousNZP_CSI_RS_NES_r19 != nil {
+			if err := e.EncodeEnumerated(*ie.SimultaneousNZP_CSI_RS_NES_r19, cAParametersNRV1900SimultaneousNZPCSIRSNESR19Constraints); err != nil {
+				return err
+			}
+		}
+	}
+
+	// 48. multiCell-PDSCH-DCI-1-3-DiffSCS-DiffCC-r19: sequence
+	{
+		if ie.MultiCell_PDSCH_DCI_1_3_DiffSCS_DiffCC_r19 != nil {
+			c := ie.MultiCell_PDSCH_DCI_1_3_DiffSCS_DiffCC_r19
+			cAParametersNRV1900MultiCellPDSCHDCI13DiffSCSDiffCCR19Seq := e.NewSequenceEncoder(cAParametersNRV1900MultiCellPDSCHDCI13DiffSCSDiffCCR19Constraints)
+			if err := cAParametersNRV1900MultiCellPDSCHDCI13DiffSCSDiffCCR19Seq.EncodePreamble([]bool{c.SupportOfSearchSpace_r19 != nil, c.ThreeSetsCombination_r19 != nil}); err != nil {
+				return err
+			}
+			{
+				seqOf := e.NewSequenceOfEncoder(cAParametersNRV1900MultiCellPDSCHDCI13DiffSCSDiffCCR19CombinationCarrierTypeSCSR19Constraints)
+				if err := seqOf.EncodeLength(int64(len(c.CombinationCarrierTypeSCS_r19))); err != nil {
+					return err
+				}
+				for i := range c.CombinationCarrierTypeSCS_r19 {
+					if err := c.CombinationCarrierTypeSCS_r19[i].Encode(e); err != nil {
+						return err
+					}
+				}
+			}
+			if err := e.EncodeInteger(c.MaxNumberCoScheduledCell_r19, per.Constrained(2, 4)); err != nil {
+				return err
+			}
+			if err := e.EncodeInteger(c.MaxNumberSetsOfCellAcrossPUCCH_Group_r19, per.Constrained(1, 8)); err != nil {
+				return err
+			}
+			if err := e.EncodeInteger(c.MaxNumberSetsOfCellScheduling_r19, per.Constrained(1, 4)); err != nil {
+				return err
+			}
+			if err := e.EncodeEnumerated(c.HarqFeedbackType_r19, cAParametersNRV1900MultiCellPDSCHDCI13DiffSCSDiffCCR19HarqFeedbackTypeR19Constraints); err != nil {
+				return err
+			}
+			if err := e.EncodeEnumerated(c.CoScheduledCellIndicationScheme_r19, cAParametersNRV1900MultiCellPDSCHDCI13DiffSCSDiffCCR19CoScheduledCellIndicationSchemeR19Constraints); err != nil {
+				return err
+			}
+			if c.SupportOfSearchSpace_r19 != nil {
+				if err := e.EncodeEnumerated((*c.SupportOfSearchSpace_r19), cAParametersNRV1900MultiCellPDSCHDCI13DiffSCSDiffCCR19SupportOfSearchSpaceR19Constraints); err != nil {
+					return err
+				}
+			}
+			if c.ThreeSetsCombination_r19 != nil {
+				seqOf := e.NewSequenceOfEncoder(cAParametersNRV1900MultiCellPDSCHDCI13DiffSCSDiffCCR19ThreeSetsCombinationR19Constraints)
+				if err := seqOf.EncodeLength(int64(len(c.ThreeSetsCombination_r19))); err != nil {
+					return err
+				}
+				for i := range c.ThreeSetsCombination_r19 {
+					if err := c.ThreeSetsCombination_r19[i].Encode(e); err != nil {
+						return err
+					}
+				}
+			}
+		}
+	}
+
+	// 49. multiCell-PUSCH-DCI-0-3-DiffSCS-DiffCC-r19: sequence
+	{
+		if ie.MultiCell_PUSCH_DCI_0_3_DiffSCS_DiffCC_r19 != nil {
+			c := ie.MultiCell_PUSCH_DCI_0_3_DiffSCS_DiffCC_r19
+			cAParametersNRV1900MultiCellPUSCHDCI03DiffSCSDiffCCR19Seq := e.NewSequenceEncoder(cAParametersNRV1900MultiCellPUSCHDCI03DiffSCSDiffCCR19Constraints)
+			if err := cAParametersNRV1900MultiCellPUSCHDCI03DiffSCSDiffCCR19Seq.EncodePreamble([]bool{c.SupportOfSearchSpace_r19 != nil, c.ThreeSetsCombination_r19 != nil}); err != nil {
+				return err
+			}
+			{
+				seqOf := e.NewSequenceOfEncoder(cAParametersNRV1900MultiCellPUSCHDCI03DiffSCSDiffCCR19CombinationCarrierTypeSCSR19Constraints)
+				if err := seqOf.EncodeLength(int64(len(c.CombinationCarrierTypeSCS_r19))); err != nil {
+					return err
+				}
+				for i := range c.CombinationCarrierTypeSCS_r19 {
+					if err := c.CombinationCarrierTypeSCS_r19[i].Encode(e); err != nil {
+						return err
+					}
+				}
+			}
+			if err := e.EncodeInteger(c.MaxNumberCoScheduledCell_r19, per.Constrained(2, 4)); err != nil {
+				return err
+			}
+			if err := e.EncodeInteger(c.MaxNumberSetsOfCellAcrossPUCCH_Group_r19, per.Constrained(1, 8)); err != nil {
+				return err
+			}
+			if err := e.EncodeInteger(c.MaxNumberSetsOfCellScheduling_r19, per.Constrained(1, 4)); err != nil {
+				return err
+			}
+			if err := e.EncodeEnumerated(c.CoScheduledCellIndicationScheme_r19, cAParametersNRV1900MultiCellPUSCHDCI03DiffSCSDiffCCR19CoScheduledCellIndicationSchemeR19Constraints); err != nil {
+				return err
+			}
+			if c.SupportOfSearchSpace_r19 != nil {
+				if err := e.EncodeEnumerated((*c.SupportOfSearchSpace_r19), cAParametersNRV1900MultiCellPUSCHDCI03DiffSCSDiffCCR19SupportOfSearchSpaceR19Constraints); err != nil {
+					return err
+				}
+			}
+			if c.ThreeSetsCombination_r19 != nil {
+				seqOf := e.NewSequenceOfEncoder(cAParametersNRV1900MultiCellPUSCHDCI03DiffSCSDiffCCR19ThreeSetsCombinationR19Constraints)
+				if err := seqOf.EncodeLength(int64(len(c.ThreeSetsCombination_r19))); err != nil {
+					return err
+				}
+				for i := range c.ThreeSetsCombination_r19 {
+					if err := c.ThreeSetsCombination_r19[i].Encode(e); err != nil {
+						return err
+					}
+				}
+			}
+		}
+	}
+
+	// 50. multiCellMultiPDSCH-DCI-1-3-r19: enumerated
+	{
+		if ie.MultiCellMultiPDSCH_DCI_1_3_r19 != nil {
+			if err := e.EncodeEnumerated(*ie.MultiCellMultiPDSCH_DCI_1_3_r19, cAParametersNRV1900MultiCellMultiPDSCHDCI13R19Constraints); err != nil {
+				return err
+			}
+		}
+	}
+
+	// 51. multiCellMultiPUSCH-DCI-0-3-r19: enumerated
+	{
+		if ie.MultiCellMultiPUSCH_DCI_0_3_r19 != nil {
+			if err := e.EncodeEnumerated(*ie.MultiCellMultiPUSCH_DCI_0_3_r19, cAParametersNRV1900MultiCellMultiPUSCHDCI03R19Constraints); err != nil {
+				return err
+			}
+		}
+	}
+
+	// 52. advUnicastDCI-DL-DiffSCS-DiffCC-r19: sequence
+	{
+		if ie.AdvUnicastDCI_DL_DiffSCS_DiffCC_r19 != nil {
+			c := ie.AdvUnicastDCI_DL_DiffSCS_DiffCC_r19
+			{
+				c := &c.UnicastDCI_Formats_r19
+				cAParametersNRV1900AdvUnicastDCIDLDiffSCSDiffCCR19UnicastDCIFormatsR19Seq := e.NewSequenceEncoder(cAParametersNRV1900AdvUnicastDCIDLDiffSCSDiffCCR19UnicastDCIFormatsR19Constraints)
+				if err := cAParametersNRV1900AdvUnicastDCIDLDiffSCSDiffCCR19UnicastDCIFormatsR19Seq.EncodePreamble([]bool{c.Scs_15kHz_120kHz_r19 != nil, c.Scs_15kHz_60kHz_r19 != nil, c.Scs_30kHz_120kHz_r19 != nil, c.Scs_15kHz_30kHz_r19 != nil, c.Scs_30kHz_60kHz_r19 != nil, c.Scs_30kHz_30kHz_r19 != nil}); err != nil {
+					return err
+				}
+				if c.Scs_15kHz_120kHz_r19 != nil {
+					if err := e.EncodeEnumerated((*c.Scs_15kHz_120kHz_r19), cAParametersNRV1900AdvUnicastDCIDLDiffSCSDiffCCR19UnicastDCIFormatsR19Scs15kHz120kHzR19Constraints); err != nil {
+						return err
+					}
+				}
+				if c.Scs_15kHz_60kHz_r19 != nil {
+					if err := e.EncodeEnumerated((*c.Scs_15kHz_60kHz_r19), cAParametersNRV1900AdvUnicastDCIDLDiffSCSDiffCCR19UnicastDCIFormatsR19Scs15kHz60kHzR19Constraints); err != nil {
+						return err
+					}
+				}
+				if c.Scs_30kHz_120kHz_r19 != nil {
+					if err := e.EncodeEnumerated((*c.Scs_30kHz_120kHz_r19), cAParametersNRV1900AdvUnicastDCIDLDiffSCSDiffCCR19UnicastDCIFormatsR19Scs30kHz120kHzR19Constraints); err != nil {
+						return err
+					}
+				}
+				if c.Scs_15kHz_30kHz_r19 != nil {
+					if err := e.EncodeEnumerated((*c.Scs_15kHz_30kHz_r19), cAParametersNRV1900AdvUnicastDCIDLDiffSCSDiffCCR19UnicastDCIFormatsR19Scs15kHz30kHzR19Constraints); err != nil {
+						return err
+					}
+				}
+				if c.Scs_30kHz_60kHz_r19 != nil {
+					if err := e.EncodeEnumerated((*c.Scs_30kHz_60kHz_r19), cAParametersNRV1900AdvUnicastDCIDLDiffSCSDiffCCR19UnicastDCIFormatsR19Scs30kHz60kHzR19Constraints); err != nil {
+						return err
+					}
+				}
+				if c.Scs_30kHz_30kHz_r19 != nil {
+					if err := e.EncodeEnumerated((*c.Scs_30kHz_30kHz_r19), cAParametersNRV1900AdvUnicastDCIDLDiffSCSDiffCCR19UnicastDCIFormatsR19Scs30kHz30kHzR19Constraints); err != nil {
+						return err
+					}
+				}
+			}
+			{
+				c := &c.NumDCI_1_3_r19
+				cAParametersNRV1900AdvUnicastDCIDLDiffSCSDiffCCR19NumDCI13R19Seq := e.NewSequenceEncoder(cAParametersNRV1900AdvUnicastDCIDLDiffSCSDiffCCR19NumDCI13R19Constraints)
+				if err := cAParametersNRV1900AdvUnicastDCIDLDiffSCSDiffCCR19NumDCI13R19Seq.EncodePreamble([]bool{c.Scs_15kHz_120kHz_r19 != nil, c.Scs_15kHz_60kHz_r19 != nil, c.Scs_30kHz_120kHz_r19 != nil, c.Scs_15kHz_30kHz_r19 != nil, c.Scs_30kHz_60kHz_r19 != nil, c.Scs_30kHz_30kHz_r19 != nil}); err != nil {
+					return err
+				}
+				if c.Scs_15kHz_120kHz_r19 != nil {
+					if err := e.EncodeEnumerated((*c.Scs_15kHz_120kHz_r19), cAParametersNRV1900AdvUnicastDCIDLDiffSCSDiffCCR19NumDCI13R19Scs15kHz120kHzR19Constraints); err != nil {
+						return err
+					}
+				}
+				if c.Scs_15kHz_60kHz_r19 != nil {
+					if err := e.EncodeEnumerated((*c.Scs_15kHz_60kHz_r19), cAParametersNRV1900AdvUnicastDCIDLDiffSCSDiffCCR19NumDCI13R19Scs15kHz60kHzR19Constraints); err != nil {
+						return err
+					}
+				}
+				if c.Scs_30kHz_120kHz_r19 != nil {
+					if err := e.EncodeEnumerated((*c.Scs_30kHz_120kHz_r19), cAParametersNRV1900AdvUnicastDCIDLDiffSCSDiffCCR19NumDCI13R19Scs30kHz120kHzR19Constraints); err != nil {
+						return err
+					}
+				}
+				if c.Scs_15kHz_30kHz_r19 != nil {
+					if err := e.EncodeEnumerated((*c.Scs_15kHz_30kHz_r19), cAParametersNRV1900AdvUnicastDCIDLDiffSCSDiffCCR19NumDCI13R19Scs15kHz30kHzR19Constraints); err != nil {
+						return err
+					}
+				}
+				if c.Scs_30kHz_60kHz_r19 != nil {
+					if err := e.EncodeEnumerated((*c.Scs_30kHz_60kHz_r19), cAParametersNRV1900AdvUnicastDCIDLDiffSCSDiffCCR19NumDCI13R19Scs30kHz60kHzR19Constraints); err != nil {
+						return err
+					}
+				}
+				if c.Scs_30kHz_30kHz_r19 != nil {
+					if err := e.EncodeEnumerated((*c.Scs_30kHz_30kHz_r19), cAParametersNRV1900AdvUnicastDCIDLDiffSCSDiffCCR19NumDCI13R19Scs30kHz30kHzR19Constraints); err != nil {
+						return err
+					}
+				}
+			}
+		}
+	}
+
+	// 53. advUnicastDCI-UL-DiffSCS-DiffCC-r19: sequence
+	{
+		if ie.AdvUnicastDCI_UL_DiffSCS_DiffCC_r19 != nil {
+			c := ie.AdvUnicastDCI_UL_DiffSCS_DiffCC_r19
+			{
+				c := &c.UnicastDCI_Formats_r19
+				cAParametersNRV1900AdvUnicastDCIULDiffSCSDiffCCR19UnicastDCIFormatsR19Seq := e.NewSequenceEncoder(cAParametersNRV1900AdvUnicastDCIULDiffSCSDiffCCR19UnicastDCIFormatsR19Constraints)
+				if err := cAParametersNRV1900AdvUnicastDCIULDiffSCSDiffCCR19UnicastDCIFormatsR19Seq.EncodePreamble([]bool{c.Scs_15kHz_120kHz_r19 != nil, c.Scs_15kHz_60kHz_r19 != nil, c.Scs_30kHz_120kHz_r19 != nil, c.Scs_15kHz_30kHz_r19 != nil, c.Scs_30kHz_60kHz_r19 != nil, c.Scs_30kHz_30kHz_r19 != nil}); err != nil {
+					return err
+				}
+				if c.Scs_15kHz_120kHz_r19 != nil {
+					if err := e.EncodeEnumerated((*c.Scs_15kHz_120kHz_r19), cAParametersNRV1900AdvUnicastDCIULDiffSCSDiffCCR19UnicastDCIFormatsR19Scs15kHz120kHzR19Constraints); err != nil {
+						return err
+					}
+				}
+				if c.Scs_15kHz_60kHz_r19 != nil {
+					if err := e.EncodeEnumerated((*c.Scs_15kHz_60kHz_r19), cAParametersNRV1900AdvUnicastDCIULDiffSCSDiffCCR19UnicastDCIFormatsR19Scs15kHz60kHzR19Constraints); err != nil {
+						return err
+					}
+				}
+				if c.Scs_30kHz_120kHz_r19 != nil {
+					if err := e.EncodeEnumerated((*c.Scs_30kHz_120kHz_r19), cAParametersNRV1900AdvUnicastDCIULDiffSCSDiffCCR19UnicastDCIFormatsR19Scs30kHz120kHzR19Constraints); err != nil {
+						return err
+					}
+				}
+				if c.Scs_15kHz_30kHz_r19 != nil {
+					if err := e.EncodeEnumerated((*c.Scs_15kHz_30kHz_r19), cAParametersNRV1900AdvUnicastDCIULDiffSCSDiffCCR19UnicastDCIFormatsR19Scs15kHz30kHzR19Constraints); err != nil {
+						return err
+					}
+				}
+				if c.Scs_30kHz_60kHz_r19 != nil {
+					if err := e.EncodeEnumerated((*c.Scs_30kHz_60kHz_r19), cAParametersNRV1900AdvUnicastDCIULDiffSCSDiffCCR19UnicastDCIFormatsR19Scs30kHz60kHzR19Constraints); err != nil {
+						return err
+					}
+				}
+				if c.Scs_30kHz_30kHz_r19 != nil {
+					if err := e.EncodeEnumerated((*c.Scs_30kHz_30kHz_r19), cAParametersNRV1900AdvUnicastDCIULDiffSCSDiffCCR19UnicastDCIFormatsR19Scs30kHz30kHzR19Constraints); err != nil {
+						return err
+					}
+				}
+			}
+			{
+				c := &c.NumDCI_0_3_r19
+				cAParametersNRV1900AdvUnicastDCIULDiffSCSDiffCCR19NumDCI03R19Seq := e.NewSequenceEncoder(cAParametersNRV1900AdvUnicastDCIULDiffSCSDiffCCR19NumDCI03R19Constraints)
+				if err := cAParametersNRV1900AdvUnicastDCIULDiffSCSDiffCCR19NumDCI03R19Seq.EncodePreamble([]bool{c.Scs_15kHz_120kHz_r19 != nil, c.Scs_15kHz_60kHz_r19 != nil, c.Scs_30kHz_120kHz_r19 != nil, c.Scs_15kHz_30kHz_r19 != nil, c.Scs_30kHz_60kHz_r19 != nil, c.Scs_30kHz_30kHz_r19 != nil}); err != nil {
+					return err
+				}
+				if c.Scs_15kHz_120kHz_r19 != nil {
+					if err := e.EncodeEnumerated((*c.Scs_15kHz_120kHz_r19), cAParametersNRV1900AdvUnicastDCIULDiffSCSDiffCCR19NumDCI03R19Scs15kHz120kHzR19Constraints); err != nil {
+						return err
+					}
+				}
+				if c.Scs_15kHz_60kHz_r19 != nil {
+					if err := e.EncodeEnumerated((*c.Scs_15kHz_60kHz_r19), cAParametersNRV1900AdvUnicastDCIULDiffSCSDiffCCR19NumDCI03R19Scs15kHz60kHzR19Constraints); err != nil {
+						return err
+					}
+				}
+				if c.Scs_30kHz_120kHz_r19 != nil {
+					if err := e.EncodeEnumerated((*c.Scs_30kHz_120kHz_r19), cAParametersNRV1900AdvUnicastDCIULDiffSCSDiffCCR19NumDCI03R19Scs30kHz120kHzR19Constraints); err != nil {
+						return err
+					}
+				}
+				if c.Scs_15kHz_30kHz_r19 != nil {
+					if err := e.EncodeEnumerated((*c.Scs_15kHz_30kHz_r19), cAParametersNRV1900AdvUnicastDCIULDiffSCSDiffCCR19NumDCI03R19Scs15kHz30kHzR19Constraints); err != nil {
+						return err
+					}
+				}
+				if c.Scs_30kHz_60kHz_r19 != nil {
+					if err := e.EncodeEnumerated((*c.Scs_30kHz_60kHz_r19), cAParametersNRV1900AdvUnicastDCIULDiffSCSDiffCCR19NumDCI03R19Scs30kHz60kHzR19Constraints); err != nil {
+						return err
+					}
+				}
+				if c.Scs_30kHz_30kHz_r19 != nil {
+					if err := e.EncodeEnumerated((*c.Scs_30kHz_30kHz_r19), cAParametersNRV1900AdvUnicastDCIULDiffSCSDiffCCR19NumDCI03R19Scs30kHz30kHzR19Constraints); err != nil {
+						return err
+					}
+				}
+			}
+		}
+	}
+
+	// 54. type3HARQ-CB-DCI-1-3-Diff-r19: enumerated
+	{
+		if ie.Type3HARQ_CB_DCI_1_3_Diff_r19 != nil {
+			if err := e.EncodeEnumerated(*ie.Type3HARQ_CB_DCI_1_3_Diff_r19, cAParametersNRV1900Type3HARQCBDCI13DiffR19Constraints); err != nil {
+				return err
+			}
+		}
+	}
+
+	// 55. type3EnhHARQ-CB-DCI-1-3-Diff-r19: enumerated
+	{
+		if ie.Type3EnhHARQ_CB_DCI_1_3_Diff_r19 != nil {
+			if err := e.EncodeEnumerated(*ie.Type3EnhHARQ_CB_DCI_1_3_Diff_r19, cAParametersNRV1900Type3EnhHARQCBDCI13DiffR19Constraints); err != nil {
+				return err
+			}
+		}
+	}
+
+	// 56. scellDormancyWithinActiveTime-DCI-0-3-And-1-3-Diff-r19: enumerated
+	{
+		if ie.ScellDormancyWithinActiveTime_DCI_0_3_And_1_3_Diff_r19 != nil {
+			if err := e.EncodeEnumerated(*ie.ScellDormancyWithinActiveTime_DCI_0_3_And_1_3_Diff_r19, cAParametersNRV1900ScellDormancyWithinActiveTimeDCI03And13DiffR19Constraints); err != nil {
+				return err
+			}
+		}
+	}
+
+	// 57. qcl-MultiCellDCI-1-3-Diff-r19: enumerated
+	{
+		if ie.Qcl_MultiCellDCI_1_3_Diff_r19 != nil {
+			if err := e.EncodeEnumerated(*ie.Qcl_MultiCellDCI_1_3_Diff_r19, cAParametersNRV1900QclMultiCellDCI13DiffR19Constraints); err != nil {
+				return err
+			}
+		}
+	}
+
+	// 58. bwp-SwitchingDCI-0-3-And-1-3-Diff-r19: enumerated
+	{
+		if ie.Bwp_SwitchingDCI_0_3_And_1_3_Diff_r19 != nil {
+			if err := e.EncodeEnumerated(*ie.Bwp_SwitchingDCI_0_3_And_1_3_Diff_r19, cAParametersNRV1900BwpSwitchingDCI03And13DiffR19Constraints); err != nil {
+				return err
+			}
+		}
+	}
+
+	// 59. mpr-ActiveCarrierEnh-r19: enumerated
+	{
+		if ie.Mpr_ActiveCarrierEnh_r19 != nil {
+			if err := e.EncodeEnumerated(*ie.Mpr_ActiveCarrierEnh_r19, cAParametersNRV1900MprActiveCarrierEnhR19Constraints); err != nil {
+				return err
+			}
+		}
+	}
+
+	// 60. mpr-DL-Independent-r19: enumerated
+	{
+		if ie.Mpr_DL_Independent_r19 != nil {
+			if err := e.EncodeEnumerated(*ie.Mpr_DL_Independent_r19, cAParametersNRV1900MprDLIndependentR19Constraints); err != nil {
+				return err
+			}
+		}
+	}
+
+	// 61. mpr-ActivateDependent-r19: enumerated
+	{
+		if ie.Mpr_ActivateDependent_r19 != nil {
+			if err := e.EncodeEnumerated(*ie.Mpr_ActivateDependent_r19, cAParametersNRV1900MprActivateDependentR19Constraints); err != nil {
+				return err
+			}
+		}
+	}
+
+	// 62. intraBandNR-CA-non-collocated-r19: enumerated
+	{
+		if ie.IntraBandNR_CA_Non_Collocated_r19 != nil {
+			if err := e.EncodeEnumerated(*ie.IntraBandNR_CA_Non_Collocated_r19, cAParametersNRV1900IntraBandNRCANonCollocatedR19Constraints); err != nil {
+				return err
+			}
+		}
+	}
+
+	// 63. atg-RxBeamType-r19: enumerated
+	{
+		if ie.Atg_RxBeamType_r19 != nil {
+			if err := e.EncodeEnumerated(*ie.Atg_RxBeamType_r19, cAParametersNRV1900AtgRxBeamTypeR19Constraints); err != nil {
+				return err
+			}
+		}
+	}
+
+	// 64. od-SSB-FastMeasWinLowerBound-r19: enumerated
+	{
+		if ie.Od_SSB_FastMeasWinLowerBound_r19 != nil {
+			if err := e.EncodeEnumerated(*ie.Od_SSB_FastMeasWinLowerBound_r19, cAParametersNRV1900OdSSBFastMeasWinLowerBoundR19Constraints); err != nil {
+				return err
+			}
+		}
+	}
+
+	// 65. maxCSI-RS-ResourceL1-Meas-r19: enumerated
+	{
+		if ie.MaxCSI_RS_ResourceL1_Meas_r19 != nil {
+			if err := e.EncodeEnumerated(*ie.MaxCSI_RS_ResourceL1_Meas_r19, cAParametersNRV1900MaxCSIRSResourceL1MeasR19Constraints); err != nil {
+				return err
+			}
+		}
+	}
+
+	// 66. totalCSI-RS-ResourceL1-Meas-r19: enumerated
+	{
+		if ie.TotalCSI_RS_ResourceL1_Meas_r19 != nil {
+			if err := e.EncodeEnumerated(*ie.TotalCSI_RS_ResourceL1_Meas_r19, cAParametersNRV1900TotalCSIRSResourceL1MeasR19Constraints); err != nil {
+				return err
+			}
+		}
+	}
+
+	return nil
+}
+
+func (ie *CA_ParametersNR_v1900) Decode(d *per.Decoder) error {
+	seq := d.NewSequenceDecoder(cAParametersNRV1900Constraints)
+
+	// 1. Decode root OPTIONAL bitmap.
+	if err := seq.DecodePreamble(); err != nil {
+		return err
+	}
+
+	// 2. codebookParametersType1SP-SchemeA-PerBC-r19: ref
+	{
+		if seq.IsComponentPresent(0) {
+			ie.CodebookParametersType1SP_SchemeA_PerBC_r19 = new(CodebookParametersType1SP_SchemeA_r19)
+			if err := ie.CodebookParametersType1SP_SchemeA_PerBC_r19.Decode(d); err != nil {
+				return err
+			}
+		}
+	}
+
+	// 3. codebookParametersType1SP-SchemeB-PerBC-r19: ref
+	{
+		if seq.IsComponentPresent(1) {
+			ie.CodebookParametersType1SP_SchemeB_PerBC_r19 = new(CodebookParametersType1SP_SchemeB_r19)
+			if err := ie.CodebookParametersType1SP_SchemeB_PerBC_r19.Decode(d); err != nil {
+				return err
+			}
+		}
+	}
+
+	// 4. codebookParametersType1MP-PerBC-r19: ref
+	{
+		if seq.IsComponentPresent(2) {
+			ie.CodebookParametersType1MP_PerBC_r19 = new(CodebookParametersType1MP_r19)
+			if err := ie.CodebookParametersType1MP_PerBC_r19.Decode(d); err != nil {
+				return err
+			}
+		}
+	}
+
+	// 5. codebookParameterseType2ExtPerBC-r19: ref
+	{
+		if seq.IsComponentPresent(3) {
+			ie.CodebookParameterseType2ExtPerBC_r19 = new(CodebookParameterseType2Ext_r19)
+			if err := ie.CodebookParameterseType2ExtPerBC_r19.Decode(d); err != nil {
+				return err
+			}
+		}
+	}
+
+	// 6. codebookParametersfeType2ExtPerBC-r19: ref
+	{
+		if seq.IsComponentPresent(4) {
+			ie.CodebookParametersfeType2ExtPerBC_r19 = new(CodebookParametersfeType2Ext_r19)
+			if err := ie.CodebookParametersfeType2ExtPerBC_r19.Decode(d); err != nil {
+				return err
+			}
+		}
+	}
+
+	// 7. codebookParameterseType2DopplerExtPerBC-r19: ref
+	{
+		if seq.IsComponentPresent(5) {
+			ie.CodebookParameterseType2DopplerExtPerBC_r19 = new(CodebookParameterseType2DopplerExt_r19)
+			if err := ie.CodebookParameterseType2DopplerExtPerBC_r19.Decode(d); err != nil {
+				return err
+			}
+		}
+	}
+
+	// 8. codebookParametersHybridBF-Type1SP-PerBC-r19: ref
+	{
+		if seq.IsComponentPresent(6) {
+			ie.CodebookParametersHybridBF_Type1SP_PerBC_r19 = new(CodebookParametersHybridBF_Type1SP_r19)
+			if err := ie.CodebookParametersHybridBF_Type1SP_PerBC_r19.Decode(d); err != nil {
+				return err
+			}
+		}
+	}
+
+	// 9. codebookParametersHybridBF-eType2PerBC-r19: ref
+	{
+		if seq.IsComponentPresent(7) {
+			ie.CodebookParametersHybridBF_EType2PerBC_r19 = new(CodebookParametersHybridBF_EType2_r19)
+			if err := ie.CodebookParametersHybridBF_EType2PerBC_r19.Decode(d); err != nil {
+				return err
+			}
+		}
+	}
+
+	// 10. aiml-CSI-PredictionDopplerPerBC-r19: ref
+	{
+		if seq.IsComponentPresent(8) {
+			ie.Aiml_CSI_PredictionDopplerPerBC_r19 = new(CodebookParametersCSI_PredictionDoppler_r19)
+			if err := ie.Aiml_CSI_PredictionDopplerPerBC_r19.Decode(d); err != nil {
+				return err
+			}
+		}
+	}
+
+	// 11. aiml-CSI-ReportPerBC-r19: sequence-of
+	{
+		if seq.IsComponentPresent(9) {
+			seqOf := d.NewSequenceOfDecoder(cAParametersNRV1900AimlCSIReportPerBCR19Constraints)
+			n, err := seqOf.DecodeLength()
+			if err != nil {
+				return err
+			}
+			ie.Aiml_CSI_ReportPerBC_r19 = make([]CPU_PoolInfo_r19, n)
+			for i := int64(0); i < n; i++ {
+				if err := ie.Aiml_CSI_ReportPerBC_r19[i].Decode(d); err != nil {
+					return err
+				}
+			}
+		}
+	}
+
+	// 12. aiml-CSI-PredictionPerBC-r19: sequence
+	{
+		if seq.IsComponentPresent(10) {
+			ie.Aiml_CSI_PredictionPerBC_r19 = &struct {
+				SupportedCSI_RS_ResourceList_r19 []int64
+				ScalingFactor_r19                int64
+				NumberOfOccupiedCPU_r19          int64
+				NumberOfOccupiedCPUx_r19         int64
+				RelaxationTimelineT_r19          struct {
+					Scs15kHz_r19  int64
+					Scs30kHz_r19  int64
+					Scs60kHz_r19  int64
+					Scs120kHz_r19 int64
+					Scs480kHz_r19 int64
+					Scs960kHz_r19 int64
+				}
+				OccupiedResourcePool_r19 int64
+				InferenceReportType_r19  int64
+			}{}
+			c := ie.Aiml_CSI_PredictionPerBC_r19
+			{
+				seqOf := d.NewSequenceOfDecoder(cAParametersNRV1900AimlCSIPredictionPerBCR19SupportedCSIRSResourceListR19Constraints)
+				n, err := seqOf.DecodeLength()
+				if err != nil {
+					return err
+				}
+				c.SupportedCSI_RS_ResourceList_r19 = make([]int64, n)
+				for i := int64(0); i < n; i++ {
+					v, err := d.DecodeInteger(per.Constrained(0, common.MaxNrofCSI_RS_ResourcesAlt_1_r16))
+					if err != nil {
+						return err
+					}
+					c.SupportedCSI_RS_ResourceList_r19[i] = v
+				}
+			}
+			{
+				v, err := d.DecodeEnumerated(cAParametersNRV1900AimlCSIPredictionPerBCR19ScalingFactorR19Constraints)
+				if err != nil {
+					return err
+				}
+				c.ScalingFactor_r19 = v
+			}
+			{
+				v, err := d.DecodeInteger(per.Constrained(0, 8))
+				if err != nil {
+					return err
+				}
+				c.NumberOfOccupiedCPU_r19 = v
+			}
+			{
+				v, err := d.DecodeInteger(per.Constrained(0, 8))
+				if err != nil {
+					return err
+				}
+				c.NumberOfOccupiedCPUx_r19 = v
+			}
+			{
+				c := &c.RelaxationTimelineT_r19
+				{
+					v, err := d.DecodeEnumerated(cAParametersNRV1900AimlCSIPredictionPerBCR19RelaxationTimelineTR19Scs15kHzR19Constraints)
+					if err != nil {
+						return err
+					}
+					c.Scs15kHz_r19 = v
+				}
+				{
+					v, err := d.DecodeEnumerated(cAParametersNRV1900AimlCSIPredictionPerBCR19RelaxationTimelineTR19Scs30kHzR19Constraints)
+					if err != nil {
+						return err
+					}
+					c.Scs30kHz_r19 = v
+				}
+				{
+					v, err := d.DecodeEnumerated(cAParametersNRV1900AimlCSIPredictionPerBCR19RelaxationTimelineTR19Scs60kHzR19Constraints)
+					if err != nil {
+						return err
+					}
+					c.Scs60kHz_r19 = v
+				}
+				{
+					v, err := d.DecodeEnumerated(cAParametersNRV1900AimlCSIPredictionPerBCR19RelaxationTimelineTR19Scs120kHzR19Constraints)
+					if err != nil {
+						return err
+					}
+					c.Scs120kHz_r19 = v
+				}
+				{
+					v, err := d.DecodeEnumerated(cAParametersNRV1900AimlCSIPredictionPerBCR19RelaxationTimelineTR19Scs480kHzR19Constraints)
+					if err != nil {
+						return err
+					}
+					c.Scs480kHz_r19 = v
+				}
+				{
+					v, err := d.DecodeEnumerated(cAParametersNRV1900AimlCSIPredictionPerBCR19RelaxationTimelineTR19Scs960kHzR19Constraints)
+					if err != nil {
+						return err
+					}
+					c.Scs960kHz_r19 = v
+				}
+			}
+			{
+				v, err := d.DecodeInteger(per.Constrained(1, 2))
+				if err != nil {
+					return err
+				}
+				c.OccupiedResourcePool_r19 = v
+			}
+			{
+				v, err := d.DecodeEnumerated(cAParametersNRV1900AimlCSIPredictionPerBCR19InferenceReportTypeR19Constraints)
+				if err != nil {
+					return err
+				}
+				c.InferenceReportType_r19 = v
+			}
+		}
+	}
+
+	// 13. aiml-CSI-PredictionUnitDurationDD-PerBC-r19: enumerated
+	{
+		if seq.IsComponentPresent(11) {
+			idx, err := d.DecodeEnumerated(cAParametersNRV1900AimlCSIPredictionUnitDurationDDPerBCR19Constraints)
+			if err != nil {
+				return err
+			}
+			ie.Aiml_CSI_PredictionUnitDurationDD_PerBC_r19 = &idx
+		}
+	}
+
+	// 14. aiml-CSI-PredictionN4PerBC-r19: sequence
+	{
+		if seq.IsComponentPresent(12) {
+			ie.Aiml_CSI_PredictionN4PerBC_r19 = &struct {
+				SupportedCSI_RS_ReportSettingAcrossCC_r19  []SupportedCSI_RS_ReportSetting_r18
+				SupportedCSI_RS_ReportSettingOneReport_r19 []SupportedCSI_RS_ReportSetting_r18
+				NumOccupiedCPU_r19                         int64
+				NumOccupiedCPUx_r19                        int64
+				OccupiedPool_r19                           int64
+			}{}
+			c := ie.Aiml_CSI_PredictionN4PerBC_r19
+			{
+				seqOf := d.NewSequenceOfDecoder(cAParametersNRV1900AimlCSIPredictionN4PerBCR19SupportedCSIRSReportSettingAcrossCCR19Constraints)
+				n, err := seqOf.DecodeLength()
+				if err != nil {
+					return err
+				}
+				c.SupportedCSI_RS_ReportSettingAcrossCC_r19 = make([]SupportedCSI_RS_ReportSetting_r18, n)
+				for i := int64(0); i < n; i++ {
+					if err := c.SupportedCSI_RS_ReportSettingAcrossCC_r19[i].Decode(d); err != nil {
+						return err
+					}
+				}
+			}
+			{
+				seqOf := d.NewSequenceOfDecoder(cAParametersNRV1900AimlCSIPredictionN4PerBCR19SupportedCSIRSReportSettingOneReportR19Constraints)
+				n, err := seqOf.DecodeLength()
+				if err != nil {
+					return err
+				}
+				c.SupportedCSI_RS_ReportSettingOneReport_r19 = make([]SupportedCSI_RS_ReportSetting_r18, n)
+				for i := int64(0); i < n; i++ {
+					if err := c.SupportedCSI_RS_ReportSettingOneReport_r19[i].Decode(d); err != nil {
+						return err
+					}
+				}
+			}
+			{
+				v, err := d.DecodeInteger(per.Constrained(0, 8))
+				if err != nil {
+					return err
+				}
+				c.NumOccupiedCPU_r19 = v
+			}
+			{
+				v, err := d.DecodeInteger(per.Constrained(0, 8))
+				if err != nil {
+					return err
+				}
+				c.NumOccupiedCPUx_r19 = v
+			}
+			{
+				v, err := d.DecodeEnumerated(cAParametersNRV1900AimlCSIPredictionN4PerBCR19OccupiedPoolR19Constraints)
+				if err != nil {
+					return err
+				}
+				c.OccupiedPool_r19 = v
+			}
+		}
+	}
+
+	// 15. aiml-CSI-PredictionUE-DataCollectionPerBC-r19: enumerated
+	{
+		if seq.IsComponentPresent(13) {
+			idx, err := d.DecodeEnumerated(cAParametersNRV1900AimlCSIPredictionUEDataCollectionPerBCR19Constraints)
+			if err != nil {
+				return err
+			}
+			ie.Aiml_CSI_PredictionUE_DataCollectionPerBC_r19 = &idx
+		}
+	}
+
+	// 16. aiml-CSI-PredictionMonitoringPerBC-r19: sequence
+	{
+		if seq.IsComponentPresent(14) {
+			ie.Aiml_CSI_PredictionMonitoringPerBC_r19 = &struct {
+				SuppportedCSI_RS_ResourceList_r19 []int64
+				NumOccupiedCPU_r19                int64
+			}{}
+			c := ie.Aiml_CSI_PredictionMonitoringPerBC_r19
+			{
+				seqOf := d.NewSequenceOfDecoder(cAParametersNRV1900AimlCSIPredictionMonitoringPerBCR19SuppportedCSIRSResourceListR19Constraints)
+				n, err := seqOf.DecodeLength()
+				if err != nil {
+					return err
+				}
+				c.SuppportedCSI_RS_ResourceList_r19 = make([]int64, n)
+				for i := int64(0); i < n; i++ {
+					v, err := d.DecodeInteger(per.Constrained(0, common.MaxNrofCSI_RS_ResourcesAlt_1_r16))
+					if err != nil {
+						return err
+					}
+					c.SuppportedCSI_RS_ResourceList_r19[i] = v
+				}
+			}
+			{
+				v, err := d.DecodeInteger(per.Constrained(1, 2))
+				if err != nil {
+					return err
+				}
+				c.NumOccupiedCPU_r19 = v
+			}
+		}
+	}
+
+	// 17. diffGroupPUCCH-PUSCH-r19: enumerated
+	{
+		if seq.IsComponentPresent(15) {
+			idx, err := d.DecodeEnumerated(cAParametersNRV1900DiffGroupPUCCHPUSCHR19Constraints)
+			if err != nil {
+				return err
+			}
+			ie.DiffGroupPUCCH_PUSCH_r19 = &idx
+		}
+	}
+
+	// 18. timeRestriction128PortPerBC-r19: enumerated
+	{
+		if seq.IsComponentPresent(16) {
+			idx, err := d.DecodeEnumerated(cAParametersNRV1900TimeRestriction128PortPerBCR19Constraints)
+			if err != nil {
+				return err
+			}
+			ie.TimeRestriction128PortPerBC_r19 = &idx
+		}
+	}
+
+	// 19. groupScalingFactorPerBC-r19: enumerated
+	{
+		if seq.IsComponentPresent(17) {
+			idx, err := d.DecodeEnumerated(cAParametersNRV1900GroupScalingFactorPerBCR19Constraints)
+			if err != nil {
+				return err
+			}
+			ie.GroupScalingFactorPerBC_r19 = &idx
+		}
+	}
+
+	// 20. nes-SD-Type1-SP-PerBC-r19: sequence
+	{
+		if seq.IsComponentPresent(18) {
+			ie.Nes_SD_Type1_SP_PerBC_r19 = &struct {
+				Timeline_r19            int64
+				NumOfPortCSI_Report_r19 per.BitString
+			}{}
+			c := ie.Nes_SD_Type1_SP_PerBC_r19
+			{
+				v, err := d.DecodeEnumerated(cAParametersNRV1900NesSDType1SPPerBCR19TimelineR19Constraints)
+				if err != nil {
+					return err
+				}
+				c.Timeline_r19 = v
+			}
+			{
+				v, err := d.DecodeBitString(per.FixedSize(10))
+				if err != nil {
+					return err
+				}
+				c.NumOfPortCSI_Report_r19 = v
+			}
+		}
+	}
+
+	// 21. mr-AlwaysReportedType1SP-PerBC-r19: enumerated
+	{
+		if seq.IsComponentPresent(19) {
+			idx, err := d.DecodeEnumerated(cAParametersNRV1900MrAlwaysReportedType1SPPerBCR19Constraints)
+			if err != nil {
+				return err
+			}
+			ie.Mr_AlwaysReportedType1SP_PerBC_r19 = &idx
+		}
+	}
+
+	// 22. mr-AlwaysReported-eType2PerBC-r19: enumerated
+	{
+		if seq.IsComponentPresent(20) {
+			idx, err := d.DecodeEnumerated(cAParametersNRV1900MrAlwaysReportedEType2PerBCR19Constraints)
+			if err != nil {
+				return err
+			}
+			ie.Mr_AlwaysReported_EType2PerBC_r19 = &idx
+		}
+	}
+
+	// 23. cjtc-DdReportPerBC-r19: sequence
+	{
+		if seq.IsComponentPresent(21) {
+			ie.Cjtc_DdReportPerBC_r19 = &struct {
+				MinRangeDdInCyclicPrefix_r19 int64
+				MaxResolutionDd_r19          int64
+				ScalingFactor_r19            int64
+			}{}
+			c := ie.Cjtc_DdReportPerBC_r19
+			{
+				v, err := d.DecodeEnumerated(cAParametersNRV1900CjtcDdReportPerBCR19MinRangeDdInCyclicPrefixR19Constraints)
+				if err != nil {
+					return err
+				}
+				c.MinRangeDdInCyclicPrefix_r19 = v
+			}
+			{
+				v, err := d.DecodeEnumerated(cAParametersNRV1900CjtcDdReportPerBCR19MaxResolutionDdR19Constraints)
+				if err != nil {
+					return err
+				}
+				c.MaxResolutionDd_r19 = v
+			}
+			{
+				v, err := d.DecodeInteger(per.Constrained(1, 2))
+				if err != nil {
+					return err
+				}
+				c.ScalingFactor_r19 = v
+			}
+		}
+	}
+
+	// 24. cjtc-DdReportProcessingPerBC-r19: sequence
+	{
+		if seq.IsComponentPresent(22) {
+			ie.Cjtc_DdReportProcessingPerBC_r19 = &struct {
+				MaxNumberTRS_Resource_r19            int64
+				MaxNumberTRS_ResourceAcrossCC_r19    int64
+				MaxNumberCSI_RS_ResourcePerCC_r19    int64
+				MaxNumberCSI_RS_ResourceAcrossCC_r19 int64
+				ValueX_r19                           int64
+			}{}
+			c := ie.Cjtc_DdReportProcessingPerBC_r19
+			{
+				v, err := d.DecodeEnumerated(cAParametersNRV1900CjtcDdReportProcessingPerBCR19MaxNumberTRSResourceR19Constraints)
+				if err != nil {
+					return err
+				}
+				c.MaxNumberTRS_Resource_r19 = v
+			}
+			{
+				v, err := d.DecodeEnumerated(cAParametersNRV1900CjtcDdReportProcessingPerBCR19MaxNumberTRSResourceAcrossCCR19Constraints)
+				if err != nil {
+					return err
+				}
+				c.MaxNumberTRS_ResourceAcrossCC_r19 = v
+			}
+			{
+				v, err := d.DecodeEnumerated(cAParametersNRV1900CjtcDdReportProcessingPerBCR19MaxNumberCSIRSResourcePerCCR19Constraints)
+				if err != nil {
+					return err
+				}
+				c.MaxNumberCSI_RS_ResourcePerCC_r19 = v
+			}
+			{
+				v, err := d.DecodeEnumerated(cAParametersNRV1900CjtcDdReportProcessingPerBCR19MaxNumberCSIRSResourceAcrossCCR19Constraints)
+				if err != nil {
+					return err
+				}
+				c.MaxNumberCSI_RS_ResourceAcrossCC_r19 = v
+			}
+			{
+				v, err := d.DecodeInteger(per.Constrained(1, 2))
+				if err != nil {
+					return err
+				}
+				c.ValueX_r19 = v
+			}
+		}
+	}
+
+	// 25. cjtc-FO-ReportPerBC-r19: sequence
+	{
+		if seq.IsComponentPresent(23) {
+			ie.Cjtc_FO_ReportPerBC_r19 = &struct {
+				MinRangeFO_r19      int64
+				MaxResolutionFO_r19 int64
+				ScalingFactor_r19   int64
+			}{}
+			c := ie.Cjtc_FO_ReportPerBC_r19
+			{
+				v, err := d.DecodeEnumerated(cAParametersNRV1900CjtcFOReportPerBCR19MinRangeFOR19Constraints)
+				if err != nil {
+					return err
+				}
+				c.MinRangeFO_r19 = v
+			}
+			{
+				v, err := d.DecodeEnumerated(cAParametersNRV1900CjtcFOReportPerBCR19MaxResolutionFOR19Constraints)
+				if err != nil {
+					return err
+				}
+				c.MaxResolutionFO_r19 = v
+			}
+			{
+				v, err := d.DecodeInteger(per.Constrained(1, 2))
+				if err != nil {
+					return err
+				}
+				c.ScalingFactor_r19 = v
+			}
+		}
+	}
+
+	// 26. cjtc-FO-ReportProcessingPerBC-r19: sequence
+	{
+		if seq.IsComponentPresent(24) {
+			ie.Cjtc_FO_ReportProcessingPerBC_r19 = &struct {
+				MaxNumberTRS_Resource_r19            int64
+				MaxNumberTRS_ResourceAcrossCC_r19    int64
+				MaxNumberCSI_RS_ResourcePerCC_r19    int64
+				MaxNumberCSI_RS_ResourceAcrossCC_r19 int64
+				ValueX_r19                           int64
+			}{}
+			c := ie.Cjtc_FO_ReportProcessingPerBC_r19
+			{
+				v, err := d.DecodeEnumerated(cAParametersNRV1900CjtcFOReportProcessingPerBCR19MaxNumberTRSResourceR19Constraints)
+				if err != nil {
+					return err
+				}
+				c.MaxNumberTRS_Resource_r19 = v
+			}
+			{
+				v, err := d.DecodeEnumerated(cAParametersNRV1900CjtcFOReportProcessingPerBCR19MaxNumberTRSResourceAcrossCCR19Constraints)
+				if err != nil {
+					return err
+				}
+				c.MaxNumberTRS_ResourceAcrossCC_r19 = v
+			}
+			{
+				v, err := d.DecodeEnumerated(cAParametersNRV1900CjtcFOReportProcessingPerBCR19MaxNumberCSIRSResourcePerCCR19Constraints)
+				if err != nil {
+					return err
+				}
+				c.MaxNumberCSI_RS_ResourcePerCC_r19 = v
+			}
+			{
+				v, err := d.DecodeEnumerated(cAParametersNRV1900CjtcFOReportProcessingPerBCR19MaxNumberCSIRSResourceAcrossCCR19Constraints)
+				if err != nil {
+					return err
+				}
+				c.MaxNumberCSI_RS_ResourceAcrossCC_r19 = v
+			}
+			{
+				v, err := d.DecodeInteger(per.Constrained(1, 2))
+				if err != nil {
+					return err
+				}
+				c.ValueX_r19 = v
+			}
+		}
+	}
+
+	// 27. cjtc-PO-ReportWidebandPerBC-r19: sequence
+	{
+		if seq.IsComponentPresent(25) {
+			ie.Cjtc_PO_ReportWidebandPerBC_r19 = &struct {
+				MaxResolution_r19   int64
+				ScalingFactor_r19   int64
+				MaxSlotDuration_r19 int64
+			}{}
+			c := ie.Cjtc_PO_ReportWidebandPerBC_r19
+			{
+				v, err := d.DecodeEnumerated(cAParametersNRV1900CjtcPOReportWidebandPerBCR19MaxResolutionR19Constraints)
+				if err != nil {
+					return err
+				}
+				c.MaxResolution_r19 = v
+			}
+			{
+				v, err := d.DecodeInteger(per.Constrained(1, 2))
+				if err != nil {
+					return err
+				}
+				c.ScalingFactor_r19 = v
+			}
+			{
+				v, err := d.DecodeInteger(per.Constrained(1, 2))
+				if err != nil {
+					return err
+				}
+				c.MaxSlotDuration_r19 = v
+			}
+		}
+	}
+
+	// 28. cjtc-PO-ReportWidebandProcessingPerBC-r19: sequence
+	{
+		if seq.IsComponentPresent(26) {
+			ie.Cjtc_PO_ReportWidebandProcessingPerBC_r19 = &struct {
+				MaxNumberCSI_RS_Configured_r19         int64
+				MaxNumberCSI_RS_ConfiguredAcrossCC_r19 int64
+				MaxNumberCSI_RS_ResourcePerCC_r19      int64
+				MaxNumberCSI_RS_ResourceAcrossCC_r19   int64
+				ValueX_r19                             int64
+			}{}
+			c := ie.Cjtc_PO_ReportWidebandProcessingPerBC_r19
+			{
+				v, err := d.DecodeEnumerated(cAParametersNRV1900CjtcPOReportWidebandProcessingPerBCR19MaxNumberCSIRSConfiguredR19Constraints)
+				if err != nil {
+					return err
+				}
+				c.MaxNumberCSI_RS_Configured_r19 = v
+			}
+			{
+				v, err := d.DecodeEnumerated(cAParametersNRV1900CjtcPOReportWidebandProcessingPerBCR19MaxNumberCSIRSConfiguredAcrossCCR19Constraints)
+				if err != nil {
+					return err
+				}
+				c.MaxNumberCSI_RS_ConfiguredAcrossCC_r19 = v
+			}
+			{
+				v, err := d.DecodeEnumerated(cAParametersNRV1900CjtcPOReportWidebandProcessingPerBCR19MaxNumberCSIRSResourcePerCCR19Constraints)
+				if err != nil {
+					return err
+				}
+				c.MaxNumberCSI_RS_ResourcePerCC_r19 = v
+			}
+			{
+				v, err := d.DecodeEnumerated(cAParametersNRV1900CjtcPOReportWidebandProcessingPerBCR19MaxNumberCSIRSResourceAcrossCCR19Constraints)
+				if err != nil {
+					return err
+				}
+				c.MaxNumberCSI_RS_ResourceAcrossCC_r19 = v
+			}
+			{
+				v, err := d.DecodeInteger(per.Constrained(1, 2))
+				if err != nil {
+					return err
+				}
+				c.ValueX_r19 = v
+			}
+		}
+	}
+
+	// 29. cjtc-PO-ReportSubbandPerBC-r19: sequence
+	{
+		if seq.IsComponentPresent(27) {
+			ie.Cjtc_PO_ReportSubbandPerBC_r19 = &struct {
+				MaxResolution_r19   int64
+				MinSubbandSize_r19  int64
+				ScalingFactor_r19   int64
+				MaxSlotDuration_r19 int64
+			}{}
+			c := ie.Cjtc_PO_ReportSubbandPerBC_r19
+			{
+				v, err := d.DecodeEnumerated(cAParametersNRV1900CjtcPOReportSubbandPerBCR19MaxResolutionR19Constraints)
+				if err != nil {
+					return err
+				}
+				c.MaxResolution_r19 = v
+			}
+			{
+				v, err := d.DecodeEnumerated(cAParametersNRV1900CjtcPOReportSubbandPerBCR19MinSubbandSizeR19Constraints)
+				if err != nil {
+					return err
+				}
+				c.MinSubbandSize_r19 = v
+			}
+			{
+				v, err := d.DecodeInteger(per.Constrained(1, 2))
+				if err != nil {
+					return err
+				}
+				c.ScalingFactor_r19 = v
+			}
+			{
+				v, err := d.DecodeInteger(per.Constrained(1, 2))
+				if err != nil {
+					return err
+				}
+				c.MaxSlotDuration_r19 = v
+			}
+		}
+	}
+
+	// 30. cjtc-DdFO-ReportPerBC-r19: sequence
+	{
+		if seq.IsComponentPresent(28) {
+			ie.Cjtc_DdFO_ReportPerBC_r19 = &struct {
+				MinRangeDdInCyclicPrefix_r19 int64
+				MaxResolutionDd_r19          int64
+				MinRangeFO_r19               int64
+				MaxResolutionFO_r19          int64
+				ScalingFactor_r19            int64
+			}{}
+			c := ie.Cjtc_DdFO_ReportPerBC_r19
+			{
+				v, err := d.DecodeEnumerated(cAParametersNRV1900CjtcDdFOReportPerBCR19MinRangeDdInCyclicPrefixR19Constraints)
+				if err != nil {
+					return err
+				}
+				c.MinRangeDdInCyclicPrefix_r19 = v
+			}
+			{
+				v, err := d.DecodeEnumerated(cAParametersNRV1900CjtcDdFOReportPerBCR19MaxResolutionDdR19Constraints)
+				if err != nil {
+					return err
+				}
+				c.MaxResolutionDd_r19 = v
+			}
+			{
+				v, err := d.DecodeEnumerated(cAParametersNRV1900CjtcDdFOReportPerBCR19MinRangeFOR19Constraints)
+				if err != nil {
+					return err
+				}
+				c.MinRangeFO_r19 = v
+			}
+			{
+				v, err := d.DecodeEnumerated(cAParametersNRV1900CjtcDdFOReportPerBCR19MaxResolutionFOR19Constraints)
+				if err != nil {
+					return err
+				}
+				c.MaxResolutionFO_r19 = v
+			}
+			{
+				v, err := d.DecodeInteger(per.Constrained(1, 2))
+				if err != nil {
+					return err
+				}
+				c.ScalingFactor_r19 = v
+			}
+		}
+	}
+
+	// 31. cjtc-DdFO-ReportProcessingPerBC-r19: sequence
+	{
+		if seq.IsComponentPresent(29) {
+			ie.Cjtc_DdFO_ReportProcessingPerBC_r19 = &struct {
+				MaxNumberTRS_Resource_r19            int64
+				MaxNumberTRS_ResourceAcrossCC_r19    int64
+				MaxNumberCSI_RS_ResourcePerCC_r19    int64
+				MaxNumberCSI_RS_ResourceAcrossCC_r19 int64
+				ValueX_r19                           int64
+			}{}
+			c := ie.Cjtc_DdFO_ReportProcessingPerBC_r19
+			{
+				v, err := d.DecodeEnumerated(cAParametersNRV1900CjtcDdFOReportProcessingPerBCR19MaxNumberTRSResourceR19Constraints)
+				if err != nil {
+					return err
+				}
+				c.MaxNumberTRS_Resource_r19 = v
+			}
+			{
+				v, err := d.DecodeEnumerated(cAParametersNRV1900CjtcDdFOReportProcessingPerBCR19MaxNumberTRSResourceAcrossCCR19Constraints)
+				if err != nil {
+					return err
+				}
+				c.MaxNumberTRS_ResourceAcrossCC_r19 = v
+			}
+			{
+				v, err := d.DecodeEnumerated(cAParametersNRV1900CjtcDdFOReportProcessingPerBCR19MaxNumberCSIRSResourcePerCCR19Constraints)
+				if err != nil {
+					return err
+				}
+				c.MaxNumberCSI_RS_ResourcePerCC_r19 = v
+			}
+			{
+				v, err := d.DecodeEnumerated(cAParametersNRV1900CjtcDdFOReportProcessingPerBCR19MaxNumberCSIRSResourceAcrossCCR19Constraints)
+				if err != nil {
+					return err
+				}
+				c.MaxNumberCSI_RS_ResourceAcrossCC_r19 = v
+			}
+			{
+				v, err := d.DecodeInteger(per.Constrained(1, 2))
+				if err != nil {
+					return err
+				}
+				c.ValueX_r19 = v
+			}
+		}
+	}
+
+	// 32. linked-CJTC-Dd-eType2CJT-JointPerBC-r19: enumerated
+	{
+		if seq.IsComponentPresent(30) {
+			idx, err := d.DecodeEnumerated(cAParametersNRV1900LinkedCJTCDdEType2CJTJointPerBCR19Constraints)
+			if err != nil {
+				return err
+			}
+			ie.Linked_CJTC_Dd_EType2CJT_JointPerBC_r19 = &idx
+		}
+	}
+
+	// 33. linked-CJTC-Dd-eType2CJT-SeparatePerBC-r19: enumerated
+	{
+		if seq.IsComponentPresent(31) {
+			idx, err := d.DecodeEnumerated(cAParametersNRV1900LinkedCJTCDdEType2CJTSeparatePerBCR19Constraints)
+			if err != nil {
+				return err
+			}
+			ie.Linked_CJTC_Dd_EType2CJT_SeparatePerBC_r19 = &idx
+		}
+	}
+
+	// 34. linked-CJTC-Dd-eType2CJT-SeparatePerStatePerBC-r19: enumerated
+	{
+		if seq.IsComponentPresent(32) {
+			idx, err := d.DecodeEnumerated(cAParametersNRV1900LinkedCJTCDdEType2CJTSeparatePerStatePerBCR19Constraints)
+			if err != nil {
+				return err
+			}
+			ie.Linked_CJTC_Dd_EType2CJT_SeparatePerStatePerBC_r19 = &idx
+		}
+	}
+
+	// 35. timelineRelax-CJTC-Dd-eType2CJT-PerBC-r19: sequence
+	{
+		if seq.IsComponentPresent(33) {
+			ie.TimelineRelax_CJTC_Dd_EType2CJT_PerBC_r19 = &struct {
+				Scs15kHz_r19  *int64
+				Scs30kHz_r19  *int64
+				Scs60kHz_r19  *int64
+				Scs120kHz_r19 *int64
+				Scs480kHz_r19 *int64
+				Scs960kHz_r19 *int64
+			}{}
+			c := ie.TimelineRelax_CJTC_Dd_EType2CJT_PerBC_r19
+			cAParametersNRV1900TimelineRelaxCJTCDdEType2CJTPerBCR19Seq := d.NewSequenceDecoder(cAParametersNRV1900TimelineRelaxCJTCDdEType2CJTPerBCR19Constraints)
+			if err := cAParametersNRV1900TimelineRelaxCJTCDdEType2CJTPerBCR19Seq.DecodePreamble(); err != nil {
+				return err
+			}
+			if cAParametersNRV1900TimelineRelaxCJTCDdEType2CJTPerBCR19Seq.IsComponentPresent(0) {
+				c.Scs15kHz_r19 = new(int64)
+				v, err := d.DecodeEnumerated(cAParametersNRV1900TimelineRelaxCJTCDdEType2CJTPerBCR19Scs15kHzR19Constraints)
+				if err != nil {
+					return err
+				}
+				(*c.Scs15kHz_r19) = v
+			}
+			if cAParametersNRV1900TimelineRelaxCJTCDdEType2CJTPerBCR19Seq.IsComponentPresent(1) {
+				c.Scs30kHz_r19 = new(int64)
+				v, err := d.DecodeEnumerated(cAParametersNRV1900TimelineRelaxCJTCDdEType2CJTPerBCR19Scs30kHzR19Constraints)
+				if err != nil {
+					return err
+				}
+				(*c.Scs30kHz_r19) = v
+			}
+			if cAParametersNRV1900TimelineRelaxCJTCDdEType2CJTPerBCR19Seq.IsComponentPresent(2) {
+				c.Scs60kHz_r19 = new(int64)
+				v, err := d.DecodeEnumerated(cAParametersNRV1900TimelineRelaxCJTCDdEType2CJTPerBCR19Scs60kHzR19Constraints)
+				if err != nil {
+					return err
+				}
+				(*c.Scs60kHz_r19) = v
+			}
+			if cAParametersNRV1900TimelineRelaxCJTCDdEType2CJTPerBCR19Seq.IsComponentPresent(3) {
+				c.Scs120kHz_r19 = new(int64)
+				v, err := d.DecodeEnumerated(cAParametersNRV1900TimelineRelaxCJTCDdEType2CJTPerBCR19Scs120kHzR19Constraints)
+				if err != nil {
+					return err
+				}
+				(*c.Scs120kHz_r19) = v
+			}
+			if cAParametersNRV1900TimelineRelaxCJTCDdEType2CJTPerBCR19Seq.IsComponentPresent(4) {
+				c.Scs480kHz_r19 = new(int64)
+				v, err := d.DecodeEnumerated(cAParametersNRV1900TimelineRelaxCJTCDdEType2CJTPerBCR19Scs480kHzR19Constraints)
+				if err != nil {
+					return err
+				}
+				(*c.Scs480kHz_r19) = v
+			}
+			if cAParametersNRV1900TimelineRelaxCJTCDdEType2CJTPerBCR19Seq.IsComponentPresent(5) {
+				c.Scs960kHz_r19 = new(int64)
+				v, err := d.DecodeEnumerated(cAParametersNRV1900TimelineRelaxCJTCDdEType2CJTPerBCR19Scs960kHzR19Constraints)
+				if err != nil {
+					return err
+				}
+				(*c.Scs960kHz_r19) = v
+			}
+		}
+	}
+
+	// 36. nonCodebook-CSI-RS-SRS-PerBC-Enh-r19: sequence-of
+	{
+		if seq.IsComponentPresent(34) {
+			seqOf := d.NewSequenceOfDecoder(cAParametersNRV1900NonCodebookCSIRSSRSPerBCEnhR19Constraints)
+			n, err := seqOf.DecodeLength()
+			if err != nil {
+				return err
+			}
+			ie.NonCodebook_CSI_RS_SRS_PerBC_Enh_r19 = make([]int64, n)
+			for i := int64(0); i < n; i++ {
+				v, err := d.DecodeInteger(per.Constrained(0, common.MaxNrofCSI_RS_ResourcesAlt_1_r16))
+				if err != nil {
+					return err
+				}
+				ie.NonCodebook_CSI_RS_SRS_PerBC_Enh_r19[i] = v
+			}
+		}
+	}
+
+	// 37. intraFreqL1-MeasConfigPeriodicCSI-RS-r19: sequence
+	{
+		if seq.IsComponentPresent(35) {
+			ie.IntraFreqL1_MeasConfigPeriodicCSI_RS_r19 = &struct {
+				SupportedMaxIntraFreqCellsConfig_r19                int64
+				SupportedMaxIntraFreqCellsPerReport_r19             int64
+				SupportedMaxReportBeamsPerReportedCell_r19          int64
+				SupportedMaxReportBeamsReports_r19                  int64
+				SupportedMaxAperiodic_LTM_CSI_ReportConfig_r19      int64
+				SupportedMaxPeriodic_LTM_CSI_ReportConfig_r19       int64
+				SupportedMaxSemiPersistent_LTM_CSI_ReportConfig_r19 int64
+			}{}
+			c := ie.IntraFreqL1_MeasConfigPeriodicCSI_RS_r19
+			{
+				v, err := d.DecodeInteger(per.Constrained(1, 8))
+				if err != nil {
+					return err
+				}
+				c.SupportedMaxIntraFreqCellsConfig_r19 = v
+			}
+			{
+				v, err := d.DecodeInteger(per.Constrained(1, 4))
+				if err != nil {
+					return err
+				}
+				c.SupportedMaxIntraFreqCellsPerReport_r19 = v
+			}
+			{
+				v, err := d.DecodeInteger(per.Constrained(1, 4))
+				if err != nil {
+					return err
+				}
+				c.SupportedMaxReportBeamsPerReportedCell_r19 = v
+			}
+			{
+				v, err := d.DecodeEnumerated(cAParametersNRV1900IntraFreqL1MeasConfigPeriodicCSIRSR19SupportedMaxReportBeamsReportsR19Constraints)
+				if err != nil {
+					return err
+				}
+				c.SupportedMaxReportBeamsReports_r19 = v
+			}
+			{
+				v, err := d.DecodeInteger(per.Constrained(0, 4))
+				if err != nil {
+					return err
+				}
+				c.SupportedMaxAperiodic_LTM_CSI_ReportConfig_r19 = v
+			}
+			{
+				v, err := d.DecodeInteger(per.Constrained(1, 4))
+				if err != nil {
+					return err
+				}
+				c.SupportedMaxPeriodic_LTM_CSI_ReportConfig_r19 = v
+			}
+			{
+				v, err := d.DecodeInteger(per.Constrained(0, 4))
+				if err != nil {
+					return err
+				}
+				c.SupportedMaxSemiPersistent_LTM_CSI_ReportConfig_r19 = v
+			}
+		}
+	}
+
+	// 38. interFreqL1-MeasConfigPeriodicCSI-RS-r19: sequence
+	{
+		if seq.IsComponentPresent(36) {
+			ie.InterFreqL1_MeasConfigPeriodicCSI_RS_r19 = &struct {
+				SupportedMaxInterFreqCellsConfig_r19                int64
+				SupportedMaxInterFreqCellsPerReport_r19             int64
+				SupportedMaxReportBeamsPerReportedCell_r19          int64
+				SupportedMaxReportBeamsReports_r19                  int64
+				SupportedMaxAperiodic_LTM_CSI_ReportConfig_r19      int64
+				SupportedMaxPeriodic_LTM_CSI_ReportConfig_r19       int64
+				SupportedMaxSemiPersistent_LTM_CSI_ReportConfig_r19 int64
+			}{}
+			c := ie.InterFreqL1_MeasConfigPeriodicCSI_RS_r19
+			{
+				v, err := d.DecodeInteger(per.Constrained(1, 8))
+				if err != nil {
+					return err
+				}
+				c.SupportedMaxInterFreqCellsConfig_r19 = v
+			}
+			{
+				v, err := d.DecodeInteger(per.Constrained(1, 4))
+				if err != nil {
+					return err
+				}
+				c.SupportedMaxInterFreqCellsPerReport_r19 = v
+			}
+			{
+				v, err := d.DecodeInteger(per.Constrained(1, 4))
+				if err != nil {
+					return err
+				}
+				c.SupportedMaxReportBeamsPerReportedCell_r19 = v
+			}
+			{
+				v, err := d.DecodeEnumerated(cAParametersNRV1900InterFreqL1MeasConfigPeriodicCSIRSR19SupportedMaxReportBeamsReportsR19Constraints)
+				if err != nil {
+					return err
+				}
+				c.SupportedMaxReportBeamsReports_r19 = v
+			}
+			{
+				v, err := d.DecodeInteger(per.Constrained(0, 4))
+				if err != nil {
+					return err
+				}
+				c.SupportedMaxAperiodic_LTM_CSI_ReportConfig_r19 = v
+			}
+			{
+				v, err := d.DecodeInteger(per.Constrained(1, 4))
+				if err != nil {
+					return err
+				}
+				c.SupportedMaxPeriodic_LTM_CSI_ReportConfig_r19 = v
+			}
+			{
+				v, err := d.DecodeInteger(per.Constrained(0, 4))
+				if err != nil {
+					return err
+				}
+				c.SupportedMaxSemiPersistent_LTM_CSI_ReportConfig_r19 = v
+			}
+		}
+	}
+
+	// 39. intraFreqL1-MeasConfigSP-CSI-RS-r19: sequence
+	{
+		if seq.IsComponentPresent(37) {
+			ie.IntraFreqL1_MeasConfigSP_CSI_RS_r19 = &struct {
+				SupportedMaxAperiodic_LTM_CSI_ReportConfig_r19      int64
+				SupportedMaxSemiPersistent_LTM_CSI_ReportConfig_r19 int64
+			}{}
+			c := ie.IntraFreqL1_MeasConfigSP_CSI_RS_r19
+			{
+				v, err := d.DecodeInteger(per.Constrained(0, 4))
+				if err != nil {
+					return err
+				}
+				c.SupportedMaxAperiodic_LTM_CSI_ReportConfig_r19 = v
+			}
+			{
+				v, err := d.DecodeInteger(per.Constrained(0, 4))
+				if err != nil {
+					return err
+				}
+				c.SupportedMaxSemiPersistent_LTM_CSI_ReportConfig_r19 = v
+			}
+		}
+	}
+
+	// 40. currentSpCellInclL1-ReportCSI-RS-r19: enumerated
+	{
+		if seq.IsComponentPresent(38) {
+			idx, err := d.DecodeEnumerated(cAParametersNRV1900CurrentSpCellInclL1ReportCSIRSR19Constraints)
+			if err != nil {
+				return err
+			}
+			ie.CurrentSpCellInclL1_ReportCSI_RS_r19 = &idx
+		}
+	}
+
+	// 41. simultaneousNZP-CSI-RS-r19: enumerated
+	{
+		if seq.IsComponentPresent(39) {
+			idx, err := d.DecodeEnumerated(cAParametersNRV1900SimultaneousNZPCSIRSR19Constraints)
+			if err != nil {
+				return err
+			}
+			ie.SimultaneousNZP_CSI_RS_r19 = &idx
+		}
+	}
+
+	// 42. interFreqL1-MeasConfigSP-CSI-RS-r19: sequence
+	{
+		if seq.IsComponentPresent(40) {
+			ie.InterFreqL1_MeasConfigSP_CSI_RS_r19 = &struct {
+				SupportedMaxAperiodic_LTM_CSI_ReportConfig_r19      int64
+				SupportedMaxSemiPersistent_LTM_CSI_ReportConfig_r19 int64
+			}{}
+			c := ie.InterFreqL1_MeasConfigSP_CSI_RS_r19
+			{
+				v, err := d.DecodeInteger(per.Constrained(0, 4))
+				if err != nil {
+					return err
+				}
+				c.SupportedMaxAperiodic_LTM_CSI_ReportConfig_r19 = v
+			}
+			{
+				v, err := d.DecodeInteger(per.Constrained(0, 4))
+				if err != nil {
+					return err
+				}
+				c.SupportedMaxSemiPersistent_LTM_CSI_ReportConfig_r19 = v
+			}
+		}
+	}
+
+	// 43. ltm-CSI-RS-CSI-IM-PeriodicCandidateIntraFreq-r19: sequence
+	{
+		if seq.IsComponentPresent(41) {
+			ie.Ltm_CSI_RS_CSI_IM_PeriodicCandidateIntraFreq_r19 = &struct {
+				MaxNumOfCandidateCells_r19             int64
+				MaxNumOfCSI_RS_ResourceAcrossCells_r19 int64
+				MaxNumOfCSI_RS_PortsPerCell_r19        int64
+				MaxNumOfNZP_CSI_RS_PortsPerCell_r19    int64
+				MaxNumOfCSI_IM_ResourceAcrossCells_r19 int64
+			}{}
+			c := ie.Ltm_CSI_RS_CSI_IM_PeriodicCandidateIntraFreq_r19
+			{
+				v, err := d.DecodeInteger(per.Constrained(1, 8))
+				if err != nil {
+					return err
+				}
+				c.MaxNumOfCandidateCells_r19 = v
+			}
+			{
+				v, err := d.DecodeInteger(per.Constrained(1, 64))
+				if err != nil {
+					return err
+				}
+				c.MaxNumOfCSI_RS_ResourceAcrossCells_r19 = v
+			}
+			{
+				v, err := d.DecodeEnumerated(cAParametersNRV1900LtmCSIRSCSIIMPeriodicCandidateIntraFreqR19MaxNumOfCSIRSPortsPerCellR19Constraints)
+				if err != nil {
+					return err
+				}
+				c.MaxNumOfCSI_RS_PortsPerCell_r19 = v
+			}
+			{
+				v, err := d.DecodeEnumerated(cAParametersNRV1900LtmCSIRSCSIIMPeriodicCandidateIntraFreqR19MaxNumOfNZPCSIRSPortsPerCellR19Constraints)
+				if err != nil {
+					return err
+				}
+				c.MaxNumOfNZP_CSI_RS_PortsPerCell_r19 = v
+			}
+			{
+				v, err := d.DecodeInteger(per.Constrained(1, 64))
+				if err != nil {
+					return err
+				}
+				c.MaxNumOfCSI_IM_ResourceAcrossCells_r19 = v
+			}
+		}
+	}
+
+	// 44. ltm-CSI-RS-CSI-IM-SP-CandidateIntraFreq-r19: sequence
+	{
+		if seq.IsComponentPresent(42) {
+			ie.Ltm_CSI_RS_CSI_IM_SP_CandidateIntraFreq_r19 = &struct {
+				MaxNumOfCandidateCells_r19             int64
+				MaxNumOfCSI_RS_ResourceAcrossCells_r19 int64
+				MaxNumOfCSI_RS_PortsPerCell_r19        int64
+				MaxNumOfNZP_CSI_RS_PortsPerCell_r19    int64
+				MaxNumOfCSI_IM_ResourceAcrossCells_r19 int64
+			}{}
+			c := ie.Ltm_CSI_RS_CSI_IM_SP_CandidateIntraFreq_r19
+			{
+				v, err := d.DecodeInteger(per.Constrained(1, 8))
+				if err != nil {
+					return err
+				}
+				c.MaxNumOfCandidateCells_r19 = v
+			}
+			{
+				v, err := d.DecodeInteger(per.Constrained(1, 64))
+				if err != nil {
+					return err
+				}
+				c.MaxNumOfCSI_RS_ResourceAcrossCells_r19 = v
+			}
+			{
+				v, err := d.DecodeEnumerated(cAParametersNRV1900LtmCSIRSCSIIMSPCandidateIntraFreqR19MaxNumOfCSIRSPortsPerCellR19Constraints)
+				if err != nil {
+					return err
+				}
+				c.MaxNumOfCSI_RS_PortsPerCell_r19 = v
+			}
+			{
+				v, err := d.DecodeEnumerated(cAParametersNRV1900LtmCSIRSCSIIMSPCandidateIntraFreqR19MaxNumOfNZPCSIRSPortsPerCellR19Constraints)
+				if err != nil {
+					return err
+				}
+				c.MaxNumOfNZP_CSI_RS_PortsPerCell_r19 = v
+			}
+			{
+				v, err := d.DecodeInteger(per.Constrained(1, 64))
+				if err != nil {
+					return err
+				}
+				c.MaxNumOfCSI_IM_ResourceAcrossCells_r19 = v
+			}
+		}
+	}
+
+	// 45. ltm-CSI-RS-CSI-IM-PeriodicCandidateInterFreq-r19: sequence
+	{
+		if seq.IsComponentPresent(43) {
+			ie.Ltm_CSI_RS_CSI_IM_PeriodicCandidateInterFreq_r19 = &struct {
+				MaxNumOfCandidateCells_r19             int64
+				MaxNumOfCSI_RS_ResourceAcrossCells_r19 int64
+				MaxNumOfCSI_RS_PortsPerCell_r19        int64
+				MaxNumOfNZP_CSI_RS_PortsPerCell_r19    int64
+				MaxNumOfCSI_IM_ResourceAcrossCells_r19 int64
+			}{}
+			c := ie.Ltm_CSI_RS_CSI_IM_PeriodicCandidateInterFreq_r19
+			{
+				v, err := d.DecodeInteger(per.Constrained(1, 8))
+				if err != nil {
+					return err
+				}
+				c.MaxNumOfCandidateCells_r19 = v
+			}
+			{
+				v, err := d.DecodeInteger(per.Constrained(1, 64))
+				if err != nil {
+					return err
+				}
+				c.MaxNumOfCSI_RS_ResourceAcrossCells_r19 = v
+			}
+			{
+				v, err := d.DecodeEnumerated(cAParametersNRV1900LtmCSIRSCSIIMPeriodicCandidateInterFreqR19MaxNumOfCSIRSPortsPerCellR19Constraints)
+				if err != nil {
+					return err
+				}
+				c.MaxNumOfCSI_RS_PortsPerCell_r19 = v
+			}
+			{
+				v, err := d.DecodeEnumerated(cAParametersNRV1900LtmCSIRSCSIIMPeriodicCandidateInterFreqR19MaxNumOfNZPCSIRSPortsPerCellR19Constraints)
+				if err != nil {
+					return err
+				}
+				c.MaxNumOfNZP_CSI_RS_PortsPerCell_r19 = v
+			}
+			{
+				v, err := d.DecodeInteger(per.Constrained(1, 64))
+				if err != nil {
+					return err
+				}
+				c.MaxNumOfCSI_IM_ResourceAcrossCells_r19 = v
+			}
+		}
+	}
+
+	// 46. ltm-CSI-RS-CSI-IM-SP-CandidateInterFreq-r19: sequence
+	{
+		if seq.IsComponentPresent(44) {
+			ie.Ltm_CSI_RS_CSI_IM_SP_CandidateInterFreq_r19 = &struct {
+				MaxNumOfCandidateCells_r19             int64
+				MaxNumOfCSI_RS_ResourceAcrossCells_r19 int64
+				MaxNumOfCSI_RS_PortsPerCell_r19        int64
+				MaxNumOfNZP_CSI_RS_PortsPerCell_r19    int64
+				MaxNumOfCSI_IM_ResourceAcrossCells_r19 int64
+			}{}
+			c := ie.Ltm_CSI_RS_CSI_IM_SP_CandidateInterFreq_r19
+			{
+				v, err := d.DecodeInteger(per.Constrained(1, 8))
+				if err != nil {
+					return err
+				}
+				c.MaxNumOfCandidateCells_r19 = v
+			}
+			{
+				v, err := d.DecodeInteger(per.Constrained(1, 64))
+				if err != nil {
+					return err
+				}
+				c.MaxNumOfCSI_RS_ResourceAcrossCells_r19 = v
+			}
+			{
+				v, err := d.DecodeEnumerated(cAParametersNRV1900LtmCSIRSCSIIMSPCandidateInterFreqR19MaxNumOfCSIRSPortsPerCellR19Constraints)
+				if err != nil {
+					return err
+				}
+				c.MaxNumOfCSI_RS_PortsPerCell_r19 = v
+			}
+			{
+				v, err := d.DecodeEnumerated(cAParametersNRV1900LtmCSIRSCSIIMSPCandidateInterFreqR19MaxNumOfNZPCSIRSPortsPerCellR19Constraints)
+				if err != nil {
+					return err
+				}
+				c.MaxNumOfNZP_CSI_RS_PortsPerCell_r19 = v
+			}
+			{
+				v, err := d.DecodeInteger(per.Constrained(1, 64))
+				if err != nil {
+					return err
+				}
+				c.MaxNumOfCSI_IM_ResourceAcrossCells_r19 = v
+			}
+		}
+	}
+
+	// 47. simultaneousNZP-CSI-RS-NES-r19: enumerated
+	{
+		if seq.IsComponentPresent(45) {
+			idx, err := d.DecodeEnumerated(cAParametersNRV1900SimultaneousNZPCSIRSNESR19Constraints)
+			if err != nil {
+				return err
+			}
+			ie.SimultaneousNZP_CSI_RS_NES_r19 = &idx
+		}
+	}
+
+	// 48. multiCell-PDSCH-DCI-1-3-DiffSCS-DiffCC-r19: sequence
+	{
+		if seq.IsComponentPresent(46) {
+			ie.MultiCell_PDSCH_DCI_1_3_DiffSCS_DiffCC_r19 = &struct {
+				CombinationCarrierTypeSCS_r19            []CombinationCarrierTypeSCS_r19
+				MaxNumberCoScheduledCell_r19             int64
+				MaxNumberSetsOfCellAcrossPUCCH_Group_r19 int64
+				MaxNumberSetsOfCellScheduling_r19        int64
+				HarqFeedbackType_r19                     int64
+				CoScheduledCellIndicationScheme_r19      int64
+				SupportOfSearchSpace_r19                 *int64
+				ThreeSetsCombination_r19                 []CombinationCarrierTypeSCS_ThreeSets_r19
+			}{}
+			c := ie.MultiCell_PDSCH_DCI_1_3_DiffSCS_DiffCC_r19
+			cAParametersNRV1900MultiCellPDSCHDCI13DiffSCSDiffCCR19Seq := d.NewSequenceDecoder(cAParametersNRV1900MultiCellPDSCHDCI13DiffSCSDiffCCR19Constraints)
+			if err := cAParametersNRV1900MultiCellPDSCHDCI13DiffSCSDiffCCR19Seq.DecodePreamble(); err != nil {
+				return err
+			}
+			{
+				seqOf := d.NewSequenceOfDecoder(cAParametersNRV1900MultiCellPDSCHDCI13DiffSCSDiffCCR19CombinationCarrierTypeSCSR19Constraints)
+				n, err := seqOf.DecodeLength()
+				if err != nil {
+					return err
+				}
+				c.CombinationCarrierTypeSCS_r19 = make([]CombinationCarrierTypeSCS_r19, n)
+				for i := int64(0); i < n; i++ {
+					if err := c.CombinationCarrierTypeSCS_r19[i].Decode(d); err != nil {
+						return err
+					}
+				}
+			}
+			{
+				v, err := d.DecodeInteger(per.Constrained(2, 4))
+				if err != nil {
+					return err
+				}
+				c.MaxNumberCoScheduledCell_r19 = v
+			}
+			{
+				v, err := d.DecodeInteger(per.Constrained(1, 8))
+				if err != nil {
+					return err
+				}
+				c.MaxNumberSetsOfCellAcrossPUCCH_Group_r19 = v
+			}
+			{
+				v, err := d.DecodeInteger(per.Constrained(1, 4))
+				if err != nil {
+					return err
+				}
+				c.MaxNumberSetsOfCellScheduling_r19 = v
+			}
+			{
+				v, err := d.DecodeEnumerated(cAParametersNRV1900MultiCellPDSCHDCI13DiffSCSDiffCCR19HarqFeedbackTypeR19Constraints)
+				if err != nil {
+					return err
+				}
+				c.HarqFeedbackType_r19 = v
+			}
+			{
+				v, err := d.DecodeEnumerated(cAParametersNRV1900MultiCellPDSCHDCI13DiffSCSDiffCCR19CoScheduledCellIndicationSchemeR19Constraints)
+				if err != nil {
+					return err
+				}
+				c.CoScheduledCellIndicationScheme_r19 = v
+			}
+			if cAParametersNRV1900MultiCellPDSCHDCI13DiffSCSDiffCCR19Seq.IsComponentPresent(6) {
+				c.SupportOfSearchSpace_r19 = new(int64)
+				v, err := d.DecodeEnumerated(cAParametersNRV1900MultiCellPDSCHDCI13DiffSCSDiffCCR19SupportOfSearchSpaceR19Constraints)
+				if err != nil {
+					return err
+				}
+				(*c.SupportOfSearchSpace_r19) = v
+			}
+			if cAParametersNRV1900MultiCellPDSCHDCI13DiffSCSDiffCCR19Seq.IsComponentPresent(7) {
+				seqOf := d.NewSequenceOfDecoder(cAParametersNRV1900MultiCellPDSCHDCI13DiffSCSDiffCCR19ThreeSetsCombinationR19Constraints)
+				n, err := seqOf.DecodeLength()
+				if err != nil {
+					return err
+				}
+				c.ThreeSetsCombination_r19 = make([]CombinationCarrierTypeSCS_ThreeSets_r19, n)
+				for i := int64(0); i < n; i++ {
+					if err := c.ThreeSetsCombination_r19[i].Decode(d); err != nil {
+						return err
+					}
+				}
+			}
+		}
+	}
+
+	// 49. multiCell-PUSCH-DCI-0-3-DiffSCS-DiffCC-r19: sequence
+	{
+		if seq.IsComponentPresent(47) {
+			ie.MultiCell_PUSCH_DCI_0_3_DiffSCS_DiffCC_r19 = &struct {
+				CombinationCarrierTypeSCS_r19            []CombinationCarrierTypeSCS_r19
+				MaxNumberCoScheduledCell_r19             int64
+				MaxNumberSetsOfCellAcrossPUCCH_Group_r19 int64
+				MaxNumberSetsOfCellScheduling_r19        int64
+				CoScheduledCellIndicationScheme_r19      int64
+				SupportOfSearchSpace_r19                 *int64
+				ThreeSetsCombination_r19                 []CombinationCarrierTypeSCS_ThreeSets_r19
+			}{}
+			c := ie.MultiCell_PUSCH_DCI_0_3_DiffSCS_DiffCC_r19
+			cAParametersNRV1900MultiCellPUSCHDCI03DiffSCSDiffCCR19Seq := d.NewSequenceDecoder(cAParametersNRV1900MultiCellPUSCHDCI03DiffSCSDiffCCR19Constraints)
+			if err := cAParametersNRV1900MultiCellPUSCHDCI03DiffSCSDiffCCR19Seq.DecodePreamble(); err != nil {
+				return err
+			}
+			{
+				seqOf := d.NewSequenceOfDecoder(cAParametersNRV1900MultiCellPUSCHDCI03DiffSCSDiffCCR19CombinationCarrierTypeSCSR19Constraints)
+				n, err := seqOf.DecodeLength()
+				if err != nil {
+					return err
+				}
+				c.CombinationCarrierTypeSCS_r19 = make([]CombinationCarrierTypeSCS_r19, n)
+				for i := int64(0); i < n; i++ {
+					if err := c.CombinationCarrierTypeSCS_r19[i].Decode(d); err != nil {
+						return err
+					}
+				}
+			}
+			{
+				v, err := d.DecodeInteger(per.Constrained(2, 4))
+				if err != nil {
+					return err
+				}
+				c.MaxNumberCoScheduledCell_r19 = v
+			}
+			{
+				v, err := d.DecodeInteger(per.Constrained(1, 8))
+				if err != nil {
+					return err
+				}
+				c.MaxNumberSetsOfCellAcrossPUCCH_Group_r19 = v
+			}
+			{
+				v, err := d.DecodeInteger(per.Constrained(1, 4))
+				if err != nil {
+					return err
+				}
+				c.MaxNumberSetsOfCellScheduling_r19 = v
+			}
+			{
+				v, err := d.DecodeEnumerated(cAParametersNRV1900MultiCellPUSCHDCI03DiffSCSDiffCCR19CoScheduledCellIndicationSchemeR19Constraints)
+				if err != nil {
+					return err
+				}
+				c.CoScheduledCellIndicationScheme_r19 = v
+			}
+			if cAParametersNRV1900MultiCellPUSCHDCI03DiffSCSDiffCCR19Seq.IsComponentPresent(5) {
+				c.SupportOfSearchSpace_r19 = new(int64)
+				v, err := d.DecodeEnumerated(cAParametersNRV1900MultiCellPUSCHDCI03DiffSCSDiffCCR19SupportOfSearchSpaceR19Constraints)
+				if err != nil {
+					return err
+				}
+				(*c.SupportOfSearchSpace_r19) = v
+			}
+			if cAParametersNRV1900MultiCellPUSCHDCI03DiffSCSDiffCCR19Seq.IsComponentPresent(6) {
+				seqOf := d.NewSequenceOfDecoder(cAParametersNRV1900MultiCellPUSCHDCI03DiffSCSDiffCCR19ThreeSetsCombinationR19Constraints)
+				n, err := seqOf.DecodeLength()
+				if err != nil {
+					return err
+				}
+				c.ThreeSetsCombination_r19 = make([]CombinationCarrierTypeSCS_ThreeSets_r19, n)
+				for i := int64(0); i < n; i++ {
+					if err := c.ThreeSetsCombination_r19[i].Decode(d); err != nil {
+						return err
+					}
+				}
+			}
+		}
+	}
+
+	// 50. multiCellMultiPDSCH-DCI-1-3-r19: enumerated
+	{
+		if seq.IsComponentPresent(48) {
+			idx, err := d.DecodeEnumerated(cAParametersNRV1900MultiCellMultiPDSCHDCI13R19Constraints)
+			if err != nil {
+				return err
+			}
+			ie.MultiCellMultiPDSCH_DCI_1_3_r19 = &idx
+		}
+	}
+
+	// 51. multiCellMultiPUSCH-DCI-0-3-r19: enumerated
+	{
+		if seq.IsComponentPresent(49) {
+			idx, err := d.DecodeEnumerated(cAParametersNRV1900MultiCellMultiPUSCHDCI03R19Constraints)
+			if err != nil {
+				return err
+			}
+			ie.MultiCellMultiPUSCH_DCI_0_3_r19 = &idx
+		}
+	}
+
+	// 52. advUnicastDCI-DL-DiffSCS-DiffCC-r19: sequence
+	{
+		if seq.IsComponentPresent(50) {
+			ie.AdvUnicastDCI_DL_DiffSCS_DiffCC_r19 = &struct {
+				UnicastDCI_Formats_r19 struct {
+					Scs_15kHz_120kHz_r19 *int64
+					Scs_15kHz_60kHz_r19  *int64
+					Scs_30kHz_120kHz_r19 *int64
+					Scs_15kHz_30kHz_r19  *int64
+					Scs_30kHz_60kHz_r19  *int64
+					Scs_30kHz_30kHz_r19  *int64
+				}
+				NumDCI_1_3_r19 struct {
+					Scs_15kHz_120kHz_r19 *int64
+					Scs_15kHz_60kHz_r19  *int64
+					Scs_30kHz_120kHz_r19 *int64
+					Scs_15kHz_30kHz_r19  *int64
+					Scs_30kHz_60kHz_r19  *int64
+					Scs_30kHz_30kHz_r19  *int64
+				}
+			}{}
+			c := ie.AdvUnicastDCI_DL_DiffSCS_DiffCC_r19
+			{
+				c := &c.UnicastDCI_Formats_r19
+				cAParametersNRV1900AdvUnicastDCIDLDiffSCSDiffCCR19UnicastDCIFormatsR19Seq := d.NewSequenceDecoder(cAParametersNRV1900AdvUnicastDCIDLDiffSCSDiffCCR19UnicastDCIFormatsR19Constraints)
+				if err := cAParametersNRV1900AdvUnicastDCIDLDiffSCSDiffCCR19UnicastDCIFormatsR19Seq.DecodePreamble(); err != nil {
+					return err
+				}
+				if cAParametersNRV1900AdvUnicastDCIDLDiffSCSDiffCCR19UnicastDCIFormatsR19Seq.IsComponentPresent(0) {
+					c.Scs_15kHz_120kHz_r19 = new(int64)
+					v, err := d.DecodeEnumerated(cAParametersNRV1900AdvUnicastDCIDLDiffSCSDiffCCR19UnicastDCIFormatsR19Scs15kHz120kHzR19Constraints)
+					if err != nil {
+						return err
+					}
+					(*c.Scs_15kHz_120kHz_r19) = v
+				}
+				if cAParametersNRV1900AdvUnicastDCIDLDiffSCSDiffCCR19UnicastDCIFormatsR19Seq.IsComponentPresent(1) {
+					c.Scs_15kHz_60kHz_r19 = new(int64)
+					v, err := d.DecodeEnumerated(cAParametersNRV1900AdvUnicastDCIDLDiffSCSDiffCCR19UnicastDCIFormatsR19Scs15kHz60kHzR19Constraints)
+					if err != nil {
+						return err
+					}
+					(*c.Scs_15kHz_60kHz_r19) = v
+				}
+				if cAParametersNRV1900AdvUnicastDCIDLDiffSCSDiffCCR19UnicastDCIFormatsR19Seq.IsComponentPresent(2) {
+					c.Scs_30kHz_120kHz_r19 = new(int64)
+					v, err := d.DecodeEnumerated(cAParametersNRV1900AdvUnicastDCIDLDiffSCSDiffCCR19UnicastDCIFormatsR19Scs30kHz120kHzR19Constraints)
+					if err != nil {
+						return err
+					}
+					(*c.Scs_30kHz_120kHz_r19) = v
+				}
+				if cAParametersNRV1900AdvUnicastDCIDLDiffSCSDiffCCR19UnicastDCIFormatsR19Seq.IsComponentPresent(3) {
+					c.Scs_15kHz_30kHz_r19 = new(int64)
+					v, err := d.DecodeEnumerated(cAParametersNRV1900AdvUnicastDCIDLDiffSCSDiffCCR19UnicastDCIFormatsR19Scs15kHz30kHzR19Constraints)
+					if err != nil {
+						return err
+					}
+					(*c.Scs_15kHz_30kHz_r19) = v
+				}
+				if cAParametersNRV1900AdvUnicastDCIDLDiffSCSDiffCCR19UnicastDCIFormatsR19Seq.IsComponentPresent(4) {
+					c.Scs_30kHz_60kHz_r19 = new(int64)
+					v, err := d.DecodeEnumerated(cAParametersNRV1900AdvUnicastDCIDLDiffSCSDiffCCR19UnicastDCIFormatsR19Scs30kHz60kHzR19Constraints)
+					if err != nil {
+						return err
+					}
+					(*c.Scs_30kHz_60kHz_r19) = v
+				}
+				if cAParametersNRV1900AdvUnicastDCIDLDiffSCSDiffCCR19UnicastDCIFormatsR19Seq.IsComponentPresent(5) {
+					c.Scs_30kHz_30kHz_r19 = new(int64)
+					v, err := d.DecodeEnumerated(cAParametersNRV1900AdvUnicastDCIDLDiffSCSDiffCCR19UnicastDCIFormatsR19Scs30kHz30kHzR19Constraints)
+					if err != nil {
+						return err
+					}
+					(*c.Scs_30kHz_30kHz_r19) = v
+				}
+			}
+			{
+				c := &c.NumDCI_1_3_r19
+				cAParametersNRV1900AdvUnicastDCIDLDiffSCSDiffCCR19NumDCI13R19Seq := d.NewSequenceDecoder(cAParametersNRV1900AdvUnicastDCIDLDiffSCSDiffCCR19NumDCI13R19Constraints)
+				if err := cAParametersNRV1900AdvUnicastDCIDLDiffSCSDiffCCR19NumDCI13R19Seq.DecodePreamble(); err != nil {
+					return err
+				}
+				if cAParametersNRV1900AdvUnicastDCIDLDiffSCSDiffCCR19NumDCI13R19Seq.IsComponentPresent(0) {
+					c.Scs_15kHz_120kHz_r19 = new(int64)
+					v, err := d.DecodeEnumerated(cAParametersNRV1900AdvUnicastDCIDLDiffSCSDiffCCR19NumDCI13R19Scs15kHz120kHzR19Constraints)
+					if err != nil {
+						return err
+					}
+					(*c.Scs_15kHz_120kHz_r19) = v
+				}
+				if cAParametersNRV1900AdvUnicastDCIDLDiffSCSDiffCCR19NumDCI13R19Seq.IsComponentPresent(1) {
+					c.Scs_15kHz_60kHz_r19 = new(int64)
+					v, err := d.DecodeEnumerated(cAParametersNRV1900AdvUnicastDCIDLDiffSCSDiffCCR19NumDCI13R19Scs15kHz60kHzR19Constraints)
+					if err != nil {
+						return err
+					}
+					(*c.Scs_15kHz_60kHz_r19) = v
+				}
+				if cAParametersNRV1900AdvUnicastDCIDLDiffSCSDiffCCR19NumDCI13R19Seq.IsComponentPresent(2) {
+					c.Scs_30kHz_120kHz_r19 = new(int64)
+					v, err := d.DecodeEnumerated(cAParametersNRV1900AdvUnicastDCIDLDiffSCSDiffCCR19NumDCI13R19Scs30kHz120kHzR19Constraints)
+					if err != nil {
+						return err
+					}
+					(*c.Scs_30kHz_120kHz_r19) = v
+				}
+				if cAParametersNRV1900AdvUnicastDCIDLDiffSCSDiffCCR19NumDCI13R19Seq.IsComponentPresent(3) {
+					c.Scs_15kHz_30kHz_r19 = new(int64)
+					v, err := d.DecodeEnumerated(cAParametersNRV1900AdvUnicastDCIDLDiffSCSDiffCCR19NumDCI13R19Scs15kHz30kHzR19Constraints)
+					if err != nil {
+						return err
+					}
+					(*c.Scs_15kHz_30kHz_r19) = v
+				}
+				if cAParametersNRV1900AdvUnicastDCIDLDiffSCSDiffCCR19NumDCI13R19Seq.IsComponentPresent(4) {
+					c.Scs_30kHz_60kHz_r19 = new(int64)
+					v, err := d.DecodeEnumerated(cAParametersNRV1900AdvUnicastDCIDLDiffSCSDiffCCR19NumDCI13R19Scs30kHz60kHzR19Constraints)
+					if err != nil {
+						return err
+					}
+					(*c.Scs_30kHz_60kHz_r19) = v
+				}
+				if cAParametersNRV1900AdvUnicastDCIDLDiffSCSDiffCCR19NumDCI13R19Seq.IsComponentPresent(5) {
+					c.Scs_30kHz_30kHz_r19 = new(int64)
+					v, err := d.DecodeEnumerated(cAParametersNRV1900AdvUnicastDCIDLDiffSCSDiffCCR19NumDCI13R19Scs30kHz30kHzR19Constraints)
+					if err != nil {
+						return err
+					}
+					(*c.Scs_30kHz_30kHz_r19) = v
+				}
+			}
+		}
+	}
+
+	// 53. advUnicastDCI-UL-DiffSCS-DiffCC-r19: sequence
+	{
+		if seq.IsComponentPresent(51) {
+			ie.AdvUnicastDCI_UL_DiffSCS_DiffCC_r19 = &struct {
+				UnicastDCI_Formats_r19 struct {
+					Scs_15kHz_120kHz_r19 *int64
+					Scs_15kHz_60kHz_r19  *int64
+					Scs_30kHz_120kHz_r19 *int64
+					Scs_15kHz_30kHz_r19  *int64
+					Scs_30kHz_60kHz_r19  *int64
+					Scs_30kHz_30kHz_r19  *int64
+				}
+				NumDCI_0_3_r19 struct {
+					Scs_15kHz_120kHz_r19 *int64
+					Scs_15kHz_60kHz_r19  *int64
+					Scs_30kHz_120kHz_r19 *int64
+					Scs_15kHz_30kHz_r19  *int64
+					Scs_30kHz_60kHz_r19  *int64
+					Scs_30kHz_30kHz_r19  *int64
+				}
+			}{}
+			c := ie.AdvUnicastDCI_UL_DiffSCS_DiffCC_r19
+			{
+				c := &c.UnicastDCI_Formats_r19
+				cAParametersNRV1900AdvUnicastDCIULDiffSCSDiffCCR19UnicastDCIFormatsR19Seq := d.NewSequenceDecoder(cAParametersNRV1900AdvUnicastDCIULDiffSCSDiffCCR19UnicastDCIFormatsR19Constraints)
+				if err := cAParametersNRV1900AdvUnicastDCIULDiffSCSDiffCCR19UnicastDCIFormatsR19Seq.DecodePreamble(); err != nil {
+					return err
+				}
+				if cAParametersNRV1900AdvUnicastDCIULDiffSCSDiffCCR19UnicastDCIFormatsR19Seq.IsComponentPresent(0) {
+					c.Scs_15kHz_120kHz_r19 = new(int64)
+					v, err := d.DecodeEnumerated(cAParametersNRV1900AdvUnicastDCIULDiffSCSDiffCCR19UnicastDCIFormatsR19Scs15kHz120kHzR19Constraints)
+					if err != nil {
+						return err
+					}
+					(*c.Scs_15kHz_120kHz_r19) = v
+				}
+				if cAParametersNRV1900AdvUnicastDCIULDiffSCSDiffCCR19UnicastDCIFormatsR19Seq.IsComponentPresent(1) {
+					c.Scs_15kHz_60kHz_r19 = new(int64)
+					v, err := d.DecodeEnumerated(cAParametersNRV1900AdvUnicastDCIULDiffSCSDiffCCR19UnicastDCIFormatsR19Scs15kHz60kHzR19Constraints)
+					if err != nil {
+						return err
+					}
+					(*c.Scs_15kHz_60kHz_r19) = v
+				}
+				if cAParametersNRV1900AdvUnicastDCIULDiffSCSDiffCCR19UnicastDCIFormatsR19Seq.IsComponentPresent(2) {
+					c.Scs_30kHz_120kHz_r19 = new(int64)
+					v, err := d.DecodeEnumerated(cAParametersNRV1900AdvUnicastDCIULDiffSCSDiffCCR19UnicastDCIFormatsR19Scs30kHz120kHzR19Constraints)
+					if err != nil {
+						return err
+					}
+					(*c.Scs_30kHz_120kHz_r19) = v
+				}
+				if cAParametersNRV1900AdvUnicastDCIULDiffSCSDiffCCR19UnicastDCIFormatsR19Seq.IsComponentPresent(3) {
+					c.Scs_15kHz_30kHz_r19 = new(int64)
+					v, err := d.DecodeEnumerated(cAParametersNRV1900AdvUnicastDCIULDiffSCSDiffCCR19UnicastDCIFormatsR19Scs15kHz30kHzR19Constraints)
+					if err != nil {
+						return err
+					}
+					(*c.Scs_15kHz_30kHz_r19) = v
+				}
+				if cAParametersNRV1900AdvUnicastDCIULDiffSCSDiffCCR19UnicastDCIFormatsR19Seq.IsComponentPresent(4) {
+					c.Scs_30kHz_60kHz_r19 = new(int64)
+					v, err := d.DecodeEnumerated(cAParametersNRV1900AdvUnicastDCIULDiffSCSDiffCCR19UnicastDCIFormatsR19Scs30kHz60kHzR19Constraints)
+					if err != nil {
+						return err
+					}
+					(*c.Scs_30kHz_60kHz_r19) = v
+				}
+				if cAParametersNRV1900AdvUnicastDCIULDiffSCSDiffCCR19UnicastDCIFormatsR19Seq.IsComponentPresent(5) {
+					c.Scs_30kHz_30kHz_r19 = new(int64)
+					v, err := d.DecodeEnumerated(cAParametersNRV1900AdvUnicastDCIULDiffSCSDiffCCR19UnicastDCIFormatsR19Scs30kHz30kHzR19Constraints)
+					if err != nil {
+						return err
+					}
+					(*c.Scs_30kHz_30kHz_r19) = v
+				}
+			}
+			{
+				c := &c.NumDCI_0_3_r19
+				cAParametersNRV1900AdvUnicastDCIULDiffSCSDiffCCR19NumDCI03R19Seq := d.NewSequenceDecoder(cAParametersNRV1900AdvUnicastDCIULDiffSCSDiffCCR19NumDCI03R19Constraints)
+				if err := cAParametersNRV1900AdvUnicastDCIULDiffSCSDiffCCR19NumDCI03R19Seq.DecodePreamble(); err != nil {
+					return err
+				}
+				if cAParametersNRV1900AdvUnicastDCIULDiffSCSDiffCCR19NumDCI03R19Seq.IsComponentPresent(0) {
+					c.Scs_15kHz_120kHz_r19 = new(int64)
+					v, err := d.DecodeEnumerated(cAParametersNRV1900AdvUnicastDCIULDiffSCSDiffCCR19NumDCI03R19Scs15kHz120kHzR19Constraints)
+					if err != nil {
+						return err
+					}
+					(*c.Scs_15kHz_120kHz_r19) = v
+				}
+				if cAParametersNRV1900AdvUnicastDCIULDiffSCSDiffCCR19NumDCI03R19Seq.IsComponentPresent(1) {
+					c.Scs_15kHz_60kHz_r19 = new(int64)
+					v, err := d.DecodeEnumerated(cAParametersNRV1900AdvUnicastDCIULDiffSCSDiffCCR19NumDCI03R19Scs15kHz60kHzR19Constraints)
+					if err != nil {
+						return err
+					}
+					(*c.Scs_15kHz_60kHz_r19) = v
+				}
+				if cAParametersNRV1900AdvUnicastDCIULDiffSCSDiffCCR19NumDCI03R19Seq.IsComponentPresent(2) {
+					c.Scs_30kHz_120kHz_r19 = new(int64)
+					v, err := d.DecodeEnumerated(cAParametersNRV1900AdvUnicastDCIULDiffSCSDiffCCR19NumDCI03R19Scs30kHz120kHzR19Constraints)
+					if err != nil {
+						return err
+					}
+					(*c.Scs_30kHz_120kHz_r19) = v
+				}
+				if cAParametersNRV1900AdvUnicastDCIULDiffSCSDiffCCR19NumDCI03R19Seq.IsComponentPresent(3) {
+					c.Scs_15kHz_30kHz_r19 = new(int64)
+					v, err := d.DecodeEnumerated(cAParametersNRV1900AdvUnicastDCIULDiffSCSDiffCCR19NumDCI03R19Scs15kHz30kHzR19Constraints)
+					if err != nil {
+						return err
+					}
+					(*c.Scs_15kHz_30kHz_r19) = v
+				}
+				if cAParametersNRV1900AdvUnicastDCIULDiffSCSDiffCCR19NumDCI03R19Seq.IsComponentPresent(4) {
+					c.Scs_30kHz_60kHz_r19 = new(int64)
+					v, err := d.DecodeEnumerated(cAParametersNRV1900AdvUnicastDCIULDiffSCSDiffCCR19NumDCI03R19Scs30kHz60kHzR19Constraints)
+					if err != nil {
+						return err
+					}
+					(*c.Scs_30kHz_60kHz_r19) = v
+				}
+				if cAParametersNRV1900AdvUnicastDCIULDiffSCSDiffCCR19NumDCI03R19Seq.IsComponentPresent(5) {
+					c.Scs_30kHz_30kHz_r19 = new(int64)
+					v, err := d.DecodeEnumerated(cAParametersNRV1900AdvUnicastDCIULDiffSCSDiffCCR19NumDCI03R19Scs30kHz30kHzR19Constraints)
+					if err != nil {
+						return err
+					}
+					(*c.Scs_30kHz_30kHz_r19) = v
+				}
+			}
+		}
+	}
+
+	// 54. type3HARQ-CB-DCI-1-3-Diff-r19: enumerated
+	{
+		if seq.IsComponentPresent(52) {
+			idx, err := d.DecodeEnumerated(cAParametersNRV1900Type3HARQCBDCI13DiffR19Constraints)
+			if err != nil {
+				return err
+			}
+			ie.Type3HARQ_CB_DCI_1_3_Diff_r19 = &idx
+		}
+	}
+
+	// 55. type3EnhHARQ-CB-DCI-1-3-Diff-r19: enumerated
+	{
+		if seq.IsComponentPresent(53) {
+			idx, err := d.DecodeEnumerated(cAParametersNRV1900Type3EnhHARQCBDCI13DiffR19Constraints)
+			if err != nil {
+				return err
+			}
+			ie.Type3EnhHARQ_CB_DCI_1_3_Diff_r19 = &idx
+		}
+	}
+
+	// 56. scellDormancyWithinActiveTime-DCI-0-3-And-1-3-Diff-r19: enumerated
+	{
+		if seq.IsComponentPresent(54) {
+			idx, err := d.DecodeEnumerated(cAParametersNRV1900ScellDormancyWithinActiveTimeDCI03And13DiffR19Constraints)
+			if err != nil {
+				return err
+			}
+			ie.ScellDormancyWithinActiveTime_DCI_0_3_And_1_3_Diff_r19 = &idx
+		}
+	}
+
+	// 57. qcl-MultiCellDCI-1-3-Diff-r19: enumerated
+	{
+		if seq.IsComponentPresent(55) {
+			idx, err := d.DecodeEnumerated(cAParametersNRV1900QclMultiCellDCI13DiffR19Constraints)
+			if err != nil {
+				return err
+			}
+			ie.Qcl_MultiCellDCI_1_3_Diff_r19 = &idx
+		}
+	}
+
+	// 58. bwp-SwitchingDCI-0-3-And-1-3-Diff-r19: enumerated
+	{
+		if seq.IsComponentPresent(56) {
+			idx, err := d.DecodeEnumerated(cAParametersNRV1900BwpSwitchingDCI03And13DiffR19Constraints)
+			if err != nil {
+				return err
+			}
+			ie.Bwp_SwitchingDCI_0_3_And_1_3_Diff_r19 = &idx
+		}
+	}
+
+	// 59. mpr-ActiveCarrierEnh-r19: enumerated
+	{
+		if seq.IsComponentPresent(57) {
+			idx, err := d.DecodeEnumerated(cAParametersNRV1900MprActiveCarrierEnhR19Constraints)
+			if err != nil {
+				return err
+			}
+			ie.Mpr_ActiveCarrierEnh_r19 = &idx
+		}
+	}
+
+	// 60. mpr-DL-Independent-r19: enumerated
+	{
+		if seq.IsComponentPresent(58) {
+			idx, err := d.DecodeEnumerated(cAParametersNRV1900MprDLIndependentR19Constraints)
+			if err != nil {
+				return err
+			}
+			ie.Mpr_DL_Independent_r19 = &idx
+		}
+	}
+
+	// 61. mpr-ActivateDependent-r19: enumerated
+	{
+		if seq.IsComponentPresent(59) {
+			idx, err := d.DecodeEnumerated(cAParametersNRV1900MprActivateDependentR19Constraints)
+			if err != nil {
+				return err
+			}
+			ie.Mpr_ActivateDependent_r19 = &idx
+		}
+	}
+
+	// 62. intraBandNR-CA-non-collocated-r19: enumerated
+	{
+		if seq.IsComponentPresent(60) {
+			idx, err := d.DecodeEnumerated(cAParametersNRV1900IntraBandNRCANonCollocatedR19Constraints)
+			if err != nil {
+				return err
+			}
+			ie.IntraBandNR_CA_Non_Collocated_r19 = &idx
+		}
+	}
+
+	// 63. atg-RxBeamType-r19: enumerated
+	{
+		if seq.IsComponentPresent(61) {
+			idx, err := d.DecodeEnumerated(cAParametersNRV1900AtgRxBeamTypeR19Constraints)
+			if err != nil {
+				return err
+			}
+			ie.Atg_RxBeamType_r19 = &idx
+		}
+	}
+
+	// 64. od-SSB-FastMeasWinLowerBound-r19: enumerated
+	{
+		if seq.IsComponentPresent(62) {
+			idx, err := d.DecodeEnumerated(cAParametersNRV1900OdSSBFastMeasWinLowerBoundR19Constraints)
+			if err != nil {
+				return err
+			}
+			ie.Od_SSB_FastMeasWinLowerBound_r19 = &idx
+		}
+	}
+
+	// 65. maxCSI-RS-ResourceL1-Meas-r19: enumerated
+	{
+		if seq.IsComponentPresent(63) {
+			idx, err := d.DecodeEnumerated(cAParametersNRV1900MaxCSIRSResourceL1MeasR19Constraints)
+			if err != nil {
+				return err
+			}
+			ie.MaxCSI_RS_ResourceL1_Meas_r19 = &idx
+		}
+	}
+
+	// 66. totalCSI-RS-ResourceL1-Meas-r19: enumerated
+	{
+		if seq.IsComponentPresent(64) {
+			idx, err := d.DecodeEnumerated(cAParametersNRV1900TotalCSIRSResourceL1MeasR19Constraints)
+			if err != nil {
+				return err
+			}
+			ie.TotalCSI_RS_ResourceL1_Meas_r19 = &idx
+		}
+	}
+
+	return nil
+}

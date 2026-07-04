@@ -1,0 +1,75 @@
+// Code generated from docs/NR-RRC-Definitions.asn by codegen.
+// DO NOT EDIT.
+
+package ies
+
+import (
+	"github.com/lvdund/asn1go/per"
+)
+
+// Source: MinSchedulingOffsetPreferenceConfig-r16 (line 26456).
+
+var minSchedulingOffsetPreferenceConfigR16Constraints = per.SequenceConstraints{
+	Extensible: false,
+	RootComponents: []per.ComponentInfo{
+		{Name: "minSchedulingOffsetPreferenceProhibitTimer-r16"},
+	},
+}
+
+const (
+	MinSchedulingOffsetPreferenceConfig_r16_MinSchedulingOffsetPreferenceProhibitTimer_r16_S0     = 0
+	MinSchedulingOffsetPreferenceConfig_r16_MinSchedulingOffsetPreferenceProhibitTimer_r16_S0dot5 = 1
+	MinSchedulingOffsetPreferenceConfig_r16_MinSchedulingOffsetPreferenceProhibitTimer_r16_S1     = 2
+	MinSchedulingOffsetPreferenceConfig_r16_MinSchedulingOffsetPreferenceProhibitTimer_r16_S2     = 3
+	MinSchedulingOffsetPreferenceConfig_r16_MinSchedulingOffsetPreferenceProhibitTimer_r16_S3     = 4
+	MinSchedulingOffsetPreferenceConfig_r16_MinSchedulingOffsetPreferenceProhibitTimer_r16_S4     = 5
+	MinSchedulingOffsetPreferenceConfig_r16_MinSchedulingOffsetPreferenceProhibitTimer_r16_S5     = 6
+	MinSchedulingOffsetPreferenceConfig_r16_MinSchedulingOffsetPreferenceProhibitTimer_r16_S6     = 7
+	MinSchedulingOffsetPreferenceConfig_r16_MinSchedulingOffsetPreferenceProhibitTimer_r16_S7     = 8
+	MinSchedulingOffsetPreferenceConfig_r16_MinSchedulingOffsetPreferenceProhibitTimer_r16_S8     = 9
+	MinSchedulingOffsetPreferenceConfig_r16_MinSchedulingOffsetPreferenceProhibitTimer_r16_S9     = 10
+	MinSchedulingOffsetPreferenceConfig_r16_MinSchedulingOffsetPreferenceProhibitTimer_r16_S10    = 11
+	MinSchedulingOffsetPreferenceConfig_r16_MinSchedulingOffsetPreferenceProhibitTimer_r16_S20    = 12
+	MinSchedulingOffsetPreferenceConfig_r16_MinSchedulingOffsetPreferenceProhibitTimer_r16_S30    = 13
+	MinSchedulingOffsetPreferenceConfig_r16_MinSchedulingOffsetPreferenceProhibitTimer_r16_Spare2 = 14
+	MinSchedulingOffsetPreferenceConfig_r16_MinSchedulingOffsetPreferenceProhibitTimer_r16_Spare1 = 15
+)
+
+var minSchedulingOffsetPreferenceConfigR16MinSchedulingOffsetPreferenceProhibitTimerR16Constraints = per.EnumeratedConstraints{
+	Extensible: false,
+	RootValues: []int64{MinSchedulingOffsetPreferenceConfig_r16_MinSchedulingOffsetPreferenceProhibitTimer_r16_S0, MinSchedulingOffsetPreferenceConfig_r16_MinSchedulingOffsetPreferenceProhibitTimer_r16_S0dot5, MinSchedulingOffsetPreferenceConfig_r16_MinSchedulingOffsetPreferenceProhibitTimer_r16_S1, MinSchedulingOffsetPreferenceConfig_r16_MinSchedulingOffsetPreferenceProhibitTimer_r16_S2, MinSchedulingOffsetPreferenceConfig_r16_MinSchedulingOffsetPreferenceProhibitTimer_r16_S3, MinSchedulingOffsetPreferenceConfig_r16_MinSchedulingOffsetPreferenceProhibitTimer_r16_S4, MinSchedulingOffsetPreferenceConfig_r16_MinSchedulingOffsetPreferenceProhibitTimer_r16_S5, MinSchedulingOffsetPreferenceConfig_r16_MinSchedulingOffsetPreferenceProhibitTimer_r16_S6, MinSchedulingOffsetPreferenceConfig_r16_MinSchedulingOffsetPreferenceProhibitTimer_r16_S7, MinSchedulingOffsetPreferenceConfig_r16_MinSchedulingOffsetPreferenceProhibitTimer_r16_S8, MinSchedulingOffsetPreferenceConfig_r16_MinSchedulingOffsetPreferenceProhibitTimer_r16_S9, MinSchedulingOffsetPreferenceConfig_r16_MinSchedulingOffsetPreferenceProhibitTimer_r16_S10, MinSchedulingOffsetPreferenceConfig_r16_MinSchedulingOffsetPreferenceProhibitTimer_r16_S20, MinSchedulingOffsetPreferenceConfig_r16_MinSchedulingOffsetPreferenceProhibitTimer_r16_S30, MinSchedulingOffsetPreferenceConfig_r16_MinSchedulingOffsetPreferenceProhibitTimer_r16_Spare2, MinSchedulingOffsetPreferenceConfig_r16_MinSchedulingOffsetPreferenceProhibitTimer_r16_Spare1},
+}
+
+type MinSchedulingOffsetPreferenceConfig_r16 struct {
+	MinSchedulingOffsetPreferenceProhibitTimer_r16 int64
+}
+
+func (ie *MinSchedulingOffsetPreferenceConfig_r16) Encode(e *per.Encoder) error {
+	seq := e.NewSequenceEncoder(minSchedulingOffsetPreferenceConfigR16Constraints)
+	_ = seq
+
+	// 1. minSchedulingOffsetPreferenceProhibitTimer-r16: enumerated
+	{
+		if err := e.EncodeEnumerated(ie.MinSchedulingOffsetPreferenceProhibitTimer_r16, minSchedulingOffsetPreferenceConfigR16MinSchedulingOffsetPreferenceProhibitTimerR16Constraints); err != nil {
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (ie *MinSchedulingOffsetPreferenceConfig_r16) Decode(d *per.Decoder) error {
+	seq := d.NewSequenceDecoder(minSchedulingOffsetPreferenceConfigR16Constraints)
+	_ = seq
+
+	// 1. minSchedulingOffsetPreferenceProhibitTimer-r16: enumerated
+	{
+		v0, err := d.DecodeEnumerated(minSchedulingOffsetPreferenceConfigR16MinSchedulingOffsetPreferenceProhibitTimerR16Constraints)
+		if err != nil {
+			return err
+		}
+		ie.MinSchedulingOffsetPreferenceProhibitTimer_r16 = v0
+	}
+
+	return nil
+}

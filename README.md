@@ -1,253 +1,103 @@
-## RRC Library for Open RAN UE↔DU/CU Messaging
+# rrc-gen
 
-This Go module packages ASN.1-derived RRC message definitions and helpers so a User Equipment (UE) implementation can construct, encode, and decode signaling exchanged with the Distributed Unit (DU) and interpreted at the Centralized Unit (CU) inside an Open RAN architecture. It keeps the UE-side control-plane logic aligned with the DU/CU expectations by reusing the same IE layouts and APER encoding rules.
+Go types and PER (Packed Encoding Rules) codec for the 3GPP NR (5G) **Radio Resource Control (RRC)** protocol,
+generated from the ASN.1 specification **3GPP TS 38.331 V19.2.0 (2026-03)**.
 
-**Note:** Currently uses APER (Aligned Packed Encoding Rules). Migration to UPER (Unaligned Packed Encoding Rules) is planned for the future.
+## RRC PDU messages
 
-## Installation
+Every RRC PDU / top-level message from TS 38.331 is generated as a Go struct in package `ies`.
+Each struct exposes `Encode(e *per.Encoder) error` and `Decode(d *per.Decoder) error`.
 
-```bash
-go get github.com/lvdund/rrc
-```
+| RRC message (ASN.1)             | Go type                  | File                                          |
+|---------------------------------|--------------------------|-----------------------------------------------|
+| `BCCH-BCH-Message`              | `BCCH_BCH_Message`       | [ies/BCCH_BCH_Message.gen.go](ies/BCCH_BCH_Message.gen.go) |
+| `BCCH-DL-SCH-Message`           | `BCCH_DL_SCH_Message`    | [ies/BCCH_DL_SCH_Message.gen.go](ies/BCCH_DL_SCH_Message.gen.go) |
+| `DL-CCCH-Message`               | `DL_CCCH_Message`        | [ies/DL_CCCH_Message.gen.go](ies/DL_CCCH_Message.gen.go) |
+| `DL-DCCH-Message`               | `DL_DCCH_Message`        | [ies/DL_DCCH_Message.gen.go](ies/DL_DCCH_Message.gen.go) |
+| `PCCH-Message`                  | `PCCH_Message`           | [ies/PCCH_Message.gen.go](ies/PCCH_Message.gen.go) |
+| `UL-CCCH-Message`               | `UL_CCCH_Message`        | [ies/UL_CCCH_Message.gen.go](ies/UL_CCCH_Message.gen.go) |
+| `UL-CCCH1-Message`              | `UL_CCCH1_Message`       | [ies/UL_CCCH1_Message.gen.go](ies/UL_CCCH1_Message.gen.go) |
+| `UL-DCCH-Message`               | `UL_DCCH_Message`        | [ies/UL_DCCH_Message.gen.go](ies/UL_DCCH_Message.gen.go) |
 
-## Quick Start
+In addition to these PDUs, package `ies` also contains every referenced Information Element
+(MIB, SIB1, RRCReconfiguration, RRCSetupRequest, CellGroupConfig, Measurements, …) — see the
+[`ies/`](ies/) directory for the full list.
 
-### Encoding RRC Messages
+## How to use
 
-All RRC messages must be wrapped in a container type (UL-CCCH, UL-DCCH, DL-CCCH, DL-DCCH, BCCH-BCH, BCCH-DL-SCH, or PCCH). Here's an example of encoding an RRC Setup Request:
-
-```go
-package main
-
-import (
-    "fmt"
-    "github.com/lvdund/asn1go/aper"
-    "github.com/lvdund/rrc"
-    "github.com/lvdund/rrc/ies"
-)
-
-func main() {
-    // Create an RRC Setup Request message
-    rrcSetupRequest := ies.RRCSetupRequest{
-        RrcSetupRequest: ies.RRCSetupRequest_IEs{
-            Ue_Identity: ies.InitialUE_Identity{
-                Choice: ies.InitialUE_Identity_Choice_Ng_5G_S_TMSI_Part1,
-                Ng_5G_S_TMSI_Part1: aper.BitString{
-                    Bytes:   []byte{0x07, 0xFF, 0xFF, 0xFF, 0xFF},
-                    NumBits: 39,
-                },
-            },
-            EstablishmentCause: ies.EstablishmentCause{
-                Value: ies.EstablishmentCause_Enum_mo_Signalling,
-            },
-            Spare: aper.BitString{
-                Bytes:   []byte{1},
-                NumBits: 1,
-            },
-        },
-    }
-
-    // Wrap in UL-CCCH container (used before RRC connection exists)
-    ulccchMessage := &ies.UL_CCCH_Message{
-        Message: ies.UL_CCCH_MessageType{
-            Choice: ies.UL_CCCH_MessageType_Choice_C1,
-            C1: &ies.UL_CCCH_MessageType_C1{
-                Choice:          ies.UL_CCCH_MessageType_C1_Choice_RrcSetupRequest,
-                RrcSetupRequest: &rrcSetupRequest,
-            },
-        },
-    }
-
-    // Encode the message
-    encoded, err := rrc.Encode(ulccchMessage)
-    if err != nil {
-        fmt.Printf("Failed to encode: %v\n", err)
-        return
-    }
-
-    fmt.Printf("Encoded message: %x\n", encoded)
-}
-```
-
-### Decoding RRC Messages
-
-The library provides three decoding methods depending on your use case:
-
-#### 1. Decode When You Know the Container Type
-
-If you know which container type the message uses (e.g., from the channel context), use `Decode`:
-
-```go
-// Decode a UL-CCCH message
-decoded := &ies.UL_CCCH_Message{}
-if err := rrc.Decode(encodedBytes, decoded); err != nil {
-    fmt.Printf("Failed to decode: %v\n", err)
-    return
-}
-
-// Access the message
-if decoded.Message.C1 != nil {
-    rrcMsg := decoded.Message.C1.RrcSetupRequest
-    fmt.Printf("Decoded RRC Setup Request\n")
-}
-```
-
-#### 2. Decode When You Know the Channel Type
-
-If you know the channel type but want a more convenient API, use `DecodeWithChannel`:
-
-```go
-msg, err := rrc.DecodeWithChannel(encodedBytes, rrc.MessageContainerTypeUL_CCCH)
-if err != nil {
-    fmt.Printf("Failed to decode: %v\n", err)
-    return
-}
-
-// Type assert to access specific message
-if ulccch, ok := msg.(*ies.UL_CCCH_Message); ok {
-    // Access UL-CCCH specific fields
-    fmt.Printf("Decoded UL-CCCH message\n")
-}
-```
-
-#### 3. Decode When Container Type is Unknown
-
-If you receive bytes but don't know which container type it is, use `DecodeAny`:
-
-```go
-decoded, err := rrc.DecodeAny(encodedBytes)
-if err != nil {
-    fmt.Printf("Failed to decode: %v\n", err)
-    return
-}
-
-fmt.Printf("Detected container type: %s\n", decoded.Type)
-
-// Type assert to access the specific message
-switch msg := decoded.Message.(type) {
-case *ies.UL_CCCH_Message:
-    fmt.Printf("UL-CCCH message decoded\n")
-    // Access UL-CCCH fields
-case *ies.UL_DCCH_Message:
-    fmt.Printf("UL-DCCH message decoded\n")
-    // Access UL-DCCH fields
-case *ies.DL_CCCH_Message:
-    fmt.Printf("DL-CCCH message decoded\n")
-    // Access DL-CCCH fields
-case *ies.DL_DCCH_Message:
-    fmt.Printf("DL-DCCH message decoded\n")
-    // Access DL-DCCH fields
-case *ies.BCCH_BCH_Message:
-    fmt.Printf("BCCH-BCH message decoded\n")
-    // Access BCCH-BCH fields
-case *ies.BCCH_DL_SCH_Message:
-    fmt.Printf("BCCH-DL-SCH message decoded\n")
-    // Access BCCH-DL-SCH fields
-case *ies.PCCH_Message:
-    fmt.Printf("PCCH message decoded\n")
-    // Access PCCH fields
-}
-```
-
-## RRC Message Container Types
-
-RRC messages are organized into 7 container types based on direction and channel:
-
-| Container Type | Direction | Channel | Usage Example |
-|----------------|-----------|---------|---------------|
-| **UL-CCCH** | Uplink | Common Control | `RRCSetupRequest`, `RRCReestablishmentRequest`... |
-| **UL-DCCH** | Uplink | Dedicated Control | `RRCSetupComplete`, `RRCReconfigurationComplete`... |
-| **DL-CCCH** | Downlink | Common Control | `RRCSetup`, `RRCReestablishment`... |
-| **DL-DCCH** | Downlink | Dedicated Control | `RRCReconfiguration`, `SecurityModeCommand`... |
-| **BCCH-BCH** | Broadcast | Master Information | `MIB` (Master Information Block)... |
-| **BCCH-DL-SCH** | Broadcast | System Information | `SystemInformationBlockType1` (SIB1)... |
-| **PCCH** | Broadcast | Paging | `Paging` records... |
-
-## Complete Example: RRC Setup Complete
+### Decode an RRC PDU (PER bytes → Go struct)
 
 ```go
 package main
 
 import (
     "fmt"
-    "github.com/lvdund/asn1go/aper"
-    "github.com/lvdund/rrc"
+
+    "github.com/lvdund/asn1go/per"
     "github.com/lvdund/rrc/ies"
 )
 
 func main() {
-    // Create RRC Setup Complete message
-    rrcSetupComplete := ies.RRCSetupComplete{
-        Rrc_TransactionIdentifier: ies.RRC_TransactionIdentifier{Value: 0},
-        CriticalExtensions: ies.RRCSetupComplete_CriticalExtensions{
-            Choice: ies.RRCSetupComplete_CriticalExtensions_Choice_RrcSetupComplete,
-            RrcSetupComplete: &ies.RRCSetupComplete_IEs{
-                SelectedPLMN_Identity: 1,
-                DedicatedNAS_Message: ies.DedicatedNAS_Message{
-                    Value: []byte{0x7e, 0x00, 0x41, 0x79, 0x00, 0x0d},
-                },
-            },
-        },
+    raw := []byte{ /* PER-encoded BCCH-BCH-Message bytes here */ }
+
+    dec := per.NewDecoder(raw)
+    var msg ies.BCCH_BCH_Message
+    if err := msg.Decode(dec); err != nil {
+        panic(err)
     }
 
-    // Wrap in UL-DCCH container (used after RRC connection is set up)
-    uldcchMessage := &ies.UL_DCCH_Message{
-        Message: ies.UL_DCCH_MessageType{
-            Choice: ies.UL_DCCH_MessageType_Choice_C1,
-            C1: &ies.UL_DCCH_MessageType_C1{
-                Choice:           ies.UL_DCCH_MessageType_C1_Choice_RrcSetupComplete,
-                RrcSetupComplete: &rrcSetupComplete,
-            },
-        },
-    }
-
-    // Encode
-    encoded, err := rrc.Encode(uldcchMessage)
-    if err != nil {
-        fmt.Printf("Failed to encode: %v\n", err)
-        return
-    }
-
-    // Decode using DecodeAny (when container type is unknown)
-    decoded, err := rrc.DecodeAny(encoded)
-    if err != nil {
-        fmt.Printf("Failed to decode: %v\n", err)
-        return
-    }
-
-    fmt.Printf("Detected container: %s\n", decoded.Type)
-
-    // Access the decoded message
-    if uldcch, ok := decoded.Message.(*ies.UL_DCCH_Message); ok {
-        if uldcch.Message.C1 != nil && uldcch.Message.C1.RrcSetupComplete != nil {
-            setupComplete := uldcch.Message.C1.RrcSetupComplete.CriticalExtensions.RrcSetupComplete
-            fmt.Printf("Selected PLMN Identity: %d\n", setupComplete.SelectedPLMN_Identity)
-            fmt.Printf("NAS Message: %x\n", setupComplete.DedicatedNAS_Message.Value)
-        }
-    }
+    fmt.Printf("MIB = %#v\n", msg.Message)
 }
 ```
 
-## API Reference
+### Encode an RRC PDU (Go struct → PER bytes)
 
-### Encoding
+```go
+enc := per.NewEncoder()
+msg := ies.BCCH_BCH_Message{
+    Message: ies.BCCH_BCH_MessageType{
+        // MIB fields...
+    },
+}
+if err := msg.Encode(enc); err != nil {
+    panic(err)
+}
+bytes := enc.Bytes()
+```
 
-- **`rrc.Encode(msg RRCMessage) ([]byte, error)`** - Encodes an RRC message container into bytes
+### Generic helper
 
-### Decoding
+The `Encode`/`Decode` methods follow the same contract for every generated type, so you can write
+a small generic wrapper once and reuse it for all RRC messages:
 
-- **`rrc.Decode(buf []byte, msg RRCMessage) error`** - Decodes bytes into a known message type
-- **`rrc.DecodeAny(buf []byte) (*DecodedMessage, error)`** - Automatically detects and decodes the container type
-- **`rrc.DecodeWithChannel(buf []byte, containerType MessageContainerType) (RRCMessage, error)`** - Decodes with a known channel type
+```go
+type Codec interface {
+    Encode(e *per.Encoder) error
+    Decode(d *per.Decoder) error
+}
 
-### Types
+func Encode[T Codec](msg T) ([]byte, error) {
+    e := per.NewEncoder()
+    if err := msg.Encode(e); err != nil {
+        return nil, err
+    }
+    return e.Bytes(), nil
+}
 
-- **`MessageContainerType`** - Enum representing container types (UL-CCCH, UL-DCCH, DL-CCCH, DL-DCCH, BCCH-BCH, BCCH-DL-SCH, PCCH)
-- **`DecodedMessage`** - Wraps a decoded message with its detected container type
+func Decode[T Codec](raw []byte) (T, error) {
+    var msg T
+    if err := msg.Decode(per.NewDecoder(raw)); err != nil {
+        return msg, err
+    }
+    return msg, nil
+}
+```
+## Status
 
-## Notes
+- Spec: **3GPP TS 38.331 V19.2.0 (2026-03)** (NR-RRC-Definitions).
+- Code is generated; PER conformance against protocol captures is being validated under
+  [`test/`](test/) and the `*_test.go` files next to generated types.
 
-- All RRC messages must be wrapped in one of the 7 container types
-- The library uses APER encoding (will migrate to UPER in the future)
-- `DecodeAny` tries all container types sequentially, so it's less efficient than `Decode` or `DecodeWithChannel` when you know the type
-- Use `DecodeAny` when receiving bytes from an unknown source, otherwise prefer the more specific decode methods for better performance
+## License
+
+See [LICENSE](LICENSE).
