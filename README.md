@@ -92,12 +92,6 @@ func Decode[T Codec](raw []byte) (T, error) {
     return msg, nil
 }
 ```
-## Status
-
-- Spec: **3GPP TS 38.331 V19.2.0 (2026-03)** (NR-RRC-Definitions).
-- Code is generated; PER conformance against protocol captures is being validated under
-  [`test/`](test/) and the `*_test.go` files next to generated types.
-
 ## License
 
 See [LICENSE](LICENSE).
